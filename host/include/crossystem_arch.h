@@ -77,4 +77,11 @@ int VbSetArchPropertyInt(const char* name, int value);
  * Returns 0 if success, -1 if error. */
 int VbSetArchPropertyString(const char* name, const char* value);
 
+/* Firmware types from BINF.3. Placed here because both x86 and arm use
+ * this.
+ */
+#define BINF3_RECOVERY   0
+#define BINF3_NORMAL     1
+#define BINF3_DEVELOPER  2
+
 #endif  /* VBOOT_REFERENCE__CROSSYSTEM_ARCH_H_ */
