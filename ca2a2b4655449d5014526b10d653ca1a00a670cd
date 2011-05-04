@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABn///Sc\u003d",
+        "filename": "scripts/newbitmaps/lib/bmpblock.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-05-04T13:11:33Z",
+      "side": 1,
+      "message": "Please use os.path.join",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///Sg\u003d",
+        "filename": "scripts/newbitmaps/lib/bmpblock.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-05-04T13:11:33Z",
+      "side": 1,
+      "message": "please use os.path.join() instead of \"+ \u0027/\u0027 + ...\"",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///SY\u003d",
+        "filename": "scripts/newbitmaps/make_bmp_from_components.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-05-04T13:11:33Z",
+      "side": 1,
+      "message": "sys.argv[1] is apparently \u0027--force\u0027 right?\nI think an assert would be better?\n assert sys.argv[1] \u003d\u003d \u0027--force\u0027",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
