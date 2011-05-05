@@ -18,7 +18,8 @@ class MyApp(wx.App):
   def OnInit(self):
     progname = os.path.basename(sys.argv[0])
     progdir = os.path.abspath(os.path.dirname(sys.argv[0]))
-    self._bmpblock = bmpblock.BmpBlock(sys.argv[1], libdir=progdir+'/lib')
+    self._bmpblock = bmpblock.BmpBlock(os.path.join(progdir, 'lib'),
+                                       sys.argv[1])
     self._mainframe = pixcontrol.Frame(self._bmpblock, progname)
     self._mainframe.Show()
     self.SetTopWindow(self._mainframe)

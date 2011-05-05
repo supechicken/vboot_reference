@@ -204,8 +204,7 @@ namespace vboot_reference {
     string gotversion = (char*)event.data.scalar.value;
     if (gotversion == "1.1") {
       render_hwid_ = true;
-    }
-    else if (gotversion == "1.0") {
+    } else if (gotversion == "1.0") {
       minor_version_ = 0;
       render_hwid_ = false;
     } else {

@@ -106,7 +106,7 @@ typedef struct ImageInfo {
 typedef enum ImageTag {
   TAG_NONE = 0,
   TAG_HWID,
-  TAG_HWID_RTOL,
+  TAG_HWID_RTOL,            /* "right-to-left", ie, right-justified HWID */
 } ImageTag;
 
 /* Constants for ImageInfo.format */
@@ -124,7 +124,9 @@ typedef enum Compression {
 } Compression;
 
 /* These magic image names can be used in the .yaml file to indicate that
-   the ASCII HWID should be displayed. */
+   the ASCII HWID should be displayed. For RENDER_HWID, the image coordinates
+   specify upper-left corner of the HWID string. For RENDER_HWID_RTOL, they
+   indicate the upper-right corner (handy for right-to-left languages). */
 #define RENDER_HWID       "$HWID"
 #define RENDER_HWID_RTOL  "$HWID.rtol"
 

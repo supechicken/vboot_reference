@@ -14,7 +14,7 @@ class BmpBlock(object):
   It has a few special attributes to specify which part we're focusing on.
   """
 
-  def __init__(self, filename=None, libdir=None):
+  def __init__(self, libdir, filename=None):
     self.yaml = None
     self.filename = None
     self.current_screen = None
@@ -58,9 +58,9 @@ class BmpBlock(object):
     for val in images.values():
       assert val and isinstance(val, types.StringTypes)
     if not "$HWID" in images:
-      images["$HWID"] = self.libdir + '/'+ 'current_hwid.bmp'
+      images["$HWID"] = os.path.join(self.libdir,'current_hwid.bmp')
     if not "$HWID.rtol" in images:
-      images["$HWID.rtol"] = self.libdir + '/' + 'current_hwid.bmp'
+      images["$HWID.rtol"] = os.path.join(self.libdir, 'current_hwid.bmp')
 
     screens = thing["screens"]
     assert isinstance(screens, dict)
