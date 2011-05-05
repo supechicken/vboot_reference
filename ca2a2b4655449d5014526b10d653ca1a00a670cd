@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+h4\u003d",
+        "filename": "firmware/include/bmpblk_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "\"Right-to-left\". Some languages render backwards, so this indicates right-justification of the HWID string.",
+      "parentUuid": "AAAABn//+0U\u003d",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+5s\u003d",
         "filename": "scripts/newbitmaps/bitmap_viewer",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-05-05T00:18:40Z",
       "side": 1,
       "message": "libdir\u003dos.path.join(progdir, \u0027lib\u0027)",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+h8\u003d",
+        "filename": "scripts/newbitmaps/bitmap_viewer",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn//+5s\u003d",
       "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+iA\u003d",
+        "filename": "scripts/newbitmaps/lib/bmpblock.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn//+5g\u003d",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn///Sg\u003d",
         "filename": "scripts/newbitmaps/lib/bmpblock.py",
         "patchSetId": 1
@@ -81,6 +135,24 @@
       "writtenOn": "2011-05-04T13:11:33Z",
       "side": 1,
       "message": "please use os.path.join() instead of \"+ \u0027/\u0027 + ...\"",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+iE\u003d",
+        "filename": "scripts/newbitmaps/lib/bmpblock.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn///Sg\u003d",
       "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+iM\u003d",
+        "filename": "scripts/newbitmaps/make_bmp_from_components.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "I\u0027m trying to give the user a polite error message rather than just barfing all over his shoes.",
+      "parentUuid": "AAAABn///SY\u003d",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+00\u003d",
         "filename": "utility/bmpblk_utility.cc",
         "patchSetId": 1
@@ -115,6 +205,24 @@
       "writtenOn": "2011-05-05T01:58:38Z",
       "side": 1,
       "message": "Syntax: } else if (...",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+iI\u003d",
+        "filename": "utility/bmpblk_utility.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-05-05T22:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn//+00\u003d",
       "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
