@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABn//+gk\u003d",
+        "filename": "scripts/newbitmaps/make_bmp_from_components.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-05-05T22:22:59Z",
+      "side": 1,
+      "message": "cleaner:\n\nif \u0027--force\u0027 in sys.argv:\n  # do it anyway\n  sys.argv.remove(\u0027--force\u0027)\nelse:\n  # print error message and exit",
+      "revId": "f44708ee0a89f1cfc45e7b3262e5503fcc278112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
