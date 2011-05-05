@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAABn//+5s\u003d",
+        "filename": "scripts/newbitmaps/bitmap_viewer",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-05-05T00:18:40Z",
+      "side": 1,
+      "message": "libdir\u003dos.path.join(progdir, \u0027lib\u0027)",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn///Sc\u003d",
         "filename": "scripts/newbitmaps/lib/bmpblock.py",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2011-05-04T13:11:33Z",
       "side": 1,
       "message": "Please use os.path.join",
+      "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+5g\u003d",
+        "filename": "scripts/newbitmaps/lib/bmpblock.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-05-05T00:18:40Z",
+      "side": 1,
+      "message": "assert self.libdir\n(or don\u0027t let it be None in __init__)",
       "revId": "ca2a2b4655449d5014526b10d653ca1a00a670cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
