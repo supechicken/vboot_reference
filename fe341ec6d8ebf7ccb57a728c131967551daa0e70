@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+lw\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "Ah, I am not sure how this file came to be used here, but it was supplying chrossystem_arh.h, which is now used directly.",
+      "parentUuid": "AAAABn//+oU\u003d",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+oo\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2011-05-05T19:51:35Z",
       "side": 1,
       "message": "Suggest calling this vb_gpio_map_kaen, since it\u0027s platform-specific.",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+ls\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "yeah, I changed the name for now, but the transparent way of doing this would be looking for the proper gpio numbers matching signal names in /sys/kernel/debug/gpio output. Than this table won\u0027t be needed anymore. Will leave this as a future enhancement.",
+      "parentUuid": "AAAABn//+oo\u003d",
       "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+lc\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "As already mentioned, let\u0027s use the kernel supplied mapping instead, I will add it to support aebl (the kernel part assigning names to gpios is not there yet either)",
+      "parentUuid": "AAAABn//+og\u003d",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+nw\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2011-05-05T19:51:35Z",
       "side": 1,
       "message": "Comment describing what this does would be useful.",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+lo\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn//+nw\u003d",
       "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+lk\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "Yes, I am aware of these limitations, but since this is tightly controlled inside this file, I think this is ok.",
+      "parentUuid": "AAAABn//+ns\u003d",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+no\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2011-05-05T19:51:35Z",
       "side": 1,
       "message": "See comment above.  \n\nVbGetArchPropertyString(\"devsw_boot\") should fail since that\u0027s an integer property, but this will succeed and treat the integer data as a string.",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+lg\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "again, yes, this is a valid concern and I started by adding the variable type in the table.\n\nBut come to think of it, if someone looks for an int called \u0027fwid\u0027 we have a bigger problem, and the result would be obvious on the first attempt to test it, so, again, I am not worried here, and chose to keep the table simple.",
+      "parentUuid": "AAAABn//+no\u003d",
       "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+lU\u003d",
+        "filename": "host/include/crossystem_arch.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAABn//+o4\u003d",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+pE\u003d",
         "filename": "utility/crossystem_main.c",
         "patchSetId": 2
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn//+lM\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "I don\u0027t think so - crossystem always runs to completion, so all files get closed, memory freed, etc. Should the need  \u0027CleanUp() function arise - we\u0027ll address it then.",
+      "parentUuid": "AAAABn//+pE\u003d",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn//+pA\u003d",
         "filename": "utility/crossystem_main.c",
         "patchSetId": 2
@@ -149,6 +293,24 @@
       "writtenOn": "2011-05-05T19:51:35Z",
       "side": 1,
       "message": "Move down to after line 236, so arch failing to initialize doesn\u0027t prevent printing help.",
+      "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn//+lE\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-05-05T20:50:16Z",
+      "side": 1,
+      "message": "I could do it, but I think it belongs here: if VbArchIni() fails, what use the help text is? OTOH PrintAllPArams() in line 227 would fail badly if it is called beforeVbArchInit() succeeds.",
+      "parentUuid": "AAAABn//+pA\u003d",
       "revId": "fe341ec6d8ebf7ccb57a728c131967551daa0e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
