@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//8t0\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-05-24T19:30:59Z",
+      "side": 1,
+      "message": "Should be a global flag?\n\nOtherwise, RollbackKernelWrite() will reboot to recovery mode on a failure, instead of just rebooting to the same mode.\n\nNote that propagating this flag on x86 is problematic, but on ARM it may be doable.",
+      "revId": "48b805172c6eb7a5c45daa78d08b48643c311028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//8uA\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-05-24T19:30:59Z",
+      "side": 1,
+      "message": "Please expand comment:\n\nThis is ok because we\u0027re in one of two states:\n\n1) First time we\u0027ve booted using this TPM, and PP command is disabled.  This can\u0027t be a soft boot, because it\u0027s the first time we booted.\n\n2) Soft boot.  We\u0027ve already made it through this code on a previous boot, so if we needed to enable the PP command we\u0027ve already done so.",
+      "revId": "48b805172c6eb7a5c45daa78d08b48643c311028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
