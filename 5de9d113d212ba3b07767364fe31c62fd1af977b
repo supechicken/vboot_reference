@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//8yQ\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-24T18:23:10Z",
+      "side": 1,
+      "message": "what does the v in vflags stand for?",
+      "revId": "5de9d113d212ba3b07767364fe31c62fd1af977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//8yU\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-24T18:23:10Z",
+      "side": 1,
+      "message": "Would it be clearer to check this first before attempting to lock? Does TlclGetSTClearFlags take too long?",
+      "revId": "5de9d113d212ba3b07767364fe31c62fd1af977b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
