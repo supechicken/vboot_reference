@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//87I\u003d",
+        "filename": "utility/pack_firmware_image",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-05-24T07:14:06Z",
+      "side": 1,
+      "message": "It is better to separate the blob entry read from a file with the blob from a string. Make the string blob as base and the file blob inherit it.",
+      "revId": "e3c22f3402949e922a652718debccf0876cf8494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
