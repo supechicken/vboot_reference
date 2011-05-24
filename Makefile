@@ -30,7 +30,7 @@ ifeq ($(FIRMWARE_ARCH),)
 CFLAGS += -DCHROMEOS_ENVIRONMENT
 endif
 
-ifneq (${DEBUG},)
+ifneq (${DEBUG},xxx)
 CFLAGS += -DVBOOT_DEBUG
 endif
 

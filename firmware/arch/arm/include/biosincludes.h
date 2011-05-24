@@ -43,4 +43,6 @@ extern void debug(const char *format, ...);
 #define UINT64_MAX (UINT64_C(0xffffffffffffffffULL))
 #endif
 
+#define TEGRA_SOFT_REBOOT_WORKAROUND
+
 #endif /*__ARCH_ARM_BIOSINCLUDES_H__ */
