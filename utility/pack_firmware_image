@@ -80,7 +80,17 @@ class Entry(dict):
     raise PackError('class Entry does not implement Pack()')
 
 
-class EntryFmap(Entry):
+class EntryFmapArea(Entry):
+
+  def __init__(self, **kwargs):
+    Entry._CheckFields(kwargs, ('flags',))
+    super(EntryFmapArea, self).__init__(**kwargs)
+
+  def Pack(self, firmware_image, entries):
+    pass
+
+
+class EntryFmap(EntryFmapArea):
 
   def __init__(self, **kwargs):
     Entry._CheckFields(kwargs, ('ver_major', 'ver_minor', 'base', 'size'))
@@ -90,9 +100,8 @@ class EntryFmap(Entry):
     # prepare header areas
     areas = []
     for e in entries:
-      if isinstance(e, EntryFmapArea):
-        areas.append(dict((name, e[name] if name != 'size' else e['length'])
-                          for name in FMAP_AREA_NAMES))
+      areas.append(dict((name, e[name] if name != 'size' else e['length'])
+                        for name in FMAP_AREA_NAMES))
 
     # prepare header
     obj = {'areas':areas}
@@ -112,16 +121,6 @@ class EntryFmap(Entry):
 
     firmware_image.seek(self.offset)
     firmware_image.write(blob)
-
-
-class EntryFmapArea(Entry):
-
-  def __init__(self, **kwargs):
-    Entry._CheckFields(kwargs, ('flags',))
-    super(EntryFmapArea, self).__init__(**kwargs)
-
-  def Pack(self, firmware_image, entries):
-    pass
 
 
 class EntryWiped(EntryFmapArea):
@@ -150,10 +149,18 @@ class EntryWiped(EntryFmapArea):
 class EntryBlob(EntryFmapArea):
 
   def __init__(self, **kwargs):
-    Entry._CheckFields(kwargs, ('path',))
+    if 'path' not in kwargs and 'value' not in kwargs:
+      raise ConfigError('Entry: either "path" or "value" is required')
     super(EntryBlob, self).__init__(**kwargs)
 
   def Pack(self, firmware_image, entries):
+    if 'value' in self:
+      if len(self.value) > self.length:
+        raise PackError('string too large: len(%s) > %d' %
+            (self.value, self.length))
+      firmware_image.seek(self.offset)
+      firmware_image.write(self.value)
+      return
     size = os.stat(self.path).st_size
     if size > self.length:
       raise PackError('blob too large: %s: %d > %d' %
