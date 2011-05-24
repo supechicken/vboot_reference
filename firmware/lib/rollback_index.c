@@ -181,6 +181,7 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   uint8_t disable;
   uint8_t deactivated;
   uint32_t result;
+  int soft_reset = 0;
 
   VBDEBUG(("TPM: SetupTPM(r%d, d%d)\n", recovery_mode, developer_mode));
 
@@ -190,7 +191,17 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
 
   RETURN_ON_FAILURE(TlclLibInit());
 
-  RETURN_ON_FAILURE(TlclStartup());
+  result = TlclStartup();
+  if (result == TPM_E_INVALID_POSTINIT) {
+    /* Some prototype hardware doesn't reset the TPM on a CPU reset.  We try to
+     * tolerate this failure, which is possible in most cases.
+     */
+    VBDEBUG(("TPM: soft reset detected\n", result));
+    soft_reset = 1;
+  } else if (result != TPM_SUCCESS) {
+    VBDEBUG(("TPM: TlclStartup returned %08x\n", result));
+    return result;
+  }
   /* Some TPMs start the self test automatically at power on.  In that case we
    * don't need to call ContinueSelfTest.  On some (other) TPMs,
    * ContinueSelfTest may block.  In that case, we definitely don't want to
@@ -210,10 +221,11 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   RETURN_ON_FAILURE(TlclContinueSelfTest());
 #endif
   result = TlclAssertPhysicalPresence();
-  if (result != 0) {
+  if (result != TPM_SUCCESS && !soft_reset) {
     /* It is possible that the TPM was delivered with the physical presence
      * command disabled.  This tries enabling it, then tries asserting PP
-     * again.
+     * again.  But don't do this if the TPM was already started, because it
+     * will fail.
      */
     RETURN_ON_FAILURE(TlclPhysicalPresenceCMDEnable());
     RETURN_ON_FAILURE(TlclAssertPhysicalPresence());
@@ -437,7 +449,14 @@ uint32_t RollbackKernelLock(void) {
   if (g_rollback_recovery_mode) {
     return TPM_SUCCESS;
   } else {
-    return TlclLockPhysicalPresence();
+    TPM_STCLEAR_FLAGS flags;
+    uint32_t result = TlclLockPhysicalPresence();
+    if (result == TPM_SUCCESS) {
+      return result;
+    }
+    RETURN_ON_FAILURE(TlclGetSTClearFlags(&flags));
+    /* Ignore PP locking failure if PP is already locked. */
+    return flags.physicalPresenceLock == 1 ? TPM_SUCCESS : result;
   }
 }
 
