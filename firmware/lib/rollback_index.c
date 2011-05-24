@@ -181,6 +181,7 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   uint8_t disable;
   uint8_t deactivated;
   uint32_t result;
+  int soft_reset = 0;
 
   VBDEBUG(("TPM: SetupTPM(r%d, d%d)\n", recovery_mode, developer_mode));
 
@@ -190,7 +191,14 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
 
   RETURN_ON_FAILURE(TlclLibInit());
 
-  RETURN_ON_FAILURE(TlclStartup());
+  result = TlclStartup();
+  if (result == TPM_E_INVALID_POSTINIT) {
+    VBDEBUG(("TPM: soft reset detected\n", result));
+    soft_reset = 1;
+  } else if (result != 0) {
+    VBDEBUG(("TPM: TlclStartup returned %08x\n", result));
+    return result;
+  }
   /* Some TPMs start the self test automatically at power on.  In that case we
    * don't need to call ContinueSelfTest.  On some (other) TPMs,
    * ContinueSelfTest may block.  In that case, we definitely don't want to
@@ -210,10 +218,12 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   RETURN_ON_FAILURE(TlclContinueSelfTest());
 #endif
   result = TlclAssertPhysicalPresence();
-  if (result != 0) {
+  if (result != 0 && !soft_reset) {
     /* It is possible that the TPM was delivered with the physical presence
      * command disabled.  This tries enabling it, then tries asserting PP
      * again.
+     *
+     * If this was a soft reset, tolerate failure.
      */
     RETURN_ON_FAILURE(TlclPhysicalPresenceCMDEnable());
     RETURN_ON_FAILURE(TlclAssertPhysicalPresence());
