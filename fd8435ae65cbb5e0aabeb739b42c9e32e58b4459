@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//8Jg\u003d",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-25T17:36:05Z",
+      "side": 1,
+      "message": "remove this?",
+      "revId": "fd8435ae65cbb5e0aabeb739b42c9e32e58b4459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//8Jc\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-25T17:36:05Z",
+      "side": 1,
+      "message": "will this fit on the previous line (grouping them will make this easier to read)",
+      "revId": "fd8435ae65cbb5e0aabeb739b42c9e32e58b4459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//8JU\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-25T17:36:05Z",
+      "side": 1,
+      "message": "can you explain what you mean to be a security problem? I\u0027d rather that you did not put such alarming statements in the comments. Better to explain the reasoning for why this is there and what potential issues it can cause.",
+      "revId": "fd8435ae65cbb5e0aabeb739b42c9e32e58b4459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//8JY\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-05-25T17:36:05Z",
+      "side": 1,
+      "message": "please file a bug and link it here. no one is going to notice this or remember otherwise.",
+      "revId": "fd8435ae65cbb5e0aabeb739b42c9e32e58b4459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
