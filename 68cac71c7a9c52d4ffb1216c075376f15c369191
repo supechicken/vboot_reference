@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAADH//3TU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Perhaps use just int instead, and a -ve error? For development and testing it would be nice to get an idea of the actual error (out of memory, bad key, etc.) rather than -1. For testing, we might write tests which cause a fault and check that the library returns the right error, indicating that it detected it.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zw\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2011-06-07T01:45:56Z",
       "side": 1,
       "message": "what exactly does this function return - should it return say us or ns since reset?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3TQ\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Unless we need microsecs (which I think we don\u0027t) how about defining this to return milliseconds, and make it VbGetTimerMs()?\n\nAlso: does it start at 0 on boot? If not does it wrap properly, so that -1ULL goes to 0?",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -47,6 +81,91 @@
       "writtenOn": "2011-06-07T01:45:56Z",
       "side": 1,
       "message": "thanks for explaining what 10% is :)",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3TM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "why uint64_t? On ARM this is an extra register\n\nPerhaps VbSleepMs()?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3TI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Again the unnecessary use of uint64_t costs on ARM, and may result in stack access where previously none was needed.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3TE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Should this be passed a VbSelectData (or whatever the library\u0027s data structure is?)",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3TA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Again suggest just int for return value - same for most other 64bit uints. Also on 64-bit machines this might force a mask operation in this function or the caller.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3S8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Should this return the length actually read?",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +224,40 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3S0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "How about we just define that we support PNG and JPG? What other formats might we want to use?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3S4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Are coords in pixels or something else? How do we handle centering a bitmap on the display? Should we add a way of finding out the size of a bitmap, or have an enum to specify it should be centered?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3WQ\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -156,6 +309,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3So\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Should you swap the meaning of 0 and 1 here?\n\nWhen should this be called?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3YI\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -190,6 +360,159 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Sk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Why are these flags 64-bit?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Sc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Is this the library\u0027s main storage? If so perhaps a name like VbData would be better? It could be passed to VbInit",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3SU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "It would be good to have functions to set up the values that need set. It isn\u0027t clear to me where gbb_data comes from - if Vb can read disk blocks then can\u0027t it get the GBB itself?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3R0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Should this be an opaque structure, like\n\nstruct VbSharedData *shared_data_blob;\n\n...\nin C file:\n\nstruct VbSharedData {\n   ... define fields\n}",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3R4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Ro\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Where is this field malloced and initialized?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3R8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "userdata? If this is really the user\u0027s data then perhaps it should be passed to all \u0027callback\u0027 routines?\n\nWe seem to have a two different things here:\n\n- shared_data_blob\n- vb_select_internal\n\nWhat is the difference? Can we combine these? Also, where is the structure which defines what is in them?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Rg\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Perhaps make this an enum?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Rk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "Where is this defined? Can Vb read this data using the disk read functions?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Yc\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -201,6 +524,40 @@
       "writtenOn": "2011-06-07T03:06:06Z",
       "side": 1,
       "message": "You mean in recovery firmware, VbSelectFirmware is called for merely setting up TPM, but not really selecting any firmware?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3RU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "What does this do? Load the kernel, or just select it?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3RY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T17:14:52Z",
+      "side": 1,
+      "message": "What does this do? When is it called?",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
