@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3LI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "Perhaps I am missing something here, but what is meaningless about the size of the value that we care about in a register (wrt ARM)?",
+      "parentUuid": "AAAADH//3NA\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3PA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -310,6 +328,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3LE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "I suggest we decide on the convention and stick to it. 2 suggestions I have seen:\n\n1) uint32_t: 0 means success, else error code (this is what we almost currently do)\n2) int: -1 means error, 0 means success (no error codes)\n\nI prefer 1) - even in the field on a production system, knowing the error code is of a big help in tracking weird bugs.",
+      "parentUuid": "AAAADH//3TA\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3S8\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -321,6 +357,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Should this return the length actually read?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3LA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "I think the response length is contained in the response itself, so the length may not be necessary.",
+      "parentUuid": "AAAADH//3S8\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -427,6 +481,23 @@
       "side": 1,
       "message": "32-bits is better for ARM.\n\nAlso on ARM parameters are passed in registers, so everything is 32-bits. A 64-bit argument requires two registers.",
       "parentUuid": "AAAADH//3OE\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Kw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "Why not move the firmware_index requested into |params|. |params| could be a request-result parameter. Also what is |params| used for - not mentioned in the comment.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -778,6 +849,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3KY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "Will 2) (report at ASCII) conflict with our static definitions. It would be better to just have key chords always be mapped to 0x80-0xFF. Having 2 alternatives just adds to more confusion.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3So\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -932,6 +1020,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3KM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "All flags and typedefs could be moved to its own header. Right now the definitions (of flags) seem to be scattered all around.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3R4\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1000,6 +1105,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3KI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "common params for what?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Rk\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1011,6 +1133,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Where is this defined? Can Vb read this data using the disk read functions?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3KE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T18:38:12Z",
+      "side": 1,
+      "message": "again, common params for what? What is this needed for?",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
