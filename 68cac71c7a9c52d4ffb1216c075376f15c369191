@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3EU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Good idea.  I\u0027ll split that in the next patch.",
+      "parentUuid": "AAAADH//3SA\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Rc\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "And all BIOS-exported functions start with \"Bios\", for the same reason?\n\nShared data structs should use the same convention, according to where the struct is defined.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3DU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Since all the shared data structs are defined by our header file, they\u0027re all \"Vb\" structs.",
+      "parentUuid": "AAAADH//3Rc\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -106,6 +142,41 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Kc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3RI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Eg\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Removed from this header, since it\u0027s just a macro internal to utility.h which calls VbError().",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3PA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -157,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3DA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "This should return a native high-resolution timer value.  We use it for benchmarking, so the call itself shouldn\u0027t be doing conversion math.",
+      "parentUuid": "AAAADH//3Zw\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Q0\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -174,6 +263,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Bs\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Hz.  See above. :)",
+      "parentUuid": "AAAADH//3Q0\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zs\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -185,6 +292,24 @@
       "writtenOn": "2011-06-07T01:45:56Z",
       "side": 1,
       "message": "why does vboot wrapper care about the clock frequency (especially if VbGetTimer() returns actual time units)?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3BU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Now that we have VbSleep(), we don\u0027t actually need to know the frequency.  Removed.",
+      "parentUuid": "AAAADH//3Zs\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -243,6 +368,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3BI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Changed to -0% +10%.\n\nI want an upper bound on the delay, since I need to use this in the dev warning screen loop.  If I\u0027m polling the keyboard every 100ms and it\u0027s actually delaying 500ms, that dev warning screen will take a looong time to timeout...",
+      "parentUuid": "AAAADH//3Oc\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3TM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -254,6 +397,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "why uint64_t? On ARM this is an extra register\n\nPerhaps VbSleepMs()?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3BQ\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Changed to uint32",
+      "parentUuid": "AAAADH//3TM\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -277,6 +438,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3BA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3Qw\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3TI\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -288,6 +467,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Again the unnecessary use of uint64_t costs on ARM, and may result in stack access where previously none was needed.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3BE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3TI\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -381,6 +578,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3A0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3S8\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Qk\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -392,6 +607,24 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "VbUpdateFirmwareBodyHash() or BiosUpdateFirmwareBodyHash() ?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Ao\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Vb.  Done.",
+      "parentUuid": "AAAADH//3Qk\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -504,6 +737,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Ak\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Waaaay back, we thought \"Oh, UEFI is 64 bit, so we\u0027ll explictly specify 64 bit since that\u0027s native int size.\"  Only to realize later than UEFI is really 32 bit in PEI and 64 bit in DXE/BDS.\n\nI\u0027ll clean these up so that only the things that need to be 64 bit (for example, disk offsets) are.",
+      "parentUuid": "AAAADH//3OE\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3QM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -549,6 +800,24 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "Specify bit width, not \u0027int\u0027. And separate the error code from the return count.\n\nbios_exports.h should define an opaque BiosDiskHandle_t\n\nVbError_t BiosGetDiskHandles(BiosDiskHandle_t **handles, uint32_t max_handle_count, uint32_t *actual_handle_count);",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2/k\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "AAAADH//3Zk\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -623,6 +892,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//2+A\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "What would we do with the pixel type?",
+      "parentUuid": "AAAADH//3No\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3S0\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -634,6 +921,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "How about we just define that we support PNG and JPG? What other formats might we want to use?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//294\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "UEFI supports Windows BMP, but not PNG.",
+      "parentUuid": "AAAADH//3S0\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -703,6 +1008,24 @@
       "writtenOn": "2011-06-07T18:02:54Z",
       "side": 1,
       "message": "Yes, this function should at least take a position (x, y) and size (w, h).  It should also probably take a pixel format from the same enum that is returned by DisplayInit.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//29g\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "What would it do with the pixel format and size?  Those should be encoded in whatever platform-dependent format the blob uses.",
+      "parentUuid": "AAAADH//3Nc\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -780,6 +1103,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//29I\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "It doesn\u0027t need the coords.  This isn\u0027t a full TextOut() API, just a way for the BIOS to put a single blob of text up on the screen for us.  So the BIOS gets to pick the coords and font.  Added requirement that the BIOS be able to display at least 20 rows of 80 columns of debug output, so they don\u0027t pick a VIC-20-like font.",
+      "parentUuid": "AAAADH//3Mw\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3WM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -849,6 +1190,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//28A\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3PE\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3KY\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -877,6 +1236,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Should you swap the meaning of 0 and 1 here?\n\nWhen should this be called?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//27Y\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "We call this from our developer and recovery control loops.\n\nOtherwise, there\u0027s no way for us to know that the user has shut the lid, so we can exit our loop and shut down cleanly.",
+      "parentUuid": "AAAADH//3So\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -918,6 +1295,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//27w\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Yes, this is for us to find out about a shutdown.\n\nNo, we don\u0027t need a VbReboot() function; we return a reboot code from our entry point.",
+      "parentUuid": "AAAADH//3YI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3YA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -929,6 +1324,24 @@
       "writtenOn": "2011-06-07T03:06:06Z",
       "side": 1,
       "message": "I assume these GPIO flags are fetched once in boot stub, and stored in shared_data_blob that used/shared between boot stub and main firmware, right?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//27I\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "AAAADH//3YA\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -952,6 +1365,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//27M\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Because flags below was 64-bit.  Changed to 32-bit, along with these.",
+      "parentUuid": "AAAADH//3Sk\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3OA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -963,6 +1394,24 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "For unified firmware, there will likely be two cases: dev-mode allowed, and dev-mode NOT allowed, for when the dev-mode switch is ON but the stateful partition is not yet wiped. We\u0027ll probably use a VbNvStorage flag to indicate that we\u0027ve booted Google image once, wiped the stateful partition, and are now willing to allow Ctrl-U and self-signed images to boot.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//264\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Right, that\u0027s internal to us, so isn\u0027t something the caller even knows about.  So in that case, is the unified firmware normal, developer, or \"normdev\"?",
+      "parentUuid": "AAAADH//3OA\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -997,6 +1446,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "It would be good to have functions to set up the values that need set. It isn\u0027t clear to me where gbb_data comes from - if Vb can read disk blocks then can\u0027t it get the GBB itself?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//260\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "GBB !\u003d GPT",
+      "parentUuid": "AAAADH//3SU\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1054,6 +1521,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//27A\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "vboot_nvstorage.h",
+      "parentUuid": "AAAADH//3R4\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Ro\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1088,6 +1573,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//26c\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "\"user\" is an even more overloaded term, and I wouldn\u0027t want someone to think the firmware knows about user data.\n\nVbSharedData is passed all the way down to the OS.  Its contents must be defined so that the OS parser can always parse what it\u0027s handed.\n\nvb_select_internal is temporary data used inside a single entry point, which is freed before calling the next stage.  It only needs to be consistent inside a single vboot entry point, and does not need to be passed between entry points.",
+      "parentUuid": "AAAADH//3R8\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Rg\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1099,6 +1602,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Perhaps make this an enum?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//26Y\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "enum --\u003e int, and we need to pass fields with defined bit sizes.",
+      "parentUuid": "AAAADH//3Rg\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1122,6 +1643,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//25g\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Common between the data passed by the firmware to the VbSelectFirmware() and VbSelectKernel() entry points.",
+      "parentUuid": "AAAADH//3KI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Rk\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1133,6 +1672,24 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Where is this defined? Can Vb read this data using the disk read functions?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//26U\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Firmware is in EEPROM, not on disk.",
+      "parentUuid": "AAAADH//3Rk\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1173,6 +1730,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//25s\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//3Ns\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Yc\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1184,6 +1759,24 @@
       "writtenOn": "2011-06-07T03:06:06Z",
       "side": 1,
       "message": "You mean in recovery firmware, VbSelectFirmware is called for merely setting up TPM, but not really selecting any firmware?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//26I\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "VbSelectFirmware() is what decides whether to run in recovery mode.\n\nPreviously, H2C or uboot itself needed to look at the recovery button and/or VbNvStorage recovery request to make this decision.\n\n(Yes, it also sets up the TPM)",
+      "parentUuid": "AAAADH//3Yc\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1207,6 +1800,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//26A\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Both.  Fixed comment.",
+      "parentUuid": "AAAADH//3RU\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3RY\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1224,6 +1835,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//258\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "Only called on x86 as part of the S3 resume path.  Not called on ARM.",
+      "parentUuid": "AAAADH//3RY\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3NU\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1235,6 +1864,24 @@
       "writtenOn": "2011-06-07T18:02:54Z",
       "side": 1,
       "message": "Did I miss the GPIO sampling functions to read Developer/WriteProtect/Recovery state?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//25w\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-07T22:47:50Z",
+      "side": 1,
+      "message": "The switch states are passed as inputs via VbSelectData.flags.\n\n(We only care about their state at boot, not their current state).",
+      "parentUuid": "AAAADH//3NU\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
