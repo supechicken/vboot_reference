@@ -67,6 +67,24 @@
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3ZM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-07T01:54:22Z",
+      "side": 1,
+      "message": "I may be forgetting, but I think we decided to be explicit about the size wherever we could - especially for data that was read and/or was passed around various layers.\n\nBeing explicit about size avoids subtle overflow/underflow errors and makes it easy for checking these error conditions too.\n\nLetting the compiler decide the size is problematic - what if it decides different sizes on ARM vs. x86, 32-bit vs. 64-bit compilation. I know that unsigned int is typically guaranteed to be 32-bit wide but I\u0027d rather be explicit about the expected size everywhere.",
+      "parentUuid": "AAAADH//3Zc\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
