@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//3Zw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-06-07T01:45:56Z",
+      "side": 1,
+      "message": "what exactly does this function return - should it return say us or ns since reset?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Zs\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-06-07T01:45:56Z",
+      "side": 1,
+      "message": "why does vboot wrapper care about the clock frequency (especially if VbGetTimer() returns actual time units)?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Zo\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-06-07T01:45:56Z",
+      "side": 1,
+      "message": "thanks for explaining what 10% is :)",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Zc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-06-07T01:45:56Z",
+      "side": 1,
+      "message": "as a general comment - why are so many interface integers are of the uint64_t type when it is not called for?\n\nCan these be changed to \u0027int\u0027 to be of the optimal compiler chosen size (presumably we not going to use compilers with integers of less than 32 bits).\n\nOr maybe define a generic integer type to use, and have it defined such that still the compiler default is used, and if a 16 bit integers ever come along - we would change this generic integer type definition to be 32 bits in size.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
