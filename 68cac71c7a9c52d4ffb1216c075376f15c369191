@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3NA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T18:07:52Z",
+      "side": 1,
+      "message": "Defining the size of a return value is a bit meaningless on ARM, since it is in a register. If you define it as 16-bit, it will still return 32-bit, and just mask it first.",
+      "parentUuid": "AAAADH//3RI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3PA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -397,6 +415,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3M8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T18:07:52Z",
+      "side": 1,
+      "message": "32-bits is better for ARM.\n\nAlso on ARM parameters are passed in registers, so everything is 32-bits. A 64-bit argument requires two registers.",
+      "parentUuid": "AAAADH//3OE\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3QM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -649,6 +685,24 @@
       "side": 1,
       "message": "Yes, it should take a position.",
       "parentUuid": "AAAADH//3WI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Mw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-07T18:07:52Z",
+      "side": 1,
+      "message": "I think Randall wants the boot loader to select this position based on the screen size. In any case someone needs to know",
+      "parentUuid": "AAAADH//3NY\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
