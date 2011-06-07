@@ -105,6 +105,57 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3WQ\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-07T13:38:45Z",
+      "side": 1,
+      "message": "I think the buffer data is represented by the ImageInfo (defined in bmpblk_header.h) struct and an actual image content follows, right?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3WI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-07T13:38:45Z",
+      "side": 1,
+      "message": "Does it need x and y?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3WM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-07T13:38:45Z",
+      "side": 1,
+      "message": "Need a clear screen API. After the USB is verified success, a blank screen is showed.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3YI\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
