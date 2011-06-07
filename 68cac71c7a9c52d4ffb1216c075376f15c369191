@@ -85,6 +85,74 @@
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Zk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-07T03:06:06Z",
+      "side": 1,
+      "message": "So these are disk handles, right? Does VbGetDiskHandles malloc space for them (or the question should be, should the caller free handles)?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3YI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-07T03:06:06Z",
+      "side": 1,
+      "message": "So this function is for vboot_reference to ask u-boot/h2c whether a shutdown is requested. Do we need a reverse version of this function; meaning, vboot_refernece to request u-boot/h2c to shut down (or cold reboot) the machine?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3YA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-07T03:06:06Z",
+      "side": 1,
+      "message": "I assume these GPIO flags are fetched once in boot stub, and stored in shared_data_blob that used/shared between boot stub and main firmware, right?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Yc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-07T03:06:06Z",
+      "side": 1,
+      "message": "You mean in recovery firmware, VbSelectFirmware is called for merely setting up TPM, but not really selecting any firmware?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
