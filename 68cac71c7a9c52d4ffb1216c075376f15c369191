@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAADH//3SA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "I suggest that APIs provided by firmware to vboot_reference should be in one header file. APIs provided by vboot_reference to firmware should be in a separate header file. Maybe\n\nverified_boot.h for stuff that vboot implements and BIOS uses\n\nbios_exports.h for stuff that BIOS implements and vboot uses",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Rc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "And all BIOS-exported functions start with \"Bios\", for the same reason?\n\nShared data structs should use the same convention, according to where the struct is defined.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3TU\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -13,6 +47,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Perhaps use just int instead, and a -ve error? For development and testing it would be nice to get an idea of the actual error (out of memory, bad key, etc.) rather than -1. For testing, we might write tests which cause a fault and check that the library returns the right error, indicating that it detected it.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3RI\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Yes. 0 is success, always. non-zero may or may not be a meaningful error code, but the size should always be uint32_t.\nAdd a comment that this is because x86 UEFI BIOS is 32-bit code in PEI, and 64-bit code in DXE, so we want to use the lowest common denominator to minimize compiler complaints.\n\nLet\u0027s go ahead and typedef uint32_t VbError_t, to avoid having to answer this question again, and define a single canonical list of error values to go with it.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Q0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "What units does this return? Hz?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zs\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -87,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Q8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Yeah, I was unclear on that myself.",
+      "parentUuid": "AAAADH//3Zo\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3TM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -98,6 +184,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "why uint64_t? On ARM this is an extra register\n\nPerhaps VbSleepMs()?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Qw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "If this is just a noisy version of VbSleep, why do we need it to return an error code?\n\nAnd if it does return an error code, it should be VbError_t, not int.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +275,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Qk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "VbUpdateFirmwareBodyHash() or BiosUpdateFirmwareBodyHash() ?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zc\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -207,6 +327,41 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Qc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "I agree with Gaurav. We should specify the bit width of every parameter everywhere. We\u0027ve already encountered problems relating to the boot reason because we didn\u0027t do this.",
+      "parentUuid": "AAAADH//3ZM\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3QM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "s/pointers/handles/",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zk\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -218,6 +373,57 @@
       "writtenOn": "2011-06-07T03:06:06Z",
       "side": 1,
       "message": "So these are disk handles, right? Does VbGetDiskHandles malloc space for them (or the question should be, should the caller free handles)?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3P8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Specify bit width, not \u0027int\u0027. And separate the error code from the return count.\n\nbios_exports.h should define an opaque BiosDiskHandle_t\n\nVbError_t BiosGetDiskHandles(BiosDiskHandle_t **handles, uint32_t max_handle_count, uint32_t *actual_handle_count);",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Pw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "s/void* disk_handle/BiosDiskHandle_t handle/g",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Po\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Returns VbError_t, not int.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -275,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3PY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "The buffer data has to be whatever the BIOS side can understand as pixel data of a certain size and depth.  For UEFI, that\u0027s BMP format. For U-Boot, it\u0027s ... what? png? gif? \n\nWe may want to implement our own text-rendering logic inside vboot, so we really just want to say \"put this image HERE\".",
+      "parentUuid": "AAAADH//3WQ\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3WI\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -292,6 +516,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3PQ\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Yeah, and if it does, then we need VbDisplayInit() to also return the text-mode dimensions too (N cols x M rows).",
+      "parentUuid": "AAAADH//3WI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3WM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -303,6 +545,58 @@
       "writtenOn": "2011-06-07T13:38:45Z",
       "side": 1,
       "message": "Need a clear screen API. After the USB is verified success, a blank screen is showed.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3PM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "We currently accomplish that by explicitly drawing a full-screen blank bitmap. That\u0027s probably better, because we can control what \"blank\" means (black? dark blue? Chrome logo?)",
+      "parentUuid": "AAAADH//3WM\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Og\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "Return 0 if no keypress pending. Let\u0027s not make this signed. And what bit width?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3PE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "What about LEFT/RIGHT/UP/DOWN? We use those now to cycle locales. UEFI maps those (and the FN keys) in the Ctrl-key range.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -343,6 +637,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3O4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "And again, specify the bit width.",
+      "parentUuid": "AAAADH//3YI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3YA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -371,6 +683,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Why are these flags 64-bit?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3OA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "For unified firmware, there will likely be two cases: dev-mode allowed, and dev-mode NOT allowed, for when the dev-mode switch is ON but the stateful partition is not yet wiped. We\u0027ll probably use a VbNvStorage flag to indicate that we\u0027ve booted Google image once, wiped the stateful partition, and are now willing to allow Ctrl-U and self-signed images to boot.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -507,6 +836,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "Where is this defined? Can Vb read this data using the disk read functions?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Ns\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-07T17:57:33Z",
+      "side": 1,
+      "message": "s/void*/BiosDiskHandle_t/",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
