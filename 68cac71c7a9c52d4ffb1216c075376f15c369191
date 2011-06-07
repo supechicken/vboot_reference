@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3PA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Please also add an aligned allocation entry point.  The buffers that you hand the MMC code will need to be at least cache line size aligned to prevent the use of a bounce buffer.  This could be managed in VbMalloc by always returning cache line sized allocations.  But it\u0027s probably better to make it explicit.  Also a function to query cache line size would make sense.\n\nOr you could have a separate allocation function that is always used for disk block buffers that will only allocate block size multiple, cache line aligned buffers.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Zw\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -167,6 +184,23 @@
       "side": 1,
       "message": "Yeah, I was unclear on that myself.",
       "parentUuid": "AAAADH//3Zo\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3Oc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Delay functions should not delay for less than the time specified.  So I would say this should be specified to delay for msec -0% +10%.  Or better yet, don\u0027t guarantee anything other than that it delays for at least the number of ms specified.",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -345,6 +379,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3OE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Unsigned in is not guaranteed to be 32-bits.  Having said that, if we are going to be explicit about int size, why 64-bits?  Can we just use 32-bits?",
+      "parentUuid": "AAAADH//3ZM\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3QM\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -413,6 +465,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3N0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Buffer must be at least cache line size aligned on ARM.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3Po\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -424,6 +493,23 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "Returns VbError_t, not int.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3No\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Should also return BPP (Bits per pixel) or at least an enum of pixel formats R8G8B8, R8G8B8A8, R5G6B5...",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -499,6 +585,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//3Nc\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Yes, this function should at least take a position (x, y) and size (w, h).  It should also probably take a pixel format from the same enum that is returned by DisplayInit.",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3WI\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -527,6 +630,24 @@
       "writtenOn": "2011-06-07T17:57:33Z",
       "side": 1,
       "message": "Yeah, and if it does, then we need VbDisplayInit() to also return the text-mode dimensions too (N cols x M rows).",
+      "parentUuid": "AAAADH//3WI\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3NY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Yes, it should take a position.",
       "parentUuid": "AAAADH//3WI\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -904,6 +1025,23 @@
       "writtenOn": "2011-06-07T17:14:52Z",
       "side": 1,
       "message": "What does this do? When is it called?",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//3NU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000056
+      },
+      "writtenOn": "2011-06-07T18:02:54Z",
+      "side": 1,
+      "message": "Did I miss the GPIO sampling functions to read Developer/WriteProtect/Recovery state?",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
