@@ -946,6 +946,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//2v8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-08T03:47:27Z",
+      "side": 1,
+      "message": "It depends on what the ability vboot_reference had. The light-weight vboot_reference just simply parses the GBB bmpblk screen header and passes the (x,y) and ImageInfo offsets to VbDisplayBitmap multiple time. It leaves BIOS to decode the ImageInfo and picture format. The heavy-weight one is vboot_reference decodes the bitmap and combines multiple images into a single screen. It needs to know the LCD pixel format, like RGB565 or RGB32. And BIOS simply memcpy the result to framebuffer.\n\nI think Randall wanted the former and Anton wanted the latter.",
+      "parentUuid": "AAAADH//2+A\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//3S0\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 1
@@ -1500,6 +1518,24 @@
       "side": 1,
       "message": "GBB !\u003d GPT",
       "parentUuid": "AAAADH//3SU\u003d",
+      "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2w4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-08T03:47:27Z",
+      "side": 1,
+      "message": "I agree with Simon. Now BIOS needs to malloc, read GBB from firmware, and fill this gbb_data pointer. And does the same preparation things twice for calling LoadFirmware and LoadKernel. How about we provide an API by firmware to vboot_reference, something like VbGetFirmwareBody, to read GBB? vboot_reference calls it when needed.",
+      "parentUuid": "AAAADH//260\u003d",
       "revId": "68cac71c7a9c52d4ffb1216c075376f15c369191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
