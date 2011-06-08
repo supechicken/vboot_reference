@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAADH//2nw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2011-06-08T16:04:19Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be running out of memory in firmware; so why bother to have two malloc interfaces; can\u0027t we just always allocate cache line size aligned and document that explicitly?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2n8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2011-06-08T16:04:19Z",
+      "side": 1,
+      "message": "Looks like you have two copies of VbExFree; you need only one.",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//22o\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
