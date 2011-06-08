@@ -88,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//2aA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-08T21:12:00Z",
+      "side": 1,
+      "message": "Can we just make the 4th parameter a request-response parameter? You pass a pointer with the maximum size you expect, it changes it the size of the actual response.",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//22o\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -167,6 +184,23 @@
       "writtenOn": "2011-06-08T16:25:35Z",
       "side": 1,
       "message": "1. Why not combine this with shared_data_blob?\n2. Why not initialize this in VbInit?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2ZA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-08T21:12:00Z",
+      "side": 1,
+      "message": "where is VbSelectParams defined? Or is that VbSelectData that you mean here?",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
