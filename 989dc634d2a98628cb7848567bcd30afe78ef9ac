@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAADH//2mM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-08T16:25:35Z",
+      "side": 1,
+      "message": "Perhaps all of the VbEx functions should be passed a context pointer so that the boot loader doesn\u0027t have to use a global variable everywhere?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2nw\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -47,6 +64,74 @@
       "writtenOn": "2011-06-07T23:23:30Z",
       "side": 1,
       "message": "s/allocated/managed/",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2mE\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-08T16:25:35Z",
+      "side": 1,
+      "message": "Would it make sense to combine this with VbExGetDiskHandles so that you get a list of VbDiskInfo in one shot? We could just add the VbExDiskHandle_t to the structure.\n\nHow exactly does vboot decide which is the eMMC device?\n\nAlso, it is expensive to scan the SD and USB slotgs to determine what is there. Is this really needed in the \u0027normal\u0027 boot path?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2l4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-08T16:25:35Z",
+      "side": 1,
+      "message": "Following up on my comment about how is responsible for loading the second-stage firmware, etc...\n\nIf we define the SPI flash as a disk with a VB_DISK_FLAG_FIRMWARE flag and return it above, then this function provides a way for vboot to read the firmware, keys, etc. Surely this functionality is better off in the vboot library rather than the boot loader?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2mA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-08T16:25:35Z",
+      "side": 1,
+      "message": "enums please. This doesn\u0027t mean that you need to use an enum in the actual structure, but it means that the variables show up with a symbolic value in the debugger",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//2l8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-08T16:25:35Z",
+      "side": 1,
+      "message": "1. Why not combine this with shared_data_blob?\n2. Why not initialize this in VbInit?",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
