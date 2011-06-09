@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1mw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "That\u0027ll require massive replumbing of all the vboot internals to pass around a context pointer.  A bigger change than I want to bite off in round 1 of refactoring.",
+      "parentUuid": "AAAADH//2mM\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2a4\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2011-06-08T20:59:51Z",
       "side": 1,
       "message": "Debug and Warning have pretty different connotations.  Should this be separated into two functions?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1s0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "We only report debug info through this function; clarified comment.",
+      "parentUuid": "AAAADH//2a4\u003d",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1rw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Done.\n\nIf any of the firmware API implementation require aligned data, all pointers returned by VbExMalloc() must be aligned.",
+      "parentUuid": "AAAADH//2as\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2n8\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -82,6 +136,24 @@
       "writtenOn": "2011-06-08T16:04:19Z",
       "side": 1,
       "message": "Looks like you have two copies of VbExFree; you need only one.",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1rs\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//2n8\u003d",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1rk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//2aA\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//22o\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -116,6 +206,24 @@
       "writtenOn": "2011-06-07T23:23:30Z",
       "side": 1,
       "message": "s/allocated/managed/",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1rg\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//22o\u003d",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1n0\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Combined.\n\nAdded a flags param to VbExGetDiskInfo() which indicates whether fixed or removable (or both) disks are returned.  On a normal boot, we\u0027ll only ask for fixed disks.",
+      "parentUuid": "AAAADH//2mE\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2l4\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -150,6 +276,24 @@
       "writtenOn": "2011-06-08T16:25:35Z",
       "side": 1,
       "message": "Following up on my comment about how is responsible for loading the second-stage firmware, etc...\n\nIf we define the SPI flash as a disk with a VB_DISK_FLAG_FIRMWARE flag and return it above, then this function provides a way for vboot to read the firmware, keys, etc. Surely this functionality is better off in the vboot library rather than the boot loader?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1nw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "That\u0027d be a bit weird in UEFI, since PEI phase doesn\u0027t have disks, just blobs of memory.  It also means that we\u0027d lose the link-time information about where in the flash each piece is stored.",
+      "parentUuid": "AAAADH//2l4\u003d",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1ns\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADH//2mA\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2l8\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -190,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADH//1no\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "1. This data is internal to each stage and may contain pointers.  VbSharedData is shared between stages and the OS.  If we later want to change our internal data representation, this would require crossystem to be able to read the new representation.\n\n2. VbInit()?",
+      "parentUuid": "AAAADH//2l8\u003d",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//2ZA\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 2
@@ -201,6 +381,24 @@
       "writtenOn": "2011-06-08T21:12:00Z",
       "side": 1,
       "message": "where is VbSelectParams defined? Or is that VbSelectData that you mean here?",
+      "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1nk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-09T20:43:49Z",
+      "side": 1,
+      "message": "VBSelectData.  Fixed.",
+      "parentUuid": "AAAADH//2ZA\u003d",
       "revId": "989dc634d2a98628cb7848567bcd30afe78ef9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
