@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//1Us\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-10T05:12:02Z",
+      "side": 1,
+      "message": "VbExGetDiskInfo\n\nWould it make it easier if the handles were fixed even between calls?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
