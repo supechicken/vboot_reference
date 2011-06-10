@@ -2,6 +2,142 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAADH//1Bk\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Other than specifying that 0 means success, let\u0027s not try to define the other errors here, but define them on a per-VbEx* function. The TPM functions will have different errors from the disk I/O functions, with varying degrees of verbosity.\n\nWe may be able to recover from some errors (disk not present anymore, TPM needs resetting, etc.), so we will need more information than just \"failure\" and \"unimplemented\".",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1IU\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "s/Malloc/VbExMalloc/",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1CA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "What are the units? clocks? usecs? femto-epochs?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1H4\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "s/firmeware/firmware/",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//0+A\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "You don\u0027t define VbSelectFirmwareParams until later. You\u0027ll probably need to move it up or use a forward declaration to make this compile.",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1BY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "What is VbGetFirmwareBody? Do you mean VbExHashFirmwareBody?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1BA\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Add \"Firmware must respect the input count value and not write outside that range.\", just to be clear. I intend to test it by calling it with count \u003d\u003d 0.",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1ls\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "s/freem/free/",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADH//1Us\u003d",
         "filename": "firmware/include/vboot_wrapper.h",
         "patchSetId": 3
@@ -13,6 +149,142 @@
       "writtenOn": "2011-06-10T05:12:02Z",
       "side": 1,
       "message": "VbExGetDiskInfo\n\nWould it make it easier if the handles were fixed even between calls?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1A8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "s/uint32/uint32_t/",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//098\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "We got rid of VbExAlignedMalloc, remember?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//094\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Here, too.",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1AY\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Note: x86 currently relies on BIOS to render text at a given place, so we\u0027ll have to implement our own soft-render function before we can fully switch to this vboot_wrapper implementation.\n\n(chrome-os-partner:3693)",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//1AQ\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "I suggest calling this VbExIsShutdownRequested(), for clarity. I\u0027d like to know who\u0027s doing the requesting, without reading the comments in the header.",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//0/8\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Where are VB_SHARED_DATA_*_SIZE constants defined?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//0+s\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "Where is VbSelectParams defined?",
+      "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//09g\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-06-10T17:49:25Z",
+      "side": 1,
+      "message": "How does this interact with VbSelectFirmware? On S3 resume, should the firmware call VbS3Resume before or after VbSelectFirmware? Or should VbSelectFirmware somehow know to call VbS3Resume itself, since VbSelectFirmware is called on every boot, including S3 resume?",
       "revId": "1d9613143d3edba16099d63ff77a0dabb540667c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
