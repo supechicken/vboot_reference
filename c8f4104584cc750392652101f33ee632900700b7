@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADH//0Zw\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-13T17:21:52Z",
+      "side": 1,
+      "message": "Do you need the numbers here? They should be automatic on normal compilers",
+      "revId": "c8f4104584cc750392652101f33ee632900700b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//0Zo\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-13T17:21:52Z",
+      "side": 1,
+      "message": "Do we want to support reading a 64-bit count of sectors? That\u0027s a lot of code!",
+      "revId": "c8f4104584cc750392652101f33ee632900700b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADH//0Zs\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-06-13T17:21:52Z",
+      "side": 1,
+      "message": "You can leave out all but the first number I think - they should follow on nicely",
+      "revId": "c8f4104584cc750392652101f33ee632900700b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
