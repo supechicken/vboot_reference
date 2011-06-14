@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADX///wE\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "Add this above:\n\n# Copyright (c) 2009-2011 The Chromium OS Authors. All rights reserved.\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///vk\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to box of #.  Look at other scripts it looks like they just put it in a single line.",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///v0\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "can we remove this line?",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///v4\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "can we remove this line?",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///v8\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "can we remove this line?",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///wI\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "remove extra line",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX///wA\u003d",
+        "filename": "scripts/image_signing/firmware_boot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000289
+      },
+      "writtenOn": "2011-06-14T17:31:38Z",
+      "side": 1,
+      "message": "remove final newline",
+      "revId": "177378a97ea5a0e23c0a3dc4c3684ff0016d0396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
