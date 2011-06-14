@@ -1,14 +1,15 @@
 #!/bin/bash -eux
 
+# Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
 # Refer to the Google Chrome OS Main Processor Firmware Specification for what
 # the pieces are.
 # This script generates different firmware binaries with different
 # configurations.
-##############################################################################
-#
+
 # Syntax: ./firmware_boot.sh <Firmware name without .fd extension>.
-#
-##############################################################################
 # Usage of the script.
 usage()
 {
@@ -34,15 +35,12 @@ fi
 # First, run dump_fmap $input | ./x to compute these values:
 
 # dev-mode BIOS is in firmware A
-#rw_a_offset=131072
 rw_a_offset=$(dump_fmap -p ${input} | grep 'RW_SECTION_A' | cut -d' ' -f2)
 rw_a_size=$(dump_fmap -p ${input} | grep 'RW_SECTION_A' | cut -d' ' -f3)
 
 # normal-mode BIOS is in firmware B
-#rw_b_offset=1114112
 rw_b_offset=$(dump_fmap -p ${input} | grep 'RW_SECTION_B' | cut -d' ' -f2)
 rw_b_size=$(dump_fmap -p ${input} | grep 'RW_SECTION_B' | cut -d' ' -f3)
-#rw_b_size=983040
 
 # Extract the RW BIOS chunks
 dd if=${input} of=dev.bin bs=1 skip=${rw_a_offset} count=${rw_a_size}
@@ -53,7 +51,6 @@ dd if=${input} of=nor.bin bs=1 skip=${rw_b_offset} count=${rw_b_size}
 # payload and put the normal header on the front.
 dd if=/dev/urandom of=bad.bin bs=1 count=${rw_b_size}
 dd if=nor.bin of=bad.bin conv=notrunc bs=1 count=65536
-
 
 # A:Normal B:Normal
 output=${base}-NN.fd
@@ -102,4 +99,3 @@ output=${base}-BD.fd
 cp ${input} ${output}
 dd if=bad.bin of=${output} conv=notrunc bs=1 seek=${rw_a_offset}
 dd if=dev.bin of=${output} conv=notrunc bs=1 seek=${rw_b_offset}
-
