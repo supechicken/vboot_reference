@@ -37,7 +37,8 @@ TARGET_NAMES = crossystem \
 		dev_sign_file \
 		dump_fmap \
 		dev_debug_vboot \
-		pack_firmware_image
+		pack_firmware_image \
+		what_keys
 
 ifeq ($(MINIMAL),)
 TARGET_NAMES += bmpblk_utility eficompress efidecompress
@@ -128,6 +129,10 @@ ${BUILD_ROOT}/dev_make_keypair: dev_make_keypair
 	chmod +x $@
 
 ${BUILD_ROOT}/dev_debug_vboot: dev_debug_vboot
+	cp -f $< $@
+	chmod +x $@
+
+${BUILD_ROOT}/what_keys: what_keys
 	cp -f $< $@
 	chmod +x $@
 
