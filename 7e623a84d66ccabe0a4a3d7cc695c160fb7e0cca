@@ -101,6 +101,23 @@
       "revId": "7e623a84d66ccabe0a4a3d7cc695c160fb7e0cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADX//9pM\u003d",
+        "filename": "firmware/include/vboot_wrapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-18T00:37:11Z",
+      "side": 1,
+      "message": "nits: s/VbExGetDiskInfo/VbExDiskGetInfo/",
+      "revId": "7e623a84d66ccabe0a4a3d7cc695c160fb7e0cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
