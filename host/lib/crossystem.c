@@ -145,6 +145,9 @@ int VbGetCrosDebug(void) {
   if (1 == VbGetSystemPropertyInt("devsw_boot"))
     return 1;
 
+  if (access("/root/.dev_mode", F_OK) == 0)
+    return 1;
+
   /* All other cases disallow debug. */
   return 0;
 }
