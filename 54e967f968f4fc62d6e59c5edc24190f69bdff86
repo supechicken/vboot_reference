@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn///0Y\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-20T21:03:41Z",
+      "side": 1,
+      "message": "So this doesn\u0027t match the behavior that you describe in the issue description. That seems to imply that the .dev_mode file check is only done for non-Chrome OS firmware. However, here you seem to check for the existence of the file irrespective of the type of firmware booted from.",
+      "revId": "54e967f968f4fc62d6e59c5edc24190f69bdff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
