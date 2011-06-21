@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn///JU\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-06-21T23:24:08Z",
+      "side": 0,
+      "message": "BTW, make system allows for \u0027soft includes\u0027. \n\nsinclude \u003cfile\u003e\n\nwould try to include \u003cfile\u003e, if not available will try to make the file, but if there is no rule to make it, the make process would just move on.",
+      "revId": "f155ab3a26d07f94dcf64732d6e19b59da1c96ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
