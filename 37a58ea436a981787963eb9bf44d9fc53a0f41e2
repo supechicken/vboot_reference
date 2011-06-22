@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//+rI\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-22T19:58:58Z",
+      "side": 1,
+      "message": "\"may be NULL\" -\u003e \"may point to NULL\"",
+      "revId": "37a58ea436a981787963eb9bf44d9fc53a0f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//+rk\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-22T19:58:58Z",
+      "side": 1,
+      "message": "Better to rename it as infos_ptr, pointer to an info array.",
+      "revId": "37a58ea436a981787963eb9bf44d9fc53a0f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//+rU\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-22T19:58:58Z",
+      "side": 1,
+      "message": "This one is an info array. I think we should keep the original name but plural, like infos.",
+      "revId": "37a58ea436a981787963eb9bf44d9fc53a0f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//+iU\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-06-22T19:58:58Z",
+      "side": 1,
+      "message": "If the GBB does not contain correct bitmaps, the firmware is also unable display it. The only thing firmware can do is to show some debug messages, like \"remove the inserted USB stick\" or \"insert a recovery image\". Is this the behavior you wanted?",
+      "revId": "37a58ea436a981787963eb9bf44d9fc53a0f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
