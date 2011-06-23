@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9os\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "sysincludes must be first in vboot_reference; it\u0027s what includes the bios-specific #defines.",
+      "parentUuid": "AAAADn//9zA\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9y8\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9oo\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9y8\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9ys\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "Can you add a comment about the rationale for this recommendation? I would also add a comment about what the shared data blob is meant for. If it is described later I would still add a comment here - to aid in top down reading of the header file and understanding the API.",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9og\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9ys\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9oY\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "It does have a heap, but not writable global variables.  Clarified.",
+      "parentUuid": "AAAADn//9yY\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9yQ\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -98,6 +170,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "nit: extra new line",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9oQ\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9yQ\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9oI\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Saved for a future round of cleanup.  All current header files define constants and enums before structs, so to be consistent we\u0027d need to change them all.",
+      "parentUuid": "AAAADn//9x8\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9x4\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -132,6 +240,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "Is this flag saying that one must clear the RAM before calling VbSelectFirmware() again? Slightly confusing, since these flags are returned by VbSelectFirmware() themselves (as per the comment below). Please clarify.",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9oE\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "They\u0027re returned by VbInit().  Clarified comment.",
+      "parentUuid": "AAAADn//9x4\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +298,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9nw\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "This is part 1 of a multi-part code review.  I\u0027ll address all the TODOs and/or file bugs in the following parts.",
+      "parentUuid": "AAAADn//9xo\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9xk\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -183,6 +327,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "Returns  VBERROR_SUCCESS if success. Let\u0027s use symbolic constants for return code references throughout this file.",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9no\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Missed this one in my find-replace.  Fixed.",
+      "parentUuid": "AAAADn//9xk\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -206,6 +368,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9nk\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9xg\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9xY\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -217,6 +397,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "If this selects and loads the kernel I would make that clear in the function name - VbSelectAndLoadKernel.\n\n(As an aside, previously, we overloaded LoadKernel() to mean both select and load. It is very confusing for someone new to the code.)",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9ng\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9xY\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -257,6 +455,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//9nc\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9w8\u003d",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//9wQ\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -268,6 +484,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "If this is just shown here for reference, I would merge it into the comment. Confusing otherwise.",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9nY\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Needed to be moved up with VbSelectFirmware().  Done.",
+      "parentUuid": "AAAADn//9wQ\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -302,6 +536,24 @@
       "writtenOn": "2011-06-23T18:43:08Z",
       "side": 1,
       "message": "Extra newline.",
+      "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//9nU\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-06-23T20:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAADn//9wE\u003d",
       "revId": "b3785f47e58a3cc2ec92882be408d4383bf7dfb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
