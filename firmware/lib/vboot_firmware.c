@@ -11,6 +11,7 @@
 #include "rollback_index.h"
 #include "tpm_bootmode.h"
 #include "utility.h"
+#include "vboot_api.h"
 #include "vboot_common.h"
 #include "vboot_nvstorage.h"
 
@@ -25,7 +26,7 @@ typedef struct VbLoadFirmwareInternal {
 
 
 void UpdateFirmwareBodyHash(LoadFirmwareParams* params,
-                             uint8_t* data, uint64_t size) {
+                             uint8_t* data, uint32_t size) {
   VbLoadFirmwareInternal* lfi =
       (VbLoadFirmwareInternal*)params->load_firmware_internal;
 
@@ -34,10 +35,14 @@ void UpdateFirmwareBodyHash(LoadFirmwareParams* params,
 }
 
 
+/* TODO: Remove this and calls to it; does nothing now */
 int LoadFirmwareSetup(void) {
   /* TODO: handle test errors (requires passing in VbNvContext) */
   /* TODO: record timer values (requires passing in VbSharedData) */
   /* TODO: start initializing the TPM */
+  VBPERFSTART("VB_LFS");
+  /* TODO: actual code goes here :) */
+  VBPERFEND("VB_LFS");
   return LOAD_FIRMWARE_SUCCESS;
 }
 
@@ -71,13 +76,8 @@ int LoadFirmware(LoadFirmwareParams* params) {
   /* Setup NV storage */
   VbNvSetup(vnc);
 
-  /* Initialize shared data structure. */
-  if (0 != VbSharedDataInit(shared, params->shared_data_size)) {
-    VBDEBUG(("Shared data init error\n"));
-    recovery = VBNV_RECOVERY_RO_SHARED_DATA;
-    goto LoadFirmwareExit;
-  }
-  shared->timer_load_firmware_enter = VbGetTimer();
+  /* Start timer */
+  shared->timer_load_firmware_enter = VbExGetTimer();
 
   /* Handle test errors */
   VbNvGet(vnc, VBNV_TEST_ERROR_FUNC, &test_err);
@@ -136,7 +136,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
   }
 
   /* Allocate our internal data */
-  lfi = (VbLoadFirmwareInternal*)Malloc(sizeof(VbLoadFirmwareInternal));
+  lfi = (VbLoadFirmwareInternal*)VbExMalloc(sizeof(VbLoadFirmwareInternal));
   if (!lfi)
     return LOAD_FIRMWARE_RECOVERY;
 
@@ -275,7 +275,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
       VBDEBUG(("Firmware body verification failed.\n"));
       *check_result = VBSD_LF_CHECK_VERIFY_BODY;
       RSAPublicKeyFree(data_key);
-      Free(body_digest);
+      VbExFree(body_digest);
       VBPERFEND("VB_VFD");
       continue;
     }
@@ -283,7 +283,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
 
     /* Done with the digest and data key, so can free them now */
     RSAPublicKeyFree(data_key);
-    Free(body_digest);
+    VbExFree(body_digest);
 
     /* If we're still here, the firmware is valid. */
     VBDEBUG(("Firmware %d is valid.\n", index));
@@ -327,7 +327,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
   }
 
   /* Free internal data */
-  Free(lfi);
+  VbExFree(lfi);
   params->load_firmware_internal = NULL;
 
   /* Handle finding good firmware */
@@ -390,28 +390,11 @@ LoadFirmwareExit:
           recovery : VBNV_RECOVERY_NOT_REQUESTED);
   VbNvTeardown(vnc);
 
-  shared->timer_load_firmware_exit = VbGetTimer();
+  shared->timer_load_firmware_exit = VbExGetTimer();
 
   /* Note that we don't reduce params->shared_data_size to shared->data_used,
    * since we want to leave space for LoadKernel() to add to the shared data
    * buffer. */
 
   return retval;
-}
-
-
-int S3Resume(void) {
-
-  /* TODO: handle test errors (requires passing in VbNvContext) */
-
-  /* Resume the TPM */
-  uint32_t status = RollbackS3Resume();
-
-  /* If we can't resume, just do a full reboot.  No need to go to recovery
-   * mode here, since if the TPM is really broken we'll catch it on the
-   * next boot. */
-  if (status == TPM_SUCCESS)
-    return LOAD_FIRMWARE_SUCCESS;
-  else
-    return LOAD_FIRMWARE_REBOOT;
 }

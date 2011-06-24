@@ -19,6 +19,7 @@
 #include "tlcl_internal.h"
 #include "tlcl_structures.h"
 #include "utility.h"
+#include "vboot_api.h"
 
 /* Sets the size field of a TPM command. */
 static INLINE void SetTpmCommandSize(uint8_t* buffer, uint32_t size) {
@@ -49,6 +50,8 @@ static INLINE int TpmReturnCode(const uint8_t* buffer) {
  */
 static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
                                        uint8_t* response, int max_length) {
+
+  uint32_t response_length = max_length;
   uint32_t result;
 
 #ifdef EXTRA_LOGGING
@@ -58,8 +61,8 @@ static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
            request[6], request[7], request[8], request[9]));
 #endif
 
-  result = TlclStubSendReceive(request, TpmCommandSize(request),
-                               response, max_length);
+  result = VbExTpmSendReceive(request, TpmCommandSize(request),
+                              response, &response_length);
   if (0 != result) {
     /* Communication with TPM failed, so response is garbage */
     VBDEBUG(("TPM: command 0x%x send/receive failed: 0x%x\n",
@@ -68,6 +71,9 @@ static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
   }
   /* Otherwise, use the result code from the response */
   result = TpmReturnCode(response);
+
+  /* TODO: add paranoia about returned response_length vs. max_length (and
+   * possibly expected length from the response header) */
 
 #ifdef EXTRA_LOGGING
   VBDEBUG(("TPM: response: %x%x %x%x%x%x %x%x%x%x\n",
@@ -126,7 +132,7 @@ static uint32_t Send(const uint8_t* command) {
 /* Exported functions. */
 
 uint32_t TlclLibInit(void) {
-  return TlclStubInit();
+  return VbExTpmInit();
 }
 
 uint32_t TlclStartup(void) {
