@@ -277,9 +277,10 @@ typedef struct VbSharedDataHeader {
                                        * start of this struct */
   uint64_t kernel_subkey_data_size;   /* Size of kernel subkey data */
 
-  /* Timer values from VbGetTimer().  Unused values are set to 0.  If a
-   * function is called mutiple times, these are the times from the
-   * most recent call. */
+  /* Timer values from VbExGetTimer().  Unused values are set to 0.
+   * If a function is called mutiple times, these are the times from
+   * the most recent call.  Note that with the wrapper API rewrite,
+   * LoadFirmwareStart() is no longer called; see crosbug.com/17018. */
   uint64_t timer_load_firmware_start_enter;  /* LoadFirmwareStart() - enter */
   uint64_t timer_load_firmware_start_exit;   /* LoadFirmwareStart() - exit */
   uint64_t timer_load_firmware_enter;        /* LoadFirmware() - enter */
