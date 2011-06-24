@@ -7,11 +7,11 @@
  */
 
 #include "rollback_index.h"
-
 #include "tlcl.h"
 #include "tpm_bootmode.h"
 #include "tss_constants.h"
 #include "utility.h"
+#include "vboot_api.h"
 
 static int g_rollback_recovery_mode = 0;
 
