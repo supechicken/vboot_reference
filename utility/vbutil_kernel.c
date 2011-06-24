@@ -148,6 +148,16 @@ static void Debug(const char *format, ...) {
   va_end(ap);
 }
 
+
+static void Error(const char *format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "ERROR: ");
+  vfprintf(stderr, format, ap);
+  va_end(ap);
+  exit(1);
+}
+
 /* Return an explanation when fread() fails. */
 static const char *error_fread(FILE *fp) {
   const char *retval = "beats me why";
@@ -218,10 +228,10 @@ static char* BpCmdLineLocation(blob_t *bp, uint64_t kernel_body_load_address)
 static void FreeBlob(blob_t *bp) {
   if (bp) {
     if (bp->blob)
-      Free(bp->blob);
+      free(bp->blob);
     if (bp->buf)
-      Free(bp->buf);
-    Free(bp);
+      free(bp->buf);
+    free(bp);
   }
 }
 
@@ -240,7 +250,7 @@ static uint8_t* ReadConfigFile(const char* config_file, uint64_t* config_size)
   config_buf = ReadFile(config_file, config_size);
   Debug(" config file size=0x%" PRIx64 "\n", *config_size);
   if (CROS_CONFIG_SIZE <= *config_size) {  /* need room for trailing '\0' */
-    error("Config file %s is too large (>= %d bytes)\n",
+    Error("Config file %s is too large (>= %d bytes)\n",
           config_file, CROS_CONFIG_SIZE);
     return NULL;
   }
@@ -277,13 +287,13 @@ static blob_t *NewBlob(uint64_t version,
   uint64_t now = 0;
 
   if (!vmlinuz || !bootloader_file || !config_file) {
-    error("Must specify all input files\n");
+    Error("Must specify all input files\n");
     return 0;
   }
 
-  bp = (blob_t *)Malloc(sizeof(blob_t));
+  bp = (blob_t *)malloc(sizeof(blob_t));
   if (!bp) {
-    error("Couldn't allocate bytes for blob_t.\n");
+    Error("Couldn't allocate bytes for blob_t.\n");
     return 0;
   }
 
@@ -310,7 +320,7 @@ static blob_t *NewBlob(uint64_t version,
     return 0;
   Debug(" kernel file size=0x%" PRIx64 "\n", kernel_size);
   if (!kernel_size) {
-    error("Empty kernel file\n");
+    Error("Empty kernel file\n");
     return 0;
   }
 
@@ -320,7 +330,7 @@ static blob_t *NewBlob(uint64_t version,
     lh = (struct linux_kernel_header *)kernel_buf;
     kernel32_start = (lh->setup_sects + 1) << 9;
     if (kernel32_start >= kernel_size) {
-      error("Malformed kernel\n");
+      Error("Malformed kernel\n");
       return 0;
     }
   } else
@@ -334,10 +344,10 @@ static blob_t *NewBlob(uint64_t version,
       CROS_CONFIG_SIZE +
       CROS_PARAMS_SIZE +
       roundup(bootloader_size, CROS_ALIGN);
-  blob = (uint8_t *)Malloc(bp->blob_size);
+  blob = (uint8_t *)malloc(bp->blob_size);
   Debug("blob_size=0x%" PRIx64 "\n", bp->blob_size);
   if (!blob) {
-    error("Couldn't allocate %ld bytes.\n", bp->blob_size);
+    Error("Couldn't allocate %ld bytes.\n", bp->blob_size);
     return 0;
   }
   Memset(blob, 0, bp->blob_size);
@@ -398,9 +408,9 @@ static blob_t *NewBlob(uint64_t version,
   Debug("end of blob is 0x%" PRIx64 "\n", now);
 
   /* Free input buffers */
-  Free(kernel_buf);
-  Free(config_buf);
-  Free(bootloader_buf);
+  free(kernel_buf);
+  free(config_buf);
+  free(bootloader_buf);
 
   /* Success */
   return bp;
@@ -419,36 +429,36 @@ static blob_t *OldBlob(const char* filename, uint64_t pad) {
   int ret_error = 1;
 
   if (!filename) {
-    error("Must specify prepacked blob to read\n");
+    Error("Must specify prepacked blob to read\n");
     return 0;
   }
 
   if (0 != stat(filename, &statbuf)) {
-    error("Unable to stat %s: %s\n", filename, strerror(errno));
+    Error("Unable to stat %s: %s\n", filename, strerror(errno));
     return 0;
   }
 
   Debug("%s size is 0x%" PRIx64 "\n", filename, statbuf.st_size);
   if (statbuf.st_size < pad) {
-    error("%s is too small to be a valid kernel blob\n");
+    Error("%s is too small to be a valid kernel blob\n");
     return 0;
   }
 
   Debug("Reading %s\n", filename);
   fp = fopen(filename, "rb");
   if (!fp) {
-    error("Unable to open file %s: %s\n", filename, strerror(errno));
+    Error("Unable to open file %s: %s\n", filename, strerror(errno));
     return 0;
   }
 
-  buf = Malloc(pad);
+  buf = malloc(pad);
   if (!buf) {
-    error("Unable to allocate padding\n");
+    Error("Unable to allocate padding\n");
     goto unwind_oldblob;
   }
 
   if (1 != fread(buf, pad, 1, fp)) {
-    error("Unable to read header from %s: %s\n", filename, error_fread(fp));
+    Error("Unable to read header from %s: %s\n", filename, error_fread(fp));
     goto unwind_oldblob;
   }
 
@@ -457,11 +467,11 @@ static blob_t *OldBlob(const char* filename, uint64_t pad) {
   Debug("Keyblock is 0x%" PRIx64 " bytes\n", key_block->key_block_size);
   now += key_block->key_block_size;
   if (now > statbuf.st_size) {
-    error("key_block_size advances past the end of the blob\n");
+    Error("key_block_size advances past the end of the blob\n");
     goto unwind_oldblob;
   }
   if (now > pad) {
-    error("key_block_size advances past %" PRIu64 " byte padding\n", pad);
+    Error("key_block_size advances past %" PRIu64 " byte padding\n", pad);
     goto unwind_oldblob;
   }
 
@@ -470,26 +480,26 @@ static blob_t *OldBlob(const char* filename, uint64_t pad) {
   Debug("Preamble is 0x%" PRIx64 " bytes\n", preamble->preamble_size);
   now += preamble->preamble_size;
   if (now > statbuf.st_size) {
-    error("preamble_size advances past the end of the blob\n");
+    Error("preamble_size advances past the end of the blob\n");
     goto unwind_oldblob;
   }
   if (now > pad) {
-    error("preamble_size advances past %" PRIu64 " byte padding\n", pad);
+    Error("preamble_size advances past %" PRIu64 " byte padding\n", pad);
     goto unwind_oldblob;
   }
 
   /* Go find the kernel blob */
   Debug("kernel blob is at offset 0x%" PRIx64 "\n", now);
   if (0 != fseek(fp, now, SEEK_SET)) {
-    error("Unable to seek to 0x%" PRIx64 " in %s: %s\n", now, filename,
+    Error("Unable to seek to 0x%" PRIx64 " in %s: %s\n", now, filename,
           strerror(errno));
     goto unwind_oldblob;
   }
 
   /* Remember what we've got */
-  bp = (blob_t *)Malloc(sizeof(blob_t));
+  bp = (blob_t *)malloc(sizeof(blob_t));
   if (!bp) {
-    error("Couldn't allocate bytes for blob_t.\n");
+    Error("Couldn't allocate bytes for blob_t.\n");
     goto unwind_oldblob;
   }
 
@@ -508,19 +518,21 @@ static blob_t *OldBlob(const char* filename, uint64_t pad) {
   Debug(" blob_size = 0x%" PRIx64 "\n", bp->blob_size);
 
   if (!bp->blob_size) {
-    error("No kernel blob found\n");
+    Error("No kernel blob found\n");
     goto unwind_oldblob;
   }
 
-  bp->blob = (uint8_t *)Malloc(bp->blob_size);
+  bp->blob = (uint8_t *)malloc(bp->blob_size);
   if (!bp->blob) {
-    error("Couldn't allocate 0x%" PRIx64 " bytes for blob_t.\n", bp->blob_size);
+    Error("Couldn't allocate 0x%" PRIx64 " bytes for blob_t.\n",
+          bp->blob_size);
     goto unwind_oldblob;
   }
 
   /* read it in */
   if (1 != fread(bp->blob, bp->blob_size, 1, fp)) {
-    error("Unable to read kernel blob from %s: %s\n", filename, error_fread(fp));
+    Error("Unable to read kernel blob from %s: %s\n", filename,
+          error_fread(fp));
     goto unwind_oldblob;
   }
 
@@ -534,7 +546,7 @@ unwind_oldblob:
       FreeBlob(bp);
       bp = NULL;
     } else if (buf) {
-      Free(buf);
+      free(buf);
     }
   }
   return bp;
@@ -555,15 +567,15 @@ static int Pack(const char* outfile, const char* keyblock_file,
   uint64_t i;
 
   if (!outfile) {
-    error("Must specify output filename\n");
+    Error("Must specify output filename\n");
     return 1;
   }
   if ((!keyblock_file && !bp->key_block) || !signprivate) {
-    error("Must specify all keys\n");
+    Error("Must specify all keys\n");
     return 1;
   }
   if (!bp) {
-    error("Refusing to pack invalid kernel blob\n");
+    Error("Refusing to pack invalid kernel blob\n");
     return 1;
   }
 
@@ -571,7 +583,7 @@ static int Pack(const char* outfile, const char* keyblock_file,
   if (keyblock_file) {
     key_block = (VbKeyBlockHeader*)ReadFile(keyblock_file, &key_block_size);
     if (!key_block) {
-      error("Error reading key block.\n");
+      Error("Error reading key block.\n");
       return 1;
     }
   } else {
@@ -580,20 +592,20 @@ static int Pack(const char* outfile, const char* keyblock_file,
   }
 
   if (pad < key_block->key_block_size) {
-    error("Pad too small\n");
+    Error("Pad too small\n");
     return 1;
   }
 
   signing_key = PrivateKeyRead(signprivate);
   if (!signing_key) {
-    error("Error reading signing key.\n");
+    Error("Error reading signing key.\n");
     return 1;
   }
 
   /* Sign the kernel data */
   body_sig = CalculateSignature(bp->blob, bp->blob_size, signing_key);
   if (!body_sig) {
-    error("Error calculating body signature\n");
+    Error("Error calculating body signature\n");
     return 1;
   }
 
@@ -606,7 +618,7 @@ static int Pack(const char* outfile, const char* keyblock_file,
                                   pad - key_block_size,
                                   signing_key);
   if (!preamble) {
-    error("Error creating preamble.\n");
+    Error("Error creating preamble.\n");
     return 1;
   }
 
@@ -614,7 +626,7 @@ static int Pack(const char* outfile, const char* keyblock_file,
   Debug("writing %s...\n", outfile);
   f = fopen(outfile, "wb");
   if (!f) {
-    error("Can't open output file %s\n", outfile);
+    Error("Can't open output file %s\n", outfile);
     return 1;
   }
   Debug("0x%" PRIx64 " bytes of key_block\n", key_block_size);
@@ -622,7 +634,7 @@ static int Pack(const char* outfile, const char* keyblock_file,
   i = ((1 != fwrite(key_block, key_block_size, 1, f)) ||
        (1 != fwrite(preamble, preamble->preamble_size, 1, f)));
   if (i) {
-    error("Can't write output file %s\n", outfile);
+    Error("Can't write output file %s\n", outfile);
     fclose(f);
     unlink(outfile);
     return 1;
@@ -632,7 +644,7 @@ static int Pack(const char* outfile, const char* keyblock_file,
     Debug("0x%" PRIx64 " bytes of blob\n", bp->blob_size);
     i = (1 != fwrite(bp->blob, bp->blob_size, 1, f));
     if (i) {
-      error("Can't write output file %s\n", outfile);
+      Error("Can't write output file %s\n", outfile);
       fclose(f);
       unlink(outfile);
       return 1;
@@ -667,7 +679,7 @@ static int ReplaceConfig(blob_t* bp, const char* config_file,
   Memset(BpCmdLineLocation(bp, kernel_body_load_address), 0, CROS_CONFIG_SIZE);
   Memcpy(BpCmdLineLocation(bp, kernel_body_load_address),
       new_conf, config_size);
-  Free(new_conf);
+  free(new_conf);
   return 0;
 }
 
@@ -686,7 +698,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   int rv = 1;
 
   if (!infile) {
-    error("Must specify filename\n");
+    Error("Must specify filename\n");
     return 1;
   }
 
@@ -694,7 +706,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   if (signpubkey) {
     sign_key = PublicKeyRead(signpubkey);
     if (!sign_key) {
-      error("Error reading signpubkey.\n");
+      Error("Error reading signpubkey.\n");
       return 1;
     }
   }
@@ -702,7 +714,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   /* Read blob */
   bp = OldBlob(infile, pad);
   if (!bp) {
-    error("Error reading input file\n");
+    Error("Error reading input file\n");
     return 1;
   }
 
@@ -710,7 +722,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   key_block = bp->key_block;
   if (0 != KeyBlockVerify(key_block, bp->blob_size, sign_key,
                           (sign_key ? 0 : 1))) {
-    error("Error verifying key block.\n");
+    Error("Error verifying key block.\n");
     goto verify_exit;
   }
   now = key_block->key_block_size;
@@ -719,11 +731,11 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
     FILE* f = NULL;
     f = fopen(key_block_file, "wb");
     if (!f) {
-      error("Can't open key block file %s\n", key_block_file);
+      Error("Can't open key block file %s\n", key_block_file);
       return 1;
     }
     if (1 != fwrite(key_block, key_block->key_block_size, 1, f)) {
-      error("Can't write key block file %s\n", key_block_file);
+      Error("Can't write key block file %s\n", key_block_file);
       return 1;
     }
     fclose(f);
@@ -753,14 +765,14 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   printf("\n");
 
   if (data_key->key_version < (min_version >> 16)) {
-    error("Data key version %" PRIu64 " is lower than minimum %" PRIu64".\n",
+    Error("Data key version %" PRIu64 " is lower than minimum %" PRIu64".\n",
           data_key->key_version, (min_version >> 16));
     goto verify_exit;
   }
 
   rsa = PublicKeyToRSA(&key_block->data_key);
   if (!rsa) {
-    error("Error parsing data key.\n");
+    Error("Error parsing data key.\n");
     goto verify_exit;
   }
 
@@ -768,7 +780,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   preamble = bp->preamble;
   if (0 != VerifyKernelPreamble(
         preamble, bp->blob_size - key_block->key_block_size, rsa)) {
-    error("Error verifying preamble.\n");
+    Error("Error verifying preamble.\n");
     goto verify_exit;
   }
   now += preamble->preamble_size;
@@ -786,7 +798,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   printf("  Bootloader size:     0x%" PRIx64 "\n", preamble->bootloader_size);
 
   if (preamble->kernel_version < (min_version & 0xFFFF)) {
-    error("Kernel version %" PRIu64 " is lower than minimum %" PRIu64 ".\n",
+    Error("Kernel version %" PRIu64 " is lower than minimum %" PRIu64 ".\n",
           preamble->kernel_version, (min_version & 0xFFFF));
     goto verify_exit;
   }
@@ -794,7 +806,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   /* Verify body */
   if (0 != VerifyData(bp->blob, bp->blob_size, &preamble->body_signature,
                       rsa)) {
-    error("Error verifying kernel body.\n");
+    Error("Error verifying kernel body.\n");
     goto verify_exit;
   }
   printf("Body verification succeeded.\n");

@@ -1,4 +1,4 @@
-/* Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -14,13 +14,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "load_firmware_fw.h"
-#include "load_kernel_fw.h"
-#include "boot_device.h"
 #include "gbb_header.h"
 #include "host_common.h"
+#include "load_firmware_fw.h"
+#include "load_kernel_fw.h"
 #include "rollback_index.h"
-#include "utility.h"
 #include "vboot_common.h"
 #include "vboot_kernel.h"
 
@@ -34,7 +32,8 @@ static FILE *image_file = NULL;
 
 
 /* Boot device stub implementations to read from the image file */
-int BootDeviceReadLBA(uint64_t lba_start, uint64_t lba_count, void *buffer) {
+VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
+                       uint64_t lba_count, void *buffer) {
   printf("Read(%" PRIu64 ", %" PRIu64 ")\n", lba_start, lba_count);
 
   if (lba_start > lkp.ending_lba ||
@@ -49,12 +48,12 @@ int BootDeviceReadLBA(uint64_t lba_start, uint64_t lba_count, void *buffer) {
     fprintf(stderr, "Read error.");
     return 1;
   }
-  return 0;
+  return VBERROR_SUCCESS;
 }
 
 
-int BootDeviceWriteLBA(uint64_t lba_start, uint64_t lba_count,
-                       const void *buffer) {
+VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
+                        uint64_t lba_count, const void *buffer) {
   printf("Write(%" PRIu64 ", %" PRIu64 ")\n", lba_start, lba_count);
 
   if (lba_start > lkp.ending_lba ||
@@ -65,14 +64,14 @@ int BootDeviceWriteLBA(uint64_t lba_start, uint64_t lba_count,
   }
 
   /* TODO: enable writes, once we're sure it won't trash our example file */
-  return 0;
+  return VBERROR_SUCCESS;
 
   fseek(image_file, lba_start * lkp.bytes_per_lba, SEEK_SET);
   if (1 != fwrite(buffer, lba_count * lkp.bytes_per_lba, 1, image_file)) {
     fprintf(stderr, "Read error.");
     return 1;
   }
-  return 0;
+  return VBERROR_SUCCESS;
 }
 
 
@@ -153,7 +152,7 @@ int main(int argc, char* argv[]) {
 
   /* Initialize the GBB */
   lkp.gbb_size = sizeof(GoogleBinaryBlockHeader) + key_size;
-  lkp.gbb_data = (void*)Malloc(lkp.gbb_size);
+  lkp.gbb_data = (void*)malloc(lkp.gbb_size);
   gbb = (GoogleBinaryBlockHeader*)lkp.gbb_data;
   Memset(gbb, 0, lkp.gbb_size);
   Memcpy(gbb->signature, GBB_SIGNATURE, GBB_SIGNATURE_SIZE);
@@ -171,7 +170,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* Initialize the shared data area */
-  lkp.shared_data_blob = Malloc(VB_SHARED_DATA_REC_SIZE);
+  lkp.shared_data_blob = malloc(VB_SHARED_DATA_REC_SIZE);
   lkp.shared_data_size = VB_SHARED_DATA_REC_SIZE;
   shared = (VbSharedDataHeader*)lkp.shared_data_blob;
   if (0 != VbSharedDataInit(shared, lkp.shared_data_size)) {
@@ -187,7 +186,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* Free the key blob, now that we're done with it */
-  Free(key_blob);
+  free(key_blob);
 
   /* Needs to skip the address check, since we're putting it somewhere on the
    * heap instead of its actual target address in the firmware. */
@@ -217,7 +216,7 @@ int main(int argc, char* argv[]) {
   printf("Ending LBA: %" PRIu64 "\n", lkp.ending_lba);
 
   /* Allocate a buffer for the kernel */
-  lkp.kernel_buffer = Malloc(KERNEL_BUFFER_SIZE);
+  lkp.kernel_buffer = malloc(KERNEL_BUFFER_SIZE);
   if(!lkp.kernel_buffer) {
     fprintf(stderr, "Unable to allocate kernel buffer.\n");
     return 1;
@@ -254,6 +253,6 @@ int main(int argc, char* argv[]) {
   }
 
   fclose(image_file);
-  Free(lkp.kernel_buffer);
+  free(lkp.kernel_buffer);
   return rv != LOAD_KERNEL_SUCCESS;
 }
