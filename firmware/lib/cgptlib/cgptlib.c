@@ -8,6 +8,7 @@
 #include "crc32.h"
 #include "gpt.h"
 #include "utility.h"
+#include "vboot_api.h"
 
 int GptInit(GptData *gpt) {
   int retval;
