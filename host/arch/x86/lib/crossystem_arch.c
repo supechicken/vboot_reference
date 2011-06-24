@@ -156,8 +156,7 @@ int VbWriteNvStorage(VbNvContext* vnc) {
  *         deallocating the pointer, this will take care of both the structure
  *         and the buffer. Null in case of error.
  */
-static uint8_t* VbGetBuffer(const char* filename, int* buffer_size)
-{
+static uint8_t* VbGetBuffer(const char* filename, int* buffer_size) {
   FILE* f = NULL;
   char* file_buffer = NULL;
   uint8_t* output_buffer = NULL;
@@ -181,7 +180,7 @@ static uint8_t* VbGetBuffer(const char* filename, int* buffer_size)
     if (!f)
       break;
 
-    file_buffer = Malloc(fs.st_size + 1);
+    file_buffer = malloc(fs.st_size + 1);
     if (!file_buffer)
       break;
 
@@ -193,7 +192,7 @@ static uint8_t* VbGetBuffer(const char* filename, int* buffer_size)
     /* Each byte in the output will replace two characters and a space
      * in the input, so the output size does not exceed input side/3
      * (a little less if account for newline characters). */
-    output_buffer = Malloc(real_size/3);
+    output_buffer = malloc(real_size/3);
     if (!output_buffer)
       break;
     output_ptr = output_buffer;
@@ -230,25 +229,35 @@ static uint8_t* VbGetBuffer(const char* filename, int* buffer_size)
     fclose(f);
 
   if (file_buffer)
-    Free(file_buffer);
+    free(file_buffer);
 
   if (output_buffer)
-    Free(output_buffer);
+    free(output_buffer);
 
   return return_value;
 }
 
 
 VbSharedDataHeader* VbSharedDataRead(void) {
-
   VbSharedDataHeader* sh;
   int got_size = 0;
+  int expect_size;
 
   sh = (VbSharedDataHeader*)VbGetBuffer(ACPI_VDAT_PATH, &got_size);
   if (!sh)
     return NULL;
-  if (got_size < sizeof(VbSharedDataHeader)) {
-    Free(sh);
+
+  /* Make sure the size is sufficient for the struct version we got.
+   * Check supported old versions first. */
+  if (1 == sh->struct_version)
+    expect_size = VB_SHARED_DATA_HEADER_SIZE_V1;
+  else {
+    /* There'd better be enough data for the current header size. */
+    expect_size = sizeof(VbSharedDataHeader);
+  }
+
+  if (got_size < expect_size) {
+    free(sh);
     return NULL;
   }
   if (sh->data_size > got_size)
@@ -371,7 +380,18 @@ static const char* VbReadMainFwType(char* dest, int size) {
 
 /* Read the recovery reason.  Returns the reason code or -1 if error. */
 static int VbGetRecoveryReason(void) {
-  int value;
+  VbSharedDataHeader* sh;
+  int value = -1;
+
+  /* Try reading from VbSharedData first */
+  sh = VbSharedDataRead();
+  if (sh) {
+    if (sh->struct_version >= 2)
+      value = sh->recovery_reason;
+    free(sh);
+    if (-1 != value)
+      return value;
+  }
 
   /* Try reading type from BINF.4 */
   value = ReadFileInt(ACPI_BINF_PATH ".4");
