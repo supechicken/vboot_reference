@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//8cs\u003d",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-27T18:48:02Z",
+      "side": 1,
+      "message": "Question: What is targeted scope of the stub implementation? Is the goal to just allow compilation on the host or to have a full fledged host implementation of the firmware functions that can be used for testing?\n\nLike here, the VbExGetTimer is implemented, but VbExSleepMs is not. Similarly, there are other methods here that could have a reasonable host-side stub implementations instead of being simple no-ops (for example, VbExNvStorage).",
+      "revId": "128179c49528cc6d67863a812e962264bfd252b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//8cc\u003d",
+        "filename": "utility/vbutil_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-06-27T18:48:02Z",
+      "side": 1,
+      "message": "extra newline",
+      "revId": "128179c49528cc6d67863a812e962264bfd252b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
