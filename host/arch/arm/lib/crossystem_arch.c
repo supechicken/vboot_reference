@@ -207,6 +207,13 @@ VbSharedDataHeader *VbSharedDataRead(void) {
    */
   VbSharedDataHeader *p = Malloc(sizeof(*p));
   Memcpy(p, shared_memory.shared_data_body, sizeof(*p));
+  if (p->magic != VB_SHARED_DATA_MAGIC) {
+    fprintf(stderr,  "%s: failed to validate magic in "
+            "VbSharedDataHeader (%x != %x)\n",
+            __FUNCTION__, p->magic, VB_SHARED_DATA_MAGIC);
+    Free(p);
+    return NULL;
+  }
   return p;
 }
 
