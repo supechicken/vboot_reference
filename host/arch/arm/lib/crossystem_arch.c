@@ -55,7 +55,7 @@ typedef struct {
   uint8_t  fwid[256];
   uint8_t  frid[256];
   uint32_t fmap_base;
-  uint8_t  shared_data_body[CONFIG_LENGTH_FMAP];
+  uint8_t  shared_data_body[VB_SHARED_DATA_REC_SIZE];
 } __attribute__((packed)) VbSharedMem;
 
 typedef struct {
