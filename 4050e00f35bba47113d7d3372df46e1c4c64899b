@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//6jY\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2011-06-30T10:44:38Z",
+      "side": 1,
+      "message": "Would you remove this as well:\nhost/arch/arm/lib/crossystem_arch.c\n15:#define CONFIG_LENGTH_FMAP 0x400",
+      "revId": "4050e00f35bba47113d7d3372df46e1c4c64899b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
