@@ -12,6 +12,8 @@
 #include "host_common.h"
 #include "crossystem_arch.h"
 
+#define CONFIG_LENGTH_FMAP 0x400
+
 #define offsetof(struct_name, field) ((int) &(((struct_name*)0)->field))
 
 /* This is used to keep u-boot and kernel in sync */
@@ -53,7 +55,7 @@ typedef struct {
   uint8_t  fwid[256];
   uint8_t  frid[256];
   uint32_t fmap_base;
-  uint8_t  shared_data_body[VB_SHARED_DATA_REC_SIZE];
+  uint8_t  shared_data_body[CONFIG_LENGTH_FMAP];
 } __attribute__((packed)) VbSharedMem;
 
 typedef struct {
