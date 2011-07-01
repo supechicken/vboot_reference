@@ -1,4 +1,4 @@
-/* Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+/* Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -10,6 +10,7 @@
 #include "tlcl.h"
 #include "tlcl_internal.h"
 #include "utility.h"
+#include "vboot_api.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -56,22 +57,22 @@ static void TpmExecute(const uint8_t *in, const uint32_t in_len,
                 uint8_t *out, uint32_t *pout_len) {
   uint8_t response[TPM_MAX_COMMAND_SIZE];
   if (in_len <= 0) {
-    error("invalid command length %d for command 0x%x\n", in_len, in[9]);
+    VbExError("invalid command length %d for command 0x%x\n", in_len, in[9]);
   } else if (tpm_fd < 0) {
-    error("the TPM device was not opened.  Forgot to call TlclLibInit?\n");
+    VbExError("the TPM device was not opened.  Forgot to call TlclLibInit?\n");
   } else {
     int n = write(tpm_fd, in, in_len);
     if (n != in_len) {
-      error("write failure to TPM device: %s\n", strerror(errno));
+      VbExError("write failure to TPM device: %s\n", strerror(errno));
     }
     n = read(tpm_fd, response, sizeof(response));
     if (n == 0) {
-      error("null read from TPM device\n");
+      VbExError("null read from TPM device\n");
     } else if (n < 0) {
-      error("read failure from TPM device: %s\n", strerror(errno));
+      VbExError("read failure from TPM device: %s\n", strerror(errno));
     } else {
       if (n > *pout_len) {
-        error("TPM response too long for output buffer\n");
+        VbExError("TPM response too long for output buffer\n");
       } else {
         *pout_len = n;
         Memcpy(out, response, n);
@@ -99,25 +100,25 @@ POSSIBLY_UNUSED static INLINE int TpmResponseSize(const uint8_t* buffer) {
 }
 
 
-uint32_t TlclStubInit(void) {
-  return TlclOpenDevice();
+VbError_t VbExTpmInit(void) {
+  return VbExTpmOpen();
 }
 
 
-uint32_t TlclCloseDevice(void) {
+VbError_t VbExTpmClose(void) {
   if (tpm_fd != -1) {
     close(tpm_fd);
     tpm_fd = -1;
   }
-  return 0;
+  return VBERROR_SUCCESS;
 }
 
 
-uint32_t TlclOpenDevice(void) {
+VbError_t VbExTpmOpen(void) {
   char* device_path;
 
   if (tpm_fd >= 0)
-    return 0;  /* Already open */
+    return VBERROR_SUCCESS;  /* Already open */
 
   device_path = getenv("TPM_DEVICE_PATH");
   if (device_path == NULL) {
@@ -126,15 +127,16 @@ uint32_t TlclOpenDevice(void) {
 
   tpm_fd = open(device_path, O_RDWR);
   if (tpm_fd < 0) {
-    error("TPM: Cannot open TPM device %s: %s\n", device_path, strerror(errno));
+    VbExError("TPM: Cannot open TPM device %s: %s\n",
+              device_path, strerror(errno));
   }
 
-  return 0;
+  return VBERROR_SUCCESS;
 }
 
 
-uint32_t TlclStubSendReceive(const uint8_t* request, int request_length,
-                             uint8_t* response, int max_length) {
+VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
+                             uint8_t* response, uint32_t* response_length) {
   /*
    * In a real firmware implementation, this function should contain
    * the equivalent API call for the firmware TPM driver which takes a
@@ -152,20 +154,19 @@ uint32_t TlclStubSendReceive(const uint8_t* request, int request_length,
    *                                                   response);
    * // Error checking depending on the value of the status above
    */
-  uint32_t response_length = max_length;
 #ifndef NDEBUG
   int tag, response_tag;
 #endif
 
   struct timeval before, after;
   gettimeofday(&before, NULL);
-  TpmExecute(request, request_length, response, &response_length);
+  TpmExecute(request, request_length, response, response_length);
   gettimeofday(&after, NULL);
 
 #ifdef VBOOT_DEBUG
   {
     int x = request_length;
-    int y = response_length;
+    int y = *response_length;
     VBDEBUG(("request (%d bytes): ", x));
     PrintBytes(request, 10);
     PrintBytes(request + 10, x - 10);
@@ -189,8 +190,8 @@ uint32_t TlclStubSendReceive(const uint8_t* request, int request_length,
      response_tag == TPM_TAG_RSP_AUTH1_COMMAND) ||
     (tag == TPM_TAG_RQU_AUTH2_COMMAND &&
      response_tag == TPM_TAG_RSP_AUTH2_COMMAND));
-  assert(response_length == TpmResponseSize(response));
+  assert(*response_length == TpmResponseSize(response));
 #endif
 
-  return 0;  /* Success */
+  return VBERROR_SUCCESS;
 }
