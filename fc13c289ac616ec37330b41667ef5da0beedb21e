@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//4Os\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2011-07-07T00:18:55Z",
+      "side": 1,
+      "message": "Hi, this should move to /proc/device-tree/firmware/chromeos (I\u0027m fighting build infrastructure right now so I haven\u0027t tested http://gerrit.chromium.org/gerrit/3683 just yet).",
+      "revId": "fc13c289ac616ec37330b41667ef5da0beedb21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//4OI\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2011-07-07T00:18:55Z",
+      "side": 1,
+      "message": "There\u0027s unfortunately no strict guarantee that the eMMC will always be mmcblk0. This needs to be found in a more stable way.",
+      "revId": "fc13c289ac616ec37330b41667ef5da0beedb21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//4OY\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2011-07-07T00:18:55Z",
+      "side": 1,
+      "message": "This is not the standard way to represent a gpio in a device tree. We should do it properly here with a phandle and a port number instead.\n\nThe polarity should be encoded as part of the regular gpio binding, not here.",
+      "revId": "fc13c289ac616ec37330b41667ef5da0beedb21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
