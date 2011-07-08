@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//3PA\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-08T23:14:14Z",
+      "side": 1,
+      "message": "Strncat() and Uint64ToString() always return \u003c the size passed, so we can\u0027t use up the entire buffer.",
+      "parentUuid": "AAAADn//3Ro\u003d",
+      "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//3Rk\u003d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-07-08T22:43:32Z",
       "side": 1,
       "message": "Should you\n\nbuf[sizeof(buf) - 1] \u003d \u0027\\0\u0027\n\nhere?",
+      "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//3Pk\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-08T23:14:14Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "AAAADn//3Rk\u003d",
       "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//3PU\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-08T23:14:14Z",
+      "side": 1,
+      "message": "You\u0027re right, now that shared!\u003dNULL, the checks for shcall and shpart can be removed.  That tidies things.",
+      "parentUuid": "AAAADn//3Rc\u003d",
+      "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//3RY\u003d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -81,6 +135,24 @@
       "writtenOn": "2011-07-08T22:43:32Z",
       "side": 1,
       "message": "Is this if() needed?",
+      "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//3PE\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-08T23:14:14Z",
+      "side": 1,
+      "message": "nope. (fixed)",
+      "parentUuid": "AAAADn//3RY\u003d",
       "revId": "ce053abdd8bc1ccd9d1b27aefee15361488ad9aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
