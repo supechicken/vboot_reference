@@ -145,7 +145,6 @@ int LoadKernel(LoadKernelParams* params) {
 
   int retval = LOAD_KERNEL_RECOVERY;
   int recovery = VBNV_RECOVERY_RO_UNSPECIFIED;
-  uint64_t timer_enter = VbExGetTimer();
 
   /* Setup NV storage */
   VbNvSetup(vnc);
@@ -178,30 +177,16 @@ int LoadKernel(LoadKernelParams* params) {
     dev_switch = 0;  /* Always do a fully verified boot */
   }
 
-  if (kBootRecovery == boot_mode) {
-    /* Initialize the shared data structure, since LoadFirmware() didn't do it
-     * for us. */
-    if (0 != VbSharedDataInit(shared, params->shared_data_size)) {
-      /* Error initializing the shared data, but we can keep going.  We just
-       * can't use the shared data. */
-      VBDEBUG(("Shared data init error\n"));
-      params->shared_data_size = 0;
-      shared = NULL;
-    }
-  }
-
-  if (shared) {
-    /* Set up tracking for this call.  This wraps around if called many times,
-     * so we need to initialize the call entry each time. */
-    shcall = shared->lk_calls + (shared->lk_call_count
-                                 & (VBSD_MAX_KERNEL_CALLS - 1));
-    Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
-    shcall->boot_flags = (uint32_t)params->boot_flags;
-    shcall->boot_mode = boot_mode;
-    shcall->sector_size = (uint32_t)params->bytes_per_lba;
-    shcall->sector_count = params->ending_lba + 1;
-    shared->lk_call_count++;
-  }
+  /* Set up tracking for this call.  This wraps around if called many times,
+   * so we need to initialize the call entry each time. */
+  shcall = shared->lk_calls + (shared->lk_call_count
+                               & (VBSD_MAX_KERNEL_CALLS - 1));
+  Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
+  shcall->boot_flags = (uint32_t)params->boot_flags;
+  shcall->boot_mode = boot_mode;
+  shcall->sector_size = (uint32_t)params->bytes_per_lba;
+  shcall->sector_count = params->ending_lba + 1;
+  shared->lk_call_count++;
 
   /* Handle test errors */
   VbNvGet(vnc, VBNV_TEST_ERROR_FUNC, &test_err);
@@ -237,14 +222,14 @@ int LoadKernel(LoadKernelParams* params) {
   }
 
   if (kBootDev == boot_mode && !dev_switch) {
-    /* Dev firmware should be signed such that it never boots with the dev
-     * switch is off; so something is terribly wrong. */
-    VBDEBUG(("LoadKernel() called with dev firmware but dev switch off\n"));
+      /* Dev firmware should be signed such that it never boots with the dev
+       * switch is off; so something is terribly wrong. */
+      VBDEBUG(("LoadKernel() called with dev firmware but dev switch off\n"));
     if (shcall)
       shcall->check_result = VBSD_LKC_CHECK_DEV_SWITCH_MISMATCH;
-    recovery = VBNV_RECOVERY_RW_DEV_MISMATCH;
-    goto LoadKernelExit;
-  }
+      recovery = VBNV_RECOVERY_RW_DEV_MISMATCH;
+      goto LoadKernelExit;
+    }
 
   if (kBootRecovery == boot_mode) {
     /* Use the recovery key to verify the kernel */
@@ -260,10 +245,8 @@ int LoadKernel(LoadKernelParams* params) {
     }
 
     /* Read the key indices from the TPM; ignore any errors */
-    if (shared) {
-      RollbackFirmwareRead(&shared->fw_version_tpm);
-      RollbackKernelRead(&shared->kernel_version_tpm);
-    }
+    RollbackFirmwareRead(&shared->fw_version_tpm);
+    RollbackKernelRead(&shared->kernel_version_tpm);
   } else {
     /* Use the kernel subkey passed from LoadFirmware(). */
     kernel_subkey = &shared->kernel_subkey;
@@ -279,8 +262,7 @@ int LoadKernel(LoadKernelParams* params) {
         recovery = VBNV_RECOVERY_RW_TPM_ERROR;
       goto LoadKernelExit;
     }
-    if (shared)
-      shared->kernel_version_tpm = tpm_version;
+    shared->kernel_version_tpm = tpm_version;
   }
 
   do {
@@ -619,8 +601,7 @@ int LoadKernel(LoadKernelParams* params) {
             recovery = VBNV_RECOVERY_RW_TPM_ERROR;
           goto LoadKernelExit;
         }
-        if (shared)
-          shared->kernel_version_tpm = (uint32_t)lowest_version;
+        shared->kernel_version_tpm = (uint32_t)lowest_version;
       }
     }
 
@@ -659,20 +640,15 @@ LoadKernelExit:
           recovery : VBNV_RECOVERY_NOT_REQUESTED);
   VbNvTeardown(vnc);
 
-  if (shared) {
-    if (shcall)
-      shcall->return_code = (uint8_t)retval;
+  if (shcall)
+    shcall->return_code = (uint8_t)retval;
 
-    /* Save whether the good partition's key block was fully verified */
-    if (good_partition_key_block_valid)
-      shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
+  /* Save whether the good partition's key block was fully verified */
+  if (good_partition_key_block_valid)
+    shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
 
-    /* Save timer values */
-    shared->timer_load_kernel_enter = timer_enter;
-    shared->timer_load_kernel_exit = VbExGetTimer();
-    /* Store how much shared data we used, if any */
-    params->shared_data_size = shared->data_used;
-  }
+  /* Store how much shared data we used, if any */
+  params->shared_data_size = shared->data_used;
 
   return retval;
 }
