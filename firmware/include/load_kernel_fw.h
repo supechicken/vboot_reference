@@ -30,8 +30,6 @@
 #define BOOT_FLAG_RECOVERY  UINT64_C(0x02)
 /* Skip check of kernel buffer address */
 #define BOOT_FLAG_SKIP_ADDR_CHECK UINT64_C(0x04)
-/* Active main firmware is developer-type, not normal-type or recovery-type. */
-#define BOOT_FLAG_DEV_FIRMWARE UINT64_C(0x08)
 
 typedef struct LoadKernelParams {
   /* Inputs to LoadKernel() */
