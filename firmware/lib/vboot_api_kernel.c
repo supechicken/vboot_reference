@@ -557,7 +557,7 @@ VbError_t VbBootRecovery(VbCommonParams* cparams, LoadKernelParams* p) {
 VbError_t VbSelectAndLoadKernel(VbCommonParams* cparams,
                                 VbSelectAndLoadKernelParams* kparams) {
   VbSharedDataHeader* shared = (VbSharedDataHeader*)cparams->shared_data_blob;
-  VbError_t retval;
+  VbError_t retval = VBERROR_SUCCESS;
   LoadKernelParams p;
 
   VBDEBUG(("VbSelectAndLoadKernel() start\n"));
@@ -587,23 +587,39 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams* cparams,
   if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)
     p.boot_flags |= BOOT_FLAG_DEVELOPER;
 
+  /* Handle separate normal and developer firmware builds. */
+#if defined(VBOOT_FIRMWARE_TYPE_NORMAL)
+  /* Normal-type firmware always acts like the dev switch is off. */
+  p.boot_flags &= ~BOOT_FLAG_DEVELOPER;
+#elif defined(VBOOT_FIRMWARE_TYPE_DEVELOPER)
+  /* Developer-type firmware fails if the dev switch is off. */
+  if (!(p.boot_flags & BOOT_FLAG_DEVELOPER)) {
+    /* Dev firmware should be signed with a key that only verifies
+     * when the dev switch is on, so we should never get here. */
+    VBDEBUG(("Developer firmware called with dev switch off!\n"));
+    VbSetRecoveryRequest(VBNV_RECOVERY_RW_DEV_MISMATCH);
+    retval = 1;
+  }
+#else
+  /* Recovery firmware, or merged normal+developer firmware.  No
+   * need to override flags. */
+#endif
+
   /* Select boot path */
-  if (shared->recovery_reason) {
+  if (VBERROR_SUCCESS != retval) {
+    /* Failure during setup; don't attempt booting a kernel */
+  } else if (shared->recovery_reason) {
     /* Recovery boot */
     p.boot_flags |= BOOT_FLAG_RECOVERY;
     retval = VbBootRecovery(cparams, &p);
     VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0);
-  } else {
-    /* TODO: vboot compiler define for developer mode; this is the H2C one */
-#ifdef BUILD_FVDEVELOPER
+  } else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
     /* Developer boot */
-    p.boot_flags |= BOOT_FLAG_DEV_FIRMWARE;
     retval = VbBootDeveloper(cparams, &p);
     VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0);
-#else
+  } else {
     /* Normal boot */
     retval = VbBootNormal(cparams, &p);
-#endif
   }
 
   if (VBERROR_SUCCESS == retval) {
