@@ -70,6 +70,20 @@ static int ReadFdtValue(const char *property, int *value) {
   return 0;
 }
 
+static int ReadFdtBool(const char *property) {
+  char filename[FNAME_SIZE];
+  struct stat tmp;
+  int err;
+
+  snprintf(filename, sizeof(filename), FDT_BASE_PATH "/%s", property);
+  err = stat(filename, &tmp);
+
+  if (err == 0)
+    return 1;
+
+  return 0;
+}
+
 static int ReadFdtInt(const char *property) {
   int value;
   if (ReadFdtValue(property, &value))
@@ -155,7 +169,7 @@ int VbReadNvStorage(VbNvContext* vnc) {
   void *nvcxt_cache;
   size_t size;
 
-  if (ReadFdtBlock("nvcxt_cache", &nvcxt_cache, &size))
+  if (ReadFdtBlock("vboot-nvstore-cache", &nvcxt_cache, &size))
     return E_FAIL;
 
   Memcpy(vnc->raw, nvcxt_cache, MIN(sizeof(vnc->raw), size));
@@ -209,107 +223,67 @@ int VbWriteNvStorage(VbNvContext* vnc) {
 VbSharedDataHeader *VbSharedDataRead(void) {
   void *block = NULL;
   size_t size = 0;
-  if (ReadFdtBlock("vbshared_data", &block, &size))
+  if (ReadFdtBlock("vboot-shared-data", &block, &size))
     return NULL;
   return (VbSharedDataHeader *)block;
 }
 
 static int VbGetRecoveryReason(void) {
-  int value;
-  size_t size;
-  uint8_t *binf;
-  if (ReadFdtBlock("binf", (void **)&binf, &size))
-    return -1;
-  value = binf[BINF_RECOVERY_REASON];
-  free(binf);
-  return value;
+  return ReadFdtInt("recovery-reason");
 }
 
 int VbGetArchPropertyInt(const char* name) {
-  if (!strcasecmp(name, "recovery_reason")) {
+  if (!strcasecmp(name, "recovery_reason"))
     return VbGetRecoveryReason();
-  } else if (!strcasecmp(name, "fmap_base")) {
-    return ReadFdtInt("fmap_base");
-  } else if (!strcasecmp(name, "devsw_boot")) {
-    return ReadFdtInt("developer_sw");
-  } else if (!strcasecmp(name, "recoverysw_boot")) {
-    return ReadFdtInt("recovery_sw");
-  } else if (!strcasecmp(name, "wpsw_boot")) {
-    return ReadFdtInt("write_protect_sw");
-  } else if (!strcasecmp(name, "devsw_cur")) {
-    return VbGetVarGpio("developer_sw");
-  } else if (!strcasecmp(name, "recoverysw_cur")) {
-    return VbGetVarGpio("recovery_sw");
-  } else if (!strcasecmp(name, "wpsw_cur")) {
-    return VbGetVarGpio("write_protect_sw");
-  } else if (!strcasecmp(name, "recoverysw_ec_boot")) {
+  else if (!strcasecmp(name, "fmap_base"))
+    return ReadFdtInt("firmware-offset");
+  else if (!strcasecmp(name, "devsw_boot"))
+    return ReadFdtBool("boot-developer-switch");
+  else if (!strcasecmp(name, "recoverysw_boot"))
+    return ReadFdtBool("boot-recovery-switch");
+  else if (!strcasecmp(name, "wpsw_boot"))
+    return ReadFdtBool("boot-write-protect-switch");
+  else if (!strcasecmp(name, "devsw_cur"))
+    return VbGetVarGpio("developer-switch");
+  else if (!strcasecmp(name, "recoverysw_cur"))
+    return VbGetVarGpio("recovery-switch");
+  else if (!strcasecmp(name, "wpsw_cur"))
+  return VbGetVarGpio("write-protect-switch");
+  else if (!strcasecmp(name, "recoverysw_ec_boot"))
     return 0;
-  } else
+  else
     return -1;
 }
 
 const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
   char *str = NULL;
   char *rv = NULL;
-  size_t block_size;
-  uint8_t *binf, mainfw_act, mainfw_type, ecfw_act;
+  char *prop = NULL;
+
+  if (!strcasecmp(name,"arch"))
+    return StrCopy(dest, "arm", size);
 
   /* Properties from fdt */
-  if (!strcasecmp(name, "ro_fwid")) {
-    str = ReadFdtString("frid");
-  } else if (!strcasecmp(name, "hwid")) {
-    str = ReadFdtString("hwid");
-  } else if (!strcasecmp(name, "fwid")) {
-    str = ReadFdtString("fwid");
-  }
+  if (!strcasecmp(name, "ro_fwid"))
+    prop = "readonly-firmware-version";
+  else if (!strcasecmp(name, "hwid"))
+    prop = "hardware-id";
+  else if (!strcasecmp(name, "fwid"))
+    prop = "firmware-version";
+  else if (!strcasecmp(name, "mainfw_act"))
+    prop = "active-firmware";
+  else if (!strcasecmp(name, "mainfw_type"))
+    prop = "firmware-type";
+  else if (!strcasecmp(name, "ecfw_act"))
+    prop = "active-ec-firmware";
+
+  if (prop)
+    str = ReadFdtString(prop);
 
   if (str) {
-    rv = StrCopy(dest, str, size);
-    free(str);
-    return rv;
-  }
-
-  /* Other properties */
-  if (ReadFdtBlock("binf", (void**)&binf, &block_size))
-    return NULL;
-  mainfw_act  = binf[BINF_MAINFW_ACT];
-  ecfw_act    = binf[BINF_ECFW_ACT];
-  mainfw_type = binf[BINF_MAINFW_TYPE];
-  free(binf);
-
-  if (!strcasecmp(name,"arch")) {
-    return StrCopy(dest, "arm", size);
-  } else if (!strcasecmp(name,"mainfw_act")) {
-    switch(mainfw_act) {
-      case 0:
-        return StrCopy(dest, "recovery", size);
-      case 1:
-        return StrCopy(dest, "A", size);
-      case 2:
-        return StrCopy(dest, "B", size);
-      default:
-        return NULL;
-    }
-  } else if (!strcasecmp(name,"mainfw_type")) {
-    switch(mainfw_type) {
-    case BINF3_RECOVERY:
-      return StrCopy(dest, "recovery", size);
-    case BINF3_NORMAL:
-      return StrCopy(dest, "normal", size);
-    case BINF3_DEVELOPER:
-      return StrCopy(dest, "developer", size);
-    default:
-      return NULL;
-    }
-  } else if (!strcasecmp(name,"ecfw_act")) {
-    switch(ecfw_act) {
-      case 0:
-        return StrCopy(dest, "RO", size);
-      case 1:
-        return StrCopy(dest, "RW", size);
-      default:
-        return NULL;
-    }
+      rv = StrCopy(dest, str, size);
+      free(str);
+      return rv;
   }
   return NULL;
 }
