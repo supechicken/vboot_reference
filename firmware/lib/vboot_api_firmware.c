@@ -40,10 +40,22 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
   p.shared_data_size      = cparams->shared_data_size;
   p.nv_context            = &vnc;
 
-  p.verification_block_0  = fparams->verification_block_A;
-  p.verification_block_1  = fparams->verification_block_B;
-  p.verification_size_0   = fparams->verification_size_A;
-  p.verification_size_1   = fparams->verification_size_B;
+  if (cparams->caller_type != VB_CALLER_TYPE_FIRMWARE_B) {
+    p.verification_block_0  = fparams->verification_block_A;
+    p.verification_size_0   = fparams->verification_size_A;
+  } else {
+    /* XXX simple workaround for not verifying A */
+    p.verification_block_0  = NULL;
+    p.verification_size_0   = 0;
+  }
+  if (cparams->caller_type != VB_CALLER_TYPE_FIRMWARE_A) {
+    p.verification_block_1  = fparams->verification_block_B;
+    p.verification_size_1   = fparams->verification_size_B;
+  } else {
+    /* XXX simple workaround for not verifying B */
+    p.verification_block_1  = NULL;
+    p.verification_size_1   = 0;
+  }
 
   /* Load NV storage */
   VbExNvStorageRead(vnc.raw);
@@ -72,11 +84,18 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
   if (LOAD_FIRMWARE_SUCCESS == rv) {
     if (shared->flags & VBSD_LF_USE_RO_NORMAL) {
       /* Request the read-only normal/dev code path */
-      fparams->selected_firmware = VB_SELECT_FIRMWARE_READONLY;
-    } else if (0 == shared->firmware_index)
-      fparams->selected_firmware = VB_SELECT_FIRMWARE_A;
-    else
-      fparams->selected_firmware = VB_SELECT_FIRMWARE_B;
+      fparams->selected_firmware = VB_SELECT_FIRMWARE_SELF;
+    } else if (0 == shared->firmware_index) {
+      if (cparams->caller_type == VB_CALLER_TYPE_FIRMWARE_RO)
+        fparams->selected_firmware = VB_SELECT_FIRMWARE_A;
+      else
+        fparams->selected_firmware = VB_SELECT_FIRMWARE_SELF;
+    } else {
+      if (cparams->caller_type == VB_CALLER_TYPE_FIRMWARE_RO)
+        fparams->selected_firmware = VB_SELECT_FIRMWARE_B;
+      else
+        fparams->selected_firmware = VB_SELECT_FIRMWARE_SELF;
+    }
     return VBERROR_SUCCESS;
 
   } else if (LOAD_FIRMWARE_REBOOT == rv) {

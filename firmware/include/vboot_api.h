@@ -53,6 +53,14 @@ typedef uint32_t VbError_t;
 #define VB_SHARED_DATA_MIN_SIZE 3072
 #define VB_SHARED_DATA_REC_SIZE 16384
 
+/* Firmware type of caller of VbInit(), VbSelectFirmware() and
+ * VbSelectAndLoadKernel(). */
+enum VbCallerType_t {
+  VB_CALLER_TYPE_FIRMWARE_RO = 0,
+  VB_CALLER_TYPE_FIRMWARE_A = 1,
+  VB_CALLER_TYPE_FIRMWARE_B = 2,
+};
+
 /* Data passed by firmware to VbInit(), VbSelectFirmware() and
  * VbSelectAndLoadKernel(). */
 /* Note that in UEFI, these are called by different phases in
@@ -60,6 +68,8 @@ typedef uint32_t VbError_t;
  * VbSelectAndLoadKernel() = 64-bit BDS), so the data may be at a different
  * location between calls. */
 typedef struct VbCommonParams {
+  uint32_t caller_type;          /* Caller type; see VB_CALLER_TYPE_*. */
+
   void* gbb_data;                /* Pointer to GBB data */
   uint32_t gbb_size;             /* Size of GBB data in bytes */
 
@@ -146,8 +156,8 @@ enum VbSelectFirmware_t {
   /* Rewritable firmware A/B for normal or developer path */
   VB_SELECT_FIRMWARE_A = 1,
   VB_SELECT_FIRMWARE_B = 2,
-  /* Read only firmware for normal or developer path. */
-  VB_SELECT_FIRMWARE_READONLY = 3
+  /* Caller itself for normal or developer path. */
+  VB_SELECT_FIRMWARE_SELF = 3
 };
 
 

@@ -232,6 +232,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
       continue;
 
     /* Handle preamble flag for using the RO normal/dev code path */
+    /* TODO also check if caller_type is RW firmware */
     if (VbGetFirmwarePreambleFlags(preamble) &
         VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 
@@ -365,7 +366,7 @@ int LoadFirmware(LoadFirmwareParams* params) {
     }
 
     /* Success */
-    VBDEBUG(("Will boot firmware index %d\n", (int)shared->firmware->index));
+    VBDEBUG(("Will boot firmware index %d\n", (int)shared->firmware_index));
     retval = LOAD_FIRMWARE_SUCCESS;
   } else {
     uint8_t a = shared->check_fw_a_result;

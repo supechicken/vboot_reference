@@ -102,6 +102,7 @@ typedef struct VbFirmwarePreambleHeader2_0 {
 /* Flags for VbFirmwarePreambleHeader.flags */
 /* Use the normal/dev boot path from the read-only firmware, instead
  * of verifying the body signature. */
+/* TODO rename this flag? */
 #define VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL 0x00000001
 
 /* Premable block for rewritable firmware, version 2.1 */
