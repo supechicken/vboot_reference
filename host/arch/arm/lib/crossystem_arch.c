@@ -166,15 +166,37 @@ static int VbGetVarGpio(const char* name) {
 }
 
 int VbReadNvStorage(VbNvContext* vnc) {
-  void *nvcxt_cache;
-  size_t size;
+  int nvctx_fd = -1;
+  uint8_t sector[SECTOR_SIZE];
+  int rv = -1;
+  ssize_t size;
+  char nvctx_path[FNAME_SIZE];
+  int emmc_dev;
 
-  if (ReadFdtBlock("vboot-nvstore-cache", &nvcxt_cache, &size))
+  emmc_dev = FindEmmcDev();
+  if (emmc_dev < 0)
     return E_FAIL;
+  snprintf(nvctx_path, sizeof(nvctx_path), NVCTX_PATH, emmc_dev);
 
-  Memcpy(vnc->raw, nvcxt_cache, MIN(sizeof(vnc->raw), size));
-  free(nvcxt_cache);
-  return 0;
+  nvctx_fd = open(nvctx_path, O_RDWR);
+  if (nvctx_fd == -1) {
+    fprintf(stderr, "%s: failed to open %s\n", __FUNCTION__, nvctx_path);
+    goto out;
+  }
+  size = read(nvctx_fd, sector, SECTOR_SIZE);
+  if (size <= 0) {
+    fprintf(stderr, "%s: failed to read nvctx from device %s\n",
+            __FUNCTION__, nvctx_path);
+    goto out;
+  }
+  Memcpy(vnc->raw, sector, MIN(sizeof(vnc->raw), SECTOR_SIZE));
+  rv = 0;
+
+out:
+  if (nvctx_fd > 0)
+    close(nvctx_fd);
+
+  return rv;
 }
 
 int VbWriteNvStorage(VbNvContext* vnc) {
@@ -236,7 +258,7 @@ int VbGetArchPropertyInt(const char* name) {
   if (!strcasecmp(name, "recovery_reason"))
     return VbGetRecoveryReason();
   else if (!strcasecmp(name, "fmap_base"))
-    return ReadFdtInt("firmware-offset");
+    return ReadFdtInt("fmap-offset");
   else if (!strcasecmp(name, "devsw_boot"))
     return ReadFdtBool("boot-developer-switch");
   else if (!strcasecmp(name, "recoverysw_boot"))
