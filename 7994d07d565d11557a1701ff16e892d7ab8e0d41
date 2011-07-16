@@ -16,6 +16,24 @@
       "revId": "7994d07d565d11557a1701ff16e892d7ab8e0d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//0Fk\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-16T02:27:08Z",
+      "side": 0,
+      "message": "On x86, it still needs to support BINF.2 for Mario.  On newer systems I\u0027ll remove BINF.2 in the firmware, and crossystem will automatically use VbSharedData instead.",
+      "parentUuid": "AAAADn//0Io\u003d",
+      "revId": "7994d07d565d11557a1701ff16e892d7ab8e0d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
