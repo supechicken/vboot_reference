@@ -297,7 +297,16 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   if ((developer_mode ? FLAG_LAST_BOOT_DEVELOPER : 0) !=
       (rsf->flags & FLAG_LAST_BOOT_DEVELOPER)) {
     VBDEBUG(("TPM: Developer flag changed; clearing owner.\n"));
-    RETURN_ON_FAILURE(TPMClearAndReenable());
+    result = TPMClearAndReenable();
+#ifdef TEGRA_SOFT_REBOOT_WORKAROUND
+    /* Tolerate inability to clear TPM, and good luck to you. */
+    if (soft_reset) {
+      result = TPM_SUCCESS;
+    }
+#endif
+    if (result != TPM_SUCCESS) {
+      return result;
+    }
   }
 
   /* Updates flags */
