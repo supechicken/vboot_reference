@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//wcM\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-22T22:21:21Z",
+      "side": 1,
+      "message": "Since VbNv is how we request recovery, if these functions fail, there\u0027s not much we can do about it.",
+      "parentUuid": "AAAADn//we0\u003d",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//weU\u003d",
         "filename": "firmware/lib/vboot_api_firmware.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//wcI\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-22T22:21:21Z",
+      "side": 1,
+      "message": "Changing all the \u00271\u0027 error codes into a range of meaningful symbolic constants is coming in a followup CL.",
+      "parentUuid": "AAAADn//weU\u003d",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//weE\u003d",
         "filename": "firmware/lib/vboot_api_firmware.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2011-07-22T22:01:15Z",
       "side": 1,
       "message": "I think we don\u0027t use yoda comparisons in our code - but I don\u0027t remember if we follow that convention in vboot_reference. If not, it is fine as-is.",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//wcE\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-22T22:21:21Z",
+      "side": 1,
+      "message": "This is consistent with the rest of vboot_reference.",
+      "parentUuid": "AAAADn//weE\u003d",
       "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
