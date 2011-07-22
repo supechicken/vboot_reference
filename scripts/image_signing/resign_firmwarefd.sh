@@ -56,7 +56,7 @@ set -e
 # Check arguments
 if [ $# -lt 7 ] || [ $# -gt 8 ]; then
   echo "Usage: $PROG src_fd dst_fd firmware_datakey firmware_keyblock"\
-   "dev_firmware_datakey dev_firmware_keyblock kernel_subkey [version]"
+   "dev_firmware_datakey dev_firmware_keyblock kernel_subkey [version [flag]]"
   exit 1
 fi
 
@@ -74,11 +74,17 @@ DEV_FIRMWARE_DATAKEY=$5
 DEV_FIRMWARE_KEYBLOCK=$6
 KERNEL_SUBKEY=$7
 VERSION=$8
+FLAG=$9
 
-if [ -z $VERSION ]; then
+if [ -z "$VERSION" ]; then
   VERSION=1
 fi
 echo "Using firmware version: $VERSION"
+
+if [ -z "$FLAG" ]; then
+  FLAG=1
+fi
+echo "Using firmware flag: $FLAG"
 
 # Parse offsets and size of firmware data and vblocks
 for i in "A" "B"
@@ -118,6 +124,7 @@ vbutil_firmware \
   --keyblock "${DEV_FIRMWARE_KEYBLOCK}" \
   --signprivate "${DEV_FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
+  --flag "${FLAG}" \
   --fv "${temp_fwimage}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
@@ -135,6 +142,7 @@ vbutil_firmware \
   --keyblock "${FIRMWARE_KEYBLOCK}" \
   --signprivate "${FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
+  --flag "${FLAG}" \
   --fv "${temp_fwimage}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
