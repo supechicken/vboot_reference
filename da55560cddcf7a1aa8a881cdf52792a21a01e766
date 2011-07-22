@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//we0\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-22T22:01:15Z",
+      "side": 1,
+      "message": "Do you care if any of these fail?\n\nOr does the callee bail out on any error automatically?",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//weU\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-22T22:01:15Z",
+      "side": 1,
+      "message": "suggestion: instead of hardcoding this to 1, you could write retval \u003d ~VBERROR_SUCCESS (or the equivalent symbolic constant for success)",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//weE\u003d",
+        "filename": "firmware/lib/vboot_api_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-22T22:01:15Z",
+      "side": 1,
+      "message": "I think we don\u0027t use yoda comparisons in our code - but I don\u0027t remember if we follow that convention in vboot_reference. If not, it is fine as-is.",
+      "revId": "da55560cddcf7a1aa8a881cdf52792a21a01e766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
