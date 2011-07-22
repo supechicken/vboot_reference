@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "crossystem.h"
 
@@ -218,6 +219,13 @@ int main(int argc, char* argv[]) {
     progname++;
   else
     progname = argv[0];
+
+  /* If uid is not root, makes no sense to run crossytem */
+  if (getuid() != 0) {
+    fprintf(stderr, "ERROR: You must be root to run %s\n", progname);
+    fprintf(stderr, "       Try 'sudo %s'\n", progname);
+    return -1;
+  }
 
   if (VbArchInit()) {
     fprintf(stderr, "Failed to initialize\n");
