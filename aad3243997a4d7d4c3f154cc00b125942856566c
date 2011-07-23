@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//wVk\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-23T01:40:24Z",
+      "side": 1,
+      "message": "Is there any kind of useful information (out of many) that crossystem will show is run as chronos? If so, would it make sense to warn the user about the fact that certain values couldn\u0027t be read instead of not allowing it at all?",
+      "revId": "aad3243997a4d7d4c3f154cc00b125942856566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//wV0\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-23T01:40:24Z",
+      "side": 1,
+      "message": "s/crossytem/crossystem/",
+      "revId": "aad3243997a4d7d4c3f154cc00b125942856566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//wVs\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-23T01:40:24Z",
+      "side": 1,
+      "message": "use geteuid not getuid. The effective uid, not the uild is what you care for.",
+      "revId": "aad3243997a4d7d4c3f154cc00b125942856566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
