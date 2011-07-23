@@ -50,6 +50,23 @@
       "revId": "aad3243997a4d7d4c3f154cc00b125942856566c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//wVI\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000102
+      },
+      "writtenOn": "2011-07-23T01:44:56Z",
+      "side": 1,
+      "message": "It looks like most of the \"return\" values that indicate an error use +1.\n\nA counterexample is the following block if (VbArchInit()) { return -1; }.\n\nSo I\u0027m not sure whether it\u0027s better to return +1 or -1, but it\u0027s probably good to be consistent.  Could you figure out which one is better and then make the file consistent?",
+      "revId": "aad3243997a4d7d4c3f154cc00b125942856566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
