@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//wXk\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-07-23T01:44:23Z",
+      "side": 1,
+      "message": "After checking the vbutil_firmware, I prefer calling this \"PREAMBLE_FLAG\" because it\u0027s not only used for RO/RW -- it\u0027s a general flag.",
+      "parentUuid": "AAAADn//wpM\u003d",
+      "revId": "487493eca43252d17fb139d3033cef68bdf2e93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//wpI\u003d",
         "filename": "scripts/image_signing/resign_firmwarefd.sh",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//wXc\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-07-23T01:44:23Z",
+      "side": 1,
+      "message": "Removed the default and let vbutil_firmware to decide it :)",
+      "parentUuid": "AAAADn//wpI\u003d",
+      "revId": "487493eca43252d17fb139d3033cef68bdf2e93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//wpA\u003d",
         "filename": "scripts/image_signing/resign_firmwarefd.sh",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2011-07-22T18:40:28Z",
       "side": 1,
       "message": "Hah, unfortunate choice of the argument name. --flag seems a tad bit generic.",
+      "revId": "487493eca43252d17fb139d3033cef68bdf2e93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//wYI\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-07-23T01:44:23Z",
+      "side": 1,
+      "message": "It\u0027s truely a generic flag in their design - although the only function for it is to describe RO-NORMAL now.",
+      "parentUuid": "AAAADn//wpA\u003d",
       "revId": "487493eca43252d17fb139d3033cef68bdf2e93c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
