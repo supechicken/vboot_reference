@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//wEg\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2011-07-25T17:23:54Z",
+      "side": 1,
+      "message": "This is not super pretty. Could we use the enum within LoadKernel etc, as well?",
+      "revId": "97b20e0faa3fa5c325bce9a34d8f49b7399c207e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
