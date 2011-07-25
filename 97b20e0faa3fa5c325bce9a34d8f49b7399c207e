@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAADn//v94\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-25T20:14:25Z",
+      "side": 1,
+      "message": "Then we\u0027ll happily increment loc to some meaningless value.\n\nWill fix in a followup CL",
+      "parentUuid": "AAAADn//wCs\u003d",
+      "revId": "97b20e0faa3fa5c325bce9a34d8f49b7399c207e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAADn//wEg\u003d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-07-25T17:23:54Z",
       "side": 1,
       "message": "This is not super pretty. Could we use the enum within LoadKernel etc, as well?",
+      "revId": "97b20e0faa3fa5c325bce9a34d8f49b7399c207e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//v+A\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-25T20:14:25Z",
+      "side": 1,
+      "message": "Yes, fixing in a followup CL",
+      "parentUuid": "AAAADn//wEg\u003d",
       "revId": "97b20e0faa3fa5c325bce9a34d8f49b7399c207e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
