@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAADn//v0I\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-25T23:26:01Z",
+      "side": 1,
+      "message": "Could add a NOT_ROOT flag.  If crossystem isn\u0027t run as root, only print those parameters with NOT_ROOT.  So \u0027crossystem` would print a shorter list of params, and a warning that you need to be root to see the rest of them.",
+      "revId": "8ef59bc42432577924f1535a19000040265f05fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//v0k\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-25T23:26:01Z",
+      "side": 1,
+      "message": "There are a number of parameters which are still useful when run as a normal user.  For example, `crossystem arch`.\n\nSuggest making this a warning rather than an error.  That will also let you commit this change now, without worrying about what you\u0027re breaking.",
+      "revId": "8ef59bc42432577924f1535a19000040265f05fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//v0c\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-07-25T23:26:01Z",
+      "side": 1,
+      "message": "At the least, we should move printing help up above the new check (and add a note to the help text that crossystem has very reduced functionality when not run as root).",
+      "revId": "8ef59bc42432577924f1535a19000040265f05fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
