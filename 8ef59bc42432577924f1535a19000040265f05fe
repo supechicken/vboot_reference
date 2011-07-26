@@ -50,6 +50,24 @@
       "revId": "8ef59bc42432577924f1535a19000040265f05fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//vw4\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000722
+      },
+      "writtenOn": "2011-07-26T00:45:23Z",
+      "side": 1,
+      "message": "Great suggestions.  One thing I would like to ask is when we run crossystem as a non-root user, is what we see really a limited functionality by design or whatever works on the given environment?  (e.g. x86 or arm)  Nobody knows how this command will be used in the future, so shouldn\u0027t be make the behavior more consistent across the platforms?",
+      "parentUuid": "AAAADn//v0c\u003d",
+      "revId": "8ef59bc42432577924f1535a19000040265f05fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
