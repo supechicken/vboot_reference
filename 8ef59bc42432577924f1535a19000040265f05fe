@@ -68,6 +68,24 @@
       "revId": "8ef59bc42432577924f1535a19000040265f05fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAADn//vwU\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-07-26T00:51:21Z",
+      "side": 1,
+      "message": "My take on that is that if crossystem is capable of providing any sort of useful information without the user needing to be root, then the check should not be enforced by crossystem.\n\nI can see scenarios where one would want to run crossystem with reduced privileges to get useful diagnostics/debugging information without allowing it to be run as a root since that exposes a larger attack surface area.",
+      "parentUuid": "AAAADn//vw4\u003d",
+      "revId": "8ef59bc42432577924f1535a19000040265f05fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
