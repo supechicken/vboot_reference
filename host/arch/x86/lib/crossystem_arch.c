@@ -452,11 +452,12 @@ static int ReadGpio(int signal_type) {
   if (active_high == -1 || controller_offset == -1)
     return -1;  /* Missing needed info */
 
-  /* We only support the NM10 for now */
+  /* Check for chipsets we recognize. */
   snprintf(name, sizeof(name), "%s.%d/GPIO.3", ACPI_GPIO_PATH, index);
   if (!ReadFileString(controller_name, sizeof(controller_name), name))
     return -1;
-  if (0 != strcmp(controller_name, "NM10"))
+  if ((0 != strcmp(controller_name, "NM10")) &&
+      (0 != strcmp(controller_name, "CougarPoint")))
     return -1;
 
   /* Assume the NM10 has offset 192 */
