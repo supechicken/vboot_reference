@@ -41,6 +41,14 @@ CFLAGS = -g -Os -ffunction-sections -fvisibility=hidden -fno-builtin \
 	-fno-stack-protector -mpreferred-stack-boundary=2 -fno-dwarf2-cfi-asm \
 	-march=i386 -Werror -Wall -Wstrict-prototypes -fno-stack-protector
 endif
+ifeq ($(FIRMWARE_ARCH), x86_64)
+# CC = i686-pc-linux-gnu-gcc
+CFLAGS = -g -fvisibility=hidden -fno-builtin \
+	-ffreestanding -nostdinc \
+	-pipe -fno-strict-aliasing -Wstrict-prototypes \
+	-fomit-frame-pointer -ffreestanding \
+	-Werror -Wall -Wstrict-prototypes -fno-stack-protector
+endif
 
 # Fix compiling directly on host (outside of emake)
 ifeq ($(ARCH),)
