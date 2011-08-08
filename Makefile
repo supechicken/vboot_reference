@@ -34,6 +34,10 @@ CFLAGS ?= $(COMMON_FLAGS) -march=i386 -Os \
 	-fomit-frame-pointer -fno-toplevel-reorder -fno-dwarf2-cfi-asm \
 	-mpreferred-stack-boundary=2 -mregparm=3
 endif
+ifeq ($(FIRMWARE_ARCH), x86_64)
+CFLAGS ?= $(COMMON_FLAGS) \
+	-fvisibility=hidden -fno-strict-aliasing -fomit-frame-pointer
+endif
 
 CC ?= gcc
 CXX ?= g++
