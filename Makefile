@@ -46,6 +46,11 @@ CFLAGS ?= $(COMMON_FLAGS) -march=i386 -Os \
 	-mpreferred-stack-boundary=2 -mregparm=3 \
 	-Wstrict-prototypes
 endif
+ifeq ($(FIRMWARE_ARCH), x86_64)
+CFLAGS ?= $(COMMON_FLAGS) \
+	-fvisibility=hidden -fno-strict-aliasing -fomit-frame-pointer
+
+endif
 
 # Fix compiling directly on host (outside of emake)
 ifeq ($(ARCH),)
