@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAD3//5kE\u003d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-08-10T22:21:01Z",
+      "side": 1,
+      "message": "nit: Detecting",
+      "revId": "eb6fe0ea43def525812b67e206be9d870b2fc816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAD3//5hs\u003d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-08-10T22:21:01Z",
+      "side": 1,
+      "message": "nit: suggest calling this expanded_firmware_dir/exploded_firmware_dir",
+      "revId": "eb6fe0ea43def525812b67e206be9d870b2fc816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAD3//5j8\u003d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-08-10T22:21:01Z",
+      "side": 1,
+      "message": "Does dump_fmap have an option to dump to a specific file instead of the current working directory?",
+      "revId": "eb6fe0ea43def525812b67e206be9d870b2fc816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAD3//5dA\u003d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-08-10T22:21:01Z",
+      "side": 1,
+      "message": "Add a comment here about the higher level logic being used here for determining this.",
+      "revId": "eb6fe0ea43def525812b67e206be9d870b2fc816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
