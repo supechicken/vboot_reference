@@ -571,6 +571,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams* cparams,
 
   /* Start timer */
   shared->timer_vb_select_and_load_kernel_enter = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_SELECT_AND_LOAD_KERNEL_ENTER,
+                    "select_and_load_kernel_enter");
 
   VbExNvStorageRead(vnc.raw);
   VbNvSetup(&vnc);
@@ -709,6 +711,8 @@ VbSelectAndLoadKernel_exit:
 
   /* Stop timer */
   shared->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_SELECT_AND_LOAD_KERNEL_EXIT,
+                    "select_and_load_kernel_exit");
 
   VBDEBUG(("VbSelectAndLoadKernel() returning %d\n", (int)retval));
 

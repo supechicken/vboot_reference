@@ -307,6 +307,21 @@ void VbExFree(void* ptr);
 /*****************************************************************************/
 /* Timer and delay (first two from utility.h) */
 
+/* Boot stages that we know about */
+enum VbBootStage_t {
+  /* Note that these are now the enter/exit times for the wrapper API entry
+   * points; see crosbug.com/17018. */
+  /* VbInit() enter/exit */
+  VB_BOOTSTAGE_INIT_ENTER,
+  VB_BOOTSTAGE_INIT_EXIT,
+  /* VbSelectFirmware() enter/exit */
+  VB_BOOTSTAGE_SELECT_FIRMWARE_ENTER,
+  VB_BOOTSTAGE_SELECT_FIRMWARE_EXIT,
+  /* VbSelectAndLoadKernel() enter/exit */
+  VB_BOOTSTAGE_SELECT_AND_LOAD_KERNEL_ENTER,
+  VB_BOOTSTAGE_SELECT_AND_LOAD_KERNEL_EXIT,
+};
+
 /* Read a high-resolution timer.  Returns the current timer value in
  * arbitrary units.
  *
@@ -320,6 +335,9 @@ void VbExFree(void* ptr);
  * the OS kernel reports the initial TSC value at kernel-start and
  * calculates the frequency. */
 uint64_t VbExGetTimer(void);
+
+/* Create a timestamp of a particular boot stage. */
+void VbExBootStageMark(enum VbBootStage_t, const char *name);
 
 /* Delay for at least the specified number of milliseconds.  Should be
  * accurate to within 10% (a requested delay of 1000 ms should

@@ -38,6 +38,7 @@ VbError_t VbInit(VbCommonParams* cparams, VbInitParams* iparams) {
   }
 
   shared->timer_vb_init_enter = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_INIT_ENTER, "vb_init_enter");
 
   /* Copy boot switch flags */
   shared->flags = 0;
@@ -127,6 +128,7 @@ VbError_t VbInit(VbCommonParams* cparams, VbInitParams* iparams) {
   VBDEBUG(("VbInit() output flags 0x%x\n", iparams->out_flags));
 
   shared->timer_vb_init_exit = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_INIT_EXIT, "vb_init_exit");
 
   return retval;
 }

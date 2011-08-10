@@ -34,6 +34,8 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
 
   /* Start timer */
   shared->timer_vb_select_firmware_enter = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_SELECT_FIRMWARE_ENTER,
+                    "vb_select_firmware_enter");
 
   /* Load NV storage */
   VbExNvStorageRead(vnc.raw);
@@ -146,6 +148,8 @@ VbSelectFirmware_exit:
 
   /* Stop timer */
   shared->timer_vb_select_firmware_exit = VbExGetTimer();
+  VbExBootStageMark(VB_BOOTSTAGE_SELECT_FIRMWARE_EXIT,
+                    "vb_select_firmware_exit");
 
   /* Should always have a known error code */
   VbAssert(VBERROR_UNKNOWN != retval);
