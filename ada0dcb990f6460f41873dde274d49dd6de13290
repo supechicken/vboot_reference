@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAEH//+QM\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-17T17:04:17Z",
+      "side": 1,
+      "message": "buffer_size",
+      "revId": "ada0dcb990f6460f41873dde274d49dd6de13290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEH//+jU\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -13,6 +30,41 @@
       "writtenOn": "2011-08-17T01:46:25Z",
       "side": 1,
       "message": "How about to make the outsize as a pointer like an input/output parameter? Since it\u0027d be good to know the exactly out_size after decompression.",
+      "revId": "ada0dcb990f6460f41873dde274d49dd6de13290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEH//+QE\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-17T17:04:17Z",
+      "side": 1,
+      "message": "That sounds reasonable.  (Though in the current usage (in bitmaps) we know exactly how big it is.)",
+      "parentUuid": "AAAAEH//+jU\u003d",
+      "revId": "ada0dcb990f6460f41873dde274d49dd6de13290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEH//+P4\u003d",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-17T17:04:17Z",
+      "side": 1,
+      "message": "buffer_size",
       "revId": "ada0dcb990f6460f41873dde274d49dd6de13290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
