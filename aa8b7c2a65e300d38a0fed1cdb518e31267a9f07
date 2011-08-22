@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEH//73Y\u003d",
+        "filename": "utility/vbutil_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-22T16:19:28Z",
+      "side": 1,
+      "message": "We didn\u0027t verify the body.  Suggest restructuring so this print is inside the if(!RO_NORMAL), and then print a different message \"Preamble requests RO_NORMAL; skipping body verification\" if we don\u0027t do the body verification.",
+      "revId": "aa8b7c2a65e300d38a0fed1cdb518e31267a9f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
