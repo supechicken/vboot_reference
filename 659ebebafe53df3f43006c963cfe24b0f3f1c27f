@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEH//6dA\u003d",
+        "filename": "firmware/lib/include/bmpblk_font.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-08-24T08:33:04Z",
+      "side": 1,
+      "message": "I think NOT compressed is not required. The compression info is  described in the ImageInfo. But for performance reason, it is better not to compress the font image. Right?",
+      "revId": "659ebebafe53df3f43006c963cfe24b0f3f1c27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEH//6c4\u003d",
+        "filename": "utility/bmpblk_font.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2011-08-24T08:33:04Z",
+      "side": 1,
+      "message": "Please sort the header files.",
+      "revId": "659ebebafe53df3f43006c963cfe24b0f3f1c27f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
