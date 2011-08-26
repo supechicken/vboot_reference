@@ -8,6 +8,7 @@
 #include "test_common.h"
 
 #include <stdio.h>
+#include <string.h>
 
 #include "cryptolib.h"
 #include "file_keys.h"
@@ -55,4 +56,21 @@ int TEST_PTR_EQ(const void* result, const void* expected_result,
     gTestSuccess = 0;
     return 0;
   }
+}
+
+int TEST_STR_EQ(const char* result, const char* expected_result,
+                char* testname) {
+
+  if (!strcmp(result, expected_result)) {
+    fprintf(stderr, "%s Test " COL_GREEN "PASSED\n" COL_STOP, testname);
+    return 1;
+  }
+  else {
+    fprintf(stderr, "%s Test " COL_RED "FAILED\n" COL_STOP, testname);
+    fprintf(stderr, "  Expected: \"%s\", got: \"%s\"\n", expected_result,
+            result);
+    gTestSuccess = 0;
+    return 0;
+  }
+
 }
