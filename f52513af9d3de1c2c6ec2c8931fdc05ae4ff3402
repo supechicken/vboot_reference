@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEH//4w0\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-26T16:42:03Z",
+      "side": 1,
+      "message": "Need a check for recovery mode.\n\nAs written, recovery mode would look at devsw_boot (below) and enable cros_debug.",
+      "revId": "f52513af9d3de1c2c6ec2c8931fdc05ae4ff3402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
