@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEH//4w8\u003d",
+        "filename": "utility/gbb_utility.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-08-26T16:40:35Z",
+      "side": 1,
+      "message": "This needs to check the header version.  If version is 1.0, it must explicitly return 0.  It can\u0027t just assume that 1.0 headers set it to 0.",
+      "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
