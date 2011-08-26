@@ -73,6 +73,20 @@ static bool write_nonempty_file(const char *filename, const string &content) {
   return r == 1;
 }
 
+// utility function: convert integer to little-endian encoded bytes
+// return the byte array in string type
+static string int2bytes(const uint32_t value) {
+  const char *pvalue = reinterpret_cast<const char*>(&value);
+  return string(pvalue, sizeof(value));
+}
+
+// utility function: convert little-endian encoded bytes to integer
+// return value in uint32_t type
+static uint32_t bytes2int(const string &bytes) {
+  assert(bytes.size() == sizeof(uint32_t));
+  return *reinterpret_cast<const uint32_t*>(bytes.c_str());
+}
+
 ///////////////////////////////////////////////////////////////////////
 // GBB Utility implementation
 
@@ -277,6 +291,13 @@ bool GoogleBinaryBlockUtil::find_property(PROPINDEX i,
                                           uint32_t *psize,
                                           const char** pname) const {
   switch (i) {
+    case PROP_FLAGS:
+      *poffset = (uint8_t*)&header_.flags - (uint8_t*)&header_;
+      *psize = sizeof(header_.flags);
+      if (pname)
+        *pname = "flags";
+      break;
+
     case PROP_HWID:
       *poffset = header_.hwid_offset;
       *psize = header_.hwid_size;
@@ -329,17 +350,27 @@ bool GoogleBinaryBlockUtil::set_property(PROPINDEX i, const string &value) {
 
   if (prop_size < value.size()) {
     if (verbose)
-      fprintf(stderr, " error: value size (%zu) exceed property capacity "
+      fprintf(stderr, "error: value size (%zu) exceed property capacity "
               "(%u): %s\n", value.size(), prop_size, prop_name);
     return false;
   }
 
-  if (i == PROP_HWID && prop_size == value.size()) {
-    // special case: this is NUL-terminated so it's better to keep one more \0
-    if (verbose)
-      fprintf(stderr, "error: NUL-terminated string exceed capacity (%d): %s\n",
-          prop_size, prop_name);
-    return false;
+  // special properties
+  switch (i) {
+    case PROP_HWID:
+      if (value.size() == prop_size) {
+        if (verbose)
+          fprintf(stderr,
+                  "error: NUL-terminated string exceed capacity (%d): %s\n",
+                  prop_size, prop_name);
+        return false;
+      }
+      break;
+
+    case PROP_FLAGS:
+      assert(value.size() == prop_size);
+      header_.flags = bytes2int(value);
+      break;
   }
 
   string::iterator dest = file_content_.begin() + header_offset_ + prop_offset;
@@ -384,6 +415,15 @@ string GoogleBinaryBlockUtil::get_property_name(PROPINDEX i) const {
   return prop_name;
 }
 
+uint32_t GoogleBinaryBlockUtil::get_flags() const {
+  // should be identical to "return header_.flags;"
+  return bytes2int(get_property(PROP_FLAGS));
+}
+
+bool GoogleBinaryBlockUtil::set_flags(const uint32_t flags) {
+  return set_property(PROP_FLAGS, int2bytes(flags));
+}
+
 bool GoogleBinaryBlockUtil::set_hwid(const char *hwid) {
   return set_property(PROP_HWID, hwid);
 }
@@ -421,6 +461,7 @@ static void usagehelp_exit(const char *prog_name) {
     "-g, --get   (default)\tGet (read) from bios_file, "
                             "with following options:\n"
     "     --hwid          \tReport hardware id (default).\n"
+    "     --flags         \tReport header flags.\n"
     " -k, --rootkey=FILE  \tFile name to export Root Key.\n"
     " -b, --bmpfv=FILE    \tFile name to export Bitmap FV.\n"
     "     --recoverykey=FILE\tFile name to export Recovery Key.\n"
@@ -430,6 +471,7 @@ static void usagehelp_exit(const char *prog_name) {
                             "with following options:\n"
     " -o, --output=FILE   \tNew file name for ouptput.\n"
     " -i, --hwid=HWID     \tThe new hardware id to be changed.\n"
+    "     --flags=FLAGS   \tThe new (numeric) flags value.\n"
     " -k, --rootkey=FILE  \tFile name of new Root Key.\n"
     " -b, --bmpfv=FILE    \tFile name of new Bitmap FV.\n"
     "     --recoverykey=FILE\tFile name of new Recovery Key.\n"
@@ -457,7 +499,10 @@ static bool export_property(GoogleBinaryBlockUtil::PROPINDEX idx,
 
   if (filename.empty()) {
     // write to console
-    printf("%s: %s\n", name, value.c_str());
+    if (idx == GoogleBinaryBlockUtil::PROP_FLAGS)
+      printf("%s: 0x%08x\n", name, bytes2int(value));
+    else
+      printf("%s: %s\n", name, value.c_str());
   } else {
     const char *fn = filename.c_str();
 
@@ -496,9 +541,14 @@ static bool import_property(
     // source as string
     string old_value = putil->get_property(idx);
     bool result = putil->set_property(idx, source);
-    printf(" - %s changed from '%s' to '%s': %s\n",
-        prop_name.c_str(), old_value.c_str(), source.c_str(),
-        result ? "success" : "failed");
+    if (idx == GoogleBinaryBlockUtil::PROP_FLAGS)
+      printf(" - %s changed from 0x%08x to 0x%08x: %s\n",
+             prop_name.c_str(), bytes2int(old_value), bytes2int(source),
+             result ? "success" : "failed");
+    else
+      printf(" - %s changed from '%s' to '%s': %s\n",
+             prop_name.c_str(), old_value.c_str(), source.c_str(),
+             result ? "success" : "failed");
     if (!result)
       return false;
   }
@@ -567,6 +617,7 @@ int main(int argc, char *argv[]) {
     {"rootkey", 1, NULL, 'k' },
     {"bmpfv", 1, NULL, 'b' },
     {"recoverykey", 1, NULL, 'R' },
+    {"flags", 2, NULL, 'L' },
     { NULL, 0, NULL, 0 },
   };
 
@@ -617,6 +668,23 @@ int main(int argc, char *argv[]) {
         if (!opt_props.set_new_value(
               GoogleBinaryBlockUtil::PROP_RCVKEY, optarg))
           usagehelp_exit(myname);
+        break;
+
+      case 'L':
+        {
+          uint32_t flags = 0;
+          char *endptr = optarg;
+
+          if (optarg) {
+            flags = strtoul(optarg, &endptr, 0);
+            if (endptr == optarg)
+              usagehelp_exit(myname);
+          }
+
+          if (!opt_props.set_new_value(GoogleBinaryBlockUtil::PROP_FLAGS,
+                                       optarg ? int2bytes(flags) : ""))
+            usagehelp_exit(myname);
+        }
         break;
 
       default:
@@ -701,6 +769,13 @@ int main(int argc, char *argv[]) {
     for (OptPropertyMap::const_iterator i = opt_props.begin();
          i != opt_props.end();
          i++) {
+      switch(i->first) {
+        case GoogleBinaryBlockUtil::PROP_FLAGS:
+        case GoogleBinaryBlockUtil::PROP_HWID:
+          if (!i->second.empty())
+            usagehelp_exit(myname);
+          break;
+      }
       export_property(i->first, i->second, util);
     }
 
@@ -718,8 +793,9 @@ int main(int argc, char *argv[]) {
          i++) {
       bool source_as_file = true;
 
-      // the hwid command line parameter was a simple string.
-      if (i->first == GoogleBinaryBlockUtil::PROP_HWID)
+      // the hwid/flags are assigned in command line parameters
+      if (i->first == GoogleBinaryBlockUtil::PROP_HWID ||
+          i->first == GoogleBinaryBlockUtil::PROP_FLAGS)
         source_as_file = false;
 
       if (!import_property(i->first, i->second, source_as_file, &util)) {
