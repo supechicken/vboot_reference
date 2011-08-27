@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAEH//4S4\u003d",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-08-27T01:01:03Z",
+      "side": 1,
+      "message": "Flags here is using the old \"reserved\" field, which means both new and old GBB headers are still editable by same gbb_utility.\n\nThe problem of not having the \"flag\" in the end is because - it\u0027s not like a \"property\". The padding areas were designed so that \"each new stuff must be a property with offset and size\", and then editing the new fields is easy because we just need to advance its index. Putting flags there, however, uses the offset field and will be a problem to most parsing and validation code there.\n\nIn my opinion, if we want to do a \"flag\", we should either:\n 1. replace the reserved field, since it was reserved to extending fields like this.\n 2. or, make it a real property: have offset and size fields, and pointing to a 4 byte area. This may cause more change in firmware code.\n\nIn the future if we\u0027re adding more \"properties\" in fact we don\u0027t really need to change GBB header version because gbb_utility can read the properties\u0027s offset \u0026 size to decide if we can read/edit that property. I think that\u0027s easier than making logic for lots of version numbers...",
+      "parentUuid": "AAAAEH//4iU\u003d",
+      "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEH//4iE\u003d",
         "filename": "utility/gbb_utility.cc",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2011-08-26T20:30:18Z",
       "side": 1,
       "message": "You could use offsetof() instead.",
+      "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEH//4TI\u003d",
+        "filename": "utility/gbb_utility.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-08-27T01:01:03Z",
+      "side": 1,
+      "message": "That will require including vboot_reference.h and linking the vb library, which gbb_utility does not need now. I prefer to keep it this way so gbb_utility has less dependency.",
+      "parentUuid": "AAAAEH//4iE\u003d",
       "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAEH//4TQ\u003d",
+        "filename": "utility/gbb_utility.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-08-27T01:01:03Z",
+      "side": 1,
+      "message": "The check is now done in get_property. Done.",
+      "parentUuid": "AAAAEH//4w8\u003d",
+      "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEH//4iA\u003d",
         "filename": "utility/gbb_utility.cc",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2011-08-26T20:30:18Z",
       "side": 1,
       "message": "Same here. If version is 1.0, it should complain and exit.",
+      "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEH//4TM\u003d",
+        "filename": "utility/gbb_utility.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-08-27T01:01:03Z",
+      "side": 1,
+      "message": "The check is now done in set_property. Done.",
+      "parentUuid": "AAAAEH//4iA\u003d",
       "revId": "8c7d8bc7769324cc403afa6e2e9e315471ffe061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
