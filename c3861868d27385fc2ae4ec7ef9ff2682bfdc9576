@@ -34,6 +34,24 @@
       "revId": "c3861868d27385fc2ae4ec7ef9ff2682bfdc9576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX///gg\u003d",
+        "filename": "tests/rsa_padding_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-08-29T22:22:17Z",
+      "side": 1,
+      "message": "The description for the test should reflect that (it says \"RSAVerify() wrong key\")",
+      "parentUuid": "AAAAEX///hI\u003d",
+      "revId": "c3861868d27385fc2ae4ec7ef9ff2682bfdc9576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
