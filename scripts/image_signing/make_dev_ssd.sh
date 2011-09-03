@@ -60,12 +60,17 @@ EXEC_LOG="$(make_temp_file)"
 
 # Removes rootfs verification from kernel boot parameter
 remove_rootfs_verification() {
-  local new_root="PARTUUID=%U/PARTNROFF=1"
   echo "$*" | sed '
-    s| root=/dev/dm-0 | root='"$new_root"' |
-    s| dm_verity[^=]*=[-0-9]*||g
-    s| dm="[^"]*"||
+    s| root=/dev/dm-0 | root=PARTUUID=%U/PARTNROFF=1 |;
+    s| dm_verity.error_behavior=[0-9]* | dm_verity.error_behavior=0 |;
     s| ro | rw |'
+}
+
+enable_rootfs_verification() {
+  echo "$*" | sed '
+    s| root=[^ ]* | root=/dev/dm-0 |;
+    s| dm_verity.error_behavior=[0-9]* | dm_verity.error_behavior=0 |;
+    s| rw | ro |'
 }
 
 # Checks if rootfs verification is enabled from kernel boot parameter
