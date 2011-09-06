@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEX//8bM\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "I understand you\u0027re outlining groups of functions, but is it Google practice to do so, and, if not, is it worth the trouble?  Either way is fine with me, though.",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8bE\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "Cool idea!  As long as you don\u0027t overflow.  (Check?)\n\nYou don\u0027t need the +1.\n\nYou probably don\u0027t need exponentialish either, but I can see it makes it easier to figure out the operands.\n\nI have a proof that n^3 - m^3 \u003d j^3 - k^3 is false for all integers n !\u003d m !\u003d j !\u003d k but it won\u0027t fit in this form.",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8ag\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "There is no symbolic constant for expected_recovery \u003d 0?",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8aY\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "Or expected_retval \u003d 0?",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8Yk\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "Why do some messages start with two spaces and others do not?",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8aQ\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "OK---I won\u0027t insist on a symbolic constant for 123 (SOMEWHAT_UNLIKELY_BYTE_VALUE :-)",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8bU\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-09-06T17:00:48Z",
+      "side": 1,
+      "message": "Are you expecting to add other tests?  Otherwise\n\nVbInitTest();\n\nreturn gTestSuccess? 0 : 255;\n\nseems easier to read.  It could be just me though.",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
