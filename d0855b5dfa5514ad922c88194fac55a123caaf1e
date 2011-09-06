@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAEX//8YQ\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-06T17:15:59Z",
+      "side": 1,
+      "message": "I need the +1, so that the difference of 2 timer values is also different from any previously returned timer value.\n\nWe return 21, 43, 87, ...  \nWithout the +1, we\u0027d return 20, 40, 80, and wouldn\u0027t be able to tell if a value \u002740\u0027 is directly from the timer, or 80-40.\n\nI\u0027ll add an overflow assertion.",
+      "parentUuid": "AAAAEX//8bE\u003d",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEX//8ag\u003d",
         "filename": "tests/vboot_api_init_tests.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2011-09-06T17:00:48Z",
       "side": 1,
       "message": "There is no symbolic constant for expected_recovery \u003d 0?",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8XU\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-06T17:15:59Z",
+      "side": 1,
+      "message": "There is, but recovery functionality is explicitly conditional on \"non-zero\" so 0 works too (and forces fewer line-wraps in the tests)",
+      "parentUuid": "AAAAEX//8ag\u003d",
       "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAEX//8XM\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-06T17:15:59Z",
+      "side": 1,
+      "message": "Same here.  Error is explicitly non-zero, so test with 0 is valid and more concise the checking vs. VBERROR_SUCCESS.",
+      "parentUuid": "AAAAEX//8aY\u003d",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEX//8Yk\u003d",
         "filename": "tests/vboot_api_init_tests.c",
         "patchSetId": 1
@@ -81,6 +135,24 @@
       "writtenOn": "2011-09-06T17:00:48Z",
       "side": 1,
       "message": "Why do some messages start with two spaces and others do not?",
+      "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//8Xw\u003d",
+        "filename": "tests/vboot_api_init_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-06T17:15:59Z",
+      "side": 1,
+      "message": "Indented messages are sub-results of a previous VbInit() call.  Did some cleanup here.",
+      "parentUuid": "AAAAEX//8Yk\u003d",
       "revId": "d0855b5dfa5514ad922c88194fac55a123caaf1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
