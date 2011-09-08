@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAEX//7uw\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: 2011",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//7EU\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: \"self-extraction.\"",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//7Eo\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "could you just use . instead of calling sh? This presumes what the shell binary is called, no?",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//7EY\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: \"uudecode.\"",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//7EE\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "it is more normal to have the first argument be the input, and the second be the output. This also matches the convention followed in this file. Please change.",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//64U\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: repacking.",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//64Q\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: payload.",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//64A\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "Note that the keyset name is not necessarily the same as ${KEY_DIR}. One option is to include the public key hash of the firmware signing key - I think the what_keys tool displays the md5sum of the public signing key used in the system. We could just use that.",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAEX//638\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-08T21:38:30Z",
+      "side": 1,
+      "message": "nit: extra newline",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
