@@ -282,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAEX//6dQ\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-09T16:55:03Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to keep it as is. I would just change the wording somewhat - \"Signed with keyset in ${KEY_DIR}...\"",
+      "parentUuid": "AAAAEX//6ns\u003d",
+      "revId": "a514cb7145066ea0f2f723de2481e45515e1240f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAEX//638\u003d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
