@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9gk\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9oc\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9m0\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-09-15T20:20:00Z",
       "side": 1,
       "message": "since usage + exit 1 is called at multiple places, exit 1 should just be moved inside the usage() function.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9gg\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9m0\u003d",
       "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9gc\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "disagree, I am shift-ing stuff so that I can catch the option given to --cgpt",
+      "parentUuid": "AAAAFX//9nE\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9o4\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2011-09-15T20:20:00Z",
       "side": 1,
       "message": "remove debug message.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9gY\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9o4\u003d",
       "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9gU\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9no\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9mo\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2011-09-15T20:20:00Z",
       "side": 1,
       "message": "Please re-structure this in a way where you are not repeating the same code sequence at multiple places. this check could be moved elsewhere (down below).",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9gQ\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "the check here makes sure there was a value supplied when --cgpt was specified. ugly but works.",
+      "parentUuid": "AAAAFX//9mo\u003d",
       "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9hY\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "removed, done.",
+      "parentUuid": "AAAAFX//9mY\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9os\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2011-09-15T20:20:00Z",
       "side": 1,
       "message": "just use [ ], not [[]]",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9hc\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9os\u003d",
       "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9gE\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9nA\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9m4\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//9gA\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9m4\u003d",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9ow\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 1
@@ -183,6 +363,24 @@
       "writtenOn": "2011-09-15T20:20:00Z",
       "side": 1,
       "message": "update this message - it should be in the path or specified on the command line.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9f8\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000420
+      },
+      "writtenOn": "2011-09-15T21:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9ow\u003d",
       "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
