@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFX//9oc\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "you can combine the 2 checks here - args \u003e4 or args \u003c1 since you print usage and exit in both cases.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9m0\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "since usage + exit 1 is called at multiple places, exit 1 should just be moved inside the usage() function.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9nE\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "instead of using numeric comparison here - just use\n\nfor arg in $*;",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9o4\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "remove debug message.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9no\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "why not just directly modify GPT. The indirection doesn\u0027t seem to be buying you anything.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9mo\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "Please re-structure this in a way where you are not repeating the same code sequence at multiple places. this check could be moved elsewhere (down below).",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9mY\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "what is the intended precedence order here? with this option, do we even care about allowing the calling environment to decide which binary will be called?",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9os\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "just use [ ], not [[]]",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9nA\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "you seem to be doing the same check at multiple places. common_minimal will auto-set GPT to cgpt if it is not already defined. You don\u0027t need this.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9m4\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "this checked should be moved in after common_minimal.sh",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9ow\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-15T20:20:00Z",
+      "side": 1,
+      "message": "update this message - it should be in the path or specified on the command line.",
+      "revId": "ca93a668360c262d39566fd54d115a4f6ea52ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
