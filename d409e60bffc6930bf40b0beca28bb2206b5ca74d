@@ -73,6 +73,42 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//84U\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9YM\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//84Q\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9Uc\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9UA\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 2
@@ -84,6 +120,24 @@
       "writtenOn": "2011-09-16T00:58:51Z",
       "side": 1,
       "message": "Also add a description what what --cgpt option does.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//8+A\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9UA\u003d",
       "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -107,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//898\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9SQ\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9T0\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 2
@@ -124,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFX//894\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFX//9T0\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFX//9To\u003d",
         "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
         "patchSetId": 2
@@ -135,6 +225,24 @@
       "writtenOn": "2011-09-16T00:58:51Z",
       "side": 1,
       "message": "Move this to common minimal.sh, right after GPT is assigned.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//884\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000619
+      },
+      "writtenOn": "2011-09-16T18:02:06Z",
+      "side": 1,
+      "message": "I disagree. I believe that would impose a burden on every caller of common_minimal.sh even if they did not need cgpt for their function.",
+      "parentUuid": "AAAAFX//9To\u003d",
       "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
