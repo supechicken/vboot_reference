@@ -16,6 +16,24 @@
       "revId": "26d0340336a2a00abd9ec03f81546922e93bf0f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//80s\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T19:04:56Z",
+      "side": 1,
+      "message": "Just so it is clear why I am asking you to do this - this will make the code simpler. You get rid of at least get rid of 2 lines (for each shift), and it closely matches the general bash way of processing a list.",
+      "parentUuid": "AAAAFX//82E\u003d",
+      "revId": "26d0340336a2a00abd9ec03f81546922e93bf0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
