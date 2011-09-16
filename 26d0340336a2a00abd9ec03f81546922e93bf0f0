@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFX//82E\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T18:49:26Z",
+      "side": 1,
+      "message": "Since now each argument can be parsed independently without needing shifts, use \n\n\"for args in $* \" to go through the arguments here.",
+      "revId": "26d0340336a2a00abd9ec03f81546922e93bf0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
