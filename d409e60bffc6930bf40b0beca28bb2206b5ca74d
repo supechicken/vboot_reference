@@ -52,6 +52,92 @@
       "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9Uc\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T00:58:51Z",
+      "side": 1,
+      "message": "Eric: Did you try David\u0027s suggestion :- instead of :\u003d doesn\u0027t work?",
+      "parentUuid": "AAAAFX//9YM\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9UA\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T00:58:51Z",
+      "side": 1,
+      "message": "Also add a description what what --cgpt option does.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9SQ\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T00:58:51Z",
+      "side": 1,
+      "message": "you can really simplify this by having the argument of the form\n --cgpt\u003d/path/to/cgpt\n\nThen you just go through $* here. And case match would be \n--cgpt\u003d*)\n cgpt_path\u003d${i%--cgpt\u003d} where % removes the prefix.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9T0\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T00:58:51Z",
+      "side": 1,
+      "message": "this is not needed. The type -P will catch the empty $GPT if you quote \"$GPT\" properly. See my other comment below.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9To\u003d",
+        "filename": "scripts/image_signing/convert_recovery_to_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-09-16T00:58:51Z",
+      "side": 1,
+      "message": "Move this to common minimal.sh, right after GPT is assigned.",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
