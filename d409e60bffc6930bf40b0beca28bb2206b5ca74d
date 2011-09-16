@@ -34,6 +34,24 @@
       "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFX//9YM\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000064
+      },
+      "writtenOn": "2011-09-16T00:00:16Z",
+      "side": 1,
+      "message": "That construct is less clear (to me) than var\u003d${var:-\"default\"}, but I suggest going with the style used elsewhere in vboot reference - whatever that may be.",
+      "parentUuid": "AAAAFX//9Yc\u003d",
+      "revId": "d409e60bffc6930bf40b0beca28bb2206b5ca74d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
