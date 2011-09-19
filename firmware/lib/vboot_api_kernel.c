@@ -5,6 +5,7 @@
  * High-level firmware wrapper API - entry points for kernel selection
  */
 
+#include "crc32.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
 #include "rollback_index.h"
@@ -105,77 +106,215 @@ VbError_t VbBootNormal(VbCommonParams* cparams, LoadKernelParams* p) {
   return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
 
+#define DEV_LOOP_TIME 10  /* Minimum note granularity in msecs */
 
-/* Developer mode delays.  All must be multiples of DEV_DELAY_INCREMENT */
-#define DEV_DELAY_INCREMENT 250  /* Delay each loop, in msec */
-#define DEV_DELAY_BEEP1 20000    /* Beep for first time at this time */
-#define DEV_DELAY_BEEP2 20500    /* Beep for second time at this time */
-#define DEV_DELAY_TIMEOUT 30000  /* Give up at this time */
-#define DEV_DELAY_TIMEOUT_SHORT 2000  /* Give up at this time (short delay) */
+/* Can we actually process sound in the background? */
+static int background_beep = 0;
+
+static uint16_t VbMsecToLoops(uint16_t msec) {
+  return (DEV_LOOP_TIME / 2 + msec) / DEV_LOOP_TIME;
+}
+
+static VbDevMusicNote default_notes[] = { {20000, 0}, /* 20 seconds */
+                                          {250, 400}, /* two beeps */
+                                          {250, 0},
+                                          {250, 400},
+                                          {9250, 0} }; /* total 30 seconds */
+
+static VbDevMusicNote short_notes[] = { {2000, 0} };   /* two seconds */
+
+/* Allocate and return a valid set of note events. We'll use the user's struct
+ * if possible, but we will still enforce the 30-second timeout and require at
+ * least a second of audible noise within that period. We allocate storage for
+ * two reasons: the user's struct will be in flash, which is slow to read, and
+ * we may need one extra note at the end to pad out the user's notes to a full
+ * 30 seconds. The caller should free it when finished.
+ */
+static VbDevMusicNote* VbGetDevMusicNotes(uint32_t *count, int use_short) {
+  VbDevMusicNote *notebuf = 0;
+  VbDevMusicNote *builtin = 0;
+  VbDevMusic *hdr = CUSTOM_MUSIC_NOTES;
+  uint32_t maxsize = CUSTOM_MUSIC_MAXSIZE;
+  uint32_t mysize, mysum, mylen, i;
+  uint64_t on_loops, total_loops, min_loops;
+  uint16_t this_loops;
+
+  VBDEBUG(("VbGetDevMusicNotes: use_short is %d, hdr is %lx, maxsize is %d\n",
+           use_short, hdr, maxsize));
+
+  if (use_short) {
+    builtin = short_notes;
+    *count = sizeof(short_notes) / sizeof(short_notes[0]);
+    goto nope;
+  }
+
+  builtin = default_notes;
+  *count = sizeof(default_notes) / sizeof(default_notes[0]);
+
+  /* If we don't have full background sound capability, don't customize */
+  if (VBERROR_SUCCESS != VbExBeep(0,0)) {
+    VBDEBUG(("VbGetDevMusicNotes: VbExBeep() is limited\n"));
+    background_beep = 0;
+    goto nope;
+  }
+  background_beep = 1;
+
+  if (!hdr)
+    goto nope;
+
+  if (0 != Memcmp(hdr->sig, "$SND", sizeof(hdr->sig))) {
+    VBDEBUG(("VbGetDevMusicNotes: bad sig\n"));
+    goto nope;
+  }
+
+  mysize = sizeof(*hdr) + (hdr->count - 1) * sizeof(hdr->notes[0]);
+
+  if (hdr->count == 0 || mysize > maxsize) {
+    VBDEBUG(("VbGetDevMusicNotes: count=%d mysize=%d\n", hdr->count, mysize));
+    goto nope;
+  }
+
+  mylen = (uint32_t)(sizeof(hdr->count) + hdr->count * sizeof(hdr->notes[0]));
+  mysum = Crc32(&(hdr->count), mylen);
+
+  if (mysum != hdr->checksum) {
+    VBDEBUG(("VbGetDevMusicNotes: mysum=%08x, want=%08x\n",
+             mysum, hdr->checksum));
+    goto nope;
+  }
+
+  VBDEBUG(("VbGetDevMusicNotes: custom notes struct found at %lx\n", hdr));
+
+  /* Measure the audible sound up to the first 22 seconds, being careful to
+   * avoid rollover. The note time is 16 bits, and the note count is 32 bits.
+   * The product should fit in 64 bits.
+   */
+  total_loops = 0;
+  on_loops = 0;
+  min_loops = VbMsecToLoops(22000);
+  for (i=0; i < hdr->count; i++) {
+    this_loops = VbMsecToLoops(hdr->notes[i].msec);
+    if (this_loops) {
+      total_loops += this_loops;
+      if (total_loops <= min_loops &&
+          hdr->notes[i].frequency >= 100 && hdr->notes[i].frequency <= 2000)
+        on_loops += this_loops;
+    }
+  }
+
+  /* We require at least one second of noise */
+  VBDEBUG(("VbGetDevMusicNotes:   with %ld msecs of sound to begin\n",
+           on_loops * DEV_LOOP_TIME));
+  if (on_loops < VbMsecToLoops(1000)) {
+    goto nope;
+  }
+
+  /* Okay, it looks good. Allocate the space and copy it over */
+  notebuf = VbExMalloc((hdr->count + 1) * sizeof(hdr->notes[0]));
+  Memcpy(notebuf, hdr->notes, hdr->count * sizeof(hdr->notes[0]));
+  *count = hdr->count;
+
+  /* We also require at least 30 seconds of delay. */
+  min_loops = VbMsecToLoops(30000);
+  VBDEBUG(("VbGetDevMusicNotes:   lasting %ld msecs\n",
+           total_loops * DEV_LOOP_TIME));
+  if (total_loops < min_loops) {
+    /* If the total time is less than 30 seconds, the needed difference will
+     * fit in 16 bits.
+     */
+    this_loops = (uint16_t)((min_loops - total_loops) & 0xffff);
+    notebuf[hdr->count].msec = this_loops * DEV_LOOP_TIME;
+    notebuf[hdr->count].frequency = 0;
+    (*count)++;
+    VBDEBUG(("VbGetDevMusicNotes:   adding %ld msecs of silence\n",
+             this_loops * DEV_LOOP_TIME));
+  }
+
+  /* done */
+  return notebuf;
+
+nope:
+  /* no custom notes, use the default. *count is already set. */
+  VBDEBUG(("VbGetDevMusicNotes: using default notes\n"));
+  notebuf = VbExMalloc((*count) * sizeof(builtin[0]));
+  Memcpy(notebuf, builtin, *count * sizeof(builtin[0]));
+
+  return notebuf;
+}
+
 
 /* Handle a developer-mode boot */
 VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
   GoogleBinaryBlockHeader* gbb = (GoogleBinaryBlockHeader*)cparams->gbb_data;
-  uint32_t delay_timeout = DEV_DELAY_TIMEOUT;
-  uint32_t delay_time = 0;
   uint32_t allow_usb = 0;
+  uint32_t note_count = 0;
+  VbDevMusicNote* music_notes = 0;
+  uint32_t current_note = 0;
+  uint32_t current_note_loops = 0;
 
   /* Check if USB booting is allowed */
   VbNvGet(&vnc, VBNV_DEV_BOOT_USB, &allow_usb);
 
-  /* Use a short developer screen delay if indicated by GBB flags */
-  if (gbb->major_version == GBB_MAJOR_VER && gbb->minor_version >= 1
-      && (gbb->flags & GBB_FLAG_DEV_SCREEN_SHORT_DELAY)) {
-    VBDEBUG(("VbBootDeveloper() - using short developer screen delay\n"));
-    delay_timeout = DEV_DELAY_TIMEOUT_SHORT;
-  }
-
   /* Show the dev mode warning screen */
   VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
 
-  /* Loop for dev mode warning delay */
-  for (delay_time = 0; delay_time < delay_timeout;
-       delay_time += DEV_DELAY_INCREMENT) {
+  /* Prepare to generate audio/delay event. Use a short developer screen delay
+   * if indicated by GBB flags.
+   */
+  if (gbb->major_version == GBB_MAJOR_VER && gbb->minor_version >= 1
+      && (gbb->flags & GBB_FLAG_DEV_SCREEN_SHORT_DELAY)) {
+    VBDEBUG(("VbBootDeveloper() - using short developer screen delay\n"));
+    music_notes = VbGetDevMusicNotes(&note_count, 1);
+  } else {
+    music_notes = VbGetDevMusicNotes(&note_count, 0);
+  }
+
+  VBDEBUG(("VbBootDeveloper() - note count %d\n", note_count));
+
+  /* We'll loop until we finish the notes or are interrupted */
+  while(1) {
     uint32_t key;
 
     if (VbExIsShutdownRequested())
       return VBERROR_SHUTDOWN_REQUESTED;
 
-    if (DEV_DELAY_BEEP1 == delay_time || DEV_DELAY_BEEP2 == delay_time)
-      VbExBeep(DEV_DELAY_INCREMENT, 400);
-    else
-      VbExSleepMs(DEV_DELAY_INCREMENT);
-
-    /* Handle keypress */
     key = VbExKeyboardRead();
     switch (key) {
+      case 0:
+        /* nothing pressed */
+        break;
       case '\r':
       case ' ':
       case 0x1B:
         /* Enter, space, or ESC = reboot to recovery */
         VBDEBUG(("VbBootDeveloper() - user pressed ENTER/SPACE/ESC\n"));
+        VbExBeep(0, 0);                /* sound off */
         VbSetRecoveryRequest(VBNV_RECOVERY_RW_DEV_SCREEN);
+        VbExFree(music_notes);
         return 1;
       case 0x04:
         /* Ctrl+D = dismiss warning; advance to timeout */
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+D; skip delay\n"));
-        delay_time = DEV_DELAY_TIMEOUT;
+        goto fallout;
         break;
       case 0x15:
         /* Ctrl+U = try USB boot, or beep if failure */
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+U; try USB\n"));
+        VbExBeep(0, 0);                /* sound off */
         if (!allow_usb) {
           VBDEBUG(("VbBootDeveloper() - USB booting is disabled\n"));
-          VbExBeep(DEV_DELAY_INCREMENT / 2, 400);
-          VbExSleepMs(DEV_DELAY_INCREMENT / 2);
-          VbExBeep(DEV_DELAY_INCREMENT / 2, 400);
+          VbExBeep(250, 400);
+          VbExSleepMs(250);
+          VbExBeep(250, 400);
         } else if (VBERROR_SUCCESS ==
                    VbTryLoadKernel(cparams, p, VB_DISK_FLAG_REMOVABLE)) {
           VBDEBUG(("VbBootDeveloper() - booting USB\n"));
+          VbExFree(music_notes);
           return VBERROR_SUCCESS;
         } else {
           VBDEBUG(("VbBootDeveloper() - no kernel found on USB\n"));
-          VbExBeep(DEV_DELAY_INCREMENT, 400);
+          VbExBeep(250, 200);
+          VbExBeep(100, 0);
           /* Clear recovery requests from failed kernel loading, so
            * that powering off at this point doesn't put us into
            * recovery mode. */
@@ -186,10 +325,48 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
         VbCheckDisplayKey(cparams, key, &vnc);
         break;
     }
+
+    /* Time to play a note? */
+    if (!current_note_loops) {
+      VBDEBUG(("VbBootDeveloper() - current_note is %d\n", current_note));
+
+      /* Sorry, out of notes */
+      if (current_note >= note_count)
+        break;
+
+      /* For how many loops do we hold this note? */
+      current_note_loops = VbMsecToLoops(music_notes[current_note].msec);
+      VBDEBUG(("VbBootDeveloper() - new current_note_loops == %d\n",
+               current_note_loops));
+
+      if (background_beep) {
+
+        /* start (or stop) the sound */
+        VbExBeep(0, music_notes[current_note].frequency);
+
+      } else if (music_notes[current_note].frequency) {
+
+        /* the sound will block, so don't loop repeatedly */
+        current_note_loops = DEV_LOOP_TIME;
+        VbExBeep(music_notes[current_note].msec,
+                 music_notes[current_note].frequency);
+      }
+
+      current_note++;
+    }
+
+    /* Wait a bit */
+    VbExSleepMs(DEV_LOOP_TIME);
+
+    /* That's one... */
+    current_note_loops--;
   }
 
+fallout:
   /* Timeout or Ctrl+D; attempt loading from fixed disk */
+  VbExBeep(0, 0);                /* sound off */
   VBDEBUG(("VbBootDeveloper() - trying fixed disk\n"));
+  VbExFree(music_notes);
   return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
 
