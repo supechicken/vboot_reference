@@ -606,6 +606,8 @@ const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
         return StrCopy(dest, "A", size);
       case 2:
         return StrCopy(dest, "B", size);
+      case 3:
+        return StrCopy(dest, "RO", size);
       default:
         return NULL;
     }
