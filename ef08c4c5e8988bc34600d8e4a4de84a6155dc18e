@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//9tU\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-22T23:52:50Z",
+      "side": 1,
+      "message": "No, we\u0027re still using the verified boot block from either A or B firmware, and making this \u0027RO\u0027 would obscure that (and break a autoupdate and a bunch of unit tests).\n\nTo check if you\u0027re in RO-normal firmware, look at `crossystem vdat_flags` and see if VBSD_LF_USE_RO_NORMAL (0x08) is set.",
+      "revId": "ef08c4c5e8988bc34600d8e4a4de84a6155dc18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
