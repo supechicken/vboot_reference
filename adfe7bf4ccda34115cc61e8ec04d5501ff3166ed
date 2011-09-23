@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//9QI\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000062
+      },
+      "writtenOn": "2011-09-23T19:36:01Z",
+      "side": 1,
+      "message": "If you\u0027re going to define this as local, you should do it at the top of the function, otherwise just do it in-line when defining it.  I prefer the former.",
+      "revId": "adfe7bf4ccda34115cc61e8ec04d5501ff3166ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
