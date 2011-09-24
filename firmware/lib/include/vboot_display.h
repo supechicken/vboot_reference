@@ -34,5 +34,8 @@ typedef struct VbDevMusic {
   /* more VbDevMusicNotes follow immediately */
 } __attribute__((packed)) VbDevMusic;
 
+void *VbExGetMusicPtr(void);
+uint32_t VbExMaxMusicSize(void);
+
 #endif /* VBOOT_REFERENCE_VBOOT_DISPLAY_H_ */
 

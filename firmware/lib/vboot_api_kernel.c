@@ -5,6 +5,7 @@
  * High-level firmware wrapper API - entry points for kernel selection
  */
 
+#include "crc32.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
 #include "rollback_index.h"
@@ -122,24 +123,123 @@ static VbDevMusicNote default_notes[] = { {20000, 0}, /* 20 seconds */
 
 static VbDevMusicNote short_notes[] = { {2000, 0} };   /* two seconds */
 
-/* Return a valid set of note events. */
+/* Allocate and return a valid set of note events. We'll use the user's struct
+ * if possible, but we will still enforce the 30-second timeout and require at
+ * least a second of audible noise within that period. We allocate storage for
+ * two reasons: the user's struct will be in flash, which is slow to read, and
+ * we may need one extra note at the end to pad out the user's notes to a full
+ * 30 seconds. The caller should free it when finished.
+ */
 static VbDevMusicNote* VbGetDevMusicNotes(uint32_t *count, int use_short) {
+  VbDevMusicNote *notebuf = 0;
+  VbDevMusicNote *builtin = 0;
+  VbDevMusic *hdr = CUSTOM_MUSIC_NOTES;
+  uint32_t maxsize = CUSTOM_MUSIC_MAXSIZE;
+  uint32_t mysize, mysum, mylen, i;
+  uint64_t on_loops, total_loops, min_loops;
+  uint16_t this_loops;
 
-  /* See if we have full background sound capability or not. */
+  VBDEBUG(("VbGetDevMusicNotes: use_short is %d, hdr is %lx, maxsize is %d\n",
+           use_short, hdr, maxsize));
+
+  if (use_short) {
+    builtin = short_notes;
+    *count = sizeof(short_notes) / sizeof(short_notes[0]);
+    goto nope;
+  }
+
+  builtin = default_notes;
+  *count = sizeof(default_notes) / sizeof(default_notes[0]);
+
+  /* If we don't have full background sound capability, don't customize */
   if (VBERROR_SUCCESS != VbExBeep(0,0)) {
     VBDEBUG(("VbGetDevMusicNotes: VbExBeep() is limited\n"));
     background_beep = 0;
-  } else {
-    background_beep = 1;
+    goto nope;
+  }
+  background_beep = 1;
+
+  if (!hdr)
+    goto nope;
+
+  if (0 != Memcmp(hdr->sig, "$SND", sizeof(hdr->sig))) {
+    VBDEBUG(("VbGetDevMusicNotes: bad sig\n"));
+    goto nope;
   }
 
-  if (use_short) {
-    *count = sizeof(short_notes) / sizeof(short_notes[0]);
-    return short_notes;
+  mysize = sizeof(*hdr) + (hdr->count - 1) * sizeof(hdr->notes[0]);
+
+  if (hdr->count == 0 || mysize > maxsize) {
+    VBDEBUG(("VbGetDevMusicNotes: count=%d mysize=%d\n", hdr->count, mysize));
+    goto nope;
   }
 
-  *count = sizeof(default_notes) / sizeof(default_notes[0]);
-  return default_notes;
+  mylen = (uint32_t)(sizeof(hdr->count) + hdr->count * sizeof(hdr->notes[0]));
+  mysum = Crc32(&(hdr->count), mylen);
+
+  if (mysum != hdr->checksum) {
+    VBDEBUG(("VbGetDevMusicNotes: mysum=%08x, want=%08x\n",
+             mysum, hdr->checksum));
+    goto nope;
+  }
+
+  VBDEBUG(("VbGetDevMusicNotes: custom notes struct found at %lx\n", hdr));
+
+  /* Measure the audible sound up to the first 22 seconds, being careful to
+   * avoid rollover. The note time is 16 bits, and the note count is 32 bits.
+   * The product should fit in 64 bits.
+   */
+  total_loops = 0;
+  on_loops = 0;
+  min_loops = VbMsecToLoops(22000);
+  for (i=0; i < hdr->count; i++) {
+    this_loops = VbMsecToLoops(hdr->notes[i].msec);
+    if (this_loops) {
+      total_loops += this_loops;
+      if (total_loops <= min_loops &&
+          hdr->notes[i].frequency >= 100 && hdr->notes[i].frequency <= 2000)
+        on_loops += this_loops;
+    }
+  }
+
+  /* We require at least one second of noise */
+  VBDEBUG(("VbGetDevMusicNotes:   with %ld msecs of sound to begin\n",
+           on_loops * DEV_LOOP_TIME));
+  if (on_loops < VbMsecToLoops(1000)) {
+    goto nope;
+  }
+
+  /* Okay, it looks good. Allocate the space and copy it over */
+  notebuf = VbExMalloc((hdr->count + 1) * sizeof(hdr->notes[0]));
+  Memcpy(notebuf, hdr->notes, hdr->count * sizeof(hdr->notes[0]));
+  *count = hdr->count;
+
+  /* We also require at least 30 seconds of delay. */
+  min_loops = VbMsecToLoops(30000);
+  VBDEBUG(("VbGetDevMusicNotes:   lasting %ld msecs\n",
+           total_loops * DEV_LOOP_TIME));
+  if (total_loops < min_loops) {
+    /* If the total time is less than 30 seconds, the needed difference will
+     * fit in 16 bits.
+     */
+    this_loops = (uint16_t)((min_loops - total_loops) & 0xffff);
+    notebuf[hdr->count].msec = this_loops * DEV_LOOP_TIME;
+    notebuf[hdr->count].frequency = 0;
+    (*count)++;
+    VBDEBUG(("VbGetDevMusicNotes:   adding %ld msecs of silence\n",
+             this_loops * DEV_LOOP_TIME));
+  }
+
+  /* done */
+  return notebuf;
+
+nope:
+  /* no custom notes, use the default. *count is already set. */
+  VBDEBUG(("VbGetDevMusicNotes: using default notes\n"));
+  notebuf = VbExMalloc((*count) * sizeof(builtin[0]));
+  Memcpy(notebuf, builtin, *count * sizeof(builtin[0]));
+
+  return notebuf;
 }
 
 
@@ -266,6 +366,7 @@ fallout:
   /* Timeout or Ctrl+D; attempt loading from fixed disk */
   VbExBeep(0, 0);                /* sound off */
   VBDEBUG(("VbBootDeveloper() - trying fixed disk\n"));
+  VbExFree(music_notes);
   return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
 

@@ -50,6 +50,15 @@
 #define VBEASTEREGG(A,B)
 #endif
 
+/* Optional, up to the BIOS */
+#ifdef CUSTOM_MUSIC
+#define CUSTOM_MUSIC_NOTES VbExGetMusicPtr()
+#define CUSTOM_MUSIC_MAXSIZE VbExMaxMusicSize()
+#else
+#define CUSTOM_MUSIC_NOTES 0
+#define CUSTOM_MUSIC_MAXSIZE 0
+#endif
+
 /* Combine [msw] and [lsw] uint16s to a uint32_t with its [msw] and
  * [lsw] forming the most and least signficant 16-bit words.
  */
