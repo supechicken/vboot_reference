@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//8XI\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T20:21:04Z",
+      "side": 1,
+      "message": "Since you init it to 0 above, only need to set it to 1 in the VBERROR_SUCCESS case; can remove the else.",
+      "revId": "46eecdb8c2b5691e9e659d5f63d3ea4385ca4be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
