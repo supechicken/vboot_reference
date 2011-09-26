@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//8g8\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-09-26T20:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//8oo\u003d",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//8nc\u003d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2011-09-26T17:41:28Z",
       "side": 1,
       "message": "VbGetDevMusicNotes() is returning one of two static arrays.  Freeing that array will do bad things.",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8g4\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-09-26T20:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//8nc\u003d",
       "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAFn//8g0\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-09-26T20:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//8nQ\u003d",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAFn//8lA\u003d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2011-09-26T17:41:28Z",
       "side": 1,
       "message": "\u003d 1",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8gs\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-09-26T20:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//8lA\u003d",
       "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +170,24 @@
       "writtenOn": "2011-09-26T17:41:28Z",
       "side": 1,
       "message": "Change to \n\nif (current_note_loops)\n  current_note_loops--;\n\nsince that protects against wraparound if the new note has current_note_loops\u003d0",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8gU\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-09-26T20:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAFn//8ks\u003d",
       "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
