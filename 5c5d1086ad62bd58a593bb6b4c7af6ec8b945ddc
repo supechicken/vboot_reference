@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//8o8\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T16:34:44Z",
+      "side": 1,
+      "message": "indicate specifically that the meaningful error codes are  VBERROR_NO_SOUND and VBERROR_NO_BACKGROUND_SOUND, and that VbExBeep(0, 0) must return one of those - it can\u0027t simply say \"oh, duration\u003d0 and freq\u003d0 so even though I don\u0027t support making sound I wasn\u0027t asked to\"",
+      "revId": "5c5d1086ad62bd58a593bb6b4c7af6ec8b945ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
