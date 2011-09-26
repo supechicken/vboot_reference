@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//8oo\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "It\u0027s odd that the function to get the list of music notes has the side-effect of setting a global variable.  Since we only use the global in VbBootDeveloper, move this check and the background_beep variable local to that function.",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8nc\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "VbGetDevMusicNotes() is returning one of two static arrays.  Freeing that array will do bad things.",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8nQ\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8lA\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "\u003d 1",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8lE\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "Note that this waits an extra bit if !background_beep (worth commenting, but not worth worrying about, since loop time is now 10ms",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//8ks\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-26T17:41:28Z",
+      "side": 1,
+      "message": "Change to \n\nif (current_note_loops)\n  current_note_loops--;\n\nsince that protects against wraparound if the new note has current_note_loops\u003d0",
+      "revId": "a09d3978f1b6a7edab400a3df626d1f4c2f91c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
