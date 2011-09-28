@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//6t0\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-28T22:58:13Z",
+      "side": 1,
+      "message": "If we put this in a separate file, we could use it in crossystem too, so that it could have a recovery_reason_desc field.",
+      "revId": "259ff1f894d8901d3bd81cea8b85435425b264df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//6t4\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-09-28T22:58:13Z",
+      "side": 1,
+      "message": "end comment?",
+      "revId": "259ff1f894d8901d3bd81cea8b85435425b264df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
