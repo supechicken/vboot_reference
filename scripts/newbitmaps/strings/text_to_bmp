@@ -34,6 +34,7 @@ for txtfile in $*; do
         --output "$pngfile" \
         "$txtfile"
       convert -colors 256 -compress none -alpha off "$pngfile" "$bmpfile"
+      rm -f "$pngfile"
       echo "wrote $bmpfile"
       ;;
     *.TXT)
@@ -44,6 +45,7 @@ for txtfile in $*; do
         --output "$pngfile" \
         "$txtfile"
       convert -colors 256 -compress none -alpha off "$pngfile" "$bmpfile"
+      rm -f "$pngfile"
       echo "wrote $bmpfile"
       ;;
     *)
