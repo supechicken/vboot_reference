@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//3/k\u003d",
+        "filename": "tests/vboot_audio_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-05T02:52:47Z",
+      "side": 1,
+      "message": "for vboot_audio",
+      "revId": "d46b5cabf394813c9db4f5f22ff3a4395a717a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//3/g\u003d",
+        "filename": "tests/vboot_audio_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-05T02:52:47Z",
+      "side": 1,
+      "message": "Could also add tests for not enough noise in the acceptable frequency range.  (Ok to do in a later CL)",
+      "revId": "d46b5cabf394813c9db4f5f22ff3a4395a717a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
