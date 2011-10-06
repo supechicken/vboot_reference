@@ -16,6 +16,24 @@
       "revId": "fea1876c0030670ae4bf62ca292564936bf2a958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//3JA\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2011-10-06T17:55:17Z",
+      "side": 1,
+      "message": "I think the specific problem is random communication failure on the I2C bus, judging from the bug.\n\nThe problem with this fix is that if a real problem is encountered, the machine will become unbootable and will have to be reflashed manually before we can even tell what\u0027s going on.\n\nIs it not possible to fix this by being more aggressive in retrying communication?  It has to be done at a fairly low level, i.e. we cannot just retry a command when it fails, because most commands are not idempotent.\n\nEither way, is there a way of narrowing down this CL to a small set of machines instead of imposing it to everybody?  Perhaps do it on a branch?",
+      "parentUuid": "AAAAFn//3KQ\u003d",
+      "revId": "fea1876c0030670ae4bf62ca292564936bf2a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
