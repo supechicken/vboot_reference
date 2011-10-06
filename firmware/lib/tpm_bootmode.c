@@ -131,5 +131,18 @@ uint32_t SetTPMBootModeState(int developer_mode, int recovery_mode,
   result = TlclExtend(BOOT_MODE_PCR, in_digest, out_digest);
   VBDEBUG(("TPM: SetTPMBootModeState boot mode PCR out_digest %02x %02x %02x "
            "%02x\n", out_digest, out_digest+1, out_digest+2, out_digest+3));
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+  /* Hack to reboot instead of going to recovery mode for some prototype
+   * hardware which is known to have a TPM init failure recoverable with
+   * a reset, no recovery required.
+   */
+  VBDEBUG(("Run TlclExtend with recovery on IOERROR disabled.\n"));
+  if ((result == TPM_E_IOERROR) || (result == TPM_E_COMMUNICATION_ERROR))
+    return TPM_E_MUST_REBOOT;
+  else if (result != TPM_SUCCESS)
+    VBDEBUG(("Rollback: %08x ret by TlclSetGlobalLock()\n", (int)result));
   return result;
+#else
+  return result;
+#endif
 }

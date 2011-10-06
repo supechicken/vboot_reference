@@ -363,7 +363,25 @@ uint32_t RollbackFirmwareSetup(int recovery_mode, int developer_mode,
   /* Set version to 0 in case we fail */
   *version = 0;
 
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+  /* Hack to reboot instead of going to recovery mode for some prototype
+   * hardware which is known to have a TPM init failure recoverable with
+   * a reset, no recovery required.
+   */
+  do {
+    uint32_t result;
+    VBDEBUG(("Running SetupTPM with recovery on IOERROR disabled.\n"));
+    result = SetupTPM(recovery_mode, developer_mode, &rsf);
+    if ((result == TPM_E_IOERROR) || (result == TPM_E_COMMUNICATION_ERROR))
+      return TPM_E_MUST_REBOOT;
+    else if (result != TPM_SUCCESS) {
+      VBDEBUG(("Rollback: %08x returned by SetupTPM()\n", (int)result));
+      return result;
+    }
+  } while (0);
+#else
   RETURN_ON_FAILURE(SetupTPM(recovery_mode, developer_mode, &rsf));
+#endif
   *version = rsf.fw_versions;
   VBDEBUG(("TPM: RollbackFirmwareSetup %x\n", (int)rsf.fw_versions));
   return TPM_SUCCESS;
@@ -371,8 +389,25 @@ uint32_t RollbackFirmwareSetup(int recovery_mode, int developer_mode,
 
 uint32_t RollbackFirmwareWrite(uint32_t version) {
   RollbackSpaceFirmware rsf;
-
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+  /* Hack to reboot instead of going to recovery mode for some prototype
+   * hardware which is known to have a TPM init failure recoverable with
+   * a reset, no recovery required.
+   */
+  do {
+    uint32_t result;
+    VBDEBUG(("Run ReadSpaceFirmware with recovery on IOERROR disabled.\n"));
+    result = ReadSpaceFirmware(&rsf);
+    if ((result == TPM_E_IOERROR) || (result == TPM_E_COMMUNICATION_ERROR))
+      return TPM_E_MUST_REBOOT;
+    else if (result != TPM_SUCCESS) {
+      VBDEBUG(("Rollback: %08x ret by ReadSpaceFirmware()\n", (int)result));
+      return result;
+    }
+  } while (0);
+#else
   RETURN_ON_FAILURE(ReadSpaceFirmware(&rsf));
+#endif
   VBDEBUG(("TPM: RollbackFirmwareWrite %x --> %x\n", (int)rsf.fw_versions,
            (int)version));
   rsf.fw_versions = version;
@@ -380,7 +415,22 @@ uint32_t RollbackFirmwareWrite(uint32_t version) {
 }
 
 uint32_t RollbackFirmwareLock(void) {
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+  /* Hack to reboot instead of going to recovery mode for some prototype
+   * hardware which is known to have a TPM init failure recoverable with
+   * a reset, no recovery required.
+   */
+  uint32_t result;
+  VBDEBUG(("Run TlclSetGlobalLock with recovery on IOERROR disabled.\n"));
+  result = TlclSetGlobalLock();
+  if ((result == TPM_E_IOERROR) || (result == TPM_E_COMMUNICATION_ERROR))
+    return TPM_E_MUST_REBOOT;
+  else if (result != TPM_SUCCESS)
+    VBDEBUG(("Rollback: %08x ret by TlclSetGlobalLock()\n", (int)result));
+  return result;
+#else
   return TlclSetGlobalLock();
+#endif
 }
 
 uint32_t RollbackKernelRead(uint32_t* version) {
