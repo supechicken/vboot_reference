@@ -103,6 +103,13 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
       tpm_status = RollbackFirmwareWrite(shared->fw_version_tpm);
       VBPERFEND("VB_TPMU");
       if (0 != tpm_status) {
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+        if ((tpm_status == TPM_E_IOERROR) ||
+            (tpm_status == TPM_E_COMMUNICATION_ERROR)) {
+          retval = VBERROR_TPM_REBOOT_REQUIRED;
+          goto VbSelectFirmware_exit;
+        }
+#endif
         VBDEBUG(("Unable to write firmware version to TPM.\n"));
         VbSfRequestRecovery(&vnc, VBNV_RECOVERY_RO_TPM_ERROR);
         retval = VBERROR_TPM_WRITE_FIRMWARE;
@@ -115,6 +122,13 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
     tpm_status = RollbackFirmwareLock();
     VBPERFEND("VB_TPML");
     if (0 != tpm_status) {
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+      if ((tpm_status == TPM_E_IOERROR) ||
+          (tpm_status == TPM_E_COMMUNICATION_ERROR)) {
+        retval = VBERROR_TPM_REBOOT_REQUIRED;
+        goto VbSelectFirmware_exit;
+      }
+#endif
       VBDEBUG(("Unable to lock firmware version in TPM.\n"));
       VbSfRequestRecovery(&vnc, VBNV_RECOVERY_RO_TPM_ERROR);
       retval = VBERROR_TPM_LOCK_FIRMWARE;
@@ -128,6 +142,13 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
   if (0 != tpm_status) {
     VBDEBUG(("Unable to update the TPM with boot mode information.\n"));
     if (!is_rec) {
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+      if ((tpm_status == TPM_E_IOERROR) ||
+          (tpm_status == TPM_E_COMMUNICATION_ERROR)) {
+        retval = VBERROR_TPM_REBOOT_REQUIRED;
+        goto VbSelectFirmware_exit;
+      }
+#endif
       VbSfRequestRecovery(&vnc, VBNV_RECOVERY_RO_TPM_ERROR);
       retval = VBERROR_TPM_SET_BOOT_MODE_STATE;
       goto VbSelectFirmware_exit;
