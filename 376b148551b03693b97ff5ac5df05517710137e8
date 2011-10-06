@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//284\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-06T22:43:00Z",
+      "side": 1,
+      "message": "Put entire block in {} so result is scoped inside the hack.\n\n(Some compilers don\u0027t like declaring variables after the first statement in a function.)",
+      "revId": "376b148551b03693b97ff5ac5df05517710137e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
