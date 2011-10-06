@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//3KQ\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-10-06T17:26:57Z",
+      "side": 1,
+      "message": "Please also gate this hack in an #ifdef.  For example, how we did it with #ifdef TEGRA_SOFT_REBOOT_WORKAROUND.\n\nThis way, it only applies specifically to the board with the problem.\n\n(Which board is that?  What\u0027s the specific problem?  More detail in the comment will help us know when we can remove the hack.  Bonus points for linking to an issue in crosbug.com)",
+      "revId": "fea1876c0030670ae4bf62ca292564936bf2a958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
