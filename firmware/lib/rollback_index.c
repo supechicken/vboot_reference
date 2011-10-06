@@ -363,7 +363,10 @@ uint32_t RollbackFirmwareSetup(int recovery_mode, int developer_mode,
   /* Set version to 0 in case we fail */
   *version = 0;
 
-  RETURN_ON_FAILURE(SetupTPM(recovery_mode, developer_mode, &rsf));
+  //RETURN_ON_FAILURE(SetupTPM(recovery_mode, developer_mode, &rsf));
+  /* Hack to reboot instead of going to recovery mode */
+  if(SetupTPM(recovery_mode, developer_mode, &rsf) != TPM_SUCCESS)
+    return TPM_E_MUST_REBOOT;
   *version = rsf.fw_versions;
   VBDEBUG(("TPM: RollbackFirmwareSetup %x\n", (int)rsf.fw_versions));
   return TPM_SUCCESS;
