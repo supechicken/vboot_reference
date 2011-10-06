@@ -363,7 +363,16 @@ uint32_t RollbackFirmwareSetup(int recovery_mode, int developer_mode,
   /* Set version to 0 in case we fail */
   *version = 0;
 
+#ifdef TEGRA_TPM_INIT_FAIL_WORKAROUND
+  /* Hack to reboot instead of going to recovery mode for some prototype
+   * hardware which is known to have a TPM init failure recoverable with
+   * a reset, no recovery required.
+   */
+  if(SetupTPM(recovery_mode, developer_mode, &rsf) != TPM_SUCCESS)
+    return TPM_E_MUST_REBOOT;
+#else
   RETURN_ON_FAILURE(SetupTPM(recovery_mode, developer_mode, &rsf));
+#endif
   *version = rsf.fw_versions;
   VBDEBUG(("TPM: RollbackFirmwareSetup %x\n", (int)rsf.fw_versions));
   return TPM_SUCCESS;
