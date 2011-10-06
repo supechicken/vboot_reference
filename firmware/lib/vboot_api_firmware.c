@@ -63,8 +63,10 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
     }
 
     if (!is_rec) {
-      VbSfRequestRecovery(&vnc, VBNV_RECOVERY_RO_TPM_ERROR);
-      retval = VBERROR_TPM_FIRMWARE_SETUP;
+      /* Hack to reboot instead of go to recovery mode */
+      //VbSfRequestRecovery(&vnc, VBNV_RECOVERY_RO_TPM_ERROR);
+      //retval = VBERROR_TPM_FIRMWARE_SETUP;
+      retval = VBERROR_TPM_REBOOT_REQUIRED;
       goto VbSelectFirmware_exit;
     }
   }
