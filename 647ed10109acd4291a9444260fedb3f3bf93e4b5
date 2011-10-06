@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//3W0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-06T08:30:17Z",
+      "side": 1,
+      "message": "I think the BOM is not a problem if you use txt_to_bmp \u003cpango\u003e. Anyway I\u0027m fine with having that removed.",
+      "revId": "647ed10109acd4291a9444260fedb3f3bf93e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//3Ww\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-06T08:30:17Z",
+      "side": 1,
+      "message": "Do you want to add some code in text_to_bmp so that it automatically selects different font name for specific locales?\n\nI wonder if we will need to re-run the generation scripts in future so it\u0027d best if everything can be automatically generated without patching manually...",
+      "revId": "647ed10109acd4291a9444260fedb3f3bf93e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//3Ws\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-06T08:30:17Z",
+      "side": 1,
+      "message": "word order? do you mean the \"model: XYZ\" in RTL?\n\nHmmm... seems like this may be hard to be automated unless we add RTL rule in make_default_yaml...",
+      "revId": "647ed10109acd4291a9444260fedb3f3bf93e4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
