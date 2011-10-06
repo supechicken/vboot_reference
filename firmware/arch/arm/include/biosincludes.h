@@ -49,4 +49,9 @@ extern void debug(const char *format, ...);
  */
 #define TEGRA_SOFT_REBOOT_WORKAROUND
 
+/* This workaround applies to Kaen prototypes and is not expected to be needed
+ * in the final products.  See crosbug.com/p/5442.
+ */
+#define TEGRA_TPM_INIT_FAIL_WORKAROUND
+
 #endif /*__ARCH_ARM_BIOSINCLUDES_H__ */
