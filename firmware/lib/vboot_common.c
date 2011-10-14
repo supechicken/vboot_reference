@@ -12,7 +12,7 @@
 #include "utility.h"
 
 
-char* kVbootErrors[VBOOT_ERROR_MAX] = {
+const char const* const kVbootErrors[VBOOT_ERROR_MAX] = {
   "Success.",
   "Key block invalid.",
   "Key block signature failed.",

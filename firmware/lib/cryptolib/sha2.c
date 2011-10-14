@@ -126,17 +126,17 @@
     wv[h] = t1 + t2;                                        \
   }
 
-uint32_t sha256_h0[8] = {
+const uint32_t sha256_h0[8] = {
   0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
   0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
 
-uint64_t sha512_h0[8] = {
+const uint64_t sha512_h0[8] = {
   0x6a09e667f3bcc908ULL, 0xbb67ae8584caa73bULL,
   0x3c6ef372fe94f82bULL, 0xa54ff53a5f1d36f1ULL,
   0x510e527fade682d1ULL, 0x9b05688c2b3e6c1fULL,
   0x1f83d9abfb41bd6bULL, 0x5be0cd19137e2179ULL};
 
-uint32_t sha256_k[64] = {
+const uint32_t sha256_k[64] = {
   0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
   0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
   0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
@@ -154,7 +154,7 @@ uint32_t sha256_k[64] = {
   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
   0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
-uint64_t sha512_k[80] = {
+const uint64_t sha512_k[80] = {
   0x428a2f98d728ae22ULL, 0x7137449123ef65cdULL,
   0xb5c0fbcfec4d3b2fULL, 0xe9b5dba58189dbbcULL,
   0x3956c25bf348b538ULL, 0x59f111f1b605d019ULL,

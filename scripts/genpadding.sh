@@ -148,7 +148,7 @@ echo "};"
 echo
 
 # Generate algorithm padding array map.
-echo "const uint8_t* padding_map[NUMALGORITHMS] = {"
+echo "const uint8_t const* padding_map[NUMALGORITHMS] = {"
 for rsaalgo in ${RSAAlgos[@]}
 do
   for hashalgo in ${HashAlgos[@]}
@@ -208,7 +208,7 @@ echo "};"
 echo
 
 # Generate algorithm to message's digest ASN.1 DigestInfo map.
-echo "const uint8_t* hash_digestinfo_map[NUMALGORITHMS] = {"
+echo "const uint8_t const* hash_digestinfo_map[NUMALGORITHMS] = {"
 for rsaalgo in ${RSAAlgos[@]}
 do
   for hashalgo in ${HashAlgos[@]}
@@ -221,7 +221,7 @@ echo
 
 
 # Generate algorithm description strings.
-echo "const char* algo_strings[NUMALGORITHMS] = {"
+echo "const char const* const algo_strings[NUMALGORITHMS] = {"
 for rsaalgo in ${RSAAlgos[@]}
 do
   for hashalgo in ${HashAlgos[@]}

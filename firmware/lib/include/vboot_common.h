@@ -28,7 +28,7 @@ enum {
   VBOOT_SHARED_DATA_INVALID, /* Shared data is invalid. */
   VBOOT_ERROR_MAX,
 };
-extern char* kVbootErrors[VBOOT_ERROR_MAX];
+extern const char const* const kVbootErrors[VBOOT_ERROR_MAX];
 
 
 /* Return offset of ptr from base. */

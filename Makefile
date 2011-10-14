@@ -32,14 +32,16 @@ CFLAGS = -g -Os -fno-common -ffixed-r8 -msoft-float -fno-builtin \
 	-Werror -Wall -Wstrict-prototypes -fno-stack-protector
 endif
 ifeq ($(FIRMWARE_ARCH), i386)
-CC = i686-pc-linux-gnu-gcc
-CFLAGS = -g -Os -ffunction-sections -fvisibility=hidden -fno-builtin \
+#CC = i686-pc-linux-gnu-gcc
+CFLAGS = -Os -ffunction-sections -fvisibility=hidden -fno-builtin \
 	-ffreestanding -nostdinc \
-	-isystem /usr/lib/gcc/i686-pc-linux-gnu/4.4.3/gcc/i686-pc-linux-gnu/4.4.3/include \
-	-pipe -fno-strict-aliasing -Wstrict-prototypes -mregparm=3 \
+	-isystem /usr/lib/gcc/i686-pc-linux-gnu/4.6.0/gcc/i686-pc-linux-gnu/4.6.x-google/include \
+	-pipe -fno-strict-aliasing -Wstrict-prototypes \
 	-fomit-frame-pointer -ffreestanding -fno-toplevel-reorder \
 	-fno-stack-protector -mpreferred-stack-boundary=2 -fno-dwarf2-cfi-asm \
-	-march=i386 -Werror -Wall -Wstrict-prototypes -fno-stack-protector
+	-mno-sse -Werror -Wall -Wstrict-prototypes -fno-stack-protector
+	# -mregparm=3 \
+	
 endif
 
 # Fix compiling directly on host (outside of emake)
