@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//wFU\u003d",
+        "filename": "scripts/image_signing/ensure_not_ASAN.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-10-19T22:58:24Z",
+      "side": 1,
+      "message": "You could also just invert the sense of match - so if it matches this will return a non-0 exit code. But maybe, you\u0027d rather prefer the check was explicit. Fine either way.",
+      "revId": "7c3f06bee87d9f733604152eac8ea65cdd7acd3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
