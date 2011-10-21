@@ -22,9 +22,7 @@ TEMP_DIR_LIST=$(mktemp)
 # Finds and loads the 'shflags' library, or return as failed.
 load_shflags() {
   # Load shflags
-  if [ -f /usr/lib/shflags ]; then
-    . /usr/lib/shflags
-  elif [ -f "${SCRIPT_DIR}/shflags" ]; then
+  if [ -f "${SCRIPT_DIR}/shflags" ]; then
     . "${SCRIPT_DIR}/shflags"
   elif [ -f "${SCRIPT_DIR}/lib/shflags/shflags" ]; then
     . "${SCRIPT_DIR}/lib/shflags/shflags"
