@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAFn//ucU\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-22T02:31:44Z",
+      "side": 1,
+      "message": "extra trailing space?",
+      "revId": "ed9d5681b569f6c1e7fb406395bcbd116c077808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//ucQ\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-22T02:31:44Z",
+      "side": 1,
+      "message": "extra trailing space?",
+      "revId": "ed9d5681b569f6c1e7fb406395bcbd116c077808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAFn//ubw\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-22T02:31:44Z",
+      "side": 1,
+      "message": "common_minnimal.sh may be executed in 3 scenarios:\n 1. host inside chroot, with full cros source tree\n 2. host outside chroot, but still in cros source tree\n 3. client device without source tree\n\nThat\u0027s why it tries to to load shflags from several different places. You modification is fine to case (1) and (2), but will break (3).\n\nAccording to ebuild file, common_minimal file will be installed to /usr/share/vboot/bin and there\u0027s no shflags in $SCRIPT_DIR or $SCRIPT_DIR/lib/shflags at that time (shflags inside vboot is not installed - it uses the one (/usr/lib/shflags) on device directly.\n\nIf you want to keep using the one from same folder, please modify vboot ebuild to install shflags (but that also means duplicating files, which maybe not what we want); otherwise please keep trying to load shflags from device (new path /usr/share/misc/shflags?).\n\n(${SCRIPT_DIR}/shflag is currently not used by any one - so maybe you can remove that, to make this:\n\n if [ -f /usr/share/misc/shflags ]; then\n  . /usr/share/misc/shflags\n elif [ -f \"${SCRIPT_DIR/lib/shflags/shflags\" ]; then\n  . \"${SCRIPT_DIR/lib/shflags/shflags\"\n else\n  echo \"ERROR: ...\"\n  return 1\n fi",
+      "revId": "ed9d5681b569f6c1e7fb406395bcbd116c077808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
