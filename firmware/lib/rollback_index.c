@@ -184,6 +184,7 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
 
   RETURN_ON_FAILURE(TlclLibInit());
 
+#if 0
 #ifdef TEGRA_SOFT_REBOOT_WORKAROUND
   result = TlclStartup();
   if (result == TPM_E_INVALID_POSTINIT) {
@@ -198,6 +199,7 @@ uint32_t SetupTPM(int recovery_mode, int developer_mode,
   }
 #else
   RETURN_ON_FAILURE(TlclStartup());
+#endif
 #endif
 
   /* Some TPMs start the self test automatically at power on.  In that case we
