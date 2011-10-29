@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGH//+/8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-29T03:57:48Z",
+      "side": 1,
+      "message": "Since this CL includes size improvement, can you list the new output blob size in TEST results?",
+      "revId": "110ca4e4ae9d46ec2629e593ed820b11ea4edb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGH///AA\u003d",
+        "filename": "scripts/newbitmaps/images/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-10-29T03:57:48Z",
+      "side": 1,
+      "message": "Is our firmware GBB section really large enough to hold all the locales?\n\nIf not, I think we need to allow overriding LOCALE list when calling make...",
+      "revId": "110ca4e4ae9d46ec2629e593ed820b11ea4edb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
