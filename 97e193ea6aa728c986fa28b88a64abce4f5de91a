@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+Ls\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Yes. I suppose I could use the built-in [, as long as it\u0027s always built-in (will it be, if we switch to using busybox some day?). If it\u0027s not, then we could be using an unknown $PATH to find it.",
+      "parentUuid": "AAAAGX//+R0\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+VA\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "Please make this a local variable:\n local prog\u003d\"${0##*/}\"",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+Lk\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+VA\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+Lg\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+U8\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+U4\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -82,6 +136,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "We can declare this as local variable -\n local missing",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+Kw\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+U4\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+Ks\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+VU\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+U0\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -116,6 +206,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "We can declare these local variables in beginning of function:\n local read start size part rest name\n\nto prevent these variables used and confused in future",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+Ko\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+U0\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+Kk\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+VQ\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+VM\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -150,6 +276,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "You probably want to make a/b as local variables:\n local a\u003d\u0027/...\u0027\n local b\u003d\u0027/...\u0027",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+KM\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+VM\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+KA\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "I kind like my shell scripts to look like shell scripts. I think I\u0027ll leave it as is.",
+      "parentUuid": "AAAAGX//+Uw\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+VY\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -184,6 +346,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "Just curious, if we really need such complex syntax and dev_debug_vboot will be executed only on ChromeOS devices (and not chroot / host), why not use use /usr/share/misc/shflags ? That would clean up all the magic getopt / parsing code here...",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+J8\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "It won\u0027t only be run on ChromeOS devices. I run it all the time on my desktop, outside of the chroot.",
+      "parentUuid": "AAAAGX//+VY\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -207,6 +387,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+J0\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "No, because I initialized it way back up at the top. The opt_* variables are \"global\".",
+      "parentUuid": "AAAAGX//+Us\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+Uo\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -218,6 +416,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "I\u0027m thinking if we always return success in log function, maybe we don\u0027t need such \"set +e\" anymore... what do you think?\n\nOf course, LAST_RESULT must be kept, so that will be: \n\n log {\n  echo \"+ $@\" \u003e\u003e\"$LOGFILE\"\n  LAST_RESULT\u003d0\n  \"$@\" \u003e\u003e \"$LOGFILE\" 2\u003e\u00261 || LAST_RESULT\u003d$?\n }\n\nThe code calling log \u0026 \"result\" will also need to be changed by this convention......",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+Jk\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Not a bad idea. Can we save it for another CL, though?",
+      "parentUuid": "AAAAGX//+Uo\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -241,6 +457,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+Jc\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Ugh. You\u0027re right.",
+      "parentUuid": "AAAAGX//+Ug\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+Uk\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -252,6 +486,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "Each invocation of \"flashrom\" takes 2 seconds of calibration time, that makes your call \u003e 10 seconds here.\n\nflashrom accepts multiple -i at the same time, so i think it\u0027s better to list all segments in one call:\n\n log flashrom -p internal:bus\u003dspi -r /dev/null \\\n    -i \"GBB:GBB\" -i \"VBLOCK_A:VBLOCK_A\" ....",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+JY\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "I didn\u0027t know it would do that. Thanks.",
+      "parentUuid": "AAAAGX//+Uk\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -275,6 +527,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//+JQ\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+bc\u003d",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//+bY\u003d",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
@@ -286,6 +556,24 @@
       "writtenOn": "2011-11-09T04:18:36Z",
       "side": 1,
       "message": "You don\u0027t need \"\\\" if you have \"\u0026\u0026\" in end of line",
+      "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//+JM\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-09T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//+bY\u003d",
       "revId": "97e193ea6aa728c986fa28b88a64abce4f5de91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
