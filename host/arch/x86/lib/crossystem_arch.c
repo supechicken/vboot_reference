@@ -5,8 +5,11 @@
 
 #include <ctype.h>
 #include <dirent.h>
+#include <errno.h>
+#include <linux/nvram.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -85,6 +88,61 @@
 #define NEED_FWUPDATE_PATH "/mnt/stateful_partition/.need_firmware_update"
 
 
+static void VbFixCmosChecksum(FILE* file) {
+  int fd = fileno(file);
+  ioctl(fd, NVRAM_SETCKS);
+}
+
+
+static size_t VbCmosRead(void *ptr, size_t size, size_t nmemb, FILE* stream) {
+  size_t res;
+
+  res = fread(ptr, size, nmemb, stream);
+  if (nmemb != res && errno == EIO && ferror(stream)) {
+    VbFixCmosChecksum(stream);
+    res = fread(ptr, size, nmemb, stream);
+  }
+  return res;
+}
+
+
+static size_t VbCmosWrite(const void *ptr, size_t size, size_t nmemb,
+    FILE* stream) {
+  size_t res;
+
+  res = fwrite(ptr, size, nmemb, stream);
+  if (nmemb != res && errno == EIO && ferror(stream)) {
+    VbFixCmosChecksum(stream);
+    res = fwrite(ptr, size, nmemb, stream);
+  }
+  return res;
+}
+
+
+int VbCmosGetc(FILE *stream) {
+  int res;
+
+  res = fgetc(stream);
+  if (res == EOF && errno == EIO && ferror(stream)) {
+    VbFixCmosChecksum(stream);
+    res = fgetc(stream);
+  }
+  return res;
+}
+
+
+int VbCmosPutc(int c, FILE *stream) {
+  int res;
+
+  res = fputc(c, stream);
+  if (res == EOF && errno == EIO && ferror(stream)) {
+    VbFixCmosChecksum(stream);
+    res = fputc(c, stream);
+  }
+  return res;
+}
+
+
 int VbReadNvStorage(VbNvContext* vnc) {
   FILE* f;
   int offs;
@@ -101,7 +159,7 @@ int VbReadNvStorage(VbNvContext* vnc) {
     return -1;
 
   if (0 != fseek(f, offs, SEEK_SET) ||
-      1 != fread(vnc->raw, VBNV_BLOCK_SIZE, 1, f)) {
+      1 != VbCmosRead(vnc->raw, VBNV_BLOCK_SIZE, 1, f)) {
     fclose(f);
     return -1;
   }
@@ -130,7 +188,7 @@ int VbWriteNvStorage(VbNvContext* vnc) {
     return -1;
 
   if (0 != fseek(f, offs, SEEK_SET) ||
-      1 != fwrite(vnc->raw, VBNV_BLOCK_SIZE, 1, f)) {
+      1 != VbCmosWrite(vnc->raw, VBNV_BLOCK_SIZE, 1, f)) {
     fclose(f);
     return -1;
   }
@@ -284,7 +342,7 @@ static int VbGetCmosRebootField(uint8_t mask) {
   if (!f)
     return -1;
 
-  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (nvbyte = fgetc(f))) {
+  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (nvbyte = VbCmosGetc(f))) {
     fclose(f);
     return -1;
   }
@@ -313,7 +371,7 @@ static int VbSetCmosRebootField(uint8_t mask, int value) {
     return -1;
 
   /* Read the current value */
-  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (nvbyte = fgetc(f))) {
+  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (nvbyte = VbCmosGetc(f))) {
     fclose(f);
     return -1;
   }
@@ -325,7 +383,7 @@ static int VbSetCmosRebootField(uint8_t mask, int value) {
     nvbyte &= ~mask;
 
   /* Write the byte back */
-  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (fputc(nvbyte, f))) {
+  if (0 != fseek(f, chnv, SEEK_SET) || EOF == (VbCmosPutc(nvbyte, f))) {
     fclose(f);
     return -1;
   }
