@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//9sU\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-11-10T00:23:52Z",
+      "side": 1,
+      "message": "Even after switching to busy box, I think it\u0027s still safe to assume there\u0027ll be a good \u0027[\u0027 in default PATH, because lots of scripts are already doing that -- and maybe \u0027[\u0027 will be not inside /usr/bin (ex, only in /bin).\n\nIf you assign the path (/usr/bin) for some security concern, then please keep it; otherwise I\u0027d suggest just leave the PATH and assume the one invoking this script will prepare a correct path.",
+      "revId": "723e7eaab2690ff2fbefd22729eb5a3a9f7d2ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//9s0\u003d",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-11-10T00:23:52Z",
+      "side": 1,
+      "message": "nit: change these (and flag_save_log_file) variables into upper case so we won\u0027t confuse them with local variables, since we\u0027re not using shflags.",
+      "revId": "723e7eaab2690ff2fbefd22729eb5a3a9f7d2ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
