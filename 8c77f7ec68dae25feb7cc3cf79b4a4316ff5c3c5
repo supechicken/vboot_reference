@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//8i4\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-11-11T22:05:17Z",
+      "side": 1,
+      "message": "It is different for a native build (no -Os)",
+      "parentUuid": "AAAAGX//8j4\u003d",
+      "revId": "8c77f7ec68dae25feb7cc3cf79b4a4316ff5c3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//8jo\u003d",
         "filename": "Makefile",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2011-11-11T21:59:28Z",
       "side": 1,
       "message": "forgot to drop -Wstrict-prototypes and -fno-stack-protector here?",
+      "revId": "8c77f7ec68dae25feb7cc3cf79b4a4316ff5c3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//8i0\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2011-11-11T22:05:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//8jw\u003d",
       "revId": "8c77f7ec68dae25feb7cc3cf79b4a4316ff5c3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
