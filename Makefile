@@ -5,40 +5,38 @@
 export FIRMWARE_ARCH
 export MOCK_TPM
 
-export CC ?= gcc
-export CXX ?= g++
-export CFLAGS = -Wall -Werror
-
-ifeq (${DEBUG},)
-CFLAGS += -O3
-else
-CFLAGS += -O0 -g
-endif
-
+#
+# Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
+# please add them after this point (e.g., -DVBOOT_DEBUG).
 #
 # TODO(crosbug.com/16808) We hard-code u-boot's compiler flags here just
 # temporarily. As we are still investigating which flags are necessary for
 # maintaining a compatible ABI, etc. between u-boot and vboot_reference.
 #
-# Override CC and CFLAGS for firmware builds; if you have any -D flags, please
-# add them after this point (e.g., -DVBOOT_DEBUG).
+# As a first step, this makes the setting of CC and CFLAGS here optional, to
+# permit a calling script or Makefile to set these.
 #
+# Flag ordering: common things and arch, then -f, then -m, then -W
+COMMON_FLAGS := -g $(if ${DEBUG},-O0,-O3) -nostdinc -pipe \
+	-ffreestanding -fno-builtin -fno-stack-protector \
+	-Werror -Wall -Wstrict-prototypes
+
 ifeq ($(FIRMWARE_ARCH), arm)
-CC = armv7a-cros-linux-gnueabi-gcc
-CFLAGS = -g -Os -fno-common -ffixed-r8 -msoft-float -fno-builtin \
-	-ffreestanding -nostdinc \
-	-pipe -marm -mabi=aapcs-linux -mno-thumb-interwork -march=armv5 \
-	-Werror -Wall -Wstrict-prototypes -fno-stack-protector
+CC ?= armv7a-cros-linux-gnueabi-gcc
+CFLAGS ?= $(COMMON_FLAGS) -march=armv5 -Os \
+	-fno-common -ffixed-r8 \
+	-msoft-float -marm -mabi=aapcs-linux -mno-thumb-interwork
 endif
 ifeq ($(FIRMWARE_ARCH), i386)
-CC = i686-pc-linux-gnu-gcc
-CFLAGS = -g -Os -ffunction-sections -fvisibility=hidden -fno-builtin \
-	-ffreestanding -nostdinc \
-	-pipe -fno-strict-aliasing -Wstrict-prototypes -mregparm=3 \
-	-fomit-frame-pointer -ffreestanding -fno-toplevel-reorder \
-	-fno-stack-protector -mpreferred-stack-boundary=2 -fno-dwarf2-cfi-asm \
-	-march=i386 -Werror -Wall -Wstrict-prototypes -fno-stack-protector
+CC ?= i686-pc-linux-gnu-gcc
+CFLAGS ?= $(COMMON_FLAGS) -march=i386 -Os \
+	-ffunction-sections -fvisibility=hidden -fno-strict-aliasing \
+	-fomit-frame-pointer -fno-toplevel-reorder -fno-dwarf2-cfi-asm \
+	-mpreferred-stack-boundary=2 -mregparm=3
 endif
+
+CC ?= gcc
+CXX ?= g++
 
 # Fix compiling directly on host (outside of emake)
 ifeq ($(ARCH),)
@@ -56,6 +54,8 @@ endif
 ifeq (${DISABLE_NDEBUG},)
 CFLAGS += -DNDEBUG
 endif
+
+export CC CXX CFLAGS
 
 export TOP = $(shell pwd)
 export FWDIR=$(TOP)/firmware
