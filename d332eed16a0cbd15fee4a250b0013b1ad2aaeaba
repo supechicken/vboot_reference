@@ -34,6 +34,24 @@
       "revId": "d332eed16a0cbd15fee4a250b0013b1ad2aaeaba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//8ZA\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2011-11-11T23:19:57Z",
+      "side": 1,
+      "message": "Ah, this is a good point.\n\nI think changing optimization level without thorough testing dangerous, so I suggest we stick with -Os.\n\nIn case debug mode is enabled -g -O0 should be added at the end.",
+      "parentUuid": "AAAAGX//8aA\u003d",
+      "revId": "d332eed16a0cbd15fee4a250b0013b1ad2aaeaba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
