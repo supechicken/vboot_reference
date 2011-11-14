@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//8EQ\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-11-14T18:33:01Z",
+      "side": 1,
+      "message": "Why not just define this as 0xFFFFFFFFU?",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//8DI\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-11-14T18:33:01Z",
+      "side": 1,
+      "message": "This check would look clearer if it was\nif (hdr-\u003ecount +1 \u003e UINT_MAX/sizeof(...))",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
