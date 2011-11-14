@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//8C0\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-14T18:38:03Z",
+      "side": 1,
+      "message": "I copied it directly out of /usr/include/limits.h\n\nDoes 0xFFFFFFFFU work correctly on Micro$oft compilers? I didn\u0027t test, because I know that the decimal version does.",
+      "parentUuid": "AAAAGX//8EQ\u003d",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//8DI\u003d",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-11-14T18:33:01Z",
       "side": 1,
       "message": "This check would look clearer if it was\nif (hdr-\u003ecount +1 \u003e UINT_MAX/sizeof(...))",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//8CU\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-14T18:38:03Z",
+      "side": 1,
+      "message": "I was concerned that someone might ask if hdr-\u003ecount + 1 would overflow.",
+      "parentUuid": "AAAAGX//8DI\u003d",
       "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
