@@ -5,6 +5,12 @@
 export FIRMWARE_ARCH
 export MOCK_TPM
 
+# This Makefile normally builds in a 'build' subdir, but use
+#
+#    make O=<dir>
+#
+# to put the output somewhere else
+
 #
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
@@ -64,6 +70,13 @@ endif
 
 export CC CXX CFLAGS
 
+# Sort out where we are goint to do the build (this code from U-Boot)
+ifdef O
+ifeq ("$(origin O)", "command line")
+BUILD := $(O)
+endif
+endif
+
 export TOP = $(shell pwd)
 export FWDIR=$(TOP)/firmware
 export HOSTDIR=$(TOP)/host
@@ -73,7 +86,7 @@ else
 export INCLUDES = -I$(FWDIR)/include -I$(FWDIR)/arch/$(FIRMWARE_ARCH)/include
 endif
 
-export BUILD = ${TOP}/build
+export BUILD ?= ${TOP}/build
 export FWLIB = ${BUILD}/vboot_fw.a
 export HOSTLIB = ${BUILD}/vboot_host.a
 
@@ -92,7 +105,7 @@ all:
 			mkdir -p $$newdir; \
 		fi; \
 	done; \
-	[ -z "$(FIRMWARE_ARCH)" ] && make -C utility update_tlcl_structures; \
+	[ -z "$(FIRMWARE_ARCH)" ] && $(MAKE) -C utility update_tlcl_structures; \
 	for i in $(SUBDIRS); do \
 		make -C $$i; \
 	done
