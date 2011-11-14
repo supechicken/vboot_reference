@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//8Bs\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-11-14T18:41:22Z",
+      "side": 1,
+      "message": "I don\u0027t know either. It\u0027s fine to keep this as is.",
+      "parentUuid": "AAAAGX//8C0\u003d",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//8DI\u003d",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I was concerned that someone might ask if hdr-\u003ecount + 1 would overflow.",
       "parentUuid": "AAAAGX//8DI\u003d",
+      "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//8B4\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-11-14T18:41:22Z",
+      "side": 1,
+      "message": "Ok, it doesn\u0027t matter because of the earlier checks on hdr-\u003ecount but you are right, it is safer to keep as-is.",
+      "parentUuid": "AAAAGX//8CU\u003d",
       "revId": "44826f8c7f5bc0bf122def51f8216161883530e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
