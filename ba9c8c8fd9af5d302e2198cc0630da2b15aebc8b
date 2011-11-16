@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//6eM\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2011-11-16T17:56:02Z",
+      "side": 1,
+      "message": "We can at least test that setting the flag using crossystem or the GBB results in the vbinit flag being set, as reported by vbshareddata / `crossystem vdat_lfdebug`.  \n\nDoes setting the flag (in gbb or nvdata) cause an additional keyword to show up on the dev/recovery screens, the way reducing the dev delay or enabling USB via GBB does?",
+      "revId": "ba9c8c8fd9af5d302e2198cc0630da2b15aebc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
