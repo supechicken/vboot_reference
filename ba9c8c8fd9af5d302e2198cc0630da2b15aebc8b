@@ -16,6 +16,24 @@
       "revId": "ba9c8c8fd9af5d302e2198cc0630da2b15aebc8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//6dc\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-11-16T18:16:37Z",
+      "side": 1,
+      "message": "Oh, right. I\u0027m not used to that. I tested by turning on EFI_DEBUG and watching the VbInit() output. \n\nIf the GBB.flags is nonzero, you\u0027ll see the warning on the dev/recovery screen, provided it\u0027s using the GBB images. If it\u0027s using the default DEV, you\u0027ve got other problems.",
+      "parentUuid": "AAAAGX//6eM\u003d",
+      "revId": "ba9c8c8fd9af5d302e2198cc0630da2b15aebc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
