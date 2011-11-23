@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//3zA\u003d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-11-23T02:39:22Z",
+      "side": 1,
+      "message": "You need to quote $DEV_KEYBLOCK_FLAG if you want to use -n here; otherwise it\u0027ll be evaluated [ -n ] \u003d\u003e [ STRING ] \u003d [ \"-n\" ] and the result will be always true...\n\n if [ -n \"$DEV_KEYBLOCK_FLAG\" ]; then",
+      "revId": "7c9972e5be5024f555c55c86fc6b457e70fd1b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//3y8\u003d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-11-23T02:39:22Z",
+      "side": 1,
+      "message": "if [ -n \"$DEV_KEYBLOCK_FLAG\" ];",
+      "revId": "7c9972e5be5024f555c55c86fc6b457e70fd1b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
