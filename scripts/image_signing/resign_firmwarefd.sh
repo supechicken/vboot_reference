@@ -73,6 +73,12 @@ VERSION=$8
 # firmware" for more information).
 PREAMBLE_FLAG=$9
 
+# Utility functions
+disable_dev_keyblock() {
+  DEV_FIRMWARE_KEYBLOCK=$FIRMWARE_KEYBLOCK
+  DEV_FIRMWARE_DATAKEY=$FIRMWARE_DATAKEY
+}
+
 if [ -z "$VERSION" ]; then
   VERSION=1
 fi
@@ -80,8 +86,7 @@ echo "Using firmware version: $VERSION"
 
 if [ ! -e $DEV_FIRMWARE_KEYBLOCK ] || [ ! -e $DEV_FIRMWARE_DATAKEY ] ; then
   echo "No dev firmware keyblock/datakey found. Reusing normal keys."
-  DEV_FIRMWARE_KEYBLOCK=$FIRMWARE_KEYBLOCK
-  DEV_FIRMWARE_DATAKEY=$FIRMWARE_DATAKEY
+  disable_dev_keyblock
 fi
 
 # Parse offsets and size of firmware data and vblocks
@@ -108,13 +113,15 @@ do
   eval fw${i}_size=$((size))
 done
 
-temp_fwimage=$(make_temp_file)
+temp_fwimage_a=$(make_temp_file)
+temp_fwimage_b=$(make_temp_file)
 temp_out_vb=$(make_temp_file)
 
-# Extract out Firmware A data and generate signature using the right keys.
-# Firmware A is the dev firmware.
-dd if="${SRC_FD}" of="${temp_fwimage}" skip="${fwA_offset}" bs=1 \
+# Extract out Firmware A and B.
+dd if="${SRC_FD}" of="${temp_fwimage_a}" skip="${fwA_offset}" bs=1 \
   count="${fwA_size}"
+dd if="${SRC_FD}" of="${temp_fwimage_b}" skip="${fwB_offset}" bs=1 \
+  count="${fwB_size}"
 
 # Extract existing preamble flag if not assigned yet.
 if [ -n "$PREAMBLE_FLAG" ]; then
@@ -127,12 +134,21 @@ else
   flag="$(vbutil_firmware \
     --verify "${temp_out_vb}" \
     --signpubkey "${temp_root_key}" \
-    --fv "${temp_fwimage}" |
+    --fv "${temp_fwimage_a}" |
     grep "Preamble flags:" |
     sed 's/.*: *//')" || flag=""
   [ -z "$flag" ] || PREAMBLE_FLAG="--flag $flag"
 fi
 echo "Using firmware preamble flag: $PREAMBLE_FLAG"
+
+# Sanity check firmware type: "developer key block" should be only used if the
+# content in firmware A/B are different; otherwise always use normal key blocks.
+if cmp -s "${temp_fwimage_a}" "${temp_fwimage_b}"; then
+  if [ "$DEV_FIRMWARE_KEYBLOCK" != "$FIRMWARE_KEYBLOCK" ]; then
+    echo "Found firmware with same A/B content - ignore DEV keyblock."
+    disable_dev_keyblock
+  fi
+fi
 
 echo "Re-calculating Firmware A vblock"
 vbutil_firmware \
@@ -141,7 +157,7 @@ vbutil_firmware \
   --signprivate "${DEV_FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
   $PREAMBLE_FLAG \
-  --fv "${temp_fwimage}" \
+  --fv "${temp_fwimage_a}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
 # Create a copy of the input image and put in the new vblock for firmware A
@@ -149,9 +165,6 @@ cp "${SRC_FD}" "${DST_FD}"
 dd if="${temp_out_vb}" of="${DST_FD}" seek="${fwA_vblock_offset}" bs=1 \
   count="${fwA_vblock_size}" conv=notrunc
 
-# Firmware B is the normal firmware.
-dd if="${SRC_FD}" of="${temp_fwimage}" skip="${fwB_offset}" bs=1 \
-  count="${fwB_size}"
 echo "Re-calculating Firmware B vblock"
 vbutil_firmware \
   --vblock "${temp_out_vb}" \
@@ -159,7 +172,7 @@ vbutil_firmware \
   --signprivate "${FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
   $PREAMBLE_FLAG \
-  --fv "${temp_fwimage}" \
+  --fv "${temp_fwimage_b}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
 # Destination image has already been created.
