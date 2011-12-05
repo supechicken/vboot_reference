@@ -325,29 +325,11 @@ resign_firmware_payload() {
   echo "Found a valid firmware update shellball."
 
   temp_outfd=$(make_temp_file)
-  # Replace the root key in the GBB.
-  # TODO(gauravsh): Remove when we lock down the R/O portion of firmware.
-  if [ -e "${KEY_DIR}/hwid" ]; then
-    # Only update the hwid if we see one in the key directory.
-    gbb_utility -s \
-      --rootkey=${KEY_DIR}/root_key.vbpubk \
-      --recoverykey=${KEY_DIR}/recovery_key.vbpubk \
-      --hwid="$(cat ${KEY_DIR}/hwid)" \
-      ${shellball_dir}/bios.bin ${temp_outfd}
-  else
-    gbb_utility -s \
-      --rootkey=${KEY_DIR}/root_key.vbpubk \
-      --recoverykey=${KEY_DIR}/recovery_key.vbpubk \
-      ${shellball_dir}/bios.bin ${temp_outfd}
-  fi
-  # Resign the firmware with new keys.
-  ${SCRIPT_DIR}/resign_firmwarefd.sh ${temp_outfd} ${shellball_dir}/bios.bin \
-    ${KEY_DIR}/firmware_data_key.vbprivk \
-    ${KEY_DIR}/firmware.keyblock \
-    ${KEY_DIR}/dev_firmware_data_key.vbprivk \
-    ${KEY_DIR}/dev_firmware.keyblock \
-    ${KEY_DIR}/kernel_subkey.vbpubk \
-    ${FIRMWARE_VERSION}
+  # Resign the firmware with new keys, also replacing the root and recovery
+  # public keys in the GBB.
+  ${SCRIPT_DIR}/sign_firmware.sh ${shellball_dir}/bios.bin ${KEY_DIR} \
+    ${temp_outfd}
+
   local signer_notes="${shellball_dir}/VERSION.signer"
   echo "" >"$signer_notes"
   echo "Signed with keyset in $(readlink -f "${KEY_DIR}") ." >>"$signer_notes"
