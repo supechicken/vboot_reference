@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//zv8\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-12-05T05:45:19Z",
+      "side": 1,
+      "message": "Isn\u0027t it executed as part of make_dev_firmware.sh? Or whatever script we use to re-sign firmware with dev keys?",
+      "parentUuid": "AAAAGX//zwc\u003d",
+      "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//z90\u003d",
         "filename": "scripts/image_signing/resign_firmwarefd.sh",
         "patchSetId": 1
