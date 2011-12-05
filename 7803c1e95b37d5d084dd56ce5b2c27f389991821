@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//zwQ\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-12-05T04:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//z+A\u003d",
+      "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//z98\u003d",
         "filename": "scripts/image_signing/resign_firmwarefd.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2011-12-02T23:02:43Z",
       "side": 1,
       "message": "are you sure cmp exists on the release image? is it a part of diff? if not, would it be better to use diff instead?",
+      "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//zwc\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-12-05T04:38:57Z",
+      "side": 1,
+      "message": "I thought this program will only be executed in chroot, not release images... will, I was wrong.\n\ncmp is part of diff package. However, diff is not installed in release images, too; so using diff/cmp is the same.\n\nFor that case, I think we need to play the trick of md5sum + compare.",
+      "parentUuid": "AAAAGX//z98\u003d",
       "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//zwY\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-12-05T04:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//z90\u003d",
+      "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//z94\u003d",
         "filename": "scripts/image_signing/resign_firmwarefd.sh",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2011-12-02T23:02:43Z",
       "side": 1,
       "message": "NIT: ignoring",
+      "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//zwU\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2011-12-05T04:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAGX//z94\u003d",
       "revId": "7803c1e95b37d5d084dd56ce5b2c27f389991821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
