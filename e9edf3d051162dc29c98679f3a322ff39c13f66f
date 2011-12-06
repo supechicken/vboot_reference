@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//y0I\u003d",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2011-12-06T20:43:43Z",
+      "side": 1,
+      "message": "This is okay, but you could just say\n\nFIRMWARE_VERSION\u003d${4:-1}",
+      "revId": "e9edf3d051162dc29c98679f3a322ff39c13f66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
