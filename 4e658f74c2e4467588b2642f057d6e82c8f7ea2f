@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//xc8\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-08T20:31:03Z",
+      "side": 1,
+      "message": "mind noting the cleanup work in the commit log too?",
+      "revId": "4e658f74c2e4467588b2642f057d6e82c8f7ea2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//xcg\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-08T20:31:03Z",
+      "side": 1,
+      "message": "don\u0027t need to rename, but the variable is weird here.  This contains the _whole_ kernel cmdline with the updated ROOTFS_HASH.  Seems like FINAL_KERNEL_CMDLINE migth be more apt?",
+      "revId": "4e658f74c2e4467588b2642f057d6e82c8f7ea2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//xcw\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-08T20:31:03Z",
+      "side": 1,
+      "message": "predeclare\n  local partnum",
+      "revId": "4e658f74c2e4467588b2642f057d6e82c8f7ea2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//xcs\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-08T20:31:03Z",
+      "side": 1,
+      "message": "I was going to call you on putting do on the newline, but I see you snuck that in to the style of the overall file :p",
+      "revId": "4e658f74c2e4467588b2642f057d6e82c8f7ea2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
