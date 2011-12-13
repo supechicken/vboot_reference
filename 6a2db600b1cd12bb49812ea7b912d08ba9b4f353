@@ -33,6 +33,24 @@
       "revId": "6a2db600b1cd12bb49812ea7b912d08ba9b4f353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//vwI\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2011-12-13T19:03:35Z",
+      "side": 1,
+      "message": "Yeah, this is all to make \"verify\" image-type agnostic (ssd vs. recovery). At some point, I will just split these into verify-recovery and verify-ssd. Didn\u0027t want to do this now because of all the cascading changed needed to the signer.",
+      "parentUuid": "AAAAGX//wCg\u003d",
+      "revId": "6a2db600b1cd12bb49812ea7b912d08ba9b4f353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
