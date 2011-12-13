@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//wCc\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-13T04:27:55Z",
+      "side": 1,
+      "message": "just noticed that you\u0027re keeping the bits before the comma too.  Since that\u0027s not new, it seems fine. I don\u0027t think they\u0027ll ever contain an \u003d unless someone names a device with an \u003d in it.",
+      "revId": "6a2db600b1cd12bb49812ea7b912d08ba9b4f353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//wCg\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2011-12-13T04:27:55Z",
+      "side": 1,
+      "message": "This is a kinda painful workaround for the new recovery/factory behavior, but makes sense :/",
+      "revId": "6a2db600b1cd12bb49812ea7b912d08ba9b4f353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
