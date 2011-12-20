@@ -357,11 +357,18 @@ VbError_t VbDisplayScreen(VbCommonParams* cparams, uint32_t screen, int force,
   disp_current_screen = screen;
 
   /* Look in the GBB first */
-  if (VBERROR_SUCCESS == VbDisplayScreenFromGBB(cparams, screen, vncptr))
+  if (VBERROR_SUCCESS == VbDisplayScreenFromGBB(cparams, screen, vncptr)) {
+    if (VB_SCREEN_BLANK != screen)
+      VbDisplayDebugInfo(cparams, vncptr);
     return VBERROR_SUCCESS;
+  }
 
   /* If the screen wasn't in the GBB bitmaps, fall back to a default screen. */
-  return VbExDisplayScreen(screen);
+  retval = VbExDisplayScreen(screen);
+  if (VB_SCREEN_BLANK != screen)
+    VbDisplayDebugInfo(cparams, vncptr);
+  return retval;
+
 }
 
 
