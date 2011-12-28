@@ -87,6 +87,23 @@
 /* Filename for legacy firmware update tries */
 #define NEED_FWUPDATE_PATH "/mnt/stateful_partition/.need_firmware_update"
 
+/* Max length of id strings for platform determination */
+#define MAX_ID_LENGTH 10
+
+typedef struct PlatformFamily {
+  unsigned int vendor;          /* Vendor id value */
+  unsigned int device;          /* Device id value */
+  const char* platform_string; /* String to return */
+} PlatformFamily;
+
+/* Array of platform family names, terminated with a NULL entry */
+const PlatformFamily platform_family_array[] = {
+  {0x8086, 0xA010, "PineTrail"},
+  {0x8086, 0x3406, "Westmere"},
+  {0x8086, 0x0104, "SandyBridge"},
+  /* Terminate with NULL entry */
+  {NULL, NULL, NULL}
+};
 
 static void VbFixCmosChecksum(FILE* file) {
   int fd = fileno(file);
@@ -444,6 +461,44 @@ static int VbGetRecoveryReason(void) {
   }
 }
 
+/* Determine the platform family and return it in the dest string.
+ * This uses the PCI Bus 0, Device 0, Function 0 vendor and device id values
+ * taken from sysfs to determine the platform family. This assumes there will
+ * be a unique pair of values here for any given platform.
+ */
+static char* ReadPlatformFamilyString(char* dest, int size) {
+  FILE* f;
+  char idstring[MAX_ID_LENGTH];
+  const PlatformFamily* p;
+  unsigned int v;
+  unsigned int d;
+
+  f = fopen("/sys/bus/pci/devices/0000:00:00.0/vendor", "rt");
+  if (!f)
+    return NULL;
+  if(!fgets(idstring, MAX_ID_LENGTH, f))
+    return NULL;
+  fclose(f);
+  if(sscanf(idstring, "0x%4x", &v) != 1)
+    return NULL;
+
+  f = fopen("/sys/bus/pci/devices/0000:00:00.0/device", "rt");
+  if (!f)
+    return NULL;
+  if(!fgets(idstring, MAX_ID_LENGTH, f))
+    return NULL;
+  fclose(f);
+  if(sscanf(idstring, "0x%4x", &d) != 1)
+    return NULL;
+
+  for (p = platform_family_array; p->vendor; p++) {
+    if((v == p->vendor) && (d == p->device))
+      return StrCopy(dest, p->platform_string, size);
+  }
+
+  /* No recognized platform family was found */
+  return NULL;
+}
 
 /* Physical GPIO number <N> may be accessed through /sys/class/gpio/gpio<M>/,
  * but <N> and <M> may differ by some offset <O>. To determine that constant,
@@ -642,6 +697,8 @@ const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
       default:
         return NULL;
     }
+  } else if (!strcasecmp(name,"platform_family")) {
+    return ReadPlatformFamilyString(dest, size);
   }
 
   return NULL;
