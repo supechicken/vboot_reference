@@ -35,6 +35,7 @@ typedef struct Param {
 /* List of parameters, terminated with a param with NULL name */
 const Param sys_param_list[] = {
   {"arch", IS_STRING, "Platform architecture"},
+  {"platform", IS_STRING, "Platform type"},
   {"cros_debug", 0, "OS should allow debug features"},
   {"dbg_reset", CAN_WRITE, "Debug reset mode request (writable)"},
   {"dev_boot_usb", CAN_WRITE,

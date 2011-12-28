@@ -642,6 +642,8 @@ const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
       default:
         return NULL;
     }
+  } else if (!strcasecmp(name,"platform")) {
+    return ReadPlatformString(dest, size);
   }
 
   return NULL;
