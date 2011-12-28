@@ -69,6 +69,32 @@ char* ReadFileString(char* dest, int size, const char* filename) {
   return got;
 }
 
+char* ReadPlatformFamilyString(char* dest, int size) {
+  char* got;
+  FILE* f;
+  int i;
+
+  f = fopen("/proc/cpuinfo", "rt");
+  if (!f)
+    return NULL;
+
+  if(!fgets(dest, size, f))
+    return NULL;
+  while(strncmp(dest, "model name", 10) != 0)
+    if(!fgets(dest, size, f))
+      return NULL;
+  fclose(f);
+
+  i = strlen(dest);
+  if (i < 1)
+    return NULL;
+  if (dest[i - 1] == '\n')
+    dest[i - 1] = '\0';
+  if ((got = strchr(dest, ':')) && (got + 2 - dest) < i)
+    return StrCopy(dest, got + 2, size);
+  else
+    return NULL;
+}
 
 int ReadFileInt(const char* filename) {
   char buf[64];

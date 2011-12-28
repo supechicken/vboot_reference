@@ -326,6 +326,12 @@ const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
     prop = "firmware-type";
   else if (!strcasecmp(name, "ecfw_act"))
     prop = "active-ec-firmware";
+  /* TODO currently this works incorrectly as the compatible entry has a NULL
+   * character, we need to either use another entry or put in another function
+   * to get the string after the first NULL character.
+   */
+  else if (!strcasecmp(name, "platform_family"))
+    prop = "../../compatible";
 
   if (prop)
     str = ReadFdtString(prop);

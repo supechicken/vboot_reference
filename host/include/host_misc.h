@@ -28,6 +28,12 @@ uint8_t* ReadFile(const char* filename, uint64_t* size);
  * Returns the destination, or NULL if error. */
 char* ReadFileString(char* dest, int size, const char* filename);
 
+/* Read the platform family from /proc/cpuinfo. Passed the destination and
+ * dest size.
+ *
+ * Returns the destination, or NULL if error. */
+char* ReadPlatformFamilyString(char* dest, int size);
+
 /* Read an integer from a file.
  *
  * Returns the parsed integer, or -1 if error. */
