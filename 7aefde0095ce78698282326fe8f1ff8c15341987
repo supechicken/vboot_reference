@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//qeQ\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2011-12-29T01:45:52Z",
+      "side": 1,
+      "message": "I was considering something like that (what i really want is a regular expression) but this seemed to be the simplest method to start with, I am under the impression it is always line 5 on x86 (at least it is today). The size value is currently rather large at 8192 but this is a valid concern, I can take a look at this as well.",
+      "parentUuid": "AAAAGX//qgg\u003d",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//qfw\u003d",
         "filename": "host/lib/host_misc.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAGX//qeU\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2011-12-29T01:45:52Z",
+      "side": 1,
+      "message": "This does overwrite the \\n, I can check for a \\n specifically but I was thinking in the corner case that we would end up with a length of 0 which would cause the previous if statement to return, I can dig into this more.",
+      "parentUuid": "AAAAGX//qfw\u003d",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAGX//qgY\u003d",
         "filename": "utility/crossystem_main.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2011-12-29T00:48:29Z",
       "side": 1,
       "message": "List is alphabetical, this should be further down.",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//qec\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2011-12-29T01:45:52Z",
+      "side": 1,
+      "message": "Good point, will do.",
+      "parentUuid": "AAAAGX//qgY\u003d",
       "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
