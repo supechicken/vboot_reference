@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAGX//qgg\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2011-12-29T00:48:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you just check the string with strncmp for one starting \u0027model name\u0027 if that is what you want?\nI think even if the model name is on line 5 the code below will fail if any of the earlier lines are longer than size-1 characters",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//qfw\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2011-12-29T00:48:29Z",
+      "side": 1,
+      "message": "This is presumably to remove the \\n, but there is a corner case where the fgets ended because of size. Maybe check for the \\n?",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAGX//qgY\u003d",
+        "filename": "utility/crossystem_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2011-12-29T00:48:29Z",
+      "side": 1,
+      "message": "List is alphabetical, this should be further down.",
+      "revId": "7aefde0095ce78698282326fe8f1ff8c15341987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
