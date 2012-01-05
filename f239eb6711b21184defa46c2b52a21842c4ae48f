@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAG3//9eA\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2012-01-05T23:59:59Z",
+      "side": 1,
+      "message": "Please add { } around the \"for\" block.  I see that it is only one statement, but since it spans lines it would help a lot to line up the braces.\n\nWithout braces, the indentation betwen lines 174 and 175 \"looks weird\" to me, and might trigger a lint warning.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9dA\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2012-01-05T23:59:59Z",
+      "side": 1,
+      "message": "Can it ever be true that compat\u003d\u003dNULL after ReadFdtBlock?  It\u0027s probably worth checking for this to make sure we don\u0027t free(compat) at the end if it\u0027s NULL.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9co\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2012-01-05T23:59:59Z",
+      "side": 1,
+      "message": "Let\u0027s put an implementation comment here, explaining the assumption we\u0027re making about PCI Bus 0, Device 0, Function 0.\n\nFor many of the systems we\u0027re dealing with, we can infer the chipset family  based on the PCI Vendor:Device pair for this device.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9a0\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000465
+      },
+      "writtenOn": "2012-01-05T23:59:59Z",
+      "side": 1,
+      "message": "This looks like it would work fine, but I think it\u0027s a little odd that the \"\\n\" character has to be in every row of the data table in order to match up with the /sys/bus/pci/devices/*/vendor file.\n\nHow about using \"sscanf()\" to implicitly strip off the \"0x\"...\"\\n\" from the file contents and then squeeze your data table down?  This also gets away from having to define MAX_ID_LENGTH, since you\u0027re always just reading 4 bytes from each file and that\u0027s part of the PCI spec.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
