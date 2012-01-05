@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//92A\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-05T22:57:57Z",
+      "side": 1,
+      "message": "Done relabeling (also on x86 side), I had used the \u0027list\u0027 nomenclature as it how a similar setup is described in crossystem_main.c for the sys_param_list array.",
+      "parentUuid": "AAAAG3//93g\u003d",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//93o\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-05T19:02:10Z",
       "side": 1,
       "message": "Upstream it is nvidia,tegra20 so you should probably add both for now -- we will change in a future kernel",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//918\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-05T22:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAG3//93o\u003d",
       "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//9ro\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-05T22:57:57Z",
+      "side": 1,
+      "message": "This looks good, it is more comprehensive since it looks at all the strings in the compatible entry, and it is a bit cleaner (the str+size-i-1 in the original is a bit hacky since it is a hard offset into the last expected string of \u0027compatible\u0027). It also has its own more clean buffer handling system instead of reusing the buffer from ReadFdtBlock (which is feedback Micah had given on the original). This does seem to work, also adding in free(compat); to give back the memory ReadFdtBlock malloced.",
+      "parentUuid": "AAAAG3//93E\u003d",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//9+E\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 3
@@ -116,6 +170,24 @@
       "writtenOn": "2012-01-05T19:02:10Z",
       "side": 1,
       "message": "Agree with Bill, I would also do:\n\nif (!strcmp() \u0026\u0026\n    !strcmp())\n    return ...\n\ninstead of doing two if statements.",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9oI\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-05T22:57:57Z",
+      "side": 1,
+      "message": "Both are done, though to use strcmp we need to put in the newline character which we get from the fgets into the table, the strncmp lets us ignore it but this seems more efficient.",
+      "parentUuid": "AAAAG3//928\u003d",
       "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
