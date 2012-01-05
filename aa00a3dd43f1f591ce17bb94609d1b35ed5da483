@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAG3//998\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-05T17:39:30Z",
+      "side": 1,
+      "message": "I really don\u0027t know what\u0027s going on here. Someone who knows FDT should comment.",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9+E\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-05T17:39:30Z",
+      "side": 1,
+      "message": "Since you define platform_family_list at compile time, you don\u0027t really need strncmp, do you? You know the entries are null-terminated, although there\u0027s nothing to ensure that you haven\u0027t entered one that\u0027s more than MAX_ID_LENGTH long.",
+      "revId": "aa00a3dd43f1f591ce17bb94609d1b35ed5da483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
