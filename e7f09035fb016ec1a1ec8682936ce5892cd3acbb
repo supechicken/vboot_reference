@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAG3//8jg\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2012-01-06T22:22:39Z",
+      "side": 1,
+      "message": "use /proc/device-tree/compatible here instead, please",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//83I\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 5
@@ -13,6 +30,24 @@
       "writtenOn": "2012-01-06T18:29:38Z",
       "side": 1,
       "message": "0x8086, 0x0154, \"IvyBridge\" // mobile\n0x8086, 0x0150, \"IvyBridge\" // desktop",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//8jc\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2012-01-06T22:22:39Z",
+      "side": 1,
+      "message": "My SandyBridge desktop at home has 0x8086, 0x0100, so that can be added as well.",
+      "parentUuid": "AAAAG3//83I\u003d",
       "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -48,6 +83,23 @@
       "side": 1,
       "message": "Note that 0xFFFF is defined by the spec to never be a legal vendor ID, so that would be a suitable unlikely value. (There is no such formal rule for device ID, but I think it is common usage too).",
       "parentUuid": "AAAAG3//84E\u003d",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//8jY\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2012-01-06T22:22:39Z",
+      "side": 1,
+      "message": "Can just use fscanf here instead of reading and then sscanf (same on the one below).",
       "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
