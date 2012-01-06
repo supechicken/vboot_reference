@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//8oI\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T23:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAG3//83I\u003d",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//84E\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 5
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//8fo\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T23:51:24Z",
+      "side": 1,
+      "message": "Done, initialized the v and d values to 0xFFFF.",
+      "parentUuid": "AAAAG3//83c\u003d",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//8jY\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 5
@@ -100,6 +136,24 @@
       "writtenOn": "2012-01-06T22:22:39Z",
       "side": 1,
       "message": "Can just use fscanf here instead of reading and then sscanf (same on the one below).",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//8fk\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T23:51:24Z",
+      "side": 1,
+      "message": "Good call, should have seen this, that gets rid of the MAX_ID_LENGTH and simplifies further.",
+      "parentUuid": "AAAAG3//8jY\u003d",
       "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
