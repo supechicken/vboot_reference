@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//9Ts\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T02:44:14Z",
+      "side": 1,
+      "message": "Done, this does look a bit more obvious with the braces.",
+      "parentUuid": "AAAAG3//9eA\u003d",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//9dA\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-05T23:59:59Z",
       "side": 1,
       "message": "Can it ever be true that compat\u003d\u003dNULL after ReadFdtBlock?  It\u0027s probably worth checking for this to make sure we don\u0027t free(compat) at the end if it\u0027s NULL.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9Tg\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T02:44:14Z",
+      "side": 1,
+      "message": "It is possible for compat to be NULL, but free(NULL); should be a valid do nothing statement, I believe the library checks this condition.",
+      "parentUuid": "AAAAG3//9dA\u003d",
       "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAG3//9Ro\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T02:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAG3//9co\u003d",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//9a0\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2012-01-05T23:59:59Z",
       "side": 1,
       "message": "This looks like it would work fine, but I think it\u0027s a little odd that the \"\\n\" character has to be in every row of the data table in order to match up with the /sys/bus/pci/devices/*/vendor file.\n\nHow about using \"sscanf()\" to implicitly strip off the \"0x\"...\"\\n\" from the file contents and then squeeze your data table down?  This also gets away from having to define MAX_ID_LENGTH, since you\u0027re always just reading 4 bytes from each file and that\u0027s part of the PCI spec.",
+      "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//9Rk\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-06T02:44:14Z",
+      "side": 1,
+      "message": "Good call, the sscanf can be used to convert the hex values into unsigned ints for an easier comparison, so we can get rid of the strcmp calls. There is still a MAX_ID_LENGTH but only one char array with it, we still need something to pull the string out of the file into before the sscanf. We could malloc this space instead I suppose, but since the area we need is relatively constant having a static local char array seems reasonable to me for the moment but I am open.",
+      "parentUuid": "AAAAG3//9a0\u003d",
       "revId": "f239eb6711b21184defa46c2b52a21842c4ae48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
