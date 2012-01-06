@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAG3//83I\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2012-01-06T18:29:38Z",
+      "side": 1,
+      "message": "0x8086, 0x0154, \"IvyBridge\" // mobile\n0x8086, 0x0150, \"IvyBridge\" // desktop",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAG3//84E\u003d",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 5
@@ -13,6 +30,24 @@
       "writtenOn": "2012-01-06T18:16:36Z",
       "side": 1,
       "message": "Need to initialize v and d to something invalid and unlikely, because sscanf doesn\u0027t do a lot of error checking. For example,\n\nsscanf(\"0x0x0x\", \"0x%4x\", \u0026val)\n\nwould return 1 and leave val \u003d\u003d 0. We don\u0027t want that to create a false positive match.\n\nAlternately, use strtoul instead of sscanf:\n\n{\n  char *e \u003d 0;\n  val \u003d strtoul(buf, \u0026e, 0);\n  if (!buf[0] || (e \u0026\u0026 *e))\n    return NULL;\n}",
+      "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAG3//83c\u003d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2012-01-06T18:29:38Z",
+      "side": 1,
+      "message": "Note that 0xFFFF is defined by the spec to never be a legal vendor ID, so that would be a suitable unlikely value. (There is no such formal rule for device ID, but I think it is common usage too).",
+      "parentUuid": "AAAAG3//84E\u003d",
       "revId": "e7f09035fb016ec1a1ec8682936ce5892cd3acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
