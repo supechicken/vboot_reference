@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn///O0\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-17T21:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn///Yk\u003d",
+      "revId": "336a700e794f165a4e9bca7d3cc7e5f613c060d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn///YY\u003d",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-17T19:51:07Z",
       "side": 1,
       "message": "Should check for failed reads here.",
+      "revId": "336a700e794f165a4e9bca7d3cc7e5f613c060d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn///Ow\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2012-01-17T21:35:21Z",
+      "side": 1,
+      "message": "As this is a bit separate, this change can come in with separate CL which will be coming soon.",
+      "parentUuid": "AAAAHn///YY\u003d",
       "revId": "336a700e794f165a4e9bca7d3cc7e5f613c060d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
