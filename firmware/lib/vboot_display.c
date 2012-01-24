@@ -605,6 +605,10 @@ VbError_t VbCheckDisplayKey(VbCommonParams* cparams, uint32_t key,
       loc = (loc > 0 ? loc - 1 : count - 1);
     VBDEBUG(("VbCheckDisplayKey() - change localization to %d\n", (int)loc));
     VbNvSet(vncptr, VBNV_LOCALIZATION_INDEX, loc);
+    /* Be aggressive in saving state in case of sudden power loss */
+    VbNvTeardown(vncptr);               /* really only computes checksum */
+    if (vncptr->raw_changed)
+      VbExNvStorageWrite(vncptr->raw);
 
     /* Force redraw of current screen */
     return VbDisplayScreen(cparams, disp_current_screen, 1, vncptr);
