@@ -43,9 +43,10 @@ TARGET_NAMES += bmpblk_font bmpblk_utility eficompress efidecompress
 endif
 
 TARGET_BINS = $(addprefix ${BUILD_ROOT}/,$(TARGET_NAMES))
+
 ALL_DEPS = $(addsuffix .d,${TARGET_BINS})
 
-all: $(TARGET_BINS)
+all: $(TARGET_BINS) $(DUMPKERNELCONFIGLIB)
 
 ${BUILD_ROOT}/crossystem: crossystem_main.c $(LIBS)
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
@@ -54,7 +55,17 @@ ${BUILD_ROOT}/dumpRSAPublicKey: dumpRSAPublicKey.c
 	$(CC) $(CFLAGS) $< -o $@ -lcrypto
 
 ${BUILD_ROOT}/dump_kernel_config: dump_kernel_config.c $(LIBS)
-	$(CC) $(CFLAGS) $< -o $@ $(LIBS) -lcrypto
+	$(CC) -DWITH_UTIL_MAIN $(CFLAGS) $< -o $@ $(LIBS) -lcrypto
+
+# Special handling since we name it different for non-main version.
+DUMPKERNELCONFIGLIB_O = ${BUILD_ROOT}/dump_kernel_config_min.o
+
+${DUMPKERNELCONFIGLIB_O}: dump_kernel_config.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(DUMPKERNELCONFIGLIB): ${DUMPKERNELCONFIGLIB_O}
+	rm -f $@
+	ar qc $@ ${DUMPKERNELCONFIGLIB_O}
 
 ${BUILD_ROOT}/gbb_utility: gbb_utility.cc
 	$(CXX) -DWITH_UTIL_MAIN $(CFLAGS) $< -o $@

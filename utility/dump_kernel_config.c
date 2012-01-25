@@ -5,6 +5,8 @@
  * Exports the kernel commandline from a given partition/image.
  */
 
+#include "dump_kernel_config.h"
+
 #include <getopt.h>
 #include <inttypes.h>  /* For uint64_t */
 #include <stdio.h>
@@ -16,28 +18,7 @@
 #include "kernel_blob.h"
 #include "vboot_common.h"
 
-
-enum {
-  OPT_KLOADADDR = 1000,
-};
-
-static struct option long_opts[] = {
-  { "kloadaddr", 1, 0, OPT_KLOADADDR },
-  { NULL, 0, 0, 0 }
-};
-
-/* Print help and return error */
-static int PrintHelp(void) {
-  puts("dump_kernel_config - Prints the kernel command line\n"
-       "\n"
-       "Usage:  dump_kernel_config [--kloadaddr <ADDRESS>] "
-       "<image/blockdevice>\n"
-       "\n"
-       "");
-  return 1;
-}
-
-static uint8_t* find_kernel_config(uint8_t* blob, uint64_t blob_size,
+uint8_t* find_kernel_config(uint8_t* blob, uint64_t blob_size,
     uint64_t kernel_body_load_address) {
   VbKeyBlockHeader* key_block;
   VbKernelPreambleHeader* preamble;
@@ -80,7 +61,7 @@ static uint8_t* find_kernel_config(uint8_t* blob, uint64_t blob_size,
   return (uint8_t *)(blob + offset);
 }
 
-static void* MapFile(const char *filename, size_t *size) {
+void* MapFile(const char *filename, size_t *size) {
   FILE* f;
   uint8_t* buf;
   long file_size = 0;
@@ -111,6 +92,24 @@ static void* MapFile(const char *filename, size_t *size) {
 
   fclose(f);
   return buf;
+}
+
+#ifdef WITH_UTIL_MAIN
+
+static struct option long_opts[] = {
+  { "kloadaddr", 1, 0, OPT_KLOADADDR },
+  { NULL, 0, 0, 0 }
+};
+
+/* Print help and return error */
+static int PrintHelp(void) {
+  puts("dump_kernel_config - Prints the kernel command line\n"
+       "\n"
+       "Usage:  dump_kernel_config [--kloadaddr <ADDRESS>] "
+       "<image/blockdevice>\n"
+       "\n"
+       "");
+  return 1;
 }
 
 int main(int argc, char* argv[]) {
@@ -179,3 +178,5 @@ int main(int argc, char* argv[]) {
   munmap(blob, blob_size);
   return 0;
 }
+
+#endif
