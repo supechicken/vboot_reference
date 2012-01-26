@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAHn//5ro\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "Fix indentation of arguments.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5rg\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "For consistency, eliminate space between uint8_t and *. Further, I suspect this cast is unnecessary.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5rc\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "For consistency, keep * with the type.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//55I\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 3
@@ -19,6 +70,176 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5q4\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "0 should be replaced with NULL, this field has type int*.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5q0\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "Same for the second 0.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5rM\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "puts(), seriously? ;-)  In any case, the last \"\" can be removed, and so is the \"\\n\" before it (puts adds it implicitly).",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qs\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "I\u0027d separate the default case and place it last: it means an unexpected return value, which is different from unhandled option.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qw\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "Since there are no such options, I\u0027d drop this case.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qo\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "More descriptive error, e.g. \"missing kernel image argument\" (and there may be no options).",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qk\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "This whole if-else needs to be wrapped with if (!parse_error), there\u0027s no point in trying to process the mandatory argument if a parsing error already occurred.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qc\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "This conditional is dead/redundant code: infile must be set by now; if it happens to be an empty string (?) then the next step will fail with the correct error message.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5r4\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "Fix indentation of arguments.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5qU\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "I\u0027d prefer having tear down code appear once at the end of the function.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//55E\u003d",
         "filename": "utility/include/dump_kernel_config.h",
         "patchSetId": 3
@@ -30,6 +251,23 @@
       "writtenOn": "2012-01-26T01:21:39Z",
       "side": 1,
       "message": "remove comment?",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5r0\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T08:40:05Z",
+      "side": 1,
+      "message": "I believe this enum belongs in dump_kernel_config_main.c as it\u0027s only being used with getopt.",
       "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
