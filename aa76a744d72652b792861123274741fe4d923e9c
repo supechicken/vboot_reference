@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5Dg\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-26T21:50:55Z",
+      "side": 1,
+      "message": "Please do move this enum into dump_kernel_config_main.c with the rest of the getopt logic. It does not belong here.",
+      "revId": "aa76a744d72652b792861123274741fe4d923e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5E0\u003d",
         "filename": "utility/include/dump_kernel_config.h",
         "patchSetId": 4
