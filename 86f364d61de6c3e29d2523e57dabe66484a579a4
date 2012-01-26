@@ -121,6 +121,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5WU\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-01-26T18:14:33Z",
+      "side": 1,
+      "message": "This is all already existing code that Don just moved to a separate file. While I am in favor of re-writing it to be better, this doesn\u0027t need be done as part of this CL (or by Don).",
+      "parentUuid": "AAAAHn//5rM\u003d",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5qs\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 3
