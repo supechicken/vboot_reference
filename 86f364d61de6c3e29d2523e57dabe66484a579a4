@@ -157,6 +157,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5RY\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-01-26T19:03:30Z",
+      "side": 1,
+      "message": "I am not suggesting that these changes are not worth fixing. \n\nThese fixes are more suitable for a separate cleanup CL instead of merging them into this CL where the intention is to just split a few functions into a reusable library.\n\nMost of your comments are not just simple nits (which I would be in favor of fixing here), but are control flow changes and improvements. Addressing them also disproportionately increases the testing burden since this is a critical utility used by the build and signing infrastructure.\n\nAnyway, I will let Don make the final call.",
+      "parentUuid": "AAAAHn//5UE\u003d",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5qs\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 3
