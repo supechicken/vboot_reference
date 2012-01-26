@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//55I\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-01-26T01:21:39Z",
+      "side": 1,
+      "message": "is this unistd.h needed?",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//55E\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-01-26T01:21:39Z",
+      "side": 1,
+      "message": "remove comment?",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//56g\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-01-26T01:21:39Z",
+      "side": 1,
+      "message": "NIT: * with type (filename and size) [i know this was like this before but doesn\u0027t hurt to fix and make consistent here]",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
