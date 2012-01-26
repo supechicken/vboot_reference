@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5CU\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-01-26T22:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5FE\u003d",
+      "revId": "aa76a744d72652b792861123274741fe4d923e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5E4\u003d",
         "filename": "utility/include/dump_kernel_config.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-26T21:41:24Z",
       "side": 1,
       "message": "this comment is inaccurate. please remove.",
+      "revId": "aa76a744d72652b792861123274741fe4d923e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5Cc\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-01-26T22:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5E4\u003d",
       "revId": "aa76a744d72652b792861123274741fe4d923e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5Ck\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-01-26T22:03:09Z",
+      "side": 1,
+      "message": "It will need to be visible to other people using the library in some form. I thought about changing the API to give a default value or something, but didn\u0027t want to change existing code that much.",
+      "parentUuid": "AAAAHn//5Dg\u003d",
+      "revId": "aa76a744d72652b792861123274741fe4d923e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5E0\u003d",
         "filename": "utility/include/dump_kernel_config.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2012-01-26T21:41:24Z",
       "side": 1,
       "message": "\u0027*\u0027 with type.",
+      "revId": "aa76a744d72652b792861123274741fe4d923e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5CY\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-01-26T22:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5E0\u003d",
       "revId": "aa76a744d72652b792861123274741fe4d923e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
