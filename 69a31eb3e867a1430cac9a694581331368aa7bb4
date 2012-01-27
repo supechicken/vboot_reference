@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//4bM\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-27T16:58:16Z",
+      "side": 1,
+      "message": "You don\u0027t need all of these #includes. Only use the ones that are required to compile.\n\nSame thing for all the other files.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//4bQ\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-27T16:58:16Z",
+      "side": 1,
+      "message": "You need to remove all trailing spaces in every file.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//4a8\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-27T16:58:16Z",
+      "side": 1,
+      "message": "I thought you were going to open and close the drive before performing any specific operation, and just pass the pointer in as part of the parameters. If you do it this way, the install process will be opening and closing the drive about 20 different times. That\u0027s probably not the best.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//4Y8\u003d",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-27T16:58:16Z",
+      "side": 1,
+      "message": "Just use \n\nmemset(\u0026params, 0, sizeof(params));\n\nThen we don\u0027t have to explicitly clear any new fields that might be added.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
