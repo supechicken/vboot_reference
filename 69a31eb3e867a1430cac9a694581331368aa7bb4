@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//4Dk\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-01-27T22:05:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "AAAAHn//4bM\u003d",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//4bQ\u003d",
         "filename": "cgpt/cgpt_add.c",
         "patchSetId": 1
@@ -30,6 +48,23 @@
       "writtenOn": "2012-01-27T16:58:16Z",
       "side": 1,
       "message": "You need to remove all trailing spaces in every file.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//4D8\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-01-27T22:05:33Z",
+      "side": 1,
+      "message": "Done.",
       "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//4D0\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-01-27T22:05:33Z",
+      "side": 1,
+      "message": "Yes, that was the original plan. But after discussing with Don, we realized that we may not be able to afford doing that optimization right now for this iteration. But I\u0027ll revisit this when doing the next part - the C++ interface to see if we can still get it done in the same time. But that\u0027s not for this check-in in any case.",
+      "parentUuid": "AAAAHn//4a8\u003d",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//4Y8\u003d",
         "filename": "cgpt/cmd_add.c",
         "patchSetId": 1
@@ -64,6 +117,24 @@
       "writtenOn": "2012-01-27T16:58:16Z",
       "side": 1,
       "message": "Just use \n\nmemset(\u0026params, 0, sizeof(params));\n\nThen we don\u0027t have to explicitly clear any new fields that might be added.",
+      "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//4DM\u003d",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-01-27T22:05:33Z",
+      "side": 1,
+      "message": "I was double-minded about forcing people to think about the initialization explicitly (in case values are non-zero sometimes) vs zeroing out flat. But the other bug I was talking about was due to an uninitialized field which I missed. So you win :-) I\u0027ve made these changes and got my bug fixed too!",
+      "parentUuid": "AAAAHn//4Y8\u003d",
       "revId": "69a31eb3e867a1430cac9a694581331368aa7bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
