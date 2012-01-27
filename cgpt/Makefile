@@ -15,6 +15,13 @@ PROGNAME = ${BUILD_ROOT}/cgpt
 
 ALL_SRCS = \
 	cgpt.c \
+	cgpt_create.c \
+	cgpt_add.c \
+	cgpt_boot.c \
+	cgpt_show.c \
+	cgpt_repair.c \
+	cgpt_prioritize.c \
+	cgpt_find.c \
 	cmd_show.c \
 	cmd_repair.c \
 	cmd_create.c \

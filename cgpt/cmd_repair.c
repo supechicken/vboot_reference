@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "cgptlib_internal.h"
+#include "cgpt_params.h"
 
 static void Usage(void)
 {
@@ -22,7 +22,9 @@ static void Usage(void)
 
 int cmd_repair(int argc, char *argv[]) {
   struct drive drive;
-  int verbose = 0;
+  cgpt_repair_params params;
+  
+  params.verbose = 0;
   
   int c;
   int errorcnt = 0;
@@ -33,7 +35,7 @@ int cmd_repair(int argc, char *argv[]) {
     switch (c)
     {
     case 'v':
-      verbose++;
+      params.verbose++;
       break;
 
     case 'h':
@@ -58,28 +60,7 @@ int cmd_repair(int argc, char *argv[]) {
     return CGPT_FAILED;
   }
 
-  if (optind >= argc) {
-    Error("missing drive argument\n");
-    return CGPT_FAILED;
-  }
+  params.driveName = argv[optind];
 
-  if (CGPT_OK != DriveOpen(argv[optind], &drive))
-    return CGPT_FAILED;
-
-  int gpt_retval = GptSanityCheck(&drive.gpt);
-  if (verbose)
-    printf("GptSanityCheck() returned %d: %s\n",
-           gpt_retval, GptError(gpt_retval));
-
-  GptRepair(&drive.gpt);
-  if (drive.gpt.modified & GPT_MODIFIED_HEADER1)
-    printf("Primary Header is updated.\n");
-  if (drive.gpt.modified & GPT_MODIFIED_ENTRIES1)
-    printf("Primary Entries is updated.\n");
-  if (drive.gpt.modified & GPT_MODIFIED_ENTRIES2)
-    printf("Secondary Entries is updated.\n");
-  if (drive.gpt.modified & GPT_MODIFIED_HEADER2)
-    printf("Secondary Header is updated.\n");
-
-  return DriveClose(&drive, 1);
+  return cgpt_repair(&params);
 }
