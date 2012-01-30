@@ -264,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//3Jg\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T21:34:49Z",
+      "side": 1,
+      "message": "Why not make it return either CGPT_OK or CGPT_FAILED on the return value? Or another meaningful value in case of success? It is customary for C functions to both write to an argument and return a value, as long as it\u0027s documented in the header file (IMO).",
+      "parentUuid": "AAAAHn//3Mo\u003d",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//3cc\u003d",
         "filename": "cgpt/cgpt_params.h",
         "patchSetId": 2
@@ -502,6 +520,24 @@
       "side": 1,
       "message": "I think it\u0027s meant to do the good part multiple times, even though the current code path uses it only once. I prefer to leave it this way.",
       "parentUuid": "AAAAHn//3cE\u003d",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3JY\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T21:34:49Z",
+      "side": 1,
+      "message": "It\u0027s questionable style, even for C... while I acknowledge the use of goto for tear down logic, I don\u0027t see true justification for this use (other than saving an indent).",
+      "parentUuid": "AAAAHn//3LA\u003d",
       "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
