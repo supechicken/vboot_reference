@@ -282,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//3Dc\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-30T22:51:30Z",
+      "side": 1,
+      "message": "This function doesn\u0027t return anything because it always works.\nIts only purpose is to print all matching entries and \"\" is a valid result. \n\nHowever, I don\u0027t mind if it acts more like \u0027grep\u0027 and returns an error if it doesn\u0027t match anything, provided that all the existing scripts that use the command-line version still work if we suddenly change the behavior. A number of them may be invoked with \"#!/bin/bash -eu\" and I don\u0027t think anyone has a canonical list of all the scripts. The factory flow is the one to watch out for, because the ODMs often write their own scripts based on ours, and we never see them unless/until something breaks.",
+      "parentUuid": "AAAAHn//3Jg\u003d",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//3cc\u003d",
         "filename": "cgpt/cgpt_params.h",
         "patchSetId": 2
@@ -538,6 +556,24 @@
       "side": 1,
       "message": "It\u0027s questionable style, even for C... while I acknowledge the use of goto for tear down logic, I don\u0027t see true justification for this use (other than saving an indent).",
       "parentUuid": "AAAAHn//3LA\u003d",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3E0\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-01-30T22:51:30Z",
+      "side": 1,
+      "message": "Go ahead and change it, Jay. It is ugly, and it\u0027s probably left over from a now-removed teardown exit.",
+      "parentUuid": "AAAAHn//3JY\u003d",
       "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
