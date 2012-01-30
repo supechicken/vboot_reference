@@ -1,0 +1,582 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//3d0\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill extra blank line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dg\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dc\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dU\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Wrap at 80 columns.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dQ\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Braces unnecessary here.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dM\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Braces unnecessary here.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dI\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill empty line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dE\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "I feel that this should either return an error (e.g. as in cgpt_add) or fail an assertion. In any case, the behavior should be consistent across all methods that take a params argument.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cc\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Capitalize, wrap at 80 columns.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dA\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Keep opening brace on the preceding line (throughout).",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3co\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Type names should be distinguished somehow. Google style recommends CamelCase, or use if the code already dictates a standard (e.g. typename_t) then you should stick with it.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3ck\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Google style recommends keeping the star together with the type, unless there is compelling reason not to do so and it\u0027s consistent throughout---is it?",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cg\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill extra blank lines.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cY\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "I think it\u0027s appropriate to restate this comment at this point...",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cQ\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "If this indicates a separate part of the code, it\u0027s probably better to use a descriptive comment. Also, kill extra blank lines.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cE\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "A goto statement instead of a conditional... I think that\u0027s worth fixing ;-)",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cI\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "It would be nice to align these 4 comments.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3cM\u003d",
+        "filename": "cgpt/cgpt_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill extra blank line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3b8\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3b4\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "I would add an empty line before the function definition.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3b0\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill empty lines.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bs\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill empty lines around } else {.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3dk\u003d",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Here, and in the following, keep the opening brace on the same line with the while/switch/if statement.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bo\u003d",
+        "filename": "cgpt/cmd_boot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill extra empty line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bk\u003d",
+        "filename": "cgpt/cmd_boot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Keep opening brace with preceding line (while, switch, if).",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bg\u003d",
+        "filename": "cgpt/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line (throughout).",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bY\u003d",
+        "filename": "cgpt/cmd_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bU\u003d",
+        "filename": "cgpt/cmd_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Unnecessary braces.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bI\u003d",
+        "filename": "cgpt/cmd_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bQ\u003d",
+        "filename": "cgpt/cmd_prioritize.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Kill extra empty line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bE\u003d",
+        "filename": "cgpt/cmd_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3bA\u003d",
+        "filename": "cgpt/cmd_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line (throughout).",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3a4\u003d",
+        "filename": "cgpt/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace with preceding line.",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//3a0\u003d",
+        "filename": "cgpt/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T16:53:42Z",
+      "side": 1,
+      "message": "Opening brace (throughout).",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
