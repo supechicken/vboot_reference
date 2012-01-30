@@ -300,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//3Cc\u003d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001075
+      },
+      "writtenOn": "2012-01-30T22:59:34Z",
+      "side": 1,
+      "message": "This function now has a new interface, as it expects a pointer to the params struct. Since this pointer might be NULL, it needs to account for it, and respond accordingly.  I understand why the current use will always succeed, but I believe the point is to turn it into a self-contained library, no?",
+      "parentUuid": "AAAAHn//3Dc\u003d",
+      "revId": "7c9027c8111b6f4e79b5efae837e2dc6bfbf67d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//3cc\u003d",
         "filename": "cgpt/cgpt_params.h",
         "patchSetId": 2
