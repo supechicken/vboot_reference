@@ -45,8 +45,15 @@ CFLAGS ?= \
 	$(COMMON_FLAGS)
 endif
 ifeq ($(FIRMWARE_ARCH), x86_64)
-CFLAGS ?= $(COMMON_FLAGS) \
-	-fvisibility=hidden -fno-strict-aliasing -fomit-frame-pointer
+# On 64-bit overlays, the firmware is still compiled in 32-bit mode,
+# but with the 64-bit toolchain.
+# So keep this flags the same as the i386 one and add -m32 to force the
+# build in 32-bit mode.
+CFLAGS ?= -m32 \
+	-ffunction-sections -fvisibility=hidden -fno-strict-aliasing \
+	-fomit-frame-pointer -fno-toplevel-reorder -fno-dwarf2-cfi-asm \
+	-mpreferred-stack-boundary=2 -mregparm=3 \
+	$(COMMON_FLAGS)
 endif
 
 CC ?= gcc
