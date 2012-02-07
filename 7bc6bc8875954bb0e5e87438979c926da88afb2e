@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//yyc\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-02-07T22:39:52Z",
+      "side": 1,
+      "message": "We need this to build natively for x86_64 since this is what sandbox uses.\n\nThis seems a bit wierd - I think you should create a special build option or better a new FIRMWARE_ARCH.\n\nIs there any reason not use to FIRMWARE_ARCH \u003d i386?",
+      "revId": "7bc6bc8875954bb0e5e87438979c926da88afb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
