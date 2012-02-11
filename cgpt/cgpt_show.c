@@ -178,6 +178,43 @@ void EntriesDetails(GptData *gpt, const int secondary, int raw) {
   }
 }
 
+int cgpt_get_num_non_empty_partitions(CgptShowParams *params) {
+  struct drive drive;
+  int gpt_retval;
+  int retval;
+
+  if (params == NULL)
+    return CGPT_FAILED;
+
+  if (CGPT_OK != DriveOpen(params->driveName, &drive))
+    return CGPT_FAILED;
+
+  if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive.gpt))) {
+    Error("GptSanityCheck() returned %d: %s\n",
+          gpt_retval, GptError(gpt_retval));
+    retval = CGPT_FAILED;
+    goto done;
+  }
+
+  params->num_partitions = 0;
+  int numEntries = GetNumberOfEntries(&drive.gpt);
+  int i;
+  for(i = 0; i < numEntries; i++) {
+      GptEntry *entry = GetEntry(&drive.gpt, ANY_VALID, i);
+
+      if (IsZero(&entry->type))
+        continue;
+
+      params->num_partitions++;
+  }
+
+  retval = CGPT_OK;
+
+done:
+  (void) DriveClose(&drive, 0);
+  return retval;
+}
+
 int cgpt_show(CgptShowParams *params) {
   struct drive drive;
   int gpt_retval;
