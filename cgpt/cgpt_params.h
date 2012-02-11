@@ -8,7 +8,7 @@
 #include "cgpt.h"
 
 // This file defines the internal methods that use the user-mode cgpt programatically.
-// This is the interface for the callers such as the cgpt tool or the C++ post installer 
+// This is the interface for the callers such as the cgpt tool or the C++ post installer
 // executable.
 
 typedef struct CgptCreateParams {
@@ -45,6 +45,9 @@ typedef struct CgptShowParams {
   int quick;
   uint32_t partition;
   int single_item;
+
+  // this is filled in by the relevant methods in cgpt_show.c
+  int numPartitions;
 } CgptShowParams;
 
 typedef struct CgptRepairParams {
@@ -89,10 +92,22 @@ typedef struct CgptFindParams {
 } CgptFindParams;
 
 int cgpt_create(CgptCreateParams *params);
+
 int cgpt_add(CgptAddParams *params);
+int cgpt_set_attributes(CgptAddParams *params);
+int cgpt_get_partition_details(CgptAddParams *params);
+
 int cgpt_boot(CgptBootParams *params);
+int cgpt_get_boot_partition_number(CgptBootParams *params);
+
+
 int cgpt_show(CgptShowParams *params);
+int cgpt_get_num_non_empty_partitions(CgptShowParams *params);
+
+
 int cgpt_repair(CgptRepairParams *params);
+
+
 int cgpt_prioritize(CgptPrioritizeParams *params);
 void cgpt_find(CgptFindParams *params);
 #endif  // VBOOT_REFERENCE_CGPT_CGPT_PARAMS_H_
