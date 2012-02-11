@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vvE\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "I know you\u0027ve seen it in the code, but broad using directives like this, are against the style guide.\n\nhttp://google-styleguide.googlecode.com/svn/trunk/cppguide.xml\n\nSearch for \"using namespace foo\"",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vu4\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Extra whitespace.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vu0\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Argument names should be of the form.\n\ndevice_name instead of deviceName",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vus\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "More argument names.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuo\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuk\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Argument names... and so on through the class.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vu8\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "The naming convention for member variables is \"device_name\" not \"deviceName\".\n\nAnd,  if they are private, they should end with a \u0027_\u0027.\n\ndevice_name_\nis_initialized_",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuc\u003d",
+        "filename": "cgpt/cgpt_boot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "retval or ret_val not retVal.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuY\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "num_partitions",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuQ\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "retval or ret_val",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "No broad namespaces like this.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vuA\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "cgpt_manager",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vt8\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "ret_val",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vts\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Name format.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vt4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "name format",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vt0\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Indention should be:\n\nblah \u003d Blah(stuff,\n                  stuff2,\n                  stuff3);",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtw\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Name format.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtk\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "naming.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vto\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtg\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Naming.....\n\n(And so on)",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtc\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Indention",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtY\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Indention.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtU\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "Indention.",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vtM\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-11T03:14:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this #if is about. Is it a reminder to do something in the future?",
+      "revId": "59a896255b8ea2fc8b1b2150ae7c4ff9d0769699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
