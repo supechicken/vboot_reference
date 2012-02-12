@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vms\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": ") {    should be at the end of the previous line.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmw\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Vertical whitespace.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmo\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Vertical whitespace.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmk\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Vertical whitespace.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmg\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Vertical whitespace.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmc\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": ");   should be at end of previous line.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmY\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Vertical whitespace.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vmU\u003d",
+        "filename": "cgpt/cgpt_boot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "Should this return CGPT_FAILED, or the specific error code from DriveOpen?\n\nOr are we converting between namespaces (CGPT_RESULT versus GPT_RESULT) or something?",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vm0\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2012-02-12T00:10:13Z",
+      "side": 1,
+      "message": "This value also is outside of the naming spec (same for follow on structs).\n\nHowever, unless you added it in an earlier CL, I\u0027d say you are off the hook for fixing it unless you just want too.",
+      "revId": "b22d85b6c59a71779b211c2d8c504ed87a670747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
