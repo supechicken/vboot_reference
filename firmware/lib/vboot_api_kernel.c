@@ -155,6 +155,8 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+D; skip delay\n"));
         goto fallout;
         break;
+      /* The '\n' or Ctrl-Enter is special for Lumpy test purpose. */
+      case '\n':
       case 0x15:
         /* Ctrl+U = try USB boot, or beep if failure */
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+U; try USB\n"));
