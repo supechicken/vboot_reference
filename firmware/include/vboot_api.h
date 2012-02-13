@@ -555,6 +555,7 @@ VbError_t VbExDisplayDebugInfo(const char* info_str);
 
 /* Key codes for required non-printable-ASCII characters. */
 enum VbKeyCode_t {
+  VB_KEY_CTRL_ENTER = 0xA,  /* Ctrl-J is also mapped to the same key. */
   VB_KEY_UP = 0x100,
   VB_KEY_DOWN = 0x101,
   VB_KEY_LEFT = 0x102,
