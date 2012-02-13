@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//vaM\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-02-13T17:53:09Z",
+      "side": 1,
+      "message": "\\n is Ctrl+J, actually.\n\ndefine a new enum for Ctrl+Enter in vboot_api.h:\n\nenum VbKeyCode_t {\n  VB_KEY_CODE_CTRL_ENTER \u003d \n\nand use that.",
+      "revId": "b5d2d63723a2f0d838f36a217bd97cef2477a4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
