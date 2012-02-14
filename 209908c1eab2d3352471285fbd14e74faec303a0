@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vIE\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "AAAAHn//vkM\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vj8\u003d",
         "filename": "cgpt/CgptManager.cc",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "This should be initialized as part of the constructor initializer list.",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vG8\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vj8\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vG4\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vkc\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vkI\u003d",
         "filename": "cgpt/CgptManager.cc",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "References must always be const. If you are using this as a return value parameters, make this a pointer instead. Comment applies to the rest of the file.",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vCM\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vkI\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vlI\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vlQ\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vkE\u003d",
         "filename": "cgpt/CgptManager.h",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vBY\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done, thanks for the fix. Yes, that was the missing header.",
+      "parentUuid": "AAAAHn//vkE\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vkA\u003d",
         "filename": "cgpt/CgptManager.h",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "Also make this go at the very end.",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vBU\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vkA\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vBE\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vj4\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vj0\u003d",
         "filename": "cgpt/cgpt_add.c",
         "patchSetId": 3
@@ -166,6 +310,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "NIT: a -\u003e A throughout. (Capitalize first word throughout)",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vBA\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vj0\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vA0\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vjw\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vjs\u003d",
         "filename": "cgpt/cgpt_boot.c",
         "patchSetId": 3
@@ -200,6 +380,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "NIT: ++i",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//vZk\u003d",
+        "filename": "cgpt/cgpt_boot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "The Style Guide says:\nFor simple scalar (non-object) values there is no reason to prefer one form and we allow either. For iterators and other template types, use pre-increment.",
+      "parentUuid": "AAAAHn//vjs\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +421,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//vAA\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vkU\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vkQ\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 3
@@ -240,6 +456,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//uuk\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Thank you so much Gaurav for telling me about gTest and glog. My code is much more flat and readable now!\n\nBtw, for the glot uint8 issue, I did it slightly differently to avoid the cast altogether - by automatically promoting the type through a helper method. Let me know if that sounds ok.",
+      "parentUuid": "AAAAHn//vkQ\u003d",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//vjk\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 3
@@ -251,6 +485,24 @@
       "writtenOn": "2012-02-12T17:02:25Z",
       "side": 1,
       "message": "After the setup stage is finished, It would be better to run all the tests even if one of them fails instead of exiting at the first failure.",
+      "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uuo\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-14T04:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//vjk\u003d",
       "revId": "209908c1eab2d3352471285fbd14e74faec303a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
