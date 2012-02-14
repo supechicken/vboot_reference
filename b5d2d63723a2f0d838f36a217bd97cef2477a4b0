@@ -16,6 +16,24 @@
       "revId": "b5d2d63723a2f0d838f36a217bd97cef2477a4b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uz8\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2012-02-14T01:22:42Z",
+      "side": 1,
+      "message": "It has a side-effect, Ctrl+J can also trigger dev USB boot.",
+      "parentUuid": "AAAAHn//vaM\u003d",
+      "revId": "b5d2d63723a2f0d838f36a217bd97cef2477a4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
