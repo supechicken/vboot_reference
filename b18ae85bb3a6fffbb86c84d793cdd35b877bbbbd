@@ -1,0 +1,480 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//uhY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Needs a better description. Perhaps a few lines on why the CgptManager C++ library is needed.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ulY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Don\u0027t need this in the commit description.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Please update test description when you have tested this on the other boards.\n\nYou also need the base and gtest dependency to the ebuild. Perhaps create that CL, and add a CQ-DEPEND clause here?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ukU\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Not something enforced by style I believe, but NULL pointers are shorter and more to the point if done as \"if (!ptr)\".",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uho\u003d",
+        "filename": "cgpt/CgptManager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "NIT: the -\u003e The \"argument\" -\u003e \"argument.\"",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ukM\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "This should go at the end.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ukQ\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "This goes to the top.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ui8\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "s/(void)//.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uj0\u003d",
+        "filename": "cgpt/cgpt_boot.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Re: i++ or ++i, It would be a good idea to be consistent with the rest of the package but both styles are used. Both styles are used right now, so I guess this is ok for now.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uio\u003d",
+        "filename": "cgpt/cgpt_params.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Nit: This",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uik\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Don\u0027t need this vertical white space.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uig\u003d",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Don\u0027t need this vertical white space.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujs\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "NIT: remove newline",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujk\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Our style doesn\u0027t allow the use of streams for anything except logging. Use open/read/write here instead.\nSee discussion at http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml?showone\u003dStreams#Streams",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uiU\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like something that needs a method for.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uiQ\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "I am not really sure you want to log so much. Unit tests should rarely fail, especially for code such as this which doesn\u0027t change that much. I would reconsider your logging strategy and make it less verbose.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uiM\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "sizeof(exected_id_str)",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uiA\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "sizeof(actual_id_str)",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uh8\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Again, what\u0027s the point of logging this?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uh4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "You can conditionally log on test failures like this:\n\nEXPECT_TRUE(condition) \u003c\u003c \"condition didn\u0027t match. \" \u003c\u003c \"print out that may help debug why a test failed\"",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uiY\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "The name CheckNumPartitions doesn\u0027t indicate what it checks. Use a better name? Also add a comment as to what this is checking.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uic\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "NIT: Indent is off.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//uh0\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "This and methods below are not used often enough to be defined as separate functions (CheckPriority is used 3 times, CheckBeginningOffset only once, CheckNumSectors only once, etc.).",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujg\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "\"and check.\" check what? perhaps, rephrase?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujY\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "Ditto. rephrase?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujU\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "rephrase?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujM\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "See previous comment about using streams for file i/o.",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ujE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-14T18:45:22Z",
+      "side": 1,
+      "message": "\"check\" what?",
+      "revId": "b18ae85bb3a6fffbb86c84d793cdd35b877bbbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
