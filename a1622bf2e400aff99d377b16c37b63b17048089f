@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//ti4\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tuY\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tuU\u003d",
         "filename": "cgpt/CgptManager.h",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "NIT: CgptManager.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ti0\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tuU\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tiw\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Updated. Thank you for flagging this. I was able to catch one place where I pass passing a cgpt_ method\u0027s return value without converting it to success due to this change.",
+      "parentUuid": "AAAAHn//tsw\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ttg\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "Both fstream and iostream are not used any more.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tis\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Removed. Good catch.",
+      "parentUuid": "AAAAHn//ttg\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tiY\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "if cgpt.h is included above CgptManager.h, we wouldn\u0027t be able to detect any implicit header files cgpt.h is bringing in. Since the post-installer won\u0027t include cgpt.h before, this is a good way to make sure we catch any such dependencies by including cgpt.h only afterwards.",
+      "parentUuid": "AAAAHn//ttE\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ttA\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -98,6 +188,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "Remove, no longer needed.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tiU\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//ttA\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tiQ\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Using kCgptSuccess instead of 0. I tried without the macro and the lines were getting much longer and less readable as to what call and arguments were being passed.",
+      "parentUuid": "AAAAHn//tsg\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tvQ\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -132,6 +258,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "Why are you not using VLOG() here?",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tiE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "I played around with vlog for sometime and I couldn\u0027t get it to work. So I switched to using flags as I\u0027ve used it before. Since it\u0027s unit test, it shouldn\u0027t matter which one is being used.",
+      "parentUuid": "AAAAHn//tvQ\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//th4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tvM\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tvE\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -166,6 +328,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "You should check for error here. Also, it is simpler to just use a single fwrite() instead of calling fputc() inside a loop.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//thc\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Added check for error. But fwrite is mode tedious as it needs a buffer to fill which will need a for-loop anyway and also we need to deal with fwrite writing less than the given size. The whole test only takes \u003c 50 ms, so such extra work for such optimizations are not worth at this point for a unit test.",
+      "parentUuid": "AAAAHn//tvE\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//thQ\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tu0\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tu4\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -200,6 +398,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "See previous comment about using fwrite() here.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//thM\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tu4\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//thI\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tt8\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tt4\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -234,6 +468,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "If it\u0027s unchanged, why do you need this.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//thE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "good point.",
+      "parentUuid": "AAAAHn//tt4\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//thA\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tts\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//tuw\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -268,6 +538,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "NIT: space after \u0027, \u0027 in the list",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tg8\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tuw\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tg4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//tt0\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ttw\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -308,6 +614,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//tgw\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "reworded to say \"in AddPartition\"",
+      "parentUuid": "AAAAHn//ttw\u003d",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//ttk\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 7
@@ -319,6 +643,24 @@
       "writtenOn": "2012-02-15T19:47:03Z",
       "side": 1,
       "message": "Again, unclear what \"above\" here refers to. Please define 20 60, etc. as symbolic constants and reuse them here and where they are originally used.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tgs\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-15T21:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//ttk\u003d",
       "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
