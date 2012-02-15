@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//tuY\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "NIT: methods.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tuU\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "NIT: CgptManager.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tsw\u003d",
+        "filename": "cgpt/CgptManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Just noticed this - The return types of all these methods should be CgptErrorCode.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ttg\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Both fstream and iostream are not used any more.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ttE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "I don\u0027t understand the second part of the comment \"Make sure...\".",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ttA\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Remove, no longer needed.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tsg\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "You already defined success as a kCgptSuccess enum for the C++ cgpt wrappers. Use that for checking success instead of relying on explicitly assuming that 0 denotes a success return value.\n\nMoreover, macros are discouraged unless there\u0027s a compelling use case. In case, there isn\u0027t.\n\nEXPECT_SUCCESS(expr) is just slightly shorter than EXPECT_EQ(kCgptSucess, expr). The latter is clearer too.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tvQ\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Why are you not using VLOG() here?",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tvM\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "ASSERT_TRUE expects as its arg, a bool. since |fp| is a pointer, do an explicit NULL check here.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tvE\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "You should check for error here. Also, it is simpler to just use a single fwrite() instead of calling fputc() inside a loop.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tu0\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "NIT: useless comment",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tu4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "See previous comment about using fwrite() here.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tt8\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Umm, this is a useless comment.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tt4\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "If it\u0027s unchanged, why do you need this.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tts\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Since this value is used below, it should be defined as a symbolic constant.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tuw\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "NIT: space after \u0027, \u0027 in the list",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//tt0\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "NIT: (here and below) set -\u003e Set",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ttw\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Unclear what \"above\" here refers to?",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ttk\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-02-15T19:47:03Z",
+      "side": 1,
+      "message": "Again, unclear what \"above\" here refers to. Please define 20 60, etc. as symbolic constants and reuse them here and where they are originally used.",
+      "revId": "a1622bf2e400aff99d377b16c37b63b17048089f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
