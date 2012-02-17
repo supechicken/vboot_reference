@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAHn//sG0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-17T00:58:42Z",
+      "side": 1,
+      "message": "Really? Which ones?",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sHY\u003d",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-17T00:58:42Z",
+      "side": 1,
+      "message": "The tests subdirectory should know what tests to build. You shouldn\u0027t be telling it from here. Use a variable or generic target instead, like\n\n$(MAKE) -C tests all_tests\n\nor\n\n$(MAKE) -C tests BUILD_IT_ALL\u003d1\n\nSame for building in cgpt/ itself, probably.",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//sJA\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 10
@@ -30,6 +64,57 @@
       "writtenOn": "2012-02-17T00:26:19Z",
       "side": 1,
       "message": "This still needs to be phrased properly. s/is support/support/.\n\nI\u0027d just say \"The --v flag controls the log verbosity level.\"",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sHw\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-17T00:58:42Z",
+      "side": 1,
+      "message": "Specify the full path here:\n\n${BUILD_ROOT}/CgptManagerTests:\n\nand remove  ${BUILD_ROOT} from the -o arg.",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sH0\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-17T00:58:42Z",
+      "side": 1,
+      "message": "You don\u0027t need a separate target here. Just add it to the TEST_NAMES list above if it\u0027s needed.\n\nifneq (${BUILD_IT_ALL},)\n\nTEST_NAMES +\u003d CgptManagerTests\n\nendif",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sH4\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-17T00:58:42Z",
+      "side": 1,
+      "message": "If the test has a default argument, make it the default. Don\u0027t require the makefile to invoke it that way.",
       "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
