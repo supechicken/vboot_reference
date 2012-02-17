@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//sEg\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "base/basetypes.h included in CgptManager.h is not available outside the chroot.",
+      "parentUuid": "AAAAHn//sG0\u003d",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//sHY\u003d",
         "filename": "Makefile",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2012-02-17T00:58:42Z",
       "side": 1,
       "message": "The tests subdirectory should know what tests to build. You shouldn\u0027t be telling it from here. Use a variable or generic target instead, like\n\n$(MAKE) -C tests all_tests\n\nor\n\n$(MAKE) -C tests BUILD_IT_ALL\u003d1\n\nSame for building in cgpt/ itself, probably.",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sEc\u003d",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "all_tests is a too vague  because someone might think it includes rbtest etc. which we\u0027re not including by default as part of the all target.  But what I can do is come up with a different name so we with_cgptmanager or something just to scope it to the current \"all\" target plus cgptmanager tests. But since the emerge doesn\u0027t run any tests any way, that change can wait, as explained in the notes.",
+      "parentUuid": "AAAAHn//sHY\u003d",
       "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//sEY\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "AAAAHn//sJA\u003d",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//sIo\u003d",
         "filename": "tests/CgptManagerTests.cc",
         "patchSetId": 10
@@ -64,6 +118,24 @@
       "writtenOn": "2012-02-17T00:26:19Z",
       "side": 1,
       "message": "This still needs to be phrased properly. s/is support/support/.\n\nI\u0027d just say \"The --v flag controls the log verbosity level.\"",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sEU\u003d",
+        "filename": "tests/CgptManagerTests.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "Done. Sorry, I misunderstood your last comment as though you meant literally what you said.",
+      "parentUuid": "AAAAHn//sIo\u003d",
       "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//sEM\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "Not sure why you want to be inconsistent from the rest of the targets such as rbtest, all, etc.). In any case, all such cosmetic changes have to be for a later day as we\u0027re way out of time for the 64 bit postinstaller integration and this needs to get checked in asap.",
+      "parentUuid": "AAAAHn//sHw\u003d",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//sH0\u003d",
         "filename": "tests/Makefile",
         "patchSetId": 10
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//sEE\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "That\u0027s how I had yesterday and I spent a whole day reworking all the plubming as this is the way David James recommended. And I agree with him that while it\u0027s ok for using such ifneq statements to control build flags such as CFLAGS, it\u0027s not the standard way to build targets. targets should all be self-contained when invoked from the command-ilne.",
+      "parentUuid": "AAAAHn//sH0\u003d",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//sH4\u003d",
         "filename": "tests/Makefile",
         "patchSetId": 10
@@ -115,6 +223,24 @@
       "writtenOn": "2012-02-17T00:58:42Z",
       "side": 1,
       "message": "If the test has a default argument, make it the default. Don\u0027t require the makefile to invoke it that way.",
+      "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//sD8\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001227
+      },
+      "writtenOn": "2012-02-17T01:31:33Z",
+      "side": 1,
+      "message": "I want it to be default unless we find an issue that the test logs too much. At that time I don\u0027t want to recompile the code to change the default.",
+      "parentUuid": "AAAAHn//sH4\u003d",
       "revId": "e4a476361c3a2d491090f69ddbbbdc204950197b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
