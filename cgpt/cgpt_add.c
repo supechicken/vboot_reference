@@ -232,8 +232,10 @@ int cgpt_add(CgptAddParams *params) {
       Error("New partitions must have a type other than \"unused\"\n");
       goto bad;
     }
+#ifdef sonny
     if (!params->set_unique)
       uuid_generate((uint8_t *)&entry->unique);
+#endif
   }
 
   if (params->set_begin)

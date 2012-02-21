@@ -115,6 +115,6 @@ endif
 
 include ../common.mk
 
-$(FWLIB) : $(LIB_OBJS)
+$(FWLIB) : $(LIB_OBJS) $(STUB_OBJS)
 	rm -f $@
 	ar qc $@ $^

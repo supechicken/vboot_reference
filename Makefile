@@ -105,9 +105,11 @@ all:
 		make -C $$i; \
 	done
 
-libcgpt_cc: all
+libcgpt_cc:
+	$(MAKE) -C utility $(DUMPKERNELCONFIGLIB)
+	$(MAKE) -C firmware $(FWLIB)
 	$(MAKE) -C cgpt libcgpt_cc
-	$(MAKE) -C tests CgptManagerTests
+	#$(MAKE) -C tests CgptManagerTests
 
 clean:
 	/bin/rm -rf ${BUILD}

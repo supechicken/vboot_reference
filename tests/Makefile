@@ -69,7 +69,7 @@ ${BUILD_ROOT}/CgptManagerTests.o: CgptManagerTests.cc
 
 CgptManagerTests: ${BUILD_ROOT}/CgptManagerTests.o ${LIBS}
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(LDFLAGS) -lgtest -lgflags $^ \
-	${BUILD}/cgpt/libcgpt-cc.a ${FWLIB} $(HOSTLIB) -lbase -lpthread -lrt -o ${BUILD_ROOT}/$@
+	${BUILD}/cgpt/libcgpt-cc.a ${FWLIB} -lpthread -lrt -o ${BUILD_ROOT}/$@
 
 ${BUILD_ROOT}/vboot_audio_for_test.o : $(FWDIR)/lib/vboot_audio.c
 	$(CC) $(CFLAGS) -DCUSTOM_MUSIC $(INCLUDES) \

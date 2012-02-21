@@ -9,6 +9,7 @@
 #include "cgptlib_internal.h"
 #include "cgpt_params.h"
 
+
 int cgpt_create(CgptCreateParams *params) {
   struct drive drive;
 
@@ -42,7 +43,9 @@ int cgpt_create(CgptCreateParams *params) {
     h->alternate_lba = drive.gpt.drive_sectors - 1;
     h->first_usable_lba = 1 + 1 + GPT_ENTRIES_SECTORS;
     h->last_usable_lba = drive.gpt.drive_sectors - 1 - GPT_ENTRIES_SECTORS - 1;
+#ifdef sonny
     uuid_generate((uint8_t *)&h->disk_uuid);
+#endif
     h->entries_lba = 2;
     h->number_of_entries = 128;
     h->size_of_entry = sizeof(GptEntry);
