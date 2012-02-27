@@ -22,6 +22,7 @@ TARGET_NAMES = crossystem \
 		dump_kernel_config \
 		gbb_utility \
 		load_kernel_test \
+		mount-encrypted \
 		pad_digest_utility \
 		signature_digest_utility \
 		tlcl_generator \
@@ -156,6 +157,15 @@ ${BUILD_ROOT}/vbutil_what_keys: vbutil_what_keys
 
 ${BUILD_ROOT}/tpmc: tpmc.c $(LIBS)
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
+
+# The embedded libcrypto includes conflict with the shipped openssl,
+# so this builds without the common CFLAGS (and those includes).
+${BUILD_ROOT}/mount-encrypted: mount-encrypted.c $(LIBS)
+	$(CC) -Wall -Werror -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong \
+		$(shell pkg-config --cflags glib-2.0 openssl) \
+		-I$(FWDIR)/include \
+		$< -o $@ $(shell pkg-config --libs glib-2.0 openssl) \
+		$(LIBS)
 
 ${BUILD_ROOT}/dev_sign_file: dev_sign_file.c $(LIBS)
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS) -lcrypto
