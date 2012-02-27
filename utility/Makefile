@@ -40,6 +40,8 @@ TARGET_NAMES = crossystem \
 
 ifeq ($(MINIMAL),)
 TARGET_NAMES += bmpblk_font bmpblk_utility eficompress efidecompress
+else
+TARGET_NAMES += mount-encrypted
 endif
 
 TARGET_BINS = $(addprefix ${BUILD_ROOT}/,$(TARGET_NAMES))
@@ -156,6 +158,16 @@ ${BUILD_ROOT}/vbutil_what_keys: vbutil_what_keys
 
 ${BUILD_ROOT}/tpmc: tpmc.c $(LIBS)
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
+
+# The embedded libcrypto includes conflict with the shipped openssl,
+# so this builds without the common CFLAGS (and those includes).
+${BUILD_ROOT}/mount-encrypted: mount-encrypted.c $(LIBS)
+	$(CC) -Wall -Werror -O2 -D_FORTIFY_SOURCE=2 -fstack-protector \
+		$(shell pkg-config --cflags glib-2.0 openssl) \
+		-I$(FWDIR)/include \
+		-I$(HOSTDIR)/include \
+		$< -o $@ $(shell pkg-config --libs glib-2.0 openssl) \
+		$(LIBS)
 
 ${BUILD_ROOT}/dev_sign_file: dev_sign_file.c $(LIBS)
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS) -lcrypto
