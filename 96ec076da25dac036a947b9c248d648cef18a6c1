@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//j4s\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-02-28T19:26:30Z",
+      "side": 1,
+      "message": "-fstack-protector-strong is a Google-only option. That\u0027s okay, but it means that this tool won\u0027t build outside the chroot, and it\u0027s often handy to be able to build all the utilities outside. Can we figure out a way to not attempt it? \n\nI\u0027d suggest moving mount-encrypted out of the default TARGET_NAMES, and adding an \"else\" clause to the MINIMAL \"if\" selection.\n\nThanks.",
+      "revId": "96ec076da25dac036a947b9c248d648cef18a6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
