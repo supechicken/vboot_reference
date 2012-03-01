@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//hsQ\u003d",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hsM\u003d",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "s/2010-2011/2012/",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hsI\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hsA\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "nit: any reason why the right hand-side of this equation isn\u0027t a constant as well?",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hr8\u003d",
+        "filename": "utility/tlcl_generator.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hr4\u003d",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "2012",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hrM\u003d",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T16:39:08Z",
+      "side": 1,
+      "message": "nit: might be worth breaking this into the call and the check, but the style in this code is its own thing, so do what seems right :)",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
