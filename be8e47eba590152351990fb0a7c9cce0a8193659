@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//hrw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T16:37:18Z",
+      "side": 1,
+      "message": "Hrm, whoops, deviated from ddoc here. check_bind_src() calls above need to _follow_ the migration step, since migration needs to only trigger if the src parth is missing. Therefore, call check_bind_src() inside migrate_contents() (but only if access() for the src fails). And then move check_bind_src() calls to the \"Perform bind mounts\" section just before the mount call.",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
