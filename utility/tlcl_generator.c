@@ -362,6 +362,14 @@ Command* BuildGetPermissionsCommand(void) {
   return cmd;
 }
 
+Command* BuildGetRandomCommand(void) {
+  int size = kTpmRequestHeaderLength + sizeof(uint32_t);
+  Command* cmd = newCommand(TPM_ORD_GetRandom, size);
+  cmd->name = "tpm_get_random_cmd";
+  AddVisibleField(cmd, "bytesRequested", kTpmRequestHeaderLength);
+  return cmd;
+}
+
 /* Output the fields of a structure.
  */
 void OutputFields(Field* fld) {
@@ -480,6 +488,7 @@ Command* (*builders[])(void) = {
   BuildGetFlagsCommand,
   BuildGetSTClearFlagsCommand,
   BuildGetPermissionsCommand,
+  BuildGetRandomCommand,
   BuildExtendCommand,
 };
 
