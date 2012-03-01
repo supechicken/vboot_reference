@@ -2,6 +2,346 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAHn//hqE\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "-strong?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hpI\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "I bet you could even get away with 32 or less since it\u0027ll just be logs at the start since c-home it outside of this space :)",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hos\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "should all of these be static or could you use -fvisibility\u003dhidden and only export explicitly exported symbols?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ho8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "I think wherever possible we\u0027d prefer less dependency on glib rather than more :)",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hoY\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "Is it not possible to VbGetSystemPropertyString since you\u0027re building inside vboot_reference land anyway?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hoQ\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "What happens if there is no TPM at all?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hn8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "(Random note, the recovery code will need to be updated to properly clear the nvram space based on the new size, iirc)",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hnw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "Should it go ahead and destroy the area right now?  I guess that would waste boot-time and lockbox should do it anyway.  Maybe comment that it is expected that lockbox will destroy it?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hng\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "Ah this avoids the TPM existence problem, though it makes me wonder if we should attempt to use the TPM regardless of the firmware/platform?\n\nAlso, why is cr48 being excluded? It is because they mostly lack nvram spaces or for another reason? I can\u0027t recall.\n\nOn a slightly related note, we should add a small cmdline tool or library to dump the key so that it\u0027s easy to make autotests that can grab it for when we want log dumps.",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hm8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "nit: remaining?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hm0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "This is in more than one place - should it be in a helper?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hmk\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "There was supposedly a new lazy initializer kthread, is stepping still needed?  Also, does it allow lazy online-resizes or does this cause crazy I/O churn?  (We were carrying a patch to allow lazy online resizes and not sure if a variant ever landed upstream.)",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hl4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "uninit_bg? sparse_super?\n\nAnd I guess no flex_bg (unless things have changed) https://bugs.launchpad.net/ubuntu/+source/e2fsprogs/+bug/575542",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hl0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "How long has this been taking?  It\u0027ll be important to know what the reboot time impact will be for those getting this upgrade",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "I don\u0027t think we do newline else\u0027s anywhere in our code?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hls\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "two lines plz or make a helper that takes \u0026cmd  and does g_free(*cmd); *cmd \u003d NULL",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlo\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "mounted or attached/setup?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlg\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "Think it\u0027ll be possible to link against libdevmapper instead?",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlM\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "syscall plz",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlc\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "More finessing is needed here.  If the stateful becomes corrupted due to a hasty power-down, mount will fail.  You\u0027re going to want to force a rebuild rather than just failing. (Or even fsck if you can, but bleeeh)",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//hrw\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 5
@@ -13,6 +353,57 @@
       "writtenOn": "2012-03-01T16:37:18Z",
       "side": 1,
       "message": "Hrm, whoops, deviated from ddoc here. check_bind_src() calls above need to _follow_ the migration step, since migration needs to only trigger if the src parth is missing. Therefore, call check_bind_src() inside migrate_contents() (but only if access() for the src fails). And then move check_bind_src() calls to the \"Perform bind mounts\" section just before the mount call.",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hlQ\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "syscall plz",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hk4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "syscall/helper func",
+      "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hk0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-01T17:28:04Z",
+      "side": 1,
+      "message": "same here if possible",
       "revId": "be8e47eba590152351990fb0a7c9cce0a8193659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
