@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//hbk\u003d",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//hsQ\u003d",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//hsM\u003d",
         "filename": "firmware/include/tss_constants.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-03-01T16:39:08Z",
       "side": 1,
       "message": "s/2010-2011/2012/",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hbg\u003d",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//hsM\u003d",
       "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//hbY\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//hsI\u003d",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//hsA\u003d",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2012-03-01T16:39:08Z",
       "side": 1,
       "message": "nit: any reason why the right hand-side of this equation isn\u0027t a constant as well?",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//hbA\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Other places use things like this for potentially larger buffers:\n  uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_PUBEK_SIZE];\nBut in this case, I decided that the common case for GetRandom is a relatively small number of bytes usually, so there was no reason to dramatically extend the size of the stack variable, and I should certainly not attempt to make the buffer as large as the \"length\" variable could be made. To that end, I decided the combination of the buffer size define, the sizeof on the response, and the ResponseHeader constant (used below) was the best of several poor options.\n\nI am, of course, open to suggestions.",
+      "parentUuid": "AAAAHn//hsA\u003d",
       "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//hbI\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "It\u0027s in firmware/include/tss_constants.h (which is in the CL).",
+      "parentUuid": "AAAAHn//hpY\u003d",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//hr8\u003d",
         "filename": "utility/tlcl_generator.c",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2012-03-01T16:39:08Z",
       "side": 1,
       "message": "2012",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//ha8\u003d",
+        "filename": "utility/tlcl_generator.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//hr8\u003d",
       "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -132,6 +240,24 @@
       "writtenOn": "2012-03-01T16:39:08Z",
       "side": 1,
       "message": "nit: might be worth breaking this into the call and the check, but the style in this code is its own thing, so do what seems right :)",
+      "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//has\u003d",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-03-01T19:10:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//hrM\u003d",
       "revId": "fd9f5c20c71a2b7e0e0439e017ec923a41186333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
