@@ -150,4 +150,9 @@ uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS* pflags);
  */
 uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS* pflags);
 
+/* Requests [length] bytes from TPM RNG to be stored in [data]. Actual
+ * number of bytes read is stored in [size]. The TPM error code is returned.
+ */
+uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t* size);
+
 #endif  /* TPM_LITE_TLCL_H_ */
