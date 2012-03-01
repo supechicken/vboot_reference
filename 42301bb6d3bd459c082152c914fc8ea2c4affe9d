@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//h+A\u003d",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-01T04:00:00Z",
+      "side": 1,
+      "message": "Should the type be uint8_t*?  Like the TPMExtend digests.",
+      "revId": "42301bb6d3bd459c082152c914fc8ea2c4affe9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//h98\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-01T04:00:00Z",
+      "side": 1,
+      "message": "IOERROR doesn\u0027t seem right.  Maybe TPM_E_BADPARAMETER?  Take a look through the available errors, and add one to our definitions if necessary.\n\nAlso, it may be better if it\u0027s an error that cannot be returned by the TPM itself (easier to diagnose issues) but right now I don\u0027t remember what the possibilities are.  I can help if needed, though.",
+      "revId": "42301bb6d3bd459c082152c914fc8ea2c4affe9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//h94\u003d",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-03-01T04:00:00Z",
+      "side": 1,
+      "message": "This is fine, but you could also use a fixed-size buffer.",
+      "revId": "42301bb6d3bd459c082152c914fc8ea2c4affe9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
