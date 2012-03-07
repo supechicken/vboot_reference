@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//bhk\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000245
+      },
+      "writtenOn": "2012-03-07T23:08:18Z",
+      "side": 1,
+      "message": "I\u0027m in a meeting so I can\u0027t confirm this, but I think that this will prevent it from building outside the chroot. If so, you can probably change \u0027:\u003d\u0027 to \u0027\u003d\u0027 so that it doesn\u0027t try to determine the PC_CFLAGS value unless you\u0027re actually compiling the CgptManager tests.",
+      "revId": "e340e9c3a1a84274857a01fe2de0711163de5397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
