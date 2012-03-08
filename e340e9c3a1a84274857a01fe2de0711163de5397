@@ -16,6 +16,24 @@
       "revId": "e340e9c3a1a84274857a01fe2de0711163de5397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//bTQ\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-03-08T02:01:23Z",
+      "side": 1,
+      "message": "the :\u003d will issue warnings, but it won\u0027t break the build.  unless of course you attempt to build the code that needs the libbase code, but that\u0027d be the status quo.",
+      "parentUuid": "AAAAHn//bhk\u003d",
+      "revId": "e340e9c3a1a84274857a01fe2de0711163de5397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
