@@ -81,6 +81,7 @@ int main(void)
   PublicKeyToRSA(0);
   VerifyData(0, 0, 0, 0);
   VerifyDigest(0, 0, 0);
+  EqualDigest(0, 0, 0);
   KeyBlockVerify(0, 0, 0, 0);
   VerifyFirmwarePreamble(0, 0, 0);
   VbGetFirmwarePreambleFlags(0);

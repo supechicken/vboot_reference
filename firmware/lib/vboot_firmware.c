@@ -239,10 +239,10 @@ int LoadFirmware(VbCommonParams* cparams, VbSelectFirmwareParams* fparams,
         VBPERFEND("VB_RFD");
         continue;
       }
-      if (lfi->body_size_accum != preamble->body_signature.data_size) {
+      if (lfi->body_size_accum != preamble->body_hash.data_size) {
         VBDEBUG(("Hash updated %d bytes but expected %d\n",
                  (int)lfi->body_size_accum,
-                 (int)preamble->body_signature.data_size));
+                 (int)preamble->body_hash.data_size));
         *check_result = VBSD_LF_CHECK_HASH_WRONG_SIZE;
         RSAPublicKeyFree(data_key);
         VBPERFEND("VB_RFD");
@@ -253,8 +253,8 @@ int LoadFirmware(VbCommonParams* cparams, VbSelectFirmwareParams* fparams,
       /* Verify firmware data */
       VBPERFSTART("VB_VFD");
       body_digest = DigestFinal(&lfi->body_digest_context);
-      if (0 != VerifyDigest(body_digest, &preamble->body_signature,
-                            data_key)) {
+
+      if (0 != EqualDigest(body_digest, &preamble->body_hash, data_key)) {
         VBDEBUG(("Firmware body verification failed.\n"));
         *check_result = VBSD_LF_CHECK_VERIFY_BODY;
         RSAPublicKeyFree(data_key);

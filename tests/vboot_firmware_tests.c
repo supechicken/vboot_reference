@@ -60,9 +60,9 @@ static void ResetMocks(void) {
     mpreamble[i].firmware_version = 4;
     /* Point kernel subkey to some data following the key header */
     PublicKeyInit(&mpreamble[i].kernel_subkey,
-                  (uint8_t*)&mpreamble[i].body_signature, 20);
+                  (uint8_t*)&mpreamble[i].body_hash, 20);
     mpreamble[i].kernel_subkey.algorithm = 7 + i;
-    mpreamble[i].body_signature.data_size = 20000 + 1000 * i;
+    mpreamble[i].body_hash.data_size = 20000 + 1000 * i;
   }
 
   Memset(&vnc, 0, sizeof(vnc));
@@ -147,24 +147,33 @@ VbError_t VbExHashFirmwareBody(VbCommonParams* cparams,
   digest_expect_ptr = (uint8_t*)(vblock + hash_fw_index) + 5;
   VbUpdateFirmwareBodyHash(
       cparams, digest_expect_ptr,
-      mpreamble[hash_fw_index].body_signature.data_size - 1024);
+      mpreamble[hash_fw_index].body_hash.data_size - 1024);
   VbUpdateFirmwareBodyHash(cparams, digest_expect_ptr, 1024);
 
   /* If signature offset is 42, hash the wrong amount and return success */
-  if (42 == mpreamble[hash_fw_index].body_signature.sig_offset) {
+  if (42 == mpreamble[hash_fw_index].body_hash.sig_offset) {
     VbUpdateFirmwareBodyHash(cparams, digest_expect_ptr, 4);
     return VBERROR_SUCCESS;
   }
 
   /* Otherwise, mocked function uses body signature offset as returned value */
-  return mpreamble[hash_fw_index].body_signature.sig_offset;
+  return mpreamble[hash_fw_index].body_hash.sig_offset;
 }
 
 int VerifyDigest(const uint8_t* digest, const VbSignature *sig,
                  const RSAPublicKey* key) {
   TEST_PTR_EQ(digest, digest_returned, "Verifying expected digest");
   TEST_PTR_EQ(key, &data_key, "Verifying using data key");
-  TEST_PTR_EQ(sig, &mpreamble[hash_fw_index].body_signature, "Verifying sig");
+  TEST_PTR_EQ(sig, &mpreamble[hash_fw_index].body_hash, "Verifying sig");
+  /* Mocked function uses sig size as return value for verifying digest */
+  return sig->sig_size;
+}
+
+int EqualDigest(const uint8_t* digest, const VbSignature *sig,
+                const RSAPublicKey* key) {
+  TEST_PTR_EQ(digest, digest_returned, "Verifying expected digest");
+  TEST_PTR_EQ(key, &data_key, "Verifying using data key");
+  TEST_PTR_EQ(sig, &mpreamble[hash_fw_index].body_hash, "Verifying sig");
   /* Mocked function uses sig size as return value for verifying digest */
   return sig->sig_size;
 }
@@ -300,7 +309,7 @@ static void LoadFirmwareTest(void) {
   ResetMocks();
   mpreamble[0].flags = VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL;
   /* Mock bad sig, to ensure we didn't use it */
-  mpreamble[0].body_signature.sig_size = 1;
+  mpreamble[0].body_hash.sig_size = 1;
   shared->flags |= VBSD_BOOT_RO_NORMAL_SUPPORT;
   vblock[1].key_block_flags = 0;  /* Invalid */
   TestLoadFirmware(VBERROR_SUCCESS, 0, "RO normal A");
@@ -363,12 +372,12 @@ static void LoadFirmwareTest(void) {
           "Firmware body A valid");
   TEST_EQ(shared->firmware_index, 0, "Boot A shared index");
   TEST_EQ(hash_fw_index, 0, "Hash firmware data A");
-  TEST_EQ(digest_size, mpreamble[0].body_signature.data_size,
+  TEST_EQ(digest_size, mpreamble[0].body_hash.data_size,
           "Verified all data expected");
 
   /* Test error getting firmware body */
   ResetMocks();
-  mpreamble[0].body_signature.sig_offset = VBERROR_UNKNOWN;
+  mpreamble[0].body_hash.sig_offset = VBERROR_UNKNOWN;
   vblock[1].key_block_flags = 0;  /* Invalid */
   TestLoadFirmware(VBERROR_LOAD_FIRMWARE,
                    (VBNV_RECOVERY_RO_INVALID_RW_CHECK_MIN +
@@ -379,7 +388,7 @@ static void LoadFirmwareTest(void) {
 
   /* Test digesting the wrong amount */
   ResetMocks();
-  mpreamble[0].body_signature.sig_offset = 42;  /* Mock hashing wrong amount */
+  mpreamble[0].body_hash.sig_offset = 42;  /* Mock hashing wrong amount */
   vblock[1].key_block_flags = 0;  /* Invalid */
   TestLoadFirmware(VBERROR_LOAD_FIRMWARE,
                    (VBNV_RECOVERY_RO_INVALID_RW_CHECK_MIN +
@@ -390,7 +399,7 @@ static void LoadFirmwareTest(void) {
 
   /* Test bad signature */
   ResetMocks();
-  mpreamble[0].body_signature.sig_size = 1;  /* Mock bad sig */
+  mpreamble[0].body_hash.sig_size = 1;  /* Mock bad sig */
   vblock[1].key_block_flags = 0;  /* Invalid */
   TestLoadFirmware(VBERROR_LOAD_FIRMWARE,
                    (VBNV_RECOVERY_RO_INVALID_RW_CHECK_MIN +

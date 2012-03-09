@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "cryptolib.h"
@@ -29,6 +30,7 @@ enum {
   OPT_FV,
   OPT_KERNELKEY,
   OPT_FLAGS,
+  OPT_NAME,
 };
 
 static struct option long_opts[] = {
@@ -41,6 +43,7 @@ static struct option long_opts[] = {
   {"fv", 1, 0,                        OPT_FV                      },
   {"kernelkey", 1, 0,                 OPT_KERNELKEY               },
   {"flags", 1, 0,                     OPT_FLAGS                   },
+  {"name", 1, 0,                      OPT_NAME                    },
   {NULL, 0, 0, 0}
 };
 
@@ -60,6 +63,7 @@ static int PrintHelp(void) {
        "  --kernelkey <file>          Kernel subkey in .vbpubk format\n"
        "optional OPTIONS are:\n"
        "  --flags <number>            Preamble flags (defaults to 0)\n"
+       "  --name <string>             Human-readable description\n"
        "\n"
        "For '--verify <file>', required OPTIONS are:\n"
        "  --signpubkey <file>         Signing public key in .vbpubk format\n"
@@ -76,11 +80,11 @@ static int PrintHelp(void) {
 static int Vblock(const char* outfile, const char* keyblock_file,
                   const char* signprivate, uint64_t version,
                   const char* fv_file, const char* kernelkey_file,
-                  uint32_t preamble_flags) {
+                  uint32_t preamble_flags, const char *name) {
 
   VbPrivateKey* signing_key;
   VbPublicKey* kernel_subkey;
-  VbSignature* body_sig;
+  VbSignature* body_hash;
   VbFirmwarePreambleHeader* preamble;
   VbKeyBlockHeader* key_block;
   uint64_t key_block_size;
@@ -99,6 +103,11 @@ static int Vblock(const char* outfile, const char* keyblock_file,
   }
   if (!fv_file) {
     VbExError("Must specify firmware volume\n");
+    return 1;
+  }
+
+  if (name && strlen(name)+1 > sizeof(preamble->name)) {
+    VbExError("Name string is too long\n");
     return 1;
   }
 
@@ -129,9 +138,9 @@ static int Vblock(const char* outfile, const char* keyblock_file,
     VbExError("Empty firmware volume file\n");
     return 1;
   }
-  body_sig = CalculateSignature(fv_data, fv_size, signing_key);
-  if (!body_sig) {
-    VbExError("Error calculating body signature\n");
+  body_hash = CalculateHash(fv_data, fv_size, signing_key);
+  if (!body_hash) {
+    VbExError("Error calculating body hash\n");
     return 1;
   }
   free(fv_data);
@@ -139,9 +148,11 @@ static int Vblock(const char* outfile, const char* keyblock_file,
   /* Create preamble */
   preamble = CreateFirmwarePreamble(version,
                                     kernel_subkey,
-                                    body_sig,
+                                    body_hash,
                                     signing_key,
-                                    preamble_flags);
+                                    preamble_flags,
+                                    name);
+  //HEY: name[]?
   if (!preamble) {
     VbExError("Error creating preamble.\n");
     return 1;
@@ -261,8 +272,9 @@ static int Verify(const char* infile, const char* signpubkey,
   PrintPubKeySha1Sum(kernel_subkey);
   printf("\n");
   printf("  Firmware body size:    %" PRIu64 "\n",
-         preamble->body_signature.data_size);
+         preamble->body_hash.data_size);
   printf("  Preamble flags:        %" PRIu32 "\n", flags);
+  printf("  Name:                  %s\n", preamble->name);
 
   /* TODO: verify body size same as signature size */
 
@@ -270,7 +282,7 @@ static int Verify(const char* infile, const char* signpubkey,
   if (flags & VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
     printf("Preamble requests USE_RO_NORMAL; skipping body verification.\n");
   } else {
-    if (0 != VerifyData(fv_data, fv_size, &preamble->body_signature, rsa)) {
+    if (0 != EqualData(fv_data, fv_size, &preamble->body_hash, rsa)) {
       VbExError("Error verifying firmware body.\n");
       return 1;
     }
@@ -298,6 +310,7 @@ int main(int argc, char* argv[]) {
   uint64_t version = 0;
   char* fv_file = NULL;
   char* kernelkey_file = NULL;
+  char* name = NULL;
   uint32_t preamble_flags = 0;
   int mode = 0;
   int parse_error = 0;
@@ -353,6 +366,10 @@ int main(int argc, char* argv[]) {
           parse_error = 1;
         }
         break;
+
+      case OPT_NAME:
+        name = optarg;
+        break;
     }
   }
 
@@ -362,7 +379,7 @@ int main(int argc, char* argv[]) {
   switch(mode) {
     case OPT_MODE_VBLOCK:
       return Vblock(filename, key_block_file, signprivate, version, fv_file,
-                    kernelkey_file, preamble_flags);
+                    kernelkey_file, preamble_flags, name);
     case OPT_MODE_VERIFY:
       return Verify(filename, signpubkey, fv_file, kernelkey_file);
     default:

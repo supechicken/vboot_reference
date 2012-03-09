@@ -501,7 +501,7 @@ static blob_t *OldBlob(const char* filename, uint64_t pad) {
   bp->kernel_version = preamble->kernel_version;
   bp->bootloader_address = preamble->bootloader_address;
   bp->bootloader_size = preamble->bootloader_size;
-  bp->blob_size = preamble->body_signature.data_size;
+  bp->blob_size = preamble->body_hash.data_size;
 
   Debug(" kernel_version = %d\n", bp->kernel_version);
   Debug(" bootloader_address = 0x%" PRIx64 "\n", bp->bootloader_address);
@@ -784,7 +784,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   printf("  Kernel version:      %" PRIu64 "\n", preamble->kernel_version);
   printf("  Body load address:   0x%" PRIx64 "\n", preamble->body_load_address);
   printf("  Body size:           0x%" PRIx64 "\n",
-         preamble->body_signature.data_size);
+         preamble->body_hash.data_size);
   printf("  Bootloader address:  0x%" PRIx64 "\n",
          preamble->bootloader_address);
   printf("  Bootloader size:     0x%" PRIx64 "\n", preamble->bootloader_size);
@@ -796,7 +796,7 @@ static int Verify(const char* infile, const char* signpubkey, int verbose,
   }
 
   /* Verify body */
-  if (0 != VerifyData(bp->blob, bp->blob_size, &preamble->body_signature,
+  if (0 != VerifyData(bp->blob, bp->blob_size, &preamble->body_hash,
                       rsa)) {
     VbExError("Error verifying kernel body.\n");
     goto verify_exit;

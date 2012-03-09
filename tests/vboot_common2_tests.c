@@ -175,21 +175,21 @@ static void VerifyKernelPreambleTest(const VbPublicKey* public_key,
            "VerifyKernelPreamble() sig too small");
 
   Memcpy(h, hdr, hsize);
-  GetSignatureData(&h->body_signature)[0] ^= 0x34;
+  GetSignatureData(&h->body_hash)[0] ^= 0x34;
   TEST_NEQ(VerifyKernelPreamble(h, hsize, rsa), 0,
            "VerifyKernelPreamble() sig mismatch");
 
   /* Check that we signed header and body sig */
   Memcpy(h, hdr, hsize);
   h->preamble_signature.data_size = 4;
-  h->body_signature.sig_offset = 0;
-  h->body_signature.sig_size = 0;
+  h->body_hash.sig_offset = 0;
+  h->body_hash.sig_size = 0;
   ReSignKernelPreamble(h, private_key);
   TEST_NEQ(VerifyKernelPreamble(h, hsize, rsa), 0,
            "VerifyKernelPreamble() didn't sign header");
 
   Memcpy(h, hdr, hsize);
-  h->body_signature.sig_offset = hsize;
+  h->body_hash.sig_offset = hsize;
   ReSignKernelPreamble(h, private_key);
   TEST_NEQ(VerifyKernelPreamble(h, hsize, rsa), 0,
            "VerifyKernelPreamble() body sig off end");
