@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//YUM\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-03-12T17:44:40Z",
+      "side": 1,
+      "message": "Would you please change \"*buf\" to \"buf[0]\" ? I know *buf will work, but since buf is an array and not a pointer, I think it\u0027s much more readable to access it that way.",
+      "revId": "161a27f91090cb48cd82601716545fc3ffa92a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
