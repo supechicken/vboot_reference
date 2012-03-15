@@ -16,6 +16,24 @@
       "revId": "cd0d1a60187039feec7c27f9ec9d081a9ca84673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//UKc\u003d",
+        "filename": "tests/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-03-15T23:05:04Z",
+      "side": 1,
+      "message": "i don\u0027t think that\u0027s true.  if you look at the rule, LDFLAGS is explicitly expanded.",
+      "parentUuid": "AAAAHn//UPU\u003d",
+      "revId": "cd0d1a60187039feec7c27f9ec9d081a9ca84673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
