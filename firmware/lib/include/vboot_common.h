@@ -75,16 +75,27 @@ RSAPublicKey* PublicKeyToRSA(const VbPublicKey* key);
 
 /* Verifies [data] matches signature [sig] using [key].  [size] is the size
  * of the data buffer; the amount of data to be validated is contained in
- * sig->data_size. */
+ * sig->data_size.
+ * Returns 0 if success, non-zero if error. */
 int VerifyData(const uint8_t* data, uint64_t size, const VbSignature* sig,
                const RSAPublicKey* key);
 
-
 /* Verifies a secure hash digest from DigestBuf() or DigestFinal(),
- * using [key]. */
+ * using [key].
+ * Returns 0 if success, non-zero if error. */
 int VerifyDigest(const uint8_t* digest, const VbSignature *sig,
                  const RSAPublicKey* key);
 
+ /* Uses [key] algorithm to hash [data], then compares that to the expected
+  * [hash]. Returns 0 if they're equal, non-zero if error. */
+int EqualData(const uint8_t* data, uint64_t size, const VbSignature *hash,
+              const RSAPublicKey* key);
+
+/* Compares a hash digest to a digest from DigestBuf() or DigestFinal(),
+ * using [key] to determine the size of each.
+ * Returns 0 if they're equal, non-zero if error. */
+int EqualDigest(const uint8_t* digest, const VbSignature *hash,
+                const RSAPublicKey* key);
 
 /* Checks the sanity of a key block of size [size] bytes, using public
  * key [key].  If hash_only is non-zero, uses only the block checksum
@@ -100,14 +111,6 @@ int KeyBlockVerify(const VbKeyBlockHeader* block, uint64_t size,
  * Returns VBOOT_SUCCESS if successful. */
 int VerifyFirmwarePreamble(const VbFirmwarePreambleHeader* preamble,
                            uint64_t size, const RSAPublicKey* key);
-
-
-/* Returns the flags from a firmware preamble, or a default value for
- * older preamble versions which didn't contain flags.  Use this
- * function to ensure compatibility with older preamble versions
- * (2.0).  Assumes the preamble has already been verified via
- * VerifyFirmwarePreamble(). */
-uint32_t VbGetFirmwarePreambleFlags(const VbFirmwarePreambleHeader* preamble);
 
 
 /* Checks the sanity of a kernel preamble of size [size] bytes,

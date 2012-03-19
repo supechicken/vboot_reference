@@ -13,6 +13,7 @@
 #include <unistd.h>
 
 #include "kernel_blob.h"
+#include "vboot_api.h"
 
 enum {
   OPT_KLOADADDR = 1000,

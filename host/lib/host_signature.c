@@ -55,7 +55,6 @@ int SignatureCopy(VbSignature* dest, const VbSignature* src) {
 
 
 VbSignature* CalculateChecksum(const uint8_t* data, uint64_t size) {
-
   uint8_t* header_checksum;
   VbSignature* sig;
 
@@ -75,6 +74,32 @@ VbSignature* CalculateChecksum(const uint8_t* data, uint64_t size) {
   /* Signature data immediately follows the header */
   Memcpy(GetSignatureData(sig), header_checksum, SHA512_DIGEST_SIZE);
   free(header_checksum);
+  return sig;
+}
+
+VbSignature* CalculateHash(const uint8_t* data, uint64_t size,
+                           const VbPrivateKey* key) {
+  uint8_t* digest;
+  int digest_size = hash_size_map[key->algorithm];
+  VbSignature* sig;
+
+  /* Calculate the digest */
+  digest = DigestBuf(data, size, key->algorithm);
+  if (!digest)
+    return NULL;
+
+  /* Allocate output signature */
+  sig = SignatureAlloc(digest_size, size);
+  if (!sig) {
+    free(digest);
+    return NULL;
+  }
+
+  /* The digest itself is the signature data */
+  Memcpy(GetSignatureData(sig), digest, digest_size);
+  free(digest);
+
+  /* Return the signature */
   return sig;
 }
 

@@ -27,6 +27,7 @@ static int opt_debug = 0;
 static int opt_verbose = 0;
 static int opt_vblockonly = 0;
 static uint64_t opt_pad = 65536;
+static int opt_preamble_fmt = DEFAULT_PREAMBLE_HEADER_VERSION;
 
 
 /* Command line options */
@@ -48,6 +49,7 @@ enum {
   OPT_PAD,
   OPT_VERBOSE,
   OPT_MINVERSION,
+  OPT_FORMAT,
 };
 
 typedef enum {
@@ -72,6 +74,7 @@ static struct option long_opts[] = {
   {"config", 1, 0,                    OPT_CONFIG                  },
   {"vblockonly", 0, 0,                OPT_VBLOCKONLY              },
   {"pad", 1, 0,                       OPT_PAD                     },
+  {"format", 1, 0,                    OPT_FORMAT                  },
   {"verbose", 0, &opt_verbose, 1                                  },
   {"debug", 0, &opt_debug, 1                                      },
   {NULL, 0, 0, 0}
@@ -99,8 +102,11 @@ static int PrintHelp(char *progname) {
           "  Optional:\n"
           "    --kloadaddr <address>     Assign kernel body load address\n"
           "    --pad <number>            Verification padding size in bytes\n"
-          "    --vblockonly              Emit just the verification blob\n",
-          progname);
+          "    --vblockonly              Emit just the verification blob\n"
+          "    --format <number>"
+          "         Use 3 for new platforms, 2 for existing\n   "
+          "                             0 to prefer v3 over v2. (default %d)\n",
+          progname, DEFAULT_PREAMBLE_HEADER_VERSION);
   fprintf(stderr,
           "\nOR\n\n"
           "Usage:  %s --repack <file> [PARAMETERS]\n"
@@ -117,7 +123,9 @@ static int PrintHelp(char *progname) {
           "    --version <number>        Kernel version\n"
           "    --kloadaddr <address>     Assign kernel body load address\n"
           "    --pad <number>            Verification blob size in bytes\n"
-          "    --vblockonly              Emit just the verification blob\n",
+          "    --vblockonly              Emit just the verification blob\n"
+          "    --format <number>"
+          "         Override format obtained from oldblob\n",
           progname);
   fprintf(stderr,
           "\nOR\n\n"
@@ -148,24 +156,6 @@ static void Debug(const char *format, ...) {
   vfprintf(stderr, format, ap);
   va_end(ap);
 }
-
-static void Fatal(const char *format, ...) {
-  va_list ap;
-  va_start(ap, format);
-  fprintf(stderr, "ERROR: ");
-  vfprintf(stderr, format, ap);
-  va_end(ap);
-  exit(1);
-}
-
-static void Warning(const char *format, ...) {
-  va_list ap;
-  va_start(ap, format);
-  fprintf(stderr, "WARNING: ");
-  vfprintf(stderr, format, ap);
-  va_end(ap);
-}
-
 
 /* Return an explanation when fread() fails. */
 static const char *error_fread(FILE *fp) {
@@ -229,7 +219,7 @@ uint64_t g_bootloader_address;
 /* The individual parts of the verification blob (including the data that
  * immediately follows the headers) */
 VbKeyBlockHeader* g_keyblock;
-VbKernelPreambleHeader* g_preamble;
+VbKernelPreambleUnion* g_preamble;
 
 /****************************************************************************/
 
@@ -248,7 +238,7 @@ static uint8_t* ReadConfigFile(const char* config_file, uint64_t* config_size)
   config_buf = ReadFile(config_file, config_size);
   Debug(" config file size=0x%" PRIx64 "\n", *config_size);
   if (CROS_CONFIG_SIZE <= *config_size) {  /* need room for trailing '\0' */
-    VbExError("Config file %s is too large (>= %d bytes)\n",
+    Fatal("Config file %s is too large (>= %d bytes)\n",
               config_file, CROS_CONFIG_SIZE);
     return NULL;
   }
@@ -262,12 +252,6 @@ static uint8_t* ReadConfigFile(const char* config_file, uint64_t* config_size)
   return config_buf;
 }
 
-
-/* Offset of kernel command line string from start of packed kernel blob */
-static uint64_t CmdLineOffset(VbKernelPreambleHeader *preamble) {
-  return preamble->bootloader_address - preamble->body_load_address -
-    CROS_CONFIG_SIZE - CROS_PARAMS_SIZE;
-}
 
 /* This initializes g_vmlinuz and g_param from a standard vmlinuz file.
  * It returns 0 on error. */
@@ -356,7 +340,7 @@ static uint8_t* ReadOldBlobFromFileOrDie(const char *filename,
   FILE* fp = NULL;
   struct stat statbuf;
   VbKeyBlockHeader* key_block;
-  VbKernelPreambleHeader* preamble;
+  VbKernelPreambleUnion* preamble;
   uint64_t now = 0;
   uint8_t* buf;
   uint8_t* kernel_blob_data;
@@ -386,28 +370,30 @@ static uint8_t* ReadOldBlobFromFileOrDie(const char *filename,
     Fatal("key_block_size advances past the end of the blob\n");
   if (now > opt_pad)
     Fatal("key_block_size advances past %" PRIu64 " byte padding\n",
-              opt_pad);
+          opt_pad);
   /* LGTM */
   g_keyblock = (VbKeyBlockHeader*)VbExMalloc(key_block->key_block_size);
   Memcpy(g_keyblock, key_block, key_block->key_block_size);
 
   /* And the preamble */
-  preamble = (VbKernelPreambleHeader*)(buf + now);
-  Debug("Preamble is 0x%" PRIx64 " bytes\n", preamble->preamble_size);
-  now += preamble->preamble_size;
+  preamble = (VbKernelPreambleUnion*)(buf + now);
+  Debug("Preamble is 0x%" PRIx64 " bytes\n", preamble->m.preamble_size);
+  now += preamble->m.preamble_size;
   if (now > statbuf.st_size)
     Fatal("preamble_size advances past the end of the blob\n");
   if (now > opt_pad)
     Fatal("preamble_size advances past %" PRIu64 " byte padding\n",
-              opt_pad);
+          opt_pad);
   /* LGTM */
-  Debug(" kernel_version = %d\n", preamble->kernel_version);
-  Debug(" bootloader_address = 0x%" PRIx64 "\n", preamble->bootloader_address);
-  Debug(" bootloader_size = 0x%" PRIx64 "\n", preamble->bootloader_size);
+  Debug(" kernel_version = %d\n", KP_MEMBER(preamble,kernel_version));
+  Debug(" bootloader_address = 0x%" PRIx64 "\n",
+        KP_MEMBER(preamble,bootloader_address));
+  Debug(" bootloader_size = 0x%" PRIx64 "\n",
+        KP_MEMBER(preamble, bootloader_size));
   Debug(" kern_blob_size = 0x%" PRIx64 "\n",
-        preamble->body_signature.data_size);
-  g_preamble = (VbKernelPreambleHeader*)VbExMalloc(preamble->preamble_size);
-  Memcpy(g_preamble, preamble, preamble->preamble_size);
+        KP_MEMBER_V3_V2(preamble,body_digest,body_signature).data_size);
+  g_preamble = VbExMalloc(preamble->m.preamble_size);
+  Memcpy(g_preamble, preamble, preamble->m.preamble_size);
 
   /* Now for the kernel blob */
   Debug("kernel blob is at offset 0x%" PRIx64 "\n", now);
@@ -419,15 +405,15 @@ static uint8_t* ReadOldBlobFromFileOrDie(const char *filename,
   kernel_blob_size = statbuf.st_size - now;
   if (!kernel_blob_size)
     Fatal("No kernel blob found\n");
-  if (kernel_blob_size < preamble->body_signature.data_size)
-    fprintf(stderr, "Warning: kernel file only has 0x%" PRIx64 " bytes\n",
-      kernel_blob_size);
+  if (kernel_blob_size < KP_MEMBER_V3_V2(preamble,
+                                         body_digest,body_signature).data_size)
+    Warning("Kernel file only has 0x%" PRIx64 " bytes\n", kernel_blob_size);
   kernel_blob_data = VbExMalloc(kernel_blob_size);
 
   /* Read it in */
   if (1 != fread(kernel_blob_data, kernel_blob_size, 1, fp))
     Fatal("Unable to read kernel blob from %s: %s\n", filename,
-              error_fread(fp));
+          error_fread(fp));
 
   /* Done */
   VbExFree(buf);
@@ -444,21 +430,13 @@ static uint8_t* ReadOldBlobFromFileOrDie(const char *filename,
 static void UnpackKernelBlob(uint8_t *kernel_blob_data,
                             uint64_t kernel_blob_size) {
 
-  uint64_t k_blob_size = g_preamble->body_signature.data_size;
   uint64_t k_blob_ofs = 0;
-  uint64_t b_size = g_preamble->bootloader_size;
-  uint64_t b_ofs = k_blob_ofs + g_preamble->bootloader_address -
-    g_preamble->body_load_address;
+  uint64_t b_size = KP_MEMBER(g_preamble, bootloader_size);
+  uint64_t b_ofs = k_blob_ofs +
+    KP_MEMBER(g_preamble, bootloader_address) -
+    KP_MEMBER(g_preamble, body_load_address);
   uint64_t p_ofs = b_ofs - CROS_CONFIG_SIZE;
   uint64_t c_ofs = p_ofs - CROS_PARAMS_SIZE;
-  uint64_t k_size = c_ofs;
-
-  Debug("k_blob_size    = 0x%" PRIx64 "\n", k_blob_size   );
-  Debug("k_blob_ofs     = 0x%" PRIx64 "\n", k_blob_ofs    );
-  Debug("b_size         = 0x%" PRIx64 "\n", b_size        );
-  Debug("b_ofs          = 0x%" PRIx64 "\n", b_ofs         );
-  Debug("p_ofs          = 0x%" PRIx64 "\n", p_ofs         );
-  Debug("c_ofs          = 0x%" PRIx64 "\n", c_ofs         );
 
   g_kernel_size = c_ofs;
   g_kernel_data = VbExMalloc(g_kernel_size);
@@ -535,48 +513,55 @@ static int Pack(const char* outfile,
                 int version,
                 uint64_t kernel_body_load_address,
                 VbPrivateKey* signpriv_key) {
-  VbSignature* body_sig;
-  uint64_t key_block_size;
+  VbSignature* body_digest;
   FILE* f;
   uint64_t i;
   uint64_t written = 0;
 
-  /* Sign the kernel data */
-  body_sig = CalculateSignature(kernel_blob, kernel_size, signpriv_key);
-  if (!body_sig)
-    Fatal("Error calculating body signature\n");
-
-  /* Create preamble */
-  g_preamble = CreateKernelPreamble(version,
-                                    kernel_body_load_address,
-                                    g_bootloader_address,
-                                    roundup(g_bootloader_size, CROS_ALIGN),
-                                    body_sig,
-                                    opt_pad - g_keyblock->key_block_size,
-                                    signpriv_key);
+  if (2 == opt_preamble_fmt) {
+    /* v2 - sign the kernel data */
+    body_digest = CalculateSignature(kernel_blob, kernel_size, signpriv_key);
+    if (!body_digest)
+      Fatal("Error calculating body signature\n");
+    /* Create preamble */
+    g_preamble = (VbKernelPreambleUnion *) CreateKernelPreamble2_0(
+      version, kernel_body_load_address, g_bootloader_address,
+      roundup(g_bootloader_size, CROS_ALIGN), body_digest,
+      opt_pad - g_keyblock->key_block_size, signpriv_key);
+  } else {
+    /* v3 - hash the kernel data */
+    body_digest = CalculateHash(kernel_blob, kernel_size, signpriv_key);
+    if (!body_digest)
+      Fatal("Error calculating body digest\n");
+    /* Create preamble */
+    g_preamble = (VbKernelPreambleUnion *) CreateKernelPreamble(
+      version, kernel_body_load_address, g_bootloader_address,
+      roundup(g_bootloader_size, CROS_ALIGN), body_digest,
+      opt_pad - g_keyblock->key_block_size, signpriv_key);
+  }
   if (!g_preamble) {
-    VbExError("Error creating preamble.\n");
+    Fatal("Error creating preamble.\n");
     return 1;
   }
   /* Write the output file */
   Debug("writing %s...\n", outfile);
   f = fopen(outfile, "wb");
   if (!f) {
-    VbExError("Can't open output file %s\n", outfile);
+    Fatal("Can't open output file %s\n", outfile);
     return 1;
   }
   Debug("0x%" PRIx64 " bytes of key_block\n", g_keyblock->key_block_size);
-  Debug("0x%" PRIx64 " bytes of preamble\n", g_preamble->preamble_size);
+  Debug("0x%" PRIx64 " bytes of preamble\n", g_preamble->m.preamble_size);
   i = ((1 != fwrite(g_keyblock, g_keyblock->key_block_size, 1, f)) ||
-       (1 != fwrite(g_preamble, g_preamble->preamble_size, 1, f)));
+       (1 != fwrite(g_preamble, g_preamble->m.preamble_size, 1, f)));
   if (i) {
-    VbExError("Can't write output file %s\n", outfile);
     fclose(f);
     unlink(outfile);
+    Fatal("Can't write output file %s\n", outfile);
     return 1;
   }
   written += g_keyblock->key_block_size;
-  written += g_preamble->preamble_size;
+  written += g_preamble->m.preamble_size;
 
   if (!opt_vblockonly) {
     Debug("0x%" PRIx64 " bytes of kern_blob\n", kernel_size);
@@ -599,7 +584,8 @@ static int Verify(uint8_t* kernel_blob,
                   uint64_t kernel_size,
                   VbPublicKey* signpub_key,
                   const char* keyblock_outfile,
-                  uint64_t min_version) {
+                  uint64_t min_version,
+                  int noisy) {
   VbPublicKey* data_key;
   RSAPublicKey* rsa;
 
@@ -607,29 +593,31 @@ static int Verify(uint8_t* kernel_blob,
                           signpub_key, (0 == signpub_key)))
     Fatal("Error verifying key block.\n");
 
-  printf("Key block:\n");
   data_key = &g_keyblock->data_key;
-  if (opt_verbose)
-    printf("  Signature:           %s\n", signpub_key ? "valid" : "ignored");
-  printf("  Size:                0x%" PRIx64 "\n", g_keyblock->key_block_size);
-  printf("  Flags:               %" PRIu64 " ", g_keyblock->key_block_flags);
-  if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_0)
-    printf(" !DEV");
-  if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_1)
-    printf(" DEV");
-  if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_0)
-    printf(" !REC");
-  if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_1)
-    printf(" REC");
-  printf("\n");
-  printf("  Data key algorithm:  %" PRIu64 " %s\n", data_key->algorithm,
-         (data_key->algorithm < kNumAlgorithms ?
-          algo_strings[data_key->algorithm] : "(invalid)"));
-  printf("  Data key version:    %" PRIu64 "\n", data_key->key_version);
-  printf("  Data key sha1sum:    ");
-  PrintPubKeySha1Sum(data_key);
-  printf("\n");
-
+  if (noisy) {
+    printf("Key block:\n");
+    if (opt_verbose)
+      printf("  Signature:           %s\n", signpub_key ? "valid" : "ignored");
+    printf("  Size:                0x%" PRIx64 "\n",
+           g_keyblock->key_block_size);
+    printf("  Flags:               %" PRIu64 " ", g_keyblock->key_block_flags);
+    if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_0)
+      printf(" !DEV");
+    if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_1)
+      printf(" DEV");
+    if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_0)
+      printf(" !REC");
+    if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_1)
+      printf(" REC");
+    printf("\n");
+    printf("  Data key algorithm:  %" PRIu64 " %s\n", data_key->algorithm,
+           (data_key->algorithm < kNumAlgorithms ?
+            algo_strings[data_key->algorithm] : "(invalid)"));
+    printf("  Data key version:    %" PRIu64 "\n", data_key->key_version);
+    printf("  Data key sha1sum:    ");
+    PrintPubKeySha1Sum(data_key);
+    printf("\n");
+  }
   if (keyblock_outfile) {
     FILE* f = NULL;
     f = fopen(keyblock_outfile, "wb");
@@ -642,45 +630,70 @@ static int Verify(uint8_t* kernel_blob,
 
   if (data_key->key_version < (min_version >> 16))
     Fatal("Data key version %" PRIu64
-              " is lower than minimum %" PRIu64".\n",
-              data_key->key_version, (min_version >> 16));
+          " is lower than minimum %" PRIu64".\n",
+          data_key->key_version, (min_version >> 16));
 
   rsa = PublicKeyToRSA(data_key);
   if (!rsa)
     Fatal("Error parsing data key.\n");
 
   /* Verify preamble */
-  if (0 != VerifyKernelPreamble(
-        g_preamble, g_preamble->preamble_size, rsa))
-    Fatal("Error verifying preamble.\n");
+  if (IS_V3(g_preamble)) {
+    if (2 == opt_preamble_fmt) {
+      Fatal("Preamble is v3, accepting v2 only.\n");
+    }
+    if (0 != VerifyKernelPreamble(
+          &g_preamble->v3, g_preamble->m.preamble_size, rsa))
+      Fatal("Error verifying v3 preamble.\n");
+  } else {
+    if (3 == opt_preamble_fmt) {
+      Fatal("Preamble is v2, accepting v3 only.\n");
+    }
+    if (0 != VerifyKernelPreamble2_x(
+          &g_preamble->v2, g_preamble->m.preamble_size, rsa))
+      Fatal("Error verifying v2 preamble.\n");
+  }
 
-  printf("Preamble:\n");
-  printf("  Size:                0x%" PRIx64 "\n", g_preamble->preamble_size);
-  printf("  Header version:      %" PRIu32 ".%" PRIu32"\n",
-         g_preamble->header_version_major, g_preamble->header_version_minor);
-  printf("  Kernel version:      %" PRIu64 "\n", g_preamble->kernel_version);
-  printf("  Body load address:   0x%" PRIx64 "\n",
-         g_preamble->body_load_address);
-  printf("  Body size:           0x%" PRIx64 "\n",
-         g_preamble->body_signature.data_size);
-  printf("  Bootloader address:  0x%" PRIx64 "\n",
-         g_preamble->bootloader_address);
-  printf("  Bootloader size:     0x%" PRIx64 "\n",
-         g_preamble->bootloader_size);
-
-  if (g_preamble->kernel_version < (min_version & 0xFFFF))
+  if (noisy) {
+    printf("Preamble:\n");
+    printf("  Size:                0x%" PRIx64 "\n",
+           g_preamble->m.preamble_size);
+    printf("  Header version:      %" PRIu32 ".%" PRIu32"\n",
+           g_preamble->m.header_version_major,
+           g_preamble->m.header_version_minor);
+    printf("  Kernel version:      %" PRIu64 "\n",
+           KP_MEMBER(g_preamble, kernel_version));
+    printf("  Body load address:   0x%" PRIx64 "\n",
+           KP_MEMBER(g_preamble, body_load_address));
+    printf("  Body size:           0x%" PRIx64 "\n",
+           KP_MEMBER_V3_V2(g_preamble, body_digest,body_signature).data_size);
+    printf("  Bootloader address:  0x%" PRIx64 "\n",
+           KP_MEMBER(g_preamble, bootloader_address));
+    printf("  Bootloader size:     0x%" PRIx64 "\n",
+           KP_MEMBER(g_preamble, bootloader_size));
+  }
+  if (KP_MEMBER(g_preamble, kernel_version) < (min_version & 0xFFFF))
     Fatal("Kernel version %" PRIu64 " is lower than minimum %" PRIu64 ".\n",
-              g_preamble->kernel_version, (min_version & 0xFFFF));
+          KP_MEMBER(g_preamble, kernel_version), (min_version & 0xFFFF));
 
-  /* Verify body */
-  if (0 != VerifyData(kernel_blob, kernel_size,
-                      &g_preamble->body_signature, rsa))
-    Fatal("Error verifying kernel body.\n");
+  if (IS_V3(g_preamble)) {
+    /* Verify kernel data using the digest from the preamble. */
+    if (0 != EqualData(kernel_blob, kernel_size,
+                       &g_preamble->v3.body_digest, rsa))
+      Fatal("Error verifying (v3) kernel body.\n");
+  } else {
+    /* Verify kernel data using the signature from the preamble. */
+    if (0 != VerifyData(kernel_blob, kernel_size,
+                        &g_preamble->v2.body_signature, rsa))
+      Fatal("Error verifying (v2) kernel body.\n");
+  }
   printf("Body verification succeeded.\n");
 
-
-   if (opt_verbose)
-     printf("Config:\n%s\n", kernel_blob + CmdLineOffset(g_preamble));
+  if (opt_verbose)
+    printf("Config:\n%s\n", kernel_blob +
+           KP_MEMBER(g_preamble, bootloader_address) -
+           KP_MEMBER(g_preamble, body_load_address) -
+           CROS_CONFIG_SIZE - CROS_PARAMS_SIZE);
 
   return 0;
 }
@@ -705,11 +718,12 @@ int main(int argc, char* argv[]) {
   int parse_error = 0;
   uint64_t min_version = 0;
   char* e;
-  int i;
+  int i, tmp;
   VbPrivateKey* signpriv_key = NULL;
   VbPublicKey* signpub_key = NULL;
   uint8_t* kernel_blob = NULL;
   uint64_t kernel_size = 0;
+  int format_specified = 0;
 
   char *progname = strrchr(argv[0], '/');
   if (progname)
@@ -820,6 +834,16 @@ int main(int argc, char* argv[]) {
         parse_error = 1;
       }
       break;
+
+    case OPT_FORMAT:
+      opt_preamble_fmt = strtoul(optarg, &e, 0);
+      if (!*optarg || (e && *e) ||
+          (opt_preamble_fmt != 2 && opt_preamble_fmt != 3)) {
+        printf("Invalid --format\n");
+        parse_error = 1;
+      }
+      format_specified = 1;
+      break;
     }
   }
 
@@ -890,8 +914,13 @@ int main(int argc, char* argv[]) {
     /* Load the old blob */
 
     kernel_blob = ReadOldBlobFromFileOrDie(oldfile, &kernel_size);
-    if (0 != Verify(kernel_blob, kernel_size, 0, 0, 0))
+
+    /* Temporarily accept any input format, since we're repacking anyway */
+    tmp = opt_preamble_fmt;
+    opt_preamble_fmt = 0;
+    if (0 != Verify(kernel_blob, kernel_size, 0, 0, 0, 0))
       Fatal("The oldblob doesn't verify\n");
+    opt_preamble_fmt = tmp;
 
     /* Take it apart */
 
@@ -901,10 +930,10 @@ int main(int argc, char* argv[]) {
     /* Load optional params */
 
     if (!version_str)
-      version = g_preamble->kernel_version;
+      version = KP_MEMBER(g_preamble, kernel_version);
 
     if (!address_str)
-      kernel_body_load_address = g_preamble->body_load_address;
+      kernel_body_load_address = KP_MEMBER(g_preamble, body_load_address);
 
     if (config_file) {
       if (g_config_data)
@@ -921,7 +950,9 @@ int main(int argc, char* argv[]) {
         Fatal("Error reading key block.\n");
     }
 
-    /* Put it back together */
+    /* Put it back together, using the same format unless told otherwise */
+    if (!format_specified)
+      opt_preamble_fmt = g_preamble->m.header_version_major;
 
     kernel_blob = CreateKernelBlob(kernel_body_load_address, arch,
                                    &kernel_size);
@@ -946,7 +977,7 @@ int main(int argc, char* argv[]) {
     kernel_blob = ReadOldBlobFromFileOrDie(filename, &kernel_size);
 
     return Verify(kernel_blob, kernel_size, signpub_key,
-                  keyblock_file, min_version);
+                  keyblock_file, min_version, 1);
   }
 
   fprintf(stderr, "You must specify a mode: --pack, --repack or --verify\n");
