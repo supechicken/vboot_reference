@@ -26,8 +26,8 @@ static void StructPackingTest(void) {
           sizeof(VbFirmwarePreambleHeader2_0),
           "sizeof(VbFirmwarePreambleHeader2_0)");
   TEST_EQ(EXPECTED_VBFIRMWAREPREAMBLEHEADER2_1_SIZE,
-          sizeof(VbFirmwarePreambleHeader),
-          "sizeof(VbFirmwarePreambleHeader)");
+          sizeof(VbFirmwarePreambleHeader2_1),
+          "sizeof(VbFirmwarePreambleHeader2_1)");
   TEST_EQ(EXPECTED_VBKERNELPREAMBLEHEADER_SIZE,
           sizeof(VbKernelPreambleHeader), "sizeof(VbKernelPreambleHeader)");
 

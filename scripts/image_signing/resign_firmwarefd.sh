@@ -148,6 +148,15 @@ else
 fi
 echo "Using firmware preamble flag: $PREAMBLE_FLAG"
 
+echo "Determining the firmware preamble header format"
+FORMAT_FLAG=""
+vbutil_firmware \
+    --verify "${temp_out_vb}" \
+    --signpubkey "${temp_root_key}" \
+    --fv "${temp_fwimage_a}" |
+    egrep -q 'Header version: *3' || FORMAT_FLAG="--format 2"
+echo "Extra format flag: $FORMAT_FLAG"
+
 # Sanity check firmware type: "developer key block" should be only used if the
 # content in firmware A/B are different; otherwise always use normal key blocks.
 if is_the_same_binary_file "${temp_fwimage_a}" "${temp_fwimage_b}"; then
@@ -162,6 +171,7 @@ vbutil_firmware \
   --signprivate "${DEV_FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
   $PREAMBLE_FLAG \
+  $FORMAT_FLAG \
   --fv "${temp_fwimage_a}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
@@ -177,6 +187,7 @@ vbutil_firmware \
   --signprivate "${FIRMWARE_DATAKEY}" \
   --version "${VERSION}" \
   $PREAMBLE_FLAG \
+  $FORMAT_FLAG \
   --fv "${temp_fwimage_b}" \
   --kernelkey "${KERNEL_SUBKEY}"
 
