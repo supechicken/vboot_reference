@@ -63,6 +63,7 @@ dd if=/dev/urandom of="${DATADIR}/KERNDATA" bs=32768 count=1
 # Now sign the firmware and kernel data in all the possible ways using the
 # pre-change tools.
 for d in $algs; do
+  echo "alg $d"
   for r in $algs; do
       vbutil_firmware --vblock "${V2DIR}/fw_${d}_${r}.vblock" \
         --keyblock "${DATADIR}/kb_${d}_${r}.keyblock" \
@@ -80,5 +81,3 @@ for d in $algs; do
        --config "${DATADIR}/dummy_config.txt"
   done
 done
-
-

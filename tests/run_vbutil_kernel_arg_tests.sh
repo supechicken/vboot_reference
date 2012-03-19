@@ -44,9 +44,11 @@ while [ "$k" -lt "${#KERN_VALS[*]}" ]; do
   while [ "$b" -lt "${#BOOT_VALS[*]}" ]; do
     echo -n "pack kern_${k}_${b}.vblock ... "
     : $(( tests++ ))
-      "${UTIL_DIR}/vbutil_kernel" --pack "${TMPDIR}/kern_${k}_${b}.vblock" \
+      "${UTIL_DIR}/vbutil_kernel" \
+        --pack "${TMPDIR}/kern_${k}_${b}.vblock" \
         --keyblock "${KEYBLOCK}" \
         --signprivate "${SIGNPRIVATE}" \
+        --format 3 \
         --version 1 \
         --arch arm \
         --config "${CONFIG}" \
@@ -103,6 +105,7 @@ echo -n "pack USB kernel ... "
   --pack "${USB_KERN}" \
   --keyblock "${USB_KEYBLOCK}" \
   --signprivate "${USB_SIGNPRIVATE}" \
+  --format 3 \
   --version 1 \
   --config "${CONFIG}" \
   --bootloader "${BIG}" \
