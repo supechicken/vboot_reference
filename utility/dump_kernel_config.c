@@ -18,7 +18,6 @@ uint8_t* find_kernel_config(uint8_t* blob, uint64_t blob_size,
 
   VbKeyBlockHeader* key_block;
   VbKernelPreambleHeader* preamble;
-  struct linux_kernel_params *params;
   uint32_t now = 0;
   uint32_t offset = 0;
 

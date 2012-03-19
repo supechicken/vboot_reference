@@ -11,6 +11,12 @@
 #include "utility.h"
 #include "vboot_struct.h"
 
+/* print error message and die */
+void Fatal(const char *format, ...);
+
+/* print error message and continue */
+void Warning(const char *format, ...);
+
 /* Copy up to dest_size-1 characters from src to dest, ensuring null
    termination (which strncpy() doesn't do).  Returns the destination
    string. */
@@ -45,5 +51,8 @@ int WriteFile(const char* filename, const void *data, uint64_t size);
 
 /* Prints the sha1sum of the given VbPublicKey to stdout. */
 void PrintPubKeySha1Sum(VbPublicKey* key);
+
+/* Modify original argc/argv to preload options from a config file */
+void PreloadOptions(int *argcp, char ***argvp);
 
 #endif  /* VBOOT_REFERENCE_HOST_MISC_H_ */
