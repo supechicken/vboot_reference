@@ -11,6 +11,12 @@
 #include "utility.h"
 #include "vboot_struct.h"
 
+/* print error message and die */
+void Fatal(const char *format, ...);
+
+/* print error message and continue */
+void Warning(const char *format, ...);
+
 /* Copy up to dest_size-1 characters from src to dest, ensuring null
    termination (which strncpy() doesn't do).  Returns the destination
    string. */

@@ -7,6 +7,7 @@
 
 /* TODO: change all 'return 0', 'return 1' into meaningful return codes */
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,6 +17,22 @@
 #include "host_common.h"
 #include "vboot_common.h"
 
+void Fatal(const char *format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "ERROR: ");
+  vfprintf(stderr, format, ap);
+  va_end(ap);
+  exit(1);
+}
+
+void Warning(const char *format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "WARNING: ");
+  vfprintf(stderr, format, ap);
+  va_end(ap);
+}
 
 char* StrCopy(char* dest, const char* src, int dest_size) {
   strncpy(dest, src, dest_size);

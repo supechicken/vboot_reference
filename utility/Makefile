@@ -8,10 +8,17 @@ INCLUDES += -I./include \
 		-I$(FWDIR)/lib/cryptolib/include \
 		-I$(FWDIR)/lib/tpm_lite/include \
 		-I$(HOSTDIR)/include
-CFLAGS += $(INCLUDES)
+CFLAGS += $(INCLUDES) -Wall -Werror
 CFLAGS += -MMD -MF $@.d
 LIBS = $(HOSTLIB)
 HOSTCC = cc
+
+ifneq ($(VBOOT_PREAMBLE_V3),)
+CFLAGS += -DVBOOT_PREAMBLE_V3
+endif
+ifneq ($(VBOOT_FOR_TARGET),)
+CFLAGS += -DVBOOT_FOR_TARGET
+endif
 
 BUILD_ROOT = ${BUILD}/utility
 
