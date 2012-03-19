@@ -166,10 +166,44 @@ int VerifyDigest(const uint8_t* digest, const VbSignature *sig,
   }
 
   if (!RSAVerifyBinaryWithDigest_f(NULL, key, digest,
-                         GetSignatureDataC(sig), key->algorithm))
+                                   GetSignatureDataC(sig), key->algorithm))
     return 1;
 
   return 0;
+}
+
+
+int EqualData(const uint8_t* data, uint64_t size, const VbSignature *hash,
+              const RSAPublicKey* key) {
+  uint8_t* digest = NULL;
+  int rv;
+
+  if (hash->sig_size != hash_size_map[key->algorithm]) {
+    VBDEBUG(("Wrong hash size for algorithm.\n"));
+    return 1;
+  }
+  if (hash->data_size > size) {
+    VBDEBUG(("Data buffer smaller than length of signed data.\n"));
+    return 1;
+  }
+
+  digest = DigestBuf(data, hash->data_size, key->algorithm);
+
+  rv = SafeMemcmp(digest, GetSignatureDataC(hash), hash->sig_size);
+  VbExFree(digest);
+  return rv;
+}
+
+
+int EqualDigest(const uint8_t* digest, const VbSignature *hash,
+                const RSAPublicKey* key) {
+
+  if (hash->sig_size != hash_size_map[key->algorithm]) {
+    VBDEBUG(("Wrong hash size for algorithm.\n"));
+    return 1;
+  }
+
+  return SafeMemcmp(digest, GetSignatureDataC(hash), hash->sig_size);
 }
 
 
@@ -297,13 +331,15 @@ int VerifyFirmwarePreamble(const VbFirmwarePreambleHeader* preamble,
   const VbSignature* sig = &preamble->preamble_signature;
 
   /* Sanity checks before attempting signature of data */
-  if(size < EXPECTED_VBFIRMWAREPREAMBLEHEADER2_0_SIZE) {
-    VBDEBUG(("Not enough data for preamble header 2.0.\n"));
+  if(size < EXPECTED_VBFIRMWAREPREAMBLEHEADER_SIZE) {
+    VBDEBUG(("Not enough data for preamble header.\n"));
     return VBOOT_PREAMBLE_INVALID;
   }
   if (preamble->header_version_major !=
       FIRMWARE_PREAMBLE_HEADER_VERSION_MAJOR) {
-    VBDEBUG(("Incompatible firmware preamble header version.\n"));
+    VBDEBUG(("Incompatible firmware preamble header (v%d, not v%d).\n",
+             preamble->header_version_major,
+             FIRMWARE_PREAMBLE_HEADER_VERSION_MAJOR));
     return VBOOT_PREAMBLE_INVALID;
   }
   if (size < preamble->preamble_size) {
@@ -336,7 +372,7 @@ int VerifyFirmwarePreamble(const VbFirmwarePreambleHeader* preamble,
 
   /* Verify body signature is inside the signed data */
   if (VerifySignatureInside(preamble, sig->data_size,
-                            &preamble->body_signature)) {
+                            &preamble->body_digest)) {
     VBDEBUG(("Firmware body signature off end of preamble\n"));
     return VBOOT_PREAMBLE_INVALID;
   }
@@ -348,29 +384,10 @@ int VerifyFirmwarePreamble(const VbFirmwarePreambleHeader* preamble,
     return VBOOT_PREAMBLE_INVALID;
   }
 
-  /* If the preamble header version is at least 2.1, verify we have
-   * space for the added fields from 2.1. */
-  if (preamble->header_version_minor >= 1) {
-    if(size < EXPECTED_VBFIRMWAREPREAMBLEHEADER2_1_SIZE) {
-      VBDEBUG(("Not enough data for preamble header 2.1.\n"));
-      return VBOOT_PREAMBLE_INVALID;
-    }
-  }
+  /* NOTE: If we update to 3.1, put an additional size check here. */
 
   /* Success */
   return VBOOT_SUCCESS;
-}
-
-
-uint32_t VbGetFirmwarePreambleFlags(const VbFirmwarePreambleHeader* preamble) {
-  if (preamble->header_version_minor < 1) {
-    /* Old structure; return default flags.  (Note that we don't need
-     * to check header_version_major; if that's not 2 then
-     * VerifyFirmwarePreamble() would have already failed. */
-    return 0;
-  }
-
-  return preamble->flags;
 }
 
 
@@ -385,7 +402,9 @@ int VerifyKernelPreamble(const VbKernelPreambleHeader* preamble,
     return VBOOT_PREAMBLE_INVALID;
   }
   if (preamble->header_version_major != KERNEL_PREAMBLE_HEADER_VERSION_MAJOR) {
-    VBDEBUG(("Incompatible kernel preamble header version.\n"));
+    VBDEBUG(("Incompatible kernel preamble header (v%d, not v%d).\n",
+             preamble->header_version_major,
+              KERNEL_PREAMBLE_HEADER_VERSION_MAJOR));
     return VBOOT_PREAMBLE_INVALID;
   }
   if (size < preamble->preamble_size) {
@@ -411,7 +430,7 @@ int VerifyKernelPreamble(const VbKernelPreambleHeader* preamble,
 
   /* Verify body signature is inside the signed data */
   if (VerifySignatureInside(preamble, sig->data_size,
-                            &preamble->body_signature)) {
+                            &preamble->body_digest)) {
     VBDEBUG(("Kernel body signature off end of preamble\n"));
     return VBOOT_PREAMBLE_INVALID;
   }

@@ -210,8 +210,7 @@ int LoadFirmware(VbCommonParams* cparams, VbSelectFirmwareParams* fparams,
     }
 
     /* Handle preamble flag for using the RO normal/dev code path */
-    if (VbGetFirmwarePreambleFlags(preamble) &
-        VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
+    if (preamble->flags & VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 
       /* Fail if calling firmware doesn't support RO normal */
       if (!(shared->flags & VBSD_BOOT_RO_NORMAL_SUPPORT)) {
@@ -239,10 +238,10 @@ int LoadFirmware(VbCommonParams* cparams, VbSelectFirmwareParams* fparams,
         VBPERFEND("VB_RFD");
         continue;
       }
-      if (lfi->body_size_accum != preamble->body_signature.data_size) {
+      if (lfi->body_size_accum != preamble->body_digest.data_size) {
         VBDEBUG(("Hash updated %d bytes but expected %d\n",
                  (int)lfi->body_size_accum,
-                 (int)preamble->body_signature.data_size));
+                 (int)preamble->body_digest.data_size));
         *check_result = VBSD_LF_CHECK_HASH_WRONG_SIZE;
         RSAPublicKeyFree(data_key);
         VBPERFEND("VB_RFD");
@@ -253,8 +252,8 @@ int LoadFirmware(VbCommonParams* cparams, VbSelectFirmwareParams* fparams,
       /* Verify firmware data */
       VBPERFSTART("VB_VFD");
       body_digest = DigestFinal(&lfi->body_digest_context);
-      if (0 != VerifyDigest(body_digest, &preamble->body_signature,
-                            data_key)) {
+
+      if (0 != EqualDigest(body_digest, &preamble->body_digest, data_key)) {
         VBDEBUG(("Firmware body verification failed.\n"));
         *check_result = VBSD_LF_CHECK_VERIFY_BODY;
         RSAPublicKeyFree(data_key);

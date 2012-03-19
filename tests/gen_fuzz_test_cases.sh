@@ -42,6 +42,7 @@ function generate_fuzzing_images {
     --vblock ${TESTCASE_DIR}/firmware.vblock \
     --keyblock ${TESTCASE_DIR}/firmware.keyblock\
     --signprivate ${TESTKEY_DIR}/key_rsa4096.sha256.vbprivk \
+    --format 3 \
     --version 1 \
     --fv  $1 \
     --kernelkey ${TESTKEY_DIR}/key_rsa4096.sha512.vbpubk
@@ -53,6 +54,7 @@ function generate_fuzzing_images {
     --pack ${TESTCASE_DIR}/kernel.vblock.image \
     --keyblock ${TESTCASE_DIR}/kernel.keyblock \
     --signprivate ${TESTKEY_DIR}/key_rsa4096.sha256.vbprivk \
+    --format 3 \
     --version 1 \
     --vmlinuz ${TEST_IMAGE_FILE} \
     --bootloader ${TEST_BOOTLOADER_FILE} \
