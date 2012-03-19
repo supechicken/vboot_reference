@@ -249,13 +249,13 @@ static int Verify(const char* filename, const char* vblock_file,
   printf("  Kernel version:      %" PRIu64 "\n", preamble->kernel_version);
   printf("  Body load address:   0x%" PRIx64 "\n", preamble->body_load_address);
   printf("  Body size:           0x%" PRIx64 "\n",
-         preamble->body_signature.data_size);
+         preamble->body_digest.data_size);
   printf("  Bootloader address:  0x%" PRIx64 "\n",
          preamble->bootloader_address);
   printf("  Bootloader size:     0x%" PRIx64 "\n", preamble->bootloader_size);
 
   /* Verify body */
-  if (0 != VerifyData(file_data, file_size, &preamble->body_signature, rsa)) {
+  if (0 != VerifyData(file_data, file_size, &preamble->body_digest, rsa)) {
     VbExError("Error verifying kernel body.\n");
     return 1;
   }

@@ -419,7 +419,7 @@ VbError_t LoadKernel(LoadKernelParams* params) {
       body_offset_sectors = body_offset / blba;
 
       /* Verify kernel body fits in the buffer */
-      body_sectors = (preamble->body_signature.data_size + blba - 1) / blba;
+      body_sectors = (preamble->body_digest.data_size + blba - 1) / blba;
       if (body_sectors * blba > params->kernel_buffer_size) {
         VBDEBUG(("Kernel body doesn't fit in memory.\n"));
         shpart->check_result = VBSD_LKP_CHECK_BODY_EXCEEDS_MEM;
@@ -445,10 +445,9 @@ VbError_t LoadKernel(LoadKernelParams* params) {
       }
       VBPERFEND("VB_RKD");
 
-      /* Verify kernel data */
-      if (0 != VerifyData((const uint8_t*)params->kernel_buffer,
-                          params->kernel_buffer_size,
-                          &preamble->body_signature, data_key)) {
+      /* Verify kernel data using the hash from the preamble. */
+      if (0 != EqualData(params->kernel_buffer, preamble->body_digest.data_size,
+                         &preamble->body_digest, data_key)) {
         VBDEBUG(("Kernel data verification failed.\n"));
         shpart->check_result = VBSD_LKP_CHECK_VERIFY_DATA;
         goto bad_kernel;
