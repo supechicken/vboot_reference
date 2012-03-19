@@ -166,7 +166,8 @@ runmisctests:
 #This will exercise vbutil_kernel and vbutil_firmware
 runfuzztests:
 	./gen_fuzz_test_cases.sh
-	./run_preamble_tests.sh
+	./run_preamble_tests.sh 2
+	./run_preamble_tests.sh 3
 	./run_vbutil_kernel_arg_tests.sh
 
 # Run bmpblk_utility tests
