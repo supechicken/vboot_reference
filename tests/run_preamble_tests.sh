@@ -9,6 +9,13 @@
 # keep the old versions around to make sure that we can still sign images in
 # the ways that existing devices can validate.
 
+# Require format major version as sole argument
+FORMAT="${1:-2}"
+FORMAT_ARG=
+if [ "${FORMAT}" = 3 ]; then
+FORMAT_ARG="--format=3"
+fi
+
 # Load common constants and variables for tests.
 . "$(dirname "$0")/common.sh"
 
@@ -18,7 +25,7 @@ algs="0 1 2 3 4 5 6 7 8 9 10 11"
 # output directories
 PREAMBLE_DIR="${SCRIPT_DIR}/preamble_tests"
 DATADIR="${PREAMBLE_DIR}/data"
-V2DIR="${PREAMBLE_DIR}/preamble_v2x"
+VBDIR="${PREAMBLE_DIR}/preamble_v${FORMAT}x"
 
 tests=0
 errs=0
@@ -28,17 +35,17 @@ for d in $algs; do
   for r in $algs; do
     for rr in $algs; do
       if [ "$r" = "$rr" ]; then
-        what="verify"
+        what="verify v${FORMAT}"
         cmp="-ne"
       else
-        what="reject"
+        what="reject v${FORMAT}"
         cmp="-eq"
       fi
       : $(( tests++ ))
       echo -n "${what} fw_${d}_${r}.vblock with root_${rr}.vbpubk ... "
-      "${UTIL_DIR}/vbutil_firmware" --verify "${V2DIR}/fw_${d}_${r}.vblock" \
+      "${UTIL_DIR}/vbutil_firmware" --verify "${VBDIR}/fw_${d}_${r}.vblock" \
         --signpubkey "${DATADIR}/root_${rr}.vbpubk" \
-        --fv "${DATADIR}/FWDATA" >/dev/null 2>&1
+        --fv "${DATADIR}/FWDATA" ${FORMAT_ARG} >/dev/null 2>&1
       if [ "$?" "$cmp" 0 ]; then
         echo -e "${COL_RED}FAILED${COL_STOP}"
         : $(( errs++ ))
@@ -55,16 +62,17 @@ for d in $algs; do
   for r in $algs; do
     for rr in $algs; do
       if [ "$r" = "$rr" ]; then
-        what="verify"
+        what="verify v${FORMAT}"
         cmp="-ne"
       else
-        what="reject"
+        what="reject v${FORMAT}"
         cmp="-eq"
       fi
       : $(( tests++ ))
       echo -n "${what} kern_${d}_${r}.vblock with root_${rr}.vbpubk ... "
-      "${UTIL_DIR}/vbutil_kernel" --verify "${V2DIR}/kern_${d}_${r}.vblock" \
-        --signpubkey "${DATADIR}/root_${rr}.vbpubk" >/dev/null 2>&1
+      "${UTIL_DIR}/vbutil_kernel" --verify "${VBDIR}/kern_${d}_${r}.vblock" \
+        --signpubkey "${DATADIR}/root_${rr}.vbpubk" \
+        ${FORMAT_ARG} >/dev/null 2>&1
       if [ "$?" "$cmp" 0 ]; then
         echo -e "${COL_RED}FAILED${COL_STOP}"
         : $(( errs++ ))
@@ -80,9 +88,10 @@ done
 for d in $algs; do
   for r in $algs; do
       : $(( tests++ ))
-      echo -n "verify kern_${d}_${r}.vblock with hash only ... "
+      echo -n "verify v${FORMAT} kern_${d}_${r}.vblock with hash only ... "
       "${UTIL_DIR}/vbutil_kernel" \
-          --verify "${V2DIR}/kern_${d}_${r}.vblock" >/dev/null 2>&1
+        --verify "${VBDIR}/kern_${d}_${r}.vblock" \
+        ${FORMAT_ARG} >/dev/null 2>&1
       if [ "$?" -ne 0 ]; then
         echo -e "${COL_RED}FAILED${COL_STOP}"
         : $(( errs++ ))

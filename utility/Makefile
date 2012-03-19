@@ -8,7 +8,7 @@ INCLUDES += -I./include \
 		-I$(FWDIR)/lib/cryptolib/include \
 		-I$(FWDIR)/lib/tpm_lite/include \
 		-I$(HOSTDIR)/include
-CFLAGS += $(INCLUDES)
+CFLAGS += $(INCLUDES) -Wall -Werror
 CFLAGS += -MMD -MF $@.d
 LIBS = $(HOSTLIB)
 HOSTCC = cc
