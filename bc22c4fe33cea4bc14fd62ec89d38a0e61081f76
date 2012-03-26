@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAHn//K7U\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "why not just add this to the list above rather than using an else? What am I missing?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K64\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Can these move to a private header?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K60\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K6w\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Should these all be static too?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K6o\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Can thse be const-ified?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K6g\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "static inline helper in a debug header?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K6c\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "This one deserves some commenting (which commandline :).",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K50\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Since you only want the kKernelCmdlineOption, any reason not to just find it directly:\n\nitem \u003d strstr(cmdline, kKernelCmdlineOption);\nif (!item)\n  fail;\nitem_end \u003d strchrnul(item, \u0027 \u0027);\nif (!item_end)\n  fail;\n*item_end \u003d \u0027\\0\u0027;\nitem +\u003d strlen(kKernelCmdlineOption);\nsha256(item, digest);\ndebug_dump_hex(...);\nreturn 1;\n\n?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K5U\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Maybe comment that this checks the value provided by the firmware?\n\nIn practice this is really \"is_chromefw\" but is_chromeos makes sense too.  if it was is_chromefw no comment may be really needed.",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K5c\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Is there a constant anywhere to check?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2Q\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Should 4096 be a constant?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K5A\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "I\u0027m confused about the cr48.  It should only lack the area if it hasn\u0027t been re-installed (which may be a lot of them).  Would it makes sense to try to get it at least for those people who have re-imaged their cr-48 then fail over?\n\nI\u0027m curious if a chromeos test is really needed.  You could try to get the nvram key, if it fails horribly, then fallthrough?\n\nI guess we may not want to allow a downgrade attack, but I\u0027m not sure exactly how that\u0027d play out (since they\u0027d need owner access or another means to break the nvram) ?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K4s\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "We should figure out a way to UMA stat which mode a device is in that is opted in to stats just to track if we ever start seeing failovers. (This would need to bubble up elsewhere -- mebbe c-home?)",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K4M\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "so weird to see all the g_wrappers :p",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K4g\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "hrm do you care about zeroing out the rand_bytes and digest before continuing?  They should get rewritten during run since they\u0027re on the stack, but just curious :/",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K4U\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "wanna rename this resizefs? :)",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K4c\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "You should probably add resize_filesystem to the normal mount flow because you have to assume a user may logout, reboot, whatever before the resize finishes -- especially if you set a long window (which will be kinder to I/O and unlikely to be a big deal given what we store in var -- a chrome crash could be the biggest problem to address in short-order (and may be the impetus for defining the starting size/resize window...).",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K3w\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "So if this fails, it just blows away all the data?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K3U\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "I\u0027d love to see each of the different logical pieces broken up in separate files -- either just simple headers or headers and source.  It\u0027d make this less long and make each grouping clear: loop_device.c, encrypted_volume.c, block_device.c, encrypted_mount.c, encrypted_mount_main.c.\n\nIt\u0027d also be useful since the pure logic pieces would be good to test and have unittests for to assure someone doesn\u0027t break it later.",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K3A\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "would it be worth separating these into can_migrate and needs_migrate?\n\nIt adds an extra var but I think it migth make some of the code below a little more clear.",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2w\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "This would be a tidy helper function:\n\nint create_sparse_file(const char *path, size_t size);",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2g\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "e.g., if can_migrate \u0026\u0026 needs_migrate ?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2c\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "How long does the resize process wait?  Will it be racing with the mount call which could randomly block the first mount on the first offline resize rather then doing them all online?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2Y\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "Should this return failure or anything?  I\u0027m worried about a failed or interrupted copy resulting in a stateful wipe?",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//K2U\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-03-26T22:53:58Z",
+      "side": 1,
+      "message": "A helper would be a good start :)  dm-helper.c might be a useful place to tuck these :p",
+      "revId": "bc22c4fe33cea4bc14fd62ec89d38a0e61081f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
