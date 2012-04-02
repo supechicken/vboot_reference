@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3///J8\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "There should not need to be a build command given for a .o file...?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///LI\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "can this fail?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///LE\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "return strcmp(fw, \"nonchrome\");",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///LA\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "all_zero |\u003d value[i]; all_ff \u0026\u003d value[i];",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///K4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "and then all_zero || all_ff !\u003d 0xff? Might be too much of a cute trick, though.",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///Kw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "Does this need a separate case? Why not just let g_file_get_contents() fail?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///Kk\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "I am super curious why we need to supply \u0027/.\u0027 there.",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///KU\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "wtb bug number",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///KQ\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "this function is way too generically named",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///KM\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "so\u0027s this",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///KE\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "the rest of this code uses C-style comments",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///KA\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "!okay",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///JY\u003d",
+        "filename": "utility/mount-helpers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000022
+      },
+      "writtenOn": "2012-04-02T18:40:48Z",
+      "side": 1,
+      "message": "char or gchar?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
