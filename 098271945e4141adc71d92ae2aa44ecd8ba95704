@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///GM\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "I didn\u0027t want to have to inject the glib-2.0 cflags into the rest of the build, so I did it this way.",
+      "parentUuid": "AAAAH3///J8\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///LI\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -30,6 +48,23 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "can this fail?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///GE\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Yeah, I was using the contents of the string as the detection mechanism, but it would probably be more robust to check both.",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///GA\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///LE\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///LA\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -64,6 +117,24 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "all_zero |\u003d value[i]; all_ff \u0026\u003d value[i];",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///F8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///LA\u003d",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///F4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Yeah, I renamed things for readability.",
+      "parentUuid": "AAAAH3///K4\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///Kw\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -98,6 +187,24 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "Does this need a separate case? Why not just let g_file_get_contents() fail?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///F0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "I want to distinguish between missing and all other failures so that errors aren\u0027t reported for an expected condition (i.e. when being run on a wiped stateful partition).",
+      "parentUuid": "AAAAH3///Kw\u003d",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Fw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Otherwise \"cp\" will put bind-\u003eold into bind-\u003esrc:\n\n$ mkdir from to\n$ touch from/1\n$ cp -a from to\n$ ls to\nfrom\n$ rm -rf to\n$ mkdir to\n$ cp -a from/. to\n$ ls to\n1",
+      "parentUuid": "AAAAH3///Kk\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///KU\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -132,6 +257,24 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "wtb bug number",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///FY\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "This didn\u0027t seem worth a bug -- it\u0027s only in the error path and wasn\u0027t something I could actually catch. I figure when udev finally grows the dm sync bits, this will probably go away.",
+      "parentUuid": "AAAAH3///KU\u003d",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +298,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Fs\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///KQ\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///KM\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -166,6 +327,24 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "so\u0027s this",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///Fo\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///KM\u003d",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +368,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Fk\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///KE\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///KA\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 9
@@ -206,6 +403,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAH3///Fg\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAH3///KA\u003d",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAH3///JY\u003d",
         "filename": "utility/mount-helpers.h",
         "patchSetId": 9
@@ -217,6 +432,24 @@
       "writtenOn": "2012-04-02T18:40:48Z",
       "side": 1,
       "message": "char or gchar?",
+      "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3///GI\u003d",
+        "filename": "utility/mount-helpers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-04-02T20:27:39Z",
+      "side": 1,
+      "message": "gchar, since it is basically taking as an argument what loop_attach returns.",
+      "parentUuid": "AAAAH3///JY\u003d",
       "revId": "098271945e4141adc71d92ae2aa44ecd8ba95704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
