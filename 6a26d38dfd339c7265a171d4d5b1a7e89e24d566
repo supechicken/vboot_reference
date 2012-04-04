@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAH3//9XY\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T23:50:18Z",
+      "side": 1,
+      "message": "Maybe:\nuint32_t preamble_size;\nuint32_t reserved_0;\n(see below)",
+      "revId": "6a26d38dfd339c7265a171d4d5b1a7e89e24d566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9Xk\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T23:50:18Z",
+      "side": 1,
+      "message": "Maybe we should make this a uint32_t.  It\u0027d make the code in vboot easier.  (We did a lot of stuff with 64-bit math that in retrospect is unnecessary...)",
+      "revId": "6a26d38dfd339c7265a171d4d5b1a7e89e24d566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9XQ\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T23:50:18Z",
+      "side": 1,
+      "message": "Body load address might still need to be 64-bit, if u-boot is 64-bit.",
+      "revId": "6a26d38dfd339c7265a171d4d5b1a7e89e24d566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9XM\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T23:50:18Z",
+      "side": 1,
+      "message": "We\u0027d talked about making this a bootloader_offset, in which case it\u0027s certainly ok as uint32.",
+      "revId": "6a26d38dfd339c7265a171d4d5b1a7e89e24d566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAH3//9Y0\u003d",
+        "filename": "tests/vboot_common_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-04-04T23:50:18Z",
+      "side": 1,
+      "message": "Do we need to check sizes of the new structs?",
+      "revId": "6a26d38dfd339c7265a171d4d5b1a7e89e24d566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
