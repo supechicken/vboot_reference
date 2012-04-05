@@ -480,6 +480,10 @@ remove:
 	/* The removal of the old directory needs to happen at finalize
 	 * time, otherwise /var state gets lost on a migration if the
 	 * system is powered off before the encryption key is saved.
+	 *
+	 * TODO(keescook): /home/chronos can't be trivially removed
+	 * because it disappears under the bind mount. Perhaps move it
+	 * out of the way for finalize to wipe out?
 	 */
 	return;
 }
@@ -674,8 +678,10 @@ static int setup_encrypted(void)
 		migrate_allowed = 0;
 	if (migrate_allowed) {
 		for (bind = bind_mounts; bind->src; ++ bind) {
-			/* Skip mounts that have no prior location defined. */
-			if (!bind->old)
+			/* Skip mounts that have no prior location defined,
+			 * or are optional.
+			 */
+			if (!bind->old || bind->optional)
 				continue;
 			/* Skip mounts that have no prior data on disk. */
 			if (access(bind->old, R_OK) != 0)
