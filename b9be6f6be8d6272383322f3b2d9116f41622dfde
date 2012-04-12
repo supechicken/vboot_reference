@@ -16,6 +16,24 @@
       "revId": "b9be6f6be8d6272383322f3b2d9116f41622dfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8dw\u003d",
+        "filename": "scripts/image_signing/set_channel.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-12T21:32:01Z",
+      "side": 1,
+      "message": "i believe we follow the Google style guide for host (i.e. bash) scripts which means [[...]]\n\nfor code on the target, it\u0027ll have to be [...] as we use dash there and are thus constrained (largely) to POSIX",
+      "parentUuid": "AAAAIH//8d8\u003d",
+      "revId": "b9be6f6be8d6272383322f3b2d9116f41622dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
