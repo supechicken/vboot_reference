@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAIH//8d8\u003d",
+        "filename": "scripts/image_signing/set_channel.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-12T21:30:22Z",
+      "side": 1,
+      "message": "There used to be some convention of always using [] instead of [[ ]] but I can\u0027t remember the reason now (I believe it might have been for scripts that need to run on image which has dash but not bash).",
+      "revId": "b9be6f6be8d6272383322f3b2d9116f41622dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
