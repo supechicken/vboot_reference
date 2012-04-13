@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAIH//8K0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:09:38Z",
+      "side": 1,
+      "message": "I feel it\u0027s better to have the config file be passed in as an argument rather than relying it\u0027s path and argv[0] specific magic. Is there any particular case you had in mind where this approach turns out to be simpler?",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8PE\u003d",
         "filename": "firmware/lib/vboot_common.c",
         "patchSetId": 5
