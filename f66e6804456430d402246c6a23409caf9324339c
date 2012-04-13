@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///w8\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "In general I agree. But in this case it\u0027s not likely. vbutil_firmware and vbutil_kernel are used in dozens of places - in the chroot, on the target machine for diagnostic purposes, as part of the AU scripts, as part of make_dev_ssd.sh and make_dev_firmware.sh, and outside the chroot. In the chroot, build_image and image_to_vm.sh invoke it, but only about three or four levels deep and the top level has no idea what the correct format should be ($BOARD_USE isn\u0027t part of those scripts).\n\nHowever, by having a config file be part of the image, the information stays with the image. That\u0027s also why I allow prepending the $ROOT env variable - it makes all the build and buildbot scripts Just Work, without breaking anything (that I can find yet).",
+      "parentUuid": "AAAAIH//8K0\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8PE\u003d",
         "filename": "firmware/lib/vboot_common.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "NIT: initialize to NULL",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///w4\u003d",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "AAAAIH//8PE\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///nk\u003d",
+        "filename": "host/include/host_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "I\u0027ve added some comments, but I\u0027m open to suggestions on how to improve it.\n\nI have a pointer to a blob of memory that I read off the disk, which could contain one of two possible structs. The structs have a common beginning, but differ further down. I could make them a union, but that confuses the firmware-only libraries which should only care about the latest struct.\n\nDepending on the value of the common ptr-\u003eversion, \nI need to interpret the pointer as either ptr_v2 or ptr_v3, and then refer to struct members which may or may not have the same name in both structs.\n\nFor example, the v2 struct has a VbSignature member named body_signature, while the v3 struct calls it body_digest. So with these macros I say this:\n\nif (kernel_blob_size \u003c KP_MEMBER_V3_V2(preamble, body_digest,body_signature).data_size) {...\n\nThe alternative is to define both a v3 pointer and a v2 pointer and choose between them every time I need something. That added a lot of code, which is why I turned it into a macro. A function won\u0027t work, because I\u0027d need a separate function for every member I want to choose between.\n\nOr I could split the code into separate v2-aware and v3-aware versions, but that duplicates large chunks.",
+      "parentUuid": "AAAAIH//8N0\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8Mk\u003d",
         "filename": "host/lib/host_misc.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "I guess my main question here is why this has to be implemented like this? (maybe the question will be answered as i continue reading the rest of the patch).\n\n1) Why can\u0027t these options be passed at the command line directly?\n\n2) Why can\u0027t the parsed options be returned separately instead of modifying argc/argv? This looks to me too be unnecessarily error prone.",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///vc\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "I\u0027ve answered the first question in my reply to your Commit Message comment.\n\nThe answer to the second question is that there\u0027s no need. The change to main() using this approach is one line.",
+      "parentUuid": "AAAAIH//8Mk\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///vY\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "AAAAIH//8NE\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8NA\u003d",
         "filename": "host/lib/host_misc.c",
         "patchSetId": 5
@@ -98,6 +188,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "APPEND-\u003eSUFFIX?",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///u8\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "AAAAIH//8NA\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///uo\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8M4\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8M0\u003d",
         "filename": "host/lib/host_misc.c",
         "patchSetId": 5
@@ -132,6 +258,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "snprintf again.",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///uk\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8M0\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///pU\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "This determines which directories to look in for the config files. The default is compiled in, but it can be overridden or augmented by an environment variable. We can also override the location of \u0027/\u0027 by means of another environment variable, for example if we\u0027re working on a filesystem targeting a different machine.\n\nI\u0027ll add some comments.",
+      "parentUuid": "AAAAIH//8Mc\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8Mg\u003d",
         "filename": "host/lib/host_misc.c",
         "patchSetId": 5
@@ -183,6 +345,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "NIT: space around \u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///pQ\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8Mg\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -206,6 +386,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAJX///pE\u003d",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8MQ\u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAIH//8MM\u003d",
         "filename": "host/lib/host_signature.c",
         "patchSetId": 5
@@ -217,6 +415,24 @@
       "writtenOn": "2012-04-13T00:08:01Z",
       "side": 1,
       "message": "NIT: init to NULL",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJX///pA\u003d",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-04-13T18:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAIH//8MM\u003d",
       "revId": "f66e6804456430d402246c6a23409caf9324339c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
