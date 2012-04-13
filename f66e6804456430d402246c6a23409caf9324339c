@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAIH//8PE\u003d",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "NIT: initialize to NULL",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8N0\u003d",
+        "filename": "host/include/host_common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "Ugh, this is rather ugly and pretty unreadable. For a moment, I thought I was staring at a snippet of code in BrainF* programming language. :)\n\nCould you please rewrite this to be clearer - it\u0027s ok to eschew brevity of the macro for more clarity. Does this need to be a macro?",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8Mk\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "I guess my main question here is why this has to be implemented like this? (maybe the question will be answered as i continue reading the rest of the patch).\n\n1) Why can\u0027t these options be passed at the command line directly?\n\n2) Why can\u0027t the parsed options be returned separately instead of modifying argc/argv? This looks to me too be unnecessarily error prone.",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8NE\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "CFGFILE_APPEND-\u003eCFGFILE_SUFFIX perhaps",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8NA\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "APPEND-\u003eSUFFIX?",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8M4\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "1) use snprintf\n2) append CFGFILE_APPEND as a separate step. It\u0027s better to avoid the case where someone inadvertently changes the value of CFGFILE_APPEND such that this becomes a format string that doesn\u0027t do what we want.",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8M0\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "snprintf again.",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8Ms\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "NIT: i \u003d 0",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8Mc\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "What is this whole segment of code: lines 233 - 255 doing?",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8Mg\u003d",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "NIT: space around \u003d",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8MQ\u003d",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "NIT: init to NULL",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAIH//8MM\u003d",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-13T00:08:01Z",
+      "side": 1,
+      "message": "NIT: init to NULL",
+      "revId": "f66e6804456430d402246c6a23409caf9324339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
