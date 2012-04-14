@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAJ3///1Q\u003d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-14T03:32:27Z",
+      "side": 1,
+      "message": "please use ${VERSION_FILE} everywhere",
+      "revId": "a95ae9fb91c1a6a22309b826215ee7c6c5a582e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3///1M\u003d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-14T03:32:27Z",
+      "side": 1,
+      "message": "might as well end this with a \".\"",
+      "revId": "a95ae9fb91c1a6a22309b826215ee7c6c5a582e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAJ3///1I\u003d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-14T03:32:27Z",
+      "side": 1,
+      "message": "prob should quote VERSION_FILE here too for consistency",
+      "revId": "a95ae9fb91c1a6a22309b826215ee7c6c5a582e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
