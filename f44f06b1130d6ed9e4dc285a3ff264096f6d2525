@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//7BY\u003d",
+        "filename": "host/include/host_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-20T21:13:15Z",
+      "side": 1,
+      "message": "Having them as macros is fine as-is. My original comment was about making the macros more readable. like use more descriptive arg names rather than ___p (how many \u0027_\u0027s), don\u0027t use p and P (lowercase and upper case), etc. \n\nSay:\n\n#define FP_MEMBER(ptr, member) (\\\n{ VbFirmwarePreambleUnion * preamble \u003d (VbFirmwarePreambleUnion *)(ptr); \\\n IS_V3(preamble) ? preamble-\u003ev3.member : preamble-\u003ev2.member; })",
+      "revId": "f44f06b1130d6ed9e4dc285a3ff264096f6d2525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
