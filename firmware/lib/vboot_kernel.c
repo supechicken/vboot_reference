@@ -401,6 +401,7 @@ VbError_t LoadKernel(LoadKernelParams* params) {
       if (-1 != good_partition)
         continue;
 
+#if 0
       /* Verify body load address matches what we expect */
       if ((preamble->body_load_address != (size_t)params->kernel_buffer) &&
           !(params->boot_flags & BOOT_FLAG_SKIP_ADDR_CHECK)) {
@@ -408,6 +409,7 @@ VbError_t LoadKernel(LoadKernelParams* params) {
         shpart->check_result = VBSD_LKP_CHECK_BODY_ADDRESS;
         goto bad_kernel;
       }
+#endif
 
       /* Verify kernel body starts at a multiple of the sector size. */
       body_offset = key_block->key_block_size + preamble->preamble_size;
