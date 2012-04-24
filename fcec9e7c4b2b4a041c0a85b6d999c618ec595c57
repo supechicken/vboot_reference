@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//4/Y\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-24T18:05:18Z",
+      "side": 0,
+      "message": "You should probably just keep this around. It\u0027s confusing to have a break in the error code listing needing to go look at the repository history, not to mention it\u0027s hard to search for what the result code means on older ones that support it.",
+      "revId": "fcec9e7c4b2b4a041c0a85b6d999c618ec595c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
