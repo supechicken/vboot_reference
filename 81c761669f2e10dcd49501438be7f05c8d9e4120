@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAKn//3rw\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-25T18:10:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAKn//3tQ\u003d",
+      "revId": "81c761669f2e10dcd49501438be7f05c8d9e4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAKn//3sU\u003d",
         "filename": "scripts/image_signing/common_minimal.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-04-25T18:03:58Z",
       "side": 1,
       "message": "I am not sure sure why this is needed .Why not just let the caller handle the error here?",
+      "revId": "81c761669f2e10dcd49501438be7f05c8d9e4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//3rg\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-04-25T18:10:46Z",
+      "side": 1,
+      "message": "the idea is to preserve behavior as closely as possible to existing code so that all consumers of these functions need not be touched\n\ni\u0027m not sure of all the edge cases of `set -e` behavior whether the `false` is truly needed or if the following `return 1` is sufficient to kill the code if the caller isn\u0027t checking the return value.  for the normal ones (e.g. `foo || :` or `if ! foo ; then`), the `false` is not needed.\n\ngrepping through the image_signing subdir, no one checks the return value of mount_image_partition{,_ro}, so for the purposes of this code, the `false` is probably not needed since the `return 1` will kill us the same.",
+      "parentUuid": "AAAAKn//3sU\u003d",
       "revId": "81c761669f2e10dcd49501438be7f05c8d9e4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
