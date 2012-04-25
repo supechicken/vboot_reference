@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//3tQ\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-25T18:03:58Z",
+      "side": 1,
+      "message": "Aargs -\u003e args",
+      "revId": "81c761669f2e10dcd49501438be7f05c8d9e4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//3sU\u003d",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-04-25T18:03:58Z",
+      "side": 1,
+      "message": "I am not sure sure why this is needed .Why not just let the caller handle the error here?",
+      "revId": "81c761669f2e10dcd49501438be7f05c8d9e4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
