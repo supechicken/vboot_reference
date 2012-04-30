@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//zfg\u003d",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2012-04-30T19:15:10Z",
+      "side": 1,
+      "message": "Using a boolean here means all the call sites now have a\nmagic \"1\" or \"0\" argument; the meaning of that argument can\nonly be found by reading the target function.\n\nChanging the magic numbers to \"TRUE\" or \"FALSE\" won\u0027t\nreally help, since it still offers no semantic clues as to the\nmeaning of the parameter.\n\nYou could assign specific names like \"READ_ONLY\" or\n\"READ_WRITE\" to the values; that would be OK, but it\nmeans creating new names.  My preference would be to\nchange \"writable\" to \"mode\", and pass either \"O_RDONLY\"\nor \"O_RDWR\".",
+      "revId": "3b00a63a9ae9e2e5f25580a8b7fa44490dd03c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
