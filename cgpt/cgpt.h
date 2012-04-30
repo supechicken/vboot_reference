@@ -61,7 +61,7 @@ struct drive {
 };
 
 
-int DriveOpen(const char *drive_path, struct drive *drive);
+int DriveOpen(const char *drive_path, struct drive *drive, int writable);
 int DriveClose(struct drive *drive, int update_as_needed);
 int CheckValid(const struct drive *drive);
 

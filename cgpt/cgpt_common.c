@@ -156,7 +156,7 @@ static int Save(const int fd, const uint8_t *buf,
 //
 // Returns CGPT_FAILED if any error happens.
 // Returns CGPT_OK if success and information are stored in 'drive'. */
-int DriveOpen(const char *drive_path, struct drive *drive) {
+int DriveOpen(const char *drive_path, struct drive *drive, int writable) {
   struct stat stat;
 
   require(drive_path);
@@ -165,7 +165,8 @@ int DriveOpen(const char *drive_path, struct drive *drive) {
   // Clear struct for proper error handling.
   memset(drive, 0, sizeof(struct drive));
 
-  drive->fd = open(drive_path, O_RDWR | O_LARGEFILE | O_NOFOLLOW);
+  drive->fd = open(drive_path,
+                   (writable ? O_RDWR : O_RDONLY) | O_LARGEFILE | O_NOFOLLOW);
   if (drive->fd == -1) {
     Error("Can't open %s: %s\n", drive_path, strerror(errno));
     return CGPT_FAILED;

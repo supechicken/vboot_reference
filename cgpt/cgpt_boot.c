@@ -21,7 +21,7 @@ int cgpt_get_boot_partition_number(CgptBootParams *params) {
   if (params == NULL)
     return CGPT_FAILED;
 
-  if (CGPT_OK != DriveOpen(params->drive_name, &drive))
+  if (CGPT_OK != DriveOpen(params->drive_name, &drive, 0))
     return CGPT_FAILED;
 
   if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive.gpt))) {
@@ -65,12 +65,17 @@ int cgpt_boot(CgptBootParams *params) {
   struct drive drive;
   int retval = 1;
   int gpt_retval= 0;
+  int need_to_write = 0;
 
   if (params == NULL)
     return CGPT_FAILED;
 
-  if (CGPT_OK != DriveOpen(params->drive_name, &drive))
+  if (params->create_pmbr || params->partition || params->bootfile)
+    need_to_write = 1;
+
+  if (CGPT_OK != DriveOpen(params->drive_name, &drive, need_to_write)) {
     return CGPT_FAILED;
+  }
 
   if (CGPT_OK != ReadPMBR(&drive)) {
     Error("Unable to read PMBR\n");
@@ -135,8 +140,8 @@ int cgpt_boot(CgptBootParams *params) {
   GuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf));
   printf("%s\n", buf);
 
-  // Write it all out
-  if (CGPT_OK == WritePMBR(&drive))
+  // Write it all out, if needed.
+  if (!need_to_write || CGPT_OK == WritePMBR(&drive))
     retval = 0;
 
 done:
