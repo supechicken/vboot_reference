@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAKn//ne8\u003d",
+        "filename": "cgpt/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-05-11T18:52:41Z",
+      "side": 1,
+      "message": "This just doesn\u0027t work, at least not for me.  I\u0027m Incredibly confused about why nobody else is seeing this.  I made a test makefile that looks like this:\n\n  LIB_CGPT_CC_SRCS \u003d CgptManager.cc cgpt_create.c\n  BUILD_ROOT :\u003d foo\n  LIB_CGPT_CC_OBJS \u003d $(LIB_CGPT_CC_SRCS:%.c\u003d${BUILD_ROOT}/%.o) $(LIB_CGPT_CC_SRCS:%.cc\u003d${BUILD_ROOT}/%.o)\n  doug:\n  \t@echo $(LIB_CGPT_CC_OBJS)\n\nIt outputs:\n\n  CgptManager.cc foo/cgpt_create.o foo/CgptManager.o cgpt_create.c\n\nI think what you really wanted to output is:\n\n  foo/CgptManager.o foo/cgpt_create.o\n\nSee: \u003chttps://gerrit.chromium.org/gerrit/22476\u003e for a possible fix.",
+      "revId": "9466e89ad2e7630b0b26a92f0a4f8c08e3f1f22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
