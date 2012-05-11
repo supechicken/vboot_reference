@@ -16,6 +16,24 @@
       "revId": "5f0f6d8ab476007e379372523eb9c3d5de5caf88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAKn//nZA\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000054
+      },
+      "writtenOn": "2012-05-11T20:19:30Z",
+      "side": 1,
+      "message": "libgcc.a is compiled with -mpu\u003dvfpv2:\n\n$ readelf -A /usr/lib/gcc/armv7a-cros-linux-gnueabi/4.6.x-google/libgcc.a | sort -u | grep Tag_FP_arch:\n\n  Tag_FP_arch: VFPv2\n\nIt\u0027s probably not necessary to go all the way to vfp3, even though that matches the architecture of the target hardware.",
+      "parentUuid": "AAAAKn//nck\u003d",
+      "revId": "5f0f6d8ab476007e379372523eb9c3d5de5caf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
