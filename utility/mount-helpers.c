@@ -169,8 +169,10 @@ static int loop_locate(gchar **loopback, const char *name)
 
 	if (name) {
 		namelen = strlen(name);
-		if (namelen >= LO_NAME_SIZE)
+		if (namelen >= LO_NAME_SIZE) {
+			ERROR("'%s' too long (>= %d)", name, LO_NAME_SIZE);
 			return -1;
+		}
 	}
 
 	*loopback = NULL;
@@ -199,9 +201,13 @@ static int loop_locate(gchar **loopback, const char *name)
 		attached = loop_is_attached(fd, &info);
 		close(fd);
 
+		if (attached)
+			DEBUG("Saw %s on %s", info.lo_file_name, *loopback);
+
 		if ((attached && name &&
 		     strncmp((char *)info.lo_file_name, name, namelen) == 0) ||
 		    (!attached && !name)) {
+			DEBUG("Using %s", *loopback);
 			/* Reopen for working on it. */
 			fd = open(*loopback, O_RDWR | O_NOFOLLOW);
 			if (is_loop_device(fd) &&
