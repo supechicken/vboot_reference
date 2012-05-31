@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//4eA\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-05-31T19:45:56Z",
+      "side": 1,
+      "message": "weird - are these supposed to start capitalized with the kernel-style approach we\u0027re using? (ew ;)",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//4eI\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-05-31T19:45:56Z",
+      "side": 1,
+      "message": "DEBUG(\"TPM \", has_tpm ? \"Ready\" : \"not available\"); ?",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//4do\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1000019
+      },
+      "writtenOn": "2012-05-31T19:45:56Z",
+      "side": 1,
+      "message": "should any of these be constants?",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
