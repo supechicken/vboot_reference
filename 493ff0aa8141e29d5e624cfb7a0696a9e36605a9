@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//4b0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-05-31T20:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//4eA\u003d",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//4eI\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//4dY\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-05-31T20:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//4eI\u003d",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//4do\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-05-31T19:45:56Z",
       "side": 1,
       "message": "should any of these be constants?",
+      "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//4dc\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-05-31T20:09:43Z",
+      "side": 1,
+      "message": "One is easy to switch. The others are used in the static initializer, so I\u0027d rather leave them as a define.",
+      "parentUuid": "AAAAK3//4do\u003d",
       "revId": "493ff0aa8141e29d5e624cfb7a0696a9e36605a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
