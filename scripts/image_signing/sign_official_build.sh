@@ -28,6 +28,7 @@ where <type> is one of:
              ssd  (sign an SSD image)
              recovery (sign a USB recovery image)
              install (sign a factory install image)
+             firmware (sign a firmware image)
              usb  (sign an image to boot directly from USB)
              verify (verify an image including rootfs hashes)
 
@@ -317,6 +318,24 @@ repack_firmware_bundle() {
   fi
 }
 
+# Sign a firmware in-place with the given keys.
+# Args: FIRMWARE_IMAGE KEY_DIR FIRMWARE_VERSION
+sign_firmware() {
+  local image=$1
+  local key_dir=$2
+  local firmware_version=$3
+
+  temp_outfd=$(make_temp_file)
+  # Resign the firmware with new keys, also replacing the root and recovery
+  # public keys in the GBB.
+  ${SCRIPT_DIR}/sign_firmware.sh ${image} ${key_dir} ${temp_outfd} \
+    ${firmware_version}
+  # Note: Although sign_firmware.sh may correctly handle specifying the same
+  # output file as the input file, we do not want to rely on it correctly
+  # handing that. Hence, the use of a temporary file.
+  cp ${temp_outfd} ${image}
+}
+
 # Re-sign the firmware AU payload inside the image rootfs with a new keys.
 # Args: IMAGE
 resign_firmware_payload() {
@@ -341,15 +360,7 @@ resign_firmware_payload() {
     return; }
   echo "Found a valid firmware update shellball."
 
-  temp_outfd=$(make_temp_file)
-  # Resign the firmware with new keys, also replacing the root and recovery
-  # public keys in the GBB.
-  ${SCRIPT_DIR}/sign_firmware.sh ${shellball_dir}/bios.bin ${KEY_DIR} \
-    ${temp_outfd} ${FIRMWARE_VERSION}
-  # Note: Although sign_firmware.sh may correctly handle specifying the same
-  # output file as the input file, we do not want to rely on it correctly
-  # handing that. Hence, the use of a temporary file.
-  cp ${temp_outfd} ${shellball_dir}/bios.bin
+  sign_firmware ${shellball_dir}/bios.bin ${KEY_DIR} ${FIRMWARE_VERSION}
 
   local signer_notes="${shellball_dir}/VERSION.signer"
   echo "" >"$signer_notes"
@@ -624,6 +635,11 @@ elif [ "${TYPE}" == "install" ]; then
     ${KEY_DIR}/installer_kernel_data_key.vbprivk \
     2
   sign_for_factory_install ${OUTPUT_IMAGE}
+elif [ "${TYPE}" == "firmware" ]; then
+  echo "Signing firmware image"
+  cp ${INPUT_IMAGE} ${OUTPUT_IMAGE}
+  sign_firmware ${OUTPUT_IMAGE} ${KEY_DIR} ${FIRMWARE_VERSION}
+  echo "Signed image output to ${OUTPUT_IMAGE}"
 else
   echo "Invalid type ${TYPE}"
   exit 1
