@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//zuE\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-07T18:30:34Z",
+      "side": 1,
+      "message": "ah, right, i forget about that.  the cleanup phase is done with `rm -rf`, so if it\u0027s missing, it\u0027s not an error.  using `mv` would give a minor speedup since the input/output are in the same filesystem, so it\u0027s a single rename() syscall right ?",
+      "parentUuid": "AAAAK3//zvs\u003d",
+      "revId": "8f2f03db8e58850691cb2207778fb93fbb41ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//0MM\u003d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
