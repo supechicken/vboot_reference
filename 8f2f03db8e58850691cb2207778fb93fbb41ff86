@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//0M0\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-07T04:20:57Z",
+      "side": 1,
+      "message": "local temp_outfd\n\nwhile we\u0027re at it, \"outfd\" is a bad name -- this isn\u0027t an fd.  i\u0027d just call it \"tempfile\" or something similar.",
+      "revId": "8f2f03db8e58850691cb2207778fb93fbb41ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0Mc\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-07T04:20:57Z",
+      "side": 1,
+      "message": "this isn\u0027t new to the code, but this is weird.  we create a temp file that never gets cleaned up.  shouldn\u0027t this be a mv instead of cp ?",
+      "revId": "8f2f03db8e58850691cb2207778fb93fbb41ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//0MM\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-07T04:20:57Z",
+      "side": 1,
+      "message": "none of the other sign steps do an `echo` ...",
+      "revId": "8f2f03db8e58850691cb2207778fb93fbb41ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
