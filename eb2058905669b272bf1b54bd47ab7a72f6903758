@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAK3//uws\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-06-14T18:41:57Z",
+      "side": 1,
+      "message": "Obivous but since it\u0027s a non-bool value, this should have a comment on the return value.",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//uwc\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-06-14T18:41:57Z",
+      "side": 1,
+      "message": "This check should explicitly compare with TPM_SUCCESS instead of making assumptions about its value (not your code but good to fix.)",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//uwQ\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-06-14T18:41:57Z",
+      "side": 1,
+      "message": "Make this check explicit too (tpm_owner(\u0026owned) !\u003d TPM_SUCCESS)",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//uwA\u003d",
+        "filename": "utility/mount-encrypted.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-06-14T18:41:57Z",
+      "side": 1,
+      "message": "Do you need this? Shouldn\u0027t this be something set via the Makefile?",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
