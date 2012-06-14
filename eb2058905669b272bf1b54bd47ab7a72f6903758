@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//uuM\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-06-14T20:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//uws\u003d",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//uwc\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-06-14T18:41:57Z",
       "side": 1,
       "message": "This check should explicitly compare with TPM_SUCCESS instead of making assumptions about its value (not your code but good to fix.)",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//uuI\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-06-14T20:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//uwc\u003d",
       "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAK3//uuE\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-06-14T20:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAK3//uwQ\u003d",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAK3//uwA\u003d",
         "filename": "utility/mount-encrypted.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2012-06-14T18:41:57Z",
       "side": 1,
       "message": "Do you need this? Shouldn\u0027t this be something set via the Makefile?",
+      "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAK3//uuA\u003d",
+        "filename": "utility/mount-encrypted.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-06-14T20:07:29Z",
+      "side": 1,
+      "message": "I like having a top-level reminder about what the name is. I\u0027ve adjusted it to just comment it out so it can be enabled externally.",
+      "parentUuid": "AAAAK3//uwA\u003d",
       "revId": "eb2058905669b272bf1b54bd47ab7a72f6903758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
