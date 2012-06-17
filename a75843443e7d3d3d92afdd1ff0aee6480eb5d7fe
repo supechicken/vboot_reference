@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//+kA\u003d",
+        "filename": "scripts/image_signing/ensure_update_verification.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-17T05:50:57Z",
+      "side": 1,
+      "message": "die \"Update payload verification key not found at $key_location\"",
+      "revId": "a75843443e7d3d3d92afdd1ff0aee6480eb5d7fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALH//+kE\u003d",
+        "filename": "scripts/image_signing/ensure_update_verification.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-06-17T05:50:57Z",
+      "side": 1,
+      "message": "main \"$@\"",
+      "revId": "a75843443e7d3d3d92afdd1ff0aee6480eb5d7fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
