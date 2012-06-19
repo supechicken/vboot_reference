@@ -13,7 +13,7 @@
 #
 font="Droid Sans"
 rtl=""
-point=22
+point=15
 
 while true ; do
   case "$1" in
@@ -40,11 +40,13 @@ done
 # - New pango-view has --pixel to assign font size in pixel, but that is not
 #   supported by old (ex, 1.24.5 in chroot) so we must assign --dpi 72 for
 #   pointsize.
-bg='#607c91'
-small_color='#9ccaec'
+bg='#ffffff'
+small_color='#585858'
+#small_color='#1155cc' #blue
+#small_color='#ff0000' #red
 small_font="$font"
 small_pointsize="$point"
-large_color="white"
+large_color="#585858"
 large_font="$font"
 large_pointsize=40
 

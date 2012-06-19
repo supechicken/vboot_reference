@@ -102,6 +102,26 @@ reset_base() {
   cur_y=$(expr $(get_y $1) - $yborder)
 }
 
+center_base() {
+  cur_x=$(get_x "$1")
+  cur_y=$(expr $(get_y $1) / 2)
+}
+
+one_third_base() {
+  cur_x=$(get_x "$1")
+  cur_y=$(expr $(get_y $1) \* 1 / 3 )
+}
+
+two_thirds_base() {
+  cur_x=$(get_x "$1")
+  cur_y=$(expr $(get_y $1) \* 2 / 3 )
+}
+
+move_up() {
+  local delta_y=$1
+  cur_y=$(expr $cur_y - $delta_y)
+}
+
 # Emit a screen line entry centering the given .bmp files at the current
 # baseline. We assume that all args are the same height.
 center_up() {
@@ -141,7 +161,7 @@ for hwid_bmp in hwid_unknown.bmp; do
   cat >"$yaml_file" <<'EOF1'
 bmpblock: 1.2
 
-compression: 1
+compression: 2
 
 images:
 
@@ -191,6 +211,12 @@ EOF2
     echo "  ${lc}_devel:" >> "$yaml_file"
     echo "    - [  0,   0, devmode_bg]" >> "$yaml_file"
     reset_base Devmode.bmp
+    if echo "$rtol" | grep -q -w "$lc" ; then
+      center_up 'hwid' "${lc}_model_text"
+    else
+      center_up "${lc}_model_text" 'hwid'
+    fi
+    two_thirds_base Devmode.bmp
     center_up "${lc}_devmode_text"
     echo "" >> "$yaml_file"
 
@@ -203,6 +229,8 @@ EOF2
       center_up "${lc}_model_text" 'hwid'
     fi
     center_up "url"
+    one_third_base Remove.bmp
+    center_up "${lc}_yuck_text"
     center_up "${lc}_remove_text"
     echo "" >> "$yaml_file"
 
@@ -215,6 +243,7 @@ EOF2
       center_up "${lc}_model_text" 'hwid'
     fi
     center_up "url"
+    one_third_base Yuck.bmp
     center_up "${lc}_yuck_text"
     echo "" >> "$yaml_file"
 
@@ -227,6 +256,7 @@ EOF2
       center_up "${lc}_model_text" 'hwid'
     fi
     center_up "url"
+    two_thirds_base Insert.bmp
     center_up "${lc}_insert_text"
     echo "" >> "$yaml_file"
 
