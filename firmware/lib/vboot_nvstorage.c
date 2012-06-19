@@ -23,6 +23,7 @@
 #define BOOT_OFFSET                  1
 #define BOOT_DEBUG_RESET_MODE           0x80
 #define BOOT_DISABLE_DEV_REQUEST        0x40
+#define BOOT_CLEAR_TPM_OWNER_REQUEST    0x20
 #define BOOT_TRY_B_COUNT_MASK           0x0F
 
 #define RECOVERY_OFFSET              2
@@ -119,6 +120,11 @@ int VbNvGet(VbNvContext* context, VbNvParam param, uint32_t* dest) {
       *dest = (raw[BOOT_OFFSET] & BOOT_DISABLE_DEV_REQUEST ? 1 : 0);
       return 0;
 
+    case VBNV_CLEAR_TPM_OWNER_REQUEST:
+      *dest = (raw[BOOT_OFFSET] & BOOT_CLEAR_TPM_OWNER_REQUEST ? 1 : 0);
+      return 0;
+
+
     default:
       return 1;
   }
@@ -205,6 +211,13 @@ int VbNvSet(VbNvContext* context, VbNvParam param, uint32_t value) {
         raw[BOOT_OFFSET] |= BOOT_DISABLE_DEV_REQUEST;
       else
         raw[BOOT_OFFSET] &= ~BOOT_DISABLE_DEV_REQUEST;
+      break;
+
+    case VBNV_CLEAR_TPM_OWNER_REQUEST:
+      if (value)
+        raw[BOOT_OFFSET] |= BOOT_CLEAR_TPM_OWNER_REQUEST;
+      else
+        raw[BOOT_OFFSET] &= ~BOOT_CLEAR_TPM_OWNER_REQUEST;
       break;
 
     default:
