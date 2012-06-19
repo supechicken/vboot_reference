@@ -54,6 +54,8 @@ typedef enum VbNvParam {
   /* Set by userspace to request that RO firmware disable dev-mode on the next
    * boot. This is likely only possible if the dev-switch is virtual. */
   VBNV_DISABLE_DEV_REQUEST,
+  /* Request that the firmware clear the TPM owner on the next boot. */
+  VBNV_CLEAR_TPM_OWNER_REQUEST,
 } VbNvParam;
 
 
