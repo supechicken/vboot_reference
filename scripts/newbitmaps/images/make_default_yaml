@@ -141,7 +141,7 @@ for hwid_bmp in hwid_unknown.bmp; do
   cat >"$yaml_file" <<'EOF1'
 bmpblock: 1.2
 
-compression: 1
+compression: 2
 
 images:
 
@@ -152,10 +152,10 @@ images:
   url:               Url.bmp
 
   # The background images are from the UI people
-  devmode_bg:        Devmode.bmp
-  remove_bg:         Remove.bmp
-  yuck_bg:           Yuck.bmp
-  insert_bg:         Insert.bmp
+  devmode_bg:        Devmode_aio.bmp
+  remove_bg:         Remove_aio.bmp
+  yuck_bg:           Yuck_aio.bmp
+  insert_bg:         Insert_aio.bmp
 
   # The following strings must be approved by the localization people
 EOF1
@@ -190,13 +190,13 @@ EOF2
     echo -n " $lc"
     echo "  ${lc}_devel:" >> "$yaml_file"
     echo "    - [  0,   0, devmode_bg]" >> "$yaml_file"
-    reset_base Devmode.bmp
+    reset_base Devmode_aio.bmp
     center_up "${lc}_devmode_text"
     echo "" >> "$yaml_file"
 
     echo "  ${lc}_remove:" >> "$yaml_file"
     echo "    - [  0,   0, remove_bg]" >> "$yaml_file"
-    reset_base Remove.bmp
+    reset_base Remove_aio.bmp
     if echo "$rtol" | grep -q -w "$lc" ; then
       center_up 'hwid' "${lc}_model_text"
     else
@@ -208,7 +208,7 @@ EOF2
 
     echo "  ${lc}_yuck:" >> "$yaml_file"
     echo "    - [  0,   0, yuck_bg]" >> "$yaml_file"
-    reset_base Yuck.bmp
+    reset_base Yuck_aio.bmp
     if echo "$rtol" | grep -q -w "$lc" ; then
       center_up 'hwid' "${lc}_model_text"
     else
@@ -220,7 +220,7 @@ EOF2
 
     echo "  ${lc}_insert:" >> "$yaml_file"
     echo "    - [  0,   0, insert_bg]" >> "$yaml_file"
-    reset_base Insert.bmp
+    reset_base Insert_aio.bmp
     if echo "$rtol" | grep -q -w "$lc" ; then
       center_up 'hwid' "${lc}_model_text"
     else

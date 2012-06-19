@@ -19,7 +19,7 @@ DEFAULT_LOCALES=en es_419 pt_BR en_GB fr es pt_PT ca it de \
   uk tr iw ar fa hi th vi id fil zh_CN zh_TW ko ja
 
 
-BASE_IMAGES=Devmode.bmp Insert.bmp Remove.bmp Yuck.bmp
+BASE_IMAGES=Devmode_aio.bmp Insert_aio.bmp Remove_aio.bmp Yuck_aio.bmp
 OTHER_IMAGES=Url.bmp hwid_unknown.bmp
 FONTS=hwid_fonts.bin
 
