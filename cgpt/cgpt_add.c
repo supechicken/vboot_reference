@@ -177,7 +177,7 @@ int cgpt_add(CgptAddParams *params) {
   struct drive drive;
 
   int gpt_retval;
-  GptEntry *entry;
+  GptEntry *entry, backup;
   uint32_t index;
 
   if (params == NULL)
@@ -221,6 +221,7 @@ int cgpt_add(CgptAddParams *params) {
       goto bad;
     }
   }
+  memcpy(&backup, entry, sizeof(backup));
 
   // New partitions must specify type, begin, and size.
   if (IsZero(&entry->type)) {
@@ -258,6 +259,13 @@ int cgpt_add(CgptAddParams *params) {
 
   set_entry_attributes(drive, entry, index, params);
 
+  // If the modified entry is illegal, recovery it and return error.
+  if (0 != CheckEntries(entry, (GptHeader*)drive.gpt.primary_header)) {
+    memcpy(entry, &backup, sizeof(*entry));
+    Error("A given parameter is not allowed.\n");
+    goto bad;
+  }
+
   RepairEntries(&drive.gpt, MASK_PRIMARY);
   RepairHeader(&drive.gpt, MASK_PRIMARY);
 
@@ -272,4 +280,3 @@ bad:
   DriveClose(&drive, 0);
   return CGPT_FAILED;
 }
-
