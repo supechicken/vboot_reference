@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALH//0Mo\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-06-29T05:46:40Z",
+      "side": 1,
+      "message": "Is there any way we can piggyback on a previous TPM read of the same data to save time? Even just thinking about talking to the TPM takes ages.",
+      "revId": "b890a0d50cf2f85ac4d30f3b33e7360f33a43632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
