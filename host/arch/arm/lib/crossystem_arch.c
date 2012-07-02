@@ -34,6 +34,13 @@
 #define SECTOR_SIZE 512
 #define MAX_NMMCBLK 9
 
+enum GpioValue {
+  GpioFalse = 0,
+  GpioTrue,
+  GpioFdtDecodeError,
+  GpioNotPhysicalPort,
+};
+
 typedef struct PlatformFamily {
   const char* compatible_string; /* Last string in FDT compatible entry */
   const char* platform_string;   /* String to return */
@@ -198,12 +205,12 @@ static int VbGetGpioStatus(unsigned gpio_number) {
   return ReadFileInt(gpio_name);
 }
 
-static int VbGetVarGpio(const char* name) {
+static enum GpioValue VbGetVarGpio(const char* name) {
   int polarity, gpio_num;
   void *pp = NULL;
   int *prop;
   size_t proplen = 0;
-  int ret = 0;
+  enum GpioValue ret = GpioFalse;
 
   /* TODO: This should at some point in the future use the phandle
    * to find the gpio chip and thus the base number. Assume 0 now,
@@ -213,14 +220,17 @@ static int VbGetVarGpio(const char* name) {
 
   ret = ReadFdtBlock(name, &pp, &proplen);
   if (ret || !pp || proplen != 12) {
-    ret = 2;
+    ret = GpioFdtDecodeError;
     goto out;
   }
   prop = pp;
   gpio_num = ntohl(prop[1]);
   polarity = ntohl(prop[2]);
 
-  ret = VbGetGpioStatus(gpio_num) ^ polarity ^ 1;
+  if (gpio_num)
+    ret = (VbGetGpioStatus(gpio_num) ^ polarity ^ 1) ? GpioTrue : GpioFalse;
+  else
+    ret = GpioNotPhysicalPort;
 out:
   if (pp)
     free(pp);
@@ -340,6 +350,8 @@ VbSharedDataHeader *VbSharedDataRead(void) {
 }
 
 int VbGetArchPropertyInt(const char* name) {
+  enum GpioValue value;
+
   if (!strcasecmp(name, "fmap_base"))
     return ReadFdtInt("fmap-offset");
   else if (!strcasecmp(name, "devsw_boot"))
@@ -349,15 +361,32 @@ int VbGetArchPropertyInt(const char* name) {
   else if (!strcasecmp(name, "wpsw_boot"))
     return ReadFdtBool("boot-write-protect-switch");
   else if (!strcasecmp(name, "devsw_cur"))
-    return VbGetVarGpio("developer-switch");
+    value = VbGetVarGpio("developer-switch");
   else if (!strcasecmp(name, "recoverysw_cur"))
-    return VbGetVarGpio("recovery-switch");
+    value = VbGetVarGpio("recovery-switch");
   else if (!strcasecmp(name, "wpsw_cur"))
-  return VbGetVarGpio("write-protect-switch");
+    value = VbGetVarGpio("write-protect-switch");
   else if (!strcasecmp(name, "recoverysw_ec_boot"))
     return 0;
   else
     return -1;
+
+  switch (value) {
+    default:
+    case GpioFdtDecodeError:
+      return -1;
+    case GpioFalse:
+      return 0;
+    case GpioTrue:
+      return 1;
+    case GpioNotPhysicalPort:
+      if (!strcasecmp(name, "devsw_cur"))
+        return ReadFdtBool("boot-developer-switch");
+      else if (!strcasecmp(name, "recoverysw_cur"))
+        return ReadFdtBool("boot-recovery-switch");
+      else
+        return -1;
+  }
 }
 
 const char* VbGetArchPropertyString(const char* name, char* dest, int size) {
