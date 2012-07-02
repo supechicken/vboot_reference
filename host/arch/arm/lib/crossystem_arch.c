@@ -25,6 +25,9 @@
 #define FDT_COMPATIBLE_PATH "/proc/device-tree/compatible"
 /* Device for NVCTX write */
 #define NVCTX_PATH "/dev/mmcblk%d"
+/* Base name for GPIO files */
+#define GPIO_BASE_PATH "/sys/class/gpio"
+#define GPIO_EXPORT_PATH GPIO_BASE_PATH "/export"
 /* Errors */
 #define E_FAIL      -1
 #define E_FILEOP    -2
@@ -191,11 +194,41 @@ static char * ReadFdtPlatformFamily(void) {
 }
 
 static int VbGetGpioStatus(unsigned gpio_number) {
-  char const *gpio_name_format = "/sys/class/gpio/gpio%d/value";
   char gpio_name[FNAME_SIZE];
+  char gpio_active_low[FNAME_SIZE];
+  int value;
+  int active_low;
 
-  snprintf(gpio_name, sizeof(gpio_name), gpio_name_format, gpio_number);
-  return ReadFileInt(gpio_name);
+  snprintf(gpio_name, sizeof(gpio_name), "%s/gpio%d/value",
+           GPIO_BASE_PATH, gpio_number);
+  value = ReadFileInt(gpio_name);
+
+  if (value == -1) {
+    /* Try exporting the GPIO */
+    FILE* f = fopen(GPIO_EXPORT_PATH, "wt");
+    if (!f)
+      return -1;
+    fprintf(f, "%d", gpio_number);
+    fclose(f);
+
+    /* Try re-reading the GPIO value */
+    value = ReadFileInt(gpio_name);
+  }
+
+  if (value == -1)
+    return -1;
+
+  snprintf(gpio_active_low, sizeof(gpio_active_low),"%s/gpio%d/active_low",
+           GPIO_BASE_PATH, gpio_number);
+  active_low = ReadFileInt(gpio_active_low);
+
+  if (active_low == -1) {
+    /* No active_low info from driver, return value directly  */
+    return value;
+  }
+
+  /* Compare GPIO value with active_low value and return 1 if active */
+  return (value != active_low ? 1 : 0);
 }
 
 static int VbGetVarGpio(const char* name) {
