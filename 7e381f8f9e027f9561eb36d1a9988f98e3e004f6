@@ -16,6 +16,24 @@
       "revId": "7e381f8f9e027f9561eb36d1a9988f98e3e004f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//+xo\u003d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2012-07-03T04:35:56Z",
+      "side": 1,
+      "message": "Yeah, I think it is reasonable to assume that wpsw is never going to be a virtual switch.",
+      "parentUuid": "AAAALn//+yc\u003d",
+      "revId": "7e381f8f9e027f9561eb36d1a9988f98e3e004f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
