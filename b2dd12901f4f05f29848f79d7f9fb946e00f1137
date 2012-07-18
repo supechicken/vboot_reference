@@ -16,6 +16,24 @@
       "revId": "b2dd12901f4f05f29848f79d7f9fb946e00f1137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAALn//yxk\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000185
+      },
+      "writtenOn": "2012-07-18T23:28:04Z",
+      "side": 1,
+      "message": "I\u0027ll change the name back. I read Expected as what vboot was expecting (aka version A, version B) rather than what vboot should expect the EC to be currently using.\n\nI intend for the select parameter to use the VbSelectFirmware_t enum since that covers the possible places the EC could come from without having to introduce any new constants or the need for additional translation between sets of constants.\n\nDoes that sound alright? Let me know so we can save a round trip through review.",
+      "parentUuid": "AAAALn//z0w\u003d",
+      "revId": "b2dd12901f4f05f29848f79d7f9fb946e00f1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
