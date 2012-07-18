@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAALn//z0w\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-18T15:52:46Z",
+      "side": 1,
+      "message": "Please leave this as GetExpected().  Or something similar.\n\nI anticipate needing VbExEcGetRW() to get the actual EC firmware contents on simple ECs which can\u0027t do SHA-256 hashing.\n\nAlso, please comment how select param works.  What are the expected/allowed values?",
+      "revId": "b2dd12901f4f05f29848f79d7f9fb946e00f1137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
