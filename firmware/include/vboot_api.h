@@ -637,7 +637,8 @@ VbError_t VbExEcStayInRO(void);
 VbError_t VbExEcHashRW(const uint8_t **hash, int *hash_size);
 
 /* Get the expected contents of the EC image as stored in the main firmware. */
-VbError_t VbExEcGetExpectedRW(const uint8_t **image, int *image_size);
+VbError_t VbExEcGetExpectedRW(enum VbSelectFirmware_t select, uint8_t **image,
+                              int *image_size);
 
 /* Update the EC rewritable image. */
 VbError_t VbExEcUpdateRW(const uint8_t *image, int image_size);
