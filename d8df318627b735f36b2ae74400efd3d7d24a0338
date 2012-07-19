@@ -16,6 +16,24 @@
       "revId": "d8df318627b735f36b2ae74400efd3d7d24a0338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAL3///Tc\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000188
+      },
+      "writtenOn": "2012-07-19T19:28:00Z",
+      "side": 1,
+      "message": "The expectation is that it is the same as what\u0027s in the main firmware, and we do need the select parameter anyway since U-Boot doesn\u0027t know which that is. The only difference is that instead of U-Boot trying to remember or guess which version is currently running, vboot just tells it.\n\nIf there is no image, what would have happened before this change? Adding the select argument should have no effect on that.",
+      "parentUuid": "AAAAL3///no\u003d",
+      "revId": "d8df318627b735f36b2ae74400efd3d7d24a0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
