@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAL3///no\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-19T16:07:36Z",
+      "side": 1,
+      "message": "\"Get the expected contents of the selected EC image, as stored in the main firmware.\"\n\nThere\u0027s no guarantee the main firmware in use is the same as the select param; if there were, you wouldn\u0027t need the select param...\n\n(also, what happens if there isn\u0027t a corresponding image?  is that an error, and/or does it set *image_size\u003d0?)",
+      "revId": "d8df318627b735f36b2ae74400efd3d7d24a0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
