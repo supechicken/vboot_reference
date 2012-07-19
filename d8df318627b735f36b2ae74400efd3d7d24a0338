@@ -34,6 +34,24 @@
       "revId": "d8df318627b735f36b2ae74400efd3d7d24a0338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAL3///TE\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-19T19:32:48Z",
+      "side": 1,
+      "message": "So, what happens if the EC requests a firmware which is not the current one?\n\nWhat I mean is that if there\u0027s a parameter which MUST be a certain value, we should comment that.  e.g.\n\n\"The \u003cselect\u003e parameter must be the same firmware image chosen by VbSelectFirmware().  If it is a different image, or this function is called before VbSelectFirmware(), the results of this call are undefined.\"\n\n(on the other hand, if this call will work correctly if passed either A or B, regardless of which one is current, then we don\u0027t need the above comment, and we also don\u0027t need to indicate that it\u0027s the main firmware in use...)",
+      "parentUuid": "AAAAL3///Tc\u003d",
+      "revId": "d8df318627b735f36b2ae74400efd3d7d24a0338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
