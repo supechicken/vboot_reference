@@ -379,7 +379,7 @@ int VbGetArchPropertyInt(const char* name) {
   else if (!strcasecmp(name, "recoverysw_cur"))
     return VbGetVarGpio("recovery-switch");
   else if (!strcasecmp(name, "wpsw_cur"))
-  return VbGetVarGpio("write-protect-switch");
+    return ReadFdtBool("boot-write-protect-switch");
   else if (!strcasecmp(name, "recoverysw_ec_boot"))
     return 0;
   else
