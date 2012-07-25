@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//+3w\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-07-25T20:12:49Z",
+      "side": 1,
+      "message": "Can we trust the EC\u0027s hash answer if it\u0027s in RW?\n\nShould we?",
+      "revId": "efcc67fe3fa11106c3090f19eb55a6cf36c4ff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
