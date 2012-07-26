@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+# Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -70,7 +70,7 @@ remove_rootfs_verification() {
 
 # Checks if rootfs verification is enabled from kernel boot parameter
 is_rootfs_verification_enabled() {
-  echo "$*" | grep -q 'root=/dev/dm-0'
+  echo "$*" | grep -q 'verity'
 }
 
 remove_legacy_boot_rootfs_verification() {
