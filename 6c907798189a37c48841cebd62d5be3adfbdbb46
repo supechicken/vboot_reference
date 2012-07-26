@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAMX//9aE\u003d",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000165
+      },
+      "writtenOn": "2012-07-26T21:17:40Z",
+      "side": 1,
+      "message": "\"verity\" would be be better than \"dm_verity\". This is because the upstream version of dm_verity may not (probably won\u0027t have) and dm_verity args in the command. But \"verity\" is the name of the device mapper and that must appear.",
+      "revId": "6c907798189a37c48841cebd62d5be3adfbdbb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
