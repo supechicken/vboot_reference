@@ -189,6 +189,9 @@ static int human_fmap(void *ptr)
   return 0;
 }
 
+#ifdef UTIL_AS_APPLET
+#define main dump_fmap_main
+#endif
 
 int main(int argc, char *argv[])
 {

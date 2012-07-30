@@ -18,31 +18,35 @@ BUILD_ROOT = ${BUILD}/utility
 
 DESTDIR ?= /usr/bin
 
-# Special flags for auto-update toolkits (must be statically linked).
-AU_LDFLAGS = $(LDFLAGS) -static
-AU_TARGETS = crossystem \
-		dump_fmap \
-		gbb_utility
+# Auto update busybox.
+VBUTIL_AUBOX_SOURCE = \
+		crossystem_main.c \
+		dump_fmap.c \
+		gbb_utility.cc \
+		vbutil_aubox.c
 
-TARGET_NAMES = $(AU_TARGETS) \
-		dumpRSAPublicKey \
+TARGET_NAMES =  crossystem \
+		dev_debug_vboot \
+		dev_make_keypair \
+		dev_sign_file \
+		dump_fmap \
 		dump_kernel_config \
+		dumpRSAPublicKey \
+		gbb_utility \
 		load_kernel_test \
 		pad_digest_utility \
 		signature_digest_utility \
 		tlcl_generator \
-		tpm_init_temp_fix \
 		tpmc \
+		tpm_init_temp_fix \
+		vbutil_aubox \
 		vbutil_ec \
 		vbutil_firmware \
 		vbutil_kernel \
 		vbutil_key \
 		vbutil_keyblock \
-		verify_data \
-		dev_make_keypair \
-		dev_sign_file \
-		dev_debug_vboot \
-		vbutil_what_keys
+		vbutil_what_keys \
+		verify_data
 
 ifeq ($(MINIMAL),)
 TARGET_NAMES += bmpblk_font bmpblk_utility eficompress efidecompress
@@ -55,14 +59,19 @@ ALL_DEPS = $(addsuffix .d,${TARGET_BINS})
 
 all: $(TARGET_BINS) $(DUMPKERNELCONFIGLIB)
 
+${BUILD_ROOT}/vbutil_aubox: $(VBUTIL_AUBOX_SOURCE) $(LIBS)
+	$(CC) -static -DUTIL_AS_APPLET -DWITH_UTIL_MAIN \
+		$(CFLAGS) $(VBUTIL_AUBOX_SOURCE) \
+		-o $@ $(LDFLAGS) $(LIBS) -lstdc++
+
 ${BUILD_ROOT}/crossystem: crossystem_main.c $(LIBS)
-	$(CC) $(CFLAGS) $(AU_LDFLAGS) $< -o $@ $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LIBS)
 
 ${BUILD_ROOT}/gbb_utility: gbb_utility.cc
-	$(CXX) -DWITH_UTIL_MAIN $(CFLAGS) $(AU_LDFLAGS) $< -o $@
+	$(CXX) -DWITH_UTIL_MAIN $(CFLAGS) $(LDFLAGS) $< -o $@
 
 ${BUILD_ROOT}/dump_fmap: dump_fmap.c $(LIBS)
-	$(CC) $(CFLAGS) $(AU_LDFLAGS) $< -o $@ $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LIBS)
 
 ${BUILD_ROOT}/dumpRSAPublicKey: dumpRSAPublicKey.c
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(CRYPTO_LIBS)

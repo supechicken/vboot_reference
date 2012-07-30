@@ -1,4 +1,4 @@
-// Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+// Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 //
@@ -612,6 +612,11 @@ static bool parse_creation_param(const string &input_string,
 ///////////////////////////////////////////////////////////////////////
 // main
 
+#ifdef UTIL_AS_APPLET
+#define main gbb_utility_main
+#endif
+
+extern "C"
 int main(int argc, char *argv[]) {
   const char *myname = argv[0];
   int err_stage = 0;    // an indicator for error exits
