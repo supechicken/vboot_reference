@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAO3///kg\u003d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-07-31T15:57:25Z",
+      "side": 1,
+      "message": "So, to override RO-normal do I use --preamble\u003dflags\u003d\"RO-NORMAL\u003d1\" or just --preamble-flags\u003d1?\n\nMaybe just \"Override preamble flags value\"\n\nIt\u0027d be REALLY nice if the help text described the current flags (1\u003dro-normal, 2\u003d???, 4\u003d???, etc) or included a help url.  Will save all the e-mails we\u0027ll get for \"what flags do I want\"?",
+      "revId": "db372c4c7a7af53ae89b2d591dcd42d73105706b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
