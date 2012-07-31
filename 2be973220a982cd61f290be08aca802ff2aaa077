@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAO3///K0\u003d",
+        "filename": "firmware/lib/cryptolib/rsa_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-07-31T20:36:12Z",
+      "side": 1,
+      "message": "What is the advantage of this check as opposed to what Neel suggested in the bug? That one reads better to me.\n\nWe should never ever be passing in such a large value for the length in any case (and the check on line 59 below also enforces that).",
+      "revId": "2be973220a982cd61f290be08aca802ff2aaa077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
