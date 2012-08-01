@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH///Dk\u003d",
+        "filename": "scripts/newbitmaps/images/DEFAULT.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2012-08-01T15:42:32Z",
+      "side": 1,
+      "message": "Oops. I think this file got nuked when I had a bug in the generator script. The file I\u0027ve been using is the one under images/out_x86/DEFAULT.yaml which wasn\u0027t included in the commit. I\u0027ll update it in the next patchset.",
+      "parentUuid": "AAAAOn///Zs\u003d",
+      "revId": "c361815416fbd6dbeb062cadda86002b3e3e9f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAOn///Zw\u003d",
         "filename": "scripts/newbitmaps/images/make_default_yaml",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-07-30T19:35:02Z",
       "side": 1,
       "message": "You don\u0027t want yuck here. This is the Remove screen. You only want to display the remove text.",
+      "revId": "c361815416fbd6dbeb062cadda86002b3e3e9f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH///Dc\u003d",
+        "filename": "scripts/newbitmaps/images/make_default_yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2012-08-01T15:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAOn///Zw\u003d",
       "revId": "c361815416fbd6dbeb062cadda86002b3e3e9f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
