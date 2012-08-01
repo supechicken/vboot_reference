@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH///uE\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-01T00:01:46Z",
+      "side": 1,
+      "message": "I\u0027d split this into two functions - one for confirm-enable and one for confirm-disable.\n\nThe code path is different, because confirm-disable is done from dev mode so the TPM operation will always fail, and so it\u0027ll set VBNV_DISABLE_DEV_REQUEST.  Might as well move that VBNV set right into the confirm-disable function.",
+      "revId": "ba90e70b57bb8442cc9f0635857a03b8bf63c8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH///uM\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-01T00:01:46Z",
+      "side": 1,
+      "message": "Also need to check for VBERROR_SHUTDOWN_REQUESTED - or shutting the lid means \"confirmed!\"\n\nAnd VBERROR_TPM_REBOOT_REQUIRED, since in that case we\u0027ve somehow already disabled the dev switch\n\nOr better still, pull this directly into a confirm-disable function, if you split the funcs as indicated above.",
+      "revId": "ba90e70b57bb8442cc9f0635857a03b8bf63c8a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
