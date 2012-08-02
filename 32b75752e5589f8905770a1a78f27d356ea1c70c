@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//9iw\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-02T20:51:03Z",
+      "side": 1,
+      "message": "Do we consider the preamble values \"trusted\"? i.e. can they ever be changed to trigger an overflow in this multiplication?",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
