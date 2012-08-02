@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//9bw\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-02T21:59:59Z",
+      "side": 1,
+      "message": "Wasn\u0027t suggesting that it fits but noticed that you\u0027ve removed the check against 0 that used to be there.  If you feel it isn\u0027t needed then it sounds fine to me.",
+      "parentUuid": "AAAAPH//9e4\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//9gU\u003d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "gerrit lies about white-space-only changes like this :(",
       "parentUuid": "AAAAPH//9ek\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9bs\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-02T21:59:59Z",
+      "side": 1,
+      "message": "OK.  Haven\u0027t seen that but I usually review code with tabs.  ;)",
+      "parentUuid": "AAAAPH//9d0\u003d",
       "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
