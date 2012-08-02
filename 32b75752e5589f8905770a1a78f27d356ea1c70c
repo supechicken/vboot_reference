@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//9ds\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-02T21:34:30Z",
+      "side": 1,
+      "message": "Okay, sounds good to me then.",
+      "parentUuid": "AAAAPH//9fM\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//9gQ\u003d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "this certainly is indented some extra - could it be that gerrit diffs do not show whitespace only changes?",
       "parentUuid": "AAAAPH//9gU\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9d0\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-02T21:34:30Z",
+      "side": 1,
+      "message": "gerrit lies about white-space-only changes like this :(",
+      "parentUuid": "AAAAPH//9ek\u003d",
       "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
