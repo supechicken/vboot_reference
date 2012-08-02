@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//9fM\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-08-02T21:29:50Z",
+      "side": 1,
+      "message": "The preamble is generated during the build process and is cryptographically signed, so we do consider it \u0027trusted\u0027.",
+      "parentUuid": "AAAAPH//9iw\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//9gQ\u003d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//9e4\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-08-02T21:29:50Z",
+      "side": 1,
+      "message": "This is a good question. As I mentioned in the CL description we might want to check that the buffer fits under the stack bottom on x86 platforms, but I don\u0027t feel that it is necessary.",
+      "parentUuid": "AAAAPH//9gQ\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//9gU\u003d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2012-08-02T21:17:21Z",
       "side": 1,
       "message": "Is it just me or is indentation off here?",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9ek\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-08-02T21:29:50Z",
+      "side": 1,
+      "message": "this certainly is indented some extra - could it be that gerrit diffs do not show whitespace only changes?",
+      "parentUuid": "AAAAPH//9gU\u003d",
       "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
