@@ -176,6 +176,24 @@
       "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9bE\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2012-08-02T22:04:45Z",
+      "side": 1,
+      "message": "yeah, this all started as a vendor BIOS extension, so we had to followed their horrible Windows(sic!) induced coding standards :P",
+      "parentUuid": "AAAAPH//9bs\u003d",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
