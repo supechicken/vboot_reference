@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//9oc\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-08-02T19:35:30Z",
+      "side": 1,
+      "message": "One example is the problem we encountered earlier this week, where the kernel was larger than the space hard-coded for it by the FDT. The signature said how big it was, but it was ignored.\n\nAnother is our desire to dual-boot other OSes. We could sign a trampoline (U-Boot, SeaBios) as a kernel, except that it is automatically put at the hardcoded kernel load address. If the signature\u0027s load location was honored, the trampoline wouldn\u0027t have to relocate itself.",
+      "parentUuid": "AAAAPH//9p8\u003d",
+      "revId": "218a42ff859ff77d8af765a0ddcc6f5959ca5277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//9vw\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
