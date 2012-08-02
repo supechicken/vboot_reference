@@ -33,6 +33,24 @@
       "revId": "ffc2913f982cd64abb316d334e96281d2a580147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9ms\u003d",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000217
+      },
+      "writtenOn": "2012-08-02T19:54:18Z",
+      "side": 1,
+      "message": "Yeah it actually started out as if grep -q, but then I realized I wanted to \"echo $matches\" so that we log what use flag was caught.",
+      "parentUuid": "AAAAPH//9no\u003d",
+      "revId": "ffc2913f982cd64abb316d334e96281d2a580147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
