@@ -16,6 +16,40 @@
       "revId": "218a42ff859ff77d8af765a0ddcc6f5959ca5277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9uw\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2012-08-02T18:14:12Z",
+      "side": 1,
+      "message": "This comment is misleading, you removed the verification.",
+      "revId": "218a42ff859ff77d8af765a0ddcc6f5959ca5277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9uo\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000047
+      },
+      "writtenOn": "2012-08-02T18:14:12Z",
+      "side": 1,
+      "message": "This needs to be sanitized, there\u0027s no checking to make sure the load address isn\u0027t set to some malicious value.",
+      "revId": "218a42ff859ff77d8af765a0ddcc6f5959ca5277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
