@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//9o8\u003d",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000029
+      },
+      "writtenOn": "2012-08-02T19:44:18Z",
+      "side": 1,
+      "message": "do we want this grep to be \u0027quiet\u0027 or are we OK with the output of this going to whereever stderr/stdout are going?",
+      "revId": "ffc2913f982cd64abb316d334e96281d2a580147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9no\u003d",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000029
+      },
+      "writtenOn": "2012-08-02T19:44:18Z",
+      "side": 1,
+      "message": "God I hate shell scripts :-)  Let me make sure I\u0027m understanding this right:\n\nif the \u0027grep\u0027 above does _not_ find the chosen prefix in the useflag file, the $() will evaluate to \u0027\u0027.\nif [ -n \"\" ] will evaluate to false, so we skip the error stuff.\n\nif the \u0027grep\u0027 above finds stuff, the $() evaluates to stuff, and if [ -n \"stuff\" ] evaluates to true, so we do all the error reporting.\n\nYes, ok.  Just sanity checking.",
+      "revId": "ffc2913f982cd64abb316d334e96281d2a580147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
