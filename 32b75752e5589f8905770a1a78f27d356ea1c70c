@@ -16,6 +16,40 @@
       "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9gQ\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-02T21:17:21Z",
+      "side": 1,
+      "message": "Do you need to check kernel_buffer_size in the else case?",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//9gU\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2012-08-02T21:17:21Z",
+      "side": 1,
+      "message": "Is it just me or is indentation off here?",
+      "revId": "32b75752e5589f8905770a1a78f27d356ea1c70c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
