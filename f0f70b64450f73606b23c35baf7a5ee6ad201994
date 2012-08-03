@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//9EE\u003d",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000049
+      },
+      "writtenOn": "2012-08-03T03:42:10Z",
+      "side": 1,
+      "message": "Any reason we don\u0027t just get rid of this check and unconditionally remove rootfs verification? Seems like, if the user specified --remove_rootfs_verification, it\u0027s pretty safe to assume that rootfs verification is enabled, and probably harmless to try to disable it :)",
+      "revId": "f0f70b64450f73606b23c35baf7a5ee6ad201994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
