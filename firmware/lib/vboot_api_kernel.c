@@ -237,6 +237,8 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
           case 1:
             VBDEBUG(("%s() - leaving dev-mode...\n", __func__));
             VbNvSet(&vnc, VBNV_DISABLE_DEV_REQUEST, 1);
+            VbDisplayScreen(cparams, VB_SCREEN_TO_NORM_CONFIRMED, 0, &vnc);
+            VbExSleepMs(3000);
             return VBERROR_TPM_REBOOT_REQUIRED;
           case -1:
             VBDEBUG(("%s() - shutdown requested\n", __func__));
@@ -403,6 +405,8 @@ VbError_t VbBootRecovery(VbCommonParams* cparams, LoadKernelParams* p) {
           if (TPM_SUCCESS != SetVirtualDevMode(1))
             return VBERROR_TPM_SET_BOOT_MODE_STATE;
           VBDEBUG(("%s() - Reboot so it will take effect\n", __func__));
+          VbDisplayScreen(cparams, VB_SCREEN_TO_DEV_CONFIRMED, 0, &vnc);
+          VbExSleepMs(3000);
           return VBERROR_TPM_REBOOT_REQUIRED;
         case -1:
           VBDEBUG(("%s() - Shutdown requested\n", __func__));
