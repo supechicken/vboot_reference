@@ -42,9 +42,8 @@ convert_to_bmp3() {
   fi
 
   echo "$input -> $folder/$output $flatten"
-  convert "$input" $flatten \
-    -compress none -alpha off -colors 256 \
-    $param "BMP3:$folder/$output"
+  convert "$input" $flatten -compress none -alpha off $param -colors 256 \
+    -depth 8 "BMP3:$folder/$output"
 
   # ImageMagic quantization may choose arbitrary color depth, even if we assign
   # -depth or -colors; so a single-color background may become 1 bit per pixel
