@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//0Z4\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-14T17:08:43Z",
+      "side": 1,
+      "message": "You\u0027re gonna make me want a VBNV_CLEAR_TPM_OWNER_IN_PROGRESS bit, so that we can capture all the states...",
+      "parentUuid": "AAAAPH//0c4\u003d",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//0cw\u003d",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-14T16:34:10Z",
       "side": 1,
       "message": "This should be enforced by the firmware, not the userspace helper.",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//0Zw\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-14T17:08:43Z",
+      "side": 1,
+      "message": "How?  This directly accesses the CMOS.",
+      "parentUuid": "AAAAPH//0cw\u003d",
       "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
