@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//z+o\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-08-14T22:00:43Z",
+      "side": 1,
+      "message": "As it is now, if you shut off the computer in between clearing the owner and setting REQUEST\u003d0 DONE\u003d1, all that will happen is that on the next boot we\u0027ll again attempt to clear the owner.\n\nI could swap the order of the VbNvSet()\u0027s, but since they\u0027re not actually committed back to CMOS until the whole VbInit() call returns to u-boot, it\u0027s a moot point.\n\n(In fact, the same applies even if I move the VbNvSet() calls before the call to RollbackFirmwareSetup(); the result *still* won\u0027t be committed back to CMOS until VbInit() returns...)",
+      "parentUuid": "AAAAPH//0ZI\u003d",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//0cw\u003d",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 3
