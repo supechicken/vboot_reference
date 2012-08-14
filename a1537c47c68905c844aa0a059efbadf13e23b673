@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//0ZI\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-14T17:14:50Z",
+      "side": 1,
+      "message": "I didn\u0027t think that was needed. I just wanted to close a possible race. (Though this may be a non-issue depending on the other comment...)",
+      "parentUuid": "AAAAPH//0Z4\u003d",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//0cw\u003d",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "How?  This directly accesses the CMOS.",
       "parentUuid": "AAAAPH//0cw\u003d",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//0ZA\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-14T17:14:50Z",
+      "side": 1,
+      "message": "Perhaps I\u0027m misunderstanding. Does this mean that the root user can clear this value through direct CMOS writes?",
+      "parentUuid": "AAAAPH//0Zw\u003d",
       "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
