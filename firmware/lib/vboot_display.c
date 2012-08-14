@@ -347,10 +347,43 @@ VbDisplayScreenFromGBB_exit:
 }
 
 
+#if defined(CONFIG_SANDBOX)
+static const char *VbGetScreenName(uint32_t screen) {
+  switch (screen) {
+  case VB_SCREEN_BLANK:
+    return "blank";
+  case VB_SCREEN_DEVELOPER_WARNING:
+    return "developer warning";
+  case VB_SCREEN_DEVELOPER_EGG:
+    return "developer egg";
+  case VB_SCREEN_RECOVERY_REMOVE:
+    return "recovery remove";
+  case VB_SCREEN_RECOVERY_INSERT:
+    return "recovery insert";
+  case VB_SCREEN_RECOVERY_NO_GOOD:
+    return "recovery no good";
+  case VB_SCREEN_RECOVERY_TO_DEV:
+    return "recovery to dev";
+  case VB_SCREEN_DEVELOPER_TO_NORM:
+    return "developer to norm";
+  case VB_SCREEN_WAIT:
+    return "wait";
+  default:
+      return "unknown";
+  }
+}
+#endif
+
 /* Display a screen, initializing the display if necessary.  If force!=0,
  * redisplays the screen even if it's the same as the current screen. */
 VbError_t VbDisplayScreen(VbCommonParams* cparams, uint32_t screen, int force,
                           VbNvContext *vncptr) {
+#if defined(CONFIG_SANDBOX)
+  VbExDebug("%s: screen: '%s' force: %d\n", __func__,
+            VbGetScreenName(screen), force);
+  disp_width = disp_height = 0; /* silence compiler warning */
+  return 0;
+#else
   VbError_t retval;
 
   /* Initialize display if necessary */
@@ -376,6 +409,7 @@ VbError_t VbDisplayScreen(VbCommonParams* cparams, uint32_t screen, int force,
 
   /* If the screen wasn't in the GBB bitmaps, fall back to a default screen. */
   return VbExDisplayScreen(screen);
+#endif
 }
 
 
