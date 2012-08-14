@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPH//0c4\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-14T16:34:10Z",
+      "side": 1,
+      "message": "I think these settings should be moved before the attempt to clear the TPM so there isn\u0027t a possible race between the TPM getting cleared and the variable showing that it got cleared. In the error path maybe \"done\" could be set back to 0.",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//0cw\u003d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-14T16:34:10Z",
+      "side": 1,
+      "message": "This should be enforced by the firmware, not the userspace helper.",
+      "revId": "a1537c47c68905c844aa0a059efbadf13e23b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
