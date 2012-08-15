@@ -241,7 +241,7 @@ add_header() {
   move_pos_up $ypad
   add_right_above "chrome_logo"
   move_pos_right $(get_width "divider_top")
-  add_left_above "arrow_left" "${lc}_language_text" "arrow_right"
+  add_left_above "${lc}_language_text"
 }
 
 add_footer_with_url() {
@@ -309,8 +309,6 @@ images:
   url:                    $(eval echo \$url)
 
   # Various UI elements
-  arrow_left:             $(eval echo \$arrow_left)
-  arrow_right:            $(eval echo \$arrow_right)
   chrome_logo:            $(eval echo \$chrome_logo)
   divider_btm:            $(eval echo \$divider_btm)
   divider_top:            $(eval echo \$divider_top)
@@ -335,7 +333,7 @@ EOF1
     eval "${lc}_remove_text=${localedir}/$lc/remove.bmp"
     eval "${lc}_yuck_text=${localedir}/$lc/yuck.bmp"
     eval "${lc}_insert_text=${localedir}/$lc/insert.bmp"
-    eval "${lc}_language_text=${localedir}/$lc/language.bmp"
+    eval "${lc}_language_text=${localedir}/$lc/language_full.bmp"
     eval "${lc}_for_help_text=${localedir}/$lc/for_help.bmp"
     eval "${lc}_help_left_text=${localedir}/$lc/for_help_left.bmp"
     eval "${lc}_help_right_text=${localedir}/$lc/for_help_right.bmp"
