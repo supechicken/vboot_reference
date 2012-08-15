@@ -33,6 +33,23 @@
       "revId": "fa94bbfe1aad19937231bcacdd61abf31c291cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//zZw\u003d",
+        "filename": "scripts/newbitmaps/images/build_images",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-08-15T07:52:35Z",
+      "side": 1,
+      "message": "local param\u003d\"\u0027P\u0027, dither\u003dNone, palette\u003dImage.ADAPTIVE\"                                                                                                                              \n python -c \"import Image; Image.open(\u0027$fn\u0027).convert($param).save(\u0027$fn\u0027)\"",
+      "revId": "fa94bbfe1aad19937231bcacdd61abf31c291cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
