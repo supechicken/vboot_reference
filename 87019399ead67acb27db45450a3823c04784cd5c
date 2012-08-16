@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPH//ydE\u003d",
+        "filename": "scripts/newbitmaps/strings/build_font",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2012-08-16T02:03:42Z",
+      "side": 1,
+      "message": "Problem here is that margin adds padding on the left and right sides of the image also, spacing out the c h a r a c t e r s \u003c- like that.",
+      "parentUuid": "AAAAPH//yfs\u003d",
+      "revId": "87019399ead67acb27db45450a3823c04784cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPH//yf0\u003d",
         "filename": "scripts/newbitmaps/strings/build_font",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-16T01:19:13Z",
       "side": 1,
       "message": "Will this also add horizontal margin?",
+      "revId": "87019399ead67acb27db45450a3823c04784cd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//ydA\u003d",
+        "filename": "scripts/newbitmaps/strings/build_font",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000144
+      },
+      "writtenOn": "2012-08-16T02:03:42Z",
+      "side": 1,
+      "message": "No, the 0x3 (in this case) means 0 pixels horizontal margin and 3 pixels vertical margin (3 px to the top and 3 px to the bottom)",
+      "parentUuid": "AAAAPH//yf0\u003d",
       "revId": "87019399ead67acb27db45450a3823c04784cd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
