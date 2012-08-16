@@ -16,6 +16,24 @@
       "revId": "83050e922f4752e6bd11c26fe9fd24ce55c14bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPH//xKs\u003d",
+        "filename": "utility/mount-helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-08-16T23:06:38Z",
+      "side": 1,
+      "message": "No, rc stays set to it\u0027s initial value of \"0\" (failure) until it gets set on the runcmd() call later.",
+      "parentUuid": "AAAAPH//xNk\u003d",
+      "revId": "83050e922f4752e6bd11c26fe9fd24ce55c14bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
