@@ -36,6 +36,12 @@ x86::
 	cd "out_$@" && bmpblk_utility -c DEFAULT.yaml bmpblock.bin
 	ls -l "out_$@"/bmpblock.bin
 
+parrot::
+	LOCALES="$(LOCALES)" ./build_images "$@"
+	cd "out_$@" && ../make_default_yaml $(LOCALES)
+	cd "out_$@" && bmpblk_utility -c DEFAULT.yaml bmpblock.bin
+	ls -l "out_$@"/bmpblock.bin
+
 
 arm::
 	LOCALES="$(LOCALES)" ./build_images "$@"
