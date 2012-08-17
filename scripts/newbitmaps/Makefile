@@ -30,6 +30,10 @@ x86:
 	$(MAKE) -C images $@ LOCALES="$(LOCALES)"
 	cp -f images/out_$@/bmpblock.bin bmpblock_$@.bin
 
+parrot:
+	$(MAKE) -C images $@ LOCALES="$(LOCALES)"
+	cp -f images/out_$@/bmpblock.bin bmpblock_$@.bin
+
 arm:
 	$(MAKE) -C images $@ LOCALES="$(LOCALES)"
 	cp -f images/out_$@/bmpblock.bin bmpblock_$@.bin

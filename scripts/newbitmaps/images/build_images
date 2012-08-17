@@ -75,6 +75,10 @@ main() {
       scale_param="-scale 59%x78%"
       background_scale_param="-scale 800x600!"
       ;;
+    parrot )
+      scale_param="-scale 75%x100%"
+      background_scale_param="-scale 1024x768!"
+      ;;
     arm )
       # On ARM platforms, we need to provide a bitmap with full size.
       # TODO(hungte) Support more profiles, ex 1280x800.
