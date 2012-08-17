@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPX///rE\u003d",
+        "filename": "scripts/newbitmaps/strings/build_font",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-08-17T01:52:43Z",
+      "side": 1,
+      "message": "If we\u0027re not changing the font face, then we probably don\u0027t need to assign font again here - just use the default.",
+      "revId": "06dfe5857f1c5aad4475f4fff79ae9c7614b4064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPX///q8\u003d",
+        "filename": "scripts/newbitmaps/strings/text_to_png",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-08-17T01:52:43Z",
+      "side": 1,
+      "message": "Hmmm, by this change every text will be 464646 by default.\n\nToT uses another mechanism: default is still black, but we have entry.conf to provide advanced color settings, and change stuff to grey if they are assigned.",
+      "revId": "06dfe5857f1c5aad4475f4fff79ae9c7614b4064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
