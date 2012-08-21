@@ -87,6 +87,15 @@ main() {
       replace_files="insert=insert_sd_usb2"
       ;;
 
+    # Let's add more from http://en.wikipedia.org/wiki/Computer_display_standard
+    nUXGA )
+      background_scale_param="-scale 1600x1200!"
+      ;;
+
+    Link )
+      background_scale_param="-scale 2560x1500!"
+      ;;
+
     # Stretched profiles
 
     s800 )
