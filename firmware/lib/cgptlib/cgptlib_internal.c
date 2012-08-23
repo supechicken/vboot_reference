@@ -45,7 +45,8 @@ int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors) {
 
   /* Make sure we're looking at a header of reasonable size before
    * attempting to calculate CRC. */
-  if (Memcmp(h->signature, GPT_HEADER_SIGNATURE, GPT_HEADER_SIGNATURE_SIZE))
+  if (Memcmp(h->signature, GPT_HEADER_SIGNATURE, GPT_HEADER_SIGNATURE_SIZE) &&
+      Memcmp(h->signature, GPT_HEADER_SIGNATURE2, GPT_HEADER_SIGNATURE_SIZE))
     return 1;
   if (h->revision != GPT_HEADER_REVISION)
     return 1;
@@ -295,6 +296,14 @@ void GptRepair(GptData *gpt) {
     gpt->modified |= GPT_MODIFIED_HEADER1;
   }
   gpt->valid_headers = MASK_BOTH;
+
+  /* If we changed the GPT header signature, we don't want to
+   * overwrite the primary partition entries, because that will
+   * prevent Windows from booting. We also don't want to copy
+   * the primary entries over the secondary entries, because that
+   * would essentially wipe out ChromeOS */
+  if (!Memcmp(header1->signature, GPT_HEADER_SIGNATURE2, GPT_HEADER_SIGNATURE_SIZE))
+    return;
 
   /* Repair entries if necessary */
   entries_size = header1->size_of_entry * header1->number_of_entries;
