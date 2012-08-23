@@ -228,6 +228,15 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+D; skip delay\n"));
         goto fallout;
         break;
+      case 0x0c:
+        VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+L; boot SeaBIOS\n"));
+        VbExBeep(100, 200);
+        VbExSleepMs(50);
+        VbExBeep(100, 400);
+        VbExSleepMs(50);
+        VbExBeep(100, 600);
+        VbExLegacy();
+        break;
       /* The Ctrl-Enter is special for Lumpy test purpose. */
       case VB_KEY_CTRL_ENTER:
       case 0x15:
