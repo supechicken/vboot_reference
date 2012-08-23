@@ -188,3 +188,7 @@ VbError_t VbExEcUpdateRW(const uint8_t *image, int image_size) {
 VbError_t VbExEcProtectRW(void) {
   return VBERROR_SUCCESS;
 }
+
+void VbExLegacy(void)
+{
+}
