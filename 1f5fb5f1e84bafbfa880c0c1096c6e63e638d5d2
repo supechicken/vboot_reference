@@ -16,6 +16,24 @@
       "revId": "1f5fb5f1e84bafbfa880c0c1096c6e63e638d5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//8q8\u003d",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-08-24T19:24:14Z",
+      "side": 1,
+      "message": "it is unlikely, but possible, for those characters to show up in a kernel parameter.  colons certainly show up frequently in things (although not in ones we use currently).  | and % would be a little bit odd.  but rather than worry about it happening again in the future, i picked a byte that i know will pretty much never show up -- ascii byte 1.",
+      "parentUuid": "AAAAPn//8sI\u003d",
+      "revId": "1f5fb5f1e84bafbfa880c0c1096c6e63e638d5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
