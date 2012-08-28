@@ -130,12 +130,40 @@ dd if="${SRC_FD}" of="${temp_fwimage_a}" skip="${fwA_offset}" bs=1 \
 dd if="${SRC_FD}" of="${temp_fwimage_b}" skip="${fwB_offset}" bs=1 \
   count="${fwB_size}" 2>/dev/null
 
+echo "Read Root Key from GBB"
+temp_root_key=$(make_temp_file)
+gbb_utility -g --rootkey="$temp_root_key" "${SRC_FD}"
+
+truncate_firmware_image() {
+  local label="$1"
+  local voffset="$2"
+  local vsize="$3"
+  local foffset="$4"
+  local fsize="$5"
+  local image="$6"
+  dd if="${SRC_FD}" of="${temp_out_vb}" skip="${voffset}" bs=1 \
+    count="${vsize}" 2>/dev/null
+  local body_size="$(vbutil_firmware \
+    --verify "${temp_out_vb}" \
+    --signpubkey "${temp_root_key}" \
+    --fv "${image}" |
+    grep "Firmware body size:" |
+    sed 's/.*: *//')" || body_size="${fsize}"
+  if [ "${body_size}" -lt "${fsize}" ]; then
+    echo "Firmware ${label} Body Size is ${body_size}"
+    dd if="${SRC_FD}" of="${image}" skip="${foffset}" bs=1 \
+      count="${body_size}" 2>/dev/null
+  fi
+}
+truncate_firmware_image "A" "${fwA_vblock_offset}" "${fwA_vblock_size}" \
+  "${fwA_offset}" "${fwA_size}" "${temp_fwimage_a}"
+truncate_firmware_image "B" "${fwB_vblock_offset}" "${fwB_vblock_size}" \
+  "${fwB_offset}" "${fwB_size}" "${temp_fwimage_b}"
+
 echo "Determining preamble flag from existing firmware"
 if [ -n "$PREAMBLE_FLAG" ]; then
   PREAMBLE_FLAG="--flag $PREAMBLE_FLAG"
 else
-  temp_root_key=$(make_temp_file)
-  gbb_utility -g --rootkey="$temp_root_key" "${SRC_FD}"
   dd if="${SRC_FD}" of="${temp_out_vb}" skip="${fwA_vblock_offset}" bs=1 \
     count="${fwA_vblock_size}" 2>/dev/null
   flag="$(vbutil_firmware \
