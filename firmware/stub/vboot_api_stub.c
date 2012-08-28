@@ -188,3 +188,8 @@ VbError_t VbExEcUpdateRW(const uint8_t *image, int image_size) {
 VbError_t VbExEcProtectRW(void) {
   return VBERROR_SUCCESS;
 }
+
+VbError_t VbExProtectFlash(enum VbProtectFlash_t region)
+{
+  return VBERROR_SUCCESS;
+}

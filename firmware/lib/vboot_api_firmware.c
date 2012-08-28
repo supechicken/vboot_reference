@@ -92,7 +92,14 @@ VbError_t VbSelectFirmware(VbCommonParams* cparams,
     }
   }
 
-  /* Success! */
+  /* Success! If we're in recovery or the flash is already unprotected, fine.
+   * Otherwise, write-protect the RW firmware region that we're about to use
+   * until the next boot. */
+  if (fparams->selected_firmware != VB_SELECT_FIRMWARE_RECOVERY &&
+      shared->flags & VBSD_BOOT_FIRMWARE_WP_ENABLED &&
+      shared->flags & VBSD_BOOT_FIRMWARE_SW_WP_ENABLED)
+    VbExProtectFlash(shared->firmware_index ? VBPROTECT_RW_B : VBPROTECT_RW_A);
+
   retval = VBERROR_SUCCESS;
 
 VbSelectFirmware_exit:
