@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//5H4\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-08-29T19:35:50Z",
+      "side": 1,
+      "message": "This is not being used any more.",
+      "revId": "e11d9f3e17f78c7fd0e85bfa0e517b8077fb1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//5Ik\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-08-29T19:35:50Z",
+      "side": 1,
+      "message": "NIT: Read -\u003e Reading",
+      "revId": "e11d9f3e17f78c7fd0e85bfa0e517b8077fb1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//5Hw\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-08-29T19:35:50Z",
+      "side": 1,
+      "message": "Add a comment for what this method is doing. Also move this to the beginning.",
+      "revId": "e11d9f3e17f78c7fd0e85bfa0e517b8077fb1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//5Ic\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-08-29T19:35:50Z",
+      "side": 1,
+      "message": "I\u0027d suggest making these names clearer and following the convention followed in the rest of the file. - so voffset-\u003evblock_offset, foffset-\u003efw_offset, etc.",
+      "revId": "e11d9f3e17f78c7fd0e85bfa0e517b8077fb1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//5IQ\u003d",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-08-29T19:35:50Z",
+      "side": 1,
+      "message": "This will always be true, right? Should you error out or warn if this is not the case?",
+      "revId": "e11d9f3e17f78c7fd0e85bfa0e517b8077fb1149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
