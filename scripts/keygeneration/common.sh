@@ -114,4 +114,45 @@ function make_keyblock {
     --signpubkey "${signkey}.vbpubk"
 }
 
+# ARGS: <VERSION_TYPE> <VERSION_FILE>
+get_version() {
+  local version_type=$1
+  local version_file=$2
+  version=$(sed -n "s#^${version_type}=\(.*\)#\1#pg" ${version_file})
+  echo $version
+}
 
+# Make backups of existing keys and keyblocks that will be revved.
+# Backup format:
+# for keys: <key_name>.v<version>
+# for keyblocks: <keyblock_name>.v<datakey version>.v<subkey version>
+# Args: SUBKEY_VERSION DATAKEY_VERSION
+backup_existing_kernel_keys() {
+  local subkey_version=$1
+  local datakey_version=$2
+  # --no-clobber to prevent accidentally overwriting existing
+  # backups.
+  mv --no-clobber kernel_subkey.vbprivk{,".v${subkey_version}"}
+  mv --no-clobber kernel_subkey.vbpubk{,".v${subkey_version}"}
+  mv --no-clobber kernel_data_key.vbprivk{,".v${datakey_version}"}
+  mv --no-clobber kernel_data_key.vbpubk{,".v${datakey_version}"}
+  mv --no-clobber kernel.keyblock{,".v${datakey_version}.v${subkey_version}"}
+}
+
+# Write new key version file with the updated key versions.
+# Args: FIRMWARE_KEY_VERSION FIRMWARE_VERSION KERNEL_KEY_VERSION
+#       KERNEL_VERSION VERSION_FILE
+write_updated_version_file() {
+  local firmware_key_version=$1
+  local firmware_version=$2
+  local kernel_key_version=$3
+  local kernel_version=$4
+  local version_file=$5
+
+  cat > ${version_file} <<EOF
+firmware_key_version=${firmware_key_version}
+firmware_version=${firmware_version}
+kernel_key_version=${kernel_key_version}
+kernel_version=${kernel_version}
+EOF
+}
