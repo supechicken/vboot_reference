@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//zao\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "Need to update this comment. This applies to all files.",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zaA\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "Looks like this entire sequence reading and displaying current versions could be moved to common.sh too since they are common to the other scripts.",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zZ8\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "update",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zZc\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "If you recreate the firmware firmware data key - you need to also re-generate the firmware keyblock. The old one will no longer work.",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zZU\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "Update",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zZY\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_data_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "Since the kernel subkey public half resides in the firmware - revving the the subkey also needs to update the firmware version. That\u0027s generally the way we always do it.\n\nI think in this case you just want to update the kernel data key, and re-create the keyblock (so the kernel_subkey creation step should be skipped).",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zak\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_subkey.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "You can just move this to common.sh since all the scripts use it.",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//zac\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_subkey.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2012-09-06T23:42:21Z",
+      "side": 1,
+      "message": "Version -\u003e Kernel Key Version",
+      "revId": "3f7060fdfabb51a3c9a6859bf2cfdea16b3828e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
