@@ -114,4 +114,68 @@ function make_keyblock {
     --signpubkey "${signkey}.vbpubk"
 }
 
+# File to read current versions from.
+VERSION_FILE="key.versions"
 
+# ARGS: <VERSION_TYPE>
+get_version() {
+  local version_type=$1
+  version=$(sed -n "s#^${version_type}=\(.*\)#\1#pg" ${VERSION_FILE})
+  echo $version
+}
+
+# Loads the current versions prints them to stdout and sets the global version
+# variables: CURRENT_FKEY_VERSION CURRENT_KSUBKEY_VESRION CURRENT_KDATA_VERSION
+# CURRENT_KERNEL_VERSION
+load_current_versions() {
+  if [ -f $VERSION_FILE ]; then
+    CURRENT_FKEY_VERSION=$(get_version "firmware_key_version" $VERSION_FILE)
+    # Firmware version is the kernel subkey version.
+    CURRENT_KSUBKEY_VERSION=$(get_version "firmware_version" $VERSION_FILE)
+    # Kernel data key version is the kernel key version.
+    CURRENT_KDATAKEY_VERSION=$(get_version "kernel_key_version" $VERSION_FILE)
+    CURRENT_KERNEL_VERSION=$(get_version "kernel_version" $VERSION_FILE)
+
+cat <<EOF
+Current Firmware key version: ${CURRENT_FKEY_VERSION}
+Current Firmware version: ${CURRENT_KSUBKEY_VERSION}
+Current Kernel key version: ${CURRENT_KDATAKEY_VERSION}
+Current Kernel version: ${CURRENT_KERNEL_VERSION}
+EOF
+  fi
+}
+
+# Make backups of existing keys and keyblocks that will be revved.
+# Backup format:
+# for keys: <key_name>.v<version>.vb{pub|priv}k
+# for keyblocks: <keyblock_name>.v<datakey version>.v<subkey version>.keyblock
+# Args: SUBKEY_VERSION DATAKEY_VERSION
+backup_existing_kernel_keys() {
+  local subkey_version=$1
+  local datakey_version=$2
+  # --no-clobber to prevent accidentally overwriting existing
+  # backups.
+  mv --no-clobber kernel_subkey.{vbprivk,"v${subkey_version}.vbprivk"}
+  mv --no-clobber kernel_subkey.{vbpubk,"v${subkey_version}.vbpubk"}
+  mv --no-clobber kernel_data_key.{vbprivk,"v${datakey_version}.vbprivk"}
+  mv --no-clobber kernel_data_key.{vbpubk,"v${datakey_version}.vbpubk"}
+  mv --no-clobber \
+    kernel.{keyblock,"v${datakey_version}.v${subkey_version}.keyblock"}
+}
+
+# Write new key version file with the updated key versions.
+# Args: FIRMWARE_KEY_VERSION FIRMWARE_VERSION KERNEL_KEY_VERSION
+#       KERNEL_VERSION
+write_updated_version_file() {
+  local firmware_key_version=$1
+  local firmware_version=$2
+  local kernel_key_version=$3
+  local kernel_version=$4
+
+  cat > ${VERSION_FILE} <<EOF
+firmware_key_version=${firmware_key_version}
+firmware_version=${firmware_version}
+kernel_key_version=${kernel_key_version}
+kernel_version=${kernel_version}
+EOF
+}
