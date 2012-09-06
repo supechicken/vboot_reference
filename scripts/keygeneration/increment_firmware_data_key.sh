@@ -30,29 +30,23 @@ Current Kernel key version: ${current_kdatakey_version}
 Current Kernel version: ${current_kernel_version}
 EOF
 
-  backup_existing_kernel_keys $current_ksubkey_version $current_kdatakey_version
+  new_fkey_version=$(( current_fkey_version + 1 ))
 
-  new_ksubkey_version=$(( current_ksubkey_version + 1 ))
-  new_kdatakey_version=$(( current_kdatakey_version + 1 ))
-
-  if [ $new_ksubkey_version -gt 65535 ] || [ $new_kdatakey_version -gt 65535 ];
+  if [ $new_fkey_version -gt 65535 ];
   then
     echo "Version overflow!"
     exit 1
   fi
 
-  cat <<EOF 
+  cat <<EOF
 Generating new kernel subkey, data keys and new kernel keyblock.
 
-New Firmware version (due to kernel subkey change): ${new_ksubkey_version}.
-New Kernel key version (due to kernel datakey change): ${new_kdatakey_version}.
+New Firmware key version (due to firmware key change): ${new_fkey_version}.
 EOF
-  make_pair kernel_subkey $KERNEL_SUBKEY_ALGOID $new_ksubkey_version
-  make_pair kernel_data_key $KERNEL_DATAKEY_ALGOID $new_kdatakey_version
-  make_keyblock kernel $KERNEL_KEYBLOCK_MODE kernel_data_key kernel_subkey
+  make_pair firmware_data_key $FIRMWARE_DATAKEY_ALGOID $new_fkey_version
 
-  write_updated_version_file $current_fkey_version $new_ksubkey_version \
-    $new_kdatakey_version $current_kernel_version $VERSION_FILE
+  write_updated_version_file $new_fkey_version $current_ksubkey_version \
+    $current_kdatakey_version $current_kernel_version $VERSION_FILE
 }
 
 main $@
