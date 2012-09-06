@@ -7,10 +7,22 @@
 # Used when revving versions for a firmware update.
 
 # Load common constants and variables.
-. "$(dirname "$0")/common.sh"
+. "${0%/*}"/common.sh
 
 # Abort on errors.
 set -e
+
+if [ $# -ne 1 ]; then
+  cat <<EOF
+Usage: $0 <keyset directory>
+
+Increments the kernel subkey, data key and firmware version in the
+specified keyset.
+EOF
+  exit 1
+fi
+
+KEY_DIR=$1
 
 # File to read current versions from.
 VERSION_FILE="key.versions"
@@ -57,6 +69,8 @@ EOF
   
 
 main() {
+  local key_dir=$1
+  cd ${key_dir}
   current_fkey_version=$(get_version "firmware_key_version")
   # Firmware version is the kernel subkey version.
   current_ksubkey_version=$(get_version "firmware_version")
