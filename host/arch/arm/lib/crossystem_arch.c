@@ -18,6 +18,7 @@
 #include "vboot_nvstorage.h"
 #include "host_common.h"
 #include "crossystem_arch.h"
+#include "comm-host.h"
 
 /* Base name for firmware FDT files */
 #define FDT_BASE_PATH "/proc/device-tree/firmware/chromeos"
@@ -253,7 +254,26 @@ out:
   return ret;
 }
 
-int VbReadNvStorage(VbNvContext* vnc) {
+static int VbReadNvStorage_mkbp(VbNvContext* vnc) {
+  struct ec_params_vbnvcontext p = { .op = EC_VBNV_CONTEXT_OP_READ };
+  int len;
+  len = ec_command(EC_CMD_VBNV_CONTEXT, EC_VER_VBNV_CONTEXT,
+      &p.op, sizeof(p.op), vnc->raw, EC_VBNV_BLOCK_SIZE);
+  /* If it's negative, it's error code; else it's length. */
+  return len < 0 ? -len : len != EC_VBNV_BLOCK_SIZE;
+}
+
+static int VbWriteNvStorage_mkbp(VbNvContext* vnc) {
+  struct ec_params_vbnvcontext p = { .op = EC_VBNV_CONTEXT_OP_WRITE };
+  int len;
+  Memcpy(p.block, vnc->raw, EC_VBNV_BLOCK_SIZE);
+  len = ec_command(EC_CMD_VBNV_CONTEXT, EC_VER_VBNV_CONTEXT,
+      &p, sizeof(p), NULL, 0);
+  /* If it's negative, it's error code; else it's length. */
+  return len < 0 ? -len : len != 0;
+}
+
+static int VbReadNvStorage_disk(VbNvContext* vnc) {
   int nvctx_fd = -1;
   uint8_t sector[SECTOR_SIZE];
   int rv = -1;
@@ -294,7 +314,7 @@ out:
   return rv;
 }
 
-int VbWriteNvStorage(VbNvContext* vnc) {
+static int VbWriteNvStorage_disk(VbNvContext* vnc) {
   int nvctx_fd = -1;
   uint8_t sector[SECTOR_SIZE];
   int rv = -1;
@@ -347,6 +367,24 @@ int VbWriteNvStorage(VbNvContext* vnc) {
     close(nvctx_fd);
 
   return rv;
+}
+
+int VbReadNvStorage(VbNvContext* vnc) {
+  char *media = ReadFdtString("nonvolatile-context-storage");
+  if (!strcmp(media, "mkbp"))
+    return VbReadNvStorage_mkbp(vnc);
+  if (!strcmp(media, "disk"))
+    return VbReadNvStorage_disk(vnc);
+  return -1;
+}
+
+int VbWriteNvStorage(VbNvContext* vnc) {
+  char *media = ReadFdtString("nonvolatile-context-storage");
+  if (!strcmp(media, "mkbp"))
+    return VbWriteNvStorage_mkbp(vnc);
+  if (!strcmp(media, "disk"))
+    return VbWriteNvStorage_disk(vnc);
+  return -1;
 }
 
 VbSharedDataHeader *VbSharedDataRead(void) {
@@ -433,5 +471,6 @@ int VbSetArchPropertyString(const char* name, const char* value) {
 
 int VbArchInit(void)
 {
+  return comm_init();
   return 0;
 }

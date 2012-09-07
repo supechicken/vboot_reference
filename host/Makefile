@@ -25,6 +25,10 @@ LIB_SRCS = \
 	./lib/host_misc.c \
 	./lib/host_signature.c \
 	./lib/signature_digest.c
+ifeq ($(ARCH), arm)
+LIB_SRCS += \
+	./arch/$(ARCH)/lib/comm-i2c.c
+endif
 
 STUB_SRCS = \
 	../firmware/stub/tpm_lite_stub.c \
