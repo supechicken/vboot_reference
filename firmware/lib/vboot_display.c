@@ -199,11 +199,17 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams* cparams, uint32_t screen,
   /* Sanity-check the bitmap block header */
   hdr = (BmpBlockHeader *)bmpfv;
   if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
-                   BMPBLOCK_SIGNATURE_SIZE)) ||
-      (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
+                   BMPBLOCK_SIGNATURE_SIZE))) {
+    VBDEBUG(("VbDisplayScreenFromGBB(): invalid bitmap header %p\n", hdr));
+    retval = VBERROR_INVALID_BMPFV;
+    goto VbDisplayScreenFromGBB_exit;
+  }
+  if ((hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
       ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
        (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
-    VBDEBUG(("VbDisplayScreenFromGBB(): invalid/too new bitmap header\n"));
+    VBDEBUG(("VbDisplayScreenFromGBB(): bitmap header version %d.%d, "
+             "we can handle %d.%d\n", hdr->major_version, hdr->minor_version,
+	     BMPBLOCK_MAJOR_VERSION, BMPBLOCK_MINOR_VERSION));
     retval = VBERROR_INVALID_BMPFV;
     goto VbDisplayScreenFromGBB_exit;
   }
@@ -267,6 +273,8 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams* cparams, uint32_t screen,
     screen_index * sizeof(ScreenLayout);
   layout = (ScreenLayout*)(bmpfv + offset);
 
+  VBDEBUG(("Localization = %d\n", localization));
+
   /* Display all bitmaps for the image */
   for (i = 0; i < MAX_IMAGE_IN_LAYOUT; i++) {
     if (layout->images[i].image_info_offset) {
@@ -274,6 +282,9 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams* cparams, uint32_t screen,
       image_info = (ImageInfo*)(bmpfv + offset);
       fullimage = bmpfv + offset + sizeof(ImageInfo);
       inoutsize = image_info->original_size;
+      VBDEBUG(("%d: offset=%#x, csize=%#x, osize=%#x\n", i,
+	       gbb->bmpfv_offset + offset, image_info->compressed_size,
+	       inoutsize));
       if (inoutsize && image_info->compression != COMPRESS_NONE) {
         fullimage = VbExMalloc(inoutsize);
         retval = VbExDecompress(bmpfv + offset + sizeof(ImageInfo),
