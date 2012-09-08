@@ -16,6 +16,24 @@
       "revId": "eba12fe8a3da079e09d94dcadaae3e9f4e729c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//yBU\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2012-09-08T19:32:45Z",
+      "side": 1,
+      "message": "This relies on gcc. I agree it is better as #ifdef - will change it.\n\nWe could perhaps define -Wundef to force this.",
+      "parentUuid": "AAAAPn//yCk\u003d",
+      "revId": "eba12fe8a3da079e09d94dcadaae3e9f4e729c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
