@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//yCk\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000021
+      },
+      "writtenOn": "2012-09-08T15:57:12Z",
+      "side": 1,
+      "message": "I\u0027m so dated I haven\u0027t used a C compiler in a while.  So, I\u0027m probably wrong but I\u0027ll just ask - should this be an #ifdef or #if defined since I\u0027m not sure defining the constant assigns it a nonzero value.",
+      "revId": "eba12fe8a3da079e09d94dcadaae3e9f4e729c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
