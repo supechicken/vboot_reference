@@ -42,6 +42,7 @@ TARGET_NAMES = $(AU_TARGETS) \
 		dev_make_keypair \
 		dev_sign_file \
 		dev_debug_vboot \
+		enable_dev_usb_boot \
 		vbutil_what_keys
 
 ifeq ($(MINIMAL),)
