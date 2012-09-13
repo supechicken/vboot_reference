@@ -33,7 +33,7 @@ strings:
 	$(MAKE) -C strings
 
 images:
-	$(MAKE) -C images LOCALES="$(LOCALES)" all
+	$(MAKE) -C images LOCALES="$(LOCALES)" TARGETS="n1366usb2" all
 
 clean:
 	$(MAKE) -C strings clean
