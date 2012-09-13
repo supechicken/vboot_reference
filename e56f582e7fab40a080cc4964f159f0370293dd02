@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//tb8\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "you assign the value just to echo it.  i wouldn\u0027t bother as you can implement this func in one line:\n\n awk -F\u003d \u0027/^\u0027$1\u0027\\\u003e/ { print $NF }\u0027 ${2:-${VERSION_FILE}}",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tbo\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "i\u0027d have this code return early if the file doesn\u0027t exist so you don\u0027t have to indent the rest.\n\n if [[ -f ${VERSION_FILE} ]]; then\n   return 1\n fi",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tcM\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "you pass the file as $2, but the func doesn\u0027t take two args.  suggest dropping the 2nd arg here.",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tcQ\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "this should be indented",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tbY\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "these variable names should be consistent.  i see 4 different styles here with no real reason for it.\n\ni\u0027d suggest:\n\n CURR_FIRMKEY_VER\n CURR_FIRM_VER\n CURR_KERNKEY_VER\n CURR_KERN_VER",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tbM\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "if you used \"ver\" instead of \"version\", you probably wouldn\u0027t have to line wrap the last line here ...",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tbE\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "\"${2-${VERSION_FILE}}\"",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//ta8\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "if [[ ${new_fkey_version} -gt 0xffff ]]; then",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//ta4\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "for custom variables, please add braces to their names: ${foo} rather than $foo",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//ta0\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-13T19:59:31Z",
+      "side": 1,
+      "message": "\"$@\"",
+      "revId": "e56f582e7fab40a080cc4964f159f0370293dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
