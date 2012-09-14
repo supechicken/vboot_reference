@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//tDg\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "[[ ! -f ${VERSION_FILE} ]]",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tCE\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "did you mean to leave this commented out ?",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tDE\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "i think we\u0027ll want a new backup_existing_firmware_keys func",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tCI\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "should be a . at the end of the sentence here",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tCM\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "if you passed \"${key_dir}/${VERSION_FILE}\" to get_version below, you wouldn\u0027t need the `cd` here",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tDc\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "local old_version\u003d$(get_version $2)",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tDY\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "local new_version\u003d$(( old_version + 1 ))",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tDU\u003d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "probably want to write to stderr:\n\n echo \"Version overflow!\" \u003e\u00262",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tDI\u003d",
+        "filename": "scripts/keygeneration/increment_firmware_data_key.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "here we\u0027ll want to call backup_existing_firmware_keys",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tCQ\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_data_key.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "shouldn\u0027t we be backing up the keys we\u0027re overwriting here ?",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//tCY\u003d",
+        "filename": "scripts/keygeneration/increment_kernel_subkey.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-09-14T03:18:10Z",
+      "side": 1,
+      "message": "${var}",
+      "revId": "4d259ef59a95b3f6e8c05d6d0bc83a9c0d9b6a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
