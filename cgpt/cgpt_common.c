@@ -33,6 +33,16 @@ void Error(const char *format, ...) {
   va_end(ap);
 }
 
+/*
+ * To implement VBDEBUG() when VBOOT_DEBUG is defined.
+ */
+void VbExDebug(const char *format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "DEBUG: %s %s: ", progname, command);
+  vfprintf(stderr, format, ap);
+  va_end(ap);
+}
 
 int CheckValid(const struct drive *drive) {
   if ((drive->gpt.valid_headers != MASK_BOTH) ||

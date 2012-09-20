@@ -119,4 +119,7 @@ int IsKernelEntry(const GptEntry* e);
 /* Copies the current kernel partition's UniquePartitionGuid to the dest */
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest);
 
+/* Enable debug message */
+void SetCgptDebug(int enable);
+
 #endif /* VBOOT_REFERENCE_CGPTLIB_INTERNAL_H_ */

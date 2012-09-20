@@ -208,6 +208,9 @@ int cgpt_show(CgptShowParams *params) {
   if (params == NULL)
     return CGPT_FAILED;
 
+  if (params->debug)
+    SetCgptDebug(1);
+
   if (CGPT_OK != DriveOpen(params->drive_name, &drive, O_RDONLY))
     return CGPT_FAILED;
 
