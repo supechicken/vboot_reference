@@ -8,19 +8,26 @@
 #include "crc32.h"
 #include "gpt.h"
 #include "utility.h"
+#include "vboot_api.h"  // for VbExError()
 
 
 int CheckParameters(GptData *gpt) {
   /* Currently, we only support 512-byte sector. In the future, we may support
    * larger sector. */
-  if (gpt->sector_bytes != 512)
+  if (gpt->sector_bytes != 512) {
+    VbExError("%s:%d gpt->sector_bytes(%d) != 512\n",
+              gpt->sector_bytes, __func__, __LINE__);
     return GPT_ERROR_INVALID_SECTOR_SIZE;
+  }
 
   /* The sector number of a drive should be reasonable. If the given value is
    * too small to contain basic GPT structure (PMBR + Headers + Entries),
    * the value is wrong. */
-  if (gpt->drive_sectors < (1 + 2 * (1 + GPT_ENTRIES_SECTORS)))
+  if (gpt->drive_sectors < (1 + 2 * (1 + GPT_ENTRIES_SECTORS))) {
+    VbExError("%s:%d gpt->drive_sectors is too small (%d)\n",
+              __func__, __LINE__, gpt->drive_sectors);
     return GPT_ERROR_INVALID_SECTOR_NUMBER;
+  }
 
   return GPT_SUCCESS;
 }
@@ -40,62 +47,118 @@ uint32_t HeaderCrc(GptHeader* h) {
 
 
 int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors) {
-  if (!h)
+  if (!h) {
+    VbExError("%s:%d *h is NULL\n", __func__, __LINE__);
     return 1;
+  }
 
   /* Make sure we're looking at a header of reasonable size before
    * attempting to calculate CRC. */
-  if (Memcmp(h->signature, GPT_HEADER_SIGNATURE, GPT_HEADER_SIGNATURE_SIZE))
+  if (Memcmp(h->signature, GPT_HEADER_SIGNATURE, GPT_HEADER_SIGNATURE_SIZE)) {
+    char buf[GPT_HEADER_SIGNATURE_SIZE + 1];
+    Memcpy(buf, h->signature, GPT_HEADER_SIGNATURE_SIZE);
+    buf[GPT_HEADER_SIGNATURE_SIZE] = 0;
+    VbExError("%s:%d signature is wrong: %s\n",
+             __func__, __LINE__, buf);
     return 1;
-  if (h->revision != GPT_HEADER_REVISION)
+  }
+  if (h->revision != GPT_HEADER_REVISION) {
+    VbExError("%s:%d h->revision(0x%08x) is unsupported\n",
+              __func__, __LINE__, h->revision);
     return 1;
-  if (h->size < MIN_SIZE_OF_HEADER || h->size > MAX_SIZE_OF_HEADER)
+  }
+  if (h->size < MIN_SIZE_OF_HEADER || h->size > MAX_SIZE_OF_HEADER) {
+    VbExError("%s:%d h->size(%d) is not reasonable (%d<x<%d)\n",
+              __func__, __LINE__, h->size,
+              MIN_SIZE_OF_HEADER, MAX_SIZE_OF_HEADER);
     return 1;
+  }
 
   /* Check CRC before looking at remaining fields */
-  if (HeaderCrc(h) != h->header_crc32)
+  if (HeaderCrc(h) != h->header_crc32) {
+    VbExError("%s:%d header crc is wrong. expected: 0x%08x, actual: 0x%08x\n",
+              __func__, __LINE__, HeaderCrc(h), h->header_crc32);
     return 1;
+  }
 
   /* Reserved fields must be zero. */
-  if (h->reserved_zero)
+  if (h->reserved_zero) {
+    VbExError("%s:%d h->reserved_zero should be 0. actual: 0x%08x\n",
+              __func__, __LINE__, h->reserved_zero);
     return 1;
+  }
 
   /* Could check that padding is zero, but that doesn't matter to us. */
 
   /* If entry size is different than our struct, we won't be able to
    * parse it.  Technically, any size 2^N where N>=7 is valid. */
-  if (h->size_of_entry != sizeof(GptEntry))
+  if (h->size_of_entry != sizeof(GptEntry)) {
+    VbExError("%s:%d h->size_of_entry(%d) is not parse-able. expected: %d\n",
+              __func__, __LINE__, h->size_of_entry, sizeof(GptEntry));
     return 1;
+  }
   if ((h->number_of_entries < MIN_NUMBER_OF_ENTRIES) ||
       (h->number_of_entries > MAX_NUMBER_OF_ENTRIES) ||
-      (h->number_of_entries * h->size_of_entry != TOTAL_ENTRIES_SIZE))
+      (h->number_of_entries * h->size_of_entry != TOTAL_ENTRIES_SIZE)) {
+    VbExError("%s:%d h->number_of_entries(%d) is not reasonable. "
+              "%d<x<%d and x*%d=%d\n", __func__, __LINE__,
+              h->number_of_entries,
+              MIN_NUMBER_OF_ENTRIES, MAX_NUMBER_OF_ENTRIES,
+               h->size_of_entry, TOTAL_ENTRIES_SIZE);
     return 1;
+  }
 
   /* Check locations for the header and its entries.  The primary
    * immediately follows the PMBR, and is followed by its entries.
    * The secondary is at the end of the drive, preceded by its
    * entries. */
   if (is_secondary) {
-    if (h->my_lba != drive_sectors - 1)
+    if (h->my_lba != drive_sectors - 1) {
+      VbExError("%s:%d secondary header LBA shoyld be the last sector (%d), "
+                "but actually at %d\n",
+                __func__, __LINE__, drive_sectors - 1, h->my_lba);
       return 1;
-    if (h->entries_lba != h->my_lba - GPT_ENTRIES_SECTORS)
+    }
+    if (h->entries_lba != h->my_lba - GPT_ENTRIES_SECTORS) {
+      VbExError("%s:%d secondary entries LBA should be at %d rather than %d\n",
+                __func__, __LINE__,
+                h->my_lba - GPT_ENTRIES_SECTORS, h->entries_lba);
       return 1;
+    }
   } else {
-    if (h->my_lba != 1)
+    if (h->my_lba != 1) {
+      VbExError("%s:%d primary header LBA (%d) should be 1\n",
+                __func__, __LINE__, h->my_lba);
       return 1;
-    if (h->entries_lba != h->my_lba + 1)
+    }
+    if (h->entries_lba != h->my_lba + 1) {
+      VbExError("%s:%d primary entries LBA(%d) should follow header (%d)\n",
+                __func__, __LINE__, h->entries_lba, h->my_lba + 1);
       return 1;
+    }
   }
 
   /* FirstUsableLBA must be after the end of the primary GPT table
    * array.  LastUsableLBA must be before the start of the secondary
    * GPT table array.  FirstUsableLBA <= LastUsableLBA. */
-  if (h->first_usable_lba < 2 + GPT_ENTRIES_SECTORS)
+  if (h->first_usable_lba < 2 + GPT_ENTRIES_SECTORS) {
+    VbExError("%s:%d first usable LBA(%d) should be right after "
+              "primary entries(%d)\n", __func__, __LINE__,
+              h->first_usable_lba, 2 + GPT_ENTRIES_SECTORS);
     return 1;
-  if (h->last_usable_lba >= drive_sectors - 1 - GPT_ENTRIES_SECTORS)
+  }
+  if (h->last_usable_lba >= drive_sectors - 1 - GPT_ENTRIES_SECTORS) {
+    VbExError("%s:%d h->last_usable_lba(%d) is larger than/equal to "
+             "actual size(%d-1-%d)\n", __func__, __LINE__,
+             h->last_usable_lba, drive_sectors, GPT_ENTRIES_SECTORS);
     return 1;
-  if (h->first_usable_lba > h->last_usable_lba)
+  }
+  if (h->first_usable_lba > h->last_usable_lba) {
+    VbExError("%s:%d first usable LBA(%d) should be less than / equal to"
+              "last usable(%d)\n", __func__, __LINE__,
+              h->first_usable_lba, h->last_usable_lba);
     return 1;
+  }
 
   /* Success */
   return 0;
@@ -124,8 +187,11 @@ int CheckEntries(GptEntry* entries, GptHeader* h) {
   /* Check CRC before examining entries. */
   crc32 = Crc32((const uint8_t *)entries,
                 h->size_of_entry * h->number_of_entries);
-  if (crc32 != h->entries_crc32)
+  if (crc32 != h->entries_crc32) {
+    VbExError("%s:%d entries CRC is wrong. expected: 0x%08x, actual: 0x%08x\n",
+              __func__, __LINE__, crc32, h->entries_crc32);
     return 1;
+  }
 
   /* Check all entries. */
   for (i = 0, entry = entries; i < h->number_of_entries; i++, entry++) {
@@ -138,8 +204,12 @@ int CheckEntries(GptEntry* entries, GptHeader* h) {
     /* Entry must be in valid region. */
     if ((entry->starting_lba < h->first_usable_lba) ||
         (entry->ending_lba > h->last_usable_lba) ||
-        (entry->ending_lba < entry->starting_lba))
+        (entry->ending_lba < entry->starting_lba)) {
+      VbExError("%s:%d entry(%d:%d) should sit inside drive(%d:%d)\n",
+                __func__, __LINE__, entry->starting_lba, entry->ending_lba,
+                h->first_usable_lba, h->last_usable_lba);
       return 1;
+    }
 
     /* Entry must not overlap other entries. */
     for (i2 = 0, e2 = entries; i2 < h->number_of_entries; i2++, e2++) {
@@ -147,15 +217,24 @@ int CheckEntries(GptEntry* entries, GptHeader* h) {
         continue;
 
       if ((entry->starting_lba >= e2->starting_lba) &&
-          (entry->starting_lba <= e2->ending_lba))
+          (entry->starting_lba <= e2->ending_lba)) {
+        VbExError("%s:%d entry %d overlaps another (%d)\n",
+                  __func__, __LINE__, entry - entries, e2 - entries);
         return 1;
+      }
       if ((entry->ending_lba >= e2->starting_lba) &&
-          (entry->ending_lba <= e2->ending_lba))
+          (entry->ending_lba <= e2->ending_lba)) {
+        VbExError("%s:%d entry %d overlaps another (%d)\n",
+                  __func__, __LINE__, entry - entries, e2 - entries);
         return 1;
+      }
 
       /* UniqueGuid field must be unique. */
-      if (0 == Memcmp(&entry->unique, &e2->unique, sizeof(Guid)))
+      if (0 == Memcmp(&entry->unique, &e2->unique, sizeof(Guid))) {
+        VbExError("%s:%d GUID of entry %d conflicts to another (%d)\n",
+                  __func__, __LINE__, entry - entries, e2 - entries);
         return 1;
+      }
     }
   }
 
@@ -209,22 +288,31 @@ int GptSanityCheck(GptData *gpt) {
   gpt->valid_entries = 0;
 
   retval = CheckParameters(gpt);
-  if (retval != GPT_SUCCESS)
+  if (retval != GPT_SUCCESS) {
+    VbExError("%s:%d CheckParameters() failed: %d\n",
+             __func__, __LINE__, retval);
     return retval;
+  }
 
   /* Check both headers; we need at least one valid header. */
   if (0 == CheckHeader(header1, 0, gpt->drive_sectors)) {
     gpt->valid_headers |= MASK_PRIMARY;
     goodhdr = header1;
+  } else {
+    VbExError("%s:%d CheckHeader(first) failed.\n", __func__, __LINE__);
   }
   if (0 == CheckHeader(header2, 1, gpt->drive_sectors)) {
     gpt->valid_headers |= MASK_SECONDARY;
     if (!goodhdr)
       goodhdr = header2;
+  } else {
+    VbExError("%s:%d CheckHeader(second) failed.\n", __func__, __LINE__);
   }
 
-  if (!gpt->valid_headers)
+  if (!gpt->valid_headers) {
+    VbExError("%s:%d no valid header\n", __func__, __LINE__);
     return GPT_ERROR_INVALID_HEADERS;
+  }
 
   /* Checks if entries are valid.
    *
@@ -251,8 +339,10 @@ int GptSanityCheck(GptData *gpt) {
     }
   }
 
-  if (!gpt->valid_entries)
+  if (!gpt->valid_entries) {
+    VbExError("%s:%d no valid entries\n", __func__, __LINE__);
     return GPT_ERROR_INVALID_ENTRIES;
+  }
 
   /* Now that we've determined which header contains a good CRC for
    * the entries, make sure the headers are otherwise identical. */
@@ -272,8 +362,11 @@ void GptRepair(GptData *gpt) {
   int entries_size;
 
   /* Need at least one good header and one good set of entries. */
-  if (MASK_NONE == gpt->valid_headers || MASK_NONE == gpt->valid_entries)
+  if (MASK_NONE == gpt->valid_headers || MASK_NONE == gpt->valid_entries) {
+    VbExError("%s:%d needs at least 1 good header and 1 copy of good entries "
+              "for repair.\n", __func__, __LINE__);
     return;
+  }
 
   /* Repair headers if necessary */
   if (MASK_PRIMARY == gpt->valid_headers) {

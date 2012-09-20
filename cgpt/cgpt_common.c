@@ -33,6 +33,17 @@ void Error(const char *format, ...) {
   va_end(ap);
 }
 
+/*
+ * Unfortunately we have to duplicate Error() because C cannot pass variable
+ * number of arguments to another variadic function.
+ */
+void VbExError(const char *format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "ERROR: %s %s: ", progname, command);
+  vfprintf(stderr, format, ap);
+  va_end(ap);
+}
 
 int CheckValid(const struct drive *drive) {
   if ((drive->gpt.valid_headers != MASK_BOTH) ||
