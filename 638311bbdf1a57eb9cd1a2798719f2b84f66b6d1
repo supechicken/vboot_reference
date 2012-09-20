@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAPn//pII\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "There are also other ways to do so:\n\n1. Use \"#define VbExError Error\" when you build cgpt as standalone\n\n2. Define Error(const char *format, va_list ap) { ... } and then VbExError() \u0026 Error() both calls Error.",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pIE\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "?? gpt-\u003esector_bytes should be last param.",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pH4\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "You don\u0027t need to allocate/memcpy.\n\nVbExError(\"%s:%d signature is wrong: %.*s\", GPT_HEADER_SIGNATURE_SIZE, h-\u003esignature\");\n\nHowever, printing string is still kind of dangerous because you don\u0027t know what h-\u003esignature points to...\n\nMaybe we should simply print \"wrong signature\" here and not printing the content.",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHw\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "should",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHk\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "Maybe replace this with \"should be less than\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHg\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "usable lba ?",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHY\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "drive? disk? media?",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHE\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "maybe add \"starting lba\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//pHA\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-09-20T15:19:03Z",
+      "side": 1,
+      "message": "maybe add \"ending lba\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
