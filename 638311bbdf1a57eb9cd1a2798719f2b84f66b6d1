@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oHk\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-21T15:31:26Z",
+      "side": 1,
+      "message": "This also violates the spec for VbExError(), which says \"does not return\".",
+      "parentUuid": "AAAAPn//pII\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//pIE\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -47,6 +65,23 @@
       "writtenOn": "2012-09-20T15:19:03Z",
       "side": 1,
       "message": "You don\u0027t need to allocate/memcpy.\n\nVbExError(\"%s:%d signature is wrong: %.*s\", GPT_HEADER_SIGNATURE_SIZE, h-\u003esignature\");\n\nHowever, printing string is still kind of dangerous because you don\u0027t know what h-\u003esignature points to...\n\nMaybe we should simply print \"wrong signature\" here and not printing the content.",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//oHg\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2012-09-21T15:31:26Z",
+      "side": 1,
+      "message": "\"is not reasonable\" -\u003e \"out of range\"",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
