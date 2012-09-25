@@ -115,7 +115,6 @@ int IsKernelEntry(const GptEntry* e) {
   return !Memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
 }
 
-
 int CheckEntries(GptEntry* entries, GptHeader* h) {
 
   GptEntry* entry;
@@ -140,7 +139,7 @@ int CheckEntries(GptEntry* entries, GptHeader* h) {
     if ((entry->starting_lba < h->first_usable_lba) ||
         (entry->ending_lba > h->last_usable_lba) ||
         (entry->ending_lba < entry->starting_lba))
-      return 1;
+      return 2;
 
     /* Entry must not overlap other entries. */
     for (i2 = 0, e2 = entries; i2 < h->number_of_entries; i2++, e2++) {
@@ -149,19 +148,40 @@ int CheckEntries(GptEntry* entries, GptHeader* h) {
 
       if ((entry->starting_lba >= e2->starting_lba) &&
           (entry->starting_lba <= e2->ending_lba))
-        return 1;
+        return 3;
       if ((entry->ending_lba >= e2->starting_lba) &&
           (entry->ending_lba <= e2->ending_lba))
-        return 1;
+        return 4;
 
       /* UniqueGuid field must be unique. */
       if (0 == Memcmp(&entry->unique, &e2->unique, sizeof(Guid)))
-        return 1;
+        return 5;
     }
   }
 
   /* Success */
   return 0;
+}
+
+/* A wrapper for CheckEntries() adding text error messages in case of error */
+int CheckEntriesReportError(GptEntry* entries, GptHeader* h, const char** pMsg)
+{
+  int rv = CheckEntries(entries, h);
+  const char* messages[] = {
+    "none",
+    "Entries' crc corrupted",
+    "Entry outside of valid region",
+    "Starting LBA overlaps",
+    "Ending LBA overlaps",
+    "Duplicated GUID",
+  };
+  if (rv && pMsg) {
+    if ((rv < 0) || (rv >= sizeof(messages)/sizeof(messages[0])))
+      *pMsg = "unknown error";
+    else
+      *pMsg = messages[rv];
+  }
+  return rv;
 }
 
 

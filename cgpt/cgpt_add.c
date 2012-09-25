@@ -232,6 +232,8 @@ int cgpt_add(CgptAddParams *params) {
   int gpt_retval;
   GptEntry *entry, backup;
   uint32_t index;
+  int rv;
+  const char* errorMsg;
 
   if (params == NULL)
     return CGPT_FAILED;
@@ -320,10 +322,12 @@ int cgpt_add(CgptAddParams *params) {
   UpdateCrc(&drive.gpt);
 
   // If the modified entry is illegal, recovery it and return error.
-  if (0 != CheckEntries((GptEntry*)drive.gpt.primary_entries,
-                        (GptHeader*)drive.gpt.primary_header)) {
+  rv = CheckEntriesReportError((GptEntry*)drive.gpt.primary_entries,
+                               (GptHeader*)drive.gpt.primary_header,
+                               &errorMsg);
+  if (0 != rv) {
     memcpy(entry, &backup, sizeof(*entry));
-    Error("At least one parameter is not allowed:\n");
+    Error("%s\n", errorMsg);
     Error(DumpCgptAddParams(params));
     goto bad;
   }

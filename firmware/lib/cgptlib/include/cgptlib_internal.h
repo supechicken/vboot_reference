@@ -89,6 +89,13 @@ uint32_t HeaderCrc(GptHeader* h);
  * Returns 0 if entries are valid, 1 if invalid. */
 int CheckEntries(GptEntry* entries, GptHeader* h);
 
+/* Check entries and report error.
+ *
+ * A wrapper for CheckEntries().
+ * Returns 0 if entries are valid, 1 if invalid. If argument p is nonzero, on
+ * errors a text error description is returned to the caller. */
+int CheckEntriesReportError(GptEntry* entries, GptHeader* h, const char** p);
+
 /* Check GptData, headers, entries.
  *
  * If successful, sets gpt->valid_headers and gpt->valid_entries and returns
