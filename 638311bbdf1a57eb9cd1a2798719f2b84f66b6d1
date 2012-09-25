@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oJE\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Hm... actually this doesn\u0027t gain too much code size because we will have 2 copies of va_list and va_* functions. Anyway, I just realize it should be DEBUG: rather than ERROR:. So, implementing two functions is reasonable.",
+      "parentUuid": "AAAAPn//pII\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//pIE\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2012-09-20T15:19:03Z",
       "side": 1,
       "message": "?? gpt-\u003esector_bytes should be last param.",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//oI0\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Oooops. How comes this stupid thing happens. Thanks for the catch!",
+      "parentUuid": "AAAAPn//pIE\u003d",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oIk\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "h-\u003esignature is a char array inside header structure so it should be safe for print. But %.*s is a good idea. Refined. Thanks.",
+      "parentUuid": "AAAAPn//pH4\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//oHg\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -82,6 +136,24 @@
       "writtenOn": "2012-09-21T15:31:26Z",
       "side": 1,
       "message": "\"is not reasonable\" -\u003e \"out of range\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//l6k\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//oHg\u003d",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oH8\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//pHw\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//pHk\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -116,6 +206,24 @@
       "writtenOn": "2012-09-20T15:19:03Z",
       "side": 1,
       "message": "Maybe replace this with \"should be less than\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//oIg\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//pHk\u003d",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oIc\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//pHg\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//pHY\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -150,6 +276,24 @@
       "writtenOn": "2012-09-20T15:19:03Z",
       "side": 1,
       "message": "drive? disk? media?",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//oII\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "\u0027usable disk range\u0027 should be better.",
+      "parentUuid": "AAAAPn//pHY\u003d",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAPn//oIE\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//pHE\u003d",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAPn//pHA\u003d",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -184,6 +346,24 @@
       "writtenOn": "2012-09-20T15:19:03Z",
       "side": 1,
       "message": "maybe add \"ending lba\"",
+      "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAPn//oIA\u003d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000122
+      },
+      "writtenOn": "2012-09-25T08:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAPn//pHA\u003d",
       "revId": "638311bbdf1a57eb9cd1a2798719f2b84f66b6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
