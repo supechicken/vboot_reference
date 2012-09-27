@@ -201,6 +201,15 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
         if (shared->flags & VBSD_HONOR_VIRT_DEV_SWITCH &&
             shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
           VbAudioClose(audio);    /* Stop the countdown while we go ask... */
+          if (gbb->flags & GBB_FLAG_FORCE_DEV_SWITCH_ON) {
+            /* Can't do TONORM (only for non-official firmware). */
+            VBDEBUG(("VbBootDeveloper() - TONORM rejected by "
+                     "GBB_FLAG_FORCE_DEV_SWITCH_ON.\n"));
+            VbExDisplayDebugInfo("WARNING: TONORM is prohibited by "
+                                 "GBB_FLAG_FORCE_DEV_SWITCH_ON.\n\n");
+            VbExBeep(120, 400);
+            break;
+          }
           VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_TO_NORM, 0, &vnc);
           switch (VbUserConfirms(cparams, 0)) { /* Ignore space */
           case 1:
