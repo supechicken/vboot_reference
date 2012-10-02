@@ -260,6 +260,9 @@ VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
         VBDEBUG(("VbBootDeveloper() - user pressed Ctrl+U; try USB\n"));
         if (!allow_usb) {
           VBDEBUG(("VbBootDeveloper() - USB booting is disabled\n"));
+          VbExDisplayDebugInfo("WARNING: Booting from USB/SD requires "
+                               "entering console and then execute "
+                               "'crossystem dev_boot_usb=1'.\n\n");
           VbExBeep(120, 400);
           VbExSleepMs(120);
           VbExBeep(120, 400);
