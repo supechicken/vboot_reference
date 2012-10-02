@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//+Kk\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2012-10-02T14:31:08Z",
+      "side": 1,
+      "message": "I\u0027d suggest changing the text to something more generic. The details may vary across platforms, or the rootfs command may change.\n\nSomething like \"Booting from USB/SD must explicitly enabled. Refer to the developer-mode documentation for details.\"",
+      "revId": "356314566d5605ff6e190d2dc9cec67ed51ed039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
