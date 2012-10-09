@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQH//484\u003d",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-10-09T04:11:32Z",
+      "side": 1,
+      "message": "use the -r flag to sed rather than doing \\( and \\).  i think the second group is also not needed ?  or maybe it\u0027s incorrect ?\n\n dmparams\u003d$(echo $dmparams |\n   sed -r \u0027s/(bootcach %U+1 [0-9]*) [0-9a-z]*/\\1 MAGIC_HASH/\u0027)\n\nalso, the comment says you want to remove a hex string, so shouldn\u0027t it be [0-9a-fA-F] ?",
+      "revId": "5b4ebce3396d0deb12ce0ef79f3de79175fc4c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQH//48o\u003d",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-10-09T04:11:32Z",
+      "side": 1,
+      "message": "hmm, looks like a few lines here are slightly broken.  there needs to be \\\" around the array.  see the last eval command in this block for a correct example.",
+      "revId": "5b4ebce3396d0deb12ce0ef79f3de79175fc4c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
