@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAQn//+h8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-10-12T20:11:53Z",
+      "side": 1,
+      "message": "capitalize consistently?",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+hw\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-10-12T20:11:53Z",
+      "side": 1,
+      "message": "I am a little concerned about this, because TlclGetOwnership could also return TPM_E_IOERROR, but with a different meaning.\n\nSince tpm_owned is only used in two places, it may be worth checking has_tpm in those places instead.  Or use an error code that doesn\u0027t overlap with TPM_E_*.",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//+ic\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 1
@@ -31,6 +65,41 @@
       "side": 1,
       "message": "This line was indented, but gerrit doesn\u0027t show it colorized. The DEBUG line should not be indented (I was the result reported in both cases).",
       "parentUuid": "AAAAQn//+ic\u003d",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+h4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-10-12T20:11:53Z",
+      "side": 1,
+      "message": "So is this a gerrit bug?  First time I see this one.",
+      "parentUuid": "AAAAQn//+iU\u003d",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+h0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-10-12T20:11:53Z",
+      "side": 1,
+      "message": "Same problem here.",
       "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
