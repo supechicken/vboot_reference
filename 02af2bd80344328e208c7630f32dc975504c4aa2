@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//+g8\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-10-12T20:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQn//+h8\u003d",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//+hw\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-12T20:11:53Z",
       "side": 1,
       "message": "I am a little concerned about this, because TlclGetOwnership could also return TPM_E_IOERROR, but with a different meaning.\n\nSince tpm_owned is only used in two places, it may be worth checking has_tpm in those places instead.  Or use an error code that doesn\u0027t overlap with TPM_E_*.",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+g4\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-10-12T20:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQn//+hw\u003d",
       "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAQn//+hY\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-10-12T20:25:01Z",
+      "side": 1,
+      "message": "Yeah, gerrit bug. For a long time now. :(",
+      "parentUuid": "AAAAQn//+h4\u003d",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAQn//+h0\u003d",
         "filename": "utility/mount-encrypted.c",
         "patchSetId": 1
@@ -100,6 +154,24 @@
       "writtenOn": "2012-10-12T20:11:53Z",
       "side": 1,
       "message": "Same problem here.",
+      "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQn//+g0\u003d",
+        "filename": "utility/mount-encrypted.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-10-12T20:25:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAQn//+h0\u003d",
       "revId": "02af2bd80344328e208c7630f32dc975504c4aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
