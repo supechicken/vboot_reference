@@ -105,6 +105,8 @@ uint32_t VbTryLoadKernel(VbCommonParams* cparams, LoadKernelParams* p,
   return retval;
 }
 
+#define CONFIRM_KEY_DELAY 20  /* Check confirm screen keys every 20ms */
+
 /* Ask the user to confirm something. We should display whatever the question
  * is first, then call this. ESC is always "no", ENTER is always "yes", and
  * we'll specify what SPACE means. We don't return until one of those keys is
@@ -139,7 +141,7 @@ static int VbUserConfirms(VbCommonParams* cparams, int space_means_no) {
     default:
       VbCheckDisplayKey(cparams, key, &vnc);
     }
-    VbExSleepMs(1000);
+    VbExSleepMs(CONFIRM_KEY_DELAY);
   }
   /* not reached, but compiler will complain without it */
   return -1;
@@ -151,6 +153,7 @@ VbError_t VbBootNormal(VbCommonParams* cparams, LoadKernelParams* p) {
   VBDEBUG(("Entering %s()\n", __func__));
   return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
+
 
 /* Handle a developer-mode boot */
 VbError_t VbBootDeveloper(VbCommonParams* cparams, LoadKernelParams* p) {
