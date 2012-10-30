@@ -391,6 +391,10 @@ resign_firmware_payload() {
   echo "Found a valid firmware update shellball."
 
   sign_firmware ${shellball_dir}/bios.bin ${KEY_DIR} ${FIRMWARE_VERSION}
+  # Signs additional RW firmware, if available.
+  if [ -s "${shellball_dir}/bios_rw.bin" ]; then
+    sign_firmware ${shellball_dir}/bios_rw.bin ${KEY_DIR} ${FIRMWARE_VERSION}
+  fi
 
   local signer_notes="${shellball_dir}/VERSION.signer"
   echo "" >"$signer_notes"
