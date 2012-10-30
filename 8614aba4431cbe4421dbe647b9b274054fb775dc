@@ -16,6 +16,24 @@
       "revId": "8614aba4431cbe4421dbe647b9b274054fb775dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAQ3//95o\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2012-10-30T08:49:12Z",
+      "side": 1,
+      "message": "I thought about that in beginning, too; however that requires checking if any existing firmware updaters already include bios*.bin for other usage...\n\nOK, I\u0027ve finished checking that and it seems ok.  Done.",
+      "parentUuid": "AAAAQ3//954\u003d",
+      "revId": "8614aba4431cbe4421dbe647b9b274054fb775dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
