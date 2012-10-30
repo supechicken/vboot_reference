@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAQ3//954\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2012-10-30T08:43:05Z",
+      "side": 1,
+      "message": "how about signing all bios*.bin files ?\n\n local bios\n for bios in \"${shellball_dir}\"/bios*.bin; do\n   sign_firmware \"${bios}\" ${KEY_DIR} ${FIRMWARE_VERSION}\n done",
+      "revId": "8614aba4431cbe4421dbe647b9b274054fb775dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
