@@ -85,7 +85,7 @@ bitmap block structure incompatible with previous versions.
 Instructions for manually rebuilding things:
 
 
-We do most of the image manipulation using ImageMagick, which is much easier
+We rely on pango-view to generate text images, which needs fonts set properly
 and simpler to do OUTSIDE of the chroot. So the first step is to just build
 vboot_reference outside of the chroot.
 

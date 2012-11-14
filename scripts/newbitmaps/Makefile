@@ -19,7 +19,7 @@ LOCALES+= id th
 # More locales (crosbug.com/p/11969)
 LOCALES+= ar ms zh_CN zh_TW
 
-default: outside_chroot strings images
+default: strings images
 
 outside_chroot:
 	@if [ -e /etc/debian_chroot ]; then \
