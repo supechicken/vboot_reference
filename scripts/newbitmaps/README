@@ -85,21 +85,34 @@ bitmap block structure incompatible with previous versions.
 Instructions for manually rebuilding things:
 
 
-We do most of the image manipulation using ImageMagick, which is much easier
-and simpler to do OUTSIDE of the chroot. So the first step is to just build
-vboot_reference outside of the chroot.
+Some libraries and programs (ex, PIL, pango-view) used in generating image files
+need fonts set properly or specific version (ex, PIL is broken inside chroot),
+and simpler to do OUTSIDE of the chroot.
+
+On Ubuntu, you need to install following packages:
+
+  sudo apt-get install libpango1.0-dev dev-python/imaging
+
+And you probably want to make sure all required fonts are installed:
+
+  sudo apt-get install fonts-nanum fonts-ipafont-gothic ttf-indic-fonts
+
+If you want to use the "bitmap viewer" utility, add these packages:
+
+  sudo apt-get install python-yaml python-wxgtk2.8
+
+We also need some utility programs from ChromiumOS source tree. You also need to
+install dependency libraries for them:
+
+  sudo apt-get install libtspi-dev uuid-dev libyaml-dev liblzml-dev
+
+Now, time to build the utilities in vboot_reference outside of the chroot:
 
   cd src/platform/vboot_reference
   make
 
-You'll probably need to install several additional packages to make this
-work. On Ubuntu you may find you need libtspi-dev, uuid-dev, and
-imagemagick. If you want to use scripts/newbitmaps/bitmap_viewer, you may
-need python-yaml and python-wxgtk2.8.
-
-
 Once you've built vboot_reference you'll find the executables in
-./build/utility/ (and ./build/cgpt/cgpt, if you want it). Put these
+./build/utility/bmpblk* (and ./build/cgpt/cgpt, if you want it). Put these
 somewhere in your $PATH.
 
 Now you should be able to just run "make" and everything will be
