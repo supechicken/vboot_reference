@@ -8,6 +8,10 @@
 #include "utility.h"
 #include "vboot_api.h"
 
+uint32_t TlclLibExitOnFailure(int state) {
+  return VbExTpmExitOnFailure(state);
+}
+
 uint32_t TlclLibInit(void) {
   return VbExTpmInit();
 }

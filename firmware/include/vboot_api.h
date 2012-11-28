@@ -312,6 +312,9 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams* cparams,
 /*****************************************************************************/
 /* Debug output (from utility.h) */
 
+/* Output an error message.  Supports printf()-style formatting. */
+void VbExErrorReport(const char* format, ...);
+
 /* Output an error message and quit.  Does not return.  Supports
  * printf()-style formatting. */
 void VbExError(const char* format, ...);
@@ -379,6 +382,9 @@ VbError_t VbExBeep(uint32_t msec, uint32_t frequency);
 
 /*****************************************************************************/
 /* TPM (from tlcl_stub.h) */
+
+/* Set state of communication failure handling. Default is to exit. */
+VbError_t VbExTpmExitOnFailure(int);
 
 /* Initialize the stub library. */
 VbError_t VbExTpmInit(void);

@@ -35,6 +35,14 @@ static const char *fixfmt(const char *format) {
   return fmtbuf;
 }
 
+void VbExErrorReport(const char* format, ...) {
+  va_list ap;
+  va_start(ap, format);
+  fprintf(stderr, "ERROR: ");
+  vfprintf(stderr, fixfmt(format), ap);
+  va_end(ap);
+}
+
 void VbExError(const char* format, ...) {
   va_list ap;
   va_start(ap, format);

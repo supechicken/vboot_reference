@@ -25,6 +25,12 @@ uint32_t TlclLibInit(void);
  */
 uint32_t TlclLibClose(void);
 
+/* Set handling of OS-level errors. By default, library will call exit(1)
+ * on failures. Call this (with value 0) before TlclLibInit() to catch open
+ * errors.  Returns 0 if success, nonzero if error.
+ */
+uint32_t TlclLibExitOnFailure(int);
+
 /* Logs to stdout.  Arguments like printf.
  */
 void TlclLog(char* format, ...);
