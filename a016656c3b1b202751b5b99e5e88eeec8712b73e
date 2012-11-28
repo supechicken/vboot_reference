@@ -16,6 +16,24 @@
       "revId": "a016656c3b1b202751b5b99e5e88eeec8712b73e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARH//+/E\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-11-28T19:02:19Z",
+      "side": 1,
+      "message": "Based on the comments around the VbError_t typedef and the VbErrorPredefined_t enum in firmware/include/vboot_api.h, I believe so. The values in firmware/include/tss_constants.h don\u0027t overlap.\n\nVbErrorPredefined_t uses the 0x10000 space.\nThe \"vboot local\" TPM_E_* defines use the 0x5000 space.\n\nThe TPM spec only shows codes up to through the 0x800 space.\nhttp://sourceforge.jp/projects/openpts/wiki/FrontPage/attach/20080218-TPMv12ErrorCodeCheatSheet.pdf",
+      "parentUuid": "AAAARH///Wk\u003d",
+      "revId": "a016656c3b1b202751b5b99e5e88eeec8712b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
