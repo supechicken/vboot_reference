@@ -145,3 +145,9 @@ rbtest:
 
 runbmptests:
 	$(Q)$(MAKE) -C tests runbmptests
+
+vboot_next: all
+	[ -d "${BUILD}/khaaaaan" ] || mkdir -p "${BUILD}/khaaaaan"
+	$(MAKE) -C khaaaaan all
+	$(MAKE) -C tests khaaaaan
+
