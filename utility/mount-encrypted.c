@@ -113,11 +113,32 @@ static int has_tpm = 0;
 
 static void tpm_init(void)
 {
-	uint32_t result;
+	uint32_t result = !TPM_SUCCESS;
+	struct timespec delay;
+	int retries;
 
 	DEBUG("Opening TPM");
 	setenv("TPM_NO_EXIT", "1", 1);
-	result = TlclLibInit();
+
+	/* Retry TPM opening for 5 seconds. */
+	for (retries = 0; retries < 50; ++ retries) {
+		errno = 0;
+		result = TlclLibInit();
+		if (result == TPM_SUCCESS)
+			break;
+
+		INFO("Could not open TPM: error 0x%02x (%s).", result,
+		     strerror(errno));
+		/* Assume ENOENT will never recover */
+		if (errno == ENOENT)
+			break;
+
+		/* Stall 100ms until TPM comes back. */
+		delay.tv_sec = 0;
+		delay.tv_nsec = 100000;
+		nanosleep(&delay, NULL);
+	}
+
 	has_tpm = (result == TPM_SUCCESS);
 	INFO("TPM %s", has_tpm ? "ready" : "not available");
 }
