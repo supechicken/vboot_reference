@@ -21,6 +21,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <time.h>
 #include <unistd.h>
 
 #define TPM_DEVICE_PATH "/dev/tpm0"
@@ -143,6 +144,8 @@ VbError_t VbExTpmClose(void) {
 
 VbError_t VbExTpmOpen(void) {
   char* device_path;
+  struct timespec delay;
+  int retries, saved_errno;
 
   if (tpm_fd >= 0)
     return VBERROR_SUCCESS;  /* Already open */
@@ -152,13 +155,26 @@ VbError_t VbExTpmOpen(void) {
     device_path = TPM_DEVICE_PATH;
   }
 
-  tpm_fd = open(device_path, O_RDWR);
-  if (tpm_fd < 0) {
-    return DoError(TPM_E_NO_DEVICE, "TPM: Cannot open TPM device %s: %s\n",
-                   device_path, strerror(errno));
-  }
+  /* Retry TPM opening for 5 seconds (500 10ms sleeps). */
+  for (retries = 0; retries < 500; ++ retries) {
+    errno = 0;
+    tpm_fd = open(device_path, O_RDWR);
+    saved_errno = errno;
+    if (tpm_fd >= 0)
+      return VBERROR_SUCCESS;
+    /* Assume ENOENT will never recover */
+    if (saved_errno == ENOENT)
+       break;
 
-  return VBERROR_SUCCESS;
+    VBDEBUG(("TPM: retrying %s: %s\n", device_path, strerror(errno)));
+
+     /* Stall 10ms until TPM comes back. */
+     delay.tv_sec = 0;
+     delay.tv_nsec = 10000000;
+     nanosleep(&delay, NULL);
+  }
+  return DoError(TPM_E_NO_DEVICE, "TPM: Cannot open TPM device %s: %s\n",
+                 device_path, strerror(saved_errno));
 }
 
 
