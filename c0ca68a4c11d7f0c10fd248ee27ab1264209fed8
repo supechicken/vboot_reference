@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARn//7DU\u003d",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-12-11T03:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//7L4\u003d",
+      "revId": "c0ca68a4c11d7f0c10fd248ee27ab1264209fed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//7MQ\u003d",
         "filename": "firmware/stub/tpm_lite_stub.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAARn//7Dc\u003d",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-12-11T03:18:56Z",
+      "side": 1,
+      "message": "ENOENT shouldn\u0027t retry, so it immediately fails. The success case is above that (tmp_fd \u003e\u003d 0), so all other errors get a retry. I can switch it to only retry EBUSY, if you want, but I was trying to be very defensive.",
+      "parentUuid": "AAAARn//7MQ\u003d",
+      "revId": "c0ca68a4c11d7f0c10fd248ee27ab1264209fed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAARn//7MI\u003d",
         "filename": "firmware/stub/tpm_lite_stub.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-12-11T01:04:42Z",
       "side": 1,
       "message": "Optionally, make this 10 * 1000 * 1000, easier on my eyes :-)",
+      "revId": "c0ca68a4c11d7f0c10fd248ee27ab1264209fed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARn//7DY\u003d",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2012-12-11T03:18:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAARn//7MI\u003d",
       "revId": "c0ca68a4c11d7f0c10fd248ee27ab1264209fed8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
