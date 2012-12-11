@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARn//7CU\u003d",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2012-12-11T04:16:01Z",
+      "side": 1,
+      "message": "The purpose of this CL is to make it tolerant to races, which we know result in EBUSY.  I am not sure that retrying for other errors makes it more robust, instead of just resulting in unexpected behavior (such as putting an error message in the logs 5 seconds later than expected).  Also, why check specifically for ENOENT?  Other similar errors will persist as well, such as EACCESS.",
+      "revId": "514e6ac5fff07a615fc95c48231c5df2a84ff3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
