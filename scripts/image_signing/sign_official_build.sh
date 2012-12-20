@@ -123,16 +123,17 @@ is_old_verity_argv() {
 # Get the dmparams parameters from a kernel config.
 get_dmparams_from_config() {
   local kernel_config=$1
-  echo ${kernel_config} | sed -ne 's/.*dm="\([^"]*\)".*/\1/gp' | cut -f2- -d,
+  echo ${kernel_config} | sed -nre 's/.*dm="([^"]*)".*/\1/p'
 }
 # Get the verity root digest hash from a kernel config command line.
 get_hash_from_config() {
   local kernel_config=$1
   local dm_config=$(get_dmparams_from_config "${kernel_config}")
-  if is_old_verity_argv "${dm_config}"; then
-    echo ${dm_config} | cut -f9 -d ' '
+  local vroot_args="${dm_config##*,}"
+  if is_old_verity_argv "${vroot_args}"; then
+    echo ${vroot_args} | cut -f9 -d ' '
   else
-    echo $(get_verity_arg "${dm_config}" root_hexdigest)
+    echo $(get_verity_arg "${vroot_args}" root_hexdigest)
   fi
 }
 
@@ -155,6 +156,10 @@ calculate_rootfs_hash() {
     echo "WARNING: Couldn't grab dm_config. Aborting rootfs hash calculation."
     return 1
   fi
+  local vroot_prefix="${dm_config%%vroot*}"
+  local vroot="vroot${dm_config##*vroot}"
+  local vroot_head="${vroot%%,*}"
+  local vroot_args="${vroot##*,}"
 
   local rootfs_sectors
   local verity_depth
@@ -162,26 +167,26 @@ calculate_rootfs_hash() {
   local root_dev
   local hash_dev
   local verity_bin="verity"
-  if is_old_verity_argv "${dm_config}"; then
+  if is_old_verity_argv "${vroot_args}"; then
     # dm="0 2097152 verity ROOT_DEV HASH_DEV 2097152 1 \
     # sha1 63b7ad16cb9db4b70b28593f825aa6b7825fdcf2"
-    rootfs_sectors=$(echo ${dm_config} | cut -f2 -d' ')
-    verity_depth=$(echo ${dm_config} | cut -f7 -d' ')
-    verity_algorithm=$(echo ${dm_config} | cut -f8 -d' ')
-    root_dev=$(echo ${dm_config} | cut -f4 -d ' ')
-    hash_dev=$(echo ${dm_config} | cut -f5 -d ' ')
+    rootfs_sectors=$(echo ${vroot_args} | cut -f2 -d' ')
+    verity_depth=$(echo ${vroot_args} | cut -f7 -d' ')
+    verity_algorithm=$(echo ${vroot_args} | cut -f8 -d' ')
+    root_dev=$(echo ${vroot_args} | cut -f4 -d ' ')
+    hash_dev=$(echo ${vroot_args} | cut -f5 -d ' ')
     # Hack around the fact that the signer needs to use the old version of
     # verity to generate legacy verity kernel parameters. If we find it,
     # we use it.
     type -P "verity-old" &>/dev/null && verity_bin="verity-old"
   else
     # Key-value parameters.
-    rootfs_sectors=$(get_verity_arg "${dm_config}" hashstart)
+    rootfs_sectors=$(get_verity_arg "${vroot_args}" hashstart)
     verity_depth=0
-    verity_algorithm=$(get_verity_arg "${dm_config}" alg)
-    root_dev=$(get_verity_arg "${dm_config}" payload)
-    hash_dev=$(get_verity_arg "${dm_config}" hashtree)
-    salt=$(get_verity_arg "${dm_config}" salt)
+    verity_algorithm=$(get_verity_arg "${vroot_args}" alg)
+    root_dev=$(get_verity_arg "${vroot_args}" payload)
+    hash_dev=$(get_verity_arg "${vroot_args}" hashtree)
+    salt=$(get_verity_arg "${vroot_args}" salt)
   fi
 
   local salt_arg
@@ -190,16 +195,17 @@ calculate_rootfs_hash() {
   fi
 
   # Run the verity tool on the rootfs partition.
-  local table="vroot none ro,"$(sudo ${verity_bin} mode=create \
+  local new_vroot_args=$(sudo ${verity_bin} mode=create \
     alg=${verity_algorithm} \
     payload="${rootfs_image}" \
     payload_blocks=$((rootfs_sectors / 8)) \
     hashtree="${hash_image}" ${salt_arg})
   # Reconstruct new kernel config command line and replace placeholders.
-  table="$(echo "$table" |
+  new_vroot_args="$(echo "$new_vroot_args" |
     sed -s "s|ROOT_DEV|${root_dev}|g;s|HASH_DEV|${hash_dev}|")"
+  local dm_args="${vroot_prefix}${vroot_head},${new_vroot_args}"
   CALCULATED_KERNEL_CONFIG=$(echo ${kernel_config} |
-    sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${table}\3#g")
+    sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${dm_args}\3#g")
 }
 
 # Re-calculate rootfs hash, update rootfs and kernel command line.
