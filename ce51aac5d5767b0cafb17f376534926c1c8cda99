@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//8Hw\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-01-09T23:07:59Z",
+      "side": 1,
+      "message": "I suggest trying to separate the flags setup from the rest of the Makefile.\n\nPerhaps have config.mk with things that we might expect to change?",
+      "revId": "ce51aac5d5767b0cafb17f376534926c1c8cda99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//8HU\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-01-09T23:07:59Z",
+      "side": 1,
+      "message": "Do you think these portions should be included from Makefiles in each subdir?\n\nIt feels a big ugly to have to change things here, and this file is getting big!\n\nAlso it might be possible to have something like:\n\nSUBDIR :\u003d cgpt\n\nCSRCS :\u003d cgpt.c cgpt_create.c ...\n\nSRCS :\u003d $(addprefix $(SUBDIR),$(CSRCS) \n\nActually I also wonder if you should define the .o files rather than the .c, since you immediately change one into the other?",
+      "revId": "ce51aac5d5767b0cafb17f376534926c1c8cda99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//8HQ\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-01-09T23:07:59Z",
+      "side": 1,
+      "message": "Like this!",
+      "revId": "ce51aac5d5767b0cafb17f376534926c1c8cda99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
