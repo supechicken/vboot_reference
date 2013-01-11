@@ -263,11 +263,7 @@ else
 fwlib : $(FWLIB)
 endif
 
-$(FWLIB) : $(FWLIB_OBJS)
-	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)rm -f $@
-	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)ar qc $@ $^
+$(FWLIB) : OBJS = $(FWLIB_OBJS)
 
 # -----------------------------------------------------------------------------
 # Host library
@@ -293,12 +289,7 @@ HOSTLIB_SRCS = \
 HOSTLIB_OBJS = $(HOSTLIB_SRCS:%.c=${BUILD}/%.o)
 ALL_OBJS += ${HOSTLIB_OBJS}
 
-# TODO: better way to make .a than duplicating this recipe each time?
-$(HOSTLIB) : $(HOSTLIB_OBJS) $(FWLIB_OBJS)
-	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)rm -f $@
-	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)ar qc $@ $^
+$(HOSTLIB) : OBJS = $(HOSTLIB_OBJS) $(FWLIB_OBJS)
 
 # -----------------------------------------------------------------------------
 # CGPT library and utility
@@ -356,11 +347,7 @@ cgpt : $(CGPT)
 libcgpt_cc : $(CGPTLIB)
 
 $(CGPTLIB) : INCLUDES += -Ifirmware/lib/cgptlib/include
-$(CGPTLIB) : $(CGPTLIB_OBJS)
-	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)rm -f $@
-	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)ar qc $@ $^
+$(CGPTLIB) : OBJS = $(CGPTLIB_OBJS)
 
 $(CGPT) : INCLUDES += -Ifirmware/lib/cgptlib/include
 $(CGPT) : LDLIBS = -luuid
@@ -518,11 +505,7 @@ update_tlcl_structures: ${BUILD}/utility/tlcl_generator
 
 libdump_kernel_config: $(DUMPKERNELCONFIGLIB)
 
-$(DUMPKERNELCONFIGLIB) : ${BUILD}/utility/dump_kernel_config_lib.o
-	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)rm -f $@
-	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)ar qc $@ $^
+$(DUMPKERNELCONFIGLIB) : OBJS = ${BUILD}/utility/dump_kernel_config_lib.o
 
 # -----------------------------------------------------------------------------
 # Tests
@@ -581,14 +564,10 @@ ALL_DEPS += $(addsuffix .d,${TEST_BINS})
 tests : $(TEST_BINS)
 .PHONY: tests
 
-${TEST_LIB}: \
-		${BUILD}/tests/test_common.o \
-		${BUILD}/tests/timer_utils.o \
-		${BUILD}/tests/crc32_test.o
-	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)rm -f $@
-	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
-	$(Q)ar qc $@ $^
+${TEST_LIB}: OBJS = \
+	${BUILD}/tests/test_common.o \
+	${BUILD}/tests/timer_utils.o \
+	${BUILD}/tests/crc32_test.o
 
 ${BUILD}/tests/rollback_index2_tests: OBJS += \
 	${BUILD}/firmware/lib/rollback_index_for_test.o
@@ -717,6 +696,12 @@ ${BUILD}/%_for_test.o : %.c
 ${BUILD}/%.o : %.cc
 	@printf "    CXX           $(subst $(BUILD)/,,$(@))\n"
 	$(Q)$(CXX) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+${BUILD}/%.a: $$(OBJS)
+	@printf "    RM            $(subst $(BUILD)/,,$(@))\n"
+	$(Q)rm -f $@
+	@printf "    AR            $(subst $(BUILD)/,,$(@))\n"
+	$(Q)ar qc $@ $^
 
 # -----------------------------------------------------------------------------
 # Dependencies must come last after ALL_OBJS has been accumulated
