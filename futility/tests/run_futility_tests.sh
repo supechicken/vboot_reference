@@ -4,10 +4,10 @@
 # found in the LICENSE file.
 
 # Load common constants and variables.
-. "$(dirname "$0")/common.sh"
+# . "$(dirname "$0")/common.sh"
 
 # Where are the programs I'm testing against?
-BPATH=$(readlink -f $(dirname "$0")/../build)
+BPATH=$(readlink -f $(dirname "$0")/../../build)
 PATH="${BPATH}/futility:${BPATH}/utility:${BPATH}/cgpt:${PATH}"
 
 echo "PWD is $(pwd)"
@@ -24,7 +24,7 @@ PROGS=${*:-cgpt crossystem dev_debug_vboot dev_sign_file dumpRSAPublicKey
 # Get ready
 pass=0
 progs=0
-OUTDIR="${TEST_DIR}/futility_test_dir"
+OUTDIR="build/tests/futility_test_dir"
 [ -d "$OUTDIR" ] || mkdir -p "$OUTDIR"
 
 # For now just compare results of invoking each program with no args.
