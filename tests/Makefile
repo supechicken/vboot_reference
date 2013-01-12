@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (da4a74 Merge remote-tracking branch 'm/master' into futility branch)
 # Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -212,3 +213,5 @@ futility:
 	./run_futility_tests.sh
 
 -include ${ALL_DEPS}
+=======
+>>>>>>> BRANCH (17f8d3 Rename files and defines to simplify makefile.)
