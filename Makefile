@@ -15,6 +15,7 @@ BUILD ?= $(shell pwd)/build
 
 # Target for 'make install'
 DESTDIR ?= /usr/bin
+INSTALL ?= install
 
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
@@ -381,9 +382,15 @@ C_DESTDIR = $(DESTDIR)
 
 .PHONY: cgpt_install
 cgpt_install: $(CGPT)
+<<<<<<< HEAD   (db9689 Merge remote-tracking branch 'm/master' into futility)
 	mkdir -p $(C_DESTDIR)
 	cp -f $^ $(C_DESTDIR)
 	chmod a+rx $(patsubst ${BUILD}/cgpt/%,$(C_DESTDIR)/%,$^)
+=======
+	@printf "    INSTALL       CGPT\n"
+	${Q}mkdir -p $(C_DESTDIR)
+	${Q}$(INSTALL) -t $(C_DESTDIR) $^
+>>>>>>> BRANCH (826db0 Use 'install' to do installation, prepare for futility insta)
 
 # -----------------------------------------------------------------------------
 # Utilities
@@ -449,6 +456,7 @@ utils: $(UTIL_BINS) $(UTIL_SCRIPTS)
 U_DESTDIR = $(DESTDIR)
 
 .PHONY: utils_install
+<<<<<<< HEAD   (db9689 Merge remote-tracking branch 'm/master' into futility)
 utils_install : $(UTIL_BINS) $(UTIL_SCRIPTS)
 	mkdir -p $(U_DESTDIR)
 	cp -f $(UTIL_BINS) $(U_DESTDIR)
@@ -471,6 +479,12 @@ futil_install : ${FUTIL_BIN}
 	chmod a+rx $(patsubst %,$(F_DESTDIR)/%,$^)
 
 # -----------------------------------------------------------------------------
+=======
+utils_install: $(UTIL_BINS) $(UTIL_SCRIPTS)
+	@printf "    INSTALL       UTILS\n"
+	${Q}mkdir -p $(U_DESTDIR)
+	${Q}$(INSTALL) -t $(U_DESTDIR) $^
+>>>>>>> BRANCH (826db0 Use 'install' to do installation, prepare for futility insta)
 
 ${BUILD}/utility/dump_kernel_config: LIBS += $(DUMPKERNELCONFIGLIB)
 
