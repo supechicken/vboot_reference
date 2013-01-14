@@ -653,7 +653,7 @@ genkeys:
 
 # Generate test cases for fuzzing
 .PHONY: genfuzztestcases
-genfuzztestcases:
+genfuzztestcases: utils
 	tests/gen_fuzz_test_cases.sh
 
 .PHONY: runbmptests
