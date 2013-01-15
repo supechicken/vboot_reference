@@ -17,6 +17,9 @@ BUILD ?= $(shell pwd)/build
 DESTDIR ?= /usr/bin
 INSTALL ?= install
 
+# Where to install the (exportable) executables for testing?
+TEST_INSTALL_DIR = $(BUILD)/install_for_test
+
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 #
@@ -597,6 +600,14 @@ ALL_DEPS += $(addsuffix .d,${TEST_BINS})
 .PHONY: tests
 tests: $(TEST_BINS)
 
+.PHONY: test_install
+test_install: DESTDIR := $(TEST_INSTALL_DIR)
+test_install: tests install
+ifneq (${COV},)
+	${Q}cp -f $(BUILD)/cgpt/*.gcno $(BUILD)/utility/*.gcno \
+		$(TEST_INSTALL_DIR)
+endif
+
 ${TEST_LIB}: \
 		${BUILD}/tests/test_common.o \
 		${BUILD}/tests/timer_utils.o \
@@ -647,39 +658,39 @@ ${BUILD}/tests/tpm_lite/tpmtest_%: OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
 
 # Frequently-run tests
 .PHONY: runtests
-runtests: runbmptests runcgpttests runfuzztests runmisctests
+runtests: test_install runbmptests runcgpttests runfuzztests runmisctests
 
 # Generate test keys
 .PHONY: genkeys
-genkeys:
+genkeys: test_install
 	tests/gen_test_keys.sh
 
 # Generate test cases for fuzzing
 .PHONY: genfuzztestcases
-genfuzztestcases: utils
+genfuzztestcases: test_install
 	tests/gen_fuzz_test_cases.sh
 
 .PHONY: runbmptests
-runbmptests: utils
-	cd tests/bitmaps && BMPBLK=${BUILD}/utility/bmpblk_utility \
+runbmptests: test_install
+	cd tests/bitmaps && BMPBLK=${TEST_INSTALL_DIR}/bmpblk_utility \
 		./TestBmpBlock.py -v
 
 .PHONY: runcgpttests
-runcgpttests: cgpt tests
+runcgpttests: test_install
 	${BUILD}/tests/cgptlib_test
-	tests/run_cgpt_tests.sh ${BUILD}/cgpt/cgpt
+	tests/run_cgpt_tests.sh ${TEST_INSTALL_DIR}/cgpt
 ifneq ($(IN_CHROOT),)
 	${BUILD}/tests/CgptManagerTests --v=1
 endif
 
 # Exercise vbutil_kernel and vbutil_firmware
 .PHONY: runfuzztests
-runfuzztests: genfuzztestcases utils tests
+runfuzztests: test_install genfuzztestcases
 	tests/run_preamble_tests.sh
 	tests/run_vbutil_kernel_arg_tests.sh
 
 .PHONY: runmisctests
-runmisctests: tests utils
+runmisctests: test_install
 	${BUILD}/tests/rollback_index2_tests
 	${BUILD}/tests/rsa_utility_tests
 	${BUILD}/tests/sha_tests
@@ -700,7 +711,7 @@ runmisctests: tests utils
 # just the ones we use) and tests of currently-unused code (e.g. vboot_ec).
 # Not run by automated build.
 .PHONY: runlongtests
-runlongtests: genkeys genfuzztestcases tests utils
+runlongtests: test_install genkeys genfuzztestcases
 	tests/run_preamble_tests.sh --all
 	tests/run_vboot_common_tests.sh --all
 	tests/run_vboot_ec_tests.sh
