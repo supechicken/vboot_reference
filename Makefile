@@ -146,7 +146,7 @@ clean:
 	$(Q)/bin/rm -rf ${BUILD}
 
 .PHONY: install
-install: cgpt_install utils_install
+install: cgpt_install utils_install futil_install
 
 # Coverage
 COV_INFO = $(BUILD)/coverage.info
@@ -378,7 +378,7 @@ $(CGPT): $(CGPT_OBJS) $$(LIBS)
 	@printf "    LDcgpt        $(subst $(BUILD)/,,$(@))\n"
 	$(Q)$(LD) -o $(CGPT) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) $(LDLIBS)
 
-C_DESTDIR = $(DESTDIR)
+C_DESTDIR = $(DESTDIR)/old_bins
 
 .PHONY: cgpt_install
 cgpt_install: $(CGPT)
@@ -447,7 +447,7 @@ utils: $(UTIL_BINS) $(UTIL_SCRIPTS)
 	$(Q)cp -f $(UTIL_SCRIPTS) $(BUILD)/utility
 	$(Q)chmod a+rx $(patsubst %,$(BUILD)/%,$(UTIL_SCRIPTS))
 
-U_DESTDIR = $(DESTDIR)
+U_DESTDIR = $(DESTDIR)/old_bins
 
 .PHONY: utils_install
 utils_install: $(UTIL_BINS) $(UTIL_SCRIPTS)
@@ -460,14 +460,16 @@ utils_install: $(UTIL_BINS) $(UTIL_SCRIPTS)
 
 FUTIL_BIN = ${BUILD}/futility/futility
 
+.PHONY: futil
 futil : $(FUTIL_BIN)
 
 F_DESTDIR = $(DESTDIR)
 
-futil_install : ${FUTIL_BIN}
-	mkdir -p $(F_DESTDIR)
-	cp -f $(FUTIL_BIN) $(F_DESTDIR)
-	chmod a+rx $(patsubst %,$(F_DESTDIR)/%,$^)
+.PHONY: futil_install
+futil_install: ${FUTIL_BIN}
+	@printf "    INSTALL       futility\n"
+	${Q}mkdir -p $(F_DESTDIR)
+	${Q}$(INSTALL) -t $(F_DESTDIR) $^
 
 # -----------------------------------------------------------------------------
 
@@ -712,9 +714,9 @@ runmisctests: tests utils
 	tests/run_vboot_common_tests.sh
 	tests/run_vbutil_tests.sh
 
-runfutiltests :
-	futility/tests/run_futility_tests.sh
-
+runfutiltests: DESTDIR := $(BUILD)/installerooney
+runfutiltests: install
+	futility/tests/run_futility_tests.sh $(DESTDIR)
 
 # Run long tests, including all permutations of encryption keys (instead of
 # just the ones we use) and tests of currently-unused code (e.g. vboot_ec).
