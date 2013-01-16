@@ -53,6 +53,7 @@ CFLAGS ?= $(COMMON_FLAGS) \
 	-fvisibility=hidden -fno-strict-aliasing -fomit-frame-pointer
 else
 $(info FIRMWARE_ARCH not defined; assuming local compile.)
+CFLAGS += -DCHROMEOS_ENVIRONMENT -Wall -Werror
 endif
 
 # Architecture detection
@@ -82,26 +83,15 @@ else
   QEMU_ARCH := $(ARCH)
 endif
 
-# The top of the chroot for qemu must be passed in via the SYSROOT environment
-# variable.  In the Chromium OS chroot, this is done automatically by the
-# ebuild.
-
-# If SYSROOT is not defined, disable QEMU testing
-# TODO: which probably means attempting to test should simply fail
-ifneq ($(QEMU_ARCH),)
-  ifeq ($(SYSROOT),)
-    $(warning SYSROOT must be set to the top of the target-specific root \
-when cross-compiling for qemu-based tests to run properly.)
-    QEMU_ARCH :=
-  endif
-endif
-
 ifeq ($(QEMU_ARCH),)
   # Path to build output for running tests is same as for building
   BUILD_RUN = $(BUILD)
 else
   $(info Using qemu for testing.)
-  # Path to build output for running tests is different in the chroot
+  # Path to build output for running tests is different in the chroot.
+  # The top of the chroot for qemu must be passed in via the SYSROOT
+  # environment variable.  In the Chromium OS chroot, this is done
+  # automatically by the ebuild.
   BUILD_RUN = $(subst $(SYSROOT),,$(BUILD))
 
   QEMU_BIN = qemu-$(QEMU_ARCH)
@@ -124,10 +114,6 @@ CXX ?= g++
 LD = $(CC)
 PKG_CONFIG ?= pkg-config
 
-ifeq ($(FIRMWARE_ARCH),)
-CFLAGS += -DCHROMEOS_ENVIRONMENT -Wall -Werror
-endif
-
 ifneq (${DEBUG},)
 CFLAGS += -DVBOOT_DEBUG
 endif
@@ -138,15 +124,6 @@ endif
 
 # Create / use dependency files
 CFLAGS += -MMD -MF $@.d
-
-# Code coverage
-# Run like this: COV=1 make runtests coverage
-ifneq (${COV},)
-#COV_FLAGS = -O0 -fprofile-arcs -ftest-coverage
-COV_FLAGS = -O0 --coverage
-CFLAGS += $(COV_FLAGS)
-LDFLAGS += $(COV_FLAGS)
-endif
 
 INCLUDES += \
 	-Ifirmware/include \
@@ -190,7 +167,7 @@ _dir_create := $(foreach d, \
 
 # First target
 .PHONY: all
-all: fwlib $(if $(FIRMWARE_ARCH),,host_stuff)
+all: fwlib $(if $(FIRMWARE_ARCH),,host_stuff) $(if $(COV),coverage)
 
 # Host targets
 .PHONY: host_stuff
@@ -203,18 +180,29 @@ clean:
 .PHONY: install
 install: cgpt_install utils_install
 
-# Coverage
-# TODO: only if COV=1
+# Code coverage
+# Run like this: COV=1 make
+ifeq ($(COV),1)
+$(info Generating code coverage.)
+COV_FLAGS = -O0 --coverage
+CFLAGS += $(COV_FLAGS)
+LDFLAGS += $(COV_FLAGS)
 COV_INFO = $(BUILD)/coverage.info
-#coverage: runtests
+
+# Run tests and generate coverage HTML in build/coverage subdir.
+# Filter out system includes, since we don't care about those.
 .PHONY: coverage
-coverage:
+coverage: runtests
 	rm -f $(COV_INFO)*
 	lcov --capture --directory . --base-directory . -o $(COV_INFO).1
 	lcov --remove $(COV_INFO).1 '/usr/*' -o $(COV_INFO)
 	genhtml $(COV_INFO) --output-directory $(BUILD)/coverage
+endif
 
 # Don't delete intermediate object files
+# TODO: really there's no harm in deleting them, except that the 'rm' command
+# echoes to console even when V=1 isn't set in the environment.  How to fix
+# that?  (overriding the RM variable doesn't help...)
 .SECONDARY:
 
 # Use second expansion phase for $$(LIBS) so dependencies on libraries are
@@ -560,7 +548,7 @@ ${BUILD}/utility/mount-encrypted: \
 		${BUILD}/utility/mount-helpers.o $(LIBS) \
 		$(shell $(PKG_CONFIG) --libs glib-2.0 openssl) \
 		-lm
-ifneq (${COV},)
+ifeq ($(COV),1)
 	$(Q)mv -f mount-encrypted.gcno ${BUILD}/utility
 endif
 
@@ -679,7 +667,7 @@ ${BUILD}/tests/rollback_index_test: LIBS += -ltlcl
 
 ${BUILD}/tests/tpm_lite/tpmtest_%: OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
 
-# TODO: port these tests to new API, if not already eqivalent
+# TODO: port these tests to new API, if not already equivalent
 # functionality in other tests.  These don't even compile at present.
 #
 #		big_firmware_tests
@@ -717,6 +705,10 @@ TEST_SETUP += qemu_install
 
 .PHONY: qemu_install
 qemu_install:
+ifeq ($(SYSROOT),)
+	$(error SYSROOT must be set to the top of the target-specific root \
+when cross-compiling for qemu-based tests to run properly)
+endif
 	@printf "    Copying qemu binary.\n"
 	$(Q)cp -fu /usr/bin/$(QEMU_BIN) $(BUILD)/$(QEMU_BIN)
 	$(Q)chmod a+rx $(BUILD)/$(QEMU_BIN)
