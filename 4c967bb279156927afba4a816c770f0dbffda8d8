@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//3xo\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000146
+      },
+      "writtenOn": "2013-01-16T21:57:12Z",
+      "side": 1,
+      "message": "Just for curious, should it be declared as struct s_tpm_pcr_read_cmd instead?",
+      "revId": "4c967bb279156927afba4a816c770f0dbffda8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
