@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAVH//4IY\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-01-16T17:17:45Z",
+      "side": 1,
+      "message": "TEST\u003dmake \u0026\u0026 make runtests",
+      "revId": "4c8138e18034f52fc6132433f085640154a28333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAVH//4SI\u003d",
         "filename": "cgpt/cgpt_common.c",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2013-01-16T04:14:28Z",
       "side": 1,
       "message": "We probably don\u0027t want syncfs... which may still take a lot of time if the machine running tests is also building lots of stuff in same file system.",
+      "revId": "4c8138e18034f52fc6132433f085640154a28333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//4IU\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-01-16T17:17:45Z",
+      "side": 1,
+      "message": "Change the testing procedure and you\u0027ll know:\n\nmake \u0026\u0026 make runtests",
+      "parentUuid": "AAAAVH//4SI\u003d",
       "revId": "4c8138e18034f52fc6132433f085640154a28333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
