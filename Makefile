@@ -18,6 +18,9 @@ export BUILD
 DESTDIR ?= /usr/bin
 INSTALL ?= install
 
+# Where to install the (exportable) executables for testing?
+TEST_INSTALL_DIR = $(BUILD)/install_for_test
+
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 #
@@ -183,7 +186,7 @@ LDLIBS = $(CRYPTO_LIBS)
 
 # Create output directories if necessary.  Do this via explicit shell commands
 # so it happens before trying to generate/include dependencies.
-SUBDIRS := firmware host utility cgpt tests tests/tpm_lite
+SUBDIRS := firmware host cgpt utility futility tests tests/tpm_lite
 _dir_create := $(foreach d, \
 	$(shell find $(SUBDIRS) -name '*.c' -exec  dirname {} \; | sort -u), \
 	$(shell [ -d $(BUILD)/$(d) ] || mkdir -p $(BUILD)/$(d)))
@@ -194,14 +197,14 @@ all: fwlib $(if $(FIRMWARE_ARCH),,host_stuff)
 
 # Host targets
 .PHONY: host_stuff
-host_stuff: fwlib hostlib cgpt utils tests
+host_stuff: fwlib hostlib cgpt utils futil tests
 
 .PHONY: clean
 clean:
 	$(Q)/bin/rm -rf ${BUILD}
 
 .PHONY: install
-install: cgpt_install utils_install
+install: cgpt_install utils_install futil_install
 
 # Coverage
 # TODO: only if COV=1
@@ -509,6 +512,38 @@ utils_install: $(UTIL_BINS) $(UTIL_SCRIPTS)
 	${Q}mkdir -p $(U_DESTDIR)
 	${Q}$(INSTALL) -t $(U_DESTDIR) $^
 
+# -----------------------------------------------------------------------------
+# new Firmware Utility
+
+FUTIL_BIN = ${BUILD}/futility/futility
+
+FUTIL_SRCS = \
+	futility/IGNOREME.c
+
+FUTIL_LDS = futility/futility.lds
+
+FUTIL_OBJS = $(FUTIL_SRCS:%.c=${BUILD}/%.o)
+
+.PHONY: futil
+futil : $(FUTIL_BIN)
+
+$(FUTIL_BIN) : $(FUTIL_LDS) $(FUTIL_OBJS) $$(LIBS)
+	@printf "    LD            $(subst $(BUILD)/,,$(@))\n"
+	${Q}$(LD) -o $@ $(CFLAGS) $^ $(LDFLAGS) $(LIBS) $(LDLIBS)
+
+ALL_DEPS += $(addsuffix .d,${FUTIL_BIN})
+ALL_OBJS += $(FUTIL_OBJS)
+
+F_DESTDIR = $(DESTDIR)
+
+.PHONY: futil_install
+futil_install: ${FUTIL_BIN}
+	@printf "    INSTALL       futility\n"
+	${Q}mkdir -p $(F_DESTDIR)
+	${Q}$(INSTALL) -t $(F_DESTDIR) $^
+
+# -----------------------------------------------------------------------------
+
 ${BUILD}/utility/dump_kernel_config: LIBS += $(DUMPKERNELCONFIGLIB)
 
 # GBB utility needs C++ linker
@@ -770,6 +805,11 @@ runmisctests: $(TEST_SETUP) tests utils
 	$(RUNTEST) $(BUILD_RUN)/tests/vboot_api_firmware_tests
 	$(RUNTEST) $(BUILD_RUN)/tests/vboot_audio_tests
 	$(RUNTEST) $(BUILD_RUN)/tests/vboot_firmware_tests
+
+.PHONY: runfutiltests
+runfutiltests: DESTDIR := $(TEST_INSTALL_DIR)
+runfutiltests: install
+	@echo "$@ passed"
 
 # Run long tests, including all permutations of encryption keys (instead of
 # just the ones we use) and tests of currently-unused code (e.g. vboot_ec).
