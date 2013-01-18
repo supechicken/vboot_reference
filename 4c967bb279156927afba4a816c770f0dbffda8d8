@@ -52,6 +52,24 @@
       "revId": "4c967bb279156927afba4a816c770f0dbffda8d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//2Lw\u003d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2013-01-18T15:41:54Z",
+      "side": 1,
+      "message": "I did it in a separate Cl: https://gerrit.chromium.org/gerrit/#/c/41482/",
+      "parentUuid": "AAAAVH//3xI\u003d",
+      "revId": "4c967bb279156927afba4a816c770f0dbffda8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
