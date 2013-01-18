@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//19c\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-01-18T21:20:03Z",
+      "side": 1,
+      "message": "i think you\u0027ll want to quote: \"${dm}\"",
+      "revId": "2dfbcd958c75686700c7635b48b274a0f2369126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//19Y\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-01-18T21:20:03Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "2dfbcd958c75686700c7635b48b274a0f2369126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//19U\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-01-18T21:20:03Z",
+      "side": 1,
+      "message": "not a new problem, but should be \"${slave}\"",
+      "revId": "2dfbcd958c75686700c7635b48b274a0f2369126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
