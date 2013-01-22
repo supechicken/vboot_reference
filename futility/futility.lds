@@ -4,6 +4,7 @@
  * found in the LICENSE file.
  */
 
+<<<<<<< HEAD   (edb360 Merge remote-tracking branch 'm/master' into futility)
 SECTIONS
 {
   .rodata : {
@@ -12,3 +13,6 @@ SECTIONS
     __futil_cmds_end = .;
   }
 }
+=======
+/* Nothing to see here. Move along... */
+>>>>>>> BRANCH (eecc18 Complete refactoring of Makefile)
