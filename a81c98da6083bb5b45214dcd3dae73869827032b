@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//1Bo\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-01-22T22:05:30Z",
+      "side": 1,
+      "message": "ifeq (${V},)",
+      "revId": "a81c98da6083bb5b45214dcd3dae73869827032b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//1Bc\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-01-22T22:05:30Z",
+      "side": 1,
+      "message": "I took this out, and put an error into qemu_install instead; see below.  This way, the error is only printed when attempting to run tests, not every build.",
+      "revId": "a81c98da6083bb5b45214dcd3dae73869827032b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//1BI\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-01-22T22:05:30Z",
+      "side": 1,
+      "message": "ifeq ($(SYSROOT),)\n\t$(error SYSROOT must be set to the top of the target-specific root \\\nwhen cross-compiling for qemu-based tests to run properly)\nendif",
+      "revId": "a81c98da6083bb5b45214dcd3dae73869827032b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
