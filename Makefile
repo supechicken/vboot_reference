@@ -347,7 +347,6 @@ UTIL_NAMES = ${UTIL_NAMES_STATIC} \
 	signature_digest_utility \
 	tpm_init_temp_fix \
 	tpmc \
-	vbutil_ec \
 	vbutil_firmware \
 	vbutil_kernel \
 	vbutil_key \
@@ -805,7 +804,6 @@ ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/dev_sign_file: LDLIBS += ${CRYPTO_LIBS}
-${BUILD}/utility/vbutil_ec: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/vbutil_firmware: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/vbutil_kernel: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/vbutil_key: LDLIBS += ${CRYPTO_LIBS}
