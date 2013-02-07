@@ -963,6 +963,9 @@ runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_nvstorage_test
 
+foo: test_setup
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
+
 .PHONY: runfutiltests
 runfutiltests: DESTDIR := ${TEST_INSTALL_DIR}
 runfutiltests: test_setup install
