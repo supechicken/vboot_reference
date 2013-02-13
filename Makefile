@@ -412,6 +412,7 @@ TEST_NAMES = \
 	sha_benchmark \
 	sha_tests \
 	stateful_util_tests \
+	tlcl_tests \
 	tpm_bootmode_tests \
 	utility_string_tests \
 	utility_tests \
@@ -419,12 +420,16 @@ TEST_NAMES = \
 	vboot_api_devmode_tests \
 	vboot_api_firmware_tests \
 	vboot_api_kernel_tests \
+	vboot_api_kernel2_tests \
+	vboot_api_kernel3_tests \
+	vboot_api_kernel4_tests \
 	vboot_audio_tests \
 	vboot_common_tests \
 	vboot_common2_tests \
 	vboot_common3_tests \
 	vboot_display_tests \
 	vboot_firmware_tests \
+	vboot_kernel_tests \
 	vboot_nvstorage_test
 
 # Grrr
@@ -844,6 +849,11 @@ ${BUILD}/tests/rollback_index2_tests: OBJS += \
 ${BUILD}/tests/rollback_index2_tests: \
 	${BUILD}/firmware/lib/rollback_index_for_test.o
 
+${BUILD}/tests/tlcl_tests: OBJS += \
+	${BUILD}/firmware/lib/tpm_lite/tlcl_for_test.o
+${BUILD}/tests/tlcl_tests: \
+	${BUILD}/firmware/lib/tpm_lite/tlcl_for_test.o
+
 ${BUILD}/tests/vboot_audio_tests: OBJS += \
 	${BUILD}/firmware/lib/vboot_audio_for_test.o
 ${BUILD}/tests/vboot_audio_tests: \
@@ -939,18 +949,24 @@ runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/sha_tests
 	${RUNTEST} ${BUILD_RUN}/tests/stateful_util_tests
+	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 	${RUNTEST} ${BUILD_RUN}/tests/tpm_bootmode_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_init_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_firmware_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_init_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel2_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel3_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_audio_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common3_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_firmware_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_nvstorage_test
 
 .PHONY: runfutiltests
@@ -992,7 +1008,8 @@ coverage_html:
 
 # Generate addtional coverage stats just for firmware subdir, because the
 # per-directory stats for the whole project don't include their own subdirs.
-	lcov -e ${COV_INFO}.local '${SRCDIR}/firmware/*' \
+	lcov -r ${COV_INFO}.local '*/stub/*' -o ${COV_INFO}.nostub
+	lcov -e ${COV_INFO}.nostub '${SRCDIR}/firmware/*' \
 		-o ${COV_INFO}.firmware
 
 .PHONY: coverage
