@@ -43,15 +43,18 @@ export BUILD
 # Stuff for 'make install'
 INSTALL ?= install
 DESTDIR ?= /usr/local/bin
+OLDDIR = /old_bins
 
 ifeq (${MINIMAL},)
 # Host install just puts everything in one place
-UB_DIR=${DESTDIR}
-SB_DIR=${DESTDIR}
-VB_DIR=${DESTDIR}
+FT_DIR=${DESTDIR}
+F_DIR=${DESTDIR}
+UB_DIR=${DESTDIR}${OLDDIR}
 else
 # Target install puts things into DESTDIR subdirectories
-UB_DIR=${DESTDIR}/usr/bin
+FT_DIR=/usr/bin
+F_DIR=${DESTDIR}${FT_DIR}
+UB_DIR=${F_DIR}${OLDDIR}
 SB_DIR=${DESTDIR}/sbin
 VB_DIR=${DESTDIR}/usr/share/vboot/bin
 endif
@@ -334,7 +337,6 @@ CGPT_SRCS = \
 CGPT_OBJS = ${CGPT_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${CGPT_OBJS}
 
-C_DESTDIR = ${DESTDIR}/old_bins
 
 # Scripts to install directly (not compiled)
 UTIL_SCRIPTS = \
@@ -384,7 +386,6 @@ endif
 
 ALL_DEPS += $(addsuffix .d,${UTIL_BINS})
 
-U_DESTDIR = ${DESTDIR}/old_bins
 
 # Scripts for signing stuff.
 SIGNING_SCRIPTS = \
@@ -401,8 +402,13 @@ SIGNING_SCRIPTS_DEV = \
 # Installed, but not made executable.
 SIGNING_COMMON = scripts/image_signing/common_minimal.sh
 
+
 # The unified firmware utility will eventually replace all the others
 FUTIL_BIN = ${BUILD}/futility/futility
+
+# These are the others it will replace.
+FUTIL_OLD = $(notdir ${CGPT} ${UTIL_BINS} ${UTIL_SCRIPTS} ${UTIL_SBINS} \
+		${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV})
 
 FUTIL_SRCS = \
 	futility/futility.c \
@@ -439,6 +445,7 @@ TEST_NAMES = \
 	sha_benchmark \
 	sha_tests \
 	stateful_util_tests \
+	tlcl_tests \
 	tpm_bootmode_tests \
 	utility_string_tests \
 	utility_tests \
@@ -446,12 +453,16 @@ TEST_NAMES = \
 	vboot_api_devmode_tests \
 	vboot_api_firmware_tests \
 	vboot_api_kernel_tests \
+	vboot_api_kernel2_tests \
+	vboot_api_kernel3_tests \
+	vboot_api_kernel4_tests \
 	vboot_audio_tests \
 	vboot_common_tests \
 	vboot_common2_tests \
 	vboot_common3_tests \
 	vboot_display_tests \
 	vboot_firmware_tests \
+	vboot_kernel_tests \
 	vboot_nvstorage_test
 
 # Grrr
@@ -553,7 +564,7 @@ clean:
 	${Q}/bin/rm -rf ${BUILD}
 
 .PHONY: install
-install: cgpt_install utils_install signing_install futil_install
+install: futil_install
 
 # Don't delete intermediate object files
 .SECONDARY:
@@ -672,21 +683,27 @@ utils_install: ${UTIL_BINS} ${UTIL_SCRIPTS} ${UTIL_SBINS}
 	${Q}mkdir -p ${UB_DIR}
 	${Q}${INSTALL} -t ${UB_DIR} ${UTIL_BINS} ${UTIL_SCRIPTS}
 ifneq (${UTIL_SBINS},)
+	${Q}${INSTALL} -t ${UB_DIR} ${UTIL_SBINS}
+ifneq (${SB_DIR},)
 	${Q}mkdir -p ${SB_DIR}
-	${Q}${INSTALL} -t ${SB_DIR} ${UTIL_SBINS}
+	${Q}for prog in $(notdir ${UTIL_SBINS}); do \
+		ln -sf "${FT_DIR}/futility" "${SB_DIR}/$$prog"; done
+endif
 endif
 
 
 # And some signing stuff for the target
 .PHONY: signing_install
 signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
-ifneq (${MINIMAL},)
 	@printf "    INSTALL       SIGNING\n"
 	${Q}mkdir -p ${UB_DIR}
 	${Q}${INSTALL} -t ${UB_DIR} ${SIGNING_SCRIPTS}
+	${Q}${INSTALL} -t ${UB_DIR} ${SIGNING_SCRIPTS_DEV}
+	${Q}${INSTALL} -t ${UB_DIR} -m 'u=rw,go=r,a-s' ${SIGNING_COMMON}
+ifneq (${VB_DIR},)
 	${Q}mkdir -p ${VB_DIR}
-	${Q}${INSTALL} -t ${VB_DIR} ${SIGNING_SCRIPTS_DEV}
-	${Q}${INSTALL} -t ${VB_DIR} -m 'u=rw,go=r,a-s' ${SIGNING_COMMON}
+	${Q}for prog in $(notdir ${SIGNING_SCRIPTS_DEV}); do \
+		ln -sf "${FT_DIR}/futility" "${VB_DIR}/$$prog"; done
 endif
 
 # ----------------------------------------------------------------------------
@@ -700,14 +717,12 @@ ${FUTIL_BIN}: ${FUTIL_LDS} ${FUTIL_OBJS}
 	${Q}${LD} -o $@ ${CFLAGS} $^ ${LDFLAGS} ${LDLIBS}
 
 .PHONY: futil_install
-futil_install: ${FUTIL_BIN} cgpt_install utils_install
+futil_install: ${FUTIL_BIN} cgpt_install utils_install signing_install
 	@printf "    INSTALL       futility\n"
-	${Q}mkdir -p ${F_DESTDIR}
-	${Q}${INSTALL} -t ${F_DESTDIR} ${FUTIL_BIN}
-	futility/setup_futility_symlinks.sh ${F_DESTDIR}
-	${Q}mkdir -p ${UB_DIR}
-	${Q}${INSTALL} -t ${UB_DIR} $^
-
+	${Q}mkdir -p ${F_DIR}
+	${Q}${INSTALL} -t ${F_DIR} ${FUTIL_BIN}
+	${Q}for prog in ${FUTIL_OLD}; do \
+		ln -sf futility "${F_DIR}/$$prog"; done
 
 # ----------------------------------------------------------------------------
 # Mount-encrypted utility for cryptohome
@@ -889,6 +904,11 @@ ${BUILD}/tests/rollback_index2_tests: OBJS += \
 ${BUILD}/tests/rollback_index2_tests: \
 	${BUILD}/firmware/lib/rollback_index_for_test.o
 
+${BUILD}/tests/tlcl_tests: OBJS += \
+	${BUILD}/firmware/lib/tpm_lite/tlcl_for_test.o
+${BUILD}/tests/tlcl_tests: \
+	${BUILD}/firmware/lib/tpm_lite/tlcl_for_test.o
+
 ${BUILD}/tests/vboot_audio_tests: OBJS += \
 	${BUILD}/firmware/lib/vboot_audio_for_test.o
 ${BUILD}/tests/vboot_audio_tests: \
@@ -964,7 +984,7 @@ runbmptests: test_setup
 .PHONY: runcgpttests
 runcgpttests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/cgptlib_test
-# HEY - elsewhere
+# HEY - this goes elsewhere
 ifneq (${IN_CHROOT},)
 	${RUNTEST} ${BUILD_RUN}/tests/CgptManagerTests --v=1
 endif
@@ -984,24 +1004,30 @@ runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/sha_tests
 	${RUNTEST} ${BUILD_RUN}/tests/stateful_util_tests
+	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 	${RUNTEST} ${BUILD_RUN}/tests/tpm_bootmode_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_init_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_firmware_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_init_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel2_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel3_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_audio_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common3_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_firmware_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_nvstorage_test
 
 .PHONY: runfutiltests
-runfutiltests: DESTDIR := ${TEST_INSTALL_DIR}
+runfutiltests: override DESTDIR = ${TEST_INSTALL_DIR}
 runfutiltests: test_setup install
-	futility/tests/run_futility_tests.sh ${DESTDIR}
+	futility/tests/run_futility_tests.sh ${TEST_INSTALL_DIR}
 
 # Run long tests, including all permutations of encryption keys (instead of
 # just the ones we use) and tests of currently-unused code.
@@ -1037,7 +1063,8 @@ coverage_html:
 
 # Generate addtional coverage stats just for firmware subdir, because the
 # per-directory stats for the whole project don't include their own subdirs.
-	lcov -e ${COV_INFO}.local '${SRCDIR}/firmware/*' \
+	lcov -r ${COV_INFO}.local '*/stub/*' -o ${COV_INFO}.nostub
+	lcov -e ${COV_INFO}.nostub '${SRCDIR}/firmware/*' \
 		-o ${COV_INFO}.firmware
 
 .PHONY: coverage
