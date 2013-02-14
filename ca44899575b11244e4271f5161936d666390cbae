@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVH//lrY\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-02-14T01:55:28Z",
+      "side": 1,
+      "message": "could you change this to:\n\n ifeq ($(MINIMAL),yes)\n\nor perhaps:\n\n MINIMAL \u003d no\n ifneq ($(MINIMAL),yes)\n\nit will make integration with the ebuild easier",
+      "revId": "ca44899575b11244e4271f5161936d666390cbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAVH//lrU\u003d",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-02-14T01:55:28Z",
+      "side": 1,
+      "message": "typical make style is to use $(var) for make variables and reserve ${var} braces for shell scripts",
+      "revId": "ca44899575b11244e4271f5161936d666390cbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
