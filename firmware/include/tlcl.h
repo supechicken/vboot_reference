@@ -134,8 +134,6 @@ uint32_t TlclPhysicalPresenceCMDEnable(void);
  */
 uint32_t TlclFinalizePhysicalPresence(void);
 
-uint32_t TlclAssertPhysicalPresenceResult(void);
-
 /**
  * Turn off physical presence and locks it off until next reboot.  The TPM
  * error code is returned.

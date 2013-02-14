@@ -24,9 +24,12 @@ set_lsb_release_keyval() {
 main() {
   set -e
 
-  if [[ $(( $# % 2 )) -eq 0 ]]; then
+  local image=$1
+  local key=$2
+  local value=$3
+  if [ $# -ne 1 ] && [ $# -ne 3 ]; then
     cat <<EOF
-Usage: $PROG <image.bin> [<key> <value> [<key> <value> ...]]
+Usage: $PROG <image.bin> [<key> <value>]
 
 Examples:
 
@@ -44,28 +47,15 @@ EOF
     exit 1
   fi
 
-  local image=$1
-  shift
   local rootfs=$(make_temp_dir)
-
-  # If there are no key/value pairs to process, we don't need write access.
-  if [[ $# -eq 0 ]]; then
-    mount_image_partition_ro "${image}" 3 "${rootfs}"
-  else
-    mount_image_partition "${image}" 3 "${rootfs}"
-    touch "${image}"  # Updates the image modification time.
+  mount_image_partition_ro "$image" 3 "$rootfs"
+  if [ -n "$key" ]; then
+    sudo umount "$rootfs"
+    mount_image_partition "$image" 3 "$rootfs"
+    set_lsb_release_keyval "$rootfs" "$key" "$value"
+    touch "$image"  # Updates the image modification time.
   fi
-
-  # Process all the key/value pairs.
-  local key value
-  while [[ $# -ne 0 ]]; do
-    key=$1 value=$2
-    shift 2
-    set_lsb_release_keyval "${rootfs}" "${key}" "${value}"
-  done
-
-  # Dump the final state.
-  cat "${rootfs}/etc/lsb-release"
+  cat "$rootfs/etc/lsb-release"
 }
 
 main "$@"
