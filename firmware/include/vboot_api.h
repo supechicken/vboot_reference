@@ -363,6 +363,22 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams);
 
 /*****************************************************************************/
+/* Display from BmpBlock */
+
+/**
+ * Display screen_index of bmpfv with localization.
+ *
+ * Note: Text is not handled in a generalized manner; caller has to provide
+ * all text strings (currently only hwid) to the function.  This will be
+ * addressed in the future.
+ *
+ * Returns VBERROR_SUCCESS if success, non-zero if error.
+ */
+VbError_t VbDisplayScreenFromBmpBlock(uint8_t *bmpfv, uint32_t screen_index,
+				      uint32_t localization,
+				      char *hwid);
+
+/*****************************************************************************/
 /* Debug output (from utility.h) */
 
 /**

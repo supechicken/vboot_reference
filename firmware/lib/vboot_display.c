@@ -16,6 +16,162 @@
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
 static uint32_t disp_width = 0, disp_height = 0;
 
+/**
+ * Make sure bitmap data is inside the GBB and is non-zero in size.
+ *
+ * Returns zero if GBB passes the check, non-zero otherwise.
+ */
+static int VbSanityCheckBmpBlockFromGBB(void *gbb_data, uint32_t gbb_size)
+{
+	GoogleBinaryBlockHeader *gbbh = (GoogleBinaryBlockHeader *)gbb_data;
+
+	if (0 == gbbh->bmpfv_size ||
+	    gbbh->bmpfv_offset > gbb_size ||
+	    gbbh->bmpfv_offset + gbbh->bmpfv_size > gbb_size) {
+		return 1;
+	}
+
+	return 0;
+}
+
+/**
+ * Sanity-check the bitmap block header.
+ *
+ * Returns zero if the header passes the check, non-zero otherwise.
+ */
+static int VbSanityCheckBmpBlockHeader(BmpBlockHeader *hdr)
+{
+	if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
+			 BMPBLOCK_SIGNATURE_SIZE)) ||
+	    (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
+	    ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
+	     (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
+		return 1;
+	}
+
+	return 0;
+}
+
+VbError_t VbDisplayScreenFromBmpBlock(uint8_t *bmpfv, uint32_t screen_index,
+				      uint32_t localization,
+				      char *hwid)
+{
+	BmpBlockHeader *hdr;
+	ScreenLayout *layout;
+	ImageInfo *image_info;
+	uint32_t inoutsize;
+	uint32_t offset;
+	uint32_t i;
+	VbFont_t *font;
+	char *text_to_show;
+	int rtol = 0;
+	void *fullimage = NULL;
+	VbError_t retval = VBERROR_UNKNOWN;   /* Assume error until proven ok */
+
+	hdr = (BmpBlockHeader *)bmpfv;
+	if (VbSanityCheckBmpBlockHeader(hdr)) {
+		VBDEBUG(("VbDisplayScreen(): "
+			 "invalid/too new bitmap header\n"));
+		return VBERROR_INVALID_BMPFV;
+	}
+
+	if (screen_index >= hdr->number_of_screenlayouts) {
+		VBDEBUG(("VbDisplayScreen(): "
+			 "screen index %d not in the bmpfv\n",
+			 (int)screen_index));
+		return VBERROR_INVALID_SCREEN_INDEX;
+	}
+
+	if (localization >= hdr->number_of_localizations) {
+		localization = 0;
+	}
+
+	/*
+	 * Calculate offset of screen layout = start of screen stuff + correct
+	 * locale + correct screen.
+	 */
+	offset = sizeof(BmpBlockHeader) +
+		localization * hdr->number_of_screenlayouts *
+			sizeof(ScreenLayout) +
+		screen_index * sizeof(ScreenLayout);
+	layout = (ScreenLayout *)(bmpfv + offset);
+
+	/* Display all bitmaps for the image */
+	for (i = 0; i < MAX_IMAGE_IN_LAYOUT; i++) {
+		if (!layout->images[i].image_info_offset)
+			continue;
+
+		offset = layout->images[i].image_info_offset;
+		image_info = (ImageInfo *)(bmpfv + offset);
+		fullimage = bmpfv + offset + sizeof(ImageInfo);
+		inoutsize = image_info->original_size;
+		if (inoutsize &&
+		    image_info->compression != COMPRESS_NONE) {
+			fullimage = VbExMalloc(inoutsize);
+			retval = VbExDecompress(
+					bmpfv + offset + sizeof(ImageInfo),
+					image_info->compressed_size,
+					image_info->compression,
+					fullimage, &inoutsize);
+			if (VBERROR_SUCCESS != retval) {
+				VbExFree(fullimage);
+				goto VbDisplayScreen_exit;
+			}
+		}
+
+		switch(image_info->format) {
+		case FORMAT_BMP:
+			retval = VbExDisplayImage(layout->images[i].x,
+						  layout->images[i].y,
+						  fullimage, inoutsize);
+			break;
+
+		case FORMAT_FONT:
+			/*
+			 * The uncompressed blob is our font structure. Cache
+			 * it as needed.
+			 */
+			font = VbInternalizeFontData(fullimage);
+
+			/* TODO: handle text in general here */
+			if (TAG_HWID == image_info->tag ||
+			    TAG_HWID_RTOL == image_info->tag) {
+				text_to_show = hwid;
+				rtol = (TAG_HWID_RTOL == image_info->tag);
+			} else {
+				text_to_show = "";
+				rtol = 0;
+			}
+
+			VbRenderTextAtPos(text_to_show, rtol,
+					  layout->images[i].x,
+					  layout->images[i].y, font);
+
+			VbDoneWithFontForNow(font);
+			break;
+
+		default:
+			VBDEBUG(("VbDisplayScreen(): "
+				 "unsupported ImageFormat %d\n",
+				 image_info->format));
+			retval = VBERROR_INVALID_GBB;
+		}
+
+		if (COMPRESS_NONE != image_info->compression)
+			VbExFree(fullimage);
+
+		if (VBERROR_SUCCESS != retval)
+			goto VbDisplayScreen_exit;
+	}
+
+	/* Successful if all bitmaps displayed */
+	retval = VBERROR_SUCCESS;
+
+ VbDisplayScreen_exit:
+	VBDEBUG(("leaving VbDisplayScreen() with %d\n", retval));
+	return retval;
+}
+
 VbError_t VbGetLocalizationCount(VbCommonParams *cparams, uint32_t *count)
 {
 	GoogleBinaryBlockHeader *gbb =
@@ -25,20 +181,12 @@ VbError_t VbGetLocalizationCount(VbCommonParams *cparams, uint32_t *count)
 	/* Default to 0 on error */
 	*count = 0;
 
-	/* Make sure bitmap data is inside the GBB and is non-zero in size */
-	if (0 == gbb->bmpfv_size ||
-	    gbb->bmpfv_offset > cparams->gbb_size ||
-	    gbb->bmpfv_offset + gbb->bmpfv_size > cparams->gbb_size) {
+	if (VbSanityCheckBmpBlockFromGBB(gbb, cparams->gbb_size)) {
 		return VBERROR_INVALID_GBB;
 	}
 
-	/* Sanity-check the bitmap block header */
 	hdr = (BmpBlockHeader *)(((uint8_t *)gbb) + gbb->bmpfv_offset);
-	if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
-			 BMPBLOCK_SIGNATURE_SIZE)) ||
-	    (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
-	    ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
-	     (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
+	if (VbSanityCheckBmpBlockHeader(hdr)) {
 		return VBERROR_INVALID_BMPFV;
 	}
 
@@ -171,26 +319,14 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 	GoogleBinaryBlockHeader *gbb =
 		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	static uint8_t *bmpfv;
-	void *fullimage = NULL;
 	BmpBlockHeader *hdr;
-	ScreenLayout *layout;
-	ImageInfo *image_info;
 	uint32_t screen_index;
 	uint32_t localization = 0;
 	VbError_t retval = VBERROR_UNKNOWN;   /* Assume error until proven ok */
-	uint32_t inoutsize;
-	uint32_t offset;
-	uint32_t i;
-	VbFont_t *font;
-	char *text_to_show;
-	int rtol = 0;
 	char outbuf[OUTBUF_LEN] = "";
 	uint32_t used = 0;
 
-	/* Make sure bitmap data is inside the GBB and is non-zero in size */
-	if (0 == gbb->bmpfv_size ||
-	    gbb->bmpfv_offset > cparams->gbb_size ||
-	    gbb->bmpfv_offset + gbb->bmpfv_size > cparams->gbb_size) {
+	if (VbSanityCheckBmpBlockFromGBB(gbb, cparams->gbb_size)) {
 		VBDEBUG(("VbDisplayScreenFromGBB(): "
 			 "invalid bmpfv offset/size\n"));
 		return VBERROR_INVALID_GBB;
@@ -207,13 +343,8 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 #endif
 	}
 
-	/* Sanity-check the bitmap block header */
 	hdr = (BmpBlockHeader *)bmpfv;
-	if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
-			 BMPBLOCK_SIGNATURE_SIZE)) ||
-	    (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
-	    ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
-	     (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
+	if (VbSanityCheckBmpBlockHeader(hdr)) {
 		VBDEBUG(("VbDisplayScreenFromGBB(): "
 			 "invalid/too new bitmap header\n"));
 		retval = VBERROR_INVALID_BMPFV;
@@ -277,86 +408,8 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		VbNvSet(vncptr, VBNV_LOCALIZATION_INDEX, localization);
 	}
 
-	/*
-	 * Calculate offset of screen layout = start of screen stuff + correct
-	 * locale + correct screen.
-	 */
-	offset = sizeof(BmpBlockHeader) +
-		localization * hdr->number_of_screenlayouts *
-			sizeof(ScreenLayout) +
-		screen_index * sizeof(ScreenLayout);
-	layout = (ScreenLayout *)(bmpfv + offset);
-
-	/* Display all bitmaps for the image */
-	for (i = 0; i < MAX_IMAGE_IN_LAYOUT; i++) {
-		if (!layout->images[i].image_info_offset)
-			continue;
-
-		offset = layout->images[i].image_info_offset;
-		image_info = (ImageInfo *)(bmpfv + offset);
-		fullimage = bmpfv + offset + sizeof(ImageInfo);
-		inoutsize = image_info->original_size;
-		if (inoutsize &&
-		    image_info->compression != COMPRESS_NONE) {
-			fullimage = VbExMalloc(inoutsize);
-			retval = VbExDecompress(
-					bmpfv + offset + sizeof(ImageInfo),
-					image_info->compressed_size,
-					image_info->compression,
-					fullimage, &inoutsize);
-			if (VBERROR_SUCCESS != retval) {
-				VbExFree(fullimage);
-				goto VbDisplayScreenFromGBB_exit;
-			}
-		}
-
-		switch(image_info->format) {
-		case FORMAT_BMP:
-			retval = VbExDisplayImage(layout->images[i].x,
-						  layout->images[i].y,
-						  fullimage, inoutsize);
-			break;
-
-		case FORMAT_FONT:
-			/*
-			 * The uncompressed blob is our font structure. Cache
-			 * it as needed.
-			 */
-			font = VbInternalizeFontData(fullimage);
-
-			/* TODO: handle text in general here */
-			if (TAG_HWID == image_info->tag ||
-			    TAG_HWID_RTOL == image_info->tag) {
-				text_to_show = VbHWID(cparams);
-				rtol = (TAG_HWID_RTOL == image_info->tag);
-			} else {
-				text_to_show = "";
-				rtol = 0;
-			}
-
-			VbRenderTextAtPos(text_to_show, rtol,
-					  layout->images[i].x,
-					  layout->images[i].y, font);
-
-			VbDoneWithFontForNow(font);
-			break;
-
-		default:
-			VBDEBUG(("VbDisplayScreenFromGBB(): "
-				 "unsupported ImageFormat %d\n",
-				 image_info->format));
-			retval = VBERROR_INVALID_GBB;
-		}
-
-		if (COMPRESS_NONE != image_info->compression)
-			VbExFree(fullimage);
-
-		if (VBERROR_SUCCESS != retval)
-			goto VbDisplayScreenFromGBB_exit;
-	}
-
-	/* Successful if all bitmaps displayed */
-	retval = VBERROR_SUCCESS;
+	retval = VbDisplayScreenFromBmpBlock(bmpfv, screen_index,
+					     localization, VbHWID(cparams));
 
 	/*
 	 * If GBB flags is nonzero, complain because that's something that the
