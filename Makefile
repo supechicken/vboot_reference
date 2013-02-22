@@ -42,8 +42,24 @@ export BUILD
 
 # Stuff for 'make install'
 INSTALL ?= install
+<<<<<<< HEAD   (7f5e3d Support installing futility on target)
 DESTDIR ?= /usr/bin
 O_DESTDIR = ${DESTDIR}/old_bins
+=======
+DESTDIR ?= /usr/local/bin
+
+ifeq (${MINIMAL},)
+# Host install just puts everything in one place
+UB_DIR=${DESTDIR}
+SB_DIR=${DESTDIR}
+VB_DIR=${DESTDIR}
+else
+# Target install puts things into DESTDIR subdirectories
+UB_DIR=${DESTDIR}/usr/bin
+SB_DIR=${DESTDIR}/sbin
+VB_DIR=${DESTDIR}/usr/share/vboot/bin
+endif
+>>>>>>> BRANCH (e6cf2c mount-encrypted: issue sync()s between umount stages)
 
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
@@ -323,8 +339,11 @@ CGPT_SRCS = \
 CGPT_OBJS = ${CGPT_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${CGPT_OBJS}
 
+<<<<<<< HEAD   (7f5e3d Support installing futility on target)
 C_DESTDIR = ${O_DESTDIR}
 
+=======
+>>>>>>> BRANCH (e6cf2c mount-encrypted: issue sync()s between umount stages)
 
 # Scripts to install directly (not compiled)
 UTIL_SCRIPTS = \
@@ -364,17 +383,42 @@ UTIL_NAMES += \
 	pad_digest_utility \
 	signature_digest_utility \
 	verify_data
+<<<<<<< HEAD   (7f5e3d Support installing futility on target)
 endif
 
 ifneq (${IN_CHROOT},)
 UTIL_NAMES += mount-encrypted
+=======
+>>>>>>> BRANCH (e6cf2c mount-encrypted: issue sync()s between umount stages)
 endif
 
 UTIL_BINS_STATIC := $(addprefix ${BUILD}/utility/,${UTIL_NAMES_STATIC})
 UTIL_BINS = $(addprefix ${BUILD}/utility/,${UTIL_NAMES})
+ifneq (${IN_CHROOT},)
+UTIL_SBINS = $(addprefix ${BUILD}/utility/,mount-encrypted)
+endif
+
 ALL_DEPS += $(addsuffix .d,${UTIL_BINS})
 
+<<<<<<< HEAD   (7f5e3d Support installing futility on target)
 U_DESTDIR = ${O_DESTDIR}
+=======
+
+# Scripts for signing stuff.
+SIGNING_SCRIPTS = \
+	utility/tpm-nvsize \
+	utility/chromeos-tpm-recovery
+
+# These go in a different place.
+SIGNING_SCRIPTS_DEV = \
+	scripts/image_signing/resign_firmwarefd.sh \
+	scripts/image_signing/make_dev_firmware.sh \
+	scripts/image_signing/make_dev_ssd.sh \
+	scripts/image_signing/set_gbb_flags.sh
+
+# Installed, but not made executable.
+SIGNING_COMMON = scripts/image_signing/common_minimal.sh
+>>>>>>> BRANCH (e6cf2c mount-encrypted: issue sync()s between umount stages)
 
 # Scripts for signing stuff.
 SIGNING_SCRIPTS = \
@@ -412,8 +456,6 @@ FUTIL_OBJS = ${FUTIL_SRCS:%.c=${BUILD}/%.o}
 
 ALL_DEPS += $(addsuffix .d,${FUTIL_BIN})
 ALL_OBJS += ${FUTIL_OBJS}
-
-F_DESTDIR = ${DESTDIR}
 
 
 # Library of handy test functions.
@@ -558,7 +600,7 @@ clean:
 	${Q}/bin/rm -rf ${BUILD}
 
 .PHONY: install
-install: cgpt_install utils_install futil_install
+install: cgpt_install utils_install signing_install futil_install
 
 # Don't delete intermediate object files
 .SECONDARY:
@@ -654,8 +696,8 @@ ${CGPT}: ${CGPT_OBJS} ${LIBS}
 .PHONY: cgpt_install
 cgpt_install: ${CGPT}
 	@printf "    INSTALL       CGPT\n"
-	${Q}mkdir -p ${C_DESTDIR}
-	${Q}${INSTALL} -t ${C_DESTDIR} $^
+	${Q}mkdir -p ${UB_DIR}
+	${Q}${INSTALL} -t ${UB_DIR} $^
 
 # ----------------------------------------------------------------------------
 # Utilities
@@ -667,16 +709,32 @@ ${BUILD}/utility/%: INCLUDES += -Ihost/include -Iutility/include
 ${UTIL_BINS_STATIC}: LDFLAGS += -static
 
 .PHONY: utils
-utils: ${UTIL_BINS} ${UTIL_SCRIPTS}
-# TODO: change ebuild to pull scripts directly out of utility dir
+utils: ${UTIL_BINS} ${UTIL_SCRIPTS} ${UTIL_SBINS}
 	${Q}cp -f ${UTIL_SCRIPTS} ${BUILD}/utility
 	${Q}chmod a+rx $(patsubst %,${BUILD}/%,${UTIL_SCRIPTS})
 
 .PHONY: utils_install
-utils_install: ${UTIL_BINS} ${UTIL_SCRIPTS}
+utils_install: ${UTIL_BINS} ${UTIL_SCRIPTS} ${UTIL_SBINS}
 	@printf "    INSTALL       UTILS\n"
-	${Q}mkdir -p ${U_DESTDIR}
-	${Q}${INSTALL} -t ${U_DESTDIR} $^
+	${Q}mkdir -p ${UB_DIR}
+	${Q}${INSTALL} -t ${UB_DIR} ${UTIL_BINS} ${UTIL_SCRIPTS}
+ifneq (${UTIL_SBINS},)
+	${Q}mkdir -p ${SB_DIR}
+	${Q}${INSTALL} -t ${SB_DIR} ${UTIL_SBINS}
+endif
+
+
+# And some signing stuff for the target
+.PHONY: signing_install
+signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
+ifneq (${MINIMAL},)
+	@printf "    INSTALL       SIGNING\n"
+	${Q}mkdir -p ${UB_DIR}
+	${Q}${INSTALL} -t ${UB_DIR} ${SIGNING_SCRIPTS}
+	${Q}mkdir -p ${VB_DIR}
+	${Q}${INSTALL} -t ${VB_DIR} ${SIGNING_SCRIPTS_DEV}
+	${Q}${INSTALL} -t ${VB_DIR} -m 'u=rw,go=r,a-s' ${SIGNING_COMMON}
+endif
 
 # And some signing stuff...
 
@@ -701,11 +759,17 @@ ${FUTIL_BIN}: ${FUTIL_LDS} ${FUTIL_OBJS}
 .PHONY: futil_install
 futil_install: ${FUTIL_BIN} cgpt_install utils_install signing_install
 	@printf "    INSTALL       futility\n"
+<<<<<<< HEAD   (7f5e3d Support installing futility on target)
 	${Q}mkdir -p ${F_DESTDIR}
 	${Q}${INSTALL} -t ${F_DESTDIR} ${FUTIL_BIN}
 	${Q}mkdir -p ${O_DESTDIR}
 	${Q}for prog in ${FUTIL_OLD}; do \
 		ln -sf futility "${F_DESTDIR}/$$prog"; done
+=======
+	${Q}mkdir -p ${UB_DIR}
+	${Q}${INSTALL} -t ${UB_DIR} $^
+
+>>>>>>> BRANCH (e6cf2c mount-encrypted: issue sync()s between umount stages)
 
 # ----------------------------------------------------------------------------
 # Mount-encrypted utility for cryptohome
