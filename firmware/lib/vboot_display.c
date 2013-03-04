@@ -66,7 +66,6 @@ const char *VbHWID(VbCommonParams *cparams)
  * in-memory font structure distinct from the in-flash version.  We'll do that
  * Real Soon Now. Until then, we just repeat the same linear search every time.
  */
-typedef FontArrayHeader VbFont_t;
 
 VbFont_t *VbInternalizeFontData(FontArrayHeader *fonthdr)
 {
