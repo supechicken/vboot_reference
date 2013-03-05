@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAVX//9RI\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-05T16:38:53Z",
+      "side": 1,
+      "message": "This doesn\u0027t do what we want.  The third arg is the number of chars to copy, not sizeof(buf).\n\nNote that Strncat() behaves differently than strncat(); for Strncat (capital), the third param is the size of the destination buffer.\n\nSo what we really need to pass in the third arg is sizeof(buf) - strlen(buf) - 1.\n\nAnd we should think about renaming Strncat() to something else (or perhaps removing it) to avoid this confusion in the future...",
+      "revId": "28ff18c43c11cf0ee982f5dc043904fdb3785ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
