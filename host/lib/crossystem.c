@@ -145,6 +145,11 @@ int VbGetCrosDebug(void) {
       return 0;
   }
 
+  /* If the active firmware is nonchrome, assume debug mode. */
+  if (VbGetArchPropertyString("mainfw_type", buf, sizeof(buf))
+      && 0 == strcmp(buf, "nonchrome"))
+    return 1;
+
   /* Command line is silent; allow debug if the dev switch is on. */
   if (1 == VbGetSystemPropertyInt("devsw_boot"))
     return 1;
