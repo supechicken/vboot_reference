@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAWH///Fg\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "str + done, len - done",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///Fc\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "sizeof(buf) instead of 80?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///FQ\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Hmmm, having 7 and +7 three times is probably confusing - maybe\n \n #define CALLER_PREFIX \"CALLER:\"\n char str_caller[PATH_MAX + sizeof(CALLER_PREFIX)] \u003d CALLER_PREFIX;\n // sizeof(string_literal) will include \\0\n char *truename \u003d str_caller + sizeof(CALLER_PREFIX) - 1;\n ...\n readlink(buf, truename, PATH_MAX - 1);",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///FM\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "sizeof(buf)",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///FI\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Why not just readlink(argv[0], ...)?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///FE\u003d",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Well, that\u0027s not true. PATH_MAX is not the \"real\" MAX... it simply a \"recommendation\".",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///Fk\u003d",
+        "filename": "futility/futility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Will this work for ARM?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///GM\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Probably call this \"COL_RESET, since it \"Resets\" color to what the terminal prefers by default.",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///GQ\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "I\u0027d recommend not adding \"funciton\" here- simply\n green() {\n }",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///GI\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Assume we also follow # args: [message] ?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///F0\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "nested-level (since there is one arg for \"nested leve\")?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///F4\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "or case \"${lev}\" ?",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///GA\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "For local a\u003db, I prefer quoting the value as local a\u003d\"b\", if b may contain spaces.\n\nThe reason is POSIX shell (ex, dash) and bash will interpret \"local a\u003db c\" differently.\n\n(well, since your script uses \"caller\" and is already bash-specific, I\u0027m ok if you want to keep this unchanged).",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAWH///Fs\u003d",
+        "filename": "futility/tests/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2013-03-08T03:30:16Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027me wrong, but this seems like \"file\" instead of func? (called format: line func file)",
+      "revId": "5c175bed9ff7bb80d09916636ee710f8884252a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
