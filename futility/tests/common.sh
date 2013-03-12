@@ -11,6 +11,7 @@ COL_BLUE='\E[34;1m'
 COL_STOP='\E[0;m'
 
 # args: [message]
+<<<<<<< HEAD   (dc6ab1 Leave logging off by default.)
 function green {
   echo -e "${COL_GREEN}$*${COL_STOP}"
 }
@@ -42,5 +43,39 @@ function error {
   local args="$*"
   local spacer=${args:+: }
   red "at ${cfunc}, line ${cline}${spacer}${args}" 1>&2
+=======
+green() {
+  echo -e "${COL_GREEN}$*${COL_STOP}"
+}
+
+# args: [message]
+yellow() {
+  echo -e "${COL_YELLOW}WARNING: $*${COL_STOP}"
+}
+
+# args: [message]
+red() {
+  echo -e "${COL_RED}$*${COL_STOP}"
+}
+
+# args: [nested level] [message]
+error() {
+  local lev=${1:-}
+  case "${1:-}" in
+    [0-9]*)
+      lev=$1
+      shift
+      ;;
+    *) lev=0
+      ;;
+  esac
+  local x=$(caller $lev)
+  local cline="${x%% *}"
+  local cfile="${x#* }"
+  cfile="${cfile##*/}"
+  local args="$*"
+  local spacer="${args:+: }"
+  red "at ${cfile}, line ${cline}${spacer}${args}" 1>&2
+>>>>>>> BRANCH (feb251 Wrap all vboot utilities with futility.)
   exit 1
 }
