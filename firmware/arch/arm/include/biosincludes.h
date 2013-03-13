@@ -16,32 +16,48 @@ typedef signed long long int64_t;
 typedef unsigned int size_t;
 
 #ifndef NULL
-#define NULL ((void*) 0)
+#	define NULL ((void*) 0)
 #endif
 
-#define UINT32_C(x) ((uint32_t) x)
-#define UINT64_C(x) ((uint64_t) x)
-#define PRIu32 "u"
-#define PRIu64 "llu"
+#ifndef UINT32_C
+#	define UINT32_C(x) ((uint32_t) x)
+#endif
+#ifndef UINT64_C
+#	define UINT64_C(x) ((uint64_t) x)
+#endif
+#ifndef PRIu32
+#	define PRIu32 "u"
+#endif
+#ifndef PRIu64
+#	define PRIu64 "llu"
+#endif
 extern void debug(const char *format, ...);
 
-#define POSSIBLY_UNUSED __attribute__((unused))
-
-#ifdef __STRICT_ANSI__
-#define INLINE
-#else
-#define INLINE inline
+#ifndef POSSIBLY_UNUSED
+#	define POSSIBLY_UNUSED __attribute__((unused))
 #endif
 
-#define UINT64_RSHIFT(v, shiftby) (((uint64_t)(v)) >> (shiftby))
-#define UINT64_MULT32(v, multby)  (((uint64_t)(v)) * ((uint32_t)(multby)))
+#ifndef INLINE
+#	ifdef __STRICT_ANSI__
+#		define INLINE
+#	else
+#		define INLINE inline
+#	endif
+#endif
+
+#ifndef UINT64_RSHIFT
+#	define UINT64_RSHIFT(v, shiftby) (((uint64_t)(v)) >> (shiftby))
+#endif
+#ifndef UINT64_MULT32
+#	define UINT64_MULT32(v, multby) (((uint64_t)(v)) * ((uint32_t)(multby)))
+#endif
 
 #ifndef UINT32_MAX
-#define UINT32_MAX (UINT32_C(0xffffffffU))
+#	define UINT32_MAX (UINT32_C(0xffffffffU))
 #endif
 
 #ifndef UINT64_MAX
-#define UINT64_MAX (UINT64_C(0xffffffffffffffffULL))
+#	define UINT64_MAX (UINT64_C(0xffffffffffffffffULL))
 #endif
 
 /* This workaround applies to Kaen prototypes and is not expected to be needed
