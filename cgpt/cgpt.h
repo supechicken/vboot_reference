@@ -18,6 +18,7 @@
 #include "endian.h"
 #include "gpt.h"
 #include "cgptlib.h"
+#include "mtdlib.h"
 
 
 // Just for clarity
@@ -57,7 +58,9 @@ void PMBRToStr(struct pmbr *pmbr, char *str, unsigned int buflen);
 struct drive {
   int fd;           /* file descriptor */
   uint64_t size;    /* total size (in bytes) */
+  int is_mtd;
   GptData gpt;
+  MtdData mtd;
   struct pmbr pmbr;
 };
 
@@ -66,6 +69,16 @@ struct drive {
 int DriveOpen(const char *drive_path, struct drive *drive, int mode);
 int DriveClose(struct drive *drive, int update_as_needed);
 int CheckValid(const struct drive *drive);
+
+int Load(struct drive *drive, uint8_t **buf,
+                const uint64_t sector,
+                const uint64_t sector_bytes,
+                const uint64_t sector_count);
+int Save(struct drive *drive, const uint8_t *buf,
+                const uint64_t sector,
+                const uint64_t sector_bytes,
+                const uint64_t sector_count);
+
 
 /* GUID conversion functions. Accepted format:
  *
