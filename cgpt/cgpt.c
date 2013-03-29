@@ -17,6 +17,8 @@ const char* progname;
 const char* command;
 void (*uuid_generator)(uint8_t* buffer);
 
+extern struct nand_layout nand;
+
 struct {
   const char *name;
   int (*fp)(int argc, char *argv[]);
@@ -46,7 +48,9 @@ void Usage(void) {
   printf("\nFor more detailed usage, use %s COMMAND -h\n\n", progname);
 }
 
-
+static int is_pow2(size_t v) {
+  return v && (v & (v - 1)) == 0;
+}
 
 int main(int argc, char *argv[]) {
   int i;
@@ -81,6 +85,46 @@ int main(int argc, char *argv[]) {
     else if (0 == strncmp(cmds[i].name, command, strlen(command))) {
       match_index = i;
       match_count++;
+    }
+  }
+
+  memset(&nand, 0, sizeof(nand));
+  for (i = 0; i < argc; ++i) {
+    if (0 == strncmp(argv[i], "-nand", 5)) {
+      if ('=' == argv[i][5]) {
+        const char *arg = argv[i] + 6;
+        nand.bytes_per_page = atoi(arg);
+        arg = strchr(arg, ',');
+        if (arg) {
+          arg++;
+          nand.pages_per_block = atoi(arg);
+          arg = strchr(arg, ',');
+          if (arg) {
+            arg++;
+            nand.fts_block_offset = atoi(arg);
+            arg = strchr(arg, ',');
+            if (arg) {
+              arg++;
+              nand.fts_block_size = atoi(arg);
+              if (nand.fts_block_size > 0 && is_pow2(nand.pages_per_block) &&
+                  is_pow2(nand.bytes_per_page) && nand.bytes_per_page >= 512) {
+                int j;
+                nand.enabled = 1;
+                // getopt() fails horribly when this is present, so
+                // remove it from the list.
+                for (j = i; j < argc - 1; j++)
+                  argv[j] = argv[j + 1];
+                argc--;
+                break;
+              }
+            }
+          }
+        }
+      }
+      // Bad nand config.
+      printf("Nand option must fit: -nand=<bytes_per_page>,<pages_per_block>,"
+             "<block_offset_of_partition>,<block_size_of_partition>\n");
+      return CGPT_FAILED;
     }
   }
 
