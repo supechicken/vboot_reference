@@ -9,8 +9,6 @@
 #ifndef VBOOT_REFERENCE_VBOOT_STRUCT_H_
 #define VBOOT_REFERENCE_VBOOT_STRUCT_H_
 
-#include "sysincludes.h"
-
 /* Public key data */
 typedef struct VbPublicKey {
 	/* Offset of key data from start of this struct */
