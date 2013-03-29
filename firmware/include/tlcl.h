@@ -12,7 +12,6 @@
 #ifndef TPM_LITE_TLCL_H_
 #define TPM_LITE_TLCL_H_
 
-#include "sysincludes.h"
 #include "tss_constants.h"
 
 /*****************************************************************************/

@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <linux/nvram.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>

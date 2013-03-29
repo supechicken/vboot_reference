@@ -8,8 +8,6 @@
 #ifndef VBOOT_REFERENCE_GBB_HEADER_H_
 #define VBOOT_REFERENCE_GBB_HEADER_H_
 
-#include "sysincludes.h"
-
 #define GBB_HEADER_SIZE    128
 
 #define GBB_SIGNATURE      "$GBB"
