@@ -24,6 +24,15 @@ int cgpt_get_boot_partition_number(CgptBootParams *params) {
   if (CGPT_OK != DriveOpen(params->drive_name, &drive, O_RDONLY))
     return CGPT_FAILED;
 
+  if (drive.is_mtd) {
+    /* This command manipulates the legacy MBR sector present at the beginning
+     * of the GPT structures, and so doesn't apply to what we're doing.
+     */
+    Error("'boot' command unsupported in MTD mode\n");
+    retval = CGPT_FAILED;
+    goto done;
+  }
+
   if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive.gpt))) {
     Error("GptSanityCheck() returned %d: %s\n",
           gpt_retval, GptError(gpt_retval));
