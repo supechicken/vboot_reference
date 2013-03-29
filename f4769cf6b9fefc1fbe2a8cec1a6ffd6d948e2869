@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//7ek\u003d",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-29T16:22:30Z",
+      "side": 1,
+      "message": "Would be nice to comment what these do.\n\n(Yeah, load and save, but from what?)",
+      "revId": "f4769cf6b9fefc1fbe2a8cec1a6ffd6d948e2869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//7eg\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-03-29T16:22:30Z",
+      "side": 1,
+      "message": "Ah, the comments are here.  Just move them to the header.",
+      "revId": "f4769cf6b9fefc1fbe2a8cec1a6ffd6d948e2869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
