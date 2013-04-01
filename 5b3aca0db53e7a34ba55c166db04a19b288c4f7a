@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//53Y\u003d",
+        "filename": "cgpt/cgpt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-01T17:05:50Z",
+      "side": 1,
+      "message": "\"--nand\" rather than \"-nand\" is more standard",
+      "revId": "5b3aca0db53e7a34ba55c166db04a19b288c4f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAW3//53Q\u003d",
+        "filename": "cgpt/cgpt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-01T17:05:50Z",
+      "side": 1,
+      "message": "Move all the parsing into a sub-function, so you can early-out if(!arg) instead of having so much nesting.",
+      "revId": "5b3aca0db53e7a34ba55c166db04a19b288c4f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
