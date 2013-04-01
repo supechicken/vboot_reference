@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAW3//5s8\u003d",
+        "filename": "cgpt/cgpt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-04-01T20:01:33Z",
+      "side": 1,
+      "message": "It should work now that it\u0027s --nand instead of -nand (which getopt treated as -n -a -n -d).\n\nBut since it\u0027s already been parsed, removing it is reasonable.",
+      "revId": "0ad1d942ac8731ea17a06b74043649d2f3366154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
