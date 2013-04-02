@@ -737,6 +737,16 @@ int LookupMtdTypeForGuid(const Guid *type) {
   return MTD_PARTITION_TYPE_OTHER;
 }
 
+const Guid *LookupGuidForMtdType(int type)
+{
+  int i;
+  for (i = 0; i < ARRAY_COUNT(supported_types); ++i) {
+    if (type == supported_types[i].mtd_type)
+      return supported_types[i].type;
+  }
+  return &guid_unused;
+}
+
 /* Resolves human-readable GPT type.
  * Returns CGPT_OK if found.
  * Returns CGPT_FAILED if no known type found. */
