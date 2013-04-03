@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXH///6s\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-04-03T15:24:32Z",
+      "side": 1,
+      "message": "Don\u0027t pass empty args.",
+      "revId": "f48346c856ab638c7e62fc8501566f39864e1ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAXH///6Y\u003d",
+        "filename": "tests/run_cgpt_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-04-03T15:24:32Z",
+      "side": 1,
+      "message": "Assign a variable instead:\n\nMTD\u003d${2:-}\n\nCGPT\u003d\"${CGPT} ${MTD}\"\n\nThen use $MTD everywhere you\u0027re currently using $2.",
+      "revId": "f48346c856ab638c7e62fc8501566f39864e1ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
