@@ -32,7 +32,7 @@ export SCRIPTDIR
 export OUTDIR
 
 # These are the scripts to run. Binaries are invoked directly by the Makefile.
-TESTS="${SCRIPTDIR}/test_not_really.sh"
+TESTS="${SCRIPTDIR}/test_dump_fmap.sh"
 
 
 # Get ready...
