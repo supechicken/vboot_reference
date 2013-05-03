@@ -232,9 +232,13 @@ int CgptShow(CgptShowParams *params) {
       case 'b':
         printf("%" PRId64 "\n", entry->starting_lba);
         break;
-      case 's':
-        printf("%" PRId64 "\n", entry->ending_lba - entry->starting_lba + 1);
+      case 's': {
+        uint64_t size = entry->ending_lba - entry->starting_lba;
+        if (size)
+          ++size;
+        printf("%" PRId64 "\n", size);
         break;
+      }
       case 't':
         GuidToStr(&entry->type, buf, sizeof(buf));
         printf("%s\n", buf);
