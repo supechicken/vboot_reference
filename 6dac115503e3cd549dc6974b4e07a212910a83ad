@@ -34,6 +34,24 @@
       "revId": "6dac115503e3cd549dc6974b4e07a212910a83ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAYH//+Yo\u003d",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-05-15T22:01:13Z",
+      "side": 1,
+      "message": "if you picked a different sed sep, you wouldn\u0027t have to escape the /\n\n: and , are also pretty common",
+      "parentUuid": "AAAAYH//+oY\u003d",
+      "revId": "6dac115503e3cd549dc6974b4e07a212910a83ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
