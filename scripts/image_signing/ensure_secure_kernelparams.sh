@@ -170,14 +170,15 @@ main() {
 
     # Ensure all other required regex params are present.
     for param in "${required_kparams_regex[@]}"; do
-        if [[ "$kparams_nodm" != *$param* ]]; then
-            echo "Kernel parameters missing required value: $param"
-            testfail=1
-        else
+        if [[ -z $(echo ${kparam_nodem} | \
+	        sed "s${M}.*${param}.*${M}${M}") ]]; then
             # Remove matched params as we go. If all goes well, kparams_nodm
             # will be nothing left but whitespace by the end.
             kparams_nodm=$(echo " ${kparams_nodm} " |
                            sed "s${M} ${param} ${M} ${M}")
+        else
+            echo "Kernel parameters missing required value: $param"
+            testfail=1
         fi
     done
 
