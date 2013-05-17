@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAYH//8eY\u003d",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-05-17T02:26:41Z",
+      "side": 1,
+      "message": "i think it\u0027ll be simpler if you wrote it like:\n\n pre_sed\u003d${kparams_nodm}\n kparams_nodm\u003d$(echo \" ${kparams_nodm} \" |\n                sed \"s${M} ${param} ${M} ${M}\")\n if [[ \"${pre_sed}\" !\u003d \"${kparams_nodm}\" ]]; then\n   echo \"Kernel parameters missing required value: ${param}\"\n   testfail\u003d1\n fi\n\nalso, there\u0027s a typo there with \"kparam_nodem\"",
+      "revId": "b42b1b3c05c2ea5081a0ab7550ce259227022003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
