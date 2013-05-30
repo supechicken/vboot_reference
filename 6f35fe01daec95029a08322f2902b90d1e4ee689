@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAZn///Fk\u003d",
+        "filename": "firmware/lib/flash_ts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002562
+      },
+      "writtenOn": "2013-05-30T20:20:44Z",
+      "side": 1,
+      "message": "Or any value \u003e 0x80000000 yes. I suppose it could return 0 in that case, but since it\u0027s only used on data passed into the initialization routine I didn\u0027t think it would be an issue. I can change it",
+      "parentUuid": "AAAAZn///Js\u003d",
+      "revId": "6f35fe01daec95029a08322f2902b90d1e4ee689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAZn///Jk\u003d",
         "filename": "firmware/lib/flash_ts.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-05-30T18:27:54Z",
       "side": 1,
       "message": "Isn\u0027t that the same as ~crc?",
+      "revId": "6f35fe01daec95029a08322f2902b90d1e4ee689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAZn///Fo\u003d",
+        "filename": "firmware/lib/flash_ts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002562
+      },
+      "writtenOn": "2013-05-30T20:20:44Z",
+      "side": 1,
+      "message": "Ah, yes it is. I just copied a standard CRC32 implementation",
+      "parentUuid": "AAAAZn///Jk\u003d",
       "revId": "6f35fe01daec95029a08322f2902b90d1e4ee689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
