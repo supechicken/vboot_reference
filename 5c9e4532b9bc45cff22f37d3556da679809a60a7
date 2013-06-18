@@ -16,6 +16,24 @@
       "revId": "5c9e4532b9bc45cff22f37d3556da679809a60a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAaH//9Ns\u003d",
+        "filename": "firmware/lib/cgptlib/mtdlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002562
+      },
+      "writtenOn": "2013-06-18T18:26:48Z",
+      "side": 1,
+      "message": "No particular reason, no. It initially started off in the cgpt dir which does use this format and then got moved and I didn\u0027t think about reformatting it",
+      "parentUuid": "AAAAaH//9OM\u003d",
+      "revId": "5c9e4532b9bc45cff22f37d3556da679809a60a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
