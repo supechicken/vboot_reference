@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAaH//9OM\u003d",
+        "filename": "firmware/lib/cgptlib/mtdlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-06-18T18:14:30Z",
+      "side": 1,
+      "message": "the style used in this code doesn\u0027t match the rest of the vboot codebase ?  we use tabs, and the func { starts on a new line for example.  any reason for deviating ?",
+      "revId": "5c9e4532b9bc45cff22f37d3556da679809a60a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
