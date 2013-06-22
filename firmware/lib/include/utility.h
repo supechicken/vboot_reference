@@ -12,21 +12,28 @@
 #define VBOOT_REFERENCE_UTILITY_H_
 
 #include "sysincludes.h"
+#include "vboot_api.h"
 
 /* Debug and error output */
 #ifdef VBOOT_DEBUG
-#define VBDEBUG(params) VbExDebug params
+# define USE_VBOOT_DEBUG 1
 #else
-#define VBDEBUG(params)
+# define USE_VBOOT_DEBUG 0
 #endif
 
-#ifdef VBOOT_DEBUG
-#define VbAssert(expr) do { if (!(expr)) { \
-    VbExError("assert fail: %s at %s:%d\n", \
-              #expr, __FILE__, __LINE__); }} while(0)
-#else
-#define VbAssert(expr)
-#endif
+#define VBDEBUG(params) \
+    do { \
+        if (USE_VBOOT_DEBUG) { \
+            VbExDebug params; \
+        } \
+    } while (0)
+
+#define VbAssert(expr) \
+    do { \
+        if (!(expr) && USE_VBOOT_DEBUG) \
+            VbExError("assert fail: %s at %s:%d\n", \
+                      #expr, __FILE__, __LINE__); \
+    } while (0)
 
 /* Optional, up to the BIOS */
 #ifdef VBOOT_EASTER_EGG

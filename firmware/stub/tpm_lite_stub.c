@@ -216,8 +216,7 @@ VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
     return result;
   gettimeofday(&after, NULL);
 
-#ifdef VBOOT_DEBUG
-  {
+  if (USE_VBOOT_DEBUG) {
     int x = request_length;
     int y = *response_length;
     VBDEBUG(("request (%d bytes): ", x));
@@ -230,7 +229,6 @@ VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
             (int) ((after.tv_sec - before.tv_sec) * 1000 +
                    (after.tv_usec - before.tv_usec) / 1000)));
   }
-#endif
 
 #ifndef NDEBUG
   /* sanity checks */
