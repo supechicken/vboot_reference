@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//+bw\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002562
+      },
+      "writtenOn": "2013-06-25T21:06:21Z",
+      "side": 1,
+      "message": "The temp vars are being used to simplify a later patch where I switch this to using a 64-bit capable partition table where these aren\u0027t aligned and can\u0027t be directly read",
+      "revId": "5617ad5872a2cbe1615945d16110af8735155d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
