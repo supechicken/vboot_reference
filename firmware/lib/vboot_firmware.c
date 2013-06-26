@@ -346,6 +346,12 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 	/* Store recovery request, if any */
 	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
 		recovery : VBNV_RECOVERY_NOT_REQUESTED);
+	/* Update the shared recovery reason when it wasn't previously
+	 * requested but the LoadFirmware() encountered an error. */
+	if (!(shared->flags & VBSD_BOOT_RO_NORMAL_SUPPORT) &&
+	    VBNV_RECOVERY_NOT_REQUESTED == shared->recovery_reason &&
+	    VBERROR_SUCCESS != retval)
+		shared->recovery_reason = recovery;
 
 	return retval;
 }
