@@ -72,6 +72,12 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
 	VBDEBUG(("VbGetDevMusicNotes: use_short is %d, hdr is %lx, "
 		 "maxsize is %d\n", use_short, hdr, maxsize));
 
+	/* If we can't beep in the background, don't allow customization. */
+	if (!audio->background_beep) {
+		VBDEBUG(("no audio - no beeping\n"));
+		return;
+	}
+
 	if (use_short) {
 		builtin = short_notes_;
 		count = short_count_;
@@ -80,10 +86,6 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
 
 	builtin = default_notes_;
 	count = default_count_;
-
-	/* If we can't beep in the background, don't allow customization. */
-	if (!audio->background_beep)
-		goto nope;
 
 	if (!hdr || maxsize < sizeof(VbDevMusic))
 		goto nope;
