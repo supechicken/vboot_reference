@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAbn//5NY\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-28T22:52:10Z",
+      "side": 1,
+      "message": "Lack of background beep is NOT the same as lack of audio support.\n\nIf beeping is only possible in the foreground, VbExBeep(0,0) should return VBERROR_NO_BACKGROUND_SOUND.\n\nIf audio didn\u0027t initialize and beeping isn\u0027t possible at all, some other error should be returned.",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
