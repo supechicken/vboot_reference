@@ -16,6 +16,57 @@
       "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//40U\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-29T17:25:35Z",
+      "side": 1,
+      "message": "if (!audio-\u003ehas_sound)\n  return;",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//40Q\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-29T17:25:35Z",
+      "side": 1,
+      "message": "(and then restore this code)",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAbn//40Y\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-06-29T17:25:35Z",
+      "side": 1,
+      "message": "audio-\u003ehas_sound \u003d 1;\nrv \u003d VbExBeep(0,0);\n\nif (rv \u003d\u003d VBERROR_SUCCESS)\n  audio-\u003ebackground_beep \u003d 1;\nelse if (rv \u003d\u003d VBERROR_NO_BACKGROUND_SOUND)\n  audio-\u003ebackground_beep \u003d 0;\nelse\n  audio-\u003ehas_sound \u003d 0;",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
