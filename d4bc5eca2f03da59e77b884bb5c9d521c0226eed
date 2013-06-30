@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//4uA\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-06-30T22:49:53Z",
+      "side": 1,
+      "message": "I actually looked at the implementation of VbExBeep() in cros/vboot/utility.c in the u-boot tree, it in fact makes little sense, but on top of that there is not provisions for \u0027non backgroud\u0027 sound.\n\nHos is the non background sound supposed to be generated?",
+      "parentUuid": "AAAAbn//5NY\u003d",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//40U\u003d",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 2
