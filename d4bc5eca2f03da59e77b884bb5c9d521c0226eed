@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAbn//4YA\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-01T15:33:33Z",
+      "side": 1,
+      "message": "One of the earlier platforms\u0027 audio libraries blocked when playing a sound.  Might have been H2C.\n\nIf we\u0027re sure all future platforms will have background sound capability we can simplify this code (and the code in vboot).",
+      "parentUuid": "AAAAbn//4uA\u003d",
+      "revId": "d4bc5eca2f03da59e77b884bb5c9d521c0226eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAbn//40U\u003d",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 2
