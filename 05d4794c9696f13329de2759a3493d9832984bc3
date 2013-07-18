@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//5Z0\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "use ${SCRIPT_DIR} instead of . (ditto for below)",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5Zk\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "Unless you anticipate that this script will do more than just strip off /boot in the future, I\u0027d prefer that this was called strip_boot_from_image.sh.",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5ak\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "2013",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5aY\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "Update comment.",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5Zc\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "What is this info useful for?",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5aQ\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "Update comment",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5aM\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "Update comment",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//5aE\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2013-07-18T18:33:38Z",
+      "side": 1,
+      "message": "I don\u0027t see a usage function in this file.",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
