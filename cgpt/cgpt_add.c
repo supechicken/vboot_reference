@@ -102,13 +102,15 @@ static int MtdSetEntryAttributes(struct drive *drive,
   MtdDiskPartition *entry;
 
   entry = MtdGetEntry(&drive->mtd, PRIMARY, index);
-  if (params->set_begin)
-    memcpy(&entry->starting_offset, &params->begin, sizeof(params->begin));
+  if (params->set_begin) {
+    uint64_t start = params->begin * 512;
+    memcpy(&entry->starting_offset, &start, sizeof(params->begin));
+  }
   if (params->set_size) {
     uint64_t start;
     uint64_t end;
     MtdGetPartitionSize(entry, &start, NULL, NULL);
-    end = start + params->size - 1;
+    end = start + params->size * 512 - 1;
     memcpy(&entry->ending_offset, &end, sizeof(end));
   }
   if (params->set_type)
@@ -203,7 +205,6 @@ int CgptSetAttributes(CgptAddParams *params) {
   if (params == NULL)
     return CGPT_FAILED;
 
-  TryInitMtd();
   if (CGPT_OK != DriveOpen(params->drive_name, &drive, O_RDWR))
     return CGPT_FAILED;
 
@@ -241,7 +242,6 @@ int CgptGetPartitionDetails(CgptAddParams *params) {
   if (params == NULL)
     return CGPT_FAILED;
 
-  TryInitMtd();
   if (CGPT_OK != DriveOpen(params->drive_name, &drive, O_RDWR))
     return CGPT_FAILED;
 
