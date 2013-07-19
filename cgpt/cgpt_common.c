@@ -376,10 +376,16 @@ int GptSave(struct drive *drive) {
 int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
   struct stat stat;
   uint32_t sector_bytes;
-  int is_mtd = nand.enabled;
 
   require(drive_path);
   require(drive);
+
+  if(strncmp("/dev/fts", drive_path, 8) != 0)
+  {
+    nand.enabled = 0;
+    nand.use_host_ioctl = 0;
+  }
+  int is_mtd = nand.enabled;
 
   // Clear struct for proper error handling.
   memset(drive, 0, sizeof(struct drive));
@@ -395,20 +401,9 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
     Error("Can't fstat %s: %s\n", drive_path, strerror(errno));
     goto error_close;
   }
-  if ((stat.st_mode & S_IFMT) != S_IFREG) {
-    if (ioctl(drive->fd, BLKGETSIZE64, &drive->size) < 0) {
-      Error("Can't read drive size from %s: %s\n", drive_path, strerror(errno));
-      goto error_close;
-    }
-    if (ioctl(drive->fd, BLKSSZGET, &sector_bytes) < 0) {
-      Error("Can't read sector size from %s: %s\n",
-            drive_path, strerror(errno));
-      goto error_close;
-    }
-  } else {
-    sector_bytes = 512;  /* bytes */
-    drive->size = stat.st_size;
-  }
+
+  sector_bytes = 512;  /* bytes */
+  drive->size = stat.st_size;
 
   if (is_mtd) {
     drive->mtd.fts_block_offset = nand.fts_block_offset;
@@ -419,6 +414,19 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
       goto error_close;
     }
   } else {
+    if ((stat.st_mode & S_IFMT) != S_IFREG) {
+      if (ioctl(drive->fd, BLKGETSIZE64, &drive->size) < 0) {
+        Error("Can't read drive size from %s: %s\n",
+              drive_path, strerror(errno));
+        goto error_close;
+      }
+      if (ioctl(drive->fd, BLKSSZGET, &sector_bytes) < 0) {
+        Error("Can't read sector size from %s: %s\n",
+              drive_path, strerror(errno));
+        goto error_close;
+      }
+    }
+
     if (GptLoad(drive, sector_bytes)) {
       goto error_close;
     }
