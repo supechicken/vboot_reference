@@ -150,20 +150,23 @@ static int get_hex_char_value(char ch) {
   return -1;
 }
 
-void TryInitMtd(void) {
+int TryInitMtd(const char *dev) {
   static int already_inited = 0;
-  if (nand.enabled || already_inited)
-    return;
+  if (already_inited)
+    return nand.use_host_ioctl;
 
   already_inited = 1;
 
   /* If we're running on the live system, we can just use /dev/fts and not
-   * actually need the specific parameters.
+   * actually need the specific parameters. This needs to be accessed via
+   * ioctl and not normal I/O.
    */
-  if (!access(FTS_DEVICE, R_OK | W_OK)) {
+  if (!strcmp(dev, FTS_DEVICE) && !access(FTS_DEVICE, R_OK | W_OK)) {
     nand.enabled = 1;
     nand.use_host_ioctl = 1;
+    return 1;
   }
+  return 0;
 }
 
 int FlashGet(const char *key, uint8_t *data, uint32_t *bufsz) {
@@ -174,7 +177,7 @@ int FlashGet(const char *key, uint8_t *data, uint32_t *bufsz) {
   if (nand.use_host_ioctl) {
     struct flash_ts_io_req req;
     strncpy(req.key, key, sizeof(req.key));
-    int fd = open("/dev/fts", O_RDWR);
+    int fd = open(FTS_DEVICE, O_RDWR);
     if (fd < 0)
       return -1;
     if (ioctl(fd, FLASH_TS_IO_GET, &req))
@@ -220,7 +223,7 @@ int FlashSet(const char *key, const uint8_t *data, uint32_t bufsz) {
     strncpy(req.key, key, sizeof(req.key));
     strncpy(req.val, hex, sizeof(req.val));
     free(hex);
-    int fd = open("/dev/fts", O_RDWR);
+    int fd = open(FTS_DEVICE, O_RDWR);
     if (fd < 0)
       return -1;
     if (ioctl(fd, FLASH_TS_IO_SET, &req))
@@ -248,9 +251,9 @@ int MtdLoad(struct drive *drive, int sector_bytes) {
                         mtd->flash_block_bytes,
                         mtd->sector_bytes, /* Needed for Load() and Save() */
                         drive);
+    if (ret)
+      return ret;
   }
-  if (ret)
-    return ret;
 
   memset(&mtd->primary, 0, sizeof(mtd->primary));
   sz = sizeof(mtd->primary);
@@ -261,6 +264,14 @@ int MtdLoad(struct drive *drive, int sector_bytes) {
   /* Read less than expected */
   if (sz < MTD_DRIVE_V1_SIZE)
     memset(&mtd->primary, 0, sizeof(mtd->primary));
+
+  if (nand.use_host_ioctl) {
+    /* If we are using /dev/fts, we can't stat() the size, so re-use
+     * our internal value to set it.
+     */
+    drive->size = mtd->primary.last_offset + 1;
+    mtd->drive_sectors = drive->size / mtd->sector_bytes;
+  }
 
   mtd->current_kernel = -1;
   mtd->current_priority = 0;
@@ -384,31 +395,36 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
   // Clear struct for proper error handling.
   memset(drive, 0, sizeof(struct drive));
 
-  drive->is_mtd = is_mtd;
-  drive->fd = open(drive_path, mode | O_LARGEFILE | O_NOFOLLOW);
-  if (drive->fd == -1) {
-    Error("Can't open %s: %s\n", drive_path, strerror(errno));
-    return CGPT_FAILED;
-  }
-
-  if (fstat(drive->fd, &stat) == -1) {
-    Error("Can't fstat %s: %s\n", drive_path, strerror(errno));
-    goto error_close;
-  }
-  if ((stat.st_mode & S_IFMT) != S_IFREG) {
-    if (ioctl(drive->fd, BLKGETSIZE64, &drive->size) < 0) {
-      Error("Can't read drive size from %s: %s\n", drive_path, strerror(errno));
-      goto error_close;
-    }
-    if (ioctl(drive->fd, BLKSSZGET, &sector_bytes) < 0) {
-      Error("Can't read sector size from %s: %s\n",
-            drive_path, strerror(errno));
-      goto error_close;
-    }
+  if (TryInitMtd(drive_path)) {
+    is_mtd = 1;
   } else {
-    sector_bytes = 512;  /* bytes */
-    drive->size = stat.st_size;
+    drive->fd = open(drive_path, mode | O_LARGEFILE | O_NOFOLLOW);
+    if (drive->fd == -1) {
+      Error("Can't open %s: %s\n", drive_path, strerror(errno));
+      return CGPT_FAILED;
+    }
+
+    if (fstat(drive->fd, &stat) == -1) {
+      Error("Can't fstat %s: %s\n", drive_path, strerror(errno));
+      goto error_close;
+    }
+    if ((stat.st_mode & S_IFMT) != S_IFREG) {
+      if (ioctl(drive->fd, BLKGETSIZE64, &drive->size) < 0) {
+        Error("Can't read drive size from %s: %s\n", drive_path,
+              strerror(errno));
+        goto error_close;
+      }
+      if (ioctl(drive->fd, BLKSSZGET, &sector_bytes) < 0) {
+        Error("Can't read sector size from %s: %s\n",
+              drive_path, strerror(errno));
+        goto error_close;
+      }
+    } else {
+      sector_bytes = 512;  /* bytes */
+      drive->size = stat.st_size;
+    }
   }
+  drive->is_mtd = is_mtd;
 
   if (is_mtd) {
     drive->mtd.fts_block_offset = nand.fts_block_offset;
