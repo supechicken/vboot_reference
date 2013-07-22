@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//1MQ\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-22T21:51:03Z",
+      "side": 0,
+      "message": "Just move the debug print before this line, since recovery\u0027s still available here.",
+      "revId": "42c08cb2dac102509491810361e239fbde52b9e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

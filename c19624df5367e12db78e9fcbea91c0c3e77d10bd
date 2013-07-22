@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//1MM\u003d",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-22T21:51:03Z",
+      "side": 1,
+      "message": "The call to TPMExtend() used to be done inside SetupTPM(); that\u0027s why it took the recovery parameter.\n\nShould be ok to strip it out - but perhaps doing so in a separate CL would be cleaner.",
+      "parentUuid": "AAAAcX//1P0\u003d",
+      "revId": "c19624df5367e12db78e9fcbea91c0c3e77d10bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//1QY\u003d",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 2
