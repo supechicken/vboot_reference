@@ -621,7 +621,7 @@ uint32_t RollbackTest_Test(void) {
       RETURN_ON_FAILURE(RollbackFirmwareLock());
       RETURN_ON_FAILURE(RollbackKernelRead(&key_version, &version));
       RETURN_ON_FAILURE(RollbackKernelWrite(key_version, version));
-      RETURN_ON_FAILURE(RollbackKernelLock());
+      RETURN_ON_FAILURE(RollbackKernelLock(0));
     }
   }
   return TPM_SUCCESS;
