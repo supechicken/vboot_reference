@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//1Kc\u003d",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-07-22T22:11:01Z",
+      "side": 1,
+      "message": "Will move to a separate CL.",
+      "parentUuid": "AAAAcX//1MM\u003d",
+      "revId": "c19624df5367e12db78e9fcbea91c0c3e77d10bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//1QY\u003d",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2013-07-22T21:34:43Z",
       "side": 1,
       "message": "I think this is valuable info that we are now losing.",
+      "revId": "c19624df5367e12db78e9fcbea91c0c3e77d10bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//1J0\u003d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-07-22T22:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//1QY\u003d",
       "revId": "c19624df5367e12db78e9fcbea91c0c3e77d10bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
