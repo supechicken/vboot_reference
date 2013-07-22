@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
 	is_virt_dev = 1;
 	version = 1;
-	TEST_EQ(RollbackFirmwareSetup(0, 0, 0, 0, &is_virt_dev, &version),
+	TEST_EQ(RollbackFirmwareSetup(0, 0, 0, &is_virt_dev, &version),
 		0, "RollbackFirmwareSetup()");
 	TEST_EQ(is_virt_dev, 0, "rfs is_virt_dev");
 	TEST_EQ(version, 0, "rfs version");
@@ -37,7 +37,8 @@ int main(int argc, char* argv[])
 	TEST_EQ(version, 0, "rkr version");
 
 	TEST_EQ(RollbackKernelWrite(0), 0, "RollbackKernelWrite()");
-	TEST_EQ(RollbackKernelLock(), 0, "RollbackKernelLock()");
+	TEST_EQ(RollbackKernelLock(0), 0,
+		"RollbackKernelLock()");
 
 	return gTestSuccess ? 0 : 255;
 }

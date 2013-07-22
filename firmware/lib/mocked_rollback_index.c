@@ -23,9 +23,8 @@ uint32_t TPMClearAndReenable(void) {
 }
 
 
-uint32_t SetupTPM(int recovery_mode, int developer_mode,
-                  int disable_dev_request, int clear_tpm_owner_request,
-                  RollbackSpaceFirmware* rsf) {
+uint32_t SetupTPM(int developer_mode, int disable_dev_request,
+                  int clear_tpm_owner_request, RollbackSpaceFirmware* rsf) {
   return TPM_SUCCESS;
 }
 
@@ -35,7 +34,7 @@ uint32_t RollbackS3Resume(void) {
 }
 
 
-uint32_t RollbackFirmwareSetup(int recovery_mode, int is_hw_dev,
+uint32_t RollbackFirmwareSetup(int is_hw_dev,
                                int disable_dev_request,
                                int clear_tpm_owner_request,
                                int *is_virt_dev, uint32_t *version) {
@@ -49,7 +48,7 @@ uint32_t RollbackFirmwareWrite(uint32_t version) {
 }
 
 
-uint32_t RollbackFirmwareLock(void) {
+uint32_t RollbackFirmwareLock(int recovery_mode) {
   return TPM_SUCCESS;
 }
 
