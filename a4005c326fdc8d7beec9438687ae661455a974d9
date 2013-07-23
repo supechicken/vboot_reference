@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//y5U\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000165
+      },
+      "writtenOn": "2013-07-23T22:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//zgA\u003d",
+      "revId": "a4005c326fdc8d7beec9438687ae661455a974d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//zX4\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//y5Q\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000165
+      },
+      "writtenOn": "2013-07-23T22:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//zX4\u003d",
+      "revId": "a4005c326fdc8d7beec9438687ae661455a974d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//zX8\u003d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-07-23T18:56:29Z",
       "side": 1,
       "message": "Is this the right bug?",
+      "revId": "a4005c326fdc8d7beec9438687ae661455a974d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//y5A\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000165
+      },
+      "writtenOn": "2013-07-23T22:15:14Z",
+      "side": 1,
+      "message": "Yes, this is the correct bug number. Had to fix the \u0027/\u0027 to work with the new PARTUUID format that we are moving to.",
+      "parentUuid": "AAAAcX//zX8\u003d",
       "revId": "a4005c326fdc8d7beec9438687ae661455a974d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
