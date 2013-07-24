@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//xgc\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:41:54Z",
+      "side": 1,
+      "message": "How does this differ from vboot_context?",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xgw\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:41:54Z",
+      "side": 1,
+      "message": "firmware?",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xgU\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:41:54Z",
+      "side": 1,
+      "message": "Who is responsible for freeing this data (particularly if multiple calls are made)?\n\nIf it\u0027s vboot, why not just let vboot malloc the data itself first, and then just pass in uint8_t *dest instead of a **?",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xg0\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:41:54Z",
+      "side": 1,
+      "message": "enum vb_firmware_region region",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xgM\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:41:54Z",
+      "side": 1,
+      "message": "\"vdata\" is going to get very confusing\n\n\"vbprivate\" would be better.  But even then, don\u0027t see why we need to declare what the variable name is here.",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
