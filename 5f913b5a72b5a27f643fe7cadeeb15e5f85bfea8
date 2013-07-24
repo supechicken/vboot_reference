@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//xdw\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:54:41Z",
+      "side": 1,
+      "message": "Neither is vboot_context.  shared_data_block is preserved.",
+      "parentUuid": "AAAAcX//xe0\u003d",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//xgw\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "It is currently the firmware, in that it exits and all memory is thus freed. When it calls Vboot again, the vdata pointer will be NULL.\n\nIt could be vboot, but then we would need to understand that",
       "parentUuid": "AAAAcX//xgU\u003d",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xdo\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-24T20:54:41Z",
+      "side": 1,
+      "message": "Please explicitly document that.",
+      "parentUuid": "AAAAcX//xec\u003d",
       "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
