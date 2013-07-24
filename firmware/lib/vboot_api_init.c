@@ -19,8 +19,7 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb;
 	VbNvContext vnc;
 	VbError_t retval = VBERROR_SUCCESS;
 	uint32_t recovery = VBNV_RECOVERY_NOT_REQUESTED;
@@ -40,6 +39,10 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 
 	/* Initialize output flags */
 	iparams->out_flags = 0;
+
+	retval = VbGbbGetHeader(cparams, &gbb);
+	if (retval)
+		return retval;
 
 	/* Set up NV storage */
 	VbExNvStorageRead(vnc.raw);

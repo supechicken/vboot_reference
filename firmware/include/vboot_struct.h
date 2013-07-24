@@ -502,4 +502,13 @@ typedef struct VbSharedDataHeader {
 
 #define VB_SHARED_DATA_VERSION 2      /* Version for struct_version */
 
+/*
+ * Data private to the vboot library. It is created by each of the main
+ * API calls VbInit(), VbSelectFirmware(), VbSelectAndLoadKernel() if
+ * it does not already exist. This is typically called vdata for short.
+ */
+typedef struct VbPrivateData {
+	struct GoogleBinaryBlockHeader *gbb_hdr;
+} VbPrivateData;
+
 #endif  /* VBOOT_REFERENCE_VBOOT_STRUCT_H_ */

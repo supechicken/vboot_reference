@@ -167,6 +167,14 @@ typedef struct VbCommonParams {
 	 * the stack.
 	 */
 	void *caller_context;
+
+	/*
+	 * Private data, not shared across different firmware executables.
+	 * Set this value to NULL on entry to VbInit(). It will be allocated
+	 * by vboot and will remain valid for the life of malloc(), which
+	 * is the current firmware executable.
+	 */
+	void *vdata;
 } VbCommonParams;
 
 /* Flags for VbInitParams.flags */
@@ -824,5 +832,31 @@ enum {
  * Execute legacy boot option.
  */
 int VbExLegacy(void);
+
+enum vb_firware_region {
+	VB_REGION_GBB,
+
+	VB_REGION_COUNT,
+};
+
+/**
+ * Read data from a region of the firmware image
+ *
+ * Vboot wants access to a firmware region. This function should allocate
+ * memory for the data, read it from the firmware image (e.g. SPI flash)
+ * and return it.
+ *
+ * @param cparams	Common parameters, e.g. use member caller_context
+ *			to point to useful context data
+ * @param region	Firmware region to read
+ * @param offset	Start offset within region
+ * @param size		Number of bytes to read
+ * @param bufp		Returns pointer to allocated buffer containing data
+ * @return VBERROR_... error, VBERROR_SUCCESS on success,
+ */
+VbError_t VbExReadFirmwareRegion(VbCommonParams *cparams,
+				 enum vb_firware_region,
+				 uint32_t offset, uint32_t size,
+				 uint8_t **bufp);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */
