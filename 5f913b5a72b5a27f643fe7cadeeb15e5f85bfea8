@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//xe0\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-24T20:50:51Z",
+      "side": 1,
+      "message": "See the comment - it is not preserved between RO and RW firmware, because firmware cannot guarantee that the memory is still available/in the same place",
+      "parentUuid": "AAAAcX//xgc\u003d",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//xgw\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-24T20:41:54Z",
       "side": 1,
       "message": "firmware?",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xew\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-24T20:50:51Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "AAAAcX//xgw\u003d",
       "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//xec\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-24T20:50:51Z",
+      "side": 1,
+      "message": "It is currently the firmware, in that it exits and all memory is thus freed. When it calls Vboot again, the vdata pointer will be NULL.\n\nIt could be vboot, but then we would need to understand that",
+      "parentUuid": "AAAAcX//xgU\u003d",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//xg0\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//xeY\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-24T20:50:51Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "AAAAcX//xg0\u003d",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//xgM\u003d",
         "filename": "firmware/include/vboot_struct.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2013-07-24T20:41:54Z",
       "side": 1,
       "message": "\"vdata\" is going to get very confusing\n\n\"vbprivate\" would be better.  But even then, don\u0027t see why we need to declare what the variable name is here.",
+      "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//xeU\u003d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-07-24T20:50:51Z",
+      "side": 1,
+      "message": "We don\u0027t need it here.\n\nWill go with vbprivate",
+      "parentUuid": "AAAAcX//xgM\u003d",
       "revId": "5f913b5a72b5a27f643fe7cadeeb15e5f85bfea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
