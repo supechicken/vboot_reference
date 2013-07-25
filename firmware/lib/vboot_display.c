@@ -224,6 +224,7 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		ret = VbGbbGetImage(cparams, localization, screen_index,
 				    i, &layout, &image_info,
 				    &fullimage, &inoutsize);
+		VBDEBUG(("ret=%d\n", ret));
 		if (ret == VBERROR_NO_IMAGE_PRESENT)
 			continue;
 		if (ret) {

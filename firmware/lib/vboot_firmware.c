@@ -357,8 +357,10 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 	 * recovery was not previously requested. */
 	if (!(shared->flags & VBSD_BOOT_RO_NORMAL_SUPPORT) &&
 	    VBNV_RECOVERY_NOT_REQUESTED == shared->recovery_reason &&
-	    VBERROR_SUCCESS != retval)
+	    VBERROR_SUCCESS != retval) {
+		VBDEBUG(("RO normal but we got an error.\n"));
 		shared->recovery_reason = recovery;
+	}
 
 	return retval;
 }

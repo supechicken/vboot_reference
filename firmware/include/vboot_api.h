@@ -268,10 +268,11 @@ enum VbSelectFirmware_t {
 	/* Recovery mode */
 	VB_SELECT_FIRMWARE_RECOVERY = 0,
 	/* Rewritable firmware A/B for normal or developer path */
-	VB_SELECT_FIRMWARE_A = 1,
-	VB_SELECT_FIRMWARE_B = 2,
+	VB_SELECT_FIRMWARE_A,
+	VB_SELECT_FIRMWARE_B,
 	/* Read only firmware for normal or developer path. */
-	VB_SELECT_FIRMWARE_READONLY = 3
+	VB_SELECT_FIRMWARE_READONLY,
+        VB_SELECT_FIRMWARE_COUNT,
 };
 
 /* Data only used by VbSelectFirmware() */

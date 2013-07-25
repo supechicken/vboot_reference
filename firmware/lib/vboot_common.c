@@ -147,7 +147,9 @@ int VerifyData(const uint8_t *data, uint64_t size, const VbSignature *sig,
                const RSAPublicKey *key)
 {
 	if (sig->sig_size != siglen_map[key->algorithm]) {
-		VBDEBUG(("Wrong signature size for algorithm.\n"));
+		VBDEBUG(("Wrong data signature size for algorithm, sig_size=%d, expected %d for algorithm %d.\n",
+			 sig->sig_size, siglen_map[key->algorithm],
+			 key->algorithm));
 		return 1;
 	}
 	if (sig->data_size > size) {
@@ -166,7 +168,7 @@ int VerifyDigest(const uint8_t *digest, const VbSignature *sig,
                  const RSAPublicKey *key)
 {
 	if (sig->sig_size != siglen_map[key->algorithm]) {
-		VBDEBUG(("Wrong signature size for algorithm.\n"));
+		VBDEBUG(("Wrong digest signature size for algorithm.\n"));
 		return 1;
 	}
 
