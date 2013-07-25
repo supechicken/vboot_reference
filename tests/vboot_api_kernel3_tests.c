@@ -25,6 +25,7 @@ static VbCommonParams cparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static GoogleBinaryBlockHeader gbb;
+static LoadKernelParams lkp;
 
 static int trust_ec;
 static int mock_in_rw;
@@ -70,6 +71,8 @@ static void ResetMocks(void)
 
 	Memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
+
+	Memset(&lkp, 0, sizeof(lkp));
 
 	trust_ec = 0;
 	mock_in_rw = 0;
@@ -194,7 +197,7 @@ static void test_ssync(VbError_t retval, int recovery_reason, const char *desc)
 {
 	uint32_t u;
 
-	TEST_EQ(VbEcSoftwareSync(&cparams), retval, desc);
+	TEST_EQ(VbEcSoftwareSync(shared, &lkp), retval, desc);
 	VbNvGet(VbApiKernelGetVnc(), VBNV_RECOVERY_REQUEST, &u);
 	TEST_EQ(u, recovery_reason, "  recovery reason");
 }

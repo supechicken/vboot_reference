@@ -8,7 +8,9 @@
 #include "sysincludes.h"
 
 #include "crc32.h"
+#include "region.h"
 #include "gbb_header.h"
+#include "load_kernel_fw.h"
 #include "utility.h"
 #include "vboot_api.h"
 #include "vboot_audio.h"
@@ -206,10 +208,9 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
 /**
  * Initialization function. Returns context for processing dev-mode delay.
  */
-VbAudioContext *VbAudioOpen(VbCommonParams *cparams)
+VbAudioContext *VbAudioOpen(LoadKernelParams *lkparams)
 {
-	GoogleBinaryBlockHeader* gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb = &lkparams->gbb;
 	VbAudioContext *audio = &au;
 	int use_short = 0;
 	uint64_t a, b;
@@ -259,10 +260,6 @@ int VbAudioLooping(VbAudioContext *audio)
 	uint16_t freq = audio->current_frequency;
 	uint16_t msec = 0;
 	int looping = 1;
-
-#if defined(CONFIG_SANDBOX)
-	return 0;
-#endif
 
 	now = VbExGetTimer();
 	while (audio->next_note < audio->note_count &&

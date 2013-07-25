@@ -239,6 +239,7 @@ VBINIT_SRCS = \
 	firmware/lib/vboot_api_init.c \
 	firmware/lib/vboot_common_init.c \
 	firmware/lib/vboot_nvstorage.c \
+	firmware/lib/region-init.c \
 
 # Additional firmware library sources needed by VbSelectFirmware() call
 VBSF_SRCS = \
@@ -252,7 +253,8 @@ VBSF_SRCS = \
 	firmware/lib/stateful_util.c \
 	firmware/lib/vboot_api_firmware.c \
 	firmware/lib/vboot_common.c \
-	firmware/lib/vboot_firmware.c
+	firmware/lib/vboot_firmware.c \
+	firmware/lib/region-fw.c \
 
 # Additional firmware library sources needed by VbSelectAndLoadKernel() call
 VBSLK_SRCS = \
@@ -264,7 +266,8 @@ VBSLK_SRCS = \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
 	firmware/lib/vboot_display.c \
-	firmware/lib/vboot_kernel.c
+	firmware/lib/vboot_kernel.c \
+	firmware/lib/region-kernel.c \
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
@@ -640,6 +643,10 @@ ${FWLIB_OBJS}: CFLAGS += -DSAVE_LOCALE_IMMEDIATELY
 # Therefore it makes sense to cache it rather than reading it each time.
 # Enable this feature.
 ${FWLIB_OBJS}: CFLAGS += -DCOPY_BMP_DATA
+endif
+
+ifdef READ_REGION
+${FWLIB_OBJS}: CFLAGS += -DREAD_REGION
 endif
 
 ifeq (${FIRMWARE_ARCH},)

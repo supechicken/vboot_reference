@@ -30,7 +30,8 @@ extern uint32_t default_count_, short_count_;
 
 /* Mock data */
 static VbCommonParams cparams;
-static GoogleBinaryBlockHeader gbb;
+static LoadKernelParams lkp;
+
 static VbDevMusicNote good_notes[] = { {100, 100},
                                        {100, 0},
                                        {200, 200},
@@ -59,13 +60,15 @@ void FixChecksum(VbDevMusic *hdr) {
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void) {
+  GoogleBinaryBlockHeader *gbb = &lkp.gbb;
+
   VBDEBUG(("ResetMocks()\n"));
   Memset(&cparams, 0, sizeof(cparams));
-  cparams.gbb_data = &gbb;
-  Memset(&gbb, 0, sizeof(gbb));
-  gbb.major_version = GBB_MAJOR_VER;
-  gbb.minor_version = GBB_MINOR_VER;
-  gbb.flags = 0;
+  Memset(&lkp, 0, sizeof(lkp));
+  cparams.gbb_data = gbb;
+  gbb->major_version = GBB_MAJOR_VER;
+  gbb->minor_version = GBB_MINOR_VER;
+  gbb->flags = 0;
   use_hdr = (VbDevMusic *)notebuf;
   use_notes = use_hdr->notes;
   Memcpy(use_hdr, &good_header, sizeof(good_header));
@@ -111,7 +114,7 @@ static void VbAudioTest(void) {
   /* default is okay */
   ResetMocks();
   use_hdr = 0;
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes ==  default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( default )");
@@ -120,8 +123,8 @@ static void VbAudioTest(void) {
   /* short is okay */
   ResetMocks();
   use_hdr = 0;
-  gbb.flags = 0x00000001;
-  a = VbAudioOpen(&cparams);
+  lkp.gbb.flags = 0x00000001;
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == short_notes_ &&
             a->note_count == short_count_,
             "VbAudioTest( short )");
@@ -129,7 +132,7 @@ static void VbAudioTest(void) {
 
   /* good custom is okay */
   ResetMocks();
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(NotesMatch(a->music_notes, good_notes, good_header.count) &&
             a->note_count == good_header.count,
             "VbAudioTest( custom good )");
@@ -137,8 +140,8 @@ static void VbAudioTest(void) {
 
   /* good custom is rejected when short flag is set */
   ResetMocks();
-  gbb.flags = 0x00000001;
-  a = VbAudioOpen(&cparams);
+  lkp.gbb.flags = 0x00000001;
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == short_notes_ &&
             a->note_count == short_count_,
             "VbAudioTest( short has priority )");
@@ -148,7 +151,7 @@ static void VbAudioTest(void) {
   ResetMocks();
   use_hdr->count--;
   FixChecksum(use_hdr);
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(NotesMatch(a->music_notes, use_notes, use_hdr->count) &&
             a->note_count == use_hdr->count + 1 &&
             a->music_notes[use_hdr->count].msec == 28700 &&
@@ -160,7 +163,7 @@ static void VbAudioTest(void) {
   ResetMocks();
   use_notes[6].msec = 10;
   FixChecksum(use_hdr);
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( too quiet )");
@@ -171,7 +174,7 @@ static void VbAudioTest(void) {
   use_notes[0].frequency = 99;
   use_notes[2].frequency = 2001;
   FixChecksum(use_hdr);
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( inaudible )");
@@ -180,7 +183,7 @@ static void VbAudioTest(void) {
   /* bad signature is rejected */
   ResetMocks();
   use_hdr->sig[0] = 'C';
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( bad signature )");
@@ -189,7 +192,7 @@ static void VbAudioTest(void) {
   /* count == 0 is rejected */
   ResetMocks();
   use_hdr->count = 0;
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( count == 0 )");
@@ -198,7 +201,7 @@ static void VbAudioTest(void) {
   /* too big is rejected */
   ResetMocks();
   use_hdr->count = 999;
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( count too big )");
@@ -207,7 +210,7 @@ static void VbAudioTest(void) {
   /* bad checksum is rejected */
   ResetMocks();
   use_hdr->checksum++;
-  a = VbAudioOpen(&cparams);
+  a = VbAudioOpen(&lkp);
   TEST_TRUE(a->music_notes == default_notes_ &&
             a->note_count == default_count_,
             "VbAudioTest( count too big )");
