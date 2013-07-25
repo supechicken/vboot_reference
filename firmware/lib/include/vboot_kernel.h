@@ -13,6 +13,8 @@
 #include "load_firmware_fw.h"
 #include "vboot_api.h"
 
+struct VbSharedDataHeader;
+
 /**
  * Allocate and read GPT data from the drive.  The sector_bytes and
  * drive_sectors fields should be filled on input.  The primary and secondary

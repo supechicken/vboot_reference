@@ -13,6 +13,7 @@
 #include "bmpblk_font.h"
 #include "gbb_header.h"
 #include "host_common.h"
+#include "region.h"
 #include "test_common.h"
 #include "vboot_common.h"
 #include "vboot_display.h"
@@ -58,6 +59,7 @@ static void ResetMocks(void)
 	cparams.shared_data_blob = shared_data;
 	cparams.gbb_data = gbb;
 	cparams.gbb_size = sizeof(gbb_data);
+	cparams.gbb = gbb;
 
 	Memset(&vnc, 0, sizeof(vnc));
 	VbNvSetup(&vnc);
@@ -81,6 +83,7 @@ VbError_t VbExDisplayDebugInfo(const char *info_str)
 /* Test displaying debug info */
 static void DebugInfoTest(void)
 {
+	char hwid[VB_REGION_HWID_LEN];
 	int i;
 
 	/* Recovery string should be non-null for any code */
@@ -89,23 +92,25 @@ static void DebugInfoTest(void)
 
 	/* HWID should come from the gbb */
 	ResetMocks();
-	TEST_EQ(strcmp(VbHWID(&cparams), "Test HWID"), 0, "HWID");
+	VbRegionReadHwID(&cparams, hwid, sizeof(hwid));
+	TEST_EQ(strcmp(hwid, "Test HWID"), 0, "HWID");
 
 	ResetMocks();
 	cparams.gbb_size = 0;
-	TEST_EQ(strcmp(VbHWID(&cparams), "{INVALID}"), 0, "HWID bad gbb");
+	VbRegionReadHwID(&cparams, hwid, sizeof(hwid));
+	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID bad gbb");
 
 	ResetMocks();
 	gbb->hwid_size = 0;
-	TEST_EQ(strcmp(VbHWID(&cparams), "{INVALID}"), 0, "HWID missing");
+	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID missing");
 
 	ResetMocks();
 	gbb->hwid_offset = cparams.gbb_size + 1;
-	TEST_EQ(strcmp(VbHWID(&cparams), "{INVALID}"), 0, "HWID past end");
+	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID past end");
 
 	ResetMocks();
 	gbb->hwid_size = cparams.gbb_size;
-	TEST_EQ(strcmp(VbHWID(&cparams), "{INVALID}"), 0, "HWID overflow");
+	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID overflow");
 
 	/* Display debug info */
 	ResetMocks();
