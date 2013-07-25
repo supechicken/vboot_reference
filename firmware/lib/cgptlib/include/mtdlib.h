@@ -66,6 +66,7 @@ typedef struct {
   uint64_t starting_offset;
   uint64_t ending_offset;
   uint32_t flags;
+  char label[28];
 } __attribute__((packed)) MtdDiskPartition;
 
 typedef struct {
@@ -81,9 +82,9 @@ typedef struct {
   MtdDiskPartition partitions[MTD_MAX_PARTITIONS];
 } __attribute__((packed)) MtdDiskLayout;
 
-#define MTD_DRIVE_V1_SIZE (32 + 16*20)
+#define MTD_DRIVE_V1_SIZE (32 + 16*48)
 
-#define MTDENTRY_EXPECTED_SIZE (20)
+#define MTDENTRY_EXPECTED_SIZE (48)
 #define MTDLAYOUT_EXPECTED_SIZE (32 + 16 * MTDENTRY_EXPECTED_SIZE)
 
 
