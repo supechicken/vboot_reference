@@ -8,6 +8,7 @@
 #include "sysincludes.h"
 
 #include "crc32.h"
+#include "gbb_access.h"
 #include "gbb_header.h"
 #include "utility.h"
 #include "vboot_api.h"
@@ -207,11 +208,13 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
  */
 VbAudioContext *VbAudioOpen(VbCommonParams *cparams)
 {
-	GoogleBinaryBlockHeader* gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader * gbb;
 	VbAudioContext *audio = &au;
 	int use_short = 0;
 	uint64_t a, b;
+
+	if (VbGbbGetHeader(cparams, &gbb))
+		return NULL;
 
 	/* Note: may need to allocate things here in future */
 

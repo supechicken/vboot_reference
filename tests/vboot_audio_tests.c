@@ -30,7 +30,8 @@ extern uint32_t default_count_, short_count_;
 
 /* Mock data */
 static VbCommonParams cparams;
-static GoogleBinaryBlockHeader gbb;
+static LoadKernelParams lkp;
+
 static VbDevMusicNote good_notes[] = { {100, 100},
                                        {100, 0},
                                        {200, 200},
@@ -59,10 +60,17 @@ void FixChecksum(VbDevMusic *hdr) {
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void) {
+  GoogleBinaryBlockHeader *gbb = &lkp.gbb;
+
   VBDEBUG(("ResetMocks()\n"));
   Memset(&cparams, 0, sizeof(cparams));
-  cparams.gbb_data = &gbb;
-  Memset(&gbb, 0, sizeof(gbb));
+  Memset(&lkp, 0, sizeof(lkp));
+#ifdef VBOOT_GBB_DATA
+  cparams.gbb_data = gbb;
+#else
+  lkp.magic = LOADKERNELPARAMS_MAGIC;
+  cparams.vboot_context = &lkp;
+#endif
   gbb.major_version = GBB_MAJOR_VER;
   gbb.minor_version = GBB_MINOR_VER;
   gbb.flags = 0;
