@@ -9,6 +9,7 @@
 #ifndef VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 #define VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 
+#include "bmpblk_header.h"
 #include "vboot_api.h"
 #include "vboot_nvstorage.h"
 
@@ -19,6 +20,8 @@
 #define BOOT_FLAG_DEVELOPER (0x01ULL)
 /* In recovery mode */
 #define BOOT_FLAG_RECOVERY  (0x02ULL)
+
+#define LOADKERNELPARAMS_MAGIC  0xfeed11fe
 
 typedef struct LoadKernelParams {
 	/* Inputs to LoadKernel() */
@@ -32,10 +35,18 @@ typedef struct LoadKernelParams {
 	 * contain the actual data size placed into the buffer.
 	 */
 	uint64_t shared_data_size;
+	/* Magic number LOADKERNELPARAMS_MAGIC */
+	uint32_t magic;
+
 	/* Pointer to GBB data */
 	void *gbb_data;
 	/* Size of GBB data in bytes */
 	uint64_t gbb_size;
+
+	/* Things that we read from the GBB */
+	GoogleBinaryBlockHeader gbb;
+	BmpBlockHeader *bmp;
+
 	/* Disk handle for current device */
 	VbExDiskHandle_t disk_handle;
 	/* Bytes per lba sector on current device */
@@ -74,7 +85,7 @@ typedef struct LoadKernelParams {
  * Returns VBERROR_SUCCESS if successful.  If unsuccessful, sets a recovery
  * reason via VbNvStorage and returns an error code.
  */
-VbError_t LoadKernel(LoadKernelParams *params);
+VbError_t LoadKernel(VbCommonParams *cparams, LoadKernelParams *params);
 
 /*
  * The bootloader is loaded using the EFI LoadImage() and StartImage() calls.

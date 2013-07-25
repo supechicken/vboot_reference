@@ -104,6 +104,10 @@ enum VbErrorPredefined_t {
 	VBERROR_VGA_OPROM_MISMATCH            = 0x10021,
 	/* Need EC to reboot to read-only code */
 	VBERROR_EC_REBOOT_TO_RO_REQUIRED      = 0x10022,
+	/* Cannot read from firmware region */
+	VBERROR_FIRMWARE_READ_FAILED          = 0x10023,
+	/* No image present (not really an error) */
+	VBERROR_NO_IMAGE_PRESENT              = 0x10024,
 
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */
@@ -263,10 +267,11 @@ enum VbSelectFirmware_t {
 	/* Recovery mode */
 	VB_SELECT_FIRMWARE_RECOVERY = 0,
 	/* Rewritable firmware A/B for normal or developer path */
-	VB_SELECT_FIRMWARE_A = 1,
-	VB_SELECT_FIRMWARE_B = 2,
+	VB_SELECT_FIRMWARE_A,
+	VB_SELECT_FIRMWARE_B,
 	/* Read only firmware for normal or developer path. */
-	VB_SELECT_FIRMWARE_READONLY = 3
+	VB_SELECT_FIRMWARE_READONLY,
+        VB_SELECT_FIRMWARE_COUNT,
 };
 
 /* Data only used by VbSelectFirmware() */
@@ -825,5 +830,30 @@ enum {
  * Execute legacy boot option.
  */
 int VbExLegacy(void);
+
+enum vb_firware_region {
+	VB_REGION_GBB,
+
+	VB_REGION_COUNT,
+};
+
+/**
+ * Read data from a region of the firmware image
+ *
+ * Vboot wants access to a firmware region. This function should allocate
+ * memory for the data, read it from the firmware image (e.g. SPI flash)
+ * and return it.
+ *
+ * @param cparams	Common parameters, e.g. use member caller_context
+ *			to point to useful context data
+ * @param region	Firmware region to read
+ * @param offset	Start offset within region
+ * @param size		Number of bytes to read
+ * @param buf		Please to put data
+ * @return VBERROR_... error, VBERROR_SUCCESS on success,
+ */
+VbError_t VbExReadFirmwareRegion(VbCommonParams *cparams,
+				 enum vb_firware_region,
+				 uint32_t offset, uint32_t size, void *buf);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */

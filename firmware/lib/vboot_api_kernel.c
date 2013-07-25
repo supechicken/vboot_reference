@@ -7,6 +7,7 @@
 
 #include "sysincludes.h"
 
+#include "gbb_access.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
 #include "rollback_index.h"
@@ -20,6 +21,23 @@
 
 /* Global variables */
 static VbNvContext vnc;
+
+/* Access kernel params */
+struct LoadKernelParams *VbGetKernelParams(VbCommonParams *cparams)
+{
+	struct LoadKernelParams *p = cparams->vboot_context;
+
+	/*
+	 * This should not happen since the pointer it set up in
+	 * VbSelectAndLoadKernel().
+	 */
+	if (!p || p->magic != LOADKERNELPARAMS_MAGIC) {
+		VBDEBUG(("%s() Fatal internal error\n"));
+		return NULL;
+	}
+
+	return p;
+}
 
 #ifdef CHROMEOS_ENVIRONMENT
 /* Global variable accessor for unit tests */
@@ -97,7 +115,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 		p->disk_handle = disk_info[i].handle;
 		p->bytes_per_lba = disk_info[i].bytes_per_lba;
 		p->ending_lba = disk_info[i].lba_count - 1;
-		retval = LoadKernel(p);
+		retval = LoadKernel(cparams, p);
 		VBDEBUG(("VbTryLoadKernel() LoadKernel() = %d\n", retval));
 
 		/*
@@ -173,8 +191,7 @@ VbError_t VbBootNormal(VbCommonParams *cparams, LoadKernelParams *p)
 
 VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 {
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb = &p->gbb;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
@@ -812,8 +829,6 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	VbError_t retval = VBERROR_SUCCESS;
 	LoadKernelParams p;
 	uint32_t tpm_status = 0;
@@ -831,9 +846,31 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	kparams->bootloader_size = 0;
 	Memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	/*
+	 * TODO(sjg@chromium.org):
+	 * To avoid changing many many functions to make access to
+	 * LoadKernelParams, add a pointer to it in VbCommonParams.
+	 * This is in fact already defined and used in the case of
+	 * VbLoadFirmware().
+	 *
+	 * It would be cleaner to pass around the parts of the context
+	 * that are needed, or a LoadKernelParams pointer. For now,
+	 * this avoid wholesale code changes.
+	 */
+	Memset(&p, 0, sizeof(p));
+
+	p.gbb_data = cparams->gbb_data;
+	p.gbb_size = cparams->gbb_size;
+
+	cparams->vboot_context = &p;
+	p.magic = LOADKERNELPARAMS_MAGIC;
+	retval = VbGbbGetHeader_Read(cparams, &p.gbb);
+	if (retval)
+		goto VbSelectAndLoadKernel_exit;
+
 	/* Do EC software sync if necessary */
 	if ((shared->flags & VBSD_EC_SOFTWARE_SYNC) &&
-	    !(gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
+	    !(p.gbb.flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
 		retval = VbEcSoftwareSync(cparams);
 		if (retval != VBERROR_SUCCESS)
 			goto VbSelectAndLoadKernel_exit;
@@ -852,12 +889,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	shared->kernel_version_tpm_start = shared->kernel_version_tpm;
 
 	/* Fill in params for calls to LoadKernel() */
-	Memset(&p, 0, sizeof(p));
 	p.shared_data_blob = cparams->shared_data_blob;
 	p.shared_data_size = cparams->shared_data_size;
-	p.gbb_data = cparams->gbb_data;
-	p.gbb_size = cparams->gbb_size;
-
 	/*
 	 * This could be set to NULL, in which case the vboot header
 	 * information about the load address and size will be used.
@@ -982,6 +1015,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 
  VbSelectAndLoadKernel_exit:
 
+	p.magic = 0;
 	VbNvTeardown(&vnc);
 	if (vnc.raw_changed)
 		VbExNvStorageWrite(vnc.raw);
