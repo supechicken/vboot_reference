@@ -76,7 +76,8 @@ VbError_t VbExNvStorageWrite(const uint8_t *buf)
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbEcSoftwareSync(VbCommonParams *cparams)
+VbError_t VbEcSoftwareSync(VbSharedDataHeader *shared,
+			   LoadKernelParams *lkparams)
 {
 	return ecsync_retval;
 }

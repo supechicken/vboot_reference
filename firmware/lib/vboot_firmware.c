@@ -8,6 +8,7 @@
 
 #include "sysincludes.h"
 
+#include "gbb_access.h"
 #include "gbb_header.h"
 #include "load_firmware_fw.h"
 #include "utility.h"
@@ -41,8 +42,7 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader gbb;
 	VbPublicKey *root_key;
 	VbLoadFirmwareInternal *lfi;
 
@@ -62,12 +62,14 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 	VBDEBUG(("LoadFirmware started...\n"));
 
 	/* Must have a root key from the GBB */
-	if (!gbb) {
+	retval = VbGbbReadHeader_cparams(cparams, &gbb);
+	if (!retval)
+		retval = VbGbbGetRootKey_cparams(cparams, &gbb, &root_key);
+	if (retval) {
 		VBDEBUG(("No GBB\n"));
 		retval = VBERROR_INVALID_GBB;
 		goto LoadFirmwareExit;
 	}
-	root_key = (VbPublicKey *)((uint8_t *)gbb + gbb->rootkey_offset);
 
 	/* Parse flags */
 	is_dev = (shared->flags & VBSD_BOOT_DEV_SWITCH_ON ? 1 : 0);
@@ -141,7 +143,7 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 
 		/* Check for rollback of key version. */
 		key_version = key_block->data_key.key_version;
-		if (!(gbb->flags & GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)) {
+		if (!(gbb.flags & GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)) {
 			if (key_version < (shared->fw_version_tpm >> 16)) {
 				VBDEBUG(("Key rollback detected.\n"));
 				*check_result = VBSD_LF_CHECK_KEY_ROLLBACK;
@@ -184,7 +186,7 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		combined_version = (uint32_t)((key_version << 16) |
 				(preamble->firmware_version & 0xFFFF));
 		if (combined_version < shared->fw_version_tpm &&
-		    !(gbb->flags & GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)) {
+		    !(gbb.flags & GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)) {
 			VBDEBUG(("Firmware version rollback detected.\n"));
 			*check_result = VBSD_LF_CHECK_FW_ROLLBACK;
 			RSAPublicKeyFree(data_key);
@@ -209,11 +211,13 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		}
 
 		/* Handle preamble flag for using the RO normal/dev code path */
+		VBDEBUG(("Preamble flags %#x\n", VbGetFirmwarePreambleFlags(preamble)));
 		if (VbGetFirmwarePreambleFlags(preamble) &
 		    VB_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 
 			/* Fail if calling firmware doesn't support RO normal */
 			if (!(shared->flags & VBSD_BOOT_RO_NORMAL_SUPPORT)) {
+				VBDEBUG(("No RO normal support.\n"));
 				*check_result = VBSD_LF_CHECK_NO_RO_NORMAL;
 				RSAPublicKeyFree(data_key);
 				continue;
@@ -343,6 +347,8 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 	}
 
  LoadFirmwareExit:
+	VbExFree(root_key);
+
 	/* Store recovery request, if any */
 	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
 		recovery : VBNV_RECOVERY_NOT_REQUESTED);
@@ -351,8 +357,10 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 	 * recovery was not previously requested. */
 	if (!(shared->flags & VBSD_BOOT_RO_NORMAL_SUPPORT) &&
 	    VBNV_RECOVERY_NOT_REQUESTED == shared->recovery_reason &&
-	    VBERROR_SUCCESS != retval)
+	    VBERROR_SUCCESS != retval) {
+		VBDEBUG(("RO normal but we got an error.\n"));
 		shared->recovery_reason = recovery;
+	}
 
 	return retval;
 }

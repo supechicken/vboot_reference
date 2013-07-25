@@ -176,25 +176,25 @@ static void VbUserConfirmsTest(void)
 
 	ResetMocks();
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 0), -1, "Shutdown requested");
+	TEST_EQ(VbUserConfirms(&lkp, 0), -1, "Shutdown requested");
 
 	ResetMocks();
 	mock_keypress[0] = '\r';
-	TEST_EQ(VbUserConfirms(&cparams, 0), 1, "Enter");
+	TEST_EQ(VbUserConfirms(&lkp, 0), 1, "Enter");
 
 	ResetMocks();
 	mock_keypress[0] = 0x1b;
-	TEST_EQ(VbUserConfirms(&cparams, 0), 0, "Esc");
+	TEST_EQ(VbUserConfirms(&lkp, 0), 0, "Esc");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 1), 0, "Space means no");
+	TEST_EQ(VbUserConfirms(&lkp, 1), 0, "Space means no");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 0), -1, "Space ignored");
+	TEST_EQ(VbUserConfirms(&lkp, 0), -1, "Space ignored");
 
 	printf("...done.\n");
 }

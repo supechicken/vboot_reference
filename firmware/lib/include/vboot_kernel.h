@@ -13,6 +13,8 @@
 #include "load_firmware_fw.h"
 #include "vboot_api.h"
 
+struct VbSharedDataHeader;
+
 /**
  * Allocate and read GPT data from the drive.  The sector_bytes and
  * drive_sectors fields should be filled on input.  The primary and secondary
@@ -48,7 +50,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
  *
  * Returns: 1=yes, 0=no, -1 = shutdown.
  */
-int VbUserConfirms(VbCommonParams *cparams, int space_means_no);
+int VbUserConfirms(LoadKernelParams *p, int space_means_no);
 
 /**
  * Handle a normal boot.
@@ -68,6 +70,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p);
 /**
  * Sync EC firmware to expected version.
  */
-VbError_t VbEcSoftwareSync(VbCommonParams *cparams);
+VbError_t VbEcSoftwareSync(struct VbSharedDataHeader *shared,
+			   LoadKernelParams *p);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */

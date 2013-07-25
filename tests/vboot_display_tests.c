@@ -13,6 +13,7 @@
 #include "bmpblk_font.h"
 #include "gbb_header.h"
 #include "host_common.h"
+#include "load_kernel_fw.h"
 #include "test_common.h"
 #include "vboot_common.h"
 #include "vboot_display.h"
@@ -27,6 +28,7 @@ static char gbb_data[4096 + sizeof(GoogleBinaryBlockHeader)];
 static GoogleBinaryBlockHeader *gbb = (GoogleBinaryBlockHeader *)gbb_data;
 static BmpBlockHeader *bhdr;
 static char debug_info[4096];
+static LoadKernelParams lkp;
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
@@ -65,6 +67,9 @@ static void ResetMocks(void)
 
 	Memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
+
+	Memset(&lkp, 0, sizeof(lkp));
+	lkp.gbb = *gbb;
 
 	*debug_info = 0;
 }
@@ -109,7 +114,7 @@ static void DebugInfoTest(void)
 
 	/* Display debug info */
 	ResetMocks();
-	VbDisplayDebugInfo(&cparams, &vnc);
+	VbDisplayDebugInfo(&lkp, &vnc);
 	TEST_NEQ(*debug_info, '\0', "Some debug info was displayed");
 }
 
@@ -120,17 +125,17 @@ static void LocalizationTest(void)
 
 	ResetMocks();
 	gbb->bmpfv_size = 0;
-	TEST_EQ(VbGetLocalizationCount(&cparams, &count),
+	TEST_EQ(VbGetLocalizationCount(&lkp, &count),
 		VBERROR_INVALID_GBB, "VbGetLocalizationCount bad gbb");
 	TEST_EQ(count, 0, "  count");
 
 	ResetMocks();
 	bhdr->signature[0] ^= 0x5a;
-	TEST_EQ(VbGetLocalizationCount(&cparams, &count),
+	TEST_EQ(VbGetLocalizationCount(&lkp, &count),
 		VBERROR_INVALID_BMPFV, "VbGetLocalizationCount bad bmpfv");
 
 	ResetMocks();
-	TEST_EQ(VbGetLocalizationCount(&cparams, &count), 0,
+	TEST_EQ(VbGetLocalizationCount(&lkp, &count), 0,
 		"VbGetLocalizationCount()");
 	TEST_EQ(count, 3, "  count");
 
@@ -142,27 +147,27 @@ static void DisplayKeyTest(void)
 	uint32_t u;
 
 	ResetMocks();
-	VbCheckDisplayKey(&cparams, 'q', &vnc);
+	VbCheckDisplayKey(&lkp, 'q', &vnc);
 	TEST_EQ(*debug_info, '\0', "DisplayKey q = does nothing");
 
 	ResetMocks();
-	VbCheckDisplayKey(&cparams, '\t', &vnc);
+	VbCheckDisplayKey(&lkp, '\t', &vnc);
 	TEST_NEQ(*debug_info, '\0', "DisplayKey tab = display");
 
 	/* Toggle localization */
 	ResetMocks();
 	VbNvSet(&vnc, VBNV_LOCALIZATION_INDEX, 0);
 	VbNvTeardown(&vnc);
-	VbCheckDisplayKey(&cparams, VB_KEY_DOWN, &vnc);
+	VbCheckDisplayKey(&lkp, VB_KEY_DOWN, &vnc);
 	VbNvGet(&vnc, VBNV_LOCALIZATION_INDEX, &u);
 	TEST_EQ(u, 2, "DisplayKey up");
-	VbCheckDisplayKey(&cparams, VB_KEY_LEFT, &vnc);
+	VbCheckDisplayKey(&lkp, VB_KEY_LEFT, &vnc);
 	VbNvGet(&vnc, VBNV_LOCALIZATION_INDEX, &u);
 	TEST_EQ(u, 1, "DisplayKey left");
-	VbCheckDisplayKey(&cparams, VB_KEY_RIGHT, &vnc);
+	VbCheckDisplayKey(&lkp, VB_KEY_RIGHT, &vnc);
 	VbNvGet(&vnc, VBNV_LOCALIZATION_INDEX, &u);
 	TEST_EQ(u, 2, "DisplayKey right");
-	VbCheckDisplayKey(&cparams, VB_KEY_UP, &vnc);
+	VbCheckDisplayKey(&lkp, VB_KEY_UP, &vnc);
 	VbNvGet(&vnc, VBNV_LOCALIZATION_INDEX, &u);
 	TEST_EQ(u, 0, "DisplayKey up");
 
@@ -171,7 +176,7 @@ static void DisplayKeyTest(void)
 	VbNvSet(&vnc, VBNV_LOCALIZATION_INDEX, 1);
 	VbNvTeardown(&vnc);
 	bhdr->signature[0] ^= 0x5a;
-	VbCheckDisplayKey(&cparams, VB_KEY_UP, &vnc);
+	VbCheckDisplayKey(&lkp, VB_KEY_UP, &vnc);
 	VbNvGet(&vnc, VBNV_LOCALIZATION_INDEX, &u);
 	TEST_EQ(u, 0, "DisplayKey invalid");
 

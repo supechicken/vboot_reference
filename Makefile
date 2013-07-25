@@ -239,6 +239,7 @@ VBINIT_SRCS = \
 	firmware/lib/vboot_api_init.c \
 	firmware/lib/vboot_common_init.c \
 	firmware/lib/vboot_nvstorage.c \
+	firmware/lib/gbb_access_fw.c \
 
 # Additional firmware library sources needed by VbSelectFirmware() call
 VBSF_SRCS = \
@@ -264,7 +265,8 @@ VBSLK_SRCS = \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
 	firmware/lib/vboot_display.c \
-	firmware/lib/vboot_kernel.c
+	firmware/lib/vboot_kernel.c \
+	firmware/lib/gbb_access_kernel.c \
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
