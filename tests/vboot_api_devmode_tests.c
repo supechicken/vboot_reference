@@ -135,7 +135,7 @@ static LoadKernelParams lkparams;
 static VbNvContext vnc;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader* shared = (VbSharedDataHeader*)shared_data;
-static GoogleBinaryBlockHeader gbb;
+static GoogleBinaryBlockHeader *gbb = &lkparams.gbb;
 static int current_time;
 static uint64_t current_ticks;
 static int current_event;
@@ -152,9 +152,10 @@ static void ResetMocks(void) {
   Memset(&cparams, 0, sizeof(cparams));
   cparams.shared_data_size = sizeof(shared_data);
   cparams.shared_data_blob = shared_data;
-  cparams.gbb_data = &gbb;
+  cparams.gbb_data = gbb;
 
   Memset(&lkparams, 0, sizeof(lkparams));
+  lkparams.cparams = &cparams;
 
   Memset(&vnc, 0, sizeof(vnc));
   VbNvSetup(&vnc);
@@ -164,10 +165,10 @@ static void ResetMocks(void) {
   VbSharedDataInit(shared, sizeof(shared_data));
   shared->fw_keyblock_flags = 0xABCDE0;
 
-  Memset(&gbb, 0, sizeof(gbb));
-  gbb.major_version = GBB_MAJOR_VER;
-  gbb.minor_version = GBB_MINOR_VER;
-  gbb.flags = 0;
+  Memset(gbb, 0, sizeof(gbb));
+  gbb->major_version = GBB_MAJOR_VER;
+  gbb->minor_version = GBB_MINOR_VER;
+  gbb->flags = 0;
 
   current_ticks = 0;
   current_time = 0;
@@ -249,7 +250,7 @@ uint64_t VbExGetTimer(void) {
 }
 
 VbError_t VbExBeep(uint32_t msec, uint32_t frequency) {
-  VBDEBUG(("VbExBeep(%d, %d) at %d msec\n", msec, frequency, current_time));
+  printf("VbExBeep(%d, %d) at %d msec\n", msec, frequency, current_time);
 
   if (current_event < max_events &&
       msec == expected_event[current_event].msec &&
@@ -305,7 +306,7 @@ static void VbBootDeveloperSoundTest(void) {
   for (i=0; i<num_tests; i++) {
     VBDEBUG(("STARTING %s ...\n", test[i].name));
     ResetMocks();
-    gbb.flags = test[i].gbb_flags;
+    gbb->flags = test[i].gbb_flags;
     beep_return = test[i].beep_return;
     kbd_fire_key = test[i].keypress_key;
     kbd_fire_at = test[i].keypress_at_count;

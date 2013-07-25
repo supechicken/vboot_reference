@@ -24,8 +24,8 @@
 static VbCommonParams cparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
-static GoogleBinaryBlockHeader gbb;
 static LoadKernelParams lkp;
+static GoogleBinaryBlockHeader *gbb = &lkp.gbb;
 
 static int shutdown_request_calls_left;
 static int audio_looping_calls_left;
@@ -48,12 +48,14 @@ static void ResetMocks(void)
 	Memset(&cparams, 0, sizeof(cparams));
 	cparams.shared_data_size = sizeof(shared_data);
 	cparams.shared_data_blob = shared_data;
-	cparams.gbb_data = &gbb;
+	cparams.gbb_data = gbb;
 
-	Memset(&gbb, 0, sizeof(gbb));
-	gbb.major_version = GBB_MAJOR_VER;
-	gbb.minor_version = GBB_MINOR_VER;
-	gbb.flags = 0;
+	Memset(&lkp, 0, sizeof(lkp));
+
+	Memset(gbb, 0, sizeof(*gbb));
+	gbb->major_version = GBB_MAJOR_VER;
+	gbb->minor_version = GBB_MINOR_VER;
+	gbb->flags = 0;
 
 	/*
 	 * Only the outermost vboot_api_kernel call sets vboot_api_kernel's
@@ -65,8 +67,6 @@ static void ResetMocks(void)
 
 	Memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
-
-	Memset(&lkp, 0, sizeof(lkp));
 
 	shutdown_request_calls_left = -1;
 	audio_looping_calls_left = 30;
@@ -176,25 +176,25 @@ static void VbUserConfirmsTest(void)
 
 	ResetMocks();
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 0), -1, "Shutdown requested");
+	TEST_EQ(VbUserConfirms(&lkp, 0), -1, "Shutdown requested");
 
 	ResetMocks();
 	mock_keypress[0] = '\r';
-	TEST_EQ(VbUserConfirms(&cparams, 0), 1, "Enter");
+	TEST_EQ(VbUserConfirms(&lkp, 0), 1, "Enter");
 
 	ResetMocks();
 	mock_keypress[0] = 0x1b;
-	TEST_EQ(VbUserConfirms(&cparams, 0), 0, "Esc");
+	TEST_EQ(VbUserConfirms(&lkp, 0), 0, "Esc");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 1), 0, "Space means no");
+	TEST_EQ(VbUserConfirms(&lkp, 1), 0, "Space means no");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	shutdown_request_calls_left = 1;
-	TEST_EQ(VbUserConfirms(&cparams, 0), -1, "Space ignored");
+	TEST_EQ(VbUserConfirms(&lkp, 0), -1, "Space ignored");
 
 	printf("...done.\n");
 }
@@ -222,7 +222,7 @@ static void VbBootDevTest(void)
 
 	/* Proceed to legacy after timeout if GBB flag set */
 	ResetMocks();
-	gbb.flags |= GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
+	gbb->flags |= GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 
@@ -286,7 +286,7 @@ static void VbBootDevTest(void)
 	/* Enter does if GBB flag set */
 	ResetMocks();
 	shared->flags = VBSD_HONOR_VIRT_DEV_SWITCH | VBSD_BOOT_DEV_SWITCH_ON;
-	gbb.flags |= GBB_FLAG_ENTER_TRIGGERS_TONORM;
+	gbb->flags |= GBB_FLAG_ENTER_TRIGGERS_TONORM;
 	mock_keypress[0] = '\r';
 	mock_keypress[1] = '\r';
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), VBERROR_TPM_REBOOT_REQUIRED,
@@ -295,7 +295,7 @@ static void VbBootDevTest(void)
 	/* Tonorm ignored if GBB forces dev switch on */
 	ResetMocks();
 	shared->flags = VBSD_HONOR_VIRT_DEV_SWITCH | VBSD_BOOT_DEV_SWITCH_ON;
-	gbb.flags |= GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	gbb->flags |= GBB_FLAG_FORCE_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
 	mock_keypress[1] = '\r';
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Can't tonorm gbb-dev");
@@ -324,7 +324,7 @@ static void VbBootDevTest(void)
 	/* Ctrl+D doesn't boot legacy even if GBB flag is set */
 	ResetMocks();
 	mock_keypress[0] = 0x04;
-	gbb.flags |= GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
+	gbb->flags |= GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Ctrl+D");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
@@ -336,7 +336,7 @@ static void VbBootDevTest(void)
 
 	ResetMocks();
 
-	gbb.flags |= GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
+	gbb->flags |= GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = 0x0c;
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Ctrl+L force legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
@@ -361,7 +361,7 @@ static void VbBootDevTest(void)
 
 	/* Ctrl+U enabled via GBB */
 	ResetMocks();
-	gbb.flags |= GBB_FLAG_FORCE_DEV_BOOT_USB;
+	gbb->flags |= GBB_FLAG_FORCE_DEV_BOOT_USB;
 	mock_keypress[0] = 0x15;
 	vbtlk_retval = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 0, "Ctrl+U force USB");
