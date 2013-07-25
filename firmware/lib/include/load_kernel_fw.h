@@ -9,6 +9,8 @@
 #ifndef VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 #define VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 
+#include "bmpblk_header.h"
+#include "gbb_header.h"
 #include "vboot_api.h"
 #include "vboot_nvstorage.h"
 
@@ -36,6 +38,14 @@ typedef struct LoadKernelParams {
 	void *gbb_data;
 	/* Size of GBB data in bytes */
 	uint64_t gbb_size;
+
+	/* Paramters passed in, and which we pass back to U-Boot */
+	VbCommonParams *cparams;
+
+	/* Things that we read from the GBB */
+	GoogleBinaryBlockHeader gbb;
+	BmpBlockHeader *bmp;
+
 	/* Disk handle for current device */
 	VbExDiskHandle_t disk_handle;
 	/* Bytes per lba sector on current device */

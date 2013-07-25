@@ -10,12 +10,14 @@
 
 #include "vboot_api.h"
 
+struct LoadKernelParams;
+
 typedef struct VbAudioContext VbAudioContext;
 
 /**
  * Initialization function. Returns context for processing dev-mode delay.
  */
-VbAudioContext *VbAudioOpen(VbCommonParams *cparams);
+VbAudioContext *VbAudioOpen(struct LoadKernelParams *lkparams);
 
 /**
  * Caller should loop without extra delay until this returns false.

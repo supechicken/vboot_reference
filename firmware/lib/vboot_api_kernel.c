@@ -7,6 +7,7 @@
 
 #include "sysincludes.h"
 
+#include "region.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
 #include "rollback_index.h"
@@ -128,7 +129,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 
 #define CONFIRM_KEY_DELAY 20  /* Check confirm screen keys every 20ms */
 
-int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
+int VbUserConfirms(LoadKernelParams *lkparams, int space_means_no)
 {
 	uint32_t key;
 
@@ -155,7 +156,7 @@ int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
 			return 0;
 			break;
 		default:
-			VbCheckDisplayKey(cparams, key, &vnc);
+			VbCheckDisplayKey(lkparams, key, &vnc);
 		}
 		VbExSleepMs(CONFIRM_KEY_DELAY);
 	}
@@ -173,8 +174,7 @@ VbError_t VbBootNormal(VbCommonParams *cparams, LoadKernelParams *p)
 
 VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 {
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb = &p->gbb;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
@@ -193,10 +193,10 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 		allow_legacy = 1;
 
 	/* Show the dev mode warning screen */
-	VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
+	VbDisplayScreen(p, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
 
 	/* Get audio/delay context */
-	audio = VbAudioOpen(cparams);
+	audio = VbAudioOpen(p);
 
 	/* We'll loop until we finish the delay or are interrupted */
 	do {
@@ -239,18 +239,18 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 					VbExBeep(120, 400);
 					break;
 				}
-				VbDisplayScreen(cparams,
+				VbDisplayScreen(p,
 						VB_SCREEN_DEVELOPER_TO_NORM,
 						0, &vnc);
 				/* Ignore space in VbUserConfirms()... */
-				switch (VbUserConfirms(cparams, 0)) {
+				switch (VbUserConfirms(p, 0)) {
 				case 1:
 					VBDEBUG(("%s() - leaving dev-mode.\n",
 						 __func__));
 					VbNvSet(&vnc, VBNV_DISABLE_DEV_REQUEST,
 						1);
 					VbDisplayScreen(
-						cparams,
+						p,
 						VB_SCREEN_TO_NORM_CONFIRMED,
 						0, &vnc);
 					VbExSleepMs(5000);
@@ -264,11 +264,11 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 					VBDEBUG(("%s() - stay in dev-mode\n",
 						 __func__));
 					VbDisplayScreen(
-						cparams,
+						p,
 						VB_SCREEN_DEVELOPER_WARNING,
 						0, &vnc);
 					/* Start new countdown */
-					audio = VbAudioOpen(cparams);
+					audio = VbAudioOpen(p);
 				}
 			} else {
 				/*
@@ -333,7 +333,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 				 * Clear the screen to show we get the Ctrl+U
 				 * key press.
 				 */
-				VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0,
+				VbDisplayScreen(p, VB_SCREEN_BLANK, 0,
 						&vnc);
 				if (VBERROR_SUCCESS ==
 				    VbTryLoadKernel(cparams, p,
@@ -357,7 +357,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 						VBNV_RECOVERY_NOT_REQUESTED);
 					/* Show dev mode warning screen again */
 					VbDisplayScreen(
-						cparams,
+						p,
 						VB_SCREEN_DEVELOPER_WARNING,
 						0, &vnc);
 				}
@@ -365,7 +365,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 			break;
 		default:
 			VBDEBUG(("VbBootDeveloper() - pressed key %d\n", key));
-			VbCheckDisplayKey(cparams, key, &vnc);
+			VbCheckDisplayKey(p, key, &vnc);
 			break;
 		}
 	} while(VbAudioLooping(audio));
@@ -424,8 +424,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 			VbExDiskFreeInfo(disk_info, NULL);
 
 			if (0 == disk_count) {
-				VbDisplayScreen(cparams, VB_SCREEN_BLANK,
-						0, &vnc);
+				VbDisplayScreen(p, VB_SCREEN_BLANK, 0, &vnc);
 				break;
 			}
 
@@ -433,16 +432,14 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 				 "waiting for %d disks to be removed\n",
 				 (int)disk_count));
 
-			VbDisplayScreen(cparams, VB_SCREEN_RECOVERY_REMOVE,
-					0, &vnc);
+			VbDisplayScreen(p, VB_SCREEN_RECOVERY_REMOVE, 0, &vnc);
 
 			/*
 			 * Scan keyboard more frequently than media, since x86
 			 * platforms don't like to scan USB too rapidly.
 			 */
 			for (i = 0; i < REC_DISK_DELAY; i += REC_KEY_DELAY) {
-				VbCheckDisplayKey(cparams, VbExKeyboardRead(),
-						  &vnc);
+				VbCheckDisplayKey(p, VbExKeyboardRead(), &vnc);
 				if (VbExIsShutdownRequested())
 					return VBERROR_SHUTDOWN_REQUESTED;
 				VbExSleepMs(REC_KEY_DELAY);
@@ -466,7 +463,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(cparams, VBERROR_NO_DISK_FOUND == retval ?
+		VbDisplayScreen(p, VBERROR_NO_DISK_FOUND == retval ?
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
 				0, &vnc);
@@ -492,11 +489,11 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 			    (shared->flags & VBSD_BOOT_REC_SWITCH_ON) &&
 			    VbExTrustEC()) {
 				/* Ask the user to confirm entering dev-mode */
-				VbDisplayScreen(cparams,
+				VbDisplayScreen(p,
 						VB_SCREEN_RECOVERY_TO_DEV,
 						0, &vnc);
 				/* SPACE means no... */
-				switch (VbUserConfirms(cparams, 1)) {
+				switch (VbUserConfirms(p, 1)) {
 				case 1:
 					VBDEBUG(("%s() Enabling dev-mode...\n",
 						 __func__));
@@ -520,7 +517,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 					break;
 				}
 			} else {
-				VbCheckDisplayKey(cparams, key, &vnc);
+				VbCheckDisplayKey(p, key, &vnc);
 			}
 			if (VbExIsShutdownRequested())
 				return VBERROR_SHUTDOWN_REQUESTED;
@@ -547,10 +544,9 @@ static VbError_t EcProtectRW(void)
 	return rv;
 }
 
-VbError_t VbEcSoftwareSync(VbCommonParams *cparams)
+VbError_t VbEcSoftwareSync(VbSharedDataHeader *shared,
+			   LoadKernelParams *lkparams)
 {
-	VbSharedDataHeader *shared =
-		(VbSharedDataHeader *)cparams->shared_data_blob;
 	int in_rw = 0;
 	int rv;
 	const uint8_t *ec_hash = NULL;
@@ -761,7 +757,7 @@ VbError_t VbEcSoftwareSync(VbCommonParams *cparams)
 			 * FIXME(crosbug.com/p/12257): Ensure the VGA Option
 			 * ROM is loaded!
 			 */
-			VbDisplayScreen(cparams, VB_SCREEN_WAIT, 0, &vnc);
+			VbDisplayScreen(lkparams, VB_SCREEN_WAIT, 0, &vnc);
 		}
 
 		rv = VbExEcUpdateRW(expected, expected_size);
@@ -812,8 +808,6 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	VbError_t retval = VBERROR_SUCCESS;
 	LoadKernelParams p;
 	uint32_t tpm_status = 0;
@@ -831,10 +825,29 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	kparams->bootloader_size = 0;
 	Memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	/*
+	 * TODO(sjg@chromium.org):
+	 * To avoid changing many many functions to make access to
+	 * LoadKernelParams, add a pointer to it in VbCommonParams.
+	 * This is in fact already defined and used in the case of
+	 * VbLoadFirmware().
+	 *
+	 * It would be cleaner to pass around the parts of the context
+	 * that are needed, or a LoadKernelParams pointer. For now,
+	 * this avoid wholesale code changes.
+	 */
+	Memset(&p, 0, sizeof(p));
+
+	p.cparams = cparams;
+	p.gbb_data = cparams->gbb_data;
+	p.gbb_size = cparams->gbb_size;
+
+	retval = VbRegionReadGbbHeader(&p);
+
 	/* Do EC software sync if necessary */
 	if ((shared->flags & VBSD_EC_SOFTWARE_SYNC) &&
-	    !(gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
-		retval = VbEcSoftwareSync(cparams);
+	    !(p.gbb.flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
+		retval = VbEcSoftwareSync(shared, &p);
 		if (retval != VBERROR_SUCCESS)
 			goto VbSelectAndLoadKernel_exit;
 	}
@@ -852,12 +865,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	shared->kernel_version_tpm_start = shared->kernel_version_tpm;
 
 	/* Fill in params for calls to LoadKernel() */
-	Memset(&p, 0, sizeof(p));
 	p.shared_data_blob = cparams->shared_data_blob;
 	p.shared_data_size = cparams->shared_data_size;
-	p.gbb_data = cparams->gbb_data;
-	p.gbb_size = cparams->gbb_size;
-
 	/*
 	 * This could be set to NULL, in which case the vboot header
 	 * information about the load address and size will be used.
@@ -898,12 +907,12 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		/* Recovery boot */
 		p.boot_flags |= BOOT_FLAG_RECOVERY;
 		retval = VbBootRecovery(cparams, &p);
-		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		VbDisplayScreen(&p, VB_SCREEN_BLANK, 0, &vnc);
 
 	} else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
 		/* Developer boot */
 		retval = VbBootDeveloper(cparams, &p);
-		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		VbDisplayScreen(&p, VB_SCREEN_BLANK, 0, &vnc);
 
 	} else {
 		/* Normal boot */
