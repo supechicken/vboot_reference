@@ -8,6 +8,7 @@
 #include "sysincludes.h"
 
 #include "bmpblk_font.h"
+#include "gbb_access.h"
 #include "gbb_header.h"
 #include "utility.h"
 #include "vboot_api.h"
@@ -20,47 +21,18 @@ static uint32_t disp_width = 0, disp_height = 0;
 
 VbError_t VbGetLocalizationCount(VbCommonParams *cparams, uint32_t *count)
 {
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	BmpBlockHeader *hdr;
+	VbError_t ret;
 
 	/* Default to 0 on error */
 	*count = 0;
 
-	/* Make sure bitmap data is inside the GBB and is non-zero in size */
-	if (0 == gbb->bmpfv_size ||
-	    gbb->bmpfv_offset > cparams->gbb_size ||
-	    gbb->bmpfv_offset + gbb->bmpfv_size > cparams->gbb_size) {
-		return VBERROR_INVALID_GBB;
-	}
-
-	/* Sanity-check the bitmap block header */
-	hdr = (BmpBlockHeader *)(((uint8_t *)gbb) + gbb->bmpfv_offset);
-	if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
-			 BMPBLOCK_SIGNATURE_SIZE)) ||
-	    (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
-	    ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
-	     (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
-		return VBERROR_INVALID_BMPFV;
-	}
+	ret = VbGbbGetBmpHeader(cparams, &hdr);
+	if (ret)
+		return ret;
 
 	*count = hdr->number_of_localizations;
 	return VBERROR_SUCCESS;
-}
-
-const char *VbHWID(VbCommonParams *cparams)
-{
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
-
-	if (0 == gbb->hwid_size ||
-	    gbb->hwid_offset > cparams->gbb_size ||
-	    gbb->hwid_offset + gbb->hwid_size > cparams->gbb_size) {
-		VBDEBUG(("VbHWID(): invalid hwid offset/size\n"));
-		return "{INVALID}";
-	}
-
-	return (char *)((uint8_t *)gbb + gbb->hwid_offset);
 }
 
 /*
@@ -164,62 +136,24 @@ void VbRenderTextAtPos(const char *text, int right_to_left,
 	}
 }
 
-#define OUTBUF_LEN 128
-
 VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
                                  VbNvContext *vncptr)
 {
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
-	static uint8_t *bmpfv;
-	void *fullimage = NULL;
+	char *fullimage = NULL;
 	BmpBlockHeader *hdr;
-	ScreenLayout *layout;
-	ImageInfo *image_info;
 	uint32_t screen_index;
 	uint32_t localization = 0;
 	VbError_t retval = VBERROR_UNKNOWN;   /* Assume error until proven ok */
 	uint32_t inoutsize;
-	uint32_t offset;
 	uint32_t i;
 	VbFont_t *font;
 	const char *text_to_show;
 	int rtol = 0;
-	char outbuf[OUTBUF_LEN] = "";
-	uint32_t used = 0;
+	VbError_t ret;
 
-	/* Make sure bitmap data is inside the GBB and is non-zero in size */
-	if (0 == gbb->bmpfv_size ||
-	    gbb->bmpfv_offset > cparams->gbb_size ||
-	    gbb->bmpfv_offset + gbb->bmpfv_size > cparams->gbb_size) {
-		VBDEBUG(("VbDisplayScreenFromGBB(): "
-			 "invalid bmpfv offset/size\n"));
-		return VBERROR_INVALID_GBB;
-	}
-
-	/* Copy bitmap data from GBB into RAM for speed */
-	if (!bmpfv) {
-#ifdef COPY_BMP_DATA
-		bmpfv = (uint8_t *)VbExMalloc(gbb->bmpfv_size);
-		Memcpy(bmpfv, ((uint8_t *)gbb) + gbb->bmpfv_offset,
-		       gbb->bmpfv_size);
-#else
-		bmpfv = ((uint8_t *)gbb) + gbb->bmpfv_offset;
-#endif
-	}
-
-	/* Sanity-check the bitmap block header */
-	hdr = (BmpBlockHeader *)bmpfv;
-	if ((0 != Memcmp(hdr->signature, BMPBLOCK_SIGNATURE,
-			 BMPBLOCK_SIGNATURE_SIZE)) ||
-	    (hdr->major_version > BMPBLOCK_MAJOR_VERSION) ||
-	    ((hdr->major_version == BMPBLOCK_MAJOR_VERSION) &&
-	     (hdr->minor_version > BMPBLOCK_MINOR_VERSION))) {
-		VBDEBUG(("VbDisplayScreenFromGBB(): "
-			 "invalid/too new bitmap header\n"));
-		retval = VBERROR_INVALID_BMPFV;
-		goto VbDisplayScreenFromGBB_exit;
-	}
+	ret = VbGbbGetBmpHeader(cparams, &hdr);
+	if (ret)
+		return ret;
 
 	/*
 	 * Translate screen ID into index.  Note that not all screens are in
@@ -278,43 +212,29 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		VbNvSet(vncptr, VBNV_LOCALIZATION_INDEX, localization);
 	}
 
-	/*
-	 * Calculate offset of screen layout = start of screen stuff + correct
-	 * locale + correct screen.
-	 */
-	offset = sizeof(BmpBlockHeader) +
-		localization * hdr->number_of_screenlayouts *
-			sizeof(ScreenLayout) +
-		screen_index * sizeof(ScreenLayout);
-	layout = (ScreenLayout *)(bmpfv + offset);
-
 	/* Display all bitmaps for the image */
 	for (i = 0; i < MAX_IMAGE_IN_LAYOUT; i++) {
-		if (!layout->images[i].image_info_offset)
+		ScreenLayout layout;
+		ImageInfo image_info;
+		char hwid[256];
+
+		if (!layout.images[i].image_info_offset)
 			continue;
 
-		offset = layout->images[i].image_info_offset;
-		image_info = (ImageInfo *)(bmpfv + offset);
-		fullimage = bmpfv + offset + sizeof(ImageInfo);
-		inoutsize = image_info->original_size;
-		if (inoutsize &&
-		    image_info->compression != COMPRESS_NONE) {
-			fullimage = VbExMalloc(inoutsize);
-			retval = VbExDecompress(
-					bmpfv + offset + sizeof(ImageInfo),
-					image_info->compressed_size,
-					image_info->compression,
-					fullimage, &inoutsize);
-			if (VBERROR_SUCCESS != retval) {
-				VbExFree(fullimage);
-				goto VbDisplayScreenFromGBB_exit;
-			}
+		ret = VbGbbGetImage(cparams, localization, screen_index,
+				    i, &layout, &image_info,
+				    &fullimage, &inoutsize);
+		if (ret == VBERROR_NO_IMAGE_PRESENT)
+			continue;
+		if (ret) {
+			retval = ret;
+			goto VbDisplayScreenFromGBB_exit;
 		}
 
-		switch(image_info->format) {
+		switch(image_info.format) {
 		case FORMAT_BMP:
-			retval = VbExDisplayImage(layout->images[i].x,
-						  layout->images[i].y,
+			retval = VbExDisplayImage(layout.images[i].x,
+						  layout.images[i].y,
 						  fullimage, inoutsize);
 			break;
 
@@ -323,21 +243,23 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 			 * The uncompressed blob is our font structure. Cache
 			 * it as needed.
 			 */
-			font = VbInternalizeFontData(fullimage);
+			font = VbInternalizeFontData(
+					(FontArrayHeader *)fullimage);
 
 			/* TODO: handle text in general here */
-			if (TAG_HWID == image_info->tag ||
-			    TAG_HWID_RTOL == image_info->tag) {
-				text_to_show = VbHWID(cparams);
-				rtol = (TAG_HWID_RTOL == image_info->tag);
+			if (TAG_HWID == image_info.tag ||
+			    TAG_HWID_RTOL == image_info.tag) {
+				VbGbbGetHwID(cparams, hwid, sizeof(hwid));
+				text_to_show = hwid;
+				rtol = (TAG_HWID_RTOL == image_info.tag);
 			} else {
 				text_to_show = "";
 				rtol = 0;
 			}
 
 			VbRenderTextAtPos(text_to_show, rtol,
-					  layout->images[i].x,
-					  layout->images[i].y, font);
+					  layout.images[i].x,
+					  layout.images[i].y, font);
 
 			VbDoneWithFontForNow(font);
 			break;
@@ -345,12 +267,11 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		default:
 			VBDEBUG(("VbDisplayScreenFromGBB(): "
 				 "unsupported ImageFormat %d\n",
-				 image_info->format));
+				 image_info.format));
 			retval = VBERROR_INVALID_GBB;
 		}
 
-		if (COMPRESS_NONE != image_info->compression)
-			VbExFree(fullimage);
+		VbExFree(fullimage);
 
 		if (VBERROR_SUCCESS != retval)
 			goto VbDisplayScreenFromGBB_exit;
@@ -359,21 +280,7 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 	/* Successful if all bitmaps displayed */
 	retval = VBERROR_SUCCESS;
 
-	/*
-	 * If GBB flags is nonzero, complain because that's something that the
-	 * factory MUST fix before shipping. We only have to do this here,
-	 * because it's obvious that something is wrong if we're not displaying
-	 * screens from the GBB.
-	 */
-	if (gbb->major_version == GBB_MAJOR_VER && gbb->minor_version >= 1 &&
-	    (gbb->flags != 0)) {
-		used += StrnAppend(outbuf + used, "gbb.flags is nonzero: 0x",
-				OUTBUF_LEN - used);
-		used += Uint64ToString(outbuf + used, OUTBUF_LEN - used,
-				       gbb->flags, 16, 8);
-		used += StrnAppend(outbuf + used, "\n", OUTBUF_LEN - used);
-		(void)VbExDisplayDebugInfo(outbuf);
-	}
+	VbGbbCheckVersion(cparams);
 
  VbDisplayScreenFromGBB_exit:
 	VBDEBUG(("leaving VbDisplayScreenFromGBB() with %d\n",retval));
@@ -571,29 +478,26 @@ VbError_t VbDisplayDebugInfo(VbCommonParams *cparams, VbNvContext *vncptr)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb;
 	char buf[DEBUG_INFO_SIZE] = "";
 	char sha1sum[SHA1_DIGEST_SIZE * 2 + 1];
+	char hwid[256];
 	uint32_t used = 0;
+	VbPublicKey *key;
+	VbError_t ret;
 	uint32_t i;
+
+	ret = VbGbbGetHeader(cparams, &gbb);
+	if (ret)
+		return ret;
 
 	/* Redisplay current screen to overwrite any previous debug output */
 	VbDisplayScreen(cparams, disp_current_screen, 1, vncptr);
 
 	/* Add hardware ID */
+	VbGbbGetHwID(cparams, hwid, sizeof(hwid));
 	used += StrnAppend(buf + used, "HWID: ", DEBUG_INFO_SIZE - used);
-	if (0 == gbb->hwid_size ||
-	    gbb->hwid_offset > cparams->gbb_size ||
-	    gbb->hwid_offset + gbb->hwid_size > cparams->gbb_size) {
-		VBDEBUG(("VbDisplayDebugInfo(): invalid hwid offset/size\n"));
-		used += StrnAppend(buf + used,
-				"(INVALID)", DEBUG_INFO_SIZE - used);
-  } else {
-		used += StrnAppend(buf + used,
-				(char *)((uint8_t *)gbb + gbb->hwid_offset),
-				DEBUG_INFO_SIZE - used);
-  }
+	used += StrnAppend(buf + used, hwid, DEBUG_INFO_SIZE - used);
 
 	/* Add recovery reason */
 	used += StrnAppend(buf + used,
@@ -654,12 +558,16 @@ VbError_t VbDisplayDebugInfo(VbCommonParams *cparams, VbNvContext *vncptr)
 	}
 
 	/* Add sha1sum for Root & Recovery keys */
-	FillInSha1Sum(sha1sum,
-		(VbPublicKey *)((uint8_t *)gbb + gbb->rootkey_offset));
+	ret = VbGbbGetRootKey(cparams, gbb, &key);
+	FillInSha1Sum(sha1sum, key);
+	VbExFree(key);
 	used += StrnAppend(buf + used, "\ngbb.rootkey: ", DEBUG_INFO_SIZE - used);
 	used += StrnAppend(buf + used, sha1sum, DEBUG_INFO_SIZE - used);
-	FillInSha1Sum(sha1sum,
-		(VbPublicKey *)((uint8_t *)gbb + gbb->recovery_key_offset));
+
+	ret = VbGbbGetRecoveryKey(cparams, gbb, &key);
+	FillInSha1Sum(sha1sum, key);
+	VbExFree(key);
+	FillInSha1Sum(sha1sum, key);
 	used += StrnAppend(buf + used,
 			"\ngbb.recovery_key: ", DEBUG_INFO_SIZE - used);
 	used += StrnAppend(buf + used, sha1sum, DEBUG_INFO_SIZE - used);
