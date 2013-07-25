@@ -7,8 +7,10 @@
 
 #include "sysincludes.h"
 
+#include "gbb_access.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
+#include "region.h"
 #include "rollback_index.h"
 #include "utility.h"
 #include "vboot_api.h"
@@ -97,7 +99,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 		p->disk_handle = disk_info[i].handle;
 		p->bytes_per_lba = disk_info[i].bytes_per_lba;
 		p->ending_lba = disk_info[i].lba_count - 1;
-		retval = LoadKernel(p);
+		retval = LoadKernel(p, cparams);
 		VBDEBUG(("VbTryLoadKernel() LoadKernel() = %d\n", retval));
 
 		/*
@@ -173,8 +175,7 @@ VbError_t VbBootNormal(VbCommonParams *cparams, LoadKernelParams *p)
 
 VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 {
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
+	GoogleBinaryBlockHeader *gbb = cparams->gbb;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
@@ -812,8 +813,6 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	GoogleBinaryBlockHeader *gbb =
-		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	VbError_t retval = VBERROR_SUCCESS;
 	LoadKernelParams p;
 	uint32_t tpm_status = 0;
@@ -831,9 +830,15 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	kparams->bootloader_size = 0;
 	Memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	cparams->bmp = NULL;
+	cparams->gbb = VbExMalloc(sizeof(*cparams->gbb));
+	retval = VbGbbReadHeader_static(cparams, cparams->gbb);
+	if (VBERROR_SUCCESS != retval)
+		goto VbSelectAndLoadKernel_exit;
+
 	/* Do EC software sync if necessary */
 	if ((shared->flags & VBSD_EC_SOFTWARE_SYNC) &&
-	    !(gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
+	    !(cparams->gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
 		retval = VbEcSoftwareSync(cparams);
 		if (retval != VBERROR_SUCCESS)
 			goto VbSelectAndLoadKernel_exit;
@@ -981,6 +986,10 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	}
 
  VbSelectAndLoadKernel_exit:
+
+	VbExFree(cparams->gbb);
+	if (cparams->bmp)
+		VbExFree(cparams->bmp);
 
 	VbNvTeardown(&vnc);
 	if (vnc.raw_changed)

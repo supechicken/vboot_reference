@@ -9,6 +9,8 @@
 #ifndef VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 #define VBOOT_REFERENCE_LOAD_KERNEL_FW_H_
 
+#include "bmpblk_header.h"
+#include "gbb_header.h"
 #include "vboot_api.h"
 #include "vboot_nvstorage.h"
 
@@ -74,7 +76,7 @@ typedef struct LoadKernelParams {
  * Returns VBERROR_SUCCESS if successful.  If unsuccessful, sets a recovery
  * reason via VbNvStorage and returns an error code.
  */
-VbError_t LoadKernel(LoadKernelParams *params);
+VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams);
 
 /*
  * The bootloader is loaded using the EFI LoadImage() and StartImage() calls.
