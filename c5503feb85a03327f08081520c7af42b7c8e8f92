@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX//rxk\u003d",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-07-30T16:47:40Z",
+      "side": 1,
+      "message": "I\u0027ve mislaid the design doc for these changes. When and where should VBOOT_GBB_DATA be defined? And what\u0027s the relationship between that and the new gbb and bmp members? Do they play nice together?",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
