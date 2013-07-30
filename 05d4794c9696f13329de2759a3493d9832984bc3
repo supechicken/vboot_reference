@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAcX//rd4\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-07-30T18:36:33Z",
+      "side": 1,
+      "message": "\"its\"",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//5Z0\u003d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -70,6 +87,40 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//rdw\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-07-30T18:36:33Z",
+      "side": 1,
+      "message": "update help string",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//rdo\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-07-30T18:36:33Z",
+      "side": 1,
+      "message": "use `die` rather than `echo; exit`",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//5Zc\u003d",
         "filename": "scripts/image_signing/strip_image.sh",
         "patchSetId": 3
@@ -115,6 +166,40 @@
       "writtenOn": "2013-07-18T18:33:38Z",
       "side": 1,
       "message": "Update comment",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//rdk\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-07-30T18:36:33Z",
+      "side": 1,
+      "message": "i\u0027m not sure you need this.  common.sh sets up traps for auto unmounting on error already.",
+      "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//rdc\u003d",
+        "filename": "scripts/image_signing/strip_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-07-30T18:36:33Z",
+      "side": 1,
+      "message": "use `die`",
       "revId": "05d4794c9696f13329de2759a3493d9832984bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
