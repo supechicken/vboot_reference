@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//rvk\u003d",
+        "filename": "firmware/lib/cgptlib/include/mtdlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002562
+      },
+      "writtenOn": "2013-07-30T17:01:20Z",
+      "side": 1,
+      "message": "A balance between parity with GPT and not causing the size to increase too much. 28 specifically because it makes a nice round numer for the size (48). At this point we\u0027re taking up 10% of the total available space",
+      "parentUuid": "AAAAcX//ry4\u003d",
+      "revId": "7b925a1887aea5fd3906b131faad6ee2a85a48eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//ry0\u003d",
         "filename": "firmware/lib/cgptlib/include/mtdlib.h",
         "patchSetId": 1
