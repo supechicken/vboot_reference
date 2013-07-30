@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//q+w\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2013-07-30T22:17:43Z",
+      "side": 1,
+      "message": "I normally would, but was being locally consistent.\n\nDone.",
+      "parentUuid": "AAAAcX//rAk\u003d",
+      "revId": "7a4f46bf7cd121becb4696a57679dd2c54495221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//rAQ\u003d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-30T22:02:32Z",
       "side": 1,
       "message": "as mentioned in the referenced bug, by not calling it here you don\u0027t strip /boot on factory images (which is what we want iiuc)",
+      "revId": "7a4f46bf7cd121becb4696a57679dd2c54495221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//q/0\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2013-07-30T22:17:43Z",
+      "side": 1,
+      "message": "Yep! Does it need a comment pointing out this is on purpose?",
+      "parentUuid": "AAAAcX//rAQ\u003d",
       "revId": "7a4f46bf7cd121becb4696a57679dd2c54495221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
