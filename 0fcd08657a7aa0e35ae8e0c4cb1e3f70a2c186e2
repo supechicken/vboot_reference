@@ -16,6 +16,40 @@
       "revId": "0fcd08657a7aa0e35ae8e0c4cb1e3f70a2c186e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///Cw\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-31T23:56:35Z",
+      "side": 1,
+      "message": "Leftover from debugging?",
+      "revId": "0fcd08657a7aa0e35ae8e0c4cb1e3f70a2c186e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///CY\u003d",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-07-31T23:56:35Z",
+      "side": 1,
+      "message": "I don\u0027t think getting here implies RO_NORMAL.\n\nThough admittedly, I\u0027m not sure when this clause would apply at all.",
+      "revId": "0fcd08657a7aa0e35ae8e0c4cb1e3f70a2c186e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
