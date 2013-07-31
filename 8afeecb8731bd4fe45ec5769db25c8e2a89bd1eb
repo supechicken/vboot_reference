@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcX//qiA\u003d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2013-07-31T00:09:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcX//qmk\u003d",
+      "revId": "8afeecb8731bd4fe45ec5769db25c8e2a89bd1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//qmU\u003d",
         "filename": "scripts/image_signing/strip_boot_from_image.sh",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-30T23:47:50Z",
       "side": 1,
       "message": "Does this need to uncommented?",
+      "revId": "8afeecb8731bd4fe45ec5769db25c8e2a89bd1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX//qjA\u003d",
+        "filename": "scripts/image_signing/strip_boot_from_image.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2013-07-31T00:09:17Z",
+      "side": 1,
+      "message": "No, removed. That was me testing that Mike was right about it being unneeded. He is.\n\nRemoved.",
+      "parentUuid": "AAAAcX//qmU\u003d",
       "revId": "8afeecb8731bd4fe45ec5769db25c8e2a89bd1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
