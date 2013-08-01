@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAcn///CM\u003d",
+        "filename": "firmware/include/gbb_access.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Change token name; this implies the file is gbb.h.\n\nAlso suggest calling the file vboot_gbb_access.h.",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///CI\u003d",
+        "filename": "firmware/include/gbb_access.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "All functions declarations should have comments describing their usage.  I shouldn\u0027t have to read the implementation to figure out what this interface does.",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///B0\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "#ifdef VBOOT_GBB_IN_COMMON_PARAMS\n\n(Vboot still does use GBB data, it just gets it from somewhere else.)",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///Bw\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "typo: firmware\n\nUnless we\u0027re making this out of evergreen wood...\n\nIs there a reason why we\u0027d restrict this to \"firmware\" regions?  Why not just vb_region and VbExReadRegion()?",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///Bg\u003d",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcX//rxk\u003d",
         "filename": "firmware/lib/include/load_kernel_fw.h",
         "patchSetId": 2
@@ -13,6 +98,108 @@
       "writtenOn": "2013-07-30T16:47:40Z",
       "side": 1,
       "message": "I\u0027ve mislaid the design doc for these changes. When and where should VBOOT_GBB_DATA be defined? And what\u0027s the relationship between that and the new gbb and bmp members? Do they play nice together?",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///Bc\u003d",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Why not just VbGbbReadHeader()?",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///Ag\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Confused.  Why is this a public interface now?\n\nThis avoids wholesale code changes at the cost of obfuscation.  I\u0027d rather have the wholesale code changes.  Suggest doing that in a precursor CL, though.",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///AI\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "blank line, or \u0027else if\u0027",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn///AE\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Hwid or HWID, not HwID.",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//+/0\u003d",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "Weird: why do we need to free this?  We didn\u0027t malloc it.",
+      "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//+/o\u003d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-01T00:12:28Z",
+      "side": 1,
+      "message": "These seem to be unrelated changes.  Please pull out into a separate CL.",
       "revId": "c5503feb85a03327f08081520c7af42b7c8e8f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
