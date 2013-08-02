@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//76c\u003d",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "i\u0027m not sure sprinkling all these TryInitMtd() call points in the code is the way to go.  imo, it\u0027d make more sense to have the func be named like:\n\n UseHostIoctl()\n\nand then move the call point to every place you use nand.use_host_ioctl to call this func instead and it\u0027ll take care of returning true/false inline.",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//77c\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "why do you need write access ?  seems like you just want F_OK here ...",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//764\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "not a new issue, but the cast is not needed\n\nalso probably not a big deal, but if *bufsz is too big, this will trigger an integer overflow",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//768\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "erm, if key is too big, this will lead to reading bad data as the string won\u0027t be \\0 terminated\n\ni would write it like:\n\n size_t key_len \u003d strlen(key);\n if (key_len \u003e\u003d sizeof(req.key))\n   return -1;\n memcpy(req.key, key, key_len);\n req.key[key_len] \u003d \u0027\\0\u0027;",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//77M\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "for good hygiene, this should include O_CLOEXEC",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//77I\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "O_CLOEXEC here too",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//76k\u003d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-08-02T20:48:00Z",
+      "side": 1,
+      "message": "i would put this code into an else block to make it obvious that the above code won\u0027t fall through",
+      "revId": "4464354b7805b7d81667d79624275f525b5a8b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
