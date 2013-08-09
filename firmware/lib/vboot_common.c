@@ -146,6 +146,10 @@ RSAPublicKey *PublicKeyToRSA(const VbPublicKey *key)
 int VerifyData(const uint8_t *data, uint64_t size, const VbSignature *sig,
                const RSAPublicKey *key)
 {
+	VBDEBUG(("   - sig_size=%d, expecting %d for algorithm %d\n",
+		 (int)sig->sig_size, siglen_map[key->algorithm],
+		 key->algorithm));
+
 	if (sig->sig_size != siglen_map[key->algorithm]) {
 		VBDEBUG(("Wrong signature size for algorithm.\n"));
 		return 1;
