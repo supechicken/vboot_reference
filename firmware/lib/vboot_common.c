@@ -151,7 +151,7 @@ int VerifyData(const uint8_t *data, uint64_t size, const VbSignature *sig,
 		 key->algorithm));
 	if (sig->sig_size != siglen_map[key->algorithm]) {
 		VBDEBUG(("Wrong data signature size for algorithm, sig_size=%d, expected %d for algorithm %d.\n",
-			 sig->sig_size, siglen_map[key->algorithm],
+			 (unsigned)sig->sig_size, siglen_map[key->algorithm],
 			 key->algorithm));
 		return 1;
 	}
@@ -457,7 +457,7 @@ int VbSharedDataSetKernelKey(VbSharedDataHeader *header, const VbPublicKey *src)
 	VbPublicKey *kdest = &header->kernel_subkey;
 
 	VBDEBUG(("Saving kernel subkey to shared data: size %d, algo %d\n",
-		 siglen_map[src->algorithm], src->algorithm));
+		 siglen_map[src->algorithm], (unsigned)src->algorithm));
 
 	if (!header)
 		return VBOOT_SHARED_DATA_INVALID;
