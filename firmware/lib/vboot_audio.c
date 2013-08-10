@@ -222,7 +222,8 @@ VbAudioContext *VbAudioOpen(LoadKernelParams *lkparams)
 	VbExSleepMs(10);
 	b = VbExGetTimer();
 	ticks_per_msec = (b - a) / 10ULL ;
-	VBDEBUG(("VbAudioOpen() - ticks_per_msec is %llu\n", ticks_per_msec));
+	VBDEBUG(("VbAudioOpen() - ticks_per_msec is %llu\n",
+		 (unsigned long long)ticks_per_msec));
 
 	/* Initialize */
 	Memset(audio, 0, sizeof(*audio));

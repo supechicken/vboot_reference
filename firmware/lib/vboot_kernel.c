@@ -259,8 +259,9 @@ VbError_t LoadKernel(LoadKernelParams *params)
 		uint64_t body_sectors;
 		int key_block_valid = 1;
 
-		VBDEBUG(("Found kernel entry at %" PRIu64 " size %" PRIu64 "\n",
-			 part_start, part_size));
+		VBDEBUG(("Found kernel entry at %llu size %llu\n",
+			 (unsigned long long)part_start,
+			 (unsigned long long)part_size));
 
 		/*
 		 * Set up tracking for this partition.  This wraps around if
