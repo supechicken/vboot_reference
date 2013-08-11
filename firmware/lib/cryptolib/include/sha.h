@@ -109,6 +109,9 @@ typedef struct DigestContext {
 void DigestInit(DigestContext* ctx, int sig_algorithm);
 void DigestUpdate(DigestContext* ctx, const uint8_t* data, uint32_t len);
 
+/* Find the hash algorithm that should be used */
+enum VbHashAlgo_t DigestGetAlgo(DigestContext* ctx, int sig_algorithm);
+
 /* Caller owns the returned digest and must free it. */
 uint8_t* DigestFinal(DigestContext* ctx);
 
