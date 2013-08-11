@@ -11,6 +11,20 @@
 #include "utility.h"
 #include "vboot_api.h"
 
+/* TODO(sjg@chromium.org): Can we use the same enum here? */
+enum VbHashAlgo_t DigestGetAlgo(DigestContext* ctx, int sig_algorithm) {
+  switch(ctx->algorithm) {
+    case SHA1_DIGEST_ALGORITHM:
+      return VB_HASH_ALGO_SHA1;
+    case SHA256_DIGEST_ALGORITHM:
+      return VB_HASH_ALGO_SHA256;
+    case SHA512_DIGEST_ALGORITHM:
+      return VB_HASH_ALGO_SHA512;
+    default:
+      return VB_HASH_ALGO_UNKNOWN;
+  };
+}
+
 void DigestInit(DigestContext* ctx, int sig_algorithm) {
   ctx->algorithm = hash_type_map[sig_algorithm];
   switch(ctx->algorithm) {

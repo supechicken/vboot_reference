@@ -26,6 +26,8 @@
 typedef struct VbLoadFirmwareInternal {
 	DigestContext body_digest_context;
 	uint32_t body_size_accum;
+	uint8_t digest[SHA512_DIGEST_SIZE];
+	uint32_t digest_size;
 } VbLoadFirmwareInternal;
 
 void VbUpdateFirmwareBodyHash(VbCommonParams *cparams, uint8_t *data,
@@ -36,6 +38,22 @@ void VbUpdateFirmwareBodyHash(VbCommonParams *cparams, uint8_t *data,
 
 	DigestUpdate(&lfi->body_digest_context, data, size);
 	lfi->body_size_accum += size;
+}
+
+VbError_t VbSetFirmwareBodyHash(VbCommonParams *cparams,
+			   uint32_t size, uint8_t *digest,
+			   uint32_t digest_size)
+{
+	VbLoadFirmwareInternal *lfi =
+		(VbLoadFirmwareInternal*)cparams->vboot_context;
+
+	if (digest_size > sizeof(lfi->digest))
+		return VBERROR_UNKNOWN;
+	lfi->body_size_accum = size;
+	Memcpy(lfi->digest, digest, digest_size);
+	lfi->digest_size = digest_size;
+
+	return 0;
 }
 
 int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
@@ -232,6 +250,10 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 			DigestInit(&lfi->body_digest_context,
 				   data_key->algorithm);
 			lfi->body_size_accum = 0;
+			lfi->digest_size = 0;
+			cparams->hash_algo = DigestGetAlgo(
+					&lfi->body_digest_context,
+					data_key->algorithm);
 			rv = VbExHashFirmwareBody(
 					cparams,
 					(index ? VB_SELECT_FIRMWARE_B :
@@ -254,7 +276,12 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 			}
 
 			/* Verify firmware data */
-			body_digest = DigestFinal(&lfi->body_digest_context);
+			if (lfi->digest_size) {
+				body_digest = lfi->digest;
+			} else {
+				body_digest = DigestFinal(
+						&lfi->body_digest_context);
+			}
 			if (0 != VerifyDigest(body_digest,
 					      &preamble->body_signature,
 					      data_key)) {
