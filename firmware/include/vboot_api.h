@@ -131,6 +131,15 @@ enum VbErrorPredefined_t {
 #define VB_SHARED_DATA_MIN_SIZE 3072
 #define VB_SHARED_DATA_REC_SIZE 16384
 
+enum VbHashAlgo_t {
+	VB_HASH_ALGO_SHA1,
+	VB_HASH_ALGO_SHA256,
+	VB_HASH_ALGO_SHA512,
+
+	VB_HASH_ALGO_COUNT,
+	VB_HASH_ALGO_UNKNOWN,
+};
+
 /*
  * Data passed by firmware to VbInit(), VbSelectFirmware() and
  * VbSelectAndLoadKernel().
@@ -175,6 +184,15 @@ typedef struct VbCommonParams {
 	 * the stack.
 	 */
 	void *caller_context;
+
+	/*
+	 * Hash algorithm being used. This is only valid within a call to
+	 * VbExHashFirmwareBody(). It can be used by this function to
+	 * calculate the entire firmware hash and then call
+	 * VbSetFirmwareBodyHash() instead of VbUpdateFirmwareBodyHash().
+	 * Valid values are "sha1" and "sha256".
+	 */
+	enum VbHashAlgo_t hash_algo;
 
 	/* For internal use of Vboot - do not examine or modify! */
 	struct GoogleBinaryBlockHeader *gbb;
@@ -364,6 +382,22 @@ VbError_t VbSelectFirmware(VbCommonParams *cparams,
  */
 void VbUpdateFirmwareBodyHash(VbCommonParams *cparams,
                               uint8_t *data, uint32_t size);
+
+/**
+ * Instead of the above, within VbExHashFirmwareBody(), you can call this
+ * function and provide and provide the hash of the firmware body as computed
+ * using VbCommonParams.hash_algo.
+ *
+ * @param cparams	Common parameters
+ * @param size		Size of firmware that was hashed
+ * @param digest	Resulting digest
+ * @param digest_size	Size of digest (e.g. 32 for SHA256)
+ * @return VBERROR_SUCCESS if success, non-zero on error (due to digest_size
+ * being incorrect.
+ */
+VbError_t VbSetFirmwareBodyHash(VbCommonParams *cparams,
+			   uint32_t size, uint8_t *digest,
+			   uint32_t digest_size);
 
 /**
  * Select and loads the kernel.
