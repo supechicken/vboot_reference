@@ -87,10 +87,12 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 		if (512 != disk_info[i].bytes_per_lba ||
 		    32 > disk_info[i].lba_count ||
 		    get_info_flags != disk_info[i].flags) {
-			VBDEBUG(("  skipping: bytes_per_lba=%lld "
+			VBDEBUG(("  skipping: bytes_per_lba=%llu "
 				 "lba_count=%lld flags=0x%x\n",
-				 disk_info[i].bytes_per_lba,
-				 disk_info[i].lba_count,
+				 (unsigned long long)
+					disk_info[i].bytes_per_lba,
+				 (unsigned long long)
+					disk_info[i].lba_count,
 				 disk_info[i].flags));
 			continue;
 		}
