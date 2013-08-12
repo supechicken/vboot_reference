@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//uc4\u003d",
+        "filename": "firmware/include/gbb_access.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Still needs comments.",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ucs\u003d",
+        "filename": "firmware/include/region.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Needs comments so we know what these do",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ucg\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Comment still incorrect",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ucc\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ub8\u003d",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Should check that region \u003d\u003d VB_REGION_GBB",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ub0\u003d",
+        "filename": "firmware/lib/region-kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "VbExFree(hdr) before returning",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ubs\u003d",
+        "filename": "firmware/lib/region-kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ubY\u003d",
+        "filename": "firmware/lib/region-kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Naming nit: code currently uses HWID (all caps), not HwID.  See VbHWID().",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ubQ\u003d",
+        "filename": "firmware/lib/region-kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Aren\u0027t you leaking memory allocated by VbGbbReadBmpHeader()?\n\n(This is why I\u0027m not fond of funcs which have the side-effect of allocating memory; it\u0027s really easy to forget to free it...)",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//uag\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T23:05:11Z",
+      "side": 1,
+      "message": "Fill it in again, after key is freed?",
+      "revId": "a431ad77da4e2ea38674d8736477238ae26bc718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
