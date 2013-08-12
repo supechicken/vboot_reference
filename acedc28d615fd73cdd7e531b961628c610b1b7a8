@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcn//ue8\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T22:38:38Z",
+      "side": 1,
+      "message": "and provide the hash of the firmware body as computed using VbCommonParams.hash_algo.",
+      "revId": "acedc28d615fd73cdd7e531b961628c610b1b7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//ue0\u003d",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-08-12T22:38:38Z",
+      "side": 1,
+      "message": "if (!lfi-\u003edigest_size)?  Otherwise you\u0027re freeing something you didn\u0027t alloc...",
+      "revId": "acedc28d615fd73cdd7e531b961628c610b1b7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
