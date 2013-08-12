@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//uas\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-12T23:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//ue8\u003d",
+      "revId": "acedc28d615fd73cdd7e531b961628c610b1b7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//ue0\u003d",
         "filename": "firmware/lib/vboot_firmware.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-12T22:38:38Z",
       "side": 1,
       "message": "if (!lfi-\u003edigest_size)?  Otherwise you\u0027re freeing something you didn\u0027t alloc...",
+      "revId": "acedc28d615fd73cdd7e531b961628c610b1b7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//uak\u003d",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-12T23:02:25Z",
+      "side": 1,
+      "message": "Oh dear, yes you are right.",
+      "parentUuid": "AAAAcn//ue0\u003d",
       "revId": "acedc28d615fd73cdd7e531b961628c610b1b7a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
