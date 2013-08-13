@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//twk\u003d",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Good.",
+      "parentUuid": "AAAAcn//wis\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//wiQ\u003d",
         "filename": "firmware/include/region.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "Need comment for each function to explain what it does, params, etc.\n\nDo all of these only read GBB data?  If so, \n\nVbReadGbb___\n\nwould be a nice common prefix.",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//twg\u003d",
+        "filename": "firmware/include/region.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Most of them read GBB - have put them in their own header.",
+      "parentUuid": "AAAAcn//wiQ\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//txY\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//wiE\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//wh8\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "/* Google binary block; see gbbheader.h for more info */",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//txc\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//wh8\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//txI\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//wh4\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//whw\u003d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "Destination.  Please to be putting data here. :)",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//txQ\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAcn//whw\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//txE\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Done - added comment.\n\nIMO all functions which call back to U-Boot should have this parameter - otherwise there is no context and its has to be provided.",
+      "parentUuid": "AAAAcn//whY\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//whA\u003d",
         "filename": "firmware/lib/include/load_kernel_fw.h",
         "patchSetId": 6
@@ -132,6 +258,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "Are these all now used by LoadKernel()?  Didn\u0027t think it directly accessed bitmaps.",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//tw8\u003d",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "I\u0027ve removed these.",
+      "parentUuid": "AAAAcn//whA\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//tw4\u003d",
+        "filename": "firmware/lib/include/vboot_audio.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "It now uses VbCommonParams",
+      "parentUuid": "AAAAcn//wg4\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//wfY\u003d",
         "filename": "firmware/lib/include/vboot_display.h",
         "patchSetId": 6
@@ -166,6 +328,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "Why do these need *kernel* params?",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//tw0\u003d",
+        "filename": "firmware/lib/include/vboot_display.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Now uses VbCommonParams",
+      "parentUuid": "AAAAcn//wfY\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAcn//tww\u003d",
+        "filename": "firmware/lib/include/vboot_display.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Changed to VbCommonParams",
+      "parentUuid": "AAAAcn//wfU\u003d",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAcn//wfE\u003d",
         "filename": "firmware/lib/include/vboot_kernel.h",
         "patchSetId": 6
@@ -200,6 +398,24 @@
       "writtenOn": "2013-08-09T21:56:10Z",
       "side": 1,
       "message": "Why does this need kernel params?",
+      "revId": "3338b716eef91fa273da40278b0081ef7d047804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcn//tws\u003d",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-13T03:53:42Z",
+      "side": 1,
+      "message": "Uses VbCommonParams now",
+      "parentUuid": "AAAAcn//wfE\u003d",
       "revId": "3338b716eef91fa273da40278b0081ef7d047804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
