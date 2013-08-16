@@ -16,6 +16,24 @@
       "revId": "32a39c06d4a761a13554307d699083ae68d41db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//+oE\u003d",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-16T03:14:55Z",
+      "side": 1,
+      "message": "I will split it.\n\nKernel style now is to not split strings though.",
+      "parentUuid": "AAAAcn//uZk\u003d",
+      "revId": "32a39c06d4a761a13554307d699083ae68d41db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
