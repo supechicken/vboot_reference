@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//68c\u003d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2013-08-20T13:45:20Z",
+      "side": 1,
+      "message": "It seems like the call to VbExDiskGetInfo can fit in one line.",
+      "revId": "af2822361780e6d9bc6031808da4b6d74259607d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
