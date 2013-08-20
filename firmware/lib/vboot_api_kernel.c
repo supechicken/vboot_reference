@@ -177,8 +177,10 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 		(GoogleBinaryBlockHeader *)cparams->gbb_data;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
+	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0,
+		 disk_count = 0;
 	VbAudioContext *audio = 0;
+	VbDiskInfo *disk_info = NULL;
 
 	VBDEBUG(("Entering %s()\n", __func__));
 
@@ -191,6 +193,15 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 		allow_usb = 1;
 	if (gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_LEGACY)
 		allow_legacy = 1;
+
+	/*
+	 * Pre-initialize removable media (including USB controllers) before
+	 * displaying the dev screen. This operation can take a while, and
+	 * we don't want to miss keyboard input while it is in progress.
+	 */
+	VbExDiskGetInfo(&disk_info, &disk_count,
+			VB_DISK_FLAG_REMOVABLE);
+	VbExDiskFreeInfo(disk_info, NULL);
 
 	/* Show the dev mode warning screen */
 	VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
