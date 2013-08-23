@@ -20,6 +20,7 @@
 #include "tss_constants.h"
 
 #define OTHER_ERROR 255
+#define MAX_TPM_EXIT_CODE 254
 
 typedef struct command_record {
   const char* name;
@@ -64,6 +65,7 @@ int HexStringToUint8(const char* string, uint8_t* value) {
  * found.
  */
 uint32_t ErrorCheck(uint32_t result, const char* cmd) {
+  int exit_code = result > MAX_TPM_EXIT_CODE ? MAX_TPM_EXIT_CODE : result;
   if (result == 0) {
     return 0;
   } else {
@@ -74,11 +76,11 @@ uint32_t ErrorCheck(uint32_t result, const char* cmd) {
       if (tpm_error_table[i].code == result) {
         fprintf(stderr, "%s\n%s\n", tpm_error_table[i].name,
                 tpm_error_table[i].description);
-        return result;
+        return exit_code;
       }
     }
     fprintf(stderr, "the TPM error code is unknown to this program\n");
-    return result;
+    return exit_code;
   }
 }
 
