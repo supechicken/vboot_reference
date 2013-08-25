@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//0Gg\u003d",
+        "filename": "firmware/include/region.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-25T21:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//2OU\u003d",
+      "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2OA\u003d",
         "filename": "firmware/include/region.h",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-22T23:32:31Z",
       "side": 1,
       "message": "Is null-terminated?  What happens if I pass in size too small?",
+      "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//0Gc\u003d",
+        "filename": "firmware/include/region.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-25T21:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//2OA\u003d",
       "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//0GM\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-25T21:02:22Z",
+      "side": 1,
+      "message": "I wanted a way for VbExRegionRead() to return an separate separate from that one. For example the parameters may be correct so far as vboot things, but VbExRegionRead() may decide that it is out of range. I think it is useful to distinguish between the two cases.",
+      "parentUuid": "AAAAc3//2N0\u003d",
+      "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2MQ\u003d",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 11
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAc3//0GE\u003d",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-25T21:02:22Z",
+      "side": 1,
+      "message": "No, removed them.",
+      "parentUuid": "AAAAc3//2MQ\u003d",
+      "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAc3//2MM\u003d",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 11
@@ -81,6 +153,24 @@
       "writtenOn": "2013-08-22T23:32:31Z",
       "side": 1,
       "message": "Still need this include?",
+      "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//0GA\u003d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-08-25T21:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAc3//2MM\u003d",
       "revId": "a02b5c662cb7651caa6f0425b8a83ad379b4ecf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
