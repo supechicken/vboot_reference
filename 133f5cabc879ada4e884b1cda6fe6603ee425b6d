@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//zg0\u003d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-08-26T17:35:34Z",
+      "side": 1,
+      "message": "s/and provide //\n\nalso, it is not quite clear how this function can be called \"instead of the above\" - the two functions have different prototypes?!",
+      "revId": "133f5cabc879ada4e884b1cda6fe6603ee425b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//zgg\u003d",
+        "filename": "firmware/lib/cryptolib/include/sha.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-08-26T17:35:34Z",
+      "side": 1,
+      "message": "find from where? find how?",
+      "revId": "133f5cabc879ada4e884b1cda6fe6603ee425b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
