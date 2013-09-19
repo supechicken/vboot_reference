@@ -21,6 +21,7 @@
 #include "host_common.h"
 #include "crossystem.h"
 #include "crossystem_arch.h"
+#include "flash_ts_api.h"
 
 #define MOSYS_PATH "/usr/sbin/mosys"
 
@@ -45,6 +46,9 @@
 #define FNAME_SIZE  80
 #define SECTOR_SIZE 512
 #define MAX_NMMCBLK 9
+/* FTS location & key name */
+#define FTS_PATH "/dev/fts"
+#define FTS_KEY "CrOSVBC"
 
 typedef struct PlatformFamily {
   const char* compatible_string; /* Last string in FDT compatible entry */
@@ -466,6 +470,52 @@ static int VbWriteNvStorage_disk(VbNvContext* vnc) {
   return rv;
 }
 
+static int VbReadNvStorage_fts(VbNvContext* vnc) {
+  struct flash_ts_io_encoded_req req;
+  int fd = open(FTS_PATH, O_RDONLY);
+  int ret;
+  if (fd < 0)
+    return -1;
+  strncpy(req.key, FTS_KEY, sizeof(req.key));
+  ret = ioctl(fd, FLASH_TS_IO_GET_ENCODED, &req);
+  close(fd);
+
+  /*
+   * A not-present key is treated the same as a successful empty lookup,
+   * so the only way this fails is if an actual error occurred. If we read
+   * less data, we zerofill it.
+   */
+  if (!ret) {
+    size_t to_copy = sizeof(vnc->raw);
+    if (to_copy > req.len)
+      to_copy = req.len;
+    if (to_copy != sizeof(vnc->raw))
+      memset(vnc->raw, 0, sizeof(vnc->raw));
+    memcpy(vnc->raw, req.val, to_copy);
+  }
+  return ret;
+}
+
+static int VbWriteNvStorage_fts(VbNvContext* vnc) {
+  struct flash_ts_io_encoded_req req;
+  int fd;
+  int ret;
+  if (sizeof(vnc->raw) > sizeof(req.len))
+    return -1;
+
+  fd = open(FTS_PATH, O_RDWR);
+  if (fd < 0)
+    return -1;
+  strncpy(req.key, FTS_KEY, sizeof(req.key));
+  memcpy(req.val, vnc->raw, req.len);
+  req.len = sizeof(vnc->raw);
+  ret = ioctl(fd, FLASH_TS_IO_SET_ENCODED, &req);
+  close(fd);
+  if (ret > 0)
+    ret = 0;
+  return ret;
+}
+
 int VbReadNvStorage(VbNvContext* vnc) {
   /* Default to disk for older firmware which does not provide storage type */
   char *media;
@@ -476,6 +526,8 @@ int VbReadNvStorage(VbNvContext* vnc) {
     return VbReadNvStorage_disk(vnc);
   if (!strcmp(media, "mkbp"))
     return VbReadNvStorage_mkbp(vnc);
+  if (!strcmp(media, "fts"))
+    return VbReadNvStorage_fts(vnc);
   return -1;
 }
 
@@ -489,6 +541,8 @@ int VbWriteNvStorage(VbNvContext* vnc) {
     return VbWriteNvStorage_disk(vnc);
   if (!strcmp(media, "mkbp"))
     return VbWriteNvStorage_mkbp(vnc);
+  if (!strcmp(media, "fts"))
+    return VbWriteNvStorage_fts(vnc);
   return -1;
 }
 
