@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d1ebe1_95d1c648",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-09-20T19:32:45Z",
+      "side": 1,
+      "message": "You should run the failing autotests (in 4482!)",
+      "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ce8349_cc3fcfe7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-09-20T19:32:45Z",
+      "side": 1,
+      "message": "would this be clearer:\n\nif (rv !\u003d VBERROR_SUCCESS) {\n   if (rv !\u003d VBERROR_EC_REBOOT_TO_RO_REQUIRED)\n          VbSetRecoveryRequest(VBNV_RECOVERY_EC_JUMP_RW);\n   return VBERROR_EC_REBOOT_TO_RO_REQUIRED;\n}",
+      "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
