@@ -797,7 +797,17 @@ VbError_t VbEcSoftwareSync(VbCommonParams *cparams)
 	/* Tell EC to jump to its RW image */
 	VBDEBUG(("VbEcSoftwareSync() jumping to EC-RW\n"));
 	rv = VbExEcJumpToRW();
-	if (rv != VBERROR_SUCCESS) {
+	if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
+		/*
+		 * Reboot required.  The EC may be booted RO-normal and a
+		 * previous AP boot has called VbExEcStayInRO().  So we need to
+		 * reboot the EC to unlock the ability to jump to the RW
+		 * firmware.  This is not an error requiring recovery mode.
+		 */
+		VBDEBUG(("VbEcSoftwareSync() - "
+			 "VbExEcJumpToRW() needs reboot\n"));
+		return rv;
+	} else if (rv != VBERROR_SUCCESS) {
 		VBDEBUG(("VbEcSoftwareSync() - "
 			 "VbExEcJumpToRW() returned %d\n", rv));
 		VbSetRecoveryRequest(VBNV_RECOVERY_EC_JUMP_RW);
