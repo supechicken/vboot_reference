@@ -129,7 +129,7 @@ VbError_t VbExEcProtectRW(void)
 	return protect_retval;
 }
 
-VbError_t VbExEcStayInRO(void)
+VbError_t VbExEcDisableJump(void)
 {
 	ec_run_image = 0;
 	return run_retval;
