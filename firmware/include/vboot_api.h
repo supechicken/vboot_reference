@@ -756,7 +756,7 @@ VbError_t VbExEcJumpToRW(void);
  * VbExEcJumpToRW() this boot will fail.  Fails if the EC is not currently in
  * RO code.
  */
-VbError_t VbExEcStayInRO(void);
+VbError_t VbExEcDisableJump(void);
 
 /**
  * Read the SHA-256 hash of the rewriteable EC image.
