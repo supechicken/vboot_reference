@@ -173,8 +173,10 @@ VbError_t VbBootNormal(VbCommonParams *cparams, LoadKernelParams *p)
 	return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
 
+#define KEYIN_DELAY	20	/* 20 seconds */
 VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 {
+	uint64_t then, now;
 	GoogleBinaryBlockHeader *gbb = cparams->gbb;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
@@ -199,6 +201,14 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	/* Get audio/delay context */
 	audio = VbAudioOpen(cparams);
 
+	VBDEBUG(("########################################################\n"));
+	VBDEBUG(("VbBootDeveloper() - "
+		 "Press Ctrl+U to boot from USB/SD\n"));
+	VBDEBUG(("VbBootDeveloper() - "
+		 "Press Ctrl+D to boot from eMMC\n"));
+	VBDEBUG(("########################################################\n"));
+
+	then = now = VbExGetTimer();
 	/* We'll loop until we finish the delay or are interrupted */
 	do {
 		uint32_t key;
@@ -369,7 +379,15 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 			VbCheckDisplayKey(cparams, key, &vnc);
 			break;
 		}
+
+#if 1 /* jz: bypass audio delay until audio supporting function checked in */
+		now = VbExGetTimer();
+		if (now >= (then + KEYIN_DELAY * 1000000)) 
+			break;
+	} while (1);
+#else
 	} while(VbAudioLooping(audio));
+#endif
 
  fallout:
 
