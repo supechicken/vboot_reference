@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed08087_2b42256e",
+        "filename": "firmware/lib/include/flash_ts_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "update with the latest version pushed to the tree ?",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ed08087_0b3f61e6",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "pull the assignment down below the decls.  i think that\u0027s what we do stylewise in this file.\n\nadd O_CLOEXEC to the flags",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed67883_ed302113",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "i\u0027d move the req setup to above the open() call to keep the amount of work down in the open/ioctl/close phase (global lock on the FTS)",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed67883_cd355d01",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "how about:\n\n memset(vnc-\u003eraw + to_copy, 0, sizeof(vnc-\u003eraw) - to_copy);",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea7bc23_11eb0cd5",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "put a blank line above this between the decls",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea7bc23_b1cb186c",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "add O_CLOEXEC to the flags",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea7bc23_51e754f6",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2013-10-28T16:08:08Z",
+      "side": 1,
+      "message": "i\u0027d move this logic above the open()",
+      "revId": "c76fa3e1abf772f956d3d461e64630febb15c640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
