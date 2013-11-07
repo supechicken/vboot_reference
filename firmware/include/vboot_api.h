@@ -864,6 +864,7 @@ int VbExLegacy(void);
 /* Regions for VbExRegionRead() */
 enum vb_firmware_region {
 	VB_REGION_GBB,	/* Google Binary Block - see gbbheader.h */
+	VB_REGION_ALL,
 
 	VB_REGION_COUNT,
 };
