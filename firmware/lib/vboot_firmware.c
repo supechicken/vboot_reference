@@ -101,13 +101,27 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		/* If try B count is non-zero try firmware B first */
 		index = (try_b_count ? 1 - i : i);
 		if (0 == index) {
+#ifdef REGION_READ
+			key_block=VbExMalloc(fparams->verification_size_A);
+			VbRegionReadData(cparams, VB_REGION_OTHER,
+					(unsigned long)fparams->verification_block_A,
+						fparams->verification_size_A, key_block);
+#else
 			key_block = (VbKeyBlockHeader *)
 				fparams->verification_block_A;
+#endif
 			vblock_size = fparams->verification_size_A;
 			check_result = &shared->check_fw_a_result;
 		} else {
+#ifdef REGION_READ
+			key_block=VbExMalloc(fparams->verification_size_B);
+			VbRegionReadData(cparams, VB_REGION_OTHER,
+					(unsigned long)fparams->verification_block_B,
+						fparams->verification_size_B, key_block);
+#else
 			key_block = (VbKeyBlockHeader *)
 				fparams->verification_block_B;
+#endif
 			vblock_size = fparams->verification_size_B;
 			check_result = &shared->check_fw_b_result;
 		}
@@ -122,6 +136,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		       KEY_BLOCK_FLAG_DEVELOPER_0))) {
 			VBDEBUG(("Developer flag mismatch.\n"));
 			*check_result = VBSD_LF_CHECK_DEV_MISMATCH;
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -129,6 +146,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		if (!(key_block->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_0)) {
 			VBDEBUG(("Recovery flag mismatch.\n"));
 			*check_result = VBSD_LF_CHECK_REC_MISMATCH;
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -137,6 +157,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 					 root_key, 0))) {
 			VBDEBUG(("Key block verification failed.\n"));
 			*check_result = VBSD_LF_CHECK_VERIFY_KEYBLOCK;
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -146,6 +169,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 			if (key_version < (shared->fw_version_tpm >> 16)) {
 				VBDEBUG(("Key rollback detected.\n"));
 				*check_result = VBSD_LF_CHECK_KEY_ROLLBACK;
+#ifdef REGION_READ
+				VbExFree(key_block);
+#endif
 				continue;
 			}
 			if (key_version > 0xFFFF) {
@@ -156,6 +182,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 				 */
 				VBDEBUG(("Key version > 0xFFFF.\n"));
 				*check_result = VBSD_LF_CHECK_KEY_ROLLBACK;
+#ifdef REGION_READ
+				VbExFree(key_block);
+#endif
 				continue;
 			}
 		}
@@ -165,6 +194,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		if (!data_key) {
 			VBDEBUG(("Unable to parse data key.\n"));
 			*check_result = VBSD_LF_CHECK_DATA_KEY_PARSE;
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -178,6 +210,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 			VBDEBUG(("Preamble verfication failed.\n"));
 			*check_result = VBSD_LF_CHECK_VERIFY_PREAMBLE;
 			RSAPublicKeyFree(data_key);
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -189,6 +224,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 			VBDEBUG(("Firmware version rollback detected.\n"));
 			*check_result = VBSD_LF_CHECK_FW_ROLLBACK;
 			RSAPublicKeyFree(data_key);
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -206,6 +244,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 		 */
 		if (-1 != good_index) {
 			RSAPublicKeyFree(data_key);
+#ifdef REGION_READ
+			VbExFree(key_block);
+#endif
 			continue;
 		}
 
@@ -219,6 +260,9 @@ int LoadFirmware(VbCommonParams *cparams, VbSelectFirmwareParams *fparams,
 				VBDEBUG(("No RO normal support.\n"));
 				*check_result = VBSD_LF_CHECK_NO_RO_NORMAL;
 				RSAPublicKeyFree(data_key);
+#ifdef REGION_READ
+				VbExFree(key_block);
+#endif
 				continue;
 			}
 
