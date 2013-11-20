@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe71ed53_e4200e86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2013-11-20T16:05:22Z",
+      "side": 1,
+      "message": "the CQ-DEPEND probably needs to point to the U-Boot CL\n\nalso you need to prepare a change for Depthcharge before changing this API\n(btw now all new systems should be Coreboot+Depthcharge based)",
+      "revId": "423d5e9381461282ad4dcca613209092f377340d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
