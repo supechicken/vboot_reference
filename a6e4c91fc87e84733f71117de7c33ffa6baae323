@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bef93500_be6775ad",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-11-20T18:26:09Z",
+      "side": 1,
+      "message": "What does OTHER mean?\n\nActually I think it means that you can access the entire firmware in one chunk. Perhaps VB_REGION_ALL?",
+      "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e0dfde8_3c189d00",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2013-11-20T18:26:09Z",
+      "side": 1,
+      "message": "If coreboot is going to support REGION_READ, we should be able to remove the option. It was only made optional because U-Boot supported it but Coreboot did not.",
+      "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
