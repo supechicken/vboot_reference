@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ed03988_31ae1280",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T16:41:36Z",
+      "side": 1,
+      "message": "Agree; _ALL makes more sense.  I\u0027d expect _OTHER to mean everything which is *not* listed above.",
+      "parentUuid": "bef93500_be6775ad",
+      "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e0dfde8_3c189d00",
         "filename": "firmware/lib/vboot_firmware.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-20T18:26:09Z",
       "side": 1,
       "message": "If coreboot is going to support REGION_READ, we should be able to remove the option. It was only made optional because U-Boot supported it but Coreboot did not.",
+      "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_5fe11bb2",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-11-21T16:41:36Z",
+      "side": 1,
+      "message": "Yes, that\u0027d be cleaner.\n\nBut perhaps do that in a separate CL, so the change history is easier to parse.",
+      "parentUuid": "7e0dfde8_3c189d00",
       "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
