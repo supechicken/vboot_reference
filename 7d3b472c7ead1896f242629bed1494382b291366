@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83025a40_9aab116d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2013-12-03T02:04:08Z",
+      "side": 1,
+      "message": "This needs a bug. If there\u0027s a security problem we need to document it. If not, we need to be sure it doesn\u0027t introduce one.\n\nSince this will make a change to the behavior for all future systems, not just Pixel (which I gather from related CLs is the root of the problem). It needs more discussion, testing, and justification besides just mentioning what the effect of the CL is.\n\nPlease create a bug to explain why this needs doing.\n\nThanks.",
+      "revId": "7d3b472c7ead1896f242629bed1494382b291366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
