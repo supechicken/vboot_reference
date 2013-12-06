@@ -51,6 +51,24 @@
       "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3df5e7e_421bf28c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2013-12-06T21:37:59Z",
+      "side": 1,
+      "message": "The widest it gets the way I suggest it is 71 columns (yes, I just checked :). I still see what you have as less readable.",
+      "parentUuid": "2330ce7d_1cd01d06",
+      "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
