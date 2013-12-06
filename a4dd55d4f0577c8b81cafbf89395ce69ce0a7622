@@ -33,6 +33,24 @@
       "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2330ce7d_1cd01d06",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-06T21:30:52Z",
+      "side": 1,
+      "message": "Not really, particularly given the reformatting necessary to stay within 80 cols.",
+      "parentUuid": "a4ce8349_cc3fcfe7",
+      "revId": "a4dd55d4f0577c8b81cafbf89395ce69ce0a7622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
