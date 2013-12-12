@@ -42,6 +42,19 @@ static void VbSetRecoveryRequest(uint32_t recovery_request)
 }
 
 /**
+ * Returns the number of disks matching disk_flags attributes
+ */
+static uint32_t GetDiskCount(VbDiskInfo **disk_info, uint32_t disk_flags)
+{
+	uint32_t disk_count;
+
+	if (VBERROR_SUCCESS !=
+	    VbExDiskGetInfo(disk_info, &disk_count, disk_flags))
+		disk_count = 0;
+	return disk_count;
+}
+
+/**
  * Attempt loading a kernel from the specified type(s) of disks.
  *
  * If successful, sets p->disk_handle to the disk for the kernel and returns
@@ -65,9 +78,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 	p->disk_handle = NULL;
 
 	/* Find disks */
-	if (VBERROR_SUCCESS != VbExDiskGetInfo(&disk_info, &disk_count,
-					       get_info_flags))
-		disk_count = 0;
+	disk_count = GetDiskCount(&disk_info, get_info_flags);
 
 	VBDEBUG(("VbTryLoadKernel() found %d disks\n", (int)disk_count));
 	if (0 == disk_count) {
@@ -391,9 +402,11 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
 
+
 /* Delay in recovery mode */
-#define REC_DISK_DELAY 1000     /* Check disks every 1s */
-#define REC_KEY_DELAY  20       /* Check keys every 20ms */
+#define REC_DISK_DELAY       1000     /* Check disks every 1s */
+#define REC_KEY_DELAY        20       /* Check keys every 20ms */
+#define REC_MEDIA_INIT_DELAY 500      /* Check removable media every 500ms */
 
 VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 {
@@ -413,14 +426,22 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 	    !(shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
 		VbDiskInfo *disk_info = NULL;
 		uint32_t disk_count = 0;
+		int detect_tries = 0;
 
 		VBDEBUG(("VbBootRecovery() forcing device removal\n"));
 
 		while (1) {
-			if (VBERROR_SUCCESS !=
-			    VbExDiskGetInfo(&disk_info, &disk_count,
-					    VB_DISK_FLAG_REMOVABLE))
-				disk_count = 0;
+			/* If no media is detected initially, make one extra
+			 * attempt to detect, in case devices appear later
+			 * than expected. */
+			disk_count = GetDiskCount(&disk_info,
+						  VB_DISK_FLAG_REMOVABLE);
+			if (++detect_tries < 2 && disk_count == 0) {
+				VbExDiskFreeInfo(disk_info, NULL);
+				VbExSleepMs(REC_MEDIA_INIT_DELAY);
+				disk_count = GetDiskCount(&disk_info,
+						  VB_DISK_FLAG_REMOVABLE);
+			}
 
 			VbExDiskFreeInfo(disk_info, NULL);
 
