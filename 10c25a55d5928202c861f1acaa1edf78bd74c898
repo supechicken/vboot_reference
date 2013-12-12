@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a82f3bb4_76691881",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2013-12-12T22:17:18Z",
+      "side": 1,
+      "message": "I don\u0027t think forcing inline is necessary here. Most likely gcc will inline anyways, but if it contributes to a smaller code size, it shouldn\u0027t",
+      "revId": "10c25a55d5928202c861f1acaa1edf78bd74c898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
