@@ -16,6 +16,24 @@
       "revId": "5245453a74217bf2016ae1653ca7f168fc414d3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68db8306_f3914ac1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-12-12T23:48:15Z",
+      "side": 1,
+      "message": "Done, and moved the wait outside the loop, I agree it\u0027s simpler. Thanks for the suggestion.",
+      "parentUuid": "08abe757_34625e26",
+      "revId": "5245453a74217bf2016ae1653ca7f168fc414d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
