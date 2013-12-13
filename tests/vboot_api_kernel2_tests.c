@@ -419,6 +419,7 @@ static void VbBootRecTest(void)
 	shutdown_request_calls_left = 100;
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
+	mock_num_disks[2] = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecovery(&cparams, &lkp), VBERROR_SHUTDOWN_REQUESTED,
 		"Remove");
