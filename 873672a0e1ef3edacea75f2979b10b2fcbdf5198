@@ -16,6 +16,24 @@
       "revId": "873672a0e1ef3edacea75f2979b10b2fcbdf5198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68db8306_135dee60",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-12-13T00:21:25Z",
+      "side": 1,
+      "message": "You are right, our usage in this file was generally unsafe before this change, and I copied the same usage. VbExDiskGetInfo does not touch the info_ptr parameter in the non-VBERROR_SUCCESS case, so it\u0027s possible to double-free a pointer if the first call is successful (making our pointer non-null) and then a subsequent call fails.\n\nDo you agree with my \u0027fix\u0027? Now, the pointer is guaranteed to be null in the failure case, so calling free is safe.",
+      "parentUuid": "08abe757_1f5dfb60",
+      "revId": "873672a0e1ef3edacea75f2979b10b2fcbdf5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
