@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c86c6f4a_a98b19c3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-12-14T01:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8973b5d_2847ef36",
+      "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28ab4b9f_a1d2f8e5",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2013-12-14T01:00:06Z",
       "side": 1,
       "message": "don\u0027t need to init disk_count\u003d0 here now",
+      "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86c6f4a_898e5dd4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2013-12-14T01:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ab4b9f_a1d2f8e5",
       "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
