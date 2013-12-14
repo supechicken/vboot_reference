@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28ab4b9f_e103609e",
+        "filename": "28ab4b9f_e103609e",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-14T01:00:06Z",
+      "side": 1,
+      "message": "It does more than that; it also sets disk_info.\n\nHow is this different than calling VbExGetDiskInfo() directly?",
+      "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8973b5d_2847ef36",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-14T01:00:06Z",
+      "side": 1,
+      "message": "disk_count\u003d0 here, since otherwise it\u0027s not intiialized before passing to VbExGetDiskInfo()",
+      "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28ab4b9f_a1d2f8e5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2013-12-14T01:00:06Z",
+      "side": 1,
+      "message": "don\u0027t need to init disk_count\u003d0 here now",
+      "revId": "2bc87161dd7048c8dd8c4958d9cf564b8682acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
