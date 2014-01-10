@@ -33,6 +33,7 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 	int has_virt_dev_switch = 0;
 	int is_hw_dev = 0;
 	int is_virt_dev = 0;
+        int is_first_dev_boot = 0;
 	uint32_t disable_dev_request = 0;
 	uint32_t clear_tpm_owner_request = 0;
 	int is_dev = 0;
@@ -186,8 +187,12 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 		tpm_status = RollbackFirmwareSetup(is_hw_dev,
 						   disable_dev_request,
 						   clear_tpm_owner_request,
-						   /* two outputs on success */
-						   &is_virt_dev, &tpm_version);
+						   /* 3 outputs on success */
+						   &is_virt_dev,
+                                                   &is_first_dev_boot,
+                                                   &tpm_version);
+                if (is_first_dev_boot)
+                        shared->flags |= VBSD_IS_FIRST_DEV_BOOT;
 
 		if (0 != tpm_status) {
 			VBDEBUG(("Unable to setup TPM and read "

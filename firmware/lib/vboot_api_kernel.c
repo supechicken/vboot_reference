@@ -285,7 +285,15 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 			}
 			break;
 		case 0x04:
-			/* Ctrl+D = dismiss warning; advance to timeout */
+			/* Ctrl+D = dismiss warning; advance to timeout
+			 * but only if this is *not* the first boot in dev mode
+			 */
+			if (shared->flags & VBSD_IS_FIRST_DEV_BOOT) {
+				VBDEBUG(("VbBootDeveloper() - "
+					 "Ctrl+D request denied\n"));
+				VbExBeep(120, 400);
+				break;
+			}
 			VBDEBUG(("VbBootDeveloper() - "
 				 "user pressed Ctrl+D; skip delay\n"));
 			ctrl_d_pressed = 1;

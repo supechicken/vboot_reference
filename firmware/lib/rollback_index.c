@@ -342,7 +342,8 @@ uint32_t OneTimeInitializeTPM(RollbackSpaceFirmware *rsf,
  * the durability of the NVRAM.
  */
 uint32_t SetupTPM(int developer_mode, int disable_dev_request,
-                  int clear_tpm_owner_request, RollbackSpaceFirmware* rsf)
+                  int clear_tpm_owner_request, int *is_first_dev_boot,
+                  RollbackSpaceFirmware* rsf)
 {
 	uint8_t in_flags;
 	uint8_t disable;
@@ -451,6 +452,7 @@ uint32_t SetupTPM(int developer_mode, int disable_dev_request,
 	 */
 	if ((developer_mode ? FLAG_LAST_BOOT_DEVELOPER : 0) !=
 	    (in_flags & FLAG_LAST_BOOT_DEVELOPER)) {
+                *is_first_dev_boot = 1;
 		VBDEBUG(("TPM: Developer flag changed; clearing owner.\n"));
 		RETURN_ON_FAILURE(TPMClearAndReenable());
 	} else if (clear_tpm_owner_request) {
@@ -494,7 +496,8 @@ uint32_t RollbackS3Resume(void)
 uint32_t RollbackFirmwareSetup(int is_hw_dev,
                                int disable_dev_request,
                                int clear_tpm_owner_request,
-                               int *is_virt_dev, uint32_t *version)
+                               int *is_virt_dev, int *is_first_dev_boot,
+                               uint32_t *version)
 {
 #ifndef CHROMEOS_ENVIRONMENT
 	/*
@@ -506,6 +509,7 @@ uint32_t RollbackFirmwareSetup(int is_hw_dev,
 	TlclContinueSelfTest();
 #endif
 	*is_virt_dev = 0;
+	*is_first_dev_boot = 0;
 	*version = 0;
 	return TPM_SUCCESS;
 }
@@ -556,7 +560,9 @@ uint32_t RollbackS3Resume(void)
 uint32_t RollbackFirmwareSetup(int is_hw_dev,
                                int disable_dev_request,
                                int clear_tpm_owner_request,
-                               int *is_virt_dev, uint32_t *version)
+                               int *is_virt_dev,
+                               int *is_first_dev_boot,
+                               uint32_t *version)
 {
 	RollbackSpaceFirmware rsf;
 
@@ -564,7 +570,8 @@ uint32_t RollbackFirmwareSetup(int is_hw_dev,
 	*version = 0;
 
 	RETURN_ON_FAILURE(SetupTPM(is_hw_dev, disable_dev_request,
-				   clear_tpm_owner_request, &rsf));
+				   clear_tpm_owner_request, is_first_dev_boot,
+                                   &rsf));
 	Memcpy(version, &rsf.fw_versions, sizeof(*version));
 	*is_virt_dev = (rsf.flags & FLAG_VIRTUAL_DEV_MODE_ON) ? 1 : 0;
 	VBDEBUG(("TPM: RollbackFirmwareSetup %x\n", (int)*version));

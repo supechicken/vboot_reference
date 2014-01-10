@@ -259,6 +259,9 @@ typedef struct VbKernelPreambleHeader {
 #define VBSD_EC_SLOW_UPDATE             0x00001000
 /* Firmware software write protect was enabled at boot time */
 #define VBSD_BOOT_FIRMWARE_SW_WP_ENABLED 0x00002000
+/* This is the first boot in dev mode after a switch */
+#define VBSD_IS_FIRST_DEV_BOOT          0x00004000
+
 
 /*
  * Supported flags by header version.  It's ok to add new flags while keeping
