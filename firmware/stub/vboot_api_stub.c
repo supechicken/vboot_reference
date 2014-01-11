@@ -57,6 +57,16 @@ uint32_t VbExKeyboardRead(void)
 	return 0;
 }
 
+int VbExLastKeyIsFromTrustedKeyboard(void)
+{
+	return 1;
+}
+
+uint32_t VbExGetSwitches(uint32_t mask)
+{
+	return 0;
+}
+
 uint32_t VbExIsShutdownRequested(void)
 {
 	return 0;
