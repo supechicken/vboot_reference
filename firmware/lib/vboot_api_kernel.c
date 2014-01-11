@@ -130,26 +130,39 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 
 #define CONFIRM_KEY_DELAY 20  /* Check confirm screen keys every 20ms */
 
-int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
+int VbUserConfirms(VbCommonParams *cparams, uint32_t confirm_flags)
 {
+	VbSharedDataHeader *shared =
+           (VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t key;
+	uint32_t key_flags;
 
-	VBDEBUG(("Entering %s(%d)\n", __func__, space_means_no));
+	VBDEBUG(("Entering %s(0x%x)\n", __func__, confirm_flags));
 
 	/* Await further instructions */
 	while (1) {
 		if (VbExIsShutdownRequested())
 			return -1;
-		key = VbExKeyboardRead();
+		key = VbExKeyboardReadWithFlags(&key_flags);
 		switch (key) {
 		case '\r':
+			/* If we require a trusted keyboard for confirmation,
+			 * but the keyboard may be faked (for instance, a USB
+			 * device), beep and keep waiting.
+			 */
+			if (confirm_flags & VB_CONFIRM_MUST_TRUST_KEYBOARD &&
+			    !(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)) {
+				VbExBeep(120, 400);
+				break;
+                        }
+
 			VBDEBUG(("%s() - Yes (1)\n", __func__));
 			return 1;
 			break;
 		case ' ':
 			VBDEBUG(("%s() - Space (%d)\n", __func__,
-				 space_means_no));
-			if (space_means_no)
+				 confirm_flags & VB_CONFIRM_SPACE_MEANS_NO));
+			if (confirm_flags & VB_CONFIRM_SPACE_MEANS_NO)
 				return 0;
 			break;
 		case 0x1b:
@@ -157,6 +170,22 @@ int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
 			return 0;
 			break;
 		default:
+			/* If the recovery button is physical, and is pressed,
+			 * this is also a YES.
+			 */
+			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
+			    VbExGetSwitches(VB_INIT_FLAG_REC_BUTTON_PRESSED)) {
+				VBDEBUG(("%s() - Recovery button (1)\n",
+					 __func__));
+                                /* Wait until button is released, or we're
+                                 * likely to boot in recovery mode again.
+                                 */
+                                while (VbExGetSwitches(
+					     VB_INIT_FLAG_REC_BUTTON_PRESSED)) {
+                                        VbExSleepMs(CONFIRM_KEY_DELAY);
+                                }
+				return 1;
+			}
 			VbCheckDisplayKey(cparams, key, &vnc);
 		}
 		VbExSleepMs(CONFIRM_KEY_DELAY);
@@ -505,12 +534,30 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 			    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
 			    (shared->flags & VBSD_BOOT_REC_SWITCH_ON) &&
 			    VbExTrustEC()) {
+                                if (!(shared->flags &
+				      VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
+				    VbExGetSwitches(
+					     VB_INIT_FLAG_REC_BUTTON_PRESSED)) {
+					/*
+					 * Is the recovery button stuck?  In
+					 * any case we don't like this.  Beep
+					 * and ignore.
+					 */
+					VBDEBUG(("%s() - ^D but rec switch "
+						 "is pressed\n", __func__));
+					VbExBeep(120, 400);
+					continue;
+				}
+
 				/* Ask the user to confirm entering dev-mode */
 				VbDisplayScreen(cparams,
 						VB_SCREEN_RECOVERY_TO_DEV,
 						0, &vnc);
 				/* SPACE means no... */
-				switch (VbUserConfirms(cparams, 1)) {
+				uint32_t vbc_flags =
+					VB_CONFIRM_SPACE_MEANS_NO |
+					VB_CONFIRM_MUST_TRUST_KEYBOARD;
+				switch (VbUserConfirms(cparams, vbc_flags)) {
 				case 1:
 					VBDEBUG(("%s() Enabling dev-mode...\n",
 						 __func__));
