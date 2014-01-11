@@ -176,6 +176,9 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 	case VB_SCREEN_RECOVERY_INSERT:
 		screen_index = SCREEN_RECOVERY_INSERT;
 		break;
+	case VB_SCREEN_RECOVERY_PRESS_RECOVERY:
+		screen_index = SCREEN_RECOVERY_PRESS_RECOVERY;
+		break;
 	case VB_SCREEN_RECOVERY_TO_DEV:
 		screen_index = SCREEN_RECOVERY_TO_DEV;
 		break;

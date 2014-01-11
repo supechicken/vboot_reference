@@ -57,6 +57,11 @@ uint32_t VbExKeyboardRead(void)
 	return 0;
 }
 
+uint32_t VbExGetSwitches(void)
+{
+	return 0;
+}
+
 uint32_t VbExIsShutdownRequested(void)
 {
 	return 0;

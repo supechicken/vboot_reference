@@ -639,6 +639,8 @@ enum VbScreenType_t {
 	VB_SCREEN_WAIT              = 0x206,
 	/* Confirm after DEVELOPER_TO_NORM */
 	VB_SCREEN_TO_NORM_CONFIRMED = 0x207,
+	/* Recovery - confirm by pressing recovery button  */
+	VB_SCREEN_RECOVERY_PRESS_RECOVERY = 0x208,
 };
 
 /**
@@ -724,6 +726,11 @@ enum VbKeyCode_t {
  * It is not permitted to report a key as a multi-byte code (for example,
  * sending an arrow key as the sequence of keys '\x1b', '[', '1', 'A'). */
 uint32_t VbExKeyboardRead(void);
+
+/**
+ * Returns the current state of switches.
+ */
+uint32_t VbExGetSwitches(void);
 
 /*****************************************************************************/
 /* Embedded controller (EC) */

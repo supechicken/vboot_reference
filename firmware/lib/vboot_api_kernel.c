@@ -396,6 +396,23 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 #define REC_KEY_DELAY        20       /* Check keys every 20ms */
 #define REC_MEDIA_INIT_DELAY 500      /* Check removable media every 500ms */
 
+/*
+ * Waits forever for a press of the recovery button, if there is a hardware
+ * recovery button.
+ */
+void VbWaitForRecButtonPress(VbCommonParams *cparams)
+{
+	VbDisplayScreen(cparams,
+			VB_SCREEN_RECOVERY_PRESS_RECOVERY,
+			0, &vnc);
+	while (1) {
+		uint32_t keys = VbExGetSwitches();
+		if (keys & VB_INIT_FLAG_REC_BUTTON_PRESSED)
+			return;
+		VbExSleepMs(REC_KEY_DELAY);
+	}
+}
+
 VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 {
 	VbSharedDataHeader *shared =
@@ -512,6 +529,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 				/* SPACE means no... */
 				switch (VbUserConfirms(cparams, 1)) {
 				case 1:
+					VbWaitForRecButtonPress(cparams);
 					VBDEBUG(("%s() Enabling dev-mode...\n",
 						 __func__));
 					if (TPM_SUCCESS != SetVirtualDevMode(1))
