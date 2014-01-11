@@ -130,8 +130,11 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 
 #define CONFIRM_KEY_DELAY 20  /* Check confirm screen keys every 20ms */
 
-int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
+int VbUserConfirms(VbCommonParams *cparams, int space_means_no,
+		   int must_trust_keyboard)
 {
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t key;
 
 	VBDEBUG(("Entering %s(%d)\n", __func__, space_means_no));
@@ -143,6 +146,14 @@ int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
 		key = VbExKeyboardRead();
 		switch (key) {
 		case '\r':
+			/* If we require a trusted keyboard for confirmation,
+			 * but the keyboard may be faked (for instance, a USB
+			 * device), ignore this key.
+			 */
+			if (must_trust_keyboard &&
+			    !VbExLastKeyIsFromTrustedKeyboard())
+				break;
+
 			VBDEBUG(("%s() - Yes (1)\n", __func__));
 			return 1;
 			break;
@@ -157,6 +168,15 @@ int VbUserConfirms(VbCommonParams *cparams, int space_means_no)
 			return 0;
 			break;
 		default:
+			/* If the recovery button is physical, and is pressed,
+			 * this is also a YES.
+			 */
+			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
+			    VbExGetRecoveryButton()) {
+				VBDEBUG(("%s() - Recovery button (1)\n",
+					 __func__));
+				return 1;
+			}
 			VbCheckDisplayKey(cparams, key, &vnc);
 		}
 		VbExSleepMs(CONFIRM_KEY_DELAY);
@@ -244,7 +264,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 						VB_SCREEN_DEVELOPER_TO_NORM,
 						0, &vnc);
 				/* Ignore space in VbUserConfirms()... */
-				switch (VbUserConfirms(cparams, 0)) {
+				switch (VbUserConfirms(cparams, 0, 0)) {
 				case 1:
 					VBDEBUG(("%s() - leaving dev-mode.\n",
 						 __func__));
@@ -510,7 +530,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 						VB_SCREEN_RECOVERY_TO_DEV,
 						0, &vnc);
 				/* SPACE means no... */
-				switch (VbUserConfirms(cparams, 1)) {
+				switch (VbUserConfirms(cparams, 1, 1)) {
 				case 1:
 					VBDEBUG(("%s() Enabling dev-mode...\n",
 						 __func__));
