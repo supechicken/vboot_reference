@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dea89ed_3d297a9d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:42:14Z",
+      "side": 1,
+      "message": "Isn\u0027t this just RECOVERY_TO_DEV?\n\n(just with different text, so it says \"press recovery button to confirm\" instead of \"press enter to confirm\")",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d44d9e7_dd606beb",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:42:14Z",
+      "side": 1,
+      "message": "What can be returned here?  (That is, what enums/defines are the bit values in the returned uint32_t?)",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dea89ed_fd5bf243",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-13T18:42:14Z",
+      "side": 1,
+      "message": "Should also check for VbExIsShutdownRequested().  That is, this should work similarly to VbUserConfirms().",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
