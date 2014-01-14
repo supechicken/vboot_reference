@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d1635de_c722c88e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2014-01-14T04:32:27Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "8dea89ed_3d297a9d",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d44d9e7_dd606beb",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6d1635de_67289c6c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2014-01-14T04:32:27Z",
+      "side": 1,
+      "message": "Changed to a single switch as discussed with Gabe.",
+      "parentUuid": "0d44d9e7_dd606beb",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dea89ed_fd5bf243",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-01-13T18:42:14Z",
       "side": 1,
       "message": "Should also check for VbExIsShutdownRequested().  That is, this should work similarly to VbUserConfirms().",
+      "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1b3107_4b3c8542",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2014-01-14T04:32:27Z",
+      "side": 1,
+      "message": "Thanks.  Integrated with VbUserConfirms.",
+      "parentUuid": "8dea89ed_fd5bf243",
       "revId": "165b64209f8e8991111e2dfe83a90e63178d215b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
