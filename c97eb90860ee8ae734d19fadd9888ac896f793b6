@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edaa25eb_4ce17fed",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T17:59:32Z",
+      "side": 1,
+      "message": "I\u0027m concerned about synchronization issues between VbExKeyboardRead() and VbExLastKeyIsFromTrustedKeyboard(). It assumes things are coded properly so that the state is persisted between the calls.\n\nWhat about changing the prototype to\n\n  uint32_t VbExKeyboardRead(uint32_t *flags_ptr);\n\nWhere flags_ptr could be non-null (store flags, including VB_KEY_FLAG_TRUSTED_KB) or null (don\u0027t store flags).\nOr make that a second function VbExKeyboardReadWithFlags(), if you don\u0027t want to change the first prototype.",
+      "revId": "c97eb90860ee8ae734d19fadd9888ac896f793b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edaa25eb_ec92eb40",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T17:59:32Z",
+      "side": 1,
+      "message": "Let\u0027s change this to \n\n  VbUserConforms(cparams, flags)\n\nSince\n\n  VbUserConfirms(cparams, VB_CONFIRM_SPACE_MEANS_NO | VB_CONFIRM_MUST_TRUST_KEYBOARD)\n\nis more readable than \n\n  VbUserConfirms(cparams, 1, 1)\n\nand it\u0027s much less likely that we\u0027ll make a typo like:\n\n  VbUserConfirms(cparams, 1, 0)\n  \u003c--\u003e\n  VbUserConfirms(cparams, 0, 1)",
+      "revId": "c97eb90860ee8ae734d19fadd9888ac896f793b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4deed135_3389e05b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T17:59:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check to make sure that the button is released when Ctrl+D is pressed?\n\nThat is, this sequence is good:\n\n   1. Press recovery\n   2. Power on\n   3. Release recovery\n   4. Ctrl+D\n   5. Press recovery to confirm\n   6. Release recovery\n\nbut this one is not good:\n\n   1. Press recovery\n   2. Power on\n   3. Ctrl+D (with recovery still held)\n   4. Press recovery to confirm\n   5. Release recovery",
+      "revId": "c97eb90860ee8ae734d19fadd9888ac896f793b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df0590e_a6b48cda",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-01-15T17:59:32Z",
+      "side": 1,
+      "message": "This at least means that we\u0027ll hang if the recovery button gets stuck, but we\u0027ll also be in dev mode when it does get unstuck.",
+      "revId": "c97eb90860ee8ae734d19fadd9888ac896f793b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
