@@ -69,6 +69,24 @@
       "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c3ac1c3_c0fe8819",
+        "filename": "firmware/lib/vboot_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2014-02-25T22:30:26Z",
+      "side": 1,
+      "message": "REGION_READ requires flash memory to be copied into memory instead of directly accessing a memory mapped flash. I\u0027d like to prevent that on platforms where it\u0027s not necessary.\n\nI need to experiment whether it is enough to hold the data in the CBFS buffer in coreboot instead of creating an actual copy here. That would potentially make unifying the code easier (or at least make this CL way less intrusive)... Looking into it.",
+      "parentUuid": "bea77522_5fe11bb2",
+      "revId": "a6e4c91fc87e84733f71117de7c33ffa6baae323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
