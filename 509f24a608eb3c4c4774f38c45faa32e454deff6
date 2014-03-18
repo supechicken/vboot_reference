@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cefcdff_53e1d6b1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-03-18T02:36:42Z",
+      "side": 1,
+      "message": "I think we should be explicit about each particular region: i.e. keyblock_a, fw_a, etc.",
+      "revId": "509f24a608eb3c4c4774f38c45faa32e454deff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
