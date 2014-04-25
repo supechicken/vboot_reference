@@ -264,8 +264,8 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	if (!kbuf)
 		goto bad_gpt;
 
-        /* Loop over candidate kernel partitions */
-        while (GPT_SUCCESS ==
+	/* Loop over candidate kernel partitions */
+	while (GPT_SUCCESS ==
 	       GptNextKernelEntry(&gpt, &part_start, &part_size)) {
 		VbSharedDataKernelPart *shpart = NULL;
 		VbKeyBlockHeader *key_block;
@@ -324,9 +324,10 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 			key_block_valid = 0;
 
 			/* If not in developer mode, this kernel is bad. */
+			#if 0
 			if (kBootDev != boot_mode)
 				goto bad_kernel;
-
+			#endif
 			/*
 			 * In developer mode, we can explictly disallow
 			 * self-signed kernels
@@ -359,6 +360,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 			shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
 			key_block_valid = 0;
 		}
+		#if 0
 		if (!(key_block->key_block_flags &
 		      (rec_switch ? KEY_BLOCK_FLAG_RECOVERY_1 :
 		       KEY_BLOCK_FLAG_RECOVERY_0))) {
@@ -366,7 +368,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 			shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
 			key_block_valid = 0;
 		}
-
+		#endif
 		/* Check for rollback of key version except in recovery mode. */
 		key_version = key_block->data_key.key_version;
 		if (kBootRecovery != boot_mode) {
@@ -389,12 +391,13 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 			}
 		}
 
+		#if 0
 		/* If not in developer mode, key block required to be valid. */
 		if (kBootDev != boot_mode && !key_block_valid) {
 			VBDEBUG(("Key block is invalid.\n"));
 			goto bad_kernel;
 		}
-
+		#endif
 		/* Get key for preamble/data verification from the key block. */
 		data_key = PublicKeyToRSA(&key_block->data_key);
 		if (!data_key) {
@@ -577,7 +580,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 		GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 
 
-        } /* while(GptNextKernelEntry) */
+	} /* while(GptNextKernelEntry) */
 
  bad_gpt:
 
