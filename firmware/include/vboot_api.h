@@ -476,8 +476,8 @@ VbError_t VbExTpmOpen(void);
  * input, response_length is the size of the response buffer in bytes.  On
  * exit, response_length is set to the actual received response length in
  * bytes. */
-VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
-                             uint8_t *response, uint32_t *response_length);
+VbError_t VbExTpmSendReceive(const uint8_t *request, size_t request_length,
+                             uint8_t *response, size_t *response_length);
 
 /*****************************************************************************/
 /* Non-volatile storage */

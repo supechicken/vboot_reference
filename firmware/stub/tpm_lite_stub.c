@@ -76,8 +76,8 @@ __attribute__((unused)) static void PrintBytes(const uint8_t* a, int n) {
 
 /* Executes a command on the TPM.
  */
-static VbError_t TpmExecute(const uint8_t *in, const uint32_t in_len,
-                uint8_t *out, uint32_t *pout_len) {
+static VbError_t TpmExecute(const uint8_t *in, const size_t in_len,
+                uint8_t *out, size_t *pout_len) {
   uint8_t response[TPM_MAX_COMMAND_SIZE];
   if (in_len <= 0) {
     return DoError(TPM_E_INPUT_TOO_SMALL,
@@ -185,8 +185,8 @@ VbError_t VbExTpmOpen(void) {
 }
 
 
-VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
-                             uint8_t* response, uint32_t* response_length) {
+VbError_t VbExTpmSendReceive(const uint8_t* request, size_t request_length,
+                             uint8_t* response, size_t* response_length) {
   /*
    * In a real firmware implementation, this function should contain
    * the equivalent API call for the firmware TPM driver which takes a

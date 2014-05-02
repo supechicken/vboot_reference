@@ -80,8 +80,8 @@ VbError_t VbExTpmClose(void)
 	return mock_retval;
 }
 
-VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
-                             uint8_t *response, uint32_t *response_length)
+VbError_t VbExTpmSendReceive(const uint8_t *request, size_t request_length,
+                             uint8_t *response, size_t *response_length)
 {
 	struct srcall *c = calls + ncalls++;
 

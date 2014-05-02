@@ -63,7 +63,7 @@ static inline int TpmReturnCode(const uint8_t* buffer) {
 static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
                                        uint8_t* response, int max_length) {
 
-  uint32_t response_length = max_length;
+  size_t response_length = max_length;
   uint32_t result;
 
 #ifdef EXTRA_LOGGING
