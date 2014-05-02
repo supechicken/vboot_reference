@@ -77,7 +77,7 @@ __attribute__((unused)) static void PrintBytes(const uint8_t* a, int n) {
 /* Executes a command on the TPM.
  */
 static VbError_t TpmExecute(const uint8_t *in, const uint32_t in_len,
-                uint8_t *out, uint32_t *pout_len) {
+                	    uint8_t *out, uint32_t *pout_len) {
   uint8_t response[TPM_MAX_COMMAND_SIZE];
   if (in_len <= 0) {
     return DoError(TPM_E_INPUT_TOO_SMALL,
