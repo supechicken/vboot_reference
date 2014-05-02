@@ -77,7 +77,7 @@ __attribute__((unused)) static void PrintBytes(const uint8_t* a, int n) {
 /* Executes a command on the TPM.
  */
 static VbError_t TpmExecute(const uint8_t *in, const uint32_t in_len,
-                uint8_t *out, uint32_t *pout_len) {
+                	    uint8_t *out, uint32_t *pout_len) {
   uint8_t response[TPM_MAX_COMMAND_SIZE];
   if (in_len <= 0) {
     return DoError(TPM_E_INPUT_TOO_SMALL,
@@ -208,12 +208,17 @@ VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
   int tag, response_tag;
 #endif
   VbError_t result;
+  size_t len = *response_length;
 
   struct timeval before, after;
   gettimeofday(&before, NULL);
-  result = TpmExecute(request, request_length, response, response_length);
+  result = TpmExecute(request, request_length, response, &len);
   if (result != VBERROR_SUCCESS)
     return result;
+  /* check 64->32bit overflow and (re)check response buffer overflow */
+  if (len > *response_length)
+    return VBERROR_UNKNOWN;
+  *response_length = len;
   gettimeofday(&after, NULL);
 
 #ifdef VBOOT_DEBUG
