@@ -1,0 +1,370 @@
+/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* APIs between calling firmware and vboot_reference
+ *
+ * General notes:
+ *
+ * TODO: split this file into a vboot_entry_points.h file which contains the
+ * entry points for the firmware to call vboot_reference, and a
+ * vboot_firmware_exports.h which contains the APIs to be implemented by the
+ * calling firmware and exported to vboot_reference.
+ *
+ * Notes:
+ *    * Assumes this code is never called in the S3 resume path.  TPM resume
+ *      must be done elsewhere, and VBNV_DEBUG_RESET_MODE is ignored.
+ */
+
+#ifndef VBOOT_2_API_H_
+#define VBOOT_2_API_H_
+#include <stdint.h>
+
+/* Size of non-volatile data used by vboot */
+#define VB2_NVDATA_SIZE 16
+
+/* Size of secure data used by vboot */
+#define VB2_SECDATA_SIZE 10
+
+/* Flags for vb2_context */
+// NOTE: No longer flags for "need USB" or "need RAM cleared".  Those can be
+// inferred from (developer or recovery mode) anyway.
+enum vb2_context_flags {
+
+	/*
+	 * Verified boot has changed nvdata[].  Caller must save it, then may
+	 * clear this flag.
+	 */
+	VB2_CONTEXT_NVDATA_CHANGED = (1 << 0),
+
+	/*
+	 * Verified boot has changed secdata[].  Caller must save it, then
+	 * may clear this flag.
+	 */
+	VB2_CONTEXT_SECDATA_CHANGED = (1 << 1),
+
+	/* Recovery mode is requested this boot */
+	VB2_CONTEXT_RECOVERY_MODE = (1 << 2),
+
+	/* Developer mode is requested this boot */
+	VB2_CONTEXT_DEVELOPER_MODE = (1 << 3),
+
+	/*
+	 * Force recovery mode due to physical user request.  Caller may set
+	 * this flag when initializing the context.
+	 */
+	VB2_CONTEXT_FORCE_RECOVERY_MODE = (1 << 4),
+
+	/*
+	 * Force developer mode enabled.  Caller may set this flag when
+	 * initializing the context.
+	 */
+	VB2_CONTEXT_FORCE_DEVELOPER_MODE = (1 << 5),
+
+	/* Using firmware slot B.  If this flag is absend, using slot A. */
+	VB2_CONTEXT_FW_SLOT_B = (1 << 6),
+};
+
+/*
+ * Context for firmware verification.  Pass this to all vboot APIs.
+ *
+ * Caller may relocate this between calls to vboot APIs.
+ */
+struct vb2_context {
+	/**********************************************************************
+	 * Fields which must be initialized by caller.  Caller must memset()
+	 * all other fields to 0 before calling vb2api_fw_phase1().
+	 */
+
+	/*
+	 * Flags; see vb2_context_flags.  Some flags may only be set by caller
+	 * prior to calling vboot functions.
+	 */
+	uint32_t flags;
+
+	/*
+	 * Work buffer, and length in bytes.  Caller may relocate this
+	 * between calls to vboot APIs; it contains no internal pointers.
+	 */
+	uint8_t *workbuf;
+	uint32_t workbuf_size;
+
+	/*
+	 * Non-volatile data.  Caller must fill this from some non-volatile
+	 * location.  If at any point the VB2_CONTEXT_NVDATA_CHANGED flag is
+	 * set, caller must save the data back to the non-volatile location. */
+	uint8_t nvdata[VB2_NVDATA_SIZE];
+
+	/*
+	 * Secure data.  Caller must fill this from some secure non-volatile
+	 * location.  If at any point the VB2_CONTEXT_SECDATA_CHANGED flag is
+	 * set, caller must save the data back to the secure non-volatile
+	 * location. */
+	uint8_t secdata[VB2_SECDATA_SIZE];
+
+	/**********************************************************************
+	 * Fields caller may examine after calling vb2api_fw_phase1() */
+
+	/*
+	 * Amount of work buffer used so far.  Verified boot sub-calls use
+	 * this to know where the unused work area starts.  Caller may use
+	 * this between calls to vboot APIs to know how much data must be
+	 * copied when relocating the work buffer.
+	 */
+	uint32_t workbuf_used;
+
+	/**********************************************************************
+	 * Context pointer for use by caller.  Verified boot never looks at
+	 * this.  Put context here if you need it for APIs that verified boot
+	 * may call (vb2ex_...() functions).
+	 */
+	void *non_vboot_context;
+};
+
+/* Return codes from verified boot functions */
+enum vb2_return_code {
+	/* Success - no error */
+	VB2_SUCCESS = 0,
+
+	/* Unknown error */
+	// TODO: add errors for things that are known
+	VB2_ERROR_UNKNOWN = 0x10000,
+
+	/* Work buffer too small */
+	VB2_ERROR_WORKBUF_TOO_SMALL,
+
+	/* Buffer too small (other than the work buffer) */
+	VB2_ERROR_BUFFER_TOO_SMALL,
+
+	/* Buffer unaligned */
+	VB2_ERROR_BUFFER_UNALIGNED,
+
+	/* Bad GBB header */
+	VB2_ERROR_BAD_GBB_HEADER,
+
+	/* Bad algorithm - unknown, or unsupported */
+	VB2_ERROR_BAD_ALGORITHM,
+
+	/* Signature check failed */
+	VB2_ERROR_BAD_SIGNATURE,
+
+	/* Bad secure data */
+	VB2_ERROR_BAD_SECDATA,
+
+	/* Bad key */
+	VB2_ERROR_BAD_KEY,
+
+	/* Bad keyblock */
+	VB2_ERROR_BAD_KEYBLOCK,
+
+	/* Bad preamble */
+	VB2_ERROR_BAD_PREAMBLE,
+
+	/* Bad firmware keyblock version (out of range, or rollback) */
+	VB2_ERROR_FW_KEYBLOCK_VERSION,
+
+	/* Bad firmware version (out of range, or rollback) */
+	VB2_ERROR_FW_VERSION,
+
+	/* Bad hash tag */
+	VB2_ERROR_BAD_TAG,
+};
+
+enum vb2_resource_index {
+
+	/* Google binary block */
+	VB2_RES_GBB,
+
+	/*
+	 * Verified boot block (keyblock+preamble).  Use VB2_CONTEXT_FW_SLOT_B
+	 * to determine whether this refers to slot A or slot B.
+	 */
+	VB2_RES_FW_VBLOCK,
+};
+
+/*****************************************************************************/
+/* APIs provided by verified boot */
+
+/*
+ * Unless otherwise noted, API functions may only be called after
+ * vb2api_fw_phase1().
+ */
+
+/**
+ * Sanity-check the contents of the secure storage context.
+ *
+ * Use this if reading from secure storage may be flaky, and you want to retry
+ * reading it several times.
+ *
+ * This may be called before vb2api_phase1().
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2api_secdata_check(const struct vb2_context *ctx);
+
+/**
+ * Create fresh data in the secure storage context.
+ *
+ * Use this only when initializing the secure storage context on a new machine
+ * the first time it boots.  Do NOT simply use this if vb2api_secdata_check()
+ * (or any other API in this library) fails; that could allow the secure data
+ * to be rolled back to an insecure state.
+ *
+ * This may be called before vb2api_phase1().
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2api_secdata_create(struct vb2_context *ctx);
+
+/**
+ * Report firmware failure to vboot.
+ *
+ * This may be called before vb2api_phase1() to indicate errors in the boot
+ * process prior to the start of vboot.
+ *
+ * If this is called after vb2api_phase1(), on return, the calling firmware
+ * should check for updates to secdata and/or nvdata, then reboot.
+ *
+ * @param reason	Recovery reason
+ * @param subcode	Recovery subcode
+ */
+void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
+
+/**
+ * Firmware selection, phase 1.
+ *
+ * On error, the calling firmware should jump directly to recovery-mode
+ * firmware without rebooting.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase1(struct vb2_context *ctx);
+
+/**
+ * Firmware selection, phase 2.
+ *
+ * On error, the calling firmware should check for updates to secdata and/or
+ * nvdata, then reboot.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase2(struct vb2_context *ctx);
+
+/**
+ * Firmware selection, phase 3.
+ *
+ * On error, the calling firmware should check for updates to secdata and/or
+ * nvdata, then reboot.
+ *
+ * On success, the calling firmware should lock down secdata before continuing
+ * with the boot process.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase3(struct vb2_context *ctx);
+
+/*
+ * Tags for types of hashable data.
+ *
+ * TODO: These are the ones that vboot specifically knows about.  But in the
+ * future, I'd really like the vboot preamble to contain an arbitrary list of
+ * tags and their hashes, so that we can hash ram init, main RW body, EC-RW for
+ * software sync, etc. all separately.
+ */
+enum vb2api_hash_tag {
+	/* Invalid hash tag; never present in table */
+	VB2_HASH_TAG_INVALID = 0,
+
+	/* Firmware body */
+	VB2_HASH_TAG_FW_BODY,
+};
+
+/**
+ * Initialize hashing data for the specified tag.
+ *
+ * @param ctx		Vboot context
+ * @param tag		Tag to start hashing
+ * @param size		If non-null, expected size of data for tag will be
+ *			stored here on output.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size);
+
+/**
+ * Extend the hash started by vb2api_init_hash() with additional data.
+ *
+ * @param ctx		Vboot context
+ * @param buf		Data to hash
+ * @param size		Size of data in bytes
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_extend_hash(struct vb2_context *ctx,
+		       const void *buf,
+		       uint32_t size);
+
+/**
+ * Check the hash value started by vb2api_init_hash().
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_check_hash(struct vb2_context *ctx);
+
+/**
+ * Get the kernel subkey.
+ *
+ * This is available after vb2api_fw_phase3().  The caller must provide the key
+ * data to the kernel verification step.
+ *
+ * You may pass *size=0 to determine the buffer size required; in this case,
+ * the call will return VB2_ERROR_BUFFER_TOO_SMALL and *size will be set to
+ * the required size.
+ *
+ * TODO: This is a short-term workaround.  In the long run, the kernel key
+ * will stored separately, and will have a hash tag entry.
+ *
+ * @param ctx		Vboot context
+ * @param buf		Destination for data
+ * @param size		On input, size of destination in bytes
+ *			On output, size of key data in bytes.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_get_kernel_subkey(struct vb2_context *ctx,
+			     uint8_t *buf,
+			     uint32_t *size);
+
+/*****************************************************************************/
+/* APIs provided by the caller to verified boot */
+
+/**
+ * Clear the TPM owner.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_tpm_clear_owner(struct vb2_context *ctx);
+
+/**
+ * Read a verified boot resource.
+ *
+ * @param ctx		Vboot context
+ * @param index		Resource index to read
+ * @param offset	Byte offset within resource to start at
+ * @param buf		Destination for data
+ * @param size		On input, number of bytes to read
+ *			On output, number of bytes actually read
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_read_resource(struct vb2_context *ctx,
+			enum vb2_resource_index index,
+			uint32_t offset,
+			void *buf,
+			uint32_t *size);
+
+#endif  /* VBOOT_2_API_H_ */
