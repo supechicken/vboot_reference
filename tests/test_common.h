@@ -42,6 +42,14 @@ int TEST_TRUE(int result, const char* testname);
  * Also update the global gTestSuccess flag if test fails. */
 int TEST_FALSE(int result, const char* testname);
 
+/* Return 1 if the result is zero, else return 0.
+ * Also update the global gTestSuccess flag if test fails. */
+int TEST_ZERO(int result, const char* testname);
+
+/* Return 1 if the result is false, else return 0.
+ * Also update the global gTestSuccess flag if test fails. */
+int TEST_FALSE(int result, const char* testname);
+
 /* ANSI Color coding sequences.
  *
  * Don't use \e as MSC does not recognize it as a valid escape sequence.

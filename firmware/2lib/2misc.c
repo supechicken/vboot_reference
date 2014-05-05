@@ -1,0 +1,550 @@
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Misc functions which need access to vb2_context but are not public APIs
+ */
+
+#include "2sysincludes.h"
+#include "2api.h"
+#include "2common.h"
+#include "2misc.h"
+#include "2nvstorage.h"
+#include "2secdata.h"
+#include "2sha.h"
+#include "2rsa.h"
+
+int vb2_read_gbb_header(struct vb2_context *ctx, struct vb2_gbb_header *gbb)
+{
+	static const uint8_t expect_sig[VB2_GBB_SIGNATURE_SIZE] =
+		VB2_GBB_SIGNATURE;
+	uint32_t size = sizeof(*gbb);
+	int rv;
+
+	/* Read the entire header */
+	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, 0, gbb, &size);
+	if (rv)
+		return rv;
+	if (size < sizeof(*gbb))
+		return VB2_ERROR_BAD_GBB_HEADER;  /* Didn't read enough data */
+
+	/* Make sure it's really a GBB */
+	if (memcmp(gbb->signature, expect_sig, sizeof(expect_sig)))
+		return VB2_ERROR_BAD_GBB_HEADER;
+
+	/* Check for compatible version */
+	if (gbb->major_version != VB2_GBB_MAJOR_VER)
+		return VB2_ERROR_BAD_GBB_HEADER;
+
+	/* This code will need to be rewritten if we rev the gbb version. */
+	assert(VB2_GBB_MINOR_VER == 1);
+
+	/* Current code is not backwards-compatible to 1.0 headers */
+	if (gbb->minor_version < VB2_GBB_MINOR_VER)
+		return VB2_ERROR_BAD_GBB_HEADER;
+
+	/*
+	 * Header size should be at least as big as we expect.  It could be
+	 * bigger, if the header has grown.
+	 */
+	if (gbb->header_size < sizeof(*gbb))
+		return VB2_ERROR_BAD_GBB_HEADER;
+
+	return VB2_SUCCESS;
+}
+
+void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+
+	/* See if we were far enough in the boot process to choose a slot */
+	if (sd->status & VB2_SD_STATUS_CHOSE_SLOT) {
+
+		/* Boot failed */
+		vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_FAILURE);
+
+		/* Use up remaining tries */
+		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 0);
+
+		/*
+		 * Try the other slot next time.  We'll alternate
+		 * between slots, which may help if one or both slots is
+		 * flaky.
+		 */
+		vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 1 - sd->fw_slot);
+
+		/*
+		 * If we didn't try the other slot last boot, or we tried it
+		 * and it didn't fail, try it next boot.
+		 */
+		if (sd->last_fw_slot != 1 - sd->fw_slot ||
+		    sd->last_fw_result != VB2_FW_RESULT_FAILURE)
+			return;
+	}
+
+	/* If NV data hasn't been initialized, initialize it now */
+	if (!(sd->status & VB2_SD_STATUS_NV_INIT))
+		vb2_nv_init(ctx);
+
+	/*
+	 * If we're still here, we failed before choosing a slot, or both
+	 * this slot and the other slot failed in successive boots.  So we
+	 * need to go to recovery.
+	 *
+	 * Set a recovery reason and subcode only if they're not already set.
+	 * If recovery is already requested, it's a more specific error code
+	 * than later code is providing and we shouldn't overwrite it.
+	 */
+	if (!vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST)) {
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, reason);
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, subcode);
+	}
+}
+
+void vb2_init_context(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+
+	/* Don't do anything if the context has already been initialized */
+	if (ctx->workbuf_used)
+		return;
+
+	/*
+	 * Workbuf had better be big enough for our shared data struct.
+	 * Not much we can do if it isn't; we'll die before we can store a
+	 * recovery reason.
+	 */
+	assert(ctx->workbuf_size >= sizeof(*sd));
+
+	/* Initialize the shared data at the start of the work buffer */
+	memset(sd, 0, sizeof(*sd));
+	ctx->workbuf_used = sizeof(*sd);
+}
+
+void vb2_check_recovery(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+
+	/*
+	 * Read the current recovery request, unless there's already been a
+	 * failure earlier in the boot process.
+	 */
+	if (!sd->recovery_reason) {
+		sd->recovery_reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
+	}
+
+	/* Clear the recovery request so we don't get stuck in recovery mode */
+	if (sd->recovery_reason) {
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+			   VB2_RECOVERY_NOT_REQUESTED);
+		/*
+		 * Note that we ignore failures clearing the request.  We only
+		 * hit this code path if recovery mode has already been
+		 * requested, so what more can we do?  Don't want to obscure
+		 * the original reason for going into recovery mode.
+		 */
+	}
+
+	/* If forcing recovery, override recovery reason */
+	if (ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) {
+		sd->recovery_reason = VB2_RECOVERY_RO_MANUAL;
+		sd->flags = VB2_SD_FLAG_MANUAL_RECOVERY;
+	}
+
+	/* If recovery reason is non-zero, tell caller we need recovery mode */
+	if (sd->recovery_reason)
+		ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
+}
+
+int vb2_fw_parse_gbb(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+	struct vb2_gbb_header *gbb;
+	int rv;
+
+	/* Read GBB into next chunk of work buffer */
+	gbb = (struct vb2_gbb_header *)(ctx->workbuf + ctx->workbuf_used);
+	if (ctx->workbuf_used + sizeof(*gbb) > ctx->workbuf_size)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+
+	rv = vb2_read_gbb_header(ctx, gbb);
+	if (rv)
+		return rv;
+
+	/* Extract the only things we care about at firmware time */
+	sd->gbb_flags = gbb->flags;
+	sd->gbb_rootkey_offset = gbb->rootkey_offset;
+	sd->gbb_rootkey_size = gbb->rootkey_size;
+
+	return VB2_SUCCESS;
+}
+
+int vb2_check_dev_switch(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+	uint32_t flags;
+	uint32_t old_flags;
+	int is_dev = 0;
+	int rv;
+
+	/* Read secure flags */
+	rv = vb2_secdata_get(ctx, VB2_SECDATA_FLAGS, &flags);
+	if (rv)
+		return rv;
+
+	old_flags = flags;
+
+	/* Handle dev disable request */
+	if (vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST)) {
+		flags &= VB2_SECDATA_FLAG_DEV_MODE;
+
+		/* Clear the request */
+		vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 0);
+	}
+
+	/* Check virtual dev switch */
+	if (flags & VB2_SECDATA_FLAG_DEV_MODE)
+		is_dev = 1;
+
+	/* Handle forcing dev mode via physical switch */
+	if (ctx->flags & VB2_CONTEXT_FORCE_DEVELOPER_MODE)
+		is_dev = 1;
+
+	/* Check if GBB is forcing dev mode */
+	if (sd->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON)
+		is_dev = 1;
+
+	/* Handle whichever mode we end up in */
+	if (is_dev) {
+		/* Developer mode */
+		sd->flags |= VB2_SD_DEV_MODE_ENABLED;
+		ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
+
+		flags |= VB2_SECDATA_FLAG_LAST_BOOT_DEVELOPER;
+	} else {
+		/* Normal mode */
+		flags &= ~VB2_SECDATA_FLAG_LAST_BOOT_DEVELOPER;
+
+		/*
+		 * Disable dev_boot_* flags.  This ensures they will be
+		 * initially disabled if the user later transitions back into
+		 * developer mode.
+		 */
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 0);
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 0);
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY, 0);
+	}
+
+	if (flags != old_flags) {
+		/*
+		 * Just changed dev mode state.  Clear TPM owner.  This must be
+		 * done here instead of simply passing a flag to
+		 * vb2_check_tpm_clear(), because we don't want to update
+		 * last_boot_developer and then fail to clear the TPM owner.
+		 */
+		rv = vb2ex_tpm_clear_owner(ctx);
+		if (rv) {
+			vb2_fail(ctx, VB2_RECOVERY_TPM_CLEAR_OWNER, rv);
+			return rv;
+		}
+
+		/* Save new flags */
+		rv = vb2_secdata_set(ctx, VB2_SECDATA_FLAGS, flags);
+		if (rv)
+			return rv;
+	}
+
+	return VB2_SUCCESS;
+}
+
+int vb2_check_tpm_clear(struct vb2_context *ctx)
+{
+	int rv;
+
+	/* Check if we've been asked to clear the owner */
+	if (!vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST))
+		return VB2_SUCCESS;  /* No need to clear */
+
+	/* Request applies one time only */
+	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST, 0);
+
+	/* Try clearing */
+	rv = vb2ex_tpm_clear_owner(ctx);
+	if (rv) {
+		vb2_fail(ctx, VB2_RECOVERY_TPM_CLEAR_OWNER, rv);
+		return rv;
+	}
+
+	/* Clear successful */
+	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_DONE, 1);
+	return VB2_SUCCESS;
+}
+
+int vb2_select_fw_slot(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+	uint32_t tries;
+
+	/* Get result of last boot */
+	sd->last_fw_slot = vb2_nv_get(ctx, VB2_NV_FW_TRIED);
+	sd->last_fw_result = vb2_nv_get(ctx, VB2_NV_FW_RESULT);
+
+	/* Clear result, since we don't know what will happen this boot */
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_UNKNOWN);
+
+	/* Get slot to try */
+	sd->fw_slot = vb2_nv_get(ctx, VB2_NV_TRY_NEXT);
+
+	/* Check try count */
+	tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
+
+	if (sd->last_fw_result == VB2_FW_RESULT_TRYING &&
+	    sd->last_fw_slot == sd->fw_slot &&
+	    tries == 0) {
+		/*
+		 * We used up our last try on the previous boot, so fall back
+		 * to the other slot this boot.
+		 */
+		sd->fw_slot = 1 - sd->fw_slot;
+		vb2_nv_set(ctx, VB2_NV_TRY_NEXT, sd->fw_slot);
+	}
+
+	if (tries > 0) {
+		/* Still trying this firmware */
+		vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+
+		/* Decrement non-zero try count */
+		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, tries - 1);
+	}
+
+	/* Set context flag if we're using slot B */
+	if (sd->fw_slot)
+		ctx->flags |= VB2_CONTEXT_FW_SLOT_B;
+
+	/* Set status flag */
+	sd->status |= VB2_SD_STATUS_CHOSE_SLOT;
+
+	return VB2_SUCCESS;
+}
+
+int vb2_verify_fw_keyblock(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+	uint8_t *key_data = ctx->workbuf + ctx->workbuf_used;
+	uint32_t key_size = sd->gbb_rootkey_size;
+	struct vb2_packed_key *packed_key = (struct vb2_packed_key *)key_data;
+	struct vb2_public_key key;
+
+	uint8_t *block_data;
+	uint32_t block_size;
+	struct vb2_keyblock *kb;
+
+	uint32_t workbuf_next = ctx->workbuf_used;
+	uint32_t sec_version;
+	int rv;
+
+	/* Read the root key */
+	workbuf_next += key_size;
+	if (workbuf_next > ctx->workbuf_size)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+
+	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, sd->gbb_rootkey_offset,
+				 key_data, &key_size);
+	if (rv)
+		return rv;
+
+	/* Make sure we got the whole key */
+	if (key_size != sd->gbb_rootkey_size)
+		return VB2_ERROR_BAD_KEY;
+
+	/* Unpack the root key */
+	rv = vb2_unpack_key(&key, key_data, key_size);
+	if (rv)
+		return rv;
+
+	/* Load the firmware keyblock header after the root key */
+	block_data = key_data + key_size;
+	kb = (struct vb2_keyblock *)block_data;
+	block_size = sizeof(*kb);
+	if (block_size > ctx->workbuf_size - workbuf_next)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK, 0,
+				 block_data, &block_size);
+	if (rv)
+		return rv;
+	if (block_size != sizeof(*kb))
+		return VB2_ERROR_UNKNOWN;
+
+	/*
+	 * Load the entire keyblock, now that we know how big it is.  Note that
+	 * we're loading the entire keyblock instead of just the piece after
+	 * the header.  That means we re-read the header.  But that's a tiny
+	 * amount of data, and it makes the code much more straightforward.
+	 */
+	block_size = kb->keyblock_size;
+	if (block_size > ctx->workbuf_size - workbuf_next)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK, 0,
+				 block_data, &block_size);
+	if (rv)
+		return rv;
+
+	/* Work buffer now contains the root key data and the keyblock */
+	workbuf_next += block_size;
+
+	/* Verify the keyblock */
+	rv = vb2_verify_keyblock(kb,
+				 block_size,
+				 &key,
+				 ctx->workbuf + workbuf_next,
+				 ctx->workbuf_size - workbuf_next);
+	if (rv)
+		return rv;
+
+	/* Read the secure key version */
+	rv = vb2_secdata_get(ctx, VB2_SECDATA_VERSIONS, &sec_version);
+	if (rv)
+		return rv;
+
+	/* Key version is the upper 16 bits of the composite firmware version */
+	if (kb->data_key.key_version > 0xffff)
+		return VB2_ERROR_FW_KEYBLOCK_VERSION;
+
+	sd->fw_version = kb->data_key.key_version << 16;
+	if (sd->fw_version < sec_version)
+		return VB2_ERROR_FW_KEYBLOCK_VERSION;
+
+	/*
+	 * Save the data key in the work buffer.  This overwrites the root key
+	 * we read above.  That's ok, because now that we have the data key we
+	 * no longer need the root key.
+	 */
+	packed_key->algorithm = kb->data_key.algorithm;
+	packed_key->key_version = kb->data_key.algorithm;
+	packed_key->key_size = kb->data_key.key_size;
+
+	/*
+	 * Use memmove() instead of memcpy().  In theory, the destination will
+	 * never overlap because with the source because the root key is likely
+	 * to be at least as large as the data key, but there's no harm here in
+	 * being paranoid.
+	 */
+	memmove(key_data + packed_key->key_offset,
+		(uint8_t*)&kb->data_key + kb->data_key.key_offset,
+		packed_key->key_size);
+
+	/* Save the packed key offset and size */
+	sd->workbuf_data_key_offset = ctx->workbuf_used;
+	sd->workbuf_data_key_size =
+		packed_key->key_offset + packed_key->key_size;
+
+	/* Preamble follows the keyblock in the vblock */
+	sd->vblock_preamble_offset = kb->keyblock_size;
+
+	/* Data key will persist in the workbuf after we return */
+	ctx->workbuf_used += sd->workbuf_data_key_size;
+
+	return VB2_SUCCESS;
+}
+
+// TODO: Terrible that this and the low-level verification want to have the
+// same function name.  Pick a better name...
+int vb2_verify_fw_preamble2(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = (struct vb2_shared_data *)ctx->workbuf;
+	uint8_t *key_data = ctx->workbuf + sd->workbuf_data_key_offset;
+	uint32_t key_size = sd->workbuf_data_key_size;
+	struct vb2_public_key key;
+
+	/* Preamble goes in the next unused chunk of work buffer */
+	uint8_t *pre_data = ctx->workbuf + ctx->workbuf_used;
+	uint32_t pre_size;
+	struct vb2_fw_preamble *pre = (struct vb2_fw_preamble *)pre_data;
+
+	uint32_t workbuf_next = ctx->workbuf_used;
+	uint32_t sec_version;
+	int rv;
+
+	/* Unpack the firmware data key */
+	if (!sd->workbuf_data_key_size)
+		return VB2_ERROR_UNKNOWN;
+
+	rv = vb2_unpack_key(&key, key_data, key_size);
+	if (rv)
+		return rv;
+
+	/* Load the firmware preamble header */
+	pre_size = sizeof(*pre);
+	if (pre_size > ctx->workbuf_size - workbuf_next)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK,
+				 sd->vblock_preamble_offset,
+				 pre_data, &pre_size);
+	if (rv)
+		return rv;
+	if (pre_size != sizeof(*pre))
+		return VB2_ERROR_UNKNOWN;
+
+	/* Load the entire firmware preamble, now that we know how big it is */
+	pre_size = pre->preamble_size;
+	if (pre_size > ctx->workbuf_size - workbuf_next)
+		return VB2_ERROR_WORKBUF_TOO_SMALL;
+
+	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK,
+				 sd->vblock_preamble_offset,
+				 pre_data, &pre_size);
+	if (rv)
+		return rv;
+
+	/* Work buffer now contains the data subkey data and the preamble */
+	workbuf_next += pre_size;
+
+	/* Verify the preamble */
+	rv = vb2_verify_fw_preamble(pre,
+				    pre_size,
+				    &key,
+				    ctx->workbuf + workbuf_next,
+				    ctx->workbuf_size - workbuf_next);
+	if (rv)
+		return rv;
+
+	/* Read the secure key version */
+	rv = vb2_secdata_get(ctx, VB2_SECDATA_VERSIONS, &sec_version);
+	if (rv)
+		return rv;
+
+	/*
+	 * Firmware version is the lower 16 bits of the composite firmware
+	 * version.
+	 */
+	if (pre->firmware_version > 0xffff)
+		return VB2_ERROR_FW_VERSION;
+
+	/* Combine with the key version from vb2_verify_fw_keyblock() */
+	sd->fw_version |= pre->firmware_version;
+	if (sd->fw_version < sec_version)
+		return VB2_ERROR_FW_VERSION;
+
+	/*
+	 * If this is a newer version than in secure storage, and we
+	 * successfully booted the same slot last boot, roll forward the
+	 * version in secure storage.
+	 */
+	if (sd->fw_version > sec_version &&
+	    sd->last_fw_slot == sd->fw_slot &&
+	    sd->last_fw_result == VB2_FW_RESULT_SUCCESS) {
+
+		rv = vb2_secdata_set(ctx, VB2_SECDATA_VERSIONS, sd->fw_version);
+		if (rv)
+			return rv;
+	}
+
+	/* Keep track of where we put the preamble */
+	sd->workbuf_preamble_offset = ctx->workbuf_used;
+	sd->workbuf_preamble_size = pre_size;
+
+	/* Preamble will persist in work buffer after we return */
+	ctx->workbuf_used += pre_size;
+
+	return VB2_SUCCESS;
+}

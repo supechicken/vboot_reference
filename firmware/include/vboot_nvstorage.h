@@ -42,9 +42,15 @@ typedef enum VbNvParam {
 	VBNV_KERNEL_SETTINGS_RESET,
 	/* Request debug reset on next S3->S0 transition.  0=clear; 1=set. */
 	VBNV_DEBUG_RESET_MODE,
+	/* Firmware slot to try next.  0=A, 1=B */
+	VBNV_TRY_NEXT,
 	/*
 	 * Number of times to try booting RW firmware slot B before slot A.
 	 * Valid range: 0-15.
+	 *
+	 * For VB2, number of times to try booting the slot indicated by
+	 * VBNV_TRY_NEXT.  On a 1->0 transition of try count, VBNV_TRY_NEXT
+	 * will be set to the other slot.
 	 */
 	VBNV_TRY_B_COUNT,
 	/*
@@ -83,6 +89,10 @@ typedef enum VbNvParam {
 	VBNV_CLEAR_TPM_OWNER_DONE,
 	/* More details on recovery reason */
 	VBNV_RECOVERY_SUBCODE,
+	/* Firmware slot tried this boot (0=A, 1=B) */
+	VBNV_FW_TRIED,
+	/* Result of trying that firmware (see vb2_fw_result) */
+	VBNV_FW_RESULT,
 } VbNvParam;
 
 /* Recovery reason codes for VBNV_RECOVERY_REQUEST */
@@ -147,6 +157,25 @@ typedef enum VbNvParam {
 #define VBNV_RECOVERY_EC_EXPECTED_HASH 0x29
 /* EC software sync - expected EC image doesn't match hash */
 #define VBNV_RECOVERY_EC_HASH_MISMATCH 0x2A
+
+/* New error codes from VB2 */
+
+/* Secure data inititalization error */
+#define VB2_RECOVERY_SECDATA_INIT	0x2b
+
+/* GBB header is bad */
+#define VB2_RECOVERY_GBB_HEADER		0x2c
+
+/* Unable to clear TPM owner */
+#define VB2_RECOVERY_TPM_CLEAR_OWNER	0x2d
+
+/* Error determining/updating virtual dev switch */
+#define VB2_RECOVERY_DEV_SWITCH		0x2e
+
+/* Error determining firmware slot */
+#define VB2_RECOVERY_FW_SLOT		0x2f
+
+
 /* Unspecified/unknown error in read-only firmware */
 #define VBNV_RECOVERY_RO_UNSPECIFIED  0x3F
 /*

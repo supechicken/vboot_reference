@@ -31,6 +31,9 @@ function test_vboot_common2_single {
     ${TEST_DIR}/vboot_common2_tests $algonum \
         ${TESTKEY_DIR}/key_rsa${keylen}.pem \
         ${TESTKEY_DIR}/key_rsa${keylen}.keyb
+    ${TEST_DIR}/vb2_common2_tests $algonum \
+        ${TESTKEY_DIR}/key_rsa${keylen}.pem \
+        ${TESTKEY_DIR}/key_rsa${keylen}.keyb
     if [ $? -ne 0 ]
     then
         return_code=255
