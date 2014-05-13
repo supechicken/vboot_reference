@@ -221,7 +221,8 @@ INCLUDES += \
 	-Ifirmware/lib/include \
 	-Ifirmware/lib/cgptlib/include \
 	-Ifirmware/lib/cryptolib/include \
-	-Ifirmware/lib/tpm_lite/include
+	-Ifirmware/lib/tpm_lite/include \
+	-Ifirmware/2lib/include
 
 # If we're not building for a specific target, just stub out things like the
 # TPM commands and various external functions that are provided by the BIOS.
@@ -233,6 +234,9 @@ endif
 
 # Firmware library. TODO: Do we still need to export this?
 FWLIB = ${BUILD}/vboot_fw.a
+
+# Smaller firmware library. TODO: Do we still need to export this?
+FWLIB2 = ${BUILD}/vboot_fw2.a
 
 # Firmware library sources needed by VbInit() call
 VBINIT_SRCS = \
@@ -270,6 +274,14 @@ VBSLK_SRCS = \
 	firmware/lib/vboot_display.c \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/region-kernel.c \
+
+# Firmware library source needed for smaller library 2
+FWLIB2_SRCS = \
+	firmware/2lib/2rsa.c \
+	firmware/2lib/2sha1.c \
+	firmware/2lib/2sha256.c \
+	firmware/2lib/2sha512.c \
+	firmware/2lib/2sha_utility.c \
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
@@ -312,9 +324,9 @@ VBINIT_OBJS = ${VBINIT_SRCS:%.c=${BUILD}/%.o}
 VBSF_OBJS = ${VBSF_SRCS:%.c=${BUILD}/%.o}
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
+FWLIB2_OBJS = ${FWLIB2_SRCS:%.c=${BUILD}/%.o}
 
-ALL_OBJS += ${FWLIB_OBJS} ${VBINIT_OBJS} ${VBSF_OBJS}
-
+ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2_OBJS} ${VBINIT_OBJS} ${VBSF_OBJS}
 
 # Library to build the utilities. "HOST" mostly means "userspace".
 HOSTLIB = ${BUILD}/libvboot_host.a
@@ -522,6 +534,9 @@ TEST_NAMES = \
 	tests/tpm_bootmode_tests \
 	tests/utility_string_tests \
 	tests/utility_tests \
+	tests/vb2_rsa_padding_tests \
+	tests/vb2_rsa_utility_tests \
+	tests/vb2_sha_tests \
 	tests/vboot_api_init_tests \
 	tests/vboot_api_devmode_tests \
 	tests/vboot_api_firmware_tests \
@@ -598,7 +613,7 @@ _dir_create := $(foreach d, \
 
 # Default target.
 .PHONY: all
-all: fwlib $(if ${FIRMWARE_ARCH},,host_stuff) $(if ${COV},coverage)
+all: fwlib fwlib2 $(if ${FIRMWARE_ARCH},,host_stuff) $(if ${COV},coverage)
 
 # Host targets
 .PHONY: host_stuff
@@ -639,6 +654,7 @@ ${FWLIB_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
 ifeq (${FIRMWARE_ARCH},i386)
 # Unrolling loops in cryptolib makes it faster
 ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
+${FWLIB2_OBJS}: CFLAGS += -DUNROLL_LOOPS
 
 # Workaround for coreboot on x86, which will power off asynchronously
 # without giving us a chance to react. This is not an example of the Right
@@ -682,7 +698,16 @@ fwlinktest: ${FWLIB} \
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},fwlinktest)
 
+.PHONY: fwlib2
+fwlib2: ${FWLIB2}
+
 ${FWLIB}: ${FWLIB_OBJS}
+	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@
+	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
+	${Q}ar qc $@ $^
+
+${FWLIB2}: ${FWLIB2_OBJS}
 	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -706,7 +731,7 @@ ${BUILD}/host/% ${HOSTLIB}: INCLUDES += \
 	-Ihost/lib/include
 
 # TODO: better way to make .a than duplicating this recipe each time?
-${HOSTLIB}: ${HOSTLIB_OBJS} ${FWLIB_OBJS}
+${HOSTLIB}: ${HOSTLIB_OBJS} ${FWLIB_OBJS} ${FWLIB2_OBJS}
 	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -957,7 +982,7 @@ ALL_OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
 
 # Frequently-run tests
 .PHONY: test_targets
-test_targets:: runcgpttests runmisctests
+test_targets:: runcgpttests runmisctests run2tests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
@@ -1043,6 +1068,11 @@ runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_firmware_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_nvstorage_test
+
+.PHONY: run2tests
+run2tests: test_setup
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 
 .PHONY: runfutiltests
 runfutiltests: override DESTDIR = ${TEST_INSTALL_DIR}
