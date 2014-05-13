@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aeee834_9fd393e8",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "can we do these checks before vb2_verify_data, which has expensive crypo functions?",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a698874_871606de",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "nit: nice to be consistent.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a64fc99_6baddd1f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "not sure if this is intentional. you\u0027re clearing other bits.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a698874_aaa18f99",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "When do you read this? It looks like it\u0027s read only by a unittest. It\u0027s better not to have test only code in production code.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a5e84cf_efad51bd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "block_size + workbuf_next \u003e ctx-\u003eworkbuf_size",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a64fc99_0f22263f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "same comment here. maybe we should create a utility function which handles both overflow and underflow.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_c0ed3e6f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "s/algorithm/key_version",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_032e10b0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "i think you need to update packed_key-\u003ekey_offset here.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_a6be52c1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "Is this intentional? Since you\u0027re doing arithmetic comparison, firmware version can be anything if data key version exceeds expected value.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a64fc99_88993728",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "unused \u003d 0xf8?",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_7f0def52",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "||",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_80b176e9",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "can we align the buffer, adjust buffer_size then proceed?",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a64fc99_285ccbcf",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "nice to note this must be the last as done for VB2_NV_OFFS_CRC.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa7bb835_a54bf2e3",
+        "filename": "utility/vb2_verify_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:24:13Z",
+      "side": 1,
+      "message": "!\u003d 4",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
