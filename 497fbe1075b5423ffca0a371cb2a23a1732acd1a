@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca50eca6_70e378b8",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-13T21:56:33Z",
+      "side": 1,
+      "message": "We want to verify the data before examining it.  This minimizes the amount of code which examines unsigned data.\n\n(Yes, at the expense of runtime in the case where the data is bad - but that\u0027s the exception case, not the rule...)",
+      "parentUuid": "2aeee834_9fd393e8",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a698874_871606de",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -189,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "ca29cc20_1d39f75d",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-13T21:56:33Z",
+      "side": 1,
+      "message": "Oops.  Good catch.",
+      "parentUuid": "2aeee834_7f0def52",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_80b176e9",
         "filename": "firmware/2lib/2rsa.c",
         "patchSetId": 2
@@ -200,6 +236,24 @@
       "writtenOn": "2014-05-13T21:24:13Z",
       "side": 1,
       "message": "can we align the buffer, adjust buffer_size then proceed?",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea43f0df_cc1517a3",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-13T21:56:33Z",
+      "side": 1,
+      "message": "Hmm, interesting idea.",
+      "parentUuid": "4ae95c2a_80b176e9",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
