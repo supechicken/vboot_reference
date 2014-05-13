@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ae46051_4abae7ad",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T23:37:16Z",
+      "side": 1,
+      "message": "if (rv) return rv;",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_4ce03caa",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T23:37:16Z",
+      "side": 1,
+      "message": "can you combine these three into sha_test(algorithm, digest_size)? you can digest \u003d malloc(digest_size) inside the function.",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_9356ec39",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T23:37:16Z",
+      "side": 1,
+      "message": "i would do this inside misc_tests and only once since you\u0027re repeating digest_init, digest_extend, digest_finalize. VB2_ERROR_BUFFER_TOO_SMALL is algorithm-independent.",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_532bc4e6",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T23:37:16Z",
+      "side": 1,
+      "message": "Looks like you are just repeating this.",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
