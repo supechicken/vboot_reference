@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ae46051_47b4a210",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:28:07Z",
+      "side": 1,
+      "message": "||",
+      "revId": "d539c2933700279566e61c22910ea11278a14b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_6583a2f1",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-13T21:28:07Z",
+      "side": 1,
+      "message": "can we align the buffer, adjust buffer_size then proceed?",
+      "revId": "d539c2933700279566e61c22910ea11278a14b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
