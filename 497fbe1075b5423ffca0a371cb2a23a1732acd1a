@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ae95c2a_f623ddc9",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2014-05-13T22:23:31Z",
+      "side": 1,
+      "message": "It would make sense to split the Makefile into several pieces and have the vb2 specific build rules and file lists in firmware/lib2",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_a819ff50",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 2
