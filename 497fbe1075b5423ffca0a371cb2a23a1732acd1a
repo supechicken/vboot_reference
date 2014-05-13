@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2aeee834_a819ff50",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2014-05-13T22:20:41Z",
+      "side": 1,
+      "message": "As a general thing, I suggest not calling every function vb2* because you\u0027ll create a lot of churn once going vboot v3 ;)",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_9fd393e8",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
