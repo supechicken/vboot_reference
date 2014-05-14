@@ -9,6 +9,7 @@
 #define VBOOT_REFERENCE_VBOOT_2COMMON_H_
 
 #include "2return_codes.h"
+#include "2struct.h"
 
 struct vb2_public_key;
 
@@ -24,6 +25,9 @@ struct vb2_public_key;
 #else
 #define VB2_DEBUG(format, args...)
 #endif
+
+/* Check if a pointer is aligned on an align-byte boundary */
+#define vb_aligned(ptr, align) (!(((size_t)(ptr)) & ((align) - 1)))
 
 /**
  * Align a buffer and check its size.
