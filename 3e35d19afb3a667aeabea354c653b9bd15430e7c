@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0aa1240c_34e0b8e2",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae46051_4abae7ad",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_4ce03caa",
         "filename": "tests/vb2_sha_tests.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-13T23:37:16Z",
       "side": 1,
       "message": "can you combine these three into sha_test(algorithm, digest_size)? you can digest \u003d malloc(digest_size) inside the function.",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a8a689d_9f2373cb",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:03:27Z",
+      "side": 1,
+      "message": "Not as currently written.  sha512_tests uses a different test_inputs[1].\n\nFor later cleanup.",
+      "parentUuid": "4ae95c2a_4ce03caa",
       "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0aa1240c_94752c52",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:03:27Z",
+      "side": 1,
+      "message": "But the size of the digest being checked isn\u0027t.",
+      "parentUuid": "2aeee834_9356ec39",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_532bc4e6",
         "filename": "tests/vb2_sha_tests.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-13T23:37:16Z",
       "side": 1,
       "message": "Looks like you are just repeating this.",
+      "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a8a689d_3f10a76f",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:03:27Z",
+      "side": 1,
+      "message": "Yep.  (And so was sha_tests...  we\u0027ll fix that later...)",
+      "parentUuid": "2aeee834_532bc4e6",
       "revId": "3e35d19afb3a667aeabea354c653b9bd15430e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
