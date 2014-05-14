@@ -278,7 +278,11 @@ VBSLK_SRCS = \
 # Firmware library source needed for smaller library 2
 FWLIB2_SRCS = \
 	firmware/2lib/2common.c \
+	firmware/2lib/2crc8.c \
+	firmware/2lib/2misc.c \
+	firmware/2lib/2nvstorage.c \
 	firmware/2lib/2rsa.c \
+	firmware/2lib/2secdata.c \
 	firmware/2lib/2sha1.c \
 	firmware/2lib/2sha256.c \
 	firmware/2lib/2sha512.c \
@@ -536,8 +540,11 @@ TEST_NAMES = \
 	tests/utility_string_tests \
 	tests/utility_tests \
 	tests/vb2_common_tests \
+	tests/vb2_misc_tests \
+	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_padding_tests \
 	tests/vb2_rsa_utility_tests \
+	tests/vb2_secdata_tests \
 	tests/vb2_sha_tests \
 	tests/vboot_api_init_tests \
 	tests/vboot_api_devmode_tests \
@@ -1074,7 +1081,10 @@ runmisctests: test_setup
 .PHONY: run2tests
 run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 
 .PHONY: runfutiltests
