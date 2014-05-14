@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca98ecf7_9ce46574",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-14T22:49:06Z",
+      "side": 1,
+      "message": "Nothing calls this function yet. But assert() won\u0027t do anything in a running system. Should we have this function return a failure if things aren\u0027t aligned? Or if it\u0027s an internal-only function, maybe we can make a compile-time test for the alignment?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa9578be_dbc513d2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-14T22:49:06Z",
+      "side": 1,
+      "message": "s/absend/clear/",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
