@@ -8,7 +8,9 @@
 #ifndef VBOOT_REFERENCE_VBOOT_2COMMON_H_
 #define VBOOT_REFERENCE_VBOOT_2COMMON_H_
 
+#include "2api.h"
 #include "2return_codes.h"
+#include "2struct.h"
 
 struct vb2_public_key;
 
@@ -25,6 +27,9 @@ struct vb2_public_key;
 #define VB2_DEBUG(format, args...)
 #endif
 
+/* Check if a pointer is aligned on an align-byte boundary */
+#define vb_aligned(ptr, align) (!(((size_t)(ptr)) & ((align) - 1)))
+
 /**
  * Align a buffer and check its size.
  *
@@ -38,5 +43,15 @@ int vb2_align(uint8_t **ptr,
 	      uint32_t *size,
 	      uint32_t align,
 	      uint32_t want_size);
+
+/**
+ * Get the shared data pointer from the vboot context
+ *
+ * @param ctx		Vboot context
+ * @return The shared data pointer.
+ */
+static __inline struct vb2_shared_data *vb2_get_sd(struct vb2_context *ctx) {
+	return (struct vb2_shared_data *)ctx->workbuf;
+}
 
 #endif  /* VBOOT_REFERENCE_VBOOT_2COMMON_H_ */
