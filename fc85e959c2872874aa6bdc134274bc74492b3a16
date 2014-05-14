@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a8a689d_9f40d36c",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T19:54:25Z",
+      "side": 1,
+      "message": "i is uint32_t so it can never be \u003c0.  And i must be decremented before the statements below.",
+      "parentUuid": "8ad6f480_ed72e126",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ad50879_6a97f767",
         "filename": "firmware/2lib/2rsa.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-14T18:43:47Z",
       "side": 1,
       "message": "why not uint32_t? you can save type-casting.",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a8a689d_7f530f4b",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T19:54:25Z",
+      "side": 1,
+      "message": "Because converting to big-endian array requires decrementing i all the way to -1, below.",
+      "parentUuid": "2ad50879_6a97f767",
       "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0a8f64ae_7e64f15b",
+        "filename": "tests/vb2_rsa_padding_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T19:54:25Z",
+      "side": 1,
+      "message": "I\u0027m going to rework all the error codes in a future CL.",
+      "parentUuid": "eac690d8_884b573d",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ad6f480_0d3c954d",
         "filename": "tests/vb2_rsa_padding_tests.c",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "2a8a689d_5f2f2bc0",
+        "filename": "tests/vb2_rsa_padding_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T19:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad6f480_0d3c954d",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac690d8_a8a8d3ae",
         "filename": "tests/vb2_sha_tests.c",
         "patchSetId": 6
@@ -81,6 +153,24 @@
       "writtenOn": "2014-05-14T18:43:47Z",
       "side": 1,
       "message": "you don\u0027t need this, do you?",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8bf0a0_1d1133e5",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T19:54:25Z",
+      "side": 1,
+      "message": "Not in this test, since the new sha routines don\u0027t allocate memory.",
+      "parentUuid": "eac690d8_a8a8d3ae",
       "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
