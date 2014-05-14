@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ea8bf0a0_1d6f73cb",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Agreed.  The early coreboot build shouldn\u0027t need to build all of vboot just to get vboot2.",
+      "parentUuid": "4ae95c2a_f623ddc9",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aeee834_a819ff50",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 2
@@ -30,6 +48,41 @@
       "writtenOn": "2014-05-13T22:20:41Z",
       "side": 1,
       "message": "As a general thing, I suggest not calling every function vb2* because you\u0027ll create a lot of churn once going vboot v3 ;)",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8bf0a0_bdc4bf76",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Part of why I did it this time was to ensure I wasn\u0027t using any old functions during development, and to avoid name collisions with existing functions.\n\nOpen to naming suggestions; we can make a find-replace pass.",
+      "parentUuid": "2aeee834_a819ff50",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8bf0a0_1db4d30f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "For example, I reeeeeally dislike this function name.",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "2a8a689d_9fa2939e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Missing ~.  Good catch.\n\n(2api and 2misc currently lack unit tests...)",
+      "parentUuid": "4a64fc99_6baddd1f",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a698874_aaa18f99",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -116,6 +187,24 @@
       "writtenOn": "2014-05-13T21:24:13Z",
       "side": 1,
       "message": "When do you read this? It looks like it\u0027s read only by a unittest. It\u0027s better not to have test only code in production code.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a8f64ae_9eb9bdde",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "It\u0027s read by the OS, via crossystem.",
+      "parentUuid": "2a698874_aaa18f99",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -156,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "ea8bf0a0_bdad9fbe",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Maybe.  I made an attempt at a function like that, but it ended up far uglier than just having this code each place.",
+      "parentUuid": "4a64fc99_0f22263f",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_c0ed3e6f",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -173,6 +280,24 @@
     },
     {
       "key": {
+        "uuid": "0a8f64ae_dec3453c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae95c2a_c0ed3e6f",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae95c2a_032e10b0",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -184,6 +309,24 @@
       "writtenOn": "2014-05-13T21:24:13Z",
       "side": 1,
       "message": "i think you need to update packed_key-\u003ekey_offset here.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a8f64ae_bebe79c1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "No, because I\u0027m moving the data into the current buffer with memmove() below.",
+      "parentUuid": "4ae95c2a_032e10b0",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -218,6 +361,24 @@
       "writtenOn": "2014-05-13T21:24:13Z",
       "side": 1,
       "message": "unused \u003d 0xf8?",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8bf0a0_fd80073a",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a64fc99_88993728",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -305,6 +466,24 @@
       "writtenOn": "2014-05-13T21:24:13Z",
       "side": 1,
       "message": "nice to note this must be the last as done for VB2_NV_OFFS_CRC.",
+      "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a8a689d_dff5fba7",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-14T18:25:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a64fc99_285ccbcf",
       "revId": "497fbe1075b5423ffca0a371cb2a23a1732acd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
