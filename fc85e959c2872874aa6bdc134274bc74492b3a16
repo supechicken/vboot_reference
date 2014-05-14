@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ad6f480_ed72e126",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-14T18:43:47Z",
+      "side": 1,
+      "message": "nit: for consistency, it\u0027s better to do ( i \u003d key-\u003elen - 1; i \u003e\u003d 0; --i) as you wrote modpowF4.",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ad50879_6a97f767",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-14T18:43:47Z",
+      "side": 1,
+      "message": "why not uint32_t? you can save type-casting.",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac690d8_884b573d",
+        "filename": "tests/vb2_rsa_padding_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-14T18:43:47Z",
+      "side": 1,
+      "message": "TEST_EQ(...., VB2_ERROR_BUFFER_UNALIGNED). same comment for the rest.",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ad6f480_0d3c954d",
+        "filename": "tests/vb2_rsa_padding_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-14T18:43:47Z",
+      "side": 1,
+      "message": "you already have these.",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac690d8_a8a8d3ae",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-14T18:43:47Z",
+      "side": 1,
+      "message": "you don\u0027t need this, do you?",
+      "revId": "fc85e959c2872874aa6bdc134274bc74492b3a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
