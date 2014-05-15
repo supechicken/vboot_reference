@@ -58,6 +58,19 @@ void *vb2_workbuf_alloc(struct vb2_workbuf *wb, uint32_t size)
 	return ptr;
 }
 
+void *vb2_workbuf_realloc(struct vb2_workbuf *wb,
+			  uint32_t oldsize,
+			  uint32_t newsize)
+{
+	/*
+	 * Just free and allocate to update the size.  No need to move/copy
+	 * memory, since the new pointer is guaranteed to be the same as the
+	 * old one.  The new allocation can fail, if the new size is too big.
+	 */
+	vb2_workbuf_free(wb, oldsize);
+	return vb2_workbuf_alloc(wb, newsize);
+}
+
 void vb2_workbuf_free(struct vb2_workbuf *wb, uint32_t size)
 {
 	/* Round up size to work buffer alignment */

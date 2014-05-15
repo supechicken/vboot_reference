@@ -60,6 +60,20 @@ void vb2_workbuf_init(struct vb2_workbuf *wb, uint8_t *buf, uint32_t size);
 void *vb2_workbuf_alloc(struct vb2_workbuf *wb, uint32_t size);
 
 /**
+ * Reallocate space in a work buffer.
+ *
+ * Note that the returned buffer will always be aligned to VB2_WORKBUF_ALIGN.
+ *
+ * @param wb		Work buffer
+ * @param oldsize	Old allocation size in bytes
+ * @param newsize	Requested size in bytes
+ * @return A pointer to the allocated space, or NULL if error.
+ */
+void *vb2_workbuf_realloc(struct vb2_workbuf *wb,
+			  uint32_t oldsize,
+			  uint32_t newsize);
+
+/**
  * Free a previous allocation.
  *
  * Note that detailed tracking of allocs and frees is NOT done.  The caller
