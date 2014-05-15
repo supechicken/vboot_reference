@@ -141,4 +141,200 @@ struct vb2_context {
 	void *non_vboot_context;
 };
 
+enum vb2_resource_index {
+
+	/* Google binary block */
+	VB2_RES_GBB,
+
+	/*
+	 * Verified boot block (keyblock+preamble).  Use VB2_CONTEXT_FW_SLOT_B
+	 * to determine whether this refers to slot A or slot B.
+	 */
+	VB2_RES_FW_VBLOCK,
+};
+
+/*****************************************************************************/
+/* APIs provided by verified boot */
+
+/*
+ * Unless otherwise noted, API functions may only be called after
+ * vb2api_fw_phase1().
+ */
+
+/**
+ * Sanity-check the contents of the secure storage context.
+ *
+ * Use this if reading from secure storage may be flaky, and you want to retry
+ * reading it several times.
+ *
+ * This may be called before vb2api_phase1().
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2api_secdata_check(const struct vb2_context *ctx);
+
+/**
+ * Create fresh data in the secure storage context.
+ *
+ * Use this only when initializing the secure storage context on a new machine
+ * the first time it boots.  Do NOT simply use this if vb2api_secdata_check()
+ * (or any other API in this library) fails; that could allow the secure data
+ * to be rolled back to an insecure state.
+ *
+ * This may be called before vb2api_phase1().
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2api_secdata_create(struct vb2_context *ctx);
+
+/**
+ * Report firmware failure to vboot.
+ *
+ * This may be called before vb2api_phase1() to indicate errors in the boot
+ * process prior to the start of vboot.
+ *
+ * If this is called after vb2api_phase1(), on return, the calling firmware
+ * should check for updates to secdata and/or nvdata, then reboot.
+ *
+ * @param reason	Recovery reason
+ * @param subcode	Recovery subcode
+ */
+void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
+
+/**
+ * Firmware selection, phase 1.
+ *
+ * On error, the calling firmware should jump directly to recovery-mode
+ * firmware without rebooting.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase1(struct vb2_context *ctx);
+
+/**
+ * Firmware selection, phase 2.
+ *
+ * On error, the calling firmware should check for updates to secdata and/or
+ * nvdata, then reboot.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase2(struct vb2_context *ctx);
+
+/**
+ * Firmware selection, phase 3.
+ *
+ * On error, the calling firmware should check for updates to secdata and/or
+ * nvdata, then reboot.
+ *
+ * On success, the calling firmware should lock down secdata before continuing
+ * with the boot process.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_fw_phase3(struct vb2_context *ctx);
+
+/*
+ * Tags for types of hashable data.
+ *
+ * TODO: These are the ones that vboot specifically knows about given the
+ * current data structures.  In the future, I'd really like the vboot preamble
+ * to contain an arbitrary list of tags and their hashes, so that we can hash
+ * ram init, main RW body, EC-RW for software sync, etc. all separately.
+ */
+enum vb2api_hash_tag {
+	/* Invalid hash tag; never present in table */
+	VB2_HASH_TAG_INVALID = 0,
+
+	/* Firmware body */
+	VB2_HASH_TAG_FW_BODY,
+};
+
+/**
+ * Initialize hashing data for the specified tag.
+ *
+ * @param ctx		Vboot context
+ * @param tag		Tag to start hashing
+ * @param size		If non-null, expected size of data for tag will be
+ *			stored here on output.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size);
+
+/**
+ * Extend the hash started by vb2api_init_hash() with additional data.
+ *
+ * @param ctx		Vboot context
+ * @param buf		Data to hash
+ * @param size		Size of data in bytes
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_extend_hash(struct vb2_context *ctx,
+		       const void *buf,
+		       uint32_t size);
+
+/**
+ * Check the hash value started by vb2api_init_hash().
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_check_hash(struct vb2_context *ctx);
+
+/**
+ * Get the kernel subkey.
+ *
+ * This is available after vb2api_fw_phase3().  The caller must provide the key
+ * data to the kernel verification step.
+ *
+ * You may pass *size=0 to determine the buffer size required; in this case,
+ * the call will return VB2_ERROR_BUFFER_TOO_SMALL and *size will be set to
+ * the required size.
+ *
+ * TODO: This is a short-term workaround.  In the long run, the kernel key
+ * will stored separately, and will have a hash tag entry.
+ *
+ * @param ctx		Vboot context
+ * @param buf		Destination for data
+ * @param size		On input, size of destination in bytes
+ *			On output, size of key data in bytes.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_get_kernel_subkey(struct vb2_context *ctx,
+			     uint8_t *buf,
+			     uint32_t *size);
+
+/*****************************************************************************/
+/* APIs provided by the caller to verified boot */
+
+/**
+ * Clear the TPM owner.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_tpm_clear_owner(struct vb2_context *ctx);
+
+/**
+ * Read a verified boot resource.
+ *
+ * @param ctx		Vboot context
+ * @param index		Resource index to read
+ * @param offset	Byte offset within resource to start at
+ * @param buf		Destination for data
+ * @param size		On input, number of bytes to read
+ *			On output, number of bytes actually read
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_read_resource(struct vb2_context *ctx,
+			enum vb2_resource_index index,
+			uint32_t offset,
+			void *buf,
+			uint32_t *size);
+
 #endif  /* VBOOT_2_API_H_ */
