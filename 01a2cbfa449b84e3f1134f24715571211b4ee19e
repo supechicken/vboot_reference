@@ -152,6 +152,24 @@
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca462c42_ef13dd2c",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-15T15:29:22Z",
+      "side": 1,
+      "message": "I\u0027ve found this convention confusing on the current vboot stuff.  Would you object to splitting the struct into sections?\n\nstruct foo {\n  struct {\n      int p1, p2, p2;\n  } caller;\n  struct {\n      int c1, c2, c3;\n  } shared;\n  struct {\n      int *r1, *r2, *r3;\n  } callee;\n};",
+      "parentUuid": "8a3274d1_6aefd78f",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
