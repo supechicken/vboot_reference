@@ -179,9 +179,9 @@ int vb2_verify_packed_key_inside(const void *parent,
  * The elements of the unpacked key will point into the source buffer, so don't
  * free the source buffer until you're done with the key.
  *
- * @param rsa		Destintion for unpacked key
+ * @param key		Destintion for unpacked key
  * @param buf		Source buffer containing packed key
- * @param key		Size of buffer in bytes
+ * @param size		Size of buffer in bytes
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
 int vb2_unpack_key(struct vb2_public_key *key,
