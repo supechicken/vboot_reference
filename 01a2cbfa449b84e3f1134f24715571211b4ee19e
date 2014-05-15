@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca71cc8d_7e813e70",
+        "filename": "firmware/2lib/2crc8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3700c4_89b979de",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca98ecf7_9ce46574",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-14T22:49:06Z",
       "side": 1,
       "message": "Nothing calls this function yet. But assert() won\u0027t do anything in a running system. Should we have this function return a failure if things aren\u0027t aligned? Or if it\u0027s an internal-only function, maybe we can make a compile-time test for the alignment?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_33354b15",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "passing thru error codes",
+      "parentUuid": "ca98ecf7_9ce46574",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0a78446e_d6c079c4",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Hmm.  Suppose I could make that an inline function.",
+      "parentUuid": "8a3274d1_aaf8ef5f",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa9578be_dbc513d2",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-14T22:49:06Z",
       "side": 1,
       "message": "s/absend/clear/",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_938b57c7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9578be_dbc513d2",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "ca71cc8d_f1465f64",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Added constant.",
+      "parentUuid": "6a3700c4_49d86126",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a2cfc7a_6800c3cc",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2014-05-15T03:42:25Z",
       "side": 1,
       "message": "Who knocks down the flag?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_513e33d8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Fixed comment.",
+      "parentUuid": "4a2cfc7a_6800c3cc",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "0a78446e_1667512d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Fixed comment",
+      "parentUuid": "8a3274d1_8af32b85",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a3274d1_2ae5dfb1",
         "filename": "firmware/2lib/include/2misc.h",
         "patchSetId": 3
@@ -132,6 +258,24 @@
       "writtenOn": "2014-05-15T03:42:25Z",
       "side": 1,
       "message": "So does one include 2misc.h to get the declaration for vb2_init_contex()? Or did I miss this file\u0027s inclusion in the proper header? I would expect one-stop shopping for the caller-exposed API.",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a78446e_910d2b56",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "This is an internal API, not one for the caller.",
+      "parentUuid": "8a3274d1_2ae5dfb1",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -167,6 +311,24 @@
       "side": 1,
       "message": "I\u0027ve found this convention confusing on the current vboot stuff.  Would you object to splitting the struct into sections?\n\nstruct foo {\n  struct {\n      int p1, p2, p2;\n  } caller;\n  struct {\n      int c1, c2, c3;\n  } shared;\n  struct {\n      int *r1, *r2, *r3;\n  } callee;\n};",
       "parentUuid": "8a3274d1_6aefd78f",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a78446e_31fe17d2",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-15T20:27:48Z",
+      "side": 1,
+      "message": "Updated comments to make more explicit.",
+      "parentUuid": "ca462c42_ef13dd2c",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
