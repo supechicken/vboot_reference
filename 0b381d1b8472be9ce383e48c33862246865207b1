@@ -34,6 +34,24 @@
       "revId": "0b381d1b8472be9ce383e48c33862246865207b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_8d57c53c",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T19:39:22Z",
+      "side": 1,
+      "message": "Ah.. I completely missed the part that the macro name below was VB2_DEBUG. Thanks for the head slap.",
+      "parentUuid": "6a4e2058_735fd3c6",
+      "revId": "0b381d1b8472be9ce383e48c33862246865207b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
