@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a3700c4_89b979de",
+        "filename": "firmware/2lib/2crc8.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "size should be unsigned?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca98ecf7_9ce46574",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 3
@@ -19,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "8a3274d1_aaf8ef5f",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "This operation seems to happen in a few places. Should there just be a helper function? Or not worth it?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa9578be_dbc513d2",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -30,6 +64,91 @@
       "writtenOn": "2014-05-14T22:49:06Z",
       "side": 1,
       "message": "s/absend/clear/",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a3700c4_49d86126",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "What\u0027s the minimum size required for this buffer?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2cfc7a_6800c3cc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "Who knocks down the flag?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_8af32b85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "What about knocking down that flag? Whose responsibility is that?",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_2ae5dfb1",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "So does one include 2misc.h to get the declaration for vb2_init_contex()? Or did I miss this file\u0027s inclusion in the proper header? I would expect one-stop shopping for the caller-exposed API.",
+      "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_6aefd78f",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-15T03:42:25Z",
+      "side": 1,
+      "message": "\"top of the structure?\" it seemed like almost everything needed to be initialized to something. Could you be more specific in this comment and/or just defer to the other header file with the expectations?",
       "revId": "01a2cbfa449b84e3f1134f24715571211b4ee19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
