@@ -539,6 +539,9 @@ TEST_NAMES = \
 	tests/tpm_bootmode_tests \
 	tests/utility_string_tests \
 	tests/utility_tests \
+	tests/vb2_common_tests \
+	tests/vb2_common2_tests \
+	tests/vb2_common3_tests \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_padding_tests \
 	tests/vb2_rsa_utility_tests \
@@ -932,6 +935,8 @@ ${BUILD}/utility/vbutil_key: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/vbutil_keyblock: LDLIBS += ${CRYPTO_LIBS}
 
 ${BUILD}/host/linktest/main: LDLIBS += ${CRYPTO_LIBS}
+${BUILD}/tests/vb2_common2_tests: LDLIBS += ${CRYPTO_LIBS}
+${BUILD}/tests/vb2_common3_tests: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vboot_common2_tests: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vboot_common3_tests: LDLIBS += ${CRYPTO_LIBS}
 
@@ -1078,6 +1083,9 @@ runmisctests: test_setup
 
 .PHONY: run2tests
 run2tests: test_setup
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS}
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_common3_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_tests
@@ -1094,6 +1102,8 @@ runfutiltests: test_setup install
 # Not run by automated build.
 .PHONY: runlongtests
 runlongtests: test_setup genkeys genfuzztestcases
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS} --all
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_common3_tests ${TEST_KEYS} --all
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common2_tests ${TEST_KEYS} --all
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common3_tests ${TEST_KEYS} --all
 	tests/run_preamble_tests.sh --all
