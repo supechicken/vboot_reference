@@ -279,6 +279,7 @@ VBSLK_SRCS = \
 
 # Firmware library source needed for smaller library 2
 FWLIB2_SRCS = \
+	firmware/2lib/2api.c \
 	firmware/2lib/2common.c \
 	firmware/2lib/2crc8.c \
 	firmware/2lib/2misc.c \
@@ -322,6 +323,10 @@ VBSF_SRCS += \
 VBSLK_SRCS += \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c
+
+FWLIB2_SRCS += \
+	firmware/2lib/2stub.c
+
 endif
 
 VBSF_SRCS += ${VBINIT_SRCS}
@@ -462,6 +467,12 @@ UTIL_NAMES += \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
 	utility/verify_data
+
+ifneq (${VBOOT2},)
+UTIL_NAMES += \
+	utility/vb2_verify_fw
+endif
+
 endif
 
 UTIL_BINS_STATIC := $(addprefix ${BUILD}/,${UTIL_NAMES_STATIC})
