@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ff1cc50_d4241cd0",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "I don\u0027t see the meaning of this check. The result is same as the first one, isn\u0027t it?",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_a269dec5",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "i see CalculateSignature use VbExMalloc but we don\u0027t use in-house malloc in vboot2. so, i suppose this shouldn\u0027t be of our concern.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ff1cc50_f4628092",
+        "filename": "tests/vb2_common3_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "indentation here and at 336.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_c5727df9",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "I think without losing the integrity of the tests, you can remove the brackets, save an indent, and avoid defining same variables repeatedly.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_802233c0",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "UINT32_MAX?",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_204cff81",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-05-16T16:49:51Z",
+      "side": 1,
+      "message": "you don\u0027t need this check, do you?",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
