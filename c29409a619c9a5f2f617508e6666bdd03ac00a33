@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dff7d045_e3c9a65c",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-16T18:27:59Z",
+      "side": 1,
+      "message": "This confirms we haven\u0027t screwed up any other state in mangling the key which would cause false negatives for the expected failures above.  That is, we want to make sure they\u0027re failing in the way we expect and not because of some earlier failure flag we just left on.  (I\u0027ve done that before).\n\nMay not be necessary after I rewrite the error code list so we can test for specific errors (right now there\u0027s too many VB2_ERROR_UNKNOWNs to test for specific errors)",
+      "parentUuid": "3ff1cc50_d4241cd0",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4e2058_a269dec5",
         "filename": "tests/vb2_common2_tests.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-16T16:49:51Z",
       "side": 1,
       "message": "i see CalculateSignature use VbExMalloc but we don\u0027t use in-house malloc in vboot2. so, i suppose this shouldn\u0027t be of our concern.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dff7d045_239f8e52",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-16T18:27:59Z",
+      "side": 1,
+      "message": "Yeah, this is left over from copy-paste-modify of the existing tests.",
+      "parentUuid": "6a4e2058_a269dec5",
       "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2014-05-16T16:49:51Z",
       "side": 1,
       "message": "I think without losing the integrity of the tests, you can remove the brackets, save an indent, and avoid defining same variables repeatedly.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_c8f27c7b",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-16T18:27:59Z",
+      "side": 1,
+      "message": "But wouldn\u0027t I then have to\n\nmemset(\u0026k, 0, sizeof(k))\nk.key_offset \u003d sizeof(k);\n\ninstead of just \n\nstruct vb2_packed_key k \u003d {.key_offset \u003d sizeof(k)};\n\nso it wouldn\u0027t save any code...",
+      "parentUuid": "ca71cc8d_c5727df9",
       "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
