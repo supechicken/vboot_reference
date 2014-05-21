@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f48f879_57d13cdb",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "Yes, for testing.",
+      "parentUuid": "7f3504d1_bbf29b06",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3f0cb7_3327f2a8",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-20T17:33:17Z",
       "side": 1,
       "message": "At the very least \u0027end\u0027 should end_offset to indicate it is indeed a relative variable -- not absolute.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf4bfc72_f3e83a1e",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3f0cb7_3327f2a8",
       "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf4bfc72_33dff273",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "It\u0027s possible for member_size\u003d0 at this point.  Added comment.",
+      "parentUuid": "3f3f0cb7_d381c63b",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3f0cb7_73169a20",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-05-20T17:33:17Z",
       "side": 1,
       "message": "I don\u0027t understand these wraparound checks. I\u0027m guessing my brain isn\u0027t working but it\u0027s looking to be more complicated than it should. Can\u0027t we just use uintptr_t and intptr_t types?\n\nuintptr_t parent_begin \u003d (uintptr_t)parent;\nuintptr_t parent_end \u003d parent_begin + parent_size;\n\nassert(parent_end \u003e parent_begin);\n\nuintptr_t member_header_begin \u003d (uintptr_t)member;\nuintptr_t member_header_end \u003d member_header_begin + member_size;\n\nassert(member_header_end \u003e member_header_begin);\n\nuinptr_t member_data_begin \u003d member_header_begin + member_data_offset;\nuintptr_t member_data_end \u003d member_data_begin + member_data_size;\n\nassert(member_data_end \u003e member_data_begin);\n\nNow one can just assert that member_*_(begin|end) are entirely contained within the parent container, no? i.e.\n\nmember_header_begin \u003c parent_begin || member_header_end \u003e parent_end -\u003e fail ?",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf4bfc72_53014e25",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "Yeah, this is somewhat left over from when we had uint64_t offsets and sizes, but on a 32-bit platform.  Will try to simplify.",
+      "parentUuid": "3f3f0cb7_73169a20",
       "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "7f8344c5_b62f40c3",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "It\u0027s fine if the member goes all the way to the end of the parent.",
+      "parentUuid": "7f3504d1_7b58b332",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3f0cb7_93d33e07",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-05-20T17:33:17Z",
       "side": 1,
       "message": "We seem to essentially be doing an allocation from workbuf but not really accounting for it aside from noting we aren\u0027t utilizing any more buffers from it. Could you introduce workbuf struct and the associated operations (alloc/free)? The operations would be balanced and we wouldn\u0027t be open coding the accounting operations. It\u0027s not the greatest example, the struct buffer in cbfstool is basically that. You could pass in a struct workbuf and clone it to volatile one to make allocations from -- the allocations live only within the current function frame.\n\nsturct workbuf {\n uint8_t buf;\n uint32_t size;\n};\n\nvoid workbuf_clone(struct workbuf *dest, const struct workbuf *src) {\n   *dest \u003d *src;\n}\n\nvoid *workbuf_alloc(struct workbuf *wb, uint32_t size)\n{\n void *ptr;\n if (wb-\u003esize \u003c size)\n   return NULL;\n wb-\u003esize -\u003d size;\n ptr \u003d wb-\u003ebuf;\n wb-\u003ebuf +\u003d size;\n return ptr;\n}\n\nAt the beginning of a function:\n\nint vb2_verify_data(..., const struct workbuf *wb_avail) \n{\n   struct workbuf wb;\n\n  workbuf_clone(\u0026wb, wb_avail);\n\n  digest \u003d workbuf_alloc(digest_size);\n\n if (digest \u003d\u003d NULL)\n    fail;\n\n ...\n}\n\nBut we can pass \u0026wb onto other callers if those buffers are still live and/or pass wb_avail if not.",
+      "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf4bfc72_b3ec02e0",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-21T20:57:01Z",
+      "side": 1,
+      "message": "I like that.  I\u0027ve been trying to come up with a nicer way to handle work buffers.  Should be able to apply that to vb2_context, which has similar issues with its work buffer.",
+      "parentUuid": "3f3f0cb7_93d33e07",
       "revId": "c29409a619c9a5f2f617508e6666bdd03ac00a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
