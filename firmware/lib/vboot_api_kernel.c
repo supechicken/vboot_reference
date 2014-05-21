@@ -971,6 +971,9 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 
 	p.nv_context = &vnc;
 	p.boot_flags = 0;
+	//kaedbg>>>
+	shared->flags = shared->flags | VBSD_BOOT_DEV_SWITCH_ON;
+	//kaedbg<<<
 	if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)
 		p.boot_flags |= BOOT_FLAG_DEVELOPER;
 
