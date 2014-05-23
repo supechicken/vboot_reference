@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6c24f1_c3d6bccf",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-23T15:45:07Z",
+      "side": 1,
+      "message": "This code is a lot clearer -- at least to me. I hope you think so too.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f5ee42c_279fad52",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-23T15:45:07Z",
+      "side": 1,
+      "message": "It might be clearer to the casual observer if the \u0027len\u0027 field was renamed in vb2_packed_key to indicate it is size of uint32_t\u0027s. I\u0027m not sure if that\u0027s just standard in crypto libs but it wouldn\u0027t make go around double checking things like the length check and the pointer arithmetic below.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6c24f1_2301b89d",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-05-23T15:45:07Z",
+      "side": 1,
+      "message": "Where\u0027s this function at? I\u0027m sure it\u0027s in another review.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
