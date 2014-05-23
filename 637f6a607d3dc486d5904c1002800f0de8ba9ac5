@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f2fc4b5_8201fa9f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f5ee42c_f1d6f780",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd184e1_9221dc07",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-23T18:32:22Z",
       "side": 1,
       "message": "I really don\u0027t get this line. I guess you are trying to repack the key so that you leave out the empty space between header and offset (if there is some)? But in that case, at this point you already memcpy\u0027ed the key to the old offset... shouldn\u0027t you have done this earlier?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f2fc4b5_c2eae284",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Can\u0027t do it earlier.  We need the old not-packed key_offset to do the memcpy() in the preceding line.",
+      "parentUuid": "7fd184e1_9221dc07",
       "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "7f2fc4b5_c21142e3",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff965405_deb9ba64",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff7f3495_36c81859",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -81,6 +135,24 @@
       "writtenOn": "2014-05-23T18:32:22Z",
       "side": 1,
       "message": "How does this work? If sec_version[31:16] \u003d\u003d data_key.key_version[31:16] this check should pass (right?), but in that case sd-\u003efw_version[15:0] will be 0 while sec_version[15:0] might not be (so we could falsely go into the error path). Am I missing something?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa77c89_e44bba92",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7f3495_36c81859",
       "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "3f39cc01_2098ea20",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "This one we\u0027ve explicitly checked in vb2_verify_keyblock().\n\nThe other checks in this func don\u0027t duplicate checks from there.",
+      "parentUuid": "df7c30a6_b58500f7",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd184e1_1252cc10",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -115,6 +205,24 @@
       "writtenOn": "2014-05-23T18:32:22Z",
       "side": 1,
       "message": "This could be called data_key for clarity.",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa77c89_2441d26c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd184e1_1252cc10",
       "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +263,24 @@
     },
     {
       "key": {
+        "uuid": "bfa77c89_842f66c3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Phase 1 is roughly equivalent to VbInit().\n\nPhase 2 and 3 are roughly equivalent to VbSelectFirmware().\n\nI renamed them because historically we\u0027ve added things to VbSelectFirmware() that were NOT selecting firmware, so the name was misleading.\n\nUpdated comments.",
+      "parentUuid": "bfa05c5b_024caeaa",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe088ae_f27b8644",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -172,6 +298,24 @@
     },
     {
       "key": {
+        "uuid": "bfa77c89_e73e5cd6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "Still in progress.  vboot2 currently covers only firmware selection.",
+      "parentUuid": "1fe088ae_f27b8644",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff7f3495_0584bcb9",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -183,6 +327,24 @@
       "writtenOn": "2014-05-23T18:32:22Z",
       "side": 1,
       "message": "I don\u0027t think I saw this used anywhere where a different output size was not considered a fatal error, and I can\u0027t really think of a situation where you would be able to read half but not all of a resource. Wouldn\u0027t it be easier to remove this from the API (e.g. make the size a normal integer) and require the firmware to only return success if it read the requested amount of bytes?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f39cc01_60ce72f8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T23:06:51Z",
+      "side": 1,
+      "message": "We used to read the entire keyblock and then pick it apart.  My current code reads the header, and then uses the size from the header to determine how much data it expects.  So yeah, we can make it simpler now.",
+      "parentUuid": "ff7f3495_0584bcb9",
       "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
