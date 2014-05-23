@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3f52ac51_d8064d39",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T22:31:00Z",
+      "side": 1,
+      "message": "Okay. It\u0027s just that right now you still call these with values from vb2_packed_key.algorithm and rely on the fact that they are arranged just right (which could be dangerous if someone tried to add algorithms in the future and wasn\u0027t aware of this). As long as you will later change vb2_packed_key to have two separate fields for the signature and the hash algorithm, I guess it\u0027s okay.\n\n(What you could also do which I think could be a little safer is build a small translation table, like this: \u0027enum vb2_hash_algorithm vb2_hash_alg[VB2_ALG_COUNT] \u003d { [VB2_ALG_RSA1024_SHA1] \u003d VB2_HASH_SHA1, ...};\u0027. Then it would just have to make 0 an invalid hash algorithm that\u0027s checked for, and all unspecified signature algorithms (in case someone added a new one without updating this) will map to that.)",
+      "parentUuid": "7f2fc4b5_a2e51e45",
+      "revId": "ddee9c904713229d2e48c4d6a091dd8678d30269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfa05c5b_bf0873b6",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 9
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "This is used in subsequent macros to specify required buffer sizes.  I don\u0027t think I can do that with a static __inline func.",
       "parentUuid": "bfa05c5b_bf0873b6",
+      "revId": "ddee9c904713229d2e48c4d6a091dd8678d30269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fb968aa_702c66bc",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T22:31:00Z",
+      "side": 1,
+      "message": "As long as you are okay with using a GCC extension (I think clang has it too unless using -pedantic), you can use a compound statement to get this to evaluate only once. See here: https://gcc.gnu.org/onlinedocs/cpp/Duplication-of-Side-Effects.html",
+      "parentUuid": "3f39cc01_40d52e51",
       "revId": "ddee9c904713229d2e48c4d6a091dd8678d30269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
