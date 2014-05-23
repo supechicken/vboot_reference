@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfa77c89_a4d06283",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9d5828_8f98e522",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6c24f1_c3d6bccf",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7f2fc4b5_42725267",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Yeah.  The workbuf stuff is much clearer too.",
+      "parentUuid": "7f6c24f1_c3d6bccf",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f5ee42c_279fad52",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-23T15:45:07Z",
       "side": 1,
       "message": "It might be clearer to the casual observer if the \u0027len\u0027 field was renamed in vb2_packed_key to indicate it is size of uint32_t\u0027s. I\u0027m not sure if that\u0027s just standard in crypto libs but it wouldn\u0027t make go around double checking things like the length check and the pointer arithmetic below.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f39cc01_005fa69e",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Done (back in the crypto CL)",
+      "parentUuid": "7f5ee42c_279fad52",
       "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,42 @@
     },
     {
       "key": {
+        "uuid": "7f2fc4b5_c265c29d",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "crypto review\n\nhttps://chromium-review.googlesource.com/199578",
+      "parentUuid": "7f6c24f1_2301b89d",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f2fc4b5_6271565e",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Don\u0027t need to free it, since it\u0027s being allocated in a local copy of the work buffer.",
+      "parentUuid": "ff965405_6806acb7",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff965405_d3d696cf",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-05-23T18:29:53Z",
       "side": 1,
       "message": "nit: uintptr_t",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f39cc01_e05ba2ae",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Removed entirely in favor of vb_aligned()",
+      "parentUuid": "ff965405_d3d696cf",
       "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3f39cc01_6050328f",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff965405_33181a08",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f9d5828_1e188907",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 2
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "3f39cc01_a0519a92",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9d5828_1e188907",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd184e1_f50612eb",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 2
@@ -149,6 +293,24 @@
       "writtenOn": "2014-05-23T18:29:53Z",
       "side": 1,
       "message": "...and this should be \u0027size\u0027",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f2fc4b5_62cb162f",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-05-23T22:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd184e1_f50612eb",
       "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
