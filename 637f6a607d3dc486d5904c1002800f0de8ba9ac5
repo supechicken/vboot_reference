@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f5ee42c_f1d6f780",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "Why not use the wrapper you have for this (vb2_get_sd())? (4 more occurrences in this file)",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd184e1_9221dc07",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "I really don\u0027t get this line. I guess you are trying to repack the key so that you leave out the empty space between header and offset (if there is some)? But in that case, at this point you already memcpy\u0027ed the key to the old offset... shouldn\u0027t you have done this earlier?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f5ee42c_51e0235d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "Could use vb2_get_sd() (6 more occurrences in this file).",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_deb9ba64",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "Maybe this variable should be called root_key (since there are two keys in this function and this only holds one of them).",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7f3495_36c81859",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "How does this work? If sec_version[31:16] \u003d\u003d data_key.key_version[31:16] this check should pass (right?), but in that case sd-\u003efw_version[15:0] will be 0 while sec_version[15:0] might not be (so we could falsely go into the error path). Am I missing something?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df7c30a6_b58500f7",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "This size could be anything, so you should maybe check that it doesn\u0027t overflow block_size first (it\u0027s not a big deal since it has been verified already, but you are double-checking verified/RO parameters in several other places as well).",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd184e1_1252cc10",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "This could be called data_key for clarity.",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa05c5b_c564905f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "I think it would really help to put a high-level overview of the expected control flow between vboot and the firmware somewhere (maybe as a comment in this header) that tells us what functions to call in what order and what actions to take in between. (E.g. call phases 1-3, load RW as indicated by ctx-\u003eflags, then call init/extend/check_hash, etc...) Just from looking at the API (before reading the whole codebase) it was not clear to me how to correctly use the library.",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa05c5b_024caeaa",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "All these three phases are just the equivalent of VbSelectFirmware(), right? What\u0027s the rationale in splitting it up like this?\n\nIt\u0027s not clear to me what the individual phases (are supposed to) do without reading the code. I think there should be a short, high level overview in these comments.",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fe088ae_f27b8644",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "This seems to be missing all the VbSelectAndLoadKernel() parts (e.g. displaying the dev screen and things like that). Is that all just work-in-progress, or do you intend to shift some of those responsibilities to the firmware?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7f3495_0584bcb9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:32:22Z",
+      "side": 1,
+      "message": "I don\u0027t think I saw this used anywhere where a different output size was not considered a fatal error, and I can\u0027t really think of a situation where you would be able to read half but not all of a resource. Wouldn\u0027t it be easier to remove this from the API (e.g. make the size a normal integer) and require the firmware to only return success if it read the requested amount of bytes?",
+      "revId": "637f6a607d3dc486d5904c1002800f0de8ba9ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
