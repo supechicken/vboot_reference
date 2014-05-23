@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f9d5828_8f98e522",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "nit: everything except for parent_end would make more sense as size_t.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6c24f1_c3d6bccf",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -47,6 +64,91 @@
       "writtenOn": "2014-05-23T15:45:07Z",
       "side": 1,
       "message": "Where\u0027s this function at? I\u0027m sure it\u0027s in another review.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_6806acb7",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "I think you are forgetting to free the workbuf space for the digest below this?",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_d3d696cf",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "nit: uintptr_t",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_33181a08",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "nit: Now this is the one that should technically really be size_t, or even ptrdiff_t.",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_1e188907",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "typo (also, it\u0027s \u0027key\u0027 instead of \u0027rsa\u0027)",
+      "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd184e1_f50612eb",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:53Z",
+      "side": 1,
+      "message": "...and this should be \u0027size\u0027",
       "revId": "2ad3fefabce374c5744849962e3a1a85648de2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
