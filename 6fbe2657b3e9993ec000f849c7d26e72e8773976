@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff965405_b290a8f4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "I think it could still be useful to have an explicit memory wipe flag. This way you could later change the policy (which should be solely vboot\u0027s domain) without needing to modify depthcharge, e.g. if we ever decide to make it only wipe on the first dev mode boot or something.",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa05c5b_1f52c710",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "Can you make more explicit what \"at any point\" means (i.e. is it only at the end of vb2_... API calls, or also at the start of every vb2ex_... callback?)",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff965405_721460a6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "I assume this is supposed to be a more generic interface to TPM storage? I still saw some explicit references to the TPM elsewhere (e.g. vb2ex_tpm_clear_owner())... is that an oversight? Or do Chromebooks still have to provide a TPM, but not necessarily store their dev-mode flag in there?\n\nWill vboot still link TPM storage functions or do we have to provide those in coreboot and depthcharge? (Since our current model accesses vboot from two codebases that makes things a little ugly.)",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa05c5b_70ef78da",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "It\u0027s a little hard to understand that this no longer belongs in the \"fields caller may examine\" category and instead makes up its own third group. Why not move it up into \"fields which must be initialized by caller\"? (It\u0027s kinda caller-initialized after all, just that vboot doesn\u0027t care about the value and initialization to 0 is fine as well.)",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_6444a030",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "nit: uintptr_t",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7f3495_765d3021",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "Is this misaligned intentionally?",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_4427243e",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-05-23T18:29:39Z",
+      "side": 1,
+      "message": "Is there a reason (except that it\u0027s always been this way) to call this \"shared\" data? Because that makes me think it was shared between vboot and the firmware, which it\u0027s not. Maybe vb2_globals or something like that would be a better description?",
+      "revId": "6fbe2657b3e9993ec000f849c7d26e72e8773976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
