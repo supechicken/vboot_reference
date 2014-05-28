@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc43063_956da447",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "It\u0027s easy to infer from the code, but maybe add a comment that the nvstorage is 16 bytes long.",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc43063_f564185f",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Rename vb2_nv_changed() to vb2_nv_regen_crc() ? I think of the current name as a question, not an action.",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc43063_b5dc60f3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Measure it using the largest sizes?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_9654cc83",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Why does the caller have to save it? Wouldn\u0027t it be clearer to say that the caller should clear it and the callee may set it? \nSame for SECDATA, too.",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_7627303e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Caller sets this, right?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc43063_d50b9cb1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Caller may set this flag when initializing the context? Or callee will set/clear this flag?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_36f2184e",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Maybe add a comment that the first caller must zero the ctx first, or it may do nothing.",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc13c54_d4039cd8",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "To support nvram recovery from backup (TPM), I need a way to tell whether the context had a valid CRC at init time. With the original implementation, I\u0027m checking the regenerate_crc flag in the context after the init call.\n\nIt would be cleaner if vb2_nv_init() returned something to indicate that the context was bad. Maybe it can return enum vb2_shared_data_flags, so I can check both nvram and secdata?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc13c54_54af8c6f",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Who sets/clears these flags? When?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_f6326076",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Add a comment: /* Which params to get/set */ ?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_7679f006",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T18:01:49Z",
+      "side": 1,
+      "message": "Should we make this two uint16_t? Or a union?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
