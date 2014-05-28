@@ -527,7 +527,9 @@ static void OneTimeInitTest(void)
 		    /* firmware space */
 		    "TlclDefineSpace(0x1007, 0x8001, 10)\n"
 		    "TlclWrite(0x1007, 10)\n"
-		    "TlclRead(0x1007, 10)\n",
+		    "TlclRead(0x1007, 10)\n"
+		    /* backup space */
+		    "TlclDefineSpace(0x1009, 0x1, 16)\n",
 		    "tlcl calls");
 	TEST_EQ(mock_rsf.struct_version, ROLLBACK_SPACE_FIRMWARE_VERSION,
 		"rsf ver");
@@ -556,7 +558,9 @@ static void OneTimeInitTest(void)
 		    /* firmware space */
 		    "TlclDefineSpace(0x1007, 0x8001, 10)\n"
 		    "TlclWrite(0x1007, 10)\n"
-		    "TlclRead(0x1007, 10)\n",
+		    "TlclRead(0x1007, 10)\n"
+		    /* backup space */
+		    "TlclDefineSpace(0x1009, 0x1, 16)\n",
 		    "tlcl calls");
 
 	/* NV locking already initialized */
@@ -577,7 +581,9 @@ static void OneTimeInitTest(void)
 		    /* firmware space */
 		    "TlclDefineSpace(0x1007, 0x8001, 10)\n"
 		    "TlclWrite(0x1007, 10)\n"
-		    "TlclRead(0x1007, 10)\n",
+		    "TlclRead(0x1007, 10)\n"
+		    /* backup space */
+		    "TlclDefineSpace(0x1009, 0x1, 16)\n",
 		    "tlcl calls");
 
 	/* Self test error */
@@ -669,7 +675,9 @@ static void SetupTpmTest(void)
 		    "TlclRead(0x1008, 13)\n"
 		    "TlclDefineSpace(0x1007, 0x8001, 10)\n"
 		    "TlclWrite(0x1007, 10)\n"
-		    "TlclRead(0x1007, 10)\n",
+		    "TlclRead(0x1007, 10)\n"
+		    /* backup space */
+		    "TlclDefineSpace(0x1009, 0x1, 16)\n",
 		    "tlcl calls");
 
 	/* Other firmware space error is passed through */
