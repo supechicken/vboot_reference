@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffc73462_96cccc6e",
+        "filename": "firmware/2lib/include/2rsa.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T16:58:31Z",
+      "side": 1,
+      "message": "What should our policy be on #including required headers? This file doesn\u0027t include stdint.h, or anything that would define RSA8192NUMBYTES. I\u0027m not sure we should optimize preprocessor times at the expense of readability.\n\nOTOH, maybe that\u0027s okay for headers that are only used internally.",
+      "revId": "ba12df9ef4d29487c30cd172a18460662c1021ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
