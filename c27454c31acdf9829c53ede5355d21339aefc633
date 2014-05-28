@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffc73462_5948a772",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T19:54:38Z",
+      "side": 1,
+      "message": "The \u003e vs \u003e\u003d test assumes that the member follows the parent header. This:\n\nstruct parent {\n  // blah\n};\nstruct member {\n  // blah\n};\ndata[];\n\nnot:\n\nstruct parent {\n  struct member {\n    // blah\n  };\n};\ndata[];\n\nRight?",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc13c54_f47a58c7",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T19:54:38Z",
+      "side": 1,
+      "message": "All these verify...inside() functions assume that their parent and member arguments have been individually verified by the caller before we can verify their insideness, right?",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc43063_f8940d61",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T19:54:38Z",
+      "side": 1,
+      "message": "I don\u0027t see a test for this case.",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfc43063_d85111e9",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T19:54:38Z",
+      "side": 1,
+      "message": "Can we add a bunch of variations on VB2_ERROR_BAD_KEYBLOCK and VB2_ERROR_BAD_PREAMBLE and so forth? It\u0027s really handy to be able to identify the exact reason for the failure, especially in tests, but also occasionally in debugging failures on real systems.",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc73462_9984ff4d",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-05-28T19:54:38Z",
+      "side": 1,
+      "message": "Instead of TEST_NEQ, use TEST_EQ and the specific error case we\u0027re checking. Otherwise we can\u0027t be sure we aren\u0027t accidentally checking the wrong thing except by through coverage tools.\n\nDo this everywhere, please.",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
