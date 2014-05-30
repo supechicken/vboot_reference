@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_d1c7ee47",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2014-05-30T21:10:33Z",
+      "side": 1,
+      "message": "Well I think we know why and the bug has that information, so I would say instead \"please fix\".",
+      "revId": "5d7a486eb49b9e4749838f4f27bddd627299e041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_f18a320d",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2014-05-30T21:10:33Z",
+      "side": 1,
+      "message": "I don\u0027t get this change.  How could the position of an assignment to a local variable, which is not used in here, affect the presence of a segmentation fault?",
+      "revId": "5d7a486eb49b9e4749838f4f27bddd627299e041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
