@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_9fe6544e",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfc43063_956da447",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfc43063_f564185f",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-28T18:01:49Z",
       "side": 1,
       "message": "Rename vb2_nv_changed() to vb2_nv_regen_crc() ? I think of the current name as a question, not an action.",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_ab8c2072",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfc43063_f564185f",
       "revId": "2d580c31be63a3811e674896381997f136cdfe79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_03ef4dda",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what the TODO is for...",
+      "parentUuid": "dfc43063_b5dc60f3",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc73462_9654cc83",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_23f4c9a7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "ffc73462_9654cc83",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc73462_7627303e",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -81,6 +153,24 @@
       "writtenOn": "2014-05-28T18:01:49Z",
       "side": 1,
       "message": "Caller sets this, right?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_6baff8b8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Clarified all this above.",
+      "parentUuid": "ffc73462_7627303e",
       "revId": "2d580c31be63a3811e674896381997f136cdfe79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_df4ccc87",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc73462_36f2184e",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc13c54_d4039cd8",
         "filename": "firmware/2lib/include/2nvstorage.h",
         "patchSetId": 8
@@ -132,6 +240,24 @@
       "writtenOn": "2014-05-28T18:01:49Z",
       "side": 1,
       "message": "To support nvram recovery from backup (TPM), I need a way to tell whether the context had a valid CRC at init time. With the original implementation, I\u0027m checking the regenerate_crc flag in the context after the init call.\n\nIt would be cleaner if vb2_nv_init() returned something to indicate that the context was bad. Maybe it can return enum vb2_shared_data_flags, so I can check both nvram and secdata?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_9f3f34d2",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "I\u0027ll make you an API similar to vb2_secdata_check_crc().",
+      "parentUuid": "bfc13c54_d4039cd8",
       "revId": "2d580c31be63a3811e674896381997f136cdfe79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_9f6974ca",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Not set yet.  They\u0027re set in a follow-on CL.  Added comments.",
+      "parentUuid": "bfc13c54_54af8c6f",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc73462_f6326076",
         "filename": "firmware/2lib/include/2secdata.h",
         "patchSetId": 8
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_430475e1",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc73462_f6326076",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc73462_7679f006",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 8
@@ -183,6 +345,24 @@
       "writtenOn": "2014-05-28T18:01:49Z",
       "side": 1,
       "message": "Should we make this two uint16_t? Or a union?",
+      "revId": "2d580c31be63a3811e674896381997f136cdfe79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_5f951c59",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T00:28:20Z",
+      "side": 1,
+      "message": "Maybe.  Added todo; we can ponder that later.",
+      "parentUuid": "ffc73462_7679f006",
       "revId": "2d580c31be63a3811e674896381997f136cdfe79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
