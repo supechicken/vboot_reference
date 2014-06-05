@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_d8cdc2fa",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T17:39:29Z",
+      "side": 1,
+      "message": "No, it\u0027s the other way around.  Added comment to 2common.h",
+      "parentUuid": "ffc73462_5948a772",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc13c54_f47a58c7",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-28T19:54:38Z",
       "side": 1,
       "message": "All these verify...inside() functions assume that their parent and member arguments have been individually verified by the caller before we can verify their insideness, right?",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_612cf489",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T17:39:29Z",
+      "side": 1,
+      "message": "No, the insideness check is done first.  It\u0027s simply doing pointer math.",
+      "parentUuid": "bfc13c54_f47a58c7",
       "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_5c63f2e5",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T17:39:29Z",
+      "side": 1,
+      "message": "Search for \"vb2_unpack_key() unaligned data\" in vb2_common2_tests.c",
+      "parentUuid": "dfc43063_f8940d61",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfc43063_d85111e9",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_1cc80a8b",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T17:39:29Z",
+      "side": 1,
+      "message": "Yes, I\u0027d like to make all the return codes unique.  Coming in a follow-up CL.  It\u0027ll be easier to review there, too.",
+      "parentUuid": "dfc43063_d85111e9",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffc73462_9984ff4d",
         "filename": "tests/vb2_common2_tests.c",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2014-05-28T19:54:38Z",
       "side": 1,
       "message": "Instead of TEST_NEQ, use TEST_EQ and the specific error case we\u0027re checking. Otherwise we can\u0027t be sure we aren\u0027t accidentally checking the wrong thing except by through coverage tools.\n\nDo this everywhere, please.",
+      "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_3c8f0669",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-05T17:39:29Z",
+      "side": 1,
+      "message": "Yeah, that needs to be done everywhere.  I\u0027d like to do that as a second step, since it needs to be in conjunction with making finer-grained return codes.",
+      "parentUuid": "ffc73462_9984ff4d",
       "revId": "c27454c31acdf9829c53ede5355d21339aefc633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
