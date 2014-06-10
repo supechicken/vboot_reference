@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bffcdced_1c95ca27",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-10T19:01:27Z",
+      "side": 1,
+      "message": "I was expecting something like:\n\nvb2_verify_keyblock()\n{\n  ...\n  rv \u003d vb2_verify_signature_inside();\n  if (rv) {\n    return VB2_ERROR_KEYBLOCK_SIG | rv;\n  }\n  ...\n}\n\nThen, when vb2_verify_signature_inside returns VB2_ERROR_SIG_OUTSIDE, the caller of vb2_verify_keyblock gets VB2_ERROR_KEYBLOCK_SIG_OUTSIDE. In this scheme, you don\u0027t need to define every single combination of errors (e.g. PREAMBLE_SIG + SIG_OUTSIDE \u003d PREAMBLE_SIG_OUTSIDE, or INITCTX_WORKBUF + WORKBUF_SMALL \u003d INITCTX_WORKBUF_SMALL).",
+      "revId": "b63c21a17666b69719f4c9df85fc5b14eaff3e85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
