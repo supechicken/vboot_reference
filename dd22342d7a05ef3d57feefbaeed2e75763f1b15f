@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6424c8_5a301520",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-06-11T18:28:33Z",
+      "side": 1,
+      "message": "When/who is responsible for the VB2_CONTEXT_FW_SLOT_B being set? The comments on flags says the caller needs to initialize things. Does that mean the caller is deciding slot A vs B?",
+      "revId": "dd22342d7a05ef3d57feefbaeed2e75763f1b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfc3fcc9_e7179cd6",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-06-11T18:28:33Z",
+      "side": 1,
+      "message": "When is this function called? And what does \"jumpi to the recovery path\" entail? I\u0027m trying understand at what point in the boot would this be called.",
+      "revId": "dd22342d7a05ef3d57feefbaeed2e75763f1b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
