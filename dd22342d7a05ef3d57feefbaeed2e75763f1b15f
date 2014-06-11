@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f8a489d_b7569335",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-11T22:58:35Z",
+      "side": 1,
+      "message": "vboot is.  clarified in comment.",
+      "parentUuid": "7f6424c8_5a301520",
+      "revId": "dd22342d7a05ef3d57feefbaeed2e75763f1b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfc3fcc9_e7179cd6",
         "filename": "firmware/2lib/include/2misc.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-11T18:28:33Z",
       "side": 1,
       "message": "When is this function called? And what does \"jumpi to the recovery path\" entail? I\u0027m trying understand at what point in the boot would this be called.",
+      "revId": "dd22342d7a05ef3d57feefbaeed2e75763f1b15f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f854c8a_0027fba6",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-11T22:58:35Z",
+      "side": 1,
+      "message": "It\u0027s called internally by vboot (as are all other functions in this header).  See https://chromium-review.googlesource.com/#/c/200151/6/firmware/2lib/2api.c",
+      "parentUuid": "bfc3fcc9_e7179cd6",
       "revId": "dd22342d7a05ef3d57feefbaeed2e75763f1b15f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
