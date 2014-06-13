@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df8b50a1_2c015b6c",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-06-13T06:43:37Z",
+      "side": 1,
+      "message": "This script will be executed on DUT with /bin/sh\u003ddash, so I think you\u0027ll want to use [ ] instead of bash [[ ]] ?",
+      "revId": "65476d229a0579b3854a7f30f98958df81dfbfe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
