@@ -16,6 +16,24 @@
       "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ec997a_811c1a57",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-16T21:10:52Z",
+      "side": 1,
+      "message": "That\u0027s correct.  It\u0027s inside\n\nifeq (${FIRMWARE_ARCH},)\n# Include BIOS stubs in the firmware library when compiling for host\n\n(expand a few lines above) so isn\u0027t compiled for firmware.",
+      "parentUuid": "bf469c40_6cc0db0d",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
