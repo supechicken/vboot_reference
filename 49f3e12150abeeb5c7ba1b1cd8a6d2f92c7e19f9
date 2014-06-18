@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "84ba6d9a_4d450d2c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T22:45:33Z",
+      "side": 1,
+      "message": "1.0 headers are before we added GBB flags.  Everything we\u0027ve signed for at least a year (and any firmware we can build from ToT) is new enough to work.",
+      "parentUuid": "4466b513_32aee073",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4cbf13b_511ff4f2",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "84ba6d9a_2dfd398b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T22:45:33Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "a4cbf13b_511ff4f2",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6471f9c6_a8bfe3e7",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -82,6 +118,24 @@
       "writtenOn": "2014-06-18T21:53:04Z",
       "side": 1,
       "message": "rv is an int, but vb2ex_tpm_clear_owner() returns an enum vb2_return_code, which is at least 0x0100000. Then it passes rv to vb2_fail() as a uint8_t. That\u0027ll probably work, but it\u0027s a little sloppy.\n\nHow about declaring rv as the correct enum everywhere, and providing some GET_SUBCODE() macros or something?",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6471f9c6_33cca89d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T22:45:33Z",
+      "side": 1,
+      "message": "Yeah, that vb2_fail only has an 8-bit recovery subcode is less than ideal.  But I don\u0027t think we want to spend another 24 bits of NVRAM on it now.\n\nvb2ex_tpm_clear_owner() is allowed to return an error code which is not enumerated in vb2_return_code - for example, a tlcl lib or TPM message error code.\n\nAdded a comment to clarify the truncation.",
+      "parentUuid": "6471f9c6_a8bfe3e7",
       "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -116,6 +170,24 @@
       "writtenOn": "2014-06-18T21:53:04Z",
       "side": 1,
       "message": "If we\u0027re going to blend the error type (high-order bits) and the subcode error (lower 8 bits), then let\u0027s add a compile-time assertion at the end of each block to ensure that we don\u0027t ever define more than 255 subcodes.",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4cbf13b_5fecdb73",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T22:45:33Z",
+      "side": 1,
+      "message": "high 8 bits, 0x01 \u003d vboot2\nnext 8 bits, category\nnext 16 bits, subcode\n\nI don\u0027t think we\u0027re at risk of having more than 65536 error codes per category.  If we do, we\u0027ve already done something tragically wrong...",
+      "parentUuid": "6471f9c6_082daf82",
       "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
