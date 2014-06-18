@@ -16,6 +16,24 @@
       "revId": "4506f2abf9cab7c6bb00633b67e0ae79f58d3a26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ce254b_0c115724",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-18T23:02:27Z",
+      "side": 1,
+      "message": "I suspect we\u0027ll have a different context struct for the kernel verification.  That one can differentiate between the two spaces.  I think I\u0027d prefer that to having a single vb2_context which gets passed all the way through, which forces the earliest vb init code to set up the whole struct (the way we do for VbSharedData).\n\nIf we do want to rename (which wouldn\u0027t be the end of the world), I\u0027d do that as a separate CL, so that it\u0027s easier to review.  (CLs which simply rename and don\u0027t add code are pretty easy)",
+      "parentUuid": "a4cbf13b_ffc82758",
+      "revId": "4506f2abf9cab7c6bb00633b67e0ae79f58d3a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
