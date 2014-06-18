@@ -34,6 +34,91 @@
       "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4466b513_32aee073",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T21:53:04Z",
+      "side": 1,
+      "message": "Why not? I thought the point of your first attempt was that it would be a drop-in replacement? The structs look the same to  me.",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4cbf13b_511ff4f2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T21:53:04Z",
+      "side": 1,
+      "message": "We\u0027re calling vb2_nv_set() all over the place just above, but only now wondering if it\u0027s initialized?",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6471f9c6_a8bfe3e7",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T21:53:04Z",
+      "side": 1,
+      "message": "rv is an int, but vb2ex_tpm_clear_owner() returns an enum vb2_return_code, which is at least 0x0100000. Then it passes rv to vb2_fail() as a uint8_t. That\u0027ll probably work, but it\u0027s a little sloppy.\n\nHow about declaring rv as the correct enum everywhere, and providing some GET_SUBCODE() macros or something?",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84ba6d9a_6a02372e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T21:53:04Z",
+      "side": 1,
+      "message": "here, too.",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6471f9c6_082daf82",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T21:53:04Z",
+      "side": 1,
+      "message": "If we\u0027re going to blend the error type (high-order bits) and the subcode error (lower 8 bits), then let\u0027s add a compile-time assertion at the end of each block to ensure that we don\u0027t ever define more than 255 subcodes.",
+      "revId": "49f3e12150abeeb5c7ba1b1cd8a6d2f92c7e19f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
