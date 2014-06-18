@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4cbf13b_ffc82758",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-06-18T22:35:11Z",
+      "side": 1,
+      "message": "This comment assumes that there is only one secdata space, that it\u0027s for the firmware, and that it can be locked once the firmware is selected. \n\nIn the future, there will also be kernel secdata, which won\u0027t get locked until the kernel is selected. \n\nDo we want to distinguish the two (or more) regions now, renaming VB2_SECDATA_FLAGS and VB2_SECDATA_VERSIONS constants to include a _FW string, or is that a future CL?",
+      "revId": "4506f2abf9cab7c6bb00633b67e0ae79f58d3a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
