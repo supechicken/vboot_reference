@@ -136,6 +136,11 @@ VbError_t VbExEcProtectRW(void)
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExEcProtectFirmwareAll(void)
+{
+	return VBERROR_SUCCESS;
+}
+
 int VbExLegacy(void)
 {
 	return 1;
