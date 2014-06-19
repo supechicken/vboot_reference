@@ -955,12 +955,12 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		p.boot_flags |= BOOT_FLAG_RECOVERY;
 		retval = VbBootRecovery(cparams, &p);
 		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
-
+		VbExEcProtectSmartBatteryFirmware();
 	} else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
 		/* Developer boot */
 		retval = VbBootDeveloper(cparams, &p);
 		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
-
+		VbExEcProtectSmartBatteryFirmware();
 	} else {
 		/* Normal boot */
 		retval = VbBootNormal(cparams, &p);

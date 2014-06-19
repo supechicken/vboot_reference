@@ -787,6 +787,12 @@ VbError_t VbExEcUpdateRW(const uint8_t *image, int image_size);
  */
 VbError_t VbExEcProtectRW(void);
 
+/**
+ * Lock the EC code to prevent updates until the EC is rebooted.
+ * Subsequent calls to VbExEcUpdateBatteryFirmware() this boot will fail.
+ */
+VbError_t VbExEcProtectSmartBatteryFirmware(void);
+
 /* Args to VbExProtectFlash() */
 enum VbProtectFlash_t { VBPROTECT_RW_A, VBPROTECT_RW_B, VBPROTECT_RW_DEVKEY };
 
