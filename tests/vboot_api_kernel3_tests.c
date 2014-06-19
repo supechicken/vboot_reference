@@ -31,6 +31,7 @@ static int mock_in_rw;
 static VbError_t in_rw_retval;
 static int protect_retval;
 static int ec_protected;
+static int ec_firmware_protected;
 static int run_retval;
 static int ec_run_image;
 static int update_retval;
@@ -74,6 +75,7 @@ static void ResetMocks(void)
 	trust_ec = 0;
 	mock_in_rw = 0;
 	ec_protected = 0;
+	ec_firmware_protected = 0;
 	ec_run_image = 0;   /* 0 = RO, 1 = RW */
 	ec_updated = 0;
 	in_rw_retval = VBERROR_SUCCESS;
@@ -126,6 +128,12 @@ VbError_t VbExEcRunningRW(int *in_rw)
 VbError_t VbExEcProtectRW(void)
 {
 	ec_protected = 1;
+	return protect_retval;
+}
+
+VbError_t VbExEcProtectFirmwareAll(void)
+{
+	ec_firmware_protected = 1;
 	return protect_retval;
 }
 
