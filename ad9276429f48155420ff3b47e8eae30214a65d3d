@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4db2937_46be0354",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-22T01:16:55Z",
+      "side": 0,
+      "message": "This always causes error whenever VB2_DEBUG is defined somewhere else.",
+      "revId": "ad9276429f48155420ff3b47e8eae30214a65d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
