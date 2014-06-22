@@ -45,6 +45,9 @@ VbError_t VbRegionReadData(VbCommonParams *cparams,
 VbError_t VbGbbReadHeader_static(VbCommonParams *cparams,
 				 GoogleBinaryBlockHeader *gbb)
 {
-	return VbRegionReadData(cparams, VB_REGION_GBB, 0,
-				sizeof(GoogleBinaryBlockHeader), gbb);
+	VbError_t rv = VbRegionReadData(cparams, VB_REGION_GBB, 0,
+	                                sizeof(GoogleBinaryBlockHeader), gbb);
+	if (rv != VBERROR_SUCCESS)
+		VBDEBUG(("VbRegionReadData failed to read GBB\n"));
+	return rv;
 }

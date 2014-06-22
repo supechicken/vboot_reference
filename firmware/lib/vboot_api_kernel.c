@@ -971,6 +971,10 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 
 	p.nv_context = &vnc;
 	p.boot_flags = 0;
+	VBDEBUG(("VbSharedDataHeader:\n"));
+	VBDEBUG(("\tflags: 0x%x\n", shared->flags));
+	VBDEBUG(("\tfirmware_index: 0x%x\n", shared->firmware_index));
+	VBDEBUG(("\trecovery_reason: 0x%x\n", shared->recovery_reason));
 	if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)
 		p.boot_flags |= BOOT_FLAG_DEVELOPER;
 
