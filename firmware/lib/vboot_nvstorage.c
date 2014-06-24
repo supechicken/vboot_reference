@@ -45,6 +45,11 @@
 
 #define RECOVERY_SUBCODE_OFFSET      6
 
+#define BOOT2_OFFSET                 7
+#define BOOT2_RESULT_MASK               0x03
+#define BOOT2_TRIED                     0x04
+#define BOOT2_TRY_NEXT                  0x08
+
 #define KERNEL_FIELD_OFFSET         11
 #define CRC_OFFSET                  15
 
@@ -157,6 +162,18 @@ int VbNvGet(VbNvContext *context, VbNvParam param, uint32_t *dest)
 
 	case VBNV_BACKUP_NVRAM_REQUEST:
 		*dest = (raw[BOOT_OFFSET] & BOOT_BACKUP_NVRAM ? 1 : 0);
+		return 0;
+
+	case VBNV_TRY_NEXT:
+		*dest = (raw[BOOT2_OFFSET] & BOOT2_TRY_NEXT ? 1 : 0);
+		return 0;
+
+	case VBNV_FW_TRIED:
+		*dest = (raw[BOOT2_OFFSET] & BOOT2_TRIED ? 1 : 0);
+		return 0;
+
+	case VBNV_FW_RESULT:
+		*dest = raw[BOOT2_OFFSET] & BOOT2_RESULT_MASK;
 		return 0;
 
 	default:
@@ -289,6 +306,28 @@ int VbNvSet(VbNvContext *context, VbNvParam param, uint32_t value)
 			raw[BOOT_OFFSET] &= ~BOOT_BACKUP_NVRAM;
 		break;
 
+	case VBNV_TRY_NEXT:
+		if (value)
+			raw[BOOT2_OFFSET] |= BOOT2_TRY_NEXT;
+		else
+			raw[BOOT2_OFFSET] &= ~BOOT2_TRY_NEXT;
+		break;
+
+	case VBNV_FW_TRIED:
+		if (value)
+			raw[BOOT2_OFFSET] |= BOOT2_TRIED;
+		else
+			raw[BOOT2_OFFSET] &= ~BOOT2_TRIED;
+		break;
+
+	case VBNV_FW_RESULT:
+		/* Map out of range values to unknown */
+		if (value > BOOT2_RESULT_MASK)
+			value = VBNV_FW_RESULT_UNKNOWN;
+
+		raw[BOOT2_OFFSET] &= ~BOOT2_RESULT_MASK;
+		raw[BOOT2_OFFSET] |= (uint8_t)value;
+		break;
 
 	default:
 		return 1;

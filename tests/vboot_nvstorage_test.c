@@ -37,6 +37,9 @@ static VbNvField nvfields[] = {
   {VBNV_CLEAR_TPM_OWNER_REQUEST, 0, 1, 0, "clear tpm owner request"},
   {VBNV_CLEAR_TPM_OWNER_DONE, 0, 1, 0, "clear tpm owner done"},
   {VBNV_OPROM_NEEDED, 0, 1, 0, "oprom needed"},
+  {VBNV_TRY_NEXT, 0, 1, 0, "try next"},
+  {VBNV_FW_TRIED, 0, 1, 0, "firmware tried"},
+  {VBNV_FW_RESULT, VBNV_FW_RESULT_UNKNOWN, 1, 2, "firmware result"},
   {0, 0, 0, 0, NULL}
 };
 
@@ -126,16 +129,17 @@ static void VbNvStorageTest(void) {
   /* Test other fields */
   VbNvSetup(&c);
   for (vnf = nvfields; vnf->desc; vnf++) {
-    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, vnf->desc);
-    TEST_EQ(data, vnf->default_value, vnf->desc);
+    printf("Testing field: %s\n", vnf->desc);
+    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, "  get");
+    TEST_EQ(data, vnf->default_value, "  default");
 
-    TEST_EQ(VbNvSet(&c, vnf->param, vnf->test_value), 0, vnf->desc);
-    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, vnf->desc);
-    TEST_EQ(data, vnf->test_value, vnf->desc);
+    TEST_EQ(VbNvSet(&c, vnf->param, vnf->test_value), 0, "  set 1");
+    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, "  get 1");
+    TEST_EQ(data, vnf->test_value, "  value 1");
 
-    TEST_EQ(VbNvSet(&c, vnf->param, vnf->test_value2), 0, vnf->desc);
-    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, vnf->desc);
-    TEST_EQ(data, vnf->test_value2, vnf->desc);
+    TEST_EQ(VbNvSet(&c, vnf->param, vnf->test_value2), 0, "  set 2");
+    TEST_EQ(VbNvGet(&c, vnf->param, &data), 0, "  get 2");
+    TEST_EQ(data, vnf->test_value2, "  value 2");
   }
   VbNvTeardown(&c);
 
@@ -167,6 +171,9 @@ static void VbNvStorageTest(void) {
   VbNvSet(&c, VBNV_LOCALIZATION_INDEX, 0x102);
   VbNvGet(&c, VBNV_LOCALIZATION_INDEX, &data);
   TEST_EQ(data, 0, "Localization index out of range");
+  VbNvSet(&c, VBNV_FW_RESULT, VBNV_FW_RESULT_UNKNOWN + 100);
+  VbNvGet(&c, VBNV_FW_RESULT, &data);
+  TEST_EQ(data, VBNV_FW_RESULT_UNKNOWN, "Firmware result out of range");
   VbNvTeardown(&c);
 }
 
