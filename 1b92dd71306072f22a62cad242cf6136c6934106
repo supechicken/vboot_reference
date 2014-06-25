@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44ba35ef_7b6ffb3c",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Could, I suppose.",
+      "parentUuid": "04abdd9e_3b2170be",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04abdd9e_73e5e242",
         "filename": "firmware/include/vboot_nvstorage.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-24T23:10:22Z",
       "side": 1,
       "message": "VBNV_FW_TRY_NEXT? to match the others?",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c57978_62406c48",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04abdd9e_73e5e242",
       "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "24bf01e0_fd589f33",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "I agree.  But right now there isn\u0027t a good common place to get them.  I\u0027m trying to minimize interdependencies between vboot and vboot2.",
+      "parentUuid": "e4a7a9cf_460223d8",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a315b3_8111bd26",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-06-25T00:57:29Z",
       "side": 1,
       "message": "} else if (!strcasecmp(name,\"try_count\")) {\n  value \u003d VbGetNvStorage(VBNV_TRY_B_COUNT);\n} ?",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c57978_c27978a1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a315b3_8111bd26",
       "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "64c57978_620e2c55",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Yeah, the test is redundant (but harmless) as long as we know for sure that it\u0027ll return a result in the range 0-3.",
+      "parentUuid": "04abdd9e_338bda5b",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a315b3_cb85a6ba",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2014-06-24T23:10:22Z",
       "side": 1,
       "message": "You might just compare the first letter since they\u0027re all different, or even a numeric value if that falls through. Saves typing.",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24bf01e0_fdc1bf69",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "...until we get the bright idea to add another result state.  And then we need to find everywhere which uses \"t\" instead of \"trying\".  Which seems like an impossible grep.",
+      "parentUuid": "44a315b3_cb85a6ba",
       "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "44ba35ef_fb91cbff",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Sure, might as well.",
+      "parentUuid": "44a315b3_01eceddc",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a315b3_8bf63e40",
         "filename": "utility/crossystem.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2014-06-24T23:10:22Z",
       "side": 1,
       "message": "fw_try_next ?",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c57978_a24d6482",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-06-25T18:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a315b3_8bf63e40",
       "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
