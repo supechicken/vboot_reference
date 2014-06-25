@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "04abdd9e_3b2170be",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-25T01:04:28Z",
+      "side": 1,
+      "message": "don\u0027t wanna add VBNV_TRY_COUNT \u003d VBNV_TRY_B_COUNT,?",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04abdd9e_73e5e242",
         "filename": "firmware/include/vboot_nvstorage.h",
         "patchSetId": 1
