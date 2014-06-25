@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "e4a7a9cf_460223d8",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-25T00:57:29Z",
+      "side": 1,
+      "message": "It\u0027s better to get these from a common place for vboot_nvstorage.c and 2nvstorage.c.",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_8111bd26",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-25T00:57:29Z",
+      "side": 1,
+      "message": "} else if (!strcasecmp(name,\"try_count\")) {\n  value \u003d VbGetNvStorage(VBNV_TRY_B_COUNT);\n} ?",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04abdd9e_338bda5b",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
@@ -47,6 +81,23 @@
       "writtenOn": "2014-06-24T23:10:22Z",
       "side": 1,
       "message": "You might just compare the first letter since they\u0027re all different, or even a numeric value if that falls through. Saves typing.",
+      "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_01eceddc",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-06-25T00:57:29Z",
+      "side": 1,
+      "message": "Do you wanna add {\"try_count\", ... }?",
       "revId": "1b92dd71306072f22a62cad242cf6136c6934106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
