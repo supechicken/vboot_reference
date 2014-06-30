@@ -162,6 +162,9 @@ endif
 # Create / use dependency files
 CFLAGS += -MMD -MF $@.d
 
+# Creates position independent code.
+CFLAGS += -fPIE
+
 # These are required to access large disks and files on 32-bit systems.
 CFLAGS += -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
 
