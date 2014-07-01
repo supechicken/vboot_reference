@@ -36,6 +36,7 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 	uint32_t disable_dev_request = 0;
 	uint32_t clear_tpm_owner_request = 0;
 	int is_dev = 0;
+	uint32_t is_tpm_reboot = 0;
 
 	/* Initialize output flags */
 	iparams->out_flags = 0;
@@ -199,6 +200,20 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 				 * in now
 				 */
 				VBDEBUG(("TPM requires a reboot.\n"));
+				VbNvGet(&vnc, VBNV_TPM_REBOOT_REQUEST, &is_tpm_reboot);
+				if(is_tpm_reboot){
+					/*
+					 * Reboot by previous TPM_E_MUST_REBOOT,
+					 * it might be a broken TPM, to avoid inifinte
+					 * reboot, make it to recovery.
+					 */
+					VBDEBUG(("TPM rebooted before, "
+						 "make it to recovery.\n"));
+					VbNvSet(&vnc, VBNV_TPM_REBOOT_REQUEST, 0);
+					retval = VBERROR_TPM_FIRMWARE_SETUP;
+					goto VbInit_exit;
+				}
+				VbNvSet(&vnc, VBNV_TPM_REBOOT_REQUEST, 1);
 				if (!recovery) {
 					/*
 					 * Not recovery mode.  Just reboot (not
