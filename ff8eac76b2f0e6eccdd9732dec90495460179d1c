@@ -34,6 +34,24 @@
       "revId": "ff8eac76b2f0e6eccdd9732dec90495460179d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f3dd1b_6df1c173",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-07-01T22:13:50Z",
+      "side": 1,
+      "message": "I think you should be able to use FIRMWARE_ARCH to gate CFLAGS on that.",
+      "parentUuid": "64b2d95d_d11d04f8",
+      "revId": "ff8eac76b2f0e6eccdd9732dec90495460179d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
