@@ -36,6 +36,7 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 	uint32_t disable_dev_request = 0;
 	uint32_t clear_tpm_owner_request = 0;
 	int is_dev = 0;
+	uint32_t is_tpm_reboot = 0;
 
 	/* Initialize output flags */
 	iparams->out_flags = 0;
@@ -189,6 +190,8 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 						   /* two outputs on success */
 						   &is_virt_dev, &tpm_version);
 
+		VbNvGet(&vnc, VBNV_TPM_REBOOT_REQUEST, &is_tpm_reboot);
+
 		if (0 != tpm_status) {
 			VBDEBUG(("Unable to setup TPM and read "
 				 "firmware version (0x%x)\n", tpm_status));
@@ -199,6 +202,19 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 				 * in now
 				 */
 				VBDEBUG(("TPM requires a reboot.\n"));
+				if(is_tpm_reboot) {
+					/*
+					 * Reboot by previous TPM_E_MUST_REBOOT,
+					 * it might be a broken TPM, to avoid inifinte
+					 * reboot, make it to recovery.
+					 */
+					VBDEBUG(("TPM rebooted before, "
+						 "make it to recovery.\n"));
+					VbNvSet(&vnc, VBNV_TPM_REBOOT_REQUEST, 0);
+					retval = VBERROR_TPM_FIRMWARE_SETUP;
+					goto VbInit_exit;
+				}
+				VbNvSet(&vnc, VBNV_TPM_REBOOT_REQUEST, 1);
 				if (!recovery) {
 					/*
 					 * Not recovery mode.  Just reboot (not
@@ -229,6 +245,10 @@ VbError_t VbInit(VbCommonParams *cparams, VbInitParams *iparams)
 				goto VbInit_exit;
 			}
 		}
+
+		/* Boot by TPM requested reboot, clear the flag */
+		if(is_tpm_reboot)
+			VbNvSet(&vnc, VBNV_TPM_REBOOT_REQUEST, 0);
 
 		/* TPM setup succeeded, or we're in recovery mode and ignoring
 		 * errors. What did we learn? */

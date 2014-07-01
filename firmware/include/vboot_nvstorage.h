@@ -81,6 +81,8 @@ typedef enum VbNvParam {
 	VBNV_CLEAR_TPM_OWNER_REQUEST,
 	/* Flag that TPM owner was cleared on request. */
 	VBNV_CLEAR_TPM_OWNER_DONE,
+	/* Boot by TPM_E_MUST_REBOOT */
+	VBNV_TPM_REBOOT_REQUEST,
 	/* More details on recovery reason */
 	VBNV_RECOVERY_SUBCODE,
 } VbNvParam;
