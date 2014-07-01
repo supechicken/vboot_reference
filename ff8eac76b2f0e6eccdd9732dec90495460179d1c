@@ -16,6 +16,24 @@
       "revId": "ff8eac76b2f0e6eccdd9732dec90495460179d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64b2d95d_d11d04f8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-07-01T22:01:54Z",
+      "side": 1,
+      "message": "The buildbot noted the rambi build failure. So, yes, this CFLAG is leaking into the firmware builds.",
+      "parentUuid": "64b2d95d_b11e80f4",
+      "revId": "ff8eac76b2f0e6eccdd9732dec90495460179d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
