@@ -16,6 +16,24 @@
       "revId": "2680d5d524579ab7efaac9e41ed0ab88d735c335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4efa930_571a9487",
+        "filename": "firmware/lib/vboot_api_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1106899
+      },
+      "writtenOn": "2014-07-01T22:32:36Z",
+      "side": 1,
+      "message": "Currently clear it in second entry to avoid overhead on normal usage. Is there any proper location to clear this?",
+      "parentUuid": "64b2d95d_316f303e",
+      "revId": "2680d5d524579ab7efaac9e41ed0ab88d735c335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
