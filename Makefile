@@ -172,7 +172,7 @@ CFLAGS += -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
 
 # Code coverage
 ifneq (${COV},)
-  COV_FLAGS = -O0 --coverage
+  COV_FLAGS = -O0 --coverage -DCOVERAGE
   CFLAGS += ${COV_FLAGS}
   LDFLAGS += ${COV_FLAGS}
   COV_INFO = ${BUILD}/coverage.info
@@ -1227,9 +1227,9 @@ coverage_html:
 	lcov -a ${COV_INFO}.initial -a ${COV_INFO}.tests -o ${COV_INFO}.total
 	lcov -r ${COV_INFO}.total '/usr/*' '*/linktest/*' -o ${COV_INFO}.local
 	genhtml ${COV_INFO}.local -o ${BUILD}/coverage
-
-# Generate addtional coverage stats just for firmware subdir, because the
-# per-directory stats for the whole project don't include their own subdirs.
+# Generate addtional coverage stats just for firmware subdir, because the stats
+# for the whole project don't include subdirectory summaries. This will print
+# the summary for just the firmware sources.
 	lcov -r ${COV_INFO}.local '*/stub/*' -o ${COV_INFO}.nostub
 	lcov -e ${COV_INFO}.nostub '${SRCDIR}/firmware/*' \
 		-o ${COV_INFO}.firmware
