@@ -695,6 +695,10 @@ clean:
 .PHONY: install
 install: cgpt_install utils_install signing_install futil_install
 
+.PHONY: install_for_test
+install_for_test: override DESTDIR = ${TEST_INSTALL_DIR}
+install_for_test: install
+
 # Don't delete intermediate object files
 .SECONDARY:
 
@@ -1067,7 +1071,7 @@ test_targets:: runtestscripts
 endif
 
 .PHONY: test_setup
-test_setup:: cgpt utils futil tests
+test_setup:: cgpt utils futil tests install_for_test
 
 # Qemu setup for cross-compiled tests.  Need to copy qemu binary into the
 # sysroot.
@@ -1161,8 +1165,7 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 
 .PHONY: runfutiltests
-runfutiltests: override DESTDIR = ${TEST_INSTALL_DIR}
-runfutiltests: test_setup install
+runfutiltests: test_setup
 	tests/futility/run_test_scripts.sh ${DESTDIR}
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
