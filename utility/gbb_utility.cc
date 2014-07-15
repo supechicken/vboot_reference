@@ -609,7 +609,7 @@ static bool parse_creation_param(const string &input_string,
     if (*parsed && *parsed != ',')
       return false;
     output_vector->push_back(param);
-    input = parsed + 1;
+    input = *parsed ? parsed + 1 : parsed;
   } while (*input);
 
   return true;
