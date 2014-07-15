@@ -365,6 +365,7 @@ UTILLIB_SRCS = \
 	cgpt/flash_ts.c \
 	cgpt/flash_ts_drv.c \
 	firmware/lib/cgptlib/mtdlib.c \
+	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
 	host/lib/file_keys.c \
@@ -375,8 +376,7 @@ UTILLIB_SRCS = \
 	host/lib/host_misc.c \
 	host/lib/util_misc.c \
 	host/lib/host_signature.c \
-	host/lib/signature_digest.c \
-	utility/dump_kernel_config_lib.c
+	host/lib/signature_digest.c
 
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
@@ -403,10 +403,10 @@ HOSTLIB_SRCS = \
 	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/utility_stub.c \
 	firmware/stub/vboot_api_stub_init.c \
+	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
-	host/lib/host_misc.c \
-	utility/dump_kernel_config_lib.c
+	host/lib/host_misc.c
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
@@ -429,7 +429,7 @@ TINYHOSTLIB_SRCS = \
 	firmware/lib/cgptlib/mtdlib.c \
 	firmware/lib/utility_string.c \
 	firmware/stub/utility_stub.c \
-	utility/dump_kernel_config_lib.c
+	futility/dump_kernel_config_lib.c
 
 TINYHOSTLIB_OBJS = ${TINYHOSTLIB_SRCS:%.c=${BUILD}/%.o}
 
@@ -481,13 +481,10 @@ UTIL_NAMES_STATIC = \
 	utility/gbb_utility
 
 UTIL_NAMES = ${UTIL_NAMES_STATIC} \
-	utility/dev_sign_file \
 	utility/dump_kernel_config \
 	utility/dumpRSAPublicKey \
 	utility/tpm_init_temp_fix \
-	utility/tpmc \
-	utility/vbutil_firmware \
-	utility/vbutil_kernel
+	utility/tpmc
 
 ifeq (${MINIMAL},)
 UTIL_NAMES += \
@@ -574,6 +571,9 @@ FUTIL_STATIC_SRCS = \
 
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \
+	futility/cmd_dev_sign_file.c \
+	futility/cmd_vbutil_firmware.c \
+	futility/cmd_vbutil_kernel.c \
 	futility/cmd_vbutil_key.c \
 	futility/cmd_vbutil_keyblock.c \
 	futility/cmd_hey.c
@@ -1018,9 +1018,6 @@ CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
-${BUILD}/utility/dev_sign_file: LDLIBS += ${CRYPTO_LIBS}
-${BUILD}/utility/vbutil_firmware: LDLIBS += ${CRYPTO_LIBS}
-${BUILD}/utility/vbutil_kernel: LDLIBS += ${CRYPTO_LIBS}
 
 ${BUILD}/host/linktest/main: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vb2_common2_tests: LDLIBS += ${CRYPTO_LIBS}

@@ -81,6 +81,7 @@ DECLARE_FUTIL_COMMAND(help, do_help, "show a bit of help");
 
 /* Deprecated functions can't be invoked through symlinks. */
 static char *dep_cmds[] = {
+  "dev_sign_file",
   "eficompress",
   "efidecompress",
 };

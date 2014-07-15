@@ -49,10 +49,9 @@ progs=0
 
 # Here are the old programs to be wrapped
 # TODO(crbug.com/224734): dev_debug_vboot isn't tested right now.
-PROGS=${*:-cgpt crossystem dev_sign_file dumpRSAPublicKey
+PROGS=${*:-cgpt crossystem dumpRSAPublicKey
            dump_kernel_config enable_dev_usb_boot gbb_utility
-           tpm_init_temp_fix tpmc vbutil_firmware vbutil_kernel
-           vbutil_what_keys}
+           tpm_init_temp_fix tpmc vbutil_what_keys}
 
 # For now just compare results of invoking each program with no args.
 # TODO: Create true rigorous tests for every program.
