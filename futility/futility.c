@@ -63,7 +63,7 @@ static int do_help(int argc, char *argv[])
 
   fputs(usage, stdout);
 
-  printf("The following commands are built-in:\n");
+  printf("The following commands are built-in:\n\n");
 
   for (cmd = futil_cmds; *cmd; cmd++)
     printf("  %-20s %s\n", (*cmd)->name, (*cmd)->shorthelp);
@@ -77,7 +77,8 @@ static int do_help(int argc, char *argv[])
 
   return 0;
 }
-DECLARE_FUTIL_COMMAND(help, do_help, "show a bit of help");
+DECLARE_FUTIL_COMMAND(help, do_help,
+		      "Show a bit of help (you're looking at it)");
 
 /* Deprecated functions can't be invoked through symlinks. */
 static char *dep_cmds[] = {

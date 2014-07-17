@@ -566,8 +566,7 @@ FUTIL_OLD = \
 
 FUTIL_STATIC_SRCS = \
 	futility/futility.c \
-	futility/cmd_dump_fmap.c \
-	futility/cmd_foo.c
+	futility/cmd_dump_fmap.c
 
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \
@@ -575,8 +574,7 @@ FUTIL_SRCS = \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c \
 	futility/cmd_vbutil_key.c \
-	futility/cmd_vbutil_keyblock.c \
-	futility/cmd_hey.c
+	futility/cmd_vbutil_keyblock.c
 
 FUTIL_LDS = futility/futility.lds
 

@@ -9,18 +9,22 @@ me=${0##*/}
 cd "$OUTDIR"
 TMP="$me.tmp"
 
-# Built-in do-nothing commands.
-# TODO(crbug.com/224734): Remove these when we have enough built-in commands
-"$FUTILITY" foo hi
-"$FUTILITY" bar there
-"$FUTILITY" hey boys
-
 # No args returns nonzero exit code
 "$FUTILITY" && false
 
-"$FUTILITY" help > "$TMP"
-grep Usage "$TMP"
-# TODO(crbug.com/224734): Make sure all built-in commands have help, too.
+# Make sure all built-in commands are listed and have help
+expected=\
+'dev_sign_file
+dump_fmap
+help
+vbutil_firmware
+vbutil_kernel
+vbutil_key
+vbutil_keyblock'
+got=$("$FUTILITY" help |
+  egrep '^[[:space:]]+[^[:space:]]+[[:space:]]+[^[:space:]]+' |
+  awk '{print $1}')
+[ "$expected" = "$got" ]
 
 # It's weird but okay if the command is a full path.
 "$FUTILITY" /fake/path/to/help  > "$TMP"
