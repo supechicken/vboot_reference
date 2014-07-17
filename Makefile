@@ -481,7 +481,6 @@ UTIL_NAMES_STATIC = \
 	utility/gbb_utility
 
 UTIL_NAMES = ${UTIL_NAMES_STATIC} \
-	utility/dump_kernel_config \
 	utility/dumpRSAPublicKey \
 	utility/tpm_init_temp_fix \
 	utility/tpmc
@@ -566,7 +565,8 @@ FUTIL_OLD = \
 
 FUTIL_STATIC_SRCS = \
 	futility/futility.c \
-	futility/cmd_dump_fmap.c
+	futility/cmd_dump_fmap.c \
+	futility/cmd_dump_kernel_config.c
 
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \

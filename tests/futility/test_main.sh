@@ -16,6 +16,7 @@ TMP="$me.tmp"
 expected=\
 'dev_sign_file
 dump_fmap
+dump_kernel_config
 help
 vbutil_firmware
 vbutil_kernel
