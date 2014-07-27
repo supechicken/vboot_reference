@@ -151,6 +151,11 @@ VbError_t VbExEcProtectRW(int devidx)
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExEcEnteringMode(int devidx, int mode)
+{
+	return VBERROR_SUCCESS;
+}
+
 int VbExLegacy(void)
 {
 	return 1;

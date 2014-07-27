@@ -19,6 +19,8 @@
 #define BOOT_FLAG_DEVELOPER (0x01ULL)
 /* In recovery mode */
 #define BOOT_FLAG_RECOVERY  (0x02ULL)
+/* In normal mode */
+#define BOOT_FLAG_NORMAL  (0x0ULL)
 
 typedef struct LoadKernelParams {
 	/* Inputs to LoadKernel() */

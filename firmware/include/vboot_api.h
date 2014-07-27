@@ -826,6 +826,11 @@ VbError_t VbExEcUpdateRW(int devidx, const uint8_t *image, int image_size);
  */
 VbError_t VbExEcProtectRW(int devidx);
 
+/**
+ * Vboot tell EC to enter a mode
+ */
+VbError_t VbExEcEnteringMode(int devidx, int mode);
+
 /*****************************************************************************/
 /* Misc */
 
