@@ -47,6 +47,8 @@ static uint8_t mock_sha[32];
 static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
 
+static enum VbEcBootMode_t vboot_mode;
+
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
 {
@@ -127,6 +129,12 @@ VbError_t VbExEcProtectRW(int devidx)
 {
 	ec_protected = 1;
 	return protect_retval;
+}
+
+VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
+{
+	vboot_mode = mode;
+	return VBERROR_SUCCESS;
 }
 
 VbError_t VbExEcDisableJump(int devidx)
