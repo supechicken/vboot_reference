@@ -826,6 +826,12 @@ VbError_t VbExEcUpdateRW(int devidx, const uint8_t *image, int image_size);
  */
 VbError_t VbExEcProtectRW(int devidx);
 
+/**
+ * Lock the EC code to prevent updates until the EC is rebooted.
+ * Subsequent calls to Firmware Update this boot will fail.
+ */
+VbError_t VbExEcProtectBatteryFirmware(int devidx);
+
 /*****************************************************************************/
 /* Misc */
 
