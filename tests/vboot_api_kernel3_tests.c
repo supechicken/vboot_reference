@@ -129,6 +129,11 @@ VbError_t VbExEcProtectRW(int devidx)
 	return protect_retval;
 }
 
+VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
+{
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbExEcDisableJump(int devidx)
 {
 	return run_retval;
