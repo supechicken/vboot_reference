@@ -44,6 +44,7 @@ static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
 static uint32_t mock_num_disks[8];
 static uint32_t mock_num_disks_count;
+static enum VbEcBootMode_t vboot_mode;
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
@@ -263,6 +264,7 @@ static void VbBootTest(void)
 {
 	ResetMocks();
 	TEST_EQ(VbBootNormal(&cparams, &lkp), 1002, "VbBootNormal()");
+	TEST_EQ(vboot_mode, VB_EC_NORMAL, "vboot_mode normal");
 }
 
 static void VbBootDevTest(void)
@@ -436,6 +438,7 @@ static void VbBootDevTest(void)
 	TEST_EQ(u, 0, "  recovery reason");
 	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
 
+	TEST_EQ(vboot_mode, VB_EC_DEVELOPER, "vboot_mode developer");
 	printf("...done.\n");
 }
 
@@ -646,6 +649,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(VbBootRecovery(&cparams, &lkp), VBERROR_TPM_SET_BOOT_MODE_STATE,
 		"Ctrl+D todev failure");
 
+	TEST_EQ(vboot_mode, VB_EC_RECOVERY, "vboot_mode recovery");
 	printf("...done.\n");
 }
 
