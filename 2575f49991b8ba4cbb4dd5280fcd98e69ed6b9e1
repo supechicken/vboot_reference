@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3931ecd1_3089c9d7",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T04:55:50Z",
+      "side": 1,
+      "message": "I think then you have to put a NUL in [hwid_offset] otherwise first read/write after GBB created may fail, assume the image is filled with 0xFF?",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 10
+      },
+      "revId": "2575f49991b8ba4cbb4dd5280fcd98e69ed6b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
