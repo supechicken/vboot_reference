@@ -22,6 +22,30 @@
       "revId": "2575f49991b8ba4cbb4dd5280fcd98e69ed6b9e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f10f4f_8f456181",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T04:57:42Z",
+      "side": 1,
+      "message": "uh, never mind, you\u0027re doing this with calloc. I was thinking about reading blob from existing images.",
+      "parentUuid": "3931ecd1_3089c9d7",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 10
+      },
+      "revId": "2575f49991b8ba4cbb4dd5280fcd98e69ed6b9e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
