@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "1624f7a2_85be6cbf",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592ce07a_9cdff5a0",
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f10f4f_8f5fa120",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 110,
         "endChar": 48
       },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_aeea6850",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "That\u0027s it, right there. ;-)\n\nDone.",
+      "parentUuid": "56f10f4f_8f5fa120",
       "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "560aef14_ae1388c4",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "If you prefer. 0 is valid C, though. \"An integral constant expression with the value 0, or such an expression cast to type void * , is called a null pointer constant.\"",
+      "parentUuid": "3931ecd1_fc6b8df2",
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "592ce07a_1cd4e57e",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
@@ -88,6 +142,24 @@
         "endLine": 145,
         "endChar": 17
       },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_df13fcc3",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "Hm. It probably wouldn\u0027t hurt. C99 explicitly allows its modification, but C89 doesn\u0027t mention it.",
+      "parentUuid": "592ce07a_1cd4e57e",
       "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "560aef14_4ec74cdd",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "Yes, I should have done that for style, anyway.",
+      "parentUuid": "56f10f4f_cf6c89d2",
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3931ecd1_d0feadcf",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
@@ -134,6 +224,24 @@
         "endLine": 432,
         "endChar": 12
       },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "560aef14_2eac1821",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "Yes. I should check that in ValidGBB(), and add a test for it. Thanks.\n\nDone.",
+      "parentUuid": "3931ecd1_d0feadcf",
       "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "560aef14_2e8bf897",
+        "filename": "tests/futility/binary_editor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592ce07a_7cb40169",
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f10f4f_4f80793c",
         "filename": "tests/futility/binary_editor.c",
         "patchSetId": 2
@@ -180,6 +306,24 @@
         "endLine": 29,
         "endChar": 29
       },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1624f7a2_e56d203e",
+        "filename": "tests/futility/binary_editor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T04:30:18Z",
+      "side": 1,
+      "message": "No reason.",
+      "parentUuid": "56f10f4f_4f80793c",
       "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
