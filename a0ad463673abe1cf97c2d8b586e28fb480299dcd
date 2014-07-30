@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "592ce07a_d7414651",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T04:56:04Z",
+      "side": 1,
+      "message": "For C++0x NULL and 0 may be different. But you\u0027re right, this is C :)",
+      "parentUuid": "560aef14_ae1388c4",
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "592ce07a_1cd4e57e",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
