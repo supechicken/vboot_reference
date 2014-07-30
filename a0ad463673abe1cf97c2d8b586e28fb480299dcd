@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "592ce07a_9cdff5a0",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "No (c)",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 14
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f10f4f_8f5fa120",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "what comment?",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3931ecd1_fc6b8df2",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "return NULL?",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 12
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "592ce07a_1cd4e57e",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "do we want to strdup() before starting strtok?\n\ndesc comes from optarg, and I can\u0027t find a good reference for if it\u0027s safe to modify it. By GNU version doc: \"it is a pointer into the original argv array\".",
+      "range": {
+        "startLine": 145,
+        "startChar": 13,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f10f4f_cf6c89d2",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "Do you want to add { } so we won\u0027t have bugs when people trying to add / remove code in future?",
+      "range": {
+        "startLine": 163,
+        "startChar": 18,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3931ecd1_d0feadcf",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "Do we want to do something to ensure it ends with NUL?\nOr stop by hwid_size?",
+      "range": {
+        "startLine": 432,
+        "startChar": 6,
+        "endLine": 432,
+        "endChar": 12
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "592ce07a_7cb40169",
+        "filename": "tests/futility/binary_editor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "No (c)",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 14
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f10f4f_4f80793c",
+        "filename": "tests/futility/binary_editor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-07-30T02:01:47Z",
+      "side": 1,
+      "message": "just curious, why fgetc(stdin) and fputc(stdout) instead of getchar(), putchar()?",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "a0ad463673abe1cf97c2d8b586e28fb480299dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
