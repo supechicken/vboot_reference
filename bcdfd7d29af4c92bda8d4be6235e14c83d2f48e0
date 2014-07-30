@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763a93c6_5a484944",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-07-30T22:07:13Z",
+      "side": 1,
+      "message": "Should we #define some symbols for the device param, instead of just 0 and 1 ?",
+      "revId": "bcdfd7d29af4c92bda8d4be6235e14c83d2f48e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
