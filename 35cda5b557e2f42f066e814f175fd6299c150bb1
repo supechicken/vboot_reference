@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c87774_591347f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "Please add more description.  For example:\n\nThis adds a new API for disabling battery firmware update in developer mode.",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c87774_19cb8f33",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "to prevent updates to the battery firmware",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c87774_79cac32c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "This change does not seem necessary.",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c4c362_b52aa063",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "Recovery mode should not protect the battery firmware.  That is, we want to be able to recover battery firmware as part of the recovery process, if necessary.",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c87774_19f0ef73",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "(0)\n\nAlso, I wonder if we should leave the battery firmware writable if the write protect screw is removed.  Could do that here, or inside the EC.\n\nShould we add a GBB flag to disable this protection?  If we don\u0027t, internal development of battery firmware update will be hard.\n\nHmm.  Perhaps it would be better to have the API to the EC be something like\n\nVbExEcEnteringDeveloperMode()\n\nand then let the EC decide what to protect.  And then just don\u0027t call it at all if the GBB flag is set.  (The EC can see the WP signal itself, so we don\u0027t need to pass that down.)",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c4c362_15e8b4c8",
+        "filename": "tests/vboot_api_kernel3_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-08T17:48:50Z",
+      "side": 1,
+      "message": "Please also add a unit test to check ec_sb_firmware_protected, to make sure that battery is protected in developer mode (but not in normal or recovery modes).",
+      "revId": "35cda5b557e2f42f066e814f175fd6299c150bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
