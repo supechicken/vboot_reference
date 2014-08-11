@@ -34,6 +34,24 @@
       "revId": "3979ae95596009ead1c50130052aa4803bc85200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_14e33aea",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-08-11T19:46:11Z",
+      "side": 1,
+      "message": "Yeah I did it this way because the current GBB flag does imply disabling both.  It does make sense to have them be fully independent though...",
+      "parentUuid": "76ea93f0_542b026a",
+      "revId": "3979ae95596009ead1c50130052aa4803bc85200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
