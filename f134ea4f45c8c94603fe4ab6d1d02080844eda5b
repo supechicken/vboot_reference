@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6ca4b8f_b695a630",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T20:01:11Z",
+      "side": 1,
+      "message": "Inform the EC of the boot mode selected by the AP.",
+      "revId": "f134ea4f45c8c94603fe4ab6d1d02080844eda5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d0433d_58b321d5",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T20:01:11Z",
+      "side": 1,
+      "message": "What are valid modes?\n\nAdd an explicit enum here.\n\nenum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY }",
+      "revId": "f134ea4f45c8c94603fe4ab6d1d02080844eda5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_f6a67eae",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T20:01:11Z",
+      "side": 1,
+      "message": "This is not a boot flag.\n\nif (LoadKernel().boot_flags \u0026 BOOT_FLAG_NORMAL)\n ...\n\nwill not work.",
+      "revId": "f134ea4f45c8c94603fe4ab6d1d02080844eda5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_34ee3e91",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T20:01:11Z",
+      "side": 1,
+      "message": "Just hard-code 0 arg to each call. rather than introducing a variable whose value is always 0.",
+      "revId": "f134ea4f45c8c94603fe4ab6d1d02080844eda5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ca4b8f_3663d693",
+        "filename": "tests/vboot_api_kernel3_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T20:01:11Z",
+      "side": 1,
+      "message": "Same problem as before.  Need a unit test.",
+      "revId": "f134ea4f45c8c94603fe4ab6d1d02080844eda5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
