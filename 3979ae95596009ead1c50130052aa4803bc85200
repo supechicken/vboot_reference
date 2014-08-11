@@ -16,6 +16,24 @@
       "revId": "3979ae95596009ead1c50130052aa4803bc85200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ea93f0_542b026a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-11T19:42:10Z",
+      "side": 1,
+      "message": "One argument for keeping it the current way is that somewhere we set 0x239 as the default GBB flags for dev images, and we\u0027d need to change that to 0xA39.\n\nBut at some point, we may want to keep a non-sync\u0027d EC image while testing PD sync, and the way it\u0027s coded now, that won\u0027t work.",
+      "parentUuid": "76ea93f0_549e6288",
+      "revId": "3979ae95596009ead1c50130052aa4803bc85200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
