@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d33271f0_accf03eb",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-19T23:36:50Z",
+      "side": 1,
+      "message": "For host builds, we should always build both vb1 and vb2. So use \"ifeq (${MINIMAL},)\" instead?\n\nOf course, that means we\u0027ll also need to compile the vb2 functions...",
+      "revId": "d529ba855b80ef069ff1fa6ae16b150b3d08a70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
