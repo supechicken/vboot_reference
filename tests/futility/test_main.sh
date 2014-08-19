@@ -19,6 +19,7 @@ dump_fmap
 dump_kernel_config
 gbb_utility
 help
+vb2_verify_fw
 vbutil_firmware
 vbutil_kernel
 vbutil_key
