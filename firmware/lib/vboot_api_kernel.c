@@ -416,7 +416,14 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	}
 
 	/* Timeout or Ctrl+D; attempt loading from fixed disk */
-	VBDEBUG(("VbBootDeveloper() - trying fixed disk\n"));
+	VBDEBUG(("VbBootDeveloper()- trying removable disk\n"));
+	if (VBERROR_SUCCESS == VbTryLoadKernel(cparams, p,
+					VB_DISK_FLAG_REMOVABLE)) {
+		VBDEBUG(("VbBootDeveloper()- booting USB\n"));
+		return VBERROR_SUCCESS;
+	}
+	/* attempt loading from fixed disk */
+	VBDEBUG(("VbBootDeveloper()- trying fixed disk\n"));
 	VbAudioClose(audio);
 	return VbTryLoadKernel(cparams, p, VB_DISK_FLAG_FIXED);
 }
