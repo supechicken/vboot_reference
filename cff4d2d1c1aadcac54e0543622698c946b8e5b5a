@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b3cdfb_4bf8c559",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "h-\u003emy_lba \u003d GPT_HEADER_SECTOR;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_0ed6c0d4",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "The alternate header has to be at the last sector, which is drive-\u003egpt.drive_sectors - 1. Just because GPT_HEADER_SECTOR is #defined to be 1 doesn\u0027t mean we should use that macro instead of the number 1.",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_2e4a9ce8",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "Same here. The size of the header is one block. Use \n\nh-\u003emy_lba + 1 + params-\u003epadding;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_cb6e953c",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "-1;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_2d946a30",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "-1;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b3cdfb_6bf3c94c",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "GPT_HEADER_SECTOR;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f169a2_8ef3d04b",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "GPT_HEADER_SECTOR;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_ad7fba2d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "-1;",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_2d1f4af8",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-22T22:47:07Z",
+      "side": 1,
+      "message": "If we don\u0027t have gptdata-\u003eprimary_header, then we don\u0027t know for certain that the entries_lba used in gptdata-\u003eprimary_entries is valid at all and we\u0027ll stomp on any padding.\n\nMark this with a TODO, because we\u0027ll need to add a field to the GptData struct to pass around the padding from wherever we can recover it.",
+      "revId": "cff4d2d1c1aadcac54e0543622698c946b8e5b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
