@@ -226,9 +226,7 @@ INCLUDES += \
 # If we're not building for a specific target, just stub out things like the
 # TPM commands and various external functions that are provided by the BIOS.
 ifeq (${FIRMWARE_ARCH},)
-INCLUDES += -Ifirmware/stub/include -Ihost/include -Ihost/lib/include
-else
-INCLUDES += -Ifirmware/arch/${FIRMWARE_ARCH}/include
+INCLUDES += -Ihost/include -Ihost/lib/include
 endif
 
 # Firmware library, used by the other firmware components (depthcharge,
