@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "931c79fc_1aab3dfd",
+        "filename": "futility/cmd_verify_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-27T23:29:58Z",
+      "side": 1,
+      "message": "No, because lba_count could be (uint64_t)(-1).",
+      "parentUuid": "7338e55c_15d6a461",
+      "revId": "b9c9496b2f279f6ea854d21f050779bb538abce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9333997e_8b8855d5",
         "filename": "futility/cmd_verify_kernel.c",
         "patchSetId": 2
@@ -47,6 +65,29 @@
       "writtenOn": "2014-08-27T22:30:18Z",
       "side": 1,
       "message": "this check is included below.",
+      "revId": "b9c9496b2f279f6ea854d21f050779bb538abce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "931c79fc_da7385f5",
+        "filename": "futility/cmd_verify_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-08-27T23:29:58Z",
+      "side": 1,
+      "message": "+1 (to match the check in disk-read).  oops.",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 47
+      },
       "revId": "b9c9496b2f279f6ea854d21f050779bb538abce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
