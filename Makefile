@@ -534,17 +534,21 @@ FUTIL_BUILTIN = \
 FUTIL_STATIC_SRCS = \
 	futility/futility.c \
 	futility/cmd_dump_fmap.c \
-	futility/cmd_gbb_utility.c
+	futility/cmd_gbb_utility.c \
+	futility/misc.c
 
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \
 	futility/cmd_dev_sign_file.c \
+	futility/cmd_dump_gbb.c \
 	futility/cmd_dump_kernel_config.c \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c \
 	futility/cmd_vbutil_key.c \
 	futility/cmd_vbutil_keyblock.c \
-	futility/cmd_verify_kernel.c
+	futility/cmd_verify_kernel.c \
+	futility/cmd_show.c \
+	futility/traversal.c
 
 ifneq (${VBOOT2},)
 FUTIL_SRCS += \
