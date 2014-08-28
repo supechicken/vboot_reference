@@ -19,6 +19,8 @@
 #define BOOT_FLAG_DEVELOPER (0x01ULL)
 /* In recovery mode */
 #define BOOT_FLAG_RECOVERY  (0x02ULL)
+/* Use streaming mode to verify kernel (else use disk image mode) */
+#define BOOT_FLAG_STREAMING (0x04ULL)
 
 typedef struct LoadKernelParams {
 	/* Inputs to LoadKernel() */

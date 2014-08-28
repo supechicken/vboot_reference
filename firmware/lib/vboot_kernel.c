@@ -19,6 +19,11 @@
 #include "vboot_common.h"
 #include "vboot_kernel.h"
 
+// kludge
+#include <stdio.h>
+#undef VBDEBUG
+#define VBDEBUG(a) printf a
+
 #define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */
 #define LOWEST_TPM_VERSION 0xffffffff
 
@@ -173,7 +178,7 @@ fail:
 	return ret;
 }
 
-VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
+VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)params->shared_data_blob;
@@ -651,4 +656,366 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 		VbExFree(kernel_subkey);
 
 	return retval;
+}
+
+// kkk
+
+VbError_t LoadKernelFromStream(LoadKernelParams *params,
+			       VbCommonParams *cparams)
+{
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)params->shared_data_blob;
+	VbSharedDataKernelCall *shcall = NULL;
+	VbNvContext* vnc = params->nv_context;
+	VbPublicKey* kernel_subkey = NULL;
+	int free_kernel_subkey = 0;
+	uint8_t* kbuf = NULL;
+	int partition_is_good = 0;
+	uint32_t lowest_version = LOWEST_TPM_VERSION;
+	int rec_switch, dev_switch;
+	BootMode boot_mode;
+	uint32_t require_official_os = 0;
+
+	VbError_t retval = VBERROR_UNKNOWN;
+	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
+
+	VbSharedDataKernelPart *shpart = NULL;
+	VbKeyBlockHeader *key_block;
+	VbKernelPreambleHeader *preamble;
+	RSAPublicKey *data_key = NULL;
+	uint64_t key_version;
+	uint32_t combined_version;
+	uint64_t body_offset;
+	int key_block_valid = 1;
+	uint32_t body_copied = 0;
+	uint32_t body_toread;
+
+	/* Clear output params in case we fail */
+	params->partition_number = 0;
+	params->bootloader_address = 0;
+	params->bootloader_size = 0;
+
+	/* Calculate switch positions and boot mode */
+	rec_switch = (BOOT_FLAG_RECOVERY & params->boot_flags ? 1 : 0);
+	dev_switch = (BOOT_FLAG_DEVELOPER & params->boot_flags ? 1 : 0);
+	if (rec_switch) {
+		boot_mode = kBootRecovery;
+	} else if (dev_switch) {
+		boot_mode = kBootDev;
+		VbNvGet(vnc, VBNV_DEV_BOOT_SIGNED_ONLY, &require_official_os);
+	} else {
+		boot_mode = kBootNormal;
+	}
+
+	/*
+	 * Set up tracking for this call.  This wraps around if called many
+	 * times, so we need to initialize the call entry each time.
+	 */
+	shcall = shared->lk_calls + (shared->lk_call_count
+				     & (VBSD_MAX_KERNEL_CALLS - 1));
+	Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
+	shcall->boot_flags = (uint32_t)params->boot_flags;
+	shcall->boot_mode = boot_mode;
+	shared->lk_call_count++;
+
+	if (kBootRecovery == boot_mode) {
+		/* Use the recovery key to verify the kernel */
+		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
+		if (VBERROR_SUCCESS != retval)
+			goto LoadKernelStreamExit;
+		free_kernel_subkey = 1;
+	} else {
+		/* Use the kernel subkey passed from LoadFirmware(). */
+		kernel_subkey = &shared->kernel_subkey;
+	}
+
+	/* Allocate kernel header buffers */
+	kbuf = (uint8_t*)VbExMalloc(KBUF_SIZE);
+	if (!kbuf)
+		goto bad_gpt;
+
+	/*
+	 * Set up tracking for this partition.  This wraps around if
+	 * called many times, so initialize the partition entry each
+	 * time.
+	 */
+	shpart = shcall->parts + (shcall->kernel_parts_found
+				  & (VBSD_MAX_KERNEL_PARTS - 1));
+	Memset(shpart, 0, sizeof(VbSharedDataKernelPart));
+	shcall->kernel_parts_found++;
+
+	/* Read the first part of the kernel partition. */
+	if (0 != VbExReadKernelStream(KBUF_SIZE, kbuf)) {
+		VBDEBUG(("Unable to read start of partition.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_READ_START;
+		goto bad_kernel;
+	}
+
+	/* Verify the key block. */
+	key_block = (VbKeyBlockHeader*)kbuf;
+	if (0 != KeyBlockVerify(key_block, KBUF_SIZE, kernel_subkey, 0)) {
+		VBDEBUG(("Verifying key block signature failed.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_SIG;
+		key_block_valid = 0;
+
+		/* If not in developer mode, this kernel is bad. */
+		if (kBootDev != boot_mode)
+			goto bad_kernel;
+
+		/*
+		 * In developer mode, we can explictly disallow
+		 * self-signed kernels
+		 */
+		if (require_official_os) {
+			VBDEBUG(("Self-signed kernels not enabled.\n"));
+			shpart->check_result =
+				VBSD_LKP_CHECK_SELF_SIGNED;
+			goto bad_kernel;
+		}
+
+		/*
+		 * Allow the kernel if the SHA-512 hash of the key
+		 * block is valid.
+		 */
+		if (0 != KeyBlockVerify(key_block, KBUF_SIZE,
+					kernel_subkey, 1)) {
+			VBDEBUG(("Verifying key block hash failed.\n"));
+			shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_HASH;
+			goto bad_kernel;
+		}
+	}
+
+	/* Check the key block flags against the current boot mode. */
+	if (!(key_block->key_block_flags &
+	      (dev_switch ? KEY_BLOCK_FLAG_DEVELOPER_1 :
+	       KEY_BLOCK_FLAG_DEVELOPER_0))) {
+		VBDEBUG(("Key block developer flag mismatch.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
+		key_block_valid = 0;
+	}
+	if (!(key_block->key_block_flags &
+	      (rec_switch ? KEY_BLOCK_FLAG_RECOVERY_1 :
+	       KEY_BLOCK_FLAG_RECOVERY_0))) {
+		VBDEBUG(("Key block recovery flag mismatch.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
+		key_block_valid = 0;
+	}
+
+	/* Check for rollback of key version except in recovery mode. */
+	key_version = key_block->data_key.key_version;
+	if (kBootRecovery != boot_mode) {
+		if (key_version < (shared->kernel_version_tpm >> 16)) {
+			VBDEBUG(("Key version too old.\n"));
+			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
+			key_block_valid = 0;
+		}
+		if (key_version > 0xFFFF) {
+			/*
+			 * Key version is stored in 16 bits in the TPM, so key
+			 * versions greater than 0xFFFF can't be stored
+			 * properly.
+			 */
+			VBDEBUG(("Key version > 0xFFFF.\n"));
+			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
+			key_block_valid = 0;
+		}
+	}
+
+	/* If not in developer mode, key block required to be valid. */
+	if (kBootDev != boot_mode && !key_block_valid) {
+		VBDEBUG(("Key block is invalid.\n"));
+		goto bad_kernel;
+	}
+
+	/* Get key for preamble/data verification from the key block. */
+	data_key = PublicKeyToRSA(&key_block->data_key);
+	if (!data_key) {
+		VBDEBUG(("Data key bad.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_DATA_KEY_PARSE;
+		goto bad_kernel;
+	}
+
+	/* Verify the preamble, which follows the key block */
+	preamble = (VbKernelPreambleHeader *)(kbuf + key_block->key_block_size);
+	if ((0 != VerifyKernelPreamble(preamble,
+				       KBUF_SIZE - key_block->key_block_size,
+				       data_key))) {
+		VBDEBUG(("Preamble verification failed.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_VERIFY_PREAMBLE;
+		goto bad_kernel;
+	}
+
+	/*
+	 * If the key block is valid and we're not in recovery mode,
+	 * check for rollback of the kernel version.
+	 */
+	combined_version = (uint32_t)((key_version << 16) |
+				      (preamble->kernel_version & 0xFFFF));
+	shpart->combined_version = combined_version;
+	if (key_block_valid && kBootRecovery != boot_mode) {
+		if (combined_version < shared->kernel_version_tpm) {
+			VBDEBUG(("Kernel version too low.\n"));
+			shpart->check_result = VBSD_LKP_CHECK_KERNEL_ROLLBACK;
+			/*
+			 * If not in developer mode, kernel version must be
+			 * valid.
+			 */
+			if (kBootDev != boot_mode)
+				goto bad_kernel;
+		}
+	}
+
+	VBDEBUG(("Kernel preamble is good.\n"));
+	shpart->check_result = VBSD_LKP_CHECK_PREAMBLE_VALID;
+
+	/* Check for lowest version from a valid header. */
+	if (key_block_valid && lowest_version > combined_version)
+		lowest_version = combined_version;
+	else {
+		VBDEBUG(("Key block valid: %d\n", key_block_valid));
+		VBDEBUG(("Combined version: %u\n", (unsigned)combined_version));
+	}
+
+	body_offset = key_block->key_block_size + preamble->preamble_size;
+	body_toread = preamble->body_signature.data_size;
+
+	if (!params->kernel_buffer) {
+		/* Get kernel load address and size from the header. */
+		params->kernel_buffer =
+			(void *)((long)preamble->body_load_address);
+		params->kernel_buffer_size = body_toread;
+	} else if (body_toread > params->kernel_buffer_size) {
+		/* Buffer passed in, but it's too small */
+		VBDEBUG(("Kernel body doesn't fit in memory.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_BODY_EXCEEDS_MEM;
+		goto bad_kernel;
+	}
+
+	/*
+	 * If we've already read part of the kernel, copy that to the beginning
+	 * of the kernel buffer.
+	 */
+	if (body_offset < KBUF_SIZE) {
+		body_copied = KBUF_SIZE - body_offset;
+
+		/* If the kernel is tiny, don't over-copy */
+		if (body_copied > body_toread)
+			body_copied = body_toread;
+
+		Memcpy(params->kernel_buffer, kbuf + body_offset, body_copied);
+		body_toread -= body_copied;
+	}
+
+	/* Read the rest of the kernel data */
+	if (body_toread > 0 &&
+	    0 != VbExReadKernelStream(body_toread,
+				      params->kernel_buffer + body_copied)) {
+		VBDEBUG(("Unable to read kernel data.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_READ_DATA;
+		goto bad_kernel;
+	}
+
+	/* Verify kernel data */
+	if (0 != VerifyData((const uint8_t *)params->kernel_buffer,
+			    params->kernel_buffer_size,
+			    &preamble->body_signature, data_key)) {
+		VBDEBUG(("Kernel data verification failed.\n"));
+		shpart->check_result = VBSD_LKP_CHECK_VERIFY_DATA;
+		goto bad_kernel;
+	}
+
+	/* Done with the kernel signing key, so can free it now */
+	RSAPublicKeyFree(data_key);
+	data_key = NULL;
+
+	/*
+	 * If we're still here, the kernel is valid.  Save the first
+	 * good partition we find; that's the one we'll boot.
+	 */
+	VBDEBUG(("Partition is good.\n"));
+	partition_is_good = 1;
+	shpart->check_result = VBSD_LKP_CHECK_KERNEL_GOOD;
+
+	if (key_block_valid)
+		shpart->flags |= VBSD_LKP_FLAG_KEY_BLOCK_VALID;
+
+	params->bootloader_address = preamble->bootloader_address;
+	params->bootloader_size = preamble->bootloader_size;
+
+	/* Skip the error handling code below */
+	goto bad_gpt;
+
+ bad_kernel:
+	/* Handle errors parsing this kernel */
+	if (NULL != data_key)
+		RSAPublicKeyFree(data_key);
+
+	// TODO: set vboot2 boot result = failure.  If last result is already
+	// failure from other slot, go to recovery mode.
+	VBDEBUG(("Marking kernel as invalid.\n"));
+
+ bad_gpt:
+
+	/* Free kernel buffer */
+	if (kbuf)
+		VbExFree(kbuf);
+
+	/* Handle finding a good partition */
+	if (partition_is_good) {
+		VBDEBUG(("Good_partition\n"));
+		shcall->check_result = VBSD_LKC_CHECK_GOOD_PARTITION;
+		shared->kernel_version_lowest = lowest_version;
+		/*
+		 * Sanity check - only store a new TPM version if we found one.
+		 * If lowest_version is still at its initial value, we didn't
+		 * find one; for example, we're in developer mode and just
+		 * didn't look.
+		 */
+		// TODO: caller should check if last boot was successful and
+		// in the same slot, and only update TPM if so (that is, if
+		// we know this kernel actually booted all the way).
+		if (lowest_version != LOWEST_TPM_VERSION &&
+		    lowest_version > shared->kernel_version_tpm)
+			shared->kernel_version_tpm = lowest_version;
+
+		/* Success! */
+		retval = VBERROR_SUCCESS;
+	} else {
+		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
+		recovery = VBNV_RECOVERY_RW_INVALID_OS;
+		retval = VBERROR_INVALID_KERNEL_FOUND;
+	}
+
+ LoadKernelStreamExit:
+
+	/* Store recovery request, if any */
+	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
+		recovery : VBNV_RECOVERY_NOT_REQUESTED);
+
+	/*
+	 * If LoadKernel() was called with bad parameters, shcall may not be
+	 * initialized.
+	 */
+	if (shcall)
+		shcall->return_code = (uint8_t)retval;
+
+	/* Save whether the good partition's key block was fully verified */
+	if (partition_is_good && key_block_valid)
+		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
+
+	/* Store how much shared data we used, if any */
+	params->shared_data_size = shared->data_used;
+
+	if (free_kernel_subkey)
+		VbExFree(kernel_subkey);
+
+	return retval;
+}
+
+VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
+{
+	if (params->boot_flags & BOOT_FLAG_STREAMING)
+		return LoadKernelFromStream(params, cparams);
+	else
+		return LoadKernelFromImage(params, cparams);
 }

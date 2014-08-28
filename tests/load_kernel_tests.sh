@@ -55,6 +55,15 @@ ${BIN_DIR}/futility vbutil_kernel \
 
 happy 'Kernel verification succeeded'
 
+# Verify in streaming mode too
+echo 'Verifying test kernel in streaming mode'
+
+${BIN_DIR}/futility verify_kernel kernel.test \
+    ${SCRIPT_DIR}/devkeys/kernel_subkey.vbpubk \
+    --stream
+
+happy 'Stream verification succeeded'
+
 # Now create a dummy disk image
 echo 'Creating test disk image'
 dd if=/dev/zero of=disk.test bs=1024 count=1024

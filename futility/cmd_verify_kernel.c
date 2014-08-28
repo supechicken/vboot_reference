@@ -17,6 +17,8 @@
 #include "futility.h"
 
 static uint8_t *diskbuf;
+static uint64_t disk_bytes = 0;
+static uint32_t stream_offset = 0;
 
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
@@ -53,10 +55,20 @@ VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExReadKernelStream(uint32_t bytes, void *buffer)
+{
+	/* Don't read past end of stream */
+	if (bytes > disk_bytes || bytes + stream_offset > disk_bytes)
+		return VBERROR_UNKNOWN;
+
+	memcpy(buffer, diskbuf + stream_offset, bytes);
+	stream_offset += bytes;
+	return VBERROR_SUCCESS;
+}
+
 int do_verify_kernel(int argc, char *argv[])
 {
 	VbPublicKey *kernkey;
-	uint64_t disk_bytes = 0;
 	int rv;
 
 	const char *progname = strrchr(argv[0], '/');
@@ -67,7 +79,8 @@ int do_verify_kernel(int argc, char *argv[])
 
 	if (argc < 3) {
 		fprintf(stderr,
-			"usage: %s <disk_image> <kernel.vbpubk>\n", progname);
+			"usage: %s <disk_image> <kernel.vbpubk> [--stream]\n",
+			progname);
 		return 1;
 	}
 
@@ -92,11 +105,17 @@ int do_verify_kernel(int argc, char *argv[])
 	/* TODO: optional TPM current kernel version */
 
 	/* Set up params */
+	memset(&params, 0, sizeof(params));
 	params.shared_data_blob = shared_data;
 	params.shared_data_size = sizeof(shared_data);
-	params.disk_handle = (VbExDiskHandle_t)1;
-	params.bytes_per_lba = 512;
-	params.ending_lba = disk_bytes / 512 - 1;
+
+	/* GBB and cparams only needed by LoadKernel() in recovery mode */
+	params.gbb_data = NULL;
+	params.gbb_size = 0;
+	memset(&cparams, 0, sizeof(cparams));
+
+	/* TODO: optional dev-mode flag */
+	params.boot_flags = 0;
 
 	params.kernel_buffer_size = 16 * 1024 * 1024;
 	params.kernel_buffer = malloc(params.kernel_buffer_size);
@@ -105,19 +124,25 @@ int do_verify_kernel(int argc, char *argv[])
 		return 1;
 	}
 
-	/* GBB and cparams only needed by LoadKernel() in recovery mode */
-	params.gbb_data = NULL;
-	params.gbb_size = 0;
-
-	/* TODO: optional dev-mode flag */
-	params.boot_flags = 0;
-
 	/*
 	 * LoadKernel() cares only about VBNV_DEV_BOOT_SIGNED_ONLY, and only in
 	 * dev mode.  So just use defaults.
 	 */
 	VbNvSetup(&nvc);
 	params.nv_context = &nvc;
+
+	// TODO: better arg parsing
+	if (argc > 3 && 0 == strcmp(argv[3], "--stream")) {
+		/* Use stream mode */
+		printf("Verifying in streaming mode.\n");
+		params.boot_flags |= BOOT_FLAG_STREAMING;
+	} else {
+		/* Use image mode */
+		printf("Verifying in image mode.\n");
+		params.disk_handle = (VbExDiskHandle_t)1;
+		params.bytes_per_lba = 512;
+		params.ending_lba = disk_bytes / 512 - 1;
+	}
 
 	/* Try loading kernel */
 	rv = LoadKernel(&params, &cparams);

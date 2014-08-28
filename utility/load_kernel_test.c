@@ -75,6 +75,10 @@ VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
   return VBERROR_SUCCESS;
 }
 
+VbError_t VbExReadKernelStream(uint32_t bytes, void *buffer)
+{
+  return VBERROR_UNKNOWN;
+}
 
 /* Main routine */
 int main(int argc, char* argv[]) {

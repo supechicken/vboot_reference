@@ -620,6 +620,18 @@ VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
                         uint64_t lba_count, const void *buffer);
 
+/**
+ * Read data from the kernel stream
+ *
+ * @param bytes		Number of bytes to read
+ * @param buffer	Destination for data
+ *
+ * @return Error code, or VBERROR_SUCCESS.  Failure to read as much data as
+ * requested is an error.
+ */
+VbError_t VbExReadKernelStream(uint32_t bytes, void *buffer);
+
+
 /*****************************************************************************/
 /* Display */
 

@@ -1113,6 +1113,10 @@ ifneq (${VBOOT2},)
 	tests/vb2_firmware_tests.sh
 endif
 
+.PHONY: kkk
+kkk: test_setup
+	tests/load_kernel_tests.sh
+
 .PHONY: runmisctests
 runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/rollback_index2_tests

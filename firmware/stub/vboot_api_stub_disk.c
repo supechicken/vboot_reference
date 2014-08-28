@@ -42,3 +42,8 @@ VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
                         uint64_t lba_count, const void* buffer) {
   return VBERROR_SUCCESS;
 }
+
+
+VbError_t VbExReadKernelStream(uint32_t bytes, void *buffer) {
+  return VBERROR_SUCCESS;
+}
