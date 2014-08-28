@@ -44,6 +44,9 @@ enum lkip_flags {
 struct lk_internal_params {
 	uint32_t flags;
 	BootMode boot_mode;
+
+	VbSharedDataHeader *shared;
+	VbSharedDataKernelCall *shcall;
 };
 
 /**
@@ -195,9 +198,8 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 			      LoadKernelParams *params,
 			      VbCommonParams *cparams)
 {
-	VbSharedDataHeader *shared =
-		(VbSharedDataHeader *)params->shared_data_blob;
-	VbSharedDataKernelCall *shcall = NULL;
+	VbSharedDataHeader *shared = lkip->shared;
+	VbSharedDataKernelCall *shcall = lkip->shcall;
 	VbNvContext* vnc = params->nv_context;
 	VbPublicKey* kernel_subkey = NULL;
 	int free_kernel_subkey = 0;
@@ -215,30 +217,13 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
 
 	/* Sanity Checks */
-	if (!params->bytes_per_lba ||
-	    !params->ending_lba) {
+	if (!params->bytes_per_lba || !params->ending_lba) {
 		VBDEBUG(("LoadKernel() called with invalid params\n"));
 		retval = VBERROR_INVALID_PARAMETER;
 		goto LoadKernelExit;
 	}
-
-	/* Clear output params in case we fail */
-	params->partition_number = 0;
-	params->bootloader_address = 0;
-	params->bootloader_size = 0;
-
-	/*
-	 * Set up tracking for this call.  This wraps around if called many
-	 * times, so we need to initialize the call entry each time.
-	 */
-	shcall = shared->lk_calls + (shared->lk_call_count
-				     & (VBSD_MAX_KERNEL_CALLS - 1));
-	Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
-	shcall->boot_flags = (uint32_t)params->boot_flags;
-	shcall->boot_mode = lkip->boot_mode;
 	shcall->sector_size = (uint32_t)params->bytes_per_lba;
 	shcall->sector_count = params->ending_lba + 1;
-	shared->lk_call_count++;
 
 	/* Initialization */
 	blba = params->bytes_per_lba;
@@ -640,19 +625,9 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
 		recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
-	/*
-	 * If LoadKernel() was called with bad parameters, shcall may not be
-	 * initialized.
-	 */
-	if (shcall)
-		shcall->return_code = (uint8_t)retval;
-
 	/* Save whether the good partition's key block was fully verified */
 	if (good_partition_key_block_valid)
 		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
-
-	/* Store how much shared data we used, if any */
-	params->shared_data_size = shared->data_used;
 
 	if (free_kernel_subkey)
 		VbExFree(kernel_subkey);
@@ -666,9 +641,8 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 			       LoadKernelParams *params,
 			       VbCommonParams *cparams)
 {
-	VbSharedDataHeader *shared =
-		(VbSharedDataHeader *)params->shared_data_blob;
-	VbSharedDataKernelCall *shcall = NULL;
+	VbSharedDataHeader *shared = lkip->shared;
+	VbSharedDataKernelCall *shcall = lkip->shcall;
 	VbNvContext* vnc = params->nv_context;
 	VbPublicKey* kernel_subkey = NULL;
 	int free_kernel_subkey = 0;
@@ -689,22 +663,6 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 	uint64_t body_offset;
 	uint32_t body_copied = 0;
 	uint32_t body_toread;
-
-	/* Clear output params in case we fail */
-	params->partition_number = 0;
-	params->bootloader_address = 0;
-	params->bootloader_size = 0;
-
-	/*
-	 * Set up tracking for this call.  This wraps around if called many
-	 * times, so we need to initialize the call entry each time.
-	 */
-	shcall = shared->lk_calls + (shared->lk_call_count
-				     & (VBSD_MAX_KERNEL_CALLS - 1));
-	Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
-	shcall->boot_flags = (uint32_t)params->boot_flags;
-	shcall->boot_mode = lkip->boot_mode;
-	shared->lk_call_count++;
 
 	if (kBootRecovery == lkip->boot_mode) {
 		/* Use the recovery key to verify the kernel */
@@ -965,19 +923,9 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
 		recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
-	/*
-	 * If LoadKernel() was called with bad parameters, shcall may not be
-	 * initialized.
-	 */
-	if (shcall)
-		shcall->return_code = (uint8_t)retval;
-
 	/* Save whether the good partition's key block was fully verified */
 	if (partition_is_good && key_block_valid)
 		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
-
-	/* Store how much shared data we used, if any */
-	params->shared_data_size = shared->data_used;
 
 	if (free_kernel_subkey)
 		VbExFree(kernel_subkey);
@@ -987,12 +935,33 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 
 VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 {
+	VbNvContext *vnc = params->nv_context;
+
 	struct lk_internal_params lkip;
+	int rv;
 
-	VbNvContext* vnc = params->nv_context;
+	/* Clear output params in case we fail */
+	params->partition_number = 0;
+	params->bootloader_address = 0;
+	params->bootloader_size = 0;
 
+	/* Set up internal data */
 	Memset(&lkip, 0, sizeof(lkip));
 
+	lkip.shared = (VbSharedDataHeader *)params->shared_data_blob;
+
+	/*
+	 * Set up tracking for this call.  This wraps around if called many
+	 * times, so we need to initialize the call entry each time.
+	 */
+	lkip.shcall = lkip.shared->lk_calls + (lkip.shared->lk_call_count &
+					       (VBSD_MAX_KERNEL_CALLS - 1));
+	Memset(lkip.shcall, 0, sizeof(VbSharedDataKernelCall));
+	lkip.shcall->boot_flags = (uint32_t)params->boot_flags;
+	lkip.shcall->boot_mode = lkip.boot_mode;
+	lkip.shared->lk_call_count++;
+
+	/* Set boot mode */
 	if (BOOT_FLAG_RECOVERY & params->boot_flags) {
 		lkip.boot_mode = kBootRecovery;
 	} else if (BOOT_FLAG_DEVELOPER & params->boot_flags) {
@@ -1008,7 +977,19 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	}
 
 	if (params->boot_flags & BOOT_FLAG_STREAMING)
-		return LoadKernelFromStream(&lkip, params, cparams);
+		rv = LoadKernelFromStream(&lkip, params, cparams);
 	else
-		return LoadKernelFromImage(&lkip, params, cparams);
+		rv = LoadKernelFromImage(&lkip, params, cparams);
+
+	/*
+	 * If LoadKernel() was called with bad parameters, shcall may not be
+	 * initialized.
+	 */
+	if (lkip.shcall)
+		lkip.shcall->return_code = (uint8_t)rv;
+
+	/* Store how much shared data we used, if any */
+	params->shared_data_size = lkip.shared->data_used;
+
+	return rv;
 }
