@@ -42,11 +42,24 @@ enum lkip_flags {
 
 /* Internal params for LoadKernel() and its sub-functions */
 struct lk_internal_params {
+	/* Flags; see lkip_flags */
 	uint32_t flags;
+
+	/* Boot mode */
 	BootMode boot_mode;
 
+	/* Recovery reason, if any */
+	int recovery;
+
+	/* Shared data structs */
 	VbSharedDataHeader *shared;
 	VbSharedDataKernelCall *shcall;
+
+	/* Key to use for verifying key block */
+	VbPublicKey *kernel_subkey;
+
+	/* Kernel header buffer (size KBUF_SIZE) */
+	uint8_t *kbuf;
 };
 
 /**
@@ -200,27 +213,22 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 {
 	VbSharedDataHeader *shared = lkip->shared;
 	VbSharedDataKernelCall *shcall = lkip->shcall;
-	VbNvContext* vnc = params->nv_context;
-	VbPublicKey* kernel_subkey = NULL;
-	int free_kernel_subkey = 0;
 	GptData gpt;
 	uint64_t part_start, part_size;
 	uint64_t blba;
 	uint64_t kbuf_sectors;
-	uint8_t* kbuf = NULL;
+	uint8_t* kbuf = lkip->kbuf;
 	int found_partitions = 0;
 	int good_partition = -1;
 	int good_partition_key_block_valid = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
 
 	VbError_t retval = VBERROR_UNKNOWN;
-	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
 
 	/* Sanity Checks */
 	if (!params->bytes_per_lba || !params->ending_lba) {
 		VBDEBUG(("LoadKernel() called with invalid params\n"));
-		retval = VBERROR_INVALID_PARAMETER;
-		goto LoadKernelExit;
+		return VBERROR_INVALID_PARAMETER;
 	}
 	shcall->sector_size = (uint32_t)params->bytes_per_lba;
 	shcall->sector_count = params->ending_lba + 1;
@@ -230,19 +238,7 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 	kbuf_sectors = KBUF_SIZE / blba;
 	if (0 == kbuf_sectors) {
 		VBDEBUG(("LoadKernel() called with sector size > KBUF_SIZE\n"));
-		retval = VBERROR_INVALID_PARAMETER;
-		goto LoadKernelExit;
-	}
-
-	if (kBootRecovery == lkip->boot_mode) {
-		/* Use the recovery key to verify the kernel */
-		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
-		if (VBERROR_SUCCESS != retval)
-			goto LoadKernelExit;
-		free_kernel_subkey = 1;
-	} else {
-		/* Use the kernel subkey passed from LoadFirmware(). */
-		kernel_subkey = &shared->kernel_subkey;
+		return VBERROR_INVALID_PARAMETER;
 	}
 
 	/* Read GPT data */
@@ -260,11 +256,6 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 		shcall->check_result = VBSD_LKC_CHECK_GPT_PARSE_ERROR;
 		goto bad_gpt;
 	}
-
-	/* Allocate kernel header buffers */
-	kbuf = (uint8_t*)VbExMalloc(KBUF_SIZE);
-	if (!kbuf)
-		goto bad_gpt;
 
         /* Loop over candidate kernel partitions */
         while (GPT_SUCCESS ==
@@ -320,7 +311,7 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 		/* Verify the key block. */
 		key_block = (VbKeyBlockHeader*)kbuf;
 		if (0 != KeyBlockVerify(key_block, KBUF_SIZE,
-					kernel_subkey, 0)) {
+					lkip->kernel_subkey, 0)) {
 			VBDEBUG(("Verifying key block signature failed.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_SIG;
 			key_block_valid = 0;
@@ -345,7 +336,7 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 			 * block is valid.
 			 */
 			if (0 != KeyBlockVerify(key_block, KBUF_SIZE,
-						kernel_subkey, 1)) {
+						lkip->kernel_subkey, 1)) {
 				VBDEBUG(("Verifying key block hash failed.\n"));
 				shpart->check_result =
 					VBSD_LKP_CHECK_KEY_BLOCK_HASH;
@@ -585,10 +576,6 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 
  bad_gpt:
 
-	/* Free kernel buffer */
-	if (kbuf)
-		VbExFree(kbuf);
-
 	/* Write and free GPT data */
 	WriteAndFreeGptData(params->disk_handle, &gpt);
 
@@ -611,26 +598,17 @@ VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
 		retval = VBERROR_SUCCESS;
 	} else if (found_partitions > 0) {
 		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
-		recovery = VBNV_RECOVERY_RW_INVALID_OS;
+		lkip->recovery = VBNV_RECOVERY_RW_INVALID_OS;
 		retval = VBERROR_INVALID_KERNEL_FOUND;
 	} else {
 		shcall->check_result = VBSD_LKC_CHECK_NO_PARTITIONS;
-		recovery = VBNV_RECOVERY_RW_NO_OS;
+		lkip->recovery = VBNV_RECOVERY_RW_NO_OS;
 		retval = VBERROR_NO_KERNEL_FOUND;
 	}
-
- LoadKernelExit:
-
-	/* Store recovery request, if any */
-	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
-		recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
 	/* Save whether the good partition's key block was fully verified */
 	if (good_partition_key_block_valid)
 		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
-
-	if (free_kernel_subkey)
-		VbExFree(kernel_subkey);
 
 	return retval;
 }
@@ -643,15 +621,11 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 {
 	VbSharedDataHeader *shared = lkip->shared;
 	VbSharedDataKernelCall *shcall = lkip->shcall;
-	VbNvContext* vnc = params->nv_context;
-	VbPublicKey* kernel_subkey = NULL;
-	int free_kernel_subkey = 0;
-	uint8_t* kbuf = NULL;
+	uint8_t *kbuf = lkip->kbuf;
 	int partition_is_good = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
 
 	VbError_t retval = VBERROR_UNKNOWN;
-	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
 
 	VbSharedDataKernelPart *shpart = NULL;
 	VbKeyBlockHeader *key_block;
@@ -663,20 +637,6 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 	uint64_t body_offset;
 	uint32_t body_copied = 0;
 	uint32_t body_toread;
-
-	if (kBootRecovery == lkip->boot_mode) {
-		/* Use the recovery key to verify the kernel */
-		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
-		if (VBERROR_SUCCESS != retval)
-			goto LoadKernelStreamExit;
-		free_kernel_subkey = 1;
-	} else {
-		/* Use the kernel subkey passed from LoadFirmware(). */
-		kernel_subkey = &shared->kernel_subkey;
-	}
-
-	/* Allocate kernel header buffers */
-	kbuf = (uint8_t*)VbExMalloc(KBUF_SIZE);
 
 	/*
 	 * Set up tracking for this partition.  This wraps around if
@@ -697,7 +657,7 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 
 	/* Verify the key block. */
 	key_block = (VbKeyBlockHeader*)kbuf;
-	if (0 != KeyBlockVerify(key_block, KBUF_SIZE, kernel_subkey, 0)) {
+	if (0 != KeyBlockVerify(key_block, KBUF_SIZE, lkip->kernel_subkey, 0)) {
 		VBDEBUG(("Verifying key block signature failed.\n"));
 		shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_SIG;
 		key_block_valid = 0;
@@ -711,7 +671,7 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 		 * valid.
 		 */
 		if (0 != KeyBlockVerify(key_block, KBUF_SIZE,
-					kernel_subkey, 1)) {
+					lkip->kernel_subkey, 1)) {
 			VBDEBUG(("Verifying key block hash failed.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_HASH;
 			goto bad_kernel;
@@ -887,10 +847,6 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 		VBDEBUG(("Marking kernel as invalid.\n"));
 	}
 
-	/* Free kernel buffer */
-	if (kbuf)
-		VbExFree(kbuf);
-
 	/* Handle finding a good partition */
 	if (partition_is_good) {
 		VBDEBUG(("Good_partition\n"));
@@ -913,22 +869,13 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 		retval = VBERROR_SUCCESS;
 	} else {
 		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
-		recovery = VBNV_RECOVERY_RW_INVALID_OS;
+		lkip->recovery = VBNV_RECOVERY_RW_INVALID_OS;
 		retval = VBERROR_INVALID_KERNEL_FOUND;
 	}
-
- LoadKernelStreamExit:
-
-	/* Store recovery request, if any */
-	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != retval ?
-		recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
 	/* Save whether the good partition's key block was fully verified */
 	if (partition_is_good && key_block_valid)
 		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
-
-	if (free_kernel_subkey)
-		VbExFree(kernel_subkey);
 
 	return retval;
 }
@@ -936,7 +883,6 @@ VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
 VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 {
 	VbNvContext *vnc = params->nv_context;
-
 	struct lk_internal_params lkip;
 	int rv;
 
@@ -948,6 +894,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	/* Set up internal data */
 	Memset(&lkip, 0, sizeof(lkip));
 
+	lkip.recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
 	lkip.shared = (VbSharedDataHeader *)params->shared_data_blob;
 
 	/*
@@ -964,6 +911,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	/* Set boot mode */
 	if (BOOT_FLAG_RECOVERY & params->boot_flags) {
 		lkip.boot_mode = kBootRecovery;
+
 	} else if (BOOT_FLAG_DEVELOPER & params->boot_flags) {
 		uint32_t v;
 
@@ -976,20 +924,39 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 		lkip.boot_mode = kBootNormal;
 	}
 
+	if (lkip.boot_mode == kBootRecovery) {
+		/* Use the recovery key to verify the kernel */
+		rv = VbGbbReadRecoveryKey(cparams, &lkip.kernel_subkey);
+		if (rv != VBERROR_SUCCESS)
+			return rv;
+	} else {
+		/* Use the kernel subkey passed from LoadFirmware(). */
+		lkip.kernel_subkey = &lkip.shared->kernel_subkey;
+	}
+
+	/* Allocate kernel header buffers */
+	lkip.kbuf = (uint8_t *)VbExMalloc(KBUF_SIZE);
+
 	if (params->boot_flags & BOOT_FLAG_STREAMING)
 		rv = LoadKernelFromStream(&lkip, params, cparams);
 	else
 		rv = LoadKernelFromImage(&lkip, params, cparams);
 
-	/*
-	 * If LoadKernel() was called with bad parameters, shcall may not be
-	 * initialized.
-	 */
-	if (lkip.shcall)
-		lkip.shcall->return_code = (uint8_t)rv;
+	/* Free kernel buffer */
+	VbExFree(lkip.kbuf);
+
+	lkip.shcall->return_code = (uint8_t)rv;
 
 	/* Store how much shared data we used, if any */
 	params->shared_data_size = lkip.shared->data_used;
+
+	/* Free recovery key, if we allocated it */
+	if (lkip.boot_mode == kBootRecovery)
+		VbExFree(lkip.kernel_subkey);
+
+	/* Store recovery request, if any */
+	VbNvSet(vnc, VBNV_RECOVERY_REQUEST, VBERROR_SUCCESS != rv ?
+		lkip.recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
 	return rv;
 }
