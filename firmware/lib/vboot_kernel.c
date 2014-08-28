@@ -33,6 +33,19 @@ typedef enum BootMode {
 	kBootDev = 2        /* Developer boot - self-signed kernel ok */
 } BootMode;
 
+/* Flags for lk_internal_params */
+enum lkip_flags {
+	/* Allowed to verify a kernel based on hash only?  If not present,
+	 * kernel must be signed. */
+	LKIP_HASH_OK = (1 << 0),
+};
+
+/* Internal params for LoadKernel() and its sub-functions */
+struct lk_internal_params {
+	uint32_t flags;
+	BootMode boot_mode;
+};
+
 /**
  * Allocate and read GPT data from the drive.
  *
@@ -178,7 +191,9 @@ fail:
 	return ret;
 }
 
-VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
+VbError_t LoadKernelFromImage(struct lk_internal_params *lkip,
+			      LoadKernelParams *params,
+			      VbCommonParams *cparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)params->shared_data_blob;
@@ -195,9 +210,6 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 	int good_partition = -1;
 	int good_partition_key_block_valid = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
-	int rec_switch, dev_switch;
-	BootMode boot_mode;
-	uint32_t require_official_os = 0;
 
 	VbError_t retval = VBERROR_UNKNOWN;
 	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
@@ -215,18 +227,6 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 	params->bootloader_address = 0;
 	params->bootloader_size = 0;
 
-	/* Calculate switch positions and boot mode */
-	rec_switch = (BOOT_FLAG_RECOVERY & params->boot_flags ? 1 : 0);
-	dev_switch = (BOOT_FLAG_DEVELOPER & params->boot_flags ? 1 : 0);
-	if (rec_switch) {
-		boot_mode = kBootRecovery;
-	} else if (dev_switch) {
-		boot_mode = kBootDev;
-		VbNvGet(vnc, VBNV_DEV_BOOT_SIGNED_ONLY, &require_official_os);
-	} else {
-		boot_mode = kBootNormal;
-	}
-
 	/*
 	 * Set up tracking for this call.  This wraps around if called many
 	 * times, so we need to initialize the call entry each time.
@@ -235,7 +235,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 				     & (VBSD_MAX_KERNEL_CALLS - 1));
 	Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
 	shcall->boot_flags = (uint32_t)params->boot_flags;
-	shcall->boot_mode = boot_mode;
+	shcall->boot_mode = lkip->boot_mode;
 	shcall->sector_size = (uint32_t)params->bytes_per_lba;
 	shcall->sector_count = params->ending_lba + 1;
 	shared->lk_call_count++;
@@ -249,7 +249,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 		goto LoadKernelExit;
 	}
 
-	if (kBootRecovery == boot_mode) {
+	if (kBootRecovery == lkip->boot_mode) {
 		/* Use the recovery key to verify the kernel */
 		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
 		if (VBERROR_SUCCESS != retval)
@@ -341,14 +341,14 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 			key_block_valid = 0;
 
 			/* If not in developer mode, this kernel is bad. */
-			if (kBootDev != boot_mode)
+			if (kBootDev != lkip->boot_mode)
 				goto bad_kernel;
 
 			/*
 			 * In developer mode, we can explictly disallow
 			 * self-signed kernels
 			 */
-			if (require_official_os) {
+			if (!(lkip->flags & LKIP_HASH_OK)) {
 				VBDEBUG(("Self-signed kernels not enabled.\n"));
 				shpart->check_result =
 					VBSD_LKP_CHECK_SELF_SIGNED;
@@ -370,14 +370,16 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 
 		/* Check the key block flags against the current boot mode. */
 		if (!(key_block->key_block_flags &
-		      (dev_switch ? KEY_BLOCK_FLAG_DEVELOPER_1 :
+		      ((params->boot_flags & BOOT_FLAG_DEVELOPER) ?
+		       KEY_BLOCK_FLAG_DEVELOPER_1 :
 		       KEY_BLOCK_FLAG_DEVELOPER_0))) {
 			VBDEBUG(("Key block developer flag mismatch.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
 			key_block_valid = 0;
 		}
 		if (!(key_block->key_block_flags &
-		      (rec_switch ? KEY_BLOCK_FLAG_RECOVERY_1 :
+		      ((params->boot_flags & BOOT_FLAG_RECOVERY) ?
+		       KEY_BLOCK_FLAG_RECOVERY_1 :
 		       KEY_BLOCK_FLAG_RECOVERY_0))) {
 			VBDEBUG(("Key block recovery flag mismatch.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
@@ -386,7 +388,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 
 		/* Check for rollback of key version except in recovery mode. */
 		key_version = key_block->data_key.key_version;
-		if (kBootRecovery != boot_mode) {
+		if (kBootRecovery != lkip->boot_mode) {
 			if (key_version < (shared->kernel_version_tpm >> 16)) {
 				VBDEBUG(("Key version too old.\n"));
 				shpart->check_result =
@@ -407,7 +409,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 		}
 
 		/* If not in developer mode, key block required to be valid. */
-		if (kBootDev != boot_mode && !key_block_valid) {
+		if (kBootDev != lkip->boot_mode && !key_block_valid) {
 			VBDEBUG(("Key block is invalid.\n"));
 			goto bad_kernel;
 		}
@@ -440,7 +442,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 				(key_version << 16) |
 				(preamble->kernel_version & 0xFFFF));
 		shpart->combined_version = combined_version;
-		if (key_block_valid && kBootRecovery != boot_mode) {
+		if (key_block_valid && kBootRecovery != lkip->boot_mode) {
 			if (combined_version < shared->kernel_version_tpm) {
 				VBDEBUG(("Kernel version too low.\n"));
 				shpart->check_result =
@@ -449,7 +451,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 				 * If not in developer mode, kernel version
 				 * must be valid.
 				 */
-				if (kBootDev != boot_mode)
+				if (kBootDev != lkip->boot_mode)
 					goto bad_kernel;
 			}
 		}
@@ -565,7 +567,7 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 		 * dev-signed kernel, there's no rollback protection, so we can
 		 * stop at the first valid kernel.
 		 */
-		if (kBootRecovery == boot_mode || !key_block_valid) {
+		if (kBootRecovery == lkip->boot_mode || !key_block_valid) {
 			VBDEBUG(("In recovery mode or dev-signed kernel\n"));
 			break;
 		}
@@ -660,7 +662,8 @@ VbError_t LoadKernelFromImage(LoadKernelParams *params, VbCommonParams *cparams)
 
 // kkk
 
-VbError_t LoadKernelFromStream(LoadKernelParams *params,
+VbError_t LoadKernelFromStream(struct lk_internal_params *lkip,
+			       LoadKernelParams *params,
 			       VbCommonParams *cparams)
 {
 	VbSharedDataHeader *shared =
@@ -672,9 +675,6 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	uint8_t* kbuf = NULL;
 	int partition_is_good = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
-	int rec_switch, dev_switch;
-	BootMode boot_mode;
-	uint32_t require_official_os = 0;
 
 	VbError_t retval = VBERROR_UNKNOWN;
 	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
@@ -685,8 +685,8 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	RSAPublicKey *data_key = NULL;
 	uint64_t key_version;
 	uint32_t combined_version;
-	uint64_t body_offset;
 	int key_block_valid = 1;
+	uint64_t body_offset;
 	uint32_t body_copied = 0;
 	uint32_t body_toread;
 
@@ -694,18 +694,6 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	params->partition_number = 0;
 	params->bootloader_address = 0;
 	params->bootloader_size = 0;
-
-	/* Calculate switch positions and boot mode */
-	rec_switch = (BOOT_FLAG_RECOVERY & params->boot_flags ? 1 : 0);
-	dev_switch = (BOOT_FLAG_DEVELOPER & params->boot_flags ? 1 : 0);
-	if (rec_switch) {
-		boot_mode = kBootRecovery;
-	} else if (dev_switch) {
-		boot_mode = kBootDev;
-		VbNvGet(vnc, VBNV_DEV_BOOT_SIGNED_ONLY, &require_official_os);
-	} else {
-		boot_mode = kBootNormal;
-	}
 
 	/*
 	 * Set up tracking for this call.  This wraps around if called many
@@ -715,10 +703,10 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 				     & (VBSD_MAX_KERNEL_CALLS - 1));
 	Memset(shcall, 0, sizeof(VbSharedDataKernelCall));
 	shcall->boot_flags = (uint32_t)params->boot_flags;
-	shcall->boot_mode = boot_mode;
+	shcall->boot_mode = lkip->boot_mode;
 	shared->lk_call_count++;
 
-	if (kBootRecovery == boot_mode) {
+	if (kBootRecovery == lkip->boot_mode) {
 		/* Use the recovery key to verify the kernel */
 		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
 		if (VBERROR_SUCCESS != retval)
@@ -731,8 +719,6 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 
 	/* Allocate kernel header buffers */
 	kbuf = (uint8_t*)VbExMalloc(KBUF_SIZE);
-	if (!kbuf)
-		goto bad_gpt;
 
 	/*
 	 * Set up tracking for this partition.  This wraps around if
@@ -758,24 +744,13 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 		shpart->check_result = VBSD_LKP_CHECK_KEY_BLOCK_SIG;
 		key_block_valid = 0;
 
-		/* If not in developer mode, this kernel is bad. */
-		if (kBootDev != boot_mode)
+		/* If hash isn't enough, this kernel is bad */
+		if (!(lkip->flags & LKIP_HASH_OK))
 			goto bad_kernel;
 
 		/*
-		 * In developer mode, we can explictly disallow
-		 * self-signed kernels
-		 */
-		if (require_official_os) {
-			VBDEBUG(("Self-signed kernels not enabled.\n"));
-			shpart->check_result =
-				VBSD_LKP_CHECK_SELF_SIGNED;
-			goto bad_kernel;
-		}
-
-		/*
-		 * Allow the kernel if the SHA-512 hash of the key
-		 * block is valid.
+		 * Allow the kernel if the SHA-512 hash of the key block is
+		 * valid.
 		 */
 		if (0 != KeyBlockVerify(key_block, KBUF_SIZE,
 					kernel_subkey, 1)) {
@@ -787,15 +762,15 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 
 	/* Check the key block flags against the current boot mode. */
 	if (!(key_block->key_block_flags &
-	      (dev_switch ? KEY_BLOCK_FLAG_DEVELOPER_1 :
-	       KEY_BLOCK_FLAG_DEVELOPER_0))) {
+	      ((params->boot_flags & BOOT_FLAG_DEVELOPER) ?
+	       KEY_BLOCK_FLAG_DEVELOPER_1 : KEY_BLOCK_FLAG_DEVELOPER_0))) {
 		VBDEBUG(("Key block developer flag mismatch.\n"));
 		shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
 		key_block_valid = 0;
 	}
 	if (!(key_block->key_block_flags &
-	      (rec_switch ? KEY_BLOCK_FLAG_RECOVERY_1 :
-	       KEY_BLOCK_FLAG_RECOVERY_0))) {
+	      ((params->boot_flags & BOOT_FLAG_RECOVERY) ?
+	       KEY_BLOCK_FLAG_RECOVERY_1 : KEY_BLOCK_FLAG_RECOVERY_0))) {
 		VBDEBUG(("Key block recovery flag mismatch.\n"));
 		shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
 		key_block_valid = 0;
@@ -803,7 +778,7 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 
 	/* Check for rollback of key version except in recovery mode. */
 	key_version = key_block->data_key.key_version;
-	if (kBootRecovery != boot_mode) {
+	if (kBootRecovery != lkip->boot_mode) {
 		if (key_version < (shared->kernel_version_tpm >> 16)) {
 			VBDEBUG(("Key version too old.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
@@ -822,7 +797,7 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	}
 
 	/* If not in developer mode, key block required to be valid. */
-	if (kBootDev != boot_mode && !key_block_valid) {
+	if (kBootDev != lkip->boot_mode && !key_block_valid) {
 		VBDEBUG(("Key block is invalid.\n"));
 		goto bad_kernel;
 	}
@@ -852,7 +827,7 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	combined_version = (uint32_t)((key_version << 16) |
 				      (preamble->kernel_version & 0xFFFF));
 	shpart->combined_version = combined_version;
-	if (key_block_valid && kBootRecovery != boot_mode) {
+	if (key_block_valid && kBootRecovery != lkip->boot_mode) {
 		if (combined_version < shared->kernel_version_tpm) {
 			VBDEBUG(("Kernel version too low.\n"));
 			shpart->check_result = VBSD_LKP_CHECK_KERNEL_ROLLBACK;
@@ -860,7 +835,7 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 			 * If not in developer mode, kernel version must be
 			 * valid.
 			 */
-			if (kBootDev != boot_mode)
+			if (kBootDev != lkip->boot_mode)
 				goto bad_kernel;
 		}
 	}
@@ -942,19 +917,17 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 	params->bootloader_address = preamble->bootloader_address;
 	params->bootloader_size = preamble->bootloader_size;
 
-	/* Skip the error handling code below */
-	goto bad_gpt;
-
  bad_kernel:
+
 	/* Handle errors parsing this kernel */
 	if (NULL != data_key)
 		RSAPublicKeyFree(data_key);
 
-	// TODO: set vboot2 boot result = failure.  If last result is already
-	// failure from other slot, go to recovery mode.
-	VBDEBUG(("Marking kernel as invalid.\n"));
-
- bad_gpt:
+	if (!partition_is_good) {
+		// TODO: set vboot2 boot result = failure.  If last result is
+		// already failure from other slot, go to recovery mode.
+		VBDEBUG(("Marking kernel as invalid.\n"));
+	}
 
 	/* Free kernel buffer */
 	if (kbuf)
@@ -1014,8 +987,28 @@ VbError_t LoadKernelFromStream(LoadKernelParams *params,
 
 VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 {
+	struct lk_internal_params lkip;
+
+	VbNvContext* vnc = params->nv_context;
+
+	Memset(&lkip, 0, sizeof(lkip));
+
+	if (BOOT_FLAG_RECOVERY & params->boot_flags) {
+		lkip.boot_mode = kBootRecovery;
+	} else if (BOOT_FLAG_DEVELOPER & params->boot_flags) {
+		uint32_t v;
+
+		lkip.boot_mode = kBootDev;
+
+		VbNvGet(vnc, VBNV_DEV_BOOT_SIGNED_ONLY, &v);
+		if (!v)
+			lkip.flags |= LKIP_HASH_OK;
+	} else {
+		lkip.boot_mode = kBootNormal;
+	}
+
 	if (params->boot_flags & BOOT_FLAG_STREAMING)
-		return LoadKernelFromStream(params, cparams);
+		return LoadKernelFromStream(&lkip, params, cparams);
 	else
-		return LoadKernelFromImage(params, cparams);
+		return LoadKernelFromImage(&lkip, params, cparams);
 }
