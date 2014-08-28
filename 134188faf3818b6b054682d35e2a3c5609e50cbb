@@ -16,6 +16,24 @@
       "revId": "134188faf3818b6b054682d35e2a3c5609e50cbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "531681dd_523434c6",
+        "filename": "emerge_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002279
+      },
+      "writtenOn": "2014-08-28T16:21:40Z",
+      "side": 1,
+      "message": "FEATURES\u003dtest will take a lot of time in many of those ebuilds. Instead, you can pass FEATURES\u003dtest to this script and that will do it.",
+      "parentUuid": "7321c530_65b65171",
+      "revId": "134188faf3818b6b054682d35e2a3c5609e50cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
