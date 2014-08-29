@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d31511f5_9791c6d3",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-29T20:22:51Z",
+      "side": 1,
+      "message": "Looking ahead, we might want to break these into two separate files and discard LoadKernel() completely. The BIOS can decide which one it wants to call and the linker will discard the other one. That might save a few bytes.",
+      "revId": "4c0657493dfe52ad0af7f4a0ce1296f30aa4e395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
