@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d37ef124_87afd518",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-29T16:28:31Z",
+      "side": 1,
+      "message": "You need to add a \"%.o: %.c\" rule here, so that compiling build/gen/*.c has a ${Q} on the compiler invocation. Otherwise, everything else is quiet and the generated file isn\u0027t.",
+      "revId": "35fef24814ab37b0a39bbcc95c63eb62afee6eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
