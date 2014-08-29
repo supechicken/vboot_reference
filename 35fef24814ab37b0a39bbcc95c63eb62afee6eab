@@ -16,6 +16,24 @@
       "revId": "35fef24814ab37b0a39bbcc95c63eb62afee6eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3f97d00_c4c71427",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002279
+      },
+      "writtenOn": "2014-08-29T17:02:07Z",
+      "side": 1,
+      "message": "Good catch! I was compiling with V\u003d1 while development so I didn\u0027t catch this. Thanks.\nI added it to the BUILD dir only so we don\u0027t compile in the source dir by accident.",
+      "parentUuid": "d37ef124_87afd518",
+      "revId": "35fef24814ab37b0a39bbcc95c63eb62afee6eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
