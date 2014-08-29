@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d37ef124_f89676f9",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-08-29T19:30:59Z",
+      "side": 1,
+      "message": "This line should be:\n\n${Q}echo \u00270};\u0027 \u003e\u003e $@_t\n\nso that the list of pointers is null-terminated.",
+      "revId": "9b161200843be157c7b0ac28a7ac77eabc6f3d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
