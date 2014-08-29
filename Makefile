@@ -550,10 +550,34 @@ FUTIL_SRCS += \
 	futility/cmd_vb2_verify_fw.c
 endif
 
-FUTIL_LDS = futility/futility.lds
+# Generates the list of commands defined in futility by running grep in the
+# source files looking for the DECLARE_FUTIL_COMMAND() macro usage.
+FUTIL_STATIC_CMD_LIST = ${BUILD}/gen/futility_static_cmds.c
+FUTIL_CMD_LIST = ${BUILD}/gen/futility_cmds.c
+${FUTIL_STATIC_CMD_LIST}: ${FUTIL_STATIC_SRCS}
+${FUTIL_CMD_LIST}: ${FUTIL_SRCS}
+${FUTIL_CMD_LIST} ${FUTIL_STATIC_CMD_LIST}:
+	@$(PRINTF) "    GEN           $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@ $@_t $@_commands
+	${Q}mkdir -p ${BUILD}/gen
+	${Q}grep -hoRE '^DECLARE_FUTIL_COMMAND\([^,]+' $^ -R \
+		| sed 's/DECLARE_FUTIL_COMMAND(\(.*\)/_CMD(\1)/' \
+		| sort >>$@_commands
+	${Q}echo '#define _CMD(NAME) extern const struct' \
+		'futil_cmd_t __cmd_##NAME;' >> $@_t
+	${Q}cat $@_commands >> $@_t
+	${Q}echo '#undef _CMD' >> $@_t
+	${Q}echo '#define _CMD(NAME) &__cmd_##NAME,' >> $@_t
+	${Q}echo 'const struct futil_cmd_t *const futil_cmds[] = {' >> $@_t
+	${Q}cat $@_commands >> $@_t
+	${Q}echo '};' >> $@_t
+	${Q}echo '#undef _CMD' >> $@_t
+	${Q}mv $@_t $@
+	${Q}rm -f $@_commands
 
-FUTIL_STATIC_OBJS = ${FUTIL_STATIC_SRCS:%.c=${BUILD}/%.o}
-FUTIL_OBJS = ${FUTIL_SRCS:%.c=${BUILD}/%.o}
+FUTIL_STATIC_OBJS = ${FUTIL_STATIC_SRCS:%.c=${BUILD}/%.o} \
+	${FUTIL_STATIC_CMD_LIST:%.c=%.o}
+FUTIL_OBJS = ${FUTIL_SRCS:%.c=${BUILD}/%.o} ${FUTIL_CMD_LIST:%.c=%.o}
 
 ALL_OBJS += ${FUTIL_OBJS}
 
@@ -890,12 +914,12 @@ signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
 .PHONY: futil
 futil: ${FUTIL_STATIC_BIN} ${FUTIL_BIN}
 
-${FUTIL_STATIC_BIN}: ${FUTIL_LDS} ${FUTIL_STATIC_OBJS} ${UTILLIB}
+${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
 	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS}
-${FUTIL_BIN}: ${FUTIL_LDS} ${FUTIL_OBJS} ${UTILLIB}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB}
 	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
@@ -971,11 +995,6 @@ ${BUILD}/%.o: %.cc
 
 # ----------------------------------------------------------------------------
 # Here are the special tweaks to the generic rules.
-
-# Because we play some clever linker script games to add new commands without
-# changing any header files, futility must be linked with ld.bfd, not gold.
-${FUTIL_BIN}: LDFLAGS += -fuse-ld=bfd
-${FUTIL_STATIC_BIN}: LDFLAGS += -fuse-ld=bfd
 
 # Some utilities need external crypto functions
 CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
