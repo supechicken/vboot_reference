@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f38bf5a0_91a8ccff",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-09-02T16:11:15Z",
+      "side": 1,
+      "message": "Why are we adding this new API?  Just for test coverage?  This seems like a cumbersome way to do it if so.",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 837,
+        "endChar": 36
+      },
+      "revId": "7c7b1bb1bd822cf9803b04e30282bbbfc02d9789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
