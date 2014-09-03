@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1378896e_7f694331",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-09-03T00:34:26Z",
+      "side": 1,
+      "message": "you specified -R twice",
+      "revId": "e08ee28548934e933733babf0bc0c418142d095d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3363cdc5_bdeda76d",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-09-03T00:34:26Z",
+      "side": 1,
+      "message": "you can use the -r flag rather than escaping the \\(, although you\u0027d have to then escape the () you don\u0027t want to act as () ;)",
+      "revId": "e08ee28548934e933733babf0bc0c418142d095d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "535e81fe_61936c95",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-09-03T00:34:26Z",
+      "side": 1,
+      "message": "rather than all of this inline C code, why not have a .c file that just includes the list ?\n\n #define _CMD(NAME) ...\n #include \"futil_cmd_list.h\"\n ...\n\nseems a lot nicer than having to update the C buried in the strings buried in the shell buried in the make ...",
+      "revId": "e08ee28548934e933733babf0bc0c418142d095d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
