@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30e023af_9805797d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-09-04T20:18:18Z",
+      "side": 1,
+      "message": "Oh, I guess it makes sense in VB2 since it\u0027ll only ever load from one particular one, and Depthcharge can choose that. But how does Depthcharge get the message about whether it should load partition A or B?",
+      "parentUuid": "b395fdbe_2e9ceae6",
+      "revId": "4c0657493dfe52ad0af7f4a0ce1296f30aa4e395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d31511f5_9791c6d3",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
