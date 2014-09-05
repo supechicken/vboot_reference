@@ -64,13 +64,13 @@ dd if=/dev/urandom of="${DATADIR}/KERNDATA" bs=32768 count=1
 # pre-change tools.
 for d in $algs; do
   for r in $algs; do
-      vbutil_firmware --vblock "${V2DIR}/fw_${d}_${r}.vblock" \
+      futility vbutil_firmware --vblock "${V2DIR}/fw_${d}_${r}.vblock" \
         --keyblock "${DATADIR}/kb_${d}_${r}.keyblock" \
         --signprivate "${DATADIR}/data_${d}.vbprivk" \
         --version 1 \
         --kernelkey "${DATADIR}/dummy_0.vbpubk" \
         --fv "${DATADIR}/FWDATA"
-     vbutil_kernel --pack "${V2DIR}/kern_${d}_${r}.vblock" \
+     futility vbutil_kernel --pack "${V2DIR}/kern_${d}_${r}.vblock" \
        --keyblock "${DATADIR}/kb_${d}_${r}.keyblock" \
        --signprivate "${DATADIR}/data_${d}.vbprivk" \
        --version 1 \
