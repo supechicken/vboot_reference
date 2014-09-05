@@ -25,12 +25,12 @@ dd if=/dev/urandom bs=16384 count=1 of="dummy_bootloader.bin"
 dd if=/dev/urandom bs=32768 count=1 of="dummy_kernel.bin"
 
 # Pack kernel data key using original vboot utilities.
-${BIN_DIR}/vbutil_key --pack datakey.test \
+${BIN_DIR}/futility vbutil_key --pack datakey.test \
     --key ${TESTKEY_DIR}/key_rsa2048.keyb --algorithm 4
 
 # Keyblock with kernel data key is signed by kernel subkey
 # Flags=5 means dev=0 rec=0
-${BIN_DIR}/vbutil_keyblock --pack keyblock.test \
+${BIN_DIR}/futility vbutil_keyblock --pack keyblock.test \
     --datapubkey datakey.test \
     --flags 5 \
     --signprivate ${SCRIPT_DIR}/devkeys/kernel_subkey.vbprivk
@@ -46,7 +46,7 @@ ${BIN_DIR}/futility vbutil_kernel \
     --bootloader "dummy_bootloader.bin" \
     --config "dummy_config.txt"
 
-echo 'Verifying test kernel using vbutil_kernel'
+echo 'Verifying test kernel'
 
 # Verify the kernel
 ${BIN_DIR}/futility vbutil_kernel \
