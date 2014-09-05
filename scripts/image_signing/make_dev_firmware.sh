@@ -163,7 +163,8 @@ main() {
   debug_msg "Detecting developer firmware keyblock"
   local expanded_firmware_dir="$(make_temp_dir)"
   local use_devfw_keyblock="$FLAGS_FALSE"
-  (cd "$expanded_firmware_dir"; dump_fmap -x "$IMAGE" >/dev/null 2>&1) ||
+  (cd "$expanded_firmware_dir"; \
+    futility dump_fmap -x "$IMAGE" >/dev/null 2>&1) ||
     err_die "Failed to extract firmware image."
   if [ -f "$expanded_firmware_dir/VBLOCK_A" ]; then
     local has_dev=$FLAGS_TRUE has_norm=$FLAGS_TRUE
@@ -171,9 +172,9 @@ main() {
     # "DEV" means "bootable on developer mode". Here we try to match the pattern
     # in output of vbutil_block, and disable the flags (has_dev, has_norm) if
     # the pattern was not found.
-    vbutil_keyblock --unpack "$expanded_firmware_dir/VBLOCK_A" |
+    futility vbutil_keyblock --unpack "$expanded_firmware_dir/VBLOCK_A" |
       grep -qw '!DEV' || has_norm=$FLAGS_FALSE
-    vbutil_keyblock --unpack "$expanded_firmware_dir/VBLOCK_A" |
+    futility vbutil_keyblock --unpack "$expanded_firmware_dir/VBLOCK_A" |
       grep -qw '[^!]DEV' || has_dev=$FLAGS_FALSE
     if [ "$has_norm" = "$FLAGS_FALSE" -a "$has_dev" = "$FLAGS_TRUE" ]; then
       use_devfw_keyblock=$FLAGS_TRUE
@@ -221,7 +222,7 @@ main() {
 
   debug_msg "Extract current HWID"
   local old_hwid
-  old_hwid="$(gbb_utility --get --hwid "$IMAGE" 2>"$EXEC_LOG" |
+  old_hwid="$(futility gbb_utility --get --hwid "$IMAGE" 2>"$EXEC_LOG" |
               sed -rne 's/^hardware_id: (.*)$/\1/p')"
 
   debug_msg "Decide new HWID"
@@ -230,7 +231,7 @@ main() {
   local new_hwid="$(echo_dev_hwid "$old_hwid")"
 
   local old_gbb_flags
-  old_gbb_flags="$(gbb_utility --get --flags "$IMAGE" 2>"$EXEC_LOG" |
+  old_gbb_flags="$(futility gbb_utility --get --flags "$IMAGE" 2>"$EXEC_LOG" |
                    sed -rne 's/^flags: (.*)$/\1/p')"
   debug_msg "Decide new GBB flags from: $old_gbb_flags"
   [ -z "$old_gbb_flags" ] &&
@@ -239,7 +240,7 @@ main() {
   local new_gbb_flags="$((old_gbb_flags | 0x30))"
 
   debug_msg "Replace GBB parts (gbb_utility allows changing on-the-fly)"
-  gbb_utility --set \
+  futility gbb_utility --set \
     --hwid="$new_hwid" \
     --rootkey="$root_pubkey" \
     --recoverykey="$recovery_pubkey" \
@@ -249,7 +250,7 @@ main() {
   # Old firmware does not support GBB flags, so let's make it an exception.
   if [ "$FLAGS_mod_gbb_flags" = "$FLAGS_TRUE" ]; then
     debug_msg "Changing GBB flags from $old_gbb_flags to $new_gbb_flags"
-    gbb_utility --set \
+    futility gbb_utility --set \
       --flags="$new_gbb_flags" \
       "$IMAGE" >"$EXEC_LOG" 2>&1 ||
       echo "Warning: GBB flags ($old_gbb_flags -> $new_gbb_flags) can't be set."

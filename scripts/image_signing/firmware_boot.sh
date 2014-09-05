@@ -32,15 +32,19 @@ if [ ! -f $input ]; then
   exit 0
 fi
 
-# First, run dump_fmap $input | ./x to compute these values:
+# First, run futility dump_fmap $input | ./x to compute these values:
 
 # dev-mode BIOS is in firmware A
-rw_a_offset=$(dump_fmap -p ${input} | grep 'RW_SECTION_A' | cut -d' ' -f2)
-rw_a_size=$(dump_fmap -p ${input} | grep 'RW_SECTION_A' | cut -d' ' -f3)
+rw_a_offset=$(futility dump_fmap -p ${input} \
+  | grep 'RW_SECTION_A' | cut -d' ' -f2)
+rw_a_size=$(futility dump_fmap -p ${input} \
+  | grep 'RW_SECTION_A' | cut -d' ' -f3)
 
 # normal-mode BIOS is in firmware B
-rw_b_offset=$(dump_fmap -p ${input} | grep 'RW_SECTION_B' | cut -d' ' -f2)
-rw_b_size=$(dump_fmap -p ${input} | grep 'RW_SECTION_B' | cut -d' ' -f3)
+rw_b_offset=$(futility dump_fmap -p ${input} \
+  | grep 'RW_SECTION_B' | cut -d' ' -f2)
+rw_b_size=$(futility dump_fmap -p ${input} \
+  | grep 'RW_SECTION_B' | cut -d' ' -f3)
 
 # Extract the RW BIOS chunks
 dd if=${input} of=dev.bin bs=1 skip=${rw_a_offset} count=${rw_a_size}

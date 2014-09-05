@@ -7,7 +7,7 @@
 # Standalone version of cros_resign_image.sh script from
 # chromeos/src/scripts/bin/ for use on signing servers.
 
-# Both the cgpt tool and vbutil_kernel should be in the system path.
+# Both the cgpt tool and futility should be in the system path.
 
 # Load common constants and variables.
 . "$(dirname "$0")/common.sh"
@@ -22,7 +22,7 @@ if [ $# -lt 4 ] || [ $# -gt 5 ] ; then
 fi
 
 # Make sure the tools we need are available.
-for prereqs in vbutil_kernel cgpt;
+for prereqs in futility cgpt;
 do
   type -P "${prereqs}" &>/dev/null || \
     { echo "${prereqs} tool not found."; exit 1; }
@@ -43,7 +43,7 @@ temp_kimage=$(make_temp_file)
 extract_image_partition ${SRC_BIN} 2 ${temp_kimage}
 updated_kimage=$(make_temp_file)
 
-vbutil_kernel --repack "${updated_kimage}" \
+futility vbutil_kernel --repack "${updated_kimage}" \
   --keyblock "${KERNEL_KEYBLOCK}" \
   --signprivate "${KERNEL_DATAKEY}" \
   --version "${VERSION}" \

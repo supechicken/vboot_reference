@@ -70,14 +70,14 @@ function make_pair {
   dumpRSAPublicKey -cert "${base}_${len}.crt" > "${base}_${len}.keyb"
 
   # wrap the public key
-  vbutil_key \
+  futility vbutil_key \
     --pack "${base}.vbpubk" \
     --key "${base}_${len}.keyb" \
     --version  "${key_version}" \
     --algorithm $alg
 
   # wrap the private key
-  vbutil_key \
+  futility vbutil_key \
     --pack "${base}.vbprivk" \
     --key "${base}_${len}.pem" \
     --algorithm $alg
@@ -102,14 +102,14 @@ function make_keyblock {
   echo "creating $base keyblock..."
 
   # create it
-  vbutil_keyblock \
+  futility vbutil_keyblock \
     --pack "${base}.keyblock" \
     --flags $flags \
     --datapubkey "${pubkey}.vbpubk" \
     --signprivate "${signkey}.vbprivk"
 
   # verify it
-  vbutil_keyblock \
+  futility vbutil_keyblock \
     --unpack "${base}.keyblock" \
     --signpubkey "${signkey}.vbpubk"
 }

@@ -8,10 +8,8 @@
 #
 # Prerequisite tools needed in the system path:
 #
-#  gbb_utility (from src/platform/vboot_reference)
-#  vbutil_kernel (from src/platform/vboot_reference)
+#  futility (from src/platform/vboot_reference)
 #  cgpt (from src/platform/vboot_reference)
-#  dump_kernel_config (from src/platform/vboot_reference)
 #  verity (from src/platform/verity)
 #  load_kernel_test (from src/platform/vboot_reference)
 #  dumpe2fs
@@ -77,7 +75,7 @@ set -e
 PATH=$PATH:/usr/sbin:/sbin
 
 # Make sure the tools we need are available.
-for prereqs in gbb_utility vbutil_kernel cgpt dump_kernel_config verity \
+for prereqs in futility cgpt verity \
   load_kernel_test dumpe2fs sha1sum e2fsck; do
   type -P "${prereqs}" &>/dev/null || \
     { echo "${prereqs} tool not found."; exit 1; }
@@ -100,7 +98,7 @@ grab_kernel_config() {
   # Grab the existing kernel partition and get the kernel config.
   temp_kimage=$(make_temp_file)
   extract_image_partition ${image} ${kernelpart} ${temp_kimage}
-  dump_kernel_config ${temp_kimage}
+  futility dump_kernel_config ${temp_kimage}
 }
 
 # TODO(gauravsh): These are duplicated from chromeos-setimage. We need
@@ -291,7 +289,7 @@ update_rootfs_hash() {
   extract_image_partition ${image} ${kernelpart} ${temp_kimage}
   # Re-calculate kernel partition signature and command line.
   local updated_kimage=$(make_temp_file)
-  vbutil_kernel --repack ${updated_kimage} \
+  futility vbutil_kernel --repack ${updated_kimage} \
     --keyblock ${keyblock} \
     --signprivate ${signprivate} \
     --version "${KERNEL_VERSION}" \
@@ -549,7 +547,7 @@ sign_image_inplace() {
   extract_image_partition ${src_bin} 2 ${temp_kimage}
   updated_kimage=$(make_temp_file)
 
-  vbutil_kernel --repack "${updated_kimage}" \
+  futility vbutil_kernel --repack "${updated_kimage}" \
   --keyblock "${kernel_keyblock}" \
   --signprivate "${kernel_datakey}" \
   --version "${kernel_version}" \
@@ -601,7 +599,7 @@ sign_for_recovery() {
   local temp_kimageb=$(make_temp_file)
   extract_image_partition ${image_bin} 4 ${temp_kimageb}
   local updated_kimageb=$(make_temp_file)
-  vbutil_kernel --repack ${updated_kimageb} \
+  futility vbutil_kernel --repack ${updated_kimageb} \
     --keyblock ${KEY_DIR}/kernel.keyblock \
     --signprivate ${KEY_DIR}/kernel_data_key.vbprivk \
     --version "${KERNEL_VERSION}" \
@@ -642,7 +640,7 @@ sign_for_recovery() {
 
   # Re-calculate kernel partition signature and command line.
   local updated_kimagea=$(make_temp_file)
-  vbutil_kernel --repack ${updated_kimagea} \
+  futility vbutil_kernel --repack ${updated_kimagea} \
     --keyblock ${KEY_DIR}/recovery_kernel.keyblock \
     --signprivate ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
     --version "${KERNEL_VERSION}" \

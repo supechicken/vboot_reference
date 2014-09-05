@@ -116,7 +116,7 @@ find_valid_kernel_partitions() {
   for part_id in $*; do
     local name="$(cros_kernel_name $part_id)"
     local kernel_part="$(make_partition_dev "$FLAGS_image" "$part_id")"
-    if [ -z "$(dump_kernel_config "$kernel_part" 2>"$EXEC_LOG")" ]; then
+    if [ -z "$(futility dump_kernel_config "$kernel_part" 2>"$EXEC_LOG")" ]; then
       echo "INFO: $name: no kernel boot information, ignored." >&2
     else
       [ -z "$valid_partitions" ] &&
@@ -166,7 +166,8 @@ resign_ssd_kernel() {
 
     debug_msg "Checking if $name is valid"
     local kernel_config
-    if ! kernel_config="$(dump_kernel_config "$old_blob" 2>"$EXEC_LOG")"; then
+    if ! kernel_config=$(futility dump_kernel_config \
+                         "$old_blob" 2>"$EXEC_LOG"); then
       debug_msg "dump_kernel_config error message: $(cat "$EXEC_LOG")"
       echo "INFO: $name: no kernel boot information, ignored."
       continue
@@ -207,7 +208,7 @@ resign_ssd_kernel() {
 
     debug_msg "Re-signing $name from $old_blob to $new_blob"
     debug_msg "Using key: $KERNEL_DATAKEY"
-    vbutil_kernel \
+    futility vbutil_kernel \
       --repack "$new_blob" \
       --keyblock "$KERNEL_KEYBLOCK" \
       --config "$new_kernel_config_file" \
@@ -228,7 +229,7 @@ resign_ssd_kernel() {
     fi
 
     debug_msg "Verifying new kernel and keys"
-    vbutil_kernel \
+    futility vbutil_kernel \
       --verify "$new_kern" \
       --signpubkey "$KERNEL_PUBKEY" --verbose >"$EXEC_LOG" 2>&1 ||
       err_die "Failed to verify new $name. Message: $(cat "$EXEC_LOG")"
@@ -331,7 +332,8 @@ sanity_check_live_firmware() {
   local rootkey_file="$(make_temp_file)"
   echo "INFO: checking system firmware..."
   sudo flashrom -p host -i GBB -r "$bios_image" >/dev/null 2>&1
-  gbb_utility -g --rootkey="$rootkey_file" "$bios_image" >/dev/null 2>&1
+  futility gbb_utility -g --rootkey="$rootkey_file" "$bios_image" \
+    >/dev/null 2>&1
   if [ ! -s "$rootkey_file" ]; then
     debug_msg "failed to read root key from system firmware..."
   else

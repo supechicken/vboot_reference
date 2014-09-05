@@ -26,14 +26,16 @@ VERSION_FILE="${KEY_DIR}/key.versions"
 
 keyblock_version() {
   local keyblock="$1"
-  echo "$(vbutil_keyblock --unpack "${keyblock}" | grep 'Data key version' |
-    cut -f 2 -d : | tr -d ' ')"
+  local ver=$(futility vbutil_keyblock --unpack "${keyblock}" \
+    | grep 'Data key version' | cut -f 2 -d : | tr -d ' ')
+  echo $ver
 }
 
 key_version() {
   local key="$1"
-  echo "$(vbutil_key --unpack "${key}" | grep 'Key Version' | cut -f 2 -d : |
-    tr -d ' ')"
+  local ver=$(futility vbutil_key --unpack "${key}" | grep 'Key Version' \
+    | cut -f 2 -d : | tr -d ' ')
+  echo $ver
 }
 
 # Compare versions and print out error if there is a mismatch.
