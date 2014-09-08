@@ -916,6 +916,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	VbError_t retval = VBERROR_SUCCESS;
 	LoadKernelParams p;
 	uint32_t tpm_status = 0;
+	uint32_t disable_ec_sync = 1;
 
 	/* Start timer */
 	shared->timer_vb_select_and_load_kernel_enter = VbExGetTimer();
@@ -939,6 +940,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Do EC software sync if necessary */
 	if ((shared->flags & VBSD_EC_SOFTWARE_SYNC) &&
 	    !(cparams->gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)) {
+		disable_ec_sync = 0;
 		retval = VbEcSoftwareSync(0, cparams);
 		if (retval != VBERROR_SUCCESS)
 			goto VbSelectAndLoadKernel_exit;
@@ -1012,18 +1014,21 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		/* Recovery boot */
 		p.boot_flags |= BOOT_FLAG_RECOVERY;
 		retval = VbBootRecovery(cparams, &p);
-		VbExEcEnteringMode(0, VB_EC_RECOVERY);
+		if (!disable_ec_sync)
+			VbExEcEnteringMode(0, VB_EC_RECOVERY);
 		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
 
 	} else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
 		/* Developer boot */
 		retval = VbBootDeveloper(cparams, &p);
-		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+		if (!disable_ec_sync)
+			VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
 
 	} else {
 		/* Normal boot */
-		VbExEcEnteringMode(0, VB_EC_NORMAL);
+		if (!disable_ec_sync)
+			VbExEcEnteringMode(0, VB_EC_NORMAL);
 		retval = VbBootNormal(cparams, &p);
 
 		if ((1 == shared->firmware_index) &&
