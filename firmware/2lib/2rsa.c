@@ -313,12 +313,14 @@ int vb2_verify_digest(const struct vb2_public_key *key,
 {
 	struct vb2_workbuf wblocal = *wb;
 	uint32_t *workbuf32;
-	uint32_t key_bytes = key->arrsize * sizeof(uint32_t);
+	uint32_t key_bytes;
 	int pad_size;
 	int rv;
 
 	if (!key || !sig || !digest)
 		return VB2_ERROR_RSA_VERIFY_PARAM;
+
+	key_bytes = key->arrsize * sizeof(uint32_t);
 
 	if (key->algorithm >= VB2_ALG_COUNT) {
 		VB2_DEBUG("Invalid signature type!\n");
