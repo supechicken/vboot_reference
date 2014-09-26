@@ -40,6 +40,68 @@ struct vb2_packed_key {
 
 #define EXPECTED_VBPUBLICKEY_SIZE 32
 
+/*
+ * Generic struct header for all vboot2 structs.  This makes it easy to
+ * automatically parse and identify vboot structs (e.g., in futility).
+ */
+struct vb2_struct_common {
+	/* Magic number; see each struct for the expected value */
+	uint32_t magic;
+
+	/* Struct version; see each struct for the expected value */
+	uint16_t struct_version_major;
+	uint16_t struct_version_minor;
+
+	/* Offset of null-terminated ASCII description from start of struct */
+	uint32_t desc_offset;
+
+	/*
+	 * Size of description in bytes, counting null terminator.  May be 0
+	 * if no description is present.
+	 */
+	uint32_t desc_size;
+} __attribute__((packed));
+
+/*
+ * Value for vb2_packed_key2.c.magic "Vb2P".
+ *
+ * Chosen to be large enough that it will never be a valid key_offset for
+ * vb2_packed_key.
+ */
+#define VB2_PACKED_KEY2_MAGIC 0x50326256
+
+/* Current version of vb2_packed_key2 struct */
+#define VB2_PACKED_KEY2_VERSION_MAJOR 3
+#define VB2_PACKED_KEY2_VERSION_MINOR 0
+
+/* Packed public key data, version 2 */
+struct vb2_packed_key2 {
+	/* Common header fields */
+	struct vb2_struct_common c;
+
+	/*
+	 * Offset of key data from start of this struct.  Note that data may
+	 * not immediately follow the struct header, if this struct is a member
+	 * of a bigger struct; see vb2_keyblock2 for an example.
+	 */
+	uint32_t key_offset;
+
+	/* Size of key data in bytes (NOT strength of key in bits) */
+	uint32_t key_size;
+
+	/* Signature algorithm used by the key */
+	uint32_t algorithm;
+	// TODO: this is currently a composite of (hash alg)+(sign alg).
+	// Should we split that into two params?
+
+	/* Key version */
+	uint32_t key_version;
+
+	/* Key GUID.  Used for matching keys and signatures. */
+	uint8_t key_guid;
+
+} __attribute__((packed));
+
 /* Signature data (a secure hash, possibly signed) */
 struct vb2_signature {
 	/* Offset of signature data from start of this struct */
@@ -61,6 +123,53 @@ struct vb2_signature {
 } __attribute__((packed));
 
 #define EXPECTED_VBSIGNATURE_SIZE 24
+
+/*
+ * Value for vb2_signature.c.magic "Vb2S".
+ *
+ * Chosen to be large enough that it will never be a valid sig_offset for
+ * vb2_signature.
+ */
+#define VB2_SIGNATURE2_MAGIC 0x53326256
+
+/* Current version of vb2_signature2 struct */
+#define VB2_SIGNATURE2_VERSION_MAJOR 3
+#define VB2_SIGNATURE2_VERSION_MINOR 0
+
+/* Signature data, version 2 */
+struct vb2_signature2 {
+	/* Common header fields */
+	struct vb2_struct_common c;
+
+	/*
+	 * Offset of signature data from start of this struct.  Note that data
+	 * may not immediately follow the struct header, if this struct is a
+	 * member of a bigger struct; see vb2_keyblock2 for an example.
+	 */
+	uint32_t sig_offset;
+
+	/* Size of signature data in bytes */
+	uint32_t sig_size;
+
+	/* Size of the data block which was signed in bytes */
+	uint32_t data_size;
+
+	/* Signature algorithm used */
+	// TODO: need to define algorithms for unsigned SHA-256 / SHA-512
+	// Those are needed for dev-signed kernels
+	uint32_t algorithm;
+
+	/* GUID of key used to generate this signature */
+	// TODO: what to set this to if algorithm is unsigned hash?
+	uint8_t key_guid[16];
+
+	/* Offset of null-terminated ASCII description from start of struct */
+	uint32_t desc_offset;
+
+	/* Size of description in bytes, counting null terminator */
+	uint32_t desc_size;
+} __attribute__((packed));
+
 
 #define KEY_BLOCK_MAGIC "CHROMEOS"
 #define KEY_BLOCK_MAGIC_SIZE 8
@@ -128,6 +237,54 @@ struct vb2_keyblock {
 
 #define EXPECTED_VB2KEYBLOCKHEADER_SIZE 112
 
+/*
+ * Value for vb2_keyblock2.c.magic "Vb2B".
+ *
+ * Chosen to conflict with the old vb2_keyblock.magic.  That's ok, since the
+ * major version different anyway so we don't need cross-struct compatibility.
+ */
+#define VB2_KEYBLOCK2_MAGIC 0x42326256
+
+/* Current version of vb2_keyblock2 struct */
+#define VB2_KEYBLOCK2_VERSION_MAJOR 3
+#define VB2_KEYBLOCK2_VERSION_MINOR 0
+
+struct vb2_keyblock2 {
+	/* Common header fields */
+	struct vb2_struct_common c;
+
+	/*
+	 * Size of this entire key block, including keys, signatures, and
+	 * padding, in bytes
+	 */
+	uint32_t keyblock_size;
+
+	/* Flags (VB2_KEY_BLOCK_FLAG_*) */
+	uint32_t flags;
+
+	/* Key to verify the chunk of data */
+	struct vb2_packed_key2 data_key;
+
+	/* Number of keyblock signatures which follow */
+	uint32_t signature_count;
+
+	/*
+	 * Offset of signature table from the start of the keyblock.  Note that
+	 * all signature offsets are calculated from the start of the keyblock.
+	 * The signature table is an array of struct vb2_signature2.
+	 *
+	 * Signatures sign the contents of this struct and the data pointed to
+	 * by data_key (but not the signature table/data).
+	 *
+	 * For the firmware, there may be only one signature.
+	 *
+	 * Kernels often have at least two - one using the kernel subkey
+	 * from the RW firmware (for signed kernels) and one which is simply
+	 * a SHA-512 hash (for unsigned developer kernels).
+	 */
+	uint32_t signature_table_offset;
+} __attribute__((packed));
+
 /****************************************************************************/
 
 /* Firmware preamble header */
@@ -188,6 +345,78 @@ struct vb2_fw_preamble {
 } __attribute__((packed));
 
 #define EXPECTED_VB2FIRMWAREPREAMBLEHEADER2_1_SIZE 108
+
+/* Value for vb2_preamble.h.magic "Vb2F".  Will not match the  */
+#define VB2_PREAMBLE2_MAGIC 0x46326256
+
+/* Current version of vb2_signature2 struct */
+#define VB2_SIGNATURE2_VERSION_MAJOR 3
+#define VB2_SIGNATURE2_VERSION_MINOR 0
+
+/* Single hash entry for the firmware preamble */
+struct vb2_fw_preamble_hash {
+	/* Tag to identify type of data being hashed */
+	uint32_t tag;
+
+	/* Size of hashed data in bytes */
+	uint32_t data_size;
+
+	/* Hash digest follows this struct */
+	uint8_t digest[0];
+} __attribute__((packed));
+
+struct vb2_fw_preamble2 {
+	/* Common header fields */
+	struct vb2_struct_common c;
+
+	/*
+	 * Size of this preamble, including keys, signatures, and padding, in
+	 * bytes
+	 */
+	uint32_t preamble_size;
+
+	/* Flags; see VB2_FIRMWARE_PREAMBLE_* */
+	uint32_t flags;
+
+	/* Firmware version */
+	uint32_t firmware_version;
+
+	/*
+	 * Signature for this preamble (header + kernel subkey + body
+	 * signature)
+	 */
+	struct vb2_signature2 preamble_signature;
+
+	/*
+	 * The preamble contains a list of hashes for the various firmware
+	 * components.  These components may follow the preamble, or may be
+	 * located in entirely different storage devices.  The hashes are all
+	 * listed here.
+	 */
+
+	/* Key to verify kernel key block */
+	// TODO: this should really just be another type of hashed data.  That
+	// is, we shouldn't need to load the kernel subkey to verify the
+	// firmware preamble.
+	struct vb2_packed_key2 kernel_subkey;
+
+	/* Number of hash entries */
+	uint32_t hash_count;
+
+	/* Hash algorithm used (must be same for all entries) */
+	uint32_t hash_algorithm;
+
+	/* Size of each hash entry, in bytes */
+	uint32_t hash_entry_size;
+
+	/*
+	 * Offset of first hash entry from start of preamble digest from start
+	 * of preamble.  Entry N can be found at:
+	 *
+	 * (uint8_t *)hdr + hdr->hash_table_offset + N * hdr->hash_entry_size
+	 */
+	uint32_t hash_table_offset;
+} __attribute__((packed));
 
 /****************************************************************************/
 
