@@ -431,8 +431,8 @@ resign_firmware_payload() {
 
   # extract_firmware_bundle can fail if the image has no firmware update.
   extract_firmware_bundle "${firmware_bundle}" "${shellball_dir}" ||
-    { echo "Didn't find a firmware update. Not signing firmware."
-    return; }
+    { echo "ERROR: No firmware update found. Please run with NO_FWUPDATE=1." &&
+      exit 1; }
   echo "Found a valid firmware update shellball."
 
   local image_file sign_args=() loem_sfx loem_output_dir
