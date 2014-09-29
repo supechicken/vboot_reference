@@ -29,6 +29,7 @@
 
 /* Size of secure data used by vboot */
 #define VB2_SECDATA_SIZE 10
+#define VB2_SECDATA_KERNEL_SIZE 13
 
 /*
  * Recommended size of work buffer.
