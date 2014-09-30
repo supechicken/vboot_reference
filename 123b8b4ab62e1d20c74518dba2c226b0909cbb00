@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00a5412_fef93961",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-09-30T04:45:48Z",
+      "side": 1,
+      "message": "(Also, it seems quite dangerous that this is just defined as a number here with no relation to struct vb2_secdata... but that\u0027s not your problem right now, I guess.)",
+      "revId": "123b8b4ab62e1d20c74518dba2c226b0909cbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0150830_df52f3a6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-09-30T04:45:48Z",
+      "side": 1,
+      "message": "Hmm... is this useful? I mean, right now we want to know the TPM space size of vboot1\u0027s kernel space, so I think we should get that through sizeof(struct RollbackSpaceKernel) from rollback_index.h instead. One day we might want to know the size of vboot2\u0027s kernel space, which may be completely different, and then we might define that like this.",
+      "revId": "123b8b4ab62e1d20c74518dba2c226b0909cbb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
