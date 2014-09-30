@@ -20,15 +20,17 @@ main() {
         exit 1
     fi
 
-    local image="$1"
+    local image="$1" files
 
     local rootfs=$(make_temp_dir)
     mount_image_partition_ro "$image" 3 "$rootfs"
 
     # This mirrors the check performed in the platform_ToolchainOptions
     # autotest.
-    if readelf -s "$rootfs/opt/google/chrome/chrome" | \
-       grep -q __asan_init; then
+    files=$(scanelf -qRymg -s '+^__asan_init'  "${rootfs}")
+    if [[ -n ${files} ]]; then
+        echo "Found ASAN enabled in files:" >&2
+        echo "${files}" >&2
         exit 1
     fi
 }
