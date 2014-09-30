@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00a5412_a1bf2432",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "Make this an enum? Since we\u0027ll have a lot, it might be better if we defined them all in one place so we don\u0027t get accidental duplicates. That\u0027s likely if people tend to use a 4-byte ASCII string for their \"magic\" number.",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00a5412_c1d9f8ab",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "An 8-bit GUID? More like a CPID (\"Collision Prone ID\"). And what\u0027s it\u0027s purpose? I\u0027m not sure what you mean by \"matching keys and sigs\".",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00a5412_617fccd9",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "Okay, this is a better size for a GUID. And firmware/include/gpt.h defines a type for it, from the EFI standard. Perhaps we should use that type?",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_9985bb2d",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "Will not match the ... what? What? Don\u0027t leave me hanging!",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_d96213f9",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "Are the tag values defined somewhere?",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_99213b95",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "Agree. We should be able to say \"here\u0027s an arbitrary struct describing the firmware/kernel/EC/whatever\", and \"here\u0027s the sig for it\". There should be a clean disconnect between the structs we use to boot and the structs we use to verify them.",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_b98d173f",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-09-30T16:49:23Z",
+      "side": 1,
+      "message": "\"from start of preamble digest from start of preamble\" What?",
+      "revId": "dcbccc17e3bfc7538d242a7772a19cf113bb8c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
