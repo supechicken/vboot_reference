@@ -33,6 +33,24 @@
       "revId": "37b67c93b42c32f12f4d5301a3b8da09aa1f6f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08df4f4_2ab420c6",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2014-10-01T19:49:23Z",
+      "side": 1,
+      "message": "This function returns 0 for success.  In theory !(primary_valid || secondary_valid) would work but this makes it clear what will be returned.",
+      "parentUuid": "d07188c8_e8b63bd0",
+      "revId": "37b67c93b42c32f12f4d5301a3b8da09aa1f6f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
