@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0fdac73_920dbc58",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-02T21:41:46Z",
+      "side": 1,
+      "message": "Not for swapping slots upon using up tries.\n\nFailure would zero out the try count and swap slots in vb2_fail().\n\nUnknown just means we didn\u0027t boot fully.  For example, the user turned the device on, but back off before it booted.  That doesn\u0027t mean this slot is bad.",
+      "parentUuid": "706c5c15_d9d93703",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30a8245b_530daed9",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-02T21:22:55Z",
       "side": 1,
       "message": "could it be that we\u0027ve already tried the other slot, hence, we need to start recovery?",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_b4272052",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-02T21:41:46Z",
+      "side": 1,
+      "message": "If so, we\u0027ll get there soon enough.",
+      "parentUuid": "30a8245b_530daed9",
       "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "30666437_f40a38bc",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-02T21:41:46Z",
+      "side": 1,
+      "message": "No.  We only try one slot at a time with a bailout count; the other is assumed good.  That matches current behavior.",
+      "parentUuid": "706c5c15_19ebaf8b",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706c5c15_99f69f6e",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-02T21:15:41Z",
       "side": 1,
       "message": "is this necessarily true? can we be trying a new slot? if so, we\u0027re overwriting the previous result.",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fdac73_1249cc8d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-02T21:41:46Z",
+      "side": 1,
+      "message": "result\u003dtrying specifically means that tries\u003e0 at the time we picked our slot.\n\nYes, \"trying\" is somewhat overloaded here.  And you may find that somewhat trying. :)",
+      "parentUuid": "706c5c15_99f69f6e",
       "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
