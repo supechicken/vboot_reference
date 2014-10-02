@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "70ae1c67_2f7a09af",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-02T22:10:11Z",
+      "side": 1,
+      "message": "maybe we should pay more attention to UNKNOWN. it could be that the machine hanged before fully booted and the user was forced to reboot it.\n\ni still prefer we have a (robust) logic in vb2_select_fw_slot which does not depend on the assumptions that all the code which have access to nvram behave properly and vb2_fail is always called on failure.",
+      "parentUuid": "f0fdac73_920dbc58",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30a8245b_530daed9",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "result\u003dtrying specifically means that tries\u003e0 at the time we picked our slot.\n\nYes, \"trying\" is somewhat overloaded here.  And you may find that somewhat trying. :)",
       "parentUuid": "706c5c15_99f69f6e",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "706c5c15_b9b8bb4d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-02T22:10:11Z",
+      "side": 1,
+      "message": "Ok, i guess my question is about the difference between UNKNOWN and TRYING, then. Why do we need to distinguish them?",
+      "parentUuid": "f0fdac73_1249cc8d",
       "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
