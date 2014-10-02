@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "706c5c15_d9d93703",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-02T21:15:41Z",
+      "side": 1,
+      "message": "do we not care about VB2_FW_RESULT_FAILURE or _UNKNOWN?",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "706c5c15_19ebaf8b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-02T21:15:41Z",
+      "side": 1,
+      "message": "do we not reset VB2_NV_TRY_COUNT?",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "706c5c15_99f69f6e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-02T21:15:41Z",
+      "side": 1,
+      "message": "is this necessarily true? can we be trying a new slot? if so, we\u0027re overwriting the previous result.",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
