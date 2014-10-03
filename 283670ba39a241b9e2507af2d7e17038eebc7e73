@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f0fdac73_18a56dbd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T00:48:24Z",
+      "side": 1,
+      "message": "I agree that if we *know* the last boot failed we should try the other slot.\n\nBut there are many reasons why we don\u0027t know for sure what happened.  And realistically, many of those are caused by things which do not imply the slot is bad - the user shutting the system down, or tripping over the power cord, or the battery being too low.\n\nWhich is why we don\u0027t swap slots more often.\n\nImagine all the weirdness a user would see if they shut the system down uncleanly, and on the next boot, Chrome goes back to the previous version.",
+      "parentUuid": "70ae1c67_2f7a09af",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30a8245b_530daed9",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Ok, i guess my question is about the difference between UNKNOWN and TRYING, then. Why do we need to distinguish them?",
       "parentUuid": "f0fdac73_1249cc8d",
+      "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fdac73_d8e645eb",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-03T00:48:24Z",
+      "side": 1,
+      "message": "TRYING: tries was \u003e0 last boot.  We decremented the try count (possibly to 0, if this is our last try).  If that *was* our last try, we want to try the other slot this boot.\n\nBut we can\u0027t just check tries\u003d0.  Because that\u0027s the normal/default state of the tries counter.\n\nAnd we can\u0027t swap slots at the time tries goes to 0.  Because then if the last try WAS good, we\u0027d still boot the other slot next time.\n\nSo we set a flag (state\u003dtrying) so that on the next boot, result\u003dtrying tries\u003d0 tells us we\u0027ve used the last try last boot.\n\nUNKNOWN: we don\u0027t know happened on the last boot.  It didn\u0027t reach a terminal state.  So it could be good, or it could be bad.  Presumably, if we try it again and the user doesn\u0027t shut the machine down, we\u0027ll reach one of those terminal states.",
+      "parentUuid": "706c5c15_b9b8bb4d",
       "revId": "283670ba39a241b9e2507af2d7e17038eebc7e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
