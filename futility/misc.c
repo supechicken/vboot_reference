@@ -114,6 +114,64 @@ int futil_valid_gbb_header(GoogleBinaryBlockHeader *gbb, uint32_t len,
 	return 1;
 }
 
+/* How many bytes in each supported digest alg type? */
+static const int alg_to_len[] = {SHA1_DIGEST_SIZE, SHA256_DIGEST_SIZE};
+BUILD_ASSERT(ARRAY_SIZE(alg_to_len) == 2);	/* only sha1 and sha256 */
+
+/* For GBB v1.2 and later, print the stored sha1sum of the HWID (and whether
+ * it's correct). Return true if it is correct. */
+int print_hwid_digest(GoogleBinaryBlockHeader *gbb,
+		      const char *banner, const char *footer)
+{
+	/* There isn't one for v1.1 and earlier, so it must be invalid */
+	if (gbb->minor_version < 2)
+		return 0;
+
+	printf("%s", banner);
+
+	uint8_t *buf = (uint8_t *)gbb;
+	char *hwid_str = (char *)(buf + gbb->hwid_offset);
+	int is_valid = 0;
+	int i;
+	uint8_t alg = gbb->hwid_digest_alg;
+	if (alg <= SHA256_DIGEST_ALGORITHM) {
+		uint8_t* digest = DigestBuf(buf + gbb->hwid_offset,
+					    strlen(hwid_str),
+					    alg);
+		if (digest) {
+			is_valid = 1;
+			for (i = 0; i < alg_to_len[alg]; i++) {
+				printf("%02x", gbb->hwid_digest[i]);
+				if (gbb->hwid_digest[i] != digest[i])
+					is_valid = 0;
+			}
+			free(digest);
+		}
+	}
+	printf("   %s", is_valid ? "valid" : "<invalid>");
+	printf("%s", footer);
+	return is_valid;
+}
+
+/* For GBB v1.2 and later, update the hwid_digest field. */
+void update_hwid_digest(GoogleBinaryBlockHeader *gbb, unsigned int alg)
+{
+	/* There isn't one for v1.1 and earlier */
+	if (gbb->minor_version < 2)
+		return;
+	/* Only sha1 and sha256 are supported  */
+	if (alg > SHA256_DIGEST_ALGORITHM)
+		return;
+
+	uint8_t *buf = (uint8_t *)gbb;
+	char *hwid_str = (char *)(buf + gbb->hwid_offset);
+	uint8_t* digest = DigestBuf(buf + gbb->hwid_offset,
+				    strlen(hwid_str),
+				    alg);
+	memcpy(gbb->hwid_digest, digest, alg_to_len[alg]);
+	gbb->hwid_digest_alg = alg;
+	free(digest);
+}
 
 /*
  * TODO: All sorts of race conditions likely here, and everywhere this is used.
