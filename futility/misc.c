@@ -114,6 +114,50 @@ int futil_valid_gbb_header(GoogleBinaryBlockHeader *gbb, uint32_t len,
 	return 1;
 }
 
+/* For GBB v1.2 and later, print the stored sha1sum of the HWID (and whether
+ * it's correct). Return true if it is correct. */
+int print_hwid_sha1sum(GoogleBinaryBlockHeader *gbb,
+		       const char *banner, const char *footer)
+{
+	/* There isn't one for v1.1 and earlier, so it must be invalid */
+	if (gbb->minor_version < 2)
+		return 0;
+
+	printf("%s", banner);
+
+	uint8_t *buf = (uint8_t *)gbb;
+	char *hwid_str = (char *)(buf + gbb->hwid_offset);
+	int is_valid = 1;
+	int i;
+	uint8_t* digest = DigestBuf(buf + gbb->hwid_offset,
+				    strlen(hwid_str) + 1,
+				    SHA1_DIGEST_ALGORITHM);
+	for (i = 0; i < SHA1_DIGEST_SIZE; i++) {
+		printf("%02x", gbb->hwid_sha1sum[i]);
+		if (gbb->hwid_sha1sum[i] != digest[i])
+			is_valid = 0;
+	}
+	free(digest);
+	printf("   %s", is_valid ? "valid" : "<invalid>");
+	printf("%s", footer);
+	return is_valid;
+}
+
+/* For GBB v1.2 and later, update the hwid_sha1sum field. */
+void update_hwid_sha1sum(GoogleBinaryBlockHeader *gbb)
+{
+	/* There isn't one for v1.1 and earlier */
+	if (gbb->minor_version < 2)
+		return;
+
+	uint8_t *buf = (uint8_t *)gbb;
+	char *hwid_str = (char *)(buf + gbb->hwid_offset);
+	uint8_t* digest = DigestBuf(buf + gbb->hwid_offset,
+				    strlen(hwid_str) + 1,
+				    SHA1_DIGEST_ALGORITHM);
+	memcpy(gbb->hwid_sha1sum, digest, SHA1_DIGEST_SIZE);
+	free(digest);
+}
 
 /*
  * TODO: All sorts of race conditions likely here, and everywhere this is used.

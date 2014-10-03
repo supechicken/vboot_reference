@@ -29,6 +29,7 @@ static void print_help(const char *prog)
 		"with following options:\n"
 		"     --hwid          \tReport hardware id (default).\n"
 		"     --flags         \tReport header flags.\n"
+		"     --sha1sum       \tReport sha1sum of hwid (>= v1.2)\n"
 		" -k, --rootkey=FILE  \tFile name to export Root Key.\n"
 		" -b, --bmpfv=FILE    \tFile name to export Bitmap FV.\n"
 		" -r  --recoverykey=FILE\tFile name to export Recovery Key.\n"
@@ -67,10 +68,11 @@ static const struct option long_opts[] = {
 	{"recoverykey", 1, NULL, 'R'},
 	{"hwid", 2, NULL, 'i'},
 	{"flags", 2, NULL, 'L'},
+	{"sha1sum", 0, NULL, 'S'},
 	{NULL, 0, NULL, 0},
 };
 
-static char *short_opts = ":gsc:o:k:b:R:r:h:i:L:f:";
+static char *short_opts = ":gsc:o:k:b:R:r:h:i:L:f:S";
 
 static int errorcnt;
 
@@ -340,6 +342,7 @@ static int do_gbb_utility(int argc, char *argv[])
 	char *opt_hwid = NULL;
 	char *opt_flags = NULL;
 	int sel_hwid = 0;
+	int sel_sha1sum = 0;
 	int sel_flags = 0;
 	uint8_t *inbuf = NULL;
 	off_t filesize;
@@ -385,6 +388,9 @@ static int do_gbb_utility(int argc, char *argv[])
 			/* --flags is optional: null might be okay */
 			opt_flags = optarg;
 			sel_flags = 1;
+			break;
+		case 'S':
+			sel_sha1sum = 1;
 			break;
 		case '?':
 			errorcnt++;
@@ -437,7 +443,7 @@ static int do_gbb_utility(int argc, char *argv[])
 
 		/* With no args, show the HWID */
 		if (!opt_rootkey && !opt_bmpfv && !opt_recoverykey
-		    && !sel_flags)
+		    && !sel_flags && !sel_sha1sum)
 			sel_hwid = 1;
 
 		inbuf = read_entire_file(infile, &filesize);
@@ -457,6 +463,9 @@ static int do_gbb_utility(int argc, char *argv[])
 			       gbb->hwid_size ? (char *)(gbb_base +
 							 gbb->
 							 hwid_offset) : "");
+		if (sel_sha1sum)
+			print_hwid_sha1sum(gbb, "sha1sum: ", "\n");
+
 		if (sel_flags)
 			printf("flags: 0x%08x\n", gbb->flags);
 		if (opt_rootkey)
@@ -540,6 +549,7 @@ static int do_gbb_utility(int argc, char *argv[])
 				       gbb->hwid_size);
 				strcpy((char *)(gbb_base + gbb->hwid_offset),
 				       opt_hwid);
+				update_hwid_sha1sum(gbb);
 			}
 		}
 
