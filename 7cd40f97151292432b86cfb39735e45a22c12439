@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "70f1bca1_8e075b85",
+        "filename": "futility/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2014-10-03T16:50:51Z",
+      "side": 1,
+      "message": "Hashing a zero-length buffer should be perfectly valid. If we hash the \\0 here then we need to carry it around so server-side hashes match -- which is awkward IMO. So I\u0027d prefer to leave it off but it will work either way as long as everyone is doing the same thing.",
+      "parentUuid": "30666437_0950799c",
+      "revId": "7cd40f97151292432b86cfb39735e45a22c12439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50abd856_c475533a",
         "filename": "futility/misc.c",
         "patchSetId": 1
