@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70f1bca1_eee9bfbd",
+        "filename": "futility/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-03T16:11:53Z",
+      "side": 1,
+      "message": "Correct, except that we check that the major versions match in  futil_valid_gbb_header(), above. Of course this assumes that we don\u0027t try to print the contents of the header until/unless we\u0027ve called that function, but that\u0027s true today, and the test_gbb_utility.sh script has a test to ensure that mismatched major versions are considered invalid and don\u0027t print.",
+      "parentUuid": "50abd856_a4f3777d",
+      "revId": "7cd40f97151292432b86cfb39735e45a22c12439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0026841_97900c58",
         "filename": "futility/misc.c",
         "patchSetId": 1
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "30666437_0950799c",
+        "filename": "futility/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-03T16:11:53Z",
+      "side": 1,
+      "message": "Newly-created GBBs have a HWID of \"\", and we always check to be sure the string is null-terminated. Without the zero, I\u0027d be digesting a zero-length buffer. I figured it was better not to push the boundaries of the digest function.",
+      "parentUuid": "d0026841_97900c58",
+      "revId": "7cd40f97151292432b86cfb39735e45a22c12439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50abd856_c475533a",
         "filename": "futility/misc.c",
         "patchSetId": 1
@@ -53,6 +89,24 @@
       "writtenOn": "2014-10-03T16:01:15Z",
       "side": 1,
       "message": "ditto: doesn\u0027t handle major \u003e 1",
+      "revId": "7cd40f97151292432b86cfb39735e45a22c12439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30666437_e94c1d0a",
+        "filename": "futility/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-03T16:11:53Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "50abd856_c475533a",
       "revId": "7cd40f97151292432b86cfb39735e45a22c12439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
