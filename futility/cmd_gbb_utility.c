@@ -29,6 +29,7 @@ static void print_help(const char *prog)
 		"with following options:\n"
 		"     --hwid          \tReport hardware id (default).\n"
 		"     --flags         \tReport header flags.\n"
+		"     --digest        \tReport digest of hwid (>= v1.2)\n"
 		" -k, --rootkey=FILE  \tFile name to export Root Key.\n"
 		" -b, --bmpfv=FILE    \tFile name to export Bitmap FV.\n"
 		" -r  --recoverykey=FILE\tFile name to export Recovery Key.\n"
@@ -38,6 +39,7 @@ static void print_help(const char *prog)
 		"with following options:\n"
 		" -o, --output=FILE   \tNew file name for ouptput.\n"
 		"     --hwid=HWID     \tThe new hardware id to be changed.\n"
+	        "     --sha256     \tUse sha256 for the HWID digest, not sha1\n"
 		"     --flags=FLAGS   \tThe new (numeric) flags value.\n"
 		" -k, --rootkey=FILE  \tFile name of new Root Key.\n"
 		" -b, --bmpfv=FILE    \tFile name of new Bitmap FV.\n"
@@ -55,6 +57,11 @@ static void print_help(const char *prog)
 		prog, prog, prog, prog);
 }
 
+enum {
+	OPT_DIGEST = 1000,
+	OPT_SHA256,
+};
+
 /* Command line options */
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
@@ -67,10 +74,12 @@ static const struct option long_opts[] = {
 	{"recoverykey", 1, NULL, 'R'},
 	{"hwid", 2, NULL, 'i'},
 	{"flags", 2, NULL, 'L'},
+	{"digest", 0, NULL, OPT_DIGEST},
+	{"sha256", 0, NULL, OPT_SHA256},
 	{NULL, 0, NULL, 0},
 };
 
-static char *short_opts = ":gsc:o:k:b:R:r:h:i:L:f:";
+static char *short_opts = ":gsc:o:k:b:R:r:h:i:L:f:S";
 
 static int errorcnt;
 
@@ -339,7 +348,9 @@ static int do_gbb_utility(int argc, char *argv[])
 	char *opt_recoverykey = NULL;
 	char *opt_hwid = NULL;
 	char *opt_flags = NULL;
+	int opt_digest_alg = SHA1_DIGEST_ALGORITHM;
 	int sel_hwid = 0;
+	int sel_digest = 0;
 	int sel_flags = 0;
 	uint8_t *inbuf = NULL;
 	off_t filesize;
@@ -385,6 +396,12 @@ static int do_gbb_utility(int argc, char *argv[])
 			/* --flags is optional: null might be okay */
 			opt_flags = optarg;
 			sel_flags = 1;
+			break;
+		case OPT_DIGEST:
+			sel_digest = 1;
+			break;
+		case OPT_SHA256:
+			opt_digest_alg = SHA256_DIGEST_ALGORITHM;
 			break;
 		case '?':
 			errorcnt++;
@@ -437,7 +454,7 @@ static int do_gbb_utility(int argc, char *argv[])
 
 		/* With no args, show the HWID */
 		if (!opt_rootkey && !opt_bmpfv && !opt_recoverykey
-		    && !sel_flags)
+		    && !sel_flags && !sel_digest)
 			sel_hwid = 1;
 
 		inbuf = read_entire_file(infile, &filesize);
@@ -457,6 +474,9 @@ static int do_gbb_utility(int argc, char *argv[])
 			       gbb->hwid_size ? (char *)(gbb_base +
 							 gbb->
 							 hwid_offset) : "");
+		if (sel_digest)
+			print_hwid_digest(gbb, "digest: ", "\n");
+
 		if (sel_flags)
 			printf("flags: 0x%08x\n", gbb->flags);
 		if (opt_rootkey)
@@ -540,6 +560,7 @@ static int do_gbb_utility(int argc, char *argv[])
 				       gbb->hwid_size);
 				strcpy((char *)(gbb_base + gbb->hwid_offset),
 				       opt_hwid);
+				update_hwid_digest(gbb, opt_digest_alg);
 			}
 		}
 

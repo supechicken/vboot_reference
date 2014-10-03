@@ -312,7 +312,8 @@ struct vb2_shared_data {
 
 /* VB2 GBB struct version */
 #define VB2_GBB_MAJOR_VER      1
-#define VB2_GBB_MINOR_VER      1
+#define VB2_GBB_MINOR_VER      2
+/* v1.2 - added fields for digest of the HWID */
 
 /* Flags for vb2_gbb_header.flags */
 enum vb2_gbb_flag {
@@ -385,7 +386,11 @@ struct vb2_gbb_header {
 	uint32_t recovery_key_offset;	/* Recovery key */
 	uint32_t recovery_key_size;
 
-	uint8_t  pad[80]; /* To match GBB_HEADER_SIZE.  Initialize to 0. */
+	/* Added in version 1.2 */
+	uint8_t  hwid_digest[32];	/* sha256 is larger than sha1 */
+	uint8_t  hwid_digest_alg;	/* sha1 or sha256 only */
+
+	uint8_t  pad[47]; /* To match GBB_HEADER_SIZE.  Initialize to 0. */
 } __attribute__((packed));
 
 #endif  /* VBOOT_REFERENCE_VBOOT_2STRUCT_H_ */
