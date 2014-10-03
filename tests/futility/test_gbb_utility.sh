@@ -201,6 +201,34 @@ cat ${TMP}.blob | ${REPLACE} 0x2c 0x00 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g --recoverykey ${TMP}.read2 ${TMP}.blob.bad
 if ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2 ${TMP}.blob.bad; then false; fi
 
+
+# GBB v1.2 adds a 20-byte hwid_sha1sum field in what was previously padding:
+#
+# hwid_sha1sum          0x0030  xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx
+#                       0x0040  xx xx xx xx
+# pad:                  0x0044  00 00 00 00 00 00 00 00 00 00 00 00
+#                       0x0060  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+#                       0x0070  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+# (HWID)                0x0080  30 31 32 33 34 35 36 37 38 39 41 42 43 44 45 00
+
+# See that the sha1sum is updated properly.
+hwid="123456789ABCDEF"
+${FUTILITY} gbb_utility -s -i ${hwid} ${TMP}.blob
+expect=$(echo -n "$hwid" | sha1sum | cut -d ' ' -f 1)
+[ $(echo -n ${expect} | wc -c) == "40" ]
+${FUTILITY} gbb_utility -g --sha1sum ${TMP}.blob | grep ${expect}
+
+# Garble the sha1sum, see that it's noticed.
+# (assuming these zeros aren't present)
+cat ${TMP}.blob | ${REPLACE} 0x33 0x00 0x00 0x00 0x00 0x00 > ${TMP}.blob.bad
+${FUTILITY} gbb_utility -g --sha1sum ${TMP}.blob.bad | grep '0000000000'
+${FUTILITY} gbb_utility -g --sha1sum ${TMP}.blob.bad | grep 'invalid'
+
+# Garble the HWID. The sha1sum is unchanged, but now invalid.
+cat ${TMP}.blob | ${REPLACE} 0x84 0x70 0x71 0x72 > ${TMP}.blob.bad
+${FUTILITY} gbb_utility -g --sha1sum ${TMP}.blob.bad | grep ${expect}
+${FUTILITY} gbb_utility -g --sha1sum ${TMP}.blob.bad | grep 'invalid'
+
 # cleanup
 rm -f ${TMP}*
 exit 0
