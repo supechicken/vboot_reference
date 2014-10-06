@@ -665,6 +665,10 @@ static int ReadGpio(int signal_type) {
   if (value == -1)
     return -1;
 
+  /* Normalize the GPIO value in case kernel does not return exactly 1 */
+  if (value > 0)
+    value = 1;
+
   /* Compare the GPIO value with the active value and return 1 if match. */
   return (value == active_high ? 1 : 0);
 }
