@@ -620,6 +620,42 @@ VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
                         uint64_t lba_count, const void *buffer);
 
+/* Streaming read interface */
+typedef void *VbExStream_t;
+
+/**
+ * Open a stream on a disk
+ *
+ * @param handle	Disk to open the stream against
+ * @param lba_start	Starting sector offset within the disk to stream from
+ * @param lba_count	Maximum extent of the stream in sectors
+ * @param stream	out-paramter for the generated stream
+ *
+ * @return Error code, or VBERROR_SUCCESS.
+ */
+VbError_t VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
+			 uint64_t lba_count, VbExStream_t *stream_ptr);
+
+/**
+ * Read from a stream on a disk
+ *
+ * @param stream	Stream to read from
+ * @param bytes		Number of bytes to read
+ * @param buffer	Destination to read into
+ *
+ * @return Error code, or VBERROR_SUCCESS. Failure to read as much data as
+ * requested is an error.
+ */
+VbError_t VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer);
+
+/**
+ * Close a stream
+ *
+ * @param stream	Stream to close
+ */
+void VbExStreamClose(VbExStream_t stream);
+
+
 /*****************************************************************************/
 /* Display */
 
