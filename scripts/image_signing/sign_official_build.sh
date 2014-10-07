@@ -538,15 +538,16 @@ EOF
 
 # Sign the kernel partition on an image using the given keys. Modifications are
 # made in-place.
-# Args: src_bin kernel_datakey kernel_keyblock kernel_version
+# Args: src_bin kernel_datakey kernel_keyblock kernel_version part_no
 sign_image_inplace() {
   src_bin=$1
   kernel_datakey=$2
   kernel_keyblock=$3
   kernel_version=$4
+  part_no=$5
 
   temp_kimage=$(make_temp_file)
-  extract_image_partition ${src_bin} 2 ${temp_kimage}
+  extract_image_partition ${src_bin} ${part_no} ${temp_kimage}
   updated_kimage=$(make_temp_file)
 
   vbutil_kernel --repack "${updated_kimage}" \
@@ -554,7 +555,7 @@ sign_image_inplace() {
   --signprivate "${kernel_datakey}" \
   --version "${kernel_version}" \
   --oldblob "${temp_kimage}"
-  replace_image_partition ${src_bin} 2 ${updated_kimage}
+  replace_image_partition ${src_bin} ${part_no} ${updated_kimage}
 }
 
 # Generate the SSD image
@@ -563,7 +564,10 @@ sign_for_ssd() {
   image_bin=$1
   sign_image_inplace ${image_bin} ${KEY_DIR}/kernel_data_key.vbprivk \
     ${KEY_DIR}/kernel.keyblock \
-    "${KERNEL_VERSION}"
+    "${KERNEL_VERSION}" 2
+  sign_image_inplace ${image_bin} ${KEY_DIR}/kernel_data_key.vbprivk \
+    ${KEY_DIR}/kernel.keyblock \
+    "${KERNEL_VERSION}" 4
   echo "Signed SSD image output to ${image_bin}"
 }
 
@@ -572,7 +576,10 @@ sign_for_usb() {
   image_bin=$1
   sign_image_inplace ${image_bin} ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
     ${KEY_DIR}/recovery_kernel.keyblock \
-    "${KERNEL_VERSION}"
+    "${KERNEL_VERSION}" 2
+  sign_image_inplace ${image_bin} ${KEY_DIR}/kernel_data_key.vbprivk \
+    ${KEY_DIR}/kernel.keyblock \
+    "${KERNEL_VERSION}" 4
 
   # Now generate the installer vblock with the SSD keys.
   # The installer vblock is for KERN-A on direct boot images.
@@ -659,7 +666,7 @@ sign_for_factory_install() {
   image_bin=$1
   sign_image_inplace ${image_bin} ${KEY_DIR}/installer_kernel_data_key.vbprivk \
     ${KEY_DIR}/installer_kernel.keyblock \
-    "${KERNEL_VERSION}"
+    "${KERNEL_VERSION}" 2
   echo "Signed factory install image output to ${image_bin}"
 }
 
