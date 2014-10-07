@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "30e904d0_83e63d6f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-07T22:54:59Z",
+      "side": 1,
+      "message": "stream_ptr",
+      "range": {
+        "startLine": 642,
+        "startChar": 36,
+        "endLine": 642,
+        "endChar": 42
+      },
+      "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c8dc75_2afc6784",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -30,6 +53,29 @@
       "writtenOn": "2014-10-07T22:46:30Z",
       "side": 1,
       "message": "bytes or sector? if the formware, change argument name.",
+      "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_aad237de",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-07T22:54:59Z",
+      "side": 1,
+      "message": "uint32_t bytes",
+      "range": {
+        "startLine": 654,
+        "startChar": 44,
+        "endLine": 654,
+        "endChar": 62
+      },
       "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
