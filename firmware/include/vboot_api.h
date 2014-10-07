@@ -536,6 +536,11 @@ VbError_t VbExHashFirmwareBody(VbCommonParams *cparams,
  */
 #define VB_DISK_FLAG_FIXED     0x00000002
 /*
+ * Disk is streaming. If this flag is present, non-GPT reads should be done by
+ * opening a stream and reading from the stream.
+ */
+#define VB_DISK_FLAG_STREAMING 0x00000004
+/*
  * Note that VB_DISK_FLAG_REMOVABLE and VB_DISK_FLAG_FIXED are
  * mutually-exclusive for a single disk.  VbExDiskGetInfo() may specify both
  * flags to request disks of both types in a single call.
@@ -619,6 +624,42 @@ VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
  */
 VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
                         uint64_t lba_count, const void *buffer);
+
+/* Streaming read interface */
+typedef void *VbStream_t;
+
+/**
+ * Open a stream on a disk
+ *
+ * @param handle	Disk to open the stream against
+ * @param start		Starting byte offset within the disk to stream from
+ * @param count		Maximum extent of the stream in bytes
+ * @param stream	out-paramter for the generated stream
+ *
+ * @return Error code, or VBERROR_SUCCESS.
+ */
+VbError_t VbExOpenStream(VbExDiskHandle_t handle, uint64_t lba_start,
+			 uint64_t lba_count, VbStream_t *stream_ptr);
+
+/**
+ * Read from a stream on a disk
+ *
+ * @param stream	Stream to read from
+ * @param bytes		Number of bytes to read
+ * @param buffer	Destination to read into
+ *
+ * @return Error code, or VBERROR_SUCCESS. Failure to read as much data as
+ * requested is an error.
+ */
+VbError_t VbExStreamRead(VbStream_t stream, uint32_t bytes, void *buffer);
+
+/**
+ * Close a stream
+ *
+ * @param stream	Stream to close
+ */
+void VbExStreamClose(VbStream_t stream);
+
 
 /*****************************************************************************/
 /* Display */
