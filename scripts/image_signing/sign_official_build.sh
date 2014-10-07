@@ -242,7 +242,7 @@ update_rootfs_hash() {
   if [ -z "${dm_config}" ]; then
     echo "WARNING: Couldn't grab dm_config from kernel partition ${kernelpart}"
     echo "WARNING: Not performing rootfs hash update!"
-    return
+    return 1
   fi
 
   # check and clear need_to_resign tag
@@ -267,7 +267,7 @@ update_rootfs_hash() {
     "${hash_image}"; then
     echo "calculate_rootfs_hash failed!"
     echo "Aborting rootfs hash update!"
-    return
+    return 1
   fi
 
   local new_kernel_config=$CALCULATED_KERNEL_CONFIG
@@ -300,6 +300,21 @@ update_rootfs_hash() {
 
   replace_image_partition ${image} ${kernelpart} ${updated_kimage}
   replace_image_partition ${image} 3 ${rootfs_image}
+}
+
+# Update the SSD install-able vblock file on stateful partition.
+update_stateful_partition_vblock() {
+  local image="$1"
+  local kernb_image="$(make_temp_file)"
+  local temp_out_vb="$(make_temp_file)"
+  extract_image_partition "${image}" 4 "${kernb_image}"
+  vbutil_kernel --verify "${kernb_image}" --keyblock "${vblock_file}"
+
+  # Copy the installer vblock to the stateful partition.
+  local stateful_dir=$(make_temp_dir)
+  mount_image_partition ${image_bin} 1 ${stateful_dir}
+  sudo cp ${temp_out_vb} ${stateful_dir}/vmlinuz_hd.vblock
+  sudo umount "${stateful_dir}"
 }
 
 # Do a sanity check on the image's rootfs
@@ -391,9 +406,9 @@ sign_update_payload() {
   local key_dir=$2
   local output=$3
   local key_size key_file="${key_dir}/update_key.pem"
+  # Maps key size to verified boot's algorithm id (for pad_digest_utility).
+  # Hashing algorithm is always SHA-256.
   local algo algos=(
-    # Maps key size to verified boot's algorithm id (for pad_digest_utility).
-    # Hashing algorithm is always SHA-256.
     [1024]=1
     [2048]=4
     [4096]=7
@@ -536,97 +551,14 @@ EOF
   # TODO(gauravsh): Check embedded firmware AU signatures.
 }
 
-# Sign the kernel partition on an image using the given keys. Modifications are
-# made in-place.
-# Args: src_bin kernel_datakey kernel_keyblock kernel_version
-sign_image_inplace() {
-  src_bin=$1
-  kernel_datakey=$2
-  kernel_keyblock=$3
-  kernel_version=$4
-
-  temp_kimage=$(make_temp_file)
-  extract_image_partition ${src_bin} 2 ${temp_kimage}
-  updated_kimage=$(make_temp_file)
-
-  vbutil_kernel --repack "${updated_kimage}" \
-  --keyblock "${kernel_keyblock}" \
-  --signprivate "${kernel_datakey}" \
-  --version "${kernel_version}" \
-  --oldblob "${temp_kimage}"
-  replace_image_partition ${src_bin} 2 ${updated_kimage}
-}
-
-# Generate the SSD image
+# Re-calculate recovery kernel hash.
 # Args: image_bin
-sign_for_ssd() {
+update_recovery_kernel_hash() {
   image_bin=$1
-  sign_image_inplace ${image_bin} ${KEY_DIR}/kernel_data_key.vbprivk \
-    ${KEY_DIR}/kernel.keyblock \
-    "${KERNEL_VERSION}"
-  echo "Signed SSD image output to ${image_bin}"
-}
-
-# Generate the USB image (direct boot)
-sign_for_usb() {
-  image_bin=$1
-  sign_image_inplace ${image_bin} ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
-    ${KEY_DIR}/recovery_kernel.keyblock \
-    "${KERNEL_VERSION}"
-
-  # Now generate the installer vblock with the SSD keys.
-  # The installer vblock is for KERN-A on direct boot images.
-  temp_kimagea=$(make_temp_file)
-  temp_out_vb=$(make_temp_file)
-  extract_image_partition ${image_bin} 2 ${temp_kimagea}
-  ${SCRIPT_DIR}/resign_kernel_partition.sh ${temp_kimagea} ${temp_out_vb} \
-    ${KEY_DIR}/kernel_data_key.vbprivk \
-    ${KEY_DIR}/kernel.keyblock \
-    "${KERNEL_VERSION}"
-
-  # Copy the installer vblock to the stateful partition.
-  local stateful_dir=$(make_temp_dir)
-  mount_image_partition ${image_bin} 1 ${stateful_dir}
-  sudo cp ${temp_out_vb} ${stateful_dir}/vmlinuz_hd.vblock
-
-  echo "Signed USB image output to ${image_bin}"
-}
-
-# Generate the USB (recovery + install) image
-# Args: image_bin
-sign_for_recovery() {
-  image_bin=$1
-
-  # Sign the install kernel with SSD keys.
-  local temp_kimageb=$(make_temp_file)
-  extract_image_partition ${image_bin} 4 ${temp_kimageb}
-  local updated_kimageb=$(make_temp_file)
-  vbutil_kernel --repack ${updated_kimageb} \
-    --keyblock ${KEY_DIR}/kernel.keyblock \
-    --signprivate ${KEY_DIR}/kernel_data_key.vbprivk \
-    --version "${KERNEL_VERSION}" \
-    --oldblob ${temp_kimageb}
-
-  replace_image_partition ${image_bin} 4 ${updated_kimageb}
-
-  # Copy the SSD kernel vblock to the stateful partition.
-  # TODO(gauravsh): Get rid of this once --skip_vblock is nuked from
-  # orbit everywhere. crosbug.com/8378
-  local temp_out_vb=$(make_temp_file)
-  ${SCRIPT_DIR}/resign_kernel_partition.sh ${temp_kimageb} ${temp_out_vb} \
-    ${KEY_DIR}/kernel_data_key.vbprivk \
-    ${KEY_DIR}/kernel.keyblock \
-    "${KERNEL_VERSION}"
-  local stateful_dir=$(make_temp_dir)
-  mount_image_partition ${image_bin} 1 ${stateful_dir}
-  sudo cp ${temp_out_vb} ${stateful_dir}/vmlinuz_hd.vblock
-  sudo umount "${stateful_dir}"
 
   # Update the Kernel B hash in Kernel A command line
   local old_kerna_config=$(grab_kernel_config "${image_bin}" 2)
   local new_kernb=$(make_temp_file)
-  # Can't use updated_kimageb since the hash is calculated on the
-  # whole partition including the null padding at the end.
   extract_image_partition ${image_bin} 4 ${new_kernb}
   local new_kernb_hash=$(sha1sum ${new_kernb} | cut -f1 -d' ')
 
@@ -650,17 +582,6 @@ sign_for_recovery() {
     --config ${new_kerna_config}
 
   replace_image_partition ${image_bin} 2 ${updated_kimagea}
-  echo "Signed recovery image output to ${image_bin}"
-}
-
-# Generate the factory install image.
-# Args: image_bin
-sign_for_factory_install() {
-  image_bin=$1
-  sign_image_inplace ${image_bin} ${KEY_DIR}/installer_kernel_data_key.vbprivk \
-    ${KEY_DIR}/installer_kernel.keyblock \
-    "${KERNEL_VERSION}"
-  echo "Signed factory install image output to ${image_bin}"
 }
 
 # Verification
@@ -703,11 +624,18 @@ if [ "${TYPE}" == "ssd" ]; then
   cp ${INPUT_IMAGE} ${OUTPUT_IMAGE}
   resign_firmware_payload ${OUTPUT_IMAGE}
   "${SCRIPT_DIR}/strip_boot_from_image.sh" --image "${OUTPUT_IMAGE}"
+  # TODO(hungte) Support multiple partition numbers in one update_rootfs_hash
+  # call to speed up calculation.
   update_rootfs_hash ${OUTPUT_IMAGE} \
     ${KEY_DIR}/kernel.keyblock \
     ${KEY_DIR}/kernel_data_key.vbprivk \
     2
-  sign_for_ssd ${OUTPUT_IMAGE}
+  update_rootfs_hash ${OUTPUT_IMAGE} \
+    ${KEY_DIR}/kernel.keyblock \
+    ${KEY_DIR}/kernel_data_key.vbprivk \
+    4
+  update_stateful_partition_vblock ${OUTPUT_IMAGE}
+  echo "Signed SSD image output to ${OUTPUT_IMAGE}"
 elif [ "${TYPE}" == "usb" ]; then
   cp ${INPUT_IMAGE} ${OUTPUT_IMAGE}
   resign_firmware_payload ${OUTPUT_IMAGE}
@@ -716,21 +644,27 @@ elif [ "${TYPE}" == "usb" ]; then
     ${KEY_DIR}/recovery_kernel.keyblock \
     ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
     2
-  sign_for_usb ${OUTPUT_IMAGE}
+  update_rootfs_hash ${OUTPUT_IMAGE} \
+    ${KEY_DIR}/kernel.keyblock \
+    ${KEY_DIR}/kernel_data_key.vbprivk \
+    4
+  update_stateful_partition_vblock ${OUTPUT_IMAGE}
+  echo "Signed USB image output to ${OUTPUT_IMAGE}"
 elif [ "${TYPE}" == "recovery" ]; then
   cp ${INPUT_IMAGE} ${OUTPUT_IMAGE}
   resign_firmware_payload ${OUTPUT_IMAGE}
   "${SCRIPT_DIR}/strip_boot_from_image.sh" --image "${OUTPUT_IMAGE}"
-  # Both kernel command lines must have the correct rootfs hash
-  update_rootfs_hash ${OUTPUT_IMAGE} \
-    ${KEY_DIR}/recovery_kernel.keyblock \
-    ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
-    4
   update_rootfs_hash ${OUTPUT_IMAGE} \
     ${KEY_DIR}/recovery_kernel.keyblock \
     ${KEY_DIR}/recovery_kernel_data_key.vbprivk \
     2
-  sign_for_recovery ${OUTPUT_IMAGE}
+  update_rootfs_hash ${OUTPUT_IMAGE} \
+    ${KEY_DIR}/kernel.keyblock \
+    ${KEY_DIR}/kernel_data_key.vbprivk \
+    4
+  update_recovery_kernel_hash ${OUTPUT_IMAGE}
+  update_stateful_partition_vblock ${OUTPUT_IMAGE}
+  echo "Signed recovery image output to ${image_bin}"
 elif [ "${TYPE}" == "factory" ] || [ "${TYPE}" == "install" ]; then
   cp ${INPUT_IMAGE} ${OUTPUT_IMAGE}
   resign_firmware_payload ${OUTPUT_IMAGE}
@@ -740,7 +674,7 @@ elif [ "${TYPE}" == "factory" ] || [ "${TYPE}" == "install" ]; then
     ${KEY_DIR}/installer_kernel.keyblock \
     ${KEY_DIR}/installer_kernel_data_key.vbprivk \
     2
-  sign_for_factory_install ${OUTPUT_IMAGE}
+  echo "Signed factory install image output to ${OUTPUT_IMAGE}"
 elif [ "${TYPE}" == "firmware" ]; then
   if [[ -e "${KEY_DIR}/loem.ini" ]]; then
     echo "LOEM signing not implemented yet for firmware images"
