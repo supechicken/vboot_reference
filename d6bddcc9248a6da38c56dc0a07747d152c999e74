@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b988d9_05c315c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-07T22:46:30Z",
+      "side": 1,
+      "message": "Describe a little more.",
+      "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_2afc6784",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-07T22:46:30Z",
+      "side": 1,
+      "message": "bytes or sector? if the formware, change argument name.",
+      "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e904d0_63fcd11c",
+        "filename": "firmware/stub/vboot_api_stub_disk.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2014-10-07T22:46:30Z",
+      "side": 1,
+      "message": "set stream to NULL?",
+      "revId": "d6bddcc9248a6da38c56dc0a07747d152c999e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
