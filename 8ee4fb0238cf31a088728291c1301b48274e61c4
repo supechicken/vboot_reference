@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0aed491_384da9ba",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-07T15:23:51Z",
+      "side": 1,
+      "message": "should we just have sign_image_inplace always replace partition 4 with the signed kernel as well?\n\nDoes the factory install image care about what\u0027s on partition 4?",
+      "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
