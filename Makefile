@@ -323,7 +323,8 @@ VBSF_SRCS += \
 
 VBSLK_SRCS += \
 	firmware/stub/vboot_api_stub.c \
-	firmware/stub/vboot_api_stub_disk.c
+	firmware/stub/vboot_api_stub_disk.c \
+	firmware/stub/vboot_api_stub_stream.c
 
 FWLIB2_SRCS += \
 	firmware/2lib/2stub.c
@@ -1124,6 +1125,11 @@ ifneq (${VBOOT2},)
 	tests/vb2_rsa_tests.sh
 	tests/vb2_firmware_tests.sh
 endif
+
+.PHONY: kkk
+kkk: test_setup
+	tests/load_kernel_tests.sh
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 
 .PHONY: runmisctests
 runmisctests: test_setup
