@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_d92e74fe",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2014-10-08T01:32:52Z",
+      "side": 1,
+      "message": "just curious - where does the difference between mkbp and flash kick in? Does mosys also look at the device tree?",
+      "range": {
+        "startLine": 479,
+        "startChar": 14,
+        "endLine": 479,
+        "endChar": 19
+      },
+      "revId": "cfa4035ec8f9c18e6658a1f3d1337c302d524ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
