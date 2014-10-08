@@ -40,6 +40,24 @@
       "revId": "cfa4035ec8f9c18e6658a1f3d1337c302d524ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708d3c44_d745560d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2014-10-08T18:40:59Z",
+      "side": 1,
+      "message": "so, you call the same mosys function in both cases (ec and flash based VBNV). How does mosys know what path to take if it does not consult the device tree on its own?",
+      "parentUuid": "10e6c0ff_2ae61fc3",
+      "revId": "cfa4035ec8f9c18e6658a1f3d1337c302d524ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
