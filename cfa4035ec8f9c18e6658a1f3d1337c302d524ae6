@@ -58,6 +58,24 @@
       "revId": "cfa4035ec8f9c18e6658a1f3d1337c302d524ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10116099_768f51b9",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2014-10-08T18:51:42Z",
+      "side": 1,
+      "message": "Those decisions are usually programmed on a per-board basis by setting the appropriate function pointer to a callback in the platform interface (intf-\u003ecb in mosys code). Specifically, here\u0027s how it\u0027s done for storm:\nhttps://chromium-review.googlesource.com/#/c/221349/4/platform/google/storm/storm.c\n\nThe way mosys is designed allows us to swap out these callbacks any way we want without necessarily relying on external information e.g. from ACPI or device tree. So we _could_ have mosys read the device-tree to figure out where to read it from, it just hasn\u0027t been applied that way yet.",
+      "parentUuid": "708d3c44_d745560d",
+      "revId": "cfa4035ec8f9c18e6658a1f3d1337c302d524ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
