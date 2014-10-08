@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708d3c44_68283f75",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-10-08T20:25:43Z",
+      "side": 1,
+      "message": "nit: I think as a structure allocated by the external firmware this should be called VbExStream_t?",
+      "range": {
+        "startLine": 629,
+        "startChar": 14,
+        "endLine": 629,
+        "endChar": 24
+      },
+      "revId": "6dd9d6bdb447eecdb72dcfe4eb0d7ae8d11f2f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "708d3c44_e83b4fbd",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-10-08T20:25:43Z",
+      "side": 1,
+      "message": "nit: VbExStreamOpen() to fit into the VbExStream namespace (similar to how all disk callbacks start with VbExDisk)?",
+      "range": {
+        "startLine": 641,
+        "startChar": 10,
+        "endLine": 641,
+        "endChar": 24
+      },
+      "revId": "6dd9d6bdb447eecdb72dcfe4eb0d7ae8d11f2f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
