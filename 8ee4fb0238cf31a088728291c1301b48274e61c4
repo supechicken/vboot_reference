@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "50c5985b_5be6db71",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-08T15:19:21Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer for sign_image_inplace (call is \"sign_kernel_inplace\") to be the first argument.",
+      "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aed491_384da9ba",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "Factory install image does not use partition 4, since it has its own installation procedure.\n\nI feel that it\u0027s much clear if sign_image_inplace doesn\u0027t implicitly sign additional kernels with some predefined keys. Consider people reading this code:\n\n sign_image_inplace ${image_bin} ${KEY_DIR}/recovery_kernel_data_key.vbprivk \\\n    ${KEY_DIR}/recovery_kernel.keyblock \\\n    \"${KERNEL_VERSION}\"\n\nIt\u0027s not very trivial to figure out \"hey, $KEY_DIR/kernel_data.vbprivk is  signed on partition 4, and your parameters are only applied to kernel 2!\" :)",
       "parentUuid": "b0aed491_384da9ba",
+      "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c5985b_1bec6352",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-08T15:19:21Z",
+      "side": 1,
+      "message": "Got it. I missed that sign_for_usb signs partition 2 with recovery keys.\n\nI think we should change the function name to sign_kernel_inplace to make what it does explicit.\n\nAlso add a comment in the code that partition 4 is signed because that\u0027s what chromeos-install and paygen tools expect them.",
+      "parentUuid": "30c2e457_d48d5c3e",
       "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
