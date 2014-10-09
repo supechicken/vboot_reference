@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9081d019_c714beb4",
+        "filename": "firmware/stub/vboot_api_stub_stream.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-09T19:36:23Z",
+      "side": 1,
+      "message": "Please use the latest patch version of this file, where I removed this printf() call:\n\nhttps://chromium-review.googlesource.com/#/c/222410/2/firmware/stub/vboot_api_stub_stream.c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 57
+      },
+      "revId": "191555b884f98355a5759ce21c8807022569db77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
