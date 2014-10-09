@@ -16,6 +16,24 @@
       "revId": "0e09fb908c6cd1647b562c3b41bef261d652720b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5073d823_e575363a",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-10-09T21:34:05Z",
+      "side": 1,
+      "message": "Oh, sorry, I didn\u0027t see the comment. OK, you and everyone else who pointed this out (Randall, Gwendal) are right--this really is a messy interface the way I\u0027ve designed it. I guess I was afraid that a minor change to vboot would make it happen to get things wrong, but really that performance problem could be debugged when/if it comes up, if it really is a performance problem (flash reads or hashing or RSA verification might dominate the runtime anyway).\n\nHow about this: the initial version will have this weird restriction, while I\u0027m getting it off the ground, but I\u0027ll try to remove the restriction before release?",
+      "parentUuid": "70761c14_c9885547",
+      "revId": "0e09fb908c6cd1647b562c3b41bef261d652720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
