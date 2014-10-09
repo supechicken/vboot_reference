@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30c2e457_17f7d639",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-09T04:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c5985b_5be6db71",
+      "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0aed491_384da9ba",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Got it. I missed that sign_for_usb signs partition 2 with recovery keys.\n\nI think we should change the function name to sign_kernel_inplace to make what it does explicit.\n\nAlso add a comment in the code that partition 4 is signed because that\u0027s what chromeos-install and paygen tools expect them.",
       "parentUuid": "30c2e457_d48d5c3e",
+      "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c2e457_3ad4b94e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-09T04:31:20Z",
+      "side": 1,
+      "message": "Just realized there\u0027s more to deal with. Ex:\n\n - update_rootfs actually signs the kernel.\n - many functions are doing redundant jobs.",
+      "parentUuid": "50c5985b_1bec6352",
       "revId": "8ee4fb0238cf31a088728291c1301b48274e61c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
