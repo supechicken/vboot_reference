@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30c2e457_f7117ac1",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-09T03:00:24Z",
+      "side": 1,
+      "message": "what about uint32_t or uint16_t so we don\u0027t have padding sized in odd value?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "718b4fddf10f0a76f7ba3d22e2911267e49db978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c2e457_97312662",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-09T03:00:24Z",
+      "side": 1,
+      "message": "Too bad this is zero and we can\u0027t simply tell if a GBB has digest by simply reading algorithm field...\nBut well that should be fine :)",
+      "range": {
+        "startLine": 351,
+        "startChar": 22,
+        "endLine": 351,
+        "endChar": 43
+      },
+      "revId": "718b4fddf10f0a76f7ba3d22e2911267e49db978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0342809_967bfa62",
+        "filename": "tests/futility/test_not_really.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-09T03:00:24Z",
+      "side": 1,
+      "message": "No (c)",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 15
+      },
+      "revId": "718b4fddf10f0a76f7ba3d22e2911267e49db978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
