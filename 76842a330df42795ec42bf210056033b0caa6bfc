@@ -1,0 +1,260 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30974456_209012db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "Given the scope of your refactor, you will need a lot more detailed tests that this. At the very minimum, you should run verify on all the generated images. Ideally, you\u0027d test actual images on devices.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_00da36f6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "Update this. I know the previous comment wasn\u0027t very explicit, but it would be good to have an explicit doc string describing what each of the arguments mean.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_20e652c3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "s/hash data/verity hash/. The hash data is stored after the rootfs. It\u0027s the final verity hash that might be in either the kernel 2 or kernel 4 command line. This isn\u0027t clear from the description or the variable name.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_20a9f222",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "Let\u0027s use explicit key names instead of trying to derive it like this. I think it\u0027s less error prone and and explicit in what you are doing. Changing files names is also easy that way.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a8f091_092fbda9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "quote args. space after \u003e",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_603cda5b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "might as well quote args as you are doing at other places",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_40aefe2b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "describe arguments",
+      "range": {
+        "startLine": 313,
+        "startChar": 17,
+        "endLine": 313,
+        "endChar": 24
+      },
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a8f091_296ba1e4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "We don\u0027t need this any more since the installer always expects this on the partition 4, no?",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508af82f_d3456c0d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "This doc string is incomplete. You also need a better comment with the meaning of various arguments.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_c0482e28",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "The if-style is more readable \n\nif image type is not factory_install; then\n # do foo\nfi",
+      "range": {
+        "startLine": 609,
+        "startChar": 32,
+        "endLine": 609,
+        "endChar": 33
+      },
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508af82f_b3cf0036",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "Use explicit if. I prefer the shortcut style only if it fall fits on the same line.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_20a3b293",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "This isn\u0027t very readable. Can you split arguments on different lines. And add comments?\n\nsign_image_file \"SSD\" \"${INPUT_IMAGE}\" \"${OUTPUT_IMAGE}\" \\\n  \"\" \\  # Explain why this argument is an empty string.\n  \"\" \\  # Explain why this argument is an empty string.\n  2",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30974456_205812fc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "for kernelA_type and kernel_B type, it\u0027s weird that the argument requires a _ in the end. I think instead of deriving the names of the keys based on the prefix, it\u0027s better to be explicit and expect the exact key name to sign it.",
+      "range": {
+        "startLine": 656,
+        "startChar": 44,
+        "endLine": 656,
+        "endChar": 56
+      },
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508af82f_934be422",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-09T19:26:14Z",
+      "side": 1,
+      "message": "NIT: Just lowercase to keep things consistent.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
