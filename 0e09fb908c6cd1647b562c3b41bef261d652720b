@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70761c14_c9885547",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-10-09T21:27:11Z",
+      "side": 1,
+      "message": "nit: I commented about this on the depthcharge side already (I hope you still got notified about my comments since the patch was abandoned?): Is there a good reason to enforce this across the interface? It seems a bit \"unclean\" to me if vboot needs to honor some alignments and sizes that it doesn\u0027t even know, for completely implementation-specific reasons. Wouldn\u0027t it be safer to make the depthcharge code a little smarter and align the reads itself? (We could still make sure vboot just \"happens\" to get the alignment right so we don\u0027t waste boot time reading a block twice in the common case, but I\u0027m a little worried that something somewhere might somehow change down the road that could break this assumption in a way we won\u0027t notice soon enough.)",
+      "revId": "0e09fb908c6cd1647b562c3b41bef261d652720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
