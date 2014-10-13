@@ -67,13 +67,15 @@ const PlatformFamily platform_family_array[] = {
 };
 
 static int FindEmmcDev(void) {
-  int mmcblk;
+  int mmcblk, value;
   char filename[FNAME_SIZE];
   for (mmcblk = 0; mmcblk < MAX_NMMCBLK; mmcblk++) {
     /* Get first non-removable mmc block device */
     snprintf(filename, sizeof(filename), "/sys/block/mmcblk%d/removable",
               mmcblk);
-    if (ReadFileInt(filename) == 0)
+    if (ReadFileInt(filename, &value) < 0)
+      continue;
+    if (value == 0)
       return mmcblk;
   }
   /* eMMC not found */
@@ -215,7 +217,8 @@ static int VbGetPlatformGpioStatus(const char* name) {
 
   snprintf(gpio_name, sizeof(gpio_name), "%s/%s/value",
            PLATFORM_DEV_PATH, name);
-  value = ReadFileInt(gpio_name);
+  if (ReadFileInt(gpio_name, &value) < 0)
+    return -1;
 
   return value;
 }
@@ -226,9 +229,7 @@ static int VbGetGpioStatus(unsigned gpio_number) {
 
   snprintf(gpio_name, sizeof(gpio_name), "%s/gpio%d/value",
            GPIO_BASE_PATH, gpio_number);
-  value = ReadFileInt(gpio_name);
-
-  if (value == -1) {
+  if (ReadFileInt(gpio_name, &value) < 0) {
     /* Try exporting the GPIO */
     FILE* f = fopen(GPIO_EXPORT_PATH, "wt");
     if (!f)
@@ -237,7 +238,8 @@ static int VbGetGpioStatus(unsigned gpio_number) {
     fclose(f);
 
     /* Try re-reading the GPIO value */
-    value = ReadFileInt(gpio_name);
+    if (ReadFileInt(gpio_name, &value) < 0)
+      return -1;
   }
 
   return value;
