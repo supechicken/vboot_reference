@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_0fb9a4f4",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "No, if reading BINF.3 fails, we might have a Mario, so we need to skip this switch, not return NULL.",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_cfc2dc60",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "And now if BINF.0 is missing too, we should return \"nonchrome\", not NULL.",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_b817bdb1",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "But if ReadFileInt() worked, we should return value right now. That action is missing here.",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_fd6f5fec",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "This is okay.",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_fd219fc9",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "This loop queries each GPIO, asking \"what\u0027s your signal_type?\" until it runs out of GPIOs. The response should be a positive integer in the range [1, 511]. \n\nWhen ReadFileInt() fails by returning -1, it means we\u0027re out of GPIOs, so we need to return -1 to the caller (didn\u0027t find a match), not continue the loop endlessly.\n\n(return value documented at https://docs.google.com/a/google.com/document/d/1cG-QQ3JcH3jzNoTDQMS1lnYHUbtYGc3w7Rd-JU3So1w/edit#heading\u003dh.76d0147775b3)",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_afc6784f",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "We expect a simple 0 (active low) or 1 (active high).  We leave room for other attributes, but don\u0027t define them. \n\nIf I understand our problem with what the kernel now returns, the value is 0 if it\u0027s active low and non-zero if it\u0027s active high. If so, then we should be using ReadFileInt() and not ReadFileBit() [assuming ReadFileInt won\u0027t return 0x80000000, and that we won\u0027t ever need to add additional GPIO attribute fields to GPIO.1]",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_2ffb48de",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "We should probably use \n\n  value \u003d value ? 1 : 0;\n\ninstead, since value isn\u0027t signed.",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_7d634ffe",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-13T23:23:34Z",
+      "side": 1,
+      "message": "There have been a few cases where the signedness of value could a problem. It should probably be an unsigned int.\n\nYes, crossystem is a mess. :-(",
+      "revId": "ed7954a031c9f04a01adcb53f115a1041267cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
