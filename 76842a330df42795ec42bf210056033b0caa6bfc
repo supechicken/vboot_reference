@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f033ec7c_6594204c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_00da36f6",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30974456_20e652c3",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -47,6 +65,24 @@
       "writtenOn": "2014-10-09T19:26:14Z",
       "side": 1,
       "message": "s/hash data/verity hash/. The hash data is stored after the rootfs. It\u0027s the final verity hash that might be in either the kernel 2 or kernel 4 command line. This isn\u0027t clear from the description or the variable name.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70029c8e_2925c99f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_20e652c3",
       "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "f033ec7c_a599c888",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_20a9f222",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a8f091_092fbda9",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "f033ec7c_c5c72c6e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "The original version didn\u0027t quote it - probably done to avoid duplicated spaces, so I\u0027d like to keep it.\n\nAlso the coding style recommends doing \"\u003eFILE\" instead of \"\u003e FILE\".",
+      "parentUuid": "90a8f091_092fbda9",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30974456_603cda5b",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -98,6 +170,24 @@
       "writtenOn": "2014-10-09T19:26:14Z",
       "side": 1,
       "message": "might as well quote args as you are doing at other places",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ff58b8_687f3b9e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_603cda5b",
       "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -127,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "70029c8e_6942a138",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_40aefe2b",
+      "range": {
+        "startLine": 313,
+        "startChar": 17,
+        "endLine": 313,
+        "endChar": 24
+      },
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a8f091_296ba1e4",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -144,6 +258,24 @@
     },
     {
       "key": {
+        "uuid": "f033ec7c_65ad00aa",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "No harm to keep this until the day we\u0027ve fixed all images :)",
+      "parentUuid": "90a8f091_296ba1e4",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508af82f_d3456c0d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -155,6 +287,24 @@
       "writtenOn": "2014-10-09T19:26:14Z",
       "side": 1,
       "message": "This doc string is incomplete. You also need a better comment with the meaning of various arguments.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f033ec7c_05a514bc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508af82f_d3456c0d",
       "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -184,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "70029c8e_c932b5e7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_c0482e28",
+      "range": {
+        "startLine": 609,
+        "startChar": 32,
+        "endLine": 609,
+        "endChar": 33
+      },
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508af82f_b3cf0036",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -195,6 +369,24 @@
       "writtenOn": "2014-10-09T19:26:14Z",
       "side": 1,
       "message": "Use explicit if. I prefer the shortcut style only if it fall fits on the same line.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70029c8e_a92779a3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508af82f_b3cf0036",
       "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -241,6 +433,24 @@
     },
     {
       "key": {
+        "uuid": "70029c8e_892cbd88",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30974456_20a3b293",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508af82f_934be422",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 6
@@ -252,6 +462,24 @@
       "writtenOn": "2014-10-09T19:26:14Z",
       "side": 1,
       "message": "NIT: Just lowercase to keep things consistent.",
+      "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ff58b8_487c7fa7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2014-10-13T04:01:38Z",
+      "side": 1,
+      "message": "I was following original output... maybe just keep it unchanged for now?",
+      "parentUuid": "508af82f_934be422",
       "revId": "76842a330df42795ec42bf210056033b0caa6bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
