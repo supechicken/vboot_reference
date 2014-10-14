@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70753c3d_d1f6063c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-14T23:46:30Z",
+      "side": 1,
+      "message": "NIT: \"install-able vblock\" shouldn\u0027t be in quote",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "a770a66a2675c9bbbc8dcc275d35c5b1e1b15caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_787fd2d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-14T23:46:30Z",
+      "side": 1,
+      "message": "NIT: no quotes around \"kernel +..\" and \"sign_official_build\"",
+      "revId": "a770a66a2675c9bbbc8dcc275d35c5b1e1b15caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_1bd9e086",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-14T23:46:30Z",
+      "side": 1,
+      "message": "This comment is confusing. Are you talking about trailing whitespaces? Should we just explicitly remove them?",
+      "revId": "a770a66a2675c9bbbc8dcc275d35c5b1e1b15caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_dbe37835",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-14T23:46:30Z",
+      "side": 1,
+      "message": "Can you file a bug as well? Thanks.",
+      "revId": "a770a66a2675c9bbbc8dcc275d35c5b1e1b15caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901b9006_f143086d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000071
+      },
+      "writtenOn": "2014-10-14T23:46:30Z",
+      "side": 1,
+      "message": "rebuild",
+      "revId": "a770a66a2675c9bbbc8dcc275d35c5b1e1b15caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
