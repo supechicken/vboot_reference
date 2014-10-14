@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901b9006_c6e40cb9",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-14T22:40:15Z",
+      "side": 1,
+      "message": "else value \u003d fwupdate_value;\n\nA missing file defaults to zero, but a present file could be 0 or 1.",
+      "revId": "ce91f4a445a9c00469d9a13d5ccde41aaa1a39ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
