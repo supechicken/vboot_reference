@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7030dc7e_36f40d65",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-10-15T19:25:00Z",
+      "side": 1,
+      "message": "static ?",
+      "revId": "3e513c11a20a53517e7a03d12780b94797f67455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7030dc7e_16eb118c",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-10-15T19:25:00Z",
+      "side": 1,
+      "message": "mixing tabs/spaces is a little weird here",
+      "revId": "3e513c11a20a53517e7a03d12780b94797f67455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1055e0ac_a3e3fae6",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-10-15T19:25:00Z",
+      "side": 1,
+      "message": "const on both inputs \u0026 outputs ?  any reason for not just using basename from libgen.h ?  if you define _GNU_SOURCE first, you\u0027d get a sane variant ...\n\nthen again, it seems like you\u0027re re-implementing \"program_invocation_short_name\".  how about using that instead of parsing argv[0] yourself ?",
+      "revId": "3e513c11a20a53517e7a03d12780b94797f67455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1055e0ac_43c9e661",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2014-10-15T19:25:00Z",
+      "side": 1,
+      "message": "const ?",
+      "revId": "3e513c11a20a53517e7a03d12780b94797f67455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
