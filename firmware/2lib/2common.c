@@ -192,8 +192,9 @@ int vb2_unpack_key(struct vb2_public_key *key,
 	if (rv)
 		return rv;
 
-	if (packed_key->algorithm >= VB2_ALG_COUNT) {
-		VB2_DEBUG("Invalid algorithm.\n");
+	/* This can only handle RSA algorithms */
+	if (packed_key->algorithm > VB2_ALG_RSA8192_SHA512) {
+		VB2_DEBUG("Invalid algorithm for key.\n");
 		return VB2_ERROR_UNPACK_KEY_ALGORITHM;
 	}
 
@@ -232,15 +233,40 @@ int vb2_verify_digest(const struct vb2_public_key *key,
 {
 	uint8_t *sig_data = vb2_signature_data(sig);
 
-	if (sig->sig_size != vb2_rsa_sig_size(key->algorithm)) {
-		VB2_DEBUG("Wrong data signature size for algorithm, "
-			  "sig_size=%d, expected %d for algorithm %d.\n",
-			  sig->sig_size, vb2_rsa_sig_size(key->algorithm),
-			  key->algorithm);
-		return VB2_ERROR_VDATA_SIG_SIZE;
-	}
+	if (key->algorithm <= VB2_ALG_RSA8192_SHA512) {
+		/* RSA-signed digests */
 
-	return vb2_rsa_verify_digest(key, sig_data, digest, wb);
+		if (sig->sig_size != vb2_rsa_sig_size(key->algorithm)) {
+			VB2_DEBUG("Wrong data signature size for algorithm, "
+				  "sig_size=%d, expect %d for algorithm %d.\n",
+				  sig->sig_size,
+				  vb2_rsa_sig_size(key->algorithm),
+				  key->algorithm);
+			return VB2_ERROR_VDATA_SIG_SIZE;
+		}
+
+		return vb2_rsa_verify_digest(key, sig_data, digest, wb);
+
+	} else if (key->algorithm <= VB2_ALG_SHA512) {
+		/* Bare hash */
+
+		uint32_t sig_size = vb2_digest_size(key->algorithm);
+
+		if (sig->sig_size != sig_size) {
+			VB2_DEBUG("Wrong data signature size for algorithm, "
+				  "sig_size=%d, expect %d for algorithm %d.\n",
+				  sig->sig_size, sig_size, key->algorithm);
+			return VB2_ERROR_VDATA_SIG_SIZE;
+		}
+
+		if (0 == vb2_safe_memcmp(sig_data, digest,
+					 vb2_digest_size(key->algorithm)))
+			return VB2_SUCCESS;
+		else
+			return VB2_ERROR_VDATA_BAD_DIGEST;
+	} else {
+		return VB2_ERROR_VDATA_ALGORITHM;
+	}
 }
 
 int vb2_verify_data(const uint8_t *data,
@@ -254,9 +280,6 @@ int vb2_verify_data(const uint8_t *data,
 	uint8_t *digest;
 	uint32_t digest_size;
 	int rv;
-
-	if (key->algorithm >= VB2_ALG_COUNT)
-		return VB2_ERROR_VDATA_ALGORITHM;
 
 	if (sig->data_size > size) {
 		VB2_DEBUG("Data buffer smaller than length of signed data.\n");

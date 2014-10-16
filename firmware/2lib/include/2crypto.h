@@ -9,8 +9,16 @@
 #define VBOOT_REFERENCE_VBOOT_2CRYPTO_H_
 #include <stdint.h>
 
-/* Verified boot crypto algorithms */
+/*
+ * Verified boot crypto algorithms.
+ *
+ * The enumerated values are explcitly specified because these are used in data
+ * files which must remain compatible between firmware versions and disk
+ * utilities.
+ */
 enum vb2_crypto_algorithm {
+
+	/* RSA-signed hashes */
 	VB2_ALG_RSA1024_SHA1   = 0,
 	VB2_ALG_RSA1024_SHA256 = 1,
 	VB2_ALG_RSA1024_SHA512 = 2,
@@ -24,8 +32,13 @@ enum vb2_crypto_algorithm {
 	VB2_ALG_RSA8192_SHA256 = 10,
 	VB2_ALG_RSA8192_SHA512 = 11,
 
-	/* Number of algorithms */
-	VB2_ALG_COUNT
+	/* Unsigned hashes */
+	VB2_ALG_SHA1           = 12,
+	VB2_ALG_SHA256         = 13,
+	VB2_ALG_SHA512         = 14,
+
+	/* Explicitly invalid algorithm */
+	VB2_ALG_INVALID        = 0xffffffff
 };
 
 #endif /* VBOOT_REFERENCE_VBOOT_2CRYPTO_H_ */

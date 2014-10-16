@@ -76,6 +76,7 @@ static void test_verify_digest(struct vb2_public_key *key) {
 	uint8_t workbuf[VB2_VERIFY_DIGEST_WORKBUF_BYTES];
 	uint8_t sig[RSA1024NUMBYTES];
 	struct vb2_workbuf wb;
+	uint32_t orig_alg = key->algorithm;
 
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 
@@ -90,12 +91,12 @@ static void test_verify_digest(struct vb2_public_key *key) {
 		"vb2_rsa_verify_digest() small workbuf");
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 
-	key->algorithm += VB2_ALG_COUNT;
+	key->algorithm = VB2_ALG_INVALID;
 	Memcpy(sig, signatures[0], sizeof(sig));
 	TEST_EQ(vb2_rsa_verify_digest(key, sig, test_message_sha1_hash, &wb),
 		VB2_ERROR_RSA_VERIFY_ALGORITHM,
 		"vb2_rsa_verify_digest() bad key alg");
-	key->algorithm -= VB2_ALG_COUNT;
+	key->algorithm = orig_alg;
 
 	key->arrsize *= 2;
 	Memcpy(sig, signatures[0], sizeof(sig));

@@ -161,6 +161,9 @@ enum vb2_return_code {
 	 */
 	VB2_ERROR_VDATA_DIGEST_SIZE,
 
+	/* Verification of digest failed */
+	VB2_ERROR_VDATA_BAD_DIGEST,
+
         /**********************************************************************
 	 * Keyblock verification errors (all in vb2_verify_keyblock())
 	 */

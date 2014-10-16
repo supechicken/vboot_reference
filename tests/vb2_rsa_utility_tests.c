@@ -36,8 +36,7 @@ int vb2_safe_memcmp(const void *s1, const void *s2, size_t size);
  */
 static void test_utils(void)
 {
-	/* Verify old and new algorithm count constants match */
-	TEST_EQ(kNumAlgorithms, VB2_ALG_COUNT, "Algorithm counts");
+	uint8_t sig[RSA1024NUMBYTES];
 
 	/* Sig size */
 	TEST_EQ(vb2_rsa_sig_size(VB2_ALG_RSA1024_SHA1), RSA1024NUMBYTES,
@@ -48,8 +47,10 @@ static void test_utils(void)
 		"Sig size VB2_ALG_RSA4096_SHA256");
 	TEST_EQ(vb2_rsa_sig_size(VB2_ALG_RSA8192_SHA512), RSA8192NUMBYTES,
 		"Sig size VB2_ALG_RSA8192_SHA512");
-	TEST_EQ(vb2_rsa_sig_size(VB2_ALG_COUNT), 0,
+	TEST_EQ(vb2_rsa_sig_size(VB2_ALG_INVALID), 0,
 		"Sig size invalid algorithm");
+	TEST_EQ(vb2_rsa_sig_size(VB2_ALG_SHA256), 0,
+		"Sig size for non-RSA algorithm");
 
 	/* Packed key size */
 	TEST_EQ(vb2_packed_key_size(VB2_ALG_RSA1024_SHA1),
@@ -64,14 +65,14 @@ static void test_utils(void)
 	TEST_EQ(vb2_packed_key_size(VB2_ALG_RSA8192_SHA512),
 		RSA8192NUMBYTES * 2 + sizeof(uint32_t) * 2,
 		"Packed key size VB2_ALG_RSA8192_SHA512");
-	TEST_EQ(vb2_packed_key_size(VB2_ALG_COUNT), 0,
+	TEST_EQ(vb2_packed_key_size(VB2_ALG_INVALID), 0,
 		"Packed key size invalid algorithm");
-
-	uint8_t sig[RSA1024NUMBYTES];
+	TEST_EQ(vb2_packed_key_size(VB2_ALG_SHA512), 0,
+		"Packed key size for non-RSA algorithm");
 
 	/* Test padding check with bad algorithm */
 	Memcpy(sig, signatures[0], sizeof(sig));
-	TEST_EQ(vb2_check_padding(sig, VB2_ALG_COUNT),
+	TEST_EQ(vb2_check_padding(sig, VB2_ALG_INVALID),
 		VB2_ERROR_RSA_PADDING_ALGORITHM,
 		"vb2_check_padding() bad alg");
 

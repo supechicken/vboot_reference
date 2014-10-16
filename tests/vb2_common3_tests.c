@@ -383,12 +383,13 @@ int main(int argc, char *argv[])
 		}
 
 	} else if (argc == 3 && !strcasecmp(argv[2], "--all")) {
-		/* Test all the algorithms */
+		/* Test all the vboot1 algorithms */
 		int sign_alg, data_alg;
 
-		for (sign_alg = 0; sign_alg < VB2_ALG_COUNT; sign_alg++) {
-			for (data_alg = 0; data_alg < VB2_ALG_COUNT;
-			     data_alg++) {
+		for (sign_alg = VB2_ALG_RSA1024_SHA1;
+		     sign_alg <= VB2_ALG_RSA8192_SHA512; sign_alg++) {
+			for (data_alg = VB2_ALG_RSA1024_SHA1;
+			     data_alg < VB2_ALG_RSA8192_SHA512; data_alg++) {
 				if (test_permutation(sign_alg, data_alg,
 						     argv[1]))
 					return 1;
