@@ -318,15 +318,33 @@ static int GptLoad(struct drive *drive, uint32_t sector_bytes) {
                       drive->gpt.sector_bytes, GPT_HEADER_SECTORS)) {
     return -1;
   }
+
+  uint64_t entries_lba;
+  /* entries_lba may be wrong on corrupted tables. Commands 'create' and
+   * 'repair' both need {primary,secondary}_entries buffer allocated, so we
+   * should adjust LBA to reasonable value and load some data.
+   */
+
   GptHeader* primary_header = (GptHeader*)drive->gpt.primary_header;
-  if (CGPT_OK != Load(drive, &drive->gpt.primary_entries,
-                      primary_header->entries_lba,
+  entries_lba = primary_header->entries_lba;
+  if (entries_lba + GPT_ENTRIES_SECTORS > drive->gpt.drive_sectors) {
+    Error("Invalid primary entries LBA (%llu). Please run 'cgpt create'.\n",
+          entries_lba);
+    entries_lba = GPT_PMBR_SECTORS + 1;
+  }
+  if (CGPT_OK != Load(drive, &drive->gpt.primary_entries, entries_lba,
                       drive->gpt.sector_bytes, GPT_ENTRIES_SECTORS)) {
     return -1;
   }
   GptHeader* secondary_header = (GptHeader*)drive->gpt.secondary_header;
-  if (CGPT_OK != Load(drive, &drive->gpt.secondary_entries,
-                      secondary_header->entries_lba,
+  entries_lba = secondary_header->entries_lba;
+  if (entries_lba + GPT_ENTRIES_SECTORS >= drive->gpt.drive_sectors) {
+    Error("Invalid secondary entries LBA (%llu). Please run 'cgpt create'.\n",
+          entries_lba);
+    entries_lba = drive->gpt.drive_sectors - GPT_PMBR_SECTORS -
+                  GPT_ENTRIES_SECTORS;
+  }
+  if (CGPT_OK != Load(drive, &drive->gpt.secondary_entries, entries_lba,
                       drive->gpt.sector_bytes, GPT_ENTRIES_SECTORS)) {
     return -1;
   }
