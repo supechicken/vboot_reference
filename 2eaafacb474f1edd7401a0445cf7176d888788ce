@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151b126c_56fc92d2",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T21:57:27Z",
+      "side": 1,
+      "message": "About now, I\u0027m wishing we had made algorithm 0 invalid.\n\nFortunately, we can do that when we drop support for SHA1...",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
