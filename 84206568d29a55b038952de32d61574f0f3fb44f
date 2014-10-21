@@ -16,6 +16,24 @@
       "revId": "84206568d29a55b038952de32d61574f0f3fb44f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "150232f8_4164d690",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-21T21:19:34Z",
+      "side": 1,
+      "message": "If we remove any RSA algorithms, it\u0027d be the ones at the beginning.\n\nIf we add new ones, they\u0027d have to go after the bare SHA algorithms, because these numbers go in the keyblock data files and can\u0027t be shifted.\n\nEither way, that means a more complex check for is_algorithm_rsa() at that point.",
+      "parentUuid": "350576fe_e23522fd",
+      "revId": "84206568d29a55b038952de32d61574f0f3fb44f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
