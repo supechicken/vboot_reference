@@ -9,6 +9,7 @@
 #include "cgptlib_internal.h"
 #include "crc32.h"
 #include "gpt.h"
+#include "gpt_misc.h"
 #include "utility.h"
 
 
@@ -27,93 +28,6 @@ int CheckParameters(GptData *gpt)
 		return GPT_ERROR_INVALID_SECTOR_NUMBER;
 
 	return GPT_SUCCESS;
-}
-
-uint32_t HeaderCrc(GptHeader *h)
-{
-	uint32_t crc32, original_crc32;
-
-	/* Original CRC is calculated with the CRC field 0. */
-	original_crc32 = h->header_crc32;
-	h->header_crc32 = 0;
-	crc32 = Crc32((const uint8_t *)h, h->size);
-	h->header_crc32 = original_crc32;
-
-	return crc32;
-}
-
-int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors)
-{
-	if (!h)
-		return 1;
-
-	/*
-	 * Make sure we're looking at a header of reasonable size before
-	 * attempting to calculate CRC.
-	 */
-	if (Memcmp(h->signature, GPT_HEADER_SIGNATURE,
-		   GPT_HEADER_SIGNATURE_SIZE) &&
-	    Memcmp(h->signature, GPT_HEADER_SIGNATURE2,
-		   GPT_HEADER_SIGNATURE_SIZE))
-		return 1;
-	if (h->revision != GPT_HEADER_REVISION)
-		return 1;
-	if (h->size < MIN_SIZE_OF_HEADER || h->size > MAX_SIZE_OF_HEADER)
-		return 1;
-
-	/* Check CRC before looking at remaining fields */
-	if (HeaderCrc(h) != h->header_crc32)
-		return 1;
-
-	/* Reserved fields must be zero. */
-	if (h->reserved_zero)
-		return 1;
-
-	/* Could check that padding is zero, but that doesn't matter to us. */
-
-	/*
-	 * If entry size is different than our struct, we won't be able to
-	 * parse it.  Technically, any size 2^N where N>=7 is valid.
-	 */
-	if (h->size_of_entry != sizeof(GptEntry))
-		return 1;
-	if ((h->number_of_entries < MIN_NUMBER_OF_ENTRIES) ||
-	    (h->number_of_entries > MAX_NUMBER_OF_ENTRIES) ||
-	    (h->number_of_entries * h->size_of_entry != TOTAL_ENTRIES_SIZE))
-		return 1;
-
-	/*
-	 * Check locations for the header and its entries.  The primary
-	 * immediately follows the PMBR, and is followed by its entries.  The
-	 * secondary is at the end of the drive, preceded by its entries.
-	 */
-	if (is_secondary) {
-		if (h->my_lba != drive_sectors - GPT_HEADER_SECTORS)
-			return 1;
-		if (h->entries_lba != h->my_lba - GPT_ENTRIES_SECTORS)
-			return 1;
-	} else {
-		if (h->my_lba != GPT_PMBR_SECTORS)
-			return 1;
-		if (h->entries_lba < h->my_lba + 1)
-			return 1;
-	}
-
-	/*
-	 * FirstUsableLBA must be after the end of the primary GPT table array.
-	 * LastUsableLBA must be before the start of the secondary GPT table
-	 * array.  FirstUsableLBA <= LastUsableLBA.
-	 */
-	/* TODO(namnguyen): Also check for padding between header & entries. */
-	if (h->first_usable_lba < 2 + GPT_ENTRIES_SECTORS)
-		return 1;
-	if (h->last_usable_lba >= drive_sectors - 1 - GPT_ENTRIES_SECTORS)
-		return 1;
-	if (h->first_usable_lba > h->last_usable_lba)
-		return 1;
-
-	/* Success */
-	return 0;
 }
 
 int IsUnusedEntry(const GptEntry *e)
