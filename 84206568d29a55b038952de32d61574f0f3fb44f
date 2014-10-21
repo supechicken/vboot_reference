@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "350576fe_e23522fd",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-21T20:15:26Z",
+      "side": 1,
+      "message": "It\u0027s unlikely that we\u0027ll add or remove any RSA algs, but if we did this might break. Maybe use VB2_RSA_ALG_COUNT?",
+      "revId": "84206568d29a55b038952de32d61574f0f3fb44f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
