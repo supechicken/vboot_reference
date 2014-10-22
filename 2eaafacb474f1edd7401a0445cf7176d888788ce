@@ -145,6 +145,24 @@
       "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f583dec2_e26d0673",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-22T21:29:15Z",
+      "side": 1,
+      "message": "I could add gaps here, but then the lookup tables suggested for 2sha.c would get bigger.",
+      "parentUuid": "1549527c_ac5dc76f",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
