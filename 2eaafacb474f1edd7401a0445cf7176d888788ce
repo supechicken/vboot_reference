@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "354c968a_eb81628a",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-22T20:27:59Z",
+      "side": 1,
+      "message": "I suspect a lookup table would compile to a much smaller chunk of code.",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354c968a_2b1e5ace",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-22T20:27:59Z",
+      "side": 1,
+      "message": "#if VB2_SUPPORT_SHA256\n  return VB2_ALG_SHA256\n#else\n  return VB2_ALG_UNSUPPORTED\n#end\n\netc..",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "151b126c_56fc92d2",
         "filename": "firmware/2lib/include/2crypto.h",
         "patchSetId": 1
@@ -71,6 +105,24 @@
       "writtenOn": "2014-10-22T20:25:28Z",
       "side": 1,
       "message": "i see. how do you like VB2_ALG_NONE_SHA1/256/512?",
+      "parentUuid": "354c968a_4b8516e8",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1549527c_6ca22f91",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-22T20:27:59Z",
+      "side": 1,
+      "message": "Maybe it\u0027s because my first programming language was BASIC, but I kind of agree with Daisuke. It\u0027s unlikely there\u0027ll be a need for a new type of RSA sig or SHA digest, but I sort of like having room to grow anyway.",
       "parentUuid": "354c968a_4b8516e8",
       "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
