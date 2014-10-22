@@ -39,6 +39,24 @@
       "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354c968a_4b8516e8",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-22T20:08:06Z",
+      "side": 1,
+      "message": "The old vboot1 structs explicitly specified one signature and one SHA-512 hash.  The hash was never used by firmware keyblocks, only kernel keyblocks\n\nThe new vboot2 structs allow multiple signatures per keyblock.  Which we\u0027ll need for LOEM-signed firmware and kernels.  If I allow bare hash signatures as well, I can treat hashes just like other signatures, which makes the parsing code easier.\n\nFuture algorithms like ECC will go after the hashes.  So, for example,\n\n   VB2_ALG_ECC128_SHA256 \u003d 15\n\nand we won\u0027t bother with all permutations of (signature type)*(hash type), because realistically we only use a few.  For example, we only use algorithms 4, 7, and 11 today, but we have the test overhead for all 12 RSA+SHA algorithms.",
+      "parentUuid": "354c968a_0bacbeac",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
