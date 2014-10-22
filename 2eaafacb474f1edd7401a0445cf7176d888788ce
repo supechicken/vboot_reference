@@ -127,6 +127,24 @@
       "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1549527c_ac5dc76f",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-22T21:07:23Z",
+      "side": 1,
+      "message": "We couldn\u0027t handle a new SHA algorithm in a contiguous way anyway.\n    RSA1024_SHA1 \u003d 0,\n    RSA1024_SHA256 \u003d 1,\n    RSA1024_SHA512 \u003d 2,\n    RSA1024_SHA3 \u003d not 3, beacause...\n    RSA2048_SHA1 \u003d 3,\n\nSo, RSA1024_SHA3 would need to be \u003e\u003d 12.  So we\u0027re back to needing lookup tables or switch statements rather than using tidy math like (RSA-type \u003d alg / 3, SHA-type \u003d alg % 3).",
+      "parentUuid": "1549527c_6ca22f91",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
