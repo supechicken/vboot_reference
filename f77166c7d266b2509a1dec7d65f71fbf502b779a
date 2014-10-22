@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "1549527c_97b21409",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-22T21:21:57Z",
+      "side": 1,
+      "message": "These are explicitly hashes, since the preamble is signed.  Putting a signature here is the mistake in vboot1 I\u0027m trying to get rid of which costs us the extra RSA operation.\n\nSee vb2_keyblock2 for the list of signatures, which are named as you suggest.",
+      "parentUuid": "1549527c_8c432b08",
+      "revId": "f77166c7d266b2509a1dec7d65f71fbf502b779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1549527c_2c2f972e",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
