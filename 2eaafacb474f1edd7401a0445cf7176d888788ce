@@ -22,6 +22,23 @@
       "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354c968a_0bacbeac",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-22T20:00:16Z",
+      "side": 1,
+      "message": "why do we want to put hash algorithms in the same struct? there is no room for a new encryption algorithm between 11 and 12.",
+      "revId": "2eaafacb474f1edd7401a0445cf7176d888788ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
