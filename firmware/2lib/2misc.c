@@ -361,7 +361,7 @@ int vb2_select_fw_slot(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_fw_keyblock(struct vb2_context *ctx)
+int vb2_load_fw_keyblock(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
@@ -476,7 +476,7 @@ int vb2_verify_fw_keyblock(struct vb2_context *ctx)
 
 // TODO: Terrible that this and the low-level verification want to have the
 // same function name.  Pick a better name...
-int vb2_verify_fw_preamble2(struct vb2_context *ctx)
+int vb2_load_fw_preamble(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
@@ -545,7 +545,7 @@ int vb2_verify_fw_preamble2(struct vb2_context *ctx)
 	if (pre->firmware_version > 0xffff)
 		return VB2_ERROR_FW_PREAMBLE2_VERSION_RANGE;
 
-	/* Combine with the key version from vb2_verify_fw_keyblock() */
+	/* Combine with the key version from vb2_load_fw_keyblock() */
 	sd->fw_version |= pre->firmware_version;
 	if (sd->fw_version < sec_version)
 		return VB2_ERROR_FW_PREAMBLE2_VERSION_ROLLBACK;
