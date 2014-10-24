@@ -167,6 +167,9 @@ enum vb2_return_code {
 	/* Unsupported hash algorithm in vb2_unpack_key() */
 	VB2_ERROR_UNPACK_KEY_HASH_ALGORITHM,
 
+	/* Common struct description is not null-terminated */
+	VB2_ERROR_DESC_TERMINATOR,
+
         /**********************************************************************
 	 * Keyblock verification errors (all in vb2_verify_keyblock())
 	 */

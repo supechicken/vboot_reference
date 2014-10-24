@@ -240,6 +240,41 @@ static void test_helper_functions(void)
 	}
 
 	{
+		uint8_t cbuf[sizeof(struct vb2_struct_common) + 128];
+		struct vb2_struct_common *c = (struct vb2_struct_common *)cbuf;
+
+		c->desc_offset = sizeof(*c);
+		c->desc_size = 128;
+		cbuf[sizeof(cbuf) - 1] = 0;
+		TEST_SUCC(vb2_verify_common_inside(cbuf, sizeof(cbuf), c),
+			  "CommonInside at start");
+
+		c[1].desc_offset = sizeof(*c);
+		c[1].desc_size = 128 - sizeof(*c);
+		TEST_SUCC(vb2_verify_common_inside(cbuf, sizeof(cbuf), c + 1),
+			  "CommonInside after start");
+
+		TEST_EQ(vb2_verify_common_inside(cbuf, sizeof(cbuf) - 1, c),
+			VB2_ERROR_INSIDE_DATA_OUTSIDE,
+			"CommonInside key too big");
+
+		c->desc_offset = sizeof(cbuf);
+		TEST_EQ(vb2_verify_common_inside(cbuf, sizeof(cbuf), c),
+			VB2_ERROR_INSIDE_DATA_OUTSIDE,
+			"CommonInside offset too big");
+		c->desc_offset = sizeof(*c);
+
+		cbuf[sizeof(cbuf) - 1] = 1;
+		TEST_EQ(vb2_verify_common_inside(cbuf, sizeof(cbuf), c),
+			VB2_ERROR_DESC_TERMINATOR,
+			"CommonInside description not terminated");
+
+		c->desc_size = 0;
+		TEST_SUCC(vb2_verify_common_inside(cbuf, sizeof(cbuf), c),
+			  "CommonInside no description");
+	}
+
+	{
 		struct vb2_packed_key k = {.key_offset = sizeof(k),
 					   .key_size = 128};
 		TEST_SUCC(vb2_verify_packed_key_inside(&k, sizeof(k)+128, &k),
