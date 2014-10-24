@@ -145,11 +145,43 @@ int vb2_verify_member_inside(const void *parent, size_t parent_size,
 	if (member_offs < 0 || member_offs > psize || member_end_offs > psize)
 		return VB2_ERROR_INSIDE_MEMBER_OUTSIDE;
 
-	/* Make sure parent fully contains member data */
+	/* Make sure the member data is after the member */
+	if (member_data_size > 0 && data_offs < member_end_offs)
+		return VB2_ERROR_INSIDE_DATA_OVERLAP;
+
+	/* Make sure parent fully contains member data, if any */
 	if (data_end_offs < data_offs)
 		return VB2_ERROR_INSIDE_DATA_WRAPS;
 	if (data_offs < 0 || data_offs > psize || data_end_offs > psize)
 		return VB2_ERROR_INSIDE_DATA_OUTSIDE;
+
+	return VB2_SUCCESS;
+}
+
+int vb2_verify_common_header(const void *parent,
+			     uint32_t parent_size,
+			     const struct vb2_struct_common *c)
+{
+	int rv;
+
+	/* Make sure common data and description are inside parent */
+	rv = vb2_verify_member_inside(parent, parent_size,
+				      c, sizeof(*c),
+				      c->desc_offset, c->desc_size);
+	if (rv)
+		return rv;
+
+	/* Check description */
+	if (c->desc_size > 0) {
+		/* Description must be null-terminated */
+		const uint8_t *cptr = (const uint8_t *)c;
+		if (cptr[c->desc_offset + c->desc_size - 1] != 0)
+			return VB2_ERROR_DESC_TERMINATOR;
+
+	} else if (c->desc_offset != 0) {
+		/* If size is non-zero, offset must be too */
+		return VB2_ERROR_DESC_EMPTY_OFFSET;
+	}
 
 	return VB2_SUCCESS;
 }
