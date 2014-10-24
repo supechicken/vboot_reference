@@ -131,7 +131,7 @@ enum vb2_return_code {
 	/* Member data outside parent in vb2_verify_member_inside() */
 	VB2_ERROR_INSIDE_DATA_OUTSIDE,
 
-	/* Unsupporte signature algorithm in vb2_unpack_key() */
+	/* Unsupported signature algorithm in vb2_unpack_key() */
 	VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM,
 
 	/* Bad key size in vb2_unpack_key() */
@@ -169,6 +169,9 @@ enum vb2_return_code {
 
 	/* Common struct description is not null-terminated */
 	VB2_ERROR_DESC_TERMINATOR,
+
+	/* Unsupported packed key struct version */
+	VB2_ERROR_UNPACK_KEY_STRUCT_VERSION,
 
         /**********************************************************************
 	 * Keyblock verification errors (all in vb2_verify_keyblock())
