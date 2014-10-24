@@ -359,6 +359,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_repair.c \
 	cgpt/cgpt_prioritize.c \
 	cgpt/cgpt_common.c \
+	cgpt/drive.c \
 	cgpt/flash_ts.c \
 	cgpt/flash_ts_drv.c \
 	firmware/lib/cgptlib/mtdlib.c \
@@ -388,6 +389,7 @@ HOSTLIB_SRCS = \
 	cgpt/cgpt_common.c \
 	cgpt/cgpt_create.c \
 	cgpt/cgpt_prioritize.c \
+	cgpt/drive.c \
 	cgpt/flash_ts.c \
 	cgpt/flash_ts_drv.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
@@ -403,6 +405,7 @@ HOSTLIB_SRCS = \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
+	host/lib/fmap.c \
 	host/lib/host_misc.c
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
