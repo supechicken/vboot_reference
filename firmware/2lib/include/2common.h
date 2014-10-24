@@ -233,6 +233,21 @@ int vb2_unpack_key(struct vb2_public_key *key,
 		   const uint8_t *buf,
 		   uint32_t size);
 
+/**
+ * Unpack a key for use in verification
+ *
+ * The elements of the unpacked key will point into the source buffer, so don't
+ * free the source buffer until you're done with the key.
+ *
+ * @param key		Destintion for unpacked key
+ * @param buf		Source buffer containing packed key
+ * @param size		Size of buffer in bytes
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2_unpack_key2(struct vb2_public_key *key,
+		    const uint8_t *buf,
+		    uint32_t size);
+
 /* Size of work buffer sufficient for vb2_rsa_verify_digest() worst case */
 #define VB2_VERIFY_DIGEST_WORKBUF_BYTES VB2_VERIFY_RSA_DIGEST_WORKBUF_BYTES
 
