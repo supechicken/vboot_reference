@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "15a5d282_a6a2a836",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-27T21:48:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check that member_size \u003c\u003d member_data_offset ?",
+      "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_4ced0f4d",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
