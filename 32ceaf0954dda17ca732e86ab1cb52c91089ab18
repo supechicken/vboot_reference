@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7580cec4_f656159d",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-27T17:57:20Z",
+      "side": 1,
+      "message": "you\u0027re checking return value from vb2_check_padding, which can return VB2_ERROR_RSA_PADDING. it\u0027s going to be ignored if vb2_safe_memcmp is successful. is this intentional?",
+      "revId": "32ceaf0954dda17ca732e86ab1cb52c91089ab18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cf3649_75977aad",
+        "filename": "firmware/2lib/include/2rsa.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-27T17:57:20Z",
+      "side": 1,
+      "message": "s/size/size in bytes/?",
+      "revId": "32ceaf0954dda17ca732e86ab1cb52c91089ab18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
