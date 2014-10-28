@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5bfba8a_bd7b9714",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:22:40Z",
+      "side": 1,
+      "message": "Well, technically that member_size+member_offs \u003c\u003d member_data_offs.  But yes.",
+      "parentUuid": "15a5d282_a6a2a836",
+      "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5bfba8a_4ced0f4d",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-10-27T19:37:30Z",
       "side": 1,
       "message": "i wonder if it\u0027s better to cast parent to (struct vb2_struct_common *). we\u0027ll be able to force the common header to be at the known location (at the top) as i assume required by tools such as futility.",
+      "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5bfba8a_fd810f8a",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:22:40Z",
+      "side": 1,
+      "message": "It\u0027s not always true, though.  vb2_preamble2 contains a vb2_signature2.  The signature data (including its description) must simply be inside the preamble.",
+      "parentUuid": "d5bfba8a_4ced0f4d",
       "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d5bfba8a_5da85b1d",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b82dc_c360f9f2",
+      "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5594aafe_c923449c",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-10-27T19:37:30Z",
       "side": 1,
       "message": "we can add check for these in vb2_verify_common_inside\n: error if desc_size\u003d0 but desc_offset !\u003d0 or vice versa.",
+      "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594aafe_9a91fce2",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5594aafe_c923449c",
       "revId": "7150685c3bceaa99728eed0d8b88d716d67173da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
