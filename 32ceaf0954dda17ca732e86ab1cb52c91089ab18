@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5d6dada_4b6f391c",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:03:30Z",
+      "side": 1,
+      "message": "This only overwrites rv if rv\u003d\u003d0.  So an earlier error won\u0027t get ignored.",
+      "parentUuid": "7580cec4_f656159d",
+      "revId": "32ceaf0954dda17ca732e86ab1cb52c91089ab18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a8165b_6a11d3f6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2014-10-27T17:57:20Z",
       "side": 1,
       "message": "s/size/size in bytes/?",
+      "revId": "32ceaf0954dda17ca732e86ab1cb52c91089ab18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a8165b_c40f9e4d",
+        "filename": "firmware/2lib/include/2rsa.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-28T17:03:30Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "35cf3649_75977aad",
       "revId": "32ceaf0954dda17ca732e86ab1cb52c91089ab18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
