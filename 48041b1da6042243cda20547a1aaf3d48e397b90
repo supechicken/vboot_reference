@@ -16,6 +16,24 @@
       "revId": "48041b1da6042243cda20547a1aaf3d48e397b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "756c4e15_9c916d5e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-29T18:00:18Z",
+      "side": 1,
+      "message": "Depthcharge/coreboot definitely does; this change came from there.  Worst case, it won\u0027t print the recovery reason, which is what it did before this change.",
+      "parentUuid": "35665637_f498784f",
+      "revId": "48041b1da6042243cda20547a1aaf3d48e397b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
