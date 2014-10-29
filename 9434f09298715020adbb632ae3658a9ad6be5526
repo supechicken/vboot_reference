@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35665637_94edc4cb",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-29T15:35:50Z",
+      "side": 1,
+      "message": "We could still have c-\u003edesc_offset !\u003d0 and c-\u003edesc_size \u003d\u003d 0\n(if the offset is still within the parent struct).\n\nThe comment in 2struct.h says that\u0027s a no-no.",
+      "revId": "9434f09298715020adbb632ae3658a9ad6be5526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
