@@ -16,6 +16,24 @@
       "revId": "9434f09298715020adbb632ae3658a9ad6be5526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5fd9e73_3245f073",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-29T17:37:10Z",
+      "side": 1,
+      "message": "Not sure I understand.\n\noffset\u003d\u003d0 size\u003d\u003d0: ok\n\noffset!\u003d0 size\u003d\u003d0: bad, caught by line 182\n\noffset\u003d\u003d0 size!\u003d0: bad, caught by line 149\n\noffset!\u003d0 size!\u003d0: ok, assuming vb2_member_inside() checks pass",
+      "parentUuid": "35665637_94edc4cb",
+      "revId": "9434f09298715020adbb632ae3658a9ad6be5526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
