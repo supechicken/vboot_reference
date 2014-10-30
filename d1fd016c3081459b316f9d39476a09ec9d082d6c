@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5267ef7_b094404e",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-10-30T01:18:57Z",
+      "side": 1,
+      "message": "Randall, this is how I originally had patchset 1. But then I noticed we fall through to vb2_check_recovery() in the case of vb2_secdata_init() failing. Though we could potentially lose granularity to the failures I think we should fall through for failures of vb2_check_dev_switch() and vb2_fw_parse_gbb() as well.",
+      "revId": "d1fd016c3081459b316f9d39476a09ec9d082d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
