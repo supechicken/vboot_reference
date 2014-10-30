@@ -75,7 +75,6 @@ int Load(struct drive *drive, uint8_t **buf,
                 const uint64_t sector_count) {
   int count;  /* byte count to read */
   int nread;
-  int fd = drive->fd;
 
   require(buf);
   if (!sector_count || !sector_bytes) {
@@ -93,12 +92,12 @@ int Load(struct drive *drive, uint8_t **buf,
   *buf = malloc(count);
   require(*buf);
 
-  if (-1 == lseek(fd, sector * sector_bytes, SEEK_SET)) {
-    Error("Can't lseek: %s\n", strerror(errno));
+  if (-1 == drive->seek(drive, sector * sector_bytes, SEEK_SET)) {
+    Error("Can't seek: %s\n", strerror(errno));
     goto error_free;
   }
 
-  nread = read(fd, *buf, count);
+  nread = drive->read(drive, *buf, count);
   if (nread < count) {
     Error("Can't read enough: %d, not %d\n", nread, count);
     goto error_free;
@@ -114,10 +113,10 @@ error_free:
 
 
 int ReadPMBR(struct drive *drive) {
-  if (-1 == lseek(drive->fd, 0, SEEK_SET))
+  if (-1 == drive->seek(drive, 0, SEEK_SET))
     return CGPT_FAILED;
 
-  int nread = read(drive->fd, &drive->pmbr, sizeof(struct pmbr));
+  int nread = drive->read(drive, &drive->pmbr, sizeof(struct pmbr));
   if (nread != sizeof(struct pmbr))
     return CGPT_FAILED;
 
@@ -125,10 +124,10 @@ int ReadPMBR(struct drive *drive) {
 }
 
 int WritePMBR(struct drive *drive) {
-  if (-1 == lseek(drive->fd, 0, SEEK_SET))
+  if (-1 == drive->seek(drive, 0, SEEK_SET))
     return CGPT_FAILED;
 
-  int nwrote = write(drive->fd, &drive->pmbr, sizeof(struct pmbr));
+  int nwrote = drive->write(drive, &drive->pmbr, sizeof(struct pmbr));
   if (nwrote != sizeof(struct pmbr))
     return CGPT_FAILED;
 
@@ -141,15 +140,14 @@ int Save(struct drive *drive, const uint8_t *buf,
                 const uint64_t sector_count) {
   int count;  /* byte count to write */
   int nwrote;
-  int fd = drive->fd;
 
   require(buf);
   count = sector_bytes * sector_count;
 
-  if (-1 == lseek(fd, sector * sector_bytes, SEEK_SET))
+  if (-1 == drive->seek(drive, sector * sector_bytes, SEEK_SET))
     return CGPT_FAILED;
 
-  nwrote = write(fd, buf, count);
+  nwrote = drive->write(drive, buf, count);
   if (nwrote < count)
     return CGPT_FAILED;
 
@@ -334,7 +332,8 @@ static int GptLoad(struct drive *drive, uint32_t sector_bytes) {
     return -1;
   }
   GptHeader* primary_header = (GptHeader*)drive->gpt.primary_header;
-  if (CheckHeader(primary_header, 0, drive->gpt.drive_sectors) == 0) {
+  if (CheckHeader(primary_header, 0, drive->gpt.drive_sectors,
+                  drive->gpt.stored_on_device) == 0) {
     if (CGPT_OK != Load(drive, &drive->gpt.primary_entries,
                         primary_header->entries_lba,
                         drive->gpt.sector_bytes, GPT_ENTRIES_SECTORS)) {
@@ -345,7 +344,8 @@ static int GptLoad(struct drive *drive, uint32_t sector_bytes) {
     Warning("Primary GPT header is invalid\n");
   }
   GptHeader* secondary_header = (GptHeader*)drive->gpt.secondary_header;
-  if (CheckHeader(secondary_header, 1, drive->gpt.drive_sectors) == 0) {
+  if (CheckHeader(secondary_header, 1, drive->gpt.drive_sectors,
+                  drive->gpt.stored_on_device) == 0) {
     if (CGPT_OK != Load(drive, &drive->gpt.secondary_entries,
                         secondary_header->entries_lba,
                         drive->gpt.sector_bytes, GPT_ENTRIES_SECTORS)) {
@@ -427,10 +427,25 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
 
   // Clear struct for proper error handling.
   memset(drive, 0, sizeof(struct drive));
+  drive->gpt.stored_on_device = GPT_STORED_ON_DEVICE;
 
   if (TryInitMtd(drive_path)) {
     is_mtd = 1;
     sector_bytes = 512;  /* bytes */
+  } if (strncmp(drive_path, "/dev/mtd0", 10) == 0) {
+    // TODO(namnguyen): better detection
+    drive->seek = FlashSeek;
+    drive->read = FlashRead;
+    drive->write = FlashWrite;
+    drive->sync = FlashSync;
+    drive->close = FlashClose;
+    if (FlashInit(drive) != 0) {
+      return CGPT_FAILED;
+    }
+    // TODO(namnguyen): Figure out the size of the NAND
+    drive->size = 1024*1024 + drive->flash_size;
+    sector_bytes = 512;
+    drive->gpt.stored_on_device = GPT_STORED_OFF_DEVICE;
   } else {
     drive->fd = open(drive_path, mode | O_LARGEFILE | O_NOFOLLOW);
     if (drive->fd == -1) {
@@ -457,6 +472,11 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode) {
       sector_bytes = 512;  /* bytes */
       drive->size = stat.st_size;
     }
+    drive->seek = FileSeek;
+    drive->read = FileRead;
+    drive->write = FileWrite;
+    drive->sync = FileSync;
+    drive->close = FileClose;
   }
   drive->is_mtd = is_mtd;
 
@@ -501,9 +521,9 @@ int DriveClose(struct drive *drive, int update_as_needed) {
   // Sync early! Only sync file descriptor here, and leave the whole system sync
   // outside cgpt because whole system sync would trigger tons of disk accesses
   // and timeout tests.
-  fsync(drive->fd);
+  drive->sync(drive);
 
-  close(drive->fd);
+  drive->close(drive);
 
   return errors ? CGPT_FAILED : CGPT_OK;
 }

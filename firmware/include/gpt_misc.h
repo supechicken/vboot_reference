@@ -57,6 +57,11 @@ enum {
 	GPT_UPDATE_ENTRY_BAD = 2,
 };
 
+enum {
+	GPT_STORED_OFF_DEVICE = 0,  /* The GPT is stored on another place. */
+	GPT_STORED_ON_DEVICE = 1,   /* The GPT is stored on the same device. */
+};
+
 typedef struct {
 	/* Fill in the following fields before calling GptInit() */
 	/* GPT primary header, from sector 1 of disk (size: 512 bytes) */
@@ -71,6 +76,8 @@ typedef struct {
 	uint32_t sector_bytes;
 	/* Size of drive in LBA sectors, in sectors */
 	uint64_t drive_sectors;
+	/* Are the GPT structures stored on the same device */
+	uint8_t stored_on_device;
 
 	/* Outputs */
 	/* Which inputs have been modified?  GPT_MODIFIED_* */

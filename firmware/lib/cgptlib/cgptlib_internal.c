@@ -43,7 +43,8 @@ uint32_t HeaderCrc(GptHeader *h)
 	return crc32;
 }
 
-int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors)
+int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors,
+	uint8_t stored_on_device)
 {
 	if (!h)
 		return 1;
@@ -80,7 +81,8 @@ int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors)
 		return 1;
 	if ((h->number_of_entries < MIN_NUMBER_OF_ENTRIES) ||
 	    (h->number_of_entries > MAX_NUMBER_OF_ENTRIES) ||
-	    (h->number_of_entries * h->size_of_entry != TOTAL_ENTRIES_SIZE))
+	    (stored_on_device == GPT_STORED_ON_DEVICE &&
+	    h->number_of_entries * h->size_of_entry != TOTAL_ENTRIES_SIZE))
 		return 1;
 
 	/*
@@ -100,17 +102,27 @@ int CheckHeader(GptHeader *h, int is_secondary, uint64_t drive_sectors)
 			return 1;
 	}
 
+	/* FirstUsableLBA <= LastUsableLBA. */
+	if (h->first_usable_lba > h->last_usable_lba)
+		return 1;
+
+	if (stored_on_device != GPT_STORED_ON_DEVICE) {
+		if (h->last_usable_lba >= drive_sectors ||
+				h->last_usable_lba >= drive_sectors) {
+			return 1;
+		}
+		return 0;
+	}
+
 	/*
 	 * FirstUsableLBA must be after the end of the primary GPT table array.
 	 * LastUsableLBA must be before the start of the secondary GPT table
-	 * array.  FirstUsableLBA <= LastUsableLBA.
+	 * array.
 	 */
 	/* TODO(namnguyen): Also check for padding between header & entries. */
 	if (h->first_usable_lba < 2 + GPT_ENTRIES_SECTORS)
 		return 1;
 	if (h->last_usable_lba >= drive_sectors - 1 - GPT_ENTRIES_SECTORS)
-		return 1;
-	if (h->first_usable_lba > h->last_usable_lba)
 		return 1;
 
 	/* Success */
@@ -224,11 +236,11 @@ int GptSanityCheck(GptData *gpt)
 		return retval;
 
 	/* Check both headers; we need at least one valid header. */
-	if (0 == CheckHeader(header1, 0, gpt->drive_sectors)) {
+	if (0 == CheckHeader(header1, 0, gpt->drive_sectors, gpt->stored_on_device)) {
 		gpt->valid_headers |= MASK_PRIMARY;
 		goodhdr = header1;
 	}
-	if (0 == CheckHeader(header2, 1, gpt->drive_sectors)) {
+	if (0 == CheckHeader(header2, 1, gpt->drive_sectors, gpt->stored_on_device)) {
 		gpt->valid_headers |= MASK_SECONDARY;
 		if (!goodhdr)
 			goodhdr = header2;
