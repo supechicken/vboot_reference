@@ -34,6 +34,24 @@
       "revId": "13c2ca336d3eaa488f1e1383d48e0fd05f3ed7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5cbde63_6b2f512d",
+        "filename": "firmware/linktest/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-30T16:48:23Z",
+      "side": 1,
+      "message": "Yes, and although we didn\u0027t start out using kernel style, we\u0027ve gradually been updating files as they\u0027re being touched.\n\nThe only non-whitespace change to this file is an additional argument to SetTPMBootModeState().",
+      "parentUuid": "d5d09a11_84a008ad",
+      "revId": "13c2ca336d3eaa488f1e1383d48e0fd05f3ed7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
