@@ -16,6 +16,24 @@
       "revId": "13c2ca336d3eaa488f1e1383d48e0fd05f3ed7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5d09a11_84a008ad",
+        "filename": "firmware/linktest/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-30T02:20:18Z",
+      "side": 1,
+      "message": "vboot_reference uses kernel style, since its code is included in u-boot, coreboot, and other similar places which also use kernel style.",
+      "parentUuid": "751a8eb5_c9d79575",
+      "revId": "13c2ca336d3eaa488f1e1383d48e0fd05f3ed7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
