@@ -16,6 +16,24 @@
       "revId": "d1fd016c3081459b316f9d39476a09ec9d082d6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f582fe17_a40fbe4d",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-31T17:34:47Z",
+      "side": 1,
+      "message": "Yes, we should fall through the way vb2_secdata_init() does.",
+      "parentUuid": "f5267ef7_b094404e",
+      "revId": "d1fd016c3081459b316f9d39476a09ec9d082d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
