@@ -33,6 +33,40 @@
       "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d587ba27_062debff",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-31T20:44:11Z",
+      "side": 1,
+      "message": "Nope. If you say that struct vb2_struct_common is followed immediately by a description string, then you can\u0027t put that struct inside another struct!",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95a622d2_ee47cfe8",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-10-31T20:44:11Z",
+      "side": 1,
+      "message": "Right here is where the \u0027c\u0027 member\u0027s description text would go.",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
