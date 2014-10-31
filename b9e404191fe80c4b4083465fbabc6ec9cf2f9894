@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "55a82aa2_e0c23c12",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-31T21:31:00Z",
+      "side": 1,
+      "message": "The *parent* struct is immediately followed by the description.  Updated comments.",
+      "parentUuid": "d587ba27_062debff",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95a622d2_ee47cfe8",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2014-10-31T20:44:11Z",
       "side": 1,
       "message": "Right here is where the \u0027c\u0027 member\u0027s description text would go.",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a82aa2_008be8ff",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-10-31T21:31:00Z",
+      "side": 1,
+      "message": "But it can\u0027t.  The description is variable-length.  Unless you\u0027re proposing that vb2_struct_common have a char desc[128] field or something like that.",
+      "parentUuid": "95a622d2_ee47cfe8",
       "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
