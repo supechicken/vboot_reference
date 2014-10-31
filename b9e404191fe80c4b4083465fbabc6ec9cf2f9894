@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d587ba27_26b3cf0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-31T20:28:38Z",
+      "side": 1,
+      "message": "I\u0027ll wait until I see following CLs before I start reviewing.",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d587ba27_8bd3a495",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-10-31T20:28:38Z",
+      "side": 1,
+      "message": "nit: i prefer cptr \u003d (const uint8_t *)c + c-\u003efixed_size better, then check cptr[c-\u003edesc_size - 1] !\u003d 0.",
+      "revId": "b9e404191fe80c4b4083465fbabc6ec9cf2f9894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
