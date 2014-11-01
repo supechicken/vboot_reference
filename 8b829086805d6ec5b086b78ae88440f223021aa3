@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5c5fa79_bc3eade0",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-01T22:04:58Z",
+      "side": 1,
+      "message": "Yeah.  What I need is a check in vb2_verify_common_header() that makes sure fixed size is at least as big as the common header.  Adding that.",
+      "parentUuid": "35b576f8_85294828",
+      "revId": "8b829086805d6ec5b086b78ae88440f223021aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55a82aa2_b72a38a2",
         "filename": "firmware/2lib/2packed_key2.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-01T00:06:38Z",
       "side": 1,
       "message": "beautifully named function makes this comment redundant :-)",
+      "revId": "8b829086805d6ec5b086b78ae88440f223021aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_c4b1948c",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-01T22:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a82aa2_b72a38a2",
       "revId": "8b829086805d6ec5b086b78ae88440f223021aa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
