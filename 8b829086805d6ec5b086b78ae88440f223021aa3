@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b576f8_85294828",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-01T00:06:38Z",
+      "side": 1,
+      "message": "isn\u0027t this always true? i thought fixed_size is the size of the fixed portion of the parent, which contains the common header.",
+      "revId": "8b829086805d6ec5b086b78ae88440f223021aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a82aa2_b72a38a2",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-01T00:06:38Z",
+      "side": 1,
+      "message": "beautifully named function makes this comment redundant :-)",
+      "revId": "8b829086805d6ec5b086b78ae88440f223021aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
