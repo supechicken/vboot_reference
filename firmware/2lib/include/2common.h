@@ -300,7 +300,10 @@ uint32_t vb2_sig_size(enum vb2_signature_algorithm sig_alg,
 int vb2_verify_signature2(const struct vb2_signature2 *sig,
 			  uint32_t size);
 
-/* Size of work buffer sufficient for vb2_rsa_verify_digest() worst case */
+/*
+ * Size of work buffer sufficient for vb2_verify_digest() or
+ * vb2_verify_digest2() worst case.
+ */
 #define VB2_VERIFY_DIGEST_WORKBUF_BYTES VB2_VERIFY_RSA_DIGEST_WORKBUF_BYTES
 
 /**
@@ -317,7 +320,24 @@ int vb2_verify_digest(const struct vb2_public_key *key,
 		      const uint8_t *digest,
 		      struct vb2_workbuf *wb);
 
-/* Size of work buffer sufficient for vb2_verify_data() worst case */
+/**
+ * Verify a signature against an expected hash digest.
+ *
+ * @param key		Key to use in signature verification
+ * @param sig		Signature to verify (may be destroyed in process)
+ * @param digest	Digest of signed data
+ * @param wb		Work buffer
+ * @return VB2_SUCCESS, or non-zero if error.
+ */
+int vb2_verify_digest2(const struct vb2_public_key *key,
+		       struct vb2_signature2 *sig,
+		       const uint8_t *digest,
+		       struct vb2_workbuf *wb);
+
+/*
+ * Size of work buffer sufficient for vb2_verify_data() or vb2_verify_data2()
+ * worst case.
+ */
 #define VB2_VERIFY_DATA_WORKBUF_BYTES					\
 	(VB2_SHA512_DIGEST_SIZE +					\
 	 VB2_MAX(VB2_VERIFY_DIGEST_WORKBUF_BYTES,			\
@@ -339,6 +359,12 @@ int vb2_verify_data(const uint8_t *data,
 		    struct vb2_signature *sig,
 		    const struct vb2_public_key *key,
 		    struct vb2_workbuf *wb);
+
+int vb2_verify_data2(const void *data,
+		     uint32_t size,
+		     struct vb2_signature2 *sig,
+		     const struct vb2_public_key *key,
+		     struct vb2_workbuf *wb);
 
 /* Size of work buffer sufficient for vb2_verify_keyblock() worst case */
 #define VB2_KEY_BLOCK_VERIFY_WORKBUF_BYTES VB2_VERIFY_DATA_WORKBUF_BYTES
