@@ -178,3 +178,92 @@ int vb2_verify_signature2(const struct vb2_signature2 *sig,
 
 	return VB2_SUCCESS;
 }
+
+/**
+ * Return the signature data for a signature
+ */
+static uint8_t *vb2_signature2_data(struct vb2_signature2 *sig)
+{
+	return (uint8_t *)sig + sig->sig_offset;
+}
+
+int vb2_verify_digest2(const struct vb2_public_key *key,
+		       struct vb2_signature2 *sig,
+		       const uint8_t *digest,
+		       struct vb2_workbuf *wb)
+{
+	uint32_t key_sig_size = vb2_sig_size(key->sig_alg, key->hash_alg);
+
+	/* If we can't figure out the signature size, key algorithm was bad */
+	if (!key_sig_size)
+		return VB2_ERROR_VDATA_ALGORITHM;
+
+	/* Make sure the signature and key algorithms match */
+	if (key->sig_alg != sig->sig_alg || key->hash_alg != sig->hash_alg)
+		return VB2_ERROR_VDATA_ALGORITHM_MISMATCH;
+
+	if (sig->sig_size != key_sig_size)
+		return VB2_ERROR_VDATA_SIG_SIZE;
+
+	if (key->sig_alg == VB2_SIG_NONE) {
+		/* Bare hash */
+		if (vb2_safe_memcmp(vb2_signature2_data(sig),
+				    digest, key_sig_size))
+			return VB2_ERROR_VDATA_VERIFY_DIGEST;
+
+		return VB2_SUCCESS;
+	} else {
+		/* RSA-signed digest */
+		return vb2_rsa_verify_digest(key,
+					     vb2_signature2_data(sig),
+					     digest, wb);
+	}
+}
+
+int vb2_verify_data2(const void *data,
+		     uint32_t size,
+		     struct vb2_signature2 *sig,
+		     const struct vb2_public_key *key,
+		     struct vb2_workbuf *wb)
+{
+	struct vb2_workbuf wblocal = *wb;
+	struct vb2_digest_context *dc;
+	uint8_t *digest;
+	uint32_t digest_size;
+	int rv;
+
+	if (sig->data_size != size) {
+		VB2_DEBUG("Wrong amount of data signed.\n");
+		return VB2_ERROR_VDATA_SIZE;
+	}
+
+	/* Digest goes at start of work buffer */
+	digest_size = vb2_digest_size(key->hash_alg);
+	if (!digest_size)
+		return VB2_ERROR_VDATA_DIGEST_SIZE;
+
+	digest = vb2_workbuf_alloc(&wblocal, digest_size);
+	if (!digest)
+		return VB2_ERROR_VDATA_WORKBUF_DIGEST;
+
+	/* Hashing requires temp space for the context */
+	dc = vb2_workbuf_alloc(&wblocal, sizeof(*dc));
+	if (!dc)
+		return VB2_ERROR_VDATA_WORKBUF_HASHING;
+
+	rv = vb2_digest_init(dc, key->hash_alg);
+	if (rv)
+		return rv;
+
+	rv = vb2_digest_extend(dc, data, size);
+	if (rv)
+		return rv;
+
+	rv = vb2_digest_finalize(dc, digest, digest_size);
+	if (rv)
+		return rv;
+
+	vb2_workbuf_free(&wblocal, sizeof(*dc));
+
+	return vb2_verify_digest2(key, sig, digest, &wblocal);
+}

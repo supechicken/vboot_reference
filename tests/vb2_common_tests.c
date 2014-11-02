@@ -7,6 +7,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
+#include "2rsa.h"
 #include "vboot_struct.h"  /* For old struct sizes */
 
 #include "test_common.h"
@@ -445,6 +446,58 @@ static void test_sig_size(void)
 		VB2_SHA512_DIGEST_SIZE, "vb2_sig_size() SHA512");
 }
 
+/**
+ * Verify data on bare hash
+ */
+static void test_verify_hash(void)
+{
+	static const uint8_t test_data[] = "This is some test data to sign.";
+	uint8_t buf[4096];
+	struct vb2_signature2 *sig = (struct vb2_signature2 *)buf;
+	struct vb2_guid hash_guid = VB2_GUID_NONE_SHA256;
+	struct vb2_public_key pubk = {
+		.sig_alg = VB2_SIG_NONE,
+		.hash_alg = VB2_HASH_SHA256,
+		.guid = &hash_guid
+	};
+	struct vb2_digest_context dc;
+
+	uint8_t workbuf[VB2_VERIFY_DATA_WORKBUF_BYTES];
+	struct vb2_workbuf wb;
+
+	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
+
+	/* Create the signature */
+	memset(buf, 0, sizeof(buf));
+	sig->c.magic = VB2_MAGIC_SIGNATURE2;
+	sig->c.struct_version_major = VB2_SIGNATURE2_VERSION_MAJOR;
+	sig->c.struct_version_minor = VB2_SIGNATURE2_VERSION_MINOR;
+	sig->c.fixed_size = sizeof(*sig);
+	sig->c.desc_size = 8;
+	sig->sig_offset = sig->c.fixed_size + sig->c.desc_size;
+	sig->sig_size = vb2_sig_size(pubk.sig_alg, pubk.hash_alg);
+	sig->c.total_size = sig->sig_offset + sig->sig_size;
+	sig->data_size = sizeof(test_data);
+	sig->sig_alg = pubk.sig_alg;
+	sig->hash_alg = pubk.hash_alg;
+	memcpy(&sig->key_guid, &hash_guid, sizeof(hash_guid));
+
+	TEST_SUCC(vb2_digest_init(&dc, pubk.hash_alg), "hash init");
+	TEST_SUCC(vb2_digest_extend(&dc, test_data, sizeof(test_data)),
+		  "hash extend");
+	TEST_SUCC(vb2_digest_finalize(&dc, buf + sig->sig_offset,
+				      sig->sig_size),
+		  "hash finalize");
+
+	TEST_SUCC(vb2_verify_data2(test_data, sizeof(test_data),
+				   sig, &pubk, &wb),
+		  "vb2_verify_data2() hash ok");
+
+	buf[sig->sig_offset] ^= 0xab;
+	TEST_EQ(vb2_verify_data2(test_data, sizeof(test_data), sig, &pubk, &wb),
+		VB2_ERROR_VDATA_VERIFY_DIGEST, "vb2_verify_data2() hash bad");
+}
+
 int main(int argc, char* argv[])
 {
 	test_memcmp();
@@ -454,6 +507,7 @@ int main(int argc, char* argv[])
 	test_helper_functions();
 	test_common_header_functions();
 	test_sig_size();
+	test_verify_hash();
 
 	return gTestSuccess ? 0 : 255;
 }
