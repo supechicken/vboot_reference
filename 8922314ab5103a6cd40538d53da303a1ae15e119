@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c5fa79_51bf6f31",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Optional style nit: I think unions are great for situations where you have constrained resources, but this isn\u0027t one of those cases. It becomes an extra source of debugging difficulty when a union is used in the wrong way, especially when it isn\u0027t tagged in an obvious way, as here. You could just have these fields side by side.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_3d304209",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Rather than emulating a drive with seek and read/write functions, wouldn\u0027t it be easier to just make pread/pwrite methods? It doesn\u0027t look like you do a lot of reads or writes after a single seek.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5c5fa79_f1420389",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Use stat and check for major \u003d 90",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_fda53abe",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Read from sysfs or use ioctl",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_7d7b6ab0",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "For simplicity, you could make a SyncAndClose method since you always call them together.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_bdc69272",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Use a constant for 128?",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_7d400a2e",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Nit: I think it\u0027s cleaner to make this a function which returns a status indicator, even if it makes a little more verbiage for the \"return -1\" at callsites. It\u0027s important for flow control to be easy to read.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_1dd466ff",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "It\u0027s not such good practice to allocate so much on the stack--you may cause overflow if small stacks are used. Better to dynamically allocate it.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_3d3a82ba",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "You would be able to delete this code if you switched to a pread/pwrite model",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5e59e1c_12e90c13",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "As we\u0027ve discussed, this will go away as we get rid of the virtual addressing for the GPT.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5c5fa79_6c8f3635",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "Do we have a better way to build commands than sprintf? At least we should be consistent about using snprintf. I think it\u0027s better practice to use functions to construct commands which escape things properly to prevent injection attacks.\n\nBut of course we already have bad precedent which doesn\u0027t do this in the existing Chrome utilities like vpdutil. Also, nothing here constructs commands based on user input. Still I get a bad feeling.",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b23212_fd0ada10",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "redundant?",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55d10a3e_c44ce88d",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-03T23:27:30Z",
+      "side": 1,
+      "message": "The tests in the other file look great. Any chance we could get GPT_STORED_OFF_DEVICE tests in this file in addition?",
+      "revId": "8922314ab5103a6cd40538d53da303a1ae15e119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
