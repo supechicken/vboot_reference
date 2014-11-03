@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5c5fa79_28bff332",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-03T18:59:10Z",
+      "side": 1,
+      "message": "Hmm, I think this should call vb2_fail() too, rather than overriding the recovery reason.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "356c024df5d3de7d6613723b7ff15afaee50cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
