@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5e59e1c_1296ac22",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-03T23:42:43Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be equal? in other words, is sig-\u003ec.fixed_size \u003e sizeof(*sig) valid? also, can we do this check in vb2_verify_common_header by handing out parent_fixed as a parameter?",
+      "revId": "6626205348812f7248a113fd4d0c750e2f71d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
