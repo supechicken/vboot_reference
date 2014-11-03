@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55d10a3e_a9eb0537",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-03T22:54:58Z",
+      "side": 1,
+      "message": "can we move these to 2common2.c in this cl?",
+      "revId": "55459363beeb661f32c2b16396943ae7c5761c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55d10a3e_8933a969",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-03T22:54:58Z",
+      "side": 1,
+      "message": "don\u0027t we need to call vb2_verify_common_header for m?",
+      "revId": "55459363beeb661f32c2b16396943ae7c5761c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
