@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b23212_dd9a7e7a",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-03T23:24:08Z",
+      "side": 1,
+      "message": "this should be memcpy(sig2, sig, sig-\u003esig_offset + sig-\u003esig_size)",
+      "revId": "1d530dbcb6b900f3760d0148b80f4885c053575d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
