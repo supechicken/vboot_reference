@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75d9ae6e_0ef20b7b",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T16:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d10a3e_a9eb0537",
+      "revId": "55459363beeb661f32c2b16396943ae7c5761c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d10a3e_8933a969",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-03T22:54:58Z",
       "side": 1,
       "message": "don\u0027t we need to call vb2_verify_common_header for m?",
+      "revId": "55459363beeb661f32c2b16396943ae7c5761c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d9ae6e_ce1083f6",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T16:49:04Z",
+      "side": 1,
+      "message": "I can restructure it that way.",
+      "parentUuid": "55d10a3e_8933a969",
       "revId": "55459363beeb661f32c2b16396943ae7c5761c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
