@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156dd243_4cad4e2c",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T19:46:35Z",
+      "side": 1,
+      "message": "So we stop looping at the first success OR failure?\n\nWe should only return here if vb2_verify_data2() succeeds.",
+      "revId": "8e9aa324ea21e29f99ca049db20c4ca736a7940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
