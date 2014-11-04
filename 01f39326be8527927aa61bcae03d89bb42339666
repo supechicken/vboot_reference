@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15cb1296_d99613b0",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T19:44:50Z",
+      "side": 1,
+      "message": "Isn\u0027t vb2_verify_digest2() using the wblocal that you just freed?",
+      "revId": "01f39326be8527927aa61bcae03d89bb42339666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
