@@ -16,6 +16,24 @@
       "revId": "01f39326be8527927aa61bcae03d89bb42339666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35e3b620_001f76cd",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T23:11:26Z",
+      "side": 1,
+      "message": "I didn\u0027t free wblocal itself.  I freed the digest context (making more space available in wblocal).",
+      "parentUuid": "15cb1296_d99613b0",
+      "revId": "01f39326be8527927aa61bcae03d89bb42339666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
