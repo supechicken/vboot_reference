@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "15e07212_5fa31b0f",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T23:12:37Z",
+      "side": 1,
+      "message": "Yes, I see that, it just seems odd that we\u0027d update a return param if the function fails. I would have expected you to use a temp variable instead.\n\nIt\u0027s okay, though.",
+      "parentUuid": "15e07212_bf2e7f2e",
+      "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15cb1296_5930c35b",
         "filename": "firmware/2lib/2packed_key2.c",
         "patchSetId": 4
@@ -66,6 +84,23 @@
       "side": 1,
       "message": "What first rv?\n\nline 27: declared uninitialized\nline 40: first used",
       "parentUuid": "15cb1296_5930c35b",
+      "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15e07212_7fe13756",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T23:12:37Z",
+      "side": 1,
+      "message": "When I looked at this, it said:\n\n  rv \u003d vb2_verify_common_header(buf, size);\n  rv \u003d vb2_verify_common_member(pkey, \u0026min_offset,\n                                pkey-\u003ekey_offset, pkey-\u003ekey_size);\n  if (rv)\n        return rv;\n\nI know I didn\u0027t imagine it. I\u0027ve seen some weird redisplay behavior from Chrome-beta at home, but not at work until today. Hmm.",
       "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
