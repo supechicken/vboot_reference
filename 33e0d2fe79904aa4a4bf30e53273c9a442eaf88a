@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75d9ae6e_4e99330a",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T17:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5e59e1c_3289b080",
+      "revId": "33e0d2fe79904aa4a4bf30e53273c9a442eaf88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d10a3e_2f07f5b5",
         "filename": "firmware/2lib/2common2.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-04T00:05:31Z",
       "side": 1,
       "message": "not sure why you don\u0027t need to free digest.",
+      "revId": "33e0d2fe79904aa4a4bf30e53273c9a442eaf88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5e59e1c_871a545f",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T17:06:40Z",
+      "side": 1,
+      "message": "The digest was allocated in wblocal, which goes away at the end of the function - effectively freeing all allocations done inside this function.",
+      "parentUuid": "55d10a3e_2f07f5b5",
       "revId": "33e0d2fe79904aa4a4bf30e53273c9a442eaf88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
