@@ -87,6 +87,24 @@
       "revId": "33e0d2fe79904aa4a4bf30e53273c9a442eaf88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35e3b620_0cad77f6",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-04T18:57:07Z",
+      "side": 1,
+      "message": "No, because dc was allocated within wblocal.\n\nvb2_workbuf_alloc advances a pointer inside wblocal.  It doesn\u0027t touch wb.  So at the end of the function, wb is unchanged.  It\u0027s much like alloca().",
+      "parentUuid": "f5e59e1c_871a545f",
+      "revId": "33e0d2fe79904aa4a4bf30e53273c9a442eaf88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
