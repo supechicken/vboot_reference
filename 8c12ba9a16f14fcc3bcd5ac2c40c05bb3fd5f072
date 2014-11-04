@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75d9ae6e_94c60c73",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-04T18:37:47Z",
+      "side": 1,
+      "message": "i think you want to call\nvb2_verify_common_member(parent, min_offset,\n\t\t\t\t\tmember_offset + sizeof(*m),\n\t\t\t\t\tm-\u003etotal_size - sizeof(*m))\ninstead.",
+      "revId": "8c12ba9a16f14fcc3bcd5ac2c40c05bb3fd5f072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
