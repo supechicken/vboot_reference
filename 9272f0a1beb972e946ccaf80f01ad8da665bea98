@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5ea5aee_7700489f",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T19:30:46Z",
+      "side": 1,
+      "message": "Why do we set *min_offset here if 1) we may fail anyway, and 2) we change it if we succeed?",
+      "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15cb1296_5930c35b",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-04T19:30:46Z",
+      "side": 1,
+      "message": "You\u0027re overwriting the first rv without looking at it.",
+      "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
