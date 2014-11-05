@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f533de7c_28782f31",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-05T00:36:01Z",
+      "side": 1,
+      "message": "I\u0027ll add some comments in a subsequent CL to the effect of \"on a failed return, the contents of min_offset are undefined.\"",
+      "parentUuid": "15e07212_5fa31b0f",
+      "revId": "9272f0a1beb972e946ccaf80f01ad8da665bea98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15cb1296_5930c35b",
         "filename": "firmware/2lib/2packed_key2.c",
         "patchSetId": 4
