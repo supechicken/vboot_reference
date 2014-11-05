@@ -16,6 +16,24 @@
       "revId": "8e9aa324ea21e29f99ca049db20c4ca736a7940b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b50886ac_488c7f90",
+        "filename": "firmware/2lib/2common2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-05T17:27:32Z",
+      "side": 1,
+      "message": "We only pass one key into the verify function.\n\nI\u0027m assuming the list of signatures will only have a single signature matching the GUID for that key.  If that doesn\u0027t verify, we can bail immediately.",
+      "parentUuid": "156dd243_4cad4e2c",
+      "revId": "8e9aa324ea21e29f99ca049db20c4ca736a7940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
