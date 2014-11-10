@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baf15352_e9362d05",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T18:03:50Z",
+      "side": 1,
+      "message": "No, since that doesn\u0027t matter for the proper functionality of vb2_verify_fw_preamble2().  We trust that vb2_verify_data() works, because that\u0027s unit tested separately.",
+      "parentUuid": "35473640_4f3dd1b0",
+      "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35473640_8c5987da",
         "filename": "tests/vb2_common_tests.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-07T17:52:48Z",
       "side": 1,
       "message": "can we use test_data instead of reusing desc?",
+      "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf15352_c986c93a",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T18:03:50Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "35473640_8c5987da",
       "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "baf15352_a9302507",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T18:03:50Z",
+      "side": 1,
+      "message": "Arbitrary length of test data",
+      "parentUuid": "1544f239_cb0ff51e",
+      "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35473640_4fecf123",
         "filename": "tests/vb2_common_tests.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-11-07T17:52:48Z",
       "side": 1,
       "message": "it seems you\u0027re just reusing buf as a test data blob. can we use test_data instead?",
+      "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_855ae4f1",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-10T18:03:50Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "35473640_4fecf123",
       "revId": "8eb12f0bd0bc18f25cb52099047ecdc4f546312a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
