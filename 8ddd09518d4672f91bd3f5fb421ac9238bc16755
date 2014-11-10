@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5a94d7fe_7d4517e2",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-10T22:03:37Z",
+      "side": 1,
+      "message": "What is this factory environment? I thought the installer, or some similar code, ran in the factory on the target device directly and that called out to cgpt, running on the target machine, which wrote the GPT.\n\nI will mail the depthcharge and vboot patches which sets stored_on_device from the firmware side soon, by the way.\n\nAll this code just handles the NOR side. Just like cgpt doesn\u0027t format ext4 partitions today, it also won\u0027t write the disk image for NAND flash. It\u0027ll take some time until we have that working since I\u0027m still working out NAND driver issues on Storm.",
+      "parentUuid": "da6367f0_c960f1f4",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae74b92_45305c8b",
         "filename": "cgpt/cgpt_common.c",
         "patchSetId": 5
@@ -81,6 +99,24 @@
       "writtenOn": "2014-11-10T20:47:04Z",
       "side": 1,
       "message": "I\u0027m not a big fan of libraries that silently invoke other programs, especially with hard-coded paths. This won\u0027t work unless we\u0027re actually running on the target. \n\nWe should double-check with the external users of this library (cryptohome, installer, updater, etc.) to be sure they\u0027re okay with it.\n\nI\u0027d kind of prefer run-time options to specify where/how to find the various bits instead. Should we invoke a program (flashrom?), or read from a file, or be given the constants we need, or what?",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6cabf2_7a3bd972",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-10T22:03:37Z",
+      "side": 1,
+      "message": "This code was copied and pasted from the vpd utility. Is it safe to say what gets called there can also be called here, or is cgpt run in more restricted environments than vpdutil?",
+      "parentUuid": "fae74b92_e5265057",
       "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
