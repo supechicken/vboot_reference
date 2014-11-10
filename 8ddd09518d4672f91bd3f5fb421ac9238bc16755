@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae74b92_82bbfaea",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "What are the units of flash_start and flash_size? Bytes? Disks using GPT use units of 512-byte blocks.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6367f0_c960f1f4",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "This test is the only place I can find where  drive-\u003egpt.stored_on_device is set. How are you going to create the NOR and NAND images needed for the factory images without first booting and running on the target system?\n\nIt seems like we\u0027ll want to run \"cgpt -c \" with some args on the build system first, which would emit the GPT header image for the NOR flash along with the raw disk image for the NAND flash.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_45305c8b",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "Same issue here. FlashInit() will always invoke flashrom, which will cause problems if we just want to create the binary images to be installed onto the target.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf15352_89f56130",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "We only seem to return -1 or 0. Might be nice to provide more useful error codes, so the caller can know what went wrong.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_e5265057",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of libraries that silently invoke other programs, especially with hard-coded paths. This won\u0027t work unless we\u0027re actually running on the target. \n\nWe should double-check with the external users of this library (cryptohome, installer, updater, etc.) to be sure they\u0027re okay with it.\n\nI\u0027d kind of prefer run-time options to specify where/how to find the various bits instead. Should we invoke a program (flashrom?), or read from a file, or be given the constants we need, or what?",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fae74b92_a25a7e3a",
+        "filename": "cgpt/drive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-10T20:47:04Z",
+      "side": 1,
+      "message": "This needs some #ifndef FOO to prevent it being included more than once.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
