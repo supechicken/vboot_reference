@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7ac51b23_4e4af3a6",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-11T01:29:20Z",
+      "side": 1,
+      "message": "In order for the device to boot, it has to either have an image on it that can boot, or it has to boot from a USB drive that has an image on it that can boot.\n\nWhen you build the firmware for a chromebook, this is /build/$BOARD/firmware/image.bin or similar. We can flash it onto the target using servo, or in the factory it\u0027s often preloaded onto the flash chips before they\u0027re soldered down.\n\nThat\u0027s why I ask this here: How are the NOR+NAND flash devices manufactured?  If you need to know what bits should be in the flash before applying power (say, so you can determine the checksums used for verified boot/software sync), then we need a way to generate those images without actually booting the target first.",
+      "parentUuid": "5a94d7fe_7d4517e2",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae74b92_45305c8b",
         "filename": "cgpt/cgpt_common.c",
         "patchSetId": 5
@@ -117,6 +135,24 @@
       "side": 1,
       "message": "This code was copied and pasted from the vpd utility. Is it safe to say what gets called there can also be called here, or is cgpt run in more restricted environments than vpdutil?",
       "parentUuid": "fae74b92_e5265057",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4c838a_44f8638c",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-11T01:29:20Z",
+      "side": 1,
+      "message": "It\u0027s probably okay, but best to ask. The one persistent exploit we\u0027ve encountered got that way through vpd. That makes me extra cautious about this kind of thing.",
+      "parentUuid": "fa6cabf2_7a3bd972",
       "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
