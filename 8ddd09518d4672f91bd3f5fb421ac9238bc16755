@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3a4c838a_64e91f93",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-11-11T01:35:15Z",
+      "side": 1,
+      "message": "Oh, I was assuming it\u0027d boot off of USB (or netboot somehow) but I should talk with manufacturing people more. Thanks for pointing this out.",
+      "parentUuid": "7ac51b23_4e4af3a6",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae74b92_45305c8b",
         "filename": "cgpt/cgpt_common.c",
         "patchSetId": 5
