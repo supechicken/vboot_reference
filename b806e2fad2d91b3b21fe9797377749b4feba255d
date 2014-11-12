@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa5ff82_23a0ea03",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-12T02:59:27Z",
+      "side": 1,
+      "message": "not sure whether we should call vb2_verify_common_header here or wait until vb2_unpack_key2.",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa8035b_e7cdfc40",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-12T02:59:27Z",
+      "side": 1,
+      "message": "i suppose this comment needs update. keyblocks are not (and doesn\u0027t have to be) right after GBB geographically.",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aa8035b_a7206439",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2014-11-12T02:59:27Z",
+      "side": 1,
+      "message": "then, can we at least check key_size \u003e\u003d packed_key-\u003ec.total_size?",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
