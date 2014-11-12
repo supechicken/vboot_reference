@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab9efac_87b8c6e9",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2014-11-12T20:16:31Z",
+      "side": 1,
+      "message": "These are the area\u0027s offset and size as recorded in FMAP. I updated the .h file to make it clear.",
+      "parentUuid": "fae74b92_82bbfaea",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6367f0_c960f1f4",
         "filename": "cgpt/cgpt_common.c",
         "patchSetId": 5
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "7aaefb66_66fa6e20",
+        "filename": "cgpt/drive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2014-11-12T20:16:31Z",
+      "side": 1,
+      "message": "Done. I also set errno to EIO in FlashRead and FlashWrite functions.",
+      "parentUuid": "baf15352_89f56130",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae74b92_e5265057",
         "filename": "cgpt/drive.c",
         "patchSetId": 5
@@ -188,6 +224,24 @@
       "writtenOn": "2014-11-10T20:47:04Z",
       "side": 1,
       "message": "This needs some #ifndef FOO to prevent it being included more than once.",
+      "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4f777e_b3abda1c",
+        "filename": "cgpt/drive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2014-11-12T20:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae74b92_a25a7e3a",
       "revId": "8ddd09518d4672f91bd3f5fb421ac9238bc16755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
