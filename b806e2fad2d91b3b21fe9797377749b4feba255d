@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a4d63af_df73df51",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-12T21:50:40Z",
+      "side": 1,
+      "message": "We can\u0027t verify it until we\u0027ve read the entire buffer, because that call checks to make sure the description is null-terminated.  So I\u0027d say wait.",
+      "parentUuid": "1aa5ff82_23a0ea03",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa8035b_e7cdfc40",
         "filename": "firmware/2lib/2misc2.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a4d63af_7fb56b73",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-12T21:50:40Z",
+      "side": 1,
+      "message": "We\u0027re loading it into the *work buffer* after the root key.",
+      "parentUuid": "3aa8035b_e7cdfc40",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aa8035b_a7206439",
         "filename": "firmware/2lib/2misc2.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-11-12T02:59:27Z",
       "side": 1,
       "message": "then, can we at least check key_size \u003e\u003d packed_key-\u003ec.total_size?",
+      "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4d63af_5f918fd9",
+        "filename": "firmware/2lib/2misc2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-12T21:50:40Z",
+      "side": 1,
+      "message": "Why?  If it\u0027s not, memmove() means it\u0027ll still work.",
+      "parentUuid": "3aa8035b_a7206439",
       "revId": "b806e2fad2d91b3b21fe9797377749b4feba255d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
