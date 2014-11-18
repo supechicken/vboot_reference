@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0233b9_bbe313b4",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-18T23:43:08Z",
+      "side": 1,
+      "message": "Weird that this is gpt_lba_count here, but lba_count in the disk info.\n\nAlso notice entertaining possibility of off-by-one errors, since ending_lba \u003d streaming_lba_count-1, but gpt_lba_count\u003dlba_count",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a55ffac_dd904bb4",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-18T23:43:08Z",
+      "side": 1,
+      "message": "uint32_t flags, rather than (effectively) bool external_gpt?",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba0233b9_3b2a631e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-18T23:43:08Z",
+      "side": 1,
+      "message": "Can we just do\n\np-\u003eending_lba \u003d streaming_count ? streaming_count : gpt_lba_count\n\nThat is, if the caller hasn\u0027t specified a streaming count, assume it\u0027s the same?",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fadf4b7d_3699d052",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-18T23:43:08Z",
+      "side": 1,
+      "message": "Maybe we should have made this a flags field too...",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fadf4b7d_16c76c23",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-18T23:43:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you have more tests for proper operation when GPT isn\u0027t on the same device?",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
