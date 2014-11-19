@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7aca7bdf_e6715e09",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-19T18:10:56Z",
+      "side": 1,
+      "message": "If 0, the number of streaming sectors is the same as the number of random-access sectors.",
+      "range": {
+        "startLine": 583,
+        "startChar": 39,
+        "endLine": 583,
+        "endChar": 45
+      },
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0233b9_bbe313b4",
         "filename": "firmware/lib/include/load_kernel_fw.h",
         "patchSetId": 1
@@ -37,6 +60,24 @@
       "side": 1,
       "message": "I don\u0027t really like the ending_lba field having this -1. Looks like everything that refers to it adds 1. What if we changed that field to add 1, as our strategy of getting rid of off-by-1 errors?",
       "parentUuid": "ba0233b9_bbe313b4",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aca7bdf_e6d03e8a",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-19T18:10:56Z",
+      "side": 1,
+      "message": "That would be fine.  Field should be renamed to streaming_lba_count.\n\n(When we change the meaning/contents of a field, it\u0027s helpful to rename it; that way it forces us to find *all* the places where it was used to make sure they have been updated...)",
+      "parentUuid": "1a55ffac_b8c9dd87",
       "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
