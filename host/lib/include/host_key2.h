@@ -10,6 +10,8 @@
 
 #include "2struct.h"
 
+struct vb2_public_key;
+
 /* Private key data */
 struct vb2_private_key {
 	struct rsa_st *rsa_private_key;		/* Private key data */
