@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7fc50d23_0e3b8b61",
+        "filename": "host/lib/host_misc2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-24T17:25:04Z",
+      "side": 1,
+      "message": "Not really.\n\nInternal vboot functions assume non-NULL buffers.  External APIs need to check, of course.",
+      "parentUuid": "df7199c8_193bcb61",
+      "revId": "e9bcff46c270cec2bd5af0633e6268e13167030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df7199c8_994efb01",
         "filename": "tests/vb2_host_misc_tests.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2014-11-24T16:54:08Z",
       "side": 1,
       "message": "what\u0027s this?",
+      "revId": "e9bcff46c270cec2bd5af0633e6268e13167030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fe001b1_7256b620",
+        "filename": "tests/vb2_host_misc_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-24T17:25:04Z",
+      "side": 1,
+      "message": "Just some non-zero data at the end.",
+      "parentUuid": "df7199c8_994efb01",
       "revId": "e9bcff46c270cec2bd5af0633e6268e13167030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
