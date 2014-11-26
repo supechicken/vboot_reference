@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f572141_17db742e",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-26T00:30:47Z",
+      "side": 1,
+      "message": "Can we always be sure that key_data is aligned properly so that this cast is valid?",
+      "revId": "b679f8f232e0898e38e5b9494826cb9c69566d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f572141_f76fe098",
+        "filename": "host/lib/include/host_key2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2014-11-26T00:30:47Z",
+      "side": 1,
+      "message": "What\u0027s the difference between a packed private key and an unpacked private key. Why do we need both?",
+      "revId": "b679f8f232e0898e38e5b9494826cb9c69566d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
