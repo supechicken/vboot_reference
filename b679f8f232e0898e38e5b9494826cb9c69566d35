@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5f692905_6f2dadbc",
+        "filename": "firmware/2lib/2packed_key2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-26T19:35:02Z",
+      "side": 1,
+      "message": "Added check",
+      "parentUuid": "9f572141_17db742e",
+      "revId": "b679f8f232e0898e38e5b9494826cb9c69566d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f572141_f76fe098",
         "filename": "host/lib/include/host_key2.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-26T00:30:47Z",
       "side": 1,
       "message": "What\u0027s the difference between a packed private key and an unpacked private key. Why do we need both?",
+      "revId": "b679f8f232e0898e38e5b9494826cb9c69566d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff581d71_afb069d2",
+        "filename": "host/lib/include/host_key2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-11-26T19:35:02Z",
+      "side": 1,
+      "message": "A packed private key is a bitstream containing a RSA key, suitable for storage on disk/flash.\n\nAn unpacked key has unpacked that bitstream, including into struct rsa_st, so it\u0027s ready to pass to the RSA signature functions.\n\nAdded comment.",
+      "parentUuid": "9f572141_f76fe098",
       "revId": "b679f8f232e0898e38e5b9494826cb9c69566d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
