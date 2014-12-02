@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1fcb3196_4781fe89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2014-12-02T22:47:32Z",
+      "side": 1,
+      "message": "Yeah, sorry, I didn\u0027t know the commit message requirements.  I changed it to reflect the summary followed by the description.",
+      "parentUuid": "5fd1293e_3b0cdfd8",
+      "revId": "b9776242f2edf7598741f4ffae0bcace918529f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffe57d1c_b25480c5",
         "filename": "futility/cmd_dev_sign_file.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-02T21:32:55Z",
       "side": 1,
       "message": "Did this reformatting happen on purpose?",
+      "revId": "b9776242f2edf7598741f4ffae0bcace918529f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fcb3196_071d46d1",
+        "filename": "futility/cmd_dev_sign_file.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2014-12-02T22:47:32Z",
+      "side": 1,
+      "message": "This was an editor config issue and was not showing up for me.  I stole Furquan\u0027s .emacs file and fixed all the formatting issues and trailing whitespaces in the 2nd patch that I uploaded.",
+      "parentUuid": "ffe57d1c_b25480c5",
       "revId": "b9776242f2edf7598741f4ffae0bcace918529f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
