@@ -38,6 +38,7 @@ enum {
 	OPT_MODE_PACK = 1000,
 	OPT_MODE_REPACK,
 	OPT_MODE_VERIFY,
+	OPT_MODE_GET_VMLINUZ,
 	OPT_ARCH,
 	OPT_OLDBLOB,
 	OPT_KLOADADDR,
@@ -52,6 +53,7 @@ enum {
 	OPT_PAD,
 	OPT_VERBOSE,
 	OPT_MINVERSION,
+	OPT_VMLINUZ_OUT,
 };
 
 typedef enum {
@@ -64,6 +66,7 @@ static const struct option long_opts[] = {
 	{"pack", 1, 0, OPT_MODE_PACK},
 	{"repack", 1, 0, OPT_MODE_REPACK},
 	{"verify", 1, 0, OPT_MODE_VERIFY},
+	{"get-vmlinuz", 1, 0, OPT_MODE_GET_VMLINUZ},
 	{"arch", 1, 0, OPT_ARCH},
 	{"oldblob", 1, 0, OPT_OLDBLOB},
 	{"kloadaddr", 1, 0, OPT_KLOADADDR},
@@ -79,6 +82,7 @@ static const struct option long_opts[] = {
 	{"pad", 1, 0, OPT_PAD},
 	{"verbose", 0, &opt_verbose, 1},
 	{"debug", 0, &opt_debug, 1},
+	{"vmlinuz-out", 1, 0, OPT_VMLINUZ_OUT},
 	{NULL, 0, 0, 0}
 };
 
@@ -131,13 +135,18 @@ static const char usage[] =
 	"    --pad <number>            Verification padding size in bytes\n"
 	"    --minversion <number>     Minimum combined kernel key version\n"
 	"                              and kernel version\n"
+	"\nOR\n\n"
+	"Usage:  " MYNAME " %s --get-vmlinuz <file> [PARAMETERS]\n"
+	"\n"
+	"  Required parameters:\n"
+	"    --vmlinuz-out <file>      vmlinuz image output file\n"
 	"\n";
 
 
 /* Print help and return error */
 static void print_help(const char *progname)
 {
-	printf(usage, progname, progname, progname);
+	printf(usage, progname, progname, progname, progname);
 }
 
 static void Debug(const char *format, ...)
@@ -221,6 +230,9 @@ static uint64_t g_config_size;
 static uint8_t *g_bootloader_data;
 static uint64_t g_bootloader_size;
 static uint64_t g_bootloader_address;
+static uint8_t *g_vmlinuz_header_data;
+static uint64_t g_vmlinuz_header_size;
+static uint64_t g_vmlinuz_header_address;
 
 /* The individual parts of the verification blob (including the data that
  * immediately follows the headers) */
@@ -305,6 +317,16 @@ static int ImportVmlinuzFile(const char *vmlinuz_file, arch_t arch,
 		Fatal("Malformed kernel\n");
 	kernel32_size = kernel_size - kernel32_start;
 
+	Debug(" kernel16_start=0x%" PRIx64 "\n", 0);
+	Debug(" kernel16_size=0x%" PRIx64 "\n", kernel32_start);
+
+	/* keep the header for reconstruction of vmlinuz */
+	if (kernel32_start) {
+		g_vmlinuz_header_size = kernel32_start;
+		g_vmlinuz_header_data = VbExMalloc(g_vmlinuz_header_size);
+		Memcpy(g_vmlinuz_header_data, kernel_buf, kernel32_start);
+	}
+		  
 	Debug(" kernel32_start=0x%" PRIx64 "\n", kernel32_start);
 	Debug(" kernel32_size=0x%" PRIx64 "\n", kernel32_size);
 
@@ -420,6 +442,10 @@ static uint8_t *ReadOldBlobFromFileOrDie(const char *filename,
 	Debug(" bootloader_size = 0x%" PRIx64 "\n", preamble->bootloader_size);
 	Debug(" kern_blob_size = 0x%" PRIx64 "\n",
 	      preamble->body_signature.data_size);
+	Debug(" vmlinuz_header_address = 0x%" PRIx64 "\n", 
+	      preamble->vmlinuz_header_address);
+	Debug(" vmlinuz_header_size = 0x%" PRIx64 "\n",
+	      preamble->vmlinuz_header_size);
 	g_preamble =
 	    (VbKernelPreambleHeader *) VbExMalloc(preamble->preamble_size);
 	Memcpy(g_preamble, preamble, preamble->preamble_size);
@@ -455,7 +481,7 @@ static uint8_t *ReadOldBlobFromFileOrDie(const char *filename,
 }
 
 /* Split a kernel blob into separate g_kernel, g_param, g_config, and
- * g_bootloader parts. */
+ * g_bootloader, and g_vmlinuz_header parts. */
 static void UnpackKernelBlob(uint8_t *kernel_blob_data,
 			     uint64_t kernel_blob_size)
 {
@@ -465,6 +491,9 @@ static void UnpackKernelBlob(uint8_t *kernel_blob_data,
 	uint64_t b_size = g_preamble->bootloader_size;
 	uint64_t b_ofs = k_blob_ofs + g_preamble->bootloader_address -
 	    g_preamble->body_load_address;
+	uint64_t v_size = g_preamble->vmlinuz_header_size;
+	uint64_t v_ofs = k_blob_ofs + g_preamble->vmlinuz_header_address -
+	    g_preamble->body_load_address;
 	uint64_t p_ofs = b_ofs - CROS_CONFIG_SIZE;
 	uint64_t c_ofs = p_ofs - CROS_PARAMS_SIZE;
 
@@ -472,6 +501,8 @@ static void UnpackKernelBlob(uint8_t *kernel_blob_data,
 	Debug("k_blob_ofs     = 0x%" PRIx64 "\n", k_blob_ofs);
 	Debug("b_size         = 0x%" PRIx64 "\n", b_size);
 	Debug("b_ofs          = 0x%" PRIx64 "\n", b_ofs);
+	Debug("v_size         = 0x%" PRIx64 "\n", v_size);
+	Debug("v_ofs          = 0x%" PRIx64 "\n", v_ofs);
 	Debug("p_ofs          = 0x%" PRIx64 "\n", p_ofs);
 	Debug("c_ofs          = 0x%" PRIx64 "\n", c_ofs);
 
@@ -490,6 +521,10 @@ static void UnpackKernelBlob(uint8_t *kernel_blob_data,
 	g_bootloader_size = b_size;
 	g_bootloader_data = VbExMalloc(g_bootloader_size);
 	Memcpy(g_bootloader_data, kernel_blob_data + b_ofs, g_bootloader_size);
+
+	g_vmlinuz_header_size = v_size;
+	g_vmlinuz_header_data = VbExMalloc(g_vmlinuz_header_size);
+	Memcpy(g_vmlinuz_header_data, kernel_blob_data + v_ofs, g_vmlinuz_header_size);
 }
 
 /****************************************************************************/
@@ -500,11 +535,16 @@ static uint8_t *CreateKernBlob(uint64_t kernel_body_load_address,
 	uint8_t *kern_blob;
 	uint64_t kern_blob_size;
 	uint64_t now;
-	uint64_t bootloader_size = roundup(g_bootloader_size, CROS_ALIGN);
+	uint64_t bootloader_size     = roundup(g_bootloader_size, CROS_ALIGN);
+	uint64_t vmlinuz_header_size = g_vmlinuz_header_size;
 
 	/* Put the kernel blob together */
-	kern_blob_size = roundup(g_kernel_size, CROS_ALIGN) +
-	    CROS_CONFIG_SIZE + CROS_PARAMS_SIZE + bootloader_size;
+	kern_blob_size = 
+		roundup(g_kernel_size, CROS_ALIGN) +
+		CROS_CONFIG_SIZE                   +
+		CROS_PARAMS_SIZE                   +
+		bootloader_size                    +
+		vmlinuz_header_size;
 	Debug("kern_blob_size=0x%" PRIx64 "\n", kern_blob_size);
 	kern_blob = VbExMalloc(kern_blob_size);
 	Memset(kern_blob, 0, kern_blob_size);
@@ -532,6 +572,15 @@ static uint8_t *CreateKernBlob(uint64_t kernel_body_load_address,
 	if (bootloader_size)
 		Memcpy(kern_blob + now, g_bootloader_data, g_bootloader_size);
 	now += bootloader_size;
+
+	Debug("vmlinuz header goes at kern_blob+0x%" PRIx64 "\n", now);
+	g_vmlinuz_header_address = kernel_body_load_address + now;
+	Debug(" vmlinuz_header_address=0x%" PRIx64 "\n", g_vmlinuz_header_address);
+	Debug(" vmlinuz_header_size=0x%" PRIx64 "\n", vmlinuz_header_size);
+	if (vmlinuz_header_size)
+		Memcpy(kern_blob + now, g_vmlinuz_header_data, g_vmlinuz_header_size);
+	now += vmlinuz_header_size;
+
 	Debug("end of kern_blob at kern_blob+0x%" PRIx64 "\n", now);
 
 	/* Done */
@@ -560,12 +609,14 @@ static int Pack(const char *outfile,
 
 	/* Create preamble */
 	g_preamble = CreateKernelPreamble(version,
-					  kernel_body_load_address,
-					  g_bootloader_address,
-					  roundup(g_bootloader_size,
-						  CROS_ALIGN), body_sig,
-					  opt_pad - g_keyblock->key_block_size,
-					  signpriv_key);
+									  kernel_body_load_address,
+									  g_bootloader_address,
+									  roundup(g_bootloader_size,
+											  CROS_ALIGN), body_sig,
+									  g_vmlinuz_header_address,
+									  g_vmlinuz_header_size,
+									  opt_pad - g_keyblock->key_block_size,
+									  signpriv_key);
 	if (!g_preamble) {
 		VbExError("Error creating preamble.\n");
 		return 1;
@@ -688,6 +739,10 @@ static int Verify(uint8_t *kernel_blob,
 	       g_preamble->bootloader_address);
 	printf("  Bootloader size:     0x%" PRIx64 "\n",
 	       g_preamble->bootloader_size);
+	printf("  Vmlinuz header address:  0x%" PRIx64 "\n",
+	       g_preamble->vmlinuz_header_address);
+	printf("  Vmlinuz header size:     0x%" PRIx64 "\n",
+	       g_preamble->vmlinuz_header_size);
 
 	if (g_preamble->kernel_version < (min_version & 0xFFFF))
 		Fatal("Kernel version %" PRIu64 " is lower than minimum %"
@@ -721,6 +776,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	char *vmlinuz_file = NULL;
 	char *bootloader_file = NULL;
 	char *config_file = NULL;
+	char *vmlinuz_out_file = NULL;
 	arch_t arch = ARCH_X86;
 	char *address_str = NULL;
 	uint64_t kernel_body_load_address = CROS_32BIT_ENTRY_ADDR;
@@ -733,6 +789,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	VbPublicKey *signpub_key = NULL;
 	uint8_t *kernel_blob = NULL;
 	uint64_t kernel_size = 0;
+	FILE *f;
 
 	while (((i = getopt_long(argc, argv, ":", long_opts, NULL)) != -1) &&
 	       !parse_error) {
@@ -750,6 +807,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_MODE_PACK:
 		case OPT_MODE_REPACK:
 		case OPT_MODE_VERIFY:
+		case OPT_MODE_GET_VMLINUZ:
 			if (mode && (mode != i)) {
 				fprintf(stderr,
 					"Only one mode can be specified\n");
@@ -842,6 +900,9 @@ static int do_vbutil_kernel(int argc, char *argv[])
 				fprintf(stderr, "Invalid --pad\n");
 				parse_error = 1;
 			}
+			break;
+		case OPT_VMLINUZ_OUT:
+			vmlinuz_out_file = optarg;
 			break;
 		}
 	}
@@ -980,10 +1041,44 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		return Verify(kernel_blob, kernel_size, signpub_key,
 			      keyblock_file, min_version);
+
+	case OPT_MODE_GET_VMLINUZ:
+		if (!vmlinuz_out_file) {
+			fprintf(stderr, "USE: vbutil_kernel --get-vmlinuz <file> --vmlinuz-out <file>\n");
+			print_help(argv[0]);
+			return 1;
+		}
+		/* we probably want to call a function here to extract and
+		   reconstruct the header and the kernel data and write the
+		   file out. */
+		kernel_blob = ReadOldBlobFromFileOrDie(filename, &kernel_size);
+
+		/* unpack the kernel blob */
+		UnpackKernelBlob(kernel_blob, kernel_size);
+		free(kernel_blob);
+
+		f = fopen(vmlinuz_out_file, "wb");
+		if (!f) {
+			VbExError("Can't open output file %s\n", vmlinuz_out_file);
+			return 1;
+		}
+		/* now stick 16-bit header followed by kernel block into output file */
+		i = ((1 != fwrite(g_vmlinuz_header_data, g_vmlinuz_header_size, 1, f)) ||
+			 (1 != fwrite(g_kernel_data, g_kernel_size, 1, f)));
+		if (i) {
+			VbExError("Can't write output file %s\n", vmlinuz_out_file);
+			fclose(f);
+			unlink(vmlinuz_out_file);
+			return 1;
+		}
+		
+		fclose(f);
+
+		return 1;
 	}
 
 	fprintf(stderr,
-		"You must specify a mode: --pack, --repack or --verify\n");
+		"You must specify a mode: --pack, --repack, --verify, or --get-vmlinuz\n");
 	print_help(argv[0]);
 	return 1;
 }

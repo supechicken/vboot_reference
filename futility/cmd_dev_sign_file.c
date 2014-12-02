@@ -127,10 +127,14 @@ static int Sign(const char *filename, const char *keyblock_file,
 
 	/* Create preamble */
 	preamble = CreateKernelPreamble((uint64_t) 0,
-					(uint64_t) 0,
-					(uint64_t) 0,
-					(uint64_t) 0,
-					body_sig, (uint64_t) 0, signing_key);
+									(uint64_t) 0,
+									(uint64_t) 0,
+									(uint64_t) 0,
+									body_sig, 
+									(uint64_t) 0,
+									(uint64_t) 0,
+									(uint64_t) 0, 
+									signing_key);
 	if (!preamble) {
 		VbExError("Error creating preamble.\n");
 		return 1;
