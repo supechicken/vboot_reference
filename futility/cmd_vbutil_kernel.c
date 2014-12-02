@@ -326,7 +326,7 @@ static int ImportVmlinuzFile(const char *vmlinuz_file, arch_t arch,
 		g_vmlinuz_header_data = VbExMalloc(g_vmlinuz_header_size);
 		Memcpy(g_vmlinuz_header_data, kernel_buf, kernel32_start);
 	}
-		  
+
 	Debug(" kernel32_start=0x%" PRIx64 "\n", kernel32_start);
 	Debug(" kernel32_size=0x%" PRIx64 "\n", kernel32_size);
 
@@ -442,7 +442,7 @@ static uint8_t *ReadOldBlobFromFileOrDie(const char *filename,
 	Debug(" bootloader_size = 0x%" PRIx64 "\n", preamble->bootloader_size);
 	Debug(" kern_blob_size = 0x%" PRIx64 "\n",
 	      preamble->body_signature.data_size);
-	Debug(" vmlinuz_header_address = 0x%" PRIx64 "\n", 
+	Debug(" vmlinuz_header_address = 0x%" PRIx64 "\n",
 	      preamble->vmlinuz_header_address);
 	Debug(" vmlinuz_header_size = 0x%" PRIx64 "\n",
 	      preamble->vmlinuz_header_size);
@@ -524,7 +524,8 @@ static void UnpackKernelBlob(uint8_t *kernel_blob_data,
 
 	g_vmlinuz_header_size = v_size;
 	g_vmlinuz_header_data = VbExMalloc(g_vmlinuz_header_size);
-	Memcpy(g_vmlinuz_header_data, kernel_blob_data + v_ofs, g_vmlinuz_header_size);
+	Memcpy(g_vmlinuz_header_data,
+	       kernel_blob_data + v_ofs, g_vmlinuz_header_size);
 }
 
 /****************************************************************************/
@@ -539,7 +540,7 @@ static uint8_t *CreateKernBlob(uint64_t kernel_body_load_address,
 	uint64_t vmlinuz_header_size = g_vmlinuz_header_size;
 
 	/* Put the kernel blob together */
-	kern_blob_size = 
+	kern_blob_size =
 		roundup(g_kernel_size, CROS_ALIGN) +
 		CROS_CONFIG_SIZE                   +
 		CROS_PARAMS_SIZE                   +
@@ -575,10 +576,13 @@ static uint8_t *CreateKernBlob(uint64_t kernel_body_load_address,
 
 	Debug("vmlinuz header goes at kern_blob+0x%" PRIx64 "\n", now);
 	g_vmlinuz_header_address = kernel_body_load_address + now;
-	Debug(" vmlinuz_header_address=0x%" PRIx64 "\n", g_vmlinuz_header_address);
+	Debug(" vmlinuz_header_address=0x%" PRIx64 "\n",
+	      g_vmlinuz_header_address);
 	Debug(" vmlinuz_header_size=0x%" PRIx64 "\n", vmlinuz_header_size);
 	if (vmlinuz_header_size)
-		Memcpy(kern_blob + now, g_vmlinuz_header_data, g_vmlinuz_header_size);
+		Memcpy(kern_blob + now,
+		       g_vmlinuz_header_data,
+		       g_vmlinuz_header_size);
 	now += vmlinuz_header_size;
 
 	Debug("end of kern_blob at kern_blob+0x%" PRIx64 "\n", now);
@@ -609,14 +613,15 @@ static int Pack(const char *outfile,
 
 	/* Create preamble */
 	g_preamble = CreateKernelPreamble(version,
-									  kernel_body_load_address,
-									  g_bootloader_address,
-									  roundup(g_bootloader_size,
-											  CROS_ALIGN), body_sig,
-									  g_vmlinuz_header_address,
-									  g_vmlinuz_header_size,
-									  opt_pad - g_keyblock->key_block_size,
-									  signpriv_key);
+					  kernel_body_load_address,
+					  g_bootloader_address,
+					  roundup(g_bootloader_size,
+						  CROS_ALIGN),
+					  body_sig,
+					  g_vmlinuz_header_address,
+					  g_vmlinuz_header_size,
+					  opt_pad - g_keyblock->key_block_size,
+					  signpriv_key);
 	if (!g_preamble) {
 		VbExError("Error creating preamble.\n");
 		return 1;
@@ -1044,7 +1049,9 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 	case OPT_MODE_GET_VMLINUZ:
 		if (!vmlinuz_out_file) {
-			fprintf(stderr, "USE: vbutil_kernel --get-vmlinuz <file> --vmlinuz-out <file>\n");
+			fprintf(stderr,
+				"USE: vbutil_kernel --get-vmlinuz <file> "
+				"--vmlinuz-out <file>\n");
 			print_help(argv[0]);
 			return 1;
 		}
@@ -1059,26 +1066,36 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		f = fopen(vmlinuz_out_file, "wb");
 		if (!f) {
-			VbExError("Can't open output file %s\n", vmlinuz_out_file);
+			VbExError("Can't open output file %s\n",
+				  vmlinuz_out_file);
 			return 1;
 		}
-		/* now stick 16-bit header followed by kernel block into output file */
-		i = ((1 != fwrite(g_vmlinuz_header_data, g_vmlinuz_header_size, 1, f)) ||
-			 (1 != fwrite(g_kernel_data, g_kernel_size, 1, f)));
+		/* now stick 16-bit header followed by kernel block into output
+		   file */
+		i = ((1 != fwrite(g_vmlinuz_header_data,
+				  g_vmlinuz_header_size,
+				  1,
+				  f)) ||
+		     (1 != fwrite(g_kernel_data,
+				  g_kernel_size,
+				  1,
+				  f)));
 		if (i) {
-			VbExError("Can't write output file %s\n", vmlinuz_out_file);
+			VbExError("Can't write output file %s\n",
+				  vmlinuz_out_file);
 			fclose(f);
 			unlink(vmlinuz_out_file);
 			return 1;
 		}
-		
+
 		fclose(f);
 
 		return 1;
 	}
 
 	fprintf(stderr,
-		"You must specify a mode: --pack, --repack, --verify, or --get-vmlinuz\n");
+		"You must specify a mode: "
+		"--pack, --repack, --verify, or --get-vmlinuz\n");
 	print_help(argv[0]);
 	return 1;
 }
