@@ -213,9 +213,13 @@ typedef struct VbKernelPreambleHeader {
 	uint64_t bootloader_size;
 	/* Signature for the kernel body */
 	VbSignature body_signature;
+	/* Address of 16-bit header for vmlinuz reassembly */
+	uint64_t vmlinuz_header_address;
+	/* Size of 16-bit header for in bytes */
+	uint64_t vmlinuz_header_size;
 } __attribute__((packed)) VbKernelPreambleHeader;
 
-#define EXPECTED_VBKERNELPREAMBLEHEADER_SIZE 96
+#define EXPECTED_VBKERNELPREAMBLEHEADER_SIZE 112
 
 /****************************************************************************/
 
