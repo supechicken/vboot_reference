@@ -212,5 +212,6 @@ static int do_vb2_verify_fw(int argc, char *argv[])
 }
 
 DECLARE_FUTIL_COMMAND(vb2_verify_fw, do_vb2_verify_fw,
+		      VBOOT_VERSION_2_0 | VBOOT_VERSION_2_1,
 		      "Verifies firmware using vboot2 library",
 		      print_help);
