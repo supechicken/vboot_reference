@@ -64,6 +64,16 @@ DF_DIR=${DESTDIR}/etc/default
 VB_DIR=${DESTDIR}/usr/share/vboot/bin
 endif
 
+# The userspace tools on the target device only need to work on that device.
+# TODO(crbug.com:/228932): Specify VBOOT1 & VBOOT2 in board-specific ebuilds.
+VBOOT1=1
+VBOOT2=
+# But the host-side utilities should be able to do everything.
+ifeq (${MINIMAL},)
+override VBOOT1=1
+override VBOOT2=1
+endif
+
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
 
@@ -564,23 +574,34 @@ FUTIL_STATIC_SRCS = \
 	futility/cmd_gbb_utility.c \
 	futility/misc.c
 
+# TODO(crbug.com:/228932): these may support only VBOOT1 or VBOOT2
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \
 	futility/cmd_dump_kernel_config.c \
-	futility/cmd_load_fmap.c \
-	futility/cmd_pcr.c \
 	futility/cmd_show.c \
 	futility/cmd_sign.c \
-	futility/cmd_vbutil_firmware.c \
-	futility/cmd_vbutil_kernel.c \
-	futility/cmd_vbutil_key.c \
-	futility/cmd_vbutil_keyblock.c \
 	futility/traversal.c \
 	futility/vb1_helper.c
 
+# TODO(crbug.com:/228932): what commands do we need on the target?
+ifneq (${VBOOT1},)
+FUTIL_SRCS += \
+	futility/cmd_vbutil_key.c \
+	futility/cmd_vbutil_keyblock.c \
+	futility/cmd_vbutil_firmware.c \
+	futility/cmd_vbutil_kernel.c
+endif
 ifneq (${VBOOT2},)
 FUTIL_SRCS += \
 	futility/cmd_vb2_verify_fw.c
+endif
+
+# Extra stuff for host only
+# TODO(crbug.com:/228932): are any of these needed for test images?
+ifeq (${MINIMAL},)
+FUTIL_SRCS += \
+	futility/cmd_load_fmap.c \
+	futility/cmd_pcr.c
 endif
 
 # List of commands built in futility and futility_s.
@@ -676,9 +697,7 @@ TEST21_NAMES = \
 	tests/vb21_host_misc_tests \
 	tests/vb21_host_sig_tests
 
-ifneq (${VBOOT2},)
 TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
-endif
 
 # And a few more...
 TLCL_TEST_NAMES = \
@@ -721,14 +740,13 @@ _dir_create := $(foreach d, \
 
 # Default target.
 .PHONY: all
-all: fwlib \
-	$(if ${VBOOT2},fwlib2x fwlib2 fwlib21) \
+all: fwlib fwlib2x fwlib2 fwlib21 \
 	$(if ${FIRMWARE_ARCH},,host_stuff) \
 	$(if ${COV},coverage)
 
 # Host targets
 .PHONY: host_stuff
-host_stuff: utillib hostlib cgpt utils futil tests $(if ${VBOOT2},utillib21)
+host_stuff: utillib hostlib cgpt utils futil tests utillib21
 
 .PHONY: clean
 clean:
@@ -970,13 +988,12 @@ signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
 .PHONY: futil
 futil: ${FUTIL_STATIC_BIN} ${FUTIL_BIN}
 
-${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB} \
-		$(if ${VBOOT2},${FWLIB20})
+${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
 	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} $(if ${VBOOT2},${FWLIB20})
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20}
 	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
@@ -1171,7 +1188,7 @@ ${FUTIL_CMD_LIST} ${FUTIL_STATIC_CMD_LIST}:
 
 # Frequently-run tests
 .PHONY: test_targets
-test_targets:: runcgpttests runmisctests $(if ${VBOOT2},run2tests)
+test_targets:: runcgpttests runmisctests run2tests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
@@ -1231,10 +1248,8 @@ runtestscripts: test_setup genfuzztestcases
 	tests/run_rsa_tests.sh
 	tests/run_vbutil_kernel_arg_tests.sh
 	tests/run_vbutil_tests.sh
-ifneq (${VBOOT2},)
 	tests/vb2_rsa_tests.sh
 	tests/vb2_firmware_tests.sh
-endif
 
 .PHONY: runmisctests
 runmisctests: test_setup
@@ -1299,11 +1314,9 @@ runfutiltests: test_setup
 runlongtests: test_setup genkeys genfuzztestcases
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common2_tests ${TEST_KEYS} --all
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common3_tests ${TEST_KEYS} --all
-ifneq (${VBOOT2},)
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_common2_tests ${TEST_KEYS} --all
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_common3_tests ${TEST_KEYS} --all
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_common2_tests ${TEST_KEYS} --all
-endif
 	tests/run_preamble_tests.sh --all
 	tests/run_vbutil_tests.sh --all
 
