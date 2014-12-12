@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c421ce32_b97c9fde",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-12T17:58:11Z",
+      "side": 1,
+      "message": "I hope this API modification is OK. The alternative is to handle the GBB flag in depthcharge, something that I don\u0027t think we ever do now.",
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4169ada_987755fa",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2014-12-12T17:58:11Z",
+      "side": 1,
+      "message": "For completeness, should I also handle this GBB flag in the other places where VbExIsShutdownRequested is called (recovery mode, and confirmation screen)? Our current use case doesn\u0027t require it, and I know that recovery mode transition is security-sensitive. On the other hand, someday it may be useful to someone (like for FAFT testing with lid closed, maybe).",
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
