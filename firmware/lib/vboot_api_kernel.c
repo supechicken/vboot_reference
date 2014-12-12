@@ -209,6 +209,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
+	uint32_t shutdown_mask = 0xffffffff;
 	VbAudioContext *audio = 0;
 
 	VBDEBUG(("Entering %s()\n", __func__));
@@ -222,6 +223,8 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 		allow_usb = 1;
 	if (gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_LEGACY)
 		allow_legacy = 1;
+	if (gbb->flags & GBB_FLAG_DISABLE_LID_SHUTDOWN)
+		shutdown_mask &= ~VB_SHUTDOWN_REQUEST_LIDSW;
 
 	/* Show the dev mode warning screen */
 	VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
@@ -233,7 +236,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	do {
 		uint32_t key;
 
-		if (VbExIsShutdownRequested()) {
+		if (VbExIsShutdownRequested() & shutdown_mask) {
 			VBDEBUG(("VbBootDeveloper() - shutdown requested!\n"));
 			VbAudioClose(audio);
 			return VBERROR_SHUTDOWN_REQUESTED;
