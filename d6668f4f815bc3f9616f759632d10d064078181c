@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "840fd623_dd943b51",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aca7bdf_e6715e09",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0233b9_bbe313b4",
         "filename": "firmware/lib/include/load_kernel_fw.h",
         "patchSetId": 1
@@ -84,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "840fd623_bd91875f",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "How about this: The naming is that it\u0027s called gpt_lba_count/streaming_lba_count when it\u0027s split, but in VbDiskInfo, the lba_count field stands in for both if streaming_lba_count is 0 so that name is different.",
+      "parentUuid": "7aca7bdf_e6d03e8a",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a55ffac_dd904bb4",
         "filename": "firmware/lib/include/load_kernel_fw.h",
         "patchSetId": 1
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "Good idea",
       "parentUuid": "1a55ffac_dd904bb4",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6424a2a4_56e7f4b9",
+        "filename": "firmware/lib/include/load_kernel_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0233b9_9ed1dd5f",
       "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -166,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "840fd623_7d03ef02",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0233b9_7b869b73",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fadf4b7d_3699d052",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -207,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "840fd623_5d082b1d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0233b9_fed61953",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fadf4b7d_16c76c23",
         "filename": "tests/vboot_kernel_tests.c",
         "patchSetId": 1
@@ -236,6 +326,24 @@
       "side": 1,
       "message": "Good idea",
       "parentUuid": "fadf4b7d_16c76c23",
+      "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6424a2a4_f6f5e060",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-12T02:13:55Z",
+      "side": 1,
+      "message": "Still not done, but I\u0027m pretty sure we have sufficient test coverage for the non-external-GPT case.",
+      "parentUuid": "1a55ffac_1887d137",
       "revId": "d6668f4f815bc3f9616f759632d10d064078181c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
