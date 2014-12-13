@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4b2ae5b_40a13831",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2014-12-13T02:01:55Z",
+      "side": 1,
+      "message": "Why do you first divide by two and then subtract this amount, rather than the other way around? Also, why don\u0027t you check for space for GPT_PMBR_SECTORS in the conditional on line 55?",
+      "revId": "3200401242aec1521e7c4a8b1906366fcabfb1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
