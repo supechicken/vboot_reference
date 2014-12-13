@@ -13,12 +13,12 @@
  * have trouble with accessing unaligned integers.
  */
 
-#ifndef VBOOT_REFERENCE_VB2_STRUCT_H_
-#define VBOOT_REFERENCE_VB2_STRUCT_H_
+#ifndef VBOOT_REFERENCE_VB20_STRUCT_H_
+#define VBOOT_REFERENCE_VB20_STRUCT_H_
 #include <stdint.h>
 
 /* Packed public key data */
-struct vb2_packed_key {
+struct vb20_packed_key {
 	/* Offset of key data from start of this struct */
 	uint32_t key_offset;
 	uint32_t reserved0;
@@ -42,7 +42,7 @@ struct vb2_packed_key {
 
 
 /* Signature data (a secure hash, possibly signed) */
-struct vb2_signature {
+struct vb20_signature {
 	/* Offset of signature data from start of this struct */
 	uint32_t sig_offset;
 	uint32_t reserved0;
@@ -70,12 +70,12 @@ struct vb2_signature {
  *
  * This should be followed by:
  *   1) The data_key key data, pointed to by data_key.key_offset.
- *   2) The checksum data for (vb2_keyblock + data_key data), pointed to
+ *   2) The checksum data for (vb20_keyblock + data_key data), pointed to
  *      by keyblock_checksum.sig_offset.
- *   3) The signature data for (vb2_keyblock + data_key data), pointed to
+ *   3) The signature data for (vb20_keyblock + data_key data), pointed to
  *      by keyblock_signature.sig_offset.
  */
-struct vb2_keyblock {
+struct vb20_keyblock {
 	/* Magic number */
 	uint8_t magic[KEY_BLOCK_MAGIC_SIZE];
 
@@ -96,7 +96,7 @@ struct vb2_keyblock {
 	 * Signature for this key block (header + data pointed to by data_key)
 	 * For use with signed data keys
 	 */
-	struct vb2_signature keyblock_signature;
+	struct vb20_signature keyblock_signature;
 
 	/*
 	 * SHA-512 checksum for this key block (header + data pointed to by
@@ -104,14 +104,14 @@ struct vb2_keyblock {
 	 *
 	 * Note that the vb2 lib currently only supports signed blocks.
 	 */
-	struct vb2_signature keyblock_checksum_unused;
+	struct vb20_signature keyblock_checksum_unused;
 
 	/* Flags for key (VB2_KEY_BLOCK_FLAG_*) */
 	uint32_t keyblock_flags;
 	uint32_t reserved1;
 
 	/* Key to verify the chunk of data */
-	struct vb2_packed_key data_key;
+	struct vb20_packed_key data_key;
 } __attribute__((packed));
 
 #define EXPECTED_VB2_KEYBLOCK_SIZE 112
@@ -134,7 +134,7 @@ struct vb2_keyblock {
  *   3) The signature data for (header + kernel_subkey data + body signature
  *      data), pointed to by preamble_signature.sig_offset.
  */
-struct vb2_fw_preamble {
+struct vb20_fw_preamble {
 	/*
 	 * Size of this preamble, including keys, signatures, and padding, in
 	 * bytes
@@ -146,7 +146,7 @@ struct vb2_fw_preamble {
 	 * Signature for this preamble (header + kernel subkey + body
 	 * signature)
 	 */
-	struct vb2_signature preamble_signature;
+	struct vb20_signature preamble_signature;
 
 	/* Version of this header format */
 	uint32_t header_version_major;
@@ -157,10 +157,10 @@ struct vb2_fw_preamble {
 	uint32_t reserved1;
 
 	/* Key to verify kernel key block */
-	struct vb2_packed_key kernel_subkey;
+	struct vb20_packed_key kernel_subkey;
 
 	/* Signature for the firmware body */
-	struct vb2_signature body_signature;
+	struct vb20_signature body_signature;
 
 	/*
 	 * Fields added in header version 2.1.  You must verify the header
@@ -176,4 +176,4 @@ struct vb2_fw_preamble {
 
 #define EXPECTED_VB2_FW_PREAMBLE_SIZE 108
 
-#endif  /* VBOOT_REFERENCE_VB2_STRUCT_H_ */
+#endif  /* VBOOT_REFERENCE_VB20_STRUCT_H_ */

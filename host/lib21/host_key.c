@@ -15,12 +15,12 @@
 #include "2common.h"
 #include "2rsa.h"
 #include "2sha.h"
-#include "vb2_common.h"
+#include "vb21_common.h"
 #include "host_common.h"
 #include "host_key2.h"
 #include "host_misc.h"
 
-void vb2_private_key_free(struct vb2_private_key *key)
+void vb21_private_key_free(struct vb21_private_key *key)
 {
 	if (!key)
 		return;
@@ -34,13 +34,13 @@ void vb2_private_key_free(struct vb2_private_key *key)
 	free(key);
 }
 
-int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
+int vb21_private_key_unpack(struct vb21_private_key **key_ptr,
 			   const uint8_t *buf,
 			   uint32_t size)
 {
-	const struct vb2_packed_private_key *pkey =
-		(const struct vb2_packed_private_key *)buf;
-	struct vb2_private_key *key;
+	const struct vb21_packed_private_key *pkey =
+		(const struct vb21_packed_private_key *)buf;
+	struct vb21_private_key *key;
 	const unsigned char *start;
 	uint32_t min_offset = 0;
 
@@ -54,11 +54,11 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 	if (pkey->c.magic != VB2_MAGIC_PACKED_PRIVATE_KEY)
 		return VB2_ERROR_UNPACK_PRIVATE_KEY_MAGIC;
 
-	if (vb2_verify_common_header(buf, size))
+	if (vb21_verify_common_header(buf, size))
 		return VB2_ERROR_UNPACK_PRIVATE_KEY_HEADER;
 
 	/* Make sure key data is inside */
-	if (vb2_verify_common_member(pkey, &min_offset,
+	if (vb21_verify_common_member(pkey, &min_offset,
 				     pkey->key_offset, pkey->key_size))
 		return VB2_ERROR_UNPACK_PRIVATE_KEY_DATA;
 
@@ -99,9 +99,9 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 
 	/* Key description */
 	if (pkey->c.desc_size) {
-		if (vb2_private_key_set_desc(
+		if (vb21_private_key_set_desc(
 			     key, (const char *)(buf + pkey->c.fixed_size))) {
-			vb2_private_key_free(key);
+			vb21_private_key_free(key);
 			return VB2_ERROR_UNPACK_PRIVATE_KEY_DESC;
 		}
 	}
@@ -110,7 +110,7 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_private_key_read(struct vb2_private_key **key_ptr,
+int vb21_private_key_read(struct vb21_private_key **key_ptr,
 			 const char *filename)
 {
 	uint32_t size = 0;
@@ -123,17 +123,17 @@ int vb2_private_key_read(struct vb2_private_key **key_ptr,
 	if (rv)
 		return rv;
 
-	rv = vb2_private_key_unpack(key_ptr, buf, size);
+	rv = vb21_private_key_unpack(key_ptr, buf, size);
 
 	free(buf);
 
 	return rv;
 }
 
-int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
+int vb21_private_key_read_pem(struct vb21_private_key **key_ptr,
 			     const char *filename)
 {
-	struct vb2_private_key *key;
+	struct vb21_private_key *key;
 	FILE *f;
 
 	*key_ptr = NULL;
@@ -160,7 +160,7 @@ int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
+int vb21_private_key_set_desc(struct vb21_private_key *key, const char *desc)
 {
 	if (key->desc)
 		free(key->desc);
@@ -176,10 +176,10 @@ int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
 	return VB2_SUCCESS;
 }
 
-int vb2_private_key_write(const struct vb2_private_key *key,
+int vb21_private_key_write(const struct vb21_private_key *key,
 			  const char *filename)
 {
-	struct vb2_packed_private_key pkey = {
+	struct vb21_packed_private_key pkey = {
 		.c.magic = VB2_MAGIC_PACKED_PRIVATE_KEY,
 		.c.struct_version_major = VB2_PACKED_PRIVATE_KEY_VERSION_MAJOR,
 		.c.struct_version_minor = VB2_PACKED_PRIVATE_KEY_VERSION_MINOR,
@@ -232,7 +232,7 @@ int vb2_private_key_write(const struct vb2_private_key *key,
 	return rv ? VB2_ERROR_PRIVATE_KEY_WRITE_FILE : VB2_SUCCESS;
 }
 
-int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
+int vb21_private_key_hash(const struct vb21_private_key **key_ptr,
 			 enum vb2_hash_algorithm hash_alg)
 {
 	*key_ptr = NULL;
@@ -241,7 +241,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 #if VB2_SUPPORT_SHA1
 	case VB2_HASH_SHA1:
 		{
-			static const struct vb2_private_key key = {
+			static const struct vb21_private_key key = {
 				.hash_alg = VB2_HASH_SHA1,
 				.sig_alg = VB2_SIG_NONE,
 				.desc = "Unsigned SHA1",
@@ -254,7 +254,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 #if VB2_SUPPORT_SHA256
 	case VB2_HASH_SHA256:
 		{
-			static const struct vb2_private_key key = {
+			static const struct vb21_private_key key = {
 				.hash_alg = VB2_HASH_SHA256,
 				.sig_alg = VB2_SIG_NONE,
 				.desc = "Unsigned SHA-256",
@@ -267,7 +267,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 #if VB2_SUPPORT_SHA512
 	case VB2_HASH_SHA512:
 		{
-			static const struct vb2_private_key key = {
+			static const struct vb21_private_key key = {
 				.hash_alg = VB2_HASH_SHA512,
 				.sig_alg = VB2_SIG_NONE,
 				.desc = "Unsigned SHA-512",
@@ -289,7 +289,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
  * guid.  It does not set any of the other fields in *key_ptr.
  *
  * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_public_key_free().
+ *			freed with vb21_public_key_free().
  * @param sig_alg	Signature algorithm for key.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
@@ -318,7 +318,7 @@ static int vb2_public_key_alloc(struct vb2_public_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-void vb2_public_key_free(struct vb2_public_key *key)
+void vb21_public_key_free(struct vb2_public_key *key)
 {
 	if (key->desc)
 		free((void *)key->desc);
@@ -336,7 +336,7 @@ static uint8_t *vb2_public_key_packed_data(struct vb2_public_key *key)
 	return (uint8_t *)(key->guid + 1);
 }
 
-int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
+int vb21_public_key_read_keyb(struct vb2_public_key **key_ptr,
 			     const char *filename)
 {
 	struct vb2_public_key *key = NULL;
@@ -369,8 +369,8 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	memcpy(key_buf, key_data, key_size);
 	free(key_data);
 
-	if (vb2_unpack_key_data(key, key_buf, key_size)) {
-		vb2_public_key_free(key);
+	if (vb21_unpack_key_data(key, key_buf, key_size)) {
+		vb21_public_key_free(key);
 		return VB2_ERROR_READ_KEYB_UNPACK;
 	}
 
@@ -379,7 +379,7 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
+int vb21_public_key_set_desc(struct vb2_public_key *key, const char *desc)
 {
 	if (key->desc)
 		free((void *)key->desc);
@@ -395,7 +395,7 @@ int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
 	return VB2_SUCCESS;
 }
 
-int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
+int vb21_packed_key_read(struct vb21_packed_key **key_ptr,
 			const char *filename)
 {
 	struct vb2_public_key key;
@@ -408,18 +408,18 @@ int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
 		return VB2_ERROR_READ_PACKED_KEY_DATA;
 
 	/* Sanity check: make sure key unpacks properly */
-	if (vb2_unpack_key(&key, buf, size))
+	if (vb21_unpack_key(&key, buf, size))
 		return VB2_ERROR_READ_PACKED_KEY;
 
-	*key_ptr = (struct vb2_packed_key *)buf;
+	*key_ptr = (struct vb21_packed_key *)buf;
 
 	return VB2_SUCCESS;
 }
 
-int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
+int vb21_public_key_pack(struct vb21_packed_key **key_ptr,
 			const struct vb2_public_key *pubk)
 {
-	struct vb2_packed_key key = {
+	struct vb21_packed_key key = {
 		.c.magic = VB2_MAGIC_PACKED_KEY,
 		.c.struct_version_major = VB2_PACKED_KEY_VERSION_MAJOR,
 		.c.struct_version_minor = VB2_PACKED_KEY_VERSION_MINOR,
@@ -470,12 +470,12 @@ int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
 		       pubk->arrsize * sizeof(uint32_t));
 	}
 
-	*key_ptr = (struct vb2_packed_key *)buf;
+	*key_ptr = (struct vb21_packed_key *)buf;
 
 	return VB2_SUCCESS;
 }
 
-int vb2_public_key_hash(struct vb2_public_key *key,
+int vb21_public_key_hash(struct vb2_public_key *key,
 			enum vb2_hash_algorithm hash_alg)
 {
 	switch (hash_alg) {
