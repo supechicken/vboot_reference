@@ -15,7 +15,7 @@
 
 #include "2sysincludes.h"
 #include "2rsa.h"
-#include "vb2_common.h"
+#include "vb20_common.h"
 
 /**
  * Convert an old-style RSA public key struct to a new one.

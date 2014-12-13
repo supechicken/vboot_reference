@@ -65,13 +65,15 @@ VB_DIR=${DESTDIR}/usr/share/vboot/bin
 endif
 
 # The userspace tools on the target device only need to work on that device.
-# TODO(crbug.com:/228932): Specify VBOOT1 & VBOOT2 in board-specific ebuilds.
+# TODO(crbug.com:/228932): Specify the vboot API in board-specific ebuilds.
 VBOOT1=1
-VBOOT2=
+VBOOT20=1
+VBOOT21=
 # But the host-side utilities should be able to do everything.
 ifeq (${MINIMAL},)
 override VBOOT1=1
-override VBOOT2=1
+override VBOOT20=1
+override VBOOT21=1
 endif
 
 # Where to install the (exportable) executables for testing?
@@ -238,26 +240,26 @@ INCLUDES += \
 	-Ifirmware/lib/cgptlib/include \
 	-Ifirmware/lib/cryptolib/include \
 	-Ifirmware/lib/tpm_lite/include \
-	-Ifirmware/2lib/include
+	-Ifirmware/2lib/include \
+	-Ifirmware/lib20/include \
+	-Ifirmware/lib21/include
 
 # If we're not building for a specific target, just stub out things like the
 # TPM commands and various external functions that are provided by the BIOS.
 ifeq (${FIRMWARE_ARCH},)
-INCLUDES += -Ihost/include -Ihost/lib/include
+INCLUDES += -Ihost/include -Ihost/lib/include -Ihost/lib21/include
 endif
 
-# Firmware library, used by the other firmware components (depthcharge,
-# coreboot, etc.). It doesn't need exporting to some other place; they'll build
-# this source tree locally and link to it directly.
+# Firmware libraries, used by the other firmware components (depthcharge,
+# coreboot, etc.). These don't need exporting to some other place; the firmware
+# components build this source tree locally and link to it directly.
+# Vboot 1.0
 FWLIB = ${BUILD}/vboot_fw.a
-
-# Smaller firmware library
-# Stuff common to all vboot 2.x
-FWLIB2X = ${BUILD}/vboot_fw2x.a
-# Vboot 2.0 (stuck with this filename due to dependencies in coreboot)
-FWLIB20 = ${BUILD}/vboot_fw2.a
+# Vboot 2.0
+FWLIB20 = ${BUILD}/vboot_fw20.a
 # Vboot 2.1
 FWLIB21 = ${BUILD}/vboot_fw21.a
+
 
 # Firmware library sources needed by VbInit() call
 VBINIT_SRCS = \
@@ -378,7 +380,6 @@ ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
-UTILLIB21 = ${BUILD}/libvboot_util21.a
 
 UTILLIB_SRCS = \
 	cgpt/cgpt_create.c \
@@ -401,18 +402,17 @@ UTILLIB_SRCS = \
 	host/lib/host_signature.c \
 	host/lib/signature_digest.c
 
-UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${UTILLIB_OBJS}
-
-UTILLIB21_SRCS += \
+ifneq (${VBOOT21},)
+UTILLIB_SRCS += \
 	host/lib21/host_fw_preamble.c \
 	host/lib21/host_key.c \
 	host/lib21/host_keyblock.c \
 	host/lib21/host_misc.c \
 	host/lib21/host_signature.c
+endif
 
-UTILLIB21_OBJS = ${UTILLIB21_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${UTILLIB21_OBJS}
+UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
+ALL_OBJS += ${UTILLIB_OBJS}
 
 # Externally exported library for some target userspace apps to link with
 # (cryptohome, updater, etc.)
@@ -574,7 +574,7 @@ FUTIL_STATIC_SRCS = \
 	futility/cmd_gbb_utility.c \
 	futility/misc.c
 
-# TODO(crbug.com:/228932): these may support only VBOOT1 or VBOOT2
+# TODO(crbug.com:/228932): Should work with only one (or no) vboot API chosen.
 FUTIL_SRCS = \
 	$(FUTIL_STATIC_SRCS) \
 	futility/cmd_dump_kernel_config.c \
@@ -591,7 +591,7 @@ FUTIL_SRCS += \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c
 endif
-ifneq (${VBOOT2},)
+ifneq (${VBOOT20},)
 FUTIL_SRCS += \
 	futility/cmd_vb2_verify_fw.c
 endif
@@ -740,13 +740,13 @@ _dir_create := $(foreach d, \
 
 # Default target.
 .PHONY: all
-all: fwlib fwlib2x fwlib2 fwlib21 \
+all: fwlib fwlib20 fwlib21 \
 	$(if ${FIRMWARE_ARCH},,host_stuff) \
 	$(if ${COV},coverage)
 
 # Host targets
 .PHONY: host_stuff
-host_stuff: utillib hostlib cgpt utils futil tests utillib21
+host_stuff: utillib hostlib cgpt utils futil tests
 
 .PHONY: clean
 clean:
@@ -812,9 +812,6 @@ ifeq (${FIRMWARE_ARCH},)
 ${FWLIB_OBJS}: CFLAGS += -DDISABLE_ROLLBACK_TPM
 endif
 
-${FWLIB20_OBJS}: INCLUDES += -Ifirmware/lib20/include
-${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
-
 # Linktest ensures firmware lib doesn't rely on outside libraries
 ${BUILD}/firmware/linktest/main_vbinit: ${VBINIT_OBJS}
 ${BUILD}/firmware/linktest/main_vbinit: OBJS = ${VBINIT_OBJS}
@@ -841,18 +838,8 @@ ${FWLIB}: ${FWLIB_OBJS}
 	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
 
-.PHONY: fwlib2x
-fwlib2x: ${FWLIB2X}
-
-${FWLIB2X}: ${FWLIB2_OBJS}
-	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
-	${Q}rm -f $@
-	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
-
-# TODO: it'd be nice to call this fwlib20, but coreboot expects fwlib2
-.PHONY: fwlib2
-fwlib2: ${FWLIB20}
+.PHONY: fwlib20
+fwlib20: ${FWLIB20}
 
 ${FWLIB20}: ${FWLIB2_OBJS} ${FWLIB20_OBJS}
 	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
@@ -882,22 +869,11 @@ utillib: ${UTILLIB} \
 	${BUILD}/host/linktest/main
 
 # TODO: better way to make .a than duplicating this recipe each time?
-${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS}
+${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${FWLIB2_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS}
 	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
-
-.PHONY: utillib21
-utillib21: ${UTILLIB21}
-
-${UTILLIB21}: INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include
-${UTILLIB21}: ${UTILLIB21_OBJS} ${FWLIB2_OBJS} ${FWLIB21_OBJS}
-	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"
-	${Q}rm -f $@
-	@$(PRINTF) "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
-
 
 # Link tests for external repos
 ${BUILD}/host/linktest/extern: ${HOSTLIB}
@@ -993,7 +969,7 @@ ${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB}
 	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
@@ -1030,17 +1006,6 @@ tests: ${TEST_BINS}
 ${TEST_BINS}: ${UTILLIB} ${TESTLIB}
 ${TEST_BINS}: INCLUDES += -Itests
 ${TEST_BINS}: LIBS = ${TESTLIB} ${UTILLIB}
-
-${TEST2X_BINS}: ${FWLIB2X}
-${TEST2X_BINS}: LIBS += ${FWLIB2X}
-
-${TEST20_BINS}: ${FWLIB20}
-${TEST20_BINS}: INCLUDES += -Ifirmware/lib20/include
-${TEST20_BINS}: LIBS += ${FWLIB20}
-
-${TEST21_BINS}: ${UTILLIB21}
-${TEST21_BINS}: INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include
-${TEST21_BINS}: LIBS += ${UTILLIB21}
 
 ${TESTLIB}: ${TESTLIB_OBJS}
 	@$(PRINTF) "    RM            $(subst ${BUILD}/,,$@)\n"

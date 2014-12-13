@@ -9,7 +9,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
-#include "vb2_common.h"
+#include "vb21_common.h"
 #include "host_common.h"
 #include "host_misc.h"
 
@@ -34,8 +34,8 @@ static void file_tests(void)
 	uint8_t *read_data;
 	uint32_t read_size;
 
-	uint8_t cbuf[sizeof(struct vb2_struct_common) + 12];
-	struct vb2_struct_common *c = (struct vb2_struct_common *)cbuf;
+	uint8_t cbuf[sizeof(struct vb21_struct_common) + 12];
+	struct vb21_struct_common *c = (struct vb21_struct_common *)cbuf;
 
 	unlink(testfile);
 

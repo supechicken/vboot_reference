@@ -7,34 +7,34 @@
 
 #include "2sysincludes.h"
 #include "2rsa.h"
-#include "vb2_common.h"
+#include "vb20_common.h"
 
-const uint8_t *vb2_packed_key_data(const struct vb2_packed_key *key)
+const uint8_t *vb20_packed_key_data(const struct vb20_packed_key *key)
 {
 	return (const uint8_t *)key + key->key_offset;
 }
 
-int vb2_verify_packed_key_inside(const void *parent,
+int vb20_verify_packed_key_inside(const void *parent,
 				 uint32_t parent_size,
-				 const struct vb2_packed_key *key)
+				 const struct vb20_packed_key *key)
 {
-	return vb2_verify_member_inside(parent, parent_size,
+	return vb20_verify_member_inside(parent, parent_size,
 					key, sizeof(*key),
 					key->key_offset, key->key_size);
 }
 
-int vb2_unpack_key(struct vb2_public_key *key,
+int vb20_unpack_key(struct vb2_public_key *key,
 		   const uint8_t *buf,
 		   uint32_t size)
 {
-	const struct vb2_packed_key *packed_key =
-		(const struct vb2_packed_key *)buf;
+	const struct vb20_packed_key *packed_key =
+		(const struct vb20_packed_key *)buf;
 	const uint32_t *buf32;
 	uint32_t expected_key_size;
 	int rv;
 
 	/* Make sure passed buffer is big enough for the packed key */
-	rv = vb2_verify_packed_key_inside(buf, size, packed_key);
+	rv = vb20_verify_packed_key_inside(buf, size, packed_key);
 	if (rv)
 		return rv;
 
@@ -58,7 +58,7 @@ int vb2_unpack_key(struct vb2_public_key *key,
 	}
 
 	/* Make sure source buffer is 32-bit aligned */
-	buf32 = (const uint32_t *)vb2_packed_key_data(packed_key);
+	buf32 = (const uint32_t *)vb20_packed_key_data(packed_key);
 	if (!vb2_aligned(buf32, sizeof(uint32_t)))
 		return VB2_ERROR_UNPACK_KEY_ALIGN;
 
