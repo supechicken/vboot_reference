@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "04c126c3_06663cc1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-15T23:21:13Z",
+      "side": 1,
+      "message": "Oh, and also, you should define VB_SHUTDOWN_REQUEST_OTHER as (1\u003c\u003c0).  That way, other implementations which follow the original API and return 1 or 0 won\u0027t break, and it gives the calling firmware something to return for other cases like battery-dying.  Define LID_CLOSED as (1\u003c\u003c1) and POWER_BUTTON as (1\u003c\u003c2).",
+      "parentUuid": "04c126c3_86798c6a",
+      "range": {
+        "startLine": 911,
+        "startChar": 1,
+        "endLine": 911,
+        "endChar": 7
+      },
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4169ada_987755fa",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
