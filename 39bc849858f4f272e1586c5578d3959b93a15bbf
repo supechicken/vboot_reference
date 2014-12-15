@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a453fafb_30854899",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-15T17:10:04Z",
+      "side": 1,
+      "message": "Just say (see VB_SHUTDOWN_REQUEST_*) - particularly since your example is wrong... ;)",
+      "range": {
+        "startLine": 901,
+        "startChar": 46,
+        "endLine": 902,
+        "endChar": 72
+      },
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c421ce32_b97c9fde",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -19,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "04c126c3_86798c6a",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-15T17:10:04Z",
+      "side": 1,
+      "message": "Need comments to describe what these mean.",
+      "range": {
+        "startLine": 911,
+        "startChar": 1,
+        "endLine": 911,
+        "endChar": 7
+      },
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4169ada_987755fa",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -30,6 +76,24 @@
       "writtenOn": "2014-12-12T17:58:11Z",
       "side": 1,
       "message": "For completeness, should I also handle this GBB flag in the other places where VbExIsShutdownRequested is called (recovery mode, and confirmation screen)? Our current use case doesn\u0027t require it, and I know that recovery mode transition is security-sensitive. On the other hand, someday it may be useful to someone (like for FAFT testing with lid closed, maybe).",
+      "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a453fafb_5082cc91",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-15T17:10:04Z",
+      "side": 1,
+      "message": "I think we should handle it everywhere.  The GBB is read-only, so it can\u0027t be abused by anyone who can\u0027t simply change recovery mode.\n\nSuggest making a wrapper function (VbWantShudown() or similar) for VbExIsShutdownRequested() which checks the mask vs. GBB, rather than duplicating the shutdown mask code everywhere.",
+      "parentUuid": "a4169ada_987755fa",
       "revId": "39bc849858f4f272e1586c5578d3959b93a15bbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
