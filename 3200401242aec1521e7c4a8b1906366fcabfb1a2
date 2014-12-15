@@ -16,6 +16,24 @@
       "revId": "3200401242aec1521e7c4a8b1906366fcabfb1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64782270_7f8f8338",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2014-12-15T17:52:13Z",
+      "side": 1,
+      "message": "You are right. I\u0027ll land a fix later. Line 55 should have the same check.\n\nWe divide by 2 first because both primary and secondary parts store GPT headers, though only primary part contains the PMBR.",
+      "parentUuid": "c4b2ae5b_40a13831",
+      "revId": "3200401242aec1521e7c4a8b1906366fcabfb1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
