@@ -597,7 +597,8 @@ FUTIL_SRCS += \
 endif
 ifneq (${VBOOT21},)
 FUTIL_SRCS += \
-	futility/cmd_create.c
+	futility/cmd_create.c \
+	futility/vb21_helper.c
 endif
 
 # Extra stuff for host only

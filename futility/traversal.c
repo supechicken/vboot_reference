@@ -20,6 +20,8 @@
 #include "host_key.h"
 #include "traversal.h"
 
+#include "vb21_helper.h"
+
 /* What functions do we invoke for a particular operation and component? */
 
 /* FUTIL_OP_SHOW */
@@ -38,6 +40,7 @@ static int (* const cb_show_funcs[])(struct futil_traverse_state_s *state) = {
 	futil_cb_show_kernel_preamble,	/* CB_KERN_PREAMBLE */
 	NULL,				/* CB_RAW_FIRMWARE */
 	NULL,				/* CB_RAW_KERNEL */
+	futil_cb_vb21_show_pubkey,      /* CB_VB21_PUBKEY */
 };
 BUILD_ASSERT(ARRAY_SIZE(cb_show_funcs) == NUM_CB_COMPONENTS);
 
@@ -57,6 +60,7 @@ static int (* const cb_sign_funcs[])(struct futil_traverse_state_s *state) = {
 	futil_cb_resign_kernel_part,	/* CB_KERN_PREAMBLE */
 	futil_cb_sign_raw_firmware,	/* CB_RAW_FIRMWARE */
 	futil_cb_create_kernel_part,	/* CB_RAW_KERNEL */
+	NULL,				/* CB_VB21_PUBKEY */
 };
 BUILD_ASSERT(ARRAY_SIZE(cb_sign_funcs) == NUM_CB_COMPONENTS);
 
@@ -84,6 +88,7 @@ static const struct {
 	{CB_KERN_PREAMBLE, "Kernel Preamble"},	/* FILE_TYPE_KERN_PREAMBLE */
 	{CB_RAW_FIRMWARE,  "raw firmware"},	/* FILE_TYPE_RAW_FIRMWARE */
 	{CB_RAW_KERNEL,    "raw kernel"},	/* FILE_TYPE_RAW_KERNEL */
+	{CB_VB21_PUBKEY,   "vbpubk2"},		/* FILE_TYPE_VB21_PUBKEY */
 };
 BUILD_ASSERT(ARRAY_SIZE(direct_callback) == NUM_FILE_TYPES);
 
@@ -140,6 +145,7 @@ const char * const futil_file_type_str[] = {
 	"FILE_TYPE_KERN_PREAMBLE",
 	"FILE_TYPE_RAW_FIRMWARE",
 	"FILE_TYPE_RAW_KERNEL",
+	"FILE_TYPE_VB21_PUBKEY",
 };
 BUILD_ASSERT(ARRAY_SIZE(futil_file_type_str) == NUM_FILE_TYPES);
 
@@ -158,6 +164,7 @@ const char * const futil_cb_component_str[] = {
 	"CB_KERN_PREAMBLE",
 	"CB_RAW_FIRMWARE",
 	"CB_RAW_KERNEL",
+	"CB_VB21_PUBKEY",
 };
 BUILD_ASSERT(ARRAY_SIZE(futil_cb_component_str) == NUM_CB_COMPONENTS);
 
@@ -200,6 +207,7 @@ enum futil_file_type futil_what_file_type_buf(uint8_t *buf, uint32_t len)
 	VbKernelPreambleHeader *kern_preamble;
 	RSAPublicKey *rsa;
 	FmapHeader *fmap;
+	enum futil_file_type t;
 
 	/*
 	 * Complex structs may begin with simpler structs first, so try them
@@ -239,6 +247,11 @@ enum futil_file_type futil_what_file_type_buf(uint8_t *buf, uint32_t len)
 
 	if (PublicKeyLooksOkay(pubkey, len))
 		return FILE_TYPE_PUBKEY;
+
+	/* TODO(crbug.com/228932): Should be optional for target build */
+	t = futil_vb21_what_file_type_buf(buf, len);
+	if (t != FILE_TYPE_UNKNOWN)
+		return t;
 
 	return FILE_TYPE_UNKNOWN;
 }
@@ -309,6 +322,7 @@ int futil_traverse(uint8_t *buf, uint32_t len,
 	case FILE_TYPE_KERN_PREAMBLE:
 	case FILE_TYPE_RAW_FIRMWARE:
 	case FILE_TYPE_RAW_KERNEL:
+	case FILE_TYPE_VB21_PUBKEY:
 		retval |= invoke_callback(state,
 					  direct_callback[type].component,
 					  direct_callback[type].name,

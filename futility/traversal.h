@@ -11,6 +11,8 @@
 /* What type of things do I know how to handle? */
 enum futil_file_type {
 	FILE_TYPE_UNKNOWN,
+
+	/* vboot 1 */
 	FILE_TYPE_PUBKEY,			/* 1 VbPublicKey */
 	FILE_TYPE_KEYBLOCK,			/* 2 VbKeyBlockHeader */
 	FILE_TYPE_FW_PREAMBLE,			/* 3 VbFirmwarePreambleHeader */
@@ -22,6 +24,9 @@ enum futil_file_type {
 	/* These are FILE_TYPE_UNKNOWN, but we've been told more about them */
 	FILE_TYPE_RAW_FIRMWARE,			/* 8 FW_MAIN_A, etc. */
 	FILE_TYPE_RAW_KERNEL,			/* 9 vmlinuz, *.uimg, etc. */
+
+	/* vboot 2.1 */
+	FILE_TYPE_VB21_PUBKEY,
 
 	NUM_FILE_TYPES
 };
@@ -56,6 +61,9 @@ enum futil_cb_component {
 	CB_KERN_PREAMBLE,
 	CB_RAW_FIRMWARE,
 	CB_RAW_KERNEL,
+
+	/* vboot 2.1 components */
+	CB_VB21_PUBKEY,
 
 	NUM_CB_COMPONENTS
 };

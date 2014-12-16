@@ -14,6 +14,7 @@
 #include "vb21_common.h"
 #include "host_common.h"
 #include "host_key2.h"
+#include "host_misc2.h"
 
 #include "test_common.h"
 
