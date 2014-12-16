@@ -595,6 +595,10 @@ ifneq (${VBOOT20},)
 FUTIL_SRCS += \
 	futility/cmd_vb2_verify_fw.c
 endif
+ifneq (${VBOOT21},)
+FUTIL_SRCS += \
+	futility/cmd_create.c
+endif
 
 # Extra stuff for host only
 # TODO(crbug.com:/228932): are any of these needed for test images?
