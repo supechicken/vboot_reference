@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21e9bccf_4236f689",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-17T23:48:43Z",
+      "side": 1,
+      "message": "I\u0027d really like to do the same thing in vb21_api_tests.c, but unfortunately I can\u0027t since it is a full integration test (calls through to the actual vb2_digest_* functions instead of stubbing them out). I don\u0027t really see a good way to test which functions are called in that model (e.g. make sure vboot doesn\u0027t switch back-and-forth between hardware and software crypto functions in between)... it would be much simpler to test the vb2api* functions from both ends (like this file) and relegate testing of the vb2_digest* functions solely to vb2_sha_tests.c. What do you think?",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
