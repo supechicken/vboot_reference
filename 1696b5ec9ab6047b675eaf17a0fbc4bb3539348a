@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "812508f1_f6286eed",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-17T23:58:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is how you do this in vboot, but without these futility doesn\u0027t compile (because it has its own definitions in cmd_vb2_verify_fw.c). Seems that if it needs nothing from this file it can compile just fine, but if it tries to pull in some functions (like my new stubs) it has to pull them all and will complain about the duplicate symbols.",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e9bccf_4236f689",
         "filename": "tests/vb20_api_tests.c",
         "patchSetId": 2
