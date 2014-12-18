@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "e1996484_92b3dc6c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:26:51Z",
+      "side": 1,
+      "message": "Do HW crypto engines ever require maintaining external state/context?\n\nWhy pass in data_size?  It\u0027s passed to vb2_digest_init() so that vb2_digest_finalize can ensure the right amount of data was hashed, but the Rockchip implementation never does anything with data_size.",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 30
+      },
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e197a45c_422fb2a4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
