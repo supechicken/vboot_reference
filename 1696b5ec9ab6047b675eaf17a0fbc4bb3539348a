@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1996484_b22b80e8",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:20:54Z",
+      "side": 1,
+      "message": "We can rename the current\n\nvb2_digest_*() \n\nfunctions to \n\nvb2_sw_digest_*()\n\nand then have all the checks in a set of wrapper functions\n\nvb2_digest_*()\n\nwhich calls either the _sw_ or _hwcrypto_ variants.\n\nThat way, the changes only need to be inside 2sha_utility.c.\n\nAh, but wait.  The ugly there is that vb2_digest_init() doesn\u0027t have access to the preamble flags.\n\nSo I think we should define a new hashing algorithm VB2_HASH_SHA256_HW.  And then if vb2ex_hwcrypto_digest_init() return unsupported, it falls back to the software variant.  That also gets rid of the need for plumbing a dc-\u003eusing_hycrypto flag everywhere.",
+      "parentUuid": "21c29c57_7473a806",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812508f1_f6286eed",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c19e206c_7130388a",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:20:54Z",
+      "side": 1,
+      "message": "In general we try to avoid weak, but here I think it\u0027s ok.",
+      "parentUuid": "812508f1_f6286eed",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e197a45c_422fb2a4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-12-18T16:52:45Z",
       "side": 1,
       "message": "Why choose non-zero for this function and the following one when vb2ex_hwcrypto_digest_init() uses an error code ( presumably a VB2_* one).",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_9124bc4c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:20:54Z",
+      "side": 1,
+      "message": "Technically it should be \"or non-zero error code\".  The comments are a little inconsistent in this regard; see vb2ex_read_resource() above.",
+      "parentUuid": "e197a45c_422fb2a4",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "e1996484_92883cb3",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:20:54Z",
+      "side": 1,
+      "message": "The double-negative is to allow this to work without needing to change our signing process.\n\nI think it might be better to make this ALLOW_HWCRYPTO, and change futility always to specify that flag for now.  At least that avoids the double-negative (if not no support...)",
+      "parentUuid": "a1a3ecb1_309b08dd",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e9bccf_4236f689",
         "filename": "tests/vb20_api_tests.c",
         "patchSetId": 2
@@ -98,6 +170,24 @@
       "writtenOn": "2014-12-17T23:48:43Z",
       "side": 1,
       "message": "I\u0027d really like to do the same thing in vb21_api_tests.c, but unfortunately I can\u0027t since it is a full integration test (calls through to the actual vb2_digest_* functions instead of stubbing them out). I don\u0027t really see a good way to test which functions are called in that model (e.g. make sure vboot doesn\u0027t switch back-and-forth between hardware and software crypto functions in between)... it would be much simpler to test the vb2api* functions from both ends (like this file) and relegate testing of the vb2_digest* functions solely to vb2_sha_tests.c. What do you think?",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19e206c_31631088",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T17:20:54Z",
+      "side": 1,
+      "message": "If we change vb2_digest_*() to be a wrapper which decides between:\n\nvb2ex_hwcrypto_digest_*()\n\nand \n\nvb2_sw_digest_*()\n\nthen your overrides below should work in both cases.",
+      "parentUuid": "21e9bccf_4236f689",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
