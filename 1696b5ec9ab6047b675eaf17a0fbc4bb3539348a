@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "e1e5e41c_d2c02460",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:55:45Z",
+      "side": 1,
+      "message": "Yeah, ok.",
+      "parentUuid": "a1a3ecb1_24182a9f",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812508f1_f6286eed",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 2
@@ -261,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "a1ef6cfe_302f68a6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:55:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what we\u0027re doing.",
+      "parentUuid": "e197a45c_e8bea786",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1a3ecb1_309b08dd",
         "filename": "firmware/lib20/api.c",
         "patchSetId": 2
@@ -332,6 +368,24 @@
     },
     {
       "key": {
+        "uuid": "81f428d2_af889904",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:55:45Z",
+      "side": 1,
+      "message": "Yeah, ok.\n\nWould be nicer if fmap.dts could take tokenized bit values rather than a bare integer, but that\u0027s a totally different discussion.",
+      "parentUuid": "a1a3ecb1_04908658",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e9bccf_4236f689",
         "filename": "tests/vb20_api_tests.c",
         "patchSetId": 2
@@ -379,6 +433,24 @@
       "side": 1,
       "message": "Right... although the one thing I really want to test is that decision, so if I put the decision logic in vb2_digest_* (and then replace that with a mock function) I\u0027m not really testing that much anymore. ;) (I guess I\u0027m still testing the logic on init() which is good, but not if there\u0027s some bug in vb2_digest_extend() that makes it misinterpret the contents of the digest context.)",
       "parentUuid": "c19e206c_31631088",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f428d2_6f68718e",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2014-12-18T22:55:45Z",
+      "side": 1,
+      "message": "You can still mock the vb2ex_hwcrypto_digest() functions in the api21 test:\n\n  int vb2ex_hwcrypto_digest_init(...) {\n    if (retval_vb2ex_hwcrypto_digest_init)\n      return vb2ex_hwcrypto_digest_init; /* Force failure */\n    /* Mock implementation uses SW crypto */\n    return vb2_digest_init(...);\n  }",
+      "parentUuid": "e197a45c_086e6bee",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
