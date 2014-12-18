@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c19c6086_e4b01486",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "One important thing is that the decision to use HW crypto in the first place must be in vb2api_init_hash(), not in vb2_digest_init()... because that function has other callers (keyblock and preamble verification) that I specifically never want to use HW crypto.\n\nWe can put the branch for the extend and finalize parts in either of them, I don\u0027t really care... I just thought that keeping everything in api.c would make it a little cleaner.\n\nI also thought about using new vb2_hash_algorithm values to somehow describe the hardware crypto choice, but I think that just ends up being less clear in the end. The vb2_signature/vb2_public_key that it\u0027s checked against is always marked VB2_HASH_SHA256, so if we introduce a new VB2_HASH_SHA256_HW we would need a translator function somewhere and end up having inconsitencies between the signature and the digest context. I think the decision to use HW crypto is really completely orthogonal to the algorithm, so having an extra flag for it makes most sense.",
+      "parentUuid": "e1996484_b22b80e8",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812508f1_f6286eed",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 2
@@ -95,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "e197a45c_e51ff0cd",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "Yes, it does... it writes it to a register (HASH_MSG_LEN)",
+      "parentUuid": "e1996484_92b3dc6c",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 30
+      },
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e197a45c_422fb2a4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -130,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "c19c6086_07cadaae",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "Sorry, I just copied most of this from the vb2_digest_* comments. \"non-zero\" is supposed to mean a normal VB2_ERROR code.",
+      "parentUuid": "c19e206c_9124bc4c",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1a3ecb1_50e32c5d",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -141,6 +201,24 @@
       "writtenOn": "2014-12-18T16:52:45Z",
       "side": 1,
       "message": "All the 2nd arguments can\u0027t if on the same line as the rest of the declaration?",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c19c6086_a7d8ce85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "Right, they should... I didn\u0027t quite understand what the rule for this in vboot was. I guess it is \"all in one line if it fits, but as soon as there\u0027s more that one line put one parameter per line\"?",
+      "parentUuid": "a1a3ecb1_50e32c5d",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -182,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "c19c6086_c7d9923b",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "The preamble flags actually don\u0027t originate in futility, they get passed in by cros_bundle_firmware (which takes them from the fmap.dts file we have for every board in the depthcharge repo). So we could totally turn this around and set the flag for all new boards (or even just the veyron boards).\n\nI was just thinking that making the \"default\" state 0 would be the most simple (and therefore harder to screw up) way. We\u0027re always copying our fmap.dts together from some random old boards, and the preamble-flags value in there is a raw number that I\u0027m afraid too many people might not really know how to interpret anyway. I recently screwed up myself on Pinky by not noticing that we still had RO_NORMAL set until weird FAFT failures let me know... so I think leaving this in a way that makes copying the old numbers (where this bit is always 0) the \"right\" thing to do by default makes most sense.",
+      "parentUuid": "e1996484_92883cb3",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e9bccf_4236f689",
         "filename": "tests/vb20_api_tests.c",
         "patchSetId": 2
@@ -211,6 +307,24 @@
       "side": 1,
       "message": "If we change vb2_digest_*() to be a wrapper which decides between:\n\nvb2ex_hwcrypto_digest_*()\n\nand \n\nvb2_sw_digest_*()\n\nthen your overrides below should work in both cases.",
       "parentUuid": "21e9bccf_4236f689",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e197a45c_086e6bee",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-18T19:59:14Z",
+      "side": 1,
+      "message": "Right... although the one thing I really want to test is that decision, so if I put the decision logic in vb2_digest_* (and then replace that with a mock function) I\u0027m not really testing that much anymore. ;) (I guess I\u0027m still testing the logic on init() which is good, but not if there\u0027s some bug in vb2_digest_extend() that makes it misinterpret the contents of the digest context.)",
+      "parentUuid": "c19e206c_31631088",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
