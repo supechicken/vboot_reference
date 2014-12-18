@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "21c29c57_7473a806",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T16:52:45Z",
+      "side": 1,
+      "message": "Why sprinkle these checks around and not just put them in the 2sha_utility.c?",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812508f1_f6286eed",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 2
@@ -13,6 +30,57 @@
       "writtenOn": "2014-12-17T23:58:24Z",
       "side": 1,
       "message": "I\u0027m not sure if this is how you do this in vboot, but without these futility doesn\u0027t compile (because it has its own definitions in cmd_vb2_verify_fw.c). Seems that if it needs nothing from this file it can compile just fine, but if it tries to pull in some functions (like my new stubs) it has to pull them all and will complain about the duplicate symbols.",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e197a45c_422fb2a4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T16:52:45Z",
+      "side": 1,
+      "message": "Why choose non-zero for this function and the following one when vb2ex_hwcrypto_digest_init() uses an error code ( presumably a VB2_* one).",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a3ecb1_50e32c5d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T16:52:45Z",
+      "side": 1,
+      "message": "All the 2nd arguments can\u0027t if on the same line as the rest of the declaration?",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a3ecb1_309b08dd",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T16:52:45Z",
+      "side": 1,
+      "message": "Should the flag be be ALLOW_HWCRYPTO?  I\u0027m sure you thought through this, but it seems weird to go down this path for all platforms only to have it return UNSUPPORTED.",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
