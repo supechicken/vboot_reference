@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a1a3ecb1_24182a9f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T20:35:39Z",
+      "side": 1,
+      "message": "That\u0027s what I figured. I thought about this after I posted my comment.",
+      "parentUuid": "c19c6086_e4b01486",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812508f1_f6286eed",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 2
@@ -225,6 +243,24 @@
     },
     {
       "key": {
+        "uuid": "e197a45c_e8bea786",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T20:35:39Z",
+      "side": 1,
+      "message": "Ya. Not sure. I browsed up looking for a pattern. I think I came to the same conclusion.",
+      "parentUuid": "c19c6086_a7d8ce85",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1a3ecb1_309b08dd",
         "filename": "firmware/lib20/api.c",
         "patchSetId": 2
@@ -272,6 +308,24 @@
       "side": 1,
       "message": "The preamble flags actually don\u0027t originate in futility, they get passed in by cros_bundle_firmware (which takes them from the fmap.dts file we have for every board in the depthcharge repo). So we could totally turn this around and set the flag for all new boards (or even just the veyron boards).\n\nI was just thinking that making the \"default\" state 0 would be the most simple (and therefore harder to screw up) way. We\u0027re always copying our fmap.dts together from some random old boards, and the preamble-flags value in there is a raw number that I\u0027m afraid too many people might not really know how to interpret anyway. I recently screwed up myself on Pinky by not noticing that we still had RO_NORMAL set until weird FAFT failures let me know... so I think leaving this in a way that makes copying the old numbers (where this bit is always 0) the \"right\" thing to do by default makes most sense.",
       "parentUuid": "e1996484_92883cb3",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a3ecb1_04908658",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2014-12-18T20:35:39Z",
+      "side": 1,
+      "message": "OK. I can buy the argument.",
+      "parentUuid": "c19c6086_c7d9923b",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
