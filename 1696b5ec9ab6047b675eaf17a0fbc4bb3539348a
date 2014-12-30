@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "a12ccc7b_e8a4b315",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-30T04:02:16Z",
+      "side": 1,
+      "message": "Whoops, I overlooked the first part of that question.\n\nI actually tried for quite some time to allow the hwcrypto functions to use the digest context for their own purposes. It gets pretty ugly because the structure size is not constant (dependent on which software algorithms are compiled in), and it\u0027s hard to export its size without including the whole 2sha.h everywhere (because the other structures are really vboot internals and shouldn\u0027t be part of the API, I think).\n\nThen I found out that I don\u0027t even need to store a single thing for my implementation and decided it\u0027s not worth the trouble. If any other implementation ever needs it... well, coreboot is in control of the memory so it should hopefully be able to cough up a few bytes from somewhere else in that case.",
+      "parentUuid": "e197a45c_e51ff0cd",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 30
+      },
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e197a45c_422fb2a4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -220,6 +244,24 @@
       "side": 1,
       "message": "Sorry, I just copied most of this from the vb2_digest_* comments. \"non-zero\" is supposed to mean a normal VB2_ERROR code.",
       "parentUuid": "c19e206c_9124bc4c",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_08aae7de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-30T04:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19c6086_07cadaae",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -291,6 +333,24 @@
       "side": 1,
       "message": "Yes, that\u0027s what we\u0027re doing.",
       "parentUuid": "e197a45c_e8bea786",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "418cf0b9_d751645d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-30T04:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1ef6cfe_302f68a6",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -451,6 +511,24 @@
       "side": 1,
       "message": "You can still mock the vb2ex_hwcrypto_digest() functions in the api21 test:\n\n  int vb2ex_hwcrypto_digest_init(...) {\n    if (retval_vb2ex_hwcrypto_digest_init)\n      return vb2ex_hwcrypto_digest_init; /* Force failure */\n    /* Mock implementation uses SW crypto */\n    return vb2_digest_init(...);\n  }",
       "parentUuid": "e197a45c_086e6bee",
+      "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f34ae_72e8a00c",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2014-12-30T04:02:16Z",
+      "side": 1,
+      "message": "Done. I added some tests to make sure I get a preset mock error in the HWCRYPTO_ENABLED case... that should ensure that we notice if it switches from HW to SW halfway through as well.",
+      "parentUuid": "81f428d2_6f68718e",
       "revId": "1696b5ec9ab6047b675eaf17a0fbc4bb3539348a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
