@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e3065e8_2517a2b5",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-06T18:12:39Z",
+      "side": 1,
+      "message": "You\u0027re adding fields to the struct, so you\u0027ll need to upgrade the version, the same way as the firmware preamble above.  Otherwise, firmware compiled with this change won\u0027t validate old 2.0 kernels.",
+      "range": {
+        "startLine": 183,
+        "startChar": 45,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "6b923a1399d6b6cfaee0d954e9774a6152edaa6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
