@@ -483,7 +483,17 @@ CGPT_SRCS = \
 	cgpt/cmd_show.c
 
 CGPT_OBJS = ${CGPT_SRCS:%.c=${BUILD}/%.o}
+
 ALL_OBJS += ${CGPT_OBJS}
+
+CGPT_WRAPPER = ${BUILD}/cgpt/cgpt_wrapper
+
+CGPT_WRAPPER_SRCS = \
+	cgpt/cgpt_wrapper.c
+
+CGPT_WRAPPER_OBJS = ${CGPT_WRAPPER_SRCS:%.c=${BUILD}/%.o}
+
+ALL_OBJS += ${CGPT_WRAPPER_OBJS}
 
 # Utility defaults
 UTIL_DEFAULTS = ${BUILD}/default/vboot_reference
@@ -917,8 +927,15 @@ ${TINYHOSTLIB}: ${TINYHOSTLIB_OBJS}
 # ----------------------------------------------------------------------------
 # CGPT library and utility
 
+.PHONY: cgpt_wrapper
+cgpt_wrapper: ${CGPT_WRAPPER}
+
+${CGPT_WRAPPER}: ${CGPT_WRAPPER_OBJS}
+	@$(PRINTF) "    LD            $(subst ${BUILD}/,,$@)\n"
+	${Q}${LD} -o ${CGPT_WRAPPER} ${CFLAGS} $^
+
 .PHONY: cgpt
-cgpt: ${CGPT}
+cgpt: ${CGPT} ${CGPT_WRAPPER}
 
 ${CGPT}: LDFLAGS += -static
 ${CGPT}: LDLIBS += -luuid
