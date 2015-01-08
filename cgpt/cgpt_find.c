@@ -8,6 +8,7 @@
 #include <unistd.h>
 
 #include "cgpt.h"
+#include "cgpt_nor.h"
 #include "cgptlib_internal.h"
 #include "vboot_host.h"
 
@@ -145,6 +146,7 @@ static int do_search(CgptFindParams *params, char *fileName) {
 }
 
 
+#define PROC_MTD "/proc/mtd"
 #define PROC_PARTITIONS "/proc/partitions"
 #define DEV_DIR "/dev"
 #define SYS_BLOCK_DIR "/sys/block"
@@ -186,7 +188,6 @@ static char *is_wholedev(const char *basename) {
   return 0;
 }
 
-
 // This scans all the physical devices it can find, looking for a match. It
 // returns true if any matches were found, false otherwise.
 static int scan_real_devs(CgptFindParams *params) {
@@ -216,6 +217,44 @@ static int scan_real_devs(CgptFindParams *params) {
     }
   }
 
+  fclose(fp);
+
+  fp = fopen(PROC_MTD, "re");
+  if (!fp) {
+    return found;
+  }
+
+  while (fgets(line, sizeof(line), fp)) {
+    uint64_t sz;
+    uint32_t erasesz;
+    char name[128];
+    // dev:  size  erasesize  name
+    if (sscanf(line, "%64[^:]: %" PRIx64 " %x \"%127[^\"]\"",
+               partname, &sz, &erasesz, name) != 4)
+      continue;
+    if (strcmp(partname, "mtd0") == 0) {
+      char temp_dir[] = "/tmp/cgpt_find.XXXXXX";
+      if (params->drive_size == 0) {
+        if (GetMtdSize("/dev/mtd0", &params->drive_size) != 0) {
+          perror("GetMtdSize");
+          goto cleanup;
+        }
+      }
+      if (ReadNorFlash(temp_dir) != 0) {
+        perror("ReadNorFlash");
+        goto cleanup;
+      }
+      char nor_file[64];
+      if (snprintf(nor_file, sizeof(nor_file), "%s/rw_gpt", temp_dir) > 0) {
+        if (do_search(params, nor_file)) {
+          found++;
+        }
+      }
+      RemoveDir(temp_dir);
+      break;
+    }
+  }
+cleanup:
   fclose(fp);
   return found;
 }
