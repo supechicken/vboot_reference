@@ -38,6 +38,8 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 #undef DISABLE_ROLLBACK_TPM
 #endif
 
+#define DISABLE_ROLLBACK_TPM
+
 #define RETURN_ON_FAILURE(tpm_command) do {				\
 		uint32_t result_;					\
 		if ((result_ = (tpm_command)) != TPM_SUCCESS) {		\
