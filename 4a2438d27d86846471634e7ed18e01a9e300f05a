@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "ce9c8d86_a1bd5e59",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-01-08T22:45:04Z",
+      "side": 1,
+      "message": "Maybe this isn\u0027t the right repository for the wrapper then. I\u0027m a little worried that if we start doing our own calls out like this then it\u0027s likely to cause bugs, rather than using a standard library for it.",
+      "parentUuid": "ae7cb9f1_4eeaa704",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae7cb9f1_0b0181fb",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
