@@ -434,7 +434,10 @@ int futil_cb_show_kernel_preamble(struct futil_traverse_state_s *state)
 	       preamble->bootloader_address);
 	printf("  Bootloader size:       0x%" PRIx64 "\n",
 	       preamble->bootloader_size);
-
+	printf("  Vmlinuz_header address:    0x%" PRIx64 "\n",
+	       preamble->vmlinuz_header_address);
+	printf("  Vmlinuz header size:       0x%" PRIx64 "\n",
+	       preamble->vmlinuz_header_size);
 
 	/* Verify kernel body */
 	if (option.fv) {
