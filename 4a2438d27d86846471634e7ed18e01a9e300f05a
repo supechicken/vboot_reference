@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_85b64259",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-08T22:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7cb9f1_eb5eed33",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e733d24_25202ec2",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_4eeaa704",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-08T22:38:53Z",
+      "side": 1,
+      "message": "I looked into that too. But I think Bill would want to keep everything in C (not C++) in this repository so all the \"chromeos\" stuffs are out.",
+      "parentUuid": "4e733d24_25202ec2",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae7cb9f1_0b0181fb",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-01-08T20:32:43Z",
       "side": 1,
       "message": "Let\u0027s get this worked out before submitting this code. I know I need changes on my end too; something is out for review but it will need to be editted and go through code review. For your end, refer to the sections as RW_GPT_PRIMARY and RW_GPT_SECONDARY.",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e764114_0cc99bbc",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-08T22:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7cb9f1_0b0181fb",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
