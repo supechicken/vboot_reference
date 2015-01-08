@@ -149,6 +149,19 @@ int VerifyKernelPreamble(const VbKernelPreambleHeader *preamble,
 
 
 /**
+ * Return the 16-bit vmlinuz header address and size from the kernel preamble
+ * if there is one.  These are only available in Kernel Preamble Header version
+ * >= 2.1.  If given a header 2.0 or lower, will return 0.
+ */
+uint64_t VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
+				  uint64_t *vmlinuz_header_address);
+
+/**
+ * Verify that the Vmlinuz Header is contained inside of the kernel blob.
+ */
+int VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
+			     uint64_t header, uint64_t header_size);
+/**
  * Initialize a verified boot shared data structure.
  *
  * Returns 0 if success, non-zero if error.
