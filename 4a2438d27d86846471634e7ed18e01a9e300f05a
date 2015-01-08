@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7cb9f1_eb5eed33",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-01-08T20:32:43Z",
+      "side": 1,
+      "message": "Make a symbolic constant for this",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_25202ec2",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-01-08T20:32:43Z",
+      "side": 1,
+      "message": "A bit odd that you\u0027re implementing this yourself. Did you consider using platform2/libchromeos/process/process.h?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_0b0181fb",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-01-08T20:32:43Z",
+      "side": 1,
+      "message": "Let\u0027s get this worked out before submitting this code. I know I need changes on my end too; something is out for review but it will need to be editted and go through code review. For your end, refer to the sections as RW_GPT_PRIMARY and RW_GPT_SECONDARY.",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
