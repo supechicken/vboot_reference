@@ -8,10 +8,14 @@
 
 uint8_t *ReadConfigFile(const char *config_file, uint64_t *config_size);
 
-uint8_t *CreateKernelBlob(uint8_t *vmlinuz_buf, uint64_t vmlinuz_size,
-			  enum arch_t arch, uint64_t kernel_body_load_address,
-			  uint8_t *config_data, uint64_t config_size,
-			  uint8_t *bootloader_data, uint64_t bootloader_size,
+uint8_t *CreateKernelBlob(uint8_t *vmlinuz_buf,
+			  uint64_t vmlinuz_size,
+			  enum arch_t arch,
+			  uint64_t kernel_body_load_address,
+			  uint8_t *config_data,
+			  uint64_t config_size,
+			  uint8_t *bootloader_data,
+			  uint64_t bootloader_size,
 			  uint64_t *blob_size_ptr);
 
 uint8_t *SignKernelBlob(uint8_t *kernel_blob, uint64_t kernel_size,

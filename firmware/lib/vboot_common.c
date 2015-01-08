@@ -435,6 +435,17 @@ int VerifyKernelPreamble(const VbKernelPreambleHeader *preamble,
 		return VBOOT_PREAMBLE_INVALID;
 	}
 
+	/*
+	 * If the preamble header version is at least 2.1, verify we have space
+	 * for the added fields from 2.1.
+	 */
+	if (preamble->header_version_minor >= 1) {
+		if(size < EXPECTED_VBKERNELPREAMBLEHEADER2_1_SIZE) {
+			VBDEBUG(("Not enough data for preamble header 2.1.\n"));
+			return VBOOT_PREAMBLE_INVALID;
+		}
+	}
+
 	/* Success */
 	return VBOOT_SUCCESS;
 }
