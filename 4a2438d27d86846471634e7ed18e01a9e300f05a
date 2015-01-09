@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce9c8d86_c4c2b016",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Duh!",
+      "parentUuid": "2ee9a9cf_c554d097",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ee9a9cf_4549a002",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-08T23:01:23Z",
       "side": 1,
       "message": "use char[] instead of char*",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_cebcd7db",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee9a9cf_4549a002",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_0e018ffb",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e81b519_eafa67cb",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ee6a5ff_cad93b87",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -99,6 +153,24 @@
       "writtenOn": "2015-01-08T23:01:23Z",
       "side": 1,
       "message": "needs more const",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef455d2_52eb12b5",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee6a5ff_cad93b87",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_6ee203e3",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "basename(3) seems like a worse alternative. I want to ensure that \"/\" is in. I don\u0027t want people to execute this with \"mtd0\".",
+      "parentUuid": "8e81b519_aa006f2b",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e81b519_8a03ab37",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -133,6 +223,24 @@
       "writtenOn": "2015-01-08T23:01:23Z",
       "side": 1,
       "message": "needs more const",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef455d2_12e58adc",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e81b519_8a03ab37",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -156,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "8ebff5dd_9abd295a",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee6a5ff_0afb23d1",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ee6a5ff_aa030f37",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -173,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "8ebff5dd_daf5e129",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done. Actually, regardless of the return value of wait(), this function will still return -1 because status is initialized to -1. Unless in error, wait() changes status to some other value. Something wait() should not do.",
+      "parentUuid": "0ee6a5ff_aa030f37",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ee6a5ff_8ad81385",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -184,6 +328,24 @@
       "writtenOn": "2015-01-08T23:01:23Z",
       "side": 1,
       "message": "needs more const",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ebff5dd_5a02f17c",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee6a5ff_8ad81385",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -319,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "0ecb0596_b39ed8c7",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee9a9cf_e5ac6c2d",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae7cb9f1_0b0181fb",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 2
@@ -365,6 +545,24 @@
       "writtenOn": "2015-01-08T23:01:23Z",
       "side": 1,
       "message": "all path constants should be at the top of the file",
+      "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ecb0596_f39450ab",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-09T19:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee6a5ff_ef3b6907",
       "revId": "4a2438d27d86846471634e7ed18e01a9e300f05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
