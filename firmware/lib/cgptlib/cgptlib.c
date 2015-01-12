@@ -156,6 +156,28 @@ int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)
 		}
 		break;
 	}
+	case GPT_UPDATE_ENTRY_RESET: {
+		/*
+		 * Used for fastboot mode. If image is written to kernel
+		 * partition, its GPT entry is marked with S1,P1,T15
+		 */
+		modified = 1;
+		SetEntryTries(e, 15);
+		SetEntryPriority(e, 1);
+		SetEntrySuccessful(e, 1);
+		break;
+	}
+	case GPT_UPDATE_ENTRY_INVALID: {
+		/*
+		 * Used for fastboot mode. If kernel partition is erased, its
+		 * GPT entry is marked with S0,P0,T0
+		 */
+		modified = 1;
+		SetEntryTries(e, 0);
+		SetEntryPriority(e, 0);
+		SetEntrySuccessful(e, 0);
+		break;
+	}
 	default:
 		return GPT_ERROR_INVALID_UPDATE_TYPE;
 	}
@@ -165,4 +187,31 @@ int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)
 	}
 
 	return GPT_SUCCESS;
+}
+
+/*
+ * Func: GptFindNthEntry
+ * Desc: This function returns the nth instance of parition entry matching the
+ * guid from the gpt table. Instance value starts from 0. If the entry is not
+ * found it returns NULL.
+ */
+GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, unsigned int n)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int i;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!Memcmp(&e->type, guid, sizeof(*guid))) {
+			if (n == 0) {
+				if (IsKernelEntry(e))
+					gpt->current_kernel = i;
+				return e;
+			}
+			n--;
+		}
+	}
+
+	return NULL;
 }
