@@ -166,3 +166,88 @@ int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)
 
 	return GPT_SUCCESS;
 }
+
+/*
+ * Func: GptFindEntry
+ * Desc: This function returns the first parition entry matching the guid from
+ * the gpt table.
+ */
+GptEntry *GptFindEntry(GptData *gpt, const Guid *guid)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int i;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!Memcmp(&e->type, guid, sizeof(*guid)))
+			return e;
+	}
+
+	return NULL;
+}
+
+static void GptMarkKernelEntryFresh(GptEntry *e)
+{
+	SetEntryTries(e, 15);
+	SetEntryPriority(e, 1);
+	SetEntrySuccessful(e, 1);
+}
+
+static void GptMarkKernelEntryInv(GptEntry *e)
+{
+	SetEntryTries(e, 0);
+	SetEntryPriority(e, 0);
+	SetEntrySuccessful(e, 0);
+}
+
+/*
+ * Func: GptResetKernelEntry
+ * Desc: This function marks first kernel entry in GPT as fresh whereas marks
+ * all other kernel entries as inactive.
+ */
+void GptResetKernelEntry(GptData *gpt)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int is_first_entry = 1, i;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!IsKernelEntry(e))
+			continue;
+
+		if (is_first_entry) {
+			/* Mark the first kernel entry as fresh */
+			GptMarkKernelEntryFresh(e);
+			is_first_entry = 0;
+		} else {
+			/* Mark rest of the kernel entries as inactive */
+			GptMarkKernelEntryInv(e);
+		}
+	}
+
+	GptModified(gpt);
+}
+
+/*
+ * Func: GptInvKernelEntry
+ * Desc: This function marks all kernel entries as inactive.
+ */
+void GptInvKernelEntry(GptData *gpt)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int i;
+
+	/* Mark all kernel entries as inactive */
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!IsKernelEntry(e))
+			continue;
+
+		GptMarkKernelEntryInv(e);
+	}
+
+	GptModified(gpt);
+}

@@ -130,6 +130,22 @@ typedef struct {
 int GptInit(GptData *gpt);
 
 /**
+ * Return the fist parition entry matching the guid from the gpt table.
+ */
+GptEntry *GptFindEntry(GptData *gpt, const Guid *guid);
+
+/**
+ * Mark first kernel entry in GPT as fresh and all other kernel entries as
+ * inactive.
+ */
+void GptResetKernelEntry(GptData *gpt);
+
+/**
+ * Mark all kernel entries in GPT as inactive.
+ */
+void GptInvKernelEntry(GptData *gpt);
+
+/**
  * Allocate and read GPT data from the drive.  The sector_bytes and
  * drive_sectors fields should be filled on input.  The primary and secondary
  * header and entries are filled on output.
