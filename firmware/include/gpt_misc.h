@@ -130,6 +130,23 @@ typedef struct {
 int GptInit(GptData *gpt);
 
 /**
+ * Return the nth instance of parition entry matching the guid from the gpt
+ * table. Instance value starts from 1. If the entry is not found, it returns
+ * NULL.
+ */
+GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, int n);
+
+/**
+ * Set flags of the kernel entry in GPT to: S1, P1, T15.
+ */
+void GptResetKernelEntry(GptData *gpt, GptEntry *e);
+
+/**
+ * Set flags of the kernel entry in GPT to: S0, P0, T0.
+ */
+void GptInvKernelEntry(GptData *gpt, GptEntry *e);
+
+/**
  * Allocate and read GPT data from the drive.  The sector_bytes and
  * drive_sectors fields should be filled on input.  The primary and secondary
  * header and entries are filled on output.
@@ -147,5 +164,15 @@ int WriteAndFreeGptData(VbExDiskHandle_t disk_handle, GptData *gptdata);
  * Return 1 if the entry is unused, 0 if it is used.
  */
 int IsUnusedEntry(const GptEntry *e);
+
+/**
+ * Return size(in lba) of a partition represented by given GPT entry.
+ */
+size_t GptGetEntrySizeLba(GptEntry *e);
+
+/**
+ * Return size(in bytes) of a partition represented by given GPT entry.
+ */
+size_t GptGetEntrySizeBytes(GptData *gpt, GptEntry *e);
 
 #endif  /* VBOOT_REFERENCE_CGPT_MISC_H_ */

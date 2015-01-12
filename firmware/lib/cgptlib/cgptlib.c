@@ -166,3 +166,61 @@ int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)
 
 	return GPT_SUCCESS;
 }
+
+/*
+ * Func: GptFindNthEntry
+ * Desc: This function returns the nth instance of parition entry matching the
+ * guid from the gpt table. Instance value starts from 1. If the entry is not
+ * found it returns NULL.
+ */
+GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, int n)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int i;
+
+	/* n should start from 1 */
+	if (n <= 0)
+		return NULL;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!Memcmp(&e->type, guid, sizeof(*guid))) {
+			n--;
+			if (n == 0)
+				return e;
+		}
+	}
+
+	return NULL;
+}
+
+static void GptWriteKernelEntry(GptData *gpt, GptEntry *e, int s, int p, int t)
+{
+	if (!IsKernelEntry(e))
+		return;
+
+	SetEntrySuccessful(e, s);
+	SetEntryPriority(e, p);
+	SetEntryTries(e, t);
+
+	GptModified(gpt);
+}
+
+/*
+ * Func: GptResetKernelEntry
+ * Desc: This function sets flags of the kernel entry in GPT to: S1,P1,T15.
+ */
+void GptResetKernelEntry(GptData *gpt, GptEntry *e)
+{
+	GptWriteKernelEntry(gpt, e, 1, 1, 15);
+}
+
+/*
+ * Func: GptInvKernelEntry
+ * Desc: This function sets flags of the kernel entry in GPT to: S0,P0,T0.
+ */
+void GptInvKernelEntry(GptData *gpt, GptEntry *e)
+{
+	GptWriteKernelEntry(gpt, e, 0, 0, 0);
+}
