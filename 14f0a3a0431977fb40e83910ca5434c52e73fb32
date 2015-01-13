@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e99a9f9_02270ea2",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-13T16:41:12Z",
+      "side": 1,
+      "message": "Why \"first\" here? I\u0027d hate to encode the policy in the callee here. Why not pass an index? Then the caller can change the policy w/o making more changes to this API.",
+      "revId": "14f0a3a0431977fb40e83910ca5434c52e73fb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e8c1dba_468768a3",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-13T16:41:12Z",
+      "side": 1,
+      "message": "Entries? If it\u0027s doing it to all of them. Why not add \"All\" in there somewhere as well?",
+      "revId": "14f0a3a0431977fb40e83910ca5434c52e73fb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e99a9f9_c2d7e603",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-13T16:41:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be returning a const GptEntry?",
+      "revId": "14f0a3a0431977fb40e83910ca5434c52e73fb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e99a9f9_e2dce22a",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-13T16:41:12Z",
+      "side": 1,
+      "message": "I think there should be a definition of the term \"fresh\". What are the semantics of fresh?",
+      "revId": "14f0a3a0431977fb40e83910ca5434c52e73fb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_f8400d67",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-13T16:41:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be using the existing APIs? I know the way the code is currently written doesn\u0027t match this, but it seems like we could be using common iteration code.\n\nThere hasn\u0027t been much need in the past to expose a richer API from gptlib, but now may be the time. I feel like this current API is too specific in what we need.",
+      "revId": "14f0a3a0431977fb40e83910ca5434c52e73fb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
