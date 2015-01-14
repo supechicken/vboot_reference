@@ -16,6 +16,24 @@
       "revId": "c86ad82688e936c5aebafaa2d3bbb24c0171fed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe78392_05a1347c",
+        "filename": "host/lib/fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-14T20:44:26Z",
+      "side": 1,
+      "message": "Offset 0 is separately handled above because I didn\u0027t find a good way to do it in here. But you\u0027re right about size - sizeof(FmapHeader), that should have been a \"\u003c\u003d\"...",
+      "parentUuid": "0e1dc54d_e62940af",
+      "revId": "c86ad82688e936c5aebafaa2d3bbb24c0171fed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
