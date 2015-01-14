@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0e1dc54d_89b89d9c",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e20c981_043c96b1",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e233d8e_05a01277",
         "filename": "cgpt/cgpt_nor.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-14T19:30:16Z",
       "side": 1,
       "message": "nit:  if (cwd \u0026\u0026 chdir(cwd)) {",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e233d8e_8866d746",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e233d8e_05a01277",
       "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4e233d8e_a852b35b",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "Thanks for the code!",
+      "parentUuid": "2e20c981_0404963e",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1dc54d_43e846b7",
         "filename": "cgpt/cgpt_nor.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-14T19:30:16Z",
       "side": 1,
       "message": "read() and write() will likely not transfer the entire chunk of bytes with one call. You may want to use fread() and frwite() to buffer and retry automatically.\n\nOr do the copy using a loop.\n\nOr just fork/exec \"cp src dest\".",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf88f38_bd073fbb",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "I thought about it and figured that since I only read or write a small amount, it might be okay. Seems like it is not okay. This is now a loop.",
+      "parentUuid": "0e1dc54d_43e846b7",
       "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2b051bfe_dc668dc4",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "Because we are removing a directory.\n\nI\u0027m changing the code to recursively do that with nftw() and remove().",
+      "parentUuid": "ee3231d2_5052c4a9",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e26419e_0c711b4a",
         "filename": "cgpt/cgpt_nor.h",
         "patchSetId": 5
@@ -98,6 +188,24 @@
       "writtenOn": "2015-01-14T19:30:16Z",
       "side": 1,
       "message": "If it\u0027s almost the same thing, then let\u0027s name it similarly. How about ForkExecV() and ForkExecL() ?",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf88f38_fdb5c74f",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e26419e_0c711b4a",
       "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "0b0217f8_dbb453c4",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "rmdir() will not remove non-empty directory.",
+      "parentUuid": "6e26419e_8c434be4",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e20c981_04b73657",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 5
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "4bf88f38_5d54bb49",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "That\u0027s true. Could we trust that to the invoker never do so, though?",
+      "parentUuid": "2e20c981_04b73657",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e26419e_efb3d1d9",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 5
@@ -149,6 +293,24 @@
       "writtenOn": "2015-01-14T19:30:16Z",
       "side": 1,
       "message": "Do you want lstat() or stat() ? \n\nIf the device_path is a symlink, lstat() will stat the link, not what it points to.",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf88f38_00dc8874",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-14T23:17:43Z",
+      "side": 1,
+      "message": "I think we\u0027d want lstat. is_mtd() on a symlink should fail.",
+      "parentUuid": "6e26419e_efb3d1d9",
       "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
