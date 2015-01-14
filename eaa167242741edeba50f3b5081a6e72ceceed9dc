@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e20c981_043c96b1",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "const char *cwd.\n\nThis is C, not C++. The presubmit checker should complain about this anyway.",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e233d8e_05a01277",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "nit:  if (cwd \u0026\u0026 chdir(cwd)) {",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e20c981_0404963e",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually test the result of the exec\u0027d command. It just tests whether we were able to wait for it.\n\nPlus, I\u0027d prefer to use waitpid(). Try this:\n\n\tif (waitpid(pid, \u0026status, 0) !\u003d -1 \u0026\u0026 WIFEXITED(status))\n                return WEXITSTATUS(status);\n\n\treturn -1;",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e1dc54d_43e846b7",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "read() and write() will likely not transfer the entire chunk of bytes with one call. You may want to use fread() and frwite() to buffer and retry automatically.\n\nOr do the copy using a loop.\n\nOr just fork/exec \"cp src dest\".",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee3231d2_5052c4a9",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "Why not just use unlink(2) ?",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e26419e_0c711b4a",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "If it\u0027s almost the same thing, then let\u0027s name it similarly. How about ForkExecV() and ForkExecL() ?",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e26419e_8c434be4",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "Just use rmdir(2). No need to name it something else.",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e20c981_04b73657",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "Yeah, but -D 0 is the same as no -D arg at all.",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e26419e_efb3d1d9",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-14T19:30:16Z",
+      "side": 1,
+      "message": "Do you want lstat() or stat() ? \n\nIf the device_path is a symlink, lstat() will stat the link, not what it points to.",
+      "revId": "eaa167242741edeba50f3b5081a6e72ceceed9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
