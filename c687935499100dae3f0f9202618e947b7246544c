@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee64f1c9_7d97931f",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Readers should return 0 for kernel header version \u003c2.1.",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 52
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_a16c9af9",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Readers should return 0 for kernel header version \u003c2.1.",
+      "range": {
+        "startLine": 255,
+        "startChar": 4,
+        "endLine": 255,
+        "endChar": 46
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee64f1c9_9d762775",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Is the 16-bit vmlinuz portion of the kernel partition supposed to be signed?  If so, we should also verify that the offset and size of the 16-bit portion is entirely within the signed data size.",
+      "range": {
+        "startLine": 439,
+        "startChar": 51,
+        "endLine": 439,
+        "endChar": 72
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae2cb97b_91efde14",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you check the preamble version before printing these fields?",
+      "range": {
+        "startLine": 437,
+        "startChar": 1,
+        "endLine": 440,
+        "endChar": 39
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae2cb97b_110f6e56",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Don\u0027t you need to verify this a 2.1 kernel header?  If not, should print an error because there is no 16-bit header data.",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 562,
+        "endChar": 14
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_81887e4b",
+        "filename": "futility/cmd_vbutil_kernel0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Print 0 for these fields if header version \u003c 2.1",
+      "range": {
+        "startLine": 728,
+        "startChar": 1,
+        "endLine": 728,
+        "endChar": 7
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee64f1c9_dd809fd8",
+        "filename": "futility/cmd_vbutil_kernel0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Check header version first.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 3,
+        "endLine": 1056,
+        "endChar": 37
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_c158c650",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "if preamble version \u003e\u003d 2.1...",
+      "range": {
+        "startLine": 225,
+        "startChar": 32,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee64f1c9_fd8563e5",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "ofs -\u003e offs?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_e14dc28f",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-14T18:14:54Z",
+      "side": 1,
+      "message": "Check header version",
+      "range": {
+        "startLine": 552,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 7
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
