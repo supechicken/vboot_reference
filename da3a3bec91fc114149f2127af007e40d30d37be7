@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bf88f38_2632fc90",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "should use the \"e\" flag for cloexec behavior",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_825f7ee6",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "should really use getline() instead of fgets().  fgets should burn forever.",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_82b89e9a",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "got a stray tab in here",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_62bd9288",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "should have normal #ifdef protection against multiple inclusion",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_42c29618",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "didn\u0027t you want to adjust the position of the * ?  same goes for prototypes below",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b0217f8_815c1ecb",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "did * position need adjusting in this file too ?",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf88f38_669c84f9",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T00:46:11Z",
+      "side": 1,
+      "message": "do you really need to hardcode this ?  couldn\u0027t you use your own argv[0] and chop off the trailing .bin ?",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
