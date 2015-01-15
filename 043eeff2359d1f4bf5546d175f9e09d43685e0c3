@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b49377c_09b3addd",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4c3b8a_cd0a4143",
+      "revId": "043eeff2359d1f4bf5546d175f9e09d43685e0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb88ffe4_c476d040",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-15T19:31:21Z",
       "side": 1,
       "message": "No. First, since you\u0027re using execvp (but don\u0027t), you don\u0027t need to search the $PATH manually.\n\nSecond, just append \".bin\" to whatever main\u0027s argv[0] is, and assume/require that the wrapper and the thing it\u0027s wrapping live in the same directory.\n\nThen we could invoke\n\n./foo/bar/cgpt\n\nand if that particular cgpt is really the wrapper, then the actual binary would have to be\n\n./foo/bar/cgpt.bin\n\n\nSimilarly, if we renamed it to anything else:\n\nmv foo/bar/cgpt foo/bar/hey\nmv foo/bar/cgpt.bin foo/bar/hey.bin\n./foo/bar/hey",
+      "revId": "043eeff2359d1f4bf5546d175f9e09d43685e0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb88ffe4_a7bb8edf",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:59:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb88ffe4_c476d040",
       "revId": "043eeff2359d1f4bf5546d175f9e09d43685e0c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
