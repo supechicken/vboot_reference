@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8b928710_a2170069",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T21:36:14Z",
+      "side": 1,
+      "message": "you don\u0027t have to manage it -- getline does it for you.  here\u0027s the common idiom:\n\n size_t len \u003d 0;\n char *buffer \u003d NULL;\n while (getline(\u0026buffer, \u0026len, fp) !\u003d -1) {\n   ...\n }\n free(buffer);\n\nthat\u0027s it.  i don\u0027t think i\u0027d consider files in /proc/ really \"trusted\" ... with /proc/mtd, they contain entries that came directly from the person setting up the system.  if they used a long name your code isn\u0027t expecting, this tool would just randomly start segfaulting.",
+      "parentUuid": "2b4c3b8a_e4cbda2e",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b051bfe_82b89e9a",
         "filename": "cgpt/cgpt_nor.c",
         "patchSetId": 6
