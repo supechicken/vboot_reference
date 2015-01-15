@@ -118,6 +118,24 @@
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_22442ae9",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-15T00:52:13Z",
+      "side": 1,
+      "message": "Or add a .bin to argv[0] for the modified case.\n\nI think we should do the same thing whether we change the args or not. I don\u0027t care which approach we take.",
+      "parentUuid": "4bf88f38_669c84f9",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
