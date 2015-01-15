@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb8303c3_a2bb7edf",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf88f38_2632fc90",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b051bfe_825f7ee6",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-15T00:46:11Z",
       "side": 1,
       "message": "should really use getline() instead of fgets().  fgets should burn forever.",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_e4cbda2e",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "I do not find managing a dynamic buffer for getline() worth the benefit it brings, considering that we are reading from a trusted file and our buffer is more than enough.",
+      "parentUuid": "2b051bfe_825f7ee6",
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "eb8303c3_82ac3aa8",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b051bfe_82b89e9a",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b051bfe_62bd9288",
         "filename": "cgpt/cgpt_nor.h",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-15T00:46:11Z",
       "side": 1,
       "message": "should have normal #ifdef protection against multiple inclusion",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_241452e8",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b051bfe_62bd9288",
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "0b49377c_63292277",
+        "filename": "cgpt/cgpt_nor.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b051bfe_42c29618",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b0217f8_815c1ecb",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2015-01-15T00:46:11Z",
       "side": 1,
       "message": "did * position need adjusting in this file too ?",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b49377c_432e2681",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b0217f8_815c1ecb",
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -151,6 +259,24 @@
       "side": 1,
       "message": "err, right, you\u0027re appending .bin here.  i think if you add the .bin, you can use execvp() and it should do the right thing (including local testing).  if it gets to be too messy, i guess keep this :p.",
       "parentUuid": "2b051bfe_22442ae9",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b49377c_e3a0727a",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-01-15T19:14:50Z",
+      "side": 1,
+      "message": "Good idea. Changing to execvp() and appending \".bin\" to the end.",
+      "parentUuid": "ab0aeb11_78f1c1f5",
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
