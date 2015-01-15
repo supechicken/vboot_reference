@@ -136,6 +136,24 @@
       "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab0aeb11_78f1c1f5",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-15T01:01:55Z",
+      "side": 1,
+      "message": "err, right, you\u0027re appending .bin here.  i think if you add the .bin, you can use execvp() and it should do the right thing (including local testing).  if it gets to be too messy, i guess keep this :p.",
+      "parentUuid": "2b051bfe_22442ae9",
+      "revId": "da3a3bec91fc114149f2127af007e40d30d37be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
