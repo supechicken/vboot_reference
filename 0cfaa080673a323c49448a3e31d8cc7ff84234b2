@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc55323_232d3832",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-01-16T21:28:32Z",
+      "side": 1,
+      "message": "Sorry for not catching this sooner, but I don\u0027t think this behavior is appropriate. We should only succeed if both are successfully written. We don\u0027t really expect flashrom to fail. The firmware will want to rewrite the GPT on SPI, and if only one copy is good, then we risk bringing the device to recovery mode due to a poorly timed unclean shutdown if we accept this as a success. I\u0027m not sure exactly what we should do once failure is reported though...",
+      "revId": "0cfaa080673a323c49448a3e31d8cc7ff84234b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
