@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "0ba5b782_12665298",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-01-17T00:34:44Z",
+      "side": 1,
+      "message": "Yes, the 16-bit vmlinuz portion is included in the kernel blob and it is signed.  My concern is that the sig-\u003edata_size check is done in VerifyData and it just throws an error if the sig-\u003edata_size is \u003e than the size of the kernel blob.  Ideally, I would think that it should make sure that the sig-\u003edata_size \u003d\u003d size of kernel blob?  However, when I added this check it seems like the kernel preamble check fails.",
+      "parentUuid": "ee64f1c9_9d762775",
+      "range": {
+        "startLine": 439,
+        "startChar": 51,
+        "endLine": 439,
+        "endChar": 72
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae2cb97b_91efde14",
         "filename": "futility/cmd_show.c",
         "patchSetId": 4
@@ -197,6 +221,30 @@
       "writtenOn": "2015-01-14T18:14:54Z",
       "side": 1,
       "message": "ofs -\u003e offs?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "c687935499100dae3f0f9202618e947b7246544c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb347f09_c40dd05d",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-01-17T00:34:44Z",
+      "side": 1,
+      "message": "I left this for consistency reasons, but if you feel strongly about it, I can change all the printouts from ofs to offs ....",
+      "parentUuid": "ee64f1c9_fd8563e5",
       "range": {
         "startLine": 232,
         "startChar": 8,
