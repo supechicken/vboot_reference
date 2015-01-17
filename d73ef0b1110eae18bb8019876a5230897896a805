@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb347f09_6185d6e5",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-17T00:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bcfdb48_a05282a7",
+      "revId": "d73ef0b1110eae18bb8019876a5230897896a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abdbcb04_e4598286",
         "filename": "firmware/include/gpt_misc.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-16T15:20:15Z",
       "side": 1,
       "message": "Do we need this function and the next one for sure? I know kernel selection uses these fields, but I haven\u0027t thought through everything. The partition scheme is still to be decided, but what happens if we have single kernel entry? What will vboot kernel selection do there?",
+      "revId": "d73ef0b1110eae18bb8019876a5230897896a805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ba5b782_d2367a03",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-17T00:06:20Z",
+      "side": 1,
+      "message": "I removed this functions and used GptUpdateKernelEntry with special flags for these 2 cases. I think even if we have one kernel entry, we will need the flags to let the normal vboot flow continue.In that case, vboot will select that only kernel partition. If it boots, we are good, else we need to enter recovery and get a new kernel image.",
+      "parentUuid": "abdbcb04_e4598286",
       "revId": "d73ef0b1110eae18bb8019876a5230897896a805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
