@@ -34,6 +34,24 @@
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb2b9fc1_09e6c9c0",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-20T20:55:00Z",
+      "side": 1,
+      "message": "It seems really weird that calling GptFindNthEntry() which takes an arbitrary guid to update the current_kernel state. Wouldn\u0027t all the current_kernel logic kick in when it\u0027s trying to boot the device? Why would calling this function affect that?",
+      "parentUuid": "0bf85789_0b9cfdf7",
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
