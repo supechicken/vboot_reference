@@ -16,6 +16,24 @@
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bf85789_0b9cfdf7",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-20T20:32:59Z",
+      "side": 1,
+      "message": "It is required to ensure that GptUpdateKernelEntry works properly and updates the current kernel entry. It has a check at the beginning to see if current_kernel is found.",
+      "parentUuid": "cb2b9fc1_0971a9cd",
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
