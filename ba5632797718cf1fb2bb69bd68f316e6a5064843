@@ -70,6 +70,24 @@
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bbf77c3_f9eb2f7f",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-21T18:59:15Z",
+      "side": 1,
+      "message": "Ahh, I see. That\u0027s quite convoluted because of the current API/assumptions. That particular dilemma screams to me of needing a GptUpdateKernelEntry() variant that takes both the GptData and GptEntry. The current GptUpdateKernelEntry() function would only validate the current_kernel and then call the new function. int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *enter, uint32_t update_type);\n\nint GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)\n{\n    GptEntry *entries \u003d (GptEntry *)gpt-\u003eprimary_entries;\n    GptEntry *e \u003d entries + gpt-\u003ecurrent_kernel;\n\n    if (gpt-\u003ecurrent_kernel \u003d\u003d CGPT_KERNEL_ENTRY_NOT_FOUND)\n        return GPT_ERROR_INVALID_UPDATE_TYPE;\n\n    return GptUpdateKernelWithEntry(gpt, \n}",
+      "parentUuid": "2bc27b57_57494eb0",
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
