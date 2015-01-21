@@ -52,6 +52,24 @@
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bc27b57_57494eb0",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-21T18:48:08Z",
+      "side": 1,
+      "message": "we will be destroying the gpt structure before exiting from fastboot. So, current_kernel would be lost. Also, normal booting the device allocates its own gpt structure.\n\nWe have to update the kernel entry here because GptUpdateKernelEntry checks if current_kernel is set before updating the entry. If not, it returns.\n\nI can add another API GptUpdateCurrentKernel which updates current_kernel and that could be called from fastboot based on whether it is updating kernel entry. Does that seem more cleaner?",
+      "parentUuid": "cb2b9fc1_09e6c9c0",
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
