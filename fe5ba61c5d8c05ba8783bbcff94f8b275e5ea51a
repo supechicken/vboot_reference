@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b70bb17_de4c8540",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T20:12:09Z",
+      "side": 1,
+      "message": "set address and size to 0 (this is not considered an error).",
+      "range": {
+        "startLine": 154,
+        "startChar": 49,
+        "endLine": 154,
+        "endChar": 57
+      },
+      "revId": "fe5ba61c5d8c05ba8783bbcff94f8b275e5ea51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
