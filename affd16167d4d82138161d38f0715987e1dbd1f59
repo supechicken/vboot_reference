@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b763314_1a454de9",
+        "filename": "futility/futility.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T20:21:43Z",
+      "side": 1,
+      "message": "2.0 uses the same structs as 1.0.  The only practical difference between the two is whether the vb2_verify_fw command exists.  Maybe that should be a different binary entirely/\n\n2.1 uses new, incompatible structs.",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "affd16167d4d82138161d38f0715987e1dbd1f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
