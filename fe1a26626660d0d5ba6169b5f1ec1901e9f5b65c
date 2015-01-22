@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b70bb17_47cc50fa",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:59:45Z",
+      "side": 1,
+      "message": "Suggest taking pointers for both addr and size, so you can return an error code or VBOOT_SUCCESS.\n\nI can see accidentally calling if(VbGetKernelVmLinuzHeader(...)\u003d\u003dVBOOT_SUCCCESS), which wouldn\u0027t do what I expect...",
+      "range": {
+        "startLine": 154,
+        "startChar": 56,
+        "endLine": 154,
+        "endChar": 57
+      },
+      "revId": "fe1a26626660d0d5ba6169b5f1ec1901e9f5b65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_27c754da",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:59:45Z",
+      "side": 1,
+      "message": "Please comment what it returns",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "fe1a26626660d0d5ba6169b5f1ec1901e9f5b65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b70bb17_67d14c8f",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:59:45Z",
+      "side": 1,
+      "message": "VBOOT_PREAMBLE_INVALID?",
+      "range": {
+        "startLine": 476,
+        "startChar": 9,
+        "endLine": 476,
+        "endChar": 10
+      },
+      "revId": "fe1a26626660d0d5ba6169b5f1ec1901e9f5b65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b763314_698cc119",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-22T00:59:45Z",
+      "side": 1,
+      "message": "VBOOT_SUCCESS?",
+      "range": {
+        "startLine": 482,
+        "startChar": 8,
+        "endLine": 482,
+        "endChar": 9
+      },
+      "revId": "fe1a26626660d0d5ba6169b5f1ec1901e9f5b65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
