@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -9,14 +9,14 @@
 #include "2sysincludes.h"
 #include "2rsa.h"
 #include "2sha.h"
-#include "vb2_common.h"
+#include "vb20_common.h"
 
-uint8_t *vb2_signature_data(struct vb2_signature *sig)
+uint8_t *vb20_signature_data(struct vb20_signature *sig)
 {
 	return (uint8_t *)sig + sig->sig_offset;
 }
 
-int vb2_verify_member_inside(const void *parent, size_t parent_size,
+int vb20_verify_member_inside(const void *parent, size_t parent_size,
 			     const void *member, size_t member_size,
 			     ptrdiff_t member_data_offset,
 			     size_t member_data_size)
@@ -55,21 +55,21 @@ int vb2_verify_member_inside(const void *parent, size_t parent_size,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_signature_inside(const void *parent,
+int vb20_verify_signature_inside(const void *parent,
 				uint32_t parent_size,
-				const struct vb2_signature *sig)
+				const struct vb20_signature *sig)
 {
-	return vb2_verify_member_inside(parent, parent_size,
+	return vb20_verify_member_inside(parent, parent_size,
 					sig, sizeof(*sig),
 					sig->sig_offset, sig->sig_size);
 }
 
-int vb2_verify_digest(const struct vb2_public_key *key,
-		      struct vb2_signature *sig,
+int vb20_verify_digest(const struct vb2_public_key *key,
+		      struct vb20_signature *sig,
 		      const uint8_t *digest,
 		      const struct vb2_workbuf *wb)
 {
-	uint8_t *sig_data = vb2_signature_data(sig);
+	uint8_t *sig_data = vb20_signature_data(sig);
 
 	if (sig->sig_size != vb2_rsa_sig_size(key->sig_alg)) {
 		VB2_DEBUG("Wrong data signature size for algorithm, "
@@ -82,9 +82,9 @@ int vb2_verify_digest(const struct vb2_public_key *key,
 	return vb2_rsa_verify_digest(key, sig_data, digest, wb);
 }
 
-int vb2_verify_data(const uint8_t *data,
+int vb20_verify_data(const uint8_t *data,
 		    uint32_t size,
-		    struct vb2_signature *sig,
+		    struct vb20_signature *sig,
 		    const struct vb2_public_key *key,
 		    const struct vb2_workbuf *wb)
 {
@@ -127,15 +127,15 @@ int vb2_verify_data(const uint8_t *data,
 
 	vb2_workbuf_free(&wblocal, sizeof(*dc));
 
-	return vb2_verify_digest(key, sig, digest, &wblocal);
+	return vb20_verify_digest(key, sig, digest, &wblocal);
 }
 
-int vb2_verify_keyblock(struct vb2_keyblock *block,
+int vb20_verify_keyblock(struct vb20_keyblock *block,
 			uint32_t size,
 			const struct vb2_public_key *key,
 			const struct vb2_workbuf *wb)
 {
-	struct vb2_signature *sig;
+	struct vb20_signature *sig;
 	int rv;
 
 	/* Sanity checks before attempting signature of data */
@@ -159,7 +159,7 @@ int vb2_verify_keyblock(struct vb2_keyblock *block,
 	/* Check signature */
 	sig = &block->keyblock_signature;
 
-	if (vb2_verify_signature_inside(block, block->keyblock_size, sig)) {
+	if (vb20_verify_signature_inside(block, block->keyblock_size, sig)) {
 		VB2_DEBUG("Key block signature off end of block\n");
 		return VB2_ERROR_KEYBLOCK_SIG_OUTSIDE;
 	}
@@ -171,25 +171,25 @@ int vb2_verify_keyblock(struct vb2_keyblock *block,
 	}
 
 	VB2_DEBUG("Checking key block signature...\n");
-	rv = vb2_verify_data((const uint8_t *)block, size, sig, key, wb);
+	rv = vb20_verify_data((const uint8_t *)block, size, sig, key, wb);
 	if (rv) {
 		VB2_DEBUG("Invalid key block signature.\n");
 		return VB2_ERROR_KEYBLOCK_SIG_INVALID;
 	}
 
 	/* Verify we signed enough data */
-	if (sig->data_size < sizeof(struct vb2_keyblock)) {
+	if (sig->data_size < sizeof(struct vb20_keyblock)) {
 		VB2_DEBUG("Didn't sign enough data\n");
 		return VB2_ERROR_KEYBLOCK_SIGNED_TOO_LITTLE;
 	}
 
 	/* Verify data key is inside the block and inside signed data */
-	if (vb2_verify_packed_key_inside(block, block->keyblock_size,
+	if (vb20_verify_packed_key_inside(block, block->keyblock_size,
 					 &block->data_key)) {
 		VB2_DEBUG("Data key off end of key block\n");
 		return VB2_ERROR_KEYBLOCK_DATA_KEY_OUTSIDE;
 	}
-	if (vb2_verify_packed_key_inside(block, sig->data_size,
+	if (vb20_verify_packed_key_inside(block, sig->data_size,
 					 &block->data_key)) {
 		VB2_DEBUG("Data key off end of signed data\n");
 		return VB2_ERROR_KEYBLOCK_DATA_KEY_UNSIGNED;
@@ -199,12 +199,12 @@ int vb2_verify_keyblock(struct vb2_keyblock *block,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
+int vb20_verify_fw_preamble(struct vb20_fw_preamble *preamble,
 			   uint32_t size,
 			   const struct vb2_public_key *key,
 			   const struct vb2_workbuf *wb)
 {
-	struct vb2_signature *sig = &preamble->preamble_signature;
+	struct vb20_signature *sig = &preamble->preamble_signature;
 
 	VB2_DEBUG("Verifying preamble.\n");
 
@@ -230,7 +230,7 @@ int vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
 	}
 
 	/* Check signature */
-	if (vb2_verify_signature_inside(preamble, preamble->preamble_size,
+	if (vb20_verify_signature_inside(preamble, preamble->preamble_size,
 					sig)) {
 		VB2_DEBUG("Preamble signature off end of preamble\n");
 		return VB2_ERROR_PREAMBLE_SIG_OUTSIDE;
@@ -242,26 +242,26 @@ int vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
 		return VB2_ERROR_PREAMBLE_SIGNED_TOO_MUCH;
 	}
 
-	if (vb2_verify_data((const uint8_t *)preamble, size, sig, key, wb)) {
+	if (vb20_verify_data((const uint8_t *)preamble, size, sig, key, wb)) {
 		VB2_DEBUG("Preamble signature validation failed\n");
 		return VB2_ERROR_PREAMBLE_SIG_INVALID;
 	}
 
 	/* Verify we signed enough data */
-	if (sig->data_size < sizeof(struct vb2_fw_preamble)) {
+	if (sig->data_size < sizeof(struct vb20_fw_preamble)) {
 		VB2_DEBUG("Didn't sign enough data\n");
 		return VB2_ERROR_PREAMBLE_SIGNED_TOO_LITTLE;
 	}
 
 	/* Verify body signature is inside the signed data */
-	if (vb2_verify_signature_inside(preamble, sig->data_size,
+	if (vb20_verify_signature_inside(preamble, sig->data_size,
 					&preamble->body_signature)) {
 		VB2_DEBUG("Firmware body signature off end of preamble\n");
 		return VB2_ERROR_PREAMBLE_BODY_SIG_OUTSIDE;
 	}
 
 	/* Verify kernel subkey is inside the signed data */
-	if (vb2_verify_packed_key_inside(preamble, sig->data_size,
+	if (vb20_verify_packed_key_inside(preamble, sig->data_size,
 					 &preamble->kernel_subkey)) {
 		VB2_DEBUG("Kernel subkey off end of preamble\n");
 		return VB2_ERROR_PREAMBLE_KERNEL_SUBKEY_OUTSIDE;

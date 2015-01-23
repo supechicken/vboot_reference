@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -113,4 +113,51 @@ void vb2_workbuf_free(struct vb2_workbuf *wb, uint32_t size)
 ptrdiff_t vb2_offset_of(const void *base, const void *ptr)
 {
 	return (uintptr_t)ptr - (uintptr_t)base;
+}
+
+uint32_t vb2_sig_size(enum vb2_signature_algorithm sig_alg,
+		      enum vb2_hash_algorithm hash_alg)
+{
+	uint32_t digest_size = vb2_digest_size(hash_alg);
+
+	/* Fail if we don't support the hash algorithm */
+	if (!digest_size)
+		return 0;
+
+	/* Handle unsigned hashes */
+	if (sig_alg == VB2_SIG_NONE)
+		return digest_size;
+
+	return vb2_rsa_sig_size(sig_alg);
+}
+
+const struct vb2_guid *vb2_hash_guid(enum vb2_hash_algorithm hash_alg)
+{
+	switch (hash_alg) {
+#ifdef VB2_SUPPORT_SHA1
+	case VB2_HASH_SHA1:
+		{
+			static const struct vb2_guid guid = VB2_GUID_NONE_SHA1;
+			return &guid;
+		}
+#endif
+#ifdef VB2_SUPPORT_SHA256
+	case VB2_HASH_SHA256:
+		{
+			static const struct vb2_guid guid =
+				VB2_GUID_NONE_SHA256;
+			return &guid;
+		}
+#endif
+#ifdef VB2_SUPPORT_SHA512
+	case VB2_HASH_SHA512:
+		{
+			static const struct vb2_guid guid =
+				VB2_GUID_NONE_SHA512;
+			return &guid;
+		}
+#endif
+	default:
+		return NULL;
+	}
 }

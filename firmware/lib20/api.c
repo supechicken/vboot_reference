@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -13,21 +13,23 @@
 #include "2secdata.h"
 #include "2sha.h"
 #include "2rsa.h"
-#include "vb2_common.h"
+#include "20api.h"
+#include "vb20_common.h"
+#include "vb20_misc.h"
 
-int vb2api_fw_phase3(struct vb2_context *ctx)
+int vb20api_fw_phase3(struct vb2_context *ctx)
 {
 	int rv;
 
 	/* Verify firmware keyblock */
-	rv = vb2_load_fw_keyblock(ctx);
+	rv = vb20_load_fw_keyblock(ctx);
 	if (rv) {
 		vb2_fail(ctx, VB2_RECOVERY_RO_INVALID_RW, rv);
 		return rv;
 	}
 
 	/* Verify firmware preamble */
-	rv = vb2_load_fw_preamble(ctx);
+	rv = vb20_load_fw_preamble(ctx);
 	if (rv) {
 		vb2_fail(ctx, VB2_RECOVERY_RO_INVALID_RW, rv);
 		return rv;
@@ -36,10 +38,10 @@ int vb2api_fw_phase3(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
+int vb20api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	const struct vb2_fw_preamble *pre;
+	const struct vb20_fw_preamble *pre;
 	struct vb2_digest_context *dc;
 	struct vb2_public_key key;
 	struct vb2_workbuf wb;
@@ -53,7 +55,7 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 	/* Get preamble pointer */
 	if (!sd->workbuf_preamble_size)
 		return VB2_ERROR_API_INIT_HASH_PREAMBLE;
-	pre = (const struct vb2_fw_preamble *)
+	pre = (const struct vb20_fw_preamble *)
 		(ctx->workbuf + sd->workbuf_preamble_offset);
 
 	/* For now, we only support the firmware body tag */
@@ -88,7 +90,7 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 	if (!sd->workbuf_data_key_size)
 		return VB2_ERROR_API_INIT_HASH_DATA_KEY;
 
-	rv = vb2_unpack_key(&key,
+	rv = vb20_unpack_key(&key,
 			    ctx->workbuf + sd->workbuf_data_key_offset,
 			    sd->workbuf_data_key_size);
 	if (rv)
@@ -121,7 +123,7 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 	return vb2_digest_init(dc, key.hash_alg);
 }
 
-int vb2api_check_hash(struct vb2_context *ctx)
+int vb20api_check_hash(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_digest_context *dc = (struct vb2_digest_context *)
@@ -131,7 +133,7 @@ int vb2api_check_hash(struct vb2_context *ctx)
 	uint8_t *digest;
 	uint32_t digest_size = vb2_digest_size(dc->hash_alg);
 
-	struct vb2_fw_preamble *pre;
+	struct vb20_fw_preamble *pre;
 	struct vb2_public_key key;
 	int rv;
 
@@ -140,7 +142,7 @@ int vb2api_check_hash(struct vb2_context *ctx)
 	/* Get preamble pointer */
 	if (!sd->workbuf_preamble_size)
 		return VB2_ERROR_API_CHECK_HASH_PREAMBLE;
-	pre = (struct vb2_fw_preamble *)
+	pre = (struct vb20_fw_preamble *)
 		(ctx->workbuf + sd->workbuf_preamble_offset);
 
 	/* Must have initialized hash digest work area */
@@ -177,7 +179,7 @@ int vb2api_check_hash(struct vb2_context *ctx)
 	if (!sd->workbuf_data_key_size)
 		return VB2_ERROR_API_CHECK_HASH_DATA_KEY;
 
-	rv = vb2_unpack_key(&key,
+	rv = vb20_unpack_key(&key,
 			    ctx->workbuf + sd->workbuf_data_key_offset,
 			    sd->workbuf_data_key_size);
 	if (rv)
@@ -187,7 +189,7 @@ int vb2api_check_hash(struct vb2_context *ctx)
 	 * Check digest vs. signature.  Note that this destroys the signature.
 	 * That's ok, because we only check each signature once per boot.
 	 */
-	rv = vb2_verify_digest(&key, &pre->body_signature, digest, &wb);
+	rv = vb20_verify_digest(&key, &pre->body_signature, digest, &wb);
 	if (rv)
 		vb2_fail(ctx, VB2_RECOVERY_RO_INVALID_RW, rv);
 

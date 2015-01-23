@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -14,7 +14,7 @@
 #include "2common.h"
 #include "2rsa.h"
 #include "2sha.h"
-#include "vb2_common.h"
+#include "vb21_common.h"
 #include "host_common.h"
 #include "host_key2.h"
 #include "host_signature2.h"
@@ -79,13 +79,13 @@ static int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 	}
 }
 
-int vb2_sign_data(struct vb2_signature **sig_ptr,
+int vb21_sign_data(struct vb21_signature **sig_ptr,
 		  const uint8_t *data,
 		  uint32_t size,
-		  const struct vb2_private_key *key,
+		  const struct vb21_private_key *key,
 		  const char *desc)
 {
-	struct vb2_signature s = {
+	struct vb21_signature s = {
 		.c.magic = VB2_MAGIC_SIGNATURE,
 		.c.struct_version_major = VB2_SIGNATURE_VERSION_MAJOR,
 		.c.struct_version_minor = VB2_SIGNATURE_VERSION_MINOR,
@@ -179,12 +179,12 @@ int vb2_sign_data(struct vb2_signature **sig_ptr,
 	}
 
 	free(sig_digest);
-	*sig_ptr = (struct vb2_signature *)buf;
+	*sig_ptr = (struct vb21_signature *)buf;
 	return VB2_SUCCESS;
 }
 
-int vb2_sig_size_for_key(uint32_t *size_ptr,
-			 const struct vb2_private_key *key,
+int vb21_sig_size_for_key(uint32_t *size_ptr,
+			 const struct vb21_private_key *key,
 			 const char *desc)
 {
 	uint32_t size = vb2_sig_size(key->sig_alg, key->hash_alg);
@@ -192,15 +192,15 @@ int vb2_sig_size_for_key(uint32_t *size_ptr,
 	if (!size)
 		return VB2_ERROR_SIG_SIZE_FOR_KEY;
 
-	size += sizeof(struct vb2_signature);
+	size += sizeof(struct vb21_signature);
 	size += vb2_desc_size(desc ? desc : key->desc);
 
 	*size_ptr = size;
 	return VB2_SUCCESS;
 }
 
-int vb2_sig_size_for_keys(uint32_t *size_ptr,
-			  const struct vb2_private_key **key_list,
+int vb21_sig_size_for_keys(uint32_t *size_ptr,
+			  const struct vb21_private_key **key_list,
 			  uint32_t key_count)
 {
 	uint32_t total = 0, size = 0;
@@ -209,7 +209,7 @@ int vb2_sig_size_for_keys(uint32_t *size_ptr,
 	*size_ptr = 0;
 
 	for (i = 0; i < key_count; i++) {
-		rv = vb2_sig_size_for_key(&size, key_list[i], NULL);
+		rv = vb21_sig_size_for_key(&size, key_list[i], NULL);
 		if (rv)
 			return rv;
 		total += size;
@@ -219,16 +219,16 @@ int vb2_sig_size_for_keys(uint32_t *size_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_sign_object(uint8_t *buf,
+int vb21_sign_object(uint8_t *buf,
 		    uint32_t sig_offset,
-		    const struct vb2_private_key *key,
+		    const struct vb21_private_key *key,
 		    const char *desc)
 {
-	struct vb2_struct_common *c = (struct vb2_struct_common *)buf;
-	struct vb2_signature *sig = NULL;
+	struct vb21_struct_common *c = (struct vb21_struct_common *)buf;
+	struct vb21_signature *sig = NULL;
 	int rv;
 
-	rv = vb2_sign_data(&sig, buf, sig_offset, key, desc);
+	rv = vb21_sign_data(&sig, buf, sig_offset, key, desc);
 	if (rv)
 		return rv;
 
@@ -243,19 +243,19 @@ int vb2_sign_object(uint8_t *buf,
 	return VB2_SUCCESS;
 }
 
-int vb2_sign_object_multiple(uint8_t *buf,
+int vb21_sign_object_multiple(uint8_t *buf,
 			     uint32_t sig_offset,
-			     const struct vb2_private_key **key_list,
+			     const struct vb21_private_key **key_list,
 			     uint32_t key_count)
 {
-	struct vb2_struct_common *c = (struct vb2_struct_common *)buf;
+	struct vb21_struct_common *c = (struct vb21_struct_common *)buf;
 	uint32_t sig_next = sig_offset;
 	int rv, i;
 
 	for (i = 0; i < key_count; i++)	{
-		struct vb2_signature *sig = NULL;
+		struct vb21_signature *sig = NULL;
 
-		rv = vb2_sign_data(&sig, buf, sig_offset, key_list[i], NULL);
+		rv = vb21_sign_data(&sig, buf, sig_offset, key_list[i], NULL);
 		if (rv)
 			return rv;
 

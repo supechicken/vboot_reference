@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,11 +8,12 @@
  * DO NOT INCLUDE THE HEADERS BELOW DIRECTLY!  ONLY INCLUDE THIS FILE!
  */
 
-#ifndef VBOOT_VB2_API_H_
-#define VBOOT_VB2_API_H_
+#ifndef VBOOT_REFERENCE_VB20_API_H_
+#define VBOOT_REFERENCE_VB20_API_H_
 
 /* Standard APIs */
 #include "../2lib/include/2api.h"
+#include "../lib20/include/20api.h"
 
 /*
  * Coreboot should not need access to vboot2 internals.  But right now it does.
@@ -26,7 +27,7 @@
 #ifdef NEED_VB20_INTERNALS
 #include "../2lib/include/2nvstorage_fields.h"
 #include "../2lib/include/2struct.h"
-#include "../lib20/include/vb2_struct.h"
+#include "../lib20/include/vb20_struct.h"
 #endif
 
-#endif  /* VBOOT_VB2_API_H_ */
+#endif  /* VBOOT_REFERENCE_VB20_API_H_ */

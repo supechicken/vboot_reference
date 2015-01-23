@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -337,34 +337,34 @@ enum vb2_return_code {
 	/* Header size too small in vb2_read_gbb_header() */
 	VB2_ERROR_GBB_HEADER_SIZE,
 
-	/* Work buffer too small for root key in vb2_load_fw_keyblock() */
+	/* Work buffer too small for root key in vb2x_load_fw_keyblock() */
 	VB2_ERROR_FW_KEYBLOCK_WORKBUF_ROOT_KEY,
 
-	/* Work buffer too small for header in vb2_load_fw_keyblock() */
+	/* Work buffer too small for header in vb2x_load_fw_keyblock() */
 	VB2_ERROR_FW_KEYBLOCK_WORKBUF_HEADER,
 
-	/* Work buffer too small for keyblock in vb2_load_fw_keyblock() */
+	/* Work buffer too small for keyblock in vb2x_load_fw_keyblock() */
 	VB2_ERROR_FW_KEYBLOCK_WORKBUF,
 
-	/* Keyblock version out of range in vb2_load_fw_keyblock() */
+	/* Keyblock version out of range in vb2x_load_fw_keyblock() */
 	VB2_ERROR_FW_KEYBLOCK_VERSION_RANGE,
 
-	/* Keyblock version rollback in vb2_load_fw_keyblock() */
+	/* Keyblock version rollback in vb2x_load_fw_keyblock() */
 	VB2_ERROR_FW_KEYBLOCK_VERSION_ROLLBACK,
 
-	/* Missing firmware data key in vb2_load_fw_preamble() */
+	/* Missing firmware data key in vb2x_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE2_DATA_KEY,
 
-	/* Work buffer too small for header in vb2_load_fw_preamble() */
+	/* Work buffer too small for header in vb2x_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE2_WORKBUF_HEADER,
 
-	/* Work buffer too small for preamble in vb2_load_fw_preamble() */
+	/* Work buffer too small for preamble in vb2x_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE2_WORKBUF,
 
-	/* Firmware version out of range in vb2_load_fw_preamble() */
+	/* Firmware version out of range in vb2x_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE_VERSION_RANGE,
 
-	/* Firmware version rollback in vb2_load_fw_preamble() */
+	/* Firmware version rollback in vb2x_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE_VERSION_ROLLBACK,
 
 	/* Not enough space in work buffer for resource object */
@@ -375,52 +375,52 @@ enum vb2_return_code {
 	 */
 	VB2_ERROR_API = VB2_ERROR_BASE + 0x090000,
 
-	/* Bag tag in vb2api_init_hash() */
+	/* Bag tag in vb2?api_init_hash() */
 	VB2_ERROR_API_INIT_HASH_TAG,
 
-	/* Preamble not present in vb2api_init_hash() */
+	/* Preamble not present in vb2?api_init_hash() */
 	VB2_ERROR_API_INIT_HASH_PREAMBLE,
 
-	/* Work buffer too small in vb2api_init_hash() */
+	/* Work buffer too small in vb2?api_init_hash() */
 	VB2_ERROR_API_INIT_HASH_WORKBUF,
 
-	/* Missing firmware data key in vb2api_init_hash() */
+	/* Missing firmware data key in vb2?api_init_hash() */
 	VB2_ERROR_API_INIT_HASH_DATA_KEY,
 
-	/* Uninitialized work area in vb2api_extend_hash() */
+	/* Uninitialized work area in vb2?api_extend_hash() */
 	VB2_ERROR_API_EXTEND_HASH_WORKBUF,
 
-	/* Too much data hashed in vb2api_extend_hash() */
+	/* Too much data hashed in vb2?api_extend_hash() */
 	VB2_ERROR_API_EXTEND_HASH_SIZE,
 
-	/* Preamble not present in vb2api_check_hash() */
+	/* Preamble not present in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_PREAMBLE,
 
-	/* Uninitialized work area in vb2api_check_hash() */
+	/* Uninitialized work area in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_WORKBUF,
 
-	/* Wrong amount of data hashed in vb2api_check_hash() */
+	/* Wrong amount of data hashed in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_SIZE,
 
-	/* Work buffer too small in vb2api_check_hash() */
+	/* Work buffer too small in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST,
 
-	/* Bag tag in vb2api_check_hash() */
+	/* Bag tag in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_TAG,
 
-	/* Missing firmware data key in vb2api_check_hash() */
+	/* Missing firmware data key in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_DATA_KEY,
 
-	/* Siganature size mismatch in vb2api_check_hash() */
+	/* Siganature size mismatch in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_SIG_SIZE,
 
 	/* Phase one needs recovery mode */
 	VB2_ERROR_API_PHASE1_RECOVERY,
 
-	/* Bag tag in vb2api_check_hash() */
+	/* Bag tag in vb2?api_check_hash() */
 	VB2_ERROR_API_INIT_HASH_GUID,
 
-	/* Siganature mismatch in vb2api_check_hash() */
+	/* Siganature mismatch in vb2?api_check_hash() */
 	VB2_ERROR_API_CHECK_HASH_SIG,
 
         /**********************************************************************

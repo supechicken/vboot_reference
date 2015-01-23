@@ -1,27 +1,27 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
  * Common functions between firmware and kernel verified boot.
  */
 
-#ifndef VBOOT_REFERENCE_VB2_COMMON_H_
-#define VBOOT_REFERENCE_VB2_COMMON_H_
+#ifndef VBOOT_REFERENCE_VB21_COMMON_H_
+#define VBOOT_REFERENCE_VB21_COMMON_H_
 
 #include "2common.h"
 #include "2return_codes.h"
 #include "2struct.h"
-#include "vb2_struct.h"
+#include "vb21_struct.h"
 
 /**
- * Return the description of an object starting with a vb2_struct_common header.
+ * Return the description of an object starting with a vb21_struct_common header.
  *
  * Does not sanity-check the buffer; merely returns the pointer.
  *
  * @param buf		Pointer to common object
  * @return A pointer to description or an empty string if none.
  */
-const char *vb2_common_desc(const void *buf);
+const char *vb21_common_desc(const void *buf);
 
 /**
  * Verify the common struct header is fully contained in its parent data
@@ -32,12 +32,12 @@ const char *vb2_common_desc(const void *buf);
  * @param parent_size	Parent size in bytes
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_common_header(const void *parent, uint32_t parent_size);
+int vb21_verify_common_header(const void *parent, uint32_t parent_size);
 
 /**
  * Verify a member is within the data for a parent object
  *
- * @param parent	Parent data (starts with struct vb2_struct_common)
+ * @param parent	Parent data (starts with struct vb21_struct_common)
  * @param min_offset	Pointer to minimum offset where member can be located.
  *			If this offset is 0 on input, uses the size of the
  *			fixed header (and description, if any).  This will be
@@ -47,7 +47,7 @@ int vb2_verify_common_header(const void *parent, uint32_t parent_size);
  * @param member_size	Size of member data, in bytes
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_common_member(const void *parent,
+int vb21_verify_common_member(const void *parent,
 			     uint32_t *min_offset,
 			     uint32_t member_offset,
 			     uint32_t member_size);
@@ -59,7 +59,7 @@ int vb2_verify_common_member(const void *parent,
  * member's claimed total size fits within the parent's claimed total size at
  * the specified offset.
  *
- * @param parent	Parent data (starts with struct vb2_struct_common)
+ * @param parent	Parent data (starts with struct vb21_struct_common)
  * @param min_offset	Pointer to minimum offset where member can be located.
  *			If this offset is 0 on input, uses the size of the
  *			fixed header (and description, if any).  This will be
@@ -70,7 +70,7 @@ int vb2_verify_common_member(const void *parent,
  *                      member.
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_common_subobject(const void *parent,
+int vb21_verify_common_subobject(const void *parent,
 				uint32_t *min_offset,
 				uint32_t member_offset);
 
@@ -85,21 +85,21 @@ int vb2_verify_common_subobject(const void *parent,
  * @param size		Size of buffer in bytes
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_unpack_key(struct vb2_public_key *key,
+int vb21_unpack_key(struct vb2_public_key *key,
 		   const uint8_t *buf,
 		   uint32_t size);
 
 /**
  * Unpack the RSA data fields for a public key
  *
- * This is called by vb2_unpack_key() to extract the arrays from a packed key.
+ * This is called by vb21_unpack_key() to extract the arrays from a packed key.
  * These elements of *key will point inside the key_data buffer.
  *
  * @param key		Destination key for RSA data fields
  * @param key_data	Packed key data (from inside a packed key buffer)
  * @param key_size	Size of packed key data in bytes
  */
-int vb2_unpack_key_data(struct vb2_public_key *key,
+int vb21_unpack_key_data(struct vb2_public_key *key,
 			const uint8_t *key_data,
 			uint32_t key_size);
 
@@ -109,7 +109,7 @@ int vb2_unpack_key_data(struct vb2_public_key *key,
  * @param size		Size of buffer containing signature struct
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_signature(const struct vb2_signature *sig,
+int vb21_verify_signature(const struct vb21_signature *sig,
 			 uint32_t size);
 
 /**
@@ -121,8 +121,8 @@ int vb2_verify_signature(const struct vb2_signature *sig,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_digest(const struct vb2_public_key *key,
-		      struct vb2_signature *sig,
+int vb21_verify_digest(const struct vb2_public_key *key,
+		      struct vb21_signature *sig,
 		      const uint8_t *digest,
 		      const struct vb2_workbuf *wb);
 
@@ -137,9 +137,9 @@ int vb2_verify_digest(const struct vb2_public_key *key,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_verify_data(const void *data,
+int vb21_verify_data(const void *data,
 		    uint32_t size,
-		    struct vb2_signature *sig,
+		    struct vb21_signature *sig,
 		    const struct vb2_public_key *key,
 		    const struct vb2_workbuf *wb);
 
@@ -155,7 +155,7 @@ int vb2_verify_data(const void *data,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_verify_keyblock(struct vb2_keyblock *block,
+int vb21_verify_keyblock(struct vb21_keyblock *block,
 			uint32_t size,
 			const struct vb2_public_key *key,
 			const struct vb2_workbuf *wb);
@@ -165,15 +165,15 @@ int vb2_verify_keyblock(struct vb2_keyblock *block,
  *
  * The signature in the preamble is destroyed during the check.
  *
- * @param preamble     	Preamble to verify
+ * @param preamble	Preamble to verify
  * @param size		Size of preamble buffer
  * @param key		Key to use to verify preamble
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
+int vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
 			   uint32_t size,
 			   const struct vb2_public_key *key,
 			   const struct vb2_workbuf *wb);
 
-#endif  /* VBOOT_REFERENCE_VB2_COMMON_H_ */
+#endif  /* VBOOT_REFERENCE_VB21_COMMON_H_ */

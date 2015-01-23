@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -120,25 +120,5 @@ int vb2_check_tpm_clear(struct vb2_context *ctx);
  * @return VB2_SUCCESS, or error code on error.
  */
 int vb2_select_fw_slot(struct vb2_context *ctx);
-
-/**
- * Verify the firmware keyblock using the root key.
- *
- * After this call, the data key is stored in the work buffer.
- *
- * @param ctx		Vboot context
- * @return VB2_SUCCESS, or error code on error.
- */
-int vb2_load_fw_keyblock(struct vb2_context *ctx);
-
-/**
- * Verify the firmware preamble using the data subkey from the keyblock.
- *
- * After this call, the preamble is stored in the work buffer.
- *
- * @param ctx		Vboot context
- * @return VB2_SUCCESS, or error code on error.
- */
-int vb2_load_fw_preamble(struct vb2_context *ctx);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_2MISC_H_ */

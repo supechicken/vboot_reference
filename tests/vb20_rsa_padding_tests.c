@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -15,7 +15,7 @@
 
 #include "2sysincludes.h"
 #include "2rsa.h"
-#include "vb2_common.h"
+#include "vb20_common.h"
 
 /**
  * Convert an old-style RSA public key struct to a new one.

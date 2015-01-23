@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -12,19 +12,20 @@
 #include "2secdata.h"
 #include "2sha.h"
 #include "2rsa.h"
-#include "vb2_common.h"
+#include "vb20_common.h"
+#include "vb20_misc.h"
 
-int vb2_load_fw_keyblock(struct vb2_context *ctx)
+int vb20_load_fw_keyblock(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
 
 	uint8_t *key_data;
 	uint32_t key_size;
-	struct vb2_packed_key *packed_key;
+	struct vb20_packed_key *packed_key;
 	struct vb2_public_key root_key;
 
-	struct vb2_keyblock *kb;
+	struct vb20_keyblock *kb;
 	uint32_t block_size;
 
 	uint32_t sec_version;
@@ -44,7 +45,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 		return rv;
 
 	/* Unpack the root key */
-	rv = vb2_unpack_key(&root_key, key_data, key_size);
+	rv = vb20_unpack_key(&root_key, key_data, key_size);
 	if (rv)
 		return rv;
 
@@ -74,7 +75,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 		return rv;
 
 	/* Verify the keyblock */
-	rv = vb2_verify_keyblock(kb, block_size, &root_key, &wb);
+	rv = vb20_verify_keyblock(kb, block_size, &root_key, &wb);
 	if (rv)
 		return rv;
 
@@ -96,7 +97,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	 * we read above.  That's ok, because now that we have the data key we
 	 * no longer need the root key.
 	 */
-	packed_key = (struct vb2_packed_key *)key_data;
+	packed_key = (struct vb20_packed_key *)key_data;
 
 	packed_key->algorithm = kb->data_key.algorithm;
 	packed_key->key_version = kb->data_key.key_version;
@@ -127,7 +128,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2_load_fw_preamble(struct vb2_context *ctx)
+int vb20_load_fw_preamble(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
@@ -137,7 +138,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	struct vb2_public_key data_key;
 
 	/* Preamble goes in the next unused chunk of work buffer */
-	struct vb2_fw_preamble *pre;
+	struct vb20_fw_preamble *pre;
 	uint32_t pre_size;
 
 	uint32_t sec_version;
@@ -149,7 +150,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	if (!sd->workbuf_data_key_size)
 		return VB2_ERROR_FW_PREAMBLE2_DATA_KEY;
 
-	rv = vb2_unpack_key(&data_key, key_data, key_size);
+	rv = vb20_unpack_key(&data_key, key_data, key_size);
 	if (rv)
 		return rv;
 
@@ -180,7 +181,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	/* Work buffer now contains the data subkey data and the preamble */
 
 	/* Verify the preamble */
-	rv = vb2_verify_fw_preamble(pre, pre_size, &data_key, &wb);
+	rv = vb20_verify_fw_preamble(pre, pre_size, &data_key, &wb);
 	if (rv)
 		return rv;
 
@@ -196,7 +197,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	if (pre->firmware_version > 0xffff)
 		return VB2_ERROR_FW_PREAMBLE_VERSION_RANGE;
 
-	/* Combine with the key version from vb2_load_fw_keyblock() */
+	/* Combine with the key version from vb20_load_fw_keyblock() */
 	sd->fw_version |= pre->firmware_version;
 	if (sd->fw_version < sec_version)
 		return VB2_ERROR_FW_PREAMBLE_VERSION_ROLLBACK;

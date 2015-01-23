@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -13,7 +13,7 @@
 struct vb2_public_key;
 
 /* Private key data, in-memory format for use in signing calls. */
-struct vb2_private_key {
+struct vb21_private_key {
 	struct rsa_st *rsa_private_key;		/* Private key data */
 	enum vb2_hash_algorithm hash_alg;	/* Hash algorithm */
 	enum vb2_signature_algorithm sig_alg;	/* Signature algorithm */
@@ -26,30 +26,30 @@ struct vb2_private_key {
  *
  * @param key		Key containing internal data to free.
  */
-void vb2_private_key_free(struct vb2_private_key *key);
+void vb21_private_key_free(struct vb21_private_key *key);
 
 /**
- * Unpack a private key from vb2_packed_private_key format.
+ * Unpack a private key from vb21_packed_private_key format.
  *
  * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_private_key_free().
+ *			freed with vb21_private_key_free().
  * @param buf		Source buffer containing packed key
  * @param size		Size of buffer in bytes
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
+int vb21_private_key_unpack(struct vb21_private_key **key_ptr,
 			   const uint8_t *buf,
 			   uint32_t size);
 
 /**
- * Read a private key from vb2_packed_private_key format.
+ * Read a private key from vb21_packed_private_key format.
  *
  * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_private_key_free().
+ *			freed with vb21_private_key_free().
  * @param filename	File to read key data from.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_read(struct vb2_private_key **key_ptr,
+int vb21_private_key_read(struct vb21_private_key **key_ptr,
 			 const char *filename);
 
 /**
@@ -59,11 +59,11 @@ int vb2_private_key_read(struct vb2_private_key **key_ptr,
  * other fields in *key_ptr, since those are not contained in the .pem file.
  *
  * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_private_key_free().
+ *			freed with vb21_private_key_free().
  * @param filename	File to read key data from.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
+int vb21_private_key_read_pem(struct vb21_private_key **key_ptr,
 			     const char *filename);
 
 /**
@@ -73,16 +73,16 @@ int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
  * @param desc		Description string, or NULL if no description.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc);
+int vb21_private_key_set_desc(struct vb21_private_key *key, const char *desc);
 
 /**
- * Write a private key to vb2_packed_private_key format.
+ * Write a private key to vb21_packed_private_key format.
  *
  * @param key		Key to write
  * @param filename	File to write key data to.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_write(const struct vb2_private_key *key,
+int vb21_private_key_write(const struct vb21_private_key *key,
 			  const char *filename);
 
 /**
@@ -93,7 +93,7 @@ int vb2_private_key_write(const struct vb2_private_key *key,
  * @param hash_alg	Hash algorithm to use
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
+int vb21_private_key_hash(const struct vb21_private_key **key_ptr,
 			 enum vb2_hash_algorithm hash_alg);
 
 /**
@@ -101,11 +101,11 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
  *
  * Note that this should ONLY be called for public keys allocated via one
  * of those functions; public keys created or filled in other ways (such as
- * vb2_unpack_key()) do not allocate memory for sub-fields in the same way.
+ * vb21_unpack_key()) do not allocate memory for sub-fields in the same way.
  *
  * @param key		Key to free
  */
-void vb2_public_key_free(struct vb2_public_key *key);
+void vb21_public_key_free(struct vb2_public_key *key);
 
 /**
  * Read a public key from a .keyb file.
@@ -115,12 +115,12 @@ void vb2_public_key_free(struct vb2_public_key *key);
  * the .keyb file.
  *
  * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_public_key_free().
+ *			freed with vb21_public_key_free().
  * @param filename	File to read key from.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
 
-int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
+int vb21_public_key_read_keyb(struct vb2_public_key **key_ptr,
 			     const char *filename);
 
 /**
@@ -130,20 +130,20 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
  * @param desc		Description string, or NULL if no description.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc);
+int vb21_public_key_set_desc(struct vb2_public_key *key, const char *desc);
 
 /**
- * Read a public key in vb2_packed_key format.
+ * Read a public key in vb21_packed_key format.
  *
  * @param key_ptr	On success, points to the newly allocated key buffer.
  *			Caller is responsible for calling free() on this.
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
+int vb21_packed_key_read(struct vb21_packed_key **key_ptr,
 			 const char *filename);
 
 /**
- * Pack a public key into vb2_packed_key format.
+ * Pack a public key into vb21_packed_key format.
  *
  * @param pubk		Public key to pack
  * @param key_ptr	On success, points to a newly allocated packed key
@@ -151,7 +151,7 @@ int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
  *			this.
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
+int vb21_public_key_pack(struct vb21_packed_key **key_ptr,
 			const struct vb2_public_key *pubk);
 
 /**
@@ -161,7 +161,7 @@ int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
  * @param hash_alg	Hash algorithm to use
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_public_key_hash(struct vb2_public_key *key,
+int vb21_public_key_hash(struct vb2_public_key *key,
 			enum vb2_hash_algorithm hash_alg);
 
 

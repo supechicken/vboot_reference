@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -12,6 +12,7 @@
 #include "2sysincludes.h"
 #include "2api.h"
 #include "futility.h"
+#include "20api.h"
 
 const char *gbb_fname;
 const char *vblock_fname;
@@ -99,7 +100,7 @@ static int hash_body(struct vb2_context *ctx)
 	f = fopen(body_fname, "rb");
 
 	/* Start the body hash */
-	rv = vb2api_init_hash(ctx, VB2_HASH_TAG_FW_BODY, &expect_size);
+	rv = vb20api_init_hash(ctx, VB2_HASH_TAG_FW_BODY, &expect_size);
 	if (rv)
 		return rv;
 
@@ -117,7 +118,7 @@ static int hash_body(struct vb2_context *ctx)
 			break;
 
 		/* Hash it */
-		rv = vb2api_extend_hash(ctx, block, size);
+		rv = vb20api_extend_hash(ctx, block, size);
 		if (rv)
 			return rv;
 
@@ -125,7 +126,7 @@ static int hash_body(struct vb2_context *ctx)
 	}
 
 	/* Check the result */
-	rv = vb2api_check_hash(ctx);
+	rv = vb20api_check_hash(ctx);
 	if (rv)
 		return rv;
 
@@ -159,10 +160,10 @@ static int do_vb2_verify_fw(int argc, char *argv[])
 	ctx.workbuf_size = sizeof(workbuf);
 
 	/* Initialize secure context */
-	rv = vb2api_secdata_create(&ctx);
+	rv = vb20api_secdata_create(&ctx);
 	if (rv) {
 		fprintf(stderr,
-			"error: vb2api_secdata_create() failed (%d)\n", rv);
+			"error: vb20api_secdata_create() failed (%d)\n", rv);
 		return 1;
 	}
 
@@ -170,7 +171,7 @@ static int do_vb2_verify_fw(int argc, char *argv[])
 
 	/* Do early init */
 	printf("Phase 1...\n");
-	rv = vb2api_fw_phase1(&ctx);
+	rv = vb20api_fw_phase1(&ctx);
 	if (rv) {
 		printf("Phase 1 wants recovery mode.\n");
 		save_if_needed(&ctx);
@@ -179,7 +180,7 @@ static int do_vb2_verify_fw(int argc, char *argv[])
 
 	/* Determine which firmware slot to boot */
 	printf("Phase 2...\n");
-	rv = vb2api_fw_phase2(&ctx);
+	rv = vb20api_fw_phase2(&ctx);
 	if (rv) {
 		printf("Phase 2 wants reboot.\n");
 		save_if_needed(&ctx);
@@ -188,7 +189,7 @@ static int do_vb2_verify_fw(int argc, char *argv[])
 
 	/* Try that slot */
 	printf("Phase 3...\n");
-	rv = vb2api_fw_phase3(&ctx);
+	rv = vb20api_fw_phase3(&ctx);
 	if (rv) {
 		printf("Phase 3 wants reboot.\n");
 		save_if_needed(&ctx);

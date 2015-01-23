@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -15,17 +15,17 @@
 #include "2sha.h"
 #include "2rsa.h"
 
-int vb2api_secdata_check(const struct vb2_context *ctx)
+int vb2x_secdata_check(const struct vb2_context *ctx)
 {
 	return vb2_secdata_check_crc(ctx);
 }
 
-int vb2api_secdata_create(struct vb2_context *ctx)
+int vb2x_secdata_create(struct vb2_context *ctx)
 {
 	return vb2_secdata_create(ctx);
 }
 
-void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
+void vb2x_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 {
 	/* Initialize the vboot context if it hasn't been yet */
 	vb2_init_context(ctx);
@@ -33,7 +33,7 @@ void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 	vb2_fail(ctx, reason, subcode);
 }
 
-int vb2api_fw_phase1(struct vb2_context *ctx)
+int vb2x_fw_phase1(struct vb2_context *ctx)
 {
 	int rv;
 
@@ -75,7 +75,7 @@ int vb2api_fw_phase1(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2api_fw_phase2(struct vb2_context *ctx)
+int vb2x_fw_phase2(struct vb2_context *ctx)
 {
 	int rv;
 
@@ -100,9 +100,7 @@ int vb2api_fw_phase2(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2api_extend_hash(struct vb2_context *ctx,
-		       const void *buf,
-		       uint32_t size)
+int vb2x_extend_hash(struct vb2_context *ctx, const void *buf, uint32_t size)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_digest_context *dc = (struct vb2_digest_context *)

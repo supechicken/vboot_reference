@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -91,31 +91,31 @@ static void misc_tests(void)
 	reset_common_data(FOR_MISC);
 	/* Corrupt secdata so initial check will fail */
 	cc.secdata[0] ^= 0x42;
-	TEST_EQ(vb2api_secdata_check(&cc), VB2_ERROR_SECDATA_CRC,
+	TEST_EQ(vb2x_secdata_check(&cc), VB2_ERROR_SECDATA_CRC,
 		"secdata check");
-	TEST_SUCC(vb2api_secdata_create(&cc), "secdata create");
-	TEST_SUCC(vb2api_secdata_check(&cc), "secdata check 2");
+	TEST_SUCC(vb2x_secdata_create(&cc), "secdata create");
+	TEST_SUCC(vb2x_secdata_check(&cc), "secdata check 2");
 
 	/* Test fail passthru */
 	reset_common_data(FOR_MISC);
-	vb2api_fail(&cc, 12, 34);
+	vb2x_fail(&cc, 12, 34);
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST),
-		12, "vb2api_fail request");
+		12, "vb2x_fail request");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_SUBCODE),
-		34, "vb2api_fail subcode");
+		34, "vb2x_fail subcode");
 }
 
 static void phase1_tests(void)
 {
 	reset_common_data(FOR_MISC);
-	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 good");
+	TEST_SUCC(vb2x_fw_phase1(&cc), "phase1 good");
 	TEST_EQ(sd->recovery_reason, 0, "  not recovery");
 	TEST_EQ(cc.flags & VB2_CONTEXT_RECOVERY_MODE, 0, "  recovery flag");
 	TEST_EQ(cc.flags & VB2_CONTEXT_CLEAR_RAM, 0, "  clear ram flag");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_fw_parse_gbb = VB2_ERROR_GBB_MAGIC;
-	TEST_EQ(vb2api_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
+	TEST_EQ(vb2x_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
 		"phase1 gbb");
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_GBB_HEADER,
 		"  recovery reason");
@@ -125,7 +125,7 @@ static void phase1_tests(void)
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_check_dev_switch = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
+	TEST_EQ(vb2x_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
 		"phase1 dev switch");
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_DEV_SWITCH,
 		"  recovery reason");
@@ -134,7 +134,7 @@ static void phase1_tests(void)
 
 	reset_common_data(FOR_MISC);
 	cc.secdata[0] ^= 0x42;
-	TEST_EQ(vb2api_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
+	TEST_EQ(vb2x_fw_phase1(&cc), VB2_ERROR_API_PHASE1_RECOVERY,
 		"phase1 secdata");
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_SECDATA_INIT,
 		"  recovery reason");
@@ -145,23 +145,23 @@ static void phase1_tests(void)
 static void phase2_tests(void)
 {
 	reset_common_data(FOR_MISC);
-	TEST_SUCC(vb2api_fw_phase2(&cc), "phase2 good");
+	TEST_SUCC(vb2x_fw_phase2(&cc), "phase2 good");
 	TEST_EQ(cc.flags & VB2_CONTEXT_CLEAR_RAM, 0, "  clear ram flag");
 
 	reset_common_data(FOR_MISC);
 	cc.flags |= VB2_CONTEXT_DEVELOPER_MODE;
-	TEST_SUCC(vb2api_fw_phase2(&cc), "phase1 dev");
+	TEST_SUCC(vb2x_fw_phase2(&cc), "phase1 dev");
 	TEST_NEQ(cc.flags & VB2_CONTEXT_CLEAR_RAM, 0, "  clear ram flag");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_check_tpm_clear = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_fw_phase2(&cc), VB2_ERROR_MOCK, "phase2 tpm clear");
+	TEST_EQ(vb2x_fw_phase2(&cc), VB2_ERROR_MOCK, "phase2 tpm clear");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_TPM_CLEAR_OWNER, "  recovery reason");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_select_fw_slot = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_fw_phase2(&cc), VB2_ERROR_MOCK, "phase2 slot");
+	TEST_EQ(vb2x_fw_phase2(&cc), VB2_ERROR_MOCK, "phase2 slot");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_FW_SLOT, "  recovery reason");
 }
