@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b75533d_4e0ef359",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T16:59:25Z",
+      "side": 1,
+      "message": "Hmm.  I\u0027d been explicitly prefixing external APIs with vb2api_ to hint which functions are called directly by depthcharge.  Similarly, external functions supplied by depthcharge are prefixed with vb2ex_.  And then internal functions were simply vb2_.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "16c7d9a8c6118e90d23f30fe759f22ec9192f5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b724f59_cd42e971",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-23T16:59:25Z",
+      "side": 1,
+      "message": "If they\u0027re common, then don\u0027t we want the calling details to be common too, rather than having a copy of them in each version-specific header?",
+      "range": {
+        "startLine": 163,
+        "startChar": 42,
+        "endLine": 164,
+        "endChar": 19
+      },
+      "revId": "16c7d9a8c6118e90d23f30fe759f22ec9192f5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
