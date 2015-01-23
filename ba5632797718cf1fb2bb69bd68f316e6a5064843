@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bee0733_df84fbeb",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-23T21:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b763314_5a3fc548",
+      "range": {
+        "startLine": 143,
+        "startChar": 58,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b732f24_2e548b49",
         "filename": "firmware/include/gpt_misc.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-22T20:28:52Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 34
+      },
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bee0733_3f6a4789",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-23T21:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b732f24_2e548b49",
       "range": {
         "startLine": 171,
         "startChar": 26,
@@ -87,6 +135,54 @@
         "startChar": 28,
         "endLine": 176,
         "endChar": 35
+      },
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bee0733_1f6783c1",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-23T21:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b763314_ba551994",
+      "range": {
+        "startLine": 176,
+        "startChar": 28,
+        "endLine": 176,
+        "endChar": 35
+      },
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bee0733_7f74cf68",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-23T21:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b70bb17_3ee679c1",
+      "range": {
+        "startLine": 176,
+        "startChar": 42,
+        "endLine": 176,
+        "endChar": 50
       },
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -195,6 +291,24 @@
       "side": 1,
       "message": "Agree with Aaron.\n\nA destructive Find() seems like something which will accidentally bite us if we reuse it somewhere else.",
       "parentUuid": "0bbf77c3_f9eb2f7f",
+      "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbe47f53_843d08fe",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-01-23T21:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b732f24_6e4e83bb",
       "revId": "ba5632797718cf1fb2bb69bd68f316e6a5064843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
