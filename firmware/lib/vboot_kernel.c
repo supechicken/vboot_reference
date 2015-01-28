@@ -437,6 +437,12 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 		 */
 		params->bootloader_address = preamble->bootloader_address;
 		params->bootloader_size = preamble->bootloader_size;
+		if (IsCurrentKernelImageDefault(&gpt))
+			params->kernel_image_type = KERNEL_IMAGE_DEFAULT;
+		else if (IsCurrentKernelImageBootimg(&gpt))
+			params->kernel_image_type = KERNEL_IMAGE_BOOTIMG;
+		else
+			params->kernel_image_type = KERNEL_IMAGE_NONE;
 
 		/* Update GPT to note this is the kernel we're trying */
 		GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_TRY);

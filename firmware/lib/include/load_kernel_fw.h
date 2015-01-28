@@ -70,6 +70,8 @@ typedef struct LoadKernelParams {
 	uint64_t bootloader_size;
 	/* UniquePartitionGuid for boot partition */
 	uint8_t  partition_guid[16];
+	/* Kernel Image type - default or bootimg */
+	VbKernelImageType_t kernel_image_type;
 } LoadKernelParams;
 
 /**
