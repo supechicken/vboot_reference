@@ -149,6 +149,16 @@ void SetEntryTries(GptEntry *e, int tries);
 int IsKernelEntry(const GptEntry *e);
 
 /**
+ * Return 1 if the current kernel is of type FIT, else 0.
+ */
+int IsCurrentKernelImageFIT(const GptData *gpt);
+
+/**
+ * Return 1 if the current kernel is of type bootimg, else 0.
+ */
+int IsCurrentKernelImageBootimg(const GptData *gpt);
+
+/**
  * Copy the current kernel partition's UniquePartitionGuid to the dest.
  */
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest);

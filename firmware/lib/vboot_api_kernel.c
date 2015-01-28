@@ -984,6 +984,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	kparams->partition_number = 0;
 	kparams->bootloader_address = 0;
 	kparams->bootloader_size = 0;
+	kparams->kernel_image_type = KERNEL_IMAGE_NONE;
 	Memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
 	cparams->bmp = NULL;
@@ -1154,6 +1155,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	kparams->bootloader_size = (uint32_t)p.bootloader_size;
 	Memcpy(kparams->partition_guid, p.partition_guid,
 	       sizeof(kparams->partition_guid));
+	kparams->kernel_image_type = p.kernel_image_type;
 
 	/* Lock the kernel versions.  Ignore errors in recovery mode. */
 	tpm_status = RollbackKernelLock(shared->recovery_reason);

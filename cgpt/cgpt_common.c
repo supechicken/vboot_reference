@@ -624,6 +624,7 @@ const Guid guid_linux_data =        GPT_ENT_TYPE_LINUX_DATA;
 const Guid guid_chromeos_reserved = GPT_ENT_TYPE_CHROMEOS_RESERVED;
 const Guid guid_efi =               GPT_ENT_TYPE_EFI;
 const Guid guid_unused =            GPT_ENT_TYPE_UNUSED;
+const Guid guid_bootimg_kernel =    GPT_ENT_TYPE_BOOTIMG_KERNEL;
 
 const static struct {
   const Guid *type;
@@ -637,6 +638,7 @@ const static struct {
   {&guid_chromeos_reserved, "reserved", "ChromeOS reserved"},
   {&guid_efi, "efi", "EFI System Partition"},
   {&guid_unused, "unused", "Unused (nonexistent) partition"},
+  {&guid_bootimg_kernel, "bootimg", "Bootimg Kernel"},
 };
 
 /* Resolves human-readable GPT type.
@@ -782,7 +784,8 @@ int IsUnused(struct drive *drive, int secondary, uint32_t index) {
 int IsKernel(struct drive *drive, int secondary, uint32_t index) {
   GptEntry *entry;
   entry = GetEntry(&drive->gpt, secondary, index);
-  return GuidEqual(&entry->type, &guid_chromeos_kernel);
+  return (GuidEqual(&entry->type, &guid_chromeos_kernel) ||
+	  GuidEqual(&entry->type, &guid_bootimg_kernel));
 }
 
 
