@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57c59722_eee4ff5e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-01-28T20:51:59Z",
+      "side": 1,
+      "message": "For what its worth, FIT or BOOTIMG are not the correct type for x86.\n\nMaybe we should just do KERNEL_IMAGE_DEFAULT or some such? It was always \"do what needs to be done based on arch\", but now we need that distinction. So adding a BOOTIMG type is fine, but naming the alternative _FIT is not correct for x86.",
+      "revId": "10d417e36f8178da1006096d6bb7eea5c113bd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
