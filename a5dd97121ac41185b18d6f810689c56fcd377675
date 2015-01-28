@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374f4380_081e075f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-28T14:38:47Z",
+      "side": 1,
+      "message": "these statements probably need to get split otherwise errors from them will be ignored\n\nmove the `local` decl outside the loop, do the assignment in one, and the sed in a third",
+      "revId": "a5dd97121ac41185b18d6f810689c56fcd377675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d78347c3_e243c680",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-28T14:38:47Z",
+      "side": 1,
+      "message": "use [[... \u0026\u0026 ...]] instead",
+      "revId": "a5dd97121ac41185b18d6f810689c56fcd377675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d78347c3_a23dbe0c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-28T14:38:47Z",
+      "side": 1,
+      "message": "should use [[...]]",
+      "revId": "a5dd97121ac41185b18d6f810689c56fcd377675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d78347c3_02410a78",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-01-28T14:38:47Z",
+      "side": 1,
+      "message": "indent should be two spaces",
+      "revId": "a5dd97121ac41185b18d6f810689c56fcd377675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
