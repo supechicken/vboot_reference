@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3794a3fe_dd6c6ba1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-28T06:10:15Z",
+      "side": 1,
+      "message": "space after }, please",
+      "revId": "a39c2af15d9ef84dad1959585f9f1ec8c8051493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17a15f5e_fcf5a953",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-28T06:10:15Z",
+      "side": 1,
+      "message": "You have two copies of each static local Guid across these three functions. The compiler *might* optimize them, but just declare them once in file scope instead to be sure.",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 28
+      },
+      "revId": "a39c2af15d9ef84dad1959585f9f1ec8c8051493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
