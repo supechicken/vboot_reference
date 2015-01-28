@@ -313,6 +313,14 @@ typedef struct VbSelectFirmwareParams {
  */
 typedef void *VbExDiskHandle_t;
 
+typedef enum {
+	KERNEL_IMAGE_NONE,
+	/* u-boot Image type : FIT(Flattened Image Tree) */
+	KERNEL_IMAGE_FIT,
+	/* Fastboot Image type : Bootimg */
+	KERNEL_IMAGE_BOOTIMG,
+} VbKernelImageType_t;
+
 /* Data used only by VbSelectAndLoadKernel() */
 typedef struct VbSelectAndLoadKernelParams {
 	/* Inputs to VbSelectAndLoadKernel() */
@@ -335,6 +343,8 @@ typedef struct VbSelectAndLoadKernelParams {
 	uint32_t bootloader_size;
 	/* UniquePartitionGuid for boot partition */
 	uint8_t partition_guid[16];
+	/* Kernel image type - FIT or bootimg */
+	VbKernelImageType_t kernel_image_type;
 	/*
 	 * TODO: in H2C, all that pretty much just gets passed to the
 	 * bootloader as KernelBootloaderOptions, though the disk handle is
