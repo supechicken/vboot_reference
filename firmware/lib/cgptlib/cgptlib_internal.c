@@ -153,7 +153,28 @@ int CheckHeader(GptHeader *h, int is_secondary,
 int IsKernelEntry(const GptEntry *e)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
-	return !Memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
+	static Guid bootimg_kernel = GPT_ENT_TYPE_BOOTIMG_KERNEL;
+	return (!Memcmp(&e->type, &chromeos_kernel, sizeof(Guid)) ||
+		!Memcmp(&e->type, &bootimg_kernel, sizeof(Guid)));
+}
+
+static int IsCurrentKernelOfType(const GptData *gpt, const Guid *g)
+{
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e = entries + gpt->current_kernel;
+	return !Memcmp(&e->type, g, sizeof(Guid));
+}
+
+int IsCurrentKernelImageFIT(const GptData *gpt)
+{
+	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
+	return IsCurrentKernelOfType(gpt, &chromeos_kernel);
+}
+
+int IsCurrentKernelImageBootimg(const GptData *gpt)
+{
+	static Guid bootimg_kernel = GPT_ENT_TYPE_BOOTIMG_KERNEL;
+	return IsCurrentKernelOfType(gpt, &bootimg_kernel);
 }
 
 int CheckEntries(GptEntry *entries, GptHeader *h)
