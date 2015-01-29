@@ -27,6 +27,12 @@ const int mock_body_size = sizeof(mock_body);
 const int mock_algorithm = VB2_ALG_RSA2048_SHA256;
 const int mock_hash_alg = VB2_HASH_SHA256;
 const int mock_sig_size = 64;
+static const uint8_t mock_hwid_digest[] = {
+	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+	0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+};
 
 /* Mocked function data */
 
@@ -98,6 +104,8 @@ static void reset_common_data(enum reset_type t)
 
 	if (t == FOR_CHECK_HASH)
 		vb2api_extend_hash(&cc, mock_body, mock_body_size);
+
+	memcpy(sd->gbb_hwid_digest, mock_hwid_digest, 32);
 };
 
 /* Mocked functions */
@@ -389,6 +397,43 @@ static void check_hash_tests(void)
 		VB2_ERROR_RSA_VERIFY_DIGEST, "check hash finalize");
 }
 
+static void get_pcr_digest_tests(void)
+{
+	uint8_t digest[32];
+	uint8_t digest_org[32];
+	uint32_t digest_size;
+
+	reset_common_data(FOR_EXTEND_HASH);
+	memset(digest_org, 0, 32);
+
+	digest_size = 32;
+	memset(digest, 0, 32);
+	TEST_SUCC(vb2api_get_pcr_digest(
+			&cc, BOOT_MODE_PCR, digest, &digest_size),
+		  "BOOT_MODE_PCR");
+	TEST_TRUE(memcmp(digest, digest_org, 32), "BOOT_MODE_PCR digest");
+	TEST_EQ(digest_size, VB2_SHA1_DIGEST_SIZE, "BOOT_MODE_PCR digest size");
+
+	digest_size = 32;
+	memset(digest, 0, 32);
+	TEST_SUCC(vb2api_get_pcr_digest(
+			&cc, HWID_DIGEST_PCR, digest, &digest_size),
+		  "HWID_DIGEST_PCR");
+	TEST_FALSE(memcmp(digest, mock_hwid_digest, 32),
+		   "HWID_DIGEST_PCR digest");
+	TEST_EQ(digest_size, HWID_DIGEST_SIZE, "HWID_DIGEST_PCR digest size");
+
+	digest_size = 1;
+	TEST_EQ(vb2api_get_pcr_digest(&cc, BOOT_MODE_PCR, digest, &digest_size),
+		VB2_ERROR_API,
+		"BOOT_MODE_PCR buffer too small");
+
+	TEST_EQ(vb2api_get_pcr_digest(
+			&cc, HWID_DIGEST_PCR + 1, digest, &digest_size),
+		VB2_ERROR_API,
+		"invalid enum vb2_pcr_digest");
+}
+
 int main(int argc, char* argv[])
 {
 	phase3_tests();
@@ -410,6 +455,8 @@ int main(int argc, char* argv[])
 	init_hash_tests();
 	extend_hash_tests();
 	check_hash_tests();
+
+	get_pcr_digest_tests();
 
 	return gTestSuccess ? 0 : 255;
 }

@@ -21,6 +21,8 @@
 #define VB2_KEY_BLOCK_FLAG_DEVELOPER_1  0x02 /* Developer switch on */
 #define VB2_KEY_BLOCK_FLAG_RECOVERY_0   0x04 /* Not recovery mode */
 #define VB2_KEY_BLOCK_FLAG_RECOVERY_1   0x08 /* Recovery mode */
+#define HWID_DIGEST_SIZE		32
+
 
 /****************************************************************************/
 
@@ -64,6 +66,9 @@ struct vb2_shared_data {
 	/* Flags from GBB header */
 	uint32_t gbb_flags;
 
+	/* Flags from firmware keyblock header */
+	uint32_t keyblock_flags;
+
 	/*
 	 * Reason we are in recovery mode this boot (enum vb2_nv_recovery), or
 	 * 0 if we aren't.
@@ -102,6 +107,9 @@ struct vb2_shared_data {
 	/* Root key offset and size from GBB header */
 	uint32_t gbb_rootkey_offset;
 	uint32_t gbb_rootkey_size;
+
+	/* HWID digest from GBB header */
+	uint8_t gbb_hwid_digest[HWID_DIGEST_SIZE];
 
 	/* Offset of preamble from start of vblock */
 	uint32_t vblock_preamble_offset;
@@ -231,7 +239,7 @@ struct vb2_gbb_header {
 	uint32_t recovery_key_size;
 
 	/* Added in version 1.2 */
-	uint8_t  hwid_digest[32];	/* SHA-256 of HWID */
+	uint8_t  hwid_digest[HWID_DIGEST_SIZE];	/* SHA-256 of HWID */
 
 	/* Pad to match EXPECETED_VB2_GBB_HEADER_SIZE.  Initialize to 0. */
 	uint8_t  pad[48];

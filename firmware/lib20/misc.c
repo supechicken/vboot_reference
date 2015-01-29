@@ -77,6 +77,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	rv = vb2_verify_keyblock(kb, block_size, &root_key, &wb);
 	if (rv)
 		return rv;
+	sd->keyblock_flags = kb->keyblock_flags;
 
 	/* Read the secure key version */
 	rv = vb2_secdata_get(ctx, VB2_SECDATA_VERSIONS, &sec_version);

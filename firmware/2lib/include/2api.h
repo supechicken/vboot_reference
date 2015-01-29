@@ -159,6 +159,11 @@ enum vb2_resource_index {
 	VB2_RES_FW_VBLOCK,
 };
 
+enum vb2_pcr_digest {
+	BOOT_MODE_PCR,
+	HWID_DIGEST_PCR,
+};
+
 /******************************************************************************
  * APIs provided by verified boot.
  *
@@ -336,6 +341,22 @@ int vb2api_extend_hash(struct vb2_context *ctx,
  * @return VB2_SUCCESS, or error code on error.
  */
 int vb2api_check_hash(struct vb2_context *ctx);
+
+/**
+ * Get a PCR digest
+ *
+ * @param ctx		Vboot context
+ * @param which_digest	PRC index of the digest
+ * @param dest		Destination where the digest is copied.
+ * 			Recommended size is 32 bytes or more.
+ * @param dest_size	IN: size of the buffer pointed by dest
+ * 			OUT: size of the copied digest
+ * @return VB2_SUCCESS, or error code on error
+ */
+int vb2api_get_pcr_digest(struct vb2_context *ctx,
+			  enum vb2_pcr_digest which_digest,
+			  uint8_t *dest,
+			  uint32_t *dest_size);
 
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
