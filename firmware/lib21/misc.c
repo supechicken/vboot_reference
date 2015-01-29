@@ -107,6 +107,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	rv = vb2_verify_keyblock(kb, kb->c.total_size, &root_key, &wb);
 	if (rv)
 		return rv;
+	sd->keyblock_flags = kb->flags;
 
 	/* Preamble follows the keyblock in the vblock */
 	sd->vblock_preamble_offset = kb->c.total_size;
