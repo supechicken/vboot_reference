@@ -65,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "d70ee7b4_6a54d7bb",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T19:31:19Z",
+      "side": 1,
+      "message": "Oh, and one more thing... why is this written\n\n char * k[] \u003d { \"\\xab\\xcd\\xef\" }\n\ninstead of\n\n uint8_t k[][] \u003d { {0xab, 0xcd, 0xef} }\n\n? That just seems to be a really weird way to encode it to me...",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_2655963b",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -145,6 +162,24 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "I think there should be some guarantee that sd-\u003ekeyblock_flags has been initialized at this point (which is only after phase3). Maybe we should add a new VB2_SD_STATUS_VERIFIED_FW to sd-\u003estatus that gets set after preamble verification is done, check that here and return an error if it was not set.",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_daa5e54d",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T19:31:19Z",
+      "side": 1,
+      "message": "Actually, this is more complicated than I previously thought. We also need this in recovery mode where keyblock_flags cannot be initialized yet. I assume this means we just used a 0 (\"unknown\") in vboot1 and should continue to be compatible with that.\n\nIt might still make sense to assert that it was initialized in other modes. But we then need to rewrite get_boot_state_index() a bit to handle recovery mode specially (maybe it makes more sense to inline that function then so you can error-return out of the whole thing easier). I think we could also reduce the whole size of that array (because if recovery_mode is 1, keyblock_flags always need to be 0 anyway)... maybe we should replace the 3-by-2-by-2 matrix with just a 4-by-2 one (e.g. 0, 1, 2, 3 is \"unknown firmware\", \"normal firmware\", \"developer firmware\" and \"recovery mode\" and then we just add 4 if the developer switch is on).",
+      "parentUuid": "57767713_c92935ae",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
