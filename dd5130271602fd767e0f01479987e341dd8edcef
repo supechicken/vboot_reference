@@ -82,6 +82,24 @@
     },
     {
       "key": {
+        "uuid": "d70ee7b4_d0301499",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Dunno.  Legacy reasons.  But now we could change it to\n\nuint8_t k[4][SHA1_DIGEST_SIZE]",
+      "parentUuid": "d70ee7b4_6a54d7bb",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_2655963b",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -93,6 +111,24 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "I know we did this before, but it looks very dangerous to me... it means we\u0027ll never be able to add additional key block flags without this blowing up. Shouldn\u0027t we mask this with 0xf, maybe?",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_5d92eff0",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Since we only have 3 cases, we can just explicitly if-elseif-else on the individual flags.\n\n  if (flags \u0026 REC_0 \u0026\u0026 flags \u0026 DEV1)\n      index \u003d flags \u0026 DEV0 ? 1 : 2;\n  else\n      index \u003d 0;",
+      "parentUuid": "57767713_2655963b",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -151,6 +187,24 @@
     },
     {
       "key": {
+        "uuid": "d70ee7b4_90dcdce6",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Right, but vboot2 doesn\u0027t support them.\n\nI think we can get rid of the keyblock flags entirely now.  Either we\u0027re in recovery firmware (and flags\u003d0 becuase we never loaded RW firmware), or we\u0027re in normal RW firmware, which has keyblock flags\u003d7.\n\nSo, fewer cases \u003d smaller table of SHA1\u0027s above.  Just four (rec mode, dev mode permutations, and those uniquely determine what keyblock flags must have been).",
+      "parentUuid": "17cebfa3_b40ec0db",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_c92935ae",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -180,6 +234,24 @@
       "side": 1,
       "message": "Actually, this is more complicated than I previously thought. We also need this in recovery mode where keyblock_flags cannot be initialized yet. I assume this means we just used a 0 (\"unknown\") in vboot1 and should continue to be compatible with that.\n\nIt might still make sense to assert that it was initialized in other modes. But we then need to rewrite get_boot_state_index() a bit to handle recovery mode specially (maybe it makes more sense to inline that function then so you can error-return out of the whole thing easier). I think we could also reduce the whole size of that array (because if recovery_mode is 1, keyblock_flags always need to be 0 anyway)... maybe we should replace the 3-by-2-by-2 matrix with just a 4-by-2 one (e.g. 0, 1, 2, 3 is \"unknown firmware\", \"normal firmware\", \"developer firmware\" and \"recovery mode\" and then we just add 4 if the developer switch is on).",
       "parentUuid": "57767713_c92935ae",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "973d4f4f_789037ae",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Fortunately, it\u0027s simpler, because we don\u0027t even need the keyblock flags for vboot2.",
+      "parentUuid": "17cebfa3_daa5e54d",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -232,6 +304,133 @@
       "side": 1,
       "message": "The digest size is a compile-time constant. You shouldn\u0027t need to return it.",
       "parentUuid": "97a38fb2_b6a29087",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "973d4f4f_4cf9f50a",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "As long as we comment in the header that these are explicitly SHA1 digests of size SHA1_DIGEST_SIZE.",
+      "parentUuid": "17cebfa3_74f94850",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d70ee7b4_5037845b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Put up in vb2api section",
+      "range": {
+        "startLine": 403,
+        "startChar": 13,
+        "endLine": 403,
+        "endChar": 19
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_7d4ecbfc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Should recommend a buffer size.  For example, 32 bytes.",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_dd3eff5b",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "firmware keyblock header?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d70ee7b4_b0d6c07c",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "gbb_hwid_digest",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "973d4f4f_4209b2a3",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T20:48:48Z",
+      "side": 1,
+      "message": "Add comment - /* HWID digest from GBB header */",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 8
+      },
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
