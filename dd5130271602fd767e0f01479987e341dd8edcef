@@ -116,6 +116,24 @@
     },
     {
       "key": {
+        "uuid": "17cebfa3_b40ec0db",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-30T16:41:48Z",
+      "side": 1,
+      "message": "Alex and ZGB have dev-mode firmware that has to be loaded into the RW-A region in order to boot from USB or run self-signed kernels.",
+      "parentUuid": "57767713_2687567b",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_c92935ae",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -161,6 +179,24 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "Yeah... this is definitely not doing what you think.",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_74f94850",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-01-30T16:41:48Z",
+      "side": 1,
+      "message": "The digest size is a compile-time constant. You shouldn\u0027t need to return it.",
+      "parentUuid": "97a38fb2_b6a29087",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
