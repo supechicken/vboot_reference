@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7268b4e_3c0075a2",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Should return a more specific error.  Add VB2_ERROR_API_PCR_DIGEST",
+      "range": {
+        "startLine": 146,
+        "startChar": 9,
+        "endLine": 146,
+        "endChar": 22
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_fc30bd98",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "VB2_ERROR_API_PCR_DIGEST_BUF\n\n(all the error codes are unique, to aid in unit testing and debugging)",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_5c20d141",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "BOOT_STATE_COUNT\n\n(since this is actually 1 greater than the max index)",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_8f0855a2",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Don\u0027t need this check, since the code above only allows the values 0-3.\n\nIf you want to be paranoid, use unsigned index, and then ASSERT(index \u003c BOOT_STATE_COUNT)",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978b8f6f_f3e1cad9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Add comment\n\n/* Digest ID for vbapi_get_pcr_digest() */",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_0f1d45de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Add comment\n\n/* Digest based on current developer and recovery mode flags */",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_ef2a41f6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "/* SHA-256 hash digest of HWID, from GBB */",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 16
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_af243927",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "PCR?",
+      "range": {
+        "startLine": 349,
+        "startChar": 23,
+        "endLine": 349,
+        "endChar": 26
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_1c71f945",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Suggest making this a constant\n\n#define VB2_PCR_DIGEST_RECOMMENDED_SIZE 32",
+      "range": {
+        "startLine": 351,
+        "startChar": 6,
+        "endLine": 351,
+        "endChar": 43
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_8fd6157d",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_9caae91c",
+        "filename": "firmware/2lib/include/2tpm_bootmode.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Return",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_5c9531d6",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Explicitly [HWID_DIGEST_SIZE]?",
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_4f5d8d67",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "Move to vb2_api_tests, since it\u0027s common to 2.0 and 2.1",
+      "range": {
+        "startLine": 400,
+        "startChar": 12,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978b8f6f_53a6969f",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "With the constant defined in the header, we can use\n\nVB2_DIGEST_BUF_RECOMMENDED_SIZE\n\ninstead of 32",
+      "range": {
+        "startLine": 402,
+        "startChar": 16,
+        "endLine": 402,
+        "endChar": 18
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978b8f6f_9382bedf",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "sizeof(digest)",
+      "range": {
+        "startLine": 409,
+        "startChar": 15,
+        "endLine": 409,
+        "endChar": 17
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978b8f6f_f37d4a50",
+        "filename": "tests/vb20_api_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-30T23:53:24Z",
+      "side": 1,
+      "message": "sizeof(digest) is less fragile",
+      "range": {
+        "startLine": 410,
+        "startChar": 19,
+        "endLine": 410,
+        "endChar": 22
+      },
+      "revId": "f3a749ba687b6acfb2ba4e1a6136766bd219f530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
