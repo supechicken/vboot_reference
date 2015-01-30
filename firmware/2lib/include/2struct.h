@@ -51,6 +51,9 @@ enum vb2_shared_data_status {
 
 	/* Chose a firmware slot */
 	VB2_SD_STATUS_CHOSE_SLOT = (1 << 3),
+
+	/* keyblock and preamble are verified */
+	VB2_SD_STATUS_VERIFIED_FW = (1 << 4),
 };
 
 /*

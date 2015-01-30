@@ -216,16 +216,22 @@ static void phase3_tests(void)
 {
 	reset_common_data(FOR_MISC);
 	TEST_SUCC(vb2api_fw_phase3(&cc), "phase3 good");
+	TEST_TRUE(sd->status & VB2_SD_STATUS_VERIFIED_FW,
+		  "phase3 status verified");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_load_fw_keyblock = VB2_ERROR_MOCK;
 	TEST_EQ(vb2api_fw_phase3(&cc), VB2_ERROR_MOCK, "phase3 keyblock");
+	TEST_FALSE(sd->status & VB2_SD_STATUS_VERIFIED_FW,
+		  "phase3 keyblock status verified");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RO_INVALID_RW, "  recovery reason");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_load_fw_preamble = VB2_ERROR_MOCK;
 	TEST_EQ(vb2api_fw_phase3(&cc), VB2_ERROR_MOCK, "phase3 keyblock");
+	TEST_FALSE(sd->status & VB2_SD_STATUS_VERIFIED_FW,
+		  "phase3 keyblock status verified");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RO_INVALID_RW, "  recovery reason");
 }

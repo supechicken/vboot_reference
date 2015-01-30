@@ -34,6 +34,8 @@ int vb2api_fw_phase3(struct vb2_context *ctx)
 		return rv;
 	}
 
+	vb2_get_sd(ctx)->status |= VB2_SD_STATUS_VERIFIED_FW;
+
 	return VB2_SUCCESS;
 }
 
