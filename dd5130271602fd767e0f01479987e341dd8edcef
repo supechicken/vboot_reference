@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a38fb2_537c16db",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "Why is this a pointer? Shouldn\u0027t this always be the same (PcrDigestLength seems to be a constant defined in the TPM spec)? I think this could either be a plain integer or not be a parameter at all (if we agree that the buffer size must be equal to a predefined constant).",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a38fb2_f38c2a9a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "nit: if we always need to have this digest allocated somewhere in the work buffer anyway, we might as well just return a pointer (don\u0027t really need the memcpy then).",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57767713_c6704244",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "nit: is this file still called that way?",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57767713_2655963b",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "I know we did this before, but it looks very dangerous to me... it means we\u0027ll never be able to add additional key block flags without this blowing up. Shouldn\u0027t we mask this with 0xf, maybe?",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57767713_e68c5e9a",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "nit: Why don\u0027t we use the actual constants from 2struct.h in the case label instead of listing them as a comment here?",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57767713_2687567b",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "nit: just curious Randall, what is this even for? pre-Lumpy devices? I thought there had been no such thing as pure \"Developer firmware\" binaries in ages...",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57767713_c92935ae",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "I think there should be some guarantee that sd-\u003ekeyblock_flags has been initialized at this point (which is only after phase3). Maybe we should add a new VB2_SD_STATUS_VERIFIED_FW to sd-\u003estatus that gets set after preamble verification is done, check that here and return an error if it was not set.",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a38fb2_b669b08f",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it make more sense to return NULL on any internal errors (the caller could then go into recovery or something).",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a38fb2_b6a29087",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-01-30T01:13:44Z",
+      "side": 1,
+      "message": "Yeah... this is definitely not doing what you think.",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
