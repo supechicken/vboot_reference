@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17cebfa3_3d861329",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a38fb2_537c16db",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a38fb2_f38c2a9a",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "17cebfa3_1d835719",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a38fb2_f38c2a9a",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_c6704244",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "nit: is this file still called that way?",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "973d4f4f_a0e69aee",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57767713_c6704244",
       "range": {
         "startLine": 19,
         "startChar": 33,
@@ -100,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "973d4f4f_5d276cd7",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70ee7b4_6a54d7bb",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_2655963b",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -135,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "172a3f14_b7902232",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cebfa3_5d92eff0",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_e68c5e9a",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -146,6 +248,24 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "nit: Why don\u0027t we use the actual constants from 2struct.h in the case label instead of listing them as a comment here?",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17cebfa3_7da5abc8",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57767713_e68c5e9a",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -205,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "f7268b4e_f309d0d6",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70ee7b4_90dcdce6",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57767713_c92935ae",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -258,6 +396,24 @@
     },
     {
       "key": {
+        "uuid": "f7268b4e_930e5cdc",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "973d4f4f_789037ae",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a38fb2_b669b08f",
         "filename": "firmware/2lib/2tpm_bootmode.c",
         "patchSetId": 5
@@ -269,6 +425,24 @@
       "writtenOn": "2015-01-30T01:13:44Z",
       "side": 1,
       "message": "Wouldn\u0027t it make more sense to return NULL on any internal errors (the caller could then go into recovery or something).",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b79c1385_013c0af3",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a38fb2_b669b08f",
       "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -328,6 +502,24 @@
     },
     {
       "key": {
+        "uuid": "f7268b4e_73f62061",
+        "filename": "firmware/2lib/2tpm_bootmode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "973d4f4f_4cf9f50a",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d70ee7b4_5037845b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 5
@@ -339,6 +531,30 @@
       "writtenOn": "2015-01-30T20:48:48Z",
       "side": 1,
       "message": "Put up in vb2api section",
+      "range": {
+        "startLine": 403,
+        "startChar": 13,
+        "endLine": 403,
+        "endChar": 19
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "172a3f14_376e5265",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70ee7b4_5037845b",
       "range": {
         "startLine": 403,
         "startChar": 13,
@@ -368,6 +584,24 @@
     },
     {
       "key": {
+        "uuid": "f7268b4e_f98c4fcf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cebfa3_7d4ecbfc",
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17cebfa3_dd3eff5b",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 5
@@ -379,6 +613,30 @@
       "writtenOn": "2015-01-30T20:48:48Z",
       "side": 1,
       "message": "firmware keyblock header?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 30
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978b8f6f_50f9ac4f",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cebfa3_dd3eff5b",
       "range": {
         "startLine": 69,
         "startChar": 15,
@@ -425,6 +683,54 @@
       "writtenOn": "2015-01-30T20:48:48Z",
       "side": 1,
       "message": "Add comment - /* HWID digest from GBB header */",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d781874d_5b022f38",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70ee7b4_b0d6c07c",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "dd5130271602fd767e0f01479987e341dd8edcef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d781874d_bbec7b18",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-01-30T23:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "973d4f4f_4209b2a3",
       "range": {
         "startLine": 110,
         "startChar": 1,
