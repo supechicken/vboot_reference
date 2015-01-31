@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978b8f6f_d3dda6e5",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-31T00:01:00Z",
+      "side": 1,
+      "message": "Remove unit test for this check (not sure how that test passed; make runtests?)",
+      "revId": "40f1670fd7056158ecbfd435f82768cbce9ff7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7268b4e_bcdb25a6",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-31T00:01:00Z",
+      "side": 1,
+      "message": "Please add unit test to ensure the new checks work",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "40f1670fd7056158ecbfd435f82768cbce9ff7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
