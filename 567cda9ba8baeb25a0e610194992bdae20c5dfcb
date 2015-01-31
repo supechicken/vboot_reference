@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7217333_1c1a5910",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-01-31T01:13:18Z",
+      "side": 1,
+      "message": "32 -\u003e sizeof(sd-\u003egbb_hwid_digest)?\n\n(there\u0027s a few other 32\u0027s in the tests below too)",
+      "range": {
+        "startLine": 69,
+        "startChar": 47,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "567cda9ba8baeb25a0e610194992bdae20c5dfcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
