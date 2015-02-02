@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b2535a_71137883",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-02T18:43:45Z",
+      "side": 1,
+      "message": "You already initialized j \u003d 0 in the declaration. You only need to do it once.\n\nAlso, I\u0027d rename j to \"errcount\" or something, since that\u0027s what it\u0027s used for.",
+      "range": {
+        "startLine": 580,
+        "startChar": 7,
+        "endLine": 580,
+        "endChar": 8
+      },
+      "revId": "44e751eefa6066472191a4c9870517f2cd5e1ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77bc5b32_af3bb9fc",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-02T18:43:45Z",
+      "side": 1,
+      "message": "None of these casts should be needed.",
+      "range": {
+        "startLine": 602,
+        "startChar": 20,
+        "endLine": 602,
+        "endChar": 38
+      },
+      "revId": "44e751eefa6066472191a4c9870517f2cd5e1ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b70f4c_70db7024",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-02T18:43:45Z",
+      "side": 1,
+      "message": "Use j |\u003d here, to match below.",
+      "range": {
+        "startLine": 602,
+        "startChar": 3,
+        "endLine": 602,
+        "endChar": 6
+      },
+      "revId": "44e751eefa6066472191a4c9870517f2cd5e1ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b70f4c_308c484a",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-02T18:43:45Z",
+      "side": 1,
+      "message": "j |\u003d",
+      "range": {
+        "startLine": 608,
+        "startChar": 2,
+        "endLine": 608,
+        "endChar": 11
+      },
+      "revId": "44e751eefa6066472191a4c9870517f2cd5e1ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
