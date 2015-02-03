@@ -347,6 +347,7 @@ uint8_t *UnpackKPart(uint8_t *kpart_data, uint64_t kpart_size,
 	Debug(" bootloader_size = 0x%" PRIx64 "\n", preamble->bootloader_size);
 	Debug(" kern_blob_size = 0x%" PRIx64 "\n",
 	      preamble->body_signature.data_size);
+	Debug(" flags = 0x%" PRIx64 "\n", preamble->flags);
 	g_preamble = preamble;
 	g_ondisk_bootloader_addr = g_preamble->bootloader_address;
 
@@ -392,7 +393,7 @@ uint8_t *SignKernelBlob(uint8_t *kernel_blob, uint64_t kernel_size,
 			uint64_t padding,
 			int version, uint64_t kernel_body_load_address,
 			VbKeyBlockHeader *keyblock, VbPrivateKey *signpriv_key,
-			uint64_t *vblock_size_ptr)
+			uint32_t flags, uint64_t *vblock_size_ptr)
 {
 	VbSignature *body_sig;
 	VbKernelPreambleHeader *preamble;
@@ -416,6 +417,7 @@ uint8_t *SignKernelBlob(uint8_t *kernel_blob, uint64_t kernel_size,
 					body_sig,
 					g_ondisk_vmlinuz_header_addr,
 					g_vmlinuz_header_size,
+					flags,
 					min_size,
 					signpriv_key);
 	if (!preamble) {
@@ -590,6 +592,10 @@ int VerifyKernelBlob(uint8_t *kernel_blob,
 		printf("  Vmlinuz header size:    0x%" PRIx64 "\n",
 		       vmlinuz_header_size);
 	}
+
+	if (VbKernelHasFlags(g_preamble) == VBOOT_SUCCESS)
+		printf("  Flags          :       0x%" PRIx32 "\n",
+		       g_preamble->flags);
 
 	if (g_preamble->kernel_version < (min_version & 0xFFFF)) {
 		fprintf(stderr,

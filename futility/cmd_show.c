@@ -483,6 +483,10 @@ int futil_cb_show_kernel_preamble(struct futil_traverse_state_s *state)
 		       vmlinuz_header_size);
 	}
 
+	if (VbKernelHasFlags(preamble) == VBOOT_SUCCESS)
+		printf("  Flags:                 0x%" PRIx32 "\n",
+		       preamble->flags);
+
 	/* Verify kernel body */
 	if (option.fv) {
 		/* It's in a separate file, which we've already read in */
