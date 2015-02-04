@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c7d68a0_954804ed",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-02-04T18:46:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be checking header_version_major here as well?",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
