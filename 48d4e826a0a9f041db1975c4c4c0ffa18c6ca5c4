@@ -70,6 +70,24 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cb9a0a9_07d936f5",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-02-04T21:38:00Z",
+      "side": 1,
+      "message": "Yeah. I was not sure how this is handled in rest of the cases. So I duplicated what VbGetKernelVmlinuzHeader does. \n\nIn the future, when we change Major version number, would we not be using these functions at all? Or would we just change the functions to reflect the new minor version corresponding to the new major version?",
+      "parentUuid": "1ccfc448_0f370911",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
