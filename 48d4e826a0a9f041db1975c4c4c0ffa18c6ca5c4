@@ -52,6 +52,24 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ccfc448_0f370911",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-04T20:32:48Z",
+      "side": 1,
+      "message": "Not really. LoadKernel() does a bunch of checks - verify the header (including the major version), verify the data, verify the rollback counters, etc. before it can decide whether a kernel is valid or not.  The new flags field is a minor change, so LoadKernel() should be backward compatible and use a sane default if it\u0027s not present. If it is present, it needs to handle the flags correctly.",
+      "parentUuid": "7ce0c0af_92d9da2b",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
