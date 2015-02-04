@@ -88,6 +88,24 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ce0c0af_d8d9c17c",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-04T22:02:05Z",
+      "side": 1,
+      "message": "Major version changes are completely incompatible with anything before, so anything goes. If the major version differs, whatever we\u0027re looking at is not supported by the current code. The only difference between a non-matching major version and a buffer full of random bytes is that we can print \"Incompatible version\" instead of \"Invalid data\".\n\nMinor version changes should be backwards-compatible, so any structs from earlier minor versions should still work. We should just use sane defaults for any missing fields or values.\n\nWe can\u0027t accept newer minor version structs, of course, since we don\u0027t know what they\u0027ll look like.",
+      "parentUuid": "7cb9a0a9_07d936f5",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
