@@ -34,6 +34,24 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ce0c0af_92d9da2b",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-02-04T20:07:04Z",
+      "side": 1,
+      "message": "It seems weird to rely on the ordering of calls, but if that\u0027s the way things are done in vboot_reference so be it.",
+      "parentUuid": "1ccfc448_ccc90f2b",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
