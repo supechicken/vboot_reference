@@ -16,6 +16,24 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ccfc448_ccc90f2b",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-04T20:00:00Z",
+      "side": 1,
+      "message": "That\u0027s done in VerifyKernelPreamble(), which is called long before this function (see CL 245951).",
+      "parentUuid": "3c7d68a0_954804ed",
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
