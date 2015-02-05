@@ -1071,5 +1071,6 @@ done:
 }
 
 DECLARE_FUTIL_COMMAND(sign, do_sign,
+		      VBOOT_VERSION_ALL,
 		      "Sign / resign various binary components",
 		      print_help);
