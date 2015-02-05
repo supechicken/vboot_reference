@@ -124,6 +124,52 @@
       "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ce984cf_bcf44159",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-05T18:58:23Z",
+      "side": 1,
+      "message": "Technically, flags defaults to 0 for all old kernels, so this can be printed all the time.",
+      "range": {
+        "startLine": 486,
+        "startChar": 5,
+        "endLine": 486,
+        "endChar": 21
+      },
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cdc882f_fd9a4704",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-02-05T18:58:23Z",
+      "side": 1,
+      "message": "Flags is uint32_t",
+      "range": {
+        "startLine": 350,
+        "startChar": 22,
+        "endLine": 350,
+        "endChar": 28
+      },
+      "revId": "48d4e826a0a9f041db1975c4c4c0ffa18c6ca5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
