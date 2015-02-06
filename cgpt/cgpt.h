@@ -6,7 +6,9 @@
 #define VBOOT_REFERENCE_UTILITY_CGPT_CGPT_H_
 
 #include <fcntl.h>
+#ifdef HAVE_LINUX
 #include <features.h>
+#endif
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

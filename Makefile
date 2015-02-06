@@ -179,6 +179,12 @@ ifneq (${COV},)
   COV_INFO = ${BUILD}/coverage.info
 endif
 
+ifdef HAVE_LINUX
+  CFLAGS += -DHAVE_LINUX
+else
+  CFLAGS += -Wno-deprecated-declarations
+endif
+
 # And a few more default utilities
 LD = ${CC}
 CXX ?= g++
