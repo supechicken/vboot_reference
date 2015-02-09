@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71daab34_df7e5b95",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-09T18:42:45Z",
+      "side": 1,
+      "message": "How does MacOS determine the size and bytes-per-sector of a disk or USB drive?\n\nFor the size, we might just be able to fseek() to the end and use ftell(fd).",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "940b1a926ff7bd190227c2a9196da56a04081cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
