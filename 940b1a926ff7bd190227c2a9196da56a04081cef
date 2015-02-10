@@ -22,6 +22,30 @@
       "revId": "940b1a926ff7bd190227c2a9196da56a04081cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11b5eff7_dcaded88",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2015-02-10T00:01:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure.  Is this even necessary for vbutil_kernel and vbutil_keyblock?  I took the brute force approach and just commented out what was in my way, but maybe some of these we can just avoid actually compiling since they\u0027re not necessary and that\u0027d be cleaner?",
+      "parentUuid": "71daab34_df7e5b95",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "940b1a926ff7bd190227c2a9196da56a04081cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
