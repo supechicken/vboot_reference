@@ -87,6 +87,9 @@ enum vb2_context_flags {
 
 	/* RAM should be cleared by caller this boot */
 	VB2_CONTEXT_CLEAR_RAM = (1 << 7),
+
+	/* Boot optimistically: don't touch failure counters */
+	VB2_CONTEXT_NOFAIL_BOOT = (1 << 8),
 };
 
 /*
