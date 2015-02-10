@@ -90,6 +90,9 @@ enum vb2_context_flags {
 
 	/* Wipeout by the app should be requested. */
 	VB2_CONTEXT_FORCE_WIPEOUT_MODE = (1 << 8),
+
+	/* Boot optimistically: don't touch failure counters */
+	VB2_CONTEXT_NOFAIL_BOOT = (1 << 9),
 };
 
 /*
