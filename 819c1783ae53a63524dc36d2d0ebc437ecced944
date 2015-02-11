@@ -48,6 +48,47 @@
     },
     {
       "key": {
+        "uuid": "760c6178_cf4ddd2e",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-02-11T19:46:15Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t really think this is a problem. key_version cannot be larger than 0xffff and smaller than the 16-bit secdata version at the same time. But I agree that it\u0027s clearer with an explicit !rv \u0026\u0026",
+      "parentUuid": "56f11da1_ae005731",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 7
+      },
+      "revId": "819c1783ae53a63524dc36d2d0ebc437ecced944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "762541ee_673972ff",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-02-11T19:46:15Z",
+      "side": 1,
+      "message": "Here it would overwrite the key version part in the PREAMBLE_VERSION_RANGE error case. I think that should be okay since we\u0027re going to recovery anyway and that shared data is not going to be used again.",
+      "revId": "819c1783ae53a63524dc36d2d0ebc437ecced944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "164de5ae_dcac8db7",
         "filename": "firmware/lib21/misc.c",
         "patchSetId": 2
