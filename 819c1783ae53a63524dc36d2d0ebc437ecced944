@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5643dd80_5e90752f",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-11T17:10:36Z",
+      "side": 1,
+      "message": "The original code returned immediately here. This change keeps on going and will probably return the wrong info.",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "819c1783ae53a63524dc36d2d0ebc437ecced944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "164de5ae_dcac8db7",
+        "filename": "firmware/lib21/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-11T17:10:36Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 42
+      },
+      "revId": "819c1783ae53a63524dc36d2d0ebc437ecced944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
