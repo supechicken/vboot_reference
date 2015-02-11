@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b65df961_592ec33a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-11T17:58:00Z",
+      "side": 1,
+      "message": "We should probably remove the \"DONOTSUBMIT\", at least. ;-)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "f09c99ecdeafd5c706116ee68a1326882dd28bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b65df961_39ddcfe2",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-11T17:58:00Z",
+      "side": 1,
+      "message": "I still worry about this a bit, since cgpt is used to examine/modify a disk directly more often than to modify a file. But since it doesn\u0027t compile on Macs yet anyway, I\u0027m okay with putting this in for now, and fixing any problem with a future commit.",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "f09c99ecdeafd5c706116ee68a1326882dd28bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76570142_7710f0f8",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-11T17:58:00Z",
+      "side": 1,
+      "message": "As with cgpt, it\u0027s common to use futility to modify a disk device in-place. This would fail on Macs, but we can address that with a future CL.",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "f09c99ecdeafd5c706116ee68a1326882dd28bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
