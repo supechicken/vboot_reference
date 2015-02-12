@@ -160,6 +160,11 @@ ifneq (${PD_SYNC},)
 CFLAGS += -DPD_SYNC
 endif
 
+ifneq (${USE_MTD},)
+CFLAGS += -DUSE_MTD
+LDLIBS += -lmtdutils
+endif
+
 # Create / use dependency files
 CFLAGS += -MMD -MF $@.d
 
