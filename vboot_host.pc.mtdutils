@@ -1,0 +1,4 @@
+Name: vboot_host
+Version: 2
+Description: Static library of functions related to vboot and cgpt.
+Libs: -lvboot_host -lmtdutils
