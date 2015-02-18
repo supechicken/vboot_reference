@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b721c91_949b648d",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-02-18T21:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb6484ca_dab8a5c5",
+      "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b75f43c_74c06021",
         "filename": "vboot_host.pc.in",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-02-18T20:52:17Z",
       "side": 1,
       "message": "not sure if Bill cares about this.  not sure if vboot even really has a version.",
+      "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6398c4_1dfe93bd",
+        "filename": "vboot_host.pc.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-02-18T21:49:21Z",
+      "side": 1,
+      "message": "Isn\u0027t it version 2, according to futility API.",
+      "parentUuid": "4b75f43c_74c06021",
       "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
