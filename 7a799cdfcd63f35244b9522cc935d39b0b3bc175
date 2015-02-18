@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "6bd55878_27fedabd",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-02-18T16:53:19Z",
+      "side": 1,
+      "message": "It\u0027s moot by now. But FYI, $(basename a.b.c) gives a.b. So vboot_host.pc.plain --\u003e vboot_host.pc, exactly what you want.",
+      "parentUuid": "4b75f43c_eeeebf0d",
+      "revId": "7a799cdfcd63f35244b9522cc935d39b0b3bc175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b75f43c_8ee37b24",
         "filename": "vboot_host.pc.mtdutils",
         "patchSetId": 3
