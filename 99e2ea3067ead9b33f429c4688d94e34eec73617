@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb6484ca_dab8a5c5",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T20:52:17Z",
+      "side": 1,
+      "message": "i find it easier to read a series of sed statements when they\u0027re all wrapped:\n\n ${Q}sed \\\n   -e ... \\\n   -e ... \\\n   $\u003c \u003e $@",
+      "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b75f43c_74c06021",
+        "filename": "vboot_host.pc.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T20:52:17Z",
+      "side": 1,
+      "message": "not sure if Bill cares about this.  not sure if vboot even really has a version.",
+      "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
