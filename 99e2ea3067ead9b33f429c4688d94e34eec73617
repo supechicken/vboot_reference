@@ -69,6 +69,24 @@
       "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b536cfc_70d430f5",
+        "filename": "vboot_host.pc.in",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T22:47:07Z",
+      "side": 1,
+      "message": "if there is a version we think should be reflected here, and it\u0027s available in the source, then we should extract it and insert it here automatically",
+      "parentUuid": "6b6398c4_1dfe93bd",
+      "revId": "99e2ea3067ead9b33f429c4688d94e34eec73617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
