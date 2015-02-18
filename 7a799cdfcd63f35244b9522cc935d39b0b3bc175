@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b30947e_76f1309a",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T00:39:12Z",
+      "side": 1,
+      "message": "libdir should be parametized so the caller can do:\n\n make ... LIBDIR\u003d$(get_libdir) ...",
+      "revId": "7a799cdfcd63f35244b9522cc935d39b0b3bc175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b75f43c_eeeebf0d",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T00:39:12Z",
+      "side": 1,
+      "message": "i don\u0027t think the basename part makes sense ?  it needs to be installed like \"vboot_host.pc\".",
+      "revId": "7a799cdfcd63f35244b9522cc935d39b0b3bc175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b75f43c_8ee37b24",
+        "filename": "vboot_host.pc.mtdutils",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-02-18T00:39:12Z",
+      "side": 1,
+      "message": "you should provide a .pc.in file with @fields@ you\u0027d replace on the fly\n\n prefix\u003d@prefix@\n exec_prefix\u003d${prefix}\n libdir\u003d@libdir@\n includedir\u003d${prefix}/include\n\n ...\n Version: @VERSION@\n Cflags: -I${includedir}\n Libs: -L${libdir} @LIBS@\n\nthen you\u0027d use a `sed` to output the .pc file from the .pc.in source.",
+      "revId": "7a799cdfcd63f35244b9522cc935d39b0b3bc175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
