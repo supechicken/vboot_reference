@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c881ea4d_f2a8e822",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-20T23:36:03Z",
+      "side": 1,
+      "message": "Since this is only used in the hostlib, it belongs in the host/lib/ directory. It\u0027s not part of futility.",
+      "revId": "405ec57490b2519a275c211e264162164539179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c881ea4d_72a87865",
+        "filename": "futility/kernel_partition_lib.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-02-20T23:36:03Z",
+      "side": 1,
+      "message": "You should remove the part of the comment that talks about VerifyKernelPreamble(), since we don\u0027t call it here.",
+      "range": {
+        "startLine": 47,
+        "startChar": 25,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "405ec57490b2519a275c211e264162164539179a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
