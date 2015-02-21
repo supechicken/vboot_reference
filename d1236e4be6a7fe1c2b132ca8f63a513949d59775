@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f0c60e_2077c4b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002279
+      },
+      "writtenOn": "2015-02-21T09:02:22Z",
+      "side": 1,
+      "message": "Did you run \"cgpt\" in a device with USE\u003dmtd? The forward call to cgpt.bin doesn\u0027t work if you don\u0027t call cgpt with the full path. This broke recovery on storm.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "d1236e4be6a7fe1c2b132ca8f63a513949d59775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
