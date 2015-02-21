@@ -171,5 +171,9 @@ int main(int argc, const char *argv[]) {
     return -1;
   }
   argv[0] = real_cgpt;
-  return execv(argv[0], (char * const *)argv);
+  if (execv(argv[0], (char * const *)argv) == -1) {
+    perror("execv(cgpt.bin) failed");
+    fprintf(stderr, "Using cgpt.bin from: %s\n", real_cgpt);
+  }
+  return -2;
 }
