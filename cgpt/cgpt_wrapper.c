@@ -171,5 +171,5 @@ int main(int argc, const char *argv[]) {
     return -1;
   }
   argv[0] = real_cgpt;
-  return execv(argv[0], (char * const *)argv);
+  return execvp(argv[0], (char * const *)argv);
 }
