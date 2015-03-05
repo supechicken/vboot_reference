@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "2guid.h"
+#include "2id.h"
 
 /* Length of string representation, including trailing '\0' */
 #define VB2_ID_MIN_STRLEN (2 * VB2_ID_NUM_BYTES + 1)

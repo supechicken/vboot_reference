@@ -9,7 +9,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
-#include "2guid.h"
+#include "2id.h"
 #include "2rsa.h"
 #include "util_misc.h"
 #include "vb2_common.h"

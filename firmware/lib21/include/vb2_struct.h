@@ -12,7 +12,7 @@
 #define VBOOT_REFERENCE_VB2_STRUCT_H_
 #include <stdint.h>
 
-#include "2guid.h"
+#include "2id.h"
 
 /*
  * Magic numbers used by vb2_struct_common.magic.

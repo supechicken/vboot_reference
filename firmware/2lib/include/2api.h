@@ -24,7 +24,7 @@
 #include "2common.h"
 #include "2crypto.h"
 #include "2fw_hash_tags.h"
-#include "2guid.h"
+#include "2id.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
 
