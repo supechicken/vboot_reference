@@ -325,7 +325,7 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size);
  * Same, but for new-style structs.
  */
 int vb2api_init_hash2(struct vb2_context *ctx,
-		      const struct vb2_guid *guid,
+		      const struct vb2_id *id,
 		      uint32_t *size);
 
 /**
