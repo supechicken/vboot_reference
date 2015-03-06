@@ -253,7 +253,8 @@ enum futil_file_err futil_map_file(int fd, int writeable,
 
 	/* If the image is larger than 2^32 bytes, it's wrong. */
 	if (sb.st_size < 0 || sb.st_size > UINT32_MAX) {
-		fprintf(stderr, "Image size is unreasonable\n");
+		fprintf(stderr, "Image size is unreasonable (%ld)\n",
+			sb.st_size);
 		return FILE_ERR_SIZE;
 	}
 	reasonable_len = (uint32_t)sb.st_size;
