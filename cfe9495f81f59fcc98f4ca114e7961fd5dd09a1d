@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c42dddc_fdf2079d",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-03-10T20:25:06Z",
+      "side": 1,
+      "message": "Whups, yes. Done.",
+      "parentUuid": "3cc1f16c_7a03793d",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "cfe9495f81f59fcc98f4ca114e7961fd5dd09a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcbaf9ec_38dbc96b",
         "filename": "host/lib21/host_key.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-10T18:20:15Z",
       "side": 1,
       "message": "Maybe we should check pkey.c.desc_size \u003e 0 instead?  That\u0027s a more explicit link to the length above, and functions equivalently.",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 28
+      },
+      "revId": "cfe9495f81f59fcc98f4ca114e7961fd5dd09a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc47a1eb_de77058d",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-03-10T20:25:06Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fcbaf9ec_38dbc96b",
       "range": {
         "startLine": 273,
         "startChar": 5,
