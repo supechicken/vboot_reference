@@ -21,7 +21,9 @@ if ghash=$(git rev-parse --short --verify HEAD 2>/dev/null); then
 	fi
 	# avoid putting the -dirty attribute if only the timestamp
 	# changed
-	git status > /dev/null 2>&1
+	if [[ -z ${SANDBOX_ON} ]]; then
+		git status > /dev/null 2>&1
+	fi
 
 	dirty=$(sh -c "[ '$(git diff-index --name-only HEAD)' ] \
                 && echo '-dirty'")
