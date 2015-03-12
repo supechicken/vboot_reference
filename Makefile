@@ -769,7 +769,7 @@ all: fwlib fwlib2x fwlib20 fwlib21 \
 
 # Host targets
 .PHONY: host_stuff
-host_stuff: utillib hostlib cgpt utils futil tests utillib21
+host_stuff: utillib hostlib cgpt utils futil utillib21
 
 .PHONY: clean
 clean:
