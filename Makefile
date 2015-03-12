@@ -57,15 +57,21 @@ DEV_DEBUG_FORCE=
 ifeq (${MINIMAL},)
 # Host install just puts everything where it's told
 UB_DIR=${DESTDIR}/bin
-ULP_DIR=${DESTDIR}/${LIBDIR}/pkgconfig
+UL_DIR=${DESTDIR}/${LIBDIR}
+ULP_DIR=${UL_DIR}/pkgconfig
+UI_DIR=${DESTDIR}/include/vboot
+US_DIR=${DESTDIR}/share/vboot
 DF_DIR=${DESTDIR}/default
 VB_DIR=${DESTDIR}/bin
 else
 # Target install puts things into different places
 UB_DIR=${DESTDIR}/usr/bin
-ULP_DIR=${DESTDIR}/usr/${LIBDIR}/pkgconfig
+UL_DIR=${DESTDIR}/usr/${LIBDIR}
+ULP_DIR=${UL_DIR}/pkgconfig
+UI_DIR=${DESTDIR}/usr/include/vboot
+US_DIR=${DESTDIR}/usr/share/vboot
 DF_DIR=${DESTDIR}/etc/default
-VB_DIR=${DESTDIR}/usr/share/vboot/bin
+VB_DIR=${US_DIR}/bin
 endif
 
 # Where to install the (exportable) executables for testing?
@@ -779,6 +785,9 @@ clean:
 install: cgpt_install utils_install signing_install futil_install \
 	pc_files_install
 
+.PHONY: install_dev
+install_dev: headers_install lib_install
+
 .PHONY: install_mtd
 install_mtd: install cgpt_wrapper_install
 
@@ -953,6 +962,28 @@ ${TINYHOSTLIB}: ${TINYHOSTLIB_OBJS}
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
+
+.PHONY: headers_install
+headers_install:
+	@${PRINTF} "    INSTALL       HEADERS\n"
+	${Q}mkdir -p ${UI_DIR}
+	${Q}${INSTALL} -t ${UI_DIR} -m644 \
+		host/include/* \
+		firmware/include/gpt.h \
+		firmware/include/tlcl.h \
+		firmware/include/tss_constants.h
+
+.PHONY: lib_install
+lib_install: ${HOSTLIB}
+	@${PRINTF} "    INSTALL       HOSTLIB\n"
+	${Q}mkdir -p ${UL_DIR}
+	${Q}${INSTALL} -t ${UL_DIR} -m644 $^
+
+.PHONY: devkeys_install
+devkeys_install:
+	@${PRINTF} "    INSTALL       DEVKEYS\n"
+	${Q}mkdir -p ${US_DIR}/devkeys
+	${Q}${INSTALL} -t ${US_DIR}/devkeys -m644 tests/devkeys/*
 
 # ----------------------------------------------------------------------------
 # CGPT library and utility
