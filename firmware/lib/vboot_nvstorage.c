@@ -21,6 +21,7 @@
  * the two libs independent, and we hope to deprecate this one.)
  */
 #define HEADER_OFFSET                0
+#define HEADER_WIPEOUT			0x08
 #define HEADER_MASK                     0xC0
 #define HEADER_SIGNATURE                0x40
 #define HEADER_FIRMWARE_SETTINGS_RESET  0x20
@@ -189,6 +190,10 @@ int VbNvGet(VbNvContext *context, VbNvParam param, uint32_t *dest)
 	case VBNV_FW_PREV_RESULT:
 		*dest = (raw[BOOT2_OFFSET] & BOOT2_PREV_RESULT_MASK)
 			>> BOOT2_PREV_RESULT_SHIFT;
+		return 0;
+
+	case VBNV_FW_REQ_WIPEOUT:
+		*dest = (raw[HEADER_OFFSET] & HEADER_WIPEOUT) ? 1 : 0;
 		return 0;
 
 	default:
