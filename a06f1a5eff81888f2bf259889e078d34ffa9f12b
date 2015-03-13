@@ -93,6 +93,30 @@
       "revId": "a06f1a5eff81888f2bf259889e078d34ffa9f12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414a3e43_cc454375",
+        "filename": "scripts/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-03-13T00:18:30Z",
+      "side": 1,
+      "message": "I copied it from the EC, where it magically appeared with no code review.\n\nI say delete it entirely, and if it still works, that\u0027s good enough. If it breaks, I\u0027d be *really* like to know why. ;-)",
+      "parentUuid": "8147d63d_ac456375",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 12
+      },
+      "revId": "a06f1a5eff81888f2bf259889e078d34ffa9f12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
