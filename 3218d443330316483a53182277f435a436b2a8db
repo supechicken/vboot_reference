@@ -22,6 +22,30 @@
       "revId": "3218d443330316483a53182277f435a436b2a8db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86052c00_a25f1afa",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-03-13T17:46:40Z",
+      "side": 1,
+      "message": "addressed in the combined patch.",
+      "parentUuid": "012da676_eee4bb63",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "3218d443330316483a53182277f435a436b2a8db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
