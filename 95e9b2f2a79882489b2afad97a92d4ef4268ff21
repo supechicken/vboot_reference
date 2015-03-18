@@ -16,6 +16,24 @@
       "revId": "95e9b2f2a79882489b2afad97a92d4ef4268ff21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "460fb4b1_6ddf51de",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-03-18T23:22:01Z",
+      "side": 1,
+      "message": "It\u0027s a bit in NV storage.  You can set it on older boards, but the BIOS won\u0027t pay attention to it.",
+      "parentUuid": "2612c0d8_09b209c6",
+      "revId": "95e9b2f2a79882489b2afad97a92d4ef4268ff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
