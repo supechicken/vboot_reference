@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2612c0d8_09b209c6",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000108
+      },
+      "writtenOn": "2015-03-18T23:02:48Z",
+      "side": 1,
+      "message": "Is dev_boot_signed_only supported on every board?  I kind of\nthink some of the older boards don\u0027t have the concept, but maybe\nthey fake it by returning a read-only \"0\"?",
+      "revId": "95e9b2f2a79882489b2afad97a92d4ef4268ff21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
