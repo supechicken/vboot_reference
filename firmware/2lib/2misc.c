@@ -224,6 +224,12 @@ int vb2_check_dev_switch(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 0);
 	}
 
+#if IS_ENABLED(CONFIG_DEV_OFF_ON_RECOVERY)
+	if (ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) {
+		flags &= ~VB2_SECDATA_FLAG_DEV_MODE;
+	}
+#endif
+
 	/* Check virtual dev switch */
 	if (flags & VB2_SECDATA_FLAG_DEV_MODE)
 		is_dev = 1;
