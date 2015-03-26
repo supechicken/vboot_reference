@@ -133,7 +133,7 @@ static int has_all_areas(uint8_t *buf, uint32_t len, FmapHeader *fmap,
 	return 1;
 }
 
-enum futil_file_type recognize_bios_image(uint8_t *buf, uint32_t len)
+enum futil_file_type ft_recognize_bios_image(uint8_t *buf, uint32_t len)
 {
 	FmapHeader *fmap = fmap_find(buf, len);
 	if (fmap) {
@@ -223,6 +223,8 @@ int futil_traverse(uint8_t *buf, uint32_t len,
 	if (type == FILE_TYPE_UNKNOWN)
 		type = futil_file_type_buf(buf, len);
 	state->in_type = type;
+
+	Debug("HEY: type is now %d %s\n", type, futil_file_type_name(type));
 
 	state->errors = retval;
 	retval |= invoke_callback(state, CB_BEGIN_TRAVERSAL, "<begin>",
