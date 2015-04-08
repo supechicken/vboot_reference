@@ -14,6 +14,40 @@
 #include "2rsa.h"
 #include "vb2_common.h"
 
+/*
+ * The two blobs below are the first and the last 16 bytes of the developer
+ * root public key's modulus.
+ */
+
+static const uint8_t dev_key_digest[] = {
+	0xfc, 0x48, 0x51, 0x0e, 0x32, 0xaa, 0xb1, 0x33,
+	0x92, 0x79, 0x05, 0x8c, 0xf9, 0xc0, 0xff, 0xe5,
+	0x69, 0x6f, 0x90, 0x80, 0xdb, 0x04, 0x46, 0x93,
+	0xfc, 0xf0, 0x26, 0x3d, 0xf2, 0xe9, 0xca, 0x6c
+};
+
+static void vb2_report_dev_firmware(struct vb2_public_key *root)
+{
+	struct vb2_digest_context dc;
+	uint8_t digest[sizeof(dev_key_digest)];
+	int size = root->arrsize * 4;
+
+	if (vb2_digest_init(&dc, VB2_HASH_SHA256) != VB2_SUCCESS)
+		return;
+
+	if (vb2_digest_extend(&dc, (uint8_t *)root->n, size) != VB2_SUCCESS)
+		return;
+
+	if (vb2_digest_extend(&dc, (uint8_t *)root->rr, size) != VB2_SUCCESS)
+		return;
+
+	if (vb2_digest_finalize(&dc, digest, sizeof(digest)) != VB2_SUCCESS)
+		return;
+
+	if (!memcmp(digest, dev_key_digest, sizeof(dev_key_digest)))
+		VB2_DEBUG("This is developer signed firmware\n");
+}
+
 int vb2_load_fw_keyblock(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -89,6 +123,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 		return rv;
 	}
 
+	vb2_report_dev_firmware(&root_key);
 	sd->fw_version = kb->data_key.key_version << 16;
 
 	/*
