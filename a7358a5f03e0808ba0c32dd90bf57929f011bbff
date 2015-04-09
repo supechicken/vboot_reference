@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "237f124e_60860718",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-09T00:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23dab2a9_a94c5d52",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "a7358a5f03e0808ba0c32dd90bf57929f011bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3cab6dd_a9a4592f",
         "filename": "firmware/lib20/misc.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-08T22:54:43Z",
       "side": 1,
       "message": "Doesn\u0027t match vbutil_what_keys (which says the digest is b11d74edd286c144e1135b49e7f0bc20cf041f10)\n\nA packed key is:\n   uint32_t arrsize\n   uint32_t n0inv\n   n (which you\u0027ve got right)\n   rr (which you\u0027ve got right)\n\nSo I think you need to extend with arrsize and then n0inv, before extending with n and rr.\n\nOther than that, I think this approach is good.",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "a7358a5f03e0808ba0c32dd90bf57929f011bbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_a0800ff9",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-04-09T00:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cab6dd_a9a4592f",
       "range": {
         "startLine": 22,
         "startChar": 21,
