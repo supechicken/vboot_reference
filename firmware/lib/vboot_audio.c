@@ -219,7 +219,7 @@ VbAudioContext *VbAudioOpen(VbCommonParams *cparams)
 	a = VbExGetTimer();
 	VbExSleepMs(10);
 	b = VbExGetTimer();
-	ticks_per_msec = (b - a) / 10ULL ;
+	ticks_per_msec = (unsigned int)(b - a) / 10;
 	VBDEBUG(("VbAudioOpen() - ticks_per_msec is %" PRIu64 "\n",
 		ticks_per_msec));
 

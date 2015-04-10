@@ -39,7 +39,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	int free_kernel_subkey = 0;
 	GptData gpt;
 	uint64_t part_start, part_size;
-	uint64_t blba;
+	uint32_t blba;
 	uint64_t kbuf_sectors;
 	uint8_t* kbuf = NULL;
 	int found_partitions = 0;
@@ -95,7 +95,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	shared->lk_call_count++;
 
 	/* Initialization */
-	blba = params->bytes_per_lba;
+	blba = (uint32_t)params->bytes_per_lba;
 	kbuf_sectors = KBUF_SIZE / blba;
 	if (0 == kbuf_sectors) {
 		VBDEBUG(("LoadKernel() called with sector size > KBUF_SIZE\n"));
@@ -115,7 +115,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	}
 
 	/* Read GPT data */
-	gpt.sector_bytes = (uint32_t)blba;
+	gpt.sector_bytes = blba;
 	gpt.streaming_drive_sectors = params->streaming_lba_count;
 	gpt.gpt_drive_sectors = params->gpt_lba_count;
 	gpt.flags = params->boot_flags & BOOT_FLAG_EXTERNAL_GPT
