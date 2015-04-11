@@ -34,6 +34,24 @@
       "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7000f2ef_be1e15e4",
+        "filename": "futility/futility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1117364
+      },
+      "writtenOn": "2015-04-11T05:42:02Z",
+      "side": 1,
+      "message": "Hi I am trying to update vboot utils package on Linux Arch.\nI am compiling it with host compiler gcc 4.9, 64bit.\n\nFor now I just initialized vstr \u003d \"\" at line 225. It suppresses this warning/error.",
+      "parentUuid": "7000f2ef_de11e1d5",
+      "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
