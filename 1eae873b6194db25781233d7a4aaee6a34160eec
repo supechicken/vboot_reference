@@ -16,6 +16,24 @@
       "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7000f2ef_de11e1d5",
+        "filename": "futility/futility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-11T05:36:21Z",
+      "side": 1,
+      "message": "It shouldn\u0027t; vboot_version is an enum, and the switch statement covers every value, so every possible path will set vstr to something.\n\nWhat architecture and compiler are you seeing this with?",
+      "parentUuid": "7000f2ef_1ece2903",
+      "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
