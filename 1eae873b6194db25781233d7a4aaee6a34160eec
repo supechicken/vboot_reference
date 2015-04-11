@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7000f2ef_1ece2903",
+        "filename": "futility/futility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1117364
+      },
+      "writtenOn": "2015-04-11T05:00:32Z",
+      "side": 1,
+      "message": "This gives following compile error:\n\nfutility/futility.c: In function ‘do_help’:\nfutility/futility.c:262:2: error: ‘vstr’ may be used uninitialized in this function [-Werror\u003dmaybe-uninitialized]\n  printf(\"The following %scommands are built-in:\\n\\n\", vstr);\n  ^\n    CC            futility/cmd_show.o\n    CC            futility/cmd_sign.o\n    CC            futility/cmd_vbutil_firmware.o\n    CC            futility/cmd_vbutil_kernel.o\ncc1: all warnings being treated as errors\nMakefile:1148: recipe for target \u0027/mnt/storage/sources/archpackages/vboot-utils/src/build/futility/futility.o\u0027 failed\nmake: *** [/mnt/storage/sources/archpackages/vboot-utils/src/build/futility/futility.o] Error 1\nmake: *** Waiting for unfinished jobs....",
+      "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
