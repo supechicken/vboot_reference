@@ -52,6 +52,24 @@
       "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90056600_7cead9a6",
+        "filename": "futility/futility.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-11T05:52:51Z",
+      "side": 1,
+      "message": "That\u0027s odd. I\u0027m using gcc 4.9.2 on x86_64, and it doesn\u0027t say a word.\n\nSince this CL is closed already, if you want to email me a patch for all fixes at once (wfrichar at chromium.org), I\u0027ll apply them.  I wish I had a way to reproduce the problems easily, though.",
+      "parentUuid": "7000f2ef_be1e15e4",
+      "revId": "1eae873b6194db25781233d7a4aaee6a34160eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
