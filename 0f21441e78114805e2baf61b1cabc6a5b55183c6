@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90056600_1c175545",
+        "filename": "host/lib21/host_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1117364
+      },
+      "writtenOn": "2015-04-11T05:11:07Z",
+      "side": 1,
+      "message": "This gives compile time error:\n\nhost/lib21/host_misc.c: In function ‘vb2_str_to_id’:\nhost/lib21/host_misc.c:154:14: error: ‘val’ may be used uninitialized in this function [-Werror\u003dmaybe-uninitialized]\n   id-\u003eraw[i] \u003d val;\n              ^\ncc1: all warnings being treated as errors\nMakefile:1148: recipe for target \u0027/mnt/storage/sources/archpackages/vboot-utils/src/build/host/lib21/host_misc.o\u0027 failed\nmake: *** [/mnt/storage/sources/archpackages/vboot-utils/src/build/host/lib21/host_misc.o] Error 1\nmake: *** Waiting for unfinished jobs....",
+      "revId": "0f21441e78114805e2baf61b1cabc6a5b55183c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
