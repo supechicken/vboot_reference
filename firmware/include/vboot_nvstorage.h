@@ -87,6 +87,12 @@ typedef enum VbNvParam {
 	VBNV_CLEAR_TPM_OWNER_REQUEST,
 	/* Flag that TPM owner was cleared on request. */
 	VBNV_CLEAR_TPM_OWNER_DONE,
+	/*
+	 * Flag that full/limited fastboot capability in firmware is
+	 * requested.
+	 */
+	VBNV_FASTBOOT_CAP_REQUEST,
+
 	/* More details on recovery reason */
 	VBNV_RECOVERY_SUBCODE,
 	/* Request that NVRAM be backed up at next boot if possible. */
@@ -104,7 +110,6 @@ typedef enum VbNvParam {
 	VBNV_FW_PREV_RESULT,
 	/* Wipeout request from firmware present. */
 	VBNV_FW_REQ_WIPEOUT,
-
 } VbNvParam;
 
 /* Result of trying the firmware in VBNV_FW_TRIED */

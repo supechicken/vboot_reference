@@ -113,6 +113,8 @@ enum VbErrorPredefined_t {
 	VBERROR_UNSUPPORTED_REGION            = 0x10025,
 	/* No image present (returned from VbGbbReadImage() for missing image) */
 	VBERROR_NO_IMAGE_PRESENT              = 0x10026,
+	/* Fastboot capabilities set failed */
+	VBERROR_TPM_SET_FASTBOOT_CAP_STATE    = 0x10027,
 
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */
@@ -385,6 +387,31 @@ void VbUpdateFirmwareBodyHash(VbCommonParams *cparams,
  * should reboot. */
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams);
+
+/**
+ * Enable full fastboot functionality in firmware. Set corresponding flag in
+ * TPM.
+ *
+ * Returns VBERROR_SUCCESS if success, non-zero if error.
+ */
+VbError_t VbSetFullFastbootCap(void);
+
+/**
+ * Disable full fastboot functionality in firmware. Set corresponding flag in
+ * TPM.
+ *
+ * Returns VBERROR_SUCCESS if success, non-zero if error.
+ */
+VbError_t VbSetLmtdFastbootCap(void);
+
+/**
+ * Read flag in TPM to determine if full fastboot functionality is allowed in
+ * firmware.
+ *
+ * Returns 0 if limited fastboot functionality is allowed in firmware. If full
+ * fastboot functionality is allowed, this function returns 1.
+ */
+uint32_t VbGetFastbootCap(void);
 
 /*****************************************************************************/
 /* Debug output (from utility.h) */

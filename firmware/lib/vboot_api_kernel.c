@@ -1196,3 +1196,18 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Pass through return value from boot path */
 	return retval;
 }
+
+VbError_t VbSetFullFastbootCap(void)
+{
+	return SetFastbootCap(1);
+}
+
+VbError_t VbSetLmtdFastbootCap(void)
+{
+	return SetFastbootCap(0);
+}
+
+uint32_t VbGetFastbootCap(void)
+{
+	return GetFastbootCap();
+}

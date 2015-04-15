@@ -160,7 +160,7 @@ uint32_t SetVirtualDevMode(int val)
 	if (TPM_SUCCESS != ReadSpaceFirmware(&rsf))
 		return VBERROR_TPM_FIRMWARE_SETUP;
 
-	VBDEBUG(("TPM: flags were 0x%02x\n", rsf.flags));
+	VBDEBUG(("TPM: flags were 0x%03x\n", rsf.flags));
 	if (val)
 		rsf.flags |= FLAG_VIRTUAL_DEV_MODE_ON;
 	else
@@ -169,13 +169,51 @@ uint32_t SetVirtualDevMode(int val)
 	 * NOTE: This doesn't update the FLAG_LAST_BOOT_DEVELOPER bit.  That
 	 * will be done by SetupTPM() on the next boot.
 	 */
-	VBDEBUG(("TPM: flags are now 0x%02x\n", rsf.flags));
+	VBDEBUG(("TPM: flags are now 0x%03x\n", rsf.flags));
 
 	if (TPM_SUCCESS != WriteSpaceFirmware(&rsf))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
 	VBDEBUG(("TPM: Leaving %s()\n", __func__));
 	return VBERROR_SUCCESS;
+}
+
+uint32_t SetFastbootCap(int val)
+{
+	RollbackSpaceFirmware rsf;
+
+	VBDEBUG(("TPM: Entering %s()\n", __func__));
+	if (TPM_SUCCESS != ReadSpaceFirmware(&rsf))
+		return VBERROR_TPM_FIRMWARE_SETUP;
+
+	VBDEBUG(("TPM: flags were 0x%03x\n", rsf.flags));
+	if (val)
+		rsf.flags |= FLAG_FASTBOOT_CAP_FULL;
+	else
+		rsf.flags &= ~FLAG_FASTBOOT_CAP_FULL;
+
+	VBDEBUG(("TPM: flags are now 0x%03x\n", rsf.flags));
+
+	if (TPM_SUCCESS != WriteSpaceFirmware(&rsf))
+		return VBERROR_TPM_SET_FASTBOOT_CAP_STATE;
+
+	VBDEBUG(("TPM: Leaving %s()\n", __func__));
+	return VBERROR_SUCCESS;
+}
+
+uint32_t GetFastbootCap(void)
+{
+	RollbackSpaceFirmware rsf;
+	uint32_t val;
+
+	VBDEBUG(("TPM: Entering %s()\n", __func__));
+	if (TPM_SUCCESS != ReadSpaceFirmware(&rsf))
+		return VBERROR_TPM_FIRMWARE_SETUP;
+
+	val = (rsf.flags & FLAG_FASTBOOT_CAP_FULL) > FLAG_FASTBOOT_CAP_SHIFT;
+
+	VBDEBUG(("TPM: Leaving %s() with val %x\n", __func__, val));
+	return val;
 }
 
 uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)

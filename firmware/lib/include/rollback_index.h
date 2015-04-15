@@ -54,6 +54,9 @@ typedef struct RollbackSpaceKernel {
  */
 #define FLAG_VIRTUAL_DEV_MODE_ON 0x02
 
+#define FLAG_FASTBOOT_CAP_FULL		0x04
+#define FLAG_FASTBOOT_CAP_SHIFT	2
+
 /* Firmware space - FIRMWARE_NV_INDEX, locked with global lock. */
 #define ROLLBACK_SPACE_FIRMWARE_VERSION 2
 
@@ -183,5 +186,8 @@ uint32_t SetupTPM(int developer_mode, int disable_dev_request,
  * Utility function to turn the virtual dev-mode flag on or off. 0=off, 1=on.
  */
 uint32_t SetVirtualDevMode(int val);
+
+uint32_t SetFastbootCap(int val);
+uint32_t GetFastbootCap();
 
 #endif  /* VBOOT_REFERENCE_ROLLBACK_INDEX_H_ */
