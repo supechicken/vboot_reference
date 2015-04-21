@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b0150a85_cbd30952",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:20:39Z",
+      "side": 1,
+      "message": "Just spell out Limited.\n\nWhy not combine this and the function above?  That is \n\nVbSetFullFastbootCap(bEnabled)",
+      "range": {
+        "startLine": 405,
+        "startChar": 15,
+        "endLine": 405,
+        "endChar": 19
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01a7eb3_b738a74e",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -18,6 +41,53 @@
         "startChar": 9,
         "endLine": 414,
         "endChar": 25
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "700f1279_9d64b394",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:20:39Z",
+      "side": 1,
+      "message": "VbIsFullFastbootEnabled() and then the function above is VbSetFullFastbootEnabled(bEnabled) ?",
+      "parentUuid": "d01a7eb3_b738a74e",
+      "range": {
+        "startLine": 414,
+        "startChar": 9,
+        "endLine": 414,
+        "endChar": 25
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "700f1279_fdbcc74a",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:20:39Z",
+      "side": 1,
+      "message": "Please comment what this flag is.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 12
       },
       "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -59,6 +129,52 @@
       "writtenOn": "2015-04-21T16:38:21Z",
       "side": 1,
       "message": "If these functions need to be exported, just name them appropriately instead of wrapping them.",
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90148689_27a65439",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:20:39Z",
+      "side": 1,
+      "message": "\u003e\u003e 2?\n\nThat is, we should pass in values in the range 0-3, not 0,4,8,0xc, right?\n\nSee how BOOT2_PREV_RESULT is coded.",
+      "range": {
+        "startLine": 172,
+        "startChar": 34,
+        "endLine": 172,
+        "endChar": 51
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90148689_07ab5801",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-21T23:20:39Z",
+      "side": 1,
+      "message": "Pre-shift value \u003c\u003c 2?",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 329,
+        "endChar": 4
+      },
       "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
