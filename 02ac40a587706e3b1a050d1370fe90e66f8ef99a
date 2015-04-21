@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01a7eb3_b738a74e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-21T16:38:21Z",
+      "side": 1,
+      "message": "If this is a true-or-false function, then lets name it something like \"VbFullFastbootCapIsAllowed()\".",
+      "range": {
+        "startLine": 414,
+        "startChar": 9,
+        "endLine": 414,
+        "endChar": 25
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02302ea_c4112fd6",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-21T16:38:21Z",
+      "side": 1,
+      "message": "According to the header file, this is supposed to return true or false. Yet here it\u0027s also returning error codes, which aren\u0027t even negative. You need to decide what this should do.",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02302ea_84273731",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-04-21T16:38:21Z",
+      "side": 1,
+      "message": "If these functions need to be exported, just name them appropriately instead of wrapping them.",
+      "revId": "02ac40a587706e3b1a050d1370fe90e66f8ef99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
