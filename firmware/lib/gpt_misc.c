@@ -44,7 +44,7 @@ int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)
 
 	/* Read primary header from the drive, skipping the protective MBR */
 	if (0 != VbExDiskRead(disk_handle, 1, 1, gptdata->primary_header))
-		return 1;
+		memset(gptdata->primary_header, 0, gptdata->sector_bytes);
 
 	/* Only read primary GPT if the primary header is valid */
 	GptHeader* primary_header = (GptHeader*)gptdata->primary_header;
@@ -61,7 +61,8 @@ int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)
 				      primary_header->entries_lba,
 				      entries_sectors,
 				      gptdata->primary_entries))
-			return 1;
+			memset(gptdata->secondary_header, 0:
+			       gptdata->sector_bytes);
 	} else {
 		VBDEBUG(("Primary GPT header invalid!\n"));
 	}
