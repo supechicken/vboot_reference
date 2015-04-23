@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "30867a2e_af3ebd88",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-04-23T20:03:48Z",
+      "side": 1,
+      "message": "You don\u0027t need to specially mark it as invalid--CheckHeader will already fail on its own just for not having the special magic number (\"EFI\"). By zeroing it, the code is made simpler, with fewer extra paths. The idea is that there\u0027s no difference between reading a corrupt GPT and getting an error code from the underlying drive.",
+      "parentUuid": "d076fe11_db8ad7b2",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d076fe11_fb8793a7",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2015-04-23T19:05:36Z",
       "side": 1,
       "message": "Why does a failed read of the primary clear the secondary?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5083ee1c_d3ed5e08",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-04-23T20:03:48Z",
+      "side": 1,
+      "message": "Oops! Yeah here zeroing might not be enough, even once I zero the right thing. I\u0027ll have to set primary_valid \u003d 0.",
+      "parentUuid": "d076fe11_fb8793a7",
       "range": {
         "startLine": 64,
         "startChar": 3,
@@ -89,6 +131,24 @@
       "side": 1,
       "message": "Yes.  If the secondary header (or entries, below on line 86) are bad, then just mark the secondary as invalid.\n\nThere\u0027s code later on to copy a good GPT to a corrupt one.  Just need to make sure it runs in these cases.",
       "parentUuid": "d0d43e30_5f0c27ef",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_fbe4f352",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1107994
+      },
+      "writtenOn": "2015-04-23T20:03:48Z",
+      "side": 1,
+      "message": "Right, silly mistake that I didn\u0027t get this case. I think zeroing here would do the trick, and then the following CheckHeader call would notice that the zeroes don\u0027t make a valid GPT. Copying the correct GPT in will happen much later in WriteAndFreeGpt (which should do it since CheckHeader will fail), but it\u0027ll do a 512-byte write for the GPT header, which could fail. A follow-on patch could coalesce the header and entries writes.",
+      "parentUuid": "d076fe11_5b4ee71c",
       "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
