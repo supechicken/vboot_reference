@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a416b9_f757a0df",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-23T18:48:48Z",
+      "side": 1,
+      "message": "If you can read the primary GPT, you should read the backup GPT and use it.",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d43e30_5f0c27ef",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-04-23T18:48:48Z",
+      "side": 1,
+      "message": "The problem is here with the kingston SSD: instead of return 1, we should either skip or write the backup GPT with the primary GPT.",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
