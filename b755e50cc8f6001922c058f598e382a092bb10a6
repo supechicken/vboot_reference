@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "d076fe11_db8ad7b2",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T19:05:36Z",
+      "side": 1,
+      "message": "Agreed.  If read fails here, or in reading the primary entries, just mark the primary as invalid and use the secondary.",
+      "parentUuid": "10a416b9_f757a0df",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_fb8793a7",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T19:05:36Z",
+      "side": 1,
+      "message": "Why does a failed read of the primary clear the secondary?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d43e30_5f0c27ef",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 3
@@ -30,6 +71,24 @@
       "writtenOn": "2015-04-23T18:48:48Z",
       "side": 1,
       "message": "The problem is here with the kingston SSD: instead of return 1, we should either skip or write the backup GPT with the primary GPT.",
+      "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d076fe11_5b4ee71c",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-04-23T19:05:36Z",
+      "side": 1,
+      "message": "Yes.  If the secondary header (or entries, below on line 86) are bad, then just mark the secondary as invalid.\n\nThere\u0027s code later on to copy a good GPT to a corrupt one.  Just need to make sure it runs in these cases.",
+      "parentUuid": "d0d43e30_5f0c27ef",
       "revId": "b755e50cc8f6001922c058f598e382a092bb10a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
