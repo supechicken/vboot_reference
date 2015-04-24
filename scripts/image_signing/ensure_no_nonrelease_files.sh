@@ -37,14 +37,32 @@ main() {
     # Either way, load test-expectations data from config.
     . "$configfile" || return 1
 
+    local board="${SECURITY_TEST_BOARD}"
     local rootfs=$(make_temp_dir)
     mount_image_partition_ro "$image" 3 "$rootfs"
-
     for file in ${RELEASE_FILE_BLACKLIST[@]}; do
         if [ -e "$rootfs/$file" ]; then
-            echo "FAIL: $file exists in this image!"
-            ls -al "$rootfs/$file"
             testfail=1
+            ls -al "$rootfs/$file"
+
+            # Check if this file for this board is whitelisted. Reset testfail
+            # to zero if it is whitelisted.
+            for b in "${!RELEASE_FILE_ALLOWED_PER_BOARD[@]}"; do
+                if [ "${board}" == "${b}" ]; then
+                    local allowed_files=${RELEASE_FILE_ALLOWED_PER_BOARD["$b"]}
+                    for f in ${allowed_files}; do
+                        if [ "$f" == "$file" ]; then
+                            echo "WARN: $file whitelisted for $board"
+                            testfail=0
+                            break
+                        fi
+                    done
+                fi
+            done
+
+            if [ "$testfail" == "1" ]; then
+                echo "FAIL: $file exists in this image!"
+            fi
         fi
     done
 
