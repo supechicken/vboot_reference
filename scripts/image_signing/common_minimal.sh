@@ -342,4 +342,14 @@ no_chronos_password() {
   sudo grep -q '^chronos:\*:' "$rootfs/etc/shadow"
 }
 
+# Extract and return board name from /etc/lsb-release
+# Args: rootfs
+get_board_from_lsb_release() {
+  local rootfs=$1
+  # The cuts turn e.g. x86-foo as a well as x86-foo-pvtkeys into x86_foo.
+  local board=$(grep CHROMEOS_RELEASE_BOARD= "${rootfs}/etc/lsb-release" | \
+                cut -d = -f 2 | cut -d - -f 1,2 --output-delimiter=_)
+  echo ${board}
+}
+
 trap "cleanup_temps_and_mounts" EXIT
