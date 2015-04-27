@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "100976af_cb462913",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-27T07:06:48Z",
+      "side": 1,
+      "message": "per CL:267352, extract this from lsb-release like ensure_secure_kernelparams.sh does",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70de325c_eb8b3174",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-27T07:06:48Z",
+      "side": 1,
+      "message": "i know this script is inconsistent, but lets have new code be correct -- use braces for non-builtin vars\n\n ls -al \"${rootfs}/${file}\"",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "100976af_2b8b85b9",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-27T07:06:48Z",
+      "side": 1,
+      "message": "i don\u0027t think we want to have a whitelist for the blacklist ... that just makes my head hurt.  see the feedback for CL:*214587.",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "100976af_0b39e19f",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-27T07:06:48Z",
+      "side": 1,
+      "message": "this is a bash script, so use [[...]] everywhere",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
