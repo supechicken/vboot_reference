@@ -154,6 +154,7 @@ main() {
         echo "Kernel dm= parameter does not match any expected values!"
         echo "Actual:   $dmparams"
         echo "Expected: ${required_dmparams[@]}"
+        echo "Expected (regex): ${required_dmparams_regex[@]}"
     fi
 
     # Ensure all other required params are present.
