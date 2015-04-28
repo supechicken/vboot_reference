@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <tss/tcs.h>
+#include "tcs.h"  /* originally <tss/tcs.h>, created circular dependency */
 /* Don't use the vboot constants, since they conflict with the TCS lib */
 #define VBOOT_REFERENCE_TSS_CONSTANTS_H_
 
