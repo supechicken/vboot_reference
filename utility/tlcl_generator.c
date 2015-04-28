@@ -15,7 +15,8 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <tss/tcs.h>
+
+#include "tcs.h"  /* originally <tss/tcs.h>, created circular dependency */
 
 #include "sysincludes.h"
 #include "tlcl_internal.h"
