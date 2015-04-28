@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "100976af_5c655d8d",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-28T10:42:02Z",
+      "side": 1,
+      "message": "this file and the other one load common.sh in this dir.  you should create a new func like \"get_board_from_lsb_release\" and have them call that.",
+      "revId": "7ca25209f0f47b36afc40a8c0fcf3d9b69edc05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3012fad8_4f4fe1c4",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-28T10:42:02Z",
+      "side": 1,
+      "message": "braces w/board",
+      "revId": "7ca25209f0f47b36afc40a8c0fcf3d9b69edc05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
