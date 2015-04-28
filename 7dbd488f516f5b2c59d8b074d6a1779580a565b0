@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0d42a38_efb8c7da",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-04-28T06:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100976af_cb462913",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70de325c_eb8b3174",
         "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-04-27T07:06:48Z",
       "side": 1,
       "message": "i know this script is inconsistent, but lets have new code be correct -- use braces for non-builtin vars\n\n ls -al \"${rootfs}/${file}\"",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_7cd81b19",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-04-28T06:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70de325c_eb8b3174",
       "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d0d99e70_3c95f315",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-04-28T06:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100976af_2b8b85b9",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "100976af_0b39e19f",
         "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-04-27T07:06:48Z",
       "side": 1,
       "message": "this is a bash script, so use [[...]] everywhere",
+      "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_4ceb6ef3",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-04-28T06:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100976af_0b39e19f",
       "revId": "7dbd488f516f5b2c59d8b074d6a1779580a565b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
