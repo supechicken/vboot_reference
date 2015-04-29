@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3012fad8_924062f6",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-29T03:51:27Z",
+      "side": 1,
+      "message": "common_minimal.sh is meant to hold code that we also want on the runtime systems.  if there are no scripts that want this func, then common.sh is better.",
+      "revId": "e470ba22ff44c3459eedadb75f4aa768aed35dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70de325c_5439c250",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-29T03:51:27Z",
+      "side": 1,
+      "message": "quote it",
+      "revId": "e470ba22ff44c3459eedadb75f4aa768aed35dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
