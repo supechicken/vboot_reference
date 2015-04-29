@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70de325c_34363661",
+        "filename": "scripts/image_signing/ensure_secure_kernelparams.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-04-29T03:53:12Z",
+      "side": 1,
+      "message": "not a new or big issue, but both these lines should be using * instead of @",
+      "range": {
+        "startLine": 157,
+        "startChar": 58,
+        "endLine": 157,
+        "endChar": 59
+      },
+      "revId": "febcdd80c2ce940a5fd3077a332aea4a94da9d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
