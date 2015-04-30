@@ -15,7 +15,7 @@
 #include "vboot_api.h"
 
 /* Debug and error output */
-#ifdef VBOOT_DEBUG
+#ifndef VBOOT_DEBUG
 #define VBDEBUG(params) VbExDebug params
 #else
 #define VBDEBUG(params)
