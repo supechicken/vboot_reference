@@ -31,8 +31,9 @@
 /* Size of non-volatile data used by vboot */
 #define VB2_NVDATA_SIZE 16
 
-/* Size of secure data used by vboot */
+/* Size of secure data spaces used by vboot */
 #define VB2_SECDATA_SIZE 10
+#define VB2_SECDATA2_SIZE 14
 
 /*
  * Recommended size of work buffer.
@@ -93,6 +94,12 @@ enum vb2_context_flags {
 
 	/* Erase TPM developer mode state if it is enabled. */
 	VB2_DISABLE_DEVELOPER_MODE = (1 << 9),
+
+	/*
+	 * Verified boot has changed secdata2[].  Caller must save secdata2[]
+	 * back to its underlying storage, then may clear this flag.
+	 */
+	VB2_CONTEXT_SECDATA2_CHANGED = (1 << 11),
 };
 
 /*
@@ -154,6 +161,18 @@ struct vb2_context {
 	 * copied when relocating the work buffer.
 	 */
 	uint32_t workbuf_used;
+
+	/**********************************************************************
+	 * Fields caller must initialize before calling vb2api_kernel_phase1().
+	 */
+
+	/*
+	 * Secure data 2.  Caller must fill this from some secure non-volatile
+	 * location.  If the VB2_CONTEXT_SECDATA2_CHANGED flag is set when a
+	 * function returns, caller must save the data back to the secure
+	 * non-volatile location and then clear the flag.
+	 */
+	uint8_t secdata2[VB2_SECDATA2_SIZE];
 };
 
 enum vb2_resource_index {
@@ -177,6 +196,9 @@ enum vb2_pcr_digest {
 	/* SHA-256 hash digest of HWID, from GBB */
 	HWID_DIGEST_PCR,
 };
+
+/* Stream type for reading kernel partitions */
+typedef void *vb2ex_stream_t;
 
 /******************************************************************************
  * APIs provided by verified boot.
@@ -234,8 +256,49 @@ enum vb2_pcr_digest {
  *
  * At this point, firmware verification is done, and vb2_context contains the
  * kernel key needed to verify the kernel.  That context should be preserved
- * and passed on to kernel selection.  For now, that requires translating it
- * into the old VbSharedData format (via a func which does not yet exist...)
+ * and passed on to kernel selection.  The kernel selection process may be
+ * done by the same firmware image, or may be done by the RW firmware.  The
+ * recommended order is:
+ *
+ *	Load secdata2 from wherever you keep it.
+ *
+ *      	If it wasn't there at all (for example, this is the first boot
+ *		of a new system in the factory), call vb2api_secdata2_create()
+ *		to initialize the data.
+ *
+ *		If access to your storage is unreliable (reads/writes may
+ *		contain corrupt data), you may call vb2api_secdata2_check() to
+ *		determine if the data was valid, and retry reading if it
+ *		wasn't.  (In that case, you should also read back and check the
+ *		data after any time you write it, to make sure it was written
+ *		correctly.)
+ *
+ *	Call vb2api_kernel_phase1().  At present, this decides which key to
+ *	use to verify kernel data - the recovery key from the GBB, or the
+ *	kernel subkey from the firmware verification stage.
+ *
+ *	Find a boot device (you're on your own here).
+ *
+ *	Call vb2api_load_kernel_vblock() for each kernel partition on the
+ *	boot device.
+ *
+ *	When that succeeds, call vb2api_get_kernel_size() to determine where
+ *	the kernel is located in the stream and how big it is.  Load or map
+ *	the kernel.  (Again, you're on your own.  This is the responsibility of
+ *	the caller so that the caller can choose whether to allocate a buffer,
+ *	load the kernel data into a predefined area of RAM, or directly map a
+ *	kernel file into the address space.  Note that technically it doesn't
+ *	matter whether the kernel data is even in the same file or stream as
+ *	the vblock, as long as the caller loads the right data.
+ *
+ *	Call vb2api_verify_kernel_data() on the kernel data.
+ *
+ *	Call vb2api_load_kernel_vblock() on the remaining kernel partitions on
+ *	the boot device.  This allows verified boot to determine if it should
+ *	roll forward the minimum allowed kernel version in the secure data.
+ *
+ *	Call vb2api_kernel_phase2().  This cleans up from kernel verification
+ *	and updates the secure data if needed.
  */
 
 /**
@@ -372,6 +435,98 @@ int vb2api_get_pcr_digest(struct vb2_context *ctx,
 			  uint8_t *dest,
 			  uint32_t *dest_size);
 
+/**
+ * Prepare for kernel verification stage.
+ *
+ * Must be called before other vb2api kernel functions.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_kernel_phase1(struct vb2_context *ctx);
+// Load kernel key.  In recovery mode we need to load this from the gbb; in
+// normal mode, this will already be in the context as part of the firmware
+// preamble.
+//
+// Set up vb2_shared_data fields for kernel verification.
+//
+// Set up ctx->secdata2 (aka the vboot kernel TPM space)
+
+/**
+ * Load the verified boot block (vblock) from the start of a kernel stream.
+ *
+ * This function may be called multiple times, to load and verify the
+ * vblocks from multiple kernel streams.
+ *
+ * @param ctx		Vboot context
+ * @param stream	Kernel stream
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_load_kernel_vblock(struct vb2_context *ctx, vb2ex_stream_t *stream);
+// Leaves stream at end of preamble
+// Needs to keep track of expected kernel size and hash
+// Stream is for the convenience of the caller; all we do with it is pass it
+// to vb2ex_read_stream().
+//
+// Since we also pass ctx to that, and ctx has a non_vboot_context member, we
+// could also simply assume that the caller will put the stream there, and
+// get rid of the stream parameter?
+
+/**
+ * Get the size and offset of the kernel data for the most recent vblock.
+ *
+ * Valid after a successful call to vb2api_load_kernel_vblock().
+ *
+ * @param ctx		Vboot context
+ * @param offset_ptr	Destination for offset in bytes of kernel data from
+ *			start of stream.
+ * @param size_ptr      Destination for size of kernel data in bytes.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_get_kernel_size(struct vb2_context *ctx,
+			   uint32_t *offset_ptr,
+			   uint32_t *size_ptr);
+// Offset is there because right now we pad the vboot vblock up to 64KB. That's
+// wasteful because the keyblock and preamble are usually a tiny fraction of
+// that size.  Want to allow padding without requiring that padding to be part
+// of the kernel preamble.  Or maybe it's fine to pad all that stuff out to
+// 64KB, and we don't care that much?  If so, could ditch the offset.
+
+/**
+ * Verify kernel data using the previously loaded kernel vblock.
+ *
+ * Valid after a successful call to vb2api_load_kernel_vblock().  This allows
+ * the caller to load or map the kernel data, as appropriate, and pass the
+ * pointer to the kernel data into vboot.
+ *
+ * @param ctx		Vboot context
+ * @param buf		Pointer to kernel data
+ * @param size		Size of kernel data in bytes
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_verify_kernel_data(struct vb2_context *ctx,
+			      const void *buf,
+			      uint32_t size);
+// See rationale in the calling sequence above.  I want to make the caller
+// responsible for reading the kernel data.  This is particularly handy for
+// futility, which can simply mmap() that part of the kernel partition
+// rather than reading it off of disk.  We don't bother with that for reading
+// and verifying the vblock because it's tiny (<64KB), and in the new world of
+// vboot2 I want to allow for the possibility that the vblock and kernel are
+// discontiguous.
+
+/**
+ * Finish the kernel verification phase.
+ *
+ * Call this after loading the vblocks for the kernel streams on the current
+ * boot device and verifying the kernel data for the kernel to be booted.
+ *
+ * This cleans up intermediate data structures in the vboot context, and
+ * updates the version in the secure data if necessary.
+ */
+int vb2api_kernel_phase2(struct vb2_context *ctx);
+// update secdata2 if lowest good kernel version is higher than secdata
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
@@ -428,5 +583,19 @@ int vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size);
  * @return VB2_SUCCESS, or non-zero error code.
  */
 int vb2ex_hwcrypto_digest_finalize(uint8_t *digest, uint32_t digest_size);
+
+/**
+ * Read data from the stream into the buffer.
+ *
+ * @param ctx		Vboot context
+ * @param stream	Stream to read from
+ * @param buf		Pointer to destination buffer
+ * @param size		Size of data to read in bytes
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_stream_read(struct vb2_context *ctx,
+		      vb2ex_stream_t *stream,
+		      void *buf,
+		      uint32_t size);
 
 #endif  /* VBOOT_2_API_H_ */
