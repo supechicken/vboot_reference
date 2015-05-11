@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d70e1c2_51490f40",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001306
+      },
+      "writtenOn": "2015-05-11T17:17:51Z",
+      "side": 1,
+      "message": "I wonder if we can find a better name. It may be confusing for those who are not seeing the evolution of vboot. Do you think secdata2 is better than kernel_secdata, for example?",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "5807217391881c27514ac8dca90da0156f0bb447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6d15ec_2b2743e3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
