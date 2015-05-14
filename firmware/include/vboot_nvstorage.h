@@ -250,6 +250,8 @@ typedef enum VbFwResult {
 #define VBNV_RECOVERY_KE_UNSPECIFIED  0xBF
 /* Recovery mode test from user-mode */
 #define VBNV_RECOVERY_US_TEST         0xC1
+/* ADB requested reboot into bootloader (fastboot mode) */
+#define VBNV_RECOVERY_ADB_REQUESTED   0xC2
 /* Unspecified/unknown error in user-mode */
 #define VBNV_RECOVERY_US_UNSPECIFIED  0xFF
 
