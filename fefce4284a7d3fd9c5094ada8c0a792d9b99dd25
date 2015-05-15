@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0da4fdb8_08c32db9",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2015-05-15T20:08:11Z",
+      "side": 1,
+      "message": "It clears the owner password, so it will remove all sealed keys and other stuff.  It\u0027s not needed to reset the NV spaces.",
+      "revId": "fefce4284a7d3fd9c5094ada8c0a792d9b99dd25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
