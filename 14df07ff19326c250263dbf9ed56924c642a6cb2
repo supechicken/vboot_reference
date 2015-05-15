@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6dbd79c9_0224f4a8",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-15T17:03:50Z",
+      "side": 1,
+      "message": "It is used by LID_SHUTDOWN. I will add it as a separate CL.",
+      "parentUuid": "6dbd79c9_c2003c06",
+      "revId": "14df07ff19326c250263dbf9ed56924c642a6cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda6c9c2_4a052941",
         "filename": "firmware/include/gbb_header.h",
         "patchSetId": 1
