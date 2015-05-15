@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dbd79c9_c2003c06",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-05-15T14:16:10Z",
+      "side": 1,
+      "message": "What happened to 12?",
+      "revId": "14df07ff19326c250263dbf9ed56924c642a6cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda6c9c2_4a052941",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-05-15T14:16:10Z",
+      "side": 1,
+      "message": "Is this the first field that isn\u0027t actually consumed by vboot_reference proper?",
+      "revId": "14df07ff19326c250263dbf9ed56924c642a6cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
