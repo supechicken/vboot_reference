@@ -22,6 +22,30 @@
       "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda6c9c2_9023c026",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2015-05-15T17:33:12Z",
+      "side": 1,
+      "message": "I\u0027d say it\u0027s inaccurate to label this as ADB, as adb is just one entity that can request a reboot into fastboot.",
+      "parentUuid": "4d9a7579_1cec5a08",
+      "range": {
+        "startLine": 254,
+        "startChar": 38,
+        "endLine": 254,
+        "endChar": 42
+      },
+      "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
