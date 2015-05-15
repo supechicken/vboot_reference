@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d9a7579_1cec5a08",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-15T15:16:15Z",
+      "side": 1,
+      "message": "Assuming ADB is user-mode, 0xC2 is correct.  If it\u0027s kernel-level, then it should be 0x82.",
+      "range": {
+        "startLine": 254,
+        "startChar": 38,
+        "endLine": 254,
+        "endChar": 42
+      },
+      "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
