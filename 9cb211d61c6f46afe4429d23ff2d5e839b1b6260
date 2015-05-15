@@ -46,6 +46,30 @@
       "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da4fdb8_6bf11366",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-15T20:53:50Z",
+      "side": 1,
+      "message": "As Benson mentioned, if this recovery reason can be used by multiple entities, we could simply reuse the existing reasons\ni.e. if kernel driver makes a request it can use reason 0xBF and if userspace utility makes a request it can use reason 0xFF. Thoughts?",
+      "parentUuid": "eda6c9c2_9023c026",
+      "range": {
+        "startLine": 254,
+        "startChar": 38,
+        "endLine": 254,
+        "endChar": 42
+      },
+      "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
