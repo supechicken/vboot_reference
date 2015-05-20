@@ -1004,4 +1004,9 @@ VbError_t VbExRegionRead(VbCommonParams *cparams,
 			 enum vb_firmware_region region, uint32_t offset,
 			 uint32_t size, void *buf);
 
+VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
+				  void *recovery_image,
+				  size_t recovery_size,
+				  void **kernel_start);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */

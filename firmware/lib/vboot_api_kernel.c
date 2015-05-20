@@ -1194,3 +1194,139 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Pass through return value from boot path */
 	return retval;
 }
+
+VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
+				  void *boot_image,
+				  size_t image_size,
+				  void **kernel_start)
+{
+	VbError_t retval;
+	VbPublicKey* kernel_subkey = NULL;
+	uint8_t free_kernel_subkey = 0;
+	RSAPublicKey *data_key = NULL;
+	VbKeyBlockHeader *key_block;
+	VbKernelPreambleHeader *preamble;
+	uint8_t *kbuf = boot_image;
+	uint64_t body_offset;
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+	uint32_t require_official_os = 1;
+
+	VbExNvStorageRead(vnc.raw);
+	VbNvSetup(&vnc);
+
+	/*
+	 * Determine if we require official os only:
+	 * 1. If dev mode is not enabled, yes.
+	 * 2. If dev mode is enabled and dev-boot-signed-only is set, yes.
+	 * 3. If dev mode is enabled and dev-boot-signed-only is not set, no.
+	 */
+	if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
+		VbNvGet(&vnc, VBNV_DEV_BOOT_SIGNED_ONLY, &require_official_os);
+		/* Use the kernel subkey passed from LoadFirmware(). */
+		kernel_subkey = &shared->kernel_subkey;
+	} else {
+		/* Use recovery key to verify the kernel. */
+		retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
+		if (VBERROR_SUCCESS != retval) {
+			VBDEBUG(("Gbb Read Recovery key Failed\n"));
+			goto fail;
+		}
+		free_kernel_subkey = 1;
+	}
+
+	VbNvTeardown(&vnc);
+	if (vnc.raw_changed)
+		VbExNvStorageWrite(vnc.raw);
+
+	/* Read GBB Header */
+	cparams->bmp = NULL;
+	cparams->gbb = VbExMalloc(sizeof(*cparams->gbb));
+	retval = VbGbbReadHeader_static(cparams, cparams->gbb);
+	if (VBERROR_SUCCESS != retval) {
+		VBDEBUG(("Gbb read header failed %x\n", retval));
+		goto fail;
+	}
+
+	/* If we fail at any step, retval returned would be invalid kernel */
+	retval = VBERROR_INVALID_KERNEL_FOUND;
+
+	/* Verify the key block. */
+	key_block = (VbKeyBlockHeader *)kbuf;
+
+	if (0 != KeyBlockVerify(key_block, image_size, kernel_subkey, 0)) {
+		VBDEBUG(("Verifying key block signature failed.\n"));
+
+		if (require_official_os) {
+			VBDEBUG(("Self-signed image not allowed.\n"));
+			goto fail;
+		}
+
+		/* Allow the kernel if SHA-512 of the key block is valid. */
+		if (0 != KeyBlockVerify(key_block, image_size, kernel_subkey,
+					1)) {
+			VBDEBUG(("Verifying key block hash failed.\n"));
+			goto fail;
+		}
+
+		/*
+		 * Only developer mode is allowed to continue with signature
+		 * verification failure but key hash check success. Make sure
+		 * that the keyblock has the right flags set for developer mode.
+		 */
+		if (!(key_block->key_block_flags
+		      & KEY_BLOCK_FLAG_DEVELOPER_1)) {
+			VBDEBUG(("Key block developer flag mismatch.\n"));
+			goto fail;
+		}
+	}
+
+	/*
+	 * Boot from memory is allowed only in recovery mode. Thus, make sure
+	 * that keyblock has the right flags for recovery.
+	 */
+	if (!(key_block->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_1)) {
+		VBDEBUG(("Key block recovery flag mismatch.\n"));
+		goto fail;
+	}
+
+	/* Get key for preamble/data verification from the key block. */
+	data_key = PublicKeyToRSA(&key_block->data_key);
+	if (!data_key) {
+		VBDEBUG(("Data key bad.\n"));
+		goto fail;
+	}
+
+	/* Verify the preamble, which follows the key block */
+	preamble = (VbKernelPreambleHeader *) (kbuf +
+					       key_block->key_block_size);
+	if ((0 != VerifyKernelPreamble(preamble,
+				       image_size -
+				       key_block->key_block_size,
+				       data_key))) {
+		VBDEBUG(("Preamble verification failed.\n"));
+		goto fail;
+	}
+
+	VBDEBUG(("Kernel preamble is good.\n"));
+
+	/* Verify kernel data */
+	body_offset = key_block->key_block_size + preamble->preamble_size;
+	if (0 != VerifyData((const uint8_t *)(kbuf + body_offset),
+			    image_size - body_offset,
+			    &preamble->body_signature, data_key)) {
+		VBDEBUG(("Kernel data verification failed.\n"));
+		goto fail;
+	}
+
+	VBDEBUG(("Kernel is good.\n"));
+	*kernel_start = (kbuf + body_offset);
+	retval = VBERROR_SUCCESS;
+
+fail:
+	if (NULL != data_key)
+		RSAPublicKeyFree(data_key);
+	if (1 != free_kernel_subkey)
+		VbExFree(kernel_subkey);
+	return retval;
+}
