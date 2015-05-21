@@ -1194,3 +1194,110 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Pass through return value from boot path */
 	return retval;
 }
+
+VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
+				  void *boot_image,
+				  size_t image_size,
+				  void **kernel_start)
+{
+	VbError_t retval;
+	VbPublicKey* kernel_subkey = NULL;
+	uint8_t *kbuf;
+	VbKeyBlockHeader *key_block;
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+	RSAPublicKey *data_key = NULL;
+	VbKernelPreambleHeader *preamble;
+	uint64_t body_offset;
+
+	if ((boot_image == NULL) || (image_size == 0) ||
+	    (*kernel_start == NULL))
+		return VBERROR_INVALID_PARAMETER;
+
+	*kernel_start = NULL;
+
+	/* Populate pointers to all components in the image. */
+	kbuf = boot_image;
+	key_block = (VbKeyBlockHeader *)kbuf;
+	preamble = (VbKernelPreambleHeader *)(kbuf + key_block->key_block_size);
+	body_offset = key_block->key_block_size + preamble->preamble_size;
+
+	/* Read GBB Header */
+	cparams->bmp = NULL;
+	cparams->gbb = VbExMalloc(sizeof(*cparams->gbb));
+	retval = VbGbbReadHeader_static(cparams, cparams->gbb);
+	if (VBERROR_SUCCESS != retval) {
+		VBDEBUG(("Gbb read header failed %x\n", retval));
+		return retval;
+	}
+
+	/*
+	 * We don't care verifying the image if:
+	 * 1. dev-mode switch is on and
+	 * 2. GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP is set.
+	 */
+	if ((shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
+	    (cparams->gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP)) {
+		*kernel_start = kbuf + body_offset;
+		return VBERROR_SUCCESS;
+	}
+
+	/* Get recovery key. */
+	retval = VbGbbReadRecoveryKey(cparams, &kernel_subkey);
+	if (VBERROR_SUCCESS != retval) {
+		VBDEBUG(("Gbb Read Recovery key Failed\n"));
+		return retval;
+	}
+
+	/* If we fail at any step, retval returned would be invalid kernel. */
+	retval = VBERROR_INVALID_KERNEL_FOUND;
+
+	/* Verify the key block. */
+	if (0 != KeyBlockVerify(key_block, image_size, kernel_subkey, 0)) {
+		VBDEBUG(("Verifying key block signature failed.\n"));
+		VBDEBUG(("Self-signed image not allowed.\n"));
+		goto fail;
+	}
+
+	/* Make sure that keyblock has the right flags for recovery. */
+	if (!(key_block->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_1)) {
+		VBDEBUG(("Key block recovery flag mismatch.\n"));
+		goto fail;
+	}
+
+	/* Get key for preamble/data verification from the key block. */
+	data_key = PublicKeyToRSA(&key_block->data_key);
+	if (!data_key) {
+		VBDEBUG(("Data key bad.\n"));
+		goto fail;
+	}
+
+	/* Verify the preamble, which follows the key block */
+	if ((0 != VerifyKernelPreamble(preamble,
+				       image_size -
+				       key_block->key_block_size,
+				       data_key))) {
+		VBDEBUG(("Preamble verification failed.\n"));
+		goto fail;
+	}
+
+	VBDEBUG(("Kernel preamble is good.\n"));
+
+	/* Verify kernel data */
+	if (0 != VerifyData((const uint8_t *)(kbuf + body_offset),
+			    image_size - body_offset,
+			    &preamble->body_signature, data_key)) {
+		VBDEBUG(("Kernel data verification failed.\n"));
+		goto fail;
+	}
+
+	VBDEBUG(("Kernel is good.\n"));
+	*kernel_start = (kbuf + body_offset);
+	retval = VBERROR_SUCCESS;
+
+fail:
+	if (NULL != data_key)
+		RSAPublicKeyFree(data_key);
+	VbExFree(kernel_subkey);
+	return retval;
+}
