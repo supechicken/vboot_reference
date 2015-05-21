@@ -685,6 +685,7 @@ TEST_NAMES = \
 	tests/vboot_api_kernel2_tests \
 	tests/vboot_api_kernel3_tests \
 	tests/vboot_api_kernel4_tests \
+	tests/vboot_api_kernel5_tests \
 	tests/vboot_audio_tests \
 	tests/vboot_common_tests \
 	tests/vboot_common2_tests \
