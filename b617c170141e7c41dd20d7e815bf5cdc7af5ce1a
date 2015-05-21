@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d031dc0_41800895",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-21T22:35:45Z",
+      "side": 1,
+      "message": "Okay. I will add integrity check in this case.",
+      "parentUuid": "cd1ca521_30fb98bb",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1243,
+        "endChar": 2
+      },
+      "revId": "b617c170141e7c41dd20d7e815bf5cdc7af5ce1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_00b8cad6",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cd1ca521_47349189",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-21T22:35:45Z",
+      "side": 1,
+      "message": "Okay. I will add check for dev flags as well.",
+      "parentUuid": "4d0995dc_00b8cad6",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1266,
+        "endChar": 2
+      },
+      "revId": "b617c170141e7c41dd20d7e815bf5cdc7af5ce1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_60826604",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-05-21T22:21:29Z",
       "side": 1,
       "message": "Use bootloader offset from the preamble.",
+      "range": {
+        "startLine": 1295,
+        "startChar": 1,
+        "endLine": 1295,
+        "endChar": 38
+      },
+      "revId": "b617c170141e7c41dd20d7e815bf5cdc7af5ce1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ca521_e7bddd4a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-21T22:35:45Z",
+      "side": 1,
+      "message": "What is bootloader offset? I see a field called as bootloader_address and it seems to contain address of bootloader if body_address is filled.",
+      "parentUuid": "4d0995dc_60826604",
       "range": {
         "startLine": 1295,
         "startChar": 1,
