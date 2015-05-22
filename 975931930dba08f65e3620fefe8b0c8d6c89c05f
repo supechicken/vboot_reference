@@ -16,6 +16,24 @@
       "revId": "975931930dba08f65e3620fefe8b0c8d6c89c05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d031dc0_eec78017",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-05-22T03:36:37Z",
+      "side": 1,
+      "message": "Done\n\nCurious -- are the spaces around ${kerna_config} in quotes strongly recommended?  I skipped it to keep it consistent with the preceding condition.",
+      "parentUuid": "8dfd4deb_dc436d71",
+      "revId": "975931930dba08f65e3620fefe8b0c8d6c89c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
