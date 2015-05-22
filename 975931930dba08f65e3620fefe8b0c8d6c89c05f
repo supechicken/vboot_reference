@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dfd4deb_dc436d71",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-05-22T01:03:28Z",
+      "side": 1,
+      "message": "regex is messy.  you could do instead:\n\n \" ${kerna_config} \" !\u003d *\" cros_legacy \"*",
+      "revId": "975931930dba08f65e3620fefe8b0c8d6c89c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
