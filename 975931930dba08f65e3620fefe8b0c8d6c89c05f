@@ -34,6 +34,24 @@
       "revId": "975931930dba08f65e3620fefe8b0c8d6c89c05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dfd4deb_1c5795e3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-05-22T03:38:29Z",
+      "side": 1,
+      "message": "they\u0027re required for correct behavior ;)\n\nif cros_legacy is the first or last keyword, then the glob won\u0027t match.  the trouble with the regex (and what my use of spaces was fixing) is that it matches substrings.  unlikely, but still incorrect.",
+      "parentUuid": "0d031dc0_eec78017",
+      "revId": "975931930dba08f65e3620fefe8b0c8d6c89c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
