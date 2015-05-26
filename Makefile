@@ -351,21 +351,21 @@ FWLIB21_SRCS = \
 	firmware/lib21/packed_key.c
 
 # Support real TPM unless BIOS sets MOCK_TPM
-ifeq (${MOCK_TPM},)
-VBINIT_SRCS += \
-	firmware/lib/rollback_index.c \
-	firmware/lib/tpm_lite/tlcl.c
+#ifeq (${MOCK_TPM},)
+#VBINIT_SRCS += \
+#	firmware/lib/rollback_index.c \
+#	firmware/lib/tpm_lite/tlcl.c
 
-VBSF_SRCS += \
-	firmware/lib/tpm_bootmode.c
-else
+#VBSF_SRCS += \
+#	firmware/lib/tpm_bootmode.c
+#else
 VBINIT_SRCS += \
 	firmware/lib/mocked_rollback_index.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 
 VBSF_SRCS += \
 	firmware/lib/mocked_tpm_bootmode.c
-endif
+#endif
 
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
