@@ -70,6 +70,30 @@
       "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_fb272f30",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-26T17:48:01Z",
+      "side": 1,
+      "message": "We should use a specific reason, not 0xBF or 0xFF.\n\nWe may want to display a different screen in the firmware (\"fastboot has been requested\") rather than just \"INSERT\" or \"BROKEN\", and we can only do that if we know the intent.",
+      "parentUuid": "0da4fdb8_6bf11366",
+      "range": {
+        "startLine": 254,
+        "startChar": 38,
+        "endLine": 254,
+        "endChar": 42
+      },
+      "revId": "9cb211d61c6f46afe4429d23ff2d5e839b1b6260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
