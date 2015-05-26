@@ -57,6 +57,11 @@
 #define BOOT2_PREV_RESULT_SHIFT 4  /* Number of bits to shift result */
 #define BOOT2_PREV_TRIED                0x40
 
+#define FASTBOOT_OFFSET              8
+#define FASTBOOT_UNLOCK_IN_FW           0x01
+#define FASTBOOT_UNLOCK_REQUESTED       0x02
+#define FASTBOOT_LOCK_REQUESTED         0x04
+
 #define KERNEL_FIELD_OFFSET         11
 #define CRC_OFFSET                  15
 
@@ -200,6 +205,20 @@ int VbNvGet(VbNvContext *context, VbNvParam param, uint32_t *dest)
 
 	case VBNV_FW_REQ_WIPEOUT:
 		*dest = (raw[HEADER_OFFSET] & HEADER_WIPEOUT) ? 1 : 0;
+		return 0;
+
+	case VBNV_FASTBOOT_UNLOCK_IN_FW:
+		*dest = (raw[FASTBOOT_OFFSET] & FASTBOOT_UNLOCK_IN_FW) ? 1 : 0;
+		return 0;
+
+	case VBNV_FASTBOOT_UNLOCK_REQUESTED:
+		*dest = (raw[FASTBOOT_OFFSET] & FASTBOOT_UNLOCK_REQUESTED) ? 1
+			: 0;
+		return 0;
+
+	case VBNV_FASTBOOT_LOCK_REQUESTED:
+		*dest = (raw[FASTBOOT_OFFSET] & FASTBOOT_LOCK_REQUESTED) ? 1
+			: 0;
 		return 0;
 
 	default:
@@ -386,6 +405,27 @@ int VbNvSet(VbNvContext *context, VbNvParam param, uint32_t value)
 			raw[HEADER_OFFSET] |= HEADER_WIPEOUT;
 		else
 			raw[HEADER_OFFSET] &= ~HEADER_WIPEOUT;
+		break;
+
+	case VBNV_FASTBOOT_UNLOCK_IN_FW:
+		if (value)
+			raw[FASTBOOT_OFFSET] |= FASTBOOT_UNLOCK_IN_FW;
+		else
+			raw[FASTBOOT_OFFSET] &= ~FASTBOOT_UNLOCK_IN_FW;
+		break;
+
+	case VBNV_FASTBOOT_UNLOCK_REQUESTED:
+		if (value)
+			raw[FASTBOOT_OFFSET] |= FASTBOOT_UNLOCK_REQUESTED;
+		else
+			raw[FASTBOOT_OFFSET] &= ~FASTBOOT_UNLOCK_REQUESTED;
+		break;
+
+	case VBNV_FASTBOOT_LOCK_REQUESTED:
+		if (value)
+			raw[FASTBOOT_OFFSET] |= FASTBOOT_LOCK_REQUESTED;
+		else
+			raw[FASTBOOT_OFFSET] &= ~FASTBOOT_LOCK_REQUESTED;
 		break;
 
 	default:
