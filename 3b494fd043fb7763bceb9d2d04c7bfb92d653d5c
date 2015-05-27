@@ -22,6 +22,30 @@
       "revId": "3b494fd043fb7763bceb9d2d04c7bfb92d653d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd3d85a0_9a98cac0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-27T23:35:57Z",
+      "side": 1,
+      "message": "Okay. Makes sense. I will clear UNLOCK_IN_FW as well.",
+      "parentUuid": "ed56c9ec_e3485a40",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 12
+      },
+      "revId": "3b494fd043fb7763bceb9d2d04c7bfb92d653d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
