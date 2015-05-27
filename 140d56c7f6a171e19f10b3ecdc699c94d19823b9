@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d162dff_6eb9b356",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T18:35:08Z",
+      "side": 1,
+      "message": "(see vboot1 code review)\n\nUnlock request sounds like VB2_NV_ENABLE_DEV_REQUEST\n\nLock request sounds like existing VB2_NV_DISABLE_DEV_REQUEST",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "140d56c7f6a171e19f10b3ecdc699c94d19823b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
