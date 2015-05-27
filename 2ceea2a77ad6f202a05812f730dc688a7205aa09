@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad73f192_781b1df4",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-27T17:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d162dff_6e3a5395",
+      "range": {
+        "startLine": 93,
+        "startChar": 32,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "2ceea2a77ad6f202a05812f730dc688a7205aa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d11f908_a2bc80fd",
         "filename": "tests/vb2_nvstorage_tests.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-27T16:31:15Z",
       "side": 1,
       "message": "Need unit tests for VB2_NV_FASTBOOT fields, too.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "2ceea2a77ad6f202a05812f730dc688a7205aa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4daef5fa_52ef4930",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-05-27T17:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d11f908_a2bc80fd",
       "range": {
         "startLine": 46,
         "startChar": 2,
