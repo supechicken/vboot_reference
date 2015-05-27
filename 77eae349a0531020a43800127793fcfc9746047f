@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4daef5fa_6d59ce5d",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T18:33:59Z",
+      "side": 1,
+      "message": "Thinking about this more, maybe this should be VBNV_ENABLE_DEV_REQUEST.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "77eae349a0531020a43800127793fcfc9746047f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d162dff_eecca30a",
         "filename": "firmware/include/vboot_nvstorage.h",
         "patchSetId": 2
