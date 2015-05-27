@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4daef5fa_f253ddbe",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:49:33Z",
+      "side": 1,
+      "message": "it checks image integrity, but does not check the image signature.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 50,
+        "endLine": 1014,
+        "endChar": 15
+      },
+      "revId": "9c933c197d1489899825f40d4b2e9c86390c9470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4daef5fa_12c821f5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:49:33Z",
+      "side": 1,
+      "message": "Mismatch isn\u0027t a failure if hash_only\u003d1.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 2
+      },
+      "revId": "9c933c197d1489899825f40d4b2e9c86390c9470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
