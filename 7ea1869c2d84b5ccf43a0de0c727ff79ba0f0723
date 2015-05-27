@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d162dff_8ee6cfb1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:42:40Z",
+      "side": 1,
+      "message": "I would make this more explicit.  Otherwise this is an invitation for a huge security hole at some later point in time:\n\nNOTE: The caller MUST be in read-only firmware, and MUST have just obtained explicit physical confirmation from the user via a trusted input method before calling this function!\n\nAlso, does the caller need to reboot afterwards?",
+      "range": {
+        "startLine": 1032,
+        "startChar": 13,
+        "endLine": 1033,
+        "endChar": 31
+      },
+      "revId": "7ea1869c2d84b5ccf43a0de0c727ff79ba0f0723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_6ee373a3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:42:40Z",
+      "side": 1,
+      "message": "Lock can be done at other times.  For example, by enterprise device policy.\n\nNote that simply calling this does not disable dev mode.  It just stores a request, which will be handled by RO firmware on the next reboot.  This should be documented.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 16,
+        "endLine": 1044,
+        "endChar": 44
+      },
+      "revId": "7ea1869c2d84b5ccf43a0de0c727ff79ba0f0723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4daef5fa_5280e994",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:42:40Z",
+      "side": 1,
+      "message": "This function doesn\u0027t reboot.  Do you mean \"will take effect on next reboot\"?",
+      "range": {
+        "startLine": 1338,
+        "startChar": 16,
+        "endLine": 1338,
+        "endChar": 45
+      },
+      "revId": "7ea1869c2d84b5ccf43a0de0c727ff79ba0f0723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d162dff_cef0c765",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T16:42:40Z",
+      "side": 1,
+      "message": "Storing request to leave developer mode.\n\nLeaving developer mode takes place on next boot.",
+      "range": {
+        "startLine": 1347,
+        "startChar": 18,
+        "endLine": 1347,
+        "endChar": 35
+      },
+      "revId": "7ea1869c2d84b5ccf43a0de0c727ff79ba0f0723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
