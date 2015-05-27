@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_e3485a40",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-05-27T22:10:58Z",
+      "side": 1,
+      "message": "I wonder whether we should also disable FASTBOOT_UNLOCK_IN_FW.\n\nThink of the following scenario:\n\n1. User in normal mode\n\n2. Go to dev mode (fastboot turned on via recovery kernel)\n\n3. In dev mode, set FASTBOOT_UNLOCK_IN_FW\n\n4. Disable dev mode\n\n5. User in normal mode, but FASTBOOT_UNLOCK_IN_FW is still set.  So now the system is easier to compromise the next time.\n\nThe normal-mode OS can still turn it back on, of course - but this way the firmware is secure by default and it requires explicit action by the OS to be less secure.  Instead of the firmware potentially leaving things less secure, and hoping the OS notices and clears UNLOCK_IN_FW if it doesn\u0027t actually still want it.",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 12
+      },
+      "revId": "3b494fd043fb7763bceb9d2d04c7bfb92d653d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
