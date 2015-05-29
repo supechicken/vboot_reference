@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_a966209a",
+        "filename": "firmware/lib20/kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-05-29T18:52:26Z",
+      "side": 1,
+      "message": "kernel",
+      "range": {
+        "startLine": 366,
+        "startChar": 15,
+        "endLine": 366,
+        "endChar": 23
+      },
+      "revId": "8c26cfd8f1c44dc26a47516f52bfeabdc7398dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_1ab03dbb",
+        "filename": "firmware/lib20/kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-05-29T18:52:26Z",
+      "side": 1,
+      "message": "just questioning whether all returns above are ok without updating workbuf_used.",
+      "revId": "8c26cfd8f1c44dc26a47516f52bfeabdc7398dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
