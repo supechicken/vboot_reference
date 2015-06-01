@@ -110,6 +110,7 @@ const PlatformFamily platform_family_array[] = {
   {0x8086, 0x0c04, "Haswell"},     /* mobile */
   {0x8086, 0x0f00, "BayTrail"},    /* mobile */
   {0x8086, 0x1604, "Broadwell"},   /* ult */
+  {0x8086, 0x2006, "Braswell"},   /* ult */
   /* Terminate with NULL entry */
   {0, 0, 0}
 };
@@ -633,6 +634,7 @@ static const struct GpioChipset chipsets_supported[] = {
   { "PCH-LP", FindGpioChipOffset },
   { "INT3437:00", FindGpioChipOffsetByLabel },
   { "BayTrail", BayTrailFindGpioChipOffset },
+  { "Braswell", BayTrailFindGpioChipOffset },
   { NULL },
 };
 
