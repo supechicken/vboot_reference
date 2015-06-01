@@ -16,6 +16,24 @@
       "revId": "d8fbab51a33e8b7d1e5fd814fc7d56df25f4776f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5984fccb_25345809",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-06-01T22:52:34Z",
+      "side": 1,
+      "message": "The memset in coreboot/src/vendorcode/chromeos/vboot2/verstage.c:227 (secdata is part of the vb2_context structure).",
+      "parentUuid": "99a11461_1c0f356b",
+      "revId": "d8fbab51a33e8b7d1e5fd814fc7d56df25f4776f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
