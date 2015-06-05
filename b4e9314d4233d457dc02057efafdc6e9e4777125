@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "79bd40c9_33a6a8ca",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T19:37:44Z",
+      "side": 1,
+      "message": "This change from patchset 2 to patchset 3 is not needed, adds bloat and slows things down.",
+      "revId": "b4e9314d4233d457dc02057efafdc6e9e4777125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9b130f2_eb9fd9ad",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 3
@@ -13,6 +30,40 @@
       "writtenOn": "2015-06-05T19:31:56Z",
       "side": 1,
       "message": "return 0 on next line please -- like the rest of the code.",
+      "revId": "b4e9314d4233d457dc02057efafdc6e9e4777125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9c33859_752ba8b8",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T19:37:44Z",
+      "side": 1,
+      "message": "This change from patchset 2 to patchset 3 breaks the code.",
+      "revId": "b4e9314d4233d457dc02057efafdc6e9e4777125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bd40c9_13a1acb1",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T19:37:44Z",
+      "side": 1,
+      "message": "This change from patchset 2 to patchset 3 breaks the code.",
       "revId": "b4e9314d4233d457dc02057efafdc6e9e4777125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
