@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bd40c9_53824409",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T20:39:28Z",
+      "side": 1,
+      "message": "Comment is not quite correct.\n\n\"The assumption here is the Basemapping table is arranged in decreasing order of base address and ends with 0. A UID with value 0 indicates an invalid range and causes an eary return to avoid the directory opening code below\"",
+      "revId": "cec5b9725020a58fff053a55739703f497d0de25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
