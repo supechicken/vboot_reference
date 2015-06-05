@@ -52,6 +52,24 @@
       "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bd40c9_b391d85c",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T20:39:28Z",
+      "side": 1,
+      "message": "Ah, I was confused by your use of the word \"data\", which is a parameter name for this function.\n\nReplacing a chain of if else if statements by a table lookup give you the ability to reuse the old BayTrailFindGpioChipOffset code for Braswell.\n\nAs the values are unsigned and the final entry in the table is 0 you will always match, regardless of the value parsed from ACPI.\n\nI am not sure I can think of any code which involves a loop which is simpler than a linear scan of a table. For tables involving 4 or 5 elements it doesn\u0027t seem sensible to bring out heavier guns like binary search, or unrolling it into cache unfriendly decision tree.\n\nAdding in an extra test to avoid a calls to the filesystem to scan a directory, do some string manipulation, open another file, read it, , seems like a good payoff for 2 words of data and 2 instructions.",
+      "parentUuid": "39b828d4_0d7ee126",
+      "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
