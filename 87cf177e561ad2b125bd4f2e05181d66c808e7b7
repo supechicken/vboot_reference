@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bd40c9_d302d43b",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-05T16:51:30Z",
+      "side": 1,
+      "message": "No parens around the return 0.\n\nYou should be checking this condition within the loop. There\u0027s no guarantee your  data is sane coming in here.  But what I don\u0027t understand is you have your terminating uid fields as the first ones in the array.  Please put those at the end of the arrays so you can check the terminating entry (uid \u003d\u003d 0) within the loop.",
+      "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
