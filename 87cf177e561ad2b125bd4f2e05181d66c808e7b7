@@ -34,6 +34,24 @@
       "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_0d7ee126",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-06-05T19:24:17Z",
+      "side": 1,
+      "message": "In this case i was referring to *gpio_num which does not come from this module. It\u0027s parsed from ACPI. But I see you are encoding ranges with only starting offsets. Seems not that straight forward but it does work.",
+      "parentUuid": "599a3c79_d202c43b",
+      "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
