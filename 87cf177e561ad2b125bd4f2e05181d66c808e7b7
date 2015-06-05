@@ -16,6 +16,24 @@
       "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "599a3c79_d202c43b",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-06-05T17:40:41Z",
+      "side": 1,
+      "message": "The function is static, so the \"data\" is coming from within this file from either of the {Braswell,Baytrail}FindGpioChipOffset functions. The *gpio_num and *offset values are not constrained (except they are unsigned so not negative).\n\nThe logic is to find the the largest entry which is less than or equal to the provided key, but to have an error if the key is too big.\n\nSo you could reverse the values in the table, add a final entry with a ((unsigned int) -1) entry and do something like this (cf https://www.youtube.com/watch?v\u003dBvmRI6K8TS8 ) and hope no one spots the boundary condition error. \n\n\nunsigned int best_uid\u003ddata-\u003euid;\nif (*gpio_num \u003e\u003d max_good_value) return 0;\n\ndo { \n   if (*gpio_num \u003c data-\u003ebase)\n         break;\n   best_uid \u003d data-\u003euid;\n   data++;\n}\n\nwhile(0 !\u003d (ent \u003d ....\n    ....\n    if (best_uid \u003d\u003d uid_value) {\n       match++;\n       break;\n    } \n\nYou could make the data table have the upper limit of the range which simplifies the logic (and avoids the problem of answering the previous question) but makes the values less obvious.",
+      "parentUuid": "79bd40c9_d302d43b",
+      "revId": "87cf177e561ad2b125bd4f2e05181d66c808e7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
