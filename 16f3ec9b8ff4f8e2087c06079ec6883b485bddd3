@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9d41838_f02f8813",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T17:37:08Z",
+      "side": 1,
+      "message": "(We talked about this in person.  That\u0027s what we did in vboot1, and it turned out to be harder for the caller to implement.)",
+      "parentUuid": "99e914d2_9783d353",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99e914d2_97b59340",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2015-06-06T00:21:25Z",
       "side": 1,
       "message": "vb2_fail is not exported. vb2api_fail?",
+      "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d41838_35362275",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T17:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e914d2_97b59340",
       "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_c23044a6",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T17:37:08Z",
+      "side": 1,
+      "message": "vb2api_kernel_phase1() explicitly zeros the preamble size, and must be called before other kernel functions.  So if the preamble size is non-zero at this point, it has to be because it\u0027s the kernel preamble.",
+      "parentUuid": "796b8031_a3d7bab6",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 151,
+        "endChar": 31
+      },
+      "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_03ddee8c",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2015-06-06T00:21:25Z",
       "side": 1,
       "message": "maybe we should update kernel_version_secdatak only after vb2_secdatak_set is successful?",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 51
+      },
+      "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_dbc00920",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-09T17:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796b8031_03ddee8c",
       "range": {
         "startLine": 265,
         "startChar": 2,
