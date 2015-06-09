@@ -61,7 +61,7 @@ uint64_t VbExGetTimer(void)
 	return (uint64_t)tv.tv_sec * 1000000 + (uint64_t)tv.tv_usec;
 }
 
-VbError_t VbExNvStorageRead(uint8_t *buf)
+VbError_t __attribute__((weak)) VbExNvStorageRead(uint8_t *buf)
 {
 	return VBERROR_SUCCESS;
 }
