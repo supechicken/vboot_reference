@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "d9d9cc70_e290e0a2",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-06-09T17:52:16Z",
+      "side": 1,
+      "message": "i thought it would be nice to add additional safety. firmware technically can call this function before calling vb2api_kernel_phase1. workbuf_kernel_key_size is an indication that vb2api_kernel_phase1 has been called.",
+      "parentUuid": "d9d9cc70_c23044a6",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 151,
+        "endChar": 31
+      },
+      "revId": "16f3ec9b8ff4f8e2087c06079ec6883b485bddd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796b8031_03ddee8c",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 2
