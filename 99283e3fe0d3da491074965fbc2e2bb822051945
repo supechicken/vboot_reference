@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "992af412_ae0e8b6b",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109105
+      },
+      "writtenOn": "2015-06-11T17:50:52Z",
+      "side": 1,
+      "message": "I don\u0027t get the purpose of the change in this file. There is no new test that requires this change from static storage to heap-based one, right?",
+      "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "797aa034_4b6d8529",
         "filename": "tests/cgptlib_test.c",
         "patchSetId": 1
