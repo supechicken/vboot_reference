@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "79254042_5fb67ec6",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1127965
+      },
+      "writtenOn": "2015-06-11T20:59:20Z",
+      "side": 1,
+      "message": "Done (moved to cgpt_repair.c)",
+      "parentUuid": "b92b3816_d41d95f2",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 52
+      },
+      "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992af412_ae0e8b6b",
         "filename": "tests/cgptlib_test.c",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2015-06-11T17:50:52Z",
       "side": 1,
       "message": "I don\u0027t get the purpose of the change in this file. There is no new test that requires this change from static storage to heap-based one, right?",
+      "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_9f5ad6ff",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127965
+      },
+      "writtenOn": "2015-06-11T20:59:20Z",
+      "side": 1,
+      "message": "It was necessary so that when GptRepair tries to free a buffer it would be able to do so. Anyway it\u0027s not necessary anymore.",
+      "parentUuid": "992af412_ae0e8b6b",
       "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
