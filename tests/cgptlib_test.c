@@ -128,23 +128,26 @@ static void ZeroHeadersEntries(GptData *gpt)
  */
 static GptData *GetEmptyGptData(void)
 {
-	static GptData gpt;
-	static uint8_t primary_header[MAX_SECTOR_SIZE];
-	static uint8_t primary_entries[PARTITION_ENTRIES_SIZE];
-	static uint8_t secondary_header[MAX_SECTOR_SIZE];
-	static uint8_t secondary_entries[PARTITION_ENTRIES_SIZE];
+	GptData* gpt = VbExMalloc(sizeof(GptData));
 
-	Memset(&gpt, 0, sizeof(gpt));
-	gpt.primary_header = primary_header;
-	gpt.primary_entries = primary_entries;
-	gpt.secondary_header = secondary_header;
-	gpt.secondary_entries = secondary_entries;
-	ZeroHeadersEntries(&gpt);
+	gpt->primary_header = VbExMalloc(MAX_SECTOR_SIZE);
+	gpt->primary_entries = VbExMalloc(PARTITION_ENTRIES_SIZE);
+	gpt->secondary_header = VbExMalloc(MAX_SECTOR_SIZE);
+	gpt->secondary_entries = VbExMalloc(PARTITION_ENTRIES_SIZE);
+	ZeroHeadersEntries(gpt);
 
 	/* Initialize GptData internal states. */
-	gpt.current_kernel = CGPT_KERNEL_ENTRY_NOT_FOUND;
+	gpt->current_kernel = CGPT_KERNEL_ENTRY_NOT_FOUND;
 
-	return &gpt;
+	return gpt;
+}
+
+void FreeGptData(GptData* gpt) {
+	VbExFree(gpt->primary_header);
+	VbExFree(gpt->primary_entries);
+	VbExFree(gpt->secondary_header);
+	VbExFree(gpt->secondary_entries);
+	VbExFree(gpt);
 }
 
 /*
@@ -238,6 +241,8 @@ static int TestBuildTestGptData(void)
 	EXPECT(GPT_SUCCESS == GptInit(gpt));
 	gpt->sector_bytes = 0;
 	EXPECT(GPT_ERROR_INVALID_SECTOR_SIZE == GptInit(gpt));
+
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -274,6 +279,7 @@ static int ParameterTests(void)
 		EXPECT(cases[i].expected_retval == CheckParameters(gpt));
 	}
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -301,6 +307,7 @@ static int HeaderCrcTest(void)
 	gpt->primary_header[h1->size] ^= 0x5a;
 	EXPECT(HeaderCrc(h1) == h1->header_crc32);
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -354,6 +361,7 @@ static int HeaderSameTest(void)
 	h3.entries_crc32++;
 	EXPECT(1 == HeaderFieldsSame(h1, &h3));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -376,6 +384,7 @@ static int SignatureTest(void)
 		EXPECT(1 == CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 	}
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -412,6 +421,8 @@ static int RevisionTest(void)
 		EXPECT(CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0) ==
 		       cases[i].expect_rv);
 	}
+
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -445,6 +456,8 @@ static int SizeTest(void)
 		EXPECT(CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0) ==
 		       cases[i].expect_rv);
 	}
+
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -466,6 +479,7 @@ static int CrcFieldTest(void)
 	EXPECT(0 == CheckHeader(h1, 0, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 	EXPECT(0 == CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -493,6 +507,7 @@ static int ReservedFieldsTest(void)
 	EXPECT(1 == CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 #endif
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -534,6 +549,7 @@ static int SizeOfPartitionEntryTest(void) {
 		       cases[i].expect_rv);
 	}
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -559,6 +575,7 @@ static int NumberOfPartitionEntriesTest(void)
 	EXPECT(0 == CheckHeader(h1, 0, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, GPT_FLAG_EXTERNAL));
 	EXPECT(0 == CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, GPT_FLAG_EXTERNAL));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -626,6 +643,7 @@ static int MyLbaTest(void)
 	EXPECT(1 == CheckHeader(h1, 0, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 	EXPECT(1 == CheckHeader(h2, 1, gpt->streaming_drive_sectors, gpt->gpt_drive_sectors, 0));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -679,6 +697,7 @@ static int FirstUsableLbaAndLastUsableLbaTest(void)
 		       cases[i].secondary_rv);
 	}
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -702,6 +721,7 @@ static int EntriesCrcTest(void)
 	EXPECT(GPT_ERROR_CRC_CORRUPTED == CheckEntries(e1, h1));
 	EXPECT(GPT_ERROR_CRC_CORRUPTED == CheckEntries(e2, h1));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -743,6 +763,7 @@ static int ValidEntryTest(void)
 	RefreshCrc32(gpt);
 	EXPECT(0 == CheckEntries(e1, h1));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -819,6 +840,7 @@ static int OverlappedPartitionTest(void) {
 
 		EXPECT(cases[i].overlapped == CheckEntries(e, h));
 	}
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1041,6 +1063,7 @@ static int SanityCheckTest(void)
 	EXPECT(GPT_SUCCESS == GptSanityCheck(gpt));
 	EXPECT(MASK_PRIMARY == gpt->valid_headers);
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1119,6 +1142,7 @@ static int EntryAttributeGetSetTest(void)
 	EXPECT(3 == GetEntryPriority(e));
 	override_priority = 0;
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1139,6 +1163,7 @@ static int EntryTypeTest(void)
 	EXPECT(0 == IsUnusedEntry(e));
 	EXPECT(0 == IsKernelEntry(e));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1174,6 +1199,7 @@ static int NoValidKernelEntryTest(void)
 	EXPECT(GPT_ERROR_NO_VALID_KERNEL ==
 	       GptNextKernelEntry(gpt, NULL, NULL));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1209,6 +1235,7 @@ static int GetNextNormalTest(void)
 	       GptNextKernelEntry(gpt, &start, &size));
 	EXPECT(-1 == gpt->current_kernel);
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1236,6 +1263,7 @@ static int GetNextPrioTest(void)
 	EXPECT(GPT_ERROR_NO_VALID_KERNEL ==
 	       GptNextKernelEntry(gpt, &start, &size));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1261,6 +1289,7 @@ static int GetNextTriesTest(void)
 	EXPECT(GPT_ERROR_NO_VALID_KERNEL ==
 	       GptNextKernelEntry(gpt, &start, &size));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1348,7 +1377,7 @@ static int GptUpdateTest(void)
 	EXPECT(GPT_ERROR_INVALID_UPDATE_TYPE ==
 	       GptUpdateKernelEntry(gpt, GPT_UPDATE_ENTRY_BAD));
 
-
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1381,6 +1410,7 @@ static int GptOverridePriorityTest(void)
 	EXPECT(GPT_SUCCESS == GptNextKernelEntry(gpt, &start, &size));
 	EXPECT(KERNEL_A == gpt->current_kernel);
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1399,6 +1429,7 @@ static int UpdateInvalidKernelTypeTest(void)
 	EXPECT(GPT_ERROR_INVALID_UPDATE_TYPE ==
 	       GptUpdateKernelEntry(gpt, 99));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1458,6 +1489,7 @@ static int DuplicateUniqueGuidTest(void)
 		EXPECT(cases[i].duplicate == CheckEntries(e, h));
 	}
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1476,6 +1508,7 @@ static int GetKernelGuidTest(void)
 	GetCurrentKernelUniqueGuid(gpt, &g);
 	EXPECT(!Memcmp(&g, &e[1].unique, sizeof(Guid)));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 
@@ -1554,6 +1587,7 @@ static int CheckHeaderOffDevice()
 	EXPECT(1 == CheckHeader(secondary_header, 1, gpt->streaming_drive_sectors,
 		gpt->gpt_drive_sectors, GPT_FLAG_EXTERNAL));
 
+	FreeGptData(gpt);
 	return TEST_OK;
 }
 

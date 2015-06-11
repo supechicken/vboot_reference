@@ -316,8 +316,6 @@ void GptRepair(GptData *gpt)
 {
 	GptHeader *header1 = (GptHeader *)(gpt->primary_header);
 	GptHeader *header2 = (GptHeader *)(gpt->secondary_header);
-	GptEntry *entries1 = (GptEntry *)(gpt->primary_entries);
-	GptEntry *entries2 = (GptEntry *)(gpt->secondary_entries);
 	int entries_size;
 
 	/* Need at least one good header and one good set of entries. */
@@ -351,12 +349,16 @@ void GptRepair(GptData *gpt)
 	entries_size = header1->size_of_entry * header1->number_of_entries;
 	if (MASK_PRIMARY == gpt->valid_entries) {
 		/* Primary is good, secondary is bad */
-		Memcpy(entries2, entries1, entries_size);
+		VbExFree(gpt->secondary_entries);
+		gpt->secondary_entries = VbExMalloc(entries_size);
+		Memcpy(gpt->secondary_entries, gpt->primary_entries, entries_size);
 		gpt->modified |= GPT_MODIFIED_ENTRIES2;
 	}
 	else if (MASK_SECONDARY == gpt->valid_entries) {
 		/* Secondary is good, primary is bad */
-		Memcpy(entries1, entries2, entries_size);
+		VbExFree(gpt->primary_entries);
+		gpt->primary_entries = VbExMalloc(entries_size);
+		Memcpy(gpt->primary_entries, gpt->secondary_entries, entries_size);
 		gpt->modified |= GPT_MODIFIED_ENTRIES1;
 	}
 	gpt->valid_entries = MASK_BOTH;

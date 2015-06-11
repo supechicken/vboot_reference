@@ -78,6 +78,9 @@ void VbExFree(void *ptr)
 {
 	struct alloc_node **nodep, *next;
 
+	if (!ptr)
+		return;
+
 	nodep = find_node(ptr);
 	if (nodep) {
 		next = (*nodep)->next;
