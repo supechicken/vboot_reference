@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19652496_ebb54d6f",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-11T06:25:52Z",
+      "side": 1,
+      "message": "Hmm.  This is currently the only heap operation in cgptlib.  Previously it made no assumption about the buffers, which seems like a better bet in the long run.  It\u0027s possible these buffers could be mmap()\u0027d, in which case reallocation would do the wrong thing.\n\nAre we sure all callers pass buffers to it which were allocated via VbExMalloc()?  Actually, I\u0027m pretty sure that\u0027s not true; cgpt/cgpt_common.c uses malloc()/free() instead of VbExMalloc()/VbExFree().  And cgpt_create() AllocAndClear() uses calloc().\n\nAllocAndReadGptData() does allocate all the buffers using VbExMalloc(), but since it always allocates all the buffers (and with the same buffer size for primary and secondary), this code doesn\u0027t help in that case.\n\nPerhaps it would be better to ensure the caller doesn\u0027t pass in NULL buffers.  I\u0027ll take a look at that tomorrow.",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 52
+      },
+      "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "797aa034_4b6d8529",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-06-11T06:25:52Z",
+      "side": 1,
+      "message": "Please update description to indicate this should be paired with a call to FreeGptData().",
+      "range": {
+        "startLine": 125,
+        "startChar": 24,
+        "endLine": 125,
+        "endChar": 71
+      },
+      "revId": "99283e3fe0d3da491074965fbc2e2bb822051945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
