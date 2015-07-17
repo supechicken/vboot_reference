@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586b1a6a_79937363",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-07-17T21:23:12Z",
+      "side": 1,
+      "message": "I bet $10 this would come back to bite you as soon as somebody tries to implement the firmware part of this. ;) I\u0027d suggest doing something like CL:240723 here right away.",
+      "revId": "999af77aa444cf5e204ff93d04bdbd074af864dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8754a3f_381de693",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-07-17T21:23:12Z",
+      "side": 1,
+      "message": "nit: sizeof(RYU_ROOT_KEY_HASH_MAGIC)?",
+      "revId": "999af77aa444cf5e204ff93d04bdbd074af864dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
