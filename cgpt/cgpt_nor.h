@@ -9,6 +9,12 @@
 #ifndef VBOOT_REFERCENCE_CGPT_CGPT_NOR_H_
 #define VBOOT_REFERCENCE_CGPT_CGPT_NOR_H_
 
+#include <stdbool.h>
+
+// Return true if /sys/class/mtd/|mtd_name|/type is "nor". Note that |mtd_name|
+// should be "mtdX" where X is a number.
+bool IsNorMtd(const char *mtd_name);
+
 // Obtain the MTD size from its sysfs node. |mtd_device| should point to
 // a dev node such as /dev/mtd0. This function returns 0 on success.
 int GetMtdSize(const char *mtd_device, uint64_t *size);
