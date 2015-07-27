@@ -9,7 +9,6 @@
 #include <ftw.h>
 #include <inttypes.h>
 #include <linux/major.h>
-#include <stdbool.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -24,6 +23,27 @@
 #include "cgpt_nor.h"
 
 static const char FLASHROM_PATH[] = "/usr/sbin/flashrom";
+
+bool IsNorMtd(const char *mtd_name) {
+  bool ret = false;
+  char *sysfs_name;
+  if (asprintf(&sysfs_name, "/sys/class/%s/type", mtd_name) == -1) {
+    return ret;
+  }
+
+  FILE *fp = fopen(sysfs_name, "r");
+  free(sysfs_name);
+  if (fp == NULL) {
+    return ret;
+  }
+
+  char buf[4];
+  fgets(buf, sizeof(buf), fp);
+  fclose(fp);
+  buf[sizeof(buf) - 1] = '\0';
+  ret = strncmp(buf, "nor", 3) == 0;
+  return ret;
+}
 
 // Obtain the MTD size from its sysfs node.
 int GetMtdSize(const char *mtd_device, uint64_t *size) {

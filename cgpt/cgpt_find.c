@@ -253,7 +253,7 @@ static int scan_real_devs(CgptFindParams *params) {
     if (sscanf(line, "%64[^:]: %" PRIx64 " %x \"%127[^\"]\"",
                partname, &sz, &erasesz, name) != 4)
       continue;
-    if (strcmp(partname, "mtd0") == 0) {
+    if (strcmp(partname, "mtd0") == 0 && IsNorMtd(partname)) {
       char temp_dir[] = "/tmp/cgpt_find.XXXXXX";
       if (params->drive_size == 0) {
         if (GetMtdSize("/dev/mtd0", &params->drive_size) != 0) {
