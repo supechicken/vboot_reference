@@ -59,6 +59,23 @@ int HexStringToUint8(const char* string, uint8_t* value) {
   return 0;
 }
 
+int HexStringToArray(const char* string, uint8_t* value, int max_bytes) {
+  int len = strlen(string);
+  if (!strncmp(string, "0x", 2)) {
+    string += 2;
+    len -= 2;
+  }
+  for (; len > 0; string += 2, len -= 2, max_bytes--, value++) {
+    if (!max_bytes || len < 2) {
+      return 1;
+    }
+    if (sscanf(string, "%2hhx", value) != 1) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 /* TPM error check and reporting.  Returns 0 if |result| is 0 (TPM_SUCCESS).
  * Otherwise looks up a TPM error in the error table and prints the error if
  * found.  Then returns min(result, OTHER_ERROR) since some error codes, such
@@ -169,15 +186,25 @@ static uint32_t HandlerPCRRead(void) {
   uint8_t value[TPM_PCR_DIGEST];
   uint32_t result;
   int i;
-  if (nargs != 3) {
-    fprintf(stderr, "usage: tpmc pcrread <index>\n");
+  if (nargs != 3 && nargs != 4) {
+    fprintf(stderr, "usage: tpmc pcrread <index> [<extend_hash>]\n");
     exit(OTHER_ERROR);
   }
   if (HexStringToUint32(args[2], &index) != 0) {
     fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
     exit(OTHER_ERROR);
   }
-  result = TlclPCRRead(index, value, sizeof(value));
+  if (nargs == 4) {
+    uint8_t extend[TPM_PCR_DIGEST];
+    memset(extend, 0, TPM_PCR_DIGEST);
+    if (HexStringToArray(args[3], extend, TPM_PCR_DIGEST)) {
+      fprintf(stderr, "<extend_hash> must be a 20-byte hex string\n");
+      exit(OTHER_ERROR);
+    }
+    result = TlclExtend(index, extend, value);
+  } else {
+    result = TlclPCRRead(index, value, sizeof(value));
+  }
   if (result == 0) {
     for (i = 0; i < TPM_PCR_DIGEST; i++) {
       printf("%02x", value[i]);
@@ -395,7 +422,7 @@ command_record command_table[] = {
     HandlerWrite },
   { "read", "read", "read from a space (read <index> <size>)",
     HandlerRead },
-  { "pcrread", "pcr", "read from a PCR (pcrread <index>)",
+  { "pcrread", "pcr", "read from a PCR (pcrread <index> [<extend_hash>])",
     HandlerPCRRead },
   { "getownership", "geto", "print state of TPM ownership",
     HandlerGetOwnership },
