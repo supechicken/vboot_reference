@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a5ce834_6a3fb7e5",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-30T21:53:50Z",
+      "side": 1,
+      "message": "Boot system when AC detected (0\u003dno, 1\u003dyes)",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 51
+      },
+      "revId": "269b7c05168c19cef2c5d7b993c139a14f33726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2e188f_ee5f3ff3",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-30T21:53:50Z",
+      "side": 1,
+      "message": "Naming convention is currently VB2_NV_{offset}_{field}\n\nSo:\n\nVB2_NV_FW_UNLOCK_FASTBOOT\nVB2_NV_FW_BOOT_ON_AC_DETECT",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "269b7c05168c19cef2c5d7b993c139a14f33726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa33dcf3_8f3f998d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-30T21:53:50Z",
+      "side": 1,
+      "message": "Technically *all* of these settings are firmware related...",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 22
+      },
+      "revId": "269b7c05168c19cef2c5d7b993c139a14f33726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6260ef_0f8609f1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-30T21:53:50Z",
+      "side": 1,
+      "message": "boot_on_ac_detect?\n\nIt\u0027s implemented in the EC on the current platform, but that may not be true on future platforms (where it may be the security processor or PMIC which implements this).",
+      "range": {
+        "startLine": 540,
+        "startChar": 32,
+        "endLine": 540,
+        "endChar": 45
+      },
+      "revId": "269b7c05168c19cef2c5d7b993c139a14f33726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
