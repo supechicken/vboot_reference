@@ -88,6 +88,8 @@ enum vb2_nv_param {
 
 	/* Fastboot: Unlock in firmware, 0=disabled, 1=enabled. */
 	VB2_NV_FASTBOOT_UNLOCK_IN_FW,
+	/* EC: BOOT_ON_AC settings, 0=disabled, 1=enabled. */
+	VB2_NV_EC_BOOT_ON_AC,
 };
 
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */

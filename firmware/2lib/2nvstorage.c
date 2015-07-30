@@ -158,8 +158,12 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 		return GETBIT(VB2_NV_OFFS_HEADER , VB2_NV_HEADER_WIPEOUT);
 
 	case VB2_NV_FASTBOOT_UNLOCK_IN_FW:
-		return GETBIT(VB2_NV_OFFS_FASTBOOT,
+		return GETBIT(VB2_NV_OFFS_FW_SETTINGS,
 			      VB2_NV_FASTBOOT_FLAG_UNLOCK_IN_FW);
+
+	case VB2_NV_EC_BOOT_ON_AC:
+		return GETBIT(VB2_NV_OFFS_FW_SETTINGS,
+			      VB2_NV_EC_FLAG_BOOT_ON_AC);
 	}
 
 	/*
@@ -312,7 +316,12 @@ void vb2_nv_set(struct vb2_context *ctx,
 		break;
 
 	case VB2_NV_FASTBOOT_UNLOCK_IN_FW:
-		SETBIT(VB2_NV_OFFS_FASTBOOT, VB2_NV_FASTBOOT_FLAG_UNLOCK_IN_FW);
+		SETBIT(VB2_NV_OFFS_FW_SETTINGS,
+		       VB2_NV_FASTBOOT_FLAG_UNLOCK_IN_FW);
+		break;
+
+	case VB2_NV_EC_BOOT_ON_AC:
+		SETBIT(VB2_NV_OFFS_FW_SETTINGS, VB2_NV_EC_FLAG_BOOT_ON_AC);
 		break;
 
 	}

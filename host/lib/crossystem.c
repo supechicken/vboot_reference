@@ -534,9 +534,11 @@ int VbGetSystemPropertyInt(const char* name) {
   } else if (!strcasecmp(name,"recovery_reason")) {
     value = GetVdatInt(VDAT_INT_RECOVERY_REASON);
   }
-  /* Fastboot-related parameters */
+  /* Firmware settings related parameters */
   else if (!strcasecmp(name, "fastboot_unlock_in_fw")) {
 	  value = VbGetNvStorage(VBNV_FASTBOOT_UNLOCK_IN_FW);
+  } else if (!strcasecmp(name, "ec_boot_on_ac")) {
+	  value = VbGetNvStorage(VBNV_EC_BOOT_ON_AC);
   }
 
   return value;
@@ -663,6 +665,8 @@ int VbSetSystemPropertyInt(const char* name, int value) {
     return VbSetNvStorage_WithBackup(VBNV_DEV_BOOT_FASTBOOT_FULL_CAP, value);
   } else if (!strcasecmp(name, "fastboot_unlock_in_fw")) {
     return VbSetNvStorage_WithBackup(VBNV_FASTBOOT_UNLOCK_IN_FW, value);
+  } else if (!strcasecmp(name, "ec_boot_on_ac")) {
+    return VbSetNvStorage_WithBackup(VBNV_EC_BOOT_ON_AC, value);
   }
 
   return -1;

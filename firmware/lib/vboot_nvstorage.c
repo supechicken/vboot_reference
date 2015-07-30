@@ -57,8 +57,9 @@
 #define BOOT2_PREV_RESULT_SHIFT 4  /* Number of bits to shift result */
 #define BOOT2_PREV_TRIED                0x40
 
-#define FASTBOOT_OFFSET              8
+#define FW_SETTINGS_OFFSET              8
 #define FASTBOOT_UNLOCK_IN_FW           0x01
+#define EC_BOOT_ON_AC                   0x02
 
 #define KERNEL_FIELD_OFFSET         11
 #define CRC_OFFSET                  15
@@ -206,7 +207,12 @@ int VbNvGet(VbNvContext *context, VbNvParam param, uint32_t *dest)
 		return 0;
 
 	case VBNV_FASTBOOT_UNLOCK_IN_FW:
-		*dest = (raw[FASTBOOT_OFFSET] & FASTBOOT_UNLOCK_IN_FW) ? 1 : 0;
+		*dest = (raw[FW_SETTINGS_OFFSET] & FASTBOOT_UNLOCK_IN_FW) ? 1 :
+		0;
+		return 0;
+
+	case VBNV_EC_BOOT_ON_AC:
+		*dest = (raw[FW_SETTINGS_OFFSET] & EC_BOOT_ON_AC) ? 1 : 0;
 		return 0;
 
 	default:
@@ -397,9 +403,16 @@ int VbNvSet(VbNvContext *context, VbNvParam param, uint32_t value)
 
 	case VBNV_FASTBOOT_UNLOCK_IN_FW:
 		if (value)
-			raw[FASTBOOT_OFFSET] |= FASTBOOT_UNLOCK_IN_FW;
+			raw[FW_SETTINGS_OFFSET] |= FASTBOOT_UNLOCK_IN_FW;
 		else
-			raw[FASTBOOT_OFFSET] &= ~FASTBOOT_UNLOCK_IN_FW;
+			raw[FW_SETTINGS_OFFSET] &= ~FASTBOOT_UNLOCK_IN_FW;
+		break;
+
+	case VBNV_EC_BOOT_ON_AC:
+		if (value)
+			raw[FW_SETTINGS_OFFSET] |= EC_BOOT_ON_AC;
+		else
+			raw[FW_SETTINGS_OFFSET] &= ~EC_BOOT_ON_AC;
 		break;
 
 	default:

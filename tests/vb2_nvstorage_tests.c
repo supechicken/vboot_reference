@@ -50,6 +50,7 @@ static struct nv_field nvfields[] = {
 	{VB2_NV_OPROM_NEEDED, 0, 1, 0, "oprom needed"},
 	{VB2_NV_BACKUP_NVRAM_REQUEST, 0, 1, 0, "backup nvram request"},
 	{VB2_NV_FASTBOOT_UNLOCK_IN_FW, 0, 1, 0, "fastboot unlock in fw"},
+	{VB2_NV_EC_BOOT_ON_AC, 0, 1, 0, "ec boot on ac"},
 	{0, 0, 0, 0, NULL}
 };
 
