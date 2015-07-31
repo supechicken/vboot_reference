@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca2490af_c717c252",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2015-07-31T03:52:18Z",
+      "side": 1,
+      "message": "I\u0027d agree: this should use a full 40 chars and not implicitly zero-pad.",
+      "parentUuid": "8a2e188f_f1cba0c4",
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a59ac45_2e5f9370",
         "filename": "utility/tpmc.c",
         "patchSetId": 1
@@ -76,6 +94,30 @@
       "writtenOn": "2015-07-31T01:36:07Z",
       "side": 1,
       "message": "I think it\u0027s probably OK to change this, I don\u0027t think this command is used in any script.",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 12
+      },
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6260ef_580f29be",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000945
+      },
+      "writtenOn": "2015-07-31T03:52:18Z",
+      "side": 1,
+      "message": "I think this should be separate too. Short name can be \"extend\". Was there a reason to merge this into pcrread?",
+      "parentUuid": "ea295486_74d8c09f",
       "range": {
         "startLine": 425,
         "startChar": 5,
