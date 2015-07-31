@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a2e188f_f1cba0c4",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2015-07-31T01:36:07Z",
+      "side": 1,
+      "message": "Do you also want to check that len \u003d\u003d max_bytes * 2?  It doesn\u0027t seem that useful to allow zero-padding (except maybe for testing), and a string shorter than 40 chars is likely to be an error (and could be a common one too).",
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_2e5f9370",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2015-07-31T01:36:07Z",
+      "side": 1,
+      "message": "If you\u0027re going to overload this function to also extend a PCR, perhaps you might change its name to (for instance, HandlerPCR).",
+      "range": {
+        "startLine": 184,
+        "startChar": 23,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca4d7087_ae4c9b94",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2015-07-31T01:36:07Z",
+      "side": 1,
+      "message": "Change this too.",
+      "range": {
+        "startLine": 190,
+        "startChar": 33,
+        "endLine": 190,
+        "endChar": 40
+      },
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea295486_74d8c09f",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2015-07-31T01:36:07Z",
+      "side": 1,
+      "message": "I think it\u0027s probably OK to change this, I don\u0027t think this command is used in any script.",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 12
+      },
+      "revId": "a2e77bc139078bac56b64a9acfea8deb9c6191de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
