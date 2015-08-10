@@ -25,7 +25,8 @@
 #include "crossystem.h"
 #include "crossystem_arch.h"
 
-#define MOSYS_PATH "/usr/sbin/mosys"
+#define MOSYS_CROS_PATH "/usr/sbin/mosys"
+#define MOSYS_ANDROID_PATH "/system/bin/mosys"
 
 /* Base name for firmware FDT files */
 #define FDT_BASE_PATH "/proc/device-tree/firmware/chromeos"
@@ -68,6 +69,34 @@ const PlatformFamily platform_family_array[] = {
   /* Terminate with NULL entry */
   {NULL, NULL}
 };
+
+static char* GetMosysPath() {
+	static char path[PATH_MAX];
+	int fd;
+	struct stat s;
+
+	/* In Android, mosys utility located in /system/bin
+	   check if file exists.  Using fstat because for some
+	   reason, stat() was seg faulting in Android */
+	fd = open(MOSYS_ANDROID_PATH, O_RDONLY);
+	if (fstat(fd, &s) == 0) {
+		strcpy(path, MOSYS_ANDROID_PATH);
+		close(fd);
+		return path;
+	}
+	close(fd);
+
+	fd = open(MOSYS_CROS_PATH, O_RDONLY);
+	if (fstat(fd, &s) == 0) {
+		strcpy(path, MOSYS_CROS_PATH);
+		close(fd);
+		return path;
+	}
+	close(fd);
+
+	return NULL;
+
+}
 
 static int FindEmmcDev(void) {
   int mmcblk;
@@ -312,8 +341,8 @@ static int ExecuteMosys(char * const argv[], char *buf, size_t bufsize) {
         exit(1);
       }
     }
-    /* Execute mosys */
-    execv(MOSYS_PATH, argv);
+
+    execv(argv[0], argv);
     /* We shouldn't be here; exit now! */
     VBDEBUG(("execv() of mosys failed\n"));
     close(mosys_to_crossystem[1]);
@@ -346,8 +375,9 @@ static int ExecuteMosys(char * const argv[], char *buf, size_t bufsize) {
 
 static int VbReadNvStorage_mosys(VbNvContext* vnc) {
   char hexstring[VBNV_BLOCK_SIZE * 2 + 32];  /* Reserve extra 32 bytes */
+  char *path = GetMosysPath();
   char * const argv[] = {
-    MOSYS_PATH, "nvram", "vboot", "read", NULL
+    path, "nvram", "vboot", "read", NULL
   };
   char hexdigit[3];
   int i;
@@ -365,8 +395,9 @@ static int VbReadNvStorage_mosys(VbNvContext* vnc) {
 
 static int VbWriteNvStorage_mosys(VbNvContext* vnc) {
   char hexstring[VBNV_BLOCK_SIZE * 2 + 1];
+  char *path = GetMosysPath();
   char * const argv[] = {
-    MOSYS_PATH, "nvram", "vboot", "write", hexstring, NULL
+    path, "nvram", "vboot", "write", hexstring, NULL
   };
   int i;
 
