@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a8755c_33ab525f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-14T19:25:55Z",
+      "side": 1,
+      "message": "typo: accommodate. ;)",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "973684a6a6b79f11498fa60d77ba685d2879f5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_ba2b9980",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-14T19:25:55Z",
+      "side": 1,
+      "message": "Can this be const char *?  If so, then no need to strcpy() the path to a static string.",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "973684a6a6b79f11498fa60d77ba685d2879f5a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
