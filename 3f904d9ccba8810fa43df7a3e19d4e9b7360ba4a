@@ -16,6 +16,24 @@
       "revId": "3f904d9ccba8810fa43df7a3e19d4e9b7360ba4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_2061b62e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-16T17:53:37Z",
+      "side": 1,
+      "message": "This flag was always expected to be set by the OS. It would be triggered by some setting in the UI. Also, it will be cleared upon user request in the OS.",
+      "parentUuid": "24d6450d_c0bafeb4",
+      "revId": "3f904d9ccba8810fa43df7a3e19d4e9b7360ba4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
