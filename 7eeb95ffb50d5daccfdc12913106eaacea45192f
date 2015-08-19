@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a9e95f_ed0ce7f6",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2015-08-19T23:31:28Z",
+      "side": 1,
+      "message": "Style nit: It looks like other places in the codebase put spaces around the \u003d operator, so \"i \u003d 0\" would be more appropriate.",
+      "range": {
+        "startLine": 349,
+        "startChar": 9,
+        "endLine": 349,
+        "endChar": 12
+      },
+      "revId": "7eeb95ffb50d5daccfdc12913106eaacea45192f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b861a5_8ec0c9f9",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2015-08-19T23:31:28Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 354,
+        "startChar": 11,
+        "endLine": 354,
+        "endChar": 14
+      },
+      "revId": "7eeb95ffb50d5daccfdc12913106eaacea45192f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_13b721be",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2015-08-19T23:31:28Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 365,
+        "startChar": 9,
+        "endLine": 365,
+        "endChar": 12
+      },
+      "revId": "7eeb95ffb50d5daccfdc12913106eaacea45192f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_fd681d96",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2015-08-19T23:31:28Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 382,
+        "startChar": 9,
+        "endLine": 382,
+        "endChar": 12
+      },
+      "revId": "7eeb95ffb50d5daccfdc12913106eaacea45192f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
