@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04806112_7f8f0a87",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-19T22:15:00Z",
+      "side": 1,
+      "message": "around?",
+      "range": {
+        "startLine": 347,
+        "startChar": 40,
+        "endLine": 347,
+        "endChar": 46
+      },
+      "revId": "e7bf5022afc413dd2db58816cd97bbcac80ade8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04806112_3f7e72d7",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-19T22:15:00Z",
+      "side": 1,
+      "message": "Paranoia:\n\nif (i \u003e\u003d (MAX_ARRAY_SIZE - 1)) {\n  VBDEBUG((\"too many args (mosys)\\n\"))\n  close(mosys_to_crossystem[1]);\n  exit(1);\n}",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 17
+      },
+      "revId": "e7bf5022afc413dd2db58816cd97bbcac80ade8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04806112_5f83265c",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-19T22:15:00Z",
+      "side": 1,
+      "message": "Need to terminate list?\n\nargv_cpy[i] \u003d NULL;",
+      "range": {
+        "startLine": 352,
+        "startChar": 4,
+        "endLine": 352,
+        "endChar": 6
+      },
+      "revId": "e7bf5022afc413dd2db58816cd97bbcac80ade8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
