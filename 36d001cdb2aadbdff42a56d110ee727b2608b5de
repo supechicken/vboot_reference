@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_4dc57d30",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-21T16:50:48Z",
+      "side": 1,
+      "message": "quote the temp_kernel path",
+      "revId": "36d001cdb2aadbdff42a56d110ee727b2608b5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_edf24993",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-21T16:50:48Z",
+      "side": 1,
+      "message": "no trailing whitespace",
+      "revId": "36d001cdb2aadbdff42a56d110ee727b2608b5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_050d22c6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-21T16:50:48Z",
+      "side": 1,
+      "message": "this comment might be more appropriate above the temp_kernel decl above",
+      "revId": "36d001cdb2aadbdff42a56d110ee727b2608b5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_0df8e56f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-21T16:50:48Z",
+      "side": 1,
+      "message": "quote both paths",
+      "revId": "36d001cdb2aadbdff42a56d110ee727b2608b5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_1e19f1ab",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-21T16:50:48Z",
+      "side": 1,
+      "message": "quote all these args.  i know the other cases get it wrong, but that\u0027s not a reason to add more bad code :).",
+      "revId": "36d001cdb2aadbdff42a56d110ee727b2608b5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
