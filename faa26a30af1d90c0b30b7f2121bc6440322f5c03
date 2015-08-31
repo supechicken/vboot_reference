@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_c827cf48",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045f8228_90221c7e",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045f8228_30e93079",
         "filename": "scripts/image_signing/nv_pkc_signing.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-31T23:36:26Z",
       "side": 1,
       "message": "please use the same startup logic as sign_firmware.sh",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_a4faa6a9",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045f8228_30e93079",
       "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_80b51851",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84529221_8fc67d26",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8497f201_c4c9f290",
         "filename": "scripts/image_signing/nv_pkc_signing.sh",
         "patchSetId": 1
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "84529221_6f38e1b8",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8497f201_c4c9f290",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_e7475615",
         "filename": "scripts/image_signing/nv_pkc_signing.sh",
         "patchSetId": 1
@@ -98,6 +170,24 @@
       "writtenOn": "2015-08-31T23:36:26Z",
       "side": 1,
       "message": "all args should be unpacked into dedicated variables",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8429b287_f496f00b",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e486eed4_e7475615",
       "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +263,78 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_2021a437",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6424bead_13619496",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_c8d58f58",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_205c44de",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_2f00a9c6",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "We are compiling cbootimage from sources shared with us privately till Nvidia updates the github for it. So, we are installing this binary with name nv_cbootimage.",
+      "parentUuid": "6492fe15_80599801",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_a06ff480",
         "filename": "scripts/image_signing/sign_firmware.sh",
         "patchSetId": 1
@@ -184,6 +346,24 @@
       "writtenOn": "2015-08-31T23:36:26Z",
       "side": 1,
       "message": "put a blank line \u0026 comment above this",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_a8e2533e",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_a06ff480",
       "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -207,6 +387,24 @@
     },
     {
       "key": {
+        "uuid": "e4618eea_0f616996",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0484e2ca_68b0f75f",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_60c9ece5",
         "filename": "scripts/image_signing/sign_firmware.sh",
         "patchSetId": 1
@@ -218,6 +416,24 @@
       "writtenOn": "2015-08-31T23:36:26Z",
       "side": 1,
       "message": "delete this blank line",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_a7e2ae3e",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-08-31T23:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_60c9ece5",
       "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
