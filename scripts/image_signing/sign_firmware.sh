@@ -123,6 +123,12 @@ main() {
     sign_one
     gbb_update "${temp_fw}" "${key_dir}" "${out_firmware}" \
       "${key_dir}/root_key.vbpubk"
+    if [[ -e {key_dir}/nv_pkc.pem ]]; then
+      "${SCRIPT_DIR}/nv_pkc_signing.sh" \
+      "${key_dir}/nv_pkc.pem" \
+      "${out_firmware}"
+    fi
+
   fi
 }
 main "$@"
