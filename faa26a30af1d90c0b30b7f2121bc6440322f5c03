@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045f8228_90221c7e",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "name this file like \"sign_nv_cbootimage.sh\"",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_30e93079",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "please use the same startup logic as sign_firmware.sh",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_008ca8b8",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "put a period at the end",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_8fc67d26",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "pretty sure this doesn\u0027t work.  i would delete this logic entirely and let the script fail when the tool isn\u0027t available.",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_c4c9f290",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "create a usage() and main() function and process incoming args accordingly.  see sign_firmware.sh as an example.",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_e7475615",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "all args should be unpacked into dedicated variables",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_205c44de",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "all paths need to be quoted",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_80599801",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "why the \"nv_\" prefix ?  cbootimage installs as just \"cbootimage\".",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6424bead_13619496",
+        "filename": "scripts/image_signing/nv_pkc_signing.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "this \"tegra210\" should be an input argument",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_a06ff480",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "put a blank line \u0026 comment above this",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_68b0f75f",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "the args should be indented by two spaces",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_60c9ece5",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-08-31T23:36:26Z",
+      "side": 1,
+      "message": "delete this blank line",
+      "revId": "faa26a30af1d90c0b30b7f2121bc6440322f5c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
