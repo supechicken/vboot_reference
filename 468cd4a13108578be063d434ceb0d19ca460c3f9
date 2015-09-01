@@ -16,6 +16,24 @@
       "revId": "468cd4a13108578be063d434ceb0d19ca460c3f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6424bead_619ebe5a",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T07:39:41Z",
+      "side": 1,
+      "message": "Done. Added temp dir in next patchset. However, it will work only if the keydir is absolute and not relative. Is that assumption correct?",
+      "parentUuid": "8497f201_670ee041",
+      "revId": "468cd4a13108578be063d434ceb0d19ca460c3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
