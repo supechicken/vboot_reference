@@ -15,6 +15,7 @@ Usage: $0 [--devkeyblock]
 
 Options:
   --devkeyblock          Also generate developer firmware keyblock and data key
+  --2k                   Use 2k keys instead of 8k
   --4k                   Use 4k keys instead of 8k (enables options below)
   --4k-root              Use 4k key size for the root key
   --4k-recovery          Use 4k key size for the recovery key
@@ -36,6 +37,8 @@ main() {
   # Flag to indicate whether we should be generating a developer keyblock flag.
   local dev_keyblock="false"
   local root_key_algoid=${ROOT_KEY_ALGOID}
+  local firmware_datakey_algoid=${FIRMWARE_DATAKEY_ALGOID}
+  local dev_firmware_datakey_algoid=${DEV_FIRMWARE_DATAKEY_ALGOID}
   local recovery_key_algoid=${RECOVERY_KEY_ALGOID}
   local recovery_kernel_algoid=${RECOVERY_KERNEL_ALGOID}
   local installer_kernel_algoid=${INSTALLER_KERNEL_ALGOID}
@@ -47,6 +50,14 @@ main() {
       dev_keyblock="true"
       ;;
 
+    --2k)
+      root_key_algoid=${RSA2048_SHA256_ALGOID}
+      firmware_datakey_algoid=${RSA2048_SHA256_ALGOID}
+      dev_firmware_datakey_algoid=${RSA2048_SHA256_ALGOID}
+      recovery_key_algoid=${RSA2048_SHA256_ALGOID}
+      recovery_kernel_algoid=${RSA2048_SHA256_ALGOID}
+      installer_kernel_algoid=${RSA2048_SHA256_ALGOID}
+      ;;
     --4k)
       root_key_algoid=${RSA4096_SHA512_ALGOID}
       recovery_key_algoid=${RSA4096_SHA512_ALGOID}
@@ -95,9 +106,9 @@ main() {
   make_pair ec_root_key              ${EC_ROOT_KEY_ALGOID}
   make_pair ec_data_key              ${EC_DATAKEY_ALGOID} ${eckey_version}
   make_pair root_key                 ${root_key_algoid}
-  make_pair firmware_data_key        ${FIRMWARE_DATAKEY_ALGOID} ${fkey_version}
+  make_pair firmware_data_key        ${firmware_datakey_algoid} ${fkey_version}
   if [[ "${dev_keyblock}" == "true" ]]; then
-    make_pair dev_firmware_data_key    ${DEV_FIRMWARE_DATAKEY_ALGOID} ${fkey_version}
+    make_pair dev_firmware_data_key    ${dev_firmware_datakey_algoid} ${fkey_version}
   fi
   make_pair kernel_subkey            ${KERNEL_SUBKEY_ALGOID} ${ksubkey_version}
   make_pair kernel_data_key          ${KERNEL_DATAKEY_ALGOID} ${kdatakey_version}
