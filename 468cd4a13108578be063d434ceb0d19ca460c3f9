@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8497f201_670ee041",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T07:15:54Z",
+      "side": 1,
+      "message": "since this writes to $PWD, instead of $(make_temp_file), we probably want to use $(make_temp_dir), and then pushd/popd to that path\n\nor at least add a TODO here",
+      "revId": "468cd4a13108578be063d434ceb0d19ca460c3f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
