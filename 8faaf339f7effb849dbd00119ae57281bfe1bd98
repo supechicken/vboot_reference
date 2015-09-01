@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4618eea_fdc24f6d",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "for these two paths, you\u0027ll probably want to generate a full path to them like:\n\n local pkc_key\u003d\"$(readlink -f \"$2\")\"\n local firmware_image\u003d\"$(readlink -f \"$3\")\"\n\nthat way it\u0027ll work if people do:\n\n ./sign_nv_cbootimage.sh ... ./file.bin ...",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_9e0ead67",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "comments should have periods at the end",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_d510bc16",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_76b0d85f",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "you can do:\n\n pushd \"${work_dir}\" \u003e/dev/null\n ...\n popd \u003e/dev/null\n\nthen you don\u0027t need $curr_dir at all",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_0b9961b5",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_60db4e59",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T16:16:22Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
