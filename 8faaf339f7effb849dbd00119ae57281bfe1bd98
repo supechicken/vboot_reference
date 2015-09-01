@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8429b287_f7bcb242",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4618eea_fdc24f6d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045f8228_9e0ead67",
         "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2015-09-01T16:16:22Z",
       "side": 1,
       "message": "comments should have periods at the end",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_3e08e12f",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045f8228_9e0ead67",
       "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_8b52f173",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e486eed4_d510bc16",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_76b0d85f",
         "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
         "patchSetId": 6
@@ -70,6 +130,24 @@
       "writtenOn": "2015-09-01T16:16:22Z",
       "side": 1,
       "message": "you can do:\n\n pushd \"${work_dir}\" \u003e/dev/null\n ...\n popd \u003e/dev/null\n\nthen you don\u0027t need $curr_dir at all",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8429b287_7717a2dd",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "If pushd is used, how do i copy the data out of the temp directory? Is the temp directory not deleted after a popd?",
+      "parentUuid": "0484e2ca_76b0d85f",
       "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "045f8228_1e0d1d40",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "644d9e85_0b9961b5",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84529221_60db4e59",
         "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2015-09-01T16:16:22Z",
       "side": 1,
       "message": "period at the end",
+      "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_95ceb4ed",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T16:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84529221_60db4e59",
       "revId": "8faaf339f7effb849dbd00119ae57281bfe1bd98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
