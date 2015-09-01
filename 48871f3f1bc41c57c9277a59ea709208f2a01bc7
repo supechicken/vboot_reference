@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0484e2ca_2bef492f",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "see comment below",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_cb481df6",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "should be a / between the var and filename",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_33f13aa2",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_93010611",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "we can land this now, but i think we should file a bug to track this.  cbootimage supports more socs than this.",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8429b287_f474b011",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "use braces ${pkc_key}",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4618eea_b26d26fb",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T01:14:51Z",
+      "side": 1,
+      "message": "quote the \"${soc}\"",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
