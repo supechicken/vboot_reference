@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_4a616795",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T01:49:25Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "e4618eea_32bff699",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045f8228_33f13aa2",
         "filename": "scripts/image_signing/sign_firmware.sh",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "here you can do:\n\n \"${key_dir%/}/nv_pkc.pem\"\n\nand drop a comment in there",
       "parentUuid": "045f8228_33f13aa2",
+      "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_b3776a9a",
+        "filename": "scripts/image_signing/sign_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-09-01T01:49:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8429b287_94520c74",
       "revId": "48871f3f1bc41c57c9277a59ea709208f2a01bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
