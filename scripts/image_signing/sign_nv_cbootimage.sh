@@ -21,6 +21,7 @@ Usage: $0 <type> <pkc_key> <firmware_image> <soc>
 Signs <firmware_image> of <type> with <pkc_key> using cbootimage for <soc>.
 where type is one of
       bootloader = sign bootloader image
+      lp0_firmware = sign lp0 firmware
 EOF
   exit 1
 }
@@ -50,6 +51,16 @@ EOF
     cbootimage -s "${soc}" -u update.cfg "${firmware_image}" "${temp_fw}"
     mv "${temp_fw}" "${firmware_image}"
     mv "pubkey.sha" "${firmware_image}.pubkey.sha"
+
+  elif [[ "${type}" == "lp0_firmware" ]]; then
+
+    cat >update.cfg <<EOF
+PkcKey = ${pkc_key};
+RsaSign = 0x220,, 288, 16, Complete;
+EOF
+
+    cbootimage --sign update.cfg "${firmware_image}" "${temp_fw}"
+    mv "${temp_fw}" "${firmware_image}"
 
   else
     usage
