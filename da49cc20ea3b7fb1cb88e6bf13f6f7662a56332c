@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045f8228_be4e1158",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-09-01T17:29:21Z",
+      "side": 1,
+      "message": "you don\u0027t really need this -- since you have an empty workdir, you could just create it right there.  but this is fine.",
+      "revId": "da49cc20ea3b7fb1cb88e6bf13f6f7662a56332c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
