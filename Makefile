@@ -432,6 +432,7 @@ UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
 
 UTILLIB21_SRCS += \
+	host/lib21/host_bdb.c \
 	host/lib21/host_fw_preamble.c \
 	host/lib21/host_key.c \
 	host/lib21/host_keyblock.c \
