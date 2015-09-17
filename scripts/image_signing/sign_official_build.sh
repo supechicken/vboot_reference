@@ -695,6 +695,51 @@ update_recovery_kernel_hash() {
   replace_image_partition ${image_bin} 2 ${updated_kimagea}
 }
 
+# Update the legacy bootloader templates in EFI partition if available.
+# Args: IMAGE_BIN DM_PARTNO
+update_legacy_bootloader() {
+  local image="$1"
+  local dm_partno="$2"
+
+  local esp_partnum=12
+  local esp_offset=$(( $(partoffset "${image}" "${esp_partnum}") * 512 ))
+  # Check if the image has an ESP partition.
+  if [[ "${esp_offset}" == "0" ]]; then
+    echo "Not updating legacy bootloader configs: ${image}"
+    return 0
+  fi
+
+  local esp_dir="$(make_temp_dir)"
+  # We use the 'unsafe' variant because the EFI system partition is vfat type
+  # and can be mounted in RW mode.
+  _mount_image_partition_retry "${image}" "${esp_partnum}" "${esp_dir}"
+
+  # If we can't find the dm parameter in the kernel config, bail out now.
+  local kernel_config=$(grab_kernel_config "${image}" "${dm_partno}")
+  local root_hexdigest="$(get_hash_from_config "${kernel_config}")"
+  if [[ -z "${root_hexdigest}" ]]; then
+    echo "ERROR: Couldn't grab root_digest from kernel partition ${dm_partno}"
+    echo " (config: ${kernel_config})"
+    return 1
+  fi
+  # Update syslinux configs for legacy BIOS systems.
+  if [[ -d "${esp_dir}/syslinux" ]]; then
+    for cfg in $(ls "${esp_dir}"/syslinux/*.cfg); do
+      sudo sed -i \
+        "s/\broot_hexdigest=[a-z0-9]\+/root_hexdigest=${root_hexdigest}/g" \
+        "${cfg}"
+    done
+  fi
+  # Update grub configs for EFI systems.
+  local grub_cfg="${esp_dir}/efi/boot/grub.cfg"
+  if [[ -f "${grub_cfg}" ]]; then
+    sudo sed -i \
+      "s/\broot_hexdigest=[a-z0-9]\+/root_hexdigest=${root_hexdigest}/g" \
+      "${grub_cfg}"
+  fi
+  sudo umount "${esp_dir}"
+}
+
 # Sign an image file with proper keys.
 # Args: IMAGE_TYPE INPUT OUTPUT DM_PARTNO KERN_A_KEYBLOCK KERN_A_PRIVKEY \
 #       KERN_B_KEYBLOCK KERN_B_PRIVKEY
@@ -735,6 +780,7 @@ sign_image_file() {
   if [[ "${image_type}" == "recovery" ]]; then
     update_recovery_kernel_hash "${output}"
   fi
+  update_legacy_bootloader "${output}" "${dm_partno}"
   echo "Signed ${image_type} image output to ${output}"
 }
 
