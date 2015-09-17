@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99c0776_b188e015",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-09-17T21:50:05Z",
+      "side": 1,
+      "message": "nit: Maybe turn the logic around (if the error is PHASE1_REBOOT then reboot, otherwise recovery)? If we ever accidentally leak another return code, recovery is probably the safer action than a reboot loop.",
+      "revId": "62da384a0c6565cb57659bebb2a57466a2762dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
