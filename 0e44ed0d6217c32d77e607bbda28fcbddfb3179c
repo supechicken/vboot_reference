@@ -22,6 +22,30 @@
       "revId": "0e44ed0d6217c32d77e607bbda28fcbddfb3179c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69cf379f_95ece487",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1128309
+      },
+      "writtenOn": "2015-09-18T15:47:12Z",
+      "side": 1,
+      "message": "vb_fail can be initiated based on several cases, when comment  mentioned as \" comes here before any SLOT is selected\" it means during phase 1 if TPM communication itself fails when does this make sense to look for FW_SLOT because we can\u0027t hash verify the FW slot, so, current vboot/coreboot implementation not follow further execution and hence return. \n\nNow there could be two case.\n1. TPM failure and we couldn\u0027t go for slot dection, do you recommend to set status as unknown?\n2. When Both the slot exhausted, then we again come and set result as failure?",
+      "parentUuid": "c9a3c3b1_d678f48b",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "0e44ed0d6217c32d77e607bbda28fcbddfb3179c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
