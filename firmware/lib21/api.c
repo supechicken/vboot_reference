@@ -165,3 +165,8 @@ int vb2api_check_hash(struct vb2_context *ctx)
 
 	return VB2_SUCCESS;
 }
+
+void vb2_success(struct vb2_context *ctx)
+{
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_SUCCESS);
+}

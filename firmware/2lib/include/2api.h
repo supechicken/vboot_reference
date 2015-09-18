@@ -457,6 +457,15 @@ int vb2api_fw_phase2(struct vb2_context *ctx);
 int vb2api_fw_phase3(struct vb2_context *ctx);
 
 /**
+ * Report firmware success  to vboot.
+ *
+ * On completion of all phases of vboot, the fw_result is set here as SUCCESS.
+ *
+ * @param ctx		Vboot context
+ */
+void vb2_success(struct vb2_context *ctx);
+
+/**
  * Initialize hashing data for the specified tag.
  *
  * @param ctx		Vboot context

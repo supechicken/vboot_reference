@@ -71,11 +71,18 @@ void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 	if (!(sd->status & VB2_SD_STATUS_NV_INIT))
 		vb2_nv_init(ctx);
 
+	/* Boot failed, setting FAILURE unconditionally during 3 cases :
+	 * 1) comes here before any SLOT is selected, i.e, failure occues
+	 *    during verifying secdata/GBB header/Dev Switch/Tpm.
+	 * 2) if any of the slot is selected, and fails to boot from it.
+	 * 3) if both slot fails in successive boots and needs to go to
+	 *    recovery mode.
+	 * In all the above 3 case, FAILURE is set for "fw_result".
+	 */
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_FAILURE);
+
 	/* See if we were far enough in the boot process to choose a slot */
 	if (sd->status & VB2_SD_STATUS_CHOSE_SLOT) {
-
-		/* Boot failed */
-		vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_FAILURE);
 
 		/* Use up remaining tries */
 		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 0);
