@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9a3c3b1_d678f48b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-18T15:36:37Z",
+      "side": 1,
+      "message": "The result field refers to a specific firmware slot, not simply the previous boot.  It is used to determine when to go into recovery.\n\nIf we fail before that, we don\u0027t know whether the current firmware slot is good or not, because we haven\u0027t tried it.\n\nWe\u0027ll still go to recovery with a specific reason indicating why we died before we got that far.",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "0e44ed0d6217c32d77e607bbda28fcbddfb3179c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
