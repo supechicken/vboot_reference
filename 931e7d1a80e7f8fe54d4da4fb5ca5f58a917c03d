@@ -22,6 +22,30 @@
       "revId": "931e7d1a80e7f8fe54d4da4fb5ca5f58a917c03d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49fc33c5_873708c6",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-21T22:47:20Z",
+      "side": 1,
+      "message": "No, any recovery mode.\n\nBut yes, I see the problem now.\n\nI think we need to reverse the order of calls to vb2_check_recovery() and vb2_check_dev_switch().\n\nFix imminent.",
+      "parentUuid": "69d49737_d69c9a60",
+      "range": {
+        "startLine": 216,
+        "startChar": 19,
+        "endLine": 216,
+        "endChar": 44
+      },
+      "revId": "931e7d1a80e7f8fe54d4da4fb5ca5f58a917c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
