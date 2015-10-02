@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f922d15_5d237be9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "should also run through the signer integration tests to make sure it doesn\u0027t break existing image types",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df6ffde4_99defb43",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "could you add the missing braces to the various vars while you\u0027re here ?",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f80d1c4_b6c2e870",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "this leaks the mount",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df6ffde4_f9e13704",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "why `ls` ?  just pass the glob directly to the for loop.  even better, pass it directly to sed.\n\nif there\u0027s a syslinux dir, when would there not be any cfg files in there ?",
+      "range": {
+        "startLine": 727,
+        "startChar": 17,
+        "endLine": 727,
+        "endChar": 19
+      },
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fde65f5_4fa8adab",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "declare cfg local",
+      "range": {
+        "startLine": 727,
+        "startChar": 8,
+        "endLine": 727,
+        "endChar": 11
+      },
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f80d1c4_96c56c7d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "pass the -r flag to sed instead of using \\+",
+      "range": {
+        "startLine": 729,
+        "startChar": 36,
+        "endLine": 729,
+        "endChar": 38
+      },
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f922d15_fdea87d6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "should check the return value of this command",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6905e7_b7dbc852",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "same feedback on this as above",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffd121e3_f2b868f6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t you also rmdir the tempdir ?",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f922d15_bdf4ffb8",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-02T14:09:51Z",
+      "side": 1,
+      "message": "missing error checking which means failures go unnoticed",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
