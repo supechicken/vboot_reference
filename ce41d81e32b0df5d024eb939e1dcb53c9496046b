@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7e1d50_e1b14616",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-03T16:28:15Z",
+      "side": 1,
+      "message": "if these get cleaned up by the common framework, then i wouldn\u0027t bother here.  you don\u0027t do it below where you return 1 either.",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fca91df_06e2ba08",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-03T16:28:15Z",
+      "side": 1,
+      "message": "these two lines should be indented by two more spaces\n\nalso quoting is a little off.  prob want:\n\n error \"Updating syslinux configs failed: \u0027${cfg[*]}\u0027\"",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df7e1d50_01b70a09",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-03T16:28:15Z",
+      "side": 1,
+      "message": "same comment here wrt quoting and using error instead of echo",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df7e1d50_21bc0ee9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-10-03T16:28:15Z",
+      "side": 1,
+      "message": "no trailing ;",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
