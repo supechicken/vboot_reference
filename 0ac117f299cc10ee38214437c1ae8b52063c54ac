@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "15a33681_e5c96db6",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "fixed this and other mount related functions.",
+      "parentUuid": "df6ffde4_99defb43",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f80d1c4_b6c2e870",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2015-10-02T14:09:51Z",
       "side": 1,
       "message": "this leaks the mount",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_77674bac",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "files and dirs created via make_temp_file() and make_temp_dir() get cleaned up (umount and rm) during exit, but I guess it wouldn\u0027t hurt to clean it up right here.",
+      "parentUuid": "7f80d1c4_b6c2e870",
       "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -99,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "b5398a03_dd4abc91",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Good point. Done",
+      "parentUuid": "df6ffde4_f9e13704",
+      "range": {
+        "startLine": 727,
+        "startChar": 17,
+        "endLine": 727,
+        "endChar": 19
+      },
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f80d1c4_96c56c7d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -110,6 +170,30 @@
       "writtenOn": "2015-10-02T14:09:51Z",
       "side": 1,
       "message": "pass the -r flag to sed instead of using \\+",
+      "range": {
+        "startLine": 729,
+        "startChar": 36,
+        "endLine": 729,
+        "endChar": 38
+      },
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5398a03_7d361018",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f80d1c4_96c56c7d",
       "range": {
         "startLine": 729,
         "startChar": 36,
@@ -139,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "d55b5e6b_0c707acc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f922d15_fdea87d6",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6905e7_b7dbc852",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -150,6 +252,24 @@
       "writtenOn": "2015-10-02T14:09:51Z",
       "side": 1,
       "message": "same feedback on this as above",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_2fc8c68e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6905e7_b7dbc852",
       "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +293,24 @@
     },
     {
       "key": {
+        "uuid": "75439281_144fe158",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd121e3_f2b868f6",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f922d15_bdf4ffb8",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -184,6 +322,24 @@
       "writtenOn": "2015-10-02T14:09:51Z",
       "side": 1,
       "message": "missing error checking which means failures go unnoticed",
+      "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_8cf12aa0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T05:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f922d15_bdf4ffb8",
       "revId": "0ac117f299cc10ee38214437c1ae8b52063c54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
