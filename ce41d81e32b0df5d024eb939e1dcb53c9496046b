@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5398a03_5d84ec4a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T19:07:47Z",
+      "side": 1,
+      "message": "Done here and below so that the reader doesn\u0027t get the impression of leaked mounts.  (It will be cleaned up in cleanup_temps_and_mounts() in common_minimal.sh.)",
+      "parentUuid": "df7e1d50_e1b14616",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fca91df_06e2ba08",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-03T16:28:15Z",
       "side": 1,
       "message": "these two lines should be indented by two more spaces\n\nalso quoting is a little off.  prob want:\n\n error \"Updating syslinux configs failed: \u0027${cfg[*]}\u0027\"",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354d9aaf_3c42c62e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T19:07:47Z",
+      "side": 1,
+      "message": "Done.  Alse changed other echos to info and error.",
+      "parentUuid": "7fca91df_06e2ba08",
       "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "75439281_6f4e4eb4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T19:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7e1d50_01b70a09",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df7e1d50_21bc0ee9",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2015-10-03T16:28:15Z",
       "side": 1,
       "message": "no trailing ;",
+      "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_5217b5e0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1127436
+      },
+      "writtenOn": "2015-10-03T19:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7e1d50_21bc0ee9",
       "revId": "ce41d81e32b0df5d024eb939e1dcb53c9496046b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
