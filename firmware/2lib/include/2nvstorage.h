@@ -55,6 +55,8 @@ enum vb2_nv_param {
 	 * 0=no, 1=yes.
 	 */
 	VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP,
+	/* Set default boot mode (see vb2_dev_default_boot) */
+	VB2_NV_DEV_DEFAULT_BOOT,
 	/*
 	 * Set by userspace to request that RO firmware disable dev-mode on the
 	 * next boot. This is likely only possible if the dev-switch is
@@ -93,6 +95,19 @@ enum vb2_nv_param {
 	/* Boot system when AC detected (0=no, 1=yes). */
 	VB2_NV_BOOT_ON_AC_DETECT,
 };
+
+/* Set default boot in developer mode */
+typedef enum vb2_dev_default_boot {
+	/* Default to boot from disk*/
+	VB2_DEV_DEFAULT_BOOT_DISK = 0,
+	
+	/* Default to boot from USB */
+	VB2_DEV_DEFAULT_BOOT_USB= 1,
+
+	/* Default to boot legacy OS */
+	VB2_DEV_DEFAULT_BOOT_LEGACY = 2,
+
+} vb2_dev_default_boot;
 
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */
 enum vb2_fw_result {
