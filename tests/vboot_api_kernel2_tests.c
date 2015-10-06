@@ -293,6 +293,20 @@ static void VbBootDevTest(void)
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 
+	/* Proceed to legacy after timeout if boot legacy and default boot
+	 * legacy are set */
+	ResetMocks();
+	VbNvSet(VbApiKernelGetVnc(), VBNV_DEV_DEFAULT_BOOT_LEGACY, 1);
+	VbNvSet(VbApiKernelGetVnc(), VBNV_DEV_BOOT_LEGACY, 1);
+	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
+	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
+	
+	/* Proceed to legacy boot mode only if enabled */
+	ResetMocks();
+	VbNvSet(VbApiKernelGetVnc(), VBNV_DEV_DEFAULT_BOOT_LEGACY, 1);
+	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+
 	/* Up arrow is uninteresting / passed to VbCheckDisplayKey() */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_UP;
@@ -402,7 +416,6 @@ static void VbBootDevTest(void)
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 	ResetMocks();
-
 	gbb.flags |= GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = 0x0c;
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Ctrl+L force legacy");

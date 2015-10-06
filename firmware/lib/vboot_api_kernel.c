@@ -251,7 +251,12 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	GoogleBinaryBlockHeader *gbb = cparams->gbb;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	uint32_t allow_usb = 0, allow_legacy = 0, ctrl_d_pressed = 0;
+
+	uint32_t allow_usb = 0;
+	uint32_t allow_legacy = 0;
+	uint32_t use_legacy = 0;
+	uint32_t ctrl_d_pressed = 0;
+
 	VbAudioContext *audio = 0;
 
 	VBDEBUG(("Entering %s()\n", __func__));
@@ -260,11 +265,16 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	VbNvGet(&vnc, VBNV_DEV_BOOT_USB, &allow_usb);
 	VbNvGet(&vnc, VBNV_DEV_BOOT_LEGACY, &allow_legacy);
 
+	/* Check if the default is to boot into the Legacy OS */
+	VbNvGet(&vnc, VBNV_DEV_DEFAULT_BOOT_LEGACY, &use_legacy);
+
 	/* Handle GBB flag override */
 	if (gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_USB)
 		allow_usb = 1;
-	if (gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_LEGACY)
+	if (gbb->flags & GBB_FLAG_FORCE_DEV_BOOT_LEGACY) 
 		allow_legacy = 1;
+	if (gbb->flags & GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY)
+		use_legacy = 1;
 
 	/* Show the dev mode warning screen */
 	VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
@@ -435,8 +445,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
  fallout:
 
 	/* If defaulting to legacy boot, try that unless Ctrl+D was pressed */
-	if ((gbb->flags & GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY) &&
-	    !ctrl_d_pressed) {
+	if (use_legacy && !ctrl_d_pressed) {
 		VBDEBUG(("VbBootDeveloper() - defaulting to legacy\n"));
 		VbTryLegacy(allow_legacy);
 	}

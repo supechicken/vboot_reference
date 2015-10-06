@@ -576,6 +576,12 @@ VbError_t VbDisplayDebugInfo(VbCommonParams *cparams, VbNvContext *vncptr)
 			DEBUG_INFO_SIZE - used);
 	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used, i, 10, 0);
 
+	/* Add dev_default_boot_legacy flag */
+	VbNvGet(vncptr, VBNV_DEV_DEFAULT_BOOT_LEGACY, &i);
+	used += StrnAppend(buf + used,
+			"\ndev_default_boot_legacy: ", DEBUG_INFO_SIZE - used);
+	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used, i, 10, 0);
+
 	/* Add TPM versions */
 	used += StrnAppend(buf + used, "\nTPM: fwver=0x", DEBUG_INFO_SIZE - used);
 	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used,
