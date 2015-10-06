@@ -293,6 +293,12 @@ static void VbBootDevTest(void)
 	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 
+	/* Proceed to legacy after timeout if default boot legacy is set */
+	ResetMocks();
+	VbNvSet(VbApiKernelGetVnc(), VBNV_DEV_DEFAULT_BOOT_LEGACY, 1);
+	TEST_EQ(VbBootDeveloper(&cparams, &lkp), 1002, "Timeout");
+	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
+
 	/* Up arrow is uninteresting / passed to VbCheckDisplayKey() */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_UP;
