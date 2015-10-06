@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50478167_86ee6ce2",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-06T19:04:34Z",
+      "side": 1,
+      "message": "0x10",
+      "range": {
+        "startLine": 65,
+        "startChar": 47,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab976c01_f30f126e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-06T19:04:34Z",
+      "side": 1,
+      "message": "Set both allow_legacy \u003d 1 and use_legacy \u003d 1. Then you can get rid of the check below for gbb-\u003eflags in L446.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab976c01_130dde75",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-06T19:04:34Z",
+      "side": 1,
+      "message": "Replace with if(use_legacy \u0026\u0026 !ctrl_d_pressed) {...",
+      "range": {
+        "startLine": 446,
+        "startChar": 1,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b6d3ced_c906dd57",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-06T19:04:34Z",
+      "side": 1,
+      "message": "This should still be: VbTryLegacy(allow_legacy);\n\nI think what we expect here is:\n1. Legacy is allowed (allow_legacy \u003d 1) only if GBB flag is set or VBNV_FORCE_DEV_BOOT_LEGACY is set.\n\n2. Legacy is used if GBB flag is set or VBNV_DEV_DEFAULT_BOOT_LEGACY is set or Ctrl-L is pressed.\n\nEven if use_legacy is set, vboot should boot legacy OS only if allowed by allow_legacy.",
+      "range": {
+        "startLine": 449,
+        "startChar": 14,
+        "endLine": 449,
+        "endChar": 26
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b7078c2_7325407d",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-06T19:04:34Z",
+      "side": 1,
+      "message": "0x10?",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
