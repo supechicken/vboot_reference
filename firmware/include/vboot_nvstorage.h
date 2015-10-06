@@ -76,6 +76,8 @@ typedef enum VbNvParam {
 	 * 0=no, 1=yes.
 	 */
 	VBNV_DEV_BOOT_FASTBOOT_FULL_CAP,
+	/* Default to booting of legacy OSes in developer mode.  0=no, 1=yes. */
+	VBNV_DEV_DEFAULT_BOOT_LEGACY,
 	/*
 	 * Set by userspace to request that RO firmware disable dev-mode on the
 	 * next boot. This is likely only possible if the dev-switch is

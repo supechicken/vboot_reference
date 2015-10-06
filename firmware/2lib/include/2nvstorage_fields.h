@@ -62,6 +62,7 @@ enum vb2_nv_offset {
 #define VB2_NV_DEV_FLAG_SIGNED_ONLY            0x02
 #define VB2_NV_DEV_FLAG_LEGACY                 0x04
 #define VB2_NV_DEV_FLAG_FASTBOOT_FULL_CAP      0x08
+#define VB2_NV_DEV_FLAG_DEFAULT_LEGACY         0x10
 
 /* Fields in VB2_NV_OFFS_TPM (unused = 0xf8) */
 #define VB2_NV_TPM_CLEAR_OWNER_REQUEST         0x01
