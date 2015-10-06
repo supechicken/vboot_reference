@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90673931_b583a002",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-06T20:12:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50478167_86ee6ce2",
+      "range": {
+        "startLine": 65,
+        "startChar": 47,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab976c01_f30f126e",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-06T19:04:34Z",
       "side": 1,
       "message": "Set both allow_legacy \u003d 1 and use_legacy \u003d 1. Then you can get rid of the check below for gbb-\u003eflags in L446.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 19
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d03c51f4_df211bb5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-06T20:12:49Z",
+      "side": 1,
+      "message": "They\u0027re different flags FORCE_DEV_BOOT_LEGACY and FORCE_DEFAULT_DEV_BOOT_LEGACY, but I added a similar check for the second flag here.",
+      "parentUuid": "ab976c01_f30f126e",
       "range": {
         "startLine": 274,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "105c2963_792587e4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-06T20:12:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab976c01_130dde75",
+      "range": {
+        "startLine": 446,
+        "startChar": 1,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b6d3ced_c906dd57",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "30592d74_ba2a7190",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-06T20:12:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b6d3ced_c906dd57",
+      "range": {
+        "startLine": 449,
+        "startChar": 14,
+        "endLine": 449,
+        "endChar": 26
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b7078c2_7325407d",
         "filename": "firmware/lib/vboot_nvstorage.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-10-06T19:04:34Z",
       "side": 1,
       "message": "0x10?",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "173c915301b4791982e48e0279de082795bca49d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_559fac59",
+        "filename": "firmware/lib/vboot_nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-06T20:12:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7078c2_7325407d",
       "range": {
         "startLine": 45,
         "startChar": 40,
