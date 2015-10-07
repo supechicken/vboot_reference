@@ -22,6 +22,30 @@
       "revId": "1a413532ea312a5f8ee4fef71bca1dbf3de98119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_a231a0d9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-07T18:15:47Z",
+      "side": 1,
+      "message": "Line 450 still checks that legacy boot is allowed before it trys legacy.",
+      "parentUuid": "90673931_e9825d3b",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 58
+      },
+      "revId": "1a413532ea312a5f8ee4fef71bca1dbf3de98119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
