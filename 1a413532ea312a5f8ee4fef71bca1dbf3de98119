@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90673931_e9825d3b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-07T16:57:38Z",
+      "side": 1,
+      "message": "The GBB flag can override allow_legacy (because changing the GBB requires removing the WP screw).  But the default flag in NVRAM shouldn\u0027t do so.\n\nThat is, it seems strange that \"allow_legacy\u003d0 default_legacy\u003d1\" allows legacy.\n\nThe easy way to fix this is to add if(allow_legacy) before this line.\n\nBut see general comments; I think we should add a 2-bit dev_default_boot field, not a 1-bit dev_default_boot_legacy field.",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 58
+      },
+      "revId": "1a413532ea312a5f8ee4fef71bca1dbf3de98119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
