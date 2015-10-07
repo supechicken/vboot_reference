@@ -20,10 +20,19 @@
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
 static uint32_t disp_width = 0, disp_height = 0;
 
+__attribute__((weak))
+VbError_t VbExGetLocalizationCount(uint32_t *count) {
+	return VBERROR_UNKNOWN;
+}
+
 VbError_t VbGetLocalizationCount(VbCommonParams *cparams, uint32_t *count)
 {
 	BmpBlockHeader hdr;
 	VbError_t ret;
+
+	ret = VbExGetLocalizationCount(count);
+	if (ret == VBERROR_SUCCESS)
+		return VBERROR_SUCCESS;
 
 	/* Default to 0 on error */
 	*count = 0;
