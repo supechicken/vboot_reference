@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8538d9b1_2db08dc8",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-08T22:30:44Z",
+      "side": 1,
+      "message": "Legacyll?",
+      "range": {
+        "startLine": 64,
+        "startChar": 53,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "7b82e7e33d5adaf44e65656bb59951232fa50a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451b415b_43a76682",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-08T22:30:44Z",
+      "side": 1,
+      "message": "\"unknown\"\n\nIt\u0027ll act like disk on current platforms, but future platforms might have another default (for example, fastboot or something).",
+      "range": {
+        "startLine": 595,
+        "startChar": 14,
+        "endLine": 595,
+        "endChar": 18
+      },
+      "revId": "7b82e7e33d5adaf44e65656bb59951232fa50a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
