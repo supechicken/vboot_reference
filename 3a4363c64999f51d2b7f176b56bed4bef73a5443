@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0536a9c7_ef97550d",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-09T18:26:23Z",
+      "side": 1,
+      "message": "vboot2 doesn\u0027t use typedefs for things like this (see enum vb2_fw_result below), because it violates linux kernel C coding style.\n\nvboot1 did all sorts of things like that.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "3a4363c64999f51d2b7f176b56bed4bef73a5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a526bd9a_6f39a19b",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-09T18:26:23Z",
+      "side": 1,
+      "message": "(the typedef is fine here, since it\u0027s a vboot1 header)",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "3a4363c64999f51d2b7f176b56bed4bef73a5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0536a9c7_0f9d892e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-09T18:26:23Z",
+      "side": 1,
+      "message": "Trailing whitespace?",
+      "range": {
+        "startLine": 449,
+        "startChar": 5,
+        "endLine": 449,
+        "endChar": 9
+      },
+      "revId": "3a4363c64999f51d2b7f176b56bed4bef73a5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a526bd9a_cf7a9545",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-09T18:26:23Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 307,
+        "startChar": 52,
+        "endLine": 307,
+        "endChar": 53
+      },
+      "revId": "3a4363c64999f51d2b7f176b56bed4bef73a5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
