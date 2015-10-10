@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e55355fb_ea3bcbb7",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-10T00:34:29Z",
+      "side": 1,
+      "message": "Remove this too, otherwise it declares a variable...",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "cdca25917c15f273b394c6dcb3e64080e7eb8ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
