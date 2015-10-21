@@ -500,8 +500,18 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 	 */
 	if (!(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
 	    !(shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
-		VBDEBUG(("VbBootRecovery() waiting for manual recovery\n"));
+		/*
+		 * We have to save the reason here so that it will survive the
+		 * coming up manual reboot.
+		 */
+		VBDEBUG(("VbBootRecovery() Saving recovery reason (%#x)\n",
+				shared->recovery_reason));
+		VbSetRecoveryRequest(shared->recovery_reason);
+		VbNvTeardown(&vnc);
+		if (vnc.raw_changed)
+			VbExNvStorageWrite(vnc.raw);
 		VbDisplayScreen(cparams, VB_SCREEN_OS_BROKEN, 0, &vnc);
+		VBDEBUG(("VbBootRecovery() Waiting for user to trigger manual recovery\n"));
 		while (1) {
 			VbCheckDisplayKey(cparams, VbExKeyboardRead(), &vnc);
 			if (VbWantShutdown(cparams->gbb->flags))
