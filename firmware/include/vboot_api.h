@@ -1086,4 +1086,17 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+/**
+ * Check if the EC is requesting that we limit our power consumption.
+ *
+ * This routine is called after EC software sync to ensure that the EC
+ * has a sufficient power source to continue with boot. If a sufficient power
+ * source is not available, we should take measures to consume less power, or
+ * shutdown entirely.
+ *
+ * @param limit_power	Pointer to result (1 = limit power, 0 = don't).
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcIsLimitPowerRequested(int *limit_power);
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */

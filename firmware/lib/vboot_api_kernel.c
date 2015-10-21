@@ -963,6 +963,11 @@ void VbApiKernelFree(VbCommonParams *cparams)
 	}
 }
 
+/* Wait 3 seconds after software sync for EC to clear the limit power flag. */
+#define LIMIT_POWER_WAIT_TIMEOUT 3000
+/* Check the limit power flag every 50 ms while waiting. */
+#define LIMIT_POWER_POLL_SLEEP 50
+
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {
@@ -971,6 +976,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	VbError_t retval = VBERROR_SUCCESS;
 	LoadKernelParams p;
 	uint32_t tpm_status = 0;
+	int limit_power = 0;
+	int limit_power_wait_time = 0;
 
 	/* Start timer */
 	shared->timer_vb_select_and_load_kernel_enter = VbExGetTimer();
@@ -1020,6 +1027,31 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 			retval = VBERROR_VGA_OPROM_MISMATCH;
 			goto VbSelectAndLoadKernel_exit;
 		}
+	}
+
+	/* Make sure that we have sufficient power to continue with boot. */
+	while(1) {
+		if (VbExEcIsLimitPowerRequested(&limit_power)) {
+			VBDEBUG(("Cannot check EC limit power flag.\n"));
+			break;
+		}
+
+		/*
+		 * Do not wait for the limit power flag to be cleared in
+		 * recovery mode since we didn't just sysjump.
+		 */
+		if (!limit_power || shared->recovery_reason ||
+		    limit_power_wait_time > LIMIT_POWER_WAIT_TIMEOUT)
+			break;
+
+		VbExSleepMs(LIMIT_POWER_POLL_SLEEP);
+		limit_power_wait_time += LIMIT_POWER_POLL_SLEEP;
+	}
+	if (limit_power) {
+		VBDEBUG(("Cannot continue with boot while the EC "
+			 "requests limited power consumption.\n"));
+		retval = VBERROR_SHUTDOWN_REQUESTED;
+		goto VbSelectAndLoadKernel_exit;
 	}
 
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
