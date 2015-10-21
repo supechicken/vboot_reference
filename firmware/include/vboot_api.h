@@ -925,6 +925,19 @@ VbError_t VbExEcProtectRW(int devidx);
 enum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY };
 VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
 
+/**
+ * Perform post-EC software sync actions.
+ *
+ * This routine is called to perform certain actions that normally must wait
+ * until after software sync completes. These actions include verifying that
+ * enough power is available to continue with boot. This routine will be called
+ * regardless of whether software sync was actually performed.
+ *
+ * @param in_recovery	1 if recovery mode is selected by the AP, 0 otherwise.
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcSoftwareSyncDone(int in_recovery);
+
 /*****************************************************************************/
 /* Misc */
 

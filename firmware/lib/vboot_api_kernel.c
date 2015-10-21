@@ -1022,6 +1022,11 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		}
 	}
 
+	/* Take post-EC software sync actions */
+	retval = VbExEcSoftwareSyncDone(!!shared->recovery_reason);
+	if (retval != VBERROR_SUCCESS)
+		goto VbSelectAndLoadKernel_exit;
+
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
 	tpm_status = RollbackKernelRead(&shared->kernel_version_tpm);
 	if (0 != tpm_status) {
