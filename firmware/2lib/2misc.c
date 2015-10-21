@@ -139,13 +139,15 @@ int vb2_init_context(struct vb2_context *ctx)
 void vb2_check_recovery(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	uint32_t previous_reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
 
 	/*
-	 * Read the current recovery request, unless there's already been a
+	 * Sets the current recovery request, unless there's already been a
 	 * failure earlier in the boot process.
 	 */
+	VB2_DEBUG("Recovery reason from previous boot: %#x\n", previous_reason);
 	if (!sd->recovery_reason)
-		sd->recovery_reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
+		sd->recovery_reason = previous_reason;
 
 	/* Clear the recovery request so we don't get stuck in recovery mode */
 	if (sd->recovery_reason) {
@@ -159,9 +161,18 @@ void vb2_check_recovery(struct vb2_context *ctx)
 		 */
 	}
 
-	/* If forcing recovery, override recovery reason */
+	/*
+	 * If there is already a reason, don't override it because manual
+	 * recovery could be triggered at 'OS broken' screen.
+	 */
 	if (ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) {
-		sd->recovery_reason = VB2_RECOVERY_RO_MANUAL;
+		VB2_DEBUG("Recovery was requested manually\n");
+		if (!sd->recovery_reason)
+			/*
+			 * Recovery was manually requested (esc+refresh+power)
+			 * not because of verification failure
+			 */
+			sd->recovery_reason = VB2_RECOVERY_RO_MANUAL;
 		sd->flags |= VB2_SD_FLAG_MANUAL_RECOVERY;
 	}
 
