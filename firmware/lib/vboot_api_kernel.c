@@ -662,6 +662,11 @@ VbError_t VbEcSoftwareSync(int devidx, VbCommonParams *cparams)
 			 * we could end up in an endless reboot loop.  If we
 			 * had some way to track that we'd already rebooted for
 			 * this reason, we could retry only once.
+			 *
+			 * We need a way to tell the verstage running after this
+			 * reboot that this boot is triggered by ec software
+			 * sync. Otherwise, this reboot will mask manual reboot
+			 * flag set after 'os broken' screen.
 			 */
 			VBDEBUG(("VbEcSoftwareSync() - "
 				 "want recovery but got EC-RW\n"));
