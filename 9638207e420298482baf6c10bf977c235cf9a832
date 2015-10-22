@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f66f95e4_3f76af05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-10-22T23:01:32Z",
+      "side": 1,
+      "message": "Updated the commit message and added comments in the code.",
+      "parentUuid": "36a3ed81_83d67e24",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "9638207e420298482baf6c10bf977c235cf9a832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6427d4a_6fafd105",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b6699de6_1af419f4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-10-22T23:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6427d4a_6fafd105",
+      "range": {
+        "startLine": 519,
+        "startChar": 29,
+        "endLine": 519,
+        "endChar": 30
+      },
+      "revId": "9638207e420298482baf6c10bf977c235cf9a832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b65b5d3e_aa612f14",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 7
@@ -59,6 +107,24 @@
       "writtenOn": "2015-10-22T22:04:22Z",
       "side": 1,
       "message": "Why does this path mean \"wait for a manual recovery trigger\"?",
+      "revId": "9638207e420298482baf6c10bf977c235cf9a832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369ccd29_417e369d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-10-22T23:01:32Z",
+      "side": 1,
+      "message": "This is where we show the new \u0027broken\u0027 screen. The user is given a chance to start a recovery process by pressing 3-finger salute or to workaround boot hicups by pressing the power button. Please see the design doc for more details. It\u0027s linked from the bug.",
+      "parentUuid": "b65b5d3e_aa612f14",
       "revId": "9638207e420298482baf6c10bf977c235cf9a832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
