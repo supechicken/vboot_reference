@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6ae1193_9bdcef47",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-23T20:51:25Z",
+      "side": 1,
+      "message": "It may be better to make an VbExEcSoftwareSyncDone() call, and put this logic there.  While software sync is related to verified boot, power limits and polling aren\u0027t, really.\n\nAlso note that this call will take place on *all* systems, whether they have an EC or not, PD or not.  Not sure if that\u0027s the right behavior or whether more ifdefs/config gates need to be added.",
+      "range": {
+        "startLine": 1032,
+        "startChar": 1,
+        "endLine": 1032,
+        "endChar": 69
+      },
+      "revId": "65a2ca442ba769c8150618ef5255b91ed59dcda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
