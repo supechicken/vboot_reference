@@ -22,6 +22,30 @@
       "revId": "65a2ca442ba769c8150618ef5255b91ed59dcda3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_79a0079b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-26T20:45:39Z",
+      "side": 1,
+      "message": "I think it\u0027s best to not make our limit power check depend on having a PD or having software sync enabled. In theory, the EC could request limit power for any charger (though we only have plans to implement it for PD). Also, whether or not we perform software sync, the limit power request seems important. The only thing I\u0027m slightly concerned with is the naming of our API \"VbExEcSoftwareSyncDone()\" - it sounds like it has something to do with software sync, so someone might reason that it shouldn\u0027t be called if we\u0027re not doing software sync. I made a note in the header file, but maybe we should find another name for it? \"VbExEcSysjumpDone()\"?",
+      "parentUuid": "d6ae1193_9bdcef47",
+      "range": {
+        "startLine": 1032,
+        "startChar": 1,
+        "endLine": 1032,
+        "endChar": 69
+      },
+      "revId": "65a2ca442ba769c8150618ef5255b91ed59dcda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
