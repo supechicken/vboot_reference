@@ -46,6 +46,30 @@
       "revId": "65a2ca442ba769c8150618ef5255b91ed59dcda3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e941ce_830b9d39",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-27T16:03:56Z",
+      "side": 1,
+      "message": "How about:\n\n/**\n * EC verification / updating / jumping (if any) is done.\n */\nint VbExEcVbootDone(DoWeWantToPassBackSomeSortOfContext?);",
+      "parentUuid": "b6d8bd3b_79a0079b",
+      "range": {
+        "startLine": 1032,
+        "startChar": 1,
+        "endLine": 1032,
+        "endChar": 69
+      },
+      "revId": "65a2ca442ba769c8150618ef5255b91ed59dcda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
