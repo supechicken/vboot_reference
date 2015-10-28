@@ -16,6 +16,24 @@
       "revId": "3a631486bddaeab1e8cc2abe0fb725721f2a0be0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_4c069f5f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-10-28T15:46:54Z",
+      "side": 1,
+      "message": "The reason we can\u0027t write this to VBNV_RECOVERY_REQUEST is we want to let the user try power on/off, expecting a boot glitch to go away. If we write this to VBNV_RECOVERY_REQUEST, the system will be trapped in a recovery loop.",
+      "parentUuid": "565141a7_85ab685b",
+      "revId": "3a631486bddaeab1e8cc2abe0fb725721f2a0be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
