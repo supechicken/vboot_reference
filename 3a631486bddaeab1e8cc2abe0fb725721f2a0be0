@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "565141a7_85ab685b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-10-28T04:56:41Z",
+      "side": 1,
+      "message": "I think it\u0027s pretty weird to misappropriate the subcode like that here, and it looks like it was only necessary due to the bug fixed by CL:309245. After that lands you should be able to just change this back to write recovery_request which should make the logic in 2misc.c a bit simpler.",
+      "revId": "3a631486bddaeab1e8cc2abe0fb725721f2a0be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
