@@ -66,6 +66,7 @@ const PlatformFamily platform_family_array[] = {
   {"samsung,exynos5250", "EXYNOS5"},
   {"samsung,exynos5420", "EXYNOS5"},
   {"qcom,ipq8064", "IPQ8064"},
+  {"mediatek,mt8173", "MT8173"},
   /* Terminate with NULL entry */
   {NULL, NULL}
 };
