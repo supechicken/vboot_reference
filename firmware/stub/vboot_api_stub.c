@@ -48,6 +48,11 @@ VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale)
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExDisplayFallbackScreen(uint32_t screen_type, uint32_t locale)
+{
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
                            void *buffer, uint32_t buffersize)
 {

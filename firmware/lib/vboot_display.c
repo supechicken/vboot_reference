@@ -344,7 +344,7 @@ VbError_t VbDisplayScreenLegacy(VbCommonParams *cparams, uint32_t screen,
 		return VBERROR_SUCCESS;
 
 	/* If screen wasn't in the GBB bitmaps, fall back to a default */
-	return VbExDisplayScreen(screen, locale);
+	return VbExDisplayFallbackScreen(screen, locale);
 }
 
 VbError_t VbDisplayScreen(VbCommonParams *cparams, uint32_t screen,
