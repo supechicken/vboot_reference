@@ -762,12 +762,19 @@ VbError_t VbExDisplaySetDimension(uint32_t width, uint32_t height);
 /**
  * Display a predefined screen; see VB_SCREEN_* for valid screens.
  *
+ * This is called from vboot when it expects a screen to be rendered.
+ */
+VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale);
+
+/**
+ * Display a fallback screen; see VB_SCREEN_* for valid screens.
+ *
  * This is a backup method of screen display, intended for use if the GBB does
  * not contain a full set of bitmaps.  It is acceptable for the backup screen
  * to be simple ASCII text such as "NO GOOD" or "INSERT"; these screens should
  * only be seen during development.
  */
-VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale);
+VbError_t VbExDisplayFallbackScreen(uint32_t screen_type, uint32_t locale);
 
 /**
  * Write an image to the display, with the upper left corner at the specified
