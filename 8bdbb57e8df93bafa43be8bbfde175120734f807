@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3453db_c7d21d7e",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-11-16T22:27:52Z",
+      "side": 1,
+      "message": "Looks like we already have a decision point between the new and the old model right here... does that work in all cases? How about we just introduce a new callback name (VbExDisplayScreen2 or whatever) for the new model and revert VbExDisplayScreen to use purely the old code path... then we have them nicely separated. (And if we ever switch all boards over to the new model, which I think would be good for maintainability once it\u0027s stable, we can remove the old callback and rename the new one back to VbExDisplayScreen if we like the name too much.)",
+      "revId": "8bdbb57e8df93bafa43be8bbfde175120734f807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
