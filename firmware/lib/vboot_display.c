@@ -199,6 +199,8 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		screen_index = SCREEN_OS_BROKEN;
 		break;
 	case VB_SCREEN_BLANK:
+		retval = VBERROR_SUCCESS;
+		goto VbDisplayScreenFromGBB_exit;
 	case VB_SCREEN_DEVELOPER_EGG:
 	default:
 		/* Screens which aren't in the GBB */
