@@ -199,6 +199,8 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 		screen_index = SCREEN_OS_BROKEN;
 		break;
 	case VB_SCREEN_BLANK:
+		retval = VBERROR_SUCCESS;
+		goto VbDisplayScreenFromGBB_exit;
 	case VB_SCREEN_DEVELOPER_EGG:
 	default:
 		/* Screens which aren't in the GBB */
@@ -344,7 +346,7 @@ VbError_t VbDisplayScreenLegacy(VbCommonParams *cparams, uint32_t screen,
 		return VBERROR_SUCCESS;
 
 	/* If screen wasn't in the GBB bitmaps, fall back to a default */
-	return VbExDisplayScreen(screen, locale);
+	return VbExDisplayFallbackScreen(screen, locale);
 }
 
 VbError_t VbDisplayScreen(VbCommonParams *cparams, uint32_t screen,
