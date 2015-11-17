@@ -46,6 +46,23 @@
       "revId": "71bf21e6dc3cd224a2bbe7d6b26801d6cb4f6326",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_c14fd33a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-11-17T21:25:23Z",
+      "side": 1,
+      "message": "i prefer to be explicit in these cases rather than try to pack the code.  i.e. do:\n\n if [[ ! -e \"${KEY_NAME}.vbprik2\" ]]; then\n   KEY_NAME\u003d\"${KEY_DIR}/key\"\n fi",
+      "revId": "71bf21e6dc3cd224a2bbe7d6b26801d6cb4f6326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
