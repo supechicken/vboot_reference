@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6553ee27_818d29ad",
+        "filename": "bdb/host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-12-11T21:11:08Z",
+      "side": 1,
+      "message": "nit: s/if/if /",
+      "revId": "87564baf5fc789eab7318a21807985771dd398cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6553ee27_e1d73d6c",
+        "filename": "bdb/host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-12-11T21:11:08Z",
+      "side": 1,
+      "message": "I feel this deserves a function .",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "87564baf5fc789eab7318a21807985771dd398cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6553ee27_2138b578",
+        "filename": "bdb/host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2015-12-11T21:11:08Z",
+      "side": 1,
+      "message": "I think all these returns deserve an error code or at least an error message.",
+      "range": {
+        "startLine": 237,
+        "startChar": 9,
+        "endLine": 237,
+        "endChar": 13
+      },
+      "revId": "87564baf5fc789eab7318a21807985771dd398cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
