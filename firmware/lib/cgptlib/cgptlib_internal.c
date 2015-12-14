@@ -333,6 +333,13 @@ void GptRepair(GptData *gpt)
 		header2->entries_lba = header2->my_lba - CalculateEntriesSectors(header1);
 		header2->header_crc32 = HeaderCrc(header2);
 		gpt->modified |= GPT_MODIFIED_HEADER2;
+
+		/* If we updated my_lba, update the primary to point to us */
+		if (header2->my_lba != header1->alternate_lba) {
+			header1->alternate_lba = header2->my_lba;
+			header1->header_crc32 = HeaderCrc(header1);
+			gpt->modified |= GPT_MODIFIED_HEADER1;
+		}
 	}
 	else if (MASK_SECONDARY == gpt->valid_headers) {
 		/* Secondary is good, primary is bad */
