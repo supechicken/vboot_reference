@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a1aaf01_60b96301",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "(delete?)  Isn\u0027t this done for both RO and RW?",
+      "range": {
+        "startLine": 724,
+        "startChar": 17,
+        "endLine": 724,
+        "endChar": 22
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_0260abb0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "Here too",
+      "range": {
+        "startLine": 730,
+        "startChar": 18,
+        "endLine": 730,
+        "endChar": 24
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a4357e2_bf80eab4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "Is this true only for EC-RW?\n\nWhat if EC-RW has been updated / is correct, but EC-RO needs updating?",
+      "range": {
+        "startLine": 768,
+        "startChar": 5,
+        "endLine": 768,
+        "endChar": 16
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a52a3ad_f7e1b7bb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "...if not, then this message is wrong.",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 43
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a4357e2_5f92060b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "flash... could be RO or RW that needs unprotecting.",
+      "range": {
+        "startLine": 825,
+        "startChar": 16,
+        "endLine": 825,
+        "endChar": 18
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a481bfe_65e2d51d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "Might need to move this down to where jumping is disabled.  I seem to remember that on some platforms, it\u0027s non-sensical to protect RW but still have RO unprotected - or that protecting RW has the side effect of protecting RO.",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 12
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca202730_45fead84",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "Why don\u0027t we verify EC-RW was updated properly?",
+      "range": {
+        "startLine": 845,
+        "startChar": 11,
+        "endLine": 845,
+        "endChar": 17
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a1aaf01_a3d3052f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "If EC-RO is bad, won\u0027t trying to reboot to it brick the machine?  That is, should we retry writing EC-RO once or twice before giving up?  (True for other error conditions writing EC-RO, too...)",
+      "range": {
+        "startLine": 854,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 42
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca202730_853a8508",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "For a future CL: I\u0027m pretty sure we\u0027ve ripped RO-Normal support out of the codebase elsewhere, so this is dead code...",
+      "range": {
+        "startLine": 929,
+        "startChar": 5,
+        "endLine": 929,
+        "endChar": 42
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a1aaf01_a0869b3b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "Should this be moved down until after RO is updated?\n\nThat is, do all the updating and jumping around, and only then disable jumping.",
+      "range": {
+        "startLine": 987,
+        "startChar": 1,
+        "endLine": 987,
+        "endChar": 32
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a52a3ad_d74efb70",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-07T22:38:08Z",
+      "side": 1,
+      "message": "This probably needs to move after RO update, too.",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 1010,
+        "endChar": 2
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
