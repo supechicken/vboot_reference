@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a481bfe_a888b4da",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aaf01_60b96301",
+      "range": {
+        "startLine": 724,
+        "startChar": 17,
+        "endLine": 724,
+        "endChar": 22
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa1773d7_0260abb0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8a1aaf01_43430945",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1773d7_0260abb0",
+      "range": {
+        "startLine": 730,
+        "startChar": 18,
+        "endLine": 730,
+        "endChar": 24
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a4357e2_bf80eab4",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-07T22:38:08Z",
       "side": 1,
       "message": "Is this true only for EC-RW?\n\nWhat if EC-RW has been updated / is correct, but EC-RO needs updating?",
+      "range": {
+        "startLine": 768,
+        "startChar": 5,
+        "endLine": 768,
+        "endChar": 16
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a79fb72_f9e1f3bb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Right now if its in RW code, it wont update RW. Because RW wasnt updated, RO wont be updated. It will reboot back to RO then update the RW and RO images.\n\nDo we want to keep the requirement that the RO image will only be updated after updating the RW image?",
+      "parentUuid": "4a4357e2_bf80eab4",
       "range": {
         "startLine": 768,
         "startChar": 5,
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "8a62afbe_5ab651a3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a481bfe_65e2d51d",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 12
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca202730_45fead84",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "8a41cfd9_fed2f8f7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "We just didnt before, and I wasnt sure if we wanted to spend the time recalculating the hash.",
+      "parentUuid": "ca202730_45fead84",
+      "range": {
+        "startLine": 845,
+        "startChar": 11,
+        "endLine": 845,
+        "endChar": 17
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a1aaf01_a3d3052f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -174,6 +294,30 @@
       "writtenOn": "2016-01-07T22:38:08Z",
       "side": 1,
       "message": "If EC-RO is bad, won\u0027t trying to reboot to it brick the machine?  That is, should we retry writing EC-RO once or twice before giving up?  (True for other error conditions writing EC-RO, too...)",
+      "range": {
+        "startLine": 854,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 42
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a62afbe_fac6451e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aaf01_a3d3052f",
       "range": {
         "startLine": 854,
         "startChar": 3,
@@ -232,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "4a8b57a3_8081586d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aaf01_a0869b3b",
+      "range": {
+        "startLine": 987,
+        "startChar": 1,
+        "endLine": 987,
+        "endChar": 32
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a52a3ad_d74efb70",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -243,6 +411,30 @@
       "writtenOn": "2016-01-07T22:38:08Z",
       "side": 1,
       "message": "This probably needs to move after RO update, too.",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 1010,
+        "endChar": 2
+      },
+      "revId": "729c9edd00bd16f929760954ee1890918b219fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a95dfbc_5e0651a5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-08T23:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a52a3ad_d74efb70",
       "range": {
         "startLine": 995,
         "startChar": 0,
