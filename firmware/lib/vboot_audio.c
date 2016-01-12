@@ -30,7 +30,7 @@
 #define MAX_CUSTOM_DELAY      300000
 
 /* These are visible externally only to make testing easier */
-VbDevMusicNote default_notes_[] = { {20000, 0}, /* 20 seconds */
+VbDevMusicNote default_notes_[] = { {20, 0}, /* 20 seconds */
                                     {250, 400}, /* two beeps */
                                     {250, 0},
                                     {250, 400},

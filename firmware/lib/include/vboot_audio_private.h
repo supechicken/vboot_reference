@@ -45,6 +45,7 @@ struct VbAudioContext {
 #endif
 
 #ifdef CUSTOM_MUSIC
+#error hi
 void *VbExGetMusicPtr(void);
 uint32_t VbExMaxMusicSize(void);
 #define CUSTOM_MUSIC_NOTES VbExGetMusicPtr()
