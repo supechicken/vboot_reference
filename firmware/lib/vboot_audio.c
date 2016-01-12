@@ -81,10 +81,6 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
 	builtin = default_notes_;
 	count = default_count_;
 
-	/* If we can't beep in the background, don't allow customization. */
-	if (!audio->background_beep)
-		goto nope;
-
 	if (!hdr || maxsize < sizeof(VbDevMusic))
 		goto nope;
 
