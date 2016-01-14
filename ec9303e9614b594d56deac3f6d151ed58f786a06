@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a54ac9_bff45777",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "first line shouldn\u0027t be wrapped",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7bb2ef1_f87431da",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "our style says comments are full sentences, so there should be a period at the end.  applies to a bunch of comments in this CL.",
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27cf3ea1_140574ef",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "\"BL_LENGTH\" looks like a local var, so it should be declared `local`, and it should be lowercase",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b65e05_bcdb4112",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "we want to use $(...) everywhere and never use `...`",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87a54ac9_dfcddb3d",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "can you include an example line in the comment above so people know what you\u0027re trying to parse ?  it helps with review \u0026 future changes.",
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b65e05_7ce6d9d4",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "when you set bs\u003d1, that means all reads/writes use a length of 1 :(.  you could at least use ibs\u003d1 to limit it to the read side.  i\u0027m assuming we can\u0027t assume that BL_LENGTH is a multiple of 32768 ...",
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27cf3ea1_b40c8018",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "on a style note, can we pick something for dd args to make it easier to read ?  maybe make the first line just if/of, and wrap all other args ?  note how this one doesn\u0027t look like the ones below ...",
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87a54ac9_1fb46398",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "drop the \"\u003c\" -- pass the file directly to cut",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87be2ae1_17ed74aa",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-14T01:24:41Z",
+      "side": 1,
+      "message": "xxd is part of vim and isn\u0027t a standard utility",
+      "revId": "ec9303e9614b594d56deac3f6d151ed58f786a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
