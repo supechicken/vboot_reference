@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2752dead_a52b0424",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-01-15T20:18:18Z",
+      "side": 1,
+      "message": "Did you notice that this doesn\u0027t actually work unless the GBB FMAP area size is exactly 0x2180 (which it doesn\u0027t even seem to be for glados right now)? bmpfv_size is not affected by --skip-bmpblk, it is solely calculated from the remaining free size in the GBB. I think if you want this to be a reliable check, you\u0027ll have to change cros_bundle_firmware as well.",
+      "revId": "ffc446b2418d3a01be57c10a7c24db5e92efc708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
