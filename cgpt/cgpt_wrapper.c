@@ -33,6 +33,10 @@
 #include "cgpt_nor.h"
 #include "file_keys.h"
 
+#ifndef MTD_CHAR_MAJOR
+#define MTD_CHAR_MAJOR 90
+#endif
+
 // Check if cmdline |argv| has "-D". "-D" signifies that GPT structs are stored
 // off device, and hence we should not wrap around cgpt.
 static bool has_dash_D(int argc, const char *const argv[]) {
