@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4afde8e_92d4cc40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-26T22:33:01Z",
+      "side": 1,
+      "message": "this should be one line",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "002376369316cb9bda879a45c66a3285a6a10a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_cdbcedf4",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-26T22:33:01Z",
+      "side": 1,
+      "message": "this one check is used to drop through to usage.  the previous code was fine because it was so short, but you probably want to change it to:\n\n # If we add more types in the future, we should create funcs for\n # each type.\n case ${type} in\n bootloader) ;;\n *) usage ;;\n esac\n\nthen all the code below you can unindent one level",
+      "revId": "002376369316cb9bda879a45c66a3285a6a10a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b8d2d6_087faf3d",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-26T22:33:01Z",
+      "side": 1,
+      "message": "these grep/awk lines can be a single sed:\n\n sed -n \u0027/Bootloader\\[0\\].Length/{ s/.*\u003d\\s*//; s/;//; p; q}\u0027",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "002376369316cb9bda879a45c66a3285a6a10a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c4e260_e44f0442",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-26T22:33:01Z",
+      "side": 1,
+      "message": "args are wrapped w/two space indents.  this applies to all calls below too.  if you want all the args to be aligned, just wrap them all:\n\n dd \\\n   if\u003d.... \\\n   of\u003d..... \\\n   ....",
+      "revId": "002376369316cb9bda879a45c66a3285a6a10a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34c3ee5c_1b69bc39",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-26T22:33:01Z",
+      "side": 1,
+      "message": "pretty sure you don\u0027t need a pipeline here.  doesn\u0027t this work:\n\n perl ... \\\n   \u003c \"${signed_fw}.key.mod.tmp\" \\\n   \u003e \"${signed_fw}.key.mod.bin\"",
+      "revId": "002376369316cb9bda879a45c66a3285a6a10a00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
