@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c3ee5c_ccfa2598",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-27T23:20:34Z",
+      "side": 1,
+      "message": "please put a comment above detailing the func signature.",
+      "revId": "4ed9528b4c3f76eefe72a967fec3b202354948bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "941ada01_7afa7528",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-27T23:20:34Z",
+      "side": 1,
+      "message": "you should unpack $1 up here too.  we generally try to avoid using positional args in the middle of funcs as it\u0027s hard to change things later on.  if all the $@ unpacking is at the top, then it\u0027s much easier to mess with the signature later on.",
+      "revId": "4ed9528b4c3f76eefe72a967fec3b202354948bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_f75a5778",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-27T23:20:34Z",
+      "side": 1,
+      "message": "same comments here as above func",
+      "revId": "4ed9528b4c3f76eefe72a967fec3b202354948bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7431e681_bcf9e9a5",
+        "filename": "scripts/image_signing/sign_nv_cbootimage.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-01-27T23:20:34Z",
+      "side": 1,
+      "message": "should just uncuddle this:\n\n case ${type} in\n bootloader)\n   sign_bootloader \"$@\"\n   ;;\n lp0_firmware)\n   sign_lp0_firmware \"$@\"\n   ;;\n *)\n   usage\n   ;;\n esac\n\nif you wanted to pack them, it\u0027d look more like:\n\n case ${type} in\n bootloader)   sign_bootloader \"$@\" ;;\n lp0_firmware) sign_lp0_firmware \"$@\" ;;\n *) usage ;;\n esac\n\nbut we generally avoid this since adding/updating cases later on means we have to touch all the other entries just to re-align :/.",
+      "revId": "4ed9528b4c3f76eefe72a967fec3b202354948bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
