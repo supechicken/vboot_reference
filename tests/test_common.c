@@ -18,17 +18,23 @@
 /* Global test success flag. */
 int gTestSuccess = 1;
 
-int TEST_EQ(int result, int expected_result, const char* testname) {
-  if (result == expected_result) {
-    fprintf(stderr, "%s Test " COL_GREEN "PASSED\n" COL_STOP, testname);
-    return 1;
-  } else {
-    fprintf(stderr, "%s Test " COL_RED "FAILED\n" COL_STOP, testname);
-    fprintf(stderr, "  Expected: 0x%x (%d), got: 0x%x (%d)\n",
-	    expected_result, expected_result, result, result);
-    gTestSuccess = 0;
-    return 0;
-  }
+int test_equal(int result, const char* testname, int expect)
+{
+	if (result == expect) {
+		fprintf(stderr, "%s Test " COL_GREEN "PASSED\n" COL_STOP,
+			testname);
+	} else {
+		fprintf(stderr, "%s Test " COL_RED "FAILED\n" COL_STOP,
+			testname);
+		if (expect)
+			fprintf(stderr, "  Expected 0x%x (%d), got 0x%x (%d)\n",
+				expect, expect, result, result);
+		else
+			fprintf(stderr, "  Expected SUCCESS, got: 0x%lx\n",
+				(long)result);
+		gTestSuccess = 0;
+	}
+	return result == expect;
 }
 
 int TEST_NEQ(int result, int not_expected_result, const char* testname) {
@@ -91,17 +97,6 @@ int TEST_STR_EQ(const char* result, const char* expected_result,
     return 0;
   }
 
-}
-
-int TEST_SUCC(int result, const char* testname) {
-  if (result == 0) {
-    fprintf(stderr, "%s Test " COL_GREEN "PASSED\n" COL_STOP, testname);
-  } else {
-    fprintf(stderr, "%s Test " COL_RED "FAILED\n" COL_STOP, testname);
-    fprintf(stderr, "  Expected SUCCESS, got: 0x%lx\n", (long)result);
-    gTestSuccess = 0;
-  }
-  return !result;
 }
 
 int TEST_TRUE(int result, const char* testname) {
