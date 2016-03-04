@@ -182,6 +182,10 @@ CFLAGS += -DUSE_MTD
 LDLIBS += -lmtdutils
 endif
 
+ifneq ($(VB_TRACE_CALL),)
+CFLAGS += -DVB_TRACE_CALL
+endif
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
@@ -370,6 +374,9 @@ FWLIB21_SRCS = \
 	firmware/lib21/misc.c \
 	firmware/lib21/packed_key.c
 
+COMMONLIB_SRCS = \
+	firmware/2lib/call_trace.c
+
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
 VBINIT_SRCS += \
@@ -420,6 +427,7 @@ FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
 FWLIB20_OBJS = ${FWLIB20_SRCS:%.c=${BUILD}/%.o}
 FWLIB21_OBJS = ${FWLIB21_SRCS:%.c=${BUILD}/%.o}
+COMMONLIB_OBJS = ${COMMONLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
@@ -883,6 +891,7 @@ endif
 
 ${FWLIB20_OBJS}: INCLUDES += -Ifirmware/lib20/include
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
+${COMMONLIB_OBJS}: INCLUDES += -Ifirmware/include
 
 # Linktest ensures firmware lib doesn't rely on outside libraries
 ${BUILD}/firmware/linktest/main_vbinit: ${VBINIT_OBJS}
@@ -904,7 +913,7 @@ fwlinktest: \
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},fwlinktest)
 
-${FWLIB}: ${FWLIB_OBJS}
+${FWLIB}: ${FWLIB_OBJS} ${COMMONLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -913,7 +922,7 @@ ${FWLIB}: ${FWLIB_OBJS}
 .PHONY: fwlib2x
 fwlib2x: ${FWLIB2X}
 
-${FWLIB2X}: ${FWLIB2X_OBJS}
+${FWLIB2X}: ${FWLIB2X_OBJS} ${COMMONLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -950,7 +959,7 @@ utillib: ${UTILLIB} \
 	${BUILD}/host/linktest/main
 
 # TODO: better way to make .a than duplicating this recipe each time?
-${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS}
+${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${COMMONLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
