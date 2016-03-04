@@ -51,7 +51,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 		/* Read GBB header into next chunk of work buffer */
 		gbb = vb2_workbuf_alloc(&wb, sizeof(*gbb));
 		if (!gbb)
-			return VB2_ERROR_GBB_WORKBUF;
+			return TRACE_RETURN(VB2_ERROR_GBB_WORKBUF);
 
 		rv = vb2_read_gbb_header(ctx, gbb);
 		if (rv)
@@ -67,7 +67,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 		/* Load the recovery key itself */
 		key_data = vb2_workbuf_alloc(&wb, key_size);
 		if (!key_data)
-			return VB2_ERROR_API_KPHASE1_WORKBUF_REC_KEY;
+			return TRACE_RETURN(VB2_ERROR_API_KPHASE1_WORKBUF_REC_KEY);
 
 		rv = vb2ex_read_resource(ctx, VB2_RES_GBB, key_offset,
 					 key_data, key_size);
@@ -80,7 +80,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 
 		/* Make sure we have a firmware preamble loaded */
 		if (!sd->workbuf_preamble_size)
-			return VB2_ERROR_API_KPHASE1_PREAMBLE;
+			return TRACE_RETURN(VB2_ERROR_API_KPHASE1_PREAMBLE);
 
 		pre = (struct vb2_fw_preamble *)
 			(ctx->workbuf + sd->workbuf_preamble_offset);
@@ -120,7 +120,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 	ctx->workbuf_used = sd->workbuf_kernel_key_offset +
 		sd->workbuf_kernel_key_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_load_kernel_vblock(struct vb2_context *ctx)
@@ -137,7 +137,7 @@ int vb2api_load_kernel_vblock(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_get_kernel_size(struct vb2_context *ctx,
@@ -149,7 +149,7 @@ int vb2api_get_kernel_size(struct vb2_context *ctx,
 
 	/* Get preamble pointer */
 	if (!sd->workbuf_preamble_size)
-		return VB2_ERROR_API_GET_KERNEL_SIZE_PREAMBLE;
+		return TRACE_RETURN(VB2_ERROR_API_GET_KERNEL_SIZE_PREAMBLE);
 
 	pre = (const struct vb2_kernel_preamble *)
 		(ctx->workbuf + sd->workbuf_preamble_offset);
@@ -165,7 +165,7 @@ int vb2api_get_kernel_size(struct vb2_context *ctx,
 		*size_ptr = pre->body_signature.data_size;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_verify_kernel_data(struct vb2_context *ctx,
@@ -187,19 +187,19 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
 
 	/* Get preamble pointer */
 	if (!sd->workbuf_preamble_size)
-		return VB2_ERROR_API_VERIFY_KDATA_PREAMBLE;
+		return TRACE_RETURN(VB2_ERROR_API_VERIFY_KDATA_PREAMBLE);
 
 	pre = (struct vb2_kernel_preamble *)
 		(ctx->workbuf + sd->workbuf_preamble_offset);
 
 	/* Make sure we were passed the right amount of data */
 	if (size != pre->body_signature.data_size)
-		return VB2_ERROR_API_VERIFY_KDATA_SIZE;
+		return TRACE_RETURN(VB2_ERROR_API_VERIFY_KDATA_SIZE);
 
 	/* Allocate workbuf space for the hash */
 	dc = vb2_workbuf_alloc(&wb, sizeof(*dc));
 	if (!dc)
-		return VB2_ERROR_API_VERIFY_KDATA_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_API_VERIFY_KDATA_WORKBUF);
 
 	/*
 	 * Unpack the kernel data key to see which hashing algorithm we
@@ -211,7 +211,7 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
 	 * we're stuck with a signature here instead of a hash.
 	 */
 	if (!sd->workbuf_data_key_size)
-		return VB2_ERROR_API_VERIFY_KDATA_KEY;
+		return TRACE_RETURN(VB2_ERROR_API_VERIFY_KDATA_KEY);
 
 	rv = vb2_unpack_key(&key,
 			    ctx->workbuf + sd->workbuf_data_key_offset,
@@ -230,7 +230,7 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
 	digest_size = vb2_digest_size(key.hash_alg);
 	digest = vb2_workbuf_alloc(&wb, digest_size);
 	if (!digest)
-		return VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST);
 
 	rv = vb2_digest_finalize(dc, digest, digest_size);
 	if (rv)
@@ -269,5 +269,5 @@ int vb2api_kernel_phase3(struct vb2_context *ctx)
 		sd->kernel_version_secdatak = sd->kernel_version;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

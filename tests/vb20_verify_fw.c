@@ -39,17 +39,17 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 		fname = vblock_fname;
 		break;
 	default:
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	}
 
 	/* Open file and seek to the requested offset */
 	f = fopen(fname, "rb");
 	if (!f)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	if (fseek(f, offset, SEEK_SET)) {
 		fclose(f);
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	}
 
 	/* Read data and close file */
@@ -63,7 +63,7 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 int vb2ex_tpm_clear_owner(struct vb2_context *ctx)
 {
 	// TODO: implement
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 /**
@@ -128,7 +128,7 @@ static int hash_body(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 static void print_help(const char *progname)

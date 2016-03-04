@@ -61,12 +61,12 @@ int vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 	digest_size = vb2_digest_size(VB2_HASH_SHA512);
 	digest = vb2_workbuf_alloc(&wblocal, digest_size);
 	if (!digest)
-		return VB2_ERROR_VDATA_WORKBUF_DIGEST;
+		return TRACE_RETURN(VB2_ERROR_VDATA_WORKBUF_DIGEST);
 
 	/* Hashing requires temp space for the context */
 	dc = vb2_workbuf_alloc(&wblocal, sizeof(*dc));
 	if (!dc)
-		return VB2_ERROR_VDATA_WORKBUF_HASHING;
+		return TRACE_RETURN(VB2_ERROR_VDATA_WORKBUF_HASHING);
 
 	rv = vb2_digest_init(dc, VB2_HASH_SHA512);
 	if (rv)
@@ -83,11 +83,11 @@ int vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 	if (vb2_safe_memcmp(vb2_signature_data_const(sig), digest,
 			    digest_size) != 0) {
 		VB2_DEBUG("Invalid key block hash.\n");
-		return VB2_ERROR_KEYBLOCK_SIG_INVALID;
+		return TRACE_RETURN(VB2_ERROR_KEYBLOCK_SIG_INVALID);
 	}
 
 	/* Success */
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_load_kernel_keyblock(struct vb2_context *ctx)
@@ -129,7 +129,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	/* Load the kernel keyblock header after the root key */
 	kb = vb2_workbuf_alloc(&wb, sizeof(*kb));
 	if (!kb)
-		return VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF_HEADER;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF_HEADER);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_KERNEL_VBLOCK, 0, kb,
 				 sizeof(*kb));
@@ -146,7 +146,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	 */
 	kb = vb2_workbuf_realloc(&wb, sizeof(*kb), block_size);
 	if (!kb)
-		return VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_KERNEL_VBLOCK, 0, kb, block_size);
 	if (rv)
@@ -172,7 +172,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 		VB2_DEBUG("Key block developer flag mismatch.\n");
 		keyblock_is_valid = 0;
 		if (need_keyblock_valid)
-			return VB2_ERROR_KERNEL_KEYBLOCK_DEV_FLAG;
+			return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_DEV_FLAG);
 	}
 	if (!(kb->keyblock_flags &
 	      (rec_switch ? VB2_KEY_BLOCK_FLAG_RECOVERY_1 :
@@ -180,7 +180,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 		VB2_DEBUG("Key block recovery flag mismatch.\n");
 		keyblock_is_valid = 0;
 		if (need_keyblock_valid)
-			return VB2_ERROR_KERNEL_KEYBLOCK_REC_FLAG;
+			return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_REC_FLAG);
 	}
 
 	/* Check for keyblock rollback if not in recovery mode */
@@ -188,13 +188,13 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	if (!rec_switch && kb->data_key.key_version > 0xffff) {
 		keyblock_is_valid = 0;
 		if (need_keyblock_valid)
-			return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_RANGE;
+			return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_VERSION_RANGE);
 	}
 	if (!rec_switch && kb->data_key.key_version <
 	    (sd->kernel_version_secdatak >> 16)) {
 		keyblock_is_valid = 0;
 		if (need_keyblock_valid)
-			return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK;
+			return TRACE_RETURN(VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK);
 	}
 
 	sd->kernel_version = kb->data_key.key_version << 16;
@@ -240,7 +240,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	ctx->workbuf_used = sd->workbuf_data_key_offset +
 		sd->workbuf_data_key_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
@@ -255,51 +255,51 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 	/* Sanity checks before attempting signature of data */
 	if(size < sizeof(*preamble)) {
 		VB2_DEBUG("Not enough data for preamble header.\n");
-		return VB2_ERROR_PREAMBLE_TOO_SMALL_FOR_HEADER;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_TOO_SMALL_FOR_HEADER);
 	}
 	if (preamble->header_version_major !=
 	    KERNEL_PREAMBLE_HEADER_VERSION_MAJOR) {
 		VB2_DEBUG("Incompatible kernel preamble header version.\n");
-		return VB2_ERROR_PREAMBLE_HEADER_VERSION;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_HEADER_VERSION);
 	}
 	if (preamble->header_version_minor < 2) {
 		VB2_DEBUG("Old preamble header format not supported\n");
-		return VB2_ERROR_PREAMBLE_HEADER_OLD;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_HEADER_OLD);
 	}
 	if (size < preamble->preamble_size) {
 		VB2_DEBUG("Not enough data for preamble.\n");
-		return VB2_ERROR_PREAMBLE_SIZE;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_SIZE);
 	}
 
 	/* Check signature */
 	if (vb2_verify_signature_inside(preamble, preamble->preamble_size,
 					sig)) {
 		VB2_DEBUG("Preamble signature off end of preamble\n");
-		return VB2_ERROR_PREAMBLE_SIG_OUTSIDE;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_SIG_OUTSIDE);
 	}
 
 	/* Make sure advertised signature data sizes are sane. */
 	if (preamble->preamble_size < sig->data_size) {
 		VB2_DEBUG("Signature calculated past end of the block\n");
-		return VB2_ERROR_PREAMBLE_SIGNED_TOO_MUCH;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_SIGNED_TOO_MUCH);
 	}
 
 	if (vb2_verify_data((const uint8_t *)preamble, size, sig, key, wb)) {
 		VB2_DEBUG("Preamble signature validation failed\n");
-		return VB2_ERROR_PREAMBLE_SIG_INVALID;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_SIG_INVALID);
 	}
 
 	/* Verify we signed enough data */
 	if (sig->data_size < sizeof(struct vb2_fw_preamble)) {
 		VB2_DEBUG("Didn't sign enough data\n");
-		return VB2_ERROR_PREAMBLE_SIGNED_TOO_LITTLE;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_SIGNED_TOO_LITTLE);
 	}
 
 	/* Verify body signature is inside the signed data */
 	if (vb2_verify_signature_inside(preamble, sig->data_size,
 					&preamble->body_signature)) {
 		VB2_DEBUG("Body signature off end of preamble\n");
-		return VB2_ERROR_PREAMBLE_BODY_SIG_OUTSIDE;
+		return TRACE_RETURN(VB2_ERROR_PREAMBLE_BODY_SIG_OUTSIDE);
 	}
 
 	/*
@@ -317,7 +317,7 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 					     preamble->bootloader_size,
 					     0, 0)) {
 			VB2_DEBUG("Bootloader off end of signed data\n");
-			return VB2_ERROR_PREAMBLE_BOOTLOADER_OUTSIDE;
+			return TRACE_RETURN(VB2_ERROR_PREAMBLE_BOOTLOADER_OUTSIDE);
 		}
 	}
 
@@ -336,12 +336,12 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 					     preamble->vmlinuz_header_size,
 					     0, 0)) {
 			VB2_DEBUG("Vmlinuz header off end of signed data\n");
-			return VB2_ERROR_PREAMBLE_VMLINUZ_HEADER_OUTSIDE;
+			return TRACE_RETURN(VB2_ERROR_PREAMBLE_VMLINUZ_HEADER_OUTSIDE);
 		}
 	}
 
 	/* Success */
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_load_kernel_preamble(struct vb2_context *ctx)
@@ -365,7 +365,7 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 
 	/* Unpack the kernel data key */
 	if (!sd->workbuf_data_key_size)
-		return VB2_ERROR_KERNEL_PREAMBLE2_DATA_KEY;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_PREAMBLE2_DATA_KEY);
 
 	rv = vb2_unpack_key(&data_key, key_data, key_size);
 	if (rv)
@@ -374,7 +374,7 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 	/* Load the kernel preamble header */
 	pre = vb2_workbuf_alloc(&wb, sizeof(*pre));
 	if (!pre)
-		return VB2_ERROR_KERNEL_PREAMBLE2_WORKBUF_HEADER;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_PREAMBLE2_WORKBUF_HEADER);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_KERNEL_VBLOCK,
 				 sd->vblock_preamble_offset,
@@ -387,7 +387,7 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 	/* Load the entire preamble, now that we know how big it is */
 	pre = vb2_workbuf_realloc(&wb, sizeof(*pre), pre_size);
 	if (!pre)
-		return VB2_ERROR_KERNEL_PREAMBLE2_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_PREAMBLE2_WORKBUF);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_KERNEL_VBLOCK,
 				 sd->vblock_preamble_offset,
@@ -413,14 +413,14 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 	 * version.
 	 */
 	if (pre->kernel_version > 0xffff)
-		return VB2_ERROR_KERNEL_PREAMBLE_VERSION_RANGE;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_PREAMBLE_VERSION_RANGE);
 
 	/* Combine with the key version from vb2_load_kernel_keyblock() */
 	sd->kernel_version |= pre->kernel_version;
 
 	if (vb2_need_signed_kernel(ctx) &&
 	    sd->kernel_version < sd->kernel_version_secdatak)
-		return VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK;
+		return TRACE_RETURN(VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK);
 
 	/* Keep track of where we put the preamble */
 	sd->workbuf_preamble_offset = vb2_offset_of(ctx->workbuf, pre);
@@ -440,5 +440,5 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 	 */
 	ctx->workbuf_used = sd->workbuf_preamble_offset + pre_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

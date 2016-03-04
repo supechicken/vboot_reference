@@ -141,15 +141,15 @@ int vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
 
 	switch (hwcrypto_state) {
 	case HWCRYPTO_DISABLED:
-		return VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
+		return TRACE_RETURN(VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED);
 	case HWCRYPTO_ENABLED:
 		if (hash_alg != mock_hash_alg)
-			return VB2_ERROR_SHA_INIT_ALGORITHM;
+			return TRACE_RETURN(VB2_ERROR_SHA_INIT_ALGORITHM);
 		else
 			return retval_hwcrypto;
 	case HWCRYPTO_FORBIDDEN:
 	default:
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	}
 }
 
@@ -159,7 +159,7 @@ int vb2ex_hwcrypto_digest_extend(const uint8_t *buf,
 	vb2_digest_extend(&hwcrypto_emulation_dc, buf, size);
 
 	if (hwcrypto_state != HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	return retval_hwcrypto;
 }
@@ -170,7 +170,7 @@ int vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 	vb2_digest_finalize(&hwcrypto_emulation_dc, digest, digest_size);
 
 	if (hwcrypto_state != HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	return retval_hwcrypto;
 }

@@ -86,7 +86,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	key_size = sd->gbb_rootkey_size;
 	key_data = vb2_workbuf_alloc(&wb, key_size);
 	if (!key_data)
-		return VB2_ERROR_FW_KEYBLOCK_WORKBUF_ROOT_KEY;
+		return TRACE_RETURN(VB2_ERROR_FW_KEYBLOCK_WORKBUF_ROOT_KEY);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, sd->gbb_rootkey_offset,
 				 key_data, key_size);
@@ -104,7 +104,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	/* Load the firmware keyblock header after the root key */
 	kb = vb2_workbuf_alloc(&wb, sizeof(*kb));
 	if (!kb)
-		return VB2_ERROR_FW_KEYBLOCK_WORKBUF_HEADER;
+		return TRACE_RETURN(VB2_ERROR_FW_KEYBLOCK_WORKBUF_HEADER);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK, 0, kb, sizeof(*kb));
 	if (rv)
@@ -120,7 +120,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	 */
 	kb = vb2_workbuf_realloc(&wb, sizeof(*kb), block_size);
 	if (!kb)
-		return VB2_ERROR_FW_KEYBLOCK_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_FW_KEYBLOCK_WORKBUF);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK, 0, kb, block_size);
 	if (rv)
@@ -188,7 +188,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	ctx->workbuf_used = sd->workbuf_data_key_offset +
 		sd->workbuf_data_key_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_load_fw_preamble(struct vb2_context *ctx)
@@ -210,7 +210,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 
 	/* Unpack the firmware data key */
 	if (!sd->workbuf_data_key_size)
-		return VB2_ERROR_FW_PREAMBLE2_DATA_KEY;
+		return TRACE_RETURN(VB2_ERROR_FW_PREAMBLE2_DATA_KEY);
 
 	rv = vb2_unpack_key(&data_key, key_data, key_size);
 	if (rv)
@@ -219,7 +219,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	/* Load the firmware preamble header */
 	pre = vb2_workbuf_alloc(&wb, sizeof(*pre));
 	if (!pre)
-		return VB2_ERROR_FW_PREAMBLE2_WORKBUF_HEADER;
+		return TRACE_RETURN(VB2_ERROR_FW_PREAMBLE2_WORKBUF_HEADER);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK,
 				 sd->vblock_preamble_offset,
@@ -232,7 +232,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	/* Load the entire firmware preamble, now that we know how big it is */
 	pre = vb2_workbuf_realloc(&wb, sizeof(*pre), pre_size);
 	if (!pre)
-		return VB2_ERROR_FW_PREAMBLE2_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_FW_PREAMBLE2_WORKBUF);
 
 	rv = vb2ex_read_resource(ctx, VB2_RES_FW_VBLOCK,
 				 sd->vblock_preamble_offset,
@@ -306,5 +306,5 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	 */
 	ctx->workbuf_used = sd->workbuf_preamble_offset + pre_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

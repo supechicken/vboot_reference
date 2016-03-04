@@ -78,5 +78,5 @@ int vb2_fw_preamble_create(struct vb2_fw_preamble **fp_ptr,
 	}
 
 	*fp_ptr = (struct vb2_fw_preamble *)buf;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

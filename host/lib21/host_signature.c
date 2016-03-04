@@ -42,7 +42,7 @@ static int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 			};
 			*buf_ptr = info;
 			*size_ptr = sizeof(info);
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 #if VB2_SUPPORT_SHA256
@@ -55,7 +55,7 @@ static int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 			};
 			*buf_ptr = info;
 			*size_ptr = sizeof(info);
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 #if VB2_SUPPORT_SHA512
@@ -68,11 +68,11 @@ static int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 			};
 			*buf_ptr = info;
 			*size_ptr = sizeof(info);
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 	default:
-		return VB2_ERROR_DIGEST_INFO;
+		return TRACE_RETURN(VB2_ERROR_DIGEST_INFO);
 	}
 }
 
@@ -177,7 +177,7 @@ int vb2_sign_data(struct vb2_signature **sig_ptr,
 
 	free(sig_digest);
 	*sig_ptr = (struct vb2_signature *)buf;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_sig_size_for_key(uint32_t *size_ptr,
@@ -187,13 +187,13 @@ int vb2_sig_size_for_key(uint32_t *size_ptr,
 	uint32_t size = vb2_sig_size(key->sig_alg, key->hash_alg);
 
 	if (!size)
-		return VB2_ERROR_SIG_SIZE_FOR_KEY;
+		return TRACE_RETURN(VB2_ERROR_SIG_SIZE_FOR_KEY);
 
 	size += sizeof(struct vb2_signature);
 	size += vb2_desc_size(desc ? desc : key->desc);
 
 	*size_ptr = size;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_sig_size_for_keys(uint32_t *size_ptr,
@@ -201,19 +201,17 @@ int vb2_sig_size_for_keys(uint32_t *size_ptr,
 			  uint32_t key_count)
 {
 	uint32_t total = 0, size = 0;
-	int rv, i;
+	int i;
 
 	*size_ptr = 0;
 
 	for (i = 0; i < key_count; i++) {
-		rv = vb2_sig_size_for_key(&size, key_list[i], NULL);
-		if (rv)
-			return rv;
+		RETURN_ON_ERROR(vb2_sig_size_for_key(&size, key_list[i], NULL));
 		total += size;
 	}
 
 	*size_ptr = total;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_sign_object(uint8_t *buf,
@@ -223,11 +221,8 @@ int vb2_sign_object(uint8_t *buf,
 {
 	struct vb2_struct_common *c = (struct vb2_struct_common *)buf;
 	struct vb2_signature *sig = NULL;
-	int rv;
 
-	rv = vb2_sign_data(&sig, buf, sig_offset, key, desc);
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2_sign_data(&sig, buf, sig_offset, key, desc));
 
 	if (sig_offset + sig->c.total_size > c->total_size) {
 		free(sig);
@@ -237,7 +232,7 @@ int vb2_sign_object(uint8_t *buf,
 	memcpy(buf + sig_offset, sig, sig->c.total_size);
 	free(sig);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_sign_object_multiple(uint8_t *buf,
@@ -247,14 +242,12 @@ int vb2_sign_object_multiple(uint8_t *buf,
 {
 	struct vb2_struct_common *c = (struct vb2_struct_common *)buf;
 	uint32_t sig_next = sig_offset;
-	int rv, i;
+	int i;
 
 	for (i = 0; i < key_count; i++)	{
 		struct vb2_signature *sig = NULL;
 
-		rv = vb2_sign_data(&sig, buf, sig_offset, key_list[i], NULL);
-		if (rv)
-			return rv;
+		RETURN_ON_ERROR(vb2_sign_data(&sig, buf, sig_offset, key_list[i], NULL));
 
 		if (sig_next + sig->c.total_size > c->total_size) {
 			free(sig);
@@ -266,5 +259,5 @@ int vb2_sign_object_multiple(uint8_t *buf,
 		free(sig);
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
