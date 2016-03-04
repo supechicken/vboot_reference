@@ -7,11 +7,20 @@
 #ifndef VBOOT_REFERENCE_TEST_COMMON_H_
 #define VBOOT_REFERENCE_TEST_COMMON_H_
 
+#include "call_trace.h"
+
 extern int gTestSuccess;
 
-/* Return 1 if result is equal to expected_result, else return 0.
+/* Return 1 if result is 0 (VB_ERROR_SUCCESS / VB2_SUCCESS), else return 0.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_EQ(int result, int expected_result, const char* testname);
+int test_equal(int result, const char* testname, int expect);
+
+#define TEST_EQ(function_call, expect, testname) do {			\
+	struct call_trace ct;						\
+	vb_init_call_trace(&ct);					\
+	if (!test_equal(function_call, testname, expect))		\
+		vb_dump_call_trace();					\
+} while(0)
 
 /* Return 0 if result is equal to not_expected_result, else return 1.
  * Also update the global gTestSuccess flag if test fails. */
@@ -42,9 +51,12 @@ int TEST_TRUE(int result, const char* testname);
  * Also update the global gTestSuccess flag if test fails. */
 int TEST_FALSE(int result, const char* testname);
 
-/* Return 1 if result is 0 (VB_ERROR_SUCCESS / VB2_SUCCESS), else return 0.
- * Also update the global gTestSuccess flag if test fails. */
-int TEST_SUCC(int result, const char* testname);
+#define TEST_SUCC(function_call, testname) do {				\
+	struct call_trace ct;						\
+	vb_init_call_trace(&ct);					\
+	if (!test_equal(function_call, testname, 0))			\
+		vb_dump_call_trace();					\
+} while(0)
 
 /* ANSI Color coding sequences.
  *
