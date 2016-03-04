@@ -160,7 +160,7 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 	uint32_t rsize;
 
 	if (--mock_read_res_fail_on_call == 0)
-		return VB2_ERROR_MOCK;
+		return TRACE_RETURN(VB2_ERROR_MOCK);
 
 	switch(index) {
 	case VB2_RES_GBB:
@@ -168,14 +168,14 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 		rsize = sizeof(mock_gbb);
 		break;
 	default:
-		return VB2_ERROR_EX_READ_RESOURCE_INDEX;
+		return TRACE_RETURN(VB2_ERROR_EX_READ_RESOURCE_INDEX);
 	}
 
 	if (offset > rsize || offset + size > rsize)
-		return VB2_ERROR_EX_READ_RESOURCE_SIZE;
+		return TRACE_RETURN(VB2_ERROR_EX_READ_RESOURCE_SIZE);
 
 	memcpy(buf, rptr + offset, size);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_read_gbb_header(struct vb2_context *ctx, struct vb2_gbb_header *gbb)
@@ -211,9 +211,9 @@ int vb2_verify_digest(const struct vb2_public_key *key,
 		      const struct vb2_workbuf *wb)
 {
 	if (memcmp(digest, (uint8_t *)sig + sig->sig_offset, sig->sig_size))
-		return VB2_ERROR_VDATA_VERIFY_DIGEST;
+		return TRACE_RETURN(VB2_ERROR_VDATA_VERIFY_DIGEST);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 /* Tests */

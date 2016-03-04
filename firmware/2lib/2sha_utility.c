@@ -80,20 +80,20 @@ int vb2_digest_init(struct vb2_digest_context *dc,
 #if VB2_SUPPORT_SHA1
 	case VB2_HASH_SHA1:
 		vb2_sha1_init(&dc->sha1);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA256
 	case VB2_HASH_SHA256:
 		vb2_sha256_init(&dc->sha256);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA512
 	case VB2_HASH_SHA512:
 		vb2_sha512_init(&dc->sha512);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 	default:
-		return VB2_ERROR_SHA_INIT_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_SHA_INIT_ALGORITHM);
 	}
 }
 
@@ -105,20 +105,20 @@ int vb2_digest_extend(struct vb2_digest_context *dc,
 #if VB2_SUPPORT_SHA1
 	case VB2_HASH_SHA1:
 		vb2_sha1_update(&dc->sha1, buf, size);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA256
 	case VB2_HASH_SHA256:
 		vb2_sha256_update(&dc->sha256, buf, size);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA512
 	case VB2_HASH_SHA512:
 		vb2_sha512_update(&dc->sha512, buf, size);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 	default:
-		return VB2_ERROR_SHA_EXTEND_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_SHA_EXTEND_ALGORITHM);
 	}
 }
 
@@ -127,26 +127,26 @@ int vb2_digest_finalize(struct vb2_digest_context *dc,
 			uint32_t digest_size)
 {
 	if (digest_size < vb2_digest_size(dc->hash_alg))
-		return VB2_ERROR_SHA_FINALIZE_DIGEST_SIZE;
+		return TRACE_RETURN(VB2_ERROR_SHA_FINALIZE_DIGEST_SIZE);
 
 	switch (dc->hash_alg) {
 #if VB2_SUPPORT_SHA1
 	case VB2_HASH_SHA1:
 		vb2_sha1_finalize(&dc->sha1, digest);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA256
 	case VB2_HASH_SHA256:
 		vb2_sha256_finalize(&dc->sha256, digest);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 #if VB2_SUPPORT_SHA512
 	case VB2_HASH_SHA512:
 		vb2_sha512_finalize(&dc->sha512, digest);
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 #endif
 	default:
-		return VB2_ERROR_SHA_FINALIZE_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_SHA_FINALIZE_ALGORITHM);
 	}
 }
 
@@ -157,15 +157,12 @@ int vb2_digest_buffer(const uint8_t *buf,
 		      uint32_t digest_size)
 {
 	struct vb2_digest_context dc;
-	int rv;
 
-	rv = vb2_digest_init(&dc, hash_alg);
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2_digest_init(&dc, hash_alg));
 
-	rv = vb2_digest_extend(&dc, buf, size);
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2_digest_extend(&dc, buf, size));
 
-	return vb2_digest_finalize(&dc, digest, digest_size);
+	RETURN_ON_ERROR(vb2_digest_finalize(&dc, digest, digest_size));
+
+	return TRACE_RETURN(VB2_SUCCESS);
 }

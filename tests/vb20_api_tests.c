@@ -124,12 +124,12 @@ int vb2_unpack_key(struct vb2_public_key *key,
 	struct vb2_packed_key *k = (struct vb2_packed_key *)buf;
 
 	if (size != sizeof(*k) + 8)
-		return VB2_ERROR_UNPACK_KEY_SIZE;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_SIZE);
 
 	key->sig_alg = vb2_crypto_to_signature(k->algorithm);
 	key->hash_alg = vb2_crypto_to_hash(k->algorithm);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
@@ -137,15 +137,15 @@ int vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
 {
 	switch (hwcrypto_state) {
 	case HWCRYPTO_DISABLED:
-		return VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
+		return TRACE_RETURN(VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED);
 	case HWCRYPTO_ENABLED:
 		if (hash_alg != mock_hash_alg)
-			return VB2_ERROR_SHA_INIT_ALGORITHM;
+			return TRACE_RETURN(VB2_ERROR_SHA_INIT_ALGORITHM);
 		else
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 	case HWCRYPTO_FORBIDDEN:
 	default:
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	}
 }
 
@@ -153,9 +153,9 @@ int vb2ex_hwcrypto_digest_extend(const uint8_t *buf,
 				 uint32_t size)
 {
 	if (hwcrypto_state != HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 static void fill_digest(uint8_t *digest, uint32_t digest_size)
@@ -168,7 +168,7 @@ int vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 				   uint32_t digest_size)
 {
 	if (hwcrypto_state != HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	if (retval_vb2_digest_finalize == VB2_SUCCESS)
 		fill_digest(digest, digest_size);
@@ -180,14 +180,14 @@ int vb2_digest_init(struct vb2_digest_context *dc,
 		    enum vb2_hash_algorithm hash_alg)
 {
 	if (hwcrypto_state == HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	if (hash_alg != mock_hash_alg)
-		return VB2_ERROR_SHA_INIT_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_SHA_INIT_ALGORITHM);
 
 	dc->hash_alg = hash_alg;
 	dc->using_hwcrypto = 0;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_digest_extend(struct vb2_digest_context *dc,
@@ -195,11 +195,11 @@ int vb2_digest_extend(struct vb2_digest_context *dc,
 		      uint32_t size)
 {
 	if (hwcrypto_state == HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 	if (dc->hash_alg != mock_hash_alg)
-		return VB2_ERROR_SHA_EXTEND_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_SHA_EXTEND_ALGORITHM);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_digest_finalize(struct vb2_digest_context *dc,
@@ -207,7 +207,7 @@ int vb2_digest_finalize(struct vb2_digest_context *dc,
 			uint32_t digest_size)
 {
 	if (hwcrypto_state == HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	if (retval_vb2_digest_finalize == VB2_SUCCESS)
 		fill_digest(digest, digest_size);

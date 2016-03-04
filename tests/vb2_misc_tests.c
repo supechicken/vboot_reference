@@ -57,13 +57,13 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 			uint32_t size)
 {
 	if (index != mock_resource_index)
-		return VB2_ERROR_EX_READ_RESOURCE_INDEX;
+		return TRACE_RETURN(VB2_ERROR_EX_READ_RESOURCE_INDEX);
 
 	if (offset > mock_resource_size || offset + size > mock_resource_size)
-		return VB2_ERROR_EX_READ_RESOURCE_SIZE;
+		return TRACE_RETURN(VB2_ERROR_EX_READ_RESOURCE_SIZE);
 
 	memcpy(buf, (uint8_t *)mock_resource_ptr + offset, size);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2ex_tpm_clear_owner(struct vb2_context *ctx)

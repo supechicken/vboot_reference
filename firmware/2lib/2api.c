@@ -62,7 +62,7 @@ int vb2api_fw_phase1(struct vb2_context *ctx)
 	} else {
 		/* Reboot requested for the first time */
 		vb2_nv_set(ctx, VB2_NV_TPM_REQUESTED_REBOOT, 1);
-		return VB2_ERROR_API_PHASE1_SECDATA_REBOOT;
+		return TRACE_RETURN(VB2_ERROR_API_PHASE1_SECDATA_REBOOT);
 	}
 
 	/* Initialize secure data */
@@ -101,10 +101,10 @@ int vb2api_fw_phase1(struct vb2_context *ctx)
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Always clear RAM when entering recovery mode */
 		ctx->flags |= VB2_CONTEXT_CLEAR_RAM;
-		return VB2_ERROR_API_PHASE1_RECOVERY;
+		return TRACE_RETURN(VB2_ERROR_API_PHASE1_RECOVERY);
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_fw_phase2(struct vb2_context *ctx)
@@ -126,7 +126,7 @@ int vb2api_fw_phase2(struct vb2_context *ctx)
 		if (sd->fw_slot)
 			ctx->flags |= VB2_CONTEXT_FW_SLOT_B;
 
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 	}
 
 	/* Always clear RAM when entering developer mode */
@@ -147,7 +147,7 @@ int vb2api_fw_phase2(struct vb2_context *ctx)
 		return rv;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_extend_hash(struct vb2_context *ctx,
@@ -160,11 +160,11 @@ int vb2api_extend_hash(struct vb2_context *ctx,
 
 	/* Must have initialized hash digest work area */
 	if (!sd->workbuf_hash_size)
-		return VB2_ERROR_API_EXTEND_HASH_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_API_EXTEND_HASH_WORKBUF);
 
 	/* Don't extend past the data we expect to hash */
 	if (!size || size > sd->hash_remaining_size)
-		return VB2_ERROR_API_EXTEND_HASH_SIZE;
+		return TRACE_RETURN(VB2_ERROR_API_EXTEND_HASH_SIZE);
 
 	sd->hash_remaining_size -= size;
 
@@ -192,14 +192,14 @@ int vb2api_get_pcr_digest(struct vb2_context *ctx,
 		digest_size = VB2_GBB_HWID_DIGEST_SIZE;
 		break;
 	default:
-		return VB2_ERROR_API_PCR_DIGEST;
+		return TRACE_RETURN(VB2_ERROR_API_PCR_DIGEST);
 	}
 
 	if (digest == NULL || *dest_size < digest_size)
-		return VB2_ERROR_API_PCR_DIGEST_BUF;
+		return TRACE_RETURN(VB2_ERROR_API_PCR_DIGEST_BUF);
 
 	memcpy(dest, digest, digest_size);
 	*dest_size = digest_size;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

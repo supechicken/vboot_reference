@@ -12,6 +12,7 @@
 #include "2return_codes.h"
 #include "2sha.h"
 #include "2struct.h"
+#include "call_trace.h"
 
 struct vb2_public_key;
 

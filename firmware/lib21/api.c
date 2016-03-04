@@ -34,7 +34,7 @@ int vb2api_fw_phase3(struct vb2_context *ctx)
 		return rv;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2api_init_hash2(struct vb2_context *ctx,
@@ -53,7 +53,7 @@ int vb2api_init_hash2(struct vb2_context *ctx,
 
 	/* Get preamble pointer */
 	if (!sd->workbuf_preamble_size)
-		return VB2_ERROR_API_INIT_HASH_PREAMBLE;
+		return TRACE_RETURN(VB2_ERROR_API_INIT_HASH_PREAMBLE);
 	pre = (const struct vb2_fw_preamble *)
 		(ctx->workbuf + sd->workbuf_preamble_offset);
 
@@ -69,7 +69,7 @@ int vb2api_init_hash2(struct vb2_context *ctx,
 		hash_offset += sig->c.total_size;
 	}
 	if (i >= pre->hash_count)
-		return VB2_ERROR_API_INIT_HASH_ID;  /* No match */
+		return TRACE_RETURN(VB2_ERROR_API_INIT_HASH_ID);  /* No match */
 
 	/* Allocate workbuf space for the hash */
 	if (sd->workbuf_hash_size) {
@@ -80,7 +80,7 @@ int vb2api_init_hash2(struct vb2_context *ctx,
 
 		dc = vb2_workbuf_alloc(&wb, dig_size);
 		if (!dc)
-			return VB2_ERROR_API_INIT_HASH_WORKBUF;
+			return TRACE_RETURN(VB2_ERROR_API_INIT_HASH_WORKBUF);
 
 		sd->workbuf_hash_offset = vb2_offset_of(ctx->workbuf, dc);
 		sd->workbuf_hash_size = dig_size;
@@ -100,7 +100,7 @@ int vb2api_init_hash2(struct vb2_context *ctx,
 				  sig->hash_alg);
 			dc->hash_alg = sig->hash_alg;
 			dc->using_hwcrypto = 1;
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 		if (rv != VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED)
 			return rv;
@@ -125,43 +125,39 @@ int vb2api_check_hash(struct vb2_context *ctx)
 
 	const struct vb2_signature *sig;
 
-	int rv;
-
 	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Get signature pointer */
 	if (!sd->hash_tag)
-		return VB2_ERROR_API_CHECK_HASH_TAG;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_TAG);
 	sig = (const struct vb2_signature *)(ctx->workbuf + sd->hash_tag);
 
 	/* Must have initialized hash digest work area */
 	if (!sd->workbuf_hash_size)
-		return VB2_ERROR_API_CHECK_HASH_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_WORKBUF);
 
 	/* Should have hashed the right amount of data */
 	if (sd->hash_remaining_size)
-		return VB2_ERROR_API_CHECK_HASH_SIZE;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_SIZE);
 
 	/* Allocate the digest */
 	digest = vb2_workbuf_alloc(&wb, digest_size);
 	if (!digest)
-		return VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST);
 
 	/* Finalize the digest */
 	if (dc->using_hwcrypto)
-		rv = vb2ex_hwcrypto_digest_finalize(digest, digest_size);
+		RETURN_ON_ERROR(vb2ex_hwcrypto_digest_finalize(digest, digest_size));
 	else
-		rv = vb2_digest_finalize(dc, digest, digest_size);
-	if (rv)
-		return rv;
+		RETURN_ON_ERROR(vb2_digest_finalize(dc, digest, digest_size));
 
 	/* Compare with the signature */
 	if (vb2_safe_memcmp(digest, (const uint8_t *)sig + sig->sig_offset,
 			    digest_size))
-		return VB2_ERROR_API_CHECK_HASH_SIG;
+		return TRACE_RETURN(VB2_ERROR_API_CHECK_HASH_SIG);
 
 	/* TODO: the old check-hash function called vb2_fail() on any mismatch.
 	 * I don't think it should do that; the caller should. */
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

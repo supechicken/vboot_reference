@@ -73,5 +73,5 @@ int vb2_keyblock_create(struct vb2_keyblock **kb_ptr,
 	}
 
 	*kb_ptr = (struct vb2_keyblock *)buf;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

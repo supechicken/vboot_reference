@@ -101,15 +101,15 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 	 * TODO: If it doesn't match, pass through to the old packed key format.
 	 */
 	if (pkey->c.magic != VB2_MAGIC_PACKED_PRIVATE_KEY)
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_MAGIC;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_MAGIC);
 
 	if (vb2_verify_common_header(buf, size))
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_HEADER;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_HEADER);
 
 	/* Make sure key data is inside */
 	if (vb2_verify_common_member(pkey, &min_offset,
 				     pkey->key_offset, pkey->key_size))
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_DATA;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_DATA);
 
 	/*
 	 * Check for compatible version.  No need to check minor version, since
@@ -118,12 +118,12 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 	 */
 	if (pkey->c.struct_version_major !=
 	    VB2_PACKED_PRIVATE_KEY_VERSION_MAJOR)
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_STRUCT_VERSION;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_STRUCT_VERSION);
 
 	/* Allocate the new key */
 	key = calloc(1, sizeof(*key));
 	if (!key)
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_ALLOC);
 
 	/* Copy key algorithms and ID */
 	key->sig_alg = pkey->sig_alg;
@@ -134,7 +134,7 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 	if (pkey->sig_alg == VB2_SIG_NONE) {
 		if (pkey->key_size != 0) {
 			free(key);
-			return VB2_ERROR_UNPACK_PRIVATE_KEY_HASH;
+			return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_HASH);
 		}
 	} else {
 		start = (const unsigned char *)(buf + pkey->key_offset);
@@ -142,7 +142,7 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 							 pkey->key_size);
 		if (!key->rsa_private_key) {
 			free(key);
-			return VB2_ERROR_UNPACK_PRIVATE_KEY_RSA;
+			return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_RSA);
 		}
 	}
 
@@ -151,12 +151,12 @@ int vb2_private_key_unpack(struct vb2_private_key **key_ptr,
 		if (vb2_private_key_set_desc(
 			     key, (const char *)(buf + pkey->c.fixed_size))) {
 			vb2_private_key_free(key);
-			return VB2_ERROR_UNPACK_PRIVATE_KEY_DESC;
+			return TRACE_RETURN(VB2_ERROR_UNPACK_PRIVATE_KEY_DESC);
 		}
 	}
 
 	*key_ptr = key;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_private_key_read(struct vb2_private_key **key_ptr,
@@ -190,13 +190,13 @@ int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
 	/* Allocate the new key */
 	key = calloc(1, sizeof(*key));
 	if (!key)
-		return VB2_ERROR_READ_PEM_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_READ_PEM_ALLOC);
 
 	/* Read private key */
 	f = fopen(filename, "rb");
 	if (!f) {
 		free(key);
-		return VB2_ERROR_READ_PEM_FILE_OPEN;
+		return TRACE_RETURN(VB2_ERROR_READ_PEM_FILE_OPEN);
 	}
 
 	key->rsa_private_key = PEM_read_RSAPrivateKey(f, NULL, NULL, NULL);
@@ -204,11 +204,11 @@ int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
 
 	if (!key->rsa_private_key) {
 		free(key);
-		return VB2_ERROR_READ_PEM_RSA;
+		return TRACE_RETURN(VB2_ERROR_READ_PEM_RSA);
 	}
 
 	*key_ptr = key;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
@@ -219,12 +219,12 @@ int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
 	if (desc) {
 		key->desc = strdup(desc);
 		if (!key->desc)
-			return VB2_ERROR_PRIVATE_KEY_SET_DESC;
+			return TRACE_RETURN(VB2_ERROR_PRIVATE_KEY_SET_DESC);
 	} else {
 		key->desc = NULL;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_private_key_write(const struct vb2_private_key *key,
@@ -252,7 +252,7 @@ int vb2_private_key_write(const struct vb2_private_key *key,
 		/* Pack RSA key */
 		rsalen = i2d_RSAPrivateKey(key->rsa_private_key, &rsabuf);
 		if (rsalen <= 0 || !rsabuf)
-			return VB2_ERROR_PRIVATE_KEY_WRITE_RSA;
+			return TRACE_RETURN(VB2_ERROR_PRIVATE_KEY_WRITE_RSA);
 	}
 
 	pkey.key_offset = pkey.c.fixed_size + pkey.c.desc_size;
@@ -263,7 +263,7 @@ int vb2_private_key_write(const struct vb2_private_key *key,
 	buf = calloc(1, pkey.c.total_size);
 	if (!buf) {
 		free(rsabuf);
-		return VB2_ERROR_PRIVATE_KEY_WRITE_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_PRIVATE_KEY_WRITE_ALLOC);
 	}
 
 	memcpy(buf, &pkey, sizeof(pkey));
@@ -299,7 +299,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 				.id = VB2_ID_NONE_SHA1,
 			};
 			*key_ptr = &key;
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 #if VB2_SUPPORT_SHA256
@@ -312,7 +312,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 				.id = VB2_ID_NONE_SHA256,
 			};
 			*key_ptr = &key;
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 #if VB2_SUPPORT_SHA512
@@ -325,11 +325,11 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 				.id = VB2_ID_NONE_SHA512,
 			};
 			*key_ptr = &key;
-			return VB2_SUCCESS;
+			return TRACE_RETURN(VB2_SUCCESS);
 		}
 #endif
 	default:
-		return VB2_ERROR_PRIVATE_KEY_HASH;
+		return TRACE_RETURN(VB2_ERROR_PRIVATE_KEY_HASH);
 	}
 }
 
@@ -344,18 +344,18 @@ int vb2_public_key_alloc(struct vb2_public_key **key_ptr,
 		key_data_size;
 
 	if (!key_data_size)
-		return VB2_ERROR_PUBLIC_KEY_ALLOC_SIZE;
+		return TRACE_RETURN(VB2_ERROR_PUBLIC_KEY_ALLOC_SIZE);
 
 	key = calloc(1, buf_size);
 	if (!key)
-		return VB2_ERROR_PUBLIC_KEY_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_PUBLIC_KEY_ALLOC);
 
 	key->id = (struct vb2_id *)(key + 1);
 	key->sig_alg = sig_alg;
 
 	*key_ptr = key;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 void vb2_public_key_free(struct vb2_public_key *key)
@@ -385,7 +385,7 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	*key_ptr = NULL;
 
 	if (vb2_read_file(filename, &key_data, &key_size))
-		return VB2_ERROR_READ_KEYB_DATA;
+		return TRACE_RETURN(VB2_ERROR_READ_KEYB_DATA);
 
 	/* Guess the signature algorithm from the key size */
 	for (sig_alg = VB2_SIG_RSA1024; sig_alg <= VB2_SIG_RSA8192; sig_alg++) {
@@ -394,12 +394,12 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	}
 	if (sig_alg > VB2_SIG_RSA8192) {
 		free(key_data);
-		return VB2_ERROR_READ_KEYB_SIZE;
+		return TRACE_RETURN(VB2_ERROR_READ_KEYB_SIZE);
 	}
 
 	if (vb2_public_key_alloc(&key, sig_alg)) {
 		free(key_data);
-		return VB2_ERROR_READ_KEYB_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_READ_KEYB_ALLOC);
 	}
 
 	/* Copy data from the file buffer to the public key buffer */
@@ -409,12 +409,12 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 
 	if (vb2_unpack_key_data(key, key_buf, key_size)) {
 		vb2_public_key_free(key);
-		return VB2_ERROR_READ_KEYB_UNPACK;
+		return TRACE_RETURN(VB2_ERROR_READ_KEYB_UNPACK);
 	}
 
 	*key_ptr = key;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
@@ -425,12 +425,12 @@ int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
 	if (desc) {
 		key->desc = strdup(desc);
 		if (!key->desc)
-			return VB2_ERROR_PUBLIC_KEY_SET_DESC;
+			return TRACE_RETURN(VB2_ERROR_PUBLIC_KEY_SET_DESC);
 	} else {
 		key->desc = NULL;
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
@@ -443,15 +443,15 @@ int vb2_packed_key_read(struct vb2_packed_key **key_ptr,
 	*key_ptr = NULL;
 
 	if (vb2_read_file(filename, &buf, &size))
-		return VB2_ERROR_READ_PACKED_KEY_DATA;
+		return TRACE_RETURN(VB2_ERROR_READ_PACKED_KEY_DATA);
 
 	/* Sanity check: make sure key unpacks properly */
 	if (vb2_unpack_key(&key, buf, size))
-		return VB2_ERROR_READ_PACKED_KEY;
+		return TRACE_RETURN(VB2_ERROR_READ_PACKED_KEY);
 
 	*key_ptr = (struct vb2_packed_key *)buf;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
@@ -475,7 +475,7 @@ int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
 	if (pubk->sig_alg != VB2_SIG_NONE) {
 		key.key_size = vb2_packed_key_size(pubk->sig_alg);
 		if (!key.key_size)
-			return VB2_ERROR_PUBLIC_KEY_PACK_SIZE;
+			return TRACE_RETURN(VB2_ERROR_PUBLIC_KEY_PACK_SIZE);
 	}
 
 	key.c.total_size = key.key_offset + key.key_size;
@@ -510,7 +510,7 @@ int vb2_public_key_pack(struct vb2_packed_key **key_ptr,
 
 	*key_ptr = (struct vb2_packed_key *)buf;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_public_key_hash(struct vb2_public_key *key,
@@ -533,13 +533,13 @@ int vb2_public_key_hash(struct vb2_public_key *key,
 		break;
 #endif
 	default:
-		return VB2_ERROR_PUBLIC_KEY_HASH;
+		return TRACE_RETURN(VB2_ERROR_PUBLIC_KEY_HASH);
 	}
 
 	key->sig_alg = VB2_SIG_NONE;
 	key->hash_alg = hash_alg;
 	key->id = vb2_hash_id(hash_alg);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 enum vb2_signature_algorithm vb2_rsa_sig_alg(struct rsa_st *rsa)

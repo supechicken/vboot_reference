@@ -323,13 +323,13 @@ static int vb2_sig_from_usbpd1(struct vb2_signature **sig,
 	uint32_t total_size = sizeof(s) + o_sig_size;
 	uint8_t *buf = calloc(1, total_size);
 	if (!buf)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	memcpy(buf, &s, sizeof(s));
 	memcpy(buf + sizeof(s), o_sig, o_sig_size);
 
 	*sig = (struct vb2_signature *)buf;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 static void show_usbpd1_stuff(const char *name,
@@ -373,7 +373,7 @@ static int try_our_own(enum vb2_signature_algorithm sig_alg,
 		       const uint8_t *data, uint32_t data_size)
 {
 	struct vb2_public_key pubkey;
-	struct vb2_signature *sig;
+	struct vb2_signature *sig = NULL;
 	uint8_t buf[VB2_WORKBUF_RECOMMENDED_SIZE]
 		__attribute__ ((aligned (VB2_WORKBUF_ALIGN)));
 	struct vb2_workbuf wb = {
@@ -413,7 +413,7 @@ static int check_self_consistency(const uint8_t *buf,
 
 	/* Skip stuff that obviously doesn't work */
 	if (sig_size > rw_size || pubkey_size > ro_size)
-		return VB2_ERROR_UNKNOWN;
+		return TRACE_RETURN(VB2_ERROR_UNKNOWN);
 
 	rv = try_our_own(sig_alg, hash_alg,		   /* algs */
 			 buf + pubkey_offset, pubkey_size, /* pubkey blob */

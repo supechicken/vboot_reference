@@ -29,7 +29,7 @@ int vb2_read_file(const char *filename, uint8_t **data_ptr, uint32_t *size_ptr)
 	f = fopen(filename, "rb");
 	if (!f) {
 		VB2_DEBUG("Unable to open file %s\n", filename);
-		return VB2_ERROR_READ_FILE_OPEN;
+		return TRACE_RETURN(VB2_ERROR_READ_FILE_OPEN);
 	}
 
 	fseek(f, 0, SEEK_END);
@@ -38,27 +38,27 @@ int vb2_read_file(const char *filename, uint8_t **data_ptr, uint32_t *size_ptr)
 
 	if (size < 0 || size > UINT32_MAX) {
 		fclose(f);
-		return VB2_ERROR_READ_FILE_SIZE;
+		return TRACE_RETURN(VB2_ERROR_READ_FILE_SIZE);
 	}
 
 	buf = malloc(size);
 	if (!buf) {
 		fclose(f);
-		return VB2_ERROR_READ_FILE_ALLOC;
+		return TRACE_RETURN(VB2_ERROR_READ_FILE_ALLOC);
 	}
 
 	if(1 != fread(buf, size, 1, f)) {
 		VB2_DEBUG("Unable to read file %s\n", filename);
 		fclose(f);
 		free(buf);
-		return VB2_ERROR_READ_FILE_DATA;
+		return TRACE_RETURN(VB2_ERROR_READ_FILE_DATA);
 	}
 
 	fclose(f);
 
 	*data_ptr = buf;
 	*size_ptr = size;
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_write_file(const char *filename, const void *buf, uint32_t size)
@@ -67,18 +67,18 @@ int vb2_write_file(const char *filename, const void *buf, uint32_t size)
 
 	if (!f) {
 		VB2_DEBUG("Unable to open file %s\n", filename);
-		return VB2_ERROR_WRITE_FILE_OPEN;
+		return TRACE_RETURN(VB2_ERROR_WRITE_FILE_OPEN);
 	}
 
 	if (1 != fwrite(buf, size, 1, f)) {
 		VB2_DEBUG("Unable to write to file %s\n", filename);
 		fclose(f);
 		unlink(filename);  /* Delete any partial file */
-		return VB2_ERROR_WRITE_FILE_DATA;
+		return TRACE_RETURN(VB2_ERROR_WRITE_FILE_DATA);
 	}
 
 	fclose(f);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_write_object(const char *filename, const void *buf)
@@ -142,7 +142,7 @@ int vb2_str_to_id(const char *str, struct vb2_id *id)
 	int i;
 
 	if (!str)
-		return VB2_ERROR_STR_TO_ID;
+		return TRACE_RETURN(VB2_ERROR_STR_TO_ID);
 
 	memset(id, 0, sizeof(*id));
 

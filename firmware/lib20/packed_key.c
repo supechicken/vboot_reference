@@ -42,30 +42,30 @@ int vb2_unpack_key(struct vb2_public_key *key,
 	key->sig_alg = vb2_crypto_to_signature(packed_key->algorithm);
 	if (key->sig_alg == VB2_SIG_INVALID) {
 		VB2_DEBUG("Unsupported signature algorithm.\n");
-		return VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM);
 	}
 
 	key->hash_alg = vb2_crypto_to_hash(packed_key->algorithm);
 	if (key->hash_alg == VB2_HASH_INVALID) {
 		VB2_DEBUG("Unsupported hash algorithm.\n");
-		return VB2_ERROR_UNPACK_KEY_HASH_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_HASH_ALGORITHM);
 	}
 
 	expected_key_size = vb2_packed_key_size(key->sig_alg);
 	if (!expected_key_size || expected_key_size != packed_key->key_size) {
 		VB2_DEBUG("Wrong key size for algorithm\n");
-		return VB2_ERROR_UNPACK_KEY_SIZE;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_SIZE);
 	}
 
 	/* Make sure source buffer is 32-bit aligned */
 	buf32 = (const uint32_t *)vb2_packed_key_data(packed_key);
 	if (!vb2_aligned(buf32, sizeof(uint32_t)))
-		return VB2_ERROR_UNPACK_KEY_ALIGN;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_ALIGN);
 
 	/* Sanity check key array size */
 	key->arrsize = buf32[0];
 	if (key->arrsize * sizeof(uint32_t) != vb2_rsa_sig_size(key->sig_alg))
-		return VB2_ERROR_UNPACK_KEY_ARRAY_SIZE;
+		return TRACE_RETURN(VB2_ERROR_UNPACK_KEY_ARRAY_SIZE);
 
 	key->n0inv = buf32[1];
 
@@ -73,5 +73,5 @@ int vb2_unpack_key(struct vb2_public_key *key,
 	key->n = buf32 + 2;
 	key->rr = buf32 + 2 + key->arrsize;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }

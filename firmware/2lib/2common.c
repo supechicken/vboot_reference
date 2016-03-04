@@ -39,16 +39,16 @@ int vb2_align(uint8_t **ptr, uint32_t *size, uint32_t align, uint32_t want_size)
 		offs = align - offs;
 
 		if (*size < offs)
-			return VB2_ERROR_ALIGN_BIGGER_THAN_SIZE;
+			return TRACE_RETURN(VB2_ERROR_ALIGN_BIGGER_THAN_SIZE);
 
 		*ptr += offs;
 		*size -= offs;
 	}
 
 	if (*size < want_size)
-		return VB2_ERROR_ALIGN_SIZE;
+		return TRACE_RETURN(VB2_ERROR_ALIGN_SIZE);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 void vb2_workbuf_init(struct vb2_workbuf *wb, uint8_t *buf, uint32_t size)

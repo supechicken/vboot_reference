@@ -252,7 +252,7 @@ int vb2_check_padding(const uint8_t *sig, const struct vb2_public_key *key)
 	int i;
 
 	if (!sig_size || !hash_size || hash_size > sig_size)
-		return VB2_ERROR_RSA_PADDING_SIZE;
+		return TRACE_RETURN(VB2_ERROR_RSA_PADDING_SIZE);
 
 	switch (key->hash_alg) {
 	case VB2_HASH_SHA1:
@@ -268,7 +268,7 @@ int vb2_check_padding(const uint8_t *sig, const struct vb2_public_key *key)
 		tail_size = sizeof(sha512_tail);
 		break;
 	default:
-		return VB2_ERROR_RSA_PADDING_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_RSA_PADDING_ALGORITHM);
 	}
 
 	/* First 2 bytes are always 0x00 0x01 */
@@ -301,25 +301,25 @@ int vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	int rv;
 
 	if (!key || !sig || !digest)
-		return VB2_ERROR_RSA_VERIFY_PARAM;
+		return TRACE_RETURN(VB2_ERROR_RSA_VERIFY_PARAM);
 
 	sig_size = vb2_rsa_sig_size(key->sig_alg);
 	if (!sig_size) {
 		VB2_DEBUG("Invalid signature type!\n");
-		return VB2_ERROR_RSA_VERIFY_ALGORITHM;
+		return TRACE_RETURN(VB2_ERROR_RSA_VERIFY_ALGORITHM);
 	}
 
 	/* Signature length should be same as key length */
 	key_bytes = key->arrsize * sizeof(uint32_t);
 	if (key_bytes != sig_size) {
 		VB2_DEBUG("Signature is of incorrect length!\n");
-		return VB2_ERROR_RSA_VERIFY_SIG_LEN;
+		return TRACE_RETURN(VB2_ERROR_RSA_VERIFY_SIG_LEN);
 	}
 
 	workbuf32 = vb2_workbuf_alloc(&wblocal, 3 * key_bytes);
 	if (!workbuf32) {
 		VB2_DEBUG("ERROR - vboot2 work buffer too small!\n");
-		return VB2_ERROR_RSA_VERIFY_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_RSA_VERIFY_WORKBUF);
 	}
 
 	modpowF4(key, sig, workbuf32);

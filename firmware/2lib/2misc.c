@@ -20,9 +20,9 @@ int vb2_validate_gbb_signature(uint8_t *sig) {
 	int i;
 	for (i = 0; i < VB2_GBB_SIGNATURE_SIZE; i++) {
 		if (sig[i] != (sig_xor[i] ^ VB2_GBB_XOR_CHARS[i]))
-			return VB2_ERROR_GBB_MAGIC;
+			return TRACE_RETURN(VB2_ERROR_GBB_MAGIC);
 	}
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 void vb2_workbuf_from_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb)
@@ -33,34 +33,28 @@ void vb2_workbuf_from_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb)
 
 int vb2_read_gbb_header(struct vb2_context *ctx, struct vb2_gbb_header *gbb)
 {
-	int rv;
-
 	/* Read the entire header */
-	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, 0, gbb, sizeof(*gbb));
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2ex_read_resource(ctx, VB2_RES_GBB, 0, gbb, sizeof(*gbb)));
 
 	/* Make sure it's really a GBB */
-	rv = vb2_validate_gbb_signature(gbb->signature);
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2_validate_gbb_signature(gbb->signature));
 
 	/* Check for compatible version */
 	if (gbb->major_version != VB2_GBB_MAJOR_VER)
-		return VB2_ERROR_GBB_VERSION;
+		return TRACE_RETURN(VB2_ERROR_GBB_VERSION);
 
 	/* Current code is not backwards-compatible to 1.1 headers or older */
 	if (gbb->minor_version < VB2_GBB_MINOR_VER)
-		return VB2_ERROR_GBB_TOO_OLD;
+		return TRACE_RETURN(VB2_ERROR_GBB_TOO_OLD);
 
 	/*
 	 * Header size should be at least as big as we expect.  It could be
 	 * bigger, if the header has grown.
 	 */
 	if (gbb->header_size < sizeof(*gbb))
-		return VB2_ERROR_GBB_HEADER_SIZE;
+		return TRACE_RETURN(VB2_ERROR_GBB_HEADER_SIZE);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
@@ -118,7 +112,7 @@ int vb2_init_context(struct vb2_context *ctx)
 
 	/* Don't do anything if the context has already been initialized */
 	if (ctx->workbuf_used)
-		return VB2_SUCCESS;
+		return TRACE_RETURN(VB2_SUCCESS);
 
 	/*
 	 * Workbuf had better be big enough for our shared data struct and
@@ -126,14 +120,14 @@ int vb2_init_context(struct vb2_context *ctx)
 	 * store a recovery reason.
 	 */
 	if (ctx->workbuf_size < sizeof(*sd))
-		return VB2_ERROR_INITCTX_WORKBUF_SMALL;
+		return TRACE_RETURN(VB2_ERROR_INITCTX_WORKBUF_SMALL);
 	if (!vb2_aligned(ctx->workbuf, VB2_WORKBUF_ALIGN))
-		return VB2_ERROR_INITCTX_WORKBUF_ALIGN;
+		return TRACE_RETURN(VB2_ERROR_INITCTX_WORKBUF_ALIGN);
 
 	/* Initialize the shared data at the start of the work buffer */
 	memset(sd, 0, sizeof(*sd));
 	ctx->workbuf_used = sizeof(*sd);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 void vb2_check_recovery(struct vb2_context *ctx)
@@ -184,18 +178,15 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb;
 	struct vb2_workbuf wb;
-	int rv;
 
 	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Read GBB into next chunk of work buffer */
 	gbb = vb2_workbuf_alloc(&wb, sizeof(*gbb));
 	if (!gbb)
-		return VB2_ERROR_GBB_WORKBUF;
+		return TRACE_RETURN(VB2_ERROR_GBB_WORKBUF);
 
-	rv = vb2_read_gbb_header(ctx, gbb);
-	if (rv)
-		return rv;
+	RETURN_ON_ERROR(vb2_read_gbb_header(ctx, gbb));
 
 	/* Extract the only things we care about at firmware time */
 	sd->gbb_flags = gbb->flags;
@@ -203,7 +194,7 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx)
 	sd->gbb_rootkey_size = gbb->rootkey_size;
 	memcpy(sd->gbb_hwid_digest, gbb->hwid_digest, VB2_GBB_HWID_DIGEST_SIZE);
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_check_dev_switch(struct vb2_context *ctx)
@@ -315,13 +306,11 @@ int vb2_check_dev_switch(struct vb2_context *ctx)
 			}
 
 			/* Save new flags */
-			rv = vb2_secdata_set(ctx, VB2_SECDATA_FLAGS, flags);
-			if (rv)
-				return rv;
+			RETURN_ON_ERROR(vb2_secdata_set(ctx, VB2_SECDATA_FLAGS, flags));
 		}
 	}
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_check_tpm_clear(struct vb2_context *ctx)
@@ -330,7 +319,7 @@ int vb2_check_tpm_clear(struct vb2_context *ctx)
 
 	/* Check if we've been asked to clear the owner */
 	if (!vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST))
-		return VB2_SUCCESS;  /* No need to clear */
+		return TRACE_RETURN(VB2_SUCCESS);  /* No need to clear */
 
 	/* Request applies one time only */
 	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST, 0);
@@ -349,7 +338,7 @@ int vb2_check_tpm_clear(struct vb2_context *ctx)
 
 	/* Clear successful */
 	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_DONE, 1);
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
 
 int vb2_select_fw_slot(struct vb2_context *ctx)
@@ -404,5 +393,5 @@ int vb2_select_fw_slot(struct vb2_context *ctx)
 	/* Set status flag */
 	sd->status |= VB2_SD_STATUS_CHOSE_SLOT;
 
-	return VB2_SUCCESS;
+	return TRACE_RETURN(VB2_SUCCESS);
 }
