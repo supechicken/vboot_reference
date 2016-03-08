@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37777510_e6c61e61",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-03-08T20:21:36Z",
+      "side": 1,
+      "message": "this should only be indented by 4 spaces total\n\nto deal with confusion w/the if, you could write:\n\n if ! _mount_image_partition_retry \"${image}\" \"${esp_partnum}\" \\\n                                   \"${esp_dir}\"; then\n\nor maybe:\n\n if ! _mount_image_partition_retry \\\n        \"${image}\" \"${esp_partnum}\" \"${esp_dir}\"; then",
+      "revId": "7caf45206576052cb767e711d1a123c78f0371b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
