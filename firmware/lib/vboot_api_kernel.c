@@ -1191,6 +1191,9 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	 * override flags.
 	 */
 #endif
+	/* Force Developer Mode for Phablet Design */
+	p.boot_flags = BOOT_FLAG_DEVELOPER;
+	shared->recovery_reason = 0;
 
 	/* Select boot path */
 	if (shared->recovery_reason) {
