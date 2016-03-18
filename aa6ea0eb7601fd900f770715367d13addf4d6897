@@ -16,6 +16,52 @@
       "revId": "aa6ea0eb7601fd900f770715367d13addf4d6897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfb0284_c1ef70a3",
+        "filename": "firmware/2lib/call_trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-18T22:01:57Z",
+      "side": 1,
+      "message": "Regular memset should be fine in vb2.0",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 42
+      },
+      "revId": "aa6ea0eb7601fd900f770715367d13addf4d6897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfb0284_21b3d4cb",
+        "filename": "firmware/2lib/call_trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-18T22:01:57Z",
+      "side": 1,
+      "message": "Maybe j \u003d (VB_NUM_CALL_RECORD + call_trace-\u003eidx - i) % VB_NUM_CALL_RECORD, so we always print backwards from the head?\n\n(possibly I\u0027ve got an off-by-one in there...)",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "aa6ea0eb7601fd900f770715367d13addf4d6897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
