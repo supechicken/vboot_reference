@@ -984,6 +984,11 @@ uint32_t VbExIsShutdownRequested(void);
 #define VB_SHUTDOWN_REQUEST_POWER_BUTTON	0x00000004
 
 /**
+ * Request to cut-off battery and shutdown system.
+ */
+VbError_t VbExBatteryCutOff(void);
+
+/**
  * Expose the BIOS' built-in decompression routine to the vboot wrapper. The
  * caller must know how large the uncompressed data will be and must manage
  * that memory. The decompression routine just puts the uncompressed data into
