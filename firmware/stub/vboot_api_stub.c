@@ -79,6 +79,11 @@ uint32_t VbExIsShutdownRequested(void)
 	return 0;
 }
 
+VbError_t VbExBatteryCutOff(void)
+{
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbExDecompress(void *inbuf, uint32_t in_size,
                          uint32_t compression_type,
                          void *outbuf, uint32_t *out_size)
