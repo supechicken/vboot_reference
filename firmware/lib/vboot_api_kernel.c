@@ -499,6 +499,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
+	uint32_t previous_retval = VBERROR_SUCCESS;
 	uint32_t retval;
 	uint32_t key;
 	int i;
@@ -552,10 +553,14 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(cparams, VBERROR_NO_DISK_FOUND == retval ?
-				VB_SCREEN_RECOVERY_INSERT :
-				VB_SCREEN_RECOVERY_NO_GOOD,
-				0, &vnc);
+		if (retval != previous_retval) {
+			previous_retval = retval;
+			VbDisplayScreen(cparams,
+					VBERROR_NO_DISK_FOUND == retval ?
+					VB_SCREEN_RECOVERY_INSERT :
+					VB_SCREEN_RECOVERY_NO_GOOD,
+					0, &vnc);
+		}
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
