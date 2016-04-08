@@ -4,7 +4,7 @@
  *
  * High-level firmware wrapper API - entry points for kernel selection
  */
-
+#include <stdio.h>
 #include "sysincludes.h"
 
 #include "gbb_access.h"
@@ -499,6 +499,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
+	enum VbScreenType_t prev_screen = VB_SCREEN_BLANK;
 	uint32_t retval;
 	uint32_t key;
 	int i;
@@ -538,6 +539,8 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 	/* Loop and wait for a recovery image */
 	VBDEBUG(("VbBootRecovery() waiting for a recovery image\n"));
 	while (1) {
+		enum VbScreenType_t new_screen;
+
 		VBDEBUG(("VbBootRecovery() attempting to load kernel2\n"));
 		retval = VbTryLoadKernel(cparams, p, VB_DISK_FLAG_REMOVABLE);
 
@@ -552,10 +555,12 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(cparams, VBERROR_NO_DISK_FOUND == retval ?
-				VB_SCREEN_RECOVERY_INSERT :
-				VB_SCREEN_RECOVERY_NO_GOOD,
-				0, &vnc);
+		new_screen = VBERROR_NO_DISK_FOUND == retval ?
+			VB_SCREEN_RECOVERY_INSERT : VB_SCREEN_RECOVERY_NO_GOOD;
+		if (prev_screen != new_screen) {
+			prev_screen = new_screen;
+			VbDisplayScreen(cparams, new_screen, 0, &vnc);
+		}
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
@@ -593,9 +598,8 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 				}
 
 				/* Ask the user to confirm entering dev-mode */
-				VbDisplayScreen(cparams,
-						VB_SCREEN_RECOVERY_TO_DEV,
-						0, &vnc);
+				prev_screen = VB_SCREEN_RECOVERY_TO_DEV;
+				VbDisplayScreen(cparams, prev_screen, 0, &vnc);
 				/* SPACE means no... */
 				uint32_t vbc_flags =
 					VB_CONFIRM_SPACE_MEANS_NO |
