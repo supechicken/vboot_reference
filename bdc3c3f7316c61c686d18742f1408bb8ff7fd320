@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2868f801_5b099bc7",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-19T01:38:39Z",
+      "side": 1,
+      "message": "Should this set MODIFIED_ENTRIES2 too? The entries don\u0027t change but they move, so they need to get written back out again (same for the MASK_SECONDARY case below).",
+      "range": {
+        "startLine": 335,
+        "startChar": 19,
+        "endLine": 335,
+        "endChar": 39
+      },
+      "revId": "bdc3c3f7316c61c686d18742f1408bb8ff7fd320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
