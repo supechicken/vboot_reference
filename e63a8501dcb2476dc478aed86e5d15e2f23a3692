@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c86bdc68_138b1de3",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-22T20:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86bdc68_b5ec79ac",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c86bdc68_d5e9ed9b",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c86bdc68_b390110c",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-22T20:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86bdc68_d5e9ed9b",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c86bdc68_d5124d7a",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2016-04-22T15:58:12Z",
       "side": 1,
       "message": "We don\u0027t have it in the code now. But do we want to also check secondary header\u0027s signature?",
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86bdc68_538195c2",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-22T20:33:35Z",
+      "side": 1,
+      "message": "Do you mean for legacy (GPT_HEADER_SIGNATURE2)? Because we have already checked it for IGNOREME (GPT_HEADER_SIGNATURE_IGNORED), that\u0027s how gptdata-\u003eignored got set, we don\u0027t need to check that again. (I\u0027m not doing that above for the primary either.)\n\nI don\u0027t really know what the legacy stuff is about and why this is handling the primary but not the secondary special in that case... there may or may not be a reason, but I\u0027d rather just leave its behavior unchanged for now.",
+      "parentUuid": "c86bdc68_d5124d7a",
       "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -94,6 +160,24 @@
       "side": 1,
       "message": "Never mind this. It looks like we don\u0027t ever modify header 2 to be ignored.",
       "parentUuid": "c86bdc68_55af3d5b",
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86bdc68_93970d00",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-22T20:33:35Z",
+      "side": 1,
+      "message": "Sure... I mean, the amount of possible combinations goes up exponentially, I didn\u0027t want to overdo it.",
+      "parentUuid": "c86bdc68_357c098d",
       "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
