@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c86bdc68_b5ec79ac",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1109106
+      },
+      "writtenOn": "2016-04-22T15:58:12Z",
+      "side": 1,
+      "message": "This line should be vertically aligned at h-\u003esignature.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 5
+      },
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86bdc68_d5e9ed9b",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1109106
+      },
+      "writtenOn": "2016-04-22T15:58:12Z",
+      "side": 1,
+      "message": "Vertical alignment of the above two lines is off.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86bdc68_d5124d7a",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1109106
+      },
+      "writtenOn": "2016-04-22T15:58:12Z",
+      "side": 1,
+      "message": "We don\u0027t have it in the code now. But do we want to also check secondary header\u0027s signature?",
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c86bdc68_55af3d5b",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1109106
+      },
+      "writtenOn": "2016-04-22T15:58:12Z",
+      "side": 1,
+      "message": "We might also want to have the same test but h1 invalid, h2 ignored.",
+      "revId": "e63a8501dcb2476dc478aed86e5d15e2f23a3692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
