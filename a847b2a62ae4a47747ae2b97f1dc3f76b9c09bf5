@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c86bdc68_ba253da0",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-04-25T19:10:27Z",
+      "side": 1,
+      "message": "This is needed to initialize data for vboot_kernel_tests.c correctly, which calls this but not GptInit() (as it really should in my opinion, but I don\u0027t want to change the whole thing). If the field stays uninitialized it may randomly change behavior in unit tests which I think caused these failures (although I couldn\u0027t reproduce, it always passes for me).",
+      "revId": "a847b2a62ae4a47747ae2b97f1dc3f76b9c09bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
