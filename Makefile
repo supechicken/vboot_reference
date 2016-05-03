@@ -302,6 +302,8 @@ FWLIB20 = ${BUILD}/vboot_fw20.a
 # Vboot 2.1 (not yet ready - see firmware/README)
 FWLIB21 = ${BUILD}/vboot_fw21.a
 
+BDBLIB = ${BUILD}/bdb.a
+
 # Firmware library sources needed by VbInit() call
 VBINIT_SRCS = \
 	firmware/lib/crc8.c \
@@ -370,6 +372,12 @@ FWLIB21_SRCS = \
 	firmware/lib21/misc.c \
 	firmware/lib21/packed_key.c
 
+BDBLIB_SRCS = \
+	firmware/bdb/bdb.c \
+	firmware/bdb/host.c \
+	firmware/bdb/sha.c \
+	firmware/bdb/rsa.c
+
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
 VBINIT_SRCS += \
@@ -420,7 +428,9 @@ FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
 FWLIB20_OBJS = ${FWLIB20_SRCS:%.c=${BUILD}/%.o}
 FWLIB21_OBJS = ${FWLIB21_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS}
+BDBLIB_OBJS = ${BDBLIB_SRCS:%.c=${BUILD}/%.o}
+ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS} \
+	$(BDBLIB_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
@@ -765,7 +775,10 @@ TEST21_NAMES = \
 	tests/vb21_host_misc_tests \
 	tests/vb21_host_sig_tests
 
-TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
+TESTBDB_NAMES = \
+	tests/bdb_test
+
+TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES} ${TESTBDB_NAMES}
 
 # And a few more...
 TLCL_TEST_NAMES = \
@@ -791,6 +804,7 @@ TEST_FUTIL_BINS = $(addprefix ${BUILD}/,${TEST_FUTIL_NAMES})
 TEST2X_BINS = $(addprefix ${BUILD}/,${TEST2X_NAMES})
 TEST20_BINS = $(addprefix ${BUILD}/,${TEST20_NAMES})
 TEST21_BINS = $(addprefix ${BUILD}/,${TEST21_NAMES})
+TESTBDB_BINS = $(addprefix ${BUILD}/,${TESTBDB_NAMES})
 
 # Directory containing test keys
 TEST_KEYS = ${SRC_RUN}/tests/testkeys
@@ -858,6 +872,7 @@ ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB21_OBJS}: CFLAGS += -DUNROLL_LOOPS
+${BDBLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
 
 # Workaround for coreboot on x86, which will power off asynchronously
 # without giving us a chance to react. This is not an example of the Right
@@ -883,6 +898,7 @@ endif
 
 ${FWLIB20_OBJS}: INCLUDES += -Ifirmware/lib20/include
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
+${BDBLIB_OBJS}: INCLUDES += -Ifirmware/bdb
 
 # Linktest ensures firmware lib doesn't rely on outside libraries
 ${BUILD}/firmware/linktest/main_vbinit: ${VBINIT_OBJS}
@@ -932,6 +948,15 @@ ${FWLIB20}: ${FWLIB2X_OBJS} ${FWLIB20_OBJS}
 fwlib21: ${FWLIB21}
 
 ${FWLIB21}: ${FWLIB2X_OBJS} ${FWLIB21_OBJS}
+	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@
+	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
+	${Q}ar qc $@ $^
+
+.PHONY: bdblib
+bdblib: ${BDBLIB}
+
+${BDBLIB}: ${BDBLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -1153,6 +1178,10 @@ ${TEST21_BINS}: ${UTILLIB21}
 ${TEST21_BINS}: INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include
 ${TEST21_BINS}: LIBS += ${UTILLIB21}
 
+${TESTBDB_BINS}: ${BDBLIB}
+${TESTBDB_BINS}: INCLUDES += -Ifirmware/bdb
+${TESTBDB_BINS}: LIBS += ${BDBLIB_OBJS}
+
 ${TESTLIB}: ${TESTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
@@ -1219,6 +1248,7 @@ ${BUILD}/tests/vboot_common3_tests: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vb20_common2_tests: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vb20_common3_tests: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/verify_kernel: LDLIBS += ${CRYPTO_LIBS}
+${BUILD}/tests/bdb_test: LDLIBS += ${CRYPTO_LIBS}
 
 ${TEST21_BINS}: LDLIBS += ${CRYPTO_LIBS}
 
@@ -1302,7 +1332,7 @@ ${FUTIL_CMD_LIST} ${FUTIL_STATIC_CMD_LIST}:
 
 # Frequently-run tests
 .PHONY: test_targets
-test_targets:: runcgpttests runmisctests run2tests
+test_targets:: runcgpttests runmisctests run2tests runbdbtests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
@@ -1420,6 +1450,10 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_keyblock_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_misc_tests ${BUILD}
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_sig_tests ${TEST_KEYS}
+
+.PHONY: runbdbtests
+runbdbtests: test_setup
+	${RUNTEST} ${BUILD_RUN}/tests/bdb_test ${TEST_KEYS}
 
 .PHONY: runfutiltests
 runfutiltests: test_setup
