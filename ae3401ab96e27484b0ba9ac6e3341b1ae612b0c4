@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d41bfd6_488ed388",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-05-05T23:46:23Z",
+      "side": 1,
+      "message": "I don\u0027t know how this works. Line 719 indicates fwmp can be bigger than sizeof(*fwmp). So, we just copy as much as sizeof(*fwmp) in case TPM contents is newer than the firmware?",
+      "range": {
+        "startLine": 736,
+        "startChar": 19,
+        "endLine": 736,
+        "endChar": 32
+      },
+      "revId": "ae3401ab96e27484b0ba9ac6e3341b1ae612b0c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
