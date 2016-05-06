@@ -5,6 +5,8 @@
 
 /* FIPS 180-2 Tests for message digest functions. */
 
+#include <stdio.h>
+
 #include "2sysincludes.h"
 #include "2rsa.h"
 #include "2sha.h"
@@ -131,6 +133,9 @@ void misc_tests(void)
 	TEST_EQ(vb2_digest_size(VB2_HASH_INVALID), 0,
 		"digest size invalid alg");
 
+	TEST_EQ(vb2_hash_block_size(VB2_HASH_INVALID), 0,
+		"block size invalid alg");
+
 	TEST_EQ(vb2_digest_buffer((uint8_t *)oneblock_msg, strlen(oneblock_msg),
 				  VB2_HASH_INVALID, digest, sizeof(digest)),
 		VB2_ERROR_SHA_INIT_ALGORITHM,
@@ -147,6 +152,19 @@ void misc_tests(void)
 		"vb2_digest_finalize() invalid alg");
 }
 
+static void hash_algorithm_name_tests(void)
+{
+	enum vb2_hash_algorithm alg;
+	char test_name[256];
+
+	for (alg = 1; alg < VB2_HASH_ALG_COUNT; alg++) {
+		sprintf(test_name, "%s: %s (alg=%d)",
+			__func__, vb2_get_hash_algorithm_name(alg), alg);
+		TEST_PTR_NEQ(vb2_get_hash_algorithm_name(alg), NULL,
+			     test_name);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	/* Initialize long_msg with 'a' x 1,000,000 */
@@ -158,6 +176,7 @@ int main(int argc, char *argv[])
 	sha256_tests();
 	sha512_tests();
 	misc_tests();
+	hash_algorithm_name_tests();
 
 	free(long_msg);
 
