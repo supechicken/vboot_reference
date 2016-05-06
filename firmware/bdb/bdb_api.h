@@ -8,10 +8,20 @@
 
 #include <stdint.h>
 #include "vboot_register.h"
+#include "nvm.h"
 
 struct vba_context {
 	/* Indicate which slot is being tried: 0 - primary, 1 - secondary */
 	uint8_t slot;
+
+	/* BDB */
+	uint8_t *bdb;
+
+	/* Secrets */
+	struct bdb_secret *secrets;
+
+	/* NVM-RW buffer */
+	struct nvmrw *nvmrw;
 };
 
 /**
@@ -36,6 +46,10 @@ int vba_bdb_finalize(struct vba_context *ctx);
  * @param ctx
  */
 void vba_bdb_fail(struct vba_context *ctx);
+
+int vba_update_kernel_version(struct vba_context *ctx,
+			      uint32_t kernel_data_key_version,
+			      uint32_t kernel_version);
 
 /**
  * Get vboot register value
@@ -64,5 +78,19 @@ void vbe_set_vboot_register(enum vboot_register type, uint32_t val);
  * cold reset).
  */
 void vbe_reset(void);
+
+/**
+ * Reads contents of NVM
+ *
+ * Implemented by each chip.
+ *
+ * @param type	Type of NVM
+ * @param buf	Buffer where NVM content will be stored
+ * @param size	(IN) Buffer size (OUT) Number of bytes read from NVM
+ * @return
+ */
+int vbe_read_nvm(enum nvm_type type, uint8_t **buf, uint32_t *size);
+
+int vbe_write_nvm(enum nvm_type type, void *buf, uint32_t size);
 
 #endif
