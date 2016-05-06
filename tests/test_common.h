@@ -7,49 +7,139 @@
 #ifndef VBOOT_REFERENCE_TEST_COMMON_H_
 #define VBOOT_REFERENCE_TEST_COMMON_H_
 
+#include <stdio.h>
+
 extern int gTestSuccess;
 
 /* Return 1 if result is equal to expected_result, else return 0.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_EQ(int result, int expected_result, const char* testname);
+int test_eq(int result, int expected_result, const char* testname);
+
+#define TEST_EQ(result, expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_eq(result, expected, testname); \
+		else \
+			test_eq(result, expected, #result " == " #expected); \
+	} while (0)
+
+#define TEST_EQ_S(result, expected) TEST_EQ(result, expected, NULL);
 
 /* Return 0 if result is equal to not_expected_result, else return 1.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_NEQ(int result, int not_expected_result, const char* testname);
+int test_neq(int result, int not_expected_result, const char* testname);
+
+#define TEST_NEQ(result, not_expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_neq(result, not_expected, testname); \
+		else \
+			test_neq(result, not_expected, \
+				 #result " != " #not_expected); \
+	} while (0)
 
 /* Return 1 if result pointer is equal to expected_result pointer,
  * else return 0.  Does not check pointer contents, only the pointer
  * itself.  Also update the global gTestSuccess flag if test fails. */
-int TEST_PTR_EQ(const void* result, const void* expected_result,
+int test_ptr_eq(const void* result, const void* expected_result,
                 const char* testname);
+
+#define TEST_PTR_EQ(result, expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_ptr_eq(result, expected, testname); \
+		else \
+			test_ptr_eq(result, expected, \
+				    #result " == " #expected); \
+	} while (0)
 
 /* Return 1 if result pointer is not equal to expected_result pointer,
  * else return 0.  Does not check pointer contents, only the pointer
  * itself.  Also update the global gTestSuccess flag if test fails. */
-int TEST_PTR_NEQ(const void* result, const void* expected_result,
+int test_ptr_neq(const void* result, const void* expected_result,
                  const char* testname);
+
+#define TEST_PTR_NEQ(result, not_expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_ptr_neq(result, not_expected, testname); \
+		else \
+			test_ptr_neq(result, not_expected, \
+				     #result " != " #not_expected); \
+	} while (0)
 
 /* Return 1 if result string is equal to expected_result string,
  * else return 0.  Also update the global gTestSuccess flag if test fails. */
-int TEST_STR_EQ(const char* result, const char* expected_result,
+int test_str_eq(const char* result, const char* expected_result,
                 const char* testname);
 
-/* Return 1 if result string is not equal to not_expected_result string,
+#define TEST_STR_EQ(result, expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_str_eq(result, expected, testname); \
+		else \
+			test_str_eq(result, expected, \
+				    #result " != " #expected); \
+	} while (0)
+
+/* Return 1 if result string is not equal to not_expected string,
  * else return 0.  Also update the global gTestSuccess flag if test fails. */
-int TEST_STR_NEQ(const char* result, const char* not_expected_result,
+int test_str_neq(const char* result, const char* not_expected,
 		 const char* testname);
+
+#define TEST_STR_NEQ(result, not_expected, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_str_neq(result, not_expected, testname); \
+		else \
+			test_str_neq(result, not_expected, \
+				     #result " != " #not_expected); \
+	} while (0)
 
 /* Return 1 if the result is true, else return 0.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_TRUE(int result, const char* testname);
+int test_true(int result, const char* testname);
+
+#define TEST_TRUE(result, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_true(result, testname); \
+		else \
+			test_true(result, #result " == true"); \
+	} while (0)
 
 /* Return 1 if the result is false, else return 0.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_FALSE(int result, const char* testname);
+int test_false(int result, const char* testname);
+
+#define TEST_FALSE(result, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_false(result, testname); \
+		else \
+			test_false(result, #result " == false"); \
+	} while (0)
 
 /* Return 1 if result is 0 (VB_ERROR_SUCCESS / VB2_SUCCESS), else return 0.
  * Also update the global gTestSuccess flag if test fails. */
-int TEST_SUCC(int result, const char* testname);
+int test_succ(int result, const char* testname);
+
+#define TEST_SUCC(result, testname) \
+	do { \
+		fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+		if (testname != NULL) \
+			test_succ(result, testname); \
+		else \
+			test_succ(result, #result " == 0"); \
+	} while (0)
 
 /* ANSI Color coding sequences.
  *
