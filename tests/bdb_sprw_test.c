@@ -17,8 +17,6 @@
 #include "test_common.h"
 #include "vboot_register.h"
 
-#define TEST_EQ_S(result, expect) TEST_EQ(result, expect, #result "==" #expect)
-
 static struct bdb_header *bdb, *bdb0, *bdb1;
 static uint32_t vboot_register;
 static uint32_t vboot_register_persist;
@@ -220,9 +218,9 @@ static void test_verify_aprw(const char *key_dir)
 	TEST_EQ_S(reset_count, 1);
 	TEST_EQ_S(slot_selected, 'A');
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		   "VBOOT_REGISTER_FAILED_RW_PRIMARY==false");
+		   NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		   "VBOOT_REGISTER_FAILED_RW_SECONDARY==false");
+		   NULL);
 
 	/* (slotA, slotB) = (bad, good) */
 	reset_count = 0;
@@ -233,9 +231,9 @@ static void test_verify_aprw(const char *key_dir)
 	TEST_EQ_S(reset_count, 3);
 	TEST_EQ_S(slot_selected, 'B');
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		  "VBOOT_REGISTER_FAILED_RW_PRIMARY==true");
+		  NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		   "VBOOT_REGISTER_FAILED_RW_SECONDARY==false");
+		   NULL);
 
 	/* (slotA, slotB) = (bad, bad) */
 	reset_count = 0;
@@ -246,11 +244,11 @@ static void test_verify_aprw(const char *key_dir)
 	TEST_EQ_S(reset_count, 5);
 	TEST_EQ_S(slot_selected, 'X');
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		  "VBOOT_REGISTER_FAILED_RW_PRIMARY==true");
+		  NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		  "VBOOT_REGISTER_FAILED_RW_SECONDARY==true");
+		  NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_RECOVERY_REQUEST,
-		  "Recovery request");
+		  NULL);
 
 	/* Clean up */
 	free(bdb0);
