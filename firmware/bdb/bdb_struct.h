@@ -264,5 +264,15 @@ struct bdb_hash {
 
 /*****************************************************************************/
 
+#define BDB_SECRET_SIZE		32
+
+struct bdb_secret {
+	uint8_t buc_secret[BDB_SECRET_SIZE];
+	uint8_t nvm_rw_secret[BDB_SECRET_SIZE];
+	uint8_t boot_verified_secret[BDB_SECRET_SIZE];
+	uint8_t boot_path_secret[BDB_SECRET_SIZE];
+	uint8_t bdb_secret[BDB_SECRET_SIZE];
+};
+
 #endif /* VBOOT_REFERENCE_BDB_STRUCT_H_ */
 
