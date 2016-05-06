@@ -15,6 +15,9 @@ struct vba_context {
 	/* Indicate which slot is being tried: 0 - primary, 1 - secondary */
 	uint8_t slot;
 
+	/* Indicate whether kernel data key is verified (1) or not (0) */
+	uint8_t kernel_data_key_verified;
+
 	/* BDB */
 	uint8_t *bdb;
 
@@ -75,6 +78,27 @@ int vba_update_kernel_version(struct vba_context *ctx,
  * @return		BDB_SUCCESS or BDB_ERROR_*
  */
 int vba_update_buc(struct vba_context *ctx, uint8_t *new_buc);
+
+/**
+ * Derive SP-RW secrets
+ *
+ * This should be called before vba_update_secrets as some secrets are cleared
+ * or extended by vba_update_secrets.
+ *
+ * @param ctx
+ * @return		BDB_SUCCESS or BDB_ERROR_*
+ */
+int vba_derive_secrets(struct vba_context *ctx);
+
+/**
+ * Update secrets
+ *
+ * This extends or clears secrets passed from SP-RO.
+ *
+ * @param ctx
+ * @return		BDB_SUCCESS or BDB_ERROR_*
+ */
+int vba_update_secrets(struct vba_context *ctx);
 
 /**
  * Get vboot register value
