@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "2sha.h"
+#include "2hmac.h"
 #include "bdb.h"
 #include "bdb_api.h"
 #include "bdb_struct.h"
@@ -23,6 +24,15 @@ static uint32_t vboot_register_persist;
 static char slot_selected;
 static uint8_t aprw_digest[BDB_SHA256_DIGEST_SIZE];
 static uint8_t reset_count;
+
+static uint8_t nvmrw1[sizeof(struct nvmrw)];
+static uint8_t nvmrw2[sizeof(struct nvmrw)];
+
+struct bdb_secret secret = {
+	.nvm_rw_secret = {0x00, },
+};
+
+static int vbe_write_nvm_failure = 0;
 
 static struct bdb_header *create_bdb(const char *key_dir,
 				     struct bdb_hash *hash, int num_hashes)
@@ -215,12 +225,12 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memcpy(aprw_digest, hash0.digest, 4);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 1);
-	TEST_EQ_S(slot_selected, 'A');
+	TEST_EQ(reset_count, 1, NULL);
+	TEST_EQ(slot_selected, 'A', NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		   "VBOOT_REGISTER_FAILED_RW_PRIMARY==false");
+		   NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		   "VBOOT_REGISTER_FAILED_RW_SECONDARY==false");
+		   NULL);
 
 	/* (slotA, slotB) = (bad, good) */
 	reset_count = 0;
@@ -228,12 +238,12 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memcpy(aprw_digest, hash1.digest, 4);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 3);
-	TEST_EQ_S(slot_selected, 'B');
+	TEST_EQ(reset_count, 3, NULL);
+	TEST_EQ(slot_selected, 'B', NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		  "VBOOT_REGISTER_FAILED_RW_PRIMARY==true");
+		  NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		   "VBOOT_REGISTER_FAILED_RW_SECONDARY==false");
+		   NULL);
 
 	/* (slotA, slotB) = (bad, bad) */
 	reset_count = 0;
@@ -241,18 +251,182 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memset(aprw_digest, 0, BDB_SHA256_DIGEST_SIZE);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 5);
-	TEST_EQ_S(slot_selected, 'X');
+	TEST_EQ(reset_count, 5, NULL);
+	TEST_EQ(slot_selected, 'X', NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
-		  "VBOOT_REGISTER_FAILED_RW_PRIMARY==true");
+		  NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
-		  "VBOOT_REGISTER_FAILED_RW_SECONDARY==true");
+		  NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_RECOVERY_REQUEST,
-		  "Recovery request");
+		  NULL);
 
 	/* Clean up */
 	free(bdb0);
 	free(bdb1);
+}
+
+int vbe_read_nvm(enum nvm_type type, uint8_t **buf, uint32_t *size)
+{
+	/* Read NVM-RW contents (from EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		*buf = nvmrw1;
+		*size = sizeof(nvmrw1);
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		*buf = nvmrw2;
+		*size = sizeof(nvmrw2);
+		break;
+	default:
+		return -1;
+	}
+	return BDB_SUCCESS;
+}
+
+int vbe_write_nvm(enum nvm_type type, void *buf, uint32_t size)
+{
+	if (vbe_write_nvm_failure > 0) {
+		fprintf(stderr, "Failed to write NVM (type=%d failure=%d)\n",
+			type, vbe_write_nvm_failure);
+		vbe_write_nvm_failure--;
+		return -1;
+	}
+
+	/* Write NVM-RW contents (to EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		memcpy(nvmrw1, buf, size);
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		memcpy(nvmrw2, buf, size);
+		break;
+	default:
+		return -1;
+	}
+	return 0;
+}
+
+static void prepare_nvm(enum nvm_type type,
+			uint32_t min_kernel_data_key_version,
+			uint32_t min_kernel_version,
+			uint32_t update_count)
+{
+	struct nvmrw nvm = {
+		.struct_size = sizeof(struct nvmrw),
+		.min_kernel_data_key_version = min_kernel_data_key_version,
+		.min_kernel_version = min_kernel_version,
+		.update_count = update_count,
+	};
+
+	/* Compute HMAC */
+	hmac(VB2_HASH_SHA256, secret.nvm_rw_secret, BDB_SECRET_SIZE,
+	     &nvm, nvm.struct_size - sizeof(nvm.hmac),
+	     nvm.hmac, sizeof(nvm.hmac));
+
+	/* Install NVM-RWs (in EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		memcpy(nvmrw1, &nvm, sizeof(nvm));
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		memcpy(nvmrw2, &nvm, sizeof(nvm));
+		break;
+	default:
+		fprintf(stderr, "Unsupported NVM type (%d)\n", type);
+		exit(2);
+		return;
+	}
+}
+
+static void test_nvm_read(void)
+{
+	struct vba_context ctx = {
+		.slot = 0,
+		.bdb = NULL,
+		.secrets = &secret,
+		.nvmrw = NULL,
+	};
+	struct nvmrw *nvm;
+	uint8_t nvmrw_copy[sizeof(struct nvmrw)];
+
+	prepare_nvm(NVM_TYPE_RW_PRIMARY, 0, 0, 0);
+	prepare_nvm(NVM_TYPE_RW_SECONDARY, 0, 0, 0);
+	memcpy(nvmrw_copy, nvmrw1, sizeof(nvmrw1));
+
+	/* Test nvm_read: both good */
+	TEST_SUCC(nvm_read(&ctx), NULL);
+	TEST_SUCC(memcmp(nvmrw2, nvmrw1, sizeof(nvmrw1)), NULL);
+
+	/* Test nvm_read: primary bad */
+	nvm = (struct nvmrw *)nvmrw1;
+	nvm->hmac[0] ^= 0xff;
+	TEST_SUCC(nvm_read(&ctx), NULL);
+	TEST_SUCC(memcmp(nvmrw1, nvmrw_copy, sizeof(nvmrw1)), NULL);
+	TEST_SUCC(memcmp(nvmrw2, nvmrw_copy, sizeof(nvmrw2)), NULL);
+
+	/* Test nvm_read: secondary bad */
+	nvm = (struct nvmrw *)nvmrw1;
+	nvm->hmac[0] ^= 0xff;
+	TEST_SUCC(nvm_read(&ctx), NULL);
+	TEST_SUCC(memcmp(nvmrw1, nvmrw_copy, sizeof(nvmrw1)), NULL);
+	TEST_SUCC(memcmp(nvmrw2, nvmrw_copy, sizeof(nvmrw2)), NULL);
+
+	/* Test nvm_read: both bad */
+	nvm = (struct nvmrw *)nvmrw1;
+	nvm->hmac[0] ^= 0xff;
+	nvm = (struct nvmrw *)nvmrw2;
+	nvm->hmac[0] ^= 0xff;
+	TEST_EQ(nvm_read(&ctx), BDB_ERROR_NVM_RW_BOTH, NULL);
+}
+
+static void verify_update_kernel_version(uint32_t min_kernel_data_key_version,
+					 uint32_t new_kernel_data_key_version,
+					 uint32_t min_kernel_version,
+					 uint32_t new_kernel_version,
+					 uint32_t update_count,
+					 int expected_result)
+{
+	struct vba_context ctx = {
+		.slot = 0,
+		.bdb = NULL,
+		.secrets = &secret,
+		.nvmrw = NULL,
+	};
+	struct nvmrw *nvm;
+
+	prepare_nvm(NVM_TYPE_RW_PRIMARY, min_kernel_data_key_version,
+		    min_kernel_version, update_count);
+	prepare_nvm(NVM_TYPE_RW_SECONDARY, min_kernel_data_key_version,
+		    min_kernel_version, update_count);
+
+	TEST_EQ(vba_update_kernel_version(&ctx, new_kernel_data_key_version,
+					  new_kernel_version),
+		expected_result, NULL);
+
+	if (expected_result != BDB_SUCCESS)
+		return;
+
+	nvm = (struct nvmrw *)nvmrw1;
+	TEST_EQ(nvm->min_kernel_data_key_version, new_kernel_data_key_version,
+		NULL);
+	TEST_EQ(nvm->min_kernel_version, new_kernel_version, NULL);
+	TEST_EQ(nvm->update_count, update_count + 1, NULL);
+
+	TEST_SUCC(memcmp(nvmrw2, nvmrw1, sizeof(nvmrw1)), NULL);
+}
+
+static void test_update_kernel_version(void)
+{
+	vbe_write_nvm_failure = 0;
+	verify_update_kernel_version(0, 1, 0, 1, 0, BDB_SUCCESS);
+
+	/* Test write failure: once */
+	vbe_write_nvm_failure = 1;
+	verify_update_kernel_version(0, 1, 0, 1, 0, BDB_SUCCESS);
+
+	/* Test write failure: twice */
+	vbe_write_nvm_failure = 2;
+	verify_update_kernel_version(0, 1, 0, 1, 0, BDB_ERROR_RECOVERY_REQUEST);
 }
 
 /*****************************************************************************/
@@ -266,6 +440,8 @@ int main(int argc, char *argv[])
 	printf("Running BDB SP-RW tests...\n");
 
 	test_verify_aprw(argv[1]);
+	test_nvm_read();
+	test_update_kernel_version();
 
 	return gTestSuccess ? 0 : 255;
 }
