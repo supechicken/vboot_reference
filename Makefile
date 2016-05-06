@@ -1471,6 +1471,7 @@ run2tests: test_setup
 .PHONY: runbdbtests
 runbdbtests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/bdb_test ${TEST_KEYS}
+	${RUNTEST} ${BUILD_RUN}/tests/bdb_sprw_test ${TEST_KEYS}
 
 .PHONY: runfutiltests
 runfutiltests: test_setup
