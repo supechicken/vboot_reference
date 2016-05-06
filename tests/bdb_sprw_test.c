@@ -26,6 +26,9 @@ static char slot_selected;
 static uint8_t aprw_digest[BDB_SHA256_DIGEST_SIZE];
 static uint8_t reset_count;
 
+static uint8_t nvmrw1[sizeof(struct nvmrw)];
+static uint8_t nvmrw2[sizeof(struct nvmrw)];
+
 static struct bdb_header *create_bdb(const char *key_dir,
 				     struct bdb_hash *hash, int num_hashes)
 {
@@ -257,6 +260,45 @@ static void test_verify_aprw(const char *key_dir)
 	free(bdb1);
 }
 
+int vbe_read_nvm(enum nvm_type type, uint8_t **buf, uint32_t *size)
+{
+	/* Read NVM-RW contents (from EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		*buf = nvmrw1;
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		*buf = nvmrw2;
+		break;
+	default:
+		return -1;
+	}
+	return BDB_SUCCESS;
+}
+
+int vbe_write_nvm(enum nvm_type type, void *buf, uint32_t size)
+{
+	/* Write NVM-RW contents (to EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		memcpy(nvmrw1, buf, size);
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		memcpy(nvmrw2, buf, size);
+		break;
+	default:
+		return -1;
+	}
+	return BDB_SUCCESS;
+}
+
+static void test_update_kernel_version(void)
+{
+	struct vba_context ctx;
+
+	vba_update_kernel_version(&ctx, 0, 0);
+}
+
 /*****************************************************************************/
 
 int main(int argc, char *argv[])
@@ -268,6 +310,7 @@ int main(int argc, char *argv[])
 	printf("Running BDB SP-RW tests...\n");
 
 	test_verify_aprw(argv[1]);
+	test_update_kernel_version();
 
 	return gTestSuccess ? 0 : 255;
 }
