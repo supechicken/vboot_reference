@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "2sha.h"
+#include "2hmac.h"
 #include "bdb.h"
 #include "bdb_api.h"
 #include "bdb_struct.h"
@@ -23,6 +24,9 @@ static uint32_t vboot_register_persist;
 static char slot_selected;
 static uint8_t aprw_digest[BDB_SHA256_DIGEST_SIZE];
 static uint8_t reset_count;
+
+static uint8_t nvmrw1[sizeof(struct nvmrw)];
+static uint8_t nvmrw2[sizeof(struct nvmrw)];
 
 static struct bdb_header *create_bdb(const char *key_dir,
 				     struct bdb_hash *hash, int num_hashes)
@@ -215,8 +219,8 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memcpy(aprw_digest, hash0.digest, 4);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 1);
-	TEST_EQ_S(slot_selected, 'A');
+	TEST_EQ(reset_count, 1, NULL);
+	TEST_EQ(slot_selected, 'A', NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
 		   NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
@@ -228,8 +232,8 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memcpy(aprw_digest, hash1.digest, 4);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 3);
-	TEST_EQ_S(slot_selected, 'B');
+	TEST_EQ(reset_count, 3, NULL);
+	TEST_EQ(slot_selected, 'B', NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
 		  NULL);
 	TEST_FALSE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
@@ -241,8 +245,8 @@ static void test_verify_aprw(const char *key_dir)
 	slot_selected = 'X';
 	memset(aprw_digest, 0, BDB_SHA256_DIGEST_SIZE);
 	vbe_reset();
-	TEST_EQ_S(reset_count, 5);
-	TEST_EQ_S(slot_selected, 'X');
+	TEST_EQ(reset_count, 5, NULL);
+	TEST_EQ(slot_selected, 'X', NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_PRIMARY,
 		  NULL);
 	TEST_TRUE(vboot_register_persist & VBOOT_REGISTER_FAILED_RW_SECONDARY,
@@ -253,6 +257,94 @@ static void test_verify_aprw(const char *key_dir)
 	/* Clean up */
 	free(bdb0);
 	free(bdb1);
+}
+
+int vbe_read_nvm(enum nvm_type type, uint8_t **buf, uint32_t *size)
+{
+	/* Read NVM-RW contents (from EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		*buf = nvmrw1;
+		*size = sizeof(nvmrw1);
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		*buf = nvmrw2;
+		*size = sizeof(nvmrw2);
+		break;
+	default:
+		return -1;
+	}
+	return BDB_SUCCESS;
+}
+
+int vbe_write_nvm(enum nvm_type type, void *buf, uint32_t size)
+{
+	/* Write NVM-RW contents (to EEPROM for example) */
+	switch (type) {
+	case NVM_TYPE_RW_PRIMARY:
+		memcpy(nvmrw1, buf, size);
+		break;
+	case NVM_TYPE_RW_SECONDARY:
+		memcpy(nvmrw2, buf, size);
+		break;
+	default:
+		return -1;
+	}
+	return BDB_SUCCESS;
+}
+
+static void test_update_kernel_version(void)
+{
+	struct bdb_secret secret = {
+		.nvm_rw_secret = {0x00, },
+	};
+	struct vba_context ctx = {
+		.slot = 0,
+		.bdb = NULL,
+		.secrets = &secret,
+		.nvmrw = NULL,
+	};
+	struct nvmrw nvm1 = {
+		.struct_size = sizeof(struct nvmrw),
+		.min_kernel_data_key_version = 0,
+		.min_kernel_version = 0,
+		.update_count = 0,
+	};
+	struct nvmrw nvm2 = {
+		.struct_size = sizeof(struct nvmrw),
+		.min_kernel_data_key_version = 0,
+		.min_kernel_version = 0,
+		.update_count = 0,
+	};
+	struct nvmrw *nvm;
+
+	/* Compute HMAC */
+	hmac(VB2_HASH_SHA256, secret.nvm_rw_secret, BDB_SECRET_SIZE,
+	     &nvm1, nvm1.struct_size - sizeof(nvm1.hmac),
+	     nvm1.hmac, sizeof(nvm1.hmac));
+	hmac(VB2_HASH_SHA256, secret.nvm_rw_secret, BDB_SECRET_SIZE,
+	     &nvm2, nvm2.struct_size - sizeof(nvm2.hmac),
+	     nvm2.hmac, sizeof(nvm2.hmac));
+
+	/* Install NVM-RWs (in EEPROM for example) */
+	memcpy(nvmrw1, &nvm1, sizeof(nvm1));
+	memcpy(nvmrw2, &nvm2, sizeof(nvm2));
+
+	TEST_SUCC(vba_update_kernel_version(&ctx, 1, 1), NULL);
+
+	nvm = (struct nvmrw *)nvmrw1;
+	TEST_EQ(nvm->min_kernel_data_key_version, 1, NULL);
+	TEST_EQ(nvm->min_kernel_version, 1, NULL);
+//	TEST_EQ(nvm->update_count, 1, NULL);
+
+	nvm = (struct nvmrw *)nvmrw2;
+	TEST_EQ(nvm->min_kernel_data_key_version, 1, NULL);
+	TEST_EQ(nvm->min_kernel_version, 1, NULL);
+//	TEST_EQ(nvm->update_count, 1, NULL);
+
+	/* Test secondary copy is synced with primary */
+	/* Test primary copy is synced with secondary */
+	/* Test write failure */
 }
 
 /*****************************************************************************/
@@ -266,6 +358,7 @@ int main(int argc, char *argv[])
 	printf("Running BDB SP-RW tests...\n");
 
 	test_verify_aprw(argv[1]);
+	test_update_kernel_version();
 
 	return gTestSuccess ? 0 : 255;
 }
