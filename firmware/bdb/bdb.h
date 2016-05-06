@@ -37,6 +37,9 @@ enum bdb_return_code {
 	 * fully verified. */
 	BDB_GOOD_OTHER_THAN_KEY = 1,
 
+	/* Function is not implemented, thus supposed to be not called */
+	BDB_ERROR_NOT_IMPLEMENTED,
+
 	/* Other errors */
 	BDB_ERROR_UNKNOWN = 100,
 
@@ -72,6 +75,12 @@ enum bdb_return_code {
 	/* Errors in vba_bdb_init */
 	BDB_ERROR_TRY_OTHER_SLOT,
 	BDB_ERROR_RECOVERY_REQUEST,
+
+	BDB_ERROR_NVM_INIT,
+	BDB_ERROR_NVM_WRITE,
+	BDB_ERROR_NVM_RW_HMAC,
+	BDB_ERROR_NVM_RW_INVALID_HMAC,
+	BDB_ERROR_NVM_RW_BOTH,
 };
 
 /*****************************************************************************/
