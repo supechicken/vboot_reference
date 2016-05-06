@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -263,6 +263,16 @@ struct bdb_hash {
 } __attribute__((packed));
 
 /*****************************************************************************/
+
+#define BDB_SECRET_SIZE		32
+
+struct bdb_secret {
+	uint8_t buc_secret[BDB_SECRET_SIZE];
+	uint8_t nvm_rw_secret[BDB_SECRET_SIZE];
+	uint8_t boot_verified_secret[BDB_SECRET_SIZE];
+	uint8_t boot_path_secret[BDB_SECRET_SIZE];
+	uint8_t bdb_secret[BDB_SECRET_SIZE];
+};
 
 #endif /* VBOOT_REFERENCE_BDB_STRUCT_H_ */
 
