@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d900bca_c40292fa",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-06T19:38:22Z",
+      "side": 1,
+      "message": ", or NULL if error.\n\nThough since this is used for debugging, maybe it should return \"UNKNOWN\" or something like that in the default case.",
+      "range": {
+        "startLine": 165,
+        "startChar": 36,
+        "endLine": 165,
+        "endChar": 40
+      },
+      "revId": "fe439bf406d3f352193ea864f6ee6567ae627e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d900bca_e4206e8f",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-06T19:38:22Z",
+      "side": 1,
+      "message": "Add a test for vb2_hash_block_size()?  (in sha256 and sha512 too)",
+      "revId": "fe439bf406d3f352193ea864f6ee6567ae627e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
