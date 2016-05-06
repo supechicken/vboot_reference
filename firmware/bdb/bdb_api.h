@@ -68,6 +68,15 @@ int vba_update_kernel_version(struct vba_context *ctx,
 			      uint32_t kernel_version);
 
 /**
+ * Write BUC to NVM-RW
+ *
+ * @param ctx
+ * @param new_buc	New BUC to be written
+ * @return		BDB_SUCCESS or BDB_ERROR_*
+ */
+int vba_update_buc(struct vba_context *ctx, uint8_t *new_buc);
+
+/**
  * Get vboot register value
  *
  * Implemented by each chip
