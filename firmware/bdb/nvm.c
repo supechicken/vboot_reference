@@ -243,8 +243,8 @@ int vba_update_buc(struct vba_context *ctx, uint8_t *new_buc)
 	}
 
 	/* Encrypt new BUC
-	 * TODO: Check flag first (e.g. disable_hardware_crypt) and fall back
-	 * to software implementation if necessary. */
+	 * Note that we do not need to decide whether we should use hardware
+	 * crypto or not because this is supposed to be running in RW code. */
 	if (vbe_aes256_encrypt(new_buc, BUC_ENC_DIGEST_SIZE,
 			       ctx->rw_secrets->buc, buc))
 		return BDB_ERROR_ENCRYPT_BUC;
