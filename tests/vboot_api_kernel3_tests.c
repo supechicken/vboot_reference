@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "2sysincludes.h"
+
+#include "2common.h"
+#include "2sha.h"
 #include "gbb_header.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
@@ -188,10 +192,14 @@ VbError_t VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
 		return want_ec_hash_size ? VBERROR_SUCCESS : VBERROR_SIMULATED;
 }
 
-uint8_t *internal_SHA256(const uint8_t *data, uint64_t len, uint8_t *digest)
+int vb2_digest_buffer(const uint8_t *buf,
+		      uint32_t size,
+		      enum vb2_hash_algorithm hash_alg,
+		      uint8_t *digest,
+		      uint32_t digest_size)
 {
 	Memcpy(digest, mock_sha, sizeof(mock_sha));
-	return digest;
+	return VB2_SUCCESS;
 }
 
 VbError_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
