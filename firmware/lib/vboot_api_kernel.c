@@ -7,6 +7,8 @@
 
 #include "sysincludes.h"
 
+#include "2common.h"
+#include "2sha.h"
 #include "gbb_access.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
@@ -718,7 +720,7 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 	const uint8_t *expected = NULL;
 	const uint8_t *ec_hash = NULL;
 	int expected_size;
-	uint8_t expected_hash[SHA256_DIGEST_SIZE];
+	uint8_t expected_hash[VB2_SHA256_DIGEST_SIZE];
 	int i;
 	int rw_request = select != VB_SELECT_FIRMWARE_READONLY;
 
@@ -735,15 +737,15 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 		VbSetRecoveryRequest(VBNV_RECOVERY_EC_HASH_FAILED);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
-	if (hash_size != SHA256_DIGEST_SIZE) {
+	if (hash_size != VB2_SHA256_DIGEST_SIZE) {
 		VBDEBUG(("EcUpdateImage() - "
 			 "VbExEcHashImage() says size %d, not %d\n",
-			 hash_size, SHA256_DIGEST_SIZE));
+			 hash_size, VB2_SHA256_DIGEST_SIZE));
 		VbSetRecoveryRequest(VBNV_RECOVERY_EC_HASH_SIZE);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 	VBDEBUG(("EC-%s hash:", rw_request ? "RW" : "RO"));
-	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
+	for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 		VBDEBUG(("%02x",ec_hash[i]));
 	VBDEBUG(("\n"));
 
@@ -761,18 +763,19 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 			 "VbExEcGetExpectedImageHash() returned %d\n", rv));
 		VbSetRecoveryRequest(VBNV_RECOVERY_EC_EXPECTED_HASH);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	} else if (hash_size != SHA256_DIGEST_SIZE) {
+	} else if (hash_size != VB2_SHA256_DIGEST_SIZE) {
 		VBDEBUG(("EcUpdateImage() - "
 			 "VbExEcGetExpectedImageHash() says size %d, not %d\n",
-			 hash_size, SHA256_DIGEST_SIZE));
+			 hash_size, VB2_SHA256_DIGEST_SIZE));
 		VbSetRecoveryRequest(VBNV_RECOVERY_EC_EXPECTED_HASH);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	} else {
 		VBDEBUG(("Expected hash:"));
-		for (i = 0; i < SHA256_DIGEST_SIZE; i++)
+		for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 			VBDEBUG(("%02x", hash[i]));
 		VBDEBUG(("\n"));
-		*need_update = SafeMemcmp(ec_hash, hash, SHA256_DIGEST_SIZE);
+		*need_update = SafeMemcmp(ec_hash, hash,
+					  VB2_SHA256_DIGEST_SIZE);
 	}
 
 	/*
@@ -794,9 +797,10 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 		VBDEBUG(("EcUpdateImage() - image len = %d\n", expected_size));
 
 		/* Hash expected image */
-		internal_SHA256(expected, expected_size, expected_hash);
+		vb2_digest_buffer(expected, expected_size, VB2_HASH_SHA256,
+				  expected_hash, sizeof(expected_hash));
 		VBDEBUG(("Computed hash of expected image:"));
-		for (i = 0; i < SHA256_DIGEST_SIZE; i++)
+		for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 			VBDEBUG(("%02x", expected_hash[i]));
 		VBDEBUG(("\n"));
 	}
@@ -807,9 +811,9 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 		 * update by comparing EC hash to the one we just computed.
 		 */
 		*need_update = SafeMemcmp(ec_hash, expected_hash,
-					  SHA256_DIGEST_SIZE);
+					  VB2_SHA256_DIGEST_SIZE);
 	} else if (*need_update && SafeMemcmp(hash, expected_hash,
-					      SHA256_DIGEST_SIZE)) {
+					      VB2_SHA256_DIGEST_SIZE)) {
 		/*
 		 * We need to update, but the expected EC image doesn't match
 		 * the expected EC hash we were given.
@@ -903,19 +907,19 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 			VbSetRecoveryRequest(VBNV_RECOVERY_EC_HASH_FAILED);
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		}
-		if (hash_size != SHA256_DIGEST_SIZE) {
+		if (hash_size != VB2_SHA256_DIGEST_SIZE) {
 			VBDEBUG(("EcUpdateImage() - "
 				 "VbExEcHashImage() says size %d, not %d\n",
-				 hash_size, SHA256_DIGEST_SIZE));
+				 hash_size, VB2_SHA256_DIGEST_SIZE));
 			VbSetRecoveryRequest(VBNV_RECOVERY_EC_HASH_SIZE);
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		}
 		VBDEBUG(("Updated EC-%s hash:", rw_request ? "RW" : "RO"));
-		for (i = 0; i < SHA256_DIGEST_SIZE; i++)
+		for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 			VBDEBUG(("%02x",ec_hash[i]));
 		VBDEBUG(("\n"));
 
-		if (SafeMemcmp(ec_hash, hash, SHA256_DIGEST_SIZE)){
+		if (SafeMemcmp(ec_hash, hash, VB2_SHA256_DIGEST_SIZE)){
 			VBDEBUG(("EcUpdateImage() - "
 				 "Failed to update EC-%s\n", rw_request ?
 				 "RW" : "RO"));
