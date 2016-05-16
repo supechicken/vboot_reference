@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b76d2eef_7411a89d",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Yes.  Switched to using VB2_SUCCESS, since it\u0027s more clear.",
+      "parentUuid": "d26d50b5_15e0270c",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d26d50b5_75c6bb7b",
         "filename": "firmware/lib/cryptolib/rsa_utility.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-12T23:26:14Z",
       "side": 1,
       "message": "Please use VB2_MAX_DIGEST_SIZE.",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b76d2eef_34b9f087",
+        "filename": "firmware/lib/cryptolib/rsa_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26d50b5_75c6bb7b",
       "range": {
         "startLine": 93,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b76d2eef_7449a87e",
+        "filename": "firmware/lib/cryptolib/rsa_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26d50b5_d5a78fcd",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d26d50b5_100af56b",
         "filename": "futility/cmd_pcr.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b76d2eef_f40e182c",
+        "filename": "futility/cmd_pcr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26d50b5_100af56b",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 39
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d26d50b5_3061b129",
         "filename": "futility/misc.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2016-05-12T23:26:14Z",
       "side": 1,
       "message": "Please use VB2_SUCCESS",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b76d2eef_b408a01e",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26d50b5_3061b129",
       "range": {
         "startLine": 151,
         "startChar": 5,
@@ -266,6 +386,30 @@
       "writtenOn": "2016-05-12T23:26:14Z",
       "side": 1,
       "message": "nit: more precisely  \u0027VB2_SUCCESS, or non-zero on error.\u0027",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "43fd7c81f64860f45b96c98f4c9207e7c7cf5d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b76d2eef_341fb04a",
+        "filename": "host/lib/include/file_keys.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-16T22:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26d50b5_700b291d",
       "range": {
         "startLine": 31,
         "startChar": 27,
