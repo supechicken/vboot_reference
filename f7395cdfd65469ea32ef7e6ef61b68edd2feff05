@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76d2eef_619b2574",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-05-16T23:33:37Z",
+      "side": 1,
+      "message": "nit: We\u0027d better use int digest_size \u003d vb2_digest_size(VB2_HASH_SHA512) here and the other two lines below as we do in CalculateHash.",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "f7395cdfd65469ea32ef7e6ef61b68edd2feff05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
