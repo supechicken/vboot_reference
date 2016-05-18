@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e3261d_8c8847fa",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "At some point it might be nice to have a nvm-rw-modified flag, the way we do for secure storage and nvdata in vb2.  But that can come later, when nvmrw is actually used.",
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_ec27cb0f",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Exactly?  What if it reads less?",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_cc2c0ff5",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "(same)",
+      "range": {
+        "startLine": 107,
+        "startChar": 52,
+        "endLine": 107,
+        "endChar": 61
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_6c6e3b22",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "\u003c\n\nIt\u0027s ok if it\u0027s greater.  That just means we\u0027re an A.B reader, and we got an A.C struct where C\u003eB.  We can safely ignore the additional fields in the struct.",
+      "range": {
+        "startLine": 29,
+        "startChar": 22,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_2c7833df",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Should also pass in bufsize.  That way we can validate the structure fits in the buffer we were passed.\n\nMight need to pass that to nvmrw_validate() as well, if you want to do the nvm-\u003estruct_size vs. bufsize check there.",
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_ccc88f35",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Do we have a safe_memcmp()?  If so, we should use it here.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_6c019b2c",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Suggest making this a #defined constant (NVM_MAX_WRITE_RETRIES?)",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_ccf1af7b",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "This is potentially tricky if we\u0027re persisting a struct size greater than our reader/writer supports (for example, a 1.1 struct, but we\u0027re only a 1.0 reader/writer).  In that case, the hmac is not located at nvm-\u003ehmac.\n\nThe other way around that is to declare that we are a 1.0 writer, and so we will only write a 1.0 struct.  In that case, we need to update the minor version and struct size to match 1.0, and just drop the 1.1 data.\n\nEither is ok.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_4cb01f9a",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Yes, we do.  See below.",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 67
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_8ca4c76a",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "It\u0027s a little odd that the two calls to nvmrw_write() here cause the hmac to be recalculated twice.  Seems like we should hmac once, write twice.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 42
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_6cb3dba8",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "|| ?\n\nSuppose half of NVM-RW goes bad.  Using \u0026\u0026 means we could just write the primary and we don\u0027t care if the secondary ever gets written successfully.  But that means if writing the primary is interrupted, then we lose state.",
+      "range": {
+        "startLine": 196,
+        "startChar": 6,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_4c549f41",
+        "filename": "firmware/bdb/nvm.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "This must be the last field in the structure (add new fields before this.)",
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_6c251bfc",
+        "filename": "firmware/bdb/nvm.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "Into the context?",
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e3261d_6c3cfb1d",
+        "filename": "firmware/bdb/nvm.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-18T20:15:10Z",
+      "side": 1,
+      "message": "-RW?",
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
