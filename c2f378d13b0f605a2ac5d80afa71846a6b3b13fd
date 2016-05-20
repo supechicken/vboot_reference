@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97b10a5a_801fa0a3",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2016-05-20T19:59:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we can validate struct_size at all here, without passing in bufsize.\n\nCompare this code with bdb_check_header() or bdb_check_key().",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "c2f378d13b0f605a2ac5d80afa71846a6b3b13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b10a5a_000bb06f",
+        "filename": "firmware/bdb/nvm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2016-05-20T19:59:37Z",
+      "side": 1,
+      "message": "Unfortunately, we may not be able to do this because the SP-RO code may only handle a 96-byte structure.  Need to resolve that before we know how to handle this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 41,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "c2f378d13b0f605a2ac5d80afa71846a6b3b13fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
