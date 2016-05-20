@@ -126,9 +126,8 @@ void vb2_sha256_init(struct vb2_sha256_context *ctx)
 	ctx->total_size = 0;
 }
 
-static void vb2_sha256_transform(struct vb2_sha256_context *ctx,
-				 const uint8_t *message,
-				 unsigned int block_nb)
+void vb2_sha256_transform(struct vb2_sha256_context *ctx,
+			  const uint8_t *message, unsigned int block_nb)
 {
 	/* Note that these arrays use 72*4=288 bytes of stack */
 	uint32_t w[64];
@@ -313,4 +312,22 @@ void vb2_sha256_finalize(struct vb2_sha256_context *ctx, uint8_t *digest)
 	UNPACK32(ctx->h[6], &digest[24]);
 	UNPACK32(ctx->h[7], &digest[28]);
 #endif /* !UNROLL_LOOPS */
+}
+
+void vb2_sha256_extend(const uint8_t *from, const uint8_t *by, uint8_t *to)
+{
+	struct vb2_sha256_context dc;
+	int i;
+
+	for (i = 0; i < 8; i++) {
+		 PACK32(from, &dc->h[i]);
+		 from += 4;
+	}
+
+	vb2_sha256_transform(&dc, by, 1);
+
+	for (i = 0; i < 8; i++) {
+		 UNPACK32(dc->h[i], to);
+		 to += 4;
+	}
 }
