@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97b10a5a_8694d8f1",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2016-05-20T23:46:10Z",
+      "side": 1,
+      "message": "A little clearer to flip the terms\n\nif (nvm-\u003estruct_size \u003e size)\n\n(reads nicer give that the rest of the if\u0027s are checks on nvm-\u003esomething)",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "ced65734982312ccbeab5deb373c246f8a3b1c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
