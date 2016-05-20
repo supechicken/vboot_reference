@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "97b10a5a_408ad8d1",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-05-20T20:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b10a5a_c010889d",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7e3261d_cc2c0ff5",
         "filename": "firmware/bdb/bdb_api.h",
         "patchSetId": 10
@@ -466,6 +490,30 @@
       "side": 1,
       "message": "Which comments?",
       "parentUuid": "9712ead6_497c810c",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 42
+      },
+      "revId": "5f8e02d188dcf1c9da080d38b0edb16fe7720b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b10a5a_c048887e",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-05-20T20:31:39Z",
+      "side": 1,
+      "message": "From line 165 to 186 of patchset 13.",
+      "parentUuid": "97b10a5a_e0882cfb",
       "range": {
         "startLine": 143,
         "startChar": 0,
