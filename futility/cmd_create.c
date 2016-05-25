@@ -235,13 +235,13 @@ static int vb2_make_keypair()
 
 	/*
 	 * Copy the keyb blob to the public key's buffer, because that's where
-	 * vb2_unpack_key_data() and vb2_public_key_pack() expect to find it.
+	 * vb21_unpack_key_data() and vb2_public_key_pack() expect to find it.
 	 */
 	pubkey_buf = vb2_public_key_packed_data(pubkey);
 	memcpy(pubkey_buf, keyb_data, keyb_size);
 
 	/* Fill in the internal struct pointers */
-	if (vb2_unpack_key_data(pubkey, pubkey_buf, keyb_size)) {
+	if (vb21_unpack_key_data(pubkey, pubkey_buf, keyb_size)) {
 		fprintf(stderr, "Unable to unpack the public key blob\n");
 		goto done;
 	}
@@ -265,7 +265,7 @@ static int vb2_make_keypair()
 	if (has_priv) {
 		privkey->id = opt_id;
 		strcpy(outext, ".vbprik2");
-		if (vb2_private_key_write(privkey, outfile)) {
+		if (vb21_private_key_write(privkey, outfile)) {
 			fprintf(stderr, "unable to write private key\n");
 			goto done;
 		}
@@ -273,7 +273,7 @@ static int vb2_make_keypair()
 	}
 
 	strcpy(outext, ".vbpubk2");
-	if (vb2_public_key_write(pubkey, outfile)) {
+	if (vb21_public_key_write(pubkey, outfile)) {
 		fprintf(stderr, "unable to write public key\n");
 		goto done;
 	}
