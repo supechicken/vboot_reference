@@ -26,10 +26,11 @@ static int nvmrw_validate(const void *buf, uint32_t size)
 		return BDB_ERROR_NVM_STRUCT_SIZE;
 
 	/*
-	 * We allow any sizes between min and max so that we can handle minor
-	 * version mismatches. Reader can be older than data or the other way
-	 * around. FW in slot B can upgrade NVM-RW but fails to qualify as a
-	 * stable boot path. Then, FW in slot A is invoked which is older than
+	 * We allow any sizes between min and max so that we can handle version
+	 * mismatches. Reader can be older than the data or the other way
+	 * around.
+	 * For example, FW in slot B can upgrade NVM-RW but fails to qualify as
+	 * a stable boot path. Then, FW in slot A is invoked which is older than
 	 * the NVM-RW written by FW in slot B.
 	 */
 	if (nvm->struct_size < NVM_RW_MIN_STRUCT_SIZE ||
@@ -144,18 +145,18 @@ int nvmrw_read(struct vba_context *ctx)
 				buf2, sizeof(buf2));
 
 	if (rv1 == BDB_SUCCESS && rv2 == BDB_SUCCESS) {
-		/* Sync primary and secondary based on update_count. */
+		/* Choose primary or secondary based on update_count. */
 		if (nvm1->update_count > nvm2->update_count)
 			rv2 = !BDB_SUCCESS;
 		else if (nvm1->update_count < nvm2->update_count)
 			rv1 = !BDB_SUCCESS;
 	} else if (rv1 != BDB_SUCCESS && rv2 != BDB_SUCCESS){
-		/* Abort. Neither was successful. */
+		/* Neither copy was good. Abort. */
 		return rv1;
 	}
 
 	if (rv1 == BDB_SUCCESS)
-		/* both copies are good. use primary copy */
+		/* primary is (or both are) good. use primary copy */
 		memcpy(&ctx->nvmrw, buf1, sizeof(ctx->nvmrw));
 	else
 		/* primary is bad but secondary is good. */
