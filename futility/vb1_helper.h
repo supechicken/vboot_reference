@@ -6,8 +6,13 @@
 #ifndef VBOOT_REFERENCE_FUTILITY_VB1_HELPER_H_
 #define VBOOT_REFERENCE_FUTILITY_VB1_HELPER_H_
 
+struct vb2_packed_key;
+
+/* Return the name of the vb1 crypto algorithm or "(invalid)" if not valid */
+const char *vb1_crypto_name(uint32_t algo);
+
 /* Display a public key with variable indentation */
-void show_pubkey(VbPublicKey *pubkey, const char *sp);
+void show_pubkey(struct vb2_packed_key *pubkey, const char *sp);
 
 /* Other random functions needed for backward compatibility */
 
