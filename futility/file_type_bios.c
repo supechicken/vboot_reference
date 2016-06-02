@@ -18,6 +18,7 @@
 #include "gbb_header.h"
 #include "host_common.h"
 #include "vb1_helper.h"
+#include "vb2_common.h"
 
 static const char * const fmap_name[] = {
 	"GBB",					/* BIOS_FMAP_GBB */
@@ -55,6 +56,7 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
 	GoogleBinaryBlockHeader *gbb = (GoogleBinaryBlockHeader *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
+	struct vb2_packed_key *pubkey2;
 	VbPublicKey *pubkey;
 	BmpBlockHeader *bmp;
 	int retval = 0;
@@ -96,7 +98,8 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 	print_hwid_digest(gbb, "     digest:             ", "\n");
 
 	pubkey = (VbPublicKey *)(buf + gbb->rootkey_offset);
-	if (PublicKeyLooksOkay(pubkey, gbb->rootkey_size)) {
+	pubkey2 = (struct vb2_packed_key *)pubkey;
+	if (packed_key_looks_ok(pubkey2, gbb->rootkey_size)) {
 		if (state) {
 			state->rootkey.offset =
 				state->area[BIOS_FMAP_GBB].offset +
@@ -106,14 +109,15 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 			state->rootkey.is_valid = 1;
 		}
 		printf("  Root Key:\n");
-		show_pubkey(pubkey, "    ");
+		show_pubkey((struct vb2_packed_key *)pubkey, "    ");
 	} else {
 		retval = 1;
 		printf("  Root Key:              <invalid>\n");
 	}
 
 	pubkey = (VbPublicKey *)(buf + gbb->recovery_key_offset);
-	if (PublicKeyLooksOkay(pubkey, gbb->recovery_key_size)) {
+	pubkey2 = (struct vb2_packed_key *)pubkey;
+	if (packed_key_looks_ok(pubkey2, gbb->recovery_key_size)) {
 		if (state) {
 			state->recovery_key.offset =
 				state->area[BIOS_FMAP_GBB].offset +
@@ -124,7 +128,7 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 			state->recovery_key.is_valid = 1;
 		}
 		printf("  Recovery Key:\n");
-		show_pubkey(pubkey, "    ");
+		show_pubkey((struct vb2_packed_key *)pubkey, "    ");
 	} else {
 		retval = 1;
 		printf("  Recovery Key:          <invalid>\n");
