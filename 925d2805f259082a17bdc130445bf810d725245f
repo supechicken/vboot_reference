@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2344a487_92366c3c",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-06T23:41:59Z",
+      "side": 1,
+      "message": "It\u0027s the same code as used in test_sign_fw_main.sh; it\u0027s just to make sure the version and flags fields are non-zero.",
+      "parentUuid": "4668c670_0d7d55cc",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "925d2805f259082a17bdc130445bf810d725245f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4668c670_4d734d03",
         "filename": "tests/futility/test_show_contents.sh",
         "patchSetId": 1
