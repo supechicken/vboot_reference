@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2344a487_12f1bca0",
+        "filename": "tests/futility/expect_output/show.tests_devkeys_kernel.keyblock",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-06T23:40:48Z",
+      "side": 1,
+      "message": "Yes, they pass now.  This ensures the output won\u0027t change in the vboot1 refactoring.",
+      "parentUuid": "4668c670_2dd61904",
+      "revId": "925d2805f259082a17bdc130445bf810d725245f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4668c670_0d7d55cc",
         "filename": "tests/futility/test_show_contents.sh",
         "patchSetId": 1
