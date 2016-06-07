@@ -20,6 +20,8 @@
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
 static uint32_t disp_width = 0, disp_height = 0;
 
+#define FORCE_SKIP_REGION_CHECK_VERSION	2
+
 __attribute__((weak))
 VbError_t VbExGetLocalizationCount(uint32_t *count) {
 	return VBERROR_UNKNOWN;
@@ -301,8 +303,6 @@ VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
 	/* Successful if all bitmaps displayed */
 	retval = VBERROR_SUCCESS;
 
-	VbRegionCheckVersion(cparams);
-
  VbDisplayScreenFromGBB_exit:
 	VBDEBUG(("leaving VbDisplayScreenFromGBB() with %d\n",retval));
 	return retval;
@@ -331,8 +331,11 @@ static VbError_t VbDisplayScreenLegacy(VbCommonParams *cparams, uint32_t screen,
 
 	/* Look in the GBB first */
 	if (VBERROR_SUCCESS == VbDisplayScreenFromGBB(cparams, screen,
-						      vncptr, locale))
+						      vncptr, locale)) {
+		if (force != FORCE_SKIP_REGION_CHECK_VERSION)
+			VbRegionCheckVersion(cparams);
 		return VBERROR_SUCCESS;
+	}
 
 	/* If screen wasn't in the GBB bitmaps, fall back to a default */
 	return VbExDisplayScreen(screen, locale);
@@ -554,7 +557,8 @@ VbError_t VbDisplayDebugInfo(VbCommonParams *cparams, VbNvContext *vncptr)
 	uint32_t i;
 
 	/* Redisplay current screen to overwrite any previous debug output */
-	VbDisplayScreen(cparams, disp_current_screen, 1, vncptr);
+	VbDisplayScreen(cparams, disp_current_screen,
+			FORCE_SKIP_REGION_CHECK_VERSION, vncptr);
 
 	/* Add hardware ID */
 	VbRegionReadHWID(cparams, hwid, sizeof(hwid));
