@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "833630c6_92c8bd8a",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2016-06-09T20:29:23Z",
+      "side": 1,
+      "message": "break CQ:\nchromeos-u-boot-2013.04-r1970: In file included from firmware/lib/vboot_common.c:10:0:\nchromeos-u-boot-2013.04-r1970: firmware/2lib/include/2sysincludes.h:20:20: fatal error: string.h: No such file or directory\nchromeos-u-boot-2013.04-r1970:  #include \u003cstring.h\u003e\\\n\n[https://uberchromegw.corp.google.com/i/chromeos/builders/link-paladin/builds/25293]",
+      "revId": "bae103b40bc42e7da65617062112764b64a5e53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
