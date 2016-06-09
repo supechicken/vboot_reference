@@ -631,6 +631,7 @@ static const struct GpioChipset chipsets_supported[] = {
   { "INT344B:00", FindGpioChipOffsetByLabel },
   { "BayTrail", BayTrailFindGpioChipOffset },
   { "Braswell", BraswellFindGpioChipOffset },
+  { "Broxton", BraswellFindGpioChipOffset }, /* re-using Braswell as it has 4 controllers */
   { NULL },
 };
 
