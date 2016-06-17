@@ -27,7 +27,7 @@ FILE_TYPE(GBB,              "gbb",           "GBB",
 	  R_(ft_recognize_gbb),
 	  S_(ft_show_gbb),
 	  NONE)
-FILE_TYPE(FW_PREAMBLE,      "fw_pre",        "VbFirmwarePreamble (VBLOCK_A/B)",
+FILE_TYPE(FW_PREAMBLE,      "fw_pre",        "firmware preamble (VBLOCK_A/B)",
 	  R_(ft_recognize_vblock1),
 	  S_(ft_show_fw_preamble),
 	  NONE)
@@ -35,15 +35,15 @@ FILE_TYPE(KERN_PREAMBLE,    "kernel",        "kernel preamble/partition",
 	  R_(ft_recognize_vblock1),
 	  S_(ft_show_kernel_preamble),
 	  S_(ft_sign_kern_preamble))
-FILE_TYPE(KEYBLOCK,         "keyblock",      "VbKeyBlock",
+FILE_TYPE(KEYBLOCK,         "keyblock",      "keyblock (signed public key)",
 	  R_(ft_recognize_vblock1),
 	  S_(ft_show_keyblock),
 	  NONE)
-FILE_TYPE(PUBKEY,           "pubkey",        "VbPublicKey (.vbpubk)",
+FILE_TYPE(PUBKEY,           "pubkey",        "vb1 packed public key (.vbpubk)",
 	  R_(ft_recognize_vb1_key),
 	  S_(ft_show_pubkey),
 	  S_(ft_sign_pubkey))
-FILE_TYPE(PRIVKEY,          "prikey",        "VbPrivateKey (.vbprivk)",
+FILE_TYPE(PRIVKEY,          "prikey",        "vb1 private key (.vbprivk)",
 	  R_(ft_recognize_vb1_key),
 	  S_(ft_show_privkey),
 	  NONE)

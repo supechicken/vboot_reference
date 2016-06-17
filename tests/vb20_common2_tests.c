@@ -140,30 +140,29 @@ int test_algorithm(int key_algorithm, const char *keys_dir)
 	char filename[1024];
 	int rsa_len = siglen_map[key_algorithm] * 8;
 
-	VbPrivateKey *private_key = NULL;
+	struct vb2_private_key *private_key = NULL;
 	struct vb2_signature *sig = NULL;
 	struct vb2_packed_key *key1;
 
 	printf("***Testing algorithm: %s\n", algo_strings[key_algorithm]);
 
 	sprintf(filename, "%s/key_rsa%d.pem", keys_dir, rsa_len);
-	private_key = PrivateKeyReadPem(filename, key_algorithm);
+	private_key = vb2_read_private_key_pem(filename, key_algorithm);
 	if (!private_key) {
 		fprintf(stderr, "Error reading private_key: %s\n", filename);
 		return 1;
 	}
 
 	sprintf(filename, "%s/key_rsa%d.keyb", keys_dir, rsa_len);
-	key1 = (struct vb2_packed_key *)
-		PublicKeyReadKeyb(filename, key_algorithm, 1);
+	key1 = vb2_read_packed_keyb(filename, key_algorithm, 1);
 	if (!key1) {
 		fprintf(stderr, "Error reading public_key: %s\n", filename);
 		return 1;
 	}
 
 	/* Calculate good signatures */
-	sig = (struct vb2_signature *)
-		CalculateSignature(test_data, sizeof(test_data), private_key);
+	sig = vb2_calculate_signature(test_data, sizeof(test_data),
+				      private_key);
 	TEST_PTR_NEQ(sig, 0, "Calculate signature");
 	if (!sig)
 		return 1;

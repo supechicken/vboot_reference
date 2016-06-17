@@ -461,10 +461,12 @@ UTILLIB_SRCS = \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
 	host/lib/host_key.c \
+	host/lib/host_key2.c \
 	host/lib/host_keyblock.c \
 	host/lib/host_misc.c \
 	host/lib/util_misc.c \
 	host/lib/host_signature.c \
+	host/lib/host_signature2.c \
 	host/lib/signature_digest.c \
 	host/lib21/host_fw_preamble.c \
 	host/lib21/host_key.c \

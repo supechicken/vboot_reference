@@ -15,6 +15,7 @@
 #include "2rsa.h"
 #include "2sha.h"
 #include "util_misc.h"
+#include "vb2_common.h"
 #include "vb21_common.h"
 
 #include "host_key.h"
@@ -80,51 +81,50 @@ static void print_help(int argc, char *argv[])
 
 static int vb1_make_keypair()
 {
-	VbPrivateKey *privkey = 0;
-	VbPublicKey *pubkey = 0;
-	RSA *rsa_key = 0;
+	struct vb2_private_key *privkey = NULL;
+	struct vb2_packed_key *pubkey = NULL;
+	struct rsa_st *rsa_key = NULL;
 	uint8_t *keyb_data = 0;
 	uint32_t keyb_size;
-	enum vb2_signature_algorithm sig_alg;
-	uint64_t vb1_algorithm;
-	FILE *fp;
 	int ret = 1;
 
-	fp = fopen(infile, "rb");
+	FILE *fp = fopen(infile, "rb");
 	if (!fp) {
 		fprintf(stderr, "Unable to open %s\n", infile);
 		goto done;
 	}
 
+	/* TODO: this is very similar to vb2_read_private_key_pem() */
+
 	rsa_key = PEM_read_RSAPrivateKey(fp, NULL, NULL, NULL);
 	fclose(fp);
-
 	if (!rsa_key) {
 		fprintf(stderr, "Unable to read RSA key from %s\n", infile);
 		goto done;
 	}
 
-	sig_alg = vb2_rsa_sig_alg(rsa_key);
+	enum vb2_signature_algorithm sig_alg = vb2_rsa_sig_alg(rsa_key);
 	if (sig_alg == VB2_SIG_INVALID) {
 		fprintf(stderr, "Unsupported sig algorithm in RSA key\n");
 		goto done;
 	}
 
-	/* combine the sig_alg with the hash_alg to get the vb1 algorithm */
-	vb1_algorithm = (sig_alg - VB2_SIG_RSA1024) * 3
-		+ opt_hash_alg - VB2_HASH_SHA1;
+	/* Combine the sig_alg with the hash_alg to get the vb1 algorithm */
+	uint64_t vb1_algorithm =
+		vb2_get_crypto_algorithm(opt_hash_alg, sig_alg);
 
 	/* Create the private key */
-	privkey = (VbPrivateKey *)malloc(sizeof(VbPrivateKey));
+	privkey = (struct vb2_private_key *)calloc(sizeof(*privkey), 1);
 	if (!privkey)
 		goto done;
 
 	privkey->rsa_private_key = rsa_key;
-	privkey->algorithm = vb1_algorithm;
+	privkey->sig_alg = sig_alg;
+	privkey->hash_alg = opt_hash_alg;
 
 	/* Write it out */
 	strcpy(outext, ".vbprivk");
-	if (0 != PrivateKeyWrite(outfile, privkey)) {
+	if (0 != vb2_write_private_key(outfile, privkey)) {
 		fprintf(stderr, "unable to write private key\n");
 		goto done;
 	}
@@ -137,14 +137,14 @@ static int vb1_make_keypair()
 		goto done;
 	}
 
-	pubkey = PublicKeyAlloc(keyb_size, vb1_algorithm, opt_version);
+	pubkey = vb2_alloc_packed_key(keyb_size, vb1_algorithm, opt_version);
 	if (!pubkey)
 		goto done;
-	memcpy(GetPublicKeyData(pubkey), keyb_data, keyb_size);
+	memcpy((uint8_t *)vb2_packed_key_data(pubkey), keyb_data, keyb_size);
 
 	/* Write it out */
 	strcpy(outext, ".vbpubk");
-	if (0 != PublicKeyWrite(outfile, pubkey)) {
+	if (VB2_SUCCESS != vb2_write_packed_key(outfile, pubkey)) {
 		fprintf(stderr, "unable to write public key\n");
 		goto done;
 	}
@@ -215,7 +215,8 @@ static int vb2_make_keypair()
 		privkey->sig_alg = sig_alg;
 		privkey->hash_alg = opt_hash_alg;
 		if (opt_desc && vb2_private_key_set_desc(privkey, opt_desc)) {
-			fprintf(stderr, "Unable to set the private key description\n");
+			fprintf(stderr,
+				"Unable to set the private key description\n");
 			goto done;
 		}
 	}

@@ -41,7 +41,7 @@ const char *vb1_crypto_name(uint32_t algo)
  */
 
 /* The keyblock, preamble, and kernel blob are kept in separate places. */
-static VbKeyBlockHeader *g_keyblock;
+static struct vb2_keyblock *g_keyblock;
 static VbKernelPreambleHeader *g_preamble;
 static uint8_t *g_kernel_blob_data;
 static uint64_t g_kernel_blob_size;
@@ -307,11 +307,10 @@ int UpdateKernelBlobConfig(uint8_t *kblob_data, uint64_t kblob_size,
 /* Split a kernel partition into separate vblock and blob parts. */
 uint8_t *UnpackKPart(uint8_t *kpart_data, uint64_t kpart_size,
 		     uint64_t padding,
-		     VbKeyBlockHeader **keyblock_ptr,
+		     struct vb2_keyblock **keyblock_ptr,
 		     VbKernelPreambleHeader **preamble_ptr,
 		     uint64_t *blob_size_ptr)
 {
-	VbKeyBlockHeader *keyblock;
 	VbKernelPreambleHeader *preamble;
 	uint64_t vmlinuz_header_size = 0;
 	uint64_t vmlinuz_header_address = 0;
@@ -319,17 +318,17 @@ uint8_t *UnpackKPart(uint8_t *kpart_data, uint64_t kpart_size,
 	uint32_t flags = 0;
 
 	/* Sanity-check the keyblock */
-	keyblock = (VbKeyBlockHeader *)kpart_data;
-	Debug("Keyblock is 0x%" PRIx64 " bytes\n", keyblock->key_block_size);
-	now += keyblock->key_block_size;
+	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)kpart_data;
+	Debug("Keyblock is 0x%x bytes\n", keyblock->keyblock_size);
+	now += keyblock->keyblock_size;
 	if (now > kpart_size) {
 		fprintf(stderr,
-			"key_block_size advances past the end of the blob\n");
+			"keyblock_size advances past the end of the blob\n");
 		return NULL;
 	}
 	if (now > padding) {
 		fprintf(stderr,
-			"key_block_size advances past %" PRIu64
+			"keyblock_size advances past %" PRIu64
 			" byte padding\n",
 			padding);
 		return NULL;
@@ -408,44 +407,44 @@ uint8_t *UnpackKPart(uint8_t *kpart_data, uint64_t kpart_size,
 uint8_t *SignKernelBlob(uint8_t *kernel_blob, uint64_t kernel_size,
 			uint64_t padding,
 			int version, uint64_t kernel_body_load_address,
-			VbKeyBlockHeader *keyblock, VbPrivateKey *signpriv_key,
+			struct vb2_keyblock *keyblock,
+			struct vb2_private_key *signpriv_key,
 			uint32_t flags, uint64_t *vblock_size_ptr)
 {
-	VbSignature *body_sig;
-	VbKernelPreambleHeader *preamble;
-	uint64_t min_size = padding > keyblock->key_block_size
-		? padding - keyblock->key_block_size : 0;
-	void *outbuf;
-	uint64_t outsize;
+	/* Make sure the preamble fills up the rest of the required padding */
+	uint32_t min_size = padding > keyblock->keyblock_size
+		? padding - keyblock->keyblock_size : 0;
 
 	/* Sign the kernel data */
-	body_sig = CalculateSignature(kernel_blob, kernel_size, signpriv_key);
+	struct vb2_signature *body_sig = vb2_calculate_signature(kernel_blob,
+								 kernel_size,
+								 signpriv_key);
 	if (!body_sig) {
 		fprintf(stderr, "Error calculating body signature\n");
 		return NULL;
 	}
 
 	/* Create preamble */
-	preamble = CreateKernelPreamble(version,
-					kernel_body_load_address,
-					g_ondisk_bootloader_addr,
-					g_bootloader_size,
-					body_sig,
-					g_ondisk_vmlinuz_header_addr,
-					g_vmlinuz_header_size,
-					flags,
-					min_size,
-					signpriv_key);
+	struct vb2_kernel_preamble *preamble =
+		vb2_create_kernel_preamble(version,
+					   kernel_body_load_address,
+					   g_ondisk_bootloader_addr,
+					   g_bootloader_size,
+					   body_sig,
+					   g_ondisk_vmlinuz_header_addr,
+					   g_vmlinuz_header_size,
+					   flags,
+					   min_size,
+					   signpriv_key);
 	if (!preamble) {
 		fprintf(stderr, "Error creating preamble.\n");
 		return 0;
 	}
 
-	outsize = keyblock->key_block_size + preamble->preamble_size;
-	outbuf = malloc(outsize);
-	Memset(outbuf, 0, outsize);
-	Memcpy(outbuf, keyblock, keyblock->key_block_size);
-	Memcpy(outbuf + keyblock->key_block_size,
+	uint32_t outsize = keyblock->keyblock_size + preamble->preamble_size;
+	void *outbuf = calloc(outsize, 1);
+	memcpy(outbuf, keyblock, keyblock->keyblock_size);
+	memcpy(outbuf + keyblock->keyblock_size,
 	       preamble, preamble->preamble_size);
 
 	if (vblock_size_ptr)
@@ -500,45 +499,63 @@ int WriteSomeParts(const char *outfile,
 /* Returns 0 on success */
 int VerifyKernelBlob(uint8_t *kernel_blob,
 		     uint64_t kernel_size,
-		     VbPublicKey *signpub_key,
+		     struct vb2_packed_key *signpub_key,
 		     const char *keyblock_outfile,
 		     uint64_t min_version)
 {
-	VbPublicKey *data_key;
-	RSAPublicKey *rsa;
 	int rv = -1;
 	uint64_t vmlinuz_header_size = 0;
 	uint64_t vmlinuz_header_address = 0;
 
-	if (0 != KeyBlockVerify(g_keyblock, g_keyblock->key_block_size,
-				signpub_key, (0 == signpub_key))) {
+	uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
+	struct vb2_workbuf wb;
+	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
+
+	if (signpub_key) {
+		struct vb2_public_key pubkey;
+		if (VB2_SUCCESS !=
+		    vb2_unpack_key(&pubkey,
+				   (uint8_t *)signpub_key,
+				   signpub_key->key_offset +
+				   signpub_key->key_size)) {
+			fprintf(stderr, "Error unpacking signing key.\n");
+			goto done;
+		}
+		if (VB2_SUCCESS !=
+		    vb2_verify_keyblock(g_keyblock, g_keyblock->keyblock_size,
+					&pubkey, &wb)) {
+			fprintf(stderr, "Error verifying key block.\n");
+			goto done;
+		}
+	} else if (VB2_SUCCESS !=
+		   vb2_verify_keyblock_hash(g_keyblock,
+					    g_keyblock->keyblock_size,
+					    &wb)) {
 		fprintf(stderr, "Error verifying key block.\n");
 		goto done;
 	}
 
 	printf("Key block:\n");
-	data_key = &g_keyblock->data_key;
+	struct vb2_packed_key *data_key = &g_keyblock->data_key;
 	printf("  Signature:           %s\n",
 	       signpub_key ? "valid" : "ignored");
-	printf("  Size:                0x%" PRIx64 "\n",
-	       g_keyblock->key_block_size);
-	printf("  Flags:               %" PRIu64 " ",
-	       g_keyblock->key_block_flags);
-	if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_0)
+	printf("  Size:                0x%x\n", g_keyblock->keyblock_size);
+	printf("  Flags:               %u ", g_keyblock->keyblock_flags);
+	if (g_keyblock->keyblock_flags & KEY_BLOCK_FLAG_DEVELOPER_0)
 		printf(" !DEV");
-	if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_DEVELOPER_1)
+	if (g_keyblock->keyblock_flags & KEY_BLOCK_FLAG_DEVELOPER_1)
 		printf(" DEV");
-	if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_0)
+	if (g_keyblock->keyblock_flags & KEY_BLOCK_FLAG_RECOVERY_0)
 		printf(" !REC");
-	if (g_keyblock->key_block_flags & KEY_BLOCK_FLAG_RECOVERY_1)
+	if (g_keyblock->keyblock_flags & KEY_BLOCK_FLAG_RECOVERY_1)
 		printf(" REC");
 	printf("\n");
-	printf("  Data key algorithm:  %" PRIu64 " %s\n", data_key->algorithm,
+	printf("  Data key algorithm:  %u %s\n", data_key->algorithm,
 	       (data_key->algorithm < kNumAlgorithms ?
 		algo_strings[data_key->algorithm] : "(invalid)"));
-	printf("  Data key version:    %" PRIu64 "\n", data_key->key_version);
+	printf("  Data key version:    %u\n", data_key->key_version);
 	printf("  Data key sha1sum:    %s\n",
-	       packed_key_sha1_string((struct vb2_packed_key *)data_key));
+	       packed_key_sha1_string(data_key));
 
 	if (keyblock_outfile) {
 		FILE *f = NULL;
@@ -548,7 +565,7 @@ int VerifyKernelBlob(uint8_t *kernel_blob,
 				keyblock_outfile, strerror(errno));
 			goto done;
 		}
-		if (1 != fwrite(g_keyblock, g_keyblock->key_block_size, 1, f)) {
+		if (1 != fwrite(g_keyblock, g_keyblock->keyblock_size, 1, f)) {
 			fprintf(stderr, "Can't write key block file %s: %s\n",
 				keyblock_outfile, strerror(errno));
 			fclose(f);
@@ -558,21 +575,24 @@ int VerifyKernelBlob(uint8_t *kernel_blob,
 	}
 
 	if (data_key->key_version < (min_version >> 16)) {
-		fprintf(stderr, "Data key version %" PRIu64
-			" is lower than minimum %" PRIu64 ".\n",
+		fprintf(stderr, "Data key version %u is lower than minimum "
+			"%" PRIu64 ".\n",
 			data_key->key_version, (min_version >> 16));
 		goto done;
 	}
 
-	rsa = PublicKeyToRSA(data_key);
-	if (!rsa) {
+	struct vb2_public_key pubkey;
+	if (VB2_SUCCESS !=
+	    vb2_unpack_key(&pubkey, (uint8_t *)data_key,
+			   data_key->key_offset + data_key->key_size)) {
 		fprintf(stderr, "Error parsing data key.\n");
 		goto done;
 	}
 
 	/* Verify preamble */
-	if (0 != VerifyKernelPreamble(g_preamble,
-				      g_preamble->preamble_size, rsa)) {
+	if (0 != vb2_verify_kernel_preamble(
+			(struct vb2_kernel_preamble *)g_preamble,
+			g_preamble->preamble_size, &pubkey, &wb)) {
 		fprintf(stderr, "Error verifying preamble.\n");
 		goto done;
 	}
@@ -621,8 +641,10 @@ int VerifyKernelBlob(uint8_t *kernel_blob,
 	}
 
 	/* Verify body */
-	if (0 != VerifyData(kernel_blob, kernel_size,
-			    &g_preamble->body_signature, rsa)) {
+	if (0 !=
+	    vb2_verify_data(kernel_blob, kernel_size,
+			    (struct vb2_signature *)&g_preamble->body_signature,
+			    &pubkey, &wb)) {
 		fprintf(stderr, "Error verifying kernel body.\n");
 		goto done;
 	}
@@ -728,17 +750,14 @@ uint8_t *CreateKernelBlob(uint8_t *vmlinuz_buf, uint64_t vmlinuz_size,
 
 enum futil_file_type ft_recognize_vblock1(uint8_t *buf, uint32_t len)
 {
-	int rv;
-
-	uint8_t workbuf[VB2_WORKBUF_RECOMMENDED_SIZE];
+	uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 	struct vb2_workbuf wb;
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 
 	/* Vboot 2.0 signature checks destroy the buffer, so make a copy */
 	uint8_t *buf2 = malloc(len);
 	memcpy(buf2, buf, len);
-
-	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf;
+	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf2;
 	if (VB2_SUCCESS != vb2_verify_keyblock_hash(keyblock, len, &wb)) {
 		free(buf2);
 		return FILE_TYPE_UNKNOWN;
@@ -759,18 +778,26 @@ enum futil_file_type ft_recognize_vblock1(uint8_t *buf, uint32_t len)
 
 	/* Followed by firmware preamble too? */
 	struct vb2_fw_preamble *pre2 = (struct vb2_fw_preamble *)(buf2 + more);
-	rv = vb2_verify_fw_preamble(pre2, len - more, &data_key, &wb);
-	free(buf2);
-	if (VB2_SUCCESS == rv)
+	if (VB2_SUCCESS ==
+	    vb2_verify_fw_preamble(pre2, len - more, &data_key, &wb)) {
+		free(buf2);
 		return FILE_TYPE_FW_PREAMBLE;
+	}
+
+	/* Recopy since firmware preamble check destroyed the buffer */
+	memcpy(buf2, buf, len);
 
 	/* Or maybe kernel preamble? */
-	RSAPublicKey *rsa = PublicKeyToRSA((VbPublicKey *)&keyblock->data_key);
-	VbKernelPreambleHeader *kern_preamble =
-		(VbKernelPreambleHeader *)(buf + more);
-	if (VBOOT_SUCCESS ==
-	    VerifyKernelPreamble(kern_preamble, len - more, rsa))
+	struct vb2_kernel_preamble *kern_preamble =
+		(struct vb2_kernel_preamble *)(buf2 + more);
+	if (VB2_SUCCESS ==
+	    vb2_verify_kernel_preamble(kern_preamble, len - more,
+				       &data_key, &wb)) {
+		free(buf2);
 		return FILE_TYPE_KERN_PREAMBLE;
+	}
+
+	free(buf2);
 
 	/* No, just keyblock */
 	return FILE_TYPE_KEYBLOCK;
@@ -778,25 +805,19 @@ enum futil_file_type ft_recognize_vblock1(uint8_t *buf, uint32_t len)
 
 enum futil_file_type ft_recognize_vb1_key(uint8_t *buf, uint32_t len)
 {
-	struct vb2_packed_key *pubkey = (struct vb2_packed_key *)buf;
-	VbPrivateKey key;
-	const unsigned char *start;
-
-	/* Maybe just a VbPublicKey? */
+	/* Maybe just a packed public key? */
+	const struct vb2_packed_key *pubkey = (struct vb2_packed_key *)buf;
 	if (packed_key_looks_ok(pubkey, len))
 		return FILE_TYPE_PUBKEY;
 
-	/* How about a VbPrivateKey? */
-	if (len < sizeof(key.algorithm))
+	/* How about a private key? */
+	if (len < sizeof(uint64_t))
 		return FILE_TYPE_UNKNOWN;
-
-	key.algorithm = *(typeof(key.algorithm) *)buf;
-	start = buf + sizeof(key.algorithm);
-	key.rsa_private_key = d2i_RSAPrivateKey(NULL, &start,
-						len - sizeof(key.algorithm));
-
-	if (key.rsa_private_key) {
-		RSA_free(key.rsa_private_key);
+	const unsigned char *start = buf + sizeof(uint64_t);
+	struct rsa_st *rsa =
+		d2i_RSAPrivateKey(NULL, &start, len - sizeof(uint64_t));
+	if (rsa) {
+		RSA_free(rsa);
 		return FILE_TYPE_PRIVKEY;
 	}
 

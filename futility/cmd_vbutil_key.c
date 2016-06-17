@@ -12,9 +12,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #include "cryptolib.h"
 #include "futility.h"
 #include "host_common.h"
+#include "host_key2.h"
 #include "util_misc.h"
 #include "vb1_helper.h"
 #include "vb2_common.h"
@@ -71,20 +73,18 @@ static void print_help(int argc, char *argv[])
 }
 
 /* Pack a .keyb file into a .vbpubk, or a .pem into a .vbprivk */
-static int Pack(const char *infile, const char *outfile, uint64_t algorithm,
-		uint64_t version)
+static int do_pack(const char *infile, const char *outfile, uint32_t algorithm,
+		   uint32_t version)
 {
-	VbPublicKey *pubkey;
-	VbPrivateKey *privkey;
-
 	if (!infile || !outfile) {
 		fprintf(stderr, "vbutil_key: Must specify --in and --out\n");
 		return 1;
 	}
 
-	pubkey = PublicKeyReadKeyb(infile, algorithm, version);
+	struct vb2_packed_key *pubkey =
+		vb2_read_packed_keyb(infile, algorithm, version);
 	if (pubkey) {
-		if (0 != PublicKeyWrite(outfile, pubkey)) {
+		if (0 != vb2_write_packed_key(outfile, pubkey)) {
 			fprintf(stderr, "vbutil_key: Error writing key.\n");
 			return 1;
 		}
@@ -92,9 +92,10 @@ static int Pack(const char *infile, const char *outfile, uint64_t algorithm,
 		return 0;
 	}
 
-	privkey = PrivateKeyReadPem(infile, algorithm);
+	struct vb2_private_key *privkey =
+		vb2_read_private_key_pem(infile, algorithm);
 	if (privkey) {
-		if (0 != PrivateKeyWrite(outfile, privkey)) {
+		if (VB2_SUCCESS != vb2_write_private_key(outfile, privkey)) {
 			fprintf(stderr, "vbutil_key: Error writing key.\n");
 			return 1;
 		}
@@ -107,49 +108,46 @@ static int Pack(const char *infile, const char *outfile, uint64_t algorithm,
 }
 
 /* Unpack a .vbpubk or .vbprivk */
-static int Unpack(const char *infile, const char *outfile)
+static int do_unpack(const char *infile, const char *outfile)
 {
-	VbPublicKey *pubkey;
-	VbPrivateKey *privkey;
+	struct vb2_packed_key *pubkey;
 
 	if (!infile) {
 		fprintf(stderr, "Need file to unpack\n");
 		return 1;
 	}
 
-	pubkey = PublicKeyRead(infile);
+	pubkey = vb2_read_packed_key(infile);
 	if (pubkey) {
 		printf("Public Key file:   %s\n", infile);
-		printf("Algorithm:         %" PRIu64 " %s\n", pubkey->algorithm,
+		printf("Algorithm:         %u %s\n", pubkey->algorithm,
 		       vb1_crypto_name(pubkey->algorithm));
-		printf("Key Version:       %" PRIu64 "\n", pubkey->key_version);
+		printf("Key Version:       %u\n", pubkey->key_version);
 		printf("Key sha1sum:       %s\n",
-		       packed_key_sha1_string((struct vb2_packed_key *)pubkey));
-		if (outfile) {
-			if (0 != PublicKeyWrite(outfile, pubkey)) {
-				fprintf(stderr,
-					"vbutil_key: Error writing key copy\n");
-				free(pubkey);
-				return 1;
-			}
+		       packed_key_sha1_string(pubkey));
+		if (outfile &&
+		    VB2_SUCCESS != vb2_write_packed_key(outfile, pubkey)) {
+			fprintf(stderr, "butil_key: Error writing key copy\n");
+			free(pubkey);
+			return 1;
 		}
 		free(pubkey);
 		return 0;
 	}
 
-	privkey = PrivateKeyRead(infile);
+	struct vb2_private_key *privkey = vb2_read_private_key(infile);
 	if (privkey) {
 		printf("Private Key file:  %s\n", infile);
-		printf("Algorithm:         %" PRIu64 " %s\n",
-		       privkey->algorithm,
-		       vb1_crypto_name(privkey->algorithm));
-		if (outfile) {
-			if (0 != PrivateKeyWrite(outfile, privkey)) {
-				fprintf(stderr,
-					"vbutil_key: Error writing key copy\n");
-				free(privkey);
-				return 1;
-			}
+
+		enum vb2_crypto_algorithm alg =
+			vb2_get_crypto_algorithm(privkey->hash_alg,
+						 privkey->sig_alg);
+		printf("Algorithm:         %u %s\n", alg, vb1_crypto_name(alg));
+		if (outfile &&
+		    VB2_SUCCESS != vb2_write_private_key(outfile, privkey)) {
+			fprintf(stderr,"vbutil_key: Error writing key copy\n");
+			free(privkey);
+			return 1;
 		}
 		free(privkey);
 		return 0;
@@ -167,8 +165,8 @@ static int do_vbutil_key(int argc, char *argv[])
 	char *outfile = NULL;
 	int mode = 0;
 	int parse_error = 0;
-	uint64_t version = 1;
-	uint64_t algorithm = kNumAlgorithms;
+	uint32_t version = 1;
+	uint32_t algorithm = VB2_ALG_COUNT;
 	char *e;
 	int i;
 
@@ -226,9 +224,9 @@ static int do_vbutil_key(int argc, char *argv[])
 
 	switch (mode) {
 	case OPT_MODE_PACK:
-		return Pack(infile, outfile, algorithm, version);
+		return do_pack(infile, outfile, algorithm, version);
 	case OPT_MODE_UNPACK:
-		return Unpack(infile, outfile);
+		return do_unpack(infile, outfile);
 	default:
 		printf("Must specify a mode.\n");
 		print_help(argc, argv);

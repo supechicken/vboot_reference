@@ -22,7 +22,8 @@
 static void VerifyPublicKeyToRSA(const VbPublicKey *orig_key)
 {
 	RSAPublicKey *rsa;
-	VbPublicKey *key = PublicKeyAlloc(orig_key->key_size, 0, 0);
+	VbPublicKey *key =
+		(VbPublicKey *)vb2_alloc_packed_key(orig_key->key_size, 0, 0);
 
 	PublicKeyCopy(key, orig_key);
 	key->algorithm = kNumAlgorithms;
@@ -44,14 +45,15 @@ static void VerifyPublicKeyToRSA(const VbPublicKey *orig_key)
 }
 
 static void VerifyDataTest(const VbPublicKey *public_key,
-                           const VbPrivateKey *private_key)
+                           const struct vb2_private_key *private_key)
 {
 	const uint8_t test_data[] = "This is some test data to sign.";
 	const uint64_t test_size = sizeof(test_data);
 	VbSignature *sig;
 	RSAPublicKey *rsa;
 
-	sig = CalculateSignature(test_data, test_size, private_key);
+	sig = (VbSignature *)vb2_calculate_signature(test_data, test_size,
+						     private_key);
 	TEST_PTR_NEQ(sig, 0, "VerifyData() calculate signature");
 
 	rsa = PublicKeyToRSA(public_key);
@@ -80,14 +82,16 @@ static void VerifyDataTest(const VbPublicKey *public_key,
 }
 
 static void VerifyDigestTest(const VbPublicKey *public_key,
-                             const VbPrivateKey *private_key)
+                             const struct vb2_private_key *private_key)
 {
 	const uint8_t test_data[] = "This is some other test data to sign.";
 	VbSignature *sig;
 	RSAPublicKey *rsa;
 	uint8_t digest[VB2_MAX_DIGEST_SIZE];
 
-	sig = CalculateSignature(test_data, sizeof(test_data), private_key);
+	sig = (VbSignature *)vb2_calculate_signature(test_data,
+						     sizeof(test_data),
+						     private_key);
 	rsa = PublicKeyToRSA(public_key);
 	TEST_SUCC(vb2_digest_buffer(test_data, sizeof(test_data),
 				    vb2_crypto_to_hash(public_key->algorithm),
@@ -111,17 +115,17 @@ static void VerifyDigestTest(const VbPublicKey *public_key,
 }
 
 static void ReSignKernelPreamble(VbKernelPreambleHeader *h,
-                                 const VbPrivateKey *key)
+                                 const struct vb2_private_key *key)
 {
-	VbSignature *sig = CalculateSignature((const uint8_t *)h,
-			h->preamble_signature.data_size, key);
+	struct vb2_signature *sig = vb2_calculate_signature(
+		(const uint8_t *)h, h->preamble_signature.data_size, key);
 
-	SignatureCopy(&h->preamble_signature, sig);
+	SignatureCopy(&h->preamble_signature, (VbSignature *)sig);
 	free(sig);
 }
 
 static void VerifyKernelPreambleTest(const VbPublicKey *public_key,
-                                     const VbPrivateKey *private_key)
+                                     const struct vb2_private_key *private_key)
 {
 	VbKernelPreambleHeader *hdr;
 	VbKernelPreambleHeader *h;
@@ -129,11 +133,12 @@ static void VerifyKernelPreambleTest(const VbPublicKey *public_key,
 	unsigned hsize;
 
 	/* Create a dummy signature */
-	VbSignature *body_sig = SignatureAlloc(56, 78);
+	struct vb2_signature *body_sig = vb2_alloc_signature(56, 78);
 
 	rsa = PublicKeyToRSA(public_key);
-	hdr = CreateKernelPreamble(0x1234, 0x100000, 0x300000, 0x4000, body_sig,
-				   0, 0, 0, 0, private_key);
+	hdr = (VbKernelPreambleHeader *)
+		vb2_create_kernel_preamble(0x1234, 0x100000, 0x300000, 0x4000,
+					   body_sig, 0, 0, 0, 0, private_key);
 	TEST_NEQ(hdr && rsa, 0, "VerifyKernelPreamble() prerequisites");
 	if (!hdr)
 		return;
@@ -219,20 +224,21 @@ int test_algorithm(int key_algorithm, const char *keys_dir)
 	char filename[1024];
 	int rsa_len = siglen_map[key_algorithm] * 8;
 
-	VbPrivateKey *private_key = NULL;
 	VbPublicKey *public_key = NULL;
 
 	printf("***Testing algorithm: %s\n", algo_strings[key_algorithm]);
 
 	sprintf(filename, "%s/key_rsa%d.pem", keys_dir, rsa_len);
-	private_key = PrivateKeyReadPem(filename, key_algorithm);
+	struct vb2_private_key *private_key =
+		vb2_read_private_key_pem(filename, key_algorithm);
 	if (!private_key) {
 		fprintf(stderr, "Error reading private_key: %s\n", filename);
 		return 1;
 	}
 
 	sprintf(filename, "%s/key_rsa%d.keyb", keys_dir, rsa_len);
-	public_key = PublicKeyReadKeyb(filename, key_algorithm, 1);
+	public_key = (VbPublicKey *)vb2_read_packed_keyb(filename,
+							 key_algorithm, 1);
 	if (!public_key) {
 		fprintf(stderr, "Error reading public_key: %s\n", filename);
 		return 1;
