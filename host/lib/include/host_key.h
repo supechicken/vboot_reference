@@ -12,6 +12,7 @@
 #include "vboot_struct.h"
 
 struct vb2_packed_key;
+struct vb2_private_key;
 
 typedef struct rsa_st RSA;
 
@@ -23,8 +24,10 @@ typedef struct VbPrivateKey {
 
 
 /* Read a private key from a .pem file.  Caller owns the returned pointer,
- * and must free it with PrivateKeyFree(). */
+ * and must free() it. */
 VbPrivateKey* PrivateKeyReadPem(const char* filename, uint64_t algorithm);
+struct vb2_private_key *vb2_read_private_key_pem(const char* filename,
+						 uint32_t algorithm);
 
 
 /* Free a private key. */
@@ -33,13 +36,12 @@ void PrivateKeyFree(VbPrivateKey* key);
 /* Write a private key to a file in .vbprivk format. */
 int PrivateKeyWrite(const char* filename, const VbPrivateKey* key);
 
-/* Read a privake key from a .vbprivk file.  Caller owns the returned
- * pointer, and must free it with PrivateKeyFree().
+/* Read a private key from a .vbprivk file.  Caller owns the returned
+ * pointer, and must free() it.
  *
  * Returns NULL if error. */
 VbPrivateKey* PrivateKeyRead(const char* filename);
-
-
+struct vb2_private_key *vb2_read_private_key(const char *filename);
 
 /* Allocate a new public key with space for a [key_size] byte key. */
 VbPublicKey* PublicKeyAlloc(uint64_t key_size, uint64_t algorithm,
