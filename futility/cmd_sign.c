@@ -60,49 +60,41 @@ static int no_opt_if(int expr, const char *optname)
 /* This wraps/signs a public key, producing a keyblock. */
 int ft_sign_pubkey(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
-	VbPublicKey *data_key = (VbPublicKey *)buf;
-	VbKeyBlockHeader *vblock;
+	struct vb2_packed_key *data_key = (struct vb2_packed_key *)buf;
+	struct vb2_keyblock *block;
 
 	if (sign_option.pem_signpriv) {
 		if (sign_option.pem_external) {
 			/* External signing uses the PEM file directly. */
-			vblock = KeyBlockCreate_external(
+			block = vb2_create_keyblock_external(
 				data_key,
 				sign_option.pem_signpriv,
-				sign_option.pem_algo, sign_option.flags,
+				sign_option.pem_algo,
+				sign_option.flags,
 				sign_option.pem_external);
 		} else {
-			sign_option.signprivate = PrivateKeyReadPem(
+			sign_option.signprivate = vb2_read_private_key_pem(
 				sign_option.pem_signpriv,
 				sign_option.pem_algo);
 			if (!sign_option.signprivate) {
-				fprintf(stderr,
-					"Unable to read PEM signing key: %s\n",
-					strerror(errno));
-				return 1;
-			}
-			sign_option.signprivate2 = vb2_read_private_key_pem(
-				sign_option.pem_signpriv,
-				sign_option.pem_algo);
-			if (!sign_option.signprivate2) {
 				fprintf(stderr,
  					"Unable to read PEM signing key: %s\n",
 					strerror(errno));
 				return 1;
 			}
-			vblock = KeyBlockCreate(data_key,
-						sign_option.signprivate,
-						sign_option.flags);
+			block = vb2_create_keyblock(data_key,
+						    sign_option.signprivate,
+						    sign_option.flags);
 		}
 	} else {
 		/* Not PEM. Should already have a signing key. */
-		vblock = KeyBlockCreate(data_key, sign_option.signprivate,
-					sign_option.flags);
+		block = vb2_create_keyblock(data_key, sign_option.signprivate,
+					    sign_option.flags);
 	}
 
 	/* Write it out */
 	return WriteSomeParts(sign_option.outfile,
-			      vblock, vblock->key_block_size,
+			      block, block->keyblock_size,
 			      NULL, 0);
 }
 
@@ -166,7 +158,7 @@ int ft_sign_kern_preamble(const char *name, uint8_t *buf, uint32_t len,
 {
 	uint8_t *kpart_data, *kblob_data, *vblock_data;
 	uint64_t kpart_size, kblob_size, vblock_size;
-	VbKeyBlockHeader *keyblock = NULL;
+	struct vb2_keyblock *keyblock = NULL;
 	VbKernelPreambleHeader *preamble = NULL;
 	int rv = 0;
 
@@ -258,7 +250,7 @@ int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
 	struct vb2_fw_preamble *preamble;
 	int rv;
 
-	body_sig = vb2_calculate_signature(buf, len, sign_option.signprivate2);
+	body_sig = vb2_calculate_signature(buf, len, sign_option.signprivate);
 	if (!body_sig) {
 		fprintf(stderr, "Error calculating body signature\n");
 		return 1;
@@ -268,7 +260,7 @@ int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
 			sign_option.version,
 			(struct vb2_packed_key *)sign_option.kernel_subkey,
 			body_sig,
-			sign_option.signprivate2,
+			sign_option.signprivate,
 			sign_option.flags);
 	if (!preamble) {
 		fprintf(stderr, "Error creating firmware preamble.\n");
@@ -278,7 +270,7 @@ int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
 
 	rv = WriteSomeParts(sign_option.outfile,
 			    sign_option.keyblock,
-			    sign_option.keyblock->key_block_size,
+			    sign_option.keyblock->keyblock_size,
 			    preamble, preamble->preamble_size);
 
 	free(preamble);
@@ -657,26 +649,21 @@ static int do_sign(int argc, char *argv[])
 				&longindex)) != -1) {
 		switch (i) {
 		case 's':
-			sign_option.signprivate = PrivateKeyRead(optarg);
+			sign_option.signprivate = vb2_read_private_key(optarg);
 			if (!sign_option.signprivate) {
-				fprintf(stderr, "Error reading %s\n", optarg);
-				errorcnt++;
-			}
-			sign_option.signprivate2 = vb2_read_private_key(optarg);
-			if (!sign_option.signprivate2) {
 				fprintf(stderr, "Error reading %s\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case 'b':
-			sign_option.keyblock = KeyBlockRead(optarg);
+			sign_option.keyblock = vb2_read_keyblock(optarg);
 			if (!sign_option.keyblock) {
 				fprintf(stderr, "Error reading %s\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case 'k':
-			sign_option.kernel_subkey = PublicKeyRead(optarg);
+			sign_option.kernel_subkey = vb2_read_packed_key(optarg);
 			if (!sign_option.kernel_subkey) {
 				fprintf(stderr, "Error reading %s\n", optarg);
 				errorcnt++;
@@ -691,7 +678,7 @@ static int do_sign(int argc, char *argv[])
 			}
 			break;
 		case 'B':
-			sign_option.devkeyblock = KeyBlockRead(optarg);
+			sign_option.devkeyblock = vb2_read_keyblock(optarg);
 			if (!sign_option.devkeyblock) {
 				fprintf(stderr, "Error reading %s\n", optarg);
 				errorcnt++;
@@ -1054,8 +1041,6 @@ done:
 
 	if (sign_option.signprivate)
 		free(sign_option.signprivate);
-	if (sign_option.signprivate2)
-		free(sign_option.signprivate2);
 	if (sign_option.keyblock)
 		free(sign_option.keyblock);
 	if (sign_option.kernel_subkey)

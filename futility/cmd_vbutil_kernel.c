@@ -25,6 +25,7 @@
 #include "host_common.h"
 #include "kernel_blob.h"
 #include "vb1_helper.h"
+#include "vb2_struct.h"
 
 static void Fatal(const char *format, ...)
 {
@@ -236,10 +237,10 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	int i = 0;
 	int errcount = 0;
 	int rv;
-	VbKeyBlockHeader *keyblock = NULL;
-	VbKeyBlockHeader *t_keyblock = NULL;
-	VbPrivateKey *signpriv_key = NULL;
-	VbPublicKey *signpub_key = NULL;
+	struct vb2_keyblock *keyblock = NULL;
+	struct vb2_keyblock *t_keyblock = NULL;
+	struct vb2_private_key *signpriv_key = NULL;
+	struct vb2_packed_key *signpub_key = NULL;
 	uint8_t *kpart_data = NULL;
 	uint64_t kpart_size = 0;
 	uint8_t *vmlinuz_buf = NULL;
@@ -395,14 +396,14 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!keyblock_file)
 			Fatal("Missing required keyblock file.\n");
 
-		t_keyblock = (VbKeyBlockHeader *)ReadFile(keyblock_file, 0);
+		t_keyblock = (struct vb2_keyblock *)ReadFile(keyblock_file, 0);
 		if (!t_keyblock)
 			Fatal("Error reading key block.\n");
 
 		if (!signprivkey_file)
 			Fatal("Missing required signprivate file.\n");
 
-		signpriv_key = PrivateKeyRead(signprivkey_file);
+		signpriv_key = vb2_read_private_key(signprivkey_file);
 		if (!signpriv_key)
 			Fatal("Error reading signing key.\n");
 
@@ -474,7 +475,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!signprivkey_file)
 			Fatal("Missing required signprivate file.\n");
 
-		signpriv_key = PrivateKeyRead(signprivkey_file);
+		signpriv_key = vb2_read_private_key(signprivkey_file);
 		if (!signpriv_key)
 			Fatal("Error reading signing key.\n");
 
@@ -517,8 +518,8 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			flags = preamble->flags;
 
 		if (keyblock_file) {
-			t_keyblock =
-				(VbKeyBlockHeader *)ReadFile(keyblock_file, 0);
+			t_keyblock = (struct vb2_keyblock *)
+				ReadFile(keyblock_file, 0);
 			if (!t_keyblock)
 				Fatal("Error reading key block.\n");
 		}
@@ -546,7 +547,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		/* Optional */
 
 		if (signpubkey_file) {
-			signpub_key = PublicKeyRead(signpubkey_file);
+			signpub_key = vb2_read_packed_key(signpubkey_file);
 			if (!signpub_key)
 				Fatal("Error reading public key.\n");
 		}
@@ -619,7 +620,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			// the keyblock and preamble sections.
 			vmlinuz_header_offset = vmlinuz_header_address -
 				preamble->body_load_address +
-				keyblock->key_block_size +
+				keyblock->keyblock_size +
 				preamble->preamble_size;
 			errcount |=
 				(1 != fwrite(kpart_data + vmlinuz_header_offset,

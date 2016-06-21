@@ -56,7 +56,6 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
 	GoogleBinaryBlockHeader *gbb = (GoogleBinaryBlockHeader *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
-	struct vb2_packed_key *pubkey;
 	BmpBlockHeader *bmp;
 	int retval = 0;
 	uint32_t maxlen = 0;
@@ -96,7 +95,8 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 	printf("  HWID:                  %s\n", buf + gbb->hwid_offset);
 	print_hwid_digest(gbb, "     digest:             ", "\n");
 
-	pubkey = (struct vb2_packed_key *)(buf + gbb->rootkey_offset);
+	struct vb2_packed_key *pubkey =
+		(struct vb2_packed_key *)(buf + gbb->rootkey_offset);
 	if (packed_key_looks_ok(pubkey, gbb->rootkey_size)) {
 		if (state) {
 			state->rootkey.offset =
@@ -264,7 +264,11 @@ static int fmap_sign_fw_main(const char *name, uint8_t *buf, uint32_t len,
 static int fmap_sign_fw_preamble(const char *name, uint8_t *buf, uint32_t len,
 				 void *data)
 {
-	VbKeyBlockHeader *key_block = (VbKeyBlockHeader *)buf;
+	uint8_t workbuf[VB2_WORKBUF_RECOMMENDED_SIZE];
+	struct vb2_workbuf wb;
+	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
+
+	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
 
 	/*
@@ -272,19 +276,20 @@ static int fmap_sign_fw_preamble(const char *name, uint8_t *buf, uint32_t len,
 	 * determine the size of the firmware body. Otherwise, we'll have to
 	 * just sign the whole region.
 	 */
-	if (VBOOT_SUCCESS != KeyBlockVerify(key_block, len, NULL, 1)) {
+	if (VB2_SUCCESS != vb2_verify_keyblock_hash(keyblock, len, &wb)) {
 		fprintf(stderr, "Warning: %s keyblock is invalid. "
 			"Signing the entire FW FMAP region...\n", name);
 		goto whatever;
 	}
 
-	RSAPublicKey *rsa = PublicKeyToRSA(&key_block->data_key);
-	if (!rsa) {
+	if (!packed_key_looks_ok(&keyblock->data_key,
+				 keyblock->data_key.key_offset +
+				 keyblock->data_key.key_size)) {
 		fprintf(stderr, "Warning: %s public key is invalid. "
 			"Signing the entire FW FMAP region...\n", name);
 		goto whatever;
 	}
-	uint32_t more = key_block->key_block_size;
+	uint32_t more = keyblock->keyblock_size;
 	struct vb2_fw_preamble *preamble =
 		(struct vb2_fw_preamble *)(buf + more);
 	uint32_t fw_size = preamble->body_signature.data_size;
@@ -323,7 +328,7 @@ whatever:
 static int write_new_preamble(struct bios_area_s *vblock,
 			      struct bios_area_s *fw_body,
 			      struct vb2_private_key *signkey,
-			      VbKeyBlockHeader *keyblock)
+			      struct vb2_keyblock *keyblock)
 {
 	struct vb2_signature *body_sig;
 	struct vb2_fw_preamble *preamble;
@@ -346,7 +351,7 @@ static int write_new_preamble(struct bios_area_s *vblock,
 	}
 
 	/* Write the new keyblock */
-	uint32_t more = keyblock->key_block_size;
+	uint32_t more = keyblock->keyblock_size;
 	memcpy(vblock->buf, keyblock, more);
 	/* and the new preamble */
 	memcpy(vblock->buf + more, preamble, preamble->preamble_size);
@@ -420,13 +425,13 @@ static int sign_bios_at_end(struct bios_state_s *state)
 					     sign_option.devkeyblock);
 	} else {
 		retval |= write_new_preamble(vblock_a, fw_a,
-					     sign_option.signprivate2,
+					     sign_option.signprivate,
 					     sign_option.keyblock);
 	}
 
 	/* FW B is always normal keys */
 	retval |= write_new_preamble(vblock_b, fw_b,
-				     sign_option.signprivate2,
+				     sign_option.signprivate,
 				     sign_option.keyblock);
 
 
