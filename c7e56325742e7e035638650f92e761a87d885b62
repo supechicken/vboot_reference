@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e0cc6ee_fc8d8542",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-06-22T21:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eda6a64_ceb1a3fb",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "c7e56325742e7e035638650f92e761a87d885b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee3e64a_21606ebb",
         "filename": "firmware/bdb/bdb_api.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-22T21:19:59Z",
       "side": 1,
       "message": "How does this differ from BDB_SECRET_TYPE?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "c7e56325742e7e035638650f92e761a87d885b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eed6e38_a27640f0",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-06-22T21:50:55Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "6ee3e64a_21606ebb",
       "range": {
         "startLine": 32,
         "startChar": 5,
