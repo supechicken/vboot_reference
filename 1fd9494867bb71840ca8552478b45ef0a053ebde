@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ec6ea30_c3b794e7",
+        "filename": "firmware/bdb/nvm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-22T18:32:24Z",
+      "side": 1,
+      "message": "We might want to do that in in a wrapper to aes256_encrypt(), so that every caller doesn\u0027t need to know about it.\n\nFlag for that should be in the BDB?\n\nOr actually, since changing the BDB implies a firmware update, we could make the decision at RW firmware build time.\n\nI suspect SP-RO will always use hardware acceleration, but since SP-RO is unchangeable code anyway, it would be falling back from hardware to mask ROM, which also isn\u0027t patchable.",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 44
+      },
+      "revId": "1fd9494867bb71840ca8552478b45ef0a053ebde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
