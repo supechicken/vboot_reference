@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0eda6a64_ceb1a3fb",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-22T21:19:59Z",
+      "side": 1,
+      "message": "Maybe add a flags field, and use one bit of it for this?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "c7e56325742e7e035638650f92e761a87d885b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ee3e64a_21606ebb",
+        "filename": "firmware/bdb/bdb_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-22T21:19:59Z",
+      "side": 1,
+      "message": "How does this differ from BDB_SECRET_TYPE?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "c7e56325742e7e035638650f92e761a87d885b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
