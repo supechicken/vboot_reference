@@ -56,8 +56,6 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
 	GoogleBinaryBlockHeader *gbb = (GoogleBinaryBlockHeader *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
-	struct vb2_packed_key *pubkey2;
-	VbPublicKey *pubkey;
 	BmpBlockHeader *bmp;
 	int retval = 0;
 	uint32_t maxlen = 0;
@@ -97,9 +95,9 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 	printf("  HWID:                  %s\n", buf + gbb->hwid_offset);
 	print_hwid_digest(gbb, "     digest:             ", "\n");
 
-	pubkey = (VbPublicKey *)(buf + gbb->rootkey_offset);
-	pubkey2 = (struct vb2_packed_key *)pubkey;
-	if (packed_key_looks_ok(pubkey2, gbb->rootkey_size)) {
+	struct vb2_packed_key *pubkey =
+		(struct vb2_packed_key *)(buf + gbb->rootkey_offset);
+	if (packed_key_looks_ok(pubkey, gbb->rootkey_size)) {
 		if (state) {
 			state->rootkey.offset =
 				state->area[BIOS_FMAP_GBB].offset +
@@ -109,15 +107,14 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 			state->rootkey.is_valid = 1;
 		}
 		printf("  Root Key:\n");
-		show_pubkey((struct vb2_packed_key *)pubkey, "    ");
+		show_pubkey(pubkey, "    ");
 	} else {
 		retval = 1;
 		printf("  Root Key:              <invalid>\n");
 	}
 
-	pubkey = (VbPublicKey *)(buf + gbb->recovery_key_offset);
-	pubkey2 = (struct vb2_packed_key *)pubkey;
-	if (packed_key_looks_ok(pubkey2, gbb->recovery_key_size)) {
+	pubkey = (struct vb2_packed_key *)(buf + gbb->recovery_key_offset);
+	if (packed_key_looks_ok(pubkey, gbb->recovery_key_size)) {
 		if (state) {
 			state->recovery_key.offset =
 				state->area[BIOS_FMAP_GBB].offset +
@@ -128,7 +125,7 @@ int ft_show_gbb(const char *name, uint8_t *buf, uint32_t len, void *data)
 			state->recovery_key.is_valid = 1;
 		}
 		printf("  Recovery Key:\n");
-		show_pubkey((struct vb2_packed_key *)pubkey, "    ");
+		show_pubkey(pubkey, "    ");
 	} else {
 		retval = 1;
 		printf("  Recovery Key:          <invalid>\n");
@@ -285,8 +282,9 @@ static int fmap_sign_fw_preamble(const char *name, uint8_t *buf, uint32_t len,
 		goto whatever;
 	}
 
-	RSAPublicKey *rsa = PublicKeyToRSA((VbPublicKey *)&keyblock->data_key);
-	if (!rsa) {
+	if (!packed_key_looks_ok(&keyblock->data_key,
+				 keyblock->data_key.key_offset +
+				 keyblock->data_key.key_size)) {
 		fprintf(stderr, "Warning: %s public key is invalid. "
 			"Signing the entire FW FMAP region...\n", name);
 		goto whatever;
@@ -427,13 +425,13 @@ static int sign_bios_at_end(struct bios_state_s *state)
 					     sign_option.devkeyblock);
 	} else {
 		retval |= write_new_preamble(vblock_a, fw_a,
-					     sign_option.signprivate2,
+					     sign_option.signprivate,
 					     sign_option.keyblock);
 	}
 
 	/* FW B is always normal keys */
 	retval |= write_new_preamble(vblock_b, fw_b,
-				     sign_option.signprivate2,
+				     sign_option.signprivate,
 				     sign_option.keyblock);
 
 
