@@ -49,10 +49,9 @@ struct vb2_fw_preamble *vb2_create_fw_preamble(
 	h->flags = flags;
 
 	/* Copy data key */
-	PublicKeyInit((VbPublicKey *)&h->kernel_subkey, kernel_subkey_dest,
-		      kernel_subkey->key_size);
-	PublicKeyCopy((VbPublicKey *)&h->kernel_subkey,
-		      (VbPublicKey *)kernel_subkey);
+	vb2_init_packed_key(&h->kernel_subkey, kernel_subkey_dest,
+			    kernel_subkey->key_size);
+	vb2_copy_packed_key(&h->kernel_subkey, kernel_subkey);
 
 	/* Copy body signature */
 	vb2_init_signature(&h->body_signature,
