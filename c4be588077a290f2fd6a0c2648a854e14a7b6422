@@ -131,6 +131,24 @@
       "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80c1cb6e_faf8a985",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-29T19:52:29Z",
+      "side": 1,
+      "message": "Oops.  Yes, we should __align that in ToT.  Though it doesn\u0027t matter in the Candy branch, because Baytrail doesn\u0027t care about unaligned 32-bit reads of the flags member.\n\nIn reality it\u0027s probably always aligned because it\u0027ll go on the stack following a 32-bit return address (and actually, ARM always has 64-bit stack alignment).  Even if it\u0027s shuffled with the other stack-local variables in this routine, they\u0027re all 32-bit.\n\nBut yes, I\u0027ll patch that in ToT.",
+      "parentUuid": "c0e903d1_056f980c",
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
