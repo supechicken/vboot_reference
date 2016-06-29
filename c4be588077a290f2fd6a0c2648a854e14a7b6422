@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e903d1_65a5bcb0",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "nit: Please expand the acronym so unfamiliar code readers get a sense for what this is.",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e903d1_c285a623",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "nit: align?",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 66
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e903d1_e282a218",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "nit: align?",
+      "range": {
+        "startLine": 43,
+        "startChar": 48,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e903d1_a5c3443e",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "nit: align with spaces for consistency?",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e903d1_25265418",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "This isn\u0027t really a rollback space in the sense that it\u0027s not for protection against version rollback. Should this be called \u0027FwmpSpace\u0027 or something similar? In fact, should it be in a different file like fwmp_index.h?",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e903d1_056f980c",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-06-29T18:39:12Z",
+      "side": 1,
+      "message": "Is there a potential alignment issue here on some architectures? Is \u0027buf\u0027 guaranteed to be allocated on a 4-byte boundary?",
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
