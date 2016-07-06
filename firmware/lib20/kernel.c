@@ -143,6 +143,10 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	 * we're loading the entire keyblock instead of just the piece after
 	 * the header.  That means we re-read the header.  But that's a tiny
 	 * amount of data, and it makes the code much more straightforward.
+	 *
+	 * TODO(rspangler): But this works poorly if the kernel is stored on
+	 * a block device where vb2ex_read_resource() doesn't do caching, or
+	 * on an input stream where we can't go back.
 	 */
 	kb = vb2_workbuf_realloc(&wb, sizeof(*kb), block_size);
 	if (!kb)
@@ -199,6 +203,8 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 
 	sd->kernel_version = kb->data_key.key_version << 16;
 
+	/* TODO(rspangler): Support checking FWMP developer kernel key hash */
+
 	/*
 	 * At this point, we've checked everything.  The kernel keyblock is at
 	 * least self-consistent, and has either a valid signature or a valid
@@ -243,15 +249,13 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
-			       uint32_t size,
-			       const struct vb2_public_key *key,
-			       const struct vb2_workbuf *wb)
+int vb2_check_kernel_preamble(const struct vb2_kernel_preamble *preamble,
+			      uint32_t size)
 {
-	struct vb2_signature *sig = &preamble->preamble_signature;
+	const struct vb2_signature *sig = &preamble->preamble_signature;
 	uint32_t min_size = EXPECTED_VB2_KERNEL_PREAMBLE_2_0_SIZE;
 
-	VB2_DEBUG("Verifying kernel preamble.\n");
+	VB2_DEBUG("Checking kernel preamble.\n");
 
 	/* Make sure it's even safe to look at the struct */
 	if(size < min_size) {
@@ -288,11 +292,6 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 	if (preamble->preamble_size < sig->data_size) {
 		VB2_DEBUG("Signature calculated past end of the block\n");
 		return VB2_ERROR_PREAMBLE_SIGNED_TOO_MUCH;
-	}
-
-	if (vb2_verify_data((const uint8_t *)preamble, size, sig, key, wb)) {
-		VB2_DEBUG("Preamble signature validation failed\n");
-		return VB2_ERROR_PREAMBLE_SIG_INVALID;
 	}
 
 	/* Verify we signed enough data */
@@ -345,6 +344,30 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 			VB2_DEBUG("Vmlinuz header off end of signed data\n");
 			return VB2_ERROR_PREAMBLE_VMLINUZ_HEADER_OUTSIDE;
 		}
+	}
+
+	/* Success */
+	return VB2_SUCCESS;
+}
+
+int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
+			       uint32_t size,
+			       const struct vb2_public_key *key,
+			       const struct vb2_workbuf *wb)
+{
+	struct vb2_signature *sig = &preamble->preamble_signature;
+
+	VB2_DEBUG("Verifying kernel preamble.\n");
+
+	/* Sanity-check the preamble first */
+	int rv = vb2_check_kernel_preamble(preamble, size);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	/* Verify the preamble signature */
+	if (vb2_verify_data((const uint8_t *)preamble, size, sig, key, wb)) {
+		VB2_DEBUG("Preamble signature validation failed\n");
+		return VB2_ERROR_PREAMBLE_SIG_INVALID;
 	}
 
 	/* Success */
