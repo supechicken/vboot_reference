@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "9d4cd615_8a3053f6",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-06T21:54:45Z",
+      "side": 1,
+      "message": "Is the tpm_code lost at this point? Should it be logged?",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d4cd615_4a3a4bd6",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-06T21:54:45Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d4cd615_1ed24931",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
