@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d4cd615_0a9a03df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-06T22:01:32Z",
+      "side": 1,
+      "message": "Another option would be to pre-calculate the SHA256 hashes of the inputs instead. Padding SHA1 output seems odd.\n\nAlso, for PCR1 we\u0027ll need to not truncate the SHA256 value to 20 bytes like we do for TPM 1.2 -- or is this already done?",
+      "revId": "57f26d7535742ff845194138eca2b9af9c5e3072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
