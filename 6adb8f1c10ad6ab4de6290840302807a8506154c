@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d4cd615_f55d3867",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-06T22:39:38Z",
+      "side": 1,
+      "message": "tpm_process_command reports the return value along with the command code to the console.\n\nThis is pretty much as much logging as we can do at this point, or did you have something else in mind?",
+      "parentUuid": "9d4cd615_8a3053f6",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d4cd615_4a3a4bd6",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
@@ -53,6 +77,24 @@
       "writtenOn": "2016-07-06T16:39:40Z",
       "side": 1,
       "message": "Darren, I noticed that once this command is executed the tm2 phEnable variable is indeed set to 0 (which is expected), but the nvram spaces become unavailable (error 0x185 is returned) - do you know what could be missing?",
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d4cd615_d55cbc69",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-06T22:39:38Z",
+      "side": 1,
+      "message": "I am going to try changing the define space attributes when these spaces are created, as discussed offline.",
+      "parentUuid": "9d4cd615_1ed24931",
       "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
