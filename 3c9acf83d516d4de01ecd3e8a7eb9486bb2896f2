@@ -22,6 +22,30 @@
       "revId": "3c9acf83d516d4de01ecd3e8a7eb9486bb2896f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d4cd615_8f5b850e",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-06T20:48:50Z",
+      "side": 1,
+      "message": "ah, good catch, a patch is coming.",
+      "parentUuid": "9d4cd615_4f881dd2",
+      "range": {
+        "startLine": 423,
+        "startChar": 13,
+        "endLine": 423,
+        "endChar": 17
+      },
+      "revId": "3c9acf83d516d4de01ecd3e8a7eb9486bb2896f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
