@@ -173,7 +173,7 @@ int vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 			     const struct vb2_workbuf *wb);
 
 /**
- * Check the sanity of a firmware preamble using a public key.
+ * Verify a firmware preamble using a public key.
  *
  * The signature in the preamble is destroyed during the check.
  *
@@ -189,7 +189,22 @@ int vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
 			   const struct vb2_workbuf *wb);
 
 /**
- * Check the sanity of a kernel preamble using a public key.
+ * Check the sanity of a kernel preamble structure.
+ *
+ * Verifies all the header fields except for body_load_address (which must be
+ * verified by the caller, since valid addresses are architecture-dependent).
+ * Other addresses are only checked against body_load_address to ensure that
+ * they would be inside the signed kernel data.
+ *
+ * @param preamble     	Preamble to verify
+ * @param size		Size of preamble buffer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+int vb2_check_kernel_preamble(const struct vb2_kernel_preamble *preamble,
+			      uint32_t size);
+
+/**
+ * Verify a kernel preamble using a public key.
  *
  * The signature in the preamble is destroyed during the check.
  *
