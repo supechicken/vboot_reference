@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d4cd615_1ed24931",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-06T16:39:40Z",
+      "side": 1,
+      "message": "Darren, I noticed that once this command is executed the tm2 phEnable variable is indeed set to 0 (which is expected), but the nvram spaces become unavailable (error 0x185 is returned) - do you know what could be missing?",
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
