@@ -247,7 +247,15 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 	return TPM_E_CORRUPTED_STATE;
 }
 
-#ifndef TPM2_MODE
+#ifdef TPM2_MODE
+/* TODO: implement OneTimeInitializeTPM for TPM2 */
+uint32_t OneTimeInitializeTPM(RollbackSpaceFirmware *rsf,
+                              RollbackSpaceKernel *rsk)
+{
+	VBDEBUG(("TPM: One-time initialization is not implemented\n"));
+	return TPM_SUCCESS;
+}
+#else
 uint32_t OneTimeInitializeTPM(RollbackSpaceFirmware *rsf,
                               RollbackSpaceKernel *rsk)
 {

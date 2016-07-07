@@ -25,6 +25,8 @@
 /* TCG Spec defined, verify for TPM2. */
 #define TPM_E_BADINDEX              ((uint32_t) 0x00000002)
 #define TPM_E_INVALID_POSTINIT      ((uint32_t) 0x00000026)
+#define TPM_E_BADTAG                ((uint32_t) 0x00000030)
+#define TPM_E_IOERROR               ((uint32_t) 0x00000031)
 #define TPM_E_MAXNVWRITES           ((uint32_t) 0x00000048)
 
 #define HR_SHIFT               24
@@ -120,5 +122,13 @@ struct tpm2_response {
 /* Temp stubs to quiet down compilation errors. */
 typedef struct {} TPM_PERMANENT_FLAGS;
 typedef struct {} TPM_STCLEAR_FLAGS;
+
+/* TEMP TODO: For TPM2 certain properties must be received using
+ * TPM2_GetCapability instead of being hardcoded as they are now:
+ * TPM_MAX_COMMAND_SIZE -> use TPM_PT_MAX_COMMAND_SIZE for TPM2.
+ * TPM_PCR_DIGEST -> use TPM_PT_MAX_DIGEST for TPM2.
+ */
+#define TPM_MAX_COMMAND_SIZE	4096
+#define TPM_PCR_DIGEST		20
 
 #endif  /* ! __VBOOT_REFERENCE_FIRMWARE_INCLUDE_TPM2_TSS_CONSTANTS_H */

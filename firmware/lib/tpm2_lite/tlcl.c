@@ -42,6 +42,67 @@ static struct tpm2_response *tpm_process_command(TPM_CC command,
 	return response;
 }
 
+uint32_t TlclLibInit(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclLibClose(void)
+{
+        VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+        return TPM_SUCCESS;
+}
+
+uint32_t TlclSendReceive(const uint8_t *request, uint8_t *response,
+                         int max_length)
+{
+        VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+        return TPM_SUCCESS;
+}
+
+int TlclPacketSize(const uint8_t *packet)
+{
+        VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+        return 0;
+}
+
+uint32_t TlclStartup(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclSaveState(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclResume(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclSelfTestFull(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclContinueSelfTest(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+int32_t TlclDefineSpace(uint32_t index, uint32_t perm, uint32_t size)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
 /**
  * Issue a ForceClear.  The TPM error code is returned.
  */
@@ -63,6 +124,39 @@ uint32_t TlclSetEnable(void)
 	return TPM_SUCCESS;
 }
 
+uint32_t TlclClearEnable(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+int TlclIsOwned(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return 0;
+}
+
+uint32_t TlclGetFlags(uint8_t *disable, uint8_t *deactivated,
+                      uint8_t *nvlocked)
+{
+	*disable = 0;
+	*deactivated = 0;
+	*nvlocked = 0;
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclSetGlobalLock(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclExtend(int pcr_num, const uint8_t *in_digest, uint8_t *out_digest)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
 
 /**
  * Get the permission bits for the NVRAM space with |index|.
@@ -70,6 +164,25 @@ uint32_t TlclSetEnable(void)
 uint32_t TlclGetPermissions(uint32_t index, uint32_t *permissions)
 {
 	*permissions = 0;
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS *pflags)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclGetOwnership(uint8_t *owned)
+{
+	*owned = 0;
 	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
 	return TPM_SUCCESS;
 }
@@ -104,6 +217,12 @@ static uint32_t tlcl_disable_platform_hierarchy(void)
 	return TPM_SUCCESS;
 }
 
+uint32_t TlclSetNvLocked(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
 /**
  * Turn off physical presence and locks it off until next reboot.  The TPM
  * error code is returned.
@@ -125,6 +244,30 @@ uint32_t TlclLockPhysicalPresence(void)
 		rv = tlcl_disable_platform_hierarchy();
 
 	return rv;
+}
+
+uint32_t TlclAssertPhysicalPresence(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+int32_t TlclPhysicalPresenceCMDEnable(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclFinalizePhysicalPresence(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclAssertPhysicalPresenceResult(void)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
 }
 
 uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
@@ -182,5 +325,30 @@ uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length)
 	if (!response)
 		return TPM_E_WRITE_FAILURE;
 
+	return TPM_SUCCESS;
+}
+
+int32_t TlclPCRRead(uint32_t index, void *data, uint32_t length)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclWriteLock(uint32_t index)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclReadLock(uint32_t index)
+{
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclGetRandom(uint8_t *data, uint32_t length, uint32_t *size)
+{
+	*size = 0;
+	VBDEBUG(("%s called, NOT YET IMPLEMENTED\n", __func__));
 	return TPM_SUCCESS;
 }
