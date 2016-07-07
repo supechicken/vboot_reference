@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9da69626_6bb38161",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-07T13:52:15Z",
+      "side": 1,
+      "message": "I think this is not right since we\u0027re not requiring PPREAD. This should be the index itself, see TPMI_RH_NV_AUTH in Part 2 of the spec.",
+      "range": {
+        "startLine": 266,
+        "startChar": 28,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d4cd615_8a3053f6",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "tpm_process_command reports the return value along with the command code to the console.\n\nThis is pretty much as much logging as we can do at this point, or did you have something else in mind?",
       "parentUuid": "9d4cd615_8a3053f6",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9da69626_8b998dec",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-07T13:52:15Z",
+      "side": 1,
+      "message": "That\u0027s fine, I think.",
+      "parentUuid": "9d4cd615_f55d3867",
       "range": {
         "startLine": 86,
         "startChar": 9,
@@ -113,6 +160,24 @@
       "side": 1,
       "message": "I did not spend much time looking at the attribute combinations, but so far has not succeeded, will try some more, but would be interested in your ideas.",
       "parentUuid": "9d4cd615_d55cbc69",
+      "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9da69626_cba39514",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-07T13:52:15Z",
+      "side": 1,
+      "message": "If the space has AUTHREAD and not PPREAD set and the target of the auth is the index itself (not RH_PLATFORM), reading should be fine.",
+      "parentUuid": "bd2a7a12_da7b855e",
       "revId": "6adb8f1c10ad6ab4de6290840302807a8506154c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
