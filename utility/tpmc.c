@@ -168,11 +168,13 @@ static uint32_t HandlerWrite(void) {
   }
 
   if (size == 0) {
+#ifndef TPM2_MODE
     if (index == TPM_NV_INDEX_LOCK) {
       fprintf(stderr, "This would set the nvLocked bit. "
               "Use \"tpmc setnv\" instead.\n");
       exit(OTHER_ERROR);
     }
+#endif
     printf("warning: zero-length write\n");
   } else {
     printf("writing %d byte%s\n", size, size > 1 ? "s" : "");
@@ -310,6 +312,18 @@ static uint32_t HandlerGetRandom(void) {
   return result;
 }
 
+/* TEMP: stubs for permanent and ST_CLEAR flags for TPM2 */
+#ifdef TPM2_MODE
+static uint32_t HandlerGetPermanentFlags(void) {
+  fprintf(stderr, "getpermanentflags not implemented for TPM2\n");
+  return OTHER_ERROR;
+}
+
+static uint32_t HandlerGetSTClearFlags(void) {
+  fprintf(stderr, "getstclearflags not implemented for TPM2\n");
+  return OTHER_ERROR;
+}
+#else
 static uint32_t HandlerGetPermanentFlags(void) {
   TPM_PERMANENT_FLAGS pflags;
   uint32_t result = TlclGetPermanentFlags(&pflags);
@@ -354,7 +368,7 @@ static uint32_t HandlerGetSTClearFlags(void) {
   }
   return result;
 }
-
+#endif /* TPM2_MODE */
 
 static uint32_t HandlerSendRaw(void) {
   uint8_t request[4096];
