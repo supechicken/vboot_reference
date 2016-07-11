@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab8eca5_e9c5cc45",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-11T18:51:51Z",
+      "side": 1,
+      "message": "the TODOs added to the code are supposed to mention the name of the person to take care of them, for instance \"TODO(apronin)\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "03aa3dc65fbc552778fef5156920b9c5eda34578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab8eca5_29f52489",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-11T18:51:51Z",
+      "side": 1,
+      "message": "I was under impression that we\u0027re moving away from SHA1 and digests should be for sha256 and as such - 32 bytes in size.",
+      "revId": "03aa3dc65fbc552778fef5156920b9c5eda34578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab8eca5_a9411498",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-11T18:51:51Z",
+      "side": 1,
+      "message": "do we really want the one time initialize function run in user space?\n\nHow about we make sure that the RO/RW firmware deal with that, in case there is an uninitialized TPM, and do not require user space apps deal with it.\n\nWe still could update RW firmware should the one time initialization requirements change.",
+      "revId": "03aa3dc65fbc552778fef5156920b9c5eda34578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab8eca5_690d5c8f",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-11T18:51:51Z",
+      "side": 1,
+      "message": "self test should also be run (and is being run) by the firmware I think.",
+      "revId": "03aa3dc65fbc552778fef5156920b9c5eda34578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
