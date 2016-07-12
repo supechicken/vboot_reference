@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2a64c0_97d2c7db",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T23:10:51Z",
+      "side": 1,
+      "message": "this comment should go after line 833",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 37
+      },
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2a64c0_37f67b67",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T23:10:51Z",
+      "side": 1,
+      "message": "this is set to 1E in the tpm2 spec",
+      "range": {
+        "startLine": 28,
+        "startChar": 48,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2a64c0_579a0f2f",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T23:10:51Z",
+      "side": 1,
+      "message": "this is not in the spec, as an observation - we should realign these values with the spec.",
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2a64c0_d7b6ff9a",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T23:10:51Z",
+      "side": 1,
+      "message": "are all these stubs really necessary? There must be  TlclSendReceive somewhere - otherwise how you communicate with the tpm?",
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2a64c0_5755ef0d",
+        "filename": "firmware/linktest/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T23:10:51Z",
+      "side": 1,
+      "message": "why change order of the functions which are compiled at all times? Makes the patch bigger than it could be.",
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
