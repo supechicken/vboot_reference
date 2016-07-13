@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "5a2a64c0_1a4a7b99",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-13T01:28:44Z",
+      "side": 1,
+      "message": "Yes, these are just temporary stubs. TPM_E_BADINDEX and TPM_E_INVALID_POSTINIT are also from 1.2, not 2.0. These all should be updated. But BADTAG is 1E in any case, you are right.",
+      "parentUuid": "5a2a64c0_579a0f2f",
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2a64c0_d7b6ff9a",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
@@ -76,6 +94,24 @@
       "writtenOn": "2016-07-12T23:10:51Z",
       "side": 1,
       "message": "are all these stubs really necessary? There must be  TlclSendReceive somewhere - otherwise how you communicate with the tpm?",
+      "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2a64c0_5a9fd31d",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-13T01:28:44Z",
+      "side": 1,
+      "message": "That\u0027s part of the external API, and that\u0027s what utilities like tpmc use for sending raw commands. Internally we use tpm_process_command(), so TlclSendReceive will call it.",
+      "parentUuid": "5a2a64c0_d7b6ff9a",
       "revId": "549b2130778d245c36365bff4dc82cfa16afc28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
