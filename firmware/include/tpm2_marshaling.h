@@ -16,6 +16,8 @@
  * Given a structure containing a TPM2 command, serialize the structure for
  * sending it to the TPM.
  *
+ * Use plathorm authorization.
+ *
  * @command: code of the TPM2 command to marshal
  * @tpm_command_body: a pointer to the command specific structure
  * @buffer: buffer where command is marshaled to
@@ -26,6 +28,29 @@
  */
 int tpm_marshal_command(TPM_CC command, void *tpm_command_body,
 			void *buffer, int buffer_size);
+
+/**
+ * tpm_marshal_command_auth
+ *
+ * Given a structure containing a TPM2 command, serialize the structure for
+ * sending it to the TPM.
+ *
+ * Use authorization defined by use_platform parameter.
+ *
+ * @command: code of the TPM2 command to marshal
+ * @tpm_command_body: a pointer to the command specific structure
+ * @buffer: buffer where command is marshaled to
+ * @buffer_size: size of the buffer
+ * @use_platform: 1 - use platform auth, 0 - use empty password auth
+ *                for the following commands:
+ *                - TPM2_NV_Read
+ *                For other commands use platform authorization.
+ *
+ * Returns number of bytes placed in the buffer, or -1 on error.
+ *
+ */
+int tpm_marshal_command_auth(TPM_CC command, void *tpm_command_body,
+			     void *buffer, int buffer_size, int use_platform);
 
 /**
  * tpm_unmarshal_response

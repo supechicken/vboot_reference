@@ -11,16 +11,20 @@
 #include "tpm2_marshaling.h"
 #include "utility.h"
 
-static struct tpm2_response *tpm_process_command(TPM_CC command,
-						 void *command_body)
+#define tpm_process_command(cmd, body) \
+		tpm_process_command_auth(cmd, body, 1)
+static struct tpm2_response *tpm_process_command_auth(TPM_CC command,
+						      void *command_body,
+						      int use_platform)
 {
 	/* Command/response buffer. */
 	static uint8_t cr_buffer[TPM_BUFFER_SIZE];
 	uint32_t out_size, in_size;
 	struct tpm2_response *response;
 
-	out_size = tpm_marshal_command(command, command_body,
-				       cr_buffer, sizeof(cr_buffer));
+	out_size = tpm_marshal_command_auth(command, command_body,
+					    cr_buffer, sizeof(cr_buffer),
+					    use_platform);
 	if (out_size < 0) {
 		VBDEBUG(("command %#x, cr size %d\n",
 			 command, out_size));
@@ -230,7 +234,8 @@ uint32_t TlclLockPhysicalPresence(void)
 	return rv;
 }
 
-uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
+uint32_t TlclReadAuth(uint32_t index, void* data,
+		      uint32_t length, int use_platform)
 {
 	struct tpm2_nv_read_cmd nv_readc;
 	struct tpm2_response *response;
@@ -240,7 +245,8 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	nv_readc.nvIndex = HR_NV_INDEX + index;
 	nv_readc.size = length;
 
-	response = tpm_process_command(TPM2_NV_Read, &nv_readc);
+	response = tpm_process_command_auth(TPM2_NV_Read,
+					    &nv_readc, use_platform);
 
 	/* Need to map tpm error codes into internal values. */
 	if (!response)
@@ -266,6 +272,11 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	Memcpy(data, response->nvr.buffer.t.buffer, length);
 
 	return TPM_SUCCESS;
+}
+
+uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
+{
+	return TlclReadAuth(index, data, length, 1);
 }
 
 uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length)

@@ -257,13 +257,14 @@ static void marshal_nv_write(void **buffer,
 	marshal_u16(buffer, command_body->offset, buffer_space);
 }
 
-static void marshal_nv_read(void **buffer,
-			    struct tpm2_nv_read_cmd *command_body,
-			    int *buffer_space)
+static void marshal_nv_read_auth(uint32_t auth,
+				 void **buffer,
+				 struct tpm2_nv_read_cmd *command_body,
+				 int *buffer_space)
 {
 	struct tpm2_session_header session_header;
 
-	marshal_TPM_HANDLE(buffer, TPM_RH_PLATFORM, buffer_space);
+	marshal_TPM_HANDLE(buffer, auth, buffer_space);
 	marshal_TPM_HANDLE(buffer, command_body->nvIndex, buffer_space);
 	Memset(&session_header, 0, sizeof(session_header));
 	session_header.session_handle = TPM_RS_PW;
@@ -271,6 +272,22 @@ static void marshal_nv_read(void **buffer,
 	tpm_tag = TPM_ST_SESSIONS;
 	marshal_u16(buffer, command_body->size, buffer_space);
 	marshal_u16(buffer, command_body->offset, buffer_space);
+}
+
+static void marshal_nv_read_platform(void **buffer,
+				     struct tpm2_nv_read_cmd *command_body,
+				     int *buffer_space)
+{
+	return marshal_nv_read_auth(TPM_RH_PLATFORM, buffer,
+				    command_body, buffer_space);
+}
+
+static void marshal_nv_read_emptypwd(void **buffer,
+				     struct tpm2_nv_read_cmd *command_body,
+				     int *buffer_space)
+{
+	return marshal_nv_read_auth(command_body->nvIndex, buffer,
+				    command_body, buffer_space);
 }
 
 static void marshal_nv_write_lock(void **buffer,
@@ -304,8 +321,8 @@ static void marshal_hierarchy_control(void **buffer,
 	marshal_u8(buffer, command_body->state, buffer_space);
 }
 
-int tpm_marshal_command(TPM_CC command, void *tpm_command_body,
-			void *buffer, int buffer_size)
+int tpm_marshal_command_auth(TPM_CC command, void *tpm_command_body,
+			     void *buffer, int buffer_size, int use_platform)
 {
 	void *cmd_body = (uint8_t *)buffer + sizeof(struct tpm_header);
 	int max_body_size = buffer_size - sizeof(struct tpm_header);
@@ -317,7 +334,12 @@ int tpm_marshal_command(TPM_CC command, void *tpm_command_body,
 	switch (command) {
 
 	case TPM2_NV_Read:
-		marshal_nv_read(&cmd_body, tpm_command_body, &body_size);
+		if (use_platform)
+			marshal_nv_read_platform(&cmd_body,
+						 tpm_command_body, &body_size);
+		else
+			marshal_nv_read_emptypwd(&cmd_body,
+						 tpm_command_body, &body_size);
 		break;
 
 	case TPM2_NV_Write:
@@ -352,6 +374,13 @@ int tpm_marshal_command(TPM_CC command, void *tpm_command_body,
 	}
 
 	return body_size;
+}
+
+int tpm_marshal_command(TPM_CC command, void *tpm_command_body,
+			void *buffer, int buffer_size)
+{
+	return tpm_marshal_command_auth(command, tpm_command_body,
+					buffer, buffer_size, 1);
 }
 
 struct tpm2_response *tpm_unmarshal_response(TPM_CC command,

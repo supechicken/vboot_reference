@@ -93,6 +93,14 @@ uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length);
 uint32_t TlclRead(uint32_t index, void *data, uint32_t length);
 
 /**
+ * Read [length] bytes from space at [index] into [data]. Use platform
+ * authorization if [use_platform] is 1, and empty password authorization
+ * otherwise. The TPM error code is returned.
+ */
+uint32_t TlclReadAuth(uint32_t index, void* data,
+                      uint32_t length, int use_platform);
+
+/**
  * Read PCR at [index] into [data].  [length] must be TPM_PCR_DIGEST or
  * larger. The TPM error code is returned.
  */

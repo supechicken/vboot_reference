@@ -103,11 +103,11 @@ uint8_t ErrorCheck(uint32_t result, const char* cmd) {
 
 /* Handler functions.  These wouldn't exist if C had closures.
  */
-/* TODO(apronin): stub for selecte flags for TPM2 */
 #ifdef TPM2_MODE
+/* TODO(apronin): stub for selected flags for TPM2 */
 static uint32_t HandlerGetFlags(void) {
   fprintf(stderr, "getflags not implemented for TPM2\n");
-  return OTHER_ERROR;
+  exit(OTHER_ERROR);
 }
 #else
 static uint32_t HandlerGetFlags(void) {
@@ -252,7 +252,11 @@ static uint32_t HandlerRead(void) {
     fprintf(stderr, "size of read (0x%x) is too big\n", size);
     exit(OTHER_ERROR);
   }
+#ifdef TPM2_MODE
+  result = TlclReadAuth(index, value, size, 0);
+#else
   result = TlclRead(index, value, size);
+#endif
   if (result == 0 && size > 0) {
     for (i = 0; i < size - 1; i++) {
       printf("%x ", value[i]);
@@ -450,7 +454,10 @@ command_record command_table[] = {
 #endif
   { "lockphysicalpresence", "pplock", "lock (turn off) PP until reboot",
     TlclLockPhysicalPresence },
-#ifndef TPM2_MODE
+#ifdef TPM2_MODE
+  { "setbgloballock", "block", "set rollback protection lock until reboot",
+    TlclLockPhysicalPresence },
+#else
   { "setbgloballock", "block", "set the bGlobalLock until reboot",
     TlclSetGlobalLock },
 #endif
