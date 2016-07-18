@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a3d5fbd_7084506e",
+        "filename": "firmware/include/tpm2_marshaling.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T23:17:13Z",
+      "side": 1,
+      "message": "truth be told one can\u0027t enable platform hierarchy once it is disabled, so there is no need to pass this flag.",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a03f0c0_5ea57316",
         "filename": "firmware/include/tpm2_marshaling.h",
         "patchSetId": 2
@@ -43,6 +66,40 @@
         "endLine": 58,
         "endChar": 28
       },
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_308c8884",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T23:17:13Z",
+      "side": 1,
+      "message": "I just had this thought all of a sudden:\n\nwhen this is compiled for firmware, it should always use RH_PLATFORM, as it does.\n\nWhen this is compiled for userland, maybe the way to do this is just to inquire if the current mode is recovery or not. Use platform is the device is in recovery more and empty password otherwise.",
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_f0504009",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T23:17:13Z",
+      "side": 1,
+      "message": "what if the device booted in recovery mode? In that case platform hierarchy is still enabled in the TPM.",
       "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
