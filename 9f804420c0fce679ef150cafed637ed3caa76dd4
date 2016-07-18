@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a03f0c0_5ea57316",
+        "filename": "firmware/include/tpm2_marshaling.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2016-07-18T21:25:58Z",
+      "side": 1,
+      "message": "nit: bool might be a better fit",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
