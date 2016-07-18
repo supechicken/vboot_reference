@@ -22,6 +22,30 @@
       "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a03f0c0_5ec0d38b",
+        "filename": "firmware/include/tpm2_marshaling.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-18T21:29:44Z",
+      "side": 1,
+      "message": "valid point, but I didn\u0027t want to pull in stdbool.h just for that",
+      "parentUuid": "3a03f0c0_5ea57316",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
