@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a3d5fbd_10f2a4d5",
+        "filename": "firmware/include/tpm2_marshaling.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-18T23:35:47Z",
+      "side": 1,
+      "message": "that\u0027s correct if we implement the logic that tests phEnable in startup clear flags.  Until then, we need to pass it from userspace.",
+      "parentUuid": "2a3d5fbd_7084506e",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a03f0c0_5ea57316",
         "filename": "firmware/include/tpm2_marshaling.h",
         "patchSetId": 2
@@ -89,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "2a3d5fbd_7098d074",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-18T23:35:47Z",
+      "side": 1,
+      "message": "Passing the empty password user auth in recovery mode is still ok, as the NV_DefineSpace for this region sets both PPREAD and AUTHREAD. So, reading with empty password should  always be ok, even in recovery mode.\n\nBut, better yet, as a future improvement we can check TPMA_STARTUP_CLEAR.phEnableNV in TlclNVRead() and only switch to ph_disabled \u003d 1 if it\u0027s phEnableNV \u003d\u003d false. But that\u0027d affect firmware as well, so I wanted to implement a simpler solution first.",
+      "parentUuid": "2a3d5fbd_308c8884",
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3d5fbd_f0504009",
         "filename": "utility/tpmc.c",
         "patchSetId": 2
@@ -100,6 +142,24 @@
       "writtenOn": "2016-07-18T23:17:13Z",
       "side": 1,
       "message": "what if the device booted in recovery mode? In that case platform hierarchy is still enabled in the TPM.",
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_10974443",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-18T23:35:47Z",
+      "side": 1,
+      "message": "Passing the empty password user auth in recovery mode is still ok, as the NV_DefineSpace for this region sets both PPREAD and AUTHREAD. So, reading with empty password should  always be ok, even in recovery mode when the platform hierarchy is still enabled.",
+      "parentUuid": "2a3d5fbd_f0504009",
       "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
