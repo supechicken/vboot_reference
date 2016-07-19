@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "2a3d5fbd_e463e213",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2016-07-19T15:45:05Z",
+      "side": 1,
+      "message": "I think PPREAD should not be set. AUTHREAD should work fine from firmware and recovery too.",
+      "parentUuid": "2a3d5fbd_7098d074",
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3d5fbd_f0504009",
         "filename": "utility/tpmc.c",
         "patchSetId": 2
