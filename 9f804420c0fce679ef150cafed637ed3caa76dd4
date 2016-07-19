@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "2a3d5fbd_04fca60f",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-19T15:58:08Z",
+      "side": 1,
+      "message": "I haven\u0027t thought about it this way, but I think this is a great idea and the right thing to do.",
+      "parentUuid": "2a3d5fbd_e463e213",
+      "revId": "9f804420c0fce679ef150cafed637ed3caa76dd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3d5fbd_f0504009",
         "filename": "utility/tpmc.c",
         "patchSetId": 2
