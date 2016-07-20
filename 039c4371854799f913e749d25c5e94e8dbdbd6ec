@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3d5fbd_41a5f599",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-20T13:46:19Z",
+      "side": 1,
+      "message": "You can\u0027t CQ depend on coreboot.org. This CL doesn\u0027t need any CQ-DEPENDs.",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "039c4371854799f913e749d25c5e94e8dbdbd6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_61a0f98b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-20T13:46:19Z",
+      "side": 1,
+      "message": "This CL is abandoned. And we don\u0027t actually need to CQ-DEPEND this code. It can can stand on its own.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "039c4371854799f913e749d25c5e94e8dbdbd6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_c199e56a",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-20T13:46:19Z",
+      "side": 1,
+      "message": "You should fill in all the possible APL ACPI HIDs.",
+      "revId": "039c4371854799f913e749d25c5e94e8dbdbd6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
