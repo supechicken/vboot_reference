@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa6dbc3_c3e4b6d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-21T14:04:34Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure there\u0027s a bug for this, no?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "226877a10e989823248cd8608d2f81204f42691a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aa6dbc3_e3e1bac4",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-21T14:04:34Z",
+      "side": 1,
+      "message": "Add a comment that INT3452 are for apollolake?",
+      "revId": "226877a10e989823248cd8608d2f81204f42691a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
