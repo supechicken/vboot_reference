@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa6dbc3_c7caf916",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T03:50:16Z",
+      "side": 1,
+      "message": "something seems not quite right about this paragraph.",
+      "revId": "4b2a6c9b1e99c7f9ae0a78006e5f99c09c081168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aa6dbc3_07d5e1b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T03:50:16Z",
+      "side": 1,
+      "message": "note that tpmc might have to run in recovery mode where platform authorisation is still enabled, so maybe it should not set its mode unconditionally, But this is an issue for anther patch, if any.",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "4b2a6c9b1e99c7f9ae0a78006e5f99c09c081168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aa6dbc3_27d2e5cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T03:50:16Z",
+      "side": 1,
+      "message": "and the firmware built with this vboot_reference boots fine in normal and dev modes",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "4b2a6c9b1e99c7f9ae0a78006e5f99c09c081168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
