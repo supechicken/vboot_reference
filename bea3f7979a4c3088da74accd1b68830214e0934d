@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af64be4_2665f8b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-07-22T18:31:35Z",
+      "side": 1,
+      "message": "This might work for this bug, but I don\u0027t think it will be a sufficient solution in the long run. We have cases where the TPM should still be \"unlocked\" in userland (when booting in recovery mode), and tpmc read and write still need to work fine in that case.\n\nIf possible, I think the best solution would be to detect the platform hierarchy setting dynamically.",
+      "revId": "bea3f7979a4c3088da74accd1b68830214e0934d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
