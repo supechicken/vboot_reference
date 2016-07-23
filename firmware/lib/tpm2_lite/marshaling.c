@@ -533,3 +533,8 @@ void tpm_set_ph_disabled(int flag)
 {
 	ph_disabled = flag;
 }
+
+int tpm_is_ph_disabled(void)
+{
+	return ph_disabled;
+}

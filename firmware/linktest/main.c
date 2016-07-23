@@ -56,13 +56,13 @@ int main(void)
 	TlclSetEnable();
 	TlclSetDeactivated(0);
 	TlclGetFlags(0, 0, 0);
+	TlclSetGlobalLock();
 	TlclExtend(0, 0, 0);
 	TlclGetPermissions(0, 0);
 #ifndef TPM2_MODE
 	TlclAssertPhysicalPresence();
 	TlclSetNvLocked();
 	TlclClearEnable();
-	TlclSetGlobalLock();
 #endif
 
 	/* vboot_api.h - entry points INTO vboot_reference */
