@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a93abd9_4f64dd1c",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-25T22:53:42Z",
+      "side": 1,
+      "message": "Yes, can just the bit here in case of success. That\u0027s assuming there\u0027s no scenario when Hierarchy_Control fails, but still disables PH (I know, I know...).",
+      "parentUuid": "8a93abd9_8fdfc5fd",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "54ad4618c536c02bcfff842beec405532a460fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a93abd9_af01e15f",
         "filename": "utility/tpmc.c",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2016-07-25T22:39:34Z",
       "side": 1,
       "message": "if (result) {}\n\nis enough to check for non-zero.",
+      "revId": "54ad4618c536c02bcfff842beec405532a460fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a93abd9_2f4eb193",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-25T22:53:42Z",
+      "side": 1,
+      "message": "ok, will do",
+      "parentUuid": "8a93abd9_af01e15f",
       "revId": "54ad4618c536c02bcfff842beec405532a460fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
