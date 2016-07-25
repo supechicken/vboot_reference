@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8a93abd9_2fbf9116",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T23:02:34Z",
+      "side": 1,
+      "message": "I am not sure I understand. We are not reading back NVRAM spaces after writing them just to check if the write went through.\n\nThe idea is that TPM returning success is a guarantee of the properly executed command.",
+      "parentUuid": "8a93abd9_4f64dd1c",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "54ad4618c536c02bcfff842beec405532a460fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a93abd9_af01e15f",
         "filename": "utility/tpmc.c",
         "patchSetId": 4
