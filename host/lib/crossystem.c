@@ -558,6 +558,7 @@ int VbGetSystemPropertyInt(const char* name) {
   return value;
 }
 
+#define DUMMY_VM_HWID "DUMMY VM HWID 6921" /* v2 format/checksum */
 
 const char* VbGetSystemPropertyString(const char* name, char* dest,
                                       size_t size) {
@@ -606,6 +607,15 @@ const char* VbGetSystemPropertyString(const char* name, char* dest,
       return default_boot[v];
     else
       return "unknown";
+  } else if (!strcasecmp(name, "hwid")) {
+    /* Property normally found by previous call to VbGetArchPropertyString()
+     * when running on actual hardware. However in some cases (e.g. in a VM)
+     * we need to look further. */
+    if (-1 == VbGetSystemPropertyInt("devsw_boot")) {
+      /* No HWID present and can't read dev switch mode, assume running inside
+       * a VM. Return dummy HWID. */
+      return StrCopy(dest, DUMMY_VM_HWID, size);
+    }
   }
 
   return NULL;
