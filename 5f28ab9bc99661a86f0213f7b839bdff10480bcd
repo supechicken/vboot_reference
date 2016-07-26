@@ -94,6 +94,30 @@
       "revId": "5f28ab9bc99661a86f0213f7b839bdff10480bcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fa2dd7a_23922aa3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2016-07-26T13:07:30Z",
+      "side": 1,
+      "message": "Changing crossystem allows us to handle all the calls in various places at once rather than having everyone doing it slightly differently, e.g. https://chromium.googlesource.com/aosp/platform/system/update_engine/+/a435daa1be828dc8e6001c35bfa17514860f4fcc/hardware_chromeos.cc#128\nIt also has the benefit that running the crossystem utility shows very obviously what the state is (we think we\u0027re in a VM) for debug, rather than having to dig in different log files.\n\nA possibility could be to the same as here https://chromium.googlesource.com/aosp/platform/system/update_engine/+/stabilize-8447.B/common/hwid_override.cc, we could have a custom /etc/lsb-release for VM images. If the custom hwid in /etc/lsb-release is there, crossystem would show the HWID from the file, otherwise there would be an error.",
+      "parentUuid": "8fa2dd7a_63afc2e6",
+      "range": {
+        "startLine": 616,
+        "startChar": 11,
+        "endLine": 616,
+        "endChar": 13
+      },
+      "revId": "5f28ab9bc99661a86f0213f7b839bdff10480bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
