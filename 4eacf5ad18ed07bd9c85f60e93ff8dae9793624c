@@ -34,6 +34,24 @@
       "revId": "4eacf5ad18ed07bd9c85f60e93ff8dae9793624c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_5b023761",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T18:00:34Z",
+      "side": 1,
+      "message": "To me this just looks like busy work without much benefit, and even counterproductive, as it leaves the reader puzzled: \n\nWhat is read_be8(), what could it possibly be doing, is it flipping bits or something?!)",
+      "parentUuid": "2f501148_3bcca365",
+      "revId": "4eacf5ad18ed07bd9c85f60e93ff8dae9793624c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
