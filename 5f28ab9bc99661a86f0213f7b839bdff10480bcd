@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf7e959c_15a71457",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-07-26T11:59:19Z",
+      "side": 1,
+      "message": "I think non-cros x86 chromebooks will also fall into the case (no HWID + no devsw_boot). Do we have anything better that can explicitly know \"we are running inside VM\"?\n\nAlso, there may be proto devices that have broken devsw_boot (with on HWID provisioned).  You probably want to trust other values, for example mainfw_type \u003d\u003d nonchrome to see if we\u0027re really not on Chromebooks.",
+      "range": {
+        "startLine": 616,
+        "startChar": 11,
+        "endLine": 616,
+        "endChar": 13
+      },
+      "revId": "5f28ab9bc99661a86f0213f7b839bdff10480bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
