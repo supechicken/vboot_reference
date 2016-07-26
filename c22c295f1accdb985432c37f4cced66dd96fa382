@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f501148_5bf197d0",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-26T18:51:40Z",
+      "side": 1,
+      "message": "oh, just grand-fathered it from the existing code: copy-pasted \"as is\" when extracting this function :) there\u0027s another \"s\"-\u003e\"z\" below, btw. since the spec uses US-style \"z\", can fix it down the road - there\u0027s a cleanup CL due and planned anyways: some things like error values need fixing.",
+      "parentUuid": "2f501148_db564702",
+      "range": {
+        "startLine": 126,
+        "startChar": 28,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "c22c295f1accdb985432c37f4cced66dd96fa382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f501148_bbd43346",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-26T18:40:26Z",
       "side": 1,
       "message": "the idea was that TPM properties are completely hidden by TLCL. It is unfortunate that TPM_PERMANENT_FLAGS and TPM_PT_PERMANENT get exposed, tlcl layer was supposed to map between these internal structures and the upper layer\u0027s structures.",
+      "range": {
+        "startLine": 207,
+        "startChar": 31,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "c22c295f1accdb985432c37f4cced66dd96fa382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_1b9eff5f",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-26T18:51:40Z",
+      "side": 1,
+      "message": "It\u0027s much more than that. Some functions are 1.2/2.0-specific, and we need to address it, if we want to hide internals. If the intent was to hide all that, yes, we need a bug for it.",
+      "parentUuid": "2f501148_bbd43346",
       "range": {
         "startLine": 207,
         "startChar": 31,
