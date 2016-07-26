@@ -22,6 +22,29 @@
       "revId": "c22c295f1accdb985432c37f4cced66dd96fa382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_bbd43346",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T18:40:26Z",
+      "side": 1,
+      "message": "the idea was that TPM properties are completely hidden by TLCL. It is unfortunate that TPM_PERMANENT_FLAGS and TPM_PT_PERMANENT get exposed, tlcl layer was supposed to map between these internal structures and the upper layer\u0027s structures.",
+      "range": {
+        "startLine": 207,
+        "startChar": 31,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "c22c295f1accdb985432c37f4cced66dd96fa382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
