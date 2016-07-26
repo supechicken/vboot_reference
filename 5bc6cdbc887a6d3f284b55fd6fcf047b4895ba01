@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f501148_b85b998b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T19:17:41Z",
+      "side": 1,
+      "message": "Cast is not needed.",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "5bc6cdbc887a6d3f284b55fd6fcf047b4895ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_7bba9bd7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T19:17:41Z",
+      "side": 1,
+      "message": "pubkey is not used as a VbPublicKey. So, you can directly cast to vb2_packed_key. Then, you don\u0027t need pubkey2.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "5bc6cdbc887a6d3f284b55fd6fcf047b4895ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_bebf01a4",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T19:17:41Z",
+      "side": 1,
+      "message": "This should be const, shouldn\u0027t it? It probably takes a separate CL to change all file type functions, though.",
+      "range": {
+        "startLine": 729,
+        "startChar": 42,
+        "endLine": 729,
+        "endChar": 54
+      },
+      "revId": "5bc6cdbc887a6d3f284b55fd6fcf047b4895ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_3e8491b6",
+        "filename": "futility/vb1_helper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T19:17:41Z",
+      "side": 1,
+      "message": "Maybe we should start being more formal about function descriptions as done for packed_key_sha1_string.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "5bc6cdbc887a6d3f284b55fd6fcf047b4895ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_9e74bde1",
+        "filename": "futility/vb1_helper.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T19:17:41Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "5bc6cdbc887a6d3f284b55fd6fcf047b4895ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
