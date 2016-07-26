@@ -16,6 +16,24 @@
       "revId": "4eacf5ad18ed07bd9c85f60e93ff8dae9793624c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f501148_3bcca365",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-07-26T17:57:02Z",
+      "side": 1,
+      "message": "It\u0027s not strictly needed, but it just make it look consistent for all 8, 16, and 32-bit values in unmarshal_u8/16/32 functions. We need to do type-conversion to uint8_t anyways, so why not hide it inside read_be8 to look similar to 16 and 32 bit cases.",
+      "parentUuid": "8a93abd9_cf838dfc",
+      "revId": "4eacf5ad18ed07bd9c85f60e93ff8dae9793624c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
