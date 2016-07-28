@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f82a583_01f1cad1",
+        "filename": "firmware/include/gbb_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2016-07-28T23:18:51Z",
+      "side": 1,
+      "message": "Yes, that seems helpful, can you please expand that in ToT, Randall?",
+      "parentUuid": "c0e903d1_65a5bcb0",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "c4be588077a290f2fd6a0c2648a854e14a7b6422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e903d1_c285a623",
         "filename": "firmware/include/gbb_header.h",
         "patchSetId": 1
