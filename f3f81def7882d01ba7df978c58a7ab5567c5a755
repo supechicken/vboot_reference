@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4989235_c43c9216",
+        "filename": "host/lib/host_common2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "preamble?",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_4485e267",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "New line. Why don\u0027t we stick to the same style as host_common2.c?",
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_64fb3ee4",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "vb2_private_key?",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_446e42d4",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "nit: NULL",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_c4281234",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "Can we do \u0027enum vb2_crypto_algorithm alg\u0027?",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_e4a66ec0",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "Same for these functions.",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_87820cfa",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "const",
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_a7cce863",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "These are already set by vb2_alloc_signature.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_871e8cc5",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_4733a4f7",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "digest_size",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 32
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_470ac4f3",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T21:46:50Z",
+      "side": 1,
+      "message": "Need to be updated.",
+      "range": {
+        "startLine": 128,
+        "startChar": 13,
+        "endLine": 128,
+        "endChar": 25
+      },
+      "revId": "f3f81def7882d01ba7df978c58a7ab5567c5a755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
