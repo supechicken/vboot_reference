@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f41b32b6_1ae60d1c",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-03T20:38:04Z",
+      "side": 1,
+      "message": "Why don\u0027t you call vb2_alloc_signature with \u0027size\u0027? You can get rid of sig-\u003edata_size \u003d size below.",
+      "range": {
+        "startLine": 76,
+        "startChar": 46,
+        "endLine": 76,
+        "endChar": 47
+      },
+      "revId": "d0f7f19a3317249e63506cea886846c9d8e3d751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
