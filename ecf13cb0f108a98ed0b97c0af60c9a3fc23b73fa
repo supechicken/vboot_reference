@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b44e1a0a_ffb2fb94",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T00:10:32Z",
+      "side": 1,
+      "message": "I bet this is supposed to be used.",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 63
+      },
+      "revId": "ecf13cb0f108a98ed0b97c0af60c9a3fc23b73fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b44e1a0a_1ff9e7e4",
+        "filename": "host/lib/host_keyblock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T00:10:32Z",
+      "side": 1,
+      "message": "Difficult to review. \u0027Ignore whitespace\u0027 setting doesn\u0027t do anything. sigh.",
+      "revId": "ecf13cb0f108a98ed0b97c0af60c9a3fc23b73fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b44e1a0a_7f77cb99",
+        "filename": "host/lib/include/host_keyblock.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T00:10:32Z",
+      "side": 1,
+      "message": "spaces -\u003e tabs",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "ecf13cb0f108a98ed0b97c0af60c9a3fc23b73fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
