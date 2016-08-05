@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "999b0f33_f54618ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-05T22:39:51Z",
+      "side": 1,
+      "message": "Repo gives me an error of \"Changelist description needs BRANCH field (after first line)\".  What should I do?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "3e54a608787f64e95be2039da5af1e1f03ddf8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_f57938d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-05T22:39:51Z",
+      "side": 1,
+      "message": "I actually see an error at the end of the execution in both cases.  Should I worry about these?\n\n ERROR  : Couldn\u0027t grab root_digest from kernel partition 4\n ERROR  :  (config: console\u003d loglevel\u003d7 ...... )",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "3e54a608787f64e95be2039da5af1e1f03ddf8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
