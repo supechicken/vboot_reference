@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "999b0f33_2f81915e",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:53:06Z",
+      "side": 1,
+      "message": "Yeah.  Added a sanity check on the packed key.",
+      "parentUuid": "b44e1a0a_ffb2fb94",
+      "range": {
+        "startLine": 61,
+        "startChar": 60,
+        "endLine": 61,
+        "endChar": 63
+      },
+      "revId": "ecf13cb0f108a98ed0b97c0af60c9a3fc23b73fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b44e1a0a_1ff9e7e4",
         "filename": "host/lib/host_keyblock.c",
         "patchSetId": 7
@@ -53,6 +77,30 @@
       "writtenOn": "2016-08-04T00:10:32Z",
       "side": 1,
       "message": "spaces -\u003e tabs",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "ecf13cb0f108a98ed0b97c0af60c9a3fc23b73fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_6fa8f9df",
+        "filename": "host/lib/include/host_keyblock.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b44e1a0a_7f77cb99",
       "range": {
         "startLine": 45,
         "startChar": 0,
