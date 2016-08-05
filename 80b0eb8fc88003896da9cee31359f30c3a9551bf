@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4445a3b_d5894e78",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-05T03:43:38Z",
+      "side": 1,
+      "message": "In other places we settled just for ownerAuthSet to mean \u0027owned\u0027: https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d55219#c7\n \nThis should also work, but just for consistency...",
+      "range": {
+        "startLine": 300,
+        "startChar": 16,
+        "endLine": 300,
+        "endChar": 28
+      },
+      "revId": "80b0eb8fc88003896da9cee31359f30c3a9551bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
