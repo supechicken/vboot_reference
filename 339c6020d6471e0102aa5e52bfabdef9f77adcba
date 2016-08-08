@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "999b0f33_fd159a4f",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "VB2_SUCCESS",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 6
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_1d13a66b",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 647,
+        "startChar": 5,
+        "endLine": 647,
+        "endChar": 6
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_bd1f126c",
+        "filename": "host/lib/host_common2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "No error checking?",
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_9d10165b",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "enum vb2_crypto_algorithm",
+      "range": {
+        "startLine": 222,
+        "startChar": 9,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_5d0a8e2a",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "I see this number a couple of time. Can we give it a name?",
+      "range": {
+        "startLine": 229,
+        "startChar": 15,
+        "endLine": 229,
+        "endChar": 21
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_1dfc060c",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "I would print out version.",
+      "range": {
+        "startLine": 231,
+        "startChar": 26,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_bdf87218",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "I would print key size and algorithm.",
+      "range": {
+        "startLine": 243,
+        "startChar": 25,
+        "endLine": 243,
+        "endChar": 54
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999b0f33_bd29528f",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T16:16:02Z",
+      "side": 1,
+      "message": "VB2_SUCCESS",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 6
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
