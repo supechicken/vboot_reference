@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19b1dff1_373e98e2",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2016-08-09T17:30:06Z",
+      "side": 1,
+      "message": "I followed the strange style in that file, but grep\u0027ing shows that there\u0027s no real convention. Some files have no space, some do, some have a mix of the 2. I guess a small mistake a long time ago has since propagated.",
+      "parentUuid": "19a47fca_a2ffa052",
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19a47fca_a278c0f3",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "19b1dff1_974cc49d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2016-08-09T17:30:06Z",
+      "side": 1,
+      "message": "Ah yes, thanks! Will do!",
+      "parentUuid": "19a47fca_a278c0f3",
+      "range": {
+        "startLine": 813,
+        "startChar": 16,
+        "endLine": 813,
+        "endChar": 17
+      },
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19a47fca_223ef00b",
         "filename": "utility/crossystem.c",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2016-08-09T17:16:24Z",
       "side": 1,
       "message": "nit: just \"Running in a VM?\" seems clearer",
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19b1dff1_b749c88c",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2016-08-09T17:30:06Z",
+      "side": 1,
+      "message": "Indeed. Thanks for the suggestion, I\u0027ll change the text.",
+      "parentUuid": "19a47fca_223ef00b",
       "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
