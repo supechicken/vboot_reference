@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19a47fca_a2ffa052",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2016-08-09T17:16:24Z",
+      "side": 1,
+      "message": "not faulting you, since you\u0027re doing the right thing by following the existing style here, but... is the convention in vboot_reference to omit spaces after commas in strcasecmp() function calls but insert spaces after commas in all other function calls? :-/",
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19a47fca_a278c0f3",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2016-08-09T17:16:24Z",
+      "side": 1,
+      "message": "nit: delete this space for consistency with the rest of the file... or the one after the asterisk, since that\u0027s done all over the place here too. but i don\u0027t see any places where there are spaces on both sides. :-P",
+      "range": {
+        "startLine": 813,
+        "startChar": 16,
+        "endLine": 813,
+        "endChar": 17
+      },
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19a47fca_223ef00b",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2016-08-09T17:16:24Z",
+      "side": 1,
+      "message": "nit: just \"Running in a VM?\" seems clearer",
+      "revId": "0bdeb8e5c9ac714410a4f0f049afc2b7e1d8e987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
