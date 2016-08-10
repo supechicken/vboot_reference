@@ -184,8 +184,7 @@ uint32_t VbTryLoadKernel(VbCommonParams *cparams, LoadKernelParams *p,
 	return vbtlk_retval + get_info_flags;
 }
 
-VbError_t VbDisplayScreen(VbCommonParams *cparams, uint32_t screen, int force,
-                          VbNvContext *vncptr)
+VbError_t VbDisplayScreen(uint32_t screen, int force, VbNvContext *vncptr)
 {
 	if (screens_count < ARRAY_SIZE(screens_displayed))
 		screens_displayed[screens_count++] = screen;

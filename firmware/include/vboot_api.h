@@ -716,26 +716,6 @@ enum VbScreenType_t {
 };
 
 /**
- * Initialize and clear the display.  Set width and height to the screen
- * dimensions in pixels.
- */
-VbError_t VbExDisplayInit(uint32_t *width, uint32_t *height);
-
-/**
- * Enable (enable!=0) or disable (enable=0) the display backlight.
- */
-VbError_t VbExDisplayBacklight(uint8_t enable);
-
-/**
- * Sets the logical dimension to display.
- *
- * If the physical display is larger or smaller than given dimension, display
- * provider may decide to scale or shift images (from VbExDisplayImage)to proper
- * location.
- */
-VbError_t VbExDisplaySetDimension(uint32_t width, uint32_t height);
-
-/**
  * Display a predefined screen; see VB_SCREEN_* for valid screens.
  *
  * This is a backup method of screen display, intended for use if the GBB does
@@ -746,16 +726,6 @@ VbError_t VbExDisplaySetDimension(uint32_t width, uint32_t height);
 VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale);
 
 /**
- * Write an image to the display, with the upper left corner at the specified
- * pixel coordinates.  The bitmap buffer is a pointer to the platform-dependent
- * uncompressed binary blob with dimensions and format specified internally
- * (for example, a raw BMP, GIF, PNG, whatever). We pass the size just for
- * convenience.
- */
-VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
-                           void *buffer, uint32_t buffersize);
-
-/**
  * Display a string containing debug information on the screen, rendered in a
  * platform-dependent font.  Should be able to handle newlines '\n' in the
  * string.  Firmware must support displaying at least 20 lines of text, where
@@ -764,9 +734,7 @@ VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
  *
  * NOTE: This is what we currently display when TAB is pressed.  Some
  * information (HWID, recovery reason) is ours; some (CMOS breadcrumbs) is
- * platform-specific.  If we decide to soft-render the HWID string
- * (chrome-os-partner:3693), we'll need to maintain our own fonts, so we'll
- * likely display it via VbExDisplayImage() above.
+ * platform-specific. We soft-render the HWID string (chrome-os-partner:3693).
  */
 VbError_t VbExDisplayDebugInfo(const char *info_str);
 
