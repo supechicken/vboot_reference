@@ -28,28 +28,7 @@ VbError_t VbExBeep(uint32_t msec, uint32_t frequency)
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExDisplayInit(uint32_t *width, uint32_t *height)
-{
-	return VBERROR_SUCCESS;
-}
-
-VbError_t VbExDisplayBacklight(uint8_t enable)
-{
-	return VBERROR_SUCCESS;
-}
-
-VbError_t VbExDisplaySetDimension(uint32_t width, uint32_t height)
-{
-	return VBERROR_SUCCESS;
-}
-
 VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale)
-{
-	return VBERROR_SUCCESS;
-}
-
-VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
-                           void *buffer, uint32_t buffersize)
 {
 	return VBERROR_SUCCESS;
 }

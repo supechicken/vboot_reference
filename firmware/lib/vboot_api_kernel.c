@@ -349,7 +349,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
 		VBDEBUG(("%s() - dev_disable_boot is set.\n", __func__));
-		VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_TO_NORM, 0, &vnc);
+		VbDisplayScreen(VB_SCREEN_DEVELOPER_TO_NORM, 0, &vnc);
 		VbExDisplayDebugInfo(dev_disable_msg);
 
 		/* Ignore space in VbUserConfirms()... */
@@ -357,8 +357,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 		case 1:
 			VBDEBUG(("%s() - leaving dev-mode.\n", __func__));
 			VbNvSet(&vnc, VBNV_DISABLE_DEV_REQUEST, 1);
-			VbDisplayScreen(cparams,
-					VB_SCREEN_TO_NORM_CONFIRMED,
+			VbDisplayScreen(VB_SCREEN_TO_NORM_CONFIRMED,
 					0, &vnc);
 			VbExSleepMs(5000);
 			return VBERROR_TPM_REBOOT_REQUIRED;
@@ -372,7 +371,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 	}
 
 	/* Show the dev mode warning screen */
-	VbDisplayScreen(cparams, VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
+	VbDisplayScreen(VB_SCREEN_DEVELOPER_WARNING, 0, &vnc);
 
 	/* Get audio/delay context */
 	audio = VbAudioOpen(cparams);
@@ -418,8 +417,7 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 					VbExBeep(120, 400);
 					break;
 				}
-				VbDisplayScreen(cparams,
-						VB_SCREEN_DEVELOPER_TO_NORM,
+				VbDisplayScreen(VB_SCREEN_DEVELOPER_TO_NORM,
 						0, &vnc);
 				/* Ignore space in VbUserConfirms()... */
 				switch (VbUserConfirms(cparams, 0)) {
@@ -429,7 +427,6 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 					VbNvSet(&vnc, VBNV_DISABLE_DEV_REQUEST,
 						1);
 					VbDisplayScreen(
-						cparams,
 						VB_SCREEN_TO_NORM_CONFIRMED,
 						0, &vnc);
 					VbExSleepMs(5000);
@@ -443,7 +440,6 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 					VBDEBUG(("%s() - stay in dev-mode\n",
 						 __func__));
 					VbDisplayScreen(
-						cparams,
 						VB_SCREEN_DEVELOPER_WARNING,
 						0, &vnc);
 					/* Start new countdown */
@@ -500,15 +496,13 @@ VbError_t VbBootDeveloper(VbCommonParams *cparams, LoadKernelParams *p)
 				 * Clear the screen to show we get the Ctrl+U
 				 * key press.
 				 */
-				VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0,
-						&vnc);
+				VbDisplayScreen(VB_SCREEN_BLANK, 0, &vnc);
 				if (VBERROR_SUCCESS == VbTryUsb(cparams, p)) {
 					VbAudioClose(audio);
 					return VBERROR_SUCCESS;
 				} else {
 					/* Show dev mode warning screen again */
 					VbDisplayScreen(
-						cparams,
 						VB_SCREEN_DEVELOPER_WARNING,
 						0, &vnc);
 				}
@@ -577,7 +571,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 				shared->recovery_reason));
 		VbSetRecoverySubcode(shared->recovery_reason);
 		VbNvCommit();
-		VbDisplayScreen(cparams, VB_SCREEN_OS_BROKEN, 0, &vnc);
+		VbDisplayScreen(VB_SCREEN_OS_BROKEN, 0, &vnc);
 		VBDEBUG(("VbBootRecovery() waiting for manual recovery\n"));
 		while (1) {
 			VbCheckDisplayKey(cparams, VbExKeyboardRead(), &vnc);
@@ -604,7 +598,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(cparams, VBERROR_NO_DISK_FOUND == retval ?
+		VbDisplayScreen(VBERROR_NO_DISK_FOUND == retval ?
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
 				0, &vnc);
@@ -645,8 +639,7 @@ VbError_t VbBootRecovery(VbCommonParams *cparams, LoadKernelParams *p)
 				}
 
 				/* Ask the user to confirm entering dev-mode */
-				VbDisplayScreen(cparams,
-						VB_SCREEN_RECOVERY_TO_DEV,
+				VbDisplayScreen(VB_SCREEN_RECOVERY_TO_DEV,
 						0, &vnc);
 				/* SPACE means no... */
 				uint32_t vbc_flags =
@@ -811,7 +804,7 @@ static VbError_t EcUpdateImage(int devidx, VbCommonParams *cparams,
 			return VBERROR_VGA_OPROM_MISMATCH;
 		}
 
-		VbDisplayScreen(cparams, VB_SCREEN_WAIT, 0, &vnc);
+		VbDisplayScreen(VB_SCREEN_WAIT, 0, &vnc);
 	}
 
 	rv = VbExEcUpdateImage(devidx, select, expected, expected_size);
@@ -1218,13 +1211,13 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		p.boot_flags |= BOOT_FLAG_RECOVERY;
 		retval = VbBootRecovery(cparams, &p);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
-		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		VbDisplayScreen(VB_SCREEN_BLANK, 0, &vnc);
 
 	} else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
 		/* Developer boot */
 		retval = VbBootDeveloper(cparams, &p);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
-		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		VbDisplayScreen(VB_SCREEN_BLANK, 0, &vnc);
 
 	} else {
 		/* Normal boot */

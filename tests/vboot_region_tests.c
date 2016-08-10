@@ -138,23 +138,6 @@ VbError_t VbExRegionRead(VbCommonParams *cparams,
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
-                           void *buffer, uint32_t buffersize)
-{
-	switch (x) {
-	case 1:
-		TEST_STR_EQ(buffer, "original", "  uncompressed image");
-		break;
-	case 2:
-		TEST_STR_EQ(buffer, "decompressed", "  compressed image");
-		break;
-	default:
-		TEST_STR_EQ(buffer, "invalid", "  correct image");
-		break;
-	}
-	return VBERROR_SUCCESS;
-}
-
 VbError_t VbExDecompress(void *inbuf, uint32_t in_size,
                          uint32_t compression_type,
                          void *outbuf, uint32_t *out_size)

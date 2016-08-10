@@ -8,7 +8,6 @@
 
 #include "sysincludes.h"
 
-#include "bmpblk_header.h"
 #include "region.h"
 #include "gbb_access.h"
 #include "gbb_header.h"
