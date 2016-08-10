@@ -634,8 +634,6 @@ endif
 ifeq (${MINIMAL},)
 UTIL_NAMES += \
 	utility/bdb_extend \
-	utility/bmpblk_font \
-	utility/bmpblk_utility \
 	utility/eficompress \
 	utility/efidecompress \
 	utility/load_kernel_test \
@@ -1285,23 +1283,6 @@ ${BUILD}/tests/hmac_test: LDLIBS += ${CRYPTO_LIBS}
 
 ${TEST21_BINS}: LDLIBS += ${CRYPTO_LIBS}
 
-${BUILD}/utility/bmpblk_utility: LD = ${CXX}
-${BUILD}/utility/bmpblk_utility: LDLIBS = ${LZMA_LIBS} ${YAML_LIBS}
-
-BMPBLK_UTILITY_DEPS = \
-	${BUILD}/utility/bmpblk_util.o \
-	${BUILD}/utility/image_types.o \
-	${BUILD}/utility/eficompress_for_lib.o \
-	${BUILD}/utility/efidecompress_for_lib.o
-
-${BUILD}/utility/bmpblk_utility: OBJS = ${BMPBLK_UTILITY_DEPS}
-${BUILD}/utility/bmpblk_utility: ${BMPBLK_UTILITY_DEPS}
-ALL_OBJS += ${BMPBLK_UTILITY_DEPS}
-
-${BUILD}/utility/bmpblk_font: OBJS += ${BUILD}/utility/image_types.o
-${BUILD}/utility/bmpblk_font: ${BUILD}/utility/image_types.o
-ALL_OBJS += ${BUILD}/utility/image_types.o
-
 # Allow multiple definitions, so tests can mock functions from other libraries
 ${BUILD}/tests/%: CFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
@@ -1358,7 +1339,7 @@ test_targets:: runcgpttests runmisctests run2tests runbdbtests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
-test_targets:: runbmptests runfutiltests
+test_targets:: runfutiltests
 # Scripts don't work under qemu testing
 # TODO: convert scripts to makefile so they can be called directly
 test_targets:: runtestscripts
@@ -1401,11 +1382,6 @@ gentestcases: utils test_setup
 genfuzztestcases: utils test_setup
 	tests/gen_fuzz_test_cases.sh
 
-.PHONY: runbmptests
-runbmptests: test_setup
-	cd tests/bitmaps && BMPBLK=${BUILD_RUN}/utility/bmpblk_utility \
-		./TestBmpBlock.py -v
-
 .PHONY: runcgpttests
 runcgpttests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/cgptlib_test
@@ -1440,7 +1416,6 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel6_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_detach_menu_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_common_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 
 .PHONY: run2tests
