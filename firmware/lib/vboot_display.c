@@ -21,7 +21,6 @@
 #include "vboot_nvstorage.h"
 
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
-static uint32_t disp_width = 0, disp_height = 0;
 
 __attribute__((weak))
 VbError_t VbExGetLocalizationCount(uint32_t *count) {
@@ -148,207 +147,9 @@ void VbRenderTextAtPos(const char *text, int right_to_left,
 	}
 }
 
-VbError_t VbDisplayScreenFromGBB(VbCommonParams *cparams, uint32_t screen,
-                                 VbNvContext *vncptr, uint32_t localization)
-{
-	char *fullimage = NULL;
-	BmpBlockHeader hdr;
-	uint32_t screen_index;
-	VbError_t retval = VBERROR_UNKNOWN;   /* Assume error until proven ok */
-	uint32_t inoutsize;
-	uint32_t i;
-	VbFont_t *font;
-	const char *text_to_show;
-	int rtol = 0;
-	VbError_t ret;
-
-	ret = VbGbbReadBmpHeader(cparams, &hdr);
-	if (ret)
-		return ret;
-
-	/*
-	 * Translate screen ID into index.  Note that not all screens are in
-	 * the GBB.
-	 *
-	 * TODO: ensure screen IDs match indices?  Having this translation here
-	 * is awful.
-	 */
-	switch (screen) {
-	case VB_SCREEN_DEVELOPER_WARNING:
-		screen_index = SCREEN_DEVELOPER_WARNING;
-		break;
-	case VB_SCREEN_RECOVERY_REMOVE:
-		screen_index = SCREEN_RECOVERY_REMOVE;
-		break;
-	case VB_SCREEN_RECOVERY_NO_GOOD:
-		screen_index = SCREEN_RECOVERY_NO_GOOD;
-		break;
-	case VB_SCREEN_RECOVERY_INSERT:
-		screen_index = SCREEN_RECOVERY_INSERT;
-		break;
-	case VB_SCREEN_RECOVERY_TO_DEV:
-		screen_index = SCREEN_RECOVERY_TO_DEV;
-		break;
-	case VB_SCREEN_DEVELOPER_TO_NORM:
-		screen_index = SCREEN_DEVELOPER_TO_NORM;
-		break;
-	case VB_SCREEN_WAIT:
-		screen_index = SCREEN_WAIT;
-		break;
-	case VB_SCREEN_TO_NORM_CONFIRMED:
-		screen_index = SCREEN_TO_NORM_CONFIRMED;
-		break;
-	case VB_SCREEN_OS_BROKEN:
-		screen_index = SCREEN_OS_BROKEN;
-		break;
-	case VB_SCREEN_BLANK:
-	case VB_SCREEN_DEVELOPER_EGG:
-	default:
-		/* Screens which aren't in the GBB */
-		VBDEBUG(("VbDisplayScreenFromGBB(): screen %d not in the GBB\n",
-			 (int)screen));
-		retval = VBERROR_INVALID_SCREEN_INDEX;
-		goto VbDisplayScreenFromGBB_exit;
-	}
-
-	if (screen_index >= hdr.number_of_screenlayouts) {
-		VBDEBUG(("VbDisplayScreenFromGBB(): "
-			 "screen %d index %d not in the GBB\n",
-			 (int)screen, (int)screen_index));
-		retval = VBERROR_INVALID_SCREEN_INDEX;
-		goto VbDisplayScreenFromGBB_exit;
-	}
-
-	/* Clip localization to number of localizations present in the GBB */
-	if (localization >= hdr.number_of_localizations) {
-		localization = 0;
-		VbNvSet(vncptr, VBNV_LOCALIZATION_INDEX, localization);
-		VbNvSet(vncptr, VBNV_BACKUP_NVRAM_REQUEST, 1);
-	}
-
-	/* Display all bitmaps for the image */
-	for (i = 0; i < MAX_IMAGE_IN_LAYOUT; i++) {
-		ScreenLayout layout;
-		ImageInfo image_info;
-		char hwid[256];
-
-		ret = VbGbbReadImage(cparams, localization, screen_index,
-				    i, &layout, &image_info,
-				    &fullimage, &inoutsize);
-		if (ret == VBERROR_NO_IMAGE_PRESENT) {
-			continue;
-		} else if (ret) {
-			retval = ret;
-			goto VbDisplayScreenFromGBB_exit;
-		}
-
-		switch(image_info.format) {
-		case FORMAT_BMP:
-			if (i == 0) {
-				/**
-				 * In current version GBB bitmaps, first image
-				 * is always the background.
-				 */
-				ret = VbExDisplaySetDimension(
-						image_info.width,
-						image_info.height);
-				if (ret) {
-					VBDEBUG(("VbExDisplaySetDimension"
-						 "(%d,%d): failed (%#x).\n",
-						 image_info.width,
-						 image_info.height, ret));
-				}
-			}
-
-			retval = VbExDisplayImage(layout.images[i].x,
-						  layout.images[i].y,
-						  fullimage, inoutsize);
-			break;
-
-		case FORMAT_FONT:
-			/*
-			 * The uncompressed blob is our font structure. Cache
-			 * it as needed.
-			 */
-			font = VbInternalizeFontData(
-					(FontArrayHeader *)fullimage);
-
-			/* TODO: handle text in general here */
-			if (TAG_HWID == image_info.tag ||
-			    TAG_HWID_RTOL == image_info.tag) {
-				VbRegionReadHWID(cparams, hwid, sizeof(hwid));
-				text_to_show = hwid;
-				rtol = (TAG_HWID_RTOL == image_info.tag);
-			} else {
-				text_to_show = "";
-				rtol = 0;
-			}
-
-			VbRenderTextAtPos(text_to_show, rtol,
-					  layout.images[i].x,
-					  layout.images[i].y, font);
-
-			VbDoneWithFontForNow(font);
-			break;
-
-		default:
-			VBDEBUG(("VbDisplayScreenFromGBB(): "
-				 "unsupported ImageFormat %d\n",
-				 image_info.format));
-			retval = VBERROR_INVALID_GBB;
-		}
-
-		VbExFree(fullimage);
-
-		if (VBERROR_SUCCESS != retval)
-			goto VbDisplayScreenFromGBB_exit;
-	}
-
-	/* Successful if all bitmaps displayed */
-	retval = VBERROR_SUCCESS;
-
-	VbRegionCheckVersion(cparams);
-
- VbDisplayScreenFromGBB_exit:
-	VBDEBUG(("leaving VbDisplayScreenFromGBB() with %d\n",retval));
-	return retval;
-}
-
-/*
- * This is the deprecated display screen function. This should be called only
- * if bmpblk.bin is found in GBB. New devices store graphics data in cbfs
- * and screens are rendered by Depthcharge (chromium:502066).
- */
-static VbError_t VbDisplayScreenLegacy(VbCommonParams *cparams, uint32_t screen,
-				       int force, VbNvContext *vncptr,
-				       uint32_t locale)
-{
-	VbError_t retval;
-
-	/* Initialize display if necessary */
-	if (!disp_width) {
-		retval = VbExDisplayInit(&disp_width, &disp_height);
-		if (VBERROR_SUCCESS != retval)
-			return retval;
-	}
-
-	/* If the screen is blank, turn off the backlight; else turn it on. */
-	VbExDisplayBacklight(VB_SCREEN_BLANK == screen ? 0 : 1);
-
-	/* Look in the GBB first */
-	if (VBERROR_SUCCESS == VbDisplayScreenFromGBB(cparams, screen,
-						      vncptr, locale))
-		return VBERROR_SUCCESS;
-
-	/* If screen wasn't in the GBB bitmaps, fall back to a default */
-	return VbExDisplayScreen(screen, locale);
-}
-
-VbError_t VbDisplayScreen(VbCommonParams *cparams, uint32_t screen,
-			  int force, VbNvContext *vncptr)
+VbError_t VbDisplayScreen(uint32_t screen, int force, VbNvContext *vncptr)
 {
 	uint32_t locale;
-	GoogleBinaryBlockHeader *gbb = cparams->gbb;
 	VbError_t rv;
 
 	/* If requested screen is the same as the current one, we're done. */
@@ -358,12 +159,7 @@ VbError_t VbDisplayScreen(VbCommonParams *cparams, uint32_t screen,
 	/* Read the locale last saved */
 	VbNvGet(vncptr, VBNV_LOCALIZATION_INDEX, &locale);
 
-	if (gbb->bmpfv_size == 0)
-		rv = VbExDisplayScreen(screen, locale);
-	else
-		rv = VbDisplayScreenLegacy(cparams, screen, force, vncptr,
-					   locale);
-
+	rv = VbExDisplayScreen(screen, locale);
 	if (rv == VBERROR_SUCCESS)
 		/* Keep track of the currently displayed screen */
 		disp_current_screen = screen;
@@ -561,7 +357,7 @@ VbError_t VbDisplayDebugInfo(VbCommonParams *cparams, VbNvContext *vncptr)
 	uint32_t i;
 
 	/* Redisplay current screen to overwrite any previous debug output */
-	VbDisplayScreen(cparams, disp_current_screen, 1, vncptr);
+	VbDisplayScreen(disp_current_screen, 1, vncptr);
 
 	/* Add hardware ID */
 	VbRegionReadHWID(cparams, hwid, sizeof(hwid));
@@ -723,13 +519,12 @@ VbError_t VbCheckDisplayKey(VbCommonParams *cparams, uint32_t key,
 #endif
 
 		/* Force redraw of current screen */
-		return VbDisplayScreen(cparams, disp_current_screen, 1, vncptr);
+		return VbDisplayScreen(disp_current_screen, 1, vncptr);
 	}
 
 	if (0 == Memcmp(MagicBuffer, MAGIC_WORD, MAGIC_WORD_LEN)) {
 		if (VBEASTEREGG)
-			(void)VbDisplayScreen(cparams, disp_current_screen,
-					      1, vncptr);
+			(void)VbDisplayScreen(disp_current_screen, 1, vncptr);
 	}
 
   return VBERROR_SUCCESS;

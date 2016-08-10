@@ -716,17 +716,6 @@ enum VbScreenType_t {
 };
 
 /**
- * Initialize and clear the display.  Set width and height to the screen
- * dimensions in pixels.
- */
-VbError_t VbExDisplayInit(uint32_t *width, uint32_t *height);
-
-/**
- * Enable (enable!=0) or disable (enable=0) the display backlight.
- */
-VbError_t VbExDisplayBacklight(uint8_t enable);
-
-/**
  * Sets the logical dimension to display.
  *
  * If the physical display is larger or smaller than given dimension, display
