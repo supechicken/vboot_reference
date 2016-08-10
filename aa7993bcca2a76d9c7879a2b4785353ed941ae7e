@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_a3854d6b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_9426e4d2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_b4dcc0de",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "add a `local sha1` line here",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_c385e903",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_b4dcc0de",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_638d1526",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_d4db3ce2",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_f4d638bc",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "seems like these inline comments are redundant ... just trim them",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_03a541a0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_f4d638bc",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_439a195e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_94e1c49e",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_f48f58d0",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -110,6 +212,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "should add `local apk keyname` and any other relevant vars",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_03ce6160",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_f48f58d0",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_e3d22502",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_34f1d067",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_54e8cc78",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -144,6 +282,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "this isn\u0027t safe.  you can write instead:\n\n while read -d $\u0027\\0\u0027 -r apk; do\n   ....\n done \u003c \u003c(find \"${system_mnt}/system\" -type f -name \u0027*.apk\u0027 -print0)",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_83bc911e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_54e8cc78",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_83c25130",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_74eb4877",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_14ee5487",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -178,6 +352,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "use -z instead",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_63bf55a2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_14ee5487",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_23c95d51",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_b485e0b6",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_3416f05b",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -212,6 +422,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "you can write this simpler:\n\n : $(( counter_${keyname} +\u003d 1 ))",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_c38a896a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_3416f05b",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -235,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_439fb9a4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_d494dce5",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_d4305c06",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -246,6 +492,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "period at the end",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_03f78190",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_d4305c06",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -321,6 +585,30 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_635515c5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_742068b3",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_940f043b",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -367,6 +655,30 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_c3f04997",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_f4047820",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_d4097c36",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -384,6 +696,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_a3266d20",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_d4097c36",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_f42bd898",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -395,6 +725,30 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "you should be able to write this more simply:\n\n if ! cmp \"${xml}\" \"${output}\"; then\n   die \"...\"\n fi",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_83eed11e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_f42bd898",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -430,6 +784,30 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_23339d5e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_34ff1004",
+      "range": {
+        "startLine": 163,
+        "startChar": 13,
+        "endLine": 163,
+        "endChar": 21
+      },
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_b42160bf",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -441,6 +819,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "you should sanity check the $# here.  something like:\n\n if [[ $# -ne 2 ]]; then\n   usage\n fi",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_03fae1de",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_b42160bf",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -464,6 +860,24 @@
     },
     {
       "key": {
+        "uuid": "f9032b8f_6346355e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_74f9881b",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9137310_14fc940b",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
@@ -475,6 +889,24 @@
       "writtenOn": "2016-08-10T07:07:00Z",
       "side": 1,
       "message": "missing umount",
+      "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9032b8f_4343394c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-10T21:39:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9137310_14fc940b",
       "revId": "aa7993bcca2a76d9c7879a2b4785353ed941ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
