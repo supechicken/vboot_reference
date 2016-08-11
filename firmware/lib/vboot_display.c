@@ -10,7 +10,6 @@
 
 #include "2common.h"
 #include "2sha.h"
-#include "bmpblk_font.h"
 #include "gbb_access.h"
 #include "gbb_header.h"
 #include "region.h"
@@ -27,124 +26,9 @@ VbError_t VbExGetLocalizationCount(uint32_t *count) {
 	return VBERROR_UNKNOWN;
 }
 
-VbError_t VbGetLocalizationCount(VbCommonParams *cparams, uint32_t *count)
+VbError_t VbGetLocalizationCount(uint32_t *count)
 {
-	BmpBlockHeader hdr;
-	VbError_t ret;
-
-	/* Default to 0 on error */
-	*count = 0;
-
-	/* First try to get the count from GBB */
-	ret = VbGbbReadBmpHeader(cparams, &hdr);
-	if (ret == VBERROR_SUCCESS) {
-		*count = hdr.number_of_localizations;
-		return ret;
-	}
-
-	/* If GBB is broken or missing, fallback to the callback */
 	return VbExGetLocalizationCount(count);
-}
-
-/*
- * TODO: We could cache the font info to speed things up, by making the
- * in-memory font structure distinct from the in-flash version.  We'll do that
- * Real Soon Now. Until then, we just repeat the same linear search every time.
- */
-
-VbFont_t *VbInternalizeFontData(FontArrayHeader *fonthdr)
-{
-	/* Just return the raw data pointer for now. */
-	return (VbFont_t *)fonthdr;
-}
-
-void VbDoneWithFontForNow(VbFont_t *ptr)
-{
-	/* Nothing. */
-}
-
-ImageInfo *VbFindFontGlyph(VbFont_t *font, uint32_t ascii,
-			   void **bufferptr, uint32_t *buffersize)
-{
-	uint8_t *ptr, *firstptr;
-	uint32_t max;
-	uint32_t i;
-	FontArrayEntryHeader *entry;
-
-	ptr = (uint8_t *)font;
-	max = ((FontArrayHeader *)ptr)->num_entries;
-	ptr += sizeof(FontArrayHeader);
-	firstptr = ptr;
-
-	/*
-	 * Simple linear search.
-	 *
-	 * Note: We're assuming glpyhs are uncompressed. That's true because
-	 * the bmpblk_font tool doesn't compress anything. The bmpblk_utility
-	 * does, but it compresses the entire font blob at once, and we've
-	 * already uncompressed that before we got here.
-	 */
-	for(i=0; i<max; i++) {
-		entry = (FontArrayEntryHeader *)ptr;
-		if (entry->ascii == ascii) {
-			*bufferptr = ptr + sizeof(FontArrayEntryHeader);
-			*buffersize = entry->info.original_size;
-			return &(entry->info);
-		}
-		ptr += sizeof(FontArrayEntryHeader)+entry->info.compressed_size;
-	}
-
-	/*
-	 * We must return something valid. We'll just use the first glyph in
-	 * the font structure (so it should be something distinct).
-	 */
-	entry = (FontArrayEntryHeader *)firstptr;
-	*bufferptr = firstptr + sizeof(FontArrayEntryHeader);
-	*buffersize = entry->info.original_size;
-	return &(entry->info);
-}
-
-void VbRenderTextAtPos(const char *text, int right_to_left,
-		       uint32_t x, uint32_t y, VbFont_t *font)
-{
-	int i;
-	ImageInfo *image_info = 0;
-	void *buffer;
-	uint32_t buffersize;
-	uint32_t cur_x = x, cur_y = y;
-
-	if (!text || !font) {
-		VBDEBUG(("  VbRenderTextAtPos: invalid args\n"));
-		return;
-	}
-
-	for (i=0; text[i]; i++) {
-
-		if (text[i] == '\n') {
-			if (!image_info)
-				image_info = VbFindFontGlyph(font, text[i],
-							     &buffer,
-							     &buffersize);
-			cur_x = x;
-			cur_y += image_info->height;
-			continue;
-		}
-
-		image_info = VbFindFontGlyph(font, text[i], &buffer,
-					     &buffersize);
-
-		if (right_to_left)
-			cur_x -= image_info->width;
-
-		if (VBERROR_SUCCESS != VbExDisplayImage(cur_x, cur_y, buffer,
-							buffersize)) {
-			VBDEBUG(("  VbRenderTextAtPos: "
-				 "can't display ascii 0x%x\n", text[i]));
-		}
-
-		if (!right_to_left)
-			cur_x += image_info->width;
-	}
 }
 
 VbError_t VbDisplayScreen(uint32_t screen, int force, VbNvContext *vncptr)
@@ -501,7 +385,7 @@ VbError_t VbCheckDisplayKey(VbCommonParams *cparams, uint32_t key,
 		uint32_t count = 0;
 
 		VbNvGet(vncptr, VBNV_LOCALIZATION_INDEX, &loc);
-		if (VBERROR_SUCCESS != VbGetLocalizationCount(cparams, &count))
+		if (VBERROR_SUCCESS != VbGetLocalizationCount(&count))
 			loc = 0;  /* No localization count (bad GBB?) */
 		else if (VB_KEY_RIGHT == key || VB_KEY_UP == key)
 			loc = (loc < count - 1 ? loc + 1 : 0);

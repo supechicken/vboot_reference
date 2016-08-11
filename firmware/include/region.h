@@ -9,7 +9,6 @@
 #ifndef VBOOT_REFERENCE_REGION_H_
 #define VBOOT_REFERENCE_REGION_H_
 
-#include "bmpblk_header.h"
 #include "gbb_header.h"
 #include "vboot_api.h"
 #include "vboot_struct.h"
