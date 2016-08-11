@@ -95,8 +95,8 @@ typedef struct GoogleBinaryBlockHeader
 	uint32_t hwid_size;
 	uint32_t rootkey_offset;	/* Root key */
 	uint32_t rootkey_size;
-	uint32_t bmpfv_offset;		/* BMP FV */
-	uint32_t bmpfv_size;
+	uint32_t bmpfv_offset;		/* BMP FV (deprecated) */
+	uint32_t bmpfv_size;		/* BMP FV size (deprecated) */
 	uint32_t recovery_key_offset;	/* Recovery key */
 	uint32_t recovery_key_size;
 	/* Added in version 1.2 */

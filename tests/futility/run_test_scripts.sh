@@ -42,7 +42,6 @@ export OUTDIR
 TESTS="
 ${SCRIPTDIR}/test_create.sh
 ${SCRIPTDIR}/test_dump_fmap.sh
-${SCRIPTDIR}/test_gbb_utility.sh
 ${SCRIPTDIR}/test_load_fmap.sh
 ${SCRIPTDIR}/test_main.sh
 ${SCRIPTDIR}/test_show_contents.sh
