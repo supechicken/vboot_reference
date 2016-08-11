@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "3e3da9bd_505cac5b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "missing `local output xml`.  please do a scan of the scripts to make sure you aren\u0027t missing more.",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_3061280c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "line wrap the args to stay under 80 cols as mentioned earlier ?",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_10662424",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "don\u0027t need the $ inside of $((...)) here",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_f06a80e6",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "missing braces on ${vars}",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_d0677c1c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "period at the end, and prob change \"Skip signing\" to \"Not signing Android APKs.\" otherwise it\u0027s a bit unclear what signing exactly is being skipped",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c827e9_28150397",
         "filename": "scripts/keygeneration/create_new_android_keys.sh",
         "patchSetId": 3
@@ -19,6 +104,98 @@
         "endLine": 1,
         "endChar": 1
       },
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_b074f8ca",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "looks fine!",
+      "parentUuid": "d9c827e9_28150397",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_9071f4da",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "drop the (c)",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_50438c71",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "might be nice to include a link to some Android signing docs ?",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_703e90e3",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "could use a comment",
+      "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3da9bd_303808f2",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-11T12:20:03Z",
+      "side": 1,
+      "message": "would be nice to add a small overview of the keys",
       "revId": "6baf31228f231d1d934f3c5f7978fb4da9476e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
