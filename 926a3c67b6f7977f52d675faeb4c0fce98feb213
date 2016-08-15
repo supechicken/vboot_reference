@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be6fd9aa_1774b692",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-15T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6fd9aa_d4f07ccc",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be6fd9aa_17bd96a8",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2016-08-15T18:04:25Z",
       "side": 1,
       "message": "xxd is part of vim.  i think this is equiv:\n\n hexdump -v -e \u0027/1 \"%02x\"\u0027\n\nhexdump is part of util-linux which should be installed by default everywhere\n\nyou can also drop the last paste/tr as it\u0027s not needed w/hexdump",
+      "range": {
+        "startLine": 135,
+        "startChar": 24,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_3771b2a3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-15T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6fd9aa_17bd96a8",
       "range": {
         "startLine": 135,
         "startChar": 24,
@@ -82,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "be6fd9aa_776b2ab1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-15T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6fd9aa_5461cca6",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be6fd9aa_9469a491",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 5
@@ -99,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "be6fd9aa_d78f9e7b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-15T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6fd9aa_9469a491",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be6fd9aa_b46ea094",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 5
@@ -110,6 +188,24 @@
       "writtenOn": "2016-08-15T18:04:25Z",
       "side": 1,
       "message": "should this check be before the milestone check ?",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_97e3662e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-15T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6fd9aa_b46ea094",
       "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
