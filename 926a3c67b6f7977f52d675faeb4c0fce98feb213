@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "be6fd9aa_d4f07ccc",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-15T18:04:25Z",
+      "side": 1,
+      "message": "this is the first time i\u0027ve seen `paste` used.  i think tr is a more common idiom here:\n\n | tr -d \u0027\\n\u0027 \\",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_17bd96a8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-15T18:04:25Z",
+      "side": 1,
+      "message": "xxd is part of vim.  i think this is equiv:\n\n hexdump -v -e \u0027/1 \"%02x\"\u0027\n\nhexdump is part of util-linux which should be installed by default everywhere\n\nyou can also drop the last paste/tr as it\u0027s not needed w/hexdump",
+      "range": {
+        "startLine": 135,
+        "startChar": 24,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be6fd9aa_147e7445",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 5
@@ -19,6 +59,57 @@
         "endLine": 600,
         "endChar": 68
       },
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_5461cca6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-15T18:04:25Z",
+      "side": 1,
+      "message": "quote the path",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_9469a491",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-15T18:04:25Z",
+      "side": 1,
+      "message": "prob should put some text before ${milestone}.  the log as-is can be confusing.\n\n Not signing image before 53 (inclusive) 50\n\nwhat\u0027s that 50 mean ? :)\n\nalso, this message makes it sound like any signing when it\u0027s just Android APKs.",
+      "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be6fd9aa_b46ea094",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-15T18:04:25Z",
+      "side": 1,
+      "message": "should this check be before the milestone check ?",
       "revId": "926a3c67b6f7977f52d675faeb4c0fce98feb213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
