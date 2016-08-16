@@ -207,7 +207,7 @@ main() {
   info "Repacking sqaushfs image"
 
   local new_system_img="${working_dir}/system.raw.img"
-  sudo mksquashfs "${system_mnt}" "${new_system_img}" -comp lzo
+  sudo mksquashfs "${system_mnt}" "${new_system_img}" -no-progress -comp lzo
 
   local old_size=$(stat -c '%s' "${system_img}")
   local new_size=$(stat -c '%s' "${new_system_img}")
