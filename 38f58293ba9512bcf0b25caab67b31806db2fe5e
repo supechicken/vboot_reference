@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b794741_975dc784",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T21:25:35Z",
+      "side": 1,
+      "message": "does this need the -a flag to preserve ownership, perms, and selinux labels ?",
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_377413ca",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T21:25:35Z",
+      "side": 1,
+      "message": "how about here you do:\n\n cp -a \"${xml}\" \"${output}\"\n sed -E -i ... \"${xml}\"\n\nthat\u0027ll preserve all the right stuff",
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_b73803f3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T21:25:35Z",
+      "side": 1,
+      "message": "instead of deleting, can you use `zip -f` to just replace new files ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 29
+      },
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
