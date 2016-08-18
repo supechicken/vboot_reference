@@ -104,7 +104,7 @@ sign_framework_apks() {
         "${temp_apk}" "${signed_apk}" > /dev/null
     zipalign 4 "${signed_apk}" "${aligned_apk}"
 
-    sudo mv -f "${aligned_apk}" "${apk}"
+    sudo cp "${aligned_apk}" "${apk}" && rm -f "${aligned_apk}"
 
     : $(( counter_${keyname} += 1 ))
     : $(( counter_total += 1 ))
@@ -147,7 +147,7 @@ update_sepolicy() {
     die "Failed to replace SELinux policy cert"
   fi
 
-  sudo mv -f "${output}" "${xml}"
+  sudo cp "${output}" "${xml}" && rm -f "${output}"
 }
 
 # Replace the debug key in OTA cert with release key.
@@ -161,8 +161,9 @@ replace_ota_cert() {
   local temp_dir=$(make_temp_dir)
   pushd "${temp_dir}" > /dev/null
   cp "${release_cert}" .
-  sudo rm "${ota_zip}"
-  sudo zip -q -r "${ota_zip}" .
+  sudo zip -q -r "${ota_zip}.new" .
+  sudo cp "${ota_zip}.new" "${ota_zip}"
+  sudo rm -f "${ota_zip}.new"
   popd > /dev/null
 }
 
@@ -213,7 +214,7 @@ main() {
   local new_size=$(stat -c '%s' "${new_system_img}")
   info "Android system image size change: ${old_size} -> ${new_size}"
 
-  sudo mv -f "${new_system_img}" "${system_img}"
+  sudo cp "${new_system_img}" "${system_img}" && rm -f "${new_system_img}"
 }
 
 main "$@"
