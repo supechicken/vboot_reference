@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "08fd0b27_7e5bf133",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T23:46:31Z",
+      "side": 1,
+      "message": "ah i can never remember which set of shell libs handle that and which ones don\u0027t :x",
+      "parentUuid": "08fd0b27_5e74b5fc",
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08fd0b27_7ea0918b",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 3
