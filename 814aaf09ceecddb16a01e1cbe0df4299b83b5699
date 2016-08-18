@@ -16,6 +16,24 @@
       "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_3a3e3dba",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-18T17:05:29Z",
+      "side": 0,
+      "message": "It doesn\u0027t look we use RTOL for HWID. There is no locale using $HWID.rtol in DEFAULT.yaml. So, tag !\u003d TAG_HWID_RTOL always. It means HWID has been rendered only left to right probably because we only use alphabets for HWID.",
+      "parentUuid": "db273fb0_b37d20c0",
+      "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
