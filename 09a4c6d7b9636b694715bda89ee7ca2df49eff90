@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "9b794741_ca32c60a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:03:45Z",
+      "side": 1,
+      "message": "Of course!",
+      "parentUuid": "9b794741_6aef127f",
+      "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b3493be_aae9cf0e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:03:45Z",
+      "side": 1,
+      "message": "Turned out -FS creates a new file instead of truncate the original file, so it does not serve the purpose.",
+      "range": {
+        "startLine": 163,
+        "startChar": 11,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b794741_0a852eb5",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -30,6 +71,24 @@
       "writtenOn": "2016-08-18T22:05:49Z",
       "side": 1,
       "message": "period at the end",
+      "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_0a29ae9c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b794741_0a852eb5",
       "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
