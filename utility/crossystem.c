@@ -184,23 +184,40 @@ int CheckParam(const Param* p, char* expect) {
 }
 
 
-/* Print the specified parameter.
+/* Print the specified parameter. If print_desc!=0, also print the parameter
+ * description.
  *
  * Returns 0 if success, non-zero if error. */
-int PrintParam(const Param* p) {
+int PrintParam(const Param* p, int print_desc) {
+  char buf[VB_MAX_STRING_PROPERTY];
+  const char *value = NULL;
+  int retval = 0;
+
   if (p->flags & IS_STRING) {
-    char buf[VB_MAX_STRING_PROPERTY];
-    const char* v = VbGetSystemPropertyString(p->name, buf, sizeof(buf));
-    if (!v)
-      return 1;
-    printf("%s", v);
+    value = VbGetSystemPropertyString(p->name, buf, sizeof(buf));
   } else {
     int v = VbGetSystemPropertyInt(p->name);
-    if (v == -1)
-      return 1;
-    printf(p->format ? p->format : "%d", v);
+    if (v == -1) {
+      value = NULL;
+    } else {
+        snprintf(buf, sizeof(buf), p->format ? p->format : "%d", v);
+        buf[sizeof(buf) - 1] = '\0';
+        value = buf;
+    }
   }
-  return 0;
+
+  if (!value) {
+    value = "(error)";
+    retval = 1;
+  }
+
+  if (print_desc) {
+    printf("%-22s = %-30s # %s\n", p->name, value, p->desc);
+  } else {
+    printf("%s", value);
+  }
+
+  return retval;
 }
 
 
@@ -211,25 +228,11 @@ int PrintParam(const Param* p) {
 int PrintAllParams(int force_all) {
   const Param* p;
   int retval = 0;
-  char buf[VB_MAX_STRING_PROPERTY];
-  const char* value;
 
   for (p = sys_param_list; p->name; p++) {
     if (0 == force_all && (p->flags & NO_PRINT_ALL))
       continue;
-    if (p->flags & IS_STRING) {
-      value = VbGetSystemPropertyString(p->name, buf, sizeof(buf));
-    } else {
-      int v = VbGetSystemPropertyInt(p->name);
-      if (v == -1)
-        value = NULL;
-      else {
-        snprintf(buf, sizeof(buf), p->format ? p->format : "%d", v);
-        value = buf;
-      }
-    }
-    printf("%-22s = %-30s # %s\n",
-           p->name, (value ? value : "(error)"), p->desc);
+    retval |= PrintParam(p, 1);
   }
   return retval;
 }
@@ -251,11 +254,20 @@ int main(int argc, char* argv[]) {
   }
 
   /* If no args specified, print all params */
-  if (argc == 1)
-    return PrintAllParams(0);
+  if (argc == 1) {
+    PrintAllParams(0);
+    /* Always return 0 when printing all parameters, even if there were errors.
+     * In some environments (e.g. in a VM) some parameters such as HWID cannot
+     * be read. Returning non-zero in that case would break Chrome (it would
+     * display the factory error splashscreen). */
+    return 0;
+  }
   /* --all or -a prints all params including normally hidden ones */
-  if (!strcasecmp(argv[1], "--all") || !strcmp(argv[1], "-a"))
-    return PrintAllParams(1);
+  if (!strcasecmp(argv[1], "--all") || !strcmp(argv[1], "-a")) {
+    PrintAllParams(1);
+    /* Always return 0, see comment for non-hidden params. */
+    return 0;
+  }
 
   /* Print help if needed */
   if (!strcasecmp(argv[1], "-h") || !strcmp(argv[1], "-?")) {
@@ -264,7 +276,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* Otherwise, loop through params and get/set them */
-  for (i = 1; i < argc && retval == 0; i++) {
+  for (i = 1; i < argc; i++) {
     char* has_set = strchr(argv[i], '=');
     char* has_expect = strchr(argv[i], '?');
     char* name = strtok(argv[i], "=?");
@@ -299,11 +311,12 @@ int main(int argc, char* argv[]) {
       retval = SetParam(p, value);
       if (retval) {
         fprintf(stderr, "Parameter %s is read-only\n", name);
+        return retval;
       }
     } else if (has_expect)
-      retval = CheckParam(p, value);
+      retval |= CheckParam(p, value);
     else
-      retval = PrintParam(p);
+      retval |= PrintParam(p, 0);
   }
 
   return retval;
