@@ -97,7 +97,7 @@ sign_framework_apks() {
 
     # Follow the standard manual signing process.  See
     # https://developer.android.com/studio/publish/app-signing.html.
-    cp "${apk}" "${temp_apk}"
+    cp -a "${apk}" "${temp_apk}"
     # Explicitly remove existing signature.
     zip -q "${temp_apk}" -d "META-INF/*"
     signapk "${key_dir}/$keyname.x509.pem" "${key_dir}/$keyname.pk8" \
@@ -137,17 +137,16 @@ update_sepolicy() {
     die "Unable to get the public platform key"
   fi
 
-  local output=$(make_temp_file)
+  local orig=$(make_temp_file)
   local xml="${system_mnt}/system/etc/security/mac_permissions.xml"
   local pattern='(<signer signature=")\w+("><seinfo value="platform)'
-  sed -E "s/${pattern}/\1${new_cert}"'\2/g' "${xml}" > "${output}"
+  cp -a "${xml}" "${orig}"
+  sudo sed -i -E "s/${pattern}/\1${new_cert}"'\2/g' "${xml}"
 
   # Sanity check.
-  if cmp "${xml}" "${output}"; then
+  if cmp "${xml}" "${orig}"; then
     die "Failed to replace SELinux policy cert"
   fi
-
-  sudo mv -f "${output}" "${xml}"
 }
 
 # Replace the debug key in OTA cert with release key.
@@ -161,8 +160,7 @@ replace_ota_cert() {
   local temp_dir=$(make_temp_dir)
   pushd "${temp_dir}" > /dev/null
   cp "${release_cert}" .
-  sudo rm "${ota_zip}"
-  sudo zip -q -r "${ota_zip}" .
+  sudo zip -FS -q -r "${ota_zip}" .
   popd > /dev/null
 }
 
@@ -205,15 +203,11 @@ main() {
   reapply_file_security_context "${system_mnt}" "${root_fs_dir}"
 
   info "Repacking sqaushfs image"
-
-  local new_system_img="${working_dir}/system.raw.img"
-  sudo mksquashfs "${system_mnt}" "${new_system_img}" -comp lzo
-
   local old_size=$(stat -c '%s' "${system_img}")
-  local new_size=$(stat -c '%s' "${new_system_img}")
+  # Overwrite the original image
+  sudo mksquashfs "${system_mnt}" "${system_img}" -comp lzo
+  local new_size=$(stat -c '%s' "${system_img}")
   info "Android system image size change: ${old_size} -> ${new_size}"
-
-  sudo mv -f "${new_system_img}" "${system_img}"
 }
 
 main "$@"
