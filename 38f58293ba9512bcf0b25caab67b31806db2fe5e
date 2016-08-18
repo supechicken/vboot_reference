@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b794741_37d3b361",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T22:01:12Z",
+      "side": 1,
+      "message": "Right.  Looks better.",
+      "parentUuid": "9b794741_975dc784",
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b794741_377413ca",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9b794741_f780cb60",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T22:01:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b794741_377413ca",
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b794741_b73803f3",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2016-08-18T21:25:35Z",
       "side": 1,
       "message": "instead of deleting, can you use `zip -f` to just replace new files ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 29
+      },
+      "revId": "38f58293ba9512bcf0b25caab67b31806db2fe5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_7747fb5b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T22:01:12Z",
+      "side": 1,
+      "message": "Found -FS option.  Since the old zip contains different file name, we need to make sure only the new public key is in the archive.",
+      "parentUuid": "9b794741_b73803f3",
       "range": {
         "startLine": 164,
         "startChar": 0,
