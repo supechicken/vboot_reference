@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08fd0b27_9e37dd43",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08fd0b27_7e79b125",
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08fd0b27_bec85953",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "08fd0b27_5e74b5fc",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:37:39Z",
+      "side": 1,
+      "message": "This is intentional since files/directories made by make_temp_* are supposed to be remove when the program stops.  But I\u0027m happy to remove them if preferred.",
+      "parentUuid": "08fd0b27_bec85953",
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08fd0b27_7ea0918b",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2016-08-18T23:25:52Z",
       "side": 1,
       "message": "you could write this:\n\n local d\n if ! d\u003d$(diff \"${working_dir}\"/properties.{orig,new}); then\n   die \"...\"\n fi",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 4
+      },
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08fd0b27_fe4941c1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-18T23:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08fd0b27_7ea0918b",
       "range": {
         "startLine": 217,
         "startChar": 0,
