@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b794741_6aef127f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T22:05:49Z",
+      "side": 1,
+      "message": "in this case you don\u0027t need the -a since you\u0027re just keeping a backup for its content",
+      "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b794741_0a852eb5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T22:05:49Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "09a4c6d7b9636b694715bda89ee7ca2df49eff90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
