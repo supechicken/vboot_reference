@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08fd0b27_7e79b125",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T23:25:52Z",
+      "side": 1,
+      "message": "what does the cp+rm get us that the mv didn\u0027t ?  the perms/owners aren\u0027t clobbered ?  if so, please put a comment above it.",
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08fd0b27_bec85953",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T23:25:52Z",
+      "side": 1,
+      "message": "forgot to `rm` the tempzip ?\n\nneeds a comment to as to why you aren\u0027t using `mv`",
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08fd0b27_7ea0918b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-08-18T23:25:52Z",
+      "side": 1,
+      "message": "you could write this:\n\n local d\n if ! d\u003d$(diff \"${working_dir}\"/properties.{orig,new}); then\n   die \"...\"\n fi",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 4
+      },
+      "revId": "0422a7c4b6383858492f1fd000f96d0f255a6af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
