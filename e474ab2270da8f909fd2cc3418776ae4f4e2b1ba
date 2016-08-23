@@ -22,6 +22,30 @@
       "revId": "e474ab2270da8f909fd2cc3418776ae4f4e2b1ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c811339a_ae7338f0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2016-08-23T17:57:55Z",
+      "side": 1,
+      "message": "Actually sudo doesn\u0027t help.  It\u0027s \"Operation not supported\" but not permission denied.  If you simply run `stat -c \u0027%C\u0027 /etc/passwd` INSIDE the chroot, you\u0027ll see the same error, but not outside.  Maybe the way chroot is setup causes that, but I don\u0027t know the exact cause.",
+      "parentUuid": "c811339a_3327b2ce",
+      "range": {
+        "startLine": 185,
+        "startChar": 27,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "e474ab2270da8f909fd2cc3418776ae4f4e2b1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
