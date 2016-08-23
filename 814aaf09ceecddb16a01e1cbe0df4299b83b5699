@@ -55,6 +55,23 @@
     },
     {
       "key": {
+        "uuid": "c811339a_fe8b211d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-08-23T03:40:11Z",
+      "side": 0,
+      "message": "Changing this means newer versions of futility can\u0027t display full information on old images anymore. Not sure if we really care, just wanted to point it out and make sure it\u0027s considered.",
+      "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8ac3770_e54656af",
         "filename": "tests/futility/test_gbb_utility.sh",
         "patchSetId": 5
@@ -96,6 +113,57 @@
         "endLine": 2,
         "endChar": 11
       },
+      "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c811339a_197e170f",
+        "filename": "tests/vboot_display_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-08-23T03:40:11Z",
+      "side": 0,
+      "message": "This test seems still relevant.",
+      "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c811339a_7983cb02",
+        "filename": "tests/vboot_display_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-08-23T03:40:11Z",
+      "side": 0,
+      "message": "ditto",
+      "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c811339a_b98c2332",
+        "filename": "tests/vboot_display_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-08-23T03:40:11Z",
+      "side": 0,
+      "message": "ditto",
       "revId": "814aaf09ceecddb16a01e1cbe0df4299b83b5699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
