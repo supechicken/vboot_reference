@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c811339a_3327b2ce",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1112834
+      },
+      "writtenOn": "2016-08-23T00:53:34Z",
+      "side": 1,
+      "message": "you might want to add sudo here,\nthis will fix the \u0027 Operation not supported\u0027 error message. (see https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d56279#c24)",
+      "range": {
+        "startLine": 185,
+        "startChar": 27,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "e474ab2270da8f909fd2cc3418776ae4f4e2b1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
