@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25a67ac4_ef6e01f9",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b0f33_fd159a4f",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 6
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "999b0f33_1d13a66b",
         "filename": "futility/vb1_helper.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-08T16:16:02Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 647,
+        "startChar": 5,
+        "endLine": 647,
+        "endChar": 6
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25a67ac4_0f3d05e2",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b0f33_1d13a66b",
       "range": {
         "startLine": 647,
         "startChar": 5,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "25a67ac4_8f673521",
+        "filename": "host/lib/host_common2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "init can\u0027t fail.  Added for copy.",
+      "parentUuid": "999b0f33_bd1f126c",
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "999b0f33_9d10165b",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 6
@@ -76,6 +142,30 @@
       "writtenOn": "2016-08-08T16:16:02Z",
       "side": 1,
       "message": "enum vb2_crypto_algorithm",
+      "range": {
+        "startLine": 222,
+        "startChar": 9,
+        "endLine": 222,
+        "endChar": 17
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05adf6b0_fe0e6143",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "What gets passed into many of these functions is a uint32_t from a binary field, so we can\u0027t guarantee it only contains one of the valid enum values.",
+      "parentUuid": "999b0f33_9d10165b",
       "range": {
         "startLine": 222,
         "startChar": 9,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "05adf6b0_7e77f197",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b0f33_5d0a8e2a",
+      "range": {
+        "startLine": 229,
+        "startChar": 15,
+        "endLine": 229,
+        "endChar": 21
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "999b0f33_1dfc060c",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 6
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "05adf6b0_1e6eadc1",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b0f33_1dfc060c",
+      "range": {
+        "startLine": 231,
+        "startChar": 26,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "999b0f33_bdf87218",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 6
@@ -145,6 +283,30 @@
       "writtenOn": "2016-08-08T16:16:02Z",
       "side": 1,
       "message": "I would print key size and algorithm.",
+      "range": {
+        "startLine": 243,
+        "startChar": 25,
+        "endLine": 243,
+        "endChar": 54
+      },
+      "revId": "339c6020d6471e0102aa5e52bfabdef9f77adcba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05adf6b0_feab01d7",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T18:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b0f33_bdf87218",
       "range": {
         "startLine": 243,
         "startChar": 25,
