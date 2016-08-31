@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b68de5_da8ae5c4",
+        "filename": "host/lib/host_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-31T17:50:04Z",
+      "side": 1,
+      "message": "Is it safe to reference these without checking?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "e789325ed35773de6c87cb776916dfebec5f6fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
