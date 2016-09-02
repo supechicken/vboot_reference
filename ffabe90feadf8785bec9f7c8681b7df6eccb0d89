@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1a805f6_41ff8095",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-02T19:32:48Z",
+      "side": 1,
+      "message": "What errors are you solving by moving these up here?",
+      "revId": "ffabe90feadf8785bec9f7c8681b7df6eccb0d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1a805f6_6106fcc0",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-02T19:32:48Z",
+      "side": 1,
+      "message": "I would print size and offs here since you moved the message which print them.",
+      "revId": "ffabe90feadf8785bec9f7c8681b7df6eccb0d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1a805f6_c1b890eb",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-02T19:32:48Z",
+      "side": 1,
+      "message": "nit: let\u0027s fix the missing spaces as well.",
+      "revId": "ffabe90feadf8785bec9f7c8681b7df6eccb0d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
