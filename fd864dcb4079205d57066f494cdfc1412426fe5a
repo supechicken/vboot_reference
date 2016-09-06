@@ -22,6 +22,30 @@
       "revId": "fd864dcb4079205d57066f494cdfc1412426fe5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96ff636b_388b1178",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T22:06:58Z",
+      "side": 1,
+      "message": "The old code did:\n\nflags \u003d 0;\nif preamble has flags:\n  flags \u003d preamble-\u003eflags\n\nvb2_kernel_get_flags() returns 0 if flags aren\u0027t present, so has the same effect.",
+      "parentUuid": "d649db7c_189bf51e",
+      "range": {
+        "startLine": 207,
+        "startChar": 10,
+        "endLine": 207,
+        "endChar": 56
+      },
+      "revId": "fd864dcb4079205d57066f494cdfc1412426fe5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
