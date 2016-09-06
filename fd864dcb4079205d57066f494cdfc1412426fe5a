@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d649db7c_189bf51e",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-06T18:02:18Z",
+      "side": 1,
+      "message": "The return value doesn\u0027t have to be checked as done in do_vbutil_kernel?",
+      "range": {
+        "startLine": 207,
+        "startChar": 10,
+        "endLine": 207,
+        "endChar": 56
+      },
+      "revId": "fd864dcb4079205d57066f494cdfc1412426fe5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
