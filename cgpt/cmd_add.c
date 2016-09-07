@@ -27,6 +27,7 @@ static void Usage(void)
          "  -S NUM       set Successful flag (0|1)\n"
          "  -T NUM       set Tries flag (0-15)\n"
          "  -P NUM       set Priority flag (0-15)\n"
+         "  -B NUM       set Legacy Boot flag (0|1)\n"
          "  -A NUM       set raw 64-bit attribute value\n"
          "\n"
          "Use the -i option to modify an existing partition.\n"
@@ -45,7 +46,7 @@ int cmd_add(int argc, char *argv[]) {
   char *e = 0;
 
   opterr = 0;                     // quiet, you
-  while ((c=getopt(argc, argv, ":hi:b:s:t:u:l:S:T:P:A:D:")) != -1)
+  while ((c=getopt(argc, argv, ":hi:b:s:t:u:l:S:T:P:B:A:D:")) != -1)
   {
     switch (c)
     {
@@ -138,6 +139,19 @@ int cmd_add(int argc, char *argv[]) {
       }
       if (params.priority < 0 || params.priority > 15) {
         Error("value for -%c must be between 0 and 15", c);
+        errorcnt++;
+      }
+      break;
+    case 'B':
+      params.set_legacy_boot = 1;
+      params.legacy_boot = (uint32_t)strtoul(optarg, &e, 0);
+      if (!*optarg || (e && *e))
+      {
+        Error("invalid argument to -%c: \"%s\"\n", c, optarg);
+        errorcnt++;
+      }
+      if (params.legacy_boot < 0 || params.legacy_boot > 1) {
+        Error("value for -%c must be between 0 and 1", c);
         errorcnt++;
       }
       break;

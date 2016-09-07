@@ -32,6 +32,7 @@ static void Usage(void)
          "               -S  Successful flag\n"
          "               -T  Tries flag\n"
          "               -P  Priority flag\n"
+         "               -B  Legacy Boot flag\n"
          "               -A  raw 64-bit attribute value\n"
          "  -d           Debug output (including invalid headers)\n"
          "\n", progname);
@@ -46,7 +47,7 @@ int cmd_show(int argc, char *argv[]) {
   char *e = 0;
 
   opterr = 0;                     // quiet, you
-  while ((c=getopt(argc, argv, ":hnvqi:bstulSTPAdD:")) != -1)
+  while ((c=getopt(argc, argv, ":hnvqi:bstulSTPBAdD:")) != -1)
   {
     switch (c)
     {
@@ -83,6 +84,7 @@ int cmd_show(int argc, char *argv[]) {
     case 'S':
     case 'T':
     case 'P':
+    case 'B':
     case 'A':
       params.single_item = c;
       break;
