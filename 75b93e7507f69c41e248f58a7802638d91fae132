@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "760f4fe3_d99a5319",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-08T00:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6009f87_4bcfd91d",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "75b93e7507f69c41e248f58a7802638d91fae132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6009f87_0ba0c13e",
         "filename": "cgpt/cmd_add.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-07T21:50:45Z",
       "side": 1,
       "message": "Seems like this logic is repeated and could be refactored out into\n\nint parse_int(char optchar, char *optarg, int max_valid, int *dest);\n\nReturns 0 if success, 1 if error.\n\nThen \n\nerrorcnt +\u003d parse_int(c, optarg, 1, \u0026params.legacy_boot);",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "75b93e7507f69c41e248f58a7802638d91fae132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760f4fe3_99b9fb85",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-08T00:29:44Z",
+      "side": 1,
+      "message": "that applies to most of the cmd_* files.  split out into CL:382691.",
+      "parentUuid": "f6009f87_0ba0c13e",
       "range": {
         "startLine": 147,
         "startChar": 0,
