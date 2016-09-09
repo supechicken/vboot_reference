@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bd6ea36_9683cc05",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-09T21:33:17Z",
+      "side": 1,
+      "message": "i\u0027m not sure we can so long as we continue to sign android in old images.  maybe once R56 goes stable we can just skip signing in R55 and older, and then we could drop these keys.  probably want to update the comment to that effect.",
+      "revId": "3a01fd56b5331e8c74acf7237395f5b9fb2bbb55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
