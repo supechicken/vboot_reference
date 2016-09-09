@@ -473,15 +473,15 @@ static int do_dump_fmap(int argc, char *argv[])
 		return 1;
 	}
 
-	if (0 != stat(argv[optind], &sb)) {
-		fprintf(stderr, "%s: can't stat %s: %s\n",
+	fd = open(argv[optind], O_RDONLY);
+	if (fd < 0) {
+		fprintf(stderr, "%s: can't open %s: %s\n",
 			argv[0], argv[optind], strerror(errno));
 		return 1;
 	}
 
-	fd = open(argv[optind], O_RDONLY);
-	if (fd < 0) {
-		fprintf(stderr, "%s: can't open %s: %s\n",
+	if (0 != fstat(fd, &sb)) {
+		fprintf(stderr, "%s: can't stat %s: %s\n",
 			argv[0], argv[optind], strerror(errno));
 		return 1;
 	}

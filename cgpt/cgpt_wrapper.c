@@ -150,7 +150,7 @@ cleanup:
 }
 
 int main(int argc, const char *argv[]) {
-  char resolved_cgpt[PATH_MAX];
+  static char resolved_cgpt[PATH_MAX];
   pid_t pid = getpid();
   char exe_link[40];
 
