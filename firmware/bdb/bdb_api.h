@@ -81,6 +81,21 @@ int vba_update_kernel_version(struct vba_context *ctx,
 int vba_update_buc(struct vba_context *ctx, uint8_t *new_buc);
 
 /**
+ * Derive a BDB secret
+ *
+ * This derives a new secret from BDS
+ *
+ * @param ctx
+ * @param type		Type of secret to derive
+ * @param wsr		Buffer containing work secret register value
+ * @param buf		Buffer containing data to derive secret from
+ * @param buf_size	Size of <buf>
+ * @return		BDB_SUCCESS or BDB_ERROR_*
+ */
+int vba_derive_secret_ro(struct vba_context *ctx, enum bdb_secret_type type,
+			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size);
+
+/**
  * Derive a secret
  *
  * This derives a new secret from a secret passed from SP-RO.
