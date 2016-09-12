@@ -32,42 +32,85 @@ static int get_constant(const uint8_t *buf, uint32_t buf_size,
 	return BDB_SUCCESS;
 }
 
-int vba_derive_secret(struct vba_context *ctx, enum bdb_secret_type type,
-		      const uint8_t *buf, uint32_t buf_size)
+int vba_derive_secret_ro(struct vba_context *ctx, enum bdb_secret_type type,
+			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size)
 {
 	uint8_t c[BDB_CONSTANT_BLOCK_SIZE];
-	const uint8_t *b = (const uint8_t *)c;
-	uint8_t *s;
-	uint8_t *o;
+	const uint8_t *by = (const uint8_t *)c;
+	uint8_t *to;
+	uint8_t *from = wsr;
 
 	switch (type) {
+	case BDB_SECRET_TYPE_WSR:
+		to = wsr;
+		by = secret_constant_x;
+		break;
 	case BDB_SECRET_TYPE_BDB:
-		s = o = ctx->ro_secrets->bdb;
-		if (get_constant(buf, buf_size, secret_constant_q, c))
+		to = ctx->ro_secrets->bdb;
+		if (get_constant(buf, buf_size, secret_constant_p, c))
 			return BDB_ERROR_SECRET_BDB;
 		break;
 	case BDB_SECRET_TYPE_BOOT_PATH:
-		s = o = ctx->ro_secrets->boot_path;
-		if (get_constant(buf, buf_size, secret_constant_l, c))
+		to = ctx->ro_secrets->boot_path;
+		if (get_constant(buf, buf_size, secret_constant_k, c))
 			return BDB_ERROR_SECRET_BOOT_PATH;
 		break;
 	case BDB_SECRET_TYPE_BOOT_VERIFIED:
-		s = o = ctx->ro_secrets->boot_verified;
-		if (ctx->flags & VBA_CONTEXT_FLAG_KERNEL_DATA_KEY_VERIFIED)
-			b = secret_constant_kv1;
+		to = ctx->ro_secrets->boot_verified;
+		if (ctx->flags & VBA_CONTEXT_FLAG_BDB_KEY_EFUSED)
+			by = secret_constant_fv0;
 		else
-			b = secret_constant_kv0;
+			by = secret_constant_fv1;
 		break;
 	case BDB_SECRET_TYPE_BUC:
-		s = ctx->ro_secrets->boot_verified;
-		b = secret_constant_c;
-		o = ctx->rw_secrets->buc;
+		by = secret_constant_c;
+		to = ctx->rw_secrets->buc;
 		break;
 	default:
 		return BDB_ERROR_SECRET_TYPE;
 	}
 
-	vb2_sha256_extend(s, b, o);
+	vb2_sha256_extend(from, by, to);
+
+	return BDB_SUCCESS;
+}
+
+int vba_derive_secret(struct vba_context *ctx, enum bdb_secret_type type,
+		      const uint8_t *buf, uint32_t buf_size)
+{
+	uint8_t c[BDB_CONSTANT_BLOCK_SIZE];
+	const uint8_t *by = (const uint8_t *)c;
+	uint8_t *from;
+	uint8_t *to;
+
+	switch (type) {
+	case BDB_SECRET_TYPE_BDB:
+		from = to = ctx->ro_secrets->bdb;
+		if (get_constant(buf, buf_size, secret_constant_q, c))
+			return BDB_ERROR_SECRET_BDB;
+		break;
+	case BDB_SECRET_TYPE_BOOT_PATH:
+		from = to = ctx->ro_secrets->boot_path;
+		if (get_constant(buf, buf_size, secret_constant_l, c))
+			return BDB_ERROR_SECRET_BOOT_PATH;
+		break;
+	case BDB_SECRET_TYPE_BOOT_VERIFIED:
+		from = to = ctx->ro_secrets->boot_verified;
+		if (ctx->flags & VBA_CONTEXT_FLAG_KERNEL_DATA_KEY_VERIFIED)
+			by = secret_constant_kv1;
+		else
+			by = secret_constant_kv0;
+		break;
+	case BDB_SECRET_TYPE_BUC:
+		from = ctx->ro_secrets->boot_verified;
+		by = secret_constant_c;
+		to = ctx->rw_secrets->buc;
+		break;
+	default:
+		return BDB_ERROR_SECRET_TYPE;
+	}
+
+	vb2_sha256_extend(from, by, to);
 
 	return BDB_SUCCESS;
 }
