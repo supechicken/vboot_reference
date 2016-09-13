@@ -89,10 +89,13 @@ int vba_update_buc(struct vba_context *ctx, uint8_t *new_buc);
  * @param wsr		Buffer containing work secret register value
  * @param buf		Buffer containing data to derive secret from
  * @param buf_size	Size of <buf>
+ * @param extend	Function used to extend a secret
  * @return		BDB_SUCCESS or BDB_ERROR_*
  */
 int vba_derive_secret_ro(struct vba_context *ctx, enum bdb_secret_type type,
-			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size);
+			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size,
+			 void (*extend)(const uint8_t *from, const uint8_t *by,
+					 uint8_t *to));
 
 /**
  * Derive a secret

@@ -33,7 +33,9 @@ static int get_constant(const uint8_t *buf, uint32_t buf_size,
 }
 
 int vba_derive_secret_ro(struct vba_context *ctx, enum bdb_secret_type type,
-			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size)
+			 uint8_t *wsr, const uint8_t *buf, uint32_t buf_size,
+			 void (*extend)(const uint8_t *from, const uint8_t *by,
+					 uint8_t *to))
 {
 	uint8_t c[BDB_CONSTANT_BLOCK_SIZE];
 	uint8_t *from;
@@ -79,7 +81,10 @@ int vba_derive_secret_ro(struct vba_context *ctx, enum bdb_secret_type type,
 		return BDB_ERROR_SECRET_TYPE;
 	}
 
-	vb2_sha256_extend(from, by, to);
+	if (extend)
+		extend(from, by, to);
+	else
+		vb2_sha256_extend(from, by, to);
 
 	return BDB_SUCCESS;
 }
