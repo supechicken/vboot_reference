@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b77ca47_b12d7a57",
+        "filename": "futility/cmd_vbutil_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-13T19:37:09Z",
+      "side": 1,
+      "message": "Is coverity enforcing this check? free() is no-op if the pointer is null.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "a117605389615d23d0fafbadab194c8a91f2ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b77ca47_111d6e1c",
+        "filename": "futility/cmd_vbutil_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-13T19:37:09Z",
+      "side": 1,
+      "message": "Same comment here.",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 13
+      },
+      "revId": "a117605389615d23d0fafbadab194c8a91f2ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b77ca47_f1bf82cc",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-13T19:37:09Z",
+      "side": 1,
+      "message": "Same comment here.",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 10
+      },
+      "revId": "a117605389615d23d0fafbadab194c8a91f2ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b77ca47_31b66af4",
+        "filename": "host/lib/file_keys.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-13T19:37:09Z",
+      "side": 1,
+      "message": "The last piece violating indentation...",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "a117605389615d23d0fafbadab194c8a91f2ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
