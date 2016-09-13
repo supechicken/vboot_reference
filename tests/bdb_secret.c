@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <openssl/aes.h>
+#include "2sha.h"
+#include "bdb.h"
 #include "bdb_api.h"
 #include "host.h"
 #include "secrets.h"
@@ -109,6 +111,38 @@ static int read_bds(const char *filename, uint8_t *buf)
 	return 0;
 }
 
+/*
+ * xxx's implementation of sha256 extend
+ */
+static void sha256_extendish(const uint8_t *from, const uint8_t *by,
+			     uint8_t *to)
+{
+	struct vb2_sha256_context dc;
+
+	vb2_sha256_init(&dc);
+	memcpy((uint8_t *)dc.h, from, VB2_SHA256_DIGEST_SIZE);
+	vb2_sha256_update(&dc, by, VB2_SHA256_BLOCK_SIZE);
+	vb2_sha256_finalize(&dc, to);
+}
+
+static int derive_secret(struct vba_context *ctx, enum bdb_secret_type type,
+			 const uint8_t *wsr, struct bdb_key *key)
+{
+	uint32_t size = 0;
+
+	if (key)
+		size = key->struct_size;
+
+	if (vba_derive_secret_ro(ctx, type, (uint8_t *)wsr,
+				 (const uint8_t *)key, size,
+				 vb2_sha256_extend) == BDB_SUCCESS)
+		return 0;
+
+	return vba_derive_secret_ro(ctx, type, (uint8_t *)wsr,
+				    (const uint8_t *)key, size,
+				    sha256_extendish);
+}
+
 static void test_secret_bdb(struct vba_context *ctx,
 			    const uint8_t *wsr, const char *key_file)
 {
@@ -121,9 +155,7 @@ static void test_secret_bdb(struct vba_context *ctx,
 		return;
 	}
 
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_BDB, (uint8_t *)wsr,
-				       (const uint8_t *)key, key->struct_size),
-		  __func__);
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_BDB, wsr, key), __func__);
 	if (memcmp(ctx->secrets->bdb, expected_bdb, BDB_SECRET_SIZE))
 		/*
 		 * Dumps secret on failure. This allows the test bin to work as
@@ -146,8 +178,7 @@ static void test_secret_boot_path(struct vba_context *ctx,
 		return;
 	}
 
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_BDB, (uint8_t *)wsr,
-				       (const uint8_t *)key, key->struct_size),
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_BOOT_PATH, wsr, key),
 		  __func__);
 	if (memcmp(ctx->secrets->bdb, expected_boot_path, BDB_SECRET_SIZE))
 		dump_secret(ctx->secrets->bdb, "expected_boot_path");
@@ -161,8 +192,7 @@ static void test_secret_boot_verified(struct vba_context *ctx,
 	int bdb_key_fused = ctx->flags & VBA_CONTEXT_FLAG_BDB_KEY_EFUSED;
 	const uint8_t *expected;
 
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_BOOT_VERIFIED,
-				       (uint8_t *)wsr, NULL, 0),
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_BOOT_VERIFIED, wsr, NULL),
 		  __func__);
 	if (bdb_key_fused)
 		expected = expected_boot_verified_fv0;
@@ -180,8 +210,7 @@ static void test_secret_boot_verified(struct vba_context *ctx,
 
 static void test_secret_nvm_wp(struct vba_context *ctx, const uint8_t *wsr)
 {
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_NVM_WP,
-				       (uint8_t *)wsr, NULL, 0),
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_NVM_WP, wsr, NULL),
 		  __func__);
 	if (memcmp(ctx->secrets->nvm_wp, expected_nvm_wp, BDB_SECRET_SIZE))
 		dump_secret(ctx->secrets->nvm_wp, "expected_nvm_wp");
@@ -191,8 +220,7 @@ static void test_secret_nvm_wp(struct vba_context *ctx, const uint8_t *wsr)
 
 static void test_secret_nvm_rw(struct vba_context *ctx, const uint8_t *wsr)
 {
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_NVM_RW,
-				       (uint8_t *)wsr, NULL, 0),
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_NVM_RW, wsr, NULL),
 		  __func__);
 	if (memcmp(ctx->secrets->nvm_rw, expected_nvm_rw, BDB_SECRET_SIZE))
 		dump_secret(ctx->secrets->nvm_rw, "expected_nvm_rw");
@@ -203,7 +231,7 @@ static void test_secret_nvm_rw(struct vba_context *ctx, const uint8_t *wsr)
 static void test_secret_wsr(struct vba_context *ctx, uint8_t *wsr)
 {
 	/* Derive WSR. This has to be done last because it'll change WSR. */
-	TEST_SUCC(vba_derive_secret_ro(ctx, BDB_SECRET_TYPE_WSR, wsr, NULL, 0),
+	TEST_SUCC(derive_secret(ctx, BDB_SECRET_TYPE_WSR, wsr, NULL),
 		  __func__);
 	if (memcmp(wsr, expected_wsr, BDB_SECRET_SIZE))
 		dump_secret(wsr, "expected_wsr");
