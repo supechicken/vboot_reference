@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0b77ca47_c27cf279",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-14T01:20:52Z",
+      "side": 1,
+      "message": "Could you comment that in the code? This goes to .bss, right? Why is .bss less leaking than the stack?",
+      "parentUuid": "0b77ca47_6283beb5",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 8
+      },
+      "revId": "1cee84aac8f2ee334661745fb9bdd1d051531111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b77ca47_5425241a",
         "filename": "futility/cmd_dump_fmap.c",
         "patchSetId": 1
