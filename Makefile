@@ -616,7 +616,8 @@ UTIL_NAMES += \
 	utility/load_kernel_test \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
-	utility/verify_data
+	utility/verify_data \
+	utility/bdb_verify
 
 LZMA_LIBS := $(shell ${PKG_CONFIG} --libs liblzma)
 YAML_LIBS := $(shell ${PKG_CONFIG} --libs yaml-0.1)
@@ -1094,8 +1095,9 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
-${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB}
+${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB} ${UTILBDB} ${FWLIB2X}
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
+${UTIL_BINS}: LIBS += ${UTILBDB_OBJS} ${BDBLIB_OBJS} ${FWLIB2X}
 
 # Utilities for auto-update toolkits must be statically linked.
 ${UTIL_BINS_STATIC}: LDFLAGS += -static
@@ -1247,6 +1249,10 @@ CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
+
+${BUILD}/utility/bdb_verify: ${UTILBDB}
+${BUILD}/utility/bdb_verify.o: INCLUDES += -Ifirmware/bdb
+${BUILD}/utility/bdb_verify: LDLIBS += ${CRYPTO_LIBS} ${UTILBDB}
 
 ${BUILD}/host/linktest/main: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vboot_common2_tests: LDLIBS += ${CRYPTO_LIBS}
