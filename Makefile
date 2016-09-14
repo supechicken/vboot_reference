@@ -381,6 +381,7 @@ BDBLIB_SRCS = \
 	firmware/bdb/misc.c \
 	firmware/bdb/rsa.c \
 	firmware/bdb/secrets.c \
+	firmware/bdb/sha.c \
 	firmware/bdb/stub.c \
 	firmware/bdb/nvm.c
 
@@ -617,7 +618,8 @@ UTIL_NAMES += \
 	utility/load_kernel_test \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
-	utility/verify_data
+	utility/verify_data \
+	utility/bdb_extend
 
 LZMA_LIBS := $(shell ${PKG_CONFIG} --libs liblzma)
 YAML_LIBS := $(shell ${PKG_CONFIG} --libs yaml-0.1)
@@ -1248,6 +1250,11 @@ CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
+
+${BUILD}/utility/bdb_extend: ${FWLIB2X} ${UTILBDB}
+${BUILD}/utility/bdb_extend.o: INCLUDES += -Ifirmware/bdb
+${BUILD}/utility/bdb_extend: LDLIBS += ${CRYPTO_LIBS}
+${BUILD}/utility/bdb_extend: LIBS += ${UTILBDB} ${FWLIB2X}
 
 ${BUILD}/host/linktest/main: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vboot_common2_tests: LDLIBS += ${CRYPTO_LIBS}

@@ -166,6 +166,18 @@ const struct bdb_sig *bdb_get_data_sig(const void *buf);
 int bdb_sha256(void *digest, const void *buf, size_t size);
 
 /**
+ * (DO NOT CALL) xxx's implementation of sha256 extend
+ *
+ * This performs incorrect but still cryptographically secure sha256 extension.
+ * This is provided for test purpose only.
+ *
+ * @param from	Hash to be extended. It has to be the hash size.
+ * @param by	Block to be extended by. It has to be the hash block size.
+ * @param to	Destination for extended data
+ */
+void sha256_extendish(const uint8_t *from, const uint8_t *by, uint8_t *to);
+
+/**
  * Verify a RSA-4096 signed digest
  *
  * @param key_data	Key data to use (BDB_RSA4096_KEY_DATA_SIZE bytes)
