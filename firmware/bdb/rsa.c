@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -150,7 +150,7 @@ int vb2_check_padding(const uint8_t *sig, const struct public_key *key,
 
 	/*
 	 * Then the tail.  Even though there are probably no timing issues
-	 * here, we use vb2_safe_memcmp() just to be on the safe side.
+	 * here, we use safe_memcmp() just to be on the safe side.
 	 */
 	result |= vb2_safe_memcmp(sig, sha256_tail, tail_size);
 
