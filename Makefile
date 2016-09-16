@@ -669,6 +669,7 @@ FUTIL_STATIC_SRCS = \
 
 FUTIL_SRCS = \
 	${FUTIL_STATIC_SRCS} \
+	futility/cmd_bdb.c \
 	futility/cmd_create.c \
 	futility/cmd_dump_kernel_config.c \
 	futility/cmd_load_fmap.c \
@@ -698,7 +699,8 @@ FUTIL_STATIC_OBJS = ${FUTIL_STATIC_SRCS:%.c=${BUILD}/%.o} \
 	${FUTIL_STATIC_CMD_LIST:%.c=%.o}
 FUTIL_OBJS = ${FUTIL_SRCS:%.c=${BUILD}/%.o} ${FUTIL_CMD_LIST:%.c=%.o}
 
-${FUTIL_OBJS}: INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include
+${FUTIL_OBJS}: INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include \
+			   -Ifirmware/bdb
 
 ALL_OBJS += ${FUTIL_OBJS}
 
@@ -1136,7 +1138,7 @@ ${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS} ${FWLIB20}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20} ${UTILBDB_OBJS}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
