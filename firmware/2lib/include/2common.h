@@ -8,6 +8,7 @@
 #ifndef VBOOT_REFERENCE_VBOOT_2COMMON_H_
 #define VBOOT_REFERENCE_VBOOT_2COMMON_H_
 
+#include <stddef.h>	/* for ptrdiff_t */
 #include "2api.h"
 #include "2return_codes.h"
 #include "2sha.h"
