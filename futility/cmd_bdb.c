@@ -229,15 +229,157 @@ exit:
 /**
  * Resign a BDB using new keys
  *
- * This resigns data key with a new pair of BDB keys. Optionally, it resigns
- * hash entries with a new pair of data keys if they're provided.
- *
- * @return
+ * It runs BDB verification using given keys. As verification fails, It uses
+ * the given private keys to resign the BDB. If a private key is required but
+ * not given it returns an error.
  */
-static int do_resign(void)
+static int do_resign(const char *bdb_filename,
+		     const char *bdbkey_pri_filename,
+		     const char *bdbkey_pub_filename,
+		     uint32_t bdbkey_version,
+		     const char *datakey_pri_filename,
+		     const char *datakey_pub_filename,
+		     uint32_t datakey_version)
 {
-	fprintf(stderr, "'resign' command is not implemented\n");
-	return -1;
+	uint8_t *bdb = NULL;
+	const struct bdb_header *bdb_header;
+	struct bdb_key *bdbkey, *datakey;
+	struct rsa_st *bdbkey_pri = NULL;
+	struct rsa_st *datakey_pri = NULL;
+	uint32_t bdb_size;
+	int resigned = 0;
+	int rv = 0;
+
+	if (!bdb_filename) {
+		fprintf(stderr, "BDB file must be specified\n");
+		rv = -1;
+		goto exit;
+	}
+
+	bdb = read_file(bdb_filename, &bdb_size);
+	if (!bdb) {
+		fprintf(stderr, "Unable to load BDB\n");
+		rv = -1;
+		goto exit;
+	}
+	bdb_header = bdb_get_header(bdb);
+
+	bdbkey = (struct bdb_key *)bdb_get_bdbkey(bdb);
+	if (bdbkey_pub_filename) {
+		struct bdb_key *key = bdb_create_key(bdbkey_pub_filename,
+						     bdbkey_version, NULL);
+		if (!key) {
+			fprintf(stderr, "Unable to read BDB key\n");
+			rv = -1;
+			goto exit;
+		}
+		if (key->struct_size != bdbkey->struct_size) {
+			fprintf(stderr,
+				"New BDB key size is different from the BDB "
+				"key size found in the given BDB.\n");
+			rv = -1;
+			goto exit;
+		}
+		/* Install the new BDB key */
+		memcpy(bdbkey, key, bdbkey->struct_size);
+	}
+
+	datakey = (struct bdb_key *)bdb_get_datakey(bdb);
+	if (datakey_pub_filename) {
+		struct bdb_key *key = bdb_create_key(datakey_pub_filename,
+						     datakey_version, NULL);
+		if (!key) {
+			fprintf(stderr, "Unable to read data key\n");
+			rv = -1;
+			goto exit;
+		}
+		/* Install the new data key */
+		if (key->struct_size != datakey->struct_size) {
+			fprintf(stderr,
+				"New data key size is different from the data "
+				"key size found in the given BDB.\n");
+			rv = -1;
+			goto exit;
+		}
+		memcpy(datakey, key, datakey->struct_size);
+	}
+
+	/* Check validity for the new bdb key */
+	rv = bdb_verify(bdb, bdb_size, NULL);
+	if (rv == BDB_ERROR_HEADER_SIG) {
+		/* This is expected failure if we installed a new BDB key.
+		 * Let's resign to fix it. */
+		resigned = 1;
+		fprintf(stderr,
+			"Key signature is invalid. Need to resign the key.\n");
+		if (bdbkey_pri_filename) {
+			bdbkey_pri = read_pem(bdbkey_pri_filename);
+			bdb_sign_datakey(&bdb, bdbkey_pri);
+		} else {
+			fprintf(stderr,
+				"Private BDB key is required to resign the key "
+				"but not provided.\n");
+			rv = -1;
+			goto exit;
+		}
+	} else {
+		fprintf(stderr, "Resigning a key is not required.\n");
+	}
+
+	/* Check validity for the new data key */
+	rv = bdb_verify(bdb, bdb_size, NULL);
+	if (rv == BDB_ERROR_DATA_SIG || rv == BDB_ERROR_DATA_CHECK_SIG) {
+		/* This is expected failure if we installed a new data key
+		 * or sig is corrupted, which happens when a new hash is added
+		 * by 'add' sub-command. Let's resign the data */
+		resigned = 1;
+		fprintf(stderr,
+			"Data signature is invalid. Need to resign hashes.\n");
+		if (datakey_pri_filename) {
+			datakey_pri = read_pem(datakey_pri_filename);
+			rv = bdb_sign_data(&bdb, datakey_pri);
+			if (rv) {
+				fprintf(stderr,
+					"Failed to resign hashes: %d\n", rv);
+				goto exit;
+			}
+		} else {
+			fprintf(stderr,
+				"Private data key is required to resign data "
+				"but not provided.\n");
+			rv = -1;
+			goto exit;
+		}
+	} else {
+		fprintf(stderr, "Resigning data is not required.\n");
+	}
+
+	if (!resigned)
+		goto exit;
+
+	/* Check validity one last time */
+	rv = bdb_verify(bdb, bdb_size, NULL);
+	if (rv && rv != BDB_GOOD_OTHER_THAN_KEY) {
+		/* This is not expected. We installed new keys and resigned
+		 * BDB but it's still invalid. */
+		fprintf(stderr, "BDB is resigned but it's invalid: %d\n", rv);
+		goto exit;
+	}
+
+	rv = write_file(bdb_filename, bdb, bdb_header->bdb_size);
+	if (rv) {
+		fprintf(stderr, "Unable to write BDB.\n");
+		goto exit;
+	}
+
+	fprintf(stderr, "Successfully resigned BDB.\n");
+
+exit:
+	free(bdb);
+	RSA_free(bdbkey_pri);
+	RSA_free(datakey_pri);
+
+	return rv;
 }
 
 static int do_verify(void)
@@ -398,7 +540,10 @@ static int do_bdb(int argc, char *argv[])
 				 datakey_pri_filename, datakey_pub_filename,
 				 datakey_version);
 	case OPT_MODE_RESIGN:
-		return do_resign();
+		return do_resign(bdb_filename, bdbkey_pri_filename,
+				 bdbkey_pub_filename, bdbkey_version,
+				 datakey_pri_filename, datakey_pub_filename,
+				 datakey_version);
 	case OPT_MODE_VERIFY:
 		return do_verify();
 	case OPT_MODE_NONE:
