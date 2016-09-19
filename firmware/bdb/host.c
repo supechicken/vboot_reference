@@ -9,6 +9,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "2common.h"
 #include "2sha.h"
 #include "bdb.h"
 #include "host.h"
@@ -222,6 +223,62 @@ struct bdb_sig *bdb_create_sig(const void *data,
 		return NULL;
 	}
 	return sig;
+}
+
+int bdb_sign_datakey(uint8_t **bdb, struct rsa_st *key)
+{
+	const struct bdb_header *header = bdb_get_header(*bdb);
+	const struct bdb_key *bdbkey = bdb_get_bdbkey(*bdb);
+	const void *oem = bdb_get_oem_area_0(*bdb);
+	const struct bdb_sig *sig = bdb_get_header_sig(*bdb);
+	const uint64_t sig_offset = vb2_offset_of(*bdb,
+						  bdb_get_header_sig(*bdb));
+	const uint64_t data_offset = vb2_offset_of(*bdb, bdb_get_data(*bdb));
+	struct bdb_sig *new_sig;
+	uint8_t *new_bdb;
+
+	if (sig_offset > data_offset)
+		/* Something is wrong with the BDB structure */
+		return BDB_ERROR_UNKNOWN;
+
+	new_sig = bdb_create_sig(oem, header->signed_size,
+				 key, bdbkey->sig_alg, NULL);
+	new_bdb = calloc(1, header->bdb_size
+			 + (new_sig->struct_size - sig->struct_size));
+	/* copy up to sig */
+	memcpy(new_bdb, *bdb, sig_offset);
+	/* copy new sig */
+	memcpy(new_bdb + sig_offset, new_sig, new_sig->struct_size);
+	/* copy the rest */
+	memcpy(new_bdb + sig_offset + new_sig->struct_size,
+	       *bdb + data_offset, header->bdb_size - data_offset);
+
+	free(*bdb);
+	free(new_sig);
+	*bdb = new_bdb;
+
+	return BDB_SUCCESS;
+}
+
+int bdb_sign_data(uint8_t **bdb, struct rsa_st *key)
+{
+	const struct bdb_key *datakey = bdb_get_datakey(*bdb);
+	const struct bdb_data *data = bdb_get_data(*bdb);
+	const uint64_t sig_offset = vb2_offset_of(*bdb, bdb_get_data_sig(*bdb));
+	struct bdb_sig *new_sig;
+	uint8_t *new_bdb;
+
+	new_sig = bdb_create_sig(data, data->signed_size,
+				 key, datakey->sig_alg, NULL);
+	new_bdb = calloc(1, sig_offset + new_sig->struct_size);
+	memcpy(new_bdb, *bdb, sig_offset);
+	memcpy(new_bdb + sig_offset, new_sig, new_sig->struct_size);
+
+	free(*bdb);
+	free(new_sig);
+	*bdb = new_bdb;
+
+	return BDB_SUCCESS;
 }
 
 struct bdb_header *bdb_create(struct bdb_create_params *p)
