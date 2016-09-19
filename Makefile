@@ -312,6 +312,7 @@ FWLIB20 = ${BUILD}/vboot_fw20.a
 # Vboot 2.1 (not yet ready - see firmware/README)
 FWLIB21 = ${BUILD}/vboot_fw21.a
 
+# Static library containing firmware APIs for common boot flow
 BDBLIB = ${BUILD}/bdb.a
 
 # Firmware library sources needed by VbInit() call
@@ -380,6 +381,7 @@ BDBLIB_SRCS = \
 	firmware/bdb/misc.c \
 	firmware/bdb/rsa.c \
 	firmware/bdb/secrets.c \
+	firmware/bdb/sha.c \
 	firmware/bdb/stub.c \
 	firmware/bdb/nvm.c
 
@@ -444,6 +446,8 @@ ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS} \
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
+
+# Static library containing both host and firmware APIs
 UTILBDB = ${BUILD}/libvboot_utilbdb.a
 
 UTILLIB_SRCS = \
@@ -477,12 +481,8 @@ UTILLIB_SRCS = \
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
 
+# Source files containing host side APIs for common boot flow
 UTILBDB_SRCS += \
-	firmware/bdb/bdb.c \
-	firmware/bdb/misc.c \
-	firmware/bdb/secrets.c \
-	firmware/bdb/stub.c \
-	firmware/bdb/nvm.c \
 	firmware/bdb/host.c
 
 UTILBDB_OBJS = ${UTILBDB_SRCS:%.c=${BUILD}/%.o}
@@ -621,8 +621,7 @@ UTIL_NAMES += \
 	utility/load_kernel_test \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
-	utility/verify_data \
-	utility/bdb_verify
+	utility/verify_data
 
 LZMA_LIBS := $(shell ${PKG_CONFIG} --libs liblzma)
 YAML_LIBS := $(shell ${PKG_CONFIG} --libs yaml-0.1)
@@ -1102,9 +1101,9 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
-${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB} ${UTILBDB} ${FWLIB2X}
+${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB} ${FWLIB2X}
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
-${UTIL_BINS}: LIBS += ${UTILBDB_OBJS} ${FWLIB2X}
+${UTIL_BINS}: LIBS += ${FWLIB2X}
 
 # Utilities for auto-update toolkits must be statically linked.
 ${UTIL_BINS_STATIC}: LDFLAGS += -static
@@ -1143,7 +1142,7 @@ ${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS} ${FWLIB20}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20} ${UTILBDB_OBJS}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20} ${UTILBDB_OBJS} ${BDBLIB_OBJS}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
@@ -1195,7 +1194,7 @@ ${TEST20_BINS}: LIBS += ${FWLIB20}
 
 ${TESTBDB_BINS}: ${FWLIB2X} ${UTILBDB}
 ${TESTBDB_BINS}: INCLUDES += -Ifirmware/bdb
-${TESTBDB_BINS}: LIBS += ${UTILBDB_OBJS} ${BDBLIB_OBJS} ${FWLIB2X}
+${TESTBDB_BINS}: LIBS += ${UTILBDB} ${FWLIB2X}
 
 ${TESTLIB}: ${TESTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
@@ -1257,9 +1256,10 @@ ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 
-${BUILD}/utility/bdb_verify: ${UTILBDB}
+${BUILD}/utility/bdb_verify: ${FWLIB2X} ${BDBLIB} ${UTILBDB}
 ${BUILD}/utility/bdb_verify.o: INCLUDES += -Ifirmware/bdb
-${BUILD}/utility/bdb_verify: LDLIBS += ${CRYPTO_LIBS} ${UTILBDB}
+${BUILD}/utility/bdb_verify: LDLIBS += ${CRYPTO_LIBS}
+${BUILD}/utility/bdb_verify: LIBS += ${BDBLIB_OBJS} ${UTILBDB_OBJS} ${FWLIB2X}
 
 ${BUILD}/host/linktest/main: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/tests/vboot_common2_tests: LDLIBS += ${CRYPTO_LIBS}

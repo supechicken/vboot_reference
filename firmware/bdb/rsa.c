@@ -6,6 +6,7 @@
  */
 
 #include <string.h>
+#include "2api.h"
 #include "bdb.h"
 
 /* Public key structure in RAM */
@@ -91,25 +92,6 @@ static void montMul(const struct public_key *key,
 	}
 }
 
-int vb2_safe_memcmp(const void *s1, const void *s2, size_t size)
-{
-	const unsigned char *us1 = s1;
-	const unsigned char *us2 = s2;
-	int result = 0;
-
-	if (0 == size)
-		return 0;
-
-	/*
-	 * Code snippet without data-dependent branch due to Nate Lawson
-	 * (nate@root.org) of Root Labs.
-	 */
-	while (size--)
-		result |= *us1++ ^ *us2++;
-
-	return result != 0;
-}
-
 /*
  * PKCS 1.5 padding (from the RSA PKCS#1 v2.1 standard)
  *
@@ -132,7 +114,7 @@ static const uint8_t sha256_tail[] = {
 	0x05,0x00,0x04,0x20
 };
 
-int vb2_check_padding(const uint8_t *sig, const struct public_key *key,
+static int check_padding(const uint8_t *sig, const struct public_key *key,
 		      uint32_t pad_size)
 {
 	/* Determine padding to use depending on the signature type */
@@ -235,7 +217,7 @@ int bdb_rsa4096_verify(const uint8_t *key_data,
 	 * reduce the risk of timing based attacks.
 	 */
 	pad_size = key.arrsize * sizeof(uint32_t) - BDB_SHA256_DIGEST_SIZE;
-	rv = vb2_check_padding(sig_work, &key, pad_size);
+	rv = check_padding(sig_work, &key, pad_size);
 
 	/*
 	 * Check digest.  Even though there are probably no timing issues here,
@@ -324,7 +306,7 @@ int bdb_rsa3072b_verify(const uint8_t *key_data,
 	 * reduce the risk of timing based attacks.
 	 */
 	pad_size = key.arrsize * sizeof(uint32_t) - BDB_SHA256_DIGEST_SIZE;
-	rv = vb2_check_padding(sig_work, &key, pad_size);
+	rv = check_padding(sig_work, &key, pad_size);
 
 	/*
 	 * Check digest.  Even though there are probably no timing issues here,

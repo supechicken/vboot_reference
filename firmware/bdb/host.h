@@ -156,6 +156,9 @@ struct bdb_create_params
 	uint32_t num_hashes;
 };
 
+int bdb_sign_datakey(uint8_t *bdb, struct rsa_st *key);
+int bdb_sign_data(uint8_t **bdb, struct rsa_st *key);
+
 /**
  * Create a new BDB
  *
