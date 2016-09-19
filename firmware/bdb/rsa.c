@@ -1,4 +1,4 @@
-/* Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -33,7 +33,7 @@ static void subM(const struct public_key *key, uint32_t *a)
 /**
  * Return a[] >= mod
  */
-int vb2_mont_ge(const struct public_key *key, uint32_t *a)
+static int vb2_mont_ge(const struct public_key *key, uint32_t *a)
 {
 	uint32_t i;
 	for (i = key->arrsize; i;) {

@@ -13,6 +13,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "bdb.h"
 #include "bdb_struct.h"
 #include "futility.h"
 #include "host.h"
@@ -31,6 +32,7 @@ enum {
 	OPT_BDBKEY_PUB,
 	OPT_DATAKEY_PRI,
 	OPT_DATAKEY_PUB,
+	OPT_DATA,
 	/* key version */
 	OPT_BDBKEY_VERSION,
 	OPT_DATAKEY_VERSION,
@@ -54,6 +56,7 @@ static const struct option long_opts[] = {
 	{"datakey_pub", 1, 0, OPT_DATAKEY_PUB},
 	{"bdbkey_version", 1, 0, OPT_BDBKEY_VERSION},
 	{"datakey_version", 1, 0, OPT_DATAKEY_VERSION},
+	{"data", 1, 0, OPT_DATA},
 	{"offset", 1, 0, OPT_OFFSET},
 	{"partition", 1, 0, OPT_PARTITION},
 	{"type", 1, 0, OPT_TYPE},
@@ -66,24 +69,78 @@ static const struct option long_opts[] = {
 /**
  * Add hash entry to BDB
  *
- * This adds a hash entry to a BDB using a provided private data key. It then
- * checks whether the resulting BDB is valid or not. So, if the given key does
- * not match the key found in the BDB, verification fails.
+ * This adds a hash entry to a BDB. It does not change the signature. Hence,
+ * the produced BDB needs to be resigned using the resign sub-command.
  *
  * @param bdb_filename
- * @param datakey_pri_filename
  * @param offset
  * @param partition
  * @param type
  * @param load_address
  * @return
  */
-static int do_add(const char *bdb_filename, const char *datakey_pri_filename,
-		  uint64_t offset, uint8_t partition, uint8_t type,
-		  uint64_t load_address)
+static int do_add(const char *bdb_filename, const char *data_filename,
+		  uint64_t offset, uint8_t partition,
+		  uint8_t type, uint64_t load_address)
 {
-	fprintf(stderr, "'add' command is not implemented\n");
-	return -1;
+	uint8_t *bdb, *data, *new_bdb;
+	uint32_t bdb_size, data_size;
+	struct bdb_header *bdb_header;
+	struct bdb_data *data_header;
+	struct bdb_hash *new_hash;
+	int rv = 0;
+
+	bdb = read_file(bdb_filename, &bdb_size);
+	data = read_file(data_filename, &data_size);
+	if (!bdb || !data) {
+		fprintf(stderr, "Unable to load BDB or data\n");
+		rv = -1;
+		goto exit;
+	}
+
+	/* Create a copy of BDB */
+	new_bdb = calloc(1, bdb_size + sizeof(*new_hash));
+	memcpy(new_bdb, bdb, bdb_size);
+
+	/* Update new BDB header */
+	bdb_header = (struct bdb_header *)bdb_get_header(new_bdb);
+	bdb_header->bdb_size += sizeof(*new_hash);
+
+	data_header = (struct bdb_data *)bdb_get_data(new_bdb);
+
+	/* Update new hash. We're overwriting the data signature, which
+	 * is already invalid anyway. */
+	new_hash = (struct bdb_hash *)((uint8_t *)data_header
+			+ data_header->signed_size);
+	new_hash->size = data_size;
+	new_hash->type = type;
+	new_hash->load_address = load_address;
+	new_hash->partition = partition;
+	new_hash->offset = offset;
+	if (bdb_sha256(new_hash->digest, data, new_hash->size)) {
+		fprintf(stderr, "Unable to calculate hash\n");
+		rv = -1;
+		goto exit;
+	}
+
+	/* Update data header */
+	data_header->num_hashes++;
+	data_header->signed_size += sizeof(*new_hash);
+
+	rv = write_file(bdb_filename, bdb_header, bdb_header->bdb_size);
+	if (rv) {
+		fprintf(stderr, "Unable to write BDB\n");
+		goto exit;
+	}
+
+	fprintf(stderr, "Data is added to BDB successfully. Resign required\n");
+
+exit:
+	free(bdb);
+	free(data);
+	free(new_bdb);
+
+	return rv;
 }
 
 /**
@@ -220,6 +277,7 @@ static int do_bdb(int argc, char *argv[])
 	const char *bdbkey_pub_filename = NULL;
 	const char *datakey_pri_filename = NULL;
 	const char *datakey_pub_filename = NULL;
+	const char *data_filename = NULL;
 	uint32_t bdbkey_version = 0;
 	uint32_t datakey_version = 0;
 	uint64_t offset = 0;
@@ -263,6 +321,9 @@ static int do_bdb(int argc, char *argv[])
 			break;
 		case OPT_DATAKEY_PUB:
 			datakey_pub_filename = optarg;
+			break;
+		case OPT_DATA:
+			data_filename = optarg;
 			break;
 		case OPT_BDBKEY_VERSION:
 			bdbkey_version = strtoul(optarg, &e, 0);
@@ -323,8 +384,8 @@ static int do_bdb(int argc, char *argv[])
 
 	switch (mode) {
 	case OPT_MODE_ADD:
-		return do_add(bdb_filename, datakey_pri_filename, offset,
-			      partition, type, load_address);
+		return do_add(bdb_filename, data_filename,
+			      offset, partition, type, load_address);
 	case OPT_MODE_CREATE:
 		return do_create(bdb_filename, bdbkey_pri_filename,
 				 bdbkey_pub_filename, bdbkey_version,

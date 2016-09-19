@@ -478,6 +478,11 @@ UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
 
 UTILBDB_SRCS += \
+	firmware/bdb/bdb.c \
+	firmware/bdb/misc.c \
+	firmware/bdb/secrets.c \
+	firmware/bdb/stub.c \
+	firmware/bdb/nvm.c \
 	firmware/bdb/host.c
 
 UTILBDB_OBJS = ${UTILBDB_SRCS:%.c=${BUILD}/%.o}
@@ -1099,7 +1104,7 @@ ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB} ${UTILBDB} ${FWLIB2X}
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
-${UTIL_BINS}: LIBS += ${UTILBDB_OBJS} ${BDBLIB_OBJS} ${FWLIB2X}
+${UTIL_BINS}: LIBS += ${UTILBDB_OBJS} ${FWLIB2X}
 
 # Utilities for auto-update toolkits must be statically linked.
 ${UTIL_BINS_STATIC}: LDFLAGS += -static
