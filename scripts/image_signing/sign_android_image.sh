@@ -185,10 +185,32 @@ reapply_file_security_context() {
       "${system_mnt}"
 }
 
+# Restore file capabilities.  This has to run after all file changes, before
+# creating the new squashfs image.
+reapply_file_capabilities() {
+  local cap_list=$1
+
+  info "Reapplying file capabilities"
+
+  while read l; do
+    # This assumes that none of the filenames contain whitespace, which is true
+    # for Android.
+    local filename=`echo "${l}" | cut -d' ' -f1`
+    local capabilities=`echo "${l}" | cut -d' ' -f2-`
+    sudo /sbin/setcap "${capabilities}" "${filename}"
+  done < "${cap_list}"
+}
+
 # Snapshot file properties in a directory recursively.
 snapshot_file_properties() {
   local dir=$1
   sudo find "${dir}" -exec stat -c '%n:%u:%g:%a:%C' {} + | sort
+}
+
+# Snapshot file capabilities in a directory recursively.
+snapshot_file_capabilities() {
+  local dir=$1
+  sudo /sbin/getcap -r "${dir}" | sort
 }
 
 main() {
@@ -215,7 +237,16 @@ main() {
   local working_dir=$(make_temp_dir)
   local system_mnt="${working_dir}/mnt"
 
-  info "Unpacking sqaushfs image to ${system_img}"
+  info "Mounting squashfs image to ${system_mnt}"
+  mkdir "${system_mnt}"
+  sudo mount -o loop,ro "${system_img}" "${system_mnt}"
+  # unsquashfs does not correctly preserve file capabilities, so we need to
+  # perform this prior to unsquashing the files.
+  snapshot_file_capabilities \
+      "${system_mnt}" > "${working_dir}/capabilities.orig"
+  sudo umount "${system_mnt}"
+
+  info "Unpacking sqaushfs image to ${system_mnt}"
   sudo unsquashfs -f -no-progress -d "${system_mnt}" "${system_img}"
 
   snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.orig"
@@ -224,12 +255,18 @@ main() {
   update_sepolicy "${system_mnt}" "${key_dir}"
   replace_ota_cert "${system_mnt}" "${key_dir}/releasekey.x509.pem"
   reapply_file_security_context "${system_mnt}" "${root_fs_dir}"
+  reapply_file_capabilities "${working_dir}/capabilities.orig"
 
-  # Sanity check.
+  # Sanity checks.
   snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.new"
   local d
   if ! d=$(diff "${working_dir}"/properties.{orig,new}); then
     die "Unexpected change of file property, diff\n${d}"
+  fi
+  snapshot_file_capabilities \
+      "${system_mnt}" > "${working_dir}/capabilities.new"
+  if ! d=$(diff "${working_dir}"/capabilities.{orig,new}); then
+    die "Unexpected change of file capabilities, diff\n${d}"
   fi
 
   info "Repacking sqaushfs image"
