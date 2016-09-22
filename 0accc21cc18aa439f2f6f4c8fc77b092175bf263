@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d04e430b_9c61850d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-22T03:14:48Z",
+      "side": 1,
+      "message": "missing `local l`\n\nhowever, could you please call it \"line\" ?  \"l\" is easy to confuse with I or 1 depending on the font.",
+      "revId": "0accc21cc18aa439f2f6f4c8fc77b092175bf263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0dd4f60_7124d020",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
@@ -13,6 +30,23 @@
       "writtenOn": "2016-09-22T02:55:29Z",
       "side": 1,
       "message": "Could you perhaps avoid this issue by using:\n\ngetfattr --dump --recursive --match\u003d-\n\nalong with setfattr --restore? This should also take care of the SELinux case (though would be good to double check that the output matches).",
+      "revId": "0accc21cc18aa439f2f6f4c8fc77b092175bf263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d04e430b_bc66c120",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-22T03:14:48Z",
+      "side": 1,
+      "message": "we don\u0027t use `...` anywhere ... it should be $(...)\n\nif it\u0027s just space delimited, you could do:\n\n filename\u003d${l%% *}\n capabilities\u003d${l#* }",
       "revId": "0accc21cc18aa439f2f6f4c8fc77b092175bf263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
