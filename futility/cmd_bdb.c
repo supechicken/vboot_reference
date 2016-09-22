@@ -225,29 +225,29 @@ static int install_bdbkey(uint8_t **bdb, const struct bdb_key *new_key)
 
 	header = (struct bdb_header *)bdb_get_header(*bdb);
 	key = bdb_get_bdbkey(*bdb);
-	new_size = header->bdb_size + new_key->struct_size - key->struct_size;
+	new_size = bdb_size_of(*bdb) + new_key->struct_size - key->struct_size;
 	new_bdb = calloc(1, new_size);
 	if (!new_bdb) {
 		fprintf(stderr, "Unable to allocate memory\n");
 		return -1;
 	}
 
+	/* copy BDB header */
 	p = *bdb;
 	q = new_bdb;
-
-	/* copy BDB header */
 	l = header->struct_size;
 	memcpy(q, p, l);
-	p += l;
-	q += l;
 
 	/* copy new BDB key */
+	p += l;
+	q += l;
 	memcpy(q, new_key, new_key->struct_size);
-	p += key->struct_size;
-	q += new_key->struct_size;
 
 	/* copy the rest */
-	memcpy(q, p, header->bdb_size - vb2_offset_of(*bdb, p));
+	p += key->struct_size;
+	q += new_key->struct_size;
+	l = bdb_size_of(*bdb) - vb2_offset_of(*bdb, p);
+	memcpy(q, p, l);
 
 	/* update size */
 	header = (struct bdb_header *)bdb_get_header(new_bdb);
@@ -268,31 +268,30 @@ static int install_datakey(uint8_t **bdb, const struct bdb_key *new_key)
 	size_t new_size;
 	uint32_t l;
 
-	header = (struct bdb_header *)bdb_get_header(*bdb);
 	key = (struct bdb_key *)bdb_get_datakey(*bdb);
-	new_size = header->bdb_size + new_key->struct_size - key->struct_size;
+	new_size = bdb_size_of(*bdb) + new_key->struct_size - key->struct_size;
 	new_bdb = calloc(1, new_size);
 	if (!new_bdb) {
 		fprintf(stderr, "Unable to allocate memory\n");
 		return -1;
 	}
 
+	/* copy the stuff up to datakey */
 	p = *bdb;
 	q = new_bdb;
-
-	/* copy the stuff up to datakey */
-	l= vb2_offset_of(*bdb, key);
+	l = bdb_offset_of_datakey(*bdb);
 	memcpy(q, p, l);
-	p += l;
-	q += l;
 
 	/* copy new data key */
+	p += l;
+	q += l;
 	memcpy(q, new_key, new_key->struct_size);
-	p += key->struct_size;
-	q += new_key->struct_size;
 
 	/* copy the rest */
-	memcpy(q, p, header->bdb_size - vb2_offset_of(*bdb, p));
+	p += key->struct_size;
+	q += new_key->struct_size;
+	l = bdb_size_of(*bdb) - vb2_offset_of(*bdb, p);
+	memcpy(q, p, l);
 
 	/* update size */
 	header = (struct bdb_header *)bdb_get_header(new_bdb);
@@ -376,7 +375,7 @@ static int do_resign(const char *bdb_filename,
 				"provided.\n");
 			goto exit;
 		}
-			bdbkey_pri = read_pem(bdbkey_pri_filename);
+		bdbkey_pri = read_pem(bdbkey_pri_filename);
 		rv = bdb_sign_datakey(&bdb, bdbkey_pri);
 		if (rv) {
 			fprintf(stderr, "Failed to resign data key: %d\n", rv);
