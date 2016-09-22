@@ -22,6 +22,30 @@
       "revId": "bad479ab362fa731bdfe71c6f67989db777dc157",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d04e430b_4589e0cf",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-22T20:05:52Z",
+      "side": 1,
+      "message": "the issue is sudo -- sudo will sanitize PATH and then execute what it finds via that.  the way he\u0027s doing it here is the right method.  the only other alternative would be the uglier:\n\n sudo env PATH\u003d\"${PATH}\" unsquashfs ...\n\n`sudo -E` affects the env passed to the program that sudo itself already found via sanitized PATH.\n\n*nix is fun!",
+      "parentUuid": "d04e430b_05c198f7",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 38
+      },
+      "revId": "bad479ab362fa731bdfe71c6f67989db777dc157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
