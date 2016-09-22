@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d04e430b_22dfea25",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2016-09-22T19:40:31Z",
+      "side": 1,
+      "message": "How come you only set the permissions of the new keys if someone specifies a new directory?  There\u0027s a weird mixing of options here because \"--output .\" does different things than not specifying output which is counterintuitive.",
+      "revId": "7ea20b2885311fc17ae3a3b3b7602d6cb3d9ce44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
