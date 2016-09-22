@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "107a9b68_99e71f11",
+        "filename": "firmware/bdb/bdb.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-22T22:23:09Z",
+      "side": 1,
+      "message": "bdb_sha256_extendish_for_test_only()?",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "238b18143691bbb7a7f29e2d7fd5ef448559c9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107a9b68_f9cf3377",
+        "filename": "firmware/bdb/sha.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-22T22:23:09Z",
+      "side": 1,
+      "message": "Could even move this into bdb_extend.c.  That way it won\u0027t accidentally be linked into firmware.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "238b18143691bbb7a7f29e2d7fd5ef448559c9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
