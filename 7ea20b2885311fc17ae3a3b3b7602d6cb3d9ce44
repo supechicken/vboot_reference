@@ -16,6 +16,24 @@
       "revId": "7ea20b2885311fc17ae3a3b3b7602d6cb3d9ce44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d04e430b_45c1e020",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-09-22T19:48:18Z",
+      "side": 1,
+      "message": "i agree it\u0027s weird.  the reason is that when you generate it in cwd (like this keygeneration subdir), i don\u0027t want to break perms on other files that happen to be there.  but i also don\u0027t want to maintain a list of paths to mess with like *.vbpubk *.vbprivk key.versions android/* etc...\n\ni can make it a sep cli option if you want.",
+      "parentUuid": "d04e430b_22dfea25",
+      "revId": "7ea20b2885311fc17ae3a3b3b7602d6cb3d9ce44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
