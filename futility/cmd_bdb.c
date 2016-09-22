@@ -32,7 +32,6 @@ enum {
 	OPT_DATAKEY_PRI,
 	OPT_DATAKEY_PUB,
 	OPT_DATA,
-	OPT_BDS,
 	OPT_KEY_DIGEST,
 	/* key version */
 	OPT_BDBKEY_VERSION,
@@ -58,7 +57,6 @@ static const struct option long_opts[] = {
 	{"bdbkey_version", 1, 0, OPT_BDBKEY_VERSION},
 	{"datakey_version", 1, 0, OPT_DATAKEY_VERSION},
 	{"data", 1, 0, OPT_DATA},
-	{"bds", 1, 0, OPT_BDS},
 	{"key_digest", 1, 0, OPT_KEY_DIGEST},
 	{"offset", 1, 0, OPT_OFFSET},
 	{"partition", 1, 0, OPT_PARTITION},
