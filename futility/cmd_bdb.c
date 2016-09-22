@@ -379,7 +379,7 @@ static int do_resign(const char *bdb_filename,
 				"provided.\n");
 			goto exit;
 		}
-			bdbkey_pri = read_pem(bdbkey_pri_filename);
+		bdbkey_pri = read_pem(bdbkey_pri_filename);
 		rv = bdb_sign_datakey(&bdb, bdbkey_pri);
 		if (rv) {
 			fprintf(stderr, "Failed to resign data key: %d\n", rv);
