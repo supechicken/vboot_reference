@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "107a9b68_1cba1dbb",
+        "filename": "firmware/bdb/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-22T22:38:33Z",
+      "side": 0,
+      "message": "Doesn\u0027t removing this mean that the bdb library will *only* compile if it\u0027s linked against 2lib?\n\nIf we\u0027re going to do that, should be able to get rid of much more than vb2_safe_memcmp().",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 64
+      },
+      "revId": "8407414e51795189b1f2e928af0f56064a0e89e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
