@@ -268,7 +268,6 @@ static int install_datakey(uint8_t **bdb, const struct bdb_key *new_key)
 	size_t new_size;
 	uint32_t l;
 
-	header = (struct bdb_header *)bdb_get_header(*bdb);
 	key = (struct bdb_key *)bdb_get_datakey(*bdb);
 	new_size = bdb_size_of(*bdb) + new_key->struct_size - key->struct_size;
 	new_bdb = calloc(1, new_size);
@@ -376,7 +375,7 @@ static int do_resign(const char *bdb_filename,
 				"provided.\n");
 			goto exit;
 		}
-			bdbkey_pri = read_pem(bdbkey_pri_filename);
+		bdbkey_pri = read_pem(bdbkey_pri_filename);
 		rv = bdb_sign_datakey(&bdb, bdbkey_pri);
 		if (rv) {
 			fprintf(stderr, "Failed to resign data key: %d\n", rv);
