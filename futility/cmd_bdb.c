@@ -225,13 +225,12 @@ static int install_bdbkey(uint8_t **bdb, const struct bdb_key *new_key)
 
 	header = (struct bdb_header *)bdb_get_header(*bdb);
 	key = bdb_get_bdbkey(*bdb);
-	new_size = header->bdb_size + new_key->struct_size - key->struct_size;
+	new_size = bdb_size_of(*bdb) + new_key->struct_size - key->struct_size;
 	new_bdb = calloc(1, new_size);
 	if (!new_bdb) {
 		fprintf(stderr, "Unable to allocate memory\n");
 		return -1;
 	}
-
 
 	/* copy BDB header */
 	p = *bdb;
@@ -269,9 +268,8 @@ static int install_datakey(uint8_t **bdb, const struct bdb_key *new_key)
 	size_t new_size;
 	uint32_t l;
 
-	header = (struct bdb_header *)bdb_get_header(*bdb);
 	key = (struct bdb_key *)bdb_get_datakey(*bdb);
-	new_size = header->bdb_size + new_key->struct_size - key->struct_size;
+	new_size = bdb_size_of(*bdb) + new_key->struct_size - key->struct_size;
 	new_bdb = calloc(1, new_size);
 	if (!new_bdb) {
 		fprintf(stderr, "Unable to allocate memory\n");
@@ -281,7 +279,7 @@ static int install_datakey(uint8_t **bdb, const struct bdb_key *new_key)
 	/* copy the stuff up to datakey */
 	p = *bdb;
 	q = new_bdb;
-	l= bdb_offset_of_datakey(*bdb);
+	l = bdb_offset_of_datakey(*bdb);
 	memcpy(q, p, l);
 
 	/* copy new data key */
@@ -377,7 +375,7 @@ static int do_resign(const char *bdb_filename,
 				"provided.\n");
 			goto exit;
 		}
-			bdbkey_pri = read_pem(bdbkey_pri_filename);
+		bdbkey_pri = read_pem(bdbkey_pri_filename);
 		rv = bdb_sign_datakey(&bdb, bdbkey_pri);
 		if (rv) {
 			fprintf(stderr, "Failed to resign data key: %d\n", rv);
