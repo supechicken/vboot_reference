@@ -11,13 +11,14 @@ cd "$OUTDIR"
 BDB_FILE=bdb.bin
 
 TESTKEY_DIR=${SRCDIR}/tests/testkeys
-DATA_DIR=${SRCDIR}/tests/testdata
+TESTDATA_DIR=${SRCDIR}/tests/testdata
 
 BDBKEY_PUB=${TESTKEY_DIR}/bdbkey.keyb
 BDBKEY_PRI=${TESTKEY_DIR}/bdbkey.pem
 DATAKEY_PUB=${TESTKEY_DIR}/datakey.keyb
 DATAKEY_PRI=${TESTKEY_DIR}/datakey.pem
-KEYDIGEST_FILE=${DATA_DIR}/bdbkey_digest.bin
+KEYDIGEST_FILE=${TESTDATA_DIR}/bdbkey_digest.bin
+DATA_FILE=${TESTDATA_DIR}/sp-rw.bin
 
 verify() {
 	${FUTILITY} bdb --verify ${BDB_FILE} --key_digest ${KEYDIGEST_FILE}
@@ -28,6 +29,11 @@ ${FUTILITY} bdb --create ${BDB_FILE} \
 	--bdbkey_pri ${BDBKEY_PRI} --bdbkey_pub ${BDBKEY_PUB} \
 	--datakey_pub ${DATAKEY_PUB} --datakey_pri ${DATAKEY_PRI}
 verify
+
+# Demonstrate bdb --add can  add a new hash
+${FUTILITY} bdb --add ${BDB_FILE} \
+	--data ${DATA_FILE} --partition 1 --type 2 --offset 3 --load_address 4
+# TODO: Use futility show command to verify the hash is added
 
 # cleanup
 rm -rf ${TMP}*
