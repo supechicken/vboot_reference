@@ -196,6 +196,11 @@ const struct bdb_header *bdb_get_header(const void *buf)
 	return buf;
 }
 
+uint32_t bdb_get_size(const void *buf)
+{
+	return bdb_get_header(buf)->bdb_size;
+}
+
 const struct bdb_key *bdb_get_bdbkey(const void *buf)
 {
 	const struct bdb_header *h = bdb_get_header(buf);

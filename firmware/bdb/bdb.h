@@ -142,6 +142,7 @@ int bdb_verify(const void *buf, size_t size, const uint8_t *bdb_key_digest);
  * @return A pointer to the requested data, or NULL if error / not present.
  */
 const struct bdb_header *bdb_get_header(const void *buf);
+uint32_t bdb_get_size(const void *buf);
 const struct bdb_key *bdb_get_bdbkey(const void *buf);
 const void *bdb_get_oem_area_0(const void *buf);
 const struct bdb_key *bdb_get_datakey(const void *buf);
