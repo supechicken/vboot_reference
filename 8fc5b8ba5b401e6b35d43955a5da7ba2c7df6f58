@@ -22,6 +22,30 @@
       "revId": "8fc5b8ba5b401e6b35d43955a5da7ba2c7df6f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107a9b68_cb50d5d4",
+        "filename": "tests/bdb_secret.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-23T16:50:53Z",
+      "side": 1,
+      "message": "This file is removed (and reintroduced as bdb_extend.c in CL:385539).",
+      "parentUuid": "2b19ee0e_a0aa20de",
+      "range": {
+        "startLine": 90,
+        "startChar": 29,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "8fc5b8ba5b401e6b35d43955a5da7ba2c7df6f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
