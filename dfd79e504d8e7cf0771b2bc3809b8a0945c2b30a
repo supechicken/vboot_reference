@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "107a9b68_8b517d02",
+        "filename": "firmware/bdb/secrets.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-23T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107a9b68_d9d4373f",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "dfd79e504d8e7cf0771b2bc3809b8a0945c2b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "107a9b68_f95ad3ee",
         "filename": "firmware/bdb/secrets.c",
         "patchSetId": 9
@@ -59,6 +83,30 @@
       "writtenOn": "2016-09-22T22:18:48Z",
       "side": 1,
       "message": "Comment this too.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "dfd79e504d8e7cf0771b2bc3809b8a0945c2b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107a9b68_2bb4e93d",
+        "filename": "firmware/bdb/secrets.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-23T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107a9b68_f95ad3ee",
       "range": {
         "startLine": 142,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "107a9b68_2b9dc9b5",
+        "filename": "firmware/bdb/secrets.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-23T16:50:53Z",
+      "side": 1,
+      "message": "Done. Commented out because secret_constant_y doesn\u0027t exist.",
+      "parentUuid": "107a9b68_b9793b5b",
+      "range": {
+        "startLine": 209,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "dfd79e504d8e7cf0771b2bc3809b8a0945c2b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "107a9b68_f97d7373",
         "filename": "firmware/bdb/secrets.h",
         "patchSetId": 9
@@ -105,6 +177,30 @@
       "writtenOn": "2016-09-22T22:18:48Z",
       "side": 1,
       "message": "Please comment why this is a union.  I assume it\u0027s because nvm_wp secret is cleared before buc secret is created, so they won\u0027t overlap, so this is saving 32 bytes of RAM.\n\nBut this seems like premature optimization.  Particularly since in recovery mode, we may need nvm_wp secret and buc secret at the same time - for example, when doing a NVM reset.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "dfd79e504d8e7cf0771b2bc3809b8a0945c2b30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107a9b68_0b01eddd",
+        "filename": "firmware/bdb/secrets.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-23T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107a9b68_f97d7373",
       "range": {
         "startLine": 31,
         "startChar": 0,
