@@ -329,8 +329,12 @@ int vb2_check_tpm_clear(struct vb2_context *ctx)
 	int rv;
 
 	/* Check if we've been asked to clear the owner */
-	if (!vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST))
+	if (!vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST)) {
+		/* Do not keep 'done' bit asserted. */
+		if (vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_DONE))
+			vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_DONE, 0);
 		return VB2_SUCCESS;  /* No need to clear */
+	}
 
 	/* Request applies one time only */
 	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST, 0);
@@ -344,6 +348,7 @@ int vb2_check_tpm_clear(struct vb2_context *ctx)
 		 * to store the full 32-bit code.
 		 */
 		vb2_fail(ctx, VB2_RECOVERY_TPM_CLEAR_OWNER, rv);
+		vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_DONE, 0);
 		return rv;
 	}
 
