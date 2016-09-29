@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a3df16_bff0f556",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-29T04:28:49Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it make sense to look at what\u0027s in the TPM? crossystem reports both tpm_fwver and tpm_kernver.",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 11
+      },
+      "revId": "6869c9456a6689d4123050046017a9847edf059a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
