@@ -22,6 +22,30 @@
       "revId": "6869c9456a6689d4123050046017a9847edf059a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42f44941_ff15bf4d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-09-29T04:31:12Z",
+      "side": 1,
+      "message": "The script may run outside DUT (-f, -t) so we cannot make sure if the host has right information.\n\nIt is possible to do that if -t is empty, but that also makes things more complicated, so I\u0027d like to leave a todo here and see if current version is good enough. What do you think?",
+      "parentUuid": "25a3df16_bff0f556",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 11
+      },
+      "revId": "6869c9456a6689d4123050046017a9847edf059a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
