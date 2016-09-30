@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e230ddea_acc01890",
+        "filename": "firmware/bdb/host.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-30T21:27:55Z",
+      "side": 1,
+      "message": "Use more descriptive variable names for readability.\n\np --\u003e src\nq --\u003e dest\nl --\u003e len",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 36
+      },
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e230ddea_cc4da469",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-30T21:27:55Z",
+      "side": 1,
+      "message": "private",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e230ddea_cc66c4e1",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-30T21:27:55Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e230ddea_2c78a87f",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-30T21:27:55Z",
+      "side": 1,
+      "message": "private",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e230ddea_cc9c84c0",
+        "filename": "futility/cmd_bdb.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-30T21:27:55Z",
+      "side": 1,
+      "message": "If?",
+      "range": {
+        "startLine": 306,
+        "startChar": 46,
+        "endLine": 306,
+        "endChar": 48
+      },
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
