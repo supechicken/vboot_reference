@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "e2e61dfe_9f3e97c3",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-03T16:06:24Z",
+      "side": 1,
+      "message": "Is it ok that bdb_sign_datakey or bdb_create_sig has to cast it to (struct rsa_st *) because it is fed to RSA_private_encrypt?",
+      "parentUuid": "e230ddea_cc66c4e1",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e230ddea_2c78a87f",
         "filename": "firmware/bdb/host.h",
         "patchSetId": 14
