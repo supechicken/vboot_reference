@@ -77,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "22caf56e_5f0c0748",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-03T23:22:55Z",
+      "side": 1,
+      "message": "If the RSA library function doesn\u0027t use const, we shouldn\u0027t either.  (But kinda sad that a security library *doesn\u0027t* use const for what should be an immutable input...)",
+      "parentUuid": "e2e61dfe_9f3e97c3",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e230ddea_2c78a87f",
         "filename": "firmware/bdb/host.h",
         "patchSetId": 14
