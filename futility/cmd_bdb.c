@@ -82,7 +82,7 @@ static int do_add(const char *bdb_filename, const char *data_filename,
 		  uint64_t offset, uint8_t partition,
 		  uint8_t type, uint64_t load_address)
 {
-	uint8_t *bdb, *data, *new_bdb;
+	uint8_t *bdb, *data, *new_bdb = NULL;
 	uint32_t bdb_size, data_size;
 	struct bdb_header *bdb_header;
 	struct bdb_data *data_header;
@@ -161,10 +161,10 @@ static int do_create(const char *bdb_filename,
 		     uint32_t datakey_version,
 		     uint64_t load_address)
 {
-	struct bdb_key *bdbkey;
-	struct bdb_key *datakey;
-	struct rsa_st *bdbkey_pri;
-	struct rsa_st *datakey_pri;
+	struct bdb_key *bdbkey = NULL;
+	struct bdb_key *datakey = NULL;
+	struct rsa_st *bdbkey_pri = NULL;
+	struct rsa_st *datakey_pri = NULL;
 	struct bdb_create_params params;
 	struct bdb_header *header;
 	int rv = -1;
@@ -223,7 +223,7 @@ static int install_bdbkey(uint8_t **bdb, const struct bdb_key *new_key)
 	struct bdb_header *header;
 	const struct bdb_key *key;
 	uint8_t *p, *q;
-	uint8_t *new_bdb;
+	uint8_t *new_bdb = NULL;
 	size_t new_size;
 	size_t l;
 
