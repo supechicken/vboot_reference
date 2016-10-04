@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e26d3d44_cd7b01b1",
+        "filename": "futility/bdb_helper.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T16:45:29Z",
+      "side": 1,
+      "message": "printf(\"%s\", label)\n\nor fputs(label, stdout) (since puts() adds a newline)\n\nOtherwise a label with % in it will do entertaining things.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "3048f327de14a454eda8041ee8f2ddaa4c415c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
