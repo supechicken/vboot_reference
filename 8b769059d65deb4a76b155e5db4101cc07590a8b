@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e26d3d44_2dc57536",
+        "filename": "firmware/bdb/host.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-04T15:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e230ddea_acc01890",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 36
+      },
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e230ddea_cc4da469",
         "filename": "firmware/bdb/host.h",
         "patchSetId": 14
@@ -36,6 +60,24 @@
       "writtenOn": "2016-09-30T21:27:55Z",
       "side": 1,
       "message": "private",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e26d3d44_4dcab145",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-04T15:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e230ddea_cc4da469",
       "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -112,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "e26d3d44_6dcf6d54",
+        "filename": "firmware/bdb/host.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-04T15:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e230ddea_2c78a87f",
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e230ddea_cc9c84c0",
         "filename": "futility/cmd_bdb.c",
         "patchSetId": 14
@@ -123,6 +183,30 @@
       "writtenOn": "2016-09-30T21:27:55Z",
       "side": 1,
       "message": "If?",
+      "range": {
+        "startLine": 306,
+        "startChar": 46,
+        "endLine": 306,
+        "endChar": 48
+      },
+      "revId": "8b769059d65deb4a76b155e5db4101cc07590a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e26d3d44_0dc0b925",
+        "filename": "futility/cmd_bdb.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-04T15:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e230ddea_cc9c84c0",
       "range": {
         "startLine": 306,
         "startChar": 46,
