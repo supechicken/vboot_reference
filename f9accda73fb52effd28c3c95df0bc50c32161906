@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f1424d4_18a6e5aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T19:23:54Z",
+      "side": 1,
+      "message": "looks like your gitconfig settings are not setting your name correctly.  you should fix that.  look at ~/.gitconfig and [user].name.",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1424d4_78a9217b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T19:23:54Z",
+      "side": 1,
+      "message": "please rephrase this.  you might want to check out this page:\n\nhttp://chris.beams.io/posts/git-commit/",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1424d4_38a3a99b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T19:23:54Z",
+      "side": 1,
+      "message": "please add a description/example of the command line that you needed to change, and how you had to change it",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1424d4_b896d93d",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T19:23:54Z",
+      "side": 1,
+      "message": "should also mention you want to strip out the bootcache details",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1424d4_58ac5d8c",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T19:23:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be merged into the previous one ?",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
