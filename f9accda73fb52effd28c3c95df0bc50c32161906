@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5f1424d4_38eba96c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T22:40:40Z",
+      "side": 1,
+      "message": "gerrit is just showing you what your local git is doing.  if gerrit is showing \"warx\", it\u0027s because your local git is showing \"warx\".  once you fix your local git, things fix automatically on the gerrit side.\n\ngo into your local git repo and run:\n\n git log --format\u003dfuller -1\n\nlook at the Author \u0026 Commit lines.  they should be your name, not \"warx\".  if they aren\u0027t, double check your ~/.gitconfig and then run `git commit --amend`.  then look at `git log ...` again.  once the Commit line is fixed, you can force fix the Author line by doing:\n\n git commit --amend --author \u0027Qiang Xu \u003cwarx@chromium.org\u003e\u0027",
+      "parentUuid": "7f1568be_8c4047ee",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1424d4_78a9217b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "I don\u0027t figure out there is a way to merge them.\n\nFirst we need to use dm\u003d\"2 and vroot non ro 1 to delete the strings between these two patterns. And then replace dm\u003d\"2 to dm\u003d\"1. For other boards, dm\u003d\"2 is already dm\u003d\"1. Thus dm\u003d\"2 must be used first and then replaced.",
       "parentUuid": "5f1424d4_58ac5d8c",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1424d4_d88aadd1",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T22:40:40Z",
+      "side": 1,
+      "message": "can you show the full kernel command line you\u0027re trying to modify ?",
+      "parentUuid": "7f1568be_8f75d9f0",
       "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
