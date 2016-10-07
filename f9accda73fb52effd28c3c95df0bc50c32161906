@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f1568be_8c4047ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-07T21:21:25Z",
+      "side": 1,
+      "message": "I changed it. But it still shows warx. I also uploaded the duplicate patch 3.. I didn\u0027t find where to delete the patch 3 on Gerrit. Sorry I don\u0027t have much experience on Gerrit. Is it OK to use warx?",
+      "parentUuid": "5f1424d4_18a6e5aa",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1424d4_78a9217b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-07T19:23:54Z",
       "side": 1,
       "message": "please rephrase this.  you might want to check out this page:\n\nhttp://chris.beams.io/posts/git-commit/",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f1568be_ccf19fc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-07T21:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1424d4_78a9217b",
       "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7f1568be_acc8ab6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-07T21:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1424d4_38a3a99b",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1424d4_b896d93d",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "7f1568be_cf007169",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-07T21:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1424d4_b896d93d",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1424d4_58ac5d8c",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2016-10-07T19:23:54Z",
       "side": 1,
       "message": "shouldn\u0027t this be merged into the previous one ?",
+      "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f1568be_8f75d9f0",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-07T21:21:25Z",
+      "side": 1,
+      "message": "I don\u0027t figure out there is a way to merge them.\n\nFirst we need to use dm\u003d\"2 and vroot non ro 1 to delete the strings between these two patterns. And then replace dm\u003d\"2 to dm\u003d\"1. For other boards, dm\u003d\"2 is already dm\u003d\"1. Thus dm\u003d\"2 must be used first and then replaced.",
+      "parentUuid": "5f1424d4_58ac5d8c",
       "revId": "f9accda73fb52effd28c3c95df0bc50c32161906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
