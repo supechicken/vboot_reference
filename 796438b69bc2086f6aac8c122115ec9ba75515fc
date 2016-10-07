@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f1424d4_787cc1b9",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-10-07T22:48:37Z",
+      "side": 1,
+      "message": "i think you should put \"bootcache\" in there.  maybe something like:\n\n [^\"]*bootcache[^\"]*",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "796438b69bc2086f6aac8c122115ec9ba75515fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
