@@ -22,6 +22,30 @@
       "revId": "796438b69bc2086f6aac8c122115ec9ba75515fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f1568be_661f676a",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1147616
+      },
+      "writtenOn": "2016-10-10T06:41:09Z",
+      "side": 1,
+      "message": "Changes:\n(1) replace .* with .*bootcache.*\n(2) simple cascade two lines into one line. Sorry I still cannot find if there is a way to combine these two commands.",
+      "parentUuid": "5f1424d4_787cc1b9",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 19
+      },
+      "revId": "796438b69bc2086f6aac8c122115ec9ba75515fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
