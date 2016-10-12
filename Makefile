@@ -873,10 +873,6 @@ install_dev: headers_install lib_install
 .PHONY: install_mtd
 install_mtd: install cgpt_wrapper_install
 
-.PHONY: install_for_test
-install_for_test: override DESTDIR = ${TEST_INSTALL_DIR}
-install_for_test: install
-
 # Don't delete intermediate object files
 .SECONDARY:
 
@@ -1359,18 +1355,18 @@ ${FUTIL_CMD_LIST} ${FUTIL_STATIC_CMD_LIST}:
 
 # Frequently-run tests
 .PHONY: test_targets
-test_targets:: runcgpttests runmisctests run2tests runbdbtests
+test_targets:: runcgpttests runmisctests run2tests runbdbtests runfutiltests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
-test_targets:: runbmptests runfutiltests
+test_targets:: runbmptests
 # Scripts don't work under qemu testing
 # TODO: convert scripts to makefile so they can be called directly
 test_targets:: runtestscripts
 endif
 
 .PHONY: test_setup
-test_setup:: cgpt utils futil tests install_for_test
+test_setup:: cgpt utils futil tests install
 
 # Qemu setup for cross-compiled tests.  Need to copy qemu binary into the
 # sysroot.
@@ -1389,6 +1385,7 @@ endif
 endif
 
 .PHONY: runtests
+runtests: override DESTDIR = ${TEST_INSTALL_DIR}
 runtests: test_setup test_targets
 
 # Generate test keys
@@ -1482,8 +1479,9 @@ runbdbtests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/bdb_sprw_test ${TEST_KEYS}
 
 .PHONY: runfutiltests
+runfutiltests: override DESTDIR = ${BUILD}/install_for_test
 runfutiltests: test_setup
-	tests/futility/run_test_scripts.sh ${TEST_INSTALL_DIR}/bin
+	tests/futility/run_test_scripts.sh ${UB_DIR}
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
