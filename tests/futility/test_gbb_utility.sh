@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -22,28 +22,26 @@ ${FUTILITY} gbb_utility -s --flags=0xdeadbeef ${TMP}.blob
 ${FUTILITY} gbb_utility -g --flags ${TMP}.blob | grep -i 0xdeadbeef
 
 # HWID length should include the terminating null - this is too long
-if ${FUTILITY} gbb_utility -s --hwid="0123456789ABCDEF" ${TMP}.blob; then
-  false;
-fi
+if ${FUTILITY} gbb_utility -s --hwid="0123456789ABCDEF" ${TMP}.blob 2>&1; then false; fi
 # This works
 ${FUTILITY} gbb_utility -s --hwid="0123456789ABCDE" ${TMP}.blob
 # Read it back?
-${FUTILITY} gbb_utility -g ${TMP}.blob | grep "0123456789ABCDE"
+${FUTILITY} gbb_utility -g ${TMP}.blob 2>&1 | grep "0123456789ABCDE"
 
 # Same kind of tests for the other fields, but they need binary files.
 
 # too long
-dd if=/dev/urandom bs=17 count=1 of=${TMP}.data1.toolong
-dd if=/dev/urandom bs=17 count=1 of=${TMP}.data2.toolong
-dd if=/dev/urandom bs=17 count=1 of=${TMP}.data3.toolong
-if ${FUTILITY} gbb_utility -s --rootkey     ${TMP}.data1.toolong ${TMP}.blob; then false; fi
-if ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2.toolong ${TMP}.blob; then false; fi
-if ${FUTILITY} gbb_utility -s --bmpfv       ${TMP}.data3.toolong ${TMP}.blob; then false; fi
+dd if=/dev/urandom bs=17 count=1 of=${TMP}.data1.toolong status=none
+dd if=/dev/urandom bs=17 count=1 of=${TMP}.data2.toolong status=none
+dd if=/dev/urandom bs=17 count=1 of=${TMP}.data3.toolong status=none
+if ${FUTILITY} gbb_utility -s --rootkey     ${TMP}.data1.toolong ${TMP}.blob 2>&1; then false; fi
+if ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2.toolong ${TMP}.blob 2>&1; then false; fi
+if ${FUTILITY} gbb_utility -s --bmpfv       ${TMP}.data3.toolong ${TMP}.blob 2>&1; then false; fi
 
 # shorter than max should be okay, though
-dd if=/dev/urandom bs=10 count=1 of=${TMP}.data1.short
-dd if=/dev/urandom bs=10 count=1 of=${TMP}.data2.short
-dd if=/dev/urandom bs=10 count=1 of=${TMP}.data3.short
+dd if=/dev/urandom bs=10 count=1 of=${TMP}.data1.short status=none
+dd if=/dev/urandom bs=10 count=1 of=${TMP}.data2.short status=none
+dd if=/dev/urandom bs=10 count=1 of=${TMP}.data3.short status=none
 ${FUTILITY} gbb_utility -s \
   --rootkey     ${TMP}.data1.short \
   --recoverykey ${TMP}.data2.short \
@@ -59,9 +57,9 @@ cmp -n 10 ${TMP}.data2.short ${TMP}.read2
 cmp -n 10 ${TMP}.data3.short ${TMP}.read3
 
 # Okay
-dd if=/dev/urandom bs=16 count=1 of=${TMP}.data1
-dd if=/dev/urandom bs=16 count=1 of=${TMP}.data2
-dd if=/dev/urandom bs=16 count=1 of=${TMP}.data3
+dd if=/dev/urandom bs=16 count=1 of=${TMP}.data1 status=none
+dd if=/dev/urandom bs=16 count=1 of=${TMP}.data2 status=none
+dd if=/dev/urandom bs=16 count=1 of=${TMP}.data3 status=none
 ${FUTILITY} gbb_utility -s --rootkey     ${TMP}.data1 ${TMP}.blob
 ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2 ${TMP}.blob
 ${FUTILITY} gbb_utility -s --bmpfv       ${TMP}.data3 ${TMP}.blob
@@ -110,19 +108,19 @@ cmp ${TMP}.data3 ${TMP}.read3
 
 # bad major_version
 cat ${TMP}.blob | ${REPLACE} 0x4 2 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 # header size too large
 cat ${TMP}.blob | ${REPLACE} 0x8 0x81 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 # header size too small
 cat ${TMP}.blob | ${REPLACE} 0x8 0x7f > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 # HWID not null-terminated is invalid
 cat ${TMP}.blob | ${REPLACE} 0x8f 0x41 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 # HWID of length zero is okay
 cat ${TMP}.blob | ${REPLACE} 0x14 0x00 > ${TMP}.blob.ok
@@ -133,75 +131,75 @@ ${FUTILITY} gbb_utility ${TMP}.blob.ok
 
 # zero-length HWID not null-terminated is invalid
 cat ${TMP}.blob | ${REPLACE} 0x8f 0x41 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 #  hwid_offset < GBB_HEADER_SIZE is invalid
 cat ${TMP}.blob | ${REPLACE} 0x10 0x7f > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 cat ${TMP}.blob | ${REPLACE} 0x10 0x00 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 #  rootkey_offset < GBB_HEADER_SIZE is invalid
 cat ${TMP}.blob | ${REPLACE} 0x18 0x7f > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 cat ${TMP}.blob | ${REPLACE} 0x18 0x00 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 #  bmpfv_offset < GBB_HEADER_SIZE is invalid
 cat ${TMP}.blob | ${REPLACE} 0x20 0x7f > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 cat ${TMP}.blob | ${REPLACE} 0x20 0x00 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 #  recovery_key_offset < GBB_HEADER_SIZE is invalid
 cat ${TMP}.blob | ${REPLACE} 0x28 0x7f > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 cat ${TMP}.blob | ${REPLACE} 0x28 0x00 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility ${TMP}.blob.bad 2>&1; then false; fi
 
 #  hwid: offset + size  == end of file is okay; beyond is invalid
 cat ${TMP}.blob | ${REPLACE} 0x14 0x40 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g ${TMP}.blob.bad
 cat ${TMP}.blob | ${REPLACE} 0x14 0x41 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad 2>&1; then false; fi
 
 #  rootkey: offset + size  == end of file is okay; beyond is invalid
 cat ${TMP}.blob | ${REPLACE} 0x1c 0x30 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g ${TMP}.blob.bad
 cat ${TMP}.blob | ${REPLACE} 0x1c 0x31 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad 2>&1; then false; fi
 
 #  bmpfv: offset + size  == end of file is okay; beyond is invalid
 cat ${TMP}.blob | ${REPLACE} 0x24 0x20 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g ${TMP}.blob.bad
 cat ${TMP}.blob | ${REPLACE} 0x24 0x21 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad 2>&1; then false; fi
 
 #  recovery_key: offset + size  == end of file is okay; beyond is invalid
 cat ${TMP}.blob | ${REPLACE} 0x2c 0x10 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g ${TMP}.blob.bad
 cat ${TMP}.blob | ${REPLACE} 0x2c 0x11 > ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -g ${TMP}.blob.bad 2>&1; then false; fi
 
 # hwid_size == 0 doesn't complain, but can't be set
 cat ${TMP}.blob | ${REPLACE} 0x14 0x00 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -s --hwid="A" ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -s --hwid="A" ${TMP}.blob.bad 2>&1; then false; fi
 
 # rootkey_size == 0 gives warning, gets nothing, can't be set
 cat ${TMP}.blob | ${REPLACE} 0x1c 0x00 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g --rootkey     ${TMP}.read1 ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -s --rootkey  ${TMP}.data1 ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -s --rootkey  ${TMP}.data1 ${TMP}.blob.bad 2>&1; then false; fi
 
 # bmpfv_size == 0 gives warning, gets nothing, can't be set
 cat ${TMP}.blob | ${REPLACE} 0x24 0x00 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g --bmpfv       ${TMP}.read3 ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -s --bmpfv    ${TMP}.data3 ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -s --bmpfv    ${TMP}.data3 ${TMP}.blob.bad 2>&1; then false; fi
 
 # recovery_key_size == 0 gives warning, gets nothing, can't be set
 cat ${TMP}.blob | ${REPLACE} 0x2c 0x00 > ${TMP}.blob.bad
 ${FUTILITY} gbb_utility -g --recoverykey ${TMP}.read2 ${TMP}.blob.bad
-if ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2 ${TMP}.blob.bad; then false; fi
+if ${FUTILITY} gbb_utility -s --recoverykey ${TMP}.data2 ${TMP}.blob.bad 2>&1; then false; fi
 
 
 # GBB v1.2 adds a sha256 digest field in what was previously padding:

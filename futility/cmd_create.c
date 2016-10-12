@@ -128,7 +128,7 @@ static int vb1_make_keypair()
 		fprintf(stderr, "unable to write private key\n");
 		goto done;
 	}
-	fprintf(stderr, "wrote %s\n", outfile);
+	fprintf(stdout, "wrote %s\n", outfile);
 
 	/* Create the public key */
 	ret = vb_keyb_from_rsa(rsa_key, &keyb_data, &keyb_size);
@@ -148,7 +148,7 @@ static int vb1_make_keypair()
 		fprintf(stderr, "unable to write public key\n");
 		goto done;
 	}
-	fprintf(stderr, "wrote %s\n", outfile);
+	fprintf(stdout, "wrote %s\n", outfile);
 
 	ret = 0;
 
@@ -198,7 +198,7 @@ static int vb2_make_keypair()
 	/* Public keys doesn't have the private exponent */
 	has_priv = !!rsa_key->d;
 	if (!has_priv)
-		fprintf(stderr, "%s has a public key only.\n", infile);
+		fprintf(stdout, "%s has a public key only.\n", infile);
 
 	sig_alg = vb2_rsa_sig_alg(rsa_key);
 	if (sig_alg == VB2_SIG_INVALID) {
@@ -272,7 +272,7 @@ static int vb2_make_keypair()
 			fprintf(stderr, "unable to write private key\n");
 			goto done;
 		}
-		fprintf(stderr, "wrote %s\n", outfile);
+		fprintf(stdout, "wrote %s\n", outfile);
 	}
 
 	strcpy(outext, ".vbpubk2");
@@ -280,7 +280,7 @@ static int vb2_make_keypair()
 		fprintf(stderr, "unable to write public key\n");
 		goto done;
 	}
-	fprintf(stderr, "wrote %s\n", outfile);
+	fprintf(stdout, "wrote %s\n", outfile);
 
 	ret = 0;
 

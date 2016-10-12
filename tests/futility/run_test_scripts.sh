@@ -18,13 +18,13 @@ FUTILITY="$BINDIR/futility"
 # The Makefile should export the $BUILD directory, but if it's not just warn
 # and guess (mostly so we can run the script manually).
 if [ -z "${BUILD:-}" ]; then
-  BUILD=$(dirname "${BINDIR}")
-  yellow "Assuming BUILD=$BUILD"
+	BUILD=$(dirname "${BINDIR}")
+	yellow "Assuming BUILD=$BUILD"
 fi
 # Same for $SRCDIR
 if [ -z "${SRCDIR:-}" ]; then
-  SRCDIR=$(readlink -f "${SCRIPTDIR}/../..")
-  yellow "Assuming SRCDIR=$SRCDIR"
+	SRCDIR=$(readlink -f "${SCRIPTDIR}/../..")
+	yellow "Assuming SRCDIR=$SRCDIR"
 fi
 OUTDIR="${BUILD}/tests/futility_test_results"
 [ -d "$OUTDIR" ] || mkdir -p "$OUTDIR"
@@ -70,31 +70,29 @@ exec 3>&1
 
 echo "-- builtin --"
 for i in $TESTS; do
-  j=${i##*/}
+	j=${i##*/}
 
-  : $(( progs++ ))
+	: $(( progs++ ))
 
-  echo -n "$j ... "
-  rm -rf "${OUTDIR}/$j."*
-  rc=$("$i" "$FUTILITY" 1>"${OUTDIR}/$j.stdout" \
-       2>"${OUTDIR}/$j.stderr" || echo "$?")
-  echo "${rc:-0}" > "${OUTDIR}/$j.return"
-  if [ ! "$rc" ]; then
-    green "passed"
-    : $(( pass++ ))
-    rm -f ${OUTDIR}/$j.{stdout,stderr,return}
-  else
-    red "failed"
-  fi
-
+	echo "Running $j ... "
+	rm -rf "${OUTDIR}/$j."*
+	rc=$("$i" "$FUTILITY" 1>"${OUTDIR}/$j.stdout" || echo "$?")
+	echo "${rc:-0}" > "${OUTDIR}/$j.return"
+	if [ ! "$rc" ]; then
+		green "$j passed"
+		: $(( pass++ ))
+		rm -f ${OUTDIR}/$j.{stdout,return}
+	else
+		red "$j failed"
+	fi
 done
 
 ##############################################################################
 # How'd we do?
 
 if [ "$pass" -eq "$progs" ]; then
-  green "Success: $pass / $progs passed"
-  exit 0
+	green "Success: $pass / $progs passed"
+	exit 0
 fi
 
 red "FAIL: $pass / $progs passed"

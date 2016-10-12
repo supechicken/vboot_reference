@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -13,9 +13,9 @@ DEVKEYS=${SRCDIR}/tests/devkeys
 
 echo "hi there" > ${TMP}.config.txt
 echo "hello boys" > ${TMP}.config2.txt
-dd if=/dev/urandom bs=512 count=1 of=${TMP}.bootloader.bin
-dd if=/dev/urandom bs=512 count=1 of=${TMP}.bootloader2.bin
-dd if=/dev/urandom bs=1M count=16 of=${TMP}.kern_partition
+dd if=/dev/urandom bs=512 count=1 of=${TMP}.bootloader.bin status=none
+dd if=/dev/urandom bs=512 count=1 of=${TMP}.bootloader2.bin status=none
+dd if=/dev/urandom bs=1M count=16 of=${TMP}.kern_partition status=none
 
 # default padding
 padding=49152
@@ -140,7 +140,7 @@ try_arch () {
     --kloadaddr 0x11000
 
   # compare this new vblock with the one from the full pack
-  dd bs=${padding} count=1 if=${TMP}.blob1.${arch} of=${TMP}.blob1.${arch}.vb0
+  dd bs=${padding} count=1 if=${TMP}.blob1.${arch} of=${TMP}.blob1.${arch}.vb0 status=none
   cmp ${TMP}.blob1.${arch}.vb0 ${TMP}.blob1.${arch}.vb1
 
   # pack the new way
@@ -158,7 +158,7 @@ try_arch () {
     ${TMP}.blob2.${arch}.vb1
 
   # compare this new vblock with the one from the full pack
-  dd bs=${padding} count=1 if=${TMP}.blob2.${arch} of=${TMP}.blob2.${arch}.vb0
+  dd bs=${padding} count=1 if=${TMP}.blob2.${arch} of=${TMP}.blob2.${arch}.vb0 status=none
   cmp ${TMP}.blob2.${arch}.vb0 ${TMP}.blob2.${arch}.vb1
 
   echo -n "5 " 1>&3
@@ -176,11 +176,11 @@ try_arch () {
     --bootloader ${TMP}.bootloader2.bin
 
   # compare the full repacked vblock with the new repacked vblock
-  dd bs=${padding} count=1 if=${TMP}.blob3.${arch} of=${TMP}.blob3.${arch}.vb0
+  dd bs=${padding} count=1 if=${TMP}.blob3.${arch} of=${TMP}.blob3.${arch}.vb0 status=none
   cmp ${TMP}.blob3.${arch}.vb0 ${TMP}.blob3.${arch}.vb1
 
   # extract just the kernel blob
-  dd bs=${padding} skip=1 if=${TMP}.blob3.${arch} of=${TMP}.blob3.${arch}.kb0
+  dd bs=${padding} skip=1 if=${TMP}.blob3.${arch} of=${TMP}.blob3.${arch}.kb0 status=none
   # and verify it using the new vblock (no way to do that with vbutil_kernel)
   ${FUTILITY} --debug verify \
     --pad ${padding} \
@@ -201,11 +201,11 @@ try_arch () {
     ${TMP}.blob4.${arch}.vb1 \
 
   # compare the full repacked vblock with the new repacked vblock
-  dd bs=${padding} count=1 if=${TMP}.blob4.${arch} of=${TMP}.blob4.${arch}.vb0
+  dd bs=${padding} count=1 if=${TMP}.blob4.${arch} of=${TMP}.blob4.${arch}.vb0 status=none
   cmp ${TMP}.blob4.${arch}.vb0 ${TMP}.blob4.${arch}.vb1
 
   # extract just the kernel blob
-  dd bs=${padding} skip=1 if=${TMP}.blob4.${arch} of=${TMP}.blob4.${arch}.kb0
+  dd bs=${padding} skip=1 if=${TMP}.blob4.${arch} of=${TMP}.blob4.${arch}.kb0 status=none
   # and verify it using the new vblock (no way to do that with vbutil_kernel)
   ${FUTILITY} --debug verify \
     --pad ${padding} \
@@ -214,11 +214,11 @@ try_arch () {
     ${TMP}.blob4.${arch}.vb1 > ${TMP}.verify4v
 
 
-  echo -n "6 " 1>&3
+  echo "6 " 1>&3
 
   # Now lets repack some kernel partitions, not just blobs.
   cp ${TMP}.kern_partition ${TMP}.part1.${arch}
-  dd if=${TMP}.blob1.${arch} of=${TMP}.part1.${arch} conv=notrunc
+  dd if=${TMP}.blob1.${arch} of=${TMP}.part1.${arch} conv=notrunc status=none
 
   # Make sure the partitions verify
   ${FUTILITY} vbutil_kernel --verify ${TMP}.part1.${arch} \

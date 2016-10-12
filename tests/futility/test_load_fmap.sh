@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -25,7 +25,7 @@ CMDS=""
 for a in ${AREAS}; do
   size=$(stat -c '%s' $a)
   mv $a $a.good
-  dd if=/dev/urandom of=$a.rand bs=$size count=1
+  dd if=/dev/urandom of=$a.rand bs=$size count=1 status=none
   CMDS="$CMDS $a:$a.rand"
 done
 
