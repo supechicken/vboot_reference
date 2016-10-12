@@ -136,7 +136,7 @@ static int do_add(const char *bdb_filename, const char *data_filename,
 		goto exit;
 	}
 
-	fprintf(stderr, "Hash is added to BDB successfully. Resign required\n");
+	fprintf(stdout, "Hash is added to BDB successfully. Resign required\n");
 
 exit:
 	free(bdb);
@@ -206,7 +206,7 @@ static int do_create(const char *bdb_filename,
 		goto exit;
 	}
 
-	fprintf(stderr, "BDB is created successfully\n");
+	fprintf(stdout, "BDB is created successfully\n");
 
 exit:
 	/* Free keys and buffers */
@@ -380,7 +380,7 @@ static int do_resign(const char *bdb_filename,
 		/* This is expected failure if we installed a new BDB key.
 		 * Let's resign to fix it. */
 		resigned = 1;
-		fprintf(stderr, "Data key signature is invalid. Need to resign "
+		fprintf(stdout, "Data key signature is invalid. Need to resign "
 			"the key.\n");
 		if (!bdbkey_pri_filename) {
 			fprintf(stderr, "Private BDB key is required but not "
@@ -393,9 +393,9 @@ static int do_resign(const char *bdb_filename,
 			fprintf(stderr, "Failed to resign data key: %d\n", rv);
 			goto exit;
 		}
-		fprintf(stderr, "Data key is resigned.\n");
+		fprintf(stdout, "Data key is resigned.\n");
 	} else {
-		fprintf(stderr, "Resigning data key is not required.\n");
+		fprintf(stdout, "Resigning data key is not required.\n");
 	}
 
 	/* Check validity for the new data key */
@@ -407,7 +407,7 @@ static int do_resign(const char *bdb_filename,
 		 * or sig is corrupted, which happens when a new hash is added
 		 * by 'add' sub-command. Let's resign the data */
 		resigned = 1;
-		fprintf(stderr,
+		fprintf(stdout,
 			"Data signature is invalid. Need to resign data.\n");
 		if (!datakey_pri_filename) {
 			fprintf(stderr, "Private data key is required but not "
@@ -420,11 +420,11 @@ static int do_resign(const char *bdb_filename,
 			fprintf(stderr, "Failed to resign hashes: %d\n", rv);
 				goto exit;
 			}
-		fprintf(stderr, "Data is resigned.\n");
+		fprintf(stdout, "Data is resigned.\n");
 		break;
 	case BDB_GOOD_OTHER_THAN_KEY:
 	case BDB_SUCCESS:
-		fprintf(stderr, "Resigning the data is not required.\n");
+		fprintf(stdout, "Resigning the data is not required.\n");
 		break;
 	default:
 		fprintf(stderr, "Verifying BDB failed unexpectedly: %d\n", rv);
@@ -449,7 +449,7 @@ static int do_resign(const char *bdb_filename,
 		goto exit;
 	}
 
-	fprintf(stderr, "Successfully resigned BDB.\n");
+	fprintf(stdout, "Successfully resigned BDB.\n");
 
 exit:
 	free(bdb);
@@ -489,13 +489,13 @@ static int do_verify(const char *bdb_filename, const char *key_digest_filename,
 	rv = bdb_verify(bdb, bdb_size, key_digest);
 	switch (rv) {
 	case BDB_SUCCESS:
-		fprintf(stderr, "BDB is successfully verified.\n");
+		fprintf(stdout, "BDB is successfully verified.\n");
 		break;
 	case BDB_GOOD_OTHER_THAN_KEY:
-		fprintf(stderr, "BDB is valid.");
+		fprintf(stdout, "BDB is valid.");
 		if (ignore_key_digest) {
 			rv = BDB_SUCCESS;
-			fprintf(stderr,
+			fprintf(stdout,
 				" Key digest doesn't match but ignored.\n");
 		} else {
 			fprintf(stderr,

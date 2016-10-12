@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -22,7 +22,7 @@ count=0
 for test in $TESTS; do
 
     : $(( count++ ))
-    echo -n "$count " 1>&3
+    echo "$test " 1>&3
 
     pemfile=${DATADIR}/${test}.pem
     infile=${DATADIR}/${test}.unsigned
@@ -38,9 +38,9 @@ for test in $TESTS; do
     half=$(( size / 2 ))
 
     newin=${TMP}.${test}.rw_in
-    dd if=${infile} bs=${half} count=1 skip=1 of=${newin}
+    dd if=${infile} bs=${half} count=1 skip=1 of=${newin} status=none
     newgood=${TMP}.${test}.rw_ok
-    dd if=${goodfile} bs=${half} count=1 skip=1 of=${newgood}
+    dd if=${goodfile} bs=${half} count=1 skip=1 of=${newgood} status=none
     newout=${TMP}.${test}.rw_out
 
     # Sign the RW part alone

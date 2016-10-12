@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -12,7 +12,7 @@ cd "$OUTDIR"
 KEYDIR=${SRCDIR}/tests/devkeys
 
 # create a firmware blob
-dd bs=1024 count=16 if=/dev/urandom of=${TMP}.fw_main
+dd bs=1024 count=16 if=/dev/urandom of=${TMP}.fw_main status=none
 
 # try the old way
 ${FUTILITY} vbutil_firmware --vblock ${TMP}.vblock.old \

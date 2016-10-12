@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -22,7 +22,7 @@ test_case() {
 
 # Arg is <file_to_probe>
 fail_case() {
-    if ${FUTILITY} show -t "$1" ; then false; else true; fi
+	if ${FUTILITY} show -t "$1" 2>&1; then false; else true; fi
 }
 
 # Known types
@@ -65,10 +65,11 @@ FILES=$(awk '/^test_case / {print $NF}' $0 | tr -d '"')
 # NOTE: /bin/bash returns values > 125 for special problems like signals.
 # I welcome patches to do this more portably.
 for type in $TYPES; do
-    for file in $FILES; do
-        ${FUTILITY} show --type ${type} "${SRCDIR}/${file}" && rc=$? || rc=$?
-        [ "$rc" -le 2 ]
-    done
+	for file in $FILES; do
+		${FUTILITY} show --type ${type} "${SRCDIR}/${file}" 2>&1 \
+			&& rc=$? || rc=$?
+		[ "$rc" -le 2 ]
+	done
 done
 
 

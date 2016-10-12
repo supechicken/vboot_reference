@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -81,7 +81,7 @@ wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
 # Create a firmware blob and vblock.  Version and flags are just
 # arbitrary non-zero numbers so we can verify they're printed
 # properly.
-dd bs=1024 count=16 if=/dev/urandom of=${TMP}.fw_main
+dd bs=1024 count=16 if=/dev/urandom of=${TMP}.fw_main status=none
 ${FUTILITY} vbutil_firmware --vblock ${TMP}.vblock.old \
   --keyblock ${KEYDIR}/firmware.keyblock \
   --signprivate ${KEYDIR}/firmware_data_key.vbprivk \

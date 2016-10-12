@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -20,7 +20,7 @@ set -o pipefail
 
 for s in $SIGS; do
 
-    echo -n "$s " 1>&3
+    echo "$s " 1>&3
 
     for test in $TESTS; do
 

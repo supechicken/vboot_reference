@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
 # Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -16,8 +16,8 @@ echo 'Creating test kernel'
 
 # Dummy kernel data
 echo "hi there" > ${TMP}.config.txt
-dd if=/dev/urandom bs=16384 count=1 of=${TMP}.bootloader.bin
-dd if=/dev/urandom bs=32768 count=1 of=${TMP}.kernel.bin
+dd if=/dev/urandom bs=16384 count=1 of=${TMP}.bootloader.bin status=none
+dd if=/dev/urandom bs=32768 count=1 of=${TMP}.kernel.bin status=none
 
 # Pack kernel data key using original vboot utilities.
 ${FUTILITY} vbutil_key --pack ${TMP}.datakey.test \
