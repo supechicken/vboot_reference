@@ -1359,11 +1359,11 @@ ${FUTIL_CMD_LIST} ${FUTIL_STATIC_CMD_LIST}:
 
 # Frequently-run tests
 .PHONY: test_targets
-test_targets:: runcgpttests runmisctests run2tests runbdbtests
+test_targets:: runcgpttests runmisctests run2tests runbdbtests runfutiltests
 
 ifeq (${MINIMAL},)
 # Bitmap utility isn't compiled for minimal variant
-test_targets:: runbmptests runfutiltests
+test_targets:: runbmptests
 # Scripts don't work under qemu testing
 # TODO: convert scripts to makefile so they can be called directly
 test_targets:: runtestscripts
