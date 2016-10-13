@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <ctype.h>
 #include <unistd.h>
 
 #include "cgpt.h"
@@ -74,7 +75,7 @@ static int match_content(CgptFindParams *params, struct drive *drive,
 static void showmatch(CgptFindParams *params, char *filename,
                       int partnum, GptEntry *entry) {
   char * format = "%s%d\n";
-  if (strncmp("/dev/mmcblk", filename, 11) == 0)
+  if (isdigit(filename[strlen(filename)-1]))
     format = "%sp%d\n";
 
   if (params->numeric) {
