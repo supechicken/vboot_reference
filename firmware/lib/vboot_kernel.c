@@ -288,7 +288,7 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 			VBDEBUG(("Checking developer key hash.\n"));
 			vb2_digest_buffer(buf, buflen, VB2_HASH_SHA256,
 					  digest, sizeof(digest));
-			if (0 != SafeMemcmp(digest, params->fwmp->dev_key_hash,
+			if (0 != vb2_safe_memcmp(digest, params->fwmp->dev_key_hash,
 					    VB2_SHA256_DIGEST_SIZE)) {
 				int i;
 

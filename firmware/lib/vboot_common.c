@@ -197,7 +197,7 @@ int KeyBlockVerify(const VbKeyBlockHeader *block, uint64_t size,
 		VBDEBUG(("Not enough space for key block header.\n"));
 		return VBOOT_KEY_BLOCK_INVALID;
 	}
-	if (SafeMemcmp(block->magic, KEY_BLOCK_MAGIC, KEY_BLOCK_MAGIC_SIZE)) {
+	if (vb2_safe_memcmp(block->magic, KEY_BLOCK_MAGIC, KEY_BLOCK_MAGIC_SIZE)) {
 		VBDEBUG(("Not a valid verified boot key block.\n"));
 		return VBOOT_KEY_BLOCK_INVALID;
 	}
@@ -249,7 +249,7 @@ int KeyBlockVerify(const VbKeyBlockHeader *block, uint64_t size,
 				       header_checksum,
 				       sizeof(header_checksum));
 		if (!rv)
-			rv = SafeMemcmp(header_checksum, GetSignatureDataC(sig),
+			rv = vb2_safe_memcmp(header_checksum, GetSignatureDataC(sig),
 					sizeof(header_checksum));
 
 		if (rv) {
