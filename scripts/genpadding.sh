@@ -101,7 +101,7 @@ do
   done
 done
 
-echo "const int kNumAlgorithms = $algorithmcounter;";
+echo "const int VB2_ALG_COUNT = $algorithmcounter;";
 echo "#define NUMALGORITHMS $algorithmcounter"
 echo
 
