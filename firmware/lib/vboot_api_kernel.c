@@ -1060,11 +1060,11 @@ void VbApiKernelFree(VbCommonParams *cparams)
 {
 	/* VbSelectAndLoadKernel() always allocates this, tests don't */
 	if (cparams->gbb) {
-		VbExFree(cparams->gbb);
+		free(cparams->gbb);
 		cparams->gbb = NULL;
 	}
 	if (cparams->bmp) {
-		VbExFree(cparams->bmp);
+		free(cparams->bmp);
 		cparams->bmp = NULL;
 	}
 }
@@ -1110,7 +1110,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
 	cparams->bmp = NULL;
-	cparams->gbb = VbExMalloc(sizeof(*cparams->gbb));
+	cparams->gbb = malloc(sizeof(*cparams->gbb));
 	retval = VbGbbReadHeader_static(cparams, cparams->gbb);
 	if (VBERROR_SUCCESS != retval)
 		goto VbSelectAndLoadKernel_exit;
@@ -1360,7 +1360,7 @@ VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
 
 	/* Read GBB Header */
 	cparams->bmp = NULL;
-	cparams->gbb = VbExMalloc(sizeof(*cparams->gbb));
+	cparams->gbb = malloc(sizeof(*cparams->gbb));
 	retval = VbGbbReadHeader_static(cparams, cparams->gbb);
 	if (VBERROR_SUCCESS != retval) {
 		VBDEBUG(("Gbb read header failed.\n"));
@@ -1404,7 +1404,7 @@ VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
 
 	/* Allocate work buffer */
 	workbuf = (uint8_t *)
-			VbExMalloc(VB2_VERIFY_KERNEL_PREAMBLE_WORKBUF_BYTES);
+			malloc(VB2_VERIFY_KERNEL_PREAMBLE_WORKBUF_BYTES);
 	if (!workbuf)
 		goto fail;
 	vb2_workbuf_init(&wb, workbuf,
@@ -1504,9 +1504,9 @@ VbError_t VbVerifyMemoryBootImage(VbCommonParams *cparams,
 fail:
 	VbApiKernelFree(cparams);
 	if (NULL != kernel_subkey)
-		VbExFree(kernel_subkey);
+		free(kernel_subkey);
 	if (NULL != workbuf)
-		VbExFree(workbuf);
+		free(workbuf);
 	return retval;
 }
 
