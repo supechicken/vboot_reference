@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fcfa47f1_7620705f",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-21T23:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcfa47f1_8bbb59a7",
+      "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcfa47f1_4bb151c7",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fcfa47f1_d64b4426",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-21T23:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcfa47f1_4bb151c7",
+      "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcfa47f1_0bde29f7",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-10-21T22:01:35Z",
       "side": 1,
       "message": "your dev_debug_vboot change uses \"n\", not \"p\" ?",
+      "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfa47f1_b682f81f",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-21T23:56:39Z",
+      "side": 1,
+      "message": "no it is p:\n\nmmcblk0 parition 2 ---\u003e mmcblk0p2\nnvme0n1 parition 2 ---\u003e nvme0n1p2",
+      "parentUuid": "fcfa47f1_0bde29f7",
       "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
