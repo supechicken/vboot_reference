@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fcfa47f1_76935042",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-22T00:09:17Z",
+      "side": 1,
+      "message": "done this time (cut \u0026 paste the kernel code).",
+      "parentUuid": "fcfa47f1_16fdac96",
+      "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcfa47f1_0bde29f7",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 2
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "well that\u0027s horrendous",
       "parentUuid": "fcfa47f1_b682f81f",
+      "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfa47f1_5183beea",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-22T00:09:17Z",
+      "side": 1,
+      "message": "nX is for defining several device behind a single NVMe controller (n for name space).",
+      "parentUuid": "fcfa47f1_560734c6",
       "revId": "046091696bfcc4e7d9fc8c0c472045ea6dab2b9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
