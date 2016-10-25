@@ -226,9 +226,9 @@ int main(int argc, char* argv[]) {
   printf("LoadKernel() returned %d\n", rv);
 
   if (VBERROR_SUCCESS == rv) {
-    printf("Partition number:   %" PRIu64 "\n", lkp.partition_number);
+    printf("Partition number:   %u\n", lkp.partition_number);
     printf("Bootloader address: %" PRIu64 "\n", lkp.bootloader_address);
-    printf("Bootloader size:    %" PRIu64 "\n", lkp.bootloader_size);
+    printf("Bootloader size:    %u\n", lkp.bootloader_size);
     printf("Partition guid:     "
            "%02x%02x%02x%02x-%02x%02x-%02x%02x"
            "-%02x%02x-%02x%02x%02x%02x%02x%02x\n",

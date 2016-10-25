@@ -580,11 +580,6 @@ static void InvalidParamsTest(void)
 		"Bad lba count");
 
 	ResetMocks();
-	lkp.bytes_per_lba = 128*1024;
-	TEST_EQ(LoadKernel(&lkp, &cparams), VBERROR_INVALID_PARAMETER,
-		"Huge lba size");
-
-	ResetMocks();
 	gpt_init_fail = 1;
 	TEST_EQ(LoadKernel(&lkp, &cparams), VBERROR_NO_KERNEL_FOUND,
 		"Bad GPT");
