@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 	}
 
 	printf("Found a good kernel.\n");
-	printf("Partition number:   %d\n", (int)params.partition_number);
+	printf("Partition number:   %u\n", params.partition_number);
 	printf("Bootloader address: 0x%" PRIx64 "\n",
 	       params.bootloader_address);
 
