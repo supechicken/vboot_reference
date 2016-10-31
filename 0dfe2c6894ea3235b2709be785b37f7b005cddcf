@@ -16,6 +16,24 @@
       "revId": "0dfe2c6894ea3235b2709be785b37f7b005cddcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_8aa90c7c",
+        "filename": "firmware/lib/cryptolib/README",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T17:41:25Z",
+      "side": 1,
+      "message": "It\u0027ll be time for that soon.\n\nI want to reformat all header comments to kernel-doc style, at which point we should be able to generate documentation automatically.",
+      "parentUuid": "86373a0c_6a7768f7",
+      "revId": "0dfe2c6894ea3235b2709be785b37f7b005cddcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
