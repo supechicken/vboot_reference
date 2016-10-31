@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86373a0c_6a5be89f",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T16:41:11Z",
+      "side": 1,
+      "message": "Care for fixing these indentations, too?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_aa65f05f",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T16:41:11Z",
+      "side": 1,
+      "message": "nit: why don\u0027t we set this to -1 and do \u0027return error_code\u0027 below?",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_2a30c046",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T16:41:11Z",
+      "side": 1,
+      "message": "Assuming the suggestion about error_code is accepted, this would be simply,\n\nif (padding_digest \u0026\u0026 fwrite(...) \u003d\u003d 1)\n        error_code \u003d 0;",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_eab8987c",
+        "filename": "utility/signature_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T16:41:11Z",
+      "side": 1,
+      "message": "Same suggestion for this as pad_digest_utility.c",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
