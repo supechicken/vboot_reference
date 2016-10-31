@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86373a0c_7df1f0e5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "Is there anything else we can check?",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 59
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_5d550cd9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "This can cause NULL-pointer reference if shared_data_blob is NULL.",
+      "range": {
+        "startLine": 467,
+        "startChar": 10,
+        "endLine": 467,
+        "endChar": 26
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_7d7bb068",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "nit: I would do sizeof(*shcall).",
+      "range": {
+        "startLine": 469,
+        "startChar": 26,
+        "endLine": 469,
+        "endChar": 48
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_dd047cc6",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "nit: It slightly increases readability if we pass params-\u003eboot_flags instead as it tells the reader params won\u0027t change in this line.",
+      "range": {
+        "startLine": 471,
+        "startChar": 21,
+        "endLine": 471,
+        "endChar": 49
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_80860bac",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "Can we rename this? It looks good GPTs also hit here. Something like search_gpt_exit?",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 7
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_e035573b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-31T19:40:08Z",
+      "side": 1,
+      "message": "Can we put these lines in a sub-routine probably returning found_partitions? That\u0027ll narrow the scope of gpt and workbuf, increasing readability.",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 48
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
