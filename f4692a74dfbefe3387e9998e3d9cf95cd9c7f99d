@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26d3ee49_75e6e831",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "These vanish in a subsequent CL.  They\u0027re no longer relevant now that we use the stream API.",
+      "parentUuid": "86373a0c_7df1f0e5",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 59
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_5d550cd9",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-31T19:40:08Z",
       "side": 1,
       "message": "This can cause NULL-pointer reference if shared_data_blob is NULL.",
+      "range": {
+        "startLine": 467,
+        "startChar": 10,
+        "endLine": 467,
+        "endChar": 26
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26d3ee49_953504a5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "Yes, but this is a vboot-internal API, so we can assume it\u0027s been set properly by the caller.",
+      "parentUuid": "86373a0c_5d550cd9",
       "range": {
         "startLine": 467,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "26d3ee49_558d2c4e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86373a0c_7d7bb068",
+      "range": {
+        "startLine": 469,
+        "startChar": 26,
+        "endLine": 469,
+        "endChar": 48
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_dd047cc6",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-31T19:40:08Z",
       "side": 1,
       "message": "nit: It slightly increases readability if we pass params-\u003eboot_flags instead as it tells the reader params won\u0027t change in this line.",
+      "range": {
+        "startLine": 471,
+        "startChar": 21,
+        "endLine": 471,
+        "endChar": 49
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26d3ee49_d5801c1d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "This changes in a subsequent call to passing a const struct vb2_context *",
+      "parentUuid": "86373a0c_dd047cc6",
       "range": {
         "startLine": 471,
         "startChar": 21,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "26d3ee49_353cf083",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86373a0c_80860bac",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 7
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_e035573b",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2016-10-31T19:40:08Z",
       "side": 1,
       "message": "Can we put these lines in a sub-routine probably returning found_partitions? That\u0027ll narrow the scope of gpt and workbuf, increasing readability.",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 48
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26d3ee49_d5c7fc51",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T22:12:27Z",
+      "side": 1,
+      "message": "That\u0027s essentially what LoadKernel() already does.\n- A bit of setup\n- The highlighted code\n- A bit of processing the results, below.\n\nNote that a future CL passes the workbuf into LoadKernel() via the vb2_context pointer, so the workbuf setup goes away.",
+      "parentUuid": "86373a0c_e035573b",
       "range": {
         "startLine": 490,
         "startChar": 0,
