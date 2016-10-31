@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86373a0c_4a2c2464",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T17:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86373a0c_6a5be89f",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_aa65f05f",
         "filename": "utility/pad_digest_utility.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "86373a0c_aa3170b9",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T17:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86373a0c_aa65f05f",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_2a30c046",
         "filename": "utility/pad_digest_utility.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-31T16:41:11Z",
       "side": 1,
       "message": "Assuming the suggestion about error_code is accepted, this would be simply,\n\nif (padding_digest \u0026\u0026 fwrite(...) \u003d\u003d 1)\n        error_code \u003d 0;",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "7bb3a2b2d45b1012e608ce06f80676a5cee0664a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_8a362cae",
+        "filename": "utility/pad_digest_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-31T17:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86373a0c_2a30c046",
       "range": {
         "startLine": 64,
         "startChar": 0,
