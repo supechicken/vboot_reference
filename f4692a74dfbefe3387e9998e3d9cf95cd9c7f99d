@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "26d3ee49_249f1c36",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-01T16:32:06Z",
+      "side": 1,
+      "message": "Which CL is it? As you commented, my comments turned out irrelevant because the code changes in a subsequent CL. I would like to review the final form of this function (or file).",
+      "parentUuid": "26d3ee49_75e6e831",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 59
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_5d550cd9",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yes, but this is a vboot-internal API, so we can assume it\u0027s been set properly by the caller.",
       "parentUuid": "86373a0c_5d550cd9",
+      "range": {
+        "startLine": 467,
+        "startChar": 10,
+        "endLine": 467,
+        "endChar": 26
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26d3ee49_44d458cf",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-01T16:32:06Z",
+      "side": 1,
+      "message": "Is coverity fine with it, though?",
+      "parentUuid": "26d3ee49_953504a5",
       "range": {
         "startLine": 467,
         "startChar": 10,
