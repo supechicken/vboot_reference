@@ -312,6 +312,24 @@ static void marshal_TPM2B(void **buffer,
 	*buffer_space -= data->size;
 }
 
+static void marshal_nv_define_space(void **buffer,
+				    struct tpm2_nv_define_space_cmd
+				        *command_body,
+				    int *buffer_space)
+{
+	struct tpm2_session_header session_header;
+
+	marshal_TPM_HANDLE(buffer, TPM_RH_PLATFORM, buffer_space);
+
+	memset(&session_header, 0, sizeof(session_header));
+	session_header.session_handle = TPM_RS_PW;
+	marshal_session_header(buffer, &session_header, buffer_space);
+	tpm_tag = TPM_ST_SESSIONS;
+
+	marshal_TPM2B(buffer, &command_body->auth, buffer_space);
+	marshal_TPML_NV_PUBLIC(buffer, command_body->auth, buffer_space);
+}
+
 static void marshal_nv_write(void **buffer,
 			     struct tpm2_nv_write_cmd *command_body,
 			     int *buffer_space)
