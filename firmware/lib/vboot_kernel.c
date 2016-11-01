@@ -447,13 +447,6 @@ VbError_t LoadKernel(LoadKernelParams *params, VbCommonParams *cparams)
 	VbError_t retval = VBERROR_UNKNOWN;
 	int recovery = VBNV_RECOVERY_LK_UNSPECIFIED;
 
-	/* Sanity Checks */
-	if (!params->bytes_per_lba || !params->streaming_lba_count) {
-		VB2_DEBUG("LoadKernel() called with invalid params\n");
-		retval = VBERROR_INVALID_PARAMETER;
-		goto load_kernel_exit;
-	}
-
 	/* Clear output params in case we fail */
 	params->partition_number = 0;
 	params->bootloader_address = 0;
