@@ -19,6 +19,7 @@
 /* TPM2 command codes. */
 #define TPM2_Hierarchy_Control ((TPM_CC)0x00000121)
 #define TPM2_Clear             ((TPM_CC)0x00000126)
+#define TPM2_NV_DefineSpace    ((TPM_CC)0x0000012A)
 #define TPM2_NV_Write          ((TPM_CC)0x00000137)
 #define TPM2_NV_WriteLock      ((TPM_CC)0x00000138)
 #define TPM2_SelfTest          ((TPM_CC)0x00000143)
@@ -59,6 +60,24 @@
 #define TPM_SU_CLEAR                    ((TPM_SU)0x0000)
 #define TPM_SU_STATE                    ((TPM_SU)0x0001)
 
+/* TPM algorithm IDs. */
+#define TPM_ALG_SHA1			((TPM_ALG_ID)0x0004)
+#define TPM_ALG_SHA256			((TPM_ALG_ID)0x000B)
+#define TPM_ALG_NULL			((TPM_ALG_ID)0x0010)
+
+/* NV index attributes. */
+#define TPMA_NV_PPWRITE			((TPMA_NV)0x00000001)
+#define TPMA_NV_OWNERWRITE		((TPMA_NV)0x00000002)
+#define TPMA_NV_AUTHWRITE		((TPMA_NV)0x00000004)
+#define TPMA_NV_POLICYWRITE		((TPMA_NV)0x00000008)
+#define TPMA_NV_MASK_WRITE		(TPMA_NV_PPWRITE | TPMA_NV_OWNERWRITE |\
+					 TPMA_NV_AUTHWRITE | TPMA_NV_POLICYWRITE)
+#define TPMA_NV_PPREAD			((TPMA_NV)0x00010000)
+#define TPMA_NV_OWNERREAD		((TPMA_NV)0x00020000)
+#define TPMA_NV_AUTHREAD		((TPMA_NV)0x00040000)
+#define TPMA_NV_POLICYREAD		((TPMA_NV)0x00080000)
+#define TPMA_NV_MASK_READ		(TPMA_NV_PPREAD | TPMA_NV_OWNERREAD |\
+					 TPMA_NV_AUTHREAD | TPMA_NV_POLICYREAD)
 typedef uint8_t TPMI_YES_NO;
 typedef uint32_t TPM_CC;
 typedef uint32_t TPM_HANDLE;
@@ -67,11 +86,14 @@ typedef TPM_HANDLE TPMI_RH_ENABLES;
 typedef uint32_t TPM_CAP;
 typedef uint32_t TPM_PT;
 typedef uint16_t TPM_SU;
+typedef uint16_t TPM_ALG_ID;
+typedef TPM_ALG_ID TPMI_ALG_HASH;
+typedef uint32_t TPMA_NV;
 
 typedef struct {
 	uint16_t      size;
 	uint8_t       *buffer;
-} TPM2B;
+} TPM2B, TPM2B_DIGEST, TPM2B_AUTH;
 
 typedef union {
 	struct {
@@ -99,6 +121,19 @@ typedef struct {
 	TPM_CAP capability;
 	TPMU_CAPABILITIES data;
 } TPMS_CAPABILITY_DATA;
+
+typedef struct {
+	TPMI_RH_NV_INDEX nvIndex;
+	TPMI_ALG_HASH nameAlg;
+	TPMA_NV attributes;
+	TPM2B authPolicy;
+	uint16_t dataSize;
+} TPMS_NV_PUBLIC;
+
+struct tpm2_nv_define_space_cmd {
+	TPM2B auth;
+	TPMS_NV_PUBLIC publicInfo;
+};
 
 struct tpm2_nv_read_cmd {
 	TPMI_RH_NV_INDEX nvIndex;
