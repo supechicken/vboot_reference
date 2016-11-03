@@ -1219,11 +1219,15 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 
 	/* Select boot path */
 	if (shared->recovery_reason) {
-		/* Recovery boot */
-		p.boot_flags |= BOOT_FLAG_RECOVERY;
-		retval = VbBootRecovery(cparams, &p);
-		VbExEcEnteringMode(0, VB_EC_RECOVERY);
-		VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		if (shared->recovery_reason == VBNV_RECOVERY_TRAIN_AND_REBOOT)
+			retval = VBERROR_REBOOT_REQUESTED;
+		else {
+			/* Recovery boot */
+			p.boot_flags |= BOOT_FLAG_RECOVERY;
+			retval = VbBootRecovery(cparams, &p);
+			VbExEcEnteringMode(0, VB_EC_RECOVERY);
+			VbDisplayScreen(cparams, VB_SCREEN_BLANK, 0, &vnc);
+		}
 
 	} else if (p.boot_flags & BOOT_FLAG_DEVELOPER) {
 		/* Developer boot */
