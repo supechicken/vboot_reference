@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "66ba4639_67b9ed7e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-03T15:29:09Z",
+      "side": 1,
+      "message": "Please ping me when it\u0027s available.",
+      "parentUuid": "26d3ee49_e4aec483",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 59
+      },
+      "revId": "f4692a74dfbefe3387e9998e3d9cf95cd9c7f99d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_5d550cd9",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 3
