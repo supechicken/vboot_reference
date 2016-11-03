@@ -68,8 +68,8 @@ enum VbErrorPredefined_t {
 	VBERROR_TPM_LOCK_FIRMWARE             = 0x10005,
 	/* Unable to set boot mode state in TPM */
 	VBERROR_TPM_SET_BOOT_MODE_STATE       = 0x10006,
-	/* TPM requires reboot */
-	VBERROR_TPM_REBOOT_REQUIRED           = 0x10007,
+	/* Calling firmware needs to perform a reboot. */
+	VBERROR_REBOOT_REQUIRED               = 0x10007,
 	/* Unable to set up TPM */
 	VBERROR_TPM_FIRMWARE_SETUP            = 0x10008,
 	/* Unable to read kernel versions from TPM */
@@ -126,8 +126,6 @@ enum VbErrorPredefined_t {
 	VBERROR_RW_JUMP_FAILED                = 0x10028,
 	/* Error reading FWMP from TPM (note: not present is not an error) */
 	VBERROR_TPM_READ_FWMP                 = 0x10029,
-	/* Calling firmware needs to perform a reboot. */
-	VBERROR_REBOOT_REQUESTED               = 0x1002a,
 
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */

@@ -246,7 +246,7 @@ static void VbSlkTest(void)
 
 	ResetMocks();
 	shared->recovery_reason = VBNV_RECOVERY_TRAIN_AND_REBOOT;
-	test_slk(VBERROR_REBOOT_REQUESTED, 0, "Recovery train and reboot");
+	test_slk(VBERROR_REBOOT_REQUIRED, 0, "Recovery train and reboot");
 
 	// todo: rkr/w/l fail ignored if recovery
 
