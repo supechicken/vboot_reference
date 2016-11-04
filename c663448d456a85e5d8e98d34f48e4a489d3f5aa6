@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8b50234a_58351da3",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:17:14Z",
+      "side": 1,
+      "message": "yes, and using tpmc help seems a bit less reliable - someone can change the output layout and/or contents and it would break this check. Having \u0027tpmc tpmversion\u0027 command would be ideal.",
+      "parentUuid": "8b50234a_3812e97b",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_58219dc8",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
