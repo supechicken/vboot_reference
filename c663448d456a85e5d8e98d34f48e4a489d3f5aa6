@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b50234a_98e33520",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:06:13Z",
+      "side": 1,
+      "message": "checking for trunksd.init file presence is a good idea, will work for any tpm2.",
+      "parentUuid": "8b50234a_3812e97b",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_58219dc8",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-04T07:26:55Z",
       "side": 1,
       "message": "for 2.0 define_space now always returns success from Tlcl. so you can remove this check - it will be noop for 2.0 until we implement the command",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_d8ddad54",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:06:13Z",
+      "side": 1,
+      "message": "as you mentioned below - the API for calling definespace needs to change, this is why I did not want to call it unconditionally.\n\nOnce it is implemented for tpm2 this code will have to be adjusted to account for tpm2 specicic properties.",
+      "parentUuid": "8b50234a_58219dc8",
       "range": {
         "startLine": 61,
         "startChar": 21,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8b50234a_3854a9de",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:06:13Z",
+      "side": 1,
+      "message": "yes, this is why definespace is not called at all now for tpm2",
+      "parentUuid": "8b50234a_98021527",
+      "range": {
+        "startLine": 152,
+        "startChar": 19,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_d80c8d5b",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8b50234a_1859e514",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:06:13Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "8b50234a_d80c8d5b",
+      "range": {
+        "startLine": 154,
+        "startChar": 19,
+        "endLine": 154,
+        "endChar": 22
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_38fb090c",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-11-04T07:26:55Z",
       "side": 1,
       "message": "Same as kernel version space?",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_785e21fe",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T14:06:13Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "8b50234a_38fb090c",
       "range": {
         "startLine": 157,
         "startChar": 19,
