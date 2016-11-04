@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8b50234a_0cd527cd",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T19:55:54Z",
+      "side": 1,
+      "message": "will need to add tpmversion, but it won\u0027t happen today. for now checking for trunksd.conf sounds like the best approach",
+      "parentUuid": "8b50234a_58351da3",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_58219dc8",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "as you mentioned below - the API for calling definespace needs to change, this is why I did not want to call it unconditionally.\n\nOnce it is implemented for tpm2 this code will have to be adjusted to account for tpm2 specicic properties.",
       "parentUuid": "8b50234a_58219dc8",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_ecd1d3e0",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T19:55:54Z",
+      "side": 1,
+      "message": "ok as a temporary thing",
+      "parentUuid": "8b50234a_d8ddad54",
       "range": {
         "startLine": 61,
         "startChar": 21,
