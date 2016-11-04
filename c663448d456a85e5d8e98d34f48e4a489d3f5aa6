@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b50234a_3812e97b",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T07:26:55Z",
+      "side": 1,
+      "message": "While trunks/tcsd is running, you can run tpm_version and check the first line or the Chip Version line.\nOr, check for /etc/init/trunksd.conf presence.\nWhen daemons are not running, \u0027tpmc help\u0027 prints its mode (1.2 or 2.0) in the first line. And yes, probably we should add a command to tpmc to return tpm version.\n\nThe only problem is that you use it currently both with and without daemons running. However, tpmc help doesn\u0027t open /dev/tpm0, so works fine in both modes. Same can be done for the new command that we add to tpmc to return tpm version (version is set at compilet time)",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_58219dc8",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T07:26:55Z",
+      "side": 1,
+      "message": "for 2.0 define_space now always returns success from Tlcl. so you can remove this check - it will be noop for 2.0 until we implement the command",
+      "range": {
+        "startLine": 61,
+        "startChar": 21,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_98021527",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T07:26:55Z",
+      "side": 1,
+      "message": "will be different for 2.0. even if we auto-set AUTHREAD with NULL password, and 0x1 is still PPWRITE, we still need WRITE_STCLEAR, PLATFORMCREATE, and what\u0027s important POLICY_DELETE tied to PCR0. Right now DefineSpace in Tlcl doesn\u0027t support setting non-empty policies (no such param in API), so we\u0027ll either need DefineSpaceEx, or just deduce from other flags somehow (e.g. always goes with WRITE_STCLEAR, though that may lead to confusion in the future).",
+      "range": {
+        "startLine": 152,
+        "startChar": 19,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_d80c8d5b",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T07:26:55Z",
+      "side": 1,
+      "message": "Similarly, different for 2.0. In addition to PPWRITE (0x1) and automatic AUTHREAD, we still need POLICYCREATE.\nWe can\u0027t always set PLATFORMCREATE for the spaces in Tlcl, since for 2.0 it will also be used by mount-encrypted that doesn\u0027t need this flag for its space.",
+      "range": {
+        "startLine": 154,
+        "startChar": 19,
+        "endLine": 154,
+        "endChar": 22
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_38fb090c",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-04T07:26:55Z",
+      "side": 1,
+      "message": "Same as kernel version space?",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "c663448d456a85e5d8e98d34f48e4a489d3f5aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
