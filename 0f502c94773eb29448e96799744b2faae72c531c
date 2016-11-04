@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66ba4639_d50f9a12",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "static. I don\u0027t see it in a header file.",
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_f5b8de20",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "What about vb2_get_keyblock? It\u0027s not restricted to vblock.",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_b53bf6e4",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "I think this should be named vb2_verify_kernel_vblock.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_f50a9e04",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Can we merge vb2_verify_keyblock_hash into vb2_verify_keyblock? vb2_verify_keyblock_hash and vb2_verify_data are almost identical . Maybe we can pass NULL as a subkey to vb2_verify_keyblock to indicate it\u0027s only a hash check if require_official_os(params) returns false.",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 39
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_558d6a4e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Do we use this feature? This check is for a kernel only for dev mode or normal mode. Do we have such a kernel?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 68
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_55e9eace",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "I\u0027ve been seeing this trick since I joined the team but this doesn\u0027t work, right? Both kernel and key versions must be equal to or newer than min_version but making a single integer masks the lower half (kernel version). In other words, as long as key version is newer, the check (combined_version \u003c min_version) passes even if kernel version is old. In yet other words, when we bump up the key version, suddenly all previous kernel versions become valid again.",
+      "range": {
+        "startLine": 267,
+        "startChar": 10,
+        "endLine": 268,
+        "endChar": 39
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_eadc7d2f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "nit: VB2_SUCCESS, VBERROR_SUCCESS, or even better nothing (implicit comparison).",
+      "range": {
+        "startLine": 329,
+        "startChar": 5,
+        "endLine": 329,
+        "endChar": 6
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_5501ea69",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "nit: kernbuf",
+      "range": {
+        "startLine": 363,
+        "startChar": 5,
+        "endLine": 363,
+        "endChar": 26
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_5568ca13",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Can we use params-\u003ekernel_buffer and kernel_buffer_size?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 52
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_9556b26d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Is it? According to the definition in lib20/include/vb2_struct.h, it\u0027s 32 bit.",
+      "range": {
+        "startLine": 374,
+        "startChar": 3,
+        "endLine": 374,
+        "endChar": 60
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_d5a95a35",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Isn\u0027t this always true except body_offset \u003d\u003d KBUF_SIZE, in which case we can safely execute the stuff in the if-clause safely anyway?",
+      "range": {
+        "startLine": 386,
+        "startChar": 5,
+        "endLine": 386,
+        "endChar": 28
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_55dd6ac4",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "same here. better nothing or VBERROR_SUCCESS.",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 10
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_d52cbacd",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "How do you like using \u0026preamble-\u003ebody_signature? This temp var is used once and not particularly increasing a readability.",
+      "range": {
+        "startLine": 416,
+        "startChar": 59,
+        "endLine": 416,
+        "endChar": 67
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_aa243525",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "Shall we assign VBSD_LKC_* to these error cases?",
+      "range": {
+        "startLine": 483,
+        "startChar": 3,
+        "endLine": 483,
+        "endChar": 25
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_eaa91d35",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "nit: VB2_SUCCESS !\u003d for consistency, though I prefer fixing other places (implicit comparison).",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 6
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_6a2ecda9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-04T00:42:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this. Why can a invalid keyblock imply dev-signed kernel?",
+      "range": {
+        "startLine": 628,
+        "startChar": 44,
+        "endLine": 628,
+        "endChar": 59
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
