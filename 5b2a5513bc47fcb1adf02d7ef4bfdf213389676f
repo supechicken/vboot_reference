@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b50234a_422ec3c4",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-05T06:16:26Z",
+      "side": 1,
+      "message": "Maybe just rename VBERROR_TPM_REBOOT_REQUIRED?  Seems odd to have two error codes which do the same thing.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "5b2a5513bc47fcb1adf02d7ef4bfdf213389676f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_e23c37f8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-05T06:16:26Z",
+      "side": 1,
+      "message": "if (shared-\u003erecovery_reason \u003d\u003d VBNV_...) {\n   retval\u003d\n} else if (shared-\u003erecovery_reason) {\n   p.boot_flags \u003d ...\n}\n\nNo need to nest this deeper.",
+      "range": {
+        "startLine": 1221,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 64
+      },
+      "revId": "5b2a5513bc47fcb1adf02d7ef4bfdf213389676f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_c2393306",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-05T06:16:26Z",
+      "side": 1,
+      "message": "DRAM train?",
+      "range": {
+        "startLine": 543,
+        "startChar": 30,
+        "endLine": 543,
+        "endChar": 35
+      },
+      "revId": "5b2a5513bc47fcb1adf02d7ef4bfdf213389676f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
