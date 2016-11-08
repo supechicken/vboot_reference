@@ -16,6 +16,24 @@
       "revId": "7f322cc314a5e49598fc192fabf6da7e96a85ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8baca39c_d5e38b1e",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T17:06:12Z",
+      "side": 1,
+      "message": "Okay. I will update this to REC_HASH_NV_INDEX and REC_HASH_NV_SIZE.",
+      "parentUuid": "8baca39c_150503ee",
+      "revId": "7f322cc314a5e49598fc192fabf6da7e96a85ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
