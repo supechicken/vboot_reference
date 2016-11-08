@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8baca39c_150503ee",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-08T17:04:14Z",
+      "side": 1,
+      "message": "I\u0027m wondering why we\u0027re using MRC in the name. We just want to store a hash used in recovery. Can we make a more generic name?",
+      "revId": "7f322cc314a5e49598fc192fabf6da7e96a85ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
