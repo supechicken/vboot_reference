@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "eb799f3f_6e02cf72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-09T22:51:13Z",
+      "side": 1,
+      "message": "done. done.",
+      "parentUuid": "6bbdafe5_60ece84e",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbdafe5_001c0c7c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2016-11-09T17:10:47Z",
       "side": 1,
       "message": "this test does not prove much, writing and reading the space after defining would be great, as well as describing the meaning of the arguments.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb799f3f_0eff8b41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-09T22:51:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "6bbdafe5_001c0c7c",
       "range": {
         "startLine": 12,
         "startChar": 6,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "eb799f3f_eef55f66",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-09T22:51:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "6bbdafe5_200dd054",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbdafe5_a020c0c6",
         "filename": "firmware/include/tpm2_tss_constants.h",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2016-11-09T17:10:47Z",
       "side": 1,
       "message": "what is the meaning of this field? Should it be algName (for algorithm name?)",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_2b6931d5",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-09T22:51:13Z",
+      "side": 1,
+      "message": "It\u0027s actually the algorithm used for creating the name of the object for this nvram index (Part 1, section 16), so nameAlg as a field name is ok.\nAnd I just took the field names in this structure straight from the spec (Part 2, section 13.3).",
+      "parentUuid": "6bbdafe5_a020c0c6",
       "range": {
         "startLine": 127,
         "startChar": 15,
