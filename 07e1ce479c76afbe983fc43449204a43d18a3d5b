@@ -22,6 +22,98 @@
       "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_60ece84e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-09T17:10:47Z",
+      "side": 1,
+      "message": "a few words here what this command does and where it is described as in section number of the appropriate spec part, etc) would go a long way here.",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_001c0c7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-09T17:10:47Z",
+      "side": 1,
+      "message": "this test does not prove much, writing and reading the space after defining would be great, as well as describing the meaning of the arguments.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_200dd054",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-09T17:10:47Z",
+      "side": 1,
+      "message": "showing bitmasks as (1 \u003c\u003c \u003cbit_poz\u003e) is easier to check against the spec.",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_a020c0c6",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-09T17:10:47Z",
+      "side": 1,
+      "message": "what is the meaning of this field? Should it be algName (for algorithm name?)",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "07e1ce479c76afbe983fc43449204a43d18a3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
