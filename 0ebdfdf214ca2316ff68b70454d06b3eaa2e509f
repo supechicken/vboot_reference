@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb799f3f_faa3d53a",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-10T00:01:13Z",
+      "side": 1,
+      "message": "well, yes, anywhere where PH is still enabled",
+      "parentUuid": "eb799f3f_9f988301",
+      "range": {
+        "startLine": 391,
+        "startChar": 59,
+        "endLine": 391,
+        "endChar": 67
+      },
+      "revId": "0ebdfdf214ca2316ff68b70454d06b3eaa2e509f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb799f3f_7aafe563",
         "filename": "firmware/lib/tpm2_lite/marshaling.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-09T23:50:05Z",
       "side": 1,
       "message": "why did this have to change between review passes - did you run into something?",
+      "revId": "0ebdfdf214ca2316ff68b70454d06b3eaa2e509f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb799f3f_3ad87dd2",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-10T00:01:13Z",
+      "side": 1,
+      "message": "yes, the previous patchset didn\u0027t have Verified+1 set. Once I actually tried the changes, I realized that for non-PPWRITE/PLATFORMCREATE indexes we need to have different authorization. Fortunately, we didn\u0027t need it so far, but mount-encrypted will use it soon.",
+      "parentUuid": "eb799f3f_7aafe563",
       "revId": "0ebdfdf214ca2316ff68b70454d06b3eaa2e509f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
