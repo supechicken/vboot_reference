@@ -601,6 +601,30 @@
     },
     {
       "key": {
+        "uuid": "4b7aab69_994e3f37",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-10T20:50:38Z",
+      "side": 1,
+      "message": "Gaah, missed this one...  new patchset coming...",
+      "parentUuid": "4b7aab69_593ae7e1",
+      "range": {
+        "startLine": 416,
+        "startChar": 59,
+        "endLine": 416,
+        "endChar": 67
+      },
+      "revId": "0f502c94773eb29448e96799744b2faae72c531c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66ba4639_aa243525",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 5
