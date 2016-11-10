@@ -16,6 +16,24 @@
       "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb799f3f_aac17a90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-10T16:38:30Z",
+      "side": 1,
+      "message": "I tried two things:\n1. Entire firmware image with offset\u003doffset of RECOVERY_MRC_CACHE\n2. Just the recovery MRC cache with offset \u003d 0",
+      "parentUuid": "eb799f3f_8a5fde24",
+      "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
