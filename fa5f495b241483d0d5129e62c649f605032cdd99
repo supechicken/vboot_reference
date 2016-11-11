@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b7aab69_e0ddab29",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T20:01:08Z",
+      "side": 1,
+      "message": "Can we use cparams-\u003eshared_data_blob instead to get rid of shared_data_blob from LoadKernelParams entirely?",
+      "range": {
+        "startLine": 429,
+        "startChar": 30,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "fa5f495b241483d0d5129e62c649f605032cdd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
