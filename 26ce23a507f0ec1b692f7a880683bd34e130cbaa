@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b7aab69_3380dfe0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T20:01:36Z",
+      "side": 1,
+      "message": "Shall we validate this blob at all?",
+      "range": {
+        "startLine": 730,
+        "startChar": 33,
+        "endLine": 730,
+        "endChar": 49
+      },
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_1394c31a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T20:01:36Z",
+      "side": 1,
+      "message": "Why is this assignment needed? I don\u0027t see a place where params.shared_data_blob is used and cparams is not available.",
+      "range": {
+        "startLine": 742,
+        "startChar": 1,
+        "endLine": 742,
+        "endChar": 47
+      },
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_e0704b50",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T20:01:36Z",
+      "side": 1,
+      "message": "Need update.",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_a08733f5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T20:01:36Z",
+      "side": 1,
+      "message": "Please add \u0027@param cts...\u0027",
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
