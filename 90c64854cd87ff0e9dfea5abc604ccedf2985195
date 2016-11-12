@@ -1,0 +1,360 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03718da_12c86c42",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "const or event better get rid of it and use \"select !\u003d VB_SELECT_FIRMWARE_READONLY\" directly down below.",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b03718da_122d0cc0",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "What happens if ec is in RO and we want to update RO?",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_6306003f",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "By the way, do you care removing cparams from VbDisplayScreen? It\u0027s no longer needed because we can get rid of VbDisplayScreenLegacy. Benefit is we can just pass VbSharedDataHeader around in this entire file instead of cparams.",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b03718da_f22e08a3",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Can we print this only if memcmp below fails? It\u0027s redundant if it\u0027s same as the expected hash.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_c35355f6",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Do we still have two RW images for ec?",
+      "range": {
+        "startLine": 208,
+        "startChar": 27,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb669bd0_fcbc7312",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "const",
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_83023c6f",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "const. please move it down below.",
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_18a05add",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Can you define this down below in the if clause where it\u0027s used?",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_63fb61ce",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Can we use __func__ for all these debug messages or use VB2_DEBUG?",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b91cbcd_6fe18b88",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "nit: I would remove it or name it.",
+      "range": {
+        "startLine": 224,
+        "startChar": 40,
+        "endLine": 224,
+        "endChar": 41
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_2491709d",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "We\u0027re returning success in the case of rv !\u003d VBERROR_SUCCESS? EC might be running in RW.",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab6b279a_f144a391",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "I thought we have gotten rid of RO_NORMAL.",
+      "range": {
+        "startLine": 257,
+        "startChar": 21,
+        "endLine": 257,
+        "endChar": 42
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_14a49c42",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "If we fail to update RW image and returning without setting recovery request, are we coming back here again in the next boot?",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 12
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b03718da_726b3860",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Could you add comment explaining why we do this only for the first EC. Also, I think it should be noted somewhere that index 0 is reserved for a \u0027special\u0027 EC (or use enum?).",
+      "range": {
+        "startLine": 317,
+        "startChar": 6,
+        "endLine": 317,
+        "endChar": 12
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_c40b5cd0",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "How do you like stripping out these to a sub-routine? We can contain num_tries and ro_try_count in there to narrow their scope, which is current the entire VbEcSoftwareSync.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 3
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb935fd8_ad3abfde",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-12T01:38:53Z",
+      "side": 1,
+      "message": "Call this unconditionally or call it only if !VBSD_BOOT_FIRMWARE_WP_ENABLED?",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 15
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
