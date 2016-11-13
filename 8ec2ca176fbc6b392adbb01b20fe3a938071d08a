@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b7aab69_988aa7fd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2016-11-13T15:27:27Z",
+      "side": 1,
+      "message": "This seems to causing build error for some reason (on this branch)?\nFor example,\nhttps://uberchromegw.corp.google.com/i/chromeos.branch/builders/chell%20factory%20factory-glados-7828.B/builds/139",
+      "range": {
+        "startLine": 1147,
+        "startChar": 2,
+        "endLine": 1147,
+        "endChar": 21
+      },
+      "revId": "8ec2ca176fbc6b392adbb01b20fe3a938071d08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
