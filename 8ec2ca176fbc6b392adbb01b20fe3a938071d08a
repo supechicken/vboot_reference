@@ -22,6 +22,30 @@
       "revId": "8ec2ca176fbc6b392adbb01b20fe3a938071d08a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab3967ba_c9d29119",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-11-14T01:32:16Z",
+      "side": 1,
+      "message": "There are few solutions - remove the related changes here, or also merge the change to depthcharge.\n\nMeanwhile, I think factory branches do no need to build firmware from source. I\u0027m going to remove the bootimage related flags in chell\u0027s overlay.",
+      "parentUuid": "4b7aab69_988aa7fd",
+      "range": {
+        "startLine": 1147,
+        "startChar": 2,
+        "endLine": 1147,
+        "endChar": 21
+      },
+      "revId": "8ec2ca176fbc6b392adbb01b20fe3a938071d08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
