@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_40f7f0b4",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Yeah.  This CL is really just about moving EC sync to a separate file.  The next CL I\u0027m going to post does a major refactoring of it.",
+      "parentUuid": "b03718da_12c86c42",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03718da_122d0cc0",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-12T01:38:53Z",
       "side": 1,
       "message": "What happens if ec is in RO and we want to update RO?",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1042a47e_80d8d83f",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "RO (recovery) always loads the option ROM.",
+      "parentUuid": "b03718da_122d0cc0",
       "range": {
         "startLine": 111,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_a0b514d1",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Yes, let\u0027s do that in a separate CL.",
+      "parentUuid": "2b773781_6306003f",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03718da_f22e08a3",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_637af62b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b03718da_f22e08a3",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b773781_c35355f6",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -105,6 +201,30 @@
       "writtenOn": "2016-11-12T01:38:53Z",
       "side": 1,
       "message": "Do we still have two RW images for ec?",
+      "range": {
+        "startLine": 208,
+        "startChar": 27,
+        "endLine": 209,
+        "endChar": 22
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1042a47e_43925a39",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "I believe this selects the source AP-RW image where the EC-RW image comes from.",
+      "parentUuid": "2b773781_c35355f6",
       "range": {
         "startLine": 208,
         "startChar": 27,
@@ -243,6 +363,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_a3a23e7b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Yes.  But what\u0027s our alternative?  An endless crash-loop?",
+      "parentUuid": "4b7aab69_2491709d",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab6b279a_f144a391",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -312,6 +456,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_83c462f9",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b03718da_726b3860",
+      "range": {
+        "startLine": 317,
+        "startChar": 6,
+        "endLine": 317,
+        "endChar": 12
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b7aab69_c40b5cd0",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -346,6 +514,30 @@
       "writtenOn": "2016-11-12T01:38:53Z",
       "side": 1,
       "message": "Call this unconditionally or call it only if !VBSD_BOOT_FIRMWARE_WP_ENABLED?",
+      "range": {
+        "startLine": 350,
+        "startChar": 6,
+        "endLine": 350,
+        "endChar": 15
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1042a47e_e3d446a7",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T22:26:42Z",
+      "side": 1,
+      "message": "Unconditionally.  EC and AP WP might be different.",
+      "parentUuid": "eb935fd8_ad3abfde",
       "range": {
         "startLine": 350,
         "startChar": 6,
