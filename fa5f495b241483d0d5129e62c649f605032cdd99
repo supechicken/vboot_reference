@@ -22,6 +22,30 @@
       "revId": "fa5f495b241483d0d5129e62c649f605032cdd99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_2ba93833",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-14T18:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7aab69_e0ddab29",
+      "range": {
+        "startLine": 429,
+        "startChar": 30,
+        "endLine": 429,
+        "endChar": 54
+      },
+      "revId": "fa5f495b241483d0d5129e62c649f605032cdd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
