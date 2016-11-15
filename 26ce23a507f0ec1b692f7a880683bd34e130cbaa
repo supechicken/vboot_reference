@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_6ee3eded",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-15T23:04:15Z",
+      "side": 1,
+      "message": "We\u0027ve been blindly trusting it for a while.\nIt\u0027s all going to go away and be replaced with vb2_context.",
+      "parentUuid": "4b7aab69_3380dfe0",
+      "range": {
+        "startLine": 730,
+        "startChar": 33,
+        "endLine": 730,
+        "endChar": 49
+      },
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b7aab69_1394c31a",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-11T20:01:36Z",
       "side": 1,
       "message": "Why is this assignment needed? I don\u0027t see a place where params.shared_data_blob is used and cparams is not available.",
+      "range": {
+        "startLine": 742,
+        "startChar": 1,
+        "endLine": 742,
+        "endChar": 47
+      },
+      "revId": "26ce23a507f0ec1b692f7a880683bd34e130cbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1042a47e_aed4d501",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-15T23:04:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7aab69_1394c31a",
       "range": {
         "startLine": 742,
         "startChar": 1,
