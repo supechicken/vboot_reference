@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_a3b51ed1",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T17:21:56Z",
+      "side": 1,
+      "message": "Do you already have the CL which does the major refactoring? If not, could you fix it now or add TODO?",
+      "parentUuid": "1042a47e_40f7f0b4",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03718da_122d0cc0",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "1042a47e_c39f8a4c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T17:21:56Z",
+      "side": 1,
+      "message": "Do you have the separate CL already? If not, could you fix it now or add TODO?",
+      "parentUuid": "1042a47e_a0b514d1",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03718da_f22e08a3",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b03718da_f22e08a3",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "90c64854cd87ff0e9dfea5abc604ccedf2985195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1042a47e_e661f417",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T17:21:56Z",
+      "side": 1,
+      "message": "I don\u0027t see the change. Where did you move it to? It\u0027s useful to print out a unexpected hash if memcmp fails.",
+      "parentUuid": "1042a47e_637af62b",
       "range": {
         "startLine": 186,
         "startChar": 0,
