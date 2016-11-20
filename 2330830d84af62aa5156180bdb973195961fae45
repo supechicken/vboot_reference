@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0355864_224cc3b8",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "nit: Can we name it ec_idx or something less generic?",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 16
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_6283ab94",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 131,
+        "startChar": 10,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_02473f97",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "This is repeated. Why don\u0027t we create a function like firmware_description() or macro FW_DESC?",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_c2507750",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "How do we know it\u0027s in RO when VbExEcRunningRW failed?",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 50
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_022e5fbf",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "Does this mean we don\u0027t care whether it\u0027s RO or RW if we\u0027re not in recovery mode?",
+      "range": {
+        "startLine": 242,
+        "startChar": 8,
+        "endLine": 242,
+        "endChar": 23
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_e2557b3d",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "Please print description (\"PD\" or \"EC\" for example) instead.",
+      "range": {
+        "startLine": 265,
+        "startChar": 24,
+        "endLine": 265,
+        "endChar": 25
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_82426f79",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "I see these are checked in ec_sync_phase2 as well. What\u0027s the reason that we can\u0027t bail out from the ec sync earlier in these cases?",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 25
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_6262cb1d",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "Can we name these naked 0\u0027s and 1\u0027s?",
+      "range": {
+        "startLine": 372,
+        "startChar": 26,
+        "endLine": 372,
+        "endChar": 27
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_825b4f71",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-20T18:17:43Z",
+      "side": 1,
+      "message": "I think we can reduce a number of confusions by printing \u0027ec sync is disabled by ...\u0027 for these cases.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "2330830d84af62aa5156180bdb973195961fae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
