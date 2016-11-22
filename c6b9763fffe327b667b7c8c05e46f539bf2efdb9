@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b0355864_051c1e50",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-22T03:47:21Z",
+      "side": 1,
+      "message": "this would be a valid faft failure: define space is supposed to work on tpm1.2",
+      "parentUuid": "50409cd3_1fdd6372",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "c6b9763fffe327b667b7c8c05e46f539bf2efdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0355864_a52f729e",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 2
