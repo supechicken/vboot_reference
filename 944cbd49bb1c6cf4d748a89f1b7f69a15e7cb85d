@@ -45,6 +45,30 @@
       "revId": "944cbd49bb1c6cf4d748a89f1b7f69a15e7cb85d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50409cd3_9f9f339f",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-11-22T04:20:47Z",
+      "side": 1,
+      "message": "I prefer to leave this \"log\" so if we\u0027ll need to support \u0027optional\u0027 spaces, just like 0x1009, in future, the error here can be ignored, so we always decide \"return as faliure or not\" by the caller of reset_space (as in L165).\n\nWhat do you think?",
+      "parentUuid": "b0355864_c5fe36bc",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "944cbd49bb1c6cf4d748a89f1b7f69a15e7cb85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
