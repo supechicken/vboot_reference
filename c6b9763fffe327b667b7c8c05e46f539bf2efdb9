@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0355864_4547866d",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-22T03:37:35Z",
+      "side": 1,
+      "message": "as long as it is not invoked for tpm2, its failure should be considered an error as it has been before this change.",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "c6b9763fffe327b667b7c8c05e46f539bf2efdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0355864_a52f729e",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-22T03:37:35Z",
+      "side": 1,
+      "message": "I think the consensus is that this space is not used any more, I think this section of the code needs to be deleted.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "c6b9763fffe327b667b7c8c05e46f539bf2efdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
