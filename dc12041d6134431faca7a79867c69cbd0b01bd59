@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed1b7768_348d9014",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-23T23:55:54Z",
+      "side": 1,
+      "message": "You probably need to add\n\n | tr \u0027-\u0027 \u0027_\u0027\n\n(the previous function replaced all - by _, but then, it also only took the first 2 elements of the board name, so I\u0027m not sure if this change is going to break other boards...)",
+      "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
