@@ -16,6 +16,24 @@
       "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01acc56_43884641",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-24T00:05:51Z",
+      "side": 1,
+      "message": "we don\u0027t want to mess with the - or _ anymore ... that\u0027s what CL:371678 was about\n\nfor the cases where we do need to `tr - _` (e.g. for variable names), the code can do it itself.  if you look at ensure_sane_lsb-release.sh in this CL, you\u0027ll see \"boardvar\" does just that.",
+      "parentUuid": "ed1b7768_348d9014",
+      "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
