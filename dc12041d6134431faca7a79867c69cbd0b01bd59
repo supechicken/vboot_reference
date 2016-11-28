@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d01acc56_ecaaff67",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-28T20:06:23Z",
+      "side": 1,
+      "message": "i was just moving this func as-is from ensure_sane_lsb-release.sh to minimize disruption.\n\nthe prob with using grep or sed is that key is implicitly a regex (which is bad imo) rather than a plain text string.    if we want to try to rewrite it, i\u0027d want to come up with something better.",
+      "parentUuid": "ed1b7768_f4383831",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed1b7768_348d9014",
         "filename": "scripts/image_signing/common.sh",
         "patchSetId": 1
