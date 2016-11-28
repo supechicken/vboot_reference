@@ -57,6 +57,24 @@
       "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed1b7768_57e6cecf",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-28T01:30:13Z",
+      "side": 1,
+      "message": "Done here: https://chromium-review.googlesource.com/414769 . Might be best to squash it in this CL.",
+      "parentUuid": "d01acc56_43884641",
+      "revId": "dc12041d6134431faca7a79867c69cbd0b01bd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
