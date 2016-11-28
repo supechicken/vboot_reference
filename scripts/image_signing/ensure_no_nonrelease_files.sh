@@ -41,7 +41,8 @@ main() {
     mount_image_partition_ro "${image}" 3 "${rootfs}"
     # Pick the right set of test-expectation data to use.
     local board=$(get_board_from_lsb_release "${rootfs}")
-    eval "release_file_blacklist=(\"\${RELEASE_FILE_BLACKLIST_${board}[@]}\")"
+    local boardvar=${board//-/_}
+    eval "release_file_blacklist=(\"\${RELEASE_FILE_BLACKLIST_${boardvar}[@]}\")"
 
     for file in ${release_file_blacklist}; do
         if [ -e "${rootfs}/${file}" ]; then
