@@ -70,6 +70,30 @@
       "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6cf3ba_16f3dabe",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-12-13T15:27:22Z",
+      "side": 1,
+      "message": "\u003e No, but you can use tpmc to update the spaces manually.\n\nI\u0027m confused. As far as I understand, recovery image doesn\u0027t give you shells so there\u0027s no way to call tpmc manually.\nOr do you mean re-key to dev and then boot a test image in recovery mode?\n\n\u003e Well, is that an option for external developers though? Is this documented somewhere? The information on the internal chromeos sites page seems outdated.\n\nAt least documented in test team\u0027s standard guide for key uprev tests.\n\nAnyway, I agree with you that re-key to dev key + recovery boot a test image +running chromeos-tpm-recovery may solve the problem. Let us change this to die by default, and allow if --force is applied (with giving right instruction).",
+      "parentUuid": "dabcabd0_3395c81d",
+      "range": {
+        "startLine": 228,
+        "startChar": 24,
+        "endLine": 228,
+        "endChar": 52
+      },
+      "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
