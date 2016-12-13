@@ -46,6 +46,30 @@
       "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabcabd0_3395c81d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2016-12-13T14:59:28Z",
+      "side": 1,
+      "message": "\u003e Hi Mattias\n \u003e \n \u003e \u003e The easiest way to do this was to let the re-key go through and\n \u003e then boot a recovery image using the dev recovery key\n \u003e \n \u003e Does that work? I think recovery images should not reset TPM\n \u003e NVSpace.\n\nNo, but you can use tpmc to update the spaces manually.\n\n \u003e \n \u003e \u003e I suppose your answer might be \"factory image\", but I\u0027m not sure\n \u003e that\u0027s a path we\u0027d want or can recommend for general usage?\n \u003e \n \u003e Booting a signed factory shim (i.e., reset shim) is the best\n \u003e solution and I think many developers and partners are using that\n \u003e approach.\n\nWell, is that an option for external developers though? Is this documented somewhere? The information on the internal chromeos sites page seems outdated.\n\n \u003e \n \u003e When I make this change, I was assuming \"booting recovery image\n \u003e won\u0027t work\". If you\u0027re sure current recovery images will reset NV\n \u003e space, I can change this error to warning.\n\nRecovery keys are not versioned, so an image signed with the dev recovery key will boot in recovery mode. I\u0027d personally prefer if we don\u0027t insist on preventing something that works... (maybe a --force flag would make sense?) I don\u0027t feel strongly though as long as we gave documentation in place to point people in a direction that gets them into dev-keyed mode reliably, I\u0027m fine with leaving as is. FWIW, I\u0027ve just been helping out someone on the quest to get their device developer-keyed.",
+      "parentUuid": "cd6cf3ba_b6e306ee",
+      "range": {
+        "startLine": 228,
+        "startChar": 24,
+        "endLine": 228,
+        "endChar": 52
+      },
+      "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
