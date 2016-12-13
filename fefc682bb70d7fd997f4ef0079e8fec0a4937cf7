@@ -94,6 +94,30 @@
       "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_7c82a69e",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-13T17:21:03Z",
+      "side": 1,
+      "message": "Yes, please on the --force option. I ran into this the other week, when trying to rollback the TPM counters on a prod-signed Lulu. I had to copy /usr/share/vboot/bin/* into /tmp and edit this script to remove this check in order to do it.",
+      "parentUuid": "cd6cf3ba_16f3dabe",
+      "range": {
+        "startLine": 228,
+        "startChar": 24,
+        "endLine": 228,
+        "endChar": 52
+      },
+      "revId": "fefc682bb70d7fd997f4ef0079e8fec0a4937cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
