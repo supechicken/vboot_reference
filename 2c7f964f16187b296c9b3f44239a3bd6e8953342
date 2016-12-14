@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a895341_669f87ef",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2016-12-14T21:52:12Z",
+      "side": 1,
+      "message": "Where was this buffer coming from before?",
+      "range": {
+        "startLine": 775,
+        "startChar": 1,
+        "endLine": 775,
+        "endChar": 59
+      },
+      "revId": "2c7f964f16187b296c9b3f44239a3bd6e8953342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
