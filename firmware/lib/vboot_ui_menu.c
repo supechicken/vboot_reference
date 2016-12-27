@@ -162,6 +162,8 @@ typedef enum _VB_MENU {
 	VB_MENU_DEV_WARNING,
 	VB_MENU_DEV,
 	VB_MENU_TO_NORM,
+	VB_MENU_RECOVERY,
+	VB_MENU_TO_DEV,
 	VB_MENU_COUNT,
 } VB_MENU;
 
@@ -193,6 +195,22 @@ typedef enum _VB_TO_NORM_MENU {
 	VB_TO_NORM_COUNT,
 } VB_TO_NORM_MENU;
 
+typedef enum _VB_RECOVERY_MENU {
+	VB_RECOVERY_TO_DEV,
+	VB_RECOVERY_DBG_INFO,
+	VB_RECOVERY_POWER_OFF,
+	VB_RECOVERY_LANGUAGE,
+	VB_RECOVERY_COUNT,
+} VB_RECOVERY_MENU;
+
+typedef enum _VB_TO_DEV_MENU {
+	VB_TO_DEV_CONFIRM,
+	VB_TO_DEV_CANCEL,
+	VB_TO_DEV_POWER_OFF,
+	VB_TO_DEV_LANGUAGE,
+	VB_TO_DEV_COUNT,
+} VB_TO_DEV_MENU;
+
 static VB_MENU current_menu = VB_MENU_DEV_WARNING;
 static int current_menu_idx = 0;
 static int selected = 1;
@@ -223,6 +241,20 @@ static char *to_normal_menu[] = {
 	"Language\n"
 };
 
+static char *recovery_menu[] = {
+	"Enable developer mode\n",
+	"Show Debug Info\n",
+	"Power Off\n",
+	"Language\n"
+};
+
+static char *to_dev_menu[] = {
+	"Confirm enabling developer mode\n",
+	"Cancel\n",
+	"Power Off\n",
+	"Language\n"
+};
+
 // function that gets the current menu string array and size.
 // can set menu_array to NULL and only return string size.
 VbError_t vb2_get_current_menu_size(VB_MENU menu, char ***menu_array, int *size)
@@ -242,6 +274,16 @@ VbError_t vb2_get_current_menu_size(VB_MENU menu, char ***menu_array, int *size)
 		*size = VB_TO_NORM_COUNT;
 		if (menu_array)
 			*menu_array = to_normal_menu;
+		break;
+	case VB_MENU_RECOVERY:
+		*size = VB_RECOVERY_COUNT;
+		if (menu_array)
+			*menu_array = recovery_menu;
+		break;
+	case VB_MENU_TO_DEV:
+		*size = VB_TO_DEV_COUNT;
+		if (menu_array)
+			*menu_array = to_dev_menu;
 		break;
 	default:
 		*size = 0;
@@ -263,6 +305,7 @@ VbError_t vb2_print_current_menu()
 	memset(m_str, 0, strlen(m_str));
 	// NOTE: need to check for error code.
 	vb2_get_current_menu_size(current_menu, &m, &size);
+	VBDEBUG(("vb2_print_current_menu:\n"));
 
 	for (i = 0; i < size; i++) {
 		if (current_menu_idx == i) {
@@ -275,7 +318,7 @@ VbError_t vb2_print_current_menu()
 	}
 	VBDEBUG(("%s", m_str));
 
-	return VbExDisplayText(0,0,m_str);
+	return VbExDisplayText(0,50,m_str);
 }
 
 // This updates current_menu and current_menu_idx,
@@ -369,6 +412,46 @@ VbError_t vb2_update_menu()
 			break;
 		default:
 			// invalid menu item.  don't update anything
+			break;
+		}
+		break;
+	case VB_MENU_RECOVERY:
+		switch(current_menu_idx) {
+		case VB_RECOVERY_TO_DEV:
+			// switch to TO_DEV menu
+			current_menu = VB_MENU_TO_DEV;
+			current_menu_idx = 0;
+			selected = 0;
+			break;
+		case VB_RECOVERY_DBG_INFO:
+			break;
+		case VB_RECOVERY_POWER_OFF:
+			ret = VBERROR_SHUTDOWN_REQUESTED;
+			break;
+		case VB_RECOVERY_LANGUAGE:
+			break;
+		default:
+			// invalid menu item.  don't update anything
+			break;
+		}
+		break;
+	case VB_MENU_TO_DEV:
+		switch(current_menu_idx) {
+		case VB_TO_DEV_CONFIRM:
+			// confirm enabling dev mode
+			break;
+		case VB_TO_DEV_CANCEL:
+			current_menu = VB_MENU_RECOVERY;
+			current_menu_idx = 0;
+			selected = 0;
+			break;
+		case VB_TO_DEV_POWER_OFF:
+			ret = VBERROR_SHUTDOWN_REQUESTED;
+			break;
+		case VB_TO_DEV_LANGUAGE:
+			break;
+		default:
+			// invalid menu item.  don't update anything.
 			break;
 		}
 		break;
@@ -639,6 +722,8 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	uint32_t retval;
 	uint32_t key;
 	int i;
+	VbError_t ret;
+	int menu_size;
 
 	VBDEBUG(("VbBootRecoveryMenu() start\n"));
 
@@ -680,6 +765,9 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	/* Loop and wait for a recovery image */
 	VBDEBUG(("VbBootRecoveryMenu() waiting for a recovery image\n"));
+	// initialize menu to recovery menu.
+	current_menu = VB_MENU_RECOVERY;
+	current_menu_idx = 0;
 	while (1) {
 		VBDEBUG(("VbBootRecoveryMenu() attempting to load kernel2\n"));
 		retval = VbTryLoadKernel(ctx, cparams, VB_DISK_FLAG_REMOVABLE);
@@ -700,6 +788,10 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
 				0);
+		if (current_menu != VB_MENU_RECOVERY ||
+		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
+			vb2_print_current_menu();
+		}
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
@@ -707,72 +799,94 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		 */
 		for (i = 0; i < REC_DISK_DELAY; i += REC_KEY_DELAY) {
 			key = VbExKeyboardRead();
-			/*
-			 * We might want to enter dev-mode from the Insert
-			 * screen if all of the following are true:
-			 *   - user pressed Ctrl-D
-			 *   - we can honor the virtual dev switch
-			 *   - not already in dev mode
-			 *   - user forced recovery mode
-			 *   - EC isn't pwned
-			 */
-			if (key == 0x04 &&
-			    shared->flags & VBSD_HONOR_VIRT_DEV_SWITCH &&
-			    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
-			    (shared->flags & VBSD_BOOT_REC_SWITCH_ON) &&
-			    VbExTrustEC(0)) {
-                                if (!(shared->flags &
-				      VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
-				    VbExGetSwitches(
-					     VB_INIT_FLAG_REC_BUTTON_PRESSED)) {
-					/*
-					 * Is the recovery button stuck?  In
-					 * any case we don't like this.  Beep
-					 * and ignore.
-					 */
-					VBDEBUG(("%s() - ^D but rec switch "
-						 "is pressed\n", __func__));
-					VbExBeep(120, 400);
-					continue;
+			switch (key) {
+			case 0:
+				/* nothing pressed */
+				break;
+			case VB_KEY_UP:
+				VBDEBUG(("VbBootRecoveryMenu() - pressed key VB_KEY_UP\n"));
+				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
+				current_menu_idx = (current_menu_idx+menu_size-1) % menu_size;
+				vb2_print_current_menu();
+				break;
+			case VB_KEY_DOWN:
+				VBDEBUG(("VbBootRecoveryMenu() - pressed key VB_KEY_DOWN\n"));
+				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
+				current_menu_idx = (current_menu_idx+1) % menu_size;
+				vb2_print_current_menu();
+				break;
+			case VB_KEY_RIGHT:
+		        // temporarily using this as a stand in for power button until get power button bypassed
+				VBDEBUG(("VbBootRecoveryMenu() - pressed key VB_KEY_RIGHT (SELECT)\n"));
+				selected = 1;
+
+				ret = vb2_update_menu();
+				if (current_menu != VB_MENU_RECOVERY ||
+				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
+					vb2_print_current_menu();
 				}
 
-				/* Ask the user to confirm entering dev-mode */
-				VbDisplayScreen(ctx, cparams,
-						VB_SCREEN_RECOVERY_TO_DEV,
-						0);
-				/* SPACE means no... */
-				uint32_t vbc_flags =
-					VB_CONFIRM_SPACE_MEANS_NO |
-					VB_CONFIRM_MUST_TRUST_KEYBOARD;
-				switch (VbUserConfirmsMenu(ctx, cparams,
-						       vbc_flags)) {
-				case 1:
-					VBDEBUG(("%s() Enabling dev-mode...\n",
-						 __func__));
-					if (TPM_SUCCESS != SetVirtualDevMode(1))
-						return VBERROR_TPM_SET_BOOT_MODE_STATE;
-					VBDEBUG(("%s() Reboot so it will take "
-						 "effect\n", __func__));
-					if (VbExGetSwitches
-					    (VB_INIT_FLAG_ALLOW_USB_BOOT))
-						VbAllowUsbBootMenu(ctx);
-					return VBERROR_REBOOT_REQUIRED;
-				case -1:
-					VBDEBUG(("%s() - Shutdown requested\n",
-						 __func__));
-					return VBERROR_SHUTDOWN_REQUESTED;
-				default: /* zero, actually */
-					VBDEBUG(("%s() - Not enabling "
-						 "dev-mode\n", __func__));
-					/*
-					 * Jump out of the outer loop to
-					 * refresh the display quickly.
-					 */
-					i = 4;
-					break;
+				// probably shutting down
+				if (ret != VBERROR_SUCCESS) {
+					VBDEBUG(("VbBootRecoveryMenu() - update_menu - shutting down!\n"));
+					return ret;
 				}
-			} else {
-				VbCheckDisplayKey(ctx, cparams, key);
+
+				VBDEBUG(("selected: %d, current_menu: %d, current_menu_idx: %d\n",
+					 selected, current_menu, current_menu_idx));
+				if (selected == 1) {
+
+					/* Display debug information = tab on most chromebooks */
+					if (current_menu == VB_MENU_RECOVERY &&
+					    current_menu_idx == VB_RECOVERY_DBG_INFO) {
+						VbDisplayDebugInfo(ctx, cparams);
+					}
+
+					/* Confirm going into developer mode */
+					/*
+					 * We might want to enter dev-mode from the Insert
+					 * screen if all of the following are true:
+					 *   - user pressed Ctrl-D
+					 *   - we can honor the virtual dev switch
+					 *   - not already in dev mode
+					 *   - user forced recovery mode
+					 *   - EC isn't pwned
+					 */
+					// NOTE: let's put an error here if we're
+					// already in dev mode.
+					if (current_menu == VB_MENU_TO_DEV &&
+					    current_menu_idx == 0 &&
+					    shared->flags & VBSD_HONOR_VIRT_DEV_SWITCH &&
+					    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
+					    (shared->flags & VBSD_BOOT_REC_SWITCH_ON) &&
+					    VbExTrustEC(0)) {
+						if (!(shared->flags &
+						      VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
+						    VbExGetSwitches(
+								    VB_INIT_FLAG_REC_BUTTON_PRESSED)) {
+							/*
+							 * Is the recovery button stuck?  In
+							 * any case we don't like this.  Beep
+							 * and ignore.
+							 */
+							VBDEBUG(("%s() - ^D but rec switch "
+								 "is pressed\n", __func__));
+							VbExBeep(120, 400);
+							continue;
+						}
+
+						VBDEBUG(("%s() Enabling dev-mode...\n",
+							 __func__));
+						if (TPM_SUCCESS != SetVirtualDevMode(1))
+							return VBERROR_TPM_SET_BOOT_MODE_STATE;
+						VBDEBUG(("%s() Reboot so it will take "
+							 "effect\n", __func__));
+						if (VbExGetSwitches
+						    (VB_INIT_FLAG_ALLOW_USB_BOOT))
+							VbAllowUsbBootMenu(ctx);
+						return VBERROR_REBOOT_REQUIRED;
+					}
+				}
 			}
 			if (VbWantShutdownMenu(cparams->gbb->flags))
 				return VBERROR_SHUTDOWN_REQUESTED;
