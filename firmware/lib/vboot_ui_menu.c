@@ -236,7 +236,7 @@ static char *dev_warning_menu[] = {
 };
 
 static char *dev_menu[] = {
-	"Boot Network Image\n",
+	"Boot Network Image (not working yet)\n",
 	"Boot Legacy BIOS\n",
 	"Boot USB Image\n",
 	"Boot Developer Image\n",
@@ -646,14 +646,12 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		        VBDEBUG(("VbBootDeveloperMenu() - pressed key VB_KEY_UP\n"));
 			vb2_get_current_menu_size(current_menu, NULL, &menu_size);
 			current_menu_idx = (current_menu_idx+menu_size-1) % menu_size;
-			VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
 			vb2_print_current_menu();
 			break;
 		case VB_KEY_DOWN:
 		        VBDEBUG(("VbBootDeveloperMenu() - pressed key VB_KEY_DOWN\n"));
 			vb2_get_current_menu_size(current_menu, NULL, &menu_size);
 			current_menu_idx = (current_menu_idx+1) % menu_size;
-			VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
 			vb2_print_current_menu();
 			break;
 		case VB_KEY_RIGHT:
@@ -662,6 +660,9 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			selected = 1;
 
 			ret = vb2_update_menu();
+			// unfortunately, we need the blanking to get rid of
+			// artifacts from previous menu printing.
+			VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 			VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
 			vb2_print_current_menu();
 
@@ -891,13 +892,21 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				vb2_print_current_menu();
 				break;
 			case VB_KEY_RIGHT:
-		        // temporarily using this as a stand in for power button until get power button bypassed
+				// temporarily using this as a stand in for power button until get power button bypassed
 				VBDEBUG(("VbBootRecoveryMenu() - pressed key VB_KEY_RIGHT (SELECT)\n"));
 				selected = 1;
 
 				ret = vb2_update_menu();
 				if (current_menu != VB_MENU_RECOVERY ||
 				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
+					// unfortunately we need this screen
+					// blanking to clear previous menus
+					// printed.
+					VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+					VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
+							VB_SCREEN_RECOVERY_INSERT :
+							VB_SCREEN_RECOVERY_NO_GOOD,
+							0);
 					vb2_print_current_menu();
 				}
 
