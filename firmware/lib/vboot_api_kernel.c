@@ -413,7 +413,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 
 	VbError_t retval = vb2_kernel_setup(cparams, kparams);
-	int detachable = 0;
+	int detachable = 1;
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
 
