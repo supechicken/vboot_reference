@@ -339,6 +339,8 @@ typedef struct VbSelectAndLoadKernelParams {
 	void *kernel_buffer;
 	/* Size of kernel buffer in bytes */
 	uint32_t kernel_buffer_size;
+	/* input flags.  Currently used for detachables */
+	uint32_t inflags;
 
 	/*
 	 * Outputs from VbSelectAndLoadKernel(); valid only if it returns
@@ -363,6 +365,8 @@ typedef struct VbSelectAndLoadKernelParams {
 	 * that we're passing partition_guid?
 	 */
 } VbSelectAndLoadKernelParams;
+
+#define VB_SAL_PARAMS_ENABLE_DETACHABLE_UI 0x1
 
 /**
  * Select and loads the kernel.
