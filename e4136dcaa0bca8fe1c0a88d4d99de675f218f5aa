@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77059a49_19556fde",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-12-29T13:34:25Z",
+      "side": 1,
+      "message": "Hi Randall/Daisuke, I think this section should be moved into VbNvCommit, otherwise programs calling VbNvCommit earlier would not fail to commit anything.\n\nFor example:\n VbSetRecoverySubcode(ctx, shared-\u003erecovery_reason);\n VbNvCommit();\n\nThat VbSetRecoverySubcode calls vb2_nv_set and not changing vnc.raw_changed.",
+      "range": {
+        "startLine": 998,
+        "startChar": 1,
+        "endLine": 1002,
+        "endChar": 2
+      },
+      "revId": "e4136dcaa0bca8fe1c0a88d4d99de675f218f5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
