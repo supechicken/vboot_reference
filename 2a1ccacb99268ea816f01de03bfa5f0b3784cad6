@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "975f6e58_c6ae557d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "Use VB2_DEBUG() instead of VBDEBUG(())\n\nThe lame double-paren calling convention was needed originally because MSVC didn\u0027t support varargs in macros.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_a9f5f264",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "Woohoo, triple pointer!",
+      "range": {
+        "startLine": 228,
+        "startChar": 55,
+        "endLine": 228,
+        "endChar": 58
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_6903da77",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "Assign to a local variable in the switch statement, then after the switch statement do\n\nif (menu_array)\n  *menu_array \u003d array;\n\nSo you don\u0027t need the if() in every case",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_49009669",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 5
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_8963ce57",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "I\u0027ve typically used TODO or KLUDGE.  But Bill always used HEY: so it\u0027s not like we really have a strong convention... :P",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 8
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_695c7a94",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "Yes",
+      "range": {
+        "startLine": 298,
+        "startChar": 6,
+        "endLine": 299,
+        "endChar": 17
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_e9aa4a21",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-29T01:11:18Z",
+      "side": 1,
+      "message": "Interesting question for the UX folks: should we limit at the ends of the menu, or wrap?",
+      "range": {
+        "startLine": 491,
+        "startChar": 3,
+        "endLine": 491,
+        "endChar": 65
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
