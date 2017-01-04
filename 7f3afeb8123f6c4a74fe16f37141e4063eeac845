@@ -22,6 +22,30 @@
       "revId": "7f3afeb8123f6c4a74fe16f37141e4063eeac845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bc86d0_c7b04e90",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T17:59:28Z",
+      "side": 1,
+      "message": "That comment\u0027s out of date entirely.  There is no mismatch_ptr.  Fixing...",
+      "parentUuid": "17237e9f_e451a426",
+      "range": {
+        "startLine": 132,
+        "startChar": 32,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "7f3afeb8123f6c4a74fe16f37141e4063eeac845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
