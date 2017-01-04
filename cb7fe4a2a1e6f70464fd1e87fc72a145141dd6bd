@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bc86d0_bc3e0079",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-04T22:42:27Z",
+      "side": 1,
+      "message": "I kinda thought that VB2_DEBUG was a straight replacement for VBDEBUG.  How come we can\u0027t use it here as well?",
+      "revId": "cb7fe4a2a1e6f70464fd1e87fc72a145141dd6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
