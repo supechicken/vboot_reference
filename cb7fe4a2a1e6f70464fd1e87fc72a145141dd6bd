@@ -16,6 +16,24 @@
       "revId": "cb7fe4a2a1e6f70464fd1e87fc72a145141dd6bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bc86d0_df056e7d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T23:00:26Z",
+      "side": 1,
+      "message": "It\u0027s a firmware macro.  Utilities don\u0027t usually define DEBUG, so VBDEBUG compiled to nothing, and these error messages never got printed.",
+      "parentUuid": "d7bc86d0_bc3e0079",
+      "revId": "cb7fe4a2a1e6f70464fd1e87fc72a145141dd6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
