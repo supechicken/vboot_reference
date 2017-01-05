@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7e71224_59d7b4a9",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-05T22:39:12Z",
+      "side": 1,
+      "message": "Minor nit: Kernel C style uses only /* */ style comments.\n\nIt looks like you\u0027re using C++ style // comments as temporary notes, which is totally fine.  I do that also, because it\u0027s easy to grep for // in the code before I\u0027ve submitted it to make sure I haven\u0027t left any temporary code in.",
+      "range": {
+        "startLine": 647,
+        "startChar": 10,
+        "endLine": 648,
+        "endChar": 37
+      },
+      "revId": "2fcfda20db40d37c301e338b7e1da9de049c0512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
