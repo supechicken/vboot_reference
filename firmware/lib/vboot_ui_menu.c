@@ -630,6 +630,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			/* Only disable virtual dev switch if allowed by GBB */
 			if (!(gbb->flags & GBB_FLAG_ENTER_TRIGGERS_TONORM))
 				break;
+		case VB_BUTTON_VOL_UP:
 		case VB_KEY_UP:
 			vb2_get_current_menu_size(current_menu,
 						  NULL, &menu_size);
@@ -637,6 +638,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				menu_size;
 			vb2_print_current_menu();
 			break;
+		case VB_BUTTON_VOL_DOWN:
 		case VB_KEY_DOWN:
 			vb2_get_current_menu_size(current_menu,
 						  NULL, &menu_size);
@@ -878,12 +880,14 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			case 0:
 				/* nothing pressed */
 				break;
+			case VB_BUTTON_VOL_UP:
 			case VB_KEY_UP:
 				VB2_DEBUG("VbBootRecoveryMenu() - pressed key VB_KEY_UP\n");
 				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
 				current_menu_idx = (current_menu_idx+menu_size-1) % menu_size;
 				vb2_print_current_menu();
 				break;
+			case VB_BUTTON_VOL_DOWN:
 			case VB_KEY_DOWN:
 				VB2_DEBUG("VbBootRecoveryMenu() - pressed key VB_KEY_DOWN\n");
 				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
