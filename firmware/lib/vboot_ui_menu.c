@@ -222,7 +222,7 @@ typedef enum _VB_LANGUAGES_MENU {
 
 static VB_MENU current_menu = VB_MENU_DEV_WARNING;
 static VB_MENU prev_menu = VB_MENU_DEV_WARNING;
-static int current_menu_idx = 0;
+static int current_menu_idx = VB_WARN_POWER_OFF;
 static int selected = 0;
 
 // TODO: add in consts
@@ -347,6 +347,19 @@ VbError_t vb2_print_current_menu()
 	return VbExDisplayText(0,50,m_str);
 }
 
+VbError_t vb2_set_menu_items(VB_MENU new_current_menu,
+			     VB_MENU new_prev_menu,
+			     int new_current_menu_idx,
+			     int new_selected)
+{
+	prev_menu = new_prev_menu;
+	current_menu = new_current_menu;
+	current_menu_idx = new_current_menu_idx;
+	selected = new_selected;
+
+	return VBERROR_SUCCESS;
+}
+
 // This updates current_menu and current_menu_idx,
 // (as necessary)
 // which are used to determine what to do.
@@ -357,112 +370,127 @@ VbError_t vb2_update_menu()
 	case VB_MENU_DEV_WARNING:
 		switch(current_menu_idx) {
 		case VB_WARN_OPTIONS:
-			// select dev menu
-			prev_menu = current_menu;
-			current_menu = VB_MENU_DEV;
-			current_menu_idx = 0;
-			selected = 0;
+			/*
+			 * 1. select dev menu
+			 * 2. default to the power off option
+			 */
+			vb2_set_menu_items(VB_MENU_DEV,
+					   current_menu,
+					   VB_DEV_POWER_OFF,
+					   0);
 			break;
 		case VB_WARN_DBG_INFO:
-			// show debug info
+			/* show debug info */
 			break;
 		case VB_WARN_ENABLE_VER:
-			// enable boot verification
-			prev_menu = current_menu;
-			current_menu = VB_MENU_TO_NORM;
-			current_menu_idx = 0;
-			selected = 0;
+			/*
+			 * 1. enable boot verification
+			 * 2. default to the power off option
+			 */
+			vb2_set_menu_items(VB_MENU_TO_NORM,
+					   current_menu,
+					   VB_TO_NORM_POWER_OFF,
+					   0);
 			break;
 		case VB_WARN_POWER_OFF:
-			// power off machine
+			/* power off machine */
 			ret =  VBERROR_SHUTDOWN_REQUESTED;
 			break;
 		case VB_WARN_LANGUAGE:
-			// Languages
-			// we'll have to figure out how to display this
-			prev_menu = current_menu;
-			current_menu = VB_MENU_LANGUAGES;
-			current_menu_idx = 0;
-			selected = 0;
+			/* Languages */
+			// TODO: we'll have to figure out how to display this
+			vb2_set_menu_items(VB_MENU_LANGUAGES,
+					   current_menu,
+					   VB_LANGUAGES_EN_US,
+					   0);
 			break;
 		default:
-			// invalid menu item.  Don't update anything.
+			/* invalid menu item.  Don't update anything. */
 			break;
 		}
 		break;
 	case VB_MENU_DEV:
 		switch(current_menu_idx) {
 		case VB_DEV_NETWORK:
-			// boot network image
+			/* boot network image */
 			break;
 		case VB_DEV_LEGACY:
-			// boot legacy BIOS
+			/* boot legacy BIOS */
 			break;
 		case VB_DEV_USB:
-			// book USB image
+			/* boot USB image */
 			break;
 		case VB_DEV_DISK:
-			// boot developer image
+			/* boot developer image */
 			break;
 		case VB_DEV_CANCEL:
-			// cancel (go back to developer warning menu)
-			prev_menu = current_menu;
-			current_menu = VB_MENU_DEV_WARNING;
-			current_menu_idx = 0;
-			selected = 0;
+			/*
+			 * 1. cancel (go back to developer warning menu)
+			 * 2. default to power off option.
+			 */
+			vb2_set_menu_items(VB_MENU_DEV_WARNING,
+					   current_menu,
+					   VB_WARN_POWER_OFF,
+					   0);
 			break;
 		case VB_DEV_POWER_OFF:
-			// power off
+			/* power off */
 			ret = VBERROR_SHUTDOWN_REQUESTED;
 			break;
 		case VB_DEV_LANGUAGE:
-			// Language
-			prev_menu = current_menu;
-			current_menu = VB_MENU_LANGUAGES;
-			current_menu_idx = 0;
-			selected = 0;
+			/* Language */
+			vb2_set_menu_items(VB_MENU_LANGUAGES,
+					   current_menu,
+					   VB_LANGUAGES_EN_US,
+					   0);
 			break;
 		default:
-			// invalid menu item.  don't update anything.
+			/* invalid menu item.  don't update anything. */
 			break;
 		}
 		break;
 	case VB_MENU_TO_NORM:
 		switch(current_menu_idx) {
 		case VB_TO_NORM_CONFIRM:
-			// confirm enabling verified boot
+			/* confirm enabling verified boot */
 			break;
 		case VB_TO_NORM_CANCEL:
-			// cancel (go back to developer warning menu)
-			prev_menu = current_menu;
-			current_menu = VB_MENU_DEV_WARNING;
-			current_menu_idx = 0;
-			selected = 0;
+			/*
+			 * 1. cancel (go back to developer warning menu)
+			 * 2. default to power off
+			 */
+			vb2_set_menu_items(VB_MENU_DEV_WARNING,
+					   current_menu,
+					   VB_WARN_POWER_OFF,
+					   0);
 			break;
 		case VB_TO_NORM_POWER_OFF:
-			// power off
+			/* power off */
 			ret = VBERROR_SHUTDOWN_REQUESTED;
 			break;
 		case VB_TO_NORM_LANGUAGE:
-			// Language
-			prev_menu = current_menu;
-			current_menu = VB_MENU_LANGUAGES;
-			current_menu_idx = 0;
-			selected = 0;
+			/* Language */
+			vb2_set_menu_items(VB_MENU_LANGUAGES,
+					   current_menu,
+					   VB_LANGUAGES_EN_US,
+					   0);
 			break;
 		default:
-			// invalid menu item.  don't update anything
+			/* invalid menu item.  don't update anything */
 			break;
 		}
 		break;
 	case VB_MENU_RECOVERY:
 		switch(current_menu_idx) {
 		case VB_RECOVERY_TO_DEV:
-			// switch to TO_DEV menu
-			prev_menu = current_menu;
-			current_menu = VB_MENU_TO_DEV;
-			current_menu_idx = 0;
-			selected = 0;
+			/*
+			 * 1. switch to TO_DEV menu
+			 * 2. default to power off option
+			 */
+			vb2_set_menu_items(VB_MENU_TO_DEV,
+					   current_menu,
+					   VB_TO_DEV_POWER_OFF,
+					   0);
 			break;
 		case VB_RECOVERY_DBG_INFO:
 			break;
@@ -470,47 +498,50 @@ VbError_t vb2_update_menu()
 			ret = VBERROR_SHUTDOWN_REQUESTED;
 			break;
 		case VB_RECOVERY_LANGUAGE:
-			prev_menu = current_menu;
-			current_menu = VB_MENU_LANGUAGES;
-			current_menu_idx = 0;
-			selected = 0;
+			vb2_set_menu_items(VB_MENU_LANGUAGES,
+					   current_menu,
+					   VB_LANGUAGES_EN_US,
+					   0);
 			break;
 		default:
-			// invalid menu item.  don't update anything
+			/* invalid menu item.  don't update anything */
 			break;
 		}
 		break;
 	case VB_MENU_TO_DEV:
 		switch(current_menu_idx) {
 		case VB_TO_DEV_CONFIRM:
-			// confirm enabling dev mode
+			/* confirm enabling dev mode */
 			break;
 		case VB_TO_DEV_CANCEL:
-			prev_menu = current_menu;
-			current_menu = VB_MENU_RECOVERY;
-			current_menu_idx = 0;
-			selected = 0;
+			vb2_set_menu_items(VB_MENU_RECOVERY,
+					   current_menu,
+					   VB_RECOVERY_POWER_OFF,
+					   0);
 			break;
 		case VB_TO_DEV_POWER_OFF:
 			ret = VBERROR_SHUTDOWN_REQUESTED;
 			break;
 		case VB_TO_DEV_LANGUAGE:
-			prev_menu = current_menu;
-			current_menu = VB_MENU_LANGUAGES;
-			current_menu_idx = 0;
-			selected = 0;
+			vb2_set_menu_items(VB_MENU_LANGUAGES,
+					   current_menu,
+					   VB_LANGUAGES_EN_US,
+					   0);
 			break;
 		default:
-			// invalid menu item.  don't update anything.
+			/* invalid menu item.  don't update anything. */
 			break;
 		}
 		break;
 	case VB_MENU_LANGUAGES:
 		switch(current_menu_idx) {
 		default:
-			// assume that we select a language.
-			// go to previous menu.
-			// assume that there will be come action here.
+			/*
+			 * Assume that we selected a language.
+			 * Go to previous menu.
+			 * Purposely bypassing vb2_set_menu_items()
+			 * here because need to do in different order.
+			 */
 			current_menu = prev_menu;
 			current_menu_idx = 0;
 			prev_menu = VB_MENU_LANGUAGES;
@@ -843,7 +874,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	// initialize menu to recovery menu.
 	current_menu = VB_MENU_RECOVERY;
 	prev_menu = VB_MENU_RECOVERY;
-	current_menu_idx = 0;
+	current_menu_idx = VB_RECOVERY_POWER_OFF;
 
 	while (1) {
 		VB2_DEBUG("VbBootRecoveryMenu() attempting to load kernel2\n");
