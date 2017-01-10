@@ -222,7 +222,7 @@ typedef enum _VB_LANGUAGES_MENU {
 
 static VB_MENU current_menu = VB_MENU_DEV_WARNING;
 static VB_MENU prev_menu = VB_MENU_DEV_WARNING;
-static int current_menu_idx = 0;
+static int current_menu_idx = VB_WARN_POWER_OFF;
 static int selected = 0;
 
 // TODO: add in consts
@@ -360,7 +360,8 @@ VbError_t vb2_update_menu()
 			// select dev menu
 			prev_menu = current_menu;
 			current_menu = VB_MENU_DEV;
-			current_menu_idx = 0;
+			// default to the power option
+			current_menu_idx = VB_DEV_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_WARN_DBG_INFO:
@@ -370,7 +371,8 @@ VbError_t vb2_update_menu()
 			// enable boot verification
 			prev_menu = current_menu;
 			current_menu = VB_MENU_TO_NORM;
-			current_menu_idx = 0;
+			// default to the power option
+			current_menu_idx = VB_TO_NORM_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_WARN_POWER_OFF:
@@ -408,7 +410,8 @@ VbError_t vb2_update_menu()
 			// cancel (go back to developer warning menu)
 			prev_menu = current_menu;
 			current_menu = VB_MENU_DEV_WARNING;
-			current_menu_idx = 0;
+			// default to power off option
+			current_menu_idx = VB_WARN_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_DEV_POWER_OFF:
@@ -436,7 +439,8 @@ VbError_t vb2_update_menu()
 			// cancel (go back to developer warning menu)
 			prev_menu = current_menu;
 			current_menu = VB_MENU_DEV_WARNING;
-			current_menu_idx = 0;
+			// default to power off
+			current_menu_idx = VB_WARN_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_TO_NORM_POWER_OFF:
@@ -461,7 +465,8 @@ VbError_t vb2_update_menu()
 			// switch to TO_DEV menu
 			prev_menu = current_menu;
 			current_menu = VB_MENU_TO_DEV;
-			current_menu_idx = 0;
+			// default to power off option
+			current_menu_idx = VB_TO_DEV_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_RECOVERY_DBG_INFO:
@@ -488,7 +493,8 @@ VbError_t vb2_update_menu()
 		case VB_TO_DEV_CANCEL:
 			prev_menu = current_menu;
 			current_menu = VB_MENU_RECOVERY;
-			current_menu_idx = 0;
+			// default to power off
+			current_menu_idx = VB_RECOVERY_POWER_OFF;
 			selected = 0;
 			break;
 		case VB_TO_DEV_POWER_OFF:
