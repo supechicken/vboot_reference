@@ -45,6 +45,12 @@ static int VbWantShutdownMenu(uint32_t gbb_flags)
 	if (gbb_flags & GBB_FLAG_DISABLE_LID_SHUTDOWN)
 		shutdown_request &= ~VB_SHUTDOWN_REQUEST_LID_CLOSED;
 
+	/*
+	 * In detachables, disabling shutdown due to power button.
+	 * We are using it for selection instead.
+	 */
+	shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+
 	return !!shutdown_request;
 }
 
@@ -694,6 +700,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				current_menu_idx++;
 			vb2_print_current_menu();
 			break;
+		case VB_BUTTON_POWER:
 		case VB_KEY_RIGHT:
 		        // temporarily using this as a stand in for power button
 		        // until get power button bypassed
@@ -945,6 +952,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					current_menu_idx++;
 				vb2_print_current_menu();
 				break;
+			case VB_BUTTON_POWER:
 			case VB_KEY_RIGHT:
 				// temporarily using this as a stand in for
 				// power button until get power button bypassed
