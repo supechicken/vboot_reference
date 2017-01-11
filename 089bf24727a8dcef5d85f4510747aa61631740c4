@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8369f1e6_6bfb099e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-11T16:56:17Z",
+      "side": 1,
+      "message": "Maybe we should say \"set by signer\" here, since \"passed in\" will get confused with inflags.",
+      "range": {
+        "startLine": 359,
+        "startChar": 10,
+        "endLine": 359,
+        "endChar": 19
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8369f1e6_6b5469c0",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-11T16:56:17Z",
+      "side": 1,
+      "message": "Please add a comment for what this flag does.",
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8369f1e6_cb27b57e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-11T16:56:17Z",
+      "side": 1,
+      "message": "Shifted bit instead of a hex constant for flags.  (1\u003c\u003c0)",
+      "range": {
+        "startLine": 369,
+        "startChar": 43,
+        "endLine": 369,
+        "endChar": 46
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8369f1e6_0b45ad04",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-11T16:56:17Z",
+      "side": 1,
+      "message": "SALK?\n\nPARAMS -\u003e INFLAGS, so it\u0027s easier to match to whether this gets set in flags or inflags.",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 369,
+        "endChar": 21
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
