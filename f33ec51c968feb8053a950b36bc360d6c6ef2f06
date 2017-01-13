@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b62de6_c9bf7d6b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:03:38Z",
+      "side": 1,
+      "message": "Line \u003e 80 chars",
+      "range": {
+        "startLine": 483,
+        "startChar": 58,
+        "endLine": 483,
+        "endChar": 62
+      },
+      "revId": "f33ec51c968feb8053a950b36bc360d6c6ef2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b62de6_297d59d1",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:03:38Z",
+      "side": 1,
+      "message": "Seems like this needs refactoring to remove the need for such deep indentation...",
+      "range": {
+        "startLine": 580,
+        "startChar": 6,
+        "endLine": 580,
+        "endChar": 7
+      },
+      "revId": "f33ec51c968feb8053a950b36bc360d6c6ef2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
