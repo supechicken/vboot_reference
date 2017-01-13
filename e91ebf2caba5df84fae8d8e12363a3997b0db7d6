@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a3b275c3_e84e337a",
+        "filename": "scripts/image_signing/insert_container_publickey.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-13T20:08:49Z",
+      "side": 1,
+      "message": "i was duplicating the insert_au script which did it this way since it\u0027s so small, but i can split it out",
+      "parentUuid": "e3b62de6_e0f7f660",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3b62de6_2051ee77",
         "filename": "scripts/image_signing/insert_container_publickey.sh",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a3b275c3_884bf768",
+        "filename": "scripts/image_signing/insert_container_publickey.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-13T20:08:49Z",
+      "side": 1,
+      "message": "the framework will actually do this for us.  see cleanup_temps_and_mounts in the common lib.",
+      "parentUuid": "e3b62de6_2051ee77",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3b62de6_c0091253",
         "filename": "scripts/image_signing/sign_oci_container.sh",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2017-01-13T18:47:35Z",
       "side": 1,
       "message": "Nit: Why not use -print0?  Also, does find | while work?",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3b275c3_a8483b6c",
+        "filename": "scripts/image_signing/sign_oci_container.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-01-13T20:08:49Z",
+      "side": 1,
+      "message": "-print0 is like -printf \u0027%p\\0\u0027, but i need %P here, not %p.  i can\u0027t easily remove it after the fact\n\nfind|while will create a subshell while while ... done\u003cfind does not.  tricky!",
+      "parentUuid": "e3b62de6_c0091253",
       "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
