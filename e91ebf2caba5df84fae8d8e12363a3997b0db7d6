@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b62de6_e0f7f660",
+        "filename": "scripts/image_signing/insert_container_publickey.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-01-13T18:47:35Z",
+      "side": 1,
+      "message": "Most of the other scripts here define an explicit usage() function.",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b62de6_2051ee77",
+        "filename": "scripts/image_signing/insert_container_publickey.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-01-13T18:47:35Z",
+      "side": 1,
+      "message": "Cleanup?",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b62de6_c0091253",
+        "filename": "scripts/image_signing/sign_oci_container.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-01-13T18:47:35Z",
+      "side": 1,
+      "message": "Nit: Why not use -print0?  Also, does find | while work?",
+      "revId": "e91ebf2caba5df84fae8d8e12363a3997b0db7d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
