@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b62de6_c955bd00",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:15:46Z",
+      "side": 1,
+      "message": "We need to convert these comments to /* */ eventually.  Do you want to do that now, or as part of the cleanup CLs which follow?",
+      "range": {
+        "startLine": 460,
+        "startChar": 3,
+        "endLine": 460,
+        "endChar": 5
+      },
+      "revId": "1f4bc98f8e31f8f5410adca0d442d5d74552e1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
