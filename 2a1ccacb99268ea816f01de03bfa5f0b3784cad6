@@ -160,6 +160,30 @@
       "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b62de6_49db6dd0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:03:38Z",
+      "side": 1,
+      "message": "Answer: Limit.  Because that\u0027s easier for navigating the dev menu with a quick sequence to get the same effect as Ctrl+D or Ctrl+U on a matrix keyboard.",
+      "parentUuid": "975f6e58_e9aa4a21",
+      "range": {
+        "startLine": 491,
+        "startChar": 3,
+        "endLine": 491,
+        "endChar": 65
+      },
+      "revId": "2a1ccacb99268ea816f01de03bfa5f0b3784cad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
