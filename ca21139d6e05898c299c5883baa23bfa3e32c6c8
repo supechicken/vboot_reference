@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b62de6_49436d55",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:14:06Z",
+      "side": 1,
+      "message": "Don\u0027t these alias with ASCII \u0027b\u0027 and \u0027c\u0027?",
+      "range": {
+        "startLine": 827,
+        "startChar": 1,
+        "endLine": 830,
+        "endChar": 2
+      },
+      "revId": "ca21139d6e05898c299c5883baa23bfa3e32c6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
