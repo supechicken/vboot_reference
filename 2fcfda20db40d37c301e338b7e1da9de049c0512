@@ -22,6 +22,30 @@
       "revId": "2fcfda20db40d37c301e338b7e1da9de049c0512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e70d23_9b2757e3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T22:58:34Z",
+      "side": 1,
+      "message": "Will move comments into C style comments in a later cleanup CL.",
+      "parentUuid": "b7e71224_59d7b4a9",
+      "range": {
+        "startLine": 647,
+        "startChar": 10,
+        "endLine": 648,
+        "endChar": 37
+      },
+      "revId": "2fcfda20db40d37c301e338b7e1da9de049c0512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
