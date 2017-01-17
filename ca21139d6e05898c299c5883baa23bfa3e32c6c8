@@ -22,6 +22,30 @@
       "revId": "ca21139d6e05898c299c5883baa23bfa3e32c6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a39fd578_0919d1a8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T22:33:17Z",
+      "side": 1,
+      "message": "They do actually.  The only thing that I can think of is that libpayload (where the 8042 code is handled) doesn\u0027t distinguish between upper case and lower case letters in the FW.  This is what the vol up/down maps to in reef though....",
+      "parentUuid": "e3b62de6_49436d55",
+      "range": {
+        "startLine": 827,
+        "startChar": 1,
+        "endLine": 830,
+        "endChar": 2
+      },
+      "revId": "ca21139d6e05898c299c5883baa23bfa3e32c6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
