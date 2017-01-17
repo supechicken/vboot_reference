@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23b3e516_90c74496",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T23:00:13Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8369f1e6_6bfb099e",
+      "range": {
+        "startLine": 359,
+        "startChar": 10,
+        "endLine": 359,
+        "endChar": 19
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8369f1e6_6b5469c0",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2017-01-11T16:56:17Z",
       "side": 1,
       "message": "Please add a comment for what this flag does.",
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e399cd94_96f61ca7",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T23:00:13Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8369f1e6_6b5469c0",
       "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +118,54 @@
       "writtenOn": "2017-01-11T16:56:17Z",
       "side": 1,
       "message": "SALK?\n\nPARAMS -\u003e INFLAGS, so it\u0027s easier to match to whether this gets set in flags or inflags.",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 369,
+        "endChar": 21
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e70d23_1beb672e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T23:00:13Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8369f1e6_cb27b57e",
+      "range": {
+        "startLine": 369,
+        "startChar": 43,
+        "endLine": 369,
+        "endChar": 46
+      },
+      "revId": "089bf24727a8dcef5d85f4510747aa61631740c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "236e8540_78e72924",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T23:00:13Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8369f1e6_0b45ad04",
       "range": {
         "startLine": 369,
         "startChar": 11,
