@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e399cd94_76ab98c7",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T22:51:48Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "e3b62de6_c9bf7d6b",
+      "range": {
+        "startLine": 483,
+        "startChar": 58,
+        "endLine": 483,
+        "endChar": 62
+      },
+      "revId": "f33ec51c968feb8053a950b36bc360d6c6ef2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3b62de6_297d59d1",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-13T22:03:38Z",
       "side": 1,
       "message": "Seems like this needs refactoring to remove the need for such deep indentation...",
+      "range": {
+        "startLine": 580,
+        "startChar": 6,
+        "endLine": 580,
+        "endChar": 7
+      },
+      "revId": "f33ec51c968feb8053a950b36bc360d6c6ef2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c39e897c_f5b320aa",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-17T22:51:48Z",
+      "side": 1,
+      "message": "Yes, I tried to keep blocks of functionality intact so that it was easier to code review.  I\u0027ll go through afterward functionality goes through cleaning it up.",
+      "parentUuid": "e3b62de6_297d59d1",
       "range": {
         "startLine": 580,
         "startChar": 6,
