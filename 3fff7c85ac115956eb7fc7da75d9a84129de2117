@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c36be999_3c451d05",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-18T17:30:42Z",
+      "side": 1,
+      "message": "This appears to be current_menu for all callers.   So, can we just drop this parameter and set it directly below?",
+      "range": {
+        "startLine": 351,
+        "startChar": 8,
+        "endLine": 351,
+        "endChar": 30
+      },
+      "revId": "3fff7c85ac115956eb7fc7da75d9a84129de2117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c36be999_7c3f9582",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-18T17:30:42Z",
+      "side": 1,
+      "message": "Is there a case where this wouldn\u0027t be 0?",
+      "range": {
+        "startLine": 353,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 24
+      },
+      "revId": "3fff7c85ac115956eb7fc7da75d9a84129de2117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
