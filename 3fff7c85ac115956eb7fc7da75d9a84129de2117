@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c36be999_62928ce8",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-19T03:47:56Z",
+      "side": 1,
+      "message": "Yes, I was originally going to use it for when I needed to get back from the language menu from all the different menus, but in the end I couldn\u0027t use this function for that.",
+      "parentUuid": "c36be999_3c451d05",
+      "range": {
+        "startLine": 351,
+        "startChar": 8,
+        "endLine": 351,
+        "endChar": 30
+      },
+      "revId": "3fff7c85ac115956eb7fc7da75d9a84129de2117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c36be999_7c3f9582",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-18T17:30:42Z",
       "side": 1,
       "message": "Is there a case where this wouldn\u0027t be 0?",
+      "range": {
+        "startLine": 353,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 24
+      },
+      "revId": "3fff7c85ac115956eb7fc7da75d9a84129de2117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c36be999_a24ae491",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-01-19T03:47:56Z",
+      "side": 1,
+      "message": "Not currently.  I will get rid of it and add it back when we need it in the future.",
+      "parentUuid": "c36be999_7c3f9582",
       "range": {
         "startLine": 353,
         "startChar": 8,
