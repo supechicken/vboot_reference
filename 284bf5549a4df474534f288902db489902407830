@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e860cae6_5a4dc17a",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-01-20T21:42:22Z",
+      "side": 1,
+      "message": "This is printing output like this right now:\n\n print_hash: RW hash: print_hash: cdprint_hash: 64print_hash: a0print_hash: 5dprint_hash: 09print_hash: e4print_hash: 5aprint_hash: edprint_hash: 2dprin\nt_hash: 29print_hash: 33print_hash: 0eprint_hash: 69print_hash: 40print_hash: e8print_hash: 52print_hash: 56print_hash: 54print_hash: a9print_hash: c2p\nrint_hash: 5bprint_hash: bfprint_hash: 86print_hash: 35print_hash: cdprint_hash: 68print_hash: 58print_hash: f2print_hash: 1cprint_hash: 5fprint_hash:\n04print_hash: 33print_hash:\n\nYou might want to fix that. ;)",
+      "revId": "284bf5549a4df474534f288902db489902407830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
