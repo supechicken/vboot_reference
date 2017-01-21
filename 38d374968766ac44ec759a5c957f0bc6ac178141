@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e860cae6_1b5f4bf6",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-01-21T00:31:15Z",
+      "side": 1,
+      "message": "nit: I think this should be \"%s: \" or \"%s(): \"?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "38d374968766ac44ec759a5c957f0bc6ac178141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
