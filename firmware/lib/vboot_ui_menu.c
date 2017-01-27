@@ -218,7 +218,7 @@ typedef enum _VB_TO_DEV_MENU {
 	VB_TO_DEV_COUNT,
 } VB_TO_DEV_MENU;
 
-// currently we're only supporting
+// TODO: currently we're only supporting
 // english.  Will need to somehow find mapping
 // from language to localization index.
 typedef enum _VB_LANGUAGES_MENU {
@@ -340,7 +340,6 @@ VbError_t vb2_get_current_menu_size(VB_MENU menu, char ***menu_array, int *size)
 // printouts.
 VbError_t vb2_print_current_menu()
 {
-	// create menu string
 	char m_str[1024];
 	const char *selected = "==> ";
 	const char *deselected = "    ";
@@ -353,9 +352,10 @@ VbError_t vb2_print_current_menu()
 	vb2_get_current_menu_size(current_menu, &m, &size);
 	VB2_DEBUG("vb2_print_current_menu:\n");
 
+	/* create menu string */
 	for (i = 0; i < size; i++) {
 		if (current_menu_idx == i) {
-			// add selection to indicate current selection
+			/* add selection to indicate current selection */
 			strncat(m_str, selected, strlen(selected));
 		} else {
 			strncat(m_str, deselected, strlen(deselected));
@@ -692,7 +692,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		case VB_KEY_UP:
 			vb2_get_current_menu_size(current_menu,
 						  NULL, &menu_size);
-			// do not wrap selection index
+			/* do not wrap selection index */
 			if (current_menu_idx > 0)
 				current_menu_idx--;
 			vb2_print_current_menu();
@@ -701,43 +701,44 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		case VB_KEY_DOWN:
 			vb2_get_current_menu_size(current_menu,
 						  NULL, &menu_size);
-			// do no wrap selection index
+			/* do no wrap selection index */
 			if (current_menu_idx < menu_size-1)
 				current_menu_idx++;
 			vb2_print_current_menu();
 			break;
 		case VB_BUTTON_POWER:
 		case VB_KEY_RIGHT:
-		        // temporarily using this as a stand in for power button
-		        // until get power button bypassed
 			selected = 1;
 
 			ret = vb2_update_menu();
-			// unfortunately, we need the blanking to get rid of
-			// artifacts from previous menu printing.
+			/*
+			 * Unfortunately, we need the blanking to get rid of
+			 * artifacts from previous menu printing.
+			 */
 			VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 			VbDisplayScreen(ctx, cparams,
 					VB_SCREEN_DEVELOPER_WARNING, 0);
 			vb2_print_current_menu();
 
-			// probably shutting down
+			/* probably shutting down */
 			if (ret != VBERROR_SUCCESS) {
 			  VB2_DEBUG("VbBootDeveloperMenu() - shutting down!\n");
 			  return ret;
 			}
 
-			// nothing selected, skip everything else.
+			/* nothing selected, skip everything else */
 			if (selected == 0)
 				break;
 
-			// below is all the selection actions
-			// Display debug information = tab on most chromebooks
+			/* All the actions associated with selection */
+
+			/* Display debug information */
 			if (current_menu == VB_MENU_DEV_WARNING &&
 			    current_menu_idx == VB_WARN_DBG_INFO) {
 				VbDisplayDebugInfo(ctx, cparams);
 			}
 
-			// Ctrl+L = legacy mode
+			/* Boot Legacy mode */
 			if (current_menu == VB_MENU_DEV &&
 			    current_menu_idx == VB_DEV_LEGACY) {
 				VB2_DEBUG("VbBootDeveloperMenu() - "
@@ -746,7 +747,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				VbTryLegacyMenu(allow_legacy);
 			}
 
-			// Ctrl+U = try USB boot, or beep if failure
+			/* USB boot, or beep if failure */
 			if (current_menu == VB_MENU_DEV &&
 			    current_menu_idx == VB_DEV_USB) {
 				VB2_DEBUG("VbBootDeveloperMenu() - "
@@ -763,8 +764,10 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					VbExSleepMs(120);
 					VbExBeep(120, 400);
 				} else {
-					// Clear the screen to show we get the
-					// Ctrl+U key press.
+					/*
+					 * Clear the screen to show we get the
+					 * Ctrl+U key press.
+					 */
 					VbDisplayScreen(ctx,
 						cparams, VB_SCREEN_BLANK, 0);
 					if (VBERROR_SUCCESS ==
@@ -772,8 +775,10 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 						VbAudioClose(audio);
 						return VBERROR_SUCCESS;
 					} else {
-						// Show dev mode warning screen
-						// again
+						/*
+						 * Show dev mode warning screen
+						 * again
+						 */
 						VbDisplayScreen(ctx,
 							cparams,
 							VB_SCREEN_DEVELOPER_WARNING,
@@ -782,7 +787,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				}
 			}
 
-			/* Ctrl+D = dismiss warning; advance to timeout */
+			/* Boot developer mode: advance to timeout */
 			if (current_menu == VB_MENU_DEV &&
 			    current_menu_idx == VB_DEV_DISK) {
 				VB2_DEBUG("VbBootDeveloperMenu() - "
@@ -791,14 +796,16 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				goto fallout;
 			}
 
-			/* enabling verified boot */
+			/* Enabling verified boot */
 			if (current_menu == VB_MENU_TO_NORM &&
 			    current_menu_idx == VB_TO_NORM_CONFIRM) {
-				// See if we should disable virtual dev-mode
-				// switch.
+				/*
+				 * See if we should disable virtual dev-mode
+				 * switch.
+				 */
 				VB2_DEBUG("%s shared->flags=0x%x\n",
 					  __func__, shared->flags);
-				// Ignore space in VbUserConfirmsMenu()...
+				/* Ignore space in VbUserConfirmsMenu()... */
 			        VB2_DEBUG("%s() - leaving dev-mode.\n",
 					  __func__);
 				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
@@ -916,7 +923,8 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	/* Loop and wait for a recovery image */
 	VB2_DEBUG("VbBootRecoveryMenu() waiting for a recovery image\n");
-	// initialize menu to recovery menu.
+
+	/* initialize menu to recovery menu. */
 	current_menu = VB_MENU_RECOVERY;
 	prev_menu = VB_MENU_RECOVERY;
 	current_menu_idx = VB_RECOVERY_POWER_OFF;
@@ -974,17 +982,17 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				break;
 			case VB_BUTTON_POWER:
 			case VB_KEY_RIGHT:
-				// temporarily using this as a stand in for
-				// power button until get power button bypassed
 				VB2_DEBUG("VbBootRecoveryMenu() - pressed key VB_KEY_RIGHT (SELECT)\n");
 				selected = 1;
 
 				ret = vb2_update_menu();
 				if (current_menu != VB_MENU_RECOVERY ||
 				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
-					// unfortunately we need this screen
-					// blanking to clear previous menus
-					// printed.
+					/*
+					 * Unfortunately we need this screen
+					 * blanking to clear previous menus
+					 * printed.
+					 */
 					VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 					VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
 							VB_SCREEN_RECOVERY_INSERT :
@@ -993,13 +1001,13 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					vb2_print_current_menu();
 				}
 
-				// probably shutting down
+				/* probably shutting down */
 				if (ret != VBERROR_SUCCESS) {
 					VB2_DEBUG("VbBootRecoveryMenu() - update_menu - shutting down!\n");
 					return ret;
 				}
 
-				// nothing selected, skip everything else.
+				/* nothing selected, skip everything else. */
 				if (selected == 0)
 					break;
 
