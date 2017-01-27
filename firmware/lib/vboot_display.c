@@ -203,6 +203,10 @@ VbError_t VbDisplayScreenFromGBB(struct vb2_context *ctx,
 	case VB_SCREEN_OS_BROKEN:
 		screen_index = SCREEN_OS_BROKEN;
 		break;
+	/* case VB_SCREEN_BASE: */
+	/* 	VB2_DEBUG("screen = %d\n", screen); */
+	/* 	//screen_index = SCREEN_BLANK; */
+	/* 	//break; */
 	case VB_SCREEN_BLANK:
 	case VB_SCREEN_DEVELOPER_EGG:
 	default:

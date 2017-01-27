@@ -341,7 +341,6 @@ VbError_t vb2_print_current_menu()
 
 	// TODO: need to check for error code.
 	vb2_get_current_menu_size(current_menu, &m, &size);
-	VB2_DEBUG("vb2_print_current_menu:\n");
 
 	// TODO: do clear screen here.
 	/* Create menu string */
@@ -653,7 +652,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	/* Show the dev mode warning screen */
 	//TODO: change this to blank screen?
-	VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
+	VbDisplayScreen(ctx, cparams, VB_SCREEN_BASE, 0);
 	vb2_print_current_menu();
 
 	/* Get audio/delay context */
@@ -702,13 +701,11 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			selected = 1;
 
 			ret = vb2_update_menu();
-			/*
-			 * Unfortunately, we need the blanking to get rid of
-			 * artifacts from previous menu printing.
-			 */
+			// unfortunately, we need the blanking to get rid of
+			// artifacts from previous menu printing.
 			VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 			VbDisplayScreen(ctx, cparams,
-					VB_SCREEN_DEVELOPER_WARNING, 0);
+					VB_SCREEN_BASE, 0);
 			vb2_print_current_menu();
 
 			/* Probably shutting down */
@@ -755,10 +752,8 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					VbExSleepMs(120);
 					VbExBeep(120, 400);
 				} else {
-					/*
-					 * Clear the screen to show we get the
-					 * Ctrl+U key press.
-					 */
+					// Clear the screen to show we get the
+					// Ctrl+U key press.
 					VbDisplayScreen(ctx,
 						cparams, VB_SCREEN_BLANK, 0);
 					if (VBERROR_SUCCESS ==
@@ -766,13 +761,11 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 						VbAudioClose(audio);
 						return VBERROR_SUCCESS;
 					} else {
-						/*
-						 * Show dev mode warning screen
-						 * again
-						 */
+						// Show dev mode warning screen
+						// again
 						VbDisplayScreen(ctx,
 							cparams,
-							VB_SCREEN_DEVELOPER_WARNING,
+							VB_SCREEN_BASE,
 							0);
 					}
 				}
@@ -801,6 +794,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					  __func__);
 				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
 					   1);
+				//your system will reboot and local data will be clearned
 				VbDisplayScreen(ctx,
 						cparams,
 						VB_SCREEN_TO_NORM_CONFIRMED,
@@ -929,12 +923,12 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
-				VB_SCREEN_RECOVERY_INSERT :
-				VB_SCREEN_RECOVERY_NO_GOOD,
-				0);
 		if (current_menu != VB_MENU_RECOVERY ||
 		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
+			VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
+					VB_SCREEN_BASE :
+					VB_SCREEN_RECOVERY_NO_GOOD,
+					0);
 			vb2_print_current_menu();
 		}
 
@@ -972,14 +966,12 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				ret = vb2_update_menu();
 				if (current_menu != VB_MENU_RECOVERY ||
 				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
-					/*
-					 * Unfortunately we need this screen
-					 * blanking to clear previous menus
-					 * printed.
-					 */
+					// unfortunately we need this screen
+					// blanking to clear previous menus
+					// printed.
 					VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 					VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
-							VB_SCREEN_RECOVERY_INSERT :
+							VB_SCREEN_BASE :
 							VB_SCREEN_RECOVERY_NO_GOOD,
 							0);
 					vb2_print_current_menu();
