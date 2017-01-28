@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55f59914_60558cbb",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-28T19:43:55Z",
+      "side": 1,
+      "message": "Vboot2 context",
+      "range": {
+        "startLine": 577,
+        "startChar": 10,
+        "endLine": 577,
+        "endChar": 13
+      },
+      "revId": "b1afc479810ee0ba888b07a80a5e76e25106fe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3edbfd27_c5373c11",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-28T19:43:55Z",
+      "side": 1,
+      "message": "Vboot1 common params",
+      "range": {
+        "startLine": 578,
+        "startChar": 10,
+        "endLine": 578,
+        "endChar": 17
+      },
+      "revId": "b1afc479810ee0ba888b07a80a5e76e25106fe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14ac24f7_7ae344c0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-28T19:43:55Z",
+      "side": 1,
+      "message": "For functions like this declared in header files, docstring should go with the declaration.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 3
+      },
+      "revId": "b1afc479810ee0ba888b07a80a5e76e25106fe24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
