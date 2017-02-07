@@ -13,7 +13,7 @@ DATADIR="${SCRIPTDIR}/data"
 TESTKEYS=${SRCDIR}/tests/testkeys
 
 # Do not test 8192 as the signature length is > 1024 bytes
-SIGS="1024 2048 4096"
+SIGS="1024 2048 4096 2048_exp3"
 # Parameter to --hash_alg (1 / SHA1; 2 / SHA256; 3 / SHA512)
 HASHES="1 2 3"
 
