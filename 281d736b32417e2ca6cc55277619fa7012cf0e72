@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e95ba9_7562b7bb",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-08T10:07:54Z",
+      "side": 1,
+      "message": "I\u0027m not really authoritative on those computations,\nbut if we swap here a and aR\nthen in montMul, can add an optimization where we skip all montMulAdd call in the loop when a[i] (which is actually aR[i]) is null ?",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0cb76f_dc5a720e",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-08T10:07:54Z",
+      "side": 1,
+      "message": "why 1024/4096/8192 are not handled ?",
+      "range": {
+        "startLine": 573,
+        "startChar": 2,
+        "endLine": 573,
+        "endChar": 12
+      },
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
