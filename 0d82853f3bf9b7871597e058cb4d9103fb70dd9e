@@ -22,6 +22,24 @@
       "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5688620e_50f3cdf8",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-02-08T20:26:02Z",
+      "side": 1,
+      "message": "Thanks for pointing that out, Hung-Te.  What command are you using to build cgpt?  I want to make sure that I fixed your break.",
+      "parentUuid": "fb625c1d_9206f5d0",
+      "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
