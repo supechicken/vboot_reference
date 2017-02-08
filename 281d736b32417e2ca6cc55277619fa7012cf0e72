@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "6d49ae69_67d3c359",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-08T10:17:11Z",
+      "side": 1,
+      "message": "This should say aaa \u003d, actually.",
+      "range": {
+        "startLine": 126,
+        "startChar": 31,
+        "endLine": 126,
+        "endChar": 32
+      },
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c1568c_971a0716",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-08T10:17:11Z",
+      "side": 1,
+      "message": "Yes we can do that optimization. And we do it in EC code (common/rsa.c). IMHO this should make almost zero difference in terms of verification time on a powerful SoC (I\u0027m actually not clear, is this code built-in the FW at some point?)",
+      "parentUuid": "d1e95ba9_7562b7bb",
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb0cb76f_dc5a720e",
         "filename": "host/lib21/host_key.c",
         "patchSetId": 2
@@ -42,6 +83,24 @@
         "endLine": 573,
         "endChar": 12
       },
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3304ca_2c42bdcb",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-08T10:17:11Z",
+      "side": 1,
+      "message": "Well, I didn\u0027t want to litter the code with many keys that we\u0027re not going to use in the foreseeable future.\n\nNow, actually, we are thinking about using RS3072 exp3 (and not RSA2048), as the slowdown is still acceptable during EC boot, so maybe I should modify the code to set that up instead.",
+      "parentUuid": "cb0cb76f_dc5a720e",
       "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
