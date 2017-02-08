@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d10fa94_7e6fc33a",
+        "filename": "tests/futility/test_show_rwsig.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-08T09:54:27Z",
+      "side": 1,
+      "message": "nit: not really",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "3531d2f684a8384fabd5fbb3b0c20a05fa9cad1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1f55e5_12d2b057",
+        "filename": "tests/futility/test_show_rwsig.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-08T09:54:27Z",
+      "side": 1,
+      "message": "You can actually use \u0027HASHES\u003d\"SHA1 SHA256 SHA512\"\u0027 can\u0027t you ?\n\nOn that matter, \u0027futility create --help\u0027 is not fully clear about,\nbut vb2_lookup_hash_alg() code suggests that\u0027s working as expected.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "3531d2f684a8384fabd5fbb3b0c20a05fa9cad1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
