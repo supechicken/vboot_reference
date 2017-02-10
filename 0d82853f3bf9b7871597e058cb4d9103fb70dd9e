@@ -64,6 +64,30 @@
       "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204d5890_43293462",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-02-10T04:06:01Z",
+      "side": 1,
+      "message": "Please see https://chromium-review.googlesource.com/#/c/440432/ for fix.",
+      "parentUuid": "bfd4e918_6bd93daf",
+      "range": {
+        "startLine": 369,
+        "startChar": 9,
+        "endLine": 369,
+        "endChar": 22
+      },
+      "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
