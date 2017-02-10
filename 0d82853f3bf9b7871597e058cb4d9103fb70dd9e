@@ -40,6 +40,30 @@
       "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd4e918_6bd93daf",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2017-02-10T00:28:37Z",
+      "side": 1,
+      "message": "COPY vboot_reference \"${workdir}/vboot_reference\"\nRUN cd vboot_reference \u0026\u0026 \\\n  make clean \u0026\u0026 \\\n  make cgpt WERROR\u003d STATIC\u003d1 \u0026\u0026 \\\n  cp build/cgpt/cgpt \"${workdir}/build\"",
+      "parentUuid": "5688620e_50f3cdf8",
+      "range": {
+        "startLine": 369,
+        "startChar": 9,
+        "endLine": 369,
+        "endChar": 22
+      },
+      "revId": "0d82853f3bf9b7871597e058cb4d9103fb70dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
