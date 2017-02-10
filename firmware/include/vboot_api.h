@@ -798,7 +798,8 @@ VbError_t VbExDisplayImage(uint32_t x, uint32_t y,
  * Display a string at coordinate x,y
  */
 VbError_t VbExDisplayText(uint32_t x, uint32_t y,
-			  const char *info_str);
+			  const char *info_str,
+			  int highlight);
 
 /**
  * Display a string containing debug information on the screen, rendered in a
