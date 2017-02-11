@@ -22,6 +22,30 @@
       "revId": "3068109230b905fcd98c731a2dc87f58dceae38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b73bd479_1892484f",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-11T01:01:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure where the VB1 algorithm list is located, can you give me a pointer?\n\nBut, if I understand correctly, we can\u0027t add a new hash easily (else this logic will break), but we can easily add a new signature type at the end of the list (like I do in the following CL: https://chromium-review.googlesource.com/c/438951/2/firmware/2lib/include/2crypto.h): there won\u0027t be any matching issue that way (only new algorithms). I\u0027m not sure to understand how they can alias?\n\nSo, maybe I should keep \"if (hash_alg \u003c VB2_HASH_SHA1 || hash_alg \u003e VB2_HASH_SHA512)\", and just modify the signature bound check?",
+      "parentUuid": "34172169_09c1ddf9",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "3068109230b905fcd98c731a2dc87f58dceae38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
