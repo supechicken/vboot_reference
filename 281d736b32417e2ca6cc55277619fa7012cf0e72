@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1165297f_cf4aacd7",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-13T16:50:41Z",
+      "side": 1,
+      "message": "Yes, this code is run in the firmware.  And on many ARM SoC, the first stage of verification runs on an EC-like coprocessor, not the big core, so performance matters.",
+      "parentUuid": "05c1568c_971a0716",
+      "revId": "281d736b32417e2ca6cc55277619fa7012cf0e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb0cb76f_dc5a720e",
         "filename": "host/lib21/host_key.c",
         "patchSetId": 2
