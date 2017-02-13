@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7c4bbca_3d381aaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-13T16:38:24Z",
+      "side": 1,
+      "message": "Please also make runtests (always, when changing vboot_reference)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "79fa07fd937424e2730cde66ee10441f3e297bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68e24823_74aa8831",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-13T16:38:24Z",
+      "side": 1,
+      "message": "But this should still be \u003e, not \u003e\u003d.\n\nHave you run unit tests on this?",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 44
+      },
+      "revId": "79fa07fd937424e2730cde66ee10441f3e297bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
