@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b111b961_4ece5e8e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-15T00:55:52Z",
+      "side": 1,
+      "message": "highlight \u003d !!(current_menu_idx \u003d\u003d i);",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 3
+      },
+      "revId": "56a494fc214b394157eea0249a9fa3d7eb9f71ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "330f6c39_c1237032",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-15T00:55:52Z",
+      "side": 1,
+      "message": "Coding standard nit: space after ,",
+      "range": {
+        "startLine": 354,
+        "startChar": 24,
+        "endLine": 354,
+        "endChar": 25
+      },
+      "revId": "56a494fc214b394157eea0249a9fa3d7eb9f71ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6739a8ff_78c83db3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-15T00:55:52Z",
+      "side": 1,
+      "message": "yindex++",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 14
+      },
+      "revId": "56a494fc214b394157eea0249a9fa3d7eb9f71ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
