@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22a6453e_84476fa2",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-16T17:54:31Z",
+      "side": 1,
+      "message": "Left over debug code?\nStuff that needs a subsequent patch?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 16
+      },
+      "revId": "65ef5210a446c0e88d9f409beb91422de584b81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ebf432f_980fce3c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-16T17:54:31Z",
+      "side": 1,
+      "message": "Comment style went back?",
+      "range": {
+        "startLine": 700,
+        "startChar": 3,
+        "endLine": 701,
+        "endChar": 44
+      },
+      "revId": "65ef5210a446c0e88d9f409beb91422de584b81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1f2e9af_2f849056",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-16T17:54:31Z",
+      "side": 1,
+      "message": "Also seems to have replaced the recovery screen?  Intentional?",
+      "range": {
+        "startLine": 970,
+        "startChar": 7,
+        "endLine": 970,
+        "endChar": 21
+      },
+      "revId": "65ef5210a446c0e88d9f409beb91422de584b81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
