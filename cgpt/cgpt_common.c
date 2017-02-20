@@ -76,6 +76,17 @@ int CheckValid(const struct drive *drive) {
   return CGPT_OK;
 }
 
+int SanityCheckValid(struct drive *drive) {
+  int gpt_retval;
+  if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive->gpt))) {
+    Error("GptSanityCheck() returned %d: %s\n",
+          gpt_retval, GptError(gpt_retval));
+    return CGPT_FAILED;
+  }
+
+  return CheckValid(drive);
+}
+
 int Load(struct drive *drive, uint8_t **buf,
                 const uint64_t sector,
                 const uint64_t sector_bytes,

@@ -62,6 +62,7 @@ int DriveOpen(const char *drive_path, struct drive *drive, int mode,
               uint64_t drive_size);
 int DriveClose(struct drive *drive, int update_as_needed);
 int CheckValid(const struct drive *drive);
+int SanityCheckValid(struct drive *drive);
 
 /* Loads sectors from 'drive'.
  * *buf is pointed to an allocated memory when returned, and should be

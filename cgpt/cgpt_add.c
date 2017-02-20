@@ -131,17 +131,8 @@ static int SetEntryAttributes(struct drive *drive,
 }
 
 static int CgptCheckAddValidity(struct drive *drive) {
-  int gpt_retval;
-  if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive->gpt))) {
-    Error("GptSanityCheck() returned %d: %s\n",
-          gpt_retval, GptError(gpt_retval));
-    return -1;
-  }
-
-  if (((drive->gpt.valid_headers & MASK_BOTH) != MASK_BOTH) ||
-      ((drive->gpt.valid_entries & MASK_BOTH) != MASK_BOTH)) {
-    Error("one of the GPT header/entries is invalid.\n"
-          "please run 'cgpt repair' before adding anything.\n");
+  if (CGPT_OK != SanityCheckValid(drive)) {
+    Error("please run 'cgpt repair' before adding anything.\n");
     return -1;
   }
 

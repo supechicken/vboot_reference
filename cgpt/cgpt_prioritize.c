@@ -96,7 +96,6 @@ int CgptPrioritize(CgptPrioritizeParams *params) {
 
   int priority;
 
-  int gpt_retval;
   uint32_t index;
   uint32_t max_part;
   int num_kernels;
@@ -110,9 +109,8 @@ int CgptPrioritize(CgptPrioritizeParams *params) {
                            params->drive_size))
     return CGPT_FAILED;
 
-  if (GPT_SUCCESS != (gpt_retval = GptSanityCheck(&drive.gpt))) {
-    Error("GptSanityCheck() returned %d: %s\n",
-          gpt_retval, GptError(gpt_retval));
+  if (CGPT_OK != SanityCheckValid(&drive)) {
+    Error("please run 'cgpt repair' before reordering the priority.\n");
     return CGPT_FAILED;
   }
 
