@@ -177,6 +177,7 @@ static int do_search(CgptFindParams *params, char *fileName) {
 #define PROC_PARTITIONS "/proc/partitions"
 #define DEV_DIR "/dev"
 #define SYS_BLOCK_DIR "/sys/block"
+#define MAX_PROC_PARTITIONS_LEN 128
 
 static const char *devdirs[] = { "/dev", "/devices", "/devfs", 0 };
 
@@ -219,7 +220,8 @@ static char *is_wholedev(const char *basename) {
 // returns true if any matches were found, false otherwise.
 static int scan_real_devs(CgptFindParams *params) {
   int found = 0;
-  char partname[128];                   // max size for /proc/partition lines?
+  char partname[MAX_PROC_PARTITIONS_LEN];
+  char devname[MAX_PROC_PARTITIONS_LEN] = "\0";
   FILE *fp;
   char *pathname;
 
@@ -238,11 +240,15 @@ static int scan_real_devs(CgptFindParams *params) {
     if (sscanf(line, " %d %d %llu %127[^\n ]", &ma, &mi, &sz, partname) != 4)
       continue;
 
-    if ((pathname = is_wholedev(partname))) {
-      if (do_search(params, pathname)) {
-        found++;
+    if (devname[0] && !memcmp(devname, partname, strlen(devname))) {
+      if ((pathname = is_wholedev(devname))) {
+        if (do_search(params, pathname)) {
+          found++;
+        }
       }
     }
+
+    strcpy(devname, partname);
   }
 
   fclose(fp);
