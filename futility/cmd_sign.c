@@ -479,30 +479,26 @@ static void print_help_rwsig(int argc, char *argv[])
 	       "\n"
 	       "This signs a %s.\n"
 	       "\n"
-	       "The INFILE is a binary blob of arbitrary size."
-	       " It is signed using the\n"
+	       "The INFILE is a binary blob of arbitrary size. It is signed using the\n"
 	       "private key and the vb21_signature blob emitted.\n"
 	       "\n"
-	       "If no OUTFILE is specified, the INFILE should contain"
-	       " an existing\n"
-	       "vb21_signature blob near its end. The data_size from that"
-	       " signature is\n"
-	       "used to re-sign a portion of the INFILE, and the old"
-	       " signature blob is\n"
+	       "If no OUTFILE is specified, the INFILE should contain an existing\n"
+	       "vb21_signature blob near its end. The data_size from that signature is\n"
+	       "used to re-sign a portion of the INFILE, and the old signature blob is\n"
 	       "replaced.\n"
+	       "Alternatively, if INFILE contains an FMAP, RW and signatures offsets\n"
+	       "are read from that table, and, if a public key is provided, the\n"
+	       "public key is replaced in the RO image.\n"
 	       "\n"
 	       "Options:\n"
 	       "\n"
-	       "  --prikey      FILE.vbprik2      "
-	       "Private key in vb2 format (required)\n"
-	       "  --sig_size    NUM               "
-	       "Offset from the end of INFILE where the\n"
-	       "                                    "
-	       "signature blob should be located\n"
-	       "                                    "
-	       "(default 1024 bytes)\n"
-	       "  --data_size   NUM               "
-	       "Number of bytes of INFILE to sign\n"
+	       "  --prikey      FILE.vbprik2      Private key in vb2 format (required)\n"
+	       "  --pubkey      FILE.vbpubk2      Public key in vb2 format (optional)\n"
+	       "  --sig_size    NUM               Offset from the end of INFILE where the\n"
+	       "                                    signature blob should be located, if\n"
+	       "                                    the file does not contain an FMAP.\n"
+	       "                                    (default 1024 bytes)\n"
+	       "  --data_size   NUM               Number of bytes of INFILE to sign\n"
 	       "\n",
 	       argv[0],
 	       futil_file_type_name(FILE_TYPE_RWSIG),
@@ -580,6 +576,7 @@ enum no_short_opts {
 	OPT_DATA_SIZE,
 	OPT_SIG_SIZE,
 	OPT_PRIKEY,
+	OPT_PUBKEY,
 	OPT_HELP,
 };
 
@@ -619,6 +616,7 @@ static const struct option long_opts[] = {
 	{"sig_size",     1, NULL, OPT_SIG_SIZE},
 	{"prikey",       1, NULL, OPT_PRIKEY},
 	{"privkey",      1, NULL, OPT_PRIKEY},	/* alias */
+	{"pubkey",       1, NULL, OPT_PUBKEY},
 	{"help",         0, NULL, OPT_HELP},
 	{NULL,           0, NULL, 0},
 };
@@ -830,6 +828,12 @@ static int do_sign(int argc, char *argv[])
 		case OPT_PRIKEY:
 			if (vb21_private_key_read(&sign_option.prikey,
 						  optarg)) {
+				fprintf(stderr, "Error reading %s\n", optarg);
+				errorcnt++;
+			}
+			break;
+		case OPT_PUBKEY:
+			if (vb21_packed_key_read(&sign_option.pubkey, optarg)) {
 				fprintf(stderr, "Error reading %s\n", optarg);
 				errorcnt++;
 			}
