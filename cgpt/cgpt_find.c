@@ -238,6 +238,10 @@ static int scan_real_devs(CgptFindParams *params) {
     if (sscanf(line, " %d %d %llu %127[^\n ]", &ma, &mi, &sz, partname) != 4)
       continue;
 
+    // Filter out devices which are too small.
+    if (sz <= 4096)
+      continue;
+
     if ((pathname = is_wholedev(partname))) {
       if (do_search(params, pathname)) {
         found++;
