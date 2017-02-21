@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "1ae72a6f_f72712dc",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T12:31:41Z",
+      "side": 1,
+      "message": "\u003e it would be hacky to pass that version to the required script \n\u003e (../vboot_reference/scripts/image_signing/sign_official_build.sh)...\n\nActually I think sign_official_build.sh is already using an external version file for this (the last optional parameter of the script invocation) which something like firmware_version\u003d2 or kernel_version\u003d3 inside.\nAnd all the official keysets we are generating for our signing servers already contain the key.versions file with those parameters (and are passed by the signer python script to the sign_official.build.sh script).\nSo to roll your keys on Hammer, this might still be the easiest path.\n\nBut you can probably find people who know this better than me.",
+      "parentUuid": "0288d001_a5660588",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 81
+      },
+      "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02a89a79_344c3509",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 1
@@ -144,6 +168,24 @@
       "side": 1,
       "message": "I mean, at least I can read and understand the help string, and align it to some fixed width a bit more easily.",
       "parentUuid": "fe0895ec_ee668151",
+      "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abd33d0_30add85a",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T12:31:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3227230c_7692aa6f",
       "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
