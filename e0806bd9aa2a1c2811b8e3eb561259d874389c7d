@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91bef385_c57f5bc2",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T09:38:35Z",
+      "side": 1,
+      "message": "Right, the RSA public key can be derived from the private key.\n\nI tried to implement, but one thing that is missing is the key version field (that is present in vbpubk2, not in vbprik2, usually set to 1, AFAICT). Any idea what the version field is used for?",
+      "parentUuid": "8c21e85f_5e4a5c64",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 81
+      },
+      "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02a89a79_344c3509",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "Is this better than the previous style with more splitted strings ?",
       "parentUuid": "02a89a79_344c3509",
+      "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3227230c_7692aa6f",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T09:38:35Z",
+      "side": 1,
+      "message": "I mean, at least I can read and understand the help string, and align it to some fixed width a bit more easily.",
+      "parentUuid": "fe0895ec_ee668151",
       "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
