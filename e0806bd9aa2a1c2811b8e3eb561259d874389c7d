@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0288d001_a5660588",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T11:21:07Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure we\u0027ll want to change keys for hammer (dev-\u003epremp-\u003emp), and have support for even later rotations (since we\u0027ll implement rollback protection), and it would be hacky to pass that version to the required script (../vboot_reference/scripts/image_signing/sign_official_build.sh)...\n\nMaybe the vbpuk2 file is a better option after all?",
+      "parentUuid": "f23a085d_94a38546",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 81
+      },
+      "revId": "e0806bd9aa2a1c2811b8e3eb561259d874389c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02a89a79_344c3509",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 1
