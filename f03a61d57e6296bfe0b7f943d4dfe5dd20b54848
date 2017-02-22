@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8500dcb1_78910ece",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-22T23:12:36Z",
+      "side": 1,
+      "message": "this will cause gcc to memset the whole buffer for you.  instead, just set the first byte to 0 below.\n\n devname[0] \u003d \u0027\\0\u0027;",
+      "revId": "f03a61d57e6296bfe0b7f943d4dfe5dd20b54848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4f848f_4a36246e",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-02-22T23:12:36Z",
+      "side": 1,
+      "message": "this assumes partname is always valid for at least strlen(devname).  you should use something like strncmp instead.",
+      "revId": "f03a61d57e6296bfe0b7f943d4dfe5dd20b54848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
