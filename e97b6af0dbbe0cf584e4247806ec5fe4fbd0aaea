@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a9ebeba_020c71d0",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T07:00:48Z",
+      "side": 1,
+      "message": "I\u0027m surprised that the toolchain doesn\u0027t complain about using 0 for NULL pointers,\nbut it was there before",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 24
+      },
+      "revId": "e97b6af0dbbe0cf584e4247806ec5fe4fbd0aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
