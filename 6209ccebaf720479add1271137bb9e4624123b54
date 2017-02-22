@@ -16,6 +16,24 @@
       "revId": "6209ccebaf720479add1271137bb9e4624123b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35433a8c_187abebc",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-02-22T02:54:35Z",
+      "side": 1,
+      "message": "Hi julius,\nit looks like there are some other devices need to skip, such as, loop*/dm-*/zram*...\n\njust got ideal to filter them out...",
+      "parentUuid": "5bc9a4d5_df1503ac",
+      "revId": "6209ccebaf720479add1271137bb9e4624123b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
