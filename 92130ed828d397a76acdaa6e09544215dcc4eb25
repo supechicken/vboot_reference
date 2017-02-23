@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f775b2e5_16b19800",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-02-23T01:16:33Z",
+      "side": 1,
+      "message": "This should be partname[0] (partname_next will always get initialized by the sscanf() anyway).",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec04490d_1d6f772f",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-02-23T01:16:33Z",
+      "side": 1,
+      "message": "80 char limit",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557c1590_23cbb38d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-02-23T01:16:33Z",
+      "side": 1,
+      "message": "A little explanatory comment of what you\u0027re doing would be nice (e.g. /* Only check devices that have partitions under them. We can tell by checking that an entry like \"sda\" is immediately followed by one like \"sda0\". */)",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8d22a8_89d4762a",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-02-23T01:16:33Z",
+      "side": 1,
+      "message": "You don\u0027t need the first part, the !strncmp() is enough.",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
