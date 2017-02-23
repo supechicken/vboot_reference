@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8d1b55e_379c50e8",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-02-23T02:23:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f775b2e5_16b19800",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec04490d_1d6f772f",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c260e8d_4195a2ef",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-02-23T02:23:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec04490d_1d6f772f",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cbb01ce9_ce54dc72",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-02-23T02:23:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557c1590_23cbb38d",
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c8d22a8_89d4762a",
         "filename": "cgpt/cgpt_find.c",
         "patchSetId": 3
@@ -64,6 +118,30 @@
       "writtenOn": "2017-02-23T01:16:33Z",
       "side": 1,
       "message": "You don\u0027t need the first part, the !strncmp() is enough.",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "92130ed828d397a76acdaa6e09544215dcc4eb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b05a2226_3726b28d",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-02-23T02:23:44Z",
+      "side": 1,
+      "message": "it\u0027s for the first line, which has a empty partname, it will pass  the strncmp check",
+      "parentUuid": "0c8d22a8_89d4762a",
       "range": {
         "startLine": 244,
         "startChar": 8,
