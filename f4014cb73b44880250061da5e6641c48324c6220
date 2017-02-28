@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d620a30_e84b6212",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-28T22:53:50Z",
+      "side": 1,
+      "message": "Technically,\n\n/* Get screen dimensions */\n\nsince xindex,yindex is the lower right corner, not the center.\n\nBut then the comment is redundant with the function name, so can just drop the comment...",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 23
+      },
+      "revId": "f4014cb73b44880250061da5e6641c48324c6220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
