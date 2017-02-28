@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e987495d_c3085e00",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-28T22:06:21Z",
+      "side": 1,
+      "message": "/* Stop on success, or error other than hash mismatch */\nif (rv !\u003d VBERROR_EC_HASH_CMP_FAILED)\n    break;\n\nSince that\u0027ll cover both \u003d\u003dSUCCESS and !\u003dCMP_FAILED",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 3
+      },
+      "revId": "96e22f7334c5cd626d512349d0264403bd8340bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
