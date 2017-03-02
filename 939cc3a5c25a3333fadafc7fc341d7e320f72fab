@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76be24bf_2d368f26",
+        "filename": "host/lib/host_keyblock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-02T14:38:48Z",
+      "side": 1,
+      "message": "This should have been vb2_rsa_sig_size(vb2_crypto_to_signature(algorithm)); .\n\nIn many (most?) cases, sig_data_size \u003d 0 as the algorithm is actually invalid. For some reason we still pass the unit tests though...",
+      "revId": "939cc3a5c25a3333fadafc7fc341d7e320f72fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
