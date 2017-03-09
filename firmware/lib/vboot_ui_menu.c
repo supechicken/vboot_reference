@@ -387,7 +387,6 @@ VbError_t vb2_draw_current_screen(struct vb2_context *ctx,
 		return VBERROR_UNKNOWN;
 	}
 	// can we highlight the selection?
-	VB2_DEBUG("current_menu_idx = %d\n", current_menu_idx);
 	return VbDisplayMenu(ctx, cparams, screen, 0, current_menu_idx);
 }
 
@@ -660,7 +659,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
 		VB2_DEBUG("dev_disable_boot is set.\n");
-		VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_TO_NORM, 0);
+		VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_TO_NORM_MENU, 0);
 		VbExDisplayDebugInfo(dev_disable_msg);
 
 		/* Ignore space in VbUserConfirmsMenu()... */
@@ -683,9 +682,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	}
 
 	/* Show the dev mode warning screen */
-	//TODO: change this to blank screen?
-	VbDisplayScreen(ctx, cparams, VB_SCREEN_BASE, 0);
-	vb2_print_current_menu();
+	vb2_draw_current_screen(ctx, cparams);
 
 	/* Get audio/delay context */
 	audio = VbAudioOpen(cparams);
@@ -742,10 +739,12 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					return VBERROR_SUCCESS;
 				} else {
 					/* Show dev mode warning screen again */
-					VbDisplayScreen(ctx,
-						cparams,
-						VB_SCREEN_BASE,
-						0);
+					/* VbDisplayScreen(ctx, */
+					/* 	cparams, */
+					/* 		VB_SCREEN_DEVELOPER_WARNING_MENU, */
+					/* 		//VB_SCREEN_BASE, */
+					/* 	0); */
+					vb2_draw_current_screen(ctx, cparams);
 				}
 			}
 			break;
@@ -757,7 +756,6 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			if (current_menu_idx > 0)
 				current_menu_idx--;
 			vb2_draw_current_screen(ctx, cparams);
-			vb2_print_current_menu();
 			break;
 		case VB_BUTTON_VOL_DOWN:
 		case VB_KEY_DOWN:
@@ -767,7 +765,6 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			if (current_menu_idx < menu_size-1)
 				current_menu_idx++;
 			vb2_draw_current_screen(ctx, cparams);
-			vb2_print_current_menu();
 			break;
 		case VB_BUTTON_POWER:
 		case '\r':
@@ -779,9 +776,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			 * artifacts from previous menu printing.
 			 */
 			VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
-			VbDisplayScreen(ctx, cparams,
-					VB_SCREEN_BASE, 0);
-			vb2_print_current_menu();
+			vb2_draw_current_screen(ctx, cparams);
 
 			/* Probably shutting down */
 			if (ret != VBERROR_SUCCESS) {
@@ -839,10 +834,12 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 						 * Show dev mode warning screen
 						 * again
 						 */
-						VbDisplayScreen(ctx,
-							cparams,
-							VB_SCREEN_BASE,
-							0);
+						/* VbDisplayScreen(ctx, */
+						/* 	cparams, */
+						/* 		VB_SCREEN_DEVELOPER_WARNING_MENU, */
+						/* 		//VB_SCREEN_BASE, */
+						/* 	0); */
+						vb2_draw_current_screen(ctx, cparams);
 					}
 				}
 			}
@@ -996,12 +993,12 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 		if (current_menu != VB_MENU_RECOVERY ||
 		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
-			VbDisplayScreen(ctx, cparams,
-					VBERROR_NO_DISK_FOUND == retval ?
-					VB_SCREEN_BASE :
-					VB_SCREEN_RECOVERY_NO_GOOD,
-					0);
-			vb2_print_current_menu();
+			if (retval == VBERROR_NO_DISK_FOUND)
+				vb2_draw_current_screen(ctx, cparams);
+			else
+				VbDisplayScreen(ctx, cparams,
+						VB_SCREEN_RECOVERY_NO_GOOD,
+						0);
 		}
 
 		/*
@@ -1020,7 +1017,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				if (current_menu_idx > 0)
 					current_menu_idx--;
 				vb2_draw_current_screen(ctx, cparams);
-				vb2_print_current_menu();
 				break;
 			case VB_BUTTON_VOL_DOWN:
 			case VB_KEY_DOWN:
@@ -1028,7 +1024,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				if (current_menu_idx < menu_size-1)
 					current_menu_idx++;
 				vb2_draw_current_screen(ctx, cparams);
-				vb2_print_current_menu();
 				break;
 			case VB_BUTTON_POWER:
 			case '\r':
@@ -1042,12 +1037,12 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					 * blanking to clear previous menus
 					 * printed.
 					 */
-					VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
-					VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
-							VB_SCREEN_BASE :
-							VB_SCREEN_RECOVERY_NO_GOOD,
-							0);
-					vb2_print_current_menu();
+					if (retval == VBERROR_NO_DISK_FOUND)
+						vb2_draw_current_screen(ctx, cparams);
+					else
+						VbDisplayScreen(ctx, cparams,
+								VB_SCREEN_RECOVERY_NO_GOOD,
+								0);
 				}
 
 				/* Probably shutting down */
