@@ -354,6 +354,43 @@ VbError_t vb2_print_current_menu()
 	return VBERROR_SUCCESS;
 }
 
+VbError_t vb2_draw_current_screen(struct vb2_context *ctx,
+				  VbCommonParams *cparams) {
+	uint32_t screen = 0;
+	switch(current_menu) {
+	case VB_MENU_DEV_WARNING:
+		VB2_DEBUG("VB_MENU_DEV_WARNING\n");
+		screen = VB_SCREEN_DEVELOPER_WARNING_MENU;
+		break;
+	case VB_MENU_DEV:
+		VB2_DEBUG("VB_MENU_DEV\n");
+		screen = VB_SCREEN_DEVELOPER_MENU;
+		break;
+	case VB_MENU_TO_NORM:
+		VB2_DEBUG("VB_MENU_TO_NORM\n");
+		screen = VB_SCREEN_DEVELOPER_TO_NORM_MENU;
+		break;
+	case VB_MENU_RECOVERY:
+		VB2_DEBUG("VB_MENU_RECOVERY\n");
+		screen = VB_SCREEN_RECOVERY_MENU;
+		break;
+	case VB_MENU_TO_DEV:
+		VB2_DEBUG("VB_MENU_TO_DEV\n");
+		screen = VB_SCREEN_RECOVERY_TO_DEV_MENU;
+		break;
+	case VB_MENU_LANGUAGES:
+		VB2_DEBUG("VB_MENU_LANGUAGES\n");
+		screen = VB_SCREEN_LANGUAGES_MENU;
+		break;
+	default:
+		//NOTE: return real error here
+		return VBERROR_UNKNOWN;
+	}
+	// can we highlight the selection?
+	VB2_DEBUG("current_menu_idx = %d\n", current_menu_idx);
+	return VbDisplayMenu(ctx, cparams, screen, 0, current_menu_idx);
+}
+
 /**
  * Set current_menu to new_current_menu
  *
@@ -719,6 +756,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			/* Do not wrap selection index */
 			if (current_menu_idx > 0)
 				current_menu_idx--;
+			vb2_draw_current_screen(ctx, cparams);
 			vb2_print_current_menu();
 			break;
 		case VB_BUTTON_VOL_DOWN:
@@ -728,6 +766,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			/* Do no wrap selection index */
 			if (current_menu_idx < menu_size-1)
 				current_menu_idx++;
+			vb2_draw_current_screen(ctx, cparams);
 			vb2_print_current_menu();
 			break;
 		case VB_BUTTON_POWER:
@@ -980,6 +1019,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
 				if (current_menu_idx > 0)
 					current_menu_idx--;
+				vb2_draw_current_screen(ctx, cparams);
 				vb2_print_current_menu();
 				break;
 			case VB_BUTTON_VOL_DOWN:
@@ -987,6 +1027,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				vb2_get_current_menu_size(current_menu, NULL, &menu_size);
 				if (current_menu_idx < menu_size-1)
 					current_menu_idx++;
+				vb2_draw_current_screen(ctx, cparams);
 				vb2_print_current_menu();
 				break;
 			case VB_BUTTON_POWER:
