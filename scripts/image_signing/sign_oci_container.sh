@@ -12,8 +12,8 @@ DEFINE_string output "" \
 
 FLAGS_HELP="Usage: ${PROG} [options] <input_container> <key_dir>
 
-Signs <input_container> with keys in <key_dir>.  Should have a config.json
-file in the OCI format.
+Signs <input_container> with keys in <key_dir>. Should have an imageloader.json
+file which imageloader can understand and will use to mount the container.
 
 Input can be an unpacked container, or a CRX/ZIP file.
 "
@@ -25,7 +25,8 @@ eval set -- "${FLAGS_ARGV}"
 # Abort on error.
 set -e
 
-# Sign the directory holding OCI container(s).  We look for manifest.json files.
+# Sign the directory holding OCI container(s).  We look for an imageloader.json
+# file.
 sign_oci_container() {
   [[ $# -eq 3 ]] || die "Usage: sign_oci_container <input> <key> <output>"
   local input="${1%/}"
@@ -36,19 +37,17 @@ sign_oci_container() {
     rsync -a "${input}/" "${output}/"
   fi
 
-  local manifest out_manifest
-  while read -d $'\0' -r manifest; do
-    out_manifest="${output}/${manifest}.sig"
-    manifest="${input}/${manifest}"
-    info "Signing: ${manifest}"
-    if ! openssl dgst -sha256 -sign "${key_file}" \
-                      -out "${out_manifest}" "${manifest}"; then
-      die "Failed to sign"
-    fi
-  done < <(find "${input}/" -name manifest.json -printf '%P\0')
+  local out_manifest="${output}/imageloader.sig.2"
+  local manifest="${input}/imageloader.json"
+  info "Signing: ${manifest}"
+  if ! openssl dgst -sha256 -sign "${key_file}" \
+                    -out "${out_manifest}" "${manifest}"; then
+    die "Failed to sign"
+  fi
 }
 
-# Sign the crx/zip holding OCI container(s).  We look for manifest.json files.
+# Sign the crx/zip holding OCI container(s).  We look for an imageloader.json
+# file.
 sign_oci_container_zip() {
   [[ $# -eq 3 ]] || die "Usage: sign_oci_container_zip <input> <key> <output>"
   local input="$1"
