@@ -25,7 +25,8 @@ eval set -- "${FLAGS_ARGV}"
 # Abort on error.
 set -e
 
-# Sign the directory holding OCI container(s).  We look for manifest.json files.
+# Sign the directory holding OCI container(s).  We look for imageloader.json
+# files.
 sign_oci_container() {
   [[ $# -eq 3 ]] || die "Usage: sign_oci_container <input> <key> <output>"
   local input="${1%/}"
@@ -38,17 +39,18 @@ sign_oci_container() {
 
   local manifest out_manifest
   while read -d $'\0' -r manifest; do
-    out_manifest="${output}/${manifest}.sig"
+    out_manifest="${output}/imageloader.sig.2"
     manifest="${input}/${manifest}"
     info "Signing: ${manifest}"
     if ! openssl dgst -sha256 -sign "${key_file}" \
                       -out "${out_manifest}" "${manifest}"; then
       die "Failed to sign"
     fi
-  done < <(find "${input}/" -name manifest.json -printf '%P\0')
+  done < <(find "${input}/" -name imageloader.json -printf '%P\0')
 }
 
-# Sign the crx/zip holding OCI container(s).  We look for manifest.json files.
+# Sign the crx/zip holding OCI container(s).  We look for imageloader.json
+# files.
 sign_oci_container_zip() {
   [[ $# -eq 3 ]] || die "Usage: sign_oci_container_zip <input> <key> <output>"
   local input="$1"
