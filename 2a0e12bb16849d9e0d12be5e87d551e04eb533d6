@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aaabe87_fd103992",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-23T21:44:24Z",
+      "side": 1,
+      "message": "Is BLANK,index\u003d0 guaranteed to be an invalid menu?\nIf not, might need to initialize index\u003d-1 or something like that.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "2a0e12bb16849d9e0d12be5e87d551e04eb533d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e85b3f66_4fb099c5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-23T21:44:24Z",
+      "side": 1,
+      "message": "Do these later turn into more interesting code?  If not, a static lookup array would be more compact.",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 8
+      },
+      "revId": "2a0e12bb16849d9e0d12be5e87d551e04eb533d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
