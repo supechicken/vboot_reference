@@ -85,7 +85,7 @@ VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
 int main(int argc, char* argv[]) {
 
   const char* image_name;
-  uint64_t key_size;
+  uint64_t key_size = 0;
   uint8_t* key_blob = NULL;
   VbSharedDataHeader* shared;
   GoogleBinaryBlockHeader* gbb;

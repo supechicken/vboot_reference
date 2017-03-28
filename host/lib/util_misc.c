@@ -73,6 +73,7 @@ int vb_keyb_from_rsa(struct rsa_st *rsa_private_key,
 	BIGNUM *N0inv = NULL, *R = NULL, *RR = NULL;
 	BIGNUM *RRTemp = NULL, *NnumBits = NULL;
 	BIGNUM *n = NULL, *rr = NULL;
+	const BIGNUM *rn;
 	BN_CTX *bn_ctx = BN_CTX_new();
 	uint32_t n0invout;
 	uint32_t bufsize;
@@ -80,7 +81,8 @@ int vb_keyb_from_rsa(struct rsa_st *rsa_private_key,
 	int retval = 1;
 
 	/* Size of RSA key in 32-bit words */
-	nwords = BN_num_bits(rsa_private_key->n) / 32;
+	RSA_get0_key(rsa_private_key, &rn, NULL, NULL);
+	nwords = BN_num_bits(rn) / 32;
 
 	bufsize = (2 + nwords + nwords) * sizeof(uint32_t);
 	outbuf = malloc(bufsize);
@@ -109,7 +111,7 @@ int vb_keyb_from_rsa(struct rsa_st *rsa_private_key,
 	NEW_BIGNUM(B);
 #undef NEW_BIGNUM
 
-	BN_copy(N, rsa_private_key->n);
+	BN_copy(N, rn);
 	BN_set_word(Big1, 1L);
 	BN_set_word(Big2, 2L);
 	BN_set_word(Big32, 32L);

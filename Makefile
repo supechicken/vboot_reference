@@ -1277,7 +1277,7 @@ ${BUILD}/utility/bmpblk_font: ${BUILD}/utility/image_types.o
 ALL_OBJS += ${BUILD}/utility/image_types.o
 
 # Allow multiple definitions, so tests can mock functions from other libraries
-${BUILD}/tests/%: CFLAGS += -Xlinker --allow-multiple-definition
+${BUILD}/tests/%: LDFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 

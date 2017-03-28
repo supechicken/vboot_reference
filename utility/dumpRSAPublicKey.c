@@ -20,8 +20,10 @@
  */
 
 int check(RSA* key) {
-  int public_exponent = BN_get_word(key->e);
-  int modulus = BN_num_bits(key->n);
+  const BIGNUM *n, *e;
+  RSA_get0_key(key, &n, &e, NULL);
+  int public_exponent = BN_get_word(e);
+  int modulus = BN_num_bits(n);
 
   if (public_exponent != 3 && public_exponent != 65537) {
     fprintf(stderr,
@@ -41,7 +43,9 @@ int check(RSA* key) {
  */
 void output(RSA* key) {
   int i, nwords;
-  BIGNUM *N = key->n;
+  const BIGNUM *kn;
+  RSA_get0_key(key, &kn, NULL, NULL);
+  BIGNUM *N = (BIGNUM*)kn;
   BIGNUM *Big1 = NULL, *Big2 = NULL, *Big32 = NULL, *BigMinus1 = NULL;
   BIGNUM *B = NULL;
   BIGNUM *N0inv= NULL, *R = NULL, *RR = NULL, *RRTemp = NULL, *NnumBits = NULL;
@@ -49,7 +53,6 @@ void output(RSA* key) {
   BN_CTX *bn_ctx = BN_CTX_new();
   uint32_t n0invout;
 
-  N = key->n;
   /* Output size of RSA key in 32-bit words */
   nwords = BN_num_bits(N) / 32;
   if (-1 == write(1, &nwords, sizeof(nwords)))

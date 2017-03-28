@@ -469,7 +469,7 @@ typedef struct VbSharedDataHeader {
 	 * all the fields it knows about are present.  Newer firmware needs to
 	 * use reasonable defaults when accessing older structs.
 	 */
-} __attribute__((packed)) VbSharedDataHeader;
+} __attribute__((packed,aligned(__alignof__(uint32_t)))) VbSharedDataHeader;
 
 /*
  * Size of VbSharedDataheader for each version

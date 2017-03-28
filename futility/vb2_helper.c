@@ -204,6 +204,7 @@ enum futil_file_type ft_recognize_pem(uint8_t *buf, uint32_t len)
 int ft_show_pem(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
 	RSA *rsa_key;
+	const BIGNUM *n, *d;
 	uint8_t *keyb;
 	uint8_t digest[VB2_SHA1_DIGEST_SIZE];
 	uint32_t keyb_len;
@@ -214,11 +215,13 @@ int ft_show_pem(const char *name, uint8_t *buf, uint32_t len, void *data)
 	if (!rsa_key)
 		DIE;
 
+	RSA_get0_key(rsa_key, &n, NULL, &d);
+
 	/* Use to presence of the private exponent to decide if it's public */
-	printf("%s Key file:      %s\n", rsa_key->d ? "Private" : "Public",
+	printf("%s Key file:      %s\n", d ? "Private" : "Public",
 					 name);
 
-	bits = BN_num_bits(rsa_key->n);
+	bits = BN_num_bits(n);
 	printf("  Key length:          %d\n", bits);
 
 	if (vb_keyb_from_rsa(rsa_key, &keyb, &keyb_len)) {

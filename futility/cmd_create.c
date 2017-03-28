@@ -196,7 +196,9 @@ static int vb2_make_keypair()
 		goto done;
 	}
 	/* Public keys doesn't have the private exponent */
-	has_priv = !!rsa_key->d;
+	const BIGNUM *d;
+	RSA_get0_key(rsa_key, NULL, NULL, &d);
+	has_priv = !!d;
 	if (!has_priv)
 		fprintf(stderr, "%s has a public key only.\n", infile);
 

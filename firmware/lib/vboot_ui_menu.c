@@ -388,13 +388,13 @@ VbError_t vb2_update_menu()
 		case VB_WARN_OPTIONS:
 			switch(default_boot) {
 			case VBNV_DEV_DEFAULT_BOOT_DISK:
-				next_menu_idx = VB_DEV_DISK;
+				next_menu_idx = (VB_MENU)VB_DEV_DISK;
 				break;
 			case VBNV_DEV_DEFAULT_BOOT_USB:
-				next_menu_idx = VB_DEV_USB;
+				next_menu_idx = (VB_MENU)VB_DEV_USB;
 				break;
 			case VBNV_DEV_DEFAULT_BOOT_LEGACY:
-				next_menu_idx = VB_DEV_LEGACY;
+				next_menu_idx = (VB_MENU)VB_DEV_LEGACY;
 				break;
 			}
 

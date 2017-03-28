@@ -202,7 +202,7 @@ struct vb2_shared_data {
 	uint32_t workbuf_kernel_key_offset;
 	uint32_t workbuf_kernel_key_size;
 
-} __attribute__((packed));
+} __attribute__((packed, aligned(__alignof__(uint32_t))));
 
 /****************************************************************************/
 

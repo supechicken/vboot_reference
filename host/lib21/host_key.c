@@ -565,8 +565,10 @@ int vb2_public_key_hash(struct vb2_public_key *key,
 
 enum vb2_signature_algorithm vb2_rsa_sig_alg(struct rsa_st *rsa)
 {
-	int exp = BN_get_word(rsa->e);
-	int bits = BN_num_bits(rsa->n);
+	const BIGNUM *e, *n;
+	RSA_get0_key(rsa, &n, &e, NULL);
+	int exp = BN_get_word(e);
+	int bits = BN_num_bits(n);
 
 	switch (exp) {
 	case RSA_3:
