@@ -22,6 +22,30 @@
       "revId": "4a3d4ab047c04a82b7186eaf3b1ab402022e7502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "448ef392_9fd34cb7",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-29T19:26:59Z",
+      "side": 1,
+      "message": "Whenever we finish the vboot2 refactoring.  Right now, the code in vboot_ui which calls them still makes obnoxious use of the internal vboot data structures.  And more obnoxiously, a mix of vboot1 and vboot2 structures.\n\nMoving all this up to depthcharge is the long-term goal, so that vboot itself only concerns itself with data structures and leaves the entire UI (and EC software sync, too) to depthcharge.",
+      "parentUuid": "0f21eb27_80c6ab42",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 903,
+        "endChar": 48
+      },
+      "revId": "4a3d4ab047c04a82b7186eaf3b1ab402022e7502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
