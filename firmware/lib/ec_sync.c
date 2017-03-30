@@ -134,7 +134,7 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
-	VB2_DEBUG("updating %s...\n",
+	VB2_DEBUG("ec%d: updating %s...\n", devidx,
 		  select == VB_SELECT_FIRMWARE_READONLY ? "RO" : "RW");
 
 	/* Get expected EC image */
@@ -146,11 +146,11 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_IMAGE);
 		return rv;
 	}
-	VB2_DEBUG("image len = %d\n", want_size);
+	VB2_DEBUG("ec%d: image len = %d\n", devidx, want_size);
 
 	rv = VbExEcUpdateImage(devidx, select, want, want_size);
 	if (rv != VBERROR_SUCCESS) {
-		VB2_DEBUG("VbExEcUpdateImage() returned %d\n", rv);
+		VB2_DEBUG("ec%d: VbExEcUpdateImage() returned %d\n", devidx, rv);
 
 		/*
 		 * The EC may know it needs a reboot.  It may need to
@@ -172,7 +172,7 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 	if (check_ec_hash(ctx, devidx, select) != VB2_SUCCESS)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	if (sd->flags & WHICH_EC(devidx, select)) {
-		VB2_DEBUG("Failed to update\n");
+		VB2_DEBUG("ec%d: Failed to update\n", devidx);
 		request_recovery(ctx, VB2_RECOVERY_EC_UPDATE);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}

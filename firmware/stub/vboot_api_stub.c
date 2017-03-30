@@ -187,6 +187,11 @@ VbError_t VbExEcBatteryCutOff(void)
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExEcGetCount(uint32_t *count) {
+	*count = 1;
+	return VBERROR_SUCCESS;
+}
+
 enum VbEcBootMode_t VbGetMode(void)
 {
 	return vboot_mode;

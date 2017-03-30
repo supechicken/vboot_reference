@@ -998,6 +998,14 @@ VbError_t VbExEcVbootDone(int in_recovery);
  */
 VbError_t VbExEcBatteryCutOff(void);
 
+/**
+ * Return number of ECs supported
+ *
+ * @param count		Pointer to the number of locales.
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcGetCount(uint32_t *count);
+
 /*****************************************************************************/
 /* Misc */
 
