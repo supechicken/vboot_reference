@@ -26,6 +26,10 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 	VbError_t phase1_rv = ec_sync_phase1(ctx, cparams);
 	int need_wait_screen = ec_will_update_slowly(ctx, cparams);
 
+#if 0 // %%% -cj
+	// see if tun_proms will take a long time
+#endif
+
 	/*
 	 * Check if we need to reboot to load the VGA Option ROM before we can
 	 * display the WAIT screen.
@@ -61,6 +65,15 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 	if (rv)
 		return rv;
 
+#if 1 // %%% -cj
+	/*
+	 * Do additional PROM syncs for devices tunneled throught the EC.
+	 */
+	rv = ec_sync_phase_tun_proms(ctx, cparams);
+	if (rv)
+		return rv;
+#endif
+
 	/*
 	 * Reboot to unload VGA Option ROM if:
 	 * - we displayed the wait screen
@@ -77,7 +90,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 		return VBERROR_VGA_OPROM_MISMATCH;
 	}
 
-	/* Do EC sync phase 3; this completes synd and handles battery cutoff */
+	/* Do EC sync phase 3; this completes sync and handles battery cutoff */
 	rv = ec_sync_phase3(ctx, cparams);
 	if (rv)
 		return rv;
