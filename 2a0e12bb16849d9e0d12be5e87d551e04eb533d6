@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3c07729_553f79b2",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-03-30T18:26:33Z",
+      "side": 1,
+      "message": "BLANK, index\u003d0 will not go through VbDisplayScreen instead of VbDisplayMenu, so disp_current_index will be ignored in that case.",
+      "parentUuid": "0aaabe87_fd103992",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "2a0e12bb16849d9e0d12be5e87d551e04eb533d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96bd2eba_3fe8b8cc",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-29T17:33:11Z",
       "side": 1,
       "message": "not the same?",
+      "range": {
+        "startLine": 393,
+        "startChar": 22,
+        "endLine": 393,
+        "endChar": 33
+      },
+      "revId": "2a0e12bb16849d9e0d12be5e87d551e04eb533d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbcb36b_cc384d13",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-03-30T18:26:33Z",
+      "side": 1,
+      "message": "Sorry, I put in a more descriptive comment to clarify things.",
+      "parentUuid": "96bd2eba_3fe8b8cc",
       "range": {
         "startLine": 393,
         "startChar": 22,
