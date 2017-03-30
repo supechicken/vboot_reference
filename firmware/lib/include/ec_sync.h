@@ -61,6 +61,21 @@ VbError_t ec_sync_phase2(struct vb2_context *ctx,
 			 struct VbCommonParams *cparams);
 
 
+#if 1 // %%% -cj
+/**
+ * EC sync, tunneled PROMs sync phase
+ *
+ * This updates PROMs tunneled throuch the EC, if necessary.
+ * Only valid after phase2.
+ *
+ * @param ctx		Vboot2 context
+ * @param cparams	Vboot common params
+ * @return VBERROR_SUCCESS, ???, or other non-zero error code.
+ */
+VbError_t ec_sync_phase_tun_proms(struct vb2_context *ctx,
+				  struct VbCommonParams *cparams);
+#endif
+
 /**
  * EC sync, phase 3
  *
