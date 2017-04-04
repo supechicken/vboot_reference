@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bdeb48b_da2c6329",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T15:31:53Z",
+      "side": 1,
+      "message": "More description would be good.\n\nNeeds BUG\u003d, TEST\u003d, BRANCH\u003d lines.\n\nAlso, signed-off.  Use \u0027git commit --amend -s\u0027 to add that.",
+      "revId": "3f2bf1006fb581d24623d7773a5d45b5e000f474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "634179f6_15d61407",
+        "filename": "firmware/lib/include/ec_sync.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T15:31:53Z",
+      "side": 1,
+      "message": "Please use a less cryptic name.  e.g. ec_sync_tunneled_proms()",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "3f2bf1006fb581d24623d7773a5d45b5e000f474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
