@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18dd9fbd_01c915a3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-13T23:04:17Z",
+      "side": 1,
+      "message": "Yeah, but needed.  When lkp became a global variable instead of being defined inside VbTryLoadKernel(), we really should have been zeroing it every call.\n\nIn the long run, lkp will get refactored out in favor of data stored in vb2_context, but since that refactoring has been delayed, we should be more paranoid here.",
+      "parentUuid": "c5417977_906acc0a",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "e8810480f04a81f19d3b287ac08202f8452c160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "046da0ae_b09915ec",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30403cc2_aae4f036",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-13T23:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046da0ae_b09915ec",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 40
+      },
+      "revId": "e8810480f04a81f19d3b287ac08202f8452c160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2406c7_e82f8754",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-13T22:37:14Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 43
+      },
+      "revId": "e8810480f04a81f19d3b287ac08202f8452c160b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e93a338_3fc5886d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-13T23:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2406c7_e82f8754",
       "range": {
         "startLine": 284,
         "startChar": 4,
