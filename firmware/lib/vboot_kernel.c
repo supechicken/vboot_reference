@@ -191,9 +191,15 @@ int vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	uint32_t key_version = keyblock->data_key.key_version;
 	if (kBootRecovery != boot_mode) {
 		if (key_version < (min_version >> 16)) {
-			VB2_DEBUG("Key version too old.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
-			keyblock_valid = 0;
+			if (params->boot_flags & BOOT_FLAG_IGNORE_ROLLBACK) {
+				VB2_DEBUG("Ignoring kernel key rollback"
+					  "due to GBB flag\n");
+			} else {
+				VB2_DEBUG("Key version too old.\n");
+				shpart->check_result =
+						VBSD_LKP_CHECK_KEY_ROLLBACK;
+				keyblock_valid = 0;
+			}
 		}
 		if (key_version > 0xFFFF) {
 			/*
@@ -271,14 +277,20 @@ int vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	shpart->combined_version = combined_version;
 	if (keyblock_valid && kBootRecovery != boot_mode) {
 		if (combined_version < min_version) {
-			VB2_DEBUG("Kernel version too low.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KERNEL_ROLLBACK;
-			/*
-			 * If not in developer mode, kernel version
-			 * must be valid.
-			 */
-			if (kBootDev != boot_mode)
-				return VB2_ERROR_UNKNOWN;
+			if (params->boot_flags & BOOT_FLAG_IGNORE_ROLLBACK) {
+				VB2_DEBUG("Ignoring kernel version rollback"
+					  "due to GBB flag\n");
+			} else {
+				VB2_DEBUG("Kernel version too low.\n");
+				shpart->check_result =
+						VBSD_LKP_CHECK_KERNEL_ROLLBACK;
+				/*
+				 * If not in developer mode, kernel version
+				 * must be valid.
+				 */
+				if (kBootDev != boot_mode)
+					return VB2_ERROR_UNKNOWN;
+			}
 		}
 	}
 

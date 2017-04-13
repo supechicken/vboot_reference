@@ -43,12 +43,14 @@ typedef struct {
 	int disk_count_to_return;
 	VbError_t loadkernel_return_val[MAX_TEST_DISKS];
 	uint8_t external_expected[MAX_TEST_DISKS];
+	uint64_t gbb_flags;
 
 	/* outputs from test */
 	uint32_t expected_recovery_request_val;
 	const char *expected_to_find_disk;
 	const char *expected_to_load_disk;
 	uint32_t expected_return_val;
+	uint64_t expected_boot_flags;
 
 } test_case_t;
 
@@ -87,6 +89,7 @@ test_case_t test[] = {
 		.expected_recovery_request_val = VBNV_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
 		.expected_to_load_disk = pickme,
+		.expected_boot_flags = BOOT_FLAG_EXTERNAL_GPT,
 		.expected_return_val = VBERROR_SUCCESS
 	},
 	{
@@ -105,6 +108,24 @@ test_case_t test[] = {
 		.expected_recovery_request_val = VBNV_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
 		.expected_to_load_disk = pickme,
+		.expected_return_val = VBERROR_SUCCESS
+	},
+	{
+		.name = "ignore rollback flag set",
+		.want_flags = VB_DISK_FLAG_FIXED,
+		.gbb_flags = VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK,
+		.disks_to_provide = {
+			/* wrong flags */
+			{512,  100,  VB_DISK_FLAG_FIXED, pickme},
+		},
+		.disk_count_to_return = DEFAULT_COUNT,
+		.diskgetinfo_return_val = VBERROR_SUCCESS,
+		.loadkernel_return_val = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
+
+		.expected_recovery_request_val = VBNV_RECOVERY_NOT_REQUESTED,
+		.expected_to_find_disk = pickme,
+		.expected_to_load_disk = pickme,
+		.expected_boot_flags = BOOT_FLAG_IGNORE_ROLLBACK,
 		.expected_return_val = VBERROR_SUCCESS
 	},
 	{
@@ -191,7 +212,10 @@ static const char *got_find_disk;
 static const char *got_load_disk;
 static uint32_t got_return_val;
 static uint32_t got_external_mismatch;
+static uint64_t got_boot_flags;
 static struct vb2_context ctx;
+static VbCommonParams cparams;
+static struct GoogleBinaryBlockHeader gbb;
 
 /**
  * Reset mock data (for use before each test)
@@ -199,6 +223,9 @@ static struct vb2_context ctx;
 static void ResetMocks(int i)
 {
 	memset(&ctx, 0, sizeof(ctx));
+
+	memset(&cparams, 0, sizeof(cparams));
+	cparams.gbb = &gbb;
 
 	memset(VbApiKernelGetParams(), 0, sizeof(LoadKernelParams));
 
@@ -209,8 +236,13 @@ static void ResetMocks(int i)
 	got_find_disk = 0;
 	got_load_disk = 0;
 	got_return_val = 0xdeadbeef;
+	got_external_mismatch = 0;
+	got_boot_flags = 0;
 
 	t = test + i;
+
+	memset(&gbb, 0, sizeof(gbb));
+	gbb.flags = t->gbb_flags;
 }
 
 int is_nonzero(const void *vptr, size_t count)
@@ -287,6 +319,7 @@ VbError_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params,
 		     VbCommonParams *cparams)
 {
 	got_find_disk = (const char *)params->disk_handle;
+	got_boot_flags = params->boot_flags;
 	VB2_DEBUG("%s(%d): got_find_disk = %s\n", __FUNCTION__,
 		  load_kernel_calls,
 		  got_find_disk ? got_find_disk : "0");
@@ -315,7 +348,7 @@ static void VbTryLoadKernelTest(void)
 	for (i = 0; i < num_tests; i++) {
 		printf("Test case: %s ...\n", test[i].name);
 		ResetMocks(i);
-		TEST_EQ(VbTryLoadKernel(&ctx, 0, test[i].want_flags),
+		TEST_EQ(VbTryLoadKernel(&ctx, &cparams, test[i].want_flags),
 			t->expected_return_val, "  return value");
 		TEST_EQ(got_recovery_request_val,
 			t->expected_recovery_request_val, "  recovery_request");
@@ -325,6 +358,8 @@ static void VbTryLoadKernelTest(void)
 			TEST_PTR_EQ(got_load_disk, t->expected_to_load_disk,
 				    "  load disk");
 		}
+		TEST_EQ(got_boot_flags, t->expected_boot_flags,
+			"  lkp.boot_flags");
 		TEST_EQ(got_external_mismatch, 0, "  external GPT errors");
 	}
 }
