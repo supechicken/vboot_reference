@@ -706,6 +706,11 @@ static void LoadKernelTest(void)
 		       "Key block kernel key rollback");
 
 	ResetMocks();
+	lkp.boot_flags |= BOOT_FLAG_IGNORE_ROLLBACK;
+	kbh.data_key.key_version = 1;
+	TestLoadKernel(0, "GBB flag to ignore key block kernel key rollback");
+
+	ResetMocks();
 	kbh.data_key.key_version = 0x10000;
 	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
 		       "Key block kernel key version too big");
@@ -744,6 +749,11 @@ static void LoadKernelTest(void)
 	ResetMocks();
 	kph.kernel_version = 0;
 	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Kernel version rollback");
+
+	ResetMocks();
+	lkp.boot_flags |= BOOT_FLAG_IGNORE_ROLLBACK;
+	kph.kernel_version = 0;
+	TestLoadKernel(0, "GBB flag to ignore kernel rollback");
 
 	ResetMocks();
 	kph.kernel_version = 0;

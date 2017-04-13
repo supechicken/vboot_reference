@@ -118,7 +118,7 @@ int vb21_load_fw_keyblock(struct vb2_context *ctx)
 	if (packed_key->key_version > 0xffff)
 		rv = VB2_ERROR_FW_KEYBLOCK_VERSION_RANGE;
 	if (!rv && packed_key->key_version < (sd->fw_version_secdata >> 16)) {
-		if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)
+		if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK)
 			VB2_DEBUG("Ignoring FW key rollback due to GBB flag\n");
 		else
 			rv = VB2_ERROR_FW_KEYBLOCK_VERSION_ROLLBACK;
@@ -210,7 +210,7 @@ int vb21_load_fw_preamble(struct vb2_context *ctx)
 	/* Combine with the key version from vb2_load_fw_keyblock() */
 	sd->fw_version |= pre->fw_version;
 	if (!rv && sd->fw_version < sd->fw_version_secdata) {
-		if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK)
+		if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK)
 			VB2_DEBUG("Ignoring FW rollback due to GBB flag\n");
 		else
 			rv = VB2_ERROR_FW_PREAMBLE_VERSION_ROLLBACK;
