@@ -214,10 +214,14 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	uint32_t key_version = keyblock->data_key.key_version;
 	if (ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY) {
 		if (key_version < (sd->kernel_version_secdata >> 16)) {
-			keyblock_valid = 0;
-			if (need_keyblock_valid) {
-				VB2_DEBUG("Key version too old.\n");
-				return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK;
+			if (vb2api_gbb_get_flags(ctx) & VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK) {
+				VB2_DEBUG("Ignoring kernel key rollback due to GBB flag\n");
+			} else {
+				keyblock_valid = 0;
+				if (need_keyblock_valid) {
+					VB2_DEBUG("Key version too old.\n");
+					return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK;
+				}
 			}
 		}
 		if (key_version > VB2_MAX_KEY_VERSION) {
@@ -306,8 +310,13 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	if (need_keyblock_valid &&
 	    ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY &&
 	    *kernel_version < sd->kernel_version_secdata) {
-		VB2_DEBUG("Kernel version too low.\n");
-		return VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK;
+		if (vb2api_gbb_get_flags(ctx) & VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK) {
+			VB2_DEBUG("Ignoring kernel version rollback due to GBB flag\n");
+		} else {
+			VB2_DEBUG("Kernel version too low.\n");
+				return VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK;
+		}
+
 	}
 
 	VB2_DEBUG("Kernel preamble is good.\n");
