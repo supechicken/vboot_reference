@@ -111,6 +111,7 @@ uint32_t VbTryLoadKernel(struct vb2_context *ctx, VbCommonParams *cparams,
 	VB2_DEBUG("VbTryLoadKernel() start, get_info_flags=0x%x\n",
 		  (unsigned)get_info_flags);
 
+	memset(&lkp, 0, sizeof(lkp));
 	lkp.fwmp = &fwmp;
 	lkp.nv_context = &vnc;
 	lkp.disk_handle = NULL;
@@ -153,8 +154,14 @@ uint32_t VbTryLoadKernel(struct vb2_context *ctx, VbCommonParams *cparams,
 		lkp.gpt_lba_count = disk_info[i].lba_count;
 		lkp.streaming_lba_count = disk_info[i].streaming_lba_count
 						?: lkp.gpt_lba_count;
-		lkp.boot_flags |= disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT
-				? BOOT_FLAG_EXTERNAL_GPT : 0;
+
+		lkp.boot_flags = 0;
+		if (disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT)
+			lkp.boot_flags |= BOOT_FLAG_EXTERNAL_GPT;
+		if (cparams->gbb &&
+		    cparams->gbb->flags & VB2_GBB_FLAG_DISABLE_ROLLBACK_CHECK)
+			lkp.boot_flags |= BOOT_FLAG_IGNORE_ROLLBACK;
+
 		retval = LoadKernel(ctx, &lkp, cparams);
 		VB2_DEBUG("VbTryLoadKernel() LoadKernel() = %d\n", retval);
 

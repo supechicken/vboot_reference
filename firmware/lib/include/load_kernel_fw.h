@@ -19,6 +19,8 @@ struct vb2_context;
 /* Boot flags for LoadKernel().boot_flags */
 /* GPT is external */
 #define BOOT_FLAG_EXTERNAL_GPT (0x04ULL)
+/* Rollback check disabled by GBB */
+#define BOOT_FLAG_IGNORE_ROLLBACK (0x08ULL)
 
 struct RollbackSpaceFwmp;
 
