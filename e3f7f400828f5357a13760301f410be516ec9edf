@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45006ff0_d2260c60",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-17T21:00:37Z",
+      "side": 1,
+      "message": "should split this decl/assignment.  move `local prod_name` to line 72, and then just do `prod_name\u003d$(...)` here.",
+      "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f7749b_1e7ef06e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-17T21:00:37Z",
+      "side": 1,
+      "message": "same here wrt `local` splitting\n\nneed to quote \"${prod_name}\"",
+      "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c92a698_a7765646",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-04-17T21:00:37Z",
+      "side": 1,
+      "message": "would be helpful to include quotes in the output (in case prod_name is empty)\n\n die \"Unknown Android product name: \u0027${prod_name}\u0027\"",
+      "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
