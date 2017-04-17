@@ -72,12 +72,30 @@ sign_framework_apks() {
 
   info "Start signing framework apks"
 
+  local prod_name=$(grep "ro.product.name" "${system_mnt}/system/build.prop" | \
+      cut -d "=" -f2)
+  # ro.product.name is either cheets_${arch} or aosp_cheets_${arch}.
+  local flavor=$(echo ${prod_name} | cut -d "_" -f1)
+
+  if [[ ${flavor} != "aosp" && ${flavor} != "cheets" ]]; then
+    die "Unknown Android product name ${prod_name}"
+  fi
+
+  info "Detected Android flavor \"${flavor}\""
+
   # Counters for sanity check.
   local counter_platform=0
   local counter_media=0
   local counter_shared=0
   local counter_releasekey=0
   local counter_total=0
+
+  # Expected values of the sanity check counters.
+  declare -A exp_counter_platform=(["aosp"]=0 ["cheets"]=2)
+  declare -A exp_counter_media=(["aosp"]=0 ["cheets"]=2)
+  declare -A exp_counter_shared=(["aosp"]=0 ["cheets"]=2)
+  declare -A exp_counter_releasekey=(["aosp"]=0 ["cheets"]=2)
+  declare -A exp_counter_total=(["aosp"]=0 ["cheets"]=25)
 
   local apk
   while read -d $'\0' -r apk; do
@@ -109,10 +127,13 @@ sign_framework_apks() {
     : $(( counter_total += 1 ))
   done < <(find "${system_mnt}/system" -type f -name '*.apk' -print0)
 
+  info "Re-signed ${counter_total} APKs"
   # Sanity check.
-  if [[ ${counter_platform} -lt 2 || ${counter_media} -lt 2 ||
-        ${counter_shared} -lt 2 || ${counter_releasekey} -lt 2 ||
-        ${counter_total} -lt 25 ]]; then
+  if [[ ${counter_platform} -lt ${exp_counter_platform[${flavor}]} ||
+        ${counter_media} -lt ${exp_counter_media[${flavor}]} ||
+        ${counter_shared} -lt ${exp_counter_shared[${flavor}]} ||
+        ${counter_releasekey} -lt ${exp_counter_releasekey[${flavor}]} ||
+        ${counter_total} -lt ${exp_counter_total[${flavor}]} ]]; then
     die "Number of re-signed package seems to be wrong"
   fi
 }
