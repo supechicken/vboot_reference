@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "a46ed21d_aaa52181",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2017-04-17T21:03:33Z",
+      "side": 1,
+      "message": "\"${flavor}\", same to the one after",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c92a698_a7765646",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -47,6 +70,29 @@
       "writtenOn": "2017-04-17T21:00:37Z",
       "side": 1,
       "message": "would be helpful to include quotes in the output (in case prod_name is empty)\n\n die \"Unknown Android product name: \u0027${prod_name}\u0027\"",
+      "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c979f043_9f763ea8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2017-04-17T21:03:33Z",
+      "side": 1,
+      "message": "This is actually expected least/minimum values",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 19
+      },
       "revId": "e3f7f400828f5357a13760301f410be516ec9edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
