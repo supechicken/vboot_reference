@@ -16,6 +16,24 @@
       "revId": "fc8926e342718c0c3a723e813e7e33a34c44b5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cfa7574_c9ab51ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T21:45:59Z",
+      "side": 1,
+      "message": "i didn\u0027t bother because putting a dep on that CL wouldn\u0027t help signed images ... we still have to update the signer independently and then it\u0027d only apply to newly signed images",
+      "parentUuid": "26bec13a_168346ff",
+      "revId": "fc8926e342718c0c3a723e813e7e33a34c44b5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
