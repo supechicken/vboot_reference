@@ -43,6 +43,20 @@ int ec_will_update_slowly(struct vb2_context *ctx,
 			  struct VbCommonParams *cparams);
 
 /**
+ * Returns non-zero if the EC will perform slow tunneled updates.
+ *
+ * This is only valid after calling ec_sync_phase1(), before calling
+ * ec_sync_phase2().
+ *
+ * @param ctx		Vboot2 context
+ * @param cparams	Vboot common params
+ * @return non-zero if a slow update will be done; zero if no update or a
+ * fast update.
+ */
+int ec_sync_will_update_tunneled_slowly(struct vb2_context *ctx,
+					struct VbCommonParams *cparams);
+
+/**
  * EC sync, phase 2
  *
  * This updates the EC if necessary, makes sure it has protected its image(s),
@@ -60,6 +74,18 @@ int ec_will_update_slowly(struct vb2_context *ctx,
 VbError_t ec_sync_phase2(struct vb2_context *ctx,
 			 struct VbCommonParams *cparams);
 
+/**
+ * EC sync, tunneled PROMs sync phase
+ *
+ * This updates PROMs tunneled throuch the EC, if necessary.
+ * Only valid after phase2.
+ *
+ * @param ctx		Vboot2 context
+ * @param cparams	Vboot common params
+ * @return VBERROR_SUCCESS, or other non-zero error code.
+ */
+VbError_t ec_sync_phase_tunneled(struct vb2_context *ctx,
+				 struct VbCommonParams *cparams);
 
 /**
  * EC sync, phase 3
