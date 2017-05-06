@@ -25,6 +25,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 	/* Do EC sync phase 1; this determines if we need an update */
 	VbError_t phase1_rv = ec_sync_phase1(ctx, cparams);
 	int need_wait_screen = ec_will_update_slowly(ctx, cparams);
+	need_wait_screen |= ec_sync_will_update_tunneled_slowly(ctx, cparams);
 
 	/*
 	 * Check if we need to reboot to load the VGA Option ROM before we can
@@ -53,11 +54,22 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 		VbDisplayScreen(ctx, cparams, VB_SCREEN_WAIT, 0);
 	}
 
+#if 0 // %%% -cj
 	/*
 	 * Do EC sync phase 2; this applies the update and/or jumps to the
 	 * correct EC image.
 	 */
 	VbError_t rv = ec_sync_phase2(ctx, cparams);
+	if (rv)
+		return rv;
+#else
+	VbError_t rv;
+#endif
+
+	/*
+	 * Do software sync for devices tunneled throught the EC.
+	 */
+	rv = ec_sync_phase_tunneled(ctx, cparams);
 	if (rv)
 		return rv;
 
@@ -77,7 +89,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 		return VBERROR_VGA_OPROM_MISMATCH;
 	}
 
-	/* Do EC sync phase 3; this completes synd and handles battery cutoff */
+	/* Do EC sync phase 3; this completes sync and handles battery cutoff */
 	rv = ec_sync_phase3(ctx, cparams);
 	if (rv)
 		return rv;
