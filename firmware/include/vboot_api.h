@@ -998,6 +998,36 @@ VbError_t VbExEcVbootDone(int in_recovery);
  */
 VbError_t VbExEcBatteryCutOff(void);
 
+#define VB_AUX_FW_NO_UPDATE	(0)
+#define VB_AUX_FW_FAST_UPDATE	(1)
+#define VB_AUX_FW_SLOW_UPDATE	(2)
+
+/**
+ * Perform auxiliary firmware checks.
+ *
+ * This is called after the EC has been updated and is intended to
+ * version-check additional firmware blobs such as TCPCs.
+ *
+ * @param severity	health of auxiliary firmware
+ *			0: no update needed
+ *			1: fast update needed
+ *			2: slow update needed
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+
+VbError_t VbExCheckAuxFw(uint32_t *severity);
+
+/**
+ * Perform auxiliary firmware update(s).
+ *
+ * This is called after the EC has been updated and is intended to
+ * update additional firmware blobs such as TCPCs.
+ *
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+
+VbError_t VbExUpdateAuxFw(void);
+
 /*****************************************************************************/
 /* Misc */
 
