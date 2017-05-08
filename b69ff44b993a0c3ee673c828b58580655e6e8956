@@ -16,6 +16,24 @@
       "revId": "b69ff44b993a0c3ee673c828b58580655e6e8956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8de6e99_4b403fdb",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T18:33:16Z",
+      "side": 1,
+      "message": "i thought about that a bit.  i figured it wasn\u0027t really worth the effort.  we could change `error` so that it handles multiple lines itself ...",
+      "parentUuid": "ea96f3f9_80380c26",
+      "revId": "b69ff44b993a0c3ee673c828b58580655e6e8956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
