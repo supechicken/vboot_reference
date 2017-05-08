@@ -16,6 +16,24 @@
       "revId": "e18fe7cfeee33dfe097749bb50738d7a58291e9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77e9c048_3c9c7cc6",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T18:11:37Z",
+      "side": 1,
+      "message": "common_minimal.sh sets it up for us based on $0",
+      "parentUuid": "ab4b8a3c_774bae14",
+      "revId": "e18fe7cfeee33dfe097749bb50738d7a58291e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
