@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "886c8032_74af1b35",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T22:53:44Z",
+      "side": 1,
+      "message": "this got mixed in with some other work i have on going ... i\u0027ll revert that",
+      "parentUuid": "91b8d3ff_32fb5c06",
+      "revId": "754a34df0fe3ad102775f41152f3ab41567446a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f96089e_3ec0a6a5",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-08T22:29:43Z",
       "side": 1,
       "message": "${signer_notes} ?",
+      "revId": "754a34df0fe3ad102775f41152f3ab41567446a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6637d4_c9d5cb0d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-08T22:53:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f96089e_3ec0a6a5",
       "revId": "754a34df0fe3ad102775f41152f3ab41567446a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
