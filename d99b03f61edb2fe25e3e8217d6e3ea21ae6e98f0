@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "18319fa4_0e2a2367",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-09T23:59:45Z",
+      "side": 1,
+      "message": "no (c) in new code (it\u0027s out of style apparently).",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea033367_179b23e1",
         "filename": "firmware/lib/ec_sync_aux_fw.c",
         "patchSetId": 3
@@ -91,6 +114,29 @@
       "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f56049a1_25ec4831",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-09T23:59:45Z",
+      "side": 1,
+      "message": "So we don\u0027t have a separate GBB flag to prevent such updates? If anything I\u0027d prefer these to be bundled with the existing PD software sync flag.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 60
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
