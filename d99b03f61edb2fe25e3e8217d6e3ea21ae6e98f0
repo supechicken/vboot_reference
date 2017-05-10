@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e2b62bae_aa110059",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6857e6_770feb70",
+      "range": {
+        "startLine": 1018,
+        "startChar": 25,
+        "endLine": 1018,
+        "endChar": 43
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f047500a_d1bb39c9",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2017-05-09T16:03:51Z",
       "side": 1,
       "message": "Test code?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a933d999_ca9840b9",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f047500a_d1bb39c9",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f4fe6cb7_7eaa1a6a",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18319fa4_0e2a2367",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea033367_179b23e1",
         "filename": "firmware/lib/ec_sync_aux_fw.c",
         "patchSetId": 3
@@ -105,6 +177,30 @@
       "writtenOn": "2017-05-09T16:03:51Z",
       "side": 1,
       "message": "\u003e80 chars",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c0e35c3_ca83e2ee",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea033367_179b23e1",
       "range": {
         "startLine": 19,
         "startChar": 80,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "2f19d71b_0c014d6f",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "right, no separate flag.  i\u0027m not sure how fine grained of a control mask really makes sense.\nthe bitmask approach doesn\u0027t really scale very well as the number and order of these bits\nbecomes very platform specific... and probably will require coordination between\nvboot \u0026 depthcharge.\n\nin any case, i like your suggestion of using the PD bit instead of the EC bit.",
+      "parentUuid": "f56049a1_25ec4831",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 60
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9135ffcc_99928040",
         "filename": "firmware/lib/include/ec_sync.h",
         "patchSetId": 3
@@ -151,6 +271,30 @@
       "writtenOn": "2017-05-09T16:03:51Z",
       "side": 1,
       "message": "???",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 32
+      },
+      "revId": "d99b03f61edb2fe25e3e8217d6e3ea21ae6e98f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "177fab58_e0e80cd8",
+        "filename": "firmware/lib/include/ec_sync.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-10T23:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9135ffcc_99928040",
       "range": {
         "startLine": 85,
         "startChar": 28,
