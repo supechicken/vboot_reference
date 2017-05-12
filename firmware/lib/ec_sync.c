@@ -13,6 +13,7 @@
 #include "sysincludes.h"
 #include "ec_sync.h"
 #include "gbb_header.h"
+#include "vboot_api.h"
 #include "vboot_common.h"
 #include "vboot_kernel.h"
 
@@ -420,6 +421,28 @@ int ec_will_update_slowly(struct vb2_context *ctx, VbCommonParams *cparams)
 		(shared->flags & VBSD_EC_SLOW_UPDATE));
 }
 
+VbAuxFwUpdateSeverity_t ec_sync_check_aux_fw(struct vb2_context *ctx,
+					     VbCommonParams *cparams)
+{
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+
+	/* If we're not updating the EC, skip tunneled syncs as well */
+	if (!(shared->flags & VBSD_EC_SOFTWARE_SYNC))
+		return VB_AUX_FW_NO_UPDATE;
+	if (cparams->gbb->flags & GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
+		return VB_AUX_FW_NO_UPDATE;
+	if (cparams->gbb->flags & GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)
+		return VB_AUX_FW_NO_UPDATE;
+
+	VbAuxFwUpdateSeverity_t fw_update;
+	if (VbExCheckAuxFw(&fw_update) == VBERROR_SUCCESS)
+		return fw_update;
+	/*
+	 * something bad happened, assume we need to update
+	 */
+	return VB_AUX_FW_SLOW_UPDATE;
+}
 
 VbError_t ec_sync_phase2(struct vb2_context *ctx, VbCommonParams *cparams)
 {
