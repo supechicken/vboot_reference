@@ -43,6 +43,16 @@ int ec_will_update_slowly(struct vb2_context *ctx,
 			  struct VbCommonParams *cparams);
 
 /**
+ * Check if auxiliary firmware blobs need to be updated.
+ *
+ * @param ctx		Vboot2 context
+ * @param cparams	Vboot common params
+ * @return		VB_AUX_FW_{NO,FAST,SLOW}_UPDATE
+ */
+VbAuxFwUpdateSeverity_t ec_sync_check_aux_fw(struct vb2_context *ctx,
+					     struct VbCommonParams *cparams);
+
+/**
  * EC sync, phase 2
  *
  * This updates the EC if necessary, makes sure it has protected its image(s),
@@ -59,7 +69,6 @@ int ec_will_update_slowly(struct vb2_context *ctx,
  */
 VbError_t ec_sync_phase2(struct vb2_context *ctx,
 			 struct VbCommonParams *cparams);
-
 
 /**
  * EC sync, phase 3
