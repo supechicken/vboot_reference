@@ -21,10 +21,13 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
+	VbAuxFwUpdateSeverity_t fw_update;
 
 	/* Do EC sync phase 1; this determines if we need an update */
 	VbError_t phase1_rv = ec_sync_phase1(ctx, cparams);
-	int need_wait_screen = ec_will_update_slowly(ctx, cparams);
+	fw_update = ec_sync_check_aux_fw(ctx, cparams);
+	int need_wait_screen = ec_will_update_slowly(ctx, cparams) ||
+		(fw_update == VB_AUX_FW_SLOW_UPDATE);
 
 	/*
 	 * Check if we need to reboot to load the VGA Option ROM before we can
@@ -62,6 +65,22 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 		return rv;
 
 	/*
+	 * Do software sync for devices tunneled throught the EC.
+	 */
+	if (fw_update != VB_AUX_FW_NO_UPDATE) {
+		/*
+		 * TODO: find a better synchronization scheme
+		 *
+		 * we need to wait for the EC to reboot and
+		 * PD tasks to come up.
+		 */
+		VbExSleepMs(2000);
+		rv = VbExUpdateAuxFw();
+		if (rv)
+			return rv;
+	}
+
+	/*
 	 * Reboot to unload VGA Option ROM if:
 	 * - we displayed the wait screen
 	 * - the system has slow EC update flag set
@@ -77,7 +96,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx, struct VbCommonParams *cparams)
 		return VBERROR_VGA_OPROM_MISMATCH;
 	}
 
-	/* Do EC sync phase 3; this completes synd and handles battery cutoff */
+	/* Do EC sync phase 3; this completes sync and handles battery cutoff */
 	rv = ec_sync_phase3(ctx, cparams);
 	if (rv)
 		return rv;
