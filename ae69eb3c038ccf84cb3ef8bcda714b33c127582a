@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06a6035_7d98c1fd",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "Why does this all say \"tunneled\" and the API say \"aux\"? You should probably converge on a single consistent naming.",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0641e43e_e300c0bf",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "It seems kinda odd that we\u0027re returning an error code from this API call which is subsequently ignored. Seems like we should either do something with it or simplify the API (e.g. just a bool \"will update slowly\" function without an out-parameter).",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f4227f_97137350",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "Should this test also be in the function above?\n\nYou should probably refactor all these checks into a separate ec_sync_should_update_tunneled() helper so you don\u0027t have to write them twice. (Also, I feel like this stuff might as well go in ec_sync_all.c or ec_sync.c and may not really need its own file.)",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159025c6_c632e96a",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "This is calling UpdateAuxFw() even if CheckAuxFw() returned \"no update needed\" before. Is that intentional? (I don\u0027t think it\u0027s a problem, but if we\u0027re doing it anyway we might as well turn the severity into a simple fast/slow boolean.)",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a958c10_5e21a544",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "-1? Shouldn\u0027t you initialize this with a legal default value (probably UPDATE_FAST)?",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84dd6685_4ac879db",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "nit: this test_ssync() isn\u0027t really specific to the aux FW feature (only the following TEST_EQ() is), so the message might be misleading.",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a98ae4_43072584",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "Did you mean to test screens_count here instead?",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 34
+      },
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e150abcb_10ac392e",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-16T03:45:19Z",
+      "side": 1,
+      "message": "I\u0027m a little sad about the lack of tests for the OPROM stuff here... I guess we already didn\u0027t have those before, but it would be nice if we did (for both the normal EC_SLOW_UPDATE and the aux slow update paths).",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
