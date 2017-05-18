@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6db2b273_110a77fe",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-18T19:26:23Z",
+      "side": 1,
+      "message": "the current structure of these files already assumes \u0026 requires that the caller only includes one of these.  if you look at the end of this common_minimal.sh:\n\n trap \"cleanup_temps_and_mounts\" EXIT\n\nthen compare that to the end of common.sh:\n\n trap \"cleanup\" INT TERM EXIT\n add_cleanup_action \"cleanup_temps_and_mounts\"\n\ntrying to include these in the wrong order will break that.\n\ni\u0027m not suggesting this is a good state to be in, or that your question doesn\u0027t have merit, just that this change doesn\u0027t impact the status quo at all, so we can look at cleanup in a follow up CL.",
+      "parentUuid": "2d2a3e14_82733663",
+      "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "636e1abd_91c46498",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-18T19:21:49Z",
       "side": 1,
       "message": "Do we care about all the inconsistency of $X vs ${X}?",
+      "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5515262_fd38ec10",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-18T19:26:23Z",
+      "side": 1,
+      "message": "as a general thing, yes, i really dislike it.  i can make the clean up here while i\u0027m at it.",
+      "parentUuid": "636e1abd_91c46498",
       "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
