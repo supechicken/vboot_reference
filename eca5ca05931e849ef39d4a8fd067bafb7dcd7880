@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4e2edd2a_8f11d87c",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-05-18T19:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6db2b273_110a77fe",
+      "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "636e1abd_91c46498",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "as a general thing, yes, i really dislike it.  i can make the clean up here while i\u0027m at it.",
       "parentUuid": "636e1abd_91c46498",
+      "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ef52578_d22981e4",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-05-18T19:31:43Z",
+      "side": 1,
+      "message": "Heh sorry to make work for you.   It doesn\u0027t bother me so much but I know it bothers you so wasn\u0027t sure if you wanted to fix it or not -- it will result in a ton of churn.",
+      "parentUuid": "c5515262_fd38ec10",
       "revId": "eca5ca05931e849ef39d4a8fd067bafb7dcd7880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
