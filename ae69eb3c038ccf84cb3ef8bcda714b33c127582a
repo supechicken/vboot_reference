@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e60a6463_e4334d69",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06a6035_7d98c1fd",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0641e43e_e300c0bf",
         "filename": "firmware/lib/ec_sync_aux_fw.c",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9dc782_1be83ae9",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0641e43e_e300c0bf",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "f832ad00_d48c6f02",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f4227f_97137350",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "159025c6_c632e96a",
         "filename": "firmware/lib/ec_sync_aux_fw.c",
         "patchSetId": 4
@@ -73,6 +133,24 @@
       "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80a095f_b8581155",
+        "filename": "firmware/lib/ec_sync_aux_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159025c6_c632e96a",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "b8caf25c_37ef94b1",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a958c10_5e21a544",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84dd6685_4ac879db",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 4
@@ -130,6 +226,24 @@
       "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7857c9b_19547a73",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84dd6685_4ac879db",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "48c7962e_d6ed534b",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a98ae4_43072584",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 34
+      },
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e150abcb_10ac392e",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 4
@@ -170,6 +308,24 @@
       "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcaf0cf4_821ca29e",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-19T07:22:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e150abcb_10ac392e",
+      "revId": "ae69eb3c038ccf84cb3ef8bcda714b33c127582a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
