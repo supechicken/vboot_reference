@@ -34,6 +34,24 @@
       "revId": "34b8accf1cf37b57194a73df23b145915637c5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a16e2c_7583c822",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-23T19:11:11Z",
+      "side": 1,
+      "message": "signers already run as root (for better or worse), and already require a number of loopback/mount operations, so this doesn\u0027t impact the flow\n\nyes, this is because vbutil_kernel needs to write to the loopback node which is owned by root.  i tried originally to chown these things as part of the loopback setup so we could avoid sudo in more places, but i kept fighting with udev rules resetting the perms on me ... it was racy.",
+      "parentUuid": "c7436516_62d0a3a2",
+      "revId": "34b8accf1cf37b57194a73df23b145915637c5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
