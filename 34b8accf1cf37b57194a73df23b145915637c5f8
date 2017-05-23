@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a790862c_4526e8da",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2017-05-23T14:09:13Z",
+      "side": 1,
+      "message": "I\u0027m a bit concerned about the increased attack surface to the signers with this, especially with the possibility of something somehow sneaking in the future.  Added security folks to chime in.",
+      "revId": "34b8accf1cf37b57194a73df23b145915637c5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
