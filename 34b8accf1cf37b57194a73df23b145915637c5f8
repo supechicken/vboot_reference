@@ -16,6 +16,24 @@
       "revId": "34b8accf1cf37b57194a73df23b145915637c5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7436516_62d0a3a2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2017-05-23T14:12:01Z",
+      "side": 1,
+      "message": "Why does this invocation need sudo? Is it to access the device under /dev where the loopback mount happens?",
+      "parentUuid": "a790862c_4526e8da",
+      "revId": "34b8accf1cf37b57194a73df23b145915637c5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
