@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0787e7ee_544c70cc",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-30T22:06:00Z",
+      "side": 1,
+      "message": "This is not a VbAuxFwUpdateSeverity_t",
+      "range": {
+        "startLine": 439,
+        "startChar": 9,
+        "endLine": 439,
+        "endChar": 24
+      },
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7dccf7e_05b615a5",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-30T22:06:00Z",
+      "side": 1,
+      "message": "nit: can be single line\n\n(Also, should we at least print an \"ERROR: ...\" message here? Or do we expect depthcharge to always do that in this case already?)",
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91abe26_82963720",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-30T22:06:00Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t think we can submit this. This needs to be synchronized on the EC side one way or another.",
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eac897c_3342d844",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-05-30T22:06:00Z",
+      "side": 1,
+      "message": "You said \"Done\" but you didn\u0027t really change the message? (All you\u0027re really testing here is that software sync doesn\u0027t fail when the GBB flag is on. The test that checks whether it disables aux FW update is only the line below.)",
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
