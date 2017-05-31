@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d17f34e4_b81c4789",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-31T05:43:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0787e7ee_544c70cc",
+      "range": {
+        "startLine": 439,
+        "startChar": 9,
+        "endLine": 439,
+        "endChar": 24
+      },
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7dccf7e_05b615a5",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a385a1ea_9b3596dc",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-05-31T05:43:05Z",
+      "side": 1,
+      "message": "ok, i\u0027ll bite the bullet.  propagating an error code out.  VbSelectAndLoadKernel() will complain.",
+      "parentUuid": "b7dccf7e_05b615a5",
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
