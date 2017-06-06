@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "85e401a3_75c7f9c7",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-06T00:04:04Z",
+      "side": 1,
+      "message": "i have a fix on the EC side to handle the PD_SUSPEND message more gracefully.",
+      "parentUuid": "b91abe26_82963720",
+      "revId": "90d0ebaeeada33a1ad05f9eb3e9ccaf1aec45822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eac897c_3342d844",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 10
