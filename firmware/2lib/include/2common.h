@@ -47,6 +47,20 @@ struct vb2_public_key;
 #endif
 
 /*
+ * Define test_mockable and test_mockable_static for mocking functions when
+ * compiled for Chrome OS environment (that is, not for firmware).
+ */
+#ifdef CHROMEOS_ENVIRONMENT
+#define test_mockable __attribute__((weak))
+#define test_mockable_static __attribute__((weak))
+#define test_export_static
+#else
+#define test_mockable
+#define test_mockable_static static
+#define test_export_static static
+#endif
+
+/*
  * Alignment for work buffer pointers/allocations should be useful for any
  * data type. When declaring workbuf buffers on the stack, the caller should
  * use explicit alignment to avoid run-time errors. For example:
