@@ -16,6 +16,24 @@
       "revId": "9bf70a7468b3988fbdd186afd78ade06ca509b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceac73d6_097ad892",
+        "filename": "futility/cmd_validate_rec_mrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-15T18:54:29Z",
+      "side": 1,
+      "message": "Oops.. Good catch. Yes, it should be num_metadata_blocks and not 1.",
+      "parentUuid": "12d0ef7f_47dec644",
+      "revId": "9bf70a7468b3988fbdd186afd78ade06ca509b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
