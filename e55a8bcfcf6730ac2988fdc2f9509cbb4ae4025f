@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "995619c0_538ab8e4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-20T01:21:18Z",
+      "side": 1,
+      "message": "use `[[` in bash scripts instead of `[`",
+      "revId": "e55a8bcfcf6730ac2988fdc2f9509cbb4ae4025f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f873ca_73d89046",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-20T01:21:18Z",
+      "side": 1,
+      "message": "needs `local model_dir`\n\nquote \"${shellbar_dir}\"",
+      "revId": "e55a8bcfcf6730ac2988fdc2f9509cbb4ae4025f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53ab584_168ecd11",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-20T01:21:18Z",
+      "side": 1,
+      "message": "is this just duplicating the code below ?  instead of doing this, create an array and keep this body unified.\n\n local image_files\u003d()\n if [[ -d \"${shellball_dir}/models\" ]]; then\n   ...update image_files...\n else\n   image_files+\u003d( \"${shellball_dir}\"/bios*.bin )\n fi\n ...existing code that now walks \"${image_files[@]}\"...",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 582,
+        "endChar": 27
+      },
+      "revId": "e55a8bcfcf6730ac2988fdc2f9509cbb4ae4025f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
