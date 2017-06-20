@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19bb2aab_71b2db1a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-06-20T14:14:53Z",
+      "side": 1,
+      "message": "Why the /* at the end?",
+      "range": {
+        "startLine": 568,
+        "startChar": 46,
+        "endLine": 568,
+        "endChar": 47
+      },
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0268d203_5e57f948",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-06-20T14:14:53Z",
+      "side": 1,
+      "message": "FYI we always call it bios.bin at present",
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2251c5a_22c94e05",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-06-20T14:14:53Z",
+      "side": 1,
+      "message": "Can you expand this comment to give exampled of what string transformation takes place?",
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
