@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45fe90cc_e2c23612",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-06-20T15:04:09Z",
+      "side": 1,
+      "message": "it doesn\u0027t return the subdir without the *",
+      "parentUuid": "19bb2aab_71b2db1a",
+      "range": {
+        "startLine": 568,
+        "startChar": 46,
+        "endLine": 568,
+        "endChar": 47
+      },
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0268d203_5e57f948",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-06-20T14:14:53Z",
       "side": 1,
       "message": "FYI we always call it bios.bin at present",
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f38be0e_486b0895",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-06-20T15:04:09Z",
+      "side": 1,
+      "message": "ack... but keeping the behavior consistent\n\nit seems to have been designed to potentially have multiple bios from different loems",
+      "parentUuid": "0268d203_5e57f948",
       "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0627c7ed_e43aa208",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-06-20T15:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2251c5a_22c94e05",
+      "revId": "60d9b811fb95cf636c9dc96923ed747e671bf897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
