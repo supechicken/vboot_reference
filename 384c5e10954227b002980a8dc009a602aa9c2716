@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "432bfd81_a907dec7",
+        "filename": "host/include/openssl_compat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2017-06-30T04:15:53Z",
+      "side": 1,
+      "message": "Hmm. This is inconsistent.\nSee: utility/dumpRSAPublicKey.c\n\n(but maybe \"utility\" is a different codebase?)",
+      "parentUuid": "07ee0e6d_fd70ed42",
+      "revId": "384c5e10954227b002980a8dc009a602aa9c2716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b2e5906_2560c441",
         "filename": "host/include/openssl_compat.h",
         "patchSetId": 2
