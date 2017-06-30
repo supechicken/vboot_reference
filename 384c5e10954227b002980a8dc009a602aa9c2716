@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4886e80c_4d79534e",
+        "filename": "host/include/openssl_compat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-30T16:10:57Z",
+      "side": 1,
+      "message": "Back in the beginning, vboot_reference was an unholy mismash of Google C++ style and other styles.\n\nWe\u0027re slowly moving to kernel C style, for compatibility with coreboot, u-boot, etc.  So new code should be kernel C.",
+      "parentUuid": "d7038e02_7e4ea0d2",
+      "revId": "384c5e10954227b002980a8dc009a602aa9c2716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b2e5906_2560c441",
         "filename": "host/include/openssl_compat.h",
         "patchSetId": 2
