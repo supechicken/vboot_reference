@@ -49,6 +49,7 @@ static VbNvField nvfields[] = {
   {VBNV_FASTBOOT_UNLOCK_IN_FW, 0, 1, 0, "fastboot unlock in firmware"},
   {VBNV_BOOT_ON_AC_DETECT, 0, 1, 0, "boot on ac detect"},
   {VBNV_TRY_RO_SYNC, 0, 1, 0, "try read only software sync"},
+  {VBNV_DEV_MODE_CLI, 0, 1, 0, "dev_mode_cli"},
   {0, 0, 0, 0, NULL}
 };
 

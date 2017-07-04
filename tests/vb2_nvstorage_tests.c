@@ -56,6 +56,7 @@ static struct nv_field nvfields[] = {
 	{VB2_NV_FASTBOOT_UNLOCK_IN_FW, 0, 1, 0, "fastboot unlock in fw"},
 	{VB2_NV_BOOT_ON_AC_DETECT, 0, 1, 0, "boot on ac detect"},
 	{VB2_NV_TRY_RO_SYNC, 0, 1, 0, "try read only software sync"},
+	{VB2_NV_DEV_MODE_CLI, 0, 1, 0, "dev_mode_cli"},
 	{0, 0, 0, 0, NULL}
 };
 

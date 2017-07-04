@@ -563,6 +563,8 @@ int VbGetSystemPropertyInt(const char *name)
 		value = VbGetNvStorage(VBNV_TRY_RO_SYNC);
 	} else if (!strcasecmp(name, "battery_cutoff_request")) {
 		value = VbGetNvStorage(VBNV_BATTERY_CUTOFF_REQUEST);
+	} else if (!strcasecmp(name, "dev_mode_cli")) {
+		value = VbGetNvStorage(VBNV_DEV_MODE_CLI);
 	} else if (!strcasecmp(name, "inside_vm")) {
 		/* Detect if the host is a VM. If there is no HWID and the
 		 * firmware type is "nonchrome", then assume it is a VM. If
@@ -724,6 +726,8 @@ int VbSetSystemPropertyInt(const char *name, int value)
 		return VbSetNvStorage_WithBackup(VBNV_TRY_RO_SYNC, value);
 	} else if (!strcasecmp(name, "battery_cutoff_request")) {
 		return VbSetNvStorage(VBNV_BATTERY_CUTOFF_REQUEST, value);
+	} else if (!strcasecmp(name, "dev_mode_cli")) {
+		return VbSetNvStorage(VBNV_DEV_MODE_CLI, value);
 	}
 
 	return -1;
