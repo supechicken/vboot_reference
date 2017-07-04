@@ -175,6 +175,9 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 
 	case VB2_NV_BATTERY_CUTOFF_REQUEST:
 		return GETBIT(VB2_NV_OFFS_MISC, VB2_NV_MISC_BATTERY_CUTOFF);
+
+	case VB2_NV_DEV_MODE_CLI:
+		return GETBIT(VB2_NV_OFFS_MISC, VB2_NV_MISC_DEV_MODE_CLI);
 	}
 
 	/*
@@ -355,6 +358,10 @@ void vb2_nv_set(struct vb2_context *ctx,
 
 	case VB2_NV_BATTERY_CUTOFF_REQUEST:
 		SETBIT(VB2_NV_OFFS_MISC, VB2_NV_MISC_BATTERY_CUTOFF);
+		break;
+
+	case VB2_NV_DEV_MODE_CLI:
+		SETBIT(VB2_NV_OFFS_MISC, VB2_NV_MISC_DEV_MODE_CLI);
 		break;
 	}
 

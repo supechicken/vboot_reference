@@ -124,6 +124,10 @@ typedef enum VbNvParam {
 	 * Finish mode transition (if requested), perform battery cut-off and
 	 * shutdown in next boot. */
 	VBNV_BATTERY_CUTOFF_REQUEST,
+	/* Vboot2: Enable Depthcharge Command Line Interface
+	 * 0=disabled, 1=enabled.
+	 */
+	VBNV_DEV_MODE_CLI,
 } VbNvParam;
 
 /* Set default boot in developer mode */
