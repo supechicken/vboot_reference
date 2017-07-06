@@ -403,11 +403,14 @@ VbError_t vb2_set_menu_items(VB_MENU new_current_menu,
  *
  * @return VBERROR_SUCCESS, or non-zero error code if error.
  */
-VbError_t vb2_update_menu(struct vb2_context *ctx)
+VbError_t vb2_update_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	VbError_t ret = VBERROR_SUCCESS;
 	VB_MENU next_menu_idx = current_menu_idx;
 	uint32_t loc = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+
 	switch(current_menu) {
 	case VB_MENU_DEV_WARNING:
 		switch(current_menu_idx) {
@@ -521,6 +524,8 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 	case VB_MENU_RECOVERY:
 		switch(current_menu_idx) {
 		case VB_RECOVERY_TO_DEV:
+			if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)
+				break;
 			/*
 			 * 1. Switch to TO_DEV menu
 			 * 2. Default to power off option
@@ -792,7 +797,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			 */
 			vb2_update_locale(ctx);
 
-			ret = vb2_update_menu(ctx);
+			ret = vb2_update_menu(ctx, cparams);
 			/*
 			 * Unfortunately, we need the blanking to get rid of
 			 * artifacts from previous menu printing.
@@ -1062,7 +1067,8 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 */
 				vb2_update_locale(ctx);
 
-				ret = vb2_update_menu(ctx);
+				ret = vb2_update_menu(ctx, cparams);
+
 				if (current_menu != VB_MENU_RECOVERY ||
 				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
 					/*
@@ -1095,6 +1101,22 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					VbDisplayDebugInfo(ctx, cparams);
 				}
 
+				/*
+				 * Throw up an error here if we're
+				 * already in dev mode so user doesn't
+				 * think nothing is happening.
+				 */
+				if ((shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
+				     (current_menu == VB_MENU_RECOVERY &&
+				      current_menu_idx == VB_RECOVERY_TO_DEV)) {
+					VB2_DEBUG("Already in DEV mode\n");
+					VbExDisplayDebugInfo(
+						"WARNING: DEV mode already enabled!\n");
+					VbExBeep(120, 400);
+					VbExSleepMs(120);
+					VbExBeep(120, 400);
+				}
+
 				/* Confirm going into developer mode */
 				/*
 				 * We might want to enter dev-mode from the Insert
@@ -1105,8 +1127,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 *   - user forced recovery mode
 				 *   - EC isn't pwned
 				 */
-				// TODO: let's put an error here if we're
-				// already in dev mode.
 				if (current_menu == VB_MENU_TO_DEV &&
 				    current_menu_idx == 0 &&
 				    shared->flags & VBSD_HONOR_VIRT_DEV_SWITCH &&
