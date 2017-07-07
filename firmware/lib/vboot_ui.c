@@ -80,8 +80,7 @@ uint32_t VbTryUsb(struct vb2_context *ctx, VbCommonParams *cparams)
 		 * at this point doesn't put us into
 		 * recovery mode.
 		 */
-		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
-			   VBNV_RECOVERY_NOT_REQUESTED);
+		vb2_fail_set_reason_subcode(ctx, VBNV_RECOVERY_NOT_REQUESTED);
 	}
 	return retval;
 }
@@ -314,8 +313,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * to recovery mode.
 				 */
 				VB2_DEBUG("going to recovery\n");
-				vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
-					   VBNV_RECOVERY_RW_DEV_SCREEN);
+				vb2_fail_set_reason_subcode(ctx,
+					VBNV_RECOVERY_RW_DEV_SCREEN);
 				VbAudioClose(audio);
 				return VBERROR_LOAD_KERNEL_RECOVERY;
 			}
@@ -471,7 +470,7 @@ VbError_t vb2_recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		 * powering off after inserting an invalid disk doesn't leave
 		 * us stuck in recovery mode.
 		 */
-		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+		vb2_fail_set_reason_subcode(ctx,
 			   VBNV_RECOVERY_NOT_REQUESTED);
 
 		if (VBERROR_SUCCESS == retval)

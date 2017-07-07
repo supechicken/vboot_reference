@@ -54,7 +54,8 @@ static void VbSetRecoveryRequest(struct vb2_context *ctx,
 				 uint32_t recovery_request)
 {
 	VB2_DEBUG("VbSetRecoveryRequest(%d)\n", (int)recovery_request);
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, recovery_request);
+	/* vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, recovery_request); */
+	vb2_fail_set_reason_subcode(ctx, recovery_request);
 }
 
 static void VbNvLoad(void)
