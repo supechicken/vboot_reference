@@ -45,6 +45,9 @@ uint32_t short_count_ = sizeof(short_notes_) / sizeof(VbDevMusicNote);
 /* No need to dynamically allocate this, is there? */
 static VbAudioContext au;
 
+/* Flag to override GBB_FLAG_DEV_SCREEN_SHORT_DELAY gbb flag */
+static uint32_t override_short_delay = 0;
+
 /* Convert from msecs to VbExGetTimer() units. */
 static uint64_t ticks_per_msec = 0;     /* Initialized by VbAudioOpen() */
 static uint64_t VbMsecToTicks(uint16_t msec) {
@@ -206,6 +209,18 @@ static void VbGetDevMusicNotes(VbAudioContext *audio, int use_short)
 
 
 /**
+ * Always perform long firmware screen timeout (30 seconds) if
+ * override is 1.  This is done when the user uses the detachable UI.
+ *
+ * @param override when set to 1, will do long delay whether or not
+ *                 GBB_FLAG_DEV_SCREEN_SHORT_DELAY flag is set.
+ */
+void VbAudioSetLongDelay(uint32_t override)
+{
+	override_short_delay = override;
+}
+
+/**
  * Initialization function. Returns context for processing dev-mode delay.
  */
 VbAudioContext *VbAudioOpen(VbCommonParams *cparams)
@@ -240,8 +255,9 @@ VbAudioContext *VbAudioOpen(VbCommonParams *cparams)
 	 * Prepare to generate audio/delay event. Use a short developer screen
 	 * delay if indicated by GBB flags.
 	 */
-	if (gbb->major_version == GBB_MAJOR_VER && gbb->minor_version >= 1
-	    && (gbb->flags & GBB_FLAG_DEV_SCREEN_SHORT_DELAY)) {
+	if (override_short_delay == 0 &&
+	    (gbb->major_version == GBB_MAJOR_VER && gbb->minor_version >= 1
+	     && (gbb->flags & GBB_FLAG_DEV_SCREEN_SHORT_DELAY))) {
 		VB2_DEBUG("VbAudioOpen() - using short dev screen delay\n");
 		use_short = 1;
 	}

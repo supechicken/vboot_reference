@@ -18,6 +18,11 @@ typedef struct VbAudioContext VbAudioContext;
 VbAudioContext *VbAudioOpen(VbCommonParams *cparams);
 
 /**
+ * Always perform long firmware screen timeout when override = 1.
+ */
+void VbAudioSetLongDelay(uint32_t override);
+
+/**
  * Caller should loop without extra delay until this returns false.
  */
 int VbAudioLooping(VbAudioContext *audio);

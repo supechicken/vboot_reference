@@ -769,6 +769,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				current_menu_idx--;
 			vb2_draw_current_screen(ctx, cparams);
 			/* reset 30 second timer */
+			VbAudioSetLongDelay(1);
 			audio = VbAudioOpen(cparams);
 			break;
 		case VB_BUTTON_VOL_DOWN:
@@ -785,6 +786,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				current_menu_idx++;
 			vb2_draw_current_screen(ctx, cparams);
 			/* reset 30 second timer */
+			VbAudioSetLongDelay(1);
 			audio = VbAudioOpen(cparams);
 			break;
 		case VB_BUTTON_POWER:
