@@ -22,6 +22,30 @@
       "revId": "cf909641c2a6245f16b30f816004c7bfdd0303a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76905cef_c392b49c",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-07-07T21:44:54Z",
+      "side": 1,
+      "message": "Hm, that\u0027d be better for robustness I guess. On the other hand, I\u0027m only invoking this from the script at a point where I know I\u0027m only dealing with IFX hardware anyways.\n\nIt\u0027s simple enough to add though, so I don\u0027t think I have a good reason to not do it (the additional TPM roundtrip means slight slowdown at first boot, but that\u0027s acceptable IMHO).",
+      "parentUuid": "96b5e62e_f51e0e8d",
+      "range": {
+        "startLine": 469,
+        "startChar": 20,
+        "endLine": 469,
+        "endChar": 43
+      },
+      "revId": "cf909641c2a6245f16b30f816004c7bfdd0303a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
