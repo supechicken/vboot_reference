@@ -11,6 +11,7 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2nvstorage_fields.h"
+#include "2recovery_reasons.h"
 
 static void vb2_nv_regen_crc(struct vb2_context *ctx)
 {
@@ -190,6 +191,7 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 #define SETBIT(offs, mask)					\
 	{ if (value) p[offs] |= mask; else p[offs] &= ~mask; }
 
+
 void vb2_nv_set(struct vb2_context *ctx,
 		enum vb2_nv_param param,
 		uint32_t value)
@@ -365,6 +367,17 @@ void vb2_nv_set(struct vb2_context *ctx,
 
 	/* Need to regenerate CRC, since the value changed. */
 	vb2_nv_regen_crc(ctx);
+}
+
+void vb2_fail_set_reason_subcode(struct vb2_context *ctx,
+				 uint8_t reason)
+{
+	/* Store recovery request */
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, reason);
+	/* Determine recovery subcode based on recovery reason */
+	/* Only use top two bits of subcode */
+	if (reason == VB2_RECOVERY_GBB_HEADER)
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 1 << 6);
 }
 
 #undef SETBIT

@@ -653,10 +653,9 @@ gpt_done:
 	}
 
 load_kernel_exit:
-	/* Store recovery request, if any */
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
-		   VBERROR_SUCCESS != retval ?
-		   recovery : VBNV_RECOVERY_NOT_REQUESTED);
+	vb2_fail_set_reason_subcode(ctx,
+				    VBERROR_SUCCESS != retval ?
+				    recovery : VBNV_RECOVERY_NOT_REQUESTED);
 
 	/* Store how much shared data we used, if any */
 	cparams->shared_data_size = shared->data_used;
