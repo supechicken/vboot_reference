@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "032f3c77_4376e758",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-07T18:08:11Z",
+      "side": 1,
+      "message": "Just curious: Can we skip putting up the entry in recovery UI menu for switching to dev mode if the device is already in it?",
+      "range": {
+        "startLine": 1104,
+        "startChar": 4,
+        "endLine": 1108,
+        "endChar": 7
+      },
+      "revId": "7ae45b35d193106fedfd187ebde10cac78ec3338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
