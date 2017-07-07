@@ -532,7 +532,7 @@ command_record command_table[] = {
     HandlerGetSTClearFlags },
   { "resume", "res", "execute TPM_Startup(ST_STATE)", TlclResume },
   { "savestate", "save", "execute TPM_SaveState", TlclSaveState },
-  { "sendraw", "raw", "send a raw request and print raw response",
+  { "sendrawbacon", "raw", "send a raw request and print raw response",
     HandlerSendRaw },
 };
 
