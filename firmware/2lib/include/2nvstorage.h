@@ -171,4 +171,14 @@ void vb2_nv_set(struct vb2_context *ctx,
 		enum vb2_nv_param param,
 		uint32_t value);
 
+/**
+ * Store recovery reason and subcode into nvram
+ *
+ * @param ctx		Context pointer
+ * @param reason	Recovery reason value
+ * @param subcode	Recovery subcode value
+ */
+void vb2_fail_set_reason_subcode(struct vb2_context *ctx,
+				 uint8_t reason);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_2NVSTORAGE_H_ */
