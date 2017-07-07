@@ -35,7 +35,7 @@ static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
 	VB2_DEBUG("request_recovery(%u)\n", recovery_request);
 
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, recovery_request);
+	vb2_fail_set_reason_subcode(ctx, recovery_request);
 }
 
 /**
