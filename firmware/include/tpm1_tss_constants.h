@@ -167,6 +167,24 @@ typedef struct tdTPM_NONCE
     uint8_t nonce[TPM_SHA1BASED_NONCE_LEN];
 } TPM_NONCE;
 
+typedef struct tdTPM_IFX_FIRMWAREPACKAGE {
+    uint32_t FwPackageIdentifier;
+    uint32_t Version;
+    uint32_t StaleVersion;
+} TPM_IFX_FIRMWAREPACKAGE;
+
+typedef struct tdTPM_IFX_FIELDUPGRADEINFO
+{
+    uint16_t wMaxDataSize;
+    TPM_IFX_FIRMWAREPACKAGE sBootloaderFirmwarePackage;
+    TPM_IFX_FIRMWAREPACKAGE sFirmwarePackages[2];
+    uint16_t wSecurityModuleStatus;
+    TPM_IFX_FIRMWAREPACKAGE sProcessFirmwarePackage;
+    uint16_t wFieldUpgradeCounter;
+} TPM_IFX_FIELDUPGRADEINFO;
+
+#define TPM_IFX_FieldUpgradeInfoRequest2  ((uint8_t) 0x11)
+
 /* Ordinals */
 
 #define TPM_ORD_ContinueSelfTest  ((uint32_t) 0x00000053)
@@ -186,5 +204,6 @@ typedef struct tdTPM_NONCE
 #define TPM_ORD_SaveState         ((uint32_t) 0x00000098)
 #define TPM_ORD_SelfTestFull      ((uint32_t) 0x00000050)
 #define TPM_ORD_Startup           ((uint32_t) 0x00000099)
+#define TPM_ORD_FieldUpgrade      ((uint32_t) 0x000000AA)
 
 #endif  /* ! __VBOOT_REFERENCE_FIRMWARE_INCLUDE_TPM1_TSS_CONSTANTS_H */
