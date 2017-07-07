@@ -512,3 +512,60 @@ uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t *size)
 
 	return result;
 }
+
+static void ParseIFXFirmwarePackage(uint8_t** cursor,
+				    TPM_IFX_FIRMWAREPACKAGE* firmware_package) {
+
+	FromTpmUint32(*cursor, &firmware_package->FwPackageIdentifier);
+	*cursor += sizeof(firmware_package->FwPackageIdentifier);
+	FromTpmUint32(*cursor, &firmware_package->Version);
+	*cursor += sizeof(firmware_package->Version);
+	FromTpmUint32(*cursor, &firmware_package->StaleVersion);
+	*cursor += sizeof(firmware_package->StaleVersion);
+}
+
+uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info) {
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(
+			tpm_ifx_fieldupgradeinforequest2_cmd.buffer,
+			response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+
+	uint16_t size;
+	FromTpmUint16(cursor, &size);
+	cursor += sizeof(size);
+
+	cursor += sizeof(uint16_t);
+	FromTpmUint16(cursor, &info->wMaxDataSize);
+	cursor += sizeof(info->wMaxDataSize);
+	cursor += sizeof(uint16_t) + sizeof(uint32_t) + sizeof(uint8_t[34]);
+	ParseIFXFirmwarePackage(&cursor, &info->sBootloaderFirmwarePackage);
+	uint16_t fw_entry_count;
+	FromTpmUint16(cursor, &fw_entry_count);
+	cursor += sizeof(fw_entry_count);
+	if (fw_entry_count > ARRAY_SIZE(info->sFirmwarePackages)) {
+		return TPM_E_IOERROR;
+	}
+	uint16_t i;
+	for (i = 0; i < fw_entry_count; ++i) {
+		ParseIFXFirmwarePackage(&cursor, &info->sFirmwarePackages[i]);
+	}
+	FromTpmUint16(cursor, &info->wSecurityModuleStatus);
+	cursor += sizeof(info->wSecurityModuleStatus);
+	ParseIFXFirmwarePackage(&cursor, &info->sProcessFirmwarePackage);
+	cursor += sizeof(uint16_t) + sizeof(uint8_t[6]);
+	FromTpmUint16(cursor, &info->wFieldUpgradeCounter);
+	cursor += sizeof(info->wFieldUpgradeCounter);
+
+	uint32_t parsed_bytes = cursor - response;
+	VbAssert(parsed_bytes <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
+	if (parsed_bytes > kTpmResponseHeaderLength + sizeof(size) + size) {
+		return TPM_E_IOERROR;
+	}
+
+	return result;
+}

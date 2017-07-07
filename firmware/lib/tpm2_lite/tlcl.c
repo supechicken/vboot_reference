@@ -522,3 +522,9 @@ uint32_t TlclGetRandom(uint8_t *data, uint32_t length, uint32_t *size)
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_E_IOERROR;
 }
+
+uint32_t TlclIFXFieldUpgradeInfoRequest2(TPM_IFX_FIELDUPGRADEINFO2* info)
+{
+	VB2_DEBUG("NOT YET IMPLEMENTED\n");
+	return TPM_E_IOERROR;
+}
