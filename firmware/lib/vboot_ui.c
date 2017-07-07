@@ -419,6 +419,7 @@ VbError_t vb2_recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	uint32_t retval;
 	uint32_t key;
 	int i;
+	uint8_t rec_subcode = 0;
 
 	VB2_DEBUG("VbBootRecovery() start\n");
 
@@ -476,10 +477,18 @@ VbError_t vb2_recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
-				VB_SCREEN_RECOVERY_INSERT :
-				VB_SCREEN_RECOVERY_NO_GOOD,
-				0);
+		rec_subcode = (vb2_nv_get(ctx, VBNV_RECOVERY_SUBCODE) >> 6)
+			& 0x3;
+		if (rec_subcode == 1)
+			VbDisplayScreen(ctx, cparams,
+					VB_SCREEN_RECOVERY_RMA,
+					0);
+		else
+			VbDisplayScreen(ctx, cparams,
+					VBERROR_NO_DISK_FOUND == retval ?
+					VB_SCREEN_RECOVERY_INSERT :
+					VB_SCREEN_RECOVERY_NO_GOOD,
+					0);
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
