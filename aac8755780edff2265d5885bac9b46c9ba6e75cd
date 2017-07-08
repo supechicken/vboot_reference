@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "519a3401_7366ecdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-08T00:51:40Z",
+      "side": 1,
+      "message": "you mean 0x39?",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f78c6d5_40ab8d76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-08T00:51:40Z",
+      "side": 1,
+      "message": "Would also be good to check that final gbb flags 0x0 (or at lesat 0x38) is still 30s anyway.",
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6f51b6_ab94ebb8",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-08T00:51:40Z",
+      "side": 1,
+      "message": "I find this a little confusing... So this only gets called after x seconds in the boot process? Once this is called and we enter VbGetDevMusicNotes the timeout will not change anymore, so for the last 2 seconds key presses will not increase the timeout anymore?",
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
