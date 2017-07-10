@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fd32947_798c3f23",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-07-10T22:14:01Z",
+      "side": 1,
+      "message": "Are you trying to repurpose the subcode field to store information about which screen to display? We\u0027re already using it here to store the recovery reason from the previous boot -- you can\u0027t just overwrite it. (Even if you could technically figure out a way to make those uses not overlap, it still seems like a bad thing to do. Surely we can find a free bit or two in a different byte for this? Maybe BOOT2 bit 7?)",
+      "revId": "08839d85b997e66d0a0d269d7d625409cd360e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
