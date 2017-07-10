@@ -512,3 +512,38 @@ uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t *size)
 
 	return result;
 }
+
+uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version) {
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(tpm_getversionval_cmd.buffer,
+					  response, sizeof(response));
+	if (result != TPM_SUCCESS)
+		return result;
+
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+
+	uint32_t size;
+	FromTpmUint32(cursor, &size);
+	cursor += sizeof(size);
+
+	/* Verify size >= sizeof(TPM_CAP_VERSION_INFO). */
+	const uint32_t kSizeofCapVersionInfo = 15;
+	if (size < kSizeofCapVersionInfo) {
+		return TPM_E_IOERROR;
+	}
+
+	cursor += sizeof(uint16_t);  /* tag */
+	*firmware_version = ((uint64_t) cursor[2] << 8) | cursor[3];
+	cursor += sizeof(uint32_t);
+
+	cursor += sizeof(uint16_t);  /* specLevel */
+	cursor += sizeof(uint8_t);  /* errataRev */
+
+	*vendor = 0;
+	int shift;
+	for (shift = 24; shift >= 0; shift -= 8) {
+		*vendor |= (uint32_t) (*cursor++) << shift;
+	}
+
+	return TPM_SUCCESS;
+}
