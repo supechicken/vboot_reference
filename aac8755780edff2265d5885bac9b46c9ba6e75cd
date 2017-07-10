@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "f8cd8be0_d2c674e2",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-07-10T20:06:33Z",
+      "side": 1,
+      "message": "Ok, going to get rid of VbAudioSetLongDelay().",
+      "parentUuid": "13af5b6d_74d4a263",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 43
+      },
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6f51b6_ab94ebb8",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 1
@@ -82,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "e057f897_42397a67",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-07-10T20:06:33Z",
+      "side": 1,
+      "message": "VbAudioOpen is what is called to set up the timeout, so it should be called near the beginning of the boot process, and definitely by the time the UI is displayed.  Any action before the user sees the UI should not be registered anyway I believe.",
+      "parentUuid": "da6f51b6_ab94ebb8",
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c24b850_d18979e7",
         "filename": "firmware/lib/vboot_audio.c",
         "patchSetId": 1
@@ -93,6 +135,30 @@
       "writtenOn": "2017-07-08T06:18:44Z",
       "side": 1,
       "message": "How about just\n\ntest_mockable_static int audio_open_count \u003d 0;\n\n/* Only use short dev screen delay on the first audio */\nif (++audio_open \u003e 1)\n   use_short \u003d 0;\n\nThe non-menu UI only ever calls this once, so it\u0027ll use the short delay.\n\nThe menu UI will use the short delay the *first* time, but subsequent calls to VbAudioOpen() will always use the long delay.\n\nThen you don\u0027t even need to change vboot_ui_menu.c\n\n(Either way, you\u0027ll need to update the unit tests...)",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 2
+      },
+      "revId": "aac8755780edff2265d5885bac9b46c9ba6e75cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "833982b9_1cb4d77f",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-07-10T20:06:33Z",
+      "side": 1,
+      "message": "Good suggestion.  New patch should have this.",
+      "parentUuid": "1c24b850_d18979e7",
       "range": {
         "startLine": 258,
         "startChar": 0,
