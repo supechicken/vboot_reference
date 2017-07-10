@@ -1053,7 +1053,16 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			case VB_KEY_UP:
 				vb2_get_current_menu_size(current_menu, NULL,
 							  &menu_size);
-				if (current_menu_idx > 0)
+				/*
+				 * Block at index 1 if we're in developer mode.
+				 * Index 0 is enable dev mode option and
+				 * we want to hide it if dev mode is already
+				 * enabled.
+				 */
+				if (current_menu_idx > 1 ||
+				    (current_menu_idx > 0 &&
+				     (!(shared->flags & VBSD_BOOT_DEV_SWITCH_ON)
+				      || current_menu != VB_MENU_RECOVERY)))
 					current_menu_idx--;
 				vb2_draw_current_screen(ctx, cparams);
 				break;
