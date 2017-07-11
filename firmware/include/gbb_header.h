@@ -34,7 +34,7 @@
 
 /* Flags for .flags field */
 /* Reduce the dev screen delay to 2 sec from 30 sec to speedup factory. */
-#define GBB_FLAG_DEV_SCREEN_SHORT_DELAY		0x00000001
+#define GBB_FLAG_DEV_SCREEN_SHORT_DELAY			0x00000001
 /*
  * BIOS should load option ROMs from arbitrary PCI devices. We'll never enable
  * this ourselves because it executes non-verified code, but if a customer
@@ -75,8 +75,12 @@
 /* Enable serial console */
 #define GBB_FLAG_ENABLE_SERIAL				0x00004000
 /* Disable using FWMP */
-#define GBB_FLAG_DISABLE_FWMP                           0x00008000
-
+#define GBB_FLAG_DISABLE_FWMP				0x00008000
+/*
+ * Enable Depthcharge Command Line Interface in
+ * developer mode.
+ */
+#define GBB_FLAG_ENABLE_DEV_MODE_CLI			0x00010000
 
 #ifdef __cplusplus
 extern "C" {
