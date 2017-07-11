@@ -287,6 +287,12 @@ enum vb2_gbb_flag {
 
 	/* Enable serial */
 	VB2_GBB_FLAG_ENABLE_SERIAL = (1 << 14),
+
+	/*
+	 * Enable Depthcharge Command Line Interface in
+	 * developer mode.
+	 */
+	VB2_GBB_FLAG_ENABLE_DEV_MODE_CLI = (1 << 16),
 };
 
 struct vb2_gbb_header {
