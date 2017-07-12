@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31b32877_65183eb3",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2017-07-12T18:08:57Z",
+      "side": 1,
+      "message": "Pointer alignment in this file look inconsistent.",
+      "range": {
+        "startLine": 218,
+        "startChar": 57,
+        "endLine": 218,
+        "endChar": 58
+      },
+      "revId": "1f3a5f5f29636f490c86b423f9d9de63aa94ef31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e322a62d_0f14ea81",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2017-07-12T18:08:57Z",
+      "side": 1,
+      "message": "What is this skipping?",
+      "range": {
+        "startLine": 586,
+        "startChar": 18,
+        "endLine": 586,
+        "endChar": 26
+      },
+      "revId": "1f3a5f5f29636f490c86b423f9d9de63aa94ef31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
