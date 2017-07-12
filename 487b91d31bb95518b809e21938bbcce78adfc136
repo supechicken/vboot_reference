@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "278b3264_703ca358",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-07-12T19:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5edc07d_6f0df1ab",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 33
+      },
+      "revId": "487b91d31bb95518b809e21938bbcce78adfc136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35268ae5_e013fe02",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "89b4676a_ca3a16ee",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-07-12T19:51:18Z",
+      "side": 1,
+      "message": "In the docs, these are two separate byte fields, so I figured this would be more accurate? Then again, using the helper is more readable and equivalent, so I\u0027ve now switched to using the helper.",
+      "parentUuid": "35268ae5_e013fe02",
+      "range": {
+        "startLine": 536,
+        "startChar": 21,
+        "endLine": 536,
+        "endChar": 61
+      },
+      "revId": "487b91d31bb95518b809e21938bbcce78adfc136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03e82999_a46a822f",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-12T17:39:08Z",
       "side": 1,
       "message": "FromTpmUint32(cursor, \u0026vendor) ?",
+      "range": {
+        "startLine": 542,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 2
+      },
+      "revId": "487b91d31bb95518b809e21938bbcce78adfc136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ff53ff_3c11865f",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-07-12T19:51:18Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "03e82999_a46a822f",
       "range": {
         "startLine": 542,
         "startChar": 1,
