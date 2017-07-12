@@ -93,6 +93,30 @@
       "revId": "1f3a5f5f29636f490c86b423f9d9de63aa94ef31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28d9441_e117fbea",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2017-07-12T19:56:15Z",
+      "side": 1,
+      "message": "Can you add a comment? \"Skipping undefined\u003cN\u003e field defined in firmware updater source code.\"",
+      "parentUuid": "218f6011_43ecd897",
+      "range": {
+        "startLine": 586,
+        "startChar": 18,
+        "endLine": 586,
+        "endChar": 26
+      },
+      "revId": "1f3a5f5f29636f490c86b423f9d9de63aa94ef31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
