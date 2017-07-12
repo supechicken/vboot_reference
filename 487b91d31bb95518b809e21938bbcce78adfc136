@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5edc07d_6f0df1ab",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2017-07-12T18:05:59Z",
+      "side": 1,
+      "message": "Pointer alignment?",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 33
+      },
+      "revId": "487b91d31bb95518b809e21938bbcce78adfc136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35268ae5_e013fe02",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 1
