@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "54165fc1_8e0a745a",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1128309
+      },
+      "writtenOn": "2017-07-18T05:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378c5203_07cb39e1",
+      "revId": "f5fca48b70738bcad330cb13862d1445ad3e1b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3032421b_cda0d0bd",
         "filename": "firmware/include/vboot_nvstorage.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ae9062ce_1829ef64",
+        "filename": "firmware/include/vboot_nvstorage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1128309
+      },
+      "writtenOn": "2017-07-18T05:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3032421b_cda0d0bd",
+      "revId": "f5fca48b70738bcad330cb13862d1445ad3e1b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a239d7fc_b5ba1d05",
         "filename": "utility/crossystem.c",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2017-07-17T16:38:07Z",
       "side": 1,
       "message": "We shouldn\u0027t mention depthcharge proper as that could be potentially changed.",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "f5fca48b70738bcad330cb13862d1445ad3e1b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c38dac3_b7191f9e",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1128309
+      },
+      "writtenOn": "2017-07-18T05:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a239d7fc_b5ba1d05",
       "range": {
         "startLine": 106,
         "startChar": 38,
