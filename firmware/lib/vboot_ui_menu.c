@@ -646,6 +646,8 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	VbAudioContext *audio = 0;
 	VbError_t ret;
+	int idx;
+	uint32_t disabled_indices = 0;
 
 	VB2_DEBUG("Entering\n");
 
@@ -778,9 +780,16 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		case VB_KEY_UP:
 			vb2_get_current_menu_size(current_menu,
 						  NULL, &menu_size);
-			/* Do not wrap selection index */
-			if (current_menu_idx > 0)
-				current_menu_idx--;
+			if (current_menu_idx > 0) {
+				idx = current_menu_idx - 1;
+				for (; ((1 << idx) & disabled_indices) &&
+				       (idx >= 0);
+				     idx--);
+				/* Only update if idx is valid */
+				if (idx >= 0 &&
+				    !((1 << idx) & disabled_indices))
+					current_menu_idx = idx;
+			}
 			vb2_draw_current_screen(ctx, cparams);
 			/* reset 30 second timer */
 			audio = VbAudioOpen(cparams);
@@ -795,8 +804,16 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				vb2_get_current_menu_size(current_menu,
 							  NULL, &menu_size);
 			}
-			if (current_menu_idx < menu_size-1)
-				current_menu_idx++;
+			if (current_menu_idx < menu_size-1) {
+				idx = current_menu_idx + 1;
+				for (; ((1 << idx) & disabled_indices) &&
+				       (idx < menu_size);
+				     idx++);
+				/* Only update if idx is valid */
+				if (idx < menu_size &&
+				    !((1 << idx) & disabled_indices))
+					current_menu_idx = idx;
+			}
 			vb2_draw_current_screen(ctx, cparams);
 			/* reset 30 second timer */
 			audio = VbAudioOpen(cparams);
@@ -963,9 +980,10 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t retval;
 	uint32_t key;
-	int i;
+	int i, idx;
 	VbError_t ret;
 	uint32_t menu_size;
+	uint32_t disabled_indices = 0;
 
 	VB2_DEBUG("start\n");
 
@@ -1053,8 +1071,16 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			case VB_KEY_UP:
 				vb2_get_current_menu_size(current_menu, NULL,
 							  &menu_size);
-				if (current_menu_idx > 0)
-					current_menu_idx--;
+				if (current_menu_idx > 0) {
+					idx = current_menu_idx - 1;
+					for (; ((1 << idx) & disabled_indices) &&
+					       (idx >= 0);
+					     idx--);
+					/* Only update if idx is valid */
+					if (idx >= 0 &&
+					    !((1 << idx) & disabled_indices))
+						current_menu_idx = idx;
+				}
 				vb2_draw_current_screen(ctx, cparams);
 				break;
 			case VB_BUTTON_VOL_DOWN:
@@ -1067,8 +1093,16 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					vb2_get_current_menu_size(current_menu,
 								  NULL, &menu_size);
 				}
-				if (current_menu_idx < menu_size-1)
-					current_menu_idx++;
+				if (current_menu_idx < menu_size-1) {
+					idx = current_menu_idx + 1;
+					for (; ((1 << idx) & disabled_indices) &&
+					       (idx < menu_size);
+					     idx++);
+					/* Only update if idx is valid */
+					if (idx < menu_size &&
+					    !((1 << idx) & disabled_indices))
+						current_menu_idx = idx;
+				}
 				vb2_draw_current_screen(ctx, cparams);
 				break;
 			case VB_BUTTON_POWER:
