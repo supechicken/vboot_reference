@@ -272,6 +272,8 @@ static char *languages_menu[] = {
 	"US English\n",
 };
 
+#define ENABLE_DEV_MODE 1<<0
+
 /**
  * Get the string array and size of current_menu.
  *
@@ -1071,6 +1073,16 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			case VB_KEY_UP:
 				vb2_get_current_menu_size(current_menu, NULL,
 							  &menu_size);
+				/*
+				 * Disable "Enable Developer Mode"
+				 * selection if we're already in DEV
+				 * Mode
+				 */
+				disabled_indices = 0;
+				if (current_menu == VB_MENU_RECOVERY &&
+				    (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
+					disabled_indices |= ENABLE_DEV_MODE;
+				}
 				if (current_menu_idx > 0) {
 					idx = current_menu_idx - 1;
 					for (; ((1 << idx) & disabled_indices) &&
@@ -1092,6 +1104,17 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				else {
 					vb2_get_current_menu_size(current_menu,
 								  NULL, &menu_size);
+				}
+
+				/*
+				 * Disable "Enable Developer Mode"
+				 * selection if we're already in DEV
+				 * Mode
+				 */
+				disabled_indices = 0;
+				if (current_menu == VB_MENU_RECOVERY &&
+				    (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
+					disabled_indices |= ENABLE_DEV_MODE;
 				}
 				if (current_menu_idx < menu_size-1) {
 					idx = current_menu_idx + 1;
