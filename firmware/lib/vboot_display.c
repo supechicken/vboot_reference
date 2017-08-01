@@ -23,6 +23,7 @@
 
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
 static uint32_t disp_current_index = 0;
+static uint32_t disp_disabled_indices = 0;
 static uint32_t disp_width = 0, disp_height = 0;
 
 __attribute__((weak))
@@ -375,7 +376,7 @@ VbError_t VbDisplayScreen(struct vb2_context *ctx,
 
 VbError_t VbDisplayMenu(struct vb2_context *ctx,
 			VbCommonParams *cparams, uint32_t screen, int force,
-			uint32_t selected_index)
+			uint32_t selected_index, uint32_t disabled_indices)
 {
 	uint32_t locale;
 	VbError_t rv;
@@ -400,7 +401,8 @@ VbError_t VbDisplayMenu(struct vb2_context *ctx,
 	/* Read the locale last saved */
 	locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
 
-	rv = VbExDisplayMenu(screen, locale, selected_index, redraw_base_screen);
+	rv = VbExDisplayMenu(screen, locale, selected_index,
+			     disabled_indices, redraw_base_screen);
 
 	if (rv == VBERROR_SUCCESS) {
 		/*
@@ -409,6 +411,7 @@ VbError_t VbDisplayMenu(struct vb2_context *ctx,
 		 */
 		disp_current_screen = screen;
 		disp_current_index = selected_index;
+		disp_disabled_indices = disabled_indices;
 	}
 
 	return rv;
@@ -613,7 +616,9 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx, VbCommonParams *cparams)
 	 * highlighted.  On a non-detachable screen, this will be a
 	 * no-op.
 	 */
-	VbDisplayMenu(ctx, cparams, disp_current_screen, 1, disp_current_index);
+	// TODO: how pass in disabled_indices value
+	VbDisplayMenu(ctx, cparams, disp_current_screen, 1,
+		      disp_current_index, disp_disabled_indices);
 
 	/* Add hardware ID */
 	VbRegionReadHWID(cparams, hwid, sizeof(hwid));

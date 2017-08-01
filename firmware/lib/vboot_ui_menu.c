@@ -226,6 +226,7 @@ static VB_MENU current_menu = VB_MENU_DEV_WARNING;
 static VB_MENU prev_menu = VB_MENU_DEV_WARNING;
 static int current_menu_idx = VB_WARN_POWER_OFF;
 static int selected = 0;
+static int disabled_indices = 0;
 static uint32_t default_boot = VB2_DEV_DEFAULT_BOOT_DISK;
 
 // TODO: add in consts
@@ -378,7 +379,8 @@ VbError_t vb2_draw_current_screen(struct vb2_context *ctx,
 		screen = VB_MENU_TO_SCREEN_MAP[current_menu];
 	else
 		return VBERROR_UNKNOWN;
-	return VbDisplayMenu(ctx, cparams, screen, 0, current_menu_idx);
+	return VbDisplayMenu(ctx, cparams, screen, 0,
+			     current_menu_idx, disabled_indices);
 }
 
 /**
@@ -649,13 +651,13 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	VbAudioContext *audio = 0;
 	VbError_t ret;
 	int idx;
-	uint32_t disabled_indices = 0;
-
 	VB2_DEBUG("Entering\n");
 
 	/* Check if USB booting is allowed */
 	uint32_t allow_usb = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB);
 	uint32_t allow_legacy = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_LEGACY);
+
+	disabled_indices = 0;
 
 	/* Check if the default is to boot using disk, usb, or legacy */
 	default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
@@ -985,7 +987,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	int i, idx;
 	VbError_t ret;
 	uint32_t menu_size;
-	uint32_t disabled_indices = 0;
 
 	VB2_DEBUG("start\n");
 
@@ -1049,6 +1050,13 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
+		/* Disabled "Enable Developer Mode" menu item */
+		disabled_indices = 0;
+		if (current_menu == VB_MENU_RECOVERY &&
+		    (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
+			disabled_indices |= ENABLE_DEV_MODE;
+		}
+
 		if (current_menu != VB_MENU_RECOVERY ||
 		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
 			if (retval == VBERROR_NO_DISK_FOUND)
@@ -1078,7 +1086,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * selection if we're already in DEV
 				 * Mode
 				 */
-				disabled_indices = 0;
 				if (current_menu == VB_MENU_RECOVERY &&
 				    (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
 					disabled_indices |= ENABLE_DEV_MODE;
@@ -1111,7 +1118,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * selection if we're already in DEV
 				 * Mode
 				 */
-				disabled_indices = 0;
 				if (current_menu == VB_MENU_RECOVERY &&
 				    (shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
 					disabled_indices |= ENABLE_DEV_MODE;

@@ -814,7 +814,8 @@ VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale);
  * only be seen during development.
  */
 VbError_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
-			  uint32_t selected_index, uint32_t redraw_base);
+			  uint32_t selected_index, uint32_t disabled_indices,
+			  uint32_t redraw_base);
 
 /**
  * Write an image to the display, with the upper left corner at the specified
