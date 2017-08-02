@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dbb7c74_3d1246d2",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-02T22:35:48Z",
+      "side": 1,
+      "message": "I don\u0027t really understand how this can work if it\u0027s nested under here. Haven\u0027t we already drawn the screen (in line 1055) by the time we reach this point? Didn\u0027t we already need to know not to display the menu item back then?\n\nI think you should have one central point where the menu entry disabling logic is, not spread it out through different KEY_UP and KEY_DOWN handlers. vb2_draw_current_screen() might be a good option (since it seems to be the closest you have to an \"initialize a new menu\" entry point)? You could make disabled_indices a global to make that easier (since all the other menu state is already in globals anyway).",
+      "revId": "95c039c3a2742b9cf34e5b74465d7a4cfbff58ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c04167_16eb5ed4",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-02T22:35:48Z",
+      "side": 1,
+      "message": "Rather than defining a new constant (with a not very clear name), isn\u0027t it easier to understand where this comes from if you just write (1 \u003c\u003c VB_RECOVERY_TO_DEV) here?",
+      "range": {
+        "startLine": 1084,
+        "startChar": 25,
+        "endLine": 1084,
+        "endChar": 40
+      },
+      "revId": "95c039c3a2742b9cf34e5b74465d7a4cfbff58ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
