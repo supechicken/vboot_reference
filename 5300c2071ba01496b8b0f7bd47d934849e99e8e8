@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b64bfb_68ac2907",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-02T22:35:21Z",
+      "side": 1,
+      "message": "I really think you should factor this out into a helper, you\u0027re duplicating it four times! How about vb2_adjust_menu_idx(bool up) (if you turn disabled_indices into a global, see next CL)?",
+      "revId": "5300c2071ba01496b8b0f7bd47d934849e99e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
