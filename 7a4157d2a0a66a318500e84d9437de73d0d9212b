@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "3c4b61da_4fa57d20",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-04T19:23:44Z",
+      "side": 1,
+      "message": "We should update the header comment to describe the args.\n\nAlso, this is no longer a backup method; it\u0027s the expected method for menu-based firmware.  So whole comment is kinda out of date.",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 815,
+        "endChar": 3
+      },
+      "revId": "7a4157d2a0a66a318500e84d9437de73d0d9212b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63cb634c_8e9de901",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
