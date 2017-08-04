@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c00ff91b_605a04f9",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-04T19:06:51Z",
+      "side": 1,
+      "message": "Nit: might call it disabled_idx_mask or something like that.",
+      "range": {
+        "startLine": 650,
+        "startChar": 10,
+        "endLine": 650,
+        "endChar": 26
+      },
+      "revId": "5300c2071ba01496b8b0f7bd47d934849e99e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2b64bfb_68ac2907",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 1
