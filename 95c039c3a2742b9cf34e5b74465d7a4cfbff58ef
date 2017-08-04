@@ -39,6 +39,30 @@
       "revId": "95c039c3a2742b9cf34e5b74465d7a4cfbff58ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c36ac8d4_9330d29b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-04T19:25:05Z",
+      "side": 1,
+      "message": "Particularly if we have more disabled items coming (e.g. the boot options in the dev menu)",
+      "parentUuid": "b5c04167_16eb5ed4",
+      "range": {
+        "startLine": 1084,
+        "startChar": 25,
+        "endLine": 1084,
+        "endChar": 40
+      },
+      "revId": "95c039c3a2742b9cf34e5b74465d7a4cfbff58ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
