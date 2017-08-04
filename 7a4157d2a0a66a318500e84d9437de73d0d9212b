@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b1108fa8_fe6327c0",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-04T19:58:10Z",
+      "side": 1,
+      "message": "Looks like this comment was incorrectly copied from VbExDisplayScreen and never belong here in the first place.",
+      "parentUuid": "3c4b61da_4fa57d20",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 815,
+        "endChar": 3
+      },
+      "revId": "7a4157d2a0a66a318500e84d9437de73d0d9212b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63cb634c_8e9de901",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
