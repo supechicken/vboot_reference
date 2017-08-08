@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6f836d1_c3c248fc",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-08T19:52:33Z",
+      "side": 1,
+      "message": "Style nit: } else { on one line\n\nAlso, technically, don\u0027t need the {} at all.",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 645,
+        "endChar": 7
+      },
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed227291_db96e722",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-08T19:52:33Z",
+      "side": 1,
+      "message": "technically redundant with the for() loop checks.  Which gets rid of one level of indentation in the code below :)",
+      "range": {
+        "startLine": 652,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 29
+      },
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2929b683_01f00cca",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-08T19:52:33Z",
+      "side": 1,
+      "message": "reverse clauses?  If idx \u003c 0, no need to check mask",
+      "range": {
+        "startLine": 654,
+        "startChar": 10,
+        "endLine": 655,
+        "endChar": 20
+      },
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f22dc1b_b4eea6bc",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-08T19:52:33Z",
+      "side": 1,
+      "message": "Always true if idx\u003e\u003d0 at this point?",
+      "range": {
+        "startLine": 658,
+        "startChar": 15,
+        "endLine": 659,
+        "endChar": 40
+      },
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
