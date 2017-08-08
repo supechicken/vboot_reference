@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "483c574e_350d6cdc",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-08T21:57:35Z",
+      "side": 1,
+      "message": "Should this be here in the final version? Isn\u0027t depthcharge is already printing the same stuff for every screen?",
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6f836d1_c3c248fc",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -48,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "64fc139d_cba3667b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-08T21:57:35Z",
+      "side": 1,
+      "message": "nit:\n\n while (cond)\n   statement;\n\nwould look nicer than\n\n for (; cond; statement);",
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2929b683_01f00cca",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -91,6 +125,23 @@
       "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71637ff8_12c4c5c8",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-08T21:57:35Z",
+      "side": 1,
+      "message": "Can this not be in vb2_draw_current_screen()? I think it would be better not to duplicate it... either find a fitting function for it, or make a new vb2_set_disabled_idx_mask() or something.",
+      "revId": "cfdcee72f4ee94e365552f433fe8bf9b1a3e7a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
