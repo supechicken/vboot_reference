@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "746c3cf0_f808e4c5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-08T17:15:15Z",
+      "side": 1,
+      "message": "Isn\u0027t this just VB_RECOVERY_TO_DEV?  Can we just use that constant here?",
+      "range": {
+        "startLine": 277,
+        "startChar": 23,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "5ea64ddad8ec034c5c512c2d78113509a4b37c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
