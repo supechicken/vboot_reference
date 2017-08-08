@@ -22,6 +22,23 @@
       "revId": "017e0095ee076c9e2d589a2841bd4675a34759ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b346fb_3ba2a402",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-08T21:28:59Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t notice that we already had a CheckValid() doing essentially this. Then maybe rather than adding another function we should just add a call to CheckValid() to CgptPrioritize()?",
+      "revId": "017e0095ee076c9e2d589a2841bd4675a34759ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
