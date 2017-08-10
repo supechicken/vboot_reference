@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00b69f38_759c62d7",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-10T20:50:45Z",
+      "side": 1,
+      "message": "nit: Wouldn\u0027t this be better as void? You don\u0027t bother to check the return value anyway...",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 9
+      },
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537c1b35_4cca3265",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-10T20:50:45Z",
+      "side": 1,
+      "message": "Like Randall mentioned before, I think the second part of the condition here is redundant?",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7250b1e_c141ef14",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-10T20:50:45Z",
+      "side": 1,
+      "message": "nit: I think it would be a good idea to insert calls to vb2_set_disabled_index_mask() to the appropriate places in here as well already. That makes it easier if we want to disable indexes on the dev screen later (e.g. USB boot when it\u0027s not enabled).",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
