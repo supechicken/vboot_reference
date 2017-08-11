@@ -96,6 +96,24 @@
     },
     {
       "key": {
+        "uuid": "d82d68b2_57568fca",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-11T01:06:46Z",
+      "side": 1,
+      "message": "while (idx \u003e\u003d 0)\n\nmeaning \"execute the block as long as (idx \u003e\u003d 0)\"\n\nmeaning if idx is equal to 0, idx will be decremented once more ;)\n\nidx will always be -1 or a non-disabled item at the end of the loop.",
+      "parentUuid": "0cadd44f_c462ec0e",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7250b1e_c141ef14",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
