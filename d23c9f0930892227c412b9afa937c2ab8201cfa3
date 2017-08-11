@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "71f21609_4aba243b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-11T00:35:53Z",
+      "side": 1,
+      "message": "Not quite sure what you mean.\n\nIf 0 is disabled and this is called with current_menu_idx 1, then idx will be initialized to 0, the while loop ticks once, idx becomes -1 and then (idx \u003e\u003d 0) is false. current_menu_idx stays at 1.\n\nIf 1 is disabled and this is called with current_menu_idx 2, then idx will be initialized to 1, the while loop ticks once, idx becomes 0 and (idx \u003e\u003d 0) is true. current_menu_idx gets set to 0. (If 0 had also been disabled, it would again tick through to -1 and not update anything.)\n\nSounds like you\u0027re saying that current_menu_idx could already point to something that is disabled when we enter this function, but that should be impossible right? I mean, when we enter we can assume that current_menu_idx is valid.",
+      "parentUuid": "9924a4b5_e99e6558",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7250b1e_c141ef14",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
