@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "0cadd44f_c462ec0e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-08-11T00:42:54Z",
+      "side": 1,
+      "message": "while loop won\u0027t cause idx to automatically decrement because idx \u003d 0, right (will immediately exit)?  That being said, we can replace the while loop with a do while loop in order to get the behavior that you\u0027re talking about (automatically decrementing idx).",
+      "parentUuid": "71f21609_4aba243b",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7250b1e_c141ef14",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
