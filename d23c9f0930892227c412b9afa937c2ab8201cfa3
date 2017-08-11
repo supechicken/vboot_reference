@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "9924a4b5_e99e6558",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-08-11T00:21:01Z",
+      "side": 1,
+      "message": "I think that we do still need this check.  What if current_menu_idx (ie: 1) is invalid and it\u0027s also the last index in the menu list (Enabled Developer Mode in recovery menu in when booting in dev mode)?  The, we would kick out of the while loop because of the idx \u003e\u003d 0 and then it would end up setting current_menu_idx to 0 even though the menu item is not valid.",
+      "parentUuid": "537c1b35_4cca3265",
+      "revId": "d23c9f0930892227c412b9afa937c2ab8201cfa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7250b1e_c141ef14",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
