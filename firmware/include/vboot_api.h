@@ -305,10 +305,17 @@ enum VbSelectFirmware_t {
 	VB_SELECT_FIRMWARE_RECOVERY = 0,
 	/* Rewritable firmware A/B for normal or developer path */
 	VB_SELECT_FIRMWARE_A = 1,
+	/* Used for workarounds for old EC-RO binaries */
+	VB_SELECT_FIRMWARE_REWRITABLE = VB_SELECT_FIRMWARE_A,
 	VB_SELECT_FIRMWARE_B = 2,
 	/* Read only firmware for normal or developer path. */
 	VB_SELECT_FIRMWARE_READONLY = 3,
-        VB_SELECT_FIRMWARE_COUNT,
+	/* Rewritable EC firmware currently set active */
+	VB_SELECT_FIRMWARE_EC_ACTIVE = 4,
+	/* Rewritable EC firmware currently not set active thus updatable */
+	VB_SELECT_FIRMWARE_EC_UPDATE = 5,
+	/* Keep this at the end */
+	VB_SELECT_FIRMWARE_COUNT,
 };
 
 /* Data only used by VbSelectFirmware() */
@@ -961,6 +968,12 @@ VbError_t VbExEcDisableJump(int devidx);
 
 /**
  * Read the SHA-256 hash of the selected EC image.
+ *
+ * @param devidx    Device index. 0: EC, 1: PD.
+ * @param select    Image to get hash of. RO or RW.
+ * @param hash      Pointer to the hash.
+ * @param hash_size Pointer to the hash size.
+ * @return          VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 			  const uint8_t **hash, int *hash_size);
@@ -1016,6 +1029,14 @@ VbError_t VbExEcVbootDone(int in_recovery);
  * Request EC to stop discharging and cut-off battery.
  */
 VbError_t VbExEcBatteryCutOff(void);
+
+/**
+ * Switch active slot
+ *
+ * @param devidx Device index. 0: EC, 1: PD.
+ * @return       VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcSwitchSlot(int devidx);
 
 /*
  * severity levels for an auxiliary firmware update request
