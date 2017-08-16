@@ -132,7 +132,7 @@ VbError_t VbExEcDisableJump(int devidx)
 #define SHA256_HASH_SIZE 32
 
 VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
-			  const uint8_t **hash, int *hash_size)
+			  const uint8_t **hash, int *hash_size, int active)
 {
 	static const uint8_t fake_hash[32] = {1, 2, 3, 4};
 
@@ -211,4 +211,9 @@ int VbExLegacy(void)
 uint8_t VbExOverrideGptEntryPriority(const GptEntry *e)
 {
 	return 0;
+}
+
+VbError_t VbExEcGetFeatures(int devidx, uint32_t *flags)
+{
+	return VBERROR_SUCCESS;
 }

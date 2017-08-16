@@ -956,9 +956,16 @@ VbError_t VbExEcDisableJump(int devidx);
 
 /**
  * Read the SHA-256 hash of the selected EC image.
+ *
+ * @param devidx    Device index. 0: EC, 1: PD.
+ * @param select    Image to get hash of. RO or RW.
+ * @param hash      Pointer to the hash.
+ * @param hash_size Pointer to the hash size.
+ * @param active    1: Active slot, 0: Non-active (updatable) slot.
+ * @return          VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
-			  const uint8_t **hash, int *hash_size);
+			  const uint8_t **hash, int *hash_size, int active);
 
 /**
  * Get the expected contents of the EC image associated with the main firmware
@@ -1161,4 +1168,20 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+/**
+ * Get EC features
+ *
+ * @return VBERROR_SUCCESS
+ */
+VbError_t VbExEcGetFeatures(int devidx, uint32_t *flags);
+
+/**
+ * Switch active slot
+ *
+ * @param devidx Device index. 0: EC, 1: PD.
+ * @return       VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcSwitchSlot(int devidx);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */

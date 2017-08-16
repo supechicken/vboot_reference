@@ -497,7 +497,10 @@ enum vb2_return_code {
 	/* Expected and image hashes are different size in ec_sync_phase1() */
 	VB2_ERROR_EC_HASH_SIZE,
 
-        /**********************************************************************
+	/* Failed to get EC features */
+	VB2_ERROR_EC_GET_FEATURES,
+
+	/**********************************************************************
 	 * API-level errors
 	 */
 	VB2_ERROR_API = VB2_ERROR_BASE + 0x090000,

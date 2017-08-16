@@ -23,6 +23,8 @@
 	(VB2_SD_FLAG_ECSYNC_EC_RO | VB2_SD_FLAG_ECSYNC_RW)
 #define VB2_SD_FLAG_ECSYNC_IN_RW					\
 	(VB2_SD_FLAG_ECSYNC_EC_IN_RW | VB2_SD_FLAG_ECSYNC_PD_IN_RW)
+#define VB2_SD_FLAG_ECSYNC_RW_AB \
+	(VB2_SD_FLAG_ECSYNC_EC_RW_AB | VB2_SD_FLAG_ECSYNC_PD_RW_AB)
 
 #define IN_RW(devidx)							\
 	((devidx) ? VB2_SD_FLAG_ECSYNC_PD_IN_RW : VB2_SD_FLAG_ECSYNC_EC_IN_RW)
@@ -30,6 +32,9 @@
 #define WHICH_EC(devidx, select) \
 	((select) == VB_SELECT_FIRMWARE_READONLY ? VB2_SD_FLAG_ECSYNC_EC_RO : \
 	 ((devidx) ? VB2_SD_FLAG_ECSYNC_PD_RW : VB2_SD_FLAG_ECSYNC_EC_RW))
+
+#define RW_AB(devidx)							\
+	((devidx) ? VB2_SD_FLAG_ECSYNC_PD_RW_AB : VB2_SD_FLAG_ECSYNC_EC_RW_AB)
 
 static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
@@ -79,17 +84,18 @@ static void print_hash(const uint8_t *hash, uint32_t hash_size,
  * @param ctx		Vboot2 context
  * @param devidx	Index of EC device to check
  * @param select	Which firmware image to check
+ * @param active	1:Active (being executed) image. 0:Non-active image.
  * @return VB2_SUCCESS, or non-zero error code.
  */
 static int check_ec_hash(struct vb2_context *ctx, int devidx,
-			 enum VbSelectFirmware_t select)
+			 enum VbSelectFirmware_t select, int act)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Get current EC hash. */
 	const uint8_t *ec_hash = NULL;
 	int ec_hash_size;
-	int rv = VbExEcHashImage(devidx, select, &ec_hash, &ec_hash_size);
+	int rv = VbExEcHashImage(devidx, select, &ec_hash, &ec_hash_size, act);
 	if (rv) {
 		VB2_DEBUG("VbExEcHashImage() returned %d\n", rv);
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
@@ -118,6 +124,26 @@ static int check_ec_hash(struct vb2_context *ctx, int devidx,
 		print_hash(hash, hash_size, "Expected");
 		sd->flags |= WHICH_EC(devidx, select);
 	}
+
+	return VB2_SUCCESS;
+}
+
+static int check_ec_rw_ab(struct vb2_context *ctx, int devidx)
+{
+	uint32_t flags[2];
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	int rv;
+
+	rv = VbExEcGetFeatures(devidx, flags);
+	if (rv) {
+		VB2_DEBUG("VbExEcGetFeatures() returned %d\n", rv);
+		request_recovery(ctx, VB2_RECOVERY_EC_GET_FEATURES);
+		return VB2_ERROR_EC_GET_FEATURES;
+	}
+
+	if (flags[1] & EC_FEATURE_MASK_1(EC_FEATURE_RW_AB))
+		sd->flags |= devidx ? VB2_SD_FLAG_ECSYNC_PD_RW_AB:
+				VB2_SD_FLAG_ECSYNC_EC_RW_AB;
 
 	return VB2_SUCCESS;
 }
@@ -170,7 +196,7 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 
 	/* Verify the EC was updated properly */
 	sd->flags &= ~WHICH_EC(devidx, select);
-	if (check_ec_hash(ctx, devidx, select) != VB2_SUCCESS)
+	if (check_ec_hash(ctx, devidx, select, 0) != VB2_SUCCESS)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	if (sd->flags & WHICH_EC(devidx, select)) {
 		VB2_DEBUG("Failed to update\n");
@@ -182,13 +208,13 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 }
 
 /**
- * Check if the EC has the correct image active.
+ * Check if the EC is currently running rewritable code.
  *
  * @param ctx		Vboot2 context
  * @param devidx	Which device (EC=0, PD=1)
  * @return VBERROR_SUCCESS, or non-zero if error.
  */
-static VbError_t check_ec_active(struct vb2_context *ctx, int devidx)
+static VbError_t check_ec_running_rw(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
@@ -260,9 +286,19 @@ static VbError_t sync_one_ec(struct vb2_context *ctx, int devidx,
 	VB2_DEBUG("devidx=%d\n", devidx);
 
 	/* Update the RW Image */
+	/* TODO: Shouldn't this be "sd->flags & WHICH_EC(devidx)"? */
 	if (sd->flags & VB2_SD_FLAG_ECSYNC_RW) {
 		if (VB2_SUCCESS != update_ec(ctx, devidx, select_rw))
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		/* Updated successfully but if EC is already running old image,
+		 * we reboot to switch to the new RW. */
+		if ((sd->flags & IN_RW(devidx)) && (sd->flags & RW_AB(devidx))){
+			VB2_DEBUG("Rebooting to EC-RW\n");
+			rv = VbExEcSwitchSlot(devidx);
+			if (rv != VBERROR_SUCCESS)
+				VB2_DEBUG("Failed to switch EC-RW\n");
+			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		}
 	}
 
 	/* Tell EC to jump to its RW image */
@@ -362,9 +398,9 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 #endif
 
 	/* Make sure the EC is running the correct image */
-	if (check_ec_active(ctx, 0))
+	if (check_ec_running_rw(ctx, 0))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	if (do_pd_sync && check_ec_active(ctx, 1))
+	if (do_pd_sync && check_ec_running_rw(ctx, 1))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 
 	/*
@@ -378,9 +414,9 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 	const enum VbSelectFirmware_t select_rw =
 			shared->firmware_index ? VB_SELECT_FIRMWARE_B :
 			VB_SELECT_FIRMWARE_A;
-	if (check_ec_hash(ctx, 0, select_rw))
+	if (check_ec_hash(ctx, 0, select_rw, 1))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	if (do_pd_sync && check_ec_hash(ctx, 1, select_rw))
+	if (do_pd_sync && check_ec_hash(ctx, 1, select_rw, 1))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	/*
 	 * See if we need to update EC-RO (devidx=0).
@@ -391,20 +427,23 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 	 */
 	if (vb2_nv_get(ctx, VB2_NV_TRY_RO_SYNC) &&
 	    !(shared->flags & VBSD_BOOT_FIRMWARE_WP_ENABLED) &&
-	    check_ec_hash(ctx, 0, VB_SELECT_FIRMWARE_READONLY)) {
+	    check_ec_hash(ctx, 0, VB_SELECT_FIRMWARE_READONLY, 0)) {
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
+
+	if (check_ec_rw_ab(ctx, 0))
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 
 	/*
 	 * If we're in RW, we need to reboot back to RO because RW can't be
 	 * updated while we're running it.
 	 *
-	 * TODO: Technically this isn't true for ECs which don't execute from
-	 * flash.  For example, if the EC loads code from SPI into RAM before
-	 * executing it.
+	 * If EC supports RW-A/B slots, we can proceed but we need
+	 * to jump to the new RW version later.
 	 */
 	if ((sd->flags & VB2_SD_FLAG_ECSYNC_RW) &&
-	    (sd->flags & VB2_SD_FLAG_ECSYNC_IN_RW)) {
+	    (sd->flags & VB2_SD_FLAG_ECSYNC_IN_RW) &&
+	    !(sd->flags & VB2_SD_FLAG_ECSYNC_RW_AB)) {
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
