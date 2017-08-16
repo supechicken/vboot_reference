@@ -31,6 +31,9 @@
 	((select) == VB_SELECT_FIRMWARE_READONLY ? VB2_SD_FLAG_ECSYNC_EC_RO : \
 	 ((devidx) ? VB2_SD_FLAG_ECSYNC_PD_RW : VB2_SD_FLAG_ECSYNC_EC_RW))
 
+/* PD doesn't support RW A/B */
+#define RW_AB(devidx) ((devidx) ? 0 : VBSD_EC_RW_AB)
+
 static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
 	VB2_DEBUG("request_recovery(%u)\n", recovery_request);
@@ -73,6 +76,22 @@ static void print_hash(const uint8_t *hash, uint32_t hash_size,
 	VB2_DEBUG_RAW("\n");
 }
 
+static const char *image_name_to_string(enum VbSelectFirmware_t select)
+{
+	switch (select) {
+	case VB_SELECT_FIRMWARE_READONLY:
+		return "RO";
+	case VB_SELECT_FIRMWARE_REWRITABLE:
+		return "RW";
+	case VB_SELECT_FIRMWARE_EC_ACTIVE:
+		return "RW(active)";
+	case VB_SELECT_FIRMWARE_EC_UPDATE:
+		return "RW(update)";
+	default:
+		return "UNKNOWN";
+	}
+}
+
 /**
  * Check if the hash of the EC code matches the expected hash.
  *
@@ -95,8 +114,7 @@ static int check_ec_hash(struct vb2_context *ctx, int devidx,
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
 		return VB2_ERROR_EC_HASH_IMAGE;
 	}
-	print_hash(ec_hash, ec_hash_size,
-		   select == VB_SELECT_FIRMWARE_READONLY ? "RO" : "RW");
+	print_hash(ec_hash, ec_hash_size, image_name_to_string(select));
 
 	/* Get expected EC hash. */
 	const uint8_t *hash = NULL;
@@ -135,8 +153,7 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
-	VB2_DEBUG("updating %s...\n",
-		  select == VB_SELECT_FIRMWARE_READONLY ? "RO" : "RW");
+	VB2_DEBUG("Updating %s...\n", image_name_to_string(select));
 
 	/* Get expected EC image */
 	const uint8_t *want = NULL;
@@ -252,17 +269,29 @@ static VbError_t sync_one_ec(struct vb2_context *ctx, int devidx,
 	VbSharedDataHeader *shared =
 			(VbSharedDataHeader *)cparams->shared_data_blob;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	const enum VbSelectFirmware_t select_rw =
-		shared->firmware_index ? VB_SELECT_FIRMWARE_B :
-		VB_SELECT_FIRMWARE_A;
+	enum VbSelectFirmware_t select;
+	int is_rw_ab = shared->flags & RW_AB(devidx);
 	int rv;
 
-	VB2_DEBUG("devidx=%d\n", devidx);
+	if (is_rw_ab)
+		select = VB_SELECT_FIRMWARE_EC_UPDATE;
+	else
+		select = VB_SELECT_FIRMWARE_EC_ACTIVE;
+	VB2_DEBUG("devidx=%d select=%d\n", devidx, select);
 
 	/* Update the RW Image */
-	if (sd->flags & VB2_SD_FLAG_ECSYNC_RW) {
-		if (VB2_SUCCESS != update_ec(ctx, devidx, select_rw))
+	if (sd->flags & WHICH_EC(devidx, select)) {
+		if (update_ec(ctx, devidx, select))
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		/* Updated successfully but if EC is already running old image,
+		 * we reboot to switch to the new RW. */
+		if ((sd->flags & IN_RW(devidx)) && is_rw_ab) {
+			rv = VbExEcSwitchSlot(devidx);
+			if (rv != VBERROR_SUCCESS)
+				VB2_DEBUG("Failed to switch EC-RW\n");
+			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
+			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		}
 	}
 
 	/* Tell EC to jump to its RW image */
@@ -328,7 +357,7 @@ static VbError_t sync_one_ec(struct vb2_context *ctx, int devidx,
 		return rv;
 
 	/* Protect RW flash */
-	rv = protect_ec(ctx, devidx, select_rw);
+	rv = protect_ec(ctx, devidx, select);
 	if (rv != VBERROR_SUCCESS)
 		return rv;
 
@@ -347,6 +376,8 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	enum VbSelectFirmware_t select;
+	int is_rw_ab = shared->flags & VBSD_EC_RW_AB;
 
 	/* Reasons not to do sync at all */
 	if (!(shared->flags & VBSD_EC_SOFTWARE_SYNC))
@@ -374,14 +405,17 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 	if (sd->recovery_reason)
 		return VBERROR_SUCCESS;
 
-	/* See if we need to update RW.  Failures trigger recovery mode. */
-	const enum VbSelectFirmware_t select_rw =
-			shared->firmware_index ? VB_SELECT_FIRMWARE_B :
-			VB_SELECT_FIRMWARE_A;
-	if (check_ec_hash(ctx, 0, select_rw))
+	if (is_rw_ab)
+		select = VB_SELECT_FIRMWARE_EC_ACTIVE;
+	else
+		select = VB_SELECT_FIRMWARE_REWRITABLE;
+
+	/* Check if we need to update RW.  Failures trigger recovery mode. */
+	if (check_ec_hash(ctx, 0, select))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	if (do_pd_sync && check_ec_hash(ctx, 1, select_rw))
+	if (do_pd_sync && check_ec_hash(ctx, 1, select))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
 	/*
 	 * See if we need to update EC-RO (devidx=0).
 	 *
@@ -399,12 +433,12 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx, VbCommonParams *cparams)
 	 * If we're in RW, we need to reboot back to RO because RW can't be
 	 * updated while we're running it.
 	 *
-	 * TODO: Technically this isn't true for ECs which don't execute from
-	 * flash.  For example, if the EC loads code from SPI into RAM before
-	 * executing it.
+	 * If EC supports RW-A/B slots, we can proceed but we need
+	 * to jump to the new RW version later.
 	 */
 	if ((sd->flags & VB2_SD_FLAG_ECSYNC_RW) &&
-	    (sd->flags & VB2_SD_FLAG_ECSYNC_IN_RW)) {
+	    (sd->flags & VB2_SD_FLAG_ECSYNC_IN_RW) &&
+	    !is_rw_ab) {
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
