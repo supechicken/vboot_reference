@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "584b0e6c_3b2ac8a5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T20:13:12Z",
+      "side": 1,
+      "message": "Why do you need this global? Isn\u0027t every call to vb2_update_menu() in that path guaranteed to come from user input, so you know you gotta display the menu?",
+      "revId": "7d68b8e8c63dc18daa545a5a1964014728481934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
