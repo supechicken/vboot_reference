@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5938449c_13fe56e0",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "Does it make sense to prepare all of this for the PD too, considering that we have moved away from Chrome EC based PD chips and PD updates are moving to the aux_fw path?",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94802657_e105889b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "Rather than adding a new parameter, why not merge this into VbSelectFirmware_t?",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede41a00_8e3c4820",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "nit: should move this up in the file to the other VbExEc stuff",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9084b9b1_b344a3ee",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "Why are you changing the name here? This function still checks whether the EC is running in RO when we\u0027re in recovery mode.",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4450500d_13c857dd",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "So how is this supposed to work on ECs that don\u0027t support the A/B RW? Is the EC just supposed to return the same region for ACTIVE and UPDATE? Because it looks like you\u0027re just #ifdefing out those slots in https://chromium-review.googlesource.com/c/616347/2/common/flash.c#1335 for now, so an EC build that doesn\u0027t have CONFIG_VBOOT_EFS defined would not work with this version of vboot anymore. You need to deal with that case somewhere (either here, or in depthcharge, or on the EC).",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183475fa_5e9b2efc",
+        "filename": "firmware/lib/include/ec_sync.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "This is copied straight from ec_commands.h, right? I\u0027m not sure if we should really have this in here... vboot hasn\u0027t needed to depend directly on implementation details of Chrome EC for now and intentionally doesn\u0027t have its own copy of ec_commands.h, I don\u0027t think it should start now.\n\nFor all the other EC-specific configuration stuff (e.g. VBSD_EC_SOFTWARE_SYNC, VBSD_EC_SLOW_UPDATE, etc.), we\u0027re passing it in from coreboot anyway. Wouldn\u0027t it be more consistent to do the same with this, too? Then coreboot could either read and interpret the feature flags (since it has a copy of ec_commands.h) or even just use a hardcoded Kconfig like we have for most other stuff.",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4526e4_3778836b",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-17T22:30:57Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t this at least set flags to 0 or something?",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
