@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cce51cf3_9ad35a26",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5938449c_13fe56e0",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94802657_e105889b",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d21d1c_9c7443b8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94802657_e105889b",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "78e0a7df_5c0ba57f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ede41a00_8e3c4820",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9084b9b1_b344a3ee",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "6be40df8_c9b0065b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9084b9b1_b344a3ee",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4450500d_13c857dd",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2017-08-17T22:30:57Z",
       "side": 1,
       "message": "So how is this supposed to work on ECs that don\u0027t support the A/B RW? Is the EC just supposed to return the same region for ACTIVE and UPDATE? Because it looks like you\u0027re just #ifdefing out those slots in https://chromium-review.googlesource.com/c/616347/2/common/flash.c#1335 for now, so an EC build that doesn\u0027t have CONFIG_VBOOT_EFS defined would not work with this version of vboot anymore. You need to deal with that case somewhere (either here, or in depthcharge, or on the EC).",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696ca980_ac5c11b1",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Adjusted EC code.",
+      "parentUuid": "4450500d_13c857dd",
       "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "e9e8b758_3481542e",
+        "filename": "firmware/lib/include/ec_sync.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183475fa_5e9b2efc",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb4526e4_3778836b",
         "filename": "firmware/stub/vboot_api_stub.c",
         "patchSetId": 1
@@ -118,6 +226,24 @@
       "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ddfe783_e64c7150",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:17:57Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "cb4526e4_3778836b",
+      "revId": "5a6be381ff4817be10d930ae9e30ccdbcde578ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
