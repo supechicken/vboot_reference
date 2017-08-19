@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1c2280_ca12af60",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-19T00:24:11Z",
+      "side": 1,
+      "message": "I think you\u0027re right, btw. We haven\u0027t shipped anything with an old-style crso-ec-based PD chip since this code was overhauled, so I guess nobody noticed... but this looks broken.",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e0ff92_0785f6d4",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-19T00:24:11Z",
+      "side": 1,
+      "message": "This works, but only with an up-to-date EC image (older images will not recognize the FLASH_REGION_UPDATE parameter). Can\u0027t we just pass (RW_AB(devidx) ? VB_SELECT_FIRMWARE_EC_UPDATE : VB_SELECT_FIRMWARE_AP_ACTIVE) here so that ToT AP firmware can keep working together with old ECs?",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94189f91_1523b39b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-19T00:24:11Z",
+      "side": 1,
+      "message": "Should this trigger recovery? Otherwise, I think you would get into a reboot loop (because you keep booting the old \"active\" EC, and keep overwriting the \"update\" slot but always failing to switch to it, assuming it\u0027s a persistent error).",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
