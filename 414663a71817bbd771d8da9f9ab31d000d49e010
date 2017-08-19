@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73664944_562f4417",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-19T01:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b1c2280_ca12af60",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32e0ff92_0785f6d4",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f21a98b0_36c25efa",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-19T01:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e0ff92_0785f6d4",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94189f91_1523b39b",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2017-08-19T00:24:11Z",
       "side": 1,
       "message": "Should this trigger recovery? Otherwise, I think you would get into a reboot loop (because you keep booting the old \"active\" EC, and keep overwriting the \"update\" slot but always failing to switch to it, assuming it\u0027s a persistent error).",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f419714_7c0fcf8f",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-19T01:44:36Z",
+      "side": 1,
+      "message": "It\u0027ll be covered by a try-counter in case soft sync fails repeatedly. I  haven\u0027t found time to implement it yet. However, I also agree that it\u0027s a severe error that switching slot fails. So, maybe it doesn\u0027t need to try again.",
+      "parentUuid": "94189f91_1523b39b",
       "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
