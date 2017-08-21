@@ -16,6 +16,24 @@
       "revId": "89ad5d43ce6997f1914a5ae482028b24eb829997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6ff51b_147fb064",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-08-21T22:34:48Z",
+      "side": 1,
+      "message": "Yes, it does actually move it up/down on the first arrow key.  This was not an issue for me, but if it is for others, I can change it.",
+      "parentUuid": "43e0ff04_095cf195",
+      "revId": "89ad5d43ce6997f1914a5ae482028b24eb829997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
