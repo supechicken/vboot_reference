@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6551672f_f638aec9",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-21T21:26:18Z",
+      "side": 1,
+      "message": "We don\u0027t intend to use EC EFS everywhere (only on Chromeboxes) going forward, right? So you can\u0027t really do this here where you treat everything else as legacy, because otherwise you\u0027ll take the boot time hit from forced re-hashing on new production systems that don\u0027t use EC EFS as well.",
+      "revId": "06e2e5a45b6e97913809e138f37ac75e06b9ac76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

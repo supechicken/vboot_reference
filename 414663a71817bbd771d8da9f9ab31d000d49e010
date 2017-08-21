@@ -104,6 +104,24 @@
       "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa86d6d_f6823587",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-21T21:26:18Z",
+      "side": 1,
+      "message": "The try counter doesn\u0027t work in all cases (e.g. when the lid is closed), so I think it\u0027s better not to rely on it. All other places in vboot where something really unexpected happens go into recovery immediately, so I think this one should too.",
+      "parentUuid": "0f419714_7c0fcf8f",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
