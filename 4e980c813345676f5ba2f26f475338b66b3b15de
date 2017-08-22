@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "51df4a2c_951e319c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T19:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8bd6278_ef4eae60",
+      "revId": "4e980c813345676f5ba2f26f475338b66b3b15de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c33d820a_45d001cb",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-22T17:53:28Z",
       "side": 1,
       "message": "I wonder if it is possible to put this \u0027else\u0027 code in a function and share it with the \u0027if\u0027 branch?",
+      "revId": "4e980c813345676f5ba2f26f475338b66b3b15de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e478eb4c_cbb03d8c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T19:15:04Z",
+      "side": 1,
+      "message": "yeah ... that was on my todo list ... will hit in next rev",
+      "parentUuid": "c33d820a_45d001cb",
       "revId": "4e980c813345676f5ba2f26f475338b66b3b15de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
