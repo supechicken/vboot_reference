@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "73320cfe_aae03aad",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-08-22T23:42:19Z",
+      "side": 1,
+      "message": "IFS needs to be restored to its original state after modifying it",
+      "range": {
+        "startLine": 574,
+        "startChar": 12,
+        "endLine": 574,
+        "endChar": 15
+      },
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c63f386_ad8e6f90",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
@@ -30,6 +53,52 @@
       "writtenOn": "2017-08-22T23:37:58Z",
       "side": 1,
       "message": "You don\u0027t need the \u0027\u0027, but perhaps this is nice style. If so, I suggest double quotes for consistency",
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039a58ba_fbf23789",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-08-22T23:42:19Z",
+      "side": 1,
+      "message": "double quotes outside $(",
+      "range": {
+        "startLine": 585,
+        "startChar": 26,
+        "endLine": 585,
+        "endChar": 27
+      },
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904e4564_a68776bb",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-08-22T23:42:19Z",
+      "side": 1,
+      "message": "probably a lot easier to read to just have grep read your input file directly as an argument to grep: local key_index\u003d\"$(\"grep \u0027[0-9]\\+ \u003d ${key_id}\u0027 \"${KEY_DIR}/loem.ini\" | cut -d \u0027 \u0027 -f 1\")\"",
+      "range": {
+        "startLine": 586,
+        "startChar": 12,
+        "endLine": 586,
+        "endChar": 15
+      },
       "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
