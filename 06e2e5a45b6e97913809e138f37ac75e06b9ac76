@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d2e938ab_7e6d74b8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-08-22T22:14:49Z",
+      "side": 1,
+      "message": "I don\u0027t think you should remove these, this was also used for the AP firmware once where the A and B made sense. Just add your own values afterwards.",
+      "revId": "06e2e5a45b6e97913809e138f37ac75e06b9ac76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6551672f_f638aec9",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
