@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "949a72fa_97a7b9bc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T22:32:16Z",
+      "side": 1,
+      "message": "whoops...copied from another subscript",
+      "parentUuid": "7ce10ece_37dbdcad",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0c3c183_167df46c",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-22T19:49:17Z",
       "side": 1,
       "message": "double quotes around variables",
+      "range": {
+        "startLine": 603,
+        "startChar": 18,
+        "endLine": 603,
+        "endChar": 28
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0cd997a_c8827f28",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T22:32:16Z",
+      "side": 1,
+      "message": "also copied",
+      "parentUuid": "e0c3c183_167df46c",
       "range": {
         "startLine": 603,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "af03bfb6_8f4a476a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T22:32:16Z",
+      "side": 1,
+      "message": "changed to be consistent with the wrapped script",
+      "parentUuid": "9a3bce94_69ec25af",
+      "range": {
+        "startLine": 608,
+        "startChar": 8,
+        "endLine": 608,
+        "endChar": 12
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1ac3e27_fd48abd7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "24d4aa0f_4b501b2d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T22:32:16Z",
+      "side": 1,
+      "message": "sign_firmware.sh reads the loem.ini config and automatically attempts to apply the current convention for LOEM signing\n\nit basically needed to be rewritten to accommodate both cases (with lots of branching)",
+      "parentUuid": "f1ac3e27_fd48abd7",
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a7899c4_3fff580f",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -99,6 +189,24 @@
       "writtenOn": "2017-08-22T19:49:17Z",
       "side": 1,
       "message": "Does this handle the new file hierarchy?",
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265db7f1_487f3716",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-22T22:32:16Z",
+      "side": 1,
+      "message": "yes .. i verified the repack also",
+      "parentUuid": "9a7899c4_3fff580f",
       "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
