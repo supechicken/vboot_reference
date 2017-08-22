@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ce10ece_37dbdcad",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T19:49:17Z",
+      "side": 1,
+      "message": "{}",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c3c183_167df46c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T19:49:17Z",
+      "side": 1,
+      "message": "double quotes around variables",
+      "range": {
+        "startLine": 603,
+        "startChar": 18,
+        "endLine": 603,
+        "endChar": 28
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3bce94_69ec25af",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T19:49:17Z",
+      "side": 1,
+      "message": "Should we be exec\u0027ing here? Shouldn\u0027t we just be running the command and exiting? Presumably we should be checking return codes as well?",
+      "range": {
+        "startLine": 608,
+        "startChar": 8,
+        "endLine": 608,
+        "endChar": 12
+      },
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ac3e27_fd48abd7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T19:49:17Z",
+      "side": 1,
+      "message": "What\u0027s the reason for open encoding the signing action vs not taking advantage of sign_firmware.sh?",
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7899c4_3fff580f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T19:49:17Z",
+      "side": 1,
+      "message": "Does this handle the new file hierarchy?",
+      "revId": "6f618b0263bb67a31dc476a623479d98e4d0cb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
