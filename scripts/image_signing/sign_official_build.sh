@@ -20,6 +20,9 @@
 # Load common constants and variables.
 . "$(dirname "$0")/common.sh"
 
+# Which futility to run?
+[ -z "$FUTILITY" ] && FUTILITY=futility
+
 # Print usage string
 usage() {
   cat <<EOF
@@ -544,23 +547,95 @@ resign_firmware_payload() {
   fi
   info "Found a valid firmware update shellball."
 
-  if [[ -d "${shellball_dir}/models" ]]; then
+  # For context on signing firmware for unified builds, see
+  # go/cros-unibuild-signing
+  # This iterates over a signer_config.csv file, which contains the following:
+  #   model_name,image,key_id               (header)
+  #   santa,models/santa/bios.bin,SOME_OEM  (sample line)
+  # This dictates the keys that should be used for which models and images.
+  #
+  # It reuses the LOEM architecture already existing in the signer keysets,
+  # but this could be revisited at a future date.
+  #
+  # Within signer_config.csv, it used the key_id column to match the key
+  # value in loem.ini (if present) and signs the corresponding firmware
+  # image using that key.
+  #
+  # For output, it uses the model name for the signed vblocks, which is then
+  # detected/used by the firmware updater script.
+  local signer_config="${shellball_dir}/signer_config.csv"
+  if [[ -e "${signer_config}" ]]; then
+    info "Using signer_config.csv to determine firmware signatures"
+    info "See go/cros-unibuild-signing for details"
+    {
+      read # Burn the first line (header line)
+      while IFS=',' read -r model_name image key_id
+      do
+        local key_suffix=''
+
+        # If there are OEM specific keys available, we're going to use them.
+        # Otherwise, we're going to ignore key_id from the config file and
+        # just use the common keys present in the keyset.
+        # Regardless, a model specific vblock will be generated, which the
+        # updater script will be looking for.
+        if [[ -e "${KEY_DIR}/loem.ini" ]]; then
+          # loem.ini has the format KEY_ID_VALUE = KEY_INDEX
+          local key_index=$("grep '[0-9]\+ = ${key_id}' | cut -d ' ' -f 1" \
+            <<<"${KEY_DIR}/loem.ini")
+          if [[ -z "${key_index}" ]]; then
+            die "Failed to find key_id ${key_id} in loem.ini file for model " \
+              "${model_name}"
+          fi
+          key_suffix=".loem${key_index}"
+        fi
+
+        info "Signing firmware image ${image} for model ${model_name}"
+
+        local temp_fw=$(make_temp_file)
+
+        local signprivate="${KEY_DIR}/firmware_data_key${key_suffix}.vbprivk"
+        local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
+        local devsign="${KEY_DIR}/dev_firmware_data_key${key_suffix}.vbprivk"
+        local devkeyblock="${KEY_DIR}/dev_firmware${key_suffix}.keyblock"
+
+        if [ ! -e ${devsign} ] || [ ! -e ${devkeyblock} ] ; then
+          echo "No dev firmware keyblock/datakey found. Reusing normal keys."
+          devsign="${signprivate}"
+          devkeyblock="${keyblock}"
+        fi
+        exec ${FUTILITY} sign \
+          --signprivate "${sign_private}" \
+          --keyblock "${devblock}" \
+          --devsign "${devsign}" \
+          --devkeyblock "${devkeyblock}" \
+          --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
+          --version "${FIRMWARE_VERSION}" \
+          --loemid "${model_name}" \ # Output will be vblock_A.${model_name}
+          ${image} \
+          ${temp_fw}
+
+        rootkey="${KEY_DIR}/root_key${key_suffix}.vbpubk"
+
+        # For development phases, when the GBB can be updated still, set the
+        # recovery and root keys in the image.
+        exec ${FUTILITY} gbb \
+          -s \
+          --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
+          --rootkey="${rootkey}" \
+          "${temp_fw}" \
+          "${image}"
+
+        info "Signed firmware image output to ${image}"
+      done
+    } < "${signer_config}"
+  # TODO(shapiroc): Delete this case once the build is migrated to use
+  # signer_config.csv
+  elif [[ -d "${shellball_dir}/models" ]]; then
     info "Signing firmware for all of the models in the unified build."
     local model_dir
     for model_dir in "${shellball_dir}"/models/*; do
       local image_file sign_args=() loem_sfx loem_output_dir
       for image_file in "${model_dir}"/bios*.bin; do
-        local model_name=$(sed -r 's:.*/models/(.*)/bios.*[.]bin$:\1:'\
-              <<<"${model_dir}")
-        if [[ -e "${KEY_DIR}/loem.ini" ]]; then
-          # Extract the extended details from "bios.bin" and use that, along
-          # with the model name, as the subdir for the keyset.
-          loem_sfx=$(sed -r "s:.*/models/${model_name}/bios([^/]*)[.]bin$:\1:"\
-                   <<<"${image_file}")
-          loem_output_dir="${shellball_dir}/keyset${loem_sfx}${model_name}"
-          sign_args=( "${loem_output_dir}" )
-          mkdir -p "${loem_output_dir}"
-        fi
         sign_firmware "${image_file}" "${KEY_DIR}" "${FIRMWARE_VERSION}" \
           "${sign_args[@]}"
       done
