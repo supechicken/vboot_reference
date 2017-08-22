@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed40ad62_3b54b355",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-08-22T23:37:58Z",
+      "side": 1,
+      "message": "\",\"",
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c63f386_ad8e6f90",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-08-22T23:37:58Z",
+      "side": 1,
+      "message": "You don\u0027t need the \u0027\u0027, but perhaps this is nice style. If so, I suggest double quotes for consistency",
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e158655_45e30f25",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-08-22T23:37:58Z",
+      "side": 1,
+      "message": "Can you add key_suffix here as well, for debugging purposes?",
+      "revId": "33088f9c237c3713cc333274ba3410e069bd2288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
