@@ -20,6 +20,9 @@
 # Load common constants and variables.
 . "$(dirname "$0")/common.sh"
 
+# Which futility to run?
+[ -z "$FUTILITY" ] && FUTILITY=futility
+
 # Print usage string
 usage() {
   cat <<EOF
@@ -544,23 +547,124 @@ resign_firmware_payload() {
   fi
   info "Found a valid firmware update shellball."
 
-  if [[ -d "${shellball_dir}/models" ]]; then
+  # For unified builds, the normal production path will be using
+  # signer_config.csv to determine with images should be singed
+  # with which keys.
+  # However, before the signer is confirmed with OEM specific keys,
+  # we need support to still use the signer_config.csv file, but to
+  # use the default keys present in the PreMP configuration.
+  signer_config="${shellball_dir}/signer_config.csv"
+  if [[ -e "${signer_config}" ]]; then
+    info "Using signer_config.csv to determine firmware signatures"
+    info "See go/cros-unibuild-signing for details"
+    if [[ -e "${KEY_DIR}/loem.ini" ]]; then
+      {
+        read # Burn the first line (header line)
+        while IFS=',' read -r model_name key_id image
+        do
+          # loem.ini has the format KEY_ID_VALUE = KEY_INDEX
+          key_index=$("grep '[0-9]\+ = ${key_id}' | cut -d ' ' -f 1" \
+            <<<"${KEY_DIR}/loem.ini")
+          if [[ -z "${key_index}" ]]; then
+            die "Failed to find key_id '${key_id}' in loem.ini file for model " \
+              "'${model_name}'"
+          fi
+          key_name="loem${key_index}"
+          local temp_fw=$(make_temp_file)
+          info "Signing firmware image '${image}' for model '${model_name}'" \
+             "with key '${key_id}'"
+
+          signprivate="${KEY_DIR}/firmware_data_key.${key_name}.vbprivk"
+          keyblock="${KEY_DIR}/firmware.${key_name}.keyblock"
+          devsign="${KEY_DIR}/dev_firmware_data_key.${key_name}.vbprivk"
+          devkeyblock="${KEY_DIR}/dev_firmware.${key_name}.keyblock"
+
+          if [ ! -e ${devsign} ] || [ ! -e ${devkeyblock} ] ; then
+            echo "No dev firmware keyblock/datakey found. Reusing normal keys."
+            devsign="${signprivate}"
+            devkeyblock="${keyblock}"
+          fi
+          exec ${FUTILITY} sign \
+            --signprivate "${sign_private}" \
+            --keyblock "${devblock}" \
+            --devsign "${devsign}" \
+            --devkeyblock "${devkeyblock}" \
+            --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
+            --version "${FIRMWARE_VERSION}" \
+            --loemid "${model_name}" \ # Output will be vblock_A.${model_name}
+            ${image} \
+            ${temp_fw}
+
+          rootkey="${KEY_DIR}/root_key.${key_name}.vbpubk"
+
+          # For PreMP (development phase), update the GBB with the corresponding root
+          # and recovery keys.
+          if [[ ${key_index} == "1" ]]; then
+            exec ${FUTILITY} gbb \
+              -s \
+              --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
+              --rootkey="${rootkey}" \
+              "${temp_fw}" \
+              "${image}"
+          fi
+
+          info "Signed firmware image output to ${image}"
+        done
+      } < "${signer_config}"
+    else
+      # With no loem.ini config on the signer, we're just going to sign every
+      # firmware image with the same keys.
+      # This assumes a list of different images with a single key, since we'll
+      # be ignoring the key anyway since there is no OEM specific keys are
+      # configured anyways on the signing server.
+      {
+        read # Burn the first line (header line)
+        while IFS=',' read -r model_name key_id image
+        do
+          local temp_fw=$(make_temp_file)
+          info "Signing firmware image '${image}' for model '${model_name}'"
+
+          signprivate="${KEY_DIR}/firmware_data_key.vbprivk"
+          keyblock="${KEY_DIR}/firmware.keyblock"
+          devsign="${KEY_DIR}/dev_firmware_data_key.vbprivk"
+          devkeyblock="${KEY_DIR}/dev_firmware.keyblock"
+
+          if [ ! -e ${devsign} ] || [ ! -e ${devkeyblock} ] ; then
+            echo "No dev firmware keyblock/datakey found. Reusing normal keys."
+            devsign="${signprivate}"
+            devkeyblock="${keyblock}"
+          fi
+          exec ${FUTILITY} sign \
+            --signprivate "${sign_private}" \
+            --keyblock "${devblock}" \
+            --devsign "${devsign}" \
+            --devkeyblock "${devkeyblock}" \
+            --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
+            --version "${FIRMWARE_VERSION}" \
+            --loemid "${model_name}" \ # Output will be vblock_A.${model_name}
+            ${image} \
+            ${temp_fw}
+
+          # For PreMP (development phase), update the GBB with the corresponding root
+          # and recovery keys.
+          exec ${FUTILITY} gbb \
+            -s \
+            --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
+            --rootkey="${KEY_DIR}/root_key.vbpubk" \
+            "${temp_fw}" \
+            "${image}"
+
+          info "Signed firmware image output to ${image}"
+        done
+      } < "${signer_config}"
+    fi
+  # TODO(shapiroc): Delete this case once the build is migrated to use signer_config.csv
+  elif [[ -d "${shellball_dir}/models" ]]; then
     info "Signing firmware for all of the models in the unified build."
     local model_dir
     for model_dir in "${shellball_dir}"/models/*; do
       local image_file sign_args=() loem_sfx loem_output_dir
       for image_file in "${model_dir}"/bios*.bin; do
-        local model_name=$(sed -r 's:.*/models/(.*)/bios.*[.]bin$:\1:'\
-              <<<"${model_dir}")
-        if [[ -e "${KEY_DIR}/loem.ini" ]]; then
-          # Extract the extended details from "bios.bin" and use that, along
-          # with the model name, as the subdir for the keyset.
-          loem_sfx=$(sed -r "s:.*/models/${model_name}/bios([^/]*)[.]bin$:\1:"\
-                   <<<"${image_file}")
-          loem_output_dir="${shellball_dir}/keyset${loem_sfx}${model_name}"
-          sign_args=( "${loem_output_dir}" )
-          mkdir -p "${loem_output_dir}"
-        fi
         sign_firmware "${image_file}" "${KEY_DIR}" "${FIRMWARE_VERSION}" \
           "${sign_args[@]}"
       done
