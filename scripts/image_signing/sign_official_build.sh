@@ -582,8 +582,10 @@ resign_firmware_payload() {
         # updater script will be looking for.
         if [[ -e "${KEY_DIR}/loem.ini" ]]; then
           # loem.ini has the format KEY_ID_VALUE = KEY_INDEX
-          local key_index="$(grep '[0-9]\+ = ${key_id}' ${KEY_DIR}/loem.ini " \
-            "| cut -d ' ' -f 1)"
+          local pattern="[0-9]\+ = ${key_id}"
+          local grep_result="$(grep "${pattern}" "${KEY_DIR}/loem.ini")"
+          local key_index="$(echo "${grep_result}" | cut -d ' ' -f 1)"
+          info "Detected key index from loem.ini as ${key_index} for {$key_id}"
           if [[ -z "${key_index}" ]]; then
             die "Failed to find key_id ${key_id} in loem.ini file for model " \
               "${model_name}"
