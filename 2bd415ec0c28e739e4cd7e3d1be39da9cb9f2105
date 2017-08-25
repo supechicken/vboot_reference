@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f46d7ea4_4e52f117",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-25T20:15:33Z",
+      "side": 1,
+      "message": "you use pattern in one place, so seems weird to give it a dedicated variable\n\nyou should also use ERE instead of escaping out of BRE.  i.e. add -E to the grep and drop the \\ here.",
+      "revId": "2bd415ec0c28e739e4cd7e3d1be39da9cb9f2105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4eb83f2_ee1220ec",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-25T20:15:33Z",
+      "side": 1,
+      "message": "missing braces on ${key_id}",
+      "revId": "2bd415ec0c28e739e4cd7e3d1be39da9cb9f2105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
