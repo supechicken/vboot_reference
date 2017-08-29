@@ -22,6 +22,30 @@
       "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b52e03_06faa1f9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1206284
+      },
+      "writtenOn": "2017-08-29T19:16:29Z",
+      "side": 1,
+      "message": "i agree ... and originally did it to support that, but then traced how resign_firmwarerd.sh did it (who the old flow was previously wrapping) and it was the same, so decided to stay consistent",
+      "parentUuid": "f6047bda_19471381",
+      "range": {
+        "startLine": 598,
+        "startChar": 33,
+        "endLine": 598,
+        "endChar": 49
+      },
+      "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
