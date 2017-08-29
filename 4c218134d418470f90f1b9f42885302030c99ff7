@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "34efdde8_36d4816f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-29T20:17:58Z",
+      "side": 1,
+      "message": "your commit messages prefixes in here are weird.  you\u0027re operating on the image signing directory, and \"coral\" and \"unibuild\" labels don\u0027t matter too much.  should be:\n\n image_signing: xxx",
+      "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626a9927_2d6dc1c5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-29T20:17:58Z",
+      "side": 1,
+      "message": "seems like this should stay down below where it was",
+      "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6047bda_19471381",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -46,6 +80,30 @@
       "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c51fe9bd_715ea666",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-08-29T20:17:58Z",
+      "side": 1,
+      "message": "this is bash so it should be written correctly.  you can declare a local array like:\n\n local extra_args\u003d()\n\nand then append int on demand like:\n\n extra_args+\u003d(\n   --loemdir \"${shellball_dir}/keyset\"\n   --loemid \"${model_name}\"\n )\n\nthen use \"${extra_args[@]}\" below",
+      "parentUuid": "a7b52e03_06faa1f9",
+      "range": {
+        "startLine": 598,
+        "startChar": 33,
+        "endLine": 598,
+        "endChar": 49
+      },
+      "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
