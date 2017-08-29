@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6047bda_19471381",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2017-08-29T19:07:08Z",
+      "side": 1,
+      "message": "Technically this isn\u0027t right because the shellball_dir--if it has IFS characters in it--will expand correctly here and then later when ${loemdir_arg} is expanded, the IFS characters will cause word splitting. Like this:\n\n  $ foo\u003d\"bar baz.txt\"\n  $ cmd\u003d\"--arg ${foo}\"\n  $ for x in ${cmd}; do echo $x; done\n  --arg\n  bar\n  baz.txt\n\nHowever, it doesn\u0027t really matter that much for this case because shellball_dir shouldn\u0027t have IFS characters in it.\n\nIf you want to fix this, you\u0027ll want to use a shell array for the two arguments: --loemdir and the path are entries in the array. Then, below, the array would be splatted with \"${array[@]}\".\n\nYes, shell is terrible.",
+      "range": {
+        "startLine": 598,
+        "startChar": 33,
+        "endLine": 598,
+        "endChar": 49
+      },
+      "revId": "4c218134d418470f90f1b9f42885302030c99ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
