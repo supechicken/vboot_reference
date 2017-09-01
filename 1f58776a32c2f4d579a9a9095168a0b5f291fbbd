@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "427c3dca_399c20b8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-01T22:15:00Z",
+      "side": 1,
+      "message": "Okay, why are you changing this here now again? Why can\u0027t we just keep the old ones (even if they\u0027re not used atm) and have RECOVERY, A, B, READONLY, EC_ACTIVE and EC_UPDATE? And then you use EC_ACTIVE to signify both the active slot for EFS ECs and the single RW slot for non-EFS ECs?",
+      "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00e225a_0d05864c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-01T22:15:00Z",
+      "side": 1,
+      "message": "Doesn\u0027t need to be a variable if it\u0027s always the same.",
+      "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
