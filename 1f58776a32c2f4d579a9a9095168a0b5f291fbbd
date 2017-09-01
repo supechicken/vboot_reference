@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "151995cf_9f25bbc3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-01T22:33:59Z",
+      "side": 1,
+      "message": "This simplifies the patch because there is no need to distinguish A/B/Active whether the EC is running EFS or not.\n\nHow about \n  enum {\n    ...\n    VB_SELECT_FIRMWARE_A,\n    VB_SELECT_FIRMWARE_RW \u003d VB_SELECT_FIRMWARE_A\n    ...\n  }\n?\n\nI think it\u0027s better to rename this. It gives illusion that Depthcharge cares firmware slot A/B but it no longer does. When we did AP-EFS then CBFS-A/B, this should have been renamed together with other code which was removed.",
+      "parentUuid": "427c3dca_399c20b8",
+      "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d00e225a_0d05864c",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f0d453_b6e23d4b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-01T22:33:59Z",
+      "side": 1,
+      "message": "(will be) Done",
+      "parentUuid": "d00e225a_0d05864c",
+      "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

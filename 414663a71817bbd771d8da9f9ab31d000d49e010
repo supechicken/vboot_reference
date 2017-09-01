@@ -122,6 +122,24 @@
       "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa43f84_26928108",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-01T22:33:59Z",
+      "side": 1,
+      "message": "VbExEcSwitchSlot has been removed.",
+      "parentUuid": "caa86d6d_f6823587",
+      "revId": "414663a71817bbd771d8da9f9ab31d000d49e010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
