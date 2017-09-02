@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d999157_bbd66b53",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-02T00:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bd1395_010fefa3",
+      "revId": "e6807ef66082db13d81aca3fa30883aaa721ed15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dbb97cd_50013ff7",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-01T21:15:48Z",
       "side": 1,
       "message": "What if the EC is in RO at this point and we skip this. Does it know automatically that it needs to choose the new slot on the next JumpToRW command, even though it never got the switch command?",
+      "revId": "e6807ef66082db13d81aca3fa30883aaa721ed15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dabd4a3_83f8328c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-02T00:48:15Z",
+      "side": 1,
+      "message": "Yes, that case isn\u0027t handled. Removed IN_RW check and added TODO. We need to implement EC_CMD_SWITCH_SLOT or add flags to VbExEcJumpToRW.",
+      "parentUuid": "9dbb97cd_50013ff7",
       "revId": "e6807ef66082db13d81aca3fa30883aaa721ed15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "e6807ef66082db13d81aca3fa30883aaa721ed15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6c7dd1_895eb286",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-02T00:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13705c3a_ab0ea355",
+      "revId": "e6807ef66082db13d81aca3fa30883aaa721ed15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
