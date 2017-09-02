@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c6f18426_420798b6",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-02T00:16:55Z",
+      "side": 1,
+      "message": "I just read your comment on patch #7. Looks like we agreed on using one enum for EFS and non-EFS. I\u0027m changing the code.",
+      "parentUuid": "151995cf_9f25bbc3",
+      "revId": "1f58776a32c2f4d579a9a9095168a0b5f291fbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d00e225a_0d05864c",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 8
