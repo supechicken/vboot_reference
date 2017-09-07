@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "904c2b89_30ad0227",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-07T00:28:36Z",
+      "side": 1,
+      "message": "edit: Oh, okay, now I get what you did. Yeah, actually, maybe that option is okay too. Since we only do this on update and usually the EC shouldn\u0027t be in RO anyway, I doubt that we really need to care about avoiding the extra reboot.",
+      "parentUuid": "8d846c2f_6a470d31",
+      "revId": "2cc98ad560ccd85bfd35146c696226c2e7c1a7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1997b72e_f5b012cf",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 9
