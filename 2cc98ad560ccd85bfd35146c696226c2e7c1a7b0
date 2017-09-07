@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4862a14_d4cfc9f7",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-07T00:22:13Z",
+      "side": 1,
+      "message": "nit: Even though it usually doesn\u0027t matter, it\u0027s good practice to make sure boolean variables can only either be 1 or 0 (especially if we\u0027re gonna pass them through the external API boundary). Would be better to make this\n\n !!(shared-\u003eflags \u0026 RW_AB(devidx));",
+      "revId": "2cc98ad560ccd85bfd35146c696226c2e7c1a7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d846c2f_6a470d31",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-07T00:22:13Z",
+      "side": 1,
+      "message": "I think this should be included in this patch already, otherwise the feature is just subtly broken. Adding a parameter to VbExEcJumpToRW() seems like the best option.",
+      "revId": "2cc98ad560ccd85bfd35146c696226c2e7c1a7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1997b72e_f5b012cf",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-07T00:22:13Z",
+      "side": 1,
+      "message": "Just need to also pass in_rw_ab here, essentially. Should be pretty straight-forward.",
+      "range": {
+        "startLine": 293,
+        "startChar": 28,
+        "endLine": 293,
+        "endChar": 29
+      },
+      "revId": "2cc98ad560ccd85bfd35146c696226c2e7c1a7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
