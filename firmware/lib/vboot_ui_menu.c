@@ -443,7 +443,7 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 			 * 2. Default to the power off option
 			 */
 			vb2_set_menu_items(VB_MENU_TO_NORM,
-					   VB_TO_NORM_POWER_OFF);
+					   VB_TO_NORM_CONFIRM);
 			break;
 		case VB_WARN_POWER_OFF:
 			/* Power off machine */
@@ -479,7 +479,7 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 			 * 2. Default to power off option.
 			 */
 			vb2_set_menu_items(VB_MENU_DEV_WARNING,
-					   loc);
+					   VB_DEV_WARN_POWER_OFF);
 			break;
 		case VB_DEV_POWER_OFF:
 			/* Power off */
@@ -531,10 +531,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		case VB_RECOVERY_TO_DEV:
 			/*
 			 * 1. Switch to TO_DEV menu
-			 * 2. Default to power off option
+			 * 2. Default to cancel option
 			 */
 			vb2_set_menu_items(VB_MENU_TO_DEV,
-					   VB_TO_DEV_POWER_OFF);
+					   VB_TO_DEV_CANCEL);
 			break;
 		case VB_RECOVERY_DBG_INFO:
 			break;
