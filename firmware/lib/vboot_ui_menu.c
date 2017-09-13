@@ -1109,10 +1109,20 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			case 0:
 				/* nothing pressed */
 				break;
-			case VB_BUTTON_VOL_UP:
-			case VB_BUTTON_VOL_DOWN:
 			case VB_KEY_UP:
 			case VB_KEY_DOWN:
+				/* User cannot use keyboard to enable dev mode.
+				 * They need to use the volume buttons to
+				 * navigate to the disable os verification
+				 * menu item.  Beep so user knows that they're
+				 * doing something wrong.
+				 */
+				if (current_menu == VB_MENU_TO_DEV) {
+					VbExBeep(120, 400);
+					break;
+				}
+			case VB_BUTTON_VOL_UP:
+			case VB_BUTTON_VOL_DOWN:
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
 					ret = vb2_update_menu(ctx);
 					vb2_set_disabled_idx_mask(shared->flags);
