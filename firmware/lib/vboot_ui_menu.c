@@ -531,10 +531,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		case VB_RECOVERY_TO_DEV:
 			/*
 			 * 1. Switch to TO_DEV menu
-			 * 2. Default to power off option
+			 * 2. Default to cancel option
 			 */
 			vb2_set_menu_items(VB_MENU_TO_DEV,
-					   VB_TO_DEV_POWER_OFF);
+					   VB_TO_DEV_CANCEL);
 			break;
 		case VB_RECOVERY_DBG_INFO:
 			break;
