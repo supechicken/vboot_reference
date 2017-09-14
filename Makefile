@@ -661,6 +661,7 @@ FUTIL_SYMLINKS = \
 	vbutil_keyblock
 
 FUTIL_STATIC_SRCS = \
+	host/lib/fmap.c \
 	futility/futility.c \
 	futility/cmd_dump_fmap.c \
 	futility/cmd_gbb_utility.c \
@@ -669,6 +670,22 @@ FUTIL_STATIC_SRCS = \
 
 FUTIL_SRCS = \
 	${FUTIL_STATIC_SRCS} \
+	host/lib/file_keys.c \
+	host/lib/host_common.c \
+	host/lib/host_key.c \
+	host/lib/host_key2.c \
+	host/lib/host_keyblock.c \
+	host/lib/host_misc.c \
+	host/lib/util_misc.c \
+	host/lib/host_signature.c \
+	host/lib/host_signature2.c \
+	host/lib/signature_digest.c \
+	host/lib21/host_fw_preamble.c \
+	host/lib21/host_key.c \
+	host/lib21/host_keyblock.c \
+	host/lib21/host_misc.c \
+	host/lib21/host_signature.c \
+	futility/dump_kernel_config_lib.c \
 	futility/cmd_bdb.c \
 	futility/cmd_create.c \
 	futility/cmd_dump_kernel_config.c \
@@ -1124,12 +1141,12 @@ signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
 .PHONY: futil
 futil: ${FUTIL_STATIC_BIN} ${FUTIL_BIN}
 
-${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
+${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${FWLIB}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
-${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS} ${FWLIB20}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20} ${UTILBDB}
+${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILBDB} ${FWLIB} ${FWLIB20} ${FWLIB21}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
