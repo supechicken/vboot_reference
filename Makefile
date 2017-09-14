@@ -441,23 +441,8 @@ BDBLIB_OBJS = ${BDBLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS} \
 	$(BDBLIB_OBJS}
 
-# Intermediate library for the vboot_reference utilities to link against.
-UTILLIB = ${BUILD}/libvboot_util.a
-
-# Static library containing both host and firmware APIs
-UTILBDB = ${BUILD}/libvboot_utilbdb.a
-
-UTILLIB_SRCS = \
-	cgpt/cgpt_create.c \
-	cgpt/cgpt_add.c \
-	cgpt/cgpt_boot.c \
-	cgpt/cgpt_show.c \
-	cgpt/cgpt_repair.c \
-	cgpt/cgpt_prioritize.c \
-	cgpt/cgpt_common.c \
-	futility/dump_kernel_config_lib.c \
-	host/arch/${ARCH}/lib/crossystem_arch.c \
-	host/lib/crossystem.c \
+# Common files for all utilities.
+COMMON_SRCS = \
 	host/lib/file_keys.c \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
@@ -474,6 +459,26 @@ UTILLIB_SRCS = \
 	host/lib21/host_keyblock.c \
 	host/lib21/host_misc.c \
 	host/lib21/host_signature.c
+
+# Intermediate library for the vboot_reference utilities to link against.
+UTILLIB = ${BUILD}/libvboot_util.a
+
+# Static library containing both host and firmware APIs
+UTILBDB = ${BUILD}/libvboot_utilbdb.a
+
+UTILLIB_SRCS = \
+	$(COMMON_SRCS) \
+	cgpt/cgpt_create.c \
+	cgpt/cgpt_add.c \
+	cgpt/cgpt_boot.c \
+	cgpt/cgpt_show.c \
+	cgpt/cgpt_repair.c \
+	cgpt/cgpt_prioritize.c \
+	cgpt/cgpt_common.c \
+	futility/dump_kernel_config_lib.c \
+	host/arch/${ARCH}/lib/crossystem_arch.c \
+	host/lib/crossystem.c \
+	host/lib/fmap.c
 
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
@@ -662,6 +667,7 @@ FUTIL_SYMLINKS = \
 	vbutil_keyblock
 
 FUTIL_STATIC_SRCS = \
+	host/lib/fmap.c \
 	futility/futility.c \
 	futility/cmd_dump_fmap.c \
 	futility/cmd_gbb_utility.c \
@@ -671,7 +677,9 @@ FUTIL_STATIC_SRCS = \
 	futility/ryu_root_header.c
 
 FUTIL_SRCS = \
+	$(COMMON_SRCS) \
 	${FUTIL_STATIC_SRCS} \
+	futility/dump_kernel_config_lib.c \
 	futility/cmd_bdb.c \
 	futility/cmd_create.c \
 	futility/cmd_dump_kernel_config.c \
@@ -1128,12 +1136,12 @@ signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
 futil: ${FUTIL_STATIC_BIN} ${FUTIL_BIN}
 
 ${FUTIL_STATIC_BIN}: LDLIBS += ${CRYPTO_STATIC_LIBS}
-${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${UTILLIB}
+${FUTIL_STATIC_BIN}: ${FUTIL_STATIC_OBJS} ${FWLIB}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} -static $^ ${LDLIBS}
 
 ${FUTIL_BIN}: LDLIBS += ${CRYPTO_LIBS} ${FWLIB20}
-${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB20} ${UTILBDB}
+${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILBDB} ${FWLIB} ${FWLIB20} ${FWLIB21}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $^ ${LDLIBS}
 
