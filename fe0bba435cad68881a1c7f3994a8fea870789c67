@@ -22,6 +22,30 @@
       "revId": "fe0bba435cad68881a1c7f3994a8fea870789c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68bdc2b_55e89c04",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-15T18:23:44Z",
+      "side": 1,
+      "message": "Yes, they should be impossible on all our current devices using this UI. But that doesn\u0027t matter, so let\u0027s not overcomplicate things in the code here. The main point here is that they need to be trusted, no matter where they\u0027re from. If we later want to expand the menu UI to also be used on laptops, for example, this code will already be correct.",
+      "parentUuid": "cc71eae0_37d142c7",
+      "range": {
+        "startLine": 1113,
+        "startChar": 3,
+        "endLine": 1114,
+        "endChar": 20
+      },
+      "revId": "fe0bba435cad68881a1c7f3994a8fea870789c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
