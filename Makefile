@@ -594,11 +594,8 @@ UTIL_SCRIPTS += \
 	utility/vbutil_what_keys
 endif
 
-# These utilities should be linked statically.
-UTIL_NAMES_STATIC = \
-	utility/crossystem
-
-UTIL_NAMES = ${UTIL_NAMES_STATIC} \
+UTIL_NAMES = \
+	utility/crossystem \
 	utility/dumpRSAPublicKey \
 	utility/tpmc
 
@@ -623,9 +620,8 @@ LZMA_LIBS := $(shell ${PKG_CONFIG} --libs liblzma)
 YAML_LIBS := $(shell ${PKG_CONFIG} --libs yaml-0.1)
 endif
 
-UTIL_BINS_STATIC := $(addprefix ${BUILD}/,${UTIL_NAMES_STATIC})
 UTIL_BINS = $(addprefix ${BUILD}/,${UTIL_NAMES})
-ALL_OBJS += $(addsuffix .o,${UTIL_BINS} ${UTIL_BINS_STATIC})
+ALL_OBJS += $(addsuffix .o,${UTIL_BINS})
 
 
 # Scripts for signing stuff.
@@ -1089,12 +1085,8 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
-${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB}
-${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
-
-# Utilities for auto-update toolkits must be statically linked.
-${UTIL_BINS_STATIC}: LDFLAGS += -static
-
+${UTIL_BINS}: ${UTILLIB}
+${UTIL_BINS}: LIBS = ${UTILLIB}
 
 .PHONY: utils
 utils: ${UTIL_BINS} ${UTIL_SCRIPTS}
