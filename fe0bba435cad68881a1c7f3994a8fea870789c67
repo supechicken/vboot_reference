@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc71eae0_37d142c7",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-15T05:50:14Z",
+      "side": 1,
+      "message": "Do we expect keys up and down to be valid keys for trusted input on detachables?",
+      "range": {
+        "startLine": 1113,
+        "startChar": 3,
+        "endLine": 1114,
+        "endChar": 20
+      },
+      "revId": "fe0bba435cad68881a1c7f3994a8fea870789c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
