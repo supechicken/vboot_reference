@@ -479,21 +479,32 @@ static void print_help_rwsig(int argc, char *argv[])
 	       "\n"
 	       "This signs a %s.\n"
 	       "\n"
+	       "Data only mode\n"
+	       "This mode requires OUTFILE.\n"
 	       "The INFILE is a binary blob of arbitrary size. It is signed using the\n"
 	       "private key and the vb21_signature blob emitted.\n"
 	       "\n"
+	       "Data + Signature mode\n"
 	       "If no OUTFILE is specified, the INFILE should contain an existing\n"
 	       "vb21_signature blob near its end. The data_size from that signature is\n"
 	       "used to re-sign a portion of the INFILE, and the old signature blob is\n"
 	       "replaced.\n"
-	       "Alternatively, if INFILE contains an FMAP, RW and signatures offsets\n"
-	       "are read from that table, and, if a public key is provided, the\n"
-	       "public key is replaced in the RO image.\n"
+	       "\n"
+	       "Key + Data + Signature mode\n"
+	       "This mode also takes no output file.\n"
+	       "If INFILE contains an FMAP, RW and signatures offsets are read from\n"
+	       "FMAP. These regions must be named EC_RW and SIG_RW respectively.\n"
+	       "If a public key is found in the region named KEY_RO, it will be replaced\n"
+	       "in the RO image. This mode also produces EC_RW.bin which is a EC_RW\n"
+	       "region image (same as the input file for 'Data + Signature mode').\n"
 	       "\n"
 	       "Options:\n"
 	       "\n"
-	       "  --prikey      FILE.vbprik2      Private key in vb2 format (required)\n"
-	       "  --version     NUM               Public key version if we are replacing"
+	       "  --prikey      FILE.vbprik2      Private key in vb2 format. Required\n"
+	       "                                  if INFILE is a binary blob. If not\n"
+	       "                                  provided, previous signature is copied\n"
+	       "                                  and a public key won't be replaced.\n"
+	       "  --version     NUM               Public key version if we are replacing\n"
 	       "                                  the key in INFILE (default: 1)\n"
 	       "  --sig_size    NUM               Offset from the end of INFILE where the\n"
 	       "                                    signature blob should be located, if\n"
@@ -965,7 +976,9 @@ static int do_sign(int argc, char *argv[])
 				      "hash_alg");
 		break;
 	case FILE_TYPE_RWSIG:
-		errorcnt += no_opt_if(!sign_option.prikey, "prikey");
+		if (sign_option.inout_file_count > 1)
+			/* Signing raw data. No signature pre-exists. */
+			errorcnt += no_opt_if(!sign_option.prikey, "prikey");
 		break;
 	default:
 		/* Anything else we don't care */

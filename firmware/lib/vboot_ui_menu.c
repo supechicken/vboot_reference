@@ -440,10 +440,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		case VB_WARN_ENABLE_VER:
 			/*
 			 * 1. Enable boot verification
-			 * 2. Default to the power off option
+			 * 2. Default to the confirm option
 			 */
 			vb2_set_menu_items(VB_MENU_TO_NORM,
-					   VB_TO_NORM_POWER_OFF);
+					   VB_TO_NORM_CONFIRM);
 			break;
 		case VB_WARN_POWER_OFF:
 			/* Power off machine */
@@ -479,7 +479,7 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 			 * 2. Default to power off option.
 			 */
 			vb2_set_menu_items(VB_MENU_DEV_WARNING,
-					   loc);
+					   VB_WARN_POWER_OFF);
 			break;
 		case VB_DEV_POWER_OFF:
 			/* Power off */
@@ -531,10 +531,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		case VB_RECOVERY_TO_DEV:
 			/*
 			 * 1. Switch to TO_DEV menu
-			 * 2. Default to power off option
+			 * 2. Default to cancel option
 			 */
 			vb2_set_menu_items(VB_MENU_TO_DEV,
-					   VB_TO_DEV_POWER_OFF);
+					   VB_TO_DEV_CANCEL);
 			break;
 		case VB_RECOVERY_DBG_INFO:
 			break;
@@ -579,7 +579,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		 */
 		current_menu = prev_menu;
 		prev_menu = VB_MENU_LANGUAGES;
-		/* default to power off index */
+		/*
+		 * default to power off index with the exception of
+		 * TO_DEV and TO_NORM menus
+		 */
 		switch (current_menu) {
 		case VB_MENU_DEV_WARNING:
 			current_menu_idx = VB_WARN_POWER_OFF;
@@ -588,13 +591,13 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 			current_menu_idx = VB_DEV_POWER_OFF;
 			break;
 		case VB_MENU_TO_NORM:
-			current_menu_idx = VB_TO_NORM_POWER_OFF;
+			current_menu_idx = VB_TO_NORM_CONFIRM;
 			break;
 		case VB_MENU_RECOVERY:
 			current_menu_idx = VB_RECOVERY_POWER_OFF;
 			break;
 		case VB_MENU_TO_DEV:
-			current_menu_idx = VB_TO_DEV_POWER_OFF;
+			current_menu_idx = VB_TO_DEV_CANCEL;
 			break;
 		default:
 			current_menu_idx = 0;
@@ -642,6 +645,9 @@ VbError_t vb2_set_disabled_idx_mask(uint32_t flags) {
 	    (flags & VBSD_BOOT_DEV_SWITCH_ON)) {
 		disabled_idx_mask |= 1 << VB_RECOVERY_TO_DEV;
 	}
+	/* Disable Network Boot Option */
+	if (current_menu == VB_MENU_DEV)
+		disabled_idx_mask |= 1 << VB_DEV_NETWORK;
 	return VBERROR_SUCCESS;
 }
 
@@ -1019,6 +1025,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	uint32_t retval;
 	uint32_t key;
+	uint32_t key_flags;
 	int i;
 	VbError_t ret;
 
@@ -1053,9 +1060,14 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		VbDisplayScreen(ctx, cparams, VB_SCREEN_OS_BROKEN, 0);
 		VB2_DEBUG("waiting for manual recovery\n");
 		while (1) {
-			VbCheckDisplayKey(ctx, cparams, VbExKeyboardRead());
-			if (VbWantShutdownMenu(cparams->gbb->flags))
+			key = VbExKeyboardRead();
+			if (key == VB_BUTTON_POWER)
 				return VBERROR_SHUTDOWN_REQUESTED;
+			else {
+				VbCheckDisplayKey(ctx, cparams, key);
+				if (VbWantShutdownMenu(cparams->gbb->flags))
+					return VBERROR_SHUTDOWN_REQUESTED;
+			}
 			VbExSleepMs(REC_KEY_DELAY);
 		}
 	}
@@ -1101,15 +1113,27 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 		 * platforms don't like to scan USB too rapidly.
 		 */
 		for (i = 0; i < REC_DISK_DELAY; i += REC_KEY_DELAY) {
-			key = VbExKeyboardRead();
+			key = VbExKeyboardReadWithFlags(&key_flags);
 			switch (key) {
 			case 0:
 				/* nothing pressed */
 				break;
-			case VB_BUTTON_VOL_UP:
-			case VB_BUTTON_VOL_DOWN:
 			case VB_KEY_UP:
 			case VB_KEY_DOWN:
+			case VB_BUTTON_VOL_UP:
+			case VB_BUTTON_VOL_DOWN:
+				/* User cannot use keyboard to enable dev mode.
+				 * They need to use the volume buttons from a
+				 * trusted source to navigate to the disable os
+				 * verification menu item.  Beep so user knows
+				 * that they're doing something wrong.
+				 */
+				if (current_menu == VB_MENU_TO_DEV &&
+				    !(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)) {
+					VbExBeep(120, 400);
+					break;
+				}
+
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
 					ret = vb2_update_menu(ctx);
 					vb2_set_disabled_idx_mask(shared->flags);
@@ -1123,16 +1147,6 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				selected = 1;
 
 				/*
-				 * Need to update locale before updating the
-				 * menu or we'll lose the previous state
-				 */
-				vb2_update_locale(ctx);
-
-				ret = vb2_update_menu(ctx);
-
-				vb2_set_disabled_idx_mask(shared->flags);
-
-				/*
 				 * If user hits power button in
 				 * initial recovery screen (ie:
 				 * because didn't really want to go
@@ -1141,9 +1155,19 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 */
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
 					ret = VBERROR_SHUTDOWN_REQUESTED;
+				} else {
+					/*
+					 * Need to update locale
+					 * before updating the menu or
+					 * we'll lose the previous state
+					 */
+					vb2_update_locale(ctx);
+
+					ret = vb2_update_menu(ctx);
+
+					vb2_set_disabled_idx_mask(shared->
+								  flags);
 				}
-
-
 				if (current_menu != VB_MENU_RECOVERY ||
 				     current_menu_idx != VB_RECOVERY_DBG_INFO) {
 					/*
