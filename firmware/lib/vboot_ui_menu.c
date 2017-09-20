@@ -168,6 +168,9 @@ typedef enum _VB_MENU {
 	VB_MENU_TO_DEV,
 	VB_MENU_LANGUAGES,
 	VB_MENU_RECOVERY_INSERT,
+	VB_MENU_RECOVERY_NO_GOOD,
+	VB_MENU_RECOVERY_BROKEN,
+	VB_MENU_TO_NORM_CONFIRMED,
 	VB_MENU_COUNT,
 } VB_MENU;
 
@@ -370,6 +373,9 @@ static const uint32_t VB_MENU_TO_SCREEN_MAP[] = {
 	VB_SCREEN_RECOVERY_TO_DEV_MENU,
 	VB_SCREEN_LANGUAGES_MENU,
 	VB_SCREEN_RECOVERY_INSERT,
+	VB_SCREEN_RECOVERY_NO_GOOD,
+	VB_SCREEN_OS_BROKEN,
+	VB_SCREEN_TO_NORM_CONFIRMED,
 };
 
 VbError_t vb2_draw_current_screen(struct vb2_context *ctx,
@@ -525,6 +531,10 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 	case VB_MENU_RECOVERY_INSERT:
 		vb2_set_menu_items(VB_MENU_RECOVERY,
 				   VB_RECOVERY_POWER_OFF);
+		break;
+	case VB_MENU_RECOVERY_NO_GOOD:
+	case VB_MENU_RECOVERY_BROKEN:
+	case VB_MENU_TO_NORM_CONFIRMED:
 		break;
 	case VB_MENU_RECOVERY:
 		switch(current_menu_idx) {
@@ -978,6 +988,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 						cparams,
 						VB_SCREEN_TO_NORM_CONFIRMED,
 						0);
+					current_menu = VB_MENU_TO_NORM_CONFIRMED;
 					VbExSleepMs(5000);
 					return VBERROR_REBOOT_REQUIRED;
 				}
@@ -1063,6 +1074,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		vb2_nv_commit(ctx);
 
 		VbDisplayScreen(ctx, cparams, VB_SCREEN_OS_BROKEN, 0);
+		current_menu = VB_MENU_RECOVERY_BROKEN;
 		VB2_DEBUG("waiting for manual recovery\n");
 		while (1) {
 			key = VbExKeyboardRead();
@@ -1107,10 +1119,12 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
 			if (retval == VBERROR_NO_DISK_FOUND)
 				vb2_draw_current_screen(ctx, cparams);
-			else
+			else {
 				VbDisplayScreen(ctx, cparams,
 						VB_SCREEN_RECOVERY_NO_GOOD,
 						0);
+				current_menu = VB_MENU_RECOVERY_NO_GOOD;
+			}
 		}
 
 		/*
@@ -1185,10 +1199,12 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					if (retval == VBERROR_NO_DISK_FOUND)
 						vb2_draw_current_screen(ctx,
 							cparams);
-					else
+					else {
 						VbDisplayScreen(ctx, cparams,
 						VB_SCREEN_RECOVERY_NO_GOOD,
 						0);
+						current_menu = VB_MENU_RECOVERY_NO_GOOD;
+					}
 				}
 
 				/* Probably shutting down */
