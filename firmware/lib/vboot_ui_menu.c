@@ -168,6 +168,8 @@ typedef enum _VB_MENU {
 	VB_MENU_TO_DEV,
 	VB_MENU_LANGUAGES,
 	VB_MENU_RECOVERY_INSERT,
+	VB_MENU_RECOVERY_NO_GOOD,
+	VB_MENU_RECOVERY_BROKEN,
 	VB_MENU_COUNT,
 } VB_MENU;
 
@@ -370,6 +372,8 @@ static const uint32_t VB_MENU_TO_SCREEN_MAP[] = {
 	VB_SCREEN_RECOVERY_TO_DEV_MENU,
 	VB_SCREEN_LANGUAGES_MENU,
 	VB_SCREEN_RECOVERY_INSERT,
+	VB_SCREEN_RECOVERY_NO_GOOD,
+	VB_SCREEN_OS_BROKEN,
 };
 
 VbError_t vb2_draw_current_screen(struct vb2_context *ctx,
@@ -525,6 +529,9 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 	case VB_MENU_RECOVERY_INSERT:
 		vb2_set_menu_items(VB_MENU_RECOVERY,
 				   VB_RECOVERY_POWER_OFF);
+		break;
+	case VB_MENU_RECOVERY_NO_GOOD:
+	case VB_MENU_RECOVERY_BROKEN:
 		break;
 	case VB_MENU_RECOVERY:
 		switch(current_menu_idx) {
@@ -1129,6 +1136,11 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 					break;
 				}
 
+				if (current_menu == VB_MENU_RECOVERY_BROKEN ||
+				    current_menu == VB_MENU_RECOVERY_NO_GOOD) {
+				  VbDisplayDebugInfo(ctx, cparams);
+				  break;
+				}
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
 					ret = vb2_update_menu(ctx);
 					vb2_set_disabled_idx_mask(shared->flags);
@@ -1148,7 +1160,9 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * there), power button will turn off
 				 * device.
 				 */
-				if (current_menu == VB_MENU_RECOVERY_INSERT) {
+				if (current_menu == VB_MENU_RECOVERY_INSERT ||
+				    current_menu == VB_MENU_RECOVERY_BROKEN ||
+				    current_menu == VB_MENU_RECOVERY_BROKEN) {
 					ret = VBERROR_SHUTDOWN_REQUESTED;
 				} else {
 					/*
