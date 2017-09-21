@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eac6068_df1cf878",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "off-topic: Shouldn\u0027t this be done once below the switch-case, rather than at the end of every case? (Sorry, I keep noticing more things whenever I read through this code.)",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5dd0ba_4c285508",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "Not sure if you already meant to tackle that with this patch, but this won\u0027t help the BROKEN screen because it\u0027s handled up here. (It would help if you wrote a few more sentences in the commit message about what the goal for the patch is.)",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89413b2_7519b0ec",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "Conversely, there\u0027s no real point in checking for BROKEN down here... it should never happen. I don\u0027t think it really needs to be part of _VB_MENU unless you plan to refactor the whole BROKEN screen handling above (it would just be confusing if it\u0027s not used).",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f13bf8c_672dd5c6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "off-topic: Rather than this super-confusing thing with the global here, can\u0027t we just move all the if (option X selected) { doX(); } pieces *above* the update_menu() call? (In fact, another good question is whether update_menu() shouldn\u0027t maybe be something like do_menu_option() instead which either does explicit actions like shutting down or booting legacy, or switches to a different menu... so that you have all the logic of what the different menu items do in one place? Then the only code left here should be a very simple \"1. do menu option, 2. return if necessary, 3. redraw screen\".)",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc15cc05_ead34a4b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "NO_GOOD",
+      "range": {
+        "startLine": 1165,
+        "startChar": 41,
+        "endLine": 1165,
+        "endChar": 47
+      },
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36115e86_2e2e2397",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "off-topic: Why does this need to check that we\u0027re not on the debug option? We\u0027re drawing the debug info on line 1209 below. Why not just redraw unconditionally here to make the code simpler?",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65edad3_c3863294",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "I think it would be easier if this didn\u0027t check for NO_DISK_FOUND...",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80dda761_c177cec2",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-09-21T02:11:25Z",
+      "side": 1,
+      "message": "...and instead this just moves above the drawing code above, so that when we\u0027re on the NO_GOOD screen we will power off before we need to worry about what\u0027s the right screen to redraw.",
+      "revId": "c2119f255146964f992201d8230ea9508bcb2b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
