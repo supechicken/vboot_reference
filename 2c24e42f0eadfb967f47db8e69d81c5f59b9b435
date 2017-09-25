@@ -16,6 +16,24 @@
       "revId": "2c24e42f0eadfb967f47db8e69d81c5f59b9b435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da89ab54_e811a769",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-25T18:48:09Z",
+      "side": 1,
+      "message": "the mount_image_partition_ro logic all internalizes those cleanups, so there\u0027s nothing for leaf scripts (like this) to do",
+      "parentUuid": "9f2f1880_c573c451",
+      "revId": "2c24e42f0eadfb967f47db8e69d81c5f59b9b435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
