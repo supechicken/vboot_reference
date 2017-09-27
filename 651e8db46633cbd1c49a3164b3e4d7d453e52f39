@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79ef457c_4e7e96eb",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-27T18:30:12Z",
+      "side": 1,
+      "message": "quote \"${system_mnt}\"",
+      "revId": "651e8db46633cbd1c49a3164b3e4d7d453e52f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c1eab8_cf2a90da",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-27T18:30:12Z",
+      "side": 1,
+      "message": "should log the actual files too.  maybe something like:\n\n die \"Unexpected number of *mac_permissions.xml: ${#xml_list[@]}\\n${xml_list[*]}\"",
+      "revId": "651e8db46633cbd1c49a3164b3e4d7d453e52f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3989f6ad_566943a9",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-27T18:30:12Z",
+      "side": 1,
+      "message": "move this before the `if` (otherwise it leaks into the die paths)",
+      "revId": "651e8db46633cbd1c49a3164b3e4d7d453e52f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
