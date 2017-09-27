@@ -34,6 +34,24 @@
       "revId": "484d1947cd752a557161c36c5e8df0421485003e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32ca0d5d_cc26159b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-27T18:57:47Z",
+      "side": 1,
+      "message": "they are not\n\n $ f\u003d(a b c)\n $ printf \u0027%s\\n\u0027 \"some ${f[@]} string\"\nsome a\nb\nc string\n $ printf \u0027%s\\n\u0027 \"some ${f[*]} string\"\nsome a b c string",
+      "parentUuid": "ac971744_7787bee3",
+      "revId": "484d1947cd752a557161c36c5e8df0421485003e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
