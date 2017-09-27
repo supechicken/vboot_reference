@@ -138,6 +138,10 @@ update_sepolicy() {
 
   local orig=$(make_temp_file)
   local xml="${system_mnt}/system/etc/security/mac_permissions.xml"
+  if [ ! -f "${xml}" ]; then
+    # Android master container put this file at a different place.
+    xml="${system_mnt}/system/etc/selinux/plat_mac_permissions.xml"
+  fi
   local pattern='(<signer signature=")\w+("><seinfo value="platform)'
   cp "${xml}" "${orig}"
   sudo sed -i -E "s/${pattern}/\1${new_cert}"'\2/g' "${xml}"
