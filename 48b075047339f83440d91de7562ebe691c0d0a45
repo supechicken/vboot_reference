@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bde7887_611b1ca7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-27T17:49:30Z",
+      "side": 1,
+      "message": "It would be more maintainable to make a variable for \"stuff that should go in both UTILLIB_SRCS and FUTIL_SRCS\" and reference it in both places.\n\nThat makes it more obvious what UTILLIB includes that FUTIL doesn\u0027t, and also makes it easier to maintain if we add sources to that common variable (since that list isn\u0027t duplicated).\n\nOr maybe it makes more sense to split CGPTLIB and CROSSYSTEMLIB out of UTILLIB? That\u0027s a more intrusive change, though, so I\u0027m ok just doing the common variable.",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 30
+      },
+      "revId": "48b075047339f83440d91de7562ebe691c0d0a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
