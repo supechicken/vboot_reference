@@ -22,6 +22,30 @@
       "revId": "52115cc8c29e380d4b2fc7ca54b48a47ccb38e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cab43be_18813bc3",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-27T21:25:21Z",
+      "side": 1,
+      "message": "It\u0027s ok to fail to honor manual recovery as long as it\u0027s a one-time event, isn\u0027t it? Shall we try:\n\nif (sd-\u003erecovery_reason \u003d\u003d VB2_RECOVERY_RO_MANUAL)\n  sd-\u003erecovery_reason \u003d 0;\n\n? By the way, TPM is initialized before vb2_check_recovery is called.\n\nAs long as we have to honer manual recovery flag stored in a unprotected storage, we can never reliably distinguish a real request and a fake request.",
+      "parentUuid": "21a3fc15_c4285460",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 49
+      },
+      "revId": "52115cc8c29e380d4b2fc7ca54b48a47ccb38e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
