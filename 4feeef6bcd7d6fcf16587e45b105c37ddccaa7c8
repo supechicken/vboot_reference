@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d14c6aed_568e5aae",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2017-09-27T18:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "998705a5_d948ba8e",
+      "revId": "4feeef6bcd7d6fcf16587e45b105c37ddccaa7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3055ad5d_d3f714a5",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "4feeef6bcd7d6fcf16587e45b105c37ddccaa7c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5441bb02_e4586e9a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2017-09-27T18:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3055ad5d_d3f714a5",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "4feeef6bcd7d6fcf16587e45b105c37ddccaa7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
