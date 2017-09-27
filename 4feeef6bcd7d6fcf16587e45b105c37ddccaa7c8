@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3055ad5d_d3f714a5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2017-09-27T15:48:00Z",
+      "side": 1,
+      "message": "The official signing script just match the suffix, so we should do the same thing.\nhttps://android.googlesource.com/platform/build/+/master/tools/releasetools/sign_target_files_apks.py#235",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "4feeef6bcd7d6fcf16587e45b105c37ddccaa7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
