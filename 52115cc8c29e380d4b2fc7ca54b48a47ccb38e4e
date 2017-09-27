@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21a3fc15_c4285460",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-27T20:49:38Z",
+      "side": 1,
+      "message": "This isn\u0027t a bitfield.\n\nThere are cases where the reason persists across a reboot or two (e.g. TPM initialization), so not sure we\u0027d want to clear this.  Worst-case we could do something like\n\nif (sd-\u003erecovery_reason \u003d\u003d VB2_RECOVERY_RO_MANUAL)\n  sd-\u003erecovery_reason \u003d VB2_RECOVERY_NOT_MANUAL\n\nwith some newly defined NOT_MANUAL code.",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 49
+      },
+      "revId": "52115cc8c29e380d4b2fc7ca54b48a47ccb38e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
