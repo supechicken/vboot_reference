@@ -96,4 +96,12 @@ uint32_t vb2_get_fwmp_flags(void);
  */
 void vb2_nv_commit(struct vb2_context *ctx);
 
+/**
+ * Check whether recovery was requested manually or not
+ *
+ * @param flags Flags of VbSharedDataHeader.
+ * @return 1: Yes. 0: No or not sure.
+ */
+int is_recovery_manually_requested(uint32_t flags);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */
