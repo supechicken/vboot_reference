@@ -9,10 +9,11 @@
 
 usage() {
   cat <<EOF
-Usage: ${PROG} DIR
+Usage: ${PROG} [options]
 
-DIR: To generate a keypair from an RSA 3072 key (.pem file) for Hammer at DIR
-
+Options:
+  -o, --output_dir <dir>: Where to write the keys (default is cwd)
+  -n, --key-name <name>:  Name of the key pair (default is hammer)
 EOF
 
   if [[ $# -ne 0 ]]; then
@@ -24,43 +25,53 @@ EOF
 
 # Generate a keypair at the given directory.
 generate_key() {
-  local dir=$1
+  local output_dir="${1}"
+  local key_name="${2}"
+  local tmp_dir=$(mktemp -d --suffix=.create_${key_name}_keys)
 
   # Generate RSA key.
-  openssl genrsa -3 -out "${dir}/temp.pem" 3072
+  openssl genrsa -3 -out "${tmp_dir}/temp.pem" 3072
 
   # Create a keypair from an RSA .pem file generated above.
-  futility create "${dir}/temp.pem" "${dir}/key_hammer"
+  futility create "${tmp_dir}/temp.pem" "${output_dir}/key_${key_name}"
 
   # Best attempt to securely delete the temp.pem file.
-  shred --remove "${dir}/temp.pem"
+  shred --remove "${tmp_dir}/temp.pem"
 }
 
 main() {
   set -e
-
-  local dir
+  set -x
+  local output_dir="${PWD}"
+  local key_name="hammer"
 
   while [[ $# -gt 0 ]]; do
-    case $1 in
+    case "${1}" in
     -h|--help)
       usage
       ;;
+    -o|--output_dir)
+      output_dir="${2}"
+      if [[ ! -d "${output_dir}" ]]; then
+        die "output dir (${output_dir}) doesn't exist."
+      fi
+      shift
+      ;;
+    -n|--key_name)
+      key_name="${2}"
+      shift
+      ;;
     -*)
-      usage "Unknown option: $1"
+      usage "Unknown option: ${1}"
       ;;
     *)
-      break
+      usage "Unknown argument ${1}"
       ;;
     esac
+    shift
   done
 
-  if [[ $# -ne 1 ]]; then
-    usage "Missing output directory"
-  fi
-  dir="$1"
-
-  generate_key "${dir}"
+  generate_key "${output_dir}" "${key_name}"
 }
 
 main "$@"
