@@ -208,46 +208,9 @@ static VbError_t check_ec_active(struct vb2_context *ctx, int devidx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Determine whether the EC is in RO or RW */
-	int in_rw = 0;
-	int rv = VbExEcRunningRW(devidx, &in_rw);
-	if (in_rw) {
+	int in_rw = !VbExTrustEC(devidx);
+	if (in_rw)
 		sd->flags |= IN_RW(devidx);
-	}
-
-	if (sd->recovery_reason) {
-		/*
-		 * Recovery mode; just verify the EC is in RO code.  Don't do
-		 * software sync, since we don't have a RW image.
-		 */
-		if (rv == VBERROR_SUCCESS && in_rw == 1) {
-			/*
-			 * EC is definitely in RW firmware.  We want it in
-			 * read-only code, so preserve the current recovery
-			 * reason and reboot.
-			 *
-			 * We don't reboot on error or unknown EC code, because
-			 * we could end up in an endless reboot loop.  If we
-			 * had some way to track that we'd already rebooted for
-			 * this reason, we could retry only once.
-			 */
-			VB2_DEBUG("want recovery but got EC-RW\n");
-			request_recovery(ctx, sd->recovery_reason);
-			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-		}
-
-		VB2_DEBUG("in recovery; EC-RO\n");
-		return VBERROR_SUCCESS;
-	}
-
-	/*
-	 * Not in recovery.  If we couldn't determine where the EC was,
-	 * reboot to recovery.
-	 */
-	if (rv != VBERROR_SUCCESS) {
-		VB2_DEBUG("VbExEcRunningRW() returned %d\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_UNKNOWN_IMAGE);
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	}
 
 	return VBERROR_SUCCESS;
 }

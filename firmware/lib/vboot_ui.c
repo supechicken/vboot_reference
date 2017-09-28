@@ -424,20 +424,25 @@ VbError_t vb2_recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	VB2_DEBUG("VbBootRecovery() start\n");
 
 	/*
-	 * If the dev-mode switch is off and the user didn't press the recovery
-	 * button (recovery was triggerred automatically), show 'broken' screen.
-	 * The user can either only shutdown to abort or hit esc+refresh+power
-	 * to initiate recovery as instructed on the screen.
+	 * We trap recovery boot here in 'broken' screen where only reboot
+	 * or manual recovery (e.g. esc+refresh+power) is available option.
+	 *
+	 * The only way to pass this check and proceed to the recovery process
+	 * is to have EC in RO and EC-RO says recovery was requested manually.
+	 * All other recovery requests including manual recovery requested by a
+	 * (compromised) host will end up with 'broken' screen.
+	 *
+	 * In dev-mode, this check is entirely skipped.
 	 */
 	if (!(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
-	    !(shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
+	    (!VbExTrustEC(0) || !(shared->flags & VBSD_BOOT_REC_SWITCH_ON))) {
 		/*
 		 * We have to save the reason here so that it will survive
 		 * coming up three-finger-salute. We're saving it in
 		 * VBNV_RECOVERY_SUBCODE to avoid a recovery loop.
 		 * If we save the reason in VBNV_RECOVERY_REQUEST, we will come
 		 * back here, thus, we won't be able to give a user a chance to
-		 * reboot to workaround boot hicups.
+		 * reboot to workaround a boot hiccup.
 		 */
 		VB2_DEBUG("VbBootRecovery() saving recovery reason (%#x)\n",
 			 shared->recovery_reason);

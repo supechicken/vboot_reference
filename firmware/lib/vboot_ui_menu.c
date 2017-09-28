@@ -1038,7 +1038,7 @@ VbError_t vb2_recovery_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	 * to initiate recovery as instructed on the screen.
 	 */
 	if (!(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
-	    !(shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
+	    (!VbExTrustEC(0) || !(shared->flags & VBSD_BOOT_REC_SWITCH_ON))) {
 		/*
 		 * We have to save the reason here so that it will survive
 		 * coming up three-finger-salute. We're saving it in
