@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4159efed_5eea2be8",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-29T07:33:43Z",
+      "side": 1,
+      "message": "how about putting all the logic in this script, and the hammer script is just a stub on top of this like the rose/staff scripts ?",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dff8982_37e12375",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-29T07:33:43Z",
+      "side": 1,
+      "message": "all the builtin vars should not use braces.  so you want $0 and $1 throughout.",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ae73e8_fda15230",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-29T07:33:43Z",
+      "side": 1,
+      "message": "drop the quotes ... in a heredoc it\u0027ll be literally displayed :).",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218039bb_1fb86dac",
+        "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-29T07:33:43Z",
+      "side": 1,
+      "message": "is this necessary ?",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763d8ecb_830b6a8e",
+        "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-29T07:33:43Z",
+      "side": 1,
+      "message": "delete debug code ?",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
