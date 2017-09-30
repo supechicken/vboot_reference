@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6fcaf660_d592b57c",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-09-30T00:08:40Z",
+      "side": 1,
+      "message": "Yes, it sounds good to me.",
+      "parentUuid": "4159efed_5eea2be8",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dff8982_37e12375",
         "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-29T07:33:43Z",
       "side": 1,
       "message": "all the builtin vars should not use braces.  so you want $0 and $1 throughout.",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da230de_2ded07cf",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-09-30T00:08:40Z",
+      "side": 1,
+      "message": "Learn it and thanks.",
+      "parentUuid": "3dff8982_37e12375",
       "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f90cc00d_b23130a8",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-09-30T00:08:40Z",
+      "side": 1,
+      "message": "Learn it and thanks again.",
+      "parentUuid": "06ae73e8_fda15230",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "218039bb_1fb86dac",
         "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "9170a35f_d75fa3b4",
+        "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-09-30T00:08:40Z",
+      "side": 1,
+      "message": "Just want to put tmp file in a random tmp dir in my mind so once there are multiple callers in parallel, the temp.pem will not be overwrite? This might be not that matter in the use case here since it is used rarely.",
+      "parentUuid": "218039bb_1fb86dac",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "763d8ecb_830b6a8e",
         "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2017-09-29T07:33:43Z",
       "side": 1,
       "message": "delete debug code ?",
+      "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c210567_3f8dc8d4",
+        "filename": "scripts/keygeneration/accessory/create_new_hammer_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-09-30T00:08:40Z",
+      "side": 1,
+      "message": "Forget to clean up and will remove it.",
+      "parentUuid": "763d8ecb_830b6a8e",
       "revId": "33091b747a7736812869c2bb1a2045f02b7f88ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
