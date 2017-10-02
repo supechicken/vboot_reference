@@ -50,5 +50,6 @@ const uint8_t *vb2_get_boot_state_digest(struct vb2_context *ctx)
 	int index = (ctx->flags & VB2_CONTEXT_RECOVERY_MODE ? 2 : 0) +
 			(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE ? 1 : 0);
 
-	return kBootStateSHA1Digests[index];
+	vb2ex_printf(__func__, "PCR0 hash index is %d\n", index);
+	return kBootStateSHA1Digests[0];
 }
