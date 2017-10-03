@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "094e55c5_ad00b8e0",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-03T01:11:05Z",
+      "side": 1,
+      "message": "I didn\u0027t make this change because I didn\u0027t want to involve Depthcharge in this series. I\u0027ll create another series just for this rename.",
+      "parentUuid": "9a31f451_43e7e464",
+      "range": {
+        "startLine": 211,
+        "startChar": 14,
+        "endLine": 211,
+        "endChar": 25
+      },
+      "revId": "3cf955a7b9397cf2968b9166b9d8a1523c478b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b9a0d92_c14ac452",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
