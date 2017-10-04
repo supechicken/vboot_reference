@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a9d1237_2ecf3f2b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:59:03Z",
+      "side": 1,
+      "message": "No... this one was supposed to stay \"ui\". The difference is \"ui\" for the normal screens and \"menu\" for the detachable UI (at least that\u0027s what I think it was supposed to be, judging from the original code).",
+      "revId": "0936d040d87243269e4c123e12606ccd06e915e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
