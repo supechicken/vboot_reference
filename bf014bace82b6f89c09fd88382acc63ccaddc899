@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f447db4b_583564b0",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "Can be void now, btw. In fact, it\u0027s arguable whether we need this function and the IN_RW() shared data bit anymore at all. GPIO reads are cheap so we could just call VbExTrustEC() directly whenever we need to know whether it\u0027s in RW. It\u0027s inconsistent that we sometimes check the shared data flag (e.g. in sync_phase2) and sometimes call VbExTrustEC() directly (e.g. in allow_recovery).",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257e836b_75ab8cc1",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "Cannot happen anymore",
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bddb4fbe_06f92dc5",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "859aceda_0839c099",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "nit: I think I know what you want to say but I can\u0027t really read that out of here. How about \"including manual recovery faked by a compromised EC\"?",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 71
+      },
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b807345b_7a5db314",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "nit: cleaner to wrap in !!()",
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59710a5_a2c7126b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-04T22:28:29Z",
+      "side": 1,
+      "message": "nit: I agree this should be static, but should probably continue to be called recovery_menu() for consistency with vb2_developer_menu() (which should really also be static...)",
+      "revId": "bf014bace82b6f89c09fd88382acc63ccaddc899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
