@@ -22,6 +22,30 @@
       "revId": "7cc287578701ba7a76924e8bce5d50ce5d9aac32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce284c4f_b08b2ad2",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-05T16:29:24Z",
+      "side": 1,
+      "message": "+1 on name changes.\n\nI like to call them \u0027recovery\u0027 boot and \u0027broken\u0027 boot. Broken boot doesn\u0027t boot because it\u0027s broken. vbsd-\u003erecovery_reason should be renamed to broken_reason and VB2_SD_FLAG_MANUAL_RECOVERY should be removed. Recovery should be always manual. So, there will be no more \u0027manual\u0027 recovery v.s. \u0027auto\u0027 recovery. In dev mode, broken boot automatically transitions to recovery boot.",
+      "parentUuid": "3879a8c5_02aa5aa7",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 25
+      },
+      "revId": "7cc287578701ba7a76924e8bce5d50ce5d9aac32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
