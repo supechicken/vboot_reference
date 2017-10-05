@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3879a8c5_02aa5aa7",
+        "filename": "firmware/lib/include/vboot_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-05T16:12:22Z",
+      "side": 1,
+      "message": "I wish we had a better term for this.  Because elsewhere in the code, BROKEN and INSERT are both considered \"recovery\".\n\nMaybe this should be \"Check whether interactive recovery is allowed?\" \n If not, then only a BROKEN screen can be displayed, which can\u0027t change system settings or boot.\n\nOr is there a better word than \u0027interactive\u0027?",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 25
+      },
+      "revId": "7cc287578701ba7a76924e8bce5d50ce5d9aac32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
