@@ -523,7 +523,9 @@ uint32_t TlclGetRandom(uint8_t *data, uint32_t length, uint32_t *size)
 	return TPM_E_IOERROR;
 }
 
-uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version)
+uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
+                        uint8_t* vendor_specific_buf,
+                        size_t* vendor_specific_buf_size)
 {
 	uint32_t result =  tlcl_get_tpm_property(TPM_PT_MANUFACTURER, vendor);
 	if (result != TPM_SUCCESS)
@@ -539,6 +541,37 @@ uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version)
 		return result;
 
 	*firmware_version = ((uint64_t) version_1 << 32) | version_2;
+
+	uint32_t vendor_string;
+	uint32_t vendor_string_property;
+
+	if (vendor_specific_buf_size) {
+		size_t vendor_specific_size = 0;
+		for (vendor_string_property = TPM_PT_VENDOR_STRING_1;
+		     vendor_string_property <= TPM_PT_VENDOR_STRING_4;
+		     ++vendor_string_property) {
+			result = tlcl_get_tpm_property(vendor_string_property, &vendor_string);
+			if (result != TPM_SUCCESS)
+				break;
+
+			int i = 3;
+			for (; i >= 0; --i) {
+				uint8_t byte = (vendor_string >> (i * 8)) & 0xffu;
+				if (!byte)
+					break;
+				if (vendor_specific_buf) {
+					if (vendor_specific_size >= *vendor_specific_buf_size)
+						break;
+					vendor_specific_buf[vendor_specific_size++] = byte;
+				} else {
+					vendor_specific_size++;
+				}
+			}
+			if (i >= 0)
+				break;
+		}
+		*vendor_specific_buf_size = vendor_specific_size;
+	}
 	return TPM_SUCCESS;
 }
 
