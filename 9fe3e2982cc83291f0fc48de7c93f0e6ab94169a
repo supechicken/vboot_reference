@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4b2c4c9_86c8919b",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-10-10T23:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0543c7cd_c0b43894",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 3
+      },
+      "revId": "9fe3e2982cc83291f0fc48de7c93f0e6ab94169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81d39be2_0beb34e2",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c7b21cd5_ea401b2d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-10-10T23:15:04Z",
+      "side": 1,
+      "message": "Done. And fixed more issues with unit tests.",
+      "parentUuid": "81d39be2_0beb34e2",
+      "range": {
+        "startLine": 535,
+        "startChar": 12,
+        "endLine": 535,
+        "endChar": 41
+      },
+      "revId": "9fe3e2982cc83291f0fc48de7c93f0e6ab94169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62fdc6db_2268469c",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "9fe3e2982cc83291f0fc48de7c93f0e6ab94169a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d656022e_8d57e7b7",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-10-10T23:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fdc6db_2268469c",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 74
+      },
+      "revId": "9fe3e2982cc83291f0fc48de7c93f0e6ab94169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
