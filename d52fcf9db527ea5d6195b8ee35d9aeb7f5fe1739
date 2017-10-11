@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed803305_265f5742",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-10-11T20:47:35Z",
+      "side": 1,
+      "message": "nit: assert total_size \u003c\u003d sizeof(prop_string) here?",
+      "range": {
+        "startLine": 577,
+        "startChar": 25,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "d52fcf9db527ea5d6195b8ee35d9aeb7f5fe1739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
