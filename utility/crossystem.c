@@ -71,6 +71,8 @@ const Param sys_param_list[] = {
   {"hwid", IS_STRING, "Hardware ID"},
   {"inside_vm", 0, "Running in a VM?"},
   {"kern_nv", 0, "Non-volatile field for kernel use", "0x%08x"},
+  {"kernel_max_rollforward", CAN_WRITE, "Max kernel version to store into TPM",
+   "0x%08x"},
   {"kernkey_vfy", IS_STRING, "Type of verification done on kernel key block"},
   {"loc_idx", CAN_WRITE, "Localization index for firmware screens (writable)"},
   {"mainfw_act", IS_STRING, "Active main firmware"},
