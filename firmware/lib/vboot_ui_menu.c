@@ -878,7 +878,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			 * Unfortunately, we need the blanking to get rid of
 			 * artifacts from previous menu printing.
 			 */
-			VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+			/* VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0); */
 			vb2_draw_current_screen(ctx, cparams);
 
 			/* Probably shutting down */
