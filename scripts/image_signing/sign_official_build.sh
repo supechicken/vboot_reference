@@ -87,7 +87,7 @@ set -e
 PATH=$PATH:/usr/sbin:/sbin
 
 # Make sure the tools we need are available.
-for prereqs in futility vbutil_kernel cgpt dump_kernel_config verity \
+for prereqs in futility vbutil_kernel cgpt dump_kernel_config verity cbfstool \
   load_kernel_test dumpe2fs sha1sum e2fsck; do
   type -P "${prereqs}" &>/dev/null || \
     die "${prereqs} tool not found."
@@ -117,6 +117,11 @@ is_old_verity_argv() {
     return 0
   fi
   return 1
+}
+
+# Returns true if given ec.bin is signed or false if not.
+is_ec_rw_signed() {
+  ${FUTILITY} dump_fmap "${1}" | grep -q KEY_RO
 }
 
 # Get the dmparams parameters from a kernel config.
@@ -495,6 +500,16 @@ sign_recovery_kernel() {
   info "Signed recovery_kernel image output to ${image}"
 }
 
+store_file_in_cbfs() {
+  local image="$1"
+  local file="$2"
+  local name="$3"
+  local compression="$4"
+  cbfstool "${image}" remove -r FW_MAIN_A,FW_MAIN_B -n "${name}" || return 1
+  cbfstool "${image}" add -r FW_MAIN_A,FW_MAIN_B -t raw -c "${compression}" \
+      -f "${file}" -n "${name}" || return 1
+}
+
 # Sign a delta update payload (usually created by paygen).
 # Args: INPUT_IMAGE KEY_DIR OUTPUT_IMAGE
 sign_update_payload() {
@@ -620,7 +635,25 @@ resign_firmware_payload() {
           devkeyblock="${keyblock}"
         fi
 
+        # Path to bios.bin
         local image_path="${shellball_dir}/${image}"
+        # Path to ec.bin
+        local ec_image_path="${shellball_dir}/${image/bios.bin/ec.bin}"
+
+        # Resign ec.bin
+        if is_ec_rw_signed "${ec_image_path}"; then
+          ${FUTILITY} sign --type rwsig --prikey ${KEY_DIR}/key_ec.vbprik2 \
+              ${ec_image_path}
+          # Above command produces EC_RW.bin. Compute its hash.
+          openssl dgst -sha256 -binary EC_RW.bin > EC_RW.hash
+          # Store EC_RW.bin and its hash in bios.bon
+          store_file_in_cbfs "${image_path}" "EC_RW.bin" "ecrw" "lzma" \
+              || die "Failed to store file in ${image_path}"
+          store_file_in_cbfs "${image_path}" "EC_RW.hash" "ecrw.hash" "none" \
+              || die "Failed to store file in ${image_path}"
+        fi
+
+        # Resign bios.bin
         ${FUTILITY} sign \
           --signprivate "${signprivate}" \
           --keyblock "${keyblock}" \
