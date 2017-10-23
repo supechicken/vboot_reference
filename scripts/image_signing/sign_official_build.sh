@@ -87,7 +87,7 @@ set -e
 PATH=$PATH:/usr/sbin:/sbin
 
 # Make sure the tools we need are available.
-for prereqs in futility vbutil_kernel cgpt dump_kernel_config verity \
+for prereqs in futility vbutil_kernel cgpt dump_kernel_config verity cbfstool \
   load_kernel_test dumpe2fs sha1sum e2fsck; do
   type -P "${prereqs}" &>/dev/null || \
     die "${prereqs} tool not found."
@@ -117,6 +117,11 @@ is_old_verity_argv() {
     return 0
   fi
   return 1
+}
+
+# Returns true if given ec.bin is signed or false if not.
+is_ec_rw_signed() {
+  ${FUTILITY} dump_fmap "$1" | grep -q KEY_RO
 }
 
 # Get the dmparams parameters from a kernel config.
@@ -495,6 +500,18 @@ sign_recovery_kernel() {
   info "Signed recovery_kernel image output to ${image}"
 }
 
+# Store a file in CBFS
+# Args: INPUT_IMAGE INPUT_FILE CBFS_FILE_NAME COMPRESSION_ALGORITHM
+store_file_in_cbfs() {
+  local image="$1"
+  local file="$2"
+  local name="$3"
+  local compression="$4"
+  cbfstool "${image}" remove -r FW_MAIN_A,FW_MAIN_B -n "${name}" || return 1
+  cbfstool "${image}" add -r FW_MAIN_A,FW_MAIN_B -t raw -c "${compression}" \
+      -f "${file}" -n "${name}" || return 1
+}
+
 # Sign a delta update payload (usually created by paygen).
 # Args: INPUT_IMAGE KEY_DIR OUTPUT_IMAGE
 sign_update_payload() {
@@ -571,7 +588,7 @@ resign_firmware_payload() {
     info "See go/cros-unibuild-signing for details"
     {
       read # Burn the first line (header line)
-      while IFS="," read -r model_name image key_id
+      while IFS="," read -r model_name bios key_id
       do
         local key_suffix=''
         local extra_args=()
@@ -604,7 +621,7 @@ resign_firmware_payload() {
           cp "${rootkey}" "${shellball_keyset_dir}/rootkey.${model_name}"
         fi
 
-        info "Signing firmware image ${image} for model ${model_name} " \
+        info "Signing firmware image ${bios} for model ${model_name} " \
           "with key suffix ${key_suffix}"
 
         local temp_fw=$(make_temp_file)
@@ -620,7 +637,26 @@ resign_firmware_payload() {
           devkeyblock="${keyblock}"
         fi
 
-        local image_path="${shellball_dir}/${image}"
+        # Path to bios.bin.
+        local bios_path="${shellball_dir}/${bios}"
+        # Path to ec.bin.
+        local ec_path="${shellball_dir}/${bios/bios.bin/ec.bin}"
+
+        # Resign ec.bin.
+        if is_ec_rw_signed "${ec_path}"; then
+          local ec_temp=$(make_temp_dir)
+        ${FUTILITY} sign --type rwsig --prikey "${KEY_DIR}/key_ec_efs.vbprik2" \
+              "${ec_path}" || die "Failed to sign ${ec_path}"
+          # Above command produces EC_RW.bin. Compute its hash.
+          openssl dgst -sha256 -binary EC_RW.bin > "${ec_temp}/EC_RW.hash"
+          # Store EC_RW.bin and its hash in bios.bin.
+          store_file_in_cbfs "${bios_path}" "EC_RW.bin" "ecrw" "lzma" \
+              || die "Failed to store file in ${bios_path}"
+          store_file_in_cbfs "${bios_path}" "${ec_temp}/EC_RW.hash" \
+              "ecrw.hash" "none" || die "Failed to store file in ${bios_path}"
+        fi
+
+        # Resign bios.bin.
         ${FUTILITY} sign \
           --signprivate "${signprivate}" \
           --keyblock "${keyblock}" \
@@ -629,7 +665,7 @@ resign_firmware_payload() {
           --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
           --version "${FIRMWARE_VERSION}" \
           "${extra_args[@]}" \
-          ${image_path} \
+          ${bios_path} \
           ${temp_fw}
 
 
@@ -640,9 +676,9 @@ resign_firmware_payload() {
           --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
           --rootkey="${rootkey}" \
           "${temp_fw}" \
-          "${image_path}"
+          "${bios_path}"
 
-        info "Signed firmware image output to ${image_path}"
+        info "Signed firmware image output to ${bios_path}"
       done
       unset IFS
     } < "${signer_config}"
@@ -674,7 +710,7 @@ resign_firmware_payload() {
   sudo chmod a+rx "${firmware_bundle}"
   # Unmount now to flush changes.
   sudo umount "${rootfs_dir}"
-  info "Re-signed firmware AU payload in ${image}"
+  info "Re-signed firmware AU payload in ${bios}"
 }
 
 # Re-sign Android image if exists.
