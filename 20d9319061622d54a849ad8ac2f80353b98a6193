@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2eed68_0e4202d0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "drop the braces on \"$1\"",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11cf0315_46957323",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "please document the func.  see below as an example.",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae876a9_3c1f339f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "this \"image\" needs to be renamed.  it\u0027s clobbering the `local image` at the top of this function.",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb79df3_6f34aabc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "periods at the end of sentences in comments.  comes up all below.",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b72241_3f8b3abf",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "you only create one file under the tempdir, so use $(make_temp_file) instead and use a more specific name.",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284ca9e2_6fb4fe1f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-25T20:38:53Z",
+      "side": 1,
+      "message": "quote \"${KEY_DIR}/key_ec.vbprik2\" and \"${ec_image_path}\"",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
