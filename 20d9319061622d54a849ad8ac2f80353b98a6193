@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "39658698_1d793b2c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-25T22:34:57Z",
+      "side": 1,
+      "message": "Done. CL:738794.",
+      "parentUuid": "eaeae3c6_0ad5e0ea",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22b72241_3f8b3abf",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -98,6 +116,24 @@
       "writtenOn": "2017-10-25T20:38:53Z",
       "side": 1,
       "message": "you only create one file under the tempdir, so use $(make_temp_file) instead and use a more specific name.",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d947d97_644d41be",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-25T22:34:57Z",
+      "side": 1,
+      "message": "futility spits EC_RW.bin to the current directory, which isn\u0027t ideal. I\u0027m thinking of adding \u0027-o\u0027 option to futility so that we can make it spit EC_RW.bin under a temp directory.",
+      "parentUuid": "22b72241_3f8b3abf",
       "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
