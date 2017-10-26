@@ -103,6 +103,24 @@
       "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91453e92_359b7812",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-26T22:05:23Z",
+      "side": 1,
+      "message": "I need to make it TODO. cbfstool doesn\u0027t really have an authoritative field to show the compression algorithm. It looks something like this:\n\necrw       0xf2380    raw      62162 (131072 after LZMA decompression)",
+      "parentUuid": "eec75884_28890198",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
