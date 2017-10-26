@@ -67,6 +67,24 @@
       "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9af92e2_f376c9a0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-26T18:05:27Z",
+      "side": 1,
+      "message": "Unfortunately, cbfs name for ec image isn\u0027t stored anywhere else.\n\nCompression algorithm can be changed without breaking old binaries. Old binaries with ecrw compressed in lzma can be resigned with a new algorithm. Or are you talking about preserving the algorithm? Could you describe a situation where a backward compatibility is an issue?",
+      "parentUuid": "6a8ae377_11e0e018",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
