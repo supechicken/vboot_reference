@@ -121,6 +121,24 @@
       "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b761183_3ba42c72",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-26T23:30:34Z",
+      "side": 1,
+      "message": "Having said that, it would be too much work to add compression column... if no scripts assume there is no extra column.",
+      "parentUuid": "91453e92_359b7812",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
