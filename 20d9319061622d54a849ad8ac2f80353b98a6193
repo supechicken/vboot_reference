@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "d90c91f1_bfbbd554",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-26T07:26:32Z",
+      "side": 1,
+      "message": "but you didn\u0027t `cd \"${temp}\"`, so it isn\u0027t writing EC_RW.bin to that temp dir\n\ni agree adding an option to control the output of intermediates would be better",
+      "parentUuid": "3d947d97_644d41be",
+      "revId": "20d9319061622d54a849ad8ac2f80353b98a6193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "284ca9e2_6fb4fe1f",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3

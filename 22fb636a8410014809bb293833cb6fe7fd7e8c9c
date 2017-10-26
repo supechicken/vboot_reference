@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8684f81c_06bbb7e4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-26T07:26:32Z",
+      "side": 1,
+      "message": "how about \"bios_image\" and \"ec_image\" ?  isn\u0027t too verbose i don\u0027t think.",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b72a296_a767b986",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-26T07:26:32Z",
+      "side": 1,
+      "message": "indentation is incorrect",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a8ae377_11e0e018",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-26T07:26:32Z",
+      "side": 1,
+      "message": "can the compression/name settings be discovered in a better way ?  this one script is used to sign all images in all branches for all time, so if you ever want to change \"lzma\" or something, it gets difficult to support old \u0026 new images.",
+      "revId": "22fb636a8410014809bb293833cb6fe7fd7e8c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
