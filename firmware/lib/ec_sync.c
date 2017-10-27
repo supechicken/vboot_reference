@@ -205,7 +205,25 @@ static VbError_t update_ec(struct vb2_context *ctx, int devidx,
 static void check_ec_active(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	if (!VbExTrustEC(devidx))
+	int in_rw = 0;
+	int rv = VbExEcRunningRW(devidx, &in_rw);
+
+	/*
+	 * Not in recovery.  If we couldn't determine where the EC was,
+	 * reboot to recovery.
+	 */
+	if (rv != VBERROR_SUCCESS) {
+		VB2_DEBUG("VbExEcRunningRW() returned %d\n", rv);
+		request_recovery(ctx, VB2_RECOVERY_EC_UNKNOWN_IMAGE);
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
+	/*
+	 * We trust what EC-RW says. We don't use VbExTrustEC because EC_IN_RW
+	 * can't be reset by the EC on some platforms. If it lies it's in RO,
+	 * we'll flash RW while it's in RW.
+	 */
+	if (in_rw)
 		sd->flags |= IN_RW(devidx);
 }
 
