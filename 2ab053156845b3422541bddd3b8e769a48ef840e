@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8e3054b6_8a720c7c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-27T20:20:41Z",
+      "side": 1,
+      "message": "If you\u0027re already in recovery mode you should continue and pretend the EC is in RO if you get an error here, so you don\u0027t get a reboot loop if there\u0027s something wrong with the EC. (That\u0027s what the old code used to do, too.)",
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "386c0f1f_9227a971",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
