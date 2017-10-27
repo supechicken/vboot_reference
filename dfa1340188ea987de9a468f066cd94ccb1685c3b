@@ -92,6 +92,30 @@
       "revId": "dfa1340188ea987de9a468f066cd94ccb1685c3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c98265_2d2ed4e0",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T19:16:51Z",
+      "side": 1,
+      "message": "Not sure what the question is asking. This is the very gate which separates broken boot (a.k.a. auto recovery) v.s. recovery boot (a.k.a. manual recovery).",
+      "parentUuid": "6b6ed264_8abda9f1",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 22
+      },
+      "revId": "dfa1340188ea987de9a468f066cd94ccb1685c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
