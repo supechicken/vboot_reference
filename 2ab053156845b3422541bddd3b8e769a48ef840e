@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a594b60_75ae4369",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-27T19:23:14Z",
+      "side": 1,
+      "message": "It also removes a redundant check for VbExTrustEC() when deciding whether to allow developer mode to be enabled from the INSERT screen.  Now that the INSERT screen can only be reached by manual recovery, which resets the EC, we don\u0027t need to check again before going to TODEV.",
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386c0f1f_9227a971",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-27T19:23:14Z",
+      "side": 1,
+      "message": "I don\u0027t know of any platforms where the EC *can* reset this, actually.",
+      "range": {
+        "startLine": 220,
+        "startChar": 32,
+        "endLine": 220,
+        "endChar": 36
+      },
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab9c68e0_91b5b685",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-27T19:23:14Z",
+      "side": 1,
+      "message": "But if it\u0027s willing to lie, it\u0027s also willing to ignore a reboot request.  And if it\u0027s not lying, then we\u0027re fine.  Not sure why we call this out specifically here.",
+      "range": {
+        "startLine": 220,
+        "startChar": 48,
+        "endLine": 221,
+        "endChar": 36
+      },
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
