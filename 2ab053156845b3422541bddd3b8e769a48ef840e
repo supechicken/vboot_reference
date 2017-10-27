@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "adc909e0_ea873b12",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T21:03:24Z",
+      "side": 1,
+      "message": "This is reached only if recovery_reason \u003d\u003d 0. So, we won\u0027t be trapped in a reboot loop.",
+      "parentUuid": "8e3054b6_8a720c7c",
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "386c0f1f_9227a971",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
