@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3f030004_5b845807",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-10-27T21:18:13Z",
+      "side": 1,
+      "message": "Oh... I forgot we moved that check there. Okay, never mind then.",
+      "parentUuid": "adc909e0_ea873b12",
+      "revId": "2ab053156845b3422541bddd3b8e769a48ef840e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "386c0f1f_9227a971",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
