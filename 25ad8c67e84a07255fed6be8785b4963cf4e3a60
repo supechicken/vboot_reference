@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7db8458_b9a07c37",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "i don\u0027t think you need to go through this.  the reason for FUTILITY is because of the test framework, but you aren\u0027t doing any of that for cbfstool.  just inline it below.",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbfbeec_3a886490",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc74a5c7_a6c23168",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "i think you can combine this grep/awk:\n\n awk -vname\u003d\"${name}\" \u0027$1 \u003d\u003d name {print $5}\u0027",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51058efc_54962fb6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "at this point, do we need a variable ?\n\n   ...\n   local name\u003d\"$2\"\n   \"${CBFSTOOL}\" \"${image}\" print -r \"FW_MAIN_A\" | ...\n }",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3447848f_9d2ac7ba",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511c2e1c_f8d36661",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "comment it and quote it and redirect the output\n\n # Futility always writes files to CWD, so create a temp dir for it.\n pushd \"$(make_temp_dir)\" \u003e/dev/null",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb43b32_e8d98b82",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "can you add an `info` here about resigning the ec image like we do with the bios image ?",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1b1a17_c663b8a0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-27T22:01:56Z",
+      "side": 1,
+      "message": "this is incorrect -- it should be $image still",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
