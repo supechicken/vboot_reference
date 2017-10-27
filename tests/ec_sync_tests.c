@@ -33,6 +33,7 @@ static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static GoogleBinaryBlockHeader gbb;
 
 static int mock_in_rw;
+static VbError_t in_rw_retval;
 static int protect_retval;
 static int ec_ro_protected;
 static int ec_rw_protected;
@@ -94,6 +95,7 @@ static void ResetMocks(void)
 	ec_run_image = 0;   /* 0 = RO, 1 = RW */
 	ec_ro_updated = 0;
 	ec_rw_updated = 0;
+	in_rw_retval = VBERROR_SUCCESS;
 	protect_retval = VBERROR_SUCCESS;
 	update_retval = VBERROR_SUCCESS;
 	run_retval = VBERROR_SUCCESS;
@@ -140,6 +142,12 @@ uint32_t VbExIsShutdownRequested(void)
 int VbExTrustEC(int devidx)
 {
 	return !mock_in_rw;
+}
+
+VbError_t VbExEcRunningRW(int devidx, int *in_rw)
+{
+	*in_rw = mock_in_rw;
+	return in_rw_retval;
 }
 
 VbError_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
@@ -237,6 +245,12 @@ static void test_ssync(VbError_t retval, int recovery_reason, const char *desc)
 
 static void VbSoftwareSyncTest(void)
 {
+	/* AP-RO cases */
+	ResetMocks();
+	in_rw_retval = VBERROR_SIMULATED;
+	test_ssync(VBERROR_EC_REBOOT_TO_RO_REQUIRED,
+		   VBNV_RECOVERY_EC_UNKNOWN_IMAGE, "Unknown EC image");
+
 	/* Calculate hashes */
 	ResetMocks();
 	mock_ec_rw_hash_size = 0;
