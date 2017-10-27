@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2cb2252_82f52c5f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-10-27T23:24:16Z",
+      "side": 1,
+      "message": "${var} needs quotes, many instances.",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593ded73_ef76c4c9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-10-27T23:24:16Z",
+      "side": 1,
+      "message": "replace_file_in_cbfs?\n\nthere\u0027s a quirk here - the replacement file may not be larger than\nthe original, past the blocking factor.  i assume in this use\ncase we\u0027re always replacing a file with something of the same\nsize?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 18
+      },
+      "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2567ba7d_926a4861",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-10-27T23:24:16Z",
+      "side": 1,
+      "message": "which quoting rules are you using here?\ni\u0027d be OK with dropping quotes around boring constant strings.",
+      "range": {
+        "startLine": 520,
+        "startChar": 58,
+        "endLine": 520,
+        "endChar": 61
+      },
+      "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
