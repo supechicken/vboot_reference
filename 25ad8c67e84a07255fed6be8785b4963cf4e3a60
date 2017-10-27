@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5923bb5f_86cd62dd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T22:31:21Z",
+      "side": 1,
+      "message": "This will be needed to test locally built cbfstool.",
+      "parentUuid": "d7db8458_b9a07c37",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bbfbeec_3a886490",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2017-10-27T22:01:56Z",
       "side": 1,
       "message": "i think you can combine this grep/awk:\n\n awk -vname\u003d\"${name}\" \u0027$1 \u003d\u003d name {print $5}\u0027",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e1930b_173caf96",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T22:31:21Z",
+      "side": 1,
+      "message": "Thanks,",
+      "parentUuid": "dc74a5c7_a6c23168",
       "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -118,6 +154,24 @@
       "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa005d3_fb8ea032",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T22:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb43b32_e8d98b82",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
