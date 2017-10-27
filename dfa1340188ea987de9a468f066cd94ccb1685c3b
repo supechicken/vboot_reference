@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "74994952_8197fb95",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T19:13:08Z",
+      "side": 1,
+      "message": "Whatever the risk is, it\u0027s not new in the vboot history. For those platforms not willing to add the extra circuit (as done on skylake/kabylake platforms), this is the compromise to swallow.",
+      "parentUuid": "2970569a_344c6320",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 4
+      },
+      "revId": "dfa1340188ea987de9a468f066cd94ccb1685c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b6ed264_8abda9f1",
         "filename": "firmware/lib/vboot_common.c",
         "patchSetId": 3

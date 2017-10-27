@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a403ccc_92c39180",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-27T19:13:08Z",
+      "side": 0,
+      "message": "This is redundant because we reach here 1. manual recovery or 2. recovery in dev mode.\n\nFor 1, this is already checked in vb2_allow_recovery. For 2, it contradicts with \u0027not already in dev mode\u0027.",
+      "parentUuid": "8b350ccc_3335f2c9",
+      "range": {
+        "startLine": 497,
+        "startChar": 7,
+        "endLine": 497,
+        "endChar": 21
+      },
+      "revId": "8122e0b8b13794ffcda7a0a0930b2bc6969e8364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "941a3ade_bce15221",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
