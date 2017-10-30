@@ -116,6 +116,30 @@
       "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3745585_d43ce230",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-30T19:58:27Z",
+      "side": 1,
+      "message": "quoting string args is fine like Daisuke is doing here.  i wouldn\u0027t fret too much over it.",
+      "parentUuid": "6a31c9ef_c3181044",
+      "range": {
+        "startLine": 520,
+        "startChar": 58,
+        "endLine": 520,
+        "endChar": 61
+      },
+      "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da6d1d3e_93f20266",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-10-30T19:58:27Z",
+      "side": 1,
+      "message": "you mean by ad-hoc local testing ?  you can do that through PATH manipulation.  otherwise you can make the same argument for all the 1st party tools we rely on.  we only make an exception for FUTILITY because there are local automated tests for it.",
+      "parentUuid": "5923bb5f_86cd62dd",
+      "revId": "25ad8c67e84a07255fed6be8785b4963cf4e3a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bbfbeec_3a886490",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 9
