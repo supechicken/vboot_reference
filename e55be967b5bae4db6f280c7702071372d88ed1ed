@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "102c33b7_9d2b3d8c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-10-31T20:01:17Z",
+      "side": 1,
+      "message": "patrick added cbfstool \"expand\" and \"truncate\" - mostly for me.\nthe use case is to be able to swap out the TCPC firmware blobs\nin an existing bios image so we can test rolling the firmware forward/backward in FAFT.\n\ni think your case is very similar.  just bracket your cbfs\nadd/remove operations with expand and truncate and you should\nbe good to go.",
+      "parentUuid": "736f9477_498f9d08",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 18
+      },
+      "revId": "e55be967b5bae4db6f280c7702071372d88ed1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2567ba7d_926a4861",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 10
