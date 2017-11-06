@@ -155,6 +155,7 @@ int VbUserConfirmsMenu(struct vb2_context *ctx, VbCommonParams *cparams,
 	return -1;
 }
 
+static uint32_t disable_dev_boot = 0;
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
@@ -648,6 +649,10 @@ VbError_t vb2_set_disabled_idx_mask(uint32_t flags) {
 	/* Disable Network Boot Option */
 	if (current_menu == VB_MENU_DEV)
 		disabled_idx_mask |= 1 << VB_DEV_NETWORK;
+	/* Disable cancel option if enterprise disabled dev mode */
+	if (current_menu == VB_MENU_TO_NORM &&
+	    disable_dev_boot == 1)
+		disabled_idx_mask |= 1 << VB_TO_NORM_CANCEL;
 	return VBERROR_SUCCESS;
 }
 
@@ -713,13 +718,14 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 
-	uint32_t disable_dev_boot = 0;
 	uint32_t use_usb = 0;
 	uint32_t use_legacy = 0;
 	uint32_t ctrl_d_pressed = 0;
 
 	VbAudioContext *audio = 0;
 	VbError_t ret;
+	uint32_t key;
+
 	VB2_DEBUG("Entering\n");
 
 	/* Check if USB booting is allowed */
@@ -756,32 +762,73 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 				  "FORCE_DEV_SWITCH_ON\n");
 		} else {
 			disable_dev_boot = 1;
+			VB2_DEBUG("dev_disable_boot is set.\n");
+
+			/* If dev mode is disabled, only allow TONORM */
+			current_menu = VB_MENU_TO_NORM;
+			prev_menu = VB_MENU_TO_NORM;
+			current_menu_idx = VB_TO_NORM_CONFIRM;
+			vb2_set_disabled_idx_mask(shared->flags);
+			vb2_draw_current_screen(ctx, cparams);
 		}
 	}
 
-	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
-		VB2_DEBUG("dev_disable_boot is set.\n");
-		VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_TO_NORM_MENU,
-				0);
+		/* Make sure user knows dev mode disabled */
 		VbExDisplayDebugInfo(dev_disable_msg);
 
-		/* Ignore space in VbUserConfirmsMenu()... */
-		switch (VbUserConfirmsMenu(ctx, cparams, 0)) {
-		case 1:
-			VB2_DEBUG("leaving dev-mode.\n");
-			vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-			VbDisplayScreen(ctx, cparams,
-					VB_SCREEN_TO_NORM_CONFIRMED,
-					0);
-			VbExSleepMs(5000);
-			return VBERROR_REBOOT_REQUIRED;
-		case -1:
-			VB2_DEBUG("shutdown requested\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
-		default:
-			/* Ignore user attempt to cancel */
-			VB2_DEBUG("ignore cancel TONORM\n");
+		key = VbExKeyboardRead();
+		switch (key) {
+		case 0:
+			/* Nothing pressed */
+			break;
+		case VB_BUTTON_VOL_UP:
+		case VB_KEY_UP:
+		case VB_BUTTON_VOL_DOWN:
+		case VB_KEY_DOWN:
+			vb2_update_selection(cparams, key);
+			vb2_draw_current_screen(ctx, cparams);
+			break;
+		case VB_BUTTON_POWER:
+		case '\r':
+			selected = 1;
+
+			/*
+			 * Need to update locale before updating the menu or
+			 * we'll lose the previous state
+			 */
+			vb2_update_locale(ctx);
+
+			ret = vb2_update_menu(ctx);
+			vb2_set_disabled_idx_mask(shared->flags);
+			vb2_draw_current_screen(ctx, cparams);
+
+			/* Probably shutting down */
+			if (ret != VBERROR_SUCCESS) {
+				VB2_DEBUG("shutting down!\n");
+				return ret;
+			}
+
+			/* operation taken care of */
+			if (selected == 0)
+				continue;
+
+			/* confirm transition to normal mode */
+			if (current_menu == VB_MENU_TO_NORM &&
+			    current_menu_idx == VB_TO_NORM_CONFIRM) {
+				VB2_DEBUG("%s shared->flags=0x%x\n",
+					  __func__, shared->flags);
+				VB2_DEBUG("leaving dev-mode.\n");
+				vb2_nv_set(ctx,
+					   VB2_NV_DISABLE_DEV_REQUEST,
+					   1);
+				VbDisplayScreen(ctx,
+						cparams,
+						VB_SCREEN_TO_NORM_CONFIRMED,
+						0);
+				VbExSleepMs(5000);
+				return VBERROR_REBOOT_REQUIRED;
+			}
 		}
 	}
 
@@ -795,8 +842,6 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	/* We'll loop until we finish the delay or are interrupted */
 	do {
-		uint32_t key;
-
 		if (VbWantShutdownMenu(gbb->flags)) {
 			VB2_DEBUG("shutdown requested!\n");
 			VbAudioClose(audio);
