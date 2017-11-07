@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe0a846e_4fb51783",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-07T22:35:41Z",
+      "side": 1,
+      "message": "Please move this down to the other magic globals, so that we at least have them all in one place.",
+      "revId": "e2352c8a71b396eaadf6df29d53a0416e5efc3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b6e8c5d_63cb8f0a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-07T22:35:41Z",
+      "side": 1,
+      "message": "Is there actually a good reason that we still need to display the TONORM menu? Why don\u0027t we just immediately display TO_NORM_CONFIRM and run through it without any user interaction? Feels like that would make our lives much easier...",
+      "revId": "e2352c8a71b396eaadf6df29d53a0416e5efc3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1fbbdf_d733442e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-07T22:35:41Z",
+      "side": 1,
+      "message": "This looks like a prime candidate for factoring out into a separate function. (This monstrosity is long enough as it is...)",
+      "revId": "e2352c8a71b396eaadf6df29d53a0416e5efc3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc16bc0f_03fb268c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-07T22:35:41Z",
+      "side": 1,
+      "message": "Please factor the TO_NORM handling out into a function so the code can be shared, don\u0027t duplicate it. (In fact, why do you have to duplicate this whole loop anyway? Can\u0027t you just configure the right menu, disable the right indices and then reuse the normal dev-mode loop? You\u0027ll have to add another check to the shortcut options (Ctrl+D and friends) but that still seems easier that having all this code up here again...)",
+      "revId": "e2352c8a71b396eaadf6df29d53a0416e5efc3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
