@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31bcf210_7f35f9fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-07T21:32:47Z",
+      "side": 1,
+      "message": "Not sure I understand this part. The recovery button (if it comes from the EC) is translated into \u0027\\r\u0027, but that\u0027s still not the same as BUTTON_POWER. (And I don\u0027t think that was a good idea either, tbh... it would be cleaner to make up a completely separate scancode and BUTTON_RECOVERY character for the recovery button as well. Maybe your overhaul would be a good opportunity to fix that too.)",
+      "revId": "2c6217d8710e73c1dac8d5cf71231aa95d18e1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
