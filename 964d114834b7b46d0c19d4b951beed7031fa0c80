@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa9d8b02_621d1325",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-08T02:02:41Z",
+      "side": 1,
+      "message": "Should we put a big fat statement how VbButtonCode_t and VbKeyCode_t values should never overlap unless they represent the same action?",
+      "revId": "964d114834b7b46d0c19d4b951beed7031fa0c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
