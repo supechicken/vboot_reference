@@ -1136,15 +1136,22 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					break;
 				}
 
+				vb2_update_selection(cparams, key);
+				vb2_draw_current_screen(ctx, cparams);
+				break;
+			case VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS:
+				/*
+				 * This is currently only being used to
+				 * transition out of the initial insert
+				 * graphic
+				 */
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
 					ret = vb2_update_menu(ctx);
 					if (ret != VBERROR_SUCCESS)
 						return ret;
 					vb2_set_disabled_idx_mask(shared->flags);
-				} else {
-					vb2_update_selection(cparams, key);
+					vb2_draw_current_screen(ctx, cparams);
 				}
-				vb2_draw_current_screen(ctx, cparams);
 				break;
 			case VB_BUTTON_POWER_SHORT_PRESS:
 			case '\r':
