@@ -314,8 +314,9 @@ int ft_sign_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 				tmp_sig->c.total_size, sig_size);
 			goto done;
 		}
-		memset(buf + len - sig_size, 0xff, sig_size);
-		memcpy(buf + len - sig_size, tmp_sig, tmp_sig->c.total_size);
+		Debug("Replacing old signature with new one\n");
+		memset((void *)old_sig, 0xff, sig_size);
+		memcpy((void *)old_sig, tmp_sig, tmp_sig->c.total_size);
 		if (fmap) {
 			Debug("Writing %s (size=%d)\n",
 			      EC_RW_FILENAME, fmaparea->area_size);
