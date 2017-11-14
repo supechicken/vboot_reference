@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e10b01e_352dbc41",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-11-14T07:21:05Z",
+      "side": 1,
+      "message": "old_sig is const memory.  seems like writing to it is fundamentally wrong.",
+      "revId": "2a51f4b8b13d6b060c29977231f84fdc0e2efb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
