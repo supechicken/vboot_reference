@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "88a20683_9ce7072a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-14T00:36:12Z",
+      "side": 1,
+      "message": "It\u0027s because factory/RMA shims require the dev switch to be on, or RO firmware won\u0027t verify them.  That\u0027s to prevent someone from giving normal users a factory shim masquerading as a regular recovery USB key.\n\nRMA flow is:\n- 3-finger salute to recovery mode\n- Turn dev switch on at the INSERT screen.  That reboots.  \n- Then at the TONORM screen, 3-finger salute to recovery mode\n- Now the shim will boot\n\nIf we skipped the TONORM screen, then it\u0027s race conditiony for RMA to manually recover before TO_NORM_CONFIRM would finish - particularly on detachables where it\u0027s a 9-sec wait before the 3-finger combo triggers recovery mode.",
+      "parentUuid": "6697b6fd_a463f937",
+      "revId": "e2352c8a71b396eaadf6df29d53a0416e5efc3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b1fbbdf_d733442e",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
