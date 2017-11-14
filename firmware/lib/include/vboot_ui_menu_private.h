@@ -86,5 +86,5 @@ typedef enum _VB_OPTIONS_MENU {
 extern VB_MENU current_menu;
 extern VB_MENU prev_menu;
 extern int current_menu_idx;
-
+extern int exit_insert;
 #endif

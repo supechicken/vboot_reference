@@ -99,6 +99,7 @@ static void ResetMocks(void)
 	current_menu = VB_MENU_DEV_WARNING;
 	prev_menu = VB_MENU_DEV_WARNING;
 	current_menu_idx = VB_WARN_POWER_OFF;
+	exit_insert = 0;
 }
 
 /* Mock functions */
