@@ -16,6 +16,24 @@
       "revId": "2a51f4b8b13d6b060c29977231f84fdc0e2efb2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7979fa70_3d3c0291",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-14T15:48:17Z",
+      "side": 1,
+      "message": "In this case, const is just used for a compile time check. vb21_verify_signature takes const. That\u0027s probably why the original code defined old_sig as a const but it\u0027s not necessary because passing a non-const to a function as a const is allowed.",
+      "parentUuid": "3e10b01e_352dbc41",
+      "revId": "2a51f4b8b13d6b060c29977231f84fdc0e2efb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
