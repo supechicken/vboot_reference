@@ -155,6 +155,7 @@ typedef enum _VB_TO_DEV_MENU {
 
 typedef enum _VB_OPTIONS_MENU {
 	VB_OPTIONS_CANCEL,
+	VB_OPTIONS_DBG_INFO,
 	VB_OPTIONS_POWER_OFF,
 	VB_OPTIONS_LANGUAGE,
 	VB_OPTIONS_COUNT,
@@ -222,9 +223,25 @@ static char *languages_menu[] = {
 
 static char *options_menu[] = {
 	"Cancel\n",
+	"Show Debug Info\n",
 	"Power Off\n",
 	"Language\n"
 };
+
+/**
+ * Return true (1) if legacy menu, or false (0) if detachable menu
+ *
+ * @param menu: The menu to check
+ * @return int: 1 if legacy menu, or 0 otherwise
+ */
+int vb2_is_legacy_menu(VB_MENU menu) {
+	if (current_menu == VB_MENU_RECOVERY_INSERT ||
+	    current_menu == VB_MENU_RECOVERY_NO_GOOD ||
+	    current_menu == VB_MENU_TO_NORM_CONFIRMED ||
+	    current_menu == VB_MENU_RECOVERY_BROKEN)
+		return 1;
+	return 0;
+}
 
 /**
  * Get the string array and size of current_menu.
@@ -264,6 +281,10 @@ void vb2_get_current_menu_size(VB_MENU menu, char ***menu_array,
 	case VB_MENU_LANGUAGES:
 		*size = VB_LANGUAGES_COUNT;
 		temp_menu = languages_menu;
+		break;
+	case VB_MENU_OPTIONS:
+		*size = VB_OPTIONS_COUNT;
+		temp_menu = options_menu;
 		break;
 	default:
 		*size = 0;
@@ -360,7 +381,7 @@ VbError_t vb2_set_menu_items(VB_MENU new_current_menu,
  *
  * @return VBERROR_SUCCESS, or non-zero error code if error.
  */
-VbError_t vb2_update_menu(struct vb2_context *ctx)
+VbError_t vb2_update_menu(struct vb2_context *ctx, uint32_t key)
 {
 	VbError_t ret = VBERROR_SUCCESS;
 	VB_MENU next_menu_idx = current_menu_idx;
@@ -476,12 +497,16 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		}
 		break;
 	case VB_MENU_RECOVERY_INSERT:
-		vb2_set_menu_items(VB_MENU_RECOVERY,
-				   VB_RECOVERY_POWER_OFF);
-		break;
+		if (key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS) {
+			vb2_set_menu_items(VB_MENU_RECOVERY,
+					   VB_RECOVERY_POWER_OFF);
+			break;
+		}
 	case VB_MENU_RECOVERY_NO_GOOD:
 	case VB_MENU_RECOVERY_BROKEN:
 	case VB_MENU_TO_NORM_CONFIRMED:
+		vb2_set_menu_items(VB_MENU_OPTIONS,
+				   VB_OPTIONS_CANCEL);
 		break;
 	case VB_MENU_RECOVERY:
 		switch(current_menu_idx) {
@@ -522,6 +547,44 @@ VbError_t vb2_update_menu(struct vb2_context *ctx)
 		case VB_TO_DEV_LANGUAGE:
 			vb2_set_menu_items(VB_MENU_LANGUAGES,
 					   loc);
+			break;
+		default:
+			/* Invalid menu item.  Don't update anything. */
+			break;
+		}
+		break;
+	case VB_MENU_OPTIONS:
+		switch(current_menu_idx) {
+		case VB_OPTIONS_CANCEL:
+			/*
+			 * Go to previous menu.  Purposely bypassing
+			 * vb2_set_menu_items() here because need to
+			 * do in different order.
+			 */
+			current_menu = prev_menu;
+			prev_menu = VB_MENU_OPTIONS;
+			/*
+			 * only get here from legacy screens, so these
+			 * values don't matter
+			 */
+			current_menu_idx = 0;
+			selected = 0;
+			break;
+		case VB_OPTIONS_DBG_INFO:
+			break;
+		case VB_OPTIONS_POWER_OFF:
+			ret = VBERROR_SHUTDOWN_REQUESTED;
+			break;
+		case VB_OPTIONS_LANGUAGE:
+			/*
+			 * don't update previous menu value because
+			 * we'll want to switch back to legacy screen.
+			 * may need to bypass set_menu_items because
+			 * we don't want to update previous values.
+			 */
+			current_menu = VB_MENU_LANGUAGES;
+			current_menu_idx = loc;
+			selected = loc;
 			break;
 		default:
 			/* Invalid menu item.  Don't update anything. */
@@ -829,7 +892,7 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			 */
 			vb2_update_locale(ctx);
 
-			ret = vb2_update_menu(ctx);
+			ret = vb2_update_menu(ctx, key);
 			vb2_set_disabled_idx_mask(shared->flags);
 			vb2_draw_current_screen(ctx, cparams);
 
@@ -846,8 +909,10 @@ VbError_t vb2_developer_menu(struct vb2_context *ctx, VbCommonParams *cparams)
 			/* All the actions associated with selection */
 
 			/* Display debug information */
-			if (current_menu == VB_MENU_DEV_WARNING &&
-			    current_menu_idx == VB_WARN_DBG_INFO) {
+			if ((current_menu == VB_MENU_DEV_WARNING &&
+			     current_menu_idx == VB_WARN_DBG_INFO) ||
+			    (current_menu == VB_MENU_OPTIONS &&
+			     current_menu_idx == VB_OPTIONS_DBG_INFO)) {
 				VbDisplayDebugInfo(ctx, cparams);
 			}
 
@@ -1062,8 +1127,10 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 
 		vb2_set_disabled_idx_mask(shared->flags);
 
-		if (current_menu != VB_MENU_RECOVERY ||
-		    current_menu_idx != VB_RECOVERY_DBG_INFO) {
+		if ((current_menu != VB_MENU_RECOVERY ||
+		     current_menu_idx != VB_RECOVERY_DBG_INFO) &&
+		    (current_menu != VB_MENU_OPTIONS ||
+		     current_menu_idx != VB_OPTIONS_DBG_INFO)) {
 			if (retval == VBERROR_NO_DISK_FOUND)
 				vb2_draw_current_screen(ctx, cparams);
 			else {
@@ -1100,7 +1167,13 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					break;
 				}
 
-				vb2_update_selection(cparams, key);
+				if (vb2_is_legacy_menu(current_menu)) {
+					ret = vb2_update_menu(ctx, key);
+					if (ret != VBERROR_SUCCESS)
+						return ret;
+				} else {
+					vb2_update_selection(cparams, key);
+				}
 				vb2_draw_current_screen(ctx, cparams);
 				break;
 			case VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS:
@@ -1110,7 +1183,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * graphic
 				 */
 				if (current_menu == VB_MENU_RECOVERY_INSERT) {
-					ret = vb2_update_menu(ctx);
+					ret = vb2_update_menu(ctx, key);
 					if (ret != VBERROR_SUCCESS)
 						return ret;
 					vb2_set_disabled_idx_mask(shared->flags);
@@ -1138,7 +1211,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					 */
 					vb2_update_locale(ctx);
 
-					ret = vb2_update_menu(ctx);
+					ret = vb2_update_menu(ctx, key);
 
 					vb2_set_disabled_idx_mask(shared->
 								  flags);
@@ -1172,8 +1245,10 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					break;
 
 				/* Display debug information */
-				if (current_menu == VB_MENU_RECOVERY &&
-				    current_menu_idx == VB_RECOVERY_DBG_INFO) {
+				if ((current_menu == VB_MENU_RECOVERY &&
+				     current_menu_idx == VB_RECOVERY_DBG_INFO) ||
+				    (current_menu == VB_MENU_OPTIONS &&
+				     current_menu_idx == VB_OPTIONS_DBG_INFO)) {
 					VbDisplayDebugInfo(ctx, cparams);
 				}
 
