@@ -146,6 +146,13 @@ static char *languages_menu[] = {
 	"US English\n",
 };
 
+static char *options_menu[] = {
+	"Cancel\n",
+	"Show Debug Info\n",
+	"Power Off\n",
+	"Language\n"
+};
+
 /**
  * Get the string array and size of current_menu.
  *
@@ -238,6 +245,7 @@ static const uint32_t VB_MENU_TO_SCREEN_MAP[] = {
 	VB_SCREEN_RECOVERY_MENU,
 	VB_SCREEN_RECOVERY_TO_DEV_MENU,
 	VB_SCREEN_LANGUAGES_MENU,
+	VB_SCREEN_OPTIONS_MENU,
 	VB_SCREEN_RECOVERY_INSERT,
 	VB_SCREEN_RECOVERY_NO_GOOD,
 	VB_SCREEN_OS_BROKEN,
