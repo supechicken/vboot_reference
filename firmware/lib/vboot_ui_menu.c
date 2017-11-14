@@ -101,6 +101,7 @@ typedef enum _VB_MENU {
 	VB_MENU_RECOVERY,
 	VB_MENU_TO_DEV,
 	VB_MENU_LANGUAGES,
+	VB_MENU_OPTIONS,
 	VB_MENU_RECOVERY_INSERT,
 	VB_MENU_RECOVERY_NO_GOOD,
 	VB_MENU_RECOVERY_BROKEN,
@@ -151,6 +152,13 @@ typedef enum _VB_TO_DEV_MENU {
 	VB_TO_DEV_LANGUAGE,
 	VB_TO_DEV_COUNT,
 } VB_TO_DEV_MENU;
+
+typedef enum _VB_OPTIONS_MENU {
+	VB_OPTIONS_CANCEL,
+	VB_OPTIONS_POWER_OFF,
+	VB_OPTIONS_LANGUAGE,
+	VB_OPTIONS_COUNT,
+} VB_OPTIONS_MENU;
 
 // TODO: currently we're only supporting
 // english.  Will need to somehow find mapping
@@ -210,6 +218,12 @@ static char *to_dev_menu[] = {
 
 static char *languages_menu[] = {
 	"US English\n",
+};
+
+static char *options_menu[] = {
+	"Cancel\n",
+	"Power Off\n",
+	"Language\n"
 };
 
 /**
@@ -304,6 +318,7 @@ static const uint32_t VB_MENU_TO_SCREEN_MAP[] = {
 	VB_SCREEN_RECOVERY_MENU,
 	VB_SCREEN_RECOVERY_TO_DEV_MENU,
 	VB_SCREEN_LANGUAGES_MENU,
+	VB_SCREEN_OPTIONS_MENU,
 	VB_SCREEN_RECOVERY_INSERT,
 	VB_SCREEN_RECOVERY_NO_GOOD,
 	VB_SCREEN_OS_BROKEN,
