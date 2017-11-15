@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "044cb684_f576987d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-15T23:36:35Z",
+      "side": 1,
+      "message": "Why is this checking for DBG_INFO, again?",
+      "revId": "0a58a8512323ee8e0afd2c07dca81ced2551d5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc8090a_7e923731",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-15T23:36:35Z",
+      "side": 1,
+      "message": "Could we integrate the display of legacy screens into draw_current_screen(), so that you\u0027d just have to update current_menu depending on the return value of VbTryLoadKernel() and then the rest could work without all that special-casing?",
+      "revId": "0a58a8512323ee8e0afd2c07dca81ced2551d5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3e41c9_16aafdcf",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-15T23:36:35Z",
+      "side": 1,
+      "message": "Should this also check for NOGOOD? (I like your idea with having an extra is_menuless_screen() function from the other patch, I\u0027d suggest to pull it into this one and use it here.)",
+      "revId": "0a58a8512323ee8e0afd2c07dca81ced2551d5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5e37f3_4c8c0fd4",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-15T23:36:35Z",
+      "side": 1,
+      "message": "If you have curly braces on an if statement, please always have them on both branches.",
+      "revId": "0a58a8512323ee8e0afd2c07dca81ced2551d5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
