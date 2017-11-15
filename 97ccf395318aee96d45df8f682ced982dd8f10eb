@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ca9b196_a2664de0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-15T23:40:25Z",
+      "side": 1,
+      "message": "nit: it comes out to the same thing, but \u0027break;\u0027 would be more consistent with what the rest of this function does.",
+      "revId": "97ccf395318aee96d45df8f682ced982dd8f10eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
