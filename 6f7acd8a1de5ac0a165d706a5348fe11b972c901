@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "55e09f70_4e2fcb91",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-16T04:03:37Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this check has actually not been doing anything for years anyway, it\u0027s just that nobody removed it yet. There\u0027s no clear equivalent to FWB_TRIED in the vboot2 model so we just never set that flag when we translate vboot2 into vboot1 shared data (in coreboot). That\u0027s why b/35575422 is an open bug at all.\n\nThat\u0027s why I also think setting max_rollforward to the currently booted version (instead of to 0xfffffffe) in setgoodkernel would be a good idea, because I think it should solve this problem in a pretty straight-forward way. We don\u0027t need to depend the kernel rollforward state on firmware updates anymore because the kernel itself can tell us what it wants to roll forward to now.",
+      "parentUuid": "a2489670_29b03137",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d62875bd_d36ccd25",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "But then \u0027crossystem tpm_kernver\u0027 would report 0, not the actual version in the TPM.",
       "parentUuid": "5c96364f_d0f04b7f",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d65f33_3a587c1e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-16T04:03:37Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "64763736_adcb8478",
       "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
