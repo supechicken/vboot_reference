@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7a77c23_8859bb03",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-16T01:10:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we get rid of this case now?",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62875bd_d36ccd25",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-16T01:10:27Z",
+      "side": 1,
+      "message": "Can this be vb2_nv_get() instead? [I am officially unable to figure out which set of NVRAM accessors is valid for use in what function at this point. Stuff seems to get copied from one context into the other in multiple places, and maybe it would be okay to read but not to write one or the other in certain situations... it\u0027s quite a mess. :( ]",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c96364f_d0f04b7f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-16T01:10:27Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem strictly necessary since the code below already checks for kernel_version \u003e start_version.",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
