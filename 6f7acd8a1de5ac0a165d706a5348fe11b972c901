@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a2489670_29b03137",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T01:51:37Z",
+      "side": 1,
+      "message": "This is still needed.  kernel_max_rollforward will eventually get set in 3 places:\n\nrecovery image: to 0\nsetgoodkernel (unenrolled): to 0xffffffffe\nenterprise policy (enrolled): depends on policy\n\nWe could theoretically set it to 0 in chromeos-firmwareupdate, but then the check for \"are we trying firmware B next boot\" would need to go in setgoodkernel and enterprise policy, to stop them from overwriting that 0.",
+      "parentUuid": "c7a77c23_8859bb03",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d62875bd_d36ccd25",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ba9eaed5_1921a32e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T01:51:37Z",
+      "side": 1,
+      "message": "I\u0027d like to remove VbNvGet() entirely, and only use vb2_nv_get().  Easier to do this in a followup CL which only refactors those without adding any new behavior.",
+      "parentUuid": "d62875bd_d36ccd25",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c96364f_d0f04b7f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-11-16T01:10:27Z",
       "side": 1,
       "message": "Doesn\u0027t seem strictly necessary since the code below already checks for kernel_version \u003e start_version.",
+      "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64763736_adcb8478",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T01:51:37Z",
+      "side": 1,
+      "message": "But then \u0027crossystem tpm_kernver\u0027 would report 0, not the actual version in the TPM.",
+      "parentUuid": "5c96364f_d0f04b7f",
       "revId": "6f7acd8a1de5ac0a165d706a5348fe11b972c901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
