@@ -160,7 +160,7 @@ CFLAGS ?= ${COMMON_FLAGS} \
 else
 # FIRMWARE_ARCH not defined; assuming local compile.
 CC ?= gcc
-CFLAGS += -DCHROMEOS_ENVIRONMENT -Wall ${WERROR} ${DEBUG_FLAGS}
+CFLAGS += -DCHROMEOS_ENVIRONMENT -DTPM_OWNERSHIP -Wall ${WERROR} ${DEBUG_FLAGS}
 endif
 
 ifneq (${CUSTOM_MUSIC},)
@@ -495,7 +495,9 @@ HOSTLIB_SRCS = \
 	cgpt/cgpt_common.c \
 	cgpt/cgpt_create.c \
 	cgpt/cgpt_prioritize.c \
+	firmware/2lib/2common.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2sha1.c \
 	firmware/2lib/2stub.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \

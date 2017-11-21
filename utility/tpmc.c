@@ -499,7 +499,26 @@ static uint32_t HandlerIFXFieldUpgradeInfo(void) {
   }
   return result;
 }
-#endif
+
+#ifdef TPM_OWNERSHIP
+static uint32_t HandlerReadPubek(void) {
+  uint32_t exponent;
+  uint8_t modulus[TPM_RSA_2048_LEN];
+  uint32_t modulus_size = sizeof(modulus);
+  uint32_t result = TlclReadPubek(&exponent, modulus, &modulus_size);
+  if (result == 0) {
+    printf("exponent %u\n", exponent);
+    printf("modulus");
+    size_t n;
+    for (n = 0; n < modulus_size; ++n) {
+      printf(" %02x", modulus[n]);
+    }
+    printf("\n");
+  }
+  return result;
+}
+#endif  /* TPM_OWNERSHIP */
+#endif  /* !TPM2_MODE */
 
 #ifdef TPM2_MODE
 static uint32_t HandlerDoNothingForTPM2(void) {
@@ -584,6 +603,10 @@ command_record command_table[] = {
   { "ifxfieldupgradeinfo", "ifxfui",
     TPM20_NOT_IMPLEMENTED("read and print IFX field upgrade info",
       HandlerIFXFieldUpgradeInfo) },
+#ifdef TPM_OWNERSHIP
+  { "readpubek", "pubek",
+    TPM20_NOT_IMPLEMENTED("print public endorsement key", HandlerReadPubek) },
+#endif  /* TPM_OWNERSHIP */
 };
 
 static int n_commands = sizeof(command_table) / sizeof(command_table[0]);
