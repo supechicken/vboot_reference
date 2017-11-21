@@ -659,6 +659,7 @@ resign_firmware_payload() {
           local ec_path="${shellball_dir}/${ec_image}"
 
           # Resign ec.bin.
+          # TODO: Use the LOEM keys (i.e. key_ec_efs.${key_suffix}.vbprik2).
           if is_ec_rw_signed "${ec_path}"; then
             local rw_bin="EC_RW.bin"
             local rw_hash="EC_RW.hash"
@@ -667,8 +668,13 @@ resign_firmware_payload() {
             ${FUTILITY} sign --type rwsig --prikey \
               "${KEY_DIR}/key_ec_efs.vbprik2" "${ec_path}" \
               || die "Failed to sign ${ec_path}"
+            # Store the public key in the keyset directory
+            cp "${KEY_DIR}/key_ec_efs.vbpubk2" \
+              "${shellball_keyset_dir}/key_ro.${output_name}"
             # Above command produces EC_RW.bin. Compute its hash.
             openssl dgst -sha256 -binary "${rw_bin}" > "${rw_hash}"
+            # Store EC_RW.bin in the keyset directory
+            cp "${rw_bin}" "${shellball_keyset_dir}/ecrw.${output_name}"
             # Store EC_RW.bin and its hash in bios.bin.
             store_file_in_cbfs "${bios_path}" "${rw_bin}" "ecrw" \
               || die "Failed to store file in ${bios_path}"
