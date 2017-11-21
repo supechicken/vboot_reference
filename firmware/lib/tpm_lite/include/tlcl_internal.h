@@ -15,6 +15,9 @@
 #define kTpmReadInfoLength 12
 #define kEncAuthLength 20
 #define kPcrDigestLength 20
+#define kTpmKeyParmsFixedSize 8
+#define kTpmRsaKeyParmsFixedSize 12
+#define kTpmPubkeyFixedSize (kTpmKeyParmsFixedSize + 4)
 
 
 /*

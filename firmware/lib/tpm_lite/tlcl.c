@@ -16,6 +16,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
+#include "2sha.h"
 
 #include "sysincludes.h"
 #include "tlcl.h"
@@ -570,8 +571,8 @@ uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
 }
 
 static void ParseIFXFirmwarePackage(uint8_t** cursor,
-				    TPM_IFX_FIRMWAREPACKAGE* firmware_package) {
-
+				    TPM_IFX_FIRMWAREPACKAGE* firmware_package)
+{
 	FromTpmUint32(*cursor, &firmware_package->FwPackageIdentifier);
 	*cursor += sizeof(firmware_package->FwPackageIdentifier);
 	FromTpmUint32(*cursor, &firmware_package->Version);
@@ -580,7 +581,8 @@ static void ParseIFXFirmwarePackage(uint8_t** cursor,
 	*cursor += sizeof(firmware_package->StaleVersion);
 }
 
-uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info) {
+uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info)
+{
 	uint32_t vendor;
 	uint64_t firmware_version;
 	uint32_t result =
@@ -618,7 +620,7 @@ uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info) {
 	FromTpmUint16(cursor, &fw_entry_count);
 	cursor += sizeof(fw_entry_count);
 	if (fw_entry_count > ARRAY_SIZE(info->sFirmwarePackages)) {
-		return TPM_E_IOERROR;
+		return TPM_E_INVALID_RESPONSE;
 	}
 	uint16_t i;
 	for (i = 0; i < fw_entry_count; ++i) {
@@ -635,8 +637,128 @@ uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info) {
 	uint32_t parsed_bytes = cursor - response;
 	VbAssert(parsed_bytes <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
 	if (parsed_bytes > kTpmResponseHeaderLength + sizeof(size) + size) {
-		return TPM_E_IOERROR;
+		return TPM_E_INVALID_RESPONSE;
 	}
 
 	return result;
 }
+
+#ifdef CHROMEOS_ENVIRONMENT
+
+uint32_t TlclReadPubek(uint32_t* public_exponent,
+		       uint8_t* modulus,
+		       uint32_t* modulus_size)
+{
+	struct s_tpm_readpubek_cmd cmd;
+	memcpy(&cmd, &tpm_readpubek_cmd, sizeof(cmd));
+	if (VbExTpmGetRandom(cmd.buffer + tpm_readpubek_cmd.antiReplay,
+			     sizeof(TPM_NONCE)) != VB2_SUCCESS) {
+		return TPM_E_INTERNAL_ERROR;
+	}
+
+	/* The response contains the public endorsement key, so use a large
+	 * response buffer. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_RSA_2048_LEN];
+	uint32_t result = TlclSendReceive(cmd.buffer, response,
+					  sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Parse the key */
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+	uint32_t consumed_size = kTpmResponseHeaderLength +
+			kTpmPubkeyFixedSize + TPM_SHA1_160_HASH_LEN;
+
+	uint32_t alg;
+	FromTpmUint32(cursor, &alg);
+	cursor += sizeof(alg);
+	uint16_t enc_scheme;
+	FromTpmUint16(cursor, &enc_scheme);
+	cursor += sizeof(enc_scheme);
+	uint16_t sig_scheme;
+	FromTpmUint16(cursor, &sig_scheme);
+	cursor += sizeof(sig_scheme);
+	uint32_t parm_size;
+	FromTpmUint32(cursor, &parm_size);
+	cursor += sizeof(parm_size);
+	uint8_t* parm_cursor = cursor;
+	if (parm_size < kTpmRsaKeyParmsFixedSize ||
+	    parm_size > sizeof(response) - consumed_size) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+	consumed_size += parm_size;
+	cursor += parm_size;
+
+	uint32_t key_len;
+	FromTpmUint32(parm_cursor, &key_len);
+	parm_cursor += sizeof(key_len);
+	uint32_t num_primes;
+	FromTpmUint32(parm_cursor, &num_primes);
+	parm_cursor += sizeof(num_primes);
+	uint32_t exponent_size;
+	FromTpmUint32(parm_cursor, &exponent_size);
+	uint8_t* exponent = parm_cursor;
+	if (exponent_size > parm_size - kTpmRsaKeyParmsFixedSize) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+	parm_cursor += sizeof(exponent_size);
+
+	uint32_t actual_modulus_size;
+	FromTpmUint32(cursor, &actual_modulus_size);
+	cursor += sizeof(actual_modulus_size);
+	uint8_t* modulus_data = cursor;
+	if (actual_modulus_size > sizeof(response) - consumed_size) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+	consumed_size += actual_modulus_size;
+	cursor += actual_modulus_size;
+
+	uint8_t* checksum = cursor;
+	cursor += TPM_SHA1_160_HASH_LEN;
+	VbAssert(cursor - response <= sizeof(response));
+
+	/* Check the digest */
+	struct vb2_sha1_context sha1_ctx;
+	vb2_sha1_init(&sha1_ctx);
+	vb2_sha1_update(&sha1_ctx, response + kTpmResponseHeaderLength,
+			checksum - (response + kTpmResponseHeaderLength));
+	vb2_sha1_update(&sha1_ctx, cmd.buffer + tpm_readpubek_cmd.antiReplay,
+			sizeof(TPM_NONCE));
+	uint8_t digest[TPM_SHA1_160_HASH_LEN];
+	vb2_sha1_finalize(&sha1_ctx, digest);
+	if (vb2_safe_memcmp(digest, checksum, sizeof(digest))) {
+		return TPM_E_AUTHFAIL;
+	}
+
+	/* Validate expectations for the EK. */
+	if (alg != TPM_ALG_RSA ||
+	    enc_scheme != TPM_ES_RSAESOAEP_SHA1_MGF1 ||
+	    sig_scheme != TPM_SS_NONE ||
+	    key_len != 2048 ||
+	    num_primes != 2 ||
+	    exponent_size >= sizeof(uint32_t)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	if (exponent_size == 0) {
+		*public_exponent = 0x10001;
+	} else {
+		*public_exponent = 0;
+		int i;
+		for (i = 0; i < exponent_size; ++i) {
+			*public_exponent |= (*exponent++) << (8 * i);
+		}
+	}
+
+	if (modulus && *modulus_size >= actual_modulus_size) {
+		memcpy(modulus, modulus_data, actual_modulus_size);
+	} else {
+		result = TPM_E_BUFFER_SIZE;
+	}
+	*modulus_size = actual_modulus_size;
+
+	return result;
+}
+
+#endif  /* CHROMEOS_ENVIRONMENT */

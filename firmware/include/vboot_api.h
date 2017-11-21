@@ -419,6 +419,12 @@ VbError_t VbExTpmOpen(void);
 VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
                              uint8_t *response, uint32_t *response_length);
 
+/**
+ * Obtain cryptographically secure random bytes. This should use a local source
+ * of randomness (i.e. not be wired to the TPM RNG).
+ */
+VbError_t VbExTpmGetRandom(uint8_t *buf, uint32_t length);
+
 /*****************************************************************************/
 /* Non-volatile storage */
 
