@@ -23,6 +23,10 @@
 #define TPM_E_READ_FAILURE           ((uint32_t) 0x0000500a)  /* vboot local */
 #define TPM_E_STRUCT_SIZE            ((uint32_t) 0x0000500b)  /* vboot local */
 #define TPM_E_STRUCT_VERSION         ((uint32_t) 0x0000500c)  /* vboot local */
+#define TPM_E_INTERNAL_ERROR         ((uint32_t) 0x0000500d)  /* vboot local */
+#define TPM_E_INVALID_RESPONSE       ((uint32_t) 0x0000500e)  /* vboot local */
+#define TPM_E_BUFFER_SIZE            ((uint32_t) 0x0000500f)  /* vboot local */
+
 
 #ifdef TPM2_MODE
 #include "tpm2_tss_constants.h"
