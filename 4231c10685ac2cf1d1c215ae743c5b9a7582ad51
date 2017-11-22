@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5c783e0_ea192e4a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-22T21:47:42Z",
+      "side": 1,
+      "message": "nit: This should really be written as\n\n static const enum VbScreenType_t vb_menu_to_screen_map[VB_MENU_COUNT] \u003d {\n   [VB_MENU_DEV_WARNING] \u003d VB_SCREEN_DEVELOPER_WARNING_MENU,\n   [VB_MENU_DEV] \u003d VB_SCREEN_DEVELOPER_MENU,\n   ...\n };\n\n(Having to manually match indices between two arrays several pages away from each other really invites index mismatch accidents, and explicitly adding the array size would prevent someone adding a new menu type without updating this.)",
+      "revId": "4231c10685ac2cf1d1c215ae743c5b9a7582ad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
