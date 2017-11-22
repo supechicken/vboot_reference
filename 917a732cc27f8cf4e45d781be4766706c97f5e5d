@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7626b3ef_e98b30c1",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2017-11-22T14:33:00Z",
+      "side": 1,
+      "message": "The idea here is to make FUTIL and FUTIL_STATIC independent from UTILLIB, so the common parts that are also relevant to futil are split in COMMON_SRCS and are included here. UTILLIB is removed from the associated make rule.",
+      "parentUuid": "7d3cda13_ae57b4d2",
+      "revId": "917a732cc27f8cf4e45d781be4766706c97f5e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0b887e8_e7efb7e0",
         "filename": "Makefile",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-10-27T13:02:59Z",
       "side": 1,
       "message": "that looks unrelated",
+      "range": {
+        "startLine": 1144,
+        "startChar": 61,
+        "endLine": 1144,
+        "endChar": 68
+      },
+      "revId": "917a732cc27f8cf4e45d781be4766706c97f5e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241e11fa_71814c26",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2017-11-22T14:33:00Z",
+      "side": 1,
+      "message": "These libraries are required for files from FUTIL_SRCS, e.g. futility/file_type_rwsig.c that calls vb21_verify_data, vb2_unpack_key_data etc.\nRemoving the line from LDLIBS is not necessary though, so I could remove that change in the next revision.",
+      "parentUuid": "a0b887e8_e7efb7e0",
       "range": {
         "startLine": 1144,
         "startChar": 61,
