@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8909dfc0_78ad24b1",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-22T22:06:16Z",
+      "side": 1,
+      "message": "(edit: Technically there\u0027s one more screen type on the dev-mode side, I guess: TO_DEV is separate from DEV_WARNING and TO_DEV_CONFIRMED. For the developer screens, the screen type changes only in sync with menu changes. But on the recovery side it really doesn\u0027t.)",
+      "parentUuid": "72bfd923_743347ab",
+      "revId": "4231c10685ac2cf1d1c215ae743c5b9a7582ad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5c783e0_ea192e4a",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
