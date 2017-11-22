@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "72bfd923_743347ab",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-22T22:02:52Z",
+      "side": 1,
+      "message": "Actually, I think it\u0027s not as simple as adding \"options\" like a separate menu type, either. If you do that, depthcharge loses all state about which \"screen\" you\u0027re really on. This is especially important because that screen can change *while* you\u0027re displaying the options menu, which should be communicated to the user. Even if we\u0027re not going to display the images while the options are on (we talked about this at the meeting but didn\u0027t really settle on a conclusion, I think), I think we should at least display the text (which we were still planning to add, right?) so that the user can tell which screen they are on and whether that changes even while they\u0027re exploring the options.\n\nI feel like what you really want is a single \"recovery menu\" that can be displayed on different kinds of \"recovery screens\". Since we are going to remove the TO_DEV menu item, the INSERT menu will be equal to OPTIONS anyway. And even if we were to later add more recovery menu options (say, powerwash), there\u0027s no real reason why those should only appear on INSERT but not on NOGOOD, for example. So, really, you want to have a concept of a currently displayed menu (which could be RECOVERY, TO_DEV, DEV_WARNING, DEVELOPER, LANGUAGE or NULL) and a separate currently displayed screen type (INSERT, NOGOOD, BROKEN, TO_DEV_CONFIRMED, DEV_WARNING or TO_NORM_CONFIRMED), both of which can change independently.",
+      "revId": "4231c10685ac2cf1d1c215ae743c5b9a7582ad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5c783e0_ea192e4a",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
