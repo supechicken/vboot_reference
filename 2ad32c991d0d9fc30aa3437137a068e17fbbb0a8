@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5228c3c1_e2e175fa",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-22T21:39:14Z",
+      "side": 1,
+      "message": "If one branch of an if-statement requires braces, the other one should have them too (even if that one is only one line).",
+      "revId": "2ad32c991d0d9fc30aa3437137a068e17fbbb0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400fbac7_92379443",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-22T21:39:14Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2ad32c991d0d9fc30aa3437137a068e17fbbb0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
