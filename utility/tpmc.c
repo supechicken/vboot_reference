@@ -16,6 +16,8 @@
 #include <string.h>
 #include <syslog.h>
 
+#include <openssl/rsa.h>
+
 #include "tlcl.h"
 #include "tpm_error_messages.h"
 #include "tss_constants.h"
@@ -499,7 +501,136 @@ static uint32_t HandlerIFXFieldUpgradeInfo(void) {
   }
   return result;
 }
-#endif
+
+#ifdef TPM_OWNERSHIP
+static uint32_t HandlerReadPubek(void) {
+  uint32_t exponent;
+  uint8_t modulus[TPM_RSA_2048_LEN];
+  uint32_t modulus_size = sizeof(modulus);
+  uint32_t result = TlclReadPubek(&exponent, modulus, &modulus_size);
+  if (result == 0) {
+    printf("exponent %u\n", exponent);
+    printf("modulus");
+    size_t n;
+    for (n = 0; n < modulus_size; ++n) {
+      printf(" %02x", modulus[n]);
+    }
+    printf("\n");
+  }
+  return result;
+}
+
+static int EncryptOAEPTCPA(uint32_t exponent,
+                           uint8_t modulus[TPM_RSA_2048_LEN],
+                           uint8_t* cleartext,
+                           uint32_t cleartext_size,
+                           uint8_t ciphertext[TPM_RSA_2048_LEN])
+{
+  RSA* rsa = RSA_new();
+  if (rsa == NULL) {
+    return 0;
+  }
+
+  rsa->e = BN_new();
+  BN_set_word(rsa->e, exponent);
+  rsa->n = BN_bin2bn(modulus, TPM_RSA_2048_LEN, NULL);
+
+  // TODO: error handling when BNs are NULL.
+
+  int rv;
+  static uint8_t kOAEPPad[] = { 'T', 'C', 'P', 'A' };
+  uint8_t encoded[TPM_RSA_2048_LEN];
+  rv = RSA_padding_add_PKCS1_OAEP(encoded, sizeof(encoded), cleartext,
+      cleartext_size, kOAEPPad, sizeof(kOAEPPad));
+  if (!rv) {
+    RSA_free(rsa);
+    return 0;
+  }
+
+  rv = RSA_public_encrypt(sizeof(encoded), encoded, ciphertext, rsa,
+                          RSA_NO_PADDING);
+  if (rv == -1) {
+    RSA_free(rsa);
+    return 0;
+  }
+
+  RSA_free(rsa);
+  return 1;
+}
+
+static uint32_t HandlerTakeOwnership(void) {
+  uint32_t exponent;
+  uint8_t modulus[TPM_RSA_2048_LEN];
+  uint32_t modulus_size = sizeof(modulus);
+  uint32_t result = TlclReadPubek(&exponent, modulus, &modulus_size);
+  if (result != TPM_SUCCESS) {
+    return result;
+  }
+
+  /* Construct a key and encrypt the default password. */
+  static uint8_t kWellKnownSecret[TPM_AUTH_DATA_LEN] = { 0 };
+  uint8_t enc_secret[TPM_RSA_2048_LEN];
+  if (!EncryptOAEPTCPA(exponent, modulus, kWellKnownSecret,
+                       sizeof(kWellKnownSecret), enc_secret)) {
+    return TPM_E_INTERNAL_ERROR;
+  }
+
+  return TlclTakeOwnership(enc_secret, enc_secret, kWellKnownSecret);
+}
+
+static uint32_t HandlerDefineSpaceOwner(void) {
+  uint32_t index, size, perm;
+  if (nargs != 5) {
+    fprintf(stderr, "usage: tpmc defo <index> <size> <perm>\n");
+    exit(OTHER_ERROR);
+  }
+  if (HexStringToUint32(args[2], &index) != 0 ||
+      HexStringToUint32(args[3], &size) != 0 ||
+      HexStringToUint32(args[4], &perm) != 0) {
+    fprintf(stderr, "<index>, <size>, and <perm> must be "
+            "32-bit hex (0x[0-9a-f]+)\n");
+    exit(OTHER_ERROR);
+  }
+  uint8_t owner_auth[TPM_AUTH_DATA_LEN] = { 0 };
+  return TlclDefineSpaceOwner(owner_auth, index, perm, size);
+}
+
+static uint32_t HandlerCreateDelegationFamily(void) {
+  uint8_t family_label;
+  if (nargs != 3) {
+    fprintf(stderr, "usage: tpmc dlgc <family_label>\n");
+    exit(OTHER_ERROR);
+  }
+  if (HexStringToUint8(args[2], &family_label) != 0) {
+    fprintf(stderr, "<family_label> must be an 8-bit hex value\n");
+    exit(OTHER_ERROR);
+  }
+  return TlclCreateDelegationFamily(family_label);
+}
+
+static uint32_t HandlerReadDelegationFamilyTable(void) {
+  TPM_FAMILY_TABLE_ENTRY table[8];
+  uint32_t table_size = 8;
+
+  uint32_t result = TlclReadDelagationFamilyTable(table, &table_size);
+  if (result != TPM_SUCCESS) {
+    return result;
+  }
+
+  int i;
+  for (i = 0; i < table_size; ++i) {
+    fprintf(
+        stderr,
+        "familyLabel %02x familyID %08x verificationCount %08x flags %08x\n",
+        table[i].familyLabel, table[i].familyID, table[i].verificationCount,
+        table[i].flags);
+  }
+
+  return TPM_SUCCESS;
+}
+
+#endif  /* TPM_OWNERSHIP */
+#endif  /* !TPM2_MODE */
 
 #ifdef TPM2_MODE
 static uint32_t HandlerDoNothingForTPM2(void) {
@@ -584,6 +715,25 @@ command_record command_table[] = {
   { "ifxfieldupgradeinfo", "ifxfui",
     TPM20_NOT_IMPLEMENTED("read and print IFX field upgrade info",
       HandlerIFXFieldUpgradeInfo) },
+#ifdef TPM_OWNERSHIP
+  { "readpubek", "pubek",
+    TPM20_NOT_IMPLEMENTED("print public endorsement key", HandlerReadPubek) },
+  { "takeownership", "own",
+    TPM20_NOT_IMPLEMENTED("take ownership with an all-zeros owner secret",
+      HandlerTakeOwnership) },
+  { "definespaceowner", "defo",
+    TPM20_NOT_IMPLEMENTED(
+      "define a space using owner auth (def <index> <size> <perm>)",
+      HandlerDefineSpaceOwner) },
+  { "createdelegationfamily", "dlgcf",
+    TPM20_NOT_IMPLEMENTED(
+      "create a delegation family (dlgcf <family_label>)",
+      HandlerCreateDelegationFamily) },
+  { "listdelegationfamilies", "dlglf",
+    TPM20_NOT_IMPLEMENTED(
+      "read and print the delegation family table",
+      HandlerReadDelegationFamilyTable) },
+#endif  /* TPM_OWNERSHIP */
 };
 
 static int n_commands = sizeof(command_table) / sizeof(command_table[0]);
