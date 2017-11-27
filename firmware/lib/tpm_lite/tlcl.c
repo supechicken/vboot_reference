@@ -16,6 +16,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
+#include "2hmac.h"
 #include "2sha.h"
 
 #include "sysincludes.h"
@@ -148,6 +149,182 @@ static uint32_t Send(const uint8_t* command)
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	return TlclSendReceive(command, response, sizeof(response));
 }
+
+#ifdef CHROMEOS_ENVIRONMENT
+
+struct auth_session
+{
+	uint32_t handle;
+	TPM_NONCE nonce_even;
+	TPM_NONCE nonce_odd;
+	uint8_t shared_secret[TPM_AUTH_DATA_LEN];
+	int valid;
+};
+
+static uint32_t StartOIAPSession(struct auth_session* session,
+				 const uint8_t secret[TPM_AUTH_DATA_LEN])
+{
+	session->valid = 0;
+
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(tpm_oiap_cmd.buffer, response,
+					  sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	uint32_t size;
+	FromTpmUint32(response + sizeof(uint16_t), &size);
+	if (size < kTpmResponseHeaderLength + sizeof(uint32_t)
+			+ sizeof(TPM_NONCE)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+	FromTpmUint32(cursor, &session->handle);
+	cursor += sizeof(session->handle);
+	memcpy(session->nonce_even.nonce, cursor, sizeof(TPM_NONCE));
+	cursor += sizeof(TPM_NONCE);
+	VbAssert(cursor - response <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
+
+	memcpy(session->shared_secret, secret,TPM_AUTH_DATA_LEN);
+	session->valid = 1;
+
+	return result;
+}
+
+uint32_t AuthenticateCommand(struct auth_session* auth_session,
+			     uint8_t* command_buffer,
+			     uint32_t command_buffer_size,
+			     int continue_auth_session)
+{
+	if (!auth_session->valid) {
+		return TPM_E_AUTHFAIL;
+	}
+
+	/* Sanity check to make sure there is sufficient space in the buffer. */
+	const uint32_t min_size =
+			kTpmRequestHeaderLength + kTpmRequestAuthBlockLength;
+	if (command_buffer_size < min_size) {
+		return TPM_E_BUFFER_SIZE;
+	}
+	const uint32_t auth_offset =
+			command_buffer_size - kTpmRequestAuthBlockLength;
+
+	/*
+	 * The digest of the command is computed over the command buffer, but
+	 * excluding the leading tag and paramSize fields.
+	 */
+	struct vb2_sha1_context sha1_ctx;
+	vb2_sha1_init(&sha1_ctx);
+	vb2_sha1_update(&sha1_ctx,
+			command_buffer + sizeof(uint16_t) + sizeof(uint32_t),
+			auth_offset - sizeof(uint16_t) - sizeof(uint32_t));
+	uint8_t buf[TPM_SHA1_160_HASH_LEN + 2 * sizeof(TPM_NONCE) + 1];
+	vb2_sha1_finalize(&sha1_ctx, buf);
+
+	/* Generate a fresh nonce. */
+	if (VbExTpmGetRandom(auth_session->nonce_odd.nonce,
+			     sizeof(TPM_NONCE)) != VB2_SUCCESS) {
+		return TPM_E_INTERNAL_ERROR;
+	}
+
+	/* Append the authentication block to the command buffer. */
+	uint8_t* cursor = command_buffer + auth_offset;
+	ToTpmUint32(cursor, auth_session->handle);
+	cursor += sizeof(uint32_t);
+	memcpy(cursor, auth_session->nonce_odd.nonce, sizeof(TPM_NONCE));
+	cursor += sizeof(TPM_NONCE);
+	*cursor++ = continue_auth_session;
+
+	/* Compute and append the MAC. */
+	memcpy(buf + TPM_SHA1_160_HASH_LEN, auth_session->nonce_even.nonce,
+	       sizeof(TPM_NONCE));
+	memcpy(buf + TPM_SHA1_160_HASH_LEN + sizeof(TPM_NONCE),
+	       auth_session->nonce_odd.nonce, sizeof(TPM_NONCE));
+	buf[TPM_SHA1_160_HASH_LEN + 2 * sizeof(TPM_NONCE)] =
+			continue_auth_session;
+	if (hmac(VB2_HASH_SHA1, auth_session->shared_secret,
+		 sizeof(auth_session->shared_secret), buf, sizeof(buf), cursor,
+		 TPM_SHA1_160_HASH_LEN)) {
+		return TPM_E_AUTHFAIL;
+	}
+	cursor += TPM_SHA1_160_HASH_LEN;
+
+	return TPM_SUCCESS;
+}
+
+uint32_t AuthenticateResponse(struct auth_session* auth_session,
+			      TPM_COMMAND_CODE ordinal,
+			      uint8_t* response_buffer,
+			      uint32_t response_buffer_size)
+{
+	if (!auth_session->valid) {
+		return TPM_E_AUTHFAIL;
+	}
+
+	if (response_buffer_size < kTpmResponseHeaderLength) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	/* Parse and validate the actual response size from the response. */
+	uint32_t size;
+	FromTpmUint32(response_buffer + sizeof(uint16_t), &size);
+	if (size >= response_buffer_size ||
+	    size < kTpmResponseHeaderLength + kTpmResponseAuthBlockLength) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+	uint32_t auth_offset = size - kTpmResponseAuthBlockLength;
+
+	/*
+	 * The digest of the response is computed over the return code, ordinal,
+	 * response payload.
+	 */
+	struct vb2_sha1_context sha1_ctx;
+	vb2_sha1_init(&sha1_ctx);
+	vb2_sha1_update(&sha1_ctx,
+			response_buffer + sizeof(uint16_t) + sizeof(uint32_t),
+			sizeof(uint32_t));
+	uint8_t ordinal_buf[sizeof(ordinal)];
+	ToTpmUint32(ordinal_buf, ordinal);
+	vb2_sha1_update(&sha1_ctx, ordinal_buf, sizeof(ordinal_buf));
+	vb2_sha1_update(&sha1_ctx,
+			response_buffer + kTpmResponseHeaderLength,
+			auth_offset - kTpmResponseHeaderLength);
+	uint8_t hmac_input[TPM_SHA1_160_HASH_LEN + 2 * sizeof(TPM_NONCE) + 1];
+	vb2_sha1_finalize(&sha1_ctx, hmac_input);
+
+	/* Compute the MAC. */
+	uint8_t* cursor = response_buffer + auth_offset;
+	memcpy(hmac_input + TPM_SHA1_160_HASH_LEN, cursor, sizeof(TPM_NONCE));
+	cursor += sizeof(TPM_NONCE);
+	memcpy(hmac_input + TPM_SHA1_160_HASH_LEN + sizeof(TPM_NONCE),
+	       auth_session->nonce_odd.nonce, sizeof(TPM_NONCE));
+	auth_session->valid = *cursor++;
+	hmac_input[TPM_SHA1_160_HASH_LEN + 2 * sizeof(TPM_NONCE)] =
+			auth_session->valid;
+	uint8_t mac[TPM_SHA1_160_HASH_LEN];
+	if (hmac(VB2_HASH_SHA1, auth_session->shared_secret,
+		 sizeof(auth_session->shared_secret), hmac_input,
+		 sizeof(hmac_input), mac, sizeof(mac))) {
+		auth_session->valid = 0;
+		return TPM_E_AUTHFAIL;
+	}
+
+	/* Check the MAC. */
+	if (vb2_safe_memcmp(mac, cursor, sizeof(mac))) {
+		auth_session->valid = 0;
+		return TPM_E_AUTHFAIL;
+	}
+
+	/* Success, save the even nonce. */
+	memcpy(auth_session->nonce_even.nonce, response_buffer + auth_offset,
+	       sizeof(TPM_NONCE));
+
+	return TPM_SUCCESS;
+}
+
+#endif  /* CHROMEOS_ENVIRONMENT */
 
 /* Exported functions. */
 
@@ -759,6 +936,48 @@ uint32_t TlclReadPubek(uint32_t* public_exponent,
 	*modulus_size = actual_modulus_size;
 
 	return result;
+}
+
+uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
+			   uint8_t enc_srk_auth[TPM_RSA_2048_LEN],
+			   uint8_t owner_auth[TPM_AUTH_DATA_LEN])
+{
+	/* Start an OAIP session. */
+	struct auth_session auth_session;
+	uint32_t result = StartOIAPSession(&auth_session, owner_auth);
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Build the TakeOwnership command. */
+	struct s_tpm_takeownership_cmd cmd;
+	memcpy(&cmd, &tpm_takeownership_cmd, sizeof(cmd));
+	memcpy(cmd.buffer + tpm_takeownership_cmd.encOwnerAuth, enc_owner_auth,
+	       TPM_RSA_2048_LEN);
+	memcpy(cmd.buffer + tpm_takeownership_cmd.encSrkAuth, enc_srk_auth,
+	       TPM_RSA_2048_LEN);
+	result = AuthenticateCommand(&auth_session, cmd.buffer,
+				     sizeof(cmd.buffer), 0);
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* The response buffer needs to be large to hold the public half of the
+	 * generated SRK. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_RSA_2048_LEN];
+	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Check the auth tag on the response. */
+	result = AuthenticateResponse(&auth_session, TPM_ORD_TakeOwnership,
+				      response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	return TPM_SUCCESS;
 }
 
 #endif  /* CHROMEOS_ENVIRONMENT */
