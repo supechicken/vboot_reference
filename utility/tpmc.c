@@ -16,6 +16,8 @@
 #include <string.h>
 #include <syslog.h>
 
+#include <openssl/rsa.h>
+
 #include "tlcl.h"
 #include "tpm_error_messages.h"
 #include "tss_constants.h"
@@ -517,6 +519,64 @@ static uint32_t HandlerReadPubek(void) {
   }
   return result;
 }
+
+static int EncryptOAEPTCPA(uint32_t exponent,
+                           uint8_t modulus[TPM_RSA_2048_LEN],
+                           uint8_t* cleartext,
+                           uint32_t cleartext_size,
+                           uint8_t ciphertext[TPM_RSA_2048_LEN])
+{
+  RSA* rsa = RSA_new();
+  if (rsa == NULL) {
+    return 0;
+  }
+
+  rsa->e = BN_new();
+  BN_set_word(rsa->e, exponent);
+  rsa->n = BN_bin2bn(modulus, TPM_RSA_2048_LEN, NULL);
+
+  // TODO: error handling when BNs are NULL.
+
+  int rv;
+  static uint8_t kOAEPPad[] = { 'T', 'C', 'P', 'A' };
+  uint8_t encoded[TPM_RSA_2048_LEN];
+  rv = RSA_padding_add_PKCS1_OAEP(encoded, sizeof(encoded), cleartext,
+      cleartext_size, kOAEPPad, sizeof(kOAEPPad));
+  if (!rv) {
+    RSA_free(rsa);
+    return 0;
+  }
+
+  rv = RSA_public_encrypt(sizeof(encoded), encoded, ciphertext, rsa,
+                          RSA_NO_PADDING);
+  if (rv == -1) {
+    RSA_free(rsa);
+    return 0;
+  }
+
+  RSA_free(rsa);
+  return 1;
+}
+
+static uint32_t HandlerTakeOwnership(void) {
+  uint32_t exponent;
+  uint8_t modulus[TPM_RSA_2048_LEN];
+  uint32_t modulus_size = sizeof(modulus);
+  uint32_t result = TlclReadPubek(&exponent, modulus, &modulus_size);
+  if (result != TPM_SUCCESS) {
+    return result;
+  }
+
+  /* Construct a key and encrypt the default password. */
+  static uint8_t kWellKnownSecret[TPM_AUTH_DATA_LEN] = { 0 };
+  uint8_t enc_secret[TPM_RSA_2048_LEN];
+  if (!EncryptOAEPTCPA(exponent, modulus, kWellKnownSecret,
+                       sizeof(kWellKnownSecret), enc_secret)) {
+    return TPM_E_INTERNAL_ERROR;
+  }
+
+  return TlclTakeOwnership(enc_secret, enc_secret, kWellKnownSecret);
+}
 #endif  /* TPM_OWNERSHIP */
 #endif  /* !TPM2_MODE */
 
@@ -606,6 +666,9 @@ command_record command_table[] = {
 #ifdef TPM_OWNERSHIP
   { "readpubek", "pubek",
     TPM20_NOT_IMPLEMENTED("print public endorsement key", HandlerReadPubek) },
+  { "takeownership", "own",
+    TPM20_NOT_IMPLEMENTED("take ownership with an all-zeros owner secret",
+      HandlerTakeOwnership) },
 #endif  /* TPM_OWNERSHIP */
 };
 
