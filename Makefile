@@ -1086,6 +1086,7 @@ ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: ${UTILLIB}
 ${UTIL_BINS} ${UTIL_BINS_STATIC}: LIBS = ${UTILLIB}
+${UTIL_BINS} ${UTIL_BINS_STATIC}: LDLIBS += -lcrypto
 
 # Utilities for auto-update toolkits must be statically linked.
 ${UTIL_BINS_STATIC}: LDFLAGS += -static
