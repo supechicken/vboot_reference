@@ -22,7 +22,6 @@
 #include "vboot_common.h"
 #include "vboot_display.h"
 #include "vboot_kernel.h"
-#include "vboot_nvstorage.h"
 #include "vboot_struct.h"
 
 /* Mock data */
@@ -303,7 +302,7 @@ static void VbBootDevTest(void)
 	 * legacy are set */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VBNV_DEV_DEFAULT_BOOT_LEGACY);
+		   VB2_DEV_DEFAULT_BOOT_LEGACY);
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	TEST_EQ(VbBootDeveloper(&ctx, &cparams), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
@@ -311,7 +310,7 @@ static void VbBootDevTest(void)
 	/* Proceed to legacy boot mode only if enabled */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VBNV_DEV_DEFAULT_BOOT_LEGACY);
+		   VB2_DEV_DEFAULT_BOOT_LEGACY);
 	TEST_EQ(VbBootDeveloper(&ctx, &cparams), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
@@ -319,7 +318,7 @@ static void VbBootDevTest(void)
 	 * usb are set */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VBNV_DEV_DEFAULT_BOOT_USB);
+		   VB2_DEV_DEFAULT_BOOT_USB);
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vbtlk_retval = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloper(&ctx, &cparams), 0, "Ctrl+U USB");
@@ -327,14 +326,14 @@ static void VbBootDevTest(void)
 	/* Proceed to usb boot mode only if enabled */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VBNV_DEV_DEFAULT_BOOT_USB);
+		   VB2_DEV_DEFAULT_BOOT_USB);
 	TEST_EQ(VbBootDeveloper(&ctx, &cparams), 1002, "Timeout");
 
 	/* If no USB tries fixed disk */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VBNV_DEV_DEFAULT_BOOT_USB);
+		   VB2_DEV_DEFAULT_BOOT_USB);
 	TEST_EQ(VbBootDeveloper(&ctx, &cparams), 1002, "Ctrl+U enabled");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
@@ -358,7 +357,7 @@ static void VbBootDevTest(void)
 		VBERROR_LOAD_KERNEL_RECOVERY,
 		"Space = recovery");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
-		VBNV_RECOVERY_RW_DEV_SCREEN, "  recovery reason");
+		VB2_RECOVERY_RW_DEV_SCREEN, "  recovery reason");
 
 	/* Space asks to disable virtual dev switch */
 	ResetMocks();
