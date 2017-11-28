@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2dcb7fed_de43bdba",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-28T23:36:05Z",
+      "side": 1,
+      "message": "So you essentially want to auto-cancel any menu whenever you switch between NOGOOD and INSERT? I ...guess... that could be good enough... it\u0027s just a little abrupt to the user. But that means we also can\u0027t keep displaying the text related to the INSERT or NOGOOD screen above the OPTIONS menu, so the user would always have to cancel first to figure out where they were again. Are we okay with that?\n\n(Also, what happens if the user selects a language but doesn\u0027t press Power to confirm yet, and then we pull the languages menu out from under them? Will it keep the language it had before they went into the menu?)",
+      "parentUuid": "06afd3e8_acc62282",
+      "revId": "4231c10685ac2cf1d1c215ae743c5b9a7582ad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5c783e0_ea192e4a",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
