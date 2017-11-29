@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcc6fda7_444a31b3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "nit: \"legacy menu\" seems an odd name considering that those screens don\u0027t actually have a menu. How about vb2_is_menuless_screen()?",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeeebab4_78635110",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "The way the menu option logic is split between this and the UI loop functions is already kinda dicey and I feel this makes it worse. I think it would be better if this function sticks to handling what\u0027s happening for a normal \"select a menu entry\" power button press, and the special double-button combo is directly handled from within vb2_recovery_menu(). (In fact, I think it would be better if the \"press VolUp/VolDown to reveal options menu\" part was only there, too.)",
+      "range": {
+        "startLine": 384,
+        "startChar": 49,
+        "endLine": 384,
+        "endChar": 63
+      },
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d01ee39_acb1424c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "This combo needs to be available from NOGOOD as well, anyway.",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0d46ce_ae30e319",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it work to call vb2_set_menu_items(prev_menu, 0)?",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efddba8f_24326af8",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "(...and here, actually...)",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b2d0f4_d42f13ce",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this immediately overwrite the options menu again if we enter it from the NOGOOD screen?",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fb8d0f_5f515981",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-11-29T00:38:40Z",
+      "side": 1,
+      "message": "80 chars",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
