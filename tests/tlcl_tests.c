@@ -466,6 +466,75 @@ static void PcrTest(void)
 }
 
 /**
+ * Test TlclGetSpaceInfo.
+ */
+static void GetSpaceInfoTest(void)
+{
+	uint8_t response[] = {
+		0x00, 0xc4, 0x00, 0x00, 0x00, 0x55, 0x00, 0x00,
+		0x00, 0x00, 0x00, 0x00, 0x00, 0x47, 0x00, 0x18,
+		0x20, 0x00, 0x00, 0x04, 0x00, 0x03, 0x01, 0x00,
+		0x00, 0x01, 0xb3, 0x2b, 0x96, 0x30, 0xd3, 0x21,
+		0x1e, 0x99, 0x78, 0x9e, 0xd3, 0x1f, 0x11, 0x8e,
+		0x96, 0xbc, 0xf7, 0x7e, 0x7b, 0x06, 0x00, 0x03,
+		0x20, 0x00, 0x00, 0x10, 0x3b, 0xb2, 0x69, 0x03,
+		0x3d, 0x12, 0xe1, 0x99, 0x87, 0xe9, 0x3d, 0xf1,
+		0x11, 0xe8, 0x69, 0xcb, 0x7f, 0xe7, 0xb7, 0x60,
+		0x00, 0x17, 0x00, 0x00, 0x20, 0x00, 0x00, 0x01,
+		0x01, 0x00, 0x00, 0x00, 0x45,
+	};
+
+	uint32_t attributes = 0;
+	uint32_t size = 0;
+	TPM_NV_AUTH_POLICY policy;
+
+	/* Test successful parsing. */
+	ResetMocks();
+	calls[0].rsp = response;
+	calls[0].rsp_size = sizeof(response);
+	TEST_EQ(TlclGetSpaceInfo(0x20000004, &attributes, &size, &policy),
+		TPM_SUCCESS, "GetSpaceInfo");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
+	TEST_EQ(attributes, TPM_NV_PER_WRITEDEFINE, "  attributes");
+	TEST_EQ(size, 0x45, "  size");
+
+#if 0
+	TEST_EQ(pcr_read_selection, 0x1, " pcr read selection");
+	TEST_EQ(memcmp(pcr_read_digest, response + 26, TPM_PCR_DIGEST), 0,
+		"  pcr read digest");
+	TEST_EQ(pcr_write_selection, 0x20, " pcr write selection");
+	TEST_EQ(memcmp(pcr_write_digest, response + 52, TPM_PCR_DIGEST), 0,
+		"  pcr write digest");
+#endif
+
+	/* Test that GetPermissions returns the attributes as well. */
+	ResetMocks();
+	calls[0].rsp = response;
+	calls[0].rsp_size = sizeof(response);
+	TEST_EQ(TlclGetPermissions(0x20000004, &attributes),
+		TPM_SUCCESS, "GetPermissions");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
+	TEST_EQ(attributes, TPM_NV_PER_WRITEDEFINE, "  attributes");
+
+	/* Test whether a short response gets detected. */
+	ResetMocks();
+	calls[0].rsp = response;
+	calls[0].rsp_size = sizeof(response);
+	ToTpmUint32(response + 10, 0x46);
+	TEST_EQ(TlclGetSpaceInfo(0x20000004, &attributes, &size, &policy),
+		TPM_E_INVALID_RESPONSE, "GetSpaceInfo short length");
+
+	/* Test whether an overlong PCR selection length causes failure. */
+	ResetMocks();
+	calls[0].rsp = response;
+	calls[0].rsp_size = sizeof(response);
+	ToTpmUint32(response + 10, 0x47);
+	ToTpmUint16(response + 20, 4);
+	TEST_EQ(TlclGetSpaceInfo(0x20000004, &attributes, &size, &policy),
+		TPM_E_INVALID_RESPONSE, "GetSpaceInfo overlong pcr selection");
+}
+
+/**
  * Test flags / capabilities
  *
  * TODO: check params/data read/written.
@@ -475,7 +544,6 @@ static void FlagsTest(void)
 	TPM_PERMANENT_FLAGS pflags;
 	TPM_STCLEAR_FLAGS vflags;
 	uint8_t disable = 0, deactivated = 0, nvlocked = 0;
-	uint32_t u;
 	uint8_t buf[32];
 
 	ResetMocks();
@@ -491,10 +559,6 @@ static void FlagsTest(void)
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
 	ResetMocks();
 	TEST_EQ(TlclGetFlags(&disable, &deactivated, &nvlocked), 0, "GetFlags");
-
-	ResetMocks();
-	TEST_EQ(TlclGetPermissions(1, &u), 0, "GetPermissions");
-	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
 
 	ResetMocks();
 	TEST_EQ(TlclGetOwnership(buf), 0, "GetOwnership");
@@ -1084,6 +1148,7 @@ int main(void)
 	DefineSpaceExTest();
 	InitNvAuthPolicyTest();
 	PcrTest();
+	GetSpaceInfoTest();
 	FlagsTest();
 	RandomTest();
 	GetVersionTest();
