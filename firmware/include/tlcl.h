@@ -242,6 +242,14 @@ uint32_t TlclReadPubek(uint32_t* public_exponent,
 uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
                            uint8_t enc_srk_auth[TPM_RSA_2048_LEN],
                            uint8_t owner_auth[TPM_AUTH_DATA_LEN]);
+
+/**
+ * Define a space using owner authorization secret [owner_auth]. The space is
+ * set up to have permission [perm].  [index] is the index for the space, [size]
+ * the usable data size.  The TPM error code is returned.
+ */
+uint32_t TlclDefineSpaceOwner(uint8_t owner_auth[TPM_AUTH_DATA_LEN],
+                              uint32_t index, uint32_t perm, uint32_t size);
 #endif  /* TPM_OWNERSHIP */
 
 #endif  /* TPM_LITE_TLCL_H_ */

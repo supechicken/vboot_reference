@@ -432,6 +432,20 @@ Command* BuildOIAPCommand(void) {
   return cmd;
 }
 
+Command* BuildOSAPCommand(void) {
+  int size = kTpmRequestHeaderLength + sizeof(TPM_ENTITY_TYPE) +
+             sizeof(TPM_ENTITY_VALUE) + sizeof(TPM_NONCE);
+  Command* cmd = newCommand(TPM_ORD_OSAP, size);
+  cmd->name = "tpm_osap_cmd";
+  AddVisibleField(cmd, "entityType", kTpmRequestHeaderLength);
+  AddVisibleField(cmd, "entityValue",
+                  kTpmRequestHeaderLength + sizeof(uint16_t));
+  AddVisibleField(
+      cmd, "nonceOddOSAP",
+      kTpmRequestHeaderLength + sizeof(uint16_t) + sizeof(uint32_t));
+  return cmd;
+}
+
 Command* BuildTakeOwnershipCommand(void) {
   Command* cmd = newCommandWithTag(TPM_ORD_TakeOwnership, 624,
                                    TPM_TAG_RQU_AUTH1_COMMAND);
@@ -621,6 +635,7 @@ Command* (*builders[])(void) = {
   BuildIFXFieldUpgradeInfoRequest2Command,
 #ifdef TPM_OWNERSHIP
   BuildOIAPCommand,
+  BuildOSAPCommand,
   BuildTakeOwnershipCommand,
 #endif
 };

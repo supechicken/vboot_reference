@@ -808,6 +808,63 @@ static uint32_t StartOIAPSession(struct auth_session* session,
 	return result;
 }
 
+static uint32_t StartOSAPSession(struct auth_session* session,
+				 uint16_t entity_type,
+				 uint32_t entity_value,
+				 uint8_t entity_usage_auth[TPM_AUTH_DATA_LEN])
+{
+	session->valid = 0;
+
+	/* Build OSAP command. */
+	struct s_tpm_osap_cmd cmd;
+	memcpy(&cmd, &tpm_osap_cmd, sizeof(cmd));
+	ToTpmUint16(cmd.buffer + cmd.entityType, entity_type);
+	ToTpmUint32(cmd.buffer + cmd.entityValue, entity_value);
+	if (VbExTPMGetRandom(cmd.buffer + cmd.nonceOddOSAP,
+			     sizeof(TPM_NONCE)) != VB2_SUCCESS) {
+		return TPM_E_INTERNAL_ERROR;
+	}
+
+	/* Send OSAP command. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(cmd.buffer, response,
+					  sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Parse response. */
+	uint32_t size;
+	FromTpmUint32(response + sizeof(uint16_t), &size);
+	if (size < kTpmResponseHeaderLength + sizeof(uint32_t)
+			+ 2 * sizeof(TPM_NONCE)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+	FromTpmUint32(cursor, &session->handle);
+	cursor += sizeof(session->handle);
+	memcpy(session->nonce_even.nonce, cursor, sizeof(TPM_NONCE));
+	cursor += sizeof(TPM_NONCE);
+	uint8_t* nonce_even_osap = cursor;
+	cursor += sizeof(TPM_NONCE);
+	VbAssert(cursor - response <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
+
+	/* Compute shared secret */
+	uint8_t hmac_input[2 * sizeof(TPM_NONCE)];
+	memcpy(hmac_input, nonce_even_osap, sizeof(TPM_NONCE));
+	memcpy(hmac_input + sizeof(TPM_NONCE), cmd.buffer + cmd.nonceOddOSAP,
+	       sizeof(TPM_NONCE));
+	if (hmac(VB2_HASH_SHA1, entity_usage_auth, sizeof(entity_usage_auth),
+		 hmac_input, sizeof(hmac_input), session->shared_secret,
+		 sizeof(session->shared_secret))) {
+		return TPM_E_INTERNAL_ERROR;
+	}
+	session->valid = 1;
+
+	return result;
+}
+
 uint32_t AuthenticateCommand(struct auth_session* auth_session,
 			     uint8_t* command_buffer,
 			     uint32_t command_buffer_size,
@@ -973,6 +1030,48 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
 
 	/* Check the auth tag on the response. */
 	result = AuthenticateResponse(&auth_session, TPM_ORD_TakeOwnership,
+				      response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	return TPM_SUCCESS;
+}
+
+uint32_t TlclDefineSpaceOwner(uint8_t owner_auth[TPM_AUTH_DATA_LEN],
+                              uint32_t index, uint32_t perm, uint32_t size) {
+	/* Start an OIAP session. */
+	struct auth_session auth_session;
+	uint32_t result = StartOSAPSession(&auth_session, TPM_ET_OWNER, 0,
+					   owner_auth);
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Build the request data. */
+	uint8_t cmd[sizeof(tpm_nv_definespace_cmd.buffer) +
+			kTpmRequestAuthBlockLength];
+	memcpy(cmd, &tpm_nv_definespace_cmd,
+	       sizeof(tpm_nv_definespace_cmd));
+	ToTpmUint16(cmd, TPM_TAG_RQU_AUTH1_COMMAND);
+	ToTpmUint32(cmd + sizeof(uint16_t), sizeof(cmd));
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.index, index);
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.perm, perm);
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.size, size);
+	result = AuthenticateCommand(&auth_session, cmd, sizeof(cmd), 0);
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Send the command. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	result = TlclSendReceive(cmd, response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Check the auth tag on the response. */
+	result = AuthenticateResponse(&auth_session, TPM_ORD_NV_DefineSpace,
 				      response, sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;

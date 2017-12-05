@@ -813,6 +813,82 @@ void TakeOwnershipTest(void) {
 		    sizeof(take_ownership_response));
 }
 
+/**
+ * Test DefineSpaceOwner
+ */
+void DefineSpaceOwnerTest(void) {
+	uint8_t osap_response[] = {
+		0x00, 0xc4, 0x00, 0x00, 0x00, 0x36, 0x00, 0x00,
+		0x00, 0x00, 0x02, 0x41, 0x3d, 0xce, 0x20, 0xa2,
+		0x5a, 0xa5, 0x95, 0xbe, 0x26, 0xe8, 0x76, 0x74,
+		0x6c, 0x61, 0xf7, 0xa7, 0x24, 0x17, 0xa1, 0x06,
+		0xcf, 0x53, 0x6d, 0xd4, 0x26, 0x98, 0x68, 0x86,
+		0xe6, 0xf6, 0x62, 0x58, 0xdb, 0xa2, 0x9f, 0x5b,
+		0x18, 0xa6, 0xae, 0x36, 0x32, 0x5d,
+	};
+	uint8_t define_space_response[] = {
+		0x00, 0xc5, 0x00, 0x00, 0x00, 0x33, 0x00, 0x00,
+		0x00, 0x00, 0x42, 0xe6, 0x38, 0xc6, 0x37, 0x2a,
+		0xf2, 0xfe, 0xb4, 0x01, 0x4b, 0x29, 0x63, 0x30,
+		0x4e, 0x2f, 0x2e, 0x74, 0x58, 0xcd, 0x00, 0x40,
+		0x42, 0x10, 0x40, 0xac, 0x93, 0x0c, 0xff, 0x8a,
+		0xc4, 0x98, 0x78, 0xe3, 0xfe, 0x48, 0x5b, 0xb7,
+		0xc8, 0x8d, 0xf4,
+	};
+	uint8_t owner_secret[TPM_AUTH_DATA_LEN] = { 0 };
+
+	ResetMocks();
+	calls[0].rsp = osap_response;
+	calls[0].rsp_size = sizeof(osap_response);
+	calls[1].rsp = define_space_response;
+	calls[1].rsp_size = sizeof(define_space_response);
+	TEST_EQ(TlclDefineSpaceOwner(owner_secret, 0x20000005, 0x2000, 0x10),
+		TPM_SUCCESS, "DefineSpace");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_OSAP, "  osap cmd");
+	TEST_EQ(calls[1].req_cmd, TPM_ORD_NV_DefineSpace, "  definespace cmd");
+
+	/* Verify that the response gets authenticated. */
+	ResetMocks();
+	calls[0].rsp = osap_response;
+	calls[0].rsp_size = sizeof(osap_response);
+	calls[1].rsp = define_space_response;
+	calls[1].rsp_size = sizeof(define_space_response);
+	define_space_response[31] = 0;
+	TEST_EQ(TlclDefineSpaceOwner(owner_secret, 0x20000005, 0x2000, 0x10),
+		TPM_E_AUTHFAIL, "DefineSpace - response auth");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_OSAP, "  osap cmd");
+	TEST_EQ(calls[1].req_cmd, TPM_ORD_NV_DefineSpace, "  definespace cmd");
+	define_space_response[31] = 0x40;
+
+	/* Verify that a short OSAP response gets caught. */
+	ResetMocks();
+	calls[0].rsp = osap_response;
+	calls[0].rsp_size = sizeof(osap_response);
+	ToTpmUint32(osap_response + sizeof(uint16_t),
+		    kTpmRequestHeaderLength + sizeof(uint32_t) +
+		    2 * sizeof(TPM_NONCE) - 1);
+	TEST_EQ(TlclDefineSpaceOwner(owner_secret, 0x20000005, 0x2000, 0x10),
+		TPM_E_INVALID_RESPONSE, "DefineSpace - short OSAP response");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_OSAP, "  osap cmd");
+	ToTpmUint32(osap_response + sizeof(uint16_t), sizeof(osap_response));
+
+	/* Verify that a short DefineSpace response gets authenticated. */
+	ResetMocks();
+	calls[0].rsp = osap_response;
+	calls[0].rsp_size = sizeof(osap_response);
+	calls[1].rsp = define_space_response;
+	calls[1].rsp_size = sizeof(define_space_response);
+	ToTpmUint32(define_space_response + sizeof(uint16_t),
+		    kTpmResponseHeaderLength + kTpmResponseAuthBlockLength - 1);
+	TEST_EQ(TlclDefineSpaceOwner(owner_secret, 0x20000005, 0x2000, 0x10),
+		TPM_E_INVALID_RESPONSE,
+		"DefineSpace - short DefineSpace response");
+	TEST_EQ(calls[0].req_cmd, TPM_ORD_OSAP, "  osap cmd");
+	TEST_EQ(calls[1].req_cmd, TPM_ORD_NV_DefineSpace, "  definespace cmd");
+	ToTpmUint32(define_space_response + sizeof(uint16_t),
+		    sizeof(define_space_response));
+}
+
 int main(void)
 {
 	TlclTest();
@@ -825,6 +901,7 @@ int main(void)
 	IFXFieldUpgradeInfoTest();
 	ReadPubekTest();
 	TakeOwnershipTest();
+	DefineSpaceOwnerTest();
 
 	return gTestSuccess ? 0 : 255;
 }
