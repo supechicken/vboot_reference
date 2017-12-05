@@ -115,7 +115,7 @@ uint32_t TlclSendReceive(const uint8_t* request, uint8_t* response,
 	uint32_t result = TlclSendReceiveNoRetry(request, response, max_length);
 	/* When compiling for the firmware, hide command failures due to the
 	 * self test not having run or completed. */
-#ifndef CHROMEOS_ENVIRONMENT
+#if !defined(CHROMEOS_ENVIRONMENT)
 	/* If the command fails because the self test has not completed, try it
 	 * again after attempting to ensure that the self test has completed. */
 	if (result == TPM_E_NEEDS_SELFTEST || result == TPM_E_DOING_SELFTEST) {
@@ -188,6 +188,64 @@ static uint32_t StartOIAPSession(struct auth_session* session,
 	VbAssert(cursor - response <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
 
 	memcpy(session->shared_secret, secret,TPM_AUTH_DATA_LEN);
+	session->valid = 1;
+
+	return result;
+}
+
+static uint32_t StartOSAPSession(
+		struct auth_session* session,
+		uint16_t entity_type,
+		uint32_t entity_value,
+		const uint8_t entity_usage_auth[TPM_AUTH_DATA_LEN])
+{
+	session->valid = 0;
+
+	/* Build OSAP command. */
+	struct s_tpm_osap_cmd cmd;
+	memcpy(&cmd, &tpm_osap_cmd, sizeof(cmd));
+	ToTpmUint16(cmd.buffer + cmd.entityType, entity_type);
+	ToTpmUint32(cmd.buffer + cmd.entityValue, entity_value);
+	if (VbExTpmGetRandom(cmd.buffer + cmd.nonceOddOSAP,
+			     sizeof(TPM_NONCE)) != VB2_SUCCESS) {
+		return TPM_E_INTERNAL_ERROR;
+	}
+
+	/* Send OSAP command. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(cmd.buffer, response,
+					  sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	/* Parse response. */
+	uint32_t size;
+	FromTpmUint32(response + sizeof(uint16_t), &size);
+	if (size < kTpmResponseHeaderLength + sizeof(uint32_t)
+			+ 2 * sizeof(TPM_NONCE)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	uint8_t* cursor = response + kTpmResponseHeaderLength;
+	FromTpmUint32(cursor, &session->handle);
+	cursor += sizeof(session->handle);
+	memcpy(session->nonce_even.nonce, cursor, sizeof(TPM_NONCE));
+	cursor += sizeof(TPM_NONCE);
+	uint8_t* nonce_even_osap = cursor;
+	cursor += sizeof(TPM_NONCE);
+	VbAssert(cursor - response <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
+
+	/* Compute shared secret */
+	uint8_t hmac_input[2 * sizeof(TPM_NONCE)];
+	memcpy(hmac_input, nonce_even_osap, sizeof(TPM_NONCE));
+	memcpy(hmac_input + sizeof(TPM_NONCE), cmd.buffer + cmd.nonceOddOSAP,
+	       sizeof(TPM_NONCE));
+	if (hmac(VB2_HASH_SHA1, entity_usage_auth, sizeof(entity_usage_auth),
+		 hmac_input, sizeof(hmac_input), session->shared_secret,
+		 sizeof(session->shared_secret))) {
+		return TPM_E_INTERNAL_ERROR;
+	}
 	session->valid = 1;
 
 	return result;
@@ -373,13 +431,135 @@ uint32_t TlclContinueSelfTest(void)
 
 uint32_t TlclDefineSpace(uint32_t index, uint32_t perm, uint32_t size)
 {
-	struct s_tpm_nv_definespace_cmd cmd;
 	VB2_DEBUG("TPM: TlclDefineSpace(0x%x, 0x%x, %d)\n", index, perm, size);
-	memcpy(&cmd, &tpm_nv_definespace_cmd, sizeof(cmd));
-	ToTpmUint32(cmd.buffer + tpm_nv_definespace_cmd.index, index);
-	ToTpmUint32(cmd.buffer + tpm_nv_definespace_cmd.perm, perm);
-	ToTpmUint32(cmd.buffer + tpm_nv_definespace_cmd.size, size);
-	return Send(cmd.buffer);
+	return TlclDefineSpaceEx(NULL, 0, index, perm, size, NULL);
+}
+
+uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
+			   uint32_t index, uint32_t perm, uint32_t size,
+			   const TPM_NV_AUTH_POLICY* auth_policy)
+{
+	uint32_t result;
+
+#ifdef CHROMEOS_ENVIRONMENT
+	struct auth_session auth_session;
+	if (owner_auth) {
+		if (owner_auth_size != TPM_AUTH_DATA_LEN) {
+			return TPM_E_AUTHFAIL;
+		}
+
+		/* Start an OIAP session. */
+		result = StartOSAPSession(&auth_session, TPM_ET_OWNER, 0,
+					  owner_auth);
+		if (result != TPM_SUCCESS) {
+			return result;
+		}
+	}
+#endif
+
+	/* Build the request data. */
+	uint8_t cmd[sizeof(tpm_nv_definespace_cmd.buffer) +
+			kTpmRequestAuthBlockLength];
+	memcpy(cmd, &tpm_nv_definespace_cmd,
+	       sizeof(tpm_nv_definespace_cmd));
+	ToTpmUint16(cmd, TPM_TAG_RQU_AUTH1_COMMAND);
+	ToTpmUint32(cmd + sizeof(uint16_t), sizeof(cmd));
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.index, index);
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.perm, perm);
+	ToTpmUint32(cmd + tpm_nv_definespace_cmd.size, size);
+	if (auth_policy != NULL) {
+		memcpy(cmd + tpm_nv_definespace_cmd.pcr_info_read,
+		       &auth_policy->pcr_info_read,
+		       sizeof(auth_policy->pcr_info_read));
+		memcpy(cmd + tpm_nv_definespace_cmd.pcr_info_write,
+		       &auth_policy->pcr_info_write,
+		       sizeof(auth_policy->pcr_info_read));
+	}
+
+#ifdef CHROMEOS_ENVIRONMENT
+	if (owner_auth) {
+		result = AuthenticateCommand(&auth_session, cmd, sizeof(cmd),
+					     0);
+		if (result != TPM_SUCCESS) {
+			return result;
+		}
+	}
+#endif
+
+	/* Send the command. */
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	result = TlclSendReceive(cmd, response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+#ifdef CHROMEOS_ENVIRONMENT
+	if (owner_auth) {
+		/* Check the auth tag on the response. */
+		result = AuthenticateResponse(&auth_session,
+					      TPM_ORD_NV_DefineSpace,
+					      response, sizeof(response));
+		if (result != TPM_SUCCESS) {
+			return result;
+		}
+	}
+#endif
+
+	return TPM_SUCCESS;
+}
+
+void TlclGetPCRBindingPolicy(uint32_t pcr_selection_bitmap,
+			     const uint8_t* const pcr_values[TPM_PCR_DIGEST],
+			     TPM_NV_AUTH_POLICY* policy) {
+	// Note that although the struct definition allocates space for 3 bytes
+	// worth of PCR selection, it is technically a variably-sized field in
+	// the TPM structure definition. Since this is part of the policy
+	// digest, we need to carefully match our selection sizes. For now, we
+	// use 3 bytes, which aligns with TrouSerS behavior.
+	TPM_PCR_SELECTION* select = &policy->pcr_info_read.pcrSelection;
+	ToTpmUint16((uint8_t*)&select->sizeOfSelect, sizeof(select->pcrSelect));
+	select->pcrSelect[0] = (pcr_selection_bitmap >> 0) & 0xff;
+	select->pcrSelect[1] = (pcr_selection_bitmap >> 8) & 0xff;
+	select->pcrSelect[2] = (pcr_selection_bitmap >> 16) & 0xff;
+	VbAssert((pcr_selection_bitmap & 0xff000000) == 0);
+
+	policy->pcr_info_read.localityAtRelease = TPM_ALL_LOCALITIES;
+
+	struct vb2_sha1_context sha1_ctx;
+	vb2_sha1_init(&sha1_ctx);
+
+	vb2_sha1_update(&sha1_ctx,
+			(const uint8_t*)&policy->pcr_info_read.pcrSelection,
+			sizeof(policy->pcr_info_read.pcrSelection));
+
+	uint32_t num_pcrs = 0;
+	int i;
+	for (i = 0; i < sizeof(pcr_selection_bitmap) * 8; ++i) {
+		if ((1 << i) & pcr_selection_bitmap) {
+			num_pcrs++;
+		}
+	}
+
+	uint8_t pcrs_size[sizeof(uint32_t)];
+	ToTpmUint32(pcrs_size, num_pcrs * TPM_PCR_DIGEST);
+	vb2_sha1_update(&sha1_ctx, pcrs_size, sizeof(pcrs_size));
+
+	for (i = 0; i < num_pcrs; ++i) {
+		vb2_sha1_update(&sha1_ctx, pcr_values[i], TPM_PCR_DIGEST);
+	}
+
+	vb2_sha1_finalize(&sha1_ctx,
+			  policy->pcr_info_read.digestAtRelease.digest);
+
+	// Make the write policy an identical copy of the read auth policy.
+	memcpy(&policy->pcr_info_write, &policy->pcr_info_read,
+	       sizeof(policy->pcr_info_read));
+}
+
+int TlclArePoliciesIdentical(TPM_NV_AUTH_POLICY *policy1,
+                             TPM_NV_AUTH_POLICY *policy2) {
+	return policy1 != NULL && policy2 != NULL &&
+	       memcmp(policy1, policy2, sizeof(TPM_NV_AUTH_POLICY)) == 0;
 }
 
 uint32_t TlclWrite(uint32_t index, const void* data, uint32_t length)
