@@ -295,6 +295,8 @@ typedef struct tdTPM_IFX_FIELDUPGRADEINFO
 
 typedef struct tdTPM_NV_AUTH_POLICY
 {
+  uint32_t size;
+  uint8_t digest[32];
 } TPM_NV_AUTH_POLICY;
 
 /* TODO(apronin): For TPM2 certain properties must be received using
