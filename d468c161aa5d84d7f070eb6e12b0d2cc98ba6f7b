@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1d32926_a9ca703a",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-05T02:05:47Z",
+      "side": 1,
+      "message": "This is already in COMMON_SRCS",
+      "revId": "d468c161aa5d84d7f070eb6e12b0d2cc98ba6f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "162faf0b_766319e6",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-05T02:05:47Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d468c161aa5d84d7f070eb6e12b0d2cc98ba6f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730865a7_801c0619",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-05T02:05:47Z",
+      "side": 1,
+      "message": "Why is this needed here when it wasn\u0027t before?",
+      "revId": "d468c161aa5d84d7f070eb6e12b0d2cc98ba6f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55f1803a_4ffd7d4d",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-05T02:05:47Z",
+      "side": 1,
+      "message": "I agree with what you did first, I don\u0027t think either of these should be here. They\u0027ll just end up appearing twice on the command line, right?",
+      "range": {
+        "startLine": 1143,
+        "startChar": 39,
+        "endLine": 1143,
+        "endChar": 60
+      },
+      "revId": "d468c161aa5d84d7f070eb6e12b0d2cc98ba6f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
