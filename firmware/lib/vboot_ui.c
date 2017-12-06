@@ -102,9 +102,11 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 
 	/* Await further instructions */
 	while (1) {
+		key = VbExKeyboardReadWithFlags(&key_flags);
+		if (key == VB_BUTTON_POWER_SHORT_PRESS)
+			return -1;
 		if (VbWantShutdown(cparams->gbb->flags))
 			return -1;
-		key = VbExKeyboardReadWithFlags(&key_flags);
                 button = VbExGetSwitches(VB_INIT_FLAG_REC_BUTTON_PRESSED);
 		switch (key) {
 		case '\r':
@@ -373,6 +375,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				}
 			}
 			break;
+		case VB_BUTTON_POWER_SHORT_PRESS:
+			return VBERROR_SHUTDOWN_REQUESTED;
 		default:
 			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
 			VbCheckDisplayKey(ctx, cparams, key);
@@ -445,7 +449,10 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		VbDisplayScreen(ctx, cparams, VB_SCREEN_OS_BROKEN, 0);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
 		while (1) {
-			VbCheckDisplayKey(ctx, cparams, VbExKeyboardRead());
+			key = VbExKeyboardRead();
+			if (key == VB_BUTTON_POWER_SHORT_PRESS)
+				return VBERROR_SHUTDOWN_REQUESTED;
+			VbCheckDisplayKey(ctx, cparams, key);
 			if (VbWantShutdown(cparams->gbb->flags))
 				return VBERROR_SHUTDOWN_REQUESTED;
 			VbExSleepMs(REC_KEY_DELAY);
@@ -540,6 +547,8 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					i = 4;
 					break;
 				}
+			} else if (key ==VB_BUTTON_POWER_SHORT_PRESS) {
+				return VBERROR_SHUTDOWN_REQUESTED;
 			} else {
 				VbCheckDisplayKey(ctx, cparams, key);
 			}
