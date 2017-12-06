@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ab5e382_ffd4a7c5",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-06T22:32:24Z",
+      "side": 1,
+      "message": "Why does this have to be up here rather than in the switch statement?",
+      "revId": "b446901d71ac47787ac7ee030957711509f08b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467109fc_a694a526",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-06T22:32:24Z",
+      "side": 1,
+      "message": "You\u0027ll likely want to do this in the other case, too. Maybe it would be cleaner to expand VbWantShutdown() by an optional \u0027key\u0027 argument instead?",
+      "revId": "b446901d71ac47787ac7ee030957711509f08b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
