@@ -1193,4 +1193,66 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
 	return TPM_SUCCESS;
 }
 
+uint32_t TlclCreateDelegationFamily(uint8_t family_label)
+{
+	struct s_tpm_create_delegation_family_cmd cmd;
+	memcpy(&cmd, &tpm_create_delegation_family_cmd, sizeof(cmd));
+	cmd.buffer[tpm_create_delegation_family_cmd.familyLabel] = family_label;
+	return Send(cmd.buffer);
+}
+
+uint32_t TlclReadDelagationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
+                                       uint32_t* table_size)
+{
+	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
+	uint32_t result = TlclSendReceive(tpm_delegate_read_table_cmd.buffer,
+					  response, sizeof(response));
+	if (result != TPM_SUCCESS) {
+		return result;
+	}
+
+	uint32_t size;
+	FromTpmUint32(response + sizeof(uint16_t), &size);
+	if (size < kTpmRequestHeaderLength + sizeof(uint32_t) ||
+	    size > sizeof(response)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	uint8_t* cursor = response + kTpmRequestHeaderLength;
+	uint32_t family_table_size;
+	FromTpmUint32(cursor, &family_table_size);
+	cursor += sizeof(family_table_size);
+
+	if (family_table_size > size - (cursor - response)) {
+		return TPM_E_INVALID_RESPONSE;
+	}
+
+	const uint32_t kFamilyTableEntrySize = sizeof(TPM_STRUCTURE_TAG) +
+			sizeof(TPM_FAMILY_LABEL) + sizeof(TPM_FAMILY_ID) +
+			sizeof(TPM_FAMILY_VERIFICATION) +
+			sizeof(TPM_FAMILY_FLAGS);
+
+	int i;
+	for (i = 0; (i + 1) * kFamilyTableEntrySize <= family_table_size; ++i) {
+		if (i >= *table_size || !table) {
+			result = TPM_E_BUFFER_SIZE;
+			break;
+		}
+
+		FromTpmUint16(cursor, &table[i].tag);
+		cursor += sizeof(table[i].tag);
+		table[i].familyLabel = *cursor++;
+		FromTpmUint32(cursor, &table[i].familyID);
+		cursor += sizeof(table[i].familyID);
+		FromTpmUint32(cursor, &table[i].verificationCount);
+		cursor += sizeof(table[i].verificationCount);
+		FromTpmUint32(cursor, &table[i].flags);
+		cursor += sizeof(table[i].flags);
+	}
+
+	*table_size = family_table_size / kFamilyTableEntrySize;
+
+	return result;
+}
+
 #endif  /* CHROMEOS_ENVIRONMENT */
