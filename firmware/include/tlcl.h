@@ -250,6 +250,20 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
  */
 uint32_t TlclDefineSpaceOwner(uint8_t owner_auth[TPM_AUTH_DATA_LEN],
                               uint32_t index, uint32_t perm, uint32_t size);
+
+/**
+ * Create a delegation family with the specified [family_label].
+ */
+uint32_t TlclCreateDelegationFamily(uint8_t family_label);
+
+/**
+ * Read the delegation family table. Entries are stored in [table]. The size of
+ * the family table array must be specified in [table_size]. [table_size] gets
+ * updated to indicate actual number of table entries available.
+ */
+uint32_t TlclReadDelagationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
+                                       uint32_t* table_size);
+
 #endif  /* TPM_OWNERSHIP */
 
 #endif  /* TPM_LITE_TLCL_H_ */

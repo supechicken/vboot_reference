@@ -433,8 +433,8 @@ Command* BuildOIAPCommand(void) {
 }
 
 Command* BuildOSAPCommand(void) {
-  int size = kTpmRequestHeaderLength + sizeof(TPM_ENTITY_TYPE) +
-             sizeof(TPM_ENTITY_VALUE) + sizeof(TPM_NONCE);
+  int size = kTpmRequestHeaderLength + sizeof(uint16_t) + sizeof(uint32_t) +
+             sizeof(TPM_NONCE);
   Command* cmd = newCommand(TPM_ORD_OSAP, size);
   cmd->name = "tpm_osap_cmd";
   AddVisibleField(cmd, "entityType", kTpmRequestHeaderLength);
@@ -505,6 +505,28 @@ Command* BuildTakeOwnershipCommand(void) {
 
   assert(offset == cmd->size);
 
+  return cmd;
+}
+
+Command* BuildCreateDelegationFamilyCommand(void) {
+  int size = kTpmRequestHeaderLength + 3 * sizeof(uint32_t) + sizeof(uint8_t);
+  Command* cmd = newCommand(TPM_ORD_Delegate_Manage, size);
+  cmd->name = "tpm_create_delegation_family_cmd";
+  AddInitializedField(cmd, kTpmRequestHeaderLength, sizeof(uint32_t),
+                      0 /* familyID */);
+  AddInitializedField(cmd, kTpmRequestHeaderLength + sizeof(uint32_t),
+                      sizeof(uint32_t), TPM_FAMILY_CREATE);
+  AddInitializedField(cmd, kTpmRequestHeaderLength + 2 * sizeof(uint32_t),
+                      sizeof(uint32_t), sizeof(uint8_t) /* opDataSize */);
+  AddVisibleField(cmd, "familyLabel",
+                  kTpmRequestHeaderLength + 3 * sizeof(uint32_t));
+  return cmd;
+}
+
+Command* BuildReadDelegationFamilyTableCommand(void) {
+  Command* cmd =
+      newCommand(TPM_ORD_Delegate_ReadTable, kTpmRequestHeaderLength);
+  cmd->name = "tpm_delegate_read_table_cmd";
   return cmd;
 }
 
@@ -637,6 +659,8 @@ Command* (*builders[])(void) = {
   BuildOIAPCommand,
   BuildOSAPCommand,
   BuildTakeOwnershipCommand,
+  BuildCreateDelegationFamilyCommand,
+  BuildReadDelegationFamilyTableCommand,
 #endif
 };
 
