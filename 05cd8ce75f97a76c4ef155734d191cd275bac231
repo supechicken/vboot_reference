@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8c2fbc_76035bd4",
+        "filename": "tests/futility/expect_output/show.tests_devkeys_root_key.vbpubk",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1117364
+      },
+      "writtenOn": "2017-12-09T18:40:11Z",
+      "side": 1,
+      "message": "I am trying to build host binary and run the tests outside of Cros chroot environment at Arch Linux and it fails for me:\n\n$ cat  /mnt/storage/sources/arch/aur/vboot-utils/src/build/tests/futility_test_results/test_show_contents.sh.stdout\nPublic Key file:       /mnt/storage/sources/arch/aur/vboot-utils/src/tests/devkeys/root_key.vbpubk\n  Vboot API:           1.0\n  Algorithm:           11 RSA8192 SHA512\n  Key Version:         1\n  Key sha1sum:         b11d74edd286c144e1135b49e7f0bc20cf041f10\n1c1\n\u003c Public Key file:       /mnt/host/source/src/platform/vboot_reference/tests/devkeys/root_key.vbpubk\n---\n\u003e Public Key file:       /mnt/storage/sources/arch/aur/vboot-utils/src/tests/devkeys/root_key.vbpubk",
+      "revId": "05cd8ce75f97a76c4ef155734d191cd275bac231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
