@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e04ee854_69f9233c",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-13T00:11:49Z",
+      "side": 1,
+      "message": "This needs to move below the NULL check (courtesy of coverity).",
+      "revId": "7850034a6dc8bd33413c0bedac654cbaa4e363c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
