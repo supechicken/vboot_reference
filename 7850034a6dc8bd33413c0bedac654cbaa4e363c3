@@ -16,6 +16,24 @@
       "revId": "7850034a6dc8bd33413c0bedac654cbaa4e363c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e751a3f0_93be3a02",
+        "filename": "firmware/lib/vboot_audio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-13T00:28:59Z",
+      "side": 1,
+      "message": "I\u0027ve started a big refactor-and-reduce of the audio code, so I\u0027ll fix this along with my other changes.",
+      "parentUuid": "e04ee854_69f9233c",
+      "revId": "7850034a6dc8bd33413c0bedac654cbaa4e363c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
