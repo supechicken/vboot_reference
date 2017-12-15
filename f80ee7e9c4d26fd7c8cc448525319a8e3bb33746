@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1f487e7_eb7a466b",
+        "filename": "firmware/lib/include/vboot_ui_menu_private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-15T23:03:17Z",
+      "side": 1,
+      "message": "These should have an explicit \u0027extern\u0027 qualifier.",
+      "revId": "f80ee7e9c4d26fd7c8cc448525319a8e3bb33746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717ab6a7_61f0448b",
+        "filename": "firmware/lib/include/vboot_ui_menu_private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2017-12-15T23:03:17Z",
+      "side": 1,
+      "message": "What is this?",
+      "revId": "f80ee7e9c4d26fd7c8cc448525319a8e3bb33746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
