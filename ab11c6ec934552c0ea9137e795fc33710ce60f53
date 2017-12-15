@@ -1,0 +1,629 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b9a16c_d67519ab",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "use braces with ${SCRIPT_BASE}",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "915b0695_5e0a6430",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "fix these tabs to spaces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a65532_3a3d2789",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "use quotes \u0026 braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1237d4_099360d2",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "should turn these two vars into funcs\n\n flashrom_read() {\n   flashrom -p host -i GBB -r \"$@\"\n }",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c9f8f0_92c6ca1f",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf0bcef_1328650d",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "\"Chrome OS\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a7af41_66408ad1",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "use braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce36753_11050755",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "add braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b2bbbd_9b3e7bc9",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2762c155_5121fe9f",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces here and below",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80484a1_fb802d3c",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047c2c3d_08cc5950",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "incorrect wrapping",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7a4be7_50942fa2",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "use braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a853ee7d_7e16f534",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "quotes and braces with \"${old_value}\"\n\nalso add quotes around \"$(echo ...)\"",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7957273c_5bf189fb",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "why stderr ?  seems like this belongs in stdout.",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9868de50_5c33464c",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "range": {
+        "startLine": 36,
+        "startChar": 36,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6daf488_dd76a733",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "\"Chrome OS\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a8a289_3bf086a4",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd61fd5_be72544d",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "instead of doing this flip/flop, use a read loop instead\n\n local name flag\n echo \"${GBBFLAGS_LIST}\" | while read name flag; do",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ec103c_dc7d7b52",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b9fbcd_cd02a17f",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "cuddle this -- move it back to the previous line",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6383f6b9_1a988d32",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ffb2f3_a8a7bdb5",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "don\u0027t split `local` lines",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9116a80a_04ad6eaf",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "drop the $ inside of the $((...)) expression",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "349ae479_a09b4a5f",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0accb3cc_af3878ba",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces, and quoting is very wrong here.  it should surround the entire expression.",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377a4723_56918913",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "\"Chrome OS\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9e0974_51616438",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "no need for a for loop.  you can write simply:\n\n printf \"%s\\n\" ${flags_in_old_value}",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abcbdab_1a222f10",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "cuddle this",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d04a9a_7935adb0",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0edadf_8d03bb3f",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d65fba5_88949cd4",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "delete this ... nothing uses it",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb7e724_e1cea970",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "braces",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8730367e_66f4a7ec",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "please don\u0027t split things this way.  not even sure why it was changed when the old line was under 80 cols.",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086a700b_70059e68",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-15T07:28:46Z",
+      "side": 1,
+      "message": "undo this",
+      "revId": "ab11c6ec934552c0ea9137e795fc33710ce60f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
