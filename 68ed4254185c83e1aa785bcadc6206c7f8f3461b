@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e094eecc_61515516",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "typo in the var name",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b8d4e8_1874c1c8",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "typo in the var name",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a89ed6_75ea27c0",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "these double inner quotes are weird and unnecessary.  just delete them here and everywhere else.",
+      "range": {
+        "startLine": 45,
+        "startChar": 45,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1448dd6f_e85ff9d8",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "this is being used in a \"get\" script, so probably want \"Manage\" here now",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508f3b7d_8802f77f",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "when we actually want to keep it split, we can add a comment like:\n\n # Keep `local` decl split from assignment so return code is checked.",
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "654f462d_a7cb24d8",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "add -r to the `read`",
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1520fe0_4d371135",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-12-19T14:45:52Z",
+      "side": 1,
+      "message": "do you need to do this accumulation ?  can\u0027t you just call a printf every time ?  this avoids quoting issues and simplifies the code (as you can delete \"flags_on_system\").",
+      "revId": "68ed4254185c83e1aa785bcadc6206c7f8f3461b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
