@@ -215,7 +215,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
 		VB2_DEBUG("dev_disable_boot is set\n");
-		VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_TO_NORM, 0);
+		VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_TO_NORM, 0);
 		VbExDisplayDebugInfo(dev_disable_msg);
 
 		/* Ignore space in VbUserConfirms()... */
@@ -223,9 +223,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		case 1:
 			VB2_DEBUG("leaving dev-mode\n");
 			vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-			VbDisplayScreen(ctx, cparams,
-					VB_SCREEN_TO_NORM_CONFIRMED,
-					0);
+			VbDisplayScreen(ctx, VB_SCREEN_TO_NORM_CONFIRMED, 0);
 			VbExSleepMs(5000);
 			return VBERROR_REBOOT_REQUIRED;
 		case -1:
@@ -238,7 +236,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	}
 
 	/* Show the dev mode warning screen */
-	VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
 
 	/* Get audio/delay context */
 	audio = VbAudioOpen(cparams);
@@ -282,9 +280,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					VbExBeep(120, 400);
 					break;
 				}
-				VbDisplayScreen(ctx, cparams,
-						VB_SCREEN_DEVELOPER_TO_NORM,
-						0);
+				VbDisplayScreen(ctx,
+						VB_SCREEN_DEVELOPER_TO_NORM, 0);
 				/* Ignore space in VbUserConfirms()... */
 				switch (VbUserConfirms(ctx, cparams, 0)) {
 				case 1:
@@ -292,9 +289,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
 						1);
 					VbDisplayScreen(ctx,
-						cparams,
-						VB_SCREEN_TO_NORM_CONFIRMED,
-						0);
+						VB_SCREEN_TO_NORM_CONFIRMED, 0);
 					VbExSleepMs(5000);
 					return VBERROR_REBOOT_REQUIRED;
 				case -1:
@@ -304,9 +299,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 					/* Stay in dev-mode */
 					VB2_DEBUG("stay in dev-mode\n");
 					VbDisplayScreen(ctx,
-						cparams,
-						VB_SCREEN_DEVELOPER_WARNING,
-						0);
+						VB_SCREEN_DEVELOPER_WARNING, 0);
 					/* Start new countdown */
 					audio = VbAudioOpen(cparams);
 				}
@@ -360,8 +353,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				 * Clear the screen to show we get the Ctrl+U
 				 * key press.
 				 */
-				VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK,
-						0);
+				VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
 				if (VBERROR_SUCCESS ==
 				    VbTryUsb(ctx, cparams)) {
 					VbAudioClose(audio);
@@ -369,9 +361,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				} else {
 					/* Show dev mode warning screen again */
 					VbDisplayScreen(ctx,
-						cparams,
-						VB_SCREEN_DEVELOPER_WARNING,
-						0);
+						VB_SCREEN_DEVELOPER_WARNING, 0);
 				}
 			}
 			break;
@@ -406,7 +396,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 VbError_t VbBootDeveloper(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	VbError_t retval = vb2_developer_ui(ctx, cparams);
-	VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
 	return retval;
 }
 
@@ -444,7 +434,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		 */
 		vb2_nv_commit(ctx);
 
-		VbDisplayScreen(ctx, cparams, VB_SCREEN_OS_BROKEN, 0);
+		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
 		while (1) {
 			key = VbExKeyboardRead();
@@ -473,7 +463,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		if (VBERROR_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(ctx, cparams, VBERROR_NO_DISK_FOUND == retval ?
+		VbDisplayScreen(ctx, VBERROR_NO_DISK_FOUND == retval ?
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
 				0);
@@ -512,9 +502,8 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 				}
 
 				/* Ask the user to confirm entering dev-mode */
-				VbDisplayScreen(ctx, cparams,
-						VB_SCREEN_RECOVERY_TO_DEV,
-						0);
+				VbDisplayScreen(ctx,
+						VB_SCREEN_RECOVERY_TO_DEV, 0);
 				/* SPACE means no... */
 				uint32_t vbc_flags =
 					VB_CONFIRM_SPACE_MEANS_NO |
@@ -558,6 +547,6 @@ static VbError_t recovery_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 VbError_t VbBootRecovery(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	VbError_t retval = recovery_ui(ctx, cparams);
-	VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
 	return retval;
 }
