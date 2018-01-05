@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cccf0fb4_e3f63f88",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-01-05T23:52:39Z",
+      "side": 1,
+      "message": "Why is this done (rather than what is done) and who is using it?",
+      "parentUuid": "5e197604_cc5540e1",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 41
+      },
+      "revId": "b83dd45f05c353f133739753d4e0a7cc3bda7d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e82e9d4c_b2e4286d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
