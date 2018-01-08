@@ -93,6 +93,29 @@
       "revId": "b83dd45f05c353f133739753d4e0a7cc3bda7d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd007b0_be688d56",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-08T22:27:48Z",
+      "side": 1,
+      "message": "VBSD_EC_EFS is set by coreboot.",
+      "range": {
+        "startLine": 288,
+        "startChar": 21,
+        "endLine": 288,
+        "endChar": 32
+      },
+      "revId": "b83dd45f05c353f133739753d4e0a7cc3bda7d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
