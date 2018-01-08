@@ -34,6 +34,7 @@ enum vb2_nv_param {
 	 * will be set to the other slot.
 	 */
 	VB2_NV_TRY_COUNT,
+	VB2_NV_EC_UPDATE_COUNT,
 	/*
 	 * Request recovery mode on next boot; see 2recovery_reason.h for
 	 * currently defined reason codes.  8-bit value.
