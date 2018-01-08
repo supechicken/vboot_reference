@@ -34,6 +34,8 @@
 /* PD doesn't support RW A/B */
 #define RW_AB(devidx) ((devidx) ? 0 : VBSD_EC_EFS)
 
+#define EC_UPDATE_COUNT_MAX 1
+
 static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
 	VB2_DEBUG("request_recovery(%u)\n", recovery_request);
@@ -102,6 +104,7 @@ static int check_ec_hash(struct vb2_context *ctx, int devidx,
 			 enum VbSelectFirmware_t select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	int is_rw_ab = ctx->flags & RW_AB(devidx);
 
 	/* Get current EC hash. */
 	const uint8_t *ec_hash = NULL;
@@ -131,8 +134,32 @@ static int check_ec_hash(struct vb2_context *ctx, int devidx,
 	}
 
 	if (vb2_safe_memcmp(ec_hash, hash, hash_size)) {
+		if (is_rw_ab) {
+			/*
+			 * Systems with EC which has A/B slots can fall back
+			 * to the previous slot when update fails. When it
+			 * happens, we will repeatedly come here. To avoid being
+			 * trapped in update loop, we increment update counter
+			 * here. When counter exceeds the max try, we request
+			 * recovery.
+			 * TODO: check_ec_hash is also called after update.
+			 */
+			uint32_t cnt = vb2_nv_get(ctx, VB2_NV_EC_UPDATE_COUNT);
+			cnt++;
+			VB2_DEBUG("EC was updated %d times\n", cnt);
+			if (cnt > EC_UPDATE_COUNT_MAX) {
+				VB2_DEBUG("EC update was repeated\n");
+				request_recovery(ctx, VB2_RECOVERY_EC_UPDATE);
+				return VB2_ERROR_EC_REPEAT_UPDATE;
+			}
+			vb2_nv_set(ctx, VB2_NV_EC_UPDATE_COUNT, cnt);
+		}
 		print_hash(hash, hash_size, "Expected");
 		sd->flags |= WHICH_EC(devidx, select);
+	} else {
+		if (is_rw_ab)
+			/* Update was successful. Reset the counter */
+			vb2_nv_set(ctx, VB2_NV_EC_UPDATE_COUNT, 0);
 	}
 
 	return VB2_SUCCESS;
@@ -257,6 +284,10 @@ static VbError_t sync_one_ec(struct vb2_context *ctx, int devidx,
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
 		if (is_rw_ab) {
+			/*
+			 * TODO: Increment update counter then check if it
+			 * exceeds the threshold. If so, set recovery flag.
+			 */
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
