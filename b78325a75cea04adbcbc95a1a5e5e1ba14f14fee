@@ -22,6 +22,30 @@
       "revId": "b78325a75cea04adbcbc95a1a5e5e1ba14f14fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28cd9a12_06fe9991",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T20:51:07Z",
+      "side": 1,
+      "message": "Lots of refactoring (a few thousand more lines of this...)",
+      "parentUuid": "d33c1294_d94038d8",
+      "range": {
+        "startLine": 318,
+        "startChar": 59,
+        "endLine": 319,
+        "endChar": 32
+      },
+      "revId": "b78325a75cea04adbcbc95a1a5e5e1ba14f14fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
