@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0402e90f_480e9853",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-09T00:40:36Z",
+      "side": 1,
+      "message": "Maybe we should reset the counter in recovery mode as well to ensure that the counter always starts from zero.",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 46
+      },
+      "revId": "7bdb1be15a4d75c5b3a0377d51f6e92452da9928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
