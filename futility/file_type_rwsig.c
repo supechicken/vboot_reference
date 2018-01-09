@@ -61,6 +61,32 @@ static void show_sig(const char *name, const struct vb21_signature *sig)
 	       sig->data_size);
 }
 
+static const struct vb21_signature *show_signature_info(
+		const char *name, uint8_t *buf, uint32_t len,
+		FmapHeader *fmap, const char *fmap_name)
+{
+	uint32_t sig_size;
+	FmapAreaHeader *fmaparea;
+	const struct vb21_signature *sig =
+			(const struct vb21_signature *)fmap_find_by_name(
+					buf, len, fmap, fmap_name, &fmaparea);
+	if (!sig) {
+		Debug("No %s in FMAP.\n", fmap_name);
+		return NULL;
+	}
+
+	sig_size = fmaparea->area_size;
+	Debug("Looking for signature at 0x%x (0x%x)\n",
+	      (uint8_t*) sig - buf, sig_size);
+
+	if (VB2_SUCCESS != vb21_verify_signature(sig, sig_size))
+		return NULL;
+
+	show_sig(name, sig);
+
+	return sig;
+}
+
 int ft_show_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 {
 	const struct vb21_signature *sig = 0;
@@ -91,9 +117,8 @@ int ft_show_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 		data_size = show_option.fv_size;
 		total_data_size = show_option.fv_size;
 	} else if ((fmap = fmap_find(buf, len))) {
-		/* This looks like a full image. */
 		FmapAreaHeader *fmaparea;
-
+		/* This looks like a full image. */
 		Debug("Found an FMAP!\n");
 
 		/* If no public key is provided, use the one packed in RO
@@ -107,29 +132,20 @@ int ft_show_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 						pkey->c.total_size, NULL);
 		}
 
-		sig = (const struct vb21_signature *)
-			fmap_find_by_name(buf, len, fmap, "SIG_RW", &fmaparea);
-		if (!sig) {
-			Debug("No SIG_RW in FMAP.\n");
+		sig = show_signature_info(name, buf, len, fmap, "SIG_RW");
+		if (!sig)
 			return 1;
-		}
+		/* Ignore failure for SIG_RW_B */
+		show_signature_info(name, buf, len, fmap, "SIG_RW_B");
 
-		sig_size = fmaparea->area_size;
-
-		Debug("Looking for signature at 0x%x (0x%x)\n",
-			(uint8_t*)sig - buf, sig_size);
-
-		if (VB2_SUCCESS != vb21_verify_signature(sig, sig_size))
-			return 1;
-
-		show_sig(name, sig);
+		/* TODO: Verify EC_RW_B */
 		data = fmap_find_by_name(buf, len, fmap, "EC_RW", &fmaparea);
 		data_size = sig->data_size;
 		/*
 		 * TODO(crosbug.com/p/62231): EC_RW region should not include
 		 * the signature.
 		 */
-		total_data_size = fmaparea->area_size-sig_size;
+		total_data_size = fmaparea->area_size - sig_size;
 
 		if (!data) {
 			Debug("No EC_RW in FMAP.\n");
