@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "11484df1_33e5fa9c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-09T00:42:47Z",
+      "side": 1,
+      "message": "Can be 2 or 3. Depends on we much we care about looking bad.",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "7bdb1be15a4d75c5b3a0377d51f6e92452da9928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0402e90f_480e9853",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 3
