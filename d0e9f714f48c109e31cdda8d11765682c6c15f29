@@ -22,6 +22,30 @@
       "revId": "d0e9f714f48c109e31cdda8d11765682c6c15f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bdd32a6_2e6038d5",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2018-01-11T10:00:24Z",
+      "side": 1,
+      "message": "Yes, the original commit also removed this duplication, so it is back with the revert. This shall be solved with the next version of the original commit.",
+      "parentUuid": "9616f5b3_65a6fa7f",
+      "range": {
+        "startLine": 1138,
+        "startChar": 38,
+        "endLine": 1138,
+        "endChar": 50
+      },
+      "revId": "d0e9f714f48c109e31cdda8d11765682c6c15f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
