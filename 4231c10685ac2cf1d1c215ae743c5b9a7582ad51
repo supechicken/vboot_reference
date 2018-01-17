@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "ea1bbaf9_2193f7ec",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-17T18:36:28Z",
+      "side": 1,
+      "message": "If the user doesn\u0027t confirm, then we don\u0027t change the language.  The original language that they had before entering the language menu will be retained.",
+      "parentUuid": "2dcb7fed_de43bdba",
+      "revId": "4231c10685ac2cf1d1c215ae743c5b9a7582ad51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5c783e0_ea192e4a",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
