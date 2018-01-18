@@ -273,6 +273,21 @@ static const uint32_t VB_MENU_TO_SCREEN_MAP[] = {
 	VB_SCREEN_TO_NORM_CONFIRMED,
 };
 
+/* default selections for each menu when entering */
+static const uint32_t VB_MENU_DEFAULT_SELECTION[] = {
+	VB_WARN_POWER_OFF,     /* dev warning menu */
+	VB_DEV_POWER_OFF,      /* developer options menu */
+	VB_TO_NORM_CONFIRM,    /* to norm menu */
+	VB_RECOVERY_POWER_OFF, /* recovery menu */
+	VB_TO_DEV_CANCEL,      /* to dev menu */
+	0,                     /* languages: taken care of elsewhere */
+	VB_OPTIONS_CANCEL,     /* options menu: menuless */
+	0,                     /* insert screen: menuless */
+	0,                     /* no good screen: menuless */
+	0,                     /* broken screen: menuless */
+	0,                     /* to norm confirmed screen: menuless */
+};
+
 VbError_t vb2_draw_current_screen(struct vb2_context *ctx) {
 	uint32_t screen;
 	if (current_menu < VB_MENU_COUNT)
