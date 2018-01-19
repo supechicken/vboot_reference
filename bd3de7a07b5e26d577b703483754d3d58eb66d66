@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "079172d2_18f3ed5a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f4d53fd3_00f7587d",
+      "range": {
+        "startLine": 490,
+        "startChar": 32,
+        "endLine": 491,
+        "endChar": 28
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1e77ab5_56fcb844",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "c74fc10e_f29b2854",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Yes.  thanks for catching.",
+      "parentUuid": "49178d0b_cfe71133",
+      "range": {
+        "startLine": 1112,
+        "startChar": 5,
+        "endLine": 1112,
+        "endChar": 47
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed165de_d38abd40",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -76,6 +124,30 @@
       "writtenOn": "2018-01-19T01:03:54Z",
       "side": 1,
       "message": "We really need to refactor this into sub-functions.  Level of indentation is remarkable...",
+      "range": {
+        "startLine": 1156,
+        "startChar": 7,
+        "endLine": 1156,
+        "endChar": 8
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07b9cf9f_b443a257",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Fine.  But only because you asked nicely.",
+      "parentUuid": "6ed165de_d38abd40",
       "range": {
         "startLine": 1156,
         "startChar": 7,

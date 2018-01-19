@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "0fab4a8e_ebb4b467",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think so.  I think that at the NO_GOOD screen, the user is trying to boot up a USB.  They will have never seen the actual recovery menu at that time.",
+      "parentUuid": "1d01ee39_acb1424c",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e0d46ce_ae30e319",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -76,6 +94,24 @@
       "writtenOn": "2017-11-29T00:38:40Z",
       "side": 1,
       "message": "Wouldn\u0027t it work to call vb2_set_menu_items(prev_menu, 0)?",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15e4132_a238a672",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "This is due to us needing to use the prev_manu value.  vb2_set_menu_items overwrites it immediately.",
+      "parentUuid": "8e0d46ce_ae30e319",
       "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "a578fc2b_897f4652",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "efddba8f_24326af8",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7b2d0f4_d42f13ce",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -110,6 +164,24 @@
       "writtenOn": "2017-11-29T00:38:40Z",
       "side": 1,
       "message": "Wouldn\u0027t this immediately overwrite the options menu again if we enter it from the NOGOOD screen?",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835b65bb_08f54025",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2018-01-19T23:53:57Z",
+      "side": 1,
+      "message": "Yes, this would refresh regularly to NO_GOOD.  Good point.",
+      "parentUuid": "e7b2d0f4_d42f13ce",
       "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
