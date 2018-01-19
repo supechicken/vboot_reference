@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d53fd3_00f7587d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-19T01:03:54Z",
+      "side": 1,
+      "message": "..why? (I believe you; just want to document)",
+      "range": {
+        "startLine": 490,
+        "startChar": 32,
+        "endLine": 491,
+        "endChar": 28
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e77ab5_56fcb844",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-19T01:03:54Z",
+      "side": 1,
+      "message": "Extra space",
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49178d0b_cfe71133",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-19T01:03:54Z",
+      "side": 1,
+      "message": "Leftover debugging?",
+      "range": {
+        "startLine": 1112,
+        "startChar": 5,
+        "endLine": 1112,
+        "endChar": 47
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ed165de_d38abd40",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-19T01:03:54Z",
+      "side": 1,
+      "message": "We really need to refactor this into sub-functions.  Level of indentation is remarkable...",
+      "range": {
+        "startLine": 1156,
+        "startChar": 7,
+        "endLine": 1156,
+        "endChar": 8
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd60c866_3fa69e57",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-19T01:03:54Z",
+      "side": 1,
+      "message": "Minor nit: C++ comment style not used in C",
+      "range": {
+        "startLine": 1188,
+        "startChar": 4,
+        "endLine": 1189,
+        "endChar": 6
+      },
+      "revId": "bd3de7a07b5e26d577b703483754d3d58eb66d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
