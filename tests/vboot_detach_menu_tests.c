@@ -912,9 +912,52 @@ static void VbTestLanguageMenu(void)
   	printf("...done.\n");
 }
 
+static void VbTestOptionsMenu(void)
+{
+	printf("Testing VbTestOptionsMenu()...\n");
+
+	/* Navigate to all options menus from recovery */
+
+	/* Enter options menu from INSERT screen */
+	ResetMocks();
+	shared->flags = VBSD_HONOR_VIRT_DEV_SWITCH | VBSD_BOOT_REC_SWITCH_ON;
+	shutdown_request_calls_left = 100;
+	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	trust_ec = 1;
+	mock_keypress[0] = 0x63; // volume down: enter options menu
+	mock_keypress[1] = 0x63; // volume down: power off
+	mock_keypress[2] = 0x63; // volume down: debug info
+	mock_keypress[3] = 0x63; // volume down: languages
+	mock_keypress[4] = 0x90; // power button: options menu: select languages
+	mock_keypress[5] = 0x90; // power button: languages: select English
+	mock_keypress[6] = 0x90; // power button: power off
+	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"go to options menu from  INSERT screen");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
+		"  insert screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_OPTIONS_MENU,
+		"  options: cancel");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_OPTIONS_MENU,
+		"  options: power off");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_OPTIONS_MENU,
+		"  options: select debug info");
+	TEST_EQ(screens_displayed[4], VB_SCREEN_OPTIONS_MENU,
+		"  options: languages");
+	TEST_EQ(screens_displayed[5], VB_SCREEN_LANGUAGES_MENU,
+		"  languages: English");
+	TEST_EQ(screens_displayed[6], VB_SCREEN_RECOVERY_INSERT,
+		"  insert screen");
+
+	/* Enter options menu from NO_GOOD screen */
+	/* how do we mimic insertion of USB key? */
+
+	printf("...done.\n");
+}
+
 int main(void)
 {
 	VbTestLanguageMenu();
+	VbTestOptionsMenu();
 	VbBootTest();
 	VbBootDevTest();
 	VbBootRecTest();
