@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83ce5299_72412471",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:31:18Z",
+      "side": 1,
+      "message": "Please specifiy the size explicitly as VB_MENU_COUNT here...",
+      "range": {
+        "startLine": 277,
+        "startChar": 47,
+        "endLine": 277,
+        "endChar": 49
+      },
+      "revId": "17aa5cc0c46e5a50d8ca484123621d5b6a1a8e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f6b7de_df8c80e4",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:31:18Z",
+      "side": 1,
+      "message": "...and write these in the form\n\n [VB_MENU_DEV_WARNING] \u003d VB_WARN_POWER_OFF,\n\nThat will make it more robust to shuffling around and adding additional menu options. (It\u0027s pretty much just a self-documenting version of the comments you have on the side here, and self-documenting is always better than explicit comments since it cannot go out of sync. Same should be done with VB_MENU_TO_SCREEN_MAP, really...)\n\nAlso, coding convention is lower_case for arrays, even static const arrays.",
+      "revId": "17aa5cc0c46e5a50d8ca484123621d5b6a1a8e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8beaa68_b134944a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:31:18Z",
+      "side": 1,
+      "message": "nit: maybe making this VB_DEV_CANCEL would be more consistent (other submenus also default to cancel)?",
+      "range": {
+        "startLine": 279,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 17
+      },
+      "revId": "17aa5cc0c46e5a50d8ca484123621d5b6a1a8e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
