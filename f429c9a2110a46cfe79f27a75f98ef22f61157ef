@@ -1,0 +1,226 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d02f5dc_dde5ed2e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "nit: typo\n\n(Also, I\u0027m not quite sure what this comment is. Is it supposed to apply to exit_insert? Then why is it down here?)",
+      "range": {
+        "startLine": 105,
+        "startChar": 43,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0bdf948_41faa897",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "Crap, I just realized we\u0027ll have to update this to \u0027Boot From USB or SD Card\u0027. We should remember that for the next translation run. (Also, not really urgent but we should keep these fallback strings in sync with the English changes in the bmpblk strings.)",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16046ae3_835b8297",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "nit: true (1) if menuless screen, or false (0) if screen with menu\n\n...or something like that",
+      "range": {
+        "startLine": 159,
+        "startChar": 22,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b5c318_8481f571",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "Just wanted to mention that I\u0027m still a really big fan of just doing this in the caller and not calling vb2_update_menu() for that case. Passing the button in here just to handle this one special case which really just needs to do one function call anyway seems super weird.",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d31cfd5_5f443da0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "nit: I think this would look cleaner if this was a boolean (e.g. \u0027int disk_found\u0027) and the return value details stayed in the caller.",
+      "range": {
+        "startLine": 965,
+        "startChar": 20,
+        "endLine": 965,
+        "endChar": 49
+      },
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2b4b87_800c6be0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "Wait... okay... now I\u0027m confused.\n\nDoesn\u0027t our new model completely get rid of the RECOVERY menu anyway? There\u0027s only RECOVERY_INSERT which is a menuless screen, OPTIONS which has language and debug info, and TO_DEV which is reached with the special magic keypress. The old VB_MENU_RECOVERY disappears and you don\u0027t need this extra handling, right?",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3270d3ea_ec41665e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "nit: line added intentionally?",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b112d63_7b1bda82",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "This can just be moved below the if branch with vb2_handle_usb(), then you don\u0027t need it twice.",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae8bfcc_9d746e1d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "Nonono, wait... remember, we said that if a stick gets plugged in while you\u0027re looking at OPTIONS, the menu is cancelled immediately and you get transitioned to NOGOOD. So you can\u0027t exclude those cases here... or is that handled somewhere else?",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b0f513_92197c80",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "So we\u0027ll redraw unconditionally every second? That doesn\u0027t seem like such a great option... why not instead keep the current USB state in a variable, and only redraw the screen if it changed?",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00554317_ef8b54a6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "...I am very confused what this call is trying to do down here?",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed1aac17_aa0a1e50",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "This seems very pointless since you\u0027ll draw the debug info in line 1191 anyway.",
+      "revId": "f429c9a2110a46cfe79f27a75f98ef22f61157ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

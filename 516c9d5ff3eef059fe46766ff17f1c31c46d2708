@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "3bc73ae2_4560c50f",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t know, I think the dev-mode-switch combo should work from all recovery screens, including NOGOOD and OPTION. Otherwise it\u0027s just confusing for the user. For example, if it\u0027s not available from OPTION then it won\u0027t work if you accidentally release one button for a split second while you\u0027re trying to press both, because then you end up in OPTION. Also, I think we discussed the NOGOOD case at the last meeting and considered that allowing that is important so that people who need to do this a lot (e.g. school administrators that use it to power wash, or RMA center employees) don\u0027t have to deal with the extra friction of having to remember to take all mediums out that might be in there for unrelated reasons.",
+      "parentUuid": "0fab4a8e_ebb4b467",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e0d46ce_ae30e319",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -112,6 +130,24 @@
       "side": 1,
       "message": "This is due to us needing to use the prev_manu value.  vb2_set_menu_items overwrites it immediately.",
       "parentUuid": "8e0d46ce_ae30e319",
+      "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38db5769_7f6a15df",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-01-23T02:20:10Z",
+      "side": 1,
+      "message": "But you\u0027re not actually preserving it for long, you\u0027re just using it to assign current menu. So if you call vb2_set_menu_items(prev_menu, 0), prev_menu is updated to OPTIONS, current_menu is updated to the old prev_menu (which was preserved as the function parameter), and essentially all of the stuff you\u0027re open coding here happens in exactly the same way?",
+      "parentUuid": "b15e4132_a238a672",
       "revId": "516c9d5ff3eef059fe46766ff17f1c31c46d2708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
