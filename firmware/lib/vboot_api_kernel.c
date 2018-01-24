@@ -431,6 +431,18 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 			retval = VbBootRecovery(&ctx);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	} else if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		if (VbExIsDisplayConnected(2500)) {
+			if (!vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED)) {
+				VB2_DEBUG("Reboot to reload VBIOS\n");
+				/* TODO: Exit alternate mode or force reboot */
+				retval = VBERROR_REBOOT_REQUIRED;
+				/* Ensure we won't come here again */
+				vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 1);
+				goto VbSelectAndLoadKernel_exit;
+			}
+			VB2_DEBUG("Already rebooted for VBIOS\n");
+		}
+		vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 0);
 		/* Developer boot.  This has UI. */
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
 			retval = VbBootDeveloperMenu(&ctx);

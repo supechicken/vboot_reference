@@ -1029,6 +1029,12 @@ VbError_t VbExEcVbootDone(int in_recovery);
  */
 VbError_t VbExEcBatteryCutOff(void);
 
+/**
+ * Check if DisplayPort mode is enabled
+ * @return
+ */
+VbError_t VbExEcIsDisplayportModeEnabled(void);
+
 /*
  * severity levels for an auxiliary firmware update request
  */
@@ -1178,4 +1184,13 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+/**
+ * Check if display is connected
+ *
+ * @param msec
+ * @return
+ */
+VbError_t VbExIsDisplayConnected(uint32_t msec);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */
