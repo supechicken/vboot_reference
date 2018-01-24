@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcacdc70_14cd5d2b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-24T22:34:31Z",
+      "side": 1,
+      "message": "If I just let the AP reboot itself, it\u0027ll do it nicely. EC reacts to it and disconnect the PD link.\n\nUpon reboot, EC will do renegotiation but some type-c monitors don\u0027t like this hasty renegotiation.\n\nSo, I would like to force warm reboot so that EC and a type-c monitor will keep the link while the AP reboots.\n\nAny problem?",
+      "range": {
+        "startLine": 437,
+        "startChar": 13,
+        "endLine": 437,
+        "endChar": 48
+      },
+      "revId": "1ff5e2a151b7c6c8a823e3eeff2ddd681f0a1038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
