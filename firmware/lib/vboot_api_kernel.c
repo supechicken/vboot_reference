@@ -405,6 +405,20 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx, VbCommonParams *cparams)
 	cparams->shared_data_size = shared->data_used;
 }
 
+VbError_t request_display(void)
+{
+	if (vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED)) {
+		VB2_DEBUG("Already rebooted for VBIOS\n");
+		/* Ensure we won't come here again */
+		vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 0);
+		return VBERROR_SUCCESS;
+	}
+
+	VB2_DEBUG("Reboot to reload VBIOS\n");
+	vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 1);
+	return VBERROR_REBOOT_REQUIRED;
+}
+
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {

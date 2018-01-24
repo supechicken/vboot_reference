@@ -1180,4 +1180,26 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+/**
+ * Request display
+ *
+ * This should be called whenever Depthcharge needs to show something on
+ * display. It checks whether display has been already requested or not.
+ * It returns VBERROR_SUCCESS if so or VBERROR_REBOOT_REQUIRED otherwise.
+ *
+ * When VBERROR_REBOOT_REQUIRED is returned, callers should abort the process
+ * and pass VBERROR_REBOOT_REQUIRED to its caller to let the system take warm
+ * reboot.
+ *
+ * Who should be calling this?
+ * - Before software sync (for critical update screen)
+ * - Developer boot (for warning screen)
+ * - Normal boot when vboot fails (for OS damaged screen)
+ * - Recovery boot (for recovery screen)
+ *
+ * @return VBERROR_SUCCESS or VBERROR_REBOOT_REQUIRED
+ */
+VbError_t request_display(void);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */
