@@ -405,6 +405,20 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx, VbCommonParams *cparams)
 	cparams->shared_data_size = shared->data_used;
 }
 
+VbError_t request_display(void)
+{
+	if (vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED)) {
+		VB2_DEBUG("Already rebooted for VBIOS\n");
+		/* Ensure we won't come here again */
+		vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 0);
+		return VBERROR_SUCCESS;
+	}
+
+	VB2_DEBUG("Reboot to reload VBIOS\n");
+	vb2_nv_set(&ctx, VB2_NV_OPROM_NEEDED, 1);
+	return VBERROR_REBOOT_REQUIRED;
+}
+
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {
@@ -425,6 +439,17 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Select boot path */
 	if (ctx.flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
+		retval = request_display();
+		if (retval) {
+			/*
+			 * Restore recovery reason. We can't 'restore' manual
+			 * recovery, which can be only physically triggered.
+			 */
+			struct vb2_shared_data *sd = vb2_get_sd(&ctx);
+			vb2_nv_set(&ctx, VB2_NV_RECOVERY_REQUEST,
+				   sd->recovery_reason);
+			goto VbSelectAndLoadKernel_exit;
+		}
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
 			retval = VbBootRecoveryMenu(&ctx);
 		else
@@ -432,6 +457,9 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	} else if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		/* Developer boot.  This has UI. */
+		retval = request_display();
+		if (retval)
+			goto VbSelectAndLoadKernel_exit;
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
 			retval = VbBootDeveloperMenu(&ctx);
 		else
