@@ -403,7 +403,8 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 
 	VB2_DEBUG("VbBootRecovery() start\n");
 
-	if (!vb2_allow_recovery(shared->flags)) {
+	if (!vb2_allow_recovery(shared->flags) &&
+			shared->recovery_reason != VB2_RECOVERY_RO_MANUAL) {
 		/*
 		 * We have to save the reason here so that it will survive
 		 * coming up three-finger-salute. We're saving it in
@@ -506,7 +507,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 					if (VbExGetSwitches
 					    (VB_INIT_FLAG_ALLOW_USB_BOOT))
 						VbAllowUsbBoot(ctx);
-					return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+					return VBERROR_REBOOT_REQUIRED;
 				case -1:
 					VB2_DEBUG("Shutdown requested\n");
 					return VBERROR_SHUTDOWN_REQUESTED;
