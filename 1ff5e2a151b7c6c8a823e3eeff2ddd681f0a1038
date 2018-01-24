@@ -22,6 +22,30 @@
       "revId": "1ff5e2a151b7c6c8a823e3eeff2ddd681f0a1038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b0f9cd_44be4896",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-24T22:36:52Z",
+      "side": 1,
+      "message": "Another option is to explicitly disconnect the link. This can cause race condition between EC\u0027s entering alt mode v.s. VBIOS.",
+      "parentUuid": "dcacdc70_14cd5d2b",
+      "range": {
+        "startLine": 437,
+        "startChar": 13,
+        "endLine": 437,
+        "endChar": 48
+      },
+      "revId": "1ff5e2a151b7c6c8a823e3eeff2ddd681f0a1038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
