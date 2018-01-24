@@ -62,8 +62,11 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 
 	/* Phase 2; Applies update and/or jumps to the correct EC image */
 	rv = ec_sync_phase2(ctx);
-	if (rv)
+	if (rv) {
+		/* We're going to reboot. Clear OPROM_NEEDED to unload OPROM. */
+		vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
 		return rv;
+	}
 
 	/*
 	 * Do software sync for devices tunneled through the EC.
