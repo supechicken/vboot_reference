@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8302a680_ed8f9e34",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-24T22:41:16Z",
+      "side": 1,
+      "message": "Does this need similar logic?\n\nIf so, recovery reason should be propagated back to recovery request.",
+      "range": {
+        "startLine": 427,
+        "startChar": 5,
+        "endLine": 427,
+        "endChar": 19
+      },
+      "revId": "1ff5e2a151b7c6c8a823e3eeff2ddd681f0a1038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95a8272f_60e10065",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-24T22:41:16Z",
+      "side": 1,
+      "message": "Should look at VBSD_OPROM_LOADED, since that indicates whether we\u0027ve actually loaded it, vs. just whether we wanted it last time.\n\nOr are you just using that setting as a proxy for a to-be-added bit for looked-for-external-display-last-time?",
+      "range": {
+        "startLine": 435,
+        "startChar": 7,
+        "endLine": 435,
+        "endChar": 44
+      },
+      "revId": "1ff5e2a151b7c6c8a823e3eeff2ddd681f0a1038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcacdc70_14cd5d2b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
