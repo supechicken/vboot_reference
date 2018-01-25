@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418f89a5_9097ceff",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-25T18:07:06Z",
+      "side": 1,
+      "message": "nit: Just return menu \u003d\u003d VB_MENU_RECOVERY_INSERT || ... ;",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "45757921107bdea97f78e4535b59f2673451a7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
