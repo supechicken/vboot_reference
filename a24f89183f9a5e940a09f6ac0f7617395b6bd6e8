@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb169cdf_6ba62050",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-29T23:10:39Z",
+      "side": 1,
+      "message": "Moved them to common_minimal.sh. The sign_official_build script allows customization of futility. Do the same thing in this script too.",
+      "parentUuid": "157696b9_fdede408",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 1
+      },
+      "revId": "a24f89183f9a5e940a09f6ac0f7617395b6bd6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d2708e2_a17e6cfd",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-29T17:20:06Z",
       "side": 1,
       "message": "How does this padding work? It looks zeros are used.",
+      "range": {
+        "startLine": 259,
+        "startChar": 44,
+        "endLine": 260,
+        "endChar": 21
+      },
+      "revId": "a24f89183f9a5e940a09f6ac0f7617395b6bd6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95457738_5f894b35",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-29T23:10:39Z",
+      "side": 1,
+      "message": "0xff is used for padding flash image, which helps reducing time to write from 1 to 0.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/firmware_image.lds.S#53",
+      "parentUuid": "9d2708e2_a17e6cfd",
       "range": {
         "startLine": 259,
         "startChar": 44,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bc669308_04fb6fab",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-29T23:10:39Z",
+      "side": 1,
+      "message": "I didn\u0027t know that. Removed the above code of replacing KEY_RO.",
+      "parentUuid": "6e3318fb_1ae273ad",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 54
+      },
+      "revId": "a24f89183f9a5e940a09f6ac0f7617395b6bd6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c038067_6ba18d5d",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-01-29T17:20:06Z",
       "side": 1,
       "message": "I hope we can unite this and the same chunk of code in sign_official_build.sh. It\u0027s not very \u0027minimal\u0027 so it may not fit in common_minimal.sh but I don\u0027t know elsewhere.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 53
+      },
+      "revId": "a24f89183f9a5e940a09f6ac0f7617395b6bd6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2157be_d8752cb2",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-29T23:10:39Z",
+      "side": 1,
+      "message": "Not sure it is worth as this is a half of the process. It creates the BIOS image with a wrong signature. Need to resign the BIOS image to correct the signature. Making it a separated function may be misused and cause issues.\n\nProbably split the sign_official_build.sh into several blocks, more reusable, like this firmware (EC+BIOS) resigning process be more standalone. And make_dev_firmware calls the firmware resigning process. But it needs some more work and may be done later.",
+      "parentUuid": "8c038067_6ba18d5d",
       "range": {
         "startLine": 269,
         "startChar": 0,
