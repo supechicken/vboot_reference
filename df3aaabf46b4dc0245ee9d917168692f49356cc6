@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b2a4416_c1e62c75",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba04a737_5ef5f6f8",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eab2ddcd_21e5d01e",
         "filename": "scripts/image_signing/common_minimal.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-30T04:51:05Z",
       "side": 1,
       "message": "are there ?  i\u0027m not seeing any.",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214dbfba_e516f320",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Right, no automated test uses it (I just moved this comment from another file). Removed the comment.",
+      "parentUuid": "eab2ddcd_21e5d01e",
       "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "21479188_b5b6a297",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160f14b2_5a1a9c77",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83ebe9c4_33204392",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-30T04:51:05Z",
       "side": 1,
       "message": "since you\u0027re going through the effort of changing this everywhere, how about we make it into a func.  that\u0027ll take care of the bad quoting.\n\n flashrom_bios() {\n   flashrom -p host \"$@\"\n }",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d521086_a7dbcc2b",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ebe9c4_33204392",
       "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "4db3731b_72170da2",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcae6f66_d5a2ea20",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e77729a_c895b73e",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2018-01-30T04:51:05Z",
       "side": 1,
       "message": "change the -a to an \u0026\u0026 to avoid the \\( below\n\n [ -s ... ] \u0026\u0026 [ ... -o ... ]) ||",
+      "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dec195_fd7a4c28",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-30T22:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e77729a_c895b73e",
       "revId": "df3aaabf46b4dc0245ee9d917168692f49356cc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
