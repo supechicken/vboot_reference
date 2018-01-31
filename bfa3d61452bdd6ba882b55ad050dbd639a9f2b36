@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a602e39_e87dbbf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T19:56:20Z",
+      "side": 1,
+      "message": "Since sign_official_build.sh is being changed, please test it too. FYI: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/734295.",
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962d9d64_c04a687d",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T19:56:20Z",
+      "side": 1,
+      "message": "Can we do these inside flashrom_bios?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8c776d_0417a40e",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T19:56:20Z",
+      "side": 1,
+      "message": "And these in flashrom_ec?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
