@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a02e3438_d679d457",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-31T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a602e39_e87dbbf7",
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "962d9d64_c04a687d",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c6e6c875_4d6d9c04",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-31T22:56:20Z",
+      "side": 1,
+      "message": "Done, in a bit tricky way as flashrom is also used in line 79 which combines two flashrom commands together.",
+      "parentUuid": "962d9d64_c04a687d",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f8c776d_0417a40e",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2018-01-31T19:56:20Z",
       "side": 1,
       "message": "And these in flashrom_ec?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "bfa3d61452bdd6ba882b55ad050dbd639a9f2b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f29d15_198ce71e",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-01-31T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f8c776d_0417a40e",
       "range": {
         "startLine": 100,
         "startChar": 0,
