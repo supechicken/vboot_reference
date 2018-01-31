@@ -230,6 +230,9 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
       case 'P':
         printf("%d\n", GetPriority(drive, ANY_VALID, index));
         break;
+      case 'R':
+        printf("%d\n", GetSystem(drive, ANY_VALID, index));
+        break;
       case 'B':
         printf("%d\n", GetLegacyBoot(drive, ANY_VALID, index));
         break;

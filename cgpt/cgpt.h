@@ -149,6 +149,9 @@ void EntryDetails(GptEntry *entry, uint32_t index, int raw);
 uint32_t GetNumberOfEntries(const struct drive *drive);
 GptEntry *GetEntry(GptData *gpt, int secondary, uint32_t entry_index);
 
+void SetSystem(struct drive *drive, int secondary, uint32_t entry_index,
+               int system);
+int GetSystem(struct drive *drive, int secondary, uint32_t entry_index);
 void SetLegacyBoot(struct drive *drive, int secondary, uint32_t entry_index,
                    int legacy_boot);
 int GetLegacyBoot(struct drive *drive, int secondary, uint32_t entry_index);
