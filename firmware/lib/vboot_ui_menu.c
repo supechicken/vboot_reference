@@ -207,6 +207,8 @@ static VbError_t enter_developer_menu(struct vb2_context *ctx)
 	case VB2_DEV_DEFAULT_BOOT_LEGACY:
 		menu_idx = VB_DEV_LEGACY;
 		break;
+	default:
+		return VBERROR_KEEP_LOOPING;
 	}
 	vb2_change_menu(VB_MENU_DEV, menu_idx);
 	vb2_draw_current_screen(ctx);
