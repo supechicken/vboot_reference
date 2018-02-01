@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a34a45b4_e9beb9c5",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-02-01T18:02:46Z",
+      "side": 1,
+      "message": "Renamed it to execute().",
+      "parentUuid": "dc15ba5a_a824fc09",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "4a898ac3a060d07a9cc8bc85eac8ab860165215e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6f11132_7369f27a",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "21329d74_4ae79d58",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-02-01T18:02:46Z",
+      "side": 1,
+      "message": "Looks like in this script, logical compounds don\u0027t add extra indent. They are treated the same as normal line continuation.",
+      "parentUuid": "d6f11132_7369f27a",
+      "revId": "4a898ac3a060d07a9cc8bc85eac8ab860165215e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e738d37_e200e393",
         "filename": "scripts/image_signing/make_dev_firmware.sh",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2018-01-31T23:57:47Z",
       "side": 1,
       "message": "nit: \u003d\u0027\u0027 for consistency.",
+      "range": {
+        "startLine": 409,
+        "startChar": 24,
+        "endLine": 409,
+        "endChar": 25
+      },
+      "revId": "4a898ac3a060d07a9cc8bc85eac8ab860165215e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccb7b68_fb808c8a",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-02-01T18:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e738d37_e200e393",
       "range": {
         "startLine": 409,
         "startChar": 24,
