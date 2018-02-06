@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93205b17_5d0b3831",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "there\u0027s no need for \\ with arrays in bash.  so delete all of these.",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeac813b_9db74b43",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "use single quotes with all these constants",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c85dfe_c5bc9c0b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "move the trailing ) down to the next line by itself",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52f04c7_7e0430ae",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "is the prop line based ?  if so, might want to make the regex:\n\n \u0027^ro\\.produce\\.name\u003d\u0027\n\nalso, should add -a in case the prop file contains any non-ASCII content",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef09889_8086e59c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "could you move this into choose_key since that\u0027s the only place (so far) that cares about the flavor ?",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ccba411_2d18b25b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-06T18:20:58Z",
+      "side": 1,
+      "message": "indent is off",
+      "revId": "804fbb2c6d9f411efeea0052900d574bc8641cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
