@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ab33176_ce4d58d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-02-08T15:20:22Z",
+      "side": 1,
+      "message": "Why does an EC reboot make things work when it was in RO during rec. And it\u0027ll be in RO again after telling ec to reboot.",
+      "revId": "c7293182ed0dd01004e2ed0e1e2a02eab0c52f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc0b1c80_f7e3b3b8",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
