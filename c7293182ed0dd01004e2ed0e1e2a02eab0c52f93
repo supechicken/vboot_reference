@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc0b1c80_f7e3b3b8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-08T14:58:51Z",
+      "side": 1,
+      "message": "I know this has already gone in. But instead of making all the devices do an EC reboot on dev-switch, can we conditionally do this only on those devices that actually need it? Maybe pass a separate flag from depthcharge to indicate whether reboot in recovery means EC cold reboot or just AP warm reboot.",
+      "range": {
+        "startLine": 509,
+        "startChar": 12,
+        "endLine": 509,
+        "endChar": 44
+      },
+      "revId": "c7293182ed0dd01004e2ed0e1e2a02eab0c52f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
