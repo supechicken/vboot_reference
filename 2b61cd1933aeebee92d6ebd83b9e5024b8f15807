@@ -33,6 +33,24 @@
       "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c7d597_9f82b9af",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-09T20:36:23Z",
+      "side": 1,
+      "message": "This is needed to proceed to manual recovery on the 2nd boot. (Plese also refer to my comments on patchset 3 for why it\u0027s unwanted.)\n\nAfter discussion, we\u0027ll remove this check and implement a workaround for recovery boot in EC.",
+      "parentUuid": "a8ac56f9_b183e7a9",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
