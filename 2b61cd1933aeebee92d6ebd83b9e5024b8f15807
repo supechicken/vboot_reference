@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "48391459_de6f9f98",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-09T20:49:04Z",
+      "side": 1,
+      "message": "This is set by ec_sync_all, which is skipped in recovery mode.\n\nI haven\u0027t studied whole use of VBSD_OPROM_LOADED and VB2_NV_OPROM_NEEDED. I need to address Randall\u0027s comment on patchset 1.",
+      "parentUuid": "53122a79_31671a81",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a129965b_6c61491e",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 4
