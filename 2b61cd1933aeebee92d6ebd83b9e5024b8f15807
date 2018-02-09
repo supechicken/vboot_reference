@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53122a79_31671a81",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-09T19:55:43Z",
+      "side": 1,
+      "message": "Why are we manually setting this? Shouldn\u0027t this already be set for fizz when we do rec/dev mode?",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ac56f9_b183e7a9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-09T19:55:43Z",
+      "side": 1,
+      "message": "This new check deserves a comment. Is this just an optimization for a manual recovery? I\u0027m not following.",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
