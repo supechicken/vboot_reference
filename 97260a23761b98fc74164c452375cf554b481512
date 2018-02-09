@@ -22,6 +22,23 @@
       "revId": "97260a23761b98fc74164c452375cf554b481512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a5d32d_ee88d548",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-09T20:13:08Z",
+      "side": 1,
+      "message": "i tend to find globs easier to read:\n\n if [[ \"${flavor_prop}\" \u003d\u003d aosp* ]]; then",
+      "revId": "97260a23761b98fc74164c452375cf554b481512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
