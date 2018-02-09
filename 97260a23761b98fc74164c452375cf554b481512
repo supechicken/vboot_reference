@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d7b0496_8016c260",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2018-02-09T19:09:14Z",
+      "side": 1,
+      "message": "We should probably abort signing if something unrecognized is passed in.  Could you please expand L113-115?",
+      "range": {
+        "startLine": 108,
+        "startChar": 45,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "97260a23761b98fc74164c452375cf554b481512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
