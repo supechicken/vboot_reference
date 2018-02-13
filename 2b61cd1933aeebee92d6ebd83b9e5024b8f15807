@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f277d63_12db2096",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-02-13T21:48:56Z",
+      "side": 1,
+      "message": "This is where OPROM_NEEDED should already do what you want for the WAIT screen case.",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53122a79_31671a81",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 4
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "This is set by ec_sync_all, which is skipped in recovery mode.\n\nI haven\u0027t studied whole use of VBSD_OPROM_LOADED and VB2_NV_OPROM_NEEDED. I need to address Randall\u0027s comment on patchset 1.",
       "parentUuid": "53122a79_31671a81",
+      "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7842a762_ffba47f4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-02-13T21:48:56Z",
+      "side": 1,
+      "message": "OPROM_NEEDED is only really used for the EC software sync WAIT screen, because in all other cases where we need the display coreboot should already know that and there\u0027s no need for another reboot. As long as Fizz\u0027 coreboot code uses display_init_required() correctly, none of this should be needed.",
+      "parentUuid": "48391459_de6f9f98",
       "revId": "2b61cd1933aeebee92d6ebd83b9e5024b8f15807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
