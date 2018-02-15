@@ -16,6 +16,24 @@
       "revId": "47419994aa314127f483b65d890c9e6a3c978143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2705c00_d0882661",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-15T22:45:55Z",
+      "side": 1,
+      "message": "I thought even on non-EFS systems, this was needed. I don\u0027t see anybody except ec_sync_all clearing the flag. And the line which clears it is inside if (need_wait_screen \u0026\u0026 ...). So, after critical update happens in normal mode (and fails in phase2), this flag won\u0027t be cleared.\n\nI guess failing in phase2 means update will be retried. So, we eventually clear the flag.",
+      "parentUuid": "a20aee06_b71eb565",
+      "revId": "47419994aa314127f483b65d890c9e6a3c978143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
