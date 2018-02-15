@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6af3c4a0_858b0619",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-02-15T10:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c54bfc_a3f817e7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "b0cd4e28c656a1b81765ce6d8ff5ed44a60873dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "396c56e6_859583d3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41fa332f_a8ab2feb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-02-15T10:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "396c56e6_859583d3",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "b0cd4e28c656a1b81765ce6d8ff5ed44a60873dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "117e127f_7656b875",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "b0cd4e28c656a1b81765ce6d8ff5ed44a60873dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556eba52_1e8803d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-02-15T10:44:52Z",
+      "side": 1,
+      "message": "Referenced http://crbug.com/808303 which covers the motivation for doing this.",
+      "parentUuid": "117e127f_7656b875",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "b0cd4e28c656a1b81765ce6d8ff5ed44a60873dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
