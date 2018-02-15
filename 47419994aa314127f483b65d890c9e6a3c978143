@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a20aee06_b71eb565",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-02-15T21:17:55Z",
+      "side": 1,
+      "message": "There are plenty of reasons why ec_sync_phase2() could return an error, and not all of them are related to EFS. I think this should go into sync_one_ec() right in front of the one return statement that you actually want to cover here.",
+      "revId": "47419994aa314127f483b65d890c9e6a3c978143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
