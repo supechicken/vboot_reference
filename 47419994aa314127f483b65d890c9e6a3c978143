@@ -34,6 +34,41 @@
       "revId": "47419994aa314127f483b65d890c9e6a3c978143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd50503_173354f8",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-02-15T22:57:56Z",
+      "side": 1,
+      "message": "Yes, I think the idea is that all errors coming through here other than the EFS case will result in a retry, so we\u0027ll want to boot with display right again.\n\nI agree that the test for need_wait_screen below is sort of weird though, it would probably be better to take that out and always clear OPROM_NEEDED unconditionally if it is still set at that point.",
+      "parentUuid": "d2705c00_d0882661",
+      "revId": "47419994aa314127f483b65d890c9e6a3c978143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2fe1c5_c693153b",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-02-15T22:57:56Z",
+      "side": 1,
+      "message": "This is also a bit weird, honestly. OPROM_LOADED can be set even if OPROM_NEEDED was not. I guess that\u0027s why we\u0027re checking for dev mode as well, but... it should be possible to handle this whole thing much simpler and less error-prone with just:\n\n if (vb2_nv_get(ctx, VB2_NV_OPROM_NEEDED)) {\n   vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED);\n   if (!(shared-\u003eflags \u0026 VBSD_BOOT_DEV_SWITCH_ON)) {\n     VB2_DEBUG(\"Reboot to unload VGA Option ROM\\n\");\n     return VBERROR_VGA_OPROM_MISMATCH;\n   }\n }",
+      "revId": "47419994aa314127f483b65d890c9e6a3c978143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
