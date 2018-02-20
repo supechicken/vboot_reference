@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "916a2d98_bacb1767",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2018-02-20T18:24:53Z",
+      "side": 1,
+      "message": "nit: might be less confusing (to me) to just pass either of these in, but not both?  Not feeling very strong about it though.",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ca6c2d_337cc315",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2018-02-20T18:24:53Z",
+      "side": 1,
+      "message": "is ${BUILD} supposed to be an empty dir?",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
