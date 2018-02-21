@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "51cbbfed_ccba18ce",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "this should be moved up to the previous line",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c96fd7a_7102a70e",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "missing `local keyname`",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98785858_4356db79",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "move up to previous line",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95898622_39829671",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "these inner quotes aren\u0027t needed with \"${keyset}\"",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "916a2d98_bacb1767",
         "filename": "tests/sign_android_unittests.sh",
         "patchSetId": 1
@@ -25,6 +93,40 @@
     },
     {
       "key": {
+        "uuid": "b0fe3bc1_5f2e594a",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "no space before the ()",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ff4ae48_a71c7770",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "you prob want to error out at the top of this func if $# is not 0",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66ca6c2d_337cc315",
         "filename": "tests/sign_android_unittests.sh",
         "patchSetId": 1
@@ -42,6 +144,40 @@
         "endLine": 198,
         "endChar": 7
       },
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd85dc0_6a5cccbb",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "lets avoid inline comments",
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73fe4c5d_1c78e1cf",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-21T01:19:55Z",
+      "side": 1,
+      "message": "missing $",
       "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
