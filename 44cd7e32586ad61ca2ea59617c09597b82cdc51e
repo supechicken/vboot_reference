@@ -330,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "7fc4346a_62cc457f",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-02-27T23:50:30Z",
+      "side": 1,
+      "message": "I\u0027ve switched to rmdir now that the files have moved since the directory is supposed to be empty and it\u0027s safer. In case of an error it might leave stale files around, I can change it to \"rm -rf\".",
+      "parentUuid": "684f52e6_13f0bff3",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "44cd7e32586ad61ca2ea59617c09597b82cdc51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbd85dc0_6a5cccbb",
         "filename": "tests/sign_android_unittests.sh",
         "patchSetId": 1
