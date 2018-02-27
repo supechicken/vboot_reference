@@ -237,9 +237,6 @@ static VbError_t vb2_kernel_setup(VbCommonParams *cparams,
 	 */
 	memset(&ctx, 0, sizeof(ctx));
 
-	VbExNvStorageRead(ctx.nvdata);
-	vb2_nv_init(&ctx);
-
 	/* Translate vboot1 flags back to vboot2 */
 	if (shared->recovery_reason)
 		ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
@@ -261,6 +258,11 @@ static VbError_t vb2_kernel_setup(VbCommonParams *cparams,
 		ctx.flags |= VB2_CONTEXT_EC_EFS;
 	if (shared->flags & VBSD_BOOT_FIRMWARE_SW_WP_ENABLED)
 		ctx.flags |= VB2_CONTEXT_SW_WP_ENABLED;
+	if (shared->flags & VBSD_NVDATA_V2)
+		ctx.flags |= VB2_CONTEXT_NVDATA_V2;
+
+	VbExNvStorageRead(ctx.nvdata);
+	vb2_nv_init(&ctx);
 
 	ctx.workbuf_size = VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE +
 			VB2_WORKBUF_ALIGN;
