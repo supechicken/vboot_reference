@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d95680da_8cbe60cb",
+        "filename": "scripts/image_signing/lib/android/sign_android_lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-27T20:18:59Z",
+      "side": 1,
+      "message": "just put this file in lib/ directly ... no need for the android/ subdir.  the shflags/ is a bit diff because it\u0027s a third-party package.",
+      "revId": "a5b8359f634d4a70d3caea43a239b81674cffc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd808ab2_3afa689a",
+        "filename": "tests/sign_android_unittests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-02-27T20:18:59Z",
+      "side": 1,
+      "message": "how about we add this alongside the file it tests ?",
+      "revId": "a5b8359f634d4a70d3caea43a239b81674cffc8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
