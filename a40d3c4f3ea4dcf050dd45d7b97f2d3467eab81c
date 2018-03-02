@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347d7cff_bd1b7e7e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-02T22:06:02Z",
+      "side": 1,
+      "message": "nit: Maybe we should just reuse this bit, I don\u0027t think it should\u0027ve gotten added here in the first place. Looks like you added it for equivalence with VBSD_BOOT_FIRMWARE_SW_WP_ENABLED, but that was never really used by calling firmware and officially deprecated with CL:575389. No need to drag it on into the vboot2 world.",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5392c5f8_bbc81903",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-02T22:06:02Z",
+      "side": 1,
+      "message": "nit: I feel the union here is kinda weird and not really useful for anything, especially since you essentially end up having to replace every nvdata in the code with nvdata2 anyway. Why not just keep the name nvdata and increase the size?",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fade317d_805b5a9f",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-02T22:06:02Z",
+      "side": 1,
+      "message": "Why not just use 0x80 for the new signature? That would fit in the old mask...",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a569787_3327cdb7",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-02T22:06:02Z",
+      "side": 1,
+      "message": "How will mosys know how much to read? It doesn\u0027t know how to access VBSD at the moment. Should we add a command line flag for the size or something like that?",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
