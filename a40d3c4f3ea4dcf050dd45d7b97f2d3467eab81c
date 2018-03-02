@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f768e8f7_9fb537d6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T23:56:13Z",
+      "side": 1,
+      "message": "I\u0027ll remove this in a preceding CL.",
+      "parentUuid": "347d7cff_bd1b7e7e",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5392c5f8_bbc81903",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2018-03-02T22:06:02Z",
       "side": 1,
       "message": "nit: I feel the union here is kinda weird and not really useful for anything, especially since you essentially end up having to replace every nvdata in the code with nvdata2 anyway. Why not just keep the name nvdata and increase the size?",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9656dd1a_05659456",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T23:56:13Z",
+      "side": 1,
+      "message": "I wanted to make I won\u0027t break anyone useing sizeof(nvdata)instead of VB2_NVDATA_SIZE.  But it looks like only vboot did that, so it\u0027s safe just to increase the size.",
+      "parentUuid": "5392c5f8_bbc81903",
       "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "46ea2530_9405bd30",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T23:56:13Z",
+      "side": 1,
+      "message": "I could.  But I still want to increase to increase the signature mask, so if we ever need V3 we have bits to choose from.  Otherwise:\n\n0x00 \u003d (struct was memset to 0)\n0x40 \u003d V1\n0x80 \u003d V2\n0xC0 \u003d (reading erased data)\n\nWith the bigger mask, we can still use 0x80-0x82 for other versions later.  If, you know, in another 7 years we update this again.",
+      "parentUuid": "fade317d_805b5a9f",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a569787_3327cdb7",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2018-03-02T22:06:02Z",
       "side": 1,
       "message": "How will mosys know how much to read? It doesn\u0027t know how to access VBSD at the moment. Should we add a command line flag for the size or something like that?",
+      "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678fe640_4ba86836",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T23:56:13Z",
+      "side": 1,
+      "message": "Yes, in a subsequent CL.  Need to add mosys support for bigger records, and then we can trigger that support here.\n\nAdded a comment so we don\u0027t forget.",
+      "parentUuid": "0a569787_3327cdb7",
       "revId": "a40d3c4f3ea4dcf050dd45d7b97f2d3467eab81c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
