@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58702213_1a97f1e3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-06T19:59:49Z",
+      "side": 1,
+      "message": "nice catch. It should use ${package_count} instead package_count L263",
+      "parentUuid": "8d804bfb_3f430a5f",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae10d0f1_e99ab3fb",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9e054b67_03409d9b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-06T19:59:49Z",
+      "side": 1,
+      "message": "Yes, added comment here.",
+      "parentUuid": "ae10d0f1_e99ab3fb",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aabef053_0303f237",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2018-03-06T19:06:12Z",
       "side": 1,
       "message": "this doesn\u0027t do anything useful.  the exit status of wc will always(*) be 0, and you don\u0027t check the value of $package_count anywhere.\n\n(*) any scenarios where it wouldn\u0027t be 0 due to read/write aren\u0027t really relevant/practical here.",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c8ecc9_47abfb81",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-06T19:59:49Z",
+      "side": 1,
+      "message": "Than you for explanation. Could you please take a look updated code? Would this help?",
+      "parentUuid": "aabef053_0303f237",
       "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
