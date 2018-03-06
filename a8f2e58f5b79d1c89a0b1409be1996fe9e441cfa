@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d804bfb_3f430a5f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-06T19:06:12Z",
+      "side": 1,
+      "message": "you don\u0027t use this computed value anywhere",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae10d0f1_e99ab3fb",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-06T19:06:12Z",
+      "side": 1,
+      "message": "you unsquashed the vendor image, but don\u0027t resquash it ?  i guess you\u0027re only writing out the cache to the system side ?\n\nshould be an explicit comment here so people know what\u0027s going on",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabef053_0303f237",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-06T19:06:12Z",
+      "side": 1,
+      "message": "this doesn\u0027t do anything useful.  the exit status of wc will always(*) be 0, and you don\u0027t check the value of $package_count anywhere.\n\n(*) any scenarios where it wouldn\u0027t be 0 due to read/write aren\u0027t really relevant/practical here.",
+      "revId": "a8f2e58f5b79d1c89a0b1409be1996fe9e441cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
