@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f616b5a8_6bb326bf",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-08T01:18:03Z",
+      "side": 0,
+      "message": "Still referenced by depthcharge/src/vboot/callbacks/switches.c.",
+      "revId": "b739f6163c8a27d988d9e5631df8a42b1c9c478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c72b0a2_f46d2671",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-08T01:18:03Z",
+      "side": 0,
+      "message": "ditto",
+      "revId": "b739f6163c8a27d988d9e5631df8a42b1c9c478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af96b182_f5eabb96",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-08T01:18:03Z",
+      "side": 0,
+      "message": "These are all still referenced by depthcharge/src/vboot/callbacks/display.c",
+      "revId": "b739f6163c8a27d988d9e5631df8a42b1c9c478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5485ab10_c2eb3cb9",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-08T01:18:03Z",
+      "side": 0,
+      "message": "ditto",
+      "revId": "b739f6163c8a27d988d9e5631df8a42b1c9c478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a422f076_88abee02",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-08T01:18:03Z",
+      "side": 0,
+      "message": "Still referenced in depthcharge/src/vboot/callbacks/misc.c",
+      "revId": "b739f6163c8a27d988d9e5631df8a42b1c9c478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
