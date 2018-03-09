@@ -431,6 +431,7 @@ VbError_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 
 	/* If we're not updating the EC, skip aux fw syncs as well */
 	if (!ec_sync_allowed(ctx) ||
+	    !(sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW) ||
 	    (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)) {
 		*severity = VB_AUX_FW_NO_UPDATE;
 		return VBERROR_SUCCESS;
