@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccf47c24_5b8037fe",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-03-10T01:41:35Z",
+      "side": 1,
+      "message": "Alex says he\u0027s seeing a \"mosys returned hex nvdata size 33 (expected 32)\" on Scarlet. Did you test this on an ARM device? I think crossystem might be globally broken right now...",
+      "revId": "a80a79f9f5ca0250eb31330d9dfdacf3a250efb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
