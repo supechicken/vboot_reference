@@ -16,6 +16,24 @@
       "revId": "a80a79f9f5ca0250eb31330d9dfdacf3a250efb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd9839a_aaa3b0fc",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-11T17:16:38Z",
+      "side": 1,
+      "message": "Odd, not sure why it didn\u0027t fail when I tested it.  But I can repro now.\n\nFix here: https://chromium-review.googlesource.com/958286",
+      "parentUuid": "ccf47c24_5b8037fe",
+      "revId": "a80a79f9f5ca0250eb31330d9dfdacf3a250efb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
