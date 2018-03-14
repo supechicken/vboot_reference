@@ -230,6 +230,31 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 		}
 	}
 
+	VbDisplayScreen(ctx, VB_SCREEN_ALT_OS_CONFIRM, 0);
+	switch (VbUserConfirms(ctx, 0)) {
+	case 1:
+		VbTryLegacy(allow_legacy);
+	case -1:
+		VB2_DEBUG("shutdown requested\n");
+		return VBERROR_SHUTDOWN_REQUESTED;
+	default:
+		VB2_DEBUG("ESC pressed, back to normal boot flow\n");
+	}
+	/*
+	if (use_legacy) {
+		VbDisplayScreen(ctx, VB_SCREEN_ALT_OS, 0);
+		switch (VbUserConfirms(ctx, 0)) {
+		case 1:
+			VbTryLegacy(allow_legacy);
+		case -1:
+			VB2_DEBUG("shutdown requested\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		default:
+			VB2_DEBUG("ESC pressed, back to normal boot flow\n");
+		}
+	}
+	*/
+
 	/* Show the dev mode warning screen */
 	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
 
