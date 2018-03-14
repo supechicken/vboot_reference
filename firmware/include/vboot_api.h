@@ -642,6 +642,8 @@ enum VbScreenType_t {
 	VB_SCREEN_LANGUAGES_MENU = 0x20f,
 	/* Detachable Menu - Options */
 	VB_SCREEN_OPTIONS_MENU = 0x210,
+	/* Other OS picker screen */
+	VB_SCREEN_OTHER_OS = 0x211,
 };
 
 /**
