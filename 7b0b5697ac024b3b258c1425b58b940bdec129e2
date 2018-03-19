@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8794767_3b11b11b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "\"order for the package\" ?\n\nthen s/is/to be/ ?\n\nand \"with the\" below ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2463ac60_24ffd2c6",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "do we have to do it here ?  can\u0027t we sign things like we have been, and if aapt is available, also use that to sign/gen the caches ?",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89780fb4_5d111a1b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "s/once/when the/ ?",
+      "range": {
+        "startLine": 244,
+        "startChar": 43,
+        "endLine": 244,
+        "endChar": 47
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ef24dfb_514b0557",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "does this really need sudo ?  is this file not world readable ?",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee7a48a_de4e32c2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "is this `aapt` ?  shouldn\u0027t you use the version from $PATH instead of bundling the local one ?\n\ni don\u0027t think we want to be checking in any precompiled objects into the vboot repo.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2d60dd5_8e5bd927",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "use `[[`",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be87fd0_73d234b0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-19T22:23:06Z",
+      "side": 1,
+      "message": "should include a bit more info here like the vars you compared",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
