@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46efe3e2_a716820f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8794767_3b11b11b",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2463ac60_24ffd2c6",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8217ac_9d5da481",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "Done, in this case we have to remove outdated packages cache",
+      "parentUuid": "2463ac60_24ffd2c6",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c5bc9f7a_d3cf5b2e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89780fb4_5d111a1b",
+      "range": {
+        "startLine": 244,
+        "startChar": 43,
+        "endLine": 244,
+        "endChar": 47
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ef24dfb_514b0557",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -76,6 +142,24 @@
       "writtenOn": "2018-03-19T22:23:06Z",
       "side": 1,
       "message": "does this really need sudo ?  is this file not world readable ?",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bcc75b9_0b516a42",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "No, removed sudo",
+      "parentUuid": "5ef24dfb_514b0557",
       "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "5473cb29_a91d853d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "This is not aapt, this is our utility for packages cache generation which internally uses aapt.",
+      "parentUuid": "dee7a48a_de4e32c2",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2d60dd5_8e5bd927",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "0093c15b_bc1e0078",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d60dd5_8e5bd927",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0be87fd0_73d234b0",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -136,6 +262,24 @@
       "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4bd162_6939ca66",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2018-03-19T22:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be87fd0_73d234b0",
+      "revId": "7b0b5697ac024b3b258c1425b58b940bdec129e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
