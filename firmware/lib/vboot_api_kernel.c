@@ -432,6 +432,14 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	        else
 		    retval = VbBootRecovery(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
+	} else if (vb2_nv_get(&ctx, VB2_NV_DEV_BOOT_LEGACY)) {
+		/* TODO: Check (and set) the real alt-os flag instead of
+		 *       dev_boot_legacy.
+		 */
+		retval = VbBootAltOS(&ctx, cparams);
+		if (retval == VBERROR_REBOOT_REQUIRED) {
+			vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 0);
+		}
 	} else if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 		/* Developer boot.  This has UI. */
 	        if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
