@@ -432,6 +432,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	        else
 		    retval = VbBootRecovery(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
+	} else if (1) {  /* TODO: Check alt-os flag */
+		retval = VbBootAltOS(&ctx, cparams);
 	} else if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 		/* Developer boot.  This has UI. */
 	        if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
