@@ -766,6 +766,10 @@ enum VbScreenType_t {
 	VB_SCREEN_DEVELOPER_TO_NORM_MENU = 0x20e,
 	/* Detachable Menu - Languages */
 	VB_SCREEN_LANGUAGES_MENU = 0x20f,
+  /* Alt OS picker screen */
+  VB_SCREEN_ALT_OS = 0x210,
+  /* Alt OS confirm screen */
+  VB_SCREEN_ALT_OS_CONFIRM = 0x211,
 };
 
 /**
