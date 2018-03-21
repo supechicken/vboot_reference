@@ -409,10 +409,19 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx, VbCommonParams *cparams)
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {
+	// XXX: TEST CODE
+	SetAltOSMode(1);
+
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 
 	VbError_t retval = vb2_kernel_setup(cparams, kparams);
+	if (retval)
+		goto VbSelectAndLoadKernel_exit;
+
+	// Move this to SharedDataHeader?
+	uint8_t alt_os_flags = 0;
+	retval = GetAltOSModeFlags(&alt_os_flags);
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
 
@@ -432,6 +441,11 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	        else
 		    retval = VbBootRecovery(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
+	} else if (alt_os_flags & ALT_OS_ENABLE) {
+		retval = VbBootAltOS(&ctx, cparams);
+		if (retval == VBERROR_REBOOT_REQUIRED) {
+			// TODO: clear ALT_OS_LAST_BOOT?
+		}
 	} else if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 		/* Developer boot.  This has UI. */
 	        if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
