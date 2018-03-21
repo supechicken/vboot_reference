@@ -235,6 +235,28 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		}
 	}
 
+	if (use_legacy) {
+		int index = 0;
+		while (1) {
+			VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, index);
+			if (VbWantShutdown(cparams->gbb->flags))
+				return -1;
+			uint32_t key = VbExKeyboardRead();
+			if (key == VB_KEY_LEFT) {
+				index = 0;
+			} else if (key == VB_KEY_RIGHT) {
+				index = 1;
+			} else if (key == '\r') {
+				if (index == 0) {
+					break;
+				} else {
+					VbTryLegacy(allow_legacy);
+				}
+			}
+			VbExSleepMs(CONFIRM_KEY_DELAY);
+		}
+	}
+
 	/* Show the dev mode warning screen */
 	VbDisplayScreen(ctx, cparams, VB_SCREEN_DEVELOPER_WARNING, 0);
 
