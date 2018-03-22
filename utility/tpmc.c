@@ -499,7 +499,17 @@ static uint32_t HandlerIFXFieldUpgradeInfo(void) {
   }
   return result;
 }
-#endif
+
+static uint32_t HandlerCheckOwnerAuth(void) {
+  // Attempt to define an NVRAM space using owner auth. We're using
+  // TPM_NV_INDEX_TRIAL, which doesn't actually allocate a space but still
+  // performs the ownership checks. Thus the return status indicates whether
+  // owner authorization was successful or not.
+  uint8_t owner_auth[TPM_AUTH_DATA_LEN] = {};
+  return TlclDefineSpaceEx(owner_auth, sizeof(owner_auth), TPM_NV_INDEX_TRIAL,
+                           TPM_NV_PER_OWNERWRITE, 1, NULL);
+}
+#endif  /* !TPM2_MODE */
 
 #ifdef TPM2_MODE
 static uint32_t HandlerDoNothingForTPM2(void) {
@@ -584,6 +594,9 @@ command_record command_table[] = {
   { "ifxfieldupgradeinfo", "ifxfui",
     TPM20_NOT_IMPLEMENTED("read and print IFX field upgrade info",
       HandlerIFXFieldUpgradeInfo) },
+  { "checkownerauth", "chkown",
+    TPM20_NOT_IMPLEMENTED("Check owner authorization with well-known secret",
+      HandlerCheckOwnerAuth) },
 };
 
 static int n_commands = sizeof(command_table) / sizeof(command_table[0]);
