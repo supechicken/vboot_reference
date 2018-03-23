@@ -46,6 +46,30 @@
       "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c545a8_b2193698",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T16:26:08Z",
+      "side": 1,
+      "message": "So that means whoever writes code that relies on one of the error codes below for a certain function where the code wasn\u0027t \"relevant\" before, that code would become a new \"relevant\" error code and the engineer would have to take care of adding the mapping code?\n\nMy main worry here is that it becomes pretty unclear what codes are legit to check for in consuming code, and which can cause issues (such as TPM 2.0 not translating them). In an ideal world, we\u0027d document for each function which  error situations generate a well defined error code (across both TPM 1.2 and 2.0). And these well-behaved error codes would ideally be different from the TPM-generated ones. And we\u0027d further not export declarations of half-supported codes in the headers (i.e. we\u0027d only export vboot local codes and both TPM 1.2 and TPM 2.0 would map to the supported ones).\n\nMy original question was whether you\u0027re intending to make an effort to get into a predictable state or if the situation is going to be best effort (i.e. developers working on consuming code are expected to go in and fix up error handling for error situations they care about).\n\nNote that at this point I\u0027m just trying to understand the intention, I haven\u0027t made up my mind what I consider acceptable or not.",
+      "parentUuid": "7bcc2b28_287430cb",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
