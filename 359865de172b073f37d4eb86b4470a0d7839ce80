@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6169a117_b3e0c132",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-23T02:01:47Z",
+      "side": 1,
+      "message": "I preserved the existing logic just in case. If I change that, then in a separate CL. Because unlike other changes that can potentially cause some errors instead of SUCCESS statuses and change upper level behavior.",
+      "parentUuid": "28e44532_1a59564b",
+      "range": {
+        "startLine": 736,
+        "startChar": 2,
+        "endLine": 736,
+        "endChar": 10
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aed57ca9_47ae226a",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "62cc3e2b_5cab482a",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-23T02:01:47Z",
+      "side": 1,
+      "message": "Probably doesn\u0027t have to be. In fact, I refactored a bit to allow easier transition to non-global buffers.\nThe only question is: this code runs in firmware as well. Idk restrictions on stack size there. Placing a buffer that can hold all responses we potentially care about on stack may be too much. If we change that, I\u0027d suggest doing it in a separate CL for easier reverting just in case. Here I preserved the current behavior. It used to be a global buffer (static var in umarshal - I left it as it was).\n\nBtw, same is true for static uint8_t cr_buffer[TPM_BUFFER_SIZE] below - could be allocated on stack since is used only inside tpm_get_response(), but will eat a lot of space there. If we change that, I\u0027d do it in a separate CL.",
+      "parentUuid": "aed57ca9_47ae226a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "944b8bf7_3bb6b0e3",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2018-03-23T01:38:53Z",
       "side": 1,
       "message": "this seems confusing to me: this function does not just fills up the response structure, it also returns both TPM command return code and processing error return codes.\n\nI think it would be cleaner if it was returning processing error code, while the response structure would include the actual tpm response code.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4694a6_b7023691",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-23T02:01:47Z",
+      "side": 1,
+      "message": "That was my original draft. But I realized that _all_ callers of it always do \"if (returned_failure || response code !\u003d success) {return error;}\". so I just combined both checks in the same function and simplified all the calling functions. note that we use a similar approach - return a comm error if it happens, or the return code from the response if comms were successful in other places: see TlclSendReceiveNoRetry() in tpm_lite/tlcl.c for tpm 1.2 here or TpmUtility functions and TpmHandle::SendCommandInternal in trunks. I\u0027m just following the same convention.\nIt is expected that this function returns the response code for the ooperation, but if something goes wrong while sending/parsing/etc it is also converted into the response code and returned as if that was the error.\n\nWe can rename the function tpm_send_receive() to stay closer to tradition. Plus, I can put together a simulated response in the output response buffer if a response code is generated locally and not received from the tpm, so that the caller always get a consistent response - real or generated for the comm issue. wdyt?",
+      "parentUuid": "944b8bf7_3bb6b0e3",
       "range": {
         "startLine": 35,
         "startChar": 16,
