@@ -22,6 +22,30 @@
       "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcc2b28_287430cb",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-23T16:06:48Z",
+      "side": 1,
+      "message": "No, the idea is that tlcl itself does the mapping when necessary. See example in TlclRead in tpm2_lite/tlcl.c: 0x28b (RC_FMT1 | TPM_RC_HANDLE | TPM_RC_2) from TPM2_NV_Read -\u003e TPM_E_BADINDEX, since places like RollbackFwmpRead() in vboot_reference/firmware/lib/rollback_index.c treat that code in a special way. technically, there\u0027s no single value that says \"BADINDEX\" in TPM2 (depending on which handle it is in a command we\u0027ll have a different RC_HANDLE variation - I haven\u0027t checked if we are ever not handle 2 in other commands), so do this mapping to a single special code in the places where it matters makes sense to me.\n\nIt\u0027s fortunate that TPM2 result codes are designed to avoid collisions with TPM1.2 codes, so we will not get 0x00..02 (BADINDEX) from a spec-compliant TPM2 chip. For TPM2, this result code can be generated only by the tlcl itself, similar to \"vboot local\" codes aabove in this header.\n\nThere is a separate question of \n - converting literal 0x28b to something more meaningful.\n - documenting which special codes are expected from which functions. I went through the firmware code and see that we have this special treatment for TPM_E_BADINDEX, TPM_E_INVALID_POSTINIT, TPM_E_MAXNVWRITES, TPM_E_NEEDS_SELFTEST, TPM_E_DOING_SELFTEST.\n\nBut that\u0027s a topic for a separate cleanup.",
+      "parentUuid": "3a9dd04f_56fb6d37",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
