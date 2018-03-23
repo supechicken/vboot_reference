@@ -382,13 +382,22 @@ BDBLIB_SRCS = \
 	firmware/bdb/nvm.c
 
 # TPM lightweight command library
+# and the corresponding TPM error descriptions for utilities
 ifeq (${TPM2_MODE},)
 TLCL_SRCS = \
 	firmware/lib/tpm_lite/tlcl.c
+
+TMPERRLIB_SRCS = \
+	utility/tpm_error_messages_common.c \
+	utility/tpm_error_messages_tpm1.c
 else
 TLCL_SRCS = \
 	firmware/lib/tpm2_lite/tlcl.c \
 	firmware/lib/tpm2_lite/marshaling.c
+
+TMPERRLIB_SRCS = \
+	utility/tpm_error_messages_common.c \
+	utility/tpm_error_messages_tpm2.c
 endif
 TLCL_OBJS_FOR_TEST = $(TLCL_SRCS:%.c=${BUILD}/%_for_test.o)
 
@@ -467,7 +476,8 @@ UTILLIB_SRCS = \
 	host/lib21/host_key.c \
 	host/lib21/host_keyblock.c \
 	host/lib21/host_misc.c \
-	host/lib21/host_signature.c
+	host/lib21/host_signature.c \
+	${TMPERRLIB_SRCS}
 
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
