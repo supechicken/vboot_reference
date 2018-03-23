@@ -70,6 +70,30 @@
       "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f71354_758b2b44",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-23T16:48:08Z",
+      "side": 1,
+      "message": "Doesn\u0027t this patch just consolidate TPM_E definitions without changing them?",
+      "parentUuid": "58c545a8_b2193698",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
