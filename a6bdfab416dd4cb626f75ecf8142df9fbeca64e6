@@ -118,6 +118,30 @@
       "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1c5cac_9e88e45b",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-23T17:28:06Z",
+      "side": 1,
+      "message": "\u003e Doesn\u0027t this patch just consolidate TPM_E definitions without changing them?\n\nYes, that\u0027s the idea. The context is that we abandon the plan to come up with separate definitions for TPM_E for TPM2 in the future, and instead do the mapping in the future.\n\n\u003e With this patch you get that declaration even for TPM 2.0, so you might be inclined to rely on that error code to detect the situation of locked NVRAM spaces only to find out after debugging that the TPM 2.0 boards never generate that code...\n\nYes, that\u0027s why we need to document the Tlcl API - which \u0027special\u0027 codes are expected from which function. (1) currently it doesn\u0027t even matter what\u0027s defined in this .h, the callers can have their own header files that defines these errors for them and expect them w/o thinking, (2) TPM_E_AREA_LOCKED is not treated specially by any of the callers, that means it likely doesn\u0027t even belong in tpm1.2-specific header, will need to be removed from this header, and not explicitly checked for by tests, since it\u0027s not a part of the API contract. The contract should be as minimal as actually needed.",
+      "parentUuid": "c6461ad2_626a7369",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
