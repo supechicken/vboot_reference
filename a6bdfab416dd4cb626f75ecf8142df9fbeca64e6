@@ -94,6 +94,30 @@
       "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6461ad2_626a7369",
+        "filename": "firmware/include/tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T16:54:20Z",
+      "side": 1,
+      "message": "Previously, if you compiled on a TPM 2 board (i.e. with TPM2_MODE defined), you wouldn\u0027t get the definition for e.g. TPM_E_AREA_LOCKED. With this patch you get that declaration even for TPM 2.0, so you might be inclined to rely on that error code to detect the situation of locked NVRAM spaces only to find out after debugging that the TPM 2.0 boards never generate that code...\n\nAgain, I\u0027m not saying it\u0027s terrible, but certainly not the ideal behavior from an API perspective :-)",
+      "parentUuid": "85f71354_758b2b44",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "a6bdfab416dd4cb626f75ecf8142df9fbeca64e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
