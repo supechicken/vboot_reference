@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f03a56_99a9fc42",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-23T01:38:53Z",
+      "side": 1,
+      "message": "not that you are adding it here, but technically it is not a Command Code when unmarshaling response, I think using unmarshal_32 is more logical. \n\nJust a nit.",
+      "range": {
+        "startLine": 730,
+        "startChar": 26,
+        "endLine": 730,
+        "endChar": 42
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e44532_1a59564b",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-23T01:38:53Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be an error?",
+      "range": {
+        "startLine": 736,
+        "startChar": 2,
+        "endLine": 736,
+        "endChar": 10
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed57ca9_47ae226a",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-23T01:38:53Z",
+      "side": 1,
+      "message": "why does this have to be global? Not that we are going to have concurrent TPM responses processing, but still.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "944b8bf7_3bb6b0e3",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-23T01:38:53Z",
+      "side": 1,
+      "message": "this seems confusing to me: this function does not just fills up the response structure, it also returns both TPM command return code and processing error return codes.\n\nI think it would be cleaner if it was returning processing error code, while the response structure would include the actual tpm response code.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
