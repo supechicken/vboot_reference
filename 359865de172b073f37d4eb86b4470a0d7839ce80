@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a07908fc_4e569570",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-26T22:20:36Z",
+      "side": 1,
+      "message": "Leaving as is: doesn\u0027t change the current behavior of no CAR_GLOBAL for that global buffer. So, even if it makes sense to add it for future proofing, I\u0027d leave it for a separate C. Probably we can put this one on stack instead.",
+      "parentUuid": "fe7db01d_dd6dff57",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "944b8bf7_3bb6b0e3",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
