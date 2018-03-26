@@ -230,6 +230,10 @@ uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
  */
 uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info);
 
+
+
+void TlclDbgSetReturnError(uint32_t cc, uint32_t rc, int once);
+
 #ifdef __cplusplus
 }
 #endif

@@ -18,6 +18,17 @@
 /* Global buffer for deserialized responses. */
 struct tpm2_response tpm2_resp;
 
+uint32_t dbg_return_error_rc;
+uint32_t dbg_return_error_cc;
+int dbg_return_error_once;
+
+void TlclDbgSetReturnError(uint32_t cc, uint32_t rc, int once)
+{
+	dbg_return_error_rc = rc;
+	dbg_return_error_cc = cc;
+	dbg_return_error_once = once;
+}
+
 /*
  * Serializes and sends the command, gets back the response and
  * parses it into the provided buffer.
@@ -39,6 +50,16 @@ static uint32_t tpm_get_response(TPM_CC command,
 	/* Command/response buffer. */
 	static uint8_t cr_buffer[TPM_BUFFER_SIZE];
 	uint32_t out_size, in_size, res;
+
+	if (dbg_return_error_rc &&
+	    (dbg_return_error_cc == 0 || dbg_return_error_cc == command)) {
+		res = dbg_return_error_rc;
+		VB2_DEBUG("DBG: command %#x, return error code %#x\n", command,
+			  res);
+		if (dbg_return_error_once)
+			dbg_return_error_rc = 0;
+		return res;
+	}
 
 	out_size = tpm_marshal_command(command, command_body,
 				       cr_buffer, sizeof(cr_buffer));
