@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5a1c0e3_3590d79d",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-26T18:00:20Z",
+      "side": 1,
+      "message": "it would be helpful to mention here that TPM response codes and error codes are in different int ranges.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "5fdd26f7ff748598225b76ce0b5f52cd29bb1c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bae5d51_9ec433cf",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-26T18:00:20Z",
+      "side": 1,
+      "message": "just a nit: here and below, this could have been simplified as\n\nif (rv \u003d\u003d TPM_SUCESS)\n   *presp \u003d \u0026response-\u003env_read_public;\n\nreturn rv;",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "5fdd26f7ff748598225b76ce0b5f52cd29bb1c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
