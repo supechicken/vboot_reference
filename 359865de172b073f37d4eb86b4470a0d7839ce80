@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e29a6c16_9cae9fe2",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-26T17:43:27Z",
+      "side": 1,
+      "message": "Addressed in the followup CL:981111",
+      "parentUuid": "91f03a56_99a9fc42",
+      "range": {
+        "startLine": 730,
+        "startChar": 26,
+        "endLine": 730,
+        "endChar": 42
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28e44532_1a59564b",
         "filename": "firmware/lib/tpm2_lite/marshaling.c",
         "patchSetId": 1
@@ -163,6 +187,30 @@
       "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6972092f_c10a43ec",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-26T17:43:27Z",
+      "side": 1,
+      "message": "Done. Modified tpm_get_response behavior to return success if a response was received. Added tpm_send_receive() that returns the response code.",
+      "parentUuid": "7c4694a6_b7023691",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
