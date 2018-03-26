@@ -16,6 +16,24 @@
       "revId": "eb9e71e75188b281282171955ff16211e7c73a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2cffc23_3e5b825f",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-26T18:22:32Z",
+      "side": 1,
+      "message": "That\u0027s probably a bigger fix. Right now we are returning uint32_t instead of TPM_RC from all methods that use the response code. And marshaling for TPM_CC just does marshal_u32() for this field. So, it\u0027s never actually used as TPM_CC or TPM_RC, only as uint32_t.",
+      "parentUuid": "803f366b_51a65413",
+      "revId": "eb9e71e75188b281282171955ff16211e7c73a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
