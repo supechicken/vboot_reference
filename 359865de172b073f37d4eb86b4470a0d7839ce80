@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "fe7db01d_dd6dff57",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-26T18:43:50Z",
+      "side": 1,
+      "message": "We had \"static struct tpm2_response tpm2_resp;\" in tpm_unmrshal_response() in tpm2_lite/marshaling.c. And it didn\u0027t have CAR_GLOBAL set there.\nAnother thing is that coreboot has its own set of tlcl_ routines implemented in security/tpm/tss/tcg-2.0/tss.c. And that implementation uses CAR_GLOBAL. Those routines are used in rollback protection code (defining/checking spaces, disabling PH), so this Tlcl code is probably not run until the stage we have variables in RAM.",
+      "parentUuid": "26779848_3575bd6f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "359865de172b073f37d4eb86b4470a0d7839ce80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "944b8bf7_3bb6b0e3",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 1
