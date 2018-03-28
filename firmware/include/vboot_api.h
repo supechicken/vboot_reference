@@ -126,6 +126,8 @@ enum VbErrorPredefined_t {
 	VBERROR_RW_JUMP_FAILED                = 0x10028,
 	/* Error reading FWMP from TPM (note: not present is not an error) */
 	VBERROR_TPM_READ_FWMP                 = 0x10029,
+	/* Error reading or writing Alt OS flags to TPM */
+	VBERROR_TPM_ALT_OS                    = 0x10030,
 
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */
@@ -766,6 +768,8 @@ enum VbScreenType_t {
 	VB_SCREEN_DEVELOPER_TO_NORM_MENU = 0x20e,
 	/* Detachable Menu - Languages */
 	VB_SCREEN_LANGUAGES_MENU = 0x20f,
+	/* Alt OS picker screen */
+	VB_SCREEN_ALT_OS = 0x210,
 };
 
 /**
@@ -913,6 +917,11 @@ uint32_t VbExKeyboardReadWithFlags(uint32_t *flags_ptr);
  * Return the current state of the switches specified in request_mask
  */
 uint32_t VbExGetSwitches(uint32_t request_mask);
+
+/**
+ * Return whether Alt OS switch is currently enabled.
+ */
+int VbExGetAltOSModeSwitch(void);
 
 /*****************************************************************************/
 /* Embedded controller (EC) */
