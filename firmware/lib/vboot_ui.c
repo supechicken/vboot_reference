@@ -158,6 +158,63 @@ static const char dev_disable_msg[] =
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
 	"\n";
 
+VbError_t vb2_alternate_ui(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	int rv;
+	int enabled;
+	int requested;
+	int warm_reboot;
+	int ec_in_ro;
+	int hotkey_on_boot;
+	int os_choice;  /* 0 = Chrome OS; 1 = Windows */
+
+	/* TODO(kitching): Create enabled flag as AltOSEnable in TPM */
+	enabled = 0;
+
+	requested = vb2_nv_get(ctx, VB2_NV_ENABLE_ALT_REQUEST);
+
+	/* TODO(kitching): Figure out how to determine warm reboot state */
+	warm_reboot = 1;
+
+	/* TODO(kitching): Figure out how to determine EC RO/RW state */
+	ec_in_rw = 1;
+
+	/* TODO(kitching): Figure out how to ask EC whether "a" key was pushed */
+	hotkey_on_boot = 1;
+
+	os_choice = 0;
+
+	if (enabled && warm_reboot) {
+		/* TODO(kitching): Show picker screen and get choice */
+		VB2_DEBUG("SCREEN: Picker screen *with* timeout: Windows Y/N?\n");
+		os_choice = 1;
+	}
+
+	if (!enabled && requested && ec_in_ro && hotkey_on_boot) {
+		/* TODO(kitching): Show picker screen and get choice */
+		VB2_DEBUG("SCREEN: Picker screen *without* timeout: Windows Y/N?\n");
+		os_choice = 1;
+	}
+
+	/*
+	 * TODO(kitching): Figure out how to set AltOSEnable in TPM.
+	 *                 Enable if os_choice = 1, disable if os_choice = 0.
+	 */
+	vb2_nv_set(ctx, VB2_NV_ENABLE_ALTOS_REQUEST, 0);
+
+	if (os_choice) {
+		/* Will only return on failure */
+		VbTryLegacy(1);
+	}
+	return VbBootNormal(&ctx, cparams);
+}
+
+VbError_t VbBootAlternate(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbError_t retval = vb2_alternate_ui(ctx, cparams);
+	return retval;
+}
+
 VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	GoogleBinaryBlockHeader *gbb = cparams->gbb;

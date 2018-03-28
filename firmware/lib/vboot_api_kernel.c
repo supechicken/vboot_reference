@@ -439,6 +439,13 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 		    retval = VbBootDeveloper(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+	} else if (vb2_nv_get(&ctx, VB2_NV_ENABLE_ALTOS_REQUEST)) {
+		/* TODO(kitching): Maybe we need to create a VBSD_ shared flag */
+		/* Alternate boot.  This has UI. */
+		/* TODO(kitching): Add a menu version of VbBootAlternate */
+		retval = VbBootAlternate(&ctx, cparams);
+		/* TODO(kitching): Figure out if we need to create VB_EC_ALTERNATE_OS */
+		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	} else {
 		/* Normal boot */
 		retval = VbBootNormal(&ctx, cparams);
