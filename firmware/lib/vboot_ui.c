@@ -153,10 +153,118 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 	return -1;
 }
 
-static const char dev_disable_msg[] =
-	"Developer mode is disabled on this device by system policy.\n"
-	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
-	"\n";
+uint32_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	int index = 0;
+	while (1) {
+		VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, index);
+		if (VbWantShutdown(cparams->gbb->flags))
+			return VBERROR_SHUTDOWN_REQUESTED;
+		uint32_t key = VbExKeyboardRead();
+		if (key == VB_KEY_LEFT) {
+			index = 0;
+		} else if (key == VB_KEY_RIGHT) {
+			index = 1;
+		} else if (key == '\r' || key == ' ') {
+			if (index == 0) {
+				/* Chrome OS */
+				break;
+			} else {
+				/* AltOS */
+				return 1;
+			}
+		}
+		VbExSleepMs(20);
+	}
+
+	return 0;
+}
+
+VbError_t VbBootAltOS(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbError_t retval = vb2_alt_os_ui(ctx, cparams);
+	VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+	return retval;
+}
+
+
+VbError_t vb2_alternate_ui(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+
+	uint32_t enabled;
+	uint32_t req_enable;
+	uint32_t req_disable;
+	uint32_t triggered;
+	uint32_t os_choice = 0;  /* 0 = Chrome OS; 1 = AltOS */
+	uint8_t tpm_flags;
+	uint32_t should_write_tpm = 0;
+
+	if (GetAltOSModeFlags(&tpm_flags)) {
+		VB2_DEBUG("Unable to get AltOS flags from TPM\n");
+		/* TODO: Add correct VBERROR constant. */
+		return VBERROR_UNKNOWN;
+	}
+
+	enabled = tpm_flags & ALT_OS_ENABLE;
+	req_enable = !enabled;  // vb2_nv_get(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST);
+	req_disable = enabled;  // vb2_nv_get(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST);
+	triggered = !!(shared->flags & VBSD_TRIGGER_ALT_OS);
+
+	VB2_DEBUG("AltOS: tpm_flags=%d\n", tpm_flags);
+	VB2_DEBUG("AltOS: enabled=%d\n", enabled);
+	VB2_DEBUG("AltOS: req_enable=%d\n", req_enable);
+	VB2_DEBUG("AltOS: req_disable=%d\n", req_disable);
+	VB2_DEBUG("AltOS: triggered=%d\n", triggered);
+
+	/* Case 1: Disable AltOS mode */
+	if (enabled && req_disable) {
+		should_write_tpm = 1;
+		/* Disable */
+		tpm_flags &= ~ALT_OS_ENABLE;
+	}
+
+	/* Case 2: Enable AltOS mode */
+	else if (!enabled && req_enable && triggered) {
+		/* TODO: Show picker screen and get choice */
+		VB2_DEBUG("SCREEN: Picker screen w/o timeout: AltOS Y/N?\n");
+		os_choice = vb2_alt_os_ui(ctx, cparams);
+		/* Enable if AltOS is chosen. */
+		if (os_choice) {
+			should_write_tpm = 1;
+			tpm_flags |= ALT_OS_ENABLE;
+		}
+	}
+
+	if (should_write_tpm && SetAltOSMode(tpm_flags)) {
+		VB2_DEBUG("Unable to write AltOS flags to TPM\n");
+		/* TODO: Add correct VBERROR constant. */
+		return VBERROR_UNKNOWN;
+	}
+
+	/* Case 3: Trigger AltOS mode */
+	if (enabled) {
+		/* TODO: Show picker screen and get choice */
+		VB2_DEBUG("SCREEN: Picker screen with timeout: AltOS Y/N?\n");
+		os_choice = vb2_alt_os_ui(ctx, cparams);
+	}
+
+	vb2_nv_set(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST, 0);
+	vb2_nv_set(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST, 0);
+
+	if (os_choice) {
+		/* Will only return on failure */
+		VbTryLegacy(1);
+	}
+	return VbBootNormal(ctx, cparams);
+}
+
+VbError_t VbBootAlternate(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbError_t retval = vb2_alternate_ui(ctx, cparams);
+	return retval;
+}
 
 VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 {
