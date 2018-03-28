@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3bec70c_668646cd",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "not exactly true for the implementation we have - see comments there.\nwhy does it matter that it is not wired to TPM RNG?",
+      "range": {
+        "startLine": 423,
+        "startChar": 67,
+        "endLine": 424,
+        "endChar": 51
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5862f2_e09dfda5",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "should it be under\n#ifdef CHROMEOS_ENVIRONMENT\n\nwe seem to define it only in stub/tpm_lite_stub.c",
+      "range": {
+        "startLine": 426,
+        "startChar": 10,
+        "endLine": 426,
+        "endChar": 26
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0cf358_874017ec",
+        "filename": "firmware/lib/tpm_lite/include/tlcl_internal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "would be good to have descriptions. especially given the names that look very similar",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e6dada_7c18757d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "so, what is this CHROMEOS_ENVIRONMENT. looks like I was understanding it all wrong. is it defined when building Tlcl for tpmc and mount-encrypted from chromeos, but not when building Tlcl for firmware? if so, makes sense.",
+      "range": {
+        "startLine": 646,
+        "startChar": 7,
+        "endLine": 646,
+        "endChar": 27
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17a5c68_f9fdc11d",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "this function begs for breaking into several subfunctions to simplify tracking internal logic and calculations",
+      "range": {
+        "startLine": 648,
+        "startChar": 9,
+        "endLine": 648,
+        "endChar": 22
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a779b65e_99818ace",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "worth extracting this pattern (get uint, move cursor by its size) in a function or macro?",
+      "range": {
+        "startLine": 673,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 23
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a5af5c_d89ea834",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "can we move dealing with parm internals to a sub-function? at first i missed that we switched from cursor to parm_cursor when parsing these, and was confused.",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 38
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74efe9e_aa48fccb",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "size checks logic is a bit confusing, which is important for this case of long function, which uses variables and constants with similar names that are easy to mix up.\n \nabove we check that header + kTpmPubkeyFixedSize + parm + SHA1 hash fits.\nkTpmPubkeyFixedSize \u003d 12, and we have u32(alg) + u16(enc-scheme) + u16(sig_scheme) + u32(parm_size) \u003d 12 before parm.\nso, that\u0027s a check that header + stuff before parm + parm + checksum fits.\nhowever, there is modulus between parm and checksum.\nwe do have a check below that modulus also fits, but it feels odd to have the check above include already the checksum but not modulus (which is variable length, so I understand why), while this includes everything. also, implicitly assumes that size(u32) \u003c 20 bytes, which is true of course ;)\n\nfeels like the original consumed_size should have better not included SHA1 checksum size. \nthen the checking above would be that everything up to and including parm fits, here we additionally check that everything up to and including checksum fits (would also need to test that we still have space for u32 for modulus size - maybe include it in the 1st check)",
+      "range": {
+        "startLine": 707,
+        "startChar": 1,
+        "endLine": 708,
+        "endChar": 45
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2a1e51_7c593423",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-28T21:30:28Z",
+      "side": 1,
+      "message": "This is actually indirectly wired to TPM on Chrome OS. urandom pokes hwrng (which uses rng-tpm, which goes and asks for a random from TPM) when it runs out of entropy, though doesn\u0027t wait for it.\nI don\u0027t think it matters for our purposes, though.",
+      "range": {
+        "startLine": 261,
+        "startChar": 21,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "056fa8ed9b4b214a0326246611a93ceb0ac06be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
