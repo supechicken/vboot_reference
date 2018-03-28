@@ -918,6 +918,11 @@ uint32_t VbExKeyboardReadWithFlags(uint32_t *flags_ptr);
  */
 uint32_t VbExGetSwitches(uint32_t request_mask);
 
+/**
+ * Return whether Alt OS switch is currently enabled.
+ */
+uint32_t VbExGetAltOSModeSwitch(void);
+
 /*****************************************************************************/
 /* Embedded controller (EC) */
 
