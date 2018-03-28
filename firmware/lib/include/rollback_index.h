@@ -173,7 +173,8 @@ enum alt_os_flags {
 };
 
 uint32_t SetAltOSFlag(enum alt_os_flags key, uint8_t val);
-
 uint32_t GetAltOSFlag(enum alt_os_flags key, uint8_t* val);
+uint32_t SetAltOSFlags(uint8_t val);
+uint32_t GetAltOSFlags(uint8_t *val);
 
 #endif  /* VBOOT_REFERENCE_ROLLBACK_INDEX_H_ */

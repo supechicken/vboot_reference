@@ -82,6 +82,8 @@ VbError_t VbBootDeveloperMenu(struct vb2_context *ctx, VbCommonParams *cparams);
  */
 VbError_t VbBootRecoveryMenu(struct vb2_context *ctx, VbCommonParams *cparams);
 
+VbError_t VbBootAlternate(struct vb2_context *ctx, VbCommonParams *cparams);
+
 /**
  * Handle a alt-os-mode boot.
  */
