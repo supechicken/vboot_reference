@@ -426,6 +426,15 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		goto VbSelectAndLoadKernel_exit;
 
 	/*
+	 * Determine whether the EC is in RO or RW.  This information
+	 * will be used later on in Alt OS boot flow.
+	 */
+	int ec_in_rw = 1;  /* Default to untrusted RW */
+	retval = VbExEcRunningRW(0, &ec_in_rw);
+	if (retval)
+		ec_in_rw = -1;  /* Unknown state */
+
+	/*
 	 * Do EC software sync if necessary.  This has UI, but it's just a
 	 * single non-interactive WAIT screen.
 	 */
@@ -439,6 +448,14 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 			goto VbSelectAndLoadKernel_exit;
 	}
 
+	/*
+	 * Check whether confirmation screen or picker screen need to be
+	 * shown for Alt OS.  Ignore return value, and in the case of failure,
+	 * continue to a normal boot.
+	 */
+	retval = VbCheckAltOSSwitch(&ctx, cparams, ec_in_rw == 0);
+	if (retval == VBERROR_VGA_OPROM_MISMATCH)
+		goto VbSelectAndLoadKernel_exit;
 
 	/* Select boot path */
 	if (shared->recovery_reason) {
@@ -455,6 +472,13 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 		    retval = VbBootDeveloper(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+	} else if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE ||
+		   shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
+		/* Alt OS boot.  This has UI. */
+		/* TODO: Add a menu version of VbBootAltOS */
+		retval = VbBootAltOS(&ctx, cparams);
+		/* TODO: Figure out if we need to create VB_EC_ALT_OS */
+		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	} else {
 		/* Normal boot */
 		retval = VbBootNormal(&ctx, cparams);
