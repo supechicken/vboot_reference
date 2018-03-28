@@ -104,6 +104,9 @@ int vb2api_fw_phase1(struct vb2_context *ctx)
 		return VB2_ERROR_API_PHASE1_RECOVERY;
 	}
 
+	/* Check for AltOS mode */
+	vb2_check_alt_os_switch(ctx);
+
 	return VB2_SUCCESS;
 }
 

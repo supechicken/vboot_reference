@@ -455,6 +455,18 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 		    retval = VbBootDeveloper(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+	/*
+	 * TODO: Consider merging these three conditions into some other
+	 * context or flag calculated elsewhere.
+	 */
+	} else if (shared->flags & VBSD_TRIGGER_ALT_OS ||
+		   vb2_nv_get(&ctx, VB2_NV_ENABLE_ALT_OS_REQUEST) ||
+		   vb2_nv_get(&ctx, VB2_NV_DISABLE_ALT_OS_REQUEST)) {
+		/* Alternate boot.  This has UI. */
+		/* TODO: Add a menu version of VbBootAlternate */
+		retval = VbBootAlternate(&ctx, cparams);
+		/* TODO(kitching): Figure out if we need to create VB_EC_ALTERNATE_OS */
+		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	} else {
 		/* Normal boot */
 		retval = VbBootNormal(&ctx, cparams);
