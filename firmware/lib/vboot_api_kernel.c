@@ -455,6 +455,13 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 		    retval = VbBootDeveloper(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+	} else if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE ||
+		   shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
+		/* Alt OS boot.  This has UI. */
+		/* TODO: Add a menu version of VbBootAltOS */
+		retval = VbBootAltOS(&ctx, cparams);
+		/* TODO: Figure out if we need to create VB_EC_ALT_OS */
+		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	} else {
 		/* Normal boot */
 		retval = VbBootNormal(&ctx, cparams);

@@ -13,6 +13,7 @@
 #include "2secdata.h"
 #include "2sha.h"
 #include "2rsa.h"
+#include "rollback_index.h"
 
 int vb2_validate_gbb_signature(uint8_t *sig) {
 	const static uint8_t sig_xor[VB2_GBB_SIGNATURE_SIZE] =
@@ -202,6 +203,64 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx)
 	sd->gbb_rootkey_offset = gbb->rootkey_offset;
 	sd->gbb_rootkey_size = gbb->rootkey_size;
 	memcpy(sd->gbb_hwid_digest, gbb->hwid_digest, VB2_GBB_HWID_DIGEST_SIZE);
+
+	return VB2_SUCCESS;
+}
+
+int vb2_alt_os_force_chrome_os(void)
+{
+	return 0;
+}
+
+int vb2_check_alt_os_switch(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	int enabled;
+	int req_enable;
+	int req_disable;
+	int hotkey = !!(ctx->flags & VB2_CONTEXT_ALT_OS_HOTKEY);
+	uint8_t tpm_flags;
+	int rv;
+
+	vb2_nv_set(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST, 0);
+	vb2_nv_set(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST, 0);
+
+	rv = GetAltOSModeFlags(&tpm_flags);
+	if (rv) {
+		VB2_DEBUG("Unable to read Alt OS flags from TPM\n");
+		return rv;
+	}
+
+	enabled = tpm_flags & ALT_OS_ENABLE;
+	req_enable = !enabled;  // vb2_nv_get(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST);
+	req_disable = enabled;  // vb2_nv_get(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST);
+
+	VB2_DEBUG("Alt OS: tpm_flags=%d\n", tpm_flags);
+	VB2_DEBUG("Alt OS: enabled=%d\n", enabled);
+	VB2_DEBUG("Alt OS: req_enable=%d\n", req_enable);
+	VB2_DEBUG("Alt OS: req_disable=%d\n", req_disable);
+	VB2_DEBUG("Alt OS: hotkey=%d\n", hotkey);
+
+	/* Case 1: Disable Alt OS mode */
+	if (enabled && req_disable) {
+		req_enable = 0;  /* disable has priority over enable */
+		tpm_flags &= ~ALT_OS_ENABLE;
+		rv = SetAltOSMode(tpm_flags);
+		if (rv) {
+			VB2_DEBUG("Unable to write Alt OS flags to TPM\n");
+			return rv;
+		}
+	}
+
+	/* Case 2: Enable Alt OS mode */
+	else if (!enabled && req_enable && hotkey) {
+		sd->flags |= VB2_SD_FLAG_ALT_OS_CONFIRM_ENABLE;
+	}
+
+	/* Case 3: Show Alt OS picker */
+	if (enabled && !vb2_alt_os_force_chrome_os()) {
+		sd->flags |= VB2_SD_FLAG_ALT_OS_SHOW_PICKER;
+	}
 
 	return VB2_SUCCESS;
 }
