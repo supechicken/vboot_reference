@@ -153,6 +153,82 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 	return -1;
 }
 
+/* TODO: Add an extra argument for specifying a timeout. */
+uint32_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	int index = 0;
+	while (1) {
+		VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, index);
+		if (VbWantShutdown(cparams->gbb->flags))
+			return VBERROR_SHUTDOWN_REQUESTED;
+		uint32_t key = VbExKeyboardRead();
+		if (key == VB_KEY_LEFT) {
+			index = 0;
+		} else if (key == VB_KEY_RIGHT) {
+			index = 1;
+		} else if (key == '\r' || key == ' ') {
+			if (index == 0) {
+				/* Chrome OS */
+				break;
+			} else {
+				/* Alt OS */
+				return 1;
+			}
+		}
+		VbExSleepMs(20);
+	}
+
+	return 0;
+}
+
+VbError_t vb2_alt_os_flow(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbSharedDataHeader *shared =
+		(VbSharedDataHeader *)cparams->shared_data_blob;
+	int boot_alt_os = 0;  /* 0 = Chrome OS; 1 = Alt OS */
+	uint8_t tpm_flags;
+
+	/* Confirm enabling Alt OS */
+	if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE) {
+		VB2_DEBUG("SCREEN: Picker screen w/o timeout: Alt OS Y/N?\n");
+		boot_alt_os = vb2_alt_os_ui(ctx, cparams);
+	}
+
+	/* Enable if Alt OS is chosen */
+	if (boot_alt_os) {
+		if (GetAltOSFlags(&tpm_flags)) {
+			VB2_DEBUG("Unable to read Alt OS flags from TPM\n");
+			return VBERROR_TPM_ALT_OS;
+		}
+		tpm_flags |= ALT_OS_ENABLE;
+		if (SetAltOSFlags(tpm_flags)) {
+			VB2_DEBUG("Unable to write Alt OS flags to TPM\n");
+			return VBERROR_TPM_ALT_OS;
+		}
+	}
+
+	/* Show Alt OS picker screen */
+	else if (shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
+		/* TODO: Add timeout to picker screen */
+		VB2_DEBUG("SCREEN: Picker screen with timeout: Alt OS Y/N?\n");
+		boot_alt_os = vb2_alt_os_ui(ctx, cparams);
+	}
+
+	if (boot_alt_os) {
+		/* Will only return on failure */
+		VbTryLegacy(1);
+	}
+
+	/* Will only return on failure */
+	return VbBootNormal(ctx, cparams);
+}
+
+VbError_t VbBootAltOS(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbError_t retval = vb2_alt_os_flow(ctx, cparams);
+	return retval;
+}
+
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
