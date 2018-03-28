@@ -105,6 +105,10 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx);
  */
 int vb2_check_dev_switch(struct vb2_context *ctx);
 
+/* TODO: Add documentation */
+int vb2_alt_os_force_chrome_os(void);
+int vb2_check_alt_os_switch(struct vb2_context *ctx);
+
 /**
  * Check if we need to clear the TPM owner.
  *

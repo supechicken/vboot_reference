@@ -13,6 +13,7 @@
 #include "2secdata.h"
 #include "2sha.h"
 #include "2rsa.h"
+#include "rollback_index.h"
 
 int vb2_validate_gbb_signature(uint8_t *sig) {
 	const static uint8_t sig_xor[VB2_GBB_SIGNATURE_SIZE] =
