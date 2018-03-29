@@ -22,6 +22,30 @@
       "revId": "754e56bff6911fdd667b6c03d8b7ba1269dba966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244c3ad3_56d3e0f7",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-29T00:32:27Z",
+      "side": 0,
+      "message": "All of the implementations of vb2ex_printf() that I could find already print the exact same output that these definitions do. I\u0027m happy to revert this though if there\u0027s any reason to keep as is.",
+      "parentUuid": "8160344a_4a115a4e",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "754e56bff6911fdd667b6c03d8b7ba1269dba966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
