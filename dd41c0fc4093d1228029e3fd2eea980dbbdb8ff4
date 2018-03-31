@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf3f03d1_0617eb7a",
+        "filename": "Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T02:30:46Z",
+      "side": 1,
+      "message": "why do we need 2common.c?",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 491,
+        "endChar": 24
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d94fb2_e039a18a",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T02:30:46Z",
+      "side": 1,
+      "message": "can we do C++ style definitions of vars in the middle of a block here? I thought, this is more-or-less strict C, and style checker would complain at upload.",
+      "range": {
+        "startLine": 679,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 19
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
