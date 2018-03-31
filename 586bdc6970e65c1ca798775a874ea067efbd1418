@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d5ad44_5d0322a5",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T05:28:20Z",
+      "side": 1,
+      "message": "see suggestion in one of the previous CLs about policy being just a buffer with size in this API, not a tpm-spec-dependent structure",
+      "range": {
+        "startLine": 215,
+        "startChar": 26,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "586bdc6970e65c1ca798775a874ea067efbd1418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a27568c_b7d20920",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T05:28:20Z",
+      "side": 1,
+      "message": "shall we also check if response_size + sizeof(response_size) + kTpmResponseHeaderLength \u003e paramSize from header?",
+      "range": {
+        "startLine": 885,
+        "startChar": 5,
+        "endLine": 885,
+        "endChar": 21
+      },
+      "revId": "586bdc6970e65c1ca798775a874ea067efbd1418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
