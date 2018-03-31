@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e87d8de5_6f7528e3",
+        "filename": "firmware/lib/tpm_lite/include/tlcl_structures.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "All parameters make sense and seem to match the spec descr of what SRK KEY12 structure should be passed to takeOwnership. Did you check that this is the exact command (modulo encAuth values) issued for taking ownership with known passwords?\nYou should be able to capture what tcsd sends to /dev/tpm0 with something like strace -xx -f -o $logfile -e read,write -s 4096 -P /dev/tpm0 -p `pidof tcsd`",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336923db_9797b359",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "use uint8_t? since for response we get it from continueAuthSession and include in hmac calc",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 4
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69c1094_4baea890",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "as in the previous CL, same question about mid-block variable declarations: is it allowed by the styleguide even if the compiler allows?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b4d8d7_4969f420",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "nit: space after ,",
+      "range": {
+        "startLine": 189,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 40
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f175c3a0_02317e58",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "what if command_buffer_size \u003e length_of_actual_command + kTpmRequestAuthBlockLength (e.g. we have a variable length command and allocate based on max length). I don\u0027t think it is possible now, but should we rather do something like auth_offset \u003d FromTpmUint32(command_buffer + 2) - kTpmRequestAuthBlockLength. And check that FromTpmUint32(command_buffer + 2) \u003c\u003d command_buffer_size instead of a sanity check above. Iiuc the command size field at this point is expected to count the auth block already. let\u0027s make it a requirement and document in comments?",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 27
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ec0c5d_67476c9b",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "do we need to typecast to uint8_t?\nsame below",
+      "range": {
+        "startLine": 237,
+        "startChar": 13,
+        "endLine": 237,
+        "endChar": 34
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977bf6f5_1d5fcb0b",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T03:58:13Z",
+      "side": 1,
+      "message": "shall it be better called CheckResponseAuth() to distinguish computing auth block for request from checking the received auth block in response?",
+      "range": {
+        "startLine": 256,
+        "startChar": 9,
+        "endLine": 256,
+        "endChar": 29
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
