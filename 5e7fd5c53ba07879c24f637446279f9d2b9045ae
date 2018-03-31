@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66bb7764_d07de3fa",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T05:18:25Z",
+      "side": 1,
+      "message": "the CL says we define all constants.\nwe don\u0027t include NV_COUNTER, NV_BITS and NV_EXTEND, though\n(note, we assume TPM2 rev 1.16 at the moment)",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "5e7fd5c53ba07879c24f637446279f9d2b9045ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
