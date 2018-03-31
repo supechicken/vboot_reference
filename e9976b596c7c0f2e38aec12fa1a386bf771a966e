@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31bcc031_e0b1a8a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-03-31T05:38:23Z",
+      "side": 1,
+      "message": "so, the caller should check for TPM_AUTHFAIL. other error codes may indicate transient errors (tpm comm or e.g. TPM_RETRY) or in extreme cases TPM_NOSPACE. For simplicity we should ignore NOSPACE, and probably can ignore transient errors.",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "e9976b596c7c0f2e38aec12fa1a386bf771a966e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
