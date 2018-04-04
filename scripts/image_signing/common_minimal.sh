@@ -252,6 +252,32 @@ mount_image_partition() {
   fi
 }
 
+# Mount the image's ESP (EFI System Partition) on a newly created temporary
+# directory.
+# Returns the newly created temporary directory if succeeded, returns nothing
+# if ESP doesn't exist, returns "MOUNT_FAILED" if mount failed.
+mount_image_esp() {
+  local image=$1
+  local ESP_PARTNUM=12
+
+  local esp_offset=$(( $(partoffset "${image}" "${ESP_PARTNUM}") * 512 ))
+  # Check if the image has an ESP partition.
+  if [[ "${esp_offset}" == "0" ]]; then
+    return
+  fi
+
+  local esp_dir="$(make_temp_dir)"
+  # We use the 'unsafe' variant because the EFI system partition is vfat type
+  # and can be mounted in RW mode.
+  if ! $(_mount_image_partition_retry "${image}" "${ESP_PARTNUM}" \
+                                    "${esp_dir}" > /dev/null); then
+    echo "MOUNT_FAILED"
+    return
+  fi
+
+  echo "${esp_dir}"
+}
+
 # Extract a partition to a file
 # Args: IMAGE PARTNUM OUTPUTFILE
 extract_image_partition() {
