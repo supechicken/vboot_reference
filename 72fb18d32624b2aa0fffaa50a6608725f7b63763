@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e1e130_22e7e4c8",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886fa736_7b938ea3",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "Ugh",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd23726_f513c614",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "You\u0027ve assigned this variable to prefix via $1",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f62c61c_d3da2772",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "put the quotes around the variable with a trailing space",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0b02cd_565b0c7a",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "quotes around the subshell invocations to avoid word splitting on filenames",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f8a8bf4_0931ae7b",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-04T15:52:03Z",
+      "side": 1,
+      "message": "quotes",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
