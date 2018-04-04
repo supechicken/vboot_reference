@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b212ff67_7d6ca980",
+        "filename": "Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T18:32:02Z",
+      "side": 1,
+      "message": "ah, vb2_safe_memcmp. almost said we don\u0027t use any vb_safe_memcmp :)\nAck",
+      "parentUuid": "d4dae424_ee96f880",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 491,
+        "endChar": 24
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d94fb2_e039a18a",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 9
@@ -117,6 +141,30 @@
       "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9d5b74_04f772fe",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T18:32:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7cdbf201_e67f933a",
+      "range": {
+        "startLine": 679,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 19
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
