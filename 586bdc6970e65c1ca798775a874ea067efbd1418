@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "862ded40_7e2c07ad",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T21:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d5ad44_5d0322a5",
+      "range": {
+        "startLine": 215,
+        "startChar": 26,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "586bdc6970e65c1ca798775a874ea067efbd1418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a27568c_b7d20920",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "586bdc6970e65c1ca798775a874ea067efbd1418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f444761a_581ee131",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T21:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a27568c_b7d20920",
+      "range": {
+        "startLine": 885,
+        "startChar": 5,
+        "endLine": 885,
+        "endChar": 21
+      },
+      "revId": "586bdc6970e65c1ca798775a874ea067efbd1418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
