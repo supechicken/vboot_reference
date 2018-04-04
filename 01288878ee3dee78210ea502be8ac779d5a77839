@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b0722ed_c9967acf",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f04696_3cc1c25a",
+      "range": {
+        "startLine": 95,
+        "startChar": 27,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b815054_c72bc6f0",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e8c8a8_b649f00d",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "Clarified the comment.",
+      "parentUuid": "0b815054_c72bc6f0",
+      "range": {
+        "startLine": 99,
+        "startChar": 35,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fa39f3d1_59c87c63",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "I changed the declaration now to specify a multi-dimensional array with the outer dimension unspecified. That should be clear enough?",
+      "parentUuid": "362248f0_df163647",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26007085_54e7bc19",
         "filename": "firmware/include/tpm2_tss_constants.h",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "27819e61_9251e0fc",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "Obsolete - no longer needed with the API changes to InitNvAuthPolicy",
+      "parentUuid": "26007085_54e7bc19",
+      "range": {
+        "startLine": 285,
+        "startChar": 17,
+        "endLine": 285,
+        "endChar": 19
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbd1b869_b36477a8",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2018-03-31T04:57:09Z",
       "side": 1,
       "message": "can we just return an error instead? would produce a better UX if somebody calls this with incorrect param through tpmc (once tpmc starts supporting it)",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 9
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a04303c_2b79a2ee",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "Would it? This produces an assertion error on stderr, so it\u0027s pretty clear what\u0027s wrong and were. If I were to pipe the error code back up the stack, whoever runs into this will have to dig to find out what triggers the error.\n\nI don\u0027t feel strongly though - let me know if you prefer the error return after all.",
+      "parentUuid": "fbd1b869_b36477a8",
       "range": {
         "startLine": 184,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "fba8009d_f2ab0ab0",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eee03fae_8c22f9ed",
+      "range": {
+        "startLine": 449,
+        "startChar": 14,
+        "endLine": 449,
+        "endChar": 18
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9902e30d_a89340bc",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 9
@@ -160,6 +304,30 @@
       "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ba7069_b98cbe65",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T19:26:49Z",
+      "side": 1,
+      "message": "I\u0027ve learned the hard way (I had implemented AUTHWRITE and then found that at least 9655 behaves as mandated by the spec).",
+      "parentUuid": "9902e30d_a89340bc",
+      "range": {
+        "startLine": 540,
+        "startChar": 7,
+        "endLine": 540,
+        "endChar": 16
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
