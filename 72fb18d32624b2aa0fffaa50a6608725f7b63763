@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "53da7a54_1250f0f2",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1166124
+      },
+      "writtenOn": "2018-04-04T16:30:25Z",
+      "side": 1,
+      "message": "Add a check that $board is set, since it\u0027s required for the sub-script",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84e1e130_22e7e4c8",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2018-04-04T15:52:03Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a98c17_e9094da8",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1166124
+      },
+      "writtenOn": "2018-04-04T16:30:25Z",
+      "side": 1,
+      "message": "I would rather see this function fail, or have an incremented postfix",
+      "parentUuid": "84e1e130_22e7e4c8",
       "range": {
         "startLine": 31,
         "startChar": 8,
