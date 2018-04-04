@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4dae424_ee96f880",
+        "filename": "Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T13:28:06Z",
+      "side": 1,
+      "message": "For vb_safe_memcmp. The header was already included before, so I\u0027m just making things consistent :)",
+      "parentUuid": "cf3f03d1_0617eb7a",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 491,
+        "endChar": 24
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8d94fb2_e039a18a",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-31T02:30:46Z",
       "side": 1,
       "message": "can we do C++ style definitions of vars in the middle of a block here? I thought, this is more-or-less strict C, and style checker would complain at upload.",
+      "range": {
+        "startLine": 679,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 19
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc40981_05386875",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T13:28:06Z",
+      "side": 1,
+      "message": "Neither the upload hook nor the compiler complain. Given that it makes the code more readable, I prefer keeping as is.\n\nIf the style conventions for this repo outlaw it though, I\u0027ll grudgingly oblige though :)\n\nI double-check existing code to see whether mixed declarations are OK. Most files don\u0027t use them indeed, but there is precedent for mixed declarations in other files, for example here: https://chromium.git.corp.google.com/chromiumos/platform/vboot_reference/+/master/firmware/lib/vboot_kernel.c\n\nAdding Randall to see what he says.",
+      "parentUuid": "a8d94fb2_e039a18a",
       "range": {
         "startLine": 679,
         "startChar": 1,
