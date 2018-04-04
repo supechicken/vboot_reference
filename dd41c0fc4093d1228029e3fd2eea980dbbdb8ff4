@@ -93,6 +93,30 @@
       "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cdbf201_e67f933a",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-04T17:38:01Z",
+      "side": 1,
+      "message": "I\u0027m doing it all the time in firmware/2lib/.  It\u0027s fine.",
+      "parentUuid": "ebc40981_05386875",
+      "range": {
+        "startLine": 679,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 19
+      },
+      "revId": "dd41c0fc4093d1228029e3fd2eea980dbbdb8ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
