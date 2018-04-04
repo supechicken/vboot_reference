@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d518ea74_5444b60d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T21:58:45Z",
+      "side": 1,
+      "message": "Note to self: As pointed out by Andrey on the corresponding firmware updater CL, I need to double-check whether cryptohome actually sets an all-zeros password or whether trousers hashes the password.",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "e9976b596c7c0f2e38aec12fa1a386bf771a966e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31bcc031_e0b1a8a3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -22,6 +45,30 @@
       "revId": "e9976b596c7c0f2e38aec12fa1a386bf771a966e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0e6b2b_6cafdbe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T21:58:45Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "31bcc031_e0b1a8a3",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "e9976b596c7c0f2e38aec12fa1a386bf771a966e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
