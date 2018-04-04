@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dadf6896_db45d9bf",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T19:51:25Z",
+      "side": 1,
+      "message": "should these be also included only for the host side under #ifdef CHROMEOS_ENVIRONMENT?\nwhy increase the attack surface inside firmware by adding the commands it doesn\u0027t need there?\n\nin general, I feel we are coming to the point where it makes sense to split Tlcl used in firmware from Tlcl (with not necessarily the same API) for userland. mostly for these reasons, plus less worrying about stack size in userland allowing a better design, etc.\nbut that\u0027s a separate story, bigger than this CL.",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22cc50cf_de4d530e",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T19:51:25Z",
+      "side": 1,
+      "message": "nit: too",
+      "range": {
+        "startLine": 102,
+        "startChar": 74,
+        "endLine": 102,
+        "endChar": 76
+      },
+      "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

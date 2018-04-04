@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c11fea7a_87e52bec",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T19:51:25Z",
+      "side": 1,
+      "message": "yep, this works",
+      "parentUuid": "fa39f3d1_59c87c63",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 73
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26007085_54e7bc19",
         "filename": "firmware/include/tpm2_tss_constants.h",
         "patchSetId": 9
@@ -234,6 +258,30 @@
       "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c034f4cf_f2af7d9c",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T19:51:25Z",
+      "side": 1,
+      "message": "Let\u0027s keep it.",
+      "parentUuid": "2a04303c_2b79a2ee",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 9
+      },
+      "revId": "01288878ee3dee78210ea502be8ac779d5a77839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
