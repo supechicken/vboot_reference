@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1661f67c_94eab506",
+        "filename": "firmware/lib/tpm_lite/include/tlcl_structures.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "I do have this working end-to-end with my mount-encrypted patch set, so I\u0027m pretty sure it\u0027s working as intended. I\u0027ve now also verified against a tcsd trace to confirm that the key parameters are an exact match.",
+      "parentUuid": "e87d8de5_6f7528e3",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "336923db_9797b359",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bbbf873f_c4513119",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "336923db_9797b359",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 4
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f69c1094_4baea890",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-31T03:58:13Z",
       "side": 1,
       "message": "as in the previous CL, same question about mid-block variable declarations: is it allowed by the styleguide even if the compiler allows?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d5d1b9_6dc8d1d3",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "See answer on other CL. I\u0027d prefer to keep as is for readability reasons, but let\u0027s see what Randall says.",
+      "parentUuid": "f69c1094_4baea890",
       "range": {
         "startLine": 176,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0ae1467f_5d7b5f40",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b4d8d7_4969f420",
+      "range": {
+        "startLine": 189,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 40
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f175c3a0_02317e58",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f79a582_27e43df8",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "f175c3a0_02317e58",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 27
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5b47af02_e6fc954b",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "Obsolete - using uint8_t types consistently now.",
+      "parentUuid": "f2ec0c5d_67476c9b",
+      "range": {
+        "startLine": 237,
+        "startChar": 13,
+        "endLine": 237,
+        "endChar": 34
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "977bf6f5_1d5fcb0b",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 10
@@ -160,6 +304,30 @@
       "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71f1050_4a2e3f6e",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-04T15:32:22Z",
+      "side": 1,
+      "message": "Updated function names to be more descriptive.",
+      "parentUuid": "977bf6f5_1d5fcb0b",
+      "range": {
+        "startLine": 256,
+        "startChar": 9,
+        "endLine": 256,
+        "endChar": 29
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
