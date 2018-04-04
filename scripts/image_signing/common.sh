@@ -145,6 +145,29 @@ get_boardvar_from_lsb_release() {
   get_board_from_lsb_release "$@" | sed 's:[-]:_:g'
 }
 
+# $(find_latest_file ww/xx yy zz) returns the last file (in lexicographic
+# order) among ww/xx/yy*zz files. The caller should verify whether the result
+# is a valid file.
+find_latest_file() {
+  local dir=$1
+  local prefix=$2
+  local postfix=$3
+  unset -v latest
+  for file in "${dir}/${prefix}"*"${postfix}"; do
+    if [[ -f $file && $file > $latest ]]; then
+      latest=$file
+    fi
+  done
+  echo $latest
+}
+
+# $(replace_extension ww/xx.yy zz) returns ww/xx.zz
+replace_file_extension() {
+  local target=$1
+  local extension=$2
+  echo "${target%.*}.${extension}"
+}
+
 # This will override the trap set in common_minmal.sh
 trap "cleanup" INT TERM EXIT
 
