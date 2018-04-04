@@ -112,6 +112,64 @@
     },
     {
       "key": {
+        "uuid": "5daec2cd_dcfcffa8",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-04-04T17:02:47Z",
+      "side": 1,
+      "message": "I don\u0027t understand why these are date versioned.  All the other keysets we use have implicit versioning which just starts at 1 and increases.",
+      "parentUuid": "bfd23726_f513c614",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff91832f_942dbfb3",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-04-04T17:02:47Z",
+      "side": 1,
+      "message": "These should all be quoted as well.",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91dae076_e04e357f",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-04-04T17:02:47Z",
+      "side": 1,
+      "message": "Quoted.",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f62c61c_d3da2772",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
