@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "154302a8_2928a1bb",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-04T18:44:23Z",
+      "side": 1,
+      "message": "Randall gave his blessing",
+      "parentUuid": "e4d5d1b9_6dc8d1d3",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "13eb1efbbbf7b239626dac3cc5314777a48626e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69b4d8d7_4969f420",
         "filename": "firmware/lib/tpm_lite/tlcl.c",
         "patchSetId": 10
