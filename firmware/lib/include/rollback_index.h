@@ -102,6 +102,7 @@ enum fwmp_flags {
 	FWMP_DEV_USE_KEY_HASH		= (1 << 5),
 	/* CCD = case-closed debugging on cr50; flag implemented on cr50 */
 	FWMP_DEV_DISABLE_CCD_UNLOCK	= (1 << 6),
+	FWMP_DEV_ENABLE_U_BOOT		= (1 << 7),
 };
 
 /* All functions return TPM_SUCCESS (zero) if successful, non-zero if error */

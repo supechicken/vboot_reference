@@ -48,6 +48,8 @@ const Param sys_param_list[] = {
    "Enable developer mode boot Legacy OSes (writable)"},
   {"dev_boot_signed_only", CAN_WRITE,
    "Enable developer mode boot only from official kernels (writable)"},
+  {"dev_boot_u_boot", CAN_WRITE,
+   "Enable developer mode boot into U-Boot (writable)"},
   {"dev_default_boot", IS_STRING|CAN_WRITE,
    "default boot from disk, legacy or usb (writable)"},
   {"dev_enable_udc", CAN_WRITE, "Enable USB Device Controller"},

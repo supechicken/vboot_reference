@@ -130,6 +130,8 @@ enum VbErrorPredefined_t {
 	VBERROR_RW_JUMP_FAILED                = 0x10028,
 	/* Error reading FWMP from TPM (note: not present is not an error) */
 	VBERROR_TPM_READ_FWMP                 = 0x10029,
+	/* No U-Boot found in boot flash */
+	VBERROR_NO_U_BOOT_FOUND               = 0x10030,
 
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */
@@ -951,6 +953,11 @@ enum {
  * Execute legacy boot option.
  */
 int VbExLegacy(void);
+
+/**
+ * Execute U-Boot boot option.
+ */
+int VbExUBoot(void);
 
 /* Regions for VbExRegionRead() */
 enum vb_firmware_region {

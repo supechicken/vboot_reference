@@ -194,6 +194,44 @@ static VbError_t boot_usb_action(struct vb2_context *ctx)
 	return VBERROR_KEEP_LOOPING;
 }
 
+/* Boot into U-Boot if allowed and available. */
+static VbError_t boot_u_boot_action(struct vb2_context *ctx)
+{
+	const char no_u_boot[] = "No U-Boot found.\n";
+
+	if (disable_dev_boot) {
+		vb2_flash_screen(ctx);
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+
+	if (!vb2_nv_get(ctx, VB2_NV_DEV_BOOT_U_BOOT) &&
+	    !(vb2_get_sd(ctx)->gbb_flags &
+	      VB2_GBB_FLAG_FORCE_DEV_BOOT_U_BOOT) &&
+	    !(vb2_get_fwmp_flags() & FWMP_DEV_ENABLE_U_BOOT)) {
+		vb2_flash_screen(ctx);
+		VB2_DEBUG("U-Boot booting is disabled\n");
+		VbExDisplayDebugInfo("WARNING: Booting into U-Boot has not been"
+				     "enabled. Refer to the developer-mode "
+				     "documentation for details.\n");
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+
+	if (0 == RollbackKernelLock(0))
+		VbExUBoot();	/* Will not return if successful */
+	else
+		VB2_DEBUG("Error locking kernel versions on legacy boot.\n");
+
+	/* Loading U-Boot failed. Clear recovery request from that. */
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
+	vb2_flash_screen(ctx);
+	VB2_DEBUG(no_u_boot);
+	VbExDisplayDebugInfo(no_u_boot);
+	VbExBeep(250, 200);
+	return VBERROR_KEEP_LOOPING;
+}
+
 static VbError_t enter_developer_menu(struct vb2_context *ctx)
 {
 	int menu_idx;
@@ -648,6 +686,8 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 	default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
 	if (sd->gbb_flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY)
 		default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
+	if (sd->gbb_flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_U_BOOT)
+		default_boot = VB2_DEV_DEFAULT_BOOT_U_BOOT;
 
 	/* Check if developer mode is disabled by FWMP */
 	disable_dev_boot = 0;
@@ -694,6 +734,10 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 			/* Ctrl+U = boot from USB or SD card */
 			ret = boot_usb_action(ctx);
 			break;
+		case 'B' & 0x1f:
+			/* Ctrl+B = boot into U-Boot */
+			ret = boot_u_boot_action(ctx);
+			break;
 		default:
 			ret = vb2_handle_menu_input(ctx, key, 0);
 			break;
@@ -715,6 +759,10 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 
 	if (default_boot == VB2_DEV_DEFAULT_BOOT_USB)
 		if (VBERROR_SUCCESS == boot_usb_action(ctx))
+			return VBERROR_SUCCESS;
+
+	if (default_boot == VB2_DEV_DEFAULT_BOOT_U_BOOT)
+		if (VBERROR_SUCCESS == boot_u_boot_action(ctx))
 			return VBERROR_SUCCESS;
 
 	return boot_disk_action(ctx);

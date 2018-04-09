@@ -67,6 +67,21 @@ static void VbTryLegacy(int allowed)
 	VbExBeep(120, 400);
 }
 
+static void VbTryUBoot(int allowed)
+{
+	if (!allowed)
+		VB2_DEBUG("VbBootDeveloper() - U-Boot is disabled\n");
+	else if (0 != RollbackKernelLock(0))
+		VB2_DEBUG("Error locking kernel versions on U-Boot boot.\n");
+	else
+		VbExUBoot();	/* will not return if successful */
+
+	/* If U-Boot fails, beep and return to calling UI loop. */
+	VbExBeep(120, 400);
+	VbExSleepMs(120);
+	VbExBeep(120, 400);
+}
+
 uint32_t VbTryUsb(struct vb2_context *ctx)
 {
 	uint32_t retval = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
@@ -166,6 +181,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	uint32_t disable_dev_boot = 0;
 	uint32_t use_usb = 0;
 	uint32_t use_legacy = 0;
+	uint32_t use_u_boot = 0;
 	uint32_t ctrl_d_pressed = 0;
 
 	VB2_DEBUG("Entering\n");
@@ -173,22 +189,36 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	/* Check if USB booting is allowed */
 	uint32_t allow_usb = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB);
 	uint32_t allow_legacy = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_LEGACY);
+	uint32_t allow_u_boot = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_U_BOOT);
 
 	/* Check if the default is to boot using disk, usb, or legacy */
 	uint32_t default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
 
-	if(default_boot == VB2_DEV_DEFAULT_BOOT_USB)
+	switch (default_boot) {
+	case VB2_DEV_DEFAULT_BOOT_USB:
 		use_usb = 1;
-	if(default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY)
+		break;
+	case VB2_DEV_DEFAULT_BOOT_LEGACY:
 		use_legacy = 1;
+		break;
+	case VB2_DEV_DEFAULT_BOOT_U_BOOT:
+		use_u_boot = 1;
+		break;
+	}
 
 	/* Handle GBB flag override */
 	if (sd->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB)
 		allow_usb = 1;
 	if (sd->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY)
 		allow_legacy = 1;
+	if (sd->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_U_BOOT)
+		allow_u_boot = 1;
 	if (sd->gbb_flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY) {
 		use_legacy = 1;
+		use_usb = 0;
+	}
+	if (sd->gbb_flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_U_BOOT) {
+		use_u_boot = 1;
 		use_usb = 0;
 	}
 
@@ -198,6 +228,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 		allow_usb = 1;
 	if (fwmp_flags & FWMP_DEV_ENABLE_LEGACY)
 		allow_legacy = 1;
+	if (fwmp_flags & FWMP_DEV_ENABLE_U_BOOT)
+		allow_u_boot = 1;
 	if (fwmp_flags & FWMP_DEV_DISABLE_BOOT) {
 		if (sd->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by "
@@ -355,6 +387,11 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 				}
 			}
 			break;
+		case 0x02:
+			VB2_DEBUG("VbBootDeveloper() - "
+				  "user pressed Ctrl+B; Try U-Boot\n");
+			VbTryUBoot(allow_u_boot);
+			break;
 		default:
 			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
 			VbCheckDisplayKey(ctx, key);
@@ -368,6 +405,12 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	if (use_legacy && !ctrl_d_pressed) {
 		VB2_DEBUG("VbBootDeveloper() - defaulting to legacy\n");
 		VbTryLegacy(allow_legacy);
+	}
+
+	/* If defaulting to legacy boot, try that unless Ctrl+D was pressed */
+	if (use_u_boot && !ctrl_d_pressed) {
+		VB2_DEBUG("VbBootDeveloper() - defaulting to U-Boot\n");
+		VbTryUBoot(allow_u_boot);
 	}
 
 	if ((use_usb && !ctrl_d_pressed) && allow_usb) {

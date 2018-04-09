@@ -338,6 +338,12 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 			"\ndev_boot_legacy: ", DEBUG_INFO_SIZE - used);
 	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used, i, 10, 0);
 
+	/* Add dev_boot_u_boot flag */
+	i = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_U_BOOT);
+	used += StrnAppend(buf + used, "\ndev_boot_u_boot: ",
+			   DEBUG_INFO_SIZE - used);
+	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used, i, 10, 0);
+
 	/* Add dev_default_boot flag */
 	i = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
 	used += StrnAppend(buf + used,

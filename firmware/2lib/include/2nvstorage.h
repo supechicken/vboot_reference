@@ -50,6 +50,8 @@ enum vb2_nv_param {
 	VB2_NV_DEV_BOOT_USB,
 	/* Allow booting of legacy OSes in developer mode.  0=no, 1=yes. */
 	VB2_NV_DEV_BOOT_LEGACY,
+	/* Allow booting to U-Boot in developer mode.  0=no, 1=yes */
+	VB2_NV_DEV_BOOT_U_BOOT,
 	/* Only boot Google-signed images in developer mode.  0=no, 1=yes. */
 	VB2_NV_DEV_BOOT_SIGNED_ONLY,
 	/*
@@ -128,6 +130,8 @@ enum vb2_dev_default_boot {
 	/* Default to boot legacy OS */
 	VB2_DEV_DEFAULT_BOOT_LEGACY = 2,
 
+	/* Default to boot U-Boot */
+	VB2_DEV_DEFAULT_BOOT_U_BOOT = 3,
 };
 
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */

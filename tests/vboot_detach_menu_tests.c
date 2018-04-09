@@ -41,6 +41,7 @@ static VbError_t vbtlk_last_retval;
 static int vbtlk_retval_count;
 static const VbError_t vbtlk_retval_fixed = 1002;
 static int vbexlegacy_called;
+static int vbexu_boot_called;
 static int debug_info_displayed;
 static int trust_ec;
 static int virtdev_set;
@@ -84,6 +85,7 @@ static void ResetMocks(void)
 	shutdown_request_calls_left = 301;
 	audio_looping_calls_left = 60;
 	vbexlegacy_called = 0;
+	vbexu_boot_called = 0;
 	debug_info_displayed = 0;
 	trust_ec = 0;
 	virtdev_set = 0;
@@ -163,6 +165,12 @@ uint32_t VbExGetSwitches(uint32_t request_mask)
 int VbExLegacy(void)
 {
 	vbexlegacy_called++;
+	return 0;
+}
+
+int VbExUBoot(void)
+{
+	vbexu_boot_called++;
 	return 0;
 }
 
@@ -371,6 +379,43 @@ static void VbBootDevTest(void)
 	TEST_EQ(beeps_count, 1, "  error beep: USB not found");
 	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
 
+	/* Proceed to U-Boot after timeout if boot U-Boot and default boot
+	 * U-Boot are set */
+	ResetMocksForDeveloper();
+	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_U_BOOT, 1);
+	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_U_BOOT);
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
+		"default u-boot NV");
+	TEST_EQ(vbexu_boot_called, 1, "  try u-boot");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
+	TEST_EQ(beeps_count, 1, "  error beep: U-Boot not found");
+	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
+
+	/* Proceed to U-Boot boot mode only if enabled */
+	ResetMocksForDeveloper();
+	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_U_BOOT);
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
+		"default U-Boot not enabled");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
+	TEST_EQ(beeps_count, 2, "  error beeps: U-Boot boot not enabled");
+	TEST_EQ(beeps_played[0], 400, "    first error beep");
+	TEST_EQ(beeps_played[1], 400, "    second error beep");
+
 	/* Shutdown requested in loop */
 	ResetMocksForDeveloper();
 	shutdown_request_calls_left = 2;
@@ -415,6 +460,7 @@ static void VbBootDevTest(void)
 		"Power Off in DEVELOPER");
 	TEST_EQ(debug_info_displayed, 0, "  no debug info");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not legacy");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
 	i = 0;
@@ -755,6 +801,77 @@ static void VbBootDevTest(void)
 	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
 	TEST_EQ(screens_count, 4, "  no extra screens");
 	TEST_EQ(beeps_count, 1, "  error beep: USB not found");
+	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
+
+	/* Ctrl+B tries U-Boot only if enabled */
+	ResetMocksForDeveloper();
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed, "Ctrl+B normal");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(debug_info_displayed, 0, "  no debug info");
+	TEST_EQ(audio_looping_calls_left, 0, "  audio timed out");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(beeps_count, 2, "  played error beeps");
+	TEST_EQ(beeps_played[0], 400, "    first beep");
+	TEST_EQ(beeps_played[1], 400, "    second beep");
+
+	/* Ctrl+B boots U-Boot if enabled by GBB flag */
+	ResetMocksForDeveloper();
+	sd->gbb_flags |= GBB_FLAG_FORCE_DEV_BOOT_U_BOOT;
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
+		"Ctrl+B force U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  try U-Boot");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(beeps_count, 1, "  error beep: U-Boot BIOS not found");
+	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
+
+	/* Ctrl+B boots U-Boot if enabled by NVRAM */
+	ResetMocksForDeveloper();
+	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_U_BOOT, 1);
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
+		"Ctrl+B nv U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  try U-Boot");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(beeps_count, 1, "  error beep: U-Boot BIOS not found");
+	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
+
+	/* Ctrl+B boots U-Boot if enabled by FWMP */
+	ResetMocksForDeveloper();
+	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_U_BOOT;
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
+		"Ctrl+B fwmp U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  fwmp U-Boot");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  blank (error flash)");
+	TEST_EQ(screens_displayed[2], VB_SCREEN_DEVELOPER_WARNING_MENU,
+		"  warning screen");
+	TEST_EQ(screens_displayed[3], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 4, "  no extra screens");
+	TEST_EQ(beeps_count, 1, "  error beep: U-Boot BIOS not found");
 	TEST_EQ(beeps_played[0], 200, "    low-frequency error beep");
 
 	/* Now go to USB boot through menus */
