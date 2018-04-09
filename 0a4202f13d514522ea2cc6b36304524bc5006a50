@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bba8544_b399eaaf",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-09T09:37:19Z",
+      "side": 1,
+      "message": "I can do so, but figured that since I share implementation anyways, there\u0027s no need to hide the declaration. Then again, all the auth stuff is restricted to CHROMEOS_ENVIRONMENT anyways, so maybe it doesn\u0027t make too much sense to share implementation after all... What\u0027s your preference? I don\u0027t feel strongly.\n\nRegarding the design aspect: I\u0027m thinking of Tlcl as \"lightweight TPM access library\". Suitability for inclusion in firmware is obviously the main requirement. Even though the stuff I\u0027m adding here isn\u0027t currently used in firmware, I\u0027ve written the code in a way that should allow firmware to use the functionality should it need it in the future. Thus, the #ifdefs are purely to remove dead code in the firmware build.\n\nI\u0027m not sure breaking up Tlcl or creating an entirely separate library for userland is going to be a net win as it increases the number of TPM 1.2 stacks we have to maintain from 2 -\u003e 3. The design improvements would have to be significant to outweigh that cost.",
+      "parentUuid": "dadf6896_db45d9bf",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22cc50cf_de4d530e",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0b5e0e_e1bc5191",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-09T09:37:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22cc50cf_de4d530e",
+      "range": {
+        "startLine": 102,
+        "startChar": 74,
+        "endLine": 102,
+        "endChar": 76
+      },
+      "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
