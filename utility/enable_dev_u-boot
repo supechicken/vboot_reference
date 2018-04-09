@@ -1,0 +1,24 @@
+#!/bin/sh
+# Copyright 2018 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Support enabling a way to boot into U-Boot.
+
+alert() {
+  echo "$*" >&2
+}
+
+die() {
+  alert "ERROR: $*"
+  exit 1
+}
+
+crossystem dev_boot_u_boot=1 2>/dev/null || die "Failed to enable U-Boot."
+    echo "
+    SUCCESS: Booting into U-Boot is enabled.
+
+    Press Ctrl-B at the developer screen to boot into U-Boot.
+    "
+    ;;
+esac
