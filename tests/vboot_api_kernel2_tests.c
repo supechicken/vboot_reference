@@ -132,7 +132,7 @@ uint32_t VbExGetSwitches(uint32_t request_mask)
 		return 0;
 }
 
-int VbExLegacy(void)
+int VbExLegacy(int bootldr_num)
 {
 	vbexlegacy_called++;
 	return 0;
