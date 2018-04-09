@@ -156,6 +156,9 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 	case VB2_NV_DEV_BOOT_LEGACY:
 		return GETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_LEGACY);
 
+	case VB2_NV_DEV_BOOT_U_BOOT:
+		return GETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_U_BOOT);
+
 	case VB2_NV_DEV_BOOT_SIGNED_ONLY:
 		return GETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_SIGNED_ONLY);
 
@@ -337,6 +340,10 @@ void vb2_nv_set(struct vb2_context *ctx,
 
 	case VB2_NV_DEV_BOOT_LEGACY:
 		SETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_LEGACY);
+		break;
+
+	case VB2_NV_DEV_BOOT_U_BOOT:
+		SETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_U_BOOT);
 		break;
 
 	case VB2_NV_DEV_BOOT_SIGNED_ONLY:

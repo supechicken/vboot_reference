@@ -135,6 +135,9 @@ enum VbErrorPredefined_t {
 	/* Error reading or writing Alt OS flags to TPM */
 	VBERROR_TPM_ALT_OS                    = 0x10031,
 
+        /* No U-Boot found in boot flash */
+	VBERROR_NO_U_BOOT_FOUND               = 0x10031,
+
 	/* VbExEcGetExpectedRWHash() may return the following codes */
 	/* Compute expected RW hash from the EC image; BIOS doesn't have it */
 	VBERROR_EC_GET_EXPECTED_HASH_FROM_IMAGE = 0x20000,
@@ -957,6 +960,11 @@ enum {
  * Execute legacy boot option.
  */
 int VbExLegacy(void);
+
+/**
+ * Execute a boot loader.
+ */
+int VbExBootLoader(const char *payload_name);
 
 /* Regions for VbExRegionRead() */
 enum vb_firmware_region {

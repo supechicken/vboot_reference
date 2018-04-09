@@ -78,6 +78,10 @@
 #define GBB_FLAG_DISABLE_FWMP                           0x00008000
 /* Enable USB Device Controller */
 #define GBB_FLAG_ENABLE_UDC                             0x00010000
+/* Default to booting U-Boot when dev screen times out. */
+#define GBB_FLAG_DEFAULT_DEV_BOOT_U_BOOT		0x00020000
+/* Allow booting U-Boot in dev mode even if dev_boot_legacy=0. */
+#define GBB_FLAG_FORCE_DEV_BOOT_U_BOOT			0x00040000
 
 
 #ifdef __cplusplus

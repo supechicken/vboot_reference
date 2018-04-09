@@ -323,11 +323,14 @@ static void dev_switch_tests(void)
 	vb2_nv_set(&cc, VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP, 1);
 	vb2_nv_set(&cc, VB2_NV_DEV_DEFAULT_BOOT, 1);
 	vb2_nv_set(&cc, VB2_NV_FASTBOOT_UNLOCK_IN_FW, 1);
+	vb2_nv_set(&cc, VB2_NV_DEV_BOOT_U_BOOT, 1);
 	TEST_SUCC(vb2_check_dev_switch(&cc), "dev mode off");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_DEV_BOOT_USB),
 		0, "  cleared dev boot usb");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_DEV_BOOT_LEGACY),
 		0, "  cleared dev boot legacy");
+	TEST_EQ(vb2_nv_get(&cc, VB2_NV_DEV_BOOT_U_BOOT),
+		0, "  cleared dev u-bootfw");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_DEV_BOOT_SIGNED_ONLY),
 		0, "  cleared dev boot signed only");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP),

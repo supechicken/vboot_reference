@@ -304,6 +304,12 @@ enum vb2_gbb_flag {
 
 	/* Enable USB Device Controller */
 	VB2_GBB_FLAG_ENABLE_UDC = (1 << 16),
+
+	/* Default to booting U-Boot when dev screen times out */
+	VB2_GBB_FLAG_DEFAULT_DEV_BOOT_U_BOOT = (1 << 17),
+
+	/* Allow booting to U-Boot in dev mode even if dev_u_boot=0. */
+	VB2_GBB_FLAG_FORCE_DEV_BOOT_U_BOOT = (1 << 18),
 };
 
 struct vb2_gbb_header {

@@ -36,6 +36,7 @@ static int shutdown_request_calls_left;
 static int audio_looping_calls_left;
 static uint32_t vbtlk_retval;
 static int vbexlegacy_called;
+static int vbexu_boot_called;
 static int trust_ec;
 static int virtdev_set;
 static uint32_t virtdev_retval;
@@ -76,6 +77,7 @@ static void ResetMocks(void)
 	audio_looping_calls_left = 30;
 	vbtlk_retval = 1000;
 	vbexlegacy_called = 0;
+	vbexu_boot_called = 0;
 	trust_ec = 0;
 	virtdev_set = 0;
 	virtdev_retval = 0;
@@ -135,6 +137,12 @@ uint32_t VbExGetSwitches(uint32_t request_mask)
 int VbExLegacy(void)
 {
 	vbexlegacy_called++;
+	return 0;
+}
+
+int VbExUBoot(void)
+{
+	vbexu_boot_called++;
 	return 0;
 }
 
@@ -329,6 +337,25 @@ static void VbBootDevTest(void)
 		   VB2_DEV_DEFAULT_BOOT_USB);
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+U enabled");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
+
+	/* Proceed to U-Boot after timeout if boot U-Boot and default
+	 * U-Boot are set */
+	ResetMocks();
+	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+		   VB2_DEV_DEFAULT_BOOT_U_BOOT);
+	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_U_BOOT, 1);
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+B U-Boot enabled");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 1, "  try U-Boot");
+
+	/* Proceed to U-Boot only if enabled */
+	ResetMocks();
+	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+		   VB2_DEV_DEFAULT_BOOT_U_BOOT);
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Timeout");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  try U-Boot");
 
 	/* Up arrow is uninteresting / passed to VbCheckDisplayKey() */
 	ResetMocks();
@@ -443,6 +470,7 @@ static void VbBootDevTest(void)
 		"  recovery reason");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
 
 	/* Ctrl+D doesn't boot legacy even if GBB flag is set */
 	ResetMocks();
@@ -450,12 +478,14 @@ static void VbBootDevTest(void)
 	sd->gbb_flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+D");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
 
 	/* Ctrl+L tries legacy boot mode only if enabled */
 	ResetMocks();
 	mock_keypress[0] = 0x0c;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+L normal");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
 
 	ResetMocks();
 	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
@@ -513,6 +543,31 @@ static void VbBootDevTest(void)
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
 	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
+
+	/* Ctrl+B tries U-Boot only if enabled */
+	ResetMocks();
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+B normal");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(vbexu_boot_called, 0, "  not U-Boot");
+
+	ResetMocks();
+	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_U_BOOT;
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+B force U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  try U-Boot");
+
+	ResetMocks();
+	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_U_BOOT, 1);
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+B nv U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  try U-Boot");
+
+	ResetMocks();
+	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_U_BOOT;
+	mock_keypress[0] = 'B' & 0x1f;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+B fwmp U-Boot");
+	TEST_EQ(vbexu_boot_called, 1, "  fwmp U-Boot");
 
 	/* If dev mode is disabled, goes to TONORM screen repeatedly */
 	ResetMocks();

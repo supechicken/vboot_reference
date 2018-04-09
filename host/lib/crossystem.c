@@ -509,6 +509,8 @@ int VbGetSystemPropertyInt(const char *name)
 		value = vb2_get_nv_storage(VB2_NV_DEV_BOOT_USB);
 	} else if (!strcasecmp(name,"dev_boot_legacy")) {
 		value = vb2_get_nv_storage(VB2_NV_DEV_BOOT_LEGACY);
+	} else if (!strcasecmp(name,"dev_boot_u_boot")) {
+		value = vb2_get_nv_storage(VB2_NV_DEV_BOOT_U_BOOT);
 	} else if (!strcasecmp(name,"dev_boot_signed_only")) {
 		value = vb2_get_nv_storage(VB2_NV_DEV_BOOT_SIGNED_ONLY);
 	} else if (!strcasecmp(name,"dev_boot_fastboot_full_cap")) {
@@ -711,6 +713,9 @@ int VbSetSystemPropertyInt(const char *name, int value)
 	} else if (!strcasecmp(name,"dev_boot_legacy")) {
 		return vb2_set_nv_storage_with_backup(
 			VB2_NV_DEV_BOOT_LEGACY, value);
+	} else if (!strcasecmp(name,"dev_boot_u_boot")) {
+		return vb2_set_nv_storage_with_backup(
+		    VB2_NV_DEV_BOOT_U_BOOT, value);
 	} else if (!strcasecmp(name,"dev_boot_signed_only")) {
 		return vb2_set_nv_storage_with_backup(
 			VB2_NV_DEV_BOOT_SIGNED_ONLY, value);
