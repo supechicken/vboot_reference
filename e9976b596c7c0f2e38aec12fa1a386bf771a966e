@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42068e5d_eef7f464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-09T19:01:50Z",
+      "side": 1,
+      "message": "Andrey was right - cryptohomed taking ownership with the well-known secret sets the owner secret to the SHA1 hash of 20 zero bytes. Code and description adjusted accordingly.",
+      "parentUuid": "d518ea74_5444b60d",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "e9976b596c7c0f2e38aec12fa1a386bf771a966e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31bcc031_e0b1a8a3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
