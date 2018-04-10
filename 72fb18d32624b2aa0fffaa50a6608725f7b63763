@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f5368b85_a8f6c35f",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "In patch set 3, I made clear that the board name is optional.",
+      "parentUuid": "53da7a54_1250f0f2",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84e1e130_22e7e4c8",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "19aedcbd_85354cb5",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "In patch set 3, I switched to ChromeOS style versioning scheme.\nCurrently \"lakitu\" is the only board that uses UEFI keys. So I contained all the related scripts into scripts/keygeneration/uefi directory and all the keys into \u003cKEYDIR\u003e/uefi directory.",
+      "parentUuid": "38a98c17_e9094da8",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "886fa736_7b938ea3",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -86,6 +128,30 @@
       "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b48c93_fbed652f",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Removed in patch set 3.",
+      "parentUuid": "886fa736_7b938ea3",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "14e20704_26dfe2dc",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Removed in patch set 3.",
+      "parentUuid": "5daec2cd_dcfcffa8",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff91832f_942dbfb3",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -153,6 +243,24 @@
     },
     {
       "key": {
+        "uuid": "ad68c9a7_a32dcb61",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Done in patch set 3.",
+      "parentUuid": "ff91832f_942dbfb3",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91dae076_e04e357f",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -167,6 +275,24 @@
       "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de059784_473e65c7",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Done in patch set 3.",
+      "parentUuid": "91dae076_e04e357f",
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -193,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "453af7eb_9a48d015",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Done in patch set 3.",
+      "parentUuid": "6f62c61c_d3da2772",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb0b02cd_565b0c7a",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -216,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "3edb1966_2cc27b40",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Removed in patch set 3.",
+      "parentUuid": "cb0b02cd_565b0c7a",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f8a8bf4_0931ae7b",
         "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
         "patchSetId": 2
@@ -236,6 +410,30 @@
       "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd775ca0_a5007faa",
+        "filename": "scripts/keygeneration/create_new_uefi_keys.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:49:57Z",
+      "side": 1,
+      "message": "Done in patch set 3.",
+      "parentUuid": "8f8a8bf4_0931ae7b",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "72fb18d32624b2aa0fffaa50a6608725f7b63763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
