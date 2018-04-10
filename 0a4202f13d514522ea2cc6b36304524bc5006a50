@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "60c22657_83125e55",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-10T22:11:09Z",
+      "side": 1,
+      "message": "ah, right, TlclDefineSpace now uses TlclDefineSpaceEx. no need to hide under CHROMEOS_ENVIRONMENT then.\n\nfor splitting: for tpm 2.0, we could use the full set of commands supported by libtrunks directly with /dev/tpm0 instead of sending to trunksd - and that\u0027s the only diff of mount-encrypted from typical tpm-communicating entities. libtrunks is not exactly lightweight, but that reduces the number of libs back to 2 (and 1 is strictly for f/w, while 1 for OS, what makes more sense). unfortunately, not the case for tpm 1.2, but maybe something similar can be done there as well. plus many utilities define their TpmImpl vs Tpm2Impl for a common class Tpm interface. it may make sense to just gather all those in a new \u0027THCL\u0027 library, providing tpm-version-agnostic API instead. but all that\u0027s a very separate story, indeed.",
+      "parentUuid": "5bba8544_b399eaaf",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "0a4202f13d514522ea2cc6b36304524bc5006a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22cc50cf_de4d530e",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 11
