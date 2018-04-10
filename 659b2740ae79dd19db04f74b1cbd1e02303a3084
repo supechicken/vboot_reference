@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "902528d3_091dc9df",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "In patch set 5, switched to Chrome OS style versioning.",
+      "parentUuid": "68730a2e_5ee7a253",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7240b878_18cced58",
         "filename": "scripts/image_signing/common.sh",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9535ef6f_5baffe00",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "Removed in patch set 5.",
+      "parentUuid": "7240b878_18cced58",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "67579768_94abc0a7",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "Done in patch set 5.",
+      "parentUuid": "6ab645e0_d5d79c8c",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 19
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3612aa40_659d1c66",
         "filename": "scripts/image_signing/common_minimal.sh",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "08b97bcb_52352ba6",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "Done in patch set 5.",
+      "parentUuid": "3612aa40_659d1c66",
+      "range": {
+        "startLine": 263,
+        "startChar": 65,
+        "endLine": 263,
+        "endChar": 70
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f79630af_ba700a4a",
         "filename": "scripts/image_signing/common_minimal.sh",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2018-04-04T23:50:46Z",
       "side": 1,
       "message": "shell is not a statically typed language so just return 1",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 23
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea613634_c4e52520",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "Hmm.. here I\u0027m not sure what\u0027s the best way. I want the caller of this function to know which of the following 3 happened:\n\n(1) ESP successfully mounted\n(2) there\u0027s no ESP\n(3) there\u0027s ESP but somehow mount failed",
+      "parentUuid": "f79630af_ba700a4a",
       "range": {
         "startLine": 274,
         "startChar": 4,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5ace3c60_f29bcb3f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "If the image doesn\u0027t have an ESP partition, we should just pass, I think.",
+      "parentUuid": "030eb8a0_73541522",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 750,
+        "endChar": 12
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09476dfb_38a009a2",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d69755e0_9648263c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-10T18:55:22Z",
+      "side": 1,
+      "message": "If the image doesn\u0027t have an ESP partition, we should just pass, I think.",
+      "parentUuid": "09476dfb_38a009a2",
+      "range": {
+        "startLine": 766,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 12
+      },
+      "revId": "659b2740ae79dd19db04f74b1cbd1e02303a3084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
