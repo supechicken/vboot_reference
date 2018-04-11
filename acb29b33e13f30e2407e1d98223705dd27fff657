@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a12beb25_ae010bd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "or queried from depthcharge with VbExDiskGetInfo().",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7053b4df_33d87f3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "Please also test firmware built with this (e.g. by making sure a Kevin can boot to kernel from disk), since the cgptlib_internal parts also get compiled into firmware. (vboot is a library linked into coreboot and depthcharge, so those are the repos you\u0027ll need to cros_workon for that.)\n\nAlso, please run \u0027make runtests\u0027 in the vboot directory to ensure all unit tests still pass (or, if you have done that already, point it out here).",
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba899cc_cb008d78",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "nit: might be easier to read if you indented this one more step (also applies elsewhere)",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 8
+      },
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65a6ce8_4bc280db",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "80 character limit (in the previous line as well, would be nice if you could fix up the whole thing while you\u0027re here)",
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ddc6b4_82afdcc5",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "?",
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28647778_19be9e3a",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-11T19:51:13Z",
+      "side": 1,
+      "message": "Could make this fit 80 chars as well while you\u0027re changing it anyway.",
+      "revId": "acb29b33e13f30e2407e1d98223705dd27fff657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
