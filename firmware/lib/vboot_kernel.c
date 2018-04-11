@@ -310,6 +310,7 @@ enum vb2_load_partition_flags {
  * @param params	Load-kernel parameters
  * @param min_version	Minimum kernel version from TPM
  * @param shpart	Destination for verification results
+ * @param sector_bytes  Size of LBA sector
  * @return VB2_SUCCESS, or non-zero error code.
  */
 int vb2_load_partition(struct vb2_context *ctx,
@@ -318,7 +319,8 @@ int vb2_load_partition(struct vb2_context *ctx,
 		       uint32_t flags,
 		       LoadKernelParams *params,
 		       uint32_t min_version,
-		       VbSharedDataKernelPart *shpart)
+		       VbSharedDataKernelPart *shpart,
+		       uint32_t sector_bytes)
 {
 	struct vb2_workbuf wblocal;
 	vb2_workbuf_from_ctx(ctx, &wblocal);
@@ -548,7 +550,8 @@ VbError_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 					    lpflags,
 					    params,
 					    shared->kernel_version_tpm,
-					    shpart);
+					    shpart,
+					    gpt.sector_bytes);
 		VbExStreamClose(stream);
 
 		if (rv != VB2_SUCCESS) {
