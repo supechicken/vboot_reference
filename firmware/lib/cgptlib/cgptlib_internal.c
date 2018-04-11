@@ -12,21 +12,15 @@
 #include "gpt_misc.h"
 #include "utility.h"
 
-const static int SECTOR_SIZE = 512;
-
-size_t CalculateEntriesSectors(GptHeader* h)
+size_t CalculateEntriesSectors(GptHeader* h, uint32_t sector_bytes)
 {
 	size_t bytes = h->number_of_entries * h->size_of_entry;
-	size_t ret = (bytes + SECTOR_SIZE - 1) / SECTOR_SIZE;
+	size_t ret = (bytes + sector_bytes - 1) / sector_bytes;
 	return ret;
 }
 
 int CheckParameters(GptData *gpt)
 {
-	/* Currently, we only support 512-byte sectors. */
-	if (gpt->sector_bytes != SECTOR_SIZE)
-		return GPT_ERROR_INVALID_SECTOR_SIZE;
-
 	/*
 	 * gpt_drive_sectors should be reasonable. It cannot be unset, and it
 	 * cannot differ from streaming_drive_sectors if the GPT structs are
@@ -45,7 +39,7 @@ int CheckParameters(GptData *gpt)
 	 */
 	if (gpt->gpt_drive_sectors <
 		(1 + 2 * (1 + MIN_NUMBER_OF_ENTRIES /
-				(SECTOR_SIZE / sizeof(GptEntry)))))
+				(gpt->sector_bytes / sizeof(GptEntry)))))
 		return GPT_ERROR_INVALID_SECTOR_NUMBER;
 
 	return GPT_SUCCESS;
@@ -66,7 +60,8 @@ uint32_t HeaderCrc(GptHeader *h)
 
 int CheckHeader(GptHeader *h, int is_secondary,
 		uint64_t streaming_drive_sectors,
-		uint64_t gpt_drive_sectors, uint32_t flags)
+		uint64_t gpt_drive_sectors, uint32_t flags,
+		uint32_t sector_bytes)
 {
 	if (!h)
 		return 1;
@@ -115,7 +110,8 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	if (is_secondary) {
 		if (h->my_lba != gpt_drive_sectors - GPT_HEADER_SECTORS)
 			return 1;
-		if (h->entries_lba != h->my_lba - CalculateEntriesSectors(h))
+		if (h->entries_lba != h->my_lba - CalculateEntriesSectors(h,
+								sector_bytes))
 			return 1;
 	} else {
 		if (h->my_lba != GPT_PMBR_SECTORS)
@@ -141,10 +137,11 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	 * array.
 	 */
 	/* TODO(namnguyen): Also check for padding between header & entries. */
-	if (h->first_usable_lba < 2 + CalculateEntriesSectors(h))
+	if (h->first_usable_lba < 2 + CalculateEntriesSectors(h, sector_bytes))
 		return 1;
 	if (h->last_usable_lba >=
-			streaming_drive_sectors - 1 - CalculateEntriesSectors(h))
+			streaming_drive_sectors - 1 - CalculateEntriesSectors(h,
+								sector_bytes))
 		return 1;
 
 	/* Success */
@@ -254,7 +251,8 @@ int GptSanityCheck(GptData *gpt)
 
 	/* Check both headers; we need at least one valid header. */
 	if (0 == CheckHeader(header1, 0, gpt->streaming_drive_sectors,
-			     gpt->gpt_drive_sectors, gpt->flags)) {
+			     gpt->gpt_drive_sectors, gpt->flags,
+			     gpt->sector_bytes)) {
 		gpt->valid_headers |= MASK_PRIMARY;
 		goodhdr = header1;
 	} else if (header1 && !memcmp(header1->signature,
@@ -262,7 +260,8 @@ int GptSanityCheck(GptData *gpt)
 		gpt->ignored |= MASK_PRIMARY;
 	}
 	if (0 == CheckHeader(header2, 1, gpt->streaming_drive_sectors,
-			     gpt->gpt_drive_sectors, gpt->flags)) {
+			     gpt->gpt_drive_sectors, gpt->flags,
+			     gpt->sector_bytes)) {
 		gpt->valid_headers |= MASK_SECONDARY;
 		if (!goodhdr)
 			goodhdr = header2;
@@ -347,7 +346,8 @@ void GptRepair(GptData *gpt)
 		memcpy(header2, header1, sizeof(GptHeader));
 		header2->my_lba = gpt->gpt_drive_sectors - GPT_HEADER_SECTORS;
 		header2->alternate_lba = GPT_PMBR_SECTORS;  /* Second sector. */
-		header2->entries_lba = header2->my_lba - CalculateEntriesSectors(header1);
+		header2->entries_lba = header2->my_lba - CalculateEntriesSectors(header1,
+						gpt->sector_bytes);
 		header2->header_crc32 = HeaderCrc(header2);
 		gpt->modified |= GPT_MODIFIED_HEADER2;
 	}

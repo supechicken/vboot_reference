@@ -69,7 +69,6 @@ void PrintSignature(const char *indent, const char *sig, size_t n, int raw) {
 static void HeaderDetails(GptHeader *header, GptEntry *entries,
                           const char *indent, int raw) {
   PrintSignature(indent, header->signature, sizeof(header->signature), raw);
-
   printf("%sRev: 0x%08x\n", indent, header->revision);
   printf("%sSize: %d\n", indent, header->size);
   printf("%sHeader CRC: 0x%08x %s\n", indent, header->header_crc32,
@@ -271,7 +270,7 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
       Error("Unable to read PMBR\n");
       return CGPT_FAILED;
     }
-
+    printf("SAMH\n");
     printf(TITLE_FMT, "start", "size", "part", "contents");
     char buf[256];                      // buffer for formatted PMBR content
     PMBRToStr(&drive->pmbr, buf, sizeof(buf)); // will exit if buf is too small
@@ -302,7 +301,8 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
 
       GptHeader* primary_header = (GptHeader*)drive->gpt.primary_header;
       printf(GPT_FMT, (uint64_t)primary_header->entries_lba,
-             (uint64_t)CalculateEntriesSectors(primary_header),
+             (uint64_t)CalculateEntriesSectors(primary_header,
+						drive->gpt.sector_bytes),
              drive->gpt.valid_entries & MASK_PRIMARY ? "" : "INVALID",
              "Pri GPT table");
 
@@ -319,7 +319,8 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
     } else {
       GptHeader* secondary_header = (GptHeader*)drive->gpt.secondary_header;
       printf(GPT_FMT, (uint64_t)secondary_header->entries_lba,
-             (uint64_t)CalculateEntriesSectors(secondary_header),
+             (uint64_t)CalculateEntriesSectors(secondary_header,
+						drive->gpt.sector_bytes),
              drive->gpt.valid_entries & MASK_SECONDARY ? "" : "INVALID",
              "Sec GPT table");
       /* We show secondary table details if any of following is true.
