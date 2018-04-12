@@ -567,3 +567,39 @@ VbError_t VbBootRecovery(struct vb2_context *ctx, VbCommonParams *cparams)
 	VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
 	return retval;
 }
+
+VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	int index = 0;
+	while (1) {
+		VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, index);
+		if (VbWantShutdown(cparams->gbb->flags))
+			return VBERROR_SHUTDOWN_REQUESTED;
+		uint32_t key = VbExKeyboardRead();
+		if (key == VB_KEY_LEFT) {
+			index = 0;
+		} else if (key == VB_KEY_RIGHT) {
+			index = 1;
+		} else if (key == '\r' || key == ' ') {
+			if (index == 0) {
+				/* Back to ChromeOS boot flow */
+				break;
+			} else {
+				/* TODO: Check alt-os flag here? */
+				/* Will not return if boot success. */
+				VbTryLegacy(1);
+			}
+		}
+		VbExSleepMs(20);
+	}
+
+	return VBERROR_SUCCESS;
+}
+
+VbError_t VbBootAltOS(struct vb2_context *ctx, VbCommonParams *cparams)
+{
+	VbError_t retval = vb2_alt_os_ui(ctx, cparams);
+	VbDisplayScreen(ctx, cparams, VB_SCREEN_BLANK, 0);
+	return retval;
+}
+
