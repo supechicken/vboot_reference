@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cb456c9_3e1baf9a",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-12T21:12:01Z",
+      "side": 1,
+      "message": "Sorry, I only just realized... looks like everything under cgpt/ still uses Google C++ style, not kernel style. So you should probably conform to that and use only spaces (no tabs) for indentation.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 1
+      },
+      "revId": "3b069e10a40f9100f3b017daac76a4c0a0b7bf87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f27f86_4295cf15",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-12T21:12:01Z",
+      "side": 1,
+      "message": "nit: Maybe test a 2048 or a 8192 as well? And a 256 for failure?",
+      "revId": "3b069e10a40f9100f3b017daac76a4c0a0b7bf87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
