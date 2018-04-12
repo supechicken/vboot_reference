@@ -98,6 +98,10 @@ enum vb2_nv_param {
 	VB2_NV_TRY_RO_SYNC,
         /* Cut off battery and shutdown on next boot. */
         VB2_NV_BATTERY_CUTOFF_REQUEST,
+	/* Enable AltOS Mode on next boot. */
+	VB2_NV_ALT_OS_ENABLE_REQUEST,
+	/* Disable AltOS Mode on next boot. */
+	VB2_NV_ALT_OS_DISABLE_REQUEST,
 };
 
 /* Set default boot in developer mode */
