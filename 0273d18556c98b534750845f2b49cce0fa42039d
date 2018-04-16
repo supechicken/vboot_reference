@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69161ea3_d03190de",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-16T22:45:39Z",
+      "side": 1,
+      "message": "I mimicked scripts/keygeneration/create_new_android_keys.sh which doesn\u0027t handle such a case.\n\nIf we \"shift\" after this line, we will lose the arguments. So we should somehow save the parameters into $dir and $board_name just after line #35. Or, may be we should accept \"--output \u003cdir\u003e\" and \"--board \u003cname\u003e\", just like scripts/keygenerations/create_new_keys.sh .\n\nIs it worth adding such complexity? I can do so if you prefer.\n\nBy the way I don\u0027t have permission to do +2 myself.",
+      "parentUuid": "5de701cf_8e90d356",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "0273d18556c98b534750845f2b49cce0fa42039d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d95e91f_a3d784d7",
         "filename": "scripts/keygeneration/uefi/increment_db_child_key.sh",
         "patchSetId": 4
