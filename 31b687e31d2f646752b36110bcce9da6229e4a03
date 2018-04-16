@@ -22,6 +22,30 @@
       "revId": "31b687e31d2f646752b36110bcce9da6229e4a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1531d83e_c2a19770",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-04-16T10:05:20Z",
+      "side": 1,
+      "message": "Do you mean changing only these two macro, or change everything including crossystem option name?\n\nI\u0027m ok with both names, just trying to make the wording consistent with the existing \u0027disable_dev_request\u0027 option in crossystem.",
+      "parentUuid": "10d14235_f5b6675a",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "31b687e31d2f646752b36110bcce9da6229e4a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
