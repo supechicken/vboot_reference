@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a798d485_967343b9",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T22:15:19Z",
+      "side": 1,
+      "message": "Do these actually need sudo? Can the FS be mounted with user perms?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58402fdb_cfe024c2",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T22:15:19Z",
+      "side": 1,
+      "message": "Why are we not concerned with the outcome?",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "799f95e6_583245ed",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T22:15:19Z",
+      "side": 1,
+      "message": "Why only a warning?",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 59
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c718425_de533298",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T22:15:19Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 50
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
