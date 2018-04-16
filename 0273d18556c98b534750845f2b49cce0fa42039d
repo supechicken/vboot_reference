@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de701cf_8e90d356",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T21:58:32Z",
+      "side": 1,
+      "message": "I think there should be a shift after this in case someone puts the --help after the directory argument.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "0273d18556c98b534750845f2b49cce0fa42039d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d95e91f_a3d784d7",
+        "filename": "scripts/keygeneration/uefi/increment_db_child_key.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196209
+      },
+      "writtenOn": "2018-04-16T21:58:32Z",
+      "side": 1,
+      "message": "Generally, cd is considered bad form in favor of pushd but it\u0027s probably fine in this case.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "0273d18556c98b534750845f2b49cce0fa42039d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
