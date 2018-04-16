@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "284a2a23_ff7539a5",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-16T22:54:56Z",
+      "side": 1,
+      "message": "I didn\u0027t try mounting with user perms. But sign_official_build.sh keeps doing \"sudo\" when mounting and writing something. So I guess it\u0027s safe to follow that.",
+      "parentUuid": "a798d485_967343b9",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58402fdb_cfe024c2",
         "filename": "scripts/image_signing/sign_uefi.sh",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "29da97cb_f8207196",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-16T22:54:56Z",
+      "side": 1,
+      "message": "If ${target} has somehow been signed already, we want to remove that sign first. Line 35 does that.\nI don\u0027t know any good way to test whether ${target} is already signed or not, before trying that command. So I added \"|| true\", to prevent the script from halting in case the file is NOT already signed (which is the expected case).",
+      "parentUuid": "58402fdb_cfe024c2",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "799f95e6_583245ed",
         "filename": "scripts/image_signing/verify_uefi.sh",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-16T22:15:19Z",
       "side": 1,
       "message": "Why only a warning?",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 59
+      },
+      "revId": "3c565efec131b770ecc640d3f608f357800638bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdea3a64_f0962794",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-16T22:54:56Z",
+      "side": 1,
+      "message": "For EFI bootloaders (*.efi files), signing must succeed, and therefore verification must succeed as well.\n\nHowever, kernels can be UEFI-signable only for some specific boards. Unfortunately, there\u0027s no easy way to tell whether a kernel is UEFI-signable or not, until we try signing it.\n\nThat\u0027s why sign_uefi.sh doesn\u0027t halt even when signing fails against a kernel image.\n\nThis is not the best, but I don\u0027t have any simple solution for now...",
+      "parentUuid": "799f95e6_583245ed",
       "range": {
         "startLine": 69,
         "startChar": 8,
