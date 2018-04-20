@@ -1,0 +1,378 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f06d17_95792933",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "why can\u0027t you use normal return 0/1 error codes instead of magic values ?\n\n  local esp_dir\n  if ! esp_dir\u003d\"$(mount_image_esp \"${image}\")\"; then\n    ... error path ...\n  elif [[ -z \"${esp_dir}\" ]]; then\n    return 0\n  fi",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2d0552_eb83c552",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "this subshell is not necessary/incorrect\n\n if ! _mount_image_partition_retry ... \u003e/dev/null; then",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a157ef58_252b79bc",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "should omit this blank line after the shebang",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cf364fe_f468fb50",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "this doesn\u0027t really match what this script is doing.  this is a Google-specific thing rather than a more generic \"sign these UEFI binaries with these keys\".  see the use of \"Google\" subpaths.",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9fa7705_17b24c79",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "drop the \"gsetup\" part of the name ?\n\nalso should have a comment block documenting this func.",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3152f158_e3c87be9",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "missing braces",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa286eb_c649f4d1",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "warn instead of info ?",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3644c340_cc6c39e1",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "should this be an argument to the script instead ?",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f904bd1_00411dc5",
+        "filename": "scripts/image_signing/install_gsetup_certs.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "missing `local dbx_cert`\n\nin case of globs like this, we tend to use the style:\n\n for dbx_cert in \"${key_dir}\"/dbx/*.pem; do",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d4e598_869be84f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "should document the args too",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6de681d_6879f19c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "missing docs",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d5db0e_9b7d710f",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "drop this blank line",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6337b4a_39523bf8",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "should be documented",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafb9af2_744d598a",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "die isn\u0027t a skip, it\u0027s a hard failure",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6942e57a_3ce494d9",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "missing braces",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b483da1_46d77838",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "`local efi_file`\n\nalso same comment about quotes/globs",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21dee990_4c930b3c",
+        "filename": "scripts/image_signing/sign_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7911fa7b_c76c5c7a",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "drop this blank line",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7fd065_8335c856",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "the path to the keyset should be passed in imo",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56047487_ac5e7b52",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "shouldn\u0027t these warn be die ?  or the exit 0 some other non-zero exit status ?  verity wasn\u0027t able to actually verify anything ...",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437b3a86_e72f0653",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "same comments wrt local \u0026 globs as above",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b060ca4_90e14e0e",
+        "filename": "scripts/image_signing/verify_uefi.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T17:47:41Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "1493e938e45535f86b7132a83123c6319eacb217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
