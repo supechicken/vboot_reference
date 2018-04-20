@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c4771d_fe596d81",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "drop this blank line",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043ecbaa_cf09763b",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "the standard way of writing this is:\n\n Usage: ${PROG} \u003cOUTPUT_dir\u003e [BOARD_NAME]",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ba4f8e_004ecb72",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "should also check -gt 2",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2fe27cb_28bf2627",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "omit the space after the \u003e\n\nshould also call `|| die` here",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6dc5913_28cae6dd",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "no need for this sub shell",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424b256c_ea0a0b3a",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "should document the func\n\nlooks like a lot of funcs in this file aren\u0027t documented",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccbed5e_ebea7eeb",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "use -n instead of ! -z",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7f13e6_a1266839",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "simpler:\n\n board_name+\u003d\" \"",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d423d0_1853886f",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "drop the space after the \u003e\n\nshould this have a || return 1 ?\n\nthis comment looks to apply to all pushd usage in this file",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ed84f4_7b13ef41",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "omit the space after the \u003e",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb47661_6b07a121",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "missing \u003e/dev/null",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9518dbdf_43d71149",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "i think the key versions on the CrOS side are due to space limitations at runtime.  does the UEFI happen to have the same limit, or is this just copy \u0026 paste left overs ?",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d25327_ef61aa09",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-04-20T18:05:26Z",
+      "side": 1,
+      "message": "quote it",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
