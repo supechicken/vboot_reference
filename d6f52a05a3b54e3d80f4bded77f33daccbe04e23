@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b89f2bde_4ea3cd68",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-04-22T03:08:23Z",
+      "side": 1,
+      "message": "This is not true anymore with 4KB sector. We will only use 4 LBA for the parition entry array. From UEFI specs:\n\n\"\"\"If the block size is 512, the First Usable LBA must be greater than or equal to 34 (allowing 1\nblock for the Protective MBR, 1 block for the Partition Table Header, and 32 blocks for the GPT\nPartition Entry Array); if the logical block size is 4096, the First Useable LBA must be greater\nthan or equal to 6 (allowing 1 block for the Protective MBR, 1 block for the GPT Header, and 4\nblocks for the GPT Partition Entry Array). \"\"\"",
+      "revId": "d6f52a05a3b54e3d80f4bded77f33daccbe04e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
