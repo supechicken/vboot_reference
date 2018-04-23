@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a30a7af3_f3e9cc83",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "32c4771d_fe596d81",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043ecbaa_cf09763b",
         "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c3d5178_689733c1",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Board name is dropped by CL:1024917.",
+      "parentUuid": "043ecbaa_cf09763b",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "583e637d_456fb2dd",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024917 (changed t \"-ne 1\" because board name is dropped).",
+      "parentUuid": "57ba4f8e_004ecb72",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2fe27cb_28bf2627",
         "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a340a7_02f2b093",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "b2fe27cb_28bf2627",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b404dfed_da801335",
+        "filename": "scripts/keygeneration/uefi/create_new_uefi_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "f6dc5913_28cae6dd",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "424b256c_ea0a0b3a",
         "filename": "scripts/keygeneration/uefi/uefi_common.sh",
         "patchSetId": 5
@@ -101,6 +191,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f4cfe3_aefe1b91",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "424b256c_ea0a0b3a",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "1b6a659f_317c24a4",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Removed in CL:1024917.",
+      "parentUuid": "4ccbed5e_ebea7eeb",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d7f13e6_a1266839",
         "filename": "scripts/keygeneration/uefi/uefi_common.sh",
         "patchSetId": 5
@@ -135,6 +261,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639ff6dd_d80c13b2",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Removed in CL:1024917.",
+      "parentUuid": "8d7f13e6_a1266839",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "a5560751_f95587df",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "a7d423d0_1853886f",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1ed84f4_7b13ef41",
         "filename": "scripts/keygeneration/uefi/uefi_common.sh",
         "patchSetId": 5
@@ -169,6 +331,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea978ca_3a51bbab",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "c1ed84f4_7b13ef41",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "03a7bae5_3c8b4b57",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "bdb47661_6b07a121",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9518dbdf_43d71149",
         "filename": "scripts/keygeneration/uefi/uefi_common.sh",
         "patchSetId": 5
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "9a394d24_6eb4bddd",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Yeah it was a leftover. Removed in CL:1024918.",
+      "parentUuid": "9518dbdf_43d71149",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0d25327_ef61aa09",
         "filename": "scripts/keygeneration/uefi/uefi_common.sh",
         "patchSetId": 5
@@ -220,6 +436,24 @@
       "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927592d8_83503073",
+        "filename": "scripts/keygeneration/uefi/uefi_common.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001658
+      },
+      "writtenOn": "2018-04-23T21:00:07Z",
+      "side": 1,
+      "message": "Done in CL:1024918.",
+      "parentUuid": "e0d25327_ef61aa09",
+      "revId": "7dff0105d66fa597741604cf1652a72c7a8463ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
