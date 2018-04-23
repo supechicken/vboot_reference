@@ -16,6 +16,24 @@
       "revId": "d6f52a05a3b54e3d80f4bded77f33daccbe04e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf830ebe_b5f0d712",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-23T20:49:24Z",
+      "side": 1,
+      "message": "Good point. I think this is already handled correctly in the actual code (see cgpt_create.c:GptCreate(), where it calculates the actual amount of sectors needed for 128 entries). But it might be nice to add some extra tests (either here or on a higher level in run_cgpt_tests.sh) to ensure that this calculates the correct amount of sectors for the 512 and 4096 cases.",
+      "parentUuid": "b89f2bde_4ea3cd68",
+      "revId": "d6f52a05a3b54e3d80f4bded77f33daccbe04e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
