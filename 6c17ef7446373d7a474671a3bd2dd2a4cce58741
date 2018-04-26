@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1165d4f9_fe69bf06",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-26T21:06:47Z",
+      "side": 0,
+      "message": "Actually, on a closer look it seems like some parts of LoadKernel() (e.g. AllocAndReadGptData()) still access some sectors without checking that the disk is big enough first. It\u0027s probably better to just leave this check in as it is (since GPT offsets are sector-based anyway). Even with 4K sectors, all disks we use should have at least 16.",
+      "revId": "6c17ef7446373d7a474671a3bd2dd2a4cce58741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54013fe6_e854f240",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-26T21:06:47Z",
+      "side": 0,
+      "message": "Should keep this, then.",
+      "revId": "6c17ef7446373d7a474671a3bd2dd2a4cce58741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd5b032_54fe8e41",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-26T21:06:47Z",
+      "side": 0,
+      "message": "Should also keep this (or change it to 4K) and ensure it succeeds instead. In addition, we should have something like 1536 and make sure it fails cleanly. If it doesn\u0027t, we\u0027ll need to add another check for power-of-two-ness somewhere (probably in AllocAndReadGptData()).",
+      "revId": "6c17ef7446373d7a474671a3bd2dd2a4cce58741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
