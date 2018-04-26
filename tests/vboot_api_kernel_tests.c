@@ -64,9 +64,16 @@ test_case_t test[] = {
 		.want_flags = VB_DISK_FLAG_REMOVABLE,
 		.disks_to_provide = {
 			/* too small */
-			{512,   10,  VB_DISK_FLAG_REMOVABLE, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_REMOVABLE, 0},
+			{512,  10,   VB_DISK_FLAG_REMOVABLE, 0},
+			/* should be okay */
+			{512, 100,  VB_DISK_FLAG_REMOVABLE |
+				VB_DISK_FLAG_EXTERNAL_GPT, pickme},
+			{4096, 100, VB_DISK_FLAG_REMOVABLE |
+				VB_DISK_FLAG_EXTERNAL_GPT, pickme},
+			/* not a power of 2 */
+			{1531, 100,  VB_DISK_FLAG_REMOVABLE, 0},
+			/* sector size to small */
+			{511, 100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong flags */
@@ -111,10 +118,6 @@ test_case_t test[] = {
 		.name = "first fixed drive",
 		.want_flags = VB_DISK_FLAG_FIXED,
 		.disks_to_provide = {
-			/* too small */
-			{512,   10,  VB_DISK_FLAG_FIXED, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong flags */
@@ -154,10 +157,6 @@ test_case_t test[] = {
 		.name = "no valid drives",
 		.want_flags = VB_DISK_FLAG_FIXED,
 		.disks_to_provide = {
-			/* too small */
-			{512,   10,  VB_DISK_FLAG_FIXED, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong flags */
