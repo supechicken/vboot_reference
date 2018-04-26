@@ -63,10 +63,6 @@ test_case_t test[] = {
 		.name = "first removable drive",
 		.want_flags = VB_DISK_FLAG_REMOVABLE,
 		.disks_to_provide = {
-			/* too small */
-			{512,   10,  VB_DISK_FLAG_REMOVABLE, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong flags */
@@ -111,10 +107,6 @@ test_case_t test[] = {
 		.name = "first fixed drive",
 		.want_flags = VB_DISK_FLAG_FIXED,
 		.disks_to_provide = {
-			/* too small */
-			{512,   10,  VB_DISK_FLAG_FIXED, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong flags */
@@ -154,10 +146,6 @@ test_case_t test[] = {
 		.name = "no valid drives",
 		.want_flags = VB_DISK_FLAG_FIXED,
 		.disks_to_provide = {
-			/* too small */
-			{512,   10,  VB_DISK_FLAG_FIXED, 0},
-			/* wrong LBA */
-			{2048, 100,  VB_DISK_FLAG_FIXED, 0},
 			/* wrong type */
 			{512,  100,  VB_DISK_FLAG_REMOVABLE, 0},
 			/* wrong flags */
