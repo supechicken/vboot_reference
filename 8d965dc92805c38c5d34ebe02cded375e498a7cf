@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cd9660b_ae52bfb1",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-27T05:36:37Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood how this test works. These are all disks that are provided to a single VbTryLoadKernel() invocation, so there should be only one correct choice. To test the other options you\u0027ll have to add a full new entry to the outermost test[] array.\n\n(Also, the EXTERNAL_GPT thing is something that was never really used anywhere and that normal Chromebooks don\u0027t have. It\u0027s more important to test the normal cases without it.)",
+      "revId": "8d965dc92805c38c5d34ebe02cded375e498a7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0836e642_68b3f5e5",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-27T05:36:37Z",
+      "side": 1,
+      "message": "Also be aware how these two return code lists map to the entries in the disks_to_provide array (but only for those that actually end up calling LoadKernel()... this is a pretty confusing test overall, I have to say).",
+      "revId": "8d965dc92805c38c5d34ebe02cded375e498a7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
