@@ -19,6 +19,17 @@ uint32_t SetVirtualDevMode(int val)
 	return TPM_SUCCESS;
 }
 
+uint32_t SetAltOSMode(int val)
+{
+	return TPM_SUCCESS;
+}
+
+uint32_t GetAltOSModeFlags(uint8_t *flags)
+{
+	flags = 0;
+	return TPM_SUCCESS;
+}
+
 uint32_t TPMClearAndReenable(void)
 {
 	return TPM_SUCCESS;

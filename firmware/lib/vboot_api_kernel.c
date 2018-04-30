@@ -409,10 +409,19 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx, VbCommonParams *cparams)
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {
+	// XXX: TEST CODE
+	SetAltOSFlag(ALT_OS_ENABLE, 1);
+
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 
 	VbError_t retval = vb2_kernel_setup(cparams, kparams);
+	if (retval)
+		goto VbSelectAndLoadKernel_exit;
+
+	// Move this to SharedDataHeader?
+	uint8_t alt_os_enable = 0;
+	retval = GetAltOSFlag(ALT_OS_ENABLE, &alt_os_enable);
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
 
@@ -423,6 +432,13 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	retval = ec_sync_all(&ctx, cparams);
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
+
+	if (alt_os_enable) {
+		retval = VbBootAltOS(&ctx, cparams);
+		if (retval)
+			goto VbSelectAndLoadKernel_exit;
+	}
+
 
 	/* Select boot path */
 	if (shared->recovery_reason) {

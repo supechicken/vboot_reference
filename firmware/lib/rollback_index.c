@@ -169,6 +169,45 @@ uint32_t SetVirtualDevMode(int val)
 	return VBERROR_SUCCESS;
 }
 
+uint32_t SetAltOSFlag(enum alt_os_flags key, uint8_t val)
+{
+	RollbackSpaceKernel rsk;
+
+	VB2_DEBUG("TPM: Entering");
+	if (TPM_SUCCESS != ReadSpaceKernel(&rsk))
+		return VBERROR_TPM_FIRMWARE_SETUP;
+
+	VB2_DEBUG("TPM: flags were 0x%02x\n", rsk.alt_os_flags);
+	if (val)
+		rsk.alt_os_flags |= (uint8_t)key;
+	else
+		rsk.alt_os_flags &= ~(uint8_t)key;
+	VB2_DEBUG("TPM: flags are now 0x%02x\n", rsk.alt_os_flags);
+
+	if (TPM_SUCCESS != WriteSpaceKernel(&rsk))
+		return VBERROR_TPM_SET_BOOT_MODE_STATE;
+
+	VB2_DEBUG("TPM: Leaving\n");
+	return VBERROR_SUCCESS;
+}
+
+uint32_t GetAltOSFlag(enum alt_os_flags key, uint8_t* val)
+{
+	RollbackSpaceKernel rsk;
+
+	VB2_DEBUG("TPM: Entering");
+	if (TPM_SUCCESS != ReadSpaceKernel(&rsk))
+		return VBERROR_TPM_FIRMWARE_SETUP;
+
+	if (rsk.alt_os_flags & key)
+		*val = 1;
+	else
+		*val = 0;
+
+	VB2_DEBUG("TPM: Leaving\n");
+	return VBERROR_SUCCESS;
+}
+
 uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 {
 	uint32_t r;
