@@ -36,8 +36,10 @@ typedef struct RollbackSpaceKernel {
 	uint32_t uid;
 	/* Kernel versions */
 	uint32_t kernel_versions;
+	/* Flags for alt-os mode */
+	uint8_t alt_os_flags;
 	/* Reserved for future expansion */
-	uint8_t reserved[3];
+	uint8_t reserved[2];
 	/* Checksum (v2 and later only) */
 	uint8_t crc8;
 } __attribute__((packed)) RollbackSpaceKernel;
@@ -159,5 +161,19 @@ uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length);
  * Utility function to turn the virtual dev-mode flag on or off. 0=off, 1=on.
  */
 uint32_t SetVirtualDevMode(int val);
+
+/**
+ * Utility function to turn the alt-os mode flag on or off. 0=off, 1=on.
+ */
+enum alt_os_flags {
+	ALT_OS_ENABLE		= (1 << 0),
+	ALT_OS_LAST_BOOT	= (1 << 1),
+	ALT_OS_BOOT_SEEN	= (1 << 2),
+	ALT_OS_HOT_KEY		= (1 << 3),
+};
+
+uint32_t SetAltOSFlags(uint8_t val);
+
+uint32_t GetAltOSFlags(uint8_t *val);
 
 #endif  /* VBOOT_REFERENCE_ROLLBACK_INDEX_H_ */
