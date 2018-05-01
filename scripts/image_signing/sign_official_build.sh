@@ -624,6 +624,9 @@ resign_firmware_payload() {
         # Path to bios.bin.
         local bios_path="${shellball_dir}/${bios_image}"
 
+        echo "Before EC signing ${bios_path}: md5 = " \
+          $(md5sum ${bios_path} | awk '{print $1}')
+
         if [ -n "${ec_image}" ]; then
           # Path to ec.bin.
           local ec_path="${shellball_dir}/${ec_image}"
@@ -649,6 +652,9 @@ resign_firmware_payload() {
           fi
         fi
 
+        echo "After EC signing ${bios_path}: md5 = " \
+          $(md5sum ${bios_path} | awk '{print $1}')
+
         # Resign bios.bin.
         ${FUTILITY} sign \
           --signprivate "${signprivate}" \
@@ -661,6 +667,8 @@ resign_firmware_payload() {
           ${bios_path} \
           ${temp_fw}
 
+        echo "After Bios signing ${temp_fw}: md5 = " \
+          $(md5sum ${temp_fw} | awk '{print $1}')
 
         # For development phases, when the GBB can be updated still, set the
         # recovery and root keys in the image.
@@ -670,6 +678,9 @@ resign_firmware_payload() {
           --rootkey="${rootkey}" \
           "${temp_fw}" \
           "${bios_path}"
+
+        echo "After setting GBB on ${bios_path}: md5 = " \
+          $(md5sum ${bios_path} | awk '{print $1}')
 
         info "Signed firmware image output to ${bios_path}"
       done
