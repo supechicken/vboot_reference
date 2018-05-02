@@ -50,6 +50,9 @@ enum vb2_shared_data_flags {
 	/* Software sync says EC / PD running RW */
 	VB2_SD_FLAG_ECSYNC_EC_IN_RW = (1 << 6),
 	VB2_SD_FLAG_ECSYNC_PD_IN_RW = (1 << 7),
+
+	/* Trigger AltOS for this boot */
+	VB2_SD_FLAG_TRIGGER_ALT_OS = (1 << 8),
 };
 
 /* Flags for vb2_shared_data.status */
