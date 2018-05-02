@@ -212,3 +212,7 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e)
 {
 	return 0;
 }
+
+void VbExGdbBreak(void)
+{
+}
