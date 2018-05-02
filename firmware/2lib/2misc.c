@@ -206,6 +206,14 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+int vb2_check_alt_os_switch(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	if (ctx->flags & VB2_CONTEXT_TRIGGER_ALT_OS)
+		sd->flags |= VB2_SD_FLAG_TRIGGER_ALT_OS;
+	return VB2_SUCCESS;
+}
+
 int vb2_check_dev_switch(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);

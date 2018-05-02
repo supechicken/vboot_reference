@@ -104,6 +104,7 @@ int vb2_fw_parse_gbb(struct vb2_context *ctx);
  * @return VB2_SUCCESS, or error code on error.
  */
 int vb2_check_dev_switch(struct vb2_context *ctx);
+int vb2_check_alt_os_switch(struct vb2_context *ctx);
 
 /**
  * Check if we need to clear the TPM owner.
