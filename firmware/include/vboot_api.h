@@ -1161,4 +1161,6 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+void VbExGdbBreak(void);
 #endif  /* VBOOT_REFERENCE_VBOOT_API_H_ */
