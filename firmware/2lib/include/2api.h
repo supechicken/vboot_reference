@@ -132,6 +132,9 @@ enum vb2_context_flags {
 
 	/* Boot is S3->S0 resume, not S5->S0 normal boot */
 	VB2_CONTEXT_S3_RESUME = (1 << 14),
+
+	/* AltOS hotkey pressed for this boot */
+	VB2_CONTEXT_ALT_OS_HOTKEY = (1 << 15),
 };
 
 /*
