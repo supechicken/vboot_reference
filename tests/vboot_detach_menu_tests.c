@@ -881,6 +881,7 @@ static void VbBootDevTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Show Debug Info
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Developer Options
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
+	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From U-Boot
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From USB
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
@@ -902,6 +903,8 @@ static void VbBootDevTest(void)
 		"  dev warning menu: developer options");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: disk boot");
+	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
+		"  dev menu: U-Boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_BLANK, "  final blank screen");
@@ -946,6 +949,7 @@ static void VbBootDevTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Show Debug Info
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Developer Options
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
+	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From U-Boot
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From USB
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
@@ -966,10 +970,12 @@ static void VbBootDevTest(void)
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: disk boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
+		"  dev menu: U-Boot");
+	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_BLANK, "  blank (flash)");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
-		"  dev menu: USB boot");
+		"  dev menu: U-Boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_BLANK,"  final blank screen");
 	TEST_EQ(screens_count, i, "  no extra screens");
 	TEST_EQ(beeps_count, 1, "  error beep: USB not found");
@@ -2267,10 +2273,12 @@ static void VbNavigationTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // (end of menu)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // (end of menu)
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
+	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From U-Boot
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From USB
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot Legacy
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // (end of menu)
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // Boot From USB
+	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // Boot From U-Boot
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // Boot From Disk
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // Cancel
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
@@ -2297,6 +2305,7 @@ static void VbNavigationTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Power Off
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Cancel
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From Disk
+	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From U-Boot
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot From USB
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Boot Legacy
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // (end of menu)
@@ -2324,11 +2333,15 @@ static void VbNavigationTest(void)
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: disk boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
+		"  dev menu: U-Boot");
+	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: Legacy boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: Legacy boot");
+	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
+		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
@@ -2381,6 +2394,8 @@ static void VbNavigationTest(void)
 		"  dev menu: cancel");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: boot from disk");
+	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
+		"  dev menu: USB boot");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,
 		"  dev menu: boot from USB");
 	TEST_EQ(screens_displayed[i++], VB_SCREEN_DEVELOPER_MENU,

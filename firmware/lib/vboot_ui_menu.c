@@ -246,6 +246,9 @@ static VbError_t enter_developer_menu(struct vb2_context *ctx)
 	case VB2_DEV_DEFAULT_BOOT_LEGACY:
 		menu_idx = VB_DEV_LEGACY;
 		break;
+	case VB2_DEV_DEFAULT_BOOT_U_BOOT:
+		menu_idx = VB_DEV_U_BOOT;
+		break;
 	}
 	vb2_change_menu(VB_MENU_DEV, menu_idx);
 	vb2_draw_current_screen(ctx);
@@ -443,6 +446,10 @@ static struct vb2_menu menus[VB_MENU_COUNT] = {
 			[VB_DEV_USB] = {
 				.text = "Boot From USB or SD Card",
 				.action = boot_usb_action,
+			},
+			[VB_DEV_U_BOOT] = {
+				.text = "Boot into U-Boot",
+				.action = boot_u_boot_action,
 			},
 			[VB_DEV_DISK] = {
 				.text = "Boot From Internal Disk",
