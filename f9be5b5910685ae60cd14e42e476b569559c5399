@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0f4ef7_807dd62d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T22:50:04Z",
+      "side": 1,
+      "message": "It looks like this just translates a context flag to a VBSD flag.\n\nWhy would this not just be translated in vb2_kernel_setup() / vb2_kernel_cleanup() or in the vboot logic in coreboot that translates context to VBSD?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "f9be5b5910685ae60cd14e42e476b569559c5399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
