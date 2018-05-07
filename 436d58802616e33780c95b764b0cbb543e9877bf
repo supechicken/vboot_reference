@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24477102_b712fbf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "lib:",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c75c04_48bd9b6a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "All of this checking in the firmware flow and passing of flags between coreboot -\u003e depthcharge goes away if you just track what keys are held down at boot and have vboot_api_kernel.c ask for them when it\u0027s ready to do so.\n\nNote that all of these vboot_reference changes *must* have unit tests before they commit.  Use \u0027COV\u003d1 make\u0027 to check coverage, and \u0027make runtests\u0027 to ensure you\u0027re not breaking existing tests.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b3cc8e_a804a943",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "This check is a bit weird.  There are many code paths which would result in calling VbBootAlternate() which should actually call VbBootNormal().",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 38
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c9722f_0c10b727",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "boot_altos?",
+      "range": {
+        "startLine": 200,
+        "startChar": 10,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e33379_8d3072bb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "If req_disable\u003d1, then req_enable should be ignored as well.  If you set both, req_disable has higher priority.",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 27
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d06bea8_3bbfad84",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T23:43:16Z",
+      "side": 1,
+      "message": "Should clear immediately after reading, so they\u0027re not sticky.  Putting them down here makes them sticky across boots, if the user attempts to power off from the picker screen.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 51
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
