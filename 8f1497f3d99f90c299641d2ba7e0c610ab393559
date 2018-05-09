@@ -34,6 +34,24 @@
       "revId": "8f1497f3d99f90c299641d2ba7e0c610ab393559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a206cb_6c2ca1c2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-05-09T15:19:57Z",
+      "side": 1,
+      "message": "Yes, refer to mosys the comment shows \"/* Only unibuild has the concept of a signature ID */\". So for non-unibuild projects it seems there is not identifier to match something. I imaging that in the factory finalize, if key word - \"single key\" is appeared in VERSION.signer then this is not a uni-build project. And there would be one rootkey hash (root:) I need to do match directly with current firmware in the flash.\n\nThanks Charles\u0027s suggestion and will change name to \u0027root\u0027.",
+      "parentUuid": "17498e12_c3269bc7",
+      "revId": "8f1497f3d99f90c299641d2ba7e0c610ab393559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
