@@ -1044,6 +1044,32 @@ devkeys_install:
 	${Q}mkdir -p ${US_DIR}/devkeys
 	${Q}${INSTALL} -t ${US_DIR}/devkeys -m644 tests/devkeys/*
 
+# All libraries, for fuzzer.  Should be ${UL_DIR}?
+ALL_LIBS_DIR=${BUILD}/all/lib
+.PHONY: all_libs
+all_libs: ${FWLIB} ${FWLIB2X} ${FWLIB20} ${FWLIB21} ${UTILLIB} ${HOSTLIB}
+	@${PRINTF} "    INSTALL       ALL_LIBS\n"
+	${Q}mkdir -p ${ALL_LIBS_DIR}
+	${Q}${INSTALL} -t ${ALL_LIBS_DIR} -m644 $^
+
+# All headers, for fuzzer.  Should be ${UI_DIR}?
+.PHONY: all_headers
+ALL_HEADERS_DIR=${BUILD}/all/include
+all_headers:
+	@${PRINTF} "    INSTALL       ALL_HEADERS\n"
+	${Q}mkdir -p ${ALL_HEADERS_DIR}
+	${Q}${INSTALL} -t ${ALL_HEADERS_DIR} -m644 \
+		cgpt/*.h \
+		firmware/include/* \
+		firmware/lib/include/* \
+		firmware/2lib/include/* \
+		firmware/lib20/include/* \
+		firmware/lib21/include/* \
+		host/include/* \
+		host/lib/include/* \
+		host/lib21/include/* \
+		utility/include/*
+
 # ----------------------------------------------------------------------------
 # CGPT library and utility
 
