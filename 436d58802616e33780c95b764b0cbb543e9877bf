@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "2f419cd4_8eeac469",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-14T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c9722f_0c10b727",
+      "range": {
+        "startLine": 200,
+        "startChar": 10,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8e33379_8d3072bb",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
@@ -141,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "905f0a85_d408d185",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-14T10:38:49Z",
+      "side": 1,
+      "message": "Implementing this by adding req_enable \u003d 0 in this clause.",
+      "parentUuid": "e8e33379_8d3072bb",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 27
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d06bea8_3bbfad84",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
@@ -152,6 +200,30 @@
       "writtenOn": "2018-05-07T23:43:16Z",
       "side": 1,
       "message": "Should clear immediately after reading, so they\u0027re not sticky.  Putting them down here makes them sticky across boots, if the user attempts to power off from the picker screen.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 51
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907fef03_60229b0d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-14T10:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d06bea8_3bbfad84",
       "range": {
         "startLine": 253,
         "startChar": 1,
