@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5309b69d_b903b2b8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-14T10:15:11Z",
+      "side": 1,
+      "message": "Do you have any other ideas?  What if VbBootAlternate returned flow to here in the case that Normal Mode should be loaded?  I.e.\n\n  IF recovery\n    VbBootRecovery\n  ELIF developer\n    VbBootDeveloper\n  ELIF alt_os\n    VbBootAlternate\n  VbBootNormal",
+      "parentUuid": "57b3cc8e_a804a943",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 38
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19c9722f_0c10b727",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
