@@ -46,6 +46,30 @@
       "revId": "f9be5b5910685ae60cd14e42e476b569559c5399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2737999c_989fcd42",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-15T22:55:33Z",
+      "side": 1,
+      "message": "TRIGGER_ALT_OS is kind of a confusing name.  It\u0027s not actually triggering AltOS.  It\u0027s just considering that maybe AltOS-related processing needs to happen.  In the case of disable_request, we are explicitly NOT triggering AltOS.\n\nCompare with developer mode.  We don\u0027t have \"if dev_disable_request or dev mode enabled, flag |\u003d TRIGGER_DEVELOPER_MODE\".\n\nI think this logic would be better directly in the vboot_api_kernel.c code.",
+      "parentUuid": "d8b6e60f_98f102c5",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "f9be5b5910685ae60cd14e42e476b569559c5399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
