@@ -244,6 +244,7 @@ else
   QEMU_ARCH := ${ARCH}
 endif
 
+
 # The top of the chroot for qemu must be passed in via the SYSROOT environment
 # variable.  In the Chromium OS chroot, this is done automatically by the
 # ebuild.
@@ -840,8 +841,13 @@ _dir_create := $(foreach d, \
 	$(shell [ -d ${BUILD}/${d} ] || mkdir -p ${BUILD}/${d}))
 
 # Host targets
+
+.PHONY: host_tools
+host_tools: utils futil tests
+
 .PHONY: host_stuff
-host_stuff: utillib hostlib cgpt utils futil tests
+host_stuff: utillib hostlib cgpt \
+	$(if ${BUILD_TOOLS},host_tools,)
 
 .PHONY: clean
 clean:
