@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "499100b4_d99adfd5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-15T08:58:57Z",
+      "side": 1,
+      "message": "This is throwing a linking error.  Is there something I\u0027m misunderstanding about 2misc code?  If we can\u0027t access Alt OS TPM space from here, perhaps it would just make more sense to lump everything into vboot_ui.c (see PS6).",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 23
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f58fcc60_d79678d2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-15T08:58:57Z",
+      "side": 1,
+      "message": "Any thoughts about this?  From my investigation, looks like VbExEcEnteringMode is only used for testing.",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 58
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ac61f9_d03d2b16",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-15T08:58:57Z",
+      "side": 1,
+      "message": "Any opinions about this?",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
