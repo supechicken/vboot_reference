@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7cabcc22_d88911f7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-15T23:57:35Z",
+      "side": 1,
+      "message": "The lastest patchset PS7 has already split out (3) as you\u0027ve suggested.  I\u0027m not sure if it makes sense to split (1) and (2) since they both show the same UI and can both flow into normal mode.",
+      "parentUuid": "bbb7509a_7763d645",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 38
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c9722f_0c10b727",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
