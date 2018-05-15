@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bd3b0bcf_ca3ed495",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-15T23:17:04Z",
+      "side": 1,
+      "message": "What would EC AltOS mode do?\n\nIf this is something like switching the EC into I2C sensor hub mode, then we\u0027d need it.  But then we would only want to do that if we\u0027re *actually* booting AltOS, not merely if we\u0027re showing the picker.",
+      "parentUuid": "f58fcc60_d79678d2",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 58
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ac61f9_d03d2b16",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2018-05-15T08:58:57Z",
       "side": 1,
       "message": "Any opinions about this?",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f98361aa_d094aa14",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-15T23:17:04Z",
+      "side": 1,
+      "message": "Ok to call VbBootNormal() directly.\n\nBut vb2_alt_os_flow() needs to be split apart into several functions, so that there are fewer flows where it ends up falling down into VbBootNormal().",
+      "parentUuid": "e3ac61f9_d03d2b16",
       "range": {
         "startLine": 228,
         "startChar": 1,

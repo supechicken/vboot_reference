@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "bbb7509a_7763d645",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-15T23:17:04Z",
+      "side": 1,
+      "message": "I think the problem is that you\u0027re trying to use one sub-function for 3 different things:\n\n1) Enabling AltOS mode the first time, if enable_request is set and the key combo was held down.\n\n2) Confirming booting AltOS, if the key combo was held down.\n\n3) Disabling booting AltOS, if disable_request is set.  This should just be handled separately earlier in the code, similar to how we handle VB2_NV_DISABLE_DEV_REQUEST in vb2_check_dev_switch()",
+      "parentUuid": "5309b69d_b903b2b8",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 38
+      },
+      "revId": "436d58802616e33780c95b764b0cbb543e9877bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c9722f_0c10b727",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 3
