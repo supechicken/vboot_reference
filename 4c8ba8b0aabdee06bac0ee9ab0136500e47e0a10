@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cd6621c_52c30709",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-16T05:05:27Z",
+      "side": 1,
+      "message": "After doing some research, I believe the problem is that 2lib code is unable to call into lib v1 code.  Here are the relevant lines from vboot_reference Makefile:\n\n  VBINIT_SRCS +\u003d \\\n    firmware/lib/rollback_index.c \\\n  VBSF_SRCS +\u003d ${VBINIT_SRCS}\n  FWLIB_SRCS +\u003d ${VBSF_SRCS} ${VBSLK_SRCS}\n  FWLIB_OBJS \u003d ${FWLIB_SRCS:%.c\u003d${BUILD}/%.o}\n  FWLIB2X_OBJS \u003d ${FWLIB2X_SRCS:%.c\u003d${BUILD}/%.o}\n  FWLIB20_OBJS \u003d ${FWLIB20_SRCS:%.c\u003d${BUILD}/%.o}\n  FWLIB21_OBJS \u003d ${FWLIB21_SRCS:%.c\u003d${BUILD}/%.o}\n  ${FWLIB}: ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS}\n\nMy Makefile-foo is not great, but this makes me suspect that these lib \"versions\" are linked independently.\n\nvboot experts, please let me know if my conjecture is correct or if there is some other issue going on.  I\u0027ve also commented on CL:1034484.",
+      "parentUuid": "499100b4_d99adfd5",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 23
+      },
+      "revId": "4c8ba8b0aabdee06bac0ee9ab0136500e47e0a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58fcc60_d79678d2",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 7
