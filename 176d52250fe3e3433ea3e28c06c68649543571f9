@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c580aeb_f1df8c33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-05-22T12:32:30Z",
+      "side": 1,
+      "message": "Can we either have a bug reference or a description in the commit message explaining why this is necessary/helpful?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "176d52250fe3e3433ea3e28c06c68649543571f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264b4229_a0a6e6d4",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-05-22T12:32:30Z",
+      "side": 1,
+      "message": "nit: this will probably be easier to read if you break out the write() invocation to go in the loop body and use separate conditional as opposed to the loop condition.",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 42
+      },
+      "revId": "176d52250fe3e3433ea3e28c06c68649543571f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697cb6fd_92aa6461",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-05-22T12:32:30Z",
+      "side": 1,
+      "message": "nit: no line break here",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "176d52250fe3e3433ea3e28c06c68649543571f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebfb1750_45d1c4cc",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-05-22T12:32:30Z",
+      "side": 1,
+      "message": "nit: ditto re readability",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 58
+      },
+      "revId": "176d52250fe3e3433ea3e28c06c68649543571f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
