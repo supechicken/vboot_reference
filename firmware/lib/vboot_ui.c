@@ -171,7 +171,9 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 
 	VbAudioContext *audio = 0;
 
-	VB2_DEBUG("Entering\n");
+	VB2_DEBUG("Marco Entering\n");
+        VbExSleepMs(5000);
+	VB2_DEBUG("MMarco Entering\n");
 
 	/* Check if USB booting is allowed */
 	uint32_t allow_usb = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB);
