@@ -295,6 +295,7 @@ INCLUDES += \
 ifeq (${FIRMWARE_ARCH},)
 INCLUDES += -Ihost/include -Ihost/lib/include
 INCLUDES += -Ihost/lib21/include -Ifirmware/lib21/include
+INCLUDES += -Ihost/arch
 endif
 
 # Firmware library, used by the other firmware components (depthcharge,
