@@ -45,6 +45,52 @@
       "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28185d9d_58de0a78",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-06-28T22:25:45Z",
+      "side": 1,
+      "message": "Either implement the timeout or add the parameter now and add a TODO in the function, so we don\u0027t have to change the API later.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f02b1ea_cac66b54",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-06-28T22:25:45Z",
+      "side": 1,
+      "message": "Not sure about the coding convention, but should probably be /* .. */",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
