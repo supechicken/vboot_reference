@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b8565ec_58cf10f3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Do you mean whether alternate OS mode is currently enabled as stored in the TPM?",
+      "range": {
+        "startLine": 922,
+        "startChar": 18,
+        "endLine": 922,
+        "endChar": 31
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daa8fcd_830bd1db",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Nit: we\u0027re moving to kernel-style code style and names.  I won\u0027t block checking this in on a bulk-renaming pass, though.",
+      "range": {
+        "startLine": 924,
+        "startChar": 4,
+        "endLine": 924,
+        "endChar": 26
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f15af7fe_350a08ca",
         "filename": "firmware/lib/include/vboot_kernel.h",
         "patchSetId": 20
@@ -18,6 +64,29 @@
         "startChar": 10,
         "endLine": 85,
         "endChar": 25
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7812c138_cc58d810",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "These variable names are confusing.  How is VbExGetAltOSModeSwitch() different than enabled, below?\n\nswitch_last_boot isn\u0027t a switch, just a flag that the hotkey was pressed last time and so we still want to act like it is.\n\nOr does VbExGetAltOSModeSwitch() actually mean vb2_is_altos_hotkey_pressed()?",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 52
       },
       "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +117,98 @@
     },
     {
       "key": {
+        "uuid": "7e7aec05_38de83dd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Ah.  So by \"switch\" we do mean \"hotkey\"?",
+      "range": {
+        "startLine": 473,
+        "startChar": 37,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b87a3b_076ed40a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Aren\u0027t we checking boot keys instead?  In which case, this comment is out of date.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 4
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9ecd5d_196564d0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "In Campfire V1, we can\u0027t change EC-RO, so this will always return failure / hotkey not present.",
+      "range": {
+        "startLine": 533,
+        "startChar": 26,
+        "endLine": 533,
+        "endChar": 48
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e247a95_b54b5f6c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "This isn\u0027t just checking the hotkey.  It\u0027s also looking at whether we even need to look at the hotkey, and handling disable requests.\n\nMaybe check_altos_requests()?",
+      "range": {
+        "startLine": 548,
+        "startChar": 10,
+        "endLine": 548,
+        "endChar": 28
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28185d9d_58de0a78",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 20
@@ -59,6 +220,30 @@
       "writtenOn": "2018-06-28T22:25:45Z",
       "side": 1,
       "message": "Either implement the timeout or add the parameter now and add a TODO in the function, so we don\u0027t have to change the API later.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "553065cc_eeb00e7c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Since whether timeout defaults to ChromeOS or AltOS depends on the current AltOS state...",
+      "parentUuid": "28185d9d_58de0a78",
       "range": {
         "startLine": 156,
         "startChar": 3,
@@ -86,6 +271,29 @@
         "startLine": 180,
         "startChar": 1,
         "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "169e9f74_b0163fce",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-28T23:11:35Z",
+      "side": 1,
+      "message": "Nit: comment style",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 299,
         "endChar": 3
       },
       "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
