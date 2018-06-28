@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f15af7fe_350a08ca",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-06-28T22:25:17Z",
+      "side": 1,
+      "message": "is this unused?",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a295338_29624641",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-06-28T22:25:17Z",
+      "side": 1,
+      "message": "should this check be done sooner?  perhaps the intent that even if it fails it is sure to have cleared any enable/disable requests..",
+      "range": {
+        "startLine": 440,
+        "startChar": 5,
+        "endLine": 440,
+        "endChar": 7
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
