@@ -42,6 +42,7 @@ where <type> is one of:
              accessory_usbpd (sign USB-PD accessory firmware)
              accessory_rwsig (sign accessory RW firmware)
              oci-container (sign an OCI container)
+             demo_resources (sign an demo resources bundle)
 
 output_image: File name of the signed output image
 version_file: File name of where to read the kernel and firmware versions.
@@ -1156,6 +1157,8 @@ elif [[ "${TYPE}" == "accessory_rwsig" ]]; then
   futility sign --type rwsig --prikey "${KEY_NAME}.vbprik2" \
            --version "${FIRMWARE_VERSION}" "${OUTPUT_IMAGE}"
 elif [[ "${TYPE}" == "oci-container" ]]; then
+  sign_oci_container "${INPUT_IMAGE}" "${KEY_DIR}" "${OUTPUT_IMAGE}"
+elif [[ "${TYPE}" == "demo_resources" ]]; then
   sign_oci_container "${INPUT_IMAGE}" "${KEY_DIR}" "${OUTPUT_IMAGE}"
 else
   die "Invalid type ${TYPE}"

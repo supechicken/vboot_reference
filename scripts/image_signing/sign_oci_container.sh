@@ -16,7 +16,7 @@ Signs <input_image> with keys in <key_dir>. Should have an imageloader.json
 file which imageloader can understand and will use to mount the squashfs
 image that provides the container's rootfs and OCI configuration.
 
-Input can be an unpacked imageloader image, or a CRX/ZIP file.
+Input can be an unpacked imageloader image, a CRX/ZIP file, or a tar.gz file.
 "
 
 # Parse command line.
@@ -72,6 +72,25 @@ sign_oci_container_zip() {
   ) >"${output}"
 }
 
+# Sign the tar holding OCI container(s), or demo mode resources. We look for
+# imageloader.json file.
+sign_oci_container_tar() {
+  [[ $# -eq 3 ]] || die "Usage: sign_oci_container_tar <input> <key> <output>"
+  local input="$1"
+  local key_file="$2"
+  local output="$3"
+  local tempdir=$(make_temp_dir)
+
+  info "Unpacking tar archive: ${input}"
+  tar -xzf "${input}" -C "${tempdir}"
+
+  sign_oci_container "${tempdir}" "${key_file}" "${tempdir}"
+
+  rm -f "${output}"
+  info "Packing tar archive:  ${output}"
+  tar -czf "${output}" -C "${tempdir}" .
+}
+
 main() {
   if [[ $# -ne 2 ]]; then
     flags_help
@@ -89,7 +108,12 @@ main() {
   : "${FLAGS_output:=${input}}"
 
   if [[ -f "${input}" ]]; then
-    sign_oci_container_zip "${input}" "${key_file}" "${FLAGS_output}"
+    filetype=$(file -b "${input}" | cut -d " " -f 1)
+    if [[ "${filetype}" == "gzip" ]]; then
+      sign_oci_container_tar "${input}" "${key_file}" "${FLAGS_output}"
+    else
+      sign_oci_container_zip "${input}" "${key_file}" "${FLAGS_output}"
+    fi
   else
     sign_oci_container "${input}" "${key_file}" "${FLAGS_output}"
   fi
