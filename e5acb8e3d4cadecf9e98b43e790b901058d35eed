@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c633679_9b60b3dd",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Nope, switch here means the keyboard hotkey.",
+      "parentUuid": "4b8565ec_58cf10f3",
+      "range": {
+        "startLine": 922,
+        "startChar": 18,
+        "endLine": 922,
+        "endChar": 31
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9daa8fcd_830bd1db",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-28T23:11:35Z",
       "side": 1,
       "message": "Nit: we\u0027re moving to kernel-style code style and names.  I won\u0027t block checking this in on a bulk-renaming pass, though.",
+      "range": {
+        "startLine": 924,
+        "startChar": 4,
+        "endLine": 924,
+        "endChar": 26
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6ed21b_565a772c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Renamed to \"vb2ex_get_alt_os_switch\".",
+      "parentUuid": "9daa8fcd_830bd1db",
       "range": {
         "startLine": 924,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8b53ffaa_e21c8e43",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Yeah, whoops.",
+      "parentUuid": "f15af7fe_350a08ca",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7812c138_cc58d810",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-28T23:11:35Z",
       "side": 1,
       "message": "These variable names are confusing.  How is VbExGetAltOSModeSwitch() different than enabled, below?\n\nswitch_last_boot isn\u0027t a switch, just a flag that the hotkey was pressed last time and so we still want to act like it is.\n\nOr does VbExGetAltOSModeSwitch() actually mean vb2_is_altos_hotkey_pressed()?",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 52
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b9ae6f_30affa2b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Yes, switch is used as a more general term for hotkey.",
+      "parentUuid": "7812c138_cc58d810",
       "range": {
         "startLine": 428,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c2fe3932_eea79beb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Hmm, I did this originally so I could use the |enabled| flag to decide the value for |req_enable| for manual testing.  (req_enable \u003d !enabled)\n\nI\u0027ll re-order it to follow the GetAltOSFlags call.",
+      "parentUuid": "8a295338_29624641",
+      "range": {
+        "startLine": 440,
+        "startChar": 5,
+        "endLine": 440,
+        "endChar": 7
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e7aec05_38de83dd",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -128,6 +248,30 @@
       "writtenOn": "2018-06-28T23:11:35Z",
       "side": 1,
       "message": "Ah.  So by \"switch\" we do mean \"hotkey\"?",
+      "range": {
+        "startLine": 473,
+        "startChar": 37,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc4b7a8_d5f1b1ad",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Yes.  I wanted to keep a more general term (same as \"dev switch\") in case we use something other than a keyboard hotkey in the future.",
+      "parentUuid": "7e7aec05_38de83dd",
       "range": {
         "startLine": 473,
         "startChar": 37,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1e40fd01_baf24ff4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "I think we have two options here...\n\n(1) Keep as-is using host events, and get this checked in for fishfooding.  Another subsequent CL can update the implementation of VbExGetAltOSModeSwitch.\n(2) Hold this CL until phoenixshen@ gets keyboard matrix retrieval implemented.  Update accordingly.\n\nI\u0027d prefer (1).",
+      "parentUuid": "c6b87a3b_076ed40a",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 4
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f9ecd5d_196564d0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "3289122a_34b2ee06",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "While we are still using host events, this allows us to simulate Alt OS keyboard switch while in EC-RO, as mentioned in the comment above.",
+      "parentUuid": "6f9ecd5d_196564d0",
+      "range": {
+        "startLine": 533,
+        "startChar": 26,
+        "endLine": 533,
+        "endChar": 48
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e247a95_b54b5f6c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -197,6 +389,30 @@
       "writtenOn": "2018-06-28T23:11:35Z",
       "side": 1,
       "message": "This isn\u0027t just checking the hotkey.  It\u0027s also looking at whether we even need to look at the hotkey, and handling disable requests.\n\nMaybe check_altos_requests()?",
+      "range": {
+        "startLine": 548,
+        "startChar": 10,
+        "endLine": 548,
+        "endChar": 28
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b5fab6_e916629d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "You\u0027re right, this function is more the body of \"Alt OS boot flow\".\n\nI think check_requests is also a little too specific, since it also controls the picker screen in the case that no enable/disable request is made.\n\nI could be okay with:\n- vb_alt_os_boot_flow\n- vb_check_alt_os\n- vb_check_alt_os_boot\n\nAny preference?",
+      "parentUuid": "2e247a95_b54b5f6c",
       "range": {
         "startLine": 548,
         "startChar": 10,
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "8d2003cd_8481d040",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Adding the argument for now.  We can implement the timeout in a later CL.",
+      "parentUuid": "553065cc_eeb00e7c",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f02b1ea_cac66b54",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 20
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "d08a5758_7dd75fd6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f02b1ea_cac66b54",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "169e9f74_b0163fce",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 20
@@ -299,6 +563,30 @@
       "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d7e39a_564416fc",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-29T21:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "169e9f74_b0163fce",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 3
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
