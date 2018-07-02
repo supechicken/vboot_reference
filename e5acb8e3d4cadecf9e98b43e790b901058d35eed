@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6bd17b31_f7cbd52c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-02T23:43:59Z",
+      "side": 1,
+      "message": "That\u0027s why I\u0027m confused.\n\nA switch is a persistent setting, like developer mode.  If it\u0027s a mode, it can be enabled or disabled.\n\nA button or hotkey is only asserted while it\u0027s held down.  It can be pressed or released.  Disabling it would mean disabling the check for whether it\u0027s pressed.",
+      "parentUuid": "8c633679_9b60b3dd",
+      "range": {
+        "startLine": 922,
+        "startChar": 18,
+        "endLine": 922,
+        "endChar": 31
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9daa8fcd_830bd1db",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 20
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Yes, switch is used as a more general term for hotkey.",
       "parentUuid": "7812c138_cc58d810",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 52
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d47fc8_56df9c4f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-02T23:43:59Z",
+      "side": 1,
+      "message": "See comment on nomenclature in header file.",
+      "parentUuid": "e5b9ae6f_30affa2b",
       "range": {
         "startLine": 428,
         "startChar": 0,
@@ -331,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "b184d694_b9d791d7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-02T23:43:59Z",
+      "side": 1,
+      "message": "Doesn\u0027t host events require wiring a new flag through coreboot?  It seems like a lot of code churn only to throw it all away in a week or two.",
+      "parentUuid": "1e40fd01_baf24ff4",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 4
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f9ecd5d_196564d0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -413,6 +485,30 @@
       "side": 1,
       "message": "You\u0027re right, this function is more the body of \"Alt OS boot flow\".\n\nI think check_requests is also a little too specific, since it also controls the picker screen in the case that no enable/disable request is made.\n\nI could be okay with:\n- vb_alt_os_boot_flow\n- vb_check_alt_os\n- vb_check_alt_os_boot\n\nAny preference?",
       "parentUuid": "2e247a95_b54b5f6c",
+      "range": {
+        "startLine": 548,
+        "startChar": 10,
+        "endLine": 548,
+        "endChar": 28
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2432446_bdccf2b7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-02T23:43:59Z",
+      "side": 1,
+      "message": "I\u0027m ok with check_alt_os.  If it\u0027s static to this file, it doesn\u0027t even need the vb_ or vb2_ prefix.",
+      "parentUuid": "f0b5fab6_e916629d",
       "range": {
         "startLine": 548,
         "startChar": 10,
