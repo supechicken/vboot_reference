@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ee3009dd_b8c5d8f3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-05T06:02:35Z",
+      "side": 1,
+      "message": "That makes sense.  I was hoping to use a more general term just in case in the future we have some \"non-keyboard hotkey\".  I considered \"toggle\" but that also sounds more like \"switch\".\n\nSo let\u0027s just standardize on using \"hotkey\" as its name.",
+      "parentUuid": "6bd17b31_f7cbd52c",
+      "range": {
+        "startLine": 922,
+        "startChar": 18,
+        "endLine": 922,
+        "endChar": 31
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9daa8fcd_830bd1db",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 20
@@ -235,6 +259,30 @@
       "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57eb3feb_89d94e1d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-05T06:02:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c4d47fc8_56df9c4f",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 52
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -403,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "0a47c8d6_977d928f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-05T06:02:35Z",
+      "side": 1,
+      "message": "Since phoenixshen already has the keyboard matrix CLs up, I\u0027ll wait for you and him to hash out the final implementation and then update accordingly.",
+      "parentUuid": "b184d694_b9d791d7",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 4
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f9ecd5d_196564d0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 20
@@ -509,6 +581,30 @@
       "side": 1,
       "message": "I\u0027m ok with check_alt_os.  If it\u0027s static to this file, it doesn\u0027t even need the vb_ or vb2_ prefix.",
       "parentUuid": "f0b5fab6_e916629d",
+      "range": {
+        "startLine": 548,
+        "startChar": 10,
+        "endLine": 548,
+        "endChar": 28
+      },
+      "revId": "e5acb8e3d4cadecf9e98b43e790b901058d35eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4478a140_52f13f7c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-05T06:02:35Z",
+      "side": 1,
+      "message": "So just to confirm, Vb and vb_ and vb2_ prefixes are only for when the function can be called outside of the source file?  Or outside of vboot source tree?",
+      "parentUuid": "d2432446_bdccf2b7",
       "range": {
         "startLine": 548,
         "startChar": 10,
