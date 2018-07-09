@@ -132,7 +132,7 @@ uint32_t VbExGetSwitches(uint32_t request_mask)
 		return 0;
 }
 
-int VbExLegacy(void)
+int VbExLegacy(struct vb2_context *ctx)
 {
 	vbexlegacy_called++;
 	return 0;
