@@ -26,6 +26,8 @@
 
 #include "gpt.h"
 
+struct vb2_context;
+
 /*****************************************************************************/
 /* Error codes */
 
@@ -1108,7 +1110,7 @@ enum {
 /**
  * Execute legacy boot option.
  */
-int VbExLegacy(void);
+int VbExLegacy(struct vb2_context *ctx);
 
 /* Regions for VbExRegionRead() */
 enum vb_firmware_region {
