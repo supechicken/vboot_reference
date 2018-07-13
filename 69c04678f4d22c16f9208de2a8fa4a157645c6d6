@@ -22,6 +22,30 @@
       "revId": "69c04678f4d22c16f9208de2a8fa4a157645c6d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca04f196_e60af08b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-13T17:31:28Z",
+      "side": 1,
+      "message": "Agreed -- this seems like general vboot refactoring for ToT.",
+      "parentUuid": "5899feb1_f35c6681",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "69c04678f4d22c16f9208de2a8fa4a157645c6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
