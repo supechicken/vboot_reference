@@ -1152,6 +1152,14 @@ elif [[ "${TYPE}" == "accessory_rwsig" ]]; then
   if [[ ! -e "${KEY_NAME}.vbprik2" ]]; then
     KEY_NAME="${KEY_DIR}/key"
   fi
+  # If one key is present in this container, assume it's the right one.
+  # See crbug.com/863464
+  if [[ ! -e "${KEY_NAME}.vbprik2" ]]; then
+    KEYS=( "${KEY_DIR}"/*.vbprik2 )
+    if [[ ${#KEYS[@]} -eq 1 ]]; then
+      KEY_NAME="${KEY_DIR}/$(basename ${KEYS} .vbprik2)"
+    fi
+  fi
   cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
   futility sign --type rwsig --prikey "${KEY_NAME}.vbprik2" \
            --version "${FIRMWARE_VERSION}" "${OUTPUT_IMAGE}"
