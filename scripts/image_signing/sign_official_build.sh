@@ -840,15 +840,16 @@ verify_uefi_signatures() {
   fi
 }
 
-# Sign an oci container with the given keys.
-# Args: CONTAINER KEY_DIR [OUTPUT_CONTAINER]
-sign_oci_container() {
+# Sign an oci container or demo mode resources with the given keys.
+# Args: CONTAINER KEY_DIR IMAGE_TYPE [OUTPUT_CONTAINER]
+sign_imageloader_image() {
   local image=$1
   local key_dir=$2
-  local output=$3
+  local image_type=$3
+  local output=$4
 
-  "${SCRIPT_DIR}/sign_oci_container.sh" \
-    "${image}" "${key_dir}" --output "${output}"
+  "${SCRIPT_DIR}/sign_imageloader_image.sh" \
+    "${image}" "${key_dir}" ${image_type} --output "${output}"
 }
 
 # Verify an image including rootfs hash using the specified keys.
@@ -1155,8 +1156,10 @@ elif [[ "${TYPE}" == "accessory_rwsig" ]]; then
   cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
   futility sign --type rwsig --prikey "${KEY_NAME}.vbprik2" \
            --version "${FIRMWARE_VERSION}" "${OUTPUT_IMAGE}"
-elif [[ "${TYPE}" == "oci-container" ]]; then
-  sign_oci_container "${INPUT_IMAGE}" "${KEY_DIR}" "${OUTPUT_IMAGE}"
+elif [[ "${TYPE}" == "oci-container" || \
+        "${TYPE}" == "demo-mode-resources" ]]; then
+  sign_imageloader_image "${INPUT_IMAGE}" "${KEY_DIR}" "${TYPE}" \
+    "${OUTPUT_IMAGE}"
 else
   die "Invalid type ${TYPE}"
 fi
