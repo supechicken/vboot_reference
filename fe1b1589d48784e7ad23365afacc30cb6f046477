@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a9142e_9c5f356a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-14T07:11:14Z",
+      "side": 1,
+      "message": "use / and not : in URIs.  you\u0027re telling people to connect to port 863464.",
+      "revId": "fe1b1589d48784e7ad23365afacc30cb6f046477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba80a66_c3b752f9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-14T07:11:14Z",
+      "side": 1,
+      "message": "never use `...` in scripts ... always use $(...)\n\nthen again, there\u0027s no need for `find` at all.  just use a glob and let the shell expand it.",
+      "revId": "fe1b1589d48784e7ad23365afacc30cb6f046477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a3fe4f_b7105028",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-14T07:11:14Z",
+      "side": 1,
+      "message": "use `[[` in bash scripts, never `[`",
+      "revId": "fe1b1589d48784e7ad23365afacc30cb6f046477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee8949d_71292bf6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-14T07:11:14Z",
+      "side": 1,
+      "message": "never use `...` in scripts ... always use $(...)",
+      "revId": "fe1b1589d48784e7ad23365afacc30cb6f046477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
