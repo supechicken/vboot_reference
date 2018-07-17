@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55f78de4_bb87f021",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-17T03:53:35Z",
+      "side": 1,
+      "message": "this is WAI.  the registered keyset name is only there for the insns\u003c-\u003esigner communication, it is not for the vboot scripts.\n\nif the vboot scripts are inferring data from the dirname, then that\u0027s a bug.  looks like it\u0027s always been broken, it only just started showing up as an issue.",
+      "revId": "94781fd2daef7b3f42ece821e3ce12169a864b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c27505d_26015c3e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-17T03:53:35Z",
+      "side": 1,
+      "message": "quote \"${KEYS}\"\n\nalso should be \"${KEYS[0]}\" since it\u0027s an array",
+      "revId": "94781fd2daef7b3f42ece821e3ce12169a864b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
