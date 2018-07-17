@@ -169,8 +169,9 @@ void vb2_check_recovery(struct vb2_context *ctx)
 			 * Promote subcode to reason.
 			 */
 			sd->recovery_reason = subcode;
-		else
-			/* Recovery was forced. Override recovery reason */
+		else if (!sd->recovery_reason)
+			/* Recovery was forced. Override recovery reason if we
+			 * don't have one. */
 			sd->recovery_reason = VB2_RECOVERY_RO_MANUAL;
 		sd->flags |= VB2_SD_FLAG_MANUAL_RECOVERY;
 	}
