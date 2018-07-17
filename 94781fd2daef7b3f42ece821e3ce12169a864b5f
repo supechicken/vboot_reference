@@ -33,6 +33,24 @@
       "revId": "94781fd2daef7b3f42ece821e3ce12169a864b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6e8659_ed390a5b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-07-17T03:55:43Z",
+      "side": 1,
+      "message": "actually, lets just delete all this logic and replace it with your array search\n\n elif [[ \"${TYPE}\" \u003d\u003d \"accessory_rwsig\" ]]; then\n   KEYS\u003d( \"${KEY_DIR}\"/*.vbprik2 )\n   if [[ ${#KEYS[@]} -eq 1 ]]; then\n     KEY_NAME\u003d\"${KEYS[0]}\"\n   else\n     die ...\n   fi\n   cp ...\n   futility sign ...",
+      "parentUuid": "5c27505d_26015c3e",
+      "revId": "94781fd2daef7b3f42ece821e3ce12169a864b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
