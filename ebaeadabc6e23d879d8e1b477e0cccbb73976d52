@@ -16,6 +16,29 @@
       "revId": "ebaeadabc6e23d879d8e1b477e0cccbb73976d52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf570a9_dee58304",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-18T04:46:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right fix for the problem.\n\nNormally, corrupting both kernels and rebooting will get you to the BROKEN screen.  That stashes the recovery reason in the subcode so it will persist across the manual reset that gets you to the INSERT screen.  See the start of recovery_ui() in vboot_ui.c.  We\u0027d then restore the recovery reason at line 166, above.\n\nI think what you\u0027re seeing is that NvStorage is not getting flushed/saved at the BROKEN screen.  So when you manually reboot, the recovery request is still pending, and hasn\u0027t been backed up to the subcode.\n\nIf it is indeed the case that NvStorage is not always getting saved, that could manifest in a number of other subtle ways - up to and including the device getting stuck in recovery mode.  So let\u0027s first rule that out before changing this behavior.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 24
+      },
+      "revId": "ebaeadabc6e23d879d8e1b477e0cccbb73976d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
