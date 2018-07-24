@@ -68,6 +68,30 @@
       "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df78c86_ecaffeca",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1286065
+      },
+      "writtenOn": "2018-07-24T23:42:32Z",
+      "side": 1,
+      "message": "DER is a binary representation of the key, so it should be as compact as we can get. Different curves produce different key sizes, but I\u0027m not qualified to say what a \"good\" curve would be for this purpose. For instance, secp112r1 takes only 52 bytes vs secp256k1\u0027s 88 bytes (the current 118 in this CL is a typo -- the commit message is correct). There\u0027s definitely a space/security tradeoff here.\n\ned25519 looks like it\u0027s secure and can fit in 51 bytes, but it\u0027s also not currently supported by OpenSSL. Available keys are listed with `openssl ecparam -list_curves`, and the sizes can be checked with:\n\nPRIVATE\u003d$(openssl ecparam -name secp256k1 -genkey -noout)\nPUBLIC\u003d$(openssl ec -in \u003c(echo \"$PRIVATE\") -pubout -outform DER 2\u003e/dev/null)\necho -n \"$PUBLIC\" | wc -c",
+      "parentUuid": "3774d770_1b9ddfec",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
