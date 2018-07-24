@@ -116,6 +116,30 @@
       "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce99e8ad_7d528f2a",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-24T23:56:19Z",
+      "side": 1,
+      "message": "The compressed representation of a P256 key should be only 33 bytes.",
+      "parentUuid": "8df78c86_ecaffeca",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
