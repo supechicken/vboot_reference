@@ -22,6 +22,9 @@
 #define FWMP_NV_MAX_SIZE 128
 #define REC_HASH_NV_INDEX                0x100b
 #define REC_HASH_NV_SIZE                 VB2_SHA256_DIGEST_SIZE
+#define OOBE_USB_AUTOCONFIG_KEY_NV_INDEX  0x100c
+/* Size of an secp256k1 EC curve public key in DER format. */
+#define OOBE_USB_AUTOCONFIG_KEY_NV_SIZE 88
 
 /* Structure definitions for TPM spaces */
 
