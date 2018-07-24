@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9fdd280d_f12aa65f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-24T23:27:46Z",
+      "side": 1,
+      "message": "Description does not match code",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847feea1_c6b8ba75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-24T23:27:46Z",
+      "side": 1,
+      "message": "\u0027make runtests\u0027 should be run on all vboot changes.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3774d770_1b9ddfec",
         "filename": "firmware/lib/include/rollback_index.h",
         "patchSetId": 4
