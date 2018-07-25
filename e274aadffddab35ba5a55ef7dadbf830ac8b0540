@@ -140,6 +140,30 @@
       "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ca86aa_ed86a14c",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1286065
+      },
+      "writtenOn": "2018-07-25T00:35:35Z",
+      "side": 1,
+      "message": "Ah, thanks, looks like the missing piece was `-conv_form compressed`: \n\nopenssl ec -in \u003c(echo \"$PRIVATE\") -noout -text -conv_form compressed | grep \u0027^pub:\u0027 -A 3 | tail -n +2 | tr : \u0027 \u0027\n\nThis results in 33 bytes as expected.",
+      "parentUuid": "ce99e8ad_7d528f2a",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "e274aadffddab35ba5a55ef7dadbf830ac8b0540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
