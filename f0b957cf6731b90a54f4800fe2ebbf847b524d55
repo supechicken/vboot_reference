@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f502f7f2_d9fbf589",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T16:59:37Z",
+      "side": 1,
+      "message": "Change to KEY_?  Maybe just delete HASH_?\n\nAlso please document what this space is for:\n\n/* Space to hold a temporary key for USB autoconfig; see crbug.com/793878. */",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f0b957cf6731b90a54f4800fe2ebbf847b524d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
