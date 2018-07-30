@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "224cd26a_75beb99b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2018-07-30T01:38:26Z",
+      "side": 1,
+      "message": "VbTryLegacy() only takes 1 input parameter so this fails to compile.",
+      "revId": "95ab37681a997054f00a3137c4211777bc946eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
