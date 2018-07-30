@@ -16,6 +16,24 @@
       "revId": "95ab37681a997054f00a3137c4211777bc946eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23274501_d4a8d28e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-30T03:32:06Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, Matt.  I\u0027ve created CL:1154729 to fix it.\n\nAlthough I\u0027m very confused -- how would this get through the commit queue?  Does firmware not get compiled as part of that process?",
+      "parentUuid": "224cd26a_75beb99b",
+      "revId": "95ab37681a997054f00a3137c4211777bc946eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
