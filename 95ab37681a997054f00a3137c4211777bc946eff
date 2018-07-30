@@ -34,6 +34,24 @@
       "revId": "95ab37681a997054f00a3137c4211777bc946eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a3503f_2291a999",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2018-07-30T04:27:29Z",
+      "side": 1,
+      "message": "Thanks.  This is the 2nd instance in a week (the other being https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/1130459 ) where I got hit by a change that probably shouldn\u0027t have made it through the queue (nor can I explain how that other change landed in a build).",
+      "parentUuid": "23274501_d4a8d28e",
+      "revId": "95ab37681a997054f00a3137c4211777bc946eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
