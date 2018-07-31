@@ -796,7 +796,11 @@ int VbGetArchPropertyInt(const char* name)
 		else
 			value = ReadGpio(GPIO_SIGNAL_TYPE_DEV);
 	} else if (!strcasecmp(name,"recoverysw_cur")) {
-		value = ReadGpio(GPIO_SIGNAL_TYPE_RECOVERY);
+		/* Systems with virtual recovery switches return error. */
+		if (VbGetSystemPropertyInt("recoverysw_virtual") == 1)
+			value = -1;
+		else
+			value = ReadGpio(GPIO_SIGNAL_TYPE_RECOVERY);
 	} else if (!strcasecmp(name,"wpsw_cur")) {
 		value = ReadGpio(GPIO_SIGNAL_TYPE_WP);
 		if (-1 != value && FwidStartsWith("Mario."))
