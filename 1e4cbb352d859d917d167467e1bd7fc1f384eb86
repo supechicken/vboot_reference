@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d04e5003_6fb66a67",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-31T23:54:33Z",
+      "side": 1,
+      "message": "recoverysw_is_virtual\n\n(to be clear we\u0027re returning the type of switch and not its state)",
+      "range": {
+        "startLine": 538,
+        "startChar": 42,
+        "endLine": 538,
+        "endChar": 43
+      },
+      "revId": "1e4cbb352d859d917d167467e1bd7fc1f384eb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
