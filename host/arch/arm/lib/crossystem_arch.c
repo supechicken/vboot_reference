@@ -410,6 +410,10 @@ int VbGetArchPropertyInt(const char* name)
 
 		return VbGetVarGpio("developer-switch");
 	} else if (!strcasecmp(name, "recoverysw_cur")) {
+		/* Systems with virtual recovery switches return error. */
+		if (VbGetSystemPropertyInt("recoverysw_is_virtual") == 1)
+			return -1;
+
 		int value;
 		value = VbGetPlatformGpioStatus("recovery");
 		if (value != -1)
