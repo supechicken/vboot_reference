@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "733dac01_5736a9d0",
+        "filename": "cgpt/cgpt_edit.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-08-11T01:26:21Z",
+      "side": 1,
+      "message": "This is always true after CheckValid(), don\u0027t need the other (dead) code paths.",
+      "revId": "236e487b604d35774ee4564d6654da68995c2da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fec56f4_7dcb29cc",
+        "filename": "cgpt/cgpt_edit.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-08-11T01:26:21Z",
+      "side": 1,
+      "message": "Please always write the sizeof() operator with parenthesis.",
+      "range": {
+        "startLine": 34,
+        "startChar": 55,
+        "endLine": 34,
+        "endChar": 67
+      },
+      "revId": "236e487b604d35774ee4564d6654da68995c2da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71269e58_424a597a",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-08-11T01:26:21Z",
+      "side": 1,
+      "message": "Can you factor these unrelated fixes out into a separate patch?",
+      "revId": "236e487b604d35774ee4564d6654da68995c2da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
