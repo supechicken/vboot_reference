@@ -16,6 +16,24 @@
       "revId": "4a0352935ead9820955d39ac7b28396f8bd37271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9dc894_f16095dd",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-08-13T21:32:50Z",
+      "side": 0,
+      "message": "I removed the test at nsanders@ suggestion.  What would be the correct upper limit?  Any increase would be latent bug that would show up as we scale the number of devices unibuilded.\n\nI am OK either way.\n\nThere is a similar check below that limits the entire file size to 4kb.",
+      "parentUuid": "0dd2de5e_c89a4181",
+      "revId": "4a0352935ead9820955d39ac7b28396f8bd37271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
