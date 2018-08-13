@@ -34,6 +34,24 @@
       "revId": "4a0352935ead9820955d39ac7b28396f8bd37271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26481682_7a6b537d",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-08-13T22:40:42Z",
+      "side": 0,
+      "message": "I was going to suggest either 1k or 4k as the line limit.\n\nI guess the file size covers that pretty well. ;\u003e",
+      "parentUuid": "dd9dc894_f16095dd",
+      "revId": "4a0352935ead9820955d39ac7b28396f8bd37271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
