@@ -22,13 +22,17 @@
 
 /* FMAP section names. */
 static const char *RO_FRID = "RO_FRID",
+		  *RO_GBB = "GBB",
+		  *RO_VPD = "RO_VPD",
+		  *RW_VPD = "RW_VPD",
 		  *RW_A = "RW_SECTION_A",
 		  *RW_B = "RW_SECTION_B",
 		  *RW_FWID = "RW_FWID",
 		  *RW_FWID_A = "RW_FWID_A",
 		  *RW_FWID_B = "RW_FWID_B",
 		  *RW_SHARED = "RW_SHARED",
-		  *RW_LEGACY = "RW_LEGACY";
+		  *RW_LEGACY = "RW_LEGACY",
+		  *RW_NVRAM = "RW_NVRAM";
 
 /* System environment values. */
 static const char *FWACT_A = "A",
@@ -419,6 +423,73 @@ static int write_optional_firmware(struct updater_config *cfg,
 	return write_firmware(cfg, image, section);
 }
 
+static int preserve_firmware_section(struct firmware_image *image_from,
+				     struct firmware_image *image_to,
+				     const char *section_name)
+{
+	struct firmware_section from, to;
+
+	find_firmware_section(&from, image_from, section_name);
+	find_firmware_section(&to, image_to, section_name);
+	if (!from.data || !to.data)
+		return -1;
+	memmove(to.data, from.data, MIN(from.size, to.size));
+	return 0;
+}
+
+static GoogleBinaryBlockHeader *find_gbb(struct firmware_image *image)
+{
+	struct firmware_section section;
+	GoogleBinaryBlockHeader *gbb_header;
+
+	find_firmware_section(&section, image, RO_GBB);
+	gbb_header = (GoogleBinaryBlockHeader *)section.data;
+	if (!futil_valid_gbb_header(gbb_header, section.size, NULL)) {
+		Error("%s: Cannot find GBB in image: %s.\n", __FUNCTION__,
+		      image->file_name);
+		return NULL;
+	}
+	return gbb_header;
+}
+
+static int preserve_gbb(struct firmware_image *image_from,
+			struct firmware_image *image_to)
+{
+	int len;
+	GoogleBinaryBlockHeader *gbb_from, *gbb_to;
+
+	gbb_from = find_gbb(image_from);
+	gbb_to = find_gbb(image_to);
+
+	if (!gbb_from || !gbb_to)
+		return -1;
+
+	/* Preserve flags. */
+	gbb_to->flags = gbb_from->flags;
+
+	/* Preserve HWID. */
+	len = strlen((char *)gbb_from + gbb_from->hwid_offset);
+	if (len >= gbb_to->hwid_size)
+		return -1;
+
+	memset((uint8_t *)gbb_to + gbb_to->hwid_offset, 0, gbb_to->hwid_size);
+	/* Size for strcpy already ensured in previous checks. */
+	strcpy((char *)gbb_to + gbb_to->hwid_offset,
+	       (char *)gbb_from + gbb_from->hwid_offset);
+	return 0;
+}
+
+static int preserve_images(struct updater_config *cfg)
+{
+	int errcnt = 0;
+	struct firmware_image *from = &cfg->from.image, *to = &cfg->to.image;
+	errcnt += preserve_gbb(from, to);
+	errcnt += preserve_firmware_section(from, to, RO_VPD);
+	errcnt += preserve_firmware_section(from, to, RW_VPD);
+	errcnt += preserve_firmware_section(from, to, RW_NVRAM);
+	return errcnt;
+}
+
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
@@ -463,6 +534,7 @@ static int update_firmware(struct updater_config *cfg)
 
 	while (cfg->try_update) {
 		const char *target;
+
 		/* TODO(hungte): Support vboot1. */
 		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
 		printf(">> Updating %s with trial boots.\n", target);
@@ -482,6 +554,7 @@ static int update_firmware(struct updater_config *cfg)
 			write_firmware(cfg, image_to, RW_LEGACY);
 	} else {
 		printf(">> Updating entire firmware images.\n");
+		preserve_images(cfg);
 
 		/* FMAP may be different so we should just update all. */
 		write_firmware(cfg, image_to, NULL);
