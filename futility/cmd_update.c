@@ -7,6 +7,7 @@
  */
 
 #include <assert.h>
+#include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,10 +29,28 @@ static const char *RO_FRID = "RO_FRID",
 		  *RW_FWID_B = "RW_FWID_B",
 		  *RW_SHARED = "RW_SHARED",
 		  *RW_LEGACY = "RW_LEGACY";
+
+/* System environment values. */
+static const char *FWACT_A = "A",
+	          *FWACT_B = "B",
+		  *WPSW_ENABLED = "1",
+		  *WPSW_DISABLED = "0";
+
 /* flashrom programmers. */
 static const char *PROG_HOST = "host",
 		  *PROG_EC = "ec",
 		  *PROG_PD = "ec:dev=1";
+
+enum target_type {
+	TARGET_SELF,
+	TARGET_UPDATE
+};
+
+enum wp_state {
+	WP_AUTO_DETECT = -1,
+	WP_DISABLED,
+	WP_ENABLED,
+};
 
 enum flashrom_ops {
 	FLASHROM_READ,
@@ -58,9 +77,23 @@ struct firmware_section {
 };
 
 struct system_env {
+	/* Getters. */
+	const char *(*get_mainfw_act)(struct system_env *env);
+	const char *(*get_tpm_fwver)(struct system_env *env);
+	const char *(*get_wp_hw)(struct system_env *env);
+	const char *(*get_wp_sw)(struct system_env *env);
+
+	/* Setter or special commands. */
 	int (*flashrom)(enum flashrom_ops op, const char *image_path,
 			const char *programmer, int verbose,
 			const char *section_name);
+	int (*crossystem)(const char *property, const char *value);
+
+	/* Cached or preset values. */
+	char *_mainfw_act;
+	char *_tpm_fwver;
+	char *_wp_hw;
+	char *_wp_sw;
 };
 
 struct updater_config {
@@ -69,6 +102,118 @@ struct updater_config {
 	int try_update;
 	int write_protection;
 };
+
+static void strip(char *s)
+{
+	int len;
+	assert(s);
+
+	len = strlen(s);
+	while (len-- > 0) {
+		if (!isascii(s[len]) || !isspace(s[len]))
+			break;
+		s[len] = '\0';
+	}
+}
+
+static char *host_shell(const char *command)
+{
+	/* Currently all commands we use do not have large output. */
+	char buf[COMMAND_BUFFER_SIZE];
+
+	int result;
+	FILE *fp = popen(command, "r");
+
+	Debug("%s: %s\n", __FUNCTION__, command);
+	buf[0] = '\0';
+	if (!fp) {
+		Debug("%s: Execution error for %s.\n", __FUNCTION__, command);
+		return strdup(buf);
+	}
+
+	fgets(buf, sizeof(buf), fp);
+	strip(buf);
+	result = pclose(fp);
+	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
+		Debug("%s: Execution failure with exit code %d: %s\n",
+		      __FUNCTION__, command, WEXITSTATUS(result));
+		/*
+		 * Discard all output if command failed, for example command
+		 * syntax failure may lead to garbage in stdout.
+		 */
+		buf[0] = '\0';
+	}
+	return strdup(buf);
+}
+
+static const char *host_get_crossystem_value(const char *name, char **value)
+{
+	char *buf;
+	char *result = *value;
+	if (result)
+		return result;
+
+	asprintf(&buf, "crossystem %s", name);
+	result = host_shell(buf);
+	free(buf);
+	*value = result;
+	Debug("%s: %s => %s\n", __FUNCTION__, name, result);
+	return result;
+}
+
+static const char *host_get_mainfw_act(struct system_env *env)
+{
+	return host_get_crossystem_value("mainfw_act", &env->_mainfw_act);
+}
+
+static const char *host_get_tpm_fwver(struct system_env *env)
+{
+	return host_get_crossystem_value("tpm_fwver", &env->_tpm_fwver);
+}
+
+static int host_crossystem(const char *property, const char *value)
+{
+	char *buf;
+	int r;
+	asprintf(&buf, "crossystem %s=%s", property, value);
+	Debug("%s: %s\n", __FUNCTION__, buf);
+	r = system(buf);
+	free(buf);
+	return r;
+}
+
+static const char *host_get_wp_hw(struct system_env *env)
+{
+	if (env->_wp_hw)
+		return env->_wp_hw;
+	/* wpsw refers to write protection 'switch', not 'software'. */
+	host_get_crossystem_value("wpsw_cur", &env->_wp_hw);
+	if (!*env->_wp_hw) {
+		free(env->_wp_hw);
+		host_get_crossystem_value("wpsw_boot", &env->_wp_hw);
+	}
+	return env->_wp_hw;
+}
+
+static const char *host_get_wp_sw(struct system_env *env)
+{
+	if (env->_wp_sw)
+		return env->_wp_sw;
+
+	switch (env->flashrom(FLASHROM_WP_STATUS, NULL, PROG_HOST, 0, NULL)) {
+	case WP_DISABLED:
+		env->_wp_sw = strdup(WPSW_DISABLED);
+		break;
+
+	case WP_ENABLED:
+		env->_wp_sw = strdup(WPSW_ENABLED);
+		break;
+
+	default:
+		env->_wp_sw = strdup("");
+	}
+	return env->_wp_sw;
+}
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
@@ -226,6 +371,30 @@ static void free_image(struct firmware_image *image)
 	memset(image, 0, sizeof(*image));
 }
 
+static const char *decide_rw_target(struct system_env *env,
+				    enum target_type target)
+{
+	const char *act = env->get_mainfw_act(env);
+	if (strcmp(act, FWACT_A) == 0)
+		return target == TARGET_UPDATE ? RW_B : RW_A;
+	else if (strcmp(act, FWACT_B) == 0)
+		return target == TARGET_UPDATE? RW_A : RW_B;
+	else
+		return NULL;
+}
+
+static int set_try_cookies(struct updater_config *cfg, const char *try_next)
+{
+	/*
+	 * If EC is available, we may need to do EC software sync which needs
+	 * few more cycles.
+	 */
+	const char *tries = cfg->to.ec_image.data ? "8" : "6";
+	RETURN_ON_FAILURE(cfg->env.crossystem("fw_try_next", try_next));
+	RETURN_ON_FAILURE(cfg->env.crossystem("fw_try_count", tries));
+	return 0;
+}
+
 static int write_firmware(struct updater_config *cfg,
 			  struct firmware_image *image,
 			  const char *section)
@@ -292,9 +461,14 @@ static int update_firmware(struct updater_config *cfg)
 	/* TODO(hungte) Auto detect WP if needed. */
 	wp_enabled = cfg->write_protection;
 
-	if (cfg->try_update) {
-		Error("Not supported yet.\n");
-		return UPDATE_ERR_UNKNOWN;
+	while (cfg->try_update) {
+		const char *target;
+		/* TODO(hungte): Support vboot1. */
+		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
+		printf(">> Updating %s with trial boots.\n", target);
+		write_firmware(cfg, image_to, target);
+		set_try_cookies(cfg, target);
+		return UPDATE_ERR_NONE;
 	}
 
 	if (wp_enabled) {
@@ -317,8 +491,18 @@ static int update_firmware(struct updater_config *cfg)
 	return UPDATE_ERR_NONE;
 }
 
+static void free_env(struct system_env *env)
+{
+	free(env->_mainfw_act);
+	free(env->_tpm_fwver);
+	free(env->_wp_hw);
+	free(env->_wp_sw);
+	memset(env, 0, sizeof(*env));
+}
+
 static void unload_updater_config(struct updater_config *cfg)
 {
+	free_env(&cfg->env);
 	free_image(&cfg->to.image);
 	free_image(&cfg->to.ec_image);
 	free_image(&cfg->to.pd_image);
@@ -371,10 +555,15 @@ static int do_update(int argc, char *argv[])
 			.pd_image = { .programmer = PROG_PD, },
 		},
 		.env = {
+			.get_mainfw_act = host_get_mainfw_act,
+			.get_tpm_fwver = host_get_tpm_fwver,
+			.get_wp_hw = host_get_wp_hw,
+			.get_wp_sw = host_get_wp_sw,
 			.flashrom = host_flashrom,
+			.crossystem = host_crossystem,
 		},
 		.try_update = 0,
-		.write_protection = 1,
+		.write_protection = WP_AUTO_DETECT,
 	};
 
 	opterr = 0;		/* quiet, you */
