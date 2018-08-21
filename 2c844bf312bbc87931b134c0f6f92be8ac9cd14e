@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de737655_4bd5c278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-08-21T18:52:26Z",
+      "side": 1,
+      "message": "Why does futility need to shell out into crossystem when they\u0027re both based in the same repository? I thought one of the main benefits of hosting the updater in here was that you could avoid that and keep it all in one binary. Can\u0027t you find a way to link in host/lib/crossystem.c (+arch stuff) and just call Vb(Get|Set)SystemPropertyXXX() in here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "2c844bf312bbc87931b134c0f6f92be8ac9cd14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
