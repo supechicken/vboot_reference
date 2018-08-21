@@ -7,10 +7,12 @@
  */
 
 #include <assert.h>
+#include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "crossystem.h"
 #include "fmap.h"
 #include "futility.h"
 #include "host_misc.h"
@@ -30,10 +32,25 @@ static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 		    FMAP_RW_SHARED = "RW_SHARED",
 		    FMAP_RW_LEGACY = "RW_LEGACY";
 
+/* System environment values. */
+static CONST_STRING FWACT_A = "A",
+		    FWACT_B = "B";
+
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
 		    PROG_EC = "ec",
 		    PROG_PD = "ec:dev=1";
+
+enum target_type {
+	TARGET_SELF,
+	TARGET_UPDATE,
+};
+
+enum active_slot {
+	SLOT_UNKNOWN = -1,
+	SLOT_A = 0,
+	SLOT_B,
+};
 
 enum flashrom_ops {
 	FLASHROM_READ,
@@ -55,13 +72,41 @@ struct firmware_section {
 	size_t size;
 };
 
+struct system_property {
+	int (*getter)();
+	int value;
+	int initialized;
+};
+
+enum system_property_type {
+	SYS_PROP_MAINFW_ACT,
+	SYS_PROP_MAX
+};
+
 struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 	int try_update;
 	int write_protection;
 	int emulation;
+	struct system_property system[SYS_PROP_MAX];
 };
+
+/* An helper function to return "mainfw_act" system property.  */
+static int host_get_mainfw_act()
+{
+	char buf[VB_MAX_STRING_PROPERTY];
+
+	if (!VbGetSystemPropertyString("mainfw_act", buf, sizeof(buf)))
+		return SLOT_UNKNOWN;
+
+	if (strcmp(buf, FWACT_A) == 0)
+		return SLOT_A;
+	else if (strcmp(buf, FWACT_B) == 0)
+		return SLOT_B;
+
+	return SLOT_UNKNOWN;
+}
 
 /*
  * A helper function to invoke flashrom(8) command.
@@ -119,6 +164,26 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	r = system(command);
 	free(command);
 	return r;
+}
+
+/*
+ * Gets the system property by given type.
+ * If the property was not loaded yet, invoke the property getter function
+ * and cache the result.
+ * Returns the property value.
+ */
+int get_system_property(enum system_property_type property_type,
+			struct updater_config *cfg)
+{
+	struct system_property *prop;
+
+	assert(property_type < SYS_PROP_MAX);
+	prop = &cfg->system[property_type];
+	if (!prop->initialized) {
+		prop->initialized = 1;
+		prop->value = prop->getter();
+	}
+	return prop->value;
 }
 
 /*
@@ -273,6 +338,65 @@ static void free_image(struct firmware_image *image)
 }
 
 /*
+ * Decides which target in RW firmware to manipulate.
+ * The `target` argument specifies if we want to know "the section to be
+ * update" (TARGET_UPDATE), or "the (active) section * to check" (TARGET_SELF).
+ * Returns the section name if success, otherwise NULL.
+ */
+static const char *decide_rw_target(struct updater_config *cfg,
+				    enum target_type target)
+{
+	const char *a = FMAP_RW_SECTION_A, *b = FMAP_RW_SECTION_B;
+	int slot = get_system_property(SYS_PROP_MAINFW_ACT, cfg);
+
+	switch (slot) {
+	case SLOT_A:
+		return target == TARGET_UPDATE ? b : a;
+
+	case SLOT_B:
+		return target == TARGET_UPDATE ? a : b;
+	}
+
+	return NULL;
+}
+
+/*
+ * Sets any needed system properties to indicate system should try the new
+ * firmware on next boot.
+ * The `target` argument is an FMAP section name indicating which to try.
+ * Returns 0 if success, non-zero if error.
+ */
+static int set_try_cookies(struct updater_config *cfg, const char *target)
+{
+	int tries = 6;
+	const char *slot;
+
+	/* EC Software Sync needs few more reboots. */
+	if (cfg->ec_image.data)
+		tries += 2;
+
+	/* Find new slot according to target (section) name. */
+	if (strcmp(target, FMAP_RW_SECTION_A) == 0)
+		slot = FWACT_A;
+	else if (strcmp(target, FMAP_RW_SECTION_A) == 0)
+		slot = FWACT_B;
+	else {
+		Error("%s: Unknown target: %s\n", __FUNCTION__, target);
+		return -1;
+	}
+
+	if (cfg->emulation) {
+		printf("(emulation) Setting try_next to %s, try_count to %d.\n",
+		       slot, tries);
+		return 0;
+	}
+
+	RETURN_ON_FAILURE(VbSetSystemPropertyString("fw_try_next", slot));
+	RETURN_ON_FAILURE(VbSetSystemPropertyInt("fw_try_count", tries));
+	return 0;
+}
+
+/*
  * Writes a section from given firmware image to system firmware.
  * If section_name is NULL, write whole image.
  * Returns 0 if success, non-zero if error.
@@ -344,6 +468,7 @@ enum updater_error_codes {
 	UPDATE_ERR_NEED_RO_UPDATE,
 	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_SYSTEM_IMAGE,
+	UPDATE_ERR_SET_COOKIES,
 	UPDATE_ERR_WRITE_FIRMWARE,
 	UPDATE_ERR_UNKNOWN,
 };
@@ -353,6 +478,7 @@ static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_NEED_RO_UPDATE] = "RO changed and no WP. Need full update.",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
+	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
@@ -368,8 +494,17 @@ static enum updater_error_codes update_try_rw_firmware(
 		struct firmware_image *image_to,
 		int wp_enabled)
 {
-	Error("Not supported yet.\n");
-	return UPDATE_ERR_UNKNOWN;
+	const char *target;
+
+	/* TODO(hungte): Support vboot1. */
+	target = decide_rw_target(cfg, TARGET_UPDATE);
+	printf(">> Updating %s with trial boots.\n", target);
+	if (write_firmware(cfg, image_to, target))
+		return UPDATE_ERR_WRITE_FIRMWARE;
+	if (set_try_cookies(cfg, target))
+		return UPDATE_ERR_SET_COOKIES;
+
+	return UPDATE_ERR_DONE;
 }
 
 /*
@@ -384,6 +519,7 @@ static enum updater_error_codes update_rw_firmrware(
 {
 	printf(">> Updating %s, %s, and %s.\n", FMAP_RW_SECTION_A,
 	       FMAP_RW_SECTION_B, FMAP_RW_SHARED);
+
 	/*
 	 * TODO(hungte) Speed up by flashing multiple sections in one
 	 * command, or provide diff file.
@@ -472,6 +608,11 @@ static enum updater_error_codes update_firmware(struct updater_config *cfg)
  */
 static void unload_updater_config(struct updater_config *cfg)
 {
+	int i;
+	for (i = 0; i < SYS_PROP_MAX; i++) {
+		cfg->system[i].initialized = 0;
+		cfg->system[i].value = 0;
+	}
 	free_image(&cfg->image);
 	free_image(&cfg->image_current);
 	free_image(&cfg->ec_image);
@@ -521,6 +662,10 @@ static int do_update(int argc, char *argv[])
 		.pd_image = { .programmer = PROG_PD, },
 		.try_update = 0,
 		.write_protection = 1,
+		.emulation = 0,
+		.system = {
+			[SYS_PROP_MAINFW_ACT] = {.getter = host_get_mainfw_act},
+		},
 	};
 
 	printf(">> Firmware updater started.\n");
