@@ -20,7 +20,9 @@
 
 typedef const char * const CONST_STRING;
 
+#define COMMAND_BUFFER_SIZE 256
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
+#define FLASHROM_WP_PATTERN "write protect is "
 
 /* FMAP section names. */
 static CONST_STRING FMAP_RO_SECTION = "RO_SECTION",
@@ -39,7 +41,9 @@ static CONST_STRING FMAP_RO_SECTION = "RO_SECTION",
 
 /* System environment values. */
 static CONST_STRING FWACT_A = "A",
-		    FWACT_B = "B";
+		    FWACT_B = "B",
+		    FLASHROM_WP_ENABLED = FLASHROM_WP_PATTERN "enabled",
+		    FLASHROM_WP_DISABLED = FLASHROM_WP_PATTERN "disabled";
 
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
@@ -51,9 +55,16 @@ enum target_type {
 	TARGET_UPDATE
 };
 
+enum wp_state {
+	WP_AUTO_DETECT = -1,
+	WP_DISABLED,
+	WP_ENABLED,
+};
+
 enum flashrom_ops {
 	FLASHROM_READ,
 	FLASHROM_WRITE,
+	FLASHROM_WP_STATUS,
 };
 
 struct firmware_image {
@@ -72,6 +83,8 @@ struct firmware_section {
 
 enum system_env_type {
 	ENV_MAINFW_ACT,
+	ENV_WP_HW,
+	ENV_WP_SW,
 	ENV_MAX
 };
 
@@ -97,6 +110,50 @@ struct updater_config {
 	int write_protection;
 };
 
+static void strip(char *s)
+{
+	int len;
+	assert(s);
+
+	len = strlen(s);
+	while (len-- > 0) {
+		if (!isascii(s[len]) || !isspace(s[len]))
+			break;
+		s[len] = '\0';
+	}
+}
+
+static char *host_shell(const char *command)
+{
+	/* Currently all commands we use do not have large output. */
+	char buf[COMMAND_BUFFER_SIZE];
+
+	int result;
+	FILE *fp = popen(command, "r");
+
+	Debug("%s: %s\n", __FUNCTION__, command);
+	buf[0] = '\0';
+	if (!fp) {
+		Debug("%s: Execution error for %s.\n", __FUNCTION__, command);
+		return strdup(buf);
+	}
+
+	if (fgets(buf, sizeof(buf), fp))
+		strip(buf);
+	result = pclose(fp);
+	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
+		Debug("%s: Execution failure with exit code %d: %s\n",
+		      __FUNCTION__, command, WEXITSTATUS(result));
+		/*
+		 * Discard all output if command failed, for example command
+		 * syntax failure may lead to garbage in stdout.
+		 */
+		buf[0] = '\0';
+	}
+	return strdup(buf);
+}
+
+
 static int host_set_property_int(const char *name, int value)
 {
 	Debug("%s: VbSetSystemPropertyInt('%s', %d)\n", __FUNCTION__, name,
@@ -119,16 +176,43 @@ static char *host_get_property_str(const char *name)
 	return strdup("");
 }
 
+static int *host_get_property_int(const char *name)
+{
+	int *p = (int *)malloc(sizeof(int));
+	*p = VbGetSystemPropertyInt(name);
+	return p;
+}
+
 static void *host_get_mainfw_act(struct system_env *env)
 {
 	return host_get_property_str("mainfw_act");
+}
+
+static void *host_get_wp_hw(struct system_env *env)
+{
+	/* wpsw refers to write protection 'switch', not 'software'. */
+	int *p = host_get_property_int("wpsw_cur");
+
+	/* wpsw_cur may be not available, especially in recovery mode. */
+	if (*p < 0) {
+		free(p);
+		p = host_get_property_int("wpsw_boot");
+	}
+	return p;
+}
+
+static void *host_get_wp_sw(struct system_env *env)
+{
+	int *p = (int *)malloc(sizeof(int));
+	*p = env->flashrom(FLASHROM_WP_STATUS, NULL, PROG_HOST, 0, NULL);
+	return p;
 }
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
 			 const char *section_name)
 {
-	char *command;
+	char *command, *result;
 	const char *op_cmd, *dash_i = "-i", *postfix = "";
 	int r;
 
@@ -154,6 +238,14 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		assert(image_path);
 		break;
 
+	case FLASHROM_WP_STATUS:
+		op_cmd = "--wp-status";
+		assert(image_path == NULL);
+		image_path = "";
+		/* grep is needed because host_shell only returns 1 line. */
+		postfix = " 2>/dev/null | grep \"" FLASHROM_WP_PATTERN "\"";
+		break;
+
 	default:
 		assert(0);
 		return -1;
@@ -172,8 +264,24 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (verbose)
 		printf("Executing: %s\n", command);
 
-	r = system(command);
+	if (op != FLASHROM_WP_STATUS) {
+		r = system(command);
+		free(command);
+		return r;
+	}
+
+	result = host_shell(command);
+	strip(result);
 	free(command);
+	Debug("%s: wp-status: %s\n", __FUNCTION__, result);
+
+	if (strstr(result, FLASHROM_WP_ENABLED))
+		r = WP_ENABLED;
+	else if (strstr(result, FLASHROM_WP_DISABLED))
+		r = WP_DISABLED;
+	else
+		r = -1;
+	free(result);
 	return r;
 }
 
@@ -187,6 +295,12 @@ static void *system_env_get(enum system_env_type env_type,
 		env->values[env_type] = p;
 	}
 	return p;
+}
+
+static int system_env_get_int(enum system_env_type env_type,
+			      struct system_env *env)
+{
+	return *(int *)system_env_get(env_type, env);
 }
 
 static const char *system_env_get_str(enum system_env_type env_type,
@@ -439,6 +553,26 @@ static int images_have_same_section(struct firmware_image *image_from,
 	find_firmware_section(&to, image_to, section_name);
 	return compare_section(&from, &to) == 0;
 }
+
+static int is_write_protection_enabled(struct updater_config *cfg)
+{
+	/* Default to enabled. */
+	int wp;
+
+	if (cfg->write_protection != WP_AUTO_DETECT)
+		return cfg->write_protection;
+
+	wp = system_env_get_int(ENV_WP_HW, &cfg->env);
+	if (wp != WP_DISABLED) {
+		/* For error or enabled, check WP SW. */
+		wp = system_env_get_int(ENV_WP_SW, &cfg->env);
+		/* Consider all errors as enabled. */
+		if (wp != WP_DISABLED)
+			wp = WP_ENABLED;
+	}
+	cfg->write_protection = wp;
+	return wp;
+}
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
@@ -480,8 +614,11 @@ static int update_firmware(struct updater_config *cfg)
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
 
-	/* TODO(hungte) Auto detect WP if needed. */
-	wp_enabled = cfg->write_protection;
+	wp_enabled = is_write_protection_enabled(cfg);
+	printf(">> Write protection: %d (%s; HW=%d, SW=%d).\n", wp_enabled,
+	       wp_enabled ? "enabled" : "disabled",
+	       system_env_get_int(ENV_WP_HW, &cfg->env),
+	       system_env_get_int(ENV_WP_SW, &cfg->env));
 
 	while (cfg->try_update) {
 		const char *target;
@@ -596,10 +733,12 @@ static int do_update(int argc, char *argv[])
 			.set_property_str = host_set_property_str,
 			.raw_getters = {
 				[ENV_MAINFW_ACT] = host_get_mainfw_act,
+				[ENV_WP_HW] = host_get_wp_hw,
+				[ENV_WP_SW] = host_get_wp_sw,
 			},
 		},
 		.try_update = 0,
-		.write_protection = 1,
+		.write_protection = WP_AUTO_DETECT,
 	};
 
 	opterr = 0;		/* quiet, you */
