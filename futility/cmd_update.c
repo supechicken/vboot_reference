@@ -22,9 +22,13 @@ typedef const char * const CONST_STRING;
 
 /* FMAP section names. */
 static CONST_STRING FMAP_RO_FRID = "RO_FRID",
+		    FMAP_RW_SECTION_A = "RW_SECTION_A",
+		    FMAP_RW_SECTION_B = "RW_SECTION_B",
 		    FMAP_RW_FWID = "RW_FWID",
 		    FMAP_RW_FWID_A = "RW_FWID_A",
-		    FMAP_RW_FWID_B = "RW_FWID_B";
+		    FMAP_RW_FWID_B = "RW_FWID_B",
+		    FMAP_RW_SHARED = "RW_SHARED",
+		    FMAP_RW_LEGACY = "RW_LEGACY";
 
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
@@ -60,6 +64,8 @@ struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 	struct system_env env;
+	int try_update;
+	int write_protection;
 };
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -218,10 +224,45 @@ static void free_image(struct firmware_image *image)
 	memset(image, 0, sizeof(*image));
 }
 
+static int write_firmware(struct updater_config *cfg,
+			  const struct firmware_image *image,
+			  const char *section_name)
+{
+	/* TODO(hungte) replace by mkstemp */
+	const char *tmp_file = "/tmp/.fwupdate.write";
+	if (vb2_write_file(tmp_file, image->data, image->size) != VB2_SUCCESS) {
+		Error("%s: Cannot write temporary file for output: %s\n",
+		      __FUNCTION__, tmp_file);
+		return -1;
+	}
+	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
+				 section_name);
+}
+
+static int write_optional_firmware(struct updater_config *cfg,
+				   const struct firmware_image *image,
+				   const char *section_name)
+{
+	if (!image->data) {
+		Debug("%s: No data in <%s> image.\n", __FUNCTION__,
+		      image->programmer);
+		return 0;
+	}
+	if (!firmware_section_exists(image, section_name)) {
+		Debug("%s: Image %s<%s> does not have section %s.\n",
+		      __FUNCTION__, image->file_name, image->programmer,
+		      section_name);
+		return 0;
+	}
+
+	return write_firmware(cfg, image, section_name);
+}
+
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_SYSTEM_IMAGE,
+	UPDATE_ERR_WRITE_FIRMWARE,
 	UPDATE_ERR_UNKNOWN,
 };
 
@@ -229,11 +270,13 @@ static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_NONE] = "None",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
+	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
 static int update_firmware(struct updater_config *cfg)
 {
+	int wp_enabled;
 	struct firmware_image *image_from = &cfg->image_current,
 			      *image_to = &cfg->image;
 	if (!image_to->data)
@@ -255,6 +298,39 @@ static int update_firmware(struct updater_config *cfg)
 	printf(">> Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
+
+	/* TODO(hungte) Auto detect WP if needed. */
+	wp_enabled = cfg->write_protection;
+
+	if (cfg->try_update) {
+		Error("Not supported yet.\n");
+		return UPDATE_ERR_UNKNOWN;
+	}
+
+	if (wp_enabled) {
+		printf(">> Updating %s, %s, and %s.\n", FMAP_RW_SECTION_A,
+		       FMAP_RW_SECTION_B, FMAP_RW_SHARED);
+		/*
+		 * TODO(hungte) Speed up by flashing multiple sections in one
+		 * command, or provide diff file.
+		 */
+		if (write_firmware(cfg, image_to, FMAP_RW_SECTION_A) ||
+		    write_firmware(cfg, image_to, FMAP_RW_SECTION_B) ||
+		    write_firmware(cfg, image_to, FMAP_RW_SHARED))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+
+		if (firmware_section_exists(image_to, FMAP_RW_LEGACY) &&
+		    write_firmware(cfg, image_to, FMAP_RW_LEGACY))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+	} else {
+		printf(">> Updating entire firmware images.\n");
+
+		/* FMAP may be different so we should just update all. */
+		if (write_firmware(cfg, image_to, NULL) ||
+		    write_optional_firmware(cfg, &cfg->ec_image, NULL) ||
+		    write_optional_firmware(cfg, &cfg->pd_image, NULL))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+	}
 	return UPDATE_ERR_NONE;
 }
 
@@ -272,11 +348,13 @@ static struct option const long_opts[] = {
 	{"image", 1, NULL, 'i'},
 	{"ec_image", 1, NULL, 'e'},
 	{"pd_image", 1, NULL, 'P'},
+	{"try", 0, NULL, 't'},
+	{"wp", 1, NULL, 'W'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
 
-static CONST_STRING short_opts = "hi:e:";
+static CONST_STRING short_opts = "hi:e:t";
 
 static void print_help(int argc, char *argv[])
 {
@@ -286,6 +364,10 @@ static void print_help(int argc, char *argv[])
 		"-i, --image=FILE    \tAP (host) firmware image (image.bin)\n"
 		"-e, --ec_image=FILE \tEC firmware image (i.e, ec.bin)\n"
 		"    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
+		"-t, --try           \tUse A/B trial update if possible\n"
+		"\n"
+		"Debugging and testing options:\n"
+		"    --wp=1|0        \tSpecify write protection status\n"
 		"",
 		argv[0]);
 }
@@ -301,6 +383,8 @@ static int do_update(int argc, char *argv[])
 		.env = {
 			.flashrom = host_flashrom,
 		},
+		.try_update = 0,
+		.write_protection = 1,
 	};
 
 	printf(">> Firmware updater started.\n");
@@ -316,6 +400,12 @@ static int do_update(int argc, char *argv[])
 			break;
 		case 'P':
 			errorcnt += load_image(optarg, &cfg.pd_image);
+			break;
+		case 't':
+			cfg.try_update = 1;
+			break;
+		case 'W':
+			cfg.write_protection = atoi(optarg);
 			break;
 
 		case 'h':
