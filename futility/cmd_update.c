@@ -11,11 +11,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "fmap.h"
 #include "futility.h"
 #include "host_misc.h"
 #include "utility.h"
 
 typedef const char * const CONST_STRING;
+
+/* FMAP section names. */
+static CONST_STRING FMAP_RO_FRID = "RO_FRID",
+		    FMAP_RW_FWID = "RW_FWID",
+		    FMAP_RW_FWID_A = "RW_FWID_A",
+		    FMAP_RW_FWID_B = "RW_FWID_B";
 
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
@@ -28,12 +35,74 @@ struct firmware_image {
 	uint8_t *data;
 	char *file_name;
 	char *ro_version, *rw_version_a, *rw_version_b;
+	FmapHeader *fmap_header;
+};
+
+struct firmware_section {
+	uint8_t *data;
+	size_t size;
 };
 
 struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 };
+
+/*
+ * Finds a firmware section by given name in the firmware image.
+ * If successful, return zero and *section argument contains the address and
+ * size of the section; otherwise failure.
+ */
+static int find_firmware_section(struct firmware_section *section,
+				 const struct firmware_image *image,
+				 const char *section_name)
+{
+	FmapAreaHeader *fah = NULL;
+	uint8_t *ptr;
+
+	section->data = NULL;
+	section->size = 0;
+	ptr = fmap_find_by_name(
+			image->data, image->size, image->fmap_header,
+			section_name, &fah);
+	if (!ptr)
+		return -1;
+	section->data = (uint8_t *)ptr;
+	section->size = fah->area_size;
+	return 0;
+}
+
+/*
+ * Returns true if the given FMAP section exists in the firmware image.
+ */
+static int firmware_section_exists(const struct firmware_image *image,
+				   const char *section_name)
+{
+	struct firmware_section section;
+	find_firmware_section(&section, image, section_name);
+	return section.data != NULL;
+}
+
+/*
+ * Loads the firmware information from an FMAP section in loaded firmware image.
+ * The section should only contain ASCIIZ string as firmware version.
+ * If successful, the return value is zero and *version points to a newly
+ * allocated string as firmware version (caller must free it); otherwise
+ * failure.
+ */
+static int load_firmware_version(struct firmware_image *image,
+				 const char *section_name,
+				 char **version)
+{
+	struct firmware_section fwid;
+	find_firmware_section(&fwid, image, section_name);
+	if (fwid.size) {
+		*version = strndup((const char*)fwid.data, fwid.size);
+		return 0;
+	}
+	*version = strdup("");
+	return -1;
+}
 
 /*
  * Loads a firmware image from file.
@@ -53,6 +122,29 @@ static int load_image(const char *file_name, struct firmware_image *image)
 	assert(image->data);
 	image->file_name = strdup(file_name);
 
+	image->fmap_header = fmap_find(image->data, image->size);
+	if (!image->fmap_header) {
+		Error("Invalid image file (missing FMAP): %s\n", file_name);
+		return -1;
+	}
+
+	if (!firmware_section_exists(image, FMAP_RO_FRID)) {
+		Error("Does not look like VBoot firmware image: %s", file_name);
+		return -1;
+	}
+
+	load_firmware_version(image, FMAP_RO_FRID, &image->ro_version);
+	if (firmware_section_exists(image, FMAP_RW_FWID_A)) {
+		char **a = &image->rw_version_a, **b = &image->rw_version_b;
+		load_firmware_version(image, FMAP_RW_FWID_A, a);
+		load_firmware_version(image, FMAP_RW_FWID_B, b);
+	} else if (firmware_section_exists(image, FMAP_RW_FWID)) {
+		char **a = &image->rw_version_a, **b = &image->rw_version_b;
+		load_firmware_version(image, FMAP_RW_FWID, a);
+		load_firmware_version(image, FMAP_RW_FWID, b);
+	} else {
+		Error("Unsupported VBoot firmware (no RW ID): %s", file_name);
+	}
 	return 0;
 }
 
@@ -71,11 +163,13 @@ static void free_image(struct firmware_image *image)
 
 enum updater_error_codes {
 	UPDATE_ERR_DONE,
+	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_UNKNOWN,
 };
 
 static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_DONE] = "Done (no error)",
+	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -85,6 +179,14 @@ static CONST_STRING updater_error_messages[] = {
  */
 static enum updater_error_codes update_firmware(struct updater_config *cfg)
 {
+	struct firmware_image *image_to = &cfg->image;
+	if (!image_to->data)
+		return UPDATE_ERR_NO_IMAGE;
+
+	printf(">> Target image: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
+	       image_to->file_name, image_to->ro_version,
+	       image_to->rw_version_a, image_to->rw_version_b);
+
 	return UPDATE_ERR_DONE;
 }
 
