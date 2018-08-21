@@ -20,7 +20,9 @@
 
 typedef const char * const CONST_STRING;
 
+#define COMMAND_BUFFER_SIZE 256
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
+#define FLASHROM_OUTPUT_WP_PATTERN "write protect is "
 
 /* FMAP section names. */
 static CONST_STRING FMAP_RO_FRID = "RO_FRID",
@@ -39,7 +41,11 @@ static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 
 /* System environment values. */
 static CONST_STRING FWACT_A = "A",
-		    FWACT_B = "B";
+		    FWACT_B = "B",
+		    FLASHROM_OUTPUT_WP_ENABLED = \
+			    FLASHROM_OUTPUT_WP_PATTERN "enabled",
+		    FLASHROM_OUTPUT_WP_DISABLED = \
+			    FLASHROM_OUTPUT_WP_PATTERN "disabled";
 
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
@@ -57,9 +63,15 @@ enum active_slot {
 	SLOT_B,
 };
 
+enum wp_state {
+	WP_DISABLED,
+	WP_ENABLED,
+};
+
 enum flashrom_ops {
 	FLASHROM_READ,
 	FLASHROM_WRITE,
+	FLASHROM_WP_STATUS,
 };
 
 struct firmware_image {
@@ -85,6 +97,8 @@ struct system_property {
 
 enum system_property_type {
 	SYS_PROP_MAINFW_ACT,
+	SYS_PROP_WP_HW,
+	SYS_PROP_WP_SW,
 	SYS_PROP_MAX
 };
 
@@ -92,10 +106,62 @@ struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 	int try_update;
-	int write_protection;
 	int emulation;
 	struct system_property system[SYS_PROP_MAX];
 };
+
+/*
+ * Strip a string (usually from shell execution output) by removing all the
+ * space characters (space, new line, tab, ... etc).
+ */
+static void strip(char *s)
+{
+	int len;
+	assert(s);
+
+	len = strlen(s);
+	while (len-- > 0) {
+		if (!isascii(s[len]) || !isspace(s[len]))
+			break;
+		s[len] = '\0';
+	}
+}
+
+/*
+ * Executes a command on current host and returns stripped command output.
+ * If the command has failed (exit code is not zero), returns an empty string.
+ * The caller is responsible for releasing the returned string.
+ */
+static char *host_shell(const char *command)
+{
+	/* Currently all commands we use do not have large output. */
+	char buf[COMMAND_BUFFER_SIZE];
+
+	int result;
+	FILE *fp = popen(command, "r");
+
+	Debug("%s: %s\n", __FUNCTION__, command);
+	buf[0] = '\0';
+	if (!fp) {
+		Debug("%s: Execution error for %s.\n", __FUNCTION__, command);
+		return strdup(buf);
+	}
+
+	if (fgets(buf, sizeof(buf), fp))
+		strip(buf);
+	result = pclose(fp);
+	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
+		Debug("%s: Execution failure with exit code %d: %s\n",
+		      __FUNCTION__, command, WEXITSTATUS(result));
+		/*
+		 * Discard all output if command failed, for example command
+		 * syntax failure may lead to garbage in stdout.
+		 */
+		buf[0] = '\0';
+	}
+	return strdup(buf);
+}
+
 
 /* An helper function to return "mainfw_act" system property.  */
 static int host_get_mainfw_act()
@@ -113,6 +179,19 @@ static int host_get_mainfw_act()
 	return SLOT_UNKNOWN;
 }
 
+/* A helper function to return the "hardware write protection" status. */
+static int host_get_wp_hw()
+{
+	/* wpsw refers to write protection 'switch', not 'software'. */
+	int v = VbGetSystemPropertyInt("wpsw_cur");
+
+	/* wpsw_cur may be not available, especially in recovery mode. */
+	if (v < 0)
+		v = VbGetSystemPropertyInt("wpsw_boot");
+
+	return v;
+}
+
 /*
  * A helper function to invoke flashrom(8) command.
  * Returns 0 if success, non-zero if error.
@@ -121,7 +200,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
 			 const char *section_name)
 {
-	char *command;
+	char *command, *result;
 	const char *op_cmd, *dash_i = "-i", *postfix = "";
 	int r;
 
@@ -147,6 +226,15 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		assert(image_path);
 		break;
 
+	case FLASHROM_WP_STATUS:
+		op_cmd = "--wp-status";
+		assert(image_path == NULL);
+		image_path = "";
+		/* grep is needed because host_shell only returns 1 line. */
+		postfix = " 2>/dev/null | grep \"" \
+			   FLASHROM_OUTPUT_WP_PATTERN "\"";
+		break;
+
 	default:
 		assert(0);
 		return -1;
@@ -166,9 +254,31 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (verbose)
 		printf("Executing: %s\n", command);
 
-	r = system(command);
+	if (op != FLASHROM_WP_STATUS) {
+		r = system(command);
+		free(command);
+		return r;
+	}
+
+	result = host_shell(command);
+	strip(result);
 	free(command);
+	Debug("%s: wp-status: %s\n", __FUNCTION__, result);
+
+	if (strstr(result, FLASHROM_OUTPUT_WP_ENABLED))
+		r = WP_ENABLED;
+	else if (strstr(result, FLASHROM_OUTPUT_WP_DISABLED))
+		r = WP_DISABLED;
+	else
+		r = -1;
+	free(result);
 	return r;
+}
+
+/* Helper function to return software write protection switch status. */
+static int host_get_wp_sw()
+{
+	return host_flashrom(FLASHROM_WP_STATUS, NULL, PROG_HOST, 0, NULL);
 }
 
 /*
@@ -189,6 +299,18 @@ int get_system_property(enum system_property_type property_type,
 		prop->value = prop->getter();
 	}
 	return prop->value;
+}
+
+static void override_system_property(enum system_property_type property_type,
+			     struct updater_config *cfg,
+			     int value)
+{
+	struct system_property *prop;
+
+	assert(property_type < SYS_PROP_MAX);
+	prop = &cfg->system[property_type];
+	prop->initialized = 1;
+	prop->value = value;
 }
 
 /*
@@ -592,8 +714,16 @@ static int images_have_same_section(const struct firmware_image *image_from,
  */
 static int is_write_protection_enabled(struct updater_config *cfg)
 {
-	/* TODO(hungte) Auto detect WP if needed. */
-	return cfg->write_protection;
+	/* Default to enabled. */
+	int wp = get_system_property(SYS_PROP_WP_HW, cfg);
+	if (wp == WP_DISABLED)
+		return wp;
+	/* For error or enabled, check WP SW. */
+	wp = get_system_property(SYS_PROP_WP_SW, cfg);
+	/* Consider all errors as enabled. */
+	if (wp != WP_DISABLED)
+		return WP_ENABLED;
+	return wp;
 }
 
 enum updater_error_codes {
@@ -737,6 +867,10 @@ static enum updater_error_codes update_firmware(struct updater_config *cfg)
 	       image_from->rw_version_a, image_from->rw_version_b);
 
 	wp_enabled = is_write_protection_enabled(cfg);
+	printf(">> Write protection: %d (%s; HW=%d, SW=%d).\n", wp_enabled,
+	       wp_enabled ? "enabled" : "disabled",
+	       get_system_property(SYS_PROP_WP_HW, cfg),
+	       get_system_property(SYS_PROP_WP_SW, cfg));
 
 	if (cfg->try_update) {
 		enum updater_error_codes r;
@@ -804,17 +938,18 @@ static void print_help(int argc, char *argv[])
 
 static int do_update(int argc, char *argv[])
 {
-	int i, errorcnt = 0;
+	int i, r, errorcnt = 0;
 	struct updater_config cfg = {
 		.image = { .programmer = PROG_HOST, },
 		.image_current = { .programmer = PROG_HOST, },
 		.ec_image = { .programmer = PROG_EC, },
 		.pd_image = { .programmer = PROG_PD, },
 		.try_update = 0,
-		.write_protection = 1,
 		.emulation = 0,
 		.system = {
 			[SYS_PROP_MAINFW_ACT] = {.getter = host_get_mainfw_act},
+			[SYS_PROP_WP_HW] = {.getter = host_get_wp_hw},
+			[SYS_PROP_WP_SW] = {.getter = host_get_wp_sw},
 		},
 	};
 
@@ -836,7 +971,9 @@ static int do_update(int argc, char *argv[])
 			cfg.try_update = 1;
 			break;
 		case 'W':
-			cfg.write_protection = atoi(optarg);
+			r = strtol(optarg, NULL, 0);
+			override_system_property(SYS_PROP_WP_HW, &cfg, r);
+			override_system_property(SYS_PROP_WP_SW, &cfg, r);
 			break;
 		case 'E':
 			cfg.emulation = 1;
