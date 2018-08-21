@@ -19,6 +19,7 @@
 #define COMMAND_BUFFER_SIZE 512
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
+#define FLASHROM_WP_PATTERN "write protect is "
 
 /* FMAP section names. */
 static const char *RO_ALL = "RO_SECTION",
@@ -39,7 +40,9 @@ static const char *RO_ALL = "RO_SECTION",
 static const char *FWACT_A = "A",
 	          *FWACT_B = "B",
 		  *WPSW_ENABLED = "1",
-		  *WPSW_DISABLED = "0";
+		  *WPSW_DISABLED = "0",
+		  *FLASHROM_WP_ENABLED = FLASHROM_WP_PATTERN "enabled",
+		  *FLASHROM_WP_DISABLED = FLASHROM_WP_PATTERN "disabled";
 
 /* flashrom programmers. */
 static const char *PROG_HOST = "host",
@@ -227,6 +230,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	char *command;
 	const char *op_cmd;
 	const char *postfix = "";
+	char *result;
 	int r;
 
 	if (debugging_enabled)
@@ -246,6 +250,14 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		assert(image_path);
 		break;
 
+	case FLASHROM_WP_STATUS:
+		op_cmd = "--wp-status";
+		assert(image_path == NULL);
+		image_path = "";
+		/* grep is needed because host_shell only returns 1 line. */
+		postfix = " 2>/dev/null | grep \"" FLASHROM_WP_PATTERN "\"";
+		break;
+
 	default:
 		assert(0);
 		return -1;
@@ -258,8 +270,23 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (verbose)
 		printf("Executing: %s\n", command);
 
-	r = system(command);
-	free(command);
+	if (op != FLASHROM_WP_STATUS) {
+		r = system(command);
+		free(command);
+		return r;
+	}
+
+	result = host_shell(command);
+	strip(result);
+	Debug("%s: wp-status: %s\n", __FUNCTION__, result);
+
+	if (strstr(result, FLASHROM_WP_ENABLED))
+		r = WP_ENABLED;
+	else if (strstr(result, FLASHROM_WP_DISABLED))
+		r = WP_DISABLED;
+	else
+		r = -1;
+	free(result);
 	return r;
 }
 
@@ -509,6 +536,24 @@ static int images_have_same_section(struct firmware_image *image_from,
 	find_firmware_section(&to, image_from, section_name);
 	return compare_section(&from, &to) == 0;
 }
+
+static int is_write_protection_enabled(struct updater_config *cfg)
+{
+	if (cfg->write_protection != WP_AUTO_DETECT)
+		return cfg->write_protection;
+
+	if (strcmp(cfg->env.get_wp_hw(&cfg->env), WPSW_DISABLED) == 0) {
+		cfg->write_protection = WP_DISABLED;
+	} else if (strcmp(cfg->env.get_wp_sw(&cfg->env), WPSW_DISABLED) == 0) {
+		cfg->write_protection = WP_DISABLED;
+	} else if (strcmp(cfg->env.get_wp_sw(&cfg->env), WPSW_ENABLED) == 0) {
+		cfg->write_protection = WP_ENABLED;
+	} else {
+		/* Cannot determine WP status - default to enabled. */
+		cfg->write_protection = WP_ENABLED;
+	}
+	return cfg->write_protection;
+}
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
@@ -550,8 +595,10 @@ static int update_firmware(struct updater_config *cfg)
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
 
-	/* TODO(hungte) Auto detect WP if needed. */
-	wp_enabled = cfg->write_protection;
+	wp_enabled = is_write_protection_enabled(cfg);
+	printf(">> Write protection: %d (%s; HW=%s, SW=%s).\n", wp_enabled,
+	       wp_enabled ? "enabled" : "disabled",
+	       cfg->env.get_wp_hw(&cfg->env), cfg->env.get_wp_sw(&cfg->env));
 
 	while (cfg->try_update) {
 		const char *target;
