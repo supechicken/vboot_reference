@@ -23,7 +23,8 @@ typedef const char * const CONST_STRING;
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
 
 /* FMAP section names. */
-static CONST_STRING FMAP_RO_FRID = "RO_FRID",
+static CONST_STRING FMAP_RO_SECTION = "RO_SECTION",
+		    FMAP_RO_FRID = "RO_FRID",
 		    FMAP_RO_GBB = "GBB",
 		    FMAP_RO_VPD = "RO_VPD",
 		    FMAP_RW_VPD = "RW_VPD",
@@ -458,12 +459,31 @@ static int preserve_images(struct updater_config *cfg)
 	return errcnt;
 }
 
+static int compare_section(const struct firmware_section *a,
+			   const struct firmware_section *b)
+{
+	if (a->size != b->size)
+		return a->size - b->size;
+	return memcmp(a->data, b->data, a->size);
+}
+
+static int images_have_same_section(struct firmware_image *image_from,
+				    struct firmware_image *image_to,
+				    const char *section_name)
+{
+	struct firmware_section from, to;
+
+	find_firmware_section(&from, image_from, section_name);
+	find_firmware_section(&to, image_to, section_name);
+	return compare_section(&from, &to) == 0;
+}
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_SYSTEM_IMAGE,
 	UPDATE_ERR_SET_COOKIES,
 	UPDATE_ERR_WRITE_FIRMWARE,
+	UPDATE_ERR_TARGET,
 	UPDATE_ERR_UNKNOWN,
 };
 
@@ -473,6 +493,7 @@ static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
+	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -504,10 +525,27 @@ static int update_firmware(struct updater_config *cfg)
 	/* TODO(hungte) Auto detect WP if needed. */
 	wp_enabled = cfg->write_protection;
 
-	if (cfg->try_update) {
+	/* Use while so we can use 'break' to fallback to RO+RW update mode. */
+	while (cfg->try_update) {
 		const char *target;
 
+		preserve_gbb(image_from, image_to);
+		if (!images_have_same_section(image_from, image_to,
+					      FMAP_RO_SECTION) && !wp_enabled) {
+			printf("WP disabled and RO changed. Do full update.\n");
+			break;
+		}
 		/* TODO(hungte): Support vboot1. */
+		target = decide_rw_target(&cfg->env, TARGET_SELF);
+		if (target == NULL) {
+			return UPDATE_ERR_TARGET;
+		}
+		printf("Checking %s contents...\n", target);
+		if (images_have_same_section(image_from, image_to, target)) {
+			printf(">> No need to update.\n");
+			return UPDATE_ERR_NONE;
+		}
+
 		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
 		printf(">> Updating %s with trial boots.\n", target);
 		if (write_firmware(cfg, image_to, target))
