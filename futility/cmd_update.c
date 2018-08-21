@@ -22,6 +22,7 @@
 
 /* FMAP section names. */
 static const char * const FMAP_RO_FRID = "RO_FRID",
+		  * const FMAP_RO_SECTION = "RO_SECTION",
 		  * const FMAP_RO_GBB = "GBB",
 		  * const FMAP_RO_VPD = "RO_VPD",
 		  * const FMAP_RW_VPD = "RW_VPD",
@@ -665,6 +666,36 @@ static int preserve_images(struct updater_config *cfg)
 }
 
 /*
+ * Compares if two sections have same size and data.
+ * Returns 0 if given sections are the same, otherwise non-zero.
+ */
+static int compare_section(const struct firmware_section *a,
+			   const struct firmware_section *b)
+{
+	if (a->size != b->size)
+		return a->size - b->size;
+	return memcmp(a->data, b->data, a->size);
+}
+
+/*
+ * Returns 1 if given images (image_from, image_to) have same contents in
+ * section by given name. This is primarily used to decide if we should engage
+ * an update or not, so if the section does not exist on both images the return
+ * value is also 1. Returns 0 if the contents are different, or if the section
+ * is missing on one of the images (but not both).
+ */
+static int section_needs_update(const struct firmware_image *image_from,
+				const struct firmware_image *image_to,
+				const char *section_name)
+{
+	struct firmware_section from, to;
+
+	find_firmware_section(&from, image_from, section_name);
+	find_firmware_section(&to, image_to, section_name);
+	return compare_section(&from, &to) == 0;
+}
+
+/*
  * Returns true if the write protection is enabled on current system.
  */
 static int is_write_protection_enabled(struct updater_config *cfg)
@@ -698,7 +729,7 @@ static const char * const updater_error_messages[] = {
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
-	[UPDATE_ERR_TARGET] = "Cannot find target section to update.",
+	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -716,12 +747,27 @@ static enum updater_error_codes update_try_rw_firmware(
 {
 	const char *target;
 
+	preserve_gbb(image_from, image_to);
+	if (!wp_enabled && !section_needs_update(
+			image_from, image_to, FMAP_RO_SECTION))
+		return UPDATE_ERR_NEED_RO_UPDATE;
+
 	/* TODO(hungte): Support vboot1. */
-	target = decide_rw_target(cfg, TARGET_UPDATE);
-	if (!target) {
+	target = decide_rw_target(cfg, TARGET_SELF);
+	if (target == NULL) {
 		Error("TRY-RW update needs system to boot in RW firmware.\n");
 		return UPDATE_ERR_TARGET;
 	}
+
+	printf("Checking %s contents...\n", target);
+	if (section_needs_update(image_from, image_to, target)) {
+		printf(">> No need to update.\n");
+		return UPDATE_ERR_DONE;
+	}
+	target = decide_rw_target(cfg, TARGET_UPDATE);
+	if (!target)
+		return UPDATE_ERR_TARGET;
+
 	printf(">> TRY-RW UPDATE: Updating %s to try on reboot.\n", target);
 	if (write_firmware(cfg, image_to, target))
 		return UPDATE_ERR_WRITE_FIRMWARE;
