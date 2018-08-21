@@ -21,9 +21,13 @@
 
 /* FMAP section names. */
 static const char *RO_FRID = "RO_FRID",
+		  *RW_A = "RW_SECTION_A",
+		  *RW_B = "RW_SECTION_B",
 		  *RW_FWID = "RW_FWID",
 		  *RW_FWID_A = "RW_FWID_A",
-		  *RW_FWID_B = "RW_FWID_B";
+		  *RW_FWID_B = "RW_FWID_B",
+		  *RW_SHARED = "RW_SHARED",
+		  *RW_LEGACY = "RW_LEGACY";
 /* flashrom programmers. */
 static const char *PROG_HOST = "host",
 		  *PROG_EC = "ec",
@@ -62,6 +66,8 @@ struct system_env {
 struct updater_config {
 	struct firmware_image_set from, to;
 	struct system_env env;
+	int try_update;
+	int write_protection;
 };
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -220,6 +226,30 @@ static void free_image(struct firmware_image *image)
 	memset(image, 0, sizeof(*image));
 }
 
+static int write_firmware(struct updater_config *cfg,
+			  struct firmware_image *image,
+			  const char *section)
+{
+	/* TODO(hungte) replace by mkstemp */
+	const char *tmp_file = "/tmp/.fwupdate.write";
+	FILE *fp = fopen(tmp_file, "wb");
+	if (!fp)
+		return -1;
+	fwrite(image->data, image->size, 1, fp);
+	fclose(fp);
+	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
+				 section);
+}
+
+static int write_optional_firmware(struct updater_config *cfg,
+				   struct firmware_image *image,
+				   const char *section)
+{
+	if (!image->data)
+		return 0;
+	return write_firmware(cfg, image, section);
+}
+
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
@@ -236,6 +266,7 @@ static const char *updater_error_messages[] = {
 
 static int update_firmware(struct updater_config *cfg)
 {
+	int wp_enabled;
 	struct firmware_image *image_from = &cfg->from.image,
 			      *image_to = &cfg->to.image;
 	if (!image_to->data)
@@ -257,6 +288,32 @@ static int update_firmware(struct updater_config *cfg)
 	printf(">> Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
+
+	/* TODO(hungte) Auto detect WP if needed. */
+	wp_enabled = cfg->write_protection;
+
+	if (cfg->try_update) {
+		Error("Not supported yet.\n");
+		return UPDATE_ERR_UNKNOWN;
+	}
+
+	if (wp_enabled) {
+		printf(">> Updating %s, %s, and %s.\n", RW_A, RW_B, RW_SHARED);
+
+		write_firmware(cfg, image_to, RW_A);
+		write_firmware(cfg, image_to, RW_B);
+		write_firmware(cfg, image_to, RW_SHARED);
+
+		if (firmware_section_exists(image_to, RW_LEGACY))
+			write_firmware(cfg, image_to, RW_LEGACY);
+	} else {
+		printf(">> Updating entire firmware images.\n");
+
+		/* FMAP may be different so we should just update all. */
+		write_firmware(cfg, image_to, NULL);
+		write_optional_firmware(cfg, &cfg->to.ec_image, NULL);
+		write_optional_firmware(cfg, &cfg->to.pd_image, NULL);
+	}
 	return UPDATE_ERR_NONE;
 }
 
@@ -276,11 +333,13 @@ static struct option long_opts[] = {
 	{"image", 1, NULL, 'i'},
 	{"ec_image", 1, NULL, 'e'},
 	{"pd_image", 1, NULL, 'P'},
+	{"try", 0, NULL, 't'},
+	{"wp", 1, NULL, 'W'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
 
-static const char *short_opts = "i:e:";
+static const char *short_opts = "i:e:t";
 static int errorcnt = 0;
 
 static void print_help(int argc, char *argv[])
@@ -291,6 +350,8 @@ static void print_help(int argc, char *argv[])
 		"-i, --image=FILE   \tAP (host) firmware image (image.bin)\n"
 		"-e, --ec_image=FILE\tEC firmware image (i.e, ec.bin)\n"
 		"    --pd_image=FILE\tPD firmware image (i.e, pd.bin)\n"
+		"-t, --try          \tUse A/B trial update if possible\n"
+		"    --wp=1|0       \tSpecify write protection status\n"
 		"",
 		argv[0]);
 }
@@ -312,6 +373,8 @@ static int do_update(int argc, char *argv[])
 		.env = {
 			.flashrom = host_flashrom,
 		},
+		.try_update = 0,
+		.write_protection = 1,
 	};
 
 	opterr = 0;		/* quiet, you */
@@ -325,6 +388,12 @@ static int do_update(int argc, char *argv[])
 			break;
 		case 'P':
 			errorcnt += load_image(optarg, &cfg.to.pd_image);
+			break;
+		case 't':
+			cfg.try_update = 1;
+			break;
+		case 'W':
+			cfg.write_protection = atoi(optarg);
 			break;
 		case 'h':
 			print_help(argc, argv);
