@@ -22,6 +22,30 @@
       "revId": "2c844bf312bbc87931b134c0f6f92be8ac9cd14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b186c3_037e36eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-21T19:05:57Z",
+      "side": 1,
+      "message": "I think that would be the long term plan.\n\nIt\u0027s true updater in vboot repo would prevent lots of real fork - for example I\u0027ve merged dump_fmap, load_fmap, vbutil_key, vbutil_firmware, gbb_utility etc. However, crossystem is currently not in futility and not seems like a trivial job.\n\nFor now I\u0027d like to get the updater features ready first, then we can revise by merging crossystem into futility so updater can use it.",
+      "parentUuid": "de737655_4bd5c278",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "2c844bf312bbc87931b134c0f6f92be8ac9cd14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
