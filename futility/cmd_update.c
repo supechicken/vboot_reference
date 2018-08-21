@@ -18,6 +18,8 @@
 
 typedef const char * const CONST_STRING;
 
+#define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
+
 /* FMAP section names. */
 static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 		    FMAP_RW_FWID = "RW_FWID",
@@ -28,6 +30,11 @@ static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 static CONST_STRING PROG_HOST = "host",
 		    PROG_EC = "ec",
 		    PROG_PD = "ec:dev=1";
+
+enum flashrom_ops {
+	FLASHROM_READ,
+	FLASHROM_WRITE,
+};
 
 struct firmware_image {
 	const char *programmer;
@@ -47,6 +54,60 @@ struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 };
+
+static int host_flashrom(enum flashrom_ops op, const char *image_path,
+			 const char *programmer, int verbose,
+			 const char *section_name)
+{
+	char *command;
+	const char *op_cmd, *dash_i = "-i", *postfix = "";
+	int r;
+
+	if (debugging_enabled)
+		verbose = 1;
+
+	if (!verbose)
+		postfix = " >/dev/null 2>&1";
+
+	if (!section_name || !*section_name) {
+		dash_i = "";
+		section_name = "";
+	}
+
+	switch (op) {
+	case FLASHROM_READ:
+		op_cmd = "-r";
+		assert(image_path);
+		break;
+
+	case FLASHROM_WRITE:
+		op_cmd = "-w";
+		assert(image_path);
+		break;
+
+	default:
+		assert(0);
+		return -1;
+	}
+
+	/* TODO(hungte) In future we should link with flashrom directly. */
+	r = asprintf(&command, "flashrom %s %s -p %s %s %s %s", op_cmd,
+		     image_path, programmer, dash_i, section_name, postfix);
+
+	if (r == -1) {
+		/* `command` will be not available. */
+		Error("%s: Cannot allocate memory for command to execute.\n",
+		      __FUNCTION__);
+		return -1;
+	}
+
+	if (verbose)
+		printf("Executing: %s\n", command);
+
+	r = system(command);
+	free(command);
+	return r;
+}
 
 static int find_firmware_section(struct firmware_section *section,
 				 const struct firmware_image *image,
@@ -129,6 +190,17 @@ static int load_image(const char *file_name, struct firmware_image *image)
 	return 0;
 }
 
+static int load_system_image(struct updater_config *cfg,
+			     struct firmware_image *image)
+{
+	/* TODO(hungte) replace by mkstemp */
+	const char *tmp_file = "/tmp/.fwupdate.read";
+
+	RETURN_ON_FAILURE(host_flashrom(
+			FLASHROM_READ, tmp_file, image->programmer, 0, NULL));
+	return load_image(tmp_file, image);
+}
+
 static void free_image(struct firmware_image *image)
 {
 	free(image->data);
@@ -142,24 +214,40 @@ static void free_image(struct firmware_image *image)
 enum updater_error_codes {
 	UPDATE_ERR_DONE,
 	UPDATE_ERR_NO_IMAGE,
+	UPDATE_ERR_SYSTEM_IMAGE,
 	UPDATE_ERR_UNKNOWN,
 };
 
 static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_DONE] = "Done (no error)",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
+	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
 static int update_firmware(struct updater_config *cfg)
 {
-	struct firmware_image *image_to = &cfg->image;
+	struct firmware_image *image_from = &cfg->image_current,
+			      *image_to = &cfg->image;
 	if (!image_to->data)
 		return UPDATE_ERR_NO_IMAGE;
 
 	printf(">> Target image: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_to->file_name, image_to->ro_version,
 	       image_to->rw_version_a, image_to->rw_version_b);
+
+	if (!image_from->data) {
+		/*
+		 * TODO(hungte) Read only RO_SECTION, VBLOCK_A, VBLOCK_B,
+		 * RO_VPD, RW_VPD, RW_NVRAM, RW_LEGACY.
+		 */
+		printf("Loading current system firmware...\n");
+		if (load_system_image(cfg, image_from) != 0)
+			return UPDATE_ERR_SYSTEM_IMAGE;
+	}
+	printf(">> Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
+	       image_from->file_name, image_from->ro_version,
+	       image_from->rw_version_a, image_from->rw_version_b);
 
 	return UPDATE_ERR_DONE;
 }
