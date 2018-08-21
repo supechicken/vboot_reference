@@ -23,7 +23,8 @@ typedef const char * const CONST_STRING;
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
 
 /* FMAP section names. */
-static CONST_STRING FMAP_RO_FRID = "RO_FRID",
+static CONST_STRING FMAP_RO_SECTION = "RO_SECTION",
+		    FMAP_RO_FRID = "RO_FRID",
 		    FMAP_RO_GBB = "GBB",
 		    FMAP_RO_VPD = "RO_VPD",
 		    FMAP_RW_VPD = "RW_VPD",
@@ -472,6 +473,25 @@ static int preserve_images(struct updater_config *cfg)
 	return errcnt;
 }
 
+static int compare_section(const struct firmware_section *a,
+			   const struct firmware_section *b)
+{
+	if (a->size != b->size)
+		return a->size - b->size;
+	return memcmp(a->data, b->data, a->size);
+}
+
+static int images_have_same_section(const struct firmware_image *image_from,
+				    const struct firmware_image *image_to,
+				    const char *section_name)
+{
+	struct firmware_section from, to;
+
+	find_firmware_section(&from, image_from, section_name);
+	find_firmware_section(&to, image_to, section_name);
+	return compare_section(&from, &to) == 0;
+}
+
 static int is_write_protection_enabled(struct updater_config *cfg)
 {
 	/* TODO(hungte) Auto detect WP if needed. */
@@ -485,6 +505,7 @@ enum updater_error_codes {
 	UPDATE_ERR_SYSTEM_IMAGE,
 	UPDATE_ERR_SET_COOKIES,
 	UPDATE_ERR_WRITE_FIRMWARE,
+	UPDATE_ERR_TARGET,
 	UPDATE_ERR_UNKNOWN,
 };
 
@@ -495,6 +516,7 @@ static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
+	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -505,14 +527,27 @@ static int update_try_rw_firmware(struct updater_config *cfg,
 {
 	const char *target;
 
+	preserve_gbb(image_from, image_to);
+	if (!wp_enabled && !images_have_same_section(
+			image_from, image_to, FMAP_RO_SECTION))
+		return UPDATE_ERR_NEED_RO_UPDATE;
+
 	/* TODO(hungte): Support vboot1. */
+	target = decide_rw_target(cfg, TARGET_SELF);
+	if (target == NULL)
+		return UPDATE_ERR_TARGET;
+
+	printf("Checking %s contents...\n", target);
+	if (images_have_same_section(image_from, image_to, target)) {
+		printf(">> No need to update.\n");
+		return UPDATE_ERR_DONE;
+	}
 	target = decide_rw_target(cfg, TARGET_UPDATE);
 	printf(">> Updating %s with trial boots.\n", target);
 	if (write_firmware(cfg, image_to, target))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 	if (set_try_cookies(cfg, target))
 		return UPDATE_ERR_SET_COOKIES;
-
 	return UPDATE_ERR_DONE;
 }
 
