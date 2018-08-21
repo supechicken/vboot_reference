@@ -7,10 +7,12 @@
  */
 
 #include <assert.h>
+#include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "crossystem.h"
 #include "fmap.h"
 #include "futility.h"
 #include "host_misc.h"
@@ -30,10 +32,25 @@ static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 		    FMAP_RW_SHARED = "RW_SHARED",
 		    FMAP_RW_LEGACY = "RW_LEGACY";
 
+/* System environment values. */
+static CONST_STRING FWACT_A = "A",
+		    FWACT_B = "B";
+
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
 		    PROG_EC = "ec",
 		    PROG_PD = "ec:dev=1";
+
+enum target_type {
+	TARGET_SELF,
+	TARGET_UPDATE,
+};
+
+enum active_slot {
+	SLOT_UNKNOWN = -1,
+	SLOT_A = 0,
+	SLOT_B,
+};
 
 enum flashrom_ops {
 	FLASHROM_READ,
@@ -55,10 +72,24 @@ struct firmware_section {
 	size_t size;
 };
 
+struct env_property {
+	int (*getter)();
+	int value;
+	int initialized;
+};
+
+enum env_property_types {
+	ENV_PROP_MAINFW_ACT,
+	ENV_PROP_MAX
+};
+
 struct system_env {
+	/* Setters or special commands without preset values. */
 	int (*flashrom)(enum flashrom_ops op, const char *image_path,
 			const char *programmer, int verbose,
 			const char *section_name);
+
+	struct env_property properties[ENV_PROP_MAX];
 };
 
 struct updater_config {
@@ -69,6 +100,21 @@ struct updater_config {
 	int write_protection;
 	int emulation;
 };
+
+static int host_get_mainfw_act()
+{
+	char buf[VB_MAX_STRING_PROPERTY];
+
+	if (!VbGetSystemPropertyString("mainfw_act", buf, sizeof(buf)))
+		return SLOT_UNKNOWN;
+
+	if (strcmp(buf, FWACT_A) == 0)
+		return SLOT_A;
+	else if (strcmp(buf, FWACT_B) == 0)
+		return SLOT_B;
+
+	return SLOT_UNKNOWN;
+}
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
@@ -122,6 +168,19 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	r = system(command);
 	free(command);
 	return r;
+}
+
+int get_env_property(enum env_property_types env_type, struct system_env *env)
+{
+	struct env_property *prop;
+
+	assert(env_type < ENV_PROP_MAX);
+	prop = &env->properties[env_type];
+	if (!prop->initialized) {
+		prop->initialized = 1;
+		prop->value = prop->getter();
+	}
+	return prop->value;
 }
 
 static int find_firmware_section(struct firmware_section *section,
@@ -244,6 +303,53 @@ static void free_image(struct firmware_image *image)
 	memset(image, 0, sizeof(*image));
 }
 
+static const char *decide_rw_target(struct system_env *env,
+				    enum target_type target)
+{
+	const char *a = FMAP_RW_SECTION_A, *b = FMAP_RW_SECTION_B;
+	int slot = get_env_property(ENV_PROP_MAINFW_ACT, env);
+
+	switch (slot) {
+	case SLOT_A:
+		return target == TARGET_UPDATE ? b : a;
+
+	case SLOT_B:
+		return target == TARGET_UPDATE ? a : b;
+	}
+
+	return NULL;
+}
+
+static int set_try_cookies(struct updater_config *cfg, const char *target)
+{
+	int tries = 6;
+	const char *slot;
+
+	/* EC Software Sync needs few more reboots. */
+	if (cfg->ec_image.data)
+		tries += 2;
+
+	/* Find new slot according to target (section) name. */
+	if (strcmp(target, FMAP_RW_SECTION_A) == 0)
+		slot = FWACT_A;
+	else if (strcmp(target, FMAP_RW_SECTION_A) == 0)
+		slot = FWACT_B;
+	else {
+		Error("%s: Unknown target: %s\n", __FUNCTION__, target);
+		return -1;
+	}
+
+	if (cfg->emulation) {
+		printf("(emulation) Setting try_next to %s, try_count to %d.\n",
+		       slot, tries);
+		return 0;
+	}
+
+	RETURN_ON_FAILURE(VbSetSystemPropertyString("fw_try_next", slot));
+	RETURN_ON_FAILURE(VbSetSystemPropertyInt("fw_try_count", tries));
+	return 0;
+}
+
 static int write_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
 			  const char *section_name)
@@ -295,6 +401,7 @@ enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_SYSTEM_IMAGE,
+	UPDATE_ERR_SET_COOKIES,
 	UPDATE_ERR_WRITE_FIRMWARE,
 	UPDATE_ERR_UNKNOWN,
 };
@@ -303,6 +410,7 @@ static CONST_STRING updater_error_messages[] = {
 	[UPDATE_ERR_NONE] = "None",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
+	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
@@ -336,8 +444,15 @@ static int update_firmware(struct updater_config *cfg)
 	wp_enabled = cfg->write_protection;
 
 	if (cfg->try_update) {
-		Error("Not supported yet.\n");
-		return UPDATE_ERR_UNKNOWN;
+		const char *target;
+		/* TODO(hungte): Support vboot1. */
+		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
+		printf(">> Updating %s with trial boots.\n", target);
+		if (write_firmware(cfg, image_to, target))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+		if (set_try_cookies(cfg, target))
+			return UPDATE_ERR_SET_COOKIES;
+		return UPDATE_ERR_NONE;
 	}
 
 	if (wp_enabled) {
@@ -367,8 +482,18 @@ static int update_firmware(struct updater_config *cfg)
 	return UPDATE_ERR_NONE;
 }
 
+static void clear_env(struct system_env *env)
+{
+	int i;
+	for (i = 0; i < ENV_PROP_MAX; i++) {
+		env->properties[i].initialized = 0;
+		env->properties[i].value = 0;
+	}
+}
+
 static void unload_updater_config(struct updater_config *cfg)
 {
+	clear_env(&cfg->env);
 	free_image(&cfg->image);
 	free_image(&cfg->image_current);
 	free_image(&cfg->ec_image);
@@ -418,6 +543,11 @@ static int do_update(int argc, char *argv[])
 		.pd_image = { .programmer = PROG_PD, },
 		.env = {
 			.flashrom = host_flashrom,
+			.properties = {
+				[ENV_PROP_MAINFW_ACT] = {
+					.getter = host_get_mainfw_act,
+				},
+			},
 		},
 		.try_update = 0,
 		.write_protection = 1,
