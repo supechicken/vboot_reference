@@ -14,6 +14,9 @@
 #include "fmap.h"
 #include "futility.h"
 
+#define STRING_LIST_ALLOCATION_UNIT 10
+#define COMMAND_BUFFER_SIZE 512
+#define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
 
 /* FMAP section names. */
@@ -25,6 +28,12 @@ static const char *RO_FRID = "RO_FRID",
 static const char *PROG_HOST = "host",
 		  *PROG_EC = "ec",
 		  *PROG_PD = "ec:dev=1";
+
+enum flashrom_ops {
+	FLASHROM_READ,
+	FLASHROM_WRITE,
+	FLASHROM_WP_STATUS,
+};
 
 struct firmware_image {
 	const char *programmer;
@@ -44,9 +53,50 @@ struct firmware_section {
 	size_t size;
 };
 
+struct system_env {
+	int (*flashrom)(enum flashrom_ops op, const char *image_path,
+			const char *programmer, int verbose);
+};
+
 struct updater_config {
 	struct firmware_image_set from, to;
+	struct system_env env;
 };
+
+static int host_flashrom(enum flashrom_ops op, const char *image_path,
+			 const char *programmer, int verbose)
+{
+	/* TODO(hungte) Create command buffer dynamically. */
+	char buf[COMMAND_BUFFER_SIZE];
+	const char *op_cmd;
+
+	switch (op) {
+	case FLASHROM_READ:
+		op_cmd = "-r";
+		assert(image_path);
+		break;
+
+	case FLASHROM_WRITE:
+		op_cmd = "-w";
+		assert(image_path);
+		break;
+
+	default:
+		assert(0);
+		return -1;
+	}
+
+	snprintf(buf, sizeof(buf), "flashrom %s %s -p %s", op_cmd,
+		 image_path,
+		 programmer);
+
+	/* TODO(hungte) Support partial read (-i). */
+
+	if (verbose || debugging_enabled)
+		printf("Executing: %s\n", buf);
+
+	return system(buf);
+}
 
 static int find_firmware_section(struct firmware_section *section,
 				 struct firmware_image *image,
@@ -140,6 +190,17 @@ static int load_image(const char *file_name, struct firmware_image *image)
 	return 0;
 }
 
+static int load_system_image(struct updater_config *cfg,
+			     struct firmware_image *image)
+{
+	/* TODO(hungte) replace by mkstemp */
+	const char *tmp_file = "/tmp/.fwupdate.read";
+
+	RETURN_ON_FAILURE(cfg->env.flashrom(
+			FLASHROM_READ, tmp_file, image->programmer, 0));
+	return load_image(tmp_file, image);
+}
+
 static void free_image(struct firmware_image *image)
 {
 	free(image->data);
@@ -153,18 +214,21 @@ static void free_image(struct firmware_image *image)
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
+	UPDATE_ERR_SYSTEM_IMAGE,
 	UPDATE_ERR_UNKNOWN,
 };
 
 static const char *updater_error_messages[] = {
 	[UPDATE_ERR_NONE] = "None",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
+	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
 static int update_firmware(struct updater_config *cfg)
 {
-	struct firmware_image *image_to = &cfg->to.image;
+	struct firmware_image *image_from = &cfg->from.image,
+			      *image_to = &cfg->to.image;
 	if (!image_to->data)
 		return UPDATE_ERR_NO_IMAGE;
 
@@ -172,6 +236,18 @@ static int update_firmware(struct updater_config *cfg)
 	       image_to->file_name, image_to->ro_version,
 	       image_to->rw_version_a, image_to->rw_version_b);
 
+	if (!image_from->data) {
+		/*
+		 * TODO(hungte) Read only RO_SECTION, VBLOCK_A, VBLOCK_B,
+		 * RO_VPD, RW_VPD, RW_NVRAM, RW_LEGACY.
+		 */
+		printf("Loading current system firmware...\n");
+		if (load_system_image(cfg, image_from) != 0)
+			return UPDATE_ERR_SYSTEM_IMAGE;
+	}
+	printf(">> Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
+	       image_from->file_name, image_from->ro_version,
+	       image_from->rw_version_a, image_from->rw_version_b);
 	return UPDATE_ERR_NONE;
 }
 
@@ -223,6 +299,9 @@ static int do_update(int argc, char *argv[])
 			.image = { .programmer = PROG_HOST, },
 			.ec_image = { .programmer = PROG_EC, },
 			.pd_image = { .programmer = PROG_PD, },
+		},
+		.env = {
+			.flashrom = host_flashrom,
 		},
 	};
 
