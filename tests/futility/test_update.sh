@@ -23,8 +23,11 @@ set -o pipefail
 cp -f "${LINK_BIOS}" "${TMP}.emu"
 
 # Test command execution.
-versions="$("${FUTILITY}" update -i "${PEPPY_BIOS}" --emulate "${TMP}.emu" |
-	    sed -n 's/.*(//; s/).*//p')"
-test "${versions}" = \
-"RO:${PEPPY_VERSION}, RW/A:${PEPPY_VERSION}, RW/B:${PEPPY_VERSION}
-RO:${LINK_VERSION}, RW/A:${LINK_VERSION}, RW/B:${LINK_VERSION}"
+output="$("${FUTILITY}" update -i "${PEPPY_BIOS}" --emulate "${TMP}.emu")"
+target="$(echo "${output}" | sed -n 's/^>> Target.*(//p' | sed 's/).*//')"
+current="$(echo "${output}" | sed -n 's/^>> Current.*(//p' | sed 's/).*//')"
+expected1="RO:${PEPPY_VERSION}, RW/A:${PEPPY_VERSION}, RW/B:${PEPPY_VERSION}"
+expected2="RO:${LINK_VERSION}, RW/A:${LINK_VERSION}, RW/B:${LINK_VERSION}"
+test "${target}" = "${expected1}"
+test "${current}" = "${expected2}"
+cmp "${TMP}.emu" "${PEPPY_BIOS}"
