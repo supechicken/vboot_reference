@@ -20,7 +20,9 @@
 
 typedef const char * const CONST_STRING;
 
+#define COMMAND_BUFFER_SIZE 256
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
+#define FLASHROM_OUTPUT_WP_PATTERN "write protect is "
 
 /* FMAP section names. */
 static CONST_STRING FMAP_RO_FRID = "RO_FRID",
@@ -39,7 +41,11 @@ static CONST_STRING FMAP_RO_FRID = "RO_FRID",
 
 /* System environment values. */
 static CONST_STRING FWACT_A = "A",
-		    FWACT_B = "B";
+		    FWACT_B = "B",
+		    FLASHROM_OUTPUT_WP_ENABLED = \
+			    FLASHROM_OUTPUT_WP_PATTERN "enabled",
+		    FLASHROM_OUTPUT_WP_DISABLED = \
+			    FLASHROM_OUTPUT_WP_PATTERN "disabled";
 
 /* flashrom programmers. */
 static CONST_STRING PROG_HOST = "host",
@@ -66,6 +72,7 @@ enum active_slot {
 enum flashrom_ops {
 	FLASHROM_READ,
 	FLASHROM_WRITE,
+	FLASHROM_WP_STATUS,
 };
 
 struct firmware_image {
@@ -104,6 +111,59 @@ struct updater_config {
 	struct system_property system_properties[SYS_PROP_MAX];
 };
 
+/*
+ * Strip a string (usually from shell execution output) by removing all the
+ * space characters (space, new line, tab, ... etc).
+ */
+static void strip(char *s)
+{
+	int len;
+	assert(s);
+
+	len = strlen(s);
+	while (len-- > 0) {
+		if (!isascii(s[len]) || !isspace(s[len]))
+			break;
+		s[len] = '\0';
+	}
+}
+
+/*
+ * Executes a command on current host and returns stripped command output.
+ * If the command has failed (exit code is not zero), returns an empty string.
+ * The caller is responsible for releasing the returned string.
+ */
+static char *host_shell(const char *command)
+{
+	/* Currently all commands we use do not have large output. */
+	char buf[COMMAND_BUFFER_SIZE];
+
+	int result;
+	FILE *fp = popen(command, "r");
+
+	Debug("%s: %s\n", __FUNCTION__, command);
+	buf[0] = '\0';
+	if (!fp) {
+		Debug("%s: Execution error for %s.\n", __FUNCTION__, command);
+		return strdup(buf);
+	}
+
+	if (fgets(buf, sizeof(buf), fp))
+		strip(buf);
+	result = pclose(fp);
+	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
+		Debug("%s: Execution failure with exit code %d: %s\n",
+		      __FUNCTION__, command, WEXITSTATUS(result));
+		/*
+		 * Discard all output if command failed, for example command
+		 * syntax failure may lead to garbage in stdout.
+		 */
+		buf[0] = '\0';
+	}
+	return strdup(buf);
+}
+
+
 /* An helper function to return "mainfw_act" system property.  */
 static int host_get_mainfw_act()
 {
@@ -123,8 +183,14 @@ static int host_get_mainfw_act()
 /* A helper function to return the "hardware write protection" status. */
 static int host_get_wp_hw()
 {
-	/* TODO(hungte) Implement this with calling VbGetSystemPropertyInt . */
-	return WP_ENABLED;
+	/* wpsw refers to write protection 'switch', not 'software'. */
+	int v = VbGetSystemPropertyInt("wpsw_cur");
+
+	/* wpsw_cur may be not available, especially in recovery mode. */
+	if (v < 0)
+		v = VbGetSystemPropertyInt("wpsw_boot");
+
+	return v;
 }
 
 /*
@@ -135,7 +201,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
 			 const char *section_name)
 {
-	char *command;
+	char *command, *result;
 	const char *op_cmd, *dash_i = "-i", *postfix = "", *ignore_lock = "";
 	int r;
 
@@ -165,6 +231,15 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		assert(image_path);
 		break;
 
+	case FLASHROM_WP_STATUS:
+		op_cmd = "--wp-status";
+		assert(image_path == NULL);
+		image_path = "";
+		/* grep is needed because host_shell only returns 1 line. */
+		postfix = " 2>/dev/null | grep \"" \
+			   FLASHROM_OUTPUT_WP_PATTERN "\"";
+		break;
+
 	default:
 		assert(0);
 		return -1;
@@ -185,16 +260,31 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (verbose)
 		printf("Executing: %s\n", command);
 
-	r = system(command);
+	if (op != FLASHROM_WP_STATUS) {
+		r = system(command);
+		free(command);
+		return r;
+	}
+
+	result = host_shell(command);
+	strip(result);
 	free(command);
+	Debug("%s: wp-status: %s\n", __FUNCTION__, result);
+
+	if (strstr(result, FLASHROM_OUTPUT_WP_ENABLED))
+		r = WP_ENABLED;
+	else if (strstr(result, FLASHROM_OUTPUT_WP_DISABLED))
+		r = WP_DISABLED;
+	else
+		r = -1;
+	free(result);
 	return r;
 }
 
 /* Helper function to return software write protection switch status. */
 static int host_get_wp_sw()
 {
-	/* TODO(hungte) Implement this with calling flashrom. */
-	return WP_ENABLED;
+	return host_flashrom(FLASHROM_WP_STATUS, NULL, PROG_HOST, 0, NULL);
 }
 
 /*
