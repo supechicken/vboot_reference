@@ -7,10 +7,12 @@
  */
 
 #include <assert.h>
+#include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "crossystem.h"
 #include "fmap.h"
 #include "futility.h"
 
@@ -26,10 +28,20 @@ static const char *RO_FRID = "RO_FRID",
 		  *RW_FWID_B = "RW_FWID_B",
 		  *RW_SHARED = "RW_SHARED",
 		  *RW_LEGACY = "RW_LEGACY";
+
+/* System environment values. */
+static const char *FWACT_A = "A",
+	          *FWACT_B = "B";
+
 /* flashrom programmers. */
 static const char *PROG_HOST = "host",
 		  *PROG_EC = "ec",
 		  *PROG_PD = "ec:dev=1";
+
+enum target_type {
+	TARGET_SELF,
+	TARGET_UPDATE
+};
 
 enum flashrom_ops {
 	FLASHROM_READ,
@@ -50,10 +62,23 @@ struct firmware_section {
 	size_t size;
 };
 
+enum system_env_type {
+	ENV_MAINFW_ACT,
+	ENV_MAX
+};
+
 struct system_env {
+	/* Setters or special commands without preset values. */
 	int (*flashrom)(enum flashrom_ops op, const char *image_path,
 			const char *programmer, int verbose,
 			const char *section_name);
+	int (*set_property_int)(const char *name, int value);
+	int (*set_property_str)(const char *name, const char *value);
+
+	/* Raw (non-cached) getters */
+	void *(*raw_getters[ENV_MAX])(struct system_env *env);
+	/* Cached or preset values. */
+	void *values[ENV_MAX];
 };
 
 struct updater_config {
@@ -63,6 +88,33 @@ struct updater_config {
 	int try_update;
 	int write_protection;
 };
+
+static int host_set_property_int(const char *name, int value)
+{
+	Debug("%s: VbSetSystemPropertyInt('%s', %d)\n", __FUNCTION__, name,
+	      value);
+	return VbSetSystemPropertyInt(name, value);
+}
+
+static int host_set_property_str(const char *name, const char *value)
+{
+	Debug("%s: VbSetSystemPropertyString('%s', '%s')\n", __FUNCTION__, name,
+	      value);
+	return VbSetSystemPropertyString(name, value);
+}
+
+static char *host_get_property_str(const char *name)
+{
+	char buf[VB_MAX_STRING_PROPERTY];
+	if (VbGetSystemPropertyString(name, buf, sizeof(buf)))
+		return strdup(buf);
+	return strdup("");
+}
+
+static void *host_get_mainfw_act(struct system_env *env)
+{
+	return host_get_property_str("mainfw_act");
+}
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
 			 const char *programmer, int verbose,
@@ -109,6 +161,25 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	free(command);
 	return r;
 }
+
+static void *system_env_get(enum system_env_type env_type,
+			    struct system_env *env)
+{
+	void *p = env->values[env_type];
+
+	if (!p) {
+		p = env->raw_getters[env_type](env);
+		env->values[env_type] = p;
+	}
+	return p;
+}
+
+static const char *system_env_get_str(enum system_env_type env_type,
+			      struct system_env *env)
+{
+	return (const char *)system_env_get(env_type, env);
+}
+
 
 static int find_firmware_section(struct firmware_section *section,
 				 struct firmware_image *image,
@@ -223,6 +294,36 @@ static void free_image(struct firmware_image *image)
 	memset(image, 0, sizeof(*image));
 }
 
+static const char *decide_rw_target(struct system_env *env,
+				    enum target_type target)
+{
+	const char *act = system_env_get_str(ENV_MAINFW_ACT, env);
+	if (strcmp(act, FWACT_A) == 0)
+		return target == TARGET_UPDATE ? RW_B : RW_A;
+	else if (strcmp(act, FWACT_B) == 0)
+		return target == TARGET_UPDATE ? RW_A : RW_B;
+	return NULL;
+}
+
+static int set_try_cookies(struct updater_config *cfg, const char *try_next)
+{
+	int tries = 6;
+
+	/* EC Software Sync needs few more reboots. */
+	if (cfg->ec_image.data)
+		tries += 2;
+
+	/* Convert from update target name to active slot. */
+	if (strcmp(try_next, RW_A) == 0)
+		try_next = FWACT_A;
+	else if (strcmp(try_next, RW_B) == 0)
+		try_next = FWACT_B;
+
+	RETURN_ON_FAILURE(cfg->env.set_property_str("fw_try_next", try_next));
+	RETURN_ON_FAILURE(cfg->env.set_property_int("fw_try_count", tries));
+	return 0;
+}
+
 static int write_firmware(struct updater_config *cfg,
 			  struct firmware_image *image,
 			  const char *section)
@@ -289,9 +390,14 @@ static int update_firmware(struct updater_config *cfg)
 	/* TODO(hungte) Auto detect WP if needed. */
 	wp_enabled = cfg->write_protection;
 
-	if (cfg->try_update) {
-		Error("Not supported yet.\n");
-		return UPDATE_ERR_UNKNOWN;
+	while (cfg->try_update) {
+		const char *target;
+		/* TODO(hungte): Support vboot1. */
+		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
+		printf(">> Updating %s with trial boots.\n", target);
+		write_firmware(cfg, image_to, target);
+		set_try_cookies(cfg, target);
+		return UPDATE_ERR_NONE;
 	}
 
 	if (wp_enabled) {
@@ -317,8 +423,18 @@ static int update_firmware(struct updater_config *cfg)
 	return UPDATE_ERR_NONE;
 }
 
+static void free_env(struct system_env *env)
+{
+	int i;
+	for (i = 0; i < ENV_MAX; i++) {
+		free(env->values[i]);
+	}
+	memset(env->values, 0, sizeof(env->values));
+}
+
 static void unload_updater_config(struct updater_config *cfg)
 {
+	free_env(&cfg->env);
 	free_image(&cfg->image);
 	free_image(&cfg->old_image);
 	free_image(&cfg->ec_image);
@@ -364,6 +480,11 @@ static int do_update(int argc, char *argv[])
 		.pd_image = { .programmer = PROG_PD, },
 		.env = {
 			.flashrom = host_flashrom,
+			.set_property_int = host_set_property_int,
+			.set_property_str = host_set_property_str,
+			.raw_getters = {
+				[ENV_MAINFW_ACT] = host_get_mainfw_act,
+			},
 		},
 		.try_update = 0,
 		.write_protection = 1,
