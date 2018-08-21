@@ -14,6 +14,10 @@
 
 #include "fmap.h"
 #include "futility.h"
+#include "host_key.h"
+#include "util_misc.h"
+#include "vb2_struct.h"
+#include "vboot_api.h"
 
 #define COMMAND_BUFFER_SIZE 256
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
@@ -33,7 +37,8 @@ static const char *RO_ALL = "RO_SECTION",
 		  *RW_FWID_B = "RW_FWID_B",
 		  *RW_SHARED = "RW_SHARED",
 		  *RW_LEGACY = "RW_LEGACY",
-		  *RW_NVRAM = "RW_NVRAM";
+		  *RW_NVRAM = "RW_NVRAM",
+		  *VBLOCK_A = "VBLOCK_A";
 
 /* System environment values. */
 static const char *FWACT_A = "A",
@@ -556,11 +561,126 @@ static int is_write_protection_enabled(struct updater_config *cfg)
 	}
 	return cfg->write_protection;
 }
+
+static int is_compatible_platform(struct updater_config *cfg)
+{
+	int len;
+	const char *from_dot = strchr(cfg->from.image.ro_version, '.'),
+	           *to_dot = strchr(cfg->to.image.ro_version, '.');
+
+	if (!from_dot || !to_dot) {
+		Debug("%s: missing dot (from=%p, to=%p)\n", from_dot, to_dot);
+		return 0;
+	}
+	len = from_dot - cfg->from.image.ro_version + 1;
+	Debug("Platform: %*.*s\n", len, len, cfg->from.image.ro_version);
+	return strncmp(cfg->from.image.ro_version, cfg->to.image.ro_version,
+		       len) == 0;
+}
+
+static char *get_rootkey_hash(GoogleBinaryBlockHeader *gbb)
+{
+	struct vb2_packed_key *key = NULL;
+	key = (struct vb2_packed_key *)((uint8_t *)gbb + gbb->rootkey_offset);
+	if (!packed_key_looks_ok(key, gbb->rootkey_size)) {
+		Error("%s: Invalid root key.\n", __FUNCTION__);
+		return NULL;
+	}
+	return strdup(packed_key_sha1_string(key));
+}
+
+static int get_key_versions(struct firmware_image *image,
+			      const char *section_name,
+			      unsigned int *data_key_version,
+			      unsigned int *firmware_version)
+{
+	struct firmware_section section;
+	struct vb2_keyblock *keyblock;
+	struct vb2_fw_preamble *pre;
+
+	find_firmware_section(&section, image, section_name);
+	if (section.size < sizeof(*keyblock)) {
+		Error("%s: Invalid section: %s\n", __FUNCTION__, section_name);
+		return -1;
+	}
+
+	keyblock = (struct vb2_keyblock *)section.data;
+	*data_key_version = keyblock->data_key.key_version;
+
+	pre = (struct vb2_fw_preamble *)(section.data +
+					 keyblock->keyblock_size);
+	*firmware_version = pre->firmware_version;
+	Debug("%s: %s: data key version = %d, firmware version = %d\n",
+	      __FUNCTION__, image->file_name, *data_key_version,
+	      *firmware_version);
+	return 0;
+}
+
+static int is_same_rootkey(struct firmware_image *image1,
+			   struct firmware_image *image2)
+{
+	int r = 0;
+	char *key1, *key2;
+	GoogleBinaryBlockHeader *gbb1 = find_gbb(image1),
+				*gbb2 = find_gbb(image2);
+
+	if (!gbb1 || !gbb2)
+		return -1;
+
+	key1 = get_rootkey_hash(gbb1);
+	key2 = get_rootkey_hash(gbb2);
+	if (key1 && key2) {
+		Debug("%s: key1=%s, key2=%s\n", __FUNCTION__, key1, key2);
+		r = strcmp(key1, key2) == 0;
+	}
+	free(key1);
+	free(key2);
+	return r;
+}
+
+static int is_compatible_tpm_keys(struct updater_config *cfg,
+				  struct firmware_image *rw_image)
+{
+	unsigned int data_key_version = 0, firmware_version = 0,
+		     tpm_data_key_version = 0, tpm_firmware_version = 0,
+		     tpm_fwver = 0;
+
+	tpm_fwver = strtol(cfg->env.get_tpm_fwver(&cfg->env), NULL, 16);
+	if (tpm_fwver == 0) {
+		Error("%s: tpm_fwver should not be zero.\n", __FUNCTION__);
+		return 0;
+	}
+
+	tpm_data_key_version = tpm_fwver >> 16;
+	tpm_firmware_version = tpm_fwver & 0xffff;
+	Debug("%s: TPM: data_key_version = %d, firmware_version = %d\n",
+	      __FUNCTION__, tpm_data_key_version, tpm_firmware_version);
+
+	if (get_key_versions(rw_image, VBLOCK_A, &data_key_version,
+			     &firmware_version) != 0)
+		return 0;
+
+	if (tpm_data_key_version > data_key_version) {
+		Error("%s: Data key version rollback detected. (%d->%d)\n",
+		      __FUNCTION__, tpm_data_key_version, data_key_version);
+		return 0;
+	}
+	if (tpm_firmware_version > firmware_version) {
+		Error("%s: Firmware version rollback detected (%d->%d)\n",
+		      __FUNCTION__, tpm_firmware_version, firmware_version);
+		return 0;
+	}
+	return 1;
+}
+
 enum updater_error_codes {
 	UPDATE_ERR_NONE,
 	UPDATE_ERR_NO_IMAGE,
 	UPDATE_ERR_SYSTEM_IMAGE,
+	UPDATE_ERR_PLATFORM,
 	UPDATE_ERR_TARGET,
+	UPDATE_ERR_ROOT_KEY,
+	UPDATE_ERR_TPM_ROLLBACK,
 	UPDATE_ERR_UNKNOWN,
 };
 
@@ -568,7 +688,10 @@ static const char *updater_error_messages[] = {
 	[UPDATE_ERR_NONE] = "None",
 	[UPDATE_ERR_NO_IMAGE] = "No image to update; try specify with -i.",
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
+	[UPDATE_ERR_PLATFORM] = "Your system platform is not compatible.",
 	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
+	[UPDATE_ERR_ROOT_KEY] = "Root keys do not match.",
+	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -597,6 +720,9 @@ static int update_firmware(struct updater_config *cfg)
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
 
+	if (!is_compatible_platform(cfg))
+		return UPDATE_ERR_PLATFORM;
+
 	wp_enabled = is_write_protection_enabled(cfg);
 	printf(">> Write protection: %d (%s; HW=%s, SW=%s).\n", wp_enabled,
 	       wp_enabled ? "enabled" : "disabled",
@@ -611,6 +737,12 @@ static int update_firmware(struct updater_config *cfg)
 			printf("WP disabled and RO changed. Do full update.\n");
 			break;
 		}
+		printf("Checking compatibility...\n");
+		if (!is_same_rootkey(image_from, image_to))
+			return UPDATE_ERR_ROOT_KEY;
+		if (!is_compatible_tpm_keys(cfg, image_to))
+			return UPDATE_ERR_TPM_ROLLBACK;
+
 		/* TODO(hungte): Support vboot1. */
 		target = decide_rw_target(&cfg->env, TARGET_SELF);
 		if (target == NULL) {
@@ -631,6 +763,12 @@ static int update_firmware(struct updater_config *cfg)
 
 	if (wp_enabled) {
 		printf(">> Updating %s, %s, and %s.\n", RW_A, RW_B, RW_SHARED);
+
+		printf("Checking compatibility...\n");
+		if (!is_same_rootkey(image_from, image_to))
+			return UPDATE_ERR_ROOT_KEY;
+		if (!is_compatible_tpm_keys(cfg, image_to))
+			return UPDATE_ERR_TPM_ROLLBACK;
 		/*
 		 * TODO(hungte) Speed up by flashing multiple sections in one
 		 * command, or provide diff file.
@@ -644,6 +782,10 @@ static int update_firmware(struct updater_config *cfg)
 	} else {
 		printf(">> Updating entire firmware images.\n");
 		preserve_images(cfg);
+
+		printf("Checking compatibility...\n");
+		if (!is_compatible_tpm_keys(cfg, image_to))
+			return UPDATE_ERR_TPM_ROLLBACK;
 
 		/* FMAP may be different so we should just update all. */
 		write_firmware(cfg, image_to, NULL);
