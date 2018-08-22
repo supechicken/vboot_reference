@@ -35,6 +35,7 @@ static CONST_STRING PROG_HOST = "host",
 		    PROG_EC = "ec",
 		    PROG_PD = "ec:dev=1";
 
+
 enum flashrom_ops {
 	FLASHROM_READ,
 	FLASHROM_WRITE,
@@ -42,6 +43,7 @@ enum flashrom_ops {
 
 struct firmware_image {
 	const char *programmer;
+	char *emulation;
 	uint32_t size;
 	uint8_t *data;
 	char *file_name;
@@ -66,6 +68,7 @@ struct updater_config {
 	struct system_env env;
 	int try_update;
 	int write_protection;
+	int emulation;
 };
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -163,7 +166,8 @@ static int load_firmware_version(struct firmware_image *image,
 	return -1;
 }
 
-static int load_image(const char *file_name, struct firmware_image *image)
+static int load_image(const char *file_name, struct firmware_image *image,
+		      int emulation)
 {
 	Debug("%s: Load image file from %s...\n", __FUNCTION__, file_name);
 
@@ -176,6 +180,15 @@ static int load_image(const char *file_name, struct firmware_image *image)
 	Debug("%s: Image size: %d\n", __FUNCTION__, image->size);
 	assert(image->data);
 	image->file_name = strdup(file_name);
+
+	if (emulation && asprintf(
+			&image->emulation,
+			"dummy:emulate=VARIABLE_SIZE,image=%s,size=%u -b",
+			file_name, image->size) < 0) {
+		Error("%s: Failed to allocate buffer for programmer: %s.\n",
+		      __FUNCTION__, file_name);
+		return -1;
+	}
 
 	image->fmap_header = fmap_find(image->data, image->size);
 	if (!image->fmap_header) {
@@ -211,7 +224,7 @@ static int load_system_image(struct updater_config *cfg,
 
 	RETURN_ON_FAILURE(cfg->env.flashrom(
 			FLASHROM_READ, tmp_file, image->programmer, 0, NULL));
-	return load_image(tmp_file, image);
+	return load_image(tmp_file, image, 0);
 }
 
 static void free_image(struct firmware_image *image)
@@ -221,6 +234,7 @@ static void free_image(struct firmware_image *image)
 	free(image->ro_version);
 	free(image->rw_version_a);
 	free(image->rw_version_b);
+	free(image->emulation);
 	memset(image, 0, sizeof(*image));
 }
 
@@ -230,12 +244,25 @@ static int write_firmware(struct updater_config *cfg,
 {
 	/* TODO(hungte) replace by mkstemp */
 	const char *tmp_file = "/tmp/.fwupdate.write";
+	const char *programmer = cfg->emulation ? image->emulation :
+			image->programmer;
+
 	if (vb2_write_file(tmp_file, image->data, image->size) != VB2_SUCCESS) {
 		Error("%s: Cannot write temporary file for output: %s\n",
 		      __FUNCTION__, tmp_file);
 		return -1;
 	}
-	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
+	if (cfg->emulation) {
+		printf("%s: (emulation) %s %s from %s to %s.\n",
+		       __FUNCTION__,
+		       image->emulation ? "Writing" : "Skipped writing",
+		       section_name ? section_name : "whole image",
+		       image->file_name, programmer);
+
+		if (!image->emulation)
+			return 0;
+	}
+	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, programmer, 1,
 				 section_name);
 }
 
@@ -340,6 +367,7 @@ static void unload_updater_config(struct updater_config *cfg)
 	free_image(&cfg->image_current);
 	free_image(&cfg->ec_image);
 	free_image(&cfg->pd_image);
+	cfg->emulation = 0;
 }
 
 /* Command line options */
@@ -350,6 +378,7 @@ static struct option const long_opts[] = {
 	{"pd_image", 1, NULL, 'P'},
 	{"try", 0, NULL, 't'},
 	{"wp", 1, NULL, 'W'},
+	{"emulation", 1, NULL, 'E'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
@@ -368,6 +397,7 @@ static void print_help(int argc, char *argv[])
 		"\n"
 		"Debugging and testing options:\n"
 		"    --wp=1|0        \tSpecify write protection status\n"
+		"    --emulation=FILE\tEmulate system firmware using file.\n"
 		"",
 		argv[0]);
 }
@@ -393,19 +423,27 @@ static int do_update(int argc, char *argv[])
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
 		switch (i) {
 		case 'i':
-			errorcnt += load_image(optarg, &cfg.image);
+			errorcnt += load_image(optarg, &cfg.image, 0);
 			break;
 		case 'e':
-			errorcnt += load_image(optarg, &cfg.ec_image);
+			errorcnt += load_image(optarg, &cfg.ec_image, 0);
 			break;
 		case 'P':
-			errorcnt += load_image(optarg, &cfg.pd_image);
+			errorcnt += load_image(optarg, &cfg.pd_image, 0);
 			break;
 		case 't':
 			cfg.try_update = 1;
 			break;
 		case 'W':
 			cfg.write_protection = atoi(optarg);
+			break;
+		case 'E':
+			cfg.emulation = 1;
+			errorcnt += load_image(optarg, &cfg.image_current, 1);
+			/* Both image and image_current need emulation. */
+			if (!errorcnt)
+				cfg.image.emulation = strdup(
+						cfg.image_current.emulation);
 			break;
 
 		case 'h':
