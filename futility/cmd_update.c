@@ -66,6 +66,7 @@ struct updater_config {
 	struct system_env env;
 	int try_update;
 	int write_protection;
+	int dryrun;
 };
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -235,6 +236,12 @@ static int write_firmware(struct updater_config *cfg,
 		      __FUNCTION__, tmp_file);
 		return -1;
 	}
+	if (cfg->dryrun) {
+		printf("(dryrun) Write %s from %s to using <%s>.\n",
+		       section_name ? section_name : "whole image",
+		       image->file_name, image->programmer);
+		return 0;
+	}
 	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
 				 section_name);
 }
@@ -350,6 +357,7 @@ static struct option const long_opts[] = {
 	{"pd_image", 1, NULL, 'P'},
 	{"try", 0, NULL, 't'},
 	{"wp", 1, NULL, 'W'},
+	{"dryrun", 0, NULL, 'D'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
@@ -368,6 +376,7 @@ static void print_help(int argc, char *argv[])
 		"\n"
 		"Debugging and testing options:\n"
 		"    --wp=1|0        \tSpecify write protection status\n"
+		"    --dryrun        \tDo not make modification to system\n"
 		"",
 		argv[0]);
 }
@@ -406,6 +415,9 @@ static int do_update(int argc, char *argv[])
 			break;
 		case 'W':
 			cfg.write_protection = atoi(optarg);
+			break;
+		case 'D':
+			cfg.dryrun = 1;
 			break;
 
 		case 'h':
