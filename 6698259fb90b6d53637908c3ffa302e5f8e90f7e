@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04e2de37_4185358b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-22T20:25:08Z",
+      "side": 1,
+      "message": "can you use Min() instead ?\n\nor does nothing use that existing helper so it should just get deleted ?",
+      "revId": "6698259fb90b6d53637908c3ffa302e5f8e90f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a245a9_99661487",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-22T20:25:08Z",
+      "side": 1,
+      "message": "static const char * const ...",
+      "revId": "6698259fb90b6d53637908c3ffa302e5f8e90f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986b0c57_2e9345c5",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-22T20:25:08Z",
+      "side": 1,
+      "message": "const",
+      "revId": "6698259fb90b6d53637908c3ffa302e5f8e90f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f63ea64_9cc90172",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-08-22T20:25:08Z",
+      "side": 1,
+      "message": "static const char * const",
+      "revId": "6698259fb90b6d53637908c3ffa302e5f8e90f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
