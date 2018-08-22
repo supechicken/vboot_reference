@@ -113,6 +113,7 @@ struct updater_config {
 	struct system_env env;
 	int try_update;
 	int write_protection;
+	int dryrun;
 };
 
 static void strip(char *s)
@@ -483,6 +484,12 @@ static int write_firmware(struct updater_config *cfg,
 		return -1;
 	fwrite(image->data, image->size, 1, fp);
 	fclose(fp);
+	if (cfg->dryrun) {
+		printf("(dryrun) Write %s from %s to using <%s>.\n",
+		       section ? section : "whole image",
+		       image->file_name, image->programmer);
+		return 0;
+	}
 	return cfg->env.flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
 				 section);
 }
@@ -884,6 +891,7 @@ static struct option const long_opts[] = {
 	{"pd_image", 1, NULL, 'P'},
 	{"try", 0, NULL, 't'},
 	{"wp", 1, NULL, 'W'},
+	{"dryrun", 0, NULL, 'D'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
@@ -901,6 +909,7 @@ static void print_help(int argc, char *argv[])
 		"    --pd_image=FILE\tPD firmware image (i.e, pd.bin)\n"
 		"-t, --try          \tUse A/B trial update if possible\n"
 		"    --wp=1|0       \tSpecify write protection status\n"
+		"    --dryrun       \tDo not make modification to system\n"
 		"",
 		argv[0]);
 }
@@ -946,6 +955,9 @@ static int do_update(int argc, char *argv[])
 			break;
 		case 'W':
 			cfg.write_protection = atoi(optarg);
+			break;
+		case 'D':
+			cfg.dryrun = 1;
 			break;
 
 		case 'h':
