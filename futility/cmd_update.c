@@ -42,6 +42,7 @@ enum flashrom_ops {
 
 struct firmware_image {
 	const char *programmer;
+	char *emulation;
 	uint32_t size;
 	uint8_t *data;
 	char *file_name;
@@ -59,6 +60,7 @@ struct updater_config {
 	struct firmware_image ec_image, pd_image;
 	int try_update;
 	int write_protection;
+	int emulation;
 };
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -196,6 +198,23 @@ static int load_image(const char *file_name, struct firmware_image *image)
 	return 0;
 }
 
+static int emulate_system_image(const char *file_name,
+				struct firmware_image *image)
+{
+	if (load_image(file_name, image))
+		return -1;
+
+	if (asprintf(&image->emulation,
+		     "dummy:emulate=VARIABLE_SIZE,image=%s,size=%u",
+		     file_name, image->size) < 0) {
+		Error("%s: Failed to allocate buffer for programmer: %s.\n",
+		      __FUNCTION__, file_name);
+		return -1;
+	}
+	return 0;
+}
+
+
 static int load_system_image(struct updater_config *cfg,
 			     struct firmware_image *image)
 {
@@ -214,6 +233,7 @@ static void free_image(struct firmware_image *image)
 	free(image->ro_version);
 	free(image->rw_version_a);
 	free(image->rw_version_b);
+	free(image->emulation);
 	memset(image, 0, sizeof(*image));
 }
 
@@ -223,12 +243,25 @@ static int write_firmware(struct updater_config *cfg,
 {
 	/* TODO(hungte) replace by mkstemp */
 	const char *tmp_file = "/tmp/.fwupdate.write";
+	const char *programmer = cfg->emulation ? image->emulation :
+			image->programmer;
+
 	if (vb2_write_file(tmp_file, image->data, image->size) != VB2_SUCCESS) {
 		Error("%s: Cannot write temporary file for output: %s\n",
 		      __FUNCTION__, tmp_file);
 		return -1;
 	}
-	return host_flashrom(FLASHROM_WRITE, tmp_file, image->programmer, 1,
+	if (cfg->emulation) {
+		printf("%s: (emulation) %s %s from %s to %s.\n",
+		       __FUNCTION__,
+		       image->emulation ? "Writing" : "Skipped writing",
+		       section_name ? section_name : "whole image",
+		       image->file_name, programmer);
+
+		if (!image->emulation)
+			return 0;
+	}
+	return host_flashrom(FLASHROM_WRITE, tmp_file, programmer, 1,
 			     section_name);
 }
 
@@ -333,6 +366,7 @@ static void unload_updater_config(struct updater_config *cfg)
 	free_image(&cfg->image_current);
 	free_image(&cfg->ec_image);
 	free_image(&cfg->pd_image);
+	cfg->emulation = 0;
 }
 
 /* Command line options */
@@ -343,6 +377,7 @@ static struct option const long_opts[] = {
 	{"pd_image", 1, NULL, 'P'},
 	{"try", 0, NULL, 't'},
 	{"wp", 1, NULL, 'W'},
+	{"emulation", 1, NULL, 'E'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
@@ -361,6 +396,7 @@ static void print_help(int argc, char *argv[])
 		"\n"
 		"Debugging and testing options:\n"
 		"    --wp=1|0        \tSpecify write protection status\n"
+		"    --emulation=FILE\tEmulate system firmware using file.\n"
 		"",
 		argv[0]);
 }
@@ -396,6 +432,16 @@ static int do_update(int argc, char *argv[])
 			break;
 		case 'W':
 			cfg.write_protection = atoi(optarg);
+			break;
+		case 'E':
+			cfg.emulation = 1;
+			errorcnt += emulate_system_image(
+					optarg, &cfg.image_current);
+			/* Both image and image_current need emulation. */
+			if (!errorcnt) {
+				cfg.image.emulation = strdup(
+						cfg.image_current.emulation);
+			}
 			break;
 
 		case 'h':
