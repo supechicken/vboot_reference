@@ -106,6 +106,7 @@ enum env_property_types {
 	ENV_PROP_TPM_FWVER,
 	ENV_PROP_WP_HW,
 	ENV_PROP_WP_SW,
+	ENV_PROP_FW_VBOOT2,
 	ENV_PROP_MAX
 };
 
@@ -205,6 +206,11 @@ static int host_get_wp_hw()
 		v = VbGetSystemPropertyInt("wpsw_boot");
 
 	return v;
+}
+
+static int host_get_fw_vboot2()
+{
+	return VbGetSystemPropertyInt("fw_vboot2");
 }
 
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
@@ -425,10 +431,15 @@ static void free_image(struct firmware_image *image)
 }
 
 static const char *decide_rw_target(struct system_env *env,
-				    enum target_type target)
+				    enum target_type target,
+				    int is_vboot2)
 {
 	const char *a = FMAP_RW_SECTION_A, *b = FMAP_RW_SECTION_B;
 	int slot = get_env_property(ENV_PROP_MAINFW_ACT, env);
+
+	/* In vboot1, always update B and check content with A. */
+	if (!is_vboot2)
+		return target == TARGET_UPDATE ? b : a;
 
 	switch (slot) {
 	case SLOT_A:
@@ -441,7 +452,8 @@ static const char *decide_rw_target(struct system_env *env,
 	return NULL;
 }
 
-static int set_try_cookies(struct updater_config *cfg, const char *target)
+static int set_try_cookies(struct updater_config *cfg, const char *target,
+			   int is_vboot2)
 {
 	int tries = 6;
 	const char *slot;
@@ -466,8 +478,14 @@ static int set_try_cookies(struct updater_config *cfg, const char *target)
 		return 0;
 	}
 
-	RETURN_ON_FAILURE(VbSetSystemPropertyString("fw_try_next", slot));
-	RETURN_ON_FAILURE(VbSetSystemPropertyInt("fw_try_count", tries));
+	if (is_vboot2 && VbSetSystemPropertyString("fw_try_next", slot)) {
+		Error("Failed to set fw_try_next to %s.\n", slot);
+		return -1;
+	}
+	if (VbSetSystemPropertyInt("fw_try_count", tries)) {
+		Error("Failed to set fw_try_count to %d.\n", tries);
+		return -1;
+	}
 	return 0;
 }
 
@@ -827,6 +845,7 @@ static int update_firmware(struct updater_config *cfg)
 	/* Use while so we can use 'break' to fallback to RO+RW update mode. */
 	while (cfg->try_update) {
 		const char *target;
+		int is_vboot2 = get_env_property(ENV_PROP_FW_VBOOT2, &cfg->env);
 
 		preserve_gbb(image_from, image_to);
 		if (!images_have_same_section(image_from, image_to,
@@ -840,22 +859,27 @@ static int update_firmware(struct updater_config *cfg)
 		if (check_compatible_tpm_keys(cfg, image_to))
 			return UPDATE_ERR_TPM_ROLLBACK;
 
-		/* TODO(hungte): Support vboot1. */
-		target = decide_rw_target(&cfg->env, TARGET_SELF);
-		if (target == NULL) {
+		Debug("%s: Firmware %s vboot2.\n", __FUNCTION__,
+		      is_vboot2 ?  "is" : "is NOT");
+		target = decide_rw_target(&cfg->env, TARGET_SELF, is_vboot2);
+		if (target == NULL)
 			return UPDATE_ERR_TARGET;
-		}
+
 		printf("Checking %s contents...\n", target);
 		if (images_have_same_section(image_from, image_to, target)) {
+			/* Clear trial cookies for vboot1. */
+			if (!is_vboot2 && !cfg->emulation)
+				VbSetSystemPropertyInt("fwb_tries", 0);
+
 			printf(">> No need to update.\n");
 			return UPDATE_ERR_NONE;
 		}
 
-		target = decide_rw_target(&cfg->env, TARGET_UPDATE);
+		target = decide_rw_target(&cfg->env, TARGET_UPDATE, is_vboot2);
 		printf(">> Updating %s with trial boots.\n", target);
 		if (write_firmware(cfg, image_to, target))
 			return UPDATE_ERR_WRITE_FIRMWARE;
-		if (set_try_cookies(cfg, target))
+		if (set_try_cookies(cfg, target, is_vboot2))
 			return UPDATE_ERR_SET_COOKIES;
 		return UPDATE_ERR_NONE;
 	}
@@ -971,6 +995,9 @@ static int do_update(int argc, char *argv[])
 				},
 				[ENV_PROP_WP_SW] = {
 					.getter = host_get_wp_sw,
+				},
+				[ENV_PROP_FW_VBOOT2] = {
+					.getter = host_get_fw_vboot2,
 				},
 			},
 		},
