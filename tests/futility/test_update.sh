@@ -58,13 +58,23 @@ cp -f "${PEPPY_BIOS}" "${TMP}.emu"
 "${FUTILITY}" update -i "${LINK_BIOS}" --emulate "${TMP}.emu" --wp 1
 cmp "${TMP}.emu" "${TMP}.expected.rw"
 
-# Test Try-RW update.
+# sys_props: mainfw_act, is_vboot, wp_hw, wp_sw
+
+# Test Try-RW update (vboot2).
 cp -f "${PEPPY_BIOS}" "${TMP}.emu"
-"${FUTILITY}" update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 0,1,1 -t
+${FUTILITY} update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 0,1,1,1 -t
 cmp "${TMP}.emu" "${TMP}.expected.b"
 cp -f "${PEPPY_BIOS}" "${TMP}.emu"
-"${FUTILITY}" update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 1,1,1 -t
+${FUTILITY} update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 1,1,1,1 -t
 cmp "${TMP}.emu" "${TMP}.expected.a"
+
+# Test Try-RW update (vboot1).
+cp -f "${PEPPY_BIOS}" "${TMP}.emu"
+${FUTILITY} update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 0,0,1,1 -t
+cmp "${TMP}.emu" "${TMP}.expected.b"
+cp -f "${PEPPY_BIOS}" "${TMP}.emu"
+${FUTILITY} update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 1,0,1,1 -t
+cmp "${TMP}.emu" "${TMP}.expected.b"
 
 # Test --sys_props
 test_sys_props() {
