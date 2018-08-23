@@ -22,6 +22,30 @@
       "revId": "becb44d6b9192287e29ea9bf187e864b8c6a1df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4fc31b_af154dde",
+        "filename": "futility/futility.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T04:16:06Z",
+      "side": 1,
+      "message": "Seems like our gcc in chroot needs ##__VA_ARGS__ and then it works.",
+      "parentUuid": "3f24176d_e25115f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 36
+      },
+      "revId": "becb44d6b9192287e29ea9bf187e864b8c6a1df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
