@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4e29d4e_6eaee2d6",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T07:44:16Z",
+      "side": 1,
+      "message": "I decided to re-implement this in a better way, turning them into all int.",
+      "parentUuid": "aa0724ac_c8474a8d",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "473d939c_fe133e0d",
         "filename": "futility/cmd_update.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0bf0826d_b9f08940",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T07:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473d939c_fe133e0d",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5177b0e_0b248926",
         "filename": "futility/cmd_update.c",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-23T05:00:30Z",
       "side": 1,
       "message": "Why is this a while() loop?  What changes try_update?  The expected control flow is unclear.  Do you mean if()?  Particularly since the only path this takes returns UPDATE_ERR_NONE.",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 26
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16413f75_6fbe57ae",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T07:44:16Z",
+      "side": 1,
+      "message": "This is while so I can do break in a future CL. I may change this to if in this one.",
+      "parentUuid": "e5177b0e_0b248926",
       "range": {
         "startLine": 393,
         "startChar": 1,
@@ -91,6 +163,30 @@
       "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a34afd3_d851b3a2",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T07:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31891de6_753aafca",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 399,
+        "endChar": 31
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
