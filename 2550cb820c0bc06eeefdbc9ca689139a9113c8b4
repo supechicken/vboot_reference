@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa0724ac_c8474a8d",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:00:30Z",
+      "side": 1,
+      "message": "These must return a newly allocated value, which will be freed by free_env().",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "473d939c_fe133e0d",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:00:30Z",
+      "side": 1,
+      "message": "Do you need to use the same variable for the update target name and the active slot?  Can set_try_cookies() be passed either a target name or an active slot?\n\nWhat is expected to happen if you pass in try_next\u003d\"potato\"?",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5177b0e_0b248926",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:00:30Z",
+      "side": 1,
+      "message": "Why is this a while() loop?  What changes try_update?  The expected control flow is unclear.  Do you mean if()?  Particularly since the only path this takes returns UPDATE_ERR_NONE.",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 393,
+        "endChar": 26
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31891de6_753aafca",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:00:30Z",
+      "side": 1,
+      "message": "These return errors, which are ignored?",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 399,
+        "endChar": 31
+      },
+      "revId": "2550cb820c0bc06eeefdbc9ca689139a9113c8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
