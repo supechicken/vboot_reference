@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d4488ba_8c680751",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af1b5bf7_f1fdbb61",
+      "range": {
+        "startLine": 589,
+        "startChar": 43,
+        "endLine": 589,
+        "endChar": 75
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87492c73_fe24ace1",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-23T05:32:43Z",
       "side": 1,
       "message": "const?\n\nAlso, I think this should be using struct vb2_gbb_header.",
+      "range": {
+        "startLine": 610,
+        "startChar": 30,
+        "endLine": 610,
+        "endChar": 31
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b1f7f4a_944bd3ef",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Unfortunately futil_valid_gbb_header needs GoogleBinaryBlockHeader, although I can cast to that.",
+      "parentUuid": "87492c73_fe24ace1",
       "range": {
         "startLine": 610,
         "startChar": 30,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d7bdb95c_3f049f1a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b519b06e_75206bd4",
+      "range": {
+        "startLine": 621,
+        "startChar": 28,
+        "endLine": 621,
+        "endChar": 29
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95a4d90a_40253838",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6497ff57_080e8620",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a4d90a_40253838",
+      "range": {
+        "startLine": 652,
+        "startChar": 30,
+        "endLine": 653,
+        "endChar": 9
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5148a0ca_77d29ba8",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
@@ -105,6 +201,30 @@
       "writtenOn": "2018-08-23T05:32:43Z",
       "side": 1,
       "message": "Is this the only place root key hashes are used?  Seems like you could memcmp() the keys directly here and not need to allocate/free strings.",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 31
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "658dd56a_516d86a8",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Well I do want to print the key, and packed_key_sha1_string puts the string in a static string like static char dest[VB2_SHA1_DIGEST_SIZE * 2 + 1]. So, \n\n (1) memcmp won\u0027t work because it\u0027s pointer to static buffer\n (2) If I want to memcpy to a local buffer first, then it\u0027s slightly dirty to write the buffer size and must keep sync with packed_key_sha1_string.\n\nSo doing a strdup + free may be better.",
+      "parentUuid": "5148a0ca_77d29ba8",
       "range": {
         "startLine": 663,
         "startChar": 0,
@@ -137,6 +257,30 @@
       "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad468b80_a468fc59",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccd47d4_21735817",
+      "range": {
+        "startLine": 680,
+        "startChar": 9,
+        "endLine": 680,
+        "endChar": 10
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
