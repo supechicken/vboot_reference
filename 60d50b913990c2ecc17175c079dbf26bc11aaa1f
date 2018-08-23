@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e20166c_45197fa0",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:34:15Z",
+      "side": 1,
+      "message": "Do we need to be more careful about *which* flashrom is being run?  e.g. /usr/sbin/flashrom, not just flashrom?",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "60d50b913990c2ecc17175c079dbf26bc11aaa1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
