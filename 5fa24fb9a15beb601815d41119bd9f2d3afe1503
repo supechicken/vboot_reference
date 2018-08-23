@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1b5bf7_f1fdbb61",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "How is that determined?  Something with dots?",
+      "range": {
+        "startLine": 589,
+        "startChar": 43,
+        "endLine": 589,
+        "endChar": 75
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87492c73_fe24ace1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "const?\n\nAlso, I think this should be using struct vb2_gbb_header.",
+      "range": {
+        "startLine": 610,
+        "startChar": 30,
+        "endLine": 610,
+        "endChar": 31
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b519b06e_75206bd4",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 621,
+        "startChar": 28,
+        "endLine": 621,
+        "endChar": 29
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a4d90a_40253838",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 652,
+        "startChar": 30,
+        "endLine": 653,
+        "endChar": 9
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5148a0ca_77d29ba8",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "Is this the only place root key hashes are used?  Seems like you could memcmp() the keys directly here and not need to allocate/free strings.",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 31
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccd47d4_21735817",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:32:43Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 680,
+        "startChar": 9,
+        "endLine": 680,
+        "endChar": 10
+      },
+      "revId": "5fa24fb9a15beb601815d41119bd9f2d3afe1503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
