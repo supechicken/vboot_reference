@@ -22,6 +22,30 @@
       "revId": "60d50b913990c2ecc17175c079dbf26bc11aaa1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf51afa9_2097ffce",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T04:28:11Z",
+      "side": 1,
+      "message": "No we can\u0027t. Usually the firmware updater will need to run a flashrom from new rootfs or bundled one.\n\nUltimately we should link updater with flashrom directly (to avoid the need of calling out, but at the moment we still need it invoked in this way.",
+      "parentUuid": "3e20166c_45197fa0",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "60d50b913990c2ecc17175c079dbf26bc11aaa1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
