@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "915c3415_d435e62d",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:37:21Z",
+      "side": 1,
+      "message": "strtol().  atoi() has undefined behavior if optarg can\u0027t be converted.",
+      "range": {
+        "startLine": 388,
+        "startChar": 26,
+        "endLine": 388,
+        "endChar": 39
+      },
+      "revId": "304d34ac3c030d7b53c956c2dc07adb77cdd8cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
