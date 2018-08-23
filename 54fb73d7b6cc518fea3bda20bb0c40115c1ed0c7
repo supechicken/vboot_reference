@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be91175c_2e709491",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:08:19Z",
+      "side": 1,
+      "message": "Changed the output patterns to FLASHROM_OUTPUT_*.\n\nI know kernel style does not encourage typedef, but I think it didn\u0027t prohibit that; without typedef, I\u0027ll have to write the const strings as\n\n static const char * const A \u003d \"A\",\n                   * const B \u003d \"B\",\n                   ....\n\nAnd I think that\u0027s worse than using typedefs. Do you agree?",
+      "parentUuid": "ba796161_e6351dec",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "54fb73d7b6cc518fea3bda20bb0c40115c1ed0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af60577b_335e00e2",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a89c98a8_88ef5feb",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af60577b_335e00e2",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "54fb73d7b6cc518fea3bda20bb0c40115c1ed0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4db57e42_b47c9469",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-23T05:26:19Z",
       "side": 1,
       "message": "Actually, now that I think about it, it would be better for system properties to be a union with more explicit types.  Then we wouldn\u0027t be allocating integers and turning them into void*\u0027s.  It seems like that\u0027s going to be hard to maintain.\n\nstuct system_property {\n  enum sys_property_type property_type; /* PROPERTY_TYPE_INT or PROPERTY_TYPE_STRING */\n  enum state { SP_STATE_BLANK, SP_STATE_CACHED, SP_STATE_ERROR };\n  /* Raw getter should be passed this struct, and will fill it */\n  int (*raw_getter)(struct system_property *sp);\n  /* Raw setter should be passed this struct, and will write the current\n   * value back to wherever it really goes in the system */\n  int (*raw_setter)(struct system_property *sp);\n  union {\n    int i;\n    char *s;\n  };\n};",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "54fb73d7b6cc518fea3bda20bb0c40115c1ed0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87467b99_85a0ecce",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-23T08:08:19Z",
+      "side": 1,
+      "message": "Yes you are right, but after reviewing the types of properties we need, I decided to change the props to all int (which would be also easier for us to override that for testing).",
+      "parentUuid": "4db57e42_b47c9469",
       "range": {
         "startLine": 181,
         "startChar": 1,
