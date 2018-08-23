@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48ec7682_70fb9b68",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:05:44Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 356,
+        "startChar": 37,
+        "endLine": 356,
+        "endChar": 38
+      },
+      "revId": "89f6d2327a046bf6d568ee499828a85380bf6eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9546a9af_c739b4b6",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:05:44Z",
+      "side": 1,
+      "message": "If to.size \u003c from.size, this silently fails to preserve some of the section.  Is that bad?",
+      "range": {
+        "startLine": 366,
+        "startChar": 1,
+        "endLine": 366,
+        "endChar": 54
+      },
+      "revId": "89f6d2327a046bf6d568ee499828a85380bf6eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3ee920_44b841fd",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:05:44Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "89f6d2327a046bf6d568ee499828a85380bf6eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c712031_c2e1a770",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:05:44Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 385,
+        "startChar": 24,
+        "endLine": 385,
+        "endChar": 25
+      },
+      "revId": "89f6d2327a046bf6d568ee499828a85380bf6eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c209d538_43fd2452",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T05:05:44Z",
+      "side": 1,
+      "message": "Just use memcpy(gbb_to+..., gbb_from+..., len)",
+      "range": {
+        "startLine": 406,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 57
+      },
+      "revId": "89f6d2327a046bf6d568ee499828a85380bf6eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
