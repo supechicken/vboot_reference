@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "170466b6_fe582c7a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:31:01Z",
+      "side": 1,
+      "message": "Please use a common prefix, to make these less typo-prone.  This matters more in later CLs where there are more constants.\n\ne.g. FMAP_RO_FRID",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "a5eb7308e65aca767fd8da2817ccaf60d967f771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f94aac_69d1ff1f",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:31:01Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "a5eb7308e65aca767fd8da2817ccaf60d967f771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a96f0f5_35ce36b1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:31:01Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 67,
+        "startChar": 35,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "a5eb7308e65aca767fd8da2817ccaf60d967f771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c93b1c_3f890ea1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T02:31:01Z",
+      "side": 1,
+      "message": "Is this guaranteed to be null-terminated?  Should there be a max length?",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "a5eb7308e65aca767fd8da2817ccaf60d967f771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
