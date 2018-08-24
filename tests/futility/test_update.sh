@@ -22,6 +22,7 @@ set -o pipefail
 # Prepare temporary files.
 cp -f "${LINK_BIOS}" "${TMP}.emu"
 
+# Test full update and image loading.
 # Test command execution.
 output="$(${FUTILITY} update -i "${PEPPY_BIOS}" --wp 0 --emulate "${TMP}.emu")"
 target="$(echo "${output}" | sed -n 's/^>> Target.*(//p' | sed 's/).*//')"
@@ -32,17 +33,33 @@ test "${target}" = "${expected1}"
 test "${current}" = "${expected2}"
 cmp "${TMP}.emu" "${PEPPY_BIOS}"
 
-# $TMP.emu is PEPPY now. Try to update only RW.
+# $TMP.emu is PEPPY now. Prepare new testing targets.
 mkdir -p "${TMP}.unpack"
 (cd "${TMP}.unpack"; "${FUTILITY}" dump_fmap -x "${LINK_BIOS}")
-cp -f "${TMP}.emu" "${TMP}.expected"
-"${FUTILITY}" load_fmap "${TMP}.expected" \
+cp -f "${TMP}.emu" "${TMP}.expected.rw"
+cp -f "${TMP}.emu" "${TMP}.expected.a"
+cp -f "${TMP}.emu" "${TMP}.expected.b"
+"${FUTILITY}" load_fmap "${TMP}.expected.rw" \
 	RW_SECTION_A:${TMP}.unpack/RW_SECTION_A \
 	RW_SECTION_B:${TMP}.unpack/RW_SECTION_B \
 	RW_SHARED:${TMP}.unpack/RW_SHARED \
 	RW_LEGACY:${TMP}.unpack/RW_LEGACY
+"${FUTILITY}" load_fmap "${TMP}.expected.a" \
+	RW_SECTION_A:${TMP}.unpack/RW_SECTION_A
+"${FUTILITY}" load_fmap "${TMP}.expected.b" \
+	RW_SECTION_B:${TMP}.unpack/RW_SECTION_B
+
+# Test RW-only update.
 "${FUTILITY}" update -i "${LINK_BIOS}" --emulate "${TMP}.emu" --wp 1
-cmp "${TMP}.emu" "${TMP}.expected"
+cmp "${TMP}.emu" "${TMP}.expected.rw"
+
+# Test Try-RW update.
+cp -f "${PEPPY_BIOS}" "${TMP}.emu"
+"${FUTILITY}" update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 0,1,1 -t
+cmp "${TMP}.emu" "${TMP}.expected.b"
+cp -f "${PEPPY_BIOS}" "${TMP}.emu"
+"${FUTILITY}" update -i "${LINK_BIOS}" --emulate ${TMP}.emu --sys_props 1,1,1 -t
+cmp "${TMP}.emu" "${TMP}.expected.a"
 
 # Test --sys_props
 test_sys_props() {
