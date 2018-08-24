@@ -31,3 +31,16 @@ expected2="RO:${LINK_VERSION}, RW/A:${LINK_VERSION}, RW/B:${LINK_VERSION}"
 test "${target}" = "${expected1}"
 test "${current}" = "${expected2}"
 cmp "${TMP}.emu" "${PEPPY_BIOS}"
+
+# Test --sys_props
+test_sys_props() {
+	! "${FUTILITY}" --debug update --sys_props "$*" |
+		sed -n 's/.*property\[\(.*\)].value = \(.*\)/\1,\2,/p' |
+		tr '\n' ' '
+}
+
+test "$(test_sys_props "1,2,3")" = "0,1, 1,2, 2,3, "
+test "$(test_sys_props "1 2 3")" = "0,1, 1,2, 2,3, "
+test "$(test_sys_props "1, 2,3 ")" = "0,1, 1,2, 2,3, "
+test "$(test_sys_props "   1,, 2")" = "0,1, 2,2, "
+test "$(test_sys_props " 4,")" = "0,4, "
