@@ -892,6 +892,30 @@ static int is_write_protection_enabled(struct updater_config *cfg)
 		return WP_ENABLED;
 	return wp;
 }
+
+/*
+ * Checks if the given firmware images are compatible with current platform.
+ * In current implementation (following Chrome OS style), we assume the platform
+ * is identical to the name before a dot (.) in firmware version.
+ * Returns 0 for success, otherwise failure.
+ */
+static int check_compatible_platform(struct updater_config *cfg)
+{
+	int len;
+	struct firmware_image *image_from = &cfg->image_current,
+			      *image_to = &cfg->image;
+	const char *from_dot = strchr(image_from->ro_version, '.'),
+	           *to_dot = strchr(image_to->ro_version, '.');
+
+	if (!from_dot || !to_dot) {
+		Debug("%s: Missing dot (from=%p, to=%p)\n", from_dot, to_dot);
+		return -1;
+	}
+	len = from_dot - image_from->ro_version + 1;
+	Debug("%s: Platform: %*.*s\n", __FUNCTION__, len, len,
+	      image_from->ro_version);
+	return strncmp(image_from->ro_version, image_to->ro_version, len);
+}
 enum updater_error_codes {
 	UPDATE_ERR_DONE,
 	UPDATE_ERR_NEED_RO_UPDATE,
@@ -899,6 +923,7 @@ enum updater_error_codes {
 	UPDATE_ERR_SYSTEM_IMAGE,
 	UPDATE_ERR_SET_COOKIES,
 	UPDATE_ERR_WRITE_FIRMWARE,
+	UPDATE_ERR_PLATFORM,
 	UPDATE_ERR_TARGET,
 	UPDATE_ERR_UNKNOWN,
 };
@@ -910,6 +935,7 @@ static const char * const updater_error_messages[] = {
 	[UPDATE_ERR_SYSTEM_IMAGE] = "Cannot load system active firmware.",
 	[UPDATE_ERR_SET_COOKIES] = "Failed writing system flags to try update.",
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
+	[UPDATE_ERR_PLATFORM] = "Your system platform is not compatible.",
 	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
@@ -1040,6 +1066,9 @@ static enum updater_error_codes update_firmware(struct updater_config *cfg)
 	printf(">> Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
+
+	if (check_compatible_platform(cfg))
+		return UPDATE_ERR_PLATFORM;
 
 	wp_enabled = is_write_protection_enabled(cfg);
 	printf(">> Write protection: %d (%s; HW=%d, SW=%d).\n", wp_enabled,
