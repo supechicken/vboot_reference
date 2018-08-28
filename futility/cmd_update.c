@@ -1286,14 +1286,18 @@ static struct option const long_opts[] = {
 	{"ec_image", 1, NULL, 'e'},
 	{"pd_image", 1, NULL, 'P'},
 	{"try", 0, NULL, 't'},
+	{"mode", 1, NULL, 'm'},
+	{"force", 0, NULL, 'F'},
 	{"wp", 1, NULL, 'W'},
 	{"emulate", 1, NULL, 'E'},
 	{"sys_props", 1, NULL, 'S'},
+	{"debug", 0, NULL, 'D'},
+	{"verbose", 0, NULL, 'v'},
 	{"help", 0, NULL, 'h'},
 	{NULL, 0, NULL, 0},
 };
 
-static const char * const short_opts = "hi:e:t";
+static const char * const short_opts = "hi:e:tm:v";
 
 static void print_help(int argc, char *argv[])
 {
@@ -1305,10 +1309,16 @@ static void print_help(int argc, char *argv[])
 		"    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
 		"-t, --try           \tTry A/B update on reboot if possible\n"
 		"\n"
+		"Legacy and compatibility options:\n"
+		"-m, --mode=MODE     \tRun updater in given mode\n"
+		"    --force         \tForce update (deprecated)\n"
+		"\n"
 		"Debugging and testing options:\n"
 		"    --wp=1|0        \tSpecify write protection status\n"
 		"    --emulate=FILE  \tEmulate system firmware using file\n"
 		"    --sys_props=LIST\tList of system properties to override\n"
+		"    --debug         \tPrint debugging messages\n"
+		"-v, --verbose       \tPrint verbose messages\n"
 		"",
 		argv[0]);
 }
@@ -1349,6 +1359,23 @@ static int do_update(int argc, char *argv[])
 		case 't':
 			cfg.try_update = 1;
 			break;
+		case 'm':
+			if (strcmp(optarg, "autoupdate") == 0) {
+				cfg.try_update = 1;
+			} else if (strcmp(optarg, "recovery") == 0) {
+				cfg.try_update = 0;
+			} else if (strcmp(optarg, "factory") == 0) {
+				cfg.try_update = 0;
+				if (!is_write_protection_enabled(&cfg)) {
+					errorcnt++;
+					Error("Mode %s needs WP disabled.\n",
+					      optarg);
+				}
+			} else {
+				errorcnt++;
+				Error("Invalid mode: %s\n", optarg);
+			}
+			break;
 		case 'W':
 			r = strtol(optarg, NULL, 0);
 			override_system_property(SYS_PROP_WP_HW, &cfg, r);
@@ -1364,8 +1391,18 @@ static int do_update(int argc, char *argv[])
 						cfg.image_current.emulation);
 			}
 			break;
+		case 'F':
+			/* Not really used today. */
+			break;
 		case 'S':
 			override_properties_from_list(optarg, &cfg);
+			break;
+		case 'v':
+			/* TODO(hungte) Change to better verbosity control. */
+			debugging_enabled = 1;
+			break;
+		case 'D':
+			debugging_enabled = 1;
 			break;
 
 		case 'h':
