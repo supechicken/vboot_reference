@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d8a3fd02_a1831109",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:32:54Z",
+      "side": 1,
+      "message": "https://www.kernel.org/doc/html/v4.10/process/coding-style.html#typedefs\n\n(Yes, I think this is uglier too.  But the benefit of strictly adhering to the kernel C style outweighs the occasional drawback.  The benefits being easy compatibility between vboot and coreboot/kernel/etc source, and that \"just use kernel C style\" is better than bikeshedding other aspects of the style guide.)",
+      "parentUuid": "be91175c_2e709491",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "54fb73d7b6cc518fea3bda20bb0c40115c1ed0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af60577b_335e00e2",
         "filename": "futility/cmd_update.c",
         "patchSetId": 10
