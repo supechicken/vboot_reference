@@ -22,6 +22,30 @@
       "revId": "c0fc7391368325df2b9aa5d3a101f9fc5fc67017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8823bce5_07f199d6",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-30T07:14:08Z",
+      "side": 1,
+      "message": "Considering this function is for deciding \"if we may skip updating\", I think it\u0027s fine if the section do not exist on both images. I should change the name for it.",
+      "parentUuid": "0020d369_ddd8c8ae",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 41
+      },
+      "revId": "c0fc7391368325df2b9aa5d3a101f9fc5fc67017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
