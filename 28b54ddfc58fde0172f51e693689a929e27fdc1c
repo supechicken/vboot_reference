@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c64a5fd_6243a951",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:38:16Z",
+      "side": 1,
+      "message": "trailing?\n\ntechnically, strtok(s, \" \\t\\r\\n\") would do the same thing; just ignore the returned token.",
+      "revId": "28b54ddfc58fde0172f51e693689a929e27fdc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
