@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3ecde6a_23ba556a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:20:11Z",
+      "side": 1,
+      "message": "On failure, target\u003d\u003dNULL\nBut the functions below don\u0027t check for that.\nSeems like we need if (!target) return (some error code)?",
+      "range": {
+        "startLine": 608,
+        "startChar": 1,
+        "endLine": 608,
+        "endChar": 47
+      },
+      "revId": "40d8b5ca32c6a765d7f5c129ed455f39d6b49c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
