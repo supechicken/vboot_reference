@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0020d369_ddd8c8ae",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:24:14Z",
+      "side": 1,
+      "message": "I think this will return true if a firmware section is not found in both files.  Is that the intent, or should this fail if either find fails?",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 41
+      },
+      "revId": "c0fc7391368325df2b9aa5d3a101f9fc5fc67017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
