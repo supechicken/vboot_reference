@@ -16,6 +16,24 @@
       "revId": "28b54ddfc58fde0172f51e693689a929e27fdc1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb4eb87_83cbd9dc",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-30T07:14:16Z",
+      "side": 1,
+      "message": "strtok is probably not fine because our search patterne has space (\"write protect is \") and strtok would terminate at first token.\n\nIf we ignore space (\\x20) then strtok may work better, if the input is always single line (not \u0027a\\nb\\n\u0027).\n\nLet me keep current implementation until we find out more use case of how we want to deal with output messages...",
+      "parentUuid": "4c64a5fd_6243a951",
+      "revId": "28b54ddfc58fde0172f51e693689a929e27fdc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
