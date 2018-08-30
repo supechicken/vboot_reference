@@ -440,6 +440,12 @@ VbError_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 
 VbError_t ec_sync_update_aux_fw(struct vb2_context *ctx)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/* If PD software sync is disabled, don't do anything. */
+	if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)
+		return VBERROR_SUCCESS;
+
 	VbError_t rv = VbExUpdateAuxFw();
 	if (rv) {
 		if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
