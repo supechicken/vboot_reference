@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02af6781_758a8b6b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T18:50:58Z",
+      "side": 1,
+      "message": "Consider the case where the section does not exist in either image but force_update\u003d1.  We won\u0027t return UPDATE_ERR_DONE above.  So we still drop down to the write_firmware() commands below.\n\nSo I think we need\n\nif (!section_needs_update(image_from, image_to, target)) {\n  if (!cfg-\u003eforce_update) {\n    printf(\"\u003e\u003e No need to update.\\n\");\n    return UPDATE_ERR_DONE;\n  }\n  Error(\"Force update but nothing to update.\\n\");\n  return some other error;\n}",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 2
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
