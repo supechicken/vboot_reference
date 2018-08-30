@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8afa916_0bdd2ab4",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:03:55Z",
+      "side": 1,
+      "message": "vboot_reference is trying to use kernel C style now, which doesn\u0027t like typedefs.\n\nJust use const char * const directly below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "0ed10ad09dd24403c4c463b4f36eee18072acaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
