@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0ca2409_d29246e3",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:15:27Z",
+      "side": 1,
+      "message": "peek at?",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 30
+      },
+      "revId": "ea6952155fa3cff4cdd7dd869d7262cd1475f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1eb99d_eadaee5b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T02:15:27Z",
+      "side": 1,
+      "message": "Is this just intended for unit testing?  If so, that\u0027s ok.\n\nIf it\u0027s going to be used on the actual system / by users, might want to take name\u003dvalue pairs or something like that because taking enums indices on the command line seems fragile.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 3
+      },
+      "revId": "ea6952155fa3cff4cdd7dd869d7262cd1475f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
