@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "b61b6639_f8e9be45",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T20:16:08Z",
+      "side": 1,
+      "message": "This is the check which will return error.  But only if we\u0027re emulating write firmware.",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 3
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1557ce0_19f8a895",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T20:16:08Z",
+      "side": 1,
+      "message": "Pretty sure this succeeds for a 0-length file",
+      "range": {
+        "startLine": 606,
+        "startChar": 5,
+        "endLine": 606,
+        "endChar": 55
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10097316_f0eceac4",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T20:16:08Z",
+      "side": 1,
+      "message": "So we\u0027re assuming this fails for a 0-length file",
+      "range": {
+        "startLine": 611,
+        "startChar": 8,
+        "endLine": 612,
+        "endChar": 21
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02af6781_758a8b6b",
         "filename": "futility/cmd_update.c",
         "patchSetId": 28
@@ -37,6 +106,30 @@
       "side": 1,
       "message": "I think we don\u0027t really need that. In vboot2, the force_update is found to be useful if we always want flashrom to run, to verify the A-B update behavior (i.e., if active is B, and do this to force updating A to the same content), so that should not be an error (we will still update one partition).\n\nFor the case RW_SECTION_[A|B] does not exist on both images, that will fail in write_firmware and we should be able to find out more at that time (it\u0027s really WRITE_FIRMWARE error).",
       "parentUuid": "02af6781_758a8b6b",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 2
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b546b8e8_c91af670",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T20:16:08Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like write_firmware() will fail.  Or at best, it\u0027s the call to flashrom which fails.\n\nMaybe section_needs_update() should take a force parameter, and then it can specifically handle the case of a forced update for a section that doesn\u0027t exist in either image.",
+      "parentUuid": "d10d9941_800c4817",
       "range": {
         "startLine": 843,
         "startChar": 0,
