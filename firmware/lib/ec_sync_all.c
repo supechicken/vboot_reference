@@ -87,15 +87,18 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	/*
-	 * Do Aux FW software sync and protect devices tunneled through the EC.
-	 * Aux FW update may request RO reboot to force EC cold reset so also
-	 * unload the option ROM if needed to prevent a second reboot.
-	 */
-	rv = ec_sync_update_aux_fw(ctx);
-	if (rv) {
-		ec_sync_unload_oprom(ctx, shared, need_wait_screen);
-		return rv;
+	if (fw_update != VB_AUX_FW_NO_UPDATE) {
+		/*
+		 * Do Aux FW software sync and protect devices tunneled through
+		 * the EC.  Aux FW update may request RO reboot to force EC cold
+		 * reset so also unload the option ROM if needed to prevent a
+		 * second reboot.
+		 */
+		rv = ec_sync_update_aux_fw(ctx);
+		if (rv) {
+			ec_sync_unload_oprom(ctx, shared, need_wait_screen);
+			return rv;
+		}
 	}
 
 	/* Reboot to unload VGA Option ROM if needed */
