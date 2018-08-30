@@ -1106,6 +1106,49 @@ static int check_compatible_root_key(const struct firmware_image *ro_image,
 }
 
 /*
+ * Returns non-zero if the RW_LEGACY needs to be updated, otherwise 0.
+ */
+static int legacy_needs_update(struct updater_config *cfg)
+{
+	int check_from, check_to;
+	char *cmd = NULL;
+	const char * const cbfs_update_tag = "cros_allow_auto_update";
+
+	Debug("%s: Checking %s contents...\n", __FUNCTION__, FMAP_RW_LEGACY);
+
+	if (asprintf(&cmd, "cbfstool %s print -r %s 2>/dev/null | grep -q %s",
+		     cfg->image.file_name, FMAP_RW_LEGACY, cbfs_update_tag) < 0)
+	{
+		Error("%s: Failed to allocate buffer.\n", __FUNCTION__);
+		return 0;
+	}
+	check_to = system(cmd);
+	free(cmd);
+
+	/* TODO(hungte): Save image_current as temp file and use it. */
+	if (asprintf(&cmd, "cbfstool %s print -r %s 2>/dev/null | grep -q %s",
+		     cfg->image_current.file_name, FMAP_RW_LEGACY,
+		     cbfs_update_tag) < 0)
+	{
+		Error("%s: Failed to allocate buffer.\n", __FUNCTION__);
+		return 0;
+	}
+	check_from = system(cmd);
+	free(cmd);
+
+	if (check_from || check_to) {
+		Debug("%s: Current legacy firmware has%s updater tag (%s) "
+		      "and target firmware has%s updater tag, won't update.\n",
+		      __FUNCTION__, check_from ? " no" : "", cbfs_update_tag,
+		      check_to ? " no" : "");
+		return 0;
+	}
+
+	return section_needs_update(
+			&cfg->image_current, &cfg->image, FMAP_RW_LEGACY);
+}
+
+/*
  * Checks if the given firmware image is signed with a key that won't be
  * blocked by TPM's anti-rollback detection.
  * Returns 0 for success, otherwise failure.
@@ -1187,6 +1230,7 @@ static enum updater_error_codes update_try_rw_firmware(
 {
 	const char *target;
 	int is_vboot2 = get_system_property(SYS_PROP_FW_VBOOT2, cfg);
+	int need_update = 1;
 
 	preserve_gbb(image_from, image_to);
 	if (!wp_enabled && section_needs_update(
@@ -1211,21 +1255,33 @@ static enum updater_error_codes update_try_rw_firmware(
 	target = decide_rw_target(cfg, TARGET_UPDATE, is_vboot2);
 	if (!target)
 		return UPDATE_ERR_TARGET;
-	if (!section_needs_update(image_from, image_to, target) &&
-	    !cfg->force_update) {
+
+	need_update = cfg->force_update ? 1 :
+			section_needs_update(image_from, image_to, target);
+
+	if (need_update) {
+		printf(">> TRY-RW UPDATE: Updating %s to try on reboot.\n",
+		       target);
+
+		if (write_firmware(cfg, image_to, target))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+		if (set_try_cookies(cfg, target, is_vboot2))
+			return UPDATE_ERR_SET_COOKIES;
+	} else {
 		/* Clear trial cookies for vboot1. */
 		if (!is_vboot2 && !cfg->emulate)
 			VbSetSystemPropertyInt("fwb_tries", 0);
-
-		printf(">> No need to update.\n");
-		return UPDATE_ERR_DONE;
 	}
 
-	printf(">> TRY-RW UPDATE: Updating %s to try on reboot.\n", target);
-	if (write_firmware(cfg, image_to, target))
-		return UPDATE_ERR_WRITE_FIRMWARE;
-	if (set_try_cookies(cfg, target, is_vboot2))
-		return UPDATE_ERR_SET_COOKIES;
+	/* Do not fail on updating legacy. */
+	if (legacy_needs_update(cfg)) {
+		need_update = 1;
+		printf(">> LEGACY UPDATE: Updating %s.\n", FMAP_RW_LEGACY);
+		write_firmware(cfg, image_to, FMAP_RW_LEGACY);
+	}
+
+	if (!need_update)
+		printf(">> No need to update.\n");
 
 	return UPDATE_ERR_DONE;
 }
@@ -1240,8 +1296,9 @@ static enum updater_error_codes update_rw_firmrware(
 		struct firmware_image *image_from,
 		struct firmware_image *image_to)
 {
-	printf(">> RW UPDATE: Updating RW sections (%s, %s, and %s).\n",
-	       FMAP_RW_SECTION_A, FMAP_RW_SECTION_B, FMAP_RW_SHARED);
+	printf(">> RW UPDATE: Updating RW sections (%s, %s, %s, and %s).\n",
+	       FMAP_RW_SECTION_A, FMAP_RW_SECTION_B, FMAP_RW_SHARED,
+	       FMAP_RW_LEGACY);
 
 	printf("Checking compatibility...\n");
 	if (check_compatible_root_key(image_from, image_to))
