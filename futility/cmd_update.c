@@ -123,6 +123,7 @@ struct quirk_entry {
 enum quirk_types {
 	QUIRK_ENLARGE_IMAGE,
 	QUIRK_LOCK_ME_AFTER_UPDATE,
+	QUIRK_PUSH_LEGACY_UPDATE,
 	QUIRK_MAX,
 };
 
@@ -1278,7 +1279,7 @@ static int legacy_needs_update(struct updater_config *cfg)
 	has_to = cbfs_file_exists(cfg->image.file_name, section, tag);
 	has_from = cbfs_file_exists(cfg->image_current.file_name, section, tag);
 
-	/* TODO)hungte): Add a quirk so we can upgrade systems without tags. */
+	try_apply_quirk(QUIRK_PUSH_LEGACY_UPDATE, cfg, &has_from);
 	if (!has_from || !has_to) {
 		DEBUG("Current legacy firmware has%s updater tag (%s) "
 		      "and target firmware has%s updater tag, won't update.",
@@ -1392,6 +1393,18 @@ static int quirk_lock_me_after_update(struct updater_config *cfg, void *arg)
 	printf("%s: Changed Flash Master Values to unlocked.\n", __FUNCTION__);
 	memcpy(section.data + flash_master_offset, flash_master,
 	       ARRAY_SIZE(flash_master));
+	return 0;
+}
+
+/*
+ * Quirk to enforce pushing updates to RW_LEGACY section.
+ * The `arg` should be a pointer to integer storing the result of checking
+ * updater tag that 1 indicates the system can be updated..
+ */
+static int quirk_push_legacy_update(struct updater_config *cfg, void *arg)
+{
+	assert(arg);
+	*(int *)arg = 1;
 	return 0;
 }
 
@@ -1704,6 +1717,12 @@ static int do_update(int argc, char *argv[])
 				.help="b/35568719: Only lock management engine "
 				      "by board-postinst.",
 				.apply=quirk_lock_me_after_update,
+			},
+			[QUIRK_PUSH_LEGACY_UPDATE] = {
+				.name="push_legacy_update",
+				.help="Push legacy updates even if the current "
+				      "system does not have update tags.",
+				.apply=quirk_push_legacy_update,
 			},
 		},
 	};
