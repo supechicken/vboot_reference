@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bc731193_c7615592",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-31T02:55:17Z",
+      "side": 1,
+      "message": "This is for writing a temp file so it\u0027s fine.",
+      "parentUuid": "d1557ce0_19f8a895",
+      "range": {
+        "startLine": 606,
+        "startChar": 5,
+        "endLine": 606,
+        "endChar": 55
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10097316_f0eceac4",
         "filename": "futility/cmd_update.c",
         "patchSetId": 28
@@ -59,6 +83,30 @@
       "writtenOn": "2018-08-30T20:16:08Z",
       "side": 1,
       "message": "So we\u0027re assuming this fails for a 0-length file",
+      "range": {
+        "startLine": 611,
+        "startChar": 8,
+        "endLine": 612,
+        "endChar": 21
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3066056f_b318a756",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-31T02:55:17Z",
+      "side": 1,
+      "message": "YEs. flashrom will fail if the size does not match.",
+      "parentUuid": "10097316_f0eceac4",
       "range": {
         "startLine": 611,
         "startChar": 8,
@@ -130,6 +178,30 @@
       "side": 1,
       "message": "It doesn\u0027t look like write_firmware() will fail.  Or at best, it\u0027s the call to flashrom which fails.\n\nMaybe section_needs_update() should take a force parameter, and then it can specifically handle the case of a forced update for a section that doesn\u0027t exist in either image.",
       "parentUuid": "d10d9941_800c4817",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 2
+      },
+      "revId": "7cb50a47f12ec737d57742b32ad0dbb1dd7c0af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0663aeb8_6be19d30",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-31T02:55:17Z",
+      "side": 1,
+      "message": "Yes, I was expecting write_firmware to fail when calling flashrom (or the emulated call). Moreover,  in follow up CLs we\u0027ll add a bunch of check verifying keys and contents, so a forced update will see error and stop if the image is not valid.\n\nBut in order to make it more clear, I can add a new failure here as invalid image, and check if the section exists before needs_update.",
+      "parentUuid": "b546b8e8_c91af670",
       "range": {
         "startLine": 843,
         "startChar": 0,
