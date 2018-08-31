@@ -46,6 +46,30 @@
       "revId": "1cf52ece21b9cc8be1b4d40d94aba94b52b10a30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4c439dd_e66d8444",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-31T05:24:16Z",
+      "side": 1,
+      "message": "integrating cbfstool is too mainful and updating legacy is somehow less critical so I think a system() should be good enough.",
+      "parentUuid": "596556d6_819c61e1",
+      "range": {
+        "startLine": 1119,
+        "startChar": 56,
+        "endLine": 1119,
+        "endChar": 69
+      },
+      "revId": "1cf52ece21b9cc8be1b4d40d94aba94b52b10a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
