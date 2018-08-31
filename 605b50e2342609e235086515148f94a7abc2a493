@@ -118,6 +118,30 @@
       "revId": "605b50e2342609e235086515148f94a7abc2a493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2d1e7c_921e9e1a",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-31T16:51:22Z",
+      "side": 1,
+      "message": "I was wrong about the failure, as when I look thru the serial output, I expected to see no prints relating to the TCPCs. So, protect is not failing.\n\nBut yeah, I can add the check higher up to prevent calling it at all.",
+      "parentUuid": "3f104d53_dac2e619",
+      "range": {
+        "startLine": 449,
+        "startChar": 16,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "605b50e2342609e235086515148f94a7abc2a493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
