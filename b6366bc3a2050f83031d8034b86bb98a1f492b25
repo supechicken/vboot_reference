@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf5ed3e_c27a5258",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T06:29:46Z",
+      "side": 1,
+      "message": "exists inside a particular CBFS section of an image file",
+      "range": {
+        "startLine": 1109,
+        "startChar": 47,
+        "endLine": 1109,
+        "endChar": 76
+      },
+      "revId": "b6366bc3a2050f83031d8034b86bb98a1f492b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150c9be0_27ac38b0",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T06:29:46Z",
+      "side": 1,
+      "message": "If possible I try to make functions understandable as English phrases.  Do you have a strong preference for |exists_cbfs_file| over |cbfs_file_exists|?",
+      "range": {
+        "startLine": 1112,
+        "startChar": 11,
+        "endLine": 1112,
+        "endChar": 27
+      },
+      "revId": "b6366bc3a2050f83031d8034b86bb98a1f492b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09911237_331374c4",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T06:29:46Z",
+      "side": 1,
+      "message": "If the function isn\u0027t actually comparing the contents of the two sections, then we can probably name it \"can_update_legacy\" instead?",
+      "range": {
+        "startLine": 1133,
+        "startChar": 11,
+        "endLine": 1133,
+        "endChar": 30
+      },
+      "revId": "b6366bc3a2050f83031d8034b86bb98a1f492b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6681e4d7_b0a853a0",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T06:29:46Z",
+      "side": 1,
+      "message": "I think I already brought this up when we were working on the logic inside of firmware-updater.  But we will have to change this when we want to upgrade existing devices with old legacy firmware (no updater tag) to the new legacy firmware (with updater tag).",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1145,
+        "endChar": 29
+      },
+      "revId": "b6366bc3a2050f83031d8034b86bb98a1f492b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5850b72_ff045b4b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T06:29:46Z",
+      "side": 1,
+      "message": "Is there a specific style guide for this situation?  Would it take one tab or two?",
+      "range": {
+        "startLine": 1154,
+        "startChar": 2,
+        "endLine": 1154,
+        "endChar": 3
+      },
+      "revId": "b6366bc3a2050f83031d8034b86bb98a1f492b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
