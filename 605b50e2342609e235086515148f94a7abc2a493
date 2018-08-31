@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e65a9730_24cd2cb1",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-08-31T01:52:41Z",
+      "side": 1,
+      "message": "is TCPC update actually getting triggered?\n\nthe default in depthcharge (vboot_aux_fw[])\nis VB_AUX_FW_NO_UPDATE unless a mismatch\nwas detected.\n\nso, if we\u0027re already not calling VbExCheckAuxFw\nbecause of DISABLE_PD_SOFTWARE_SYNC in \nec_sync_check_aux_fw(), the state should\nbe \"don\u0027t do anything\".",
+      "range": {
+        "startLine": 449,
+        "startChar": 16,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "605b50e2342609e235086515148f94a7abc2a493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
