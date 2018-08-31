@@ -94,6 +94,30 @@
       "revId": "605b50e2342609e235086515148f94a7abc2a493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f104d53_dac2e619",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-08-31T02:57:56Z",
+      "side": 1,
+      "message": "I think if PD sync is disabled by GBB flag you would not want it protected so it is accessible if we need to poke it from the host.\n\nIn here or in ec_sync_all doesn\u0027t make a difference to me..",
+      "parentUuid": "c95bd580_8c3b7c84",
+      "range": {
+        "startLine": 449,
+        "startChar": 16,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "605b50e2342609e235086515148f94a7abc2a493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
