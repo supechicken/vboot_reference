@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0498d061_a1388bfd",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-31T04:58:19Z",
+      "side": 1,
+      "message": "In a shell script I think using a system command with grep in it would be acceptable.  But IMHO it should be avoided in a C/C++ utility.\n\nCBFS library support is a bit messy -- I think cbfstool uses different code from coreboot CBFS support.  Neither of which are available in vboot_reference.  So maybe some refactoring is in line here.\n\nIn the meantime, if this is our only choice, could we refactor this out to a separate function?  e.g. file_exists_in_cbfs or cbfs_get_file_contents.\n\nAlso, maybe this is too paranoid, but can we prevent for this picking up files like cros_allow_auto_update_garbage?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 56,
+        "endLine": 1119,
+        "endChar": 69
+      },
+      "revId": "1cf52ece21b9cc8be1b4d40d94aba94b52b10a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
