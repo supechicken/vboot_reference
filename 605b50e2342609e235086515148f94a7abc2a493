@@ -46,6 +46,30 @@
       "revId": "605b50e2342609e235086515148f94a7abc2a493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927af24b_f9bcf250",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-31T02:43:57Z",
+      "side": 1,
+      "message": "The underlying issue is that ec_sync_all calls ec_sync_check_aux_fw() to decide if AUX FW update is required/allowed. If not, then it sets severity to VB_AUX_FW_NO_UPDATE and returns success. Thus, ec_sync_all eventually ends up calling VbExUpdateAuxFw() anyways irrespective of VB_AUX_FW_NO_UPDATE is set or not.\n\nAseda -- Shouldn\u0027t we have a check in ec_sync_all instead:\n\nif (fw_update !\u003d VB_AUX_FW_NO_UPDATE) {\n     rv \u003d ec_sync_update_aux_fw(ctx);\n     ...\n}\n\nThat way if there is any other reason to skip AUX FW update, that will get handled too. Thoughts?",
+      "parentUuid": "eeb25e73_f26bd42b",
+      "range": {
+        "startLine": 449,
+        "startChar": 16,
+        "endLine": 449,
+        "endChar": 31
+      },
+      "revId": "605b50e2342609e235086515148f94a7abc2a493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
