@@ -120,6 +120,7 @@ struct quirk_entry {
 
 enum quirk_types {
 	QUIRK_ENLARGE_IMAGE,
+	QUIRK_LOCK_ME_AFTER_UPDATE,
 	QUIRK_MAX,
 };
 
@@ -936,10 +937,16 @@ static int preserve_gbb(const struct firmware_image *image_from,
 /*
  * Preserves the regions locked by Intel management engine.
  */
-static int preserve_management_engine(const struct firmware_image *image_from,
+static int preserve_management_engine(struct updater_config *cfg,
+				      const struct firmware_image *image_from,
 				      struct firmware_image *image_to)
 {
 	struct firmware_section section;
+	const int flash_master_offset = 128;
+	const uint8_t flash_master[] = {
+		0x00, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0x00, 0xff,
+		0xff, 0xff
+	};
 
 	find_firmware_section(&section, image_from, FMAP_SI_ME);
 	if (!section.data) {
@@ -951,6 +958,26 @@ static int preserve_management_engine(const struct firmware_image *image_from,
 		return preserve_firmware_section(
 				image_from, image_to, FMAP_SI_DESC);
 	}
+
+	if (!get_config_quirk(QUIRK_LOCK_ME_AFTER_UPDATE, cfg))
+		return 0;
+
+	DEBUG("ME seems not locked yet, do not preserve.");
+	find_firmware_section(&section, image_to, FMAP_SI_DESC);
+	if (section.size < flash_master_offset + ARRAY_SIZE(flash_master))
+		return 0;
+	if (memcmp(section.data + flash_master_offset, flash_master,
+		   ARRAY_SIZE(flash_master)) == 0) {
+		DEBUG("Target ME not locked.");
+		return 0;
+	}
+	/*
+	 * b/35568719: We should only update with unlocked ME and let
+	 * board-postinst lock it.
+	 */
+	printf("%s: Changed Flash Master Values to unlocked.\n", __FUNCTION__);
+	memcpy(section.data + flash_master_offset, flash_master,
+	       ARRAY_SIZE(flash_master));
 	return 0;
 }
 
@@ -964,7 +991,7 @@ static int preserve_images(struct updater_config *cfg)
 	int errcnt = 0;
 	struct firmware_image *from = &cfg->image_current, *to = &cfg->image;
 	errcnt += preserve_gbb(from, to);
-	errcnt += preserve_management_engine(from, to);
+	errcnt += preserve_management_engine(cfg, from, to);
 	errcnt += preserve_firmware_section(from, to, FMAP_RO_VPD);
 	errcnt += preserve_firmware_section(from, to, FMAP_RW_VPD);
 	errcnt += preserve_firmware_section(from, to, FMAP_RW_NVRAM);
@@ -1641,6 +1668,10 @@ static int do_update(int argc, char *argv[])
 			[QUIRK_ENLARGE_IMAGE] = {
 				.name="enlarge_image",
 				.help="Enlarge firmware image by flash size."},
+			[QUIRK_LOCK_ME_AFTER_UPDATE] = {
+				.name="lock_me_after_update",
+				.help="b/35568719: Only lock management engine "
+				      "by board-postinst."},
 		},
 	};
 
