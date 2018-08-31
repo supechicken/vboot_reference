@@ -121,6 +121,7 @@ struct quirk_entry {
 enum quirk_types {
 	QUIRK_ENLARGE_IMAGE,
 	QUIRK_LOCK_ME_AFTER_UPDATE,
+	QUIRK_PUSH_LEGACY_UPDATE,
 	QUIRK_MAX,
 };
 
@@ -1279,7 +1280,10 @@ static int legacy_needs_update(struct updater_config *cfg)
 	has_to = cbfs_file_exists(cfg->image.file_name, section, tag);
 	has_from = cbfs_file_exists(cfg->image_current.file_name, section, tag);
 
-	/* TODO)hungte): Add a quirk so we can upgrade systems without tags. */
+	if (!has_from && get_config_quirk(QUIRK_PUSH_LEGACY_UPDATE, cfg)) {
+		DEBUG("Apply quirks: push_legacy_update");
+		has_from = 1;
+	}
 	if (!has_from || !has_to) {
 		DEBUG("Current legacy firmware has%s updater tag (%s) "
 		      "and target firmware has%s updater tag, won't update.",
@@ -1672,6 +1676,10 @@ static int do_update(int argc, char *argv[])
 				.name="lock_me_after_update",
 				.help="b/35568719: Only lock management engine "
 				      "by board-postinst."},
+			[QUIRK_PUSH_LEGACY_UPDATE] = {
+				.name="push_legacy_update",
+				.help="Push legacy updates even if the current "
+				      "system does not have update tags."},
 		},
 	};
 
