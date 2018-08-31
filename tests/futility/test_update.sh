@@ -25,9 +25,10 @@ test_quirks() {
 		tr '\n' ' '
 }
 
-test "$(test_quirks "test")" = "test,1 "
-test "$(test_quirks "test=2")" = "test,2 "
-test "$(test_quirks " test, test=2")" = "test,1 test,2 "
+test "$(test_quirks "enlarge_image")" = "enlarge_image,1 "
+test "$(test_quirks "enlarge_image=2")" = "enlarge_image,2 "
+test "$(test_quirks " enlarge_image, enlarge_image=2")" = \
+	"enlarge_image,1 enlarge_image,2 "
 
 # Test data files
 LINK_BIOS="${SCRIPTDIR}/data/bios_link_mp.bin"
