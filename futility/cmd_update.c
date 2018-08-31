@@ -119,7 +119,7 @@ struct quirk_entry {
 };
 
 enum quirk_types {
-	QUIRK_TEST,
+	QUIRK_ENLARGE_IMAGE,
 	QUIRK_MAX,
 };
 
@@ -1304,6 +1304,41 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
 	return 0;
 }
 
+/*
+ * Quirk to enlarge a firmware image to match flash size. This is needed by
+ * devices using multiple SPI flash with different sizes, for example 8M and
+ * 16M. The image_to will be padded with 0xFF using the size of image_from.
+ * Returns 0 on success, otherwise failure.
+ */
+static int quirk_enlarge_image(struct updater_config *cfg,
+			       struct firmware_image *image_from,
+			       struct firmware_image *image_to)
+{
+	if (!get_config_quirk(QUIRK_ENLARGE_IMAGE, cfg))
+		return 0;
+
+	DEBUG("Apply quirks: enlarge_image");
+	if (image_from->size <= image_to->size)
+		return 0;
+
+	Debug("%s: Resizing image from %u to %u.\n", __FUNCTION__,
+	      image_to->size, image_from->size);
+	image_to->data = (uint8_t *)realloc(
+			image_to->data, image_from->size);
+	if (!image_to->data)
+		return -1;
+
+	memset(image_to->data + image_to->size,
+	       image_from->size - image_to->size, 0xff);
+	image_to->size = image_from->size;
+	/*
+	 * TODO(hungte) Write image to disk and call load_image again instead of
+	 * updating individual attribute.
+	 */
+	image_to->fmap_header = fmap_find(image_to->data, image_to->size);
+	return 0;
+}
+
 enum updater_error_codes {
 	UPDATE_ERR_DONE,
 	UPDATE_ERR_NEED_RO_UPDATE,
@@ -1501,6 +1536,9 @@ static enum updater_error_codes update_firmware(struct updater_config *cfg)
 	       get_system_property(SYS_PROP_WP_HW, cfg),
 	       get_system_property(SYS_PROP_WP_SW, cfg));
 
+	if (quirk_enlarge_image(cfg, image_from, image_to))
+		return UPDATE_ERR_SYSTEM_IMAGE;
+
 	if (debugging_enabled)
 		print_system_properties(cfg);
 
@@ -1600,7 +1638,9 @@ static int do_update(int argc, char *argv[])
 			[SYS_PROP_WP_SW] = {.getter = host_get_wp_sw},
 		},
 		.quirks = {
-			[QUIRK_TEST] = {.name="test", .help="Dummy quirk"},
+			[QUIRK_ENLARGE_IMAGE] = {
+				.name="enlarge_image",
+				.help="Enlarge firmware image by flash size."},
 		},
 	};
 
