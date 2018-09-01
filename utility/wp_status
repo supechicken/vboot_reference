@@ -1,0 +1,177 @@
+#!/bin/sh
+# Copyright 2018 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Gets or checks system write-protection status.
+
+has_ec() {
+  [ -e /dev/cros_ec ]
+}
+
+has_pd() {
+  [ -e /dev/cros_pd ]
+}
+
+usage() {
+  echo "Check or return system write protection status.
+
+  Usage: $0 component [value]
+
+  Valid components:
+  - host: The system (AP, main) firmware.
+  - ec: The embedded controller firmware.
+  - pd: The power delivery firmware.
+  - hw: The hardware switch - usually a screw or H1 virtual pins.
+  - all: A special target to list (or check) all available components.
+
+  * For most components (except hw), the status is decided by combination
+  of hardware (hw) and software (flash SRP) status; will be '1' only if
+  both hardware and software settings are enabled.
+
+  ** If value is provided (must be either 0 or 1, representing disabled or
+  enabled), the return code is 0 (success) if the value is matched otherwise 1
+  (failure), which may be mismatch or system error.
+  " >&2
+}
+
+get_sw_status() {
+  local programmer="$1"
+  local result="$(flashrom -p "${programmer}" --wp-status 2>/dev/null |
+      sed -n 's/^WP: write protect is //p')"
+
+  # TODO(hungte) Decide if we should check protection range as well.
+
+  case "${result}" in
+    enabled.)
+      echo "1"
+      ;;
+    disabled.)
+      echo "0"
+      ;;
+  esac
+}
+
+get_sw_range() {
+  local programmer="$1"
+  flashrom -p "${programmer}" --wp-status 2>/dev/null |
+    sed -n 's/^WP: write protect range: //p'
+}
+
+get_hw_status() {
+  local wpsw="$(crossystem wpsw_cur 2>/dev/null)"
+
+  if [ "${wpsw}" = "1" ] || [ "${wpsw}" = "0" ]; then
+    echo "${wpsw}"
+    return
+  fi
+  crossystem wpsw_boot 2>/dev/null
+}
+
+get_raw_status() {
+  case "$1" in
+    hw)
+      get_hw_status
+      ;;
+    host)
+      get_sw_status host
+      ;;
+    ec)
+      has_ec && get_sw_status "ec"
+      ;;
+    pd)
+      has_pd && get_sw_status "ec:dev=1"
+      ;;
+    *)
+      usage
+      ;;
+  esac
+}
+
+get_status() {
+  local hw_status="$(get_raw_status hw)"
+  local sw_status="1"
+
+  if [ "$1" != hw ]; then
+    sw_status="$(get_raw_status "$1")"
+  fi
+
+  if [ -z "${sw_status}" ] || [ -z "${hw_status}" ]; then
+    # Something wrong, no answer.
+    return
+  fi
+  echo "$((hw_status && sw_status))"
+}
+
+get_status_or_err() {
+  local value="$(get_status "$1")"
+  if [ -z "${value}" ]; then
+    value="error"
+  fi
+  echo "${value}"
+}
+
+report_sw_status() {
+  echo "$(get_sw_status "$1"), $(get_sw_range "$1")"
+}
+
+report_status() {
+  if [ "$1" = all ]; then
+    echo "host $(get_status_or_err host) (sw=$(report_sw_status host))"
+    has_ec && echo "ec $(get_status_or_err ec) (sw=$(report_sw_status ec))"
+    has_pd && echo "pd $(get_status_or_err pd) (sw=$(report_sw_status pd))"
+    echo "hw $(get_status_or_err hw)"
+    return
+  fi
+
+  local status="$(get_status "$1")"
+  if [ -n "${status}" ]; then
+    echo "${status}"
+  else
+    return 1
+  fi
+}
+
+check_single_status() {
+  [ "$(get_status_or_err "$1")" = "$2" ]
+}
+
+check_status() {
+  local target="$1"
+  local expected="$2"
+
+  if [ "${expected}" != 0 ] && [ "${expected}" != 1 ]; then
+    usage
+    return 1
+  fi
+
+  if [ "${target}" = "all" ]; then
+    if ! check_single_status hw "${expected}"; then
+      return 1
+    elif ! check_single_status host "${expected}"; then
+      return 1
+    elif has_ec && ! check_single_status ec "${expected}"; then
+      return 1
+    elif has_pd && ! check_single_status ec "${expected}"; then
+      return 1
+    fi
+    return 0
+  else
+    check_single_status "${target}" "${expected}"
+  fi
+}
+
+main() {
+  case "$#" in
+    1)
+      report_status "$1"
+      ;;
+    2)
+      check_status "$1" "$2"
+      ;;
+    *)
+      usage
+      exit 1
+  esac
+}
+main "$@"

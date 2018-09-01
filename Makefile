@@ -587,7 +587,8 @@ UTIL_DEFAULTS = ${BUILD}/default/vboot_reference
 # Scripts to install directly (not compiled)
 UTIL_SCRIPTS = \
 	utility/dev_debug_vboot \
-	utility/enable_dev_usb_boot
+	utility/enable_dev_usb_boot \
+	utility/wp_status
 
 ifeq (${MINIMAL},)
 UTIL_SCRIPTS += \
