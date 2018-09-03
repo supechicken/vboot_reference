@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdde278e_40811dd4",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-03T07:44:30Z",
+      "side": 1,
+      "message": "No need for a space before linebreak.",
+      "range": {
+        "startLine": 440,
+        "startChar": 26,
+        "endLine": 440,
+        "endChar": 27
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc0f9df_d4f19b46",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-03T07:44:30Z",
+      "side": 1,
+      "message": "If it\u0027s possible for a quirk value to take on a positive integer other than 1, then should we use this as some kind of \"quirk configuration\" that should be sent to the apply() function?",
+      "range": {
+        "startLine": 449,
+        "startChar": 33,
+        "endLine": 449,
+        "endChar": 63
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95dc24b3_15aa7398",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-03T07:44:30Z",
+      "side": 1,
+      "message": "Any reason not to align spaces with the above?",
+      "range": {
+        "startLine": 1593,
+        "startChar": 21,
+        "endLine": 1593,
+        "endChar": 23
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26efd8ae_6ca40af1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-03T07:44:30Z",
+      "side": 1,
+      "message": "If we are assuming setup_config_quirks to return \"the number of errors it encounters\", we should probably define it as such in its documentation comment.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 3,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
