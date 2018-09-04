@@ -11,6 +11,7 @@
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "2rsa.h"
 #include "crossystem.h"
@@ -139,6 +140,58 @@ struct updater_config {
 	int force_update;
 	int emulate;
 };
+
+struct tempfile {
+	char *filepath;
+	struct tempfile *next;
+};
+
+static struct tempfile *tempfiles;
+
+/*
+ * Helper function to create a new temporary file.
+ * Returns the path of new file, or NULL on failure.
+ * Caller must call remove_temp_files() to remove the allocated files.
+ */
+static const char *create_temp_file()
+{
+	struct tempfile *new_temp;
+	char new_path[] = P_tmpdir "/fwupdater.XXXXXX";
+	int fd;
+
+	fd = mkstemp(new_path);
+	if (fd < 0) {
+		ERROR("Failed to create new temp file in %s", new_path);
+		return NULL;
+	}
+	close(fd);
+	new_temp = (struct tempfile *)malloc(sizeof(*new_temp));
+	if (new_temp)
+		new_temp->filepath = strdup(new_path);
+	if (!new_temp || !new_temp->filepath) {
+		remove(new_path);
+		free(new_temp);
+		ERROR("Failed to allocate buffer for new temp file.");
+		return NULL;
+	}
+	DEBUG("Created new temporary file: %s.", new_temp);
+	new_temp->next = tempfiles;
+	tempfiles = new_temp;
+	return new_temp->filepath;
+}
+
+/* Helper function to remove all files created by create_temp_file(). */
+static void remove_temp_files()
+{
+	while (tempfiles != NULL) {
+		struct tempfile *target = tempfiles;
+		DEBUG("Remove temporary file: %s.", target->filepath);
+		remove(target->filepath);
+		free(target->filepath);
+		tempfiles = target->next;
+		free(target);
+	}
+}
 
 /*
  * Strip a string (usually from shell execution output) by removing all the
@@ -674,9 +727,10 @@ static int emulate_system_image(const char *file_name,
 static int load_system_image(struct updater_config *cfg,
 			     struct firmware_image *image)
 {
-	/* TODO(hungte) replace by mkstemp */
-	const char *tmp_file = "/tmp/.fwupdate.read";
+	const char *tmp_file = create_temp_file();
 
+	if (!tmp_file)
+		return -1;
 	RETURN_ON_FAILURE(host_flashrom(
 			FLASHROM_READ, tmp_file, image->programmer, 0, NULL));
 	return load_image(tmp_file, image);
@@ -694,6 +748,28 @@ static void free_image(struct firmware_image *image)
 	free(image->rw_version_b);
 	free(image->emulation);
 	memset(image, 0, sizeof(*image));
+}
+/*
+ * Reloads a firmware image from file.
+ * Keeps special configuration like emulation.
+ * Returns 0 on success, otherwise failure.
+ */
+static int reload_image(const char *file_name, struct firmware_image *image)
+{
+	char *emulation = image->emulation;
+	int r;
+
+	/*
+	 * All values except emulation and programmer will be re-constructed
+	 * in load_image. `programmer` is not touched in free_image so we only
+	 * need to keep `emulation`.
+	 */
+	image->emulation = NULL;
+	free_image(image);
+	r = load_image(file_name, image);
+	if (r == 0)
+		image->emulation = emulation;
+	return r;
 }
 
 /*
@@ -837,10 +913,12 @@ static int write_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
 			  const char *section_name)
 {
-	/* TODO(hungte) replace by mkstemp */
-	const char *tmp_file = "/tmp/.fwupdate.write";
+	const char *tmp_file = create_temp_file();
 	const char *programmer = cfg->emulate ? image->emulation :
 			image->programmer;
+
+	if (!tmp_file)
+		return -1;
 
 	if (cfg->emulate) {
 		printf("%s: (emulation) %s %s from %s to %s.\n",
@@ -1359,25 +1437,29 @@ static int quirk_enlarge_image(struct updater_config *cfg, void *arg)
 {
 	struct firmware_image *image_from = &cfg->image_current,
 			      *image_to = &cfg->image;
+	const char *tmp_path;
+	size_t to_write;
+	FILE *fp;
 
 	if (image_from->size <= image_to->size)
 		return 0;
 
-	DEBUG("Resize image from %u to %u.", image_to->size, image_from->size);
-	image_to->data = (uint8_t *)realloc(
-			image_to->data, image_from->size);
-	if (!image_to->data)
+	tmp_path = create_temp_file();
+	if (!tmp_path)
 		return -1;
 
-	memset(image_to->data + image_to->size,
-	       image_from->size - image_to->size, 0xff);
-	image_to->size = image_from->size;
-	/*
-	 * TODO(hungte) Write image to disk and call load_image again instead of
-	 * updating individual attribute.
-	 */
-	image_to->fmap_header = fmap_find(image_to->data, image_to->size);
-	return 0;
+	DEBUG("Resize image from %u to %u.", image_to->size, image_from->size);
+	to_write = image_from->size - image_to->size;
+	vb2_write_file(tmp_path, image_to->data, image_to->size);
+	fp = fopen(tmp_path, "ab");
+	if (!fp) {
+		ERROR("Cannot open temporary file %s.", tmp_path);
+		return -1;
+	}
+	while (to_write-- > 0)
+		fputc('\xff', fp);
+	fclose(fp);
+	return reload_image(tmp_path, image_to);
 }
 
 /*
@@ -1878,8 +1960,8 @@ static int do_update(int argc, char *argv[])
 	printf(">> %s: Firmware updater %s.\n",
 	       errorcnt ? "FAILED": "DONE",
 	       errorcnt ? "stopped due to error" : "exited successfully");
-
 	unload_updater_config(&cfg);
+	remove_temp_files();
 	return !!errorcnt;
 }
 
