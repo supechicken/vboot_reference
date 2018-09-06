@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75b95c24_dfac7787",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-06T06:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdde278e_40811dd4",
+      "range": {
+        "startLine": 440,
+        "startChar": 26,
+        "endLine": 440,
+        "endChar": 27
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc0f9df_d4f19b46",
         "filename": "futility/cmd_update.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-03T07:44:30Z",
       "side": 1,
       "message": "If it\u0027s possible for a quirk value to take on a positive integer other than 1, then should we use this as some kind of \"quirk configuration\" that should be sent to the apply() function?",
+      "range": {
+        "startLine": 449,
+        "startChar": 33,
+        "endLine": 449,
+        "endChar": 63
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a821c1ec_bffe1804",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-06T06:27:25Z",
+      "side": 1,
+      "message": "Yes that is possible, but I don\u0027t think we need to send that to apply(), since the quirks can call get_config_quirk(cfg) to read the value.\n\nI actually want to remove arg, but currently it\u0027s the only way to exchange data between caller and callee...\n\nWhat do you think? Should we change apply() to take cfg only? (for example - see my min_platform_ver quirk in follow up CL; currently it needs to pass a \"need update\" int arg, but I can change it to be a simple if in the caller side)",
+      "parentUuid": "9fc0f9df_d4f19b46",
       "range": {
         "startLine": 449,
         "startChar": 33,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "50c75b26_d1852019",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-06T06:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95dc24b3_15aa7398",
+      "range": {
+        "startLine": 1593,
+        "startChar": 21,
+        "endLine": 1593,
+        "endChar": 23
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26efd8ae_6ca40af1",
         "filename": "futility/cmd_update.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2018-09-03T07:44:30Z",
       "side": 1,
       "message": "If we are assuming setup_config_quirks to return \"the number of errors it encounters\", we should probably define it as such in its documentation comment.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 3,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5956260e_6bd18a45",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-06T06:27:25Z",
+      "side": 1,
+      "message": "no, the functions should be simply success (0) or failure (non-zero), so we should count that by !! here.",
+      "parentUuid": "26efd8ae_6ca40af1",
       "range": {
         "startLine": 1648,
         "startChar": 3,
