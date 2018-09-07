@@ -34,6 +34,29 @@
       "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bb58346_b03f98f5",
+        "filename": "futility/cmd_validate_rec_mrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-07T01:00:20Z",
+      "side": 1,
+      "message": "don\u0027t we need to check cache_len \u003e\u003d sizeof(*cache) ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 75
+      },
+      "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
