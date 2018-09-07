@@ -225,6 +225,36 @@ test_update "Legacy update" \
 	"${FROM_IMAGE}" "${TMP}.expected.legacy" \
 	-i "${TO_IMAGE}" --mode=legacy
 
+enable_legacy_update() {
+	local file="$1"
+	cbfstool "$1" add -r RW_LEGACY -t raw \
+		-f ${TMP}.cros_allow_auto_update -n cros_allow_auto_update
+}
+
+if type cbfstool >/dev/null 2>&1; then
+	cp -f "${FROM_IMAGE}" "${FROM_IMAGE}.allow_legacy"
+	cp -f "${TO_IMAGE}" "${TO_IMAGE}.allow_legacy"
+	cp -f "${TMP}.expected.b" "${TMP}.expected.b_legacy"
+	cp -f "${TMP}.expected.b" "${TMP}.expected.b_allow_legacy"
+	"${FUTILITY}" load_fmap "${TMP}.expected.b_legacy" \
+		RW_LEGACY:${TMP}.to/RW_LEGACY
+	touch ${TMP}.cros_allow_auto_update
+	enable_legacy_update "${FROM_IMAGE}.allow_legacy"
+	enable_legacy_update "${TO_IMAGE}.allow_legacy"
+	enable_legacy_update "${TMP}.expected.b_legacy"
+	enable_legacy_update "${TMP}.expected.b_allow_legacy"
+
+	test_update "RW update (A->B + legacy)" \
+		"${FROM_IMAGE}.allow_legacy" "${TMP}.expected.b_legacy" \
+		-i "${TO_IMAGE}.allow_legacy" -t --wp=1 --sys_props 0,0x10001,1
+	test_update "RW update (A->B, no legacy due to current image)" \
+		"${FROM_IMAGE}" "${TMP}.expected.b" \
+		-i "${TO_IMAGE}.allow_legacy" -t --wp=1 --sys_props 0,0x10001,1
+	test_update "RW update (A->B, no legacy due to new image)" \
+		"${FROM_IMAGE}.allow_legacy" "${TMP}.expected.b_allow_legacy" \
+		-i "${TO_IMAGE}" -t --wp=1 --sys_props 0,0x10001,1
+fi
+
 # Test quirks
 test_update "Full update (wrong size)" \
 	"${FROM_IMAGE}.large" "!Image size is different" \
