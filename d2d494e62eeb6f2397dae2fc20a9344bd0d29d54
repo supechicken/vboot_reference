@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dc104cb7_dade0190",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-07T06:22:46Z",
+      "side": 1,
+      "message": "I guess it depends how complex our quirks will get?  If we can always phrase them in a Boolean sense of \"Should I perform this code or not?\" then it should be fine without |arg|.\n\nOne other question -- why do we need to provide cfg?  Can\u0027t we just make this some global variable or something?  Or will there be multiple cfg instances?",
+      "parentUuid": "a821c1ec_bffe1804",
+      "range": {
+        "startLine": 449,
+        "startChar": 33,
+        "endLine": 449,
+        "endChar": 63
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95dc24b3_15aa7398",
         "filename": "futility/cmd_update.c",
         "patchSetId": 4
@@ -187,6 +211,30 @@
       "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c558321d_3f90c86b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-07T06:22:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5956260e_6bd18a45",
+      "range": {
+        "startLine": 1648,
+        "startChar": 3,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
