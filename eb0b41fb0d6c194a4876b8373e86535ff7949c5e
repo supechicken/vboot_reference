@@ -57,6 +57,30 @@
       "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34849742_d8cb95ab",
+        "filename": "futility/cmd_validate_rec_mrc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-07T07:02:40Z",
+      "side": 1,
+      "message": "That seems like a good thing to check. Pushed CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1212528",
+      "parentUuid": "8bb58346_b03f98f5",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 75
+      },
+      "revId": "eb0b41fb0d6c194a4876b8373e86535ff7949c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
