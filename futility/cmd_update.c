@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 #include "2rsa.h"
+#include "cbfs_core.h"
 #include "crossystem.h"
 #include "fmap.h"
 #include "futility.h"
@@ -1342,24 +1343,20 @@ static int check_compatible_root_key(const struct firmware_image *ro_image,
 
 /*
  * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
- * section of an image file, otherwise 0.
+ * section of a firmware image, otherwise 0.
  */
-static int cbfs_file_exists(const char *image_file,
-			    const char *section_name,
-			    const char *cbfs_entry_name)
+static int cbfs_image_has_file(const struct firmware_image *image,
+			       const char *section_name,
+			       const char *cbfs_entry_name)
 {
-	char *cmd;
-	int r;
+	struct firmware_section section;
 
-	if (asprintf(&cmd,
-		     "cbfstool '%s' print -r %s 2>/dev/null | grep -q '^%s '",
-		     image_file, section_name, cbfs_entry_name) < 0) {
-		ERROR("Failed to allocate buffer.");
+	find_firmware_section(&section, image, section_name);
+	if (!section.data)
 		return 0;
-	}
-	r = system(cmd);
-	free(cmd);
-	return !r;
+
+	return cbfs_find(cbfs_entry_name, section.data, section.size) != NULL;
+	// return cbfs_has_file(section.data, section.size, cbfs_entry_name);
 }
 
 /*
@@ -1373,9 +1370,8 @@ static int legacy_needs_update(struct updater_config *cfg)
 
 	DEBUG("Checking %s contents...", FMAP_RW_LEGACY);
 
-	/* TODO(hungte): Save image_current as temp file and use it. */
-	has_to = cbfs_file_exists(cfg->image.file_name, section, tag);
-	has_from = cbfs_file_exists(cfg->image_current.file_name, section, tag);
+	has_to = cbfs_image_has_file(&cfg->image, section, tag);
+	has_from = cbfs_image_has_file(&cfg->image_current, section, tag);
 
 	if (!has_from || !has_to) {
 		DEBUG("Current legacy firmware has%s updater tag (%s) "
