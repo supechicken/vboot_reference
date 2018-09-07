@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c85de56c_9597512a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-07T07:09:19Z",
+      "side": 1,
+      "message": "Well, at least without arg is sufficient today (see current version).\n\nI prefer to make every function self-contained and not using global/static vars, so it\u0027ll be easier to test, refactor, or move/shared by other modules in future.",
+      "parentUuid": "dc104cb7_dade0190",
+      "range": {
+        "startLine": 449,
+        "startChar": 33,
+        "endLine": 449,
+        "endChar": 63
+      },
+      "revId": "d2d494e62eeb6f2397dae2fc20a9344bd0d29d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95dc24b3_15aa7398",
         "filename": "futility/cmd_update.c",
         "patchSetId": 4
