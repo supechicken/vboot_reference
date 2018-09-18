@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d59ff0b5_9a9d15c9",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-18T21:48:46Z",
+      "side": 1,
+      "message": "nit: technically it only boots the default payload, not anything.",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcaeaee6_eed28f84",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-18T21:48:46Z",
+      "side": 1,
+      "message": "nit: should probably be more explicit about what it does, e.g. \"user pressed %d; Try custom payload\\n\"",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb62353d_f8f648ec",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-18T21:48:46Z",
+      "side": 1,
+      "message": "Please add code to confirm that the booted bootloader number is the expected one in all legacy boot test cases.",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc4902b_beedb6a0",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-18T21:48:46Z",
+      "side": 1,
+      "message": "Please add a test for the new number keys (at least one of them).",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db808c56_3b1920d4",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-18T21:48:46Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
