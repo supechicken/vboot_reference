@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d43ad57_766a98a0",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-19T14:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d59ff0b5_9a9d15c9",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcaeaee6_eed28f84",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61146ddb_bdb86547",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-19T14:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcaeaee6_eed28f84",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bd430310_74f79c2e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-19T14:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb62353d_f8f648ec",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bc4902b_beedb6a0",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2018-09-18T21:48:46Z",
       "side": 1,
       "message": "Please add a test for the new number keys (at least one of them).",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21800f1d_efbb300f",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-19T14:26:49Z",
+      "side": 1,
+      "message": "I did a loop, just to be sure. If that is silly, let me know. I just worry that something might change in the ui code and we wouldn\u0027t notice.",
+      "parentUuid": "3bc4902b_beedb6a0",
       "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -84,6 +156,24 @@
       "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641990c9_b7a7fc48",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-19T14:26:49Z",
+      "side": 1,
+      "message": "Done\n\nNote that we don\u0027t support the menu here yet, so only the default payload is available.",
+      "parentUuid": "db808c56_3b1920d4",
+      "revId": "023765ac83e5d74e626fdb5376cf7e0ac4a6f16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
