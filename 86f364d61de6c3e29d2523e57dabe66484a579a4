@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5HY\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5ro\u003d",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5rg\u003d",
         "filename": "utility/dump_kernel_config.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-26T08:40:05Z",
       "side": 1,
       "message": "For consistency, eliminate space between uint8_t and *. Further, I suspect this cast is unnecessary.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5HA\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done\n\nThough as a note, our code spec allows both positions for * as long as your are consistent. I looked it up the other day.",
+      "parentUuid": "AAAAHn//5rg\u003d",
       "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5G0\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5rc\u003d",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//55I\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2012-01-26T01:21:39Z",
       "side": 1,
       "message": "is this unistd.h needed?",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5Gw\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "AAAAHn//55I\u003d",
       "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -175,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//5Gk\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "I\u0027m going to pass on things that aren\u0027t format changes. If nothing else, such changes should be in a seperate CL to help people understand chat changes were made when if it matters at some point in the future.",
+      "parentUuid": "AAAAHn//5RY\u003d",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//5qs\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 3
@@ -271,6 +361,24 @@
       "writtenOn": "2012-01-26T08:40:05Z",
       "side": 1,
       "message": "Fix indentation of arguments.",
+      "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//5Gc\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//5r4\u003d",
       "revId": "86f364d61de6c3e29d2523e57dabe66484a579a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

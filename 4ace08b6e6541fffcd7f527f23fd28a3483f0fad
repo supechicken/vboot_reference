@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//6AA\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Nope, only x86-mario.\n\nIf the original code was cross platform, it seems probable that this is as well.",
+      "parentUuid": "AAAAHn//6Ak\u003d",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//6Kc\u003d",
         "filename": "utility/Makefile",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//6AI\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//6Kc\u003d",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//6KY\u003d",
         "filename": "utility/dump_kernel_config.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2012-01-25T23:31:23Z",
       "side": 1,
       "message": "2012",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//6AE\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "I think I\u0027m still seeing/typing 2011 without realizing it\u0027s wrong.",
+      "parentUuid": "AAAAHn//6KY\u003d",
       "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//6AQ\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Yes, I commented out each header and deleted anything it would still compile without. unitstd was needed, but I forget what for.",
+      "parentUuid": "AAAAHn//6Ac\u003d",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//6Ag\u003d",
         "filename": "utility/dump_kernel_config_main.c",
         "patchSetId": 2
@@ -98,6 +170,24 @@
       "writtenOn": "2012-01-25T23:31:23Z",
       "side": 1,
       "message": "need to include sys/mman.h for munmap",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//6AU\u003d",
+        "filename": "utility/dump_kernel_config_main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Interesting, it compiles as is.\n\nDone.",
+      "parentUuid": "AAAAHn//6Ag\u003d",
       "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -132,6 +222,24 @@
       "writtenOn": "2012-01-25T23:31:23Z",
       "side": 1,
       "message": "is this the standard include for using size_t?",
+      "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//6AM\u003d",
+        "filename": "utility/include/dump_kernel_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Not certain if there is a real rule around it. If so, I\u0027m not even sure where to find it. Top three google results all gave different answers. It doesn\u0027t seem unreasonable to me.",
+      "parentUuid": "AAAAHn//6Ao\u003d",
       "revId": "4ace08b6e6541fffcd7f527f23fd28a3483f0fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

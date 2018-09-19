@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//6a0\u003d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//6c0\u003d",
+      "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//6cw\u003d",
         "filename": "utility/Makefile",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2012-01-25T19:25:15Z",
       "side": 1,
       "message": "NIT: extra new line?",
+      "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//6aw\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAHn//6cw\u003d",
       "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAHn//6a8\u003d",
+        "filename": "utility/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "Yes, otherwise ar just adds the additional files. I stole the logic from one of Wills Makefiles.",
+      "parentUuid": "AAAAHn//6ds\u003d",
+      "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAHn//6cg\u003d",
         "filename": "utility/dump_kernel_config.c",
         "patchSetId": 1
@@ -81,6 +135,24 @@
       "writtenOn": "2012-01-25T19:25:15Z",
       "side": 1,
       "message": "It would be cleaner (and avoid the Makefile with macro complexity) if you moved the definition of find_kernel_config into a separate .c file which could be used as a library.\n\nThe dump_kernel_config utility can then be compiled by linking against that library.",
+      "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAHn//6a4\u003d",
+        "filename": "utility/dump_kernel_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000325
+      },
+      "writtenOn": "2018-09-19T19:47:22Z",
+      "side": 1,
+      "message": "True.",
+      "parentUuid": "AAAAHn//6cg\u003d",
       "revId": "5643a95636f13c656d37c1e8c8e66a3e2aeed225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
