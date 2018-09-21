@@ -144,13 +144,12 @@ find_valid_kernel_partitions() {
 
 # Resigns a kernel on SSD or image.
 resign_ssd_kernel() {
-  # bs=512 is the fixed block size for dd and cgpt
-  local bs=512
   local ssd_device="$1"
+  local bs="$(blocksize "$ssd_device")"
 
   # reasonable size for current kernel partition
-  local min_kernel_size=16000
-  local max_kernel_size=65536
+  local min_kernel_size=$((16000 * 512 / bs))
+  local max_kernel_size=$((65536 * 512 / bs))
   local resigned_kernels=0
 
   for kernel_index in $FLAGS_partitions; do
