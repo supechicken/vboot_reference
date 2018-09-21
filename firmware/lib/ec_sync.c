@@ -344,9 +344,9 @@ VbError_t ec_sync_phase1(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Reasons not to do sync at all */
-	if (!(ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED))
-		return VBERROR_SUCCESS;
-	if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
+/*	if (!(ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED))
+		return VBERROR_SUCCESS;*/
+//	if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
 		return VBERROR_SUCCESS;
 
 #ifdef PD_SYNC
@@ -412,16 +412,7 @@ int ec_will_update_slowly(struct vb2_context *ctx)
 
 static int ec_sync_allowed(struct vb2_context *ctx)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-
-	/* Reasons not to do sync at all */
-	if (!(ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED))
-		return 0;
-	if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
-		return 0;
-	if (sd->recovery_reason)
-		return 0;
-	return 1;
+	return 0;
 }
 
 VbError_t ec_sync_check_aux_fw(struct vb2_context *ctx,
