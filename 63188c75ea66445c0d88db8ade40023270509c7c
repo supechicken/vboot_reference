@@ -22,6 +22,30 @@
       "revId": "63188c75ea66445c0d88db8ade40023270509c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bea05f4_77b27193",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-21T10:38:34Z",
+      "side": 1,
+      "message": "No I don\u0027t think so. This may happen in ALL update modes, from factory, recovery to autoupdate. And this bug may be solved by running recovery, so we need updater to really push the update. I can\u0027t find a case that we\u0027ll want to see it fail rather than just update...",
+      "parentUuid": "f2d6868c_791c9a55",
+      "range": {
+        "startLine": 1416,
+        "startChar": 0,
+        "endLine": 1416,
+        "endChar": 11
+      },
+      "revId": "63188c75ea66445c0d88db8ade40023270509c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
