@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2d6868c_791c9a55",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-21T10:35:26Z",
+      "side": 1,
+      "message": "Rather than providing an individual exception here (since exceptions could be argued for any individual check), how about providing a --force flag which could always be invoked in factory?",
+      "range": {
+        "startLine": 1416,
+        "startChar": 0,
+        "endLine": 1416,
+        "endChar": 11
+      },
+      "revId": "63188c75ea66445c0d88db8ade40023270509c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
