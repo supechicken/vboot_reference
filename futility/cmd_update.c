@@ -84,7 +84,7 @@ enum flashrom_ops {
 };
 
 struct firmware_image {
-	const char *programmer;
+	char *programmer;
 	char *emulation;
 	uint32_t size;
 	uint8_t *data;
@@ -658,7 +658,7 @@ static int load_firmware_version(struct firmware_image *image,
  */
 static int load_image(const char *file_name, struct firmware_image *image)
 {
-	DEBUG("Load image file from %s...", file_name);
+	DEBUG("Load <%s> image file from %s...", image->programmer, file_name);
 
 	if (vb2_read_file(file_name, &image->data, &image->size) != VB2_SUCCESS)
 	{
@@ -718,33 +718,33 @@ static int load_system_image(struct updater_config *cfg,
 static void free_image(struct firmware_image *image)
 {
 	free(image->data);
+	free(image->emulation);
 	free(image->file_name);
+	free(image->programmer);
 	free(image->ro_version);
 	free(image->rw_version_a);
 	free(image->rw_version_b);
-	free(image->emulation);
 	memset(image, 0, sizeof(*image));
 }
 /*
  * Reloads a firmware image from file.
- * Keeps special configuration like emulation.
+ * Keeps special configuration like programmer and emulation.
  * Returns 0 on success, otherwise failure.
  */
 static int reload_image(const char *file_name, struct firmware_image *image)
 {
 	char *emulation = image->emulation;
+	char *programmer = image->programmer;
 	int r;
 
-	/*
-	 * All values except emulation and programmer will be re-constructed
-	 * in load_image. `programmer` is not touched in free_image so we only
-	 * need to keep `emulation`.
-	 */
+	image->programmer = NULL;
 	image->emulation = NULL;
 	free_image(image);
 	r = load_image(file_name, image);
-	if (r == 0)
+	if (r == 0) {
+		image->programmer = programmer;
 		image->emulation = emulation;
+	}
 	return r;
 }
 
@@ -1776,6 +1776,7 @@ static struct option const long_opts[] = {
 	{"mode", 1, NULL, 'm'},
 	{"factory", 0, NULL, 'Y'},
 	{"force", 0, NULL, 'F'},
+	{"programmer", 1, NULL, 'G'},
 	{"wp", 1, NULL, 'W'},
 	{"emulate", 1, NULL, 'E'},
 	{"sys_props", 1, NULL, 'S'},
@@ -1796,6 +1797,7 @@ static void print_help(int argc, char *argv[])
 		"-e, --ec_image=FILE \tEC firmware image (i.e, ec.bin)\n"
 		"    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
 		"-t, --try           \tTry A/B update on reboot if possible\n"
+		"    --programmer=PRG\tChange AP (host) flashrom programmer\n"
 		"    --quirks=LIST   \tSpecify the quirks to apply\n"
 		"    --list-quirks   \tPrint all available quirks\n"
 		"\n"
@@ -1818,12 +1820,12 @@ static int do_update(int argc, char *argv[])
 {
 	int i, r, errorcnt = 0;
 	int check_wp_disabled = 0;
-	char *opt_emulation = NULL;
+	char *opt_emulation = NULL, *opt_programmer = NULL;
 	struct updater_config cfg = {
-		.image = { .programmer = PROG_HOST, },
-		.image_current = { .programmer = PROG_HOST, },
-		.ec_image = { .programmer = PROG_EC, },
-		.pd_image = { .programmer = PROG_PD, },
+		.image = { .programmer = strdup(PROG_HOST), },
+		.image_current = { .programmer = strdup(PROG_HOST), },
+		.ec_image = { .programmer = strdup(PROG_EC), },
+		.pd_image = { .programmer = strdup(PROG_PD), },
 		.system_properties = {
 			[SYS_PROP_MAINFW_ACT] = {.getter = host_get_mainfw_act},
 			[SYS_PROP_TPM_FWVER] = {.getter = host_get_tpm_fwver},
@@ -1905,6 +1907,9 @@ static int do_update(int argc, char *argv[])
 		case 'E':
 			opt_emulation = strdup(optarg);
 			break;
+		case 'G':
+			opt_programmer = strdup(optarg);
+			break;
 		case 'F':
 			cfg.force_update = 1;
 			break;
@@ -1941,6 +1946,19 @@ static int do_update(int argc, char *argv[])
 		errorcnt++;
 		Error("Unexpected arguments.\n");
 	}
+	if (opt_programmer) {
+		free(cfg.image.programmer);
+		free(cfg.image_current.programmer);
+		cfg.image.programmer = strdup(opt_programmer);
+		cfg.image_current.programmer = strdup(opt_programmer);
+		DEBUG("AP (host) programmer changed to %s.", opt_programmer);
+
+		if (cfg.ec_image.data || cfg.pd_image.data) {
+			errorcnt++;
+			Error("Only host is supported for programmer <%s>.\n",
+			      opt_programmer);
+		}
+	}
 	if (opt_emulation) {
 		cfg.emulate = 1;
 		/* We only support emulating AP firmware. */
@@ -1965,6 +1983,7 @@ static int do_update(int argc, char *argv[])
 	unload_updater_config(&cfg);
 	remove_all_temp_files();
 	free(opt_emulation);
+	free(opt_programmer);
 	return !!errorcnt;
 }
 
