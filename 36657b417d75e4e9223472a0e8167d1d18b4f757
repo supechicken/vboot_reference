@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ac1f4f79_e661c0dc",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-24T22:17:31Z",
+      "side": 1,
+      "message": "Yeah...we should always return 512 as a default.",
+      "parentUuid": "4a4a9db7_08735819",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42672e27_821bf64b",
         "filename": "scripts/image_signing/common_minimal.sh",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6550560b_b3b5b936",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-24T22:17:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42672e27_821bf64b",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b195f639_48ce9e09",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-24T22:17:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dcbf936_024b48f8",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55b28e75_9d0eb34c",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e986a5cc_980bdf9e",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-24T22:17:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55b28e75_9d0eb34c",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
