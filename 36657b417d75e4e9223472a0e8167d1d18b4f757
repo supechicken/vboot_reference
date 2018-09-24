@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a4a9db7_08735819",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-09-24T21:31:28Z",
+      "side": 1,
+      "message": "if this path doesn\u0027t exist, then blocksize doesn\u0027t output anything.  doesn\u0027t that break things ?\n\nseems like you want to do:\n\n local output\u003d\u0027\u0027\n local path\u003d\"$1\"\n if [ -b \"${path}\" ]; then\n   local dev\u003d\"${path##*/}\"\n   local sys\u003d\"/sys/block/${dev}/queue/logical_block_size\"\n   output\u003d\"$(cat \"${sys}\" 2\u003e/dev/null)\"\n fi\n echo \"${output:-512}\"",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42672e27_821bf64b",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-09-24T21:31:28Z",
+      "side": 1,
+      "message": "use braces with \"${image}\"",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dcbf936_024b48f8",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-09-24T21:31:28Z",
+      "side": 1,
+      "message": "use braces with \"${image}\"",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b28e75_9d0eb34c",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-09-24T21:31:28Z",
+      "side": 1,
+      "message": "use braces with \"${ssd_device}\"",
+      "revId": "36657b417d75e4e9223472a0e8167d1d18b4f757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
