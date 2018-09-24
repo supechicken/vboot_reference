@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6639cd9d_f6975f28",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-24T19:52:02Z",
+      "side": 1,
+      "message": "BTW, where in here does the ELOG get preserved?",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d44f244_a98b733e",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-24T19:52:02Z",
+      "side": 1,
+      "message": "nit: we\u0027re not really using the DDR_TRAINING sections yet, so if this is just temporary anyway, you don\u0027t need to put that in here.",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
