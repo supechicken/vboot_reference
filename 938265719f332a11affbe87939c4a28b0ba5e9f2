@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aec2040f_d34809dd",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-09-25T02:55:33Z",
+      "side": 1,
+      "message": "Oh, right, now I remember... I only filed a bug for this (crbug.com/655423) and left it to Stefan for triage which of course means nothing ever happened to it. ;)\n\nNow that you\u0027ve made it so this would essentially be a one-liner, can you please add it? But I don\u0027t think it should go in RW_PRESERVE... we should either have *everything* (including NVRAM) in there, or we should leave it for only board-specific stuff and have the generic sections all handled separately. RW_ELOG exists on every board (at least in the last 5 years), and they\u0027d all benefit from preserving it. It makes debugging update issues on dogfood devices easier.",
+      "parentUuid": "5b5a0363_33951583",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d44f244_a98b733e",
         "filename": "futility/cmd_update.c",
         "patchSetId": 2
