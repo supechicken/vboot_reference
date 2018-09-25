@@ -333,6 +333,14 @@ typedef struct VbSelectFirmwareParams {
 } VbSelectFirmwareParams;
 
 /*
+ * OS Type for VbExEcSetOS and OS picker.
+ */
+enum VbSelectOSType_t {
+	VB_SELECT_CHROME_OS,
+	VB_SELECT_ALTERNATE_OS,
+};
+
+/*
  * We use disk handles rather than indices.  Using indices causes problems if
  * a disk is removed/inserted in the middle of processing.
  */
@@ -1015,6 +1023,12 @@ VbError_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select);
  */
 enum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY };
 VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
+
+/**
+ * Info the EC of the OS selected by the AP.
+ * mode: ChromeOS, Alternate
+ */
+VbError_t VbExEcSetOS(int devidx, enum VbSelectOSType_t mode);
 
 /**
  * Perform EC post-verification / updating / jumping actions.

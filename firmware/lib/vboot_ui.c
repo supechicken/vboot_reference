@@ -155,7 +155,7 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 
 #ifdef ALT_OS
 VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
-			    uint32_t timeout_msec, int *index)
+			    uint32_t timeout_msec, enum VbSelectOSType_t *index)
 {
 	/* Calibrate delay */
 	uint64_t a, b;
@@ -169,16 +169,16 @@ VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
 	VB2_DEBUG("Alt OS picker: ticks_per_msec=%" PRIu64 "\n",
 		  ticks_per_msec);
 
-	*index = 0;
+	*index = VB_SELECT_CHROME_OS;
 	while (1) {
 		VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, *index);
 		if (VbWantShutdown(cparams->gbb->flags))
 			return VBERROR_SHUTDOWN_REQUESTED;
 		uint32_t key = VbExKeyboardRead();
 		if (key == VB_KEY_LEFT)
-			*index = 0;
+			*index = VB_SELECT_CHROME_OS;
 		else if (key == VB_KEY_RIGHT)
-			*index = 1;
+			*index = VB_SELECT_ALTERNATE_OS;
 		else if (key == '\r' || key == ' ')
 			break;
 		VbExSleepMs(20);
@@ -197,14 +197,14 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	const int picker_timeout_msec = 20 * 1000;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
-	int boot_alt_os = 0;  /* 0 = Chrome OS; 1 = Alt OS */
+	enum VbSelectOSType_t os_type = VB_SELECT_CHROME_OS;
 	uint8_t tpm_flags;
 
 	/* Confirm enabling Alt OS */
 	if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE) {
 		VB2_DEBUG("Alt OS UI: Picker screen without timeout\n");
 		VbError_t ret = vb2_alt_os_picker(ctx, cparams,
-						  0, &boot_alt_os);
+						  0, &os_type);
 		if (ret != VBERROR_SUCCESS) {
 			VB2_DEBUG("Error from Alt OS picker screen\n");
 			return ret;
@@ -212,7 +212,7 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	}
 
 	/* Enable if Alt OS is chosen */
-	if (boot_alt_os) {
+	if (os_type == VB_SELECT_ALTERNATE_OS) {
 		if (GetAltOSFlags(&tpm_flags)) {
 			VB2_DEBUG("Unable to read Alt OS flags from TPM\n");
 			return VBERROR_TPM_ALT_OS;
@@ -229,15 +229,14 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		VB2_DEBUG("Alt OS UI: Picker screen with timeout\n");
 		VbError_t ret = vb2_alt_os_picker(ctx, cparams,
 						  picker_timeout_msec,
-						  &boot_alt_os);
+						  &os_type);
 		if (ret != VBERROR_SUCCESS) {
 			VB2_DEBUG("Error from Alt OS picker screen\n");
 			return ret;
 		}
 	}
 
-
-	if (boot_alt_os) {
+	if (os_type == VB_SELECT_ALTERNATE_OS) {
 		shared->flags |= VBSD_ALT_OS_LEGACY_BOOT;
 		/* Will only return on failure */
 		VbTryLegacy(ctx, 1);

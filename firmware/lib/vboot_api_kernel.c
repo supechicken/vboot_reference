@@ -566,22 +566,22 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	/* Select boot path */
 	if (shared->recovery_reason) {
 		/* Recovery boot.  This has UI. */
-	        if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
-	            retval = VbBootRecoveryMenu(&ctx, cparams);
-	        else
-		    retval = VbBootRecovery(&ctx, cparams);
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			retval = VbBootRecoveryMenu(&ctx, cparams);
+		else
+			retval = VbBootRecovery(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	} else if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 		/* Developer boot.  This has UI. */
-	        if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
-		    retval = VbBootDeveloperMenu(&ctx, cparams);
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			retval = VbBootDeveloperMenu(&ctx, cparams);
 		else
-		    retval = VbBootDeveloper(&ctx, cparams);
+			retval = VbBootDeveloper(&ctx, cparams);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 #ifdef ALT_OS
 	} else if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE ||
-		   shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
-		/* Alt OS boot.  This has UI. */
+			shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
+		/* Alt OS boot.  This has UI, only returns on failure. */
 		retval = VbBootAltOS(&ctx, cparams);
 		/* Report as normal mode to the EC. */
 		VbExEcEnteringMode(0, VB_EC_NORMAL);
@@ -592,7 +592,7 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	}
 
- VbSelectAndLoadKernel_exit:
+VbSelectAndLoadKernel_exit:
 
 	if (VBERROR_SUCCESS == retval)
 		retval = vb2_kernel_phase4(cparams, kparams);
