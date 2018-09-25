@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b5a0363_33951583",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-25T01:48:30Z",
+      "side": 1,
+      "message": "No one has ever requested for that. Do we need that?\n\nIf yes, please move that to RW_PRESERVE so future devices will have that preserved.\n\n(Note this only applies to RO+RW update when WP is off, never happened in end users\u0027s machine)",
+      "parentUuid": "6639cd9d_f6975f28",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d44f244_a98b733e",
         "filename": "futility/cmd_update.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-24T19:52:02Z",
       "side": 1,
       "message": "nit: we\u0027re not really using the DDR_TRAINING sections yet, so if this is just temporary anyway, you don\u0027t need to put that in here.",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28be2dbd_7704e36b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-25T01:48:30Z",
+      "side": 1,
+      "message": "Great, I can remove it.",
+      "parentUuid": "8d44f244_a98b733e",
       "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
