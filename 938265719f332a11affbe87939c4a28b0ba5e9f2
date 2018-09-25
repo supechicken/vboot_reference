@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a4018a59_2092d1ff",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-25T03:38:33Z",
+      "side": 1,
+      "message": "I can add RW_LOG since it\u0027s already there, but I still think in future, all newer sections that needs to be preserved should live under {RO,RW}_PRESERVE. This prevents all the burden of checking firmware updater version, and easier for people to do things manually if they have to flash manually.",
+      "parentUuid": "aec2040f_d34809dd",
+      "revId": "938265719f332a11affbe87939c4a28b0ba5e9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d44f244_a98b733e",
         "filename": "futility/cmd_update.c",
         "patchSetId": 2
