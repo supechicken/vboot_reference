@@ -51,7 +51,6 @@ int updater_setup_config(struct updater_config *cfg,
 			  int force_update);
 
 /* Other utility functions */
-void remove_all_temp_files();
 void updater_list_config_quirks(const struct updater_config *cfg);
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
