@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef318a9_653e60d7",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-26T04:16:08Z",
+      "side": 1,
+      "message": "Kind of a nit -- but what would the behaviour be in the case of bad input?  Like: -3-4",
+      "range": {
+        "startLine": 486,
+        "startChar": 37,
+        "endLine": 486,
+        "endChar": 45
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c985f1_4207ca3b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-26T04:16:08Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 1436,
+        "startChar": 11,
+        "endLine": 1436,
+        "endChar": 20
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2be943_cb18cf6f",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-26T04:16:08Z",
+      "side": 1,
+      "message": "Probably use `print` since this is expected behaviour?",
+      "range": {
+        "startLine": 1448,
+        "startChar": 1,
+        "endLine": 1448,
+        "endChar": 6
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c061c9b7_1f7b4980",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-26T04:16:08Z",
+      "side": 1,
+      "message": "Completely unrelated -- but this should probably be ERROR.",
+      "range": {
+        "startLine": 1607,
+        "startChar": 2,
+        "endLine": 1607,
+        "endChar": 7
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
