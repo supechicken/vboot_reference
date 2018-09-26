@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6be19b35_a52c9108",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-26T10:50:20Z",
+      "side": 1,
+      "message": "I think we don\u0027t really care - it\u0027s more debug purpose so if someone wants to mess the updater he\u0027ll be able to.",
+      "parentUuid": "8ef318a9_653e60d7",
+      "range": {
+        "startLine": 486,
+        "startChar": 37,
+        "endLine": 486,
+        "endChar": 45
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c985f1_4207ca3b",
         "filename": "futility/cmd_update.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf734a35_77718a5a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-26T10:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c985f1_4207ca3b",
+      "range": {
+        "startLine": 1436,
+        "startChar": 11,
+        "endLine": 1436,
+        "endChar": 20
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7900883c_5f43a537",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-26T10:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2be943_cb18cf6f",
+      "range": {
+        "startLine": 1448,
+        "startChar": 1,
+        "endLine": 1448,
+        "endChar": 6
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c061c9b7_1f7b4980",
         "filename": "futility/cmd_update.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-09-26T04:16:08Z",
       "side": 1,
       "message": "Completely unrelated -- but this should probably be ERROR.",
+      "range": {
+        "startLine": 1607,
+        "startChar": 2,
+        "endLine": 1607,
+        "endChar": 7
+      },
+      "revId": "54418c43b586d31fc87d2ab86452d5ea2a318749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b8abf7_82581ea2",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-26T10:50:20Z",
+      "side": 1,
+      "message": "I\u0027ll fix that in a follow up CL.",
+      "parentUuid": "c061c9b7_1f7b4980",
       "range": {
         "startLine": 1607,
         "startChar": 2,
