@@ -146,4 +146,7 @@ int find_firmware_section(struct firmware_section *section,
 int load_image(const char *file_name, struct firmware_image *image);
 void free_image(struct firmware_image *image);
 
+/* updater_quirks.c */
+const char * const updater_get_default_quirks(struct updater_config *cfg);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
