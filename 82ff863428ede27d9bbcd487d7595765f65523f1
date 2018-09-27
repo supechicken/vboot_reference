@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc0a1bc1_5e043509",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-27T05:49:53Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "c1143e28_ecd5ce79",
+      "range": {
+        "startLine": 1741,
+        "startChar": 55,
+        "endLine": 1741,
+        "endChar": 61
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60a9c12b_f4a1b5a4",
         "filename": "futility/updater.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-27T04:15:48Z",
       "side": 1,
       "message": "Does the program fail at the assert() line or does it continue running?",
+      "range": {
+        "startLine": 1744,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 13
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39539fbe_98d9e2e2",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-27T05:49:53Z",
+      "side": 1,
+      "message": "usually it should fail, for if we build with release config , assert may be turned into empty instruction so we\u0027ll return.\n\nI can change this and remove assert if that helps reading.",
+      "parentUuid": "60a9c12b_f4a1b5a4",
       "range": {
         "startLine": 1744,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52da786f_7891fff9",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-27T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe8cf74_2b4d0f2d",
+      "range": {
+        "startLine": 1785,
+        "startChar": 4,
+        "endLine": 1785,
+        "endChar": 5
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
