@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1143e28_ecd5ce79",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-27T04:15:48Z",
+      "side": 1,
+      "message": "Is the reason for using calloc that it initializes memory to zero?",
+      "range": {
+        "startLine": 1741,
+        "startChar": 55,
+        "endLine": 1741,
+        "endChar": 61
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a9c12b_f4a1b5a4",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-27T04:15:48Z",
+      "side": 1,
+      "message": "Does the program fail at the assert() line or does it continue running?",
+      "range": {
+        "startLine": 1744,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 13
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe8cf74_2b4d0f2d",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-09-27T04:15:48Z",
+      "side": 1,
+      "message": "Re-align.",
+      "range": {
+        "startLine": 1785,
+        "startChar": 4,
+        "endLine": 1785,
+        "endChar": 5
+      },
+      "revId": "82ff863428ede27d9bbcd487d7595765f65523f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
