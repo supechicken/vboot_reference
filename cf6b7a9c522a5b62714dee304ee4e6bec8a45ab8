@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "909c5c00_a575e139",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-28T21:03:57Z",
+      "side": 1,
+      "message": "This is kinda weird that we\u0027re targeting 2 CBFS regions for a single file extraction. What ends up happening is the one from _B will overwrite the file from _A. They should be the same, but semantically it doesn\u0027t make sense.",
+      "revId": "cf6b7a9c522a5b62714dee304ee4e6bec8a45ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
