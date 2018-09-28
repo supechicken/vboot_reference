@@ -16,6 +16,24 @@
       "revId": "cf6b7a9c522a5b62714dee304ee4e6bec8a45ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93608fc7_e621de3b",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-09-28T21:09:16Z",
+      "side": 1,
+      "message": "practically speaking, this should be OK as the logic to remove+add below operates on both too.  do you know of a situation where this wouldn\u0027t work out that i need to handle ?\n\nimo, this code should die entirely.  that\u0027s why i\u0027m leaving crbug.com/889716 open.",
+      "parentUuid": "909c5c00_a575e139",
+      "revId": "cf6b7a9c522a5b62714dee304ee4e6bec8a45ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
