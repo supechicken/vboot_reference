@@ -29,6 +29,9 @@ static const struct quirks_record quirks_records[] = {
 	{ .match = "Google_Sentry.", .quirks = "unlock_me_for_update" },
 	{ .match = "Google_Lars.", .quirks = "unlock_me_for_update" },
 	{ .match = "Google_Chell.", .quirks = "unlock_me_for_update" },
+	{ .match = "Google_Cave.", .quirks = "unlock_me_for_update" },
+	{ .match = "Google_Asuka.", .quirks = "unlock_me_for_update" },
+	{ .match = "Google_Caroline.", .quirks = "unlock_me_for_update" },
 
 	{ .match = "Google_Eve.",
 	  .quirks = "unlock_me_for_update,eve_smm_store" },
