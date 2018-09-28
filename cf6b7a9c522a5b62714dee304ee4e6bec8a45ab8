@@ -34,6 +34,24 @@
       "revId": "cf6b7a9c522a5b62714dee304ee4e6bec8a45ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adf01cf_5e3f27f8",
+        "filename": "scripts/image_signing/common_minimal.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-28T21:27:11Z",
+      "side": 1,
+      "message": "I expect it to just work. I was just noting it\u0027s weird. As the way the code is written it suggests we\u0027re doing something w/ both regions when in reality it\u0027s just one of them. Understood that this should die.",
+      "parentUuid": "93608fc7_e621de3b",
+      "revId": "cf6b7a9c522a5b62714dee304ee4e6bec8a45ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
