@@ -35,20 +35,6 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_SI_DESC = "SI_DESC",
 		  * const FMAP_SI_ME = "SI_ME";
 
-struct firmware_image {
-	const char *programmer;
-	uint32_t size;
-	uint8_t *data;
-	char *file_name;
-	char *ro_version, *rw_version_a, *rw_version_b;
-	FmapHeader *fmap_header;
-};
-
-struct firmware_section {
-	uint8_t *data;
-	size_t size;
-};
-
 struct system_property {
 	int (*getter)();
 	int value;

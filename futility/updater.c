@@ -497,123 +497,6 @@ static int setup_config_quirks(const char *quirks, struct updater_config *cfg)
 }
 
 /*
- * Finds a firmware section by given name in the firmware image.
- * If successful, return zero and *section argument contains the address and
- * size of the section; otherwise failure.
- */
-int find_firmware_section(struct firmware_section *section,
-			  const struct firmware_image *image,
-			  const char *section_name)
-{
-	FmapAreaHeader *fah = NULL;
-	uint8_t *ptr;
-
-	section->data = NULL;
-	section->size = 0;
-	ptr = fmap_find_by_name(
-			image->data, image->size, image->fmap_header,
-			section_name, &fah);
-	if (!ptr)
-		return -1;
-	section->data = (uint8_t *)ptr;
-	section->size = fah->area_size;
-	return 0;
-}
-
-/*
- * Returns true if the given FMAP section exists in the firmware image.
- */
-static int firmware_section_exists(const struct firmware_image *image,
-				   const char *section_name)
-{
-	struct firmware_section section;
-	find_firmware_section(&section, image, section_name);
-	return section.data != NULL;
-}
-
-/*
- * Checks if the section is filled with given character.
- * If section size is 0, return 0. If section is not empty, return non-zero if
- * the section is filled with same character c, otherwise 0.
- */
-static int section_is_filled_with(const struct firmware_section *section,
-				  uint8_t c)
-{
-	uint32_t i;
-	if (!section->size)
-		return 0;
-	for (i = 0; i < section->size; i++)
-		if (section->data[i] != c)
-			return 0;
-	return 1;
-}
-
-/*
- * Loads the firmware information from an FMAP section in loaded firmware image.
- * The section should only contain ASCIIZ string as firmware version.
- * If successful, the return value is zero and *version points to a newly
- * allocated string as firmware version (caller must free it); otherwise
- * failure.
- */
-static int load_firmware_version(struct firmware_image *image,
-				 const char *section_name,
-				 char **version)
-{
-	struct firmware_section fwid;
-	find_firmware_section(&fwid, image, section_name);
-	if (fwid.size) {
-		*version = strndup((const char*)fwid.data, fwid.size);
-		return 0;
-	}
-	*version = strdup("");
-	return -1;
-}
-
-/*
- * Loads a firmware image from file.
- * Returns 0 on success, otherwise failure.
- */
-int load_image(const char *file_name, struct firmware_image *image)
-{
-	DEBUG("Load image file from %s...", file_name);
-
-	if (vb2_read_file(file_name, &image->data, &image->size) != VB2_SUCCESS)
-	{
-		ERROR("Failed to load %s", file_name);
-		return -1;
-	}
-
-	DEBUG("Image size: %d", image->size);
-	assert(image->data);
-	image->file_name = strdup(file_name);
-
-	image->fmap_header = fmap_find(image->data, image->size);
-	if (!image->fmap_header) {
-		ERROR("Invalid image file (missing FMAP): %s", file_name);
-		return -1;
-	}
-
-	if (!firmware_section_exists(image, FMAP_RO_FRID)) {
-		ERROR("Does not look like VBoot firmware image: %s", file_name);
-		return -1;
-	}
-
-	load_firmware_version(image, FMAP_RO_FRID, &image->ro_version);
-	if (firmware_section_exists(image, FMAP_RW_FWID_A)) {
-		char **a = &image->rw_version_a, **b = &image->rw_version_b;
-		load_firmware_version(image, FMAP_RW_FWID_A, a);
-		load_firmware_version(image, FMAP_RW_FWID_B, b);
-	} else if (firmware_section_exists(image, FMAP_RW_FWID)) {
-		char **a = &image->rw_version_a, **b = &image->rw_version_b;
-		load_firmware_version(image, FMAP_RW_FWID, a);
-		load_firmware_version(image, FMAP_RW_FWID, b);
-	} else {
-		ERROR("Unsupported VBoot firmware (no RW ID): %s", file_name);
-	}
-	return 0;
-}
-
-/*
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
@@ -626,19 +509,6 @@ int load_system_image(struct updater_config *cfg, struct firmware_image *image)
 	RETURN_ON_FAILURE(host_flashrom(
 			FLASHROM_READ, tmp_file, image->programmer, 0, NULL));
 	return load_image(tmp_file, image);
-}
-
-/*
- * Frees the allocated resource from a firmware image object.
- */
-void free_image(struct firmware_image *image)
-{
-	free(image->data);
-	free(image->file_name);
-	free(image->ro_version);
-	free(image->rw_version_a);
-	free(image->rw_version_b);
-	memset(image, 0, sizeof(*image));
 }
 
 /*
@@ -827,36 +697,6 @@ static int write_optional_firmware(struct updater_config *cfg,
 	}
 
 	return write_firmware(cfg, image, section_name);
-}
-
-/*
- * Preserves (copies) the given section (by name) from image_from to image_to.
- * The offset may be different, and the section data will be directly copied.
- * If the section does not exist on either images, return as failure.
- * If the source section is larger, contents on destination be truncated.
- * If the source section is smaller, the remaining area is not modified.
- * Returns 0 if success, non-zero if error.
- */
-int preserve_firmware_section(const struct firmware_image *image_from,
-			      struct firmware_image *image_to,
-			      const char *section_name)
-{
-	struct firmware_section from, to;
-
-	find_firmware_section(&from, image_from, section_name);
-	find_firmware_section(&to, image_to, section_name);
-	if (!from.data || !to.data) {
-		DEBUG("Cannot find section %s: from=%p, to=%p", section_name,
-		      from.data, to.data);
-		return -1;
-	}
-	if (from.size > to.size) {
-		printf("WARNING: %s: Section %s is truncated after updated.\n",
-		       __FUNCTION__, section_name);
-	}
-	/* Use memmove in case if we need to deal with sections that overlap. */
-	memmove(to.data, from.data, Min(from.size, to.size));
-	return 0;
 }
 
 /*
