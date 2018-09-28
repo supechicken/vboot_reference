@@ -9,6 +9,8 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include "updater.h"
 #include "host_misc.h"
@@ -31,11 +33,32 @@ static const struct quirks_record quirks_records[] = {
 	{ .match = "Google_Caroline.", .quirks = "unlock_me_for_update" },
 	{ .match = "Google_Cave.", .quirks = "unlock_me_for_update" },
 
+	{ .match = "Google_Eve.",
+	  .quirks = "unlock_me_for_update,eve_smm_store" },
+
 	{ .match = "Google_Poppy.", .quirks = "min_platform_version=6" },
 	{ .match = "Google_Scarlet.", .quirks = "min_platform_version=1" },
 
 	{ .match = "Google_Snow.", .quirks = "daisy_snow_dual_model" },
 };
+
+/*
+ * Helper function to write a firmware image into file on disk.
+ * Returns the result from vb2_write_file.
+ */
+static VbError_t write_image(const char *file_path, struct firmware_image *image)
+{
+	return vb2_write_file(file_path, image->data, image->size);
+}
+
+/* Preserves meta data and reload image contents from given file path. */
+static int reload_image(const char *file_path, struct firmware_image *image)
+{
+	const char *programmer = image->programmer;
+	free_image(image);
+	image->programmer = programmer;
+	return load_image(file_path, image);
+}
 
 /*
  * Quirk to enlarge a firmware image to match flash size. This is needed by
@@ -60,7 +83,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 
 	DEBUG("Resize image from %u to %u.", image_to->size, image_from->size);
 	to_write = image_from->size - image_to->size;
-	vb2_write_file(tmp_path, image_to->data, image_to->size);
+	write_image(tmp_path, image_to);
 	fp = fopen(tmp_path, "ab");
 	if (!fp) {
 		ERROR("Cannot open temporary file %s.", tmp_path);
@@ -69,8 +92,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 	while (to_write-- > 0)
 		fputc('\xff', fp);
 	fclose(fp);
-	free_image(image_to);
-	return load_image(tmp_path, image_to);
+	return reload_image(tmp_path, image_to);
 }
 
 /*
@@ -202,6 +224,68 @@ static int quirk_daisy_snow_dual_model(struct updater_config *cfg)
 	return 0;
 }
 
+static const char *extract_cbfs_file(struct updater_config *cfg,
+				     const char *image_file,
+				     const char *cbfs_region,
+				     const char *cbfs_name)
+{
+	const char *output = create_temp_file(cfg);
+	char *command, *result;
+
+	if (asprintf(&command, "cbfstool \"%s\" extract -r %s -n \"%s\" "
+		     "-f \"%s\" 2>&1", image_file, cbfs_region,
+		     cbfs_name, output) < 0) {
+		ERROR("Failed to allocate internal buffer.");
+		return NULL;
+	}
+	result = host_shell(command);
+	free(command);
+
+	if (!*result)
+		output = NULL;
+
+	free(result);
+	return output;
+}
+
+static int quirk_eve_smm_store(struct updater_config *cfg)
+{
+	const char *smm_store_name = "smm store";
+	const char *temp_image = create_temp_file(cfg);
+	const char *old_store;
+	char *command;
+
+	if (write_image(temp_image, &cfg->image_current) != VBERROR_SUCCESS)
+		return -1;
+
+	old_store = extract_cbfs_file(cfg, temp_image, FMAP_RW_LEGACY,
+				      smm_store_name);
+	if (!old_store) {
+		DEBUG("cbfstool failure or SMM store not available. "
+		      "Don't preserve.");
+		return 0;
+	}
+
+	/* Reuse temp_image. */
+	if (write_image(temp_image, &cfg->image) != VBERROR_SUCCESS)
+		return -1;
+
+	/* crosreview.com/1165109: The offset is fixed at 0x1bf000. */
+	if (asprintf(&command,
+		     "cbfstool \"%s\" remove -r %s -n \"%s\" 2>/dev/null; "
+		     "cbfstool \"%s\" add -r %s -n \"%s\" -f \"%s\" "
+		     " -t raw -b 0x1bf000", temp_image, FMAP_RW_LEGACY,
+		     smm_store_name, temp_image, FMAP_RW_LEGACY,
+		     smm_store_name, old_store) < 0) {
+		ERROR("Failed to allocate internal buffer.");
+		return -1;
+	}
+	host_shell(command);
+	free(command);
+
+	return reload_image(temp_image, &cfg->image);
+}
+
 /*
  * Registers known quirks to a updater_config object.
  */
@@ -231,6 +315,12 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "daisy_snow_dual_model";
 	quirks->help = "See b/35568719; needs an image RW A=[model x16], B=x8.";
 	quirks->apply = quirk_daisy_snow_dual_model;
+
+	quirks = &cfg->quirks[QUIRK_EVE_SMM_STORE];
+	quirks->name = "eve_smm_store";
+	quirks->help = "b/70682365: preserve UEFI SMM store without "
+		       "dedicated FMAP section.";
+	quirks->apply = quirk_eve_smm_store;
 }
 
 /*
