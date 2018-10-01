@@ -25,6 +25,19 @@
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 
+/* Global variables */
+static int power_button_released;
+
+#ifdef CHROMEOS_ENVIRONMENT
+/* Global variable accessors for unit tests */
+
+void VbResetPowerButtonReleased(void)
+{
+	power_button_released = 0;
+}
+
+#endif
+
 static void VbAllowUsbBoot(struct vb2_context *ctx)
 {
 	VB2_DEBUG(".");
@@ -41,6 +54,18 @@ static int VbWantShutdown(struct vb2_context *ctx, uint32_t key)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t shutdown_request = VbExIsShutdownRequested();
+
+	/*
+	 * Ignore power button push until after we have seen it released.
+	 * This avoids shutting down immediately if the power button is still
+	 * being held on startup.
+	 */
+	if (shutdown_request & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		if (!power_button_released)
+			shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	} else {
+		power_button_released = 1;
+	}
 
 	if (key == VB_BUTTON_POWER_SHORT_PRESS)
 		shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;

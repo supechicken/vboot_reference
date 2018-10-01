@@ -33,6 +33,7 @@ static struct vb2_context ctx;
 static struct vb2_shared_data *sd;
 
 static int shutdown_request_calls_left;
+static int shutdown_request_power_held;
 static int audio_looping_calls_left;
 static uint32_t vbtlk_retval;
 static int vbexlegacy_called;
@@ -53,11 +54,13 @@ static uint32_t mock_num_disks_count;
 
 extern enum VbEcBootMode_t VbGetMode(void);
 extern struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
+extern void VbResetPowerButtonReleased(void);
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
 {
 	memset(VbApiKernelGetFwmp(), 0, sizeof(struct RollbackSpaceFwmp));
+	VbResetPowerButtonReleased();
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -74,6 +77,7 @@ static void ResetMocks(void)
 	sd->vbsd = shared;
 
 	shutdown_request_calls_left = -1;
+	shutdown_request_power_held = -1;
 	audio_looping_calls_left = 30;
 	vbtlk_retval = 1000;
 	vbexlegacy_called = 0;
@@ -105,6 +109,15 @@ uint32_t VbExIsShutdownRequested(void)
 		return 1;
 	else if (shutdown_request_calls_left > 0)
 		shutdown_request_calls_left--;
+
+	if (shutdown_request_power_held >= 0) {
+		/* Hold power button for 10 calls, then release for 10. */
+		if (shutdown_request_calls_left % 10 == 0)
+			shutdown_request_power_held
+				= !shutdown_request_power_held;
+		if (shutdown_request_power_held)
+			return VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	}
 
 	return 0;
 }
@@ -629,6 +642,26 @@ static void VbBootRecTest(void)
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested by keyboard");
+
+	/* Ignore power button held on boot */
+	ResetMocks();
+	shutdown_request_calls_left = 100;
+	shutdown_request_power_held = 1;
+	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
+	trust_ec = 1;
+	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	TEST_EQ(VbBootRecovery(&ctx),
+		VBERROR_SHUTDOWN_REQUESTED,
+		"Ignore power button held on boot");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
+		"  insert screen");
+	/*
+	 * shutdown_request_power_held holds power button for 10 calls, then
+	 * releases for 10, then holds again, so expect shutdown after 20:
+	 * 100 - 20 = 80.
+	 */
+	TEST_EQ(shutdown_request_calls_left, 80,
+		"  ignore held button");
 
 	/* Broken screen */
 	ResetMocks();
