@@ -26,6 +26,8 @@ static struct option const long_opts[] = {
 	{"quirks", 1, NULL, 'f'},
 	{"list-quirks", 0, NULL, 'L'},
 	{"mode", 1, NULL, 'm'},
+	{"model", 1, NULL, 'M'},
+	{"manifest", 0, NULL, 'A'},
 	{"factory", 0, NULL, 'Y'},
 	{"force", 0, NULL, 'F'},
 	{"programmer", 1, NULL, 'p'},
@@ -50,6 +52,8 @@ static void print_help(int argc, char *argv[])
 		"    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
 		"-t, --try           \tTry A/B update on reboot if possible\n"
 		"-a, --archive=PATH  \tRead resources from archive\n"
+		"    --model=MODEL   \tSelect the images for given model\n"
+		"    --manifest      \tPrint out a JSON manifest and exit\n"
 		"-p, --programmer=PRG\tChange AP (host) flashrom programmer\n"
 		"    --quirks=LIST   \tSpecify the quirks to apply\n"
 		"    --list-quirks   \tPrint all available quirks\n"
@@ -78,11 +82,12 @@ static int do_update(int argc, char *argv[])
 		   *opt_quirks = NULL,
 		   *opt_mode = NULL,
 		   *opt_programmer = NULL,
+		   *opt_model = NULL,
 		   *opt_emulation = NULL,
 		   *opt_sys_props = NULL,
 		   *opt_write_protection = NULL;
 	int opt_is_factory = 0, opt_try_update = 0, opt_force_update = 0,
-	    opt_verbosity = 0;
+	    opt_do_manifest = 0, opt_verbosity = 0;
 	int i, errorcnt = 0;
 	struct updater_config *cfg;
 
@@ -116,6 +121,12 @@ static int do_update(int argc, char *argv[])
 			return 0;
 		case 'm':
 			opt_mode = optarg;
+			break;
+		case 'M':
+			opt_model = optarg;
+			break;
+		case 'A':
+			opt_do_manifest = 1;
 			break;
 		case 'Y':
 			opt_is_factory = 1;
@@ -169,11 +180,13 @@ static int do_update(int argc, char *argv[])
 		errorcnt += updater_setup_config(
 				cfg, opt_image, opt_ec_image, opt_pd_image,
 				opt_archive, opt_quirks, opt_mode,
-				opt_programmer, opt_emulation, opt_sys_props,
-				opt_write_protection, opt_is_factory,
+				opt_programmer, opt_model, opt_emulation,
+				opt_sys_props, opt_write_protection,
+				opt_is_factory,
 				opt_try_update, opt_force_update,
+				opt_do_manifest,
 				opt_verbosity);
-	if (!errorcnt) {
+	if (!errorcnt && !opt_do_manifest) {
 		int r = update_firmware(cfg);
 		if (r != UPDATE_ERR_DONE) {
 			r = Min(r, UPDATE_ERR_UNKNOWN);

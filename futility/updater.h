@@ -9,6 +9,7 @@
 #define VBOOT_REFERENCE_FUTILITY_UPDATER_H_
 
 #include <stdio.h>
+#include <string.h>
 
 #include "fmap.h"
 
@@ -28,6 +29,7 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RO_VPD = "RO_VPD",
 		  * const FMAP_RW_VPD = "RW_VPD",
 		  * const FMAP_RW_VBLOCK_A = "VBLOCK_A",
+		  * const FMAP_RW_VBLOCK_B = "VBLOCK_B",
 		  * const FMAP_RW_SECTION_A = "RW_SECTION_A",
 		  * const FMAP_RW_SECTION_B = "RW_SECTION_B",
 		  * const FMAP_RW_FWID = "RW_FWID",
@@ -158,12 +160,14 @@ int updater_setup_config(struct updater_config *cfg,
 			  const char *quirks,
 			  const char *mode,
 			  const char *programmer,
+			  const char *model,
 			  const char *emulation,
 			  const char *sys_props,
 			  const char *write_protection,
 			  int is_factory,
 			  int try_update,
 			  int force_update,
+			  int do_manifest,
 			  int verbosity);
 
 /* Prints the name and description from all supported quirks. */
@@ -209,6 +213,13 @@ int preserve_firmware_section(const struct firmware_image *image_from,
  */
 int load_image(struct archive *archive, const char *file_name,
 	       struct firmware_image *image);
+
+/*
+ * Finds the GBB (Google Binary Block) header on a given firmware image.
+ * Returns a pointer to valid GBB header, or NULL on not found.
+ */
+struct vb2_gbb_header;
+struct vb2_gbb_header *firmware_find_gbb(const struct firmware_image *image);
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
@@ -268,4 +279,21 @@ int archive_has_entry(struct archive *ar, const char *name);
 int archive_read_file(struct archive *ar, const char *fname,
 		      uint8_t **data, uint32_t *size);
 
+struct archive_manifest;
+struct archive_manifest *archive_create_manifest(struct archive *archive);
+
+void archive_delete_manifest(struct archive_manifest *manifest);
+int archive_load_images(struct archive *archive,
+			struct archive_manifest *manifest,
+			struct updater_config *cfg,
+			const char *model);
+int updater_load_images(struct updater_config *cfg,
+			struct archive *archive,
+			const char *image,
+			const char *ec_image,
+			const char *pd_image);
+void archive_print_manifest(struct archive_manifest *manifest,
+			    struct archive *archive);
+const char *firmware_get_gbb_key_hash(struct firmware_image *image,
+				      int is_rootkey);
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */

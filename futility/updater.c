@@ -877,7 +877,7 @@ int preserve_firmware_section(const struct firmware_image *image_from,
  * Finds the GBB (Google Binary Block) header on a given firmware image.
  * Returns a pointer to valid GBB header, or NULL on not found.
  */
-static struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
+struct vb2_gbb_header *firmware_find_gbb(const struct firmware_image *image)
 {
 	struct firmware_section section;
 	struct vb2_gbb_header *gbb_header;
@@ -909,8 +909,8 @@ static int preserve_gbb(const struct firmware_image *image_from,
 	uint8_t *hwid_to, *hwid_from;
 	struct vb2_gbb_header *gbb_from, *gbb_to;
 
-	gbb_from = find_gbb(image_from);
-	gbb_to = find_gbb(image_to);
+	gbb_from = firmware_find_gbb(image_from);
+	gbb_to = firmware_find_gbb(image_to);
 
 	if (!gbb_from || !gbb_to)
 		return -1;
@@ -1083,6 +1083,29 @@ static const struct vb2_packed_key *get_rootkey(
 	return key;
 }
 
+const char *firmware_get_gbb_key_hash(struct firmware_image *image,
+				      int is_rootkey)
+{
+	struct vb2_gbb_header *gbb = firmware_find_gbb(image);
+	struct vb2_packed_key *key;
+	uint32_t offset, size;
+	if(!gbb)
+		return NULL;
+
+	if (is_rootkey) {
+		offset = gbb->rootkey_offset;
+		size = gbb->rootkey_size;
+	} else {
+		offset = gbb->recovery_key_offset;
+		size = gbb->recovery_key_size;
+	}
+
+	key = (struct vb2_packed_key *)((uint8_t *)gbb + offset);
+	if (!packed_key_looks_ok(key, size))
+	    return NULL;
+	return packed_key_sha1_string(key);
+}
+
 /*
  * Returns a key block key from given image section, or NULL on failure.
  */
@@ -1186,7 +1209,7 @@ static int get_key_versions(const struct firmware_image *image,
 static int check_compatible_root_key(const struct firmware_image *ro_image,
 				     const struct firmware_image *rw_image)
 {
-	const struct vb2_gbb_header *gbb = find_gbb(ro_image);
+	const struct vb2_gbb_header *gbb = firmware_find_gbb(ro_image);
 	const struct vb2_packed_key *rootkey;
 	const struct vb2_keyblock *keyblock;
 
@@ -1203,7 +1226,8 @@ static int check_compatible_root_key(const struct firmware_image *ro_image,
 		return -1;
 
 	if (verify_keyblock(keyblock, rootkey) != 0) {
-		const struct vb2_gbb_header *gbb_rw = find_gbb(rw_image);
+		const struct vb2_gbb_header *gbb_rw = firmware_find_gbb(
+				rw_image);
 		const struct vb2_packed_key *rootkey_rw = NULL;
 		int is_same_key = 0;
 		/*
@@ -1630,6 +1654,30 @@ static int save_from_stdin(const char *output)
 	return 0;
 }
 
+int updater_load_images(struct updater_config *cfg,
+			struct archive *archive,
+			const char *image,
+			const char *ec_image,
+			const char *pd_image)
+{
+	int errorcnt = 0;
+
+	if (!cfg->image.data && image) {
+		if (image && strcmp(image, "-") == 0) {
+			fprintf(stderr, "Reading image from stdin...\n");
+			image = create_temp_file(cfg);
+			if (image)
+				errorcnt += !!save_from_stdin(image);
+		}
+		errorcnt += !!load_image(archive, image, &cfg->image);
+	}
+	if (!cfg->ec_image.data && ec_image)
+		errorcnt += !!load_image(archive, ec_image, &cfg->ec_image);
+	if (!cfg->pd_image.data && pd_image)
+		errorcnt += !!load_image(archive, pd_image, &cfg->pd_image);
+	return errorcnt;
+}
+
 /*
  * Helper function to setup an allocated updater_config object.
  * Returns number of failures, or 0 on success.
@@ -1642,49 +1690,64 @@ int updater_setup_config(struct updater_config *cfg,
 			 const char *quirks,
 			 const char *mode,
 			 const char *programmer,
+			 const char *model,
 			 const char *emulation,
 			 const char *sys_props,
 			 const char *write_protection,
 			 int is_factory,
 			 int try_update,
 			 int force_update,
+			 int do_manifest,
 			 int verbosity)
 {
 	int errorcnt = 0;
 	int check_single_image = 0, check_wp_disabled = 0;
 	const char *default_quirks = NULL;
 	struct archive *ar;
+	struct archive_manifest *manifest = NULL;
 
 	cfg->verbosity = verbosity;
+	if (emulation) {
+		check_single_image = 1;
+		cfg->emulation = emulation;
+		DEBUG("Using file %s for emulation.", emulation);
+		errorcnt += load_image(NULL, emulation, &cfg->image_current);
+	}
+	if (do_manifest && !archive) {
+		ERROR("Manifest is only available in archive.");
+		return errorcnt + 1;
+	}
 
 	cfg->archive = archive_open(archive ? archive : ".");
 	if (!cfg->archive) {
-		/* Stop early since all file access below may fail. */
-		return 1;
+		ERROR("Failed to open archive: %s", archive);
+		return errorcnt + 1;
 	}
 	ar = cfg->archive;
+
+	/* Load images specified from command line. */
+	errorcnt += updater_load_images(cfg, ar, image, ec_image, pd_image);
+
+	/* Load images from archive. */
+	if (archive) {
+		manifest = archive_create_manifest(ar);
+		if (!manifest) {
+			ERROR("Failure in archive: %s", archive);
+			return 1;
+		}
+		errorcnt += archive_load_images(ar, manifest, cfg, model);
+		if (do_manifest) {
+			archive_print_manifest(manifest, ar);
+			return 0;
+		}
+	}
 
 	if (try_update)
 		cfg->try_update = 1;
 	if (force_update)
 		cfg->force_update = 1;
-
 	if (sys_props)
 		override_properties_from_list(sys_props, cfg);
-
-	if (image && strcmp(image, "-") == 0) {
-		fprintf(stderr, "Reading image from stdin...\n");
-		image = create_temp_file(cfg);
-		if (image)
-			errorcnt += !!save_from_stdin(image);
-	}
-	if (image) {
-		errorcnt += !!load_image(ar, image, &cfg->image);
-	}
-	if (ec_image)
-		errorcnt += !!load_image(ar, ec_image, &cfg->ec_image);
-	if (pd_image)
-		errorcnt += !!load_image(ar, pd_image, &cfg->pd_image);
 
 	/*
 	 * Quirks must be loaded after images are loaded because we use image
@@ -1728,12 +1791,6 @@ int updater_setup_config(struct updater_config *cfg,
 		cfg->image_current.programmer = programmer;
 		DEBUG("AP (host) programmer changed to %s.", programmer);
 	}
-	if (emulation) {
-		check_single_image = 1;
-		cfg->emulation = emulation;
-		DEBUG("Using file %s for emulation.", emulation);
-		errorcnt += load_image(NULL, emulation, &cfg->image_current);
-	}
 
 	/* Additional checks. */
 	if (check_single_image && (cfg->ec_image.data || cfg->pd_image.data)) {
@@ -1744,6 +1801,8 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt++;
 		ERROR("Factory mode needs WP disabled.");
 	}
+	if (manifest)
+		archive_delete_manifest(manifest);
 	return errorcnt;
 }
 
