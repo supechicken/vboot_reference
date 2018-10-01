@@ -605,11 +605,14 @@ resign_firmware_payload() {
           cp "${rootkey}" "${shellball_keyset_dir}/rootkey.${output_name}"
         fi
 
-        info "Signing firmware image ${bios_image} for ${output_name} " \
+        # Path to bios.bin.
+        local bios_path="${shellball_dir}/${bios_image}"
+        local temp_bios_path=$(make_temp_file)
+        cp "${bios_path}" "${temp_bios_path}"
+        info "Signing firmware image ${temp_bios_path} for ${output_name} " \
           "with key suffix ${key_suffix}"
 
         local temp_fw=$(make_temp_file)
-
         local signprivate="${KEY_DIR}/firmware_data_key${key_suffix}.vbprivk"
         local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
         local devsign="${KEY_DIR}/dev_firmware_data_key${key_suffix}.vbprivk"
@@ -621,11 +624,8 @@ resign_firmware_payload() {
           devkeyblock="${keyblock}"
         fi
 
-        # Path to bios.bin.
-        local bios_path="${shellball_dir}/${bios_image}"
-
-        echo "Before EC signing ${bios_path}: md5 =" \
-          $(md5sum ${bios_path} | awk '{print $1}')
+        echo "Before EC signing ${temp_bios_path}: md5 =" \
+          $(md5sum ${temp_bios_path} | awk '{print $1}')
 
         if [ -n "${ec_image}" ]; then
           # Path to ec.bin.
@@ -647,17 +647,17 @@ resign_firmware_payload() {
             # Above command produces EC_RW.bin. Compute its hash.
             openssl dgst -sha256 -binary "${rw_bin}" > "${rw_hash}"
             # Store EC_RW.bin and its hash in bios.bin.
-            store_file_in_cbfs "${bios_path}" "${rw_bin}" "ecrw" \
-              || die "Failed to store file in ${bios_path}"
-            store_file_in_cbfs "${bios_path}" "${rw_hash}" "ecrw.hash" \
-              || die "Failed to store file in ${bios_path}"
+            store_file_in_cbfs "${temp_bios_path}" "${rw_bin}" "ecrw" \
+              || die "Failed to store file in ${temp_bios_path}"
+            store_file_in_cbfs "${temp_bios_path}" "${rw_hash}" "ecrw.hash" \
+              || die "Failed to store file in ${temp_bios_path}"
             popd > /dev/null
             info "Signed EC image output to ${ec_path}"
           fi
         fi
 
-        echo "After EC signing ${bios_path}: md5 =" \
-          $(md5sum ${bios_path} | awk '{print $1}')
+        echo "After EC signing ${temp_bios_path}: md5 =" \
+          $(md5sum ${temp_bios_path} | awk '{print $1}')
 
         # Resign bios.bin.
         echo "Signing Bios with:" ${FUTILITY} sign \
@@ -668,7 +668,7 @@ resign_firmware_payload() {
           --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
           --version "${FIRMWARE_VERSION}" \
           "${extra_args[@]}" \
-          ${bios_path} \
+          ${temp_bios_path} \
           ${temp_fw}
         ${FUTILITY} sign \
           --signprivate "${signprivate}" \
@@ -678,7 +678,7 @@ resign_firmware_payload() {
           --kernelkey "${KEY_DIR}/kernel_subkey.vbpubk" \
           --version "${FIRMWARE_VERSION}" \
           "${extra_args[@]}" \
-          ${bios_path} \
+          ${temp_bios_path} \
           ${temp_fw}
 
         echo "After Bios signing ${temp_fw}: md5 =" \
@@ -691,18 +691,20 @@ resign_firmware_payload() {
           --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
           --rootkey="${rootkey}" \
           "${temp_fw}" \
-          "${bios_path}"
+          "${temp_bios_path}"
         ${FUTILITY} gbb \
           -s \
           --recoverykey="${KEY_DIR}/recovery_key.vbpubk" \
           --rootkey="${rootkey}" \
           "${temp_fw}" \
-          "${bios_path}"
+          "${temp_bios_path}"
 
-        echo "After setting GBB on ${bios_path}: md5 =" \
-          $(md5sum ${bios_path} | awk '{print $1}')
+        echo "After setting GBB on ${temp_bios_path}: md5 =" \
+          $(md5sum ${temp_bios_path} | awk '{print $1}')
 
-        info "Signed firmware image output to ${bios_path}"
+        info "Signed firmware image output to ${temp_bios_path}"
+        # Input image ($bios_path) isn't changed.
+        # Artifacts are stored under $shellball_keyset_dir.
       done
       unset IFS
     } < "${signer_config}"
