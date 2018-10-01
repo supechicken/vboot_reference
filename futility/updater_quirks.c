@@ -58,7 +58,7 @@ static int reload_image(const char *file_path, struct firmware_image *image)
 	const char *programmer = image->programmer;
 	free_image(image);
 	image->programmer = programmer;
-	return load_image(file_path, image);
+	return load_image(NULL, file_path, image);
 }
 
 /*
