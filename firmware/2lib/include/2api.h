@@ -175,6 +175,14 @@ enum vb2_context_flags {
 	 * data provided by the caller could be uninitialized.)
 	 */
 	VB2_CONTEXT_NVDATA_V2 = (1 << 18),
+
+	/*
+	 * Set when the power button is released for the first time. This is
+	 * used to ignore a power button push until after we have seen it
+	 * released, to avoid shutting down immediately if the power button is
+	 * still being held on startup.
+	 */
+	VB2_CONTEXT_POWER_BUTTON_RELEASED = (1 << 19),
 };
 
 /*

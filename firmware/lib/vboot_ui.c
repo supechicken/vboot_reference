@@ -42,6 +42,17 @@ static int VbWantShutdown(struct vb2_context *ctx, uint32_t key)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t shutdown_request = VbExIsShutdownRequested();
 
+	/*
+	 * Ignore power button push until after we have seen it released.
+	 * This avoids shutting down immediately if the power button is still
+	 * being held on startup.
+	 */
+	if (shutdown_request & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		if (!(ctx->flags & VB2_CONTEXT_POWER_BUTTON_RELEASED))
+			shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	} else
+		ctx->flags |= VB2_CONTEXT_POWER_BUTTON_RELEASED;
+
 	if (key == VB_BUTTON_POWER_SHORT_PRESS)
 		shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
 
