@@ -91,11 +91,13 @@ struct tempfile {
 	struct tempfile *next;
 };
 
+struct archive;
 struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
 	struct system_property system_properties[SYS_PROP_MAX];
 	struct quirk_entry quirks[QUIRK_MAX];
+	struct archive *archive;
 	struct tempfile *tempfiles;
 	int try_update;
 	int force_update;
@@ -149,6 +151,7 @@ int updater_setup_config(struct updater_config *cfg,
 			  const char *image,
 			  const char *ec_image,
 			  const char *pd_image,
+			  const char *archive,
 			  const char *quirks,
 			  const char *mode,
 			  const char *programmer,
@@ -195,8 +198,14 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 			      struct firmware_image *image_to,
 			      const char *section_name);
 
-/* Loads a firmware image from file. Returns 0 on success, otherwise failure. */
-int load_image(const char *file_name, struct firmware_image *image);
+/*
+ * Loads a firmware image from file.
+ * If archive is provided and file_name is a relative path, read the file from
+ * archive.
+ * Returns 0 on success, otherwise failure.
+ */
+int load_image(struct archive *archive, const char *file_name,
+	       struct firmware_image *image);
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
@@ -225,5 +234,35 @@ const char * const updater_get_default_quirks(struct updater_config *cfg);
  * The caller is responsible for releasing the returned string.
  */
 char *host_shell(const char *command);
+
+/* Functions from updater_archive.c */
+
+/*
+ * Opens an archive from given path.
+ * The type of archive will be determined automatically.
+ * Returns a pointer to reference to archive (must be released by archive_close
+ * when not used), otherwise NULL on error.
+ */
+struct archive *archive_open(const char *path);
+
+/*
+ * Closes an archive reference.
+ * Returns 0 on success, otherwise non-zero as failure.
+ */
+int archive_close(struct archive *ar);
+
+/*
+ * Checks if an entry (either file or directory) exists in archive.
+ * Returns 1 if exists, otherwise 0
+ */
+int archive_has_entry(struct archive *ar, const char *name);
+
+/*
+ * Reads a file from archive.
+ * Returns 0 on success (data and size reflects the file content),
+ * otherwise non-zero as failure.
+ */
+int archive_read_file(struct archive *ar, const char *fname,
+		      uint8_t **data, uint32_t *size);
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
