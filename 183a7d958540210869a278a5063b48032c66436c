@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a802e6f6_c9cf2cdd",
+        "filename": "futility/updater.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-10-02T00:20:05Z",
+      "side": 1,
+      "message": "No, this is not a quirk. SMMSTORE will be available on all future devices and here it\u0027ll be a general (but optional) preservation target.\n\nI was thinking that for sections that will be only used to preserve, it can be simple values instead of having dedicated constants.\n\nBut well, let me turn that into a constant as well to make it clear.",
+      "parentUuid": "45e640d1_29d85744",
+      "range": {
+        "startLine": 958,
+        "startChar": 2,
+        "endLine": 958,
+        "endChar": 12
+      },
+      "revId": "183a7d958540210869a278a5063b48032c66436c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "619ecd91_9b9e6bdd",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "183a7d958540210869a278a5063b48032c66436c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea56d4d_53654c6f",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-10-02T00:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "619ecd91_9b9e6bdd",
+      "revId": "183a7d958540210869a278a5063b48032c66436c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
