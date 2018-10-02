@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f0d278e_213cb6f2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-02T01:11:11Z",
+      "side": 1,
+      "message": "Well, okay, I didn\u0027t think of this... this seems ugly too. I think then it would be better to just reset this every time (without an #ifdef) we start a UI loop, i.e. in VbBootRecovery() and VbBootDeveloper(). You could encapsulate that into an init_ui() function too if you want. We have something similar in the menu UI already to perform some initialization.",
+      "revId": "91a26a4c49fcab40d28ce343647f311ffa812043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

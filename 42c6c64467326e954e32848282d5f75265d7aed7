@@ -69,6 +69,24 @@
       "revId": "42c6c64467326e954e32848282d5f75265d7aed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a050ce63_fd48bee6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-02T01:11:11Z",
+      "side": 1,
+      "message": "Oh, right, you need to wait until it has been cleared first. Good point. Then this makes sense.",
+      "parentUuid": "1ebcfb68_6854d6fa",
+      "revId": "42c6c64467326e954e32848282d5f75265d7aed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
