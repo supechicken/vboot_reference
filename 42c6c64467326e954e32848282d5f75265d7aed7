@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e904c0c3_87bac780",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-02T00:15:40Z",
+      "side": 1,
+      "message": "Why does this need to be a context flag? That function is only called from the UI loop that lives completely under a single VbSelectAndLoadFirmware() call. A global or static local variable should be enough (we use plenty of those in the menu UI, I don\u0027t see a big reason not to do that here as well). The vb2_context is really just meant for information that needs to be passed between vboot and the calling program.",
+      "revId": "42c6c64467326e954e32848282d5f75265d7aed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00cfdfb5_2ba1e1ef",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-02T00:15:40Z",
+      "side": 1,
+      "message": "This logic works but is pretty confusing... you really only need a single if for this:\n\n if (power button pressed \u0026\u0026 not seen power button press yet) {\n   mask out power button flag\n   set variable that power button press was seen\n }\n\n(Also, in general, when one branch of an if has braces, both must have them.)",
+      "revId": "42c6c64467326e954e32848282d5f75265d7aed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
