@@ -415,12 +415,19 @@ VbError_t VbCheckAltOS(struct vb2_context *ctx, VbCommonParams *cparams,
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 
+	int req_delay = vb2_nv_get(ctx, VB2_NV_ALT_OS_HOTKEY_DELAY_REQUEST);
 	int req_enable = vb2_nv_get(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST);
 	int req_disable = vb2_nv_get(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST);
 
-	/* Reset enable/disable requests right away to prevent cycles. */
+	/* Reset requests right away to prevent cycles. */
+	vb2_nv_set(ctx, VB2_NV_ALT_OS_HOTKEY_DELAY_REQUEST, 0);
 	vb2_nv_set(ctx, VB2_NV_ENABLE_ALT_OS_REQUEST, 0);
 	vb2_nv_set(ctx, VB2_NV_DISABLE_ALT_OS_REQUEST, 0);
+
+	/* Allow time for the hotkey to be pushed (or simulated) after
+	 * loading EC-RW. */
+	if (req_delay)
+		VbExSleepMs(5 * 1000);
 
 	uint8_t kflags;
 	uint8_t kflags_set;
@@ -488,6 +495,7 @@ VbError_t VbCheckAltOS(struct vb2_context *ctx, VbCommonParams *cparams,
 	VB2_DEBUG("Alt OS: oprom_loaded=%d\n", oprom_loaded);
 	VB2_DEBUG("Alt OS: enabled=%d\n", enabled);
 	VB2_DEBUG("Alt OS: force_cros=%d\n", force_cros);
+	VB2_DEBUG("Alt OS: req_delay=%d\n", req_delay);
 	VB2_DEBUG("Alt OS: req_enable=%d\n", req_enable);
 	VB2_DEBUG("Alt OS: req_disable=%d\n", req_disable);
 	VB2_DEBUG("Alt OS: trusted_ec=%d\n", trusted_ec);

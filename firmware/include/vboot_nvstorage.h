@@ -128,6 +128,8 @@ typedef enum VbNvParam {
 	VBNV_ENABLE_ALT_OS_REQUEST,
 	/* Disable AltOS Mode on next boot. */
 	VBNV_DISABLE_ALT_OS_REQUEST,
+	/* Enable delay before reading hotkey to trigger AltOS Mode. */
+	VBNV_ALT_OS_HOTKEY_DELAY_REQUEST,
 } VbNvParam;
 
 /* Set default boot in developer mode */

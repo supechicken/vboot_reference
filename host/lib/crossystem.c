@@ -583,6 +583,8 @@ int VbGetSystemPropertyInt(const char *name)
 		value = VbGetNvStorage(VBNV_ENABLE_ALT_OS_REQUEST);
 	} else if (!strcasecmp(name, "disable_alt_os_request")) {
 		value = VbGetNvStorage(VBNV_DISABLE_ALT_OS_REQUEST);
+	} else if (!strcasecmp(name, "alt_os_hotkey_delay_request")) {
+		value = VbGetNvStorage(VBNV_ALT_OS_HOTKEY_DELAY_REQUEST);
 	}
 
 	return value;
@@ -732,6 +734,8 @@ int VbSetSystemPropertyInt(const char *name, int value)
 		return VbSetNvStorage(VBNV_ENABLE_ALT_OS_REQUEST, value);
 	} else if (!strcasecmp(name, "disable_alt_os_request")) {
 		return VbSetNvStorage(VBNV_DISABLE_ALT_OS_REQUEST, value);
+	} else if (!strcasecmp(name, "alt_os_hotkey_delay_request")) {
+		return VbSetNvStorage(VBNV_ALT_OS_HOTKEY_DELAY_REQUEST, value);
 	}
 
 	return -1;
