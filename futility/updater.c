@@ -1673,6 +1673,7 @@ int updater_setup_config(struct updater_config *cfg,
 	const char *default_quirks = NULL;
 	int is_factory = arg->is_factory;
 	const char *archive_path = arg->archive;
+	struct manifest *manifest = NULL;
 
 	/* Setup simple values. */
 	cfg->verbosity = arg->verbosity;
@@ -1680,6 +1681,10 @@ int updater_setup_config(struct updater_config *cfg,
 		cfg->try_update = 1;
 	if (arg->force_update)
 		cfg->force_update = 1;
+	if (arg->do_manifest && !arg->archive) {
+		ERROR("Manifest is only available for archive.");
+		return ++errorcnt;
+	}
 	if (arg->programmer) {
 		check_single_image = 1;
 		cfg->image.programmer = arg->programmer;
@@ -1731,8 +1736,19 @@ int updater_setup_config(struct updater_config *cfg,
 		ERROR("Failed to open archive: %s", archive_path);
 		return ++errorcnt;
 	}
+
 	errorcnt += updater_load_images(
 			cfg, arg->image, arg->ec_image, arg->pd_image);
+
+	if (arg->do_manifest) {
+		manifest = new_manifest_from_archive(cfg->archive);
+		if (!manifest) {
+			ERROR("Failure in archive: %s", archive_path);
+			return ++errorcnt;
+		}
+		print_json_manifest(manifest);
+		return errorcnt;
+	}
 
 	/*
 	 * Quirks must be loaded after images are loaded because we use image
@@ -1754,6 +1770,8 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt++;
 		ERROR("Factory mode needs WP disabled.");
 	}
+	if (manifest)
+		delete_manifest(manifest);
 	return errorcnt;
 }
 
