@@ -877,7 +877,7 @@ int preserve_firmware_section(const struct firmware_image *image_from,
  * Finds the GBB (Google Binary Block) header on a given firmware image.
  * Returns a pointer to valid GBB header, or NULL on not found.
  */
-static struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
+struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
 {
 	struct firmware_section section;
 	struct vb2_gbb_header *gbb_header;
