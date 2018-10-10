@@ -484,25 +484,48 @@ static void VbBootDevTest(void)
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+L normal");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
+	/* Enter legacy menu and time out */
 	ResetMocks();
 	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = 0x0c;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
 		"Ctrl+L force legacy");
+	TEST_EQ(vbexlegacy_called, 0, "  try legacy");
+
+	/* Enter altfw menu and select firmware 0 */
+	ResetMocks();
+	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
+	mock_keypress[0] = 0x0c;
+	mock_keypress[1] = '0';
+	TEST_EQ(VbBootDeveloper(&ctx), 1002,
+		"Ctrl+L force legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
+	/* Enter altfw menu and then exit it */
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	mock_keypress[0] = 0x0c;
+	mock_keypress[1] = 0x1b;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002,
+		"Ctrl+L nv legacy");
+	TEST_EQ(vbexlegacy_called, 0, "  try legacy");
+
+	/* Enter altfw menu and select firmware 0 */
+	ResetMocks();
+	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	mock_keypress[0] = 0x0c;
+	mock_keypress[1] = '0';
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
 		"Ctrl+L nv legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
+	/* Enter altfw menu and select firmware 0 */
 	ResetMocks();
 	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_LEGACY;
 	mock_keypress[0] = 0x0c;
+	mock_keypress[1] = '0';
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
 		"Ctrl+L fwmp legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  fwmp legacy");
