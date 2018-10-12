@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fcf3b2f_15ed296c",
+        "filename": "futility/updater.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-12T18:26:31Z",
+      "side": 1,
+      "message": "If we\u0027re passing a const image, should the returned header also be const?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 2
+      },
+      "revId": "5a688ca3b1d57a50964ae6436becbc3fddb0774a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
