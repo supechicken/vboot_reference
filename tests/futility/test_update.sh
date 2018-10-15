@@ -296,24 +296,46 @@ test_update "Full update (--archive, single package)" \
 	"${FROM_IMAGE}" "${TMP}.expected.full" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
 
+mkdir -p "${A}/keyset"
+cp -f "${LINK_BIOS}" "${A}/bios.bin"
+cp -f "${TMP}.to/rootkey" "${A}/keyset/rootkey.WL"
+cp -f "${TMP}.to/VBLOCK_A" "${A}/keyset/vblock_A.WL"
+cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.WL"
+${FUTILITY} gbb -s --rootkey="${TMP}.from/rootkey" "${A}/bios.bin"
+${FUTILITY} load_fmap "${A}/bios.bin" VBLOCK_A:"${TMP}.from/VBLOCK_A"
+${FUTILITY} load_fmap "${A}/bios.bin" VBLOCK_B:"${TMP}.from/VBLOCK_B"
+
+test_update "Full update (--archive, whitelabel, no VPD)" \
+	"${A}/bios.bin" "!Need VPD set for white" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
+
+test_update "Full update (--archive, whitelabel, no VPD - factory mode)" \
+	"${LINK_BIOS}" "${A}/bios.bin" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --mode=factory
+
+test_update "Full update (--archive, WL, single package)" \
+	"${A}/bios.bin" "${LINK_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --signature_id=WL
+
+# Test archive with Unified Build contents.
 rm -f "${A}/bios.bin"
 cp -r "${SCRIPTDIR}/models" "${A}/"
 mkdir -p "${A}/images"
 cp -f "${PEPPY_BIOS}" "${A}/images/bios_peppy.bin"
 cp -f "${LINK_BIOS}" "${A}/images/bios_link.bin"
 
-cp -f "${PEPPY_BIOS}" "${FROM_IMAGE}.a.p"
-cp -f "${LINK_BIOS}" "${FROM_IMAGE}.a.l"
-patch_file ${FROM_IMAGE}.a.p FW_MAIN_A 0 "corrupted"
+cp -f "${PEPPY_BIOS}" "${FROM_IMAGE}.ap"
+cp -f "${LINK_BIOS}" "${FROM_IMAGE}.al"
+patch_file ${FROM_IMAGE}.ap FW_MAIN_A 0 "corrupted"
 patch_file ${FROM_IMAGE}.a.l FW_MAIN_A 0 "corrupted"
 test_update "Full update (--archive, model=link)" \
-	"${FROM_IMAGE}.a.l" "${LINK_BIOS}" \
+	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=link
 test_update "Full update (--archive, model=peppy)" \
-	"${FROM_IMAGE}.a.p" "${PEPPY_BIOS}" \
+	"${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=peppy
 test_update "Full update (--archive, model=unknown)" \
-	"${FROM_IMAGE}.a.p" "!Model 'unknown' is not defined" \
+	"${FROM_IMAGE}.ap" "!Model 'unknown' is not defined" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=unknown
 
 # Test special programmer
