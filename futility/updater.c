@@ -630,7 +630,8 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
-int load_system_firmware(struct updater_config *cfg, struct firmware_image *image)
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image)
 {
 	const char *tmp_file = updater_create_temp_file(cfg);
 
@@ -1664,18 +1665,47 @@ static int updater_load_images(struct updater_config *cfg,
 }
 
 /*
+ * Setup what the updater has to do against an archive.
+ * Returns number of failures, or 0 on success.
+ */
+static int updater_setup_archive(
+		struct updater_config *cfg,
+		const struct updater_config_arguments *arg,
+		struct manifest *manifest)
+{
+	int errorcnt = 0;
+	struct archive *ar = cfg->archive;
+	const struct model_config *model;
+
+	if (arg->do_manifest) {
+		print_json_manifest(manifest);
+		/* No additional error. */
+		return errorcnt;
+	}
+
+	model = manifest_find_model(manifest, arg->model);
+	if (!model)
+		return ++errorcnt;
+
+	errorcnt += updater_load_images(
+			cfg, model->image, model->ec_image, model->pd_image);
+	errorcnt += patch_image_by_model(&cfg->image, model, ar);
+	return errorcnt;
+}
+
+/*
  * Helper function to setup an allocated updater_config object.
  * Returns number of failures, or 0 on success.
  */
 int updater_setup_config(struct updater_config *cfg,
-			 const struct updater_config_arguments *arg)
+			 const struct updater_config_arguments *arg,
+			 int *do_update)
 {
 	int errorcnt = 0;
 	int check_single_image = 0, check_wp_disabled = 0;
 	const char *default_quirks = NULL;
 	int is_factory = arg->is_factory;
 	const char *archive_path = arg->archive;
-	struct manifest *manifest = NULL;
 
 	/* Setup values that may change output or decision of other argument. */
 	cfg->verbosity = arg->verbosity;
@@ -1683,9 +1713,12 @@ int updater_setup_config(struct updater_config *cfg,
 		cfg->force_update = 1;
 
 	/* Check incompatible options and return early. */
-	if (arg->do_manifest && !arg->archive) {
-		ERROR("Manifest is only available for archive.");
-		return ++errorcnt;
+	if (arg->do_manifest) {
+		*do_update = 0;
+		if (!arg->archive) {
+			ERROR("Manifest is only available for archive.");
+			return ++errorcnt;
+		}
 	}
 
 	/* Setup update mode. */
@@ -1747,15 +1780,16 @@ int updater_setup_config(struct updater_config *cfg,
 
 	errorcnt += updater_load_images(
 			cfg, arg->image, arg->ec_image, arg->pd_image);
-
-	if (arg->do_manifest) {
-		manifest = new_manifest_from_archive(cfg->archive);
-		if (!manifest) {
-			ERROR("Failure in archive: %s", archive_path);
-			return ++errorcnt;
+	/* Load images from archive. */
+	if (arg->archive) {
+		struct manifest *m = new_manifest_from_archive(cfg->archive);
+		if (m) {
+			errorcnt += updater_setup_archive(cfg, arg, m);
+			delete_manifest(m);
+		} else {
+			ERROR("Failure in archive: %s", arg->archive);
+			++errorcnt;
 		}
-		print_json_manifest(manifest);
-		return errorcnt;
 	}
 
 	/*
@@ -1778,8 +1812,6 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt++;
 		ERROR("Factory mode needs WP disabled.");
 	}
-	if (manifest)
-		delete_manifest(manifest);
 	return errorcnt;
 }
 
