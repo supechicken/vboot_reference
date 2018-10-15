@@ -296,6 +296,28 @@ test_update "Full update (--archive, single package)" \
 	"${FROM_IMAGE}" "${TMP}.expected.full" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
 
+mkdir -p "${A}/keyset"
+cp -f "${LINK_BIOS}" "${A}/bios.bin"
+cp -f "${TMP}.to/rootkey" "${A}/keyset/rootkey.WL"
+cp -f "${TMP}.to/VBLOCK_A" "${A}/keyset/vblock_A.WL"
+cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.WL"
+${FUTILITY} gbb -s --rootkey="${TMP}.from/rootkey" "${A}/bios.bin"
+${FUTILITY} load_fmap "${A}/bios.bin" VBLOCK_A:"${TMP}.from/VBLOCK_A"
+${FUTILITY} load_fmap "${A}/bios.bin" VBLOCK_B:"${TMP}.from/VBLOCK_B"
+
+test_update "Full update (--archive, whitelabel, no VPD)" \
+	"${A}/bios.bin" "!Need VPD set for white" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
+
+test_update "Full update (--archive, whitelabel, no VPD - factory mode)" \
+	"${LINK_BIOS}" "${A}/bios.bin" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --mode=factory
+
+test_update "Full update (--archive, WL, single package)" \
+	"${A}/bios.bin" "${LINK_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --signature_id=WL
+
+# Test archive with Unified Build contents.
 rm -f "${A}/bios.bin"
 cp -r "${SCRIPTDIR}/models" "${A}/"
 mkdir -p "${A}/images"
