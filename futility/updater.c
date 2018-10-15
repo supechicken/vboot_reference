@@ -1665,6 +1665,41 @@ static int updater_load_images(struct updater_config *cfg,
 }
 
 /*
+ * Applies white label information to an existing model config.
+ * Returns 0 on success, otherwise failure.
+ */
+static int updater_apply_white_label(struct updater_config *cfg,
+				     struct model_config *model,
+				     const char *signature_id)
+{
+	const char *tmp_image = NULL;
+
+	assert(model->is_white_label);
+	if (!signature_id) {
+		if (cfg->image_current.data) {
+			tmp_image = updater_create_temp_file(cfg);
+			if (!tmp_image)
+				return 1;
+			if (vb2_write_file(tmp_image, cfg->image_current.data,
+					    cfg->image_current.size)) {
+				ERROR("Failed writing temporary image file.");
+				return 1;
+			}
+		} else {
+			printf("Loading system firmware for white label..\n");
+			load_system_firmware(cfg, &cfg->image_current);
+			tmp_image = cfg->image_current.file_name;
+		}
+		if (!tmp_image) {
+			ERROR("Failed to get system current firmware");
+			return 1;
+		}
+	}
+	return !!model_apply_white_label(
+			model, cfg->archive, signature_id, tmp_image);
+}
+
+/*
  * Helper function to setup an allocated updater_config object.
  * Returns number of failures, or 0 on success.
  */
@@ -1765,6 +1800,20 @@ int updater_setup_config(struct updater_config *cfg,
 		model = manifest_find_model(manifest, arg->model);
 		if (!model)
 			return ++errorcnt;
+
+		if (model->is_white_label) {
+			updater_apply_white_label(
+					cfg,
+					(struct model_config *)model,
+					arg->signature_id);
+		}
+		if (model->is_white_label && !model->patches.rootkey) {
+			if (!is_factory) {
+				ERROR("Need VPD set for white label.");
+				return ++errorcnt;
+			}
+			fprintf(stderr, "Warning: No VPD for white label.\n");
+		}
 
 		errorcnt += updater_load_images(
 				cfg, model->image, model->ec_image,
