@@ -630,7 +630,8 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
-int load_system_firmware(struct updater_config *cfg, struct firmware_image *image)
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image)
 {
 	const char *tmp_file = updater_create_temp_file(cfg);
 
@@ -1747,15 +1748,28 @@ int updater_setup_config(struct updater_config *cfg,
 
 	errorcnt += updater_load_images(
 			cfg, arg->image, arg->ec_image, arg->pd_image);
+	/* Load images from archive. */
+	if (arg->archive) {
+		struct archive *ar = cfg->archive;
+		const struct model_config *model;
 
-	if (arg->do_manifest) {
-		manifest = new_manifest_from_archive(cfg->archive);
+		manifest = new_manifest_from_archive(ar);
 		if (!manifest) {
-			ERROR("Failure in archive: %s", archive_path);
+			ERROR("Failure in archive: %s", arg->archive);
 			return ++errorcnt;
 		}
-		print_json_manifest(manifest);
-		return errorcnt;
+		if (arg->do_manifest) {
+			print_json_manifest(manifest);
+			return errorcnt;
+		}
+		model = manifest_find_model(manifest, arg->model);
+		if (!model)
+			return ++errorcnt;
+
+		errorcnt += updater_load_images(
+				cfg, model->image, model->ec_image,
+				model->pd_image);
+		errorcnt += patch_image_by_model(&cfg->image, model, ar);
 	}
 
 	/*
