@@ -306,4 +306,20 @@ void delete_manifest(struct manifest *manifest);
 /* Prints the information of objects in manifest (models and images) in JSON. */
 void print_json_manifest(const struct manifest *manifest);
 
+/*
+ * Modifies a firmware image from patch information specified in model config.
+ * Returns 0 on success, otherwise number of failures.
+ */
+int patch_image_by_model(
+		struct firmware_image *image, const struct model_config *model,
+		struct archive *archive);
+
+/*
+ * Finds the existing model_config from manifest that best matches current
+ * system (as defined by model_name).
+ * Returns a model_config from manifest, or NULL if not found.
+ */
+const struct model_config *manifest_find_model(const struct manifest *manifest,
+					       const char *model_name);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */

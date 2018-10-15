@@ -26,6 +26,7 @@ static struct option const long_opts[] = {
 	{"quirks", 1, NULL, 'f'},
 	{"list-quirks", 0, NULL, 'L'},
 	{"mode", 1, NULL, 'm'},
+	{"model", 1, NULL, 'M'},
 	{"manifest", 0, NULL, 'A'},
 	{"factory", 0, NULL, 'Y'},
 	{"force", 0, NULL, 'F'},
@@ -64,6 +65,7 @@ static void print_help(int argc, char *argv[])
 		"Debugging and testing options:\n"
 		"    --wp=1|0        \tSpecify write protection status\n"
 		"    --emulate=FILE  \tEmulate system firmware using file\n"
+		"    --model=MODEL   \tOverride system model for images\n"
 		"    --sys_props=LIST\tList of system properties to override\n"
 		"-d, --debug         \tPrint debugging messages\n"
 		"-v, --verbose       \tPrint verbose messages\n"
@@ -107,6 +109,9 @@ static int do_update(int argc, char *argv[])
 			return 0;
 		case 'm':
 			args.mode = optarg;
+			break;
+		case 'M':
+			args.model = optarg;
 			break;
 		case 'A':
 			args.do_manifest = 1;
