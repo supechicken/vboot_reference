@@ -76,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "7a9248ad_a3039771",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-16T02:46:38Z",
+      "side": 1,
+      "message": "nit: it would be nice to define a VB_KEY_ESC constant for this and use it here and in VbUserConfirms()",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05384ce1_8195757d",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
