@@ -1665,6 +1665,30 @@ static int updater_load_images(struct updater_config *cfg,
 }
 
 /*
+ * Writes a firmware image to specified file.
+ * Returns 0 on success, otherwise failure.
+ */
+static int updater_output_image(const struct firmware_image *image,
+				const char *fname, const char *root)
+{
+	int r = 0;
+	char *fpath;
+
+	if (!image->data)
+		return 0;
+
+	ASPRINTF(&fpath, "%s/%s", root, fname);
+	r = vb2_write_file(fpath, image->data, image->size);
+	if (r)
+		ERROR("Failed writing firmware image to: %s", fpath);
+	else
+		printf("Firmware image saved in: %s\n", fpath);
+
+	free(fpath);
+	return !!r;
+}
+
+/*
  * Applies white label information to an existing model config.
  * Returns 0 on success, otherwise failure.
  */
@@ -1758,7 +1782,7 @@ int updater_setup_config(struct updater_config *cfg,
 	int errorcnt = 0;
 	int check_single_image = 0, check_wp_disabled = 0;
 	const char *default_quirks = NULL;
-	int is_factory = arg->is_factory;
+	int is_factory = arg->is_factory, do_output = 0;
 	const char *archive_path = arg->archive;
 
 	/* Setup values that may change output or decision of other argument. */
@@ -1793,6 +1817,8 @@ int updater_setup_config(struct updater_config *cfg,
 		} else if (strcmp(arg->mode, "factory") == 0 ||
 			   strcmp(arg->mode, "factory_install") == 0) {
 			is_factory = 1;
+		} else if (strcmp(arg->mode, "output") == 0) {
+			do_output = 1;
 		} else {
 			errorcnt++;
 			ERROR("Invalid mode: %s", arg->mode);
@@ -1888,6 +1914,15 @@ int updater_setup_config(struct updater_config *cfg,
 	if (check_wp_disabled && is_write_protection_enabled(cfg)) {
 		errorcnt++;
 		ERROR("Factory mode needs WP disabled.");
+	}
+	if (!errorcnt && do_output) {
+		const char *r = arg->output_dir;
+		if (!r)
+			r = ".";
+		errorcnt += updater_output_image(&cfg->image, "bios.bin", r);
+		errorcnt += updater_output_image(&cfg->ec_image, "ec.bin", r);
+		errorcnt += updater_output_image(&cfg->pd_image, "pd.bin", r);
+		*do_update = 0;
 	}
 	return errorcnt;
 }
