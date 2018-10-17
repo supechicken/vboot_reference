@@ -197,6 +197,57 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 /* Delay in developer ui */
 #define DEV_KEY_DELAY        20       /* Check keys every 20ms */
 
+/* User interface for selecting alternative firmware */
+VbError_t vb2_altfw_ui(struct vb2_context *ctx)
+{
+	int active = 1;
+
+	/* Initialize audio/delay context */
+	vb2_audio_start(ctx);
+
+	VbDisplayScreen(ctx, VB_SCREEN_ALT_FW_PICK, 0);
+
+	/* We'll loop until we finish the delay or are interrupted */
+	do {
+		uint32_t key = VbExKeyboardRead();
+
+		if (VbWantShutdown(ctx, key)) {
+			VB2_DEBUG("VbBootDeveloper() - shutdown requested!\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		}
+		switch (key) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case 27:
+			/* Escape pressed - return to developer screen */
+			active = 0;
+			break;
+		case '0'...'9':
+			VB2_DEBUG("VbBootDeveloper() - "
+				  "user pressed key '%c': Boot alternative "
+				  "firmware\n", key);
+			/*
+			 * This will not return if successful. Drop out to
+			 * developer mode on failure.
+			 */
+			VbExLegacy(key - '0');
+			active = 0;
+			break;
+		default:
+			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
+			VbCheckDisplayKey(ctx, key);
+			break;
+		}
+		VbExSleepMs(DEV_KEY_DELAY);
+	} while (active && vb2_audio_looping());
+
+	/* Back to developer screen */
+	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
+
+	return 0;
+}
+
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
@@ -360,10 +411,19 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 			break;
 		case 0x0c:
 			VB2_DEBUG("VbBootDeveloper() - "
-				  "user pressed Ctrl+L; Try legacy boot\n");
-			vb2_try_alt_fw(allow_legacy, 0);
-			break;
+				  "user pressed Ctrl+L; Try alt firmware\n");
+			if (!vb2_prepare_alt_fw(allow_legacy)) {
+				int ret;
 
+				ret = vb2_altfw_ui(ctx);
+				if (ret)
+					return ret;
+			}
+			vb2_exit_altfw();
+
+			/* We failed: restart the audio/delay context */
+			vb2_audio_start(ctx);
+			break;
 		case VB_KEY_CTRL_ENTER:
 			/*
 			 * The Ctrl-Enter is special for Lumpy test purpose;
