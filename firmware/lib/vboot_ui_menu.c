@@ -34,7 +34,9 @@ static int current_menu_idx, disabled_idx_mask, usb_nogood;
 static uint32_t default_boot;
 static uint32_t disable_dev_boot;
 static uint32_t altfw_allowed;
+static uint32_t disable_altfw_menu;
 static struct vb2_menu menus[];
+static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
 
 /**
  * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
@@ -117,8 +119,6 @@ static VbError_t boot_disk_action(struct vb2_context *ctx)
 /* Boot legacy BIOS if allowed and available. */
 static VbError_t boot_legacy_action(struct vb2_context *ctx)
 {
-	const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
-
 	if (disable_dev_boot) {
 		vb2_flash_screen(ctx);
 		vb2_error_beep();
@@ -302,6 +302,26 @@ static VbError_t language_action(struct vb2_context *ctx)
 	}
 }
 
+/* Action when selecting a bootloader in the alternative firmware menu. */
+static VbError_t altfw_action(struct vb2_context *ctx)
+{
+	/*
+	 * Will not return if successful. This index passed here assumes that
+	 * the bootloaders are sequentialy numbered from 1. This is not
+	 * necessarily the case.
+	 *
+	 * TODO(sjg): Adjust this interface to support starting a particular,
+	 * named bootloader.
+	 */
+	VbExLegacy(current_menu_idx + 1);
+	vb2_flash_screen(ctx);
+	VB2_DEBUG(no_legacy);
+	VbExDisplayDebugInfo(no_legacy);
+	VbExBeep(250, 200);
+
+	return VBERROR_KEEP_LOOPING;
+}
+
 /* Action that enables developer mode and reboots. */
 static VbError_t to_dev_action(struct vb2_context *ctx)
 {
@@ -447,6 +467,40 @@ static VbError_t vb2_handle_menu_input(struct vb2_context *ctx,
 /* Delay in developer menu */
 #define DEV_KEY_DELAY        20       /* Check keys every 20ms */
 
+/* Boot alternative bootloader if allowed and available. */
+static VbError_t enter_altfw_menu(struct vb2_context *ctx)
+{
+	VB2_DEBUG("enter_altfw_menu()\n");
+	if (disable_dev_boot) {
+		vb2_flash_screen(ctx);
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+	if (!altfw_allowed) {
+		vb2_flash_screen(ctx);
+		VB2_DEBUG("Legacy boot is disabled\n");
+		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
+				     "been enabled. Refer to the developer"
+				     "-mode documentation for details.\n");
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+	if (disable_altfw_menu) {
+		vb2_flash_screen(ctx);
+		VB2_DEBUG("No bootloaders are available\n");
+		VbExDisplayDebugInfo("WARNING: Cannot find any alternative "
+				     "bootloaders to boot. Refer to the "
+				     "developer mode documentation for "
+				     "details.\n");
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+	vb2_change_menu(VB_MENU_ALT_FW, 0);
+	vb2_draw_current_screen(ctx);
+
+	return VBERROR_KEEP_LOOPING;
+}
+
 /* Master table of all menus. Menus with size == 0 count as menuless screens. */
 static struct vb2_menu menus[VB_MENU_COUNT] = {
 	[VB_MENU_DEV_WARNING] = {
@@ -485,7 +539,7 @@ static struct vb2_menu menus[VB_MENU_COUNT] = {
 			},
 			[VB_DEV_LEGACY] = {
 				.text = "Boot Legacy BIOS",
-				.action = boot_legacy_action,
+				.action = enter_altfw_menu,
 			},
 			[VB_DEV_USB] = {
 				.text = "Boot From USB or SD Card",
@@ -599,6 +653,10 @@ static struct vb2_menu menus[VB_MENU_COUNT] = {
 		.screen = VB_SCREEN_TO_NORM_CONFIRMED,
 		.items = NULL,
 	},
+	[VB_MENU_ALT_FW] = {
+		.screen = VB_SCREEN_ALT_FW_MENU,
+		/* Rest is filled out dynamically by vb2_init_menus() */
+	},
 };
 
 /* Initialize menu state. Must be called once before displaying any menus. */
@@ -618,11 +676,33 @@ static VbError_t vb2_init_menus(struct vb2_context *ctx)
 		return VBERROR_UNKNOWN;
 
 	for (i = 0; i < count; i++) {
+		/* The actual language is drawn by the bootloader */
 		items[i].text = "Some Language";
 		items[i].action = language_action;
 	}
 	menus[VB_MENU_LANGUAGES].size = count;
 	menus[VB_MENU_LANGUAGES].items = items;
+
+	/* Initialize altfw menu with the entries. */
+	VbExGetAltFwCount(&count);
+	if (count) {
+		count++;
+		items = malloc(count * sizeof(struct vb2_menu_item));
+		if (!items)
+			return VBERROR_UNKNOWN;
+
+		for (i = 0; i < count - 1; i++) {
+			/* The actual text is drawn by the bootloader */
+			items[i].text = "Some altfw";
+			items[i].action = altfw_action;
+		}
+		items[i].text = "Cancel";
+		items[i].action = enter_developer_menu;
+		menus[VB_MENU_ALT_FW].size = count;
+		menus[VB_MENU_ALT_FW].items = items;
+	} else {
+		disable_altfw_menu = 1;
+	}
 
 	return VBERROR_SUCCESS;
 }
@@ -683,8 +763,8 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 			ret = boot_disk_action(ctx);
 			break;
 		case 'L' & 0x1f:
-			/* Ctrl+L = boot legacy BIOS */
-			ret = boot_legacy_action(ctx);
+			/* Ctrl+L = boot alternative bootloader */
+			ret = enter_altfw_menu(ctx);
 			break;
 		case VB_BUTTON_VOL_UP_LONG_PRESS:
 		case 'U' & 0x1f:
@@ -707,7 +787,7 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 		VbExSleepMs(DEV_KEY_DELAY);
 
 		/* If dev mode was disabled, loop forever (never timeout) */
-	} while(disable_dev_boot ? 1 : vb2_audio_looping());
+	} while (disable_dev_boot ? 1 : vb2_audio_looping());
 
 	if (default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY)
 		boot_legacy_action(ctx);	/* Doesn't return on success. */

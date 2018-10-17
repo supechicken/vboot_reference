@@ -667,6 +667,10 @@ enum VbScreenType_t {
 	VB_SCREEN_OPTIONS_MENU = 0x210,
 	/* Alt OS picker screen */
 	VB_SCREEN_ALT_OS = 0x211,
+	/* Alt firmware picker screen (for keyboard UI) */
+	VB_SCREEN_ALT_FW_PICK = 0x212,
+	/* Alt firmware menu screen (for detachable UI ) */
+	VB_SCREEN_ALT_FW_MENU = 0x213,
 };
 
 /**
@@ -993,6 +997,13 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+/**
+ * Get the number of available alternative firmware options
+ *
+ * @count Number of items (0 if none)
+ */
+VbError_t VbExGetAltFwCount(uint32_t *count);
 
 #ifdef __cplusplus
 }
