@@ -667,6 +667,10 @@ enum VbScreenType_t {
 	VB_SCREEN_OPTIONS_MENU = 0x210,
 	/* Alt OS picker screen */
 	VB_SCREEN_ALT_OS = 0x211,
+	/* Alt firmware picker screen (for keyboard UI) */
+	VB_SCREEN_ALT_FW_PICK = 0x212,
+	/* Alt firmware menu screen (for detachable UI ) */
+	VB_SCREEN_ALT_FW_MENU = 0x213,
 };
 
 /**
@@ -993,6 +997,21 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
+
+enum vb_altfw {
+	VB_ALTFW_COUNT	= 9,	/* We allow 9 bootloaders, numbered 1-9 */
+};
+
+/**
+ * Get a mask of available alternative firmware options
+ *
+ * There are up to 10 bootloaders, numbered 1 to 10, using bits 1 to 10 of this
+ * mask. Bit 0 is unused.
+ *
+ * @param mask		Bit mask indicating which bootloaders are present (bit
+ *			n indicates bootloader n is present)
+ */
+VbError_t VbExGetAltFwIdxMask(uint32_t *mask);
 
 #ifdef __cplusplus
 }
