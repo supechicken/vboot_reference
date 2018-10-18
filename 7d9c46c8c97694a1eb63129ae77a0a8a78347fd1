@@ -16,6 +16,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d53d3c_1137c56f",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T19:31:39Z",
+      "side": 1,
+      "message": "I think it is nice to have a function that cleans up after altfw, with a name that indicates that.\n\nI have been playing around with unifying the two UIs a little more, but that work didn\u0027t make it into these CLs.",
+      "parentUuid": "b46064b7_ac92dafd",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
