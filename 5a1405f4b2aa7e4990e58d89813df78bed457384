@@ -136,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "6d31927d_507dbf0c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "No, I mean you should just loop forever. There\u0027s no real reason to time out at all here, I think.",
+      "parentUuid": "a043af8d_3c74f6ff",
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a9248ad_a3039771",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1

@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e4fe28_b980a0af",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "One problem you get here is that you can lock the TPM (by just entering the menu which calls prepare()) and then still back out and chose another boot method. I guess we already had that with legacy payloads that fail previously, but now it\u0027s even easier to do. I think developer mode generally doesn\u0027t write to the kernel TPM space so that\u0027s probably fine, but we should double-check whether the second attempt to lock TPM (if you back out and then try a normal boot instead, or if you just enter and exit the menu multiple times) doesn\u0027t cause it to fail and go into recovery mode or something.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca1f538_7ef23c34",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "Maybe you should have a VbExGetAltFwIdxMask() rather than just the count. Then you always have 10 entries, but you use disabled_idx_mask to hide those that aren\u0027t available.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae3596b8_78dde6fe",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "You forgot to lock the TPM. It would probably be better to factor out a vb2_prepare_altfw() and vb2_try_altfw() like you had in the other UI, so that this path doesn\u0027t duplicate so much with boot_legacy_action().",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56857e4_d9898dbe",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "nit: This should be placed next to the other enter_xxx() functions for consistency.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec525c2a_2f1ca5ed",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "Maybe this should be the (250, 200) beep instead. I\u0027ve sort of tried to put some consistency into the beep types, where the two high ones always mean \"something is not allowed\" and the single lower one means \"I tried but it didn\u0027t work\" (e.g. booting from USB when there\u0027s none attached).",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582bda51_56df396e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "I would feel somewhat better if we didn\u0027t touch the RW_LEGACY section at all in recovery mode, just to be on the safe side of potential security issues. That could be done either here or in VbExGetAltFwCount() on the depthcharge side.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b0074f_50290f71",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "nit: add a short comment that this is for Cancel",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12a5947_9088af2f",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "nit: Could just use menus[VB_MENU_ALT_FW].size for this so you don\u0027t need another global.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae09c2c_efcaed2a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:00:21Z",
+      "side": 1,
+      "message": "nit: Do you want to also support the 0-9 shortcuts while you\u0027re here? We have been trying to keep parity with the clamshell UI for cases where people do have a keyboard.",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
