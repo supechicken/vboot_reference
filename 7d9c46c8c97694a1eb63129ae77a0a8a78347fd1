@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46064b7_ac92dafd",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T19:24:52Z",
+      "side": 1,
+      "message": "Why does this need to be its own function? Just use vb2_error_beep() directly...",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
