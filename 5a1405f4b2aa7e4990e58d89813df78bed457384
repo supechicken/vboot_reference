@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bc45dd87_3c153c80",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T16:41:03Z",
+      "side": 1,
+      "message": "Yes it should probably be AltFw",
+      "parentUuid": "1468e162_962feb04",
+      "range": {
+        "startLine": 80,
+        "startChar": 20,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc8f3c6f_996cba62",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -53,6 +77,24 @@
       "writtenOn": "2018-10-16T02:26:31Z",
       "side": 1,
       "message": "If you\u0027re factoring this out anyway, it should be vb2_error_beep() (ideally by moving the version from vboot_ui_menu.c into a common file).",
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27ce2d2_c006874c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T16:41:03Z",
+      "side": 1,
+      "message": "done in an earlier CL",
+      "parentUuid": "cc8f3c6f_996cba62",
       "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "a043af8d_3c74f6ff",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T16:41:03Z",
+      "side": 1,
+      "message": "Well we have to loop for a while to give people a chance. Maybe there is a better way to do this?",
+      "parentUuid": "1af93276_63f70341",
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a9248ad_a3039771",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -87,6 +147,30 @@
       "writtenOn": "2018-10-16T02:46:38Z",
       "side": 1,
       "message": "nit: it would be nice to define a VB_KEY_ESC constant for this and use it here and in VbUserConfirms()",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "5a1405f4b2aa7e4990e58d89813df78bed457384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c3c6e5_e2730fcb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T16:41:03Z",
+      "side": 1,
+      "message": "Done in an earlier CL, will update.",
+      "parentUuid": "7a9248ad_a3039771",
       "range": {
         "startLine": 229,
         "startChar": 7,
