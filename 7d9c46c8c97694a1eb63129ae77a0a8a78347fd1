@@ -34,6 +34,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ecc6092_080cfcf8",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:05:54Z",
+      "side": 1,
+      "message": "I mean, it doesn\u0027t clean anything up, does it? It\u0027s just an error beep. I also find the name \"exit\" sort of odd, it\u0027s not really \"exiting\" the altfw, if we had ever actually entered it we wouldn\u0027t be here. It\u0027s more of a vb2_altfw_failed(), maybe.",
+      "parentUuid": "76d53d3c_1137c56f",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
