@@ -106,6 +106,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56174ae1_fe9c8cd5",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:50:28Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d reserve the beeps for actual errors, not just on navigation. We don\u0027t do that anywhere else either (e.g. when pressing SPACE and then ESC).",
+      "parentUuid": "f3d8067a_ca4eeecc",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
