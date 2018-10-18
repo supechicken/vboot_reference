@@ -88,6 +88,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d8067a_ca4eeecc",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T20:46:47Z",
+      "side": 1,
+      "message": "Because they are going back to the dev mode screen and I thought it made sense to beep. We don\u0027t have to though, it\u0027s just an idea.",
+      "parentUuid": "b061a73b_f16c47a4",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
