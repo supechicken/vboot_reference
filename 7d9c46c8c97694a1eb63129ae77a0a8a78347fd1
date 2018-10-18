@@ -52,6 +52,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6342f08_90ce91b5",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-18T20:10:59Z",
+      "side": 1,
+      "message": "It is exiting the altfw menu or mode. While we are in it, we are showing a list of bootloaders that the user can select from. When we exit the mode, we are back to the dev screen",
+      "parentUuid": "3ecc6092_080cfcf8",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
