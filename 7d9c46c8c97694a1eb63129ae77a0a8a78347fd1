@@ -70,6 +70,24 @@
       "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b061a73b_f16c47a4",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-18T20:43:55Z",
+      "side": 1,
+      "message": "Oh, yeah, I didn\u0027t even notice you used it that way.\n\nWhy do you error beep when someone just pressed Esc?",
+      "parentUuid": "b6342f08_90ce91b5",
+      "revId": "7d9c46c8c97694a1eb63129ae77a0a8a78347fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
