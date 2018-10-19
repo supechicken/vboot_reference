@@ -95,6 +95,21 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 			   const void* auth_policy, uint32_t auth_policy_size);
 
 /**
+ * Undefine the space. [index] is the index for the space. The TPM error code
+ * is returned.
+ */
+uint32_t TlclUndefineSpace(uint32_t index);
+
+/**
+ * Undefine a space using owner authorization secret [owner_auth].
+ * [index] is the index for the space
+ * The TPM error code is returned.
+ */
+uint32_t TlclUndefineSpaceEx(const uint8_t* owner_auth,
+			     uint32_t owner_auth_size,
+			     uint32_t index);
+
+/**
  * Initializes [auth_policy] to require PCR binding of the given
  * [pcr_selection_bitmap]. The PCR values are passed in the [pcr_values]
  * parameter with each entry corresponding to the sequence of indexes that
