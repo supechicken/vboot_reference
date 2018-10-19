@@ -585,6 +585,9 @@ int VbGetSystemPropertyInt(const char *name)
 		value = VbGetNvStorage(VBNV_DISABLE_ALT_OS_REQUEST);
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		value = VbGetNvStorage(VBNV_POST_EC_SYNC_DELAY);
+	} else if (!strcasecmp(name, "alt_os_cur")) {
+		/* TODO: Copy VBSD_ALT_OS_SHOW_PICKER somewhere */
+		value = !!(GetVdatInt(VDAT_INT_FLAGS) & 0x400000);
 	}
 
 	return value;
