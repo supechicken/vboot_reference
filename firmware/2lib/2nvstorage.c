@@ -12,7 +12,7 @@
 #include "2nvstorage.h"
 #include "2nvstorage_fields.h"
 
-static void vb2_nv_regen_crc(struct vb2_context *ctx)
+void vb2_nv_regen_crc(struct vb2_context *ctx)
 {
 	const int offs = ctx->flags & VB2_CONTEXT_NVDATA_V2 ?
 			VB2_NV_OFFS_CRC_V2 : VB2_NV_OFFS_CRC_V1;
