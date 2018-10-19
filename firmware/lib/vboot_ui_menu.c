@@ -34,7 +34,7 @@ static int current_menu_idx, disabled_idx_mask, usb_nogood;
 static uint32_t default_boot;
 static uint32_t disable_dev_boot;
 static uint32_t altfw_allowed;
-static uint32_t disable_altfw_menu;
+static uint32_t altfw_mask;	/* Value returned by VbExGetAltFwIdxMask() */
 static struct vb2_menu menus[];
 static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
 
@@ -262,6 +262,44 @@ static VbError_t enter_to_norm_menu(struct vb2_context *ctx)
 	return VBERROR_KEEP_LOOPING;
 }
 
+/* Delay in developer menu */
+#define DEV_KEY_DELAY        20       /* Check keys every 20ms */
+
+/* Boot alternative bootloader if allowed and available. */
+static VbError_t enter_altfw_menu(struct vb2_context *ctx)
+{
+	VB2_DEBUG("enter_altfw_menu()\n");
+	if (disable_dev_boot) {
+		vb2_flash_screen(ctx);
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+	if (!altfw_allowed) {
+		vb2_flash_screen(ctx);
+		VB2_DEBUG("Legacy boot is disabled\n");
+		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
+				     "been enabled. Refer to the developer"
+				     "-mode documentation for details.\n");
+		vb2_error_beep();
+		return VBERROR_KEEP_LOOPING;
+	}
+	if (!menus[VB_MENU_ALT_FW].size) {
+		vb2_flash_screen(ctx);
+		VB2_DEBUG("No bootloaders are available\n");
+		VbExDisplayDebugInfo("WARNING: Cannot find any alternative "
+				     "bootloaders to boot. Refer to the "
+				     "developer mode documentation for "
+				     "details.\n");
+		VbExBeep(250, 200);
+		VbExSleepMs(120);
+		return VBERROR_KEEP_LOOPING;
+	}
+	vb2_change_menu(VB_MENU_ALT_FW, 0);
+	vb2_draw_current_screen(ctx);
+
+	return VBERROR_KEEP_LOOPING;
+}
+
 static VbError_t debug_info_action(struct vb2_context *ctx)
 {
 	VbDisplayDebugInfo(ctx);
@@ -305,15 +343,24 @@ static VbError_t language_action(struct vb2_context *ctx)
 /* Action when selecting a bootloader in the alternative firmware menu. */
 static VbError_t altfw_action(struct vb2_context *ctx)
 {
+	int select, i;
+
 	/*
-	 * Will not return if successful. This index passed here assumes that
-	 * the bootloaders are sequentialy numbered from 1. This is not
-	 * necessarily the case.
+	 * Will not return if successful.
 	 *
-	 * TODO(sjg): Adjust this interface to support starting a particular,
-	 * named bootloader.
+	 * FIXME(sjg): Need to lock the TPM
 	 */
-	VbExLegacy(current_menu_idx + 1);
+	select = current_menu_idx + 1;
+
+	/* Figure out which one was selected in the mask */
+	for (i = 1; select && i < VB_ALTFW_COUNT; i++) {
+		if (altfw_mask & (1 << i)) {
+			select--;
+			break;
+		}
+	}
+
+	VbExLegacy(i);
 	vb2_flash_screen(ctx);
 	VB2_DEBUG(no_legacy);
 	VbExDisplayDebugInfo(no_legacy);
@@ -460,43 +507,6 @@ static VbError_t vb2_handle_menu_input(struct vb2_context *ctx,
 		VB2_DEBUG("shutdown requested!\n");
 		return VBERROR_SHUTDOWN_REQUESTED;
 	}
-
-	return VBERROR_KEEP_LOOPING;
-}
-
-/* Delay in developer menu */
-#define DEV_KEY_DELAY        20       /* Check keys every 20ms */
-
-/* Boot alternative bootloader if allowed and available. */
-static VbError_t enter_altfw_menu(struct vb2_context *ctx)
-{
-	VB2_DEBUG("enter_altfw_menu()\n");
-	if (disable_dev_boot) {
-		vb2_flash_screen(ctx);
-		vb2_error_beep();
-		return VBERROR_KEEP_LOOPING;
-	}
-	if (!altfw_allowed) {
-		vb2_flash_screen(ctx);
-		VB2_DEBUG("Legacy boot is disabled\n");
-		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
-				     "been enabled. Refer to the developer"
-				     "-mode documentation for details.\n");
-		vb2_error_beep();
-		return VBERROR_KEEP_LOOPING;
-	}
-	if (disable_altfw_menu) {
-		vb2_flash_screen(ctx);
-		VB2_DEBUG("No bootloaders are available\n");
-		VbExDisplayDebugInfo("WARNING: Cannot find any alternative "
-				     "bootloaders to boot. Refer to the "
-				     "developer mode documentation for "
-				     "details.\n");
-		vb2_error_beep();
-		return VBERROR_KEEP_LOOPING;
-	}
-	vb2_change_menu(VB_MENU_ALT_FW, 0);
-	vb2_draw_current_screen(ctx);
 
 	return VBERROR_KEEP_LOOPING;
 }
@@ -655,7 +665,7 @@ static struct vb2_menu menus[VB_MENU_COUNT] = {
 	},
 	[VB_MENU_ALT_FW] = {
 		.screen = VB_SCREEN_ALT_FW_MENU,
-		/* Rest is filled out dynamically by vb2_init_menus() */
+		/* Rest is filled out dynamically by vb2_init_altfw_menu() */
 	},
 };
 
@@ -683,9 +693,28 @@ static VbError_t vb2_init_menus(struct vb2_context *ctx)
 	menus[VB_MENU_LANGUAGES].size = count;
 	menus[VB_MENU_LANGUAGES].items = items;
 
+	return VBERROR_SUCCESS;
+}
+
+/*
+ * Initialize menu state. Must be called once before displaying altfw menu.
+ * This is separate from vb2_init_menus() since we don't want to call
+ * VbExGetAltFwIdxMask() from recovery mode, since it touches the unsigned
+ * RW_LEGACY section.
+ */
+static VbError_t vb2_init_altfw_menu(struct vb2_context *ctx)
+{
+	struct vb2_menu_item *items;
+	uint32_t count, altfw_mask;
+	int i;
+
 	/* Initialize altfw menu with the entries. */
-	VbExGetAltFwCount(&count);
+	VbExGetAltFwIdxMask(&altfw_mask);
+	for (count = 0, i = 0; i < VB_ALTFW_COUNT; i++)
+		if (altfw_mask & (1 << i))
+			count++;
 	if (count) {
+		/* Add one more entry for 'cancel' */
 		count++;
 		items = malloc(count * sizeof(struct vb2_menu_item));
 		if (!items)
@@ -700,8 +729,6 @@ static VbError_t vb2_init_menus(struct vb2_context *ctx)
 		items[i].action = enter_developer_menu;
 		menus[VB_MENU_ALT_FW].size = count;
 		menus[VB_MENU_ALT_FW].items = items;
-	} else {
-		disable_altfw_menu = 1;
 	}
 
 	return VBERROR_SUCCESS;
@@ -803,6 +830,10 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 VbError_t VbBootDeveloperMenu(struct vb2_context *ctx)
 {
 	VbError_t retval = vb2_init_menus(ctx);
+
+	if (VBERROR_SUCCESS != retval)
+		return retval;
+	retval = vb2_init_altfw_menu(ctx);
 	if (VBERROR_SUCCESS != retval)
 		return retval;
 	retval = vb2_developer_menu(ctx);

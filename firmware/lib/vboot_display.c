@@ -31,8 +31,8 @@ VbError_t VbExGetLocalizationCount(uint32_t *count) {
 }
 
 __attribute__((weak))
-VbError_t VbExGetAltFwCount(uint32_t *count) {
-	*count = 0;
+VbError_t VbExGetAltFwIdxMask(uint32_t *mask) {
+	*mask = 0;
 	return VBERROR_UNKNOWN;
 }
 

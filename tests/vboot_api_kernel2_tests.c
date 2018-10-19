@@ -484,11 +484,12 @@ static void VbBootDevTest(void)
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+L normal");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
-	/* Enter legacy menu and time out */
+	/* Enter altfw menu and time out */
 	ResetMocks();
+	shutdown_request_calls_left = 1000;
 	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = 0x0c;
-	TEST_EQ(VbBootDeveloper(&ctx), 1002,
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+L force legacy");
 	TEST_EQ(vbexlegacy_called, 0, "  try legacy");
 

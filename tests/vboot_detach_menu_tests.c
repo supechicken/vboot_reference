@@ -56,7 +56,8 @@ static uint32_t screens_displayed[64];
 static uint32_t screens_count = 0;
 static uint32_t beeps_played[64];
 static uint32_t beeps_count = 0;
-static uint32_t mock_altfw_count;
+static uint32_t mock_altfw_mask;
+static int vbexaltfwmask_called;
 
 extern enum VbEcBootMode_t VbGetMode(void);
 extern struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
@@ -109,7 +110,7 @@ static void ResetMocks(void)
 	mock_switches_count = 0;
 	mock_switches_are_stuck = 0;
 
-	mock_altfw_count = 2;
+	mock_altfw_mask = 3;	/* This mask selects 1 and 2 */
 }
 
 static void ResetMocksForDeveloper(void)
@@ -130,12 +131,13 @@ static void ResetMocksForManualRecovery(void)
 
 /* Mock functions */
 
-VbError_t VbExGetAltFwCount(uint32_t *count) {
+VbError_t VbExGetAltFwIdxMask(uint32_t *mask) {
 
-	if (mock_altfw_count == 0xffffffff)
+	if (mock_altfw_mask == 0xffffffff)
 		return VBERROR_UNKNOWN;
 
-	*count = mock_altfw_count;
+	*mask = mock_altfw_mask;
+	vbexaltfwmask_called++;
 	return VBERROR_SUCCESS;
 }
 
@@ -1297,6 +1299,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  final blank screen");
 	TEST_EQ(screens_count, 2, "  no extra screens");
 	TEST_EQ(beeps_count, 0, "  no beep on shutdown");
+	TEST_EQ(vbexaltfwmask_called, 0, "  VbExGetAltFwIdxMask not called");
 
 	/* BROKEN screen with disks inserted */
 	ResetMocks();

@@ -998,12 +998,17 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  */
 VbError_t VbExGetLocalizationCount(uint32_t *count);
 
+enum vb_altfw {
+	VB_ALTFW_COUNT	= 10,	/* We allow 10 bootloaders, numbered 0-9 */
+};
+
 /**
- * Get the number of available alternative firmware options
+ * Get a mask of available alternative firmware options
  *
- * @count Number of items (0 if none)
+ * @param mask		Bit mask indicating which bootloaders are present (bit
+ *			n indicates bootloader n is present)
  */
-VbError_t VbExGetAltFwCount(uint32_t *count);
+VbError_t VbExGetAltFwIdxMask(uint32_t *mask);
 
 #ifdef __cplusplus
 }

@@ -197,13 +197,15 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 /* Delay in developer ui */
 #define DEV_KEY_DELAY        20       /* Check keys every 20ms */
 
-/* User interface for selecting alternative firmware */
+/*
+ * User interface for selecting alternative firmware
+ *
+ * This shows the user a list of bootloaders and allows selection of one of
+ * them. We loop forever until something is chosen or Escape is pressed.
+ */
 VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 {
 	int active = 1;
-
-	/* Initialize audio/delay context */
-	vb2_audio_start(ctx);
 
 	VbDisplayScreen(ctx, VB_SCREEN_ALT_FW_PICK, 0);
 
@@ -219,8 +221,10 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 		case 0:
 			/* nothing pressed */
 			break;
-		case 27:
+		case VB_KEY_ESC:
 			/* Escape pressed - return to developer screen */
+			VB2_DEBUG("VbBootDeveloper() - user pressed Esc:"
+				  "exit to Developer screen\n");
 			active = 0;
 			break;
 		case '0'...'9':
@@ -240,7 +244,7 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 			break;
 		}
 		VbExSleepMs(DEV_KEY_DELAY);
-	} while (active && vb2_audio_looping());
+	} while (active);
 
 	/* Back to developer screen */
 	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
@@ -420,9 +424,6 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 					return ret;
 			}
 			vb2_exit_altfw();
-
-			/* We failed: restart the audio/delay context */
-			vb2_audio_start(ctx);
 			break;
 		case VB_KEY_CTRL_ENTER:
 			/*
