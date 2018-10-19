@@ -585,6 +585,11 @@ int VbGetSystemPropertyInt(const char *name)
 		value = VbGetNvStorage(VBNV_DISABLE_ALT_OS_REQUEST);
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		value = VbGetNvStorage(VBNV_POST_EC_SYNC_DELAY);
+	} else if (!strcasecmp(name, "alt_os_cur")) {
+		/* TODO(b/117195332): Change this to read from a field
+		 * dedicated to storing Alt OS state. */
+		value = !!(GetVdatInt(VDAT_INT_FLAGS)
+			   & VBSD_ALT_OS_SHOW_PICKER);
 	}
 
 	return value;
