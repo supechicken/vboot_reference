@@ -85,6 +85,12 @@ uint32_t TlclContinueSelfTest(void);
 uint32_t TlclDefineSpace(uint32_t index, uint32_t perm, uint32_t size);
 
 /**
+ * Undefine the space. [index] is the index for the space. The TPM error code
+ * is returned.
+ */
+uint32_t TlclUndefineSpace(uint32_t index);
+
+/**
  * Define a space using owner authorization secret [owner_auth]. The space is
  * set up to have permission [perm].  [index] is the index for the space, [size]
  * the usable data size. Optional auth policy (such as PCR selections) can be
