@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7e1f5eb8_62c32a92",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Yes that\u0027s a better idea, done",
+      "parentUuid": "eca1f538_7ef23c34",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae3596b8_78dde6fe",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -50,6 +68,24 @@
       "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4bdc90_23aa9ccf",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Yes this is all a mess, I have change things to run all calls through a single function. I was struggling to do this without changing the menu UI operation, but I think I have figured it out now.",
+      "parentUuid": "ae3596b8_78dde6fe",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "63e8bd3e_e6bf8cfc",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56857e4_d9898dbe",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec525c2a_2f1ca5ed",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -84,6 +138,24 @@
       "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a96bd8_46ed86e6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Done.\n\nI also added a few CLs to pass all beeps through the beep function, with a parameter indicating the type of beep. This should make it easier to keep things consistent, and makes your intention more explicit.",
+      "parentUuid": "ec525c2a_2f1ca5ed",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "bef6a18a_a3654904",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Definitely, that seems important. I\u0027ll split the function",
+      "parentUuid": "582bda51_56df396e",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6b0074f_50290f71",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -118,6 +208,24 @@
       "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b4faa9_de3af512",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b0074f_50290f71",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "a294175f_bbc23c6d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d12a5947_9088af2f",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dae09c2c_efcaed2a",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 3
@@ -152,6 +278,24 @@
       "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3d8f3d_0185ae71",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-20T16:00:31Z",
+      "side": 1,
+      "message": "Yes I\u0027d like to, was not sure if it was OK. Done",
+      "parentUuid": "dae09c2c_efcaed2a",
+      "revId": "1edff46c4101ed619e930970c09ba1652939d8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
