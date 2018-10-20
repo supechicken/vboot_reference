@@ -92,17 +92,23 @@ void vb2_error_beep(enum vb2_beep_type beep)
 	}
 }
 
-int vb2_prepare_alt_fw(int allowed)
+/**
+ * Check if jumping to altfw is alloed
+ *
+ * @return 1 if allowed, 0 if not allowed
+ *
+ */
+static int vb2_allow_alt_fw(int allowed)
 {
 	if (!allowed) {
 		VB2_DEBUG("VbBootDeveloper() - Legacy boot is disabled\n");
 		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
 				     "been enabled. Refer to the developer"
 				     "-mode documentation for details.\n");
-		return -1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
 void vb2_run_altfw(int altfw_num)
@@ -120,7 +126,7 @@ void vb2_run_altfw(int altfw_num)
 
 void vb2_try_alt_fw(int allowed, int altfw_num)
 {
-	if (!vb2_prepare_alt_fw(allowed))
+	if (vb2_allow_alt_fw(allowed))
 		vb2_run_altfw(altfw_num);	/* will not return if found */
 	else
 		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
