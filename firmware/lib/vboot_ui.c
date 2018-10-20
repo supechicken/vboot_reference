@@ -27,6 +27,7 @@
 
 /* Global variables */
 static int power_button_released;
+static int tpm_locked;
 
 static void vb2_init_ui(void)
 {
@@ -99,24 +100,30 @@ int vb2_prepare_alt_fw(int allowed)
 				     "been enabled. Refer to the developer"
 				     "-mode documentation for details.\n");
 		return -1;
-	} else if (0 != RollbackKernelLock(0)) {
-		VB2_DEBUG("Error locking kernel versions on legacy boot.\n");
-		return -1;
 	}
 
 	return 0;
 }
 
-void vb2_exit_altfw(void)
+void vb2_run_altfw(int altfw_num)
 {
+	if (!tpm_locked) {
+		if (!RollbackKernelLock(0))
+			tpm_locked = 1;
+		else
+			VB2_DEBUG("Error locking kernel versions on legacy boot.\n");
+	}
+	if (tpm_locked)
+		VbExLegacy(altfw_num);	/* will not return if found */
 	vb2_error_beep(VB_BEEP_FAILED);
 }
 
 void vb2_try_alt_fw(int allowed, int altfw_num)
 {
 	if (!vb2_prepare_alt_fw(allowed))
-		VbExLegacy(altfw_num);	/* will not return if found */
-	vb2_exit_altfw();
+		vb2_run_altfw(altfw_num);	/* will not return if found */
+	else
+		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
 }
 
 uint32_t VbTryUsb(struct vb2_context *ctx)

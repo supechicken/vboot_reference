@@ -101,13 +101,6 @@ void vb2_nv_commit(struct vb2_context *ctx);
 int vb2_prepare_alt_fw(int allowed);
 
 /**
- * Tidy up after failing to start a bootloader
- *
- * This beeps twice to indicate failure
- */
-void vb2_exit_altfw(void);
-
-/**
  * Jump to a bootloader if possible
  *
  * This calls vb2_prepare_alt_fw() to check the operation is permitted. If it
@@ -115,7 +108,7 @@ void vb2_exit_altfw(void);
  * never returning.
  *
  * If the operation is not permitted, or it is permitted but the bootloader
- * cannot be found, it calls vb2_exit_altfw() and returns.
+ * cannot be found, it beeps and returns.
  *
  * @allowed	1 if allowed, 0 if not allowed
  * @altfw_num	Number of bootloader to start (0=any, 1=first, etc.)
@@ -132,5 +125,15 @@ enum vb2_beep_type {
  * Emit beeps to indicate an error
  */
 void vb2_error_beep(enum vb2_beep_type beep);
+
+/**
+ * Run alternative firmware if allowed
+ *
+ * This will only return if it is not allowed, or the bootloader fails to
+ * cannot be found / fails to start
+ *
+ * @altfw_num	Number of bootloader to start (0=any, 1=first, etc.)
+ */
+void vb2_run_altfw(int altfw_num);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */
