@@ -1916,6 +1916,11 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt += !!setup_config_quirks(default_quirks, cfg);
 	if (arg->quirks)
 		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
+	if (arg->host_only) {
+		DEBUG("host_only: free non-host images.");
+		free_firmware_image(&cfg->ec_image);
+		free_firmware_image(&cfg->pd_image);
+	}
 
 	/* Additional checks. */
 	if (check_single_image && (cfg->ec_image.data || cfg->pd_image.data)) {
