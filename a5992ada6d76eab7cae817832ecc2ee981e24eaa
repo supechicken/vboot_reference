@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "077a3360_f9c9d5e6",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2018-10-24T22:29:08Z",
+      "side": 1,
+      "message": "I think you need a close(request.fd) here, don\u0027t you?  Otherwise you leak file handles?",
+      "revId": "a5992ada6d76eab7cae817832ecc2ee981e24eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
