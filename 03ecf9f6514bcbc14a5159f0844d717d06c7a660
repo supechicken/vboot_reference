@@ -22,6 +22,30 @@
       "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd4c17f_e8023ade",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2018-10-24T23:44:49Z",
+      "side": 1,
+      "message": "I suppose it\u0027s as good as any.  ...though personally I might suggest \"BIOS_FLASH_WP_L\" and get rid of the \"_R\".  The other name is also on the schematic and unless the AP is doing something silly like driving/pulling the signal they ought to be the same.",
+      "parentUuid": "41cea251_5a8690b2",
+      "range": {
+        "startLine": 556,
+        "startChar": 22,
+        "endLine": 556,
+        "endChar": 39
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
