@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "170253e0_85c7af90",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-24T20:21:28Z",
+      "side": 1,
+      "message": "Some platforms ignore the Hz argument. So, these two ring at the same pitch. Maybe we should distinguish the two just by the counts? High or low is relative, anyway. (You won\u0027t know it\u0027s high until you hear low...)",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "74b610890503c68934c70b348d1241b00c710c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
