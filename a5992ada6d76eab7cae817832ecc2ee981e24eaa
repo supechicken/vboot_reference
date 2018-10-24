@@ -16,6 +16,24 @@
       "revId": "a5992ada6d76eab7cae817832ecc2ee981e24eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88253d72_07413c67",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-24T22:31:19Z",
+      "side": 1,
+      "message": "That...might be true. The ioctl is barely documented, but I guess it must be an implicit open() (that I have to close).\n\nOr it might be closed automagically when I close the gpiochip. I\u0027ll have to get back to you on that.",
+      "parentUuid": "077a3360_f9c9d5e6",
+      "revId": "a5992ada6d76eab7cae817832ecc2ee981e24eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
