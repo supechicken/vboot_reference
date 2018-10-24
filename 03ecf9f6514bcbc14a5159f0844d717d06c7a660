@@ -46,6 +46,30 @@
       "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568e1c52_2feebd73",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-24T23:51:23Z",
+      "side": 1,
+      "message": "Thanks to consistency, we use AP_FLASH_WP_R_ODL on kukui ,-P\n\nI like AP_FLASH a little more than BIOS_FLASH, but I\u0027m not sure how much I\u0027m willing to bike-shed this.\n\nMore importantly, can you please define \"BIOS_FLASH_WP_R_ODL\" (or whatever string) on top of the file as a constant?",
+      "parentUuid": "41cea251_5a8690b2",
+      "range": {
+        "startLine": 556,
+        "startChar": 22,
+        "endLine": 556,
+        "endChar": 39
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
