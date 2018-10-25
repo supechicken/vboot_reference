@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "62459567_e891495a",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-25T00:30:12Z",
+      "side": 1,
+      "message": "nit: you may want to design this in a way that allows an array of GPIO names to be searched at once right away, or there\u0027ll inevitable be some poor soul down the road who has to re-figure out how all this works again when we have the first board with an active-high WP pin. Or, rather, they\u0027d probably just reuse this API and end up searching all GPIOs twice in that case. Well... I guess maybe not that big of a deal.",
+      "range": {
+        "startLine": 335,
+        "startChar": 22,
+        "endLine": 335,
+        "endChar": 38
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41cea251_5a8690b2",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 4
@@ -118,6 +141,53 @@
       "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49e0ef45_f5105b9b",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-25T00:30:12Z",
+      "side": 1,
+      "message": "Does the \"R\" stand for anything? I think that just stands for \"the net on the other side of the *R*esistor\", so it\u0027s probably not something that should be part of the canonical name here. I\u0027d also recommend to not make it too complicated, AP_FLASH_WP_L sounds fine.\n\nIt\u0027s still early enough for both Kukui and Cheza, we should just change the schematic rather than commenting the schematic name next to it (I agree that there should be a comment to clarify that this is an ABI name, though).",
+      "parentUuid": "e52351b4_256ac631",
+      "range": {
+        "startLine": 556,
+        "startChar": 22,
+        "endLine": 556,
+        "endChar": 39
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39da14ba_b66595b8",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-25T00:30:12Z",
+      "side": 1,
+      "message": "nit: add \"deprecated\"?",
+      "range": {
+        "startLine": 559,
+        "startChar": 12,
+        "endLine": 559,
+        "endChar": 13
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
