@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f660a44_d17638e8",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-25T01:40:23Z",
+      "side": 1,
+      "message": "Well, you\u0027d need to make bulk settings for the \u0027active_low\u0027 parameter too.\n\nAs it is, it\u0027s really not that hard to just call gpiod_read() a second time. I believe that\u0027s more or less what you\u0027d get if you used libgpiod too.",
+      "parentUuid": "62459567_e891495a",
+      "range": {
+        "startLine": 335,
+        "startChar": 22,
+        "endLine": 335,
+        "endChar": 38
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41cea251_5a8690b2",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 4
@@ -188,6 +212,30 @@
       "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc6fed90_db1c6a10",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-10-25T01:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39da14ba_b66595b8",
+      "range": {
+        "startLine": 559,
+        "startChar": 12,
+        "endLine": 559,
+        "endChar": 13
+      },
+      "revId": "03ecf9f6514bcbc14a5159f0844d717d06c7a660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
