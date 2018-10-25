@@ -167,10 +167,21 @@ static uint32_t HandlerDeactivate(void) {
 
 static uint32_t HandlerDefineSpace(void) {
   uint32_t index, size, perm;
-  if (nargs != 5) {
-    fprintf(stderr, "usage: tpmc def <index> <size> <perm>\n");
+
+#ifdef TPM2_MODE
+  int over_write = 1;
+  if (nargs != 5 && nargs != 6) {
+    fprintf(stderr, "usage: tpmc def <index> <size> <perm> "
+                    "[--no-overwrite])\n");
     exit(OTHER_ERROR);
   }
+#else
+  if (nargs != 5) {
+    fprintf(stderr, "usage: tpmc def <index> <size> <perm> \n");
+    exit(OTHER_ERROR);
+  }
+#endif
+
   if (HexStringToUint32(args[2], &index) != 0 ||
       HexStringToUint32(args[3], &size) != 0 ||
       HexStringToUint32(args[4], &perm) != 0) {
@@ -178,6 +189,18 @@ static uint32_t HandlerDefineSpace(void) {
             "32-bit hex (0x[0-9a-f]+)\n");
     exit(OTHER_ERROR);
   }
+
+#ifdef TPM2_MODE
+  if (args[5] && strcmp(args[5], "--no-overwrite") == 0) {
+    over_write = 0;
+  }
+  // align the behaviour of TPM 1.2 which will replace the defined space
+  // So we need to delete the exsits space for TPM 2.0
+  if (over_write) {
+    TlclUndefineSpace(index);
+  }
+#endif
+
   return TlclDefineSpace(index, perm, size);
 }
 
@@ -587,7 +610,10 @@ command_record command_table[] = {
     TPM_MODE_SELECT("set the bGlobalLock until reboot",
       "set rollback protection lock for R/W firmware until reboot"),
     TlclSetGlobalLock },
-  { "definespace", "def", "define a space (def <index> <size> <perm>)",
+  { "definespace", "def",
+    TPM_MODE_SELECT("define a space (def <index> <size> <perm>). ",
+        "define a space (def <index> <size> <perm> [--no-overwrite]). ")
+      "Default will overwrite if the space is defined.",
     HandlerDefineSpace },
   { "undefinespace", "undef",
     "undefine a space (undef <index>)"
