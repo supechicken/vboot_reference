@@ -46,6 +46,30 @@
       "revId": "74b610890503c68934c70b348d1241b00c710c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc438872_2a186df6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-25T17:23:14Z",
+      "side": 1,
+      "message": "Well in any case, describing the beeps in terms of their purpose / cause seems like a good idea, so I think the issues is somewhat sideways of this CL.\n\nDo you know what platforms do this?",
+      "parentUuid": "5206adf7_c68c02ac",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "74b610890503c68934c70b348d1241b00c710c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
