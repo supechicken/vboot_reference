@@ -22,6 +22,30 @@
       "revId": "74b610890503c68934c70b348d1241b00c710c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5206adf7_c68c02ac",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-25T01:04:21Z",
+      "side": 1,
+      "message": "Those are crap platforms then. :/\n\nThis is the way the beeps have always sounded, so I think they should stay that way. If on some platforms the frequency ends up being the same then that\u0027s unfortunate, but it doesn\u0027t mean that they have to be the same everywhere.",
+      "parentUuid": "170253e0_85c7af90",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "74b610890503c68934c70b348d1241b00c710c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
