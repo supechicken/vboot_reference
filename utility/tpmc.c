@@ -167,10 +167,14 @@ static uint32_t HandlerDeactivate(void) {
 
 static uint32_t HandlerDefineSpace(void) {
   uint32_t index, size, perm;
-  if (nargs != 5) {
-    fprintf(stderr, "usage: tpmc def <index> <size> <perm>\n");
+  int overwrite = 1;
+
+  if (nargs != 5 && nargs != 6) {
+    fprintf(stderr, "usage: tpmc def <index> <size> <perm> "
+                    "[--no-overwrite])\n");
     exit(OTHER_ERROR);
   }
+
   if (HexStringToUint32(args[2], &index) != 0 ||
       HexStringToUint32(args[3], &size) != 0 ||
       HexStringToUint32(args[4], &perm) != 0) {
@@ -178,6 +182,32 @@ static uint32_t HandlerDefineSpace(void) {
             "32-bit hex (0x[0-9a-f]+)\n");
     exit(OTHER_ERROR);
   }
+
+  if (args[5] && strcmp(args[5], "--no-overwrite") == 0) {
+    overwrite = 0;
+  }
+
+  if (!overwrite) {
+    uint32_t result , permissions;
+    // For TPM 1.2, it will automaticly overwrite the exsiting space, so we have
+    // to check the exsiting before calling DefineSpace()
+    // For TPM 2.0, even it will show TPM error, but to consistent the behavior,
+    // we have the same check and error message here.
+    result = TlclGetPermissions(index, &permissions);
+    if (!result) {
+      fprintf(stderr, "The space is existing but --no-overwrite is set.\n");
+      exit(OTHER_ERROR);
+    }
+  }
+
+#ifdef TPM2_MODE
+  // For TPM 2.0, we want to align the behaviour of TPM 1.2 which will replace
+  // the defined space so we need to delete the exsiting space here.
+  if (overwrite) {
+    TlclUndefineSpace(index);
+  }
+#endif
+
   return TlclDefineSpace(index, perm, size);
 }
 
@@ -587,7 +617,10 @@ command_record command_table[] = {
     TPM_MODE_SELECT("set the bGlobalLock until reboot",
       "set rollback protection lock for R/W firmware until reboot"),
     TlclSetGlobalLock },
-  { "definespace", "def", "define a space (def <index> <size> <perm>)",
+  { "definespace", "def",
+    TPM_MODE_SELECT("define a space (def <index> <size> <perm>). ",
+        "define a space (def <index> <size> <perm> [--no-overwrite]). ")
+      "Default will overwrite if the space is defined.",
     HandlerDefineSpace },
   { "undefinespace", "undef",
     "undefine a space (undef <index>)"
