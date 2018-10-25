@@ -167,10 +167,21 @@ static uint32_t HandlerDeactivate(void) {
 
 static uint32_t HandlerDefineSpace(void) {
   uint32_t index, size, perm;
-  if (nargs != 5) {
-    fprintf(stderr, "usage: tpmc def <index> <size> <perm>\n");
+
+#ifdef TPM2_MODE
+  int over_write = 1;
+  if (nargs != 5 && nargs != 6) {
+    fprintf(stderr, "usage: tpmc def <index> <size> <perm> "
+                    "[--no-overwrite])\n");
     exit(OTHER_ERROR);
   }
+#else
+  if (nargs != 5) {
+    fprintf(stderr, "usage: tpmc def <index> <size> <perm> \n");
+    exit(OTHER_ERROR);
+  }
+#endif
+
   if (HexStringToUint32(args[2], &index) != 0 ||
       HexStringToUint32(args[3], &size) != 0 ||
       HexStringToUint32(args[4], &perm) != 0) {
@@ -599,7 +610,10 @@ command_record command_table[] = {
     TPM_MODE_SELECT("set the bGlobalLock until reboot",
       "set rollback protection lock for R/W firmware until reboot"),
     TlclSetGlobalLock },
-  { "definespace", "def", "define a space (def <index> <size> <perm>)",
+  { "definespace", "def",
+    TPM_MODE_SELECT("define a space (def <index> <size> <perm>). ",
+        "define a space (def <index> <size> <perm> [--no-overwrite]). ")
+      "Default will overwrite if the space is defined.",
     HandlerDefineSpace },
   { "undefinespace", "undef",
     "undefine a space (undef <index>)"
