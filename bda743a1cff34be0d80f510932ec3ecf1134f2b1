@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f83558d8_4584fc4c",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T22:41:29Z",
+      "side": 1,
+      "message": "do we need a space before \"only\"?",
+      "range": {
+        "startLine": 594,
+        "startChar": 20,
+        "endLine": 594,
+        "endChar": 25
+      },
+      "revId": "bda743a1cff34be0d80f510932ec3ecf1134f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6da4f4a_80a68aa6",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T22:41:29Z",
+      "side": 1,
+      "message": "\"succeeds\"\nthe tpmc undef is always available to try doing that, but succeeds only in certain states.",
+      "range": {
+        "startLine": 594,
+        "startChar": 26,
+        "endLine": 594,
+        "endChar": 35
+      },
+      "revId": "bda743a1cff34be0d80f510932ec3ecf1134f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
