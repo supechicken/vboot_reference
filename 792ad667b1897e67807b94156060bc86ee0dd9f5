@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "137da6e9_beb6a509",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T23:02:17Z",
+      "side": 1,
+      "message": "to avoid adding these commands to firmware version of Tlcl library (firmware doesn\u0027t delete any spaces atm), I suggest we have them only in host version and put definitions and implementations under #ifdef CHROMEOS_ENVIRONMENT (see below in this file).",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ee20f0_579e13f0",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T23:02:17Z",
+      "side": 1,
+      "message": "not really true: the command itself decides if it wants to use platform or owner authorization",
+      "range": {
+        "startLine": 104,
+        "startChar": 20,
+        "endLine": 104,
+        "endChar": 52
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f6485a_e7e6ab93",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T23:02:17Z",
+      "side": 1,
+      "message": "hm, the rest of these structures tries to follow the format of the actual commands, but I guess, it makes sense in this case.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 27
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
