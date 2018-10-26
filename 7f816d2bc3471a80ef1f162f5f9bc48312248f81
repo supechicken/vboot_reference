@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e919b5b4_57e2efeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-26T21:53:51Z",
+      "side": 1,
+      "message": "Sounds good to me. I have already changed behaviour slightly (the ordering of beep and the screen flash).",
+      "parentUuid": "80f89fd5_7522fa96",
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c6af4d7_a40069a2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc40d5e6_487c170c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-26T21:53:51Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "0c6af4d7_a40069a2",
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +131,30 @@
       "side": 1,
       "message": "At some places we print error messages but not all places. I think we should beep once to get user\u0027s attention and let VbExDisplayDebugInfo explain why. \n\nDoesn\u0027t overloading beep like this add more things to debug \u0026 test without much return? The only scenario I can think of is somebody monitors 100 devices in the lab.",
       "parentUuid": "6d4a4aa1_6eac73d4",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2786eaca_a738417f",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-26T21:53:51Z",
+      "side": 1,
+      "message": "OK I\u0027ll add a message to the function to print out which beep is being generated.\n\nI still don\u0027t really understand. What do you mean by \u0027overloading beep like this\u0027?",
+      "parentUuid": "367bdba6_f2eac46c",
       "range": {
         "startLine": 126,
         "startChar": 0,
