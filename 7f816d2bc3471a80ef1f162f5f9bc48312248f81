@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "80f89fd5_7522fa96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T21:43:01Z",
+      "side": 1,
+      "message": "Does this really need to be a different beep type? I think all those cases could be reasonably covered by VB_BEEP_NOT_ALLOWED, I don\u0027t really see a clear difference between the two. I think people just didn\u0027t pay much attention to consistency when they were adding these, but it would be worth cleaning that up if we are doing it now, even if it slightly changes existing behavior.",
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6af4d7_a40069a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T21:43:01Z",
+      "side": 1,
+      "message": "I agree that it would fit better there, although it\u0027s not a big deal. All audio is part of the UI anyway, of course.",
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae5ba160_1d6b9431",
         "filename": "firmware/lib/include/vboot_kernel.h",
         "patchSetId": 1
