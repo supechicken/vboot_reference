@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22a874f7_f3417055",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b07d93_17b9cfd8",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a37e7d6_185ca051",
         "filename": "utility/tpmc.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e8132a_3af1f458",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:59Z",
+      "side": 1,
+      "message": "Add a existing check before calling to Tlcl for 1.2 and 2.0.",
+      "parentUuid": "8a37e7d6_185ca051",
+      "range": {
+        "startLine": 175,
+        "startChar": 21,
+        "endLine": 175,
+        "endChar": 37
+      },
+      "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "660d07b4_80409325",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a88b9cf6_3e3b44a5",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 14
+      },
+      "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62ca4415_7762da2e",
         "filename": "utility/tpmc.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fd3d4a_3178dfa9",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ca4415_7762da2e",
+      "range": {
+        "startLine": 198,
+        "startChar": 30,
+        "endLine": 198,
+        "endChar": 36
+      },
+      "revId": "d7b7aa47cd1b2e86874ad279ec38eaa79d503b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
