@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "434b4cb9_d67eacda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "This needs a CQ-DEPEND on a depthcharge patch, right?",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80f1a24_ea2acce4",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it just be 9? Or do you want to display a separate entry for the \"0\" (default)? Since it should always be an alias of the other ones that\u0027s probably not that useful...",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33fa0d0b_68da4a63",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "I think either you should check and do something useful with this error value in the code, or the callback should just return the mask value (if there was some error looking the AltFW up, just returning 0 sounds reasonable).",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1801c707_63c73e40",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "nit: outdated comment, there\u0027s no timeout anymore",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23bbc50c_ff02e79e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u00271\u0027...\u00279\u0027?",
+      "range": {
+        "startLine": 253,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6715c555_ddd99559",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "nit: dash for consistency? (Or maybe just drop the second sentence from both of these, not sure if it\u0027s really that useful.)",
+      "range": {
+        "startLine": 283,
+        "startChar": 19,
+        "endLine": 283,
+        "endChar": 20
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94860e91_94b30e94",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "This... whole thing still seems way to complicated for me. You should have exactly 10 menu entries (1-9 and Cancel) in the menu struct, then current_menu_idx is easy to use. You just don\u0027t display the ones that aren\u0027t used. You should use the disabled_idx_mask global for that, that already implements all the behavior you need (e.g. when you arrow-up it skips over disabled entries that are not being displayed). You also don\u0027t need to allocate any menu entries dynamically, you just do this in the menu definition below:\n\n  [VB_MENU_ALT_FW] \u003d {\n    .screen \u003d VB_SCREEN_ALT_FW_MENU,\n    .items \u003d (struct vb2_menu_item[]){\n      {\n        .text \u003d \"Bootloader 1\",\n        .action \u003d altfw_action,\n      },\n      {\n        .text \u003d \"Bootloader 2\",\n        .action \u003d altfw_action,\n      },\n      ...\n      {\n        .text \u003d \"Cancel\",\n        .action \u003d enter_dev_warning_menu,\n      },\n  },\n\nAnd then you add this to vb2_change_menu():\n\n  if (current_menu \u003d\u003d VB_MENU_ALT_FW)\n    disabled_idx_mask \u003d ((1 \u003c\u003c 9) - 1) \u0026 ~(VbExGetAltFwIdxMask() \u003e\u003e 1);\n\n(Maybe change the API for VbExGetAltFwIdxMask a bit to make that math less ugly, this should be the only place you need it anyway.)\n\nWith that (and the right depthcharge code to actually hide those entries, since you probably can\u0027t use the standard implementation of vboot_draw_menu()... but it just takes a one-liner to skip an entry) I think this should all work out and you can just do vb2_run_altfw(current_menu_idx + 1) here.",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37eba65c_43d421da",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T23:42:01Z",
+      "side": 1,
+      "message": "Well... but adding another init function also seems not that clean. Why not just check ctx.flags \u0026 VB2_CONTEXT_RECOVERY_MODE in vb2_init_menus()? (Then again, I don\u0027t think you should need to allocate anything dynamically at all here anymore, see above.)",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
