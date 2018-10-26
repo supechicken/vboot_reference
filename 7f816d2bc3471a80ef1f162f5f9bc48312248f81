@@ -22,6 +22,30 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4a4aa1_6eac73d4",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-26T16:43:22Z",
+      "side": 1,
+      "message": "We normally do this before calling vb2_error_beep().\n\nAre you saying we should add another message in the beep function? That could be useful.",
+      "parentUuid": "ae5ba160_1d6b9431",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
