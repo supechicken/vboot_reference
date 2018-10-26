@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "380c8e1f_06138c14",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-26T00:47:54Z",
+      "side": 1,
+      "message": "Can you put this in vb2_try_alt_fw? It looks funny because the result is known before vb2_try_alt_fw makes a call.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
