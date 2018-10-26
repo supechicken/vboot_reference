@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5ba160_1d6b9431",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-26T00:17:18Z",
+      "side": 1,
+      "message": "At this point, I think we should just print error messages on the display (by VbExDisplayDebugInfo)...",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
