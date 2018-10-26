@@ -164,6 +164,30 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "088d6997_ead84e22",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-26T22:21:02Z",
+      "side": 1,
+      "message": "I believe \u0027beep once then print message\u0027 is enough to handle all cases. I\u0027m having hard time to find value in \"beep twice at x hz means this\", \"beep once at y hz means that\", and so on. Disadvantages are maintenance cost (debugging and testing).\n\nFizz didn\u0027t put an amplified beeper. So, it has a fixed frequency. There is a BOM cost involved. Low budget devices may follow.\n\nMaybe headless devices appreciate it. I don\u0027t know if they count.",
+      "parentUuid": "2786eaca_a738417f",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
