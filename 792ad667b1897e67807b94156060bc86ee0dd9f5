@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "569c048e_1ead1487",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:43Z",
+      "side": 1,
+      "message": "Moved to CHROMEOS_ENVIRONMENT section.",
+      "parentUuid": "137da6e9_beb6a509",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71ee20f0_579e13f0",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "423b9fe9_64bd89aa",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:43Z",
+      "side": 1,
+      "message": "Rewrote the comment.",
+      "parentUuid": "71ee20f0_579e13f0",
+      "range": {
+        "startLine": 104,
+        "startChar": 20,
+        "endLine": 104,
+        "endChar": 52
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f6485a_e7e6ab93",
         "filename": "firmware/include/tpm2_tss_constants.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-25T23:02:17Z",
       "side": 1,
       "message": "hm, the rest of these structures tries to follow the format of the actual commands, but I guess, it makes sense in this case.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 27
+      },
+      "revId": "792ad667b1897e67807b94156060bc86ee0dd9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041b8204_c32b5727",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-10-26T07:30:43Z",
+      "side": 1,
+      "message": "I see, but we need somewhere to detect the type of authorization. I thought it is not good to put it to later stage since it is just a command wrapper. It is not good to issue more than 1 command inside the wrapper. (We need this because we need the publicInfo information to decide the authorization type.)\n\nThat\u0027s why we need some field to here given the authorization type is decided earlier. I don\u0027t find a good way to avoid this.",
+      "parentUuid": "61f6485a_e7e6ab93",
       "range": {
         "startLine": 172,
         "startChar": 1,
