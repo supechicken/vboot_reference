@@ -188,6 +188,30 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a73426c_1ddd7c07",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T22:48:35Z",
+      "side": 1,
+      "message": "\u003e OK I\u0027ll add a message to the function to print out which beep is being generated.\n\nNote that depthcharge already prints out whenever something plays a sound, so I think another debug message that just says \"beep beep\" here wouldn\u0027t be very useful. We should instead make sure that the callers all print useful debug messages that describe what the actual problem is.\n\n\u003e I believe \u0027beep once then print message\u0027 is enough to handle all cases. I\u0027m having hard time to find value in \"beep twice at x hz means this\", \"beep once at y hz means that\", and so on. Disadvantages are maintenance cost (debugging and testing).\n\nThis is not a new change, this is just cleaning up behavior that has been in here for ~8 years. We have always been using different frequency beeps in different cases. I don\u0027t understand where the sudden maintenance cost is supposed to come from, I\u0027m not saying we need to put up an analog audio testlab to make sure these beeps are all within 20 Hz of the target value, but I see no harm in at least trying to be more useful here. Normal users don\u0027t see the UART output, so giving them an auditory clue about whether their Ctrl+U failed to read the stick or was disallowed by dev_boot_usb\u003d0 seems useful to me.\n\nFizz is a Chromebox so it\u0027s a bit of an odd case because it doesn\u0027t have a speaker meant for normal operation built in. I still don\u0027t see why that means we\u0027d have to degrade the experience on all Chrome OS devices. The ASUS Chromebit didn\u0027t have a speaker at all, so it just didn\u0027t beep at all, but that also didn\u0027t mean we\u0027d have to remove the beep completely from all devices.",
+      "parentUuid": "088d6997_ead84e22",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
