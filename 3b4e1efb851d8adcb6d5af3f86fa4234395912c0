@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "2ea61895_14940218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T22:00:06Z",
+      "side": 1,
+      "message": "Actually, looking at the implementation of RollbackKernelLock() it already does exactly that. So we probably don\u0027t need to worry about it again.",
+      "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f049f5_097e19a0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T22:00:06Z",
+      "side": 1,
+      "message": "nit: at this point, making it a vb2_altfw_error() function that callers call whenever the condition is not true would look a lot more normal (or just merge it into try_alt_fw(), since that\u0027s the only caller?)",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "380c8e1f_06138c14",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -19,6 +59,40 @@
         "endLine": 103,
         "endChar": 2
       },
+      "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77611d13_498db4ae",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T22:00:06Z",
+      "side": 1,
+      "message": "Ohh... uhh... I didn\u0027t even know this was possible. Let\u0027s please keep vboot_ui and vboot_ui_menu as two parallel but independent implementations of the same stuff, or it\u0027s going to be terribly confusing. Anything that is used by them both should be in a third file (e.g. vboot_common.c, or maybe make a new vboot_ui_helpers.c or something. Really, it would have been better to call vboot_ui vboot_ui_keyboard at this point, it\u0027s just that nobody had gotten around to change it...)",
+      "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bc67c0_d0cf044d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-10-26T22:00:06Z",
+      "side": 1,
+      "message": "There\u0027s no reason not to do any of this in the keyboard UI too, btw, so feel free to merge it into vb2_run_altfw() if you want. When I overhauled the menu UI I tried to make a bunch of things cleaner and more consistent, like adding more of those little debug messages and trying to implement a consistent flash-and-beep error behavior everywhere. The keyboard UI is just older and nobody ever took the time to do the same sorts of cleanups and improvements there yet, but that doesn\u0027t mean they wouldn\u0027t be a good idea there. (In general it would be great if we could have a lot more behavior between the two UIs end up calling the same functions because they\u0027re really duplicating or implementing slightly differently a lot more things that they\u0027d need to right now. It\u0027s just that nobody has done it yet.)",
       "revId": "3b4e1efb851d8adcb6d5af3f86fa4234395912c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
