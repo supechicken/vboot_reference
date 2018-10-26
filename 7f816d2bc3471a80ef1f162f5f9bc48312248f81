@@ -46,6 +46,30 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367bdba6_f2eac46c",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-26T21:18:07Z",
+      "side": 1,
+      "message": "At some places we print error messages but not all places. I think we should beep once to get user\u0027s attention and let VbExDisplayDebugInfo explain why. \n\nDoesn\u0027t overloading beep like this add more things to debug \u0026 test without much return? The only scenario I can think of is somebody monitors 100 devices in the lab.",
+      "parentUuid": "6d4a4aa1_6eac73d4",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
