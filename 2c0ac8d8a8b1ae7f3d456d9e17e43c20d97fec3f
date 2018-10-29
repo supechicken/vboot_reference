@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1386d9eb_77a603f7",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-29T21:34:55Z",
+      "side": 1,
+      "message": "Let\u0027s not do it for 2.0. Let\u0027s rely on DefineSpace to return the appropriate error code there. So, should go under #ifndef TPM2_MODE",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 53
+      },
+      "revId": "2c0ac8d8a8b1ae7f3d456d9e17e43c20d97fec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c834057c_b1ea3dd9",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-29T21:34:55Z",
+      "side": 1,
+      "message": "I\u0027d rather say: \"For TPM 2.0, DefineSpace will fail if the space already exists, so to support the default \u0027overwrite\u0027 mode, need to undefine the space first.\"",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 68
+      },
+      "revId": "2c0ac8d8a8b1ae7f3d456d9e17e43c20d97fec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014feac3_25737b03",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-29T21:34:55Z",
+      "side": 1,
+      "message": "not: existing",
+      "range": {
+        "startLine": 205,
+        "startChar": 48,
+        "endLine": 205,
+        "endChar": 56
+      },
+      "revId": "2c0ac8d8a8b1ae7f3d456d9e17e43c20d97fec3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
