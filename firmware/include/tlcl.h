@@ -19,6 +19,16 @@
 extern "C" {
 #endif
 
+#include "tlcl_versioned.h"
+
+/* Neverware: get the TPM chip's major version. Returns 1 for TPM1.2,
+ * 2 for TPM2.0, or 0 on failure. */
+int GetTpmVersion();
+
+/* Neverware: disable the contents of this header. The functions are
+ * declared in tlcl_versioned.h. */
+#if 0
+
 /*****************************************************************************/
 /* Functions implemented in tlcl.c */
 
@@ -298,6 +308,8 @@ uint32_t TlclReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
 
 #endif  /* TPM2_MODE */
 #endif  /* CHROMEOS_ENVIRONMENT */
+
+#endif  /* 0 */
 
 #ifdef __cplusplus
 }

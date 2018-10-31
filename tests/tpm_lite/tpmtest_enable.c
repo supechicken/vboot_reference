@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	TlclLibInit();
 	TPM_CHECK(TlclStartupIfNeeded());
 	TPM_CHECK(TlclSelfTestFull());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 	TPM_CHECK(TlclGetFlags(&disable, &deactivated, NULL));
 	printf("disable is %d, deactivated is %d\n", disable, deactivated);
 	TPM_CHECK(TlclSetEnable());

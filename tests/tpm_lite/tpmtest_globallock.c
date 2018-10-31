@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	TlclLibInit();
 	TPM_CHECK(TlclStartupIfNeeded());
 	TPM_CHECK(TlclSelfTestFull());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 	TPM_CHECK(TlclRead(INDEX0, (uint8_t*) &x, sizeof(x)));
 	TPM_CHECK(TlclWrite(INDEX0, (uint8_t*) &zero, sizeof(uint32_t)));
 	TPM_CHECK(TlclRead(INDEX1, (uint8_t*) &x, sizeof(x)));

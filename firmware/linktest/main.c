@@ -47,9 +47,9 @@ int main(void)
 	TlclExtend(0, 0, 0);
 	TlclGetPermissions(0, 0);
 #ifndef TPM2_MODE
-	TlclAssertPhysicalPresence();
-	TlclSetNvLocked();
-	TlclClearEnable();
+	Tlcl1AssertPhysicalPresence();
+	Tlcl1SetNvLocked();
+	Tlcl1ClearEnable();
 #endif
 
 	/* vboot_api.h - entry points INTO vboot_reference */

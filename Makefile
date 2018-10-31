@@ -186,10 +186,6 @@ CFLAGS += -DUSE_MTD
 LDLIBS += -lmtdutils
 endif
 
-ifneq (${TPM2_MODE},)
-CFLAGS += -DTPM2_MODE
-endif
-
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
@@ -390,14 +386,12 @@ BDBLIB_SRCS = \
 	firmware/bdb/nvm.c
 
 # TPM lightweight command library
-ifeq (${TPM2_MODE},)
 TLCL_SRCS = \
-	firmware/lib/tpm_lite/tlcl.c
-else
-TLCL_SRCS = \
+	firmware/lib/tlcl_versioned.c \
+	firmware/lib/tpm_get_version.c \
+	firmware/lib/tpm_lite/tlcl.c \
 	firmware/lib/tpm2_lite/tlcl.c \
 	firmware/lib/tpm2_lite/marshaling.c
-endif
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
@@ -611,9 +605,7 @@ UTIL_NAMES = \
 	utility/dumpRSAPublicKey \
 	utility/tpmc
 
-ifeq (${TPM2_MODE},)
 UTIL_NAMES += utility/tpm_init_temp_fix
-endif
 
 # TODO: Do we still need eficompress and efidecompress for anything?
 ifeq (${MINIMAL},)
@@ -744,12 +736,9 @@ tests/vboot_common_tests \
 	tests/vboot_kernel_tests \
 	tests/verify_kernel
 
-ifeq (${TPM2_MODE},)
-# TODO(apronin): tests for TPM2 case?
 TEST_NAMES += \
 	tests/tlcl_tests \
 	tests/rollback_index2_tests
-endif
 
 TEST_FUTIL_NAMES  = \
 	tests/futility/binary_editor \
@@ -800,7 +789,6 @@ TESTBDB_NAMES = \
 TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES} ${TESTBDB_NAMES}
 
 # And a few more...
-ifeq (${TPM2_MODE},)
 TLCL_TEST_NAMES = \
 	tests/tpm_lite/tpmtest_earlyextend \
 	tests/tpm_lite/tpmtest_earlynvram \
@@ -813,10 +801,6 @@ TLCL_TEST_NAMES = \
 	tests/tpm_lite/tpmtest_testsetup \
 	tests/tpm_lite/tpmtest_timing \
         tests/tpm_lite/tpmtest_writelimit
-else
-# TODO(apronin): tests for TPM2 case?
-TLCL_TEST_NAMES =
-endif
 
 TEST_NAMES += ${TLCL_TEST_NAMES}
 
@@ -1292,22 +1276,18 @@ ${BUILD}/tests/%: CFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 
-ifeq (${TPM2_MODE},)
 # TODO(apronin): tests for TPM2 case?
 ${BUILD}/tests/rollback_index2_tests: OBJS += \
 	${BUILD}/firmware/lib/rollback_index_for_test.o
 ${BUILD}/tests/rollback_index2_tests: \
 	${BUILD}/firmware/lib/rollback_index_for_test.o
 TEST_OBJS += ${BUILD}/firmware/lib/rollback_index_for_test.o
-endif
 
-ifeq (${TPM2_MODE},)
 # TODO(apronin): tests for TPM2 case?
 TLCL_TEST_BINS = $(addprefix ${BUILD}/,${TLCL_TEST_NAMES})
 ${TLCL_TEST_BINS}: OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
 ${TLCL_TEST_BINS}: ${BUILD}/tests/tpm_lite/tlcl_tests.o
 TEST_OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
-endif
 
 # ----------------------------------------------------------------------------
 # Here are the special rules that don't fit in the generic rules.
@@ -1410,10 +1390,8 @@ runtestscripts: test_setup genfuzztestcases
 .PHONY: runmisctests
 runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/ec_sync_tests
-ifeq (${TPM2_MODE},)
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 	${RUNTEST} ${BUILD_RUN}/tests/rollback_index2_tests
-endif
 	${RUNTEST} ${BUILD_RUN}/tests/rollback_index3_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_tests

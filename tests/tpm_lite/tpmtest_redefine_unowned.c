@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	TlclLibInit();
 	TPM_CHECK(TlclStartupIfNeeded());
 	TPM_CHECK(TlclSelfTestFull());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 
 	VbAssert(!TlclIsOwned());
 

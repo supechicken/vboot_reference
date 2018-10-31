@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 	TlclLibInit();
 	TPM_CHECK(TlclStartup());
 	TPM_CHECK(TlclContinueSelfTest());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 	TPM_CHECK(TlclWrite(INDEX0, (uint8_t*) &x, sizeof(x)));
 	printf("TEST SUCCEEDED\n");
 	return 0;

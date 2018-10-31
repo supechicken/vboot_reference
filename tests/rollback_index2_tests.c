@@ -48,7 +48,7 @@ static int noise_count = 0;             /* read/write attempt (zero-based) */
 static int noise_on[MAX_NOISE_COUNT];   /* calls to inject noise on */
 
 /* Params / backing store for mocked Tlcl functions. */
-static TPM_PERMANENT_FLAGS mock_pflags;
+static TPM1_PERMANENT_FLAGS mock_pflags;
 static RollbackSpaceFirmware mock_rsf;
 static RollbackSpaceKernel mock_rsk;
 
@@ -205,7 +205,7 @@ uint32_t TlclContinueSelfTest(void)
 	return (++mock_count == fail_at_count) ? fail_with_error : TPM_SUCCESS;
 }
 
-uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
+uint32_t TlclGetPermanentFlags(TPM1_PERMANENT_FLAGS *pflags)
 {
 	mock_cnext += sprintf(mock_cnext, "TlclGetPermanentFlags()\n");
 	memcpy(pflags, &mock_pflags, sizeof(mock_pflags));

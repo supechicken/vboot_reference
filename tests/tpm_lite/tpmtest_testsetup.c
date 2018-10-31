@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 
 	TPM_CHECK(TlclStartupIfNeeded());
 	TPM_CHECK(TlclSelfTestFull());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 	TPM_CHECK(TlclForceClear());
 	TPM_CHECK(TlclSetEnable());
 	TPM_CHECK(TlclSetDeactivated(0));

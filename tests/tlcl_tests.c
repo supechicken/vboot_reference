@@ -179,22 +179,22 @@ static void SendCommandTest(void)
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ContinueSelfTest, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclAssertPhysicalPresence(), 0,
+	TEST_EQ(Tlcl1AssertPhysicalPresence(), 0,
 		"AssertPhysicalPresence");
 	TEST_EQ(calls[0].req_cmd, TSC_ORD_PhysicalPresence, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclPhysicalPresenceCMDEnable(), 0,
+	TEST_EQ(Tlcl1PhysicalPresenceCMDEnable(), 0,
 		"PhysicalPresenceCMDEnable");
 	TEST_EQ(calls[0].req_cmd, TSC_ORD_PhysicalPresence, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclFinalizePhysicalPresence(), 0,
+	TEST_EQ(Tlcl1FinalizePhysicalPresence(), 0,
 		"FinalizePhysicalPresence");
 	TEST_EQ(calls[0].req_cmd, TSC_ORD_PhysicalPresence, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclAssertPhysicalPresenceResult(), 0,
+	TEST_EQ(Tlcl1AssertPhysicalPresenceResult(), 0,
 		"AssertPhysicalPresenceResult");
 	TEST_EQ(calls[0].req_cmd, TSC_ORD_PhysicalPresence, "  cmd");
 
@@ -219,7 +219,7 @@ static void SendCommandTest(void)
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_PhysicalEnable, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclClearEnable(), 0, "ClearEnable");
+	TEST_EQ(Tlcl1ClearEnable(), 0, "ClearEnable");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_PhysicalDisable, "  cmd");
 
 	ResetMocks();
@@ -241,7 +241,7 @@ static void ReadWriteTest(void)
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_NV_DefineSpace, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclSetNvLocked(), 0, "SetNvLocked");
+	TEST_EQ(Tlcl1SetNvLocked(), 0, "SetNvLocked");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_NV_DefineSpace, "  cmd");
 
 	ResetMocks();
@@ -375,7 +375,7 @@ void InitNvAuthPolicyTest(void) {
 	};
 	const uint8_t empty_selection_encoding[] = { 0x0, 0x0, 0x0 };
 	const uint8_t pcr0_selection_encoding[] = { 0x1, 0x0, 0x0 };
-	const uint8_t pcr_values[][TPM_PCR_DIGEST] = {
+	const uint8_t pcr_values[][TPM1_PCR_DIGEST] = {
 		{ 0x06, 0x4a, 0xec, 0x9b, 0xbd, 0x94, 0xde, 0xa1,
 		  0x23, 0x1a, 0xe7, 0x57, 0x67, 0x64, 0x7f, 0x09,
 		  0x8c, 0x39, 0x8e, 0x79, },
@@ -384,7 +384,7 @@ void InitNvAuthPolicyTest(void) {
 
 	/* Test empty selection. */
 	uint32_t policy_size = sizeof(policy);
-	TlclInitNvAuthPolicy(0x0, NULL, &policy, &policy_size);
+	Tlcl1InitNvAuthPolicy(0x0, NULL, &policy, &policy_size);
 	TEST_EQ(policy_size, sizeof(policy), "policy size");
 
 	uint16_t size_of_select;
@@ -401,7 +401,7 @@ void InitNvAuthPolicyTest(void) {
 		"empty PCR selection read locality");
 	TEST_EQ(memcmp(empty_selection_digest,
 		       policy.pcr_info_read.digestAtRelease.digest,
-		       TPM_PCR_DIGEST),
+		       TPM1_PCR_DIGEST),
 		0, "empty PCR selection read digest");
 
 	FromTpmUint16(
@@ -417,11 +417,11 @@ void InitNvAuthPolicyTest(void) {
 		"empty PCR selection write locality");
 	TEST_EQ(memcmp(empty_selection_digest,
 		       policy.pcr_info_write.digestAtRelease.digest,
-		       TPM_PCR_DIGEST),
+		       TPM1_PCR_DIGEST),
 		0, "empty PCR selection write digest");
 
 	/* Test PCR0 selection. */
-	TlclInitNvAuthPolicy(0x1, pcr_values, &policy, &policy_size);
+	Tlcl1InitNvAuthPolicy(0x1, pcr_values, &policy, &policy_size);
 	TEST_EQ(policy_size, sizeof(policy), "policy size");
 
 	TEST_EQ(memcmp(policy.pcr_info_read.pcrSelection.pcrSelect,
@@ -430,7 +430,7 @@ void InitNvAuthPolicyTest(void) {
 		"PCR0 selection read selection encoding");
 	TEST_EQ(memcmp(pcr0_selection_digest,
 		       policy.pcr_info_read.digestAtRelease.digest,
-		       TPM_PCR_DIGEST),
+		       TPM1_PCR_DIGEST),
 		0, "PCR0 selection read digest");
 
 	TEST_EQ(memcmp(policy.pcr_info_write.pcrSelection.pcrSelect,
@@ -439,7 +439,7 @@ void InitNvAuthPolicyTest(void) {
 		"PCR0 selection write selection encoding");
 	TEST_EQ(memcmp(pcr0_selection_digest,
 		       policy.pcr_info_write.digestAtRelease.digest,
-		       TPM_PCR_DIGEST),
+		       TPM1_PCR_DIGEST),
 		0, "PCR0 selection write digest");
 }
 
@@ -549,17 +549,17 @@ static void GetSpaceInfoTest(void)
  */
 static void FlagsTest(void)
 {
-	TPM_PERMANENT_FLAGS pflags;
-	TPM_STCLEAR_FLAGS vflags;
+	TPM1_PERMANENT_FLAGS pflags;
+	TPM1_STCLEAR_FLAGS vflags;
 	uint8_t disable = 0, deactivated = 0, nvlocked = 0;
 	uint8_t buf[32];
 
 	ResetMocks();
-	TEST_EQ(TlclGetPermanentFlags(&pflags), 0, "GetPermanentFlags");
+	TEST_EQ(Tlcl1GetPermanentFlags(&pflags), 0, "GetPermanentFlags");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
 
 	ResetMocks();
-	TEST_EQ(TlclGetSTClearFlags(&vflags), 0, "GetSTClearFlags");
+	TEST_EQ(Tlcl1GetSTClearFlags(&vflags), 0, "GetSTClearFlags");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_GetCapability, "  cmd");
 
 	ResetMocks();
@@ -727,8 +727,8 @@ static void IFXFieldUpgradeInfoTest(void)
 	calls[0].rsp_size = sizeof(version_response);
 	calls[1].rsp = upgrade_info_response;
 	calls[1].rsp_size = sizeof(upgrade_info_response);
-	TPM_IFX_FIELDUPGRADEINFO info;
-	TEST_EQ(TlclIFXFieldUpgradeInfo(&info), 0, "IFXFieldUpgradeInfo");
+	TPM1_IFX_FIELDUPGRADEINFO info;
+	TEST_EQ(Tlcl1IFXFieldUpgradeInfo(&info), 0, "IFXFieldUpgradeInfo");
 	TEST_EQ(calls[1].req_cmd, TPM_ORD_FieldUpgrade, "  cmd");
 	TEST_EQ(info.wMaxDataSize, 1180, "  wMaxDatasize");
 	TEST_EQ(info.sBootloaderFirmwarePackage.FwPackageIdentifier, 0x50100,
@@ -762,7 +762,7 @@ static void IFXFieldUpgradeInfoTest(void)
 	calls[0].rsp = version_response;
 	calls[0].rsp_size = sizeof(version_response);
 	SetResponse(1, TPM_E_IOERROR, sizeof(upgrade_info_response) - 1);
-	TEST_EQ(TlclIFXFieldUpgradeInfo(&info), TPM_E_IOERROR,
+	TEST_EQ(Tlcl1IFXFieldUpgradeInfo(&info), TPM_E_IOERROR,
 		"IFXFieldUpgradeInfo - error");
 	TEST_EQ(calls[1].req_cmd, TPM_ORD_FieldUpgrade, "  cmd");
 
@@ -775,7 +775,7 @@ static void IFXFieldUpgradeInfoTest(void)
 	calls[0].rsp_size = sizeof(version_response);
 	calls[1].rsp = upgrade_info_response;
 	calls[1].rsp_size = sizeof(upgrade_info_response);
-	TEST_EQ(TlclIFXFieldUpgradeInfo(&info), TPM_E_INVALID_RESPONSE,
+	TEST_EQ(Tlcl1IFXFieldUpgradeInfo(&info), TPM_E_INVALID_RESPONSE,
 		"IFXFieldUpgradeInfo - short");
 	TEST_EQ(calls[1].req_cmd, TPM_ORD_FieldUpgrade, "  cmd");
 
@@ -785,7 +785,7 @@ static void IFXFieldUpgradeInfoTest(void)
 	ResetMocks();
 	calls[0].rsp = version_response;
 	calls[0].rsp_size = sizeof(version_response);
-	TEST_EQ(TlclIFXFieldUpgradeInfo(&info), TPM_E_INVALID_RESPONSE,
+	TEST_EQ(Tlcl1IFXFieldUpgradeInfo(&info), TPM_E_INVALID_RESPONSE,
 		"IFXFieldUpgradeInfo - bad vendor");
 	TEST_EQ(calls[1].req_cmd, TPM_ORD_FieldUpgrade, "  cmd");
 }
@@ -843,7 +843,7 @@ void ReadPubekTest(void) {
 	ResetMocks();
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
-	TEST_EQ(TlclReadPubek(&exponent, modulus, &modulus_size), TPM_SUCCESS,
+	TEST_EQ(Tlcl1ReadPubek(&exponent, modulus, &modulus_size), TPM_SUCCESS,
 		"ReadPubek");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	TEST_EQ(exponent, 0x10001, "  exponent");
@@ -857,7 +857,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	modulus_size = 0;
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_BUFFER_SIZE, "ReadPubek - returns modulus size");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	TEST_EQ(modulus_size, 0x100, "  modulus_size");
@@ -867,7 +867,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + 18, 1 << 24);
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_INVALID_RESPONSE, "ReadPubek - large parm_size");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	ToTpmUint32(response + 18, 12);
@@ -877,7 +877,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + 18, 11);
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_INVALID_RESPONSE, "ReadPubek - small parm_size");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	ToTpmUint32(response + 18, 12);
@@ -888,7 +888,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + 34, 1 << 24);
 	modulus_size = sizeof(modulus);
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_INVALID_RESPONSE, "ReadPubek - large modulus size");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	ToTpmUint32(response + 34, TPM_RSA_2048_LEN);
@@ -898,7 +898,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + 20, 1 << 24);
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_INVALID_RESPONSE, "ReadPubek - large exponent size");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	ToTpmUint32(response + 20, 0);
@@ -908,7 +908,7 @@ void ReadPubekTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	response[294] = 0;
-	TEST_EQ(TlclReadPubek(&exponent, NULL, &modulus_size),
+	TEST_EQ(Tlcl1ReadPubek(&exponent, NULL, &modulus_size),
 		TPM_E_INVALID_RESPONSE, "ReadPubek - incorrect auth");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_ReadPubek, "  cmd");
 	response[294] = 0x60;
@@ -1013,7 +1013,7 @@ void TakeOwnershipTest(void) {
 	calls[0].rsp_size = sizeof(oiap_response);
 	calls[1].rsp = take_ownership_response;
 	calls[1].rsp_size = sizeof(take_ownership_response);
-	TEST_EQ(TlclTakeOwnership(encrypted_secret, encrypted_secret,
+	TEST_EQ(Tlcl1TakeOwnership(encrypted_secret, encrypted_secret,
 				  owner_secret), TPM_SUCCESS, "TakeOwnership");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_OIAP, "  oiap cmd");
 	TEST_EQ(calls[1].req_cmd, TPM_ORD_TakeOwnership, "  takeownership cmd");
@@ -1025,7 +1025,7 @@ void TakeOwnershipTest(void) {
 	calls[1].rsp = take_ownership_response;
 	calls[1].rsp_size = sizeof(take_ownership_response);
 	take_ownership_response[334] = 0;
-	TEST_EQ(TlclTakeOwnership(encrypted_secret, encrypted_secret,
+	TEST_EQ(Tlcl1TakeOwnership(encrypted_secret, encrypted_secret,
 				  owner_secret),
 		TPM_E_AUTHFAIL, "TakeOwnership - response auth");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_OIAP, "  oiap cmd");
@@ -1039,7 +1039,7 @@ void TakeOwnershipTest(void) {
 	ToTpmUint32(oiap_response + sizeof(uint16_t),
 		    kTpmRequestHeaderLength + sizeof(uint32_t) +
 		    sizeof(TPM_NONCE) - 1);
-	TEST_EQ(TlclTakeOwnership(encrypted_secret, encrypted_secret,
+	TEST_EQ(Tlcl1TakeOwnership(encrypted_secret, encrypted_secret,
 				  owner_secret),
 		TPM_E_INVALID_RESPONSE, "TakeOwnership - short OIAP response");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_OIAP, "  oiap cmd");
@@ -1053,7 +1053,7 @@ void TakeOwnershipTest(void) {
 	calls[1].rsp_size = sizeof(take_ownership_response);
 	ToTpmUint32(take_ownership_response + sizeof(uint16_t),
 		    kTpmResponseHeaderLength + kTpmResponseAuthBlockLength - 1);
-	TEST_EQ(TlclTakeOwnership(encrypted_secret, encrypted_secret,
+	TEST_EQ(Tlcl1TakeOwnership(encrypted_secret, encrypted_secret,
 				  owner_secret),
 		TPM_E_INVALID_RESPONSE,
 		"TakeOwnership - short TakeOwnership response");
@@ -1083,7 +1083,7 @@ void ReadDelegationFamilyTableTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	table_size = 8;
-	TEST_EQ(TlclReadDelegationFamilyTable(table, &table_size),
+	TEST_EQ(Tlcl1ReadDelegationFamilyTable(table, &table_size),
 		TPM_SUCCESS, "ReadDelegationFamilyTable");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_Delegate_ReadTable, "  cmd");
 	TEST_EQ(table_size, 2, "  table_size");
@@ -1105,7 +1105,7 @@ void ReadDelegationFamilyTableTest(void) {
 	calls[0].rsp = response;
 	calls[0].rsp_size = sizeof(response);
 	table_size = 1;
-	TEST_EQ(TlclReadDelegationFamilyTable(table, &table_size),
+	TEST_EQ(Tlcl1ReadDelegationFamilyTable(table, &table_size),
 		TPM_E_BUFFER_SIZE, "ReadDelegationFamilyTable");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_Delegate_ReadTable, "  cmd");
 	TEST_EQ(table_size, 2, "  table_size");
@@ -1116,7 +1116,7 @@ void ReadDelegationFamilyTableTest(void) {
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + sizeof(uint16_t), TPM_LARGE_ENOUGH_COMMAND_SIZE +
 		    1);
-	TEST_EQ(TlclReadDelegationFamilyTable(table, &table_size),
+	TEST_EQ(Tlcl1ReadDelegationFamilyTable(table, &table_size),
 		TPM_E_INVALID_RESPONSE,
 		"ReadDelegationFamilyTable - too long response");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_Delegate_ReadTable, "  cmd");
@@ -1128,7 +1128,7 @@ void ReadDelegationFamilyTableTest(void) {
 	calls[0].rsp_size = sizeof(response);
 	ToTpmUint32(response + sizeof(uint16_t),
 		    kTpmRequestHeaderLength + sizeof(uint32_t) - 1);
-	TEST_EQ(TlclReadDelegationFamilyTable(table, &table_size),
+	TEST_EQ(Tlcl1ReadDelegationFamilyTable(table, &table_size),
 		TPM_E_INVALID_RESPONSE,
 		"ReadDelegationFamilyTable - too short response");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_Delegate_ReadTable, "  cmd");
@@ -1141,7 +1141,7 @@ void ReadDelegationFamilyTableTest(void) {
 	table_size = 20;
 	ToTpmUint32(response + kTpmResponseHeaderLength,
 		    TPM_LARGE_ENOUGH_COMMAND_SIZE);
-	TEST_EQ(TlclReadDelegationFamilyTable(table, &table_size),
+	TEST_EQ(Tlcl1ReadDelegationFamilyTable(table, &table_size),
 		TPM_E_INVALID_RESPONSE,
 		"ReadDelegationFamilyTable - overlong family table");
 	TEST_EQ(calls[0].req_cmd, TPM_ORD_Delegate_ReadTable, "  cmd");

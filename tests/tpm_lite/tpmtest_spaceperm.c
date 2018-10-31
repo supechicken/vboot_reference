@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 	TlclLibInit();
 	TPM_CHECK(TlclStartupIfNeeded());
 	TPM_CHECK(TlclContinueSelfTest());
-	TPM_CHECK(TlclAssertPhysicalPresence());
+	TPM_CHECK(Tlcl1AssertPhysicalPresence());
 
 	TPM_CHECK(TlclGetPermissions(INDEX0, &perm));
 	VbAssert((perm & PERMPPGL) == PERMPPGL);

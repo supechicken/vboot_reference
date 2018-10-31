@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 	TTPM_CHECK(TlclStartupIfNeeded(), 50);
 	TTPM_CHECK(TlclContinueSelfTest(), 100);
 	TTPM_CHECK(TlclSelfTestFull(), 1000);
-	TTPM_CHECK(TlclAssertPhysicalPresence(), 100);
+	TTPM_CHECK(Tlcl1AssertPhysicalPresence(), 100);
 	TTPM_CHECK(TlclWrite(INDEX0, (uint8_t*) &x, sizeof(x)), 100);
 	TTPM_CHECK(TlclRead(INDEX0, (uint8_t*) &x, sizeof(x)), 100);
 	TTPM_CHECK(TlclExtend(0, in, out), 200);

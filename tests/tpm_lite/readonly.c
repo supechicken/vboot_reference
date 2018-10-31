@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
 	TlclStartup();
 	TlclSelfTestFull();
 
-	TlclAssertPhysicalPresence();
+	Tlcl1AssertPhysicalPresence();
 
 	/* Checks if initialization has completed by trying to read-lock a space
 	 * that's created at the end of initialization.

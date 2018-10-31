@@ -97,16 +97,16 @@ static uint32_t tpm_get_response_code(TPM_CC command, void *command_body)
 static uint32_t tlcl_read_ph_disabled(void)
 {
 	uint32_t rv;
-	TPM_STCLEAR_FLAGS flags;
+	TPM2_STCLEAR_FLAGS flags;
 
-	rv = TlclGetSTClearFlags(&flags);
+	rv = Tlcl2GetSTClearFlags(&flags);
 	if (rv == TPM_SUCCESS)
 		tpm_set_ph_disabled(!flags.phEnable);
 
 	return rv;
 }
 
-uint32_t TlclLibInit(void)
+uint32_t Tlcl2LibInit(void)
 {
 	uint32_t rv;
 
@@ -116,17 +116,17 @@ uint32_t TlclLibInit(void)
 
 	rv = tlcl_read_ph_disabled();
 	if (rv != TPM_SUCCESS)
-		TlclLibClose();
+		Tlcl2LibClose();
 
 	return rv;
 }
 
-uint32_t TlclLibClose(void)
+uint32_t Tlcl2LibClose(void)
 {
 	return VbExTpmClose();
 }
 
-uint32_t TlclSendReceive(const uint8_t *request, uint8_t *response,
+uint32_t Tlcl2SendReceive(const uint8_t *request, uint8_t *response,
 			 int max_length)
 {
 	uint32_t rv, resp_size;
@@ -138,12 +138,12 @@ uint32_t TlclSendReceive(const uint8_t *request, uint8_t *response,
 	return rv ? rv : tpm_get_packet_response_code(response);
 }
 
-int TlclPacketSize(const uint8_t *packet)
+int Tlcl2PacketSize(const uint8_t *packet)
 {
 	return tpm_get_packet_size(packet);
 }
 
-uint32_t TlclStartup(void)
+uint32_t Tlcl2Startup(void)
 {
 	struct tpm2_startup_cmd startup;
 
@@ -152,7 +152,7 @@ uint32_t TlclStartup(void)
 	return tpm_get_response_code(TPM2_Startup, &startup);
 }
 
-uint32_t TlclSaveState(void)
+uint32_t Tlcl2SaveState(void)
 {
 	struct tpm2_shutdown_cmd shutdown;
 
@@ -161,7 +161,7 @@ uint32_t TlclSaveState(void)
 	return tpm_get_response_code(TPM2_Shutdown, &shutdown);
 }
 
-uint32_t TlclResume(void)
+uint32_t Tlcl2Resume(void)
 {
 	struct tpm2_startup_cmd startup;
 
@@ -170,7 +170,7 @@ uint32_t TlclResume(void)
 	return tpm_get_response_code(TPM2_Startup, &startup);
 }
 
-uint32_t TlclSelfTestFull(void)
+uint32_t Tlcl2SelfTestFull(void)
 {
 	struct tpm2_self_test_cmd self_test;
 
@@ -179,7 +179,7 @@ uint32_t TlclSelfTestFull(void)
 	return tpm_get_response_code(TPM2_SelfTest, &self_test);
 }
 
-uint32_t TlclContinueSelfTest(void)
+uint32_t Tlcl2ContinueSelfTest(void)
 {
 	struct tpm2_self_test_cmd self_test;
 
@@ -188,12 +188,12 @@ uint32_t TlclContinueSelfTest(void)
 	return tpm_get_response_code(TPM2_SelfTest, &self_test);
 }
 
-uint32_t TlclDefineSpace(uint32_t index, uint32_t perm, uint32_t size)
+uint32_t Tlcl2DefineSpace(uint32_t index, uint32_t perm, uint32_t size)
 {
-	return TlclDefineSpaceEx(NULL, 0, index, perm, size, NULL, 0);
+	return Tlcl2DefineSpaceEx(NULL, 0, index, perm, size, NULL, 0);
 }
 
-uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
+uint32_t Tlcl2DefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 			   uint32_t index, uint32_t perm, uint32_t size,
 			   const void* auth_policy, uint32_t auth_policy_size)
 {
@@ -224,8 +224,8 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 	return tpm_get_response_code(TPM2_NV_DefineSpace, &define_space);
 }
 
-uint32_t TlclInitNvAuthPolicy(uint32_t pcr_selection_bitmap,
-			      const uint8_t pcr_values[][TPM_PCR_DIGEST],
+uint32_t Tlcl2InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
+			      const uint8_t pcr_values[][TPM2_PCR_DIGEST],
 			      void* auth_policy, uint32_t* auth_policy_size)
 {
 	/* Actual PCR selection isn't implemented. */
@@ -237,24 +237,24 @@ uint32_t TlclInitNvAuthPolicy(uint32_t pcr_selection_bitmap,
 /**
  * Issue a ForceClear.  The TPM error code is returned.
  */
-uint32_t TlclForceClear(void)
+uint32_t Tlcl2ForceClear(void)
 {
 	return tpm_get_response_code(TPM2_Clear, NULL);
 }
 
-uint32_t TlclSetDeactivated(uint8_t flag)
+uint32_t Tlcl2SetDeactivated(uint8_t flag)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclSetEnable(void)
+uint32_t Tlcl2SetEnable(void)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclGetFlags(uint8_t* disable,
+uint32_t Tlcl2GetFlags(uint8_t* disable,
 		      uint8_t* deactivated,
 		      uint8_t *nvlocked)
 {
@@ -268,13 +268,13 @@ uint32_t TlclGetFlags(uint8_t* disable,
 	return TPM_SUCCESS;
 }
 
-int TlclIsOwned(void)
+int Tlcl2IsOwned(void)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return 0;
 }
 
-uint32_t TlclExtend(int pcr_num, const uint8_t *in_digest, uint8_t *out_digest)
+uint32_t Tlcl2Extend(int pcr_num, const uint8_t *in_digest, uint8_t *out_digest)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_SUCCESS;
@@ -301,7 +301,7 @@ static uint32_t tlcl_nv_read_public(uint32_t index,
 /**
  * Get the permission bits for the NVRAM space with |index|.
  */
-uint32_t TlclGetPermissions(uint32_t index, uint32_t *permissions)
+uint32_t Tlcl2GetPermissions(uint32_t index, uint32_t *permissions)
 {
 	uint32_t rv;
 	struct nv_read_public_response *resp;
@@ -313,7 +313,7 @@ uint32_t TlclGetPermissions(uint32_t index, uint32_t *permissions)
 	return rv;
 }
 
-uint32_t TlclGetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
+uint32_t Tlcl2GetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
 			  void* auth_policy, uint32_t* auth_policy_size)
 {
 	uint32_t rv;
@@ -377,25 +377,25 @@ static uint32_t tlcl_get_tpm_property(TPM_PT property, uint32_t *pvalue)
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
+uint32_t Tlcl2GetPermanentFlags(TPM2_PERMANENT_FLAGS *pflags)
 {
 	return tlcl_get_tpm_property(TPM_PT_PERMANENT,
 				     (uint32_t *)pflags);
 }
 
-uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS *pflags)
+uint32_t Tlcl2GetSTClearFlags(TPM2_STCLEAR_FLAGS *pflags)
 {
 	return tlcl_get_tpm_property(TPM_PT_STARTUP_CLEAR,
 				     (uint32_t *)pflags);
 }
 
-uint32_t TlclGetOwnership(uint8_t *owned)
+uint32_t Tlcl2GetOwnership(uint8_t *owned)
 {
 	uint32_t rv;
-	TPM_PERMANENT_FLAGS flags;
+	TPM2_PERMANENT_FLAGS flags;
 	*owned = 0;
 
-	rv = TlclGetPermanentFlags(&flags);
+	rv = Tlcl2GetPermanentFlags(&flags);
 	if (rv == TPM_SUCCESS)
 		*owned = flags.ownerAuthSet;
 
@@ -434,7 +434,7 @@ static uint32_t tlcl_disable_platform_hierarchy(void)
  * It first checks if the platform hierarchy is already disabled, and does
  * nothing, if so. Otherwise, WriteLock for the index obviously fails.
  */
-uint32_t TlclSetGlobalLock(void)
+uint32_t Tlcl2SetGlobalLock(void)
 {
 	if (tpm_is_ph_disabled())
 		return TPM_SUCCESS;
@@ -454,7 +454,7 @@ uint32_t TlclSetGlobalLock(void)
  * It also explicitly locks the kernel rollback counter space (the FW rollback
  * counter space was locked before RW firmware started.)
  */
-uint32_t TlclLockPhysicalPresence(void)
+uint32_t Tlcl2LockPhysicalPresence(void)
 {
 	if (tpm_is_ph_disabled())
 		return TPM_SUCCESS;
@@ -462,7 +462,7 @@ uint32_t TlclLockPhysicalPresence(void)
 	return tlcl_disable_platform_hierarchy();
 }
 
-uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
+uint32_t Tlcl2Read(uint32_t index, void* data, uint32_t length)
 {
 	struct tpm2_nv_read_cmd nv_readc;
 	struct tpm2_response *response = &tpm2_resp;
@@ -498,7 +498,7 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length)
+uint32_t Tlcl2Write(uint32_t index, const void *data, uint32_t length)
 {
 	struct tpm2_nv_write_cmd nv_writec;
 
@@ -511,13 +511,13 @@ uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length)
 	return tpm_get_response_code(TPM2_NV_Write, &nv_writec);
 }
 
-uint32_t TlclPCRRead(uint32_t index, void *data, uint32_t length)
+uint32_t Tlcl2PCRRead(uint32_t index, void *data, uint32_t length)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclWriteLock(uint32_t index)
+uint32_t Tlcl2WriteLock(uint32_t index)
 {
 	struct tpm2_nv_write_lock_cmd nv_writelockc;
 
@@ -528,7 +528,7 @@ uint32_t TlclWriteLock(uint32_t index)
 	return tpm_get_response_code(TPM2_NV_WriteLock, &nv_writelockc);
 }
 
-uint32_t TlclReadLock(uint32_t index)
+uint32_t Tlcl2ReadLock(uint32_t index)
 {
 	struct tpm2_nv_read_lock_cmd nv_readlockc;
 
@@ -539,7 +539,7 @@ uint32_t TlclReadLock(uint32_t index)
 	return tpm_get_response_code(TPM2_NV_ReadLock, &nv_readlockc);
 }
 
-uint32_t TlclGetRandom(uint8_t *data, uint32_t length, uint32_t *size)
+uint32_t Tlcl2GetRandom(uint8_t *data, uint32_t length, uint32_t *size)
 {
 	*size = 0;
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
@@ -562,7 +562,7 @@ size_t tlcl_vendor_string_parse(uint32_t value, uint8_t* buf)
 	return len;
 }
 
-uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
+uint32_t Tlcl2GetVersion(uint32_t* vendor, uint64_t* firmware_version,
 			uint8_t* vendor_specific_buf,
 			size_t* vendor_specific_buf_size)
 {
@@ -612,7 +612,7 @@ uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info)
+uint32_t Tlcl2IFXFieldUpgradeInfo(TPM2_IFX_FIELDUPGRADEINFO* info)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_E_IOERROR;

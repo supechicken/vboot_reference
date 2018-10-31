@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 	TlclStartup();
 	TlclSelfTestFull();
 
-	TlclAssertPhysicalPresence();
+	Tlcl1AssertPhysicalPresence();
 
 	TlclWriteLock(INDEX0);
 

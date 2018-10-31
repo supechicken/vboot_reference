@@ -22,31 +22,36 @@
 
 #define OTHER_ERROR 255  /* OTHER_ERROR must be the largest uint8_t value. */
 
-#ifdef TPM2_MODE
-#define TPM_MODE_SELECT(_, tpm20_ver) tpm20_ver
-#else
-#define TPM_MODE_SELECT(tpm12_ver, _) tpm12_ver
-#endif
+static const char* TPM_MODE_SELECT(const char* a, const char* b) {
+  if (GetTpmVersion() == 2) {
+    return b;
+  } else {
+    return a;
+  }
+}
 
-#define TPM_MODE_STRING TPM_MODE_SELECT("1.2", "2.0")
-#define TPM12_NEEDS_PP TPM_MODE_SELECT(" (needs PP)", "")
-#define TPM12_NEEDS_PP_REBOOT TPM_MODE_SELECT(" (needs PP, maybe reboot)", "")
+static const char* TPM_MODE_STRING() {
+  if (GetTpmVersion() == 2) {
+    return "2.0";
+  } else {
+    return "1.2";
+  }
+}
+
+#define TPM12_NEEDS_PP " (TPM 1.2 needs PP)"
+#define TPM12_NEEDS_PP_REBOOT " (TPM 1.2 needs PP, maybe reboot)"
 
 #define TPM20_NOT_IMPLEMENTED_DESCR(descr) \
-  descr TPM_MODE_SELECT("", " [not-implemented for TPM2.0]")
-#define TPM20_NOT_IMPLEMENTED_HANDLER(handler) \
-  TPM_MODE_SELECT(handler, HandlerNotImplementedForTPM2)
+  descr " [not-implemented for TPM2.0]"
 #define TPM20_NOT_IMPLEMENTED(descr, handler) \
   TPM20_NOT_IMPLEMENTED_DESCR(descr), \
-  TPM20_NOT_IMPLEMENTED_HANDLER(handler)
+  (GetTpmVersion() == 2 ? HandlerNotImplementedForTPM2 : handler)
 
 #define TPM20_DOES_NOTHING_DESCR(descr) \
-  descr TPM_MODE_SELECT("", " [no-op for TPM2.0]")
-#define TPM20_DOES_NOTHING_HANDLER(handler) \
-  TPM_MODE_SELECT(handler, HandlerDoNothingForTPM2)
+  descr " [no-op for TPM2.0]"
 #define TPM20_DOES_NOTHING(descr, handler) \
   TPM20_DOES_NOTHING_DESCR(descr), \
-  TPM20_DOES_NOTHING_HANDLER(handler)
+  (GetTpmVersion() == 2 ? HandlerDoNothingForTPM2 : handler)
 
 typedef struct command_record {
   const char* name;
@@ -131,39 +136,43 @@ uint8_t ErrorCheck(uint32_t result, const char* cmd) {
 /* Handler functions.  These wouldn't exist if C had closures.
  */
 static uint32_t HandlerTpmVersion(void) {
-  puts(TPM_MODE_STRING);
+  puts(TPM_MODE_STRING());
   return 0;
 }
 
 /* TODO(apronin): stub for selected flags for TPM2 */
-#ifdef TPM2_MODE
-static uint32_t HandlerGetFlags(void) {
+static uint32_t Handler2GetFlags(void) {
   fprintf(stderr, "getflags not implemented for TPM2\n");
   exit(OTHER_ERROR);
 }
-#else
-static uint32_t HandlerGetFlags(void) {
+
+static uint32_t Handler1GetFlags(void) {
   uint8_t disabled;
   uint8_t deactivated;
   uint8_t nvlocked;
-  uint32_t result = TlclGetFlags(&disabled, &deactivated, &nvlocked);
+  uint32_t result = Tlcl1GetFlags(&disabled, &deactivated, &nvlocked);
   if (result == 0) {
     printf("disabled: %d\ndeactivated: %d\nnvlocked: %d\n",
            disabled, deactivated, nvlocked);
   }
   return result;
 }
-#endif
 
-#ifndef TPM2_MODE
-static uint32_t HandlerActivate(void) {
-  return TlclSetDeactivated(0);
+static uint32_t HandlerGetFlags(void) {
+  if (GetTpmVersion() == 2) {
+    return Handler2GetFlags();
+  } else {
+    return Handler1GetFlags();
+  }
 }
 
-static uint32_t HandlerDeactivate(void) {
-  return TlclSetDeactivated(1);
+static uint32_t Handler1Activate(void) {
+  return Tlcl1SetDeactivated(0);
 }
-#endif
+
+static uint32_t Handler1Deactivate(void) {
+  return Tlcl1SetDeactivated(1);
+}
 
 static uint32_t HandlerDefineSpace(void) {
   uint32_t index, size, perm;
@@ -210,13 +219,13 @@ static uint32_t HandlerWrite(void) {
   }
 
   if (size == 0) {
-#ifndef TPM2_MODE
-    if (index == TPM_NV_INDEX_LOCK) {
-      fprintf(stderr, "This would set the nvLocked bit. "
-              "Use \"tpmc setnv\" instead.\n");
-      exit(OTHER_ERROR);
-    }
-#endif
+	if (GetTpmVersion() != 2) {
+		if (index == TPM_NV_INDEX_LOCK) {
+		  fprintf(stderr, "This would set the nvLocked bit. "
+				  "Use \"tpmc setnv\" instead.\n");
+		  exit(OTHER_ERROR);
+		}
+	}
     printf("warning: zero-length write\n");
   } else {
     printf("writing %d byte%s\n", size, size > 1 ? "s" : "");
@@ -225,9 +234,9 @@ static uint32_t HandlerWrite(void) {
   return TlclWrite(index, value, size);
 }
 
-static uint32_t HandlerPCRRead(void) {
+static uint32_t Handler1PCRRead(void) {
   uint32_t index;
-  uint8_t value[TPM_PCR_DIGEST];
+  uint8_t value[TPM1_PCR_DIGEST];
   uint32_t result;
   int i;
   if (nargs != 3) {
@@ -238,9 +247,9 @@ static uint32_t HandlerPCRRead(void) {
     fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
     exit(OTHER_ERROR);
   }
-  result = TlclPCRRead(index, value, sizeof(value));
+  result = Tlcl1PCRRead(index, value, sizeof(value));
   if (result == 0) {
-    for (i = 0; i < TPM_PCR_DIGEST; i++) {
+    for (i = 0; i < TPM1_PCR_DIGEST; i++) {
       printf("%02x", value[i]);
     }
     printf("\n");
@@ -248,9 +257,40 @@ static uint32_t HandlerPCRRead(void) {
   return result;
 }
 
-static uint32_t HandlerPCRExtend(void) {
+static uint32_t Handler2PCRRead(void) {
   uint32_t index;
-  uint8_t value[TPM_PCR_DIGEST];
+  uint8_t value[TPM2_PCR_DIGEST];
+  uint32_t result;
+  int i;
+  if (nargs != 3) {
+    fprintf(stderr, "usage: tpmc pcrread <index>\n");
+    exit(OTHER_ERROR);
+  }
+  if (HexStringToUint32(args[2], &index) != 0) {
+    fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
+    exit(OTHER_ERROR);
+  }
+  result = Tlcl2PCRRead(index, value, sizeof(value));
+  if (result == 0) {
+    for (i = 0; i < TPM2_PCR_DIGEST; i++) {
+      printf("%02x", value[i]);
+    }
+    printf("\n");
+  }
+  return result;
+}
+
+static uint32_t HandlerPCRRead(void) {
+  if (GetTpmVersion() == 2) {
+    return Handler2PCRRead();
+  } else {
+    return Handler1PCRRead();
+  }
+}
+
+static uint32_t Handler1PCRExtend(void) {
+  uint32_t index;
+  uint8_t value[TPM1_PCR_DIGEST];
   if (nargs != 4) {
     fprintf(stderr, "usage: tpmc pcrextend <index> <extend_hash>\n");
     exit(OTHER_ERROR);
@@ -259,11 +299,37 @@ static uint32_t HandlerPCRExtend(void) {
     fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
     exit(OTHER_ERROR);
   }
-  if (HexStringToArray(args[3], value, TPM_PCR_DIGEST)) {
+  if (HexStringToArray(args[3], value, TPM1_PCR_DIGEST)) {
     fprintf(stderr, "<extend_hash> must be a 20-byte hex string\n");
     exit(OTHER_ERROR);
   }
-  return TlclExtend(index, value, value);
+  return Tlcl1Extend(index, value, value);
+}
+
+static uint32_t Handler2PCRExtend(void) {
+  uint32_t index;
+  uint8_t value[TPM2_PCR_DIGEST];
+  if (nargs != 4) {
+    fprintf(stderr, "usage: tpmc pcrextend <index> <extend_hash>\n");
+    exit(OTHER_ERROR);
+  }
+  if (HexStringToUint32(args[2], &index) != 0) {
+    fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
+    exit(OTHER_ERROR);
+  }
+  if (HexStringToArray(args[3], value, TPM2_PCR_DIGEST)) {
+    fprintf(stderr, "<extend_hash> must be a 20-byte hex string\n");
+    exit(OTHER_ERROR);
+  }
+  return Tlcl2Extend(index, value, value);
+}
+
+static uint32_t HandlerPCRExtend(void) {
+  if (GetTpmVersion() == 2) {
+    return Handler2PCRExtend();
+  } else {
+    return Handler1PCRExtend();
+  }
 }
 
 static uint32_t HandlerRead(void) {
@@ -354,19 +420,11 @@ static uint32_t HandlerGetRandom(void) {
   return result;
 }
 
-static uint32_t HandlerGetPermanentFlags(void) {
-  TPM_PERMANENT_FLAGS pflags;
-  uint32_t result = TlclGetPermanentFlags(&pflags);
+static uint32_t Handler1GetPermanentFlags(void) {
+  TPM1_PERMANENT_FLAGS pflags;
+  uint32_t result = Tlcl1GetPermanentFlags(&pflags);
   if (result == 0) {
 #define P(name) printf("%s %d\n", #name, pflags.name)
-#ifdef TPM2_MODE
-    P(ownerAuthSet);
-    P(endorsementAuthSet);
-    P(lockoutAuthSet);
-    P(disableClear);
-    P(inLockout);
-    P(tpmGeneratedEPS);
-#else
     P(disable);
     P(ownership);
     P(deactivated);
@@ -387,33 +445,71 @@ static uint32_t HandlerGetPermanentFlags(void) {
     P(tpmEstablished);
     P(maintenanceDone);
     P(disableFullDALogicInfo);
-#endif
+#undef P
+  }
+  return result;
+}
+
+static uint32_t Handler2GetPermanentFlags(void) {
+  TPM2_PERMANENT_FLAGS pflags;
+  uint32_t result = Tlcl2GetPermanentFlags(&pflags);
+  if (result == 0) {
+#define P(name) printf("%s %d\n", #name, pflags.name)
+    P(ownerAuthSet);
+    P(endorsementAuthSet);
+    P(lockoutAuthSet);
+    P(disableClear);
+    P(inLockout);
+    P(tpmGeneratedEPS);
+#undef P
+  }
+  return result;
+}
+
+static uint32_t HandlerGetPermanentFlags(void) {
+  if (GetTpmVersion() == 2) {
+    return Handler2GetPermanentFlags();
+  } else {
+    return Handler1GetPermanentFlags();
+  }
+}
+
+static uint32_t Handler1GetSTClearFlags(void) {
+  TPM1_STCLEAR_FLAGS vflags;
+  uint32_t result = Tlcl1GetSTClearFlags(&vflags);
+  if (result == 0) {
+#define P(name) printf("%s %d\n", #name, vflags.name)
+  P(deactivated);
+  P(disableForceClear);
+  P(physicalPresence);
+  P(physicalPresenceLock);
+  P(bGlobalLock);
+#undef P
+  }
+  return result;
+}
+
+static uint32_t Handler2GetSTClearFlags(void) {
+  TPM2_STCLEAR_FLAGS vflags;
+  uint32_t result = Tlcl2GetSTClearFlags(&vflags);
+  if (result == 0) {
+#define P(name) printf("%s %d\n", #name, vflags.name)
+  P(phEnable);
+  P(shEnable);
+  P(ehEnable);
+  P(phEnableNV);
+  P(orderly);
 #undef P
   }
   return result;
 }
 
 static uint32_t HandlerGetSTClearFlags(void) {
-  TPM_STCLEAR_FLAGS vflags;
-  uint32_t result = TlclGetSTClearFlags(&vflags);
-  if (result == 0) {
-#define P(name) printf("%s %d\n", #name, vflags.name)
-#ifdef TPM2_MODE
-  P(phEnable);
-  P(shEnable);
-  P(ehEnable);
-  P(phEnableNV);
-  P(orderly);
-#else
-  P(deactivated);
-  P(disableForceClear);
-  P(physicalPresence);
-  P(physicalPresenceLock);
-  P(bGlobalLock);
-#endif
-#undef P
+  if (GetTpmVersion() == 2) {
+    return Handler2GetSTClearFlags();
+  } else {
+    return Handler1GetSTClearFlags();
   }
-  return result;
 }
 
 static uint32_t HandlerSendRaw(void) {
@@ -476,7 +572,6 @@ static uint32_t HandlerGetVersion(void) {
   return result;
 }
 
-#ifndef TPM2_MODE
 static void PrintIFXFirmwarePackage(TPM_IFX_FIRMWAREPACKAGE* firmware_package,
                                     const char* prefix) {
   printf("%s_package_id %08x\n", prefix,
@@ -485,9 +580,9 @@ static void PrintIFXFirmwarePackage(TPM_IFX_FIRMWAREPACKAGE* firmware_package,
   printf("%s_stale_version %08x\n", prefix, firmware_package->StaleVersion);
 }
 
-static uint32_t HandlerIFXFieldUpgradeInfo(void) {
-  TPM_IFX_FIELDUPGRADEINFO info;
-  uint32_t result = TlclIFXFieldUpgradeInfo(&info);
+static uint32_t Handler1IFXFieldUpgradeInfo(void) {
+  TPM1_IFX_FIELDUPGRADEINFO info;
+  uint32_t result = Tlcl1IFXFieldUpgradeInfo(&info);
   if (result == 0) {
     printf("max_data_size %u\n", info.wMaxDataSize);
     PrintIFXFirmwarePackage(&info.sBootloaderFirmwarePackage, "bootloader");
@@ -517,9 +612,7 @@ static uint32_t HandlerCheckOwnerAuth(void) {
   return TlclDefineSpaceEx(owner_auth, sizeof(owner_auth), TPM_NV_INDEX_TRIAL,
                            TPM_NV_PER_OWNERWRITE, 1, NULL, 0);
 }
-#endif  /* !TPM2_MODE */
 
-#ifdef TPM2_MODE
 static uint32_t HandlerDoNothingForTPM2(void) {
   return 0;
 }
@@ -528,11 +621,18 @@ static uint32_t HandlerNotImplementedForTPM2(void) {
   fprintf(stderr, "%s: not implemented for TPM2.0\n", args[1]);
   exit(OTHER_ERROR);
 }
-#endif
 
 /* Table of TPM commands.
  */
-command_record command_table[] = {
+command_record* command_table = NULL;
+static int n_commands = 0;
+
+/* Neverware: upstream initializes this table statically, but since we
+ * have to make runtime decisions between TPM1.2 and TPM2.0 handlers,
+ * move the initialization to this function which copies the resulting
+ * table out to |command_table| and |n_commands|. */
+void init_command_table() {
+  command_record ct[] = {
   { "tpmversion", "tpmver", "print TPM version: 1.2 or 2.0",
     HandlerTpmVersion },
   { "getflags", "getf", "read and print the value of selected flags",
@@ -543,28 +643,28 @@ command_record command_table[] = {
     TlclContinueSelfTest },
   { "assertphysicalpresence", "ppon",
     TPM20_DOES_NOTHING("assert Physical Presence",
-      TlclAssertPhysicalPresence) },
+      Tlcl1AssertPhysicalPresence) },
   { "physicalpresencecmdenable", "ppcmd",
     TPM20_NOT_IMPLEMENTED("turn on software PP",
-      TlclPhysicalPresenceCMDEnable) },
+      Tlcl1PhysicalPresenceCMDEnable) },
   { "enable", "ena",
     TPM20_DOES_NOTHING("enable the TPM" TPM12_NEEDS_PP,
       TlclSetEnable) },
   { "disable", "dis",
     TPM20_NOT_IMPLEMENTED("disable the TPM" TPM12_NEEDS_PP,
-      TlclClearEnable) },
+      Tlcl1ClearEnable) },
   { "activate", "act",
     TPM20_DOES_NOTHING("activate the TPM" TPM12_NEEDS_PP_REBOOT,
-      HandlerActivate) },
+      Handler1Activate) },
   { "deactivate", "deact",
     TPM20_NOT_IMPLEMENTED("deactivate the TPM" TPM12_NEEDS_PP_REBOOT,
-      HandlerDeactivate) },
+      Handler1Deactivate) },
   { "clear", "clr",
     "clear the TPM owner" TPM12_NEEDS_PP,
     TlclForceClear },
   { "setnvlocked", "setnv",
     TPM20_NOT_IMPLEMENTED("set the nvLocked flag permanently (IRREVERSIBLE!)",
-      TlclSetNvLocked) },
+      Tlcl1SetNvLocked) },
   { "lockphysicalpresence", "pplock",
     TPM_MODE_SELECT("lock (turn off) PP until reboot",
       "set rollback protection lock for kernel image until reboot"),
@@ -601,17 +701,22 @@ command_record command_table[] = {
     HandlerGetVersion },
   { "ifxfieldupgradeinfo", "ifxfui",
     TPM20_NOT_IMPLEMENTED("read and print IFX field upgrade info",
-      HandlerIFXFieldUpgradeInfo) },
+      Handler1IFXFieldUpgradeInfo) },
   { "checkownerauth", "chko",
     TPM20_NOT_IMPLEMENTED("Check owner authorization with well-known secret",
       HandlerCheckOwnerAuth) },
-};
+  };
 
-static int n_commands = sizeof(command_table) / sizeof(command_table[0]);
+  command_table = malloc(sizeof(ct));
+  memcpy(command_table, ct, sizeof(ct));
+  n_commands = sizeof(ct) / sizeof(ct[0]);
+}
 
 int main(int argc, char* argv[]) {
   char *progname;
   uint32_t result;
+
+  init_command_table();
 
   progname = strrchr(argv[0], '/');
   if (progname)
@@ -630,7 +735,7 @@ int main(int argc, char* argv[]) {
     args = argv;
 
     if (strcmp(cmd, "help") == 0) {
-      printf("tpmc mode: TPM%s\n", TPM_MODE_STRING);
+      printf("tpmc mode: TPM%s\n", TPM_MODE_STRING());
       printf("%26s %7s  %s\n\n", "command", "abbr.", "description");
       for (c = command_table; c < command_table + n_commands; c++) {
         printf("%26s %7s  %s\n", c->name, c->abbr, c->description);

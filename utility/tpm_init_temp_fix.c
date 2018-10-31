@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* Optional one-time enabling of TPM. */
-  result = TlclAssertPhysicalPresence();
+  result = Tlcl1AssertPhysicalPresence();
   if (result != 0) {
     syslog(pri, "TPM assertpp failed with code 0x%x\n", result);
     printf("fail\n");
