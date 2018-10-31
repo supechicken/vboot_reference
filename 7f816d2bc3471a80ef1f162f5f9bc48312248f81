@@ -212,6 +212,30 @@
       "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d087b446_100def90",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-10-31T18:33:38Z",
+      "side": 1,
+      "message": "OK I\u0027m going to drop the new beep type and file a bug to clean that up once this series is in - see crbug.com/899762",
+      "parentUuid": "1a73426c_1ddd7c07",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "7f816d2bc3471a80ef1f162f5f9bc48312248f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
