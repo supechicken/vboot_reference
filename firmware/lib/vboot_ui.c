@@ -211,17 +211,8 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	}
 
 	/* Enable if Alt OS is chosen */
-	if (boot_alt_os) {
-		if (GetAltOSFlags(&tpm_flags)) {
-			VB2_DEBUG("Unable to read Alt OS flags from TPM\n");
-			return VBERROR_TPM_ALT_OS;
-		}
+	if (boot_alt_os)
 		tpm_flags |= ALT_OS_ENABLE;
-		if (SetAltOSFlags(tpm_flags)) {
-			VB2_DEBUG("Unable to write Alt OS flags to TPM\n");
-			return VBERROR_TPM_ALT_OS;
-		}
-	}
 
 	/* Show Alt OS picker screen */
 	else if (shared->flags & VBSD_ALT_OS_SHOW_PICKER) {
@@ -236,8 +227,19 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 	}
 
 	if (boot_alt_os) {
+		tpm_flags |= ALT_OS_LAST_BOOT;
+		if (SetAltOSFlags(tpm_flags)) {
+			VB2_DEBUG("Unable to write Alt OS flags to TPM\n");
+			return VBERROR_TPM_ALT_OS;
+		}
 		/* Will only return on failure */
 		VbTryLegacy(ctx, 1);
+	}
+
+	tpm_flags &= ~ALT_OS_LAST_BOOT;
+	if (SetAltOSFlags(tpm_flags)) {
+		VB2_DEBUG("Unable to write Alt OS flags to TPM\n");
+		return VBERROR_TPM_ALT_OS;
 	}
 
 	/* Will only return on failure */

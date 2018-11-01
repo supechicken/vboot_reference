@@ -499,8 +499,8 @@ VbError_t VbCheckAltOS(struct vb2_context *ctx, VbCommonParams *cparams,
 		}
 	}
 
-	VB2_DEBUG("Alt OS: kflags=%d\n", kflags);
-	VB2_DEBUG("Alt OS: kflags_set=%d\n", kflags_set);
+	VB2_DEBUG("Alt OS: kflags=%#x\n", kflags);
+	VB2_DEBUG("Alt OS: kflags_set=%#x\n", kflags_set);
 	VB2_DEBUG("Alt OS: hotkey_after_sync=%d\n", hotkey_after_sync);
 	VB2_DEBUG("Alt OS: hotkey_last_boot=%d\n", hotkey_last_boot);
 	VB2_DEBUG("Alt OS: need_oprom=%d\n", need_oprom);
