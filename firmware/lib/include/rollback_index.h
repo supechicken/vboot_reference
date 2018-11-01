@@ -165,6 +165,7 @@ uint32_t SetVirtualDevMode(int val);
 enum alt_os_flags {
 	ALT_OS_ENABLE		= (1 << 0),
 	ALT_OS_HOTKEY 		= (1 << 1),
+	ALT_OS_LAST_BOOT	= (1 << 2),
 };
 
 /**
