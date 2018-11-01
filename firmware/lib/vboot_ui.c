@@ -154,7 +154,7 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 }
 
 VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
-			    uint32_t timeout_msec, int *index)
+			    uint32_t timeout_msec, int selected, int *index)
 {
 	/* Calibrate delay */
 	uint64_t a, b;
@@ -168,7 +168,7 @@ VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
 	VB2_DEBUG("Alt OS picker: ticks_per_msec=%" PRIu64 "\n",
 		  ticks_per_msec);
 
-	*index = 0;
+	*index = !!selected;
 	while (1) {
 		VbDisplayMenu(ctx, cparams, VB_SCREEN_ALT_OS, 0, *index);
 		if (VbWantShutdown(cparams->gbb->flags))
@@ -198,12 +198,20 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	int boot_alt_os = 0;  /* 0 = Chrome OS; 1 = Alt OS */
 	uint8_t tpm_flags;
+	int alt_os_last_boot;
+
+	/* Grab Alt OS TPM flags */
+	if (GetAltOSFlags(&tpm_flags)) {
+		VB2_DEBUG("Unable to read Alt OS flags from TPM\n");
+		return VBERROR_TPM_ALT_OS;
+	}
+	alt_os_last_boot = !!(tpm_flags & ALT_OS_LAST_BOOT);
 
 	/* Confirm enabling Alt OS */
 	if (shared->flags & VBSD_ALT_OS_CONFIRM_ENABLE) {
 		VB2_DEBUG("Alt OS UI: Picker screen without timeout\n");
 		VbError_t ret = vb2_alt_os_picker(ctx, cparams,
-						  0, &boot_alt_os);
+						  0, 0, &boot_alt_os);
 		if (ret != VBERROR_SUCCESS) {
 			VB2_DEBUG("Error from Alt OS picker screen\n");
 			return ret;
@@ -219,6 +227,7 @@ VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 		VB2_DEBUG("Alt OS UI: Picker screen with timeout\n");
 		VbError_t ret = vb2_alt_os_picker(ctx, cparams,
 						  picker_timeout_msec,
+						  alt_os_last_boot,
 						  &boot_alt_os);
 		if (ret != VBERROR_SUCCESS) {
 			VB2_DEBUG("Error from Alt OS picker screen\n");
