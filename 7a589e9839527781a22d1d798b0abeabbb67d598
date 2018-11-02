@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08810a17_4d25a0fa",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-02T15:57:34Z",
+      "side": 1,
+      "message": "This skip is done by default since the unittests will be signing with the test key which doesn\u0027t  match the currently checked in manifests.  I\u0027m not sure what the end solution looks like here.",
+      "revId": "7a589e9839527781a22d1d798b0abeabbb67d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
