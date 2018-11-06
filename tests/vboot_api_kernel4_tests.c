@@ -293,6 +293,7 @@ static void VbSlkTest(void)
 
 	// todo: rkr/w/l fail ignored if recovery
 
+#ifdef ALT_OS
 	/* Boot alt OS */
 	uint32_t oprom_needed;
 
@@ -353,6 +354,7 @@ static void VbSlkTest(void)
 	gaf_val |= ALT_OS_ENABLE;
 	vbboot_retval = -4;
 	test_slk(VBERROR_SIMULATED, 0, "Alt OS boot bad");
+#endif  /* ALT_OS */
 
 	/*
 	 * Disable request without OPROM
