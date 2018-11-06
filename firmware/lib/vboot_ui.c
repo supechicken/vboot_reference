@@ -153,6 +153,8 @@ int VbUserConfirms(struct vb2_context *ctx, VbCommonParams *cparams,
 	return -1;
 }
 
+#ifdef ALT_OS
+
 VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
 			    uint32_t timeout_msec, int *index)
 {
@@ -193,7 +195,7 @@ VbError_t vb2_alt_os_picker(struct vb2_context *ctx, VbCommonParams *cparams,
 VbError_t vb2_alt_os_ui(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	/* Note that OPROM will not be disabled until the next reboot. */
-	const int picker_timeout_msec = 20 * 1000;
+	const int picker_timeout_msec = 100000000;
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
 	int boot_alt_os = 0;  /* 0 = Chrome OS; 1 = Alt OS */
@@ -249,6 +251,8 @@ VbError_t VbBootAltOS(struct vb2_context *ctx, VbCommonParams *cparams)
 	VbError_t retval = vb2_alt_os_ui(ctx, cparams);
 	return retval;
 }
+
+#endif  /* ALT_OS */
 
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
