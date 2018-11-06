@@ -3,12 +3,15 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-. "$(dirname "$0")/common.sh"
+SCRIPT_DIR="$(dirname "$0")"
+. "${SCRIPT_DIR}/common.sh"
 
 load_shflags || exit 1
 
 DEFINE_boolean override_keyid "${FLAGS_TRUE}" \
   "Override keyid from manifest." ""
+DEFINE_boolean verify_manifest "${FLAGS_TRUE}" \
+  "Verify manifest includes restrictions." ""
 
 FLAGS_HELP="Usage: ${PROG} [options] <input_dir> <key_dir> <output_image>
 
@@ -235,6 +238,10 @@ sign_cr50_firmware() {
   local output_file="$9"
 
   local temp_dir="$(make_temp_dir)"
+
+  if [[ "${FLAGS_verify_manifest}" == "${FLAGS_TRUE}" ]]; then
+    "${SCRIPT_DIR}/verify_cr50_manifest.sh" "${manifest_file}"
+  fi
 
   IMAGE_SIZE='524288'
 
