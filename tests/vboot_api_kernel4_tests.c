@@ -293,8 +293,11 @@ static void VbSlkTest(void)
 
 	// todo: rkr/w/l fail ignored if recovery
 
-	/* Boot alt OS */
-	uint32_t oprom_needed;
+	/*
+	 * Boot alt OS.
+	 * Also make sure when ALT_OS not defined, alt OS flags should not
+	 * affect normal boot flow.
+	 */
 
 	/*
 	 * Enable request without OPROM
@@ -312,9 +315,14 @@ static void VbSlkTest(void)
 	gah_retval = 1;
 	VbNvSet(&vnc, VBNV_ENABLE_ALT_OS_REQUEST, 1);
 	VbNvTeardown(&vnc);
+#ifdef ALT_OS
+	uint32_t oprom_needed;
 	test_slk(VBERROR_VGA_OPROM_MISMATCH, 0, "Alt OS doesn't request OPROM");
 	VbNvGet(&vnc, VBNV_OPROM_NEEDED, &oprom_needed);
 	TEST_EQ(oprom_needed, 1, "Alt OS doesn't request OPROM");
+#else
+	test_slk(0, 0, "Normal");
+#endif
 
 	/*
 	 * Enable request with OPROM
@@ -334,7 +342,11 @@ static void VbSlkTest(void)
 	VbNvSet(&vnc, VBNV_ENABLE_ALT_OS_REQUEST, 1);
 	VbNvTeardown(&vnc);
 	vbboot_retval = -4;
+#ifdef ALT_OS
 	test_slk(VBERROR_SIMULATED, 0, "Alt OS enable bad");
+#else
+	test_slk(-4, 0, "Normal");
+#endif
 
 	/*
 	 * Enabled with OPROM
@@ -352,7 +364,11 @@ static void VbSlkTest(void)
 	shared->flags |= VBSD_OPROM_LOADED;
 	gaf_val |= ALT_OS_ENABLE;
 	vbboot_retval = -4;
+#ifdef ALT_OS
 	test_slk(VBERROR_SIMULATED, 0, "Alt OS boot bad");
+#else
+	test_slk(-4, 0, "Normal");
+#endif
 
 	/*
 	 * Disable request without OPROM
@@ -371,8 +387,12 @@ static void VbSlkTest(void)
 	VbNvSet(&vnc, VBNV_DISABLE_ALT_OS_REQUEST, 1);
 	VbNvTeardown(&vnc);
 	vbboot_retval = -1;
+#ifdef ALT_OS
 	test_slk(VBERROR_SIMULATED, 0, "Alt OS incorrect boot after disable");
 	TEST_FALSE(saf_val & ALT_OS_ENABLE, "Alt OS doesn't disable");
+#else
+	test_slk(VBERROR_SIMULATED, 0, "Normal");
+#endif
 }
 
 int main(void)
