@@ -7,7 +7,9 @@
 
 load_shflags || exit 1
 
-DEFINE_boolean override_keyid $FLAGS_TRUE "Ignore keyid from manifest." ""
+DEFINE_boolean override_keyid $FLAGS_TRUE "Override keyid from manifest." ""
+DEFINE_boolean verify_manifest $FLAGS_TRUE \
+  "Verify manifest includes restrictions." ""
 
 FLAGS_HELP="Usage: ${PROG} [options] <input_dir> <key_dir> <output_image>
 
@@ -21,6 +23,8 @@ eval set -- "${FLAGS_ARGV}"
 # Abort on error and uninitialized variables.
 set -e
 set -u
+
+SCRIPT_DIR="$(dirname "$0")"
 
 # This function accepts two arguments, names of two binary files.
 #
@@ -237,6 +241,10 @@ sign_cr50_firmware() {
   local output_file="${9}"
 
   local temp_dir="$(make_temp_dir)"
+
+  if [ "$FLAGS_verify_manifest" = "$FLAGS_TRUE" ]; then
+    "${SCRIPT_DIR}/verify_cr50_manifest.sh" "${manifest_file}"
+  fi
 
   IMAGE_SIZE='524288'
 
