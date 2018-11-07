@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ab03d0c_8a329f44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "434b4cb9_d67eacda",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c80f1a24_ea2acce4",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c65d639_d4d73089",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c80f1a24_ea2acce4",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "7bec70f0_8223e13c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33fa0d0b_68da4a63",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1801c707_63c73e40",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "d0b100d2_808aa87c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1801c707_63c73e40",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23bbc50c_ff02e79e",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -87,6 +165,30 @@
       "writtenOn": "2018-10-26T23:42:01Z",
       "side": 1,
       "message": "Shouldn\u0027t this be \u00271\u0027...\u00279\u0027?",
+      "range": {
+        "startLine": 253,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cea77d_f5f6b1d3",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "0 means the default bootloader. I\u0027ll add a comment.",
+      "parentUuid": "23bbc50c_ff02e79e",
       "range": {
         "startLine": 253,
         "startChar": 8,
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "fb450427_e2bc87d0",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6715c555_ddd99559",
+      "range": {
+        "startLine": 283,
+        "startChar": 19,
+        "endLine": 283,
+        "endChar": 20
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94860e91_94b30e94",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "bcbe6472_34d8b738",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "I\u0027m not 100% convinced this is an improvement.\n\n- lots of menu items, all the same (adds 40 lines of code)\n- removes ~5 lines of code here\n- removes vb2_init_altfw_menu() (35 LOC)\n- I think the logic in DC is a wash, but haven\u0027t tried yet\n\nSo perhaps it makes the code simpler? Not sure. Anyway I\u0027ve coded it up so you can compare, I\u0027m fine with either option and I have a lot less experience maintaining this code.\n\nBTW you used enter_dev_warning_menu - was that intentional?",
+      "parentUuid": "94860e91_94b30e94",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37eba65c_43d421da",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -153,6 +297,24 @@
       "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f1f9ac_fc293f4c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-07T23:26:38Z",
+      "side": 1,
+      "message": "This way the code is not even executed in dev mode, but anyway I don\u0027t see a problem with either approach.\n\nWith the above changes, this goes away.",
+      "parentUuid": "37eba65c_43d421da",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
