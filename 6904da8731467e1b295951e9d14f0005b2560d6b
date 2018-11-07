@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dd46b83f_31293b16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-07T09:32:02Z",
+      "side": 1,
+      "message": "How about we simplify the test here -- use an environment variable directly, and remove CQ-DEPEND.\n\nThe other CL can take care of testing the USE flag itself.",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "6904da8731467e1b295951e9d14f0005b2560d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4aec7222_a1145ccd",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 7
