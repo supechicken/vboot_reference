@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c331c86d_5588903f",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T19:48:44Z",
+      "side": 1,
+      "message": "As per my email on Oct 31, I thought the POR was that the signer will only sign things with restrictions until we actually decide on how to select builds for final signing, performing unlocked signing from the HSM.\n\nWe really need to get on the same page here so lets set up a meeting when you get back from vacation.",
+      "parentUuid": "c631c527_2fa060d3",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 78
+      },
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9769e469_b391cc98",
         "filename": "scripts/image_signing/verify_cr50_manifest.sh",
         "patchSetId": 2
