@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "97177763_ab497a60",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:20:49Z",
+      "side": 1,
+      "message": "correct, there is a test in the end (in signer/bs at least) which verifies that the test key is not in the image and prod key is",
+      "parentUuid": "6ba23142_06732955",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae02d41f_bd8c27ba",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
