@@ -449,11 +449,18 @@ VbError_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 			       VbCommonParams *cparams,
 			       VbAuxFwUpdateSeverity_t *severity)
 {
+#if 0
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+#endif
 
 	/* If we're not updating the EC, skip aux fw syncs as well */
 	if (!ec_sync_allowed(ctx, cparams) ||
+
+#if 0
+/* %%% but i want to aux fw sync */
 	    !(sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW) ||
+#endif
+
 	    (cparams->gbb->flags & GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)) {
 		*severity = VB_AUX_FW_NO_UPDATE;
 		return VBERROR_SUCCESS;
