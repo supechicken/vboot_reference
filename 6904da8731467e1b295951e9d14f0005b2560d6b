@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f747337d_8218c9a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-07T10:04:50Z",
+      "side": 1,
+      "message": "CQ-DEPEND here is to make sure make.conf and ebuild is merged before this.\nAnd this is supposed to be the last CL in the chain, so it\u0027s the only place to test the USE flag.",
+      "parentUuid": "dd46b83f_31293b16",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "6904da8731467e1b295951e9d14f0005b2560d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4aec7222_a1145ccd",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c02656ac_054a105b",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-07T10:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aec7222_a1145ccd",
+      "range": {
+        "startLine": 297,
+        "startChar": 9,
+        "endLine": 297,
+        "endChar": 12
+      },
+      "revId": "6904da8731467e1b295951e9d14f0005b2560d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a54c9c_248d2527",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "6904da8731467e1b295951e9d14f0005b2560d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c06edcdb_6aaab669",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-07T10:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a54c9c_248d2527",
+      "range": {
+        "startLine": 298,
+        "startChar": 44,
+        "endLine": 298,
+        "endChar": 47
+      },
+      "revId": "6904da8731467e1b295951e9d14f0005b2560d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
