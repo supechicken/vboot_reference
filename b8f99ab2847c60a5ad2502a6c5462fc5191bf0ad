@@ -226,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "78cb8a28_699e8fd0",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T19:45:47Z",
+      "side": 1,
+      "message": "This code is not changed in function from the one in bs besides have the key dir passed in.   \n\nMy reading of the code is that in both cases it just determines if the test key is present in both rw_a/rw_b, and if so indicates which test key.  Then the rest of the code swaps the test key to the prod key.\n\nI also believe the current comment is accurate?",
+      "parentUuid": "97177763_ab497a60",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae02d41f_bd8c27ba",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
