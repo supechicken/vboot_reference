@@ -200,8 +200,11 @@ VbError_t VbBootNormal(struct vb2_context *ctx)
 	 * version to less than the version currently in the TPM.  That is,
 	 * we're limiting rollforward, not allowing rollback.
 	 */
-	if (max_rollforward < shared->kernel_version_tpm_start)
+	if (max_rollforward < shared->kernel_version_tpm_start) {
 		max_rollforward = shared->kernel_version_tpm_start;
+		vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD,
+				max_rollforward);
+	}
 
 	if (shared->kernel_version_tpm > max_rollforward) {
 		VB2_DEBUG("Limiting TPM kernel version roll-forward "
