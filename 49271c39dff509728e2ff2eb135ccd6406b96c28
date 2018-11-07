@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97caba10_dde8ad34",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-07T09:26:14Z",
+      "side": 1,
+      "message": "Are you only including /* ALT_OS */ for the longer sections?",
+      "range": {
+        "startLine": 321,
+        "startChar": 5,
+        "endLine": 321,
+        "endChar": 6
+      },
+      "revId": "49271c39dff509728e2ff2eb135ccd6406b96c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68ec96b_316f3119",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-07T09:26:14Z",
+      "side": 1,
+      "message": "Without tracing the code, this slightly worries me since I\u0027m not sure where it comes from.",
+      "range": {
+        "startLine": 344,
+        "startChar": 10,
+        "endLine": 344,
+        "endChar": 12
+      },
+      "revId": "49271c39dff509728e2ff2eb135ccd6406b96c28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
