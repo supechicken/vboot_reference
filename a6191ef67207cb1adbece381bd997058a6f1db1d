@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "c631c527_2fa060d3",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:26:19Z",
+      "side": 1,
+      "message": "when signing mp images there would be no board restrictions, and we would never sign DEV ID restricted images with prod key - there is no need.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 78
+      },
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9769e469_b391cc98",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:26:19Z",
+      "side": 1,
+      "message": "changing this to (0|0x[0-9a-f]+) will allow passing 0 in any field.",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1c0096f_f178c38d",
         "filename": "scripts/image_signing/verify_cr50_manifest.sh",
         "patchSetId": 2
@@ -13,6 +59,24 @@
       "writtenOn": "2018-11-07T01:09:34Z",
       "side": 1,
       "message": "vbendeb: This will accept any single non-zero of the board_id flags or DEV_ID flags.  Is this sufficient?",
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a4cd93_38d1c6c1",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:26:19Z",
+      "side": 1,
+      "message": "again, in MP branch generally there would be no restrictions.",
+      "parentUuid": "a1c0096f_f178c38d",
       "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
