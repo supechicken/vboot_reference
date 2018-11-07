@@ -37,6 +37,47 @@
     },
     {
       "key": {
+        "uuid": "e51ed64a_ae415c29",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "here and in line 52 could use \n\ngrep -q \"${pattern}\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 39,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f069ad96_47cfc7dd",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "qouting \" ${od_options}\" makes od consider the entire string as a single command line parameter",
+      "parentUuid": "1fb314ea_f43ebca4",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1005f10c_d1badeef",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
@@ -69,6 +110,29 @@
       "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f459eec2_c2508492",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "this function checks only for test keys presence, but the comment claims that it checks for for both test and prod keys. Not sure where this discrepancy comes from, the function probably was changed but the comment stayed,",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -177,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "532c390d_37ad1680",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "why not to do it now - the blobs are there in the tarball",
+      "parentUuid": "00607029_345b324a",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73740854_b3328b19",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
@@ -188,6 +270,47 @@
       "writtenOn": "2018-11-06T23:33:36Z",
       "side": 1,
       "message": "vbendeb: Note: this defaults to true, and is a substantial departure from existing behaviour.",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd011f9c_29925b01",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "should be in quotes",
+      "range": {
+        "startLine": 142,
+        "startChar": 33,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864592d0_d25185cc",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "what is override-keyid about? I don\u0027t even remember",
+      "parentUuid": "73740854_b3328b19",
       "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -366,6 +489,29 @@
       "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b5f370_a103733c",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "should use \"${dst_suffix}\" here and below",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

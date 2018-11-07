@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0bf53b3_aab14565",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:08:43Z",
+      "side": 1,
+      "message": "why not to do it now?\n\nyes should be in quotes",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "7a589e9839527781a22d1d798b0abeabbb67d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08810a17_4d25a0fa",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 3
