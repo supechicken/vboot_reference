@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "35a03b38_bd66b6cb",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T01:12:38Z",
+      "side": 1,
+      "message": "Fixed in latest revision.",
+      "parentUuid": "f069ad96_47cfc7dd",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1005f10c_d1badeef",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
@@ -259,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "5019bf87_cad265e3",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T01:12:38Z",
+      "side": 1,
+      "message": "It was functionality I hadn\u0027t gotten to yet.  Fixed now.",
+      "parentUuid": "532c390d_37ad1680",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73740854_b3328b19",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
@@ -311,6 +347,24 @@
       "side": 1,
       "message": "what is override-keyid about? I don\u0027t even remember",
       "parentUuid": "73740854_b3328b19",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd5f769_4c8f49d6",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T01:12:38Z",
+      "side": 1,
+      "message": "It ignores the keyid in the manifest file and signs the image unconditionally with the key id provided.  Without this, the tests will need a munged image because they will not be able to sign with the production key in the manifest.",
+      "parentUuid": "864592d0_d25185cc",
       "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -503,6 +557,30 @@
       "writtenOn": "2018-11-07T01:08:43Z",
       "side": 1,
       "message": "should use \"${dst_suffix}\" here and below",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4727a58f_8e8ec89e",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T01:12:38Z",
+      "side": 1,
+      "message": "Already done in latest revision.",
+      "parentUuid": "59b5f370_a103733c",
       "range": {
         "startLine": 177,
         "startChar": 11,
