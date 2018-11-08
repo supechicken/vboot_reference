@@ -354,6 +354,22 @@ static uint32_t tlcl_get_capability(TPM_CAP cap, TPM_PT property,
 	return rv;
 }
 
+static uint32_t tpm_get_random(uint16_t bytes_requested,
+			       struct get_random_response **presp)
+{
+	struct tpm2_response *response = &tpm2_resp;
+	struct tpm2_get_random_cmd getrandom;
+	uint32_t rv;
+
+	getrandom.bytes_requested = bytes_requested;
+
+	rv = tpm_send_receive(TPM2_GetRandom, &getrandom, response);
+	if (rv == TPM_SUCCESS)
+		*presp = &response->random;
+
+	return rv;
+}
+
 static uint32_t tlcl_get_tpm_property(TPM_PT property, uint32_t *pvalue)
 {
 	uint32_t rv;
@@ -541,9 +557,17 @@ uint32_t TlclReadLock(uint32_t index)
 
 uint32_t TlclGetRandom(uint8_t *data, uint32_t length, uint32_t *size)
 {
-	*size = 0;
-	VB2_DEBUG("NOT YET IMPLEMENTED\n");
-	return TPM_E_IOERROR;
+	uint32_t rv;
+	struct get_random_response *resp;
+
+	if (length > TPM_BUFFER_SIZE - 128)
+		return TPM_E_BUFFER_SIZE;
+
+	rv = tpm_get_random(length, &resp);
+	if (rv == TPM_SUCCESS)
+		*size = resp->random_bytes.size;
+
+	return rv;
 }
 
 // Converts TPM_PT_VENDOR_STRING_x |value| to an array of bytes in |buf|.

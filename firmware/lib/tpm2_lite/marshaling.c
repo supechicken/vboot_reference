@@ -261,6 +261,11 @@ static void unmarshal_get_capability(void **buffer, int *size,
 	unmarshal_TPMS_CAPABILITY_DATA(buffer, size, &cap->capability_data);
 }
 
+static void unmarshal_get_random(void **buffer, int *size,
+				 struct get_random_response *random)
+{
+	unmarshal_TPM2B(buffer, size, &random->random_bytes);
+}
 
 /*
  * Each marshaling function receives a pointer to the buffer to marshal into,
@@ -750,6 +755,10 @@ int tpm_unmarshal_response(TPM_CC command,
 		unmarshal_get_capability(&response_body, &cr_size,
 					 &response->cap);
 		break;
+
+	case TPM2_GetRandom:
+		unmarshal_get_random(&response_body, &cr_size,
+				     &response->random);
 
 	case TPM2_Hierarchy_Control:
 	case TPM2_NV_Write:
