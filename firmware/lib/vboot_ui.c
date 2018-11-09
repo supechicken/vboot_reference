@@ -90,11 +90,11 @@ static void vb2_try_alt_fw(int allowed, int altfw_num)
 	if (allowed) {
 		vb2_run_altfw(altfw_num);	/* will not return if found */
 	} else {
-		VB2_DEBUG("VbBootDeveloper() - Legacy boot is disabled\n");
-		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
-				     "been enabled. Refer to the developer"
-				     "-mode documentation for details.\n");
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify("VbBootDeveloper() - Legacy boot is disabled\n",
+				 "WARNING: Booting legacy BIOS has not "
+				 "been enabled. Refer to the developer"
+				 "-mode documentation for details.\n",
+				 VB_BEEP_NOT_ALLOWED);
 	}
 }
 
@@ -104,8 +104,9 @@ uint32_t VbTryUsb(struct vb2_context *ctx)
 	if (VBERROR_SUCCESS == retval) {
 		VB2_DEBUG("VbBootDeveloper() - booting USB\n");
 	} else {
-		VB2_DEBUG("VbBootDeveloper() - no kernel found on USB\n");
-		vb2_error_beep(VB_BEEP_FAILED);
+		vb2_error_notify("VbBootDeveloper() - no kernel found on USB\n",
+				 "Could not boot from USB",
+				 VB_BEEP_FAILED);
 		/*
 		 * Clear recovery requests from failed
 		 * kernel loading, so that powering off
@@ -298,12 +299,11 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 					 * TONORM won't work (only for
 					 * non-shipping devices).
 					 */
-					VB2_DEBUG("TONORM rejected by "
-						  "FORCE_DEV_SWITCH_ON\n");
-					VbExDisplayDebugInfo(
-						"WARNING: TONORM prohibited by "
-						"GBB FORCE_DEV_SWITCH_ON.\n\n");
-					vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+					vb2_error_notify("TONORM rejected by "
+							 "FORCE_DEV_SWITCH_ON\n",
+							 "WARNING: TONORM prohibited by "
+							 "GBB FORCE_DEV_SWITCH_ON.\n\n",
+							 VB_BEEP_NOT_ALLOWED);
 					break;
 				}
 				VbDisplayScreen(ctx,
@@ -363,14 +363,14 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 			VB2_DEBUG("VbBootDeveloper() - "
 				  "user pressed Ctrl+U; try USB\n");
 			if (!allow_usb) {
-				VB2_DEBUG("VbBootDeveloper() - "
-					  "USB booting is disabled\n");
-				VbExDisplayDebugInfo(
-					"WARNING: Booting from external media "
-					"(USB/SD) has not been enabled. Refer "
-					"to the developer-mode documentation "
-					"for details.\n");
-				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+				vb2_error_notify(
+                                     "VbBootDeveloper() - "
+                                     "USB booting is disabled\n",
+                                     "WARNING: Booting from external media "
+                                     "(USB/SD) has not been enabled. Refer "
+                                     "to the developer-mode documentation "
+                                     "for details.\n",
+				     VB_BEEP_NOT_ALLOWED);
 			} else {
 				/*
 				 * Clear the screen to show we get the Ctrl+U
@@ -523,9 +523,11 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 					 * any case we don't like this.  Beep
 					 * and ignore.
 					 */
-					VB2_DEBUG("^D but rec switch "
-						  "is pressed\n");
-					vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+					vb2_error_notify("^D but rec switch "
+                                                         "is pressed\n",
+                                                         "^D but rec switch "
+                                                         "is pressed\n",
+                                                         VB_BEEP_NOT_ALLOWED);
 					continue;
 				}
 

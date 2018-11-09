@@ -122,17 +122,18 @@ static VbError_t boot_legacy_action(struct vb2_context *ctx)
 
 	if (disable_dev_boot) {
 		vb2_flash_screen(ctx);
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify("Dev mode disabled", "Developer mode disabled",
+				 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 
 	if (!altfw_allowed) {
 		vb2_flash_screen(ctx);
-		VB2_DEBUG("Legacy boot is disabled\n");
-		VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not "
-				     "been enabled. Refer to the developer"
-				     "-mode documentation for details.\n");
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify("Legacy boot is disabled\n",
+                                 "WARNING: Booting legacy BIOS has not "
+				 "been enabled. Refer to the developer"
+				 "-mode documentation for details.\n",
+                                 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 
@@ -158,12 +159,12 @@ static VbError_t boot_usb_action(struct vb2_context *ctx)
 	    !(vb2_get_sd(ctx)->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) &&
 	    !(vb2_get_fwmp_flags() & FWMP_DEV_ENABLE_USB)) {
 		vb2_flash_screen(ctx);
-		VB2_DEBUG("USB booting is disabled\n");
-		VbExDisplayDebugInfo("WARNING: Booting from external media "
-				     "(USB/SD) has not been enabled. Refer "
-				     "to the developer-mode documentation "
-				     "for details.\n");
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify("USB booting is disabled\n",
+                                 "WARNING: Booting from external media "
+                                 "(USB/SD) has not been enabled. Refer "
+			         "to the developer-mode documentation "
+			         "for details.\n",
+                                 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 
@@ -175,9 +176,7 @@ static VbError_t boot_usb_action(struct vb2_context *ctx)
 	/* Loading kernel failed. Clear recovery request from that. */
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
 	vb2_flash_screen(ctx);
-	VB2_DEBUG(no_kernel);
-	VbExDisplayDebugInfo(no_kernel);
-	vb2_error_beep(VB_BEEP_FAILED);
+	vb2_error_notify(no_kernel, no_kernel, VB_BEEP_FAILED);
 	return VBERROR_KEEP_LOOPING;
 }
 
@@ -241,9 +240,9 @@ static VbError_t enter_to_dev_menu(struct vb2_context *ctx)
 		"WARNING: TODEV rejected, developer mode is already on.\n";
 	if (vb2_get_sd(ctx)->vbsd->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 		vb2_flash_screen(ctx);
-		VB2_DEBUG(dev_already_on);
-		VbExDisplayDebugInfo(dev_already_on);
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify(dev_already_on,
+                                 dev_already_on,
+                                 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 	vb2_change_menu(VB_MENU_TO_DEV, VB_TO_DEV_CANCEL);
@@ -326,10 +325,10 @@ static VbError_t to_norm_action(struct vb2_context *ctx)
 {
 	if (vb2_get_sd(ctx)->gbb_flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 		vb2_flash_screen(ctx);
-		VB2_DEBUG("TONORM rejected by FORCE_DEV_SWITCH_ON\n");
-		VbExDisplayDebugInfo("WARNING: TONORM prohibited by "
-				     "GBB FORCE_DEV_SWITCH_ON.\n\n");
-		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+		vb2_error_notify("TONORM rejected by FORCE_DEV_SWITCH_ON\n",
+                                 "WARNING: TONORM prohibited by "
+				 "GBB FORCE_DEV_SWITCH_ON.\n\n",
+                                 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 

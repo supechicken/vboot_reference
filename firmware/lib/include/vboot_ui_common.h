@@ -18,6 +18,17 @@ enum vb2_beep_type {
  */
 void vb2_error_beep(enum vb2_beep_type beep);
 
+
+/**
+ * Prints a message to screen, logs a possibly different message to log,
+ * and beeps to notify user.
+ *
+ * NULL messages will be ignored.
+ */
+void vb2_error_notify(const char *log_msg,
+			const char *print_msg,
+			enum vb2_beep_type beep);
+
 /**
  * Run alternative firmware if allowed
  *

@@ -14,7 +14,7 @@
 #include "vboot_api.h"
 #include "vboot_ui_common.h"
 
-/* Two short beeps to notify the user that attempted action was disallowed. */
+/* One or two beeps to notify that attempted action was disallowed. */
 void vb2_error_beep(enum vb2_beep_type beep)
 {
 	switch (beep) {
@@ -28,6 +28,26 @@ void vb2_error_beep(enum vb2_beep_type beep)
 		VbExBeep(120, 400);
 		break;
 	}
+}
+
+
+/* Print a message to log, another message to the screen, and beep once or
+ * twice.
+ *
+ * Called when an attempted action was disallowed. NULL messages are ignored.
+ */
+void vb2_error_notify(const char *log_msg,
+                      const char *print_msg,
+                      enum vb2_beep_type beep)
+{
+        if (log_msg){
+		VB2_DEBUG(log_msg);
+	}
+	if (print_msg) {
+        	VbExDisplayDebugInfo(print_msg);
+	}
+
+	vb2_error_beep(beep);
 }
 
 void vb2_run_altfw(int altfw_num)
