@@ -88,4 +88,9 @@ typedef enum _VB_OPTIONS_MENU {
 	VB_OPTIONS_COUNT,
 } VB_OPTIONS_MENU;
 
+/**
+ * Flash the screen to black to catch user awareness, then redraw menu.
+ */
+void vb2_flash_screen(struct vb2_context *ctx);
+
 #endif
