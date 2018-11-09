@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "66929da2_0069ddf0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-09T16:23:43Z",
+      "side": 1,
+      "message": "Well I quite like the idea of allowing \u00270\u0027 everywhere, having thought about it a bit.\n\nThe reason is that there is otherwise no way to select the default option from the altfw menu. I support we could display a prompt like (\u0027default\u0027) next to the default one.\n\nI\u0027ll add comments everywhere to explain that it is intentional. We can always adjust it later if needed.",
+      "parentUuid": "2abbe1e6_0883a770",
+      "range": {
+        "startLine": 253,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6715c555_ddd99559",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -325,6 +349,24 @@
     },
     {
       "key": {
+        "uuid": "73a11d6d_bd6d4316",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-09T16:23:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9ab7c07_74ed1b9f",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37eba65c_43d421da",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -372,6 +414,24 @@
       "side": 1,
       "message": "Well, it\u0027s not executed if you just put a\n\n if (ctx.flags \u0026 VB2_CONTEXT_RECOVERY_MODE)\n   return;\n\nright above it either, right? I don\u0027t really see the difference.",
       "parentUuid": "c9f1f9ac_fc293f4c",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95ad054a_dd5fc437",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-11-09T16:23:43Z",
+      "side": 1,
+      "message": "Sure, I mean that it is nice to have it in a function which is not called at all except in dev mode. Less to worry about. Anyway it doesn\u0027t matter now.",
+      "parentUuid": "6c11f46b_5edff556",
       "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
