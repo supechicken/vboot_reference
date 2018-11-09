@@ -7,7 +7,6 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
 #define VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
-
 enum vb2_beep_type {
 	VB_BEEP_FAILED,		/* Permitted but the operation failed */
 	VB_BEEP_NOT_ALLOWED,	/* Operation disabled by user setting */
@@ -17,6 +16,19 @@ enum vb2_beep_type {
  * Emit beeps to indicate an error
  */
 void vb2_error_beep(enum vb2_beep_type beep);
+
+
+/**
+ * Prints a message to screen, logs a possibly different message to log,
+ * and beeps to notify user.
+ *
+ * @print_msg	Display message. NULL message will be ignored.
+ * @log_msg	Log message. NULL message will be ignored.
+ * @beep	Type of beep sound.
+ */
+void vb2_error_notify(const char *print_msg,
+		      const char *log_msg,
+		      enum vb2_beep_type beep);
 
 /**
  * Run alternative firmware if allowed
