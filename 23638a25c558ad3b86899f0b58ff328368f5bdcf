@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bf240f7_487e9dcd",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-09T08:08:08Z",
+      "side": 1,
+      "message": "The name \"alt_os_cur\" does not looks like a boolean property. It\u0027s unclear that what 0/1 means here.\n\nSuggest change this to a string property (\"enabled\"/\"disabled\"), or\nadd something like \"A(1 if enabled, 0 otherwise)\" in the description.",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "23638a25c558ad3b86899f0b58ff328368f5bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
