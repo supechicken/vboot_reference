@@ -22,6 +22,30 @@
       "revId": "23638a25c558ad3b86899f0b58ff328368f5bdcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1faf2ff_04bd9d9a",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-09T08:23:31Z",
+      "side": 1,
+      "message": "OK, let\u0027s rename to alt_os_enabled.",
+      "parentUuid": "3bf240f7_487e9dcd",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "23638a25c558ad3b86899f0b58ff328368f5bdcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
