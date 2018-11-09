@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "2abbe1e6_0883a770",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "I\u0027m just confused why we would allow that here... we don\u0027t display or highlight the default bootloader on this screen either, right? If people enter this menu they already want to look at the list rather than boot an some automatic option directly, so it seems very odd to offer them this \"default\" choice here then, when they already have the info they need to press the right button for what they want instead.\n\nOn the other hand, in vb2_developer_ui() you only allow 1..9, whereas that\u0027s the one where I think allowing 0 would actually make some sense (for people who just want to boot the default choice right away without going through the menu). Did you maybe confuse which situation this function is handling vs. the other one?",
+      "parentUuid": "82cea77d_f5f6b1d3",
+      "range": {
+        "startLine": 253,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6715c555_ddd99559",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -283,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "c9ab7c07_74ed1b9f",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "Thanks, I think the second option you have now is better. The total LOC might be similar, but I think the boilerplate code from array definitions add less cognitive load than actual code. Also, I think reusing the disabled_idx_mask mechanism makes it more consistent with other menus.\n\n\u003e BTW you used enter_dev_warning_menu - was that intentional?\n\nNo, you\u0027re right, I forgot the menu structure... enter_developer_menu() is the right one to return to from here.",
+      "parentUuid": "bcbe6472_34d8b738",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37eba65c_43d421da",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -312,6 +354,24 @@
       "side": 1,
       "message": "This way the code is not even executed in dev mode, but anyway I don\u0027t see a problem with either approach.\n\nWith the above changes, this goes away.",
       "parentUuid": "37eba65c_43d421da",
+      "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c11f46b_5edff556",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "Well, it\u0027s not executed if you just put a\n\n if (ctx.flags \u0026 VB2_CONTEXT_RECOVERY_MODE)\n   return;\n\nright above it either, right? I don\u0027t really see the difference.",
+      "parentUuid": "c9f1f9ac_fc293f4c",
       "revId": "f0b1797ce0c779a3f84b39c263ebd926c499c4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

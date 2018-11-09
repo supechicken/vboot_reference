@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c8fc42_29dbffaf",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "Just call VbExGetAltFwIdxMask() right in vb2_change_menu(), then this doesn\u0027t need to be a global.",
+      "revId": "5fe922bbacf56b4de2c2443ba047ebfa8f80165e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42e3b88_8e7aeac3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "What you really want is\n\n if (!altfw_mask)\n\nright? Why not just do that here?\n\n(FWIW, even if you need the mask in here I think it would still be cleaner if altfw_mask wasn\u0027t a global. You can just call VbExGetAltFwIdxMask() from multiple places and cache the result within that function in depthcharge.)\n\nAlso, I wonder whether just showing an empty menu would be more consistent than treating this as an error with the ugly unlocalized error message.",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 32
+      },
+      "revId": "5fe922bbacf56b4de2c2443ba047ebfa8f80165e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300c1068_c28d81a5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "I forgot what happens when you enter a menu with a selected index that\u0027s in the disabled_idx_mask. I believe it might be bad things. Maybe better to default to the Cancel option here, since that\u0027s always there?",
+      "range": {
+        "startLine": 294,
+        "startChar": 33,
+        "endLine": 294,
+        "endChar": 34
+      },
+      "revId": "5fe922bbacf56b4de2c2443ba047ebfa8f80165e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833552eb_e413a37b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "No, this is wrong now. With disabled_idx_mask the current_menu_idx will still point to the actual index in the array, so bootloader 1 will always have menu index 0 and bootloader 5 will always have menu index 4. It\u0027s just that the masked indices are skipped when moving up/down through the menu.\n\nSo you should be able to get rid of all this and just directly do this below:\n\n vb2_run_altfw(current_menu_idx + 1);",
+      "revId": "5fe922bbacf56b4de2c2443ba047ebfa8f80165e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8082d1_11905e0d",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-09T01:25:58Z",
+      "side": 1,
+      "message": "nit: left over from older version?",
+      "revId": "5fe922bbacf56b4de2c2443ba047ebfa8f80165e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
