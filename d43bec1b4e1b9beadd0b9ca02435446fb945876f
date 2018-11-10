@@ -36,6 +36,46 @@
     },
     {
       "key": {
+        "uuid": "9e47275b_94f96bb0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:39:15Z",
+      "side": 1,
+      "message": "Please pay attention to the 80 character limit",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9504447_90dfc3f8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:39:15Z",
+      "side": 1,
+      "message": "Maybe merge this (both messages) with no_kernel in the menu UI?",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27c8ebc0_fc462959",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -47,6 +87,57 @@
       "writtenOn": "2018-11-09T23:27:34Z",
       "side": 1,
       "message": "I think you must keep within 80cols. Julius will know for sure.\n\nPerhaps just do one tab indent in this case?",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb2b399_50d10c9e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:39:15Z",
+      "side": 1,
+      "message": "\"Release the recovery button and try again\"?",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f60aaee_be7de7cf",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:39:15Z",
+      "side": 1,
+      "message": "Why not also integrate flashing the screen here? That\u0027s what almost all of our error beeps do anyway (and for those that don\u0027t, that\u0027s just because someone forgot to put it there).",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b347dcc_73aecd72",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:39:15Z",
+      "side": 1,
+      "message": "Why is this replaced in boot_legacy_action but not here?",
       "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
