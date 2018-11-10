@@ -93,6 +93,24 @@
     },
     {
       "key": {
+        "uuid": "1bcea2d1_5996be1f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-10T01:41:30Z",
+      "side": 1,
+      "message": "Yes, please stick to 80 chars.\n\nIn this case, why not make a string constant for these as well? This is also duplicated for the menu UI, so we could make one constant that\u0027s used for both. (I think you could use the same string for the log message and the display message here as well. There\u0027s no need to keep the extra newlines in the display message, they don\u0027t do anything there.)",
+      "parentUuid": "27c8ebc0_fc462959",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7eb2b399_50d10c9e",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
