@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b0568c_c2d222fb",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-12T06:37:54Z",
+      "side": 1,
+      "message": "No braces for one-line conditional bodies.",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 15
+      },
+      "revId": "432702f84ea5d0a869baad222fe1852a11e89980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
