@@ -1381,6 +1381,7 @@ const char * const updater_error_messages[] = {
 	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
 	[UPDATE_ERR_ROOT_KEY] = "RW not signed by same RO root key",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
+	[UPDATE_ERR_ALT_OS] = "Failed writing disable_alt_os_request flag.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -1596,6 +1597,13 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		if (r != UPDATE_ERR_NEED_RO_UPDATE)
 			return r;
 		printf("Warning: %s\n", updater_error_messages[r]);
+	}
+
+	if (cfg->disable_alt_os) {
+		if (VbSetSystemPropertyInt("disable_alt_os_request", 1)) {
+			ERROR("Failed to set disable_alt_os_request to 1.");
+			return UPDATE_ERR_ALT_OS;
+		}
 	}
 
 	if (wp_enabled)
@@ -1843,6 +1851,7 @@ int updater_setup_config(struct updater_config *cfg,
 			cfg->try_update = 1;
 		} else if (strcmp(arg->mode, "recovery") == 0) {
 			cfg->try_update = 0;
+			cfg->disable_alt_os = 1;
 		} else if (strcmp(arg->mode, "legacy") == 0) {
 			cfg->legacy_update = 1;
 		} else if (strcmp(arg->mode, "factory") == 0 ||
