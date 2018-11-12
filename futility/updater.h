@@ -109,6 +109,7 @@ struct updater_config {
 	int factory_update;
 	int verbosity;
 	const char *emulation;
+	int disable_alt_os;
 };
 
 struct updater_config_arguments {
@@ -156,6 +157,7 @@ enum updater_error_codes {
 	UPDATE_ERR_TARGET,
 	UPDATE_ERR_ROOT_KEY,
 	UPDATE_ERR_TPM_ROLLBACK,
+	UPDATE_ERR_ALT_OS,
 	UPDATE_ERR_UNKNOWN,
 };
 
