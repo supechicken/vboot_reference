@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e38b3b_77de7ad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T20:21:25Z",
+      "side": 1,
+      "message": "besides AP f/w, Tlcl is also used in tpmc utility. \nplease include \"stop trunksd; tpmc rand \u003csize\u003e\" with various sizes (0, 1, max, max+1) in the tests.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2587451c_6d3ce390",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T20:21:25Z",
+      "side": 1,
+      "message": "do we need this function at all? \n\nif we have it, I\u0027d prefer to memcpy from response into the destination buffer right inside it to not have this internal API rely on having a static tpm2_resp buffer. this will also help to prevent the 2nd check for \u003d\u003d SUCCESS in the calling TlclGetRandom.",
+      "range": {
+        "startLine": 357,
+        "startChar": 16,
+        "endLine": 357,
+        "endChar": 30
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39a0369_79698668",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T20:21:25Z",
+      "side": 1,
+      "message": "why 128?",
+      "range": {
+        "startLine": 563,
+        "startChar": 29,
+        "endLine": 563,
+        "endChar": 35
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96534e71_fa9377f8",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T20:21:25Z",
+      "side": 1,
+      "message": "check that *size \u003c\u003d length",
+      "range": {
+        "startLine": 568,
+        "startChar": 2,
+        "endLine": 568,
+        "endChar": 34
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
