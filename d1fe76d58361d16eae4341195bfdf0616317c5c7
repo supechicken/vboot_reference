@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5c8a0fc9_af8ef6c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T23:39:40Z",
+      "side": 1,
+      "message": "no, there\u0027s no autotest.",
+      "parentUuid": "636a0e76_5619fe68",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2587451c_6d3ce390",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b527fb34_447f871a",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T23:39:40Z",
+      "side": 1,
+      "message": "\u003e There has to be a memcpy though, right?\n\nYes, there will be a memcpy still",
+      "parentUuid": "e5c754a9_f6cb924c",
+      "range": {
+        "startLine": 357,
+        "startChar": 16,
+        "endLine": 357,
+        "endChar": 30
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f39a0369_79698668",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "No reason in particular. I\u0027m just trying to avoid the length requested being too big and 128 was nice and round. Should I limit the size to max of tpm buffer size - length of header?",
       "parentUuid": "f39a0369_79698668",
+      "range": {
+        "startLine": 563,
+        "startChar": 29,
+        "endLine": 563,
+        "endChar": 35
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c6bf22_97f0b651",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-13T23:39:40Z",
+      "side": 1,
+      "message": "\u003e limit the size to max of tpm buffer size - length of header?\n\nsounds good",
+      "parentUuid": "2047c280_f6f0582d",
       "range": {
         "startLine": 563,
         "startChar": 29,
