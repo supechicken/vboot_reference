@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2cc2fb61_32578c4a",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-13T17:51:13Z",
+      "side": 1,
+      "message": "the flags bit 0x10 set is the only restriction we should worry about here.\n\nAlso, we should never sign for prod images which have device ID set - those are explicitly for dev signing.\n\nThe only part we are not yet addressing is signing for prod images limited to certain Board IDs.\n\nWe sure could discuss this further if necessary.",
+      "parentUuid": "c331c86d_5588903f",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 78
+      },
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9769e469_b391cc98",
         "filename": "scripts/image_signing/verify_cr50_manifest.sh",
         "patchSetId": 2
