@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "636a0e76_5619fe68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-13T22:26:00Z",
+      "side": 1,
+      "message": "Ack, is there a test I can run like \u0027tast \u003cfoo\u003e\u0027 for this?",
+      "parentUuid": "68e38b3b_77de7ad9",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2587451c_6d3ce390",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-13T20:21:25Z",
       "side": 1,
       "message": "do we need this function at all? \n\nif we have it, I\u0027d prefer to memcpy from response into the destination buffer right inside it to not have this internal API rely on having a static tpm2_resp buffer. this will also help to prevent the 2nd check for \u003d\u003d SUCCESS in the calling TlclGetRandom.",
+      "range": {
+        "startLine": 357,
+        "startChar": 16,
+        "endLine": 357,
+        "endChar": 30
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c754a9_f6cb924c",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-13T22:26:00Z",
+      "side": 1,
+      "message": "\u003e do we need this function at all? \n\nProbably not? I can fold it all together.\n\n\u003e \n\u003e if we have it, I\u0027d prefer to memcpy from response into the destination buffer right inside it to not have this internal API rely on having a static tpm2_resp buffer. this will also help to prevent the 2nd check for \u003d\u003d SUCCESS in the calling TlclGetRandom.\n\nThere has to be a memcpy though, right? I suppose I\u0027ll fold these together and we\u0027ll see how it goes.",
+      "parentUuid": "2587451c_6d3ce390",
       "range": {
         "startLine": 357,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2047c280_f6f0582d",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-13T22:26:00Z",
+      "side": 1,
+      "message": "No reason in particular. I\u0027m just trying to avoid the length requested being too big and 128 was nice and round. Should I limit the size to max of tpm buffer size - length of header?",
+      "parentUuid": "f39a0369_79698668",
+      "range": {
+        "startLine": 563,
+        "startChar": 29,
+        "endLine": 563,
+        "endChar": 35
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96534e71_fa9377f8",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d16c22_8bb85b74",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-13T22:26:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96534e71_fa9377f8",
+      "range": {
+        "startLine": 568,
+        "startChar": 2,
+        "endLine": 568,
+        "endChar": 34
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
