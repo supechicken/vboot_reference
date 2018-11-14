@@ -120,6 +120,48 @@
     },
     {
       "key": {
+        "uuid": "7e512287_04b26ee5",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T02:15:34Z",
+      "side": 1,
+      "message": "latest revision of what? \n\nBut it looks like quoted array works after all -I just tried. \n\nShould lines 45 and 47 use the same quoting style?",
+      "parentUuid": "35a03b38_bd66b6cb",
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c190e71_8c3856ce",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T02:15:34Z",
+      "side": 1,
+      "message": "that\u0027s weird, I don\u0027t see any od errors when trying it\n\nes^o: ~ 16 \u003e \\od -An -tx1 /tmp/swapcheck_record_41370  | head -1\n 5b 22 64 39 32 65 61 65 30 64 2d 34 33 32 33 2d\nes^o: ~ 17 \u003e \\od -An -tx1 /tmp/swapcheck_record_41370  | grep -q \u00275b 22 64 39 32 65 61\u0027\nes^o: ~ 18 \u003e echo $?\n0\nes^o: ~ 19 \u003e \\od -An -tx1 /tmp/swapcheck_record_41370  | grep -q \u00275b 22 64 39 32 65 60\u0027\nes^o: ~ 20 \u003e echo $?\n1\nes^o: ~ 21 \u003e",
+      "parentUuid": "7609bf19_51f7d4dd",
+      "range": {
+        "startLine": 45,
+        "startChar": 39,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1005f10c_d1badeef",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
@@ -247,6 +289,30 @@
       "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55f907a2_9a55802c",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T02:15:34Z",
+      "side": 1,
+      "message": "ah, yes, you are right, I misread the comment.",
+      "parentUuid": "78cb8a28_699e8fd0",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
