@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "02307c14_ae21d5e0",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T02:31:32Z",
+      "side": 1,
+      "message": "this is even better.",
+      "parentUuid": "9769e469_b391cc98",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1c0096f_f178c38d",
         "filename": "scripts/image_signing/verify_cr50_manifest.sh",
         "patchSetId": 2

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88888557_f2d73891",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T02:31:32Z",
+      "side": 1,
+      "message": "in addition to the fact that these checks are not what\u0027s needed (board mask needs to be zero, flag bit 0x10 needs to be set, both DEVICE ID should be set to zero), wouldn\u0027t this always print two values, even if \u00270 0\u0027, so that the check in line 40 would always succeed?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "a9d17860004201e81929382eb37c8edd60afa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
