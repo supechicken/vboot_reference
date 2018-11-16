@@ -152,6 +152,24 @@
       "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd192e5e_2cfdd5a2",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-16T20:41:27Z",
+      "side": 1,
+      "message": "We need to chat about this offline and get on the same page.  This is intended as a stopgap until there is a consensus (and likely someone else driving the changes) on how to select which builds to sign unrestricted and to indicate that to the signer.",
+      "parentUuid": "e9a4cd93_38d1c6c1",
+      "revId": "a6191ef67207cb1adbece381bd997058a6f1db1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

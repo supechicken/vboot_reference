@@ -22,6 +22,30 @@
       "revId": "a9d17860004201e81929382eb37c8edd60afa047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa693cd4_e6d6f02f",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-16T20:41:27Z",
+      "side": 1,
+      "message": "Yes, this should always print two values.  The check at 40 verifies that, the check at 47 ensures that they match policy.\n\nI couldn\u0027t find documentation on what the explicit checks were so this was just a strawman.  I\u0027ll modify accordingly.",
+      "parentUuid": "88888557_f2d73891",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "a9d17860004201e81929382eb37c8edd60afa047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
