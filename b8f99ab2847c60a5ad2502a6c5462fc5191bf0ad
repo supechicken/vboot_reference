@@ -162,6 +162,30 @@
     },
     {
       "key": {
+        "uuid": "32a039dc_91ad0121",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-16T20:42:00Z",
+      "side": 1,
+      "message": "Not sure offhand, but it definitely failed for me when I modified the script.  As-is seems to be fine and in line with what we had before.",
+      "parentUuid": "2c190e71_8c3856ce",
+      "range": {
+        "startLine": 45,
+        "startChar": 39,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "b8f99ab2847c60a5ad2502a6c5462fc5191bf0ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1005f10c_d1badeef",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 4
