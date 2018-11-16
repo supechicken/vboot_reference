@@ -557,6 +557,8 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 	if (retval == VBERROR_VGA_OPROM_MISMATCH)
 		goto VbSelectAndLoadKernel_exit;
 
+	shared->flags |= VBSD_ALT_OS_LEGACY_BOOT;
+
 	/* Select boot path */
 	if (shared->recovery_reason) {
 		/* Recovery boot.  This has UI. */
