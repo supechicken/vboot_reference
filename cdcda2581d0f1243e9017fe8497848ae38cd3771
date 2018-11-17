@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9398dfe1_b1d6055a",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-17T16:42:06Z",
+      "side": 1,
+      "message": "this would be simpler as:\n\n static const char ROOTKEY_HASH_DEV[] \u003d",
+      "revId": "cdcda2581d0f1243e9017fe8497848ae38cd3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a47cd0_415f5e60",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-17T16:42:06Z",
+      "side": 1,
+      "message": "add dangling comma",
+      "revId": "cdcda2581d0f1243e9017fe8497848ae38cd3771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
