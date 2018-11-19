@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5e7e9a8_841d70d8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-19T05:28:05Z",
+      "side": 1,
+      "message": "Oops, this was for testing.",
+      "parentUuid": "e57395dc_2a625f53",
+      "revId": "ceaa04990803c267ede4dfd0264c31b6fea24f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "269fdc3a_8f82c954",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2018-11-19T04:38:05Z",
       "side": 1,
       "message": "isn\u0027t this \u0026\u003d ?",
+      "range": {
+        "startLine": 245,
+        "startChar": 15,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "ceaa04990803c267ede4dfd0264c31b6fea24f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa20d38_e6466c8b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-19T05:28:05Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.",
+      "parentUuid": "269fdc3a_8f82c954",
       "range": {
         "startLine": 245,
         "startChar": 15,
