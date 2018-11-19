@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e57395dc_2a625f53",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-19T04:38:05Z",
+      "side": 1,
+      "message": "why setting VBSD_ALT_OS_LEGACY_BOOT here?",
+      "revId": "ceaa04990803c267ede4dfd0264c31b6fea24f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269fdc3a_8f82c954",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-11-19T04:38:05Z",
+      "side": 1,
+      "message": "isn\u0027t this \u0026\u003d ?",
+      "range": {
+        "startLine": 245,
+        "startChar": 15,
+        "endLine": 245,
+        "endChar": 17
+      },
+      "revId": "ceaa04990803c267ede4dfd0264c31b6fea24f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
