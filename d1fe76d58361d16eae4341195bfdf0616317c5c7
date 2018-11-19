@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ca28ee3f_2c5f0a85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-19T21:40:29Z",
+      "side": 1,
+      "message": "How can I confirm that my tpmc program is using this tpm2_lite function instead of the tpm_lite one?",
+      "parentUuid": "5c8a0fc9_af8ef6c1",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2587451c_6d3ce390",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
