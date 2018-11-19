@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a44934e5_0d374ad3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-19T21:44:57Z",
+      "side": 1,
+      "message": "you can run it on board with TPM2.0, and check that \"tpmc tpmver\" reports \"2.0\".",
+      "parentUuid": "ca28ee3f_2c5f0a85",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "d1fe76d58361d16eae4341195bfdf0616317c5c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2587451c_6d3ce390",
         "filename": "firmware/lib/tpm2_lite/tlcl.c",
         "patchSetId": 3
