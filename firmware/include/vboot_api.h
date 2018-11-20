@@ -435,6 +435,13 @@ VbError_t VbUnlockDevice(void);
  */
 VbError_t VbLockDevice(void);
 
+/**
+ * Save the TPM state.
+ *
+ * Exposes the function from tpm2_lite/tlcl.c for use in depthcharge.
+ */
+uint32_t VbTlclSaveState(void);
+
 /*****************************************************************************/
 /* Debug output (from utility.h) */
 
