@@ -1848,6 +1848,11 @@ static int updater_setup_archive(
 	if (!model)
 		return ++errorcnt;
 
+	/* Load images now so we can get quirks in WL checks. */
+	errorcnt += updater_load_images(
+			cfg, arg, arg->host_only, model->image, model->ec_image,
+			model->pd_image);
+
 	if (model->is_white_label) {
 		/*
 		 * It is fine to fail in updater_apply_white_label for factory
@@ -1857,17 +1862,14 @@ static int updater_setup_archive(
 		updater_apply_white_label(cfg, (struct model_config *)model,
 					  arg->signature_id);
 		if (!model->patches.rootkey) {
-			if (!is_factory) {
+			if (!is_factory &&
+			    !get_config_quirk(QUIRK_ALLOW_EMPTY_WLTAG, cfg)) {
 				ERROR("Need VPD set for white label.");
 				return ++errorcnt;
 			}
 			fprintf(stderr, "Warning: No VPD for white label.\n");
 		}
 	}
-
-	errorcnt += updater_load_images(
-			cfg, arg->host_only, model->image, model->ec_image,
-			model->pd_image);
 	errorcnt += patch_image_by_model(&cfg->image, model, ar);
 	return errorcnt;
 }
