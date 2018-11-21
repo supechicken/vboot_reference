@@ -1708,10 +1708,33 @@ static int save_from_stdin(const char *output)
 }
 
 /*
+ * Setup quirks for updating current image.
+ *
+ * Quirks must be loaded after image loaded because we use image contents to
+ * decide default quirks to load. Also, we have to load default quirks first so
+ * user can override them using command line.
+ *
+ * Returns 0 on success, otherwise number of failures.
+ */
+static int updater_setup_quirks(struct updater_config *cfg,
+				const struct updater_config_arguments *arg)
+{
+	int errorcnt = 0;
+	const char *quirks = updater_get_default_quirks(cfg);
+
+	if (quirks)
+		errorcnt += !!setup_config_quirks(quirks, cfg);
+	if (arg->quirks)
+		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
+	return errorcnt;
+}
+
+/*
  * Loads images into updater configuration.
  * Returns 0 on success, otherwise number of failures.
  */
 static int updater_load_images(struct updater_config *cfg,
+			       const struct updater_config_arguments *arg,
 			       int host_only,
 			       const char *image,
 			       const char *ec_image,
@@ -1728,6 +1751,8 @@ static int updater_load_images(struct updater_config *cfg,
 				errorcnt += !!save_from_stdin(image);
 		}
 		errorcnt += !!load_firmware_image(&cfg->image, image, ar);
+		if (!errorcnt)
+			errorcnt += updater_setup_quirks(cfg, arg);
 	}
 	if (cfg->emulation || host_only)
 		return errorcnt;
@@ -1858,7 +1883,6 @@ int updater_setup_config(struct updater_config *cfg,
 	int errorcnt = 0;
 	int check_single_image = 0, check_wp_disabled = 0;
 	int do_output = 0;
-	const char *default_quirks = NULL;
 	const char *archive_path = arg->archive;
 
 	/* Setup values that may change output or decision of other argument. */
@@ -1942,7 +1966,7 @@ int updater_setup_config(struct updater_config *cfg,
 
 	/* Always load images specified from command line directly. */
 	errorcnt += updater_load_images(
-			cfg, arg->host_only, arg->image, arg->ec_image,
+			cfg, arg, arg->host_only, arg->image, arg->ec_image,
 			arg->pd_image);
 
 	if (!archive_path)
@@ -2004,14 +2028,11 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 
 	/*
-	 * Quirks must be loaded after images are loaded because we use image
-	 * contents to decide default quirks to load. Also, we have to load
-	 * default quirks first so user can override them using command line.
+	 * Images should be loaded now (either in first updater_load_images or
+	 * second call from updater_setup_archive) and quirks should be loaded.
+	 * For invocation without image, we want to get quirks now.
 	 */
-	default_quirks = updater_get_default_quirks(cfg);
-	if (default_quirks)
-		errorcnt += !!setup_config_quirks(default_quirks, cfg);
-	if (arg->quirks)
+	if (!cfg->image.data && arg->quirks)
 		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
 
 	/* Additional checks. */
