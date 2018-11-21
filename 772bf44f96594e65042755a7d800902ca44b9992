@@ -22,6 +22,30 @@
       "revId": "772bf44f96594e65042755a7d800902ca44b9992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333cf782_d79d201e",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-21T23:36:24Z",
+      "side": 1,
+      "message": "Oh yeah I forgot to remove this. I was thinking that we put the command into the same response buffer, but that\u0027s wrong.\n\nBut wouldn\u0027t max_len still be less than whatever the command specific response header is? I thought that we unmarshall the response into the response buffer, and so we need to account for everything in the response up to the point that the buffer is placed, including the get_random_response \"header\" parts.",
+      "parentUuid": "ba8db7cb_d09324f8",
+      "range": {
+        "startLine": 549,
+        "startChar": 27,
+        "endLine": 549,
+        "endChar": 44
+      },
+      "revId": "772bf44f96594e65042755a7d800902ca44b9992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
