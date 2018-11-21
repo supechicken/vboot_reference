@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8db7cb_d09324f8",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-21T23:31:23Z",
+      "side": 1,
+      "message": "why do we subtract size of request message (siezof(random)) here and then again size of response header in the next line? \nshould it just be\n  max_len \u003d TPM_BUFFER_SIZE - sizeof(struct tpm_header);\ninstead of these two lines?",
+      "range": {
+        "startLine": 549,
+        "startChar": 27,
+        "endLine": 549,
+        "endChar": 44
+      },
+      "revId": "772bf44f96594e65042755a7d800902ca44b9992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
