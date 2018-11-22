@@ -46,6 +46,30 @@
       "revId": "772bf44f96594e65042755a7d800902ca44b9992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cae8888_cdaac32e",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-22T01:15:08Z",
+      "side": 1,
+      "message": "you are right, of course. for some reason I thought the response just includes raw random bytes after the header.\nin reality there\u0027s TPM2B_DIGEST there (well, the one with uint8_t buffer[], not with uint8_t* buffer, but that\u0027s ok for our purposes).\nso, offsetof(struct tpm2_response, random.random_bytes.buffer) sounds right.",
+      "parentUuid": "333cf782_d79d201e",
+      "range": {
+        "startLine": 549,
+        "startChar": 27,
+        "endLine": 549,
+        "endChar": 44
+      },
+      "revId": "772bf44f96594e65042755a7d800902ca44b9992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
