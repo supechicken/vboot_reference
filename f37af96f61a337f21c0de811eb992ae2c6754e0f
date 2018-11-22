@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e07e8136_33583294",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:02:12Z",
+      "side": 1,
+      "message": "should hoist this to the top and use it in the `.` line",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd25d87_e5f0dfd9",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:02:12Z",
+      "side": 1,
+      "message": "`[[` and `\u003d\u003d` and braces",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e91985_3fe5e426",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:02:12Z",
+      "side": 1,
+      "message": "use jq or python to parse json files",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
