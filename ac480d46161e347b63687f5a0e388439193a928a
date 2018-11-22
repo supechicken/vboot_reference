@@ -2,6 +2,619 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f1501dd_034c68dd",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "use braces with \"${FLAGS_TRUE}\"",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a75b644_041e90a6",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "should use \"passed-in\" or \"input\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12646f4e_0260864c",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "instead of doing this, how about deleting the newlines ?  filter it through `tr -d \u0027\\n\u0027` and you don\u0027t have to worry about the wrapping behavior.",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22fca24_ed6acf3c",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "should expand all of these into proper if statements\n\n if [[ ... ]]; then\n   die ...\n fi",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b78bc38a_8ab1acba",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "don\u0027t use braces with single letter builtins like $1 and $2\n\nthis comes up a bunch more in this file",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c324484e_401a9f57",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "you need to pass -v to avoid compressing runs of zeros",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ae6030_5a3bcc54",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "quote \"${od_options[@]}\"",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f5e3181_e7b99e71",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "use -q instead of ending the output to /dev/null\n\nalso pass -F to indicate it\u0027s a fixed string",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef5fafd_57531118",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "period at the end of sentences",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ffe878_2a10906f",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ee5532_d19440f6",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "when talking about the binary file, should stick to \"ELF\" rather than \"elf\" in comments",
+      "range": {
+        "startLine": 61,
+        "startChar": 56,
+        "endLine": 61,
+        "endChar": 59
+      },
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c3fa08_6a1fe60c",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "\"elfs\" is the plural of \"ELF files\", not \"elves\" because we aren\u0027t talking about the creature",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63841608_2f1d73c4",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "you could write:\n\n : $(( result |\u003d mask ))",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4807dfcf_11527303",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "you could write:\n\n : $(( mask \u003c\u003c\u003d 1 ))",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b553242e_04b3181b",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "if you\u0027re going to try to compact the case statement, this should be indented the same and have the ;; at the end\n\nalso change \"elves\" to \"ELF files\"",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b362e05c_4e037c6f",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "don\u0027t need any of these semi-colons in this awk script",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69d93be_2732ab22",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "this is just a json file ?  we should use jq or python to parse this instead of fragile awk scripts.",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff0071b_e27084b3",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "stick to `[[` in bash",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1c616e_f210232a",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "need to quote the args to the func",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f11531_304724f1",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "would read a lot easier if you merged these together\n\n local signer_command_params\u003d(\n   --b -x ...\n   ...more stuff...\n )",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21de7dd1_3b8b1696",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "stick with `[[`",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb972ba1_99173719",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "needs `[[`, `\u003d\u003d`, and braces",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54015c8a_493f5e68",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66493d12_c25b2871",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "stick to `[[`",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8990cc2_ae3f16d2",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "are there any other sanity checks we could perform to make sure we don\u0027t sign images we shouldn\u0027t be ?  like we don\u0027t include the RMA dev key ?",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10361cd_69f593cc",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "stick to `[[`",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614f7b36_9309dfcc",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "drop the semi-colon",
+      "range": {
+        "startLine": 206,
+        "startChar": 68,
+        "endLine": 206,
+        "endChar": 69
+      },
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f7d3c5_a81e1aa8",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "include the $key_byte in the error message",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda464c1_cfd017a0",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "this should prob be moved to global scope and commented explaining why we have a 512KiB limit",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957fbf13_616cbb27",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "if you want to omit the status, then use status\u003dnone instead of 2\u003e/dev/null",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a112980b_17fc0567",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "quote the arg and let tr do the expansion instead of the shell\n\n tr \u0027\\000\u0027 \u0027\\377\u0027",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ee35ff_1548e222",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "missing `local f`",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb65b3ca_2b523cd7",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "you write count++ in other places.  prob should pick one form ;)",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ea6996_f84fe3fe",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "move this to the previous line and indent the previous line by more spaces to avoid confusion",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b90e5684_a74ec001",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-22T04:00:47Z",
+      "side": 1,
+      "message": "don\u0027t use tabs for indentation\n\nthis comes up a lot in this file, so i won\u0027t flag them all",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89e0e9b1_9f92eb8c",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
