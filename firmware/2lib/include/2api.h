@@ -19,7 +19,9 @@
 
 #ifndef VBOOT_2_API_H_
 #define VBOOT_2_API_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #include "2common.h"
 #include "2crypto.h"

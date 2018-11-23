@@ -190,6 +190,10 @@ ifneq (${TPM2_MODE},)
 CFLAGS += -DTPM2_MODE
 endif
 
+ifeq (${NO_STDINT},)
+CFLAGS += -DUSE_STDINT
+endif
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in

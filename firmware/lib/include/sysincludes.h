@@ -17,7 +17,9 @@
 
 #include <inttypes.h>  /* For PRIu64 */
 #include <stddef.h>
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 

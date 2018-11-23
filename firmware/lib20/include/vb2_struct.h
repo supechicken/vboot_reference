@@ -15,7 +15,9 @@
 
 #ifndef VBOOT_REFERENCE_VB2_STRUCT_H_
 #define VBOOT_REFERENCE_VB2_STRUCT_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 /*
  * Rollback protection currently uses a 32-bit value comprised of the bottom 16

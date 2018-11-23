@@ -7,7 +7,9 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_2FW_HASH_TAGS_H_
 #define VBOOT_REFERENCE_VBOOT_2FW_HASH_TAGS_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 /*
  * Tags for types of hashable data.

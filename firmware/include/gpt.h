@@ -9,7 +9,9 @@
  */
 #ifndef VBOOT_REFERENCE_CGPTLIB_GPT_H_
 #define VBOOT_REFERENCE_CGPTLIB_GPT_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
