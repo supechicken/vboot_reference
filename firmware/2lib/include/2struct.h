@@ -8,7 +8,9 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_2STRUCT_H_
 #define VBOOT_REFERENCE_VBOOT_2STRUCT_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 #include "2crypto.h"
 
 /*

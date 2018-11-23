@@ -11,7 +11,9 @@
 
 #ifndef TPM_LITE_TLCL_H_
 #define TPM_LITE_TLCL_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #include "tss_constants.h"
 

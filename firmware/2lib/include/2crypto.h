@@ -7,7 +7,9 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_2CRYPTO_H_
 #define VBOOT_REFERENCE_VBOOT_2CRYPTO_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 /* Verified boot crypto algorithms */
 enum vb2_crypto_algorithm {

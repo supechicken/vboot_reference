@@ -6,7 +6,9 @@
 
 #ifndef VBOOT_REFERENCE_TSS_CONSTANTS_H_
 #define VBOOT_REFERENCE_TSS_CONSTANTS_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #define TPM_SUCCESS ((uint32_t) 0x00000000)
 

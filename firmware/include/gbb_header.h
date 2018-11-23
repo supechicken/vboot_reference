@@ -6,7 +6,9 @@
  */
 #ifndef VBOOT_REFERENCE_GBB_HEADER_H_
 #define VBOOT_REFERENCE_GBB_HEADER_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #define GBB_HEADER_SIZE    128
 

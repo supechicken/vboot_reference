@@ -9,7 +9,9 @@
 #ifndef __VBOOT_REFERENCE_FIRMWARE_INCLUDE_TPM1_TSS_CONSTANTS_H
 #define __VBOOT_REFERENCE_FIRMWARE_INCLUDE_TPM1_TSS_CONSTANTS_H
 
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {

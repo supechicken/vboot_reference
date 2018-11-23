@@ -21,7 +21,9 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_API_H_
 #define VBOOT_REFERENCE_VBOOT_API_H_
+#ifdef USE_STDINT
 #include <stdint.h>
+#endif
 #include <stdlib.h>
 
 #include "gpt.h"
