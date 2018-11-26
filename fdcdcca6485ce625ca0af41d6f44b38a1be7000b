@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a81f2c15_94d84cdd",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-26T20:10:00Z",
+      "side": 1,
+      "message": "nit: this is just const kMaxRandomLen \u003d TPM_BUFFER_SIZE - offsetof(struct tpm2_response, random.random_bytes.buffer);\nthough, I hope the compiler is smart enough to see a const literal and optimize out the two vars here :)",
+      "range": {
+        "startLine": 547,
+        "startChar": 1,
+        "endLine": 550,
+        "endChar": 36
+      },
+      "revId": "fdcdcca6485ce625ca0af41d6f44b38a1be7000b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
