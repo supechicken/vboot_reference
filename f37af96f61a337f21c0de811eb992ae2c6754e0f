@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0a87df1_e6584576",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-26T18:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e07e8136_33583294",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bd25d87_e5f0dfd9",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d24c8b18_f7f41b7b",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-26T18:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd25d87_e5f0dfd9",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42e91985_3fe5e426",
         "filename": "scripts/image_signing/verify_cr50_manifest.sh",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2018-11-22T04:02:12Z",
       "side": 1,
       "message": "use jq or python to parse json files",
+      "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3490c95_84c686f9",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-26T18:25:00Z",
+      "side": 1,
+      "message": "As per my comments in the other script, neither jq nor json.tool properly grok the json input files being used.",
+      "parentUuid": "42e91985_3fe5e426",
       "revId": "f37af96f61a337f21c0de811eb992ae2c6754e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
