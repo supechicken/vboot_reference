@@ -522,11 +522,41 @@ VbError_t VbCheckAltOS(struct vb2_context *ctx, VbCommonParams *cparams,
 }
 #endif  /* ALT_OS */
 
+VbError_t VbCheckTPM(void)
+{
+	enum vb2_tpm_mode tpm_mode;
+	int ret;
+
+	VB2_DEBUG("Checking if TPM needs resetting (TPM_MODE)\n");
+	ret = vb2ex_tpm_get_mode(&tpm_mode);
+	if (ret == VB2_ERROR_EX_TPM_NO_SUCH_COMMAND)
+		VB2_DEBUG("TPM does not support command, assume good state\n");
+	else if (ret != VB2_SUCCESS) {
+		VB2_DEBUG("TPM encountered some error; reset Cr50\n");
+		vb2ex_tpm_reset();
+		return VBERROR_UNKNOWN;
+	} else if (tpm_mode != VB2_TPM_MODE_ENABLED_TENTATIVE) {
+		VB2_DEBUG("Invalid TPM mode (%d, expected: %d); reset Cr50\n",
+			  tpm_mode, VB2_TPM_MODE_ENABLED_TENTATIVE);
+		vb2ex_tpm_reset();
+		return VBERROR_UNKNOWN;
+	} else
+		VB2_DEBUG("TPM is in good state\n");
+
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
                                 VbSelectAndLoadKernelParams *kparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
+
+	/*
+	 * TPM may be disabled from a previous untrusted Alt OS boot.
+	 * Check the TPM state and request a Cr50 reset if necessary.
+	 */
+	VbCheckTPM();
 
 	VbError_t retval = vb2_kernel_setup(cparams, kparams);
 	if (retval)
