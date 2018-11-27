@@ -686,4 +686,30 @@ int vb2api_digest_buffer(const uint8_t *buf,
 			 uint8_t *digest,
 			 uint32_t digest_size);
 
+/**
+ * Retrieve the current TPM mode value.  If one of the following occurs,
+ * the function call fails:
+ *   - TPM does not understand the instruction (old version)
+ *   - Some other communication error occurs
+ *  Otherwise, the function call succeeds.
+ *
+ * @param out_mode       Output pointer for current TPM mode
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+int vb2ex_tpm_get_mode(uint8_t *out_mode);
+
+/*
+ * Set the current TPM mode value, and validate that it was changed.  If one
+ * of the following occurs, the function call fails:
+ *   - TPM does not understand the instruction (old version)
+ *   - TPM has already left the TpmModeEnabledTentative mode
+ *   - TPM responds with a mode other than the requested mode
+ *   - Some other communication error occurs
+ *  Otherwise, the function call succeeds.
+ *
+ * @param mode_val       Desired TPM mode to set
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+int vb2ex_tpm_set_mode(uint8_t mode_val);
+
 #endif  /* VBOOT_2_API_H_ */
