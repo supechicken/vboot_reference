@@ -188,9 +188,24 @@ VbError_t VbBootNormal(struct vb2_context *ctx, VbCommonParams *cparams)
 {
 	VbSharedDataHeader *shared =
 		(VbSharedDataHeader *)cparams->shared_data_blob;
+	uint8_t tpm_mode;
 
 	/* Boot from fixed disk only */
 	VB2_DEBUG("Entering\n");
+
+	VB2_DEBUG("Checking if TPM needs resetting\n");
+	/* TODO: If the TPM does not support this command, then allow
+	 * boot to continue.  Otherwise, we must guarantee that Cr50 is
+	 * updated before AP firmware is updated.  (Is this feasible?) */
+	if (vb2ex_tpm_get_mode(&tpm_mode)) {
+		VB2_DEBUG("Failed to get TPM mode\n");
+		/* TODO: Create a more appropriate VBERROR constant. */
+		return VBERROR_UNKNOWN;
+	} else if (tpm_mode != 0) {
+		VB2_DEBUG("Invalid TPM mode (%d, expected: 0); "
+			  "reboot required\n");
+		return VBERROR_REBOOT_REQUIRED;
+	}
 
 	VbError_t rv = VbTryLoadKernel(ctx, cparams, VB_DISK_FLAG_FIXED);
 
