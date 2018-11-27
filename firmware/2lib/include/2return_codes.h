@@ -603,6 +603,9 @@ enum vb2_return_code {
 	/* TPM clear owner not implemented */
 	VB2_ERROR_EX_TPM_CLEAR_OWNER_UNIMPLEMENTED,
 
+	/* TPM does not understand this command */
+	VB2_ERROR_EX_TPM_NO_SUCH_COMMAND,
+
 	/* Hardware crypto engine doesn't support this algorithm (non-fatal) */
 	VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED,
 
