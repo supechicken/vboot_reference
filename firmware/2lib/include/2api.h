@@ -57,6 +57,19 @@
 /* Recommended buffer size for vb2api_get_pcr_digest */
 #define VB2_PCR_DIGEST_RECOMMENDED_SIZE 32
 
+/* Modes for vb2ex_tpm_{get,set}_mode. */
+enum vb_tpm_modes {
+	/* TPM is enabled tentatively, and may be set to either
+	 * ENABLED or DISABLED mode. */
+	VB2_TPM_MODE_ENABLED_TENTATIVE = 0,
+
+	/* TPM is enabled, and mode may not be changed. */
+	VB2_TPM_MODE_ENABLED = 1,
+
+	/* TPM is disabled, and mode may not be changed. */
+	VB2_TPM_MODE_DISABLED = 2,
+};
+
 /* Flags for vb2_context.
  *
  * Unless otherwise noted, flags are set by verified boot and may be read (but
@@ -685,5 +698,33 @@ int vb2api_digest_buffer(const uint8_t *buf,
 			 enum vb2_hash_algorithm hash_alg,
 			 uint8_t *digest,
 			 uint32_t digest_size);
+
+/**
+ * Retrieve the current TPM mode value.  If one of the following occurs,
+ * the function call fails:
+ *   - TPM does not understand the instruction (old version)
+ *   - Some other communication error occurs
+ *  Otherwise, the function call succeeds.
+ *
+ * @param mode_val       Output pointer for current TPM mode.
+ *                       Possible values are in vb_tpm_modes enum.
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+int vb2ex_tpm_get_mode(uint8_t *mode_val);
+
+/*
+ * Set the current TPM mode value, and validate that it was changed.  If one
+ * of the following occurs, the function call fails:
+ *   - TPM does not understand the instruction (old version)
+ *   - TPM has already left the TpmModeEnabledTentative mode
+ *   - TPM responds with a mode other than the requested mode
+ *   - Some other communication error occurs
+ *  Otherwise, the function call succeeds.
+ *
+ * @param mode_val       Desired TPM mode to set.  May be one of ENABLE or
+ *                       DISABLE from vb_tpm_modes enum.
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+int vb2ex_tpm_set_mode(uint8_t mode_val);
 
 #endif  /* VBOOT_2_API_H_ */
