@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b18fc01a_0a6681dc",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:52:02Z",
+      "side": 1,
+      "message": "Minor naming nit: Maybe VbSaveTpmState(), since the fact that it\u0027s TLCL under the covers doesn\u0027t need to be exposed to the caller.\n\nWhen do we expect depthcharge to call this function?  At any time?  Before/after calling some other Vb or Cr50 API?  Some guidance might be helpful in the docstring",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 24
+      },
+      "revId": "0bd5e9efff6a151990be8a25f07d08ca912ceba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
