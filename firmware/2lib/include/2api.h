@@ -727,4 +727,12 @@ int vb2ex_tpm_get_mode(enum vb2_tpm_mode *mode_val);
  */
 int vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
+/*
+ * Ask the Cr50 to reset.  If everything goes well, this function should
+ * never return, since a Cr50 reset implies an AP reset.
+ *
+ * @returns VB2_ERROR_UNKNOWN.
+ */
+int vb2ex_tpm_reset(void);
+
 #endif  /* VBOOT_2_API_H_ */
