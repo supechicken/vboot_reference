@@ -70,3 +70,9 @@ int vb2ex_tpm_set_mode(uint8_t mode_in)
 {
 	return VB2_ERROR_EX_UNIMPLEMENTED;
 }
+
+__attribute__((weak))
+int vb2ex_tpm_reset(void)
+{
+	return VB2_ERROR_EX_UNIMPLEMENTED;
+}
