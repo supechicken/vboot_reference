@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3108cebb_ffcc01df",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-30T17:14:47Z",
+      "side": 1,
+      "message": "Suggest adding (VB_TPM_MODE_*) or (enum vb_tpm_mode) or whatever indicates the values that may be returned.",
+      "range": {
+        "startLine": 690,
+        "startChar": 16,
+        "endLine": 690,
+        "endChar": 38
+      },
+      "revId": "a1a2da3bd0f164ed3d6911201f3a1cedb0969e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
