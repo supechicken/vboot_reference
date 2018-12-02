@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17f3d8b1_60462eee",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-02T20:44:03Z",
+      "side": 1,
+      "message": "Coding nit: if {} is used on one clause, it must be used in all clauses",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 1
+      },
+      "revId": "1565c78ed05d9f322453d39a8bd2cc28d4a99168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
