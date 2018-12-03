@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b395e147_45de65e2",
+        "filename": "scripts/image_signing/verify_cr50_manifest.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-03T17:35:07Z",
+      "side": 1,
+      "message": "what is this check enforcing?\n\nIn fact all we care about in pre-pvt branch is that bit 0x80 in flags is not set AND 0x10 is set.\n\nboard ID usually would be ASCII  \u0027FFFF\u0027 and board id flags 0x0\u0027, but occasionally we would build images for specific boards, so these two fields could be anything.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "d590bf2a0032f791a5682a1b0c1862f30500126b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
