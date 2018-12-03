@@ -22,6 +22,30 @@
       "revId": "0bd5e9efff6a151990be8a25f07d08ca912ceba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ea3f43_938b536a",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-12-03T08:07:33Z",
+      "side": 1,
+      "message": "Sure, good point.  Renaming the function as requested.\n\nAdded some more documentation.",
+      "parentUuid": "b18fc01a_0a6681dc",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 24
+      },
+      "revId": "0bd5e9efff6a151990be8a25f07d08ca912ceba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
