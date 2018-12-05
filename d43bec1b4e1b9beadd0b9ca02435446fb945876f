@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b436e0c6_2ea07cf8",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-05T05:16:18Z",
+      "side": 1,
+      "message": "I don\u0027t think so? Can you describe the full path of the loop that you suspect?\n\nWhen a menu action returns VBERROR_KEEP_LOOPING, that just means the main UI loop should continue to run (all other return codes, including VBERROR_SUCCESS, will cause the UI loop to exit and pass that code back out of VbSelectAndLoadKernel()). The UI loop will not automatically enter the same menu action again unless the user explicitly selects it a second time.",
+      "parentUuid": "12b46866_f7892eb3",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b347dcc_73aecd72",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 1
