@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c34647d_56b72dde",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "Nice idea flashing the screen in here too",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e771db23_d5c86148",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "I think this should match the style below, just go \"@log_msg:\" and don\u0027t bother with the \"@param\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c8d64f8_2dc47668",
         "filename": "firmware/lib/include/vboot_ui_menu_private.h",
         "patchSetId": 2
@@ -18,6 +64,53 @@
         "startChar": 0,
         "endLine": 95,
         "endChar": 0
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb21ff7_56de53ea",
+        "filename": "firmware/lib/include/vboot_ui_menu_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something obvious, but why not put this in vboot_ui_common.h?",
+      "parentUuid": "3c8d64f8_2dc47668",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106c006e_a63f47f2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "I think these should be kept as-is",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 68
       },
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -99,6 +192,29 @@
       "writtenOn": "2018-12-06T21:03:35Z",
       "side": 1,
       "message": "The flashing is a bit difficult, because the redraw after the blank needs to be done differently between clamshell and menu UI, and in the clamshell code specifically I don\u0027t think we have a reliable way to determine the right screen to return to in all cases. I think it would be best to leave the displau out of this function for now.",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c3aa31_5dda7c6e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "I think this should be VB_BEEP_FAILED. There\u0027s another issue here, that vb2_run_altfw() (https://cs.corp.google.com/chromeos_public/src/platform/vboot_reference/firmware/lib/vboot_ui_common.c?type\u003dcs\u0026q\u003dvb2_run_altfw\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026g\u003d0\u0026l\u003d33) also calls vb2_error_beep(VB_BEEP_FAILED), so this would double up on the beeping. Either remove that call, or move this call to there? Not sure which makes more sense.",
+      "range": {
+        "startLine": 139,
+        "startChar": 45,
+        "endLine": 139,
+        "endChar": 64
+      },
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

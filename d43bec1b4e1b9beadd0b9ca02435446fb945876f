@@ -370,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "f8f13968_2d7b7045",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-06T21:12:56Z",
+      "side": 1,
+      "message": "I ran into this same problem when I started thinking about this. Someone who understands the organization of these files would be a lot more helpful",
+      "parentUuid": "e2bc84d5_9dcf2d18",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75918880_48359cee",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 1
