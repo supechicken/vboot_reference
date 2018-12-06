@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "234a62d6_2e7e3659",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "There is some inconsistency in recommendations about it.\nI also both like and don\u0027t like the result :)\nFor now I undo it as Julius suggested.",
+      "parentUuid": "4c34647d_56b72dde",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e771db23_d5c86148",
         "filename": "firmware/lib/include/vboot_ui_common.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b79b90_a6d45d9c",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e771db23_d5c86148",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "77e793ce_075c98bc",
+        "filename": "firmware/lib/include/vboot_ui_menu_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "That was one of the options, but I wasn\u0027t sure if it is acceptable style to declare in _common.h something that is implemented in _menu.c",
+      "parentUuid": "9fb21ff7_56de53ea",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "106c006e_a63f47f2",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59427dec_c0cc7e46",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106c006e_a63f47f2",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "bfe7adfc_0ed57946",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6725a2af_72dbf157",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 41
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13a0abb9_e500eb9d",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "50d972c4_bfbe7469",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a0abb9_e500eb9d",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 29
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58ba416a_be8642e2",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -175,6 +319,24 @@
       "writtenOn": "2018-12-06T21:03:35Z",
       "side": 1,
       "message": "You don\u0027t seem to be very consistent in when you define a global const string and when you just put a literal in the code? I think the general idea is to only use named constants when the string is used in more than one place, otherwise you can just use a literal directly.",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba674a3_507af510",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "I moved strings outside when there is very little space left to write string literal inline.\nCan I move static strings to the local scope, or they must not have variables?",
+      "parentUuid": "58ba416a_be8642e2",
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -195,6 +357,24 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827d854d_6df21bdf",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "699fe8e5_7911b521",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -245,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "a1d9a793_2cd127d7",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9423000_6a8c666a",
+      "range": {
+        "startLine": 139,
+        "startChar": 45,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33fd7a44_9e89e2b6",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -259,6 +463,24 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ac90ff_e1a31ef9",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33fd7a44_9e89e2b6",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +504,30 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef16a79_2758c490",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875f2779_da510de5",
+      "range": {
+        "startLine": 400,
+        "startChar": 7,
+        "endLine": 400,
+        "endChar": 40
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

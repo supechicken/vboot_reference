@@ -406,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "8259a339_aa34c46a",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-06T23:58:17Z",
+      "side": 1,
+      "message": "All reverted to the previous state of flashing.",
+      "parentUuid": "f250200e_92e95ea3",
+      "revId": "d43bec1b4e1b9beadd0b9ca02435446fb945876f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75918880_48359cee",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 1
