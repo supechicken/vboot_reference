@@ -46,6 +46,30 @@
       "revId": "e22c0e1980d55f3438efabeb02cfc8aa922ae603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6d2a18_4760616d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-06T17:40:09Z",
+      "side": 1,
+      "message": "No matter it should return or not, what\u0027s the point of returning?\nLet\u0027s assume if it did return, which is not good. It looks like it runs vb2_kernel_setup() anyhow. I think it would be better either to let VbCheckTPM() caller take care of error cases or to let this function sit here.",
+      "parentUuid": "02c9d476_288c3697",
+      "range": {
+        "startLine": 537,
+        "startChar": 2,
+        "endLine": 537,
+        "endChar": 25
+      },
+      "revId": "e22c0e1980d55f3438efabeb02cfc8aa922ae603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
