@@ -22,6 +22,30 @@
       "revId": "e4d167f5a0739e995cde942c2d8c579a6f3f4066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb55af9_0731b1a2",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-12-06T10:48:46Z",
+      "side": 1,
+      "message": "This is changed to VB2_ERROR_EX_TPM_RESET_UNIMPLEMENTED now, and is added in this CL.",
+      "parentUuid": "da9fdeaf_03cec5a5",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "e4d167f5a0739e995cde942c2d8c579a6f3f4066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
