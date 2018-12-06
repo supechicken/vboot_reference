@@ -22,6 +22,30 @@
       "revId": "1565c78ed05d9f322453d39a8bd2cc28d4a99168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc0425c1_f6c748c1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-12-06T10:59:33Z",
+      "side": 1,
+      "message": "Really?  Is this documented somewhere?  I have always assumed to *remove all {} possible* from if/else statements.",
+      "parentUuid": "17f3d8b1_60462eee",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 1
+      },
+      "revId": "1565c78ed05d9f322453d39a8bd2cc28d4a99168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
