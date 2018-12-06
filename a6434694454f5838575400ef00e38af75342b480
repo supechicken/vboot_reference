@@ -22,6 +22,126 @@
       "revId": "a6434694454f5838575400ef00e38af75342b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6725a2af_72dbf157",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "To be more actionable this should probably say something like \"Please use internal keyboard to confirm\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 41
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a0abb9_e500eb9d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "Can just pass NULL here?",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 29
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ba416a_be8642e2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "You don\u0027t seem to be very consistent in when you define a global const string and when you just put a literal in the code? I think the general idea is to only use named constants when the string is used in more than one place, otherwise you can just use a literal directly.",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699fe8e5_7911b521",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "The flashing is a bit difficult, because the redraw after the blank needs to be done differently between clamshell and menu UI, and in the clamshell code specifically I don\u0027t think we have a reliable way to determine the right screen to return to in all cases. I think it would be best to leave the displau out of this function for now.",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33fd7a44_9e89e2b6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "Let\u0027s just pick one of these two strings and use them for both to save space, they\u0027re basically equivalent anyway.",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875f2779_da510de5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-06T21:03:35Z",
+      "side": 1,
+      "message": "This would be more actionable with \"Please use the on-device volume buttons to navigate.\"",
+      "range": {
+        "startLine": 400,
+        "startChar": 7,
+        "endLine": 400,
+        "endChar": 40
+      },
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
