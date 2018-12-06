@@ -22,6 +22,30 @@
       "revId": "e22c0e1980d55f3438efabeb02cfc8aa922ae603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c9d476_288c3697",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-12-06T11:00:18Z",
+      "side": 1,
+      "message": "Cr50 should reset immediately and the function should never return.",
+      "parentUuid": "a710f83a_cc02fff1",
+      "range": {
+        "startLine": 537,
+        "startChar": 2,
+        "endLine": 537,
+        "endChar": 25
+      },
+      "revId": "e22c0e1980d55f3438efabeb02cfc8aa922ae603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
