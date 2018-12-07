@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c0a640_f1f3f190",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-07T01:12:35Z",
+      "side": 1,
+      "message": "If NULL, uses @print_msg (if that\u0027s not NULL)",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 54
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023a0610_5d3b654a",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-07T01:12:35Z",
+      "side": 1,
+      "message": "Should have caught this earlier, but this documentation is wrong. Probably can just delete it so there\u0027s just the single docstring in the .h",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b36527_d8c9cb1c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-07T01:12:35Z",
+      "side": 1,
+      "message": "could be NULL to be consistent, I know what a PITA",
+      "range": {
+        "startLine": 241,
+        "startChar": 35,
+        "endLine": 241,
+        "endChar": 49
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
