@@ -343,6 +343,24 @@
     },
     {
       "key": {
+        "uuid": "69268b4d_fc35caf0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-07T01:24:31Z",
+      "side": 1,
+      "message": "Okay, that also seems like a good reason. Local scope is fine too, or leave it like this.",
+      "parentUuid": "eba674a3_507af510",
+      "revId": "a6434694454f5838575400ef00e38af75342b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "699fe8e5_7911b521",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 2
