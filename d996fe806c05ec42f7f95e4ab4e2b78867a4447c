@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46318c7_2685033d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2018-12-10T16:15:36Z",
+      "side": 1,
+      "message": "Why did you remove vb2_try_alt_fw() from here? It looks like it still is needed by some other functions that use it.",
+      "revId": "d996fe806c05ec42f7f95e4ab4e2b78867a4447c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
