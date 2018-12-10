@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f590406f_7d12858f",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-10T19:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c0a640_f1f3f190",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 54
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "023a0610_5d3b654a",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "312b1d52_8d91ff0f",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-10T19:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023a0610_5d3b654a",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21b36527_d8c9cb1c",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ea501e_d190b479",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1311233
+      },
+      "writtenOn": "2018-12-10T19:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b36527_d8c9cb1c",
+      "range": {
+        "startLine": 241,
+        "startChar": 35,
+        "endLine": 241,
+        "endChar": 49
+      },
+      "revId": "1714309ba234ab7a90e5af02e1112ad87e19b7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
