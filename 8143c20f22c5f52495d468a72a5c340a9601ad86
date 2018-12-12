@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad969e08_8a9b706f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-12T19:48:54Z",
+      "side": 1,
+      "message": "I think that would be the better solution, honestly. Especially if you\u0027re just providing a flag for stdint.h... if we keep doing that every time a calling codebase doesn\u0027t provide a header, we\u0027ll end up with half a dozen flags.\n\nWe need to have *some* sort of well-defined include interface anyway. uint32_t doesn\u0027t just magically exist in U-Boot either... it\u0027s defined somewhere (include/linux/types.h, as far as I can tell), and if you can access it in vboot that means that it either got pulled in accidentally through other headers, or U-Boot has snuck and -include for it into CFLAGS. Neither is really a clean solution to this if you ask me.\n\nSince we already have the existing inclusions and they\u0027re standardized by POSIX, I think the cleanest option would be to just stick with those and require calling codebases to provide them. So U-Boot should add a \u003cstdint.h\u003e that just #includes its \u003clinux/types.h\u003e to provide that translation from standard POSIX headers to whatever it wants to use internally (and if there\u0027s some other path through which that header would\u0027ve ended up included anyway, that doesn\u0027t hurt, but it\u0027s nice to have at least one clear, \"official\" path). That doesn\u0027t mean U-Boot has to clutter it\u0027s main include/ tree with this either... you could put a separate include directory into wherever the rest of your vboot interface code is specifically for these translation headers, and then just pass a -I to that in the CFLAGS to vboot.",
+      "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943bed64_265f1ef8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-12T19:48:54Z",
+      "side": 1,
+      "message": "Let\u0027s please not hack this into every single header. I think we already have the 2sysincludes.h header to handle this sort of stuff, so if we do want to do it like this, you should just replace all direct inclusions of stdint.h with that and centralize the decision of what external headers to include in there.",
+      "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
