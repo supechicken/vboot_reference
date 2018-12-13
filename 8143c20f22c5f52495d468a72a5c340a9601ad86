@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e00cd2bf_0b12729f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-12-13T14:13:25Z",
+      "side": 1,
+      "message": "OK, I\u0027ll go with that then and see what people think. So far I don\u0027t think it is a big deal. The original solution involved patches which tried to move everything in U-Boot to use stdint.h but so long as we can avoid that, it\u0027s OK.",
+      "parentUuid": "ad969e08_8a9b706f",
+      "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "943bed64_265f1ef8",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-12-12T19:48:54Z",
       "side": 1,
       "message": "Let\u0027s please not hack this into every single header. I think we already have the 2sysincludes.h header to handle this sort of stuff, so if we do want to do it like this, you should just replace all direct inclusions of stdint.h with that and centralize the decision of what external headers to include in there.",
+      "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133a73c7_79087148",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-12-13T14:13:25Z",
+      "side": 1,
+      "message": "OK that makes sense. Do we have an include-what-you-use policy in vboot or does it not matter?",
+      "parentUuid": "943bed64_265f1ef8",
       "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
