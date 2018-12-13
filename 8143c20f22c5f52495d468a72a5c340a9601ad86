@@ -69,6 +69,24 @@
       "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395fb8c1_2f874fa6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-12-13T20:41:11Z",
+      "side": 1,
+      "message": "You mean for transitive includes? I think 2sysinfo.h is explicitly meant to cover all those system headers, so we should always include that and not include any of those headers directly. For other stuff, I think the general idea that you should include all you need directly, but I don\u0027t think anyone is super strict about it.",
+      "parentUuid": "133a73c7_79087148",
+      "revId": "8143c20f22c5f52495d468a72a5c340a9601ad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
