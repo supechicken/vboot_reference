@@ -31,7 +31,7 @@ static void subM(const struct vb2_public_key *key, uint32_t *a)
 /**
  * Return a[] >= mod
  */
-int vb2_mont_ge(const struct vb2_public_key *key, uint32_t *a)
+static int vb2_mont_ge(const struct vb2_public_key *key, uint32_t *a)
 {
 	uint32_t i;
 	for (i = key->arrsize; i;) {
