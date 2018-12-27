@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "247f890f_ceee5ae6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-27T05:49:09Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why it returns here instead of sitting here waiting for system reset.\nIf it is not a problem to have a system reset while running any codes after this, then I am okay with it.",
+      "revId": "be3e78e285be7f58ae00326f18c34aadb5f27079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
