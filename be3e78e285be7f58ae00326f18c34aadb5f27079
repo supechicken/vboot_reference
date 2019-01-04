@@ -16,6 +16,24 @@
       "revId": "be3e78e285be7f58ae00326f18c34aadb5f27079",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6c8fae_91d02653",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-04T09:14:06Z",
+      "side": 1,
+      "message": "Here\u0027s what happens:\n\n  Calling VbSelectAndLoadKernel().\n  VbCheckTPM: Checking if TPM needs resetting (TPM_MODE)\n  cr50 TPM 2.0 (i2c 0x50 id 0x28)\n  tpm_internal_mode: Invalid header code: 1286\n  VbCheckTPM: TPM encountered some error; reset Cr50\n  tpm_internal_cr50_reset: Asking Cr50 to reset after 500 ms\n  VbCheckTPM: Shut down AP and wait for Cr50 reset\n  VbSelectAndLoadKernel: Returning 65549\n  Powering off.\n  Exiting depthcharge with code 2 at timestamp: 6603861\n  �\n\n  coreboot-coreboot-unknown.9999.dfa3d87 Fri Jan  4 08:57:19 UTC 2019 bootblock starting...\n\nBy passing VBERROR_SHUTDOWN_REQUESTED, the conditional clause in vboot_select_and_load_kernel is triggered, calling power_off().  Nothing will run after this point until the Cr50 reset occurs.\n\nDoes that sound okay?",
+      "parentUuid": "247f890f_ceee5ae6",
+      "revId": "be3e78e285be7f58ae00326f18c34aadb5f27079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
