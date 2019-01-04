@@ -22,6 +22,30 @@
       "revId": "bc9f3023c802edcd18c761a76a26df648dc151f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8f3848_9a05ba13",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-04T09:17:33Z",
+      "side": 1,
+      "message": "Currently it cannot return any other error code.  But I\u0027m happy to change the wording just in case we decide to add more error modes in the future.",
+      "parentUuid": "bbe3621a_bd5e9c57",
+      "range": {
+        "startLine": 733,
+        "startChar": 25,
+        "endLine": 733,
+        "endChar": 56
+      },
+      "revId": "bc9f3023c802edcd18c761a76a26df648dc151f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
