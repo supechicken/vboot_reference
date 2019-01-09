@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4fb77ad_10a565fe",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-09T03:15:21Z",
+      "side": 1,
+      "message": "is this what you had in mind? I did not find a simple way to print multiple fields in one line, but since the version of interest here is 0.0.22 this scaling is guaranteed to do the trick.\n\ndoes jq have to become an explicit dependency for vboot_reference?",
+      "revId": "b0ca71927d588e4b43e7c30dc48de32cfbd67f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
