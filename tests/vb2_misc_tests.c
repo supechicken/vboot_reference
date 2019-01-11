@@ -88,6 +88,11 @@ static void init_context_tests(void)
 	TEST_SUCC(vb2_init_context(&c), "Init context good");
 	TEST_EQ(c.workbuf_used, vb2_wb_round_up(sizeof(struct vb2_shared_data)),
 		"Init vbsd");
+	TEST_EQ(sd->magic, VB2_SHARED_DATA_MAGIC, "No version");
+	TEST_EQ(sd->struct_version_major, VB2_SHARED_DATA_VERSION_MAJOR,
+		"No major version");
+	TEST_EQ(sd->struct_version_minor, VB2_SHARED_DATA_VERSION_MINOR,
+		"No minor version");
 
 	/* Don't re-init if used is non-zero */
 	c.workbuf_used = 200;
