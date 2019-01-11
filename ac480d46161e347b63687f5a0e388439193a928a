@@ -691,6 +691,23 @@
     },
     {
       "key": {
+        "uuid": "8dc105d4_4ec7eaa5",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-01-11T19:07:23Z",
+      "side": 1,
+      "message": "would it help to include the ${cr50_version} here for debugging ?",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5f11531_304724f1",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 7
@@ -1065,6 +1082,24 @@
       "side": 1,
       "message": "It\u0027s not so much a limit but the size of the final output size where various bits and pieces are copied into the final blob.  I think it makes more sense here because it\u0027s just use here and can\u0027t really be just tweaked at a global level.",
       "parentUuid": "dda464c1_cfd017a0",
+      "revId": "ac480d46161e347b63687f5a0e388439193a928a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07188586_36bd79e0",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-01-11T19:07:23Z",
+      "side": 1,
+      "message": "could you comment/document this ?",
+      "parentUuid": "3c7eff0b_f120e839",
       "revId": "ac480d46161e347b63687f5a0e388439193a928a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

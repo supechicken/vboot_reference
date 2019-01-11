@@ -16,6 +16,24 @@
       "revId": "b0ca71927d588e4b43e7c30dc48de32cfbd67f08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f507a2_a38bb779",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-01-11T19:07:23Z",
+      "side": 1,
+      "message": "jq is in the SDK already, and we can add it to the signer scripts, so this is OK",
+      "parentUuid": "c4fb77ad_10a565fe",
+      "revId": "b0ca71927d588e4b43e7c30dc48de32cfbd67f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
