@@ -122,7 +122,7 @@ int vb2_init_context(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Don't do anything if the context has already been initialized */
-	if (ctx->workbuf_used)
+	if (sd->magic == VB2_SHARED_DATA_MAGIC && ctx->workbuf_used)
 		return VB2_SUCCESS;
 
 	/*
@@ -137,6 +137,9 @@ int vb2_init_context(struct vb2_context *ctx)
 
 	/* Initialize the shared data at the start of the work buffer */
 	memset(sd, 0, sizeof(*sd));
+	sd->magic = VB2_SHARED_DATA_MAGIC;
+	sd->struct_version_major = VB2_SHARED_DATA_VERSION_MAJOR;
+	sd->struct_version_minor = VB2_SHARED_DATA_VERSION_MINOR;
 	ctx->workbuf_used = vb2_wb_round_up(sizeof(*sd));
 	return VB2_SUCCESS;
 }
