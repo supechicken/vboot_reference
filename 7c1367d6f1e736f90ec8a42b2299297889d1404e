@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ba9660d_3109537c",
+        "filename": "futility/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-16T02:08:16Z",
+      "side": 1,
+      "message": "I would probably just use \"set\" instead of \"change\".",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "7c1367d6f1e736f90ec8a42b2299297889d1404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295fded2_12c602fc",
+        "filename": "futility/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-16T02:08:16Z",
+      "side": 1,
+      "message": "Not sure if we ever had v0.x -- if not perhaps a comment here could be useful.",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 55
+      },
+      "revId": "7c1367d6f1e736f90ec8a42b2299297889d1404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299145fb_c71c6305",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-16T02:08:16Z",
+      "side": 1,
+      "message": "Not sure what you mean by \"hack\" here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "7c1367d6f1e736f90ec8a42b2299297889d1404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
