@@ -46,6 +46,30 @@
       "revId": "5f8f8329c1cef882d9dbe63f5e9ee92944750170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73a8bae3_2372c7e3",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-01-16T08:07:41Z",
+      "side": 1,
+      "message": "Could also check for the case of an invalid digest.  But maybe that\u0027s overkill.  Up to you.",
+      "parentUuid": "ef697610_0abfd8f9",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "5f8f8329c1cef882d9dbe63f5e9ee92944750170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
