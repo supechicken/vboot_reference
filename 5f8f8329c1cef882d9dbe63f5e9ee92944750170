@@ -94,6 +94,30 @@
       "revId": "5f8f8329c1cef882d9dbe63f5e9ee92944750170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2997b714_da74ca2d",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-01-16T08:25:25Z",
+      "side": 1,
+      "message": "to clarify: correctness of hash is not what updater should care. that should be checked by \u0027gbb\u0027 command\u0027s unit test.\n\nverifying if updater\u0027s result is same as what gbb created would be good enough.",
+      "parentUuid": "99951fdc_52cd00ce",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "5f8f8329c1cef882d9dbe63f5e9ee92944750170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
