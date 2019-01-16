@@ -465,6 +465,11 @@ VbError_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key)
 
 		/* Force redraw of current screen */
 		return VbDisplayScreen(ctx, disp_current_screen, 1);
+	} else {
+		/*
+		 * Call the firmware specific dev mode/recovery screen handling.
+		 */
+		vb2ex_check_display_key(ctx, key);
 	}
 
 	if (0 == memcmp(MagicBuffer, MAGIC_WORD, MAGIC_WORD_LEN)) {

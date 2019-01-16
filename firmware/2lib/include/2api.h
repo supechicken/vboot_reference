@@ -713,4 +713,14 @@ int vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size);
  */
 int vb2ex_hwcrypto_digest_finalize(uint8_t *digest, uint32_t digest_size);
 
+/**
+ * Check for firmware/platform specific actions at the developer mode screen
+ * or from the recovery screen.
+ *
+ * @param ctx		Vboot context
+ * @param key		keypress value
+ */
+int vb2ex_check_display_key(struct vb2_context *ctx, uint32_t key);
+
+
 #endif  /* VBOOT_2_API_H_ */

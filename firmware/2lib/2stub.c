@@ -58,3 +58,9 @@ int vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 {
 	return VB2_ERROR_SHA_FINALIZE_ALGORITHM; /* Should not be called. */
 }
+
+__attribute__((weak))
+int vb2ex_check_display_key(struct vb2_context *ctx, uint32_t key)
+{
+	return VB2_SUCCESS;
+}
