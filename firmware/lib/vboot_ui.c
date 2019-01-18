@@ -104,7 +104,7 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 	uint32_t key_flags;
 	uint32_t btn;
 	int rec_button_was_pressed = 0;
-
+	confirm_flags = 0;
 	VB2_DEBUG("Entering(%x)\n", confirm_flags);
 
 	/* Await further instructions */
@@ -583,6 +583,9 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 				uint32_t vbc_flags =
 					VB_CONFIRM_SPACE_MEANS_NO |
 					VB_CONFIRM_MUST_TRUST_KEYBOARD;
+				VB2_DEBUG("vbc_flags is %d\n",vbc_flags);
+				vbc_flags = 0;
+				VB2_DEBUG("vbc_flags is %d\n",vbc_flags);
 				switch (VbUserConfirms(ctx, vbc_flags)) {
 				case 1:
 					VB2_DEBUG("Enabling dev-mode...\n");
