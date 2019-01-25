@@ -16,6 +16,24 @@
       "revId": "2168ebdbbd3b8eea485438c1694cad8a7207ac98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17fc8f6c_95ed60f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-01-25T20:52:52Z",
+      "side": 1,
+      "message": "\u0027make runtests\u0027 (run within chroot) seemed to run to successful completion.  I had tried the \"USE\u003d-minimal\" approach mentioned in the bug, but for me it didn\u0027t seem to cause the additional tests to be run (I was using emerge-atlas instead of emerge-falco, though I doubt it matters).  Using \u0027emerge\u0027 w/o a board did cause MINIMAL to be blank and cause the additional tests to be run without needing to explicitly request it.",
+      "parentUuid": "35179d5c_c75d3751",
+      "revId": "2168ebdbbd3b8eea485438c1694cad8a7207ac98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
