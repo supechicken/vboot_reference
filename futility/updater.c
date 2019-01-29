@@ -1017,7 +1017,7 @@ static int preserve_management_engine(struct updater_config *cfg,
 /*
  * Preserves the critical sections from the current (active) firmware.
  * Currently preserved sections: GBB (HWID and flags), x86 ME, {RO,RW}_PRESERVE,
- * {RO,RW}_VPD, RW_NVRAM.
+ * {RO,RW}_VPD, RW_NVRAM, MRC_CACHE.
  * Returns 0 if success, non-zero if error.
  */
 static int preserve_images(struct updater_config *cfg)
@@ -1030,6 +1030,7 @@ static int preserve_images(struct updater_config *cfg)
 		FMAP_RW_NVRAM,
 		FMAP_RW_ELOG,
 		FMAP_RW_SMMSTORE,
+		FMAP_MRC_CACHE,
 		/*
 		 * TODO(hungte): b/116326638: Remove RO_FSG after the migration
 		 * is finished.

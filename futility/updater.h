@@ -45,7 +45,8 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RW_LEGACY = "RW_LEGACY",
 		  * const FMAP_RW_SMMSTORE = "SMMSTORE",
 		  * const FMAP_SI_DESC = "SI_DESC",
-		  * const FMAP_SI_ME = "SI_ME";
+		  * const FMAP_SI_ME = "SI_ME",
+		  * const FMAP_MRC_CACHE = "UNIFIED_MRC_CACHE";
 
 struct firmware_image {
 	const char *programmer;
