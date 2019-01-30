@@ -16,6 +16,24 @@
       "revId": "d58342cd763e04ec581a4fb799c652c42a460df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887b8b64_0cf9c800",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-30T22:12:42Z",
+      "side": 1,
+      "message": "TPM_GET/SET_MODE_UNIMPLEMENTED is returned if depthcharge (or other library) fails to provide an implementation of vb2ex_tpm_get/set_mode().\n\nTPM_NO_SUCH_COMMAND is returned by depthcharge when the TPM command is sent to the Cr50, but the command is rejected by the Cr50.  This can happen on the first boot of a Chromebook at the factory before the Cr50 firmware is updated.",
+      "parentUuid": "ff9b72a5_04911c89",
+      "revId": "d58342cd763e04ec581a4fb799c652c42a460df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
