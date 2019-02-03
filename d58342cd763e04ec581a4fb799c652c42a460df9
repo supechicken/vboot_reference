@@ -52,6 +52,24 @@
       "revId": "d58342cd763e04ec581a4fb799c652c42a460df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9f6bfb_e66f095d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-02-03T04:32:43Z",
+      "side": 1,
+      "message": "Hi Julius,\n\nI made an attempt at removing the command-specific return codes for unimplemented external functions here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1358032\n\nPerhaps we can move the discussion over there, and I can move that CL over to ToT if we decide to move forward with the change?",
+      "parentUuid": "1493ef22_7f8b2173",
+      "revId": "d58342cd763e04ec581a4fb799c652c42a460df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
