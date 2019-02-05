@@ -444,6 +444,13 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 		VbExSleepMs(DEV_KEY_DELAY);
 	} while(vb2_audio_looping());
 
+	/*
+	 * FIXME - force boot into alternate firmware #5 for testing after
+	 * waiting for the normal developer screen time.  CTRL-D on the
+	 * the developer screen will allow a normal boot.
+	 */
+	vb2_try_alt_fw(allow_legacy, 5);
+
  fallout:
 
 	/* If defaulting to legacy boot, try that unless Ctrl+D was pressed */
