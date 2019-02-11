@@ -411,6 +411,11 @@ VBINIT_SRCS += \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
 
+ifeq (${SERVICE_TAG_UI},y)
+CFLAGS += -DSERVICE_TAG_UI
+CFLAGS += -DSERVICE_TAG_LENGTH=${SERVICE_TAG_LENGTH}
+endif
+
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
 # TODO: split out other stub funcs too

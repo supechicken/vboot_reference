@@ -274,7 +274,7 @@ typedef struct VbSelectAndLoadKernelParams {
 	void *kernel_buffer;
 	/* Size of kernel buffer in bytes */
 	uint32_t kernel_buffer_size;
-	/* input flags.  Currently used for detachables */
+	/* input flags. */
 	uint32_t inflags;
 
 	/*
@@ -305,6 +305,11 @@ typedef struct VbSelectAndLoadKernelParams {
  * instead of traditional FW screens with ctrl+D, ctrl+U, etc.
  */
 #define VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI (1 << 0)
+
+/* Flag to indicate that the service tag is not set and the service
+ * tag UI should be enabled.
+ */
+#define VB_SALK_INFLAGS_SERVICE_TAG_SETTABLE (1 << 1)
 
 /**
  * Select and loads the kernel.
@@ -671,7 +676,30 @@ enum VbScreenType_t {
 	VB_SCREEN_ALT_FW_PICK = 0x212,
 	/* Alt firmware menu screen (for detachable UI ) */
 	VB_SCREEN_ALT_FW_MENU = 0x213,
+	/* Set service tag menu screen */
+	VB_SCREEN_SET_SERVICE_TAG = 0x214,
+	/* Confirm service tag menu screen */
+	VB_SCREEN_CONFIRM_SERVICE_TAG = 0x215,
 };
+
+/**
+ * Extra data needed when displaying service tag screens
+ */
+typedef struct VbExServiceTagData
+{
+	/* Current state of the the service tag input */
+	const char *input_text;
+} VbExServiceTagData;
+
+/**
+ * Extra data that may be used when displaying a screen
+ */
+typedef struct VbExScreenData
+{
+	union {
+		VbExServiceTagData service_tag_data;
+	};
+} VbExScreenData;
 
 /**
  * Display a predefined screen; see VB_SCREEN_* for valid screens.
@@ -681,7 +709,8 @@ enum VbScreenType_t {
  * to be simple ASCII text such as "NO GOOD" or "INSERT"; these screens should
  * only be seen during development.
  */
-VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale);
+VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
+			  const VbExScreenData *data);
 
 /**
  * Display a predefined menu screen; see VB_SCREEN_* for valid screens.
@@ -714,12 +743,24 @@ VbError_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
  */
 VbError_t VbExDisplayDebugInfo(const char *info_str);
 
+/**
+ * Write the service tag to read-only VPD
+ *
+ * @param service_tag   The service tag to write to VPD. The string length
+ *                      will be exactly SERVICE_TAG_LENGTH characters long.
+ *
+ * @return VBERROR_SUCCESS or error code on error.
+ */
+VbError_t VbExSetServiceTag(const char *service_tag);
+
 /*****************************************************************************/
 /* Keyboard and switches */
 
 /* Key codes for required non-printable-ASCII characters. */
 enum VbKeyCode_t {
 	VB_KEY_ESC = 0x1b,
+	VB_KEY_BACKSPACE = 0x8,
+	VB_KEY_ENTER = 0xd,
 	VB_KEY_UP = 0x100,
 	VB_KEY_DOWN = 0x101,
 	VB_KEY_LEFT = 0x102,

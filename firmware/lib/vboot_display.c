@@ -47,11 +47,28 @@ VbError_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force)
 	/* Read the locale last saved */
 	locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
 
-	rv = VbExDisplayScreen(screen, locale);
+	rv = VbExDisplayScreen(screen, locale, NULL);
 
 	if (rv == VBERROR_SUCCESS)
 		/* Keep track of the currently displayed screen */
 		disp_current_screen = screen;
+
+	return rv;
+}
+
+VbError_t VbDisplayPromptScreen(struct vb2_context *ctx, uint32_t screen,
+			const char *input_text)
+{
+	VbExScreenData data = {
+		.service_tag_data = { input_text }
+	};
+	uint32_t locale;
+	VbError_t rv;
+
+	/* Read the locale last saved */
+	locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
+
+	rv = VbExDisplayScreen(screen, locale, &data);
 
 	return rv;
 }
