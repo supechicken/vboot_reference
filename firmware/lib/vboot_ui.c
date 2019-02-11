@@ -26,6 +26,12 @@
 #include "vboot_kernel.h"
 #include "vboot_ui_common.h"
 
+/* For tests */
+#ifdef CHROMEOS_ENVIRONMENT
+#define SERVICE_TAG_UI
+#define SERVICE_TAG_LENGTH 4
+#endif
+
 /* Global variables */
 static int power_button_released;
 
@@ -222,6 +228,136 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 	return 0;
 }
 
+#ifdef SERVICE_TAG_UI
+/*
+ * Promt the user to enter the service tag
+ */
+VbError_t vb2_enter_svc_tag_ui(struct vb2_context *ctx, char *svc_tag)
+{
+	int len = 0;
+	int active = 1;
+
+	svc_tag[0] = '\0';
+	VbDisplayPromptScreen(ctx, VB_SCREEN_SET_SERVICE_TAG, svc_tag);
+
+	/* We'll loop until the user decides what to do */
+	do {
+		uint32_t key = VbExKeyboardRead();
+
+		if (VbWantShutdown(ctx, key)) {
+			VB2_DEBUG("VbBootDeveloper() - shutdown requested!\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		}
+		switch (key) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case VB_KEY_ESC:
+			/* Escape pressed - return to developer screen */
+			VB2_DEBUG("VbBootDeveloper() - user pressed Esc:"
+				  "exit to Developer screen\n");
+			svc_tag[0] = '\0';
+			active = 0;
+			break;
+		case 'a'...'z':
+			key += 'A' - 'a';
+		case '0'...'9':
+		case 'A'...'Z':
+			if (len < SERVICE_TAG_LENGTH) {
+				svc_tag[len++] = key;
+				svc_tag[len] = '\0';
+				VbDisplayPromptScreen(ctx, VB_SCREEN_SET_SERVICE_TAG, svc_tag);
+			} else {
+				vb2_error_beep(VB_BEEP_FAILED);
+			}
+
+			VB2_DEBUG("VbBootDeveloper() - service tag: %s\n", svc_tag);
+			break;
+		case VB_KEY_BACKSPACE:
+			if (len > 0) {
+				svc_tag[--len] = '\0';
+				VbDisplayPromptScreen(ctx, VB_SCREEN_SET_SERVICE_TAG, svc_tag);
+			}
+
+			VB2_DEBUG("VbBootDeveloper() - service tag: %s\n", svc_tag);
+			break;
+		case VB_KEY_ENTER:
+			if (len == SERVICE_TAG_LENGTH) {
+				/* Enter pressed - confirm input */
+				VB2_DEBUG("VbBootDeveloper() - user pressed Enter:"
+					"confirm service tag\n");
+				active = 0;
+			} else {
+				vb2_error_beep(VB_BEEP_FAILED);
+			}
+			break;
+		default:
+			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
+			break;
+		}
+		VbExSleepMs(DEV_KEY_DELAY);
+	} while (active);
+
+	return VBERROR_SUCCESS;
+}
+
+/*
+ * User interface for setting the service tag in VPD
+ */
+VbError_t vb2_svc_tag_ui(struct vb2_context *ctx)
+{
+	char svc_tag[SERVICE_TAG_LENGTH + 1];
+
+	VbError_t ret = vb2_enter_svc_tag_ui(ctx, svc_tag);
+
+	if (ret)
+		return ret;
+
+	if (svc_tag[0] != '\0') {
+		int active = 1;
+
+		VbDisplayPromptScreen(ctx, VB_SCREEN_CONFIRM_SERVICE_TAG, svc_tag);
+		/* We'll loop until the user decides what to do */
+		do {
+			uint32_t key = VbExKeyboardRead();
+
+			if (VbWantShutdown(ctx, key)) {
+				VB2_DEBUG("VbBootDeveloper() - shutdown requested!\n");
+				return VBERROR_SHUTDOWN_REQUESTED;
+			}
+			switch (key) {
+			case 0:
+				/* nothing pressed */
+				break;
+			case VB_KEY_ESC:
+				/* Escape pressed - return to developer screen */
+				VB2_DEBUG("VbBootDeveloper() - user pressed Esc:"
+					"exit to Developer screen\n");
+				active = 0;
+				break;
+			case VB_KEY_ENTER:
+				/* Enter pressed - write service tag */
+				VB2_DEBUG("VbBootDeveloper() - user pressed Enter:"
+					"write service tag (%s) to VPD\n", svc_tag);
+				ret = VbExSetServiceTag(svc_tag);
+
+				if (ret == VBERROR_SUCCESS) {
+					return VBERROR_REBOOT_REQUIRED;
+				} else {
+					return ret;
+				}
+			default:
+				VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
+				break;
+			}
+			VbExSleepMs(DEV_KEY_DELAY);
+		} while (active);
+	}
+
+	return VBERROR_SUCCESS;
+}
+#endif // SERVICE_TAG_UI
+
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
@@ -395,6 +531,29 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 				vb2_error_no_altfw();
 			}
 			break;
+#ifdef SERVICE_TAG_UI
+		case 0x13:
+			/*
+			 * Only show the service tag ui if the service
+			 * tag is settable
+			 */
+			if (ctx->flags & VB2_SERVICE_TAG_SETTABLE) {
+				int ret;
+
+				VB2_DEBUG("VbBootDeveloper() - "
+					  "user pressed Ctrl+S; Try set service tag\n");
+
+				ret = vb2_svc_tag_ui(ctx);
+				if (ret) {
+					return ret;
+				} else {
+					/* Show dev mode warning screen again */
+					VbDisplayScreen(ctx,
+						VB_SCREEN_DEVELOPER_WARNING, 0);
+				}
+			}
+			break;
+#endif
 		case VB_KEY_CTRL_ENTER:
 			/*
 			 * The Ctrl-Enter is special for Lumpy test purpose;
