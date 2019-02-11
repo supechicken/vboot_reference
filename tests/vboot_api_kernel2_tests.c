@@ -41,7 +41,7 @@ static int altfw_num;
 static int trust_ec;
 static int virtdev_set;
 static uint32_t virtdev_retval;
-static uint32_t mock_keypress[8];
+static uint32_t mock_keypress[16];
 static uint32_t mock_keyflags[8];
 static uint32_t mock_keypress_count;
 static uint32_t mock_switches[8];
@@ -51,6 +51,9 @@ static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
 static uint32_t mock_num_disks[8];
 static uint32_t mock_num_disks_count;
+
+static char set_service_tag[32];
+static int set_service_tag_called;
 
 extern enum VbEcBootMode_t VbGetMode(void);
 extern struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
@@ -83,6 +86,7 @@ static void ResetMocks(void)
 	trust_ec = 0;
 	virtdev_set = 0;
 	virtdev_retval = 0;
+	set_service_tag_called = 0;
 
 	memset(screens_displayed, 0, sizeof(screens_displayed));
 	screens_count = 0;
@@ -205,6 +209,13 @@ uint32_t SetVirtualDevMode(int val)
 {
 	virtdev_set = val;
 	return virtdev_retval;
+}
+
+VbError_t VbExSetServiceTag(const char *service_tag)
+{
+	set_service_tag_called = 1;
+	strncpy(set_service_tag, service_tag, sizeof(set_service_tag));
+	return VBERROR_SUCCESS;
 }
 
 /* Tests */
@@ -589,6 +600,136 @@ static void VbBootDevTest(void)
 	mock_keypress[0] = 0x15;
 	vbtlk_retval = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U force USB");
+
+	/* Ctrl+S set service tag and reboot */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = '4';
+	mock_keypress[2] = '3';
+	mock_keypress[3] = '2';
+	mock_keypress[4] = '1';
+	mock_keypress[5] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[6] = VB_KEY_ENTER; // Confirm service tag
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+		"Ctrl+S set service tag and reboot");
+	TEST_EQ(set_service_tag_called, 1, "  VbExSetServiceTag() called");
+	TEST_STR_EQ(set_service_tag, "4321", "  Service tag correct");
+
+	/* Ctrl+S extra keys ignored */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = '4';
+	mock_keypress[2] = '3';
+	mock_keypress[3] = '2';
+	mock_keypress[4] = '1';
+	mock_keypress[5] = '5';
+	mock_keypress[6] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[7] = VB_KEY_ENTER; // Confirm service tag
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+		"Ctrl+S extra keys ignored");
+	TEST_EQ(set_service_tag_called, 1, "  VbExSetServiceTag() called");
+	TEST_STR_EQ(set_service_tag, "4321", "  Service tag correct");
+
+	/* Ctrl+S converts case */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = 'a';
+	mock_keypress[2] = 'B';
+	mock_keypress[3] = 'Y';
+	mock_keypress[4] = 'z';
+	mock_keypress[5] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[6] = VB_KEY_ENTER; // Confirm service tag
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+		"Ctrl+S converts case");
+	TEST_EQ(set_service_tag_called, 1, "  VbExSetServiceTag() called");
+	TEST_STR_EQ(set_service_tag, "ABYZ", "  Service tag correct");
+
+	/* Ctrl+S backspace works */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = 'A';
+	mock_keypress[2] = 'B';
+	mock_keypress[3] = VB_KEY_BACKSPACE;
+	mock_keypress[4] = VB_KEY_BACKSPACE;
+	mock_keypress[5] = '4';
+	mock_keypress[6] = '3';
+	mock_keypress[7] = '2';
+	mock_keypress[8] = '1';
+	mock_keypress[9] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[10] = VB_KEY_ENTER; // Confirm service tag
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+		"Ctrl+S backspace works");
+	TEST_EQ(set_service_tag_called, 1, "  VbExSetServiceTag() called");
+	TEST_STR_EQ(set_service_tag, "4321", "  Service tag correct");
+
+	/* Ctrl+S backspace only doesn't underrun */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = 'A';
+	mock_keypress[2] = VB_KEY_BACKSPACE;
+	mock_keypress[3] = VB_KEY_BACKSPACE;
+	mock_keypress[4] = '4';
+	mock_keypress[5] = '3';
+	mock_keypress[6] = '2';
+	mock_keypress[7] = '1';
+	mock_keypress[8] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[9] = VB_KEY_ENTER; // Confirm service tag
+	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+		"Ctrl+S backspace only doesn't underrun");
+	TEST_EQ(set_service_tag_called, 1, "  VbExSetServiceTag() called");
+	TEST_STR_EQ(set_service_tag, "4321", "  Service tag correct");
+
+	/* Ctrl+S too short */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = '1';
+	mock_keypress[2] = '2';
+	mock_keypress[3] = '3';
+	mock_keypress[4] = VB_KEY_ENTER; // Set service tag (Nothing happens)
+	mock_keypress[5] = VB_KEY_ENTER; // Confirm service tag (Nothing happens)
+	mock_keypress[6] = VB_KEY_ESC;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+S too short");
+	TEST_EQ(set_service_tag_called, 0, "  VbExSetServiceTag() not called");
+
+	/* Ctrl+S esc from set screen */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = VB_KEY_ESC;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+S esc from set screen");
+	TEST_EQ(set_service_tag_called, 0, "  VbExSetServiceTag() not called");
+
+	/* Ctrl+S esc from set screen with tag */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = '4';
+	mock_keypress[2] = '3';
+	mock_keypress[3] = '2';
+	mock_keypress[4] = '1';
+	mock_keypress[5] = VB_KEY_ESC;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002,
+		"Ctrl+S esc from set screen with tag");
+	TEST_EQ(set_service_tag_called, 0, "  VbExSetServiceTag() not called");
+
+	/* Ctrl+S esc from confirm screen */
+	ResetMocks();
+	ctx.flags |= VB2_SERVICE_TAG_SETTABLE;
+	mock_keypress[0] = 0x13;
+	mock_keypress[1] = '4';
+	mock_keypress[2] = '3';
+	mock_keypress[3] = '2';
+	mock_keypress[4] = '1';
+	mock_keypress[5] = VB_KEY_ENTER; // Set service tag
+	mock_keypress[6] = VB_KEY_ESC;
+	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+S esc from set screen");
+	TEST_EQ(set_service_tag_called, 0, "  VbExSetServiceTag() not called");
 
 	/* If no USB, eventually times out and tries fixed disk */
 	ResetMocks();

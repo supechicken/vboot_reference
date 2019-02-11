@@ -11,6 +11,8 @@
 struct vb2_context;
 
 VbError_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force);
+VbError_t VbDisplayPromptScreen(struct vb2_context *ctx, uint32_t screen,
+			const char *input_text);
 VbError_t VbDisplayMenu(struct vb2_context *ctx,
 			uint32_t screen, int force, uint32_t selected_index,
 			uint32_t disabled_idx_mask);
