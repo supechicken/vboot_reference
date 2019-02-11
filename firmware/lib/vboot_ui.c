@@ -26,6 +26,12 @@
 #include "vboot_kernel.h"
 #include "vboot_ui_common.h"
 
+/* For tests */
+#ifdef CHROMEOS_ENVIRONMENT
+#define SERVICE_TAG_UI
+#define SERVICE_TAG_LENGTH 4
+#endif
+
 /* Global variables */
 static int power_button_released;
 
@@ -176,7 +182,7 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 {
 	int active = 1;
 
-	VbDisplayScreen(ctx, VB_SCREEN_ALT_FW_PICK, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_ALT_FW_PICK, 0, NULL);
 
 	/* We'll loop until the user decides what to do */
 	do {
@@ -217,10 +223,146 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 	} while (active);
 
 	/* Back to developer screen */
-	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0, NULL);
 
 	return 0;
 }
+
+#ifdef SERVICE_TAG_UI
+/*
+ * Prompt the user to enter the service tag
+ */
+VbError_t vb2_enter_svc_tag_ui(struct vb2_context *ctx, char *svc_tag)
+{
+	int len = 0;
+	VbScreenData data = {
+		.service_tag_data = { svc_tag }
+	};
+
+	svc_tag[0] = '\0';
+	VbDisplayScreen(ctx, VB_SCREEN_SET_SERVICE_TAG, 1, &data);
+
+	/* We'll loop until the user decides what to do */
+	do {
+		uint32_t key = VbExKeyboardRead();
+
+		if (VbWantShutdown(ctx, key)) {
+			VB2_DEBUG("Service Tag UI - shutdown requested!\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		}
+		switch (key) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case VB_KEY_ESC:
+			/* Escape pressed - return to developer screen */
+			VB2_DEBUG("Service Tag UI - user pressed Esc:"
+				  "exit to Developer screen\n");
+			svc_tag[0] = '\0';
+			return VBERROR_SUCCESS;
+		case 'a'...'z':
+			key = toupper(key);
+		case '0'...'9':
+		case 'A'...'Z':
+			if (len < SERVICE_TAG_LENGTH) {
+				svc_tag[len++] = key;
+				svc_tag[len] = '\0';
+				VbDisplayScreen(ctx, VB_SCREEN_SET_SERVICE_TAG,
+						1, &data);
+			} else {
+				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+			}
+
+			VB2_DEBUG("Service Tag UI - service tag: %s\n", svc_tag);
+			break;
+		case VB_KEY_BACKSPACE:
+			if (len > 0) {
+				svc_tag[--len] = '\0';
+				VbDisplayScreen(ctx, VB_SCREEN_SET_SERVICE_TAG,
+						1, &data);
+			}
+
+			VB2_DEBUG("Service Tag UI - service tag: %s\n", svc_tag);
+			break;
+		case VB_KEY_ENTER:
+			if (len == SERVICE_TAG_LENGTH) {
+				/* Enter pressed - confirm input */
+				VB2_DEBUG("Service Tag UI - user pressed Enter:"
+					  "confirm service tag\n");
+				return VBERROR_SUCCESS;
+			} else {
+				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+			}
+			break;
+		default:
+			VB2_DEBUG("Service Tag UI - pressed key %d\n", key);
+			break;
+		}
+		VbExSleepMs(DEV_KEY_DELAY);
+	} while (1);
+
+	return VBERROR_SUCCESS;
+}
+
+/*
+ * User interface for setting the service tag in VPD
+ */
+VbError_t vb2_svc_tag_ui(struct vb2_context *ctx)
+{
+	char svc_tag[SERVICE_TAG_LENGTH + 1];
+	VbScreenData data = {
+		.service_tag_data = { svc_tag }
+	};
+
+	VbError_t ret = vb2_enter_svc_tag_ui(ctx, svc_tag);
+
+	if (ret)
+		return ret;
+
+	/* Service tag was not entered just return */
+	if (svc_tag[0] == '\0')
+		return VBERROR_SUCCESS;
+
+	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_SERVICE_TAG, 1, &data);
+	/* We'll loop until the user decides what to do */
+	do {
+		uint32_t key = VbExKeyboardRead();
+
+		if (VbWantShutdown(ctx, key)) {
+			VB2_DEBUG("Service Tag UI - shutdown requested!\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		}
+		switch (key) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case VB_KEY_ESC:
+			/* Escape pressed - return to developer screen */
+			VB2_DEBUG("Service Tag UI - user pressed Esc:"
+				"exit to Developer screen\n");
+			return VBERROR_SUCCESS;
+		case VB_KEY_ENTER:
+			/* Enter pressed - write service tag */
+			VB2_DEBUG("Service Tag UI - user pressed Enter:"
+				"write service tag (%s) to VPD\n", svc_tag);
+			ret = VbExSetServiceTag(svc_tag);
+
+			if (ret == VBERROR_SUCCESS) {
+				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
+				return VBERROR_REBOOT_REQUIRED;
+			} else {
+				return ret;
+			}
+		default:
+			VB2_DEBUG("Service Tag UI - pressed key %d\n", key);
+			break;
+		}
+		VbExSleepMs(DEV_KEY_DELAY);
+	} while (1);
+
+	return VBERROR_SUCCESS;
+}
+#endif // SERVICE_TAG_UI
 
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
@@ -279,7 +421,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
 		VB2_DEBUG("dev_disable_boot is set\n");
-		VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_TO_NORM, 0);
+		VbDisplayScreen(ctx,
+				VB_SCREEN_DEVELOPER_TO_NORM, 0, NULL);
 		VbExDisplayDebugInfo(dev_disable_msg);
 
 		/* Ignore space in VbUserConfirms()... */
@@ -287,7 +430,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 		case 1:
 			VB2_DEBUG("leaving dev-mode\n");
 			vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-			VbDisplayScreen(ctx, VB_SCREEN_TO_NORM_CONFIRMED, 0);
+			VbDisplayScreen(ctx,
+				VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
 			VbExSleepMs(5000);
 			return VBERROR_REBOOT_REQUIRED;
 		case -1:
@@ -300,7 +444,7 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Show the dev mode warning screen */
-	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0, NULL);
 
 	/* Initialize audio/delay context */
 	vb2_audio_start(ctx);
@@ -342,7 +486,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 					break;
 				}
 				VbDisplayScreen(ctx,
-						VB_SCREEN_DEVELOPER_TO_NORM, 0);
+					VB_SCREEN_DEVELOPER_TO_NORM,
+					0, NULL);
 				/* Ignore space in VbUserConfirms()... */
 				switch (VbUserConfirms(ctx, 0)) {
 				case 1:
@@ -350,7 +495,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 					vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
 						1);
 					VbDisplayScreen(ctx,
-						VB_SCREEN_TO_NORM_CONFIRMED, 0);
+						VB_SCREEN_TO_NORM_CONFIRMED,
+						0, NULL);
 					VbExSleepMs(5000);
 					return VBERROR_REBOOT_REQUIRED;
 				case -1:
@@ -360,7 +506,8 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 					/* Stay in dev-mode */
 					VB2_DEBUG("stay in dev-mode\n");
 					VbDisplayScreen(ctx,
-						VB_SCREEN_DEVELOPER_WARNING, 0);
+						VB_SCREEN_DEVELOPER_WARNING,
+						0, NULL);
 					/* Start new countdown */
 					vb2_audio_start(ctx);
 				}
@@ -395,6 +542,36 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 				vb2_error_no_altfw();
 			}
 			break;
+#ifdef SERVICE_TAG_UI
+		case 0x13:
+			/*
+			 * Only show the service tag ui if the service
+			 * tag is settable
+			 */
+			if (ctx->flags & VB2_CONTEXT_SERVICE_TAG_SETTABLE) {
+				int ret;
+
+				VB2_DEBUG("VbBootDeveloper() - "
+					  "user pressed Ctrl+S; Try set service tag\n");
+
+				ret = vb2_svc_tag_ui(ctx);
+				if (ret) {
+					return ret;
+				} else {
+					/* Show dev mode warning screen again */
+					VbDisplayScreen(ctx,
+						VB_SCREEN_DEVELOPER_WARNING,
+						0, NULL);
+				}
+			} else {
+				vb2_error_notify(
+					"WARNING: Service tag cannot be changed because "
+					"it is already set.\n",
+					NULL,
+					VB_BEEP_NOT_ALLOWED);
+			}
+			break;
+#endif
 		case VB_KEY_CTRL_ENTER:
 			/*
 			 * The Ctrl-Enter is special for Lumpy test purpose;
@@ -418,13 +595,14 @@ VbError_t vb2_developer_ui(struct vb2_context *ctx)
 				 * Clear the screen to show we get the Ctrl+U
 				 * key press.
 				 */
-				VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
+				VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
 				if (VBERROR_SUCCESS == VbTryUsb(ctx)) {
 					return VBERROR_SUCCESS;
 				} else {
 					/* Show dev mode warning screen again */
 					VbDisplayScreen(ctx,
-						VB_SCREEN_DEVELOPER_WARNING, 0);
+						VB_SCREEN_DEVELOPER_WARNING,
+						0, NULL);
 				}
 			}
 			break;
@@ -467,7 +645,7 @@ VbError_t VbBootDeveloper(struct vb2_context *ctx)
 {
 	vb2_init_ui();
 	VbError_t retval = vb2_developer_ui(ctx);
-	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
 	return retval;
 }
 
@@ -509,7 +687,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 		 */
 		vb2_nv_commit(ctx);
 
-		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0);
+		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0, NULL);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
 		while (1) {
 			key = VbExKeyboardRead();
@@ -541,7 +719,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 		VbDisplayScreen(ctx, VBERROR_NO_DISK_FOUND == retval ?
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
-				0);
+				0, NULL);
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
@@ -578,7 +756,8 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 
 				/* Ask the user to confirm entering dev-mode */
 				VbDisplayScreen(ctx,
-						VB_SCREEN_RECOVERY_TO_DEV, 0);
+						VB_SCREEN_RECOVERY_TO_DEV,
+						0, NULL);
 				/* SPACE means no... */
 				uint32_t vbc_flags =
 					VB_CONFIRM_SPACE_MEANS_NO |
@@ -622,6 +801,6 @@ VbError_t VbBootRecovery(struct vb2_context *ctx)
 {
 	vb2_init_ui();
 	VbError_t retval = recovery_ui(ctx);
-	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
 	return retval;
 }
