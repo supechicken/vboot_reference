@@ -1291,9 +1291,9 @@ static enum rootkey_compat_result check_compatible_root_key(
 			      "Maybe RW corrupted?");
 			return ROOTKEY_COMPAT_ERROR;
 		}
-		WARN("Target (RW) image is signed by rootkey: %s.",
+		WARN("Target (RW) image is signed by root key: %s%s",
 		     rootkey_rw ? packed_key_sha1_string(rootkey_rw) :
-		     "<invalid>");
+		     "<invalid>", to_dev ? " (DEV/unsigned)" : "");
 		return to_dev ? ROOTKEY_COMPAT_REKEY_TO_DEV :
 				ROOTKEY_COMPAT_REKEY;
 	}
@@ -1421,7 +1421,7 @@ const char * const updater_error_messages[] = {
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
 	[UPDATE_ERR_PLATFORM] = "Your system platform is not compatible.",
 	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
-	[UPDATE_ERR_ROOT_KEY] = "RW not signed by same RO root key",
+	[UPDATE_ERR_ROOT_KEY] = "RW not signed by same RO root key.",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
@@ -1501,7 +1501,7 @@ static enum updater_error_codes update_try_rw_firmware(
  * This was also known as --mode=recovery, --wp=1 in legacy updater.
  * Returns UPDATE_ERR_DONE if success, otherwise error.
  */
-static enum updater_error_codes update_rw_firmrware(
+static enum updater_error_codes update_rw_firmware(
 		struct updater_config *cfg,
 		struct firmware_image *image_from,
 		struct firmware_image *image_to)
@@ -1560,7 +1560,6 @@ static enum updater_error_codes update_whole_firmware(
 	if (preserve_images(cfg))
 		DEBUG("Failed to preserve some sections - ignore.");
 
-
 	INFO("Checking compatibility...");
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
@@ -1598,7 +1597,9 @@ static enum updater_error_codes update_whole_firmware(
  */
 enum updater_error_codes update_firmware(struct updater_config *cfg)
 {
-	int wp_enabled;
+	int wp_enabled, done = 0;
+	enum updater_error_codes r = UPDATE_ERR_UNKNOWN;
+
 	struct firmware_image *image_from = &cfg->image_current,
 			      *image_to = &cfg->image;
 	if (!image_to->data)
@@ -1649,18 +1650,34 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return update_legacy_firmware(cfg, image_to);
 
 	if (cfg->try_update) {
-		enum updater_error_codes r;
 		r = update_try_rw_firmware(cfg, image_from, image_to,
 					   wp_enabled);
-		if (r != UPDATE_ERR_NEED_RO_UPDATE)
-			return r;
-		WARN("%s", updater_error_messages[r]);
+		if (r == UPDATE_ERR_NEED_RO_UPDATE)
+			WARN("%s", updater_error_messages[r]);
+		else
+			done = 1;
 	}
 
-	if (wp_enabled)
-		return update_rw_firmrware(cfg, image_from, image_to);
-	else
-		return update_whole_firmware(cfg, image_to);
+	if (!done) {
+		if (wp_enabled)
+			r = update_rw_firmware(cfg, image_from, image_to);
+		else
+			r = update_whole_firmware(cfg, image_to);
+	}
+
+	/* Providing more hints for what to do on failure. */
+	switch (r) {
+	case UPDATE_ERR_ROOT_KEY:
+		if (wp_enabled)
+			ERROR("To change keys in RO area, you have to first "
+			      "remove write protection (go/cros-remove-wp).");
+		break;
+
+	default:
+		break;
+	}
+
+	return r;
 }
 
 /*
@@ -2060,7 +2077,8 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 	if (check_wp_disabled && is_write_protection_enabled(cfg)) {
 		errorcnt++;
-		ERROR("Factory mode needs WP disabled.");
+		ERROR("Please remove write protection for factory mode "
+		      "(go/cros-remove-wp).");
 	}
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
