@@ -1244,6 +1244,7 @@ static int get_key_versions(const struct firmware_image *image,
  * Returns 0 for success, otherwise failure.
  */
 static enum rootkey_compat_result check_compatible_root_key(
+		struct updater_config *cfg,
 		const struct firmware_image *ro_image,
 		const struct firmware_image *rw_image)
 {
@@ -1291,9 +1292,12 @@ static enum rootkey_compat_result check_compatible_root_key(
 			      "Maybe RW corrupted?");
 			return ROOTKEY_COMPAT_ERROR;
 		}
-		WARN("Target (RW) image is signed by rootkey: %s.",
+		WARN("Target (RW) image is signed by root key: %s%s",
 		     rootkey_rw ? packed_key_sha1_string(rootkey_rw) :
-		     "<invalid>");
+		     "<invalid>", to_dev ? " (DEV/unsigned)" : "");
+		if (is_write_protection_enabled(cfg))
+			ERROR("To change keys in RO area, you have to first "
+			      "remove write protection (go/cros-remove-wp).");
 		return to_dev ? ROOTKEY_COMPAT_REKEY_TO_DEV :
 				ROOTKEY_COMPAT_REKEY;
 	}
@@ -1421,7 +1425,7 @@ const char * const updater_error_messages[] = {
 	[UPDATE_ERR_WRITE_FIRMWARE] = "Failed writing firmware.",
 	[UPDATE_ERR_PLATFORM] = "Your system platform is not compatible.",
 	[UPDATE_ERR_TARGET] = "No valid RW target to update. Abort.",
-	[UPDATE_ERR_ROOT_KEY] = "RW not signed by same RO root key",
+	[UPDATE_ERR_ROOT_KEY] = "RW not signed by same RO root key.",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
@@ -1448,7 +1452,7 @@ static enum updater_error_codes update_try_rw_firmware(
 		return UPDATE_ERR_NEED_RO_UPDATE;
 
 	INFO("Checking compatibility...");
-	if (check_compatible_root_key(image_from, image_to))
+	if (check_compatible_root_key(cfg, image_from, image_to))
 		return UPDATE_ERR_ROOT_KEY;
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
@@ -1511,7 +1515,7 @@ static enum updater_error_codes update_rw_firmrware(
 	       FMAP_RW_LEGACY);
 
 	INFO("Checking compatibility...");
-	if (check_compatible_root_key(image_from, image_to))
+	if (check_compatible_root_key(cfg, image_from, image_to))
 		return UPDATE_ERR_ROOT_KEY;
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
@@ -1566,7 +1570,7 @@ static enum updater_error_codes update_whole_firmware(
 		return UPDATE_ERR_TPM_ROLLBACK;
 	if (!cfg->force_update) {
 		enum rootkey_compat_result r = check_compatible_root_key(
-				&cfg->image_current, image_to);
+				cfg, &cfg->image_current, image_to);
 		/* We only allow re-key to non-dev keys. */
 		switch (r) {
 		case ROOTKEY_COMPAT_OK:
@@ -2060,7 +2064,8 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 	if (check_wp_disabled && is_write_protection_enabled(cfg)) {
 		errorcnt++;
-		ERROR("Factory mode needs WP disabled.");
+		ERROR("Please remove write protection for factory mode "
+		      "(go/cros-remove-wp).");
 	}
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
