@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7c6807f_9c7fd3a2",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T09:49:56Z",
+      "side": 1,
+      "message": "Are you planning to add more cases to this switch?  If not, I think it would be more readable as a simple \"if (r \u003d\u003d UPDATE_ERR_ROOT_KEY)\" condition.",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240be195_cdd2f3bc",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T09:49:56Z",
+      "side": 1,
+      "message": "nit: A clickable URL with http:// prefix would be nice.\n\nInstead of http://go/cros-remove-wp , since both this program and the target doc are public, consider https://goo.gl/ces83U public redirect which I just made.  Though the URL is not descriptive, it can be used by anyone.",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08f92d1_9b7cb780",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T09:49:56Z",
+      "side": 1,
+      "message": "nit: A clickable URL with http:// prefix would be nice.\n\nInstead of http://go/cros-remove-wp , since both this program and the target doc are public, consider https://goo.gl/ces83U public redirect which I just made.  Though the URL is not descriptive, it can be used by anyone.",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
