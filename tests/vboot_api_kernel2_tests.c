@@ -34,6 +34,7 @@ static struct vb2_shared_data *sd;
 
 static int shutdown_request_calls_left;
 static int shutdown_request_power_held;
+static int shutdown_via_lid_close;
 static int audio_looping_calls_left;
 static uint32_t vbtlk_retval;
 static int vbexlegacy_called;
@@ -76,6 +77,7 @@ static void ResetMocks(void)
 
 	shutdown_request_calls_left = -1;
 	shutdown_request_power_held = -1;
+	shutdown_via_lid_close = 0;
 	audio_looping_calls_left = 30;
 	vbtlk_retval = 1000;
 	vbexlegacy_called = 0;
@@ -104,7 +106,9 @@ static void ResetMocks(void)
 uint32_t VbExIsShutdownRequested(void)
 {
 	if (shutdown_request_calls_left == 0)
-		return 1;
+		return shutdown_via_lid_close ?
+			VB_SHUTDOWN_REQUEST_LID_CLOSED :
+			VB_SHUTDOWN_REQUEST_POWER_BUTTON;
 	else if (shutdown_request_calls_left > 0)
 		shutdown_request_calls_left--;
 
@@ -114,7 +118,9 @@ uint32_t VbExIsShutdownRequested(void)
 			shutdown_request_power_held
 				= !shutdown_request_power_held;
 		if (shutdown_request_power_held)
-			return VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+			return shutdown_via_lid_close ?
+				VB_SHUTDOWN_REQUEST_LID_CLOSED :
+				VB_SHUTDOWN_REQUEST_POWER_BUTTON;
 	}
 
 	return 0;
@@ -204,6 +210,11 @@ uint32_t SetVirtualDevMode(int val)
 {
 	virtdev_set = val;
 	return virtdev_retval;
+}
+
+int vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
+{
+	return VB2_SUCCESS;
 }
 
 /* Tests */
@@ -869,6 +880,111 @@ static void VbBootRecTest(void)
 		VBERROR_TPM_SET_BOOT_MODE_STATE,
 		"Ctrl+D todev failure");
 
+	/* Test Diagnostic Mode via Ctrl-C when no oprom needed */
+	ResetMocks();
+	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
+	trust_ec = 1;
+	shutdown_request_calls_left = 100;
+	mock_keypress[0] = 0x03;
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+		"todiag is zero");
+#if DIAGNOSTIC_UI
+	TEST_EQ(VbBootRecovery(&ctx),
+		VBERROR_REBOOT_REQUIRED,
+		"Ctrl+C todiag - enabled");
+#else
+	TEST_EQ(VbBootRecovery(&ctx),
+		VBERROR_SHUTDOWN_REQUESTED,
+		"Ctrl+C todiag - disabled");
+#endif
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+		"todiag is updated for Ctrl-C");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
+		"todiag doesn't update for unneeded opom");
+
+	/* Test Diagnostic Mode via F12 - oprom needed */
+	ResetMocks();
+	shared->flags = VBSD_BOOT_REC_SWITCH_ON | VBSD_OPROM_MATTERS;
+	trust_ec = 1;
+	shutdown_request_calls_left = 100;
+	mock_keypress[0] = 0x114;
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+		"todiag is zero");
+#if DIAGNOSTIC_UI
+	TEST_EQ(VbBootRecovery(&ctx),
+		VBERROR_REBOOT_REQUIRED,
+		"F12 todiag - enabled");
+#else
+	TEST_EQ(VbBootRecovery(&ctx),
+		VBERROR_SHUTDOWN_REQUESTED,
+		"F12 todiag - disabled");
+#endif
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+		"todiag is updated for F12");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), DIAGNOSTIC_UI,
+		"todiag updates opom, if need");
+
+	printf("...done.\n");
+}
+
+static void VbBootDiagTest(void)
+{
+	printf("Testing VbBootDiagnostic()...\n");
+
+	/* No key pressed - timeout. */
+	ResetMocks();
+	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Timeout");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
+		"  confirm screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
+		"  blank screen");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+
+	/* Esc key pressed. */
+	ResetMocks();
+	mock_keypress[0] = VB_KEY_ESC;
+	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Esc key");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
+		"  confirm screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
+		"  blank screen");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+
+	/* Shutdown requested via lid close */
+	ResetMocks();
+	shutdown_via_lid_close = 1;
+	shutdown_request_calls_left = 10;
+	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_SHUTDOWN_REQUESTED, "Shutdown");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
+		"  confirm screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
+		"  blank screen");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+
+	/* Power button pressed but not released. */
+	ResetMocks();
+	mock_switches_are_stuck = 1;
+	mock_switches[0] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
+	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Power held");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
+		"  confirm screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
+		"  blank screen");
+	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
+
+	/* Power button is pressed and released. */
+	ResetMocks();
+	mock_switches[0] = 0;
+	mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
+	mock_switches[2] = 0;
+	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Confirm");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
+		"  confirm screen");
+	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
+		"  blank screen");
+	TEST_EQ(vbexlegacy_called, 1, "  legacy");
+	TEST_EQ(altfw_num, VB_ALTFW_DIAGNOSTIC, "  check altfw_num");
+
 	printf("...done.\n");
 }
 
@@ -878,6 +994,8 @@ int main(void)
 	VbBootTest();
 	VbBootDevTest();
 	VbBootRecTest();
+	if (DIAGNOSTIC_UI)
+		VbBootDiagTest();
 
 	return gTestSuccess ? 0 : 255;
 }
