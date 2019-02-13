@@ -259,6 +259,8 @@ static VbError_t vb2_kernel_setup(VbCommonParams *cparams,
 		ctx.flags |= VB2_CONTEXT_EC_EFS;
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx.flags |= VB2_CONTEXT_NVDATA_V2;
+	if (shared->flags & VBSD_DIAGNOSTIC_ROM_AVAILABLE)
+		ctx.flags |= VB2_CONTEXT_DIAG_SUPPORTED;
 
 	VbExNvStorageRead(ctx.nvdata);
 	vb2_nv_init(&ctx);
@@ -290,6 +292,12 @@ static VbError_t vb2_kernel_setup(VbCommonParams *cparams,
 
 	struct vb2_shared_data *sd = vb2_get_sd(&ctx);
 	sd->recovery_reason = shared->recovery_reason;
+	if (vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST)) {
+		vb2_nv_set(&ctx, VB2_NV_DIAG_REQUEST, 0);
+		vb2_nv_commit(&ctx);
+		/* Only set this flag if VB2_CONTEXT_DIAG_SUPPORTED is set? */
+		ctx.flags |= VB2_CONTEXT_DIAGNOSTIC_MODE;
+	}
 
 	/*
 	 * Save a pointer to the old vboot1 shared data, since we haven't
@@ -431,17 +439,33 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 			retval = VbBootRecovery(&ctx);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
-	} else if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
-		/* Developer boot.  This has UI. */
-		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
-			retval = VbBootDeveloperMenu(&ctx);
-		else
-			retval = VbBootDeveloper(&ctx);
-		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 	} else {
-		/* Normal boot */
-		retval = VbBootNormal(&ctx);
-		VbExEcEnteringMode(0, VB_EC_NORMAL);
+		if (ctx.flags & VB2_CONTEXT_DIAGNOSTIC_MODE) {
+			/*
+			 * Diagnostic boot. This has UI but only power button
+			 * so no detachable-specific UI is needed.  This mode
+			 * is also 1-shot so it's placed before developer mode
+			 * (this also avoids the need to teach developer mode
+			 * to check/respect diagnostic mode before trying to
+			 * run/load the kernel).
+			 */
+			retval = VbBootDiagnostic(&ctx);
+			if (retval)
+				goto VbSelectAndLoadKernel_exit;
+		}
+		if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
+			/* Developer boot.  This has UI. */
+			if (kparams->inflags &
+			    VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+				retval = VbBootDeveloperMenu(&ctx);
+			else
+				retval = VbBootDeveloper(&ctx);
+			VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+		} else {
+			/* Normal boot */
+			retval = VbBootNormal(&ctx);
+			VbExEcEnteringMode(0, VB_EC_NORMAL);
+		}
 	}
 
  VbSelectAndLoadKernel_exit:

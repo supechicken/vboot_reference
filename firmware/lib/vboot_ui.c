@@ -222,6 +222,135 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 	return 0;
 }
 
+/*
+ * User interface for confirming launch of diagnostics rom
+ *
+ * This asks the user to confirm the launch of the diagnostics rom. This
+ * happens in 2 rounds.  The first round (recovery_mode==1) the user can
+ * press the power button (which sets a bit and reboots), or press escape.
+ * There is a 30-second timeout.  The second round (recovery_mode==0) happens
+ * after the reboot (assuming the user pressed the power button), where the
+ * user is given the same options again and this time the
+ * press of the power button causes the diagnostics rom to be run.
+ */
+VbError_t vb2_diagnostics_ui(struct vb2_context *ctx, int recovery_mode)
+{
+	int active = 1;
+	int total_delay = 0;
+	int power_button_was_pressed = 0;
+	int result = 0;
+        int reenable_power_button = 1;
+
+	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_DIAG, 0);
+
+	/*
+	 * We have to disable the power button, otherwise the system merely
+	 * turns off.  Try to avoid adding a 'return' mid-function (i.e.,
+	 * always let execution flow to the end of the function, otherwise you
+	 * might forget to re-enable the power button).
+	 */
+	VbExEcEnablePowerButton(0 /* default ec device */, 0 /* disable */);
+
+	/* We'll loop until the user decides what to do */
+	do {
+		uint32_t key = VbExKeyboardRead();
+		/*
+		 * VbExIsShutdownRequested() is almost an adequate substitute
+		 * for adding a new flag to VbExGetSwitches().  The main
+		 * issue is that the former doesn't consult the power button
+		 * on detachables, and this function wants to see for itself
+		 * that the power button isn't currently pressed.
+		 */
+		uint32_t power_pressed =
+			VbExGetSwitches(VB_INIT_FLAG_POWER_BUTTON_DEPRESSED);
+		if (power_pressed) {
+			power_button_was_pressed = 1;
+		} else if (power_button_was_pressed) {
+			VB2_DEBUG("vb2_diagnostics_ui() - power released\n");
+                        reenable_power_button = 0;
+
+			if (recovery_mode) {
+				vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+				vb2_nv_commit(ctx);
+				VB2_DEBUG("Diagnostic requested, rebooting\n");
+				result = VBERROR_REBOOT_REQUIRED;
+				active = 0;
+				break;
+			} else {
+				VB2_DEBUG("Diagnostic requested, running\n");
+
+				/*
+				 * Re-enable power button before jumping to
+				 * the firmware.
+				 */
+				VbExEcEnablePowerButton(0, 1);
+				reenable_power_button = 0;
+
+				/* Verify and run firmware #5 */
+				vb2_run_altfw(5, 1);
+				VB2_DEBUG("Diagnostic failed to run\n");
+				/*
+				 * Assuming failure was due to bad hash, though
+				 * the rom could just be missing or invalid.
+				 */
+				vb2_fail(ctx, VB2_RECOVERY_ALTFW_HASH_FAILED,
+					 0);
+				/* Reboot to re-enable the TPM */
+				result = VBERROR_REBOOT_REQUIRED;
+				active = 0;
+				break;
+			}
+		}
+
+		/*
+		 * If the lid is closed then check if VbWantShutdown() also
+		 * says we should shutdown.  The desire is not to have a power
+		 * button press cause a shutdown, but we should still honor a
+		 * lid closing (while also trying to not duplicate here the
+		 * implementation of VbWantShutdown()).
+		 */
+
+		if ((VbExIsShutdownRequested() &
+		     VB_SHUTDOWN_REQUEST_LID_CLOSED) &&
+		    VbWantShutdown(ctx, 0)) {
+			VB2_DEBUG("vb2_diagnostics_ui() - shutdown request\n");
+			result = VBERROR_SHUTDOWN_REQUESTED;
+			active = 0;
+			break;
+		}
+
+		switch (key) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case VB_KEY_ESC:
+			/* Escape pressed - return to developer screen */
+			VB2_DEBUG("vb2_diagnostics_ui() - user pressed Esc\n");
+			active = 0;
+			break;
+		default:
+			VB2_DEBUG("vb2_diagnostics_ui() - pressed key %d\n",
+				  key);
+			VbCheckDisplayKey(ctx, key);
+			break;
+		}
+		if (total_delay >= 30 * 1000) {
+			VB2_DEBUG("vb2_diagnostics_ui() - timeout\n");
+			break;
+		}
+		if (active) {
+			VbExSleepMs(DEV_KEY_DELAY);
+			total_delay += DEV_KEY_DELAY;
+		}
+	} while (active);
+
+	if (reenable_power_button)
+		VbExEcEnablePowerButton(0, 1);
+
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
+	return result;
+}
+
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
@@ -471,6 +600,14 @@ VbError_t VbBootDeveloper(struct vb2_context *ctx)
 	return retval;
 }
 
+VbError_t VbBootDiagnostic(struct vb2_context *ctx)
+{
+	vb2_init_ui();
+	VbError_t retval = vb2_diagnostics_ui(ctx, 0 /* not recovery mode */);
+	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0);
+	return retval;
+}
+
 /* Delay in recovery mode */
 #define REC_DISK_DELAY       1000     /* Check disks every 1s */
 #define REC_KEY_DELAY        20       /* Check keys every 20ms */
@@ -606,6 +743,13 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 					i = 4;
 					break;
 				}
+			} else if ((ctx->flags & VB2_CONTEXT_DIAG_SUPPORTED) &&
+				   (key == 3 || key == 276)) { /* Ctrl-C, F12 */
+				VbError_t ret;
+				ret = vb2_diagnostics_ui(ctx,
+							 1 /* recovery mode */);
+				if (ret)
+					return ret;
 			} else {
 				VbCheckDisplayKey(ctx, key);
 			}
