@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "571f40e5_944a8e7c",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-02-13T09:54:27Z",
+      "side": 1,
+      "message": "This wording is a little bit confusing.  Maybe:\n\n  RW not signed by root key contained in RO.\n\n  RW signed by incompatible root key (different from RO).",
+      "range": {
+        "startLine": 1424,
+        "startChar": 48,
+        "endLine": 1424,
+        "endChar": 59
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64a061d_88bcf2ff",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-02-13T09:54:27Z",
+      "side": 1,
+      "message": "Wouldn\u0027t mind seeing this as a ternary, but that is just personal style:\n\n  r \u003d wp_enabled ? update_rw_\n                 : update_whole_",
+      "range": {
+        "startLine": 1662,
+        "startChar": 0,
+        "endLine": 1665,
+        "endChar": 44
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7c6807f_9c7fd3a2",
         "filename": "futility/updater.c",
         "patchSetId": 6
@@ -19,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "3268e041_c3be5eda",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-02-13T09:54:27Z",
+      "side": 1,
+      "message": "must",
+      "range": {
+        "startLine": 1672,
+        "startChar": 41,
+        "endLine": 1672,
+        "endChar": 48
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "240be195_cdd2f3bc",
         "filename": "futility/updater.c",
         "patchSetId": 6
@@ -30,6 +99,29 @@
       "writtenOn": "2019-02-13T09:49:56Z",
       "side": 1,
       "message": "nit: A clickable URL with http:// prefix would be nice.\n\nInstead of http://go/cros-remove-wp , since both this program and the target doc are public, consider https://goo.gl/ces83U public redirect which I just made.  Though the URL is not descriptive, it can be used by anyone.",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97d3a56_526ea497",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-02-13T09:54:27Z",
+      "side": 1,
+      "message": "Is this friendly to non-Google Chromium developers?",
+      "range": {
+        "startLine": 1673,
+        "startChar": 35,
+        "endLine": 1673,
+        "endChar": 52
+      },
       "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
