@@ -431,7 +431,26 @@ VbError_t VbSelectAndLoadKernel(VbCommonParams *cparams,
 		else
 			retval = VbBootRecovery(&ctx);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
-	} else if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
+	} else if (vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST)) {
+		vb2_nv_set(&ctx, VB2_NV_DIAG_REQUEST, 0);
+		vb2_nv_commit(&ctx);
+
+		/*
+		 * Diagnostic boot. This has UI but only power button
+		 * so no detachable-specific UI is needed.  This mode
+		 * is also 1-shot so it's placed before developer mode.
+		 */
+		retval = VbBootDiagnostic(&ctx);
+		/*
+		 * The diagnostic menu should either boot a rom, or
+		 * return either of reboot or shutdown.  The following
+		 * check is a safety precaution.
+		 */
+		if (!retval) {
+			retval = VBERROR_REBOOT_REQUIRED;
+		}
+		goto VbSelectAndLoadKernel_exit;
+	} else 	if (ctx.flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		/* Developer boot.  This has UI. */
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
 			retval = VbBootDeveloperMenu(&ctx);
