@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96175266_32dc959f",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-13T03:12:14Z",
+      "side": 1,
+      "message": "maybe you can pass here just the wp status, looks like this is the only use for this parameter",
+      "range": {
+        "startLine": 1247,
+        "startChar": 2,
+        "endLine": 1247,
+        "endChar": 29
+      },
+      "revId": "7fbca33a55e49e29c5b239fe2b1a24ba6e277f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
