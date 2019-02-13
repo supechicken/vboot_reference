@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a71ec66_2e39ebc2",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "In fact we may raise this error even if root key is broken. But well, the incompatible message seems more descriptive for most cases - let\u0027s use it.\n\nDone",
+      "parentUuid": "571f40e5_944a8e7c",
+      "range": {
+        "startLine": 1424,
+        "startChar": 48,
+        "endLine": 1424,
+        "endChar": 59
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e64a061d_88bcf2ff",
         "filename": "futility/updater.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9fd6431c_16ab32c7",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64a061d_88bcf2ff",
+      "range": {
+        "startLine": 1662,
+        "startChar": 0,
+        "endLine": 1665,
+        "endChar": 44
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c6807f_9c7fd3a2",
         "filename": "futility/updater.c",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197822f5_c19ba7c4",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "Yes I think we\u0027ll need more cases soon, but it\u0027s fine to make it if now.",
+      "parentUuid": "d7c6807f_9c7fd3a2",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac534ea_f25a4dd3",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3268e041_c3be5eda",
+      "range": {
+        "startLine": 1672,
+        "startChar": 41,
+        "endLine": 1672,
+        "endChar": 48
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +218,48 @@
     },
     {
       "key": {
+        "uuid": "f520dad8_ba3d7def",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97d3a56_526ea497",
+      "range": {
+        "startLine": 1673,
+        "startChar": 35,
+        "endLine": 1673,
+        "endChar": 52
+      },
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ca65dfb_de4cdbb4",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "I used go/ without http explicitly because of few reasons:\n\n1. goo.gl is turning down.\n2. goo.gl does not allow changing target url.\n3. this is more for helping internal developers so a non-clickable would prevent people trying links that don\u0027t work.\n\nBut since both reviewers asked, I can change this to public goo.gl.",
+      "parentUuid": "240be195_cdd2f3bc",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08f92d1_9b7cb780",
         "filename": "futility/updater.c",
         "patchSetId": 6
@@ -142,6 +274,24 @@
       "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c57a997_7e280406",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T10:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08f92d1_9b7cb780",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
