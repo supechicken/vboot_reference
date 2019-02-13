@@ -203,11 +203,12 @@ typedef struct VbCommonParams {
 
 /* Flags for VbExGetSwitches() */
 /* Recovery button was pressed at boot time. */
-#define VB_INIT_FLAG_REC_BUTTON_PRESSED  0x00000002
+#define VB_SWITCH_FLAG_REC_BUTTON_PRESSED	0x00000002
+/* Report if user is currently present (typically via power button) */
+#define VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED	0x00000004
 /* Allow USB boot on transition to dev */
-#define VB_INIT_FLAG_ALLOW_USB_BOOT	 0x00004000
-/* Mask of deprecated flags */
-#define VB_INIT_FLAG_DEPRECATED          0x0000BFFD
+#define VB_SWITCH_FLAG_ALLOW_USB_BOOT		0x00004000
+
 
 /*
  * Output flags for VbInitParams.out_flags.  Used to indicate potential boot
@@ -850,6 +851,15 @@ uint32_t VbExGetSwitches(uint32_t request_mask);
  * function is called.
  */
 int VbExTrustEC(int devidx);
+
+/**
+ * Disable the power button. If you intend to only disable the power
+ * button temporarily then you can call with enable=0 and later with
+ * enable=1.  The number of disable calls are counted so that if the
+ * button is already disable by a prior call with enable=0 then the
+ * button will remain disabled even after you call with enable=1.
+ */
+VbError_t VbExEcEnablePowerButton(int devidx, int enable);
 
 /**
  * Check if the EC is currently running rewritable code.
