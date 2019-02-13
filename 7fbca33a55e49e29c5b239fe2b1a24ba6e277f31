@@ -22,6 +22,30 @@
       "revId": "7fbca33a55e49e29c5b239fe2b1a24ba6e277f31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0dd558_3aadfed5",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-13T03:18:42Z",
+      "side": 1,
+      "message": "I thought about that, but passing cfg is more consistent with other checks like check_compatible_tpm_keys, and it also simplified the callers so they don\u0027t need to worry about how to figure out wp status in each invocation.",
+      "parentUuid": "96175266_32dc959f",
+      "range": {
+        "startLine": 1247,
+        "startChar": 2,
+        "endLine": 1247,
+        "endChar": 29
+      },
+      "revId": "7fbca33a55e49e29c5b239fe2b1a24ba6e277f31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
