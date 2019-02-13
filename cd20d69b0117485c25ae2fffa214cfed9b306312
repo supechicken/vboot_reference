@@ -260,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "7f9e8275_a2f02a31",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T10:24:38Z",
+      "side": 1,
+      "message": "Existing goo.gl redirects will continue working indefinitely, FWIW.  The point about it not being editable stands, I figured that was the least bad tradeoff vs either an internal-only service, or a non-Google service.\n\nHopefully if that doc is moved, its URL will be made redirect to the new doc, which will keep the goo.gl redirect functional as well.",
+      "parentUuid": "6ca65dfb_de4cdbb4",
+      "revId": "cd20d69b0117485c25ae2fffa214cfed9b306312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08f92d1_9b7cb780",
         "filename": "futility/updater.c",
         "patchSetId": 6
