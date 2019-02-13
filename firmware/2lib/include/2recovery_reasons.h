@@ -219,6 +219,9 @@ enum vb2_nv_recovery {
 	/* Recovery hash space lock error in RO firmware */
 	VB2_RECOVERY_RO_TPM_REC_HASH_L_ERROR = 0x5f,
 
+	/* Alt FW Failed hash verification */
+	VB2_RECOVERY_ALTFW_HASH_FAILED = 0x60,
+
 	/* Unspecified/unknown error in rewritable firmware */
 	VB2_RECOVERY_RW_UNSPECIFIED  = 0x7f,
 

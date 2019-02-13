@@ -188,6 +188,16 @@ enum vb2_context_flags {
 	 * data provided by the caller could be uninitialized.)
 	 */
 	VB2_CONTEXT_NVDATA_V2 = (1 << 18),
+
+	/*
+	 * Diagnostic mode is available to be requested.
+	 */
+	VB2_CONTEXT_DIAG_SUPPORTED = (1 << 19),
+
+	/*
+	 * Diagnostic mode was requested.
+	 */
+	VB2_CONTEXT_DIAGNOSTIC_MODE = (1 << 20),
 };
 
 /*
