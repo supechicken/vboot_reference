@@ -205,7 +205,7 @@ VbError_t vb2_altfw_ui(struct vb2_context *ctx)
 			 * This will not return if successful. Drop out to
 			 * developer mode on failure.
 			 */
-			vb2_run_altfw(key - '0');
+			vb2_run_altfw(key - '0', 0);
 			active = 0;
 			break;
 		default:
