@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e870cd3f_b4b7bb2f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "424f506d_a73afd4e",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99dffa0a_3316ef8d",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "11a77741_60a4489f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99dffa0a_3316ef8d",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ca6c585_b93ab1d2",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cbd03f_10ae0e67",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca6c585_b93ab1d2",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "53f0ec58_0c1c5d7a",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done, added clarification I think it needs to be exact",
+      "parentUuid": "50f06ca5_8875fe3f",
+      "range": {
+        "startLine": 750,
+        "startChar": 24,
+        "endLine": 750,
+        "endChar": 74
+      },
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b0e6b38_739bbca3",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 4
@@ -90,6 +168,24 @@
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433c8238_97a16e24",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0e6b38_739bbca3",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "2f9fd42d_fde2c456",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa0822a_49c5ebc4",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9ec1f2_f33e53e2",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "6e31c075_e0552b55",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9ec1f2_f33e53e2",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfa73b03_e27df493",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -141,6 +273,24 @@
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac96329e_8f7f8f73",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa73b03_e27df493",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "198dddbe_6e8cb09c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0286540a_cdb6efd8",
+      "range": {
+        "startLine": 271,
+        "startChar": 19,
+        "endLine": 271,
+        "endChar": 33
+      },
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cf0327e_61719ea8",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "3386c4ae_ce430a8a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf0327e_61719ea8",
+      "range": {
+        "startLine": 291,
+        "startChar": 19,
+        "endLine": 291,
+        "endChar": 33
+      },
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8171a51c_09f36d68",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -201,6 +399,30 @@
       "writtenOn": "2019-02-13T02:21:21Z",
       "side": 1,
       "message": "Different function. (FWIW I don\u0027t think this needs to be the exact function name, but some indication that we\u0027re in the service tag UI would be nice.)",
+      "range": {
+        "startLine": 334,
+        "startChar": 15,
+        "endLine": 334,
+        "endChar": 30
+      },
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0173a9f_35c60863",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "I followed the other examples in the file, VB2_DEBUG will prepend the function name. It looks like all functions that are called from VbBootDeveloper() add it, I will happily take it out if you want.",
+      "parentUuid": "8171a51c_09f36d68",
       "range": {
         "startLine": 334,
         "startChar": 15,
@@ -230,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "d002a240_ef0180d9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "The document says it waits indefinitely, I asked about a timeout.",
+      "parentUuid": "b6666444_99041b12",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35f7e454_e98488df",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -244,6 +484,24 @@
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341c90fe_506e00d9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f7e454_e98488df",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "aa40f629_ac75d345",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06524cb_5aa06067",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c125edef_7f32f417",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 4
@@ -278,6 +554,24 @@
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da04bfce_a14b5521",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-13T23:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c125edef_7f32f417",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
