@@ -68,6 +68,11 @@ int VbExTrustEC(int devidx)
 	return 1;
 }
 
+VbError_t VbExEcEnablePowerButton(int devidx, int enable)
+{
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbExEcRunningRW(int devidx, int *in_rw)
 {
 	*in_rw = 0;
