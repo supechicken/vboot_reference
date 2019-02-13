@@ -37,8 +37,9 @@ void vb2_error_notify(const char *print_msg,
  * cannot be found / fails to start
  *
  * @altfw_num	Number of bootloader to start (0=any, 1=first, etc.)
+ * @verify      1 to verify rom, 0 to not verify
  */
-void vb2_run_altfw(int altfw_num);
+void vb2_run_altfw(enum VbAltFwIndex_t altfw_num, int verify);
 
 /** Display an error and beep to indicate that altfw is not available */
 void vb2_error_no_altfw(void);
