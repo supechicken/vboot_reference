@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ceaf799_647088eb",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-14T22:10:29Z",
+      "side": 1,
+      "message": "Note that you\u0027re not actually calling this in CL:1471053, you\u0027re calling vb2_digest_buffer() directly. Was that intentional?",
+      "revId": "f1d1ad40be839ddb57522253b01f180f7f14c2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
