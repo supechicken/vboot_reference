@@ -891,6 +891,14 @@ VbError_t VbExEcVbootDone(int in_recovery);
  */
 VbError_t VbExEcBatteryCutOff(void);
 
+/**
+ * Request EC to enable or disable the power button.
+ *
+ * @param enable	0 to disable power button, otherwise enable power button
+ * @return VBERROR_... error, VBERROR_SUCCESS on success.
+ */
+VbError_t VbExEcEnablePowerButton(int enable);
+
 /*
  * severity levels for an auxiliary firmware update request
  */

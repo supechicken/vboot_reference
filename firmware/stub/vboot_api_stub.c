@@ -148,6 +148,11 @@ VbError_t VbExEcBatteryCutOff(void)
 	return VBERROR_SUCCESS;
 }
 
+VbError_t VbExEcEnablePowerButton(int enable)
+{
+	return VBERROR_SUCCESS;
+}
+
 VbError_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
 {
 	*severity = VB_AUX_FW_NO_UPDATE;
