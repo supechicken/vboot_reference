@@ -435,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "e47399b5_fce64698",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-14T02:11:40Z",
+      "side": 1,
+      "message": "Yeah, please take it out or make it say \"Service Tag UI - ...\" or something instead. I\u0027m pretty sure that \"VbBootDeveloper()\" in those other places is still left over from before VB2_DEBUG() used to prepend the function name anyway, and just wasn\u0027t updated right when things got moved around. Generally, a lot of code in vboot is *very* old and not necessarily always a good example of how to do things anymore.",
+      "parentUuid": "b0173a9f_35c60863",
+      "range": {
+        "startLine": 334,
+        "startChar": 15,
+        "endLine": 334,
+        "endChar": 30
+      },
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6666444_99041b12",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -464,6 +488,24 @@
       "side": 1,
       "message": "The document says it waits indefinitely, I asked about a timeout.",
       "parentUuid": "b6666444_99041b12",
+      "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "310bf023_510c7e1c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-14T02:11:40Z",
+      "side": 1,
+      "message": "Right, sorry, I think I may have mixed it up with something else.",
+      "parentUuid": "d002a240_ef0180d9",
       "revId": "b6f96fd407d118d92f42dffe6029c7064549fd07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

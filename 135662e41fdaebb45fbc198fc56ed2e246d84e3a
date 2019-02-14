@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afa838e8_2e22115e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-14T02:11:40Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think C99 comments are allowed in vboot?",
+      "revId": "135662e41fdaebb45fbc198fc56ed2e246d84e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c31546_397033b0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-14T02:11:40Z",
+      "side": 1,
+      "message": "nit: should this say \"system is write-protected\" or something like that? Are there other reasons why it might not be settable? Generally best to describe the problem as clearly and actionably as possible in these messages, I think.",
+      "revId": "135662e41fdaebb45fbc198fc56ed2e246d84e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
