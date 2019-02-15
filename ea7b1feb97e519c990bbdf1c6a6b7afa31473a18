@@ -34,6 +34,24 @@
       "revId": "ea7b1feb97e519c990bbdf1c6a6b7afa31473a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cc21620_f08ea74b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T23:08:38Z",
+      "side": 1,
+      "message": "Uhhh... I\u0027m not even sure why VbExSwitches() uses these flags in the first place. It never had anything to do with VbInit(). They were probably just reused there out of convenience because they happened to cover what they needed at the time.\n\nI\u0027d say just take this opportunity to rename these and get rid of the deprecated mask (because we already got rid of VbInit() a long time ago it shouldn\u0027t matter to anyone anymore). I\u0027d suggest calling these VB_SWITCH_... or something like that instead.",
+      "parentUuid": "57e93a20_677273b1",
+      "revId": "ea7b1feb97e519c990bbdf1c6a6b7afa31473a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
