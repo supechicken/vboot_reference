@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0409e715_e94b198f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-02-15T06:26:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t use {} around single-line statements",
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa90a7b4_6f476ffb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-02-15T06:26:33Z",
+      "side": 1,
+      "message": "Add a key for this?",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 11
+      },
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d42784_6a0003a4",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-02-15T06:26:33Z",
+      "side": 1,
+      "message": "blank line before return",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 7
+      },
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
