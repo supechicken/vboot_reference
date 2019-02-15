@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ae85e189_c344aa85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "My interpretation of the design doc was that depthcharge should have a config option that controls a bit that vboot looks at.  I think I had asked Simon about making the behavior a compile-flag that controlled the presence/absence of the feature but I think he wanted it this way so the functionality could be more readily used/tested on other boards too.",
+      "parentUuid": "60be2181_8c65c0b3",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e4f4335_20ce847b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "I\u0027m confused, what do you need these for? It\u0027s triggered by an NVRAM flag, so can\u0027t vboot kernel verification just read that on its own and immediately act on it? Why does this need to be in the context?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c652fb47_ad036fe0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "I think you\u0027re right that it can be removed since the set and read are within the same function. It\u0027s something I planned to do as long as no other uses cropped up.  I took me a bit of time to wrap my head around the various shared regions/contents and how/when (\u0026 with what they\u0027re shared).",
+      "parentUuid": "4e4f4335_20ce847b",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "b199c3e6_48f7150d",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "This is from the spec (or at least my interpretation of it) defining that depthcharge set a bit that\u0027s checked by vboot (vs. affecting whether the feature is included in the compilation).",
+      "parentUuid": "3cdae2d1_30d100a5",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f71fcf7_b63b2f8c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 4
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "75f6dae6_da85473e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f71fcf7_b63b2f8c",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36df4759_157170e2",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 4
@@ -98,6 +170,24 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "Is the goal booting normally when the user presses Esc or lets the timeout run out? Is that really the behavior that we want? I think shutting down would make more sense (from the user\u0027s perspective they had just been in recovery mode and pressed Ctrl+C, it\u0027s not necessarily apparent that the machine rebooted into \"normal\" mode for them, I think doing a normal boot at that point would be unexpected).",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ccfa2d_27363af8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "I don\u0027t think the doc exactly specified how to opt-out of the confirmation nor what to do if the running isn\u0027t confirmed.  I didn\u0027t see much point in doing yet another reboot (we\u0027ve just done one) so I\u0027ve opted to have the boot continue as it normally would (as if Ctrl-C hadn\u0027t been pressed).",
+      "parentUuid": "36df4759_157170e2",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "a75eaa90_f5138b32",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "If I understand you\u0027re comment, the layout is a consequence of having a non-confirmation of the rom resume with normal execution, whether it be dev mode and normal boot.  The other approaches I considered involved duplicating code content, and I was hesitant to do yet another reboot just for the sake of keeping the code delta smaller.",
+      "parentUuid": "659368b5_b7c2a97b",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3099e596_c683a936",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -132,6 +240,30 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "Why do you need two physical presence checks? That was not in the design doc. One should be enough... the NVRAM flag cannot be trusted anyway, so checking in recovery mode is useless. Just reboot immediately when someone presses Ctrl+C.",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0ace24_0dbc4216",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "The spec seemed to describe two confirmations, one after the Ctrl-C and another after the reboot.  Both confirms seem like overkill (though I\u0027d like to pick a different key that\u0027s farther away from Ctrl-D to minimize issues from accidental presses from bad aim), and I didn\u0027t see a precise description of how to confirm the Ctrl-C.  I originally had two different screens for the confirms, but it seemed to add complexity and space when the same screen could be used for both.  This means that the power key is used for both, which is less effort for the year (vs. using two different keys for confirm), though might confuse the user because it\u0027s no so clear they need to eventually press a 2nd time (it\u0027s more clear with a dev firmware that take several seconds to reboot, but I don\u0027t know how quickly a release firmware can reboot on Wilco).",
+      "parentUuid": "3099e596_c683a936",
       "range": {
         "startLine": 230,
         "startChar": 3,
@@ -167,6 +299,30 @@
     },
     {
       "key": {
+        "uuid": "a0fdfe82_c883d567",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "The !power_pressed is already implied by being an else to the earlier \"if (power_pressed)\".",
+      "parentUuid": "0cf660b1_1a8eafbe",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 37
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff636421_82ac0c20",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -178,6 +334,24 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "Doesn\u0027t this get called automatically when you return? Shouldn\u0027t need to do it explicitly here.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2ed9f5_2b4b8980",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "I\u0027d have to double-check, but in my runtime testing I saw that one of the two operations set/clear operations (probably the clear) wasn\u0027t getting committed.  I had to add a commit to one, and given that commit already has a internal check on whether to do any work it seemed safer and more consistent for me to have a commit on both given that a reboot can shortly follow either.",
+      "parentUuid": "ff636421_82ac0c20",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -241,6 +415,24 @@
     },
     {
       "key": {
+        "uuid": "feaa1662_da532c4b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "I was tempted to add a parameter to VbExIsShutdownRequested so it could always consistently report the power button status, as this would\u0027ve avoided the need to add a flag to VbExGetSwitches().  I\u0027ll have to see what I can do about VbWantShutdown().  The situation is already a bit unclean in there.",
+      "parentUuid": "99698792_49db139b",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8867da10_b528a44b",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -258,6 +450,24 @@
     },
     {
       "key": {
+        "uuid": "ae77fca4_695b9eb0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "A force of habit from trying to write kernel code that isn\u0027t susceptible to ntp changes, timezone changes, hibernate, or bad clocks that go backwards.  I suppose none of those problems apply here in firmware.",
+      "parentUuid": "8867da10_b528a44b",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e19acc70_cf966182",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -269,6 +479,24 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "Rather than tracking whether you need to do this, wouldn\u0027t it be easier to track whether you need to boot the diagnostic tool (either with an explicit variable or by just checking if result is VBERROR_SUCCESS), and then boot at the end (after you ran through all the cleanup, including the screen blanking)?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d57e29e_3fcfe5b7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "Your suggestion would have the advantage that the power button is always disabled \u0026 enabled unconditionally in 1 place, so I\u0027ll give it a try.  I mostly ended up with this because runtime tested pointed out to me that I had neglected to re-enable the power button before jumping to the payload.",
+      "parentUuid": "e19acc70_cf966182",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -303,6 +531,24 @@
       "writtenOn": "2019-02-15T00:12:04Z",
       "side": 1,
       "message": "Why not use existing \u0027retval\u0027?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39236d22_c4d39702",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-15T01:14:40Z",
+      "side": 1,
+      "message": "retval isn\u0027t exactly the proper type (though I haven\u0027t looked at what VbError_t is defined as), but I can turn a blind eye to that and use retval.",
+      "parentUuid": "81e1ce35_e098d7cd",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
