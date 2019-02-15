@@ -1,0 +1,311 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d859fbe3_acfda736",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "This patch needs plenty of unit tests.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60be2181_8c65c0b3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Can this be a compile-time flag (similar to https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/1466822/12/src/vboot/Makefile.inc) instead?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4f4335_20ce847b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "I\u0027m confused, what do you need these for? It\u0027s triggered by an NVRAM flag, so can\u0027t vboot kernel verification just read that on its own and immediately act on it? Why does this need to be in the context?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdae2d1_30d100a5",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Again not sure why this is needed.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f71fcf7_b63b2f8c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Could just do the NVRAM check right here, then wouldn\u0027t need to have an extra context flag.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36df4759_157170e2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Is the goal booting normally when the user presses Esc or lets the timeout run out? Is that really the behavior that we want? I think shutting down would make more sense (from the user\u0027s perspective they had just been in recovery mode and pressed Ctrl+C, it\u0027s not necessarily apparent that the machine rebooted into \"normal\" mode for them, I think doing a normal boot at that point would be unexpected).",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659368b5_b7c2a97b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Why is this indented? Just have four\n\n if (...) {\n   ...\n } else if (...) {\n   ...\n } else if (...) {\n   ...\n } else {\n   ...\n }\n\nat the same rank.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3099e596_c683a936",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Why do you need two physical presence checks? That was not in the design doc. One should be enough... the NVRAM flag cannot be trusted anyway, so checking in recovery mode is useless. Just reboot immediately when someone presses Ctrl+C.",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf660b1_1a8eafbe",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Are you trying to check for release here? Because then you need to check \u0026\u0026 !power_pressed as well.",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 37
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff636421_82ac0c20",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Doesn\u0027t this get called automatically when you return? Shouldn\u0027t need to do it explicitly here.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bfff26_18f045cb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "As mentioned on the depthcharge CL, this isn\u0027t safe. You have to specially encode this case.",
+      "range": {
+        "startLine": 294,
+        "startChar": 19,
+        "endLine": 294,
+        "endChar": 20
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6540596f_1c2d6fe7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "...or the TPM access might have failed",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99698792_49db139b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "I think it would be better to extend VbWantShutdown with another parameter (e.g. an ignore_mask or something).",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8867da10_b528a44b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Please don\u0027t count delay iterations... instead, get the start timestamp directly with VbExGetTimer(), and then keep calling that to compare whether 30 seconds have passed since then.",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19acc70_cf966182",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Rather than tracking whether you need to do this, wouldn\u0027t it be easier to track whether you need to boot the diagnostic tool (either with an explicit variable or by just checking if result is VBERROR_SUCCESS), and then boot at the end (after you ran through all the cleanup, including the screen blanking)?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b6895a_3890146a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "nit: please write keys in hex for consistency (or write Ctrl+C as (0x1f \u0026 \u0027C\u0027) because it\u0027s easier to read).",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e1ce35_e098d7cd",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-15T00:12:04Z",
+      "side": 1,
+      "message": "Why not use existing \u0027retval\u0027?",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
