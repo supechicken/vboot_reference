@@ -347,6 +347,30 @@
     },
     {
       "key": {
+        "uuid": "baf94143_4b31fc99",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-02-15T17:58:26Z",
+      "side": 1,
+      "message": "For the Cr50 implementation of GET_PWR_BTN, I didn\u0027t anticipate vboot needing to know when the button is released.  The Cr50 latches the power button press, and the GET_PWR_BTN command clears the latched state.   So regardless of how long the user holds the power button, from vboot\u0027s perspective it will look like a quick press.",
+      "parentUuid": "a0fdfe82_c883d567",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 37
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "815bc198_43c4ce14",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
