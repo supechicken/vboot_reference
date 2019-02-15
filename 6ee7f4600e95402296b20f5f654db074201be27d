@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bfe69152_64a6a8b8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-15T18:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0409e715_e94b198f",
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa90a7b4_6f476ffb",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4048b0f6_78105f4c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-15T18:09:03Z",
+      "side": 1,
+      "message": "Done, and added the others in this switch",
+      "parentUuid": "fa90a7b4_6f476ffb",
+      "range": {
+        "startLine": 548,
+        "startChar": 7,
+        "endLine": 548,
+        "endChar": 11
+      },
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36d42784_6a0003a4",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 9
@@ -62,6 +104,30 @@
       "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0738e55d_ecd3609e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-15T18:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d42784_6a0003a4",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 7
+      },
+      "revId": "6ee7f4600e95402296b20f5f654db074201be27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
