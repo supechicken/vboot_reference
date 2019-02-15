@@ -276,6 +276,30 @@
     },
     {
       "key": {
+        "uuid": "db633988_48b70cd7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-02-15T01:39:48Z",
+      "side": 1,
+      "message": "We want at least one physical presence check before launching, similar to how we expect one before confirming developer mode entry.\n\nI think the one that matters more is the one after the reboot since we\u0027re coming up after a reset and we don\u0027t want it to be triggered remotely just by setting VB2_NV_DIAG_REQUEST.\n\nI suppose the check at the recovery screen before the reboot is to give the user a chance to press ESC and abort?\n\nIt does seem cumbersome...  Could we have a timeout \"Preparing diagnostics, press ESC to cancel...\" and then reboot in a few seconds?  That can make it harder to test since it is timing based..",
+      "parentUuid": "2f0ace24_0dbc4216",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cf660b1_1a8eafbe",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -316,6 +340,29 @@
         "startChar": 13,
         "endLine": 268,
         "endChar": 37
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815bc198_43c4ce14",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-02-15T01:39:48Z",
+      "side": 1,
+      "message": "We might also need vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1); and then set it back to 0 before launching the payload in the next phase.\n\nIf we are rebooting into normal mode we would skip the GOP step and not be able to display the screen.",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 39
       },
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
