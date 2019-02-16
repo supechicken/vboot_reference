@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c871eb2b_b4a0980c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "I think generally it\u0027s always better to compile out these board-specific features to save code size (and therefore boot time) on platforms that don\u0027t need it. The same is being done for the comparable feature of adding service tags (see CL:1466822).",
+      "parentUuid": "ae85e189_c344aa85",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e4f4335_20ce847b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -229,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "d883de39_b33ca2d1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "Since this is not at all a critical path anyway I think cleaner code might be worth more than avoiding another reboot. But really, I think it would be better to shut down anyway (took that discussion back to the design doc).",
+      "parentUuid": "a75eaa90_f5138b32",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3099e596_c683a936",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -288,6 +324,30 @@
       "side": 1,
       "message": "We want at least one physical presence check before launching, similar to how we expect one before confirming developer mode entry.\n\nI think the one that matters more is the one after the reboot since we\u0027re coming up after a reset and we don\u0027t want it to be triggered remotely just by setting VB2_NV_DIAG_REQUEST.\n\nI suppose the check at the recovery screen before the reboot is to give the user a chance to press ESC and abort?\n\nIt does seem cumbersome...  Could we have a timeout \"Preparing diagnostics, press ESC to cancel...\" and then reboot in a few seconds?  That can make it harder to test since it is timing based..",
       "parentUuid": "2f0ace24_0dbc4216",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24b0402_f3f2c250",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "I don\u0027t really see a need to give the user two chances to abort (before and after the reboot). In practice, I assume the reboot is only going to be a screen flicker for 1-2 seconds anyway, it\u0027s not a big deal from the user\u0027s perspective.",
+      "parentUuid": "db633988_48b70cd7",
       "range": {
         "startLine": 230,
         "startChar": 3,
@@ -371,6 +431,30 @@
     },
     {
       "key": {
+        "uuid": "20696f7a_9fc12021",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "Right, I confused myself with the logic here. Maybe this would be more easy to follow as\n\n int power_pressed \u003d VbExGetSwitches(...);\n\n if (power_pressed)\n   power_pressed_at_least_once \u003d 1;\n\n if (power_pressed_at_least_once \u0026\u0026 !power_pressed) {\n   ...\n }\n\nAs long as reading the switch clears the latch, I think this would probably be good enough. If the user keeps it pressed for 8 seconds the EC will force shutdown the system and we don\u0027t get a chance to notice the release here anymore.",
+      "parentUuid": "baf94143_4b31fc99",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 37
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "815bc198_43c4ce14",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -423,6 +507,24 @@
       "side": 1,
       "message": "I\u0027d have to double-check, but in my runtime testing I saw that one of the two operations set/clear operations (probably the clear) wasn\u0027t getting committed.  I had to add a commit to one, and given that commit already has a internal check on whether to do any work it seemed safer and more consistent for me to have a commit on both given that a reboot can shortly follow either.",
       "parentUuid": "ff636421_82ac0c20",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37966c54_071dcf84",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "No, let\u0027s not sprinkle statements around \"just in case\" that we know shouldn\u0027t be needed. The way this is designed, you should never need to commit explicitly unless you expect an asynchronous reboot (the only case I\u0027m aware of where that normally happens is on the BROKEN screen, that\u0027s why we always commit language changes immediately there).\n\nIn this case, I don\u0027t see any reason why you should be needed either one of your two vb2_nv_commit()s (because all those code paths should lead through vb2_kernel_cleanup() later). Please double-check if you actually need one of them, and if so try to figure out why.",
+      "parentUuid": "2d2ed9f5_2b4b8980",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -498,6 +600,24 @@
       "side": 1,
       "message": "I was tempted to add a parameter to VbExIsShutdownRequested so it could always consistently report the power button status, as this would\u0027ve avoided the need to add a flag to VbExGetSwitches().  I\u0027ll have to see what I can do about VbWantShutdown().  The situation is already a bit unclean in there.",
       "parentUuid": "99698792_49db139b",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b05631_bad6f0af",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "Returning a bit mask (instead of just 0 or 1) from VbWantShutdown() and then using that for both the power button and the shutdown check here sounds like a reasonable alternative, as long as we make sure that the result of VbWantShutdown() still also works fine when interpreted as a boolean (for the existing cases).",
+      "parentUuid": "feaa1662_da532c4b",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -620,6 +740,24 @@
       "side": 1,
       "message": "retval isn\u0027t exactly the proper type (though I haven\u0027t looked at what VbError_t is defined as), but I can turn a blind eye to that and use retval.",
       "parentUuid": "81e1ce35_e098d7cd",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f03b3a4_2a5a9021",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-16T00:10:01Z",
+      "side": 1,
+      "message": "Well... VbTryLoadKernel() also returns VBERROR values. I think it\u0027s accepted practice here to put VBERRORs into uint32_ts, but feel free to change the type of retval to VbError_t if you want.",
+      "parentUuid": "39236d22_c4d39702",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
