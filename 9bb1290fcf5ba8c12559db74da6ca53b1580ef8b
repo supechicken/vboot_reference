@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "09058862_9965f752",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-19T19:35:27Z",
+      "side": 1,
+      "message": "This does not work in switch statements\n\nfirmware/lib/vboot_ui.c:378:3: error: case label does not reduce to an integer constant\n   case VB_KEY_CTRL(D):\n\nI could do \n#define VB_KEY_CTRL(letter) (letter \u0026 0x1f)\nand\ncase VB_KEY_CTRL(\u0027D\u0027):\n\nI added the macro and the key codes to the enum in https://crrev.com/c/1475781 PTAL",
+      "parentUuid": "e6f75829_c4ef1b89",
+      "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2608356d_1cda9e34",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-15T22:50:35Z",
       "side": 1,
       "message": "If you make new constants/macros for control keys, please also apply them globally across all of vboot. (Also, that should happen in a separate CL before this one.)",
+      "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "891bfd16_4592331a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-19T19:35:27Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1475781",
+      "parentUuid": "2608356d_1cda9e34",
       "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ecf4d3_24802eb7",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-19T19:35:27Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1475781",
+      "parentUuid": "7eb0bd00_e2e78cde",
+      "range": {
+        "startLine": 609,
+        "startChar": 20,
+        "endLine": 609,
+        "endChar": 24
+      },
+      "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
