@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "359044a6_07a4fd52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "The tests are on my to-do list, but I first focused on getting the implementation a bit jelled first so I didn\u0027t write tests for irrelevant code.  This feature depends on the power button, and looks like the FAFT doc for Wilco doesn\u0027t have an answer yet for how to handle that button (it merely identifies it as an issue).",
+      "parentUuid": "d859fbe3_acfda736",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60be2181_8c65c0b3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "33988cb0_30d898c7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "I\u0027ve gotten rid of the flag though I haven\u0027t yet switched the functionality to compile-time (but I\u0027ll try to address this in the next draft since Simon seems to be warming up to the approach).",
+      "parentUuid": "c871eb2b_b4a0980c",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e4f4335_20ce847b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -104,6 +140,24 @@
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3dfaa48_00c3b063",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c652fb47_ad036fe0",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -478,6 +532,30 @@
     },
     {
       "key": {
+        "uuid": "b3d0a09f_42d0d975",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Would this be a system-specific or generic issue?  So far things work fine as-is, at least when I test on Atlas.",
+      "parentUuid": "815bc198_43c4ce14",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 39
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff636421_82ac0c20",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -531,6 +609,24 @@
     },
     {
       "key": {
+        "uuid": "9cbbb292_8dfe3393",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "The commits that\u0027s currently needed is to clear the bit. This the path where we we subsequently run the rom and thus vb2_kernel_cleanup() doesn\u0027t get called.  Afaict this situation also applies for conventional legacy boot and doesn\u0027t seem specific to the diagnostic rom feature (other than the feature wants to make a change to nvram before running a payload).",
+      "parentUuid": "37966c54_071dcf84",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17bfff26_18f045cb",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -551,6 +647,30 @@
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8a0f05_1518d1f7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17bfff26_18f045cb",
+      "range": {
+        "startLine": 294,
+        "startChar": 19,
+        "endLine": 294,
+        "endChar": 20
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -624,6 +744,24 @@
     },
     {
       "key": {
+        "uuid": "87d50549_d410d530",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "I\u0027ve changed the function to return a bitmask so this particular code block is cleaner, though I haven\u0027t gone as far as using it as a replacement for VbExGetSwitches(). To do the latter I think I\u0027d have to start passing in a flag (and change all the callsites to pass in a value) to request consistent/reliable reporting of the power button, and it seems like some people like having a more distinct abstraction between physical presense and power button.",
+      "parentUuid": "68b05631_bad6f0af",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8867da10_b528a44b",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -656,6 +794,24 @@
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d688bb_e35e64de",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae77fca4_695b9eb0",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -694,6 +850,24 @@
     },
     {
       "key": {
+        "uuid": "12e049b8_0564591d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d57e29e_3fcfe5b7",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3b6895a_3890146a",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -708,6 +882,24 @@
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0945335e_bcd2a545",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b6895a_3890146a",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -761,6 +953,24 @@
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0615452e_8032d4d7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-19T23:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f03b3a4_2a5a9021",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
