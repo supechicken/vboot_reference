@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "268e3cfd_4b359e87",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-19T21:30:27Z",
+      "side": 1,
+      "message": "Huh... funny that that doesn\u0027t work. Maybe I should file a GCC bug about that...\n\nAnyway, using CTRL(\u0027D\u0027) as a macro is okay as well. But I think you should use it directly in the code so you don\u0027t need to list them all here in the enum. That was sort of the point of using a macro.",
+      "parentUuid": "09058862_9965f752",
+      "revId": "9bb1290fcf5ba8c12559db74da6ca53b1580ef8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2608356d_1cda9e34",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 11
