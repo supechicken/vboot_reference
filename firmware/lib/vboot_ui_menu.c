@@ -463,7 +463,7 @@ static VbError_t vb2_handle_menu_input(struct vb2_context *ctx,
 		vb2_draw_current_screen(ctx);
 		break;
 	case VB_BUTTON_POWER_SHORT_PRESS:
-	case '\r':
+	case VB_KEY_ENTER:
 		/* Menuless screens shut down on power button press. */
 		if (!menus[current_menu].size)
 			return VBERROR_SHUTDOWN_REQUESTED;

@@ -717,8 +717,38 @@ VbError_t VbExDisplayDebugInfo(const char *info_str);
 /*****************************************************************************/
 /* Keyboard and switches */
 
+/* Key code for CTRL + letter */
+#define VB_KEY_CTRL(letter) (letter & 0x1f)
+
 /* Key codes for required non-printable-ASCII characters. */
 enum VbKeyCode_t {
+	VB_KEY_CTRL_A = VB_KEY_CTRL('A'),
+	VB_KEY_CTRL_B = VB_KEY_CTRL('B'),
+	VB_KEY_CTRL_C = VB_KEY_CTRL('C'),
+	VB_KEY_CTRL_D = VB_KEY_CTRL('D'),
+	VB_KEY_CTRL_E = VB_KEY_CTRL('E'),
+	VB_KEY_CTRL_F = VB_KEY_CTRL('F'),
+	VB_KEY_CTRL_G = VB_KEY_CTRL('G'),
+	VB_KEY_CTRL_H = VB_KEY_CTRL('H'),
+	VB_KEY_CTRL_I = VB_KEY_CTRL('I'),
+	VB_KEY_CTRL_J = VB_KEY_CTRL('J'),
+	VB_KEY_CTRL_K = VB_KEY_CTRL('K'),
+	VB_KEY_CTRL_L = VB_KEY_CTRL('L'),
+	VB_KEY_CTRL_M = VB_KEY_CTRL('M'),
+	VB_KEY_CTRL_N = VB_KEY_CTRL('N'),
+	VB_KEY_CTRL_O = VB_KEY_CTRL('O'),
+	VB_KEY_CTRL_P = VB_KEY_CTRL('P'),
+	VB_KEY_CTRL_Q = VB_KEY_CTRL('Q'),
+	VB_KEY_CTRL_R = VB_KEY_CTRL('R'),
+	VB_KEY_CTRL_S = VB_KEY_CTRL('S'),
+	VB_KEY_CTRL_T = VB_KEY_CTRL('T'),
+	VB_KEY_CTRL_U = VB_KEY_CTRL('U'),
+	VB_KEY_CTRL_V = VB_KEY_CTRL('V'),
+	VB_KEY_CTRL_W = VB_KEY_CTRL('W'),
+	VB_KEY_CTRL_X = VB_KEY_CTRL('X'),
+	VB_KEY_CTRL_Y = VB_KEY_CTRL('Y'),
+	VB_KEY_CTRL_Z = VB_KEY_CTRL('Z'),
+	VB_KEY_ENTER = '\r',
 	VB_KEY_ESC = 0x1b,
 	VB_KEY_UP = 0x100,
 	VB_KEY_DOWN = 0x101,

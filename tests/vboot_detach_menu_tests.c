@@ -456,7 +456,7 @@ static void VbBootDevTest(void)
 
 	/* Pressing ENTER is equivalent to power button. */
 	ResetMocksForDeveloper();
-	mock_keypress[0] = '\r';
+	mock_keypress[0] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"dev warning menu: ENTER is power button");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
@@ -469,7 +469,7 @@ static void VbBootDevTest(void)
 	/* ENTER functionality is unaffected by GBB flag in detachable UI. */
 	ResetMocksForDeveloper();
 	sd->gbb_flags |= GBB_FLAG_ENTER_TRIGGERS_TONORM;
-	mock_keypress[0] = '\r';
+	mock_keypress[0] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"dev warning menu: ENTER unaffected by GBB");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
@@ -740,7 +740,7 @@ static void VbBootDevTest(void)
 	/* Ctrl+U enabled via GBB */
 	ResetMocksForDeveloper();
 	sd->gbb_flags |= GBB_FLAG_FORCE_DEV_BOOT_USB;
-	mock_keypress[0] = 0x15;
+	mock_keypress[0] = VB_KEY_CTRL_U;
 	vbtlk_retval[0] = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_SUCCESS, "Ctrl+U force USB");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
@@ -753,7 +753,7 @@ static void VbBootDevTest(void)
 	/* Ctrl+U enabled via FWMP */
 	ResetMocksForDeveloper();
 	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_USB;
-	mock_keypress[0] = 0x15;
+	mock_keypress[0] = VB_KEY_CTRL_U;
 	vbtlk_retval[0] = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_SUCCESS, "Ctrl+U force USB");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
@@ -1154,7 +1154,7 @@ static void VbBootDevTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_LONG_PRESS;	/* same */
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_LONG_PRESS;	/* same */
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS;	/* noop */
-	mock_keypress[i++] = '\r';
+	mock_keypress[i++] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_REBOOT_REQUIRED,
 		"FWMP dev disabled");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
