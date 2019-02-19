@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f686cf7_43aadeab",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-19T21:26:28Z",
+      "side": 1,
+      "message": "Why not use the macro directly in the code so you don\u0027t need to have the whole list here?",
+      "revId": "3a87c34952629b74ed62c62836916aa3076d9620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
