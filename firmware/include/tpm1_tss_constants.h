@@ -203,7 +203,7 @@ typedef struct tdTPM_FAMILY_TABLE_ENTRY
 	TPM_FAMILY_ID familyID;
 	TPM_FAMILY_VERIFICATION verificationCount;
 	TPM_FAMILY_FLAGS flags;
-} TPM_FAMILY_TABLE_ENTRY;
+} __attribute__((packed)) TPM_FAMILY_TABLE_ENTRY;
 
 typedef struct tdTPM_IFX_FIRMWAREPACKAGE {
 	uint32_t FwPackageIdentifier;
