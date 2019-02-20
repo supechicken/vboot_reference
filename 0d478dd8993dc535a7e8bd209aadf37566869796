@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483d386a_6d2b92f1",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T20:44:46Z",
+      "side": 1,
+      "message": "nit: missing space (in some more line-broken strings further down too)",
+      "range": {
+        "startLine": 252,
+        "startChar": 48,
+        "endLine": 252,
+        "endChar": 49
+      },
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3033e0ef_5a510502",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T20:44:46Z",
+      "side": 1,
+      "message": "I think we may want to rethink what happens here if ret is not SUCCESS... added that question to the design doc.",
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e35919f6_994d6ca2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T20:44:46Z",
+      "side": 1,
+      "message": "nit: you\u0027re somewhat inconsistent in how you\u0027re treating overlength strings... i.e. this one is both broken and still goes over 80 chars. I\u0027d say either don\u0027t break them at all, or stick to the limit.",
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
