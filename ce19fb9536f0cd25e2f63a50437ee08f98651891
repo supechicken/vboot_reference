@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12cb0e5a_82c37220",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-20T22:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe0994b_8407cf1f",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5069f634_df63fc73",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7875164_d10e2361",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-20T22:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5069f634_df63fc73",
+      "range": {
+        "startLine": 282,
+        "startChar": 15,
+        "endLine": 282,
+        "endChar": 18
+      },
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "Well, the idea is that we should generally not have TPM runtime issues. And when we do, we want to make sure it\u0027s at least obvious during testing. I\u0027m afraid that just rebooting here may not make it clear that something went wrong.\n\nDo you see a way how the TPM could already be locked or in a different mode at this point? If not, I don\u0027t think we need to provision for it. But we should still make sure it\u0027s obvious if something unexpected goes wrong.",
       "parentUuid": "2f9980a1_921d169f",
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9b6a45_3549d303",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-20T22:40:18Z",
+      "side": 1,
+      "message": "At this point I don\u0027t see how the tpm could be locked with the current core, but this also wasn\u0027t the first project to have a desire to disable the tpm.  I was mostly offering to add more robustness so any future change is less likely to have unintended conflict (kinda like with the power button disable and very easily with the set/clear of of \"OPROM_NEEDED\" flag).  None of the existing recovery codes seems suitable so I\u0027d be inclined to add:\n\nvb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);",
+      "parentUuid": "f72847f8_6362fc0e",
       "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
