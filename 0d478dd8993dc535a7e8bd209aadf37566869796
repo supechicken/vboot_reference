@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "726219fc_7dcb0373",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-20T23:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483d386a_6d2b92f1",
+      "range": {
+        "startLine": 252,
+        "startChar": 48,
+        "endLine": 252,
+        "endChar": 49
+      },
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3033e0ef_5a510502",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 14
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "40058b02_90e7a6ed",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-20T23:42:23Z",
+      "side": 1,
+      "message": "Added a TODO while we work this out",
+      "parentUuid": "3033e0ef_5a510502",
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e35919f6_994d6ca2",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 14
@@ -56,6 +98,24 @@
       "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ff33ed_0ef19e43",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-20T23:42:23Z",
+      "side": 1,
+      "message": "Done, hopefully my editor is set up better now.",
+      "parentUuid": "e35919f6_994d6ca2",
+      "revId": "0d478dd8993dc535a7e8bd209aadf37566869796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
