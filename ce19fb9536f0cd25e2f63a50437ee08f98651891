@@ -80,6 +80,24 @@
       "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72847f8_6362fc0e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T21:20:48Z",
+      "side": 1,
+      "message": "Well, the idea is that we should generally not have TPM runtime issues. And when we do, we want to make sure it\u0027s at least obvious during testing. I\u0027m afraid that just rebooting here may not make it clear that something went wrong.\n\nDo you see a way how the TPM could already be locked or in a different mode at this point? If not, I don\u0027t think we need to provision for it. But we should still make sure it\u0027s obvious if something unexpected goes wrong.",
+      "parentUuid": "2f9980a1_921d169f",
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
