@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "def072a5_fd578e11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "For vboot unit tests it\u0027s sufficient to stub the interface used to retrieve the power button (i.e. VbExGetSwitches()). But yeah, feel free to wait with the tests until you\u0027re sure about the code, just wanted to make sure it\u0027s on your radar.",
+      "parentUuid": "359044a6_07a4fd52",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60be2181_8c65c0b3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -556,6 +574,30 @@
     },
     {
       "key": {
+        "uuid": "62c8f383_3b6ba5c2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "Yes, whether this is necessary or not is system specific, but it sounds like it applies to Wilco (and the code should be here anyway to make it potentially reusable across platforms). You should guard the setting of that flag by (vb2_get_sd(ctx)-\u003evbsd-\u003eflags \u0026 VBSD_OPROM_MATTERS)... that determines whether it is needed for a given board. (You could also clear the OPROM_NEEDED flag again if it is set when handing off to the diag payload, that saves another reboot afterwards.)\n\nSee ec_sync_all.c for an existing example of handling that flag.",
+      "parentUuid": "b3d0a09f_42d0d975",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 39
+      },
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff636421_82ac0c20",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
@@ -621,6 +663,24 @@
       "side": 1,
       "message": "The commits that\u0027s currently needed is to clear the bit. This the path where we we subsequently run the rom and thus vb2_kernel_cleanup() doesn\u0027t get called.  Afaict this situation also applies for conventional legacy boot and doesn\u0027t seem specific to the diagnostic rom feature (other than the feature wants to make a change to nvram before running a payload).",
       "parentUuid": "37966c54_071dcf84",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951913d9_c60eee5a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "Ah, yes, and actually that\u0027s a good point. We should also commit on Ctrl+L, I guess nobody ever noticed that. I\u0027d suggest to just put a vb2_nv_commit() into vb2_run_altfw() then (it should be okay to add a ctx parameter to that function... the vb2_ctx gradually creeps into every single function we have, that\u0027s normal ;) ).",
+      "parentUuid": "9cbbb292_8dfe3393",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -756,6 +816,24 @@
       "side": 1,
       "message": "I\u0027ve changed the function to return a bitmask so this particular code block is cleaner, though I haven\u0027t gone as far as using it as a replacement for VbExGetSwitches(). To do the latter I think I\u0027d have to start passing in a flag (and change all the callsites to pass in a value) to request consistent/reliable reporting of the power button, and it seems like some people like having a more distinct abstraction between physical presense and power button.",
       "parentUuid": "68b05631_bad6f0af",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fede73f_fdbdc394",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027m fine with keeping it in GetSwitches() too.",
+      "parentUuid": "87d50549_d410d530",
       "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbe0994b_8407cf1f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "nit: maybe start_time_us to clarify unit?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5069f634_df63fc73",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 282,
+        "startChar": 15,
+        "endLine": 282,
+        "endChar": 18
+      },
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4294f3bc_60de3f16",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T04:00:16Z",
+      "side": 1,
+      "message": "So what happens if this doesn\u0027t work? Should it go into recovery mode? (Looks like right now it just reboots to normal?)",
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
