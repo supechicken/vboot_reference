@@ -34,6 +34,24 @@
       "revId": "3a87c34952629b74ed62c62836916aa3076d9620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "354a448c_2d9cb043",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-20T00:13:24Z",
+      "side": 1,
+      "message": "I mean, it\u0027s about being readable more than writeable, right? Do you think it\u0027s not readable? (And if someone were to add a case to an existing switch statement, they can easily infer how it works from the existing statements...)",
+      "parentUuid": "07a4f4b7_794b219c",
+      "revId": "3a87c34952629b74ed62c62836916aa3076d9620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
