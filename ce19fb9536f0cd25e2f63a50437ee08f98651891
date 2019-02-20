@@ -62,6 +62,24 @@
       "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9980a1_921d169f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-20T20:57:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but I\u0027m also not a fan of how many times I\u0027ve seen the recovery screen come up over a runtime tpm issue that\u0027s readily resolved by doing a [cold] reboot.  A non-technical user will take the \"your system is damaged\" screen at face value and think they need to reinstall the software on their system.\n\nShould I put in more safeguards so that both TlclLockPhysicalPresence() and vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) properly handle being called twice (in case some code comes gets introduced that also disables the TPM)?  I think TlclLockPhysicalPresence() already has some handling (it sets a few global bools and is largely why I call it here), but offhand I\u0027m inclined to think that any 2nd or subsequent call to vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) will fail because it can\u0027t communicate with the tpm.",
+      "parentUuid": "4294f3bc_60de3f16",
+      "revId": "ce19fb9536f0cd25e2f63a50437ee08f98651891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
