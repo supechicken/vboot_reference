@@ -16,6 +16,24 @@
       "revId": "3a87c34952629b74ed62c62836916aa3076d9620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a4f4b7_794b219c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-02-20T00:11:03Z",
+      "side": 1,
+      "message": "I felt that the macro, especially how I had to write it for switches to work, was not exactly obvious how it was to be used. I thought putting it in the enum made it more clear.",
+      "parentUuid": "3f686cf7_43aadeab",
+      "revId": "3a87c34952629b74ed62c62836916aa3076d9620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
