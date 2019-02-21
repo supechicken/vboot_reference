@@ -19,14 +19,16 @@
 
 #ifndef VBOOT_2_API_H_
 #define VBOOT_2_API_H_
-#include <stdint.h>
 
+#ifndef MINIMAL_VB2_CONSTANTS
+#include <stdint.h>
 #include "2common.h"
 #include "2crypto.h"
 #include "2fw_hash_tags.h"
 #include "2id.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
+#endif
 
 /*
  * Size of non-volatile data used by vboot.
@@ -64,6 +66,7 @@
 /* Recommended buffer size for vb2api_get_pcr_digest */
 #define VB2_PCR_DIGEST_RECOMMENDED_SIZE 32
 
+#ifndef MINIMAL_VB2_CONSTANTS
 /* Flags for vb2_context.
  *
  * Unless otherwise noted, flags are set by verified boot and may be read (but
@@ -713,4 +716,5 @@ int vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size);
  */
 int vb2ex_hwcrypto_digest_finalize(uint8_t *digest, uint32_t digest_size);
 
+#endif  /* MINIMAL_VB2_CONSTANTS */
 #endif  /* VBOOT_2_API_H_ */
