@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "89823672_1b345bf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-02-21T02:19:18Z",
+      "side": 1,
+      "message": "I\u0027ve added an initial set of tests.  It mostly covers the UI except for verifying the detour to the UI gets taken when the bit in nvram is set.  I\u0027m need to have a better story on testing the 30 second delay without actually holding up the tests for 30 seconds.  I think the stub is over in another file and I need to find a decent way to maybe have a flag that causes time to pass at 1000x speed, or similar.",
+      "parentUuid": "def072a5_fd578e11",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60be2181_8c65c0b3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
