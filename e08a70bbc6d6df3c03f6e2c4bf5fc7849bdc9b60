@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "377eb06a_22dec2ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "I forget how exactly it works, but I think the stubs are just always overridable somehow. All the other tests override them all the time, too. I think the tests are build as object files that link in the vboot library and therefore the linker will only check the library for a symbol if it doesn\u0027t find it locally or something like that.\n\nI\u0027d suggest you don\u0027t back VbExGetTimer() by an actual system clock, and instead just tick a variable up by 1000000 every time it gets called or something like that.",
+      "parentUuid": "89823672_1b345bf7",
+      "revId": "e08a70bbc6d6df3c03f6e2c4bf5fc7849bdc9b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60be2181_8c65c0b3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4

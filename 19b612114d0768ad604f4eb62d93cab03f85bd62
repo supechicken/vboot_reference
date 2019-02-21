@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c6a389a_28179074",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "actually, this reboots, right?",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 48
+      },
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4ab285_e2322ffc",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these two use your new recovery reason now?",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5800c58_a3f80128",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "Does this not fit on the previous line?",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e3b160_7d37663b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "Let\u0027s use Mathew\u0027s new macro for this once that lands (CL:1475781).",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba84c88_95a06b94",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "nit: the commit could be here, too",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3fa377_a3d8e5b1",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "nit: not sure if it really makes sense to return LID_CLOSED from here, since this path is specifically enabled by shutdown_request_power_held.",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e191f03_5ffe74f5",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "You should set a variable here to indicate that it happened, and then use that to check that it does happen for your cases and does not happen for other cases.",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446d51cf_5a173980",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "Tests are only built with one configuration so this won\u0027t really do anything. You should make sure you enable the diagnostic UI in tests, like in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1466290/15/Makefile#417",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0700114e_0bc068db",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-21T03:55:32Z",
+      "side": 1,
+      "message": "Once you have the timer mocked you should check that this one returned immediately, and the one above returned after timeout.",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
