@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22482006_32fb295b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-02-26T18:15:51Z",
+      "side": 1,
+      "message": "to help with future diagnostics, how about:\n\n output\u003d\"$(futility show \"${key_file}\")\"\n key_size\u003d\"$(echo \"${output}\" | sed -n \u0027/Key length/s/[^0-9]*//p\u0027)\n\nthen include the $output in the die message below",
+      "revId": "1ab86edba2368b5e3b6ac0d69b6bd5ee0eb678f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
