@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eaa09dc4_20794993",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "yes I\u0027ve updated the comment. Normally I wouldn\u0027t even bother to have a comment like this but it originated in the function I derived off of.",
+      "parentUuid": "0c6a389a_28179074",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 48
+      },
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc4ab285_e2322ffc",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 7
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a99c68fb_16b24362",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "ah, yes.  Apparently I added the value and got too eager to try writing some tests (which actually don\u0027t cover these two cases so I\u0027ll probably have to add some failure capabilities to the stubs).",
+      "parentUuid": "bc4ab285_e2322ffc",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5800c58_a3f80128",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 7
@@ -56,6 +98,24 @@
       "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d0cd35_276c632f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "It does now that an if/else level of nesting (which did different behaviors for each double confirm) is now gone.",
+      "parentUuid": "c5800c58_a3f80128",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "d0a22d30_91ec86ff",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba84c88_95a06b94",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a3fa377_a3d8e5b1",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 7
@@ -107,6 +185,24 @@
       "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34557866_78677351",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "I was originally thinking that any option for power button might be relevant for shutdown, but I can\u0027t think of a use case for having a lid closed and then opened so I\u0027ve removed lid closed from here.",
+      "parentUuid": "8a3fa377_a3d8e5b1",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "21bc75b1_5efae28e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e191f03_5ffe74f5",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446d51cf_5a173980",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 7
@@ -144,6 +258,24 @@
     },
     {
       "key": {
+        "uuid": "43ee9c58_d7880679",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "I had been testing with:\n\nmake clean; make runmisctests DIAGNOSTIC_UI\u003d1\n\nso I knew I was at least running the tests but did wonder how anyone else would.  There should probably be a more general approach for enabling the optional features by default. I tried to be more general in my upcoming draft, though whichever of 1466290 or this lands 2nd will likely need to revision to adjust for the 1st.",
+      "parentUuid": "446d51cf_5a173980",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0700114e_0bc068db",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 7
@@ -158,6 +290,24 @@
       "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0948a2_aba7fddc",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0700114e_0bc068db",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

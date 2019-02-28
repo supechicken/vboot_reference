@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2988463a_46d6d924",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b4f276_4cf5c938",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 34
+      },
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41043552_1c184459",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 10
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "eca70962_866e4aa0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "In the present form of the code, enabling the diagnostic UI will implicitly disable the power button while depthcharge is running:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/1471056/9/src/vboot/Kconfig\n\nJulius has been advocating for me to go a step further and always disable the power button for all x86 systems.  I\u0027m still trying to gauge how much software and/or hardware is likely to break (any such breakage is good to know and fix, but ends up being a big tangent to the original task).\n\nI did have some code for implementing a delay workaround (I don\u0027t recall offhand if it ever got published to gerrit), but it went away now that the power button is disabled for a longer period of time.  The load and verify of the diagnostic payload seems to provide a sufficient delay for someone to release the power button before it\u0027s re-enabled).",
+      "parentUuid": "41043552_1c184459",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df8c0f86_ca69e36a",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 10
@@ -53,6 +95,30 @@
       "writtenOn": "2019-02-28T03:22:04Z",
       "side": 1,
       "message": "The EC codebase has defines like this:  is there something equivalent in the coreboot/vboot codebase?  I find these macros improve readability.\n\n#define MSEC         1000\n#define SECOND    1000000\n#define MINUTE   60000000\n#define HOUR   3600000000ull  /* Too big to fit in a signed int */\n\nI would also like to see parenthesis around the left side of the test:\nif ((VbExGetTimer() - start_time_us) \u003e\u003d 30 * 1000 * 1000) {",
+      "range": {
+        "startLine": 435,
+        "startChar": 45,
+        "endLine": 435,
+        "endChar": 56
+      },
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516a5587_08b6d6bb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T19:24:30Z",
+      "side": 1,
+      "message": "When I searched I only came across vboot_audio.c using \"#define TICKS_PER_MSEC 1000\" and I didn\u0027t think that was an appropriate example to follow.  I\u0027ve also had my hand slapped previously by CrOS folks who were against defining things that were used in 1 place, so I went with a literal.\n\nFor parenthesis, I can see using them for cases when the evaluation order of \u0026\u0026 vs \u0026 vs \u003d\u003d can be confusing or misleader, and possibly when people don\u0027t remember that \u0026 has higher precedence over |, but this case is just a simple \"a - b\" subtraction so adding parens would just add more clutter than clarity.",
+      "parentUuid": "df8c0f86_ca69e36a",
       "range": {
         "startLine": 435,
         "startChar": 45,
