@@ -22,6 +22,30 @@
       "revId": "654cefe33854b1abd6fd3354af0c9875f7df2375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafeb9b7_efdd7aa5",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T02:23:51Z",
+      "side": 1,
+      "message": "If we want to continue having all vboot calls go through vb2api functions, yes.\n\nHonestly, I\u0027m a bit ambivalent about the matter. We keep needing more and more vboot crypto functions in coreboot (e.g. https://review.coreboot.org/c/coreboot/+/29563/55/src/security/tpm/tspi/tspi.c#241 adds a call to vb2_get_hash_algorithm_name()), I\u0027m not sure where the value is in adding an empty wrapper for all of them just to get the vb2api prefix.",
+      "parentUuid": "060deaa7_ad609dda",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "654cefe33854b1abd6fd3354af0c9875f7df2375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
