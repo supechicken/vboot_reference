@@ -1027,6 +1027,8 @@ static int preserve_images(struct updater_config *cfg)
 	struct firmware_image *from = &cfg->image_current, *to = &cfg->image;
 	const char * const optional_sections[] = {
 		FMAP_RO_PRESERVE,
+		FMAP_SI_GBE,
+		FMAP_SI_PDR,
 		FMAP_RW_PRESERVE,
 		FMAP_RW_NVRAM,
 		FMAP_RW_ELOG,
