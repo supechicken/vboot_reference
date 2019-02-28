@@ -276,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "fec7cd35_3ff3d687",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "Hmm... okay, that would be a nice improvement if we could do that. You\u0027ll want to rewrite the Makefile in a way that calling make runtests will build and run the appropriate tests both with and without the option enabled, then. (You\u0027ll probably also want to split things into separate files a bit so that only the tests that actually need to be run twice will be run twice.)\n\nI\u0027m okay with having the #if in here for now in anticipation of that later improvement.",
+      "parentUuid": "43ee9c58_d7880679",
+      "revId": "19b612114d0768ad604f4eb62d93cab03f85bd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0700114e_0bc068db",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 7

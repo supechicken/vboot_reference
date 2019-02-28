@@ -128,6 +128,115 @@
       "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fccbee4_1dcc6586",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "We have USECS_PER_SEC in libpayload, but I think we try not to rely on non-standard things like that in vboot since it\u0027s supposed to be a generic library that can be used by other callers.\n\nWe usually don\u0027t go overboard with parenthesis in cases where the evaluation order is well known... I think that arithmetic binds closer than comparison should be obvious enough.",
+      "parentUuid": "516a5587_08b6d6bb",
+      "range": {
+        "startLine": 435,
+        "startChar": 45,
+        "endLine": 435,
+        "endChar": 56
+      },
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da815024_37e35bd1",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "Maybe better to pull this (from vboot_audio.c) into some header rather than defining it twice?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0767bcca_ede6a030",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "nit: technically should be ENABLED_TENTATIVE, right?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9f8163_4f432c55",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "nit: Not really sure why this needs two variables..?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300d78c1_96bd798c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "nit: maybe better to do\n\n TEST_TRUE(current_ticks \u003c 1000 * TICKS_PER_MSEC, ...);\n\nso we don\u0027t hardcode the exact dev screen key delay in the test?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1612d1b_9bda89fe",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-02-28T21:24:26Z",
+      "side": 1,
+      "message": "I\u0027m somewhat confused... what\u0027s the difference between the tests you add to this file and the ones in the other? Looks to me like this file is just supposed to test a bunch of normal core vboot behavior (rolling firmware versions and the like), whereas all the \"special\" UI stuff is in kernel2. So I think you\u0027ll probably want to add all your stuff to kernel2 and not touch this one?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
