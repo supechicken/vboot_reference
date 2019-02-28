@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060deaa7_ad609dda",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-02-28T02:11:50Z",
+      "side": 1,
+      "message": "There appears to be calls to vb2_digest_buffer() in coreboot.  Should those calls be updated to use the vb2api_digest_buffer() instead?",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "654cefe33854b1abd6fd3354af0c9875f7df2375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
