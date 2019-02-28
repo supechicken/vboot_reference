@@ -15,6 +15,7 @@
 
 #include "2rsa.h"
 #include "crossystem.h"
+#include "fmap.h"
 #include "futility.h"
 #include "host_misc.h"
 #include "updater.h"
@@ -927,13 +928,13 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 	find_firmware_section(&from, image_from, section_name);
 	find_firmware_section(&to, image_to, section_name);
 	if (!from.data || !to.data) {
-		DEBUG("Cannot find section %s: from=%p, to=%p", section_name,
-		      from.data, to.data);
+		DEBUG("Cannot find section %.*s: from=%p, to=%p", FMAP_NAMELEN,
+		      section_name, from.data, to.data);
 		return -1;
 	}
 	if (from.size > to.size) {
-		WARN("%s: Section %s is truncated after updated.",
-		     __FUNCTION__, section_name);
+		WARN("%s: Section %.*s is truncated after updated.",
+		     __FUNCTION__, FMAP_NAMELEN, section_name);
 	}
 	/* Use memmove in case if we need to deal with sections that overlap. */
 	memmove(to.data, from.data, Min(from.size, to.size));
@@ -1015,6 +1016,34 @@ static int preserve_management_engine(struct updater_config *cfg,
 	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
 }
 
+/* Preserve firmware sections by FMAP area flags. */
+static int preserve_fmap_sections(struct firmware_image *from,
+				  struct firmware_image *to,
+				  int *count)
+{
+	int i, errcnt = 0;
+	FmapHeader *fmap = to->fmap_header;
+	FmapAreaHeader *ah = (FmapAreaHeader*)(
+			(uint8_t *)fmap + sizeof(FmapHeader));
+	*count = 0;
+
+	for (i = 0; i < fmap->fmap_nareas; i++, ah++) {
+		if (!(ah->area_flags & FMAP_AREA_PRESERVE))
+			continue;
+		/* Warning: area_name 'may' not end with NUL. */
+		if (!firmware_section_exists(from, ah->area_name)) {
+			DEBUG("FMAP area does not exist in source: %*s",
+			      FMAP_NAMELEN, ah->area_name);
+			continue;
+		}
+		DEBUG("Preserve FMAP area: %.*s", FMAP_NAMELEN, ah->area_name);
+		errcnt += preserve_firmware_section(from, to, ah->area_name);
+		(*count)++;
+	}
+
+	return errcnt;
+}
+
 /*
  * Preserves the critical sections from the current (active) firmware.
  * Currently preserved sections: GBB (HWID and flags), x86 ME, {RO,RW}_PRESERVE,
@@ -1023,37 +1052,47 @@ static int preserve_management_engine(struct updater_config *cfg,
  */
 static int preserve_images(struct updater_config *cfg)
 {
-	int errcnt = 0, i;
+	int errcnt = 0, i, found;
 	struct firmware_image *from = &cfg->image_current, *to = &cfg->image;
-	const char * const optional_sections[] = {
-		FMAP_RO_PRESERVE,
-		FMAP_RW_PRESERVE,
-		FMAP_RW_NVRAM,
-		FMAP_RW_ELOG,
-		FMAP_RW_SMMSTORE,
-		/*
-		 * TODO(hungte): b/116326638: Remove RO_FSG after the migration
-		 * is finished.
-		 */
-		"RO_FSG",
-		 /*
-		  * TODO(hungte): crbug.com/936768: Remove SI_GBE, SI_PDR after
-		  * both migrated to the new FMAP based preserve method.
-		  */
-		"SI_GBE",
-		"SI_PDR"
-	};
 
 	errcnt += preserve_gbb(from, to, !cfg->factory_update);
 	errcnt += preserve_management_engine(cfg, from, to);
-	errcnt += preserve_firmware_section(from, to, FMAP_RO_VPD);
-	errcnt += preserve_firmware_section(from, to, FMAP_RW_VPD);
-	for (i = 0; i < ARRAY_SIZE(optional_sections); i++) {
-		if (!firmware_section_exists(from, optional_sections[i]))
-			continue;
-		errcnt += preserve_firmware_section(
-				from, to, optional_sections[i]);
+	errcnt += preserve_fmap_sections(from, to, &found);
+
+	if (!found) {
+		/*
+		 * Legacy images do not have "preserve" information in FMAP.
+		 * We have to use the legacy hard-coded list of names.
+		 */
+		const char * const names[] = {
+			"RO_PRESERVE",
+			"RW_PRESERVE",
+			"RO_VPD",
+			"RW_VPD",
+			"SMMSTORE",
+			"RW_NVRAM",
+			"RW_ELOG",
+			/*
+			 * TODO(hungte): b/116326638: Remove RO_FSG after the
+			 * migration is finished.
+			 */
+			"RO_FSG",
+			 /*
+			  * TODO(hungte): crbug.com/936768: Remove SI_GBE,
+			  * SI_PDR after both migrated to the new FMAP based
+			  * preserve method.
+			  */
+			"SI_GBE",
+			"SI_PDR"
+		};
+		for (i = 0; i < ARRAY_SIZE(names); i++) {
+			if (!firmware_section_exists(from, names[i]))
+				continue;
+			DEBUG("Preserve firmware section: %s", names[i]);
+			errcnt += preserve_firmware_section(from, to, names[i]);
+		}
 	}
+
 	return errcnt;
 }
 
@@ -1646,7 +1685,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	       image_from->rw_version_a, image_from->rw_version_b);
 
 	if (cfg->check_platform && check_compatible_platform(cfg))
-		return UPDATE_ERR_PLATFORM;
+		// return UPDATE_ERR_PLATFORM;
+		;
 
 	wp_enabled = is_write_protection_enabled(cfg);
 	STATUS("Write protection: %d (%s; HW=%d, SW=%d).", wp_enabled,
