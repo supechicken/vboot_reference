@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "084fa136_25c2dee6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T23:29:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eca70962_866e4aa0",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df8c0f86_ca69e36a",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 10
@@ -189,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "7d9761d0_7f2afd81",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T23:29:15Z",
+      "side": 1,
+      "message": "Conceptually it seems so, so I\u0027ll change it (though anything besides _DISABLED is all that matters).",
+      "parentUuid": "0767bcca_ede6a030",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc9f8163_4f432c55",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
@@ -203,6 +239,24 @@
       "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ce2d50_2002ba91",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T23:29:15Z",
+      "side": 1,
+      "message": "I don\u0027t see a need either--I copied the existing stub in vboot_api_devmode_tests.c.  I can simplify it since there\u0027s never a read of current_time.  I was originally in the mindset to keep the stubs consistent.",
+      "parentUuid": "fc9f8163_4f432c55",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "d871c95f_a944b07d",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T23:29:15Z",
+      "side": 1,
+      "message": "I was initially stumped on the lack of TEST_EQ() variations that permitted \u003c or \u003c\u003d , but then figured testing with equality was okay since it\u0027d only break if shutdown_request_calls_left (a few lines above here) is init to a value besides 10 or DEV_KEY_DELAY in vboot_ui.c gets changed from 20 (i.e., the value isn\u0027t subject to delay variability at runtime).  Having said that I can change this as requested so it\u0027s less of a test in tracking code changes.",
+      "parentUuid": "300d78c1_96bd798c",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1612d1b_9bda89fe",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 10
@@ -234,6 +306,24 @@
       "writtenOn": "2019-02-28T21:24:26Z",
       "side": 1,
       "message": "I\u0027m somewhat confused... what\u0027s the difference between the tests you add to this file and the ones in the other? Looks to me like this file is just supposed to test a bunch of normal core vboot behavior (rolling firmware versions and the like), whereas all the \"special\" UI stuff is in kernel2. So I think you\u0027ll probably want to add all your stuff to kernel2 and not touch this one?",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee370718_06954308",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-02-28T23:29:15Z",
+      "side": 1,
+      "message": "It\u0027s an understandable confusion.  The changes in the other file is testing the functionality of vb2_diagnostics_ui() while the changes to this file tries to test whether VbSelectAndLoadKernel() honors the VB2_NV_DIAG_REQUEST flag and calls vb2_diagnostics_ui() (via VbBootDiagnostic()).  The actual behavior of vb2_diagnostics_ui() isn\u0027t important to this test, other than having some predictable side effects that can be used to discern whether the call was made (in this case the VB2_RECOVERY_ALTFW_HASH_FAILED recovery reason).  I could possibly make this test seem less redundant and mode predictable by trying to stub out VbBootDiagnostic().",
+      "parentUuid": "b1612d1b_9bda89fe",
       "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
