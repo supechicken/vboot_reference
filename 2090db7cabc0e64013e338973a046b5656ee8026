@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fae332a_80c7a078",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-02-28T09:42:54Z",
+      "side": 1,
+      "message": "Can you move the sections to here with similar comments (and not defining them globally)?\n\n /* TODO(hungte): crbug.com/936768: Remove SI_GBE, SI_PDR after both migrated to the new FMAP based preserve method. */\n \"SI_GBE\", \"SI_PDR\",",
+      "range": {
+        "startLine": 1040,
+        "startChar": 3,
+        "endLine": 1040,
+        "endChar": 9
+      },
+      "revId": "2090db7cabc0e64013e338973a046b5656ee8026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
