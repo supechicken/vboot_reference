@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66b4f276_4cf5c938",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-02-28T03:22:04Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 34
+      },
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41043552_1c184459",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-02-28T03:22:04Z",
+      "side": 1,
+      "message": "Why was the VbExEcEnablePowerButton() removed?  This is still required on Wilco, correct?  This code was removed between patchset 8 and 9.\n\nAlso, if you put the call back in, along with the delay workaround before re-enabling the power button, you can file a bug for the Cr50 power button support and assign it to me.",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8c0f86_ca69e36a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-02-28T03:22:04Z",
+      "side": 1,
+      "message": "The EC codebase has defines like this:  is there something equivalent in the coreboot/vboot codebase?  I find these macros improve readability.\n\n#define MSEC         1000\n#define SECOND    1000000\n#define MINUTE   60000000\n#define HOUR   3600000000ull  /* Too big to fit in a signed int */\n\nI would also like to see parenthesis around the left side of the test:\nif ((VbExGetTimer() - start_time_us) \u003e\u003d 30 * 1000 * 1000) {",
+      "range": {
+        "startLine": 435,
+        "startChar": 45,
+        "endLine": 435,
+        "endChar": 56
+      },
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
