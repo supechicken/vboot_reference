@@ -15,6 +15,7 @@
 
 #include "2rsa.h"
 #include "crossystem.h"
+#include "fmap.h"
 #include "futility.h"
 #include "host_misc.h"
 #include "updater.h"
@@ -927,13 +928,13 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 	find_firmware_section(&from, image_from, section_name);
 	find_firmware_section(&to, image_to, section_name);
 	if (!from.data || !to.data) {
-		DEBUG("Cannot find section %s: from=%p, to=%p", section_name,
-		      from.data, to.data);
+		DEBUG("Cannot find section %.*s: from=%p, to=%p", FMAP_NAMELEN,
+		      section_name, from.data, to.data);
 		return -1;
 	}
 	if (from.size > to.size) {
-		WARN("%s: Section %s is truncated after updated.",
-		     __FUNCTION__, section_name);
+		WARN("%s: Section %.*s is truncated after updated.",
+		     __FUNCTION__, FMAP_NAMELEN, section_name);
 	}
 	/* Use memmove in case if we need to deal with sections that overlap. */
 	memmove(to.data, from.data, Min(from.size, to.size));
@@ -1015,6 +1016,26 @@ static int preserve_management_engine(struct updater_config *cfg,
 	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
 }
 
+/* Preserve firmware sections by FMAP area flags. */
+static int preserve_fmap_sections(struct firmware_image *from,
+				  struct firmware_image *to)
+{
+	int i, errcnt = 0;
+	FmapHeader *fmap = from->fmap_header;
+	FmapAreaHeader *ah = (FmapAreaHeader*)(
+			(uint8_t *)fmap + sizeof(FmapHeader));
+
+	for (i = 0; i < fmap->fmap_nareas; i++) {
+		if (!(ah->area_flags & FMAP_AREA_PRESERVE))
+			continue;
+		/* Warning: ah->area_name 'may' not end with NUL. */
+		INFO("Preserve FMAP area: %.*s", FMAP_NAMELEN, ah->area_name);
+		errcnt += preserve_firmware_section(from, to, ah->area_name);
+	}
+
+	return errcnt;
+}
+
 /*
  * Preserves the critical sections from the current (active) firmware.
  * Currently preserved sections: GBB (HWID and flags), x86 ME, {RO,RW}_PRESERVE,
@@ -1048,6 +1069,7 @@ static int preserve_images(struct updater_config *cfg)
 		errcnt += preserve_firmware_section(
 				from, to, optional_sections[i]);
 	}
+	errcnt += preserve_fmap_sections(from, to);
 	return errcnt;
 }
 
