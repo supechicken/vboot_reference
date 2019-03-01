@@ -404,7 +404,7 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 	 * - Information on current disks */
 
 	buf[DEBUG_INFO_SIZE - 1] = '\0';
-	return VbExDisplayDebugInfo(buf);
+	return VbExDisplayDebugInfo(buf, 1);
 }
 
 #define MAGIC_WORD_LEN 5
