@@ -16,6 +16,23 @@
       "revId": "8003944a3090e82336e33ed411fe3c9bbe0b2531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034d58e4_81c5a191",
+        "filename": "host/lib/include/fmap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2019-03-01T05:42:37Z",
+      "side": 1,
+      "message": "Maybe add rollback to the comment, i.e. \"Should be preserved on update or rollback.\"\n\nThat gets at the heart of the issue.",
+      "revId": "8003944a3090e82336e33ed411fe3c9bbe0b2531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
