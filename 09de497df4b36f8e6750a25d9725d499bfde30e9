@@ -327,6 +327,24 @@
       "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01afe26_20caac9b",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-01T00:20:46Z",
+      "side": 1,
+      "message": "Oh, I see. That makes more sense then. Yes, I think stubbing VbBootDiagnostic() would be better to have a cleaner separation of what each test tests (and maybe make the comment a littler clearer, e.g. /* Check that NV_DIAG_REQUEST triggers diagnostic UI */).",
+      "parentUuid": "ee370718_06954308",
+      "revId": "09de497df4b36f8e6750a25d9725d499bfde30e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
