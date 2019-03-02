@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7877be9_41232f53",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-02T04:33:57Z",
+      "side": 1,
+      "message": "nit: Maybe factor the parts of that function you actually wanna reuse out into a new verify_image()? If you reuse the whole thing it\u0027s going to lead to some weird-looking error messages if it fails (e.g. \"rootkey is same as target (RW) image\" even if that may not be true).\n\nCould also add preamble and body checking if you really wanna make sure the image works, and for both slots.",
+      "revId": "2081fc25998503b238ec3ba7cc7ea1a0c3251072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
