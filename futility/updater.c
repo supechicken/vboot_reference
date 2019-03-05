@@ -1902,7 +1902,7 @@ static int updater_setup_archive(
 					  arg->signature_id);
 		if (!model->patches.rootkey) {
 			if (is_factory ||
-			    is_write_protection_enabled(cfg) ||
+			    !is_write_protection_enabled(cfg) ||
 			    get_config_quirk(QUIRK_ALLOW_EMPTY_WLTAG, cfg)) {
 				WARN("No VPD for white label.");
 			} else {

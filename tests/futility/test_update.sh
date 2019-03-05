@@ -355,7 +355,7 @@ ${FUTILITY} load_fmap "${A}/image.bin" VBLOCK_B:"${TMP}.from/VBLOCK_B"
 
 test_update "Full update (--archive, whitelabel, no VPD)" \
 	"${A}/image.bin" "!Need VPD set for white" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
+	-a "${A}" --wp=1 --sys_props 0,0x10001,1,3
 
 test_update "Full update (--archive, whitelabel, no VPD - factory mode)" \
 	"${LINK_BIOS}" "${A}/image.bin" \
