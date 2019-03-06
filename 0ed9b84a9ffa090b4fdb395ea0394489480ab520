@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dce68ce4_37c0d16a",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-03-06T14:57:06Z",
+      "side": 1,
+      "message": "It\u0027s confusing that you say \"this is split into a different file\" while that is the comment of exactly the \"different file\".\n\nYou can simply say Linker scripts can use this to figure out size etc.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 38
+      },
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
