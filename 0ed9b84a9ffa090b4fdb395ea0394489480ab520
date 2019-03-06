@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4912e391_fa53a24e",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-06T21:12:52Z",
+      "side": 1,
+      "message": "Why not just call it vb2_constants.h and move other constants (like VB2_PCR_DIGEST_RECOMMENDED_SIZE) in here as well while we\u0027re at it? Who knows what else we may want to access in a non-C file in the future.",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
