@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "33f345ef_bd66b703",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-07T04:18:32Z",
+      "side": 1,
+      "message": "Hmm, I think using #ifndef __ASSEMBLER__ strategy still requires dividing constants into two groups: those potentially needed by non-C files, and those not needed.\n\nAnyways, I think we should go with your vb2_constants.h solution.  However, I think it\u0027s more consistent to keep 2constants.h within 2lib/include, and expose it via vb2_constants.h.  Are you okay with that?",
+      "parentUuid": "86cc245a_dac5ec4d",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
@@ -75,6 +93,30 @@
       "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60602844_df589864",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-07T04:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce68ce4_37c0d16a",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 38
+      },
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
