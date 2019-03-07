@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "024d7875_eed9aad8",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-07T01:43:15Z",
+      "side": 1,
+      "message": "Well, I think it\u0027s precisely because there are *too many* other constants.\n2api.h has a bunch more, so do 2nvstorage_fields.h, 2secdata.h, 2sha.h, 2struct.h, 2rsa.h.\n\nI think the line has to be drawn somewhere, and the line needs to be clearly defined -- otherwise when adding new constants, people will not know whether it should be added to this file, or one of the other headers.\n\nI was struggling to find some kind of \"category\" of constants to use as the name of this file -- here are the ones I came up with:\n\n* firmware_workbuf_size (only this constant)\n* workbuf_size (firmware_ and kernel_)\n* recommended_sizes (firmware_ and kernel_ and pcr_digest_)\n* size (could move all constants from 2api.h, but then there are other _SIZE constants to consider in other headers)\n\nBecause of this difficulty, I also re-considered the entire approach -- whether we could write some small make-time logic in coreboot which grabs the constant value and temporarily stores it in its own header for use in the linker script.",
+      "parentUuid": "4912e391_fa53a24e",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
