@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "4caaa185_b198e664",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-07T21:16:19Z",
+      "side": 1,
+      "message": "Yeah, but you don\u0027t need to split them by file. You can have an #ifndef __ASSEMBLER__ in 2api.h, one in 2crypto.h, etc. (and have them still all get included through vb2_api.h) and could expand that system as needed.\n\nAnyway, I\u0027m fine with either approach.",
+      "parentUuid": "33f345ef_bd66b703",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
