@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "86cc245a_dac5ec4d",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-07T02:09:32Z",
+      "side": 1,
+      "message": "I\u0027d just start with the constants in 2api.h itself for now (excluding the context flags). We can move others as needed. It would just be nice if we don\u0027t have to make yet another file when we have the next case like this.\n\nBTW, if we\u0027re not sure about the extra file anymore, another option would be to wrap the stuff we want to hide (including #include for headers that aren\u0027t written to handle this) in #ifndef __ASSEMBLER__. That\u0027s a macro that the preprocessor automatically defines for assembly files (and I think also for memlayout because we build those with -x assembly-with-cpp), and we use that in coreboot whenever we have a file with constants that we want accessible in assembly but also some C header code (e.g. compare coreboot/src/arch/arm64/include/armv8/arch/cache.h). So that\u0027s another commonly used pattern we could follow.",
+      "parentUuid": "024d7875_eed9aad8",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
