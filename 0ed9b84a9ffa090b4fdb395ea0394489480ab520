@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "0ec4d3e8_eb89b098",
+        "filename": "firmware/include/vb2_workbuf_size.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-11T10:20:53Z",
+      "side": 1,
+      "message": "That was my original approach (except using MINIMAL_VB2_CONSTANTS instead of __ASSEMBLER__), but hungte@ did not like this method:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1480751/1\n\nAnyways, let\u0027s use this method.",
+      "parentUuid": "4caaa185_b198e664",
+      "revId": "0ed9b84a9ffa090b4fdb395ea0394489480ab520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce68ce4_37c0d16a",
         "filename": "firmware/include/vb2_workbuf_size.h",
         "patchSetId": 1
