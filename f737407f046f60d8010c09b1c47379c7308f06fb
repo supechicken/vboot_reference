@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9216bbbb_a4d6f2ae",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-11T20:53:00Z",
+      "side": 1,
+      "message": "not a new issue, but this if statement isn\u0027t necessary.  free(NULL) should work fine.",
+      "revId": "f737407f046f60d8010c09b1c47379c7308f06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e66f0d_61494ab8",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-11T20:53:00Z",
+      "side": 1,
+      "message": "not a new issue, but we should be assigning NULL to pointers rather than 0",
+      "revId": "f737407f046f60d8010c09b1c47379c7308f06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "548799c8_b38d7915",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-11T20:53:00Z",
+      "side": 1,
+      "message": "seems like this would be simpler:\n\n int ret \u003d GptShow(...);\n DriveClose(...);\n return ret;",
+      "revId": "f737407f046f60d8010c09b1c47379c7308f06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
