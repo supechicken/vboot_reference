@@ -799,9 +799,19 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	const struct model_config *model = NULL;
 	int i;
 
-	/* Match if the manifest has only one package without signature. */
-	if (manifest->num == 1 && !manifest->models[0].signature_id)
+	/*
+	 * For non-unibuild devices, there is single manifest without signature.
+	 * For some unibuild in early stages, their mosys may have problem
+	 * identifying model so we want to allow that for non-WL devices.
+	 */
+	if (manifest->num == 1) {
 		model = &manifest->models[0];
+		if (!model->signature_id ||
+		    !str_startswith(model->signature_id, SIG_ID_IN_VPD_PREFIX))
+			return model;
+		/* Single WL, still need to check all. */
+		model = NULL;
+	}
 
 	if (!model && !model_name) {
 		sys_model_name = host_shell("mosys platform model");
