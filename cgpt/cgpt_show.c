@@ -385,8 +385,10 @@ int CgptShow(CgptShowParams *params) {
                            params->drive_size))
     return CGPT_FAILED;
 
-  if (GptShow(&drive, params))
+  if (GptShow(&drive, params)) {
+    DriveClose(&drive, 0);
     return CGPT_FAILED;
+  }
 
   DriveClose(&drive, 0);
   return CGPT_OK;
