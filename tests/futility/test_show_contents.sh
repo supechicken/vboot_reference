@@ -29,7 +29,7 @@ for file in $SHOW_FILES; do
     outfile="show.${file//\//_}"
     gotfile="${OUTDIR}/${outfile}"
     wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
-    ${FUTILITY} show "${SRCDIR}/${file}" | tee "${gotfile}"
+    ( cd $SRCDIR && ${FUTILITY} show "${file}" ) | tee "${gotfile}"
 
     # Uncomment this to update the expected output
     #cp ${gotfile} ${wantfile}
@@ -48,7 +48,8 @@ for file in $VBUTIL_KEY_FILES; do
     outfile="vbutil_key.${file//\//_}"
     gotfile="${OUTDIR}/${outfile}"
     wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
-    ${FUTILITY} vbutil_key --unpack "${SRCDIR}/${file}" | tee "${gotfile}"
+    ( cd $SRCDIR && ${FUTILITY} vbutil_key --unpack "${file}" ) \
+        | tee "${gotfile}"
 
     # Uncomment this to update the expected output
     #cp ${gotfile} ${wantfile}
@@ -62,8 +63,8 @@ file="tests/devkeys/kernel.keyblock"
 outfile="vbutil_keyblock.${file//\//_}"
 gotfile="${OUTDIR}/${outfile}"
 wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
-${FUTILITY} vbutil_keyblock --unpack "${SRCDIR}/${file}" \
-    --signpubkey "${SRCDIR}/tests/devkeys/kernel_subkey.vbpubk" \
+( cd $SRCDIR && ${FUTILITY} vbutil_keyblock --unpack "${file}" \
+    --signpubkey "tests/devkeys/kernel_subkey.vbpubk" ) \
     | tee "${gotfile}"
 
 # Uncomment this to update the expected output
