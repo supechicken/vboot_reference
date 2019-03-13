@@ -347,11 +347,18 @@ VbError_t vb2_vendor_data_ui(struct vb2_context *ctx)
 				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
 				return VBERROR_REBOOT_REQUIRED;
 			} else {
-				/*
-				 * TODO(mathewk): If setting vendor data fails
-				 * we should give helpful feedback to the user
-				 */
-				return ret;
+				vb2_error_notify(
+					"ERROR: Vendor data was not set.\n"
+					"Press ESC to continue\n",
+					NULL,
+					VB_BEEP_FAILED);
+				do {
+					key = VbExKeyboardRead();
+
+					if (key == VB_KEY_ESC)
+						return ret;
+					VbExSleepMs(DEV_KEY_DELAY);
+				} while (1);
 			}
 		default:
 			VB2_DEBUG("Vendor Data UI - pressed key %d\n", key);
