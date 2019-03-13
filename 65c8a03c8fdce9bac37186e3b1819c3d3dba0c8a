@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e537483f_176090c5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-13T22:48:49Z",
+      "side": 1,
+      "message": "Should this check the magic/version? It seems a bit pointless to add a marker if you don\u0027t use it.",
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be899845_83654c6f",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-13T22:48:49Z",
+      "side": 1,
+      "message": "What does the A stand for? (I would\u0027ve expected V2SD or VB2S or something.)",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
