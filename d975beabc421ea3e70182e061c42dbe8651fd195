@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b17a6b1_625039e8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-13T22:57:29Z",
+      "side": 1,
+      "message": "Can we just do a hard 5 second timeout instead? I think that\u0027s more in line with the rest of our UI (e.g. when you switch from dev to normal mode, you see a \"OS verification is on. The system will now reboot.\" screen for 5 seconds, then it reboots).\n\nWe could also (additionally) consider shutting down from here instead of rebooting.",
+      "revId": "d975beabc421ea3e70182e061c42dbe8651fd195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
