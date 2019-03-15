@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c84bac93_934e3709",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-15T07:42:20Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think it makes sense to check the minor version unless there are incompatible changes made.\n\nIf the data structure passed is older than that of the code, then the code should be backwards compatible (along the same major version).  Any small changes in logic can be accounted for by checking the minor version.\n\nIf the data structure passed is newer than that of the code, then the changes to the data structure should be forwards compatible (along the same major version).  E.g. adding fields to the end of the data structure.",
+      "parentUuid": "591d9499_02b3a7aa",
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be899845_83654c6f",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "I mean, V20S or VS20 would also work. It\u0027s not that important, I was just wondering about the A. We could also just keep using VbSD and use a higher major version.",
       "parentUuid": "70248b45_aae104c6",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e53da6_3c274b36",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-15T07:42:20Z",
+      "side": 1,
+      "message": "Let\u0027s stick with V2SD.",
+      "parentUuid": "72905c99_50ea5719",
       "range": {
         "startLine": 74,
         "startChar": 4,
