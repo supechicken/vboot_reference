@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e99d9ae1_5a584505",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-15T05:37:05Z",
+      "side": 1,
+      "message": "Probably sufficient to check the magic here?  And add future checks for version if things become incompatible?",
+      "parentUuid": "e537483f_176090c5",
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be899845_83654c6f",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-03-13T22:48:49Z",
       "side": 1,
       "message": "What does the A stand for? (I would\u0027ve expected V2SD or VB2S or something.)",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70248b45_aae104c6",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-15T05:37:05Z",
+      "side": 1,
+      "message": "\"Vb2\" prefix is used for vboot2.1, so I didn\u0027t want to use that.\n\"VB2\" would probably just be confusing, since it\u0027s \"very similar\" to vboot2.1\n\"VbSD\" was taken for vboot1\u0027s VbSharedDataHeader\n\nOkay, to be perfectly honest, I can\u0027t quite remember why I chose to add an A in there...\n\"V2SD\" sounds reasonable.\n\n(Although looking to the future, Vb2x as a prefix for vboot2.1 data structures seems a bit limiting with only one character.  That means we will encounter problems with \"signature\" and \"shared_data\".  \"V2\" might be a nice way of solving that earlier than later.  In that case we probably wouldn\u0027t want to use it here.)",
+      "parentUuid": "be899845_83654c6f",
       "range": {
         "startLine": 74,
         "startChar": 4,
