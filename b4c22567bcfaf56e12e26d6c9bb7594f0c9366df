@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "13c93fb0_45c9e0c0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-17T16:35:19Z",
+      "side": 1,
+      "message": "Err, it kind of depends on the expectations of what memory we are getting for *ctx on the first call to vb2_init_context.\n\n* If it is expected that the caller zero-initialize *ctx before calling vb2_init_context, then yes, we can certainly return an error.  And since this *does* seem to be the expectation, perhaps we should return an error as you are both suggesting?\n\n* If the *ctx memory is undefined on the first call to vb2_init_context, then it perhaps depends on how/if memory gets cleared when the particular architecture resets / resumes from sleep?\n\nAnother alternative would be to explicitly require the owner of *ctx to call vb2_init_context *once*, and never call it implicitly as is currently the case.  I think this could be a better solution in the long run.",
+      "parentUuid": "da9e2b8c_189ec595",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "b4c22567bcfaf56e12e26d6c9bb7594f0c9366df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f6559fd_52243b0c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 4
