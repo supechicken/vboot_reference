@@ -16,6 +16,24 @@
       "revId": "c63082c1f088b02f27a554f6d245981ddef221e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece247b7_7f357b27",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-18T10:55:52Z",
+      "side": 0,
+      "message": "Ah, you\u0027re right.  Should be the other way around.",
+      "parentUuid": "a6d3003d_b77ec1d4",
+      "revId": "c63082c1f088b02f27a554f6d245981ddef221e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
