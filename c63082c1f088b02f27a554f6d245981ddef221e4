@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6d3003d_b77ec1d4",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-03-18T09:52:53Z",
+      "side": 0,
+      "message": "I am not sure I understand this. But here you seem to be removing the code for the virtual dev switch and leaving the code for the physical switch?",
+      "revId": "c63082c1f088b02f27a554f6d245981ddef221e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
