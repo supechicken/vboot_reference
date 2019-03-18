@@ -22,6 +22,30 @@
       "revId": "04b2a8c907b1800daeb792764dab2bbb9d4fd610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcec3a09_a1fa5f2a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-18T08:31:09Z",
+      "side": 1,
+      "message": "Yeah, I wrote in the commit comment:\n\n    This constant will be marked as deprecated in a subsequent\n    CL, once the coreboot CL has been pulled downstream.\n\nOtherwise we need to duplicate the constant, then wait for the CL to be pulled downstream, then delete the old one.",
+      "parentUuid": "290c4cb4_6d163f08",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "04b2a8c907b1800daeb792764dab2bbb9d4fd610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
