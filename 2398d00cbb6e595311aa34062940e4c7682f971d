@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ab04a9b_5608dc6d",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-18T09:47:36Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "8078ef01_aec79d21",
+      "revId": "2398d00cbb6e595311aa34062940e4c7682f971d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f5ab7b1_54f406b4",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "2398d00cbb6e595311aa34062940e4c7682f971d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbf99e8_943e86e1",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-18T09:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f5ab7b1_54f406b4",
+      "revId": "2398d00cbb6e595311aa34062940e4c7682f971d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
