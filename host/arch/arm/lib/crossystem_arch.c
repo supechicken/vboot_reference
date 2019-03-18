@@ -542,7 +542,8 @@ int VbGetArchPropertyInt(const char* name)
 		/* Systems with virtual developer switches return at-boot
 		 * value */
 		int flags = VbGetSystemPropertyInt("vdat_flags");
-		if ((flags != -1) && (flags & VBSD_HONOR_VIRT_DEV_SWITCH))
+		if ((flags != -1) &&
+		    (flags & VBSD_HONOR_VIRT_DEV_SWITCH))
 			return VbGetSystemPropertyInt("devsw_boot");
 
 		return VbGetVarGpio("developer-switch");
