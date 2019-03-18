@@ -792,7 +792,8 @@ int VbGetArchPropertyInt(const char* name)
 		/* Systems with virtual developer switches return at-boot
 		 * value */
 		int flags = VbGetSystemPropertyInt("vdat_flags");
-		if ((flags != -1) && (flags & VBSD_HONOR_VIRT_DEV_SWITCH))
+		if ((flags != -1) &&
+		    (flags & VBSD_HONOR_VIRT_DEV_SWITCH))
 			value = VbGetSystemPropertyInt("devsw_boot");
 		else
 			value = ReadGpio(GPIO_SIGNAL_TYPE_DEV);
