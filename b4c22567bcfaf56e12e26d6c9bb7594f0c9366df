@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c631af72_013d35ad",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-19T18:44:42Z",
+      "side": 1,
+      "message": "The context is used to communicate stuff between vboot and the caller, so of course the caller (who creates it) must fully initialize all fields.\n\nI think this function may be a little misnamed, it\u0027s really init_shared_data() more than init_context() (because the caller initializes the context).",
+      "parentUuid": "13c93fb0_45c9e0c0",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "b4c22567bcfaf56e12e26d6c9bb7594f0c9366df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f6559fd_52243b0c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 4
