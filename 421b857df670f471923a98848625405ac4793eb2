@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80e77b1c_50d17089",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-19T09:19:32Z",
+      "side": 1,
+      "message": "should omit the trailing space here (between the , and the last \") because two strings will be combined with a space which means this will output two as currently written",
+      "revId": "421b857df670f471923a98848625405ac4793eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c20174_d577fc89",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-19T09:19:32Z",
+      "side": 1,
+      "message": "you could use single quotes to avoid escaping the nested double quotes",
+      "revId": "421b857df670f471923a98848625405ac4793eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
