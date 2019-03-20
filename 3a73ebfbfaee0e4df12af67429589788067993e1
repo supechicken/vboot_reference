@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bca737a_5b01520d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-20T00:46:01Z",
+      "side": 1,
+      "message": "nit: mark as deprecated? and maybe follow up where this comes from and whether it can/should be removed there as well? I could imagine that this ties into some kernel/coreboot ACPI stuff which may be worth removing as well.",
+      "revId": "3a73ebfbfaee0e4df12af67429589788067993e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
