@@ -399,23 +399,7 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		 * on detachables, and this function wants to see for itself
 		 * that the power button isn't currently pressed.
 		 */
-		uint32_t power_pressed =
-			VbExGetSwitches(VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED);
-		/*
-		 * TODO(delco): Remove this workaround.  On Wilco a button
-		 * press is only reported a single time regardless of the
-		 * duration of the press. Until it's changed to report the
-		 * live/current status of the button we can't ignore when
-		 * VbWantShutdown() reports a button press (well, we can
-		 * ignore it but the user might have to press the power button
-		 * more than once for this code to react).
-		 */
-		int shutdown = VbWantShutdown(ctx, 0);
-		if (shutdown & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
-			power_pressed = 1;
-		}
-
-		if (power_pressed) {
+		if (VbExGetSwitches(VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED)) {
 			power_button_was_pressed = 1;
 		} else if (power_button_was_pressed) {
 			VB2_DEBUG("vb2_diagnostics_ui() - power released\n");
@@ -425,7 +409,7 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		}
 
 		/* Check the lid and ignore the power button. */
-		if (shutdown & VB_SHUTDOWN_REQUEST_LID_CLOSED) {
+		if (VbWantShutdown(ctx, 0) & VB_SHUTDOWN_REQUEST_LID_CLOSED) {
 			VB2_DEBUG("vb2_diagnostics_ui() - shutdown request\n");
 			result = VBERROR_SHUTDOWN_REQUESTED;
 			active = 0;
