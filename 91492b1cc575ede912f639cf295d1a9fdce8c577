@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57260653_2dddc1d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-22T05:22:30Z",
+      "side": 1,
+      "message": "Ah, thanks.\n\nI wonder what people would think about adding support for CB:... links in our Gerrit?",
+      "parentUuid": "4fff3d4a_7854799c",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "91492b1cc575ede912f639cf295d1a9fdce8c577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be7b001_24d87634",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "91492b1cc575ede912f639cf295d1a9fdce8c577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7090dd56_0711715a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-22T05:22:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8be7b001_24d87634",
+      "range": {
+        "startLine": 70,
+        "startChar": 47,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "91492b1cc575ede912f639cf295d1a9fdce8c577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
