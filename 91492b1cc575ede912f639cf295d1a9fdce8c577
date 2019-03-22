@@ -22,6 +22,29 @@
       "revId": "91492b1cc575ede912f639cf295d1a9fdce8c577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be7b001_24d87634",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-03-22T02:55:54Z",
+      "side": 1,
+      "message": "nit for a later CL perhaps - we don\u0027t need these brackets.",
+      "range": {
+        "startLine": 70,
+        "startChar": 47,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "91492b1cc575ede912f639cf295d1a9fdce8c577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
