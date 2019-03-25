@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc6cfa10_35d234e4",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-03-25T18:02:09Z",
+      "side": 1,
+      "message": "I can\u0027t tell if the \"data\" in this line is intentional (i.e., it adds detail to \"cgpt show\" without allowing someone to create a partition of that type [though does confuse the help output of \"cgpt add -h\"]) or an inadvertent mistake (e.g., should be something else like \"basicdata\" or \"legacy\" so it\u0027s usable with \"cgpt add -t data\" and \"cgpt add -h\" doesn\u0027t provide confusing information about what \"data\" represents).",
+      "revId": "62ca51216b6d44fe37501cabc64e17c202d67d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
