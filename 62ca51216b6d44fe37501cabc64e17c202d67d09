@@ -16,6 +16,24 @@
       "revId": "62ca51216b6d44fe37501cabc64e17c202d67d09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8923c96f_9abaac20",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-03-26T06:59:05Z",
+      "side": 1,
+      "message": "That was by intention so existing devices can show same thing. But I can change this to basicdata if that helps.",
+      "parentUuid": "fc6cfa10_35d234e4",
+      "revId": "62ca51216b6d44fe37501cabc64e17c202d67d09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
