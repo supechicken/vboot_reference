@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "f33eb542_c9ed704a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-03-26T05:34:32Z",
+      "side": 1,
+      "message": "There is one case where firmware could be expected to support older data structures -- if we add some new features to ToT, and either: (1) flash to a device with old RO + ToT RW, or (2) cherry-pick the ToT change to firmware branch.  I can\u0027t think of any particular good reason to do this, so forget about this case.\n\nFor the case of newer data structures -- the only case I can foresee this happening is when the firmware is reading from some external source -- like GBB flags, or kernel preamble.  Assuming these data structures can\u0027t be updated with the firmware in lockstep (I think GBB flags can?), actually we have two options here -- update DS first, or firmware first.  If we prefer to keep the firmware code cleaner, then we should update DS first -- assuming that it is backwards-compatible (major version same, minor version++).\n\nFinally, we have to consider crossystem or similar -- reading firmware-related DS from OS.  In this case, I don\u0027t think we ever allow newer (minor) versions?  But it may be an option to consider, since it would allow us to not rely so much on always getting crossystem changes in first, before some particular firmware change.  If we assume that we don\u0027t allow newer versions -- then crossystem has to support *all* previous versions.  In that case, separating MAJOR and MINOR is merely an organizational feature -- it doesn\u0027t actually give us any functional benefit.\n\nSo in this case (vb2_shared_data) -- we can summarize as follows:\n* Assume RO and RW versions never get out of sync\n* Internally-generated structure\n* Therefore it is impossible to encounter a greater MAJOR or MINOR in firmware\n* In firmware, always assume MAJOR and MINOR are exactly correct versions\n* In crossystem, allow older MAJOR and newer MINOR\n\nDoes that sound reasonable?",
+      "parentUuid": "f9b1971e_4a0aa870",
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be899845_83654c6f",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
