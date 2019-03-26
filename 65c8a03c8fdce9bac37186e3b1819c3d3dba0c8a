@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "eea21114_8b1c5723",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-26T21:45:19Z",
+      "side": 1,
+      "message": "Yes, there should be no scenario where the minor number would be newer here. It should still be fine to check \u003e\u003d (instead of \u003d\u003d) because if that still happens somehow, it should be harmless if minor version increments are defined to be downwards compatible. But you can also put a \u003d\u003d if you prefer.\n\nFor crossystem, yes, I think it also makes sense to allow \u003e\u003d minor version even if that\u0027s an unusual case, because it doesn\u0027t hurt and as you said may make changes easier to land. There may also be odd scenarios where a kernel rolls back to an older version and the firmware doesn\u0027t (not sure if we generally prevent that). In general, if the minor version is defined to be downwards compatible, I think you might as well always check \u003e\u003d instead of \u003d\u003d just because that shouldn\u0027t make a difference.\n\nFor older major *and* minor versions, crossystem needs to be able to support them and it needs custom code to deal with the older data structure in that case.",
+      "parentUuid": "f33eb542_c9ed704a",
+      "revId": "65c8a03c8fdce9bac37186e3b1819c3d3dba0c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be899845_83654c6f",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 1
