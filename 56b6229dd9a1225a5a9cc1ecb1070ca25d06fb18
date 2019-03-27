@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d12fd92_ada0aff2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-27T16:41:34Z",
+      "side": 1,
+      "message": "Is this all U-Boot devices? Because some of them (e.g. peach_pi and daisy_skate) haven\u0027t reach AUE yet (at least not on stable). They all have been assigned milestones in GoldenEye already but I\u0027m not sure how set in stone those are until it actually reaches stable. Maybe talk to the respective milestone TPMs first to make sure we don\u0027t take support from something if there\u0027s any chance they might punt its AUE out for another release?",
+      "revId": "56b6229dd9a1225a5a9cc1ecb1070ca25d06fb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
