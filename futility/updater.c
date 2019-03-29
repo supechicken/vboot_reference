@@ -240,21 +240,41 @@ static int host_get_platform_version()
 	return rev;
 }
 
+/* Prints the contents from file. */
+static void host_cat_file(FILE *stream, const char *fpath)
+{
+	FILE *fp = fopen(fpath, "r");
+	int c;
+
+	if (!fp)
+		return;
+	while (EOF != (c = fgetc(fp)))
+		fputc(c, stream);
+	fputc('\n', stream);
+	fclose(fp);
+}
+
 /*
  * A helper function to invoke flashrom(8) command.
  * Returns 0 if success, non-zero if error.
  */
 static int host_flashrom(enum flashrom_ops op, const char *image_path,
-			 const char *programmer, int verbose,
-			 const char *section_name, const char *extra)
+			 const char *log_path, const char *programmer,
+			 int verbose, const char *section_name,
+			 const char *extra)
 {
-	char *command, *result;
+	char *command, *result, *log_cmd = NULL;
 	const char *op_cmd, *dash_i = "-i", *postfix = "";
 	int r;
 
 	switch (verbose) {
-	case 0:
+	case -1:
 		postfix = " >/dev/null 2>&1";
+		break;
+	case 0:
+		ASPRINTF(&log_cmd, ">%s 2>&1",
+			 log_path ? log_path : "/dev/null");
+		postfix = log_cmd;
 		break;
 	case 1:
 		break;
@@ -306,6 +326,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	ASPRINTF(&command, "flashrom %s %s -p %s %s %s %s %s", op_cmd,
 		 image_path, programmer, dash_i, section_name, extra,
 		 postfix);
+	free(log_cmd);
 
 	if (verbose)
 		INFO("Executing: %s", command);
@@ -313,8 +334,11 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (op != FLASHROM_WP_STATUS) {
 		r = system(command);
 		free(command);
-		if (r)
+		if (r) {
 			ERROR("Error code: %d", r);
+			if (log_path && !verbose)
+				host_cat_file(stderr, log_path);
+		}
 		return r;
 	}
 
@@ -336,8 +360,8 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 /* Helper function to return write protection status via given programmer. */
 static int host_get_wp(const char *programmer)
 {
-	return host_flashrom(FLASHROM_WP_STATUS, NULL, programmer, 0, NULL,
-			     NULL);
+	return host_flashrom(FLASHROM_WP_STATUS, NULL, NULL, programmer, 0,
+			     NULL, NULL);
 }
 
 /* Helper function to return host software write protection status. */
@@ -667,12 +691,13 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image)
 {
-	const char *tmp_file = updater_create_temp_file(cfg);
+	const char *tmp_file = updater_create_temp_file(cfg),
+	           *tmp_log = updater_create_temp_file(cfg);
 
 	if (!tmp_file)
 		return -1;
 	RETURN_ON_FAILURE(host_flashrom(
-			FLASHROM_READ, tmp_file, image->programmer,
+			FLASHROM_READ, tmp_file, tmp_log, image->programmer,
 			cfg->verbosity, NULL, NULL));
 	return load_firmware_image(image, tmp_file, NULL);
 }
@@ -871,7 +896,7 @@ static int write_firmware(struct updater_config *cfg,
 		}
 		ASPRINTF(&extra, "--noverify --diff=%s", tmp_diff_file);
 	}
-	r = host_flashrom(FLASHROM_WRITE, tmp_file, programmer,
+	r = host_flashrom(FLASHROM_WRITE, tmp_file, NULL, programmer,
 			  cfg->verbosity + 1, section_name, extra);
 	free(extra);
 	return r;
