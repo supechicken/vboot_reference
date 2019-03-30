@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc671c78_3dd05c5b",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-30T18:09:42Z",
+      "side": 1,
+      "message": "Any reason not to do this whenever there is a failure? i.e. create a tmp log file in this function and always save the logs and if error occurs dump those for debugging.",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 36
+      },
+      "revId": "3fe885a33fdaa05d308d9e84c417990185b5e6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
