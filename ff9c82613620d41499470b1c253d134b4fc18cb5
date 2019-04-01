@@ -46,6 +46,30 @@
       "revId": "ff9c82613620d41499470b1c253d134b4fc18cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b0c320_f478b782",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-01T13:07:52Z",
+      "side": 1,
+      "message": "Yeah, that seems reasonable.  It would be nice to have some mocking ability here, but that\u0027d probably take a lot of [arguably unnecessary] refactoring for little gain.",
+      "parentUuid": "2aac2449_920bc0bf",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 61
+      },
+      "revId": "ff9c82613620d41499470b1c253d134b4fc18cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
