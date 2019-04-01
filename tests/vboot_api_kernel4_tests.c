@@ -26,6 +26,7 @@
 
 /* Mock data */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
+static struct vb2_context ctx_salk;
 static struct vb2_context ctx;
 static struct vb2_shared_data *sd;
 static VbCommonParams cparams;
@@ -59,6 +60,10 @@ static void ResetMocks(void)
 	gbb.major_version = GBB_MAJOR_VER;
 	gbb.minor_version = GBB_MINOR_VER;
 	gbb.flags = 0;
+
+	/* ctx_salk.workbuf will be allocated and initialized by
+	 * VbSelectAndLoadKernel. */
+	memset(&ctx_salk, 0, sizeof(ctx_salk));
 
 	memset(&ctx, 0, sizeof(ctx));
 	ctx.workbuf = workbuf;
@@ -162,7 +167,9 @@ VbError_t VbBootDiagnostic(struct vb2_context *ctx)
 
 static void test_slk(VbError_t retval, int recovery_reason, const char *desc)
 {
-	TEST_EQ(VbSelectAndLoadKernel(&ctx, &cparams, &kparams), retval, desc);
+	TEST_EQ(VbSelectAndLoadKernel(&ctx_salk, &cparams, &kparams),
+				      retval, desc);
+	/* VbExNvStorageRead and VbExNvStorageWrite use ctx. */
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
 		recovery_reason, "  recovery reason");
 }
