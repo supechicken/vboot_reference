@@ -22,6 +22,30 @@
       "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3042c685_74523948",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-02T05:21:44Z",
+      "side": 1,
+      "message": "OK -- but assuming context management is moved out of vboot_reference, then we should be able to use one context object for both use cases here -- unless there is a significant reason not to.\n\nRe. ctx object being a local -- sure, we can do that.  Although then we go down the slippery slope of, if we do more refactoring, what else could be defined as a function local?  Currently there is the nice property that *all* mock data is defined in one spot, and reset in one spot.",
+      "parentUuid": "33f549a3_fa1fe9c3",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
