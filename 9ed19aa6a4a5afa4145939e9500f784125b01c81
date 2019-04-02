@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2acc3387_e252ce28",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-02T18:32:04Z",
+      "side": 1,
+      "message": "This doesn\u0027t need a workbuf.",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b12be953_ba021a23",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-02T18:32:04Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be inited either. We only use it for the nvdata[16] array inside, and vb2_set/get_nvdata() don\u0027t check anything else.",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1caa349_3dbfbcf2",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-02T18:32:04Z",
+      "side": 1,
+      "message": "This also shouldn\u0027t be here. I think it should never have been here, it was probably added in error (due to the same confusion about that variable called \u0027ctx\u0027 that\u0027s not actually a real context), and renaming the context just makes that more obvious. It does nothing and the tests should just continue to work if you delete it.",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d0c48a_25692bb7",
+        "filename": "tests/vboot_api_kernel5_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-02T18:32:04Z",
+      "side": 1,
+      "message": "Everything same here.",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

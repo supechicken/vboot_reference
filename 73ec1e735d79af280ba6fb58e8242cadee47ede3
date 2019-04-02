@@ -46,6 +46,30 @@
       "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e293b7bb_152dee6b",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-02T18:32:04Z",
+      "side": 1,
+      "message": "Yes, once you can fully initialize the context before calling into vboot, you could merge them again. (Although it\u0027s still sort of weird if you ask me... then vboot would call into VbExNvStorageRead() which memcpy()s a byte array out of that context and then vboot would internally just copy that array right back into the same place again. The context and the backing store for the NVRAM are conceptually not at all the same thing, even if it happened to work out to use the same object for them.)\n\n\u003e Although then we go down the slippery slope of, if we do more refactoring, what else could be defined as a function local?  Currently there is the nice property that *all* mock data is defined in one spot, and reset in one spot.\n\nYeah okay, I didn\u0027t think of that. Seems okay to leave it global then, too.",
+      "parentUuid": "3042c685_74523948",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
