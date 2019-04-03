@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "96e5b2ec_797367db",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2019-04-03T02:32:48Z",
+      "side": 1,
+      "message": "this indirection between `postfix` and `log_cmd` seems like it would lead to potential dangling pointers with the `free()` rather far from the allocation. Consider using a `memcpy()` instead?",
+      "range": {
+        "startLine": 274,
+        "startChar": 19,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "3fe885a33fdaa05d308d9e84c417990185b5e6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc671c78_3dd05c5b",
         "filename": "futility/updater.c",
         "patchSetId": 3
