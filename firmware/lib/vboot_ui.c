@@ -102,8 +102,6 @@ uint32_t VbTryUsb(struct vb2_context *ctx)
 
 int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	VbSharedDataHeader *shared = sd->vbsd;
 	uint32_t key;
 	uint32_t key_flags;
 	uint32_t btn;
@@ -150,14 +148,12 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			 */
 			btn = VbExGetSwitches(
 				VB_SWITCH_FLAG_REC_BUTTON_PRESSED);
-			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL)) {
-				if (btn) {
-					VB2_DEBUG("Rec button pressed\n");
-					rec_button_was_pressed = 1;
-				} else if (rec_button_was_pressed) {
-					VB2_DEBUG("Rec button (1)\n");
-					return 1;
-				}
+			if (btn) {
+				VB2_DEBUG("Rec button pressed\n");
+				rec_button_was_pressed = 1;
+			} else if (rec_button_was_pressed) {
+				VB2_DEBUG("Rec button (1)\n");
+				return 1;
 			}
 			VbCheckDisplayKey(ctx, key, NULL);
 		}
@@ -876,9 +872,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 			if (key == VB_KEY_CTRL('D') &&
 			    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
 			    (shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
-				if (!(shared->flags &
-				      VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
-				    VbExGetSwitches(
+				if (VbExGetSwitches(
 				    VB_SWITCH_FLAG_REC_BUTTON_PRESSED)) {
 					/*
 					 * Is the recovery button stuck?  In
