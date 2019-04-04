@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56203d23_9db442e5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-04T20:03:52Z",
+      "side": 1,
+      "message": "So this case doesn\u0027t set ret. I\u0027m assuming that\u0027s why it\u0027s complaining.\n\nsjg@ should we add a `ret \u003d VBERROR_KEEP_LOOPING;` here?",
+      "range": {
+        "startLine": 799,
+        "startChar": 3,
+        "endLine": 799,
+        "endChar": 17
+      },
+      "revId": "5eedac0c8760541f4887f688c4db0c2a3b80c601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
