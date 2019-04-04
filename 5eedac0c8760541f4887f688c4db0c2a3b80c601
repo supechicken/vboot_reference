@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7537401a_6b1fe40c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-04T20:05:39Z",
+      "side": 1,
+      "message": "I think this indicated a more serious problem of mishandling altfw failure, actually. So keeping this uninitialized so that future mistakes like that will also be caught is probably better.",
+      "revId": "5eedac0c8760541f4887f688c4db0c2a3b80c601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56203d23_9db442e5",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 1
@@ -19,6 +36,23 @@
         "endLine": 799,
         "endChar": 17
       },
+      "revId": "5eedac0c8760541f4887f688c4db0c2a3b80c601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23002a31_82345e09",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-04T20:05:39Z",
+      "side": 1,
+      "message": "There should be a\n\n ret \u003d VBERROR_KEEP_LOOPING;\n\nhere.",
       "revId": "5eedac0c8760541f4887f688c4db0c2a3b80c601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
