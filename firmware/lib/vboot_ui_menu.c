@@ -771,7 +771,12 @@ static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 			VB2_DEBUG("VbBootDeveloper() - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
+<<<<<<< HEAD   (177a88 lib/vboot_kernel: Log speed at which kernel was loaded)
 			vb2_try_alt_fw(altfw_allowed, key - '0');
+=======
+			vb2_try_alt_fw(ctx, altfw_allowed, key - '0');
+			ret = VBERROR_KEEP_LOOPING;
+>>>>>>> CHANGE (b720a1 Initialize ret)
 			break;
 		default:
 			ret = vb2_handle_menu_input(ctx, key, 0);
