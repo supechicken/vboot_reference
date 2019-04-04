@@ -736,7 +736,7 @@ static VbError_t vb2_init_menus(struct vb2_context *ctx)
 static VbError_t vb2_developer_menu(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	VbError_t ret;
+	VbError_t ret = 0;
 
 	/* Check if the default is to boot using disk, usb, or legacy */
 	default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
