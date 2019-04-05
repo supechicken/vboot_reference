@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0f3e204_f918f961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-05T04:53:12Z",
+      "side": 1,
+      "message": "We should definitely find *some* other home for this afterwards (the firmware Kconfig shouldn\u0027t control a setting that isn\u0027t actually used anywhere in firmware), I\u0027m just not sure where yet (see comments in the bug).",
+      "revId": "ae111b4920a545dede5f155dd4a72a00c708654b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d76f377_a287c04b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-05T04:53:12Z",
+      "side": 1,
+      "message": "No, I think it\u0027s not quite that easy. Right now this is still hooked up to FLAG_RECSW, and many mainboards have a pseudo-GPIO for \"recovery\" defined in coreboot. That would always be 1 here (because sysinfo_install_flags() installs \"recovery\" as don\u0027t-resample-at-runtime unless the board overrides it with an explicit flag_replace()).\n\nWe should change this to check FLAG_PRESENCE instead, and change all the boards with physical recovery button to install that button as \"presence\" flag instead, and then get rid of the \"recovery\" (pseudo-)GPIOs. And *then* we can take this out.",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "ae111b4920a545dede5f155dd4a72a00c708654b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
