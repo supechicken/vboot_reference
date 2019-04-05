@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a56cda3_9e9bc4f1",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-05T04:01:19Z",
+      "side": 1,
+      "message": "Done.  We can also get rid of the workbuf definition above.",
+      "parentUuid": "2acc3387_e252ce28",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b12be953_ba021a23",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5784e70_353c9224",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-05T04:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12be953_ba021a23",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "20545dac_355c0a79",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-05T04:01:19Z",
+      "side": 1,
+      "message": "Thanks for pointing all of this out.  These things should definitely be fixed to reduce confusion.",
+      "parentUuid": "f1caa349_3dbfbcf2",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83d0c48a_25692bb7",
         "filename": "tests/vboot_api_kernel5_tests.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77652e7e_57c5d75e",
+        "filename": "tests/vboot_api_kernel5_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-05T04:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d0c48a_25692bb7",
+      "revId": "9ed19aa6a4a5afa4145939e9500f784125b01c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

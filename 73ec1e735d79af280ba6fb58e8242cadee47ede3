@@ -70,6 +70,30 @@
       "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acd7c97_d219bfb0",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-05T04:01:19Z",
+      "side": 1,
+      "message": "\u003e The context and the backing store for the NVRAM are conceptually not at all the same thing, even if it happened to work out to use the same object for them\n\nYeah, I see your point.  Considering that fact, it probably does make more sense to separate the two contexts.  (And in fact probably allows us to test more than we could with just one context object doubling as the backing store, although I\u0027m not sure if there are any cases of that in this file.)  It still feels somewhat awkward, but I\u0027ll hold my breath for now.\n\n\u003e leave it global then, too.\n\nSGTM.",
+      "parentUuid": "e293b7bb_152dee6b",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "73ec1e735d79af280ba6fb58e8242cadee47ede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
