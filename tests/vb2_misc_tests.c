@@ -75,6 +75,23 @@ int vb2ex_tpm_clear_owner(struct vb2_context *ctx)
 
 /* Tests */
 
+static void alloc_workbuf_tests(void)
+{
+	struct vb2_context c = {};
+
+	TEST_SUCC(vb2_alloc_workbuf(&c), "Alloc workbuf good");
+	TEST_TRUE(c.unaligned_workbuf != NULL, "No unaligned workbuf");
+	TEST_TRUE(c.workbuf != NULL, "No aligned workbuf");
+	TEST_TRUE(c.unaligned_workbuf >= c.workbuf,
+		  "workbuf before aligned workbuf");
+
+	TEST_EQ(vb2_alloc_workbuf(&c), VB2_ERROR_UNKNOWN,
+		"Shouldn't re-alloc workbuf");
+
+	vb2_free_workbuf(&c);
+	TEST_TRUE(c.unaligned_workbuf == NULL, "Didn't free workbuf");
+}
+
 static void init_context_tests(void)
 {
 	/* Use our own context struct so we can re-init it */
@@ -568,6 +585,7 @@ static void select_slot_tests(void)
 
 int main(int argc, char* argv[])
 {
+	alloc_workbuf_tests();
 	init_context_tests();
 	misc_tests();
 	gbb_tests();

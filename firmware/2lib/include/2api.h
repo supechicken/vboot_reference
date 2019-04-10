@@ -185,6 +185,7 @@ struct vb2_context {
 	 * not examine the contents of this work buffer directly.
 	 */
 	uint8_t *workbuf;
+	uint8_t *unaligned_workbuf;
 	uint32_t workbuf_size;
 
 	/*

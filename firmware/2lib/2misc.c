@@ -117,6 +117,46 @@ void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 	}
 }
 
+int vb2_alloc_workbuf(struct vb2_context *ctx)
+{
+	ctx->workbuf_size = VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE +
+			    VB2_WORKBUF_ALIGN;
+
+	if (ctx->unaligned_workbuf) {
+		VB2_DEBUG("Workbuf already allocated\n");
+		/* TODO: Create more suitable error code. */
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	ctx->unaligned_workbuf = ctx->workbuf = malloc(ctx->workbuf_size);
+	if (!ctx->unaligned_workbuf) {
+		VB2_DEBUG("Can't allocate work buffer\n");
+		/* TODO: Create more suitable error code. */
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	if (VB2_SUCCESS != vb2_align(&ctx->workbuf, &ctx->workbuf_size,
+				     VB2_WORKBUF_ALIGN,
+				     VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE)) {
+		VB2_DEBUG("Can't align work buffer\n");
+		vb2_free_workbuf(ctx);
+		/* TODO: Create more suitable error code. */
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	return VB2_SUCCESS;
+}
+
+void vb2_free_workbuf(struct vb2_context *ctx)
+{
+	if (ctx->unaligned_workbuf == NULL)
+		return;
+	free(ctx->unaligned_workbuf);
+	ctx->unaligned_workbuf = NULL;
+	ctx->workbuf = NULL;
+	ctx->workbuf_size = 0;
+}
+
 int vb2_init_context(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);

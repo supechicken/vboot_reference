@@ -76,6 +76,21 @@ int vb2_read_gbb_header(struct vb2_context *ctx, struct vb2_gbb_header *gbb);
 void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
 
 /**
+ * Allocate vboot workbuf memory.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2_alloc_workbuf(struct vb2_context *ctx);
+
+/**
+ * Free vboot workbuf memory.
+ *
+ * @param ctx		Vboot context
+ */
+void vb2_free_workbuf(struct vb2_context *ctx);
+
+/**
  * Set up the verified boot context data, if not already set up.
  *
  * This uses ctx->workbuf_used=0 as a flag to indicate that the data has not
