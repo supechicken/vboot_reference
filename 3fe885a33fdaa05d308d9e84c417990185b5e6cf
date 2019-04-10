@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e41bd4ce_a57384ca",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-04-10T06:58:49Z",
+      "side": 1,
+      "message": "memcpy implies we have to do other allocation, or pre-allocate a buffer. I\u0027m not seeing problem, since we\u0027ll be always releasing log_cmd, and never trying to release postfix.",
+      "parentUuid": "96e5b2ec_797367db",
+      "range": {
+        "startLine": 274,
+        "startChar": 19,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "3fe885a33fdaa05d308d9e84c417990185b5e6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc671c78_3dd05c5b",
         "filename": "futility/updater.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-30T18:09:42Z",
       "side": 1,
       "message": "Any reason not to do this whenever there is a failure? i.e. create a tmp log file in this function and always save the logs and if error occurs dump those for debugging.",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 36
+      },
+      "revId": "3fe885a33fdaa05d308d9e84c417990185b5e6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a01bf0_74ca1c24",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-04-10T06:58:49Z",
+      "side": 1,
+      "message": "People running updater manually may want to watch the progress (since flashrom usually takes a lot of time to run) so I think we only want to redirect and see error when needed.\n\nAlso, for WP status check, there\u0027a high chance that would fail we probably don\u0027t care about that for updating, so not printing should be the better idea.",
+      "parentUuid": "dc671c78_3dd05c5b",
       "range": {
         "startLine": 336,
         "startChar": 3,
