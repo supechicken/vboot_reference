@@ -832,6 +832,15 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 			VbCheckDisplayKey(ctx, key, NULL);
 			if (VbWantShutdown(ctx, key))
 				return VBERROR_SHUTDOWN_REQUESTED;
+			else if (DIAGNOSTIC_UI &&
+				 (key == VB_KEY_CTRL('C') ||
+				  key == VB_KEY_F12)) {
+				VB2_DEBUG("Diagnostic requested, rebooting\n");
+                                if (shared->flags & VBSD_OPROM_MATTERS)
+					vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
+				vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+				return VBERROR_REBOOT_REQUIRED;
+			}
 			VbExSleepMs(REC_KEY_DELAY);
 		}
 	}
@@ -924,7 +933,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 				}
 			} else if (DIAGNOSTIC_UI &&
 				   (key == VB_KEY_CTRL('C') ||
-				    key == 0x114)) {       /* F12 */
+				    key == VB_KEY_F12)) {
 				VB2_DEBUG("Diagnostic requested, rebooting\n");
                                 if (shared->flags & VBSD_OPROM_MATTERS)
 					vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
