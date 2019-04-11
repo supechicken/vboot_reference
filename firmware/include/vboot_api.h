@@ -784,6 +784,7 @@ enum VbKeyCode_t {
 	VB_KEY_LEFT = 0x102,
 	VB_KEY_RIGHT = 0x103,
 	VB_KEY_CTRL_ENTER = 0x104,
+	VB_KEY_F12 = 0x114,
 };
 
 /*
