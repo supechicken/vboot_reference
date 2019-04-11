@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84da5700_5e8bd3e4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-11T07:49:01Z",
+      "side": 1,
+      "message": "Moved inline into tests which need to allocate a workbuf.",
+      "parentUuid": "d464c714_fc0081bf",
+      "revId": "edcd938347691b3dd9a95d13f1117fab644832d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe7062d7_ca96efa6",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-10T23:32:13Z",
       "side": 1,
       "message": "I think we need to decide whether these functions stay in vboot or get moved into the caller first, because in the second case we don\u0027t need to add this here (and I still prefer that one).\n\n(I also don\u0027t like this whole throwing around a second pointer just for the free() in general. It\u0027s low-level hacking that we should keep out of the API if possible. We have a perfectly fine memory allocator that can allocate with alignment and do all the bookkeeping for free() internally in libpayload/depthcharge, we should just use that rather than hacking up this custom poor man\u0027s aligned allocator here.)",
+      "revId": "edcd938347691b3dd9a95d13f1117fab644832d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d08403_097d580b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-11T07:49:01Z",
+      "side": 1,
+      "message": "I didn\u0027t realize there were existing functions to handle memory alignment that we can use in depthcharge... let\u0027s just go ahead and move it right over then?",
+      "parentUuid": "fe7062d7_ca96efa6",
       "revId": "edcd938347691b3dd9a95d13f1117fab644832d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
