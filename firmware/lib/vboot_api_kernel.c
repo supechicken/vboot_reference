@@ -399,6 +399,30 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx, VbCommonParams *cparams)
 	cparams->shared_data_size = shared->data_used;
 }
 
+#ifdef DIAGNOSTIC_UI
+static VbError_t VbCheckDiagnostic(struct vb2_context *ctx) {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	if (!vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST))
+		return VBERROR_SUCCESS;
+
+	/* Unset the two flags right away. */
+	if (sd->vbsd->flags & VBSD_OPROM_MATTERS)
+		vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
+
+	/* OPROM wasn't loaded correctly. */
+	if (sd->vbsd->flags & VBSD_OPROM_MATTERS &&
+	    !(sd->vbsd->flags & VBSD_OPROM_LOADED))
+		return VBERROR_VGA_OPROM_MISMATCH;
+
+	/* Diagnostic mode was requested and OPROM is loaded. */
+	ctx->flags |= VB2_CONTEXT_DIAGNOSTIC_MODE;
+
+	return VBERROR_SUCCESS;
+}
+#endif
+
 VbError_t VbSelectAndLoadKernel(
 	struct vb2_context *ctx,
 	VbCommonParams *cparams,
@@ -418,6 +442,13 @@ VbError_t VbSelectAndLoadKernel(
 			goto VbSelectAndLoadKernel_exit;
 	}
 
+	/* Check whether diagnostic mode should be loaded. */
+	if (DIAGNOSTIC_UI) {
+		retval = VbCheckDiagnostic(ctx);
+		if (retval)
+			goto VbSelectAndLoadKernel_exit;
+	}
+
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
@@ -426,12 +457,7 @@ VbError_t VbSelectAndLoadKernel(
 		else
 			retval = VbBootRecovery(ctx);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);
-	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
-		struct vb2_shared_data *sd = vb2_get_sd(ctx);
-		if (sd->vbsd->flags & VBSD_OPROM_MATTERS)
-			vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
-		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
-
+	} else if (ctx->flags & VB2_CONTEXT_DIAGNOSTIC_MODE) {
 		/*
 		 * Diagnostic boot. This has a UI but only power button
 		 * is used for input so no detachable-specific UI is needed.
@@ -444,9 +470,8 @@ VbError_t VbSelectAndLoadKernel(
 		 * return either of reboot or shutdown.  The following
 		 * check is a safety precaution.
 		 */
-		if (!retval) {
+		if (retval == VBERROR_SUCCESS)
 			retval = VBERROR_REBOOT_REQUIRED;
-		}
 	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		if (kparams->inflags & VB_SALK_INFLAGS_VENDOR_DATA_SETTABLE)
 			ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;

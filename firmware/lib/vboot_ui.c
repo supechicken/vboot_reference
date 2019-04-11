@@ -419,9 +419,8 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		 * more than once for this code to react).
 		 */
 		int shutdown = VbWantShutdown(ctx, 0);
-		if (shutdown & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		if (shutdown & VB_SHUTDOWN_REQUEST_POWER_BUTTON)
 			power_pressed = 1;
-		}
 
 		if (power_pressed) {
 			power_button_was_pressed = 1;
@@ -459,9 +458,8 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 			VB2_DEBUG("vb2_diagnostics_ui() - timeout\n");
 			break;
 		}
-		if (active) {
+		if (active)
 			VbExSleepMs(DEV_KEY_DELAY);
-		}
 	} while (active);
 
 	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
@@ -474,7 +472,6 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		 * it's disabled (e.g., when vb2_run_altfw() calls
 		 * RollbackKernelLock() ).
 		 */
-
 		if (RollbackKernelLock(0)) {
 			VB2_DEBUG("Failed to lock TPM PP\n");
 			vb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
@@ -924,9 +921,9 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 				}
 			} else if (DIAGNOSTIC_UI &&
 				   (key == VB_KEY_CTRL('C') ||
-				    key == 0x114)) {       /* F12 */
+				    key == 0x114)) {  /* F12 */
 				VB2_DEBUG("Diagnostic requested, rebooting\n");
-                                if (shared->flags & VBSD_OPROM_MATTERS)
+				if (shared->flags & VBSD_OPROM_MATTERS)
 					vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
 				vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 				return VBERROR_REBOOT_REQUIRED;

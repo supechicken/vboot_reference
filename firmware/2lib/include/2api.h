@@ -161,6 +161,9 @@ enum vb2_context_flags {
 
 	/* Allow vendor data to be set via the vendor data ui. */
 	VB2_CONTEXT_VENDOR_DATA_SETTABLE = (1 << 19),
+
+	/* Diagnostic mode is requested this boot. */
+	VB2_CONTEXT_DIAGNOSTIC_MODE = (1 << 21),
 };
 
 /*
