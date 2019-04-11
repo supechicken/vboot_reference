@@ -1115,7 +1115,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"todiag is updated for Ctrl-C");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
-		"todiag doesn't update for unneeded opom");
+		"todiag doesn't update for unneeded oprom");
 
 	/* Test Diagnostic Mode via F12 - oprom needed */
 	ResetMocks();
@@ -1136,7 +1136,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"todiag is updated for F12");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), DIAGNOSTIC_UI,
-		"todiag updates opom, if need");
+		"todiag updates oprom, if need");
 
 	printf("...done.\n");
 }
@@ -1147,6 +1147,7 @@ static void VbBootDiagTest(void)
 
 	/* No key pressed - timeout. */
 	ResetMocks();
+	shared->flags = VBSD_OPROM_MATTERS;
 	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Timeout");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
