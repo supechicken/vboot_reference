@@ -393,6 +393,9 @@ VbError_t vb2_diagnostics_ui(struct vb2_context *ctx)
 	int action_confirmed = 0;
 	uint64_t start_time_us;
 
+	vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
+
 	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_DIAG, 0, NULL);
 
 	start_time_us = VbExGetTimer();
@@ -926,8 +929,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 				   (key == VB_KEY_CTRL('C') ||
 				    key == 0x114)) {       /* F12 */
 				VB2_DEBUG("Diagnostic requested, rebooting\n");
-                                if (shared->flags & VBSD_OPROM_MATTERS)
-					vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
+				vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
 				vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 				return VBERROR_REBOOT_REQUIRED;
 			} else {
