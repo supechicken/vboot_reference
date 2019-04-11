@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6e4916c_6a6af6fa",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-11T21:07:16Z",
+      "side": 1,
+      "message": "I would\u0027ve tended towards explicit \"!\u003d VBERROR_SUCCESS\" comparisons rather than a construct that expects VBERROR_SUCCESS to be 0.",
+      "revId": "b81f2f1ea26384d74a31e6940efc6d7f9106cb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
