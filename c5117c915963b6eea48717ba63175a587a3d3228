@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77e0f042_45aacc92",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-11T17:54:18Z",
+      "side": 1,
+      "message": "The corresponding test in vboot_api_kernel4_tests.c is likely to need updating to reflect this.  The two test trials can probably be consolidated to 1 (i.e., no need to have separate cases for VBSD_OPROM_MATTERS being set vs not), e.g.:\n\n        /* Check that NV_DIAG_REQUEST triggers diagnostic UI */\n        if (DIAGNOSTIC_UI) {\n                ResetMocks();\n                mock_switches[1] \u003d VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;\n                vb2_nv_set(\u0026ctx, VB2_NV_DIAG_REQUEST, 1);\n\t\tvb2_nv_set(\u0026ctx, VB2_NV_OPROM_NEEDED, 1);\n                vbboot_retval \u003d -4;\n                test_slk(VBERROR_SIMULATED, 0, \"Normal boot with diag\");\n                TEST_EQ(vb2_nv_get(\u0026ctx, VB2_NV_DIAG_REQUEST), 0,\n                        \"  diag not requested\");\n                TEST_EQ(vb2_nv_get(\u0026ctx, VB2_NV_OPROM_NEEDED), 0,\n                        \"  oprom still needed\");\n        }",
+      "revId": "c5117c915963b6eea48717ba63175a587a3d3228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
