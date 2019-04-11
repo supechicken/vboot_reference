@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e33fb385_20471923",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-11T19:44:29Z",
+      "side": 1,
+      "message": "nit: can we turn this into a more general VB_KEY_F(number) macro?",
+      "revId": "2202324d72a42e82ca99843eb8e7f5ddbd144533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0946801a_aad359a4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-11T19:44:29Z",
+      "side": 1,
+      "message": "nit: should we deduplicate this into a vb2_check_diagnostic_key(key)?",
+      "revId": "2202324d72a42e82ca99843eb8e7f5ddbd144533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
