@@ -70,6 +70,24 @@
       "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bd8376_1363244c",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T21:16:08Z",
+      "side": 1,
+      "message": "\u003e By adding it, we are making the assumption that \"vb2_init_context does initialization equivalent to depthcharge\u0027s vboot_init_context\". Which if we want to test, perhaps we should test separately?\n\nWell, you can\u0027t test depthcharge code from here.\n\nWhat you essentially need is a mock of everything coreboot did (because that\u0027s where depthcharge\u0027s vboot_init_context really gets its data from). coreboot did call vb2_init_context() at some point, so that\u0027s the part we can easily replicate here. All the other things coreboot did with it are more complicated and not really relevant to the test here working right, so I\u0027d ignore them.\n\n\u003e Alternatively, we can update the requirements of an incoming vb2_context object to \"already have workbuf/vb2_shared_data initialized\" -- since currently for VbSelectAndLoadKernel, there are no use cases where it would not be.\n\nWe could do that, yes. A problem is that right now vb2_init_context() serves two purposes (validate the magic/version and initialize SD if it hasn\u0027t been initialized yet). We probably still want every kernel verification API entry point to do the first part, so if you don\u0027t want them to do the second one you\u0027d have to split it up.\n\nAnyway, I didn\u0027t mean to hold up this whole CL so long with this, I think it\u0027s also fine if you submit it as is and we can deal with these things when you\u0027re further along with the migration.",
+      "parentUuid": "5eb4170a_3b41f311",
+      "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
