@@ -51,6 +51,24 @@
       "revId": "960d1af296638bf2ec26ecbf419106e37e8a3fd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f962de_d7488a1c",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T05:05:06Z",
+      "side": 1,
+      "message": "\u003e The remaining value of this section (via the setting of VB2_NV_DIAG_REQUEST and the test_slk() call) is confirming that SLK is honoring the VB2_NV_DIAG_REQUEST bit and calling vb2_diagnostics_ui.\n\nOh okay, missed that part. That\u0027s and important test to keep, then. (The whole vbboot_retval/VBERROR_SIMULATED thing is really hard to grok at a glance, doing something like TEST_TRUE(vb_boot_diagnostic_executed) would be much nicer... but I guess that\u0027s how this whole file is structured.)",
+      "parentUuid": "6c16d40c_f4e96811",
+      "revId": "960d1af296638bf2ec26ecbf419106e37e8a3fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
