@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b14da30_26bf4621",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T01:11:42Z",
+      "side": 1,
+      "message": "nit: maybe also running vb2_init_context() here explicitly would make what the tests do a little closer to what real firmware does? Right now the tests enter the function to be tested with workbuf_used \u003d\u003d 0, whereas for the real code it will already have the previous SD and workbuffer there. It\u0027s not really a notable difference because the tested function will just call vb2_init_context() again anyway, but I feel it would be a bit cleaner... and you\u0027ll need to do this eventually anyway (and then copy additional mock data into the mock workbuffer here) as you proceed further with the migration.",
+      "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
