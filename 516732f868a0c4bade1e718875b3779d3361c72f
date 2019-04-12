@@ -34,6 +34,24 @@
       "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd60f67_c99f50ba",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-12T06:19:08Z",
+      "side": 0,
+      "message": "I\u0027m not clear if \"everything in the UI function\" is this current draft or something like:\n\n} else if (DIAGNOSTIC_UI \u0026\u0026 !(retval \u003d VbBootDiagnostic(ctx))) {\n  /* empty */\n} else if (ctx-\u003eflags \u0026 VB2_CONTEXT_DEVELOPER_MODE) {\n\nAnd have VbBootDiagnostic() check vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST). This would be a way to keep the bit read/update in the same function (now in the callee rather than the caller). I\u0027m not sure this would be a net win, and seems more prone to accidental error introduced in a later code change (the compilers in some repos are also configured to be aggressive about prohibiting assignment within conditionals [even when parens are used]).",
+      "parentUuid": "98c7c954_d0be6ed1",
+      "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
