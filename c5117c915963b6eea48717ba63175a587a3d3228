@@ -16,6 +16,24 @@
       "revId": "c5117c915963b6eea48717ba63175a587a3d3228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "573162c4_d697489b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-12T03:07:04Z",
+      "side": 1,
+      "message": "Thanks for pointing that out, Matt.  I don\u0027t think it\u0027s necessary to set PHYS_PRESENCE_PRESSED at this point either?\n\nAlso, I think I will just keep the OPROM_MATTERS conditional for now.  It probably makes more sense to remove all the checks in one go.\n(For background, see the doc: https://docs.google.com/document/d/1E2qSock8s2FkyXTuEDqcc54qD-PQqT9BPFStdlo1Sxs/edit )",
+      "parentUuid": "77e0f042_45aacc92",
+      "revId": "c5117c915963b6eea48717ba63175a587a3d3228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
