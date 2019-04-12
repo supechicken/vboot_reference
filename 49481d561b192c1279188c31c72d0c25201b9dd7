@@ -34,6 +34,24 @@
       "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "674ae9d4_49aa7cf0",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T05:27:16Z",
+      "side": 1,
+      "message": "No, I didn\u0027t mean opening it as part of the API. I just meant calling it from here to mock the state of an already previously initialized workbuffer (in the same way as test code often has to call into internal functions to mock stuff correctly). I see vb2_init_context as an internal function that all API entry points should call as the first thing they do to check that the passed-in context is valid. I don\u0027t see why you\u0027d need it externally.",
+      "parentUuid": "e43a081f_55b6b3cb",
+      "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
