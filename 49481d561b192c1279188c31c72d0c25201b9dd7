@@ -52,6 +52,24 @@
       "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb4170a_3b41f311",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-12T05:41:06Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t see why you\u0027d need it externally.\nThis really depends on how much vboot functionality we want to chop up and externalize.\n\nRegardless, adding a vb2_init_context call still seems awkward here.  By adding it, we are making the assumption that \"vb2_init_context does initialization equivalent to depthcharge\u0027s vboot_init_context\".  Which if we want to test, perhaps we should test separately?\n\nAlternatively, we can update the requirements of an incoming vb2_context object to \"already have workbuf/vb2_shared_data initialized\" -- since currently for VbSelectAndLoadKernel, there are no use cases where it would not be.\n\nIn this case, we could test that it would be an error to call VbSelectAndLoadKernel with an empty workbuf, and then manually create mock workbuf content as you suggested for all the other existing cases.",
+      "parentUuid": "674ae9d4_49aa7cf0",
+      "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
