@@ -45,6 +45,30 @@
       "revId": "a51f4cd5bfebe721f27d5517797a2d307bda78fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013141f7_bbe7f6fa",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T20:30:47Z",
+      "side": 1,
+      "message": "Right, thanks, I should\u0027ve noticed that.",
+      "parentUuid": "2ed94a11_8dad36ed",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 42
+      },
+      "revId": "a51f4cd5bfebe721f27d5517797a2d307bda78fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
