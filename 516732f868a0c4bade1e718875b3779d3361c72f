@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cff1e955_bbd02c57",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-12T04:40:29Z",
+      "side": 0,
+      "message": "nit: not quite sure why this line needs to move, I kinda like how it gets cleared immediately after the check (even though your patch just moves that a few functions further down the same call stack, this way it\u0027s immediately obvious that this can never stay stuck on in some weird edge case).",
+      "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
