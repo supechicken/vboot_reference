@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d203d82_f723010d",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-12T04:57:02Z",
+      "side": 1,
+      "message": "This function is verifying vb2_diagnostics_ui(), so each of the tests blocks would need have the lines you added to confirm that each of the possible outcomes of the function (i.e., which key was pressed) results in both bits getting cleared.  I think this gets back to Julius\u0027s comment about whether the move of the bit clearing from SLK to vb2_diagnostics_ui() is actually a loss in clarity about how the bit test and clearing is handled.",
+      "revId": "960d1af296638bf2ec26ecbf419106e37e8a3fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b40783d5_8f60462d",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2019-04-12T04:40:29Z",
       "side": 1,
       "message": "What is this testing now? Just that SLK doesn\u0027t touch the diag request flag? I don\u0027t think that needs a separate test, might as well take out this whole block. (We should be testing requirements, not every single implementation detail.)",
+      "revId": "960d1af296638bf2ec26ecbf419106e37e8a3fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c16d40c_f4e96811",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-12T04:57:02Z",
+      "side": 1,
+      "message": "This TEST_EQ() line can be deleted.  It\u0027s basically only confirming that the near-empty vb2_diagnostics_ui() stub implementation isn\u0027t touching the bit, and this isn\u0027t a useful test.\n\nThe remaining value of this section (via the setting of VB2_NV_DIAG_REQUEST and the test_slk() call) is confirming that SLK is honoring the VB2_NV_DIAG_REQUEST bit and calling vb2_diagnostics_ui.",
+      "parentUuid": "b40783d5_8f60462d",
       "revId": "960d1af296638bf2ec26ecbf419106e37e8a3fd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
