@@ -235,6 +235,36 @@ static void phase1_tests(void)
 		1, "  tpm reboot request");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery request cleared");
+	/* Check that DISPLAY_AVAILABLE gets set on recovery mode. */
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_AVAILABLE,
+		 0, "  display available context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
+
+	/* Other cases specifically for checking DISPLAY_AVAILABLE. */
+	reset_common_data(FOR_MISC);
+	cc.flags |= VB2_CONTEXT_DISPLAY_AVAILABLE;
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 secdata reboot back normal");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_AVAILABLE,
+		 0, "  display available context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
+
+	reset_common_data(FOR_MISC);
+	vb2_nv_set(&cc, VB2_NV_OPROM_NEEDED, 1);
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 secdata reboot back normal");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_AVAILABLE,
+		 0, "  display available context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
+
+	reset_common_data(FOR_MISC);
+	sd->flags |= VB2_SD_FLAG_DEV_MODE_ENABLED;
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 secdata reboot back normal");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_AVAILABLE,
+		 0, "  display available context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
 }
 
 static void phase2_tests(void)

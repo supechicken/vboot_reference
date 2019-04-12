@@ -37,9 +37,11 @@ void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 int vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	int rv;
+	struct vb2_shared_data *sd;
 
 	/* Initialize the vboot context if it hasn't been yet */
 	vb2_init_context(ctx);
+	sd = vb2_get_sd(ctx);
 
 	/* Initialize NV context */
 	vb2_nv_init(ctx);
@@ -96,6 +98,20 @@ int vb2api_fw_phase1(struct vb2_context *ctx)
 		vb2_fail(ctx, VB2_RECOVERY_DEV_SWITCH, rv);
 		return rv;
 	}
+
+	/*
+	 * Check for possible reasons to declare display as available.
+	 * sd->recovery_reason may have been set above by vb2_check_recovery.
+	 * VB2_SD_FLAG_DEV_MODE_ENABLED may have been set above by
+	 * vb2_check_dev_switch.
+	 */
+	if (!(ctx->flags & VB2_CONTEXT_DISPLAY_AVAILABLE) &&
+	    (vb2_nv_get(ctx, VB2_NV_OPROM_NEEDED) ||
+	     sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
+	     sd->recovery_reason))
+		ctx->flags |= VB2_CONTEXT_DISPLAY_AVAILABLE;
+	if (ctx->flags & VB2_CONTEXT_DISPLAY_AVAILABLE)
+		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 
 	/* Return error if recovery is needed */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {

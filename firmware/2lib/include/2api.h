@@ -161,6 +161,19 @@ enum vb2_context_flags {
 
 	/* Allow vendor data to be set via the vendor data ui. */
 	VB2_CONTEXT_VENDOR_DATA_SETTABLE = (1 << 19),
+
+	/*
+	 * Caller may set this before vb2api_fw_phase1.  In this case, it
+	 * means: "Display is initialized and available.  Please advertise as
+	 * such to downstream vboot code and users."
+	 *
+	 * vboot may also set this upon return from vb2api_fw_phase1.  In this
+	 * case, it means: "I will be advertising display as being initialized
+	 * and available to downstream vboot code and users, either because of
+	 * being instructed by the caller, or some other internally-detected
+	 * request or requirement."
+	 */
+	VB2_CONTEXT_DISPLAY_AVAILABLE = (1 << 20),
 };
 
 /*
