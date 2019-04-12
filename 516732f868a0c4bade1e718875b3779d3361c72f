@@ -52,6 +52,24 @@
       "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9430c218_dcf7a5e5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-12T06:47:35Z",
+      "side": 0,
+      "message": "I mean something more like this:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/983312/29/firmware/lib/vboot_api_kernel.c\n\nTwo separate functions.",
+      "parentUuid": "cfd60f67_c99f50ba",
+      "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
