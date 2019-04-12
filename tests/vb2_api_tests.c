@@ -121,6 +121,10 @@ static void phase1_tests(void)
 	TEST_EQ(sd->recovery_reason, 0, "  not recovery");
 	TEST_EQ(cc.flags & VB2_CONTEXT_RECOVERY_MODE, 0, "  recovery flag");
 	TEST_EQ(cc.flags & VB2_CONTEXT_CLEAR_RAM, 0, "  clear ram flag");
+	TEST_EQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
+		0, "  display init context flag");
+	TEST_EQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		0, "  display available SD flag");
 
 	reset_common_data(FOR_MISC);
 	retval_vb2_fw_parse_gbb = VB2_ERROR_GBB_MAGIC;
@@ -146,6 +150,11 @@ static void phase1_tests(void)
 		"phase1 dev switch error in recovery");
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_RO_UNSPECIFIED,
 		"  recovery reason");
+	/* Check that DISPLAY_AVAILABLE gets set on recovery mode. */
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
+		 0, "  display init context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
 
 	reset_common_data(FOR_MISC);
 	cc.secdata[0] ^= 0x42;
@@ -235,6 +244,31 @@ static void phase1_tests(void)
 		1, "  tpm reboot request");
 	TEST_EQ(vb2_nv_get(&cc, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery request cleared");
+
+	/* Cases for checking DISPLAY_INIT and DISPLAY_AVAILABLE. */
+	reset_common_data(FOR_MISC);
+	cc.flags |= VB2_CONTEXT_DISPLAY_INIT;
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 with DISPLAY_INIT");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
+		 0, "  display init context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
+
+	reset_common_data(FOR_MISC);
+	vb2_nv_set(&cc, VB2_NV_OPROM_NEEDED, 1);
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 with OPROM_NEEDED");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
+		 0, "  display init context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
+
+	reset_common_data(FOR_MISC);
+	sd->flags |= VB2_SD_FLAG_DEV_MODE_ENABLED;
+	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 in dev mode");
+	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
+		 0, "  display init context flag");
+	TEST_NEQ(sd->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE,
+		 0, "  display available SD flag");
 }
 
 static void phase2_tests(void)
