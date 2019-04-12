@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd4bf0f9_2e829bca",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-12T04:07:50Z",
+      "side": 1,
+      "message": "\"Diagnostic mode\" or \"Diagnostic UI\" may be a little nicer here.",
+      "range": {
+        "startLine": 384,
+        "startChar": 13,
+        "endLine": 384,
+        "endChar": 23
+      },
+      "revId": "a51f4cd5bfebe721f27d5517797a2d307bda78fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed94a11_8dad36ed",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-12T04:07:50Z",
+      "side": 1,
+      "message": "Let\u0027s keep the if (shared-\u003eflags \u0026 VBSD_OPROM_MATTERS) condition here for now.  I\u0027ll remove it in a later global cleanup CL (see go/vboot2-cleanup-oprom).",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 42
+      },
+      "revId": "a51f4cd5bfebe721f27d5517797a2d307bda78fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
