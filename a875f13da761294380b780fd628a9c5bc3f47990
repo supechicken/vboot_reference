@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c8c2ac_45a5b665",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "I\u0027d formulate this as \"ask the firmware to make display available\".",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 62
+      },
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c175e6_80047caf",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "Unrelated to your patch, but I just noticed that this seems wrong. In fact, the existence of the whole flag seems wrong. I think all those uses should be using SD_FLAG_DEV_MODE_ENABLED instead.",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f329cb28_7ab0ff98",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "I think you should have a test that the flags get *not* set by default somewhere, maybe here.",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34859082_fb87d50a",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "nit: somewhat odd to put these here since this is the SECDATA_WANTS_REBOOT test. Line 149 may be more appropriate. (Also, do we have no test anywhere for FORCE_RECOVERY_MODE? Feels like we should have...)",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f402306_c2f10e05",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "wrong string (everywhere)",
+      "range": {
+        "startLine": 247,
+        "startChar": 35,
+        "endLine": 247,
+        "endChar": 68
+      },
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b578e959_54532792",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:07:40Z",
+      "side": 1,
+      "message": "This looks like an API violation (this isn\u0027t supposed to get set by the caller). Maybe use GBB_FORCE_DEV_SWITCH_ON?",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
