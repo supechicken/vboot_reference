@@ -88,6 +88,24 @@
       "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dcbde28_76c18d7d",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-13T03:35:22Z",
+      "side": 1,
+      "message": "\u003e coreboot did call vb2_init_context() at some point, so that\u0027s the part we can easily replicate here.\n\nI suppose, but indirectly, since vboot calls it when in vb2api_fw_phase1.\n\nMaybe what we really need are some new tests that make sure vboot deals with incoming initialized workbuf data correctly?",
+      "parentUuid": "38bd8376_1363244c",
+      "revId": "49481d561b192c1279188c31c72d0c25201b9dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
