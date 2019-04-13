@@ -88,6 +88,24 @@
       "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2944463_56338592",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-13T00:15:01Z",
+      "side": 0,
+      "message": "Yeah, sorry, still don\u0027t see the need for an extra context flag here and don\u0027t understand what\u0027s better about the new patch. There\u0027s no need to allocate a context flag just to communicate something between a function and its caller. If you want to get the logic into a separate function you could just do\n\n } else if (VbCheckDiagnostic(ctx) {\n   retval \u003d VbBootDiagnostic(ctx)\n   if (!retval)\n     retval \u003d VBERROR_REBOOT_REQUIRED;\n }\n\nAlthough I don\u0027t see what\u0027s so bad about checking or clearing NVRAM flags directly in here either.",
+      "parentUuid": "e35498d6_7b1eb04a",
+      "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
