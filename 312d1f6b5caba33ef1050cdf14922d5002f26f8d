@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e84bc7c_fcd343ca",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-15T21:36:22Z",
+      "side": 1,
+      "message": "I guess this can\u0027t work for EC images yet? Are you going to add that with a later patch? I think there\u0027s some special syntax for it (-p raiden_debug_spi:ec or something like that, I forgot the details).",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "312d1f6b5caba33ef1050cdf14922d5002f26f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
