@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01a3243d_edbefb1a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c8c2ac_45a5b665",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 62
+      },
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5c175e6_80047caf",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-04-13T00:07:40Z",
       "side": 1,
       "message": "Unrelated to your patch, but I just noticed that this seems wrong. In fact, the existence of the whole flag seems wrong. I think all those uses should be using SD_FLAG_DEV_MODE_ENABLED instead.",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bab5971_e00bff07",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "Yeah, I suppose by the current definition of vb2_context and vb2_shared_data, since this information is (currently) never needed by vboot callers, it should stay in vb2_shared_data.\n\nLooks like on the kernel verification side of things, it is set in ctx-\u003eflags based on the value VBSD_BOOT_DEV_SWITCH_ON... which is set in vboot_handoff based on VB2_SD_FLAG_DEV_MODE_ENABLED.\n\nOkay, let\u0027s deal with this separately.",
+      "parentUuid": "f5c175e6_80047caf",
       "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "ba8fefad_b89c9c35",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f329cb28_7ab0ff98",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34859082_fb87d50a",
         "filename": "tests/vb2_api_tests.c",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60ff092_4a542b9a",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34859082_fb87d50a",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4baa6214_a41a9efe",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f402306_c2f10e05",
+      "range": {
+        "startLine": 247,
+        "startChar": 35,
+        "endLine": 247,
+        "endChar": 68
+      },
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b578e959_54532792",
         "filename": "tests/vb2_api_tests.c",
         "patchSetId": 1
@@ -110,6 +212,24 @@
       "writtenOn": "2019-04-13T00:07:40Z",
       "side": 1,
       "message": "This looks like an API violation (this isn\u0027t supposed to get set by the caller). Maybe use GBB_FORCE_DEV_SWITCH_ON?",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72628003_871832c6",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-15T11:16:01Z",
+      "side": 1,
+      "message": "GBB flags is part of SD as well.  And it does seem like many of the other tests manipulate vb2_shared_data.\nAlso I realized that vb2_check_dev_switch is mocked out.  So I believe the only way to get dev mode here is to set it in vb2_shared_data...?",
+      "parentUuid": "b578e959_54532792",
       "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
