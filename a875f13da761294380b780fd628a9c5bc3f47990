@@ -233,6 +233,24 @@
       "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff8a8db_92ce30e7",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-15T22:02:06Z",
+      "side": 1,
+      "message": "\u003e Also I realized that vb2_check_dev_switch is mocked out.\n\nOh... hmm. That\u0027s not great actually, I think it would be more useful if the tests exercised all the code covered by the API. But that\u0027s a different problem, I guess.\n\nFor this model I guess it would be cleaner if you added a global like force_devmode \u003d 0 that you could set to 1 here to make the vb2_check_dev_switch mock set that flag for you. Although at that point, I agree it\u0027s not very different from setting the flag right here.",
+      "parentUuid": "72628003_871832c6",
+      "revId": "a875f13da761294380b780fd628a9c5bc3f47990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
