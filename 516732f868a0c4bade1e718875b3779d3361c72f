@@ -124,6 +124,24 @@
       "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fad235_3fb19e91",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-15T22:19:26Z",
+      "side": 0,
+      "message": "\u003e Would it be acceptable if I change the code to use your suggestion of \"if (VbCheckDiagnostic)\"?  Or do you still think it\u0027s not worth breaking out into a separate function?\n\nSure, I\u0027m fine with that.",
+      "parentUuid": "2fdc3a89_d06c9aad",
+      "revId": "516732f868a0c4bade1e718875b3779d3361c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
