@@ -22,6 +22,30 @@
       "revId": "71a1f782069d5990367425e1479fe5fdc4193ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed06b28b_08ae0d62",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-04-16T04:07:22Z",
+      "side": 1,
+      "message": "No this is not used. Only --ccd is supported.\n\nThis \u0027D\u0027 is only for switch/case internal state and may be change anytime. We can use OPT_CCD to make it clear.",
+      "parentUuid": "38a0356f_8e388764",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "71a1f782069d5990367425e1479fe5fdc4193ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
