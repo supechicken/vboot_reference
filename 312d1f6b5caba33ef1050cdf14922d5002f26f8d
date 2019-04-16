@@ -22,6 +22,30 @@
       "revId": "312d1f6b5caba33ef1050cdf14922d5002f26f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800a8534_adab23ce",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-04-16T02:44:53Z",
+      "side": 1,
+      "message": "No plan to do that yet, because almost all care-n-feed docs are asking people to use platform/ec/utils/flash_ec.\n\nWe may revise this in future if needed. At least for now I can\u0027t specify two programmers from cmd line...",
+      "parentUuid": "0e84bc7c_fcd343ca",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "312d1f6b5caba33ef1050cdf14922d5002f26f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
