@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d78c8aab_281bf20b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-18T21:58:15Z",
+      "side": 1,
+      "message": "nit: vboot is a big repository, can you prefix this (e.g. \"cgpt: create: Don\u0027t modify existing IGNOREME headers\")?",
+      "revId": "d4cbc3e72b76c09b700c76c217c0e3268db954a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f8dd63_27501b28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-18T21:58:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "d4cbc3e72b76c09b700c76c217c0e3268db954a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3714831f_e397d325",
+        "filename": "cgpt/cgpt_create.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-18T21:58:15Z",
+      "side": 1,
+      "message": "nit: weird indentation? If you wanna line up with the opening parenthesis, you usually put it one after so that it\u0027s visibly inside, e.g.\n\n function(arg1,\n          arg2);",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "d4cbc3e72b76c09b700c76c217c0e3268db954a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
