@@ -32,9 +32,6 @@ static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
 static struct vb2_shared_data *sd;
 
-static int shutdown_request_calls_left;
-static int shutdown_request_power_held;
-static int shutdown_via_lid_close;
 static int audio_looping_calls_left;
 static uint32_t vbtlk_retval;
 static int vbexlegacy_called;
@@ -46,9 +43,17 @@ static uint32_t virtdev_retval;
 static uint32_t mock_keypress[16];
 static uint32_t mock_keyflags[8];
 static uint32_t mock_keypress_count;
-static uint32_t mock_switches[8];
-static uint32_t mock_switches_count;
-static int mock_switches_are_stuck;
+
+#define GPIO_SHUTDOWN   1
+#define GPIO_PRESENCE   2
+#define GPIO_LID_CLOSED 4
+typedef struct GpioState {
+	uint32_t gpio_flags;
+	uint32_t count;
+} GpioState;
+struct GpioState mock_gpio[8];
+static uint32_t mock_gpio_count;
+
 static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
 static uint32_t mock_num_disks[8];
@@ -81,9 +86,6 @@ static void ResetMocks(void)
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 
-	shutdown_request_calls_left = -1;
-	shutdown_request_power_held = -1;
-	shutdown_via_lid_close = 0;
 	audio_looping_calls_left = 30;
 	vbtlk_retval = 1000;
 	vbexlegacy_called = 0;
@@ -100,11 +102,8 @@ static void ResetMocks(void)
 	memset(mock_keypress, 0, sizeof(mock_keypress));
 	memset(mock_keyflags, 0, sizeof(mock_keyflags));
 	mock_keypress_count = 0;
-
-	memset(mock_switches, 0, sizeof(mock_switches));
-	mock_switches_count = 0;
-	mock_switches_are_stuck = 0;
-
+	memset(mock_gpio, 0, sizeof(mock_gpio));
+	mock_gpio_count = 0;
 	memset(mock_num_disks, 0, sizeof(mock_num_disks));
 	mock_num_disks_count = 0;
 
@@ -116,23 +115,19 @@ static void ResetMocks(void)
 
 uint32_t VbExIsShutdownRequested(void)
 {
-	if (shutdown_request_calls_left == 0)
-		return shutdown_via_lid_close ?
-			VB_SHUTDOWN_REQUEST_LID_CLOSED :
-			VB_SHUTDOWN_REQUEST_POWER_BUTTON;
-	else if (shutdown_request_calls_left > 0)
-		shutdown_request_calls_left--;
-
-	if (shutdown_request_power_held >= 0) {
-		/* Hold power button for 10 calls, then release for 10. */
-		if (shutdown_request_calls_left % 10 == 0)
-			shutdown_request_power_held
-				= !shutdown_request_power_held;
-		if (shutdown_request_power_held)
-			return VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	uint32_t result = 0;
+	if (mock_gpio_count >= ARRAY_SIZE(mock_gpio))
+		return 0;
+	if (mock_gpio[mock_gpio_count].gpio_flags & GPIO_SHUTDOWN)
+		result |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	if (mock_gpio[mock_gpio_count].gpio_flags & GPIO_LID_CLOSED)
+		result |= VB_SHUTDOWN_REQUEST_LID_CLOSED;
+	if (mock_gpio[mock_gpio_count].count > 0) {
+		--mock_gpio[mock_gpio_count].count;
+	} else {
+		++mock_gpio_count;
 	}
-
-	return 0;
+	return result;
 }
 
 uint32_t VbExKeyboardRead(void)
@@ -152,12 +147,18 @@ uint32_t VbExKeyboardReadWithFlags(uint32_t *key_flags)
 
 uint32_t VbExGetSwitches(uint32_t request_mask)
 {
-	if (mock_switches_are_stuck)
-		return mock_switches[0] & request_mask;
-	if (mock_switches_count < ARRAY_SIZE(mock_switches))
-		return mock_switches[mock_switches_count++] & request_mask;
-	else
+	uint32_t result = 0;
+	if (mock_gpio_count >= ARRAY_SIZE(mock_gpio))
 		return 0;
+	if ((request_mask & VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED) &&
+	    (mock_gpio[mock_gpio_count].gpio_flags & GPIO_PRESENCE))
+		result |= VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
+	if (mock_gpio[mock_gpio_count].count > 0) {
+		--mock_gpio[mock_gpio_count].count;
+	} else {
+		++mock_gpio_count;
+	}
+	return result;
 }
 
 int VbExLegacy(enum VbAltFwIndex_t _altfw_num)
@@ -261,12 +262,39 @@ int vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
 
 /* Tests */
 
+static void VbUserConfirmsTestGpio(uint32_t first, uint32_t second,
+				   uint32_t third, uint32_t confirm,
+				   const char *msg)
+{
+	ResetMocks();
+	mock_gpio[0].gpio_flags = first;
+	mock_gpio[0].count = 2;
+	mock_gpio[1].gpio_flags = second;
+	mock_gpio[1].count = 2;
+	mock_gpio[2].gpio_flags = third;
+	mock_gpio[2].count = 2;
+	if (confirm) {
+		TEST_EQ(VbUserConfirms(&ctx,
+			VB_CONFIRM_SPACE_MEANS_NO |
+			VB_CONFIRM_MUST_TRUST_KEYBOARD),
+			1, msg);
+	} else {
+		TEST_EQ(VbUserConfirms(&ctx,
+			VB_CONFIRM_SPACE_MEANS_NO |
+			VB_CONFIRM_MUST_TRUST_KEYBOARD),
+			-1, msg);
+	}
+}
+
 static void VbUserConfirmsTest(void)
 {
 	printf("Testing VbUserConfirms()...\n");
 
 	ResetMocks();
-	shutdown_request_calls_left = 1;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 1;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbUserConfirms(&ctx, 0), -1, "Shutdown requested");
 
 	ResetMocks();
@@ -283,13 +311,17 @@ static void VbUserConfirmsTest(void)
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
-	shutdown_request_calls_left = 1;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbUserConfirms(&ctx, VB_CONFIRM_SPACE_MEANS_NO), 0,
 		"Space means no");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
-	shutdown_request_calls_left = 1;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbUserConfirms(&ctx, 0), -1, "Space ignored");
 
 	ResetMocks();
@@ -307,24 +339,73 @@ static void VbUserConfirmsTest(void)
 		0, "Untrusted keyboard");
 
 	ResetMocks();
-	mock_switches[0] = VB_SWITCH_FLAG_REC_BUTTON_PRESSED;
+	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
 	TEST_EQ(VbUserConfirms(&ctx,
 			       VB_CONFIRM_SPACE_MEANS_NO |
 			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
-		1, "Recovery button");
+		1, "Presence button");
+
+	/* Sequences that result in confirm. */
+	VbUserConfirmsTestGpio(GPIO_PRESENCE, GPIO_SHUTDOWN, 0, 1,
+			       "presence then shutdown");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_PRESENCE, 1, "presence, both, presence");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       0, 1, "presence, both, none");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_SHUTDOWN, 1, "presence, both, shutdown");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE | GPIO_SHUTDOWN, 0, 0, 1, "both");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_SHUTDOWN, 0, 1, "both, shutdown");
+	VbUserConfirmsTestGpio(GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_PRESENCE, 0, 1, "both, presence");
+
+	ResetMocks();
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 4;
+	mock_gpio[0].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[0].count = 1;
+	mock_gpio[1].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[1].count = 4;
+	TEST_EQ(VbUserConfirms(&ctx,
+			       VB_CONFIRM_SPACE_MEANS_NO |
+			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
+		1, "1 shutdown then presence");
+
+	ResetMocks();
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 4;
+	mock_gpio[0].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[0].count = 1;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN | GPIO_PRESENCE;
+	mock_gpio[1].count = 4;
+	TEST_EQ(VbUserConfirms(&ctx,
+			       VB_CONFIRM_SPACE_MEANS_NO |
+			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
+		1, "1 shutdown then both");
+
+	/* Sequences that result in shutdown. */
+	VbUserConfirmsTestGpio(GPIO_SHUTDOWN, 0, 0, 0, "shutdown");
+	VbUserConfirmsTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE, 0, 0,
+			       "shutdown then presence");
+	VbUserConfirmsTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_PRESENCE, 0, "shutdown, both, presence");
+	VbUserConfirmsTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       0, 0, "shutdown, both, none");
+	VbUserConfirmsTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			       GPIO_SHUTDOWN, 0, "shutdown, both, shutdown");
 
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ENTER;
 	mock_keypress[1] = 'y';
 	mock_keypress[2] = 'z';
 	mock_keypress[3] = ' ';
-	mock_switches[0] = VB_SWITCH_FLAG_REC_BUTTON_PRESSED;
-	mock_switches_are_stuck = 1;
+	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[0].count = ~0;
 	TEST_EQ(VbUserConfirms(&ctx,
 			       VB_CONFIRM_SPACE_MEANS_NO |
 			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
 		0, "Recovery button stuck");
-
 	printf("...done.\n");
 }
 
@@ -416,7 +497,10 @@ static void VbBootDevTest(void)
 
 	/* Shutdown requested in loop */
 	ResetMocks();
-	shutdown_request_calls_left = 2;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 2;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbBootDeveloper(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested");
@@ -497,7 +581,10 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
-	shutdown_request_calls_left = 2;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 2;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbBootDeveloper(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested at tonorm");
@@ -538,7 +625,10 @@ static void VbBootDevTest(void)
 
 	/* Enter altfw menu and time out */
 	ResetMocks();
-	shutdown_request_calls_left = 1000;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 1000;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_SHUTDOWN_REQUESTED,
@@ -860,7 +950,10 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
-	shutdown_request_calls_left = 1;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 1;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbBootDeveloper(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested when dev disabled");
@@ -879,13 +972,51 @@ static void VbBootDevTest(void)
 	printf("...done.\n");
 }
 
+/*
+ * Triggers 'first' for 1 event, 'second' for 5 events, 'third' for 5 events,
+ * and 'fourth' for 5 events. Typically most tests want 5 events of each type
+ * (so they'll specify 0 for 'first' and use 'second' through 'fourth'),
+ * but a few tests want the shutdown event to be seen once.
+ */
+static void VbBootRecTestGpio(uint32_t first, uint32_t second,
+			      uint32_t third, uint32_t fourth,
+			      uint32_t confirm, const char *msg)
+{
+	ResetMocks();
+	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
+	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	trust_ec = 1;
+	mock_keypress[0] = VB_KEY_CTRL('D');
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 4;
+	mock_gpio[1].gpio_flags = first;
+	mock_gpio[1].count = 0;
+	mock_gpio[2].gpio_flags = second;
+	mock_gpio[2].count = 4;
+	mock_gpio[3].gpio_flags = third;
+	mock_gpio[3].count = 4;
+	mock_gpio[4].gpio_flags = fourth;
+	mock_gpio[4].count = 4;
+
+	if (confirm) {
+		TEST_EQ(VbBootRecovery(&ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED, msg);
+		TEST_EQ(virtdev_set, 1, "  virtual dev mode on");
+	} else {
+		TEST_EQ(VbBootRecovery(&ctx), VBERROR_SHUTDOWN_REQUESTED, msg);
+		TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
+	}
+}
+
 static void VbBootRecTest(void)
 {
 	printf("Testing VbBootRecovery()...\n");
 
 	/* Shutdown requested in loop */
 	ResetMocks();
-	shutdown_request_calls_left = 10;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 10;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -907,8 +1038,12 @@ static void VbBootRecTest(void)
 
 	/* Ignore power button held on boot */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
-	shutdown_request_power_held = 1;
+	mock_gpio[0].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[0].count = 10;
+	mock_gpio[1].gpio_flags = 0;
+	mock_gpio[1].count = 10;
+	mock_gpio[2].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[2].count = 10;
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
@@ -917,17 +1052,15 @@ static void VbBootRecTest(void)
 		"Ignore power button held on boot");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
-	/*
-	 * shutdown_request_power_held holds power button for 10 calls, then
-	 * releases for 10, then holds again, so expect shutdown after 20:
-	 * 100 - 20 = 80.
-	 */
-	TEST_EQ(shutdown_request_calls_left, 80,
-		"  ignore held button");
+	/* Shutdown should happen while we're sending the 2nd block of events */
+	TEST_EQ(mock_gpio_count, 2, "  ignore held button");
 
 	/* Broken screen */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	mock_num_disks[2] = 1;
@@ -940,7 +1073,10 @@ static void VbBootRecTest(void)
 
 	/* Broken screen even if dev switch is on */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
@@ -953,7 +1089,10 @@ static void VbBootRecTest(void)
 
 	/* Force insert screen with GBB flag */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecovery(&ctx),
@@ -964,7 +1103,10 @@ static void VbBootRecTest(void)
 
 	/* No removal if recovery button physically pressed */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
@@ -977,7 +1119,10 @@ static void VbBootRecTest(void)
 
 	/* Removal if no disk initially found, but found on second attempt */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_num_disks[0] = 0;
 	mock_num_disks[1] = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
@@ -989,10 +1134,12 @@ static void VbBootRecTest(void)
 
 	/* Bad disk count doesn't require removal */
 	ResetMocks();
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 10;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_num_disks[0] = -1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	shutdown_request_calls_left = 10;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Bad disk count");
@@ -1002,7 +1149,10 @@ static void VbBootRecTest(void)
 	/* Ctrl+D ignored for many reasons... */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	trust_ec = 0;
 	TEST_EQ(VbBootRecovery(&ctx),
@@ -1015,7 +1165,10 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON | VBSD_BOOT_DEV_SWITCH_ON;
 	trust_ec = 1;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -1026,7 +1179,10 @@ static void VbBootRecTest(void)
 
 	ResetMocks();
 	trust_ec = 1;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -1035,25 +1191,30 @@ static void VbBootRecTest(void)
 	TEST_NEQ(screens_displayed[1], VB_SCREEN_RECOVERY_TO_DEV,
 		 "  todev screen");
 
-	/* Ctrl+D ignored because the physical recovery switch is still pressed
+	/* Ctrl+D ignored because the physical presence switch is still pressed
 	 * and we don't like that.
 	 */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
-	shutdown_request_calls_left = 100;
 	mock_keypress[0] = VB_KEY_CTRL('D');
-	mock_switches[0] = VB_SWITCH_FLAG_REC_BUTTON_PRESSED;
+	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_PRESENCE | GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
-		"Ctrl+D ignored if phys rec button is still pressed");
+		"Ctrl+D ignored if phys pres button is still pressed");
 	TEST_NEQ(screens_displayed[1], VB_SCREEN_RECOVERY_TO_DEV,
 		 "  todev screen");
 
 	/* Ctrl+D then space means don't enable */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
@@ -1072,20 +1233,139 @@ static void VbBootRecTest(void)
 	/* Ctrl+D then enter means enable */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = VB_KEY_ENTER;
 	mock_keyflags[1] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	TEST_EQ(VbBootRecovery(&ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
-		"Ctrl+D todev confirm");
+		"Ctrl+D todev confirm via enter");
 	TEST_EQ(virtdev_set, 1, "  virtual dev mode on");
+
+	/*
+	 * List of possiblities for shutdown and physical presence events that
+	 * occur over time.  Time advanced from left to right (where each
+	 * represents the gpio[s] that are seen during a given iteration of
+	 * the loop).  The meaning of the characters:
+	 *
+	 *   _ means no gpio
+	 *   s means shutdown gpio
+	 *   p means presence gpio
+	 *   B means both shutdown and presence gpio
+	 *
+	 *  1: ______ppp______ -> confirm
+	 *  2: ______sss______ -> shutdown
+	 *  3: ___pppsss______ -> confirm
+	 *  4: ___sssppp______ -> shutdown
+	 *  5: _____sppp______ -> confirm
+	 *  6: ___pppBBBppp___ -> confirm
+	 *  7: ___pppBBBsss___ -> confirm
+	 *  8: ___pppBBB______ -> confirm
+	 *  9: ___sssBBBppp___ -> shutdown
+	 * 10: _____sBBBppp___ -> confirm
+	 * 11: ___sssBBBsss___ -> shutdown
+	 * 12: _____sBBBsss___ -> confirm
+	 * 13: ___sssBBB______ -> shutdown
+	 * 14: _____sBBB______ -> confirm
+	 * 15: ______BBB______ -> confirm
+	 * 16: ______BBBsss___ -> confirm
+	 * 17: ______BBBppp___ -> confirm
+	 *
+	 * For cases 4, 9, 11, and 13, if the power and presence buttons are
+	 * the same then the latest that we should see the presence gpio is
+	 * immediately after shutdown is seen.
+	 * Since shutdown is seen multiple times in these cases this results
+	 * in a shutdown.
+	 * Cases 5, 10, 12, 14 are basically the same but with only 1 shutdown
+	 * event seen before the presence button, and these cases result in a
+	 * 'confirm' result.
+	 */
+
+	/* 1: Ctrl+D then presence means enable */
+	VbBootRecTestGpio(0, GPIO_PRESENCE, 0, 0, 1,
+			  "Ctrl+D todev confirm via presence");
+
+	/* 2: Ctrl+D then shutdown means shutdown */
+	VbBootRecTestGpio(0, GPIO_SHUTDOWN, 0, 0, 0,
+			  "Ctrl+D todev then shutdown");
+
+	/* 3: Ctrl+D then presence then shutdown means confirm */
+	VbBootRecTestGpio(0, GPIO_PRESENCE, GPIO_SHUTDOWN, 0, 1,
+			  "Ctrl+D todev confirm via presence then shutdown");
+
+	/* 4: Ctrl+D then 2+ instance shutdown then presence means shutdown */
+	VbBootRecTestGpio(0, GPIO_SHUTDOWN, GPIO_PRESENCE, 0, 0,
+			  "Ctrl+D todev then 2+ shutdown then presence");
+
+	/* 5: Ctrl+D then 1-instance shutdown then presence means confirm */
+	VbBootRecTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE, 0, 0, 1,
+			  "Ctrl+D todev confirm via 1 shutdown then presence");
+
+	/* 6: Ctrl+D then presence then shutdown+presence then presence */
+	VbBootRecTestGpio(0, GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_PRESENCE, 1,
+			  "Ctrl+D todev confirm via presence, both, presence");
+
+	/* 7: Ctrl+D then presence then shutdown+presence then shutdown */
+	VbBootRecTestGpio(0, GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_SHUTDOWN, 1,
+			  "Ctrl+D todev confirm via presence, both, shutdown");
+
+	/* 8: Ctrl+D then presence then shutdown+presence then none */
+	VbBootRecTestGpio(0, GPIO_PRESENCE, GPIO_PRESENCE | GPIO_SHUTDOWN, 0, 1,
+			  "Ctrl+D todev confirm via presence, both, none");
+
+	/* 9: Ctrl+D then shutdown then shutdown+presence then presence */
+	VbBootRecTestGpio(0, GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_PRESENCE, 0,
+			  "Ctrl+D todev then 2+ shutdown, both, presence");
+
+	/* 10: Ctrl+D then 1 shutdown then shutdown+presence then presence */
+	VbBootRecTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_PRESENCE, 0, 1,
+			  "Ctrl+D todev confirm via 1 shutdown, both, presence");
+
+	/* 11: Ctrl+D then shutdown then shutdown+presence then shutdown */
+	VbBootRecTestGpio(0, GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_SHUTDOWN, 0,
+			  "Ctrl+D todev then 2+ shutdown, both, shutdown");
+
+	/* 12: Ctrl+D then 1 shutdown then shutdown+presence then shutdown */
+	VbBootRecTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN,
+			  GPIO_SHUTDOWN, 0, 1,
+			  "Ctrl+D todev confirm via 1 shutdown, both, shutdown");
+
+	/* 13: Ctrl+D then shutdown then shutdown+presence then none */
+	VbBootRecTestGpio(0, GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN, 0, 0,
+			  "Ctrl+D todev then 2+ shutdown, both, none");
+
+	/* 14: Ctrl+D then 1 shutdown then shutdown+presence then none */
+	VbBootRecTestGpio(GPIO_SHUTDOWN, GPIO_PRESENCE | GPIO_SHUTDOWN, 0, 0, 1,
+			  "Ctrl+D todev confirm via 1 shutdown, both, none");
+
+	/* 15: Ctrl+D then shutdown+presence then none */
+	VbBootRecTestGpio(0, GPIO_PRESENCE | GPIO_SHUTDOWN, 0, 0, 1,
+			  "Ctrl+D todev confirm via both then none");
+
+	/* 16: Ctrl+D then shutdown+presence then shutdown */
+	VbBootRecTestGpio(0, GPIO_PRESENCE | GPIO_SHUTDOWN, GPIO_SHUTDOWN, 0, 1,
+			  "Ctrl+D todev confirm via both then shutdown");
+
+	/* 17: Ctrl+D then shutdown+presence then presence */
+	VbBootRecTestGpio(0, GPIO_PRESENCE | GPIO_SHUTDOWN, GPIO_PRESENCE, 0, 1,
+			  "Ctrl+D todev confirm via both then presence");
 
 	/* Handle TPM error in enabling dev mode */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
@@ -1101,7 +1381,10 @@ static void VbBootRecTest(void)
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_CTRL('C');
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
@@ -1126,7 +1409,10 @@ static void VbBootRecTest(void)
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON | VBSD_OPROM_MATTERS;
 	trust_ec = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_F(12);
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
@@ -1148,7 +1434,10 @@ static void VbBootRecTest(void)
 	/* Test Diagnostic Mode via Ctrl-C OS broken */
 	ResetMocks();
 	shared->flags = 0;
-	shutdown_request_calls_left = 100;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 100;
+	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
+	mock_gpio[1].count = ~0;
 	mock_keypress[0] = VB_KEY_CTRL('C');
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
@@ -1200,8 +1489,10 @@ static void VbBootDiagTest(void)
 
 	/* Shutdown requested via lid close */
 	ResetMocks();
-	shutdown_via_lid_close = 1;
-	shutdown_request_calls_left = 10;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 10;
+	mock_gpio[1].gpio_flags = GPIO_LID_CLOSED;
+	mock_gpio[1].count = ~0;
 	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_SHUTDOWN_REQUESTED, "Shutdown");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
@@ -1213,8 +1504,8 @@ static void VbBootDiagTest(void)
 
 	/* Power button pressed but not released. */
 	ResetMocks();
-	mock_switches_are_stuck = 1;
-	mock_switches[0] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
+	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[0].count = ~0;
 	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Power held");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
@@ -1225,9 +1516,10 @@ static void VbBootDiagTest(void)
 
 	/* Power button is pressed and released. */
 	ResetMocks();
-	mock_switches[0] = 0;
-	mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
-	mock_switches[2] = 0;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 2;
+	mock_gpio[1].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[1].count = 2;
 	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Confirm");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
@@ -1248,9 +1540,10 @@ static void VbBootDiagTest(void)
         /* Power button confirm, but now with a tpm failure. */
 	ResetMocks();
 	tpm_mode = VB2_TPM_MODE_DISABLED;
-	mock_switches[0] = 0;
-	mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
-	mock_switches[2] = 0;
+	mock_gpio[0].gpio_flags = 0;
+	mock_gpio[0].count = 2;
+	mock_gpio[1].gpio_flags = GPIO_PRESENCE;
+	mock_gpio[1].count = 2;
 	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED,
 		"Confirm but tpm fail");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,

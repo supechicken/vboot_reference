@@ -107,15 +107,14 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 	uint32_t key;
 	uint32_t key_flags;
 	uint32_t btn;
-	int rec_button_was_pressed = 0;
+	int phys_presence_button_was_pressed = 0;
+	int shutdown_requested = 0;
 
 	VB2_DEBUG("Entering(%x)\n", confirm_flags);
 
 	/* Await further instructions */
 	while (1) {
 		key = VbExKeyboardReadWithFlags(&key_flags);
-		if (VbWantShutdown(ctx, key))
-			return -1;
 		switch (key) {
 		case VB_KEY_ENTER:
 			/* If we require a trusted keyboard for confirmation,
@@ -145,20 +144,47 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			return 0;
 			break;
 		default:
-			/* If the recovery button is physical, and is pressed,
-			 * this is also a YES, but must wait for release.
+			/* If the physical presence button is physical, and is
+			 * pressed, this is also a YES, but must wait for
+			 * release.
 			 */
 			btn = VbExGetSwitches(
-				VB_SWITCH_FLAG_REC_BUTTON_PRESSED);
+				VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED);
 			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL)) {
 				if (btn) {
-					VB2_DEBUG("Rec button pressed\n");
-					rec_button_was_pressed = 1;
-				} else if (rec_button_was_pressed) {
-					VB2_DEBUG("Rec button (1)\n");
+					VB2_DEBUG("Presence button pressed, "
+						  "awaiting release\n");
+					phys_presence_button_was_pressed = 1;
+				} else if (phys_presence_button_was_pressed) {
+					VB2_DEBUG("Presence button released "
+						  "(1)\n");
 					return 1;
 				}
 			}
+			/*
+			 * On some systems the physical presence button is
+			 * the power button, so check that button before
+			 * querying the shutdown status.  We want the
+			 * physical presence button to be released before
+			 * we react to it, so we have to postpone the
+			 * handling of the shutdown until after the
+			 * physical presence button is released.
+			 * In theory a fast tap of the power button could
+			 * be seen by VbWantShutdown() and not VbExGetSwitches()
+			 * (thus resulting in a power off rather than an ack
+			 * of dev mode), but a typical press is usually seen by
+			 * at least a few iterations of this loop).
+			 */
+			if (shutdown_requested && btn == 0) {
+				VB2_DEBUG("Button released, shutting down\n");
+				return -1;
+			}
+			if (VbWantShutdown(ctx, key)) {
+				VB2_DEBUG("Shutdown requested, "
+					  "awaiting button release\n");
+				shutdown_requested = 1;
+			}
+
 			VbCheckDisplayKey(ctx, key, NULL);
 		}
 		VbExSleepMs(CONFIRM_KEY_DELAY);
@@ -897,9 +923,9 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 				if (!(shared->flags &
 				      VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
 				    VbExGetSwitches(
-				    VB_SWITCH_FLAG_REC_BUTTON_PRESSED)) {
+				    VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED)) {
 					/*
-					 * Is the recovery button stuck?  In
+					 * Is the presense button stuck?  In
 					 * any case we don't like this.  Beep
 					 * and ignore.
 					 */
