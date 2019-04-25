@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d43b1721_b4c92a69",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-25T22:18:46Z",
+      "side": 1,
+      "message": "nit: Either write the whole words or just \"presence\".",
+      "range": {
+        "startLine": 155,
+        "startChar": 16,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684a088f_aacffe64",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-25T22:18:46Z",
+      "side": 1,
+      "message": "It also seems weird that you check btn here... I guess it works, but it would lead to weird edge cases if the two buttons are not the same and someone held down the recovery button and then tapped the power button (not a very likely scenario, I guess, but might happen if the recovery line is constantly asserted via a Servo misconfiguration, for example). I think that\u0027s another good reason to try to encapsulate this completely within VbWantShutdown (see below).",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8eaa94_07f25d8e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-25T22:18:46Z",
+      "side": 1,
+      "message": "I think these messages would be more readable as something like\n\n Power button pressed, waiting for release\n Power button released, shutting down",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3beee150_a8459f54",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-25T22:18:46Z",
+      "side": 1,
+      "message": "Could we make this look cleaner if we rewrote VbWantShutdown() to just generally only return the power button shutdown on release? Maybe incorporate it into the existing \"make sure it gets released at least once\" mechanism?",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2232fbdd_63c0f10a",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-25T22:18:46Z",
+      "side": 1,
+      "message": "Can you also add shutdown tests for the TO_DEV screen, both when the two buttons are the same and when they\u0027re not? (I guess it might be a little hard to model if they\u0027re the same, but maybe you could do it by matching mock_keypress to follow the same 10-presses-on, 10-presses-off pattern as the shutdown mock.",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
