@@ -57,8 +57,12 @@ void vb2_workbuf_init(struct vb2_workbuf *wb, uint8_t *buf, uint32_t size)
 	wb->size = size;
 
 	/* Align the buffer so allocations will be aligned */
-	if (vb2_align(&wb->buf, &wb->size, VB2_WORKBUF_ALIGN, 0))
+	if (vb2_align(&wb->buf, &wb->size, VB2_WORKBUF_ALIGN, 0)) {
 		wb->size = 0;
+		wb->used = size;
+	} else {
+		wb->used = wb->buf - buf;
+	}
 }
 
 void *vb2_workbuf_alloc(struct vb2_workbuf *wb, uint32_t size)
@@ -73,6 +77,7 @@ void *vb2_workbuf_alloc(struct vb2_workbuf *wb, uint32_t size)
 
 	wb->buf += size;
 	wb->size -= size;
+	wb->used += size;
 
 	return ptr;
 }
@@ -97,6 +102,7 @@ void vb2_workbuf_free(struct vb2_workbuf *wb, uint32_t size)
 
 	wb->buf -= size;
 	wb->size += size;
+	wb->used -= size;
 }
 
 ptrdiff_t vb2_offset_of(const void *base, const void *ptr)
