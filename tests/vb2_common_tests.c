@@ -74,14 +74,17 @@ static void test_workbuf(void)
 	vb2_workbuf_init(&wb, p0, 64);
 	TEST_EQ(vb2_offset_of(p0, wb.buf), 0, "Workbuf init aligned");
 	TEST_EQ(wb.size, 64, "  size");
+	TEST_EQ(wb.used, 0, "  used");
 
 	vb2_workbuf_init(&wb, p0 + 4, 64);
 	TEST_EQ(vb2_offset_of(p0, wb.buf), VB2_WORKBUF_ALIGN,
 		"Workbuf init unaligned");
 	TEST_EQ(wb.size, 64 - VB2_WORKBUF_ALIGN + 4, "  size");
+	TEST_EQ(wb.used, VB2_WORKBUF_ALIGN - 4, "  used");
 
 	vb2_workbuf_init(&wb, p0 + 2, 5);
 	TEST_EQ(wb.size, 0, "Workbuf init tiny unaligned size");
+	TEST_EQ(wb.used, 5, "  used");
 
 	/* Alloc rounds up */
 	vb2_workbuf_init(&wb, p0, 64);
@@ -89,6 +92,7 @@ static void test_workbuf(void)
 	TEST_EQ(vb2_offset_of(p0, ptr), 0, "Workbuf alloc");
 	TEST_EQ(vb2_offset_of(p0, wb.buf), 32, "  buf");
 	TEST_EQ(wb.size, 32, "  size");
+	TEST_EQ(wb.used, 32, "  used");
 
 	vb2_workbuf_init(&wb, p0, 32);
 	TEST_PTR_EQ(vb2_workbuf_alloc(&wb, 33), NULL, "Workbuf alloc too big");
@@ -99,6 +103,7 @@ static void test_workbuf(void)
 	vb2_workbuf_free(&wb, 22);
 	TEST_EQ(vb2_offset_of(p0, wb.buf), 0, "Workbuf free buf");
 	TEST_EQ(wb.size, 32, "  size");
+	TEST_EQ(wb.used, 0, "  used");
 
 	/* Realloc keeps same pointer as alloc */
 	vb2_workbuf_init(&wb, p0, 64);
@@ -107,6 +112,7 @@ static void test_workbuf(void)
 	TEST_EQ(vb2_offset_of(p0, ptr), 0, "Workbuf realloc");
 	TEST_EQ(vb2_offset_of(p0, wb.buf), 32, "  buf");
 	TEST_EQ(wb.size, 32, "  size");
+	TEST_EQ(wb.used, 32, "  used");
 }
 
 int main(int argc, char* argv[])
