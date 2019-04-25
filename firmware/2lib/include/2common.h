@@ -60,6 +60,9 @@ static __inline uint32_t vb2_wb_round_up(uint32_t v)
 struct vb2_workbuf {
 	uint8_t *buf;
 	uint32_t size;
+	/* Amount of workbuf currently used, including any trailing alignment
+	   padding (this is always true: used + size == orig_size) */
+	uint32_t used;
 };
 
 /**
