@@ -9,8 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "2sysincludes.h"
-#include "2api.h"
+#include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "host_common.h"
@@ -30,6 +29,7 @@ static LoadKernelParams lkp;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
 static struct vb2_shared_data *sd;
+static struct vb2_gbb_header gbb;
 
 static int shutdown_request_calls_left;
 static int shutdown_request_power_held;
@@ -79,6 +79,9 @@ static void ResetMocks(void)
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+
+	memset(&gbb, 0, sizeof(gbb));
+	sd->gbb_offset = vb2_offset_of(sd, &gbb);
 
 	shutdown_request_calls_left = -1;
 	shutdown_request_power_held = -1;
@@ -354,7 +357,7 @@ static void VbBootDevTest(void)
 
 	/* Proceed to legacy after timeout if GBB flag set */
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
+	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
 			VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
@@ -362,7 +365,7 @@ static void VbBootDevTest(void)
 
 	/* Proceed to legacy after timeout if GBB flag set */
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
+	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
 			VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
@@ -477,7 +480,7 @@ static void VbBootDevTest(void)
 	/* Enter does if GBB flag set */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	sd->gbb_flags |= VB2_GBB_FLAG_ENTER_TRIGGERS_TONORM;
+	gbb.flags |= VB2_GBB_FLAG_ENTER_TRIGGERS_TONORM;
 	mock_keypress[0] = VB_KEY_ENTER;
 	mock_keypress[1] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
@@ -486,7 +489,7 @@ static void VbBootDevTest(void)
 	/* Tonorm ignored if GBB forces dev switch on */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
 	mock_keypress[1] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
@@ -525,7 +528,7 @@ static void VbBootDevTest(void)
 	/* Ctrl+D doesn't boot legacy even if GBB flag is set */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_CTRL('D');
-	sd->gbb_flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
+	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Ctrl+D");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
@@ -538,7 +541,7 @@ static void VbBootDevTest(void)
 	/* Enter altfw menu and time out */
 	ResetMocks();
 	shutdown_request_calls_left = 1000;
-	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+L force legacy");
@@ -546,7 +549,7 @@ static void VbBootDevTest(void)
 
 	/* Enter altfw menu and select firmware 0 */
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = '0';
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
@@ -591,7 +594,7 @@ static void VbBootDevTest(void)
 		TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 		ResetMocks();
-		sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
+		gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 		mock_keypress[0] = key;
 		TEST_EQ(VbBootDeveloper(&ctx), 1002,
 			"Ctrl+L force legacy");
@@ -629,7 +632,7 @@ static void VbBootDevTest(void)
 
 	/* Ctrl+U enabled via GBB */
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval = VBERROR_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U force USB");
@@ -953,7 +956,7 @@ static void VbBootRecTest(void)
 	/* Force insert screen with GBB flag */
 	ResetMocks();
 	shutdown_request_calls_left = 100;
-	sd->gbb_flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
