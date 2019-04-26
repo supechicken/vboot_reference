@@ -92,9 +92,6 @@ struct vb2_shared_data {
 	/* Flags; see enum vb2_shared_data_flags */
 	uint32_t flags;
 
-	/* Flags from GBB header */
-	uint32_t gbb_flags;
-
 	/*
 	 * Reason we are in recovery mode this boot (enum vb2_nv_recovery), or
 	 * 0 if we aren't.
@@ -127,6 +124,9 @@ struct vb2_shared_data {
 	 */
 	uint32_t status;
 
+	/* Offset from start of this struct to GBB header */
+	uint64_t gbb_offset;
+
 	/**********************************************************************
 	 * Data from kernel verification stage.
 	 *
@@ -151,13 +151,6 @@ struct vb2_shared_data {
 	 * really need to persist through to the OS, but there's nowhere else
 	 * we can put them.
 	 */
-
-	/* Root key offset and size from GBB header */
-	uint32_t gbb_rootkey_offset;
-	uint32_t gbb_rootkey_size;
-
-	/* HWID digest from GBB header */
-	uint8_t gbb_hwid_digest[VB2_GBB_HWID_DIGEST_SIZE];
 
 	/* Offset of preamble from start of vblock */
 	uint32_t vblock_preamble_offset;
@@ -222,11 +215,10 @@ struct vb2_shared_data {
 	uint32_t workbuf_kernel_key_offset;
 	uint32_t workbuf_kernel_key_size;
 
-	/* GBB data and size */
-	struct vb2_gbb_header *gbb;
-	uint32_t gbb_size;
-
-
+	/* GBB offsets non-NULL when stored within the work buffer. */
+	uint32_t gbb_hwid_offset;
+	uint32_t gbb_rootkey_offset;
+	uint32_t gbb_recovery_key_offset;
 } __attribute__((packed));
 
 /****************************************************************************/
