@@ -51,6 +51,7 @@ static int want_ec_hash_size;
 static struct vb2_context ctx;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_shared_data *sd;
+static struct vb2_gbb_header gbb;
 
 static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
@@ -73,6 +74,8 @@ static void ResetMocks(void)
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+
+	memset(&gbb, 0, sizeof(gbb));
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -117,6 +120,10 @@ static void ResetMocks(void)
 }
 
 /* Mock functions */
+struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
+{
+	return &gbb;
+}
 
 uint32_t VbExIsShutdownRequested(void)
 {
@@ -389,7 +396,7 @@ static void VbSoftwareSyncTest(void)
 	test_ssync(0, 0, "AP-RW shutdown requested");
 
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
+	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
 	ec_aux_fw_mock_severity = VB_AUX_FW_FAST_UPDATE;
 	test_ssync(VBERROR_SUCCESS, 0,
 		   "VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC"
@@ -398,7 +405,7 @@ static void VbSoftwareSyncTest(void)
 	TEST_EQ(ec_aux_fw_protected, 1, "  aux fw protected");
 
 	ResetMocks();
-	sd->gbb_flags |= VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC;
+	gbb.flags |= VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC;
 	ec_aux_fw_mock_severity = VB_AUX_FW_FAST_UPDATE;
 	test_ssync(VBERROR_SUCCESS, 0,
 		   "VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC"
