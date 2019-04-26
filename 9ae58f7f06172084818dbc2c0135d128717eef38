@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5619d5_f5432dc8",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-26T20:47:57Z",
+      "side": 1,
+      "message": "Please use vb2_set_workbuf_used() (or, if you don\u0027t like that API, change it globally... we should have a consistent way to handle this stuff).",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4c8da8_d1b44538",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-26T20:47:57Z",
+      "side": 1,
+      "message": "I think we\u0027re not gonna have a 4GB work buffer anytime soon so this can be uint32_t.",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e96c0343_47d897c3",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-26T20:47:57Z",
+      "side": 1,
+      "message": "If you now intend for the caller to pass the size in anyway (which should be okay, I assume), you don\u0027t need to do this anymore.",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b9c1f1_da65ccda",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-26T20:47:57Z",
+      "side": 1,
+      "message": "See my comment on... where was it... idk, somewhere else: I don\u0027t think there\u0027s a need to cache any of these, since the only time we need them more than once is in display use cases (where speed isn\u0027t critical). I\u0027d just always load them on demand. Let\u0027s keep it simple.",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
