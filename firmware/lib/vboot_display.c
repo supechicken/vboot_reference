@@ -273,6 +273,7 @@ const char *RecoveryReasonString(uint8_t code)
 VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	VbSharedDataHeader *shared = sd->vbsd;
 	char buf[DEBUG_INFO_SIZE] = "";
 	char sha1sum[VB2_SHA1_DIGEST_SIZE * 2 + 1];
@@ -283,9 +284,11 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 	uint32_t i;
 
 	/* Add hardware ID */
-	VbGbbReadHWID(ctx, hwid, sizeof(hwid));
-	used += StrnAppend(buf + used, "HWID: ", DEBUG_INFO_SIZE - used);
-	used += StrnAppend(buf + used, hwid, DEBUG_INFO_SIZE - used);
+	ret = VbGbbReadHWID(ctx, hwid, sizeof(hwid));
+	if (!ret) {
+		used += StrnAppend(buf + used, "HWID: ", DEBUG_INFO_SIZE - used);
+		used += StrnAppend(buf + used, hwid, DEBUG_INFO_SIZE - used);
+	}
 
 	/* Add recovery reason and subcode */
 	i = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
@@ -355,7 +358,7 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 	used += StrnAppend(buf + used,
 			   "\ngbb.flags: 0x", DEBUG_INFO_SIZE - used);
 	used += Uint64ToString(buf + used, DEBUG_INFO_SIZE - used,
-			       sd->gbb_flags, 16, 8);
+			       gbb->flags, 16, 8);
 
 	/* Add sha1sum for Root & Recovery keys */
 	ret = VbGbbReadRootKey(ctx, &key);
