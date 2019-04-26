@@ -211,6 +211,13 @@ struct vb2_context {
 	 */
 	void *non_vboot_context;
 
+	/*
+	 * vboot1 shared data header.  This is read once during kernel
+	 * verification initialization and set in vb2_shared_data.  Should
+	 * eventually be removed once vboot1 is deprecated.
+	 */
+	struct VbSharedDataHeader *vbsd;
+
 	/**********************************************************************
 	 * Fields caller may examine after calling vb2api_fw_phase1().  Caller
 	 * must set these fields to 0 before calling any vboot functions.
