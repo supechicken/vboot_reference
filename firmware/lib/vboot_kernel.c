@@ -429,6 +429,7 @@ static int vb2_load_partition(struct vb2_context *ctx,
 VbError_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_workbuf wb;
 	VbSharedDataHeader *shared = sd->vbsd;
 	VbSharedDataKernelCall *shcall = NULL;
 	struct vb2_packed_key *recovery_key = NULL;
@@ -437,6 +438,8 @@ VbError_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 
 	VbError_t retval = VBERROR_UNKNOWN;
 	int recovery = VB2_RECOVERY_LK_UNSPECIFIED;
+
+	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Clear output params in case we fail */
 	params->partition_number = 0;
@@ -461,11 +464,14 @@ VbError_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	struct vb2_packed_key *kernel_subkey;
 	if (kBootRecovery == shcall->boot_mode) {
 		/* Use the recovery key to verify the kernel */
-		retval = VbGbbReadRecoveryKey(ctx,
-					      (VbPublicKey **)&recovery_key);
+		retval = vb2api_gbb_read_recovery_key(
+			ctx, (VbPublicKey **)&recovery_key, &wb, 1);
 		if (VBERROR_SUCCESS != retval)
 			goto load_kernel_exit;
 		kernel_subkey = recovery_key;
+		/* TODO: Other functions should not use the global workbuf
+		   directly and should accept vb2_workbuf as an argument. */
+		ctx->workbuf_used = vb2_offset_of(ctx->workbuf, wb.buf);
 	} else {
 		/* Use the kernel subkey passed from firmware verification */
 		kernel_subkey = (struct vb2_packed_key *)&shared->kernel_subkey;
@@ -655,8 +661,6 @@ load_kernel_exit:
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
 		   VBERROR_SUCCESS != retval ?
 		   recovery : VB2_RECOVERY_NOT_REQUESTED);
-
-	free(recovery_key);
 
 	shcall->return_code = (uint8_t)retval;
 	return retval;
