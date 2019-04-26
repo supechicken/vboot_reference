@@ -23,10 +23,12 @@ struct VbPublicKey;
  * @param ctx		Vboot context
  * @param keyp		Returns a pointer to the key. The caller must call
  *			free() on the key when finished with it.
- * @return VBERROR_... error, VBERROR_SUCCESS on success,
+ * @param wb            Workbuf in which to store data
+ * @return VB2_SUCCESS, or error code on error.
  */
-VbError_t VbGbbReadRootKey(struct vb2_context *ctx,
-			   struct VbPublicKey **keyp);
+int vb2api_gbb_read_root_key(struct vb2_context *ctx,
+			     struct VbPublicKey **keyp,
+			     struct vb2_workbuf *wb, int save_on_wb);
 
 /**
  * Read the recovery key from the GBB
@@ -34,22 +36,24 @@ VbError_t VbGbbReadRootKey(struct vb2_context *ctx,
  * @param ctx		Vboot context
  * @param keyp		Returns a pointer to the key. The caller must call
  *			free() on the key when finished with it.
- * @return VBERROR_... error, VBERROR_SUCCESS on success,
+ * @param wb            Workbuf in which to store data
+ * @return VB2_SUCCESS, or error code on error.
  */
-VbError_t VbGbbReadRecoveryKey(struct vb2_context *ctx,
-			       struct VbPublicKey **keyp);
+int vb2api_gbb_read_recovery_key(struct vb2_context *ctx,
+				 struct VbPublicKey **keyp,
+				 struct vb2_workbuf *wb, int save_on_wb);
 
 /**
  * Read the hardware ID from the GBB
  *
  * @param ctx		Vboot context
- * @param hwid		Place to put HWID, which will be null-terminated
- * @param max_size	Maximum size of HWID including terminated null
- *			character (suggest 256). If this size is too small
- *			then VBERROR_INVALID_PARAMETER is returned.
- * @return VBERROR_... error, VBERROR_SUCCESS on success,
+ * @param hwid		Returns a pointer to the HWID string,
+ * 			which will be null-terminated
+ * @param wb            Workbuf in which to store data
+ * @return VB2_SUCCESS, or error code on error.
  */
-VbError_t VbGbbReadHWID(struct vb2_context *ctx, char *hwid, uint32_t max_size);
+int vb2api_gbb_read_hwid(struct vb2_context *ctx, char **hwid,
+			 struct vb2_workbuf *wb, int save_on_wb);
 
 #ifdef __cplusplus
 }

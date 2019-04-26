@@ -261,6 +261,7 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	vb2_nv_init(ctx);
 
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	sd->recovery_reason = shared->recovery_reason;
 
 	/*
@@ -294,11 +295,6 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	kparams->flags = 0;
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
-	/* Point to GBB data from cparams */
-	sd->gbb = cparams->gbb_data;
-	sd->gbb_size = cparams->gbb_size;
-	sd->gbb_flags = sd->gbb->flags;
-
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
 	if (RollbackKernelRead(&shared->kernel_version_tpm)) {
 		VB2_DEBUG("Unable to get kernel versions from TPM\n");
@@ -311,7 +307,7 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	shared->kernel_version_tpm_start = shared->kernel_version_tpm;
 
 	/* Read FWMP.  Ignore errors in recovery mode. */
-	if (sd->gbb_flags & VB2_GBB_FLAG_DISABLE_FWMP) {
+	if (gbb->flags & VB2_GBB_FLAG_DISABLE_FWMP) {
 		memset(&fwmp, 0, sizeof(fwmp));
 	} else if (RollbackFwmpRead(&fwmp)) {
 		VB2_DEBUG("Unable to get FWMP from TPM\n");
@@ -468,11 +464,15 @@ VbError_t VbVerifyMemoryBootImage(
 	uint32_t allow_fastboot_full_cap = 0;
 	struct vb2_workbuf wb;
 
+	/* Allocate work buffer */
+	vb2_workbuf_from_ctx(ctx, &wb);
+
 	VbError_t retval = vb2_kernel_setup(ctx, cparams, kparams);
 	if (retval)
 		goto fail;
 
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	VbSharedDataHeader *shared = sd->vbsd;
 
 	if ((boot_image == NULL) || (image_size == 0)) {
@@ -495,7 +495,7 @@ VbError_t VbVerifyMemoryBootImage(
 			vb2_nv_get(ctx, VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP);
 
 	if (0 == allow_fastboot_full_cap) {
-		allow_fastboot_full_cap = !!(sd->gbb_flags &
+		allow_fastboot_full_cap = !!(gbb->flags &
 				VB2_GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP);
 	}
 
@@ -504,7 +504,8 @@ VbError_t VbVerifyMemoryBootImage(
 		hash_only = 1;
 	} else {
 		/* Get recovery key. */
-		retval = VbGbbReadRecoveryKey(ctx, &kernel_subkey);
+		retval = vb2api_gbb_read_recovery_key(ctx, &kernel_subkey, &wb,
+						      1);
 		if (VBERROR_SUCCESS != retval) {
 			VB2_DEBUG("Gbb Read Recovery key failed.\n");
 			goto fail;
@@ -513,9 +514,6 @@ VbError_t VbVerifyMemoryBootImage(
 
 	/* If we fail at any step, retval returned would be invalid kernel. */
 	retval = VBERROR_INVALID_KERNEL_FOUND;
-
-	/* Allocate work buffer */
-	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Verify the key block. */
 	key_block = (VbKeyBlockHeader *)kbuf;
@@ -605,8 +603,6 @@ VbError_t VbVerifyMemoryBootImage(
 
  fail:
 	vb2_kernel_cleanup(ctx, cparams);
-	if (NULL != kernel_subkey)
-		free(kernel_subkey);
 	return retval;
 }
 
