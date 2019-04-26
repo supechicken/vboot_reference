@@ -95,6 +95,7 @@ test_case_t test[] = {
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
 static struct vb2_shared_data *sd;
+static struct vb2_gbb_header gbb;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader* shared = (VbSharedDataHeader*)shared_data;
 static int current_time;
@@ -121,6 +122,9 @@ static void ResetMocks(void)
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+
+	memset(&gbb, 0, sizeof(gbb));
+	sd->gbb_offset = vb2_offset_of(sd, &gbb);
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -271,7 +275,7 @@ static void VbBootDeveloperSoundTest(void)
 	for (i=0; i<num_tests; i++) {
 		VB2_DEBUG("STARTING %s ...\n", test[i].name);
 		ResetMocks();
-		sd->gbb_flags = test[i].gbb_flags;
+		gbb.flags = test[i].gbb_flags;
 		beep_return = test[i].beep_return;
 		kbd_fire_key = test[i].keypress_key;
 		kbd_fire_at = test[i].keypress_at_count;
