@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "842e50d1_605c6aec",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1280774
+      },
+      "writtenOn": "2019-04-26T07:13:56Z",
+      "side": 0,
+      "message": "Emerge depthcharge failed.\nsrc/vboot/callbacks/switches.c:31:22 \nKVB_SWITCH_FLAG_REC_BUTTON_PRESSED undeclared.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "266ec6ba6c86be22a998265a610da0513c0bb2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
