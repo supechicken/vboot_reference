@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9686d09_1a656337",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2019-04-26T15:27:31Z",
+      "side": 1,
+      "message": "Probably worth noting that the used data is before *buf, not after it.  That is, buf points to the first unused byte in the buffer, and should always be aligned, and there are used bytes before it and size bytes after it.",
+      "range": {
+        "startLine": 64,
+        "startChar": 59,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "274bea5108fec2e949f75db43e6b04ba46a056f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
