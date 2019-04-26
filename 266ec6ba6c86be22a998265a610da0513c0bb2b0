@@ -22,6 +22,30 @@
       "revId": "266ec6ba6c86be22a998265a610da0513c0bb2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95f6550_42f096f1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-26T17:30:35Z",
+      "side": 0,
+      "message": "\u003e Emerge depthcharge failed.\n\nYou\u0027d have to also pull in this change cited as a Cq-Depend in the commit comment:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/1580454/",
+      "parentUuid": "842e50d1_605c6aec",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "266ec6ba6c86be22a998265a610da0513c0bb2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
