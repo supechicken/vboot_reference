@@ -30,7 +30,6 @@
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
 static struct vb2_context ctx_nvram_backend;
-static VbCommonParams cparams;
 static VbSelectAndLoadKernelParams kparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
@@ -53,12 +52,6 @@ static int hash_only_check;
  */
 static void ResetMocks(void)
 {
-	memset(&cparams, 0, sizeof(cparams));
-	cparams.shared_data_size = sizeof(shared_data);
-	cparams.shared_data_blob = shared_data;
-	cparams.gbb_data = gbb_buf;
-	cparams.gbb_size = sizeof(gbb_buf);
-
 	memset(&kparams, 0, sizeof(kparams));
 
 	memset(gbb_buf, 0, sizeof(gbb_buf));
@@ -200,7 +193,7 @@ static void VerifyMemoryBootImageTest(void)
 	kernel_body_size = sizeof(kernel_buffer) - kernel_body_offset;
 	kernel_body_start = (uintptr_t)kernel_buffer + kernel_body_offset;
 
-	u = VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	u = VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 				    kernel_buffer_size);
 	TEST_EQ(u, 0, "Image good");
 	TEST_EQ(kparams.partition_number, 0, "  part num");
@@ -213,20 +206,20 @@ static void VerifyMemoryBootImageTest(void)
 
 	/* Empty image buffer. */
 	ResetMocks();
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, NULL,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, NULL,
 					kernel_buffer_size),
 		VBERROR_INVALID_PARAMETER, "Empty image");
 
 	/* Illegal image size. */
 	ResetMocks();
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					0),
 		VBERROR_INVALID_PARAMETER, "Illegal image size");
 
 	/* Key Block Verification Failure */
 	ResetMocks();
 	key_block_verify_fail = 1;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 0, "  hash check");
@@ -236,7 +229,7 @@ static void VerifyMemoryBootImageTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	gbb->flags = GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP;
 	key_block_verify_fail = 1;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 1, "  hash check");
@@ -246,7 +239,7 @@ static void VerifyMemoryBootImageTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	key_block_verify_fail = 1;
 	vb2_nv_set(&ctx_nvram_backend, VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP, 1);
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 1, "  hash check -- VBNV flag");
@@ -257,7 +250,7 @@ static void VerifyMemoryBootImageTest(void)
 		KEY_BLOCK_FLAG_RECOVERY_1;
 	copy_kbh();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND,
 		"Developer flag mismatch - dev switch on");
@@ -269,7 +262,7 @@ static void VerifyMemoryBootImageTest(void)
 	copy_kbh();
 	gbb->flags = GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP;
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_SUCCESS,
 		"Developer flag mismatch - dev switch on(gbb override)");
@@ -280,8 +273,8 @@ static void VerifyMemoryBootImageTest(void)
 		KEY_BLOCK_FLAG_RECOVERY_0;
 	copy_kbh();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	gbb->flags = GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	gbb->flags = VB2_GBB_FLAG_FORCE_DEV_BOOT_FASTBOOT_FULL_CAP;
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_SUCCESS,
 		"Recovery flag mismatch - dev switch on(gbb override)");
@@ -291,7 +284,7 @@ static void VerifyMemoryBootImageTest(void)
 	kbh.key_block_flags = KEY_BLOCK_FLAG_DEVELOPER_1 |
 		KEY_BLOCK_FLAG_RECOVERY_1;
 	copy_kbh();
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND,
 		"Developer flag mismatch - dev switch off");
@@ -302,21 +295,21 @@ static void VerifyMemoryBootImageTest(void)
 		KEY_BLOCK_FLAG_RECOVERY_0;
 	shared->flags = 0;
 	copy_kbh();
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Recovery flag mismatch");
 
 	/* Preamble verification */
 	ResetMocks();
 	preamble_verify_fail = 1;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Preamble verification");
 
 	/* Data verification */
 	ResetMocks();
 	verify_data_fail = 1;
-	TEST_EQ(VbVerifyMemoryBootImage(&ctx, &cparams, &kparams, kernel_buffer,
+	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
 		VBERROR_INVALID_KERNEL_FOUND, "Data verification");
 }
