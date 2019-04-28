@@ -503,6 +503,9 @@ enum vb2_return_code {
 	/* Bad magic number in vb2_shared_data structure */
 	VB2_ERROR_SHARED_DATA_MAGIC,
 
+	/* Work buffer too small for data key in vb2_load_kernel_keyblock() */
+	VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF_DATA_KEY,
+
 	/**********************************************************************
 	 * API-level errors
 	 */
