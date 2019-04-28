@@ -214,18 +214,21 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	/*
 	 * Keep just the data key from the vblock.  This follows the kernel key
 	 * (which we might still need to verify the next kernel, if the
-	 * assoiciated kernel preamble and data don't verify).
+	 * associated kernel preamble and data don't verify).
 	 */
-	sd->workbuf_data_key_offset = ctx->workbuf_used;
-	key_data = ctx->workbuf + sd->workbuf_data_key_offset;
-	packed_key = (struct vb2_packed_key *)key_data;
+	packed_key = vb2_workbuf_realloc(&wb, block_size, sizeof(*packed_key));
+	if (!packed_key)
+		return VB2_ERROR_KERNEL_KEYBLOCK_DATA_KEY;
 	memmove(packed_key, &kb->data_key, sizeof(*packed_key));
-	packed_key->key_offset = sizeof(*packed_key);
-	memmove(key_data + packed_key->key_offset,
+	key_data = vb2_workbuf_alloc(&wb, packed_key->key_size);
+	if (!key_data)
+		return VB2_ERROR_KERNEL_KEYBLOCK_DATA_KEY;
+	memmove(key_data,
 		(uint8_t*)&kb->data_key + kb->data_key.key_offset,
 		packed_key->key_size);
 
-	/* Save the packed key size */
+	packed_key->key_offset = vb2_offset_of(packed_key, key_data);
+	sd->workbuf_data_key_offset = vb2_offset_of(ctx->workbuf, packed_key);
 	sd->workbuf_data_key_size =
 		packed_key->key_offset + packed_key->key_size;
 
@@ -237,8 +240,7 @@ int vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	 *   - kernel key
 	 *   - packed kernel data key
 	 */
-	vb2_set_workbuf_used(ctx, sd->workbuf_data_key_offset +
-			     sd->workbuf_data_key_size);
+	vb2_workbuf_to_ctx(ctx, &wb);
 
 	return VB2_SUCCESS;
 }
@@ -445,7 +447,7 @@ int vb2_load_kernel_preamble(struct vb2_context *ctx)
 	 * TODO: we could move the preamble down over the kernel data key
 	 * since we don't need it anymore.
 	 */
-	vb2_set_workbuf_used(ctx, sd->workbuf_preamble_offset + pre_size);
+	vb2_workbuf_to_ctx(ctx, &wb);
 
 	return VB2_SUCCESS;
 }
