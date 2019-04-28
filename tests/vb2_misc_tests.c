@@ -148,12 +148,19 @@ static void misc_tests(void)
 	struct vb2_workbuf wb;
 
 	reset_common_data();
-	cc.workbuf_used = 16;
+	cc.workbuf_used = VB2_WORKBUF_ALIGN;
 
 	vb2_workbuf_from_ctx(&cc, &wb);
+	TEST_PTR_EQ(wb.buf, workbuf + VB2_WORKBUF_ALIGN,
+		    "vb_workbuf_from_ctx() buf");
+	TEST_EQ(wb.size, cc.workbuf_size - VB2_WORKBUF_ALIGN,
+		"vb_workbuf_from_ctx() size");
 
-	TEST_PTR_EQ(wb.buf, workbuf + 16, "vb_workbuf_from_ctx() buf");
-	TEST_EQ(wb.size, cc.workbuf_size - 16, "vb_workbuf_from_ctx() size");
+	vb2_workbuf_alloc(&wb, VB2_WORKBUF_ALIGN / 2);
+	vb2_workbuf_to_ctx(&cc, &wb);
+	/* When saving back to context workbuf, workbuf_used aligns upwards. */
+	TEST_EQ(cc.workbuf_used, VB2_WORKBUF_ALIGN * 2,
+		"vb_workbuf_to_ctx() used");
 }
 
 static void gbb_tests(void)

@@ -42,6 +42,17 @@ int vb2_validate_gbb_signature(uint8_t *sig);
 void vb2_workbuf_from_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb);
 
 /**
+ * Extend the context work buffer to permanently include a local work buffer.
+ *
+ * This sets the context work buffer to include the used portion of a work
+ * buffer initialized with vb2_workbuf_from_ctx.
+ *
+ * @param ctx		Vboot context
+ * @param wb		Work buffer to save in context workbuf
+ */
+void vb2_workbuf_to_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb);
+
+/**
  * Set the amount of work buffer used in the vboot context.
  *
  * This will round up to VB2_WORKBUF_ALIGN, so that the next allocation will
