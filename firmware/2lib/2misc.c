@@ -31,6 +31,11 @@ void vb2_workbuf_from_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb)
 			 ctx->workbuf_size - ctx->workbuf_used);
 }
 
+void vb2_workbuf_to_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb)
+{
+	vb2_set_workbuf_used(ctx, vb2_offset_of(ctx->workbuf, wb->buf));
+}
+
 void vb2_set_workbuf_used(struct vb2_context *ctx, uint32_t used)
 {
 	ctx->workbuf_used = vb2_wb_round_up(used);
