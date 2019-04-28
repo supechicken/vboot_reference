@@ -506,6 +506,9 @@ enum vb2_return_code {
 	/* Some part of GBB data is invalid */
 	VB2_ERROR_GBB_INVALID,
 
+	/* Work buffer too small for data key in vb2_load_kernel_keyblock() */
+	VB2_ERROR_KERNEL_KEYBLOCK_WORKBUF_DATA_KEY,
+
 	/**********************************************************************
 	 * API-level errors
 	 */
