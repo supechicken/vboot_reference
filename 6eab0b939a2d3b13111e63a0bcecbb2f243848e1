@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af9e4c5_d9b4c83e",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-04-29T10:53:55Z",
+      "side": 1,
+      "message": "Just a note that I think this naming is a big confusing. Here \u0027ctx\u0027 doesn not relate to the \u0027ctx\u0027 parameter, but the work buffer within ctx.\n\nI am really struggling to come up with something better though.\n\nMaybe:\n\nvb2_setup_workbuf_from_unused()\nvb2_add_workbuf()",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "6eab0b939a2d3b13111e63a0bcecbb2f243848e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31539aa5_125d7311",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-04-29T10:53:55Z",
+      "side": 1,
+      "message": "Part of this CL is changing 16 to VB2_WORKBUF_ALIGN, right? To me, that should be a separate CL.",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 53
+      },
+      "revId": "6eab0b939a2d3b13111e63a0bcecbb2f243848e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
