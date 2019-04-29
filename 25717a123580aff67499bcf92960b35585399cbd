@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d290aeb_aa4c8c07",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-04-29T11:10:02Z",
+      "side": 1,
+      "message": "How come we get into this state? It looks like it is set up above.",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 72
+      },
+      "revId": "25717a123580aff67499bcf92960b35585399cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
