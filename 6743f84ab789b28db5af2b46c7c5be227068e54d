@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a35d133_d833928a",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-04-29T10:58:39Z",
+      "side": 1,
+      "message": "I feel we should avoid splitting comments like this. Either they should fit on one line next to the code they refer to, or they should go on the line before (where they can spill over into multiple lines if needed.",
+      "range": {
+        "startLine": 254,
+        "startChar": 27,
+        "endLine": 254,
+        "endChar": 58
+      },
+      "revId": "6743f84ab789b28db5af2b46c7c5be227068e54d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
