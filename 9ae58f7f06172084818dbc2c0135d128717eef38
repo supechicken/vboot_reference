@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b48c9b49_93258163",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-29T21:21:59Z",
+      "side": 1,
+      "message": "Yes, but I think if we wanna change it we should use your new function everywhere, not have two different ways to do it.",
+      "parentUuid": "e0b3bbb2_f5c26d2d",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e4c8da8_d1b44538",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 3
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "1b17da3d_3c572485",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-29T21:21:59Z",
+      "side": 1,
+      "message": "Oh, okay, I misunderstood how these sizes work a bit. I think it just shows how much space is allocated for that key in the GBB. This makes some amount of sense because keys may get replaced with others of different size by the signers (although I guess we could also just create a whole new GBB for that...).\n\nIn that case I agree that we should read the real size, but then we should make sure we also only load that from the flash, not the whole buffer (this is what the old code did but you\u0027re changing it with the vb2_load_gbb_data() above). So you want something like this:\n\n if (size \u003c sizeof(vb2_packed_key))\n   return some_error_and_maybe_print_something_idk;\n *keyp \u003d vb2_workbuf_alloc(\u0026wb, size);\n ...insert various error handling where needed...\n vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp,\n                     sizeof(vb2_packed_key));\n if (*keyp-\u003ekey_size \u003e size)\n   return other_error;\n vb2ex_read_resource(ctx, VB2_RES_GBB, offset + sizeof(vb2_packed_key),\n                     ((u8)*keyp) + sizeof(vb2_packed_key),\n                     *keyp-\u003ekey_size - sizeof(vb2_packed_key));",
+      "parentUuid": "f8c4a549_0b6c510d",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b9c1f1_da65ccda",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 3
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "This does raise a question -- if we are guaranteed to have DRAM up by the time we get to kernel verification stage, why do we even need a (larger) workbuf?  Can\u0027t we just use malloc/free?",
       "parentUuid": "e2b9c1f1_da65ccda",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b328fa31_c9a26258",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-29T21:21:59Z",
+      "side": 1,
+      "message": "I think some functions are shared between firmware and kernel verification, so those obviously use the workbuf, and if kernel verification wants to call them it also needs to provide a workbuf that can still grow a bit. It probably doesn\u0027t need a whole megabyte. For anything that\u0027s kernel-verification-only, yes, just using malloc() should be fine.\n\nActually, reading all this (and the problems of loading too much from flash), I think it would be nice to write it in a way that could also be used by firmware verification. vb2_load_fw_keyblock() currently loads the whole rootkey_size from the GBB, but if we write a better function for that here, we should also be using it there. (These functions should probably all go into lib20/misc.c or lib20/packed_key.c then, this file is an old vboot1 file that should eventually get removed anyway.)",
+      "parentUuid": "c2034a3c_d928181b",
       "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
