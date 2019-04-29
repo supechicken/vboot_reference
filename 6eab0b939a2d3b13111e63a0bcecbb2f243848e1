@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4523d5a_a9fcb4b9",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-29T20:53:00Z",
+      "side": 1,
+      "message": "I agree the naming is a bit difficult, although at least it is symmetric with vb2_workbuf_from_ctx(). I don\u0027t really think your suggestions make it better, though. ;)\n\nHow about just changing vb2_set_workbuf_used() to do this instead? I don\u0027t really think we should have both anyway... if we want to add this new function to make workbuf handling more abstract, I think the existing use cases of vb2_set_workbuf_used() should be changed to use that as well (because they\u0027re not really doing anything fundamentally different, although they may need minor rewrites to fit the new function in some cases).",
+      "parentUuid": "7af9e4c5_d9b4c83e",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "6eab0b939a2d3b13111e63a0bcecbb2f243848e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31539aa5_125d7311",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 2
