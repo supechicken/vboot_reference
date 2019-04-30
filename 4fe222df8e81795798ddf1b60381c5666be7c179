@@ -25,6 +25,54 @@
     },
     {
       "key": {
+        "uuid": "6d925d77_8f6d50ac",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d43b1721_b4c92a69",
+      "range": {
+        "startLine": 155,
+        "startChar": 16,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d819919d_fe49872a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d43b1721_b4c92a69",
+      "range": {
+        "startLine": 155,
+        "startChar": 16,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "684a088f_aacffe64",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -36,6 +84,24 @@
       "writtenOn": "2019-04-25T22:18:46Z",
       "side": 1,
       "message": "It also seems weird that you check btn here... I guess it works, but it would lead to weird edge cases if the two buttons are not the same and someone held down the recovery button and then tapped the power button (not a very likely scenario, I guess, but might happen if the recovery line is constantly asserted via a Servo misconfiguration, for example). I think that\u0027s another good reason to try to encapsulate this completely within VbWantShutdown (see below).",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5928da36_b9970d7e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "There are a lot of weird edge cases, though the screen itself is uncommon.  Some of the corner cases would be easier to address if the code knew whether the buttons were the same or different.  I\u0027ve err\u0027ed in the direction of assuming they\u0027re the same and/or favoring confirm over shutdown in the case of ambiguity.",
+      "parentUuid": "684a088f_aacffe64",
       "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "b7aa2ea7_a8dc99ba",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c8eaa94_07f25d8e",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3beee150_a8459f54",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -70,6 +154,24 @@
       "writtenOn": "2019-04-25T22:18:46Z",
       "side": 1,
       "message": "Could we make this look cleaner if we rewrote VbWantShutdown() to just generally only return the power button shutdown on release? Maybe incorporate it into the existing \"make sure it gets released at least once\" mechanism?",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afc4cea_d536d556",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure if generally changing to require a power button release is a good idea.  The ACPI hard power off behavior has trained a lot of people to hold down a power button until the EC/firmware eventually forces a power-off, so this might go against that (granted, eventually the person will likely get tired of holding down the power button and release it).  I was trying to localize the characteristic of holding-down-power-does-nothing to this uncommon screen.",
+      "parentUuid": "3beee150_a8459f54",
       "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -90,6 +192,24 @@
       "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30e6abb_8c533a07",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-04-30T22:42:04Z",
+      "side": 1,
+      "message": "I\u0027ve drafted up a change that tries to tests all the permutations of the orders in which the power and/or presence buttons can be pressed.  It\u0027s probably overkill, and might just end up being a \"change detection\" test for how the various corner cases are handled in the implementation.",
+      "parentUuid": "2232fbdd_63c0f10a",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
