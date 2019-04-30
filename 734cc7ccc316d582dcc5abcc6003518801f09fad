@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76f95a4_d1bba01a",
+        "filename": "firmware/lib20/kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-30T21:58:07Z",
+      "side": 1,
+      "message": "Since this is kernel.c, we could also consider just changing everything to malloc()?",
+      "revId": "734cc7ccc316d582dcc5abcc6003518801f09fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
