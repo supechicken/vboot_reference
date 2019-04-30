@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "7077bf1b_a48c7d76",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-04-30T23:36:27Z",
+      "side": 1,
+      "message": "I mean... I think the consistency and reduced complexity in this code would be worth it. I don\u0027t really think people holding down the button would be a big problem. Even if someone does that, they\u0027ll still end up at the desired result after 8 seconds.",
+      "parentUuid": "6afc4cea_d536d556",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2232fbdd_63c0f10a",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 2
