@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "74e7fb95_b653c48f",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-30T09:31:00Z",
+      "side": 1,
+      "message": "OK, good point.  We probably want to standardize on using this \"save the local workbuf permanently on the global workbuf\" workflow.\n\nProbably you\u0027re right, we should not have *both* vb2_set_workbuf_used and whatever_we_decide_to_call_this_function.  Any \"low-level\" stuff (e.g. setting up the context initially) can just modify workbuf_used directly.\n\nSome naming options:\n\n  vb2_workbuf_to_ctx\n  vb2_extend_ctx_workbuf\n  vb2_set_workbuf_used\n  vb2_preserve_local_workbuf",
+      "parentUuid": "a4523d5a_a9fcb4b9",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "6eab0b939a2d3b13111e63a0bcecbb2f243848e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31539aa5_125d7311",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2019-04-29T10:53:55Z",
       "side": 1,
       "message": "Part of this CL is changing 16 to VB2_WORKBUF_ALIGN, right? To me, that should be a separate CL.",
+      "range": {
+        "startLine": 156,
+        "startChar": 36,
+        "endLine": 156,
+        "endChar": 53
+      },
+      "revId": "6eab0b939a2d3b13111e63a0bcecbb2f243848e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3e4d51e_0ae837c2",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-04-30T09:31:00Z",
+      "side": 1,
+      "message": "Sure, I can do that.",
+      "parentUuid": "31539aa5_125d7311",
       "range": {
         "startLine": 156,
         "startChar": 36,
