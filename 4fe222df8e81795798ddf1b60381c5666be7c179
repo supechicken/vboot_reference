@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "e7625242_309a478d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-02T18:04:24Z",
+      "side": 1,
+      "message": "I looked into having VbWantShutdown() only report shutdown after the power button is released.  Afaict it doesn\u0027t help with simplifying this function, at least not without adding a race: if the power button is pressed and the user happens to lift up on the power button at the point that\u0027s after VbExGetSwitches() is called but before VbWantShutdown() is called then VbWantShutdown() will be the first to react and trigger a shutdown.  The btn/shutdown_requested variables are what helps to compensate for the power button getting sampled twice per loop.  Changing VbWantShutdown() helps to narrow the window of time where the variables serves a useful purpose, but I\u0027m short in ideas on how to get rid of them entirely.",
+      "parentUuid": "7077bf1b_a48c7d76",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2232fbdd_63c0f10a",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 2
