@@ -232,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "4f82c707_ba090a5c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-03T23:41:37Z",
+      "side": 1,
+      "message": "I have it a try (uploaded a patch as reference).  This function gets simpler but overall things get more complicated and so far I\u0027m not fond of how things are trending.\n\nThe most unattractive part is that deferring shutdown to button release now makes VbWantShutdown() more stateful, which is usually reset by functions calling vb2_init_ui() but VbUserConfirms() doesn\u0027t call vb2_init_ui() (nor can it in the typical cases). \nSo, when running the unit tests for VbUserConfirms() I have to hack in a way to reset the state, e.g., add another flag to cause a reset (or export a way for the test code to call vb2_init_ui()).",
+      "parentUuid": "7c624c7d_d02291b0",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2232fbdd_63c0f10a",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 2
