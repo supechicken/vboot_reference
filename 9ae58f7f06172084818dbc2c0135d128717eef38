@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "296e1917_dcc101d6",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-03T11:10:33Z",
+      "side": 1,
+      "message": "Actually, one difficulty this causes is that it makes testing somewhat inconvenient for when we want to keep the GBB data outside of the workbuf (which is the case for many tests currently).  On a 64-bit system, the test may fail, since gbb_offset is not large enough to store the offset of the GBB header data structure.\n\nSome workarounds would involve:\n- Moving GBB data into the workbuf for all tests involved [which is a bit of a pain, requires rewriting somewhat large portions of the tests that involve GBB]\n- Un-inlining vb2_get_gbb and overriding the function in tests",
+      "parentUuid": "489cb682_667ed9c6",
+      "revId": "9ae58f7f06172084818dbc2c0135d128717eef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e96c0343_47d897c3",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 3
