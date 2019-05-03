@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "7c624c7d_d02291b0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-03T00:17:40Z",
+      "side": 1,
+      "message": "How about\n\n do {\n   key \u003d VbExKeyboardReadWithFlags(\u0026key_flags);\n   shutdown_requested \u003d VbWantShutdown(ctx, key);\n\n   switch (key) {\n     ...\n   default:\n     \u003cif physical presence released and was previously asserted, return 1\u003e\n   }\n   VbExSleepMs(CONFIRM_KEY_DELAY);\n } while (!shutdown_requested);\n\n return -1;",
+      "parentUuid": "e7625242_309a478d",
+      "revId": "4fe222df8e81795798ddf1b60381c5666be7c179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2232fbdd_63c0f10a",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 2
