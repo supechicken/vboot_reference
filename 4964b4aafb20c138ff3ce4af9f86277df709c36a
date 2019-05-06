@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "440e51e2_678a30b4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "How about modeling this in a single enum variable with three states: POWER_BUTTON_HELD_SINCE_BOOT (initial value), POWER_BUTTON_PRESSED, POWER_BUTTON_RELEASED.",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e2317b_bdc487b1",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "Then all this would be\n\n if (shutdown_request \u0026 VB_SHUTDOWN...) {\n   shutdown_request \u0026\u003d ~VB_SHUTDOWN...;\n   if (power_button_state \u003d\u003d POWER_BUTTON_RELEASED)\n     power_button_state \u003d POWER_BUTTON_PRESSED;\n } else {\n   if (power_button_state \u003d\u003d POWER_BUTTON_HELD_SINCE_BOOT)\n     shutdown_request \u0026\u003d ~VB_SHUTDOWN...; // first release, so don\u0027t shut down here\n   power_button_state \u003d POWER_BUTTON_RELEASED;\n }",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a60b5e12_1abcfc91",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "Yeah, this is terrible. Just make vb2_init_ui() non-static so the test\u0027s ResetMock() can call it directly.",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f5e998_6262e447",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "This can be cleaned up as well now, right? (Can be a later CL too... but we should count it when looking at which option is cleaner.)",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc2f7f1_8bc296e9",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "I think this is missing gpio[0].count? Maybe factor this out into a MockGpioAfter(ticks, gpio_type) helper?",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ce1f16_17195a8c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "nit: Should be 100 or ~0 or something",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd29d08_2e4670b9",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:05:59Z",
+      "side": 1,
+      "message": "Not sure if 3, 4 and 5 are worth testing, because in practice it shouldn\u0027t be possible for a user to time it such that they stop pressing a button at the exact moment where they begin pressing another, and if they do I\u0027d be okay with either result. (We should test for the policy we care about, not for how our current implementation behaves in every possible case.)",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
