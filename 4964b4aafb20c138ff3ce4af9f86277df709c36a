@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "6e9095b8_3b7c909f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-06T23:09:32Z",
+      "side": 1,
+      "message": "edit: Should\u0027ve re-read this before sending comments. Should be\n\n if (shutdown_request \u0026 VB_SHUTDOWN...) {\n   shutdown_request \u0026\u003d ~VB_SHUTDOWN...;\n   if (power_button_state \u003d\u003d POWER_BUTTON_RELEASED)\n     power_button_state \u003d POWER_BUTTON_PRESSED;\n } else {\n   if (power_button_state \u003d\u003d POWER_BUTTON_PRESSED)\n     shutdown_request |\u003d VB_SHUTDOWN...; // trigger shutdown now, after press and then release\n   power_button_state \u003d POWER_BUTTON_RELEASED;\n }",
+      "parentUuid": "05e2317b_bdc487b1",
+      "revId": "4964b4aafb20c138ff3ce4af9f86277df709c36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a60b5e12_1abcfc91",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 4
