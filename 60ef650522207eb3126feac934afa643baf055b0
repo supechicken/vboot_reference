@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c103fd82_6e1bf708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-05-07T10:07:21Z",
+      "side": 1,
+      "message": "It would be essentially a compile-time conditional, but I think we\u0027d be better off formulating it completely instead of adding a weird special case (\"2.0 isn\u0027t possible\"?)\n\nif (sd-\u003estruct_version_major !\u003d VB2_SHARED_DATA_VERSION_MAJOR ||\n    (int16_t)sd-\u003estruct_version_minor \u003c VB2_SHARED_DATA_VERSION_MINOR)\n        return VB2_ERROR_SHARED_DATA_VERSION;\n\nwould help as well, with the downside of misbehaving if the minor field ever exceeds 32767. Sadly gcc is too smart to be fooled by casts to larger signed types.",
+      "revId": "60ef650522207eb3126feac934afa643baf055b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
