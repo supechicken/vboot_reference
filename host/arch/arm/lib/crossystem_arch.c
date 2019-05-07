@@ -617,8 +617,3 @@ int VbSetArchPropertyString(const char* name, const char* value)
 	/* All is handled in arch independent fashion */
 	return -1;
 }
-
-int VbArchInit(void)
-{
-	return 0;
-}
