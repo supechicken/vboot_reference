@@ -77,7 +77,7 @@ enum vb2_shared_data_status {
 
 /* Current version of vb2_shared_data struct */
 #define VB2_SHARED_DATA_VERSION_MAJOR 1
-#define VB2_SHARED_DATA_VERSION_MINOR 0
+#define VB2_SHARED_DATA_VERSION_MINOR 1  /* Must always be > 0 */
 
 /*
  * Data shared between vboot API calls.  Stored at the start of the work

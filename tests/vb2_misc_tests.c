@@ -111,12 +111,10 @@ static void init_context_tests(void)
 	sd->struct_version_minor = VB2_SHARED_DATA_VERSION_MINOR;
 
 	/* Error if re-init with lower minor version */
-	if (VB2_SHARED_DATA_VERSION_MINOR > 0) {
-		sd->struct_version_minor--;
-		TEST_EQ(vb2_init_context(&c), VB2_ERROR_SHARED_DATA_VERSION,
-			"Allowed lower minor version");
-		sd->struct_version_minor = VB2_SHARED_DATA_VERSION_MINOR;
-	}
+	sd->struct_version_minor--;
+	TEST_EQ(vb2_init_context(&c), VB2_ERROR_SHARED_DATA_VERSION,
+		"Allowed lower minor version");
+	sd->struct_version_minor = VB2_SHARED_DATA_VERSION_MINOR;
 
 	/* Error if re-init with higher major version */
 	sd->struct_version_major++;
