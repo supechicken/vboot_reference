@@ -139,7 +139,9 @@ DEBUG_FLAGS := $(if ${DEBUG},-g -O0,-Os)
 WERROR := -Werror
 COMMON_FLAGS := -nostdinc -pipe \
 	-ffreestanding -fno-builtin -fno-stack-protector \
-	${WERROR} -Wall -Wstrict-prototypes ${DEBUG_FLAGS}
+	${WERROR} -Wall -Wstrict-prototypes -Wtype-limits -Wundef \
+	-Wmissing-prototypes -Wwrite-strings -Wredundant-decls -Wno-trigraphs \
+	-Wstrict-aliasing -Wshadow -Wdate-time ${DEBUG_FLAGS}
 
 # Note: FIRMWARE_ARCH is defined by the Chromium OS ebuild.
 ifeq (${FIRMWARE_ARCH}, arm)
