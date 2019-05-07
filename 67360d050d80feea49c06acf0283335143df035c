@@ -102,6 +102,30 @@
       "revId": "67360d050d80feea49c06acf0283335143df035c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86b1096_630345e3",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-07T21:38:01Z",
+      "side": 1,
+      "message": "While we\u0027re nitpicking strings, I\u0027d just call it AUX FW, not EC AUX FW (the mechanism isn\u0027t necessarily restricted to only EC-attached peripherals, even though that\u0027s how we\u0027re using it for now).",
+      "parentUuid": "90961389_7058c5cd",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "67360d050d80feea49c06acf0283335143df035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
