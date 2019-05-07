@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "5cde1811_41e9934d",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-07T08:01:19Z",
+      "side": 1,
+      "message": "Perhaps it would be more accurate to call this something like ec_name.",
+      "range": {
+        "startLine": 56,
+        "startChar": 18,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "67360d050d80feea49c06acf0283335143df035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2bb2b35_8151d2bd",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
@@ -30,6 +53,52 @@
       "writtenOn": "2019-05-07T00:54:08Z",
       "side": 1,
       "message": "It would be good to also run\n\n if (!ec_sync_check_aux_fw(ctx, \u0026fw_update) \u0026\u0026\n     fw_update \u003d\u003d VB_AUX_FW_SLOW_UPDATE)\n         check_reboot_for_oprom(ctx, shared);\n\nhere speculatively, so that we can avoid the double-reboot if the old EC-RW already supports the chipinfo probing command.",
+      "revId": "67360d050d80feea49c06acf0283335143df035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce5064c5_bf8455b6",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-07T08:01:19Z",
+      "side": 1,
+      "message": "Remove brackets.",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 62
+      },
+      "revId": "67360d050d80feea49c06acf0283335143df035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90961389_7058c5cd",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-07T08:01:19Z",
+      "side": 1,
+      "message": "Should be consistent with the other message?  I.e. \"FW\" on both or neither strings",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 46
+      },
       "revId": "67360d050d80feea49c06acf0283335143df035c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
