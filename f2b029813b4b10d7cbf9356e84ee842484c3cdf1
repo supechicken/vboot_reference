@@ -22,6 +22,30 @@
       "revId": "f2b029813b4b10d7cbf9356e84ee842484c3cdf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "651bc68f_d3970077",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-08T04:04:45Z",
+      "side": 1,
+      "message": "I... am not sure actually. Existing usage in coreboot is either per function or per file. Regardless of what\u0027s possible, I think I would prefer this approach so that this doesn\u0027t impact readability even further.",
+      "parentUuid": "2dabebb7_d7aac318",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "f2b029813b4b10d7cbf9356e84ee842484c3cdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
