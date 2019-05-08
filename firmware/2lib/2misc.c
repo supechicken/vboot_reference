@@ -128,7 +128,7 @@ int vb2_init_context(struct vb2_context *ctx)
 			return VB2_ERROR_SHARED_DATA_MAGIC;
 
 		if (sd->struct_version_major != VB2_SHARED_DATA_VERSION_MAJOR ||
-		    sd->struct_version_minor < VB2_SHARED_DATA_VERSION_MINOR)
+		    sd->struct_version_minor != VB2_SHARED_DATA_VERSION_MINOR)
 			return VB2_ERROR_SHARED_DATA_VERSION;
 
 		return VB2_SUCCESS;
