@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dabebb7_d7aac318",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-08T03:56:27Z",
+      "side": 1,
+      "message": "Should we move this a little closer to the conditional in question?  Or can it only surround functions?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "f2b029813b4b10d7cbf9356e84ee842484c3cdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
