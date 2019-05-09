@@ -210,6 +210,30 @@
       "revId": "67360d050d80feea49c06acf0283335143df035c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ee90dd_1458e86a",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-09T21:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86b1096_630345e3",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "67360d050d80feea49c06acf0283335143df035c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
