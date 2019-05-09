@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "832741bd_5a7e50d8",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2019-05-09T06:53:01Z",
+      "side": 1,
+      "message": "A better way to solve this would be to have a combined major/minor version\n\n#define VB2_SHARED_DATA_VERSION ((VB2_SHARED_DATA_VERSION_MAJOR \u003c\u003c 16) | VB2_SHARED_DATA_VERSION_MINOR)\nsd_version \u003d (sd-\u003estruct_version_major \u003c\u003c 16) | sd-\u003estruct_version_minor;\n\nand compare these two.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 40
+      },
+      "revId": "613dee07363ec0a61bd591dee74dc21debeb2435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
