@@ -22,6 +22,30 @@
       "revId": "58507bca20ac84f6368d14a15b5669ccb3d0c7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336d83cc_7871ca8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-09T08:41:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually do anything, other than cause the CQ to throw an error saying \"I can\u0027t find this gerrit.\"\n\nWhen coreboot CLs get pulled downstream, I replace this with its chromium:XXXXX equivalent, and the CL may be merged.\n\nWhen we used CQ-DEPEND, we were using CB:XXXXX for links (which we recently got working).  Now that the format is long-form, looks like the regex just transforms all of them to chromium links regardless of what is written before the colon.  Presumably CB:XXXXX wouldn\u0027t link properly here for the same reason.",
+      "parentUuid": "bc1ca59a_587b9572",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "58507bca20ac84f6368d14a15b5669ccb3d0c7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
