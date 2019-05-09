@@ -16,6 +16,24 @@
       "revId": "6a208456fd6be8958c5d15729b731ae2ddce931e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a6516f_10b41686",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-09T08:54:37Z",
+      "side": 1,
+      "message": "VBSD accesses are littered liberally throughout most of kernel verification code.  I\u0027d prefer not to block removing cparams on this task, which will likely take a Long Time (tm).\n\nAnother alternative is including it directly as an argument to VbSelectAndLoadKernel and friends.",
+      "parentUuid": "2c09ef26_76aed9b9",
+      "revId": "6a208456fd6be8958c5d15729b731ae2ddce931e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
