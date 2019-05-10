@@ -264,26 +264,26 @@ static void VbSlkTest(void)
 		ResetMocks();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST, 1);
-		vb2_nv_set(&ctx_nvram_backend, VB2_NV_OPROM_NEEDED, 1);
+		vb2_nv_set(&ctx_nvram_backend, VB2_NV_REQUEST_DISPLAY, 1);
 		vbboot_retval = -4;
 		test_slk(VBERROR_SIMULATED, 0, "Normal boot with diag");
 		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST), 0,
 			"  diag not requested");
-		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_OPROM_NEEDED), 1,
-			"  oprom still needed");
+		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_REQUEST_DISPLAY),
+			1, "  oprom still needed");
 
 		ResetMocks();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST, 1);
-		vb2_nv_set(&ctx_nvram_backend, VB2_NV_OPROM_NEEDED, 1);
+		vb2_nv_set(&ctx_nvram_backend, VB2_NV_REQUEST_DISPLAY, 1);
 		shared->flags |= VBSD_OPROM_MATTERS;
 		vbboot_retval = -4;
 		test_slk(VBERROR_SIMULATED, 0,
 			 "Normal boot with diag and oprom");
 		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST), 0,
 			"  diag not requested");
-		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_OPROM_NEEDED), 0,
-			"  oprom not needed");
+		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_REQUEST_DISPLAY),
+			0, "  oprom not needed");
 	}
 
 	/* Boot dev */

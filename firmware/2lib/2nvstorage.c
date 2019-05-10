@@ -176,7 +176,7 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 	case VB2_NV_DISABLE_DEV_REQUEST:
 		return GETBIT(VB2_NV_OFFS_BOOT, VB2_NV_BOOT_DISABLE_DEV);
 
-	case VB2_NV_OPROM_NEEDED:
+	case VB2_NV_REQUEST_DISPLAY:
 		return GETBIT(VB2_NV_OFFS_BOOT, VB2_NV_BOOT_OPROM_NEEDED);
 
 	case VB2_NV_BACKUP_NVRAM_REQUEST:
@@ -377,7 +377,7 @@ void vb2_nv_set(struct vb2_context *ctx,
 		SETBIT(VB2_NV_OFFS_BOOT, VB2_NV_BOOT_DISABLE_DEV);
 		break;
 
-	case VB2_NV_OPROM_NEEDED:
+	case VB2_NV_REQUEST_DISPLAY:
 		SETBIT(VB2_NV_OFFS_BOOT, VB2_NV_BOOT_OPROM_NEEDED);
 		break;
 
