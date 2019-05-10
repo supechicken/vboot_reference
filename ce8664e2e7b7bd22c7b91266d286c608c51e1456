@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e32d3f3_3d1a697b",
+        "filename": "tests/vboot_display_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T23:27:20Z",
+      "side": 0,
+      "message": "nit: I\u0027d keep this, it has nothing to do with your patch (it\u0027s nice to keep the invariants in valid at the end of the code, even if currently nothing else is reading this value again... makes future additions easier).",
+      "revId": "ce8664e2e7b7bd22c7b91266d286c608c51e1456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
