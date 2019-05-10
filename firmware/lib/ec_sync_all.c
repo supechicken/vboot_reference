@@ -33,7 +33,7 @@ static VbError_t ec_sync_unload_oprom(struct vb2_context *ctx,
 	    (shared->flags & VBSD_OPROM_LOADED) &&
 	    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON)) {
 		VB2_DEBUG("Reboot to unload VGA Option ROM\n");
-		vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
 		return VBERROR_VGA_OPROM_MISMATCH;
 	}
 	return VBERROR_SUCCESS;
@@ -67,7 +67,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 				!(shared->flags & VBSD_OPROM_LOADED));
 	if (reboot_for_oprom) {
 		VB2_DEBUG("Reboot to load VGA Option ROM\n");
-		vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 1);
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
 	}
 
 	/* Reboot if phase 1 needed it, or if we need to load VGA Option ROM */

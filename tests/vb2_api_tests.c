@@ -263,7 +263,7 @@ static void phase1_tests(void)
 		 0, "  display available SD flag");
 
 	reset_common_data(FOR_MISC);
-	vb2_nv_set(&cc, VB2_NV_OPROM_NEEDED, 1);
+	vb2_nv_set(&cc, VB2_NV_DISPLAY_REQUEST, 1);
 	TEST_SUCC(vb2api_fw_phase1(&cc), "phase1 with OPROM_NEEDED");
 	TEST_NEQ(cc.flags & VB2_CONTEXT_DISPLAY_INIT,
 		 0, "  display init context flag");
