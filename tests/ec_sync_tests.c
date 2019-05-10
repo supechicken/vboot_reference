@@ -308,12 +308,15 @@ static void VbSoftwareSyncTest(void)
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_TRY_RO_SYNC, 1);
 	mock_ec_ro_hash[0]++;
+	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
 	test_ssync(0, 0, "rw update not needed");
 	TEST_EQ(ec_rw_protected, 1, "  ec rw protected");
 	TEST_EQ(ec_run_image, 1, "  ec run image");
 	TEST_EQ(ec_rw_updated, 0, "  ec rw not updated");
 	TEST_EQ(ec_ro_protected, 1, "  ec ro protected");
 	TEST_EQ(ec_ro_updated, 1, "  ec ro updated");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 1,
+		"  DISPLAY_REQUEST left untouched");
 
 	ResetMocks();
 	mock_ec_rw_hash[0]++;
@@ -353,8 +356,20 @@ static void VbSoftwareSyncTest(void)
 	ResetMocks();
 	mock_ec_rw_hash[0]++;
 	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
+	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	test_ssync(0, 0, "Slow update");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT, "  wait screen");
+
+	ResetMocks();
+	mock_ec_rw_hash[0]++;
+	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
+	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
+	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
+	test_ssync(VBERROR_DISPLAY_INIT_MISMATCH, 0,
+		   "Slow update with display request");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT, "  wait screen");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+		"  DISPLAY_REQUEST disabled");
 
 	/* RW cases, no update */
 	ResetMocks();
@@ -442,6 +457,7 @@ static void VbSoftwareSyncTest(void)
 
 	ResetMocks();
 	ec_aux_fw_mock_severity = VB_AUX_FW_SLOW_UPDATE;
+	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	test_ssync(VBERROR_SUCCESS, 0,
 		   "Slow auxiliary FW update needed");
 	TEST_EQ(ec_aux_fw_update_req, 1, "  aux fw update requested");

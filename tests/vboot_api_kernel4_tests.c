@@ -27,6 +27,7 @@
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
 static struct vb2_context ctx_nvram_backend;
+static struct vb2_shared_data *sd;
 static VbSelectAndLoadKernelParams kparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
@@ -58,6 +59,7 @@ static void ResetMocks(void)
 	ctx.workbuf_size = sizeof(workbuf);
 	ctx.vbsd = shared;
 	vb2_init_context(&ctx);
+	sd = vb2_get_sd(&ctx);
 
 	/*
 	 * ctx_nvram_backend is only used as an NVRAM backend (see
@@ -265,25 +267,26 @@ static void VbSlkTest(void)
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST, 1);
 		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DISPLAY_REQUEST, 1);
+		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 		vbboot_retval = -4;
-		test_slk(VBERROR_SIMULATED, 0, "Normal boot with diag");
-		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST), 0,
-			"  diag not requested");
+		test_slk(VBERROR_SIMULATED, 0,
+			 "Normal boot with diag - display available");
+		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST),
+			0, "  diag not requested");
 		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DISPLAY_REQUEST),
-			1, "  oprom still needed");
+			0, "  DISPLAY_REQUEST disabled");
 
 		ResetMocks();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST, 1);
-		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DISPLAY_REQUEST, 1);
-		shared->flags |= VBSD_OPROM_MATTERS;
+		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DISPLAY_REQUEST, 0);
 		vbboot_retval = -4;
-		test_slk(VBERROR_SIMULATED, 0,
-			 "Normal boot with diag and oprom");
-		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST), 0,
-			"  diag not requested");
+		test_slk(VBERROR_DISPLAY_INIT_MISMATCH, 0,
+			 "Normal boot with diag - display unavailable");
+		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST),
+			1, "  diag requested");
 		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DISPLAY_REQUEST),
-			0, "  oprom not needed");
+			1, "  DISPLAY_REQUEST needed");
 	}
 
 	/* Boot dev */
