@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9863fb0_5479a180",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T22:16:50Z",
+      "side": 1,
+      "message": "nit: I would still leave the vb2_init_ui() here, even if it doesn\u0027t make a difference atm, for symmetry with vb2_init_menus() in the menu UI. If we ever have any other tasks in the future (e.g. dynamic allocations) that need to be done on init, we\u0027d want them in here too.",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d4a5352_6070cc77",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T22:16:50Z",
+      "side": 1,
+      "message": "presence",
+      "range": {
+        "startLine": 910,
+        "startChar": 15,
+        "endLine": 910,
+        "endChar": 23
+      },
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25ee043_143390ce",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T22:16:50Z",
+      "side": 1,
+      "message": "MockGpioAfter(2, GPIO_SHUTDOWN)?",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6612dd23_1feda92c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T22:16:50Z",
+      "side": 1,
+      "message": "Could also be MockGpioAfter() (the difference between 2 and 100 isn\u0027t really relevant here).",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
