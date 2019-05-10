@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3a7a07d_4c898f12",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T21:56:49Z",
+      "side": 1,
+      "message": "nit: insert \"update\"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "5a022a848be9ca437890ea9b69bc059ccbf37ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d041576_adaa456c",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-10T21:56:49Z",
+      "side": 1,
+      "message": "No, this needs to be before the phase1_rv return above.",
+      "revId": "5a022a848be9ca437890ea9b69bc059ccbf37ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
