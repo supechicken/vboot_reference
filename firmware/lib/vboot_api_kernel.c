@@ -400,7 +400,7 @@ VbError_t VbSelectAndLoadKernel(
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		struct vb2_shared_data *sd = vb2_get_sd(ctx);
 		if (sd->vbsd->flags & VBSD_OPROM_MATTERS)
-			vb2_nv_set(ctx, VB2_NV_OPROM_NEEDED, 0);
+			vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
 		/*
