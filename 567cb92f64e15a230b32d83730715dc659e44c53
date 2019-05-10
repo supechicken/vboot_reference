@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "68822b4c_0477575f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-10T23:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9863fb0_5479a180",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d4a5352_6070cc77",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "00f932e9_c046b4d2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-10T23:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d4a5352_6070cc77",
+      "range": {
+        "startLine": 910,
+        "startChar": 15,
+        "endLine": 910,
+        "endChar": 23
+      },
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a25ee043_143390ce",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2019-05-10T22:16:50Z",
       "side": 1,
       "message": "MockGpioAfter(2, GPIO_SHUTDOWN)?",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed7fb47_1d00eb79",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-10T23:15:31Z",
+      "side": 1,
+      "message": "I tried this earlier but the TEST_NEQ() on audio_looping_calls_left fails since the variable is init to 30 and MockGpioAfter() holds GPIO_SHUTDOWN for 100 loops so audio_looping_calls_left ends up being zero.  I figured not calling MockGpioAfter() was the lesser of the evil over adding another input parameter to MockGpioAfter() (a defaulted input parameter would be handy, but I\u0027m not going to port to C++ for that).  I suppose I could just set audio_looping_calls_left to something larger, or conversely set mock_gpio[1].count to something smaller after calling MockGpioAfter().",
+      "parentUuid": "a25ee043_143390ce",
       "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -73,6 +133,24 @@
       "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7056a257_11588c9c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-10T23:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6612dd23_1feda92c",
+      "revId": "567cb92f64e15a230b32d83730715dc659e44c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
