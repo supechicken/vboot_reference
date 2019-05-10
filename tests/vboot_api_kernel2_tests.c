@@ -80,6 +80,7 @@ static void ResetMocks(void)
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 
 	shutdown_request_calls_left = -1;
 	shutdown_request_power_held = -1;
@@ -1096,7 +1097,7 @@ static void VbBootRecTest(void)
 		VBERROR_TPM_SET_BOOT_MODE_STATE,
 		"Ctrl+D todev failure");
 
-	/* Test Diagnostic Mode via Ctrl-C when no oprom needed */
+	/* Test Diagnostic Mode via Ctrl-C - display available */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
@@ -1116,14 +1117,15 @@ static void VbBootRecTest(void)
 
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
-		"  todiag doesn't update for unneeded opom");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+		"  todiag doesn't set unneeded DISPLAY_REQUEST");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
 
-	/* Test Diagnostic Mode via F12 - oprom needed */
+	/* Test Diagnostic Mode via F12 - display disabled */
 	ResetMocks();
-	shared->flags = VBSD_BOOT_REC_SWITCH_ON | VBSD_OPROM_MATTERS;
+	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
+	sd->flags &= ~VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	trust_ec = 1;
 	vbtlk_retval = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
 	shutdown_request_calls_left = 100;
@@ -1140,12 +1142,12 @@ static void VbBootRecTest(void)
 			"F12 todiag - disabled");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for F12");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), DIAGNOSTIC_UI,
-		"  todiag updates opom, if need");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), DIAGNOSTIC_UI,
+		"  todiag sets DISPLAY_REQUEST if needed");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
 
-	/* Test Diagnostic Mode via Ctrl-C OS broken */
+	/* Test Diagnostic Mode via Ctrl-C OS broken - display available */
 	ResetMocks();
 	shared->flags = 0;
 	shutdown_request_calls_left = 100;
@@ -1162,8 +1164,8 @@ static void VbBootRecTest(void)
 			"Ctrl+C todiag os broken - disabled");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
-		"  todiag doesn't update for unneeded opom");
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+		"  todiag doesn't set unneeded DISPLAY_REQUEST");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
 		"  os broken screen");
 
