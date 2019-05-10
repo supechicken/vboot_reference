@@ -1121,7 +1121,7 @@ static void VbBootRecTest(void)
 
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't update for unneeded opom");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
@@ -1145,7 +1145,7 @@ static void VbBootRecTest(void)
 			"F12 todiag - disabled");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for F12");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), DIAGNOSTIC_UI,
 		"  todiag updates opom, if need");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
@@ -1167,7 +1167,7 @@ static void VbBootRecTest(void)
 			"Ctrl+C todiag os broken - disabled");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_OPROM_NEEDED), 0,
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't update for unneeded opom");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
 		"  os broken screen");
