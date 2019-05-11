@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1fff8e7_d1d6746d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-11T00:16:54Z",
+      "side": 1,
+      "message": "Are we not updating crossystem? Will that come later or do we wanna leave it like this? (FWIW I\u0027m not aware of a case where any userspace code reads or writes this.)",
+      "range": {
+        "startLine": 517,
+        "startChar": 30,
+        "endLine": 517,
+        "endChar": 42
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1b19e3_dbdb1f02",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-11T00:16:54Z",
+      "side": 1,
+      "message": "nit: update?",
+      "range": {
+        "startLine": 57,
+        "startChar": 36,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43c99da_0a894071",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-11T00:16:54Z",
+      "side": 1,
+      "message": "nit: update (several here)",
+      "range": {
+        "startLine": 286,
+        "startChar": 9,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
