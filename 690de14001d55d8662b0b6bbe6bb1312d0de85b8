@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "987e1b58_7d141b59",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-13T21:23:13Z",
+      "side": 1,
+      "message": "nit: actually, checking (result \u0026 ~POWER_BUTTON) would probably be better, in case we add more shutdown reasons in the future",
+      "revId": "690de14001d55d8662b0b6bbe6bb1312d0de85b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
