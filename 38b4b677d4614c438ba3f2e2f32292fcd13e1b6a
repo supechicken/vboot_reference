@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e82b50aa_82990ddc",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:19:43Z",
+      "side": 1,
+      "message": "I think this function doesn\u0027t work well on its own now... the way you have to keep storing wb.buf before calling it is awkward. Do we even need it anymore -- it does almost nothing? I\u0027d suggest just calling vb2ex_read_resource directly in the two callers.",
+      "revId": "38b4b677d4614c438ba3f2e2f32292fcd13e1b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1ba564_9d4b0aa7",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:19:43Z",
+      "side": 1,
+      "message": "This should first load the header, get the real key size, and then load the remaining data behind it. Another reason to call vb2ex_read_resource() directly here, so you can do the required stitching without reading anything twice.",
+      "revId": "38b4b677d4614c438ba3f2e2f32292fcd13e1b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbb47f6_18f3639d",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:19:43Z",
+      "side": 1,
+      "message": "nit:\n\n return vb2_read_gbb_key(...);",
+      "revId": "38b4b677d4614c438ba3f2e2f32292fcd13e1b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140d5ea6_78450fc9",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:19:43Z",
+      "side": 1,
+      "message": "nit: I\u0027d just do something like\n\n if (ret)\n   strcpy(hwid, \"(UNKNOWN)\");\n\ninstead",
+      "revId": "38b4b677d4614c438ba3f2e2f32292fcd13e1b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

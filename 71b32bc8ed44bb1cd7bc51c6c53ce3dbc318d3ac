@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "4fc5a5b1_e723a527",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:19:43Z",
+      "side": 1,
+      "message": "Actually, sorry, after reading this again I think we in fact *have* to pass the workbuf through already in this patch (which will expand its footprint even more, unfortunately). We have to be really careful when using the workbuffer and I think this version may already do something dangerous. vb2_workbuf_from_ctx() is not a function we can just randomly call anywhere without carefully looking at the call stack.\n\nIf you look at VbVerifyMemoryBootImage(), it calls VbGbbReadRecoveryKey() (which will allocate the recovery key on the workbuffer here), and then a couple of lines later it calls vb2_workbuf_from_ctx() to pass a workbuffer into vb2_verify_keyblock() (which uses it for scratch space). We don\u0027t write back the current workbuffer state after reading the recovery key, so that scratch space will in fact use the same bytes and corrupt the key. If you try to boot an image in recovery mode with this patch, I think it should blow up.\n\nBut writing back the workbuffer state wouldn\u0027t help either... it\u0027s just coincidence that VbVerifyMemoryBootImage() calls vb2_workbuf_from_ctx() *after* VbGbbReadRecoveryKey(). It might as well have been written to call that at the top of the function instead. I think we need to institute a policy (in reviews, at least... I don\u0027t think there\u0027s a good way to codify that) that functions may only call vb2_workbuf_from_ctx() if they\u0027re certain that no other function above them in the call stack has been using the work buffer before them. So essentially it should only be called in \"top-level\" API entry points (or things close to that, at least), and never in low-level utility functions that can be called from multiple points (like this one). For those, they need to always take in an explicit work buffer pointer.",
+      "parentUuid": "5f6770c8_f745c737",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
