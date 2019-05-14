@@ -41,6 +41,7 @@ main() {
   fi
   ${sudo} sed -i "s/\b${from}\b/${to}/" "${lsb}" &&
     echo "Channel change successful."
+  restore_lsb_selinux "${lsb}"
   cat "${lsb}"
 }
 

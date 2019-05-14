@@ -171,6 +171,7 @@ process_all_lsb_mods() {
     if [ ${do_modifications} = ${FLAGS_TRUE} ]; then
       ${sudo} sed -i 's/\btest\b//' "${lsb}" &&
         echo "Test Label removed from /etc/lsb-release"
+      restore_lsb_selinux "${lsb}"
     fi
   fi
 
@@ -181,6 +182,7 @@ process_all_lsb_mods() {
     if [ ${do_modifications} = ${FLAGS_TRUE} ]; then
       ${sudo} sed -i 's/\bdev\b/beta/' "${lsb}" &&
         echo "Dev Channel Label was changed to Beta"
+      restore_lsb_selinux "${lsb}"
     fi
   fi
 }
