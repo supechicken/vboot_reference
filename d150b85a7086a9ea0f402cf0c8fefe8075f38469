@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d79dbb08_2485b251",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T05:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5c55e31_f302b661",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "529d5834_d6336ba1",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-05-11T00:28:39Z",
       "side": 1,
       "message": "Not your bug, but is this even correct? If this is handed straight through to depthcharge (and it looks to me like it is) that seems wrong... it would only fall into depthcharge\u0027s catchall \"I don\u0027t know what to do with this error code so I\u0027ll reboot\" case. We should be returning REBOOT_REQUESTED to the calling firmware to clarify that it is an intentional reboot and not dropping into recovery.",
+      "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223553d7_e7e32220",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T05:41:13Z",
+      "side": 1,
+      "message": "Well, since the cases in depthcharge vboot_select_and_load_kernel are exactly the same for VBERROR_REBOOT_REQUIRED and the catchall, the behaviour should be exactly the same as well.  But that also seems kind of strange.  \"Reboot if a reboot is requested, or if anything else weird happens.\"?  Seems like a good opportunity to actually drop into recovery mode if the unexpected case occurs.\n\nBut yeah, I agree that REBOOT_REQUIRED should be returned.  Which means we probably don\u0027t even need the VBERROR_DISPLAY_INIT_MISMATCH...",
+      "parentUuid": "529d5834_d6336ba1",
       "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c530f3df_bfafb0b5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T05:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e59e66_3d2de5ab",
+      "range": {
+        "startLine": 387,
+        "startChar": 18,
+        "endLine": 387,
+        "endChar": 45
+      },
+      "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f92d0011_1175e079",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2019-05-11T00:28:39Z",
       "side": 1,
       "message": "I feel like we should maybe set this in ResetMocks() now and only unset it where intended, because it\u0027s sort of the new \"default\" state.",
+      "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c340f489_17196593",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T05:41:13Z",
+      "side": 1,
+      "message": "Yeah I was also considering that.  Let\u0027s do it.",
+      "parentUuid": "f92d0011_1175e079",
       "revId": "d150b85a7086a9ea0f402cf0c8fefe8075f38469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
