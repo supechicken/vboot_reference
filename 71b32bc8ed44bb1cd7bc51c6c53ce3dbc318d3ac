@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5895ca30_8f110145",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6685aef8_c58e89ce",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d472f9_7b7cb166",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-10T23:27:20Z",
       "side": 1,
       "message": "I think it would be good to move this one into a shared file (e.g. lib20/misc.c or packed_key.c) and also use it in vb2_load_fw_keyblock()). I would suggest an API of\n\n // Loads key data onto the provided workbuf state, figuring out the right\n // size and only loading as much as necessary. \n vb2_read_gbb_key(ctx, offset, size, \u0026wb)\n\nThen you don\u0027t really malloc anything anymore, the functions using root and recovery key can just load, use and discard the key directly on the workbuf. All this is probably too much for one CL, but we should try to move in that direction (i.e. don\u0027t persist anything on the workbuf permanently and just always memcpy() to malloc() for now until we can get rid of that too).",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6770c8_f745c737",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Yeah, region-init.c seems like a bizarre place to put all of this in the first place.\n\nI\u0027ll change the function signature as you suggested.  Although I am still thinking that vb2_load_fw_keyblock could call VbGbbReadRootKey directly, since that\u0027s the key it needs?  In that case, not sure if we want to continue passing the vb2_workbuf all the way down, or just pass the VbPublicKey pointer back, and assume the caller knows not to mess with the workbuf while using the VbPublicKey data.",
+      "parentUuid": "24d472f9_7b7cb166",
       "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5f805396_b3441da5",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c029fc_29998fb2",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baf91b9e_b82cfb21",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
@@ -67,6 +121,24 @@
       "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c454632_d7db4917",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf91b9e_b82cfb21",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "82012c38_a80efeb5",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3445aa_9c6aa7fd",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbf9d546_22063165",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "c450ab84_9df54f97",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Ahh... good point.  Let\u0027s just specify that these functions may only be called after reading in GBB headers.",
+      "parentUuid": "fbf9d546_22063165",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab40d30b_23b3c24a",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 14
@@ -115,6 +223,24 @@
       "writtenOn": "2019-05-10T23:27:20Z",
       "side": 1,
       "message": "You\u0027re not overriding vb2_get_gbb() in this one?",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350ffccb_d3b8ec81",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T09:24:55Z",
+      "side": 1,
+      "message": "Err, I guess I missed this one.  Thanks.",
+      "parentUuid": "ab40d30b_23b3c24a",
       "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
