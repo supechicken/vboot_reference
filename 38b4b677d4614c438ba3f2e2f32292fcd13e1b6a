@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ed89287_9a52d5f0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-14T23:58:09Z",
+      "side": 0,
+      "message": "nit: why not just leave this code here to reduce the churn?",
+      "revId": "38b4b677d4614c438ba3f2e2f32292fcd13e1b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
