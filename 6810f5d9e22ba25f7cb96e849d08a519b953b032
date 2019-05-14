@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6805073_4ea8c893",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T04:16:18Z",
+      "side": 1,
+      "message": "Yeah let\u0027s get rid of this. CL:1610257",
+      "parentUuid": "e1fff8e7_d1d6746d",
+      "range": {
+        "startLine": 517,
+        "startChar": 30,
+        "endLine": 517,
+        "endChar": 42
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e1b19e3_dbdb1f02",
         "filename": "tests/vb2_nvstorage_tests.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "516b5339_bb1d9ff5",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T04:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1b19e3_dbdb1f02",
+      "range": {
+        "startLine": 57,
+        "startChar": 36,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a43c99da_0a894071",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-11T00:16:54Z",
       "side": 1,
       "message": "nit: update (several here)",
+      "range": {
+        "startLine": 286,
+        "startChar": 9,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0321a2_0c712b99",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T04:16:18Z",
+      "side": 1,
+      "message": "Actually, if you don\u0027t mind, could I just keep the scope of this CL to renaming the constant?\n\nIt feels a lot more natural to keep all of the other (behaviour, comments, strings) changes together in CL:1605641.\n\n[This is mainly just a CL to get the rename process started in coreboot and depthcharge.]",
+      "parentUuid": "a43c99da_0a894071",
       "range": {
         "startLine": 286,
         "startChar": 9,
