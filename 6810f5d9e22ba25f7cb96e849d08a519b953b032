@@ -140,6 +140,30 @@
       "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111f742f_99f25d8e",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-14T04:54:01Z",
+      "side": 1,
+      "message": "OK, rather than taking this awkward middle-ground, I decided to move *everything* into the CL mentioned above.  This CL is *strictly* for introducing the new constant name to unblock coreboot and depthcharge from their own renaming.",
+      "parentUuid": "ed0321a2_0c712b99",
+      "range": {
+        "startLine": 286,
+        "startChar": 9,
+        "endLine": 286,
+        "endChar": 14
+      },
+      "revId": "6810f5d9e22ba25f7cb96e849d08a519b953b032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
