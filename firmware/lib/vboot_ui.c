@@ -13,6 +13,7 @@
 #include "2nvstorage.h"
 #include "2rsa.h"
 #include "ec_sync.h"
+#include "fcntl.h"
 #include "gbb_access.h"
 #include "gbb_header.h"
 #include "load_kernel_fw.h"
@@ -506,6 +507,13 @@ static const char dev_disable_msg[] =
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
 	"\n";
 
+static void vb2_display_developer_to_norm(struct vb2_context *ctx,
+	 									  uint32_t screen)
+{
+	creat("/mnt/stateful_partition/.developer_mode", 0666);
+	VbDisplayScreen(ctx, screen, 0, NULL);
+}
+
 static VbError_t vb2_developer_ui(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -558,8 +566,7 @@ static VbError_t vb2_developer_ui(struct vb2_context *ctx)
 	/* If dev mode is disabled, only allow TONORM */
 	while (disable_dev_boot) {
 		VB2_DEBUG("dev_disable_boot is set\n");
-		VbDisplayScreen(ctx,
-				VB_SCREEN_DEVELOPER_TO_NORM, 0, NULL);
+		vb2_display_developer_to_norm(ctx, VB_SCREEN_DEVELOPER_TO_NORM);
 		VbExDisplayDebugInfo(dev_disable_msg, 0);
 
 		/* Ignore space in VbUserConfirms()... */
@@ -567,8 +574,7 @@ static VbError_t vb2_developer_ui(struct vb2_context *ctx)
 		case 1:
 			VB2_DEBUG("leaving dev-mode\n");
 			vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-			VbDisplayScreen(ctx,
-				VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
+			vb2_display_developer_to_norm(ctx, VB_SCREEN_TO_NORM_CONFIRMED);
 			VbExSleepMs(5000);
 			return VBERROR_REBOOT_REQUIRED;
 		case -1:
@@ -621,18 +627,14 @@ static VbError_t vb2_developer_ui(struct vb2_context *ctx)
 						VB_BEEP_NOT_ALLOWED);
 					break;
 				}
-				VbDisplayScreen(ctx,
-					VB_SCREEN_DEVELOPER_TO_NORM,
-					0, NULL);
+				vb2_display_developer_to_norm(ctx, VB_SCREEN_DEVELOPER_TO_NORM);
 				/* Ignore space in VbUserConfirms()... */
 				switch (VbUserConfirms(ctx, 0)) {
 				case 1:
 					VB2_DEBUG("leaving dev-mode\n");
 					vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
 						1);
-					VbDisplayScreen(ctx,
-						VB_SCREEN_TO_NORM_CONFIRMED,
-						0, NULL);
+					vb2_display_developer_to_norm(ctx, VB_SCREEN_TO_NORM_CONFIRMED);
 					VbExSleepMs(5000);
 					return VBERROR_REBOOT_REQUIRED;
 				case -1:
