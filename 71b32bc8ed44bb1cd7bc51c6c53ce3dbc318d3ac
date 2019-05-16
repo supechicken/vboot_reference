@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "cc5182e5_c9d1eefe",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-16T11:29:29Z",
+      "side": 1,
+      "message": "I did a bit of thinking about this workbuf issue... I came up with a few ideas.\n\n(1) I think this is the same as what you have written above, except maybe a bit stricter.  *Only* top-level functions may create a local workbuf (using vb2_workbuf_from_ctx).  *Everything* else must accept a vb2_workbuf* argument.  (Alternatively, top-level functions may also accept vb2_workbuf*.  But then the caller of the API has to manually specify ctx-\u003eworkbuf, which is somewhat silly.  Except for the case when an API function may also double as a utility function by vboot itself.)  So essentially, the workbuf stack gets built up through function arguments, and saved on success / thrown out on failure as necessary.\n\n(2) Always use the global vb2_workbuf.  Explicitly pop on failures.  This is starting to look more like a malloc/free scheme.  When errors occur in a function, or when a function no longer needs some space that it allocated, it is always the function\u0027s responsibility to call pop.  This has the advantage of not needing to plumb vb2_workbuf through all of the arguments of vboot functions.  The disadvantage is that we no longer have the elegant workflow of \"throwing away a local vb2_workbuf\".  Not to mention probably changing quite a lot of code.  If we forget to pop something, it\u0027s not the end of the world.  It just takes up some extra space on the stack.  These bugs might be easy to crop up, but at least they wouldn\u0027t cause correctness issues like we are seeing with scheme #1.  Another interesting side-effect of using explicit frees is that we could swap out the backend for real DRAM malloc/free when we reach the kernel verification stage, regardless of whether functions are shared between both firmware and kernel verification stages.  (Well, that may get a little tricky when we import the workbuf from firmware stage.  And also in all of the offset calculation that we use everywhere.  See below.)\n\n(3) Like #2, with an added memory defragmentation function.  Defrag would get rid of empty spaces in the stack (which is done manually in some vboot code currently).  But we would need some intermediary pointer lookup table to keep track of where the offsets are stored, since their locations may change.  Lookups would have to go through this pointer table.  The advantage is that we don\u0027t have to think so much about low-level memory management (which may easily introduce bugs).  The disadvantage is that it is rather complex, and perhaps unnecessary for just a few cases where objects need to be removed/relocated \"within the stack\".\n\nHonestly, #1 and #2 would probably take equal time to implement.  #1 is probably \"easier\" since it doesn\u0027t have to happen all at once, whereas #2 would need a big refactor to add all of the explicit pops.  #3 is probably overkill, especially when our primary goal is getting rid of vboot1 code.",
+      "parentUuid": "4fc5a5b1_e723a527",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
