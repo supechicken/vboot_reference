@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "3e6e2638_a75ac69c",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-16T20:12:28Z",
+      "side": 1,
+      "message": "None of these really seem feasible to me tbh. Like you said you can\u0027t always explicitly pop because we have those instances where we need to move things around. I think we need those to make it fit in some parts of firmware verification. I don\u0027t think we want to do anything that has to manually keep track of any location that might have a pointer into the work buffer either (that would not just be shared data but could also be on the stack). I think the only reasonable way to solve that would be with a real allocator, and maybe that\u0027s an option, but I\u0027m still worried that it wouldn\u0027t fit in quite as little space as the current solution.\n\nI think Randall spent quite a bit of time thinking about this before coming up with this work buffer thing and it\u0027s not easy to do anything better. We just need to stick with it and make sure we\u0027re using it right... which includes only ever initializing it from context at the top level. I don\u0027t think it needs to be strict that *every* function takes a workbuffer (some just don\u0027t need it) or that it\u0027s always exactly the topmost function, but we need to pass it where needed and everywhere we add a new vb2_workbuf_from_ctx() we need to pay extra attention that there\u0027s no other workbuffer use in the same call stack.",
+      "parentUuid": "cc5182e5_c9d1eefe",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
