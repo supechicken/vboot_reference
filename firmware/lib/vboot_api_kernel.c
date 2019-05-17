@@ -53,16 +53,6 @@ static void VbSetRecoveryRequest(struct vb2_context *ctx,
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, recovery_request);
 }
 
-void vb2_nv_commit(struct vb2_context *ctx)
-{
-	/* Exit if nothing has changed */
-	if (!(ctx->flags & VB2_CONTEXT_NVDATA_CHANGED))
-		return;
-
-	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-	VbExNvStorageWrite(ctx->nvdata);
-}
-
 uint32_t vb2_get_fwmp_flags(void)
 {
 	return fwmp.flags;
@@ -258,7 +248,6 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx->flags |= VB2_CONTEXT_NVDATA_V2;
 
-	VbExNvStorageRead(ctx->nvdata);
 	vb2_nv_init(ctx);
 
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);

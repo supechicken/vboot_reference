@@ -58,13 +58,3 @@ uint64_t VbExGetTimer(void)
 	gettimeofday(&tv, NULL);
 	return (uint64_t)tv.tv_sec * VB_USEC_PER_SEC + (uint64_t)tv.tv_usec;
 }
-
-VbError_t test_mockable VbExNvStorageRead(uint8_t *buf)
-{
-	return VBERROR_SUCCESS;
-}
-
-VbError_t VbExNvStorageWrite(const uint8_t *buf)
-{
-	return VBERROR_SUCCESS;
-}

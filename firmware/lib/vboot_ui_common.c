@@ -9,7 +9,7 @@
 
 #include "2sysincludes.h"
 #include "2common.h"
-
+#include "2nvstorage.h"
 #include "rollback_index.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"

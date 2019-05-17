@@ -435,10 +435,7 @@ VbError_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
 		 * This is not an example of the Right Way to do things.  See
 		 * chrome-os-partner:7689.
 		 */
-		if (ctx->flags & VB2_CONTEXT_NVDATA_CHANGED) {
-			VbExNvStorageWrite(ctx.nvdata);
-			ctx.flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-		}
+		vb2_nv_commit(ctx);
 #endif
 
 		/* Force redraw of current screen */

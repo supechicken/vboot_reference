@@ -75,8 +75,7 @@ static void ResetMocks(void)
 	vb2_init_context(&ctx);
 
 	/*
-	 * ctx_nvram_backend is only used as an NVRAM backend (see
-	 * VbExNvStorageRead and VbExNvStorageWrite), and with
+	 * ctx_nvram_backend is only used as an NVRAM backend, with
 	 * vb2_set_nvdata and nv2_get_nvdata to manually read and tweak
 	 * contents.  No other initialization is needed.
 	 */
@@ -178,11 +177,10 @@ int vb2_verify_data(const uint8_t *data,
 	return VB2_SUCCESS;
 }
 
-VbError_t VbExNvStorageRead(uint8_t *buf)
+int vb2ex_nv_read(uint8_t *buf, uint32_t size)
 {
-	memcpy(buf, ctx_nvram_backend.nvdata,
-	       vb2_nv_get_size(&ctx_nvram_backend));
-	return VBERROR_SUCCESS;
+	memcpy(buf, ctx_nvram_backend.nvdata, size);
+	return VB2_SUCCESS;
 }
 
 static void VerifyMemoryBootImageTest(void)

@@ -64,6 +64,8 @@ void vb2_nv_init(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint8_t *p = ctx->nvdata;
 
+	/* Read nvdata from non-volatile storage */
+	vb2ex_nv_read(p, vb2_nv_get_size(ctx));
 
 	/* Check data for consistency */
 	if (vb2_nv_check_crc(ctx) != VB2_SUCCESS) {
@@ -94,6 +96,17 @@ void vb2_nv_init(struct vb2_context *ctx)
 
 	if (sd)
 		sd->status |= VB2_SD_STATUS_NV_INIT;
+}
+
+void vb2_nv_commit(struct vb2_context *ctx)
+{
+	/* Exit if nothing has changed */
+	if (!(ctx->flags & VB2_CONTEXT_NVDATA_CHANGED))
+		return;
+
+	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
+
+	vb2ex_nv_write(ctx->nvdata, vb2_nv_get_size(ctx));
 }
 
 /* Macro for vb2_nv_get() single-bit settings to reduce duplicate code. */

@@ -206,6 +206,17 @@ int vb2_nv_check_crc(const struct vb2_context *ctx);
 void vb2_nv_init(struct vb2_context *ctx);
 
 /**
+ * Commit non-volatile storage.
+ *
+ * This may be called by UI functions which need to save settings before they
+ * sit in an infinite loop waiting for shutdown (this is, by a UI state which
+ * will never return).
+ *
+ * @param ctx		Context pointer
+ */
+void vb2_nv_commit(struct vb2_context *ctx);
+
+/**
  * Read a non-volatile value.
  *
  * Valid only after calling vb2_nv_init().

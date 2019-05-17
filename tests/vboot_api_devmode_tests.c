@@ -144,16 +144,6 @@ static void ResetMocks(void)
 /****************************************************************************/
 /* Mocked verification functions */
 
-VbError_t VbExNvStorageRead(uint8_t* buf)
-{
-	return VBERROR_SUCCESS;
-}
-
-VbError_t VbExNvStorageWrite(const uint8_t* buf)
-{
-	return VBERROR_SUCCESS;
-}
-
 VbError_t VbExDiskGetInfo(VbDiskInfo** infos_ptr, uint32_t* count,
 			  uint32_t disk_flags)
 {

@@ -744,4 +744,7 @@ int vb2api_digest_buffer(const uint8_t *buf,
  */
 int vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
+int vb2ex_nv_read(uint8_t *buf, uint32_t size);
+int vb2ex_nv_write(const uint8_t *buf, uint32_t size);
+
 #endif  /* VBOOT_2_API_H_ */
