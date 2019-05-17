@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b365c6fc_e0e9604d",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-17T22:45:09Z",
+      "side": 1,
+      "message": "Soo... sorry for the back-and-forth, but this still doesn\u0027t look right. Now we\u0027ll check for AUX firmware twice in the normal path (once here and once below), even if there are no updates to install. We don\u0027t want that. We want this other check to *only* happen when we\u0027d already be rebooting to RO anyway. (I remember now that when I first asked for this I meant for you to run it in the if (phase1_rv) branch, but then I forgot about that detail on the next review cycle... sorry.)\n\nSo I think the correct flow should be:\n\n /* Check if EC needs reboot. */\n rv \u003d phase1();\n if (rv) {\n   /* It does -- speculatively check if we need display as well. */\n   if (will_update_slowly() ||\n       (!check_aux_fw(\u0026fw_update) \u0026\u0026 fw_update \u003d\u003d SLOW))\n     check_reboot_for_display();\n   return REBOOT_TO_RO;\n }\n\n /* Is EC already in RO and needs slow update? */\n if (will_update_slowly()) {\n   /* Might still need display in that case. */\n   if (check_reboot_for_display())\n     return REBOOT_REQUIRED;\n   /* Display is available, so pop up the screen. */\n   display_wait_screen(\"EC FW\");\n }\n\n /* Do the EC update, if needed. */\n rv \u003d phase2();\n if (rv)\n   return rv;\n\n /* EC in RW, now we can properly check for AUX. */\n rv \u003d check_aux_fw(\u0026fw_update);\n if (rv)\n   return rv;\n\n if (fw_update \u003d\u003d SLOW) {\n   /* Should have display already here, but better check again. */\n   if (check_reboot_for_display())\n     return REBOOT_REQUIRED;\n   display_wait_screen(\"AUX FW\");\n }\n\n ...continue with old code...",
+      "revId": "22b55ab6ac000fe296f6f82ce267bb4453eff04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
