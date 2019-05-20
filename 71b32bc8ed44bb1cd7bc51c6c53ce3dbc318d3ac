@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "c658a2cf_718203da",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-20T23:36:22Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t understand why you did it that way now. Your save_on_wb should always be 1. If the caller wants to be able to discard the results later, it can create its own copy of the workbuf structure and then discard it at a time of its choosing. We should never at any point be in a situation where data on the workbuf is still used but there is no workbuf structure containing the workbuf state with that data allocated anymore.\n\nI think our workbuf ground rules should essentially be:\n\n1. Only one function in any possible call stack may call vb2_workbuf_from_ctx() (which yields a valid workbuf struct).\n2. workbuf structs may be passed around by reference to other functions.\n3. Any function that somehow got a valid workbuf struct may call vb2_workbuf_alloc() on it.\n4. Any function may call vb2_workbuf_free() iff the corresponding vb2_workbuf_alloc() call was in the same function, it didn\u0027t do any other vb2_workbuf_alloc() calls since that haven\u0027t been freed yet and the workbuf struct was not passed to any other function in between.\n5. Any function may create a struct copy of a valid workbuf struct. That function determines the lifetime of that struct copy (ideally with an explicit { C block } ). Within the lifetime of the copy, the function must not do anything with the original workbuf struct and must not pass the original to any other function (but it may do allocations on and pass around the copy instead). At the end of the copy\u0027s lifetime, the function must cease using any data allocated on the copy (including data allocated in and return from functions called by it, passing the copy). Afterwards it goes back to using/passing the original workbuf struct.\n6. As a special exception to the above, at the moment a workbuf copy\u0027s lifetime ends (and only there) a function may vb2_workbuf_alloc() a single object on the original workbuf and then memmove() that object from the workbuf copy into the new allocation on the original.\n\n(Maybe we should put a list like that as a comment somewhere into 2common.h?)\n\nYour new functions would violate this when save_on_wb is 0 because you expect the caller to still use data allocated on the workbuf copy object that has already gone out of scope. I think we should forbid uses like that because it\u0027s too hard to keep track of data lifetime (in the same way you wouldn\u0027t keep using heap data after a free() even if you know it should still be there until the next time someone calls malloc()). Instead, if a copy is desired the caller should make that copy and it should be very explicit from the code where the lifetime of the copy ends... e.g. maybe we should always write code using workbuf copies like this:\n\n int myfunc(struct vb2_workbuf *wb)\n {\n   struct somestruct s \u003d vb2_workbuf_alloc(\u0026wb, ...);\n   \n   some_other_code(\u0026s);\n   some_func_that_may_alloc(\u0026wb);\n\n   {\n     struct vb2_workbuf tmp_wb \u003d *wb;\n     vb2_packed_key *key;\n\n     vb2_gbb_read_recovery_key(\u0026tmp_wb, \u0026key);\n     \n     copy_key_components_into_struct(\u0026key, \u0026s)\n   }\n\n   stuff_can_use_original_wb_again(\u0026wb);\n }\n\nThat way the C scope helps you with most aspects of keeping track of the temporary allocations. The only thing left to manually remember is that you mustn\u0027t use \u0027wb\u0027 anywhere within the block after the initial struct copy.",
+      "parentUuid": "80354ed7_aa2051f5",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
