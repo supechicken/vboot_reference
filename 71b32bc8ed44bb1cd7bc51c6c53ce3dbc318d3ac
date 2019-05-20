@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "80354ed7_aa2051f5",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-20T09:58:45Z",
+      "side": 1,
+      "message": "So I attempted to re-work the GBB-reading functions to take a vb2_workbuf as we discussed.  The tricky part is -- sometimes the caller wants to keep the result on the stack, sometimes it does not.  But the caller doesn\u0027t necessarily even know how big was the data added.  So I ended up needing to add another argument called \"save_on_wb\" to decide whether to commit the new workbuf back to the caller.\n\nI am still not convinced this is a good design -- it feels very clunky and seems easy to make mistakes.",
+      "parentUuid": "3e6e2638_a75ac69c",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
