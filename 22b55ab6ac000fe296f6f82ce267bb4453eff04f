@@ -34,6 +34,24 @@
       "revId": "22b55ab6ac000fe296f6f82ce267bb4453eff04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f70fefa_4f22c2e9",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-20T22:27:36Z",
+      "side": 1,
+      "message": "Displaying the screen twice should not be harmful, but if you want to handle it explicitly that\u0027s fine too.",
+      "parentUuid": "3db620e7_2d5134c4",
+      "revId": "22b55ab6ac000fe296f6f82ce267bb4453eff04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
