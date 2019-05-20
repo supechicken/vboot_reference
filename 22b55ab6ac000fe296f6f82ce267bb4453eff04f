@@ -16,6 +16,24 @@
       "revId": "22b55ab6ac000fe296f6f82ce267bb4453eff04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db620e7_2d5134c4",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-20T16:57:49Z",
+      "side": 1,
+      "message": "No problem regarding the comments :)\n\n\u003e\u003e if (fw_update \u003d\u003d SLOW) {\n\u003e\u003e   /* Should have display already here, but better check again. */\n\u003e\u003e   if (check_reboot_for_display())\n\u003e\u003e     return REBOOT_REQUIRED;\n\u003e\u003e   display_wait_screen(\"AUX FW\");\n\u003e\u003e }\n\nIn this patchset, if wait screen is displayed already for EC FW we are skipping displaying the wait screen again. It seems your comment is suggesting me to remove that check. Instead just check if the fw_update is slow and display the wait screen for AUX FW.\n\nIf I understand correctly, if wait screen is displayed already for EC FW then the display should be ready and we will not end up rebooting for display again. We will continue to display the wait screen saying this time for AUX FW.",
+      "parentUuid": "b365c6fc_e0e9604d",
+      "revId": "22b55ab6ac000fe296f6f82ce267bb4453eff04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
