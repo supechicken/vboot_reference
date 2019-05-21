@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f135a851_90231ceb",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-21T21:14:35Z",
+      "side": 1,
+      "message": "Maybe initialize this to VB_AUX_FW_NO_UPDATE here if you do the below, just to be sure.",
+      "revId": "f2090f70c3afcce8233839a1f026b0c7519d394a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e923b8_69f47a5f",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-21T21:14:35Z",
+      "side": 1,
+      "message": "Noticed one more issue here... with the way .protect_status() works, ec_sync_check_aux_fw() will pretty much always return an error here because when we\u0027re in this path the EC is in RW and the TCPCs should be protected. So we should ignore the return value and always check fw_update anyway (which should be valid even in error cases, at least the ones I\u0027m seeing). This should look something like\n\n if (phase1_rv) {\n   /* It does -- speculatively check if we need display as well */\n   ec_sync_check_aux_fw(ctx, \u0026fw_update); /* ignore return status */\n   if (need_wait_screen || fw_update \u003d\u003d VB_AUX_FW_SLOW_UPDATE)\n     check_reboot_for_display(ctx, sd);\n   return VBERROR_EC_REBOOT_TO_RO_REQUIRED;\n }\n\nCan do this in a follow-up patch too if you don\u0027t want to stop the CQ now.",
+      "revId": "f2090f70c3afcce8233839a1f026b0c7519d394a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
