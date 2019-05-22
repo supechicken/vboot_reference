@@ -98,6 +98,16 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 		return rv;
 	}
 
+	if (fw_update > VB_AUX_FW_NO_UPDATE) {
+		/*
+		 * AUX FW Update is applied successfully. Request EC reboot to
+		 * RO, so that the chips that had FW update gets reset to a
+		 * clean state.
+		 */
+		ec_sync_unload_oprom(ctx, shared, need_wait_screen);
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
 	/* Reboot to unload VGA Option ROM if needed */
 	rv = ec_sync_unload_oprom(ctx, shared, need_wait_screen);
 	if (rv)
