@@ -43,8 +43,13 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	VbSharedDataHeader *shared = sd->vbsd;
+<<<<<<< HEAD   (9d6dc0 vboot: Add ui for setting vendor data in VPD)
 	VbAuxFwUpdateSeverity_t fw_update;
 	VbError_t rv;
+=======
+	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
+	VbError_t rv, update_aux_fw_rv = VBERROR_SUCCESS;
+>>>>>>> CHANGE (ea164d lib/ec_sync_all: Reboot EC to RO after successful AUX FW upd)
 
 	rv = ec_sync_check_aux_fw(ctx, &fw_update);
 	if (rv)
@@ -87,6 +92,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
+<<<<<<< HEAD   (9d6dc0 vboot: Add ui for setting vendor data in VPD)
 	/*
 	 * Do Aux FW software sync and protect devices tunneled through the EC.
 	 * Aux FW update may request RO reboot to force EC cold reset so also
@@ -96,10 +102,45 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	if (rv) {
 		ec_sync_unload_oprom(ctx, shared, need_wait_screen);
 		return rv;
+=======
+	/* EC in RW, now we can check the severity of the AUX FW update */
+	rv = ec_sync_check_aux_fw(ctx, &fw_update);
+	if (rv)
+		return rv;
+
+	/* If AUX FW update is slow display the wait screen */
+	if (fw_update == VB_AUX_FW_SLOW_UPDATE) {
+		need_wait_screen = 1;
+		/* Display should be available, but better check again */
+		if (check_reboot_for_oprom(ctx, shared))
+			return VBERROR_REBOOT_REQUIRED;
+		display_wait_screen(ctx, "AUX FW");
 	}
 
-	/* Reboot to unload VGA Option ROM if needed */
+	/* Do Aux FW software sync */
+	if (fw_update > VB_AUX_FW_NO_UPDATE) {
+		update_aux_fw_rv = ec_sync_update_aux_fw(ctx);
+		/*
+		 * If requesting EC reboot to RO (because some tunnels are
+		 * protected), do not disable the display to avoid reboot
+		 * during display re-init.
+		 */
+		if (update_aux_fw_rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED)
+			return update_aux_fw_rv;
+>>>>>>> CHANGE (ea164d lib/ec_sync_all: Reboot EC to RO after successful AUX FW upd)
+	}
+
+	/* Reboot to unload VGA Option ROM for both slow EC & AUX FW updates */
 	rv = ec_sync_unload_oprom(ctx, shared, need_wait_screen);
+	/* Something went wrong during AUX FW update */
+	if (update_aux_fw_rv)
+		return update_aux_fw_rv;
+	/*
+	 * AUX FW Update is applied successfully. Request EC reboot to RO,
+	 * so that the chips that had FW update gets reset to a clean state.
+	 */
+	if (fw_update > VB_AUX_FW_NO_UPDATE)
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	if (rv)
 		return rv;
 
