@@ -87,6 +87,7 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
+<<<<<<< HEAD   (9d6dc0 vboot: Add ui for setting vendor data in VPD)
 	/*
 	 * Do Aux FW software sync and protect devices tunneled through the EC.
 	 * Aux FW update may request RO reboot to force EC cold reset so also
@@ -102,6 +103,33 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	rv = ec_sync_unload_oprom(ctx, shared, need_wait_screen);
 	if (rv)
 		return rv;
+=======
+	/* EC in RW, now we can check the severity of the AUX FW update */
+	rv = ec_sync_check_aux_fw(ctx, &fw_update);
+	if (rv)
+		return rv;
+
+	/* If AUX FW update is slow display the wait screen */
+	if (fw_update == VB_AUX_FW_SLOW_UPDATE) {
+		/* Display should be available, but better check again */
+		if (check_reboot_for_display(ctx))
+			return VBERROR_REBOOT_REQUIRED;
+		display_wait_screen(ctx, "AUX FW");
+	}
+
+	if (fw_update > VB_AUX_FW_NO_UPDATE) {
+		/* Do Aux FW software sync */
+		rv = ec_sync_update_aux_fw(ctx);
+		if (rv)
+			return rv;
+		/*
+		 * AUX FW Update is applied successfully. Request EC reboot to
+		 * RO, so that the chips that had FW update gets reset to a
+		 * clean state.
+		 */
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+>>>>>>> CHANGE (80bc32 lib/ec_sync_all: Reboot EC to RO after successful AUX FW upd)
 
 	/* Phase 3; Completes sync and handles battery cutoff */
 	rv = ec_sync_phase3(ctx);
