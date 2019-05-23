@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include "2crypto.h"
 #include "2gbb_flags.h"
+#include "vb2_struct.h"  /* TODO: Relocate to within vboot2 namespace. */
+#include "vb2_common.h"  /* TODO: Relocate to within vboot2 namespace. */
 
 /*
  * Key block flags.

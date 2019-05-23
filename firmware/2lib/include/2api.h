@@ -643,6 +643,15 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
  */
 int vb2api_kernel_phase3(struct vb2_context *ctx);
 
+/**
+ * Read the hardware ID from the GBB.
+ *
+ * Hardware ID is stored on vboot's internal workbuf.  It's location is cached,
+ * and the same location is returned on subsequent calls within the same
+ * application's lifespan.
+ */
+int vb2api_gbb_read_hwid(struct vb2_context *ctx, char **hwid, uint32_t *size);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
