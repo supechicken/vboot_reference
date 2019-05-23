@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "156e4b2a_167678cf",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-23T10:58:57Z",
+      "side": 1,
+      "message": "Those ground rules seem pretty good for dealing with this madness.\n\nI also realized that we sort of need to make a choice as to whether to put the burden of \"error handling\" on the function caller or callee.\n\n[A] If the burden is on the caller, then the caller must assume that the workbuf sent into the function may be in different states before vs. after the function call.  As such, almost all callers should create a local workbuf to send into the function as you have suggested.  (Except in the case where a failure will cascade down -- then preserving the original state of the caller\u0027s workbuf doesn\u0027t actually matter.)\n\n[B] If the burden is on the callee, then the callee must always leave workbuf in its original state on failure.  This means that when a caller *wants* to keep the result of some function call on the workbuf permanently, it may simply pass the current workbuf without creating a local copy.  In the case that it only needs the value from the workbuf temporarily, it may create a local copy of the workbuf for the function call, and then throw it away after reading the data.\n\nI\u0027m inclined to using [B], which enforces well-designed functions, and simplifies the calling process.",
+      "parentUuid": "c658a2cf_718203da",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
