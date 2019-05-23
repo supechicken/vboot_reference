@@ -15,7 +15,6 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2struct.h"
-#include "gbb_access.h"
 #include "host_common.h"
 #include "test_common.h"
 #include "vboot_common.h"
@@ -29,7 +28,8 @@ static char gbb_data[4096 + sizeof(struct vb2_gbb_header)];
 static struct vb2_gbb_header *gbb = (struct vb2_gbb_header *)gbb_data;
 static char debug_info[4096];
 static struct vb2_context ctx;
-struct vb2_shared_data *sd;
+static struct vb2_shared_data *sd;
+static struct vb2_workbuf wb;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static uint32_t mock_localization_count;
 static uint32_t mock_altfw_mask;
@@ -46,8 +46,9 @@ static void ResetMocks(void)
 	gbb_used = sizeof(struct vb2_gbb_header);
 
 	gbb->hwid_offset = gbb_used;
-	strcpy(gbb_data + gbb->hwid_offset, "Test HWID");
-	gbb->hwid_size = strlen(gbb_data + gbb->hwid_offset) + 1;
+	const char hwid[] = "Test HWID\0garbagegarbage";
+	strcpy(gbb_data + gbb->hwid_offset, hwid);
+	gbb->hwid_size = sizeof(hwid);
 	gbb_used = (gbb_used + gbb->hwid_size + 7) & ~7;
 
 	mock_localization_count = 3;
@@ -66,12 +67,14 @@ static void ResetMocks(void)
 	ctx.workbuf_size = sizeof(workbuf);
 	vb2_init_context(&ctx);
 	vb2_nv_init(&ctx);
+	vb2_workbuf_from_ctx(&ctx, &wb);
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
+
 
 	*debug_info = 0;
 }
@@ -130,7 +133,8 @@ VbError_t VbExDisplayDebugInfo(const char *info_str, int full_info)
 /* Test displaying debug info */
 static void DebugInfoTest(void)
 {
-	char hwid[256];
+	char *hwid;
+	uint32_t size;
 	int i;
 
 	/* Recovery string should be non-null for any code */
@@ -139,28 +143,35 @@ static void DebugInfoTest(void)
 
 	/* HWID should come from the gbb */
 	ResetMocks();
-	VbGbbReadHWID(&ctx, hwid, sizeof(hwid));
-	TEST_EQ(strcmp(hwid, "Test HWID"), 0, "HWID");
+	TEST_SUCC(vb2_gbb_read_hwid(&ctx, &hwid, &size, &wb),
+		  "Read HWID");
+	TEST_TRUE((void *)wb.buf > (void *)hwid, "  workbuf contains HWID");
+	TEST_EQ(strcmp(hwid, "Test HWID"), 0, "  HWID correct");
+	TEST_EQ(strlen(hwid) + 1, size, "  HWID size correct");
 
 	ResetMocks();
 	gbb->hwid_size = 0;
-	VbGbbReadHWID(&ctx, hwid, sizeof(hwid));
-	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID missing");
+	TEST_EQ(VB2_ERROR_GBB_INVALID,
+		vb2_gbb_read_hwid(&ctx, &hwid, NULL, &wb),
+		"HWID size invalid (HWID missing)");
 
 	ResetMocks();
 	gbb->hwid_offset = sizeof(gbb_data) + 1;
-	VbGbbReadHWID(&ctx, hwid, sizeof(hwid));
-	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID past end");
+	TEST_EQ(VB2_ERROR_EX_READ_RESOURCE_SIZE,
+		vb2_gbb_read_hwid(&ctx, &hwid, NULL, &wb),
+		"HWID offset invalid (HWID missing)");
 
 	ResetMocks();
-	gbb->hwid_size = sizeof(gbb_data);
-	VbGbbReadHWID(&ctx, hwid, sizeof(hwid));
-	TEST_EQ(strcmp(hwid, "{INVALID}"), 0, "HWID overflow");
+	gbb->hwid_size = wb.size + 1;
+	TEST_EQ(VB2_ERROR_GBB_WORKBUF,
+		vb2_gbb_read_hwid(&ctx, &hwid, NULL, &wb),
+		"workbuf too small for HWID");
 
 	/* Display debug info */
 	ResetMocks();
-	VbDisplayDebugInfo(&ctx);
-	TEST_NEQ(*debug_info, '\0', "Some debug info was displayed");
+	TEST_SUCC(VbDisplayDebugInfo(&ctx),
+		  "Display debug info");
+	TEST_NEQ(*debug_info, '\0', "  Some debug info was displayed");
 }
 
 /* Test display key checking */
