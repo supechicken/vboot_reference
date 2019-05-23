@@ -115,7 +115,6 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 	uint32_t key;
 	uint32_t key_flags;
 	uint32_t btn;
-	int phys_presence_button_was_pressed = 0;
 	int shutdown_requested = 0;
 
 	VB2_DEBUG("Entering(%x)\n", confirm_flags);
@@ -154,18 +153,16 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			break;
 		default:
 			/* If the physical presence button is physical, and is
-			 * pressed, this is also a YES, but must wait for
-			 * release.
+			 * pressed, this is also a YES.
+			 *
+			 * HACK for sarien: do not wait for release
+			 * https://issuetracker.google.com/129471321
 			 */
 			btn = VbExGetSwitches(
 				VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED);
 			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL)) {
 				if (btn) {
-					VB2_DEBUG("Presence button pressed, "
-						  "awaiting release\n");
-					phys_presence_button_was_pressed = 1;
-				} else if (phys_presence_button_was_pressed) {
-					VB2_DEBUG("Presence button released "
+					VB2_DEBUG("Presence button pressed "
 						  "(1)\n");
 					return 1;
 				}
