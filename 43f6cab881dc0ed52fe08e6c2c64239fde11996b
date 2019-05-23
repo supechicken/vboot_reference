@@ -22,6 +22,30 @@
       "revId": "43f6cab881dc0ed52fe08e6c2c64239fde11996b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4cc8fc_aa76d0ca",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-23T01:28:48Z",
+      "side": 1,
+      "message": "Yes, thanks, this is a bug. Although I hope it doesn\u0027t break the feature completely? I think it should run into the \"ERROR: Diagnostic mode needs a display request; rebooting\" path, reboot again and then work correctly.\n\nI think setting the NVRAM flag unconditionally should be okay. Since we know we\u0027ll always go into the diagnostic path after this we can just unconditionally unset the flag again there (which we already do), and then this should be fine even on devices that never skip display init.",
+      "parentUuid": "eaa25945_5b19cc23",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 64
+      },
+      "revId": "43f6cab881dc0ed52fe08e6c2c64239fde11996b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
