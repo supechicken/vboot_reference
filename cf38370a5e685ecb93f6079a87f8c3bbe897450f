@@ -22,6 +22,30 @@
       "revId": "cf38370a5e685ecb93f6079a87f8c3bbe897450f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d9005a5_40908267",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-05-23T19:16:47Z",
+      "side": 1,
+      "message": "This one doesn\u0027t get printed to the screen, but since I\u0027m already updating it seems silly not to fix.",
+      "parentUuid": "edd0593e_cfc51931",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 34
+      },
+      "revId": "cf38370a5e685ecb93f6079a87f8c3bbe897450f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
