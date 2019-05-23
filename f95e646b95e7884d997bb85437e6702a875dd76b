@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "362588cf_a8c998fd",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2019-05-23T19:17:36Z",
+      "side": 1,
+      "message": "Might need to pass 0 or only pass if coming from a trusted keyboard.   I was toying with the idea of the following approach (though I\u0027m in MTV without a sarien so haven\u0027t runtime tested other than patching up vboot_api_kernel2_tests.c to pass with the changes [mostly by changing instances of GPIO_SHUTDOWN to GPIO_LID_CLOSED]):\n\n@@ -152,6 +152,13 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)\n \t\t\tVB2_DEBUG(\"No (0)\\n\");\n \t\t\treturn 0;\n \t\t\tbreak;\n+\t\tcase VB_BUTTON_POWER_SHORT_PRESS:\n+\t\t\t/* This source of button press event is untrusted, so\n+\t\t\t * shutdown rather than accept as a source of\n+\t\t\t * confirmation.  shutdown_requested should already be\n+\t\t\t * non-zero.\n+\t\t\t */\n+\t\t\tbreak;\n \t\tdefault:\n \t\t\t/* If the physical presence button is physical, and is\n \t\t\t * pressed, this is also a YES, but must wait for\n@@ -160,6 +167,12 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)\n \t\t\tbtn \u003d VbExGetSwitches(\n \t\t\t\tVB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED);\n \t\t\tif (!(shared-\u003eflags \u0026 VBSD_BOOT_REC_SWITCH_VIRTUAL)) {\n+\t\t\t\tif (shutdown_requested \u0026\n+\t\t\t\t    VB_SHUTDOWN_REQUEST_POWER_BUTTON) {\n+\t\t\t\t\tbtn |\u003d VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;\n+\t\t\t\t\tshutdown_requested \u0026\u003d\n+\t\t\t\t\t\t~VB_SHUTDOWN_REQUEST_POWER_BUTTON;\n+\t\t\t\t}\n \t\t\t\tif (btn) {",
+      "range": {
+        "startLine": 105,
+        "startChar": 43,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "f95e646b95e7884d997bb85437e6702a875dd76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
