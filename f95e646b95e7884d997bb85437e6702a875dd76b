@@ -46,6 +46,30 @@
       "revId": "f95e646b95e7884d997bb85437e6702a875dd76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1bd2a8_72f93bc6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-23T19:53:38Z",
+      "side": 1,
+      "message": "I think this is problematic, because if the Sarien EC reports the power button (I assume this is the same physical button that Cr50 reports... or does the device have two separate power buttons?), you would see both events from pressing it in an undefined order, and so you might break out of the loop and shut down even if Cr50 *also* reported a press.\n\nI think the much easier solution if you\u0027re already hacking around in the branch anyway is to just not pass \u0027key\u0027 to VbWantShutdown(). No legitimate shutdown request should ever need to come through the EC (because you\u0027ll also always get it through Cr50 as well). So just ignore the EC completely.",
+      "parentUuid": "3b51bc0f_c69508fa",
+      "range": {
+        "startLine": 105,
+        "startChar": 43,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "f95e646b95e7884d997bb85437e6702a875dd76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
