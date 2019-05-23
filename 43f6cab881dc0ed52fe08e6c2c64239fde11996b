@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa25945_5b19cc23",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-05-23T01:15:18Z",
+      "side": 1,
+      "message": "Since diagnostics is launched from recovery, the display is \"available\" when this is checked, and so the vb2_nv_set() is never called.  This means when it resets to start diagnostics it resets again to initialize the display.\n\nWith OPROM_MATTERS gone, the flag likely needs to be set unconditionally.  There might be other cases like this one..",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 64
+      },
+      "revId": "43f6cab881dc0ed52fe08e6c2c64239fde11996b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
