@@ -33,6 +33,24 @@
       "revId": "e580122b93a2f77538b7a0b6d51e038f8ea08d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ef269f_b4c5119a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-05-23T00:37:36Z",
+      "side": 1,
+      "message": "INFO and WARN didn\u0027t include __FUNCTION__ by default before CL:1601678, since I thought these messages are easier to read if they don\u0027t have function signature; and used to have __FUNCTION__ explicitly for few functions (those removed in this CL).\n\nBut anyway, the new format (always add func) may be also fine.",
+      "parentUuid": "63a48ed1_2d34b2fa",
+      "revId": "e580122b93a2f77538b7a0b6d51e038f8ea08d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
