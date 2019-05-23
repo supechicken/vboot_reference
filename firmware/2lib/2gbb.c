@@ -1,0 +1,135 @@
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * GBB accessor functions.
+ */
+
+#include "2common.h"
+#include "2misc.h"
+
+static int vb2_gbb_read_key(struct vb2_context *ctx, uint32_t offset,
+			    uint32_t size, struct vb2_packed_key **keyp,
+			    struct vb2_workbuf *wb)
+{
+	struct vb2_workbuf wblocal = *wb;
+	uint32_t real_size;
+	int rv;
+
+	/* Check offset and size. */
+	if (offset < sizeof(struct vb2_gbb_header))
+		return VB2_ERROR_GBB_INVALID;
+	if (size < sizeof(**keyp))
+		return VB2_ERROR_GBB_INVALID;
+
+	/* GBB header might be padded.  Retrieve the vb2_packed_key
+	   header so we can find out what the real size is. */
+	*keyp = vb2_workbuf_alloc(&wblocal, sizeof(**keyp));
+	if (!*keyp)
+		return VB2_ERROR_GBB_WORKBUF;
+	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp,
+				 sizeof(**keyp));
+	if (rv)
+		return rv;
+
+	rv = vb2_verify_packed_key_inside(*keyp, size, *keyp);
+	if (rv)
+		return rv;
+
+	/* Deal with a zero-size key (used in testing). */
+	real_size = (*keyp)->key_offset + (*keyp)->key_size;
+	if (real_size < sizeof(**keyp))
+		real_size = sizeof(**keyp);
+
+	/* Now that we know the real size of the key, retrieve the key
+	   data, and write it on the workbuf, directly after vb2_packed_key. */
+	*keyp = vb2_workbuf_realloc(&wblocal, sizeof(**keyp), real_size);
+	if (!*keyp)
+		return VB2_ERROR_GBB_WORKBUF;
+
+	rv = vb2ex_read_resource(ctx, VB2_RES_GBB,
+				 offset + sizeof(**keyp),
+				 (void *)*keyp + sizeof(**keyp),
+				 real_size - sizeof(**keyp));
+	if (!rv)
+		*wb = wblocal;
+	return rv;
+}
+
+int vb2_gbb_read_root_key(struct vb2_context *ctx, struct vb2_packed_key **keyp,
+			  struct vb2_workbuf *wb)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+
+	return vb2_gbb_read_key(ctx, gbb->rootkey_offset, gbb->rootkey_size,
+				keyp, wb);
+}
+
+int vb2_gbb_read_recovery_key(struct vb2_context *ctx,
+			      struct vb2_packed_key **keyp,
+			      struct vb2_workbuf *wb)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+
+	return vb2_gbb_read_key(ctx, gbb->recovery_key_offset,
+				gbb->recovery_key_size, keyp, wb);
+}
+
+int vb2_gbb_read_hwid(struct vb2_context *ctx, char **hwid, uint32_t *size,
+		      struct vb2_workbuf *wb)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	uint32_t real_size;
+	int ret;
+
+	if (gbb->hwid_size == 0) {
+		VB2_DEBUG("%s: invalid HWID size %d\n", __func__,
+			  gbb->hwid_size);
+		return VB2_ERROR_GBB_INVALID;
+	}
+
+	*hwid = vb2_workbuf_alloc(wb, gbb->hwid_size);
+	if (!*hwid) {
+		VB2_DEBUG("%s: allocation failure\n", __func__);
+		return VB2_ERROR_GBB_WORKBUF;
+	}
+
+	ret = vb2ex_read_resource(ctx, VB2_RES_GBB, gbb->hwid_offset,
+				  *hwid, gbb->hwid_size);
+	if (ret) {
+		VB2_DEBUG("%s: read resource failure: %d\n", __func__, ret);
+		vb2_workbuf_free(wb, gbb->hwid_size);
+		return ret;
+	}
+
+	/* HWID in GBB is padded.  Get the real size, and realloc
+	   to save space on the workbuf. */
+	real_size = strlen(*hwid) + 1;
+	*hwid = vb2_workbuf_realloc(wb, gbb->hwid_size, real_size);
+
+	if (size)
+		*size = real_size;
+	return VB2_SUCCESS;
+}
+
+int vb2api_gbb_read_hwid(struct vb2_context *ctx, char **hwid, uint32_t *size)
+{
+	static char *hwid_cache;
+	struct vb2_workbuf wb;
+	int ret;
+
+	if (hwid_cache) {
+		*hwid = hwid_cache;
+		return VB2_SUCCESS;
+	}
+
+	/* Save on workbuf permanently and store location in local
+	   static pointer. */
+	vb2_workbuf_from_ctx(ctx, &wb);
+	ret = vb2_gbb_read_hwid(ctx, hwid, size, &wb);
+	if (!ret) {
+		hwid_cache = *hwid;
+		ctx->workbuf_used = vb2_offset_of(ctx->workbuf, wb.buf);
+	}
+	return ret;
+}
