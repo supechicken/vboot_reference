@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bba7988c_ccd0170d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-23T20:24:25Z",
+      "side": 1,
+      "message": "nit: seems more complicated than necessary (there should be no case where you need to pass \u0027key\u0027 on Sarien, ever), but not wrong",
+      "revId": "bd4d7eb780f37a46eb32ce4eb62296b65e55bc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "649d39e4_7fe6c8e4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-23T20:24:25Z",
+      "side": 1,
+      "message": "nit: parenthesis for readability? (next line too)",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 53
+      },
+      "revId": "bd4d7eb780f37a46eb32ce4eb62296b65e55bc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
