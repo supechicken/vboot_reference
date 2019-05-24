@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "18f399e5_2c6773d4",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T23:47:36Z",
+      "side": 1,
+      "message": "Well, we should make sure we still do the full vb2_verify_packed_key_inside() somewhere. If we\u0027re doing it in this function already, we can take it out of vb2_unpack_key().",
+      "parentUuid": "38ca9c5d_b6e65e8d",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
