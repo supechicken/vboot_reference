@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "88f7ead8_b33b2698",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:45:32Z",
+      "side": 1,
+      "message": "Yes, cleaning up allocations in error cases should be on the callee. I\u0027d usually just do that with vb2_workbuf_free(), but in certain cases creating a local copy of the original workbuf in case you need to go back to that may be simpler.",
+      "parentUuid": "156e4b2a_167678cf",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14
