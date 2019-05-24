@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38ca9c5d_b6e65e8d",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-24T20:07:20Z",
+      "side": 1,
+      "message": "It seems like it\u0027s sufficient to look at vb2_packed_key.key_offset + vb2_packed_key.key_size, which I believe is what vb2_unpack_key currently does?",
+      "parentUuid": "9c12048e_859aa9f5",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
@@ -36,6 +60,24 @@
       "writtenOn": "2019-05-24T00:42:17Z",
       "side": 1,
       "message": "This still allocates more than necessary (since the sizes stored in the GBB are of the area reserved, not of the actual key). Can we fix that? It should look somewhat like this:\n\n if (*size \u003c sizeof(struct vb2_packed_key))\n   return some_fitting_error;\n\n *keyp \u003d vb2_workbuf_alloc(wb, sizeof(struct vb2_packed_key));\n if (!*keyp)\n   return VB2_ERROR_GBB_WORKBUF;\n\n rv \u003d vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp, sizeof(struct vb2_packed_key));\n if (!rv)\n   rv \u003d vb2_verify_packed_key_inside(*keyp, *size, *keyp);\n\n if (rv) {\n   vb2_workbuf_free(wb, sizeof(struct vb2_packed_key));\n   return rv;\n }\n\n /* A zero-size key is valid. (Is this actually still true today? Where?) */\n *size \u003d MIN(sizeof(vb2_packed_key), (*keyp)-\u003ekey_offset + (*keyp)-\u003ekey_size);\n *keyp \u003d vb2_workbuf_realloc(wb, *size);\n if (!*keyp)\n   return VB2_ERROR_GBB_WORKBUF;\n\n rv \u003d vb2ex_read_resource(ctx, VB2_RES_GBB, offset + sizeof(vb2_packed_key), *size - sizeof(vb2_packed_key));\n if (rv) {\n   vb2_workbuf_free(wb, *size);\n   return rv;\n }\n\n return VB2_SUCCESS;",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ec246f_a6f58280",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-24T20:07:20Z",
+      "side": 1,
+      "message": "Right -- I was meaning to get back to this.  I\u0027ve mostly followed your code above with some extra error checking etc.",
+      "parentUuid": "dc502e93_9e985635",
       "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
