@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c12048e_859aa9f5",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "If we do the below, this should probably be a pointer to pass out the size actually allocated, so callers can run vb2_unpack_key_buffer() on it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc502e93_9e985635",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "This still allocates more than necessary (since the sizes stored in the GBB are of the area reserved, not of the actual key). Can we fix that? It should look somewhat like this:\n\n if (*size \u003c sizeof(struct vb2_packed_key))\n   return some_fitting_error;\n\n *keyp \u003d vb2_workbuf_alloc(wb, sizeof(struct vb2_packed_key));\n if (!*keyp)\n   return VB2_ERROR_GBB_WORKBUF;\n\n rv \u003d vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp, sizeof(struct vb2_packed_key));\n if (!rv)\n   rv \u003d vb2_verify_packed_key_inside(*keyp, *size, *keyp);\n\n if (rv) {\n   vb2_workbuf_free(wb, sizeof(struct vb2_packed_key));\n   return rv;\n }\n\n /* A zero-size key is valid. (Is this actually still true today? Where?) */\n *size \u003d MIN(sizeof(vb2_packed_key), (*keyp)-\u003ekey_offset + (*keyp)-\u003ekey_size);\n *keyp \u003d vb2_workbuf_realloc(wb, *size);\n if (!*keyp)\n   return VB2_ERROR_GBB_WORKBUF;\n\n rv \u003d vb2ex_read_resource(ctx, VB2_RES_GBB, offset + sizeof(vb2_packed_key), *size - sizeof(vb2_packed_key));\n if (rv) {\n   vb2_workbuf_free(wb, *size);\n   return rv;\n }\n\n return VB2_SUCCESS;",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29791c94_289071b0",
+        "filename": "firmware/2lib/include/2gbb.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "This sounds no longer true. The key will be allocated on the passed-in workbuf. The caller should discard the workbuf state (according to the rules) if it wants to free the key. Calling vb2_workbuf_free() on an object that was allocated by a different function should not be legal, I\u0027d say (it gets too hard to follow).",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4206130_22020afe",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "This should be declared inside the block.",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d61057_bc37f8ae",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a4227d_4eea44b4",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-24T00:42:17Z",
+      "side": 1,
+      "message": "This is exactly one of those tricky cases, because vb2_load_partition() is called from here.\n\nI think the two valid ways to do this are to either declare \u0027wb\u0027 in the scope of this if (kBootRecovery \u003d\u003d shcall-\u003ebootmode) {} block (and write it back to workbuf_used afterwards like you\u0027re doing here), so that it goes out of scope again immediately and we can do another workbuf_from_ctx() in vb2_load_partition() later, or pass the workbuffer pointer into vb2_load_partition() as another argument. I think the second option is probably better... that way we also don\u0027t need to persist the recovery key permanently on the workbuffer, because it\u0027s not used again after this function (this can actually be a real issue because if you keep plugging in invalid USB sticks over and over, you might keep calling LoadKernel() and arbitrary number of times in a single recovery boot).",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
