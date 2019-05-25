@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e0dbf63_cf5c38ff",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-25T00:01:05Z",
+      "side": 1,
+      "message": "Since we\u0027re taking out the individual .protect() methods for VbootAuxFwOps, there should be no reason to call update_aux_fw() at all anymore if we don\u0027t have an update pending. So why not restructure this like\n\n if (fw_update \u003e VB_AUX_FW_NO_UPDATE) {\n   rv \u003d ec_sync_update_aux_fw(ctx);\n   if (rv \u003d\u003d VBERROR_EC_REBOOT_TO_RO_REQUIRED)\n     return rv;\n   ec_sync_disable_display(ctx, need_wait_screen);\n   if (rv)\n     return rv;\n   return VBERROR_EC_REBOOT_TO_RO_REQUIRED;\n }\n\n(Would have to land the changes for the new protect flow before that, but I think long term it makes things cleaner.)",
+      "revId": "e34fcaf1aeb10743f62c2fed730ca1ef53f3f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc03ed7_d93f0924",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-25T00:01:05Z",
+      "side": 1,
+      "message": "nit: maybe just fw_update \u003e VB_AUX_FW_NO_UPDATE?",
+      "revId": "e34fcaf1aeb10743f62c2fed730ca1ef53f3f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
