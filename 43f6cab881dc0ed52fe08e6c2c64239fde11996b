@@ -46,6 +46,30 @@
       "revId": "43f6cab881dc0ed52fe08e6c2c64239fde11996b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802ed48e_bf98a1eb",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-27T07:38:07Z",
+      "side": 1,
+      "message": "Filed a bug here:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d967298",
+      "parentUuid": "ca4cc8fc_aa76d0ca",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 64
+      },
+      "revId": "43f6cab881dc0ed52fe08e6c2c64239fde11996b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
