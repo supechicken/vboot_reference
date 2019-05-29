@@ -158,6 +158,13 @@ VbError_t VbBootNormal(struct vb2_context *ctx)
 	uint32_t max_rollforward = vb2_nv_get(ctx,
 					      VB2_NV_KERNEL_MAX_ROLLFORWARD);
 
+	if (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST)) {
+		VB2_DEBUG("Normal mode: "
+			  "reboot to undo display initialization\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
+		return VBERROR_REBOOT_REQUIRED;
+	}
+
 	/* Boot from fixed disk only */
 	VB2_DEBUG("Entering\n");
 
