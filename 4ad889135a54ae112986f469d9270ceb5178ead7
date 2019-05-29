@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a55b83_63f038a6",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T19:52:16Z",
+      "side": 1,
+      "message": "Really, I think you can take this out now and just use ec_will_update_slowly() directly below (it\u0027s a trivial function, it isn\u0027t worth caching).",
+      "revId": "4ad889135a54ae112986f469d9270ceb5178ead7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9994022_cee70a49",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T19:52:16Z",
+      "side": 1,
+      "message": "nit: not really sure why this needs to get more complicated. Note that in practice, I\u0027m 99.9% sure no current or future device will ever again have ec_will_update_slowly() true, so no need to optimize that case.\n\nneed_reboot isn\u0027t a great name anyway, we\u0027re likely gonna reboot either way from here. need_display would be more accurate.",
+      "revId": "4ad889135a54ae112986f469d9270ceb5178ead7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
