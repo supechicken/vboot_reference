@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "264a6bfe_e7feb3ed",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-29T15:42:27Z",
+      "side": 1,
+      "message": "Done. This CL and update_image returning VBERROR_SUCCESS CL in depthcharge are co-dependent. Also the new protect flow CL in depthcharge is the base CL in that stack.",
+      "parentUuid": "5e0dbf63_cf5c38ff",
+      "revId": "e34fcaf1aeb10743f62c2fed730ca1ef53f3f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc03ed7_d93f0924",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "e34fcaf1aeb10743f62c2fed730ca1ef53f3f111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ba7220_e98c11ae",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-29T15:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc03ed7_d93f0924",
+      "revId": "e34fcaf1aeb10743f62c2fed730ca1ef53f3f111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
