@@ -151,6 +151,30 @@ uint32_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	return retval;
 }
 
+/**
+ * Reset any NVRAM requests.
+ *
+ * Returns 1 if any requests were reset, 0 otherwise.
+ */
+static int vb2_reset_nv_requests(struct vb2_context *ctx)
+{
+	int nv_changed = 0;
+
+	if (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST)) {
+		VB2_DEBUG("Unset display request\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
+		nv_changed = 1;
+	}
+
+	if (vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+		VB2_DEBUG("Unset diagnostic request\n");
+		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
+		nv_changed = 1;
+	}
+
+	return nv_changed;
+}
+
 VbError_t VbBootNormal(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -160,6 +184,11 @@ VbError_t VbBootNormal(struct vb2_context *ctx)
 
 	/* Boot from fixed disk only */
 	VB2_DEBUG("Entering\n");
+
+	if (vb2_reset_nv_requests(ctx)) {
+		VB2_DEBUG("Normal mode: reboot to reset NVRAM requests\n");
+		return VBERROR_REBOOT_REQUIRED;
+	}
 
 	VbError_t rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
 
