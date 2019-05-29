@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "af3811bf_aaafff1a",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "Right. vb2_unpack_key() is called from more places (e.g. with keys read from a keyblock) so it\u0027s probably better to keep validation centralized in there. But that means this function will need to pass the read size back out.",
+      "parentUuid": "ad24e788_57b142f8",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
@@ -231,6 +255,24 @@
       "side": 1,
       "message": "Even if it\u0027s used twice?",
       "parentUuid": "66d61057_bc37f8ae",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92fec69a_d87232bc",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "Yes. The point is letting the C compiler help you check data lifetime restrictions. By declaring the variable within the scope that limits where the workbuffer copy is valid, you make sure it\u0027s impossible that anything still accesses it outside. If you declare it up here it\u0027s in the function\u0027s top-level scope and could theoretically still be accessed after the workbuffer copy was thrown away (I mean, it doesn\u0027t matter here because nothing else in the function is using the workbuffer later, but that might change in the future).\n\nUsing the same variable name twice in one function is fine as long as they\u0027re declared in disjoint scopes.",
+      "parentUuid": "9b8bcd23_17c27492",
       "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

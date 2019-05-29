@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1406882_1d6ed46e",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "VB2_DEBUG() always prints the function name automatically, you don\u0027t need to add it again.",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a69e5f7_11c1daa0",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "Sorry for the flip-flopping on this again, but after rethinking this I don\u0027t think it\u0027s a good idea anymore. Keeping a pointer here that points to the workbuffer (in shared data) feels wrong (and may also cause issues with testing... if it doesn\u0027t, that probably means there\u0027s not enough coverage for this function). If we do want that pointer to cache it, it should be in shared data as well. Which I guess would be a way to solve it.\n\nThe other option would just be to not deal with allocation at all for HWID and just have the caller pass in a buffer. There\u0027s no \"official\" maximum HWID size but we\u0027ve always used 256 which should be more than enough, and easily fits on the caller\u0027s stack frame. I think that might be the best option. (Maybe we\u0027d want to introduce a HWID_MAX_SIZE constant to make allocating it easier.)",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e424a0d_f4934b98",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "Would need to cache size as well.",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708781f5_7ab89450",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this passes anything back out on the workbuffer? So you shouldn\u0027t need to do this.",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d539286_b20ef959",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T23:20:22Z",
+      "side": 1,
+      "message": "This is the part where I think you would have a testing problem. reset_common_data() reinitializes the workbuffer, but you still have that static local pointer pointing to it. Maybe it just happens to work because the stale data is still in the workbuffer array? Maybe reset_common_data() should memset() it to 0 to make sure we don\u0027t rely on that.",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
