@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddd0ee66_73c4b78c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-29T19:44:10Z",
+      "side": 0,
+      "message": "This is a test to make sure it *doesn\u0027t* set the flag unnecessarily, so shouldn\u0027t we keep that (and maybe add something similar below)?",
+      "revId": "eea21fe6a55512eb457dbd176e8e3b55c8b84b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
