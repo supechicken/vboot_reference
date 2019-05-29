@@ -198,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "fad18a2d_ca4247ad",
+        "filename": "firmware/lib/region-init.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "Agreed.  In cases where \"most\" of the return calls are errors, this will be simpler.  Let\u0027s use this approach in vb2_gbb_read_key and vb2_load_partition.",
+      "parentUuid": "88f7ead8_b33b2698",
+      "revId": "71b32bc8ed44bb1cd7bc51c6c53ce3dbc318d3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c029fc_29998fb2",
         "filename": "firmware/lib/region-init.c",
         "patchSetId": 14

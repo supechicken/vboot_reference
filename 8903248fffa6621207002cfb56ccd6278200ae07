@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ad24e788_57b142f8",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "I added a call to vb2_verify_packed_key_inside to this function.\n\nHowever, removing the call from vb2_unpack_key_buffer results in the test \"buffer too small\" from vb20_common2_tests.c failing.\n\nAnd since vb2_unpack_key and vb2_unpack_key_buffer are called from quite a number of other places, I\u0027d be hesitant to just delete that test.",
+      "parentUuid": "18f399e5_2c6773d4",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
@@ -125,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "84483714_25a59539",
+        "filename": "firmware/2lib/include/2gbb.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29791c94_289071b0",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4206130_22020afe",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 24
@@ -139,6 +181,24 @@
       "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5ba862_b9af8e20",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4206130_22020afe",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "9b8bcd23_17c27492",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "Even if it\u0027s used twice?",
+      "parentUuid": "66d61057_bc37f8ae",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59a4227d_4eea44b4",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 24
@@ -170,6 +248,24 @@
       "writtenOn": "2019-05-24T00:42:17Z",
       "side": 1,
       "message": "This is exactly one of those tricky cases, because vb2_load_partition() is called from here.\n\nI think the two valid ways to do this are to either declare \u0027wb\u0027 in the scope of this if (kBootRecovery \u003d\u003d shcall-\u003ebootmode) {} block (and write it back to workbuf_used afterwards like you\u0027re doing here), so that it goes out of scope again immediately and we can do another workbuf_from_ctx() in vb2_load_partition() later, or pass the workbuffer pointer into vb2_load_partition() as another argument. I think the second option is probably better... that way we also don\u0027t need to persist the recovery key permanently on the workbuffer, because it\u0027s not used again after this function (this can actually be a real issue because if you keep plugging in invalid USB sticks over and over, you might keep calling LoadKernel() and arbitrary number of times in a single recovery boot).",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a4450e_c1c8c401",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-29T06:06:15Z",
+      "side": 1,
+      "message": "Agree that the second option is better.",
+      "parentUuid": "59a4227d_4eea44b4",
       "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
