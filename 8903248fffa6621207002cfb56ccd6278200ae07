@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "640ba838_5acfb308",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "I\u0027m still not quite sure why we need to pass the read size out.\n\nThis function verifies the sizes and offsets specified both in the GBB header, and in the vb2_packed_key struct.  Once it returns, we are guaranteed to have a vb2_packed_key with consistent values for key_offset and key_size.  We are also guaranteed that everything fits properly onto the workbuf.\n\nThe caller now has the combination of the vb2_packed_key itself, plus key_offset and key_size to determine where all the data is located.  If the caller wants the total size of this data block, it may calculate as: key_offset + key_size.  This is exactly what the function vb2_unpack_key does.",
+      "parentUuid": "af3811bf_aaafff1a",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
@@ -273,6 +297,24 @@
       "side": 1,
       "message": "Yes. The point is letting the C compiler help you check data lifetime restrictions. By declaring the variable within the scope that limits where the workbuffer copy is valid, you make sure it\u0027s impossible that anything still accesses it outside. If you declare it up here it\u0027s in the function\u0027s top-level scope and could theoretically still be accessed after the workbuffer copy was thrown away (I mean, it doesn\u0027t matter here because nothing else in the function is using the workbuffer later, but that might change in the future).\n\nUsing the same variable name twice in one function is fine as long as they\u0027re declared in disjoint scopes.",
       "parentUuid": "9b8bcd23_17c27492",
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb2aa5a_c2113863",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "Yeah, I see your point, especially when the workbuf is being involved here.",
+      "parentUuid": "92fec69a_d87232bc",
       "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

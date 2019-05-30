@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2842bd25_89eb4246",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1406882_1d6ed46e",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a69e5f7_11c1daa0",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 29
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-29T23:20:22Z",
       "side": 1,
       "message": "Sorry for the flip-flopping on this again, but after rethinking this I don\u0027t think it\u0027s a good idea anymore. Keeping a pointer here that points to the workbuffer (in shared data) feels wrong (and may also cause issues with testing... if it doesn\u0027t, that probably means there\u0027s not enough coverage for this function). If we do want that pointer to cache it, it should be in shared data as well. Which I guess would be a way to solve it.\n\nThe other option would just be to not deal with allocation at all for HWID and just have the caller pass in a buffer. There\u0027s no \"official\" maximum HWID size but we\u0027ve always used 256 which should be more than enough, and easily fits on the caller\u0027s stack frame. I think that might be the best option. (Maybe we\u0027d want to introduce a HWID_MAX_SIZE constant to make allocating it easier.)",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab59fa5_8c2ff33a",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "This doesn\u0027t really solve the issue for the keys, which will need an externalized API function as well.  If we have the caller pass in a buffer, they will need to be 2KB+ for the case of Eve.  Presumably the maximum is 4KB (the size specified by GBB headers including padding), but this could potentially change in the future if we need stronger keys.\n\nActually, maybe we should just face the fact that none of these GBB-related API functions will be called from firmware verification phase (except within vboot code), which means they can just as well use malloc/free.  Doesn\u0027t seem to make sense to keep worrying about how to implement this when it\u0027s only used after DRAM is up.",
+      "parentUuid": "6a69e5f7_11c1daa0",
       "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2d96d746_10335ed2",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e424a0d_f4934b98",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708781f5_7ab89450",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 29
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "219be940_73352b19",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708781f5_7ab89450",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d539286_b20ef959",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 29
@@ -81,6 +153,24 @@
       "writtenOn": "2019-05-29T23:20:22Z",
       "side": 1,
       "message": "This is the part where I think you would have a testing problem. reset_common_data() reinitializes the workbuffer, but you still have that static local pointer pointing to it. Maybe it just happens to work because the stale data is still in the workbuffer array? Maybe reset_common_data() should memset() it to 0 to make sure we don\u0027t rely on that.",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4843e83_51709a14",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T11:32:34Z",
+      "side": 1,
+      "message": "Actually, there are two functions being tested here: vb2_gbb_read_hwid and vb2api_gbb_read_hwid.  Only the latter was using the static local pointer.",
+      "parentUuid": "7d539286_b20ef959",
       "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
