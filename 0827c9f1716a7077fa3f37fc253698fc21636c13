@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a4ea5f5_18c5af87",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T05:29:19Z",
+      "side": 1,
+      "message": "This sounds like it implies that this step should be skipped when emulation is enabled (i.e. the function does the checking to see whether emulation is enabled).\n\nMaybe something simpler would make more sense -- like `emulate` or `pretend`.",
+      "range": {
+        "startLine": 890,
+        "startChar": 11,
+        "endLine": 890,
+        "endChar": 28
+      },
+      "revId": "0827c9f1716a7077fa3f37fc253698fc21636c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd22c1b2_57dd39fd",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-05-30T05:29:19Z",
+      "side": 1,
+      "message": "Other debug lines seem to use \"(emulation)\" -- is there a special reason to include \"dummy-\" here?",
+      "range": {
+        "startLine": 902,
+        "startChar": 9,
+        "endLine": 902,
+        "endChar": 24
+      },
+      "revId": "0827c9f1716a7077fa3f37fc253698fc21636c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
