@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe510e99_ef63bee7",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-05-30T06:45:37Z",
+      "side": 1,
+      "message": "well the problem is we may or may not write things on emulation. for AP, we do want to write to an emulation file. For EC/PD, we want to skip all.\n\nI can change this to \u0027is_host\u0027 if that helps.",
+      "parentUuid": "7a4ea5f5_18c5af87",
+      "range": {
+        "startLine": 890,
+        "startChar": 11,
+        "endLine": 890,
+        "endChar": 28
+      },
+      "revId": "0827c9f1716a7077fa3f37fc253698fc21636c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd22c1b2_57dd39fd",
         "filename": "futility/updater.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-30T05:29:19Z",
       "side": 1,
       "message": "Other debug lines seem to use \"(emulation)\" -- is there a special reason to include \"dummy-\" here?",
+      "range": {
+        "startLine": 902,
+        "startChar": 9,
+        "endLine": 902,
+        "endChar": 24
+      },
+      "revId": "0827c9f1716a7077fa3f37fc253698fc21636c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7965d6_8344a83e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-05-30T06:45:37Z",
+      "side": 1,
+      "message": "Other emulation will really write something to emulation target )file), but this is writing nothing - really dummy action.",
+      "parentUuid": "dd22c1b2_57dd39fd",
       "range": {
         "startLine": 902,
         "startChar": 9,
