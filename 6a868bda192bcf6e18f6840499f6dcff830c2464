@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "efc1a842_0f33e43c",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-30T22:42:49Z",
+      "side": 1,
+      "message": "Do we need externalized API functions for the keys? Not at this point, right?\n\n\u003e Actually, maybe we should just face the fact that none of these GBB-related API functions will be called from firmware verification phase (except within vboot code), which means they can just as well use malloc/free.  Doesn\u0027t seem to make sense to keep worrying about how to implement this when it\u0027s only used after DRAM is up.\n\nWell, I would like to rewrite vb2_load_fw_keyblock() to use this. The more sophisticated key size handling code should save boot time in the critical path.",
+      "parentUuid": "7ab59fa5_8c2ff33a",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e424a0d_f4934b98",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 29
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "Actually, there are two functions being tested here: vb2_gbb_read_hwid and vb2api_gbb_read_hwid.  Only the latter was using the static local pointer.",
       "parentUuid": "7d539286_b20ef959",
+      "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e1fda8_fc306085",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-30T22:42:49Z",
+      "side": 1,
+      "message": "Oh, this is using the internal one... gotcha. But that probably means we should be testing the other one too (if it is significantly different... I\u0027m still favoring the approach of just passing a buffer in, in which case we can probably make it a single function called by both internal and external code).",
+      "parentUuid": "f4843e83_51709a14",
       "revId": "6a868bda192bcf6e18f6840499f6dcff830c2464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

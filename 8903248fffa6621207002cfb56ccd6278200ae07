@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "8e8f7e6d_9e16a9ed",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-30T22:42:49Z",
+      "side": 1,
+      "message": "\u003e The caller now has the combination of the vb2_packed_key itself, plus key_offset and key_size to determine where all the data is located.\n\nExcept for the case where key_size is zero. I think passing the size out is cleaner exactly because of tiny gotchas like that. The caller shouldn\u0027t need to know details and edge cases about how the key structure works, it should have a very straight-forward way to take the result of a vb2_read_gbb_key() and pass it to vb2_unpack_key(). Complicated details should be hidden in the utility functions where feasible.",
+      "parentUuid": "640ba838_5acfb308",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
