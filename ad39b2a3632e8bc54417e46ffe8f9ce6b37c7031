@@ -22,6 +22,30 @@
       "revId": "ad39b2a3632e8bc54417e46ffe8f9ce6b37c7031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb6c97a_bb77b188",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-03T08:40:00Z",
+      "side": 1,
+      "message": "Done. As for the \"reshuffle\", are you talking about the code in VbSelectAndLoadKernel which disables the request flag?\n\ni.e.\n\n  int diag_request \u003d vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST);\n  vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);\n  if (DIAGNOSTIC_UI \u0026\u0026 diag_request) {\n    ...\n  }\n\nEDIT: I\u0027ve addressed this in the next CL.",
+      "parentUuid": "6f70d482_b66b8b74",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "ad39b2a3632e8bc54417e46ffe8f9ce6b37c7031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
