@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9d066286_8c494425",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-03T08:40:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6a55b83_63f038a6",
+      "revId": "4ad889135a54ae112986f469d9270ceb5178ead7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9994022_cee70a49",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-29T19:52:16Z",
       "side": 1,
       "message": "nit: not really sure why this needs to get more complicated. Note that in practice, I\u0027m 99.9% sure no current or future device will ever again have ec_will_update_slowly() true, so no need to optimize that case.\n\nneed_reboot isn\u0027t a great name anyway, we\u0027re likely gonna reboot either way from here. need_display would be more accurate.",
+      "revId": "4ad889135a54ae112986f469d9270ceb5178ead7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a39268_602d1bcb",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-03T08:40:28Z",
+      "side": 1,
+      "message": "In that case, I think I\u0027ll just minimize the changes here and leave it as-is.",
+      "parentUuid": "c9994022_cee70a49",
       "revId": "4ad889135a54ae112986f469d9270ceb5178ead7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
