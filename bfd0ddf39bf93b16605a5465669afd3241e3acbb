@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5b9bac7_dd398e15",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-03T22:56:48Z",
+      "side": 1,
+      "message": "nit: should probably still say \"reset to unload OPROM\" or something similar to clarify why we actually want to reset here.",
+      "revId": "bfd0ddf39bf93b16605a5465669afd3241e3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
