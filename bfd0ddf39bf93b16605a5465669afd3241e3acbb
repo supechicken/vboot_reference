@@ -16,6 +16,24 @@
       "revId": "bfd0ddf39bf93b16605a5465669afd3241e3acbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420c8d2c_e43551aa",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-04T05:55:59Z",
+      "side": 1,
+      "message": "Sure, I can write that above in vb2_reset_nv_requests.\n\nConceivably we may want to reset request values in the future which don\u0027t require a reboot.",
+      "parentUuid": "b5b9bac7_dd398e15",
+      "revId": "bfd0ddf39bf93b16605a5465669afd3241e3acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
