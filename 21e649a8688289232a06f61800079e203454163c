@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f200d611_925fda2f",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-06-04T20:44:52Z",
+      "side": 1,
+      "message": "With the new code structure ec_sync_update_aux_fw() is invoked only if severity \u003e VB_AUX_FW_NO_UPDATE i.e. only for a FW update scenario. In order to force invoking ec_sync_update_aux_fw() and hit the error, the severity is set as VB_AUX_FW_FAST_UPDATE. It can also be set as VB_AUX_FW_SLOW_UPDATE.",
+      "parentUuid": "5d7a41c5_07b7500b",
+      "revId": "21e649a8688289232a06f61800079e203454163c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04ad198e_f8879744",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-04T20:03:46Z",
       "side": 1,
       "message": "Would be nice to add a few more tests for the specific functionality we added recently (e.g. that even if it needs to reboot in phase1 it will detect whether it needs to set the display request flag).",
+      "revId": "21e649a8688289232a06f61800079e203454163c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191fa8ea_4019e453",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-06-04T20:44:52Z",
+      "side": 1,
+      "message": "Sure, I will add few more test cases as a follow-up change.",
+      "parentUuid": "04ad198e_f8879744",
       "revId": "21e649a8688289232a06f61800079e203454163c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
