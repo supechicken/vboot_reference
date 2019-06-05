@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f22770ea_15d86361",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "Assuming that we fix depthcharge to call free() appropriately, would that still be a problem?  It seems like libpayload has an implementation of free() in libpayload/libc/malloc.c.\n\nI think we still have differing opinions on how data should be returned from these GBB functions.  Rather than having fragmented discussions in comments here, perhaps we should move to the GBB design doc.  I wrote up a section which outlines the different solutions and their viability.  We can also have an offline chat to speed up the decision and get this CL committed.\n\nhttp://go/vboot2-cleanup-gbb#heading\u003dh.pii5unw8uw2f",
+      "parentUuid": "b03591ce_c26ff5e9",
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaad85f5_a15d508d",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 33
@@ -30,6 +48,30 @@
       "writtenOn": "2019-06-05T00:09:24Z",
       "side": 1,
       "message": "Shouldn\u0027t this be sizeof(vb2_gbb_header)?",
+      "range": {
+        "startLine": 103,
+        "startChar": 30,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1aea495_e128b0a2",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "Good catch -- yes, that is what I meant.",
+      "parentUuid": "eaad85f5_a15d508d",
       "range": {
         "startLine": 103,
         "startChar": 30,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ba31e824_d5e3fef7",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f45288e7_59d08522",
+      "range": {
+        "startLine": 143,
+        "startChar": 23,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "674c3ea9_e3fde33c",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 33
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "c30c1bc9_21fddfd0",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "Good idea, I\u0027ll add another test here.",
+      "parentUuid": "674c3ea9_e3fde33c",
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4174fbea_7f3f5a4d",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 33
@@ -93,6 +177,24 @@
       "writtenOn": "2019-06-05T00:09:24Z",
       "side": 1,
       "message": "Why is this a block?",
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34cc5c2a_1fc45376",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "It seemed unnecessary to define hwid2 and size2 for all of the test cases when only this one needs them.",
+      "parentUuid": "4174fbea_7f3f5a4d",
       "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

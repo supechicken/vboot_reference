@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "41d3b192_29312189",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T09:58:37Z",
+      "side": 1,
+      "message": "Ah, fair enough.  I\u0027ve added all of the plumbing for a *size argument.  However vb2_unpack_key is called in many places -- I think it\u0027d be better if we can change its signature in another CL?",
+      "parentUuid": "8e8f7e6d_9e16a9ed",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
