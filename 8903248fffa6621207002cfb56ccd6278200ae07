@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "8d503159_b1377920",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-05T18:15:53Z",
+      "side": 1,
+      "message": "No I don\u0027t think vb2_unpack_key() needs to be changed at all now. Passing out the size like you did is good. That should allow the caller to call vb2_unpack_key() as it is today on the result.",
+      "parentUuid": "41d3b192_29312189",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8903248fffa6621207002cfb56ccd6278200ae07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc502e93_9e985635",
         "filename": "firmware/2lib/2gbb.c",
         "patchSetId": 24
