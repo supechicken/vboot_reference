@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97b4a6b1_5b164aaa",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T07:06:53Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "adc3745b_bc947808",
+      "revId": "2f2adb8a3155042830b58525aabc5a4dff3b9e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e857ea52_f5d6f69a",
         "filename": "tests/vboot_detach_menu_tests.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-04T19:58:57Z",
       "side": 1,
       "message": "You\u0027re right, I don\u0027t think there\u0027s any reason to test VbBootNormal() again in here. We can take it out.",
+      "revId": "2f2adb8a3155042830b58525aabc5a4dff3b9e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47699e0_064b052f",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-05T07:06:53Z",
+      "side": 1,
+      "message": "Added a note in a comment, so we remember what to do in our future UI refactor.",
+      "parentUuid": "e857ea52_f5d6f69a",
       "revId": "2f2adb8a3155042830b58525aabc5a4dff3b9e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
