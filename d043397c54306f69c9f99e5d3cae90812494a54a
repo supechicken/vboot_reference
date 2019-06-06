@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "acb36a6d_8bd78c58",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-06T07:41:03Z",
+      "side": 1,
+      "message": "Alright, given your comments in the doc, I\u0027ve changed the HWID function over to taking a buffer from the caller.\n\nSince vb2_gbb_read_hwid and vb2api_gbb_read_hwid are now identical, I wasn\u0027t entirely sure if we needed to bother with both.  And if not, where the function signature should live.  In the end, I decided just to provide the vb2api function, and place the header in 2api.h.",
+      "parentUuid": "bb5192bc_36fe5c1f",
+      "revId": "d043397c54306f69c9f99e5d3cae90812494a54a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaad85f5_a15d508d",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 33
