@@ -38,7 +38,6 @@ static struct {
 
 static int mock_read_res_fail_on_call;
 static int mock_unpack_key_retval;
-static int mock_read_gbb_header_retval;
 static int mock_load_kernel_keyblock_retval;
 static int mock_load_kernel_preamble_retval;
 
@@ -70,7 +69,6 @@ static void reset_common_data(enum reset_type t)
 
 	mock_read_res_fail_on_call = 0;
 	mock_unpack_key_retval = VB2_SUCCESS;
-	mock_read_gbb_header_retval = VB2_SUCCESS;
 	mock_load_kernel_keyblock_retval = VB2_SUCCESS;
 	mock_load_kernel_preamble_retval = VB2_SUCCESS;
 
@@ -151,6 +149,10 @@ static void reset_common_data(enum reset_type t)
 };
 
 /* Mocked functions */
+struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
+{
+	return &mock_gbb.h;
+}
 
 int vb2ex_read_resource(struct vb2_context *c,
 			enum vb2_resource_index index,
@@ -178,12 +180,6 @@ int vb2ex_read_resource(struct vb2_context *c,
 
 	memcpy(buf, rptr + offset, size);
 	return VB2_SUCCESS;
-}
-
-int vb2_read_gbb_header(struct vb2_context *c, struct vb2_gbb_header *gbb)
-{
-	memcpy(gbb, &mock_gbb.h, sizeof(*gbb));
-	return mock_read_gbb_header_retval;
 }
 
 int vb2_load_kernel_keyblock(struct vb2_context *c)
@@ -290,20 +286,16 @@ static void phase1_tests(void)
 	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
 	ctx.workbuf_used = ctx.workbuf_size + VB2_WORKBUF_ALIGN -
 			vb2_wb_round_up(sizeof(struct vb2_gbb_header));
-	TEST_EQ(vb2api_kernel_phase1(&ctx), VB2_ERROR_GBB_WORKBUF,
+	TEST_EQ(vb2api_kernel_phase1(&ctx), VB2_SUCCESS,
 		"phase1 rec workbuf gbb header");
 
 	reset_common_data(FOR_PHASE1);
 	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
-	mock_read_gbb_header_retval = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_kernel_phase1(&ctx), VB2_ERROR_MOCK,
-		"phase1 rec gbb read header");
-
-	reset_common_data(FOR_PHASE1);
-	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
-	mock_gbb.h.recovery_key_size = ctx.workbuf_size - 1;
-	TEST_EQ(vb2api_kernel_phase1(&ctx),
-		VB2_ERROR_API_KPHASE1_WORKBUF_REC_KEY,
+	mock_gbb.recovery_key.key_size = ctx.workbuf_size;
+	mock_gbb.h.recovery_key_size =
+		mock_gbb.recovery_key.key_offset +
+		mock_gbb.recovery_key.key_size;
+	TEST_EQ(vb2api_kernel_phase1(&ctx), VB2_ERROR_GBB_WORKBUF,
 		"phase1 rec workbuf key");
 
 	reset_common_data(FOR_PHASE1);
