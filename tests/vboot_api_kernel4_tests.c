@@ -61,6 +61,7 @@ static void ResetMocks(void)
 	sd = vb2_get_sd(ctx);
 	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	ctx->flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
+	sd->preamble_size = 1;
 
 	vb2_nv_init(ctx);
 	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xffffffff);
@@ -83,6 +84,13 @@ static void ResetMocks(void)
 }
 
 /* Mock functions */
+
+vb2_error_t vb2_gbb_read_recovery_key(struct vb2_context *c,
+				      struct vb2_packed_key **keyp,
+				      uint32_t *size, struct vb2_workbuf *wb)
+{
+	return VB2_SUCCESS;
+}
 
 vb2_error_t vb2ex_commit_data(struct vb2_context *c)
 {

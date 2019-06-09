@@ -16,12 +16,15 @@
 #include "2sysincludes.h"
 #include "test_common.h"
 #include "vb2_common.h"
+#include "vboot_struct.h"
 
 /* Common context for tests */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
+static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
+static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static struct vb2_fw_preamble *fwpre;
 static struct vb2_kernel_preamble *kpre;
 static struct vb2_packed_key *kdkey;
@@ -38,9 +41,9 @@ static struct {
 
 static int mock_read_res_fail_on_call;
 static int mock_unpack_key_retval;
-static int mock_read_gbb_header_retval;
 static int mock_load_kernel_keyblock_retval;
 static int mock_load_kernel_preamble_retval;
+static int mock_read_gbb_header_retval;
 
 /* Type of test to reset for */
 enum reset_type {
@@ -59,6 +62,8 @@ static void reset_common_data(enum reset_type t)
 		  "vb2api_init failed");
 
 	sd = vb2_get_sd(ctx);
+	memset(&shared_data, 0, sizeof(shared_data));
+	sd->vbsd = shared;
 
 	vb2_nv_init(ctx);
 
@@ -68,7 +73,6 @@ static void reset_common_data(enum reset_type t)
 
 	mock_read_res_fail_on_call = 0;
 	mock_unpack_key_retval = VB2_SUCCESS;
-	mock_read_gbb_header_retval = VB2_SUCCESS;
 	mock_load_kernel_keyblock_retval = VB2_SUCCESS;
 	mock_load_kernel_preamble_retval = VB2_SUCCESS;
 
@@ -154,6 +158,11 @@ static void reset_common_data(enum reset_type t)
 
 /* Mocked functions */
 
+struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
+{
+	return &mock_gbb.h;
+}
+
 vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 				enum vb2_resource_index index, uint32_t offset,
 				void *buf, uint32_t size)
@@ -228,9 +237,9 @@ static void phase1_tests(void)
 	reset_common_data(FOR_PHASE1);
 	old_preamble_offset = sd->preamble_offset;
 	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 good");
-	TEST_EQ(sd->preamble_size, 0, "  no more fw preamble");
 	/* Make sure normal key was loaded */
-	TEST_EQ(sd->kernel_key_offset, old_preamble_offset,
+	TEST_EQ(sd->kernel_key_offset, old_preamble_offset +
+		offsetof(struct vb2_fw_preamble, kernel_subkey),
 		"  workbuf key offset");
 	k = vb2_member_of(sd, sd->kernel_key_offset);
 	TEST_EQ(sd->kernel_key_size, k->key_offset + k->key_size,
@@ -254,7 +263,6 @@ static void phase1_tests(void)
 	sd->workbuf_used = sd->preamble_offset;
 	sd->preamble_offset = sd->preamble_size = 0;
 	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 rec good");
-	TEST_EQ(sd->preamble_size, 0, "no more fw preamble");
 	/* Make sure recovery key was loaded */
 	TEST_EQ(sd->kernel_key_offset, old_preamble_offset,
 		"  workbuf key offset");
@@ -273,17 +281,27 @@ static void phase1_tests(void)
 	TEST_EQ(sd->kernel_version_secdata, 0x20002,
 		"  secdata_kernel version");
 
-	/* Bad secdata_kernel causes failure in normal mode only */
+	/* Bad secdata causes failure in normal mode only */
 	reset_common_data(FOR_PHASE1);
 	ctx->secdata_kernel[0] ^= 0x33;
 	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_ERROR_SECDATA_KERNEL_CRC,
-		"phase1 bad secdata");
+		"phase1 bad secdata_kernel");
 
 	reset_common_data(FOR_PHASE1);
 	ctx->secdata_kernel[0] ^= 0x33;
 	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
-	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 bad secdata rec");
+	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 bad secdata_kernel rec");
 	TEST_EQ(sd->kernel_version_secdata, 0, "  secdata_kernel version");
+
+	reset_common_data(FOR_PHASE1);
+	ctx->secdata_fwmp[0] ^= 0x33;
+	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_ERROR_SECDATA_FWMP_CRC,
+		"phase1 bad secdata_fwmp");
+
+	reset_common_data(FOR_PHASE1);
+	ctx->secdata_fwmp[0] ^= 0x33;
+	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
+	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 bad secdata_fwmp rec");
 
 	/* Failures while reading recovery key */
 	reset_common_data(FOR_PHASE1);
@@ -303,7 +321,7 @@ static void phase1_tests(void)
 	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 	mock_gbb.h.recovery_key_size = sd->workbuf_size - 1;
 	TEST_EQ(vb2api_kernel_phase1(ctx),
-		VB2_ERROR_API_KPHASE1_WORKBUF_REC_KEY,
+		VB2_ERROR_DEPRECATED_API_KPHASE1_WORKBUF_REC_KEY,
 		"phase1 rec workbuf key");
 
 	reset_common_data(FOR_PHASE1);

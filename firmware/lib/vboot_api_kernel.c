@@ -306,28 +306,9 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 		return VB2_ERROR_SECDATA_FWMP_READ;
 	}
 
-	/*
-	 * Init secdata_kernel and secdata_fwmp spaces.  No need to init
-	 * secdata_firmware, since it was already read during firmware
-	 * verification.  Ignore errors in recovery mode.
-	 */
-	rv = vb2_secdata_kernel_init(ctx);
-	if (rv && !(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		VB2_DEBUG("TPM: init secdata_kernel returned %#x\n", rv);
-		vb2api_fail(ctx, VB2_RECOVERY_SECDATA_KERNEL_INIT, rv);
+	rv = vb2api_kernel_phase1(ctx);
+	if (rv)
 		return rv;
-	}
-	rv = vb2_secdata_fwmp_init(ctx);
-	if (rv && !(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		VB2_DEBUG("TPM: init secdata_fwmp returned %#x\n", rv);
-		vb2api_fail(ctx, VB2_RECOVERY_SECDATA_FWMP_INIT, rv);
-		return rv;
-	}
-
-	/* Read kernel version from the TPM. */
-	shared->kernel_version_tpm =
-		vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS);
-	shared->kernel_version_tpm_start = shared->kernel_version_tpm;
 
 	return VB2_SUCCESS;
 }
