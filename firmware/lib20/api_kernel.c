@@ -44,38 +44,18 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 
 	/* Find the key to use to verify the kernel keyblock */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-		/* Recovery key from GBB */
-		struct vb2_gbb_header *gbb;
-		uint32_t key_offset;
+		struct vb2_packed_key *packed_key;
 
-		/* Read GBB header into next chunk of work buffer */
-		gbb = vb2_workbuf_alloc(&wb, sizeof(*gbb));
-		if (!gbb)
-			return VB2_ERROR_GBB_WORKBUF;
-
-		rv = vb2_read_gbb_header(ctx, gbb);
-		if (rv)
+		/* Load recovery key from GBB. */
+		rv = vb2_gbb_read_recovery_key(ctx, &packed_key,
+					       &key_size, &wb);
+		if (rv) {
+			VB2_DEBUG("GBB read recovery key failed.\n");
 			return rv;
-
-		/* Only need the recovery key position and size */
-		key_offset = gbb->recovery_key_offset;
-		key_size = gbb->recovery_key_size;
-
-		/* Free the GBB header */
-		vb2_workbuf_free(&wb, sizeof(*gbb));
-
-		/* Load the recovery key itself */
-		key_data = vb2_workbuf_alloc(&wb, key_size);
-		if (!key_data)
-			return VB2_ERROR_API_KPHASE1_WORKBUF_REC_KEY;
-
-		rv = vb2ex_read_resource(ctx, VB2_RES_GBB, key_offset,
-					 key_data, key_size);
-		if (rv)
-			return rv;
+		}
 
 		sd->workbuf_kernel_key_offset =
-				vb2_offset_of(ctx->workbuf, key_data);
+				vb2_offset_of(ctx->workbuf, packed_key);
 	} else {
 		/* Kernel subkey from firmware preamble */
 		struct vb2_fw_preamble *pre;
@@ -92,9 +72,10 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 		/*
 		 * At this point, we no longer need the packed firmware
 		 * data key, firmware preamble, or hash data.  So move the
-		 * kernel key from the preamble down after the shared data.
+		 * kernel key from the preamble down to where the firmware
+		 * data key begins.
 		 */
-		sd->workbuf_kernel_key_offset = vb2_wb_round_up(sizeof(*sd));
+		sd->workbuf_kernel_key_offset = sd->workbuf_data_key_offset;
 		key_data = ctx->workbuf + sd->workbuf_kernel_key_offset;
 		packed_key = (struct vb2_packed_key *)key_data;
 		memmove(packed_key, pre_key, sizeof(*packed_key));
@@ -116,6 +97,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 	 *
 	 * Work buffer now contains:
 	 *   - vb2_shared_data
+	 *   - vb2_gbb_header
 	 *   - kernel key
 	 */
 	sd->workbuf_kernel_key_size = key_size;
