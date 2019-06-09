@@ -58,6 +58,7 @@ static void ResetMocks(void)
 	sd = vb2_get_sd(ctx);
 	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	ctx->flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
+	sd->preamble_size = 1;
 
 	vb2_nv_init(ctx);
 	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xffffffff);
@@ -78,6 +79,14 @@ static void ResetMocks(void)
 
 /* Mock functions */
 
+vb2_error_t vb2api_kernel_phase1(struct vb2_context *c)
+{
+	sd->kernel_version_secdata = kernel_version;
+	shared->kernel_version_tpm_start = kernel_version;
+	shared->kernel_version_tpm = kernel_version;
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2ex_commit_data(struct vb2_context *c)
 {
 	commit_data_called = 1;
@@ -87,12 +96,6 @@ vb2_error_t vb2ex_commit_data(struct vb2_context *c)
 vb2_error_t vb2_secdata_kernel_init(struct vb2_context *c)
 {
 	return secdata_kernel_init_retval;
-}
-
-uint32_t vb2_secdata_kernel_get(struct vb2_context *c,
-				enum vb2_secdata_kernel_param param)
-{
-	return kernel_version;
 }
 
 vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *c)
@@ -238,17 +241,6 @@ static void VbSlkTest(void)
 		TEST_TRUE(commit_data_called,
 			  "  didn't commit nvdata");
 	}
-
-	/* Boot normal - secdata init failures */
-	ResetMocks();
-	secdata_kernel_init_retval = VB2_ERROR_UNKNOWN;
-	test_slk(secdata_kernel_init_retval, VB2_RECOVERY_SECDATA_KERNEL_INIT,
-		 "Normal secdata_kernel init error triggers recovery");
-
-	ResetMocks();
-	secdata_fwmp_init_retval = VB2_ERROR_UNKNOWN;
-	test_slk(secdata_fwmp_init_retval, VB2_RECOVERY_SECDATA_FWMP_INIT,
-		 "Normal secdata_fwmp init error triggers recovery");
 
 	/* Boot normal - commit data failures */
 	ResetMocks();
