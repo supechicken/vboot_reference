@@ -26,6 +26,16 @@ int vb2api_secdata_create(struct vb2_context *ctx)
 	return vb2_secdata_create(ctx);
 }
 
+int vb2api_secdatak_check(const struct vb2_context *ctx)
+{
+	return vb2_secdatak_check_crc(ctx);
+}
+
+int vb2api_secdatak_create(struct vb2_context *ctx)
+{
+	return vb2_secdatak_create(ctx);
+}
+
 void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 {
 	/* Initialize the vboot context if it hasn't been yet */
