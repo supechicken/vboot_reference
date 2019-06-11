@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7431d963_9acd9870",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-11T23:21:47Z",
+      "side": 1,
+      "message": "...and then what? we need to make sure we don\u0027t accidentally return success here.",
+      "revId": "48e2479788b960d79a1f97dcc6496a32ff7290f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf08753_dd56ce8c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-11T23:21:47Z",
+      "side": 1,
+      "message": "(maybe just pull this forward for now)",
+      "revId": "48e2479788b960d79a1f97dcc6496a32ff7290f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
