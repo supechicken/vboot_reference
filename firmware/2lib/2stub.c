@@ -43,6 +43,17 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 }
 
 __attribute__((weak))
+int vb2ex_write_resource(struct vb2_context *ctx,
+			 enum vb2_resource_index index,
+			 uint32_t offset,
+			 void *buf,
+			 uint32_t size)
+{
+	fprintf(stderr, "%s: function not implemented\n", __func__);
+	return VB2_ERROR_EX_UNIMPLEMENTED;
+}
+
+__attribute__((weak))
 int vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
 			       uint32_t data_size)
 {

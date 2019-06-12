@@ -251,7 +251,7 @@ struct vb2_context {
 	uint8_t secdatak[VB2_SECDATAK_SIZE];
 };
 
-/* Resource index for vb2ex_read_resource() */
+/* Resource index for vb2ex_read_resource() and vb2ex_write_resource() */
 enum vb2_resource_index {
 
 	/* Google binary block */
@@ -660,6 +660,27 @@ int vb2api_gbb_read_hwid(struct vb2_context *ctx,
 			 char *hwid,
 			 uint32_t *size);
 
+/**
+ * Retrieve current GBB flags.
+ *
+ * See enum vb2_gbb_flag in 2gbb_flags.h for a list of all GBB flags.
+ *
+ * @param ctx		Vboot context.
+ * @param flags		Pointer to store GBB flags.
+ *
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_gbb_get_flags(struct vb2_context *ctx, uint32_t *flags);
+
+/**
+ * Clear GBB flags (reset to 0).
+ *
+ * @param ctx		Vboot context.
+ *
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_gbb_clear_flags(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
@@ -686,6 +707,22 @@ int vb2ex_read_resource(struct vb2_context *ctx,
 			uint32_t offset,
 			void *buf,
 			uint32_t size);
+
+/**
+ * Write a verified boot resource.
+ *
+ * @param ctx		Vboot context
+ * @param index		Resource index to read
+ * @param offset	Byte offset within resource to start at
+ * @param buf		Source of data
+ * @param size		Amount of data to write
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2ex_write_resource(struct vb2_context *ctx,
+			 enum vb2_resource_index index,
+			 uint32_t offset,
+			 void *buf,
+			 uint32_t size);
 
 /**
  * Print debug output

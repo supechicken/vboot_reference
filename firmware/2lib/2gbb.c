@@ -122,3 +122,17 @@ int vb2api_gbb_read_hwid(struct vb2_context *ctx,
 
 	return VB2_SUCCESS;
 }
+
+int vb2api_gbb_get_flags(struct vb2_context *ctx, uint32_t *flags)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	*flags = gbb->flags;
+	return VB2_SUCCESS;
+}
+
+int vb2api_gbb_clear_flags(struct vb2_context *ctx)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	gbb->flags = 0;
+	return vb2ex_write_resource(ctx, VB2_RES_GBB, 0, gbb, sizeof(*gbb));
+}
