@@ -88,6 +88,16 @@ int vb2ex_read_resource(struct vb2_context *c,
 }
 
 /* Tests */
+static void misc_tests(void)
+{
+	/* Check flags type and offset constants. */
+	TEST_EQ(sizeof(VB2_GBB_FLAGS_TYPE),
+		sizeof(((struct vb2_gbb_header *)0)->flags),
+		"Struct flags type");
+	TEST_EQ(VB2_GBB_FLAGS_OFFSET, offsetof(struct vb2_gbb_header, flags),
+		"Struct flags offset");
+}
+
 static void key_tests(void)
 {
 	/* Assume that root key and recovery key are dealt with using the same
@@ -343,6 +353,7 @@ static void hwid_tests(void)
 
 int main(int argc, char* argv[])
 {
+	misc_tests();
 	key_tests();
 	hwid_tests();
 
