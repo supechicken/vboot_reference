@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7d5a42d_ae8b44a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-13T02:27:35Z",
+      "side": 1,
+      "message": "Yeah... like mentioned on the depthcharge CL, I think I don\u0027t. ;) I think this is such an exceptional case that we don\u0027t need to design another big API for it.\n\nThe get_flags() part seems fine.",
+      "revId": "9d94f76d5eaab6e75b1155db5715dbdc73b05da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1093bd84_c8300841",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-13T02:27:35Z",
+      "side": 1,
+      "message": "Let\u0027s just return the flags directly? This can\u0027t fail anyway.",
+      "revId": "9d94f76d5eaab6e75b1155db5715dbdc73b05da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
