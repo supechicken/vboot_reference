@@ -65,6 +65,14 @@
 #define VB2_WORKBUF_ALIGN __BIGGEST_ALIGNMENT__
 
 /* Maximum length of a HWID in bytes, counting terminating null. */
-#define VB2_GBB_HWID_MAX_SIZE  256
+#define VB2_GBB_HWID_MAX_SIZE 256
+
+/* Type and offset of flags member in vb2_gbb_header struct.
+   Avoid using typedef since 2constants.h may be included in non-C files. */
+#define VB2_GBB_FLAGS_OFFSET 12
+#ifndef __ASSEMBLER__
+#include <stdint.h>
+typedef uint32_t vb2_gbb_flags_t;
+#endif
 
 #endif  /* VBOOT_REFERENCE_2CONSTANTS_H_ */
