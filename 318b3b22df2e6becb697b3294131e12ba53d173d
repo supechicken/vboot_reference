@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4318d1ca_161232f2",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-14T05:52:26Z",
+      "side": 1,
+      "message": "What is the advantage of using a typedef here?",
+      "parentUuid": "9b6f7a67_8df34fff",
+      "revId": "318b3b22df2e6becb697b3294131e12ba53d173d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ddddf96_af9ccdce",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ae57925e_cf594dfa",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-14T05:52:26Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "6ddddf96_af9ccdce",
+      "revId": "318b3b22df2e6becb697b3294131e12ba53d173d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e93ee066_7af72bde",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-06-13T21:00:21Z",
       "side": 1,
       "message": "Note that these sorts of things could also be done with _Static_assert() right in the defining header. (No existing _Static_assert() use in vboot yet, it seems, but it\u0027s a C11 builtin so I don\u0027t see why we shouldn\u0027t.)",
+      "revId": "318b3b22df2e6becb697b3294131e12ba53d173d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76d89a2_e45daff7",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-14T05:52:26Z",
+      "side": 1,
+      "message": "Yeah okay, let\u0027s do that.",
+      "parentUuid": "e93ee066_7af72bde",
       "revId": "318b3b22df2e6becb697b3294131e12ba53d173d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
