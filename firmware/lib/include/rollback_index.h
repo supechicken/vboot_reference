@@ -9,7 +9,7 @@
 #ifndef VBOOT_REFERENCE_ROLLBACK_INDEX_H_
 #define VBOOT_REFERENCE_ROLLBACK_INDEX_H_
 
-#include "sysincludes.h"
+#include "2sysincludes.h"
 #include "tss_constants.h"
 
 /* TPM NVRAM location indices. */
