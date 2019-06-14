@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ff1b74c4_7c14138c",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-14T06:10:19Z",
+      "side": 1,
+      "message": "It\u0027s just generally considered nicer? It means you can write the type like a type, and not in all caps which looks weird. I guess it wouldn\u0027t make much difference if you just wrote the macro lowercase, but it may still trip up people\u0027s syntax highlighters.",
+      "parentUuid": "4318d1ca_161232f2",
+      "revId": "318b3b22df2e6becb697b3294131e12ba53d173d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ddddf96_af9ccdce",
         "filename": "tests/vb2_gbb_tests.c",
         "patchSetId": 1

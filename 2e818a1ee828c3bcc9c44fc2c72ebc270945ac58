@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66706afc_66c3481f",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-14T06:10:19Z",
+      "side": 1,
+      "message": "nit: comment out of date since you\u0027re actually using a typedef now? (It should be obvious what #ifndef __ASSEMBLER__ is for, you don\u0027t need to explain it.)",
+      "revId": "2e818a1ee828c3bcc9c44fc2c72ebc270945ac58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
