@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "788e8046_600c751c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-14T08:33:02Z",
+      "side": 1,
+      "message": "Not totally sure what is the \"Right Thing\" to do here.\n\nWould it make sense to add a ctype.h header to coreboot/src/include/?\n\ncoreboot currently defines the functions that vboot_reference requires (toupper, tolower) in string.h.",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "2913ebd77a5ce054123e382fdcea7dfa9ea39802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
