@@ -18,11 +18,14 @@
 struct vb2_public_key;
 
 /*
- * Return the greater of A and B.  This is used in macros which calculate the
+ * Return the max/min of A and B.  This is used in macros which calculate the
  * required buffer size, so can't be turned into a static inline function.
  */
 #ifndef VB2_MAX
 #define VB2_MAX(A, B) ((A) > (B) ? (A) : (B))
+#endif
+#ifndef VB2_MIN
+#define VB2_MIN(A, B) ((A) < (B) ? (A) : (B))
 #endif
 
 /* Return the number of elements in an array */
