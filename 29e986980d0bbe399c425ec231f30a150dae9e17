@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0d6f791_23417ed1",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-25T21:32:32Z",
+      "side": 1,
+      "message": "Let\u0027s please make these double-evaluation safe while we\u0027re here:\n\n #define VB2_MIN(a, b) ({ \\\n   typeof(a) __vb2_min_a \u003d (a); \\\n   typeof(b) __vb2_min_b \u003d (b); \\\n   __vb2_min_a \u003c vb2_min_b ? __vb2_min_a : __vb2_min_b; \\\n })",
+      "revId": "29e986980d0bbe399c425ec231f30a150dae9e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40ed357_cba8998f",
+        "filename": "tests/vb2_common_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-25T21:32:32Z",
+      "side": 1,
+      "message": "nit: would be nice to add tests against double evaluation as well",
+      "revId": "29e986980d0bbe399c425ec231f30a150dae9e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
