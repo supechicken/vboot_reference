@@ -16,6 +16,24 @@
       "revId": "948b405628597f37c0687cd2b761006720543364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0ef315_6900a4f1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-26T04:25:59Z",
+      "side": 1,
+      "message": "Yes.  I\u0027m still trying to decide if we need a vboot2 equivalent, or if we can get away with updating all code to halt() itself, or bubble errors down the stack.",
+      "parentUuid": "13d34432_ddbb6bda",
+      "revId": "948b405628597f37c0687cd2b761006720543364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
