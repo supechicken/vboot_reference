@@ -34,6 +34,24 @@
       "revId": "948b405628597f37c0687cd2b761006720543364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e672503_04573e84",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-26T16:29:10Z",
+      "side": 1,
+      "message": "Well, it\u0027s not actually used anywhere (in firmware), and I don\u0027t think we should allow anything like this in the future. vboot should always return an error code to the calling firmware and leave the decision of what to do with that up to there.\n\nFor the uses in futility we already have DIE() that can be used instead.",
+      "parentUuid": "7f0ef315_6900a4f1",
+      "revId": "948b405628597f37c0687cd2b761006720543364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
