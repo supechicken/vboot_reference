@@ -16,6 +16,24 @@
       "revId": "66efecf244fdd23658dbdbb3e01a0a88bb222cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f6a75b_b461781c",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-06-28T06:19:45Z",
+      "side": 1,
+      "message": "Probably... not?  It was there originally:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/201141/7/firmware/2lib/include/2common.h#19\n\nI\u0027ll take it out.  No one else should be defining constants prefixed with VB2_.",
+      "parentUuid": "558113c5_4b066526",
+      "revId": "66efecf244fdd23658dbdbb3e01a0a88bb222cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
