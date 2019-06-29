@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7e223d5_2a175957",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-06-29T00:45:03Z",
+      "side": 1,
+      "message": "I\u0027m really not sure why this code is doing this. During kernel verification memory is plentiful. This seems a waste of time at best and a risk of messing something up (in this code or in other code added later) at worst.\n\nI think it would be better to just not move this at all if you\u0027re changing it anyway.",
+      "revId": "8936b5129c0120541a49400e6ec4f90a3fd19bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
