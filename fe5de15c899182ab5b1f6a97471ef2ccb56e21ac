@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c5d9015_2dd7917f",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2019-07-09T22:13:40Z",
+      "side": 1,
+      "message": "this is not defined on factory branch.  fizz factory branch is now broken.\n\nLog: https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8911014208870551888/+/steps/WorkspaceInitSDK/0/stdout",
+      "range": {
+        "startLine": 890,
+        "startChar": 2,
+        "endLine": 890,
+        "endChar": 6
+      },
+      "revId": "fe5de15c899182ab5b1f6a97471ef2ccb56e21ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
