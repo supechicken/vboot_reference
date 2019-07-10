@@ -410,7 +410,7 @@ VbError_t VbSelectAndLoadKernel(
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
-			retval = VbBootRecoveryMenu(ctx);
+			retval = VbBootRecoveryGroot(ctx);
 		else
 			retval = VbBootRecovery(ctx);
 		VbExEcEnteringMode(0, VB_EC_RECOVERY);

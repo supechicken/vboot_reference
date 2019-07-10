@@ -73,11 +73,13 @@ VbError_t VbBootRecovery(struct vb2_context *ctx);
  * Handle a developer-mode boot using detachable menu ui
  */
 VbError_t VbBootDeveloperMenu(struct vb2_context *ctx);
+VbError_t VbBootDeveloperGroot(struct vb2_context *ctx);
 
 /**
  * Handle a recovery-mode boot using detachable menu ui
  */
 VbError_t VbBootRecoveryMenu(struct vb2_context *ctx);
+VbError_t VbBootRecoveryGroot(struct vb2_context *ctx);
 
 /**
  * Return the current FWMP flags.  Valid only inside VbSelectAndLoadKernel().
