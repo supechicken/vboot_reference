@@ -632,6 +632,10 @@ enum VbScreenType_t {
 	VB_SCREEN_CONFIRM_VENDOR_DATA = 0x215,
 	/* Confirm reboot for running diagnostics rom */
 	VB_SCREEN_CONFIRM_DIAG = 0x216,
+
+	VB_SCREEN_RECOVERY_STEP1                = 0x301,
+	VB_SCREEN_RECOVERY_STEP2                = 0x302,
+	VB_SCREEN_RECOVERY_STEP3                = 0x303,
 };
 
 /**
