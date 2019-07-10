@@ -87,6 +87,43 @@ vb2_error_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
 			       disabled_idx_mask, redraw_base_screen);
 }
 
+VbError_t VbDisplayGroot(struct vb2_context *ctx, uint32_t screen, int force,
+			uint32_t selected_index, uint32_t disabled_idx_mask)
+{
+	uint32_t locale;
+	uint32_t redraw_base_screen = 0;
+
+	/*
+	 * If requested screen/selected_index is the same as the current one,
+	 * we're done.
+	 */
+	if (disp_current_screen == screen &&
+	    disp_current_index == selected_index &&
+	    !force)
+		return VBERROR_SUCCESS;
+
+	/*
+	 * If current screen is not the same, make sure we redraw the base
+	 * screen as well to avoid having artifacts from the menu.
+	 */
+	if (disp_current_screen != screen || force)
+		redraw_base_screen = 1;
+
+	/*
+	 * Keep track of the currently displayed screen and
+	 * selected_index
+	 */
+	disp_current_screen = screen;
+	disp_current_index = selected_index;
+	disp_disabled_idx_mask = disabled_idx_mask;
+
+	/* Read the locale last saved */
+	locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
+
+	return VbExDisplayMenu(screen, locale, selected_index,
+			       disabled_idx_mask, redraw_base_screen);
+}
+
 static void Uint8ToString(char *buf, uint8_t val)
 {
 	const char *trans = "0123456789abcdef";
