@@ -78,6 +78,7 @@ static void vb2_flash_screen(struct vb2_context *ctx)
 
 static void vb2_log_menu_change(void)
 {
+  VB2_DEBUG("entering vb2_log_menu_change\n");
 	if (menus[current_menu].size)
 		VB2_DEBUG("================ %s Menu ================ [ %s ]\n",
 			  menus[current_menu].name,
@@ -85,6 +86,7 @@ static void vb2_log_menu_change(void)
 	else
 		VB2_DEBUG("=============== %s Screen ===============\n",
 			  menus[current_menu].name);
+	VB2_DEBUG("exitting vb2_log_menu_change\n");
 }
 
 /**
@@ -102,12 +104,12 @@ static void vb2_change_menu(VB_GROOT new_current_menu,
 	/* Reconfigure disabled_idx_mask for the new menu */
 	disabled_idx_mask = 0;
 	/* Disable Network Boot Option */
-	if (current_menu == VB_GROOT_DEV)
-		disabled_idx_mask |= 1 << VB_DEV_NETWORK;
+	/* if (current_menu == VB_GROOT_DEV) */
+	/* 	disabled_idx_mask |= 1 << VB_DEV_NETWORK; */
 	/* Disable cancel option if enterprise disabled dev mode */
 	if (current_menu == VB_GROOT_TO_NORM &&
 	    disable_dev_boot == 1)
-		disabled_idx_mask |= 1 << VB_TO_NORM_CANCEL;
+		disabled_idx_mask |= 1 << VB_GROOT_TO_NORM_CANCEL;
 
 	/* Enable menu items for the selected bootloaders */
 	if (current_menu == VB_GROOT_ALT_FW) {
@@ -211,13 +213,13 @@ static VbError_t enter_developer_menu(struct vb2_context *ctx)
 	switch(default_boot) {
 	default:
 	case VB2_DEV_DEFAULT_BOOT_DISK:
-		menu_idx = VB_DEV_DISK;
+		menu_idx = VB_GROOT_WARN_DISK;
 		break;
 	case VB2_DEV_DEFAULT_BOOT_USB:
-		menu_idx = VB_DEV_USB;
+		menu_idx = VB_GROOT_WARN_USB;
 		break;
 	case VB2_DEV_DEFAULT_BOOT_LEGACY:
-		menu_idx = VB_DEV_LEGACY;
+		menu_idx = VB_GROOT_WARN_LEGACY;
 		break;
 	}
 	vb2_change_menu(VB_GROOT_DEV, menu_idx);
@@ -227,8 +229,10 @@ static VbError_t enter_developer_menu(struct vb2_context *ctx)
 
 static VbError_t enter_dev_warning_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_GROOT_DEV_WARNING, VB_WARN_POWER_OFF);
+  VB2_DEBUG("enter_dev_warning_menu: VB_WARN_POWER_OFF = %d\n", VB_GROOT_WARN_POWER_OFF);
+	vb2_change_menu(VB_GROOT_DEV_WARNING, VB_GROOT_WARN_POWER_OFF);
 	vb2_draw_current_screen(ctx);
+	VB2_DEBUG("exitting enter_dev_warning_menu\n");
 	return VBERROR_KEEP_LOOPING;
 }
 
@@ -312,7 +316,7 @@ static VbError_t step_next_recovery_screen(struct vb2_context *ctx)
 
 static VbError_t enter_options_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_GROOT_OPTIONS, VB_OPTIONS_CANCEL);
+	vb2_change_menu(VB_GROOT_ADV_OPTIONS, VB_GROOT_OPTIONS_CANCEL);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -326,14 +330,15 @@ static VbError_t enter_to_dev_menu(struct vb2_context *ctx)
 		vb2_error_notify(dev_already_on, NULL, VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
-	vb2_change_menu(VB_GROOT_TO_DEV, VB_TO_DEV_CANCEL);
+	vb2_change_menu(VB_GROOT_TO_DEV, VB_GROOT_TO_DEV_CANCEL);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
 
 static VbError_t enter_to_norm_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_GROOT_TO_NORM, VB_TO_NORM_CONFIRM);
+  VB2_DEBUG("enter_to_norm_menu\n");
+	vb2_change_menu(VB_GROOT_TO_NORM, VB_GROOT_TO_NORM_CONFIRM);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -390,7 +395,7 @@ static VbError_t language_action(struct vb2_context *ctx)
 		return enter_to_norm_menu(ctx);
 	case VB_GROOT_TO_DEV:
 		return enter_to_dev_menu(ctx);
-	case VB_GROOT_OPTIONS:
+	case VB_GROOT_ADV_OPTIONS:
 		return enter_options_menu(ctx);
 	default:
 		/* This should never happen. */
@@ -566,110 +571,83 @@ static VbError_t vb2_handle_menu_input(struct vb2_context *ctx,
 /* Master table of all menus. Menus with size == 0 count as menuless screens. */
 static struct vb2_menu menus[VB_GROOT_COUNT] = {
 	[VB_GROOT_DEV_WARNING] = {
-		.name = "Developer Warning",
-		.size = VB_WARN_COUNT,
+		.name = "Your'e now in developer mode",
+		.size = VB_GROOT_WARN_COUNT,
 		.screen = VB_SCREEN_DEVELOPER_WARNING_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_WARN_OPTIONS] = {
-				.text = "Developer Options",
-				.action = enter_developer_menu,
-			},
-			[VB_WARN_DBG_INFO] = {
-				.text = "Show Debug Info",
-				.action = debug_info_action,
-			},
-			[VB_WARN_ENABLE_VER] = {
-				.text = "Enable OS Verification",
-				.action = enter_to_norm_menu,
-			},
-			[VB_WARN_POWER_OFF] = {
-				.text = "Power Off",
-				.action = power_off_action,
-			},
-			[VB_WARN_LANGUAGE] = {
+			[VB_GROOT_WARN_LANGUAGE] = {
 				.text = "Language",
 				.action = enter_language_menu,
 			},
-		},
-	},
-	[VB_GROOT_DEV] = {
-		.name = "Developer Boot Options",
-		.size = VB_DEV_COUNT,
-		.screen = VB_SCREEN_DEVELOPER_MENU,
-		.items = (struct vb2_menu_item[]){
-			[VB_DEV_NETWORK] = {
-				.text = "Boot From Network",
-				.action = NULL,	/* unimplemented */
+			[VB_GROOT_WARN_ENABLE_VER] = {
+				.text = "Go back to NORMAL MODE",
+				.action = enter_to_norm_menu,
 			},
-			[VB_DEV_LEGACY] = {
-				.text = "Boot Legacy BIOS",
-				.action = enter_altfw_menu,
-			},
-			[VB_DEV_USB] = {
-				.text = "Boot From USB or SD Card",
-				.action = boot_usb_action,
-			},
-			[VB_DEV_DISK] = {
+			[VB_GROOT_WARN_DISK] = {
 				.text = "Boot From Internal Disk",
 				.action = boot_disk_action,
 			},
-			[VB_DEV_CANCEL] = {
-				.text = "Cancel",
-				.action = enter_dev_warning_menu,
+			[VB_GROOT_WARN_USB] = {
+				.text = "Boot From External Media",
+				.action = boot_usb_action,
 			},
-			[VB_DEV_POWER_OFF] = {
+			[VB_GROOT_WARN_LEGACY] = {
+				.text = "Boot Legacy BIOS",
+				.action = enter_altfw_menu,
+			},
+			[VB_GROOT_WARN_DBG_INFO] = {
+				.text = "View logs",
+				.action = debug_info_action,
+			},
+			[VB_GROOT_WARN_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
-			},
-			[VB_DEV_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
 			},
 		},
 	},
 	[VB_GROOT_TO_NORM] = {
-		.name = "TO_NORM Confirmation",
-		.size = VB_TO_NORM_COUNT,
+		.name = "Confirm returning to NORMAL MODE",
+		.size = VB_GROOT_TO_NORM_COUNT,
 		.screen = VB_SCREEN_DEVELOPER_TO_NORM_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_TO_NORM_CONFIRM] = {
-				.text = "Confirm Enabling OS Verification",
+			[VB_GROOT_TO_NORM_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_TO_NORM_CONFIRM] = {
+				.text = "Continue returning to NORMAL MODE",
 				.action = to_norm_action,
 			},
-			[VB_TO_NORM_CANCEL] = {
+			[VB_GROOT_TO_NORM_CANCEL] = {
 				.text = "Cancel",
 				.action = enter_dev_warning_menu,
 			},
-			[VB_TO_NORM_POWER_OFF] = {
+			[VB_GROOT_TO_NORM_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
-			},
-			[VB_TO_NORM_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
 			},
 		},
 	},
 	[VB_GROOT_TO_DEV] = {
 		.name = "TO_DEV Confirmation",
-		.size = VB_TO_DEV_COUNT,
+		.size = VB_GROOT_TO_DEV_COUNT,
 		.screen = VB_SCREEN_RECOVERY_TO_DEV_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_TO_DEV_CONFIRM] = {
+			[VB_GROOT_TO_DEV_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_TO_DEV_CONFIRM] = {
 				.text = "Confirm Disabling OS Verification",
 				.action = to_dev_action,
 			},
-			[VB_TO_DEV_CANCEL] = {
+			[VB_GROOT_TO_DEV_CANCEL] = {
 				.text = "Cancel",
 				.action = enter_recovery_base_screen,
 			},
-			[VB_TO_DEV_POWER_OFF] = {
+			[VB_GROOT_TO_DEV_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
-			},
-			[VB_TO_DEV_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
 			},
 		},
 	},
@@ -678,46 +656,77 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 		.screen = VB_SCREEN_LANGUAGES_MENU,
 		/* Rest is filled out dynamically by vb2_init_menus() */
 	},
-	[VB_GROOT_OPTIONS] = {
+	[VB_GROOT_ADV_OPTIONS] = {
 		.name = "Options",
-		.size = VB_OPTIONS_COUNT,
+		.size = VB_GROOT_OPTIONS_COUNT,
 		.screen = VB_SCREEN_OPTIONS_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_OPTIONS_CANCEL] = {
-				.text = "Cancel",
+			[VB_GROOT_OPTIONS_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_OPTIONS_TO_DEV] = {
+				.text = "Switch to Developer Mode",
+				.action = enter_to_dev_menu,
+			},
+			[VB_GROOT_OPTIONS_DBG_INFO] = {
+				.text = "View Debug Info",
+				.action = debug_info_action,
+			},
+			[VB_GROOT_OPTIONS_BIOS_LOG] = {
+				.text = "View BIOS log",
+				.action = debug_info_action,
+			},
+			[VB_GROOT_OPTIONS_CANCEL] = {
+				.text = "Back",
 				.action = enter_recovery_base_screen,
 			},
-			[VB_OPTIONS_POWER_OFF] = {
+			[VB_GROOT_OPTIONS_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
 			},
-			[VB_OPTIONS_LANGUAGE] = {
+		},
+	},
+	[VB_GROOT_DEBUG_INFO] = {
+		.name = "Recovery INSERT",
+		.size = VB_GROOT_DEBUG_COUNT,
+		.screen = VB_SCREEN_RECOVERY_INSERT,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_DEBUG_LANGUAGE] = {
 				.text = "Language",
 				.action = enter_language_menu,
 			},
-		},
+			[VB_GROOT_DEBUG_CANCEL] = {
+				.text = "Back",
+				.action = enter_recovery_base_screen,
+			},
+			[VB_GROOT_DEBUG_POWER_OFF] = {
+				.text = "Power Off",
+				.action = power_off_action,
+			},
+		},		
 	},
 	[VB_GROOT_RECOVERY_INSERT] = {
 		.name = "Recovery INSERT",
-		.size = VB_REC_COUNT,
+		.size = VB_GROOT_REC_COUNT,
 		.screen = VB_SCREEN_RECOVERY_INSERT,
 		.items = (struct vb2_menu_item[]){
-			[VB_OPTIONS_LANGUAGE] = {
+			[VB_GROOT_OPTIONS_LANGUAGE] = {
 				.text = "Language",
 				.action = enter_language_menu,
 			},
-			[VB_REC_BEGIN] = {
+			[VB_GROOT_REC_BEGIN] = {
 				.text = "Begin",
 				.action = step_next_recovery_screen,
 			},
-			[VB_REC_ADV_OPTIONS] = {
+			[VB_GROOT_REC_ADV_OPTIONS] = {
 				.text = "Advanced Options",
 				.action = enter_options_menu,
 			},
-			/* [VB_REC_POWER_OFF] = {  */
-			/* 	.text = "Power Off", */
-			/* 	.action = power_off_action, */
-			/* }, */
+			[VB_GROOT_REC_POWER_OFF] = {
+				.text = "Power Off",
+				.action = power_off_action,
+			},
 		},
 	},
 	[VB_GROOT_RECOVERY_NO_GOOD] = {
@@ -777,22 +786,26 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 	},
 	[VB_GROOT_RECOVERY_STEP1] = {
 		.name = "Recovery Step 1: What you need",
-		.size = VB_REC_STEP1_COUNT,
+		.size = VB_GROOT_REC_STEP1_COUNT,
 		.screen = VB_SCREEN_RECOVERY_STEP1,
 		.items = (struct vb2_menu_item[]){
-			[VB_REC_STEP1_LANGUAGE] = {
+			[VB_GROOT_REC_STEP1_LANGUAGE] = {
 				.text = "Step 1: Language",
 				.action = enter_language_menu,
 			},
-			[VB_REC_STEP1_NEXT] = {
+			[VB_GROOT_REC_STEP1_NEXT] = {
 				.text = "Step 1: Next",
 				.action = step_next_recovery_screen,
 			},
-			[VB_REC_STEP1_BACK] = {
+			[VB_GROOT_REC_STEP1_BACK] = {
 				.text = "Step 1: Back",
 				.action = step_prev_recovery_screen,
 			},
-			[VB_REC_STEP1_POWER_OFF] = {
+			[VB_GROOT_REC_STEP1_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+			[VB_GROOT_REC_STEP1_POWER_OFF] = {
 				.text = "Step 1: Power Off",
 				.action = power_off_action,
 			},
@@ -800,22 +813,26 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 	},
 	[VB_GROOT_RECOVERY_STEP2] = {
 		.name = "Recovery Step 2: External Disk Setup",
-		.size = VB_REC_STEP2_COUNT,
+		.size = VB_GROOT_REC_STEP2_COUNT,
 		.screen = VB_SCREEN_RECOVERY_STEP2,
 		.items = (struct vb2_menu_item[]){
-			[VB_REC_STEP2_LANGUAGE] = {
+			[VB_GROOT_REC_STEP2_LANGUAGE] = {
 				.text = "Step 2: Language",
 				.action = enter_language_menu,
 			},
-			[VB_REC_STEP2_NEXT] = {
+			[VB_GROOT_REC_STEP2_NEXT] = {
 				.text = "Step 2: Next",
 				.action = step_next_recovery_screen,
 			},
-			[VB_REC_STEP2_BACK] = {
+			[VB_GROOT_REC_STEP2_BACK] = {
 				.text = "Step 2: Back",
 				.action = step_prev_recovery_screen,
 			},
-			[VB_REC_STEP2_POWER_OFF] = {
+			[VB_GROOT_REC_STEP2_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+			[VB_GROOT_REC_STEP2_POWER_OFF] = {
 				.text = "Step 2: Power Off",
 				.action = power_off_action,
 			},
@@ -823,23 +840,28 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 	},
 	[VB_GROOT_RECOVERY_STEP3] = {
 		.name = "Recovery Step 3: Plug in USB",
-		.size = VB_REC_STEP3_COUNT,
+		.size = VB_GROOT_REC_STEP3_COUNT,
 		.screen = VB_SCREEN_RECOVERY_STEP3,
 		.items = (struct vb2_menu_item[]){
-			[VB_REC_STEP3_LANGUAGE] = {
+			[VB_GROOT_REC_STEP3_LANGUAGE] = {
 				.text = "Step 3: Language",
 				.action = enter_language_menu,
 			},
-			[VB_REC_STEP3_BACK] = {
+			[VB_GROOT_REC_STEP3_BACK] = {
 				.text = "Step 3: Back",
 				.action = step_prev_recovery_screen,
 			},
-			[VB_REC_STEP3_POWER_OFF] = {
+			[VB_GROOT_REC_STEP3_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+			[VB_GROOT_REC_STEP3_POWER_OFF] = {
 				.text = "Step 3: Power Off",
 				.action = power_off_action,
 			},
 		},
 	},
+	
 };
 
 /* Initialize menu state. Must be called once before displaying any menus. */
