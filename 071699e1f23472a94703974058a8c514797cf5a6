@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07a05303_c7cfdaed",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-07-11T03:56:44Z",
+      "side": 1,
+      "message": "nit: Instead of duplicating this line, how about:\n\n  rv \u003d ec_sync_unload_oprom(ctx, shared, need_wait_screen);\n  if (fw_update \u003e VB_AUX_FW_NO_UPDATE)\n    return VBERROR_EC_REBOOT_TO_RO_REQUIRED\n  if (rv)\n    return rv;",
+      "revId": "071699e1f23472a94703974058a8c514797cf5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
