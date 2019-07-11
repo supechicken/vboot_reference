@@ -16,6 +16,24 @@
       "revId": "071699e1f23472a94703974058a8c514797cf5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b45932_e7c8a71f",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-07-11T08:04:52Z",
+      "side": 1,
+      "message": "hmmm... i was optimizing for a clean patch.\ni had another go at this by starting from the octopus patch.\nit\u0027s a bit more entangled but does address your code replication\npoint.",
+      "parentUuid": "07a05303_c7cfdaed",
+      "revId": "071699e1f23472a94703974058a8c514797cf5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
