@@ -437,7 +437,7 @@ VbError_t VbSelectAndLoadKernel(
 
 		/* Developer boot.  This has UI. */
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
-			retval = VbBootDeveloperMenu(ctx);
+			retval = VbBootDeveloperGroot(ctx);
 		else
 			retval = VbBootDeveloper(ctx);
 		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
