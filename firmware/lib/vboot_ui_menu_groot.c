@@ -37,6 +37,8 @@ static struct vb2_menu menus[];
 static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
 
 // implementing a small screen history stack
+// current screen should always be on the top of the stack
+// previous screen(s) under it, maintaining the order
 static const int MAXSIZE = 4;
 static int stack[4];
 static int top = -1;
@@ -106,7 +108,7 @@ static int VbWantShutdownGroot(struct vb2_context *ctx)
 
 /* (Re-)Draw the menu identified by current_menu[_idx] to the screen. */
 static VbError_t vb2_draw_current_screen(struct vb2_context *ctx) {
-	VbError_t ret = VbDisplayGroot(ctx, menus[current_menu].screen,
+	VbError_t ret = VbDisplayGroot(ctx, menus[peek()].screen,
 			force_redraw, current_menu_idx, disabled_idx_mask);
 	force_redraw = 0;
 	return ret;
@@ -122,7 +124,7 @@ static void vb2_flash_screen(struct vb2_context *ctx)
 
 static void vb2_log_menu_change(void)
 {
-  VB2_DEBUG("entering vb2_log_menu_change\n");
+  /*VB_GROOT */current_menu = peek();
 	if (menus[current_menu].size)
 		VB2_DEBUG("================ %s Menu ================ [ %s ]\n",
 			  menus[current_menu].name,
@@ -130,7 +132,6 @@ static void vb2_log_menu_change(void)
 	else
 		VB2_DEBUG("=============== %s Screen ===============\n",
 			  menus[current_menu].name);
-	VB2_DEBUG("exitting vb2_log_menu_change\n");
 }
 
 /**
@@ -142,12 +143,12 @@ static void vb2_log_menu_change(void)
 static void vb2_change_menu(VB_GROOT new_current_menu,
 			    int new_current_menu_idx)
 {
-	prev_menu = current_menu;
 	current_menu = new_current_menu;
 
 	// push new menu onto the stack (current_menu should already be there)
+	prev_menu = peek();
+	current_menu = new_current_menu;
 	push(new_current_menu);
-	current_menu = peek();
 
 	/* Reconfigure disabled_idx_mask for the new menu */
 	disabled_idx_mask = 0;
@@ -292,18 +293,28 @@ static VbError_t enter_language_menu(struct vb2_context *ctx)
 	return VBERROR_KEEP_LOOPING;
 }
 
-static VbError_t enter_recovery_base_screen(struct vb2_context *ctx)
+static VbError_t enter_recovery_screen(struct vb2_context *ctx, int step)
 {
 	if (!vb2_allow_recovery(ctx))
 		vb2_change_menu(VB_GROOT_RECOVERY_BROKEN, 0);
 	else if (usb_nogood)
 		vb2_change_menu(VB_GROOT_RECOVERY_NO_GOOD, 0);
 	else
+	  switch(step) {
+	  case 1:
 		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
+	  case 2:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0);
+	  case 3:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0);
+	  default:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
+	  }
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
 
+#if 0
 static VbError_t step_prev_recovery_screen(struct vb2_context *ctx)
 {
   VB2_DEBUG("entering step_prev_recovery_screen:  \n");
@@ -330,6 +341,7 @@ static VbError_t step_prev_recovery_screen(struct vb2_context *ctx)
 	VB2_DEBUG("exitting step_prev_recovery_screen\n");
 	return VBERROR_KEEP_LOOPING;
 }
+#endif
 
 static VbError_t step_next_recovery_screen(struct vb2_context *ctx)
 {
@@ -444,13 +456,16 @@ static VbError_t goto_prev_menu(struct vb2_context *ctx)
 		return enter_to_dev_menu(ctx);
 	case VB_GROOT_ADV_OPTIONS:
 		return enter_options_menu(ctx);
-	case VB_GROOT_RECOVERY_INSERT:
 	case VB_GROOT_RECOVERY_STEP1:
+	  return enter_recovery_screen(ctx, 1);
 	case VB_GROOT_RECOVERY_STEP2:
+	  return enter_recovery_screen(ctx, 2);
 	case VB_GROOT_RECOVERY_STEP3:
+	  return enter_recovery_screen(ctx, 3);
+	case VB_GROOT_RECOVERY_INSERT:
 	case VB_GROOT_RECOVERY_NO_GOOD:
 	  // send back to first recovery screen for now.  will need to modify later.
-		return enter_recovery_base_screen(ctx);
+	  return enter_recovery_screen(ctx, 0);
 	default:
 		/* This should never happen. */
 		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
@@ -871,7 +886,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_REC_STEP1_BACK] = {
 				.text = "Step 1: Back",
-				.action = step_prev_recovery_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_REC_STEP1_ADV_OPTIONS] = {
 				.text = "Advanced Options",
@@ -898,7 +913,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_REC_STEP2_BACK] = {
 				.text = "Step 2: Back",
-				.action = step_prev_recovery_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_REC_STEP2_ADV_OPTIONS] = {
 				.text = "Advanced Options",
@@ -921,7 +936,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_REC_STEP3_BACK] = {
 				.text = "Step 3: Back",
-				.action = step_prev_recovery_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_REC_STEP3_ADV_OPTIONS] = {
 				.text = "Advanced Options",
@@ -1107,7 +1122,7 @@ static VbError_t broken_ui(struct vb2_context *ctx)
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, vbsd->recovery_reason);
 	vb2_nv_commit(ctx);
 
-	enter_recovery_base_screen(ctx);
+	enter_recovery_screen(ctx, 0);
 
 	/* Loop and wait for the user to reset or shut down. */
 	VB2_DEBUG("waiting for manual recovery\n");
@@ -1161,7 +1176,7 @@ static VbError_t recovery_ui(struct vb2_context *ctx)
 		if (usb_nogood != (ret != VBERROR_NO_DISK_FOUND)) {
 			/* USB state changed, force back to base screen */
 			usb_nogood = ret != VBERROR_NO_DISK_FOUND;
-			enter_recovery_base_screen(ctx);
+			enter_recovery_screen(ctx, 0);
 		}
 
 		/*
