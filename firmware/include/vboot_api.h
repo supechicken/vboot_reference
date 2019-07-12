@@ -636,6 +636,7 @@ enum VbScreenType_t {
 	VB_SCREEN_RECOVERY_STEP1                = 0x301,
 	VB_SCREEN_RECOVERY_STEP2                = 0x302,
 	VB_SCREEN_RECOVERY_STEP3                = 0x303,
+	VB_SCREEN_LOG                           = 0x304,
 };
 
 /**

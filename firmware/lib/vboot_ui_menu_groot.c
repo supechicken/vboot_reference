@@ -337,7 +337,6 @@ static VbError_t enter_to_dev_menu(struct vb2_context *ctx)
 
 static VbError_t enter_to_norm_menu(struct vb2_context *ctx)
 {
-  VB2_DEBUG("enter_to_norm_menu\n");
 	vb2_change_menu(VB_GROOT_TO_NORM, VB_GROOT_TO_NORM_CONFIRM);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
@@ -370,21 +369,16 @@ static VbError_t debug_info_action(struct vb2_context *ctx)
 	return VBERROR_KEEP_LOOPING;
 }
 
-/* Action when selecting a language entry in the language menu. */
-static VbError_t language_action(struct vb2_context *ctx)
+static VbError_t show_log_action(struct vb2_context *ctx)
 {
-	VbSharedDataHeader *vbsd = vb2_get_sd(ctx)->vbsd;
+	vb2_change_menu(VB_GROOT_SHOW_LOG, VB_GROOT_LOG_PAGE_DOWN);
+	vb2_draw_current_screen(ctx);
+	return VBERROR_KEEP_LOOPING;
+}
 
-	/* Write selected language ID back to NVRAM. */
-	vb2_nv_set(ctx, VB2_NV_LOCALIZATION_INDEX, current_menu_idx);
-
-	/*
-	 * Non-manual recovery mode is meant to be left via hard reset (into
-	 * manual recovery mode). Need to commit NVRAM changes immediately.
-	 */
-	if (vbsd->recovery_reason && !vb2_allow_recovery(ctx))
-		vb2_nv_commit(ctx);
-
+/* Return to previous menu */
+static VbError_t goto_prev_menu(struct vb2_context *ctx)
+{
 	/* Return to previous menu. */
 	VB2_DEBUG("prev_menu = %d\n", prev_menu);
 	switch (prev_menu) {
@@ -410,6 +404,24 @@ static VbError_t language_action(struct vb2_context *ctx)
 		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
 		return VBERROR_SHUTDOWN_REQUESTED;
 	}
+}
+
+/* Action when selecting a language entry in the language menu. */
+static VbError_t language_action(struct vb2_context *ctx)
+{
+	VbSharedDataHeader *vbsd = vb2_get_sd(ctx)->vbsd;
+
+	/* Write selected language ID back to NVRAM. */
+	vb2_nv_set(ctx, VB2_NV_LOCALIZATION_INDEX, current_menu_idx);
+
+	/*
+	 * Non-manual recovery mode is meant to be left via hard reset (into
+	 * manual recovery mode). Need to commit NVRAM changes immediately.
+	 */
+	if (vbsd->recovery_reason && !vb2_allow_recovery(ctx))
+		vb2_nv_commit(ctx);
+
+	return goto_prev_menu(ctx);
 }
 
 /* Action when selecting a bootloader in the alternative firmware menu. */
@@ -604,8 +616,8 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 				.action = enter_altfw_menu,
 			},
 			[VB_GROOT_WARN_DBG_INFO] = {
-				.text = "View logs",
-				.action = debug_info_action,
+				.text = "Advanced Options",
+				.action = enter_options_menu,
 			},
 			[VB_GROOT_WARN_POWER_OFF] = {
 				.text = "Power Off",
@@ -683,7 +695,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_OPTIONS_BIOS_LOG] = {
 				.text = "View BIOS log",
-				.action = debug_info_action,
+				.action = show_log_action,
 			},
 			[VB_GROOT_OPTIONS_CANCEL] = {
 				.text = "Back",
@@ -866,6 +878,25 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			[VB_GROOT_REC_STEP3_POWER_OFF] = {
 				.text = "Step 3: Power Off",
 				.action = power_off_action,
+			},
+		},
+	},
+	[VB_GROOT_SHOW_LOG] = {
+		.name = "Recovery Step 3: Plug in USB",
+		.size = VB_GROOT_LOG_COUNT,
+		.screen = VB_SCREEN_LOG,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_LOG_PAGE_UP] = {
+				.text = "Page Up",
+				//.action = 
+			},
+			[VB_GROOT_LOG_PAGE_DOWN] = {
+				.text = "Page Down",
+				//.action =
+			},
+			[VB_GROOT_LOG_BACK] = {
+				.text = "Back",
+				.action = goto_prev_menu,
 			},
 		},
 	},
