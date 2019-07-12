@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -35,6 +35,50 @@ static uint32_t disable_dev_boot;
 static uint32_t altfw_allowed;
 static struct vb2_menu menus[];
 static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
+
+// implementing a small screen history stack
+static const int MAXSIZE = 4;
+static int stack[4];
+static int top = -1;
+
+static int isempty(void) {
+	return (top == -1);
+}
+
+static int isfull(void) {
+	return (top == MAXSIZE);
+}
+
+static int peek(void) {
+	VB2_DEBUG("***** peek(0x%x), top = %d\n", stack[top], top);
+	return stack[top];
+}
+
+static VB_GROOT pop(void) {
+	VB_GROOT screen;
+
+	if (!isempty()) {
+		screen = stack[top];
+		top = top - 1;
+		VB2_DEBUG("***** pop(0x%x), top = %d\n", screen, top);
+		return screen;
+	}
+	else
+		return -1;
+}
+
+static int push(VB_GROOT screen) {
+  VB2_DEBUG("***** push(0x%x), top = %d\n", screen, top);
+	if (!isfull()) {
+  		top = top + 1;
+		stack[top] = screen;
+		return 0;
+	}
+	else
+  		return -1;
+}
+
+//// end of stack implementation
 
 /**
  * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
@@ -100,6 +144,10 @@ static void vb2_change_menu(VB_GROOT new_current_menu,
 {
 	prev_menu = current_menu;
 	current_menu = new_current_menu;
+
+	// push new menu onto the stack (current_menu should already be there)
+	push(new_current_menu);
+	current_menu = peek();
 
 	/* Reconfigure disabled_idx_mask for the new menu */
 	disabled_idx_mask = 0;
@@ -379,6 +427,10 @@ static VbError_t show_log_action(struct vb2_context *ctx)
 /* Return to previous menu */
 static VbError_t goto_prev_menu(struct vb2_context *ctx)
 {
+	// pop off current menu and change to new top of the stack
+	pop();
+	prev_menu = pop();
+
 	/* Return to previous menu. */
 	VB2_DEBUG("prev_menu = %d\n", prev_menu);
 	switch (prev_menu) {
@@ -640,7 +692,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_TO_NORM_CANCEL] = {
 				.text = "Cancel",
-				.action = enter_dev_warning_menu,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_TO_NORM_POWER_OFF] = {
 				.text = "Power Off",
@@ -663,7 +715,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_TO_DEV_CANCEL] = {
 				.text = "Cancel",
-				.action = enter_recovery_base_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_TO_DEV_POWER_OFF] = {
 				.text = "Power Off",
@@ -699,7 +751,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_OPTIONS_CANCEL] = {
 				.text = "Back",
-				.action = enter_recovery_base_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_OPTIONS_POWER_OFF] = {
 				.text = "Power Off",
@@ -718,7 +770,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_DEBUG_CANCEL] = {
 				.text = "Back",
-				.action = enter_recovery_base_screen,
+				.action = goto_prev_menu,
 			},
 			[VB_GROOT_DEBUG_POWER_OFF] = {
 				.text = "Power Off",
