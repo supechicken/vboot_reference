@@ -386,6 +386,7 @@ static VbError_t language_action(struct vb2_context *ctx)
 		vb2_nv_commit(ctx);
 
 	/* Return to previous menu. */
+	VB2_DEBUG("prev_menu = %d\n", prev_menu);
 	switch (prev_menu) {
 	case VB_GROOT_DEV_WARNING:
 		return enter_dev_warning_menu(ctx);
@@ -397,6 +398,13 @@ static VbError_t language_action(struct vb2_context *ctx)
 		return enter_to_dev_menu(ctx);
 	case VB_GROOT_ADV_OPTIONS:
 		return enter_options_menu(ctx);
+	case VB_GROOT_RECOVERY_INSERT:
+	case VB_GROOT_RECOVERY_STEP1:
+	case VB_GROOT_RECOVERY_STEP2:
+	case VB_GROOT_RECOVERY_STEP3:
+	case VB_GROOT_RECOVERY_NO_GOOD:
+	  // send back to first recovery screen for now.  will need to modify later.
+		return enter_recovery_base_screen(ctx);
 	default:
 		/* This should never happen. */
 		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
