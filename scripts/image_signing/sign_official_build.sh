@@ -913,7 +913,7 @@ update_recovery_kernel_hash() {
 
   # Update the Kernel B hash in Kernel A command line
   local old_kerna_config="$(sudo dump_kernel_config "${loop_kerna}")"
-  local new_kernb_hash=$(sudo sha1sum "${loop_kernb}" | cut -f1 -d' ')
+  local new_kernb_hash=$(sudo sha256sum "${loop_kernb}" | cut -f1 -d' ')
 
   new_kerna_config=$(make_temp_file)
   echo "$old_kerna_config" |
