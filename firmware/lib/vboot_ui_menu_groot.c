@@ -402,6 +402,13 @@ static VbError_t enter_to_norm_menu(struct vb2_context *ctx)
 	return VBERROR_KEEP_LOOPING;
 }
 
+static VbError_t enter_boot_usb_menu(struct vb2_context *ctx)
+{
+	vb2_change_menu(VB_GROOT_BOOT_USB, VB_GROOT_BOOT_USB_NEXT);
+	vb2_draw_current_screen(ctx);
+	return VBERROR_KEEP_LOOPING;
+}
+
 /* Boot alternative bootloader if allowed and available. */
 static VbError_t enter_altfw_menu(struct vb2_context *ctx)
 {
@@ -676,7 +683,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 			[VB_GROOT_WARN_USB] = {
 				.text = "Boot From External Media",
-				.action = boot_usb_action,
+				.action = enter_boot_usb_menu,
 			},
 			[VB_GROOT_WARN_LEGACY] = {
 				.text = "Boot Legacy BIOS",
@@ -967,7 +974,29 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 		},
 	},
-	
+	[VB_GROOT_BOOT_USB] = {
+		.name = "Boot from external media",
+		.size = VB_GROOT_BOOT_USB_COUNT,
+		.screen = VB_SCREEN_BOOT_USB_MENU,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_BOOT_USB_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_BOOT_USB_NEXT] = {
+				.text = "Boot From USB",
+				.action = boot_usb_action,
+			},
+			[VB_GROOT_BOOT_USB_CANCEL] = {
+				.text = "Cancel",
+				.action = goto_prev_menu,
+			},
+			[VB_GROOT_BOOT_USB_POWER_OFF] = {
+				.text = "Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
 };
 
 /* Initialize menu state. Must be called once before displaying any menus. */
