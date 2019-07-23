@@ -637,6 +637,7 @@ enum VbScreenType_t {
 	VB_SCREEN_RECOVERY_STEP2                = 0x302,
 	VB_SCREEN_RECOVERY_STEP3                = 0x303,
 	VB_SCREEN_LOG                           = 0x304,
+	VB_SCREEN_BOOT_USB_MENU                 = 0x305,
 };
 
 /**
