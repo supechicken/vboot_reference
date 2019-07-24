@@ -55,7 +55,7 @@ int vb21api_init_hash(struct vb2_context *ctx,
 	if (!sd->workbuf_preamble_size)
 		return VB2_ERROR_API_INIT_HASH_PREAMBLE;
 	pre = (const struct vb21_fw_preamble *)
-		(ctx->workbuf + sd->workbuf_preamble_offset);
+		((void *)sd + sd->workbuf_preamble_offset);
 
 	/* Find the matching signature */
 	hash_offset = pre->hash_offset;
@@ -74,7 +74,7 @@ int vb21api_init_hash(struct vb2_context *ctx,
 	/* Allocate workbuf space for the hash */
 	if (sd->workbuf_hash_size) {
 		dc = (struct vb2_digest_context *)
-			(ctx->workbuf + sd->workbuf_hash_offset);
+			((void *)sd + sd->workbuf_hash_offset);
 	} else {
 		uint32_t dig_size = sizeof(*dc);
 
@@ -82,12 +82,13 @@ int vb21api_init_hash(struct vb2_context *ctx,
 		if (!dc)
 			return VB2_ERROR_API_INIT_HASH_WORKBUF;
 
-		sd->workbuf_hash_offset = vb2_offset_of(ctx->workbuf, dc);
+		sd->workbuf_hash_offset = vb2_offset_of(sd, dc);
 		sd->workbuf_hash_size = dig_size;
-		vb2_set_workbuf_used(ctx, sd->workbuf_hash_offset + dig_size);
+		vb2_set_workbuf_used(ctx, ctx->sd_offset +
+				     sd->workbuf_hash_offset + dig_size);
 	}
 
-	sd->hash_tag = vb2_offset_of(ctx->workbuf, sig);
+	sd->hash_tag = vb2_offset_of(sd, sig);
 	sd->hash_remaining_size = sig->data_size;
 
 	if (size)
@@ -117,7 +118,7 @@ int vb21api_check_hash(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_digest_context *dc = (struct vb2_digest_context *)
-		(ctx->workbuf + sd->workbuf_hash_offset);
+		((void *)sd + sd->workbuf_hash_offset);
 	struct vb2_workbuf wb;
 
 	uint8_t *digest;
@@ -132,7 +133,7 @@ int vb21api_check_hash(struct vb2_context *ctx)
 	/* Get signature pointer */
 	if (!sd->hash_tag)
 		return VB2_ERROR_API_CHECK_HASH_TAG;
-	sig = (const struct vb21_signature *)(ctx->workbuf + sd->hash_tag);
+	sig = (const struct vb21_signature *)((void *)sd + sd->hash_tag);
 
 	/* Must have initialized hash digest work area */
 	if (!sd->workbuf_hash_size)

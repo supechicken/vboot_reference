@@ -20,10 +20,7 @@ struct vb2_workbuf;
  * @param ctx		Vboot context
  * @return The shared data pointer.
  */
-static __inline struct vb2_shared_data *vb2_get_sd(struct vb2_context *ctx)
-{
-	return (struct vb2_shared_data *)ctx->workbuf;
-}
+struct vb2_shared_data *vb2_get_sd(struct vb2_context *ctx);
 
 /**
  * Get the GBB header pointer from a vboot context's shared data
@@ -84,18 +81,6 @@ int vb2_read_gbb_header(struct vb2_context *ctx, struct vb2_gbb_header *gbb);
  * @param subcode	Recovery subcode
  */
 void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
-
-/**
- * Set up the verified boot context data, if not already set up.
- *
- * This uses ctx->workbuf_used=0 as a flag to indicate that the data has not
- * yet been set up.  Caller must set that before calling any vboot functions;
- * see 2api.h.
- *
- * @param ctx		Vboot context to initialize
- * @return VB2_SUCCESS, or error code on error.
- */
-int vb2_init_context(struct vb2_context *ctx);
 
 /**
  * Check for recovery reasons we can determine early in the boot process.

@@ -172,7 +172,7 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 		packed_key->key_size);
 
 	/* Save the packed key offset and size */
-	sd->workbuf_data_key_offset = vb2_offset_of(ctx->workbuf, key_data);
+	sd->workbuf_data_key_offset = vb2_offset_of(sd, key_data);
 	sd->workbuf_data_key_size =
 		packed_key->key_offset + packed_key->key_size;
 
@@ -186,7 +186,8 @@ int vb2_load_fw_keyblock(struct vb2_context *ctx)
 	 *   - vb2_shared_data
 	 *   - packed firmware data key
 	 */
-	vb2_set_workbuf_used(ctx, sd->workbuf_data_key_offset +
+	vb2_set_workbuf_used(ctx, ctx->sd_offset +
+			     sd->workbuf_data_key_offset +
 			     sd->workbuf_data_key_size);
 
 	return VB2_SUCCESS;
@@ -198,7 +199,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	struct vb2_workbuf wb;
 
-	uint8_t *key_data = ctx->workbuf + sd->workbuf_data_key_offset;
+	uint8_t *key_data = (void *)sd + sd->workbuf_data_key_offset;
 	uint32_t key_size = sd->workbuf_data_key_size;
 	struct vb2_public_key data_key;
 
@@ -292,7 +293,7 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	}
 
 	/* Keep track of where we put the preamble */
-	sd->workbuf_preamble_offset = vb2_offset_of(ctx->workbuf, pre);
+	sd->workbuf_preamble_offset = vb2_offset_of(sd, pre);
 	sd->workbuf_preamble_size = pre_size;
 
 	/*
@@ -307,7 +308,8 @@ int vb2_load_fw_preamble(struct vb2_context *ctx)
 	 * TODO: we could move the preamble down over the firmware data key
 	 * since we don't need it anymore.
 	 */
-	vb2_set_workbuf_used(ctx, sd->workbuf_preamble_offset + pre_size);
+	vb2_set_workbuf_used(ctx, ctx->sd_offset +
+			     sd->workbuf_preamble_offset + pre_size);
 
 	return VB2_SUCCESS;
 }

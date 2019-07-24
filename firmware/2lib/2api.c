@@ -18,20 +18,13 @@
 
 void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 {
-	/* Initialize the vboot context if it hasn't been yet */
-	vb2_init_context(ctx);
-
 	vb2_fail(ctx, reason, subcode);
 }
 
 int vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	int rv;
-	struct vb2_shared_data *sd;
-
-	/* Initialize the vboot context if it hasn't been yet */
-	vb2_init_context(ctx);
-	sd = vb2_get_sd(ctx);
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Initialize NV context */
 	vb2_nv_init(ctx);
@@ -165,7 +158,7 @@ int vb2api_extend_hash(struct vb2_context *ctx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_digest_context *dc = (struct vb2_digest_context *)
-		(ctx->workbuf + sd->workbuf_hash_offset);
+		((void *)sd + sd->workbuf_hash_offset);
 
 	/* Must have initialized hash digest work area */
 	if (!sd->workbuf_hash_size)

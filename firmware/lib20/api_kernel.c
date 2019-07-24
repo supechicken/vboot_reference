@@ -74,8 +74,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 		if (rv)
 			return rv;
 
-		sd->workbuf_kernel_key_offset =
-				vb2_offset_of(ctx->workbuf, key_data);
+		sd->workbuf_kernel_key_offset = vb2_offset_of(sd, key_data);
 	} else {
 		/* Kernel subkey from firmware preamble */
 		struct vb2_fw_preamble *pre;
@@ -86,7 +85,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 			return VB2_ERROR_API_KPHASE1_PREAMBLE;
 
 		pre = (struct vb2_fw_preamble *)
-			(ctx->workbuf + sd->workbuf_preamble_offset);
+			((void *)sd + sd->workbuf_preamble_offset);
 		pre_key = &pre->kernel_subkey;
 
 		/*
@@ -95,7 +94,7 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 		 * kernel key from the preamble down after the shared data.
 		 */
 		sd->workbuf_kernel_key_offset = vb2_wb_round_up(sizeof(*sd));
-		key_data = ctx->workbuf + sd->workbuf_kernel_key_offset;
+		key_data = (void *)sd + sd->workbuf_kernel_key_offset;
 		packed_key = (struct vb2_packed_key *)key_data;
 		memmove(packed_key, pre_key, sizeof(*packed_key));
 		packed_key->key_offset = sizeof(*packed_key);
@@ -119,7 +118,8 @@ int vb2api_kernel_phase1(struct vb2_context *ctx)
 	 *   - kernel key
 	 */
 	sd->workbuf_kernel_key_size = key_size;
-	vb2_set_workbuf_used(ctx, sd->workbuf_kernel_key_offset +
+	vb2_set_workbuf_used(ctx, ctx->sd_offset +
+			     sd->workbuf_kernel_key_offset +
 			     sd->workbuf_kernel_key_size);
 
 	return VB2_SUCCESS;
@@ -154,7 +154,7 @@ int vb2api_get_kernel_size(struct vb2_context *ctx,
 		return VB2_ERROR_API_GET_KERNEL_SIZE_PREAMBLE;
 
 	pre = (const struct vb2_kernel_preamble *)
-		(ctx->workbuf + sd->workbuf_preamble_offset);
+		((void *)sd + sd->workbuf_preamble_offset);
 
 	if (offset_ptr) {
 		/* The kernel implicitly follows the preamble */
@@ -192,7 +192,7 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
 		return VB2_ERROR_API_VERIFY_KDATA_PREAMBLE;
 
 	pre = (struct vb2_kernel_preamble *)
-		(ctx->workbuf + sd->workbuf_preamble_offset);
+		((void *)sd + sd->workbuf_preamble_offset);
 
 	/* Make sure we were passed the right amount of data */
 	if (size != pre->body_signature.data_size)
@@ -216,7 +216,7 @@ int vb2api_verify_kernel_data(struct vb2_context *ctx,
 		return VB2_ERROR_API_VERIFY_KDATA_KEY;
 
 	rv = vb2_unpack_key_buffer(&key,
-			    ctx->workbuf + sd->workbuf_data_key_offset,
+			    (void *)sd + sd->workbuf_data_key_offset,
 			    sd->workbuf_data_key_size);
 	if (rv)
 		return rv;

@@ -182,6 +182,27 @@ enum vb2_context_flags {
  * Caller may relocate this between calls to vboot APIs.
  */
 struct vb2_context {
+	/* Magic number for struct (VB2_CONTEXT_MAGIC) */
+	uint32_t magic;
+
+	/* Version of this structure */
+	uint16_t struct_version_major;
+	uint16_t struct_version_minor;
+
+	/*
+	 * Offset to vb2_shared_data structure.  Should live right after
+	 * vb2_context on the workbuf.
+	 */
+	uint32_t sd_offset;
+
+	/*
+	 * Work buffer length in bytes.  Caller may relocate this between
+	 * calls to vboot APIs; it contains no internal pointers.  Aside from
+	 * this vb2_context struct, caller must not examine the contents of
+	 * this work buffer directly.
+	 */
+	uint32_t workbuf_size;
+
 	/**********************************************************************
 	 * Fields which must be initialized by caller.
 	 */
@@ -191,14 +212,6 @@ struct vb2_context {
 	 * prior to calling vboot functions.
 	 */
 	uint32_t flags;
-
-	/*
-	 * Work buffer, and length in bytes.  Caller may relocate this between
-	 * calls to vboot APIs; it contains no internal pointers.  Caller must
-	 * not examine the contents of this work buffer directly.
-	 */
-	uint8_t *workbuf;
-	uint32_t workbuf_size;
 
 	/*
 	 * Non-volatile data.  Caller must fill this from some non-volatile
@@ -216,13 +229,6 @@ struct vb2_context {
 	 * and then clear the flag.
 	 */
 	uint8_t secdata[VB2_SECDATA_SIZE];
-
-	/*
-	 * Context pointer for use by caller.  Verified boot never looks at
-	 * this.  Put context here if you need it for APIs that verified boot
-	 * may call (vb2ex_...() functions).
-	 */
-	void *non_vboot_context;
 
 	/**********************************************************************
 	 * Fields caller may examine after calling vb2api_fw_phase1().  Caller
@@ -391,6 +397,31 @@ enum vb2_pcr_digest {
  *	Lock down wherever you keep secdatak.  It should no longer be writable
  *	this boot.
  */
+
+/**
+ * Set up the verified boot work buffer.
+ *
+ * Needs to be called once before using any API functions that accept a
+ * vb2_context struct.  vb2_context is set up at the very start of the
+ * workbuf.
+ *
+ * @param workbuf	Workbuf memory location to initialize
+ * @param size		Size of workbuf being initialized
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_init_workbuf(void *workbuf, uint32_t size);
+
+/**
+ * Check validity of the verified boot work buffer.
+ *
+ * After transitioning between different firmware applications, this function
+ * should be used to check that the workbuf is still consistent.  Specifically,
+ * vb2_context and vb2_shared_data are checked.
+ *
+ * @param workbuf	Workbuf memory location to check
+ * @return VB2_SUCCESS, or error code on error.
+ */
+int vb2api_check_workbuf(void *workbuf);
 
 /**
  * Check the CRC of the secure storage context.

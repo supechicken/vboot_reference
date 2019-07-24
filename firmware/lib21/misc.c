@@ -145,11 +145,12 @@ int vb21_load_fw_keyblock(struct vb2_context *ctx)
 	packed_key = (struct vb21_packed_key *)key_data;
 
 	/* Save the packed key offset and size */
-	sd->workbuf_data_key_offset = vb2_offset_of(ctx->workbuf, key_data);
+	sd->workbuf_data_key_offset = vb2_offset_of(sd, key_data);
 	sd->workbuf_data_key_size = packed_key->c.total_size;
 
 	/* Data key will persist in the workbuf after we return */
-	vb2_set_workbuf_used(ctx, sd->workbuf_data_key_offset +
+	vb2_set_workbuf_used(ctx, ctx->sd_offset +
+			     sd->workbuf_data_key_offset +
 			     sd->workbuf_data_key_size);
 
 	return VB2_SUCCESS;
@@ -161,7 +162,7 @@ int vb21_load_fw_preamble(struct vb2_context *ctx)
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	struct vb2_workbuf wb;
 
-	uint8_t *key_data = ctx->workbuf + sd->workbuf_data_key_offset;
+	uint8_t *key_data = (void *)sd + sd->workbuf_data_key_offset;
 	uint32_t key_size = sd->workbuf_data_key_size;
 	struct vb2_public_key data_key;
 
@@ -238,11 +239,12 @@ int vb21_load_fw_preamble(struct vb2_context *ctx)
 	}
 
 	/* Keep track of where we put the preamble */
-	sd->workbuf_preamble_offset = vb2_offset_of(ctx->workbuf, pre);
+	sd->workbuf_preamble_offset = vb2_offset_of(sd, pre);
 	sd->workbuf_preamble_size = pre->c.total_size;
 
 	/* Preamble will persist in work buffer after we return */
-	vb2_set_workbuf_used(ctx, sd->workbuf_preamble_offset +
+	vb2_set_workbuf_used(ctx, ctx->sd_offset +
+			     sd->workbuf_preamble_offset +
 			     sd->workbuf_preamble_size);
 
 	return VB2_SUCCESS;
