@@ -51,19 +51,19 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 		return VB2_ERROR_API_INIT_HASH_TAG;
 
 	/* Get preamble pointer */
-	if (!sd->workbuf_preamble_size)
+	if (!sd->preamble_size)
 		return VB2_ERROR_API_INIT_HASH_PREAMBLE;
 	pre = (const struct vb2_fw_preamble *)
-		(ctx->workbuf + sd->workbuf_preamble_offset);
+		vb2_member_of(sd, sd->preamble_offset);
 
 	/* For now, we only support the firmware body tag */
 	if (tag != VB2_HASH_TAG_FW_BODY)
 		return VB2_ERROR_API_INIT_HASH_TAG;
 
 	/* Allocate workbuf space for the hash */
-	if (sd->workbuf_hash_size) {
+	if (sd->hash_size) {
 		dc = (struct vb2_digest_context *)
-			(ctx->workbuf + sd->workbuf_hash_offset);
+			vb2_member_of(sd, sd->hash_offset);
 	} else {
 		uint32_t dig_size = sizeof(*dc);
 
@@ -71,9 +71,9 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 		if (!dc)
 			return VB2_ERROR_API_INIT_HASH_WORKBUF;
 
-		sd->workbuf_hash_offset = vb2_offset_of(ctx->workbuf, dc);
-		sd->workbuf_hash_size = dig_size;
-		vb2_set_workbuf_used(ctx, sd->workbuf_hash_offset + dig_size);
+		sd->hash_offset = vb2_offset_of(sd, dc);
+		sd->hash_size = dig_size;
+		vb2_set_workbuf_used(ctx, sd->hash_offset + dig_size);
 	}
 
 	/*
@@ -93,12 +93,12 @@ int vb2api_init_hash(struct vb2_context *ctx, uint32_t tag, uint32_t *size)
 	 * the firmware preamble.  But until we can change the signing scripts,
 	 * we're stuck with a signature here instead of a hash.
 	 */
-	if (!sd->workbuf_data_key_size)
+	if (!sd->data_key_size)
 		return VB2_ERROR_API_INIT_HASH_DATA_KEY;
 
 	rv = vb2_unpack_key_buffer(&key,
-			    ctx->workbuf + sd->workbuf_data_key_offset,
-			    sd->workbuf_data_key_size);
+				   vb2_member_of(sd, sd->data_key_offset),
+				   sd->data_key_size);
 	if (rv)
 		return rv;
 
@@ -134,7 +134,7 @@ int vb2api_check_hash_get_digest(struct vb2_context *ctx, void *digest_out,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_digest_context *dc = (struct vb2_digest_context *)
-		(ctx->workbuf + sd->workbuf_hash_offset);
+		vb2_member_of(sd, sd->hash_offset);
 	struct vb2_workbuf wb;
 
 	uint8_t *digest;
@@ -147,13 +147,12 @@ int vb2api_check_hash_get_digest(struct vb2_context *ctx, void *digest_out,
 	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Get preamble pointer */
-	if (!sd->workbuf_preamble_size)
+	if (!sd->preamble_size)
 		return VB2_ERROR_API_CHECK_HASH_PREAMBLE;
-	pre = (struct vb2_fw_preamble *)
-		(ctx->workbuf + sd->workbuf_preamble_offset);
+	pre = vb2_member_of(sd, sd->preamble_offset);
 
 	/* Must have initialized hash digest work area */
-	if (!sd->workbuf_hash_size)
+	if (!sd->hash_size)
 		return VB2_ERROR_API_CHECK_HASH_WORKBUF;
 
 	/* Should have hashed the right amount of data */
@@ -183,12 +182,12 @@ int vb2api_check_hash_get_digest(struct vb2_context *ctx, void *digest_out,
 	 */
 
 	/* Unpack the data key */
-	if (!sd->workbuf_data_key_size)
+	if (!sd->data_key_size)
 		return VB2_ERROR_API_CHECK_HASH_DATA_KEY;
 
 	rv = vb2_unpack_key_buffer(&key,
-			    ctx->workbuf + sd->workbuf_data_key_offset,
-			    sd->workbuf_data_key_size);
+				   vb2_member_of(sd, sd->data_key_offset),
+				   sd->data_key_size);
 	if (rv)
 		return rv;
 
