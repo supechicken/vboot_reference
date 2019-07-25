@@ -231,7 +231,7 @@ static void gbb_tests(void)
 	/* Manually calculate the location of GBB since we have mocked out the
 	   original definition of vb2_get_gbb. */
 	struct vb2_gbb_header *current_gbb =
-		(struct vb2_gbb_header *)((void *)sd + sd->gbb_offset);
+		(struct vb2_gbb_header *)vb2_member_of(sd, sd->gbb_offset);
 	TEST_SUCC(memcmp(&gbbsrc, current_gbb, sizeof(gbbsrc)),
 		  "copy gbb contents");
 	TEST_EQ(used_before, ctx.workbuf_used - sizeof(gbbsrc),

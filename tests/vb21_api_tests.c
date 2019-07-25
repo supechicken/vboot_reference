@@ -91,9 +91,8 @@ static void reset_common_data(enum reset_type t)
 
 	vb2_private_key_hash(&hash_key, mock_hash_alg);
 
-	sd->workbuf_preamble_offset = ctx.workbuf_used;
-	pre = (struct vb21_fw_preamble *)
-		(ctx.workbuf + sd->workbuf_preamble_offset);
+	sd->preamble_offset = ctx.workbuf_used;
+	pre = (struct vb21_fw_preamble *)vb2_member_of(sd, sd->preamble_offset);
 	pre->hash_count = 3;
 	pre->hash_offset = sig_offset = sizeof(*pre);
 	if (hwcrypto_state == HWCRYPTO_FORBIDDEN)
@@ -111,9 +110,9 @@ static void reset_common_data(enum reset_type t)
 		free(sig);
 	}
 
-	sd->workbuf_preamble_size = sig_offset;
-	ctx.workbuf_used = vb2_wb_round_up(sd->workbuf_preamble_offset +
-					   sd->workbuf_preamble_size);
+	sd->preamble_size = sig_offset;
+	ctx.workbuf_used = vb2_wb_round_up(sd->preamble_offset +
+					   sd->preamble_size);
 
 	if (t == FOR_EXTEND_HASH || t == FOR_CHECK_HASH)
 		vb21api_init_hash(&ctx, test_id, NULL);
@@ -203,23 +202,22 @@ static void init_hash_tests(void)
 	uint32_t size;
 
 	reset_common_data(FOR_MISC);
-	pre = (struct vb21_fw_preamble *)
-		(ctx.workbuf + sd->workbuf_preamble_offset);
+	pre = (struct vb21_fw_preamble *)vb2_member_of(sd, sd->preamble_offset);
 	sig = (struct vb21_signature *)((uint8_t *)pre + pre->hash_offset);
 
 	wb_used_before = ctx.workbuf_used;
 	TEST_SUCC(vb21api_init_hash(&ctx, test_id, &size),
 		  "init hash good");
-	TEST_EQ(sd->workbuf_hash_offset, wb_used_before,
+	TEST_EQ(sd->hash_offset, wb_used_before,
 		"hash context offset");
-	TEST_EQ(sd->workbuf_hash_size, sizeof(struct vb2_digest_context),
+	TEST_EQ(sd->hash_size, sizeof(struct vb2_digest_context),
 		"hash context size");
 	TEST_EQ(ctx.workbuf_used,
-		vb2_wb_round_up(sd->workbuf_hash_offset +
-				sd->workbuf_hash_size),
+		vb2_wb_round_up(sd->hash_offset +
+				sd->hash_size),
 		"hash uses workbuf");
 	TEST_EQ(sd->hash_tag,
-		sd->workbuf_preamble_offset + pre->hash_offset,
+		sd->preamble_offset + pre->hash_offset,
 		"hash signature offset");
 	TEST_EQ(sd->hash_remaining_size, mock_body_size, "hash remaining");
 
@@ -228,7 +226,7 @@ static void init_hash_tests(void)
 		  "init hash again");
 	TEST_EQ(ctx.workbuf_used, wb_used_before, "init hash reuses context");
 	TEST_EQ(sd->hash_tag,
-		sd->workbuf_preamble_offset + pre->hash_offset +
+		sd->preamble_offset + pre->hash_offset +
 		2 * mock_sig_size,
 		"hash signature offset 2");
 
@@ -237,7 +235,7 @@ static void init_hash_tests(void)
 		VB2_ERROR_API_INIT_HASH_ID, "init hash invalid id");
 
 	reset_common_data(FOR_MISC);
-	sd->workbuf_preamble_size = 0;
+	sd->preamble_size = 0;
 	TEST_EQ(vb21api_init_hash(&ctx, test_id, &size),
 		VB2_ERROR_API_INIT_HASH_PREAMBLE, "init hash preamble");
 
@@ -274,7 +272,7 @@ static void extend_hash_tests(void)
 	TEST_EQ(sd->hash_remaining_size, 0, "hash extend remaining 2");
 
 	reset_common_data(FOR_EXTEND_HASH);
-	sd->workbuf_hash_size = 0;
+	sd->hash_size = 0;
 	TEST_EQ(vb2api_extend_hash(&ctx, mock_body, mock_body_size),
 		VB2_ERROR_API_EXTEND_HASH_WORKBUF, "hash extend no workbuf");
 
@@ -294,7 +292,7 @@ static void extend_hash_tests(void)
 	} else {
 		reset_common_data(FOR_EXTEND_HASH);
 		dc = (struct vb2_digest_context *)
-			(ctx.workbuf + sd->workbuf_hash_offset);
+			vb2_member_of(sd, sd->hash_offset);
 		dc->hash_alg = VB2_HASH_INVALID;
 		TEST_EQ(vb2api_extend_hash(&ctx, mock_body, mock_body_size),
 			VB2_ERROR_SHA_EXTEND_ALGORITHM, "hash extend fail");
@@ -308,11 +306,9 @@ static void check_hash_tests(void)
 	struct vb2_digest_context *dc;
 
 	reset_common_data(FOR_CHECK_HASH);
-	pre = (struct vb21_fw_preamble *)
-		(ctx.workbuf + sd->workbuf_preamble_offset);
-	sig = (struct vb21_signature *)((uint8_t *)pre + pre->hash_offset);
-	dc = (struct vb2_digest_context *)
-		(ctx.workbuf + sd->workbuf_hash_offset);
+	pre = (struct vb21_fw_preamble *)vb2_member_of(sd, sd->preamble_offset);
+	sig = (struct vb21_signature *)vb2_member_of(pre, pre->hash_offset);
+	dc = (struct vb2_digest_context *)vb2_member_of(sd, sd->hash_offset);
 
 	TEST_SUCC(vb21api_check_hash(&ctx), "check hash good");
 
@@ -322,7 +318,7 @@ static void check_hash_tests(void)
 		VB2_ERROR_API_CHECK_HASH_TAG, "check hash tag");
 
 	reset_common_data(FOR_CHECK_HASH);
-	sd->workbuf_hash_size = 0;
+	sd->hash_size = 0;
 	TEST_EQ(vb21api_check_hash(&ctx),
 		VB2_ERROR_API_CHECK_HASH_WORKBUF, "check hash no workbuf");
 

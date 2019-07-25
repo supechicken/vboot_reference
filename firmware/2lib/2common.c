@@ -104,6 +104,11 @@ ptrdiff_t vb2_offset_of(const void *base, const void *ptr)
 	return (uintptr_t)ptr - (uintptr_t)base;
 }
 
+void *vb2_member_of(const void *parent, const ptrdiff_t offset)
+{
+	return (void *)((uintptr_t)parent + offset);
+}
+
 int vb2_verify_member_inside(const void *parent, size_t parent_size,
 			     const void *member, size_t member_size,
 			     ptrdiff_t member_data_offset,
