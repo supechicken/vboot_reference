@@ -41,6 +41,7 @@ vb2_error_t vb21api_init_hash(struct vb2_context *ctx,
 		      const struct vb2_id *id,
 		      uint32_t *size)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	const struct vb21_fw_preamble *pre;
 	const struct vb21_signature *sig = NULL;
@@ -84,7 +85,8 @@ vb2_error_t vb21api_init_hash(struct vb2_context *ctx,
 
 		sd->hash_offset = vb2_offset_of(sd, dc);
 		sd->hash_size = dig_size;
-		vb2_set_workbuf_used(ctx, sd->hash_offset + dig_size);
+		vb2_set_workbuf_used(ctx, ictx->sd_offset +
+				     sd->hash_offset + dig_size);
 	}
 
 	sd->hash_tag = vb2_offset_of(sd, sig);

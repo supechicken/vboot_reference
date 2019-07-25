@@ -39,6 +39,7 @@ vb2_error_t vb2api_fw_phase3(struct vb2_context *ctx)
 vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag,
 			     uint32_t *size)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	const struct vb2_fw_preamble *pre;
 	struct vb2_digest_context *dc;
@@ -74,7 +75,8 @@ vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag,
 
 		sd->hash_offset = vb2_offset_of(sd, dc);
 		sd->hash_size = dig_size;
-		vb2_set_workbuf_used(ctx, sd->hash_offset + dig_size);
+		vb2_set_workbuf_used(ctx, ictx->sd_offset +
+				     sd->hash_offset + dig_size);
 	}
 
 	/*

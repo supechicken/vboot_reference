@@ -15,6 +15,21 @@ struct vb2_gbb_header;
 struct vb2_workbuf;
 
 /**
+ * Get the vb2_internal_context pointer from the public vb2_context pointer.
+ *
+ * Uses a negative offset located in a uint32_t just prior to vb2_context.
+ *
+ * @param ctx		Vboot context
+ * @return The vb2_internal_context data pointer.
+ */
+static __inline struct vb2_internal_context *vb2_get_ictx(
+	struct vb2_context *ctx)
+{
+	return (struct vb2_internal_context *)
+		((void *)ctx - *(((uint32_t *)ctx) - 1));
+}
+
+/**
  * Get the shared data pointer from the vboot context
  *
  * @param ctx		Vboot context
@@ -22,7 +37,8 @@ struct vb2_workbuf;
  */
 static __inline struct vb2_shared_data *vb2_get_sd(struct vb2_context *ctx)
 {
-	return (struct vb2_shared_data *)ctx->workbuf;
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
+	return (struct vb2_shared_data *)((void *)ictx + ictx->sd_offset);
 }
 
 /**
@@ -85,18 +101,6 @@ vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
  * @param subcode	Recovery subcode
  */
 void vb2_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
-
-/**
- * Set up the verified boot context data, if not already set up.
- *
- * This uses ctx->workbuf_used=0 as a flag to indicate that the data has not
- * yet been set up.  Caller must set that before calling any vboot functions;
- * see 2api.h.
- *
- * @param ctx		Vboot context to initialize
- * @return VB2_SUCCESS, or error code on error.
- */
-vb2_error_t vb2_init_context(struct vb2_context *ctx);
 
 /**
  * Check for recovery reasons we can determine early in the boot process.

@@ -93,6 +93,7 @@ vb2_error_t vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 
 vb2_error_t vb2_load_kernel_keyblock(struct vb2_context *ctx)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
 
@@ -217,7 +218,7 @@ vb2_error_t vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	 * (which we might still need to verify the next kernel, if the
 	 * assoiciated kernel preamble and data don't verify).
 	 */
-	sd->data_key_offset = ctx->workbuf_used;
+	sd->data_key_offset = ictx->workbuf_used - ictx->sd_offset;
 	key_data = vb2_member_of(sd, sd->data_key_offset);
 	packed_key = (struct vb2_packed_key *)key_data;
 	memmove(packed_key, &kb->data_key, sizeof(*packed_key));
@@ -238,7 +239,8 @@ vb2_error_t vb2_load_kernel_keyblock(struct vb2_context *ctx)
 	 *   - kernel key
 	 *   - packed kernel data key
 	 */
-	vb2_set_workbuf_used(ctx, sd->data_key_offset +
+	vb2_set_workbuf_used(ctx, ictx->sd_offset +
+			     sd->data_key_offset +
 			     sd->data_key_size);
 
 	return VB2_SUCCESS;
@@ -354,6 +356,7 @@ vb2_error_t vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 
 vb2_error_t vb2_load_kernel_preamble(struct vb2_context *ctx)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
 
@@ -447,7 +450,8 @@ vb2_error_t vb2_load_kernel_preamble(struct vb2_context *ctx)
 	 * TODO: we could move the preamble down over the kernel data key
 	 * since we don't need it anymore.
 	 */
-	vb2_set_workbuf_used(ctx, sd->preamble_offset + pre_size);
+	vb2_set_workbuf_used(ctx, ictx->sd_offset +
+			     sd->preamble_offset + pre_size);
 
 	return VB2_SUCCESS;
 }

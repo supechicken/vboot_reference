@@ -67,6 +67,7 @@ static void vb2_report_dev_firmware(struct vb2_public_key *root)
 
 vb2_error_t vb2_load_fw_keyblock(struct vb2_context *ctx)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	struct vb2_workbuf wb;
@@ -186,7 +187,8 @@ vb2_error_t vb2_load_fw_keyblock(struct vb2_context *ctx)
 	 *   - vb2_shared_data
 	 *   - packed firmware data key
 	 */
-	vb2_set_workbuf_used(ctx, sd->data_key_offset +
+	vb2_set_workbuf_used(ctx, ictx->sd_offset +
+			     sd->data_key_offset +
 			     sd->data_key_size);
 
 	return VB2_SUCCESS;
@@ -194,6 +196,7 @@ vb2_error_t vb2_load_fw_keyblock(struct vb2_context *ctx)
 
 vb2_error_t vb2_load_fw_preamble(struct vb2_context *ctx)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	struct vb2_workbuf wb;
@@ -307,7 +310,8 @@ vb2_error_t vb2_load_fw_preamble(struct vb2_context *ctx)
 	 * TODO: we could move the preamble down over the firmware data key
 	 * since we don't need it anymore.
 	 */
-	vb2_set_workbuf_used(ctx, sd->preamble_offset + pre_size);
+	vb2_set_workbuf_used(ctx, ictx->sd_offset +
+			     sd->preamble_offset + pre_size);
 
 	return VB2_SUCCESS;
 }

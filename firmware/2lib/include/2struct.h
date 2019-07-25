@@ -15,9 +15,56 @@
 
 #ifndef VBOOT_REFERENCE_VBOOT_2STRUCT_H_
 #define VBOOT_REFERENCE_VBOOT_2STRUCT_H_
+
+#include "2api.h"
 #include "2constants.h"
 #include "2crypto.h"
 #include "2sysincludes.h"
+
+/* "V2CT" = vb2_context.magic */
+#define VB2_CONTEXT_MAGIC 0x54433256
+
+/* Current version of vb2_context struct */
+#define VB2_CONTEXT_VERSION_MAJOR 1
+#define VB2_CONTEXT_VERSION_MINOR 0
+
+struct vb2_internal_context {
+	/* Magic number for struct (VB2_CONTEXT_MAGIC) */
+	uint32_t magic;
+
+	/* Version of this structure */
+	uint16_t struct_version_major;
+	uint16_t struct_version_minor;
+
+	/* Work buffer length in bytes. */
+	uint32_t workbuf_size;
+
+	/*
+	 * Amount of work buffer used so far.  Verified boot sub-calls use
+	 * this to know where the unused work area starts.  Caller may use
+	 * this between calls to vboot APIs to know how much data must be
+	 * copied when relocating the work buffer.
+	 */
+	uint32_t workbuf_used;
+
+	/*
+	 * Offset to vb2_shared_data structure.  Should live right after
+	 * vb2_context on the workbuf.
+	 */
+	uint32_t sd_offset;
+
+	/*
+	 * Negative offset to start of internal context.  Must always be a
+	 * uint32_t located right before the beginning of the public
+	 * vb2_context struct.
+	 */
+	uint32_t ictx_offset;
+
+	/* Caller-accessible fields (see 2api.h). */
+	struct vb2_context ctx;
+};
+
+/****************************************************************************/
 
 /*
  * Key block flags.

@@ -17,6 +17,7 @@
 
 vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 {
+	struct vb2_internal_context *ictx = vb2_get_ictx(ctx);
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
 	uint8_t *key_data;
@@ -118,7 +119,8 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	 *   - kernel key
 	 */
 	sd->kernel_key_size = key_size;
-	vb2_set_workbuf_used(ctx, sd->kernel_key_offset +
+	vb2_set_workbuf_used(ctx, ictx->sd_offset +
+			     sd->kernel_key_offset +
 			     sd->kernel_key_size);
 
 	return VB2_SUCCESS;
