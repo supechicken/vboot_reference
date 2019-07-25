@@ -19,6 +19,13 @@
 #include "2crypto.h"
 #include "2sysincludes.h"
 
+/* "V2CT" = vb2_context.magic */
+#define VB2_CONTEXT_MAGIC 0x54433256
+
+/* Current version of vb2_context struct */
+#define VB2_CONTEXT_VERSION_MAJOR 1
+#define VB2_CONTEXT_VERSION_MINOR 0
+
 /*
  * Key block flags.
  *

@@ -146,8 +146,8 @@ static void print_help(const char *progname)
 
 int main(int argc, char *argv[])
 {
-	struct vb2_context ctx;
 	uint8_t workbuf[16384] __attribute__ ((aligned (VB2_WORKBUF_ALIGN)));
+	struct vb2_context *ctx;
 	int rv;
 
 	if (argc < 4) {
@@ -161,12 +161,10 @@ int main(int argc, char *argv[])
 	body_fname = argv[3];
 
 	/* Set up context */
-	memset(&ctx, 0, sizeof(ctx));
-	ctx.workbuf = workbuf;
-	ctx.workbuf_size = sizeof(workbuf);
+	vb2api_init(workbuf, sizeof(workbuf), &ctx);
 
 	/* Initialize secure context */
-	rv = vb2api_secdata_create(&ctx);
+	rv = vb2api_secdata_create(ctx);
 	if (rv) {
 		fprintf(stderr,
 			"error: vb2api_secdata_create() failed (%d)\n", rv);
@@ -177,35 +175,35 @@ int main(int argc, char *argv[])
 
 	/* Do early init */
 	printf("Phase 1...\n");
-	rv = vb2api_fw_phase1(&ctx);
+	rv = vb2api_fw_phase1(ctx);
 	if (rv) {
 		printf("Phase 1 wants recovery mode.\n");
-		save_if_needed(&ctx);
+		save_if_needed(ctx);
 		return rv;
 	}
 
 	/* Determine which firmware slot to boot */
 	printf("Phase 2...\n");
-	rv = vb2api_fw_phase2(&ctx);
+	rv = vb2api_fw_phase2(ctx);
 	if (rv) {
 		printf("Phase 2 wants reboot.\n");
-		save_if_needed(&ctx);
+		save_if_needed(ctx);
 		return rv;
 	}
 
 	/* Try that slot */
 	printf("Phase 3...\n");
-	rv = vb2api_fw_phase3(&ctx);
+	rv = vb2api_fw_phase3(ctx);
 	if (rv) {
 		printf("Phase 3 wants reboot.\n");
-		save_if_needed(&ctx);
+		save_if_needed(ctx);
 		return rv;
 	}
 
 	/* Verify body */
 	printf("Hash body...\n");
-	rv = hash_body(&ctx);
-	save_if_needed(&ctx);
+	rv = hash_body(ctx);
+	save_if_needed(ctx);
 	if (rv) {
 		printf("Phase 4 wants reboot.\n");
 		return rv;
@@ -213,7 +211,7 @@ int main(int argc, char *argv[])
 
 	printf("Yaay!\n");
 
-	printf("Workbuf used = %d bytes\n", ctx.workbuf_used);
+	printf("Workbuf used = %d bytes\n", ctx->workbuf_used);
 
 	return 0;
 }
