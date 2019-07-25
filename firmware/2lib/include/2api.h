@@ -179,9 +179,31 @@ enum vb2_context_flags {
 /*
  * Context for firmware verification.  Pass this to all vboot APIs.
  *
- * Caller may relocate this between calls to vboot APIs.
+ * Context should be the first object stored on the work buffer, initialized
+ * using vb2api_init().  Subsequent retrieval of the context object should be
+ * done by calling vb2api_reinit(), e.g. if switching firmware applications.
+ *
+ * Caller may relocate the work buffer between calls to vboot APIs; it contains
+ * no internal pointers.  Aside from this vb2_context struct, caller must not
+ * examine the contents of the work buffer directly.
  */
 struct vb2_context {
+	/* Magic number for struct (VB2_CONTEXT_MAGIC) */
+	uint32_t magic;
+
+	/* Version of this structure */
+	uint16_t struct_version_major;
+	uint16_t struct_version_minor;
+
+	/*
+	 * Offset to vb2_shared_data structure.  Should live right after
+	 * vb2_context on the workbuf.
+	 */
+	uint32_t sd_offset;
+
+	/* Work buffer length in bytes. */
+	uint32_t workbuf_size;
+
 	/**********************************************************************
 	 * Fields which must be initialized by caller.
 	 */
@@ -191,14 +213,6 @@ struct vb2_context {
 	 * prior to calling vboot functions.
 	 */
 	uint32_t flags;
-
-	/*
-	 * Work buffer, and length in bytes.  Caller may relocate this between
-	 * calls to vboot APIs; it contains no internal pointers.  Caller must
-	 * not examine the contents of this work buffer directly.
-	 */
-	uint8_t *workbuf;
-	uint32_t workbuf_size;
 
 	/*
 	 * Non-volatile data.  Caller must fill this from some non-volatile
@@ -216,13 +230,6 @@ struct vb2_context {
 	 * and then clear the flag.
 	 */
 	uint8_t secdata[VB2_SECDATA_SIZE];
-
-	/*
-	 * Context pointer for use by caller.  Verified boot never looks at
-	 * this.  Put context here if you need it for APIs that verified boot
-	 * may call (vb2ex_...() functions).
-	 */
-	void *non_vboot_context;
 
 	/**********************************************************************
 	 * Fields caller may examine after calling vb2api_fw_phase1().  Caller
@@ -391,6 +398,37 @@ enum vb2_pcr_digest {
  *	Lock down wherever you keep secdatak.  It should no longer be writable
  *	this boot.
  */
+
+/**
+ * Initialize verified boot data structures.
+ *
+ * Needs to be called once before using any API functions that accept a
+ * vb2_context object.  Sets up the vboot work buffer, and the vb2_context
+ * within it.  A pointer to the context object is written to ctxptr.  If the
+ * context pointer is lost (e.g. from transitioning firmware applications),
+ * vb2api_reinit should be used to retain any previous data.
+ *
+ * @param workbuf	Workbuf memory location to initialize
+ * @param size		Size of workbuf being initialized
+ * @param ctxptr	Pointer to a context pointer that will be filled in
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2api_init(void *workbuf, uint32_t size,
+			struct vb2_context **ctxptr);
+
+/**
+ * Reinitialize vboot data structures.
+ *
+ * After transitioning between different firmware applications, this function
+ * should be used to check that the vboot work buffer is still consistent.
+ * Specifically, vb2_context and vb2_shared_data are checked.  A pointer to
+ * the context object is written to ctxptr.
+ *
+ * @param workbuf	Workbuf memory location to check
+ * @param ctxptr	Pointer to a context pointer that will be filled in
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2api_reinit(void *workbuf, struct vb2_context **ctxptr);
 
 /**
  * Check the CRC of the secure storage context.
