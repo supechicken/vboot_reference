@@ -22,7 +22,7 @@ struct vb2_workbuf;
  */
 static __inline struct vb2_shared_data *vb2_get_sd(struct vb2_context *ctx)
 {
-	return (struct vb2_shared_data *)ctx->workbuf;
+	return (struct vb2_shared_data *)((void *)ctx + ctx->sd_offset);
 }
 
 /**
