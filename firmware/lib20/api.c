@@ -74,7 +74,8 @@ vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag,
 
 		sd->hash_offset = vb2_offset_of(sd, dc);
 		sd->hash_size = dig_size;
-		vb2_set_workbuf_used(ctx, sd->hash_offset + dig_size);
+		vb2_set_workbuf_used(ctx, ctx->sd_offset +
+				     sd->hash_offset + dig_size);
 	}
 
 	/*
