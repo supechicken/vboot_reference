@@ -19,20 +19,13 @@
 
 void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 {
-	/* Initialize the vboot context if it hasn't been yet */
-	vb2_init_context(ctx);
-
 	vb2_fail(ctx, reason, subcode);
 }
 
 vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
-	struct vb2_shared_data *sd;
-
-	/* Initialize the vboot context if it hasn't been yet */
-	vb2_init_context(ctx);
-	sd = vb2_get_sd(ctx);
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* Initialize NV context */
 	vb2_nv_init(ctx);

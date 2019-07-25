@@ -69,6 +69,8 @@ static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
 	fail_at_count = fail_on_call;
 	fail_with_error = fail_with_err;
 
+	vb2api_init(workbuf, sizeof(workbuf), &ctx);
+
 	memset(&mock_pflags, 0, sizeof(mock_pflags));
 
 	memset(&mock_rsf, 0, sizeof(mock_rsf));
