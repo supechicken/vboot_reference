@@ -225,31 +225,30 @@ int main(int argc, char* argv[])
 	lkp.kernel_buffer_size = KERNEL_BUFFER_SIZE;
 
 	/* Set up vboot context. */
-	struct vb2_context ctx;
-	memset(&ctx, 0, sizeof(ctx));
 	/* No need to initialize ctx->nvdata[]; defaults are fine */
 	/* TODO(chromium:441893): support dev-mode flag and external gpt flag */
-	ctx.workbuf = malloc(VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE);
-	if (!ctx.workbuf) {
+	struct vb2_context *ctx;
+	void *workbuf = malloc(VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE);
+	if (!workbuf) {
 		fprintf(stderr, "Can't allocate workbuf\n");
 		return 1;
 	}
-	ctx.workbuf_size = VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE;
-	if (boot_flags & BOOT_FLAG_RECOVERY)
-		ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
-	if (boot_flags & BOOT_FLAG_DEVELOPER)
-		ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
-	if (VB2_SUCCESS != vb2_init_context(&ctx)) {
-		free(ctx.workbuf);
-		fprintf(stderr, "Can't init context\n");
+	if (VB2_SUCCESS != vb2api_init(
+		workbuf, VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE, &ctx)) {
+		free(workbuf);
+		fprintf(stderr, "Can't init vboot\n");
 		return 1;
 	}
+	if (boot_flags & BOOT_FLAG_RECOVERY)
+		ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
+	if (boot_flags & BOOT_FLAG_DEVELOPER)
+		ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
 
-	struct vb2_shared_data *sd = vb2_get_sd(&ctx);
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	sd->vbsd = shared;
 
 	/* Call LoadKernel() */
-	rv = LoadKernel(&ctx, &lkp);
+	rv = LoadKernel(ctx, &lkp);
 	printf("LoadKernel() returned %d\n", rv);
 
 	if (VB2_SUCCESS == rv) {
