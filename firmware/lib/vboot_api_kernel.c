@@ -204,13 +204,6 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	uint32_t r;
 	vb2_error_t rv;
 
-	rv = vb2_init_context(ctx);
-	if (VB2_SUCCESS != rv) {
-		VB2_DEBUG("Can't init vb2_context\n");
-		vb2api_fail(ctx, VB2_RECOVERY_RW_SHARED_DATA, rv);
-		return VBERROR_INIT_SHARED_DATA;
-	}
-
 	/* Start timer */
 	shared->timer_vb_select_and_load_kernel_enter = VbExGetTimer();
 
