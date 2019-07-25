@@ -169,6 +169,15 @@ int vb2_align(uint8_t **ptr,
 ptrdiff_t vb2_offset_of(const void *base, const void *ptr);
 
 /**
+ * Return member of given object.
+ *
+ * @param parent	Pointer to parent object
+ * @param offset	Offset from base
+ * @return Pointer to child object.
+ */
+void *vb2_member_of(const void *parent, const ptrdiff_t offset);
+
+/**
  * Return expected signature size for a signature/hash algorithm pair
  *
  * @param sig_alg	Signature algorithm
