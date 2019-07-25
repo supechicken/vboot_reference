@@ -55,10 +55,7 @@ static uint32_t mock_permissions;
 
 uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__ ((aligned (VB2_WORKBUF_ALIGN)));
-struct vb2_context ctx = {
-	.workbuf = workbuf,
-	.workbuf_size = sizeof(workbuf),
-};
+struct vb2_context *ctx;
 
 /* Reset the variables for the Tlcl mock functions. */
 static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
@@ -68,6 +65,8 @@ static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
 	mock_count = 0;
 	fail_at_count = fail_on_call;
 	fail_with_error = fail_with_err;
+
+	vb2api_init(workbuf, sizeof(workbuf), &ctx);
 
 	memset(&mock_pflags, 0, sizeof(mock_pflags));
 
@@ -88,9 +87,9 @@ static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
 	mock_fwmp.fwmp.crc8 = vb2_secdata_fwmp_crc(&mock_fwmp.fwmp);
 	mock_fwmp_real_size = sizeof(mock_fwmp.fwmp);
 
-	ctx.flags |= VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED;
-	ctx.flags |= VB2_CONTEXT_SECDATA_KERNEL_CHANGED;
-	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
+	ctx->flags |= VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED;
+	ctx->flags |= VB2_CONTEXT_SECDATA_KERNEL_CHANGED;
+	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 }
 
 /* Mock functions */
@@ -315,11 +314,11 @@ static void misc_tests(void)
 static void secdata_firmware_tests(void)
 {
 	struct vb2_secdata_firmware *rsf =
-		(struct vb2_secdata_firmware *)&ctx.secdata_firmware;
+		(struct vb2_secdata_firmware *)&ctx->secdata_firmware;
 
 	/* Not present is an error */
 	ResetMocks(1, TPM_E_BADINDEX);
-	TEST_EQ(secdata_firmware_read(&ctx), TPM_E_BADINDEX,
+	TEST_EQ(secdata_firmware_read(ctx), TPM_E_BADINDEX,
 		"secdata_firmware_read(), not present");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
@@ -327,7 +326,7 @@ static void secdata_firmware_tests(void)
 
 	/* Read failure */
 	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(secdata_firmware_read(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_firmware_read(ctx), TPM_E_IOERROR,
 		"secdata_firmware_read(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
@@ -335,7 +334,7 @@ static void secdata_firmware_tests(void)
 
 	/* Read success */
 	ResetMocks(0, 0);
-	TEST_EQ(secdata_firmware_read(&ctx), TPM_SUCCESS,
+	TEST_EQ(secdata_firmware_read(ctx), TPM_SUCCESS,
 		"secdata_firmware_read(), success");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
@@ -344,7 +343,7 @@ static void secdata_firmware_tests(void)
 
 	/* Write failure */
 	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(secdata_firmware_write(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_firmware_write(ctx), TPM_E_IOERROR,
 		"secdata_firmware_write(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x1007, 10)\n",
@@ -353,7 +352,7 @@ static void secdata_firmware_tests(void)
 	/* Write success and readback */
 	ResetMocks(0, 0);
 	memset(rsf, 0xa6, sizeof(*rsf));
-	TEST_EQ(secdata_firmware_write(&ctx), TPM_SUCCESS,
+	TEST_EQ(secdata_firmware_write(ctx), TPM_SUCCESS,
 		"secdata_firmware_write(), success");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x1007, 10)\n",
@@ -369,11 +368,11 @@ static void secdata_firmware_tests(void)
 static void secdata_kernel_tests(void)
 {
 	struct vb2_secdata_kernel *rsk =
-		(struct vb2_secdata_kernel *)&ctx.secdata_kernel;
+		(struct vb2_secdata_kernel *)&ctx->secdata_kernel;
 
 	/* Not present is an error */
 	ResetMocks(1, TPM_E_BADINDEX);
-	TEST_EQ(secdata_kernel_read(&ctx), TPM_E_BADINDEX,
+	TEST_EQ(secdata_kernel_read(ctx), TPM_E_BADINDEX,
 		"secdata_kernel_read(), not present");
 	TEST_STR_EQ(mock_calls,
 #ifndef TPM2_MODE
@@ -387,7 +386,7 @@ static void secdata_kernel_tests(void)
 	/* Bad permissions */
 	ResetMocks(0, 0);
 	mock_permissions = 0;
-	TEST_EQ(secdata_kernel_read(&ctx), TPM_E_CORRUPTED_STATE,
+	TEST_EQ(secdata_kernel_read(ctx), TPM_E_CORRUPTED_STATE,
 		"secdata_kernel_read(), bad permissions");
 	TEST_STR_EQ(mock_calls,
 		    "TlclGetPermissions(0x1008)\n",
@@ -401,7 +400,7 @@ static void secdata_kernel_tests(void)
 	int read_failure_on_call = 1;
 #endif
 	ResetMocks(read_failure_on_call, TPM_E_IOERROR);
-	TEST_EQ(secdata_kernel_read(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_kernel_read(ctx), TPM_E_IOERROR,
 		"secdata_kernel_read(), good permissions, failure");
 	TEST_STR_EQ(mock_calls,
 #ifndef TPM2_MODE
@@ -412,7 +411,7 @@ static void secdata_kernel_tests(void)
 
 	/* Good permissions, read success */
 	ResetMocks(0, 0);
-	TEST_EQ(secdata_kernel_read(&ctx), TPM_SUCCESS,
+	TEST_EQ(secdata_kernel_read(ctx), TPM_SUCCESS,
 		"secdata_kernel_read(), good permissions, success");
 	TEST_STR_EQ(mock_calls,
 #ifndef TPM2_MODE
@@ -424,7 +423,7 @@ static void secdata_kernel_tests(void)
 
 	/* Write failure */
 	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(secdata_kernel_write(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_kernel_write(ctx), TPM_E_IOERROR,
 		"secdata_kernel_write(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x1008, 13)\n",
@@ -433,7 +432,7 @@ static void secdata_kernel_tests(void)
 	/* Write success and readback */
 	ResetMocks(0, 0);
 	memset(rsk, 0xa6, sizeof(*rsk));
-	TEST_EQ(secdata_kernel_write(&ctx), TPM_SUCCESS,
+	TEST_EQ(secdata_kernel_write(ctx), TPM_SUCCESS,
 		"secdata_kernel_write(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x1008, 13)\n",
@@ -449,11 +448,11 @@ static void secdata_kernel_tests(void)
 static void secdata_fwmp_tests(void)
 {
 	struct vb2_secdata_fwmp *fwmp =
-		(struct vb2_secdata_fwmp *)&ctx.secdata_fwmp;
+		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 
 	/* Read failure */
 	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(secdata_fwmp_read(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_fwmp_read(ctx), TPM_E_IOERROR,
 		"secdata_fwmp_read(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x100a, 40)\n",
@@ -461,7 +460,7 @@ static void secdata_fwmp_tests(void)
 
 	/* Normal read */
 	ResetMocks(0, 0);
-	TEST_EQ(secdata_fwmp_read(&ctx), 0,
+	TEST_EQ(secdata_fwmp_read(ctx), 0,
 		"secdata_fwmp_read(), success");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x100a, 40)\n",
@@ -470,7 +469,7 @@ static void secdata_fwmp_tests(void)
 
 	/* Read error */
 	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(secdata_fwmp_read(&ctx), TPM_E_IOERROR,
+	TEST_EQ(secdata_fwmp_read(ctx), TPM_E_IOERROR,
 		"secdata_fwmp_read(), error");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x100a, 40)\n",
@@ -478,17 +477,17 @@ static void secdata_fwmp_tests(void)
 
 	/* Not present isn't an error; just sets context flag */
 	ResetMocks(1, TPM_E_BADINDEX);
-	TEST_EQ(secdata_fwmp_read(&ctx), 0, "secdata_fwmp_read(), not present");
+	TEST_EQ(secdata_fwmp_read(ctx), 0, "secdata_fwmp_read(), not present");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x100a, 40)\n",
 		    "  tlcl calls");
-	TEST_NEQ(ctx.flags & VB2_CONTEXT_NO_SECDATA_FWMP, 0,
+	TEST_NEQ(ctx->flags & VB2_CONTEXT_NO_SECDATA_FWMP, 0,
 		 "  set NO_SECDATA_FWMP context flag");
 
 	/* Struct size too large */
 	ResetMocks(0, 0);
 	mock_fwmp_real_size += 4;
-	TEST_EQ(secdata_fwmp_read(&ctx), 0, "secdata_fwmp_read(), bigger");
+	TEST_EQ(secdata_fwmp_read(ctx), 0, "secdata_fwmp_read(), bigger");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x100a, 40)\n"
 		    "TlclRead(0x100a, 44)\n",
