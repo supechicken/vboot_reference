@@ -27,7 +27,7 @@ static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static LoadKernelParams lkp;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
-static struct vb2_context ctx;
+static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
 static struct vb2_secdata_fwmp *fwmp;
@@ -91,19 +91,16 @@ static void ResetMocks(void)
 
 	memset(&lkp, 0, sizeof(lkp));
 
-	memset(&ctx, 0, sizeof(ctx));
-	ctx.workbuf = workbuf;
-	ctx.workbuf_size = sizeof(workbuf);
-	vb2_init_context(&ctx);
-	vb2_nv_init(&ctx);
+	vb2api_init(workbuf, sizeof(workbuf), &ctx);
+	vb2_nv_init(ctx);
 
-	sd = vb2_get_sd(&ctx);
+	sd = vb2_get_sd(ctx);
 	sd->vbsd = shared;
 	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 
 	/* CRC will be invalid after here, but nobody's checking */
 	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
-	fwmp = (struct vb2_secdata_fwmp *)ctx.secdata_fwmp;
+	fwmp = (struct vb2_secdata_fwmp *)ctx->secdata_fwmp;
 
 	memset(&gbb, 0, sizeof(gbb));
 
@@ -324,12 +321,12 @@ static void VbUserConfirmsTestGpio(uint32_t first, uint32_t second,
 	mock_gpio[3].gpio_flags = third;
 	mock_gpio[3].count = 4;
 	if (confirm) {
-		TEST_EQ(VbUserConfirms(&ctx,
+		TEST_EQ(VbUserConfirms(ctx,
 			VB_CONFIRM_SPACE_MEANS_NO |
 			VB_CONFIRM_MUST_TRUST_KEYBOARD),
 			1, msg);
 	} else {
-		TEST_EQ(VbUserConfirms(&ctx,
+		TEST_EQ(VbUserConfirms(ctx,
 			VB_CONFIRM_SPACE_MEANS_NO |
 			VB_CONFIRM_MUST_TRUST_KEYBOARD),
 			-1, msg);
@@ -342,48 +339,48 @@ static void VbUserConfirmsTest(void)
 
 	ResetMocks();
 	MockGpioAfter(1, GPIO_SHUTDOWN);
-	TEST_EQ(VbUserConfirms(&ctx, 0), -1, "Shutdown requested");
+	TEST_EQ(VbUserConfirms(ctx, 0), -1, "Shutdown requested");
 
 	ResetMocks();
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbUserConfirms(&ctx, 0), -1, "Shutdown requested");
+	TEST_EQ(VbUserConfirms(ctx, 0), -1, "Shutdown requested");
 
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ENTER;
-	TEST_EQ(VbUserConfirms(&ctx, 0), 1, "Enter");
+	TEST_EQ(VbUserConfirms(ctx, 0), 1, "Enter");
 
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ESC;
-	TEST_EQ(VbUserConfirms(&ctx, 0), 0, "Esc");
+	TEST_EQ(VbUserConfirms(ctx, 0), 0, "Esc");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	MockGpioAfter(1, GPIO_SHUTDOWN);
-	TEST_EQ(VbUserConfirms(&ctx, VB_CONFIRM_SPACE_MEANS_NO), 0,
+	TEST_EQ(VbUserConfirms(ctx, VB_CONFIRM_SPACE_MEANS_NO), 0,
 		"Space means no");
 
 	ResetMocks();
 	mock_keypress[0] = ' ';
 	MockGpioAfter(1, GPIO_SHUTDOWN);
-	TEST_EQ(VbUserConfirms(&ctx, 0), -1, "Space ignored");
+	TEST_EQ(VbUserConfirms(ctx, 0), -1, "Space ignored");
 
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ENTER;
 	mock_keyflags[0] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
-	TEST_EQ(VbUserConfirms(&ctx, VB_CONFIRM_MUST_TRUST_KEYBOARD),
+	TEST_EQ(VbUserConfirms(ctx, VB_CONFIRM_MUST_TRUST_KEYBOARD),
 		1, "Enter with trusted keyboard");
 
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ENTER;	/* untrusted */
 	mock_keypress[1] = ' ';
-	TEST_EQ(VbUserConfirms(&ctx,
+	TEST_EQ(VbUserConfirms(ctx,
 			       VB_CONFIRM_SPACE_MEANS_NO |
 			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
 		0, "Untrusted keyboard");
 
 	ResetMocks();
 	MockGpioAfter(0, GPIO_PRESENCE);
-	TEST_EQ(VbUserConfirms(&ctx,
+	TEST_EQ(VbUserConfirms(ctx,
 			       VB_CONFIRM_SPACE_MEANS_NO |
 			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
 		1, "Presence button");
@@ -471,7 +468,7 @@ static void VbUserConfirmsTest(void)
 	mock_keypress[3] = ' ';
 	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
 	mock_gpio[0].count = ~0;
-	TEST_EQ(VbUserConfirms(&ctx,
+	TEST_EQ(VbUserConfirms(ctx,
 			       VB_CONFIRM_SPACE_MEANS_NO |
 			       VB_CONFIRM_MUST_TRUST_KEYBOARD),
 		0, "Recovery button stuck");
@@ -481,21 +478,21 @@ static void VbUserConfirmsTest(void)
 static void VbBootTest(void)
 {
 	ResetMocks();
-	TEST_EQ(VbBootNormal(&ctx), VB2_ERROR_MOCK, "VbBootNormal()");
+	TEST_EQ(VbBootNormal(ctx), VB2_ERROR_MOCK, "VbBootNormal()");
 	TEST_TRUE(vbtlk_called_with_fixed, "  missing fixed flag");
 
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
-	TEST_EQ(VbBootNormal(&ctx), VBERROR_REBOOT_REQUIRED,
+	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+	TEST_EQ(VbBootNormal(ctx), VBERROR_REBOOT_REQUIRED,
 		"VbBootNormal() reboot to reset NVRAM display request");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  display request reset");
 
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DIAG_REQUEST, 1);
-	TEST_EQ(VbBootNormal(&ctx), VBERROR_REBOOT_REQUIRED,
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(VbBootNormal(ctx), VBERROR_REBOOT_REQUIRED,
 		"VbBootNormal() reboot to reset NVRAM diag request");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"  diag request reset");
 }
 
@@ -507,10 +504,10 @@ static void VbBootDevTest(void)
 
 	/* Proceed after timeout */
 	ResetMocks();
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
 		"  warning screen");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
 	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
 
@@ -518,7 +515,7 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
 			VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
@@ -526,62 +523,62 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY |
 			VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
 	/* Proceed to legacy after timeout if boot legacy and default boot
 	 * legacy are set */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_LEGACY);
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
 	/* Proceed to legacy boot mode only if enabled */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_LEGACY);
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 	/* Proceed to usb after timeout if boot usb and default boot
 	 * usb are set */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_USB);
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vbtlk_retval = VB2_SUCCESS;
-	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U USB");
+	TEST_EQ(VbBootDeveloper(ctx), 0, "Ctrl+U USB");
 	TEST_TRUE(vbtlk_called_with_removable, "  missing removable flag");
 
 	/* Proceed to usb boot mode only if enabled */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_USB);
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Timeout");
 
 	/* If no USB tries fixed disk */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
-	vb2_nv_set(&ctx, VB2_NV_DEV_DEFAULT_BOOT,
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_USB);
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+U enabled");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+U enabled");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 	/* Up arrow is uninteresting / passed to VbCheckDisplayKey() */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_UP;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Up arrow");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Up arrow");
 
 	/* Shutdown requested in loop */
 	ResetMocks();
 	mock_gpio[0].gpio_flags = 0;
 	mock_gpio[0].count = 2;
 	mock_gpio[1].gpio_flags = GPIO_SHUTDOWN;
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
@@ -589,17 +586,17 @@ static void VbBootDevTest(void)
 	/* Shutdown requested by keyboard in loop */
 	ResetMocks();
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested by keyboard");
 
 	/* Space goes straight to recovery if no virtual dev switch */
 	ResetMocks();
 	mock_keypress[0] = ' ';
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_LOAD_KERNEL_RECOVERY,
 		"Space = recovery");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RW_DEV_SCREEN, "  recovery reason");
 
 	/* Space asks to disable virtual dev switch */
@@ -607,7 +604,7 @@ static void VbBootDevTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
 	mock_keypress[1] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Space = tonorm");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
 		"  warning screen");
@@ -615,7 +612,7 @@ static void VbBootDevTest(void)
 		"  tonorm screen");
 	TEST_EQ(screens_displayed[2], VB_SCREEN_TO_NORM_CONFIRMED,
 		"  confirm screen");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
 		"  disable dev request");
 
 	/* Space-space doesn't disable it */
@@ -624,7 +621,7 @@ static void VbBootDevTest(void)
 	mock_keypress[0] = ' ';
 	mock_keypress[1] = ' ';
 	mock_keypress[2] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Space-space");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Space-space");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
 		"  warning screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_DEVELOPER_TO_NORM,
@@ -637,7 +634,7 @@ static void VbBootDevTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	mock_keypress[0] = VB_KEY_ENTER;
 	mock_keypress[1] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Enter ignored");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Enter ignored");
 
 	/* Enter does if GBB flag set */
 	ResetMocks();
@@ -645,7 +642,7 @@ static void VbBootDevTest(void)
 	gbb.flags |= VB2_GBB_FLAG_ENTER_TRIGGERS_TONORM;
 	mock_keypress[0] = VB_KEY_ENTER;
 	mock_keypress[1] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Enter = tonorm");
 
 	/* Tonorm ignored if GBB forces dev switch on */
@@ -654,7 +651,7 @@ static void VbBootDevTest(void)
 	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
 	mock_keypress[1] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Can't tonorm gbb-dev");
 
 	/* Shutdown requested at tonorm screen */
@@ -662,7 +659,7 @@ static void VbBootDevTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	mock_keypress[0] = ' ';
 	MockGpioAfter(3, GPIO_SHUTDOWN);
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested at tonorm");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
@@ -674,15 +671,15 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested by keyboard at nonorm");
 
 	/* Ctrl+D dismisses warning */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_CTRL('D');
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+D");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+D");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
 	TEST_NEQ(audio_looping_calls_left, 0, "  aborts audio");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
@@ -691,13 +688,13 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+D");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+D");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 	/* Ctrl+L tries legacy boot mode only if enabled */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_CTRL('L');
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+L normal");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+L normal");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 	/* Enter altfw menu and time out */
@@ -705,7 +702,7 @@ static void VbBootDevTest(void)
 	MockGpioAfter(1000, GPIO_SHUTDOWN);
 	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_SHUTDOWN_REQUESTED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+L force legacy");
 	TEST_EQ(vbexlegacy_called, 0, "  try legacy");
 
@@ -714,26 +711,26 @@ static void VbBootDevTest(void)
 	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = '0';
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+L force legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
 
 	/* Enter altfw menu and then exit it */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+L nv legacy");
 	TEST_EQ(vbexlegacy_called, 0, "  try legacy");
 
 	/* Enter altfw menu and select firmware 0 */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = '0';
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+L nv legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
@@ -743,7 +740,7 @@ static void VbBootDevTest(void)
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY;
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = '0';
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+L fwmp legacy");
 	TEST_EQ(vbexlegacy_called, 1, "  fwmp legacy");
 	TEST_EQ(altfw_num, 0, "  check altfw_num");
@@ -752,21 +749,21 @@ static void VbBootDevTest(void)
 	for (key = '1'; key <= '9'; key++) {
 		ResetMocks();
 		mock_keypress[0] = key;
-		TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "'1' normal");
+		TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "'1' normal");
 		TEST_EQ(vbexlegacy_called, 0, "  not legacy");
 
 		ResetMocks();
 		gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY;
 		mock_keypress[0] = key;
-		TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+		TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 			"Ctrl+L force legacy");
 		TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 		TEST_EQ(altfw_num, key - '0', "  check altfw_num");
 
 		ResetMocks();
-		vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 		mock_keypress[0] = key;
-		TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+		TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 			"Ctrl+L nv legacy");
 		TEST_EQ(vbexlegacy_called, 1, "  try legacy");
 		TEST_EQ(altfw_num, key - '0', "  check altfw_num");
@@ -774,7 +771,7 @@ static void VbBootDevTest(void)
 		ResetMocks();
 		fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY;
 		mock_keypress[0] = key;
-		TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+		TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 			"Ctrl+L fwmp legacy");
 		TEST_EQ(vbexlegacy_called, 1, "  fwmp legacy");
 		TEST_EQ(altfw_num, key - '0', "  check altfw_num");
@@ -783,14 +780,14 @@ static void VbBootDevTest(void)
 	/* Ctrl+U boots USB only if enabled */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_CTRL('U');
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+U normal");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+U normal");
 
 	/* Ctrl+U enabled, with good USB boot */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval = VB2_SUCCESS;
-	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U USB");
+	TEST_EQ(VbBootDeveloper(ctx), 0, "Ctrl+U USB");
 	TEST_TRUE(vbtlk_called_with_removable, "  missing removable flag");
 
 	/* Ctrl+U enabled via GBB */
@@ -798,7 +795,7 @@ static void VbBootDevTest(void)
 	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval = VB2_SUCCESS;
-	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U force USB");
+	TEST_EQ(VbBootDeveloper(ctx), 0, "Ctrl+U force USB");
 	TEST_TRUE(vbtlk_called_with_removable, "  missing removable flag");
 
 	/* Ctrl+U enabled via FWMP */
@@ -806,12 +803,12 @@ static void VbBootDevTest(void)
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_USB;
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval = VB2_SUCCESS;
-	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U force USB");
+	TEST_EQ(VbBootDeveloper(ctx), 0, "Ctrl+U force USB");
 	TEST_TRUE(vbtlk_called_with_removable, "  missing removable flag");
 
 	/* Ctrl+S set vendor data and reboot */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
@@ -819,14 +816,14 @@ static void VbBootDevTest(void)
 	mock_keypress[4] = '1';
 	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S set vendor data and reboot");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
 
 	/* Ctrl+S extra keys ignored */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
@@ -835,14 +832,14 @@ static void VbBootDevTest(void)
 	mock_keypress[5] = '5';
 	mock_keypress[6] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[7] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S extra keys ignored");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
 
 	/* Ctrl+S converts case */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = 'a';
 	mock_keypress[2] = 'B';
@@ -850,14 +847,14 @@ static void VbBootDevTest(void)
 	mock_keypress[4] = 'z';
 	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S converts case");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "ABYZ", "  Vendor data correct");
 
 	/* Ctrl+S backspace works */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = 'B';
@@ -869,14 +866,14 @@ static void VbBootDevTest(void)
 	mock_keypress[8] = '1';
 	mock_keypress[9] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[10] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S backspace works");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "A321", "  Vendor data correct");
 
 	/* Ctrl+S invalid chars don't print */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '-';
@@ -889,14 +886,14 @@ static void VbBootDevTest(void)
 	mock_keypress[9] = '1';
 	mock_keypress[10] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S invalid chars don't print");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
 
 	/* Ctrl+S invalid chars don't print with backspace */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '-';
@@ -907,14 +904,14 @@ static void VbBootDevTest(void)
 	mock_keypress[7] = '0';
 	mock_keypress[8] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S invalid chars don't print with backspace");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "3210", "  Vendor data correct");
 
 	/* Ctrl+S backspace only doesn't underrun */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = VB_KEY_BACKSPACE;
@@ -925,14 +922,14 @@ static void VbBootDevTest(void)
 	mock_keypress[7] = '1';
 	mock_keypress[8] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S backspace only doesn't underrun");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
 
 	/* Ctrl+S vowels not allowed after first char */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = 'A';
@@ -945,14 +942,14 @@ static void VbBootDevTest(void)
 	mock_keypress[9] = 'D';
 	mock_keypress[10] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm vendor data */
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"Ctrl+S vowels not allowed after first char");
 	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
 	TEST_STR_EQ(set_vendor_data, "ABCD", "  Vendor data correct");
 
 	/* Ctrl+S too short */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '1';
 	mock_keypress[2] = '2';
@@ -962,34 +959,34 @@ static void VbBootDevTest(void)
 	/* Confirm vendor data (nothing happens) */
 	mock_keypress[5] = VB_KEY_ENTER;
 	mock_keypress[6] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+S too short");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+S too short");
 	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
 
 	/* Ctrl+S esc from set screen */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+S esc from set screen");
 	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
 
 	/* Ctrl+S esc from set screen with tag */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
 	mock_keypress[5] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+S esc from set screen with tag");
 	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
 
 	/* Ctrl+S esc from confirm screen */
 	ResetMocks();
-	ctx.flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
+	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 	mock_keypress[0] = VB_KEY_CTRL('S');
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
@@ -997,17 +994,17 @@ static void VbBootDevTest(void)
 	mock_keypress[4] = '1';
 	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
 	mock_keypress[6] = VB_KEY_ESC;
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK,
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK,
 		"Ctrl+S esc from set screen");
 	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
 
 	/* If no USB, eventually times out and tries fixed disk */
 	ResetMocks();
-	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	mock_keypress[0] = VB_KEY_CTRL('U');
-	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Ctrl+U enabled");
+	TEST_EQ(VbBootDeveloper(ctx), VB2_ERROR_MOCK, "Ctrl+U enabled");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
 	TEST_EQ(audio_looping_calls_left, 0, "  used up audio");
 
@@ -1016,7 +1013,7 @@ static void VbBootDevTest(void)
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
 	mock_keypress[0] = VB_KEY_ESC;  /* Just causes TONORM again */
 	mock_keypress[1] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloper(ctx), VBERROR_REBOOT_REQUIRED,
 		"FWMP dev disabled");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_TO_NORM,
 		"  tonorm screen");
@@ -1024,7 +1021,7 @@ static void VbBootDevTest(void)
 		"  tonorm screen");
 	TEST_EQ(screens_displayed[2], VB_SCREEN_TO_NORM_CONFIRMED,
 		"  confirm screen");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
 		"  disable dev request");
 
 	/* Shutdown requested when dev disabled */
@@ -1032,7 +1029,7 @@ static void VbBootDevTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
 	MockGpioAfter(1, GPIO_SHUTDOWN);
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested when dev disabled");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_TO_NORM,
@@ -1043,7 +1040,7 @@ static void VbBootDevTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootDeveloper(&ctx),
+	TEST_EQ(VbBootDeveloper(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested by keyboard when dev disabled");
 
@@ -1076,11 +1073,11 @@ static void VbBootRecTestGpio(uint32_t first, uint32_t second, uint32_t third,
 	mock_gpio[3].count = 4;
 
 	if (confirm) {
-		TEST_EQ(VbBootRecovery(&ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
+		TEST_EQ(VbBootRecovery(ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
 			msg);
 		TEST_EQ(virtdev_set, 1, "  virtual dev mode on");
 	} else {
-		TEST_EQ(VbBootRecovery(&ctx), VBERROR_SHUTDOWN_REQUESTED, msg);
+		TEST_EQ(VbBootRecovery(ctx), VBERROR_SHUTDOWN_REQUESTED, msg);
 		TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
 	}
 	TEST_TRUE(vbtlk_called_with_removable, "  missing removable flag");
@@ -1093,11 +1090,11 @@ static void VbBootRecTest(void)
 	/* Shutdown requested in loop */
 	ResetMocks();
 	MockGpioAfter(10, GPIO_SHUTDOWN);
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested");
 
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
 		"  broken screen");
@@ -1105,7 +1102,7 @@ static void VbBootRecTest(void)
 	/* Shutdown requested by keyboard */
 	ResetMocks();
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested by keyboard");
 
@@ -1122,7 +1119,7 @@ static void VbBootRecTest(void)
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ignore power button held on boot");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
@@ -1137,7 +1134,7 @@ static void VbBootRecTest(void)
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	mock_num_disks[2] = 1;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Broken");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
@@ -1149,7 +1146,7 @@ static void VbBootRecTest(void)
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Broken (dev)");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
@@ -1160,7 +1157,7 @@ static void VbBootRecTest(void)
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	gbb.flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Insert (forced by GBB)");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
@@ -1174,7 +1171,7 @@ static void VbBootRecTest(void)
 	mock_num_disks[1] = 1;
 	shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"No remove in rec");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
@@ -1186,7 +1183,7 @@ static void VbBootRecTest(void)
 	mock_num_disks[0] = 0;
 	mock_num_disks[1] = 1;
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Remove");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
@@ -1197,7 +1194,7 @@ static void VbBootRecTest(void)
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	mock_num_disks[0] = -1;
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Bad disk count");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
@@ -1209,7 +1206,7 @@ static void VbBootRecTest(void)
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	trust_ec = 0;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+D ignored if EC not trusted");
 	TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
@@ -1221,7 +1218,7 @@ static void VbBootRecTest(void)
 	trust_ec = 1;
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('D');
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+D ignored if already in dev mode");
 	TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
@@ -1232,7 +1229,7 @@ static void VbBootRecTest(void)
 	trust_ec = 1;
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('D');
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+D ignored if recovery not manually triggered");
 	TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
@@ -1250,7 +1247,7 @@ static void VbBootRecTest(void)
 	mock_gpio[0].count = 100;
 	mock_gpio[1].gpio_flags = GPIO_PRESENCE | GPIO_SHUTDOWN;
 	mock_gpio[1].count = 100;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+D ignored if phys pres button is still pressed");
 	TEST_NEQ(screens_displayed[1], VB_SCREEN_RECOVERY_TO_DEV,
@@ -1264,7 +1261,7 @@ static void VbBootRecTest(void)
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = ' ';
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Ctrl+D todev abort");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
@@ -1284,7 +1281,7 @@ static void VbBootRecTest(void)
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = VB_KEY_ENTER;
 	mock_keyflags[1] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
-	TEST_EQ(VbBootRecovery(&ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
+	TEST_EQ(VbBootRecovery(ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
 		"Ctrl+D todev confirm via enter");
 	TEST_EQ(virtdev_set, 1, "  virtual dev mode on");
 
@@ -1380,7 +1377,7 @@ static void VbBootRecTest(void)
 	mock_keypress[1] = VB_KEY_ENTER;
 	mock_keyflags[1] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	virtdev_retval = VB2_ERROR_MOCK;
-	TEST_EQ(VbBootRecovery(&ctx),
+	TEST_EQ(VbBootRecovery(ctx),
 		VBERROR_TPM_SET_BOOT_MODE_STATE,
 		"Ctrl+D todev failure");
 
@@ -1391,20 +1388,20 @@ static void VbBootRecTest(void)
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('C');
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
 	if (DIAGNOSTIC_UI)
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_REBOOT_REQUIRED,
 			"Ctrl+C todiag - enabled");
 	else
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_SHUTDOWN_REQUESTED,
 			"Ctrl+C todiag - disabled");
 
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
@@ -1417,19 +1414,19 @@ static void VbBootRecTest(void)
 	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_F(12);
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
 	if (DIAGNOSTIC_UI)
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_REBOOT_REQUIRED,
 			"F12 todiag - enabled");
 	else
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_SHUTDOWN_REQUESTED,
 			"F12 todiag - disabled");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for F12");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_RECOVERY_INSERT,
 		"  insert screen");
@@ -1439,19 +1436,19 @@ static void VbBootRecTest(void)
 	shared->flags = 0;
 	MockGpioAfter(100, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('C');
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
 	if (DIAGNOSTIC_UI)
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_REBOOT_REQUIRED,
 			"Ctrl+C todiag os broken - enabled");
 	else
-		TEST_EQ(VbBootRecovery(&ctx),
+		TEST_EQ(VbBootRecovery(ctx),
 			VBERROR_SHUTDOWN_REQUESTED,
 			"Ctrl+C todiag os broken - disabled");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
 		"  todiag is updated for Ctrl-C");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
 		"  os broken screen");
@@ -1465,7 +1462,7 @@ static void VbBootDiagTest(void)
 
 	/* No key pressed - timeout. */
 	ResetMocks();
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Timeout");
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_REBOOT_REQUIRED, "Timeout");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
@@ -1478,7 +1475,7 @@ static void VbBootDiagTest(void)
 	/* Esc key pressed. */
 	ResetMocks();
 	mock_keypress[0] = VB_KEY_ESC;
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Esc key");
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_REBOOT_REQUIRED, "Esc key");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
@@ -1490,7 +1487,7 @@ static void VbBootDiagTest(void)
 	/* Shutdown requested via lid close */
 	ResetMocks();
 	MockGpioAfter(10, GPIO_LID_CLOSED);
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_SHUTDOWN_REQUESTED, "Shutdown");
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_SHUTDOWN_REQUESTED, "Shutdown");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
@@ -1503,7 +1500,7 @@ static void VbBootDiagTest(void)
 	ResetMocks();
 	mock_gpio[0].gpio_flags = GPIO_PRESENCE;
 	mock_gpio[0].count = ~0;
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Power held");
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_REBOOT_REQUIRED, "Power held");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
@@ -1514,7 +1511,7 @@ static void VbBootDiagTest(void)
 	/* Power button is pressed and released. */
 	ResetMocks();
 	MockGpioAfter(3, GPIO_PRESENCE);
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED, "Confirm");
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_REBOOT_REQUIRED, "Confirm");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK,
@@ -1527,7 +1524,7 @@ static void VbBootDiagTest(void)
 	 * Ideally we'd that no recovery request was recorded, but
 	 * VbExLegacy() can only fail or crash the tests.
 	 */
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_ALTFW_HASH_FAILED,
 		"  recovery request");
 
@@ -1538,7 +1535,7 @@ static void VbBootDiagTest(void)
 	mock_gpio[0].count = 2;
 	mock_gpio[1].gpio_flags = GPIO_PRESENCE;
 	mock_gpio[1].count = 2;
-	TEST_EQ(VbBootDiagnostic(&ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDiagnostic(ctx), VBERROR_REBOOT_REQUIRED,
 		"Confirm but tpm fail");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_CONFIRM_DIAG,
 		"  confirm screen");
@@ -1547,7 +1544,7 @@ static void VbBootDiagTest(void)
 	TEST_EQ(tpm_set_mode_called, 1, "  tpm call");
 	TEST_EQ(tpm_mode, VB2_TPM_MODE_DISABLED, "  tpm disabled");
 	TEST_EQ(vbexlegacy_called, 0, "  legacy not called");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_TPM_DISABLE_FAILED,
 		"  recovery request");
 
