@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b70b83ce_a969c9f7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 0,
+      "message": "I mean... we\u0027ve never needed this for now, but are we really sure we want to remove it? (Should maybe be turned into a uint64_t for guaranteed serializability, though.)",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

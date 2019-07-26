@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b72350a1_25ae86cb",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Does this need to be here? Otherwise, I think inlining would still be worth it, especially with how this is called almost everywhere.",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edf98c3_8a062454",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Rather than defining this explicit padding, I\u0027d create reserved fields in the context if we think that is necessary.",
+      "range": {
+        "startLine": 143,
+        "startChar": 44,
+        "endLine": 143,
+        "endChar": 63
+      },
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9db7faa_a12c5371",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Better: workbuf_used \u003e workbuf_size || workbuf_used \u003c [end of SD]",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2cf0e67_01d72487",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Any idea why this doesn\u0027t use vb2_set_workbuf_used()? It probably should.\n\nMaybe it would be better to change set_workbuf_used to just take a pointer instead and do the vb2_offset_of() calculation in there? (Should maybe rename it to set_workbuf_end() or mark_workbuf_end() or something that confers that concept better then.)",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e941a1c8_cd641c33",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Maybe this is me overoptimizing again, but maybe just make the versions 8 bit and the offset 16? (That way, the NVRAM and secdata buffers below are also 8-bit aligned, which is neat.)",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db926053_40f4257e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t really make it clear that the whole context should be relocated, I think. Maybe just add a longer explanation about how context and workbuffer relate to each other and how relocation works in the main vb2_context comment?",
+      "range": {
+        "startLine": 199,
+        "startChar": 34,
+        "endLine": 200,
+        "endChar": 23
+      },
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9f0ab5_b9570c5d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "I feel like maybe this should rather be called vb2api_init_context(), or maybe vb2api_init_context_and_workbuf(). Because the way I see the caller using this is something like\n\n struct vb2_context *ctx \u003d _vboot_workbuf;\n rv \u003d vb2api_init_context_and_workbuf(ctx, _vboot_workbuf_size);\n ...\n rv \u003d vb2api_firmware_phase1(ctx);\n\nSo passing something called \u0027ctx\u0027 to an init_workbuf function seems a bit odd.",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28bbbfe5_94a4eb28",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "Isn\u0027t this rather something that every vb2api entry point (at least every major one, like firmware_phase1()/kernel_phase1()) should call internally? Putting this responsibility on the caller seems odd.",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878e99e9_4ae860a7",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "This seems super excessive. That is 1% of the whole workbuffer.\n\nI still don\u0027t think this is necessary at all tbh. If we do ever need to change the context in an RW update, and that sounds extremely unlikely to begin with, all it takes is one memmove() to make some space.",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5feec950_4883591a",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T04:26:52Z",
+      "side": 1,
+      "message": "So this would become\n\n vb2_mark_workbuf_end(ctx, dc + 1);\n\nif we change it. Or, if we think the pointer arithmetic would be too hairy, we could make it take both a pointer and an absolute size value. (...yeah, that second option would probably be a bit cleaner... so vb2_mark_workbuf_end(ctx, dc, dig_size)?)",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
