@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4569d64b_17cfdb8c",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T03:58:46Z",
+      "side": 1,
+      "message": "I think a vb2ex_assert() would be best so the calling firmware can decide how to handle it. Should be implemented as a macro in the caller so they can choose to print file/line info or drop in in release builds and stuff.",
+      "parentUuid": "77163353_a10cca1c",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4b1c26a_6f9e68e6",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "OK.  But we still need one cast to get rid of const...",
       "parentUuid": "a4b1c26a_6f9e68e6",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab12d0e_c9ed0215",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-26T03:58:46Z",
+      "side": 1,
+      "message": "I think the argument just shouldn\u0027t be a const pointer then? Why do you need that?",
+      "parentUuid": "ed61c7ea_e47512fe",
       "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
