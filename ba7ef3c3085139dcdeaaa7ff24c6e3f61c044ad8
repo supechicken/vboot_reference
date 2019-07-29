@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "822334dd_5fd5cd16",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T03:47:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4569d64b_17cfdb8c",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4b1c26a_6f9e68e6",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I think the argument just shouldn\u0027t be a const pointer then? Why do you need that?",
       "parentUuid": "ed61c7ea_e47512fe",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448607ca_a6c7c8ee",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T03:47:44Z",
+      "side": 1,
+      "message": "Here, my understanding is that the const on `offset` is not so useful, since it\u0027s just preventing the function from modifying the copied value it gets.\n\nThe const on `parent` prevents vb2_member_of from modifying the value pointed to by parent.  This is arguably useful, since it guarantees the caller doesn\u0027t have to worry about the value getting changed?  And it seems like other functions in this file do the same.\n\nSo unless we want to s/const void */void */g, then seems like we still need one (void *) cast here.  Thoughts?",
+      "parentUuid": "0ab12d0e_c9ed0215",
       "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
