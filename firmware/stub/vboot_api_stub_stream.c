@@ -42,7 +42,7 @@ int VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
 
 	*stream = (void *)s;
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 int VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer)
@@ -64,13 +64,13 @@ int VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer)
 		return VBERROR_UNKNOWN;
 
 	rv = VbExDiskRead(s->handle, s->sector, sectors, buffer);
-	if (rv != VBERROR_SUCCESS)
+	if (rv != VB2_SUCCESS)
 		return rv;
 
 	s->sector += sectors;
 	s->sectors_left -= sectors;
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 void VbExStreamClose(VbExStream_t stream)

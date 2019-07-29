@@ -192,9 +192,9 @@ static int boot_usb_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 	}
 
-	if (VBERROR_SUCCESS == VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE)) {
+	if (VB2_SUCCESS == VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE)) {
 		VB2_DEBUG("booting USB\n");
-		return VBERROR_SUCCESS;
+		return VB2_SUCCESS;
 	}
 
 	/* Loading kernel failed. Clear recovery request from that. */
@@ -729,14 +729,14 @@ static int vb2_init_menus(struct vb2_context *ctx)
 	menus[VB_MENU_LANGUAGES].size = count;
 	menus[VB_MENU_LANGUAGES].items = items;
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 /**
  * Main function that handles developer warning menu functionality
  *
  * @param ctx		Vboot2 context
- * @return VBERROR_SUCCESS, or non-zero error code if error.
+ * @return VB2_SUCCESS, or non-zero error code if error.
  */
 static int vb2_developer_menu(struct vb2_context *ctx)
 {
@@ -826,8 +826,8 @@ static int vb2_developer_menu(struct vb2_context *ctx)
 		boot_legacy_action(ctx);	/* Doesn't return on success. */
 
 	if (default_boot == VB2_DEV_DEFAULT_BOOT_USB)
-		if (VBERROR_SUCCESS == boot_usb_action(ctx))
-			return VBERROR_SUCCESS;
+		if (VB2_SUCCESS == boot_usb_action(ctx))
+			return VB2_SUCCESS;
 
 	return boot_disk_action(ctx);
 }
@@ -836,7 +836,7 @@ static int vb2_developer_menu(struct vb2_context *ctx)
 int VbBootDeveloperMenu(struct vb2_context *ctx)
 {
 	int retval = vb2_init_menus(ctx);
-	if (VBERROR_SUCCESS != retval)
+	if (VB2_SUCCESS != retval)
 		return retval;
 	retval = vb2_developer_menu(ctx);
 	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
@@ -878,7 +878,7 @@ static int broken_ui(struct vb2_context *ctx)
  * Main function that handles recovery menu functionality
  *
  * @param ctx		Vboot2 context
- * @return VBERROR_SUCCESS, or non-zero error code if error.
+ * @return VB2_SUCCESS, or non-zero error code if error.
  */
 static int recovery_ui(struct vb2_context *ctx)
 {
@@ -903,7 +903,7 @@ static int recovery_ui(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
 			   VB2_RECOVERY_NOT_REQUESTED);
 
-		if (VBERROR_SUCCESS == ret)
+		if (VB2_SUCCESS == ret)
 			return ret; /* Found a recovery kernel */
 
 		if (usb_nogood != (ret != VBERROR_NO_DISK_FOUND)) {
@@ -938,7 +938,7 @@ static int recovery_ui(struct vb2_context *ctx)
 int VbBootRecoveryMenu(struct vb2_context *ctx)
 {
 	int retval = vb2_init_menus(ctx);
-	if (VBERROR_SUCCESS != retval)
+	if (VB2_SUCCESS != retval)
 		return retval;
 	if (vb2_allow_recovery(ctx))
 		retval = recovery_ui(ctx);

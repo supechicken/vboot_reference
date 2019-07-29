@@ -96,5 +96,5 @@ int ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }

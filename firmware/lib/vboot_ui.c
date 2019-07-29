@@ -86,7 +86,7 @@ static int VbWantShutdown(struct vb2_context *ctx, uint32_t key)
 static int VbTryUsb(struct vb2_context *ctx)
 {
 	int retval = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
-	if (VBERROR_SUCCESS == retval) {
+	if (VB2_SUCCESS == retval) {
 		VB2_DEBUG("VbBootDeveloper() - booting USB\n");
 	} else {
 		vb2_error_notify("Could not boot from USB\n",
@@ -271,7 +271,7 @@ static int vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 			VB2_DEBUG("Vendor Data UI - user pressed Esc: "
 				  "exit to Developer screen\n");
 			data_value[0] = '\0';
-			return VBERROR_SUCCESS;
+			return VB2_SUCCESS;
 		case 'a'...'z':
 			key = toupper(key);
 		case '0'...'9':
@@ -304,7 +304,7 @@ static int vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 				/* Enter pressed - confirm input */
 				VB2_DEBUG("Vendor Data UI - user pressed "
 					  "Enter: confirm vendor data\n");
-				return VBERROR_SUCCESS;
+				return VB2_SUCCESS;
 			} else {
 				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
 			}
@@ -317,7 +317,7 @@ static int vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 		VbExSleepMs(DEV_KEY_DELAY);
 	} while (1);
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 /*
@@ -337,7 +337,7 @@ static int vb2_vendor_data_ui(struct vb2_context *ctx)
 
 	/* Vendor data was not entered just return */
 	if (data_value[0] == '\0')
-		return VBERROR_SUCCESS;
+		return VB2_SUCCESS;
 
 	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_VENDOR_DATA, 1, &data);
 	/* We'll loop until the user decides what to do */
@@ -356,7 +356,7 @@ static int vb2_vendor_data_ui(struct vb2_context *ctx)
 			/* Escape pressed - return to developer screen */
 			VB2_DEBUG("Vendor Data UI - user pressed Esc: "
 				  "exit to Developer screen\n");
-			return VBERROR_SUCCESS;
+			return VB2_SUCCESS;
 		case VB_KEY_ENTER:
 			/* Enter pressed - write vendor data */
 			VB2_DEBUG("Vendor Data UI - user pressed Enter: "
@@ -364,7 +364,7 @@ static int vb2_vendor_data_ui(struct vb2_context *ctx)
 				  data_value);
 			ret = VbExSetVendorData(data_value);
 
-			if (ret == VBERROR_SUCCESS) {
+			if (ret == VB2_SUCCESS) {
 				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
 				return VBERROR_REBOOT_REQUIRED;
 			} else {
@@ -384,7 +384,7 @@ static int vb2_vendor_data_ui(struct vb2_context *ctx)
 		VbExSleepMs(DEV_KEY_DELAY);
 	} while (1);
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 static int vb2_check_diagnostic_key(struct vb2_context *ctx,
@@ -396,7 +396,7 @@ static int vb2_check_diagnostic_key(struct vb2_context *ctx,
 		return VBERROR_REBOOT_REQUIRED;
 	}
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 /*
@@ -737,8 +737,8 @@ static int vb2_developer_ui(struct vb2_context *ctx)
 				 * key press.
 				 */
 				VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
-				if (VBERROR_SUCCESS == VbTryUsb(ctx)) {
-					return VBERROR_SUCCESS;
+				if (VB2_SUCCESS == VbTryUsb(ctx)) {
+					return VB2_SUCCESS;
 				} else {
 					/* Show dev mode warning screen again */
 					VbDisplayScreen(ctx,
@@ -772,8 +772,8 @@ static int vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	if ((use_usb && !ctrl_d_pressed) && allow_usb) {
-		if (VBERROR_SUCCESS == VbTryUsb(ctx)) {
-			return VBERROR_SUCCESS;
+		if (VB2_SUCCESS == VbTryUsb(ctx)) {
+			return VB2_SUCCESS;
 		}
 	}
 
@@ -845,7 +845,7 @@ static int recovery_ui(struct vb2_context *ctx)
 				return VBERROR_SHUTDOWN_REQUESTED;
 			else if ((retval =
 				  vb2_check_diagnostic_key(ctx, key)) !=
-				  VBERROR_SUCCESS)
+				  VB2_SUCCESS)
 				return retval;
 			VbExSleepMs(REC_KEY_DELAY);
 		}
@@ -866,7 +866,7 @@ static int recovery_ui(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
 			   VB2_RECOVERY_NOT_REQUESTED);
 
-		if (VBERROR_SUCCESS == retval)
+		if (VB2_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
 		VbDisplayScreen(ctx, VBERROR_NO_DISK_FOUND == retval ?
@@ -939,7 +939,7 @@ static int recovery_ui(struct vb2_context *ctx)
 				}
 			} else if ((retval =
 				    vb2_check_diagnostic_key(ctx, key)) !=
-				    VBERROR_SUCCESS) {
+				    VB2_SUCCESS) {
 				return retval;
 			} else {
 				VbCheckDisplayKey(ctx, key, NULL);
@@ -950,7 +950,7 @@ static int recovery_ui(struct vb2_context *ctx)
 		}
 	}
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 int VbBootRecovery(struct vb2_context *ctx)

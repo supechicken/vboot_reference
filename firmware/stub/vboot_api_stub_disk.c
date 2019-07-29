@@ -21,26 +21,26 @@ int VbExDiskGetInfo(VbDiskInfo** infos_ptr, uint32_t* count,
 {
 	*infos_ptr = NULL;
 	*count = 0;
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 
 int VbExDiskFreeInfo(VbDiskInfo* infos_ptr,
 			   VbExDiskHandle_t preserve_handle)
 {
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 
 int VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 		       uint64_t lba_count, void* buffer)
 {
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 
 int VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
 			uint64_t lba_count, const void* buffer)
 {
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }

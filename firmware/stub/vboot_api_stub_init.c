@@ -25,10 +25,10 @@ uint64_t VbExGetTimer(void)
 
 int test_mockable VbExNvStorageRead(uint8_t *buf)
 {
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 int VbExNvStorageWrite(const uint8_t *buf)
 {
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }

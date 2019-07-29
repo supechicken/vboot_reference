@@ -31,7 +31,7 @@ uint32_t SetVirtualDevMode(int val)
 {
 	if (virtual_dev_mode_fail)
 		return VBERROR_SIMULATED;
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 static void VbUnlockDeviceTest(void)
