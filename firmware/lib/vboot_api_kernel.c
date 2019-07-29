@@ -66,9 +66,9 @@ uint32_t vb2_get_fwmp_flags(void)
 	return fwmp.flags;
 }
 
-uint32_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
+int VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
-	VbError_t retval = VBERROR_UNKNOWN;
+	int retval = VBERROR_UNKNOWN;
 	VbDiskInfo* disk_info = NULL;
 	uint32_t disk_count = 0;
 	uint32_t i;
@@ -175,7 +175,7 @@ static int vb2_reset_nv_requests(struct vb2_context *ctx)
 	return need_reboot;
 }
 
-VbError_t VbBootNormal(struct vb2_context *ctx)
+int VbBootNormal(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	VbSharedDataHeader *shared = sd->vbsd;
@@ -190,7 +190,7 @@ VbError_t VbBootNormal(struct vb2_context *ctx)
 		return VBERROR_REBOOT_REQUIRED;
 	}
 
-	VbError_t rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
+	int rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
 
 	VB2_DEBUG("Checking if TPM kernel version needs advancing\n");
 
@@ -248,7 +248,7 @@ VbError_t VbBootNormal(struct vb2_context *ctx)
 	return rv;
 }
 
-static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
+static int vb2_kernel_setup(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
 {
@@ -346,7 +346,7 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	return VBERROR_SUCCESS;
 }
 
-static VbError_t vb2_kernel_phase4(struct vb2_context *ctx,
+static int vb2_kernel_phase4(struct vb2_context *ctx,
 				   VbSelectAndLoadKernelParams *kparams)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -385,12 +385,12 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
 }
 
-VbError_t VbSelectAndLoadKernel(
+int VbSelectAndLoadKernel(
 	struct vb2_context *ctx,
 	VbSharedDataHeader *shared,
 	VbSelectAndLoadKernelParams *kparams)
 {
-	VbError_t retval = vb2_kernel_setup(ctx, shared, kparams);
+	int retval = vb2_kernel_setup(ctx, shared, kparams);
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
 
@@ -459,7 +459,7 @@ VbError_t VbSelectAndLoadKernel(
 	return retval;
 }
 
-VbError_t VbVerifyMemoryBootImage(
+int VbVerifyMemoryBootImage(
 	struct vb2_context *ctx, VbSharedDataHeader *shared,
 	VbSelectAndLoadKernelParams *kparams, void *boot_image,
 	size_t image_size)
@@ -473,7 +473,7 @@ VbError_t VbVerifyMemoryBootImage(
 	int dev_switch;
 	uint32_t allow_fastboot_full_cap = 0;
 	struct vb2_workbuf wb;
-	VbError_t retval;
+	int retval;
 	int rv;
 
 	/* Allocate work buffer */
@@ -615,7 +615,7 @@ VbError_t VbVerifyMemoryBootImage(
 	return retval;
 }
 
-VbError_t VbUnlockDevice(void)
+int VbUnlockDevice(void)
 {
 	VB2_DEBUG("Enabling dev-mode...\n");
 	if (TPM_SUCCESS != SetVirtualDevMode(1))

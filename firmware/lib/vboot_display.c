@@ -22,17 +22,17 @@ static uint32_t disp_current_index = 0;
 static uint32_t disp_disabled_idx_mask = 0;
 
 __attribute__((weak))
-VbError_t VbExGetLocalizationCount(uint32_t *count) {
+int VbExGetLocalizationCount(uint32_t *count) {
 	*count = 0;
 	return VBERROR_UNKNOWN;
 }
 
 __attribute__((weak))
-VbError_t VbExGetAltFwIdxMask(void) {
+uint32_t VbExGetAltFwIdxMask(void) {
 	return 0;
 }
 
-VbError_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
+int VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
 			  const VbScreenData *data)
 {
 	uint32_t locale;
@@ -50,7 +50,7 @@ VbError_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
 	return VbExDisplayScreen(screen, locale, data);
 }
 
-VbError_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
+int VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
 			uint32_t selected_index, uint32_t disabled_idx_mask)
 {
 	uint32_t locale;
@@ -269,7 +269,7 @@ const char *RecoveryReasonString(uint8_t code)
 
 #define DEBUG_INFO_SIZE 512
 
-VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
+int VbDisplayDebugInfo(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
@@ -411,7 +411,7 @@ VbError_t VbDisplayDebugInfo(struct vb2_context *ctx)
 	return VbExDisplayDebugInfo(buf, 1);
 }
 
-VbError_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
+int VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
 			    const VbScreenData *data)
 {
 	uint32_t loc = 0;

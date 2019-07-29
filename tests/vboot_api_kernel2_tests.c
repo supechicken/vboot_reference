@@ -33,7 +33,7 @@ static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
 
 static int audio_looping_calls_left;
-static uint32_t vbtlk_retval;
+static int vbtlk_retval;
 static int vbexlegacy_called;
 static enum VbAltFwIndex_t altfw_num;
 static uint64_t current_ticks;
@@ -199,7 +199,7 @@ uint64_t VbExGetTimer(void)
 	return current_ticks;
 }
 
-VbError_t VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
+int VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
 			  uint32_t disk_flags)
 {
 	if (mock_num_disks_count < ARRAY_SIZE(mock_num_disks)) {
@@ -213,7 +213,7 @@ VbError_t VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExDiskFreeInfo(VbDiskInfo *infos,
+int VbExDiskFreeInfo(VbDiskInfo *infos,
 			   VbExDiskHandle_t preserve_handle)
 {
 	return VBERROR_SUCCESS;
@@ -234,12 +234,12 @@ int vb2_audio_looping(void)
 	return 1;
 }
 
-uint32_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
+int VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 {
 	return vbtlk_retval + get_info_flags;
 }
 
-VbError_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
+int VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 			  const VbScreenData *data)
 {
 	if (screens_count < ARRAY_SIZE(screens_displayed))
@@ -254,7 +254,7 @@ uint32_t SetVirtualDevMode(int val)
 	return virtdev_retval;
 }
 
-VbError_t VbExSetVendorData(const char *vendor_data_value)
+int VbExSetVendorData(const char *vendor_data_value)
 {
 	set_vendor_data_called = 1;
 	strncpy(set_vendor_data, vendor_data_value, sizeof(set_vendor_data));

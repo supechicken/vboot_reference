@@ -29,7 +29,7 @@ static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 
 static int mock_in_rw;
-static VbError_t in_rw_retval;
+static int in_rw_retval;
 static int protect_retval;
 static int ec_ro_protected;
 static int ec_rw_protected;
@@ -56,7 +56,7 @@ static struct vb2_gbb_header gbb;
 static uint32_t screens_displayed[8];
 static uint32_t screens_count = 0;
 
-static VbError_t ec_aux_fw_retval;
+static int ec_aux_fw_retval;
 static int ec_aux_fw_update_req;
 static VbAuxFwUpdateSeverity_t ec_aux_fw_mock_severity;
 static VbAuxFwUpdateSeverity_t ec_aux_fw_update_severity;
@@ -141,13 +141,13 @@ int VbExTrustEC(int devidx)
 	return !mock_in_rw;
 }
 
-VbError_t VbExEcRunningRW(int devidx, int *in_rw)
+int VbExEcRunningRW(int devidx, int *in_rw)
 {
 	*in_rw = mock_in_rw;
 	return in_rw_retval;
 }
 
-VbError_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
+int VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
 {
 	if (select == VB_SELECT_FIRMWARE_READONLY)
 		ec_ro_protected = 1;
@@ -156,19 +156,19 @@ VbError_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
 	return protect_retval;
 }
 
-VbError_t VbExEcDisableJump(int devidx)
+int VbExEcDisableJump(int devidx)
 {
 	return run_retval;
 }
 
-VbError_t VbExEcJumpToRW(int devidx)
+int VbExEcJumpToRW(int devidx)
 {
 	ec_run_image = 1;
 	mock_in_rw = 1;
 	return run_retval;
 }
 
-VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 			  const uint8_t **hash, int *hash_size)
 {
 	*hash = select == VB_SELECT_FIRMWARE_READONLY ?
@@ -178,7 +178,7 @@ VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 	return *hash_size ? VBERROR_SUCCESS : VBERROR_SIMULATED;
 }
 
-VbError_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
 				 const uint8_t **image, int *image_size)
 {
 	static uint8_t fake_image[64] = {5, 6, 7, 8};
@@ -187,7 +187,7 @@ VbError_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
 	return get_expected_retval;
 }
 
-VbError_t VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
+int VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
 				     const uint8_t **hash, int *hash_size)
 {
 	*hash = want_ec_hash;
@@ -196,7 +196,7 @@ VbError_t VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
 	return want_ec_hash_size ? VBERROR_SUCCESS : VBERROR_SIMULATED;
 }
 
-VbError_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
 			    const uint8_t *image, int image_size)
 {
 	if (select == VB_SELECT_FIRMWARE_READONLY) {
@@ -209,7 +209,7 @@ VbError_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
 	return update_retval;
 }
 
-VbError_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
+int VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 			  const VbScreenData *data)
 {
 	if (screens_count < ARRAY_SIZE(screens_displayed))
@@ -218,14 +218,14 @@ VbError_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
+int VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
 {
 	*severity = ec_aux_fw_mock_severity;
 	ec_aux_fw_update_severity = ec_aux_fw_mock_severity;
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExUpdateAuxFw()
+int VbExUpdateAuxFw()
 {
 	if (ec_aux_fw_update_severity != VB_AUX_FW_NO_DEVICE &&
 	    ec_aux_fw_update_severity != VB_AUX_FW_NO_UPDATE)
@@ -233,13 +233,13 @@ VbError_t VbExUpdateAuxFw()
 	return ec_aux_fw_retval;
 }
 
-VbError_t VbExEcVbootDone(int in_recovery)
+int VbExEcVbootDone(int in_recovery)
 {
 	ec_aux_fw_protected = ec_aux_fw_update_severity != VB_AUX_FW_NO_DEVICE;
 	return ec_aux_fw_retval;
 }
 
-static void test_ssync(VbError_t retval, int recovery_reason, const char *desc)
+static void test_ssync(int retval, int recovery_reason, const char *desc)
 {
 	TEST_EQ(ec_sync_all(&ctx), retval, desc);
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),

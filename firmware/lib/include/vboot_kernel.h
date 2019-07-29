@@ -27,7 +27,7 @@ struct vb2_context;
  * @return VBERROR_SUCCESS, VBERROR_NO_DISK_FOUND if no disks of the specified
  * type were found, or other non-zero VBERROR_ codes for other failures.
  */
-uint32_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags);
+int VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags);
 
 /* Flags for VbUserConfirms() */
 #define VB_CONFIRM_MUST_TRUST_KEYBOARD (1 << 0)
@@ -52,32 +52,32 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags);
 /**
  * Handle a normal boot.
  */
-VbError_t VbBootNormal(struct vb2_context *ctx);
+int VbBootNormal(struct vb2_context *ctx);
 
 /**
  * Handle a developer-mode boot.
  */
-VbError_t VbBootDeveloper(struct vb2_context *ctx);
+int VbBootDeveloper(struct vb2_context *ctx);
 
 /**
  * Handle a diagnostic-mode boot.
  */
-VbError_t VbBootDiagnostic(struct vb2_context *ctx);
+int VbBootDiagnostic(struct vb2_context *ctx);
 
 /**
  * Handle a recovery-mode boot.
  */
-VbError_t VbBootRecovery(struct vb2_context *ctx);
+int VbBootRecovery(struct vb2_context *ctx);
 
 /**
  * Handle a developer-mode boot using detachable menu ui
  */
-VbError_t VbBootDeveloperMenu(struct vb2_context *ctx);
+int VbBootDeveloperMenu(struct vb2_context *ctx);
 
 /**
  * Handle a recovery-mode boot using detachable menu ui
  */
-VbError_t VbBootRecoveryMenu(struct vb2_context *ctx);
+int VbBootRecoveryMenu(struct vb2_context *ctx);
 
 /**
  * Return the current FWMP flags.  Valid only inside VbSelectAndLoadKernel().

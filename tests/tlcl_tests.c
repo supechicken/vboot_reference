@@ -18,7 +18,7 @@
 
 /* Mock data */
 static char debug_info[4096];
-static VbError_t mock_retval;
+static int mock_retval;
 
 /* Call to mocked VbExTpmSendReceive() */
 struct srcall
@@ -29,7 +29,7 @@ struct srcall
 	int req_size;  /* Request size */
 	uint32_t req_cmd;  /* Request command code */
 	int rsp_size;  /* Response size */
-	VbError_t retval;  /* Value to return */
+	int retval;  /* Value to return */
 };
 
 #define MAXCALLS 8
@@ -65,18 +65,18 @@ static void SetResponse(int call_idx, uint32_t response_code, int rsp_size)
 
 /* Mocks */
 
-VbError_t VbExTpmInit(void)
+int VbExTpmInit(void)
 {
 	return mock_retval;
 }
 
 
-VbError_t VbExTpmClose(void)
+int VbExTpmClose(void)
 {
 	return mock_retval;
 }
 
-VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
+int VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
 			     uint8_t *response, uint32_t *response_length)
 {
 	struct srcall *c = calls + ncalls++;
@@ -98,7 +98,7 @@ VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
 	return c->retval;
 }
 
-VbError_t VbExTpmGetRandom(uint8_t *buf, uint32_t length)
+int VbExTpmGetRandom(uint8_t *buf, uint32_t length)
 {
 	memset(buf, 0xa5, length);
 	return VBERROR_SUCCESS;

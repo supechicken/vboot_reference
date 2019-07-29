@@ -33,16 +33,6 @@ extern "C" {
 struct vb2_context;
 typedef struct VbSharedDataHeader VbSharedDataHeader;
 
-/*****************************************************************************/
-/* Error codes */
-
-/*
- * Functions which return an error all return this type.  This is a 32-bit
- * value rather than an int so it's consistent across UEFI, which is 32-bit
- * during PEI and 64-bit during DXE/BDS.
- */
-typedef uint32_t VbError_t;
-
 /*
  * Define test_mockable for mocking functions.
  */
@@ -163,7 +153,7 @@ typedef struct VbSelectAndLoadKernelParams {
  *
  * Returns VBERROR_SUCCESS if success, non-zero if error; on error, caller
  * should reboot. */
-VbError_t VbSelectAndLoadKernel(struct vb2_context *ctx,
+int VbSelectAndLoadKernel(struct vb2_context *ctx,
 				VbSharedDataHeader *shared,
 				VbSelectAndLoadKernelParams *kparams);
 
@@ -183,7 +173,7 @@ VbError_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  * @param image_size	Size of the image in memory
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
-VbError_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
+int VbVerifyMemoryBootImage(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams,
 				  void *boot_image,
@@ -202,7 +192,7 @@ VbError_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
  *
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
-VbError_t VbUnlockDevice(void);
+int VbUnlockDevice(void);
 
 /*****************************************************************************/
 /* Timer and delay (first two from utility.h) */
@@ -245,29 +235,29 @@ void VbExSleepMs(uint32_t msec);
  * support is not available.  At a minimum, it must delay for the specified
  * non-zero duration.
  */
-VbError_t VbExBeep(uint32_t msec, uint32_t frequency);
+int VbExBeep(uint32_t msec, uint32_t frequency);
 
 /*****************************************************************************/
 /* TPM (from tlcl_stub.h) */
 
 /**
  * Initialize the stub library. */
-VbError_t VbExTpmInit(void);
+int VbExTpmInit(void);
 
 /**
  * Close and open the device.  This is needed for running more complex commands
  * at user level, such as TPM_TakeOwnership, since the TPM device can be opened
  * only by one process at a time.
  */
-VbError_t VbExTpmClose(void);
-VbError_t VbExTpmOpen(void);
+int VbExTpmClose(void);
+int VbExTpmOpen(void);
 
 /**
  * Send a request_length-byte request to the TPM and receive a response.  On
  * input, response_length is the size of the response buffer in bytes.  On
  * exit, response_length is set to the actual received response length in
  * bytes. */
-VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
+int VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
 			     uint8_t *response, uint32_t *response_length);
 
 #ifdef CHROMEOS_ENVIRONMENT
@@ -281,7 +271,7 @@ VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
  * attacker with communication interception abilities could launch replay
  * attacks by reusing previous nonces.
  */
-VbError_t VbExTpmGetRandom(uint8_t *buf, uint32_t length);
+int VbExTpmGetRandom(uint8_t *buf, uint32_t length);
 
 #endif  /* CHROMEOS_ENVIRONMENT */
 
@@ -293,12 +283,12 @@ VbError_t VbExTpmGetRandom(uint8_t *buf, uint32_t length);
 /**
  * Read the VBNV_BLOCK_SIZE-byte non-volatile storage into buf.
  */
-VbError_t VbExNvStorageRead(uint8_t *buf);
+int VbExNvStorageRead(uint8_t *buf);
 
 /**
  * Write the VBNV_BLOCK_SIZE-byte non-volatile storage from buf.
  */
-VbError_t VbExNvStorageWrite(const uint8_t *buf);
+int VbExNvStorageWrite(const uint8_t *buf);
 
 /*****************************************************************************/
 /* Disk access (previously in boot_device.h) */
@@ -386,7 +376,7 @@ typedef struct VbDiskInfo {
  * The firmware must not alter or free the list pointed to by [infos_ptr] until
  * VbExDiskFreeInfo() is called.
  */
-VbError_t VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
+int VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
 			  uint32_t disk_flags);
 
 /**
@@ -395,7 +385,7 @@ VbError_t VbExDiskGetInfo(VbDiskInfo **infos_ptr, uint32_t *count,
  * that handle remains valid after this call; all other handles from the info
  * list need not remain valid after this call.
  */
-VbError_t VbExDiskFreeInfo(VbDiskInfo *infos,
+int VbExDiskFreeInfo(VbDiskInfo *infos,
 			   VbExDiskHandle_t preserve_handle);
 
 /**
@@ -409,7 +399,7 @@ VbError_t VbExDiskFreeInfo(VbDiskInfo *infos,
  * which as been removed), the function must return error but must not
  * crash.
  */
-VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
+int VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 		       uint64_t lba_count, void *buffer);
 
 /**
@@ -423,7 +413,7 @@ VbError_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
  * which as been removed), the function must return error but must not
  * crash.
  */
-VbError_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
+int VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
 			uint64_t lba_count, const void *buffer);
 
 /* Streaming read interface */
@@ -443,7 +433,7 @@ typedef void *VbExStream_t;
  * device. It is not used to access the GPT. The size of the content addressed
  * is within streaming_lba_count.
  */
-VbError_t VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
+int VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
 			 uint64_t lba_count, VbExStream_t *stream_ptr);
 
 /**
@@ -459,7 +449,7 @@ VbError_t VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
  * This is used for access to the contents of the actual partitions on the
  * device. It is not used to access the GPT.
  */
-VbError_t VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer);
+int VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer);
 
 /**
  * Close a stream
@@ -548,7 +538,7 @@ typedef struct VbScreenData
  * to be simple ASCII text such as "NO GOOD" or "INSERT"; these screens should
  * only be seen during development.
  */
-VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
+int VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
 			    const VbScreenData *data);
 
 /**
@@ -563,7 +553,7 @@ VbError_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
  *
  * @return VBERROR_SUCCESS or error code on error.
  */
-VbError_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
+int VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
 			  uint32_t selected_index, uint32_t disabled_idx_mask,
 			  uint32_t redraw_base);
 
@@ -580,7 +570,7 @@ VbError_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
  *
  * @return VBERROR_SUCCESS or error code on error.
  */
-VbError_t VbExDisplayDebugInfo(const char *info_str, int full_info);
+int VbExDisplayDebugInfo(const char *info_str, int full_info);
 
 /**
  * Write vendor data to read-only VPD
@@ -591,7 +581,7 @@ VbError_t VbExDisplayDebugInfo(const char *info_str, int full_info);
  *
  * @return VBERROR_SUCCESS or error code on error.
  */
-VbError_t VbExSetVendorData(const char *vendor_data_value);
+int VbExSetVendorData(const char *vendor_data_value);
 
 /*****************************************************************************/
 /* Keyboard and switches */
@@ -697,20 +687,20 @@ int VbExTrustEC(int devidx);
  * If the EC is in RO code, sets *in_rw=0.
  * If the EC is in RW code, sets *in_rw non-zero.
  * If the current EC image is unknown, returns error. */
-VbError_t VbExEcRunningRW(int devidx, int *in_rw);
+int VbExEcRunningRW(int devidx, int *in_rw);
 
 /**
  * Request the EC jump to its rewritable code.  If successful, returns when the
  * EC has booting its RW code far enough to respond to subsequent commands.
  * Does nothing if the EC is already in its rewritable code.
  */
-VbError_t VbExEcJumpToRW(int devidx);
+int VbExEcJumpToRW(int devidx);
 
 /**
  * Tell the EC to refuse another jump until it reboots. Subsequent calls to
  * VbExEcJumpToRW() in this boot will fail.
  */
-VbError_t VbExEcDisableJump(int devidx);
+int VbExEcDisableJump(int devidx);
 
 /**
  * Read the SHA-256 hash of the selected EC image.
@@ -721,27 +711,27 @@ VbError_t VbExEcDisableJump(int devidx);
  * @param hash_size Pointer to the hash size.
  * @return          VBERROR_... error, VBERROR_SUCCESS on success.
  */
-VbError_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 			  const uint8_t **hash, int *hash_size);
 
 /**
  * Get the expected contents of the EC image associated with the main firmware
  * specified by the "select" argument.
  */
-VbError_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
 				 const uint8_t **image, int *image_size);
 
 /**
  * Read the SHA-256 hash of the expected contents of the EC image associated
  * with the main firmware specified by the "select" argument.
  */
-VbError_t VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
+int VbExEcGetExpectedImageHash(int devidx, enum VbSelectFirmware_t select,
 				     const uint8_t **hash, int *hash_size);
 
 /**
  * Update the selected EC image.
  */
-VbError_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
+int VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
 			    const uint8_t *image, int image_size);
 
 /**
@@ -749,14 +739,14 @@ VbError_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
  * Subsequent calls to VbExEcUpdateImage() with the same region this boot will
  * fail.
  */
-VbError_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select);
+int VbExEcProtect(int devidx, enum VbSelectFirmware_t select);
 
 /**
  * Info the EC of the boot mode selected by the AP.
  * mode: Normal, Developer, or Recovery
  */
 enum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY };
-VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
+int VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
 
 /**
  * Perform EC post-verification / updating / jumping actions.
@@ -769,12 +759,12 @@ VbError_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
  * @param in_recovery	1 if recovery mode is selected by the AP, 0 otherwise.
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
-VbError_t VbExEcVbootDone(int in_recovery);
+int VbExEcVbootDone(int in_recovery);
 
 /**
  * Request EC to stop discharging and cut-off battery.
  */
-VbError_t VbExEcBatteryCutOff(void);
+int VbExEcBatteryCutOff(void);
 
 /*
  * severity levels for an auxiliary firmware update request
@@ -803,7 +793,7 @@ typedef enum {
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 
-VbError_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity);
+int VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity);
 
 /**
  * Perform auxiliary firmware update(s).
@@ -814,7 +804,7 @@ VbError_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity);
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
 
-VbError_t VbExUpdateAuxFw(void);
+int VbExUpdateAuxFw(void);
 
 /*****************************************************************************/
 /* Misc */
@@ -904,7 +894,7 @@ uint8_t VbExOverrideGptEntryPriority(const GptEntry *e);
  * @param count		Pointer to the number of locales.
  * @return VBERROR_... error, VBERROR_SUCCESS on success.
  */
-VbError_t VbExGetLocalizationCount(uint32_t *count);
+int VbExGetLocalizationCount(uint32_t *count);
 
 enum vb_altfw {
 	VB_ALTFW_COUNT	= 9,	/* We allow 9 bootloaders, numbered 1-9 */
