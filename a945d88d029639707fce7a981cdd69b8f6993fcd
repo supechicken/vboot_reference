@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "55ac3a92_4e30c73d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "I was preparing to potentially need to mock out this function in tests, but didn\u0027t end up needing to.  Sure, we can put it back as inline.",
+      "parentUuid": "b72350a1_25ae86cb",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6edf98c3_8a062454",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "57c1457c_7f20a38f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6edf98c3_8a062454",
+      "range": {
+        "startLine": 143,
+        "startChar": 44,
+        "endLine": 143,
+        "endChar": 63
+      },
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9db7faa_a12c5371",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed652e20_284fafad",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9db7faa_a12c5371",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "253164fe_5541c141",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Yeah, good point -- I can change it to use vb2_set_workbuf_used.\n\nThis hearkens back to our huge discussion about the use of vb2_workbuf and how it should get passed down the call stack, except for top-level API calls.  Here it\u0027s a bit ambiguous as to whether that should be in vb2api_fw_phase1 (since it doesn\u0027t actually use the workbuf itself), or in each of the functions that it then calls.\n\nAs for the actual method of updating ctx-\u003eworkbuf_used, I think we also discussed more \"object-oriented\" alternatives.  But in vboot_reference\u0027s current state, there is lots of code that still manually stores stuff on the workbuf without calling vb2_workbuf_alloc, and then needs to do a manual calculation anyways.\n\nSo I agree that something else needs to be done here... but I\u0027d save that for another CL.",
+      "parentUuid": "f2cf0e67_01d72487",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e941a1c8_cd641c33",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -87,6 +165,24 @@
       "writtenOn": "2019-07-26T04:26:52Z",
       "side": 1,
       "message": "Maybe this is me overoptimizing again, but maybe just make the versions 8 bit and the offset 16? (That way, the NVRAM and secdata buffers below are also 8-bit aligned, which is neat.)",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c89b37_8dc6d2b6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "I\u0027d err towards consistency here as more important -- (1) keeping the struct header the same as vb2_shared_data, and (2) all other _offsets are stored as uint32_t.\n\nIf we want the NVRAM and secdata buffers to align, we could add some more reserved fields, but then that might not appeal to your optimizing side \u003d)",
+      "parentUuid": "e941a1c8_cd641c33",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "22f6603d_2ccc7bf2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db926053_40f4257e",
+      "range": {
+        "startLine": 199,
+        "startChar": 34,
+        "endLine": 200,
+        "endChar": 23
+      },
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da9f0ab5_b9570c5d",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -127,6 +247,24 @@
       "writtenOn": "2019-07-26T04:26:52Z",
       "side": 1,
       "message": "I feel like maybe this should rather be called vb2api_init_context(), or maybe vb2api_init_context_and_workbuf(). Because the way I see the caller using this is something like\n\n struct vb2_context *ctx \u003d _vboot_workbuf;\n rv \u003d vb2api_init_context_and_workbuf(ctx, _vboot_workbuf_size);\n ...\n rv \u003d vb2api_firmware_phase1(ctx);\n\nSo passing something called \u0027ctx\u0027 to an init_workbuf function seems a bit odd.",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de765105_f2740188",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "We could also just be careful about how it is called -- for example, in the above snippet, we could do this instead:\n\n  rv \u003d vb2api_init_workbuf(_vboot_workbuf, _vboot_workbuf_size);\n  struct vb2_context *ctx \u003d _vboot_workbuf;\n\nWould this be acceptable?",
+      "parentUuid": "da9f0ab5_b9570c5d",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "d3ee794e_ab9be187",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Seemed like it was somewhat unnecessary to verify consistency of the work buffer at every single point of entry.\nThe only time we are worried about it is when transitioning from verstage to ramstage, or from ramstage to payload.  And only the caller knows when this has happened.\nAnd then it seems awkward to have to choose which vb2api entry points are \"major\" and which are minor.\nThoughts?",
+      "parentUuid": "28bbbfe5_94a4eb28",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "878e99e9_4ae860a7",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 2
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "dbf58081_6029c1c4",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "...True.  Okay, let\u0027s forget about the whole padding stuff.\n\n[In that case, presumably the memmove() would be done in vb2api_check_workbuf() -- which we could also consider renaming to something like vb2api_import_workbuf().]",
+      "parentUuid": "878e99e9_4ae860a7",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5feec950_4883591a",
         "filename": "firmware/lib20/api.c",
         "patchSetId": 2
@@ -178,6 +352,24 @@
       "writtenOn": "2019-07-26T04:26:52Z",
       "side": 1,
       "message": "So this would become\n\n vb2_mark_workbuf_end(ctx, dc + 1);\n\nif we change it. Or, if we think the pointer arithmetic would be too hairy, we could make it take both a pointer and an absolute size value. (...yeah, that second option would probably be a bit cleaner... so vb2_mark_workbuf_end(ctx, dc, dig_size)?)",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be85d07f_1bd0e037",
+        "filename": "firmware/lib20/api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-29T06:50:04Z",
+      "side": 1,
+      "message": "Hmmm... see my other commend regarding this.",
+      "parentUuid": "5feec950_4883591a",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
