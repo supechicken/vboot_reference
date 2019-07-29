@@ -153,7 +153,7 @@ static vb2_error_t TpmExecute(const uint8_t *in, const uint32_t in_len,
 			}
 		}
 	}
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 /* Gets the tag field of a TPM command.
@@ -190,7 +190,7 @@ vb2_error_t VbExTpmClose(void)
 		close(tpm_fd);
 		tpm_fd = -1;
 	}
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t VbExTpmOpen(void)
@@ -200,7 +200,7 @@ vb2_error_t VbExTpmOpen(void)
 	int retries, saved_errno;
 
 	if (tpm_fd >= 0)
-		return VBERROR_SUCCESS;  /* Already open */
+		return VB2_SUCCESS;  /* Already open */
 
 	device_path = getenv("TPM_DEVICE_PATH");
 	if (device_path == NULL) {
@@ -213,7 +213,7 @@ vb2_error_t VbExTpmOpen(void)
 		tpm_fd = open(device_path, O_RDWR | O_CLOEXEC);
 		saved_errno = errno;
 		if (tpm_fd >= 0)
-			return VBERROR_SUCCESS;
+			return VB2_SUCCESS;
 		if (saved_errno != EBUSY)
 			break;
 
@@ -263,7 +263,7 @@ vb2_error_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
 #endif
 
 	result = TpmExecute(request, request_length, response, response_length);
-	if (result != VBERROR_SUCCESS)
+	if (result != VB2_SUCCESS)
 		return result;
 
 #ifdef VBOOT_DEBUG
@@ -289,7 +289,7 @@ vb2_error_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
 	assert(*response_length == TpmResponseSize(response));
 #endif
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t VbExTpmGetRandom(uint8_t *buf, uint32_t length)
@@ -306,5 +306,5 @@ vb2_error_t VbExTpmGetRandom(uint8_t *buf, uint32_t length)
 		return VBERROR_UNKNOWN;
 	}
 
-	return VBERROR_SUCCESS;
+	return VB2_SUCCESS;
 }
