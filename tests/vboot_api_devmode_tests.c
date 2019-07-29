@@ -163,7 +163,7 @@ int VbExNvStorageWrite(const uint8_t* buf)
 int VbExDiskGetInfo(VbDiskInfo** infos_ptr, uint32_t* count,
 			  uint32_t disk_flags)
 {
-	return VBERROR_UNKNOWN;
+	return VB2_ERROR_UNKNOWN;
 }
 
 int VbExDiskFreeInfo(VbDiskInfo* infos,
@@ -175,13 +175,13 @@ int VbExDiskFreeInfo(VbDiskInfo* infos,
 int VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 		       uint64_t lba_count, void* buffer)
 {
-	return VBERROR_UNKNOWN;
+	return VB2_ERROR_UNKNOWN;
 }
 
 int VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
 			uint64_t lba_count, const void* buffer)
 {
-	return VBERROR_UNKNOWN;
+	return VB2_ERROR_UNKNOWN;
 }
 
 uint32_t VbExIsShutdownRequested(void)

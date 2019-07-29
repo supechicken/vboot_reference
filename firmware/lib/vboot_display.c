@@ -24,7 +24,7 @@ static uint32_t disp_disabled_idx_mask = 0;
 __attribute__((weak))
 int VbExGetLocalizationCount(uint32_t *count) {
 	*count = 0;
-	return VBERROR_UNKNOWN;
+	return VB2_ERROR_UNKNOWN;
 }
 
 __attribute__((weak))
