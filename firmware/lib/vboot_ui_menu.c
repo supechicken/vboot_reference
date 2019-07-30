@@ -180,9 +180,14 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 	}
 
+	int fwmp_dev_enable_usb;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB,
+				      &fwmp_dev_enable_usb))
+		return VBERROR_KEEP_LOOPING;
+
 	if (!vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB) &&
 	    !(vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) &&
-	    !(vb2_get_fwmp_flags() & FWMP_DEV_ENABLE_USB)) {
+	    !fwmp_dev_enable_usb) {
 		vb2_flash_screen(ctx);
 		vb2_error_notify("WARNING: Booting from external media "
 				 "(USB/SD) has not been enabled. Refer "
@@ -363,7 +368,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 
 	VB2_DEBUG("Enabling dev-mode...\n");
-	if (VB2_SUCCESS != SetVirtualDevMode(1))
+	if (VB2_SUCCESS != vb2_set_developer_mode(ctx, 1))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
 	/* This was meant for headless devices, shouldn't really matter here. */
@@ -750,7 +755,13 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 
 	/* Check if developer mode is disabled by FWMP */
 	disable_dev_boot = 0;
-	if (vb2_get_fwmp_flags() & FWMP_DEV_DISABLE_BOOT) {
+
+	int fwmp_dev_disable_boot;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT,
+				      &fwmp_dev_disable_boot))
+		return VBERROR_KEEP_LOOPING;
+
+	if (fwmp_dev_disable_boot) {
 		if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by"
 				  "FORCE_DEV_SWITCH_ON\n");
@@ -760,9 +771,15 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 			VB2_DEBUG("dev_disable_boot is set.\n");
 		}
 	}
+
+	int fwmp_dev_enable_legacy;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY,
+				      &fwmp_dev_enable_legacy))
+		return VBERROR_KEEP_LOOPING;
+
 	altfw_allowed = vb2_nv_get(ctx, VB2_NV_DEV_BOOT_LEGACY) ||
 	    (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY) ||
-	    (vb2_get_fwmp_flags() & FWMP_DEV_ENABLE_LEGACY);
+	    fwmp_dev_enable_legacy;
 
 	/* Show appropriate initial menu */
 	if (disable_dev_boot)
