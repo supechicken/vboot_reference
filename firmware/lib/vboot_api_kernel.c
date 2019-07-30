@@ -7,6 +7,7 @@
 
 #include "sysincludes.h"
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2common.h"
 #include "2misc.h"
@@ -239,7 +240,8 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx)
 	}
 
 	if ((shared->kernel_version_tpm > shared->kernel_version_tpm_start) &&
-	    RollbackKernelWrite(shared->kernel_version_tpm)) {
+	    vb2_secdatak_set(ctx, VB2_SECDATAK_VERSIONS,
+			     shared->kernel_version_tpm)) {
 		VB2_DEBUG("Error writing kernel versions to TPM.\n");
 		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_W_ERROR);
 		return VBERROR_TPM_WRITE_KERNEL;
@@ -321,8 +323,18 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	kparams->flags = 0;
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	/* Load secdata and secdatak from the TPM. */
+	if (vb2_secdata_load(ctx) || vb2_secdatak_load(ctx)) {
+		VB2_DEBUG("Load secdata/secdatak failed\n");
+		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
+			return VBERROR_TPM_READ_KERNEL;
+		}
+	}
+
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
-	if (RollbackKernelRead(&shared->kernel_version_tpm)) {
+	if (vb2_secdatak_get(ctx, VB2_SECDATAK_VERSIONS,
+			     &shared->kernel_version_tpm)) {
 		VB2_DEBUG("Unable to get kernel versions from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -346,11 +358,9 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
-static vb2_error_t vb2_kernel_phase4(struct vb2_context *ctx,
+static void vb2_kernel_phase4(struct vb2_context *ctx,
 				     VbSelectAndLoadKernelParams *kparams)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-
 	/* Save disk parameters */
 	kparams->disk_handle = lkp.disk_handle;
 	kparams->partition_number = lkp.partition_number;
@@ -361,20 +371,16 @@ static vb2_error_t vb2_kernel_phase4(struct vb2_context *ctx,
 	kparams->kernel_buffer_size = lkp.kernel_buffer_size;
 	memcpy(kparams->partition_guid, lkp.partition_guid,
 	       sizeof(kparams->partition_guid));
-
-	/* Lock the kernel versions if not in recovery mode */
-	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    RollbackKernelLock(sd->recovery_reason)) {
-		VB2_DEBUG("Error locking kernel versions.\n");
-		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_L_ERROR);
-		return VBERROR_TPM_LOCK_KERNEL;
-	}
-
-	return VB2_SUCCESS;
 }
 
-static void vb2_kernel_cleanup(struct vb2_context *ctx)
+static vb2_error_t vb2_kernel_cleanup(struct vb2_context *ctx,
+				      int lock_secdatak)
 {
+	vb2_error_t rv = VB2_SUCCESS;
+
+	vb2_secdata_commit(ctx);
+	if (vb2_secdatak_commit(ctx, lock_secdatak))
+		rv = VBERROR_TPM_LOCK_KERNEL;
 	vb2_nv_commit(ctx);
 
 	/* vb2_shared_data may not have been initialized, and we may not have a
@@ -383,6 +389,8 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 	if (sd->vbsd)
 		/* Stop timer */
 		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
+
+	return rv;
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
@@ -448,10 +456,15 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
  VbSelectAndLoadKernel_exit:
 
-	if (VB2_SUCCESS == retval)
-		retval = vb2_kernel_phase4(ctx, kparams);
-
-	vb2_kernel_cleanup(ctx);
+	VB2_DEBUG("_exit: %x\n", retval);
+	if (VB2_SUCCESS == retval) {
+		vb2_kernel_phase4(ctx, kparams);
+		VB2_DEBUG("kernel_cleanup1\n");
+		retval = vb2_kernel_cleanup(ctx, 1);
+	} else {
+		VB2_DEBUG("kernel_cleanup2\n");
+		vb2_kernel_cleanup(ctx, 1);
+	}
 
 	/* Pass through return value from boot path */
 	VB2_DEBUG("Returning %d\n", (int)retval);
@@ -610,14 +623,14 @@ vb2_error_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
 	retval = VB2_SUCCESS;
 
  fail:
-	vb2_kernel_cleanup(ctx);
+	vb2_kernel_cleanup(ctx, 0);
 	return retval;
 }
 
-vb2_error_t VbUnlockDevice(void)
+vb2_error_t VbUnlockDevice(struct vb2_context *ctx)
 {
 	VB2_DEBUG("Enabling dev-mode...\n");
-	if (VB2_SUCCESS != SetVirtualDevMode(1))
+	if (VB2_SUCCESS != SetVirtualDevMode(ctx, 1))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
 	VB2_DEBUG("Mode change will take effect on next reboot.\n");

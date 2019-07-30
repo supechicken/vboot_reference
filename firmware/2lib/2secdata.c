@@ -10,6 +10,7 @@
 #include "2crc8.h"
 #include "2misc.h"
 #include "2secdata.h"
+#include "rollback_index.h"
 
 vb2_error_t vb2api_secdata_check(const struct vb2_context *ctx)
 {
@@ -120,5 +121,35 @@ vb2_error_t vb2_secdata_set(struct vb2_context *ctx,
 	/* Regenerate CRC */
 	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata, crc8));
 	ctx->flags |= VB2_CONTEXT_SECDATA_CHANGED;
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_load(struct vb2_context *ctx)
+{
+	if (ReadSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata)) {
+		VB2_DEBUG("Error reading secdata\n");
+		return VB2_RECOVERY_RW_TPM_R_ERROR;
+	}
+
+	return vb2_secdata_init(ctx);
+}
+
+vb2_error_t vb2_secdata_commit(struct vb2_context *ctx)
+{
+	if (!(ctx->flags & VB2_CONTEXT_SECDATA_CHANGED))
+		return VB2_SUCCESS;
+
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		VB2_DEBUG("secdata modified in non-recovery mode?\n");
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	VB2_DEBUG("Saving secdata\n");
+	if (WriteSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata)) {
+		VB2_DEBUG("Error writing secdata\n");
+		return VB2_ERROR_UNKNOWN;
+	}
+	ctx->flags &= ~VB2_CONTEXT_SECDATA_CHANGED;
+
 	return VB2_SUCCESS;
 }

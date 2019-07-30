@@ -24,8 +24,6 @@ int main(void)
 	LoadKernel(0, 0);
 
 	/* rollback_index.h */
-	RollbackKernelRead(0);
-	RollbackKernelWrite(0);
 	RollbackKernelLock(0);
 
 	/* tlcl.h */
