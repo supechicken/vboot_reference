@@ -79,8 +79,6 @@ enum vb2_return_code {
 	VBERROR_LOAD_KERNEL_RECOVERY          = 0x10011,
 	/* Other error inside VbSelectAndLoadKernel() */
 	VBERROR_LOAD_KERNEL                   = 0x10012,
-	/* Invalid Google binary block */
-	VBERROR_INVALID_GBB                   = 0x10013,
 	/* Invalid bitmap volume */
 	VBERROR_INVALID_BMPFV                 = 0x10014,
 	/* Invalid screen index */
