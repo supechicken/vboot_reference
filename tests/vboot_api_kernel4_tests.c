@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
@@ -104,15 +105,47 @@ vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
 	return VB2_SUCCESS;
 }
 
-uint32_t RollbackKernelRead(uint32_t *version)
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
 {
-	*version = rkr_version;
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_get(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t *dest)
+{
+	*dest = rkr_version;
 	return rkr_retval;
 }
 
-uint32_t RollbackKernelWrite(uint32_t version)
+vb2_error_t vb2_secdatak_set(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t value)
 {
-	rkr_version = version;
+	rkr_version = value;
 	return rkw_retval;
 }
 
