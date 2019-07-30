@@ -5,6 +5,7 @@
  * High-level firmware wrapper API - entry points for kernel selection
  */
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2common.h"
 #include "2misc.h"
@@ -14,7 +15,7 @@
 #include "2sysincludes.h"
 #include "ec_sync.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "utility.h"
 #include "vb2_common.h"
 #include "vboot_api.h"
@@ -23,22 +24,14 @@
 #include "vboot_test.h"
 
 /* Global variables */
-static struct RollbackSpaceFwmp fwmp;
 static LoadKernelParams lkp;
 
 #ifdef CHROMEOS_ENVIRONMENT
-/* Global variable accessors for unit tests */
-
-struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void)
-{
-	return &fwmp;
-}
-
+/* Global variable accessor for unit tests */
 struct LoadKernelParams *VbApiKernelGetParams(void)
 {
 	return &lkp;
 }
-
 #endif
 
 /**
@@ -61,11 +54,6 @@ void vb2_nv_commit(struct vb2_context *ctx)
 	VbExNvStorageWrite(ctx->nvdata);
 }
 
-uint32_t vb2_get_fwmp_flags(void)
-{
-	return fwmp.flags;
-}
-
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
 	vb2_error_t retval = VB2_ERROR_UNKNOWN;
@@ -76,7 +64,6 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VB2_DEBUG("VbTryLoadKernel() start, get_info_flags=0x%x\n",
 		  (unsigned)get_info_flags);
 
-	lkp.fwmp = &fwmp;
 	lkp.disk_handle = NULL;
 
 	/* Find disks */
@@ -239,7 +226,8 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx)
 	}
 
 	if ((shared->kernel_version_tpm > shared->kernel_version_tpm_start) &&
-	    RollbackKernelWrite(shared->kernel_version_tpm)) {
+	    vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+				   shared->kernel_version_tpm)) {
 		VB2_DEBUG("Error writing kernel versions to TPM.\n");
 		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_W_ERROR);
 		return VBERROR_TPM_WRITE_KERNEL;
@@ -321,8 +309,18 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	kparams->flags = 0;
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	/* Load secdata and secdatak from the TPM. */
+	if (secdata_firmware_read(ctx) || secdata_kernel_read(ctx)) {
+		VB2_DEBUG("Load secdata/secdatak failed\n");
+		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
+			return VBERROR_TPM_READ_KERNEL;
+		}
+	}
+
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
-	if (RollbackKernelRead(&shared->kernel_version_tpm)) {
+	if (vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+				   &shared->kernel_version_tpm)) {
 		VB2_DEBUG("Unable to get kernel versions from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -334,8 +332,14 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 
 	/* Read FWMP.  Ignore errors in recovery mode. */
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_FWMP) {
-		memset(&fwmp, 0, sizeof(fwmp));
-	} else if (RollbackFwmpRead(&fwmp)) {
+		/* TODO: This only works by virtue of the fact that we never
+		 * write out changes to FWMP while in firmware.  It would be
+		 * nice to encode the logic of checking this GBB flag
+		 * elsewhere, without having to overwrite the entire FWMP
+		 * space. */
+		uint32_t size = vb2api_secdata_fwmp_create(ctx);
+		vb2_secdata_fwmp_init(ctx, &size);
+	} else if (secdata_fwmp_read(ctx)) {
 		VB2_DEBUG("Unable to get FWMP from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -346,11 +350,9 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
-static vb2_error_t vb2_kernel_phase4(struct vb2_context *ctx,
+static void vb2_kernel_phase4(struct vb2_context *ctx,
 				     VbSelectAndLoadKernelParams *kparams)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-
 	/* Save disk parameters */
 	kparams->disk_handle = lkp.disk_handle;
 	kparams->partition_number = lkp.partition_number;
@@ -361,20 +363,17 @@ static vb2_error_t vb2_kernel_phase4(struct vb2_context *ctx,
 	kparams->kernel_buffer_size = lkp.kernel_buffer_size;
 	memcpy(kparams->partition_guid, lkp.partition_guid,
 	       sizeof(kparams->partition_guid));
-
-	/* Lock the kernel versions if not in recovery mode */
-	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    RollbackKernelLock(sd->recovery_reason)) {
-		VB2_DEBUG("Error locking kernel versions.\n");
-		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_L_ERROR);
-		return VBERROR_TPM_LOCK_KERNEL;
-	}
-
-	return VB2_SUCCESS;
 }
 
-static void vb2_kernel_cleanup(struct vb2_context *ctx)
+static vb2_error_t vb2_kernel_cleanup(struct vb2_context *ctx, vb2_error_t rv)
 {
+	secdata_firmware_write(ctx);
+	secdata_kernel_write(ctx);
+
+	/* If rv already has a previous error, don't change it. */
+	if (secdata_kernel_lock(ctx) && rv == VB2_SUCCESS)
+		rv = VBERROR_TPM_LOCK_KERNEL;
+
 	vb2_nv_commit(ctx);
 
 	/* vb2_shared_data may not have been initialized, and we may not have a
@@ -383,6 +382,8 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 	if (sd->vbsd)
 		/* Stop timer */
 		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
+
+	return rv;
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
@@ -449,9 +450,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  VbSelectAndLoadKernel_exit:
 
 	if (VB2_SUCCESS == retval)
-		retval = vb2_kernel_phase4(ctx, kparams);
+		vb2_kernel_phase4(ctx, kparams);
 
-	vb2_kernel_cleanup(ctx);
+	retval = vb2_kernel_cleanup(ctx, retval);
 
 	/* Pass through return value from boot path */
 	VB2_DEBUG("Returning %d\n", (int)retval);
@@ -610,6 +611,6 @@ vb2_error_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
 	retval = VB2_SUCCESS;
 
  fail:
-	vb2_kernel_cleanup(ctx);
+	retval = vb2_kernel_cleanup(ctx, retval);
 	return retval;
 }

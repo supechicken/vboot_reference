@@ -396,11 +396,11 @@ endif
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
 FWLIB_SRCS += \
-	firmware/lib/rollback_index.c \
+	firmware/lib/secdata_tpm.c \
 	${TLCL_SRCS}
 else
 FWLIB_SRCS += \
-	firmware/lib/mocked_rollback_index.c \
+	firmware/lib/mocked_secdata_tpm.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
 
@@ -677,6 +677,7 @@ TEST_OBJS += ${TESTLIB_OBJS}
 TEST_NAMES = \
 	tests/cgptlib_test \
 	tests/ec_sync_tests \
+	tests/secdata_tpm_tests \
 	tests/sha_benchmark \
 	tests/utility_string_tests \
 	tests/vboot_api_devmode_tests \
@@ -693,8 +694,7 @@ TEST_NAMES = \
 ifeq (${TPM2_MODE},)
 # TODO(apronin): tests for TPM2 case?
 TEST_NAMES += \
-	tests/tlcl_tests \
-	tests/rollback_index2_tests
+	tests/tlcl_tests
 endif
 
 TEST_FUTIL_NAMES = \
@@ -1260,9 +1260,9 @@ runtestscripts: test_setup genfuzztestcases
 runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/ec_sync_tests
 ifeq (${TPM2_MODE},)
+	${RUNTEST} ${BUILD_RUN}/tests/secdata_tpm_tests
 # TODO(apronin): tests for TPM2 case?
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
-	${RUNTEST} ${BUILD_RUN}/tests/rollback_index2_tests
 endif
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
