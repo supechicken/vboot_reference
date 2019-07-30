@@ -476,10 +476,11 @@ uint32_t vb2api_secdata_kernel_create(struct vb2_context *ctx);
  * and VB2_ERROR_SECDATA_FWMP_INCOMPLETE is returned.  The caller should
  * re-read the returned number of bytes, and call this function again.
  *
- * @param ctx          Context pointer
+ * @param ctx		Context pointer
+ * @param size		Amount of struct which has been read
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size);
+vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size);
 
 /**
  * Create fresh data in the firmware management parameters (FWMP) space.
@@ -488,7 +489,7 @@ vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size);
  * vb2api_secdata_fwmp_check() (or any other API in this library) fails; that
  * could allow the secure data to be rolled back to an insecure state.
  *
- * @param ctx          Context pointer
+ * @param ctx		Context pointer
  * @return size of created FWMP data in bytes
  */
 uint32_t vb2api_secdata_fwmp_create(struct vb2_context *ctx);
