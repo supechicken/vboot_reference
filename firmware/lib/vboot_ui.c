@@ -482,10 +482,10 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		/*
 		 * The following helps avoid use of the TPM after
 		 * it's disabled (e.g., when vb2_run_altfw() calls
-		 * RollbackKernelLock() ).
+		 * secdata_kernel_lock() ).
 		 */
 
-		if (RollbackKernelLock(0)) {
+		if (secdata_kernel_lock(ctx)) {
 			VB2_DEBUG("Failed to lock TPM PP\n");
 			vb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
 		} else if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=
@@ -547,12 +547,23 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Handle FWMP override */
-	uint32_t fwmp_flags = vb2_get_fwmp_flags();
-	if (fwmp_flags & FWMP_DEV_ENABLE_USB)
+	int fwmp_dev_enable_usb;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB,
+				      &fwmp_dev_enable_usb))
+		return VB2_ERROR_UNKNOWN;
+	int fwmp_dev_enable_legacy;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY,
+				      &fwmp_dev_enable_legacy))
+		return VB2_ERROR_UNKNOWN;
+	int fwmp_dev_disable_boot;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT,
+				      &fwmp_dev_disable_boot))
+		return VB2_ERROR_UNKNOWN;
+	if (fwmp_dev_enable_usb)
 		allow_usb = 1;
-	if (fwmp_flags & FWMP_DEV_ENABLE_LEGACY)
+	if (fwmp_dev_enable_legacy)
 		allow_legacy = 1;
-	if (fwmp_flags & FWMP_DEV_DISABLE_BOOT) {
+	if (fwmp_dev_disable_boot) {
 		if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by "
 				  "FORCE_DEV_SWITCH_ON\n");
@@ -917,7 +928,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				switch (VbUserConfirms(ctx, vbc_flags)) {
 				case 1:
 					VB2_DEBUG("Enabling dev-mode...\n");
-					if (VB2_SUCCESS != SetVirtualDevMode(1))
+					if (VB2_SUCCESS != vb2_set_developer_mode(ctx, 1))
 						return VBERROR_TPM_SET_BOOT_MODE_STATE;
 					VB2_DEBUG("Reboot so it will take "
 						  "effect\n");
