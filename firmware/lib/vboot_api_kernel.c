@@ -7,6 +7,7 @@
 
 #include "sysincludes.h"
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2common.h"
 #include "2misc.h"
@@ -321,6 +322,32 @@ static VbError_t vb2_kernel_setup(struct vb2_context *ctx,
 	kparams->flags = 0;
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
+	/*
+	 * Read secdata space for vboot2-style usage.
+	 * TODO(chromium:972956): Relocate to caller.
+	 */
+	if (ReadSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata)) {
+		VB2_DEBUG("Couldn't read secdata from TPM\n");
+		return VB2_ERROR_UNKNOWN;
+	} else {
+		int rv = vb2_secdata_init(ctx);
+		if (VB2_SUCCESS != rv)
+			return rv;
+	}
+
+	/*
+	 * Read secdatak space for vboot2-style usage.
+	 * TODO(chromium:972956): Relocate to caller.
+	 */
+	if (ReadSpaceKernel((RollbackSpaceKernel *)&ctx->secdatak)) {
+		VB2_DEBUG("Couldn't read secdatak from TPM\n");
+		return VB2_ERROR_UNKNOWN;
+	} else {
+		int rv = vb2_secdatak_init(ctx);
+		if (VB2_SUCCESS != rv)
+			return rv;
+	}
+
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
 	if (RollbackKernelRead(&shared->kernel_version_tpm)) {
 		VB2_DEBUG("Unable to get kernel versions from TPM\n");
@@ -371,6 +398,29 @@ static VbError_t vb2_kernel_phase4(struct vb2_context *ctx,
 	}
 
 	return VBERROR_SUCCESS;
+}
+
+/* TODO(chromium:972956): Relocate to caller. */
+static void vb2_flush_secdata(struct vb2_context *ctx)
+{
+	/* Write secdata if changed.  (Only works when in recovery mode.) */
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE &&
+	    ctx->flags & VB2_CONTEXT_SECDATA_CHANGED) {
+		VB2_DEBUG("Saving secdata\n");
+		if (WriteSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata))
+			VB2_DEBUG("Couldn't write secdata to TPM\n");
+		else
+			ctx->flags &= ~VB2_CONTEXT_SECDATA_CHANGED;
+	}
+
+	/* Write secdatak if changed. */
+	if (ctx->flags & VB2_CONTEXT_SECDATAK_CHANGED) {
+		VB2_DEBUG("Saving secdatak\n");
+		if (WriteSpaceKernel((RollbackSpaceKernel *)&ctx->secdatak))
+			VB2_DEBUG("Couldn't write secdatak to TPM\n");
+		else
+			ctx->flags &= ~VB2_CONTEXT_SECDATAK_CHANGED;
+	}
 }
 
 static void vb2_kernel_cleanup(struct vb2_context *ctx)
@@ -448,6 +498,8 @@ VbError_t VbSelectAndLoadKernel(
 	}
 
  VbSelectAndLoadKernel_exit:
+
+	vb2_flush_secdata(ctx);
 
 	if (VBERROR_SUCCESS == retval)
 		retval = vb2_kernel_phase4(ctx, kparams);
@@ -611,6 +663,7 @@ VbError_t VbVerifyMemoryBootImage(
 	retval = VBERROR_SUCCESS;
 
  fail:
+	vb2_flush_secdata(ctx);
 	vb2_kernel_cleanup(ctx);
 	return retval;
 }

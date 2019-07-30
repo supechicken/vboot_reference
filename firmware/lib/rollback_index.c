@@ -21,15 +21,6 @@
 #define offsetof(A,B) __builtin_offsetof(A,B)
 #endif
 
-/*
- * Provide protoypes for functions not in the header file. These prototypes
- * fix -Wmissing-prototypes warnings.
- */
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf);
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk);
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
-
 #ifdef FOR_TEST
 /*
  * Compiling for unit test, so we need the real implementations of
@@ -213,6 +204,76 @@ uint32_t SetVirtualDevMode(int val)
 
 	VB2_DEBUG("TPM: Leaving\n");
 	return VBERROR_SUCCESS;
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	uint32_t r;
+	int attempts = 3;
+
+	while (attempts--) {
+		r = TlclRead(KERNEL_NV_INDEX, rsk, sizeof(RollbackSpaceKernel));
+		if (r != TPM_SUCCESS)
+			return r;
+
+		/*
+		 * No CRC in this version, so we'll create one when we write
+		 * it. Note that we're marking this as version 2, not
+		 * ROLLBACK_SPACE_KERNEL_VERSION, because version 2 just added
+		 * the CRC. Later versions will need to set default values for
+		 * any extra fields explicitly (probably here).
+		 */
+		if (rsk->struct_version < 2) {
+			/* Danger Will Robinson! Danger! */
+			rsk->struct_version = 2;
+			return TPM_SUCCESS;
+		}
+
+		/*
+		 * If the CRC is good, we're done. If it's bad, try a couple
+		 * more times to see if it gets better before we give up. It
+		 * could just be noise.
+		 */
+		if (rsk->crc8 ==
+		    vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8)))
+			return TPM_SUCCESS;
+
+		VB2_DEBUG("TPM: bad CRC\n");
+	}
+
+	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
+	return TPM_E_CORRUPTED_STATE;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	RollbackSpaceKernel rsk2;
+	uint32_t r;
+	int attempts = 3;
+
+	/* All writes should use struct_version 2 or greater. */
+	if (rsk->struct_version < 2)
+		rsk->struct_version = 2;
+	rsk->crc8 = vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8));
+
+	while (attempts--) {
+		r = SafeWrite(KERNEL_NV_INDEX, rsk,
+			      sizeof(RollbackSpaceKernel));
+		/* Can't write, not gonna try again */
+		if (r != TPM_SUCCESS)
+			return r;
+
+		/* Read it back to be sure it got the right values. */
+		r = ReadSpaceKernel(&rsk2);    /* This checks the CRC */
+		if (r == TPM_SUCCESS)
+			return r;
+
+		VB2_DEBUG("TPM: bad CRC\n");
+		/* Try writing it again. Maybe it was garbled on the way out. */
+	}
+
+	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
+	return TPM_E_CORRUPTED_STATE;
 }
 
 #ifdef DISABLE_ROLLBACK_TPM
