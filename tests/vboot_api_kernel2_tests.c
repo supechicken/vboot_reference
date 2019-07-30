@@ -1113,7 +1113,7 @@ static void VbBootRecTestGpio(uint32_t first, uint32_t second, uint32_t third,
 {
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_gpio[0].gpio_flags = 0;
@@ -1173,7 +1173,7 @@ static void VbBootRecTest(void)
 	mock_gpio_count = 4;
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	vbtlk_expect_removable = 1;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -1211,7 +1211,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	gbb.flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	vbtlk_expect_removable = 1;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -1225,6 +1225,7 @@ static void VbBootRecTest(void)
 	mock_num_disks[0] = 1;
 	mock_num_disks[1] = 1;
 	shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"No remove in rec");
@@ -1236,6 +1237,7 @@ static void VbBootRecTest(void)
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	mock_num_disks[0] = 0;
 	mock_num_disks[1] = 1;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Remove");
@@ -1246,6 +1248,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	mock_num_disks[0] = -1;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Bad disk count");
@@ -1313,7 +1316,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	MockGpioAfter(2, GPIO_SHUTDOWN);
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = ' ';
@@ -1333,7 +1336,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	MockGpioAfter(10, GPIO_SHUTDOWN);
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = VB_KEY_ENTER;
@@ -1429,7 +1432,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	MockGpioAfter(10, GPIO_SHUTDOWN);
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	trust_ec = 1;
 	mock_keypress[0] = VB_KEY_CTRL('D');
 	mock_keypress[1] = VB_KEY_ENTER;
@@ -1444,7 +1447,7 @@ static void VbBootRecTest(void)
 	ResetMocks();
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_CTRL('C');
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,
@@ -1468,7 +1471,7 @@ static void VbBootRecTest(void)
 	shared->flags = VBSD_BOOT_REC_SWITCH_ON;
 	sd->flags &= ~VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	trust_ec = 1;
-	vbtlk_retval = VBERROR_NO_DISK_FOUND;
+	vbtlk_retval = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	MockGpioAfter(10, GPIO_SHUTDOWN);
 	mock_keypress[0] = VB_KEY_F(12);
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST), 0,

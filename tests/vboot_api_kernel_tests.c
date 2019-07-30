@@ -175,7 +175,7 @@ test_case_t test[] = {
 		.expected_recovery_request_val = VB2_RECOVERY_RW_NO_DISK,
 		.expected_to_find_disk = 0,
 		.expected_to_load_disk = 0,
-		.expected_return_val = VBERROR_NO_DISK_FOUND
+		.expected_return_val = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND
 	},
 	{
 		.name = "VbExDiskGetInfo() error",

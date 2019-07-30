@@ -653,10 +653,10 @@ gpt_done:
 		rv = VB2_SUCCESS;
 	} else if (found_partitions > 0) {
 		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
-		rv = VBERROR_INVALID_KERNEL_FOUND;
+		rv = VB2_ERROR_LOAD_KERNEL_INVALID_FOUND;
 	} else {
 		shcall->check_result = VBSD_LKC_CHECK_NO_PARTITIONS;
-		rv = VBERROR_NO_KERNEL_FOUND;
+		rv = VB2_ERROR_LOAD_KERNEL_NONE_FOUND;
 	}
 
 load_kernel_exit:
