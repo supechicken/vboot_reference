@@ -265,11 +265,11 @@ static void VbSlkTest(void)
 	TEST_EQ(rkr_version, 0x10002, "  version");
 
 	ResetMocks();
-	vbboot_retval = VBERROR_INVALID_KERNEL_FOUND;
+	vbboot_retval = VB2_ERROR_LOAD_KERNEL_INVALID_FOUND;
 	vb2_nv_set(&ctx, VB2_NV_RECOVERY_REQUEST, 123);
 	shared->flags |= VBSD_FWB_TRIED;
 	shared->firmware_index = 1;
-	test_slk(VBERROR_INVALID_KERNEL_FOUND,
+	test_slk(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		 0, "Don't go to recovery if try b fails to find a kernel");
 
 #if 0

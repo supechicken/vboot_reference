@@ -52,7 +52,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VB2_DEBUG("VbTryLoadKernel() found %d disks\n", (int)disk_count);
 	if (0 == disk_count) {
 		vb2api_fail(ctx, VB2_RECOVERY_RW_NO_DISK, rv);
-		return VBERROR_NO_DISK_FOUND;
+		return VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	}
 
 	/* Loop over disks */
@@ -179,7 +179,7 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx)
 		 * We'll still go to recovery mode if we run out of tries and
 		 * the old firmware can't find a kernel it likes.
 		 */
-		if (rv == VBERROR_INVALID_KERNEL_FOUND) {
+		if (rv == VB2_ERROR_LOAD_KERNEL_INVALID_FOUND) {
 			VB2_DEBUG("Trying FW B; only found invalid kernels.\n");
 			vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
 				   VB2_RECOVERY_NOT_REQUESTED);
