@@ -80,11 +80,6 @@ vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
 vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
 
 /**
- * Return the current FWMP flags.  Valid only inside VbSelectAndLoadKernel().
- */
-uint32_t vb2_get_fwmp_flags(void);
-
-/**
  * Reinitialize global state. This should only need to be called by init tests.
  */
 void vb2_init_ui(void);
