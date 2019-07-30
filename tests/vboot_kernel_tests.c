@@ -611,12 +611,12 @@ static void InvalidParamsTest(void)
 {
 	ResetMocks();
 	gpt_init_fail = 1;
-	TestLoadKernel(VBERROR_NO_KERNEL_FOUND, "Bad GPT");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_NONE_FOUND, "Bad GPT");
 
 	/* This causes the stream open call to fail */
 	ResetMocks();
 	lkp.disk_handle = NULL;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Bad disk handle");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Bad disk handle");
 }
 
 static void LoadKernelTest(void)
@@ -642,31 +642,33 @@ static void LoadKernelTest(void)
 	/* Fail if no kernels found */
 	ResetMocks();
 	mock_parts[0].size = 0;
-	TestLoadKernel(VBERROR_NO_KERNEL_FOUND, "No kernels");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_NONE_FOUND, "No kernels");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RW_NO_OS, "  recovery request");
 
 	/* Skip kernels which are too small */
 	ResetMocks();
 	mock_parts[0].size = 10;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Too small");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Too small");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RW_INVALID_OS, "  recovery request");
 
 	ResetMocks();
 	disk_read_to_fail = 100;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Fail reading kernel start");
 
 	ResetMocks();
 	key_block_verify_fail = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Fail key block sig");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Fail key block sig");
 
 	/* In dev mode, fail if hash is bad too */
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
 	key_block_verify_fail = 2;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Fail key block dev hash");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Fail key block dev hash");
 
 	/* But just bad sig is ok */
 	ResetMocks();
@@ -679,51 +681,52 @@ static void LoadKernelTest(void)
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
 	vb2_nv_set(&ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY, 1);
 	key_block_verify_fail = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Fail key block dev sig");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Fail key block dev sig");
 
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
 	lkp.fwmp = &fwmp;
 	fwmp.flags |= FWMP_DEV_ENABLE_OFFICIAL_ONLY;
 	key_block_verify_fail = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Fail key block dev sig fwmp");
 
 	/* Check key block flag mismatches */
 	ResetMocks();
 	kbh.key_block_flags =
 		KEY_BLOCK_FLAG_RECOVERY_0 | KEY_BLOCK_FLAG_DEVELOPER_1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block dev flag mismatch");
 
 	ResetMocks();
 	kbh.key_block_flags =
 		KEY_BLOCK_FLAG_RECOVERY_1 | KEY_BLOCK_FLAG_DEVELOPER_0;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block rec flag mismatch");
 
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE;
 	kbh.key_block_flags =
 		KEY_BLOCK_FLAG_RECOVERY_1 | KEY_BLOCK_FLAG_DEVELOPER_1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block recdev flag mismatch");
 
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_RECOVERY_MODE | VB2_CONTEXT_DEVELOPER_MODE;
 	kbh.key_block_flags =
 		KEY_BLOCK_FLAG_RECOVERY_1 | KEY_BLOCK_FLAG_DEVELOPER_0;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block rec!dev flag mismatch");
 
 	ResetMocks();
 	kbh.data_key.key_version = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block kernel key rollback");
 
 	ResetMocks();
 	kbh.data_key.key_version = 0x10000;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Key block kernel key version too big");
 
 	ResetMocks();
@@ -751,15 +754,16 @@ static void LoadKernelTest(void)
 
 	ResetMocks();
 	unpack_key_fail = 2;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Bad data key");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Bad data key");
 
 	ResetMocks();
 	preamble_verify_fail = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Bad preamble");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Bad preamble");
 
 	ResetMocks();
 	kph.kernel_version = 0;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Kernel version rollback");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Kernel version rollback");
 
 	ResetMocks();
 	kph.kernel_version = 0;
@@ -777,7 +781,7 @@ static void LoadKernelTest(void)
 	lkp.fwmp = &fwmp;
 	fwmp.flags |= FWMP_DEV_USE_KEY_HASH;
 	fwmp.dev_key_hash[0]++;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Fail key block dev fwmp hash");
 
 	/* Check developer key hash - good */
@@ -789,11 +793,13 @@ static void LoadKernelTest(void)
 
 	ResetMocks();
 	kph.preamble_size |= 0x07;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Kernel body offset");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Kernel body offset");
 
 	ResetMocks();
 	kph.preamble_size += 65536;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Kernel body offset huge");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+		       "Kernel body offset huge");
 
 	/* Check getting kernel load address from header */
 	ResetMocks();
@@ -806,12 +812,12 @@ static void LoadKernelTest(void)
 
 	ResetMocks();
 	lkp.kernel_buffer_size = 8192;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Kernel too big for buffer");
 
 	ResetMocks();
 	mock_parts[0].size = 130;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Kernel too big for partition");
 
 	ResetMocks();
@@ -820,12 +826,12 @@ static void LoadKernelTest(void)
 
 	ResetMocks();
 	disk_read_to_fail = 228;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		       "Fail reading kernel data");
 
 	ResetMocks();
 	verify_data_fail = 1;
-	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND, "Bad data");
+	TestLoadKernel(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Bad data");
 
 	/* Check that EXTERNAL_GPT flag makes it down */
 	ResetMocks();
