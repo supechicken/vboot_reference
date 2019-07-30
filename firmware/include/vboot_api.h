@@ -185,7 +185,7 @@ vb2_error_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
  *
  * @return VBERROR_... error, VB2_SUCCESS on success.
  */
-vb2_error_t VbUnlockDevice(void);
+vb2_error_t VbUnlockDevice(struct vb2_context *ctx);
 
 /*****************************************************************************/
 /* Timer and delay (first two from utility.h) */
