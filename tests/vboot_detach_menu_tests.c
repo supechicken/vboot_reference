@@ -1315,7 +1315,8 @@ static void VbBootRecTest(void)
 	vbtlk_retval[0] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[1] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[2] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[3] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[3] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in BROKEN with disks");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
@@ -1328,7 +1329,8 @@ static void VbBootRecTest(void)
 
 	/* BROKEN screen with disks on second attempt */
 	ResetMocks();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[1] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in BROKEN with later disk");
@@ -1343,7 +1345,8 @@ static void VbBootRecTest(void)
 	/* BROKEN screen even if dev switch is on */
 	ResetMocks();
 	vbtlk_retval[0] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[1] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[1] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[2] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
@@ -1358,7 +1361,8 @@ static void VbBootRecTest(void)
 
 	/* go to INSERT if recovery button physically pressed and EC trusted */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in INSERT with manual rec");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
@@ -1371,7 +1375,8 @@ static void VbBootRecTest(void)
 
 	/* go to INSERT if forced by GBB flag */
 	ResetMocks();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	gbb.flags |= VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in INSERT forced by GBB flag");
@@ -1385,7 +1390,8 @@ static void VbBootRecTest(void)
 
 	/* Stay at BROKEN if recovery button not physically pressed */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	shared->flags &= ~VBSD_BOOT_REC_SWITCH_ON;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Go to BROKEN if recovery not manually requested");
@@ -1399,7 +1405,8 @@ static void VbBootRecTest(void)
 
 	/* Stay at BROKEN if EC is untrusted */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	trust_ec = 0;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Go to BROKEN if EC is not trusted");
@@ -1426,10 +1433,14 @@ static void VbBootRecTest(void)
 
 	/* INSERT boots eventually if we get a valid image later */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[1] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[2] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[3] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[1] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[2] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[3] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[4] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VB2_SUCCESS,
 		"INSERT boots after valid image appears");
@@ -1445,9 +1456,12 @@ static void VbBootRecTest(void)
 	/* invalid image, then remove, then valid image */
 	ResetMocksForManualRecovery();
 	vbtlk_retval[0] = VB2_ERROR_MOCK - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[1] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[2] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[3] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[1] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[2] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[3] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[4] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VB2_SUCCESS,
 		"INSERT boots after valid image appears");
@@ -1504,7 +1518,8 @@ static void VbBootRecTest(void)
 	mock_keypress[i] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_LONG_PRESS;
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shortcuts ignored in INSERT");
 	TEST_EQ(virtdev_set, 0, "  virtual dev mode off");
@@ -1564,7 +1579,8 @@ static void VbBootRecTest(void)
 	mock_keyflags[1] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[1] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // power off
 	mock_keypress[2] = VB_BUTTON_POWER_SHORT_PRESS;
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Power Off INSERT through TO_DEV");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
@@ -1616,7 +1632,8 @@ static void VbBootRecTest(void)
 
 	/* Navigate to confirm dev mode selection and then cancel */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	i = 0;
 	mock_keyflags[i] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS; // enter TO_DEV
@@ -1649,7 +1666,8 @@ static void VbBootRecTest(void)
 
 	/* Navigate to confirm dev mode selection and then confirm */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	i = 0;
 	mock_keyflags[i] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS; // enter to_dev
@@ -1751,7 +1769,8 @@ static void VbBootRecTest(void)
 	/* Cannot enable dev mode if already enabled. */
 	ResetMocksForManualRecovery();
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	i = 0;
 	mock_keyflags[i] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS; // enter to_dev
@@ -1782,7 +1801,8 @@ static void VbBootRecTest(void)
 	mock_keypress[56] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // power off
 	mock_keypress[57] = VB_BUTTON_POWER_SHORT_PRESS;
 	vbtlk_retval[0] = VB2_ERROR_MOCK - VB_DISK_FLAG_REMOVABLE;
-	vbtlk_retval[1] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[1] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Drop back to INSERT from TO_DEV when removing invalid USB");
 	TEST_NEQ(shutdown_request_calls_left, 0, "  powered down explicitly");
@@ -1809,7 +1829,8 @@ static void VbBootRecTest(void)
 	mock_keypress[1] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // power off
 	mock_keypress[2] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // language
 	mock_keypress[3] = VB_BUTTON_POWER_SHORT_PRESS;
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[1] = VB2_ERROR_MOCK - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Drop back to NOGOOD from LANGUAGE when inserting invalid USB");
@@ -1836,7 +1857,8 @@ static void VbBootRecTest(void)
 	/* Plugging in valid USB boots straight from OPTIONS menu. */
 	ResetMocksForManualRecovery();
 	mock_keypress[0] = VB_BUTTON_VOL_UP_SHORT_PRESS; // enter OPTIONS
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	vbtlk_retval[1] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VB2_SUCCESS,
 		"Boot by plugging in USB straight from OPTIONS menu");
@@ -1896,7 +1918,8 @@ static void VbTestLanguageMenu(void)
 
 	/* Navigate to all language menus from recovery */
 	ResetMocksForManualRecovery();
-	vbtlk_retval[0] = VBERROR_NO_DISK_FOUND - VB_DISK_FLAG_REMOVABLE;
+	vbtlk_retval[0] = VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND -
+		VB_DISK_FLAG_REMOVABLE;
 	i = 0;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // enter OPTIONS
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS; // power off
