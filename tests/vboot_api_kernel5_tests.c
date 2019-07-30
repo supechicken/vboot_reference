@@ -256,7 +256,7 @@ static void VerifyMemoryBootImageTest(void)
 	key_block_verify_fail = 1;
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 0, "  hash check");
 
 	/* Key Block Hash Failure */
@@ -266,7 +266,7 @@ static void VerifyMemoryBootImageTest(void)
 	key_block_verify_fail = 1;
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 1, "  hash check");
 
 	/* Key Block Hash Failure -- VBNV */
@@ -276,7 +276,7 @@ static void VerifyMemoryBootImageTest(void)
 	vb2_nv_set(&ctx_nvram_backend, VB2_NV_DEV_BOOT_FASTBOOT_FULL_CAP, 1);
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Key verify failed");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Key verify failed");
 	TEST_EQ(hash_only_check, 1, "  hash check -- VBNV flag");
 
 	/* Developer flag mismatch - dev switch on */
@@ -287,7 +287,7 @@ static void VerifyMemoryBootImageTest(void)
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND,
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		"Developer flag mismatch - dev switch on");
 
 	/* Developer flag mismatch - dev switch on with GBB override */
@@ -321,7 +321,7 @@ static void VerifyMemoryBootImageTest(void)
 	copy_kbh();
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND,
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 		"Developer flag mismatch - dev switch off");
 
 	/* Recovery flag mismatch */
@@ -332,21 +332,21 @@ static void VerifyMemoryBootImageTest(void)
 	copy_kbh();
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Recovery flag mismatch");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Recovery flag mismatch");
 
 	/* Preamble verification */
 	ResetMocks();
 	preamble_verify_fail = 1;
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Preamble verification");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Preamble verification");
 
 	/* Data verification */
 	ResetMocks();
 	verify_data_fail = 1;
 	TEST_EQ(VbVerifyMemoryBootImage(&ctx, shared, &kparams, kernel_buffer,
 					kernel_buffer_size),
-		VBERROR_INVALID_KERNEL_FOUND, "Data verification");
+		VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, "Data verification");
 }
 
 int main(void)
