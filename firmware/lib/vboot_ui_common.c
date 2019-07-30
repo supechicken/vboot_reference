@@ -46,7 +46,7 @@ void vb2_error_notify(const char *print_msg,
 
 void vb2_run_altfw(struct vb2_context *ctx, enum VbAltFwIndex_t altfw_num)
 {
-	if (RollbackKernelLock(0)) {
+	if (RollbackKernelLock()) {
 		vb2_error_notify("Error locking kernel versions on legacy "
 				 "boot.\n", NULL, VB_BEEP_FAILED);
 	} else {
