@@ -143,6 +143,20 @@ typedef struct VbSelectAndLoadKernelParams {
 #define VB_SALK_INFLAGS_VENDOR_DATA_SETTABLE (1 << 1)
 
 /**
+ * Writes modified secdata spaces and nvstorage, and locks secdata_kernel.
+ *
+ * Write fails are ignored.  Only returns an error when secdata_kernel space
+ * fails to lock.
+ *
+ * @param ctx		Vboot context
+ * @param rv		May pass in previous error to preserve it; will take
+ * 			precedence over other errors returned by this function.
+ * 			Otherwise, just pass VB2_SUCCESS.
+ * @return VB2_SUCCESS or error code on error.
+ */
+vb2_error_t vb2_kernel_cleanup(struct vb2_context *ctx, vb2_error_t rv);
+
+/**
  * Select and loads the kernel.
  *
  * Returns VB2_SUCCESS if success, non-zero if error; on error, caller

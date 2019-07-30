@@ -483,10 +483,12 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		/*
 		 * The following helps avoid use of the TPM after
 		 * it's disabled (e.g., when vb2_run_altfw() calls
-		 * RollbackKernelLock() ).
+		 * secdata_kernel_lock() ).
 		 */
 
-		if (RollbackKernelLock(0)) {
+		/* TODO: This should flow back to the cleanup call in
+		   VbSelectAndLoadKernel. */
+		if (vb2_kernel_cleanup(ctx, VB2_SUCCESS)) {
 			VB2_DEBUG("Failed to lock TPM PP\n");
 			vb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
 		} else if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=
@@ -548,12 +550,11 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Handle FWMP override */
-	uint32_t fwmp_flags = vb2_get_fwmp_flags();
-	if (fwmp_flags & FWMP_DEV_ENABLE_USB)
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB))
 		allow_usb = 1;
-	if (fwmp_flags & FWMP_DEV_ENABLE_LEGACY)
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY))
 		allow_legacy = 1;
-	if (fwmp_flags & FWMP_DEV_DISABLE_BOOT) {
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT)) {
 		if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by "
 				  "FORCE_DEV_SWITCH_ON\n");
@@ -918,7 +919,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				switch (VbUserConfirms(ctx, vbc_flags)) {
 				case 1:
 					VB2_DEBUG("Enabling dev-mode...\n");
-					if (VB2_SUCCESS != SetVirtualDevMode(1))
+					if (VB2_SUCCESS !=
+					    vb2_enable_developer_mode(ctx))
 						return VBERROR_TPM_SET_BOOT_MODE_STATE;
 					VB2_DEBUG("Reboot so it will take "
 						  "effect\n");
