@@ -24,7 +24,7 @@ struct vb2_context;
  *
  * @param ctx			Vboot context
  * @param get_info_flags	Flags to pass to VbExDiskGetInfo()
- * @return VB2_SUCCESS, VBERROR_NO_DISK_FOUND if no disks of the specified
+ * @return VB2_SUCCESS, VB2_ERROR_LK_NO_DISK_FOUND if no disks of the specified
  * type were found, or other non-zero VBERROR_ codes for other failures.
  */
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags);
