@@ -66,6 +66,7 @@ static void ResetMocks(void)
 	ctx.workbuf = workbuf;
 	ctx.workbuf_size = sizeof(workbuf);
 	vb2_init_context(&ctx);
+	ctx.flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
 
 	/*
 	 * ctx_nvram_backend is only used as an NVRAM backend (see
@@ -113,34 +114,58 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 	return &gbb;
 }
 
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
-{
-	return VB2_SUCCESS;
-}
-
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
-{
-	return VB2_SUCCESS;
-}
-
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
-{
-	return VB2_SUCCESS;
-}
-
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
-{
-	return VB2_SUCCESS;
-}
-
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t secdata_firmware_read(struct vb2_context *c)
 {
 	return TPM_SUCCESS;
 }
 
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
+uint32_t secdata_firmware_write(struct vb2_context *c)
 {
 	return TPM_SUCCESS;
+}
+
+uint32_t secdata_kernel_read(struct vb2_context *c)
+{
+	return TPM_SUCCESS;
+}
+
+uint32_t secdata_kernel_write(struct vb2_context *c)
+{
+	return TPM_SUCCESS;
+}
+
+uint32_t secdata_kernel_lock(struct vb2_context *c)
+{
+	return TPM_SUCCESS;
+}
+
+uint32_t secdata_fwmp_read(struct vb2_context *c)
+{
+	return TPM_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_firmware_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_kernel_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_kernel_get(struct vb2_context *c,
+				   enum vb2_secdata_kernel_param param,
+				   uint32_t *dest)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_kernel_set(struct vb2_context *c,
+				   enum vb2_secdata_kernel_param param,
+				   uint32_t value)
+{
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2ex_read_resource(struct vb2_context *c,

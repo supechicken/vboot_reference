@@ -187,6 +187,11 @@ ifneq (${TPM2_MODE},)
 CFLAGS += -DTPM2_MODE
 endif
 
+# Some tests need to be disabled when using mocked_secdata_tpm.
+ifneq (${MOCK_TPM},)
+CFLAGS += -DMOCK_TPM
+endif
+
 # enable all features during local compile (permits testing)
 ifeq (${FIRMWARE_ARCH},)
 DIAGNOSTIC_UI := 1
@@ -690,12 +695,15 @@ TEST_NAMES = \
 	tests/vboot_kernel_tests \
 	tests/verify_kernel
 
-ifeq (${TPM2_MODE}${MOCK_TPM},)
-# TODO(apronin): tests for TPM2 case?
+ifeq (${MOCK_TPM},)
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
 TEST_NAMES += \
-	tests/secdata_tpm_tests \
+	tests/secdata_tpm_tests
+ifeq (${TPM2_MODE},)
+# TODO(apronin): tests for TPM2 case?
+TEST_NAMES += \
 	tests/tlcl_tests
+endif
 endif
 
 TEST_FUTIL_NAMES = \
@@ -846,12 +854,6 @@ ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB21_OBJS}: CFLAGS += -DUNROLL_LOOPS
-
-# Workaround for coreboot on x86, which will power off asynchronously
-# without giving us a chance to react. This is not an example of the Right
-# Way to do things. See chrome-os-partner:7689, and the commit message
-# that made this change.
-${FWLIB_OBJS}: CFLAGS += -DSAVE_LOCALE_IMMEDIATELY
 endif
 
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
@@ -1255,11 +1257,13 @@ runtestscripts: test_setup genfuzztestcases
 .PHONY: runmisctests
 runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/ec_sync_tests
-ifeq (${TPM2_MODE}${MOCK_TPM},)
-# TODO(apronin): tests for TPM2 case?
+ifeq (${MOCK_TPM},)
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
 	${RUNTEST} ${BUILD_RUN}/tests/secdata_tpm_tests
+ifeq (${TPM2_MODE},)
+# TODO(apronin): tests for TPM2 case?
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
+endif
 endif
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
