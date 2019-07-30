@@ -473,20 +473,19 @@ vb2_error_t VbVerifyMemoryBootImage(
 	int dev_switch;
 	uint32_t allow_fastboot_full_cap = 0;
 	struct vb2_workbuf wb;
-	vb2_error_t retval;
 	vb2_error_t rv;
 
 	/* Allocate work buffer */
 	vb2_workbuf_from_ctx(ctx, &wb);
 
-	retval = vb2_kernel_setup(ctx, shared, kparams);
-	if (retval)
+	rv = vb2_kernel_setup(ctx, shared, kparams);
+	if (rv)
 		goto fail;
 
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
 	if ((boot_image == NULL) || (image_size == 0)) {
-		retval = VB2_ERROR_INVALID_PARAMETER;
+		rv = VB2_ERROR_INVALID_PARAMETER;
 		goto fail;
 	}
 
@@ -517,20 +516,20 @@ vb2_error_t VbVerifyMemoryBootImage(
 		rv = vb2_gbb_read_recovery_key(ctx, &kernel_subkey, NULL, &wb);
 		if (VB2_SUCCESS != rv) {
 			VB2_DEBUG("GBB read recovery key failed.\n");
-			retval = VBERROR_INVALID_GBB;
 			goto fail;
 		}
 	}
 
-	/* If we fail at any step, retval returned would be invalid kernel. */
-	retval = VBERROR_INVALID_KERNEL_FOUND;
+	/* If we fail at any step, rv returned would be invalid kernel. */
+	rv = VBERROR_INVALID_KERNEL_FOUND;
 
 	/* Verify the key block. */
 	key_block = (VbKeyBlockHeader *)kbuf;
 	struct vb2_keyblock *keyblock2 = (struct vb2_keyblock *)kbuf;
-	rv = VB2_SUCCESS;
+	int rv_keyblock = VB2_SUCCESS;
 	if (hash_only) {
-		rv = vb2_verify_keyblock_hash(keyblock2, image_size, &wb);
+		rv_keyblock = vb2_verify_keyblock_hash(keyblock2,
+						       image_size, &wb);
 	} else {
 		/* Unpack kernel subkey */
 		struct vb2_public_key kernel_subkey2;
@@ -539,11 +538,11 @@ vb2_error_t VbVerifyMemoryBootImage(
 			VB2_DEBUG("Unable to unpack kernel subkey\n");
 			goto fail;
 		}
-		rv = vb2_verify_keyblock(keyblock2, image_size,
-					 &kernel_subkey2, &wb);
+		rv_keyblock = vb2_verify_keyblock(keyblock2, image_size,
+						  &kernel_subkey2, &wb);
 	}
 
-	if (VB2_SUCCESS != rv) {
+	if (VB2_SUCCESS != rv_keyblock) {
 		VB2_DEBUG("Verifying key block signature/hash failed.\n");
 		goto fail;
 	}
@@ -608,11 +607,11 @@ vb2_error_t VbVerifyMemoryBootImage(
 	if (VbKernelHasFlags(preamble) == VBOOT_SUCCESS)
 		kparams->flags = preamble->flags;
 
-	retval = VB2_SUCCESS;
+	rv = VB2_SUCCESS;
 
  fail:
 	vb2_kernel_cleanup(ctx);
-	return retval;
+	return rv;
 }
 
 vb2_error_t VbUnlockDevice(void)
