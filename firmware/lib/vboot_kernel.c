@@ -655,11 +655,11 @@ gpt_done:
 	} else if (found_partitions > 0) {
 		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
 		recovery = VB2_RECOVERY_RW_INVALID_OS;
-		rv = VBERROR_INVALID_KERNEL_FOUND;
+		rv = VB2_ERROR_LOAD_KERNEL_INVALID_FOUND;
 	} else {
 		shcall->check_result = VBSD_LKC_CHECK_NO_PARTITIONS;
 		recovery = VB2_RECOVERY_RW_NO_OS;
-		rv = VBERROR_NO_KERNEL_FOUND;
+		rv = VB2_ERROR_LOAD_KERNEL_NONE_FOUND;
 	}
 
 load_kernel_exit:
