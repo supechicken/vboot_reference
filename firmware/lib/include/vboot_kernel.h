@@ -80,11 +80,6 @@ vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
 vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
 
 /**
- * Return the current FWMP flags.  Valid only inside VbSelectAndLoadKernel().
- */
-uint32_t vb2_get_fwmp_flags(void);
-
-/**
  * Commit NvStorage.
  *
  * This may be called by UI functions which need to save settings before they
