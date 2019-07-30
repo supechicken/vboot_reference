@@ -27,7 +27,7 @@ static void ResetMocks(void)
 }
 
 /* Mocks */
-vb2_error_t SetVirtualDevMode(int val)
+vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value)
 {
 	if (virtual_dev_mode_fail)
 		return VB2_ERROR_MOCK;
@@ -37,11 +37,11 @@ vb2_error_t SetVirtualDevMode(int val)
 static void VbUnlockDeviceTest(void)
 {
 	ResetMocks();
-	TEST_EQ(VbUnlockDevice(), 0, "unlock success");
+	TEST_EQ(VbUnlockDevice(NULL), 0, "unlock success");
 
 	ResetMocks();
 	virtual_dev_mode_fail = 1;
-	TEST_EQ(VbUnlockDevice(), VBERROR_TPM_SET_BOOT_MODE_STATE,
+	TEST_EQ(VbUnlockDevice(NULL), VBERROR_TPM_SET_BOOT_MODE_STATE,
 		"set dev fail");
 }
 

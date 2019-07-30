@@ -9,6 +9,7 @@
 #include "2sysincludes.h"
 #include "2common.h"
 #include "2crc8.h"
+#include "2secdata.h"
 #include "rollback_index.h"
 #include "tlcl.h"
 #include "tss_constants.h"
@@ -17,15 +18,6 @@
 #ifndef offsetof
 #define offsetof(A,B) __builtin_offsetof(A,B)
 #endif
-
-/*
- * Provide protoypes for functions not in the header file. These prototypes
- * fix -Wmissing-prototypes warnings.
- */
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf);
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk);
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 
 #ifdef FOR_TEST
 /*
@@ -115,25 +107,21 @@ uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
 	return TPM_SUCCESS;
 }
 
-vb2_error_t SetVirtualDevMode(int val)
+/* NOTE: SetVirtualDevMode doesn't update the FLAG_LAST_BOOT_DEVELOPER bit.
+   That will be done on the next boot. */
+vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value)
 {
-	RollbackSpaceFirmware rsf;
+	uint32_t flags;
 
-	if (TPM_SUCCESS != ReadSpaceFirmware(&rsf))
+	if (vb2_secdata_get(ctx, VB2_SECDATA_FLAGS, &flags))
 		return VBERROR_TPM_FIRMWARE_SETUP;
 
-	VB2_DEBUG("TPM: flags were 0x%02x\n", rsf.flags);
-	if (val)
-		rsf.flags |= FLAG_VIRTUAL_DEV_MODE_ON;
+	if (value)
+		flags |= VB2_SECDATA_FLAG_DEV_MODE;
 	else
-		rsf.flags &= ~FLAG_VIRTUAL_DEV_MODE_ON;
-	/*
-	 * NOTE: This doesn't update the FLAG_LAST_BOOT_DEVELOPER bit.  That
-	 * will be done on the next boot.
-	 */
-	VB2_DEBUG("TPM: flags are now 0x%02x\n", rsf.flags);
+		flags &= ~VB2_SECDATA_FLAG_DEV_MODE;
 
-	if (TPM_SUCCESS != WriteSpaceFirmware(&rsf))
+	if (vb2_secdata_set(ctx, VB2_SECDATA_FLAGS, flags))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
 	return VB2_SUCCESS;
@@ -199,18 +187,7 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 #ifdef DISABLE_ROLLBACK_TPM
 /* Dummy implementations which don't support TPM rollback protection */
 
-uint32_t RollbackKernelRead(uint32_t* version)
-{
-	*version = 0;
-	return TPM_SUCCESS;
-}
-
-uint32_t RollbackKernelWrite(uint32_t version)
-{
-	return TPM_SUCCESS;
-}
-
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t RollbackKernelLock(void)
 {
 	return TPM_SUCCESS;
 }
@@ -223,33 +200,12 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 
 #else
 
-uint32_t RollbackKernelRead(uint32_t* version)
-{
-	RollbackSpaceKernel rsk;
-	RETURN_ON_FAILURE(ReadSpaceKernel(&rsk));
-	memcpy(version, &rsk.kernel_versions, sizeof(*version));
-	VB2_DEBUG("TPM: RollbackKernelRead 0x%x\n", (int)*version);
-	return TPM_SUCCESS;
-}
-
-uint32_t RollbackKernelWrite(uint32_t version)
-{
-	RollbackSpaceKernel rsk;
-	uint32_t old_version;
-	RETURN_ON_FAILURE(ReadSpaceKernel(&rsk));
-	memcpy(&old_version, &rsk.kernel_versions, sizeof(old_version));
-	VB2_DEBUG("TPM: RollbackKernelWrite 0x%x --> 0x%x\n",
-		  (int)old_version, (int)version);
-	memcpy(&rsk.kernel_versions, &version, sizeof(version));
-	return WriteSpaceKernel(&rsk);
-}
-
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t RollbackKernelLock()
 {
 	static int kernel_locked = 0;
 	uint32_t r;
 
-	if (recovery_mode || kernel_locked)
+	if (kernel_locked)
 		return TPM_SUCCESS;
 
 	r = TlclLockPhysicalPresence();
