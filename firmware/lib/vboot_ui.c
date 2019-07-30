@@ -859,10 +859,12 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		if (VB2_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(ctx, VBERROR_NO_DISK_FOUND == retval ?
-				VB_SCREEN_RECOVERY_INSERT :
-				VB_SCREEN_RECOVERY_NO_GOOD,
-				0, NULL);
+		VbDisplayScreen(
+			ctx,
+			VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND == retval ?
+			VB_SCREEN_RECOVERY_INSERT :
+			VB_SCREEN_RECOVERY_NO_GOOD,
+			0, NULL);
 
 		/*
 		 * Scan keyboard more frequently than media, since x86
