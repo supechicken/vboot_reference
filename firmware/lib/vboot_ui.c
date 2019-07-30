@@ -480,28 +480,10 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 	if (action_confirmed) {
 		VB2_DEBUG("Diagnostic requested, running\n");
 
-		/*
-		 * The following helps avoid use of the TPM after
-		 * it's disabled (e.g., when vb2_run_altfw() calls
-		 * RollbackKernelLock() ).
-		 */
-
-		if (RollbackKernelLock(0)) {
-			VB2_DEBUG("Failed to lock TPM PP\n");
-			vb2api_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
-		} else if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=
-			   VB2_SUCCESS) {
-			VB2_DEBUG("Failed to disable TPM\n");
-			vb2api_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
-		} else {
-			vb2_run_altfw(ctx, VB_ALTFW_DIAGNOSTIC);
-			VB2_DEBUG("Diagnostic failed to run\n");
-			/*
-			 * Assuming failure was due to bad hash, though
-			 * the rom could just be missing or invalid.
-			 */
-			vb2api_fail(ctx, VB2_RECOVERY_ALTFW_HASH_FAILED, 0);
-		}
+		/* This call should not return in normal cases. */
+		result = vb2_run_altfw(ctx, VB_ALTFW_DIAGNOSTIC);
+		if (result)
+			return result;
 	}
 
 	return result;
@@ -517,11 +499,13 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	VbSharedDataHeader *shared = sd->vbsd;
+	vb2_error_t rv;
 
 	uint32_t disable_dev_boot = 0;
 	uint32_t use_usb = 0;
 	uint32_t use_legacy = 0;
 	uint32_t ctrl_d_pressed = 0;
+
 
 	VB2_DEBUG("Entering\n");
 
@@ -548,12 +532,11 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Handle FWMP override */
-	uint32_t fwmp_flags = vb2_get_fwmp_flags();
-	if (fwmp_flags & FWMP_DEV_ENABLE_USB)
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB))
 		allow_usb = 1;
-	if (fwmp_flags & FWMP_DEV_ENABLE_LEGACY)
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY))
 		allow_legacy = 1;
-	if (fwmp_flags & FWMP_DEV_DISABLE_BOOT) {
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT)) {
 		if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by "
 				  "FORCE_DEV_SWITCH_ON\n");
@@ -753,7 +736,9 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VB2_DEBUG("VbBootDeveloper() - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
-			vb2_try_alt_fw(ctx, allow_legacy, key - '0');
+			rv = vb2_try_alt_fw(ctx, allow_legacy, key - '0');
+			if (rv)
+				return rv;
 			break;
 		default:
 			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
@@ -769,7 +754,9 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	/* If defaulting to legacy boot, try that unless Ctrl+D was pressed */
 	if (use_legacy && !ctrl_d_pressed) {
 		VB2_DEBUG("VbBootDeveloper() - defaulting to legacy\n");
-		vb2_try_alt_fw(ctx, allow_legacy, 0);
+		rv = vb2_try_alt_fw(ctx, allow_legacy, 0);
+		if (rv)
+			return rv;
 	}
 
 	if ((use_usb && !ctrl_d_pressed) && allow_usb) {
@@ -835,7 +822,9 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		 * Commit NV now, because it won't get saved if the user forces
 		 * manual recovery via the three-finger salute.
 		 */
-		vb2_nv_commit(ctx);
+		retval = vb2_kernel_commit(ctx);
+		if (retval)
+			return retval;
 
 		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0, NULL);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
@@ -918,7 +907,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				switch (VbUserConfirms(ctx, vbc_flags)) {
 				case 1:
 					VB2_DEBUG("Enabling dev-mode...\n");
-					if (VB2_SUCCESS != SetVirtualDevMode(1))
+					if (VB2_SUCCESS !=
+					    vb2_enable_developer_mode(ctx))
 						return VBERROR_TPM_SET_BOOT_MODE_STATE;
 					VB2_DEBUG("Reboot so it will take "
 						  "effect\n");
