@@ -24,9 +24,6 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
 enum VbEcBootMode_t;
 enum VbEcBootMode_t VbGetMode(void);
 
-struct RollbackSpaceFwmp;
-struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
-
 struct LoadKernelParams;
 struct LoadKernelParams *VbApiKernelGetParams(void);
 
