@@ -5,24 +5,21 @@
  * Tests for vboot_kernel.c
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2sha.h"
+#include "2secdata.h"
+#include "2secdata_struct.h"
+#include "2sysincludes.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "crc32.h"
 #include "gpt.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "test_common.h"
 #include "vb2_common.h"
 #include "vb2_struct.h"
@@ -66,7 +63,7 @@ static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static LoadKernelParams lkp;
 static VbKeyBlockHeader kbh;
 static VbKernelPreambleHeader kph;
-static struct RollbackSpaceFwmp fwmp;
+static struct vb2_secdata_fwmp *fwmp;
 static uint8_t mock_disk[MOCK_SECTOR_SIZE * MOCK_SECTOR_COUNT];
 static GptHeader *mock_gpt_primary =
 	(GptHeader*)&mock_disk[MOCK_SECTOR_SIZE * 1];
@@ -166,9 +163,6 @@ static void ResetMocks(void)
 	kph.bootloader_address = 0xbeadd008;
 	kph.bootloader_size = 0x1234;
 
-	memset(&fwmp, 0, sizeof(fwmp));
-	memcpy(fwmp.dev_key_hash, mock_digest, sizeof(fwmp.dev_key_hash));
-
 	memset(mock_parts, 0, sizeof(mock_parts));
 	mock_parts[0].start = 100;
 	mock_parts[0].size = 150;  /* 75 KB */
@@ -177,12 +171,21 @@ static void ResetMocks(void)
 	memset(&ctx, 0, sizeof(ctx));
 	ctx.workbuf = workbuf;
 	ctx.workbuf_size = sizeof(workbuf);
+	vb2_init_context(&ctx);
+
 	vb2_nv_init(&ctx);
 
 	memset(&mock_key, 0, sizeof(mock_key));
 
 	struct vb2_shared_data *sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+
+	uint32_t size = vb2api_secdata_fwmp_create(&ctx);
+	vb2_secdata_fwmp_init(&ctx, &size);
+
+	/* CRC will be invalid after here, but nobody's checking */
+	fwmp = (struct vb2_secdata_fwmp *)&ctx.secdata_fwmp;
+	memcpy(&fwmp->dev_key_hash, mock_digest, sizeof(fwmp->dev_key_hash));
 
 	// TODO: more workbuf fields - flags, secdata_firmware, secdata_kernel
 }
@@ -673,8 +676,7 @@ static void LoadKernelTest(void)
 
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
-	lkp.fwmp = &fwmp;
-	fwmp.flags |= FWMP_DEV_ENABLE_OFFICIAL_ONLY;
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY;
 	key_block_verify_fail = 1;
 	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
 		       "Fail key block dev sig fwmp");
@@ -764,17 +766,15 @@ static void LoadKernelTest(void)
 	/* Check developer key hash - bad */
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
-	lkp.fwmp = &fwmp;
-	fwmp.flags |= FWMP_DEV_USE_KEY_HASH;
-	fwmp.dev_key_hash[0]++;
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_USE_KEY_HASH;
+	fwmp->dev_key_hash[0]++;
 	TestLoadKernel(VBERROR_INVALID_KERNEL_FOUND,
 		       "Fail key block dev fwmp hash");
 
 	/* Check developer key hash - good */
 	ResetMocks();
 	ctx.flags |= VB2_CONTEXT_DEVELOPER_MODE;
-	lkp.fwmp = &fwmp;
-	fwmp.flags |= FWMP_DEV_USE_KEY_HASH;
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_USE_KEY_HASH;
 	TestLoadKernel(0, "Good key block dev fwmp hash");
 
 	ResetMocks();
