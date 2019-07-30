@@ -34,6 +34,24 @@
       "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd8c437_f2fed9fb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:40:44Z",
+      "side": 0,
+      "message": "...good point. I guess this would only really make sense when a firmware wants to have two vboot contexts going at the same time, and I don\u0027t really see that making sense. (And if someone does need it, there\u0027s still container_of() to deal with it instead.)\n\nSo okay, let\u0027s kill it.",
+      "parentUuid": "4f395d24_1b9c67ee",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

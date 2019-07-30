@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "128a29ee_673d9efe",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:40:44Z",
+      "side": 1,
+      "message": "\u003e there is lots of code that still manually stores stuff on the workbuf without calling vb2_workbuf_alloc\n\nWell, I think for exactly that an API like I suggested might be better? I\u0027m saying that the thing that wants to mark stuff used should only need to pass an absolute pointer to the thing it wants to mark as persistent in the work buffer (i.e. either a pointer to the end, or a pointer to the start and a size value). It shouldn\u0027t need to know about the exact details about where the workbuffer starts to do the offset calculation, it should just need to know where that single allocation is that it wants to persist.\n\n\u003e So I agree that something else needs to be done here... but I\u0027d save that for another CL.\n\nLeaving it for later sounds okay.",
+      "parentUuid": "253164fe_5541c141",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e941a1c8_cd641c33",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -183,6 +201,24 @@
       "side": 1,
       "message": "I\u0027d err towards consistency here as more important -- (1) keeping the struct header the same as vb2_shared_data, and (2) all other _offsets are stored as uint32_t.\n\nIf we want the NVRAM and secdata buffers to align, we could add some more reserved fields, but then that might not appeal to your optimizing side \u003d)",
       "parentUuid": "e941a1c8_cd641c33",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2707694_f61ee7a6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:40:44Z",
+      "side": 1,
+      "message": "Well, I for one look forward to our 256th update of this struct. :P",
+      "parentUuid": "09c89b37_8dc6d2b6",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -271,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "578d7585_8a1978fb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:40:44Z",
+      "side": 1,
+      "message": "I mean... I\u0027d do it the other way around, that just looks cleaner to me. But maybe that\u0027s a matter of taste. (Could also do vb2api_init(_vboot_workbuf, _vboot_workbuf_size, \u0026ctx) if we want to get fancy.)",
+      "parentUuid": "de765105_f2740188",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bbbfe5_94a4eb28",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -300,6 +354,24 @@
       "side": 1,
       "message": "Seemed like it was somewhat unnecessary to verify consistency of the work buffer at every single point of entry.\nThe only time we are worried about it is when transitioning from verstage to ramstage, or from ramstage to payload.  And only the caller knows when this has happened.\nAnd then it seems awkward to have to choose which vb2api entry points are \"major\" and which are minor.\nThoughts?",
       "parentUuid": "28bbbfe5_94a4eb28",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a2a89b_414e6e12",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:40:44Z",
+      "side": 1,
+      "message": "Hmmm... okay, I guess that makes sense. (Picking up the idea above, could also make this something like vb2api_reinit(void *workbuf, struct vb2_context **ctxptr_out) that both does the checking and performs the task of getting a valid context object out of a raw memory buffer. That way, I think we could completely eliminate any assumptions of where in the workbuffer the context lives from the caller. Not that any location other than right at the start makes much sense, but it\u0027s still a nice bit of separation, maybe.)",
+      "parentUuid": "d3ee794e_ab9be187",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
