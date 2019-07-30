@@ -5,17 +5,14 @@
  * Tests for vboot_api_kernel, part 2
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "test_common.h"
+#include "tss_constants.h"
 #include "vboot_audio.h"
 #include "vboot_common.h"
 #include "vboot_display.h"
@@ -82,7 +79,6 @@ static void MockGpioAfter(uint32_t ticks, uint32_t gpio_flags)
 static void ResetMocks(void)
 {
 	vb2_init_ui();
-	memset(VbApiKernelGetFwmp(), 0, sizeof(struct RollbackSpaceFwmp));
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -98,6 +94,9 @@ static void ResetMocks(void)
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
+
+	vb2api_secdata_fwmp_create(&ctx);
+	vb2_secdata_fwmp_init(&ctx);
 
 	memset(&gbb, 0, sizeof(gbb));
 
@@ -127,7 +126,8 @@ static void ResetMocks(void)
 }
 
 /* Mock functions */
-uint32_t RollbackKernelLock(int recovery_mode)
+
+uint32_t secdata_kernel_lock(struct vb2_context *c)
 {
 	return TPM_SUCCESS;
 }
@@ -254,9 +254,9 @@ vb2_error_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t SetVirtualDevMode(int val)
+vb2_error_t vb2_set_developer_mode(struct vb2_context *c, int value)
 {
-	virtdev_set = val;
+	virtdev_set = value;
 	return virtdev_retval;
 }
 
@@ -730,7 +730,7 @@ static void VbBootDevTest(void)
 
 	/* Enter altfw menu and select firmware 0 */
 	ResetMocks();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_LEGACY;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY, 1);
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = '0';
 	TEST_EQ(VbBootDeveloper(&ctx), 1002,
@@ -762,7 +762,8 @@ static void VbBootDevTest(void)
 		TEST_EQ(altfw_num, key - '0', "  check altfw_num");
 
 		ResetMocks();
-		VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_LEGACY;
+		vb2_secdata_fwmp_set_flag(
+			&ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY, 1);
 		mock_keypress[0] = key;
 		TEST_EQ(VbBootDeveloper(&ctx), 1002,
 			"Ctrl+L fwmp legacy");
@@ -791,7 +792,7 @@ static void VbBootDevTest(void)
 
 	/* Ctrl+U enabled via FWMP */
 	ResetMocks();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_USB;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB, 1);
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloper(&ctx), 0, "Ctrl+U force USB");
@@ -996,7 +997,7 @@ static void VbBootDevTest(void)
 
 	/* If dev mode is disabled, goes to TONORM screen repeatedly */
 	ResetMocks();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	mock_keypress[0] = VB_KEY_ESC;  /* Just causes TONORM again */
 	mock_keypress[1] = VB_KEY_ENTER;
 	TEST_EQ(VbBootDeveloper(&ctx), VBERROR_REBOOT_REQUIRED,
@@ -1013,7 +1014,7 @@ static void VbBootDevTest(void)
 	/* Shutdown requested when dev disabled */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	MockGpioAfter(1, GPIO_SHUTDOWN);
 	TEST_EQ(VbBootDeveloper(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
@@ -1024,7 +1025,7 @@ static void VbBootDevTest(void)
 	/* Shutdown requested by keyboard when dev disabled */
 	ResetMocks();
 	shared->flags = VBSD_BOOT_DEV_SWITCH_ON;
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	mock_keypress[0] = VB_BUTTON_POWER_SHORT_PRESS;
 	TEST_EQ(VbBootDeveloper(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,

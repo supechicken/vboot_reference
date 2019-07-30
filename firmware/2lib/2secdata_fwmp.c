@@ -9,6 +9,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2secdata.h"
+#include "2secdata_struct.h"
 
 /* Calculate CRC hash from struct_version onward */
 static uint32_t vb2_secdata_fwmp_crc(struct vb2_context *ctx)
@@ -20,7 +21,7 @@ static uint32_t vb2_secdata_fwmp_crc(struct vb2_context *ctx)
 			sec->struct_size - version_offset);
 }
 
-vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size)
+vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size)
 {
 	struct vb2_secdata_fwmp *sec =
 		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
@@ -83,12 +84,14 @@ uint32_t vb2api_secdata_fwmp_create(struct vb2_context *ctx)
 	return sec->struct_size;
 }
 
-vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *ctx, uint32_t *size)
+vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_secdata_fwmp *sec =
+		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 	vb2_error_t rv;
 
-	rv = vb2api_secdata_fwmp_check(ctx, size);
+	rv = vb2api_secdata_fwmp_check(ctx, &sec->struct_size);
 	if (rv)
 		return rv;
 
@@ -139,5 +142,20 @@ vb2_error_t vb2_secdata_fwmp_set_flag(struct vb2_context *ctx,
 	/* Regenerate CRC */
 	sec->crc8 = vb2_secdata_fwmp_crc(ctx);
 	ctx->flags |= VB2_CONTEXT_SECDATA_FWMP_CHANGED;
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_fwmp_get_dev_key_hash(struct vb2_context *ctx,
+					      uint8_t **dev_key_hash)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_secdata_fwmp *sec =
+		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
+
+	if (!(sd->status & VB2_SD_STATUS_SECDATA_FWMP_INIT))
+		return VB2_ERROR_UNKNOWN;  // VB2_ERROR_SECDATA_FWMP_GET_DEV_KEY_HASH_UNINITIALIZED;
+
+	*dev_key_hash = sec->dev_key_hash;
+
 	return VB2_SUCCESS;
 }

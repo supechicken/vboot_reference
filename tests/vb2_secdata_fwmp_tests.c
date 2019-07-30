@@ -8,6 +8,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2secdata.h"
+#include "2secdata_struct.h"
 #include "test_common.h"
 
 static void test_changed(struct vb2_context *c, int changed, const char *why)
@@ -32,7 +33,7 @@ static void secdata_fwmp_test(void)
 	struct vb2_secdata_fwmp *sec =
 		(struct vb2_secdata_fwmp *)c.secdata_fwmp;
 	struct vb2_shared_data *sd = vb2_get_sd(&c);
-	uint32_t size = 0;
+	uint8_t size = 0;
 
 	/* Check size constant */
 	TEST_TRUE(sizeof(struct vb2_secdata_fwmp) <= VB2_SECDATA_FWMP_MAX_SIZE,
@@ -42,14 +43,14 @@ static void secdata_fwmp_test(void)
 	memset(c.secdata_fwmp, 0xff, sizeof(c.secdata_fwmp));
 	TEST_EQ(vb2api_secdata_fwmp_check(&c, &size),
 		VB2_ERROR_SECDATA_FWMP_SIZE, "Check large size");
-	TEST_EQ(vb2_secdata_fwmp_init(&c, &size),
+	TEST_EQ(vb2_secdata_fwmp_init(&c),
 		VB2_ERROR_SECDATA_FWMP_SIZE, "Init large size");
 
 	/* Size too small */
 	memset(c.secdata_fwmp, 0, sizeof(c.secdata_fwmp));
 	TEST_EQ(vb2api_secdata_fwmp_check(&c, &size),
 		VB2_ERROR_SECDATA_FWMP_SIZE, "Check small size");
-	TEST_EQ(vb2_secdata_fwmp_init(&c, &size),
+	TEST_EQ(vb2_secdata_fwmp_init(&c),
 		VB2_ERROR_SECDATA_FWMP_SIZE, "Init small size");
 
 	/* Blank data is invalid */
@@ -58,13 +59,13 @@ static void secdata_fwmp_test(void)
 	size = sec->struct_size;
 	TEST_EQ(vb2api_secdata_fwmp_check(&c, &size),
 		VB2_ERROR_SECDATA_FWMP_CRC, "Check blank CRC");
-	TEST_EQ(vb2_secdata_fwmp_init(&c, &size),
+	TEST_EQ(vb2_secdata_fwmp_init(&c),
 		VB2_ERROR_SECDATA_FWMP_CRC, "Init blank CRC");
 
 	/* Create good data */
 	vb2api_secdata_fwmp_create(&c);
 	TEST_SUCC(vb2api_secdata_fwmp_check(&c, &size), "Check created CRC");
-	TEST_SUCC(vb2_secdata_fwmp_init(&c, &size), "Init created CRC");
+	TEST_SUCC(vb2_secdata_fwmp_init(&c), "Init created CRC");
 	TEST_NEQ(sd->status & VB2_SD_STATUS_SECDATA_FWMP_INIT, 0,
 		 "Init set SD status");
 	sd->status &= ~VB2_SD_STATUS_SECDATA_FWMP_INIT;

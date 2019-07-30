@@ -16,7 +16,6 @@
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
 #include "utility.h"
 #include "vb2_common.h"
 #include "vboot_api.h"
@@ -62,8 +61,11 @@ static int require_official_os(struct vb2_context *ctx,
 		return 1;
 
 	/* FWMP can require developer mode to use official OS */
-	if (params->fwmp &&
-	    (params->fwmp->flags & FWMP_DEV_ENABLE_OFFICIAL_ONLY))
+	int fwmp_dev_enable_official_only;
+	if (vb2_secdata_fwmp_get_flag(
+		ctx, VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY,
+		&fwmp_dev_enable_official_only) == VB2_SUCCESS &&
+	    fwmp_dev_enable_official_only)
 		return 1;
 
 	/* Developer can request official OS via nvstorage */
@@ -206,8 +208,12 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	}
 
 	/* If in developer mode and using key hash, check it */
+	int fwmp_dev_use_key_hash;
 	if ((kBootDev == boot_mode) &&
-	    params->fwmp && (params->fwmp->flags & FWMP_DEV_USE_KEY_HASH)) {
+	    vb2_secdata_fwmp_get_flag(
+		ctx, VB2_SECDATA_FWMP_DEV_USE_KEY_HASH,
+		&fwmp_dev_use_key_hash) == VB2_SUCCESS &&
+	    fwmp_dev_use_key_hash) {
 		struct vb2_packed_key *key = &keyblock->data_key;
 		uint8_t *buf = ((uint8_t *)key) + key->key_offset;
 		uint32_t buflen = key->key_size;
@@ -216,15 +222,22 @@ static vb2_error_t vb2_verify_kernel_vblock(
 		VB2_DEBUG("Checking developer key hash.\n");
 		vb2_digest_buffer(buf, buflen, VB2_HASH_SHA256,
 				  digest, sizeof(digest));
-		if (0 != vb2_safe_memcmp(digest, params->fwmp->dev_key_hash,
+
+		uint8_t *fwmp_dev_key_hash = NULL;
+		if (vb2_secdata_fwmp_get_dev_key_hash(ctx, &fwmp_dev_key_hash)
+		    != VB2_SUCCESS) {
+			VB2_DEBUG("Couldn't retrieve developer key hash.\n");
+			return VB2_ERROR_VBLOCK_DEV_KEY_HASH;
+		}
+
+		if (0 != vb2_safe_memcmp(digest, fwmp_dev_key_hash,
 					 VB2_SHA256_DIGEST_SIZE)) {
 			int i;
 
 			VB2_DEBUG("Wrong developer key hash.\n");
 			VB2_DEBUG("Want: ");
 			for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
-				VB2_DEBUG("%02x",
-					  params->fwmp->dev_key_hash[i]);
+				VB2_DEBUG("%02x", fwmp_dev_key_hash[i]);
 			VB2_DEBUG("\nGot:  ");
 			for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 				VB2_DEBUG("%02x", digest[i]);
