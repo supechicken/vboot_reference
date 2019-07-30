@@ -8,6 +8,8 @@
 #ifndef VBOOT_REFERENCE_VBOOT_2SECDATA_H_
 #define VBOOT_REFERENCE_VBOOT_2SECDATA_H_
 
+#include "2common.h"
+
 /*****************************************************************************/
 /* Firmware version space */
 
