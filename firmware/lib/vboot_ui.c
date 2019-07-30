@@ -487,7 +487,7 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		 * RollbackKernelLock() ).
 		 */
 
-		if (RollbackKernelLock(0)) {
+		if (RollbackKernelLock()) {
 			VB2_DEBUG("Failed to lock TPM PP\n");
 			vb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
 		} else if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=
@@ -919,7 +919,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				switch (VbUserConfirms(ctx, vbc_flags)) {
 				case 1:
 					VB2_DEBUG("Enabling dev-mode...\n");
-					if (VB2_SUCCESS != SetVirtualDevMode(1))
+					if (VB2_SUCCESS != SetVirtualDevMode(ctx, 1))
 						return VBERROR_TPM_SET_BOOT_MODE_STATE;
 					VB2_DEBUG("Reboot so it will take "
 						  "effect\n");

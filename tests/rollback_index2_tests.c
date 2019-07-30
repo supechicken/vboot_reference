@@ -254,9 +254,6 @@ uint32_t TlclGetPermissions(uint32_t index, uint32_t* permissions)
 /****************************************************************************/
 /* Tests for CRC errors  */
 
-extern uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf);
-extern uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
-
 static void FirmwareSpaceTest(void)
 {
 	RollbackSpaceFirmware rsf;
@@ -289,9 +286,6 @@ static void FirmwareSpaceTest(void)
 		    "TlclRead(0x1007, 10)\n",
 		    "tlcl calls");
 }
-
-extern uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk);
-extern uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 
 static void KernelSpaceTest(void)
 {
@@ -389,72 +383,6 @@ static void MiscTest(void)
 }
 
 /****************************************************************************/
-/* Tests for RollbackKernel() calls */
-
-static void RollbackKernelTest(void)
-{
-	uint32_t version = 0;
-
-	/* Normal read */
-	ResetMocks(0, 0);
-	TEST_EQ(RollbackKernelRead(&version), 0, "RollbackKernelRead()");
-	TEST_STR_EQ(mock_calls,
-		    "TlclGetPermissions(0x1008)\n"
-		    "TlclRead(0x1008, 13)\n",
-		    "tlcl calls");
-	TEST_EQ(version, 0x87654321, "RollbackKernelRead() version");
-
-	/* Read error */
-	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(RollbackKernelRead(&version), TPM_E_IOERROR,
-		"RollbackKernelRead() error");
-
-	/* Wrong permission or UID will return error */
-	ResetMocks(0, 0);
-	mock_rsk.uid = 0;
-	mock_rsk.crc8 = vb2_crc8(&mock_rsk,
-				 offsetof(RollbackSpaceKernel, crc8));
-	TEST_EQ(RollbackKernelRead(&version), TPM_E_CORRUPTED_STATE,
-		"RollbackKernelRead() bad uid");
-
-	ResetMocks(0, 0);
-	mock_permissions = 0;
-	TEST_EQ(RollbackKernelRead(&version), TPM_E_CORRUPTED_STATE,
-		"RollbackKernelRead() bad permissions");
-
-	/* Test write */
-	ResetMocks(0, 0);
-	TEST_EQ(RollbackKernelWrite(0xBEAD4321), 0, "RollbackKernelWrite()");
-	TEST_EQ(mock_rsk.kernel_versions, 0xBEAD4321,
-		"RollbackKernelWrite() version");
-	TEST_STR_EQ(mock_calls,
-		    "TlclGetPermissions(0x1008)\n"
-		    "TlclRead(0x1008, 13)\n"
-		    "TlclWrite(0x1008, 13)\n",
-		    "tlcl calls");
-
-	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(RollbackKernelWrite(123), TPM_E_IOERROR,
-		"RollbackKernelWrite() error");
-
-	/* Test lock (recovery off) */
-	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(RollbackKernelLock(0), TPM_E_IOERROR,
-		"RollbackKernelLock() error");
-
-	/* Test lock with recovery on; shouldn't lock PP */
-	ResetMocks(0, 0);
-	TEST_EQ(RollbackKernelLock(1), 0, "RollbackKernelLock() in recovery");
-	TEST_STR_EQ(mock_calls, "", "no tlcl calls");
-
-	ResetMocks(0, 0);
-	TEST_EQ(RollbackKernelLock(0), 0, "RollbackKernelLock()");
-	TEST_STR_EQ(mock_calls,
-		    "TlclLockPhysicalPresence()\n",
-		    "tlcl calls");
-}
-
-/****************************************************************************/
 /* Tests for RollbackFwmpRead() calls */
 
 static void RollbackFwmpTest(void)
@@ -546,7 +474,6 @@ int main(int argc, char* argv[])
 	FirmwareSpaceTest();
 	KernelSpaceTest();
 	MiscTest();
-	RollbackKernelTest();
 	RollbackFwmpTest();
 
 	return gTestSuccess ? 0 : 255;
