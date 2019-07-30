@@ -123,6 +123,9 @@ static void ResetMocks(void)
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 
+	ctx.flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
+	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
+
 	memset(&gbb, 0, sizeof(gbb));
 
 	memset(&shared_data, 0, sizeof(shared_data));
