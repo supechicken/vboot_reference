@@ -52,7 +52,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VB2_DEBUG("VbTryLoadKernel() found %d disks\n", (int)disk_count);
 	if (0 == disk_count) {
 		vb2api_fail(ctx, VB2_RECOVERY_RW_NO_DISK, rv);
-		return VBERROR_NO_DISK_FOUND;
+		return VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND;
 	}
 
 	/* Loop over disks */

@@ -69,12 +69,6 @@ enum vb2_return_code {
 	VBERROR_TPM_LOCK_KERNEL               = 0x1000C,
 	/* Calling firmware requested shutdown via VbExIsShutdownRequested() */
 	VBERROR_SHUTDOWN_REQUESTED            = 0x1000D,
-	/* Unable to find a boot device on which to look for a kernel */
-	VBERROR_NO_DISK_FOUND                 = 0x1000E,
-	/* No OS kernel found on any boot device */
-	VBERROR_NO_KERNEL_FOUND               = 0x1000F,
-	/* All OS kernels found were invalid (corrupt, improperly signed...) */
-	VBERROR_INVALID_KERNEL_FOUND          = 0x10010,
 	/* VbSelectAndLoadKernel() requested recovery mode */
 	VBERROR_LOAD_KERNEL_RECOVERY          = 0x10011,
 	/* Other error inside VbSelectAndLoadKernel() */
@@ -605,6 +599,15 @@ enum vb2_return_code {
 
 	/* Invalid parameter */
 	VB2_ERROR_INVALID_PARAMETER,
+
+	/* Only an invalid kernel was found in LoadKernel() */
+	VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
+
+	/* No kernels were found in LoadKernel() */
+	VB2_ERROR_LOAD_KERNEL_NONE_FOUND,
+
+	/* No kernels were found in VbTryLoadKernel() */
+	VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND,
 
 	/**********************************************************************
 	 * API-level errors
