@@ -404,6 +404,7 @@ vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx)
 vb2_error_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
 			    const VbScreenData *data)
 {
+	vb2_error_t rv;
 	uint32_t loc = 0;
 	uint32_t count = 0;
 
@@ -431,18 +432,10 @@ vb2_error_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
 		vb2_nv_set(ctx, VB2_NV_LOCALIZATION_INDEX, loc);
 		vb2_nv_set(ctx, VB2_NV_BACKUP_NVRAM_REQUEST, 1);
 
-#ifdef SAVE_LOCALE_IMMEDIATELY
-		/*
-		 * This is a workaround for coreboot on x86, which will power
-		 * off asynchronously without giving us a chance to react.
-		 * This is not an example of the Right Way to do things.  See
-		 * chrome-os-partner:7689.
-		 */
-		if (ctx->flags & VB2_CONTEXT_NVDATA_CHANGED) {
-			VbExNvStorageWrite(ctx.nvdata);
-			ctx.flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-		}
-#endif
+		/* Save nvdata and secdata settings */
+		rv = vb2_kernel_commit(ctx);
+		if (rv)
+			return rv;
 
 		/* Force redraw of current screen */
 		return VbDisplayScreen(ctx, disp_current_screen, 1, data);
