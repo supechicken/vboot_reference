@@ -840,7 +840,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		if (VB2_SUCCESS == retval)
 			break; /* Found a recovery kernel */
 
-		VbDisplayScreen(ctx, VBERROR_NO_DISK_FOUND == retval ?
+		VbDisplayScreen( ctx, VB2_ERROR_LK_NO_DISK_FOUND == retval ?
 				VB_SCREEN_RECOVERY_INSERT :
 				VB_SCREEN_RECOVERY_NO_GOOD,
 				0, NULL);
