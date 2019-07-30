@@ -8,6 +8,8 @@
 #ifndef VBOOT_REFERENCE_VBOOT_SECDATA_H_
 #define VBOOT_REFERENCE_VBOOT_SECDATA_H_
 
+#include "2common.h"
+
 /*****************************************************************************/
 /* Firmware version space */
 
@@ -123,6 +125,22 @@ vb2_error_t vb2_secdata_get(struct vb2_context *ctx,
 vb2_error_t vb2_secdata_set(struct vb2_context *ctx,
 			    enum vb2_secdata_param param, uint32_t value);
 
+/**
+ * Load secure storage and initialize its context.
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_secdata_load(struct vb2_context *ctx);
+
+/**
+ * Commit secure storage if changed, and update context appropriately.
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_secdata_commit(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* Kernel version space functions.
  *
@@ -161,5 +179,22 @@ vb2_error_t vb2_secdatak_get(struct vb2_context *ctx,
  */
 vb2_error_t vb2_secdatak_set(struct vb2_context *ctx,
 			     enum vb2_secdatak_param param, uint32_t value);
+
+/**
+ * Load secure storage and initialize its context.
+ *
+ * @param ctx		Context pointer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_secdatak_load(struct vb2_context *ctx);
+
+/**
+ * Commit secure storage if changed, lock it, and update context appropriately.
+ *
+ * @param ctx		Context pointer
+ * @param do_lock	Lock secdatak space after writing
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_secdatak_commit(struct vb2_context *ctx, int do_lock);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_2SECDATA_H_ */
