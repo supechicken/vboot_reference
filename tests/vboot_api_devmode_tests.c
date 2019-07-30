@@ -120,6 +120,9 @@ static void ResetMocks(void)
 	vb2_init_context(&ctx);
 	vb2_nv_init(&ctx);
 
+	ctx->flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
+	vb2_secdata_fwmp_init(ctx);
+
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 
