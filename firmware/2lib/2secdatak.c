@@ -9,6 +9,7 @@
 #include "2common.h"
 #include "2crc8.h"
 #include "2misc.h"
+#include "2nvstorage.h"
 #include "2secdata.h"
 
 vb2_error_t vb2api_secdatak_check(const struct vb2_context *ctx)
