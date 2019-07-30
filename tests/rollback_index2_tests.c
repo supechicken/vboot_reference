@@ -237,9 +237,6 @@ uint32_t TlclGetPermissions(uint32_t index, uint32_t* permissions)
 /****************************************************************************/
 /* Tests for CRC errors  */
 
-extern uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf);
-extern uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
-
 static void CrcTestFirmware(void)
 {
 	RollbackSpaceFirmware rsf;
@@ -291,9 +288,6 @@ static void CrcTestFirmware(void)
 		    "TlclWrite(0x1007, 10)\n",
 		    "tlcl calls");
 }
-
-extern uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk);
-extern uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 
 static void CrcTestKernel(void)
 {
