@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "780971f6_62433e8d",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-30T22:13:57Z",
+      "side": 1,
+      "message": "\u003e Here, my understanding is that the const on `offset` is not so useful, since it\u0027s just preventing the function from modifying the copied value it gets.\n\nYeah, that one is useless anyway, but I meant the other one.\n\n\u003e The const on `parent` prevents vb2_member_of from modifying the value pointed to by parent.  This is arguably useful, since it guarantees the caller doesn\u0027t have to worry about the value getting changed?  And it seems like other functions in this file do the same.\n\nBut it doesn\u0027t? Like you said it creates the *impression* that you cannot modify the stuff pointed to, but that\u0027s actually not true, because this function returns a void * that you totally *can* use to do exactly that. So it seems misleading. A const cast in general always means that you\u0027re doing something naughty that you probably shouldn\u0027t and should normally be avoided if at all possible. And hiding it in a helper function like this is almost always a bad idea in my opinion because of exactly this -- the whole point of forcing programmers to const cast explicitly is to make them aware that at this point they\u0027re (potentially) modifying something that someone else somewhere intended to be read-only. It\u0027s intended to be annoying and in your face (because it usually means you\u0027re doing something wrong).\n\nThe only time when you\u0027d really want to have a const cast in a helper like this is when it\u0027s the only way to avoid littering hundreds of const cast elsewhere in your code that you can\u0027t avoid otherwise. (This mostly happens with dumb POSIX functions that were defined to not take a const argument at some point in the 70s, even though they really should have.) But other than those exceptional cases, the normal correct solution for these kinds of problems is to add or remove the const qualifier elsewhere so that you don\u0027t get into the weird situation of having to cast in the first place. (In this case, I don\u0027t think the argument passed in here is ever already const(?), so just removing the const in the argument is the right fix.)",
+      "parentUuid": "448607ca_a6c7c8ee",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee794adf_825e03ee",
         "filename": "firmware/lib20/api.c",
         "patchSetId": 1
