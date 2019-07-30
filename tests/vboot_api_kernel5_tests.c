@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
@@ -19,6 +20,7 @@
 #include "2struct.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
+#include "rollback_index.h"
 #include "test_common.h"
 #include "vb2_common.h"
 #include "vboot_api.h"
@@ -112,6 +114,48 @@ static void copy_kbh(void)
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 {
 	return &gbb;
+}
+
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_get(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t *dest)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_set(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t value)
+{
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2ex_read_resource(struct vb2_context *c,
