@@ -247,9 +247,9 @@ static void VbSlkTest(void)
 	TEST_EQ(rkr_version, 0x10002, "  version");
 
 	ResetMocks();
-	vbboot_retval = VBERROR_INVALID_KERNEL_FOUND;
+	vbboot_retval = VB2_ERROR_LOAD_KERNEL_INVALID_FOUND,
 	vb2_nv_set(&ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
-	test_slk(VBERROR_INVALID_KERNEL_FOUND, 0,
+	test_slk(VB2_ERROR_LOAD_KERNEL_INVALID_FOUND, 0,
 		 "Don't go to recovery if new FW fails to find a valid kernel");
 
 	ResetMocks();
