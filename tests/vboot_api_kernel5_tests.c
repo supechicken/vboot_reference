@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
@@ -136,7 +137,7 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 	return VB2_SUCCESS;
 }
 
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t RollbackKernelLock(void)
 {
 	return TPM_SUCCESS;
 }
@@ -144,6 +145,28 @@ uint32_t RollbackKernelLock(int recovery_mode)
 uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 {
 	return TPM_SUCCESS;
+}
+
+vb2_error_t vb2_secdata_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_get(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t *dest)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_secdatak_set(struct vb2_context *c,
+			     enum vb2_secdatak_param param, uint32_t value)
+{
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2ex_read_resource(struct vb2_context *c,

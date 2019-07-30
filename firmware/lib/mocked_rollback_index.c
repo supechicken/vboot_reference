@@ -11,7 +11,7 @@
 #include "tss_constants.h"
 
 
-vb2_error_t SetVirtualDevMode(int val)
+vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value)
 {
 	return VB2_SUCCESS;
 }
@@ -21,18 +21,27 @@ uint32_t TPMClearAndReenable(void)
 	return TPM_SUCCESS;
 }
 
-uint32_t RollbackKernelRead(uint32_t *version)
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
 {
-	*version = 0;
-	return TPM_SUCCESS;
+	return VB2_SUCCESS;
 }
 
-uint32_t RollbackKernelWrite(uint32_t version)
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
 {
-	return TPM_SUCCESS;
+	return VB2_SUCCESS;
 }
 
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t RollbackKernelLock()
 {
 	return TPM_SUCCESS;
 }

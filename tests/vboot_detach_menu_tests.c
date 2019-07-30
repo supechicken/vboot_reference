@@ -129,7 +129,7 @@ static void ResetMocksForManualRecovery(void)
 }
 
 /* Mock functions */
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t RollbackKernelLock(void)
 {
 	return TPM_SUCCESS;
 }
@@ -257,9 +257,9 @@ vb2_error_t VbExBeep(uint32_t msec, uint32_t frequency)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t SetVirtualDevMode(int val)
+vb2_error_t SetVirtualDevMode(struct vb2_context *c, int value)
 {
-	virtdev_set = val;
+	virtdev_set = value;
 	return virtdev_retval;
 }
 

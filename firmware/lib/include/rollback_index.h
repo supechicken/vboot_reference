@@ -9,6 +9,7 @@
 #ifndef VBOOT_REFERENCE_ROLLBACK_INDEX_H_
 #define VBOOT_REFERENCE_ROLLBACK_INDEX_H_
 
+#include "2common.h"
 #include "2return_codes.h"
 #include "2sysincludes.h"
 #include "tss_constants.h"
@@ -124,19 +125,9 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk);
 uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 
 /**
- * Read stored kernel version.
+ * Lock must be called.
  */
-uint32_t RollbackKernelRead(uint32_t *version);
-
-/**
- * Write stored kernel version.
- */
-uint32_t RollbackKernelWrite(uint32_t version);
-
-/**
- * Lock must be called.  Internally, it's ignored in recovery mode.
- */
-uint32_t RollbackKernelLock(int recovery_mode);
+uint32_t RollbackKernelLock(void);
 
 /**
  * Read and validate firmware management parameters.
@@ -170,6 +161,6 @@ uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length);
 /**
  * Utility function to turn the virtual dev-mode flag on or off. 0=off, 1=on.
  */
-vb2_error_t SetVirtualDevMode(int val);
+vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value);
 
 #endif  /* VBOOT_REFERENCE_ROLLBACK_INDEX_H_ */

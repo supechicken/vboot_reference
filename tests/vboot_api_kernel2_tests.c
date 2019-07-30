@@ -127,7 +127,7 @@ static void ResetMocks(void)
 }
 
 /* Mock functions */
-uint32_t RollbackKernelLock(int recovery_mode)
+uint32_t RollbackKernelLock(void)
 {
 	return TPM_SUCCESS;
 }
@@ -254,9 +254,9 @@ vb2_error_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t SetVirtualDevMode(int val)
+vb2_error_t SetVirtualDevMode(struct vb2_context *c, int value)
 {
-	virtdev_set = val;
+	virtdev_set = value;
 	return virtdev_retval;
 }
 
