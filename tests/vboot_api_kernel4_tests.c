@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
@@ -102,6 +103,36 @@ VbError_t VbExNvStorageWrite(const uint8_t *buf)
 	memcpy(ctx_nvram_backend.nvdata, buf,
 	       vb2_nv_get_size(&ctx_nvram_backend));
 	return VBERROR_SUCCESS;
+}
+
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+int vb2_secdata_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
+int vb2_secdatak_init(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
 }
 
 uint32_t RollbackKernelRead(uint32_t *version)

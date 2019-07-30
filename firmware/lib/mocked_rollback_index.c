@@ -24,6 +24,26 @@ uint32_t TPMClearAndReenable(void)
 	return TPM_SUCCESS;
 }
 
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf);
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	return VB2_SUCCESS;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
+{
+	return VB2_SUCCESS;
+}
+
 uint32_t RollbackKernelRead(uint32_t *version)
 {
 	*version = 0;
