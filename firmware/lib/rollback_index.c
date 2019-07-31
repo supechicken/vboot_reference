@@ -40,6 +40,14 @@
 		}							\
 	} while (0)
 
+#define PRINT_BYTES(title, value) do { \
+		VB2_DEBUG(title); \
+		VB2_DEBUG_RAW(":"); \
+		int i; \
+		for (i = 0; i < sizeof(*(value)); i++) \
+			VB2_DEBUG_RAW(" %02x", *((uint8_t *)(value) + i)); \
+		VB2_DEBUG_RAW("\n"); \
+	} while (0)
 
 uint32_t TPMClearAndReenable(void)
 {
@@ -143,18 +151,22 @@ static uint32_t WriteSpace(uint32_t index, void *data, uint32_t length,
 
 uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
 {
-	return ReadSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
-			 offsetof(RollbackSpaceFirmware, struct_version),
-			 offsetof(RollbackSpaceFirmware, crc8));
+	uint32_t r = ReadSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
+			       offsetof(RollbackSpaceFirmware, struct_version),
+			       offsetof(RollbackSpaceFirmware, crc8));
+	PRINT_BYTES("read secdata", rsf);
+	return r;
 }
 
 uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
 {
 	RollbackSpaceFirmware rsf2;
-	return WriteSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
-			 offsetof(RollbackSpaceFirmware, struct_version),
-			 offsetof(RollbackSpaceFirmware, crc8),
-			 &rsf2);
+	uint32_t r = WriteSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
+				offsetof(RollbackSpaceFirmware, struct_version),
+				offsetof(RollbackSpaceFirmware, crc8),
+				&rsf2);
+	PRINT_BYTES("write secdata", rsf);
+	return r;
 }
 
 uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
@@ -162,6 +174,7 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 	uint32_t r = ReadSpace(KERNEL_NV_INDEX, rsk, sizeof(*rsk),
 			       offsetof(RollbackSpaceKernel, struct_version),
 			       offsetof(RollbackSpaceKernel, crc8));
+	PRINT_BYTES("read secdatak", rsk);
 
 	if (ROLLBACK_SPACE_KERNEL_UID != rsk->uid) {
 		VB2_DEBUG("TPM: UID mismatch\n");
@@ -174,10 +187,12 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 {
 	RollbackSpaceKernel rsk2;
-	return WriteSpace(KERNEL_NV_INDEX, rsk, sizeof(*rsk),
-			 offsetof(RollbackSpaceKernel, struct_version),
-			 offsetof(RollbackSpaceKernel, crc8),
-			 &rsk2);
+	uint32_t r = WriteSpace(KERNEL_NV_INDEX, rsk, sizeof(*rsk),
+				offsetof(RollbackSpaceKernel, struct_version),
+				offsetof(RollbackSpaceKernel, crc8),
+				&rsk2);
+	PRINT_BYTES("write secdatak", rsk);
+	return r;
 }
 
 uint32_t SetVirtualDevMode(int val)
