@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "69fee6e2_443023c2",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-31T10:11:55Z",
+      "side": 1,
+      "message": "OK, I see what you are saying.  Yes, hiding casts to get rid of const in a helper does seem dangerous.  So I agree, let\u0027s get rid of the const here.  Thanks for the detailed explanation!\n\nAs for the above (vb2_offset_of), I think it\u0027s fine as is, since we are just returning an offset (and you can\u0027t do anything harmful with that directly).",
+      "parentUuid": "780971f6_62433e8d",
+      "revId": "ba7ef3c3085139dcdeaaa7ff24c6e3f61c044ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee794adf_825e03ee",
         "filename": "firmware/lib20/api.c",
         "patchSetId": 1
