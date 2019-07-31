@@ -21,7 +21,7 @@ struct vb21_signature;
  * @param size_ptr	On success, contains the info size in bytes
  * @return VB2_SUCCESS, or non-zero error code on failure.
  */
-int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
+vb2_error_t vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 		    const uint8_t **buf_ptr,
 		    uint32_t *size_ptr);
 
@@ -37,7 +37,7 @@ int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
  *			key description will be used.
  * @return VB2_SUCCESS, or non-zero error code on failure.
  */
-int vb21_sign_data(struct vb21_signature **sig_ptr,
+vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr,
 		   const uint8_t *data,
 		   uint32_t size,
 		   const struct vb2_private_key *key,
@@ -52,7 +52,7 @@ int vb21_sign_data(struct vb21_signature **sig_ptr,
  *			key description will be used.
  * @return VB2_SUCCESS, or non-zero error code on failure.
  */
-int vb21_sig_size_for_key(uint32_t *size_ptr,
+vb2_error_t vb21_sig_size_for_key(uint32_t *size_ptr,
 			  const struct vb2_private_key *key,
 			  const char *desc);
 
@@ -64,7 +64,7 @@ int vb21_sig_size_for_key(uint32_t *size_ptr,
  * @param key_count	Number of keys.
  * @return VB2_SUCCESS, or non-zero error code on failure.
  */
-int vb21_sig_size_for_keys(uint32_t *size_ptr,
+vb2_error_t vb21_sig_size_for_keys(uint32_t *size_ptr,
 			   const struct vb2_private_key **key_list,
 			   uint32_t key_count);
 
@@ -78,7 +78,7 @@ int vb21_sig_size_for_keys(uint32_t *size_ptr,
  * @param key		Key to sign object with
  * @param desc		If non-null, description to use for signature
  */
-int vb21_sign_object(uint8_t *buf,
+vb2_error_t vb21_sign_object(uint8_t *buf,
 		     uint32_t sig_offset,
 		     const struct vb2_private_key *key,
 		     const char *desc);
@@ -93,7 +93,7 @@ int vb21_sign_object(uint8_t *buf,
  * @param key_list	List of keys to sign object with
  * @param key_count	Number of keys in list
  */
-int vb21_sign_object_multiple(uint8_t *buf,
+vb2_error_t vb21_sign_object_multiple(uint8_t *buf,
 			      uint32_t sig_offset,
 			      const struct vb2_private_key **key_list,
 			      uint32_t key_count);
