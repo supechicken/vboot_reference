@@ -49,7 +49,7 @@ static int exit_on_failure = 1;
 
 /* Similar to VbExError, only handle the non-exit case.
  */
-static VbError_t DoError(VbError_t result, const char* format, ...)
+static vb2_error_t DoError(vb2_error_t result, const char* format, ...)
 {
 	va_list ap;
 	va_start(ap, format);
@@ -78,7 +78,7 @@ __attribute__((unused)) static void DbgPrintBytes(const uint8_t* a, int n)
 
 /* Executes a command on the TPM.
  */
-static VbError_t TpmExecute(const uint8_t *in, const uint32_t in_len,
+static vb2_error_t TpmExecute(const uint8_t *in, const uint32_t in_len,
 			    uint8_t *out, uint32_t *pout_len)
 {
 	uint8_t response[TPM_MAX_COMMAND_SIZE];
@@ -176,7 +176,7 @@ static inline int TpmResponseSize(const uint8_t* buffer)
 	return (int) size;
 }
 
-VbError_t VbExTpmInit(void)
+vb2_error_t VbExTpmInit(void)
 {
 	char *no_exit = getenv("TPM_NO_EXIT");
 	if (no_exit)
@@ -184,7 +184,7 @@ VbError_t VbExTpmInit(void)
 	return VbExTpmOpen();
 }
 
-VbError_t VbExTpmClose(void)
+vb2_error_t VbExTpmClose(void)
 {
 	if (tpm_fd != -1) {
 		close(tpm_fd);
@@ -193,7 +193,7 @@ VbError_t VbExTpmClose(void)
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExTpmOpen(void)
+vb2_error_t VbExTpmOpen(void)
 {
 	const char *device_path;
 	struct timespec delay;
@@ -229,7 +229,7 @@ VbError_t VbExTpmOpen(void)
 		       device_path, strerror(saved_errno));
 }
 
-VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
+vb2_error_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
 			     uint8_t* response, uint32_t* response_length)
 {
 	/*
@@ -253,7 +253,7 @@ VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
 #ifndef NDEBUG
 	int tag, response_tag;
 #endif
-	VbError_t result;
+	vb2_error_t result;
 
 #ifdef VBOOT_DEBUG
 	struct timeval before, after;
@@ -292,7 +292,7 @@ VbError_t VbExTpmSendReceive(const uint8_t* request, uint32_t request_length,
 	return VBERROR_SUCCESS;
 }
 
-VbError_t VbExTpmGetRandom(uint8_t *buf, uint32_t length)
+vb2_error_t VbExTpmGetRandom(uint8_t *buf, uint32_t length)
 {
 	static int urandom_fd = -1;
 	if (urandom_fd < 0) {
