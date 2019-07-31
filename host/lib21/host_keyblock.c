@@ -15,7 +15,7 @@
 #include "host_misc.h"
 #include "host_signature2.h"
 
-int vb21_keyblock_create(struct vb21_keyblock **kb_ptr,
+vb2_error_t vb21_keyblock_create(struct vb21_keyblock **kb_ptr,
 			 const struct vb2_public_key *data_key,
 			 const struct vb2_private_key **signing_keys,
 			 uint32_t signing_key_count,

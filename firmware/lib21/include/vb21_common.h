@@ -37,7 +37,7 @@ const char *vb21_common_desc(const void *buf);
  * @param parent_size	Parent size in bytes
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb21_verify_common_header(const void *parent, uint32_t parent_size);
+vb2_error_t vb21_verify_common_header(const void *parent, uint32_t parent_size);
 
 /**
  * Verify a member is within the data for a parent object
@@ -52,7 +52,7 @@ int vb21_verify_common_header(const void *parent, uint32_t parent_size);
  * @param member_size	Size of member data, in bytes
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb21_verify_common_member(const void *parent,
+vb2_error_t vb21_verify_common_member(const void *parent,
 			      uint32_t *min_offset,
 			      uint32_t member_offset,
 			      uint32_t member_size);
@@ -75,7 +75,7 @@ int vb21_verify_common_member(const void *parent,
  *                      member.
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb21_verify_common_subobject(const void *parent,
+vb2_error_t vb21_verify_common_subobject(const void *parent,
 				 uint32_t *min_offset,
 				 uint32_t member_offset);
 
@@ -90,7 +90,7 @@ int vb21_verify_common_subobject(const void *parent,
  * @param size		Size of buffer in bytes
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb21_unpack_key(struct vb2_public_key *key,
+vb2_error_t vb21_unpack_key(struct vb2_public_key *key,
 		    const uint8_t *buf,
 		    uint32_t size);
 
@@ -104,7 +104,7 @@ int vb21_unpack_key(struct vb2_public_key *key,
  * @param key_data	Packed key data (from inside a packed key buffer)
  * @param key_size	Size of packed key data in bytes
  */
-int vb2_unpack_key_data(struct vb2_public_key *key,
+vb2_error_t vb2_unpack_key_data(struct vb2_public_key *key,
 			const uint8_t *key_data,
 			uint32_t key_size);
 
@@ -114,7 +114,7 @@ int vb2_unpack_key_data(struct vb2_public_key *key,
  * @param size		Size of buffer containing signature struct
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb21_verify_signature(const struct vb21_signature *sig,
+vb2_error_t vb21_verify_signature(const struct vb21_signature *sig,
 			  uint32_t size);
 
 /**
@@ -126,7 +126,7 @@ int vb21_verify_signature(const struct vb21_signature *sig,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb21_verify_digest(const struct vb2_public_key *key,
+vb2_error_t vb21_verify_digest(const struct vb2_public_key *key,
 		       struct vb21_signature *sig,
 		       const uint8_t *digest,
 		       const struct vb2_workbuf *wb);
@@ -142,7 +142,7 @@ int vb21_verify_digest(const struct vb2_public_key *key,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb21_verify_data(const void *data,
+vb2_error_t vb21_verify_data(const void *data,
 		     uint32_t size,
 		     struct vb21_signature *sig,
 		     const struct vb2_public_key *key,
@@ -160,7 +160,7 @@ int vb21_verify_data(const void *data,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb21_verify_keyblock(struct vb21_keyblock *block,
+vb2_error_t vb21_verify_keyblock(struct vb21_keyblock *block,
 			 uint32_t size,
 			 const struct vb2_public_key *key,
 			 const struct vb2_workbuf *wb);
@@ -176,7 +176,7 @@ int vb21_verify_keyblock(struct vb21_keyblock *block,
  * @param wb		Work buffer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
+vb2_error_t vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
 			    uint32_t size,
 			    const struct vb2_public_key *key,
 			    const struct vb2_workbuf *wb);

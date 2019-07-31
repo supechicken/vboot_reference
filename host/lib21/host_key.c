@@ -138,7 +138,7 @@ void vb2_private_key_free(struct vb2_private_key *key)
 	free(key);
 }
 
-int vb21_private_key_unpack(struct vb2_private_key **key_ptr,
+vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 			    const uint8_t *buf,
 			    uint32_t size)
 {
@@ -214,12 +214,12 @@ int vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb21_private_key_read(struct vb2_private_key **key_ptr,
+vb2_error_t vb21_private_key_read(struct vb2_private_key **key_ptr,
 			  const char *filename)
 {
 	uint32_t size = 0;
 	uint8_t *buf = NULL;
-	int rv;
+	vb2_error_t rv;
 
 	*key_ptr = NULL;
 
@@ -234,7 +234,7 @@ int vb21_private_key_read(struct vb2_private_key **key_ptr,
 	return rv;
 }
 
-int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
+vb2_error_t vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
 			     const char *filename)
 {
 	struct vb2_private_key *key;
@@ -266,7 +266,7 @@ int vb2_private_key_read_pem(struct vb2_private_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
+vb2_error_t vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
 {
 	if (key->desc)
 		free(key->desc);
@@ -282,7 +282,7 @@ int vb2_private_key_set_desc(struct vb2_private_key *key, const char *desc)
 	return VB2_SUCCESS;
 }
 
-int vb21_private_key_write(const struct vb2_private_key *key,
+vb2_error_t vb21_private_key_write(const struct vb2_private_key *key,
 			   const char *filename)
 {
 	struct vb21_packed_private_key pkey = {
@@ -297,7 +297,7 @@ int vb21_private_key_write(const struct vb2_private_key *key,
 	uint8_t *buf;
 	uint8_t *rsabuf = NULL;
 	int rsalen = 0;
-	int rv;
+	vb2_error_t rv;
 
 	memcpy(&pkey.id, &key->id, sizeof(pkey.id));
 
@@ -338,7 +338,7 @@ int vb21_private_key_write(const struct vb2_private_key *key,
 	return rv ? VB2_ERROR_PRIVATE_KEY_WRITE_FILE : VB2_SUCCESS;
 }
 
-int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
+vb2_error_t vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 			 enum vb2_hash_algorithm hash_alg)
 {
 	*key_ptr = NULL;
@@ -388,7 +388,7 @@ int vb2_private_key_hash(const struct vb2_private_key **key_ptr,
 	}
 }
 
-int vb2_public_key_alloc(struct vb2_public_key **key_ptr,
+vb2_error_t vb2_public_key_alloc(struct vb2_public_key **key_ptr,
 			 enum vb2_signature_algorithm sig_alg)
 {
 	struct vb2_public_key *key;
@@ -429,7 +429,7 @@ uint8_t *vb2_public_key_packed_data(struct vb2_public_key *key)
 	return (uint8_t *)(key->id + 1);
 }
 
-int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
+vb2_error_t vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 			     const char *filename)
 {
 	struct vb2_public_key *key = NULL;
@@ -475,7 +475,7 @@ int vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
+vb2_error_t vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
 {
 	if (key->desc)
 		free((void *)key->desc);
@@ -491,7 +491,7 @@ int vb2_public_key_set_desc(struct vb2_public_key *key, const char *desc)
 	return VB2_SUCCESS;
 }
 
-int vb21_packed_key_read(struct vb21_packed_key **key_ptr,
+vb2_error_t vb21_packed_key_read(struct vb21_packed_key **key_ptr,
 			 const char *filename)
 {
 	struct vb2_public_key key;
@@ -512,7 +512,7 @@ int vb21_packed_key_read(struct vb21_packed_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb21_public_key_pack(struct vb21_packed_key **key_ptr,
+vb2_error_t vb21_public_key_pack(struct vb21_packed_key **key_ptr,
 			 const struct vb2_public_key *pubk)
 {
 	struct vb21_packed_key key = {
@@ -571,7 +571,7 @@ int vb21_public_key_pack(struct vb21_packed_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb2_public_key_hash(struct vb2_public_key *key,
+vb2_error_t vb2_public_key_hash(struct vb2_public_key *key,
 			enum vb2_hash_algorithm hash_alg)
 {
 	switch (hash_alg) {

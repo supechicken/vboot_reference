@@ -24,7 +24,7 @@ struct vb21_signature;
  * @param desc		Description for preamble, or NULL if none
  * @return VB2_SUCCESS, or non-zero error code if failure.
  */
-int vb21_fw_preamble_create(struct vb21_fw_preamble **fp_ptr,
+vb2_error_t vb21_fw_preamble_create(struct vb21_fw_preamble **fp_ptr,
 			    const struct vb2_private_key *signing_key,
 			    const struct vb21_signature **hash_list,
 			    uint32_t hash_count,
