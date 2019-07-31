@@ -49,7 +49,7 @@ void vb2_init_signature(struct vb2_signature *sig, uint8_t *sig_data,
 	sig->data_size = data_size;
 }
 
-int vb2_copy_signature(struct vb2_signature *dest,
+vb2_error_t vb2_copy_signature(struct vb2_signature *dest,
 		       const struct vb2_signature *src)
 {
 	if (dest->sig_size < src->sig_size)
