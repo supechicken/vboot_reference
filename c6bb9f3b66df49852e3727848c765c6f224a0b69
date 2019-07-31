@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d15f6114_1c18cd50",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T20:12:09Z",
+      "side": 1,
+      "message": "Kernel verification code shouldn\u0027t need this at all?",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d869db4f_02306472",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T20:12:09Z",
+      "side": 1,
+      "message": "Don\u0027t really need else after return.",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad31da0_2d98b203",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T20:12:09Z",
+      "side": 1,
+      "message": "This can\u0027t write the firmware space anyway.",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558912ce_0d9f783f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T20:12:09Z",
+      "side": 1,
+      "message": "So this currently just does nothing because this flag will never be set? Hmmm... tbh all this piecemeal committing makes me a bit uneasy. You have two copies of the same thing right now that may get out of sync and it\u0027s very hard to keep track of why the code is still correct in this intermediate state (and you don\u0027t, say, accidentally overwrite the updated secdata with a stale copy here again or something). I think I would prefer if you could just change it all in one go so I can review in one change that the old way of doing it is gone and the new way of doing it should work right.\n\nIf you don\u0027t want to do that, maybe at least remove the write here for now (or wrap it in if (0) or something... but then we\u0027re just checking in dead code which people normally say is not a thing you should do either. Really, I think the right way to do it is to not split patches up beyond the threshold of functionality. This patch in itself just adds junk that does nothing other than confuse things and waste boot time. Keeping patches small is a good thing, but only to the point where ever patch in itself still makes sense and represents an individual improvement to the code base).",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
