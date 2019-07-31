@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 {
 	struct vb2_packed_key *kernkey;
 	uint64_t disk_bytes = 0;
-	int rv;
+	vb2_error_t rv;
 
 	if (argc < 3) {
 		print_help(argv[0]);

@@ -24,7 +24,7 @@ struct vb2_workbuf;
  * @param wb		Workbuf for data storage.
  * @return VB2_SUCCESS, or error code on error.
  */
-int vb2_gbb_read_root_key(struct vb2_context *ctx,
+vb2_error_t vb2_gbb_read_root_key(struct vb2_context *ctx,
 			  struct vb2_packed_key **keyp,
 			  uint32_t *size,
 			  struct vb2_workbuf *wb);
@@ -40,7 +40,7 @@ int vb2_gbb_read_root_key(struct vb2_context *ctx,
  * @param wb		Workbuf for data storage.
  * @return VB2_SUCCESS, or error code on error.
  */
-int vb2_gbb_read_recovery_key(struct vb2_context *ctx,
+vb2_error_t vb2_gbb_read_recovery_key(struct vb2_context *ctx,
 			      struct vb2_packed_key **keyp,
 			      uint32_t *size,
 			      struct vb2_workbuf *wb);

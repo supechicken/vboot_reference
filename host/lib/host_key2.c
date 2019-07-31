@@ -124,7 +124,7 @@ void vb2_free_private_key(struct vb2_private_key *key)
 	free(key);
 }
 
-int vb2_write_private_key(const char *filename,
+vb2_error_t vb2_write_private_key(const char *filename,
 			  const struct vb2_private_key *key)
 {
 	/* Convert back to legacy vb1 algorithm enum */
@@ -187,7 +187,7 @@ struct vb2_packed_key *vb2_alloc_packed_key(uint32_t key_size,
 	return key;
 }
 
-int vb2_copy_packed_key(struct vb2_packed_key *dest,
+vb2_error_t vb2_copy_packed_key(struct vb2_packed_key *dest,
 			const struct vb2_packed_key *src)
 {
 	if (dest->key_size < src->key_size)
@@ -260,7 +260,7 @@ struct vb2_packed_key *vb2_read_packed_keyb(const char *filename,
 	return key;
 }
 
-int vb2_write_packed_key(const char *filename,
+vb2_error_t vb2_write_packed_key(const char *filename,
 			 const struct vb2_packed_key *key)
 {
 	/* Copy the key, so its data is contiguous with the header */
@@ -274,7 +274,7 @@ int vb2_write_packed_key(const char *filename,
 	}
 
 	/* Write the copy, then free it */
-	int rv = vb2_write_file(filename, kcopy,
+	vb2_error_t rv = vb2_write_file(filename, kcopy,
 				kcopy->key_offset + kcopy->key_size);
 	free(kcopy);
 	return rv;

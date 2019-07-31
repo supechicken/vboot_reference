@@ -9,6 +9,7 @@
 #define VBOOT_REFERENCE_HOST_KEY_H_
 
 #include "2crypto.h"
+#include "2return_codes.h"
 
 struct vb2_packed_key;
 struct vb2_private_key;
@@ -53,7 +54,7 @@ void vb2_free_private_key(struct vb2_private_key *key);
  *
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_write_private_key(const char *filename,
+vb2_error_t vb2_write_private_key(const char *filename,
 			  const struct vb2_private_key *key);
 
 
@@ -96,7 +97,7 @@ void vb2_init_packed_key(struct vb2_packed_key *key, uint8_t *key_data,
  *
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_copy_packed_key(struct vb2_packed_key *dest,
+vb2_error_t vb2_copy_packed_key(struct vb2_packed_key *dest,
 			const struct vb2_packed_key *src);
 
 /**
@@ -141,7 +142,7 @@ struct vb2_packed_key *vb2_read_packed_keyb(const char *filename,
  *
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_write_packed_key(const char *filename,
+vb2_error_t vb2_write_packed_key(const char *filename,
 			 const struct vb2_packed_key *key);
 
 #endif  /* VBOOT_REFERENCE_HOST_KEY_H_ */
