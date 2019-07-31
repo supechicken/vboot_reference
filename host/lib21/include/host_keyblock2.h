@@ -25,7 +25,7 @@ struct vb21_keyblock;
  *			taken from the data key.
  * @return VB2_SUCCESS, or non-zero error code if failure.
  */
-int vb21_keyblock_create(struct vb21_keyblock **kb_ptr,
+vb2_error_t vb21_keyblock_create(struct vb21_keyblock **kb_ptr,
 			 const struct vb2_public_key *data_key,
 			 const struct vb2_private_key **signing_keys,
 			 uint32_t signing_key_count,

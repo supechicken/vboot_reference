@@ -152,7 +152,7 @@ static void reset_common_data(enum reset_type t)
 
 /* Mocked functions */
 
-int vb2ex_read_resource(struct vb2_context *c,
+vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 			enum vb2_resource_index index,
 			uint32_t offset,
 			void *buf,
@@ -180,23 +180,23 @@ int vb2ex_read_resource(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-int vb2_read_gbb_header(struct vb2_context *c, struct vb2_gbb_header *gbb)
+vb2_error_t vb2_read_gbb_header(struct vb2_context *c, struct vb2_gbb_header *gbb)
 {
 	memcpy(gbb, &mock_gbb.h, sizeof(*gbb));
 	return mock_read_gbb_header_retval;
 }
 
-int vb2_load_kernel_keyblock(struct vb2_context *c)
+vb2_error_t vb2_load_kernel_keyblock(struct vb2_context *c)
 {
 	return mock_load_kernel_keyblock_retval;
 }
 
-int vb2_load_kernel_preamble(struct vb2_context *c)
+vb2_error_t vb2_load_kernel_preamble(struct vb2_context *c)
 {
 	return mock_load_kernel_preamble_retval;
 }
 
-int vb2_unpack_key_buffer(struct vb2_public_key *key,
+vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 		   const uint8_t *buf,
 		   uint32_t size)
 {
@@ -207,7 +207,7 @@ int vb2_unpack_key_buffer(struct vb2_public_key *key,
 	return mock_unpack_key_retval;
 }
 
-int vb2_verify_digest(const struct vb2_public_key *key,
+vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 		      struct vb2_signature *sig,
 		      const uint8_t *digest,
 		      const struct vb2_workbuf *wb)
