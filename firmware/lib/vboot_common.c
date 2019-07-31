@@ -92,7 +92,7 @@ int PublicKeyCopy(struct vb2_packed_key *dest, const struct vb2_packed_key *src)
 	return 0;
 }
 
-int VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
+vb2_error_t VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
 			     uint64_t *vmlinuz_header_address,
 			     uint64_t *vmlinuz_header_size)
 {
@@ -111,7 +111,7 @@ int VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
 	return VBOOT_SUCCESS;
 }
 
-int VbKernelHasFlags(const VbKernelPreambleHeader *preamble)
+vb2_error_t VbKernelHasFlags(const VbKernelPreambleHeader *preamble)
 {
 	if (preamble->header_version_minor > 1)
 		return VBOOT_SUCCESS;
@@ -119,7 +119,7 @@ int VbKernelHasFlags(const VbKernelPreambleHeader *preamble)
 	return VBOOT_KERNEL_PREAMBLE_NO_FLAGS;
 }
 
-int VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
+vb2_error_t VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
 			     uint64_t header, uint64_t header_size)
 {
 	uint64_t end = header-kblob;
@@ -147,7 +147,7 @@ uint64_t VbSharedDataReserve(VbSharedDataHeader *header, uint64_t size)
 	return offs;
 }
 
-int VbSharedDataSetKernelKey(VbSharedDataHeader *header,
+vb2_error_t VbSharedDataSetKernelKey(VbSharedDataHeader *header,
 			     const struct vb2_packed_key *src)
 {
 	struct vb2_packed_key *kdest;

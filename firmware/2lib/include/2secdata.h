@@ -99,7 +99,7 @@ enum vb2_secdatak_param {
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdata_init(struct vb2_context *ctx);
+vb2_error_t vb2_secdata_init(struct vb2_context *ctx);
 
 /**
  * Read a secure storage value.
@@ -109,7 +109,7 @@ int vb2_secdata_init(struct vb2_context *ctx);
  * @param dest		Destination for value
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdata_get(struct vb2_context *ctx,
+vb2_error_t vb2_secdata_get(struct vb2_context *ctx,
 		    enum vb2_secdata_param param,
 		    uint32_t *dest);
 
@@ -121,7 +121,7 @@ int vb2_secdata_get(struct vb2_context *ctx,
  * @param value		New value
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdata_set(struct vb2_context *ctx,
+vb2_error_t vb2_secdata_set(struct vb2_context *ctx,
 		    enum vb2_secdata_param param,
 		    uint32_t value);
 
@@ -140,7 +140,7 @@ int vb2_secdata_set(struct vb2_context *ctx,
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdatak_init(struct vb2_context *ctx);
+vb2_error_t vb2_secdatak_init(struct vb2_context *ctx);
 
 /**
  * Read a secure storage value.
@@ -150,7 +150,7 @@ int vb2_secdatak_init(struct vb2_context *ctx);
  * @param dest		Destination for value
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdatak_get(struct vb2_context *ctx,
+vb2_error_t vb2_secdatak_get(struct vb2_context *ctx,
 		     enum vb2_secdatak_param param,
 		     uint32_t *dest);
 
@@ -162,7 +162,7 @@ int vb2_secdatak_get(struct vb2_context *ctx,
  * @param value		New value
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-int vb2_secdatak_set(struct vb2_context *ctx,
+vb2_error_t vb2_secdatak_set(struct vb2_context *ctx,
 		     enum vb2_secdatak_param param,
 		     uint32_t value);
 

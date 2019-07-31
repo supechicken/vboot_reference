@@ -45,7 +45,7 @@ struct vb2_signature *vb2_alloc_signature(uint32_t sig_size,
  * @param src		Source signature
  *
  * @return VB2_SUCCESS, or non-zero if error. */
-int vb2_copy_signature(struct vb2_signature *dest,
+vb2_error_t vb2_copy_signature(struct vb2_signature *dest,
 		       const struct vb2_signature *src);
 
 /**

@@ -304,7 +304,7 @@ static void vb2_pubkey_from_usbpd1(struct vb2_public_key *key,
 	key->id = vb2_hash_id(hash_alg);
 }
 
-static int vb21_sig_from_usbpd1(struct vb21_signature **sig,
+static vb2_error_t vb21_sig_from_usbpd1(struct vb21_signature **sig,
 				enum vb2_signature_algorithm sig_alg,
 				enum vb2_hash_algorithm hash_alg,
 				const uint8_t *o_sig,
@@ -367,7 +367,7 @@ static void show_usbpd1_stuff(const char *name,
 
 
 /* Returns VB2_SUCCESS or random error code */
-static int try_our_own(enum vb2_signature_algorithm sig_alg,
+static vb2_error_t try_our_own(enum vb2_signature_algorithm sig_alg,
 		       enum vb2_hash_algorithm hash_alg,
 		       const uint8_t *o_pubkey, uint32_t o_pubkey_size,
 		       const uint8_t *o_sig, uint32_t o_sig_size,
@@ -381,7 +381,7 @@ static int try_our_own(enum vb2_signature_algorithm sig_alg,
 		.buf = buf,
 		.size = sizeof(buf),
 	};
-	int rv = VB2_ERROR_UNKNOWN;
+	vb2_error_t rv = VB2_ERROR_UNKNOWN;
 
 	vb2_pubkey_from_usbpd1(&pubkey, sig_alg, hash_alg,
 			       o_pubkey, o_pubkey_size);
@@ -398,7 +398,7 @@ static int try_our_own(enum vb2_signature_algorithm sig_alg,
 }
 
 /* Returns VB2_SUCCESS if the image validates itself */
-static int check_self_consistency(const uint8_t *buf,
+static vb2_error_t check_self_consistency(const uint8_t *buf,
 				  const char *name,
 				  uint32_t ro_size, uint32_t rw_size,
 				  uint32_t ro_offset, uint32_t rw_offset,
@@ -410,7 +410,7 @@ static int check_self_consistency(const uint8_t *buf,
 	uint32_t sig_offset = rw_offset + rw_size - sig_size;
 	uint32_t pubkey_size = usbpd1_packed_key_size(sig_alg);
 	uint32_t pubkey_offset = ro_offset + ro_size - pubkey_size;
-	int rv;
+	vb2_error_t rv;
 
 	/* Skip stuff that obviously doesn't work */
 	if (sig_size > rw_size || pubkey_size > ro_size)

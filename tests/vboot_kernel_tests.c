@@ -193,7 +193,7 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 	return &gbb;
 }
 
-int vb2ex_read_resource(struct vb2_context *c,
+vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 			enum vb2_resource_index index,
 			uint32_t offset,
 			void *buf,
@@ -203,7 +203,7 @@ int vb2ex_read_resource(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-int vb2_gbb_read_root_key(struct vb2_context *c,
+vb2_error_t vb2_gbb_read_root_key(struct vb2_context *c,
 			  struct vb2_packed_key **keyp,
 			  uint32_t *size,
 			  struct vb2_workbuf *wb)
@@ -212,7 +212,7 @@ int vb2_gbb_read_root_key(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-int vb2_gbb_read_recovery_key(struct vb2_context *c,
+vb2_error_t vb2_gbb_read_recovery_key(struct vb2_context *c,
 			      struct vb2_packed_key **keyp,
 			      uint32_t *size,
 			      struct vb2_workbuf *wb)
@@ -278,7 +278,7 @@ void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 	memcpy(dest, fake_guid, sizeof(fake_guid));
 }
 
-int vb2_unpack_key_buffer(struct vb2_public_key *key,
+vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 		   const uint8_t *buf,
 		   uint32_t size)
 {
@@ -288,7 +288,7 @@ int vb2_unpack_key_buffer(struct vb2_public_key *key,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_keyblock(struct vb2_keyblock *block,
+vb2_error_t vb2_verify_keyblock(struct vb2_keyblock *block,
 			uint32_t size,
 			const struct vb2_public_key *key,
 			const struct vb2_workbuf *wb)
@@ -301,7 +301,7 @@ int vb2_verify_keyblock(struct vb2_keyblock *block,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
+vb2_error_t vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 			     uint32_t size,
 			     const struct vb2_workbuf *wb)
 {
@@ -313,7 +313,7 @@ int vb2_verify_keyblock_hash(const struct vb2_keyblock *block,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
+vb2_error_t vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 			       uint32_t size,
 			       const struct vb2_public_key *key,
 			       const struct vb2_workbuf *wb)
@@ -326,7 +326,7 @@ int vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 	return VB2_SUCCESS;
 }
 
-int vb2_verify_data(const uint8_t *data,
+vb2_error_t vb2_verify_data(const uint8_t *data,
 		    uint32_t size,
 		    struct vb2_signature *sig,
 		    const struct vb2_public_key *key,
@@ -338,7 +338,7 @@ int vb2_verify_data(const uint8_t *data,
 	return VB2_SUCCESS;
 }
 
-int vb2_digest_buffer(const uint8_t *buf,
+vb2_error_t vb2_digest_buffer(const uint8_t *buf,
 		      uint32_t size,
 		      enum vb2_hash_algorithm hash_alg,
 		      uint8_t *digest,
