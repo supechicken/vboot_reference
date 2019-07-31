@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3581493_0569dda8",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T17:24:30Z",
+      "side": 1,
+      "message": "nit: can we call it ReadAntirollbackSpace since it assumes a certain structure of data (crc field), so is only applicable to firmware and kernel spaces. it\u0027s not for a generic tpm nvram space.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5ca220_45ad4ef0",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T17:24:30Z",
+      "side": 1,
+      "message": "why do we need to pass that in? because we have a variable |length| of data we need to write (and thus read back for checking crc)? can we just allocate max_length(all possible spaces we deal with) inside Read[Antirollback]Space? will be a better i/face since the caller of Write* doesn\u0027t need data2 back.",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6f2ae8_d4d9b892",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T17:24:30Z",
+      "side": 1,
+      "message": "is it the same for firmware and kernel spaces? that may be completely coincidental, and after some update we may want ver2 for one and ver3 for the other, and the size and offset_crc may depend on the ver (while both versions are acceptable).\nI\u0027m not sure having a single version for dealing with both firmware and kernel spaces is a good thing, despite their current similarities. they don\u0027t have to stay similar in the future.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131b32b2_0f7962f7",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T17:24:30Z",
+      "side": 1,
+      "message": "if we go this route, can we encapsulate {index, space_size, offset_ver, offset_crc, and possible expected attrs} in some AntirollbackSpaceDescr structure and just pass the index in the global const array of those structs to Read[Antirollback]Space and Write[Antirollback]Space to fully define what space we want and its characteristics.",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 41
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
