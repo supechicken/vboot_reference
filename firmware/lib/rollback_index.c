@@ -60,6 +60,49 @@ uint32_t TPMClearAndReenable(void)
 	return TPM_SUCCESS;
 }
 
+/* Functions to read and write firmware and kernel spaces. */
+
+static uint32_t ReadSpace(uint32_t index, void *data, uint32_t length,
+			  uint32_t version_offset, uint32_t crc_offset)
+{
+	uint8_t *version = data + version_offset;
+	uint8_t *crc = data + crc_offset;
+	uint32_t r;
+	int attempts = 3;
+
+	while (attempts--) {
+		r = TlclRead(index, data, length);
+		if (r != TPM_SUCCESS)
+			break;
+
+		r = TPM_E_CORRUPTED_STATE;
+
+		if (*version < 2) {
+			/* Danger Will Robinson! Danger! */
+			*version = 2;
+			r = TPM_SUCCESS;
+			break;
+		}
+
+		/*
+		 * If the CRC is good, we're done. If it's bad, try a couple
+		 * more times to see if it gets better before we give up. It
+		 * could just be noise.
+		 */
+		if (*crc == vb2_crc8(data, crc_offset)) {
+			r = TPM_SUCCESS;
+			break;
+		}
+
+		VB2_DEBUG("TPM: bad CRC\n");
+	}
+
+	if (r == TPM_E_CORRUPTED_STATE)
+		VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
+
+	return r;
+}
+
 uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length)
 {
 	uint32_t result = TlclWrite(index, data, length);
@@ -71,76 +114,79 @@ uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length)
 	}
 }
 
-/* Functions to read and write firmware and kernel spaces. */
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
+static uint32_t WriteSpace(uint32_t index, void *data, uint32_t length,
+			   uint32_t version_offset, uint32_t crc_offset,
+			   void *data2)
 {
-	uint32_t r;
-	int attempts = 3;
-
-	while (attempts--) {
-		r = TlclRead(FIRMWARE_NV_INDEX, rsf,
-			     sizeof(RollbackSpaceFirmware));
-		if (r != TPM_SUCCESS)
-			return r;
-
-		/*
-		 * No CRC in this version, so we'll create one when we write
-		 * it. Note that we're marking this as version 2, not
-		 * ROLLBACK_SPACE_FIRMWARE_VERSION, because version 2 just
-		 * added the CRC. Later versions will need to set default
-		 * values for any extra fields explicitly (probably here).
-		 */
-		if (rsf->struct_version < 2) {
-			/* Danger Will Robinson! Danger! */
-			rsf->struct_version = 2;
-			return TPM_SUCCESS;
-		}
-
-		/*
-		 * If the CRC is good, we're done. If it's bad, try a couple
-		 * more times to see if it gets better before we give up. It
-		 * could just be noise.
-		 */
-		if (rsf->crc8 == vb2_crc8(rsf,
-				      offsetof(RollbackSpaceFirmware, crc8)))
-			return TPM_SUCCESS;
-
-		VB2_DEBUG("TPM: bad CRC\n");
-	}
-
-	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
-	return TPM_E_CORRUPTED_STATE;
-}
-
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
-{
-	RollbackSpaceFirmware rsf2;
+	uint8_t *version = data + version_offset;
+	uint8_t *crc = data + crc_offset;
 	uint32_t r;
 	int attempts = 3;
 
 	/* All writes should use struct_version 2 or greater. */
-	if (rsf->struct_version < 2)
-		rsf->struct_version = 2;
-	rsf->crc8 = vb2_crc8(rsf, offsetof(RollbackSpaceFirmware, crc8));
+	if (*version < 2)
+		*version = 2;
+	*crc = vb2_crc8(data, crc_offset);
 
 	while (attempts--) {
-		r = SafeWrite(FIRMWARE_NV_INDEX, rsf,
-			      sizeof(RollbackSpaceFirmware));
+		r = SafeWrite(index, data, length);
 		/* Can't write, not gonna try again */
-		if (r != TPM_SUCCESS)
-			return r;
+		if (TPM_SUCCESS != r)
+			break;
 
-		/* Read it back to be sure it got the right values. */
-		r = ReadSpaceFirmware(&rsf2);    /* This checks the CRC */
-		if (r == TPM_SUCCESS)
-			return r;
+		/* Read it back to be sure it got the right values.
+		   This call also checks the CRC. */
+		r = ReadSpace(index, data2, length, version_offset, crc_offset);
+		if (TPM_SUCCESS == r)
+			break;
 
 		VB2_DEBUG("TPM: bad CRC\n");
 		/* Try writing it again. Maybe it was garbled on the way out. */
 	}
 
-	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
-	return TPM_E_CORRUPTED_STATE;
+	if (r == TPM_E_CORRUPTED_STATE)
+		VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
+
+	return r;
+}
+
+uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
+{
+	return ReadSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
+			 offsetof(RollbackSpaceFirmware, struct_version),
+			 offsetof(RollbackSpaceFirmware, crc8));
+}
+
+uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
+{
+	RollbackSpaceFirmware rsf2;
+	return WriteSpace(FIRMWARE_NV_INDEX, rsf, sizeof(*rsf),
+			 offsetof(RollbackSpaceFirmware, struct_version),
+			 offsetof(RollbackSpaceFirmware, crc8),
+			 &rsf2);
+}
+
+uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	uint32_t r = ReadSpace(KERNEL_NV_INDEX, rsk, sizeof(*rsk),
+			       offsetof(RollbackSpaceKernel, struct_version),
+			       offsetof(RollbackSpaceKernel, crc8));
+
+	if (ROLLBACK_SPACE_KERNEL_UID != rsk->uid) {
+		VB2_DEBUG("TPM: UID mismatch\n");
+		r = TPM_E_CORRUPTED_STATE;
+	}
+
+	return r;
+}
+
+uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+{
+	RollbackSpaceKernel rsk2;
+	return WriteSpace(KERNEL_NV_INDEX, rsk, sizeof(*rsk),
+			 offsetof(RollbackSpaceKernel, struct_version),
+			 offsetof(RollbackSpaceKernel, crc8),
+			 &rsk2);
 }
 
 uint32_t SetVirtualDevMode(int val)
@@ -167,76 +213,6 @@ uint32_t SetVirtualDevMode(int val)
 
 	VB2_DEBUG("TPM: Leaving\n");
 	return VBERROR_SUCCESS;
-}
-
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
-{
-	uint32_t r;
-	int attempts = 3;
-
-	while (attempts--) {
-		r = TlclRead(KERNEL_NV_INDEX, rsk, sizeof(RollbackSpaceKernel));
-		if (r != TPM_SUCCESS)
-			return r;
-
-		/*
-		 * No CRC in this version, so we'll create one when we write
-		 * it. Note that we're marking this as version 2, not
-		 * ROLLBACK_SPACE_KERNEL_VERSION, because version 2 just added
-		 * the CRC. Later versions will need to set default values for
-		 * any extra fields explicitly (probably here).
-		 */
-		if (rsk->struct_version < 2) {
-			/* Danger Will Robinson! Danger! */
-			rsk->struct_version = 2;
-			return TPM_SUCCESS;
-		}
-
-		/*
-		 * If the CRC is good, we're done. If it's bad, try a couple
-		 * more times to see if it gets better before we give up. It
-		 * could just be noise.
-		 */
-		if (rsk->crc8 ==
-		    vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8)))
-			return TPM_SUCCESS;
-
-		VB2_DEBUG("TPM: bad CRC\n");
-	}
-
-	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
-	return TPM_E_CORRUPTED_STATE;
-}
-
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
-{
-	RollbackSpaceKernel rsk2;
-	uint32_t r;
-	int attempts = 3;
-
-	/* All writes should use struct_version 2 or greater. */
-	if (rsk->struct_version < 2)
-		rsk->struct_version = 2;
-	rsk->crc8 = vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8));
-
-	while (attempts--) {
-		r = SafeWrite(KERNEL_NV_INDEX, rsk,
-			      sizeof(RollbackSpaceKernel));
-		/* Can't write, not gonna try again */
-		if (r != TPM_SUCCESS)
-			return r;
-
-		/* Read it back to be sure it got the right values. */
-		r = ReadSpaceKernel(&rsk2);    /* This checks the CRC */
-		if (r == TPM_SUCCESS)
-			return r;
-
-		VB2_DEBUG("TPM: bad CRC\n");
-		/* Try writing it again. Maybe it was garbled on the way out. */
-	}
-
-	VB2_DEBUG("TPM: too many bad CRCs, giving up\n");
-	return TPM_E_CORRUPTED_STATE;
 }
 
 #ifdef DISABLE_ROLLBACK_TPM
@@ -266,34 +242,30 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 
 #else
 
-uint32_t RollbackKernelRead(uint32_t* version)
+static uint32_t CheckSpaceKernel(void)
 {
-	RollbackSpaceKernel rsk;
-
 	/*
-	 * Read the kernel space and verify its permissions.  If the kernel
-	 * space has the wrong permission, or it doesn't contain the right
-	 * identifier, we give up.  This will need to be fixed by the
+	 * If the kernel space has the wrong permission, or it doesn't contain
+	 * the right identifier, fail.  This will need to be fixed by the
 	 * recovery kernel.  We have to worry about this because at any time
 	 * (even with PP turned off) the TPM owner can remove and redefine a
 	 * PP-protected space (but not write to it).
 	 */
-	RETURN_ON_FAILURE(ReadSpaceKernel(&rsk));
 #ifndef TPM2_MODE
-	/*
-	 * TODO(vbendeb): restore this when it is defined how the kernel space
-	 * gets protected.
-	 */
-	{
-		uint32_t perms, uid;
-
-		RETURN_ON_FAILURE(TlclGetPermissions(KERNEL_NV_INDEX, &perms));
-		memcpy(&uid, &rsk.uid, sizeof(uid));
-		if (TPM_NV_PER_PPWRITE != perms ||
-		    ROLLBACK_SPACE_KERNEL_UID != uid)
-			return TPM_E_CORRUPTED_STATE;
-	}
+	uint32_t perms;
+	RETURN_ON_FAILURE(TlclGetPermissions(KERNEL_NV_INDEX, &perms));
+	if (TPM_NV_PER_PPWRITE != perms)
+		return TPM_E_CORRUPTED_STATE;
 #endif
+	return TPM_SUCCESS;
+}
+
+uint32_t RollbackKernelRead(uint32_t* version)
+{
+	RollbackSpaceKernel rsk;
+
+	RETURN_ON_FAILURE(ReadSpaceKernel(&rsk));
+	RETURN_ON_FAILURE(CheckSpaceKernel());
 	memcpy(version, &rsk.kernel_versions, sizeof(*version));
 	VB2_DEBUG("TPM: RollbackKernelRead %x\n", (int)*version);
 	return TPM_SUCCESS;
