@@ -86,7 +86,7 @@ int PublicKeyCopy(struct vb2_packed_key *dest,
  *
  * Returns VBOOT_SUCCESS if successful.
  */
-int VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
+vb2_error_t VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
 			     uint64_t *vmlinuz_header_address,
 			     uint64_t *vmlinuz_header_size);
 
@@ -97,21 +97,21 @@ int VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
  *
  * Returns VBOOT_SUCCESS if version is >=2.2.
  */
-int VbKernelHasFlags(const VbKernelPreambleHeader *preamble);
+vb2_error_t VbKernelHasFlags(const VbKernelPreambleHeader *preamble);
 
 /**
  * Verify that the Vmlinuz Header is contained inside of the kernel blob.
  *
  * Returns VBOOT_SUCCESS or VBOOT_PREAMBLE_INVALID on error
  */
-int VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
+vb2_error_t VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
 			     uint64_t header, uint64_t header_size);
 /**
  * Initialize a verified boot shared data structure.
  *
  * Returns 0 if success, non-zero if error.
  */
-int VbSharedDataInit(VbSharedDataHeader *header, uint64_t size);
+vb2_error_t VbSharedDataInit(VbSharedDataHeader *header, uint64_t size);
 
 /**
  * Reserve [size] bytes of the shared data area.  Returns the offset of the
@@ -124,7 +124,7 @@ uint64_t VbSharedDataReserve(VbSharedDataHeader *header, uint64_t size);
  *
  * Returns 0 if success, non-zero if error.
  */
-int VbSharedDataSetKernelKey(VbSharedDataHeader *header,
+vb2_error_t VbSharedDataSetKernelKey(VbSharedDataHeader *header,
 			     const struct vb2_packed_key *src);
 
 /**

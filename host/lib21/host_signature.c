@@ -17,7 +17,7 @@
 #include "host_signature2.h"
 #include "host_misc.h"
 
-int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
+vb2_error_t vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 		    const uint8_t **buf_ptr,
 		    uint32_t *size_ptr)
 {
@@ -68,7 +68,7 @@ int vb2_digest_info(enum vb2_hash_algorithm hash_alg,
 	}
 }
 
-int vb21_sign_data(struct vb21_signature **sig_ptr,
+vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr,
 		   const uint8_t *data,
 		   uint32_t size,
 		   const struct vb2_private_key *key,
@@ -172,7 +172,7 @@ int vb21_sign_data(struct vb21_signature **sig_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb21_sig_size_for_key(uint32_t *size_ptr,
+vb2_error_t vb21_sig_size_for_key(uint32_t *size_ptr,
 			  const struct vb2_private_key *key,
 			  const char *desc)
 {
@@ -188,12 +188,12 @@ int vb21_sig_size_for_key(uint32_t *size_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb21_sig_size_for_keys(uint32_t *size_ptr,
+vb2_error_t vb21_sig_size_for_keys(uint32_t *size_ptr,
 			   const struct vb2_private_key **key_list,
 			   uint32_t key_count)
 {
 	uint32_t total = 0, size = 0;
-	int rv, i;
+	vb2_error_t rv, i;
 
 	*size_ptr = 0;
 
@@ -208,14 +208,14 @@ int vb21_sig_size_for_keys(uint32_t *size_ptr,
 	return VB2_SUCCESS;
 }
 
-int vb21_sign_object(uint8_t *buf,
+vb2_error_t vb21_sign_object(uint8_t *buf,
 		     uint32_t sig_offset,
 		     const struct vb2_private_key *key,
 		     const char *desc)
 {
 	struct vb21_struct_common *c = (struct vb21_struct_common *)buf;
 	struct vb21_signature *sig = NULL;
-	int rv;
+	vb2_error_t rv;
 
 	rv = vb21_sign_data(&sig, buf, sig_offset, key, desc);
 	if (rv)
@@ -232,14 +232,14 @@ int vb21_sign_object(uint8_t *buf,
 	return VB2_SUCCESS;
 }
 
-int vb21_sign_object_multiple(uint8_t *buf,
+vb2_error_t vb21_sign_object_multiple(uint8_t *buf,
 			      uint32_t sig_offset,
 			      const struct vb2_private_key **key_list,
 			      uint32_t key_count)
 {
 	struct vb21_struct_common *c = (struct vb21_struct_common *)buf;
 	uint32_t sig_next = sig_offset;
-	int rv, i;
+	vb2_error_t rv, i;
 
 	for (i = 0; i < key_count; i++)	{
 		struct vb21_signature *sig = NULL;
