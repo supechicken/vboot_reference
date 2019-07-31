@@ -21,7 +21,7 @@
 #include "host_common.h"
 #include "signature_digest.h"
 
-int DigestFile(char *input_file, enum vb2_hash_algorithm alg,
+vb2_error_t DigestFile(char *input_file, enum vb2_hash_algorithm alg,
 	       uint8_t *digest, uint32_t digest_size)
 {
 	int input_fd, len;

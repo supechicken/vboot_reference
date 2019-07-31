@@ -126,7 +126,7 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 	return &gbb;
 }
 
-int vb2ex_read_resource(struct vb2_context *c,
+vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 			enum vb2_resource_index index,
 			uint32_t offset,
 			void *buf,
@@ -158,14 +158,14 @@ int vb2ex_read_resource(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-int vb21_unpack_key(struct vb2_public_key *key,
+vb2_error_t vb21_unpack_key(struct vb2_public_key *key,
 		    const uint8_t *buf,
 		    uint32_t size)
 {
 	return mock_unpack_key_retval;
 }
 
-int vb21_verify_keyblock(struct vb21_keyblock *block,
+vb2_error_t vb21_verify_keyblock(struct vb21_keyblock *block,
 			 uint32_t size,
 			 const struct vb2_public_key *key,
 			 const struct vb2_workbuf *wb)
@@ -173,7 +173,7 @@ int vb21_verify_keyblock(struct vb21_keyblock *block,
 	return mock_verify_keyblock_retval;
 }
 
-int vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
+vb2_error_t vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
 			    uint32_t size,
 			    const struct vb2_public_key *key,
 			    const struct vb2_workbuf *wb)
