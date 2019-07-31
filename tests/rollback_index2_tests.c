@@ -80,6 +80,7 @@ static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
 	memset(&mock_pflags, 0, sizeof(mock_pflags));
 	memset(&mock_rsf, 0, sizeof(mock_rsf));
 	memset(&mock_rsk, 0, sizeof(mock_rsk));
+	mock_rsk.uid = ROLLBACK_SPACE_KERNEL_UID;
 	mock_permissions = 0;
 
 	memset(mock_fwmp.buf, 0, sizeof(mock_fwmp.buf));
@@ -377,6 +378,27 @@ static void CrcTestKernel(void)
 	ResetMocks(0, 0);
 	noise_on[0] = 1;
 	TEST_EQ(ReadSpaceKernel(&rsk), 0, "ReadSpaceKernel(), v0");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x1008, 13)\n",
+		    "tlcl calls");
+
+	/* Should fail without a proper UID set, no CRC (version < 2) */
+	ResetMocks(0, 0);
+	mock_rsk.uid = 0;
+	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_CORRUPTED_STATE,
+		"ReadSpaceKernel(), v0, no UID");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x1008, 13)\n",
+		    "tlcl calls");
+
+	/* Should fail without a proper UID set, with CRC (version == 2) */
+	ResetMocks(0, 0);
+	mock_rsk.uid = 0;
+	mock_rsk.struct_version = 2;
+	mock_rsk.crc8 = vb2_crc8(&mock_rsk,
+				 offsetof(RollbackSpaceKernel, crc8));
+	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_CORRUPTED_STATE,
+		"ReadSpaceKernel(), v2, no UID");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1008, 13)\n",
 		    "tlcl calls");
