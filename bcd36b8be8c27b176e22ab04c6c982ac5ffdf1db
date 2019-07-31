@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0fa7f9ef_eda45fb1",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "Also dead, I think.",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3581493_0569dda8",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -19,6 +36,40 @@
         "endLine": 65,
         "endChar": 25
       },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc19bbd6_a3138338",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "I know this is what the old code did, but it seems pretty pointless to me. If we think that the transport-layer communication to Cr50 is reliable, then there\u0027s no need to read multiple times in case of bad CRC. If we don\u0027t think it\u0027s reliable, then random bit flips could also cause all kinds of conditions that end up causing a failure up here (e.g. change the opcode to an invalid one or something). So either we retry the whole thing on any kind of error, or not at all.\n\nIn general we don\u0027t error check and retry SPI/I2C peripherals much, we usually assume they work reliably (e.g. if a read from the SPI flash got corrupted, we\u0027re usually just screwed, there\u0027s no CRC no nothing there). So I\u0027m not sure how much the retries here are worth.",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83a5aa3_62b46468",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "Let\u0027s drop this ancient compatibility hack while we\u0027re here.",
       "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -48,6 +99,30 @@
     },
     {
       "key": {
+        "uuid": "d18826a7_7345ba56",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "Agreed... or decide to drop the readback check completely. Is there a point in doing this with Cr50? We are already trusting it implicitly on so many fronts, this seems like an odd place to start double-checking its work (and even then, getting the right response back doesn\u0027t necessarily guarantee it was committed to flash).",
+      "parentUuid": "4a5ca220_45ad4ef0",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb6f2ae8_d4d9b892",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -65,6 +140,47 @@
         "endLine": 128,
         "endChar": 15
       },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "349cf8a5_423114bd",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "This hack has been in here since at least 2013 (meaning the legacy devices that needed it are even older). Nothing we\u0027re still using cares about this. Just drop it.",
+      "parentUuid": "cb6f2ae8_d4d9b892",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e902fea_3fd4d627",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-07-31T19:55:33Z",
+      "side": 1,
+      "message": "Don\u0027t we just wanna drop this completely while we\u0027re at it? This is all done in 2secdata.c now AFAIK. The firmware space code in here is dead. (And also, as we refactor the kernel space stuff we should move it into 2secdatak.c and vb2-ify the conventions.)",
       "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
