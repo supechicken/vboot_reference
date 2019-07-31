@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "f59e1ece_35b3e065",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-31T10:38:00Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right -- although I think there\u0027s a better solution overall, at the very least it shouldn\u0027t need to know about where the work buffer starts.  (Which is one of the reasons why this CL is so complicated.)",
+      "parentUuid": "128a29ee_673d9efe",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e941a1c8_cd641c33",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -219,6 +237,24 @@
       "side": 1,
       "message": "Well, I for one look forward to our 256th update of this struct. :P",
       "parentUuid": "09c89b37_8dc6d2b6",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c77fd9_cac8ad67",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-31T10:38:00Z",
+      "side": 1,
+      "message": "“ヽ(´▽｀)ノ”",
+      "parentUuid": "f2707694_f61ee7a6",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -325,6 +361,24 @@
     },
     {
       "key": {
+        "uuid": "57a36aa8_fad9960f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-31T10:38:00Z",
+      "side": 1,
+      "message": "Actually, I kinda like that solution, since it decouples the location of the context object on the workbuf.  And ditto to the comment below for the checking function.",
+      "parentUuid": "578d7585_8a1978fb",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28bbbfe5_94a4eb28",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -372,6 +426,24 @@
       "side": 1,
       "message": "Hmmm... okay, I guess that makes sense. (Picking up the idea above, could also make this something like vb2api_reinit(void *workbuf, struct vb2_context **ctxptr_out) that both does the checking and performs the task of getting a valid context object out of a raw memory buffer. That way, I think we could completely eliminate any assumptions of where in the workbuffer the context lives from the caller. Not that any location other than right at the start makes much sense, but it\u0027s still a nice bit of separation, maybe.)",
       "parentUuid": "d3ee794e_ab9be187",
+      "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5bfe12_689b003e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-07-31T10:38:00Z",
+      "side": 1,
+      "message": "Ack, let\u0027s do this.\n\nI\u0027m also thinking about adding a size field to this function.  Then it can take care of updating vb2_context.workbuf_size.  (And ensuring it\u0027s big enough.)  How does that sound?",
+      "parentUuid": "59a2a89b_414e6e12",
       "revId": "a945d88d029639707fce7a981cdd69b8f6993fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
