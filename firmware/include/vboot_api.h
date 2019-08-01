@@ -267,8 +267,8 @@ VbError_t VbExTpmOpen(void);
  * input, response_length is the size of the response buffer in bytes.  On
  * exit, response_length is set to the actual received response length in
  * bytes. */
-VbError_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
-			     uint8_t *response, uint32_t *response_length);
+uint32_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
+			    uint8_t *response, uint32_t *response_length);
 
 #ifdef CHROMEOS_ENVIRONMENT
 
