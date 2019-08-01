@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3c8649e6_58b61f38",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-01T07:38:20Z",
+      "side": 1,
+      "message": "Re. serialization:\n\n- There is one instance in vboot_kernel.c where it is stored in shcall-\u003ereturn_code (as uint8_t).\n- Another occurs in 2misc.c where the error code is passed to vb2_fail (also casted to uint8_t), which then gets stored in nvram as VB2_NV_RECOVERY_SUBCODE.\n- One location where this nvram variable is read back is in vb2_check_recovery, which has a clause of code where it may end up in sd-\u003erecovery_reason (?!?!?).\n\nAnyways, I don\u0027t think we should be too concerned since these are already ridiculous enough.\n\nRe. using a struct for typedef:\n\nI suppose that\u0027s the C way of doing an enum class?  Seems pretty unwieldy... let\u0027s stick with plain old uint32_t?\n\nRe. negative values:\n\nWe\u0027ve already put a lot of effort into maintaining stable error code values... I suppose if everything just gets switched over to its negative equivalent, that\u0027s not so bad.  But I also haven\u0027t really come across any code (rv \u003c 0) like you mentioned?  (And anyways, this should be changed to (VB2_SUCCESS !\u003d rv).)",
+      "parentUuid": "4515d39f_86962882",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "248a8fa2_f9c4db5f",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 2
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "6b5ea8b9_fcf33658",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-01T07:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248a8fa2_f9c4db5f",
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0caef7d_ff72f118",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 2
@@ -80,6 +122,24 @@
       "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a0ac56_af748b8f",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-01T07:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0caef7d_ff72f118",
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
