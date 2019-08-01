@@ -22,6 +22,64 @@
       "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4515d39f_86962882",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T01:06:14Z",
+      "side": 1,
+      "message": "For data types that get serialized, it\u0027s definitely always a good idea to use a fixed-width type. We\u0027re not UEFI but we still have cases where different pieces run with different architectures.\n\nThe question is, does vb2_error_t ever actually get serialized? I can\u0027t think of a point where it does... but on the other hand, it doesn\u0027t really hurt to be careful. How about making it an int32_t, so that it\u0027s fixed-width but does still convert implicitly to an int when needed? (I mean, the other extreme would be to define it as typedef struct { uint32_t err; } and change all the constants to #define VB2_SUCCESS ((vb2_error_t){ .value \u003d 0 })... that way, you force explicit compiler checking for the type. But I\u0027m not sure we want to go that far? And you\u0027d have to introduce some weird syntax for comparison, like if (IS_VB2_SUCCESS(rv)) or something like that.)\n\nI\u0027m also wondering if we should maybe make all the values negative. In lots of other code, negative values are used for errors. If a vb2_error_t ever finds its way into a function that didn\u0027t expect it and checks it with if (rv \u003c 0), that would make it still work. (Of course, we have plenty of other examples where people are using 1 instead of -1 for their default error value so we sort of have that problem already anyway.)",
+      "parentUuid": "b04aed96_fec9754b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248a8fa2_f9c4db5f",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T01:06:14Z",
+      "side": 1,
+      "message": "80 chars",
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0caef7d_ff72f118",
+        "filename": "tests/ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T01:06:14Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
