@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b0a554f_cd73876f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "Uhhh... something seems wrong with the mapping here (I think you did it right in the code, just wrong here)",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343c0b2a_34852ad7",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "...and this as \"no kernel partitions found\"",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc1fe31_a3d0ae08",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "nit: maybe a bit better to explain this as \"no (working) block devices found\"",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d08d60dd_50543425",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "This whole block is dead code (nothing sets VBSD_FWB_TRIED anymore). Can we just take it out?",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa1653f_979d0caa",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "nit: this might benefit from a\n\n enum VbScreenType_t next_screen \u003d\n     VB2_ERROR_TRY_LOAD_KERNEL_NO_DISK_FOUND \u003d\u003d retval?\n     VB_SCREEN_RECOVERY_INSERT : VB_SCREEN_RECOVERY_NO_GOOD;",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0614d3_c4ba73c4",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T02:38:08Z",
+      "side": 1,
+      "message": "80 chars\n\nMaybe you could avoid a lot of pain by just calling it VB2_ERROR_TLK_NO_DISK_FOUND? When names become so descriptive that they force every line they appear on to get broken 3 times, readability starts going down again.",
+      "range": {
+        "startLine": 909,
+        "startChar": 38,
+        "endLine": 909,
+        "endChar": 53
+      },
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
