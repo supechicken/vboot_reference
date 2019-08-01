@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "9eea6624_a2bd85af",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-01T08:51:50Z",
+      "side": 1,
+      "message": "If we want to go down that path, then please review this CL instead: CL:1729713",
+      "parentUuid": "dc19bbd6_a3138338",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e83a5aa3_62b46468",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -181,6 +199,24 @@
       "writtenOn": "2019-07-31T19:55:33Z",
       "side": 1,
       "message": "Don\u0027t we just wanna drop this completely while we\u0027re at it? This is all done in 2secdata.c now AFAIK. The firmware space code in here is dead. (And also, as we refactor the kernel space stuff we should move it into 2secdatak.c and vb2-ify the conventions.)",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b12b25e_295ff2e5",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-01T08:51:50Z",
+      "side": 1,
+      "message": "Unless I\u0027m mistaken -- we still need to read and write firmware space when in recovery mode, to enable developer mode.\n\nRe. moving to 2secdata.c: The read/write functions should still live in depthcharge eventually, right?  But yeah, we could move it to 2secdata.c for now.",
+      "parentUuid": "6e902fea_3fd4d627",
       "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
