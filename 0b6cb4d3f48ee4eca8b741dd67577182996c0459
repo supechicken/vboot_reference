@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30ac6031_f517dcc2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "nit: maybe do an extra *ctxptr \u003d NULL up here just to be sure (so the output value is defined in all paths).",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b5c9f4_835acd61",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "Didn\u0027t you want to add a size parameter here for the copy\u0026resize case? Or did I misunderstand?",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a184b1a8_98a4cdc1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "nit: unnecessary (after change below)",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be9bbec_f0c098b6",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "This should be workbuf_used.",
+      "range": {
+        "startLine": 187,
+        "startChar": 10,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56992605_b60a77e8",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "nit: maybe move this above all the checks that access the potentially unaligned fields (I mean, we support unaligned accesses in all our environments, but still).",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1beee8a7_9ca50191",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "This should probably have a \"Fields which the caller should never read or write\" comment header, akin to the others.\n\n...I guess, actually, this brings up a bit of a philosophical question whether we want stuff that the caller should never touch in the structure that is explicitly meant for use by the caller. The way to avoid that would be to turn the whole thing on its head, have shared data first and have a ctx_offset in there which points to the context. That way we could make super clear for the caller that e.g. it should never muck with workbuf_size on its own (and instead call reinit with a different size).\n\nWhat do you think?",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d650f88c_0bbc5e24",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "I think this should say \"once per boot\" to clarify you shouldn\u0027t call it again in later stages.",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81bfea12_56a88333",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "nit: really, I\u0027d say this should be used to retrieve the vb2_context pointer again. The consistency checking is more of a vboot internal detail.\n\nShould also document somewhere that this must be called after every work buffer relocation.",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29e54c2_d74067e3",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-01T03:04:33Z",
+      "side": 1,
+      "message": "outdated",
+      "range": {
+        "startLine": 358,
+        "startChar": 31,
+        "endLine": 358,
+        "endChar": 48
+      },
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
