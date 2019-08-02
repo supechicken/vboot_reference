@@ -87,7 +87,9 @@ VbError_t ec_sync_phase3(struct vb2_context *ctx);
  * This is a high-level function which calls the functions above.
  *
  * @param ctx		Vboot context
- * @return VBERROR_SUCCESS, or non-zero if error.
+ * @return VBERROR_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
+ * reboot to reset to a clean state, VBERROR_PERIPHERAL_BUSY if the EC is busy
+ * and unable to update, or other non-zero error code.
  */
 VbError_t ec_sync_all(struct vb2_context *ctx);
 
