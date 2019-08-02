@@ -439,13 +439,13 @@ VbError_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 VbError_t ec_sync_update_aux_fw(struct vb2_context *ctx)
 {
 	VbError_t rv = VbExUpdateAuxFw();
-	if (rv) {
-		if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
-			VB2_DEBUG("AUX firmware update requires RO reboot.\n");
-		} else {
-			VB2_DEBUG("AUX firmware update/protect failed.\n");
-			request_recovery(ctx, VB2_RECOVERY_AUX_FW_UPDATE);
-		}
+	if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
+		VB2_DEBUG("AUX firmware update requires RO reboot.\n");
+	} else if (rv == VBERROR_PERIPHERAL_BUSY) {
+		VB2_DEBUG("AUX firmware busy; cannot update.\n");
+	} else if (rv) {
+		VB2_DEBUG("AUX firmware update/protect failed.\n");
+		request_recovery(ctx, VB2_RECOVERY_AUX_FW_UPDATE);
 	}
 	return rv;
 }

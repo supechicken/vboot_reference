@@ -79,22 +79,17 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	}
 
 	if (fw_update > VB_AUX_FW_NO_UPDATE) {
-		/* Do Aux FW software sync */
+		/* Do AUX FW software sync */
 		rv = ec_sync_update_aux_fw(ctx);
-		if (rv)
-			return rv;
-		/*
-		 * AUX FW Update is applied successfully. Request EC reboot to
-		 * RO, so that the chips that had FW update gets reset to a
-		 * clean state.
-		 */
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+		/* Update is not possible at the moment, since EC is busy.
+		   Continue to ec_sync_phase3 without performing the update. */
+		if (VBERROR_PERIPHERAL_BUSY == rv)
+			ec_sync_phase3(ctx);
+
+		return rv;
 	}
 
 	/* Phase 3; Completes sync and handles battery cutoff */
-	rv = ec_sync_phase3(ctx);
-	if (rv)
-		return rv;
-
-	return VBERROR_SUCCESS;
+	return ec_sync_phase3(ctx);
 }
