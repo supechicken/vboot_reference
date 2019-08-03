@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c1f68fbf_9e1483e2",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-03T05:58:48Z",
+      "side": 1,
+      "message": "As long as the type that ends up getting serialized is fixed width, it\u0027s fine. Try not to look at the subcode thing too much, that field was overloaded for a few too many purposes. ;) Essentially, the subcode field is supposed to be a special extra info field whose meaning is specific to the main recovery reason. For manual recovery (reason 0x2) in particular, it contains the previous recovery reason which vboot wanted to preserve (when the user was at the BROKEN screen and initiated manual recovery). Otherwise it\u0027s not really used much, although there used to be TPM error codes for some of the TPM-related reasons in there at one point which would be somewhat useful if it still worked (which it doesn\u0027t, crbug.com/637067).\n\nI think defining this to uint32_t is fine. I just wanted to mention that there\u0027s a way to get forced type checking in C if you really want to, but as you mentioned it\u0027s somewhat unwieldy. We don\u0027t really have enough problems with mixing up error types to warrant it, I guess.\n\nSince we\u0027re going to change most of these values anyway (from vb1 to vb2 error space), I thought now if any time might be a good opportunity to switch to negative. But I\u0027m not sure if there\u0027s really a point in that, if you think there isn\u0027t that\u0027s fine too.",
+      "parentUuid": "3c8649e6_58b61f38",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "248a8fa2_f9c4db5f",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 2
