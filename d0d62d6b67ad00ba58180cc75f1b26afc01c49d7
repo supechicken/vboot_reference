@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "189c9e75_b28160a6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-03T06:07:38Z",
+      "side": 1,
+      "message": "No, we don\u0027t want to fail hard on display stuff. You hit this when you build firmware without bitmap assets. We still want those to boot (and there\u0027s a bunch of fallback display logic in depthcharge that would be wasted if you fail hard here).",
+      "revId": "d0d62d6b67ad00ba58180cc75f1b26afc01c49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
