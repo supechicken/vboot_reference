@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "18dd6e34_701f32bb",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-04T11:49:41Z",
+      "side": 1,
+      "message": "\u003e it contains the previous recovery reason which vboot wanted to preserve\n\nThen I guess it would only tell you the last 8 bits of the previous recovery reason?\n\n\u003e We don\u0027t really have enough problems with mixing up error types to warrant it, I guess.\n\nAfter combing through the error-reporting code, I\u0027m not so sure this is such a true statement.\n\n\u003e now if any time might be a good opportunity to switch to negative.\n\nYeah, let\u0027s stick with positive values.",
+      "parentUuid": "c1f68fbf_9e1483e2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "248a8fa2_f9c4db5f",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 2

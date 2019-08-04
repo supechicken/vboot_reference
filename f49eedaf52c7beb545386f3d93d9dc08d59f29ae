@@ -16,6 +16,24 @@
       "revId": "f49eedaf52c7beb545386f3d93d9dc08d59f29ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97d3cb5_16fb9492",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-04T11:49:41Z",
+      "side": 1,
+      "message": "Is the second an acceptable form?  My instinct is to disallow the second form, since that\u0027s what Python style guide says.  (I.e. if line-breaking, then \"(\" needs to be the last character in the line.)\n\nAnyways, I can just switch it to the first form, since that\u0027s the one we use everywhere else.  But it\u0027s super annoying to keep updated.",
+      "parentUuid": "f9045d3e_5baad073",
+      "revId": "f49eedaf52c7beb545386f3d93d9dc08d59f29ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
