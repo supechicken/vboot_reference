@@ -16,6 +16,24 @@
       "revId": "0562174d7015e00d299a9ffd3480df9c47206a19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1eadd9e_d94213ba",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-04T11:21:07Z",
+      "side": 1,
+      "message": "There are tons of other functions in here without documentation... but you\u0027re right, we have to start somewhere \u003d)",
+      "parentUuid": "e3f29686_05df606f",
+      "revId": "0562174d7015e00d299a9ffd3480df9c47206a19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
