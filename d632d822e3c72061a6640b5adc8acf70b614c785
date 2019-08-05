@@ -16,6 +16,24 @@
       "revId": "d632d822e3c72061a6640b5adc8acf70b614c785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6f0fce_a7d5cded",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346884
+      },
+      "writtenOn": "2019-08-05T22:55:58Z",
+      "side": 1,
+      "message": "PRIu64 was what I saw for printing other u64s in the codebase, so I just used that. There\u0027s also the problem that a u64 can be other types, eg. it would need to be %lu on my system and Coverity\u0027s. I could wrap the string around to the next line to make it shorter.",
+      "parentUuid": "7e8c1a13_cdd82024",
+      "revId": "d632d822e3c72061a6640b5adc8acf70b614c785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
