@@ -99,12 +99,6 @@ VbError_t ec_sync_all(struct vb2_context *ctx)
 	/* Something went wrong during AUX FW update */
 	if (update_aux_fw_rv)
 		return update_aux_fw_rv;
-	/*
-	 * AUX FW Update is applied successfully. Request EC reboot to RO,
-	 * so that the chips that had FW update gets reset to a clean state.
-	 */
-	if (fw_update > VB_AUX_FW_NO_UPDATE)
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	if (rv)
 		return rv;
 
