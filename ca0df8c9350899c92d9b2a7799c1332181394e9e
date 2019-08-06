@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2f8d959_7b1b8448",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-06T03:05:33Z",
+      "side": 1,
+      "message": "what about the rsk-\u003estruct_version \u003c 2 case where we didn\u0027t check the crc before this change?",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "ca0df8c9350899c92d9b2a7799c1332181394e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac8d983_a65a8c84",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-06T03:05:33Z",
+      "side": 1,
+      "message": "can we add a VB2_DEBUG() for this case? and for all other cases we return an error after some checks?",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 27
+      },
+      "revId": "ca0df8c9350899c92d9b2a7799c1332181394e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
