@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4100d8_f3f231ad",
+        "filename": "tests/rollback_index2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T22:49:46Z",
+      "side": 1,
+      "message": "nit: This is kinda pointless (you first set the struct_version to 1 and then zero out the whole buffer). (Also, didn\u0027t we pick such an incredibly clever CRC algorithm that an all-zero buffer actually counts as valid? I vaguely recall something like that...)\n\nI\u0027d just set the struct_version to 1, recalcuate the CRC and check that you get the right error for invalid struct version. (Do we even check that? We probably should...) There\u0027s already a check for bad CRCs below.",
+      "revId": "a00c2198a362c98db6e90c5e33702bd47105140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

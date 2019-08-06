@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0c29197c_94bc1f33",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T22:49:46Z",
+      "side": 1,
+      "message": "Huh... funny. What is that even doing? TPMs are such weird creatures...",
+      "parentUuid": "7e6471cf_2aaf7ccc",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3581493_0569dda8",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
