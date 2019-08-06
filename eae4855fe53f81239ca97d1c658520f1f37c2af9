@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f15f35ad_ee8ef3ca",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T05:23:55Z",
+      "side": 1,
+      "message": "...do we not want to run through phase3 here?",
+      "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf394386_5467dc7e",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T05:23:55Z",
+      "side": 1,
+      "message": "This seems wrong? You don\u0027t get REBOOT_TO_RO here, you still get SUCCESS. So other than adding the PERIPHERAL_BUSY case, I think you want to leave this as it is.",
+      "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
