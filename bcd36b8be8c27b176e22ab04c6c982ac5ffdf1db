@@ -223,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "1780ce68_1d48b6af",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T06:28:14Z",
+      "side": 1,
+      "message": "Good point, forgot that.\n\nI think this should eventually work the way it does for the coreboot part, with depthcharge initializing context secdata before calling vboot (with persistent context that would already be there anyway), and then depthcharge writing the context secdata back out to the TPM after vboot is finished if the secdata_changed flag is set. Over what steps we get there is up to you.",
+      "parentUuid": "4b12b25e_295ff2e5",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "131b32b2_0f7962f7",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
