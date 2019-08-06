@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "24d2c36c_3fc2f5c0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T22:55:43Z",
+      "side": 1,
+      "message": "Okay, makes sense. Should probably throw a big error if SECDATA_CHANGED is set but RECOVERY_MODE isn\u0027t though?",
+      "parentUuid": "0468aae8_24e67786",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558912ce_0d9f783f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
