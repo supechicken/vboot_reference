@@ -34,6 +34,24 @@
       "revId": "f49eedaf52c7beb545386f3d93d9dc08d59f29ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "959be6dd_19657ca2",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T06:19:21Z",
+      "side": 1,
+      "message": "AFAIK both are acceptable and widely used across the code base (and Linux which is where we stole most of the style from). Breaking right after the \"(\" even if the next parameter would still fit there is wrong in my gut feeling, I\u0027ve never seen anyone do that anywhere in our code.\n\nSorry for it being annoying, but it\u0027s either that or have weird and broken indentation all over. ;) If you do this a lot you may want to look into auto-formatting tools like clang-format which can automate that for you (although they can also cause more problems than they solve in my experience). There\u0027s also http://coccinelle.lip6.fr/ which can completely automate these sort of trivial refactorings, although I don\u0027t remember whether it automatically handles indentation right.",
+      "parentUuid": "a97d3cb5_16fb9492",
+      "revId": "f49eedaf52c7beb545386f3d93d9dc08d59f29ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

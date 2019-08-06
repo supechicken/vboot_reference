@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "0d0e1eb5_6367df4c",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-06T06:19:21Z",
+      "side": 1,
+      "message": "\u003e Then I guess it would only tell you the last 8 bits of the previous recovery reason?\n\nRecovery reasons are always only 8 bits. ;)\n\n\u003e After combing through the error-reporting code, I\u0027m not so sure this is such a true statement.\n\nWell, I meant real problems. Not saying it doesn\u0027t happen. But I don\u0027t recall many serious functional bugs caused by it.",
+      "parentUuid": "18dd6e34_701f32bb",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "05a7dd8b10fe10edd0cce9068521d07b6e384e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "248a8fa2_f9c4db5f",
         "filename": "tests/ec_sync_tests.c",
         "patchSetId": 2
