@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e6471cf_2aaf7ccc",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "This is called below in SafeWrite()?",
+      "parentUuid": "0fa7f9ef_eda45fb1",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3581493_0569dda8",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-07-31T17:24:30Z",
       "side": 1,
       "message": "nit: can we call it ReadAntirollbackSpace since it assumes a certain structure of data (crc field), so is only applicable to firmware and kernel spaces. it\u0027s not for a generic tpm nvram space.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2689b1_855fe6c6",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "No longer need this function.",
+      "parentUuid": "a3581493_0569dda8",
       "range": {
         "startLine": 65,
         "startChar": 16,
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "5985a39b_993e51dc",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "Restacked the CLs -- CL:1729713 is now underneath this one.",
+      "parentUuid": "9eea6624_a2bd85af",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e83a5aa3_62b46468",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -91,6 +151,24 @@
       "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55e444d_8d9b5684",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "Done in a separate CL.",
+      "parentUuid": "e83a5aa3_62b46468",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +207,30 @@
       "side": 1,
       "message": "Agreed... or decide to drop the readback check completely. Is there a point in doing this with Cr50? We are already trusting it implicitly on so many fronts, this seems like an odd place to start double-checking its work (and even then, getting the right response back doesn\u0027t necessarily guarantee it was committed to flash).",
       "parentUuid": "4a5ca220_45ad4ef0",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5689000d_4bd643e2",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "OK -- let\u0027s drop the readback check entirely.",
+      "parentUuid": "d18826a7_7345ba56",
       "range": {
         "startLine": 119,
         "startChar": 12,
@@ -188,6 +290,30 @@
     },
     {
       "key": {
+        "uuid": "802db78d_ab64504e",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "Done, again in a separate CL.",
+      "parentUuid": "349cf8a5_423114bd",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e902fea_3fd4d627",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -241,6 +367,24 @@
     },
     {
       "key": {
+        "uuid": "3a21b304_4209dc10",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "Once we get the persistent vb2_context hooked up, we shouldn\u0027t even need to perform the initialization.  But yeah, I agree that this stuff should live in depthcharge eventually.  I think it\u0027s simpler to shuffle code around inside of vboot_reference initially.",
+      "parentUuid": "1780ce68_1d48b6af",
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "131b32b2_0f7962f7",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 3
@@ -252,6 +396,30 @@
       "writtenOn": "2019-07-31T17:24:30Z",
       "side": 1,
       "message": "if we go this route, can we encapsulate {index, space_size, offset_ver, offset_crc, and possible expected attrs} in some AntirollbackSpaceDescr structure and just pass the index in the global const array of those structs to Read[Antirollback]Space and Write[Antirollback]Space to fully define what space we want and its characteristics.",
+      "range": {
+        "startLine": 155,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 41
+      },
+      "revId": "bcd36b8be8c27b176e22ab04c6c982ac5ffdf1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3236519_067309dc",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:19:58Z",
+      "side": 1,
+      "message": "After removing the retry code, the read/write functions become small enough that they don\u0027t really need a helper function anymore.",
+      "parentUuid": "131b32b2_0f7962f7",
       "range": {
         "startLine": 155,
         "startChar": 18,
