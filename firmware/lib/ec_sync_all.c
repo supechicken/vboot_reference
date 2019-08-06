@@ -83,12 +83,6 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 		rv = ec_sync_update_aux_fw(ctx);
 		if (rv)
 			return rv;
-		/*
-		 * AUX FW Update is applied successfully. Request EC reboot to
-		 * RO, so that the chips that had FW update gets reset to a
-		 * clean state.
-		 */
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
 	/* Phase 3; Completes sync and handles battery cutoff */
