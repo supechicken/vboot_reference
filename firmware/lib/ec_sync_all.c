@@ -65,8 +65,23 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
+<<<<<<< HEAD   (3e15a2 cgpt: Fix format specifiers for uint64_t)
 	/* EC in RW, now we can check the severity of the AUX FW update */
 	rv = ec_sync_check_aux_fw(ctx, &fw_update);
+=======
+	/*
+	 * Do Aux FW software sync and protect devices tunneled through the EC.
+	 * Aux FW update may request RO reboot to force EC cold reset so also
+	 * unload the option ROM if needed to prevent a second reboot.
+	 */
+	update_aux_fw_rv = ec_sync_update_aux_fw(ctx);
+
+	/* Reboot to unload VGA Option ROM for both slow EC & AUX FW updates */
+	rv = ec_sync_unload_oprom(ctx, shared, need_wait_screen);
+	/* Something went wrong during AUX FW update */
+	if (update_aux_fw_rv)
+		return update_aux_fw_rv;
+>>>>>>> CHANGE (d0fbb0 aux_fw: handle PERIPHERAL_BUSY more gracefully)
 	if (rv)
 		return rv;
 
