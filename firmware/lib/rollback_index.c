@@ -77,19 +77,6 @@ uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
 	if (TPM_SUCCESS != r)
 		return r;
 
-	/*
-	 * No CRC in this version, so we'll create one when we write
-	 * it. Note that we're marking this as version 2, not
-	 * ROLLBACK_SPACE_FIRMWARE_VERSION, because version 2 just
-	 * added the CRC. Later versions will need to set default
-	 * values for any extra fields explicitly (probably here).
-	 */
-	if (rsf->struct_version < 2) {
-		/* Danger Will Robinson! Danger! */
-		rsf->struct_version = 2;
-		return TPM_SUCCESS;
-	}
-
 	if (rsf->crc8 != vb2_crc8(rsf, offsetof(RollbackSpaceFirmware, crc8))) {
 		VB2_DEBUG("TPM: bad CRC\n");
 		return TPM_E_CORRUPTED_STATE;
@@ -100,9 +87,6 @@ uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
 
 uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
 {
-	/* All writes should use struct_version 2 or greater. */
-	if (rsf->struct_version < 2)
-		rsf->struct_version = 2;
 	rsf->crc8 = vb2_crc8(rsf, offsetof(RollbackSpaceFirmware, crc8));
 
 	return SafeWrite(FIRMWARE_NV_INDEX, rsf, sizeof(RollbackSpaceFirmware));
@@ -142,19 +126,6 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 	if (TPM_SUCCESS != r)
 		return r;
 
-	/*
-	 * No CRC in this version, so we'll create one when we write
-	 * it. Note that we're marking this as version 2, not
-	 * ROLLBACK_SPACE_KERNEL_VERSION, because version 2 just added
-	 * the CRC. Later versions will need to set default values for
-	 * any extra fields explicitly (probably here).
-	 */
-	if (rsk->struct_version < 2) {
-		/* Danger Will Robinson! Danger! */
-		rsk->struct_version = 2;
-		return TPM_SUCCESS;
-	}
-
 	if (rsk->crc8 != vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8))) {
 		VB2_DEBUG("TPM: bad CRC\n");
 		return TPM_E_CORRUPTED_STATE;
@@ -165,9 +136,6 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 
 uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 {
-	/* All writes should use struct_version 2 or greater. */
-	if (rsk->struct_version < 2)
-		rsk->struct_version = 2;
 	rsk->crc8 = vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8));
 
 	return SafeWrite(KERNEL_NV_INDEX, rsk, sizeof(RollbackSpaceKernel));
