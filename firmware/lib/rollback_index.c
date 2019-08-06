@@ -49,7 +49,7 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk);
 
 uint32_t TPMClearAndReenable(void)
 {
-	VB2_DEBUG("TPM: Clear and re-enable\n");
+	VB2_DEBUG("TPM: clear and re-enable\n");
 	RETURN_ON_FAILURE(TlclForceClear());
 	RETURN_ON_FAILURE(TlclSetEnable());
 	RETURN_ON_FAILURE(TlclSetDeactivated(0));
@@ -74,11 +74,13 @@ uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsf)
 	uint32_t r;
 
 	r = TlclRead(FIRMWARE_NV_INDEX, rsf, sizeof(RollbackSpaceFirmware));
-	if (TPM_SUCCESS != r)
+	if (TPM_SUCCESS != r) {
+		VB2_DEBUG("TPM: read secdata returned 0x%x\n", r);
 		return r;
+	}
 
 	if (rsf->crc8 != vb2_crc8(rsf, offsetof(RollbackSpaceFirmware, crc8))) {
-		VB2_DEBUG("TPM: bad CRC\n");
+		VB2_DEBUG("TPM: bad secdata CRC\n");
 		return TPM_E_CORRUPTED_STATE;
 	}
 
@@ -92,8 +94,10 @@ uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsf)
 	rsf->crc8 = vb2_crc8(rsf, offsetof(RollbackSpaceFirmware, crc8));
 
 	r = SafeWrite(FIRMWARE_NV_INDEX, rsf, sizeof(RollbackSpaceFirmware));
-	if (TPM_SUCCESS != r)
+	if (TPM_SUCCESS != r) {
+		VB2_DEBUG("TPM: write secdata failure\n");
 		return r;
+	}
 
 	return TPM_SUCCESS;
 }
@@ -102,7 +106,7 @@ uint32_t SetVirtualDevMode(int val)
 {
 	RollbackSpaceFirmware rsf;
 
-	VB2_DEBUG("TPM: Entering\n");
+	VB2_DEBUG("TPM: entering\n");
 	if (TPM_SUCCESS != ReadSpaceFirmware(&rsf))
 		return VBERROR_TPM_FIRMWARE_SETUP;
 
@@ -120,7 +124,7 @@ uint32_t SetVirtualDevMode(int val)
 	if (TPM_SUCCESS != WriteSpaceFirmware(&rsf))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
-	VB2_DEBUG("TPM: Leaving\n");
+	VB2_DEBUG("TPM: leaving\n");
 	return VBERROR_SUCCESS;
 }
 
@@ -129,11 +133,13 @@ uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
 	uint32_t r;
 
 	r = TlclRead(KERNEL_NV_INDEX, rsk, sizeof(RollbackSpaceKernel));
-	if (TPM_SUCCESS != r)
+	if (TPM_SUCCESS != r) {
+		VB2_DEBUG("TPM: read secdatak returned 0x%x\n", r);
 		return r;
+	}
 
 	if (rsk->crc8 != vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8))) {
-		VB2_DEBUG("TPM: bad CRC\n");
+		VB2_DEBUG("TPM: bad secdatak CRC\n");
 		return TPM_E_CORRUPTED_STATE;
 	}
 
@@ -147,8 +153,10 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 	rsk->crc8 = vb2_crc8(rsk, offsetof(RollbackSpaceKernel, crc8));
 
 	r = SafeWrite(KERNEL_NV_INDEX, rsk, sizeof(RollbackSpaceKernel));
-	if (TPM_SUCCESS != r)
+	if (TPM_SUCCESS != r) {
+		VB2_DEBUG("TPM: write secdatak failure\n");
 		return r;
+	}
 
 	return TPM_SUCCESS;
 }
@@ -209,7 +217,7 @@ uint32_t RollbackKernelRead(uint32_t* version)
 	}
 #endif
 	memcpy(version, &rsk.kernel_versions, sizeof(*version));
-	VB2_DEBUG("TPM: RollbackKernelRead %x\n", (int)*version);
+	VB2_DEBUG("TPM: RollbackKernelRead 0x%x\n", (int)*version);
 	return TPM_SUCCESS;
 }
 
@@ -219,7 +227,7 @@ uint32_t RollbackKernelWrite(uint32_t version)
 	uint32_t old_version;
 	RETURN_ON_FAILURE(ReadSpaceKernel(&rsk));
 	memcpy(&old_version, &rsk.kernel_versions, sizeof(old_version));
-	VB2_DEBUG("TPM: RollbackKernelWrite %x --> %x\n",
+	VB2_DEBUG("TPM: RollbackKernelWrite 0x%x --> 0x%x\n",
 		  (int)old_version, (int)version);
 	memcpy(&rsk.kernel_versions, &version, sizeof(version));
 	return WriteSpaceKernel(&rsk);
@@ -236,6 +244,8 @@ uint32_t RollbackKernelLock(int recovery_mode)
 	r = TlclLockPhysicalPresence();
 	if (TPM_SUCCESS == r)
 		kernel_locked = 1;
+
+	VB2_DEBUG("TPM: lock secdatak returned 0x%x\n", r);
 	return r;
 }
 
@@ -262,7 +272,7 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 		VB2_DEBUG("TPM: no FWMP space\n");
 		return TPM_SUCCESS;
 	} else if (TPM_SUCCESS != r) {
-		VB2_DEBUG("TPM: read returned 0x%x\n", r);
+		VB2_DEBUG("TPM: read FWMP returned 0x%x\n", r);
 		return r;
 	}
 
@@ -271,8 +281,10 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 	 * than our buffer size.
 	 */
 	if (u.bf.struct_size < sizeof(u.bf) ||
-	    u.bf.struct_size > sizeof(u.buf))
+	    u.bf.struct_size > sizeof(u.buf)) {
+		VB2_DEBUG("TPM: FWMP size invalid: 0x%x\n", u.bf.struct_size);
 		return TPM_E_STRUCT_SIZE;
+	}
 
 	/*
 	 * If space is bigger than we expect, re-read so we properly
@@ -280,20 +292,24 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 	 */
 	if (u.bf.struct_size > sizeof(u.bf)) {
 		r = TlclRead(FWMP_NV_INDEX, u.buf, u.bf.struct_size);
-		if (TPM_SUCCESS != r)
+		if (TPM_SUCCESS != r) {
+			VB2_DEBUG("TPM: re-read FWMP returned 0x%x\n", r);
 			return r;
+		}
 	}
 
 	/* Verify CRC */
 	if (u.bf.crc != vb2_crc8(u.buf + 2, u.bf.struct_size - 2)) {
-		VB2_DEBUG("TPM: bad CRC\n");
+		VB2_DEBUG("TPM: bad FWMP CRC\n");
 		return TPM_E_CORRUPTED_STATE;
 	}
 
 	/* Verify major version is compatible */
 	if ((u.bf.struct_version >> 4) !=
-	    (ROLLBACK_SPACE_FWMP_VERSION >> 4))
+	    (ROLLBACK_SPACE_FWMP_VERSION >> 4)) {
+		VB2_DEBUG("TPM: FWMP major version incompatible\n");
 		return TPM_E_STRUCT_VERSION;
+	}
 
 	/*
 	 * Copy to destination.  Note that if the space is bigger than
