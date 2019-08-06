@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e604af3_1f7187be",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:20:17Z",
+      "side": 1,
+      "message": "This puts the proper decorations at the front of the debug line.  We omit the \"\\n\" and continue the line with VB2_DEBUG_RAW.",
+      "parentUuid": "17e92c13_5471568d",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "9459371afc12c8d102b95f9bead0ea252ade5556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b56bf658_6ac41d99",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-06T03:14:15Z",
       "side": 1,
       "message": "shall the declaration be the first line after \"do {\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "9459371afc12c8d102b95f9bead0ea252ade5556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1513fc_1574deab",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:20:17Z",
+      "side": 1,
+      "message": "Doesn\u0027t particularly matter, but I can move it up.",
+      "parentUuid": "b56bf658_6ac41d99",
       "range": {
         "startLine": 46,
         "startChar": 2,
@@ -68,6 +116,30 @@
       "revId": "9459371afc12c8d102b95f9bead0ea252ade5556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff0cca4_f4628a16",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-06T09:20:17Z",
+      "side": 1,
+      "message": "Good point.  Let\u0027s only print on success.",
+      "parentUuid": "de3664de_8edf1d7c",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 12
+      },
+      "revId": "9459371afc12c8d102b95f9bead0ea252ade5556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
