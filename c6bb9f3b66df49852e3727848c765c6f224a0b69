@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fc32a271_7694b1ad",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-06T03:21:37Z",
+      "side": 1,
+      "message": "when is this called? from RO or RW?",
+      "range": {
+        "startLine": 252,
+        "startChar": 17,
+        "endLine": 252,
+        "endChar": 33
+      },
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d15f6114_1c18cd50",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -47,6 +70,24 @@
       "writtenOn": "2019-07-31T20:12:09Z",
       "side": 1,
       "message": "This can\u0027t write the firmware space anyway.",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a731fdf_fba3b16d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-08-06T03:21:37Z",
+      "side": 1,
+      "message": "Iiuc, the recovery mode leave the f/w space writable, so this write should work?\nBut do we need to update the f/w space at this point when in recovery mode?",
+      "parentUuid": "cad31da0_2d98b203",
       "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
