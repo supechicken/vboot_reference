@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "50c652e3_996cf181",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-07T08:15:13Z",
+      "side": 1,
+      "message": "Maybe I enjoy writing code that looks like Java. \u003d)",
+      "parentUuid": "79970e7c_8dbd6b76",
+      "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5abbc118_22cff3da",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f7f31c7f_69eb8b3a",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-07T08:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5abbc118_22cff3da",
+      "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1a592ad_b33a24a8",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-08-06T22:32:05Z",
       "side": 1,
       "message": "...\n\nI don\u0027t know who had the genius idea of calling these union members \"buf\" and \"bf\", but that might be something worth fixing while we\u0027re here (in this CL or a follow-up).",
+      "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c33d98_568b6b60",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-07T08:15:13Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not sure I understand how this ensures memory alignment?  I\u0027ve never seen this pattern anywhere else in vboot_reference code.  Can we do without the union?",
+      "parentUuid": "b1a592ad_b33a24a8",
       "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
