@@ -16,6 +16,24 @@
       "revId": "a00c2198a362c98db6e90c5e33702bd47105140d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f2c31f_b11236e2",
+        "filename": "tests/rollback_index2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-07T08:12:21Z",
+      "side": 1,
+      "message": "Re. nit: Actually there are two objects involved here.  We are zero-ing out the output buffer, so that when we read it, we can be assured it\u0027s not from some previous stale data.\n\nRe. all-zero buffer CRC: Yes, see the test case right above this.  (Unless you\u0027re being sarcastic here?)\n\nRe. invalid struct version: So you\u0027re saying, we should still reject version \u003c 2 structs if they are ever encountered?  Whereas the previous behaviour was to \"silently update\"?",
+      "parentUuid": "8b4100d8_f3f231ad",
+      "revId": "a00c2198a362c98db6e90c5e33702bd47105140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
