@@ -16,6 +16,24 @@
       "revId": "b921bf7f96d1e31d6557e9d1c4f0fc1768860431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71cc60c_719a5af4",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-07T08:15:36Z",
+      "side": 1,
+      "message": "Yeah... I thought it was kind of cute, but if we are addressing debug output in this CL, we may as well cut them.",
+      "parentUuid": "bbfa8f64_2c19a9c8",
+      "revId": "b921bf7f96d1e31d6557e9d1c4f0fc1768860431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
