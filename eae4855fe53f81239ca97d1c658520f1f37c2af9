@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "04226253_31377ab8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-08-07T05:14:20Z",
+      "side": 1,
+      "message": "While testing this, I got sidetracked to debugging a boot up crash in coreboot - totally not related to this CL but was blocking me from testing this CL. I just finished debugging that. Next up, I will test this CL next and update soon. Sorry for the delay.",
+      "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f15f35ad_ee8ef3ca",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
@@ -19,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ac1d08fa_3fb63071",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-08-07T05:14:20Z",
+      "side": 1,
+      "message": "+1 to Julius\u0027s comment. We need to run through ec_sync_phase3.",
+      "parentUuid": "f15f35ad_ee8ef3ca",
+      "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf394386_5467dc7e",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
@@ -30,6 +65,24 @@
       "writtenOn": "2019-08-06T05:23:55Z",
       "side": 1,
       "message": "This seems wrong? You don\u0027t get REBOOT_TO_RO here, you still get SUCCESS. So other than adding the PERIPHERAL_BUSY case, I think you want to leave this as it is.",
+      "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e21204b9_30329332",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-08-07T05:14:20Z",
+      "side": 1,
+      "message": "You will get REBOOT_TO_RO if EC is in RW and the concerned I2C tunnels are protected.\n\nBut if the update went through successfully, then ec_sync_update_aux_fw returns success. Under that scenario, this part needs to return EC_REBOOT_TO_RO_REQUIRED in order to reset the TCPC i.e.\n\nif (VBERROR_PERIPHERAL_BUSY \u003d\u003d rv)\n        goto phase3;\n\nif (rv)\n        return rv;\n\nreturn VBERROR_REBOOT_TO_RO_REQUIRED;",
+      "parentUuid": "bf394386_5467dc7e",
       "revId": "eae4855fe53f81239ca97d1c658520f1f37c2af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
