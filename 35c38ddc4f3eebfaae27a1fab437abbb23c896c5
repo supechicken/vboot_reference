@@ -104,6 +104,24 @@
       "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93804846_df79a34e",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-09T01:00:08Z",
+      "side": 1,
+      "message": "The alignment of a union is the highest alignment among its members. The alignment of u8 is 1, but the alignment of RollbackSpaceFwmp is the alignment of that struct (which is again the highest alignment among its members, so 4 for the u32 \"flags\" in this case). Actually, then again RollbackSpaceFwmp is declared with __attribute__((packed)) (for no good reason, because it already doesn\u0027t have padding as it is), which I think forces the alignment back to 1. So this may be pointless, and we probably just don\u0027t care because all our platforms support unaligned accesses. (If I had the time, I\u0027d write a long manifesto called \"__attribute__((packed)) considered harmful\" because it comes with a lot of hidden negative effects people are often not aware of, and is almost always unnecessary... but I don\u0027t so our code stays crap. Can fix this when vb2-ifying that struct, maybe.)\n\nAnyway, I think using a union here is still fine and in my opinion generally nicer than just declaring a u8 array and casting it to (RollbackSpaceFwmp *). My point was just that \"bf\" is a terrible name and clearly seems to have been determined as \"something that\u0027s as close to \u0027buf\u0027 as possible without being the same thing\" in order to cause maximal confusion for the reader. I think just calling that member \"fwmp\" or something would have been fine.",
+      "parentUuid": "42c33d98_568b6b60",
+      "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
