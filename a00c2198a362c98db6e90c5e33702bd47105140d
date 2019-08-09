@@ -34,6 +34,24 @@
       "revId": "a00c2198a362c98db6e90c5e33702bd47105140d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2046e5f_d069b37f",
+        "filename": "tests/rollback_index2_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-09T01:15:45Z",
+      "side": 1,
+      "message": "Oh sorry, I missed that those are two different structs. Still, inspecting rsf.struct_version after ReadSpaceFirmware() failed sounds wrong. The caller should just assume that data is invalid and not touch it at all if it returned an error code.\n\nI\u0027m being sarcastic in the sense that I think defining the CRC that way was a pretty dumb decision and I recall it causing at least one bug that would\u0027ve almost been a terrible security hole one time. But can\u0027t really do much about it now (at least changing it would be more trouble than it\u0027s worth.)\n\nYes, we should reject v \u003c 2 now, since we no longer have the code to silently update them. Our code should have an explicit check for that and return failure now (rather than trying to continue with a known unsupported struct version... I mean, in practice the CRC check would fail anyway for this case, but in general there should be a check that the struct version is supported).",
+      "parentUuid": "07f2c31f_b11236e2",
+      "revId": "a00c2198a362c98db6e90c5e33702bd47105140d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
