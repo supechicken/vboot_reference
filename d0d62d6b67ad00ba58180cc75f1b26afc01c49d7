@@ -16,6 +16,24 @@
       "revId": "d0d62d6b67ad00ba58180cc75f1b26afc01c49d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89518b0a_5e980540",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-13T01:24:59Z",
+      "side": 1,
+      "message": "So I\u0027ll keep the same error check and change the fallback to count \u003d 1, does that sound okay?",
+      "parentUuid": "189c9e75_b28160a6",
+      "revId": "d0d62d6b67ad00ba58180cc75f1b26afc01c49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
