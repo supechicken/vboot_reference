@@ -257,7 +257,8 @@ vb2_error_t SetVirtualDevMode(int val)
 vb2_error_t VbExSetVendorData(const char *vendor_data_value)
 {
 	set_vendor_data_called = 1;
-	strncpy(set_vendor_data, vendor_data_value, sizeof(set_vendor_data));
+	memset(set_vendor_data, 0, sizeof(set_vendor_data));
+	strncpy(set_vendor_data, vendor_data_value, sizeof(set_vendor_data) - 1);
 
 	return VB2_SUCCESS;
 }
