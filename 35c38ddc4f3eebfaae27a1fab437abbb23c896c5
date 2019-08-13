@@ -122,6 +122,24 @@
       "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4624838_bebd88c3",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-13T05:09:08Z",
+      "side": 1,
+      "message": "I would still prefer to just get rid of the union since we don\u0027t do that anywhere else in vboot_reference (esp. if you\u0027re saying it effectively does nothing here due to the __attribute__((packed))), but for now I can just create a CL to reanme bf -\u003e fwmp as you\u0027ve requested.  See CL:1751062.",
+      "parentUuid": "93804846_df79a34e",
+      "revId": "35c38ddc4f3eebfaae27a1fab437abbb23c896c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
