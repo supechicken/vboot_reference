@@ -35,7 +35,7 @@ static void display_wait_screen(struct vb2_context *ctx, const char *fw_name)
 
 vb2_error_t ec_sync_all(struct vb2_context *ctx)
 {
-	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
+	VbAuxFwUpdateSeverity_t fw_update;
 	vb2_error_t rv;
 
 	/* Phase 1; this determines if we need an update */
@@ -44,9 +44,7 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 
 	/* Check if EC SW Sync Phase1 needs reboot */
 	if (phase1_rv) {
-		ec_sync_check_aux_fw(ctx, &fw_update);
-		/* It does -- speculatively check if we need display as well */
-		if (need_wait_screen || fw_update == VB_AUX_FW_SLOW_UPDATE)
+		if (need_wait_screen)
 			check_reboot_for_display(ctx);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
