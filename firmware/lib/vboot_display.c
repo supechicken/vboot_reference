@@ -87,7 +87,7 @@ vb2_error_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
 			       disabled_idx_mask, redraw_base_screen);
 }
 
-VbError_t VbDisplayGroot(struct vb2_context *ctx, uint32_t screen, int force,
+vb2_error_t VbDisplayGroot(struct vb2_context *ctx, uint32_t screen, int force,
 			uint32_t selected_index, uint32_t disabled_idx_mask)
 {
 	uint32_t locale;
@@ -100,7 +100,7 @@ VbError_t VbDisplayGroot(struct vb2_context *ctx, uint32_t screen, int force,
 	if (disp_current_screen == screen &&
 	    disp_current_index == selected_index &&
 	    !force)
-		return VBERROR_SUCCESS;
+		return VB2_SUCCESS;
 
 	/*
 	 * If current screen is not the same, make sure we redraw the base
