@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "285fdc72_2c725c9f",
+        "filename": "tests/vb2_gbb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-14T01:09:20Z",
+      "side": 1,
+      "message": "Actually, since both offset and size are unsigned (\u003e\u003d 0), I\u0027m not sure why we need two checks here.  I believe it should be sufficient to just check the right side of the || operator.",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "abb2b4552e768105b020c6fd1060b0389f83a8ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
