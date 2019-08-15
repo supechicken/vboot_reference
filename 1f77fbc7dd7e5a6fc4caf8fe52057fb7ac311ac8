@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99bbc8d4_568c5ba0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-15T03:01:57Z",
+      "side": 1,
+      "message": "Compare the disassembly of firmware/lib20/kernel.o with GCC and clang before this patch. GCC does this:\n\n 00000000000009b5 \u003cvb2_load_kernel_preamble\u003e (File Offset: 0x9f5):\n [...]\n a19:   e8 00 00 00 00          callq  a1e \u003cvb2_load_kernel_preamble+0x69\u003e (File Offset: 0xa5e)\n                        a1a: R_X86_64_PLT32     vb2ex_printf-0x4\n [...]\n b46:   e8 00 00 00 00          callq  b4b \u003cvb2_load_kernel_preamble+0x196\u003e (File Offset: 0xb8b)\n                        b47: R_X86_64_PC32      \nvb2_verify_kernel_preamble-0x4\n [...]\n b95:   e8 91 f4 ff ff          callq  2b \u003cvb2_need_signed_kernel\u003e (File Offset: 0x6b)\n\nclang does this:\n\n 0000000000000b20 \u003cvb2_load_kernel_preamble\u003e (File Offset: 0xb60):\n [...]\n b74:   e8 00 00 00 00          callq  b79 \u003cvb2_load_kernel_preamble+0x59\u003e (File Offset: 0xbb9)\n                        b75: R_X86_64_PLT32     vb2ex_printf-0x4\n  ca7:   e8 a4 fa ff ff          callq  750 \u003cvb2_verify_kernel_preamble\u003e (File Offset: 0x790)\n [...]\n cf6:   e8 d5 f9 ff ff          callq  6d0 \u003cvb2_need_signed_kernel\u003e (File Offset: 0x710)\n\nThe parts where it says R_X86_64_PLT32 are \"relocations\"... hints for the linker that it still has to add something there when it later links this file together with all the others into the final output binary. The instructions there are not yet complete: it may say it points at \"\u003cvb2_load_kernel_preamble+0x69\u003e (File Offset: 0xa5e)\", but that\u0027s garbage, that\u0027s just the disassembler doing math on invalid data. If you look at the instruction, the part after the callq opcode (e8) is all zeroes. The compiler left this empty for the linker to fill out later. (Elsewhere in the ELF file, there\u0027s a \"relocation table\" that lists the addresses of all these relocations and the names of the functions that the linker needs to bind to them.)\n\nAs you can see, both compilers emit relocations for vb2ex_printf(). They have to, because that function is not defined in kernel.c -- so while the compiler is compiling kernel.c in a vacuum, it has no idea what address vb2ex_printf() will be at in the final program. It must leave that to the linker to figure out.\n\nFor vb2_need_signed_kernel() on the other hand, you can see that both compilers emit a complete callq instruction right away and don\u0027t use a relocation. This is a static function within the same file (or, more precisely, within the same section... see below), so they know that it will always be exactly XX bytes above or below the address of that callq instruction (which is all they need to know to fill it out).\n\nvb2_verify_kernel_preamble() is special because it is not static but it is still defined in the same file. I\u0027m not sure if there\u0027s any official rule about how the compiler is supposed to deal with that that either of them is breaking here, or whether the decision is just up to them... but it seems that in practice, GCC decides to still emit a relocation while clang decides not to. (It still ends up becoming the same instruction in the end, so for static linking there\u0027s no performance difference between them.) Our problem is that the way we mock functions is to just redefine them in the test file. This works for function calls with a relocation because when resolving that relocation the linker will always look through the normal input files (like vb20_kernel_tests.o in this case) first before looking through libraries (like vboot_fw20.a which is where that kernel.o ends up in). So even though the call to vb2_verify_kernel_preamble() is in kernel.o, it will link to the definition from vb20_kernel_tests.o rather than the one from kernel.o. But for function calls that the compiler finalized itself without emitting a relocation, that obviously doesn\u0027t work.\n\ntest_mockable marks a function as weak, which (among other things) seems to serve as a hint to the compiler to always emit a relocation (because weak functions are meant to be overridable by other code, whereas the thing our tests do is somewhat more of a \"just happens to work that way\"). But you need to specify it on every function that triggers this problem, which is annoying and cumbersome. What I did instead now is enable -ffunction-sections and -fdata-sections. Compare the section table of kernel.o before this change:\n\n Sections:\n Idx Name          Size      VMA               LMA               File off  Algn\n  0 .text         00000c7c  0000000000000000  0000000000000000  00000040  2**0\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n  1 .data         00000000  0000000000000000  0000000000000000  00000cbc  2**0\n                  CONTENTS, ALLOC, LOAD, DATA\n  2 .bss          00000000  0000000000000000  0000000000000000  00000cbc  2**0\n                  ALLOC\n  3 .rodata       00000309  0000000000000000  0000000000000000  00000cc0  2**4\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n [...]\n\nwith the one afterwards:\n\n Sections:\n Idx Name          Size      VMA               LMA               File off  Algn\n  0 .text         00000000  0000000000000000  0000000000000000  00000040  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  1 .text.vb2_verify_keyblock_hash 00000108  0000000000000000  0000000000000000  00000040  2**0\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n  2 .text.vb2_load_kernel_keyblock 0000026e  0000000000000000  0000000000000000  00000148  2**0\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n  3 .text.vb2_verify_kernel_preamble 0000023c  0000000000000000  0000000000000000  000003b6  2**0\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n  4 .text.vb2_load_kernel_preamble 00000175  0000000000000000  0000000000000000  000005f2  2**0\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n  5 .text.vb2_kernel_get_vmlinuz_header 0000001e  0000000000000000  0000000000000000  00000767  2**0\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  6 .text.vb2_kernel_get_flags 0000000c  0000000000000000  0000000000000000  00000785  2**0\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  7 .rodata.str1.1 0000027e  0000000000000000  0000000000000000  00000791  2**0\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n\nWhat those flags do is just tell the compiler to put each function (and each piece of global data) into its own separate section. Sections are things that the linker is allowed to move around freely when it merges everything into the final binary. Therefore, the compiler can no longer tell exactly how many bytes before or after the callq instruction (in .text.vb2_load_kernel_preamble) the vb2_verify_kernel_preamble() function starts at -- only the linker will know that after it has decided where exactly to put those two sections in relation to each other. This forces the compiler to emit a relocation. (The other effect of enabling this, which is the reason all our firmware is built that way too, is that it allows linker garbage collection to eliminate individual functions that are not used. That\u0027s what -Wl,--gc-sections turns on. The linker sort of does a mark-and-sweep from the program entry point and throws away any section that it can\u0027t reach via a chain of relocations from there.)",
+      "parentUuid": "d9aed8bb_eddc3d3d",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 60
+      },
+      "revId": "1f77fbc7dd7e5a6fc4caf8fe52057fb7ac311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "538e1929_a5d73680",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-15T00:57:52Z",
       "side": 1,
       "message": "Is there no way to force a particular function to not be inline optimized?",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "1f77fbc7dd7e5a6fc4caf8fe52057fb7ac311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac40d76d_bffdf6c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-15T03:01:57Z",
+      "side": 1,
+      "message": "There\u0027s __attribute__((noinline)). For what we\u0027re doing here, that has essentially the same effect as __attribute__((weak)). Doesn\u0027t really matter which one we define test_mockable to.\n\nNow what I\u0027d really think would be best would be to have vb2_get_gbb() defined as a static inline in the header for non-test builds and as a separate function only for test builds. But the problem with that is that our Makefile is currently not written to build all of vboot separately for the tests. So if you call \u0027make\u0027 and then \u0027make runtests\u0027, it will not build the main library again. I don\u0027t know if the portage ebuilds actually do that, but you could in theory. In order to have real compile-time differences when building for tests, we\u0027d have to rewrite it (e.g. put everything in a separate output directory for tests or something like that). But for the one function it\u0027s not really worth the hassle (we have bigger inefficiencies elsewhere).",
+      "parentUuid": "538e1929_a5d73680",
       "range": {
         "startLine": 17,
         "startChar": 9,
