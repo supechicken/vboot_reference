@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "620e45f8_4d592568",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ac6031_f517dcc2",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93b5c9f4_835acd61",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7f81f296_bdeadb8b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Yes, I just hadn\u0027t gotten around to it yet.  Finished!",
+      "parentUuid": "93b5c9f4_835acd61",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a184b1a8_98a4cdc1",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 7
@@ -50,6 +86,24 @@
       "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a442683_c7641adb",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a184b1a8_98a4cdc1",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "39bd153e_b1b457f9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Sounds good, but I\u0027ve changed the second part of the conditional to return CONTEXT_INVALID instead of WORKBUF_SMALL.",
+      "parentUuid": "2be9bbec_f0c098b6",
+      "range": {
+        "startLine": 187,
+        "startChar": 10,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56992605_b60a77e8",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 7
@@ -90,6 +168,24 @@
       "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7747a1_f352256a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Sure, let\u0027s move it to the top.",
+      "parentUuid": "56992605_b60a77e8",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "898f15ab_585e2d68",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "I mean -- what you suggested is still valid, provided we define the location of SD as it was previously defined (location 0 in workbuf).  But it doesn\u0027t really change the fact that once the user has a pointer to the vb2_context object, they may modify the fields in question.\n\nI wonder if this should be split into two separate structs?  E.g. vb2_context_header (or vb2_workbuf_header) and vb2_context.  Then vb2_context can be strictly fields which are modifiable by the caller.  By our existing workbuf conventions, vb2_context_header would need another field called ctx_offset to point to vb2_context (which presumably would follow right afterwards).  But then we\u0027d still need some path of getting from vb2_context to vb2_context_header.\n\nAlternatively, we could rename this struct to vb2_internal_context and move it to 2struct.h, with the first few non-accessible fields at the top.  Nest vb2_context struct at the bottom, which could be kept public in 2api.h.  The pointer returned from vb2api_init and vb2api_reinit would be to the public vb2_context portion.\n\nOr is this just overkill?  (The first option definitely feels like overkill.  The second could be accomplished quite easily.)\n\n\nEDIT: I went and did something a little crazy.  I implemented the second option.  In order to get a reference back to the \"internal\" context without needing to expose it, I figured we can just standardize on the negative offset being stored just prior to the \"public\" context in a uint32_t.  I think we need to double-check that it will always be aligned correctly (no padding in between the offset field and vb2_context).  And we end up with a function like this to get the reference to the internal context:\n\n\treturn (struct vb2_internal_context *)\n\t\t((void *)ctx - *(((uint32_t *)ctx) - 1));\n\nYeah, it\u0027s kind of crazy pointer gymnastics, although it would probably make more sense if I just separated it into a few lines.\n\nSo one one hand, it\u0027s kind of strange to be splitting this structure into two and exposing half of it.  But on the other hand... it works surprisingly well, and it\u0027s really nice to have the separation.  Now, we just have four fields in the public vb2_context: flags, nvdata, secdata, secdatak.  workbuf_used is also moved into the private one -- we can create an API function to expose that, but there\u0027s no need for it to be writeable.\n\nAnyways... I know it\u0027s a little crazy, and I wasn\u0027t super convinced at first.  It\u0027s also kind of a mess with both ictx and ctx being thrown around -- I think that part could be a little cleaner.  But consider it, and let me know your thoughts.  We can always revert back to the previous patchset.",
+      "parentUuid": "f84fdfb0_b13e2c50",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d650f88c_0bbc5e24",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "128eecf3_916ab5a5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "I mean, I suppose there\u0027s nothing stopping you from doing so if you want to restart the verified boot process, or have two running simultaneously.  But probably adding \"once per boot\" would be overall helpful.",
+      "parentUuid": "d650f88c_0bbc5e24",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81bfea12_56a88333",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -159,6 +291,24 @@
       "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abeb7f8_a3a91a89",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Kind of rewrote the whole thing.  Relocation is now mentioned in both _init and _reinit.",
+      "parentUuid": "81bfea12_56a88333",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -182,6 +332,30 @@
       "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9647c22_71ac7389",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T10:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29e54c2_d74067e3",
+      "range": {
+        "startLine": 358,
+        "startChar": 31,
+        "endLine": 358,
+        "endChar": 48
+      },
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
