@@ -16,6 +16,29 @@
       "revId": "26c3f19073bac4c01fdbf4e3417e341d235f60ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34dbab7b_9dd58914",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T00:57:52Z",
+      "side": 0,
+      "message": "Don\u0027t we still need this for vb2_get_gbb()?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "26c3f19073bac4c01fdbf4e3417e341d235f60ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

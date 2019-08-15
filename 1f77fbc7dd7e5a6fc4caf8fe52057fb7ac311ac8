@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9aed8bb_eddc3d3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T00:57:52Z",
+      "side": 1,
+      "message": "Not sure I fully understand what is going on with test_mockable, would you mind elaborating either here or offline?\n\nWhich flag in particular is of aid here?  (We may want to document that somewhere...)",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 60
+      },
+      "revId": "1f77fbc7dd7e5a6fc4caf8fe52057fb7ac311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538e1929_a5d73680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T00:57:52Z",
+      "side": 1,
+      "message": "Is there no way to force a particular function to not be inline optimized?",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "1f77fbc7dd7e5a6fc4caf8fe52057fb7ac311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
