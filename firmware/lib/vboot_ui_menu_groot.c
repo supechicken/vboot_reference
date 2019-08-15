@@ -301,12 +301,12 @@ static vb2_error_t enter_recovery_screen(struct vb2_context *ctx, int step)
 		vb2_change_menu(VB_GROOT_RECOVERY_NO_GOOD, 0);
 	else
 	  switch(step) {
-	  case 1:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
-	  case 2:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0);
-	  case 3:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0);
+	  /* case 1: */
+	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0); */
+	  /* case 2: */
+	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0); */
+	  /* case 3: */
+	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0); */
 	  default:
 		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
 	  }
@@ -466,9 +466,9 @@ static vb2_error_t goto_prev_menu(struct vb2_context *ctx)
 	case VB_GROOT_RECOVERY_STEP1:
 	  return enter_recovery_screen(ctx, 1);
 	case VB_GROOT_RECOVERY_STEP2:
-	  return enter_recovery_screen(ctx, 2);
+	  return enter_recovery_screen(ctx, 1);
 	case VB_GROOT_RECOVERY_STEP3:
-	  return enter_recovery_screen(ctx, 3);
+	  return enter_recovery_screen(ctx, 2);
 	case VB_GROOT_RECOVERY_INSERT:
 	case VB_GROOT_RECOVERY_NO_GOOD:
 	  // send back to first recovery screen for now.  will need to modify later.
@@ -879,7 +879,7 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 		},
 	},
 	[VB_GROOT_RECOVERY_STEP1] = {
-		.name = "Recovery Step 1: What you need",
+		.name = "Recovery Step 1: Let's setp you through the recovery process",
 		.size = VB_GROOT_REC_STEP1_COUNT,
 		.screen = VB_SCREEN_RECOVERY_STEP1,
 		.items = (struct vb2_menu_item[]){
@@ -891,10 +891,10 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 				.text = "Step 1: Next",
 				.action = step_next_recovery_screen,
 			},
-			[VB_GROOT_REC_STEP1_BACK] = {
-				.text = "Step 1: Back",
-				.action = goto_prev_menu,
-			},
+			/* [VB_GROOT_REC_STEP1_BACK] = { */
+			/* 	.text = "Step 1: Back", */
+			/* 	.action = goto_prev_menu, */
+			/* }, */
 			[VB_GROOT_REC_STEP1_ADV_OPTIONS] = {
 				.text = "Advanced Options",
 				.action = enter_options_menu,
@@ -1205,7 +1205,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		if (usb_nogood != (ret != VBERROR_NO_DISK_FOUND)) {
 			/* USB state changed, force back to base screen */
 			usb_nogood = ret != VBERROR_NO_DISK_FOUND;
-			enter_recovery_screen(ctx, 0);
+			enter_recovery_screen(ctx, 1);
 		}
 
 		/*
