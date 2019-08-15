@@ -242,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "b43cd057_c4ae8d11",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-15T22:29:21Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t really like the ictx thing. Where is the conceptual difference between ictx and shared data? Both are vboot-internal structures that get copied around between stages.\n\nI think if you want to do this, you should merge shared data and ictx. You should also just use container_of() rather than the weird back-reference pointer thing. So the struct would look like\n\n struct vb2_shared_data {\n   uint32_t magic;\n   uint16_t struct_version_major;\n   uint16_t struct_version_minor;\n   struct vb2_context ctx;\n   u8 padding[VB2_CONTEXT_MAX_SIZE - sizeof(struct vb2_context)];\n   uint32_t flags;\n   ...etc...\n }\n\nThen ctx would only contain the public fields. There would only be a major/minor version for shared data, not a separate one for context... the context would be considered part of shared data and updates to it would bump the shared data version. Minor version bumps may only add new members to ctx until VB2_CONTEXT_MAX_SIZE is filled up (so we can leave some amount of space if we think we\u0027ll need it). You would get the context with \n\n vb2_get_sd(struct vb2_context *ctx) {\n   return container_of(ctx, struct vb2_shared_data, ctx);\n }\n\n(See definition of container_of() in coreboot or depthcharge, we\u0027d have to provide one in vboot as well... probably need to call it vb2_container_of() or something to avoid clashes.)\n\nI think doing it this way might actually work pretty well. That\u0027s essentially what I said above, just that container_of() implicitly hardcodes ctx_offset. But I think that\u0027s fine... we still have means to add new members to both structures afterwards, so that\u0027s not really restricting us much.",
+      "parentUuid": "898f15ab_585e2d68",
+      "revId": "0b6cb4d3f48ee4eca8b741dd67577182996c0459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d650f88c_0bbc5e24",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
