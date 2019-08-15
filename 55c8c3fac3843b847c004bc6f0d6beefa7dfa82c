@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf736595_f125f097",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T04:30:40Z",
+      "side": 1,
+      "message": "Could you please change this to VENDOR_DATA_LENGTH + 2, and include a comment why?  E.g.\n\n  // Extra character to guarantee null termination.\n  static char set_vendor_data[VENDOR_DATA_LENGTH + 2];",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "55c8c3fac3843b847c004bc6f0d6beefa7dfa82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "146ae33e_46006aa2",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-15T04:30:40Z",
+      "side": 1,
+      "message": "First of all, the existing code works perfectly fine.\n\nWhy?  Since TEST_STR_EQ uses strcmp to compare the test case strings, and since the lengths of all test case strings are shorter than sizeof(set_vendor_data), we can be guaranteed that any memory past the end of set_vendor_data will never be accessed.\n\nIf coverity is complaining, then it should be sufficient to just modify the strncpy line to include the (- 1) as you have done.  There is no need for a memset() call, since global variables are implicitly initialized to 0, and by including the (- 1), we will never be modifying the last byte in the string array to anything other than \u0027\\0\u0027.  Is this sufficient to make coverity happy?",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 53
+      },
+      "revId": "55c8c3fac3843b847c004bc6f0d6beefa7dfa82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
