@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1863be8c_a0a09395",
+        "filename": "tests/rollback_index2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-16T06:39:54Z",
+      "side": 1,
+      "message": "Not so certain how necessary this is... given that the compiler will error when ROLLBACK_SPACE_FIRMWARE_VERSION \u003d\u003d 0 (because of the subtraction operator on an unsigned int below).  However, it seems like a nice property to not have to rely on the compiler warning settings.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "d672f858de5b4196f663c6b85a2e6768a49ea4cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
