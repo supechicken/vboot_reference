@@ -45,6 +45,30 @@
       "revId": "55c8c3fac3843b847c004bc6f0d6beefa7dfa82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa4f98d_b73bec2b",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1346884
+      },
+      "writtenOn": "2019-08-16T00:18:41Z",
+      "side": 1,
+      "message": "It might not be, but if that fixes it we can just ignore the issue if Coverity isn\u0027t smart enough to figure it out.",
+      "parentUuid": "146ae33e_46006aa2",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 53
+      },
+      "revId": "55c8c3fac3843b847c004bc6f0d6beefa7dfa82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
