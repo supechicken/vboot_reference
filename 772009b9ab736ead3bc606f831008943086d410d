@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12c59930_92118e6d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-16T20:38:52Z",
+      "side": 1,
+      "message": "You need to be careful with recovery mode... it should always continue, even if all TPM communication is broken.",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5939dae_ced79f9d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-16T20:38:52Z",
+      "side": 1,
+      "message": "I think this is the first time we\u0027re using the secdatak code in production? Looking through it, secdatak_check() needs some work (should also check struct version).",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa8427c_47f14a75",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-16T20:38:52Z",
+      "side": 1,
+      "message": "Might be good to at least print a warning here if SECDATA_CHANGED is true but we\u0027re not in recovery mode.",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "764417c9_b6fa346c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-16T20:38:52Z",
+      "side": 1,
+      "message": "Why not just call this from kernel_cleanup?",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
