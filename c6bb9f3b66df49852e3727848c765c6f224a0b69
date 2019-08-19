@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "ab57fba0_06657807",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "Right, sorry, with \"big error\" I just meant a log message.",
+      "parentUuid": "aa03dace_290293f6",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558912ce_0d9f783f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2

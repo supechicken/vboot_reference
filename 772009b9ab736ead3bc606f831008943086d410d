@@ -139,6 +139,24 @@
       "revId": "772009b9ab736ead3bc606f831008943086d410d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5ce30b_f95a83b1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "\u003e On top of that we have the two cases to consider: the typical VbSelectAndLoadKernel case, and the VbVerifyMemoryBootImage case (for fastboot).  The former doesn\u0027t lock secdatak.\n\nI assume you meant \"the latter\"? If VbVerifyMemoryBootImage() doesn\u0027t lock the TPM, I\u0027m pretty sure that\u0027s a bug. The TPM should always be locked for all boot modes.\n\nI\u0027m fine with putting both the writeback and the locking into kernel_phase4(), or both into kernel_cleanup() (not quite sure what the difference is supposed to be anyway). Either way they should probably be together. When we move that stuff into depthcharge, I expect the locking should move there as well... the same is done for firmware verification.",
+      "parentUuid": "4ce92158_9b45abc3",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

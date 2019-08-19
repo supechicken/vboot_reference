@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cfc4483_cde9c174",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "I think it seems kinda weird to have these here and mix the old and the new code back and forth in both directions. Don\u0027t you just want to keep them in vboot_api_kernel.c for now? They should be removed again eventually (when this is moved into depthcharge) anyway.",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faaf7230_961d7a31",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "nit: Should say \"ERROR: ...\" or something to make it more clear that this is a serious problem.",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10895013_805ae062",
+        "filename": "firmware/2lib/2secdatak.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be at least 2?",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbfbaf5f_efffc3f9",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 8
@@ -36,6 +87,30 @@
       "writtenOn": "2019-08-19T10:55:43Z",
       "side": 1,
       "message": "This seems like a terrible idea.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 2
+      },
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7a4502_8874339e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-19T22:32:53Z",
+      "side": 1,
+      "message": "You mean it\u0027s hard to read, or why? Maybe it would look better if cleanup could take a vb2_error_t and then return that if it\u0027s not SUCCESS?",
+      "parentUuid": "7b1daaf6_9d6092b4",
       "range": {
         "startLine": 459,
         "startChar": 0,
