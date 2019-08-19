@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "aa03dace_290293f6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-19T10:55:43Z",
+      "side": 1,
+      "message": "Yeah sure.  Probably should not actually fail the boot though?  Just in case someone does commit some code that changes secdata, it would be pretty unfortunate to cause booting to completely fail.\n\nI wanted to print the value of secdata for debug purposes here, but seemed kind of a pain to refactor (possibly move the PRINT_BYTES macro into 2common.h) for just one use.  Maybe this is so unlikely that we should not bother.",
+      "parentUuid": "24d2c36c_3fc2f5c0",
+      "revId": "c6bb9f3b66df49852e3727848c765c6f224a0b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558912ce_0d9f783f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6f558f84_f85a4de7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-19T10:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c59930_92118e6d",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5939dae_ced79f9d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "772009b9ab736ead3bc606f831008943086d410d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe693963_db9b5d46",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-19T10:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5939dae_ced79f9d",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9f425e46_7a03ac99",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-19T10:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa8427c_47f14a75",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "764417c9_b6fa346c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2019-08-16T20:38:52Z",
       "side": 1,
       "message": "Why not just call this from kernel_cleanup?",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce92158_9b45abc3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-19T10:55:43Z",
+      "side": 1,
+      "message": "Well, actually it\u0027s kind of awkward, because vb2_kernel_phase4 locks secdatak space, so it needs to occur before vb2_kernel_cleanup.\n\nOn top of that we have the two cases to consider: the typical VbSelectAndLoadKernel case, and the VbVerifyMemoryBootImage case (for fastboot).  The former doesn\u0027t lock secdatak.  (It\u0027s also not used anywhere currently...)\n\nIn the latest patchset, I added an argument to vb2_kernel_cleanup to decide whether locking should be performed, and the argument is passed onto vb2_secdatak_commit.  Not really sure I like this \"mixing arguments and context checking\" together.  If we really want to keep the VbVerifyMemoryBootImage case, then maybe we should introduce a context flag called VB2_CONTEXT_LOCK_SECDATAK.\n\nNot to mention when the step is moved into depthcharge, it\u0027ll need that information somehow.  (Although if the calling code is separate [i.e. from fastboot], then it\u0027ll already know whether or not it should lock secdatak.)",
+      "parentUuid": "764417c9_b6fa346c",
       "revId": "772009b9ab736ead3bc606f831008943086d410d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
