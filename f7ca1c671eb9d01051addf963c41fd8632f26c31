@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b173a1a0_7efa7017",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-20T09:57:15Z",
+      "side": 1,
+      "message": "Not sure exactly what to do here.\n\nShould we just assume that the size of FWMP is that of the current version in use?\n(There are a bunch of complicated version rules written out here:\nhttps://docs.google.com/document/d/1-O1OZxG0j12emPkfKLhSxFK0shffJqAlDB4RrxP78XU/edit#heading\u003dh.r5p3ptd30bdf )\n\nOr just use MAX_SIZE and potentially waste a bunch of space?\n\nOr create some vb2api functions to deal with storing FWMP at some particular offset?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
