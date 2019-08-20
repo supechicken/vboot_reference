@@ -249,6 +249,9 @@ struct vb2_context {
 	 * and then clear the flag.
 	 */
 	uint8_t secdatak[VB2_SECDATAK_SIZE];
+
+	uint8_t fwmp[VB2_FWMP_MAX_SIZE];
+	uint32_t fwmp_size;
 };
 
 /* Resource index for vb2ex_read_resource() */
@@ -439,6 +442,10 @@ vb2_error_t vb2api_secdatak_check(const struct vb2_context *ctx);
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
 vb2_error_t vb2api_secdatak_create(struct vb2_context *ctx);
+
+vb2_error_t vb2api_fwmp_check(struct vb2_context *ctx);
+
+vb2_error_t vb2api_fwmp_create(struct vb2_context *ctx);
 
 /**
  * Report firmware failure to vboot.

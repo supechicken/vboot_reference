@@ -360,6 +360,7 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2api.c \
 	firmware/2lib/2common.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2fwmp.c \
 	firmware/2lib/2gbb.c \
 	firmware/2lib/2misc.c \
 	firmware/2lib/2nvstorage.c \
@@ -727,6 +728,7 @@ TEST_NAMES += ${TEST_FUTIL_NAMES}
 TEST2X_NAMES = \
 	tests/vb2_api_tests \
 	tests/vb2_common_tests \
+	tests/vb2_fwmp_tests \
 	tests/vb2_gbb_tests \
 	tests/vb2_misc_tests \
 	tests/vb2_nvstorage_tests \
@@ -1328,6 +1330,7 @@ endif
 run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_api_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_fwmp_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
