@@ -197,6 +197,15 @@ enum vb2_return_code {
 	/* Called vb2_secdatak_set() with uninitialized secdatak */
 	VB2_ERROR_SECDATAK_SET_UNINITIALIZED,
 
+	/* Bad size in vb2api_secdata_fwmp_check() */
+	VB2_ERROR_SECDATA_FWMP_SIZE,
+
+	/* Bad CRC in vb2api_secdata_fwmp_check() */
+	VB2_ERROR_SECDATA_FWMP_CRC,
+
+	/* Bad struct version in vb2_secdata_fwmp_check() */
+	VB2_ERROR_SECDATA_FWMP_VERSION,
+
 	/**********************************************************************
 	 * Common code errors
 	 */
