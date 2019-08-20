@@ -23,7 +23,7 @@
 /*
  * Compiling for unit test, so we need the real implementations of
  * rollback functions.  The unit test mocks the underlying tlcl
- * functions, so this is ok to run on the host.
+ * functions, so this is okay to run on the host.
  */
 #undef CHROMEOS_ENVIRONMENT
 #undef DISABLE_ROLLBACK_TPM

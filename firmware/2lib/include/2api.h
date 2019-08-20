@@ -1,9 +1,8 @@
 /* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
- */
-
-/* APIs between calling firmware and vboot_reference
+ *
+ * APIs between calling firmware and vboot_reference
  *
  * General notes:
  *
@@ -17,8 +16,9 @@
  *      must be done elsewhere, and VB2_NV_DEBUG_RESET_MODE is ignored.
  */
 
-#ifndef VBOOT_2_API_H_
-#define VBOOT_2_API_H_
+#ifndef VBOOT_REFERENCE_2API_H_
+#define VBOOT_REFERENCE_2API_H_
+
 #include <stdint.h>
 
 #include "2constants.h"
@@ -740,4 +740,4 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
  */
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
-#endif  /* VBOOT_2_API_H_ */
+#endif  /* VBOOT_REFERENCE_2API_H_ */
