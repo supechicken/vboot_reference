@@ -366,6 +366,7 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2packed_key.c \
 	firmware/2lib/2rsa.c \
 	firmware/2lib/2secdata.c \
+	firmware/2lib/2secdata_fwmp.c \
 	firmware/2lib/2secdatak.c \
 	firmware/2lib/2sha1.c \
 	firmware/2lib/2sha256.c \
@@ -692,7 +693,6 @@ TEST_OBJS += ${TESTLIB_OBJS}
 TEST_NAMES = \
 	tests/cgptlib_test \
 	tests/ec_sync_tests \
-	tests/rollback_index3_tests \
 	tests/sha_benchmark \
 	tests/utility_string_tests \
 	tests/vboot_api_devmode_tests \
@@ -701,7 +701,7 @@ TEST_NAMES = \
 	tests/vboot_api_kernel4_tests \
 	tests/vboot_api_kernel5_tests \
 	tests/vboot_detach_menu_tests \
-tests/vboot_common_tests \
+	tests/vboot_common_tests \
 	tests/vboot_display_tests \
 	tests/vboot_kernel_tests \
 	tests/verify_kernel
@@ -713,7 +713,7 @@ TEST_NAMES += \
 	tests/rollback_index2_tests
 endif
 
-TEST_FUTIL_NAMES  = \
+TEST_FUTIL_NAMES = \
 	tests/futility/binary_editor \
 	tests/futility/test_file_types \
 	tests/futility/test_not_really
@@ -728,6 +728,7 @@ TEST2X_NAMES = \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_utility_tests \
 	tests/vb2_secdata_tests \
+	tests/vb2_secdata_fwmp_tests \
 	tests/vb2_secdatak_tests \
 	tests/vb2_sha_tests \
 	tests/hmac_test
@@ -762,15 +763,15 @@ ifeq (${TPM2_MODE},)
 TLCL_TEST_NAMES = \
 	tests/tpm_lite/tpmtest_earlyextend \
 	tests/tpm_lite/tpmtest_earlynvram \
-        tests/tpm_lite/tpmtest_earlynvram2 \
+	tests/tpm_lite/tpmtest_earlynvram2 \
 	tests/tpm_lite/tpmtest_enable \
 	tests/tpm_lite/tpmtest_fastenable \
 	tests/tpm_lite/tpmtest_globallock \
-        tests/tpm_lite/tpmtest_redefine_unowned \
-        tests/tpm_lite/tpmtest_spaceperm \
+	tests/tpm_lite/tpmtest_redefine_unowned \
+	tests/tpm_lite/tpmtest_spaceperm \
 	tests/tpm_lite/tpmtest_testsetup \
 	tests/tpm_lite/tpmtest_timing \
-        tests/tpm_lite/tpmtest_writelimit
+	tests/tpm_lite/tpmtest_writelimit
 else
 # TODO(apronin): tests for TPM2 case?
 TLCL_TEST_NAMES =
@@ -1303,7 +1304,6 @@ ifeq (${TPM2_MODE},)
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 	${RUNTEST} ${BUILD_RUN}/tests/rollback_index2_tests
 endif
-	${RUNTEST} ${BUILD_RUN}/tests/rollback_index3_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
@@ -1324,6 +1324,7 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_fwmp_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdatak_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_api_tests

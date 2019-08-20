@@ -24,22 +24,14 @@
 #include "vboot_test.h"
 
 /* Global variables */
-static struct RollbackSpaceFwmp fwmp;
 static LoadKernelParams lkp;
 
 #ifdef CHROMEOS_ENVIRONMENT
-/* Global variable accessors for unit tests */
-
-struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void)
-{
-	return &fwmp;
-}
-
+/* Global variable accessor for unit tests */
 struct LoadKernelParams *VbApiKernelGetParams(void)
 {
 	return &lkp;
 }
-
 #endif
 
 static vb2_error_t vb2_secdata_load(struct vb2_context *ctx)
@@ -129,11 +121,6 @@ void vb2_nv_commit(struct vb2_context *ctx)
 	VbExNvStorageWrite(ctx->nvdata);
 }
 
-uint32_t vb2_get_fwmp_flags(void)
-{
-	return fwmp.flags;
-}
-
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
 	vb2_error_t retval = VB2_ERROR_UNKNOWN;
@@ -144,7 +131,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VB2_DEBUG("VbTryLoadKernel() start, get_info_flags=0x%x\n",
 		  (unsigned)get_info_flags);
 
-	lkp.fwmp = &fwmp;
+	lkp.fwmp = (struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 	lkp.disk_handle = NULL;
 
 	/* Find disks */
@@ -413,8 +400,8 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 
 	/* Read FWMP.  Ignore errors in recovery mode. */
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_FWMP) {
-		memset(&fwmp, 0, sizeof(fwmp));
-	} else if (RollbackFwmpRead(&fwmp)) {
+		memset(&ctx->secdata_fwmp, 0, sizeof(ctx->secdata_fwmp));
+	} else if (RollbackFwmpRead(ctx)) {
 		VB2_DEBUG("Unable to get FWMP from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);

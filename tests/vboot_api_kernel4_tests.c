@@ -154,9 +154,9 @@ uint32_t RollbackKernelLock()
 	return rkl_retval;
 }
 
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
+uint32_t RollbackFwmpRead(struct vb2_context *c)
 {
-	memcpy(fwmp, &rfr_fwmp, sizeof(*fwmp));
+	memcpy(&c->secdata_fwmp, &rfr_fwmp, sizeof(rfr_fwmp));
 	return rfr_retval;
 }
 

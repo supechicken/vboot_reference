@@ -174,6 +174,13 @@ enum vb2_context_flags {
 	 * support.
 	 */
 	VB2_CONTEXT_DISPLAY_INIT = (1 << 20),
+
+	/*
+	 * Verified boot has changed secdata_fwmp[].  Caller must save
+	 * secdata_fwmp[] back to its underlying storage, then may clear this
+	 * flag.
+	 */
+	VB2_CONTEXT_SECDATA_FWMP_CHANGED = (1 << 21),
 };
 
 /*
@@ -249,6 +256,15 @@ struct vb2_context {
 	 * and then clear the flag.
 	 */
 	uint8_t secdatak[VB2_SECDATAK_SIZE];
+
+	/*
+	 * Firmware management parameters (FWMP) secure data.  Caller must fill
+	 * this from some secure non-volatile location.  If the
+	 * VB2_CONTEXT_SECDATA_FWMP flag is set when a function returns, caller
+	 * must save the data back to the secure non-volatile location and then
+	 * clear the flag.
+	 */
+	uint8_t secdata_fwmp[VB2_SECDATA_FWMP_MAX_SIZE];
 };
 
 /* Resource index for vb2ex_read_resource() */
@@ -439,6 +455,10 @@ vb2_error_t vb2api_secdatak_check(const struct vb2_context *ctx);
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
 vb2_error_t vb2api_secdatak_create(struct vb2_context *ctx);
+
+vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size);
+
+uint32_t vb2api_secdata_fwmp_create(struct vb2_context *ctx);
 
 /**
  * Report firmware failure to vboot.

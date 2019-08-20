@@ -136,6 +136,11 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 	return VB2_SUCCESS;
 }
 
+uint32_t RollbackFwmpRead(struct vb2_context *c)
+{
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2_secdata_init(struct vb2_context *c)
 {
 	return VB2_SUCCESS;

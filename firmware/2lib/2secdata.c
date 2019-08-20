@@ -11,6 +11,9 @@
 #include "2misc.h"
 #include "2secdata.h"
 
+#pragma GCC diagnostic push
+/* Don't warn for the struct_version check even if the checked version is 0. */
+#pragma GCC diagnostic ignored "-Wtype-limits"
 vb2_error_t vb2api_secdata_check(const struct vb2_context *ctx)
 {
 	const struct vb2_secdata *sec =
@@ -30,6 +33,7 @@ vb2_error_t vb2api_secdata_check(const struct vb2_context *ctx)
 
 	return VB2_SUCCESS;
 }
+#pragma GCC diagnostic pop
 
 vb2_error_t vb2api_secdata_create(struct vb2_context *ctx)
 {

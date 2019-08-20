@@ -533,9 +533,9 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	/* Check if the default is to boot using disk, usb, or legacy */
 	uint32_t default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
 
-	if(default_boot == VB2_DEV_DEFAULT_BOOT_USB)
+	if (default_boot == VB2_DEV_DEFAULT_BOOT_USB)
 		use_usb = 1;
-	if(default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY)
+	if (default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY)
 		use_legacy = 1;
 
 	/* Handle GBB flag override */
@@ -549,12 +549,23 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Handle FWMP override */
-	uint32_t fwmp_flags = vb2_get_fwmp_flags();
-	if (fwmp_flags & FWMP_DEV_ENABLE_USB)
+	int fwmp_dev_enable_usb;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB,
+				      &fwmp_dev_enable_usb))
+		return VB2_ERROR_UNKNOWN;
+	int fwmp_dev_enable_legacy;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY,
+				      &fwmp_dev_enable_legacy))
+		return VB2_ERROR_UNKNOWN;
+	int fwmp_dev_disable_boot;
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT,
+				      &fwmp_dev_disable_boot))
+		return VB2_ERROR_UNKNOWN;
+	if (fwmp_dev_enable_usb)
 		allow_usb = 1;
-	if (fwmp_flags & FWMP_DEV_ENABLE_LEGACY)
+	if (fwmp_dev_enable_legacy)
 		allow_legacy = 1;
-	if (fwmp_flags & FWMP_DEV_DISABLE_BOOT) {
+	if (fwmp_dev_disable_boot) {
 		if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 			VB2_DEBUG("FWMP_DEV_DISABLE_BOOT rejected by "
 				  "FORCE_DEV_SWITCH_ON\n");

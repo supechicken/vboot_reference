@@ -62,8 +62,6 @@ static int vbexaltfwmask_called;
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
 {
-	memset(VbApiKernelGetFwmp(), 0, sizeof(struct RollbackSpaceFwmp));
-
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
 	shared->flags = VBSD_BOOT_FIRMWARE_VBOOT2;
@@ -78,6 +76,8 @@ static void ResetMocks(void)
 
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
+
+	vb2api_secdata_fwmp_create(&ctx);
 
 	memset(&gbb, 0, sizeof(gbb));
 
@@ -666,7 +666,7 @@ static void VbBootDevTest(void)
 
 	/* Ctrl+L boots legacy if enabled by FWMP */
 	ResetMocksForDeveloper();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_LEGACY;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY, 1);
 	mock_keypress[0] = VB_KEY_CTRL('L');
 	mock_keypress[1] = VB_BUTTON_POWER_SHORT_PRESS;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed,
@@ -756,7 +756,7 @@ static void VbBootDevTest(void)
 
 	/* Ctrl+U enabled via FWMP */
 	ResetMocksForDeveloper();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_ENABLE_USB;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB, 1);
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_retval[0] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VB2_SUCCESS, "Ctrl+U force USB");
@@ -1149,7 +1149,7 @@ static void VbBootDevTest(void)
 
 	/* If dev mode is disabled, goes to TONORM screen repeatedly */
 	ResetMocksForDeveloper();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	audio_looping_calls_left = 1;	/* Confirm audio doesn't tick down. */
 	i = 0;
 	mock_keypress[i++] = VB_KEY_CTRL('D');  /* Just stays on TONORM and flashes */
@@ -1203,7 +1203,7 @@ static void VbBootDevTest(void)
 
 	/* Shutdown requested when dev disabled */
 	ResetMocksForDeveloper();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	shutdown_request_calls_left = 1;
 	TEST_EQ(VbBootDeveloperMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested when dev disabled");
@@ -1219,7 +1219,7 @@ static void VbBootDevTest(void)
 
 	/* Explicit Power Off when dev disabled */
 	ResetMocksForDeveloper();
-	VbApiKernelGetFwmp()->flags |= FWMP_DEV_DISABLE_BOOT;
+	vb2_secdata_fwmp_set_flag(&ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT, 1);
 	i = 0;
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_SHORT_PRESS;	// Power Off
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
