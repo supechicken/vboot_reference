@@ -20,6 +20,14 @@ vb2_error_t vb2api_secdatak_check(const struct vb2_context *ctx)
 	if (sec->crc8 != vb2_crc8(sec, offsetof(struct vb2_secdatak, crc8)))
 		return VB2_ERROR_SECDATAK_CRC;
 
+	/* Verify version */
+	if (sec->struct_version < VB2_SECDATAK_VERSION)
+		return VB2_ERROR_SECDATAK_VERSION;
+
+	/* Verify UID */
+	if (sec->uid != VB2_SECDATAK_UID)
+		return VB2_ERROR_SECDATAK_UID;
+
 	return VB2_SUCCESS;
 }
 
@@ -44,7 +52,6 @@ vb2_error_t vb2api_secdatak_create(struct vb2_context *ctx)
 
 vb2_error_t vb2_secdatak_init(struct vb2_context *ctx)
 {
-	struct vb2_secdatak *sec = (struct vb2_secdatak *)ctx->secdatak;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	vb2_error_t rv;
 
@@ -52,13 +59,8 @@ vb2_error_t vb2_secdatak_init(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	/* Make sure the UID is correct */
-	if (sec->uid != VB2_SECDATAK_UID)
-		return VB2_ERROR_SECDATAK_UID;
-
 	/* Set status flag */
 	sd->status |= VB2_SD_STATUS_SECDATAK_INIT;
-	/* TODO: unit test for that */
 
 	return VB2_SUCCESS;
 }
@@ -66,9 +68,10 @@ vb2_error_t vb2_secdatak_init(struct vb2_context *ctx)
 vb2_error_t vb2_secdatak_get(struct vb2_context *ctx,
 			     enum vb2_secdatak_param param, uint32_t *dest)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_secdatak *sec = (struct vb2_secdatak *)ctx->secdatak;
 
-	if (!(vb2_get_sd(ctx)->status & VB2_SD_STATUS_SECDATAK_INIT))
+	if (!(sd->status & VB2_SD_STATUS_SECDATAK_INIT))
 		return VB2_ERROR_SECDATAK_GET_UNINITIALIZED;
 
 	switch(param) {
@@ -84,10 +87,11 @@ vb2_error_t vb2_secdatak_get(struct vb2_context *ctx,
 vb2_error_t vb2_secdatak_set(struct vb2_context *ctx,
 			     enum vb2_secdatak_param param, uint32_t value)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_secdatak *sec = (struct vb2_secdatak *)ctx->secdatak;
 	uint32_t now;
 
-	if (!(vb2_get_sd(ctx)->status & VB2_SD_STATUS_SECDATAK_INIT))
+	if (!(sd->status & VB2_SD_STATUS_SECDATAK_INIT))
 		return VB2_ERROR_SECDATAK_SET_UNINITIALIZED;
 
 	/* If not changing the value, don't regenerate the CRC. */
@@ -96,6 +100,8 @@ vb2_error_t vb2_secdatak_set(struct vb2_context *ctx,
 
 	switch(param) {
 	case VB2_SECDATAK_VERSIONS:
+		VB2_DEBUG("secdatak versions updated from 0x%x to 0x%x\n",
+			  sec->kernel_versions, value);
 		sec->kernel_versions = value;
 		break;
 
