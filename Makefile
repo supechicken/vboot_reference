@@ -162,7 +162,6 @@ else
 # FIRMWARE_ARCH not defined; assuming local compile.
 CC ?= gcc
 CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
-CHROMEOS_ENVIRONMENT = 1
 endif
 
 # Needs -Wl because LD is actually set to CC by default.
@@ -189,7 +188,7 @@ CFLAGS += -DTPM2_MODE
 endif
 
 # enable all features during local compile (permits testing)
-ifeq (${CHROMEOS_ENVIRONMENT},1)
+ifeq (${FIRMWARE_ARCH},)
 DIAGNOSTIC_UI := 1
 endif
 
@@ -330,16 +329,8 @@ FWLIB20 = ${BUILD}/vboot_fw20.a
 # Vboot 2.1 (not yet ready - see firmware/README)
 FWLIB21 = ${BUILD}/vboot_fw21.a
 
-# Firmware library sources needed by VbInit() call
-VBINIT_SRCS = \
-	firmware/lib/vboot_common_init.c \
-
-# Additional firmware library sources needed by VbSelectFirmware() call
-VBSF_SRCS = \
-	firmware/lib/vboot_common.c
-
 # Additional firmware library sources needed by VbSelectAndLoadKernel() call
-VBSLK_SRCS = \
+FWLIB_SRCS = \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
@@ -349,6 +340,8 @@ VBSLK_SRCS = \
 	firmware/lib/utility_string.c \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
+	firmware/lib/vboot_common.c \
+	firmware/lib/vboot_common_init.c \
 	firmware/lib/vboot_display.c \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
@@ -366,6 +359,7 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2packed_key.c \
 	firmware/2lib/2rsa.c \
 	firmware/2lib/2secdata.c \
+	firmware/2lib/2secdata_fwmp.c \
 	firmware/2lib/2secdatak.c \
 	firmware/2lib/2sha1.c \
 	firmware/2lib/2sha256.c \
@@ -400,18 +394,18 @@ endif
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
-VBINIT_SRCS += \
+FWLIB_SRCS += \
 	firmware/lib/rollback_index.c \
 	${TLCL_SRCS}
 else
-VBINIT_SRCS += \
+FWLIB_SRCS += \
 	firmware/lib/mocked_rollback_index.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
 
 ifneq (${VENDOR_DATA_LENGTH},)
 CFLAGS += -DVENDOR_DATA_LENGTH=${VENDOR_DATA_LENGTH}
-else ifeq (${CHROMEOS_ENVIRONMENT},1)
+else ifeq (${FIRMWARE_ARCH},)
 CFLAGS += -DVENDOR_DATA_LENGTH=4
 else
 CFLAGS += -DVENDOR_DATA_LENGTH=0
@@ -420,26 +414,18 @@ endif
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
 # TODO: split out other stub funcs too
-VBINIT_SRCS += \
+FWLIB_SRCS += \
 	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/vboot_api_stub_init.c
 
-VBSLK_SRCS += \
+FWLIB_SRCS += \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_stream.c
 
 FWLIB2X_SRCS += \
 	firmware/2lib/2stub.c
-
 endif
-
-VBSF_SRCS += ${VBINIT_SRCS}
-FWLIB_SRCS += ${VBSF_SRCS} ${VBSLK_SRCS}
-
-VBINIT_OBJS = ${VBINIT_SRCS:%.c=${BUILD}/%.o}
-VBSF_OBJS = ${VBSF_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS +=  ${VBINIT_OBJS} ${VBSF_OBJS}
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
@@ -727,6 +713,7 @@ TEST2X_NAMES = \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_utility_tests \
 	tests/vb2_secdata_tests \
+	tests/vb2_secdata_fwmp_tests \
 	tests/vb2_secdatak_tests \
 	tests/vb2_sha_tests \
 	tests/hmac_test
@@ -1316,6 +1303,7 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_fwmp_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdatak_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_api_tests

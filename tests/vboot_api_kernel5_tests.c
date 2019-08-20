@@ -117,32 +117,32 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 	return &gbb;
 }
 
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t ReadSpaceFirmware(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t WriteSpaceFirmware(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t ReadSpaceKernel(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t WriteSpaceKernel(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t RollbackKernelLock(void)
+uint32_t LockSpaceKernel(void)
 {
 	return TPM_SUCCESS;
 }
 
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
+uint32_t ReadSpaceFwmp(struct vb2_context *c)
 {
 	return TPM_SUCCESS;
 }
