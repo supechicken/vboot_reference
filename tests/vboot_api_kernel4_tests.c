@@ -9,12 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "2secdata.h"
-#include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2secdata.h"
+#include "2sysincludes.h"
 #include "ec_sync.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
@@ -37,7 +37,7 @@ static struct vb2_gbb_header gbb;
 
 static uint32_t rkr_version;
 static uint32_t new_version;
-static struct RollbackSpaceFwmp rfr_fwmp;
+static struct vb2_secdata_fwmp rfr_fwmp;
 static int rkr_retval, rkw_retval, rkl_retval, rfr_retval;
 static vb2_error_t vbboot_retval;
 
@@ -105,22 +105,22 @@ vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
 	return VB2_SUCCESS;
 }
 
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t ReadSpaceFirmware(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t WriteSpaceFirmware(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t ReadSpaceKernel(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t WriteSpaceKernel(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
@@ -149,14 +149,14 @@ vb2_error_t vb2_secdatak_set(struct vb2_context *c,
 	return rkw_retval;
 }
 
-uint32_t RollbackKernelLock()
+uint32_t LockSpaceKernel()
 {
 	return rkl_retval;
 }
 
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
+uint32_t ReadSpaceFwmp(struct vb2_context *c)
 {
-	memcpy(fwmp, &rfr_fwmp, sizeof(*fwmp));
+	memcpy(&c->secdata_fwmp, &rfr_fwmp, sizeof(rfr_fwmp));
 	return rfr_retval;
 }
 

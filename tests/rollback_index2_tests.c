@@ -5,21 +5,20 @@
  * Tests for rollback_index functions
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "2crc8.h"
+#include "2secdata.h"
+#include "2sysincludes.h"
 #include "rollback_index.h"
 #include "test_common.h"
 #include "tlcl.h"
+#include "tss_constants.h"
 
-_Static_assert(ROLLBACK_SPACE_FIRMWARE_VERSION > 0,
-	       "ROLLBACK_SPACE_FIRMWARE_VERSION must be greater than 0");
-
-_Static_assert(ROLLBACK_SPACE_KERNEL_VERSION > 0,
-	       "ROLLBACK_SPACE_KERNEL_VERSION must be greater than 0");
+uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
+	__attribute__ ((aligned (VB2_WORKBUF_ALIGN)));
+struct vb2_context c = {
+	.workbuf = workbuf,
+	.workbuf_size = sizeof(workbuf),
+};
 
 /*
  * Buffer to hold accumulated list of calls to mocked Tlcl functions.
@@ -48,22 +47,16 @@ static uint32_t fail_with_error = TPM_SUCCESS;
 
 /* Params / backing store for mocked Tlcl functions. */
 static TPM_PERMANENT_FLAGS mock_pflags;
-static RollbackSpaceFirmware mock_rsf;
-static RollbackSpaceKernel mock_rsk;
+static struct vb2_secdata mock_rsf;
+static struct vb2_secdatak mock_rsk;
 
 static union {
-	struct RollbackSpaceFwmp fwmp;
-	uint8_t buf[FWMP_NV_MAX_SIZE];
+	struct vb2_secdata_fwmp fwmp;
+	uint8_t buf[VB2_SECDATA_FWMP_MAX_SIZE];
 } mock_fwmp;
+static uint32_t mock_fwmp_real_size;
 
 static uint32_t mock_permissions;
-
-/* Recalculate CRC of FWMP data */
-static void RecalcFwmpCrc(void)
-{
-	mock_fwmp.fwmp.crc = vb2_crc8(mock_fwmp.buf + 2,
-				  mock_fwmp.fwmp.struct_size - 2);
-}
 
 /* Reset the variables for the Tlcl mock functions. */
 static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
@@ -77,27 +70,29 @@ static void ResetMocks(int fail_on_call, uint32_t fail_with_err)
 	memset(&mock_pflags, 0, sizeof(mock_pflags));
 
 	memset(&mock_rsf, 0, sizeof(mock_rsf));
-	mock_rsf.struct_version = ROLLBACK_SPACE_FIRMWARE_VERSION;
-	mock_rsf.crc8 = vb2_crc8(&mock_rsf,
-				 offsetof(RollbackSpaceFirmware, crc8));
-
 	memset(&mock_rsk, 0, sizeof(mock_rsk));
-	mock_rsk.uid = ROLLBACK_SPACE_KERNEL_UID;
-	mock_rsk.struct_version = ROLLBACK_SPACE_KERNEL_VERSION;
-	mock_rsk.kernel_versions = 0x87654321;
-	mock_rsk.crc8 = vb2_crc8(&mock_rsk,
-				 offsetof(RollbackSpaceKernel, crc8));
 
 	mock_permissions = TPM_NV_PER_PPWRITE;
 
 	memset(mock_fwmp.buf, 0, sizeof(mock_fwmp.buf));
 	mock_fwmp.fwmp.struct_size = sizeof(mock_fwmp.fwmp);
-	mock_fwmp.fwmp.struct_version = ROLLBACK_SPACE_FWMP_VERSION;
+	mock_fwmp.fwmp.struct_version = VB2_SECDATA_FWMP_VERSION;
 	mock_fwmp.fwmp.flags = 0x1234;
 	/* Put some data in the hash */
 	mock_fwmp.fwmp.dev_key_hash[0] = 0xaa;
-	mock_fwmp.fwmp.dev_key_hash[FWMP_HASH_SIZE - 1] = 0xbb;
-	RecalcFwmpCrc();
+	mock_fwmp.fwmp.dev_key_hash[VB2_SECDATA_FWMP_HASH_SIZE - 1] = 0xbb;
+	mock_fwmp_real_size = sizeof(mock_fwmp.fwmp);
+}
+
+/* Mock functions */
+
+vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size)
+{
+	if (*size < mock_fwmp_real_size) {
+		*size = mock_fwmp_real_size;
+		return VB2_ERROR_SECDATA_FWMP_INCOMPLETE;
+	}
+	return VB2_SUCCESS;
 }
 
 /****************************************************************************/
@@ -256,92 +251,166 @@ uint32_t TlclGetPermissions(uint32_t index, uint32_t* permissions)
 
 static void FirmwareSpaceTest(void)
 {
-	RollbackSpaceFirmware rsf;
+	struct vb2_secdata *rsf = (struct vb2_secdata *)&c.secdata;
 
-	/* Old version, valid CRC */
-	ResetMocks(0, 0);
-	mock_rsf.struct_version -= 1;
-	mock_rsf.crc8 = vb2_crc8(&mock_rsf,
-				 offsetof(RollbackSpaceFirmware, crc8));
-	TEST_EQ(ReadSpaceFirmware(&rsf), TPM_E_STRUCT_VERSION,
-		"ReadSpaceFirmware(), old version");
+	/* Not present is an error */
+	ResetMocks(1, TPM_E_BADINDEX);
+	TEST_EQ(ReadSpaceFirmware(&c), TPM_E_BADINDEX,
+		"ReadSpaceFirmware(), not present");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
-	/* Current version, bad CRC */
-	ResetMocks(0, 0);
-	mock_rsf.crc8 = 0;
-	TEST_EQ(ReadSpaceFirmware(&rsf), TPM_E_CORRUPTED_STATE,
-		"ReadSpaceFirmware(), bad CRC");
+	/* Read failure */
+	ResetMocks(1, TPM_E_IOERROR);
+	TEST_EQ(ReadSpaceFirmware(&c), TPM_E_IOERROR,
+		"ReadSpaceFirmware(), failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
-	/* Current version, valid CRC */
+	/* Read success */
 	ResetMocks(0, 0);
-	TEST_EQ(ReadSpaceFirmware(&rsf), 0,
-		"ReadSpaceFirmware(), successful read");
+	TEST_EQ(ReadSpaceFirmware(&c), TPM_SUCCESS,
+		"ReadSpaceFirmware(), success");
 	TEST_STR_EQ(mock_calls,
 		    "TlclRead(0x1007, 10)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
+	TEST_EQ(memcmp(rsf, &mock_rsf, sizeof(*rsf)), 0, "  data");
+
+	/* Write failure */
+	ResetMocks(1, TPM_E_IOERROR);
+	TEST_EQ(WriteSpaceFirmware(&c), TPM_E_IOERROR,
+		"WriteSpaceFirmware(), failure");
+	TEST_STR_EQ(mock_calls,
+		    "TlclWrite(0x1007, 10)\n",
+		    "  tlcl calls");
+
+	/* Write success and readback */
+	ResetMocks(0, 0);
+	memset(rsf, 0xa6, sizeof(*rsf));
+	TEST_EQ(WriteSpaceFirmware(&c), TPM_SUCCESS,
+		"WriteSpaceFirmware(), success");
+	TEST_STR_EQ(mock_calls,
+		    "TlclWrite(0x1007, 10)\n",
+		    "  tlcl calls");
+	memset(rsf, 0xa6, sizeof(*rsf));
+	TEST_EQ(memcmp(rsf, &mock_rsf, sizeof(*rsf)), 0,
+		"  unchanged on readback");
 }
 
 static void KernelSpaceTest(void)
 {
-	RollbackSpaceKernel rsk;
+	struct vb2_secdatak *rsk = (struct vb2_secdatak *)&c.secdatak;
 
-	/* Current version, bad perms, valid CRC, valid UID */
+	/* Not present is an error */
+	ResetMocks(1, TPM_E_BADINDEX);
+	TEST_EQ(ReadSpaceKernel(&c), TPM_E_BADINDEX,
+		"ReadSpaceKernel(), not present");
+	TEST_STR_EQ(mock_calls,
+		    "TlclGetPermissions(0x1008)\n",
+		    "  tlcl calls");
+
+	/* Bad permissions */
 	ResetMocks(0, 0);
 	mock_permissions = 0;
-	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_CORRUPTED_STATE,
+	TEST_EQ(ReadSpaceKernel(&c), TPM_E_CORRUPTED_STATE,
 		"ReadSpaceKernel(), bad permissions");
 	TEST_STR_EQ(mock_calls,
 		    "TlclGetPermissions(0x1008)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
-	/* Old version, good perms, valid CRC, valid UID */
-	ResetMocks(0, 0);
-	mock_rsk.struct_version -= 1;
-	mock_rsk.crc8 = vb2_crc8(&mock_rsk,
-				 offsetof(RollbackSpaceKernel, crc8));
-	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_STRUCT_VERSION,
-		"ReadSpaceKernel(), old version");
+	/* Good permissions, read failure */
+	ResetMocks(2, TPM_E_IOERROR);
+	TEST_EQ(ReadSpaceKernel(&c), TPM_E_IOERROR,
+		"ReadSpaceKernel(), good permissions, failure");
 	TEST_STR_EQ(mock_calls,
 		    "TlclGetPermissions(0x1008)\n"
 		    "TlclRead(0x1008, 13)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
-	/* Current version, good perms, bad CRC, valid UID */
+	/* Good permissions, read success */
 	ResetMocks(0, 0);
-	mock_rsk.crc8 = 0;
-	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_CORRUPTED_STATE,
-		"ReadSpaceKernel(), bad CRC");
+	TEST_EQ(ReadSpaceKernel(&c), TPM_SUCCESS,
+		"ReadSpaceKernel(), good permissions, success");
 	TEST_STR_EQ(mock_calls,
 		    "TlclGetPermissions(0x1008)\n"
 		    "TlclRead(0x1008, 13)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
+	TEST_EQ(memcmp(rsk, &mock_rsk, sizeof(*rsk)), 0, "  data");
 
-	/* Current version, good perms, valid CRC, bad UID */
-	ResetMocks(0, 0);
-	mock_rsk.uid = 0;
-	mock_rsk.crc8 = vb2_crc8(&mock_rsk,
-				 offsetof(RollbackSpaceKernel, crc8));
-	TEST_EQ(ReadSpaceKernel(&rsk), TPM_E_CORRUPTED_STATE,
-		"ReadSpaceKernel(), bad UID");
+	/* Write failure */
+	ResetMocks(1, TPM_E_IOERROR);
+	TEST_EQ(WriteSpaceKernel(&c), TPM_E_IOERROR,
+		"WriteSpaceKernel(), failure");
 	TEST_STR_EQ(mock_calls,
-		    "TlclGetPermissions(0x1008)\n"
-		    "TlclRead(0x1008, 13)\n",
-		    "tlcl calls");
+		    "TlclWrite(0x1008, 13)\n",
+		    "  tlcl calls");
 
-	/* Current version, good perms, valid CRC, valid UID */
+	/* Write success and readback */
 	ResetMocks(0, 0);
-	TEST_EQ(ReadSpaceKernel(&rsk), 0,
-		"ReadSpaceKernel(), successful read");
+	memset(rsk, 0xa6, sizeof(*rsk));
+	TEST_EQ(WriteSpaceKernel(&c), TPM_SUCCESS,
+		"WriteSpaceKernel(), failure");
 	TEST_STR_EQ(mock_calls,
-		    "TlclGetPermissions(0x1008)\n"
-		    "TlclRead(0x1008, 13)\n",
-		    "tlcl calls");
+		    "TlclWrite(0x1008, 13)\n",
+		    "  tlcl calls");
+	memset(rsk, 0xa6, sizeof(*rsk));
+	TEST_EQ(memcmp(rsk, &mock_rsk, sizeof(*rsk)), 0,
+		"  unchanged on readback");
+}
+
+/****************************************************************************/
+/* Tests for ReadSpaceFwmp() calls */
+
+static void FwmpSpaceTest(void)
+{
+	struct vb2_secdata_fwmp *fwmp =
+		(struct vb2_secdata_fwmp *)&c.secdata_fwmp;
+	struct vb2_secdata_fwmp fwmp_zero = {0};
+
+	/* Read failure */
+	ResetMocks(1, TPM_E_IOERROR);
+	TEST_EQ(ReadSpaceFwmp(&c), TPM_E_IOERROR,
+		"ReadSpaceFwmp(), failure");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x100a, 40)\n",
+		    "  tlcl calls");
+
+	/* Normal read */
+	ResetMocks(0, 0);
+	TEST_EQ(ReadSpaceFwmp(&c), 0,
+		"ReadSpaceFwmp(), success");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x100a, 40)\n",
+		    "  tlcl calls");
+	TEST_EQ(memcmp(fwmp, &mock_fwmp, sizeof(*fwmp)), 0, "  data");
+
+	/* Read error */
+	ResetMocks(1, TPM_E_IOERROR);
+	TEST_EQ(ReadSpaceFwmp(&c), TPM_E_IOERROR,
+		"ReadSpaceFwmp(), error");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x100a, 40)\n",
+		    "  tlcl calls");
+
+	/* Not present isn't an error; just returns empty data */
+	ResetMocks(1, TPM_E_BADINDEX);
+	TEST_EQ(ReadSpaceFwmp(&c), 0, "ReadSpaceFwmp(), not present");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x100a, 40)\n",
+		    "  tlcl calls");
+	TEST_EQ(memcmp(fwmp, &fwmp_zero, sizeof(*fwmp)), 0, "  data clear");
+
+	/* Struct size too large */
+	ResetMocks(0, 0);
+	mock_fwmp_real_size += 4;
+	TEST_EQ(ReadSpaceFwmp(&c), 0, "ReadSpaceFwmp(), bigger");
+	TEST_STR_EQ(mock_calls,
+		    "TlclRead(0x100a, 40)\n"
+		    "TlclRead(0x100a, 44)\n",
+		    "  tlcl calls");
+	TEST_EQ(memcmp(fwmp, &mock_fwmp, mock_fwmp_real_size), 0, "  data");
 }
 
 /****************************************************************************/
@@ -357,19 +426,19 @@ static void MiscTest(void)
 		    "TlclForceClear()\n"
 		    "TlclSetEnable()\n"
 		    "TlclSetDeactivated(0)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
 	ResetMocks(0, 0);
 	TEST_EQ(SafeWrite(0x123, buf, 8), 0, "SafeWrite()");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x123, 8)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
 	ResetMocks(1, TPM_E_BADINDEX);
 	TEST_EQ(SafeWrite(0x123, buf, 8), TPM_E_BADINDEX, "SafeWrite() bad");
 	TEST_STR_EQ(mock_calls,
 		    "TlclWrite(0x123, 8)\n",
-		    "tlcl calls");
+		    "  tlcl calls");
 
 	ResetMocks(1, TPM_E_MAXNVWRITES);
 	TEST_EQ(SafeWrite(0x123, buf, 8), 0, "SafeWrite() retry max writes");
@@ -379,102 +448,15 @@ static void MiscTest(void)
 		    "TlclSetEnable()\n"
 		    "TlclSetDeactivated(0)\n"
 		    "TlclWrite(0x123, 8)\n",
-		    "tlcl calls");
-}
-
-/****************************************************************************/
-/* Tests for RollbackFwmpRead() calls */
-
-static void RollbackFwmpTest(void)
-{
-	struct RollbackSpaceFwmp fwmp;
-	struct RollbackSpaceFwmp fwmp_zero = {0};
-
-	/* Normal read */
-	ResetMocks(0, 0);
-	TEST_EQ(RollbackFwmpRead(&fwmp), 0, "RollbackFwmpRead()");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n",
 		    "  tlcl calls");
-	TEST_EQ(0, memcmp(&fwmp, &mock_fwmp, sizeof(fwmp)), "  data");
-
-	/* Read error */
-	ResetMocks(1, TPM_E_IOERROR);
-	TEST_EQ(RollbackFwmpRead(&fwmp), TPM_E_IOERROR,
-		"RollbackFwmpRead() error");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n",
-		    "  tlcl calls");
-	TEST_EQ(0, memcmp(&fwmp, &fwmp_zero, sizeof(fwmp)), "  data clear");
-
-	/* Not present isn't an error; just returns empty data */
-	ResetMocks(1, TPM_E_BADINDEX);
-	TEST_EQ(RollbackFwmpRead(&fwmp), 0, "RollbackFwmpRead() not present");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n",
-		    "  tlcl calls");
-	TEST_EQ(0, memcmp(&fwmp, &fwmp_zero, sizeof(fwmp)), "  data clear");
-
-	/* Struct size too small */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.struct_size--;
-	TEST_EQ(RollbackFwmpRead(&fwmp), TPM_E_STRUCT_SIZE,
-		"RollbackFwmpRead() too small");
-
-	/* Struct size too large with good CRC */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.struct_size += 4;
-	RecalcFwmpCrc();
-	TEST_EQ(RollbackFwmpRead(&fwmp), 0, "RollbackFwmpRead() bigger");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n"
-		    "TlclRead(0x100a, 44)\n",
-		    "  tlcl calls");
-	TEST_EQ(0, memcmp(&fwmp, &mock_fwmp, sizeof(fwmp)), "  data");
-
-	/* Bad CRC causes retry, then eventual failure */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.crc++;
-	TEST_EQ(RollbackFwmpRead(&fwmp), TPM_E_CORRUPTED_STATE,
-		"RollbackFwmpRead() crc");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n",
-		    "  tlcl calls");
-
-	/* Struct size too large with bad CRC */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.struct_size += 4;
-	RecalcFwmpCrc();
-	mock_fwmp.fwmp.crc++;
-	TEST_EQ(RollbackFwmpRead(&fwmp), TPM_E_CORRUPTED_STATE,
-		"RollbackFwmpRead() bigger crc");
-	TEST_STR_EQ(mock_calls,
-		    "TlclRead(0x100a, 40)\n"
-		    "TlclRead(0x100a, 44)\n",
-		    "  tlcl calls");
-	TEST_EQ(0, memcmp(&fwmp, &fwmp_zero, sizeof(fwmp)), "  data");
-
-	/* Minor version difference ok */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.struct_version++;
-	RecalcFwmpCrc();
-	TEST_EQ(RollbackFwmpRead(&fwmp), 0, "RollbackFwmpRead() minor version");
-	TEST_EQ(0, memcmp(&fwmp, &mock_fwmp, sizeof(fwmp)), "  data");
-
-	/* Major version difference not ok */
-	ResetMocks(0, 0);
-	mock_fwmp.fwmp.struct_version += 0x10;
-	RecalcFwmpCrc();
-	TEST_EQ(RollbackFwmpRead(&fwmp), TPM_E_STRUCT_VERSION,
-		"RollbackFwmpRead() major version");
 }
 
 int main(int argc, char* argv[])
 {
 	FirmwareSpaceTest();
 	KernelSpaceTest();
+	FwmpSpaceTest();
 	MiscTest();
-	RollbackFwmpTest();
 
 	return gTestSuccess ? 0 : 255;
 }

@@ -65,7 +65,7 @@ static int require_official_os(struct vb2_context *ctx,
 
 	/* FWMP can require developer mode to use official OS */
 	if (params->fwmp &&
-	    (params->fwmp->flags & FWMP_DEV_ENABLE_OFFICIAL_ONLY))
+	    (params->fwmp->flags & VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY))
 		return 1;
 
 	/* Developer can request official OS via nvstorage */
@@ -209,7 +209,8 @@ static vb2_error_t vb2_verify_kernel_vblock(
 
 	/* If in developer mode and using key hash, check it */
 	if ((kBootDev == boot_mode) &&
-	    params->fwmp && (params->fwmp->flags & FWMP_DEV_USE_KEY_HASH)) {
+	    params->fwmp && (params->fwmp->flags &
+			     VB2_SECDATA_FWMP_DEV_USE_KEY_HASH)) {
 		struct vb2_packed_key *key = &keyblock->data_key;
 		uint8_t *buf = ((uint8_t *)key) + key->key_offset;
 		uint32_t buflen = key->key_size;
