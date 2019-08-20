@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42e40e8d_4daaef83",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-20T07:05:26Z",
+      "side": 1,
+      "message": "Fair enough... let\u0027s move them back to vboot_api_kernel.c",
+      "parentUuid": "8cfc4483_cde9c174",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faaf7230_961d7a31",
         "filename": "firmware/2lib/2secdata.c",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9886eadb_63cc70cc",
+        "filename": "firmware/2lib/2secdata.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-20T07:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faaf7230_961d7a31",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10895013_805ae062",
         "filename": "firmware/2lib/2secdatak.c",
         "patchSetId": 8
@@ -47,6 +83,24 @@
       "writtenOn": "2019-08-19T22:32:53Z",
       "side": 1,
       "message": "Shouldn\u0027t it be at least 2?",
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04045e4_09d6773a",
+        "filename": "firmware/2lib/2secdatak.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-20T07:05:26Z",
+      "side": 1,
+      "message": "Well.. we are checking this in ReadSpaceFirmware and ReadSpaceKernel.\n\nShould the version, UID, and CRC checking be moved from there to here?  Probably.  See CL:1758149.",
+      "parentUuid": "10895013_805ae062",
       "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -111,6 +165,30 @@
       "side": 1,
       "message": "You mean it\u0027s hard to read, or why? Maybe it would look better if cleanup could take a vb2_error_t and then return that if it\u0027s not SUCCESS?",
       "parentUuid": "7b1daaf6_9d6092b4",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 2
+      },
+      "revId": "a6a91227da93719645430bb8bf31db1b8bc3421b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28cd525_a944bc46",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-20T07:05:26Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "ef7a4502_8874339e",
       "range": {
         "startLine": 459,
         "startChar": 0,
