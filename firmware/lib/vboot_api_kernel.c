@@ -688,13 +688,3 @@ vb2_error_t VbVerifyMemoryBootImage(struct vb2_context *ctx,
 	retval = vb2_kernel_cleanup(ctx, retval);
 	return retval;
 }
-
-vb2_error_t VbUnlockDevice(struct vb2_context *ctx)
-{
-	VB2_DEBUG("Enabling dev-mode...\n");
-	if (VB2_SUCCESS != SetVirtualDevMode(ctx, 1))
-		return VBERROR_TPM_SET_BOOT_MODE_STATE;
-
-	VB2_DEBUG("Mode change will take effect on next reboot.\n");
-	return VB2_SUCCESS;
-}
