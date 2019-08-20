@@ -24,7 +24,7 @@ int main(void)
 	LoadKernel(0, 0);
 
 	/* rollback_index.h */
-	RollbackKernelLock();
+	LockSpaceKernel();
 
 	/* tlcl.h */
 	TlclStartup();
