@@ -5,21 +5,19 @@
  * Tests for vboot_api_kernel, part 4 - select and load kernel
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "2secdata.h"
-#include "2sysincludes.h"
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2secdata.h"
+#include "2sysincludes.h"
 #include "ec_sync.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "test_common.h"
+#include "tlcl.h"
+#include "tss_constants.h"
 #include "vboot_audio.h"
 #include "vboot_common.h"
 #include "vboot_kernel.h"
@@ -37,7 +35,7 @@ static struct vb2_gbb_header gbb;
 
 static uint32_t rkr_version;
 static uint32_t new_version;
-static struct RollbackSpaceFwmp rfr_fwmp;
+static struct vb2_secdata_fwmp rfr_fwmp;
 static int rkr_retval, rkw_retval, rkl_retval, rfr_retval;
 static vb2_error_t vbboot_retval;
 
@@ -105,56 +103,58 @@ vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
 	return VB2_SUCCESS;
 }
 
-uint32_t ReadSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t secdata_firmware_read(struct vb2_context *c)
 {
-	return VB2_SUCCESS;
+	return TPM_SUCCESS;
 }
 
-uint32_t WriteSpaceFirmware(RollbackSpaceFirmware *rsk)
+uint32_t secdata_firmware_write(struct vb2_context *c)
 {
-	return VB2_SUCCESS;
+	return TPM_SUCCESS;
 }
 
-uint32_t ReadSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t secdata_kernel_read(struct vb2_context *c)
 {
-	return VB2_SUCCESS;
+	return TPM_SUCCESS;
 }
 
-uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
+uint32_t secdata_kernel_write(struct vb2_context *c)
 {
-	return VB2_SUCCESS;
+	return TPM_SUCCESS;
 }
 
-uint32_t RollbackKernelLock(void)
+uint32_t TlclLockPhysicalPresence(void)
 {
 	return rkl_retval;
 }
 
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
+uint32_t secdata_fwmp_read(struct vb2_context *c)
 {
-	memcpy(fwmp, &rfr_fwmp, sizeof(*fwmp));
+	memcpy(&c->secdata_fwmp, &rfr_fwmp, sizeof(rfr_fwmp));
 	return rfr_retval;
 }
 
-vb2_error_t vb2_secdata_init(struct vb2_context *c)
+vb2_error_t vb2_secdata_firmware_init(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb2_secdatak_init(struct vb2_context *c)
+vb2_error_t vb2_secdata_kernel_init(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb2_secdatak_get(struct vb2_context *c,
-			     enum vb2_secdatak_param param, uint32_t *dest)
+vb2_error_t vb2_secdata_kernel_get(struct vb2_context *c,
+				   enum vb2_secdata_kernel_param param,
+				   uint32_t *dest)
 {
 	*dest = rkr_version;
 	return rkr_retval;
 }
 
-vb2_error_t vb2_secdatak_set(struct vb2_context *c,
-			     enum vb2_secdatak_param param, uint32_t value)
+vb2_error_t vb2_secdata_kernel_set(struct vb2_context *c,
+				   enum vb2_secdata_kernel_param param,
+				   uint32_t value)
 {
 	rkr_version = value;
 	return rkw_retval;

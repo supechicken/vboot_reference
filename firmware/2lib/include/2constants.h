@@ -26,6 +26,8 @@
 #define VB2_SECDATA_SIZE 10  /* TODO: Remove once coreboot is switched over */
 #define VB2_SECDATA_KERNEL_SIZE 13
 #define VB2_SECDATAK_SIZE 13  /* TODO: Remove once coreboot is switched over */
+#define VB2_SECDATA_FWMP_MIN_SIZE 40
+#define VB2_SECDATA_FWMP_MAX_SIZE 64
 
 /*
  * Recommended size of work buffer for firmware verification stage.

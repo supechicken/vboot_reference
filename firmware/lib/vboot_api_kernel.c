@@ -15,7 +15,7 @@
 #include "2sysincludes.h"
 #include "ec_sync.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "utility.h"
 #include "vb2_common.h"
 #include "vboot_api.h"
@@ -24,90 +24,15 @@
 #include "vboot_test.h"
 
 /* Global variables */
-static struct RollbackSpaceFwmp fwmp;
 static LoadKernelParams lkp;
 
 #ifdef CHROMEOS_ENVIRONMENT
-/* Global variable accessors for unit tests */
-
-struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void)
-{
-	return &fwmp;
-}
-
+/* Global variable accessor for unit tests */
 struct LoadKernelParams *VbApiKernelGetParams(void)
 {
 	return &lkp;
 }
-
 #endif
-
-static vb2_error_t vb2_secdata_load(struct vb2_context *ctx)
-{
-	if (ReadSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata)) {
-		VB2_DEBUG("Error reading secdata\n");
-		return VB2_RECOVERY_RW_TPM_R_ERROR;
-	}
-
-	return vb2_secdata_init(ctx);
-}
-
-static vb2_error_t vb2_secdata_commit(struct vb2_context *ctx)
-{
-	if (!(ctx->flags & VB2_CONTEXT_SECDATA_CHANGED))
-		return VB2_SUCCESS;
-
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-		VB2_DEBUG("Error: secdata modified in non-recovery mode?\n");
-		return VB2_ERROR_UNKNOWN;
-	}
-
-	VB2_DEBUG("Saving secdata\n");
-	if (WriteSpaceFirmware((RollbackSpaceFirmware *)&ctx->secdata)) {
-		VB2_DEBUG("Error writing secdata\n");
-		return VB2_ERROR_UNKNOWN;
-	}
-	ctx->flags &= ~VB2_CONTEXT_SECDATA_CHANGED;
-
-	return VB2_SUCCESS;
-}
-
-static vb2_error_t vb2_secdatak_load(struct vb2_context *ctx)
-{
-	if (ReadSpaceKernel((RollbackSpaceKernel *)&ctx->secdatak)) {
-		VB2_DEBUG("Error reading secdatak\n");
-		return VB2_RECOVERY_RW_TPM_R_ERROR;
-	}
-
-	return vb2_secdatak_init(ctx);
-}
-
-static vb2_error_t vb2_secdatak_commit(struct vb2_context *ctx)
-{
-	vb2_error_t rv = VB2_SUCCESS;
-
-	if (ctx->flags & VB2_CONTEXT_SECDATAK_CHANGED) {
-		VB2_DEBUG("Saving secdatak\n");
-		if (WriteSpaceKernel((RollbackSpaceKernel *)&ctx->secdatak)) {
-			VB2_DEBUG("Error writing secdatak\n");
-			rv = VB2_ERROR_UNKNOWN;
-		}
-		ctx->flags &= ~VB2_CONTEXT_SECDATAK_CHANGED;
-	}
-
-	/* Lock secdatak if not in recovery mode */
-	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		VB2_DEBUG("Locking secdatak\n");
-		if (RollbackKernelLock()) {
-			VB2_DEBUG("Error locking secdatak\n");
-			vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
-				   VB2_RECOVERY_RW_TPM_L_ERROR);
-			rv = VB2_ERROR_UNKNOWN;
-		}
-	}
-
-	return rv;
-}
 
 /**
  * Set recovery request (called from vboot_api_kernel.c functions only)
@@ -129,11 +54,6 @@ void vb2_nv_commit(struct vb2_context *ctx)
 	VbExNvStorageWrite(ctx->nvdata);
 }
 
-uint32_t vb2_get_fwmp_flags(void)
-{
-	return fwmp.flags;
-}
-
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
 	vb2_error_t retval = VB2_ERROR_UNKNOWN;
@@ -144,7 +64,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VB2_DEBUG("VbTryLoadKernel() start, get_info_flags=0x%x\n",
 		  (unsigned)get_info_flags);
 
-	lkp.fwmp = &fwmp;
+	lkp.fwmp = (struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 	lkp.disk_handle = NULL;
 
 	/* Find disks */
@@ -307,8 +227,8 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx)
 	}
 
 	if ((shared->kernel_version_tpm > shared->kernel_version_tpm_start) &&
-	    vb2_secdatak_set(ctx, VB2_SECDATAK_VERSIONS,
-			     shared->kernel_version_tpm)) {
+	    vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+				   shared->kernel_version_tpm)) {
 		VB2_DEBUG("Error writing kernel versions to TPM.\n");
 		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_W_ERROR);
 		return VBERROR_TPM_WRITE_KERNEL;
@@ -391,7 +311,7 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
 
 	/* Load secdata and secdatak from the TPM. */
-	if (vb2_secdata_load(ctx) || vb2_secdatak_load(ctx)) {
+	if (secdata_firmware_read(ctx) || secdata_kernel_read(ctx)) {
 		VB2_DEBUG("Load secdata/secdatak failed\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -400,8 +320,8 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	}
 
 	/* Read kernel version from the TPM.  Ignore errors in recovery mode. */
-	if (vb2_secdatak_get(ctx, VB2_SECDATAK_VERSIONS,
-			     &shared->kernel_version_tpm)) {
+	if (vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+				   &shared->kernel_version_tpm)) {
 		VB2_DEBUG("Unable to get kernel versions from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -413,8 +333,8 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 
 	/* Read FWMP.  Ignore errors in recovery mode. */
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_FWMP) {
-		memset(&fwmp, 0, sizeof(fwmp));
-	} else if (RollbackFwmpRead(&fwmp)) {
+		memset(&ctx->secdata_fwmp, 0, sizeof(ctx->secdata_fwmp));
+	} else if (secdata_fwmp_read(ctx)) {
 		VB2_DEBUG("Unable to get FWMP from TPM\n");
 		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_TPM_R_ERROR);
@@ -442,10 +362,11 @@ static void vb2_kernel_phase4(struct vb2_context *ctx,
 
 static vb2_error_t vb2_kernel_cleanup(struct vb2_context *ctx, vb2_error_t rv)
 {
-	vb2_secdata_commit(ctx);
+	secdata_firmware_write(ctx);
+	secdata_kernel_write(ctx);
 
 	/* If rv already has a previous error, don't change it. */
-	if (vb2_secdatak_commit(ctx) && VB2_SUCCESS == rv)
+	if (secdata_kernel_lock(ctx) && rv == VB2_SUCCESS)
 		rv = VBERROR_TPM_LOCK_KERNEL;
 
 	vb2_nv_commit(ctx);

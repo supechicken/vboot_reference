@@ -6,7 +6,6 @@
 #include "2sysincludes.h"
 #include "cgptlib.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
 #include "tlcl.h"
 #include "vboot_common.h"
 #include "vboot_kernel.h"
@@ -21,9 +20,6 @@ int main(void)
 
 	/* load_kernel_fw.h */
 	LoadKernel(0, 0);
-
-	/* rollback_index.h */
-	RollbackKernelLock();
 
 	/* tlcl.h */
 	TlclStartup();
