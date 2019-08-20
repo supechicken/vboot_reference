@@ -1,11 +1,14 @@
 /* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
+ *
+ * Very simple 8-bit CRC function.
  */
 
 #include "2sysincludes.h"
 #include "2crc8.h"
 
+/* Note that the CRC-8 will evaluate to zero for a buffer of all zeroes. */
 uint8_t vb2_crc8(const void *vptr, uint32_t size)
 {
 	const uint8_t *data = vptr;
