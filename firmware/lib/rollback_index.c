@@ -111,6 +111,8 @@ vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value)
 {
 	uint32_t flags;
 
+	VB2_DEBUG("Enabling developer mode...\n");
+
 	if (vb2_secdata_get(ctx, VB2_SECDATA_FLAGS, &flags))
 		return VBERROR_TPM_FIRMWARE_SETUP;
 
@@ -127,6 +129,8 @@ vb2_error_t SetVirtualDevMode(struct vb2_context *ctx, int value)
 
 	if (vb2_secdata_set(ctx, VB2_SECDATA_FLAGS, flags))
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
+
+	VB2_DEBUG("Mode change will take effect on next reboot\n");
 
 	return VB2_SUCCESS;
 }
