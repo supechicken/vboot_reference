@@ -24,6 +24,7 @@
 /* Size of secure data spaces used by vboot */
 #define VB2_SECDATA_SIZE 10
 #define VB2_SECDATAK_SIZE 13
+#define VB2_SECDATA_FWMP_MAX_SIZE 64
 
 /*
  * Recommended size of work buffer for firmware verification stage.
