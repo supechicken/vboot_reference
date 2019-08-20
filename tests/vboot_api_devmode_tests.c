@@ -120,6 +120,8 @@ static void ResetMocks(void)
 	vb2_init_context(&ctx);
 	vb2_nv_init(&ctx);
 
+	vb2api_secdata_fwmp_create(&ctx);
+
 	sd = vb2_get_sd(&ctx);
 	sd->vbsd = shared;
 
