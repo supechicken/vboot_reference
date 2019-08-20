@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-
 #ifndef VBOOT_REFERENCE_GBB_UTILITY_H_
 #define VBOOT_REFERENCE_GBB_UTILITY_H_
 
@@ -99,4 +98,4 @@ class GoogleBinaryBlockUtil {
 
 }  // namespace vboot_reference
 
-#endif  // VBOOT_REFERENCE_GBB_UTILITY_H_
+#endif  /* VBOOT_REFERENCE_GBB_UTILITY_H_ */

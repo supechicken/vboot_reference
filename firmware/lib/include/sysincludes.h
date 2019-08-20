@@ -1,9 +1,8 @@
 /* Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
- */
-
-/* System includes for vboot reference library.  This is the ONLY
+ *
+ * System includes for vboot reference library.  This is the ONLY
  * place in firmware/ where system headers may be included via
  * #include <...>, so that there's only one place that needs to be
  * fixed up for platforms which don't have all the system includes.
