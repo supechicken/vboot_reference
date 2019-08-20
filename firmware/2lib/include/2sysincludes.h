@@ -10,8 +10,8 @@
  * platforms which don't have all the system includes.
  */
 
-#ifndef VBOOT_REFERENCE_2_SYSINCLUDES_H_
-#define VBOOT_REFERENCE_2_SYSINCLUDES_H_
+#ifndef VBOOT_REFERENCE_2SYSINCLUDES_H_
+#define VBOOT_REFERENCE_2SYSINCLUDES_H_
 
 #include <inttypes.h>  /* For PRIu64 */
 #include <stddef.h>
@@ -24,4 +24,4 @@
 #include <memory.h>
 #endif
 
-#endif  /* VBOOT_REFERENCE_2_SYSINCLUDES_H_ */
+#endif  /* VBOOT_REFERENCE_2SYSINCLUDES_H_ */
