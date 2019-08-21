@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "14e21cb4_ea4024e5",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-21T04:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa5f991e_52fdbf6d",
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b014ff_1ee78dd9",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9d0631f9_a1ea8672",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-21T04:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b014ff_1ee78dd9",
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bc07176_1f70a6fa",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
@@ -47,6 +83,30 @@
       "writtenOn": "2019-08-21T01:19:13Z",
       "side": 1,
       "message": "Right now RollbackKernelLock still checks for recovery mode. We don\u0027t really need the check twice.",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cfa055_6b43c695",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-21T04:20:01Z",
+      "side": 1,
+      "message": "Yes, I realized that... :/ Let\u0027s just take the check out of RollbackKernelLock.",
+      "parentUuid": "7bc07176_1f70a6fa",
       "range": {
         "startLine": 102,
         "startChar": 24,

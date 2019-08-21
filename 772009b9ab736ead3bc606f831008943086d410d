@@ -211,6 +211,24 @@
       "revId": "772009b9ab736ead3bc606f831008943086d410d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956fd2bb_0872ae52",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-21T04:20:01Z",
+      "side": 1,
+      "message": "Fair enough.  Let\u0027s just lock it in both paths.",
+      "parentUuid": "de090445_3943c295",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
