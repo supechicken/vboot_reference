@@ -295,53 +295,29 @@ static vb2_error_t enter_language_menu(struct vb2_context *ctx)
 
 static vb2_error_t enter_recovery_screen(struct vb2_context *ctx, int step)
 {
+  VB2_DEBUG("enter_recovery_screen: step = %d\n", step);
 	if (!vb2_allow_recovery(ctx))
 		vb2_change_menu(VB_GROOT_RECOVERY_BROKEN, 0);
 	else if (usb_nogood)
 		vb2_change_menu(VB_GROOT_RECOVERY_NO_GOOD, 0);
 	else
 	  switch(step) {
-	  /* case 1: */
-	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0); */
-	  /* case 2: */
-	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0); */
-	  /* case 3: */
-	  /* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0); */
+	  case 1:
+	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
+		break;
+	  case 2:
+	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0);
+		break;
+	  case 3:
+	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0);
+		break;
 	  default:
 		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
+		break;
 	  }
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
-
-#if 0
-static vb2_error_t step_prev_recovery_screen(struct vb2_context *ctx)
-{
-  VB2_DEBUG("entering step_prev_recovery_screen:  \n");
-  VB2_DEBUG("current_menu = 0x%x\n", current_menu);
-	switch (current_menu) {
-	case VB_GROOT_RECOVERY_INSERT:
-		vb2_change_menu(VB_GROOT_RECOVERY_INSERT, 0);
-		break;
-	case VB_GROOT_RECOVERY_STEP1:
-		vb2_change_menu(VB_GROOT_RECOVERY_INSERT, 0);
-		break;
-	case VB_GROOT_RECOVERY_STEP2:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
-		break;
-	case VB_GROOT_RECOVERY_STEP3:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0);
-		break;
-	default:
-		break;
-	}
-	VB2_DEBUG("current_menu = 0x%x\n", current_menu);
-	vb2_draw_current_screen(ctx);
-	VB2_DEBUG("current_screen = 0x%x\n", menus[current_menu].screen);
-	VB2_DEBUG("exitting step_prev_recovery_screen\n");
-	return VBERROR_KEEP_LOOPING;
-}
-#endif
 
 static vb2_error_t step_next_recovery_screen(struct vb2_context *ctx)
 {
@@ -447,6 +423,8 @@ static vb2_error_t show_log_action(struct vb2_context *ctx)
 static vb2_error_t goto_prev_menu(struct vb2_context *ctx)
 {
 	// pop off current menu and change to new top of the stack
+	// NOTE: hacky, but need to pop off two screens because
+	// vb2_change_menu will push the new screen back on
 	pop();
 	prev_menu = pop();
 
@@ -466,9 +444,9 @@ static vb2_error_t goto_prev_menu(struct vb2_context *ctx)
 	case VB_GROOT_RECOVERY_STEP1:
 	  return enter_recovery_screen(ctx, 1);
 	case VB_GROOT_RECOVERY_STEP2:
-	  return enter_recovery_screen(ctx, 1);
-	case VB_GROOT_RECOVERY_STEP3:
 	  return enter_recovery_screen(ctx, 2);
+	case VB_GROOT_RECOVERY_STEP3:
+	  return enter_recovery_screen(ctx, 3);
 	case VB_GROOT_RECOVERY_INSERT:
 	case VB_GROOT_RECOVERY_NO_GOOD:
 	  // send back to first recovery screen for now.  will need to modify later.
