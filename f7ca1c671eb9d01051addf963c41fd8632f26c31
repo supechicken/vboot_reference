@@ -2,6 +2,97 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe69a94a_19917ae6",
+        "filename": "firmware/2lib/2fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "Should check that struct_size is reasonable (i.e. within the MAX_SIZE limit) first.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436f33b6_18efa04a",
+        "filename": "firmware/2lib/2fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "Should we also interpret the firmware and kernel space versions to have a major/minor split like this, maybe? (We\u0027ve never bumped the \"major\" part yet so we could retcon it like that.)",
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6241aa3_75e4ad6f",
+        "filename": "firmware/2lib/2fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this... you know... actually create a valid FWMP?",
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61e9182_b5c0509f",
+        "filename": "firmware/2lib/2fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "Should maybe set an SD flag here like for the secdatas, so you can make sure it is valid in the manipulation-functions?",
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00bbb62d_b2d2c8ba",
+        "filename": "firmware/2lib/2fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "When are these coming?",
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b173a1a0_7efa7017",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -19,6 +110,64 @@
         "endLine": 254,
         "endChar": 20
       },
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c2d2847_26977e6e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "Yes, I don\u0027t think you need an extra field. As long as the FWMP is valid, it should be okay to just use the size field in it. (If the FWMP is not valid we shouldn\u0027t allow any function to do anything with it other than recreate from scratch.)\n\nNot really sure what you mean about the offset part..?",
+      "parentUuid": "b173a1a0_7efa7017",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a13e1b8_d0c150c0",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "This seems somewhat huge... do we really need that much?",
+      "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9780180_0364ae28",
+        "filename": "tests/vb2_fwmp_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T02:47:50Z",
+      "side": 1,
+      "message": "nit: run check again to make sure it succeeds on valid data?",
       "revId": "f7ca1c671eb9d01051addf963c41fd8632f26c31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
