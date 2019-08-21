@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0ef845a_7001b555",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T01:25:57Z",
+      "side": 0,
+      "message": "Is this no longer true? I\u0027m pretty sure we still rely on it, so it\u0027s probably a good idea to keep pointing it out here (because it differs from the normal API rules).",
+      "revId": "b204c25ab5ff0dc15484fc886707faa9e4e0f4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
