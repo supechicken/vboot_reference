@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa5f991e_52fdbf6d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T01:22:43Z",
+      "side": 1,
+      "message": "Can get rid of these prints if we have it in vb2_secdata_set() now",
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59b014ff_1ee78dd9",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
