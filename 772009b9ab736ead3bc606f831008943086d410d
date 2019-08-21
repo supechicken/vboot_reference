@@ -193,6 +193,24 @@
       "revId": "772009b9ab736ead3bc606f831008943086d410d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de090445_3943c295",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T01:19:13Z",
+      "side": 1,
+      "message": "Well, fb_boot() certainly isn\u0027t locking it either. It should be locked somewhere.",
+      "parentUuid": "ef6a5618_535914fd",
+      "revId": "772009b9ab736ead3bc606f831008943086d410d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

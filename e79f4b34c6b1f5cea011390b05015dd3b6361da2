@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b014ff_1ee78dd9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T01:19:13Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t display this in recovery mode",
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc07176_1f70a6fa",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-21T01:19:13Z",
+      "side": 1,
+      "message": "Right now RollbackKernelLock still checks for recovery mode. We don\u0027t really need the check twice.",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "e79f4b34c6b1f5cea011390b05015dd3b6361da2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
