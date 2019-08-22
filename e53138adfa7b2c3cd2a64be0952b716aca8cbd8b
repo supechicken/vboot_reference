@@ -1,0 +1,402 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "327e6d95_5c1f018a",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Oh okay, now I get what you were asking in your email. I think handling it like this is fine.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30834691_d01f7f83",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "nit: not sure if you should print this because this will be a normal occurrence in some cases",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "517fd175_944a53bd",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "nit: Maybe mention that you\u0027d also have to be more careful with the struct_size check at the top.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9793670d_474fa535",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "For other cases (NVRAM, secdata), we get and set whole flags fields as bytes. Maybe it would be better to do that here as well for consistency.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6562008_6b88f7cf",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "You should check if the value actually changed from this.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7010d3f_cbde1dd2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we want this to pull in all those private structure definitions?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9704c57_4211bb3a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Also mention how fwmp_check() should be used to figure out the correct size?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0882fb84_2d179088",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "I wonder if we should __atttribute__((aligned(4))) all of these while we\u0027re here.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f3ce25_6512fa20",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "docstrings?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bfc495_ac55b860",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "nit: on little-endian this is actually LWRG (for other constants like V2SD magic we usually spell the little-endian representation)",
+      "range": {
+        "startLine": 70,
+        "startChar": 41,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986547d2_e93946f0",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Doesn\u0027t really need __attribute__((packed)). Unlike for the other two, we apparently were clever enough to not put misaligned members in here. (__attribute__((packed)) causes GCC to generate really dumb code that reads every byte individually, so I prefer to avoid it where possible.)",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "566e44f6_7b1e13da",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Would probably be a good idea to move these into 2constants.h. They are currently duplicated in antirollback.h in coreboot, would be better to just have a single source of truth.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca052ce_957f61e1",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Do these even still need to be exported now?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e2ca42_aa2da25b",
+        "filename": "firmware/lib/mocked_rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here anymore. If rollback_index.c is not compiled, nothing will even call this. Instead, you should implement the vb2_secdata*_load/commit() stuff here (and they should be okay just doing memset because then you\u0027re skipping all the validity tests).",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c07db5_1e4aa832",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Isn\u0027t this out of order?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253a9fa6_f668a294",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "This looks like it\u0027s missing a negation?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc71d4b_557ae618",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Do we actually need this? I don\u0027t think there\u0027s any caller that sets this to 0, right? The only thing that can set the developer mode switch back to 0 nowadays is coreboot, triggered by an NVRAM flag.",
+      "range": {
+        "startLine": 259,
+        "startChar": 64,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8124236c_cef93bff",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Can we obviate the need for this? LoadKernel() and friends should use the 2secdata_fwmp.c accessors, not read the structure directly. (In fact, it would be very nice if we could keep the struct definitions for FWMP, both secdatas and even NVRAM in private headers that only their respective .c files (and tests) may include... that way we could ensure that nobody else can bypass the intended accessors.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5a0ac1_635d22db",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "nit: might make sense to just call fwmp_create() here instead? (It will happen anyway, but calling it explicitly would be more obvious.)\n\nSame goes for the memset inside ReadSpaceFwmp(), I guess...",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0377469b_4d58dcbf",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Should also be secdatak_commit(), that seems cleaner",
+      "range": {
+        "startLine": 490,
+        "startChar": 6,
+        "endLine": 490,
+        "endChar": 21
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2392dcc2_e39bba56",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Yeah... I don\u0027t think making the API based on single flags made this any more readable. Probably best to let it return the whole thing.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e553c57c_2616bb2e",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T22:42:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be secdatak_commit()? (Even if we never expect it to write anything here, that seems cleaner.)",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
