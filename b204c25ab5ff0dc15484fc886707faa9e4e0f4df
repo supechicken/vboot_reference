@@ -34,6 +34,24 @@
       "revId": "b204c25ab5ff0dc15484fc886707faa9e4e0f4df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8254aa1d_417f4938",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T02:21:25Z",
+      "side": 0,
+      "message": "Oh... yeah, I guess that would have to be called earlier. Your vb2api_init() patches aren\u0027t in yet, right? I think I\u0027m getting a bit confused because you\u0027re juggling so many things at once here. ;) When we implement the coreboot support for the context API rework, we\u0027ll have to make sure vb2api_init() gets called before all the TPM init stuff because that may need this.",
+      "parentUuid": "1fb3eb35_5e2412b7",
+      "revId": "b204c25ab5ff0dc15484fc886707faa9e4e0f4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
