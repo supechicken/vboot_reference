@@ -19,16 +19,6 @@
 #define offsetof(A,B) __builtin_offsetof(A,B)
 #endif
 
-#ifdef FOR_TEST
-/*
- * Compiling for unit test, so we need the real implementations of
- * rollback functions.  The unit test mocks the underlying tlcl
- * functions, so this is okay to run on the host.
- */
-#undef CHROMEOS_ENVIRONMENT
-#undef DISABLE_ROLLBACK_TPM
-#endif
-
 #define RETURN_ON_FAILURE(tpm_command) do {				\
 		uint32_t result_;					\
 		if ((result_ = (tpm_command)) != TPM_SUCCESS) {		\
@@ -188,22 +178,6 @@ uint32_t WriteSpaceKernel(RollbackSpaceKernel *rsk)
 	return TPM_SUCCESS;
 }
 
-#ifdef DISABLE_ROLLBACK_TPM
-/* Dummy implementations which don't support TPM rollback protection */
-
-uint32_t RollbackKernelLock(void)
-{
-	return TPM_SUCCESS;
-}
-
-uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
-{
-	memset(fwmp, 0, sizeof(*fwmp));
-	return TPM_SUCCESS;
-}
-
-#else
-
 uint32_t RollbackKernelLock(void)
 {
 	static int kernel_locked = 0;
@@ -294,5 +268,3 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp)
 	memcpy(fwmp, &u.fwmp, sizeof(*fwmp));
 	return TPM_SUCCESS;
 }
-
-#endif /* DISABLE_ROLLBACK_TPM */
