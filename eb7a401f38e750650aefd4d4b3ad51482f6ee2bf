@@ -34,6 +34,23 @@
       "revId": "eb7a401f38e750650aefd4d4b3ad51482f6ee2bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e9980dc_7fd835f8",
+        "filename": "firmware/2lib/include/2crc8.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-22T02:53:44Z",
+      "side": 1,
+      "message": "Oh wow, it\u0027s already in here. I have been looking that up the other day and ended up reversing it out of the code. Maybe that means we should also put it in the .c file for visibility, or maybe I\u0027m just dumb. ^^",
+      "revId": "eb7a401f38e750650aefd4d4b3ad51482f6ee2bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
