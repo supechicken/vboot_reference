@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cac95dd_37ce0393",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-26T06:26:05Z",
+      "side": 1,
+      "message": "This now causing problems when compiling without using the ebuild, which is presumably still using GCC:\n\ncc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "a5afd01feb0b4b45adbcd8ab38ab8a2ef2a2ef67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
