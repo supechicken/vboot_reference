@@ -253,7 +253,7 @@ static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (is_rw_ab) {
+		if (ctx->flags & VB2_CONTEXT_EC_EFS) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
