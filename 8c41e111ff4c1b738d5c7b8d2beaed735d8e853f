@@ -16,6 +16,24 @@
       "revId": "8c41e111ff4c1b738d5c7b8d2beaed735d8e853f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44239eac_e6ba0aa4",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 0,
+      "message": "I mean... sure we can keep it here for now.  But in theory the caller can choose any place it wants to store the data.  It doesn\u0027t even need to be in a TPM.",
+      "parentUuid": "f1fb3a6a_6c4331ab",
+      "revId": "8c41e111ff4c1b738d5c7b8d2beaed735d8e853f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

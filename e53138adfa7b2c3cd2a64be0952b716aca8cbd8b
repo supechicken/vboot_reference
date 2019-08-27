@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29bf6f04_6eac61c9",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "327e6d95_5c1f018a",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30834691_d01f7f83",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "nit: not sure if you should print this because this will be a normal occurrence in some cases",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dafa074_64d3d258",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "I think it could still be potentially useful for debugging something in the future based on logs.  Would it help if I made the message less imposing?  E.g. \"still need %d bytes\".",
+      "parentUuid": "30834691_d01f7f83",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3172df48_32fa33ac",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "How so?  Is it not sufficient to check that it lies in between sizeof(fwmp) and MAX_SIZE?",
+      "parentUuid": "517fd175_944a53bd",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9793670d_474fa535",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 10
@@ -64,6 +118,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "For other cases (NVRAM, secdata), we get and set whole flags fields as bytes. Maybe it would be better to do that here as well for consistency.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56347ac8_2195ab10",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Don\u0027t vb2_nv_get and vb2_nv_set work with individual flags?  Granted, it seems that those flags are sometimes longer than one bit, but I don\u0027t see anywhere that returns the full nvram flags field, or accesses it directly (ctx-\u003envdata).",
+      "parentUuid": "9793670d_474fa535",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "564c7f2d_558689e9",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6562008_6b88f7cf",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7010d3f_cbde1dd2",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -98,6 +188,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "I don\u0027t think we want this to pull in all those private structure definitions?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6402424_1e8185fd",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Right.  I knew there was *some* reason those contants were in 2constants.h....",
+      "parentUuid": "e7010d3f_cbde1dd2",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "fffd45f1_3b4a7ca2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9704c57_4211bb3a",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0882fb84_2d179088",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -132,6 +258,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "I wonder if we should __atttribute__((aligned(4))) all of these while we\u0027re here.",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058cfbb5_5e5dc1d0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Still working on my __attribute__ foo, but if every field length is a multiple of 4, doesn\u0027t that mean it is already 4-aligned?\nAnd whatever we want to do, it may be a better fit to put it in the vb2_context-in-vb2_shared_data CL.",
+      "parentUuid": "0882fb84_2d179088",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -152,6 +296,24 @@
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f8ce08_07bbd5f6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f3ce25_6512fa20",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -178,6 +340,30 @@
     },
     {
       "key": {
+        "uuid": "031ff84b_577bf8b3",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3bfc495_ac55b860",
+      "range": {
+        "startLine": 70,
+        "startChar": 41,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "986547d2_e93946f0",
         "filename": "firmware/2lib/include/2secdata.h",
         "patchSetId": 10
@@ -192,6 +378,24 @@
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616f2a5c_9799ec6f",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "986547d2_e93946f0",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -212,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "eaa07e9e_c8b798a3",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "Again... I don\u0027t know how I feel about this -- I feel like it isn\u0027t something that should be up to vboot to decide.",
+      "parentUuid": "566e44f6_7b1e13da",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca052ce_957f61e1",
         "filename": "firmware/lib/include/rollback_index.h",
         "patchSetId": 10
@@ -223,6 +445,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "Do these even still need to be exported now?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a682b17_fc551c82",
+        "filename": "firmware/lib/include/rollback_index.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-27T16:02:30Z",
+      "side": 1,
+      "message": "I think if we want to test them, we still need to export them?",
+      "parentUuid": "8ca052ce_957f61e1",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
