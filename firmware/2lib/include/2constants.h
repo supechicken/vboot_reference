@@ -22,8 +22,10 @@
 #define VB2_NVDATA_SIZE_V2 64
 
 /* Size of secure data spaces used by vboot */
-#define VB2_SECDATA_SIZE 10
-#define VB2_SECDATAK_SIZE 13
+#define VB2_SECDATA_FIRMWARE_SIZE 10
+#define VB2_SECDATA_SIZE 10  /* TODO: Remove once coreboot is switched over */
+#define VB2_SECDATA_KERNEL_SIZE 13
+#define VB2_SECDATAK_SIZE 13  /* TODO: Remove once coreboot is switched over */
 
 /*
  * Recommended size of work buffer for firmware verification stage.

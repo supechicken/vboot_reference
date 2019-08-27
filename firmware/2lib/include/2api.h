@@ -57,9 +57,12 @@ enum vb2_context_flags {
 	VB2_CONTEXT_NVDATA_CHANGED = (1 << 0),
 
 	/*
-	 * Verified boot has changed secdata[].  Caller must save secdata[]
-	 * back to its underlying storage, then may clear this flag.
+	 * Verified boot has changed secdata_firmware[].  Caller must save
+	 * secdata_firmware[] back to its underlying storage, then may clear
+	 * this flag.
 	 */
+	VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED = (1 << 1),
+	/* TODO: Remove once coreboot has switched over */
 	VB2_CONTEXT_SECDATA_CHANGED = (1 << 1),
 
 	/* Recovery mode is requested this boot */
@@ -96,10 +99,11 @@ enum vb2_context_flags {
 	VB2_CONTEXT_DISABLE_DEVELOPER_MODE = (1 << 9),
 
 	/*
-	 * Verified boot has changed secdatak[].  Caller must save secdatak[]
-	 * back to its underlying storage, then may clear this flag.
+	 * Verified boot has changed secdata_kernel[].  Caller must save
+	 * secdata_kernel[] back to its underlying storage, then may clear
+	 * this flag.
 	 */
-	VB2_CONTEXT_SECDATAK_CHANGED = (1 << 10),
+	VB2_CONTEXT_SECDATA_KERNEL_CHANGED = (1 << 10),
 
 	/*
 	 * Allow kernel verification to roll forward the version in secdatak[].
@@ -214,7 +218,7 @@ struct vb2_context {
 	 * caller must save the data back to the secure non-volatile location
 	 * and then clear the flag.
 	 */
-	uint8_t secdata[VB2_SECDATA_SIZE];
+	uint8_t secdata[VB2_SECDATA_FIRMWARE_SIZE];
 
 	/*
 	 * Context pointer for use by caller.  Verified boot never looks at
@@ -243,11 +247,11 @@ struct vb2_context {
 	/*
 	 * Secure data for kernel verification stage.  Caller must fill this
 	 * from some secure non-volatile location.  If the
-	 * VB2_CONTEXT_SECDATAK_CHANGED flag is set when a function returns,
-	 * caller must save the data back to the secure non-volatile location
-	 * and then clear the flag.
+	 * VB2_CONTEXT_SECDATA_KERNEL_CHANGED flag is set when a function
+	 * returns, caller must save the data back to the secure non-volatile
+	 * location and then clear the flag.
 	 */
-	uint8_t secdatak[VB2_SECDATAK_SIZE];
+	uint8_t secdatak[VB2_SECDATA_KERNEL_SIZE];
 };
 
 /* Resource index for vb2ex_read_resource() */
@@ -298,15 +302,15 @@ enum vb2_pcr_digest {
  *	Load secdata from wherever you keep it.
  *
  *      	If it wasn't there at all (for example, this is the first boot
- *		of a new system in the factory), call vb2api_secdata_create()
- *		to initialize the data.
+ *		of a new system in the factory), call
+ *		vb2api_secdata_firmware_create() to initialize the data.
  *
  *		If access to your storage is unreliable (reads/writes may
- *		contain corrupt data), you may call vb2api_secdata_check() to
- *		determine if the data was valid, and retry reading if it
- *		wasn't.  (In that case, you should also read back and check the
- *		data after any time you write it, to make sure it was written
- *		correctly.)
+ *		contain corrupt data), you may call
+ *		vb2api_secdata_firmware_check() to determine if the data was
+ *		valid, and retry reading if it wasn't.  (In that case, you
+ *		should also read back and check the data after any time you
+ *		write it, to make sure it was written correctly.)
  *
  *	Call vb2api_fw_phase1().  At present, this nominally decides whether
  *	recovery mode is needed this boot.
@@ -345,15 +349,15 @@ enum vb2_pcr_digest {
  *	Load secdatak from wherever you keep it.
  *
  *      	If it wasn't there at all (for example, this is the first boot
- *		of a new system in the factory), call vb2api_secdatak_create()
- *		to initialize the data.
+ *		of a new system in the factory), call
+ *		vb2api_secdata_kernel_create() to initialize the data.
  *
  *		If access to your storage is unreliable (reads/writes may
- *		contain corrupt data), you may call vb2api_secdatak_check() to
- *		determine if the data was valid, and retry reading if it
- *		wasn't.  (In that case, you should also read back and check the
- *		data after any time you write it, to make sure it was written
- *		correctly.)
+ *		contain corrupt data), you may call
+ *		vb2api_secdata_kernel_check() to determine if the data was
+ *		valid, and retry reading if it wasn't.  (In that case, you
+ *		should also read back and check the data after any time you
+*		write it, to make sure it was written correctly.)
  *
  *	Call vb2api_kernel_phase1().  At present, this decides which key to
  *	use to verify kernel data - the recovery key from the GBB, or the
@@ -392,50 +396,66 @@ enum vb2_pcr_digest {
  */
 
 /**
- * Check the validity of the secure storage context.
+ * Check the validity of the firmware secure storage context.
  *
  * Checks version and CRC.
  *
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
+vb2_error_t vb2api_secdata_firmware_check(struct vb2_context *ctx);
+
+/* TODO: Remove this once coreboot is switched over to new name. */
 vb2_error_t vb2api_secdata_check(struct vb2_context *ctx);
 
 /**
- * Create fresh data in the secure storage context.
+ * Create fresh data in the firmware secure storage context.
  *
  * Use this only when initializing the secure storage context on a new machine
- * the first time it boots.  Do NOT simply use this if vb2api_secdata_check()
- * (or any other API in this library) fails; that could allow the secure data
- * to be rolled back to an insecure state.
+ * the first time it boots.  Do NOT simply use this if
+ * vb2api_secdata_firmware_check() (or any other API in this library) fails;
+ * that could allow the secure data to be rolled back to an insecure state.
  *
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
+vb2_error_t vb2api_secdata_firmware_create(struct vb2_context *ctx);
+
+/* TODO: Remove this once coreboot is switched over to new name. */
 vb2_error_t vb2api_secdata_create(struct vb2_context *ctx);
 
 /**
- * Check the validity of the kernel version secure storage context.
+ * Check the validity of the kernel secure storage context.
  *
  * Checks version, UID, and CRC.
  *
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
+vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx);
+
+/* TODO: Remove this once coreboot is switched over to new name. */
 vb2_error_t vb2api_secdatak_check(struct vb2_context *ctx);
 
 /**
- * Create fresh data in the kernel version secure storage context.
+ * Create fresh data in the kernel secure storage context.
  *
  * Use this only when initializing the secure storage context on a new machine
- * the first time it boots.  Do NOT simply use this if vb2api_secdatak_check()
- * (or any other API in this library) fails; that could allow the secure data
- * to be rolled back to an insecure state.
+ * the first time it boots.  Do NOT simply use this if
+ * vb2api_secdata_kernel_check() (or any other API in this library) fails; that
+ * could allow the secure data to be rolled back to an insecure state.
  *
  * @param ctx		Context pointer
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
+vb2_error_t vb2api_secdata_kernel_create(struct vb2_context *ctx);
+
+/* TODO: Remove this once coreboot is switched over to new name. */
 vb2_error_t vb2api_secdatak_create(struct vb2_context *ctx);
+
+vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint32_t *size);
+
+uint32_t vb2api_secdata_fwmp_create(struct vb2_context *ctx);
 
 /**
  * Report firmware failure to vboot.

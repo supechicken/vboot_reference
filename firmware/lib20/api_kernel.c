@@ -26,10 +26,10 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	vb2_workbuf_from_ctx(ctx, &wb);
 
 	/* Initialize secure kernel data and read version */
-	rv = vb2_secdatak_init(ctx);
+	rv = vb2_secdata_kernel_init(ctx);
 	if (!rv) {
-		rv = vb2_secdatak_get(ctx, VB2_SECDATAK_VERSIONS,
-				      &sd->kernel_version_secdatak);
+		rv = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+					    &sd->kernel_version_secdatak);
 	}
 
 	if (rv) {
@@ -261,8 +261,8 @@ vb2_error_t vb2api_kernel_phase3(struct vb2_context *ctx)
 	    (sd->flags & VB2_SD_FLAG_KERNEL_SIGNED) &&
 	    !(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
 	    (ctx->flags & VB2_CONTEXT_ALLOW_KERNEL_ROLL_FORWARD)) {
-		rv = vb2_secdatak_set(ctx, VB2_SECDATAK_VERSIONS,
-				      sd->kernel_version);
+		rv = vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+					    sd->kernel_version);
 		if (rv)
 			return rv;
 		sd->kernel_version_secdatak = sd->kernel_version;

@@ -59,8 +59,8 @@ static void reset_common_data(enum reset_type t)
 
 	vb2_nv_init(&ctx);
 
-	vb2api_secdata_create(&ctx);
-	vb2_secdata_init(&ctx);
+	vb2api_secdata_firmware_create(&ctx);
+	vb2_secdata_firmware_init(&ctx);
 
 	force_dev_mode = 0;
 	retval_vb2_fw_parse_gbb = VB2_SUCCESS;
@@ -108,10 +108,11 @@ static void misc_tests(void)
 	reset_common_data(FOR_MISC);
 	/* Corrupt secdata so initial check will fail */
 	ctx.secdata[0] ^= 0x42;
-	TEST_EQ(vb2api_secdata_check(&ctx), VB2_ERROR_SECDATA_CRC,
+	TEST_EQ(vb2api_secdata_firmware_check(&ctx),
+		VB2_ERROR_SECDATA_FIRMWARE_CRC,
 		"secdata check");
-	TEST_SUCC(vb2api_secdata_create(&ctx), "secdata create");
-	TEST_SUCC(vb2api_secdata_check(&ctx), "secdata check 2");
+	TEST_SUCC(vb2api_secdata_firmware_create(&ctx), "secdata create");
+	TEST_SUCC(vb2api_secdata_firmware_check(&ctx), "secdata check 2");
 
 	/* Test fail passthru */
 	reset_common_data(FOR_MISC);
