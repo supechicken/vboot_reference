@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "939cc3a9_d98a127b",
+        "filename": "firmware/lib/mocked_rollback_index.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T10:07:22Z",
+      "side": 1,
+      "message": "Right.  I\u0027ll call vb2api_secdata_firmware_create().",
+      "parentUuid": "83a948d3_bcb372d4",
+      "revId": "b512851c6ad4cb4369a30a041bcebe883fc90b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "400cb2fe_98e6050d",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 13
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "59acb118_6cc5cdb3",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T10:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400cb2fe_98e6050d",
+      "range": {
+        "startLine": 203,
+        "startChar": 27,
+        "endLine": 203,
+        "endChar": 29
+      },
+      "revId": "b512851c6ad4cb4369a30a041bcebe883fc90b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ace898a_8e7e9204",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 13
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "51cd3ac7_1cd52c67",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T10:07:22Z",
+      "side": 1,
+      "message": "Comment doesn\u0027t really apply anymore... see newest version.",
+      "parentUuid": "3ace898a_8e7e9204",
+      "revId": "b512851c6ad4cb4369a30a041bcebe883fc90b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5278458b_72d4bbd3",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 13
@@ -70,6 +130,30 @@
       "writtenOn": "2019-08-22T02:51:33Z",
       "side": 1,
       "message": "It\u0027s odd to return an error here if you don\u0027t want to check it.",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "b512851c6ad4cb4369a30a041bcebe883fc90b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ccf87d8_b2e398fd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T10:07:22Z",
+      "side": 1,
+      "message": "Comment doesn\u0027t really apply anymore... see newest version.",
+      "parentUuid": "5278458b_72d4bbd3",
       "range": {
         "startLine": 55,
         "startChar": 7,
