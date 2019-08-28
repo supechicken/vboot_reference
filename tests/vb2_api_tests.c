@@ -111,7 +111,7 @@ static void misc_tests(void)
 	TEST_EQ(vb2api_secdata_firmware_check(&ctx),
 		VB2_ERROR_SECDATA_FIRMWARE_CRC,
 		"secdata_firmware check");
-	TEST_SUCC(vb2api_secdata_firmware_create(&ctx),
+	TEST_EQ(vb2api_secdata_firmware_create(&ctx), VB2_SECDATA_FIRMWARE_SIZE,
 		  "secdata_firmware create");
 	TEST_SUCC(vb2api_secdata_firmware_check(&ctx),
 		  "secdata_firmware check 2");
