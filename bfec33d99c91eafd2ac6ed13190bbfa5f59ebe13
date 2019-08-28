@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cebb3e_bebcd509",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-28T02:44:08Z",
+      "side": 1,
+      "message": "nit: might be less confusing to just #define all these temporary aliases (for functions, flags and everything) in one spot in api.h?",
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1913e1c_98b69190",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-28T02:44:08Z",
+      "side": 1,
+      "message": "nit: update messaging with new name?",
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae362a3_c1c6a8ba",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-28T02:44:08Z",
+      "side": 1,
+      "message": "You\u0027re not actually renaming these I guess that\u0027s intentional? I think it might be able to keep coreboot working if you just #define secdata secdata_firmware",
+      "range": {
+        "startLine": 221,
+        "startChar": 9,
+        "endLine": 221,
+        "endChar": 16
+      },
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
