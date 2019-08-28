@@ -58,7 +58,8 @@ static void secdata_firmware_test(void)
 		"Zeroed buffer (invalid version)");
 
 	/* Try with bad version */
-	TEST_SUCC(vb2api_secdata_firmware_create(&c), "Create");
+	TEST_EQ(vb2api_secdata_firmware_create(&c), VB2_SECDATA_FIRMWARE_SIZE,
+		"Create");
 	sec->struct_version -= 1;
 	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata_firmware, crc8));
 	TEST_EQ(vb2api_secdata_firmware_check(&c),
@@ -67,7 +68,7 @@ static void secdata_firmware_test(void)
 		VB2_ERROR_SECDATA_FIRMWARE_VERSION, "Init invalid version");
 
 	/* Create good data */
-	TEST_SUCC(vb2api_secdata_firmware_create(&c), "Create");
+	vb2api_secdata_firmware_create(&c);
 	TEST_SUCC(vb2api_secdata_firmware_check(&c), "Check created CRC");
 	TEST_SUCC(vb2_secdata_firmware_init(&c), "Init created CRC");
 	TEST_NEQ(sd->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT, 0,
