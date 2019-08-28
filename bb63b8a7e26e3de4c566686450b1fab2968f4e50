@@ -16,6 +16,24 @@
       "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350002b7_770dc90f",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T04:18:03Z",
+      "side": 1,
+      "message": "Yeah, without any headers in here this does not compile anymore.  Presumably it previously compiled because the required headers were included by other C files indirectly.",
+      "parentUuid": "c5bcf478_5f87e4c1",
+      "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
