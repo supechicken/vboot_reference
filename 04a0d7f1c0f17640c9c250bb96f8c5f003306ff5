@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "388786fb_d2e0161e",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-28T22:57:56Z",
+      "side": 1,
+      "message": "This isn\u0027t universally true (see ObtainDriveSize()). I think it may be better to just display this in cgpt show as part of the command output (with the currently used drive-\u003egpt.sector_bytes) instead. (For the help text, I think the documentation of the individual flags already makes it clear that it\u0027s counting in blocks.)",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "04a0d7f1c0f17640c9c250bb96f8c5f003306ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
