@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d8ac725_e4db4048",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:41:45Z",
+      "side": 1,
+      "message": "Good idea...",
+      "parentUuid": "79cebb3e_bebcd509",
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1913e1c_98b69190",
         "filename": "firmware/2lib/2secdata_firmware.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dc68784f_d55dc245",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:41:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c1913e1c_98b69190",
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ae362a3_c1c6a8ba",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-08-28T02:44:08Z",
       "side": 1,
       "message": "You\u0027re not actually renaming these I guess that\u0027s intentional? I think it might be able to keep coreboot working if you just #define secdata secdata_firmware",
+      "range": {
+        "startLine": 221,
+        "startChar": 9,
+        "endLine": 221,
+        "endChar": 16
+      },
+      "revId": "bfec33d99c91eafd2ac6ed13190bbfa5f59ebe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ea59d1_ed5d0ccc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:41:45Z",
+      "side": 1,
+      "message": "Yeah, I hadn\u0027t thought of the #define solution.  That seems to work well enough that we can just directly rename here as well.",
+      "parentUuid": "5ae362a3_c1c6a8ba",
       "range": {
         "startLine": 221,
         "startChar": 9,
