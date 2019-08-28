@@ -486,6 +486,24 @@
     },
     {
       "key": {
+        "uuid": "abd8a691_22ff3cb5",
+        "filename": "firmware/lib/mocked_rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "OK.  I think I\u0027ve done something like this.  See the latest patchset on CL:1728298.",
+      "parentUuid": "f3e2ca42_aa2da25b",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13c07db5_1e4aa832",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 10
@@ -503,6 +521,24 @@
     },
     {
       "key": {
+        "uuid": "03687c69_17417e2c",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Yup.  Fixed.",
+      "parentUuid": "13c07db5_1e4aa832",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "253a9fa6_f668a294",
         "filename": "firmware/lib/rollback_index.c",
         "patchSetId": 10
@@ -514,6 +550,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "This looks like it\u0027s missing a negation?",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434c2ad6_e0062ff0",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Good point -- fixed.",
+      "parentUuid": "253a9fa6_f668a294",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -543,6 +597,30 @@
     },
     {
       "key": {
+        "uuid": "27177fd1_02116894",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Well... maybe not currently, but coreboot shouldn\u0027t know how to speak secdata_firmware in the first place.  So we\u0027ll want to eventually expose this as an API function of some sorts.",
+      "parentUuid": "5bc71d4b_557ae618",
+      "range": {
+        "startLine": 259,
+        "startChar": 64,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8124236c_cef93bff",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 10
@@ -560,6 +638,24 @@
     },
     {
       "key": {
+        "uuid": "eedd1c37_f38e5753",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Sure.  I\u0027ll split it into secdata_struct.h.\n\nI had originally left this lkp.fwmp alone, since I wasn\u0027t sure if this data structure was passed onto the OS or something like that.  But assuming it isn\u0027t, I\u0027ll just directly take it out of LoadKernelParams.",
+      "parentUuid": "8124236c_cef93bff",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c5a0ac1_635d22db",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 10
@@ -571,6 +667,24 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "nit: might make sense to just call fwmp_create() here instead? (It will happen anyway, but calling it explicitly would be more obvious.)\n\nSame goes for the memset inside ReadSpaceFwmp(), I guess...",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20dd50cd_c054c401",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Yeah, seems like using fwmp_create() makes more sense than writing a bunch of zeroes... although I think writing with zeroes here in the case that the GBB flag is set is kind of bizarre.  I\u0027d prefer to have the GBB check encoded somewhere else, without touching the data in FWMP.",
+      "parentUuid": "5c5a0ac1_635d22db",
       "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -600,6 +714,30 @@
     },
     {
       "key": {
+        "uuid": "842e7a4b_2d9c07ea",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "I think it ended up as secdata_kernel_lock().  But probably we should eventually get rid of these calls and keep them to just one at the beginning of kernel verification (read) and one at the end (write).",
+      "parentUuid": "0377469b_4d58dcbf",
+      "range": {
+        "startLine": 490,
+        "startChar": 6,
+        "endLine": 490,
+        "endChar": 21
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2392dcc2_e39bba56",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 10
@@ -617,6 +755,24 @@
     },
     {
       "key": {
+        "uuid": "8443af22_315cf09e",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Still feel weird that nvdata takes the specific flag name and returns the value directly though?  I think that they should somehow all be consistent.",
+      "parentUuid": "2392dcc2_e39bba56",
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e553c57c_2616bb2e",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 10
@@ -628,6 +784,30 @@
       "writtenOn": "2019-08-22T22:42:42Z",
       "side": 1,
       "message": "Shouldn\u0027t this be secdatak_commit()? (Even if we never expect it to write anything here, that seems cleaner.)",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "e53138adfa7b2c3cd2a64be0952b716aca8cbd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b66ec0_fbcc2c79",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-28T16:18:06Z",
+      "side": 1,
+      "message": "Ah I see what you\u0027re saying...\nIn any case this should be refactored somehow so flow ends up back in vboot_api_kernel, and the commit/lock should occur there...",
+      "parentUuid": "e553c57c_2616bb2e",
       "range": {
         "startLine": 49,
         "startChar": 5,
