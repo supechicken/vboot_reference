@@ -89,6 +89,44 @@ enum vb2_secdata_kernel_param {
 };
 
 /*****************************************************************************/
+/* Firmware management parameters (FWMP) space */
+
+#define VB2_SECDATA_FWMP_VERSION 0x10  /* 1.0 */
+#define VB2_SECDATA_FWMP_HASH_SIZE 32  /* enough for SHA-256 */
+
+/* Flags for FWMP space */
+enum vb2_secdata_fwmp_flags {
+	VB2_SECDATA_FWMP_DEV_DISABLE_BOOT = (1 << 0),
+	VB2_SECDATA_FWMP_DEV_DISABLE_RECOVERY = (1 << 1),
+	VB2_SECDATA_FWMP_DEV_ENABLE_USB = (1 << 2),
+	VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY = (1 << 3),
+	VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY = (1 << 4),
+	VB2_SECDATA_FWMP_DEV_USE_KEY_HASH = (1 << 5),
+	/* CCD = case-closed debugging on cr50; flag implemented on cr50 */
+	VB2_SECDATA_FWMP_DEV_DISABLE_CCD_UNLOCK = (1 << 6),
+};
+
+struct vb2_secdata_fwmp {
+	/* CRC-8 of fields following struct_size */
+	uint8_t crc8;
+
+	/* Structure size in bytes */
+	uint8_t struct_size;
+
+	/* Structure version (4 bits major, 4 bits minor) */
+	uint8_t struct_version;
+
+	/* Reserved; ignored by current reader */
+	uint8_t reserved0;
+
+	/* Flags; see enum vb2_secdata_fwmp_flags */
+	uint32_t flags;
+
+	/* Hash of developer kernel key */
+	uint8_t dev_key_hash[VB2_SECDATA_FWMP_HASH_SIZE];
+};
+
+/*****************************************************************************/
 /* Firmware secure storage space functions */
 
 /**
@@ -165,5 +203,21 @@ vb2_error_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 vb2_error_t vb2_secdata_kernel_set(struct vb2_context *ctx,
 				   enum vb2_secdata_kernel_param param,
 				   uint32_t value);
+
+/*****************************************************************************/
+/* Firmware management parameters (FWMP) space functions */
+
+vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *ctx);
+
+vb2_error_t vb2_secdata_fwmp_get_flag(struct vb2_context *ctx,
+				      enum vb2_secdata_fwmp_flags flag,
+				      int *dest);
+
+vb2_error_t vb2_secdata_fwmp_set_flag(struct vb2_context *ctx,
+				      enum vb2_secdata_fwmp_flags flag,
+				      int value);
+
+vb2_error_t vb2_secdata_fwmp_get_dev_key_hash(struct vb2_context *ctx,
+					      uint8_t **dev_key_hash);
 
 #endif  /* VBOOT_REFERENCE_2SECDATA_H_ */
