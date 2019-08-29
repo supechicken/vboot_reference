@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0637b3c_c5ad9ab1",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-29T15:21:35Z",
+      "side": 1,
+      "message": "Perhaps this should just return the entire flags field like you suggested.  But I\u0027m still unhappy that nvdata is dealt with differently.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6966f3_47906314",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-29T15:21:35Z",
+      "side": 1,
+      "message": "This needs a new constant... I guess.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 86
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89fa70b_d4ebd6b5",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-29T15:21:35Z",
+      "side": 1,
+      "message": "Still need doc strings.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 35
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14815c1a_6b07086f",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-29T15:21:35Z",
+      "side": 1,
+      "message": "Need to (re)write some more tests.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
