@@ -12,7 +12,7 @@
 #include "2rsa.h"
 #include "ec_sync.h"
 #include "load_kernel_fw.h"
-#include "rollback_index.h"
+#include "secdata_tpm.h"
 #include "tlcl.h"
 #include "utility.h"
 #include "vb2_common.h"
