@@ -6,10 +6,10 @@
  * (Firmware portion)
  */
 
-#include "2sysincludes.h"
 #include "2common.h"
 #include "2rsa.h"
 #include "2sha.h"
+#include "2sysincludes.h"
 
 void _vb2ex_abort(void)
 {
