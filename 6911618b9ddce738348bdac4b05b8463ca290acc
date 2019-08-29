@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "227c5bc5_33e98505",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-29T20:39:56Z",
+      "side": 1,
+      "message": "I think these should all be PRIu64",
+      "range": {
+        "startLine": 274,
+        "startChar": 41,
+        "endLine": 274,
+        "endChar": 47
+      },
+      "revId": "6911618b9ddce738348bdac4b05b8463ca290acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4820eaae_f46ee8ed",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-29T20:39:56Z",
+      "side": 1,
+      "message": "Can you guard this line with if (drive-\u003egpt.flags \u0026 GPT_FLAG_EXTERNAL), and change the text so it makes sense when that line isn\u0027t shown (e.g. \"External GPT Size (blocks)\" and \"Drive Size (blocks)\")? We\u0027re probably never gonna use the external GPT thing and hardly anyone remembers what it\u0027s about, so this would probably just confuse people.",
+      "revId": "6911618b9ddce738348bdac4b05b8463ca290acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac39a059_f6553ae6",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-29T20:39:56Z",
+      "side": 1,
+      "message": "I think this is the wrong way around, actually. gpt_drive_sectors is where the GPT lives and streaming_drive_sectors is the disk itself. (In the non-external GPT case they\u0027re set to the same thing so it doesn\u0027t matter.)",
+      "revId": "6911618b9ddce738348bdac4b05b8463ca290acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9dc8c9_86be5e01",
+        "filename": "cgpt/cgpt_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-29T20:39:56Z",
+      "side": 1,
+      "message": "This isn\u0027t something from the GPT itself, it\u0027s just cgpt-internal record keeping... and currently the only flag we have is GPT_FLAG_EXTERNAL (which would already be implied if you hide the line above based on that). So I don\u0027t think you need to print this.",
+      "revId": "6911618b9ddce738348bdac4b05b8463ca290acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
