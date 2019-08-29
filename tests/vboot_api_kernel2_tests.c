@@ -5,10 +5,6 @@
  * Tests for vboot_api_kernel, part 2
  */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -16,6 +12,7 @@
 #include "load_kernel_fw.h"
 #include "secdata_tpm.h"
 #include "test_common.h"
+#include "tss_constants.h"
 #include "vboot_audio.h"
 #include "vboot_common.h"
 #include "vboot_display.h"

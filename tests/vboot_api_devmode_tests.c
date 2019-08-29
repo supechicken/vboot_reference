@@ -10,10 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "2sysincludes.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2sysincludes.h"
 #include "crc32.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
@@ -23,7 +23,6 @@
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
-
 
 /* Expected results */
 
