@@ -73,7 +73,7 @@ static void HeaderDetails(GptHeader *header, GptEntry *entries,
   PrintSignature(indent, header->signature, sizeof(header->signature), raw);
 
   printf("%sRev: 0x%08x\n", indent, header->revision);
-  printf("%sSize: %d\n", indent, header->size);
+  printf("%sSize: %d (blocks)\n", indent, header->size);
   printf("%sHeader CRC: 0x%08x %s\n", indent, header->header_crc32,
          (HeaderCrc(header) != header->header_crc32) ? "(INVALID)" : "");
   printf("%sMy LBA: %lld\n", indent, (long long)header->my_lba);
@@ -268,6 +268,18 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
     }
   } else {                              // show all partitions
     GptEntry *entries;
+
+    if (params->debug || params->verbose) {
+      printf("Drive details:\n");
+      printf("    Total Size (bytes): %" PRId64 "\n", drive->size);
+      printf("    LBA Size (bytes): %d\n", drive->gpt.sector_bytes);
+      printf("    Drive (where GPT lives) Size (blocks): %" PRId64 "\n",
+             drive->gpt.streaming_drive_sectors);
+      printf("    Drive (where partitions live) Size (blocks): %" PRId64 "\n",
+             drive->gpt.gpt_drive_sectors);
+      printf("    GPT Flags: %#x\n", drive->gpt.flags);
+      printf("\n");
+    }
 
     if (CGPT_OK != ReadPMBR(drive)) {
       Error("Unable to read PMBR\n");
