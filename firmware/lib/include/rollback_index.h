@@ -147,26 +147,6 @@ uint32_t RollbackKernelLock(int recovery_mode);
  */
 uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp);
 
-/****************************************************************************/
-
-/*
- * The following functions are internal apis, listed here for use by unit tests
- * only.
- */
-
-/**
- * Issue a TPM_Clear and reenable/reactivate the TPM.
- */
-uint32_t TPMClearAndReenable(void);
-
-/**
- * Like TlclWrite(), but checks for write errors due to hitting the 64-write
- * limit and clears the TPM when that happens.  This can only happen when the
- * TPM is unowned, so it is OK to clear it (and we really have no choice).
- * This is not expected to happen frequently, but it could happen.
- */
-uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length);
-
 /**
  * Utility function to turn the virtual dev-mode flag on or off. 0=off, 1=on.
  */
