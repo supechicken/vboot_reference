@@ -347,6 +347,9 @@ static void KernelSpaceTest(void)
 /****************************************************************************/
 /* Tests for misc helper functions */
 
+extern uint32_t TPMClearAndReenable(void);
+extern uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length);
+
 static void MiscTest(void)
 {
 	uint8_t buf[8];
