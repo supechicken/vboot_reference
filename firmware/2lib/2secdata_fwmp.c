@@ -9,6 +9,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2secdata.h"
+#include "2secdata_struct.h"
 
 uint32_t vb2_secdata_fwmp_crc(struct vb2_context *ctx)
 {
