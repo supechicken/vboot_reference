@@ -22,6 +22,30 @@
       "revId": "04a0d7f1c0f17640c9c250bb96f8c5f003306ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143f6fab_ac8f5a9d",
+        "filename": "cgpt/cmd_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-29T04:49:11Z",
+      "side": 1,
+      "message": "i\u0027ve removed all the 512 bytes references from the help text.  i\u0027ve sent another CL to dump the dynamic drive details in cgpt show which gets me what i need.",
+      "parentUuid": "388786fb_d2e0161e",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "04a0d7f1c0f17640c9c250bb96f8c5f003306ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
