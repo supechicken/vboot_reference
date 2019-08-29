@@ -16,6 +16,24 @@
       "revId": "9f2abcd7cf78dd3e9687509cbdf356ce2ce7220a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1090659_f436bfd3",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-08-29T19:56:19Z",
+      "side": 1,
+      "message": "The GCC in CrOS chroot does not support it. Are we ok with dropping support for building with GCC in chroot (Building with GCC in chroot is already broken for different reasons)",
+      "parentUuid": "a6dff499_3fadb9bf",
+      "revId": "9f2abcd7cf78dd3e9687509cbdf356ce2ce7220a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
