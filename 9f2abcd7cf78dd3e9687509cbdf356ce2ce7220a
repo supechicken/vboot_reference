@@ -52,6 +52,24 @@
       "revId": "9f2abcd7cf78dd3e9687509cbdf356ce2ce7220a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8465246_671ea6d0",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-08-29T20:42:18Z",
+      "side": 1,
+      "message": "Can we wait for a few weeks for next clang roll to end. Past the roll, I can just use #define VBOOT_FALLTHROUGH __attribute__ ((fallthrough)) and not worry about versions/attribute support etc.",
+      "parentUuid": "e91bc9a3_7f61f005",
+      "revId": "9f2abcd7cf78dd3e9687509cbdf356ce2ce7220a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
