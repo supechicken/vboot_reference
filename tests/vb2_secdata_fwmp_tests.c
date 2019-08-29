@@ -8,6 +8,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2secdata.h"
+#include "2secdata_struct.h"
 #include "test_common.h"
 
 static void test_changed(struct vb2_context *c, int changed, const char *why)
