@@ -2,12 +2,12 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Functions for querying, manipulating and locking rollback indices
+ * Functions for querying, manipulating and locking secure data spaces
  * stored in the TPM NVRAM.
  */
 
-#ifndef VBOOT_REFERENCE_ROLLBACK_INDEX_H_
-#define VBOOT_REFERENCE_ROLLBACK_INDEX_H_
+#ifndef VBOOT_REFERENCE_SECDATA_TPM_H_
+#define VBOOT_REFERENCE_SECDATA_TPM_H_
 
 #include "2return_codes.h"
 #include "2sysincludes.h"
@@ -152,4 +152,4 @@ uint32_t RollbackFwmpRead(struct RollbackSpaceFwmp *fwmp);
  */
 vb2_error_t SetVirtualDevMode(int val);
 
-#endif  /* VBOOT_REFERENCE_ROLLBACK_INDEX_H_ */
+#endif  /* VBOOT_REFERENCE_SECDATA_TPM_H_ */
