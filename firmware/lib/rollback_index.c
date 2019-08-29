@@ -14,17 +14,13 @@
 #include "tss_constants.h"
 #include "vboot_api.h"
 
-#ifndef offsetof
-#define offsetof(A,B) __builtin_offsetof(A,B)
-#endif
-
-#define RETURN_ON_FAILURE(tpm_command) do {				\
-		uint32_t result_;					\
-		if ((result_ = (tpm_command)) != TPM_SUCCESS) {		\
+#define RETURN_ON_FAILURE(tpm_command) do { \
+		uint32_t result_; \
+		if ((result_ = (tpm_command)) != TPM_SUCCESS) { \
 			VB2_DEBUG("Rollback: %08x returned by " #tpm_command \
-				  "\n", (int)result_);			\
-			return result_;					\
-		}							\
+				  "\n", (int)result_); \
+			return result_; \
+		} \
 	} while (0)
 
 #define PRINT_BYTES(title, value) do { \
@@ -36,6 +32,11 @@
 		VB2_DEBUG_RAW("\n"); \
 	} while (0)
 
+/**
+ * Issue a TPM_Clear and reenable/reactivate the TPM.
+ */
+/* Extern function for testing */
+extern uint32_t TPMClearAndReenable(void);
 uint32_t TPMClearAndReenable(void)
 {
 	VB2_DEBUG("TPM: clear and re-enable\n");
@@ -46,6 +47,14 @@ uint32_t TPMClearAndReenable(void)
 	return TPM_SUCCESS;
 }
 
+/**
+ * Like TlclWrite(), but checks for write errors due to hitting the 64-write
+ * limit and clears the TPM when that happens.  This can only happen when the
+ * TPM is unowned, so it is OK to clear it (and we really have no choice).
+ * This is not expected to happen frequently, but it could happen.
+ */
+/* Extern function for testing */
+extern uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length);
 uint32_t SafeWrite(uint32_t index, const void *data, uint32_t length)
 {
 	uint32_t result = TlclWrite(index, data, length);
