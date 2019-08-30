@@ -1,0 +1,305 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59782d35_05962de9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "You don\u0027t ever need to clear it with this function (only check_dev_switch() above can do that), so I think you don\u0027t really need this parameter (and offering this here just runs the risk that someone will use it in the future and allow a way to disable dev mode without doing all the other things that need to happen there).",
+      "range": {
+        "startLine": 436,
+        "startChar": 60,
+        "endLine": 436,
+        "endChar": 69
+      },
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc4f5bb_b8b25226",
+        "filename": "firmware/lib/include/secdata_tpm.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Let\u0027s still keep a record in here that 0x1009 used to be the NVRAM backup space, even if it\u0027s deprecated now.",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022623fc_757f29da",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "nit: don\u0027t really understand why this can\u0027t keep using RETURN_ON_FAILURE?",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d339b0f6_c67a3d98",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "I think it would be cleaner to check the return value from vb2_secdata_kernel_init() rather than run check() here explicitly (same for firmware).",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b41eef_0c12487a",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "nit: maybe move this below the recovery mode check?",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3a5d05_e38d9244",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Where\u0027s the part that caches the result if we\u0027ve already locked the TPM now? That part is important... in certain edge cases vboot may call this twice in the same boot, and if we actually attempt to lock the TPM a second time it will return an error",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9c3988_49c4c691",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "nit: also maybe move/rewrite this so that we only have one message for the normal operation behaviors (FWMP was read successfully or FWMP doesn\u0027t exist)",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1b5739_0444ccfa",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "nit: \"or\"",
+      "range": {
+        "startLine": 314,
+        "startChar": 35,
+        "endLine": 314,
+        "endChar": 38
+      },
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c894281a_346d5de6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Should check return values. Or maybe run init() directly as part of read() (and check it there).",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecbf8941_203e34fb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "If you add a NO_FWMP context flag like I suggested in the other patch, it will also make this cleaner (you\u0027d just set it here).",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2653c0a5_6d25aabd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Same here with the return value. I think it might be best to just integrate these init() calls into the read() functions.",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd35239_99815be8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "off-topic: we should really have a unit test covering this detail...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cef3b30_da9eb42f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "This should run all of vb2_kernel_cleanup(), not just the locking part (now that TPM spaces are no longer written back directly by the code that wants to change them, we need to be careful to make sure all \"exit points\" of vboot call cleanup() correctly).",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b064a3_787c12b0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Still really not a fan of this...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f967b3_1ae6ffb6",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "Also needs to run cleanup().",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907b56a1_7b06bbca",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "This should probably return an error that gets us into recovery mode instead. (The whole thing about having to check the return value every time you read FWMP flags seems somewhat cumbersome... maybe we should change all those \"return field value\" functions to just return the value and throw an assertion if it wasn\u0027t initialized yet? And I guess in recovery mode they\u0027d have to return some default value if there was an initialization error.)",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2872a3f_c12aa815",
+        "filename": "firmware/linktest/main.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:54:05Z",
+      "side": 1,
+      "message": "off-topic: I don\u0027t understand why we have this file at all...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
