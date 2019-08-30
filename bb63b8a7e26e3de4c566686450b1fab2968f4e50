@@ -52,6 +52,24 @@
       "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3978ca4_29a8e007",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-30T06:37:49Z",
+      "side": 1,
+      "message": "Hmm, you\u0027re right.  I\u0027m not sure why I was encountering so many problems before.  Sorry for jumping the gun on merging this CL.  I\u0027ve added CL:1776285 to fix this.",
+      "parentUuid": "88d6e497_4c97225b",
+      "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
