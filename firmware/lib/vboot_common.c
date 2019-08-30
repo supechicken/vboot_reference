@@ -15,17 +15,6 @@
 #include "vboot_api.h"
 #include "vboot_common.h"
 
-const char *kVbootErrors[VBOOT_ERROR_MAX] = {
-	"Success.",
-	"Keyblock invalid.",
-	"Keyblock signature failed.",
-	"Keyblock hash failed.",
-	"Public key invalid.",
-	"Preamble invalid.",
-	"Preamble signature check failed.",
-	"Shared data invalid."
-};
-
 /* Helper functions to get data pointed to by a public key or signature. */
 
 uint8_t *GetPublicKeyData(struct vb2_packed_key *key)
@@ -106,7 +95,7 @@ vb2_error_t VbGetKernelVmlinuzHeader(const VbKernelPreambleHeader *preamble,
 		*vmlinuz_header_address = preamble->vmlinuz_header_address;
 		*vmlinuz_header_size = preamble->vmlinuz_header_size;
 	}
-	return VBOOT_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t VbKernelHasFlags(const VbKernelPreambleHeader *preamble)
@@ -128,7 +117,7 @@ vb2_error_t VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
 	if (end + header_size > kblob_size)
 		return VBOOT_PREAMBLE_INVALID;
 
-	return VBOOT_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 uint64_t VbSharedDataReserve(VbSharedDataHeader *header, uint64_t size)
