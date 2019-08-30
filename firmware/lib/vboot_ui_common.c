@@ -41,7 +41,17 @@ void vb2_error_notify(const char *print_msg,
 	vb2_error_beep(beep);
 }
 
-void vb2_run_altfw(struct vb2_context *ctx, enum VbAltFwIndex_t altfw_num)
+/**
+ * Run alternative firmware if allowed
+ *
+ * This will only return if it is not allowed, or the bootloader fails to
+ * cannot be found / fails to start
+ *
+ * @ctx		Context
+ * @altfw_num	Number of bootloader to start (0=any, 1=first, etc.)
+ */
+static void vb2_run_altfw(struct vb2_context *ctx,
+			  enum VbAltFwIndex_t altfw_num)
 {
 	if (vb2_kernel_cleanup(ctx, VB2_SUCCESS)) {
 		vb2_error_notify("Error locking kernel versions on legacy "
@@ -66,7 +76,8 @@ void vb2_try_alt_fw(struct vb2_context *ctx, int allowed,
 		    enum VbAltFwIndex_t altfw_num)
 {
 	if (allowed)
-		vb2_run_altfw(ctx, altfw_num);	/* will not return if found */
+		/* will not return if found */
+		vb2_run_altfw(ctx, altfw_num);
 	else
 		vb2_error_no_altfw();
 }
