@@ -43,5 +43,5 @@ vb2_error_t VbSharedDataInit(VbSharedDataHeader *header, uint64_t size)
 	header->firmware_index = 0xFF;
 
 	/* Success */
-	return VBOOT_SUCCESS;
+	return VB2_SUCCESS;
 }
