@@ -217,7 +217,7 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 			 * This will not return if successful. Drop out to
 			 * developer mode on failure.
 			 */
-			vb2_run_altfw(ctx, key - '0');
+			vb2_try_alt_fw(ctx, 1, key - '0');
 			active = 0;
 			break;
 		default:
@@ -482,7 +482,7 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 
 		/*
 		 * The following helps avoid use of the TPM after
-		 * it's disabled (e.g., when vb2_run_altfw() calls
+		 * it's disabled (e.g., when vb2_try_alt_fw() calls
 		 * secdata_kernel_lock() ).
 		 */
 
@@ -496,7 +496,7 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 			VB2_DEBUG("Failed to disable TPM\n");
 			vb2_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
 		} else {
-			vb2_run_altfw(ctx, VB_ALTFW_DIAGNOSTIC);
+			vb2_try_alt_fw(ctx, 1, VB_ALTFW_DIAGNOSTIC);
 			VB2_DEBUG("Diagnostic failed to run\n");
 			/*
 			 * Assuming failure was due to bad hash, though

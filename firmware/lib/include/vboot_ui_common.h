@@ -30,17 +30,6 @@ void vb2_error_notify(const char *print_msg,
 		      const char *log_msg,
 		      enum vb2_beep_type beep);
 
-/**
- * Run alternative firmware if allowed
- *
- * This will only return if it is not allowed, or the bootloader fails to
- * cannot be found / fails to start
- *
- * @ctx		Context
- * @altfw_num	Number of bootloader to start (0=any, 1=first, etc.)
- */
-void vb2_run_altfw(struct vb2_context *ctx, enum VbAltFwIndex_t altfw_num);
-
 /** Display an error and beep to indicate that altfw is not available */
 void vb2_error_no_altfw(void);
 
