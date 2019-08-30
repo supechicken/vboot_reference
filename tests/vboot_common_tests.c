@@ -23,8 +23,6 @@ static void StructPackingTest(void)
 {
 	TEST_EQ(EXPECTED_VBSIGNATURE_SIZE, sizeof(VbSignature),
 		"sizeof(VbSignature)");
-	TEST_EQ(EXPECTED_VBKEYBLOCKHEADER_SIZE, sizeof(VbKeyBlockHeader),
-		"sizeof(VbKeyBlockHeader)");
 	TEST_EQ(EXPECTED_VBKERNELPREAMBLEHEADER2_2_SIZE,
 		sizeof(VbKernelPreambleHeader),
 		"sizeof(VbKernelPreambleHeader)");

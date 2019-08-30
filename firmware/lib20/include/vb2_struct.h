@@ -28,80 +28,6 @@
 #define VB2_MAX_PREAMBLE_VERSION 0xffff
 
 
-/* Signature data (a secure hash, possibly signed) */
-struct vb2_signature {
-	/* Offset of signature data from start of this struct */
-	uint32_t sig_offset;
-	uint32_t reserved0;
-
-	/* Size of signature data in bytes */
-	uint32_t sig_size;
-	uint32_t reserved1;
-
-	/* Size of the data block which was signed in bytes */
-	uint32_t data_size;
-	uint32_t reserved2;
-} __attribute__((packed));
-
-#define EXPECTED_VB2_SIGNATURE_SIZE 24
-
-
-#define KEY_BLOCK_MAGIC "CHROMEOS"
-#define KEY_BLOCK_MAGIC_SIZE 8
-
-#define KEY_BLOCK_HEADER_VERSION_MAJOR 2
-#define KEY_BLOCK_HEADER_VERSION_MINOR 1
-
-/*
- * Key block, containing the public key used to sign some other chunk of data.
- *
- * This should be followed by:
- *   1) The data_key key data, pointed to by data_key.key_offset.
- *   2) The checksum data for (vb2_keyblock + data_key data), pointed to
- *      by keyblock_checksum.sig_offset.
- *   3) The signature data for (vb2_keyblock + data_key data), pointed to
- *      by keyblock_signature.sig_offset.
- */
-struct vb2_keyblock {
-	/* Magic number */
-	uint8_t magic[KEY_BLOCK_MAGIC_SIZE];
-
-	/* Version of this header format */
-	uint32_t header_version_major;
-	uint32_t header_version_minor;
-
-	/*
-	 * Length of this entire key block, including keys, signatures, and
-	 * padding, in bytes
-	 */
-	uint32_t keyblock_size;
-	uint32_t reserved0;
-
-	/*
-	 * Signature for this key block (header + data pointed to by data_key)
-	 * For use with signed data keys
-	 */
-	struct vb2_signature keyblock_signature;
-
-	/*
-	 * SHA-512 hash for this key block (header + data pointed to by
-	 * data_key) For use with unsigned data keys.
-	 *
-	 * Only supported for kernel keyblocks, not firmware keyblocks.
-	 */
-	struct vb2_signature keyblock_hash;
-
-	/* Flags for key (VB2_KEY_BLOCK_FLAG_*) */
-	uint32_t keyblock_flags;
-	uint32_t reserved1;
-
-	/* Key to verify the chunk of data */
-	struct vb2_packed_key data_key;
-} __attribute__((packed));
-
-#define EXPECTED_VB2_KEYBLOCK_SIZE 112
-
-
 /* Firmware preamble header */
 #define FIRMWARE_PREAMBLE_HEADER_VERSION_MAJOR 2
 #define FIRMWARE_PREAMBLE_HEADER_VERSION_MINOR 1
@@ -143,7 +69,7 @@ struct vb2_fw_preamble {
 	uint32_t firmware_version;
 	uint32_t reserved1;
 
-	/* Key to verify kernel key block */
+	/* Key to verify kernel keyblock */
 	struct vb2_packed_key kernel_subkey;
 
 	/* Signature for the firmware body */
