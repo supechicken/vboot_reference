@@ -163,7 +163,7 @@ static vb2_error_t boot_legacy_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 	}
 
-	vb2_run_altfw(ctx, VB_ALTFW_DEFAULT);
+	vb2_try_alt_fw(ctx, 1, VB_ALTFW_DEFAULT);
 	vb2_flash_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -344,7 +344,7 @@ static vb2_error_t language_action(struct vb2_context *ctx)
 /* Action when selecting a bootloader in the alternative firmware menu. */
 static vb2_error_t altfw_action(struct vb2_context *ctx)
 {
-	vb2_run_altfw(ctx, current_menu_idx + 1);
+	vb2_try_alt_fw(ctx, 1, current_menu_idx + 1);
 	vb2_flash_screen(ctx);
 	VB2_DEBUG(no_legacy);
 	VbExDisplayDebugInfo(no_legacy, 0);
