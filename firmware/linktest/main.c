@@ -55,7 +55,6 @@ int main(void)
 
 	/* vboot_api.h - entry points INTO vboot_reference */
 	VbSelectAndLoadKernel(0, 0, 0);
-	VbVerifyMemoryBootImage(0, 0, 0, 0, 0);
 
 	/* vboot_common.h */
 	GetPublicKeyData(0);
