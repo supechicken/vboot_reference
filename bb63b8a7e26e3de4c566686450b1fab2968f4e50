@@ -34,6 +34,24 @@
       "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d6e497_4c97225b",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T05:40:57Z",
+      "side": 1,
+      "message": "Well... I\u0027m still not sure why you have to fix that this way, duplicating typedefs is not good practice. What\u0027s wrong with just including 2api.h? Circular includes are fine, that\u0027s what header guards are for.",
+      "parentUuid": "350002b7_770dc90f",
+      "revId": "bb63b8a7e26e3de4c566686450b1fab2968f4e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
