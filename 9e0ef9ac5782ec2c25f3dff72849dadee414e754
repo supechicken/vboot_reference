@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b139b146_71ed9872",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:37:27Z",
+      "side": 1,
+      "message": "How so? The NVRAM functions also return whole fileds at a time. I think doing the same here would make it consistent?",
+      "parentUuid": "a0637b3c_c5ad9ab1",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef6966f3_47906314",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 2

@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14789dd_f12bbc71",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:37:27Z",
+      "side": 1,
+      "message": "I\u0027m actually wondering if we should really implement this. Firmware never initializes the FWMP itself right now and never should in the future. The only thing we need is to return default values when the FWMP doesn\u0027t exist.\n\n...so, really, we want to distinguish the three cases...\n\na) FWMP exists and is valid (then use it)\nb) FWMP exists and is invalid (then error out into recovery)\nc) FWMP doesn\u0027t exist (then pretend all fields are zero/default)\n\n...and the knowledge of whether the FWMP exists or not is left to the code doing the TPM access (which we eventually want to be depthcharge). So maybe we should add a new vb2_context flag VB2_CONTEXT_NO_FWMP that the caller is supposed to set when it gets a BADINDEX response from trying to read the FWMP. When that is set, vb2_secdata_fwmp_get...() functions will always return their default value. When it\u0027s not set, then the FWMP has to be valid and if it isn\u0027t all those functions should return errors.",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc13b66_6d6dec04",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:37:27Z",
+      "side": 1,
+      "message": "...and also, we don\u0027t actually need this, right? We don\u0027t ever *want* to write the FWMP from vboot. So let\u0027s not put anything suggesting we might in here.",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9fd8da_3cfd2c62",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:37:27Z",
+      "side": 1,
+      "message": "Same notion, vboot will never use this (in fact I\u0027m not sure if it would be possible/safe to do so, since the FMWP needs some special and weird permissions)",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a0013b_16eab083",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:37:27Z",
+      "side": 1,
+      "message": "I think this can just be VB2_ERROR_SECDATA_FWMP_GET_UNINITIALIZED. That means \"any fwmp_get function was called before fwmp_init\". I think that can apply here just as well.",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
