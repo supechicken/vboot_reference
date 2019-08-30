@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "1cfabb81_2f4537c1",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:50:37Z",
+      "side": 1,
+      "message": "So after looking at https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1728298/25/firmware/lib/vboot_ui_menu.c#186 and similar call sites I\u0027m not really happy about this API anymore. Having to check this return value all the time is really annoying and bloats the code a lot. We really only need to check once (as part of init()), and after that it should either always work, or we shouldn\u0027t be trying to read any fields anyway (since we would error out immediately), or we\u0027re in recovery mode and should be using default values if we can\u0027t read the real ones.\n\nSo maybe we can do these somewhat like this instead:\n\n uint32_t vb2_secdata_\u003ctype\u003e_get_\u003cfield\u003e(ctx, field)\n {\n   if (ctx-\u003eflags \u0026 NO_FWMP)\n     goto default;\n\n   if (!sd-\u003estatus \u0026 FWMP_INIT) {\n     if (ctx-\u003eflags \u0026 RECOVERY_MODE)\n       goto default;\n     else\n       vb2_assert();\n   }\n\n   switch (field) {\n   case xxx:\n     return sec-\u003e...;\n   ...\n   }\n\n default:\n   return 0; /* Or other default if necessary, but I think it\u0027s usually 0 */\n }",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed9fd8da_3cfd2c62",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 3
@@ -47,6 +64,24 @@
       "writtenOn": "2019-08-30T18:37:27Z",
       "side": 1,
       "message": "Same notion, vboot will never use this (in fact I\u0027m not sure if it would be possible/safe to do so, since the FMWP needs some special and weird permissions)",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d971f27_1f7abee4",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:50:37Z",
+      "side": 1,
+      "message": "...and for the set() ones we can probably make them void then (I mean, we shouldn\u0027t have this one anyway, but for the other secdata types).",
+      "parentUuid": "ed9fd8da_3cfd2c62",
       "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
