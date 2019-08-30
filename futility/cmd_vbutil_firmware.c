@@ -60,7 +60,7 @@ static void print_help(int argc, char *argv[])
 	       "\n"
 	       "For '--vblock <file>', required OPTIONS are:\n"
 	       "\n"
-	       "  --keyblock <file>           Key block in .keyblock format\n"
+	       "  --keyblock <file>           Keyblock in .keyblock format\n"
 	       "  --signprivate <file>"
 	       "        Signing private key in .vbprivk format\n"
 	       "  --version <number>          Firmware version\n"
@@ -109,10 +109,10 @@ static int do_vblock(const char *outfile, const char *keyblock_file,
 		goto vblock_cleanup;
 	}
 
-	/* Read the key block and keys */
+	/* Read the keyblock and keys */
 	keyblock = vb2_read_keyblock(keyblock_file);
 	if (!keyblock) {
-		FATAL("Error reading key block.\n");
+		FATAL("Error reading keyblock.\n");
 		goto vblock_cleanup;
 	}
 
@@ -230,17 +230,17 @@ static int do_verify(const char *infile, const char *signpubkey,
 		goto verify_cleanup;
 	}
 
-	/* Verify key block */
+	/* Verify keyblock */
 	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)blob;
 	if (VB2_SUCCESS !=
 	    vb2_verify_keyblock(keyblock, blob_size, &sign_key, &wb)) {
-		FATAL("Error verifying key block.\n");
+		FATAL("Error verifying keyblock.\n");
 		goto verify_cleanup;
 	}
 
 	now += keyblock->keyblock_size;
 
-	printf("Key block:\n");
+	printf("Keyblock:\n");
 	printf("  Size:                %d\n", keyblock->keyblock_size);
 	printf("  Flags:               %d (ignored)\n",
 	       keyblock->keyblock_flags);

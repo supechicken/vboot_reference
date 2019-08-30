@@ -31,9 +31,6 @@ static void test_struct_packing(void)
 	TEST_EQ(EXPECTED_VB2_SIGNATURE_SIZE,
 		EXPECTED_VBSIGNATURE_SIZE,
 		"vboot1->2 signature sizes same");
-	TEST_EQ(EXPECTED_VB2_KEYBLOCK_SIZE,
-		EXPECTED_VBKEYBLOCKHEADER_SIZE,
-		"vboot1->2 keyblock sizes same");
 }
 
 /**

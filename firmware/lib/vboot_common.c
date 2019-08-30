@@ -19,9 +19,9 @@
 
 const char *kVbootErrors[VBOOT_ERROR_MAX] = {
 	"Success.",
-	"Key block invalid.",
-	"Key block signature failed.",
-	"Key block hash failed.",
+	"Keyblock invalid.",
+	"Keyblock signature failed.",
+	"Keyblock hash failed.",
 	"Public key invalid.",
 	"Preamble invalid.",
 	"Preamble signature check failed.",
