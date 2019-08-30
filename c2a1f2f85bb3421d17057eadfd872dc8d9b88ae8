@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f49d6e8_3ef0233c",
+        "filename": "firmware/lib/tpm_lite/mocked_tlcl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T18:02:20Z",
+      "side": 1,
+      "message": "Do we still need to mock this one if we mock the other one?",
+      "revId": "c2a1f2f85bb3421d17057eadfd872dc8d9b88ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
