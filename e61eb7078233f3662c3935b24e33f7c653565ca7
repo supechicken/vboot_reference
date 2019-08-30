@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78e003a4_927a9047",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-08-30T20:57:13Z",
+      "side": 1,
+      "message": "This seems out of date, and I\u0027m not sure it\u0027s worth keeping anyway (for such a simple, non-exported function).",
+      "revId": "e61eb7078233f3662c3935b24e33f7c653565ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
