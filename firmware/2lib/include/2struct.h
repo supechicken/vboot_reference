@@ -20,20 +20,6 @@
 #include "2crypto.h"
 #include "2sysincludes.h"
 
-/*
- * Key block flags.
- *
- *The following flags set where the key is valid.  Not used by firmware
- * verification; only kernel verification.
- */
-#define VB2_KEY_BLOCK_FLAG_DEVELOPER_0  0x01 /* Developer switch off */
-#define VB2_KEY_BLOCK_FLAG_DEVELOPER_1  0x02 /* Developer switch on */
-#define VB2_KEY_BLOCK_FLAG_RECOVERY_0   0x04 /* Not recovery mode */
-#define VB2_KEY_BLOCK_FLAG_RECOVERY_1   0x08 /* Recovery mode */
-#define VB2_GBB_HWID_DIGEST_SIZE	32
-
-/****************************************************************************/
-
 /* Flags for vb2_shared_data.flags */
 enum vb2_shared_data_flags {
 	/* User has explicitly and physically requested recovery */
@@ -240,9 +226,11 @@ struct vb2_shared_data {
 /* TODO: can we write a macro to produce this at compile time? */
 #define VB2_GBB_XOR_SIGNATURE { 0x0e, 0x6d, 0x68, 0x68 }
 
+#define VB2_GBB_HWID_DIGEST_SIZE 32
+
 /* VB2 GBB struct version */
-#define VB2_GBB_MAJOR_VER      1
-#define VB2_GBB_MINOR_VER      2
+#define VB2_GBB_MAJOR_VER 1
+#define VB2_GBB_MINOR_VER 2
 /* v1.2 - added fields for sha256 digest of the HWID */
 
 struct vb2_gbb_header {
@@ -278,12 +266,13 @@ struct vb2_gbb_header {
 _Static_assert(VB2_GBB_FLAGS_OFFSET == offsetof(struct vb2_gbb_header, flags),
 	       "VB2_GBB_FLAGS_OFFSET set incorrectly");
 
+/****************************************************************************/
+
 /*
  * Root key hash for Ryu devices only.  Contains the hash of the root key.
  * This will be embedded somewhere inside the RO part of the firmware, so that
  * it can verify the GBB contains only the official root key.
  */
-
 #define RYU_ROOT_KEY_HASH_MAGIC "RtKyHash"
 #define RYU_ROOT_KEY_HASH_MAGIC_INVCASE "rTkYhASH"
 #define RYU_ROOT_KEY_HASH_MAGIC_SIZE 8
@@ -313,6 +302,8 @@ struct vb2_ryu_root_key_hash {
 };
 
 #define EXPECTED_VB2_RYU_ROOT_KEY_HASH_SIZE 48
+
+/****************************************************************************/
 
 /* Packed public key data */
 struct vb2_packed_key {
