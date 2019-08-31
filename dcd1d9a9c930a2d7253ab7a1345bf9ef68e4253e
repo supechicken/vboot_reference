@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a3198ef_93b6022c",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-31T17:16:17Z",
+      "side": 1,
+      "message": "Yeah... there are some tests that are connected with these, so probably need another CL to pick everything apart.  I also created another CL to move the error codes at CL:1776292.",
+      "parentUuid": "52b5fe0f_a6eaf254",
+      "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c76a8030_5bc770f0",
         "filename": "Makefile",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-30T17:57:11Z",
       "side": 1,
       "message": "nit: ordering lib21 before lib seems a bit weird to me",
+      "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b94d517_b6c848e1",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-31T17:16:17Z",
+      "side": 1,
+      "message": "Maybe.. but I\u0027d rather use an easily accessible sorting algorithm.  I just piped this list through vanilla `sort`.  Or is there some flag that would change the order?",
+      "parentUuid": "c76a8030_5bc770f0",
       "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "72acfa88_25ac74d3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-31T17:16:17Z",
+      "side": 1,
+      "message": "Same here to the lib21 ordering?  Or to we don\u0027t need this?",
+      "parentUuid": "1c78b499_a182ca1e",
+      "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d21634d7_5519eece",
         "filename": "Makefile",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2019-08-30T17:57:11Z",
       "side": 1,
       "message": "I think we don\u0027t need this anymore either?",
+      "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ebf7a6_cc7fe79f",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-08-31T17:16:17Z",
+      "side": 1,
+      "message": "Probably not -- I don\u0027t see any .cc files in vboot_reference.  The closest is utility/include/gcc_utility.h.\n\nCL:1780082",
+      "parentUuid": "d21634d7_5519eece",
       "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
