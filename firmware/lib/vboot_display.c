@@ -139,7 +139,7 @@ const char *RecoveryReasonString(uint8_t code)
 		return "RW firmware recovery flag mismatch";
 	case VB2_RECOVERY_RO_INVALID_RW_CHECK_MIN +
 		VBSD_LF_CHECK_VERIFY_KEYBLOCK:
-		return "RW firmware unable to verify key block";
+		return "RW firmware unable to verify keyblock";
 	case VB2_RECOVERY_RO_INVALID_RW_CHECK_MIN + VBSD_LF_CHECK_KEY_ROLLBACK:
 		return "RW firmware key version rollback detected";
 	case VB2_RECOVERY_RO_INVALID_RW_CHECK_MIN +
