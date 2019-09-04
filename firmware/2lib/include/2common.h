@@ -286,7 +286,7 @@ vb2_error_t vb2_verify_member_inside(const void *parent, size_t parent_size,
 /*
  * Helper function to get data pointed to by a public key.
  */
-const uint8_t *vb2_packed_key_data(const struct vb2_packed_key *key);
+uint8_t *vb2_packed_key_data(struct vb2_packed_key *key);
 
 /**
  * Verify a packed key is fully contained in its parent data
@@ -296,9 +296,9 @@ const uint8_t *vb2_packed_key_data(const struct vb2_packed_key *key);
  * @param key		Packed key pointer
  * @return VB2_SUCCESS, or non-zero if error.
  */
-int vb2_verify_packed_key_inside(const void *parent,
-				 uint32_t parent_size,
-				 const struct vb2_packed_key *key);
+vb2_error_t vb2_verify_packed_key_inside(const void *parent,
+					 uint32_t parent_size,
+					 const struct vb2_packed_key *key);
 
 /*
  * Helper functions to get data pointed to by a public key or signature.
