@@ -1210,7 +1210,7 @@ static const struct vb2_packed_key *get_rootkey(
 }
 
 /*
- * Returns a key block key from given image section, or NULL on failure.
+ * Returns a keyblock key from given image section, or NULL on failure.
  */
 static const struct vb2_keyblock *get_keyblock(
 		const struct firmware_image *image,
@@ -1229,8 +1229,8 @@ static const struct vb2_keyblock *get_keyblock(
 }
 
 /*
- * Duplicates a key block and returns the duplicated block.
- * The caller must free the returned key block after being used.
+ * Duplicates a keyblock and returns the duplicated block.
+ * The caller must free the returned keyblock after being used.
  */
 static struct vb2_keyblock *dupe_keyblock(const struct vb2_keyblock *block)
 {
@@ -1273,7 +1273,7 @@ static int verify_keyblock(const struct vb2_keyblock *block,
 	free(new_block);
 
 	if (r != VB2_SUCCESS) {
-		ERROR("Failed verifying key block.\n");
+		ERROR("Failed verifying keyblock.\n");
 		return -1;
 	}
 	return 0;
@@ -1282,7 +1282,7 @@ static int verify_keyblock(const struct vb2_keyblock *block,
 /*
  * Gets the data key and firmware version from a section on firmware image.
  * The section should contain a vb2_keyblock and a vb2_fw_preamble immediately
- * after key block so we can decode and save the data key and firmware version
+ * after keyblock so we can decode and save the data key and firmware version
  * into argument `data_key_version` and `firmware_version`.
  * Returns 0 for success, otherwise failure.
  */
