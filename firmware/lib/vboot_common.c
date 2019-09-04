@@ -86,7 +86,9 @@ int PublicKeyCopy(struct vb2_packed_key *dest, const struct vb2_packed_key *src)
 	dest->key_size = src->key_size;
 	dest->algorithm = src->algorithm;
 	dest->key_version = src->key_version;
-	memcpy(GetPublicKeyData(dest), GetPublicKeyDataC(src), src->key_size);
+	memcpy((struct vb2_packed_key *)vb2_packed_key_data(dest),
+	       vb2_packed_key_data(src),
+	       src->key_size);
 	return 0;
 }
 
