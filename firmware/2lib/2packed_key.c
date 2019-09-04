@@ -7,14 +7,14 @@
 
 #include "2common.h"
 
-const uint8_t *vb2_packed_key_data(const struct vb2_packed_key *key)
+uint8_t *vb2_packed_key_data(struct vb2_packed_key *key)
 {
-	return (const uint8_t *)key + key->key_offset;
+	return (uint8_t *)key + key->key_offset;
 }
 
-int vb2_verify_packed_key_inside(const void *parent,
-				 uint32_t parent_size,
-				 const struct vb2_packed_key *key)
+vb2_error_t vb2_verify_packed_key_inside(const void *parent,
+					 uint32_t parent_size,
+					 const struct vb2_packed_key *key)
 {
 	return vb2_verify_member_inside(parent, parent_size,
 					key, sizeof(*key),
