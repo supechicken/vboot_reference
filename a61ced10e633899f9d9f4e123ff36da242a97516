@@ -16,6 +16,24 @@
       "revId": "a61ced10e633899f9d9f4e123ff36da242a97516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f0426a4_b9871fef",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-05T10:12:11Z",
+      "side": 1,
+      "message": "I suppose the trade-off is readability vs. maintainability.  I personally err towards the latter... but you\u0027re right; strictly speaking this doesn\u0027t necessarily need to change.",
+      "parentUuid": "54648f17_2b218d1d",
+      "revId": "a61ced10e633899f9d9f4e123ff36da242a97516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
