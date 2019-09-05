@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "44ce36f5_a602a312",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-05T10:10:42Z",
+      "side": 1,
+      "message": "Actually, it looks like `sort` gets influenced in weird ways by the machine locale.\n\nI realized vim has its own built-in sort command, so I\u0027ll just use that (which co-incidentally ends up in the order that you prefer).  Although note that using vim\u0027s numeric sort also ends up with bizarre results.  So from now on I\u0027ll use vim\u0027s built-in sort without any arguments as the \"de facto\" order.",
+      "parentUuid": "dd48d150_a6a6bc9c",
+      "revId": "dcd1d9a9c930a2d7253ab7a1345bf9ef68e4253e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c78b499_a182ca1e",
         "filename": "Makefile",
         "patchSetId": 2
