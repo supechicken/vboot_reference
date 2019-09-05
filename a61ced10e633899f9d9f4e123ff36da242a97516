@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54648f17_2b218d1d",
+        "filename": "firmware/lib/rollback_index.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-05T05:52:45Z",
+      "side": 1,
+      "message": "nit: FWIW I don\u0027t think there\u0027s anything wrong with aligning the backslashes in the end, there\u0027s lots of code doing that. But there\u0027s nothing wrong with doing them right at the end of the line either.",
+      "revId": "a61ced10e633899f9d9f4e123ff36da242a97516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
