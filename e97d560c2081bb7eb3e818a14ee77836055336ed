@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5109bdc0_d00dd213",
+        "filename": "firmware/2lib/2signature.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-06T00:02:21Z",
+      "side": 1,
+      "message": "Both of these look like they really wanna be static inlines instead anyway. Do we really need this .c file?",
+      "revId": "e97d560c2081bb7eb3e818a14ee77836055336ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
