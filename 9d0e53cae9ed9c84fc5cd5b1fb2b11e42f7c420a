@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a36711_8b93e7b4",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-09-08T20:01:57Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be necessary: the ebuild is guaranteed to produce the prod.json now.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 0
+      },
+      "revId": "9d0e53cae9ed9c84fc5cd5b1fb2b11e42f7c420a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
