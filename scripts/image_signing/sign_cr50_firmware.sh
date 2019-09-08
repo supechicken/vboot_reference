@@ -53,13 +53,9 @@ verify_cr50_manifest() {
   fi
 
   if (( major & 1 )); then
-    if (( bid_flags & MP_BID_FLAG )); then
-      return 0
-    fi
-  else
-    if (( bid_flags & PRE_PVT_BID_FLAG )); then
-      return 0
-    fi
+    return 0
+  elif (( bid_flags & PRE_PVT_BID_FLAG )); then
+    return 0
   fi
   die "Inconsistent manifest ${manifest_source}: major = '${major}'," \
       "board_id_flags = '${bid_flags}'"
