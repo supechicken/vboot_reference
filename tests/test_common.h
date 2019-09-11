@@ -6,6 +6,7 @@
 #ifndef VBOOT_REFERENCE_TEST_COMMON_H_
 #define VBOOT_REFERENCE_TEST_COMMON_H_
 
+#include <setjmp.h>
 #include <stdio.h>
 
 /* Used to get a line number as a constant string. Need to stringify it twice */
@@ -116,6 +117,21 @@ int test_succ(int result,
 		  __FILE__ ":" TOSTRING(__LINE__), \
 		  #result " == 0", \
 		  comment)
+
+/* Return 1 if vb2ex_abort() was called, else return 0.
+ * Also update the global gTestSuccess flag if test fails. */
+int test_abort(int result,
+	       const char *preamble, const char *desc, const char *comment);
+
+#define TEST_ABORT(call, comment) do { \
+	int i = setjmp(*get_jmp_env()); \
+	if (i == 0) call; \
+	test_abort(i, \
+		   __FILE__ ":" TOSTRING(__LINE__), \
+		   #call " causes abort", \
+		   comment); } while (0)
+
+jmp_buf *get_jmp_env(void);
 
 /* ANSI Color coding sequences.
  *

@@ -9,10 +9,12 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "2common.h"
 #include "test_common.h"
 
 /* Global test success flag. */
 int gTestSuccess = 1;
+static jmp_buf _test_jmp_env;
 
 int test_eq(int result, int expected,
 	    const char *preamble, const char *desc, const char *comment)
@@ -172,4 +174,30 @@ int test_false(int result,
 		gTestSuccess = 0;
 	}
 	return !result;
+}
+
+int test_abort(int result,
+	       const char *preamble, const char *desc, const char *comment)
+{
+	if (result) {
+		fprintf(stderr, "%s: %s ... " COL_GREEN "PASSED\n" COL_STOP,
+			preamble, comment ? comment : desc);
+	} else {
+		fprintf(stderr, "%s: %s ... " COL_RED "FAILED\n" COL_STOP,
+			preamble, comment ? comment : desc);
+		fprintf(stderr, "	Expected ABORT, but did not get it\n");
+		gTestSuccess = 0;
+	}
+	return result;
+}
+
+void _vb2ex_abort(void)
+{
+	/* When abort is called, jump back to TEST_ABORT macro */
+	longjmp(*get_jmp_env(), 1);
+}
+
+jmp_buf *get_jmp_env(void)
+{
+	return &_test_jmp_env;
 }

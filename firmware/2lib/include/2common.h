@@ -37,9 +37,19 @@ struct vb2_public_key;
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #endif
 
-/* Platform-dependent debug output macros. */
-#define VB2_DEBUG(format, args...) vb2ex_printf(__func__, format, ## args)
-#define VB2_DEBUG_RAW(format, args...) vb2ex_printf(NULL, format, ## args)
+/* Platform-dependent debug/assert output macros. */
+#define VB2_DEBUG(format, args...) \
+	vb2ex_printf(__func__, format, ## args)
+
+#define VB2_DEBUG_RAW(format, args...) \
+	vb2ex_printf(NULL, format, ## args)
+
+#define VB2_ASSERT(expr) do { if (!(expr)) { \
+	VB2_DEBUG("assertion failed: %s at %s:%d\n", \
+		  #expr, __FILE__, __LINE__); _vb2ex_abort(); } } while (0)
+
+#define VB2_DIE(format, args...) do { \
+	VB2_DEBUG(format, ## args); _vb2ex_abort(); } while (0)
 
 /*
  * Define test_mockable and for mocking functions when compiled for Chrome OS
@@ -73,6 +83,14 @@ struct vb2_public_key;
 #else // C++11 on gcc 6, and all other cases
 #define VBOOT_FALLTHROUGH
 #endif
+
+/**
+ * Helper function which calls the external abort API function.
+ *
+ * If the function is not implemented, triggers an exit.  Unit test
+ * infrastructure also overrides this function.
+ */
+void _vb2ex_abort(void);
 
 /**
  * Round up a number to a multiple of VB2_WORKBUF_ALIGN

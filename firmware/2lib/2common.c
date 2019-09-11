@@ -11,6 +11,18 @@
 #include "2rsa.h"
 #include "2sha.h"
 
+void _vb2ex_abort(void)
+{
+	vb2ex_abort();
+
+	/*
+	 * If vb2ex_abort is not implemented, or if it is implemented
+	 * incorrectly, exit here to prevent vboot code from continuing
+	 * execution.
+	 */
+	exit(1);
+}
+
 vb2_error_t vb2_safe_memcmp(const void *s1, const void *s2, size_t size)
 {
 	const unsigned char *us1 = s1;
