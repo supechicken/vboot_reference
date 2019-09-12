@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4dddabf_6e98803f",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T02:41:17Z",
+      "side": 1,
+      "message": "A lot of the code in this file (including this and what calls it) seems to be no longer used by anything other than tests (and that load_kernel_test thing we were thinking of getting rid of anyway). Might be a good idea to do some garbage collection so you don\u0027t have to keep shuffling tons of dead code around for every refactor?",
+      "revId": "e09731d9c2a654b5ade85e8856a3eb5669258b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3156d380_c4d97173",
+        "filename": "firmware/lib20/packed_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T02:41:17Z",
+      "side": 1,
+      "message": "Eeeaaahhh....... I\u0027m hesitant of adding const casts to this stuff, since this is the most important and critical code. It\u0027s a good thing that Randall made judicious use of const all over here and we should try not to break that. If you want to reuse the key_data() helper on both ends that\u0027s fine, but then I\u0027d rather keep it as const and do the explicit cast in the futility part, because a bug there isn\u0027t quite as severe as a bug here.\n\nAlternatively, if you feel really fancy and futuristic (\"future\" here meaning 2011), you could try this (which may or may not work, never tried C11 generics before):\n\n #define vb2_packed_key_data(key) _Generic(key, \\\n   const struct vb2_packed_key *: vb2_packed_key_data_const(key), \\\n   default: vb2_packed_key_data_nonconst(key))\n\n(and then define both functions).",
+      "revId": "e09731d9c2a654b5ade85e8856a3eb5669258b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
