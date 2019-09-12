@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92fd7af0_6d475588",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T00:00:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this changes anything? RW_AB() is just a shortcut for \"EC_CFS if devidx\u003d0\" (and devidx is always 0 on modern Chromebooks). There is no concept of single-slot vs. dual-slot EFS here, this code has been written with the assumption that EFS always has two RW slots. If it doesn\u0027t, you should double-check everything to make sure it doesn\u0027t need other changes as well.",
+      "revId": "5922a48cf5e2237234fe8b2e6a51fa686606ee5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
