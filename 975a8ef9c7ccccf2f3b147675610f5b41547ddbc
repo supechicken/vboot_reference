@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "130ee634_c5d690be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T23:57:42Z",
+      "side": 1,
+      "message": "Yes, vb2ex_abort() sounds good. Don\u0027t just call it exit().",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650eb0d7_173dd204",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T23:57:42Z",
+      "side": 1,
+      "message": "I don\u0027t get why the do-while is added here?",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44964f9b_de4ea3f1",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T23:57:42Z",
+      "side": 1,
+      "message": "It might be good to add a for(;;); after the vb2ex_abort() here, just to be *really* sure we won\u0027t continue even if the caller implements the function in a way it\u0027s not supposed to.",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0aa8d4_a49e0433",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-12T23:57:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we want this differentiation? If you want to add non-fatal assertions, you should make a new define for that rather than tying it to VBOOT_DEBUG. But I don\u0027t think we\u0027d want that... some of these assertions may guard security risks, and in those cases it\u0027s better to hang than to risk executing anything unintended.",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
