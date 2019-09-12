@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "391d1349_6a6d3330",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "I like this solution.",
+      "parentUuid": "e14789dd_f12bbc71",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bc13b66_6d6dec04",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c56a76e2_834515a0",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "Gone.",
+      "parentUuid": "0bc13b66_6d6dec04",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cfabb81_2f4537c1",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2019-08-30T20:50:37Z",
       "side": 1,
       "message": "So after looking at https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1728298/25/firmware/lib/vboot_ui_menu.c#186 and similar call sites I\u0027m not really happy about this API anymore. Having to check this return value all the time is really annoying and bloats the code a lot. We really only need to check once (as part of init()), and after that it should either always work, or we shouldn\u0027t be trying to read any fields anyway (since we would error out immediately), or we\u0027re in recovery mode and should be using default values if we can\u0027t read the real ones.\n\nSo maybe we can do these somewhat like this instead:\n\n uint32_t vb2_secdata_\u003ctype\u003e_get_\u003cfield\u003e(ctx, field)\n {\n   if (ctx-\u003eflags \u0026 NO_FWMP)\n     goto default;\n\n   if (!sd-\u003estatus \u0026 FWMP_INIT) {\n     if (ctx-\u003eflags \u0026 RECOVERY_MODE)\n       goto default;\n     else\n       vb2_assert();\n   }\n\n   switch (field) {\n   case xxx:\n     return sec-\u003e...;\n   ...\n   }\n\n default:\n   return 0; /* Or other default if necessary, but I think it\u0027s usually 0 */\n }",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d4a448d_16d23011",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "Yeah okay, this sounds like a good idea.\nNot sure if we should go ahead and update vb2_secdata_firmware/kernel in this CL, or leave that for a future change?",
+      "parentUuid": "1cfabb81_2f4537c1",
       "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "059dccf2_a5f8c031",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "Good point, let\u0027s just remove this.",
+      "parentUuid": "8d971f27_1f7abee4",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3a0013b_16eab083",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 3
@@ -99,6 +171,24 @@
       "writtenOn": "2019-08-30T18:37:27Z",
       "side": 1,
       "message": "I think this can just be VB2_ERROR_SECDATA_FWMP_GET_UNINITIALIZED. That means \"any fwmp_get function was called before fwmp_init\". I think that can apply here just as well.",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c602314b_f75cfd23",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "Let\u0027s just have this return the uint8_t pointer directly, and assert that FWMP has been initialized?  Not sure if there is a \"default value\" here though.",
+      "parentUuid": "a3a0013b_16eab083",
       "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

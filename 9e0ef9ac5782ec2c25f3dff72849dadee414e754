@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2a1d13d7_f7bfa2ee",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-12T07:56:22Z",
+      "side": 1,
+      "message": "Seems like if we are updating this function to directly return the flag value (and die if FWMP is not initialized properly), it still works well enough to return the flag value here instead of the entire flags field.\n\nHowever to answer your last comment, it kind of depends on your definition of the \"flags\" versus \"fields\" in nvstorage.  Everything is accessed at a bit-level, but some of the \"flags/fields\" may span multiple bits.  For something is being accessed that is just 1-bit long, it is natural for me to call it a flag.  That\u0027s what I mean here.",
+      "parentUuid": "b139b146_71ed9872",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "9e0ef9ac5782ec2c25f3dff72849dadee414e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef6966f3_47906314",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 2
