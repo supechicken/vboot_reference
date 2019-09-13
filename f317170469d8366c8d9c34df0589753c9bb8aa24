@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e913354c_83da78ba",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:56:45Z",
+      "side": 1,
+      "message": "I don\u0027t think \u0027rv\u0027 needs to be pre-initialized here for any path, so let\u0027s not do that (because then the compiler warns you if you\u0027re relying on it being a certain value anywhere where you shouldn\u0027t).",
+      "revId": "f317170469d8366c8d9c34df0589753c9bb8aa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
