@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc5fab67_ed87b799",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "Let\u0027s just set the context flag in/after vb2_fw_parse_gbb() if the GBB flag is set, rather than having to always check both.",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe47f84_72696bf1",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "This also needs to check NO_FWMP (probably want to return NULL then).",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385105bc_91da6e1f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "nit: We should probably make a rule whether the FWMP is supposed to be initialized before fw_phase1() or before kernel_phase1(), and then make sure the documentation makes that very clear here and below. While it\u0027s not impossible that we may ever need access to FWMP values in firmware verification, we don\u0027t right now, so in the interest of doing as little as possible in RO we should probably put it before kernel_phase1(). (We could still change that later if the need for FWMP during firmware verification ever comes up.)",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb323cf9_b43fea85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "nit: spurious \"it\"?",
+      "range": {
+        "startLine": 194,
+        "startChar": 61,
+        "endLine": 194,
+        "endChar": 63
+      },
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d328e14_66881286",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "Easy... don\u0027t call it exit(). ;)\n\nNote that if you follow my suggestion in the other CL and add a for(;;); to the DIE() macro, you might have to play some setjmp()/longjmp() tricks here to get back out of it.",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ca75a8_d2971d5e",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "Should also test NO_FWMP case",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "96df0c33_2d553f37",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "Separate change sounds better.",
+      "parentUuid": "8d4a448d_16d23011",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed9fd8da_3cfd2c62",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 3
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "Let\u0027s just have this return the uint8_t pointer directly, and assert that FWMP has been initialized?  Not sure if there is a \"default value\" here though.",
       "parentUuid": "a3a0013b_16eab083",
+      "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8987fe64_1203009b",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-13T00:31:58Z",
+      "side": 1,
+      "message": "Yeah, I wrote that comment before rethinking the return types.",
+      "parentUuid": "c602314b_f75cfd23",
       "revId": "3a88a1756bc0b613c9dc708db2ccd0772cf69d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
