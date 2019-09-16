@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "77f454dc_63490168",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-16T09:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130ee634_c5d690be",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "650eb0d7_173dd204",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-12T23:57:42Z",
       "side": 1,
       "message": "I don\u0027t get why the do-while is added here?",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7654ced_3c7837f5",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-16T09:27:20Z",
+      "side": 1,
+      "message": "I guess it\u0027s only necessary for multiple-statement macros?",
+      "parentUuid": "650eb0d7_173dd204",
       "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bff7bf6a_60e9b070",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-16T09:27:20Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good idea.  But would just keeping an exit(1) call afterwards work just as well?\n\nThis has the nice property that when running tests, we\u0027ll never get stuck in an infinite loop if something goes wrong.",
+      "parentUuid": "44964f9b_de4ea3f1",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c0aa8d4_a49e0433",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2019-09-12T23:57:42Z",
       "side": 1,
       "message": "I don\u0027t think we want this differentiation? If you want to add non-fatal assertions, you should make a new define for that rather than tying it to VBOOT_DEBUG. But I don\u0027t think we\u0027d want that... some of these assertions may guard security risks, and in those cases it\u0027s better to hang than to risk executing anything unintended.",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc4006c_17acbdf0",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-16T09:27:20Z",
+      "side": 1,
+      "message": "I\u0027m just following the example of the existing VbAssert macro, which only actually exits if VBOOT_DEBUG is set.  We can certainly do what you\u0027re saying here, but I\u0027m just worried that out of all the VbAssert calls in TPM code, one of them might be (erroneously) triggering under normal code flow, causing our boot flow to blow up.\n\nThat said, we\u0027re on ToT.  If any weird situation does come up, we probably have a chance to fix it before being set in stone in RO flash.\n\nOkay, you\u0027ve convinced me.",
+      "parentUuid": "5c0aa8d4_a49e0433",
       "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
