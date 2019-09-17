@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77052b6b_2a938d16",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T21:17:38Z",
+      "side": 1,
+      "message": "nit: maybe rename to vb2_fw_init_gbb() to represent enlarged role?",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 28
+      },
+      "revId": "e594aed240ccb210d612a6ff953c6fbb22dc9bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "691dbe16_d42277ee",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T21:17:38Z",
+      "side": 1,
+      "message": "nit: mention that this should happen before kernel_phase1() (and maybe expand comments above to clarify when secdata_firmware and secdata_kernel need to be filled as well)",
+      "range": {
+        "startLine": 274,
+        "startChar": 56,
+        "endLine": 274,
+        "endChar": 72
+      },
+      "revId": "e594aed240ccb210d612a6ff953c6fbb22dc9bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75866382_9af0ac4d",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T21:17:38Z",
+      "side": 1,
+      "message": "If you call it like this fwmp_check() will actually access fields beyond \u0027size\u0027. Not sure if we care (technically it should have another check before accessing sec-\u003estruct_size). But the test should probably exercise it in a more correct way, too.",
+      "revId": "e594aed240ccb210d612a6ff953c6fbb22dc9bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc60693_cffd1f83",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T21:17:38Z",
+      "side": 1,
+      "message": "This is okay, but would probably be good to check actually blank (zeroed) data as well.",
+      "revId": "e594aed240ccb210d612a6ff953c6fbb22dc9bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
