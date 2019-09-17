@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "24552094_c229d86f",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "Done, although this slightly modifies our definition of NO_SECDATA_FWMP.",
+      "parentUuid": "fc5fab67_ed87b799",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe47f84_72696bf1",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 16
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-13T00:31:58Z",
       "side": 1,
       "message": "This also needs to check NO_FWMP (probably want to return NULL then).",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5067234_8a5a1e23",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "If we are going to return NULL at all... then we may as well follow the same pattern as above (i.e. FWMP not initialized + recovery mode --\u003e NULL).",
+      "parentUuid": "5fe47f84_72696bf1",
       "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab6b6de_c73cb3eb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "385105bc_91da6e1f",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "39ee833d_76b020de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb323cf9_b43fea85",
+      "range": {
+        "startLine": 194,
+        "startChar": 61,
+        "endLine": 194,
+        "endChar": 63
+      },
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d328e14_66881286",
         "filename": "tests/vb2_secdata_fwmp_tests.c",
         "patchSetId": 16
@@ -87,6 +165,24 @@
       "writtenOn": "2019-09-13T00:31:58Z",
       "side": 1,
       "message": "Easy... don\u0027t call it exit(). ;)\n\nNote that if you follow my suggestion in the other CL and add a for(;;); to the DIE() macro, you might have to play some setjmp()/longjmp() tricks here to get back out of it.",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba232a96_da595345",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "Since we will be using the assertions for other SECDATA spaces, I implemented the setjmp/longjmp stuff as part of test infrastructure.",
+      "parentUuid": "9d328e14_66881286",
       "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -107,6 +203,24 @@
       "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd5b943_430463d0",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-17T09:01:19Z",
+      "side": 1,
+      "message": "Added more test cases here.",
+      "parentUuid": "38ca75a8_d2971d5e",
+      "revId": "7c5c5191f19353e055d1d210cb6cbe6cd87507e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
