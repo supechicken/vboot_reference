@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9243d67b_e60f85d5",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T20:43:03Z",
+      "side": 1,
+      "message": "Wait, no, I\u0027m not sure how you got to this now. That\u0027s not what I meant.\n\nThe goal of the infinite loop is to make sure vboot cannot continue *even if* the calling firmware implements vb2ex_abort() with something that violates the contract (i.e. returns). So you can\u0027t have it here, you need it in the macro.\n\nThis here is the stub that is compiled into any userland code (e.g. futility or tests). It never gets compiled for firmware builds. So here you can call your exit(1). Since it\u0027s weak, tests can still override it if they desire.",
+      "revId": "b2db1ddb18a0c6589b970d2a1e136a7f98a38aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0355b396_c78aad14",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T20:43:03Z",
+      "side": 1,
+      "message": "Again, the 2stub.c implementation isn\u0027t available in the firmware library (and it shouldn\u0027t, we should force firmware callers to implement this).",
+      "revId": "b2db1ddb18a0c6589b970d2a1e136a7f98a38aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
