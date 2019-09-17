@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "02e80309_a2499c42",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T00:32:24Z",
+      "side": 1,
+      "message": "Yes, or for any macro that might potentially not be a statement of its own. But here I don\u0027t see a reason to add it.",
+      "parentUuid": "c7654ced_3c7837f5",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44964f9b_de4ea3f1",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "71fea671_c70dc862",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T00:32:24Z",
+      "side": 1,
+      "message": "I mean, the problem is that exit() is not defined for firmware environments so it would give you linkage errors.\n\nI wouldn\u0027t worry too much about unit tests, if they break you should notice soon enough.",
+      "parentUuid": "bff7bf6a_60e9b070",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c0aa8d4_a49e0433",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "I\u0027m just following the example of the existing VbAssert macro, which only actually exits if VBOOT_DEBUG is set.  We can certainly do what you\u0027re saying here, but I\u0027m just worried that out of all the VbAssert calls in TPM code, one of them might be (erroneously) triggering under normal code flow, causing our boot flow to blow up.\n\nThat said, we\u0027re on ToT.  If any weird situation does come up, we probably have a chance to fix it before being set in stone in RO flash.\n\nOkay, you\u0027ve convinced me.",
       "parentUuid": "5c0aa8d4_a49e0433",
+      "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa261fd9_c87e3acd",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-17T00:32:24Z",
+      "side": 1,
+      "message": "For security code, blowing up safely is generally better than going down an unexpected code path.",
+      "parentUuid": "ccc4006c_17acbdf0",
       "revId": "975a8ef9c7ccccf2f3b147675610f5b41547ddbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
