@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f47e8e44_8fd3a0bb",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-18T05:17:56Z",
+      "side": 1,
+      "message": "Err, sorry about that.  I\u0027m not sure how that made sense yesterday.  I was originally planning to do the for(;;) part in the helper function _vb2ex_abort(), but it seems to work just as well to get rid of the helper function and put the for(;;) in the macros themselves.\n\nThe trick to check for gTestAbortArmed actually solves the problem of tests potentially hanging on an infinite loop.",
+      "parentUuid": "9243d67b_e60f85d5",
+      "revId": "b2db1ddb18a0c6589b970d2a1e136a7f98a38aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0355b396_c78aad14",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-17T20:43:03Z",
       "side": 1,
       "message": "Again, the 2stub.c implementation isn\u0027t available in the firmware library (and it shouldn\u0027t, we should force firmware callers to implement this).",
+      "revId": "b2db1ddb18a0c6589b970d2a1e136a7f98a38aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4199a390_c79a940f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-18T05:17:56Z",
+      "side": 1,
+      "message": "Right -- it just so happens that currently no firmware library calls vb2ex_abort, so it actually compiles fine without an implementation at the moment.  But we\u0027ll need to at least get a depthcharge implementation before we start using the FWMP functions.",
+      "parentUuid": "0355b396_c78aad14",
       "revId": "b2db1ddb18a0c6589b970d2a1e136a7f98a38aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
