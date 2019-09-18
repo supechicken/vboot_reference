@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf2d8fd2_a4390ae3",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-18T20:30:06Z",
+      "side": 1,
+      "message": "Actually, now that you made the SD flag get set even in the NO_FWMP case, let\u0027s flip these two around (first check for FWMP_INIT, then check for NO_FWMP). That way vboot will assert if we have a broken initialization order (trying to access FWMP before running init()) even if there is no FWMP (which is usually how most developers run it). That might help us catch bugs earlier.",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a23eec_5ce1e258",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-18T20:30:06Z",
+      "side": 1,
+      "message": "Also, would probably be useful to print a warning here (e.g. \"Assuming broken FMWP flag %d as 0\")",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea95e2e3_9c09b8c4",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-18T20:30:06Z",
+      "side": 1,
+      "message": "nit: might also want to have one check that it actually returns success when you use a struct_size greater than MIN and you provide the right amount of bytes.\n\nAlso, are there any tests covering the CRC function (that it actually CRCs the size listed in the struct and not just a constant amount)?",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
