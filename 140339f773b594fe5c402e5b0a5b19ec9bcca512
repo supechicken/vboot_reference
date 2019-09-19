@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60c79707_76092293",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T02:52:27Z",
+      "side": 1,
+      "message": "I was toying with that idea yesterday... yeah, it\u0027s probably good to be consistent and require initialization regardless of setting NO_FWMP.",
+      "parentUuid": "cf2d8fd2_a4390ae3",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07a23eec_5ce1e258",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 25
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "28381f48_54905fa4",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T02:52:27Z",
+      "side": 1,
+      "message": "Sure, that sounds useful.",
+      "parentUuid": "07a23eec_5ce1e258",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea95e2e3_9c09b8c4",
         "filename": "tests/vb2_secdata_fwmp_tests.c",
         "patchSetId": 25
@@ -47,6 +83,24 @@
       "writtenOn": "2019-09-18T20:30:06Z",
       "side": 1,
       "message": "nit: might also want to have one check that it actually returns success when you use a struct_size greater than MIN and you provide the right amount of bytes.\n\nAlso, are there any tests covering the CRC function (that it actually CRCs the size listed in the struct and not just a constant amount)?",
+      "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ceb2ae_4fa7c0e0",
+        "filename": "tests/vb2_secdata_fwmp_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T02:52:27Z",
+      "side": 1,
+      "message": "Added both of these cases.  Thanks!",
+      "parentUuid": "ea95e2e3_9c09b8c4",
       "revId": "140339f773b594fe5c402e5b0a5b19ec9bcca512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
