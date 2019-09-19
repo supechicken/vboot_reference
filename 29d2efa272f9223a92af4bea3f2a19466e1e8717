@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b60a9932_efd5881f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59782d35_05962de9",
+      "range": {
+        "startLine": 436,
+        "startChar": 60,
+        "endLine": 436,
+        "endChar": 69
+      },
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acc4f5bb_b8b25226",
         "filename": "firmware/lib/include/secdata_tpm.h",
         "patchSetId": 25
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "536c2fe6_0b78f7b3",
+        "filename": "firmware/lib/include/secdata_tpm.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc4f5bb_b8b25226",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "022623fc_757f29da",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25
@@ -53,6 +95,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "nit: don\u0027t really understand why this can\u0027t keep using RETURN_ON_FAILURE?",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a5b959_317f7b87",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "I figured it would help our error messages be more consistent... but maybe it\u0027s just too much extra code bloat.",
+      "parentUuid": "022623fc_757f29da",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "1b7fb3ec_00c97728",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "vb2_secdata_kernel_init is currently an internal function.  Do we want to externalize it in the API?  I\u0027m not against the client taking care of the \"initialization\" step, rather than doing it in fw_phase1 and kernel_phase1.\n\nIn this case we may just want to merge the two functions into one (check and init)?",
+      "parentUuid": "d339b0f6_c67a3d98",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b41eef_0c12487a",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25
@@ -87,6 +165,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "nit: maybe move this below the recovery mode check?",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f43b203_c0ba0c97",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Reduced the overall debug messages printed.  Now each function should *at least* print one, but avoid more than that if possible.",
+      "parentUuid": "e2b41eef_0c12487a",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "97f7d9b6_6444cb7c",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "I suppose you\u0027re right that currently some weird places call this function.\n\nAssuming that this code moves into depthcharge, at that point it would be impossible for this kind of edge case to occur.\n\nSo I guess we have to keep the lock cache for now.\n\nBut it makes it kind of annoying to test.  Needs to be a global variable exported in secdata_tpm.h, since some tests will rely on the cache being in a clean state when running (specifically vboot_api_kernel4_tests).",
+      "parentUuid": "1a3a5d05_e38d9244",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d9c3988_49c4c691",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "a9633254_431c717d",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9c3988_49c4c691",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1b5739_0444ccfa",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 25
@@ -138,6 +270,30 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "nit: \"or\"",
+      "range": {
+        "startLine": 314,
+        "startChar": 35,
+        "endLine": 314,
+        "endChar": 38
+      },
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472ece03_bf6d5668",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Changed this to do all three.",
+      "parentUuid": "1f1b5739_0444ccfa",
       "range": {
         "startLine": 314,
         "startChar": 35,
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "a2122d80_b246e1f7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Still considering putting _init in the public API, or merging _check and _init.",
+      "parentUuid": "c894281a_346d5de6",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecbf8941_203e34fb",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 25
@@ -178,6 +352,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "If you add a NO_FWMP context flag like I suggested in the other patch, it will also make this cleaner (you\u0027d just set it here).",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a877ca67_2bd390bb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to do anything special here?\n\nNormal mode + invalid FWMP --\u003e boot into recovery mode\n  (Occurs in the conditional above)\n\nRecovery mode + invalid FWMP --\u003e return default values\n  (uses !INIT \u0026\u0026 RECOVERY clause in _get function)",
+      "parentUuid": "ecbf8941_203e34fb",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "e254035e_9e2d59b3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Again, depends on if we want to put that in the API or merge _check and _init.",
+      "parentUuid": "2653c0a5_6d25aabd",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dd35239_99815be8",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 25
@@ -212,6 +422,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "off-topic: we should really have a unit test covering this detail...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2514a4d_076431f6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Not even sure what this is talking about?  The tpm_set_mode call?",
+      "parentUuid": "3dd35239_99815be8",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -235,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "ccb03e17_43452e89",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "I\u0027ve made vb2_kernel_cleanup non-static and called it here, as well as another location where secdata_kernel_lock is called (vboot_ui_common.c).  This spaghetti code scares me, and I would really prefer the code flow to end up back in VbSelectAndLoadKernel rather than having multiple exit points.  I\u0027m not so confident that this won\u0027t break anything.",
+      "parentUuid": "0cef3b30_da9eb42f",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7b064a3_787c12b0",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 25
@@ -246,6 +492,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "Still really not a fan of this...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a33c5c7_0dba4a37",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Neither am I.  Fixed in a later CL.",
+      "parentUuid": "f7b064a3_787c12b0",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -269,6 +533,24 @@
     },
     {
       "key": {
+        "uuid": "7766ee76_776c9faf",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Done... but also very worried about breaking things.",
+      "parentUuid": "e8f967b3_1ae6ffb6",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907b56a1_7b06bbca",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 25
@@ -286,6 +568,24 @@
     },
     {
       "key": {
+        "uuid": "52d92453_955cf4da",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "Thankfully we can avoid dealing with this issue, now that we\u0027re guaranteed to get a flag value \u003d)",
+      "parentUuid": "907b56a1_7b06bbca",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2872a3f_c12aa815",
         "filename": "firmware/linktest/main.c",
         "patchSetId": 25
@@ -297,6 +597,24 @@
       "writtenOn": "2019-08-30T20:54:05Z",
       "side": 1,
       "message": "off-topic: I don\u0027t understand why we have this file at all...",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45de099_d3093156",
+        "filename": "firmware/linktest/main.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-19T08:28:32Z",
+      "side": 1,
+      "message": "I think Randall said it was necessary to ensure that all of our functions were linked into Insyde Software\u0027s BIOS?  But yeah, we can remove it...",
+      "parentUuid": "b2872a3f_c12aa815",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
