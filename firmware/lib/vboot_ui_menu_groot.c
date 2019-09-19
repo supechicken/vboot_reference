@@ -302,6 +302,9 @@ static vb2_error_t enter_recovery_screen(struct vb2_context *ctx, int step)
 		vb2_change_menu(VB_GROOT_RECOVERY_NO_GOOD, 0);
 	else
 	  switch(step) {
+	  case 0:
+	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP0, 0);
+		break;
 	  case 1:
 	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
 		break;
@@ -312,7 +315,7 @@ static vb2_error_t enter_recovery_screen(struct vb2_context *ctx, int step)
 	  	vb2_change_menu(VB_GROOT_RECOVERY_STEP3, 0);
 		break;
 	  default:
-		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP0, 0);
 		break;
 	  }
 	vb2_draw_current_screen(ctx);
@@ -327,10 +330,12 @@ static vb2_error_t step_next_recovery_screen(struct vb2_context *ctx)
 	VB2_DEBUG("current_menu = 0x%x\n", current_menu);
 	switch (current_menu) {
 	case VB_GROOT_RECOVERY_INSERT:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP0, 0);
+		break;
+	case VB_GROOT_RECOVERY_STEP0:
 		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0);
 		break;
 	case VB_GROOT_RECOVERY_STEP1:
-	  VB2_DEBUG("changing to step 2 screen: 0x%x\n", VB_GROOT_RECOVERY_STEP2);
 		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, 0);
 		break;
 	case VB_GROOT_RECOVERY_STEP2:
@@ -441,6 +446,8 @@ static vb2_error_t goto_prev_menu(struct vb2_context *ctx)
 		return enter_to_dev_menu(ctx);
 	case VB_GROOT_ADV_OPTIONS:
 		return enter_options_menu(ctx);
+	case VB_GROOT_RECOVERY_STEP0:
+	  return enter_recovery_screen(ctx, 0);
 	case VB_GROOT_RECOVERY_STEP1:
 	  return enter_recovery_screen(ctx, 1);
 	case VB_GROOT_RECOVERY_STEP2:
@@ -856,8 +863,35 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 			},
 		},
 	},
+	[VB_GROOT_RECOVERY_STEP0] = {
+		.name = "Recovery Step 0: Let's step you through the recovery process",
+		.size = VB_GROOT_REC_STEP0_COUNT,
+		.screen = VB_SCREEN_RECOVERY_STEP0,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_STEP0_LANGUAGE] = {
+				.text = "Step 0: Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_STEP0_NEXT] = {
+				.text = "Step 0: Next (external disk)",
+				.action = step_next_recovery_screen,
+			},
+			/* [VB_GROOT_REC_STEP0_BACK] = { */
+			/* 	.text = "Step 0: Next (phone)", */
+			/* 	.action = goto_prev_menu, */
+			/* }, */
+			[VB_GROOT_REC_STEP0_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+			[VB_GROOT_REC_STEP0_POWER_OFF] = {
+				.text = "Step 0: Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
 	[VB_GROOT_RECOVERY_STEP1] = {
-		.name = "Recovery Step 1: Let's setp you through the recovery process",
+		.name = "Recovery Step 1: Here's what you need",
 		.size = VB_GROOT_REC_STEP1_COUNT,
 		.screen = VB_SCREEN_RECOVERY_STEP1,
 		.items = (struct vb2_menu_item[]){
@@ -869,10 +903,10 @@ static struct vb2_menu menus[VB_GROOT_COUNT] = {
 				.text = "Step 1: Next",
 				.action = step_next_recovery_screen,
 			},
-			/* [VB_GROOT_REC_STEP1_BACK] = { */
-			/* 	.text = "Step 1: Back", */
-			/* 	.action = goto_prev_menu, */
-			/* }, */
+			[VB_GROOT_REC_STEP1_BACK] = {
+				.text = "Step 1: Back",
+				.action = goto_prev_menu,
+			},
 			[VB_GROOT_REC_STEP1_ADV_OPTIONS] = {
 				.text = "Advanced Options",
 				.action = enter_options_menu,
@@ -1183,7 +1217,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		if (usb_nogood != (ret != VBERROR_NO_DISK_FOUND)) {
 			/* USB state changed, force back to base screen */
 			usb_nogood = ret != VBERROR_NO_DISK_FOUND;
-			enter_recovery_screen(ctx, 1);
+			enter_recovery_screen(ctx, 0);
 		}
 
 		/*
