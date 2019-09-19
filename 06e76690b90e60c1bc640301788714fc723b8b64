@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bed4d2ed_48fdb6a2",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-19T21:20:47Z",
+      "side": 1,
+      "message": "Note that this is the enum value, not the value of the actual flags field, I think decimal would make more sense there.\n\nAlso, missing newline.",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "06e76690b90e60c1bc640301788714fc723b8b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387a84bb_772b036c",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-19T21:20:47Z",
+      "side": 1,
+      "message": "Missing newline",
+      "revId": "06e76690b90e60c1bc640301788714fc723b8b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
