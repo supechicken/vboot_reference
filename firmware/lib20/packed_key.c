@@ -10,6 +10,7 @@
 #include "2rsa.h"
 #include "vb2_common.h"
 
+// coverity[ +tainted_string_sanitize_content : arg-1 ]
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 				  const uint8_t *buf, uint32_t size)
 {
