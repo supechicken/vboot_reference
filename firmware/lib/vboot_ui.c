@@ -479,6 +479,7 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 
 	if (action_confirmed) {
 		VB2_DEBUG("Diagnostic requested, running\n");
+                VbExSleepMs(500);
 
 		/*
 		 * The following helps avoid use of the TPM after
