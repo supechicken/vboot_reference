@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a83fb1a_b755111f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 51
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "nit: this describes what the code does but not really why this option is here or what it\u0027s for. I\u0027d rather say something like \"may pass in previous error to preserve it (will take precedence before other errors returned by this function)\".",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d6239c_e19c9b9c",
+        "filename": "firmware/lib/include/secdata_tpm.h",
+        "patchSetId": 51
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "Put in \u003cvboot_test.h\u003e instead?",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc507b3_d986ac1f",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "nit: odd thing to comment...?",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9dbee7_da1abafe",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "nit: ???",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839c6f7f_63b34b90",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "nit: rv \u003d secdata_firmware_read(ctx)?",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

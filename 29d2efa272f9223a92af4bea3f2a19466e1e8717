@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "48c20319_031a3437",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "I think (been a while so not sure) that I meant to check the return value at the point where you call init (i.e. in the part that is and is supposed to stay in the actual core vboot2 code). So the client shouldn\u0027t check anything by itself at all (other than protocol/transfer errors). It should fill the context with the secdata bytes it gets from the TPM, and then vboot will check that and return the appropriate errors from fw/kernel_phase1() if there was a problem.\n\nSo I think neither check nor init need to be exported (except for FWMP, where the client needs check to get the right size).",
+      "parentUuid": "1b7fb3ec_00c97728",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b41eef_0c12487a",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25
@@ -376,6 +394,24 @@
     },
     {
       "key": {
+        "uuid": "52636f64_3cf39bb6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "Yes, now that we translate that GBB flag into the context flag in firmware init, you shouldn\u0027t need anything else here.",
+      "parentUuid": "a877ca67_2bd390bb",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2653c0a5_6d25aabd",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 25
@@ -405,6 +441,24 @@
       "side": 1,
       "message": "Again, depends on if we want to put that in the API or merge _check and _init.",
       "parentUuid": "2653c0a5_6d25aabd",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f1f92e_d02c8f3b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-21T00:33:18Z",
+      "side": 1,
+      "message": "Oh, look, sounds I had the completely opposite opinion last time around. Funny how that happens...\n\nBut yeah, right now I\u0027m thinking the caller shouldn\u0027t need to explicitly check anything at all. vboot should do the checking. The caller\u0027s job is to just shuffle raw bits in and out.",
+      "parentUuid": "e254035e_9e2d59b3",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
