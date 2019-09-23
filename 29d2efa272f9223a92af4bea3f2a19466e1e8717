@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "beb977f7_e3c43dff",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "I have a few points here to argue in favour of keeping the _check API functions:\n\n(1) The original secdata-reading code implemented retry functionality, to account for possible data transfer corruption.  We decided that in our case, H1 is reliable enough that we don\u0027t need to worry about that.  However, there is no hardfast rule of where secdata needs to be stored.  It could be saved on some less reliable component, in which case retry-validate may become an important pattern.\n\n(2) Consider the case of a diagnostics check feature.  One of the checks could be \"Verified Boot\" diagnostics.   In this case, we would want to be able to validate these pieces of data and report which one is exhibiting problems.\n\n(3) When there is a case of consistency vs. fitting functionality tightly, I personally prefer to err on the side of consistency.  If we are performing a check for FWMP (and we must -- because if FWMP is invalid, we can\u0027t get the size field out of it), then I would much prefer to keep this behaviour consistent across all secdata spaces.  This keeps both the API and testing consistent, arguably making it easier to use and maintain.",
+      "parentUuid": "48c20319_031a3437",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b41eef_0c12487a",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25
@@ -412,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "f4a9c1f5_61209a6c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52636f64_3cf39bb6",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2653c0a5_6d25aabd",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 25
@@ -459,6 +495,24 @@
       "side": 1,
       "message": "Oh, look, sounds I had the completely opposite opinion last time around. Funny how that happens...\n\nBut yeah, right now I\u0027m thinking the caller shouldn\u0027t need to explicitly check anything at all. vboot should do the checking. The caller\u0027s job is to just shuffle raw bits in and out.",
       "parentUuid": "e254035e_9e2d59b3",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b276f8_ee2cf1eb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "Let\u0027s use the other comment thread for discussion.",
+      "parentUuid": "65f1f92e_d02c8f3b",
       "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a404b386_5b4e5d6e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 51
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a83fb1a_b755111f",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41d6239c_e19c9b9c",
         "filename": "firmware/lib/include/secdata_tpm.h",
         "patchSetId": 51
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-21T00:33:18Z",
       "side": 1,
       "message": "Put in \u003cvboot_test.h\u003e instead?",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb823b1_ba9b6af3",
+        "filename": "firmware/lib/include/secdata_tpm.h",
+        "patchSetId": 51
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "41d6239c_e19c9b9c",
       "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ea6dcb72_ce795d42",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "My intention was to remove as much vboot-internal stuff as possible, if this file will eventually be relocated to depthcharge.\n\nBut now that we have added a dependency on vboot_test.h, I suppose it\u0027s not worth having a comment on 2common.h.\n\nTangentially, figuring out what to do with the TPM code is still an unsolved mystery, and will block us from relocating this code into depthcharge \u003d)",
+      "parentUuid": "abc507b3_d986ac1f",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d9dbee7_da1abafe",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 51
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "8679abad_e6b2a6b6",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "In my art class, they told me that whitespace is important for legibility.",
+      "parentUuid": "8d9dbee7_da1abafe",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "839c6f7f_63b34b90",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 51
@@ -81,6 +153,24 @@
       "writtenOn": "2019-09-21T00:33:18Z",
       "side": 1,
       "message": "nit: rv \u003d secdata_firmware_read(ctx)?",
+      "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c51018a_b4154ac2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T03:54:12Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "839c6f7f_63b34b90",
       "revId": "b3f33e96dc2c1a256d1c6c2368f02e567c1c0d39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
