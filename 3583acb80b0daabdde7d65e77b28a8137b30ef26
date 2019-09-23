@@ -22,6 +22,30 @@
       "revId": "3583acb80b0daabdde7d65e77b28a8137b30ef26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6de121e_b68c15f4",
+        "filename": "firmware/lib/vboot_ui_menu_groot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2019-09-23T15:57:21Z",
+      "side": 1,
+      "message": "Sure, thanks for the heads up, Joel.  We were merely copying this from the old vboot_ui_menu.c file.  I wanted to keep this separate for now because I didn\u0027t want to interrupt anything in detachables until all the code was in and then flip the switch.",
+      "parentUuid": "a52cb697_71f9b1df",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "3583acb80b0daabdde7d65e77b28a8137b30ef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
