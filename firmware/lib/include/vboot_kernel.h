@@ -85,15 +85,6 @@ vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
 uint32_t vb2_get_fwmp_flags(void);
 
 /**
- * Commit NvStorage.
- *
- * This may be called by UI functions which need to save settings before they
- * sit in an infinite loop waiting for shutdown (this is, by a UI state which
- * will never return).
- */
-void vb2_nv_commit(struct vb2_context *ctx);
-
-/**
  * Reinitialize global state. This should only need to be called by init tests.
  */
 void vb2_init_ui(void);
