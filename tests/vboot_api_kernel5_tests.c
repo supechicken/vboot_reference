@@ -27,7 +27,6 @@
 /* Mock data */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
-static struct vb2_context ctx_nvram_backend;
 static VbSelectAndLoadKernelParams kparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
 static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
@@ -68,14 +67,7 @@ static void ResetMocks(void)
 	vb2_init_context(&ctx);
 	ctx.flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
 
-	/*
-	 * ctx_nvram_backend is only used as an NVRAM backend (see
-	 * VbExNvStorageRead and VbExNvStorageWrite), and with
-	 * vb2_set_nvdata and nv2_get_nvdata to manually read and tweak
-	 * contents.  No other initialization is needed.
-	 */
-	memset(&ctx_nvram_backend, 0, sizeof(ctx_nvram_backend));
-	vb2_nv_init(&ctx_nvram_backend);
+	vb2_nv_init(&ctx);
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -250,13 +242,6 @@ vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
 	if (verify_data_fail)
 		return VB2_ERROR_MOCK;
 
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExNvStorageRead(uint8_t *buf)
-{
-	memcpy(buf, ctx_nvram_backend.nvdata,
-	       vb2_nv_get_size(&ctx_nvram_backend));
 	return VB2_SUCCESS;
 }
 
