@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a52cb697_71f9b1df",
+        "filename": "firmware/lib/vboot_ui_menu_groot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T06:25:05Z",
+      "side": 1,
+      "message": "Note that we are trying to get rid of these functions calls which write to nvstorage / secdata spaces in the middle of vboot flow.\n\nConceivably the more complex case of \"try booting this OS; if it fails, come back to this UI\" should also be able to cover this kind of case.\n\nAt the moment we are just trying to group everything into vb2_kernel_cleanup().  See here for an example:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1728298/53/firmware/lib/vboot_ui_common.c",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "3583acb80b0daabdde7d65e77b28a8137b30ef26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
