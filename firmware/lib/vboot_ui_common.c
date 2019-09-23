@@ -47,7 +47,7 @@ void vb2_run_altfw(struct vb2_context *ctx, enum VbAltFwIndex_t altfw_num)
 		vb2_error_notify("Error locking kernel versions on legacy "
 				 "boot.\n", NULL, VB_BEEP_FAILED);
 	} else {
-		vb2_nv_commit(ctx);
+		vb2_commit_data(ctx);
 		VbExLegacy(altfw_num);	/* will not return if found */
 		vb2_error_notify("Legacy boot failed. Missing BIOS?\n", NULL,
 				 VB_BEEP_FAILED);
