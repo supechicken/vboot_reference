@@ -797,4 +797,19 @@ vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
  */
 void vb2ex_abort(void);
 
+/**
+ * Commit any pending data to disk and lock secdata_kernel.
+ *
+ * Commit nvdata and secdata spaces if modified.  Lock secdata_kernel space.
+ * Normally this should be performed after vboot has completed executing and
+ * control has been passed back to the caller.  However, in certain kernel
+ * verification cases (e.g. right before attempting to boot an OS; from a UI
+ * screen which requires user-initiated shutdown; just prior to triggering
+ * battery cut-off), the caller may not get a chance to commit this data.
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_kernel_commit_data(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */

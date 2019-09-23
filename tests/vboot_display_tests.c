@@ -73,6 +73,11 @@ vb2_error_t VbExDisplayDebugInfo(const char *info_str, int full_info)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t vb2_kernel_cleanup(struct vb2_context *c, vb2_error_t rv)
+{
+	return VB2_SUCCESS;
+}
+
 /* Test displaying debug info */
 static void DebugInfoTest(void)
 {
