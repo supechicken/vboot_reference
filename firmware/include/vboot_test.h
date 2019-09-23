@@ -24,10 +24,14 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
 enum VbEcBootMode_t;
 enum VbEcBootMode_t VbGetMode(void);
 
-struct RollbackSpaceFwmp;
-struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
-
 struct LoadKernelParams;
 struct LoadKernelParams *VbApiKernelGetParams(void);
+
+/****************************************************************************
+ * secdata_tpm.c */
+
+extern int secdata_kernel_locked;
+uint32_t tpm_clear_and_reenable(void);
+uint32_t tlcl_safe_write(uint32_t index, const void *data, uint32_t length);
 
 #endif  /* VBOOT_REFERENCE_TEST_API_H_ */
