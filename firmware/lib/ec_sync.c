@@ -476,9 +476,10 @@ vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	vb2_error_t rv;
 
 	/* EC verification (and possibly updating / jumping) is done */
-	vb2_error_t rv = VbExEcVbootDone(!!sd->recovery_reason);
+	rv = VbExEcVbootDone(!!sd->recovery_reason);
 	if (rv)
 		return rv;
 
@@ -487,8 +488,12 @@ vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 	if (vb2_nv_get(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST)) {
 		VB2_DEBUG("Request to cut-off battery\n");
 		vb2_nv_set(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST, 0);
+
 		/* May lose power immediately, so commit our update now. */
-		vb2_nv_commit(ctx);
+		rv = vb2_commit_data(ctx);
+		if (rv)
+			return rv;
+
 		VbExEcBatteryCutOff();
 		return VBERROR_SHUTDOWN_REQUESTED;
 	}
