@@ -40,16 +40,6 @@ struct LoadKernelParams *VbApiKernelGetParams(void)
 
 #endif
 
-void vb2_nv_commit(struct vb2_context *ctx)
-{
-	/* Exit if nothing has changed */
-	if (!(ctx->flags & VB2_CONTEXT_NVDATA_CHANGED))
-		return;
-
-	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-	VbExNvStorageWrite(ctx->nvdata);
-}
-
 uint32_t vb2_get_fwmp_flags(void)
 {
 	return fwmp.flags;
@@ -265,7 +255,6 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx->flags |= VB2_CONTEXT_NVDATA_V2;
 
-	VbExNvStorageRead(ctx->nvdata);
 	vb2_nv_init(ctx);
 
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -362,23 +351,33 @@ static vb2_error_t vb2_kernel_phase4(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
-static void vb2_kernel_cleanup(struct vb2_context *ctx)
+/* TODO(chromium:972956): Should be moved into depthcharge. */
+vb2_error_t vb2ex_secdata_kernel_lock(struct vb2_context *ctx)
 {
-	vb2_nv_commit(ctx);
+	/* TODO(chromium:972956): Lock secdata_kernel space here. */
 
-	/* vb2_shared_data may not have been initialized, and we may not have a
-	   proper vbsd value. */
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	if (sd->vbsd)
-		/* Stop timer */
-		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2_commit_data(struct vb2_context *ctx)
+{
+	/* TODO(chromium:972956): Commit secdata spaces here. */
+
+	/*
+	 * TODO(chromium:972956, chromium:1006689): Currently only commits
+	 * nvdata, but should eventually also commit secdata.  In other words,
+	 * when that time comes, this wrapper function should not be needed.
+	 */
+	return vb2ex_commit_data(ctx);
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
 {
-	vb2_error_t rv = vb2_kernel_setup(ctx, shared, kparams);
+	vb2_error_t rv, call_rv;
+
+	rv = vb2_kernel_setup(ctx, shared, kparams);
 	if (rv)
 		goto VbSelectAndLoadKernel_exit;
 
@@ -440,7 +439,22 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	if (VB2_SUCCESS == rv)
 		rv = vb2_kernel_phase4(ctx, kparams);
 
-	vb2_kernel_cleanup(ctx);
+	/* Commit data, but retain any previous errors */
+	call_rv = vb2_commit_data(ctx);
+	if (rv == VB2_SUCCESS)
+		rv = call_rv;
+
+	/* Lock secdata_kernel, but retain any previous errors */
+	call_rv = vb2ex_secdata_kernel_lock(ctx);
+	if (rv == VB2_SUCCESS)
+		rv = call_rv;
+
+	/* vb2_shared_data may not have been initialized,
+	   and we may not have a proper vbsd value. */
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	if (sd && sd->vbsd)
+		/* Stop timer */
+		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
 
 	/* Pass through return value from boot path */
 	VB2_DEBUG("Returning %#x\n", rv);

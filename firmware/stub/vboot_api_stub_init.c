@@ -23,12 +23,13 @@ uint64_t VbExGetTimer(void)
 	return (uint64_t)tv.tv_sec * VB_USEC_PER_SEC + (uint64_t)tv.tv_usec;
 }
 
-vb2_error_t VbExNvStorageRead(uint8_t *buf)
+vb2_error_t vb2ex_commit_data(struct vb2_context *ctx)
 {
+	ctx->flags &= ~VB2_CONTEXT_SECDATA_KERNEL_CHANGED;
+	ctx->flags &= ~VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED;
+	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
-{
-	return VB2_SUCCESS;
-}
+/* TODO(chromium:972956): Define vb2ex_secdata_kernel_lock here once the
+   function has been relocated to depthcharge. */
