@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21252f0b_04673120",
+        "filename": "firmware/lib/include/vboot_ui_groot_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-23T06:13:30Z",
+      "side": 1,
+      "message": "I wonder if we should be more descriptive in naming these screens?  E.g.\n\n  VB_RECOVERY_REQUIREMENTS\n  VB_RECOVERY_DISK_SETUP\n  VB_RECOVERY_DISK_CONNECT\n  VB_RECOVERY_PROGRESS\n  VB_RECOVERY_COMPLETE\n\nThen again, seeing that each screen shows the step number (i.e. their order can\u0027t be interchanged), it might be better to just keep it as-is.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "6e1a2fcd7c47ed1a376095a9745e85e030ea1ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
