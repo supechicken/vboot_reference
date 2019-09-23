@@ -27,7 +27,6 @@
 /* Mock data */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context ctx;
-static struct vb2_context ctx_nvram_backend;
 static struct vb2_shared_data *sd;
 static VbSelectAndLoadKernelParams kparams;
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
@@ -43,6 +42,7 @@ static vb2_error_t vbboot_retval;
 static uint32_t mock_switches[8];
 static uint32_t mock_switches_count;
 static int mock_switches_are_stuck;
+static int kernel_commit_data_called;
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
@@ -63,16 +63,9 @@ static void ResetMocks(void)
 	sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 	ctx.flags |= VB2_CONTEXT_NO_SECDATA_FWMP;
 
-	/*
-	 * ctx_nvram_backend is only used as an NVRAM backend (see
-	 * VbExNvStorageRead and VbExNvStorageWrite), and with
-	 * vb2_set_nvdata and nv2_get_nvdata to manually read and tweak
-	 * contents.  No other initialization is needed.
-	 */
-	memset(&ctx_nvram_backend, 0, sizeof(ctx_nvram_backend));
-	vb2_nv_init(&ctx_nvram_backend);
-	vb2_nv_set(&ctx_nvram_backend, VB2_NV_KERNEL_MAX_ROLLFORWARD,
-		   0xffffffff);
+	vb2_nv_init(&ctx);
+	vb2_nv_set(&ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xffffffff);
+	kernel_commit_data_called = 0;
 
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
@@ -93,17 +86,9 @@ static void ResetMocks(void)
 
 /* Mock functions */
 
-vb2_error_t VbExNvStorageRead(uint8_t *buf)
+vb2_error_t vb2ex_kernel_commit_data(struct vb2_context *c)
 {
-	memcpy(buf, ctx_nvram_backend.nvdata,
-	       vb2_nv_get_size(&ctx_nvram_backend));
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
-{
-	memcpy(ctx_nvram_backend.nvdata, buf,
-	       vb2_nv_get_size(&ctx_nvram_backend));
+	kernel_commit_data_called = 1;
 	return VB2_SUCCESS;
 }
 
@@ -205,8 +190,10 @@ vb2_error_t VbBootDiagnostic(struct vb2_context *c)
 static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
 {
 	TEST_EQ(VbSelectAndLoadKernel(&ctx, shared, &kparams), retval, desc);
-	TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_RECOVERY_REQUEST),
+	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
 		recovery_reason, "  recovery reason");
+	if (recovery_reason)
+		TEST_TRUE(kernel_commit_data_called, "  didn't commit nvdata");
 }
 
 uint32_t VbExGetSwitches(uint32_t request_mask)
@@ -264,20 +251,20 @@ static void VbSlkTest(void)
 	TEST_EQ(rkr_version, 0x10002, "  version");
 
 	ResetMocks();
-	vb2_nv_set(&ctx_nvram_backend, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30005);
+	vb2_nv_set(&ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30005);
 	new_version = 0x40006;
 	test_slk(0, 0, "Limit max roll forward");
 	TEST_EQ(rkr_version, 0x30005, "  version");
 
 	ResetMocks();
-	vb2_nv_set(&ctx_nvram_backend, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
+	vb2_nv_set(&ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
 	new_version = 0x40006;
 	test_slk(0, 0, "Max roll forward can't rollback");
 	TEST_EQ(rkr_version, 0x10002, "  version");
 
 	ResetMocks();
 	vbboot_retval = VBERROR_INVALID_KERNEL_FOUND;
-	vb2_nv_set(&ctx_nvram_backend, VB2_NV_RECOVERY_REQUEST, 123);
+	vb2_nv_set(&ctx, VB2_NV_RECOVERY_REQUEST, 123);
 	shared->flags |= VBSD_FWB_TRIED;
 	shared->firmware_index = 1;
 	test_slk(VBERROR_INVALID_KERNEL_FOUND,
@@ -305,12 +292,14 @@ static void VbSlkTest(void)
 	if (DIAGNOSTIC_UI) {
 		ResetMocks();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
-		vb2_nv_set(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST, 1);
+		vb2_nv_set(&ctx, VB2_NV_DIAG_REQUEST, 1);
 		vbboot_retval = -4;
 		test_slk(VB2_ERROR_MOCK, 0,
 			 "Normal boot with diag");
-		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST),
+		TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DIAG_REQUEST),
 			0, "  diag not requested");
+		TEST_TRUE(kernel_commit_data_called,
+			  "  didn't commit nvdata");
 	}
 
 	/* Boot dev */
