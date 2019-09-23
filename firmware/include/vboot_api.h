@@ -143,6 +143,19 @@ typedef struct VbSelectAndLoadKernelParams {
 #define VB_SALK_INFLAGS_VENDOR_DATA_SETTABLE (1 << 1)
 
 /**
+ * Writes modified secdata spaces and nvdata.
+ *
+ * This is a temporary wrapper around vb2ex_commit_data, until secdata-writing
+ * functions are relocated into depthcharge.
+ *
+ * (See chromium:972956, chromium:1006689.)
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_commit_data(struct vb2_context *ctx);
+
+/**
  * Select and loads the kernel.
  *
  * Returns VB2_SUCCESS if success, non-zero if error; on error, caller
@@ -241,21 +254,6 @@ uint32_t VbExTpmSendReceive(const uint8_t *request, uint32_t request_length,
 vb2_error_t VbExTpmGetRandom(uint8_t *buf, uint32_t length);
 
 #endif  /* CHROMEOS_ENVIRONMENT */
-
-/*****************************************************************************/
-/* Non-volatile storage */
-
-#define VBNV_BLOCK_SIZE 16  /* Size of NV storage block in bytes */
-
-/**
- * Read the VBNV_BLOCK_SIZE-byte non-volatile storage into buf.
- */
-vb2_error_t VbExNvStorageRead(uint8_t *buf);
-
-/**
- * Write the VBNV_BLOCK_SIZE-byte non-volatile storage from buf.
- */
-vb2_error_t VbExNvStorageWrite(const uint8_t *buf);
 
 /*****************************************************************************/
 /* Disk access (previously in boot_device.h) */
