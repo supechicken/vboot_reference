@@ -837,7 +837,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		 * salute (into manual recovery mode). Need to commit nvdata
 		 * changes immediately.
 		 */
-		vb2_nv_commit(ctx);
+		vb2_commit_data(ctx);
 
 		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0, NULL);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
