@@ -153,12 +153,7 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 	return &gbb;
 }
 
-vb2_error_t VbExNvStorageRead(uint8_t* buf)
-{
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExNvStorageWrite(const uint8_t* buf)
+vb2_error_t vb2ex_kernel_commit_data(struct vb2_context *c)
 {
 	return VB2_SUCCESS;
 }
