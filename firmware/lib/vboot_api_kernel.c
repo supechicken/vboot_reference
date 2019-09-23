@@ -32,16 +32,6 @@ struct LoadKernelParams *VbApiKernelGetParams(void)
 }
 #endif
 
-void vb2_nv_commit(struct vb2_context *ctx)
-{
-	/* Exit if nothing has changed */
-	if (!(ctx->flags & VB2_CONTEXT_NVDATA_CHANGED))
-		return;
-
-	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-	VbExNvStorageWrite(ctx->nvdata);
-}
-
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
 	vb2_error_t rv;
@@ -232,7 +222,6 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx->flags |= VB2_CONTEXT_NVDATA_V2;
 
-	VbExNvStorageRead(ctx->nvdata);
 	vb2_nv_init(ctx);
 
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -345,9 +334,13 @@ vb2_error_t vb2_kernel_cleanup(struct vb2_context *ctx, vb2_error_t rv)
 			rv = VB2_ERROR_UNKNOWN;
 	}
 
-	/* Note that nvdata may contain recovery requests from failed
-	   writes above. */
-	vb2_nv_commit(ctx);
+	/*
+	 * TODO(chromium:972956, chromium:1006689): Currently only commits
+	 * nvdata, but should eventually also commit secdata and lock
+	 * secdata_kernel.  In other words, when that time comes, this wrapper
+	 * function should not be needed.
+	 */
+	vb2ex_kernel_commit_data(ctx);
 
 	/* vb2_shared_data may not have been initialized, and we may not have a
 	   proper vbsd value. */

@@ -23,12 +23,7 @@ uint64_t VbExGetTimer(void)
 	return (uint64_t)tv.tv_sec * VB_USEC_PER_SEC + (uint64_t)tv.tv_usec;
 }
 
-vb2_error_t VbExNvStorageRead(uint8_t *buf)
-{
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExNvStorageWrite(const uint8_t *buf)
+vb2_error_t vb2ex_kernel_commit_data(struct vb2_context *ctx)
 {
 	return VB2_SUCCESS;
 }
