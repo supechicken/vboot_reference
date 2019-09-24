@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "9cfd923f_7f062b75",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "Okay, fair enough. I don\u0027t mind leaving the check() function around for when it may be needed, as long as vboot also does the check itself.\n\nI don\u0027t really see a reason to check twice for firmware and kernel space (for FWMP we need the special size probing logic so it will be different anyway). But it doesn\u0027t make a big difference.",
+      "parentUuid": "beb977f7_e3c43dff",
+      "revId": "29d2efa272f9223a92af4bea3f2a19466e1e8717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b41eef_0c12487a",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 25

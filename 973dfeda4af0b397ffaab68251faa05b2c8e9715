@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83997ccf_89e02c33",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "This is not equivalent to VbSetRecoveryRequest() -- this will try to boot the other firmware slot first, rather than going into recovery immediately. We should not mix the two.\n\n(Whether we want to make some general change to our boot policy to more often try the other slot first rather than going into recovery immediately is a different question, but that would need to be discussed first and then applied across the whole code base, not as a one-off. For now, as far as I understand, all failures that are not related to parsing the RW firmware image should immediately go into recovery.)",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa661a7_5a064ab4",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "nit: I think I liked the \u0027global that is declared in \u003cvboot_test.h\u003e\u0027 version better than the \u0027need to have a separate function solely for tests\u0027 version. The code that\u0027s only used for tests should be pushed out into test-specific files as much as possible.",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f6d915_be1c4b0a",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "nit: Rather than all the goto spaghetti here, you can just do\n\n if (!rv)\n   return TPM_SUCCESS;\n\n if (rv \u003d\u003d ...INCOMPLETE) {\n   ...\n   rv \u003d ...check()\n   if (!rv)\n     return TPM_SUCCESS;\n }\n\n VB2_DEBUG(...);\n return rv;",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f0f917_9d5a0110",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "nit: maybe add a comment saying that vboot never writes to the FWMP, so it\u0027s clear the omission here is intentional",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "944d5b0b_114bc378",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "Uhh... can\u0027t these two fail? Where do their errors go?",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880b90ed_eb0f7fea",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "nit: maybe update message?",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339ea1e5_8caee945",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "All calls to kernel_cleanup() need to check and handle return value.\n\nAlso, I think it\u0027s fine to use it in cases like this, but then the name cleanup() doesn\u0027t seem right anymore. It\u0027s more of a sync() or commit().",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede2c234_e5f93c64",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think updating the global hurts even if TPM2_MODE is set (otherwise you\u0027re leaving it uninitialized which isn\u0027t really better).",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93430717_ae46d3d4",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "Please consolidate all the override functions that are dependent on TPM mode together in one place.",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f6ef83_f212b566",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T21:33:14Z",
+      "side": 1,
+      "message": "Why not just override secdata_kernel_lock() rather than this one, and then you don\u0027t need to #ifdef anything out for MOCK_TPM?",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
