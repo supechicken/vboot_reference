@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cd85b5_eb0786b9",
+        "filename": "firmware/lib20/packed_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-24T19:31:08Z",
+      "side": 1,
+      "message": "nit: Do we need to untaint buf? It shouldn\u0027t be accessed after this anyway.",
+      "revId": "d458061600a5b714c3998ab54f5403a95dfa81f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
