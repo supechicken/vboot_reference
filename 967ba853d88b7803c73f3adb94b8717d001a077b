@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "493f5b4d_95f277c3",
+        "filename": "firmware/lib/mocked_secdata_tpm.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1307579
+      },
+      "writtenOn": "2019-09-26T12:23:02Z",
+      "side": 1,
+      "message": "compilation error for fix: 1827261 \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1827261",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "967ba853d88b7803c73f3adb94b8717d001a077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
