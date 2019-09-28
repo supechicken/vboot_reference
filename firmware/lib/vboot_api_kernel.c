@@ -412,7 +412,6 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			rv = VbBootRecoveryMenu(ctx);
 		else
 			rv = VbBootRecovery(ctx);
-		VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
@@ -439,11 +438,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			rv = VbBootDeveloperMenu(ctx);
 		else
 			rv = VbBootDeveloper(ctx);
-		VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 	} else {
 		/* Normal boot */
 		rv = VbBootNormal(ctx);
-		VbExEcEnteringMode(0, VB_EC_NORMAL);
 	}
 
 	vb2_kernel_fill_kparams(ctx, kparams);
