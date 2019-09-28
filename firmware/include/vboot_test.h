@@ -27,7 +27,7 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
  * vboot_api_stub.c */
 
 enum VbEcBootMode_t;
-enum VbEcBootMode_t VbGetMode(void);
+extern enum VbEcBootMode_t selected_boot_mode;
 
 /****************************************************************************
  * vboot_api_kernel.c */
