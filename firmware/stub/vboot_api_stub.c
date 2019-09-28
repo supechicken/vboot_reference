@@ -17,7 +17,7 @@
 #include "vboot_api.h"
 #include "vboot_test.h"
 
-static enum VbEcBootMode_t vboot_mode;
+enum VbEcBootMode_t selected_boot_mode;
 
 void VbExSleepMs(uint32_t msec)
 {
@@ -132,7 +132,7 @@ vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
 
 vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
 {
-	vboot_mode = mode;
+	selected_boot_mode = mode;
 	return VB2_SUCCESS;
 }
 
@@ -155,11 +155,6 @@ vb2_error_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
 vb2_error_t VbExUpdateAuxFw(void)
 {
 	return VB2_SUCCESS;
-}
-
-enum VbEcBootMode_t VbGetMode(void)
-{
-	return vboot_mode;
 }
 
 vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)

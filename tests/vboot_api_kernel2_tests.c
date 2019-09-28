@@ -479,7 +479,7 @@ static void VbBootTest(void)
 	ResetMocks();
 	VbExEcEnteringMode(0, VB_EC_NORMAL);
 	TEST_EQ(VbBootNormal(&ctx), 1002, "VbBootNormal()");
-	TEST_EQ(VbGetMode(), VB_EC_NORMAL, "vboot_mode normal");
+	TEST_EQ(selected_boot_mode, VB_EC_NORMAL, "vboot_mode normal");
 
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
@@ -506,7 +506,7 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 	TEST_EQ(VbBootDeveloper(&ctx), 1002, "Timeout");
-	TEST_EQ(VbGetMode(), VB_EC_DEVELOPER, "vboot_mode developer");
+	TEST_EQ(selected_boot_mode, VB_EC_DEVELOPER, "vboot_mode developer");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
 		"  warning screen");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
@@ -1087,7 +1087,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested");
-	TEST_EQ(VbGetMode(), VB_EC_RECOVERY, "vboot_mode recovery");
+	TEST_EQ(selected_boot_mode, VB_EC_RECOVERY, "vboot_mode recovery");
 
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
