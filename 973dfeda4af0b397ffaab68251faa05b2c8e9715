@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fdd664b_b0ff8c28",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Based on Randall\u0027s response to the bug I created:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1007999\n\n\"Locking secdata_kernel shouldn\u0027t directly trigger recovery mode.  That could be caused by a bug in the current RW firmware\u0027s TPM library, and the other RW firmware slot could be able to lock it fine.\"\n\nPerhaps we should change the behaviour here?",
+      "parentUuid": "83997ccf_89e02c33",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afa661a7_5a064ab4",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 54
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-24T21:33:14Z",
       "side": 1,
       "message": "nit: I think I liked the \u0027global that is declared in \u003cvboot_test.h\u003e\u0027 version better than the \u0027need to have a separate function solely for tests\u0027 version. The code that\u0027s only used for tests should be pushed out into test-specific files as much as possible.",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70710130_cf1079e4",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Sure, okay.  I also converted VbGetMode in this CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1830239",
+      "parentUuid": "afa661a7_5a064ab4",
       "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "dae4bf66_4cba5d8a",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Who doesn\u0027t enjoy a good goto spaghetti once in a while?",
+      "parentUuid": "36f6d915_be1c4b0a",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f0f917_9d5a0110",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 54
@@ -67,6 +121,24 @@
       "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301be984_35d7eaa9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07f0f917_9d5a0110",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "405d9d19_4617a4cc",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Ugh.  This is awkward.  Seems like our lock function takes care of setting recovery mode, whereas all the other functions do not.  I\u0027m going to add vb2api_fail calls within all of the secdata_* calls.  Does this work?",
+      "parentUuid": "944d5b0b_114bc378",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "880b90ed_eb0f7fea",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 54
@@ -101,6 +191,24 @@
       "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15e8bd7_a55c7397",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-09-28T07:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "880b90ed_eb0f7fea",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
