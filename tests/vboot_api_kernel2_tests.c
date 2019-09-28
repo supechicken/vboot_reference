@@ -58,6 +58,7 @@ static uint32_t mock_num_disks[8];
 static uint32_t mock_num_disks_count;
 static int tpm_set_mode_called;
 static enum vb2_tpm_mode tpm_mode;
+static enum VbEcBootMode_t ec_vboot_mode;
 
 /* Extra character to guarantee null termination. */
 static char set_vendor_data[VENDOR_DATA_LENGTH + 2];
@@ -284,6 +285,12 @@ vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
+{
+	ec_vboot_mode = mode;
+	return VB2_SUCCESS;
+}
+
 /* Tests */
 
 /*
@@ -470,7 +477,7 @@ static void VbBootTest(void)
 	ResetMocks();
 	VbExEcEnteringMode(0, VB_EC_NORMAL);
 	TEST_EQ(VbBootNormal(&ctx), VB2_ERROR_MOCK, "VbBootNormal()");
-	TEST_EQ(VbGetMode(), VB_EC_NORMAL, "vboot_mode normal");
+	TEST_EQ(ec_vboot_mode, VB_EC_NORMAL, "vboot_mode normal");
 
 	ResetMocks();
 	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
@@ -497,7 +504,7 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	VbExEcEnteringMode(0, VB_EC_DEVELOPER);
 	TEST_EQ(VbBootDeveloper(&ctx), VB2_ERROR_MOCK, "Timeout");
-	TEST_EQ(VbGetMode(), VB_EC_DEVELOPER, "vboot_mode developer");
+	TEST_EQ(ec_vboot_mode, VB_EC_DEVELOPER, "vboot_mode developer");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING,
 		"  warning screen");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
@@ -1082,7 +1089,7 @@ static void VbBootRecTest(void)
 	TEST_EQ(VbBootRecovery(&ctx),
 		VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested");
-	TEST_EQ(VbGetMode(), VB_EC_RECOVERY, "vboot_mode recovery");
+	TEST_EQ(ec_vboot_mode, VB_EC_RECOVERY, "vboot_mode recovery");
 
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0,
 		"  recovery reason");
