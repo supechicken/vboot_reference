@@ -718,10 +718,17 @@ vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
 vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select);
 
 /**
- * Info the EC of the boot mode selected by the AP.
- * mode: Normal, Developer, or Recovery
+ * Inform the EC of the boot mode selected by the AP.
+ *
+ * @param devidx	ID of the EC to which the call applies
+ * @param mode		Selected boot mode (see VbEcBootMode_t)
+ * @returns VB2_SUCCESS, or non-zero error code.
  */
-enum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY };
+enum VbEcBootMode_t {
+	VB_EC_NORMAL,
+	VB_EC_DEVELOPER,
+	VB_EC_RECOVERY,
+};
 vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
 
 /**
