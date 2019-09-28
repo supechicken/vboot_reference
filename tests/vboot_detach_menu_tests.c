@@ -56,6 +56,7 @@ static uint32_t beeps_played[64];
 static uint32_t beeps_count = 0;
 static uint32_t mock_altfw_mask;
 static int vbexaltfwmask_called;
+static enum VbEcBootMode_t ec_vboot_mode;
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
@@ -261,6 +262,12 @@ vb2_error_t SetVirtualDevMode(int val)
 	return virtdev_retval;
 }
 
+vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
+{
+	ec_vboot_mode = mode;
+	return VB2_SUCCESS;
+}
+
 /* Tests */
 
 /*
@@ -276,7 +283,7 @@ static void VbBootDevTest(void)
 	/* Proceed after timeout */
 	ResetMocksForDeveloper();
 	TEST_EQ(VbBootDeveloperMenu(&ctx), vbtlk_retval_fixed, "Timeout");
-	TEST_EQ(VbGetMode(), VB_EC_DEVELOPER, "vboot_mode developer");
+	TEST_EQ(ec_vboot_mode, VB_EC_DEVELOPER, "vboot_mode developer");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
 		"  warning screen");
 	TEST_EQ(screens_displayed[1], VB_SCREEN_BLANK, "  final blank screen");
@@ -1298,7 +1305,7 @@ static void VbBootRecTest(void)
 	VbExEcEnteringMode(0, VB_EC_RECOVERY);
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in BROKEN");
-	TEST_EQ(VbGetMode(), VB_EC_RECOVERY, "vboot_mode recovery");
+	TEST_EQ(ec_vboot_mode, VB_EC_RECOVERY, "vboot_mode recovery");
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
 	TEST_EQ(debug_info_displayed, 0, "  no debug info");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_OS_BROKEN,
