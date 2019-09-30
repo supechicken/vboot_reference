@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e587901_2b478d67",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-30T23:16:40Z",
+      "side": 1,
+      "message": "nit: I think this would be the first instance of a vb2api function defined outside 2api.c (or one of the other files with \"api\" in the name). Not sure we care, I\u0027m not super attached to that concept (and putting it all in one file does make that file pretty huge and full of unrelated stuff). Just wanted to call it out.",
+      "revId": "6872ec86e5caa04cae28dc0194cd0914bb1028e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f5664f_5d5fcea4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-09-30T23:16:40Z",
+      "side": 1,
+      "message": "Not sure if this should really be here to be honest. But I guess it might be better to discuss that together with the other context overhauling in your WIP patch.",
+      "revId": "6872ec86e5caa04cae28dc0194cd0914bb1028e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
