@@ -811,6 +811,12 @@ vb2_error_t VbExUpdateAuxFw(void);
  */
 uint32_t VbExIsShutdownRequested(void);
 
+/**
+ * Indicate to the firmware that recovery via an Android phone as been
+ * requested.
+ */
+void VbExEnablePhoneRecovery(void);
+
 /*
  * Shutdown requested for a reason which is not defined among other
  * VB_SHUTDOWN_REQUEST_* values. This must be defined as 1 for backward

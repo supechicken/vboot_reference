@@ -453,6 +453,10 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	case '\t':
 		/* Tab = display debug info */
 		return debug_info_action(ctx);
+	case VB_KEY_CTRL('P'):
+		/* Ctrl+P = recover from Android phone */
+		VbExEnablePhoneRecovery();
+		break;
 	case VB_KEY_ESC:
 		/* Esc = redraw screen (to clear old debug info) */
 		vb2_draw_current_screen(ctx);

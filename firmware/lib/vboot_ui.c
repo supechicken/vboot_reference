@@ -685,6 +685,10 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 				vb2_error_no_altfw();
 			}
 			break;
+		case VB_KEY_CTRL('P'):
+			/* Ctrl+P = recover from Android phone */
+			VbExEnablePhoneRecovery();
+			break;
 		case VB_KEY_CTRL('S'):
 			if (VENDOR_DATA_LENGTH == 0)
 				break;

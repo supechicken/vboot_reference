@@ -66,6 +66,11 @@ uint32_t VbExIsShutdownRequested(void)
 	return 0;
 }
 
+void VbExEnablePhoneRecovery(void)
+{
+	return;
+}
+
 int VbExTrustEC(int devidx)
 {
 	return 1;
