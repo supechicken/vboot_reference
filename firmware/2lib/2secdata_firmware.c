@@ -66,60 +66,79 @@ vb2_error_t vb2_secdata_firmware_init(struct vb2_context *ctx)
 	sd->status |= VB2_SD_STATUS_SECDATA_FIRMWARE_INIT;
 
 	/* Read this now to make sure crossystem has it even in rec mode */
-	rv = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_VERSIONS,
-				      &sd->fw_version_secdata);
-	if (rv)
-		return rv;
+	sd->fw_version_secdata =
+		vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_VERSIONS);
 
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
-				     enum vb2_secdata_firmware_param param,
-				     uint32_t *dest)
+uint32_t vb2_secdata_firmware_get(struct vb2_context *ctx,
+				  enum vb2_secdata_firmware_param param)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_secdata_firmware *sec =
 		(struct vb2_secdata_firmware *)ctx->secdata_firmware;
+	int ret = 0;
+	int use_default = 0;
 
-	if (!(sd->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT))
-		return VB2_ERROR_SECDATA_FIRMWARE_GET_UNINITIALIZED;
+	if (!(sd->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT)) {
+		if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+			VB2_DEBUG("secdata_firmware broken, get default\n");
+			use_default = 1;
+		} else {
+			VB2_DIE("Must init secdata_kernel before getting\n");
+		}
+	}
 
 	switch (param) {
 	case VB2_SECDATA_FIRMWARE_FLAGS:
-		*dest = sec->flags;
-		return VB2_SUCCESS;
+		ret = use_default ? 0 : sec->flags;
+		break;
 
 	case VB2_SECDATA_FIRMWARE_VERSIONS:
-		*dest = sec->fw_versions;
-		return VB2_SUCCESS;
+		ret = use_default ? 0 : sec->fw_versions;
+		break;
 
 	default:
-		return VB2_ERROR_SECDATA_FIRMWARE_GET_PARAM;
+		VB2_DIE("Invalid param\n");
 	}
+
+	return ret;
 }
 
-vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
-				     enum vb2_secdata_firmware_param param,
-				     uint32_t value)
+void vb2_secdata_firmware_set(struct vb2_context *ctx,
+			      enum vb2_secdata_firmware_param param,
+			      uint32_t value)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_secdata_firmware *sec =
 		(struct vb2_secdata_firmware *)ctx->secdata_firmware;
 	uint32_t now;
+	int ignore_set = 0;
 
-	if (!(vb2_get_sd(ctx)->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT))
-		return VB2_ERROR_SECDATA_FIRMWARE_SET_UNINITIALIZED;
+	if (!(sd->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT)) {
+		if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+			VB2_DEBUG("secdata_firmware broken, ignore set\n");
+			ignore_set = 1;
+		} else {
+			VB2_DIE("Must init secdata_firmware before setting\n");
+		}
+	}
 
 	/* If not changing the value, don't regenerate the CRC */
-	if (vb2_secdata_firmware_get(ctx, param, &now) == VB2_SUCCESS &&
-	    now == value)
-		return VB2_SUCCESS;
+	now = vb2_secdata_firmware_get(ctx, param);
+	if (now == value)
+		return;
+
+	/* Param validity gets checked above in the get call */
+	if (ignore_set)
+		return;
 
 	switch (param) {
 	case VB2_SECDATA_FIRMWARE_FLAGS:
 		/* Make sure flags is in valid range */
 		if (value > 0xff)
-			return VB2_ERROR_SECDATA_FIRMWARE_SET_FLAGS;
+			VB2_DIE("Invalid flags range\n");
 
 		VB2_DEBUG("secdata_firmware flags updated from 0x%x to 0x%x\n",
 			  sec->flags, value);
@@ -134,11 +153,10 @@ vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 		break;
 
 	default:
-		return VB2_ERROR_SECDATA_FIRMWARE_SET_PARAM;
+		VB2_DIE("Invalid param\n");
 	}
 
 	/* Regenerate CRC */
 	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata_firmware, crc8));
 	ctx->flags |= VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED;
-	return VB2_SUCCESS;
 }
