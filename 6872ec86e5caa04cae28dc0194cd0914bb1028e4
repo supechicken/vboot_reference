@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2c5d7cdc_0fa89338",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-01T07:07:44Z",
+      "side": 1,
+      "message": "Actually, the first instance was vb2api_gbb_read_hwid.\n\nAfter this huge stack of patches finally lands, we will have vb2api_init/reinit and vb2api_secdata_*_check.",
+      "parentUuid": "1e587901_2b478d67",
+      "revId": "6872ec86e5caa04cae28dc0194cd0914bb1028e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73f5664f_5d5fcea4",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-30T23:16:40Z",
       "side": 1,
       "message": "Not sure if this should really be here to be honest. But I guess it might be better to discuss that together with the other context overhauling in your WIP patch.",
+      "revId": "6872ec86e5caa04cae28dc0194cd0914bb1028e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6301dab_d4cac869",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-01T07:07:44Z",
+      "side": 1,
+      "message": "I figure I\u0027d just keep it for now, since calling the function is effectively a nop for internal uses...  But yeah, let\u0027s discuss in the WIP patch.",
+      "parentUuid": "73f5664f_5d5fcea4",
       "revId": "6872ec86e5caa04cae28dc0194cd0914bb1028e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
