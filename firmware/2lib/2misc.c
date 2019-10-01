@@ -252,21 +252,18 @@ vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 	vb2_error_t rv;
 
 	/* Read secure flags */
-	rv = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS, &flags);
-	if (rv) {
-		if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-			/*
-			 * Recovery mode needs to check other ways developer
-			 * mode can be enabled, so don't give up yet.  But
-			 * since we can't read secdata, assume dev mode was
-			 * disabled.
-			 */
-			use_secdata = 0;
-			flags = 0;
-		} else {
-			/* Normal mode simply fails */
-			return rv;
-		}
+	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
+		flags = vb2_secdata_firmware_get(ctx,
+						 VB2_SECDATA_FIRMWARE_FLAGS);
+	} else {
+		/*
+		 * Recovery mode needs to check other ways developer
+		 * mode can be enabled, so don't give up yet.  But
+		 * since we can't read secdata, assume dev mode was
+		 * disabled.
+		 */
+		use_secdata = 0;
+		flags = 0;
 	}
 	old_flags = flags;
 
@@ -346,10 +343,9 @@ vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 			}
 
 			/* Save new flags */
-			rv = vb2_secdata_firmware_set(
-				ctx, VB2_SECDATA_FIRMWARE_FLAGS, flags);
-			if (rv)
-				return rv;
+			vb2_secdata_firmware_set(ctx,
+						 VB2_SECDATA_FIRMWARE_FLAGS,
+						 flags);
 		}
 	}
 
