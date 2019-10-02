@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c74f13b_ef0beb08",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T02:20:17Z",
+      "side": 1,
+      "message": "nit: you changed this to apply to the function rather than the enum, so move it down there",
+      "revId": "3aa6497c0de0ca8a52ba762049fbf513932d7710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b71300a_6bffad06",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T02:20:17Z",
+      "side": 1,
+      "message": "nit: Honestly, it\u0027s kinda odd that this is handled centrally at all, rather than just overriding VbExEcEnteringMode() directly in the tests that care. That\u0027s how we usually deal with other cases where tests want to confirm that some function deep down in the stack was called correctly.",
+      "revId": "3aa6497c0de0ca8a52ba762049fbf513932d7710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
