@@ -55,7 +55,8 @@ typedef enum VdatIntField {
 
 	VDAT_INT_FW_VERSION_TPM,      /* Current firmware version in TPM */
 	VDAT_INT_KERNEL_VERSION_TPM,  /* Current kernel version in TPM */
-	VDAT_INT_TRIED_FIRMWARE_B,    /* Tried firmware B due to fwb_tries */
+	VDAT_INT_DEPRECATED_TRIED_FIRMWARE_B,  /* Tried firmware B
+						* due to fwb_tries */
 	VDAT_INT_KERNEL_KEY_VERIFIED, /* Kernel key verified using
 				       * signature, not just hash */
 	VDAT_INT_RECOVERY_REASON,     /* Recovery reason for current boot */
@@ -407,9 +408,6 @@ static int GetVdatInt(VdatIntField field)
 			break;
 		case VDAT_INT_HEADER_VERSION:
 			value = sh->struct_version;
-			break;
-		case VDAT_INT_TRIED_FIRMWARE_B:
-			value = (sh->flags & VBSD_FWB_TRIED ? 1 : 0);
 			break;
 		case VDAT_INT_KERNEL_KEY_VERIFIED:
 			value = (sh->flags & VBSD_KERNEL_KEY_VERIFIED ? 1 : 0);
