@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f133bc5_187427f9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "Still a bit confused here... one of the test cases is depending on VB2_NV_DISABLE_DEV_REQUEST being left alone if secdata_firmware can\u0027t be accessed.  I guess the idea is that if secdata_firmware is broken, it may start working on a subsequent boot, in which case we should keep VB2_NV_DISABLE_DEV_REQUEST around?\n\nOr should we just get rid of this extra logic and remove the test case?",
+      "parentUuid": "9c257137_6e0dad8c",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c1ed2ed_3b15f2a2",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-02T00:56:08Z",
       "side": 1,
       "message": "(Can get rid of this and always assume it\u0027s 1, then.)",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77e15ab_40098740",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "What about the case below?\n\nIf vb2ex_tpm_clear_owner fails \u0026\u0026 use_secdata, then call vb2api_fail.\n\nI think we are changing the behaviour here in the case that we are in recovery mode?  Although if we are already in recovery mode, I don\u0027t think calling vb2api_fail actually does anything anyways.",
+      "parentUuid": "9c1ed2ed_3b15f2a2",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bb7ebd03_c2724ffd",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "Let\u0027s just use the same flow as you suggested for the setter function.",
+      "parentUuid": "f85a245d_d6ca0dff",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "163362ab_8cd83209",
         "filename": "firmware/2lib/2secdata_firmware.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2019-10-02T00:56:08Z",
       "side": 1,
       "message": "This seems like a very complicated way of just calling \u0027return\u0027 right up there in line 122.",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d48d7a_033f14a7",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "Original purpose was to avoid returning 0 on invalid parameter.  But I guess that\u0027s the desired behaviour (in recovery mode).",
+      "parentUuid": "163362ab_8cd83209",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "c6973078_a4ad4c52",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "OK... that\u0027s a pretty good idea.  Assuming that we also want to return a default value of 0 for invalid params in recovery mode, this flow works well.  Given that we want to use this in both the getter (return uint32_t) and the setter (return void), the macro might be a bit complex to bother with.\n\nAlthough -- the more VB2_DIE calls we start sprinkling around, the more I wonder whether depthcharge should try to boot into recovery mode instead of just dying on vb2ex_abort()?  (That is, if it is not already in recovery mode, which hopefully shouldn\u0027t happen.)",
+      "parentUuid": "d2218675_37131f9f",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f0dfaf_a55f6142",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2019-10-02T00:56:08Z",
       "side": 1,
       "message": "Uhhh... you messed some more stuff up here. ;)",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48fb14c2_0225d736",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T08:12:53Z",
+      "side": 1,
+      "message": "Argh, thanks.  Can you double-check I got it right this time?",
+      "parentUuid": "f0f0dfaf_a55f6142",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
