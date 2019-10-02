@@ -59,6 +59,7 @@ const Param sys_param_list[] = {
   {"fw_try_count", CAN_WRITE, "Number of times to try fw_try_next"},
   {"fw_try_next", IS_STRING|CAN_WRITE, "Firmware to try next (vboot2)"},
   {"fw_vboot2", 0, "1 if firmware was selected by vboot2 or 0 otherwise"},
+  /* TODO(chromium:1010389): Fix autotest and remove fwb_tries. */
   {"fwb_tries", CAN_WRITE, "Try firmware B count"},
   {"fwid", IS_STRING, "Active firmware ID"},
   {"fwupdate_tries", CAN_WRITE,
@@ -88,7 +89,6 @@ const Param sys_param_list[] = {
   {"tpm_fwver", 0, "Firmware version stored in TPM", "0x%08x"},
   {"tpm_kernver", 0, "Kernel version stored in TPM", "0x%08x"},
   {"tpm_rebooted", 0, "TPM requesting repeated reboot (vboot2)"},
-  {"tried_fwb", 0, "Tried firmware B before A this boot"},
   {"try_ro_sync", 0, "try read only software sync"},
   {"vdat_flags", 0, "Flags from VbSharedData", "0x%08x"},
   {"vdat_lfdebug", IS_STRING|NO_PRINT_ALL,
