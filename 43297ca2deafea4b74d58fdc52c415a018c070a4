@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e61d1d3_866db8fb",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "You\u0027re right -- I meant to call vb2api_fail on CRC fail too.",
+      "parentUuid": "e1006bfb_f48078b2",
+      "revId": "43297ca2deafea4b74d58fdc52c415a018c070a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1320a7ab_b47b7588",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 57
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-02T01:20:09Z",
       "side": 1,
       "message": "Shouldn\u0027t this also lead to recovery mode? (Every unintended error path should, pretty much.)\n\nSeems like another good reason to do it in the caller, so you can\u0027t forget to handle one of these error paths.",
+      "revId": "43297ca2deafea4b74d58fdc52c415a018c070a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fd196c_1a16229e",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "Yeah, good point.",
+      "parentUuid": "1320a7ab_b47b7588",
       "revId": "43297ca2deafea4b74d58fdc52c415a018c070a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

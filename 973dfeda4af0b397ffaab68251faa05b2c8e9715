@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "8d6997a6_05197c8a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "Yes, if we change lock() to just return an error code, I think I\u0027m happy setting the recovery reason in the caller.",
+      "parentUuid": "d709e3ad_9cc0670f",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "880b90ed_eb0f7fea",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 54
@@ -247,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "9d1c4ecc_7ad3aae4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "Let\u0027s go with commit() for now.  I\u0027ll rename phase4() to cleanup() instead.\n\nUnfortunately, checking the return values is forcing me to refactor some of this altfw / diagnostics stuff.  Not quite sure if there\u0027s a good way to split that into a separate CL or not.  Would you take a look?  I think I may have broken some error screen or beeping behaviour, but I\u0027m not quite sure why we need that as a special case for altfw.",
+      "parentUuid": "339ea1e5_8caee945",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ede2c234_e5f93c64",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 54
@@ -261,6 +297,24 @@
       "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b2ca523_72440e96",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ede2c234_e5f93c64",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "11a403da_c33dcc1a",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93430717_ae46d3d4",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26f6ef83_f212b566",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 54
@@ -295,6 +367,24 @@
       "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96679ee_e0a2e45c",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-02T10:13:48Z",
+      "side": 1,
+      "message": "This works now that we took the vb2api_fail call out.",
+      "parentUuid": "26f6ef83_f212b566",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
