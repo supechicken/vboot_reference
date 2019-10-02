@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c257137_6e0dad8c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "Nononono, that\u0027s not what this code was doing. It was trying to read the flags, and *if* that failed, it would set suitable defaults for recovery mode or error out otherwise. The expected case is still that the read succeeds and then recovery mode works same as normal.\n\nI think since you have the recovery mode default handling hidden in the secdata functions now, you don\u0027t need to special case anything here anymore. Just do\n\n flags \u003d vb2_secdata_firmware_get(...);\n\nand everything should work itself out automatically.",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1ed2ed_3b15f2a2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "(Can get rid of this and always assume it\u0027s 1, then.)",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85a245d_d6ca0dff",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "Why not just \u0027return 0\u0027 like you had in the FWMP code? (We can worry about non-zero defaults when we have any, which is probably going to be never.)",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163362ab_8cd83209",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "This seems like a very complicated way of just calling \u0027return\u0027 right up there in line 122.",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2218675_37131f9f",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "Hmmm... this one still worries me a little. As long as the only assertion we had was that \u0027param\u0027 is in range, that was probably fine even for recovery mode. But here we\u0027re checking \u0027value\u0027 which might be influenced by runtime data. We don\u0027t want recovery mode to fail to boot because we forgot an overflow check somewhere.\n\nHow about replacing the whole scheme for these functions with something slightly different:\n\n char *msg;\n\n if (!(status \u0026 INIT)) {\n   msg \u003d \"set before init\";\n   goto fail;\n }\n\n ...\n\n switch (param) {\n case FLAGS:\n   if (value \u003e 0xff) {\n     msg \u003d \"flags out of range\";\n     goto fail;\n   }\n ...\n default:\n   msg \u003d \"invalid param\";\n   goto fail;\n }\n\n ...\n\n return;\n\n fail:\n if (ctx-\u003eflags \u0026 RECOVERY)\n   VB2_DEBUG(\"ERROR [%s] ignored in recovery mode\\n\", msg);\n else\n   VB2_DIE(msg);\n\nAlternatively (if you don\u0027t like too much goto), could also define a RETURN_OR_DIE(ctx, msg) macro for this sort of stuff.",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f0dfaf_a55f6142",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:56:08Z",
+      "side": 1,
+      "message": "Uhhh... you messed some more stuff up here. ;)",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
