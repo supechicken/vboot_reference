@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "59bfece1_2175160b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T21:51:04Z",
+      "side": 1,
+      "message": "Hmm... yeah, okay, that\u0027s an issue. In that case, let\u0027s keep the use_secdata as it is but set it to (sd-\u003eflags \u0026 SECDATA_INIT) instead. That should mimic the old behavior.\n\nedit: looks like you already have it that way, great",
+      "parentUuid": "0f133bc5_187427f9",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c1ed2ed_3b15f2a2",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "What about the case below?\n\nIf vb2ex_tpm_clear_owner fails \u0026\u0026 use_secdata, then call vb2api_fail.\n\nI think we are changing the behaviour here in the case that we are in recovery mode?  Although if we are already in recovery mode, I don\u0027t think calling vb2api_fail actually does anything anyways.",
       "parentUuid": "9c1ed2ed_3b15f2a2",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c00e43_b57fd26d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T21:51:04Z",
+      "side": 1,
+      "message": "Yes, I think if we have valid secdata but the owner clear fails somehow, when we are in recovery mode we\u0027d still want to continue. But vb2api_fail() should already happen to work out like that.",
+      "parentUuid": "c77e15ab_40098740",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "OK... that\u0027s a pretty good idea.  Assuming that we also want to return a default value of 0 for invalid params in recovery mode, this flow works well.  Given that we want to use this in both the getter (return uint32_t) and the setter (return void), the macro might be a bit complex to bother with.\n\nAlthough -- the more VB2_DIE calls we start sprinkling around, the more I wonder whether depthcharge should try to boot into recovery mode instead of just dying on vb2ex_abort()?  (That is, if it is not already in recovery mode, which hopefully shouldn\u0027t happen.)",
       "parentUuid": "d2218675_37131f9f",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7915fcf4_eab89310",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T21:51:04Z",
+      "side": 1,
+      "message": "The idea about VB2_DIE() was that it should only be called in cases that we *know* can\u0027t happen (of course, assuming we don\u0027t make mistakes, but when we do a clean death is better than undefined behavior). All of the ones in here can\u0027t happen because vboot should already abort and enter recovery mode when secdata_init() fails earlier (and we should have a unit test to check that, I hope... i.e. that when you boot in normal mode with broken secdata, it goes into recovery rather than calling abort()). When we are in recovery mode, we continue running after secdata_init() fails, that\u0027s why we need to pay more attention in that case (and we should also make sure we have a unit test for that -- that we can boot all the way through to a recovery image even when various secdatas are broken).",
+      "parentUuid": "c6973078_a4ad4c52",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

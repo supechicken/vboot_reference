@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6b1c9e9_054ad2fa",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T21:51:04Z",
+      "side": 1,
+      "message": "nit: a bit weird to call these get_fail and set_fail? C labels are function-local anyway.",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "d8f3ed060b39b3d5f9c9e4d8d8dd316937865f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
