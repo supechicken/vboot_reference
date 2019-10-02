@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deee8ef4_9f90c44d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T19:38:38Z",
+      "side": 1,
+      "message": "Like I mentioned on the bug, I think we should keep this part around for as long as we still support vboot1 devices in our userspace tools.",
+      "revId": "c0255257902fe21912237b47ea9273a043eb7cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

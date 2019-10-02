@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffe262aa_39fc8d82",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T19:38:38Z",
+      "side": 0,
+      "message": "Actually... hmm. I think the concern mentioned here is still somewhat valid. We should remove this code because it doesn\u0027t do anything anymore anyway, but I think we may also have carried a potential issue (which isn\u0027t really visible in practice because we very rarely roll kernel keys and our updates rarely roll back) since we switched to vboot2.\n\nI think the correct vboot2 check to skip the rollback update here would just be\n\n if (nvdata_get(VB2_NV_FW_RESULT) \u003d\u003d VB2_FW_RESULT_TRYING)\n   return rv;\n\nOh look, and after some digging it seems that we already have a bug for that (b/35575422) and it\u0027s already assigned to you! :P",
+      "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
