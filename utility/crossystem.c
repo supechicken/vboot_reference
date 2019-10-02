@@ -88,7 +88,6 @@ const Param sys_param_list[] = {
   {"tpm_fwver", 0, "Firmware version stored in TPM", "0x%08x"},
   {"tpm_kernver", 0, "Kernel version stored in TPM", "0x%08x"},
   {"tpm_rebooted", 0, "TPM requesting repeated reboot (vboot2)"},
-  {"tried_fwb", 0, "Tried firmware B before A this boot"},
   {"try_ro_sync", 0, "try read only software sync"},
   {"vdat_flags", 0, "Flags from VbSharedData", "0x%08x"},
   {"vdat_lfdebug", IS_STRING|NO_PRINT_ALL,

@@ -193,34 +193,6 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx)
 
 	VB2_DEBUG("Checking if TPM kernel version needs advancing\n");
 
-	if ((1 == shared->firmware_index) && (shared->flags & VBSD_FWB_TRIED)) {
-		/*
-		 * Special cases for when we're trying a new firmware B.  These
-		 * are needed because firmware updates also usually change the
-		 * kernel key, which means that the B firmware can only boot a
-		 * new kernel, and the old firmware in A can only boot the
-		 * previous kernel.
-		 *
-		 * Don't advance the TPM if we're trying a new firmware B,
-		 * because we don't yet know if the new kernel will
-		 * successfully boot.  We still want to be able to fall back to
-		 * the previous firmware+kernel if the new firmware+kernel
-		 * fails.
-		 *
-		 * If we found only invalid kernels, reboot and try again.
-		 * This allows us to fall back to the previous firmware+kernel
-		 * instead of giving up and going to recovery mode right away.
-		 * We'll still go to recovery mode if we run out of tries and
-		 * the old firmware can't find a kernel it likes.
-		 */
-		if (rv == VBERROR_INVALID_KERNEL_FOUND) {
-			VB2_DEBUG("Trying FW B; only found invalid kernels.\n");
-			VbSetRecoveryRequest(ctx, VB2_RECOVERY_NOT_REQUESTED);
-		}
-
-		return rv;
-	}
-
 	/*
 	 * Limit kernel version rollforward if needed.  Can't limit kernel
 	 * version to less than the version currently in the TPM.  That is,

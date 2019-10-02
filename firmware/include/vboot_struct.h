@@ -198,7 +198,7 @@ typedef struct VbKernelPreambleHeader {
 
 /* Flags for VbSharedDataHeader */
 /* LoadFirmware() tried firmware B because of VbNvStorage firmware B tries */
-#define VBSD_FWB_TRIED                  0x00000001
+#define VBSD_DEPRECATED_FWB_TRIED        0x00000001
 /*
  * LoadKernel() verified the good kernel keyblock using the kernel subkey from
  * the firmware.  If this flag is not present, it just used the hash of the
