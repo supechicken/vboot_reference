@@ -1,0 +1,322 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed336013_ab7146bc",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "nit: RETURN_ON_FAILURE?",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb5625bb_fb33f959",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Why not keep the name tpm_rv? \u0027r\u0027 and \u0027rv\u0027 are very easy to mix up.",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dddb4eb_985d7ebf",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "I feel like neither phase4() not cleanup() really represents what this function does. It\u0027s more like vb2_kernel_fill_kparams() or something.",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba48ef2_73f59025",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Need to initialize to SUCCESS once you actually use it.",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb0b9bf_875c155c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "again, would prefer tpm_rv or similar",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50b702f_25d8ab7d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "nit: I would write this as \"vboot never writes back to secdata_fwmp\", which is I think what you mean but not quite clear from this message (\"no need\" could also mean it\u0027s been done elsewhere already or something).",
+      "range": {
+        "startLine": 337,
+        "startChar": 27,
+        "endLine": 337,
+        "endChar": 56
+      },
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772c6814_d30c7a8b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Careful, this needs to be \u0027rv\u0027! (This should have been caught by -Wunused-but-set-variable, which should be part of -Wall. Did you not build-test this? Otherwise, we should track down why this didn\u0027t trigger, maybe our flags aren\u0027t right somewhere.)",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535b7f45_cf2b2e23",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "nit: while we\u0027re here, should be %#x",
+      "range": {
+        "startLine": 433,
+        "startChar": 23,
+        "endLine": 433,
+        "endChar": 24
+      },
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2821e6c4_7b1cdd1d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Why remove the #ifdef? I think it\u0027s still functional? Arm devices store nvdata in flash rather than battery-backed CMOS, we wouldn\u0027t want to wear that out unnecessarily.\n\nActually, I think the original reason for SAVE_LOCALE_IMMEDIATELY is gone now anyway, since CL:1470272. So we could take out this whole thing, but there\u0027s also the issue with the BROKEN screen where we explicitly want the user to press Esc+Refresh+Power. In the detachable UI we therefore commit language changes immediately iff we are on the BROKEN screen. If we want to mimic that here, you would do\n\n if ((ctx-\u003eflags \u0026 RECOVERY) \u0026\u0026 !vb2_allow_recovery(ctx)) {\n   ...vb2_nv_commit()...\n }",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2eb2db2_52fe3943",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "No, I think this should really just commit nvdata, nothing else. If we had a function that writes back all data but doesn\u0027t lock (like the vb2ex_commit_data() you\u0027re designing separately), we could use that instead. But I think we shouldn\u0027t lock the TPM here, even if that doesn\u0027t happen to cause a real problem in the current system, it just seems really wrong.",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50057e17_850d06b4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "This will cause us to reboot when altfw entry fails, we don\u0027t want that. We\u0027d at most want to beep and display an error (but I think try_alt_fw() already does that).",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8116e65a_57baa7d1",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f2f843_97decbf7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Should probably also only be nv_commit() (although it doesn\u0027t matter that much here)",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc38a69_d3d65c92",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820e08cd_a02a06d9",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Ehhh... not really a fan of hiding all of that in here. Why don\u0027t you just leave all this stuff the way it was (just replace RollbackKernelLock() with kernel_commit())?",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62172faa_83183d6e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "nv_commit()",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17fd642e_28101f02",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "Should also not propagate return value",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5148173_78ec88f5",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T23:20:58Z",
+      "side": 1,
+      "message": "nv_commit()",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
