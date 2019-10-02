@@ -55,7 +55,8 @@ typedef enum VdatIntField {
 
 	VDAT_INT_FW_VERSION_TPM,      /* Current firmware version in TPM */
 	VDAT_INT_KERNEL_VERSION_TPM,  /* Current kernel version in TPM */
-	VDAT_INT_TRIED_FIRMWARE_B,    /* Tried firmware B due to fwb_tries */
+	VDAT_INT_DEPRECATED_TRIED_FIRMWARE_B,  /* Tried firmware B
+						* due to fwb_tries */
 	VDAT_INT_KERNEL_KEY_VERIFIED, /* Kernel key verified using
 				       * signature, not just hash */
 	VDAT_INT_RECOVERY_REASON,     /* Recovery reason for current boot */
@@ -408,9 +409,6 @@ static int GetVdatInt(VdatIntField field)
 		case VDAT_INT_HEADER_VERSION:
 			value = sh->struct_version;
 			break;
-		case VDAT_INT_TRIED_FIRMWARE_B:
-			value = (sh->flags & VBSD_FWB_TRIED ? 1 : 0);
-			break;
 		case VDAT_INT_KERNEL_KEY_VERIFIED:
 			value = (sh->flags & VBSD_KERNEL_KEY_VERIFIED ? 1 : 0);
 			break;
@@ -494,6 +492,7 @@ int VbGetSystemPropertyInt(const char *name)
 		value = vb2_get_nv_storage(VB2_NV_TPM_REQUESTED_REBOOT);
 	} else if (!strcasecmp(name,"fwb_tries") ||
 		   !strcasecmp(name,"fw_try_count")) {
+		/* TODO(chromium:1010389): Fix autotest and remove fwb_tries. */
 		value = vb2_get_nv_storage(VB2_NV_TRY_COUNT);
 	} else if (!strcasecmp(name,"fw_vboot2")) {
 		value = GetVdatInt(VDAT_INT_FW_BOOT2);
@@ -553,8 +552,6 @@ int VbGetSystemPropertyInt(const char *name)
 		value = GetVdatInt(VDAT_INT_FW_VERSION_TPM);
 	} else if (!strcasecmp(name,"tpm_kernver")) {
 		value = GetVdatInt(VDAT_INT_KERNEL_VERSION_TPM);
-	} else if (!strcasecmp(name,"tried_fwb")) {
-		value = GetVdatInt(VDAT_INT_TRIED_FIRMWARE_B);
 	} else if (!strcasecmp(name,"recovery_reason")) {
 		value = GetVdatInt(VDAT_INT_RECOVERY_REASON);
 	} else if (!strcasecmp(name, "boot_on_ac_detect")) {
