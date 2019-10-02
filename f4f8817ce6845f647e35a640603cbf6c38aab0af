@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07d2e938_e80db414",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:15:44Z",
+      "side": 1,
+      "message": "Sorry, I feel like I keep asking this every time I review something in this file and I never remember the outcome... why is this still here? Nothing ever sets FWB_TRIED anymore. Can\u0027t we just delete this whole block?",
+      "revId": "f4f8817ce6845f647e35a640603cbf6c38aab0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14af9bd0_45d0823b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T00:15:44Z",
+      "side": 1,
+      "message": "This is exactly what this change already does by default now. So even if this whole block wasn\u0027t already pointless anyway, it would become so now.",
+      "revId": "f4f8817ce6845f647e35a640603cbf6c38aab0af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
