@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "d709e3ad_9cc0670f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T01:20:09Z",
+      "side": 1,
+      "message": "Sorry... I looked at it but I don\u0027t think I like it. I think checking here would make more sense (like you checked in kernel_setup() above for this version).\n\nFor consistency, lock() should also just return an error and not set the recovery reason directly, then.",
+      "parentUuid": "405d9d19_4617a4cc",
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "880b90ed_eb0f7fea",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 54

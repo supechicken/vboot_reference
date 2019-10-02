@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1006bfb_f48078b2",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T01:20:09Z",
+      "side": 1,
+      "message": "So when we have a read error we set the recovery reason in this function, but when the data is just corrupted we don\u0027t? Seems inconsistent.\n\nAlso, if you check for recovery mode like you did here, the recovery mode path just continues. I mean, it will most likely fail the CRC check below, but it still seems unclean.\n\nI\u0027m not really convinced about setting recovery reason down here, I think it might be cleaner to just return errors and handle it in the caller.",
+      "revId": "43297ca2deafea4b74d58fdc52c415a018c070a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1320a7ab_b47b7588",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-02T01:20:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this also lead to recovery mode? (Every unintended error path should, pretty much.)\n\nSeems like another good reason to do it in the caller, so you can\u0027t forget to handle one of these error paths.",
+      "revId": "43297ca2deafea4b74d58fdc52c415a018c070a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
