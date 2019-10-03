@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f853b6e7_784e6f57",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-03T08:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59bfece1_2175160b",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c1ed2ed_3b15f2a2",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Yes, I think if we have valid secdata but the owner clear fails somehow, when we are in recovery mode we\u0027d still want to continue. But vb2api_fail() should already happen to work out like that.",
       "parentUuid": "c77e15ab_40098740",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea59d6b_83c9757f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-03T08:39:31Z",
+      "side": 1,
+      "message": "Yeah, doesn\u0027t seem like calling vb2api_fail multiple times is the end of the world.",
+      "parentUuid": "82c00e43_b57fd26d",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "The idea about VB2_DIE() was that it should only be called in cases that we *know* can\u0027t happen (of course, assuming we don\u0027t make mistakes, but when we do a clean death is better than undefined behavior). All of the ones in here can\u0027t happen because vboot should already abort and enter recovery mode when secdata_init() fails earlier (and we should have a unit test to check that, I hope... i.e. that when you boot in normal mode with broken secdata, it goes into recovery rather than calling abort()). When we are in recovery mode, we continue running after secdata_init() fails, that\u0027s why we need to pay more attention in that case (and we should also make sure we have a unit test for that -- that we can boot all the way through to a recovery image even when various secdatas are broken).",
       "parentUuid": "c6973078_a4ad4c52",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3ff1fb_b3dacd68",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-03T08:39:31Z",
+      "side": 1,
+      "message": "I guess the point I\u0027m trying to make is that we are relying on the caller (depthcharge) calling things in the right order for these VB2_DIE cases to *not* arise.  It\u0027s perfectly possible for a bug to be introduced in RW depthcharge, in which case vb2ex_abort may end up getting called after a firmware update.",
+      "parentUuid": "7915fcf4_eab89310",
       "revId": "c798207671cee239102c4a21a92d570627c0c42a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

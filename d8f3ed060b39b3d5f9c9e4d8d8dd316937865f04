@@ -22,6 +22,30 @@
       "revId": "d8f3ed060b39b3d5f9c9e4d8d8dd316937865f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a4c744_50db8ec3",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-03T08:39:31Z",
+      "side": 1,
+      "message": "Err, I saw many other gotos in vboot code prefixed with the function name, so I had assumed that was not the case.  But now that I think about it, jumping to an entirely different function would wreck havoc on CPU context, heap, and stack.  Let\u0027s definitely go for simpler identifiers then.  (Also easier to maintain.)",
+      "parentUuid": "c6b1c9e9_054ad2fa",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "d8f3ed060b39b3d5f9c9e4d8d8dd316937865f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
