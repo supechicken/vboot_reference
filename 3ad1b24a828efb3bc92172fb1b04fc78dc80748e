@@ -16,6 +16,24 @@
       "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b985ae_04fc525e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-03T09:43:10Z",
+      "side": 0,
+      "message": "I believe you\u0027re right -- even if we have a kernel with a valid key, it\u0027s better to wait for that kernel to boot properly before rolling forward the kernel key.\n\nHowever, in the bug you dug up, Randall mentions that his solution for preventing roll-forward for enterprise also deals with this case, by temporarily setting kernel_max_rollforward\u003d0 and fw_max_rollforward\u003d0.  I\u0027m not even sure if this is implemented yet, but even if it is, seems like keeping this conditional would be a nice safeguard regardless?",
+      "parentUuid": "ffe262aa_39fc8d82",
+      "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
