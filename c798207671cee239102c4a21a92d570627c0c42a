@@ -303,6 +303,24 @@
     },
     {
       "key": {
+        "uuid": "c0e722b0_cdcd62a1",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T07:14:00Z",
+      "side": 1,
+      "message": "Yes, sounds good.  Presumably we just need to worry about nvdata and secdata, since those are the ones which we are changing to call vb2ex_abort().",
+      "parentUuid": "c399f177_f348df9a",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f0dfaf_a55f6142",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 1
