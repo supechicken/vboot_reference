@@ -34,6 +34,40 @@
       "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7294f5_3786e9e0",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-04T00:12:29Z",
+      "side": 0,
+      "message": "Can we get a test for the new behavior instead?",
+      "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f863ac13_f5986448",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-04T00:12:29Z",
+      "side": 0,
+      "message": "Here too (even though we took out that specific code path, the new stuff with vb2api_fail() should effectively still behave that way, and we should test that).",
+      "revId": "3ad1b24a828efb3bc92172fb1b04fc78dc80748e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

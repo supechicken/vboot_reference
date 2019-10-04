@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbbbfbda_5f50e24f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-04T00:12:29Z",
+      "side": 1,
+      "message": "nit: update?",
+      "revId": "839e49daf0b42e62c01f7f237d8927065dc80c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9c8687_5292a378",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-04T00:12:29Z",
+      "side": 1,
+      "message": "nit: in vboot2 this could also be A, so I\u0027d just say \"Trying new FW\" or something.",
+      "range": {
+        "startLine": 206,
+        "startChar": 13,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "839e49daf0b42e62c01f7f237d8927065dc80c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
