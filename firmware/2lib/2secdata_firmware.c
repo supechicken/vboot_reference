@@ -121,14 +121,14 @@ vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 		if (value > 0xff)
 			return VB2_ERROR_SECDATA_FIRMWARE_SET_FLAGS;
 
-		VB2_DEBUG("secdata_firmware flags updated from 0x%x to 0x%x\n",
+		VB2_DEBUG("secdata_firmware flags updated from %#x to %#x\n",
 			  sec->flags, value);
 		sec->flags = value;
 		break;
 
 	case VB2_SECDATA_FIRMWARE_VERSIONS:
 		VB2_DEBUG("secdata_firmware versions updated from "
-			  "0x%x to 0x%x\n",
+			  "%#x to %#x\n",
 			  sec->fw_versions, value);
 		sec->fw_versions = value;
 		break;
