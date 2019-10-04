@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d560386_9daf64d6",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed336013_ab7146bc",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5625bb_fb33f959",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 64
@@ -33,6 +51,24 @@
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7899e9_f0595e8b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5625bb_fb33f959",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b6e5289c_12c30a8e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dddb4eb_985d7ebf",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ba48ef2_73f59025",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 64
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "cd8e8e09_7bd1c78a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba48ef2_73f59025",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb0b9bf_875c155c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 64
@@ -84,6 +156,24 @@
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511cc410_2453086a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb0b9bf_875c155c",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "600411cd_950bfa9b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50b702f_25d8ab7d",
+      "range": {
+        "startLine": 337,
+        "startChar": 27,
+        "endLine": 337,
+        "endChar": 56
+      },
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "772c6814_d30c7a8b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 64
@@ -124,6 +238,24 @@
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6fe8363_d403008e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "I don\u0027t see support for this warning in clang?\n\nhttps://clang.llvm.org/docs/DiagnosticsReference.html",
+      "parentUuid": "772c6814_d30c7a8b",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "c45693e2_647fd58d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "CL:1840191",
+      "parentUuid": "535b7f45_cf2b2e23",
+      "range": {
+        "startLine": 433,
+        "startChar": 23,
+        "endLine": 433,
+        "endChar": 24
+      },
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2821e6c4_7b1cdd1d",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 64
@@ -161,6 +317,24 @@
       "writtenOn": "2019-10-02T23:20:58Z",
       "side": 1,
       "message": "Why remove the #ifdef? I think it\u0027s still functional? Arm devices store nvdata in flash rather than battery-backed CMOS, we wouldn\u0027t want to wear that out unnecessarily.\n\nActually, I think the original reason for SAVE_LOCALE_IMMEDIATELY is gone now anyway, since CL:1470272. So we could take out this whole thing, but there\u0027s also the issue with the BROKEN screen where we explicitly want the user to press Esc+Refresh+Power. In the detachable UI we therefore commit language changes immediately iff we are on the BROKEN screen. If we want to mimic that here, you would do\n\n if ((ctx-\u003eflags \u0026 RECOVERY) \u0026\u0026 !vb2_allow_recovery(ctx)) {\n   ...vb2_nv_commit()...\n }",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd00f64_b41db5ca",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Is writing to flash immediately a huge issue here?\n\nPresumably the desired behaviour would be to store the new language in all possible cases:\n\n* Booting up after changing the language -- should be caught by the vb2_kernel_commit call right before leaving firmware.\n\n* Normal shutdown (press power button) -- not sure if that\u0027s the case you\u0027re talking about from CL:1470272, but that code only seems to take effect during an EC update, unless I\u0027m mistaken?\n\n* Reboot (Refresh+Power) -- not sure what happens here -- is this where ARM has a chance to run a hook, whereas x86 \"powers off asynchronously\" as the comment below describes?\n\n* Full reboot (Esc+Refresh+Power) -- I guess this is the BROKEN case you\u0027re talking about.\n\n\n\nAfter doing all this thinking, I found two other places where we write to nvdata in forced recovery mode.  So I moved all these changes into a separate CL:1840192.  If we have more to discuss about these different cases, let\u0027s do it there?",
+      "parentUuid": "2821e6c4_7b1cdd1d",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "ed846aa1_7c744fb4",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Done -- see CL:1819085.",
+      "parentUuid": "b2eb2db2_52fe3943",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50057e17_850d06b4",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 64
@@ -195,6 +387,24 @@
       "writtenOn": "2019-10-02T23:20:58Z",
       "side": 1,
       "message": "This will cause us to reboot when altfw entry fails, we don\u0027t want that. We\u0027d at most want to beep and display an error (but I think try_alt_fw() already does that).",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ecdfbe_cb5c3dd5",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Decided to extricate the altfw mess out of this CL.  Punting.",
+      "parentUuid": "50057e17_850d06b4",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -218,6 +428,24 @@
     },
     {
       "key": {
+        "uuid": "04266045_73e5c432",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Decided to extricate the altfw mess out of this CL.  Punting.",
+      "parentUuid": "8116e65a_57baa7d1",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18f2f843_97decbf7",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 64
@@ -229,6 +457,24 @@
       "writtenOn": "2019-10-02T23:20:58Z",
       "side": 1,
       "message": "Should probably also only be nv_commit() (although it doesn\u0027t matter that much here)",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e35d2b8_1253549b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Sounds good.  Moved to CL:1840192.",
+      "parentUuid": "18f2f843_97decbf7",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -252,6 +498,24 @@
     },
     {
       "key": {
+        "uuid": "4db2cb4f_7a7cdc68",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Decided to extricate the altfw mess out of this CL.  Punting.",
+      "parentUuid": "fbc38a69_d3d65c92",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "820e08cd_a02a06d9",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 64
@@ -263,6 +527,24 @@
       "writtenOn": "2019-10-02T23:20:58Z",
       "side": 1,
       "message": "Ehhh... not really a fan of hiding all of that in here. Why don\u0027t you just leave all this stuff the way it was (just replace RollbackKernelLock() with kernel_commit())?",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70a4dee_755715f4",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Decided to extricate the altfw mess out of this CL.  Punting.",
+      "parentUuid": "820e08cd_a02a06d9",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -286,6 +568,24 @@
     },
     {
       "key": {
+        "uuid": "d3b8ff46_414ada04",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "May as well just commit everything, since it will all be grouped together in depthcharge when the time comes?\n\nOnly dirty data gets committed anyways.\n\n(Again, this has been moved to CL:1840192.)",
+      "parentUuid": "62172faa_83183d6e",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17fd642e_28101f02",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 64
@@ -303,6 +603,24 @@
     },
     {
       "key": {
+        "uuid": "5c8a3134_74ce5129",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Decided to extricate the altfw mess out of this CL.  Punting.",
+      "parentUuid": "17fd642e_28101f02",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5148173_78ec88f5",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 64
@@ -314,6 +632,24 @@
       "writtenOn": "2019-10-02T23:20:58Z",
       "side": 1,
       "message": "nv_commit()",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9719543_e7212ff9",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-04T10:03:34Z",
+      "side": 1,
+      "message": "Same as above -- may as well commit everything?",
+      "parentUuid": "f5148173_78ec88f5",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
