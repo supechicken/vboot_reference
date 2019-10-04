@@ -285,6 +285,24 @@
     },
     {
       "key": {
+        "uuid": "c399f177_f348df9a",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-04T00:31:32Z",
+      "side": 1,
+      "message": "I think that\u0027s fair. vboot has to rely on some guarantees from the caller, especially when it\u0027s split out across many functions. We should make sure we document those requirements clearly in the docstrings, and if the caller violates that then, well, it gets an abort.\n\nCan you please double-check that we have tests for this (booting in recovery mode when various types of data are invalid, for both firmware and kernel part)? From a cursory glance I couldn\u0027t find any. If we don\u0027t then we should add some, making sure that recovery mode stays working in all cases is especially important.",
+      "parentUuid": "cb3ff1fb_b3dacd68",
+      "revId": "c798207671cee239102c4a21a92d570627c0c42a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f0dfaf_a55f6142",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 1
