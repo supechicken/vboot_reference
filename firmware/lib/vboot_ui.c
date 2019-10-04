@@ -612,7 +612,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VBOOT_FALLTHROUGH;
 		case ' ':
 			/* See if we should disable virtual dev-mode switch. */
-			VB2_DEBUG("shared->flags=0x%x\n", shared->flags);
+			VB2_DEBUG("shared->flags=%#x\n", shared->flags);
 			if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 				/* Stop the countdown while we go ask... */
 				if (gbb->flags &
