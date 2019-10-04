@@ -221,7 +221,7 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 			active = 0;
 			break;
 		default:
-			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
+			VB2_DEBUG("VbBootDeveloper() - pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, NULL);
 			break;
 		}
@@ -310,7 +310,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 			}
 			break;
 		default:
-			VB2_DEBUG("Vendor Data UI - pressed key %d\n", key);
+			VB2_DEBUG("Vendor Data UI - pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, &data);
 			break;
 		}
@@ -377,7 +377,7 @@ static vb2_error_t vb2_vendor_data_ui(struct vb2_context *ctx)
 				return VBERROR_SHUTDOWN_REQUESTED;
 			}
 		default:
-			VB2_DEBUG("Vendor Data UI - pressed key %d\n", key);
+			VB2_DEBUG("Vendor Data UI - pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, &data);
 			break;
 		}
@@ -461,7 +461,7 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 			active = 0;
 			break;
 		default:
-			VB2_DEBUG("vb2_diagnostics_ui() - pressed key %d\n",
+			VB2_DEBUG("vb2_diagnostics_ui() - pressed key %#x\n",
 				  key);
 			VbCheckDisplayKey(ctx, key, NULL);
 			break;
@@ -612,7 +612,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VBOOT_FALLTHROUGH;
 		case ' ':
 			/* See if we should disable virtual dev-mode switch. */
-			VB2_DEBUG("shared->flags=0x%x\n", shared->flags);
+			VB2_DEBUG("shared->flags=%#x\n", shared->flags);
 			if (shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
 				/* Stop the countdown while we go ask... */
 				if (gbb->flags &
@@ -756,7 +756,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			vb2_try_alt_fw(ctx, allow_legacy, key - '0');
 			break;
 		default:
-			VB2_DEBUG("VbBootDeveloper() - pressed key %d\n", key);
+			VB2_DEBUG("VbBootDeveloper() - pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, NULL);
 			break;
 		}
