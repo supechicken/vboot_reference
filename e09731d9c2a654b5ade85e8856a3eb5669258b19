@@ -51,6 +51,24 @@
       "revId": "e09731d9c2a654b5ade85e8856a3eb5669258b19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eab6db9_c3f8e044",
+        "filename": "firmware/lib20/packed_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-07T10:03:56Z",
+      "side": 1,
+      "message": "How about we just duplicate the function?  But I am wondering if it is safer to make the const version the default?  So:\n\n  vb2_packed_key_data\n  vb2_packed_key_data_mutable\n  vb2_signature_data\n  vb2_signature_data_mutable\n\nDoes that work?",
+      "parentUuid": "3156d380_c4d97173",
+      "revId": "e09731d9c2a654b5ade85e8856a3eb5669258b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
