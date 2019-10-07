@@ -99,22 +99,3 @@ vb2_error_t VbSharedDataSetKernelKey(VbSharedDataHeader *header,
 	return PublicKeyCopy(kdest, src);
 }
 
-int vb2_allow_recovery(struct vb2_context *ctx)
-{
-	/* VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY forces this to always return
-	   true. */
-	if (vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)
-		return 1;
-
-	/*
-	 * If EC is in RW, it implies recovery wasn't manually requested.
-	 * On some platforms, EC_IN_RW can't be reset by the EC, thus, this may
-	 * return false (=RW). That's ok because if recovery is manual, we will
-	 * get the right signal and that's the case we care about.
-	 */
-	if (!VbExTrustEC(0))
-		return 0;
-
-	/* Now we confidently check the recovery switch state at boot */
-	return !!(vb2_get_sd(ctx)->vbsd->flags & VBSD_BOOT_REC_SWITCH_ON);
-}
