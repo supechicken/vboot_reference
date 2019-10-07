@@ -23,7 +23,6 @@
 #include "utility.h"
 #include "util_misc.h"
 #include "vb2_common.h"
-#include "vb2_struct.h"
 
 #define COMMAND_BUFFER_SIZE 256
 #define RETURN_ON_FAILURE(x) do {int r = (x); if (r) return r;} while (0);
