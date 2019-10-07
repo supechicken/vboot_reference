@@ -16,8 +16,6 @@
 #ifndef VBOOT_REFERENCE_VB2_STRUCT_H_
 #define VBOOT_REFERENCE_VB2_STRUCT_H_
 
-#include <stdint.h>
-
 /*
  * Rollback protection currently uses a 32-bit value comprised of the bottom 16
  * bits of the (firmware or kernel) preamble version and the bottom 16 bits of
@@ -28,8 +26,8 @@
 #define VB2_MAX_PREAMBLE_VERSION 0xffff
 
 /* Firmware preamble header */
-#define FIRMWARE_PREAMBLE_HEADER_VERSION_MAJOR 2
-#define FIRMWARE_PREAMBLE_HEADER_VERSION_MINOR 1
+#define VB2_FIRMWARE_PREAMBLE_HEADER_VERSION_MAJOR 2
+#define VB2_FIRMWARE_PREAMBLE_HEADER_VERSION_MINOR 1
 
 /* Flags for vb2_fw_preamble.flags */
 /* Use RO-normal firmware (deprecated; do not use) */
@@ -88,9 +86,12 @@ struct vb2_fw_preamble {
 
 #define EXPECTED_VB2_FW_PREAMBLE_SIZE 108
 
+_Static_assert(EXPECTED_VB2_FW_PREAMBLE_SIZE == sizeof(struct vb2_fw_preamble),
+	       "EXPECTED_VB2_FW_PREAMBLE_SIZE incorrect");
+
 /* Kernel preamble header */
-#define KERNEL_PREAMBLE_HEADER_VERSION_MAJOR 2
-#define KERNEL_PREAMBLE_HEADER_VERSION_MINOR 2
+#define VB2_KERNEL_PREAMBLE_HEADER_VERSION_MAJOR 2
+#define VB2_KERNEL_PREAMBLE_HEADER_VERSION_MINOR 2
 
 /* Flags for vb2_kernel_preamble.flags */
 /* Kernel image type = bits 1:0 */
@@ -184,5 +185,17 @@ struct vb2_kernel_preamble {
 #define EXPECTED_VB2_KERNEL_PREAMBLE_2_0_SIZE 96
 #define EXPECTED_VB2_KERNEL_PREAMBLE_2_1_SIZE 112
 #define EXPECTED_VB2_KERNEL_PREAMBLE_2_2_SIZE 116
+
+_Static_assert(EXPECTED_VB2_KERNEL_PREAMBLE_2_0_SIZE
+	       == offsetof(struct vb2_kernel_preamble, vmlinuz_header_address),
+	       "EXPECTED_VB2_KERNEL_PREAMBLE_2_0_SIZE incorrect");
+
+_Static_assert(EXPECTED_VB2_KERNEL_PREAMBLE_2_1_SIZE
+	       == offsetof(struct vb2_kernel_preamble, flags),
+	       "EXPECTED_VB2_KERNEL_PREAMBLE_2_1_SIZE incorrect");
+
+_Static_assert(EXPECTED_VB2_KERNEL_PREAMBLE_2_2_SIZE
+	       == sizeof(struct vb2_kernel_preamble),
+	       "EXPECTED_VB2_KERNEL_PREAMBLE_2_2_SIZE incorrect");
 
 #endif  /* VBOOT_REFERENCE_VB2_STRUCT_H_ */
