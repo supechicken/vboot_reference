@@ -176,6 +176,16 @@ vb2_error_t vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
 				    const struct vb2_public_key *key,
 				    const struct vb2_workbuf *wb);
 
+/**
+ * Return expected signature size for a signature/hash algorithm pair
+ *
+ * @param sig_alg	Signature algorithm
+ * @param hash_alg	Hash algorithm
+ * @return The signature size, or zero if error / unsupported algorithm.
+ */
+uint32_t vb21_sig_size(enum vb2_signature_algorithm sig_alg,
+		       enum vb2_hash_algorithm hash_alg);
+
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
