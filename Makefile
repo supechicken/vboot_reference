@@ -454,7 +454,6 @@ UTILLIB_SRCS = \
 	host/lib/file_keys.c \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
-	host/lib/host_key.c \
 	host/lib/host_key2.c \
 	host/lib/host_keyblock.c \
 	host/lib/host_misc.c \
@@ -717,6 +716,7 @@ TEST2X_NAMES = \
 	tests/vb2_common_tests \
 	tests/vb2_ec_sync_tests \
 	tests/vb2_gbb_tests \
+	tests/vb2_host_key_tests \
 	tests/vb2_misc_tests \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_utility_tests \
@@ -1278,6 +1278,7 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_ec_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_key_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
