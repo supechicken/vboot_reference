@@ -16,6 +16,24 @@
       "revId": "e97d560c2081bb7eb3e818a14ee77836055336ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16cd1e61_b8ccc208",
+        "filename": "firmware/2lib/2signature.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-07T06:35:00Z",
+      "side": 1,
+      "message": "Good point.  Changing to static inlines and removing this file.",
+      "parentUuid": "5109bdc0_d00dd213",
+      "revId": "e97d560c2081bb7eb3e818a14ee77836055336ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
