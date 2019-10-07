@@ -13,20 +13,6 @@
 #include "vboot_struct.h"
 
 /**
- * Initialize a public key to refer to [key_data].
- */
-void PublicKeyInit(struct vb2_packed_key *key,
-		   uint8_t *key_data, uint64_t key_size);
-
-/**
- * Copy a public key from [src] to [dest].
- *
- * Returns 0 if success, non-zero if error.
- */
-int PublicKeyCopy(struct vb2_packed_key *dest,
-		  const struct vb2_packed_key *src);
-
-/**
  * Verify that the Vmlinuz Header is contained inside of the kernel blob.
  *
  * Returns VB2_SUCCESS or VBOOT_PREAMBLE_INVALID on error
