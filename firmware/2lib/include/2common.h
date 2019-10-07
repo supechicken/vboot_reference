@@ -14,6 +14,7 @@
 #include "2sha.h"
 #include "2struct.h"
 #include "2sysincludes.h"
+#include "vb2_struct.h"
 
 struct vb2_public_key;
 
@@ -213,25 +214,6 @@ ptrdiff_t vb2_offset_of(const void *base, const void *ptr);
  */
 void *vb2_member_of(void *parent, ptrdiff_t offset);
 
-/**
- * Return expected signature size for a signature/hash algorithm pair
- *
- * @param sig_alg	Signature algorithm
- * @param hash_alg	Hash algorithm
- * @return The signature size, or zero if error / unsupported algorithm.
- */
-uint32_t vb2_sig_size(enum vb2_signature_algorithm sig_alg,
-		      enum vb2_hash_algorithm hash_alg);
-
-/**
- * Return a key ID for an unsigned hash algorithm.
- *
- * @param hash_alg	Hash algorithm to return key for
- * @return A pointer to the key ID for that hash algorithm with
- *	   sig_alg=VB2_SIG_NONE, or NULL if error.
- */
-const struct vb2_id *vb2_hash_id(enum vb2_hash_algorithm hash_alg);
-
 /* Size of work buffer sufficient for vb2_verify_digest() worst case. */
 #define VB2_VERIFY_DIGEST_WORKBUF_BYTES VB2_VERIFY_RSA_DIGEST_WORKBUF_BYTES
 
@@ -348,5 +330,90 @@ static __inline vb2_error_t vb2_verify_signature_inside(
 					sig, sizeof(*sig),
 					sig->sig_offset, sig->sig_size);
 }
+
+/**
+ * Verify a signature against an expected hash digest.
+ *
+ * @param key		Key to use in signature verification
+ * @param sig		Signature to verify (may be destroyed in process)
+ * @param digest	Digest of signed data
+ * @param wb		Work buffer
+ * @return VB2_SUCCESS, or non-zero if error.
+ */
+vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
+			      struct vb2_signature *sig, const uint8_t *digest,
+			      const struct vb2_workbuf *wb);
+
+/**
+ * Verify data matches signature.
+ *
+ * @param data		Data to verify
+ * @param size		Size of data buffer.  Note that amount of data to
+ *			actually validate is contained in sig->data_size.
+ * @param sig		Signature of data (destroyed in process)
+ * @param key		Key to use to validate signature
+ * @param wb		Work buffer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
+			    struct vb2_signature *sig,
+			    const struct vb2_public_key *key,
+			    const struct vb2_workbuf *wb);
+
+/**
+ * Check the sanity of a keyblock structure.
+ *
+ * Verifies all the header fields.  Does not verify key index or keyblock
+ * flags.  Should be called before verifying the keyblock data itself using
+ * the key.  (This function does not itself verify the signature - just that
+ * the right amount of data is claimed to be signed.)
+ *
+ * @param block		Keyblock to verify
+ * @param size		Size of keyblock buffer
+ * @param sig		Which signature inside the keyblock to use
+ */
+vb2_error_t vb2_check_keyblock(const struct vb2_keyblock *block, uint32_t size,
+			       const struct vb2_signature *sig);
+
+/**
+ * Verify a keyblock using a public key.
+ *
+ * Header fields are also checked for sanity.  Does not verify key index or key
+ * block flags.  Signature inside block is destroyed during check.
+ *
+ * @param block		Keyblock to verify
+ * @param size		Size of keyblock buffer
+ * @param key		Key to use to verify block
+ * @param wb		Work buffer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_verify_keyblock(struct vb2_keyblock *block, uint32_t size,
+				const struct vb2_public_key *key,
+				const struct vb2_workbuf *wb);
+
+/**
+ * Check the sanity of a firmware preamble using a public key.
+ *
+ * The signature in the preamble is destroyed during the check.
+ *
+ * @param preamble     	Preamble to verify
+ * @param size		Size of preamble buffer
+ * @param key		Key to use to verify preamble
+ * @param wb		Work buffer
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_verify_fw_preamble(struct vb2_fw_preamble *preamble,
+				   uint32_t size,
+				   const struct vb2_public_key *key,
+				   const struct vb2_workbuf *wb);
+
+/**
+ * Return a key ID for an unsigned hash algorithm.
+ *
+ * @param hash_alg	Hash algorithm to return key for
+ * @return A pointer to the key ID for that hash algorithm with
+ *	   sig_alg=VB2_SIG_NONE, or NULL if error.
+ */
+const struct vb2_id *vb2_hash_id(enum vb2_hash_algorithm hash_alg);
 
 #endif  /* VBOOT_REFERENCE_2COMMON_H_ */
