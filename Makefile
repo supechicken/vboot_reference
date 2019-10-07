@@ -350,7 +350,6 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
 	firmware/lib/vboot_common.c \
-	firmware/lib/vboot_common_init.c \
 	firmware/lib/vboot_display.c \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
@@ -581,7 +580,6 @@ UTIL_NAMES = \
 
 ifeq (${MINIMAL},)
 UTIL_NAMES += \
-	utility/load_kernel_test \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
 	utility/verify_data
@@ -689,11 +687,9 @@ TEST_NAMES = \
 	tests/vboot_api_kernel2_tests \
 	tests/vboot_api_kernel4_tests \
 	tests/vboot_api_kernel_tests \
-	tests/vboot_common_tests \
 	tests/vboot_detach_menu_tests \
 	tests/vboot_display_tests \
-	tests/vboot_kernel_tests \
-	tests/verify_kernel
+	tests/vboot_kernel_tests
 
 ifeq (${MOCK_TPM},)
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
@@ -1268,7 +1264,6 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel2_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_detach_menu_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
