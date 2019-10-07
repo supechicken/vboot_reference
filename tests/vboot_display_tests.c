@@ -18,7 +18,6 @@
 #include "host_common.h"
 #include "secdata_tpm.h"
 #include "test_common.h"
-#include "vboot_common.h"
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 
@@ -45,7 +44,6 @@ static void ResetMocks(void)
 	sd->vbsd = shared;
 
 	memset(&shared_data, 0, sizeof(shared_data));
-	VbSharedDataInit(shared, sizeof(shared_data));
 
 	*debug_info = 0;
 }
