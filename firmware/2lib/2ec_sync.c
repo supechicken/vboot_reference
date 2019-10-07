@@ -11,8 +11,6 @@
 #include "2nvstorage.h"
 #include "2sysincludes.h"
 #include "vboot_api.h"
-#include "vboot_common.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
 
 #define VB2_SD_FLAG_ECSYNC_RW					\
