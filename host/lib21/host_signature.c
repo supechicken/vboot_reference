@@ -99,7 +99,7 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 	s.c.desc_size = vb2_desc_size(desc);
 
 	s.sig_offset = s.c.fixed_size + s.c.desc_size;
-	s.sig_size = vb2_sig_size(key->sig_alg, key->hash_alg);
+	s.sig_size = vb21_sig_size(key->sig_alg, key->hash_alg);
 	if (!s.sig_size)
 		return VB2_SIGN_DATA_SIG_SIZE;
 
@@ -173,7 +173,7 @@ vb2_error_t vb21_sig_size_for_key(uint32_t *size_ptr,
 				  const struct vb2_private_key *key,
 				  const char *desc)
 {
-	uint32_t size = vb2_sig_size(key->sig_alg, key->hash_alg);
+	uint32_t size = vb21_sig_size(key->sig_alg, key->hash_alg);
 
 	if (!size)
 		return VB2_ERROR_SIG_SIZE_FOR_KEY;
