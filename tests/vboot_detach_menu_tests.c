@@ -17,7 +17,6 @@
 #include "tss_constants.h"
 #include "vboot_api.h"
 #include "vboot_audio.h"
-#include "vboot_common.h"
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
@@ -64,7 +63,6 @@ static enum VbEcBootMode_t ec_vboot_mode;
 static void ResetMocks(void)
 {
 	memset(&shared_data, 0, sizeof(shared_data));
-	VbSharedDataInit(shared, sizeof(shared_data));
 	shared->flags = VBSD_BOOT_FIRMWARE_VBOOT2;
 
 	memset(&lkp, 0, sizeof(lkp));
