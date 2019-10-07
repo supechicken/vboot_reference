@@ -61,6 +61,10 @@ typedef struct VbKernelPreambleHeader2_0 {
 
 #define EXPECTED_VBKERNELPREAMBLEHEADER2_0_SIZE 96
 
+_Static_assert(EXPECTED_VBKERNELPREAMBLEHEADER2_0_SIZE
+	       == sizeof(struct VbKernelPreambleHeader2_0),
+	       "EXPECTED_VBKERNELPREAMBLEHEADER2_0_SIZE incorrect");
+
 /* Preamble block for kernel, version 2.1
  *
  * This should be followed by:
@@ -117,6 +121,14 @@ typedef struct VbKernelPreambleHeader {
 
 #define EXPECTED_VBKERNELPREAMBLEHEADER2_1_SIZE 112
 #define EXPECTED_VBKERNELPREAMBLEHEADER2_2_SIZE 116
+
+_Static_assert(EXPECTED_VBKERNELPREAMBLEHEADER2_1_SIZE
+	       == offsetof(struct VbKernelPreambleHeader, flags),
+	       "EXPECTED_VBKERNELPREAMBLEHEADER2_1_SIZE incorrect");
+
+_Static_assert(EXPECTED_VBKERNELPREAMBLEHEADER2_2_SIZE
+	       == sizeof(struct VbKernelPreambleHeader),
+	       "EXPECTED_VBKERNELPREAMBLEHEADER2_2_SIZE incorrect");
 
 /****************************************************************************/
 
@@ -413,6 +425,13 @@ typedef struct VbSharedDataHeader {
 /* Size of VbSharedDataheader for each version */
 #define VB_SHARED_DATA_HEADER_SIZE_V1 1072
 #define VB_SHARED_DATA_HEADER_SIZE_V2 1096
+
+_Static_assert(VB_SHARED_DATA_HEADER_SIZE_V1
+	       == offsetof(VbSharedDataHeader, recovery_reason),
+	       "VB_SHARED_DATA_HEADER_SIZE_V1 incorrect");
+
+_Static_assert(VB_SHARED_DATA_HEADER_SIZE_V2 == sizeof(VbSharedDataHeader),
+	       "VB_SHARED_DATA_HEADER_SIZE_V2 incorrect");
 
 #define VB_SHARED_DATA_VERSION 2  /* Version for struct_version */
 
