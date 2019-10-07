@@ -11,7 +11,6 @@
 #include "2sysincludes.h"
 #include "ec_sync.h"
 #include "vboot_api.h"
-#include "vboot_common.h"
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 
