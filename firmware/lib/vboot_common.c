@@ -11,32 +11,10 @@
 #include "2rsa.h"
 #include "2sha.h"
 #include "2sysincludes.h"
+#include "host_common.h"
 #include "utility.h"
 #include "vboot_api.h"
 #include "vboot_common.h"
-
-void PublicKeyInit(struct vb2_packed_key *key,
-		   uint8_t *key_data, uint64_t key_size)
-{
-	key->key_offset = vb2_offset_of(key, key_data);
-	key->key_size = key_size;
-	key->algorithm = VB2_ALG_COUNT; /* Key not present yet */
-	key->key_version = 0;
-}
-
-int PublicKeyCopy(struct vb2_packed_key *dest, const struct vb2_packed_key *src)
-{
-	if (dest->key_size < src->key_size)
-		return 1;
-
-	dest->key_size = src->key_size;
-	dest->algorithm = src->algorithm;
-	dest->key_version = src->key_version;
-	memcpy((struct vb2_packed_key *)vb2_packed_key_data(dest),
-	       vb2_packed_key_data(src),
-	       src->key_size);
-	return 0;
-}
 
 vb2_error_t VerifyVmlinuzInsideKBlob(uint64_t kblob, uint64_t kblob_size,
 				     uint64_t header, uint64_t header_size)
@@ -92,10 +70,9 @@ vb2_error_t VbSharedDataSetKernelKey(VbSharedDataHeader *header,
 	}
 
 	/* Copy the kernel sign key blob into the destination buffer */
-	PublicKeyInit(kdest,
-		      (uint8_t *)header + header->kernel_subkey_data_offset,
-		      header->kernel_subkey_data_size);
+	vb2_init_packed_key(
+		kdest, (uint8_t *)header + header->kernel_subkey_data_offset,
+		header->kernel_subkey_data_size);
 
-	return PublicKeyCopy(kdest, src);
+	return vb2_copy_packed_key(kdest, src);
 }
-
