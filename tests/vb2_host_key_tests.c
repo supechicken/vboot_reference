@@ -8,7 +8,6 @@
 #include "2common.h"
 #include "host_common.h"
 #include "test_common.h"
-#include "vboot_common.h"
 
 /* Public key utility functions */
 static void public_key_tests(void)
