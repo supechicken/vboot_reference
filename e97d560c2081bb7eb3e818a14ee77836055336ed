@@ -34,6 +34,24 @@
       "revId": "e97d560c2081bb7eb3e818a14ee77836055336ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca5e0fb_26394299",
+        "filename": "firmware/2lib/2signature.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-07T10:02:25Z",
+      "side": 1,
+      "message": "It follows that we should get rid of 2packed_key.c as well.  See the next CL for that.",
+      "parentUuid": "16cd1e61_b8ccc208",
+      "revId": "e97d560c2081bb7eb3e818a14ee77836055336ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
