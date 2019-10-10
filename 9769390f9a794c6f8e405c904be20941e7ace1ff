@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765e5396_41154793",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-10T20:17:31Z",
+      "side": 1,
+      "message": "Well, this is sort of a tautology and the FW_RESULT_TRYING has nothing to do with it. Since you changed everything to vb2api_fail(), nothing you do here could ever lead to a non-zero recovery reason (unless you explicitly prepare the previous slot/result info in shared data first). I\u0027m somewhat surprised/annoyed that we apparently didn\u0027t have a single test to confirm that we ever actually do fall into recovery in error situations, which would\u0027ve triggered this. Tests that only test success behaviors are pretty pointless.\n\nI don\u0027t want to block this patch any longer, but it would be great if you could come back and spend some time buffing out the holes in our test coverage here at some later point.",
+      "revId": "9769390f9a794c6f8e405c904be20941e7ace1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
