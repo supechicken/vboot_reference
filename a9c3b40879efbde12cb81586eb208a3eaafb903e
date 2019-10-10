@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fadcff2_a80d92df",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-10T22:20:11Z",
+      "side": 1,
+      "message": "So... I think the reason they used 1000 here is that you can add/subtract small values without getting anywhere near other VB2_ERROR values. The problem with using VB2_ERROR_MOCK is that VB2_ERROR_MOCK - 1 happens to be equal to VB2_ERROR_UNKNOWN. That\u0027s probably not a huge problem (specifically for UNKNOWN), but still something I\u0027d rather avoid in general.\n\nOne option would be to move VB2_ERROR_MOCK intentionally far away from the other error values. A better option would be to just fix this whole godawful hide-stuff-in-the-return-code thing and use separate globals to pass out information of what flags it was called with instead (I think best would be two separate booleans vbtlk_called_with_fixed and vbtlk_called_with_removable that both get reset to false by ResetMocks() and both get checked after every run).",
+      "revId": "a9c3b40879efbde12cb81586eb208a3eaafb903e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
