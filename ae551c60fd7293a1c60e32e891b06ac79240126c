@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb0b8893_104f1229",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-10T22:50:56Z",
+      "side": 1,
+      "message": "Let\u0027s not call something vb2ex_ before it\u0027s actually implemented by the caller. I know we want to get there eventually, but that might take a while and I don\u0027t think we should make the API widely inconsistent until then. We can always change the name at that point.",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446be083_a6c97269",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-10T22:50:56Z",
+      "side": 1,
+      "message": "I\u0027m not really a fan of throwing tons of inert stubs into production code to be hooked up at some indeterminate later time (maybe I\u0027m just too burned from all of Randall\u0027s half-finished stuff ;) ). This currently does nothing, and the comment very misleadingly makes you think the TPM is locked here when it is actually locked further up in phase4. I think the way you\u0027re planning to go here is fine, but can we please not add the code until it actually does what it claims?\n\nedit: Okay, I see now that the next patch does that. I think at that point, it\u0027s better to just merge the patches (or at least the parts of them that touch this file), even if that gets a little bigger. The point of small patches is to make them easier to understand, but when you buy that by doing things in one patch that don\u0027t seem to make sense until you\u0027ve read the other patch, you actually make it harder.",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a054d836_405ee772",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-10T22:50:56Z",
+      "side": 1,
+      "message": "FWIW I don\u0027t think anyone cared about these timestamps in years. We have timestamps in coreboot/depthcharge instead. Feel free to just get rid of them.",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
