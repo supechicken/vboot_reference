@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc504272_a294b0cd",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T18:26:34Z",
+      "side": 1,
+      "message": "nit: I assume this works because the compiler doesn\u0027t complain, but this is not actually listed in the GCC documentation. Would be good to switch all of vboot to just use \u0027inline\u0027 at some point.",
+      "range": {
+        "startLine": 306,
+        "startChar": 7,
+        "endLine": 306,
+        "endChar": 15
+      },
+      "revId": "ac74a99db8626ef12271bba472a202d4d68dd34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
