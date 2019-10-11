@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a18068_18ecbdb1",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 71
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "nit: Thematically would fit better in the \"rewritable firmware\" block, e.g. 0x62",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2659ff_43c9ea2b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Right now you check for recovery mode in secdata_kernel_lock() and just return success there... I feel that check would make more sense in this function (just skip calling it when in recovery mode). That\u0027s another good reason to not call this function vb2ex_... for now, because the stuff you\u0027re doing in here is stuff we actually don\u0027t want to move into depthcharge. Only the stuff in secdata_kernel_lock() should be moved there (and the check for recovery mode should also stay inside vboot).",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661d9f6d_8997cbee",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "nit: maybe add a small comment explaining that this intentionally falls through instead of returning immediately, and why?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ee5e2d_bb337eac",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "delete?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d60355_f2cdfbf7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Could also just move the call above the goto label instead.",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0407ce_5cd8b937",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "I would combine it with the lock check above, i.e. if either commit() or lock() fails we should beep and back out.",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a8004e_76e00d6e",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Actually, this is probably a good time to move that commit_data *above* the lock() call, now that it may also write to secdata (even though it shouldn\u0027t in any of our current paths).",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca78459_c5534527",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Uhhh... memsetting these things to 0 isn\u0027t super useful if you later want to memcmp() that everything was read correctly. Can we fill each of them with a unique byte instead?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647758e3_50476584",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Test that CHANGED flag was cleared?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005a1224_8084b967",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Wait, what\u0027s happening here? Where does this fail_reason come from? This should not get set in this path (recovery reason for TPM lock failures is set at a higher layer)... do these tests pass?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2c89ec_e3b04d27",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Oddly specific test? If anything, I\u0027d check EQ( , 0) (more instances below)",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1df536_e246e1f6",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Didn\u0027t you put it in a test-accessible global for exactly this reason? Why aren\u0027t you using it? (ResetMocks() should reset it, and then here you could just call secdata_kernel_lock() twice.)",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e892a0d1_e59eb011",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "You\u0027re deleting a bunch of old FWMP tests that you only just wrote a couple of patches ago here. Why?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a81f087_de237b6d",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Might be good to check that the flag stays EQ( , 0) in some of the other cases.",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c993c4cb_2cebb5d4",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "nit: rename all these things with rkr/rfr in their name to stuff that makes sense for the new names?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89442da_19473cec",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "This belongs in secdata_tpm_tests, not here. Here you\u0027re overriding secdata_kernel_lock() completely anyway, so this doesn\u0027t affect anything.",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e87fa2_6f952b47",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Do we not have a TPM-read-specific error in vboot2 anymore? Why not make one?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833563fb_74f6519f",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "...same for these...",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

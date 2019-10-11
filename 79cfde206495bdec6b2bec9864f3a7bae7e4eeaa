@@ -259,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "ccf6bf36_c536509d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Oh... great. Such a great compiler. How fortunate that we decided to switch all of Chrome OS to it. -.-\n\nAnyway, guess we would\u0027ve found this when building coreboot at the latest.",
+      "parentUuid": "e6fe8363_d403008e",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "535b7f45_cf2b2e23",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 64
@@ -335,6 +353,24 @@
       "side": 1,
       "message": "Is writing to flash immediately a huge issue here?\n\nPresumably the desired behaviour would be to store the new language in all possible cases:\n\n* Booting up after changing the language -- should be caught by the vb2_kernel_commit call right before leaving firmware.\n\n* Normal shutdown (press power button) -- not sure if that\u0027s the case you\u0027re talking about from CL:1470272, but that code only seems to take effect during an EC update, unless I\u0027m mistaken?\n\n* Reboot (Refresh+Power) -- not sure what happens here -- is this where ARM has a chance to run a hook, whereas x86 \"powers off asynchronously\" as the comment below describes?\n\n* Full reboot (Esc+Refresh+Power) -- I guess this is the BROKEN case you\u0027re talking about.\n\n\n\nAfter doing all this thinking, I found two other places where we write to nvdata in forced recovery mode.  So I moved all these changes into a separate CL:1840192.  If we have more to discuss about these different cases, let\u0027s do it there?",
       "parentUuid": "2821e6c4_7b1cdd1d",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a40c993_64087ea8",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "\u003e Normal shutdown (press power button) -- not sure if that\u0027s the case you\u0027re talking about from CL:1470272, but that code only seems to take effect during an EC update, unless I\u0027m mistaken?\n\nBefore that CL, x86 systems would shut down asynchronously when you press the power button. That\u0027s why that code was originally put in here. That problem is eliminated by that CL, so the only thing we still need to worry about is when the user explicitly presses an EC reset combination which should only be common on the BROKEN screen.\n\nI think your other CL should\u0027ve sorted it all out now.",
+      "parentUuid": "fdd00f64_b41db5ca",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -580,6 +616,24 @@
       "side": 1,
       "message": "May as well just commit everything, since it will all be grouped together in depthcharge when the time comes?\n\nOnly dirty data gets committed anyways.\n\n(Again, this has been moved to CL:1840192.)",
       "parentUuid": "62172faa_83183d6e",
+      "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788df971_a9b20b10",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T02:46:53Z",
+      "side": 1,
+      "message": "Yeah, I was only worried about the lock stuff. Now that you separated the locking out, using vb2ex_commit_data() is fine.",
+      "parentUuid": "d3b8ff46_414ada04",
       "revId": "79cfde206495bdec6b2bec9864f3a7bae7e4eeaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
