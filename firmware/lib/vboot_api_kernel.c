@@ -72,9 +72,6 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	uint32_t disk_count = 0;
 	uint32_t i;
 
-	VB2_DEBUG("VbTryLoadKernel() start, get_info_flags=0x%x\n",
-		  (unsigned)get_info_flags);
-
 	lkp.fwmp = &fwmp;
 	lkp.disk_handle = NULL;
 
@@ -83,10 +80,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 					   get_info_flags))
 		disk_count = 0;
 
-	VB2_DEBUG("VbTryLoadKernel() found %d disks\n", (int)disk_count);
 	if (0 == disk_count) {
-		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_DISK);
+		if (get_info_flags & VB_DISK_FLAG_FIXED)
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_DISK);
 		return VBERROR_NO_DISK_FOUND;
+	} else {
+		VB2_DEBUG("VbTryLoadKernel() found %u disks\n", disk_count);
 	}
 
 	/* Loop over disks */
