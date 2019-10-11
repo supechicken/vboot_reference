@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d49a6b75_15970c4c",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T19:48:21Z",
+      "side": 1,
+      "message": "Why is this cast here? The type doesn\u0027t seem right at all... this is not a struct vb2_packed_key (which is the structure for the header), this is the actual key *data*.\n\nI guess you\u0027re just trying to cast the const away, but can\u0027t you use your new _mutable function here instead now?",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65795019_bc8254ea",
+        "filename": "firmware/lib20/common.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T19:48:21Z",
+      "side": 1,
+      "message": "nit: It\u0027s really confusing at first glance that this needs to be mutable. Maybe add a comment here that verifying a signature destroys it?",
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b90ec5_5fefe13a",
+        "filename": "firmware/lib20/packed_key.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-11T19:48:21Z",
+      "side": 1,
+      "message": "Why is this cast still necessary here now?",
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
