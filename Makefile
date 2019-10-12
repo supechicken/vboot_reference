@@ -366,7 +366,8 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2sha512.c \
 	firmware/2lib/2sha_utility.c \
 	firmware/2lib/2tpm_bootmode.c \
-	firmware/2lib/2hmac.c
+	firmware/2lib/2hmac.c \
+	firmware/lib/ec_sync.c
 
 FWLIB20_SRCS = \
 	firmware/lib20/api.c \
