@@ -15,6 +15,7 @@
 #include "2sha.h"
 #include "2sysincludes.h"
 #include "2tpm_bootmode.h"
+#include "ec_sync.h"
 
 vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 {
@@ -206,4 +207,23 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 	*dest_size = digest_size;
 
 	return VB2_SUCCESS;
+}
+
+/**
+ * Do software sync for the EC only.
+ *
+ * Does not update other embedded controllers (TCPCs, etc).
+ * Assumes EC update is fast enough not to require a warning screen.
+ *
+ * @param ctx           Vboot2 context
+ * @return VBERROR_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
+ * reboot back to its RO code to continue EC sync, or other non-zero error
+ * code.
+ */
+int vb2api_ec_software_sync(struct vb2_context *ctx)
+{
+	/* Handle updates and jumps for EC */
+	vb2_error_t retval = ec_sync_ec_only(ctx);
+
+	return retval;
 }

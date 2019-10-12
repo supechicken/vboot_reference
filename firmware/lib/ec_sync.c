@@ -450,13 +450,18 @@ vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx)
 	return rv;
 }
 
-vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
+vb2_error_t ec_sync_ec_only(struct vb2_context *ctx)
 {
 	if (!ec_sync_allowed(ctx))
 		return VB2_SUCCESS;
 
 	/* Handle updates and jumps for EC */
-	vb2_error_t retval = sync_one_ec(ctx, 0);
+	return sync_one_ec(ctx, 0);
+}
+
+vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
+{
+	vb2_error_t retval = ec_sync_ec_only(ctx);
 	if (retval != VB2_SUCCESS)
 		return retval;
 
