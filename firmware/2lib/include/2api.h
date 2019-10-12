@@ -708,6 +708,19 @@ vb2_error_t vb2api_gbb_read_hwid(struct vb2_context *ctx, char *hwid,
  */
 vb2_gbb_flags_t vb2api_gbb_get_flags(struct vb2_context *ctx);
 
+/**
+ * Do software sync for the EC only.
+ *
+ * Does not update other embedded controllers (TCPCs, etc).
+ * Assumes EC update is fast enough not to require a warning screen.
+ *
+ * @param ctx           Vboot2 context
+ * @return VBERROR_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
+ * reboot back to its RO code to continue EC sync, or other non-zero error
+ * code.
+ */
+int vb2api_ec_software_sync(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 

@@ -91,4 +91,13 @@ vb2_error_t ec_sync_phase3(struct vb2_context *ctx);
  */
 vb2_error_t ec_sync_all(struct vb2_context *ctx);
 
+/**
+ * Perform phase 2 of EC sync for just EC 0, i.e., THE Embedded Controller
+ * in the system.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or non-zero if error.
+ */
+vb2_error_t ec_sync_ec_only(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_EC_SYNC_H_ */
