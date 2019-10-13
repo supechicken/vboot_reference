@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc9be39e_dec54a6f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "Function docstring should only be in the header file.  No need to repeat it here.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c749a2_d7e58dc9",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "Actually, this function should live in ec_sync.c.  2api.c is perhaps not the greatest filename -- it just means that these functions are for firmware verification stage.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 52
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123817e2_bef4e0c4",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "vb2_error_t",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 3
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8830cb6c_f2510623",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "No need for temp variable -- just return directly.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 19
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7669a843_a68262d4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "Maybe \"the primary EC\" or something of the sort would be clearest?",
+      "range": {
+        "startLine": 712,
+        "startChar": 24,
+        "endLine": 712,
+        "endChar": 30
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b581853_dd8212e8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "VB2_SUCCESS",
+      "range": {
+        "startLine": 718,
+        "startChar": 11,
+        "endLine": 718,
+        "endChar": 26
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9728007d_a2f03494",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "Rather than creating a whole new function for this -- it might just be worth it to make sync_one_ec non-static.  I don\u0027t think it\u0027s a big deal to have to include the !ec_sync_allowed() call in the API function.",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 28
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772297ff_56d0a0d9",
+        "filename": "firmware/lib/include/ec_sync.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-13T10:57:56Z",
+      "side": 1,
+      "message": "This isn\u0027t really meaningful unless we go look up what \"phase 2\" does... maybe just describe it here instead?",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "3c15c1111f1f1a992afbe77fe45c26ac6f0351aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
