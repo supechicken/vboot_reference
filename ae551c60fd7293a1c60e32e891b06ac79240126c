@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bdb8812_752e4087",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T16:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0b8893_104f1229",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446be083_a6c97269",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 18
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c75b742d_0c707ac9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T16:43:06Z",
+      "side": 1,
+      "message": "Ugh, I really hate how the other patch has become so monolithic.  But as much as I try, it seems like there is no good way to disentangle some smaller CLs off of it.  I think you\u0027re right -- this one is not great.  I\u0027m going to abandon it and squash back into the monolith \u003d(",
+      "parentUuid": "446be083_a6c97269",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a054d836_405ee772",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 18
@@ -47,6 +83,24 @@
       "writtenOn": "2019-10-10T22:50:56Z",
       "side": 1,
       "message": "FWIW I don\u0027t think anyone cared about these timestamps in years. We have timestamps in coreboot/depthcharge instead. Feel free to just get rid of them.",
+      "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd622b8_67e0077f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T16:43:06Z",
+      "side": 1,
+      "message": "Yeah you\u0027ve mentioned this a few times before \u003d)\nOK, I\u0027ll do it.  The CL snake grows longer...\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1014102\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1860254",
+      "parentUuid": "a054d836_405ee772",
       "revId": "ae551c60fd7293a1c60e32e891b06ac79240126c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
