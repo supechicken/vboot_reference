@@ -85,7 +85,8 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 
 	VB2_DEBUG("VbTryLoadKernel() found %d disks\n", (int)disk_count);
 	if (0 == disk_count) {
-		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_DISK);
+		if (get_info_flags & VB_DISK_FLAG_FIXED)
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_DISK);
 		return VBERROR_NO_DISK_FOUND;
 	}
 
@@ -136,7 +137,8 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 
 	/* If we didn't find any good kernels, don't return a disk handle. */
 	if (VB2_SUCCESS != retval) {
-		VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_KERNEL);
+		if (get_info_flags & VB_DISK_FLAG_FIXED)
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_RW_NO_KERNEL);
 		lkp.disk_handle = NULL;
 	}
 
