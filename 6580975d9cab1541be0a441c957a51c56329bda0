@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65055e92_2f1e3799",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-14T23:44:06Z",
+      "side": 1,
+      "message": "Hmmm... now that I see all those places which explicitly unset the recovery reason again, I think it makes even more sense to centralize that policy in here. We always want the recovery reason for fixed boot and we never want it for removable boot... seems like a very simple policy. Why not centralize it rather than pulling it into all those different callers?",
+      "parentUuid": "b8107e7b_26c278a3",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d10181a3_f3ad3d25",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f22aff89_1aa4e162",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-14T23:44:06Z",
+      "side": 1,
+      "message": "I mean... not the whole thing. Rearranged it a bit.",
+      "parentUuid": "d10181a3_f3ad3d25",
+      "range": {
+        "startLine": 878,
+        "startChar": 9,
+        "endLine": 879,
+        "endChar": 38
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20256490_ec0bc664",
         "filename": "tests/vboot_detach_menu_tests.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-10-14T09:05:32Z",
       "side": 1,
       "message": "Not sure I understand what is going on here... Does each mock_keypress result in checking for a disk one more time?  Previously, did this get cut off early if a recovery reason was set?",
+      "range": {
+        "startLine": 1810,
+        "startChar": 0,
+        "endLine": 1814,
+        "endChar": 59
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17470a0_c6dad3f1",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-14T23:44:06Z",
+      "side": 1,
+      "message": "Yes. Previously, it would have to get 12 (or 13) mock_keypresses before it reads the next vbtlk_retval. Now the two are 1:1 in sync, so I have to extend the retval to ensure the test still runs as it was intended and doesn\u0027t error out from the disk before the key sequence is fully entered.",
+      "parentUuid": "20256490_ec0bc664",
       "range": {
         "startLine": 1810,
         "startChar": 0,
