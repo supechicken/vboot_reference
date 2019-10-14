@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8107e7b_26c278a3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T09:05:32Z",
+      "side": 1,
+      "message": "If this function is being called from recovery mode, VB_DISK_FLAG_REMOVABLE is set, and if there *is* a disk connected but it doesn\u0027t have a recovery kernel on it, then VbSetRecoveryRequest will be called down below on 138.  Conceivably, we should also check for VB_DISK_FLAG_FIXED there too.\n\nPerhaps a better solution would be to pull the VbSetRecoveryRequest calls out to the caller?  This may seem arduous, since we have three in each of _ui and _ui_menu, but actually two of the three purposely reset the recovery request right after calling VbTryLoadKernel (in recovery_ui and VbTryUsb).  The remaining calls in vb2_developer_ui and VbBootNormal (vboot_api_kernel.c) would need to check the return value for VBERROR_NO_DISK_FOUND or [any other error] to choose and set the recovery reason appropriately.\n\nWhat do you think?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10181a3_f3ad3d25",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T09:05:32Z",
+      "side": 1,
+      "message": "Can this fit one one line now?",
+      "range": {
+        "startLine": 878,
+        "startChar": 9,
+        "endLine": 879,
+        "endChar": 38
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20256490_ec0bc664",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T09:05:32Z",
+      "side": 1,
+      "message": "Not sure I understand what is going on here... Does each mock_keypress result in checking for a disk one more time?  Previously, did this get cut off early if a recovery reason was set?",
+      "range": {
+        "startLine": 1810,
+        "startChar": 0,
+        "endLine": 1814,
+        "endChar": 59
+      },
+      "revId": "6580975d9cab1541be0a441c957a51c56329bda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
