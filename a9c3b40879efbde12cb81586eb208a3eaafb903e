@@ -16,6 +16,24 @@
       "revId": "a9c3b40879efbde12cb81586eb208a3eaafb903e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6506fa94_eeb0b4c2",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T14:45:20Z",
+      "side": 1,
+      "message": "Err, good point.  Not sure why that didn\u0027t occur to me in the first place.  Let\u0027s just introduce the two booleans like you suggested.\n\nI also considered introducing another boolean called vbtlk_called for the cases where VbTryLoadKernel should *not* be called (i.e. the particular function being tested aborts before it gets to the point where it calls VbTryLoadKernel), but it seemed a bit excessive.  If you think that would be a good idea, let me know and I can add it.\n\nAlso note that there were quite a few test cases where vbtlk_retval was being set even though VbTryLoadKernel is not expected to run.  For those cases, I removed the assignment to vbtlk_retval.",
+      "parentUuid": "3fadcff2_a80d92df",
+      "revId": "a9c3b40879efbde12cb81586eb208a3eaafb903e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
