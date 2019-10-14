@@ -775,6 +775,18 @@ TEST21_BINS = $(addprefix ${BUILD}/,${TEST21_NAMES})
 # Directory containing test keys
 TEST_KEYS = ${SRC_RUN}/tests/testkeys
 
+# ----------------------------------------------------------------------------
+# Fuzzing binaries
+
+ifeq (${BUILD_FUZZER},)
+FUZZ_TEST_NAMES =
+else
+FUZZ_TEST_NAMES = \
+	tests/cgpt_fuzzer
+endif
+
+FUZZ_TEST_BINS = $(addprefix ${BUILD}/,${FUZZ_TEST_NAMES})
+FUZZ_TEST_OBJS += $(addsuffix .o,${FUZZ_TEST_BINS})
 
 ##############################################################################
 # Finally, some targets. High-level ones first.
@@ -792,7 +804,7 @@ _dir_create := $(foreach d, \
 host_tools: utils futil tests
 
 .PHONY: host_stuff
-host_stuff: utillib hostlib \
+host_stuff: utillib hostlib fuzzers \
 	$(if ${NO_BUILD_TOOLS},,cgpt host_tools)
 
 .PHONY: clean
@@ -1094,6 +1106,14 @@ ${TESTLIB}: ${TESTLIB_OBJS}
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
 
+# ----------------------------------------------------------------------------
+# Fuzzers
+
+.PHONY: fuzzers
+fuzzers: ${FUZZ_TEST_BINS}
+
+${FUZZ_TEST_BINS}: ${FWLIB}
+${FUZZ_TEST_BINS}: LIBS = ${FWLIB}
 
 # ----------------------------------------------------------------------------
 # Generic build rules. LIBS and OBJS can be overridden to tweak the generic
