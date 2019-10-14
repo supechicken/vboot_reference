@@ -74,8 +74,8 @@ test_case_t test[] = {
 		},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
-		.external_expected = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+		.loadkernel_return_val = {0},
+		.external_expected = {0},
 
 		.expected_recovery_request_val = VB2_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
@@ -83,7 +83,7 @@ test_case_t test[] = {
 		.expected_return_val = VB2_SUCCESS
 	},
 	{
-		.name = "first removable drive",
+		.name = "first removable drive (skip external GPT)",
 		.want_flags = VB_DISK_FLAG_REMOVABLE,
 		.disks_to_provide = {
 			/* too small */
@@ -106,8 +106,8 @@ test_case_t test[] = {
 		},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
-		.external_expected = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
+		.loadkernel_return_val = {0, 0},
+		.external_expected = {1, 0},
 
 		.expected_recovery_request_val = VB2_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
@@ -125,7 +125,7 @@ test_case_t test[] = {
 		},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1,},
+		.loadkernel_return_val = {VBERROR_INVALID_KERNEL_FOUND, 0},
 
 		.expected_recovery_request_val = VB2_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
@@ -157,7 +157,7 @@ test_case_t test[] = {
 		},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
+		.loadkernel_return_val = {0},
 
 		.expected_recovery_request_val = VB2_RECOVERY_NOT_REQUESTED,
 		.expected_to_find_disk = pickme,
@@ -170,7 +170,6 @@ test_case_t test[] = {
 		.disks_to_provide = {},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
 
 		.expected_recovery_request_val = VB2_RECOVERY_RW_NO_DISK,
 		.expected_to_find_disk = 0,
@@ -178,7 +177,22 @@ test_case_t test[] = {
 		.expected_return_val = VBERROR_NO_DISK_FOUND
 	},
 	{
-		.name = "no valid drives",
+		.name = "VbExDiskGetInfo() error",
+		.want_flags = VB_DISK_FLAG_FIXED,
+		.disks_to_provide = {
+			{512,  10,   VB_DISK_FLAG_REMOVABLE, 0},
+			{512, 100, VB_DISK_FLAG_FIXED, 0},
+		},
+		.disk_count_to_return = DEFAULT_COUNT,
+		.diskgetinfo_return_val = VB2_ERROR_UNKNOWN,
+
+		.expected_recovery_request_val = VB2_RECOVERY_RW_NO_DISK,
+		.expected_to_find_disk = 0,
+		.expected_to_load_disk = 0,
+		.expected_return_val = VBERROR_NO_DISK_FOUND,
+	},
+	{
+		.name = "invalid kernel",
 		.want_flags = VB_DISK_FLAG_FIXED,
 		.disks_to_provide = {
 			/* too small */
@@ -194,18 +208,36 @@ test_case_t test[] = {
 			/* still wrong flags */
 			{512,  100,  -1, 0},
 			/* doesn't load */
-			{512,  100,  VB_DISK_FLAG_FIXED, "bad1"},
+			{512,  100,  VB_DISK_FLAG_FIXED, "corrupted kernel"},
 			/* doesn't load */
-			{512,  100,  VB_DISK_FLAG_FIXED, "bad2"},
+			{512,  100,  VB_DISK_FLAG_FIXED, "stateful partition"},
 		},
 		.disk_count_to_return = DEFAULT_COUNT,
 		.diskgetinfo_return_val = VB2_SUCCESS,
-		.loadkernel_return_val = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
+		.loadkernel_return_val = {VBERROR_INVALID_KERNEL_FOUND,
+					  VBERROR_NO_KERNEL_FOUND},
+
+		.expected_recovery_request_val = VB2_RECOVERY_RW_INVALID_KERNEL,
+		.expected_to_find_disk = DONT_CARE,
+		.expected_to_load_disk = 0,
+		.expected_return_val = VBERROR_INVALID_KERNEL_FOUND,
+	},
+	{
+		.name = "no Chrome OS partitions",
+		.want_flags = VB_DISK_FLAG_FIXED,
+		.disks_to_provide = {
+			{512, 100, VB_DISK_FLAG_FIXED, "stateful partition"},
+			{512, 1000, VB_DISK_FLAG_FIXED, "Chrubuntu"},
+		},
+		.disk_count_to_return = DEFAULT_COUNT,
+		.diskgetinfo_return_val = VB2_SUCCESS,
+		.loadkernel_return_val = {VBERROR_NO_KERNEL_FOUND,
+					  VBERROR_NO_KERNEL_FOUND},
 
 		.expected_recovery_request_val = VB2_RECOVERY_RW_NO_KERNEL,
 		.expected_to_find_disk = DONT_CARE,
 		.expected_to_load_disk = 0,
-		.expected_return_val = 1
+		.expected_return_val = VBERROR_NO_KERNEL_FOUND,
 	},
 };
 
