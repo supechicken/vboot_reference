@@ -16,6 +16,24 @@
       "revId": "9769390f9a794c6f8e405c904be20941e7ace1ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f29bbe_58c9d28f",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-14T09:59:52Z",
+      "side": 1,
+      "message": "Oops, you\u0027re perfectly correct in saying this is a useless tautology test.\n\nIt looks like recovery reason *would* be set, but since it occurs in VbTryLoadKernel (which we\u0027ve mocked out), it *appears* that we don\u0027t fall into recovery mode here.\n\nThis brings me back to my comment on your CL here about pulling the vb2api_fail / VbSetRecoveryReason call out of VbTryLoadKernel:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1856831/1/firmware/lib/vboot_api_kernel.c#85\n\nFor now I\u0027ll just remove this test case, and we can continue discussing at the comment thread on your CL?",
+      "parentUuid": "765e5396_41154793",
+      "revId": "9769390f9a794c6f8e405c904be20941e7ace1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
