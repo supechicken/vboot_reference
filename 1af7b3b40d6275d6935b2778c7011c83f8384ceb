@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec04bfe3_4e15e121",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T18:04:35Z",
+      "side": 1,
+      "message": "What is this gonna pass, exactly? Shouldn\u0027t we write this in a way that the extra flags only get used when BUILD_FUZZER is enabled?",
+      "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253405fa_f997f594",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T18:04:35Z",
+      "side": 1,
+      "message": "I feel like this may be a bit clearer if FUZZ_TEST_NAMES always contained all the names, and BUILD_FUZZER is instead used to decide whether the fuzzers target is a dependency of host_stuff?",
+      "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
