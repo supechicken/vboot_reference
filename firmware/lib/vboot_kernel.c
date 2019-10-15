@@ -647,11 +647,11 @@ gpt_done:
 		retval = VB2_SUCCESS;
 	} else if (found_partitions > 0) {
 		shcall->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
-		recovery = VB2_RECOVERY_RW_INVALID_OS;
+		recovery = VB2_RECOVERY_RW_INVALID_KERNEL;
 		retval = VBERROR_INVALID_KERNEL_FOUND;
 	} else {
 		shcall->check_result = VBSD_LKC_CHECK_NO_PARTITIONS;
-		recovery = VB2_RECOVERY_RW_NO_OS;
+		recovery = VB2_RECOVERY_RW_NO_KERNEL;
 		retval = VBERROR_NO_KERNEL_FOUND;
 	}
 
