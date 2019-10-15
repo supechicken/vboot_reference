@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ee104c3_0bba363d",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-10-15T14:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa8502db_ff6d1cdc",
+      "range": {
+        "startLine": 1509,
+        "startChar": 16,
+        "endLine": 1509,
+        "endChar": 20
+      },
+      "revId": "06042044bc10eeb37ec52683a45b20ce0fb45685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44768028_8a947b12",
         "filename": "futility/updater.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5c025444_ac88fdd8",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-10-15T14:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44768028_8a947b12",
+      "range": {
+        "startLine": 1513,
+        "startChar": 24,
+        "endLine": 1513,
+        "endChar": 42
+      },
+      "revId": "06042044bc10eeb37ec52683a45b20ce0fb45685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70597cb8_85bcac82",
         "filename": "futility/updater.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "06042044bc10eeb37ec52683a45b20ce0fb45685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7063895_945dc437",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-10-15T14:52:12Z",
+      "side": 1,
+      "message": "no it is not. the other place is L1506.",
+      "parentUuid": "70597cb8_85bcac82",
+      "range": {
+        "startLine": 1528,
+        "startChar": 8,
+        "endLine": 1528,
+        "endChar": 13
+      },
+      "revId": "06042044bc10eeb37ec52683a45b20ce0fb45685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
