@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0e0e1ef7_b4d27191",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T22:09:12Z",
+      "side": 1,
+      "message": "Well, my main concern was whether this is really empty when not building for fuzzing, since it wasn\u0027t really clear to me in the ebuild what sanitizers-setup-env does. But I followed it up now and it looks fine, so I guess we can do this (but then we could call it EXTRA_CFLAGS too, doesn\u0027t really matter...).",
+      "parentUuid": "1daa6d80_cfffeb16",
+      "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "253405fa_f997f594",
         "filename": "Makefile",
         "patchSetId": 2
