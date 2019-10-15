@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1daa6d80_cfffeb16",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-15T19:23:51Z",
+      "side": 1,
+      "message": "You\u0027re right, but that wouldn\u0027t make sense for a generic EXTRA_CFLAGS variable as I had intended where the ebuild decides what it includes. In thee current design of the Makefile, the assumption is that the Makefile makes these decisions, so it was probably ill-advised to move some of this into the ebuild.\n\nI\u0027ve now changed this to pass a dedicated FUZZ_FLAGS variable so it\u0027s clear on either side what it is supposed to carry.",
+      "parentUuid": "ec04bfe3_4e15e121",
+      "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "253405fa_f997f594",
         "filename": "Makefile",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa7c309_51d9235e",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-15T19:23:51Z",
+      "side": 1,
+      "message": "That\u0027s right. And thanks for bringing up that point since it made me realize there is no reason to only build the fuzzer in the fuzzing configuration. Instead, we can build it unconditionally, and doing so makes sure that refactorings will adjust it when necessary since you\u0027ll see compile failures also in a regular build.",
+      "parentUuid": "253405fa_f997f594",
+      "revId": "1af7b3b40d6275d6935b2778c7011c83f8384ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
