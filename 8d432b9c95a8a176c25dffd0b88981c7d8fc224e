@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc384e7a_a1de6ca1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-15T16:54:57Z",
+      "side": 1,
+      "message": "This \"works\", but I\u0027m still not convinced it\u0027s a great solution.  This is basically tying the behaviour of the UI into the implementation of TryLoadKernel itself.  Who\u0027s to say we wouldn\u0027t need to attempt one-shot booting from a removable disk in the future?\n\nIt would be slightly arduous to move all of the recovery reason-setting code up in the stack to the three TryLoadKernel calls that need it.  Would it be that terrible to add a boolean argument to this function called something like \"recover_on_failure\" or \"ignore_failure\"?\n\nOr we could also wrap the function in another one which deals with setting the recovery request, e.g. TryLoadKernelOrFail().",
+      "range": {
+        "startLine": 88,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "8d432b9c95a8a176c25dffd0b88981c7d8fc224e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
