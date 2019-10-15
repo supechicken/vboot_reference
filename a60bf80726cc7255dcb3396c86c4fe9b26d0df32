@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36430c95_df689e95",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T21:58:19Z",
+      "side": 0,
+      "message": "Yeah, there are a bunch of unused recovery reasons, some of them are called VB2_RECOVERY_DEP_..., some of them VB2_RECOVERY_DEPRECATED_... and some aren\u0027t specifically marked at all. I\u0027ll add a patch at the end to add some consistency there.\n\nedit: Okay, I found a bunch of recovery reasons that can be deprecated, but for this particular one I ended up thinking we should keep it. We have a bunch of different XXX_UNSPECIFIED reasons that serve as fallbacks when we run into a problem we didn\u0027t specifically prepare for, and I think those are worth keeping even if there\u0027s no patch that should reach them right now.",
+      "parentUuid": "9225fece_43baa3bc",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 43
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d12689a_84696b5e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-15T16:43:54Z",
       "side": 0,
       "message": "Rather than pushing the work to make recovery reasons more specific off into the future, could we just move this up to TryLoadKernel in the second VbSetRecoveryRequest call?  Same for the one below.  Something like:\n\n  int recovery_reason \u003d VB2_RECOVERY_NOT_REQUESTED;\n  switch (retval) {\n    VB2_SUCCESS:\n      break;\n    VBERROR_INVALID_KERNEL_FOUND:\n      recovery_reason \u003d VB2_RECOVERY_RW_INVALID_KERNEL;\n      break;\n    default:\n      recovery_reason \u003d VB2_RECOVERY_RW_NO_KERNEL;\n      break;\n  }\n\n  if (recovery_reason !\u003d VB2_RECOVERY_NOT_REQUESTED) {\n    VbSetRecoveryRequest(ctx, recovery_reason);\n    lkp.disk_handle \u003d NULL;\n  }\n\nAnd while we\u0027re at it, how about renaming VB2_RECOVERY_RW_INVALID_OS to VB2_RECOVERY_RW_INVALID_KERNEL for consistency?",
+      "range": {
+        "startLine": 650,
+        "startChar": 13,
+        "endLine": 650,
+        "endChar": 39
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ab8f88_c89c527a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T21:58:19Z",
+      "side": 0,
+      "message": "Okay, rewrote it to provide the more detailed reason.",
+      "parentUuid": "0d12689a_84696b5e",
       "range": {
         "startLine": 650,
         "startChar": 13,
@@ -68,6 +116,30 @@
       "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbda98c_3453b21d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-15T21:58:19Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9b6210b2_18414a1f",
+      "range": {
+        "startLine": 654,
+        "startChar": 13,
+        "endLine": 654,
+        "endChar": 34
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
