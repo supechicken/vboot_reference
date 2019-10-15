@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9225fece_43baa3bc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-15T16:43:54Z",
+      "side": 0,
+      "message": "This can be marked as deprecated since it is no longer used (VB2_RECOVERY_DEPRECATED_LK_UNSPECIFIED).\n\n(Or we can still use it as part of the switch statement suggested below.)",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 43
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d12689a_84696b5e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-15T16:43:54Z",
+      "side": 0,
+      "message": "Rather than pushing the work to make recovery reasons more specific off into the future, could we just move this up to TryLoadKernel in the second VbSetRecoveryRequest call?  Same for the one below.  Something like:\n\n  int recovery_reason \u003d VB2_RECOVERY_NOT_REQUESTED;\n  switch (retval) {\n    VB2_SUCCESS:\n      break;\n    VBERROR_INVALID_KERNEL_FOUND:\n      recovery_reason \u003d VB2_RECOVERY_RW_INVALID_KERNEL;\n      break;\n    default:\n      recovery_reason \u003d VB2_RECOVERY_RW_NO_KERNEL;\n      break;\n  }\n\n  if (recovery_reason !\u003d VB2_RECOVERY_NOT_REQUESTED) {\n    VbSetRecoveryRequest(ctx, recovery_reason);\n    lkp.disk_handle \u003d NULL;\n  }\n\nAnd while we\u0027re at it, how about renaming VB2_RECOVERY_RW_INVALID_OS to VB2_RECOVERY_RW_INVALID_KERNEL for consistency?",
+      "range": {
+        "startLine": 650,
+        "startChar": 13,
+        "endLine": 650,
+        "endChar": 39
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6210b2_18414a1f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-15T16:43:54Z",
+      "side": 0,
+      "message": "What\u0027s the difference between NO_KERNEL and NO_OS?\n\nIf there is no difference, can we mark NO_OS as deprecated (nothing else is using it)?",
+      "range": {
+        "startLine": 654,
+        "startChar": 13,
+        "endLine": 654,
+        "endChar": 34
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
