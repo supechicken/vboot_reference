@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "55110ef2_5a0388f0",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fef3749_45dd2fe5",
+      "range": {
+        "startLine": 210,
+        "startChar": 24,
+        "endLine": 210,
+        "endChar": 30
+      },
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc23e004_5701ef29",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2019-10-16T06:00:41Z",
       "side": 1,
       "message": "(Where) do these get set?  Code search doesn\u0027t come up with anything, but they could be called something else or referred to directly by hex code, for all we know.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 37
+      },
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc57339b_5da5d262",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T21:04:45Z",
+      "side": 1,
+      "message": "Hmm... yeah, I thought they were used by that crappy old kernel code (which I think we should get rid of anyway, openend crbug.com/1015135 about that), but it looks like that\u0027s actually using 0x43. So I guess we can deprecate it.\n\nBut when looking stuff up for that I also noticed crbug.com/692715 which we could probably support quite easily now with the other changes in this train. What recovery reason should we use for that? It would technically be set by RW firmware code now, so should we make a new reason in the 0x40-0x7f range? Or should we just reuse this one, because the original impulse for that error comes from the kernel?",
+      "parentUuid": "fc23e004_5701ef29",
       "range": {
         "startLine": 241,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f77f5918_702bc3d6",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T21:04:45Z",
+      "side": 1,
+      "message": "Whoops, fixed.",
+      "parentUuid": "9d67f902_2512f7cf",
+      "range": {
+        "startLine": 250,
+        "startChar": 72,
+        "endLine": 250,
+        "endChar": 75
+      },
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68f24af6_6104c5b5",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 1
@@ -114,6 +186,30 @@
       "revId": "695e5f3760c897d172793d073ea416627f872e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4d0519_d9d65408",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T21:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f24af6_6104c5b5",
+      "range": {
+        "startLine": 255,
+        "startChar": 56,
+        "endLine": 255,
+        "endChar": 57
+      },
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
