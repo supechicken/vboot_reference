@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22fad73a_014cd61d",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:46:04Z",
+      "side": 1,
+      "message": "nit: since these are integers anyway, could also do +\u003d to make sure we\u0027re calling it the expected number of times?",
+      "range": {
+        "startLine": 249,
+        "startChar": 25,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e74feee_55343489",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:46:04Z",
+      "side": 1,
+      "message": "off-topic: it\u0027s odd that we\u0027re only testing this path when TLK returns an error, we should also test it with success. (The current code just returns rv directly anyway but the test shouldn\u0027t rely on that.) Also applies to other modes.",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3c2f17_adbfa31d",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:46:04Z",
+      "side": 1,
+      "message": "nit: TEST_FALSE for removable?",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9fd2828_0098a3a7",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:46:04Z",
+      "side": 1,
+      "message": "nit: test that TLK wasn\u0027t called? (could be added to many cases)",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff4acef_00b8c581",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:46:04Z",
+      "side": 1,
+      "message": "This test becomes ineffective now, for example. Even if it had tried to boot from USB here, the test wouldn\u0027t fail.\n\nI think you\u0027ll need to add checks for the vbtlk_called... to most of these to make sure they don\u0027t lose their potency.",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
