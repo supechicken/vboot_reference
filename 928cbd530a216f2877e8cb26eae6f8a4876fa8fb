@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a971b891_2ba52bcc",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:34:57Z",
+      "side": 1,
+      "message": "I just meant for the cases where we KNOW the character in question.  For any \"default\" I\u0027d still just want to print the number.\n\nAlthough to be honest, I feel like decimal is more common for referring to ASCII characters.",
+      "parentUuid": "9606243d_3560c891",
+      "range": {
+        "startLine": 224,
+        "startChar": 47,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "928cbd530a216f2877e8cb26eae6f8a4876fa8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7114d74_21b97dad",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
