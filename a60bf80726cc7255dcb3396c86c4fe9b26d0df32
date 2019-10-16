@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d97f2eb8_10136777",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:08:30Z",
+      "side": 0,
+      "message": "Thanks for taking care of this.  I\u0027m happy to keep the UNSPECIFIED errors for fallbacks.",
+      "parentUuid": "36430c95_df689e95",
+      "range": {
+        "startLine": 439,
+        "startChar": 16,
+        "endLine": 439,
+        "endChar": 43
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d12689a_84696b5e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 0,
       "message": "Okay, rewrote it to provide the more detailed reason.",
       "parentUuid": "0d12689a_84696b5e",
+      "range": {
+        "startLine": 650,
+        "startChar": 13,
+        "endLine": 650,
+        "endChar": 39
+      },
+      "revId": "a60bf80726cc7255dcb3396c86c4fe9b26d0df32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db387a6f_aeb09b77",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:08:30Z",
+      "side": 0,
+      "message": "Awesome!",
+      "parentUuid": "e1ab8f88_c89c527a",
       "range": {
         "startLine": 650,
         "startChar": 13,
