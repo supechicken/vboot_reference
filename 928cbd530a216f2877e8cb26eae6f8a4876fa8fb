@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9606243d_3560c891",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:33:00Z",
+      "side": 1,
+      "message": "I\u0027m fine just doing hex for all characters, it\u0027s just decimal that is really weird. But if you want to differentiate based on isprint() I\u0027m fine with that as well (that adds another somewhat uncommon library function dependency to vboot, though).",
+      "parentUuid": "34d21661_4906bf4c",
+      "range": {
+        "startLine": 224,
+        "startChar": 47,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "928cbd530a216f2877e8cb26eae6f8a4876fa8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7114d74_21b97dad",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
