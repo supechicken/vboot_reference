@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7d9f1a8f_ab21f8b2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:24:50Z",
+      "side": 1,
+      "message": "Then again, NO_KERNEL_FOUND is probably more specific than NO_DISK_FOUND?  Any chance we can take advantage of the order of the error values?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a8285a_3a9a06db",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:24:50Z",
+      "side": 1,
+      "message": "Funnily enough, depthcharge\u0027s implementation of VbExDiskFreeInfo doesn\u0027t even look at the second preserve_handle argument.",
+      "range": {
+        "startLine": 150,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "791bfd7a_b8c85460",
         "filename": "tests/vboot_api_kernel_tests.c",
         "patchSetId": 2
@@ -18,6 +64,29 @@
         "startChar": 14,
         "endLine": 183,
         "endChar": 16
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500abcb5_978cf58f",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-16T06:24:50Z",
+      "side": 1,
+      "message": "What about a test where the order is NO_KERNEL_FOUND, INVALID_KERNEL_FOUND?",
+      "range": {
+        "startLine": 217,
+        "startChar": 27,
+        "endLine": 218,
+        "endChar": 32
       },
       "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
