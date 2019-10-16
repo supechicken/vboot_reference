@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed26e7c8_9cac2e06",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-16T00:55:34Z",
+      "side": 1,
+      "message": "nit: I think it would make sense to now just do\n\n if (!allowed) {\n   vb2_error_no_altfw();\n   return;\n }\n\n ...inline the stuff from vb2_run_altfw()...",
+      "revId": "c0047d1a66d44047458fa765e0dd68c6cf00871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
