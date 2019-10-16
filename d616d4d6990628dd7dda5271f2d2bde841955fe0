@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116dab2c_49142de3",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-16T02:40:21Z",
+      "side": 1,
+      "message": "Fuzzing libraries are currently installed only for x86_64 (upstream issue). So this is the reason arm builders are failing in pre-cq.",
+      "range": {
+        "startLine": 1113,
+        "startChar": 11,
+        "endLine": 1113,
+        "endChar": 25
+      },
+      "revId": "d616d4d6990628dd7dda5271f2d2bde841955fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
