@@ -106,10 +106,16 @@ vb2_error_t auxfw_sync_all(struct vb2_context *ctx)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
-	/* Phase 3; Completes sync and handles battery cutoff */
-	rv = ec_sync_phase3(ctx);
-	if (rv)
-		return rv;
-
 	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2api_ec_software_sync(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/* The whole point is to support EC software sync */
+	if (sd->flags & VBSD_EC_SOFTWARE_SYNC)
+		ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+
+	return ec_sync(ctx);
 }

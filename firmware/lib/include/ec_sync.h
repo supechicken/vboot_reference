@@ -108,5 +108,17 @@ vb2_error_t ec_sync(struct vb2_context *ctx);
  */
 vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx);
 
+/**
+ * Do software sync for the primary EC only.
+ *
+ * Does not update other embedded controllers (TCPCs, etc).
+ * Assumes EC update is fast enough not to require a warning screen.
+ *
+ * @param ctx           Vboot2 context
+ * @return VB2_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
+ * reboot back to its RO code to continue EC sync, or other non-zero error
+ * code.
+ */
+vb2_error_t vb2api_ec_software_sync(struct vb2_context *ctx);
 
 #endif  /* VBOOT_REFERENCE_EC_SYNC_H_ */
