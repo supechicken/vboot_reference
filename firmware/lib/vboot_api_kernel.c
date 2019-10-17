@@ -389,6 +389,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSelectAndLoadKernelParams *kparams)
 {
 	vb2_error_t retval = vb2_kernel_setup(ctx, shared, kparams);
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
 	if (retval)
 		goto VbSelectAndLoadKernel_exit;
 
@@ -399,9 +401,17 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	 * it's just a single non-interactive WAIT screen.
 	 */
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		retval = ec_sync_all(ctx);
-		if (retval)
+		if (ec_sync(ctx)) {
+			VbExEcVbootDone(!!sd->recovery_reason);
 			goto VbSelectAndLoadKernel_exit;
+		}
+
+		if (auxfw_sync_all(ctx)) {
+			VbExEcVbootDone(!!sd->recovery_reason);
+			goto VbSelectAndLoadKernel_exit;
+		}
+
+		VbExEcVbootDone(!!sd->recovery_reason);
 	}
 
 	/* Select boot path */

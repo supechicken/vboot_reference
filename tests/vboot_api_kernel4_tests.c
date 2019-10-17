@@ -164,6 +164,13 @@ vb2_error_t VbBootDiagnostic(struct vb2_context *c)
 	return vbboot_retval;
 }
 
+static int aux_fw_protected;
+vb2_error_t VbExEcVbootDone(int in_recovery)
+{
+	aux_fw_protected = 1;
+	return VB2_SUCCESS;
+}
+
 static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
 {
 	TEST_EQ(VbSelectAndLoadKernel(&ctx, shared, &kparams), retval, desc);
@@ -193,6 +200,7 @@ static void VbSlkTest(void)
 	ResetMocks();
 	test_slk(0, 0, "Normal");
 	TEST_EQ(rkr_version, 0x10002, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	/*
 	 * If shared->flags doesn't ask for software sync, we won't notice
@@ -206,17 +214,20 @@ static void VbSlkTest(void)
 	shared->flags |= VBSD_EC_SOFTWARE_SYNC;
 	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
 	test_slk(0, 0, "EC sync disabled by GBB");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	/* Rollback kernel version */
 	ResetMocks();
 	rkr_retval = 123;
 	test_slk(VBERROR_TPM_READ_KERNEL,
 		 VB2_RECOVERY_RW_TPM_R_ERROR, "Read kernel rollback");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	new_version = 0x20003;
 	test_slk(0, 0, "Roll forward");
 	TEST_EQ(rkr_version, 0x20003, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	new_version = 0x20003;
@@ -224,18 +235,21 @@ static void VbSlkTest(void)
 	shared->firmware_index = 1;
 	test_slk(0, 0, "Don't roll forward during try B");
 	TEST_EQ(rkr_version, 0x10002, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	vb2_nv_set(&ctx_nvram_backend, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30005);
 	new_version = 0x40006;
 	test_slk(0, 0, "Limit max roll forward");
 	TEST_EQ(rkr_version, 0x30005, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	vb2_nv_set(&ctx_nvram_backend, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
 	new_version = 0x40006;
 	test_slk(0, 0, "Max roll forward can't rollback");
 	TEST_EQ(rkr_version, 0x10002, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	vbboot_retval = VBERROR_INVALID_KERNEL_FOUND;
@@ -244,22 +258,26 @@ static void VbSlkTest(void)
 	shared->firmware_index = 1;
 	test_slk(VBERROR_INVALID_KERNEL_FOUND,
 		 0, "Don't go to recovery if try b fails to find a kernel");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	new_version = 0x20003;
 	rkw_retval = 123;
 	test_slk(VBERROR_TPM_WRITE_KERNEL,
 		 VB2_RECOVERY_RW_TPM_W_ERROR, "Write kernel rollback");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	rkl_retval = 123;
 	test_slk(VBERROR_TPM_LOCK_KERNEL,
 		 VB2_RECOVERY_RW_TPM_L_ERROR, "Lock kernel rollback");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	/* Boot normal */
 	ResetMocks();
 	vbboot_retval = -1;
 	test_slk(VB2_ERROR_MOCK, 0, "Normal boot bad");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	/* Check that NV_DIAG_REQUEST triggers diagnostic UI */
 	if (DIAGNOSTIC_UI) {
@@ -271,6 +289,7 @@ static void VbSlkTest(void)
 			 "Normal boot with diag");
 		TEST_EQ(vb2_nv_get(&ctx_nvram_backend, VB2_NV_DIAG_REQUEST),
 			0, "  diag not requested");
+		TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 	}
 
 	/* Boot dev */
@@ -278,33 +297,39 @@ static void VbSlkTest(void)
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
 	vbboot_retval = -2;
 	test_slk(VB2_ERROR_MOCK, 0, "Dev boot bad");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
 	new_version = 0x20003;
 	test_slk(0, 0, "Dev doesn't roll forward");
 	TEST_EQ(rkr_version, 0x10002, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	/* Boot recovery */
 	ResetMocks();
 	shared->recovery_reason = 123;
 	vbboot_retval = -3;
 	test_slk(VB2_ERROR_MOCK, 0, "Recovery boot bad");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	shared->recovery_reason = 123;
 	new_version = 0x20003;
 	test_slk(0, 0, "Recovery doesn't roll forward");
 	TEST_EQ(rkr_version, 0x10002, "  version");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	shared->recovery_reason = 123;
 	rkr_retval = rkw_retval = rkl_retval = VB2_ERROR_MOCK;
 	test_slk(0, 0, "Recovery ignore TPM errors");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	ResetMocks();
 	shared->recovery_reason = VB2_RECOVERY_TRAIN_AND_REBOOT;
 	test_slk(VBERROR_REBOOT_REQUIRED, 0, "Recovery train and reboot");
+	TEST_EQ(aux_fw_protected, 1, "  aux FW protected");
 
 	// todo: rkr/w/l fail ignored if recovery
 

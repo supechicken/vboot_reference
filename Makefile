@@ -370,7 +370,10 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2sha512.c \
 	firmware/2lib/2sha_utility.c \
 	firmware/2lib/2tpm_bootmode.c \
-	firmware/2lib/2hmac.c
+	firmware/2lib/2hmac.c \
+	firmware/lib/ec_sync.c \
+	firmware/lib/ec_sync_all.c \
+	firmware/lib/vboot_api_kernel.c
 
 FWLIB20_SRCS = \
 	firmware/lib20/api.c \
@@ -681,6 +684,7 @@ TEST_OBJS += ${TESTLIB_OBJS}
 TEST_NAMES = \
 	tests/cgptlib_test \
 	tests/ec_sync_tests \
+	tests/auxfw_sync_tests \
 	tests/sha_benchmark \
 	tests/utility_string_tests \
 	tests/vboot_api_devmode_tests \
@@ -1254,6 +1258,7 @@ runtestscripts: test_setup genfuzztestcases
 .PHONY: runmisctests
 runmisctests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/ec_sync_tests
+	${RUNTEST} ${BUILD_RUN}/tests/auxfw_sync_tests
 ifeq (${TPM2_MODE}${MOCK_TPM},)
 # TODO(apronin): tests for TPM2 case?
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled

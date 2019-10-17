@@ -31,54 +31,71 @@ static void display_wait_screen(struct vb2_context *ctx, const char *fw_name)
 	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
 }
 
-vb2_error_t ec_sync_all(struct vb2_context *ctx)
+vb2_error_t ec_sync(struct vb2_context *ctx)
 {
-	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
 	vb2_error_t rv;
 
-	/* Phase 1; this determines if we need an update */
-	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
-	int need_wait_screen = ec_will_update_slowly(ctx);
+	/* Phase 1 checks if updates or reboots are necessary */
+	rv = ec_sync_phase1(ctx);
+	if (rv)
+		return rv;
 
-	/* Check if EC SW Sync Phase1 needs reboot */
-	if (phase1_rv) {
-		ec_sync_check_aux_fw(ctx, &fw_update);
-		/* It does -- speculatively check if we need display as well */
-		if (need_wait_screen || fw_update == VB_AUX_FW_SLOW_UPDATE)
-			check_reboot_for_display(ctx);
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	}
-
-	/* Is EC already in RO and needs slow update? */
-	if (need_wait_screen) {
-		/* Might still need display in that case */
-		if (check_reboot_for_display(ctx))
-			return VBERROR_REBOOT_REQUIRED;
-		/* Display is available, so pop up the wait screen */
-		display_wait_screen(ctx, "EC FW");
-	}
-
-	/* Phase 2; Applies update and/or jumps to the correct EC image */
+	/* Phase 2 performs the updates and/or jump to RW */
 	rv = ec_sync_phase2(ctx);
 	if (rv)
 		return rv;
 
-	/* EC in RW, now we can check the severity of the AUX FW update */
-	rv = ec_sync_check_aux_fw(ctx, &fw_update);
+	/* Phase 3 finalizes and closes out EC vboot */
+	rv = ec_sync_phase3(ctx);
+	if (rv)
+		return rv;
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t auxfw_sync_all(struct vb2_context *ctx)
+{
+	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
+	vb2_error_t rv;
+
+#ifdef PD_SYNC
+	const int do_pd_sync = !(gbb->flags &
+				 VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC);
+#else
+	const int do_pd_sync = 0;
+#endif
+
+	if (do_pd_sync && check_ec_active(ctx, 1))
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+#ifdef PD_SYNC
+	/* Handle updates and jumps for PD */
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	if (!(gbb->flags & VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)) {
+		retval = sync_one_ec(ctx, 1);
+		if (retval != VB2_SUCCESS)
+			return retval;
+	}
+#endif
+
+	/* Check if a wait screen is required */
+	int need_wait_screen = ec_will_update_slowly(ctx);
+	rv = auxfw_sync_check(ctx, &fw_update);
 	if (rv)
 		return rv;
 
 	/* If AUX FW update is slow display the wait screen */
-	if (fw_update == VB_AUX_FW_SLOW_UPDATE) {
+	if (need_wait_screen && fw_update == VB_AUX_FW_SLOW_UPDATE) {
 		/* Display should be available, but better check again */
 		if (check_reboot_for_display(ctx))
 			return VBERROR_REBOOT_REQUIRED;
+
 		display_wait_screen(ctx, "AUX FW");
 	}
 
 	if (fw_update > VB_AUX_FW_NO_UPDATE) {
 		/* Do Aux FW software sync */
-		rv = ec_sync_update_aux_fw(ctx);
+		rv = auxfw_sync(ctx);
 		if (rv)
 			return rv;
 		/*

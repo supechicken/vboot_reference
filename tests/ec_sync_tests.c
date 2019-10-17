@@ -243,7 +243,7 @@ vb2_error_t VbExEcVbootDone(int in_recovery)
 static void test_ssync(vb2_error_t retval, int recovery_reason,
 		       const char *desc)
 {
-	TEST_EQ(ec_sync_all(&ctx), retval, desc);
+	TEST_EQ(ec_sync(&ctx), retval, desc);
 	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_RECOVERY_REQUEST),
 		recovery_reason, "  recovery reason");
 }
@@ -361,39 +361,6 @@ static void VbSoftwareSyncTest(void)
 	test_ssync(VBERROR_EC_REBOOT_TO_RO_REQUIRED,
 		   VB2_RECOVERY_EC_UPDATE, "Update failed");
 
-	ResetMocks();
-	mock_ec_rw_hash[0]++;
-	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
-	test_ssync(0, 0, "Slow update");
-	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT, "  wait screen");
-
-	ResetMocks();
-	mock_ec_rw_hash[0]++;
-	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
-	sd->flags &= ~VB2_SD_FLAG_DISPLAY_AVAILABLE;
-	test_ssync(VBERROR_REBOOT_REQUIRED, 0,
-		   "Slow update - reboot for display");
-
-	ResetMocks();
-	mock_ec_rw_hash[0]++;
-	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
-	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 1);
-	test_ssync(VB2_SUCCESS, 0,
-		   "Slow update with display request");
-	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT, "  wait screen");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 1,
-		"  DISPLAY_REQUEST left untouched");
-
-	ResetMocks();
-	mock_ec_rw_hash[0]++;
-	ctx.flags |= VB2_CONTEXT_EC_SYNC_SLOW;
-	vb2_nv_set(&ctx, VB2_NV_DISPLAY_REQUEST, 0);
-	test_ssync(VB2_SUCCESS, 0,
-		   "Slow update without display request (no reboot needed)");
-	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT, "  wait screen");
-	TEST_EQ(vb2_nv_get(&ctx, VB2_NV_DISPLAY_REQUEST), 0,
-		"  DISPLAY_REQUEST left untouched");
-
 	/* RW cases, no update */
 	ResetMocks();
 	mock_in_rw = 1;
@@ -440,7 +407,7 @@ static void VbSoftwareSyncTest(void)
 		   "VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC"
 		   " disables auxiliary FW update request");
 	TEST_EQ(ec_aux_fw_update_req, 0, "  aux fw update disabled");
-	TEST_EQ(ec_aux_fw_protected, 1, "  aux fw protected");
+	TEST_EQ(ec_aux_fw_protected, 0, "  aux fw protected");
 
 	ResetMocks();
 	gbb.flags |= VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC;
@@ -449,55 +416,7 @@ static void VbSoftwareSyncTest(void)
 		   "VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC"
 		   " disables auxiliary FW update request");
 	TEST_EQ(ec_aux_fw_update_req, 0, "  aux fw update disabled");
-	TEST_EQ(ec_aux_fw_protected, 1, "  aux fw protected");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_NO_DEVICE;
-	test_ssync(VB2_SUCCESS, 0,
-		   "No auxiliary FW update needed");
-	TEST_EQ(screens_count, 0,
-		"  wait screen skipped");
-	TEST_EQ(ec_aux_fw_update_req, 0, "  no aux fw update requested");
-	TEST_EQ(ec_aux_fw_protected, 0, "  no aux fw protected");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_NO_UPDATE;
-	test_ssync(VB2_SUCCESS, 0,
-		   "No auxiliary FW update needed");
-	TEST_EQ(screens_count, 0,
-		"  wait screen skipped");
-	TEST_EQ(ec_aux_fw_update_req, 0, "  no aux fw update requested");
-	TEST_EQ(ec_aux_fw_protected, 1, "  aux fw protected");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_FAST_UPDATE;
-	test_ssync(VBERROR_EC_REBOOT_TO_RO_REQUIRED, 0,
-		   "Fast auxiliary FW update needed");
-	TEST_EQ(screens_count, 0,
-		"  wait screen skipped");
-	TEST_EQ(ec_aux_fw_update_req, 1, "  aux fw update requested");
 	TEST_EQ(ec_aux_fw_protected, 0, "  aux fw protected");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_SLOW_UPDATE;
-	sd->flags &= ~VB2_SD_FLAG_DISPLAY_AVAILABLE;
-	test_ssync(VBERROR_REBOOT_REQUIRED, 0,
-		   "Slow auxiliary FW update needed - reboot for display");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_SLOW_UPDATE;
-	test_ssync(VBERROR_EC_REBOOT_TO_RO_REQUIRED, 0,
-		   "Slow auxiliary FW update needed");
-	TEST_EQ(ec_aux_fw_update_req, 1, "  aux fw update requested");
-	TEST_EQ(ec_aux_fw_protected, 0, "  aux fw protected");
-	TEST_EQ(screens_displayed[0], VB_SCREEN_WAIT,
-		"  wait screen forced");
-
-	ResetMocks();
-	ec_aux_fw_mock_severity = VB_AUX_FW_FAST_UPDATE;
-	ec_aux_fw_retval = VB2_ERROR_UNKNOWN;
-	test_ssync(VB2_ERROR_UNKNOWN, VB2_RECOVERY_AUX_FW_UPDATE,
-		   "Error updating AUX firmware");
 }
 
 int main(void)
