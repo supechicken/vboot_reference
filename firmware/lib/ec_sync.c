@@ -201,7 +201,7 @@ static vb2_error_t update_ec(struct vb2_context *ctx, int devidx,
  * @param ctx		Vboot2 context
  * @param devidx	Which device (EC=0, PD=1)
  */
-static vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx)
+vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int in_rw = 0;
@@ -228,13 +228,6 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx)
 
 #define RO_RETRIES 2  /* Maximum times to retry flashing RO */
 
-/**
- * Sync, jump, and protect one EC device
- *
- * @param ctx		Vboot2 context
- * @param devidx	Which device (EC=0, PD=1)
- * @return VB2_SUCCESS, or non-zero if error.
- */
 static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -346,24 +339,14 @@ vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
 		return VB2_SUCCESS;
 
-#ifdef PD_SYNC
-	const int do_pd_sync = !(gbb->flags &
-				 VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC);
-#else
-	const int do_pd_sync = 0;
-#endif
-
 	/* Set IN_RW flags */
 	if (check_ec_active(ctx, 0))
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	if (do_pd_sync && check_ec_active(ctx, 1))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 
 	/* Check if we need to update RW.  Failures trigger recovery mode. */
 	if (check_ec_hash(ctx, 0, VB_SELECT_FIRMWARE_EC_ACTIVE))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	if (do_pd_sync && check_ec_hash(ctx, 1, VB_SELECT_FIRMWARE_EC_ACTIVE))
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
 	/*
 	 * See if we need to update EC-RO (devidx=0).
 	 *
@@ -422,8 +405,8 @@ static int ec_sync_allowed(struct vb2_context *ctx)
 	return 1;
 }
 
-vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
-				 VbAuxFwUpdateSeverity_t *severity)
+vb2_error_t auxfw_sync_check(struct vb2_context *ctx,
+			     VbAuxFwUpdateSeverity_t *severity)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
@@ -433,10 +416,11 @@ vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 		*severity = VB_AUX_FW_NO_UPDATE;
 		return VB2_SUCCESS;
 	}
+
 	return VbExCheckAuxFw(severity);
 }
 
-vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx)
+vb2_error_t auxfw_sync(struct vb2_context *ctx)
 {
 	vb2_error_t rv = VbExUpdateAuxFw();
 	if (rv) {
@@ -460,28 +444,11 @@ vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 	if (retval != VB2_SUCCESS)
 		return retval;
 
-#ifdef PD_SYNC
-	/* Handle updates and jumps for PD */
-	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
-	if (!(gbb->flags & VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)) {
-		retval = sync_one_ec(ctx, 1);
-		if (retval != VB2_SUCCESS)
-			return retval;
-	}
-#endif
-
 	return VB2_SUCCESS;
 }
 
 vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-
-	/* EC verification (and possibly updating / jumping) is done */
-	vb2_error_t rv = VbExEcVbootDone(!!sd->recovery_reason);
-	if (rv)
-		return rv;
-
 	/* Check if we need to cut-off battery. This must be done after EC
 	 * firmware updating and before kernel started. */
 	if (vb2_nv_get(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST)) {

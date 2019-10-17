@@ -44,16 +44,25 @@ int ec_will_update_slowly(struct vb2_context *ctx);
  * @param severity	VB_AUX_FW_{NO,FAST,SLOW}_UPDATE
  * @return VB2_SUCCESS or non-zero error code.
  */
-vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
-			       VbAuxFwUpdateSeverity_t *severity);
+vb2_error_t auxfw_sync_check(struct vb2_context *ctx,
+			     VbAuxFwUpdateSeverity_t *severity);
 
 /**
- * Update and protect auxiliary firmware.
+ * Update auxiliary firmware.
  *
  * @param ctx          Vboot2 context
  * @return VB2_SUCCESS or non-zero error code.
  */
-vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx);
+vb2_error_t auxfw_sync(struct vb2_context *ctx);
+
+/**
+ * Update and protect auxiliary firmware.
+ * Assumes primary EC has been software synced already
+ *
+ * @param ctx          Vboot2 context
+ * @return VB2_SUCCESS or non-zero error code.
+ */
+vb2_error_t auxfw_sync_all(struct vb2_context *ctx);
 
 /**
  * EC sync, phase 2
@@ -82,13 +91,22 @@ vb2_error_t ec_sync_phase2(struct vb2_context *ctx);
 vb2_error_t ec_sync_phase3(struct vb2_context *ctx);
 
 /**
- * Sync all EC devices to expected versions.
+ * Sync the primary EC device to expected versions.
  *
  * This is a high-level function which calls the functions above.
  *
  * @param ctx		Vboot context
  * @return VB2_SUCCESS, or non-zero if error.
  */
-vb2_error_t ec_sync_all(struct vb2_context *ctx);
+vb2_error_t ec_sync(struct vb2_context *ctx);
+
+/**
+ * Set IN_RW flag for a EC
+ *
+ * @param ctx		Vboot2 context
+ * @param devidx	Which device (EC=0, PD=1)
+ */
+vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx);
+
 
 #endif  /* VBOOT_REFERENCE_EC_SYNC_H_ */
