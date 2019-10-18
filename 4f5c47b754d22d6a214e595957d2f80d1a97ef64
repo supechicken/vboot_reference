@@ -221,6 +221,30 @@
     },
     {
       "key": {
+        "uuid": "ac86fe64_49c8a1e3",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:04:50Z",
+      "side": 1,
+      "message": "Also sync_one_ec is defined as a static function inside ec_sync driver. The fact that it is compiling means that PD_SYNC is not defined?",
+      "parentUuid": "8f2289a8_fc901e15",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d0e49b2_de1da558",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
