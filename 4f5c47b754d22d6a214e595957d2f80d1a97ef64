@@ -89,6 +89,57 @@
     },
     {
       "key": {
+        "uuid": "fb5ddefe_7d60e2e4",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:02:11Z",
+      "side": 1,
+      "message": "ec_sync prefix is used in all the public functions in ec_sync driver. We may need to retain that prefix if we want auxfw_sync* functions as part of this driver. Else it is better to create a auxfw_sync driver",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afd9b79_ac71ac8f",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:02:11Z",
+      "side": 1,
+      "message": "Is this a good time to move this function inside ec_sync driver (i.e. ec_sync.c) and rename this as an auxfw_sync driver?",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5a5859_9b52f929",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:02:11Z",
+      "side": 1,
+      "message": "I don\u0027t think both EC Sync and AUX FW Sync need to invoke phase3. I think phase3 needs to be invoked once and can be invoked at the point where VbExEcVbootDone is getting invoked in this CL.",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "876cb8c9_71d684e6",
         "filename": "firmware/lib/ec_sync_all.c",
         "patchSetId": 2
@@ -118,6 +169,52 @@
       "side": 1,
       "message": "Can we get rid of PD sync?  Or do we still need it for devices which haven\u0027t reached end of life?",
       "parentUuid": "876cb8c9_71d684e6",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518e8aac_8959349e",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:02:11Z",
+      "side": 1,
+      "message": "May be we can keep it as part of auxfw_sync_check",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2289a8_fc901e15",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:02:11Z",
+      "side": 1,
+      "message": "I can see that it is moved from ec_sync_phase2, but I am not sure what jump for PD is doing. At this point, PD firmware is not updated yet. So it is a little confusing as what jump for PD is doing here.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 6
+      },
       "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
