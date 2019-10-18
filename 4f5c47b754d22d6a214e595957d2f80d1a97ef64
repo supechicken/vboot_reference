@@ -446,6 +446,29 @@
     },
     {
       "key": {
+        "uuid": "2803581f_babe5044",
+        "filename": "tests/auxfw_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:14:19Z",
+      "side": 1,
+      "message": "These variables can be cleaned up in ec_sync_tests.c",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16a1a727_ac6972d9",
         "filename": "tests/auxfw_sync_tests.c",
         "patchSetId": 2
@@ -526,6 +549,30 @@
       "writtenOn": "2019-10-18T02:57:35Z",
       "side": 1,
       "message": "I question if we have really disentangled EC code from auxfw if we need to mock all of these VbExEc functions?",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 18
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4511f9bc_3dd935ab",
+        "filename": "tests/auxfw_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:14:19Z",
+      "side": 1,
+      "message": "+1 to Joel\u0027s questions.",
+      "parentUuid": "fbaf8f66_dc2099a9",
       "range": {
         "startLine": 124,
         "startChar": 12,
