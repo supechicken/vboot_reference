@@ -16,6 +16,74 @@
       "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9eeefe_3aecc6d8",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 1,
+      "message": "This can be removed (and the related flags deprecated) if we no longer call it.",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83024376_8706e190",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 1,
+      "message": "It would probably make sense to split the auxfw stuff into a separate auxfw_sync.c file then, too (in a separate patch that only moves the code, to make it easier to review).",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876cb8c9_71d684e6",
+        "filename": "firmware/lib/ec_sync_all.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 1,
+      "message": "Oh... this is where it went. Hmm.\n\nI assume you have no way of actually testing that this still works on devices enabling it, right? In that case, I\u0027m not really sure we should make so many changes to it. We should either take it out completely right now, or we should just leave it where it is (knowing that devices with romstage sync will never have it enabled anyway). (I think it\u0027s fine to take the update_slowly() part out, then it will just not show the screen when updating.)",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f7848e_f5e7c77f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 1,
+      "message": "Not really sure why you moved this? This is not supposed to run in error cases...",
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

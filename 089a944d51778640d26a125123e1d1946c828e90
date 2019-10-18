@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55d19d78_5d985a2b",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 0,
+      "message": "If we\u0027re removing PD sync, I\u0027m not against that but that\u0027s a bigger thing that should have its own CL. There are related pieces in depthcharge too, we should remove either all or nothing.",
+      "revId": "089a944d51778640d26a125123e1d1946c828e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3cdd8b_72f2574a",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-18T02:45:36Z",
+      "side": 0,
+      "message": "Uhh... where\u0027s this going? We still need that. (We probably need to split this up in two callbacks, because it does two separate things in depthcharge right now... block the boot until we have enough charge, and lock down TCPC tunnels. The former needs to go with the EC sync and the latter needs to stay with auxfw.)",
+      "revId": "089a944d51778640d26a125123e1d1946c828e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
