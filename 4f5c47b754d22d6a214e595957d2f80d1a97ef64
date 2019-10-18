@@ -354,6 +354,52 @@
     },
     {
       "key": {
+        "uuid": "cd2a556d_ab3dec5c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:07:45Z",
+      "side": 1,
+      "message": "Same comment as mentioned by Julius in line 405",
+      "range": {
+        "startLine": 410,
+        "startChar": 3,
+        "endLine": 410,
+        "endChar": 42
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a14261_48d81b3e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-10-18T03:07:45Z",
+      "side": 1,
+      "message": "We can invoked ec_sync_phase3 and put VbExEcVbootDone back inside ec_sync_phase3.",
+      "range": {
+        "startLine": 414,
+        "startChar": 2,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "4f5c47b754d22d6a214e595957d2f80d1a97ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f89f3f7b_c409ca0e",
         "filename": "tests/auxfw_sync_tests.c",
         "patchSetId": 2
