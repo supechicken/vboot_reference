@@ -5,6 +5,7 @@
  * EC software sync routines for vboot
  */
 
+#include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -12,6 +13,7 @@
 #include "ec_sync.h"
 #include "vboot_api.h"
 #include "vboot_common.h"
+#include "vboot_display.h"
 #include "vboot_kernel.h"
 
 #define VB2_SD_FLAG_ECSYNC_RW					\
@@ -30,6 +32,23 @@
 
 /* PD doesn't support RW A/B */
 #define RW_AB(devidx) ((devidx) ? 0 : VB2_CONTEXT_EC_EFS)
+
+static int check_reboot_for_display(struct vb2_context *ctx)
+{
+	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
+		VB2_DEBUG("Reboot to initialize display\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+		return 1;
+	}
+
+	return 0;
+}
+
+static void display_wait_screen(struct vb2_context *ctx, const char *fw_name)
+{
+	VB2_DEBUG("%s update is slow. Show WAIT screen.\n", fw_name);
+	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
+}
 
 static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
@@ -422,34 +441,6 @@ static int ec_sync_allowed(struct vb2_context *ctx)
 	return 1;
 }
 
-vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
-				 VbAuxFwUpdateSeverity_t *severity)
-{
-	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
-
-	/* If we're not updating the EC, skip aux fw syncs as well */
-	if (!ec_sync_allowed(ctx) ||
-	    (gbb->flags & VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC)) {
-		*severity = VB_AUX_FW_NO_UPDATE;
-		return VB2_SUCCESS;
-	}
-	return VbExCheckAuxFw(severity);
-}
-
-vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx)
-{
-	vb2_error_t rv = VbExUpdateAuxFw();
-	if (rv) {
-		if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
-			VB2_DEBUG("AUX firmware update requires RO reboot.\n");
-		} else {
-			VB2_DEBUG("AUX firmware update/protect failed.\n");
-			request_recovery(ctx, VB2_RECOVERY_AUX_FW_UPDATE);
-		}
-	}
-	return rv;
-}
-
 vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 {
 	if (!ec_sync_allowed(ctx))
@@ -494,4 +485,47 @@ vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 	}
 
 	return VB2_SUCCESS;
+}
+
+vb2_error_t ec_sync(struct vb2_context *ctx)
+{
+	vb2_error_t rv;
+
+	/* Phase 1; this determines if we need an update */
+	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
+	int need_wait_screen = ec_will_update_slowly(ctx);
+
+	/* Check if EC SW Sync Phase1 needs reboot */
+	if (phase1_rv) {
+		/* It does -- speculatively check if we need display as well */
+		if (need_wait_screen)
+			check_reboot_for_display(ctx);
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
+	/* Is EC already in RO and needs slow update? */
+	if (need_wait_screen) {
+		/* Might still need display in that case */
+		if (check_reboot_for_display(ctx))
+			return VBERROR_REBOOT_REQUIRED;
+		/* Display is available, so pop up the wait screen */
+		display_wait_screen(ctx, "EC FW");
+	}
+
+	/* Phase 2; Applies update and/or jumps to the correct EC image */
+	rv = ec_sync_phase2(ctx);
+	if (rv)
+		return rv;
+
+	/* Phase 3; Completes sync and handles battery cutoff */
+	rv = ec_sync_phase3(ctx);
+	if (rv)
+		return rv;
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2api_ec_software_sync(struct vb2_context *ctx)
+{
+	return ec_sync(ctx);
 }

@@ -146,13 +146,23 @@ vb2_error_t VbExEcBatteryCutOff(void)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
+vb2_error_t vb2ex_auxfw_check(VbAuxFwUpdateSeverity_t *severity)
 {
 	*severity = VB_AUX_FW_NO_UPDATE;
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExUpdateAuxFw(void)
+vb2_error_t vb2ex_auxfw_update(void)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2ex_auxfw_vboot_done(int in_recovery)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2ex_auxfw_protect(void)
 {
 	return VB2_SUCCESS;
 }

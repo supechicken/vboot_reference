@@ -91,6 +91,8 @@ enum vb2_return_code {
 	/* Detachable UI internal functions may return the following codes */
 	/* No error; return to UI loop */
 	VBERROR_KEEP_LOOPING			= 0x30000,
+	/* Auxfw update requires reboot to RO */
+	VBERROR_AUXFW_REBOOT_TO_RO_REQUIRED	= 0x30001,
 
 	/**********************************************************************
 	 * SHA errors

@@ -5,6 +5,7 @@
  * High-level firmware wrapper API - entry points for kernel selection
  */
 
+#include "2auxfw_sync.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -385,12 +386,17 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
 
 	/*
-	 * Do EC software sync unless we're in recovery mode. This has UI but
-	 * it's just a single non-interactive WAIT screen.
+	 * Do EC and Aux FW software sync unless we're in recovery
+	 * mode. This has UI but it's just a single non-interactive
+	 * WAIT screen.
 	 */
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		rv = ec_sync_all(ctx);
-		if (rv)
+		retval = ec_sync(ctx);
+		if (retval)
+			goto VbSelectAndLoadKernel_exit;
+
+		retval = auxfw_sync(ctx);
+		if (retval)
 			goto VbSelectAndLoadKernel_exit;
 	}
 
