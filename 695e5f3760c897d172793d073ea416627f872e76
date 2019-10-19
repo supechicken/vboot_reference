@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "3c6acb20_733aafa2",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:35Z",
+      "side": 1,
+      "message": "On second thought I decided to keep this as \"invalid OS\", since until we have explicit DMVERROR detection, this is also the code you end up with for verity errors.",
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fef3749_45dd2fe5",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 1
@@ -107,6 +124,30 @@
       "side": 1,
       "message": "Hmm... yeah, I thought they were used by that crappy old kernel code (which I think we should get rid of anyway, openend crbug.com/1015135 about that), but it looks like that\u0027s actually using 0x43. So I guess we can deprecate it.\n\nBut when looking stuff up for that I also noticed crbug.com/692715 which we could probably support quite easily now with the other changes in this train. What recovery reason should we use for that? It would technically be set by RW firmware code now, so should we make a new reason in the 0x40-0x7f range? Or should we just reuse this one, because the original impulse for that error comes from the kernel?",
       "parentUuid": "fc23e004_5701ef29",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 37
+      },
+      "revId": "695e5f3760c897d172793d073ea416627f872e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dcf09d3_58336422",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:35Z",
+      "side": 1,
+      "message": "Actually, upon further reading crbug.com/692715 there are more complicated issues attached to it, so I don\u0027t really wanna deal with it right now. I\u0027ll just deprecate this one for now, we can always bring stuff back later.",
+      "parentUuid": "cc57339b_5da5d262",
       "range": {
         "startLine": 241,
         "startChar": 0,
