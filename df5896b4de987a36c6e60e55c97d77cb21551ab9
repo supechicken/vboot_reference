@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c6ddaa2_228d5ad9",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-19T04:13:04Z",
+      "side": 1,
+      "message": "Don\u0027t think there is a need to declare LLVMFuzzerTestOneInput if you are defining it right in the next line.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6ad940_fc6139cd",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-19T04:13:04Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
