@@ -338,7 +338,6 @@ FWLIB_SRCS = \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
-	firmware/lib/ec_sync_all.c \
 	firmware/lib/ec_sync.c \
 	firmware/lib/gpt_misc.c \
 	firmware/lib/utility_string.c \
@@ -350,7 +349,8 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
 	firmware/lib/vboot_ui_common.c \
-	firmware/lib/vboot_ui_menu.c
+	firmware/lib/vboot_ui_menu.c \
+	firmware/2lib/2auxfw_sync.c
 
 # Code common to both vboot 2.0 (old structs) and 2.1 (new structs)
 FWLIB2X_SRCS = \
@@ -370,6 +370,10 @@ FWLIB2X_SRCS = \
 	firmware/2lib/2sha512.c \
 	firmware/2lib/2sha_utility.c \
 	firmware/2lib/2tpm_bootmode.c \
+	firmware/lib/ec_sync.c \
+	firmware/lib/vboot_api_kernel.c \
+	firmware/2lib/2auxfw_sync.c \
+	firmware/lib/vboot_display.c \
 	firmware/2lib/2hmac.c
 
 FWLIB20_SRCS = \
@@ -681,6 +685,7 @@ TEST_OBJS += ${TESTLIB_OBJS}
 TEST_NAMES = \
 	tests/cgptlib_test \
 	tests/ec_sync_tests \
+	tests/vb2_auxfw_sync_tests \
 	tests/sha_benchmark \
 	tests/utility_string_tests \
 	tests/vboot_api_devmode_tests \
@@ -1273,6 +1278,7 @@ endif
 .PHONY: run2tests
 run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_api_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_auxfw_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests

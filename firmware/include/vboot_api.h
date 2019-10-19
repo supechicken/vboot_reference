@@ -734,6 +734,10 @@ vb2_error_t VbExEcVbootDone(int in_recovery);
  */
 vb2_error_t VbExEcBatteryCutOff(void);
 
+/************************************************************************
+ * Auxiliary firmware (auxfw)
+ */
+
 /*
  * severity levels for an auxiliary firmware update request
  */
@@ -761,7 +765,7 @@ typedef enum {
  * @return VBERROR_... error, VB2_SUCCESS on success.
  */
 
-vb2_error_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity);
+vb2_error_t vb2ex_auxfw_check(VbAuxFwUpdateSeverity_t *severity);
 
 /**
  * Perform auxiliary firmware update(s).
@@ -771,8 +775,28 @@ vb2_error_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity);
  *
  * @return VBERROR_... error, VB2_SUCCESS on success.
  */
+vb2_error_t vb2ex_auxfw_update(void);
 
-vb2_error_t VbExUpdateAuxFw(void);
+/**
+ * Protect Aux FW from being overwritten.
+ *
+ * This is called after the FW sync is done.
+ *
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2ex_auxfw_protect(void);
+
+/**
+ * Notify client that vboot is done with Aux FW.
+ *
+ * If Aux FW sync was successful, this will be called at the end so that
+ * the client may perform actions that require the Aux FW to be in its
+ * final state.
+ *
+ * @param in_recovery	1 if recovery mode is selected by the AP, 0 otherwise.
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2ex_auxfw_vboot_done(int in_recovery);
 
 /*****************************************************************************/
 /* Misc */
