@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "5b5bac03_96f28143",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T01:40:55Z",
+      "side": 1,
+      "message": "\u003e I just meant for the cases where we KNOW the character in question.  For any \"default\" I\u0027d still just want to print the number.\n\nWell, for all of these cases here it\u0027s when an unknown key was pressed, right?\n\n\u003e Although to be honest, I feel like decimal is more common for referring to ASCII characters.\n\nHmm... okay, maybe it\u0027s a preference thing. Please don\u0027t feel like you have to change this just because I said so if you don\u0027t think it makes sense.",
+      "parentUuid": "a971b891_2ba52bcc",
+      "range": {
+        "startLine": 224,
+        "startChar": 47,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "928cbd530a216f2877e8cb26eae6f8a4876fa8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7114d74_21b97dad",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
