@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f54b143e_baf1cd2d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:41Z",
+      "side": 1,
+      "message": "This patch as is enforces the right priority between the three possibilities (NO_DISK, NO_KERNEL, INVALID_KERNEL). I\u0027d rather not rely on details of the error representation if we don\u0027t have to.",
+      "parentUuid": "7d9f1a8f_ab21f8b2",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66a8285a_3a9a06db",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-16T06:24:50Z",
       "side": 1,
       "message": "Funnily enough, depthcharge\u0027s implementation of VbExDiskFreeInfo doesn\u0027t even look at the second preserve_handle argument.",
+      "range": {
+        "startLine": 150,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8434574_afc08bd4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:41Z",
+      "side": 1,
+      "message": "Yeah, I know. Not actually sure what this was ever meant to be. Probably pointless and could be removed.",
+      "parentUuid": "66a8285a_3a9a06db",
       "range": {
         "startLine": 150,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "48bde3a8_55baefc8",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:41Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "791bfd7a_b8c85460",
+      "range": {
+        "startLine": 183,
+        "startChar": 14,
+        "endLine": 183,
+        "endChar": 16
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "500abcb5_978cf58f",
         "filename": "tests/vboot_api_kernel_tests.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-16T06:24:50Z",
       "side": 1,
       "message": "What about a test where the order is NO_KERNEL_FOUND, INVALID_KERNEL_FOUND?",
+      "range": {
+        "startLine": 217,
+        "startChar": 27,
+        "endLine": 218,
+        "endChar": 32
+      },
+      "revId": "810c4cf441bcd08085bed2c73928ed7c858e7264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd9f25e_19b8cd4d",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-19T00:38:41Z",
+      "side": 1,
+      "message": "Added another case.",
+      "parentUuid": "500abcb5_978cf58f",
       "range": {
         "startLine": 217,
         "startChar": 27,
