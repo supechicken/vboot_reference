@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5491190_8c010068",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-20T13:37:00Z",
+      "side": 1,
+      "message": "Maybe I didn\u0027t entirely understand your explanation of why we are keeping the recovery reason as INVALID_OS?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 57
+      },
+      "revId": "73ef53d23fd60753718601ed106c0580d8e160da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
