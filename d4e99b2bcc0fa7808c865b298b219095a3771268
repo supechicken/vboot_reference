@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed7871b_d7ee0b41",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T22:29:54Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what the addition of an explicit count is doing that the previous code (by memsetting the array to 0) didn\u0027t already do? In both cases, calls beyond the end return 0.",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4d1f80_d4a95a6f",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T22:29:54Z",
+      "side": 1,
+      "message": "Why did you remove the -1 here?",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457bf52f_df5ddb61",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T22:29:54Z",
+      "side": 1,
+      "message": "Did this need to move for a reason? Leaving stuff in place makes reviews easier...",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2241fa_d8baf9b7",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T22:29:54Z",
+      "side": 1,
+      "message": "If you want semantics like this, wouldn\u0027t it be easier to have a vbtlk_expect_info that directly contains the expected flags, and check for non-zero after a simple bitwise AND?",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c5c7dc_beca4af0",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T22:29:54Z",
+      "side": 1,
+      "message": "TEST_EQ?",
+      "range": {
+        "startLine": 268,
+        "startChar": 32,
+        "endLine": 268,
+        "endChar": 34
+      },
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
