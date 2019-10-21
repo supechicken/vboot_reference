@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "09a2f6c3_6f97bb7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "Looks fine to me. One thing you can do to check whether the fuzzer works correctly is to obtain a coverage report and verify it hits all the lines you expect it to reach.\n\nAlso, no need for this to appear in the commit message ;-)",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b9852b_69933ab4",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "these should probably be declared as static?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1a215f_fccf3083",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "Relying on well-defined-ness of unsigned integer overflow for this to work...\n\nLet\u0027s place a comment to help readers understand this? Or reformulate to not rely on overflow behavior: (offset \u003e rsize || rsize - offset \u003c size)",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c6ddaa2_228d5ad9",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 1
@@ -18,6 +87,76 @@
         "startChar": 0,
         "endLine": 74,
         "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b02fa28_7c3b0c24",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "I needed a declaration in the fuzzer I wrote as well to make the compiler happy, so this might have to stay.",
+      "parentUuid": "7c6ddaa2_228d5ad9",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3715dc_3322f62e",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcc1f04_139d0f1f",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-21T09:17:07Z",
+      "side": 1,
+      "message": "same comment as in other file.",
+      "range": {
+        "startLine": 43,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 65
       },
       "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
