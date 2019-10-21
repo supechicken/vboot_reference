@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1de49f0_b2be0807",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-21T20:06:45Z",
+      "side": 1,
+      "message": "Add static to avoid the error in pre-cq\nvboot_reference-1.0-r1729: tests/vb2_keyblock_fuzzer.c:25:1: note: declare \u0027static\u0027 if the function is not\nvboot_reference-1.0-r1729:       intended to be used outside of this translation unit",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "4ba96616baaf23fae638b08fbdc727f9444b6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c241b7_a134be4d",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-21T20:06:45Z",
+      "side": 1,
+      "message": "Probably needs static in rest of the functions as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "4ba96616baaf23fae638b08fbdc727f9444b6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24031f58_69219e9b",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-10-21T20:06:45Z",
+      "side": 1,
+      "message": "Add static to avoid error in pre-cq:\nvboot_reference-1.0-r1729: tests/vb2_preamble_fuzzer.c:22:1: note: declare \u0027static\u0027 if the function is not\nvboot_reference-1.0-r1729:       intended to be used outside of this translation unit\n\nProbably same for rest of functions.\n\nAlso needs a declaration to avoid the errors like:\nvboot_reference-1.0-r1729: tests/vb2_preamble_fuzzer.c:22:6: error: no previous prototype for function\nvboot_reference-1.0-r1729:       \u0027vb2_fail\u0027 [-Werror,-Wmissing-prototypes]",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "4ba96616baaf23fae638b08fbdc727f9444b6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
