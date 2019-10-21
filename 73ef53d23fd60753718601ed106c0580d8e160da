@@ -22,6 +22,30 @@
       "revId": "73ef53d23fd60753718601ed106c0580d8e160da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181b0127_e3a8ab8d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:29:06Z",
+      "side": 1,
+      "message": "Due to the way the DMVERROR thing works, this is the reason you end up getting when there\u0027s rootfs corruption as well. So until we detangle that further and add separate detection for that (which I\u0027m not convinced is really worth it), this reason will be set for either kernel or rootfs corruption, so I think the more general \"invalid OS\" fits better. (I also updated the TAB display text to mention rootfs.)",
+      "parentUuid": "f5491190_8c010068",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 57
+      },
+      "revId": "73ef53d23fd60753718601ed106c0580d8e160da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
