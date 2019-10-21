@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56934dc0_ba902c6d",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "I think it would help if you did one commit to pull the functions in ec_sync_all.c apart in the way you want, and then another commit that just moves the individual parts into different files. Otherwise it\u0027s really hard to review what you changed.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c00f135_5e396a2a",
+        "filename": "firmware/2lib/include/2auxfw_sync.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "Please add docs, I have no idea what these are supposed to do. (In general, I don\u0027t think naming everything phase1/2/3 helps readability, so we should try to get away from that where possible.)",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b674f2_8b3d16c0",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense. The code is called EC_REBOOT_TO_RO because we want to reboot *the EC* to RO (which is different from just rebooting the AP to RO). Even in the auxfw failure cases, it\u0027s the EC that needs the reboot... the TCPCs themselves don\u0027t have an RO.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabd051a_7c563768",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "I\u0027m confused why we need both of these? Right now VbExEcVbootDone() protects the auxfw tunnels, there\u0027s no other explicit call anymore. Why did this split into two callbacks here?",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93770ebe_14cf2a02",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "Can\u0027t we just get rid of all the WAIT screen stuff from here right away? Only auxfw should need that.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ed5d40_0758f90d",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "We should have a shared data flag to make sure we don\u0027t do this again if it was already done in coreboot, without fetching the hash again.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c780788e_d429fe90",
+        "filename": "tests/vb2_auxfw_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T23:29:43Z",
+      "side": 1,
+      "message": "Here too I think it would help if you first moved all the auxfw-related test code into their own file without changing them, and then in the next commit added the API changes so it\u0027s easier to see how the tests change in relation to that.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
