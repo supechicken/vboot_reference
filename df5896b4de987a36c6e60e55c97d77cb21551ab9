@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be9b50a6_aefd1c59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "I tried running coverage locally but that blew up for some reason. But I checked some of the \"newly discovered function\" addresses it prints when you run it normally to confirm that it\u0027s at least getting in some of the areas I wanted. I assume after it runs on the infrastructure for a week I can get a coverage report from that to get a clearer picture.",
+      "parentUuid": "09a2f6c3_6f97bb7d",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91b9852b_69933ab4",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "04241f52_6a88e5a2",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91b9852b_69933ab4",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df1a215f_fccf3083",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb27dffa_6fef8a8b",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df1a215f_fccf3083",
+      "range": {
+        "startLine": 55,
+        "startChar": 30,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e4fd413c_47807699",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Yeah, this is just to make -Wstrict-prototypes happy.",
+      "parentUuid": "2b02fa28_7c3b0c24",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af3715dc_3322f62e",
         "filename": "tests/vb2_preamble_fuzzer.c",
         "patchSetId": 1
@@ -138,6 +234,30 @@
       "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63d8da9_843b796c",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3715dc_3322f62e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "b7c184ae_d02c727d",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebcc1f04_139d0f1f",
+      "range": {
+        "startLine": 43,
+        "startChar": 43,
+        "endLine": 43,
+        "endChar": 65
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d6ad940_fc6139cd",
         "filename": "tests/vb2_preamble_fuzzer.c",
         "patchSetId": 1
@@ -184,6 +328,30 @@
       "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4240ba5_45ca16ff",
+        "filename": "tests/vb2_preamble_fuzzer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d6ad940_fc6139cd",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

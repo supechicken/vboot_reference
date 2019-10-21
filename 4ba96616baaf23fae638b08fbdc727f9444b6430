@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88e71001_e1e8498f",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "This function name just changed from another CL, that\u0027s why the previous trybot blew up. With this name it should work now.",
+      "parentUuid": "e1de49f0_b2be0807",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "4ba96616baaf23fae638b08fbdc727f9444b6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c241b7_a134be4d",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-21T20:06:45Z",
       "side": 1,
       "message": "Probably needs static in rest of the functions as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "4ba96616baaf23fae638b08fbdc727f9444b6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8357a70_177302ab",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-21T20:11:13Z",
+      "side": 1,
+      "message": "Nope, this is intentionally overriding a function from the library.",
+      "parentUuid": "f7c241b7_a134be4d",
       "range": {
         "startLine": 35,
         "startChar": 0,
