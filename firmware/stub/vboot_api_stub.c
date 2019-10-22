@@ -66,30 +66,30 @@ uint32_t VbExIsShutdownRequested(void)
 	return 0;
 }
 
-int VbExTrustEC(int devidx)
+int VbExTrustEC(void)
 {
 	return 1;
 }
 
-vb2_error_t VbExEcRunningRW(int devidx, int *in_rw)
+vb2_error_t VbExEcRunningRW(int *in_rw)
 {
 	*in_rw = 0;
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcJumpToRW(int devidx)
+vb2_error_t VbExEcJumpToRW(void)
 {
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcDisableJump(int devidx)
+vb2_error_t VbExEcDisableJump(void)
 {
 	return VB2_SUCCESS;
 }
 
 #define SHA256_HASH_SIZE 32
 
-vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcHashImage(enum VbSelectFirmware_t select,
 			    const uint8_t **hash, int *hash_size)
 {
 	static const uint8_t fake_hash[32] = {1, 2, 3, 4};
@@ -99,7 +99,7 @@ vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImage(enum VbSelectFirmware_t select,
 				   const uint8_t **image, int *image_size)
 {
 	static uint8_t fake_image[64] = {5, 6, 7, 8};
@@ -108,8 +108,7 @@ vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcGetExpectedImageHash(int devidx,
-				       enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImageHash(enum VbSelectFirmware_t select,
 				       const uint8_t **hash, int *hash_size)
 {
 	static const uint8_t fake_hash[32] = {1, 2, 3, 4};
@@ -119,18 +118,18 @@ vb2_error_t VbExEcGetExpectedImageHash(int devidx,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcUpdateImage(enum VbSelectFirmware_t select,
 			      const uint8_t *image, int image_size)
 {
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
+vb2_error_t VbExEcProtect(enum VbSelectFirmware_t select)
 {
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode)
+vb2_error_t VbExEcEnteringMode(enum VbEcBootMode_t mode)
 {
 	vboot_mode = mode;
 	return VB2_SUCCESS;

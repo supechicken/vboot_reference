@@ -136,18 +136,18 @@ uint32_t VbExIsShutdownRequested(void)
 	return 0;
 }
 
-int VbExTrustEC(int devidx)
+int VbExTrustEC(void)
 {
 	return !mock_in_rw;
 }
 
-vb2_error_t VbExEcRunningRW(int devidx, int *in_rw)
+vb2_error_t VbExEcRunningRW(int *in_rw)
 {
 	*in_rw = mock_in_rw;
 	return in_rw_retval;
 }
 
-vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
+vb2_error_t VbExEcProtect(enum VbSelectFirmware_t select)
 {
 	if (select == VB_SELECT_FIRMWARE_READONLY)
 		ec_ro_protected = 1;
@@ -156,19 +156,19 @@ vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select)
 	return protect_retval;
 }
 
-vb2_error_t VbExEcDisableJump(int devidx)
+vb2_error_t VbExEcDisableJump(void)
 {
 	return run_retval;
 }
 
-vb2_error_t VbExEcJumpToRW(int devidx)
+vb2_error_t VbExEcJumpToRW(void)
 {
 	ec_run_image = 1;
 	mock_in_rw = 1;
 	return run_retval;
 }
 
-vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcHashImage(enum VbSelectFirmware_t select,
 			    const uint8_t **hash, int *hash_size)
 {
 	*hash = select == VB_SELECT_FIRMWARE_READONLY ?
@@ -178,7 +178,7 @@ vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 	return *hash_size ? VB2_SUCCESS : VB2_ERROR_MOCK;
 }
 
-vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImage(enum VbSelectFirmware_t select,
 				   const uint8_t **image, int *image_size)
 {
 	static uint8_t fake_image[64] = {5, 6, 7, 8};
@@ -187,8 +187,7 @@ vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
 	return get_expected_retval;
 }
 
-vb2_error_t VbExEcGetExpectedImageHash(int devidx,
-				       enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImageHash(enum VbSelectFirmware_t select,
 				       const uint8_t **hash, int *hash_size)
 {
 	*hash = want_ec_hash;
@@ -197,7 +196,7 @@ vb2_error_t VbExEcGetExpectedImageHash(int devidx,
 	return want_ec_hash_size ? VB2_SUCCESS : VB2_ERROR_MOCK;
 }
 
-vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcUpdateImage(enum VbSelectFirmware_t select,
 			      const uint8_t *image, int image_size)
 {
 	if (select == VB_SELECT_FIRMWARE_READONLY) {

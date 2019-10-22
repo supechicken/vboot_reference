@@ -634,19 +634,13 @@ uint32_t VbExGetSwitches(uint32_t request_mask);
 /*****************************************************************************/
 /* Embedded controller (EC) */
 
-/*
- * All these functions take a devidx parameter, which indicates which embedded
- * processor the call applies to.  At present, only devidx=0 is valid, but
- * upcoming CLs will add support for multiple devices.
- */
-
 /**
  * This is called only if the system implements a keyboard-based (virtual)
  * developer switch. It must return true only if the system has an embedded
  * controller which is provably running in its RO firmware at the time the
  * function is called.
  */
-int VbExTrustEC(int devidx);
+int VbExTrustEC(void);
 
 /**
  * Check if the EC is currently running rewritable code.
@@ -654,67 +648,65 @@ int VbExTrustEC(int devidx);
  * If the EC is in RO code, sets *in_rw=0.
  * If the EC is in RW code, sets *in_rw non-zero.
  * If the current EC image is unknown, returns error. */
-vb2_error_t VbExEcRunningRW(int devidx, int *in_rw);
+vb2_error_t VbExEcRunningRW(int *in_rw);
 
 /**
  * Request the EC jump to its rewritable code.  If successful, returns when the
  * EC has booting its RW code far enough to respond to subsequent commands.
  * Does nothing if the EC is already in its rewritable code.
  */
-vb2_error_t VbExEcJumpToRW(int devidx);
+vb2_error_t VbExEcJumpToRW(void);
 
 /**
  * Tell the EC to refuse another jump until it reboots. Subsequent calls to
  * VbExEcJumpToRW() in this boot will fail.
  */
-vb2_error_t VbExEcDisableJump(int devidx);
+vb2_error_t VbExEcDisableJump(void);
 
 /**
  * Read the SHA-256 hash of the selected EC image.
  *
- * @param devidx    Device index. 0: EC, 1: PD.
  * @param select    Image to get hash of. RO or RW.
  * @param hash      Pointer to the hash.
  * @param hash_size Pointer to the hash size.
  * @return          VBERROR_... error, VB2_SUCCESS on success.
  */
-vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcHashImage(enum VbSelectFirmware_t select,
 			    const uint8_t **hash, int *hash_size);
 
 /**
  * Get the expected contents of the EC image associated with the main firmware
  * specified by the "select" argument.
  */
-vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImage(enum VbSelectFirmware_t select,
 				   const uint8_t **image, int *image_size);
 
 /**
  * Read the SHA-256 hash of the expected contents of the EC image associated
  * with the main firmware specified by the "select" argument.
  */
-vb2_error_t VbExEcGetExpectedImageHash(int devidx,
-				       enum VbSelectFirmware_t select,
+vb2_error_t VbExEcGetExpectedImageHash(enum VbSelectFirmware_t select,
 				       const uint8_t **hash, int *hash_size);
 
 /**
  * Update the selected EC image.
  */
-vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
+vb2_error_t VbExEcUpdateImage(enum VbSelectFirmware_t select,
 			      const uint8_t *image, int image_size);
 
 /**
- * Lock the selected EC code to prevent updates until the EC is rebooted.
- * Subsequent calls to VbExEcUpdateImage() with the same region this boot will
- * fail.
+ * Lock the EC code to prevent updates until the EC is rebooted.
+ * Subsequent calls to VbExEcUpdateImage() with the same region this
+ * boot will fail.
  */
-vb2_error_t VbExEcProtect(int devidx, enum VbSelectFirmware_t select);
+vb2_error_t VbExEcProtect(enum VbSelectFirmware_t select);
 
 /**
  * Info the EC of the boot mode selected by the AP.
  * mode: Normal, Developer, or Recovery
  */
 enum VbEcBootMode_t {VB_EC_NORMAL, VB_EC_DEVELOPER, VB_EC_RECOVERY };
-vb2_error_t VbExEcEnteringMode(int devidx, enum VbEcBootMode_t mode);
+vb2_error_t VbExEcEnteringMode(enum VbEcBootMode_t mode);
 
 /**
  * Perform EC post-verification / updating / jumping actions.

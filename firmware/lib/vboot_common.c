@@ -191,7 +191,7 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 	 * return false (=RW). That's ok because if recovery is manual, we will
 	 * get the right signal and that's the case we care about.
 	 */
-	if (!VbExTrustEC(0))
+	if (!VbExTrustEC())
 		return 0;
 
 	/* Now we confidently check the recovery switch state at boot */
