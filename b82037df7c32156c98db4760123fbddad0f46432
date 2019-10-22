@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39e3d6cb_c7347784",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T15:06:13Z",
+      "side": 1,
+      "message": "Yes!  I don\u0027t know what was going on here.",
+      "parentUuid": "d49a6b75_15970c4c",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65795019_bc8254ea",
         "filename": "firmware/lib20/common.c",
         "patchSetId": 39
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "60a6b661_c3f4e556",
+        "filename": "firmware/lib20/common.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T15:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65795019_bc8254ea",
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b90ec5_5fefe13a",
         "filename": "firmware/lib20/packed_key.c",
         "patchSetId": 39
@@ -56,6 +98,24 @@
       "revId": "b82037df7c32156c98db4760123fbddad0f46432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48b39b1_3bc83fc6",
+        "filename": "firmware/lib20/packed_key.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T15:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b90ec5_5fefe13a",
+      "revId": "b82037df7c32156c98db4760123fbddad0f46432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
