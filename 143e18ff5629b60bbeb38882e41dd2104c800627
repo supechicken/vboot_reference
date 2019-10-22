@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be38fc33_dcd6974c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "In the process of wading through all of this mock_gpio code, I\u0027ve discovered that it\u0027s very difficult to determine in each case how many times we expect VbTryLoadKernel to be called.  Unless we want to change the mocking mechanism, I don\u0027t think it makes sense to check \"how many\" times it\u0027s called.  At the very most, we can check that FIXED comes up, REMOVABLE comes up, or FIXED and then REMOVABLE comes up.  I switched over to a solution that does this, except for not testing the order of FIXED-\u003eREMOVABLE for the last case.  However I\u0027m still not sure what the best solution is here.  I have a feeling all of this is going to change once we finally get to the point where we can start refactoring LoadKernel and VbTryLoadKernel anyways.",
+      "parentUuid": "22fad73a_014cd61d",
+      "range": {
+        "startLine": 249,
+        "startChar": 25,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e74feee_55343489",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
@@ -36,6 +60,24 @@
       "writtenOn": "2019-10-16T00:46:04Z",
       "side": 1,
       "message": "off-topic: it\u0027s odd that we\u0027re only testing this path when TLK returns an error, we should also test it with success. (The current code just returns rv directly anyway but the test shouldn\u0027t rely on that.) Also applies to other modes.",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b3c803_e8570f46",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "I\u0027ll add it to the VbBootNormal case.  For others, almost half of them expect VB2_ERROR_MOCK.  Could we push that to a future CL? :\u0027(",
+      "parentUuid": "1e74feee_55343489",
       "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "383034c6_a74579f9",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3c2f17_adbfa31d",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9fd2828_0098a3a7",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "128c0e28_c52ecf18",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9fd2828_0098a3a7",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ff4acef_00b8c581",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
@@ -90,6 +168,24 @@
       "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e762d7ab_e3f377d0",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff4acef_00b8c581",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

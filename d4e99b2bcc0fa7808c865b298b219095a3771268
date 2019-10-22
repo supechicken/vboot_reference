@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aa2b579d_58ab706e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "My original intention was to require the test case to specify explicitly what the GPIO should be set to at the very end.  Seems like there is a mix of some tests relying on the GPIO value of the last MockGpioAfter call, and some relying on 0 being returned at the very end.  (My understanding is that this would indicate that power button has been released in most cases.)  I guess I got halfway there and just got exhausted from the difficulty in determining how many times VbTryLoadKernel is ran for each test case based on the count set for each GpioState.  Not sure if I should just reverse all of the mock_gpio changes or keep on trucking on.",
+      "parentUuid": "4ed7871b_d7ee0b41",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf4d1f80_d4a95a6f",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 16
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-21T22:29:54Z",
       "side": 1,
       "message": "Why did you remove the -1 here?",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e27927d_bf311c42",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "Because I changed the semantics of mock_gpio.  Before, when count \u003d\u003d 0, that means there is one tick left.  Now, when count \u003d\u003d 0, there are no more ticks left.",
+      "parentUuid": "cf4d1f80_d4a95a6f",
       "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fa5cee38_fb08beb7",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "It was awkward to modify the two functions when they lived in separate locations.  But I agree about reviewing -- I\u0027ll move it back.",
+      "parentUuid": "457bf52f_df5ddb61",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d2241fa_d8baf9b7",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 16
@@ -64,6 +118,24 @@
       "writtenOn": "2019-10-21T22:29:54Z",
       "side": 1,
       "message": "If you want semantics like this, wouldn\u0027t it be easier to have a vbtlk_expect_info that directly contains the expected flags, and check for non-zero after a simple bitwise AND?",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5e94ce_97999319",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "But this gets complicated for the cases when VbTryLoadKernel should be called with FIXED at first, and then REMOVABLE afterwards.  Still not totally sure what to do about that.  Maybe I should create an enum with three options?  FIXED_ONLY, REMOVABLE_ONLY, FIXED_THEN_REMOVABLE?",
+      "parentUuid": "2d2241fa_d8baf9b7",
       "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -90,6 +162,30 @@
       "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846ff185_53e43123",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T09:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c5c7dc_beca4af0",
+      "range": {
+        "startLine": 268,
+        "startChar": 32,
+        "endLine": 268,
+        "endChar": 34
+      },
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
