@@ -35,7 +35,7 @@ uint8_t vb2_secdata_kernel_calc_crc8(struct vb2_context *ctx)
 	return vb2_crc8(ctx->secdata_kernel + offset, size);
 }
 
-static vb2_error_t secdata_kernel_check_v02(struct vb2_context *ctx)
+static vb2_error_t secdata_kernel_check_v0(struct vb2_context *ctx)
 {
 	struct vb2_secdata_kernel_v02 *sec = (void *)ctx->secdata_kernel;
 	uint8_t ver = sec->struct_version;
@@ -61,7 +61,8 @@ static vb2_error_t secdata_kernel_check_v02(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-static vb2_error_t secdata_kernel_check_v10(struct vb2_context *ctx)
+static vb2_error_t secdata_kernel_check_v1(struct vb2_context *ctx,
+					   uint8_t *size)
 {
 	struct vb2_secdata_kernel_v10 *sec = (void *)ctx->secdata_kernel;
 	uint8_t ver = sec->struct_version;
@@ -79,6 +80,11 @@ static vb2_error_t secdata_kernel_check_v10(struct vb2_context *ctx)
 		return VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE;
 	}
 
+	if (*size < sec->struct_size) {
+		*size = sec->struct_size;
+		return VB2_ERROR_SECDATA_KERNEL_INCOMPLETE;
+	}
+
 	/* Verify CRC */
 	if (sec->crc8 != vb2_secdata_kernel_calc_crc8(ctx)) {
 		VB2_DEBUG("secdata_kernel: bad CRC\n");
@@ -88,12 +94,17 @@ static vb2_error_t secdata_kernel_check_v10(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx)
+vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx, uint8_t *size)
 {
+	if (*size < VB2_SECDATA_KERNEL_MIN_SIZE) {
+		*size = VB2_SECDATA_KERNEL_MIN_SIZE;
+		return VB2_ERROR_SECDATA_KERNEL_INCOMPLETE;
+	}
+
 	if (is_v0(ctx))
-		return secdata_kernel_check_v02(ctx);
+		return secdata_kernel_check_v0(ctx);
 	else
-		return secdata_kernel_check_v10(ctx);
+		return secdata_kernel_check_v1(ctx, size);
 }
 
 uint32_t vb2api_secdata_kernel_create(struct vb2_context *ctx)
@@ -102,8 +113,8 @@ uint32_t vb2api_secdata_kernel_create(struct vb2_context *ctx)
 
 	/* Populate the struct */
 	memset(sec, 0, sizeof(*sec));
-	sec->struct_version = VB2_SECDATA_KERNEL_VERSION_V10;
-	sec->struct_size = VB2_SECDATA_KERNEL_SIZE_V10;
+	sec->struct_version = VB2_SECDATA_KERNEL_VERSION_LATEST;
+	sec->struct_size = sizeof(*sec);
 	sec->crc8 = vb2_secdata_kernel_calc_crc8(ctx);
 
 	/* Mark as changed */
@@ -115,9 +126,10 @@ uint32_t vb2api_secdata_kernel_create(struct vb2_context *ctx)
 vb2_error_t vb2_secdata_kernel_init(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	uint8_t size = VB2_SECDATA_KERNEL_MAX_SIZE;
 	vb2_error_t rv;
 
-	rv = vb2api_secdata_kernel_check(ctx);
+	rv = vb2api_secdata_kernel_check(ctx, &size);
 	if (rv)
 		return rv;
 
@@ -209,11 +221,12 @@ const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx)
 	struct vb2_secdata_kernel_v10 *sec = (void *)ctx->secdata_kernel;
 
 	if (is_v0(ctx)) {
-		VB2_DEBUG("ERROR [invalid version of kernel secdata]");
+		VB2_REC_OR_DIE(ctx,
+			       "ERROR [invalid version of kernel secdata]\n");
 		return NULL;
 	}
 	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT)) {
-		VB2_DEBUG("ERROR [get kernel secdata before init]");
+		VB2_REC_OR_DIE(ctx, "ERROR [get kernel secdata before init]\n");
 		return NULL;
 	}
 

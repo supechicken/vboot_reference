@@ -44,6 +44,7 @@ struct vb2_secdata_firmware {
 /* Kernel space - KERNEL_NV_INDEX, locked with physical presence. */
 #define VB2_SECDATA_KERNEL_VERSION_V02 (0 << 4 | 2 << 0)  /* 0.2 */
 #define VB2_SECDATA_KERNEL_VERSION_V10 (1 << 4 | 0 << 0)  /* 1.0 */
+#define VB2_SECDATA_KERNEL_VERSION_LATEST VB2_SECDATA_KERNEL_VERSION_V10
 #define VB2_SECDATA_KERNEL_UID 0x4752574c  /* 'LWRG' */
 
 /*
@@ -85,7 +86,7 @@ struct vb2_secdata_kernel_v10 {
 	/* Struct version, for backwards compatibility */
 	uint8_t struct_version;  /* 1.0 (or 0x10 in v0 format) */
 
-	/* size of the struct */
+	/* Size of the struct */
 	uint8_t struct_size;
 
 	/* 8-bit CRC for everything below */

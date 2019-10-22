@@ -195,6 +195,9 @@ enum vb2_return_code {
 	/* Bad uid in vb2_secdata_kernel_init() */
 	VB2_ERROR_SECDATA_KERNEL_UID,
 
+	/* Incomplete structure in vb2api_secdata_kernel_check() */
+	VB2_ERROR_SECDATA_KERNEL_INCOMPLETE,
+
 	/* Invalid param in vb2_secdata_kernel_get();
 	   Deprecated with chromium:972956. */
 	VB2_ERROR_DEPRECATED_SECDATA_KERNEL_GET_PARAM,
@@ -770,6 +773,9 @@ enum vb2_return_code {
 
 	/* No working block devices were found in VbTryLoadKernel() */
 	VB2_ERROR_LK_NO_DISK_FOUND = 0x100b3000,
+
+	/* NO_BOOT mode escape is detected. */
+	VB2_ERROR_LK_NO_BOOT_ESCAPE = 0x100b4000,
 
 	/**********************************************************************
 	 * UI errors

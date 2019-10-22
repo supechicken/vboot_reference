@@ -192,6 +192,18 @@ enum vb2_context_flags {
 	 * Deprecated with CL:1975390.
 	 */
 	VB2_CONTEXT_DEPRECATED_DETACHABLE_UI = (1 << 22),
+
+	/*
+	 * EC firmware supports early firmware selection ver2; EC verifies its
+	 * RW hash by itself but a reference hash is stored in Cr50. In EFS2,
+	 * EC carries only one RW copy and NO_BOOT flag to handle RW corruption.
+	 */
+	VB2_CONTEXT_EC_EFS2 = (1 << 23),
+
+	/*
+	 * NO_BOOT means the OS is not allowed to boot. Only relevant for EFS2.
+	 */
+	VB2_CONTEXT_NO_BOOT = (1 << 24),
 };
 
 /* Helper for aligning fields in vb2_context. */
@@ -499,9 +511,10 @@ uint32_t vb2api_secdata_firmware_create(struct vb2_context *ctx);
  * Checks version, UID, and CRC.
  *
  * @param ctx		Context pointer
+ * @param size		Input size (IN) and expected size (OUT) of secdata.
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx);
+vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx, uint8_t *size);
 
 /**
  * Create fresh data in kernel secure storage context.
@@ -946,6 +959,8 @@ enum vb2_firmware_selection {
 	/* Keep this at the end */
 	VB_SELECT_FIRMWARE_COUNT,
 };
+
+#define EC_EFS_BOOT_FLAG_NO_BOOT	1
 
 /**
  * Sync the Embedded Controller device to the expected version.

@@ -33,6 +33,16 @@ static void reset_common_data(void)
 	sec10 = (struct vb2_secdata_kernel_v10 *)ctx->secdata_kernel;
 }
 
+static void test_init(struct vb2_shared_data *s, int init, const char *why)
+{
+	if (init)
+		TEST_NEQ(s->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT, 0, why);
+	else
+		TEST_EQ(s->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT, 0, why);
+
+	s->status &= ~VB2_SD_STATUS_SECDATA_KERNEL_INIT;
+};
+
 static void test_changed(struct vb2_context *c, int changed, const char *why)
 {
 	if (changed)
@@ -47,59 +57,105 @@ static void secdata_kernel_create_v02(void)
 {
 	memset(sec02, 0, sizeof(*sec02));
 	sec02->struct_version = VB2_SECDATA_KERNEL_VERSION_V02;
+	sec02->uid = VB2_SECDATA_KERNEL_UID;
 	sec02->crc8 = vb2_secdata_kernel_calc_crc8(ctx);
 	sd->status |= VB2_SD_STATUS_SECDATA_KERNEL_INIT;
 }
 
+/*
+ * Version-independent tests
+ */
 static void secdata_kernel_test(void)
 {
+	uint8_t size;
+
 	reset_common_data();
 
 	/* Blank data is invalid */
-	memset(&ctx->secdata_kernel, 0xa6, sizeof(ctx->secdata_kernel));
-	sec02->struct_version = VB2_SECDATA_KERNEL_VERSION_V02;
-	TEST_EQ(vb2api_secdata_kernel_check(ctx),
-		VB2_ERROR_SECDATA_KERNEL_CRC, "Check blank CRC (v0.2)");
+	size = VB2_SECDATA_KERNEL_MIN_SIZE;
+	memset(&ctx->secdata_kernel, 0xa6, size);
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
+		VB2_ERROR_SECDATA_KERNEL_VERSION, "Check blank bad version");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
-		VB2_ERROR_SECDATA_KERNEL_CRC, "Init blank CRC");
-	sec10->struct_version = VB2_SECDATA_KERNEL_VERSION_V10;
-	TEST_EQ(vb2api_secdata_kernel_check(ctx),
-		VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE, "Check blank size (v1)");
-	TEST_EQ(vb2_secdata_kernel_init(ctx),
-		VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE, "Init blank size");
+		VB2_ERROR_SECDATA_KERNEL_VERSION, "Init blank bad version");
+	test_init(sd, 0, "Init set SD status");
 
 	/* Ensure zeroed buffers are invalid */
-	memset(&ctx->secdata_kernel, 0, sizeof(ctx->secdata_kernel));
-	TEST_EQ(vb2_secdata_kernel_init(ctx), VB2_ERROR_SECDATA_KERNEL_VERSION,
-		"Zeroed buffer (invalid version)");
+	size = VB2_SECDATA_KERNEL_MIN_SIZE;
+	memset(&ctx->secdata_kernel, 0, size);
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
+		VB2_ERROR_SECDATA_KERNEL_VERSION, "Check zero bad version");
+	TEST_EQ(vb2_secdata_kernel_init(ctx),
+		VB2_ERROR_SECDATA_KERNEL_VERSION, "Init zero incomplete");
+	test_init(sd, 0, "Init set SD status");
 
-	/* Try with bad version */
-	TEST_EQ(vb2api_secdata_kernel_create(ctx), VB2_SECDATA_KERNEL_SIZE_V10,
-		"Create");
+	/* Read data less than minimum size */
+	size = VB2_SECDATA_KERNEL_MIN_SIZE - 1;
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
+		VB2_ERROR_SECDATA_KERNEL_INCOMPLETE, "Check incomplete");
+	TEST_EQ(size, VB2_SECDATA_KERNEL_MIN_SIZE, "Return minimum size");
+}
+
+static void secdata_kernel_test_v10(void)
+{
+	uint8_t size;
+
+	reset_common_data();
+
+	/* Create good data */
+	size = VB2_SECDATA_KERNEL_SIZE_V10;
+	TEST_EQ(vb2api_secdata_kernel_create(ctx),
+		VB2_SECDATA_KERNEL_SIZE_V10, "Create v1.0");
+	TEST_SUCC(vb2api_secdata_kernel_check(ctx, &size), "Check created CRC");
+	TEST_SUCC(vb2_secdata_kernel_init(ctx), "Init created CRC");
+	test_init(sd, 1, "Init set SD status");
+	test_changed(ctx, 1, "Create changes data");
+
+	/* Read data incompletely */
+	size = VB2_SECDATA_KERNEL_SIZE_V10 - 1;
+	vb2api_secdata_kernel_create(ctx);
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
+		VB2_ERROR_SECDATA_KERNEL_INCOMPLETE, "Check incomplete");
+	TEST_EQ(size, VB2_SECDATA_KERNEL_SIZE_V10, "Return expected size");
+
+	/* Bad version */
+	size = VB2_SECDATA_KERNEL_SIZE_V10;
+	vb2api_secdata_kernel_create(ctx);
 	sec10->struct_version -= 1;
-	TEST_EQ(vb2api_secdata_kernel_check(ctx),
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
 		VB2_ERROR_SECDATA_KERNEL_VERSION, "Check invalid version");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
 		VB2_ERROR_SECDATA_KERNEL_VERSION, "Init invalid version");
+	test_init(sd, 0, "Init set SD status");
 
-	/* Create good data (v1) and corrupt it. */
+	/* Corrupt data */
+	size = VB2_SECDATA_KERNEL_SIZE_V10;
 	vb2api_secdata_kernel_create(ctx);
-	TEST_SUCC(vb2api_secdata_kernel_check(ctx), "Check created CRC");
-	TEST_SUCC(vb2_secdata_kernel_init(ctx), "Init created CRC");
-	TEST_NEQ(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT, 0,
-		 "Init set SD status");
-	sd->status &= ~VB2_SD_STATUS_SECDATA_KERNEL_INIT;
-	test_changed(ctx, 1, "Create changes data");
-	ctx->secdata_kernel[2]++;
-	TEST_EQ(vb2api_secdata_kernel_check(ctx),
+	sec10->kernel_versions++;
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Check invalid CRC");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Init invalid CRC");
+	test_init(sd, 0, "Init set SD status");
+}
 
-	/* Create good data (v0.2) and corrupt it. */
+static void secdata_kernel_test_v02(void)
+{
+	uint8_t size;
+
+	reset_common_data();
+
+	/* Create good data */
+	size = VB2_SECDATA_KERNEL_SIZE_V02;
 	secdata_kernel_create_v02();
-	ctx->secdata_kernel[2]++;
-	TEST_EQ(vb2api_secdata_kernel_check(ctx),
+	TEST_SUCC(vb2api_secdata_kernel_check(ctx, &size), "Check v0.2");
+	TEST_SUCC(vb2_secdata_kernel_init(ctx), "Init created CRC");
+	test_init(sd, 1, "Init set SD status");
+
+	/* Corrupt data */
+	secdata_kernel_create_v02();
+	sec02->kernel_versions++;
+	TEST_EQ(vb2api_secdata_kernel_check(ctx, &size),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Check invalid CRC");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Init invalid CRC");
@@ -175,13 +231,13 @@ static void secdata_kernel_access_test_v10(void)
 	test_changed(ctx, 0, "Get EC hash doesn't change data");
 
 	sec10->struct_version = VB2_SECDATA_KERNEL_VERSION_V02;
-	TEST_PTR_EQ(vb2_secdata_kernel_get_ec_hash(ctx), NULL,
-		    "Can't get EC hash for v0.2");
+	TEST_ABORT(vb2_secdata_kernel_get_ec_hash(ctx),
+		   "Can't get EC hash for v0.2");
 	sec10->struct_version = VB2_SECDATA_KERNEL_VERSION_V10;
 
 	sd->status &= ~VB2_SD_STATUS_SECDATA_KERNEL_INIT;
-	TEST_PTR_EQ(vb2_secdata_kernel_get_ec_hash(ctx), NULL,
-		    "Can't get EC hash before init");
+	TEST_ABORT(vb2_secdata_kernel_get_ec_hash(ctx),
+		   "Can't get EC hash before init");
 	sd->status |= VB2_SD_STATUS_SECDATA_KERNEL_INIT;
 }
 
@@ -223,6 +279,8 @@ static void secdata_kernel_access_test_v02(void)
 int main(int argc, char* argv[])
 {
 	secdata_kernel_test();
+	secdata_kernel_test_v10();
+	secdata_kernel_test_v02();
 	secdata_kernel_access_test_v10();
 	secdata_kernel_access_test_v02();
 
