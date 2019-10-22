@@ -7,7 +7,6 @@
 
 #include "2api.h"
 #include "2common.h"
-#include "2ec_sync.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2secdata.h"
@@ -182,6 +181,22 @@ uint32_t VbExGetSwitches(uint32_t request_mask)
 }
 
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2ex_auxfw_check(enum vb2_auxfw_update_severity *severity)
+{
+	*severity = VB_AUX_FW_NO_UPDATE;
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2ex_auxfw_update(void)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2ex_auxfw_finalize(int in_recovery)
 {
 	return VB2_SUCCESS;
 }
