@@ -25,6 +25,9 @@ struct vb2_context;
  */
 vb2_error_t ec_sync_phase1(struct vb2_context *ctx);
 
+vb2_error_t update_ec(struct vb2_context *ctx, int devidx,
+		      enum VbSelectFirmware_t select);
+
 /**
  * Returns non-zero if the EC will perform a slow update during phase 2.
  *

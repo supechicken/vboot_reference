@@ -385,6 +385,106 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
 }
 
+vb2_error_t VbSelectAndLoadKernel2(struct vb2_context *ctx,
+				   VbSharedDataHeader *shared,
+				   VbSelectAndLoadKernelParams *kparams)
+{
+	vb2_gbb_flags_t gbb_flags = vb2_get_gbb(ctx)->flags;
+	vb2_error_t rv = vb2_kernel_setup(ctx, shared, kparams);
+
+	if (rv)
+		goto VbSelectAndLoadKernel2_exit;
+
+	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);
+	VB2_DEBUG("Context flags are %#x\n", ctx->flags);
+
+	rv = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS,
+				      &sec_flags);
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+			VB2_DEBUG("NO_BOOT_RECOVERY mode\n");
+			/* TODO: Get SOC & BATT_FLAG from EC and show screen */
+			while (1)
+				;
+		}
+		VB2_DEBUG("RECOVERY mode\n");
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			rv = VbBootRecoveryMenu(ctx);
+		else
+			rv = VbBootRecovery(ctx);
+		VbExEcEnteringMode(0, VB_EC_RECOVERY);
+		goto VbSelectAndLoadKernel2_exit;
+	} else if (gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC) {
+		VB2_DEBUG("Software Sync is disabled\n");
+	} else {
+		uint8_t hash[VB2_SHA256_DIGEST_SIZE];
+		uint8_t expected[VB2_SHA256_DIGEST_SIZE];
+		rv = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_EC_HASH,
+					      hash);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Failed to read EC hash from secdata\n");
+			VbSetRecoveryRequest(ctx, VB2_RECOVERY_EC_HASH_FAILED);
+			goto VbSelectAndLoadKernel2_exit;
+		}
+		rv = vb2_get_new_hash(expected);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Failed to read expected EC hash\n");
+			VbSetRecoveryRequest(ctx,
+					     VB2_RECOVERY_EC_EXPECTED_HASH);
+			goto VbSelectAndLoadKernel2_exit;
+		}
+		if (memcmp(hash, expected)) {
+			VB2_DEBUG("Hnvm != Hcbfs. Register new hash\n");
+			rv = vb2_secdata_firmware_set(
+					ctx, VB2_SECDATA_FIRMWARE_EC_HASH,
+					expected);
+			if (rv != VB2_SUCCESS) {
+				VB2_DEBUG("Failed to set EC hash in secdata\n");
+				VbSetRecoveryRequest(
+						ctx,
+						VB2_RECOVERY_EC_HASH_FAILED);
+				goto VbSelectAndLoadKernel2_exit;
+			}
+			/* Should commit secdata and continue to reset EC */
+			rv = VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+			goto VbSelectAndLoadKernel2_exit;
+		} else if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+			VB2_DEBUG("Hnvm == Hcbfs != Hspi. Update EC.\n");
+			rv = update_ec(ctx, 0, VB_SELECT_FIRMWARE_EC_UPDATE);
+			if (rv != VB2_SUCCESS) {
+				VB2_DEBUG("Failed to update EC.\n");
+				VbSetRecoveryRequest(
+						ctx, VB2_RECOVERY_EC_UPDATE);
+				goto VbSelectAndLoadKernel2_exit;
+			}
+			VB2_DEBUG("Software Sync done. Reset EC.\n");
+			rv = VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+			goto VbSelectAndLoadKernel2_exit;
+		}
+		VB2_DEBUG("Hnvm == Hcbfs == Hspi. Normal boot.\n");
+	}
+
+	/* Normal/Developer Boot */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			rv = VbBootDeveloperMenu(ctx);
+		else
+			rv = VbBootDeveloper(ctx);
+	} else {
+		rv = VbBootNormal(ctx);
+	}
+
+VbSelectAndLoadKernel2_exit:
+	if (VB2_SUCCESS == rv)
+		rv = vb2_kernel_phase4(ctx, kparams);
+
+	vb2_kernel_cleanup(ctx);
+
+	/* Pass through return value from boot path */
+	VB2_DEBUG("Returning %d\n", (int)rv);
+	return rv;
+}
+
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)

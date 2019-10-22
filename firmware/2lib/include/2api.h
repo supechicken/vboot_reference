@@ -185,6 +185,15 @@ enum vb2_context_flags {
 	 * support.
 	 */
 	VB2_CONTEXT_DISPLAY_INIT = (1 << 20),
+
+	/*
+	 * (NO_BOOT:21, RECOVERY:2) =
+	 *   (0, 0): NORMAL
+	 *   (1, 0): NO_BOOT
+	 *   (0, 1): RECOVERY
+	 *   (1, 1): NO_BOOT_RECOVERY
+	 */
+	VB2_CONTEXT_NO_BOOT = (1 << 21),
 };
 
 /*

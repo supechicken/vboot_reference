@@ -56,6 +56,9 @@ enum vb2_secdata_firmware_param {
 
 	/* Firmware versions */
 	VB2_SECDATA_FIRMWARE_VERSIONS,
+
+	/* EC hash */
+	VB2_SECDATA_FIRMWARE_EC_HASH,
 };
 
 /*****************************************************************************/
@@ -74,6 +77,9 @@ struct vb2_secdata_kernel {
 
 	/* Kernel versions */
 	uint32_t kernel_versions;
+
+	/* New field for struct_version >= 3 */
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
 
 	/* Reserved for future expansion */
 	uint8_t reserved[3];
@@ -111,7 +117,7 @@ vb2_error_t vb2_secdata_firmware_init(struct vb2_context *ctx);
  */
 vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t *dest);
+				     void *dest);
 
 /**
  * Write a firmware secure storage value.
@@ -123,7 +129,7 @@ vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
  */
 vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t value);
+				     void *value);
 
 /*****************************************************************************/
 /* Kernel secure storage space functions
