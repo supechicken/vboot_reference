@@ -5,6 +5,7 @@
  * EC software sync routines for vboot
  */
 
+#include <stdbool.h>
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
@@ -18,6 +19,9 @@
 #define SYNC_FLAG(select)					\
 	((select) == VB_SELECT_FIRMWARE_READONLY ?		\
 	 VB2_SD_FLAG_ECSYNC_EC_RO : VB2_SD_FLAG_ECSYNC_EC_RW)
+
+/* Context is in EFS2 */
+#define IN_EFS2(ctx) ((ctx)->flags & VB2_CONTEXT_EC_EFS2)
 
 /**
  * If no display is available, set DISPLAY_REQUEST in NV space
@@ -111,11 +115,17 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 				 enum vb2_firmware_selection select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	const bool is_efs2 = IN_EFS2(ctx);
+	vb2_error_t rv;
 
 	/* Get current EC hash. */
 	const uint8_t *ec_hash = NULL;
 	int ec_hash_size;
-	vb2_error_t rv = vb2ex_ec_hash_image(select, &ec_hash, &ec_hash_size);
+	if (is_efs2)
+		rv = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_EC_HASH,
+					    &ec_hash);
+	else
+		rv = vb2ex_ec_hash_image(select, &ec_hash, &ec_hash_size);
 	if (rv) {
 		VB2_DEBUG("vb2ex_ec_hash_image() returned %#x\n", rv);
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
@@ -139,10 +149,41 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		return VB2_ERROR_EC_HASH_SIZE;
 	}
 
+	/*
+	 * We compare expected EC hash against the hash passed by Cr50 (Hnvm)
+	 * in EFS and against a hash computed by EC itself (Hspi) in non-EFS.
+	 */
 	if (vb2_safe_memcmp(ec_hash, hash, hash_size)) {
 		print_hash(hash, hash_size, "Expected");
-		sd->flags |= SYNC_FLAG(select);
+		if (is_efs2)
+			/*
+			 * We can return error after this call. The reason we
+			 * don't have to is obscure but the following:
+			 *
+			 * When we reach here, hash and EC status are one of:
+			 *
+			 *  1. Hexp =! Hspi == Hnvm: EC in RW
+			 *  2. Hexp == Hspi != Hnvm: EC in RO
+			 *  3. Hexp =! Hspi != Hnvm: EC in RO
+			 *
+			 * In case of #1, which is most common, we will end up
+			 * rebooting in ec_sync_phase1 nonetheless.
+			 *
+			 * In case of #2 and #3, the subsequent code will update
+			 * RW (unnecessarily for #2) but it's harmless.
+			 */
+			vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_EC_HASH,
+					       hash);
+		else
+			sd->flags |= SYNC_FLAG(select);
 	}
+
+	/*
+	 * In EFS2, we can schedule an update regardless of Hexp ?= Hnvm status
+	 * as long as EC is in RO. See the rationales above.
+	 */
+	if (is_efs2 && !(sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW))
+		sd->flags |= SYNC_FLAG(select);
 
 	return VB2_SUCCESS;
 }
@@ -204,13 +245,22 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int in_rw = 0;
+	vb2_error_t rv = VB2_SUCCESS;
+
+	if (IN_EFS2(ctx))
+		/* In EFS2, we ask Cr50 because we don't trust EC RW. EC is
+		 * supposed to be in RW iff !NO_BOOT && !RECOVERY_MODE. */
+		in_rw = !(ctx->flags
+			& (VB2_CONTEXT_NO_BOOT | VB2_CONTEXT_RECOVERY_MODE));
+	else
 	/*
 	 * We don't use vb2ex_ec_trusted, which checks EC_IN_RW. It is
 	 * controlled by cr50 but on some platforms, cr50 can't know when a EC
 	 * resets. So, we trust what EC-RW says. If it lies it's in RO, we'll
 	 * flash RW while it's in RW.
 	 */
-	vb2_error_t rv = vb2ex_ec_running_rw(&in_rw);
+		rv = vb2ex_ec_running_rw(&in_rw);
+
 	/* If we couldn't determine where the EC was, reboot to recovery. */
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("vb2ex_ec_running_rw() returned %#x\n", rv);
@@ -249,13 +299,20 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (is_rw_ab) {
+		if (is_rw_ab || IN_EFS2(ctx)) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
-	/* Tell EC to jump to its RW image */
+	/*
+	 * Tell EC to jump to its RW image.
+	 *
+	 * In EFS2, we come here iff all hashes match (Hexp == Hnvm == Hspi) and
+	 * EC is in RW. So, jumping to RW will be skipped.
+	 * It's ok to let compromised RW lie about IN_RW here because we only
+	 * ask it to (re)jump.
+	 */
 	if (!(sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW)) {
 		VB2_DEBUG("jumping to EC-RW\n");
 		rv = vb2ex_ec_jump_to_rw();

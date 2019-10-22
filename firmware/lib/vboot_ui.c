@@ -813,6 +813,14 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		 */
 		vb2_nv_commit(ctx);
 
+		/*
+		 * In EFS, we can also come here when the battery is drained or
+		 * damaged.
+		 * TODO: Show messages to explain why recovery failed to start.
+		 */
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT)
+			VB2_DEBUG("NO_BOOT_RECOVERY mode\n");
+
 		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0, NULL);
 		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
 		while (1) {
