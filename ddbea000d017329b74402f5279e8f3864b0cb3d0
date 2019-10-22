@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a10ec30f_4d0cd69d",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T07:32:42Z",
+      "side": 1,
+      "message": "Move to TEST2X_NAMES.",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 29
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56934dc0_ba902c6d",
         "filename": "firmware/2lib/2auxfw_sync.c",
         "patchSetId": 4
@@ -176,6 +199,52 @@
     },
     {
       "key": {
+        "uuid": "fe011c43_e6e8e125",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T07:32:42Z",
+      "side": 1,
+      "message": "May as well correct this to read something like \"In cases where the EC or Aux FW update slowly, a single non-interactive WAIT screen will be displayed.\"",
+      "range": {
+        "startLine": 390,
+        "startChar": 10,
+        "endLine": 392,
+        "endChar": 0
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64122ed9_d54e7e86",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T07:32:42Z",
+      "side": 1,
+      "message": "Should be moved to firmware/2lib/2stub.c.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 1
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c780788e_d429fe90",
         "filename": "tests/vb2_auxfw_sync_tests.c",
         "patchSetId": 4
@@ -187,6 +256,24 @@
       "writtenOn": "2019-10-21T23:29:43Z",
       "side": 1,
       "message": "Here too I think it would help if you first moved all the auxfw-related test code into their own file without changing them, and then in the next commit added the API changes so it\u0027s easier to see how the tests change in relation to that.",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79491fa2_a9d6a0c1",
+        "filename": "tests/vb2_auxfw_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T07:32:42Z",
+      "side": 1,
+      "message": "That sounds like a good idea.",
+      "parentUuid": "c780788e_d429fe90",
       "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
