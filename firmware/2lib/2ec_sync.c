@@ -5,6 +5,7 @@
  * EC software sync routines for vboot
  */
 
+#include <stdbool.h>
 #include "2common.h"
 #include "2ec_sync.h"
 #include "2misc.h"
@@ -100,12 +101,17 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx, int devidx,
 				 enum VbSelectFirmware_t select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	const bool is_efs2 = ctx->flags & VB2_CONTEXT_EC_EFS2;
+	vb2_error_t rv;
 
 	/* Get current EC hash. */
 	const uint8_t *ec_hash = NULL;
 	int ec_hash_size;
-	vb2_error_t rv = VbExEcHashImage(devidx, select, &ec_hash,
-					 &ec_hash_size);
+	if (is_efs2)
+		rv = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_EC_HASH,
+					    &ec_hash);
+	else
+		rv = VbExEcHashImage(devidx, select, &ec_hash, &ec_hash_size);
 	if (rv) {
 		VB2_DEBUG("VbExEcHashImage() returned %d\n", rv);
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
@@ -129,10 +135,27 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx, int devidx,
 		return VB2_ERROR_EC_HASH_SIZE;
 	}
 
+	/*
+	 * We compare expected EC hash against the hash passed by Cr50 (Hnvm)
+	 * in EFS and against a hash computed by EC itself (Hspi) in non-EFS.
+	 */
 	if (vb2_safe_memcmp(ec_hash, hash, hash_size)) {
 		print_hash(hash, hash_size, "Expected");
 		sd->flags |= WHICH_EC(devidx, select);
+		if (is_efs2) {
+			vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_EC_HASH,
+					       hash);
+			return VB2_ERROR_EC_HASH_EXPECTED;
+		}
 	}
+
+	/*
+	 * In EFS, now we know Hnvm == Hexp. Next we need to check Hnvm == Hspi.
+	 * We get the result from Cr50 because we don't trust EC at this point.
+	 */
+	if (ctx->flags & VB2_CONTEXT_NO_BOOT)
+		/* Hnvm != Hspi. Set WHICH_EC and let phase2 do the update. */
+		sd->flags |= WHICH_EC(devidx, select);
 
 	return VB2_SUCCESS;
 }
@@ -239,7 +262,8 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx)
 static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	int is_rw_ab = ctx->flags & RW_AB(devidx);
+	const bool is_rw_ab = ctx->flags & RW_AB(devidx);
+	const bool is_efs2 = ctx->flags & VB2_CONTEXT_EC_EFS2;
 	vb2_error_t rv;
 
 	const enum VbSelectFirmware_t select_rw = is_rw_ab ?
@@ -253,13 +277,20 @@ static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (is_rw_ab) {
+		if (is_rw_ab || is_efs2) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
-	/* Tell EC to jump to its RW image */
+	/*
+	 * Tell EC to jump to its RW image.
+	 *
+	 * In EFS, we come here iff all hashes match (Hexp == Hnvm == Hspi) and
+	 * EC is in RW. So, jumping to RW will be skipped.
+	 * It's ok to let compromised RW lie about IN_RW here because we only
+	 * ask it to (re)jump.
+	 */
 	if (!(sd->flags & IN_RW(devidx))) {
 		VB2_DEBUG("jumping to EC-RW\n");
 		rv = VbExEcJumpToRW(devidx);
