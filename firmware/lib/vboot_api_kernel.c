@@ -439,6 +439,15 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	if (rv == VB2_SUCCESS)
 		vb2_kernel_fill_kparams(ctx, kparams);
 
+	if (VB2_SUCCESS == rv && (ctx->flags & VB2_CONTEXT_NO_BOOT)) {
+		/* Stop all cases returning SUCCESS against NO_BOOT flag. */
+		VB2_DEBUG("Blocking boot in NO_BOOT mode.\n");
+		rv = VB2_ERROR_LK_NO_BOOT_ESCAPE_FOUND;
+	}
+
+	if (VB2_SUCCESS == rv)
+		rv = vb2_kernel_phase4(ctx, kparams);
+
 	/* Commit data, but retain any previous errors */
 	call_rv = vb2_commit_data(ctx);
 	if (rv == VB2_SUCCESS)

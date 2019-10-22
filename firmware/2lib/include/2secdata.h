@@ -81,6 +81,9 @@ void vb2_secdata_firmware_set(struct vb2_context *ctx,
 enum vb2_secdata_kernel_param {
 	/* Kernel versions */
 	VB2_SECDATA_KERNEL_VERSIONS = 0,
+
+	/* EC hash (struct_version >= 3) */
+	VB2_SECDATA_KERNEL_EC_HASH,
 };
 
 /**

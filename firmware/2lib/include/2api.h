@@ -191,6 +191,25 @@ enum vb2_context_flags {
 	 * Deprecated with CL:1975390.
 	 */
 	VB2_CONTEXT_DEPRECATED_DETACHABLE_UI = (1 << 22),
+
+	/*
+	 * EC firmware supports early firmware selection ver2; EC verifies its
+	 * RW hash by itself but a reference hash is stored in Cr50. In EFS2,
+	 * EC carries only one RW copy and NO_BOOT flag to handle RW corruption.
+	 */
+	VB2_CONTEXT_EC_EFS2 = (1 << 23),
+
+	/*
+	 * (VB2_CONTEXT_NO_BOOT, VB2_CONTEXT_RECOVERY_MODE) =
+	 *
+	 *   (0, 0): NORMAL
+	 *   (1, 0): NO_BOOT
+	 *   (0, 1): RECOVERY
+	 *   (1, 1): NO_BOOT_RECOVERY
+	 *
+	 * NO_BOOT means BIOS is not allowed to boot the OS.
+	 */
+	VB2_CONTEXT_NO_BOOT = (1 << 24),
 };
 
 /* Helper for aligning fields in vb2_context. */

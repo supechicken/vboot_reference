@@ -50,11 +50,22 @@ struct vb2_secdata_kernel {
 	/* Kernel versions */
 	uint32_t kernel_versions;
 
+	/* New field for struct_version >= 3 */
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
+
 	/* Reserved for future expansion */
 	uint8_t reserved[3];
 
 	/* CRC; must be last field in struct */
 	uint8_t crc8;
+} __attribute__((packed));
+
+struct vb2_secdata_kernel_v3 {
+	uint8_t struct_version;		/* 3 */
+	uint8_t struct_size;		/* size of the struct */
+	uint8_t crc8;			/* 8-bit CRC for everything below */
+	uint32_t kernel_versions;
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
 } __attribute__((packed));
 
 /*****************************************************************************/
