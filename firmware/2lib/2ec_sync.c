@@ -9,6 +9,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "vboot_api.h"
 #include "vboot_display.h"
@@ -66,7 +67,7 @@ static void print_hash(const uint8_t *hash, uint32_t hash_size,
 {
 	int i;
 
-	VB2_DEBUG("%s hash: ", desc);
+	VB2_DEBUG("%10s: ", desc);
 	for (i = 0; i < hash_size; i++)
 		VB2_DEBUG_RAW("%02x", hash[i]);
 	VB2_DEBUG_RAW("\n");
@@ -84,6 +85,72 @@ static const char *image_name_to_string(enum vb2_firmware_selection select)
 	default:
 		return "UNKNOWN";
 	}
+}
+
+static vb2_error_t get_expected_ec_hash(struct vb2_context *ctx,
+					enum vb2_firmware_selection select,
+					const uint8_t **hash,
+					int hash_size)
+{
+	int size;
+	vb2_error_t rv;
+
+	rv = vb2ex_ec_get_expected_image_hash(select, hash, &size);
+	if (rv) {
+		VB2_DEBUG("vb2ex_ec_get_expected_image_hash() returned %#x\n",
+			  rv);
+		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
+		return VB2_ERROR_EC_HASH_EXPECTED;
+	}
+	if (size != hash_size) {
+		VB2_DEBUG("EC uses %d-byte hash but AP-RW contains %d bytes\n",
+			  hash_size, size);
+		request_recovery(ctx, VB2_RECOVERY_EC_HASH_SIZE);
+		return VB2_ERROR_EC_HASH_SIZE;
+	}
+
+	return VB2_SUCCESS;
+}
+
+/*
+ * Compare expected EC hash (Hexp) against the hash mirrored in Cr50 (Hmir).
+ */
+static vb2_error_t check_ec_hmir(struct vb2_context *ctx)
+{
+	const uint8_t *hmir = NULL, *hexp = NULL;
+	const int hash_size = VB2_SHA256_DIGEST_SIZE;
+	vb2_error_t rv;
+
+	/*
+	 * This could be no-op for systems carrying secdata kernel v1.* but
+	 * EFS2 is not enabled.
+	 */
+	hmir = vb2_secdata_kernel_get_ec_hash(ctx);
+	if (hmir == NULL) {
+		VB2_DEBUG("EC hash not found in secdata kernel\n");
+		/*
+		 * This is expected in the legacy system.
+		 *
+		 * In EFS2 system, Cr50 has already told EC about missing Hmir
+		 * and the system is operating in the legacy model. We follow.
+		 */
+		return VB2_SUCCESS;
+	}
+
+	print_hash(hmir, hash_size, "Hmir");
+
+	rv = get_expected_ec_hash(ctx, VB_SELECT_FIRMWARE_EC_ACTIVE,
+				  &hexp, hash_size);
+	if (rv)
+		return rv;
+
+	print_hash(hexp, hash_size, "Hexp");
+
+	if (vb2_safe_memcmp(hmir, hexp, hash_size))
+		/* Register the new hash in Cr50 (Hmir <- Hexp). */
+		vb2_secdata_kernel_set_ec_hash(ctx, hexp);
+
+	return VB2_SUCCESS;
 }
 
 /**
@@ -107,26 +174,17 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
 		return VB2_ERROR_EC_HASH_IMAGE;
 	}
+
 	print_hash(ec_hash, ec_hash_size, image_name_to_string(select));
 
 	/* Get expected EC hash. */
 	const uint8_t *hash = NULL;
-	int hash_size;
-	rv = vb2ex_ec_get_expected_image_hash(select, &hash, &hash_size);
-	if (rv) {
-		VB2_DEBUG("vb2ex_ec_get_expected_image_hash() returned %#x\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
-		return VB2_ERROR_EC_HASH_EXPECTED;
-	}
-	if (ec_hash_size != hash_size) {
-		VB2_DEBUG("EC uses %d-byte hash, but AP-RW contains %d bytes\n",
-			  ec_hash_size, hash_size);
-		request_recovery(ctx, VB2_RECOVERY_EC_HASH_SIZE);
-		return VB2_ERROR_EC_HASH_SIZE;
-	}
+	rv = get_expected_ec_hash(ctx, select, &hash, ec_hash_size);
+	if (rv)
+		return rv;
 
-	if (vb2_safe_memcmp(ec_hash, hash, hash_size)) {
-		print_hash(hash, hash_size, "Expected");
+	if (vb2_safe_memcmp(ec_hash, hash, ec_hash_size)) {
+		VB2_DEBUG("Heff != Hexp. Schedule update\n");
 		sd->flags |= SYNC_FLAG(select);
 	}
 
@@ -177,6 +235,8 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
+	VB2_DEBUG("Updated %s successfully\n", image_name_to_string(select));
+
 	return VB2_SUCCESS;
 }
 
@@ -226,21 +286,23 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	const enum vb2_firmware_selection select_rw = EC_EFS ?
 		VB_SELECT_FIRMWARE_EC_UPDATE :
 		VB_SELECT_FIRMWARE_EC_ACTIVE;
-	VB2_DEBUG("select_rw=%d\n", select_rw);
+	VB2_DEBUG("select_rw=%s\n", image_name_to_string(select_rw));
 
 	/* Update the RW Image */
 	if (sd->flags & SYNC_FLAG(select_rw)) {
 		if (VB2_SUCCESS != update_ec(ctx, select_rw))
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-		/* Updated successfully. Cold reboot to switch to the new RW.
-		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (EC_EFS) {
+		/* Updated successfully. Cold reboot to switch to the new RW. */
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
+			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		} else if (EC_EFS) {
+			VB2_DEBUG("Rebooting to switch to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
-	/* Tell EC to jump to its RW image */
+	/* Tell EC to jump to RW. It should already be in RW for EFS2. */
 	if (!(sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW)) {
 		VB2_DEBUG("jumping to EC-RW\n");
 		rv = vb2ex_ec_jump_to_rw();
@@ -344,9 +406,13 @@ static vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 	if (check_ec_active(ctx))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 
-	/* Check if we need to update RW.  Failures trigger recovery mode. */
+	if (check_ec_hmir(ctx))
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+	/* Check if we need to update RW. Failures trigger recovery mode. */
 	if (check_ec_hash(ctx, VB_SELECT_FIRMWARE_EC_ACTIVE))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
 	/* See if we need to update EC-RO. */
 	if (vb2_nv_get(ctx, VB2_NV_TRY_RO_SYNC) &&
 	    check_ec_hash(ctx, VB_SELECT_FIRMWARE_READONLY)) {
@@ -360,7 +426,7 @@ static vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 	 * If EC supports RW-A/B slots, we can proceed but we need
 	 * to jump to the new RW version later.
 	 */
-	if ((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW) &&
+	if ((sd->flags & SYNC_FLAG(VB_SELECT_FIRMWARE_EC_ACTIVE)) &&
 	    (sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW) && !EC_EFS) {
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
@@ -382,8 +448,9 @@ static int ec_will_update_slowly(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
-	return (((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RO) ||
-		 (sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW)) && EC_SLOW_UPDATE);
+	return (((sd->flags & SYNC_FLAG(VB_SELECT_FIRMWARE_READONLY)) ||
+		 (sd->flags & SYNC_FLAG(VB_SELECT_FIRMWARE_EC_ACTIVE)))
+			&& EC_SLOW_UPDATE);
 }
 
 /**

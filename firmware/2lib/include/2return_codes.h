@@ -768,6 +768,9 @@ enum vb2_return_code {
 	/* No working block devices were found in VbTryLoadKernel() */
 	VB2_ERROR_LK_NO_DISK_FOUND = 0x100b3000,
 
+	/* NO_BOOT mode escape is detected. */
+	VB2_ERROR_LK_NO_BOOT_ESCAPE = 0x100b4000,
+
 	/**********************************************************************
 	 * UI errors
 	 */
