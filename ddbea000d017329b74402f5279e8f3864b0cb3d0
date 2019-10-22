@@ -141,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "6ad17171_4ade31a5",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T02:55:59Z",
+      "side": 1,
+      "message": "Crap. Then I guess we won\u0027t be able to standardize on romstage software sync until we got rid of Wilco ECs. :/",
+      "parentUuid": "c8e7dfa2_0b9b7083",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48ed5d40_0758f90d",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
