@@ -5,6 +5,7 @@
  * EC software sync routines for vboot
  */
 
+#include <stdbool.h>
 #include "2common.h"
 #include "2ec_sync.h"
 #include "2misc.h"
@@ -86,6 +87,51 @@ static const char *image_name_to_string(enum VbSelectFirmware_t select)
 	default:
 		return "UNKNOWN";
 	}
+}
+
+static vb2_error_t check_ec_hash2(struct vb2_context *ctx)
+{
+	const uint8_t hnvm[VB2_SHA256_DIGEST_SIZE];
+	const uint8_t *hexp = NULL;
+	int hash_size;
+	vb2_error_t rv;
+
+	rv = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_EC_HASH, hnvm);
+	if (rv != VB2_SUCCESS) {
+		VB2_DEBUG("Failed to read EC hash from secdata\n");
+		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
+		return VB2_ERROR_EC_HASH_EXPECTED;
+	}
+	print_hash(hnvm, sizeof(hnvm), "Hnvm");
+
+	/* Get expected EC hash. */
+	rv = VbExEcGetExpectedImageHash(0, VB_SELECT_FIRMWARE_EC_ACTIVE,
+					&hexp, &hash_size);
+	if (rv) {
+		VB2_DEBUG("VbExEcGetExpectedImageHash() returned %d\n", rv);
+		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
+		return VB2_ERROR_EC_HASH_EXPECTED;
+	}
+	if (hash_size != sizeof(hnvm)) {
+		VB2_DEBUG("GSC uses %d-byte hash, but AP-RW contains %d bytes\n",
+			  sizeof(hnvm), hash_size);
+		request_recovery(ctx, VB2_RECOVERY_EC_HASH_SIZE);
+		return VB2_ERROR_EC_HASH_SIZE;
+	}
+
+	if (vb2_safe_memcmp(hnvm, hexp, hash_size)) {
+		print_hash(hexp, hash_size, "Hexp");
+		rv = vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_EC_HASH,
+					    hexp);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Failed to read EC hash from secdata\n");
+			request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
+			return VB2_ERROR_EC_HASH_EXPECTED;
+		}
+		return VB2_ERROR_EC_HASH_EXPECTED;
+	}
+
+	return VB2_SUCCESS;
 }
 
 /**
@@ -239,7 +285,8 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx, int devidx)
 static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	int is_rw_ab = ctx->flags & RW_AB(devidx);
+	const bool is_rw_ab = ctx->flags & RW_AB(devidx);
+	const bool is_efs = ctx->flags & VB2_CONTEXT_EC_EFS;
 	vb2_error_t rv;
 
 	const enum VbSelectFirmware_t select_rw = is_rw_ab ?
@@ -253,14 +300,14 @@ static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (is_rw_ab) {
+		if (is_rw_ab || is_efs) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
 	/* Tell EC to jump to its RW image */
-	if (!(sd->flags & IN_RW(devidx))) {
+	if (!(sd->flags & IN_RW(devidx)) && !is_efs) {
 		VB2_DEBUG("jumping to EC-RW\n");
 		rv = VbExEcJumpToRW(devidx);
 		if (rv != VB2_SUCCESS) {
@@ -340,6 +387,7 @@ vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	vb2_error_t rv;
 
 	/* Reasons not to do sync at all */
 	if (!(ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED))
@@ -361,8 +409,13 @@ vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 
 	/* Check if we need to update RW.  Failures trigger recovery mode. */
-	if (check_ec_hash(ctx, 0, VB_SELECT_FIRMWARE_EC_ACTIVE))
+	if (ctx->flags & VB2_CONTEXT_EC_EFS)
+		rv = check_ec_hash2(ctx, 0, VB_SELECT_FIRMWARE_EC_ACTIVE);
+	else
+		rv = check_ec_hash(ctx, 0, VB_SELECT_FIRMWARE_EC_ACTIVE);
+	if (rv)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
 	if (do_pd_sync && check_ec_hash(ctx, 1, VB_SELECT_FIRMWARE_EC_ACTIVE))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	/*

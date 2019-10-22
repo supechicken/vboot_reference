@@ -194,6 +194,15 @@ enum vb2_context_flags {
 	 * Caller should *not* set this when FWMP is available but invalid.
 	 */
 	VB2_CONTEXT_NO_SECDATA_FWMP = (1 << 21),
+
+	/*
+	 * (VB2_CONTEXT_NO_BOOT, VB2_CONTEXT_RECOVERY_MODE) =
+	 *   (0, 0): NORMAL
+	 *   (1, 0): NO_BOOT
+	 *   (0, 1): RECOVERY
+	 *   (1, 1): NO_BOOT_RECOVERY
+	 */
+	VB2_CONTEXT_NO_BOOT = (1 << 22),
 };
 
 /*

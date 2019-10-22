@@ -50,6 +50,9 @@ struct vb2_secdata_kernel {
 	/* Kernel versions */
 	uint32_t kernel_versions;
 
+	/* New field for struct_version >= 3 */
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
+
 	/* Reserved for future expansion */
 	uint8_t reserved[3];
 

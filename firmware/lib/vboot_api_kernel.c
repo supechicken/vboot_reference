@@ -386,7 +386,14 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+			VB2_DEBUG("NO_BOOT_RECOVERY mode\n");
+			/* TODO: Get SOC & BATT_FLAG from EC and show screen */
+			while (1)
+				;
+		}
 		/* Recovery boot.  This has UI. */
+		VB2_DEBUG("RECOVERY mode\n");
 		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
 			rv = VbBootRecoveryMenu(ctx);
 		else
