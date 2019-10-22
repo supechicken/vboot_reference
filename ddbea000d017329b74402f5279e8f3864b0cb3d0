@@ -105,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "084e46de_44167b02",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T00:26:54Z",
+      "side": 1,
+      "message": "Oh, does the Wilco EC itself need the slow update screen? I didn\u0027t know that. The code looks like it\u0027s using a similar LPC interface as our Chrome ECs on x86... is the update still that much slower that we can\u0027t run it without a screen?",
+      "parentUuid": "aea3562e_8bc0e1ff",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48ed5d40_0758f90d",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
