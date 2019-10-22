@@ -16,6 +16,7 @@
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
+#include "vboot_test.h"
 
 /* Mock data */
 static int ec_ro_updated;
@@ -94,6 +95,8 @@ static void ResetMocks(void)
 
 	memset(screens_displayed, 0, sizeof(screens_displayed));
 	screens_count = 0;
+
+	vb2_clear_expected_ec_hash_cache();
 }
 
 /* Mock functions */
