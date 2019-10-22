@@ -379,7 +379,11 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	 * it's just a single non-interactive WAIT screen.
 	 */
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		rv = ec_sync_all(ctx);
+		rv = ec_sync(ctx);
+		if (rv)
+			goto VbSelectAndLoadKernel_exit;
+
+		rv = auxfw_sync(ctx);
 		if (rv)
 			goto VbSelectAndLoadKernel_exit;
 	}

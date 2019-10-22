@@ -792,6 +792,55 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
 /*
+ * severity levels for an auxiliary firmware update request
+ */
+enum vb2_auxfw_update_severity {
+	/* no update needed and no protection needed */
+	VB_AUX_FW_NO_DEVICE = 0,
+	/* no update needed */
+	VB_AUX_FW_NO_UPDATE = 1,
+	/* update needed, can be done quickly */
+	VB_AUX_FW_FAST_UPDATE = 2,
+	/* update needed, "this would take a while..." */
+	VB_AUX_FW_SLOW_UPDATE = 3,
+};
+
+/*
+ * Check if any auxiliary firmware needs updating.
+ *
+ * This is called after the EC has been updated and is intended to
+ * version-check additional firmware blobs such as TCPCs.
+ *
+ * @param severity	return parameter for health of auxiliary firmware
+ *			(see vb2_auxfw_update_severity above)
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2ex_auxfw_check(enum vb2_auxfw_update_severity *severity);
+
+/*
+ * Perform auxiliary firmware update(s).
+ *
+ * This is called after the EC has been updated and is intended to
+ * update additional firmware blobs such as TCPCs.
+ *
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2ex_auxfw_update(void);
+
+/*
+ * Notify client that vboot is done with Aux FW.
+ *
+ * If Aux FW sync was successful, this will be called at the end so that
+ * the client may perform actions that require the Aux FW to be in its
+ * final state.  This may include protecting the communcations tunnels that
+ * allow auxiliary firmware updates from the OS.
+ *
+ * @param in_recovery	1 if recovery mode is selected by the AP, 0 otherwise.
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2ex_auxfw_finalize(int in_recovery);
+
+/*
  * Abort vboot flow due to a failed assertion or broken assumption.
  *
  * Likely due to caller misusing vboot (e.g. calling API functions
