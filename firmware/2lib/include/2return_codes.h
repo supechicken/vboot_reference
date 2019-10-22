@@ -634,6 +634,9 @@ enum vb2_return_code {
 	/* Problem with workbuf validity (see vb2api_init and vb2api_reinit) */
 	VB2_ERROR_WORKBUF_INVALID,
 
+	/* Escape from NO_BOOT mode is detected. */
+	VB2_ERROR_LK_NO_BOOT_ESCAPE,
+
 	/**********************************************************************
 	 * API-level errors
 	 */
