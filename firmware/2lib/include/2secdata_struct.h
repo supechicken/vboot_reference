@@ -43,7 +43,7 @@ struct vb2_secdata_firmware {
 
 /* Kernel space - KERNEL_NV_INDEX, locked with physical presence. */
 #define VB2_SECDATA_KERNEL_VERSION_V02 (0 << 4 | 2 << 0)  /* 0.2 */
-#define VB2_SECDATA_KERNEL_VERSION (1 << 4 | 0 << 0)  /* 1.0 */
+#define VB2_SECDATA_KERNEL_VERSION_V10 (1 << 4 | 0 << 0)  /* 1.0 */
 #define VB2_SECDATA_KERNEL_UID 0x4752574c  /* 'LWRG' */
 
 /*
@@ -60,7 +60,7 @@ struct vb2_secdata_firmware {
  */
 struct vb2_secdata_kernel_v02 {
 	/* Struct version, for backwards compatibility */
-	uint8_t struct_version;  /* 2 (or 0.2 in v1.0+ format) */
+	uint8_t struct_version;  /* 0.2 (or 0x02 in v0 format) */
 
 	/* Unique ID to detect space redefinition */
 	uint32_t uid;
@@ -82,11 +82,22 @@ _Static_assert(sizeof(struct vb2_secdata_kernel_v02)
 	       "VB2_SECDATA_KERNEL_SIZE_V02 exceeds max size");
 
 struct vb2_secdata_kernel_v10 {
+	/* Struct version, for backwards compatibility */
 	uint8_t struct_version;  /* 1.0 (or 0x10 in v0 format) */
-	uint8_t struct_size;     /* size of the struct */
-	uint8_t crc8;            /* 8-bit CRC for everything below */
+
+	/* size of the struct */
+	uint8_t struct_size;
+
+	/* 8-bit CRC for everything below */
+	uint8_t crc8;
+
+	/* Reserved for future expansion */
 	uint8_t reserved0;
+
+	/* Kernel versions */
 	uint32_t kernel_versions;
+
+	/* EC hash used for EFS2 */
 	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
 } __attribute__((packed));
 _Static_assert(sizeof(struct vb2_secdata_kernel_v10)

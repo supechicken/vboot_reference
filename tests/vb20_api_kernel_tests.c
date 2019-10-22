@@ -275,7 +275,7 @@ static void phase1_tests(void)
 
 	/* Bad secdata_kernel causes failure in normal mode only */
 	reset_common_data(FOR_PHASE1);
-	ctx->secdata_kernel[2] ^= 0x33;
+	ctx->secdata_kernel[2] ^= 0x33;  /* First 2 bytes are struct_version */
 	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_ERROR_SECDATA_KERNEL_CRC,
 		"phase1 bad secdata");
 

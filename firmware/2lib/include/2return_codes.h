@@ -195,18 +195,6 @@ enum vb2_return_code {
 	/* Bad uid in vb2_secdata_kernel_init() */
 	VB2_ERROR_SECDATA_KERNEL_UID,
 
-	/* Bad struct size in vb2_secdata_kernel */
-	VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE,
-
-	/* Bad buffer size to read vb2_secdata_kernel */
-	VB2_ERROR_SECDATA_KERNEL_BUFFER_SIZE,
-
-	/* Access to kernel secdata before it's initialized */
-	VB2_ERROR_SECDATA_KERNEL_UNINITIALIZED,
-
-	/* Invalid version of kernel secdata struct. */
-	VB2_ERROR_SECDATA_KERNEL_STRUCT_VERSION,
-
 	/* Invalid param in vb2_secdata_kernel_get();
 	   Deprecated with chromium:972956. */
 	VB2_ERROR_DEPRECATED_SECDATA_KERNEL_GET_PARAM,
@@ -259,6 +247,18 @@ enum vb2_return_code {
 
 	/* Error reading secdata_fwmp from storage backend */
 	VB2_ERROR_SECDATA_FWMP_READ,
+
+	/* Bad struct size in vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE,
+
+	/* Bad buffer size to read vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_BUFFER_SIZE,
+
+	/* Access to kernel secdata before it's initialized */
+	VB2_ERROR_SECDATA_KERNEL_UNINITIALIZED,
+
+	/* Invalid version of kernel secdata struct. */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_VERSION,
 
 	/**********************************************************************
 	 * Common code errors
@@ -769,6 +769,9 @@ enum vb2_return_code {
 
 	/* No working block devices were found in VbTryLoadKernel() */
 	VB2_ERROR_LK_NO_DISK_FOUND = 0x100b3000,
+
+	/* NO_BOOT mode escape is detected. */
+	VB2_ERROR_LK_NO_BOOT_ESCAPE = 0x100b4000,
 
 	/**********************************************************************
 	 * UI errors

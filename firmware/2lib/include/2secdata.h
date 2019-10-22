@@ -115,12 +115,20 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 			    uint32_t value);
 
 /**
+ * Calculate crc8 of secdata kernel
+ *
+ * @param ctx		Context pointer
+ * @return		Calculated crc8 value.
+ */
+uint8_t vb2_secdata_kernel_calc_crc8(struct vb2_context *ctx);
+
+/**
  * Get ec_hash from kernel secdata.
  *
  * @param ctx		Context pointer
  * @return		Buffer where hash is stored or NULL on error.
  */
-uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx);
+const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx);
 
 /**
  * Set ec_hash in kernel secdata.
