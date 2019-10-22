@@ -37,24 +37,6 @@ vb2_error_t ec_sync_phase1(struct vb2_context *ctx);
 int ec_will_update_slowly(struct vb2_context *ctx);
 
 /**
- * Check if auxiliary firmware blobs need to be updated.
- *
- * @param ctx		Vboot2 context
- * @param severity	VB_AUX_FW_{NO,FAST,SLOW}_UPDATE
- * @return VB2_SUCCESS or non-zero error code.
- */
-vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
-				 enum vb2_auxfw_update_severity *severity);
-
-/**
- * Update and protect auxiliary firmware.
- *
- * @param ctx          Vboot2 context
- * @return VB2_SUCCESS or non-zero error code.
- */
-vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx);
-
-/**
  * EC sync, phase 2
  *
  * This updates the EC if necessary, makes sure it has protected its image(s),
@@ -81,13 +63,61 @@ vb2_error_t ec_sync_phase2(struct vb2_context *ctx);
 vb2_error_t ec_sync_phase3(struct vb2_context *ctx);
 
 /**
- * Sync all EC devices to expected versions.
+ * Sync the Embedded Controller device to the expected version.
  *
  * This is a high-level function which calls the functions above.
  *
  * @param ctx		Vboot context
  * @return VB2_SUCCESS, or non-zero if error.
  */
-vb2_error_t ec_sync_all(struct vb2_context *ctx);
+vb2_error_t ec_sync(struct vb2_context *ctx);
+
+/**
+ * Decides if auxfw sync is allowed to be performed
+ *
+ * If sync is allowed, invokes the external callback,
+ * vb2ex_auxfw_check() to allow the client to decide on the auxfw
+ * update severity.
+ *
+ * @param ctx           Vboot2 context
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t auxfw_sync_check_update(struct vb2_context *ctx,
+                                    VbAuxFwUpdateSeverity_t *severity);
+
+/**
+ * Performs the auxfw update, if applicable
+ *
+ * Invokes the external callback, vb2ex_auxfw_update(), in order to
+ * update all auxfw images.  Requests recovery if an error (besides a
+ * required reboot) occurs.
+ *
+ * @param ctx           Vboot2 context
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t auxfw_sync_perform_update(struct vb2_context *ctx);
+
+/**
+ * Finalize auxfw software sync
+ *
+ * Invokes vb2ex_auxfw_vboot_done(), passing in any applicable
+ * recovery reason, to allow the client to perform any actions which
+ * should be taken if no update was required or if it was successful.
+ *
+ * @param ctx           Vboot2 context
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t auxfw_sync_finalize(struct vb2_context *ctx);
+
+/**
+ * Sync all auxiliary firmware to the expected versions
+ *
+ * Invokes the functions above to do this.
+ *
+ * @param ctx           Vboot2 context
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t auxfw_sync(struct vb2_context *ctx);
+
 
 #endif  /* VBOOT_REFERENCE_2EC_SYNC_H_ */
