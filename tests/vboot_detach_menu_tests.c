@@ -114,7 +114,7 @@ static void ResetMocksForDeveloper(void)
 {
 	ResetMocks();
 	shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
-	VbExEcEnteringMode(0, VB_EC_DEVELOPER);
+	vb2ex_ec_entering_mode(VB_EC_DEVELOPER);
 	shutdown_request_calls_left = -1;
 }
 
@@ -123,7 +123,7 @@ static void ResetMocksForManualRecovery(void)
 	ResetMocks();
 	shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
 	trust_ec = 1;
-	VbExEcEnteringMode(0, VB_EC_RECOVERY);
+	vb2ex_ec_entering_mode(VB_EC_RECOVERY);
 }
 
 /* Mock functions */
@@ -192,7 +192,7 @@ vb2_error_t VbExLegacy(enum VbAltFwIndex_t _altfw_num)
 	return 0;
 }
 
-int VbExTrustEC(int devidx)
+int vb2ex_ec_trusted(void)
 {
 	return trust_ec;
 }
@@ -1295,7 +1295,7 @@ static void VbBootRecTest(void)
 
 	/* Shutdown requested in BROKEN */
 	ResetMocks();
-	VbExEcEnteringMode(0, VB_EC_RECOVERY);
+	vb2ex_ec_entering_mode(VB_EC_RECOVERY);
 	TEST_EQ(VbBootRecoveryMenu(&ctx), VBERROR_SHUTDOWN_REQUESTED,
 		"Shutdown requested in BROKEN");
 	TEST_EQ(VbGetMode(), VB_EC_RECOVERY, "vboot_mode recovery");
