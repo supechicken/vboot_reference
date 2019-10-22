@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d66db2cb_9567158f",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 71
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "It doesn\u0027t look that organized... for example RO_TPM_REC_HASH_L_ERROR is at 0x5f.\nBut I suppose I can move it to 0x62 since that\u0027s where people seem to be putting new stuff?",
+      "parentUuid": "37a18068_18ecbdb1",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e2659ff_43c9ea2b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "Right now you check for recovery mode in secdata_kernel_lock() and just return success there... I feel that check would make more sense in this function (just skip calling it when in recovery mode). That\u0027s another good reason to not call this function vb2ex_... for now, because the stuff you\u0027re doing in here is stuff we actually don\u0027t want to move into depthcharge. Only the stuff in secdata_kernel_lock() should be moved there (and the check for recovery mode should also stay inside vboot).",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641957fc_df9c2bbd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "I\u0027m a bit torn on this issue.  We will perform the sequence of commit \u0026 lock in either (A) in vboot_reference or (B) depthcharge.\n\nIn both cases, we want to call the same vb2api_fail functions depending on what error shows up.  In that sense, it would be preferable to avoid duplicating the \"check error cases and call vb2api_fail\" code.\n\nOn the other hand, what you\u0027re suggesting is for these vb2ex functions to not call vb2api_fail at all.  In that case, we\u0027d have to duplicate the error checking in both (A) and (B).  In this case, we would also HAVE TO create vb2_error_t codes for the specific problems, as you suggested in another comment (I believe in one of the unit tests?).\n\nWhat do you think?  Is it worth adding the extra duplication in order to try to keep vb2api_fail calls out of helper functions?",
+      "parentUuid": "4e2659ff_43c9ea2b",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2f4cd4e4_77b9fa1f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not entirely sure why.  Is it important to try to write as much data as possible when failure is encountered?  Or is it simply to provide for the recovery case?",
+      "parentUuid": "661d9f6d_8997cbee",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04ee5e2d_bb337eac",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -64,6 +118,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "delete?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302fa84f_2df0254f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Depends on the outcome of our discussion on line 332.",
+      "parentUuid": "04ee5e2d_bb337eac",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "24c10722_b13fa1a6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d60355_f2cdfbf7",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d0407ce_5cd8b937",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 71
@@ -98,6 +188,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "I would combine it with the lock check above, i.e. if either commit() or lock() fails we should beep and back out.",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f921f8_6f41259e",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "I used separate clauses with different error messages.",
+      "parentUuid": "2d0407ce_5cd8b937",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "e6aa8592_091061ca",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "I still want to keep the altfw stuff untouched in this commit.  Stacked CL:1776286 after this one to deal with it.",
+      "parentUuid": "27a8004e_76e00d6e",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cca78459_c5534527",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "c058b409_e7c281b5",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca78459_c5534527",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "647758e3_50476584",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -149,6 +293,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "Test that CHANGED flag was cleared?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f9512e_9cd4a503",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Done, and added for other firmware/kernel write cases (except for \"no new changes\").",
+      "parentUuid": "647758e3_50476584",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "510a3288_ee3055ec",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Right -- took it out!",
+      "parentUuid": "005a1224_8084b967",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d2c89ec_e3b04d27",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -183,6 +363,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "Oddly specific test? If anything, I\u0027d check EQ( , 0) (more instances below)",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07267d86_2c765335",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "I think if we take out all the vb2api_fail calls from secdata_tpm.c, it\u0027s kind of overkill to check for EQ(,0).  So removed this one too.",
+      "parentUuid": "0d2c89ec_e3b04d27",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "b2958338_a6782526",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Sometimes I\u0027m too brilliant...\nAdded it to ResetMocks.",
+      "parentUuid": "9d1df536_e246e1f6",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e892a0d1_e59eb011",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -217,6 +433,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "You\u0027re deleting a bunch of old FWMP tests that you only just wrote a couple of patches ago here. Why?",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f03178_496c2abc",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "I checked some patchset diffs, and I can\u0027t find the ones you\u0027re talking about... and this is already quite a while ago, so I can\u0027t really remember if I removed some.  Do you know which patchset they were from?  (It\u0027s entirely possible it was for writing FWMP, which we took out.)",
+      "parentUuid": "e892a0d1_e59eb011",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -240,6 +474,24 @@
     },
     {
       "key": {
+        "uuid": "42fdf636_5ab4d0c0",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Added to all of them for good measure!",
+      "parentUuid": "1a81f087_de237b6d",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c993c4cb_2cebb5d4",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 71
@@ -254,6 +506,24 @@
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64aacfd_ea1e759f",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c993c4cb_2cebb5d4",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +544,24 @@
     },
     {
       "key": {
+        "uuid": "0d8c4d51_8fc2e2de",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89442da_19473cec",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1e87fa2_6f952b47",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 71
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "d378cfa1_5f200a6e",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "See the other comment thread about where to invoke vb2api_fail.  If we keep it out of the vb2ex functions, then we *will* need to create some error values here.  And they will need to have a 1-to-1 mapping to these recovery values.  Well, we probably don\u0027t need to differentiate RO/RW since we\u0027re already in the RW world here.  (Except for recovery, but we always seem to use RW anyways.)",
+      "parentUuid": "e1e87fa2_6f952b47",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "833563fb_74f6519f",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 71
@@ -302,6 +608,24 @@
       "writtenOn": "2019-10-11T02:46:53Z",
       "side": 1,
       "message": "...same for these...",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d714afb2_bf23aabe",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-22T14:47:04Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "833563fb_74f6519f",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
