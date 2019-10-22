@@ -181,15 +181,6 @@ vb2_error_t vb2ex_ec_hash_image(enum VbSelectFirmware_t select,
 	return *hash_size ? VB2_SUCCESS : VB2_ERROR_MOCK;
 }
 
-vb2_error_t vb2ex_ec_get_expected_image(enum VbSelectFirmware_t select,
-					const uint8_t **image, int *image_size)
-{
-	static uint8_t fake_image[64] = {5, 6, 7, 8};
-	*image = fake_image;
-	*image_size = sizeof(fake_image);
-	return get_expected_retval;
-}
-
 vb2_error_t vb2ex_ec_get_expected_image_hash(enum VbSelectFirmware_t select,
 					     const uint8_t **hash, int *hash_size)
 {
@@ -199,8 +190,7 @@ vb2_error_t vb2ex_ec_get_expected_image_hash(enum VbSelectFirmware_t select,
 	return want_ec_hash_size ? VB2_SUCCESS : VB2_ERROR_MOCK;
 }
 
-vb2_error_t vb2ex_ec_update_image(enum VbSelectFirmware_t select,
-				  const uint8_t *image, int image_size)
+vb2_error_t vb2ex_ec_update_image(enum VbSelectFirmware_t select)
 {
 	if (select == VB_SELECT_FIRMWARE_READONLY) {
 		ec_ro_updated = 1;
