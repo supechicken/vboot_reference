@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "733a1734_6280e627",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10ec30f_4d0cd69d",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 29
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56934dc0_ba902c6d",
         "filename": "firmware/2lib/2auxfw_sync.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "27cf138b_06a768d3",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "I like that, I\u0027ll do that.",
+      "parentUuid": "56934dc0_ba902c6d",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c00f135_5e396a2a",
         "filename": "firmware/2lib/include/2auxfw_sync.h",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2019-10-21T23:29:43Z",
       "side": 1,
       "message": "Please add docs, I have no idea what these are supposed to do. (In general, I don\u0027t think naming everything phase1/2/3 helps readability, so we should try to get away from that where possible.)",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba74056f_d0eebbd2",
+        "filename": "firmware/2lib/include/2auxfw_sync.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "My bad, will fix.  I\u0027ll see what I can do with the names.  auxfw_sync_check_for_update, auxfw_sync_perform_update, auxfw_sync_finalize, something like that maybe?",
+      "parentUuid": "3c00f135_5e396a2a",
       "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "eb9ac84e_0ebb1985",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "I thought that was supposed to be the *cause* of the reboot (i.e., who requires a reboot of the EC to RO, EC or auxfw?).  As in, Auxfw update requires a reboot to EC\u0027s RO section first.  I understand, will fix.",
+      "parentUuid": "41b674f2_8b3d16c0",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabd051a_7c563768",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 4
@@ -87,6 +165,24 @@
       "writtenOn": "2019-10-21T23:29:43Z",
       "side": 1,
       "message": "I\u0027m confused why we need both of these? Right now VbExEcVbootDone() protects the auxfw tunnels, there\u0027s no other explicit call anymore. Why did this split into two callbacks here?",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d010a32_b75bbbbe",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "The idea was to split it up so that EcVbootDone takes care of EC housekeeping (check power available), and this one to do the auxfw tunnel protection.  Once they the EC and auxfw FW updates are split up, if EcVbootDone protects the tunnels, then the FW cannot be updated, am I understanding correctly?",
+      "parentUuid": "dabd051a_7c563768",
       "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -199,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "5f3defbb_0e40017c",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "A new flag in vb2_shared_data?  Sure, I\u0027ll take a look.",
+      "parentUuid": "48ed5d40_0758f90d",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe011c43_e6e8e125",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 4
@@ -222,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "4430cc73_3193e7c9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe011c43_e6e8e125",
+      "range": {
+        "startLine": 390,
+        "startChar": 10,
+        "endLine": 392,
+        "endChar": 0
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64122ed9_d54e7e86",
         "filename": "firmware/stub/vboot_api_stub.c",
         "patchSetId": 4
@@ -242,6 +380,30 @@
       "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b31319_bf382d46",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64122ed9_d54e7e86",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 1
+      },
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -277,6 +439,24 @@
       "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0ef6ab_fb371665",
+        "filename": "tests/vb2_auxfw_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-22T17:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79491fa2_a9d6a0c1",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
