@@ -75,7 +75,7 @@ vb2_error_t vb2_secdata_firmware_init(struct vb2_context *ctx)
 
 vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t *dest)
+				     void *dest)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_secdata_firmware *sec =
@@ -86,11 +86,15 @@ vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
 
 	switch (param) {
 	case VB2_SECDATA_FIRMWARE_FLAGS:
-		*dest = sec->flags;
+		*(uint8_t *)dest = sec->flags;
 		return VB2_SUCCESS;
 
 	case VB2_SECDATA_FIRMWARE_VERSIONS:
-		*dest = sec->fw_versions;
+		*(uint32_t *)dest = sec->fw_versions;
+		return VB2_SUCCESS;
+
+	case VB2_SECDATA_FIRMWARE_EC_HASH:
+		memcpy(dest, sec->ec_hash, sizeof(sec->ec_hash));
 		return VB2_SUCCESS;
 
 	default:
@@ -100,7 +104,7 @@ vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
 
 vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t value)
+				     void *value)
 {
 	struct vb2_secdata_firmware *sec =
 		(struct vb2_secdata_firmware *)ctx->secdata_firmware;
@@ -109,28 +113,36 @@ vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 	if (!(vb2_get_sd(ctx)->status & VB2_SD_STATUS_SECDATA_FIRMWARE_INIT))
 		return VB2_ERROR_SECDATA_FIRMWARE_SET_UNINITIALIZED;
 
-	/* If not changing the value, don't regenerate the CRC. */
-	if (vb2_secdata_firmware_get(ctx, param, &now) == VB2_SUCCESS &&
-	    now == value)
-		return VB2_SUCCESS;
-
 	switch (param) {
 	case VB2_SECDATA_FIRMWARE_FLAGS:
 		/* Make sure flags is in valid range */
-		if (value > 0xff)
+		uint8_t flags = *(uint8_t *)value;
+		if (flags > 0xff)
 			return VB2_ERROR_SECDATA_FIRMWARE_SET_FLAGS;
-
+		if (flags == sec->flags)
+			return VB2_SUCCESS;
 		VB2_DEBUG("secdata_firmware flags updated from 0x%x to 0x%x\n",
-			  sec->flags, value);
-		sec->flags = value;
+			  sec->flags, flags);
+		sec->flags = flags;
 		break;
 
 	case VB2_SECDATA_FIRMWARE_VERSIONS:
+		uint32_t versions = *(uint32_t *)value;
+		if (versions == sec->fw_versions)
+			return VB2_SUCCESS;
 		VB2_DEBUG("secdata_firmware versions updated from "
 			  "0x%x to 0x%x\n",
-			  sec->fw_versions, value);
-		sec->fw_versions = value;
+			  sec->fw_versions, versions);
+		sec->fw_versions = versions;
 		break;
+
+	case VB2_SECDATA_FIRMWARE_EC_HASH:
+		if (!memcmp(value, sec->ec_hash, sizeof(sec->ec_hash)))
+			return VB2_SUCCESS;
+		VB2_DEBUG("secdata->ec_hash updated from %08... to %08x...\n",
+			  *(uint32_t *)sec->ec_hash, *(uint32_t *)value);
+		memcpy(sec->ec_hash, value, sizeof(sec->ec_hash));
+		return VB2_SUCCESS;
 
 	default:
 		return VB2_ERROR_SECDATA_FIRMWARE_SET_PARAM;

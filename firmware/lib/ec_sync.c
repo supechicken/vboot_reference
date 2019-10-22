@@ -145,8 +145,8 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx, int devidx,
  * @param select	Which firmware image to check
  * @return VB2_SUCCESS, or non-zero error code.
  */
-static vb2_error_t update_ec(struct vb2_context *ctx, int devidx,
-			     enum VbSelectFirmware_t select)
+vb2_error_t update_ec(struct vb2_context *ctx, int devidx,
+		      enum VbSelectFirmware_t select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 

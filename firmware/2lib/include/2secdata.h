@@ -30,6 +30,16 @@ enum vb2_secdata_firmware_flags {
 	 * vb2_check_dev_switch().
 	 */
 	VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE = (1 << 1),
+
+	/*
+	 * (NO_BOOT, RECOVERY) =
+	 *   (0, 0): NORMAL
+	 *   (1, 0): NO_BOOT
+	 *   (0, 1): RECOVERY
+	 *   (1, 1): NO_BOOT_RECOVERY
+	 */
+	VB2_SECDATA_FIRMWARE_FLAG_NO_BOOT = (1 << 2),
+	VB2_SECDATA_FIRMWARE_FLAG_RECOVERY = (1 << 3),
 };
 
 struct vb2_secdata_firmware {
@@ -41,6 +51,8 @@ struct vb2_secdata_firmware {
 
 	/* Firmware versions */
 	uint32_t fw_versions;
+
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
 
 	/* Reserved for future expansion */
 	uint8_t reserved[3];
@@ -56,6 +68,9 @@ enum vb2_secdata_firmware_param {
 
 	/* Firmware versions */
 	VB2_SECDATA_FIRMWARE_VERSIONS,
+
+	/* EC hash */
+	VB2_SECDATA_FIRMWARE_EC_HASH,
 };
 
 /*****************************************************************************/
@@ -111,7 +126,7 @@ vb2_error_t vb2_secdata_firmware_init(struct vb2_context *ctx);
  */
 vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t *dest);
+				     void *dest);
 
 /**
  * Write a firmware secure storage value.
@@ -123,7 +138,7 @@ vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
  */
 vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t value);
+				     void *value);
 
 /*****************************************************************************/
 /* Kernel secure storage space functions
