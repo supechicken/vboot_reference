@@ -23,9 +23,6 @@ int vb2_mont_ge(const struct vb2_public_key *key, uint32_t *a);
 vb2_error_t vb2_check_padding(const uint8_t *sig,
 			      const struct vb2_public_key *key);
 
-/****************************************************************************
- * vboot_api_kernel.c */
-
 struct RollbackSpaceFwmp;
 struct RollbackSpaceFwmp *VbApiKernelGetFwmp(void);
 
