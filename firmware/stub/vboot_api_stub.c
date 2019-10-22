@@ -145,17 +145,6 @@ vb2_error_t VbExEcBatteryCutOff(void)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExCheckAuxFw(VbAuxFwUpdateSeverity_t *severity)
-{
-	*severity = VB_AUX_FW_NO_UPDATE;
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExUpdateAuxFw(void)
-{
-	return VB2_SUCCESS;
-}
-
 enum VbEcBootMode_t VbGetMode(void)
 {
 	return vboot_mode;
