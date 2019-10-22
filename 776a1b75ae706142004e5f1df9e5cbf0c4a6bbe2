@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "815c1f7f_eed51e80",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T23:39:15Z",
+      "side": 1,
+      "message": "Why is this a separate entry point rather than integrated into SelectAndLoadKernel?",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded37539_9581e861",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T23:39:15Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this and NO_BOOT_MODE are separate flags. As I understand your doc, \"NO_RECOVERY\" just means \"NO_BOOT + RECOVERY\". So then we should represent that with those two flags rather than having three.",
+      "range": {
+        "startLine": 406,
+        "startChar": 25,
+        "endLine": 406,
+        "endChar": 53
+      },
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a41bfa_fa7b26be",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T23:39:15Z",
+      "side": 1,
+      "message": "I think you need to separate the UI stuff from the software sync stuff here, and integrate the software sync stuff into the existing software sync code (in ec_sync.c). Note that there\u0027s currently a bunch of work by Tim and Joel going on in that area (e.g. CL:1867314). When they move software sync into romstage, most of this will not run as part of SelectAndLoadKernel() anymore.",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95289229_ad26aa57",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-22T23:39:15Z",
+      "side": 1,
+      "message": "Like I mentioned in the design doc, I think it would be advantageous to treat this as a special TPM NVRAM space (or maybe even make it part of the kernel space). In that case, vboot should treat it like the other \"secdata\" -- there should be an array in vb2_context that\u0027s filled out by coreboot before first calling into vboot, and if vboot changes it will eventually be written back.",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
