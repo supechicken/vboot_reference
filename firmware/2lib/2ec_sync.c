@@ -161,21 +161,11 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 			     enum VbSelectFirmware_t select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	vb2_error_t rv;
 
 	VB2_DEBUG("Updating %s...\n", image_name_to_string(select));
 
-	/* Get expected EC image */
-	const uint8_t *want = NULL;
-	int want_size;
-	vb2_error_t rv = VbExEcGetExpectedImage(select, &want, &want_size);
-	if (rv) {
-		VB2_DEBUG("VbExEcGetExpectedImage() returned %d\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_IMAGE);
-		return rv;
-	}
-	VB2_DEBUG("image len = %d\n", want_size);
-
-	rv = VbExEcUpdateImage(select, want, want_size);
+	rv = VbExEcUpdateImage(select);
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("VbExEcUpdateImage() returned %d\n", rv);
 
@@ -454,7 +444,15 @@ vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 
 vb2_error_t ec_sync(struct vb2_context *ctx)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	vb2_error_t rv;
+
+	/*
+	 * If the flags indicate that the EC has already gone through
+	 * software sync this boot, then don't do it again.
+	 */
+	if (sd->flags & VB2_SD_STATUS_EC_SYNC_COMPLETE)
+		return VB2_SUCCESS;
 
 	/* Phase 1; this determines if we need an update */
 	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
@@ -485,6 +483,9 @@ vb2_error_t ec_sync(struct vb2_context *ctx)
 	rv = ec_sync_phase3(ctx);
 	if (rv)
 		return rv;
+
+	/* Establish that EC software sync is complete and successful */
+	sd->flags |= VB2_SD_STATUS_EC_SYNC_COMPLETE;
 
 	return VB2_SUCCESS;
 }
