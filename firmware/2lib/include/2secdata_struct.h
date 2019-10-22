@@ -10,6 +10,7 @@
 
 #include "2crc8.h"
 #include "2sysincludes.h"
+#include "2constants.h"
 
 /*****************************************************************************/
 /* Firmware secure storage space */
@@ -37,12 +38,24 @@ struct vb2_secdata_firmware {
 /* Kernel secure storage space */
 
 /* Kernel space - KERNEL_NV_INDEX, locked with physical presence. */
-#define VB2_SECDATA_KERNEL_VERSION 2
+#define VB2_SECDATA_KERNEL_VERSION (1 << 4 | 0 << 0)	/* 1.0 */
 #define VB2_SECDATA_KERNEL_UID 0x4752574c  /* 'LWRG' */
 
+/*
+ * We'll never convert v2 to v3 or the other way. v2 or v3 data will be passed
+ * around as v2 or v3 data, respectively.
+ *
+ * 1. Old coreboot on old device will read/write v2 data from/to TPM.
+ * 2. New coreboot on old device will read/write v2 data from/to TPM.
+ * 3. Old coreboot on new device will not work because Cr50 will return v3 data.
+ * 4. New coreboot on new device will read/write v3 data from/to TPM.
+ *
+ * Except reading ec hash for EFS2, Cr50 will be transparently handling secdata
+ * (as a blob).
+ */
 struct vb2_secdata_kernel {
 	/* Struct version, for backwards compatibility */
-	uint8_t struct_version;
+	uint8_t struct_version;	/* 2 (or 0.2 in v3 format) */
 
 	/* Unique ID to detect space redefinition */
 	uint32_t uid;
@@ -56,6 +69,18 @@ struct vb2_secdata_kernel {
 	/* CRC; must be last field in struct */
 	uint8_t crc8;
 } __attribute__((packed));
+
+struct vb2_secdata_kernel_v3 {
+	uint8_t struct_version;		/* major(4msb):minor(4lsb). 1.0. */
+	uint8_t struct_size;		/* size of the struct */
+	uint8_t crc8;			/* 8-bit CRC for everything below */
+	uint8_t reserved0;
+	uint32_t kernel_versions;
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
+} __attribute__((packed));
+_Static_assert(sizeof(struct vb2_secdata_kernel_v3)
+	       == VB2_SECDATA_KERNEL_SIZE_V3,
+	       "VB2_SECDATA_KERNEL_SIZE_V3 incorrect");
 
 /*****************************************************************************/
 /* Firmware management parameters (FWMP) space */

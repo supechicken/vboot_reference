@@ -5,10 +5,13 @@
  * EC software sync routines for vboot
  */
 
+#include <stdbool.h>
+
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2secdata.h"
 #include "2sysincludes.h"
 #include "vboot_api.h"
 #include "vboot_display.h"
@@ -66,7 +69,7 @@ static void print_hash(const uint8_t *hash, uint32_t hash_size,
 {
 	int i;
 
-	VB2_DEBUG("%s hash: ", desc);
+	VB2_DEBUG("%-10s: ", desc);
 	for (i = 0; i < hash_size; i++)
 		VB2_DEBUG_RAW("%02x", hash[i]);
 	VB2_DEBUG_RAW("\n");
@@ -97,11 +100,23 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 				 enum vb2_firmware_selection select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	const bool is_efs2 = IS_EFS2(ctx);
+	vb2_error_t rv;
 
 	/* Get current EC hash. */
 	const uint8_t *ec_hash = NULL;
 	int ec_hash_size;
-	vb2_error_t rv = vb2ex_ec_hash_image(select, &ec_hash, &ec_hash_size);
+
+	/*
+	 * We compare expected EC hash (Hexp) against the hash known by Cr50
+	 * (Hnvm) in EFS2 and against a hash computed by EC itself (Hnow) in
+	 * non-EFS.
+	 */
+	if (is_efs2)
+		rv = vb2_secdata_kernel_get_hash(ctx,
+						 &ec_hash, &ec_hash_size);
+	else
+		rv = vb2ex_ec_hash_image(select, &ec_hash, &ec_hash_size);
 	if (rv) {
 		VB2_DEBUG("vb2ex_ec_hash_image() returned %#x\n", rv);
 		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
@@ -125,8 +140,33 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		return VB2_ERROR_EC_HASH_SIZE;
 	}
 
+	print_hash(hash, hash_size, "Expected");
+
 	if (vb2_safe_memcmp(ec_hash, hash, hash_size)) {
-		print_hash(hash, hash_size, "Expected");
+		if (is_efs2)
+			/* Register the new hash in Cr50 (Hnvm <- Hexp). */
+			vb2_secdata_kernel_set_hash(ctx, hash, ec_hash_size);
+		/*
+		 * When we reach here (because of mismatch Hexp != Hnvm), we
+		 * schedule RW update unconditionally for EFS2.
+		 *
+		 * Hash and EC status are one of:
+		 *
+		 *  1. Hexp != Hnow == Hnvm: EC in RW
+		 *  2. Hexp == Hnow != Hnvm: EC in RO
+		 *  3. Hexp != Hnow != Hnvm: EC in RO
+		 *
+		 * In case of #1, which is most common, we will end up rebooting
+		 * in ec_sync_phase1 (because we request ECSYNC_RW while EC in
+		 * RW). After reboot, phase2 will sync Hexp and Hnow (and reboot
+		 * again).
+		 *
+		 * In case of #2, phase2 will update RW unnecessarily but it's
+		 * harmless.
+		 *
+		 * In case of #3, phase2 will update RW and we'll get
+		 * Hexp == Hnow == Hnvm in one shot.
+		 */
 		sd->flags |= SYNC_FLAG(select);
 	}
 
@@ -177,6 +217,8 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
+	VB2_DEBUG("Updating %s successful\n", image_name_to_string(select));
+
 	return VB2_SUCCESS;
 }
 
@@ -190,13 +232,22 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int in_rw = 0;
+	vb2_error_t rv = VB2_SUCCESS;
+
+	if (IS_EFS2(ctx))
+		/* In EFS2, we ask Cr50 because we don't trust EC RW. EC is
+		 * supposed to be in RW iff !NO_BOOT && !RECOVERY_MODE. */
+		in_rw = !(ctx->flags
+			& (VB2_CONTEXT_NO_BOOT | VB2_CONTEXT_RECOVERY_MODE));
+	else
 	/*
 	 * We don't use vb2ex_ec_trusted, which checks EC_IN_RW. It is
 	 * controlled by cr50 but on some platforms, cr50 can't know when a EC
 	 * resets. So, we trust what EC-RW says. If it lies it's in RO, we'll
 	 * flash RW while it's in RW.
 	 */
-	vb2_error_t rv = vb2ex_ec_running_rw(&in_rw);
+		rv = vb2ex_ec_running_rw(&in_rw);
+
 	/* If we couldn't determine where the EC was, reboot to recovery. */
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("vb2ex_ec_running_rw() returned %#x\n", rv);
@@ -226,7 +277,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	const enum vb2_firmware_selection select_rw = EC_EFS ?
 		VB_SELECT_FIRMWARE_EC_UPDATE :
 		VB_SELECT_FIRMWARE_EC_ACTIVE;
-	VB2_DEBUG("select_rw=%d\n", select_rw);
+	VB2_DEBUG("select_rw=%s\n", image_name_to_string(select_rw));
 
 	/* Update the RW Image */
 	if (sd->flags & SYNC_FLAG(select_rw)) {
@@ -234,13 +285,23 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW.
 		 * TODO: Switch slot and proceed if EC is still in RO. */
-		if (EC_EFS) {
+		if (IS_EFS2(ctx)) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
+			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		} else if (EC_EFS) {
+			VB2_DEBUG("Rebooting to switch to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
-	/* Tell EC to jump to its RW image */
+	/*
+	 * Tell EC to jump to its RW image.
+	 *
+	 * In EFS2, we come here iff all hashes match (Hexp == Hnvm == Hnow) and
+	 * EC is in RW. So, jumping to RW will be skipped.
+	 * It's ok to let compromised RW lie about IN_RW here because we only
+	 * ask it to (re)jump.
+	 */
 	if (!(sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW)) {
 		VB2_DEBUG("jumping to EC-RW\n");
 		rv = vb2ex_ec_jump_to_rw();
@@ -347,6 +408,11 @@ static vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 	/* Check if we need to update RW.  Failures trigger recovery mode. */
 	if (check_ec_hash(ctx, VB_SELECT_FIRMWARE_EC_ACTIVE))
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+	/* In EFS2, we schedule an update if EC is in RO. */
+	if (IS_EFS2(ctx) && !(sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW))
+		sd->flags |= SYNC_FLAG(VB_SELECT_FIRMWARE_EC_ACTIVE);
+
 	/* See if we need to update EC-RO. */
 	if (vb2_nv_get(ctx, VB2_NV_TRY_RO_SYNC) &&
 	    check_ec_hash(ctx, VB_SELECT_FIRMWARE_READONLY)) {
