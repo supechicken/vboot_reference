@@ -385,6 +385,76 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 		sd->vbsd->timer_vb_select_and_load_kernel_exit = VbExGetTimer();
 }
 
+vb2_error_t VbSelectAndLoadKernel2(struct vb2_context *ctx,
+				   VbSharedDataHeader *shared,
+				   VbSelectAndLoadKernelParams *kparams)
+{
+	vb2_gbb_flags_t gbb_flags = vb2_get_gbb(ctx)->flags;
+	vb2_error_t rv = vb2_kernel_setup(ctx, shared, kparams);
+
+	if (rv)
+		goto VbSelectAndLoadKernel2_exit;
+
+	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);
+
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		VB2_DEBUG("RECOVERY mode\n");
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			rv = VbBootRecoveryMenu(ctx);
+		else
+			rv = VbBootRecovery(ctx);
+	} else if (ctx->flags & VB2_CONTEXT_NO_RECOVERY_MODE) {
+		VB2_DEBUG("NO_RECOVERY mode\n");
+		/* TODO: Get SOC and BATT_FLAG from EC and show screens. */
+		while (1)
+			;
+	} else if (gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC) {
+		VB2_DEBUG("Software Sync is disabled\n");
+	} else {
+		/* Have Cr50 check Hnvm v.s. Hcbfs. */
+		rv = cr50_set_ec_hash(ctx);
+		if (rv == VB2_ERROR_HASH_MISMATCH) {
+			VB2_DEBUG("Hnvm != Hcbfs. Reset EC.\n");
+			while (1)
+				;
+		} else if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("AP-Cr50 communication error.\n");
+			VbSetRecoveryRequest(ctx, VB2_CR50_SET_EC_HASH);
+			return rv;
+		} else if (ctx->flags & VB2_CONTEXT_NO_BOOT_MODE) {
+			VB2_DEBUG("Hnvm == Hcbfs != Hspi. Update EC SPI.\n");
+			rv = update_ec(ctx, 0, VB_SELECT_FIRMWARE_EC_UPDATE);
+			if (rv == VB2_SUCCESS) {
+				VB2_DEBUG("Software Sync done. Reset EC.\n");
+				/* TODO: Send RESET command to Cr50 */
+				rv = VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+			}
+			goto VbSelectAndLoadKernel2_exit;
+		}
+		/* Hcbfs == Hnvm == Hspi. Fall through to normal boot. */
+	}
+
+	/* Normal/Developer Boot */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		if (kparams->inflags & VB_SALK_INFLAGS_ENABLE_DETACHABLE_UI)
+			rv = VbBootDeveloperMenu(ctx);
+		else
+			rv = VbBootDeveloper(ctx);
+	} else {
+		rv = VbBootNormal(ctx);
+	}
+
+VbSelectAndLoadKernel2_exit:
+	if (VB2_SUCCESS == rv)
+		rv = vb2_kernel_phase4(ctx, kparams);
+
+	vb2_kernel_cleanup(ctx);
+
+	/* Pass through return value from boot path */
+	VB2_DEBUG("Returning %d\n", (int)rv);
+	return rv;
+}
+
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
