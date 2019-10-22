@@ -101,6 +101,11 @@ vb2_error_t VbSharedDataSetKernelKey(VbSharedDataHeader *header,
 
 int vb2_allow_recovery(struct vb2_context *ctx)
 {
+	if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+		VB2_DEBUG("NO_BOOT_RECOVERY mode\n");
+		return 0;
+	}
+
 	/* VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY forces this to always return
 	   true. */
 	if (vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)

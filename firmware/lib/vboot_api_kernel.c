@@ -427,8 +427,18 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
  VbSelectAndLoadKernel_exit:
 
-	if (VB2_SUCCESS == rv)
-		rv = vb2_kernel_phase4(ctx, kparams);
+	if (VB2_SUCCESS == rv) {
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+			/*
+			 * Return error for all cases returning SUCCESS against
+			 * NO_BOOT flag.
+			 */
+			VB2_DEBUG("Blocking boot in NO_BOOT mode.\n");
+			rv = VB2_ERROR_UNKNOWN;
+		} else {
+			rv = vb2_kernel_phase4(ctx, kparams);
+		}
+	}
 
 	vb2_kernel_cleanup(ctx);
 
