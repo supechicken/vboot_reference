@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "c8e7dfa2_0b9b7083",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2019-10-22T01:33:32Z",
+      "side": 1,
+      "message": "Unfortunately yes.  A combination of inefficient protocol and shared SPI bus makes the programming take longer than 30 seconds on Wilco.",
+      "parentUuid": "084e46de_44167b02",
+      "revId": "ddbea000d017329b74402f5279e8f3864b0cb3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48ed5d40_0758f90d",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 4
