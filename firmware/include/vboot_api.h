@@ -682,13 +682,6 @@ vb2_error_t VbExEcHashImage(int devidx, enum VbSelectFirmware_t select,
 			    const uint8_t **hash, int *hash_size);
 
 /**
- * Get the expected contents of the EC image associated with the main firmware
- * specified by the "select" argument.
- */
-vb2_error_t VbExEcGetExpectedImage(int devidx, enum VbSelectFirmware_t select,
-				   const uint8_t **image, int *image_size);
-
-/**
  * Read the SHA-256 hash of the expected contents of the EC image associated
  * with the main firmware specified by the "select" argument.
  */
@@ -699,8 +692,7 @@ vb2_error_t VbExEcGetExpectedImageHash(int devidx,
 /**
  * Update the selected EC image.
  */
-vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select,
-			      const uint8_t *image, int image_size);
+vb2_error_t VbExEcUpdateImage(int devidx, enum VbSelectFirmware_t select);
 
 /**
  * Lock the selected EC code to prevent updates until the EC is rebooted.
