@@ -395,6 +395,16 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			goto VbSelectAndLoadKernel_exit;
 		}
 
+		/*
+		 * In EFS2, recovery mode can be entered even when battery is
+		 * drained or damaged. EC-RO sets NO_BOOT flag in such case and
+		 * uses PD power to boot AP.
+		 *
+		 * TODO: Inform user why recovery failed to start.
+		 */
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT)
+			VB2_DEBUG("NO_BOOT in RECOVERY mode\n");
+
 		/* Recovery boot.  This has UI. */
 		if (LEGACY_MENU_UI)
 			rv = VbBootRecoveryLegacyMenu(ctx);
@@ -429,6 +439,13 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	}
 
  VbSelectAndLoadKernel_exit:
+
+	if (VB2_SUCCESS == rv && (ctx->flags & VB2_CONTEXT_NO_BOOT)) {
+		/* Stop all cases returning SUCCESS against NO_BOOT flag. */
+		VB2_DEBUG("Blocking boot in NO_BOOT mode.\n");
+		vb2api_fail(ctx, VB2_RECOVERY_RW_INVALID_OS, rv);
+		rv = VB2_ERROR_ESCAPE_NO_BOOT;
+	}
 
 	if (rv == VB2_SUCCESS)
 		vb2_kernel_fill_kparams(ctx, kparams);
