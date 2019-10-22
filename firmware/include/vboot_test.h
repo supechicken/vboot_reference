@@ -40,4 +40,12 @@ struct LoadKernelParams *VbApiKernelGetParams(void);
  */
 uint8_t vb2_secdata_kernel_crc(struct vb2_context *ctx);
 
+/****************************************************************************
+ * 2secdata_kernel.c */
+
+/**
+ * Clear cache for expected EC hash
+ */
+void vb2_clear_expected_ec_hash_cache(void);
+
 #endif  /* VBOOT_REFERENCE_TEST_API_H_ */
