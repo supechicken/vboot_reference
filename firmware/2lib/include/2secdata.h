@@ -75,6 +75,9 @@ struct vb2_secdata_kernel {
 	/* Kernel versions */
 	uint32_t kernel_versions;
 
+	/* New field for struct_version >= 3 */
+	uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];
+
 	/* Reserved for future expansion */
 	uint8_t reserved[3];
 
@@ -86,6 +89,9 @@ struct vb2_secdata_kernel {
 enum vb2_secdata_kernel_param {
 	/* Kernel versions */
 	VB2_SECDATA_KERNEL_VERSIONS = 0,
+
+	/* EC hash */
+	VB2_SECDATA_KERNEL_EC_HASH,
 };
 
 /*****************************************************************************/
@@ -123,7 +129,7 @@ vb2_error_t vb2_secdata_firmware_get(struct vb2_context *ctx,
  */
 vb2_error_t vb2_secdata_firmware_set(struct vb2_context *ctx,
 				     enum vb2_secdata_firmware_param param,
-				     uint32_t value);
+				     uint32_t *value);
 
 /*****************************************************************************/
 /* Kernel secure storage space functions
