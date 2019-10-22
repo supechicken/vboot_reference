@@ -208,6 +208,8 @@ const char *RecoveryReasonString(uint8_t code)
 		return "User-mode requested DRAM train and reboot";
 	case VB2_RECOVERY_US_UNSPECIFIED:
 		return "Unspecified/unknown error in user-mode";
+	case VB2_RECOVERY_CR50_BOOT_MODE:
+		return "Failed to get boot mode from Cr50";
 	}
 	return "Unknown or deprecated error code";
 }
