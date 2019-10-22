@@ -15,10 +15,37 @@
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 
+#include <stdio.h>
+
 #define WHICH_EC(select) \
 	((select) == VB_SELECT_FIRMWARE_READONLY ? \
 	 VB2_SD_FLAG_ECSYNC_EC_RO : VB2_SD_FLAG_ECSYNC_EC_RW)
 
+/**
+ * If no display is available, set DISPLAY_REQUEST in NV space
+ */
+static int check_reboot_for_display(struct vb2_context *ctx)
+{
+	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
+		VB2_DEBUG("Reboot to initialize display\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+		return 1;
+	}
+	return 0;
+}
+
+/**
+ * Display the WAIT screen
+ */
+static void display_wait_screen(struct vb2_context *ctx, const char *fw_name)
+{
+	VB2_DEBUG("%s update is slow. Show WAIT screen.\n", fw_name);
+	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
+}
+
+/**
+ * Set the RECOVERY_REQUEST flag in NV space
+ */
 static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
 {
 	VB2_DEBUG("request_recovery(%u)\n", recovery_request);
@@ -181,7 +208,7 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 }
 
 /**
- * Set VB2_SD_FLAG_ECSYNC_EC_IN_RW flag for a EC
+ * Set VB2_SD_FLAG_ECSYNC_EC_IN_RW flag for the EC
  *
  * @param ctx		Vboot2 context
  */
@@ -270,7 +297,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 
 		/*
 		 * Get the current recovery request (if any).  This gets
-		 * overwritten by a failed try.  If a later try succeeds, we'll
+		 * overwritten by a failed try.	 If a later try succeeds, we'll
 		 * need to restore this request (or the lack of a request), or
 		 * else we'll end up in recovery mode even though RO software
 		 * sync did eventually succeed.
@@ -307,6 +334,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	if (rv != VB2_SUCCESS)
 		return rv;
 
+	/* Disable further sysjumps */
 	rv = VbExEcDisableJump(0);
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("VbExEcDisableJump() returned %d\n", rv);
@@ -388,8 +416,41 @@ static int ec_sync_allowed(struct vb2_context *ctx)
 	return 1;
 }
 
-vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
-				 VbAuxFwUpdateSeverity_t *severity)
+/**
+ * Update the specified Aux FW and verify the update succeeded
+ */
+static vb2_error_t update_auxfw(struct vb2_context *ctx)
+{
+	vb2_error_t rv;
+
+	VB2_DEBUG("Updating auxfw\n");
+
+	/*
+	 * The underlying platform is expected to know how and where to find the
+	 * firmware image for all auxfw devices.
+	 */
+	rv = vb2ex_auxfw_update();
+	if (rv != VB2_SUCCESS) {
+		VB2_DEBUG("vb2ex_auxfw_update() returned %d\n", rv);
+
+		/*
+		 * The device may need a reboot.  It may need to unprotect the
+		 * region before updating, or may need to reboot after updating.
+		 * Either way, it's not an error requiring recovery mode.
+		 *
+		 * If we fail for any other reason, trigger recovery mode.
+		 */
+		if (rv != VBERROR_EC_REBOOT_TO_RO_REQUIRED)
+			request_recovery(ctx, VB2_RECOVERY_AUX_FW_UPDATE);
+
+		return rv;
+	}
+
+	return rv;
+}
+
+vb2_error_t auxfw_sync_check_update(struct vb2_context *ctx,
+				    VbAuxFwUpdateSeverity_t *severity)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
@@ -399,21 +460,32 @@ vb2_error_t ec_sync_check_aux_fw(struct vb2_context *ctx,
 		*severity = VB_AUX_FW_NO_UPDATE;
 		return VB2_SUCCESS;
 	}
-	return VbExCheckAuxFw(severity);
+
+	return vb2ex_auxfw_check(severity);
 }
 
-vb2_error_t ec_sync_update_aux_fw(struct vb2_context *ctx)
+vb2_error_t auxfw_sync_perform_update(struct vb2_context *ctx)
 {
-	vb2_error_t rv = VbExUpdateAuxFw();
-	if (rv) {
-		if (rv == VBERROR_EC_REBOOT_TO_RO_REQUIRED) {
-			VB2_DEBUG("AUX firmware update requires RO reboot.\n");
-		} else {
-			VB2_DEBUG("AUX firmware update/protect failed.\n");
-			request_recovery(ctx, VB2_RECOVERY_AUX_FW_UPDATE);
-		}
-	}
-	return rv;
+	vb2_error_t rv;
+
+	/* Attempt the update */
+	rv = update_auxfw(ctx);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t auxfw_sync_finalize(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/* Auxfw verification (and possibly updating) is done */
+	vb2_error_t rv = vb2ex_auxfw_vboot_done(!!sd->recovery_reason);
+	if (rv)
+		return rv;
+
+	return VB2_SUCCESS;
 }
 
 vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
@@ -452,25 +524,8 @@ vb2_error_t ec_sync_phase3(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-static int check_reboot_for_display(struct vb2_context *ctx)
+vb2_error_t ec_sync(struct vb2_context *ctx)
 {
-	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
-		VB2_DEBUG("Reboot to initialize display\n");
-		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
-		return 1;
-	}
-	return 0;
-}
-
-static void display_wait_screen(struct vb2_context *ctx, const char *fw_name)
-{
-	VB2_DEBUG("%s update is slow. Show WAIT screen.\n", fw_name);
-	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
-}
-
-vb2_error_t ec_sync_all(struct vb2_context *ctx)
-{
-	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
 	vb2_error_t rv;
 
 	/* Phase 1; this determines if we need an update */
@@ -479,9 +534,7 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 
 	/* Check if EC SW Sync Phase1 needs reboot */
 	if (phase1_rv) {
-		ec_sync_check_aux_fw(ctx, &fw_update);
-		/* It does -- speculatively check if we need display as well */
-		if (need_wait_screen || fw_update == VB_AUX_FW_SLOW_UPDATE)
+		if (need_wait_screen)
 			check_reboot_for_display(ctx);
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
@@ -500,8 +553,21 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 	if (rv)
 		return rv;
 
-	/* EC in RW, now we can check the severity of the AUX FW update */
-	rv = ec_sync_check_aux_fw(ctx, &fw_update);
+	/* Phase 3; Completes sync and handles battery cutoff */
+	rv = ec_sync_phase3(ctx);
+	if (rv)
+		return rv;
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t auxfw_sync(struct vb2_context *ctx)
+{
+	VbAuxFwUpdateSeverity_t fw_update = VB_AUX_FW_NO_UPDATE;
+	vb2_error_t rv;
+
+	/* Check for update severity */
+	rv = auxfw_sync_check_update(ctx, &fw_update);
 	if (rv)
 		return rv;
 
@@ -514,20 +580,18 @@ vb2_error_t ec_sync_all(struct vb2_context *ctx)
 	}
 
 	if (fw_update > VB_AUX_FW_NO_UPDATE) {
-		/* Do Aux FW software sync */
-		rv = ec_sync_update_aux_fw(ctx);
+		rv = auxfw_sync_perform_update(ctx);
 		if (rv)
 			return rv;
 		/*
 		 * AUX FW Update is applied successfully. Request EC reboot to
-		 * RO, so that the chips that had FW update gets reset to a
+		 * RO, so that the chips that had FW update get reset to a
 		 * clean state.
 		 */
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
-	/* Phase 3; Completes sync and handles battery cutoff */
-	rv = ec_sync_phase3(ctx);
+	rv = auxfw_sync_finalize(ctx);
 	if (rv)
 		return rv;
 

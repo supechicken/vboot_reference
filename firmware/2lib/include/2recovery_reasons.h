@@ -246,6 +246,9 @@ enum vb2_nv_recovery {
 	/* User requested recovery for training memory and rebooting. */
 	VB2_RECOVERY_TRAIN_AND_REBOOT = 0xc4,
 
+	/* Unable to protect Auxfw */
+	VB2_RECOVERY_AUXFW_PROTECT = 0xc5,
+
 	/* Unspecified/unknown error in user-mode */
 	VB2_RECOVERY_US_UNSPECIFIED  = 0xff,
 };
