@@ -703,6 +703,7 @@ TEST_NAMES += ${TEST_FUTIL_NAMES}
 
 TEST2X_NAMES = \
 	tests/vb2_api_tests \
+	tests/vb2_auxfw_sync_tests \
 	tests/vb2_common_tests \
 	tests/vb2_ec_sync_tests \
 	tests/vb2_gbb_tests \
@@ -1261,6 +1262,7 @@ endif
 .PHONY: run2tests
 run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_api_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_auxfw_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_ec_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
