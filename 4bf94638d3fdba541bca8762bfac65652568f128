@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "e0083211_174ea424",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "cleanup_funcs are run on legacy handoff... see depthcharge/src/boot/payload.c:payload_run()",
+      "parentUuid": "cfd3dff2_eb55ce09",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "661d9f6d_8997cbee",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -601,6 +619,24 @@
     },
     {
       "key": {
+        "uuid": "9fdde646_14466f4c",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "I guess all the more detailed stuff is handled by vb2_secdata_fwmp_tests.c, so it should be fine.",
+      "parentUuid": "3606a802_8e6b4168",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a81f087_de237b6d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -771,6 +807,24 @@
       "side": 1,
       "message": "The vb2ex_commit_data call is the one that I\u0027m talking about.  If vboot needs to handle the vb2api_fail calls, then we need the set of return values to pass through vb2ex_commit_data.",
       "parentUuid": "2951b4c2_19f806ca",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b3c984_f1a1a65e",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "I see. Yes, for vb2ex_commit_data(), if it does 3 distinct things that could all individually fail, I think it should have 3 different return codes to return. I think we should do that regardless of where the recovery reason is set.\n\nFor the vb2api_fail(), if you believe it makes things a lot simpler to do it inside the callback, I think that\u0027s okay too. If it\u0027s no big deal either way, doing it in vboot seems cleaner.",
+      "parentUuid": "aa814c7a_8b04b9ac",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

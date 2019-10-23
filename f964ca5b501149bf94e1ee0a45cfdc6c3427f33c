@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e95c0912_90a71def",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this should check for recovery mode... I think this should return an error if anything failed, and then the caller can choose to continue if it\u0027s in recovery mode. See also the way you handle vb2ex_commit_data() below... if that would return an error you would pass that up unconditionally, while for the TPM stuff you don\u0027t pass it up in recovery mode. That\u0027s inconsistent and I think you should always pass it up instead.",
+      "range": {
+        "startLine": 361,
+        "startChar": 15,
+        "endLine": 361,
+        "endChar": 56
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8746e7e_3479443d",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "nit: use a different byte for each to make sure you read the one you wanted?",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e83a1f8_4c65a81e",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T22:54:54Z",
+      "side": 1,
+      "message": "Should use a different byte here than above.",
+      "range": {
+        "startLine": 384,
+        "startChar": 31,
+        "endLine": 384,
+        "endChar": 35
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
