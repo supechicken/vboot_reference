@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "07ed47d6_d018abb1",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 71
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a1eeee_d9aa119e",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e2659ff_43c9ea2b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Well, okay, eventually this function (and secdata_kernel_lock()) will go away entirely. When we move locking into depthcharge I think we should implement it as a cleanup_func, so the whole problem of not locking twice completely eliminates itself. But I\u0027m not sure how soon we\u0027ll get there.\n\nFor now, this code just looks a bit weird as written to me because you check for recovery mode when we know that secdata_kernel_lock() can only ever return success for that case anyway. And the whole \"don\u0027t lock in recovery mode\" seems like a higher level policy decision to me that fits better in the higher level function (regardless of the fact that both will eventually need to move to depthcharge).\n\nAlso, the name vb2ex_secdata_kernel_lock() just seems totally wrong here (this isn\u0027t an external callback right now, and I don\u0027t think we\u0027ll ever want that callback in the future either).",
       "parentUuid": "641957fc_df9c2bbd",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd3dff2_eb55ce09",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:13:03Z",
+      "side": 1,
+      "message": "Re. implementing as a cleanup_func -- how would this work for the VbExLegacy case?\n\nRe. checking secdata_kernel_lock return value -- let\u0027s move the RECOVERY_MODE check out of secdata_kernel_lock as you suggested.\n\nRe. this function name: I\u0027ve already renamed it to vb2_secdata_kernel_lock -- see the latest patchset.",
+      "parentUuid": "bcaeb59d_b4bd1033",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -158,6 +194,24 @@
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d4bbab8_54b17086",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59502696_2a8c02a3",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -529,6 +583,24 @@
     },
     {
       "key": {
+        "uuid": "3606a802_8e6b4168",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:13:03Z",
+      "side": 1,
+      "message": "Ah, I see.\n\nWe do check this stuff through the vb2api_secdata_*_check calls (which we are mocking out here, and testing separately elsewhere).  And yeah, let\u0027s definitely add a check for one of them, say CRC failure.\n\nBut I\u0027m not sure it makes to check for all possible return values, since at least in the case of secdata_firmware and secdata_kernel, the _check call failing just results in returning TPM_E_CORRUPTED_STATE indescriminately?\n\nIn the case of secdata_fwmp, we can add two cases:\n* CRC failure on first call\n* need more data on first call, CRC failure on second call\n\nDoes that sound sufficient?",
+      "parentUuid": "f057f11c_899e95d2",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a81f087_de237b6d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -681,6 +753,24 @@
       "side": 1,
       "message": "Hmm... okay, if you\u0027re saying that we\u0027ll move all the TPM stuff out of vboot anyway so we won\u0027t need TPM access errors, I guess we can keep using UNKNOWN for now. (Although, on the other hand, errors are really cheap even if we only use them for a couple of months.)\n\nI\u0027m not really sure I follow you on the whole vb2api_fail() stuff. Of course, when secdata reading happens in depthcharge, depthcharge would call vb2api_fail() and reboot if that fails. It can\u0027t really \"pass in\" an error into kernel_phase1(), after all. (Same for writing it back after we exit out of vboot. Although when vb2ex_commit_data() fails, that\u0027s a different thing and there I think it should just return an error and vboot can decide what to do with that.)",
       "parentUuid": "d378cfa1_5f200a6e",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa814c7a_8b04b9ac",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:13:03Z",
+      "side": 1,
+      "message": "The vb2ex_commit_data call is the one that I\u0027m talking about.  If vboot needs to handle the vb2api_fail calls, then we need the set of return values to pass through vb2ex_commit_data.",
+      "parentUuid": "2951b4c2_19f806ca",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
