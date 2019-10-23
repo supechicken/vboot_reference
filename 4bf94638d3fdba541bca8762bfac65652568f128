@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c8a1eeee_d9aa119e",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 71
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T01:09:45Z",
+      "side": 1,
+      "message": "Yes, unfortunately not everyone paid attention when adding stuff over the years. But we should still try when we can. (Of course this particular one may eventually move from RW to RO at some point, but can\u0027t really anticipate that yet. At least it clearly doesn\u0027t belong in the usermode block.)",
+      "parentUuid": "d66db2cb_9567158f",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e2659ff_43c9ea2b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "bcaeb59d_b4bd1033",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T01:09:45Z",
+      "side": 1,
+      "message": "Well, okay, eventually this function (and secdata_kernel_lock()) will go away entirely. When we move locking into depthcharge I think we should implement it as a cleanup_func, so the whole problem of not locking twice completely eliminates itself. But I\u0027m not sure how soon we\u0027ll get there.\n\nFor now, this code just looks a bit weird as written to me because you check for recovery mode when we know that secdata_kernel_lock() can only ever return success for that case anyway. And the whole \"don\u0027t lock in recovery mode\" seems like a higher level policy decision to me that fits better in the higher level function (regardless of the fact that both will eventually need to move to depthcharge).\n\nAlso, the name vb2ex_secdata_kernel_lock() just seems totally wrong here (this isn\u0027t an external callback right now, and I don\u0027t think we\u0027ll ever want that callback in the future either).",
+      "parentUuid": "641957fc_df9c2bbd",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "661d9f6d_8997cbee",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 71
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "Actually, I\u0027m not entirely sure why.  Is it important to try to write as much data as possible when failure is encountered?  Or is it simply to provide for the recovery case?",
       "parentUuid": "661d9f6d_8997cbee",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59502696_2a8c02a3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T01:09:45Z",
+      "side": 1,
+      "message": "It is important that if there\u0027s some persistent problem with writing secdata and we run vb2api_fail() to set a recovery reason for that in nvdata, we\u0027ll still eventually get to the part where we commit that nvdata. So yeah, I think it\u0027s important. (I guess if we exit cleanly after this depthcharge should sync back nvdata anyway... but still, I think it\u0027s better not to skip it here.)",
+      "parentUuid": "2f4cd4e4_77b9fa1f",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -457,6 +511,24 @@
     },
     {
       "key": {
+        "uuid": "f057f11c_899e95d2",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T01:09:45Z",
+      "side": 1,
+      "message": "Just diff this patch set against Base and scroll down, there\u0027s a bunch of red on the left side at the end of this function (or what used to be RollbackFwmpTest()). They don\u0027t look obsolete to me (e.g. struct size too small, bad CRC, version differences).",
+      "parentUuid": "c5f03178_496c2abc",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a81f087_de237b6d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 71
@@ -591,6 +663,24 @@
       "side": 1,
       "message": "See the other comment thread about where to invoke vb2api_fail.  If we keep it out of the vb2ex functions, then we *will* need to create some error values here.  And they will need to have a 1-to-1 mapping to these recovery values.  Well, we probably don\u0027t need to differentiate RO/RW since we\u0027re already in the RW world here.  (Except for recovery, but we always seem to use RW anyways.)",
       "parentUuid": "e1e87fa2_6f952b47",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2951b4c2_19f806ca",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T01:09:45Z",
+      "side": 1,
+      "message": "Hmm... okay, if you\u0027re saying that we\u0027ll move all the TPM stuff out of vboot anyway so we won\u0027t need TPM access errors, I guess we can keep using UNKNOWN for now. (Although, on the other hand, errors are really cheap even if we only use them for a couple of months.)\n\nI\u0027m not really sure I follow you on the whole vb2api_fail() stuff. Of course, when secdata reading happens in depthcharge, depthcharge would call vb2api_fail() and reboot if that fails. It can\u0027t really \"pass in\" an error into kernel_phase1(), after all. (Same for writing it back after we exit out of vboot. Although when vb2ex_commit_data() fails, that\u0027s a different thing and there I think it should just return an error and vboot can decide what to do with that.)",
+      "parentUuid": "d378cfa1_5f200a6e",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
