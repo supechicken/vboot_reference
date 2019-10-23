@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "26d73972_c3957d0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0a554f_cd73876f",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "343c0b2a_34852ad7",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "564a0a9e_aca956d3",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343c0b2a_34852ad7",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e16b620b_6d42029b",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fc1fe31_a3d0ae08",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d08d60dd_50543425",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2019-08-01T02:38:08Z",
       "side": 1,
       "message": "This whole block is dead code (nothing sets VBSD_FWB_TRIED anymore). Can we just take it out?",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a2f642_69abd90c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "We dealt with this in CL:1833369.",
+      "parentUuid": "d08d60dd_50543425",
       "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5d6d9225_a36bb529",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "0fa1653f_979d0caa",
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec0614d3_c4ba73c4",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 2
@@ -98,6 +188,30 @@
       "writtenOn": "2019-08-01T02:38:08Z",
       "side": 1,
       "message": "80 chars\n\nMaybe you could avoid a lot of pain by just calling it VB2_ERROR_TLK_NO_DISK_FOUND? When names become so descriptive that they force every line they appear on to get broken 3 times, readability starts going down again.",
+      "range": {
+        "startLine": 909,
+        "startChar": 38,
+        "endLine": 909,
+        "endChar": 53
+      },
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c885802_674560c9",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T11:20:58Z",
+      "side": 1,
+      "message": "Hmm... is there a point in differentiating between TLK and LK?  How about we just use _LK_ for all of them?",
+      "parentUuid": "ec0614d3_c4ba73c4",
       "range": {
         "startLine": 909,
         "startChar": 38,
