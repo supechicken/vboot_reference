@@ -674,14 +674,7 @@ vb2_error_t vb2ex_ec_disable_jump(void);
 vb2_error_t vb2ex_ec_hash_image(enum vb2_firmware_selection select,
 				const uint8_t **hash, int *hash_size);
 
-/**
- * Get the expected contents of the EC image associated with the main firmware
- * specified by the "select" argument.
- */
-vb2_error_t vb2ex_ec_get_expected_image(enum vb2_firmware_selection select,
-					const uint8_t **image, int *image_size);
-
-/**
+/*
  * Read the SHA-256 hash of the expected contents of the EC image associated
  * with the main firmware specified by the "select" argument.
  */
@@ -692,8 +685,7 @@ vb2_error_t vb2ex_ec_get_expected_image_hash(enum vb2_firmware_selection select,
 /**
  * Update the selected EC image.
  */
-vb2_error_t vb2ex_ec_update_image(enum vb2_firmware_selection select,
-				  const uint8_t *image, int image_size);
+vb2_error_t vb2ex_ec_update_image(enum vb2_firmware_selection select);
 
 /**
  * Lock the EC code to prevent updates until the EC is rebooted.
