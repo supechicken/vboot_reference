@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1451643_e59a23e2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-23T01:45:56Z",
+      "side": 0,
+      "message": "This should be removed from Makefile.inc as well in vboot.\n\nActually, as a follow-up, any references to PD_SYNC should be removed from depthcharge ebuild and pd_sync USE flag should be deprecated.",
+      "range": {
+        "startLine": 350,
+        "startChar": 7,
+        "endLine": 350,
+        "endChar": 14
+      },
+      "revId": "40df09576fddbfbac24ff8e049518950b85138aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

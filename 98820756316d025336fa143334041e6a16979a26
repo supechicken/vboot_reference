@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dcbe70d_be2dbe9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-23T01:45:56Z",
+      "side": 1,
+      "message": "Can you please also add a message indicating the devidx being dropped?",
+      "revId": "98820756316d025336fa143334041e6a16979a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c40c1e7_949912ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-23T01:45:56Z",
+      "side": 1,
+      "message": "Since you are touching VbEx*() functions in this CL, you will need a CQ-DEPEND on the depthcharge CL that updates the implementations of the VbEx*() as well.",
+      "revId": "98820756316d025336fa143334041e6a16979a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e247cef4_d46f80d7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-23T01:45:56Z",
+      "side": 1,
+      "message": "not applicable anymore.",
+      "range": {
+        "startLine": 264,
+        "startChar": 31,
+        "endLine": 264,
+        "endChar": 46
+      },
+      "revId": "98820756316d025336fa143334041e6a16979a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f10c0d3_1a295182",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-23T01:45:56Z",
+      "side": 1,
+      "message": "return sync_ec(ctx);",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "98820756316d025336fa143334041e6a16979a26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
