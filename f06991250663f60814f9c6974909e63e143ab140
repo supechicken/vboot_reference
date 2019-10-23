@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1e202fe_dafe21d1",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:25:49Z",
+      "side": 1,
+      "message": "Are these two still used? Let\u0027s deal will all LOAD_KERNEL codes at once if possible (if they\u0027re unused, just delete them).",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52e7149_21f8fd0e",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:25:49Z",
+      "side": 1,
+      "message": "Maybe we should put these separately so that if we ever need to follow your suggestion of comparing the numeric value to figure out which LoadKernel() call returned the most specific result (I felt that wasn\u0027t necessary to distinguish these three, but it might be if we add more differentiation later), we don\u0027t need to change the error values again.\u0027\n\nI would start a new \"LoadKernel errors\" block at VB2_ERROR_BASE + 0xb0000 and then space each of these out by 0x10, so others can be inserted in-between if necessary.",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b25a07_414baf0f",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:25:49Z",
+      "side": 1,
+      "message": "It can return more errors than that. If you make the LoadKernel errors a separate category, you can just say it returns SUCCESS or the most specific LoadKernel error.",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81182425_6ccafc54",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 82
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:25:49Z",
+      "side": 1,
+      "message": "off-topic: once we have decided what to do in vboot_api_kernel2_tests.c about this, it would be nice to do the same thing here too.",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -221,6 +221,30 @@
       "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9aec37_b1ec9667",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:25:49Z",
+      "side": 1,
+      "message": "Yes, calling it _LK_ is fine too. And we only need one set of errors for both.",
+      "parentUuid": "1c885802_674560c9",
+      "range": {
+        "startLine": 909,
+        "startChar": 38,
+        "endLine": 909,
+        "endChar": 53
+      },
+      "revId": "ce415e5a0a591465285f93be9745334b0eaf4249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
