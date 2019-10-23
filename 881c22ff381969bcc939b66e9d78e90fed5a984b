@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c5e7e73_1c156772",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Returns what?",
+      "range": {
+        "startLine": 896,
+        "startChar": 3,
+        "endLine": 896,
+        "endChar": 10
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e9c2a3_d30efa5c",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Returns what?",
+      "range": {
+        "startLine": 1520,
+        "startChar": 3,
+        "endLine": 1520,
+        "endChar": 10
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81910634_6fa5f18e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Maybe ec_software_sync_enabled or just ec_sync_enabled would be better.",
+      "range": {
+        "startLine": 1522,
+        "startChar": 11,
+        "endLine": 1522,
+        "endChar": 31
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461798eb_08dcdbfb",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Below uses \"ecro\", please choose one of the two and stick to it.",
+      "range": {
+        "startLine": 1548,
+        "startChar": 11,
+        "endLine": 1548,
+        "endChar": 16
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434057e4_b4e58714",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Remove this?",
+      "range": {
+        "startLine": 1582,
+        "startChar": 36,
+        "endLine": 1582,
+        "endChar": 47
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c073b3_dc75aa8f",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "EC RO",
+      "range": {
+        "startLine": 1583,
+        "startChar": 9,
+        "endLine": 1583,
+        "endChar": 13
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758e1a5b_1723a152",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Could probably explain this a little clearer... \"EC RO stored on disk and in AP differ, cannot do EC RO sync.\"",
+      "range": {
+        "startLine": 1583,
+        "startChar": 14,
+        "endLine": 1583,
+        "endChar": 36
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa77f1a7_b20f3b6e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Returns what?",
+      "range": {
+        "startLine": 1591,
+        "startChar": 3,
+        "endLine": 1591,
+        "endChar": 10
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51091f28_c2c97735",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1605,
+        "startChar": 10,
+        "endLine": 1605,
+        "endChar": 17
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304ee2ba_7af34b75",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T14:36:26Z",
+      "side": 1,
+      "message": "Not sure what this flag is referring to.",
+      "range": {
+        "startLine": 1616,
+        "startChar": 65,
+        "endLine": 1616,
+        "endChar": 67
+      },
+      "revId": "881c22ff381969bcc939b66e9d78e90fed5a984b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
