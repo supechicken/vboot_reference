@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5199f08_5dc48e79",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T08:28:05Z",
+      "side": 1,
+      "message": "Done.  The other option would be VB2_SD_FLAG_ECSYNC_EC.",
+      "parentUuid": "4b2d10f1_261a09fa",
+      "revId": "79a7fd4d7ebe800a2dd9417569904a035391ef18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bad52cb5_304729f4",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "79a7fd4d7ebe800a2dd9417569904a035391ef18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95972333_bb7f549b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-23T08:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bad52cb5_304729f4",
+      "range": {
+        "startLine": 198,
+        "startChar": 45,
+        "endLine": 198,
+        "endChar": 46
+      },
+      "revId": "79a7fd4d7ebe800a2dd9417569904a035391ef18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
