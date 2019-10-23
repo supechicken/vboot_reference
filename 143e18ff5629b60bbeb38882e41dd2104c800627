@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b8f6ed81_43598cb5",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:12:15Z",
+      "side": 1,
+      "message": "Okay, if it gets complicated I don\u0027t think it\u0027s worth the effort.",
+      "parentUuid": "be38fc33_dcd6974c",
+      "range": {
+        "startLine": 249,
+        "startChar": 25,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e74feee_55343489",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "I\u0027ll add it to the VbBootNormal case.  For others, almost half of them expect VB2_ERROR_MOCK.  Could we push that to a future CL? :\u0027(",
       "parentUuid": "1e74feee_55343489",
+      "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05149adc_ca38d23a",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:12:15Z",
+      "side": 1,
+      "message": "Yes, with \"off-topic\" I mean it doesn\u0027t belong in this CL.",
+      "parentUuid": "34b3c803_e8570f46",
       "revId": "143e18ff5629b60bbeb38882e41dd2104c800627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

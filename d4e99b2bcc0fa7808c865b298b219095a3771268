@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "520c8032_1106c1cf",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:12:15Z",
+      "side": 1,
+      "message": "I think the \"GPIOs pressed at the very end\" problem is already solved by setting count to ~0 for a specific setting. That seems to work for everything we need so I don\u0027t really see a reason to change anything in the infrastructure here. I don\u0027t really see what the stuff you changed achieves other than making things more complicated to be honest. Unless you need to do that to support a new test case, I\u0027d suggest just leaving things as they are.",
+      "parentUuid": "aa2b579d_58ab706e",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf4d1f80_d4a95a6f",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 16
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "But this gets complicated for the cases when VbTryLoadKernel should be called with FIXED at first, and then REMOVABLE afterwards.  Still not totally sure what to do about that.  Maybe I should create an enum with three options?  FIXED_ONLY, REMOVABLE_ONLY, FIXED_THEN_REMOVABLE?",
       "parentUuid": "2d2241fa_d8baf9b7",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e33887_1160eaf8",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-23T23:12:15Z",
+      "side": 1,
+      "message": "Well, do we have that case? What you implemented here now doesn\u0027t solve that any better either, right? Like you mentioned in the comment on the earlier patch set, it\u0027s probably not worth testing it that specifically (otherwise you\u0027d have to make a mock_tlk_expect_info array or something like that).",
+      "parentUuid": "fb5e94ce_97999319",
       "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
