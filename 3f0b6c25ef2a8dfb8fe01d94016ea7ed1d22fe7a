@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60f71cd1_fae7e7e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 77
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "Pretty sure you need to update my fuzzers too, so not sure why this built without that.",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e083101b_e21229ea",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "Where are the version checks? I agree they should be in this function, but I don\u0027t see them below...",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4f45f9_5d2f81fc",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: API-wise I think I would prefer if \u0027size\u0027 is always the available size in the buffer and vb2api_reinit() will just pass in sd-\u003eworkbuf_size from the old workbuf. That way if through some Kconfig visibility problem or whatever we ever try to relocate into a buffer of size 0, we\u0027ll still notice.",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3f98760_0e6379c5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: I think this should be set in the new workbuf after the memmove() so that the old workbuf still stays valid (if for whatever reason that should ever become important).",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a618a29_6acf0e06",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "This is still pointing to cur_workbuf in the relocation case. Need to update \u0027sd\u0027 after the memmove().",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887c8f58_eec5e288",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "I thought SD was the first object stored?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d15822c_7dd730a1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: this is me getting a bit off-topic again (sorry), but we should really align these structures, and maybe now that we\u0027re changing a whole bunch in here anyway would be a good time. We could do something like\n\n uint8_t secdata_firmware[VB2_SECDATA_FIRMWARE_SIZE];\n uint8_t _pad0[8 - (((VB2_SECDATA_FIRMWARE_SIZE - 1) % 8) + 1)];\n\nOr maybe make a macro to insert the padding like\n\n #define PAD_STRUCT(size, align) uint8_t _pad##__COUNTER__[align - (((size - 1) % align) + 1]",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5359ea42_01bcbded",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: moving should call relocate() instead",
+      "range": {
+        "startLine": 414,
+        "startChar": 3,
+        "endLine": 414,
+        "endChar": 57
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e14e9a40_b02b9d82",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "here too (I think the API should make clear that the caller must not try to relocate the buffer itself, and should always use vb2api_relocate() for that)",
+      "range": {
+        "startLine": 429,
+        "startChar": 3,
+        "endLine": 429,
+        "endChar": 49
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223752f4_0583e14e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "I think we should remove this part, see comments on implementation",
+      "range": {
+        "startLine": 446,
+        "startChar": 46,
+        "endLine": 449,
+        "endChar": 52
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef961544_86b7ba96",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: maybe put dst before src for consistency with memcpy()?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7add57b_9747ec37",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "nit: I think this is more than twice as large as the current one, any significance to the number? (I\u0027d at least pick something divisible by 8, e.g. 192.)",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44357e6e_15d33f57",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T22:18:09Z",
+      "side": 1,
+      "message": "Uhhh... this is a really big stack allocation, even for userspace. Wanna put that in BSS instead?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
