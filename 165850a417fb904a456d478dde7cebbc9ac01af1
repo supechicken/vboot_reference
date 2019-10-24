@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd71ea0_84938459",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "I don\u0027t think there should be a TAB here?",
+      "range": {
+        "startLine": 297,
+        "startChar": 33,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1c0484_4708ed73",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "off-topic: I\u0027m not sure why this doesn\u0027t just call ec_sync_allowed()...",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ea87c4_ce2892ad",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "off-topic: This check here is weird because we\u0027re already checking for recovery mode in vboot_api_kernel.c. Although it would probably be cleaner to do the recovery mode check in here and have vboot_api_kernel.c just always call ec_sync() (and then when you move it to coreboot, coreboot can also just always call it and vboot can figure out whether it\u0027s in recovery mode or not).\n\nAlso, this should check the context flag, not the recovery reason in SD (should technically be equivalent, but that\u0027s how we check for recovery mode everywhere else).",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad4cb5b_35105a46",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "nit: I think I preferred the old way where it had a different message for reboots, because that\u0027s the one \"expected\" return code we can get, whereas others are real errors (and people usually don\u0027t know the numeric codes by heart). Also, please always print vb2_error_t as %#x, not %d.",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815b9749_a378c9cc",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "nit: can just fall through",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8750672_447cb6d6",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "nit: Now that we\u0027ve taken out the devidx version of PD, it\u0027s probably time to rename this flag (and similar ones) to say AUXFW instead of PD.",
+      "range": {
+        "startLine": 456,
+        "startChar": 19,
+        "endLine": 456,
+        "endChar": 56
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a5b82f_ccc9c03f",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "This function as written here is literally 100% pointless (just call update_auxfw() directly).",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9028bbd5_2ab1ddbb",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "This comment is no longer correct now (since we took out the speculative auxfw check above, there\u0027s no guarantee that the display would be up here).",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96970e16_076eb946",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "nit: This doesn\u0027t seem very clear, how about \"Check if any auxiliary firmware needs updating.\"?",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d8610f_a1dd753f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "This should probably explicitly mention protecting aux FW from further updates, which is what we\u0027re currently doing with this function (and any other firmware implementing support for this should do as well).",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ee24be_8a92bad3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "nit: I feel like now that we\u0027ll have this twice, the name \u0027vboot_done\u0027 seems pretty weird. How about auxfw_finalize or auxfw_protect (because that\u0027s what this callback is really about for aux FW right now, protecting the I2C tunnels)?",
+      "range": {
+        "startLine": 843,
+        "startChar": 12,
+        "endLine": 843,
+        "endChar": 34
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269dcee0_d7ec8b1e",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "Do the functions above still need to be exported, then? Can we make them static?",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4913768_529926d8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-24T01:35:24Z",
+      "side": 1,
+      "message": "I am confused about what belongs in vboot_api.h vs what belongs in 2api.h at this point, but I assume Joel has a plan. ;)",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
