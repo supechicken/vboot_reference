@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1f504b96_6be7a4b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-10-24T10:14:28Z",
+      "side": 1,
+      "message": "One more thought that formed in my mind when wondering about whether the cgpt fuzzer is effective: While fuzzing the parser itself is definitely useful, there\u0027s also a possibility that violated implicit assumptions on the output produced by the parser would cause havoc in the code that consumes the parsed data. So it may make sense to either (1) add checks to verify that the parsed data always adheres to whatever invariants we expect and/or (2) include the consuming code in the fuzzer. I\u0027m not sure whether this is applicable to these fuzzers, but figured I\u0027d drop this here just in case.",
+      "parentUuid": "be9b50a6_aefd1c59",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91b9852b_69933ab4",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 1
