@@ -22,6 +22,30 @@
       "revId": "d6dcd7e362e31be8ca8dbbaf619caac9fbcf7bd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76775db_2e428a82",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-25T23:28:11Z",
+      "side": 1,
+      "message": "\u003e and removed extra parens.\n\nSorry, you removed the wrong set. We want the one grouping the shift before the OR, we don\u0027t really need the one grouping the cast before the shift. (Technically neither of these are necessary but I think for one of them the precedence is more generally known than for the other, and it follows what the other three lines do.)\n\n(I\u0027m fine with just having both of them, too.)",
+      "parentUuid": "192c3397_fe4ce42d",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "d6dcd7e362e31be8ca8dbbaf619caac9fbcf7bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
