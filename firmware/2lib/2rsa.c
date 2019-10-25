@@ -145,10 +145,10 @@ static void modpow(const struct vb2_public_key *key, uint8_t *inout,
 	/* Convert from big endian byte array to little endian word array. */
 	for (i = 0; i < (int)key->arrsize; ++i) {
 		uint32_t tmp =
-			(inout[((key->arrsize - 1 - i) * 4) + 0] << 24) |
-			(inout[((key->arrsize - 1 - i) * 4) + 1] << 16) |
-			(inout[((key->arrsize - 1 - i) * 4) + 2] << 8) |
-			(inout[((key->arrsize - 1 - i) * 4) + 3] << 0);
+			(((uint32_t)inout[((key->arrsize - 1 - i) * 4) + 0]) << 24) |
+			(((uint32_t)inout[((key->arrsize - 1 - i) * 4) + 1]) << 16) |
+			(((uint32_t)inout[((key->arrsize - 1 - i) * 4) + 2]) << 8) |
+			(((uint32_t)inout[((key->arrsize - 1 - i) * 4) + 3]) << 0);
 		a[i] = tmp;
 	}
 
