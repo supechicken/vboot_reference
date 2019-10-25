@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8e517de4_ea57021d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-25T01:16:32Z",
+      "side": 1,
+      "message": "Yeah, I was wondering how to do that. Is it okay to just call assert() in the fuzzer for that or is there some other intended way to check invariants? (For these I don\u0027t think there\u0027s much more to check, but for others that may be interesting.)",
+      "parentUuid": "1f504b96_6be7a4b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "df5896b4de987a36c6e60e55c97d77cb21551ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91b9852b_69933ab4",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 1
