@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eebc7b1_59304dd3",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-28T15:06:31Z",
+      "side": 1,
+      "message": "This is not needed.  See the comment on devid0 assignment below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7ca6fe_e1a4417d",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-28T15:06:31Z",
+      "side": 1,
+      "message": "This needs to check that INSN_TARGET \u003d \"NodeLocked\".  In fairness, INSN_DEVICE_ID will only be set for NodeLocked images, because the quorum configuration will reject DeviceID specifics on any other type of image.\n\n(Not part of this CL, but the other target-transitions need to be validated: if INSN_TARGET \u003d \"GeneralRelease\", it needs to check that the input image is \"ReleaseCandidate\", etc.)",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d69647_3a39299b",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-28T15:06:31Z",
+      "side": 1,
+      "message": "This could be done with \"local -i devid0\" above and:\ndevid0\u003d\"0x${INSN_DEVICE_ID/-*}\"\n\nNo need to create the to_int32 function. Similar comment for all the other to_int32 usage below.",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b34bd85_a3b4ba75",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-28T15:06:31Z",
+      "side": 1,
+      "message": "sed has an add command that could do this nicely.",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c982ad_220f1364",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-28T15:06:31Z",
+      "side": 1,
+      "message": "local -i config1\u003d0x\"${config1}\"+0x80000000",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
