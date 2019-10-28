@@ -36,8 +36,8 @@ int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)
 	gptdata->primary_header = (uint8_t *)malloc(gptdata->sector_bytes);
 	gptdata->secondary_header =
 		(uint8_t *)malloc(gptdata->sector_bytes);
-	gptdata->primary_entries = (uint8_t *)malloc(max_entries_bytes);
-	gptdata->secondary_entries = (uint8_t *)malloc(max_entries_bytes);
+	gptdata->primary_entries = (uint8_t *)calloc(1, max_entries_bytes);
+	gptdata->secondary_entries = (uint8_t *)calloc(1, max_entries_bytes);
 
 	if (gptdata->primary_header == NULL ||
 	    gptdata->secondary_header == NULL ||
