@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ab2e867_9ac025c1",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T15:55:25Z",
+      "side": 1,
+      "message": "I think it still is needed, as bash integer math is not 32 bit.",
+      "parentUuid": "6eebc7b1_59304dd3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de7ca6fe_e1a4417d",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3f833e14_a09f9138",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T15:55:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de7ca6fe_e1a4417d",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91d69647_3a39299b",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-10-28T15:06:31Z",
       "side": 1,
       "message": "This could be done with \"local -i devid0\" above and:\ndevid0\u003d\"0x${INSN_DEVICE_ID/-*}\"\n\nNo need to create the to_int32 function. Similar comment for all the other to_int32 usage below.",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fac0b2f_4d6904f6",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T15:55:25Z",
+      "side": 1,
+      "message": "this does not work, as technically json expects a 32 bit integer here and croaks on values exceeding 2147483647:\n\n# bashint() { local -i x; x\u003d0xffffffff; echo $x; }\n# bashint\n4294967295\n#\n\nand json expects -1 in this case.",
+      "parentUuid": "91d69647_3a39299b",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "14fe4332_a55c7936",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T15:55:25Z",
+      "side": 1,
+      "message": "ah, let me take a look.",
+      "parentUuid": "0b34bd85_a3b4ba75",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23c982ad_220f1364",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2019-10-28T15:06:31Z",
       "side": 1,
       "message": "local -i config1\u003d0x\"${config1}\"+0x80000000",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0b003a_6dc5e2b8",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-28T15:55:25Z",
+      "side": 1,
+      "message": "json does not accept hex values for integers.",
+      "parentUuid": "23c982ad_220f1364",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
