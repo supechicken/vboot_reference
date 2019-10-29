@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f05df093_8d8c50f8",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:14:59Z",
+      "side": 1,
+      "message": "Can we please rename this to enum vb2_firmware_selection?",
+      "range": {
+        "startLine": 674,
+        "startChar": 32,
+        "endLine": 674,
+        "endChar": 55
+      },
+      "revId": "f4b93404406abd6f10fbfabd1d77ef2813f72e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
