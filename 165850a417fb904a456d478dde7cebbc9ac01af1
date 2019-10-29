@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b362e82_8e8e53cd",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd71ea0_84938459",
+      "range": {
+        "startLine": 297,
+        "startChar": 33,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1c0484_4708ed73",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6db43b_afdfc07a",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Yeah I\u0027ve been meaning to go back and clean up all of that various ways and places that are checking if EC software sync should be performed... Right now, phase2 calls that.  How about phase1 calls it instead?",
+      "parentUuid": "eb1c0484_4708ed73",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "67d780a7_e4a19d18",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "SGTM.  Will change to VB2_CONTEXT_RECOVERY_MODE check and will take a look at vboot_api_kernel",
+      "parentUuid": "83ea87c4_ce2892ad",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aad4cb5b_35105a46",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "ce96400b_8f9b27b8",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Sure, will add a print for reboot case.  Where does %#x come from?  I don\u0027t think I\u0027ve ever seen \u0027#\u0027 used in a format string before?",
+      "parentUuid": "aad4cb5b_35105a46",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "815b9749_a378c9cc",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -90,6 +168,24 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65ffd61_d3b240ff",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Ah yes.",
+      "parentUuid": "815b9749_a378c9cc",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "9e4ec12c_dd4fb394",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "SGTM, I\u0027ll add a CL for that.",
+      "parentUuid": "c8750672_447cb6d6",
+      "range": {
+        "startLine": 456,
+        "startChar": 19,
+        "endLine": 456,
+        "endChar": 56
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8a5b82f_ccc9c03f",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "2b95133a_93717fc5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Yeah, it got whittled down, will remove.",
+      "parentUuid": "e8a5b82f_ccc9c03f",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9028bbd5_2ab1ddbb",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -147,6 +285,24 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad2848f_1316f74e",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9028bbd5_2ab1ddbb",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bff5e065_73dcc0b7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Noted.  Will do.",
+      "parentUuid": "93d5aa2d_aef3be25",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 45
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325e50c5_81a77e6b",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
@@ -68,6 +92,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6dab5f_811a9a21",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325e50c5_81a77e6b",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 12
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d40ebc18_2513ea77",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ee4357_8d796462",
+      "range": {
+        "startLine": 469,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad11af33_8729da39",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e3846858_19a8b6c5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad11af33_8729da39",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd0dfbf1_a4dfc092",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
@@ -128,6 +224,30 @@
       "writtenOn": "2019-10-29T04:11:22Z",
       "side": 1,
       "message": "This changes one behavior. Before this, in the factory process, AUX FW would be updated before the cut-off. That will not happen anymore. Wouldn\u0027t we want to continue doing that at least until AUX FW update is moved out of depthcharge?",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f700ab_f66a4275",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s a good point... so VbSelectAndLoadKernel() needs to take care of that, after EC and auxfw sync is done.",
+      "parentUuid": "fd0dfbf1_a4dfc092",
       "range": {
         "startLine": 550,
         "startChar": 6,
@@ -160,6 +280,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549d7ca2_27b845a5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-29T20:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "744355c0_cc93d6b0",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 554,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
