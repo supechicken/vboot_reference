@@ -33,6 +33,23 @@
       "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a340fa08_5c940063",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-10-29T20:52:52Z",
+      "side": 1,
+      "message": "Add log statement here so that in case signing_instruction is not sourced, it\u0027s easier to debug?",
+      "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
