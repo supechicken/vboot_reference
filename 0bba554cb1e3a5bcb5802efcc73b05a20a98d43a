@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "93d5aa2d_aef3be25",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:12:56Z",
+      "side": 1,
+      "message": "Julius and I recently fixed this design issue in VbTryLoadKernel and LoadKernel.  We shouldn\u0027t be setting the recovery request in a subcall, and then modifying that later on.  update_ec() should return some error code, and based on that error code, this function should set (or leave alone) a recovery request.\n\nThis is not strictly a blocker for getting EC sync working in coreboot, but if you have time to make the change (in a separate CL) it would be really nice.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 45
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "325e50c5_81a77e6b",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
