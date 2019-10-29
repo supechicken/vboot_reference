@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1924f061_fc602093",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: tab not required.",
+      "range": {
+        "startLine": 297,
+        "startChar": 33,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325e50c5_81a77e6b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "There is no need to have a return in this if-block since the return below should take care of returning rv.",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 12
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ee4357_8d796462",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "return update_auxfw(ctx);\n\nActually, do you really need update_auxfw()? Whatever is in there can be moved to this function.",
+      "range": {
+        "startLine": 469,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad11af33_8729da39",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "return vb2ex_auxfw_vboot_done(...);",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0dfbf1_a4dfc092",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "This changes one behavior. Before this, in the factory process, AUX FW would be updated before the cut-off. That will not happen anymore. Wouldn\u0027t we want to continue doing that at least until AUX FW update is moved out of depthcharge?",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744355c0_cc93d6b0",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "Just return above should be fine. No need to check rv.",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 554,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c1070e_68a1a7e6",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "return auxfw_sync_finalize(...);",
+      "range": {
+        "startLine": 587,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47994b4_ca51c662",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "We should get rid of the typedef. I understand that this change did not introduce it. Probably should be cleaned up later as a follow up.",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 797,
+        "endChar": 7
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6803c3_0866c47c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the enum values above. Maybe just put in a comment saying check the enum above instead of maintaining the values here as well?",
+      "range": {
+        "startLine": 815,
+        "startChar": 5,
+        "endLine": 817,
+        "endChar": 26
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e304c4_c57f0dbd",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: This function is not just checking if the sync is allowed but it checks if AUX FW needs an update.",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e45bf39_bfad2379",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: use tabs instead of spaces for consistency.",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c869c37c_8d305304",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "What about @param severity?",
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec3403bc_3e870cd0",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: tabs instead of spaces.",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e1a4c2_10c22942",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "Doesn\u0027t it just inform whether the device has a reason has to enter recovery i.e. recovery reason is not informed to the external callback.",
+      "range": {
+        "startLine": 103,
+        "startChar": 38,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2004d4dd_52d77ca3",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: tabs instead of spaces.",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f19e05_78da0024",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-29T04:11:22Z",
+      "side": 1,
+      "message": "nit: tabs instead of spaces.",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
