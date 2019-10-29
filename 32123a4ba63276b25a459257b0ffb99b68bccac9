@@ -68,6 +68,30 @@
       "revId": "32123a4ba63276b25a459257b0ffb99b68bccac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af6d3aa_d28d2558",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:10:21Z",
+      "side": 1,
+      "message": "Note: Currently we can only perform this replacement in 2auxfw_sync.c, and not in 2ec_sync.c.  This is because 2ec_sync currently does some gymnastics of restoring the recovery request after it was set by a subcall.",
+      "parentUuid": "7fa2ab5f_c6395a42",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "32123a4ba63276b25a459257b0ffb99b68bccac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
