@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41604f7e_688c1fcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T13:54:03Z",
+      "side": 1,
+      "message": "We should avoid this getting linked into coreboot, since it will never be run.\n\nWe should find some way of fixing the vboot code instead.  Can we mask out the call to display_wait_screen in the case of coreboot?",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "7318f57ad54f9d76b4fc04549b66b8313bfd051d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd99484b_66bc2ebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T13:54:03Z",
+      "side": 1,
+      "message": "If we need to link this function, then let\u0027s relocate it instead.  Note that this is also being reworked in CL:1728298.  vb2_commit_data and vb2ex_commit_data are used instead (coreboot will need to define the latter).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "7318f57ad54f9d76b4fc04549b66b8313bfd051d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
