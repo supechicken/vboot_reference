@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2386ace7_4b2bbc92",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-10-29T20:47:41Z",
+      "side": 1,
+      "message": "+1 for python3 compat concern. Would be even better if we can refactor this to a small runnable python3 script \"unsigned_to_signed.py\" \u0026 add unittest for it.",
+      "parentUuid": "cb3ec0c1_a337fff4",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e03c513_a154e9b0",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
