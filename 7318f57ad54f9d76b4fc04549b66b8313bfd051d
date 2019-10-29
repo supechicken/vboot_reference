@@ -45,6 +45,30 @@
       "revId": "7318f57ad54f9d76b4fc04549b66b8313bfd051d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8dd2dd_1883a47b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-29T17:21:58Z",
+      "side": 1,
+      "message": "This is currently decided by the SLOW_UPDATE context flag, not a compile-time decision. I think it would be easiest to leave it like that and just link this in (it\u0027s a small stub function, it won\u0027t hurt much).",
+      "parentUuid": "41604f7e_688c1fcf",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "7318f57ad54f9d76b4fc04549b66b8313bfd051d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
