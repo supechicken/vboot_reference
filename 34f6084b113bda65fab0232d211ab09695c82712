@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "bc242349_36a42daa",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-29T21:21:30Z",
+      "side": 1,
+      "message": "just added the parens. Frankly, I don\u0027t feel it\u0027s necessary to make it a separate Python script, this can wait til this entire bash script is converted to Python.",
+      "parentUuid": "2386ace7_4b2bbc92",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e03c513_a154e9b0",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -108,6 +132,24 @@
       "writtenOn": "2019-10-29T20:32:01Z",
       "side": 1,
       "message": "I\u0027m struggling to figure out what config1 does, can we go with a better variable name (or a comment)?",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbe4639_6abcd249",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-29T21:21:30Z",
+      "side": 1,
+      "message": "config1 is the name of the field in the manifest, and a s such it is fixed. Let me add a comment to this respect.",
+      "parentUuid": "8e03c513_a154e9b0",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -232,6 +274,24 @@
       "side": 1,
       "message": "Let\u0027s fix up the python for 3 compat and stick with that.",
       "parentUuid": "73102e29_72a9af66",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a49209_dea75ecd",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-29T21:21:30Z",
+      "side": 1,
+      "message": "this is addressed in patchset 3",
+      "parentUuid": "46469a23_d8c24088",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -391,6 +451,24 @@
       "writtenOn": "2019-10-29T20:32:01Z",
       "side": 1,
       "message": "This also counts as validation (i.e. it has to parse) and we should have the die message reflect that.",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d3dead_1a695bb4",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-29T21:21:30Z",
+      "side": 1,
+      "message": "changed the message.",
+      "parentUuid": "9bfdc03d_3f26f1dd",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
