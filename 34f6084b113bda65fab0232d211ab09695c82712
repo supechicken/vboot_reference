@@ -49,6 +49,47 @@
     },
     {
       "key": {
+        "uuid": "cb3ec0c1_a337fff4",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "One concern is that we won\u0027t be python3 compat if we ever flip the default. So let\u0027s get ()\u0027s around the print. Otherwise I\u0027m ok calling python here personally.",
+      "parentUuid": "0ab2e867_9ac025c1",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e03c513_a154e9b0",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "I\u0027m struggling to figure out what config1 does, can we go with a better variable name (or a comment)?",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de7ca6fe_e1a4417d",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -155,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "46469a23_d8c24088",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "Let\u0027s fix up the python for 3 compat and stick with that.",
+      "parentUuid": "73102e29_72a9af66",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b34bd85_a3b4ba75",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -208,6 +267,24 @@
     },
     {
       "key": {
+        "uuid": "dadfd955_ffd259f5",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "Let\u0027s get the sed simplified in the next rev.",
+      "parentUuid": "dfb31e96_bc1676c4",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c982ad_220f1364",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -255,6 +332,41 @@
       "side": 1,
       "message": "local -i config1\u003d0x\"${config1}\"-0x80000000\n\nIf we want to unconditionally set it, instead of toggling it:\nlocal -i config1\u003d0x\"${config1}\"\\\u00260x7fffffff-0x80000000",
       "parentUuid": "ed0b003a_6dc5e2b8",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b704af_d17270a9",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "Nothing is going to make this pretty, let\u0027s just stick with the python.",
+      "parentUuid": "6a45b8a1_745ae64b",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bfdc03d_3f26f1dd",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-10-29T20:32:01Z",
+      "side": 1,
+      "message": "This also counts as validation (i.e. it has to parse) and we should have the die message reflect that.",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
