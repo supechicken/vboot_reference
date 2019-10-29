@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "81b379a1_35b71e3f",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-29T15:25:02Z",
+      "side": 1,
+      "message": "It looks like the current bash uses 64-bit signed ints.  In any case, this will do the trick.\ndevid0\u003d\"0x${INSN_DEVICE_ID/-*}\"; (( devid0 \u003c\u003d 0x7fffffff )) || devid0\u003ddevid0-0x100000000",
+      "parentUuid": "2fac0b2f_4d6904f6",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b34bd85_a3b4ba75",
         "filename": "scripts/image_signing/sign_cr50_firmware.sh",
         "patchSetId": 1
@@ -201,6 +219,24 @@
       "side": 1,
       "message": "json does not accept hex values for integers.",
       "parentUuid": "23c982ad_220f1364",
+      "revId": "34f6084b113bda65fab0232d211ab09695c82712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a45b8a1_745ae64b",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-10-29T15:25:02Z",
+      "side": 1,
+      "message": "local -i config1\u003d0x\"${config1}\"-0x80000000\n\nIf we want to unconditionally set it, instead of toggling it:\nlocal -i config1\u003d0x\"${config1}\"\\\u00260x7fffffff-0x80000000",
+      "parentUuid": "ed0b003a_6dc5e2b8",
       "revId": "34f6084b113bda65fab0232d211ab09695c82712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
