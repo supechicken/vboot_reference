@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40ffc8ed_6f420e28",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:00:51Z",
+      "side": 1,
+      "message": "Determine",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "32123a4ba63276b25a459257b0ffb99b68bccac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d859b040_2f92bfe4",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:00:51Z",
+      "side": 1,
+      "message": "Add some more documentation.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "32123a4ba63276b25a459257b0ffb99b68bccac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa2ab5f_c6395a42",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-29T14:00:51Z",
+      "side": 1,
+      "message": "Can we just remove this function and replace it with a call to vb2api_fail()?",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "32123a4ba63276b25a459257b0ffb99b68bccac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
