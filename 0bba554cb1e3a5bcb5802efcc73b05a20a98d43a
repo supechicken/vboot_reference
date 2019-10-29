@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "80a8180b_bf5511f2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-29T20:42:37Z",
+      "side": 1,
+      "message": "I don\u0027t know how often they reboot in the factory... have they really not finished the auxfw update until the very last boot where they cut off the battery?\n\nIf we really need to worry about this, let\u0027s just move the battery cutoff to the end of auxfw_sync().",
+      "parentUuid": "99f700ab_f66a4275",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "744355c0_cc93d6b0",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11

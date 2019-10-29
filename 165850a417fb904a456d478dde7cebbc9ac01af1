@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "bdc7336e_9f5b5049",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-29T20:42:37Z",
+      "side": 1,
+      "message": "They both need to call it, because we still want to continue booting when software sync is disabled, so we\u0027ll still enter phase2 later after we return from here.",
+      "parentUuid": "6e6db43b_afdfc07a",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83ea87c4_ce2892ad",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "Sure, will add a print for reboot case.  Where does %#x come from?  I don\u0027t think I\u0027ve ever seen \u0027#\u0027 used in a format string before?",
       "parentUuid": "aad4cb5b_35105a46",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efc2e5d0_b3a9959b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-29T20:42:37Z",
+      "side": 1,
+      "message": "The # modifies \u0027x\u0027 to automatically add a 0x prefix, so %#x is roughly equivalent to 0x%x. See `man 3 printf`.",
+      "parentUuid": "ce96400b_8f9b27b8",
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
