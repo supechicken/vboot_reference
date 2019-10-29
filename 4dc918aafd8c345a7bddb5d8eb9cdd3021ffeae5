@@ -104,6 +104,24 @@
       "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d7ff00_3e5d738f",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-10-29T21:24:27Z",
+      "side": 1,
+      "message": "Are we expecting this script to always be able to source signing_instruction? If so I vote for failure since failing early usually make debugging simpler.",
+      "parentUuid": "db254399_9a7b8eb4",
+      "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
