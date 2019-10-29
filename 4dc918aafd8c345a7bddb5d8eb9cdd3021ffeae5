@@ -122,6 +122,24 @@
       "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5feac072_4243d2bd",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-10-29T21:34:37Z",
+      "side": 1,
+      "message": "I guess we should always expect the instructions to be there, changed from \u0027warn\u0027 to \u0027die\u0027",
+      "parentUuid": "c4d7ff00_3e5d738f",
+      "revId": "4dc918aafd8c345a7bddb5d8eb9cdd3021ffeae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
