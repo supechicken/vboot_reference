@@ -50,6 +50,22 @@ void vb2_nv_commit(struct vb2_context *ctx)
 	VbExNvStorageWrite(ctx->nvdata);
 }
 
+static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
+{
+	/* Check if we need to cut-off battery. This must be done after EC
+	 * firmware updating and before kernel started. */
+	if (vb2_nv_get(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST)) {
+		VB2_DEBUG("Request to cut-off battery\n");
+		vb2_nv_set(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST, 0);
+		/* May lose power immediately, so commit our update now. */
+		vb2_nv_commit(ctx);
+		vb2ex_ec_battery_cutoff();
+		return VBERROR_SHUTDOWN_REQUESTED;
+	}
+
+	return VB2_SUCCESS;
+}
+
 uint32_t vb2_get_fwmp_flags(void)
 {
 	return fwmp.flags;
@@ -384,6 +400,10 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			goto VbSelectAndLoadKernel_exit;
 
 		rv = auxfw_sync(ctx);
+		if (rv)
+			goto VbSelectAndLoadKernel_exit;
+
+		rv = handle_battery_cutoff(ctx);
 		if (rv)
 			goto VbSelectAndLoadKernel_exit;
 	}
