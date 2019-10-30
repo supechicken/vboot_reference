@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "1d0b12ec_2e15817f",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-10-30T06:03:02Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t know how often they reboot in the factory.\n\nUnfortunately, as long as we are doing AUX FW update in depthcharge, I think we need to support this case of having to update the AUX FW during factory build. Moving to end of auxfw_sync() should be good.",
+      "parentUuid": "80a8180b_bf5511f2",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "744355c0_cc93d6b0",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
