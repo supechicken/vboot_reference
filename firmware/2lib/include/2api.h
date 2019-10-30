@@ -850,4 +850,16 @@ vb2_error_t vb2ex_auxfw_finalize(int in_recovery);
  */
 void vb2ex_abort(void);
 
+/*
+ * Perform software sync for the Embedded Controller.
+ *
+ * Checks if an update is needed, and if so, performs
+ * the necessary writes to EC flash.  Will call the
+ * vb2ex_ec_* external callbacks to accomplish this.
+ *
+ * @param ctx		Vboot context
+ * @return VBERROR_... error, VB2_SUCCESS on success.
+ */
+vb2_error_t vb2api_ec_software_sync(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */

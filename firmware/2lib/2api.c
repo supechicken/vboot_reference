@@ -8,6 +8,7 @@
 
 #include "2api.h"
 #include "2common.h"
+#include "2ec_sync.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2rsa.h"
@@ -407,4 +408,9 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 int vb2api_check_hash(struct vb2_context *ctx)
 {
 	return vb2api_check_hash_get_digest(ctx, NULL, 0);
+}
+
+vb2_error_t vb2api_ec_software_sync(struct vb2_context *ctx)
+{
+	return ec_sync(ctx);
 }
