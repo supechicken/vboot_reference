@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d049c47_47af127f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-30T20:14:20Z",
+      "side": 1,
+      "message": "nit: I\u0027d just rename ec_sync() to vb2api_ec_software_sync() instead, we don\u0027t need an empty wrapper for every API function. You can call a vb2api function from inside VbSelectAndLoadKernel() as well.",
+      "revId": "ba527912055882e9391921c77eadda69da97032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
