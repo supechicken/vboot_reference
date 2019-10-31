@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04dfcbdc_1c441bde",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1924f061_fc602093",
+      "range": {
+        "startLine": 297,
+        "startChar": 33,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93d5aa2d_aef3be25",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
@@ -308,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "de50c52f_136a51e7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a8180b_bf5511f2",
+      "range": {
+        "startLine": 550,
+        "startChar": 6,
+        "endLine": 550,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "744355c0_cc93d6b0",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 11
@@ -378,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "3bdb8275_5a5b60d0",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c1070e_68a1a7e6",
+      "range": {
+        "startLine": 587,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 20
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f47994b4_ca51c662",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 11
@@ -398,6 +470,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cade9af7_2ddd535c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Agreed.  Also has been renamed to vb2_auxfw_update_severity, in keeping with vb2 names.",
+      "parentUuid": "f47994b4_ca51c662",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 797,
+        "endChar": 7
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -424,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "b6ce47c4_c8ac2fe7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6803c3_0866c47c",
+      "range": {
+        "startLine": 815,
+        "startChar": 5,
+        "endLine": 817,
+        "endChar": 26
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19e304c4_c57f0dbd",
         "filename": "firmware/2lib/include/2ec_sync.h",
         "patchSetId": 11
@@ -444,6 +564,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae706bc_992ff5b5",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Now static, no export needed.",
+      "parentUuid": "19e304c4_c57f0dbd",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -470,6 +614,30 @@
     },
     {
       "key": {
+        "uuid": "cc1c8f84_623e601a",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Now static, no export needed.",
+      "parentUuid": "4e45bf39_bfad2379",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c869c37c_8d305304",
         "filename": "firmware/2lib/include/2ec_sync.h",
         "patchSetId": 11
@@ -484,6 +652,24 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c35e11f_b373f9cb",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c869c37c_8d305304",
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -510,6 +696,30 @@
     },
     {
       "key": {
+        "uuid": "3b0a013f_5c6cdd2c",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec3403bc_3e870cd0",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54e1a4c2_10c22942",
         "filename": "firmware/2lib/include/2ec_sync.h",
         "patchSetId": 11
@@ -530,6 +740,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9f9f67_ca6072f8",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e1a4c2_10c22942",
+      "range": {
+        "startLine": 103,
+        "startChar": 38,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -556,6 +790,30 @@
     },
     {
       "key": {
+        "uuid": "8307b16e_b6f7036b",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2004d4dd_52d77ca3",
+      "range": {
+        "startLine": 107,
+        "startChar": 13,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f19e05_78da0024",
         "filename": "firmware/2lib/include/2ec_sync.h",
         "patchSetId": 11
@@ -576,6 +834,30 @@
       "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9feb2e8e_927a71c0",
+        "filename": "firmware/2lib/include/2ec_sync.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f19e05_78da0024",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "0bba554cb1e3a5bcb5802efcc73b05a20a98d43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

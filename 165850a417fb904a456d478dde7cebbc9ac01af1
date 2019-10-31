@@ -377,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "7637a794_e3303954",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96970e16_076eb946",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87d8610f_a1dd753f",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -391,6 +409,24 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972bd77b_ef2f0ff0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d8610f_a1dd753f",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -414,6 +450,30 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff8730a_0009a759",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Agreed, how about finalize",
+      "parentUuid": "e0ee24be_8a92bad3",
+      "range": {
+        "startLine": 843,
+        "startChar": 12,
+        "endLine": 843,
+        "endChar": 34
+      },
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -466,6 +526,24 @@
       "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4646e4e4_4f431a61",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-10-31T16:48:44Z",
+      "side": 1,
+      "message": "Me too :)",
+      "parentUuid": "b4913768_529926d8",
+      "revId": "165850a417fb904a456d478dde7cebbc9ac01af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
