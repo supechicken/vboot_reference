@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ca463ea3_6867b6d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 77
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "Since that\u0027s what everyone runs to try to check whether their patch is ready, maybe it would be easier to add them to that build target. It\u0027s not like they take a notable amount of time or anything.",
+      "parentUuid": "5121f956_7d30ad26",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e083101b_e21229ea",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 77
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Bonne idée.",
       "parentUuid": "e3f98760_0e6379c5",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8250801c_df969c07",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "I see Lyon had a lasting effect on you ;)",
+      "parentUuid": "9d14d9ff_02114122",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -247,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "387fd080_ad96aa76",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "You can\u0027t rely on struct alignment here because the data type is uint8_t, it doesn\u0027t know that you\u0027re gonna map a different structure inside there later.\n\nI have no idea why __BIGGEST_ALIGNMENT__ is 16 tbh, that sounds wrong to me... and it\u0027s also architecture-dependent which is probably something we don\u0027t want here. Let\u0027s just use 8, that should be good enough for everyone. (Honestly it would probably be best to hardcode VB2_WORKBUF_ALIGN to 8 as well, otherwise we could get into weird territory if we reuse a workbuf from one architecture on another which happens on some chips. But that\u0027s maybe not related to this patch.)",
+      "parentUuid": "81960a23_30157874",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5359ea42_01bcbded",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 77
@@ -282,6 +336,30 @@
       "side": 1,
       "message": "Well... we don\u0027t actually need to call reinit() again after calling relocate().\n\nI\u0027ve reworked this comment a bit; how does it looks now?",
       "parentUuid": "5359ea42_01bcbded",
+      "range": {
+        "startLine": 414,
+        "startChar": 3,
+        "endLine": 414,
+        "endChar": 57
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79b5bc8_c6168bfb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I meant, you just shouldn\u0027t mention relocation for this function. Looks fine now.",
+      "parentUuid": "e3a3990c_2026d74a",
       "range": {
         "startLine": 414,
         "startChar": 3,

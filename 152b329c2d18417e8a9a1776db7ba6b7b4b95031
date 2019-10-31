@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa6b9816_c3ed79d4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "nit: technically there\u0027s no point in checking the old one",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56385db3_241a5380",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 79
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "nit: normally I\u0027d leave the macro you actually want to use without a leading underscore (if you\u0027re worried about naming clashes, could call it VB2_PAD_STRUCT)",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae259903_b2afc998",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 79
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "nit: Add a padding word here so the things we\u0027re aligning to 8 below actually start at the right boundary. Might come in handy if we run out of flags too. (Or just make it 64-bit right away.)",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9398b814_8ed6496d",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "nit: could really be a local now",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63cc7110_da308020",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "Why remove the error checking? We still wanna make sure this doesn\u0027t fail (e.g. if something about workbuf location/alignment requirements ever changes and we forget to update it here).\n\nI\u0027m particularly worried about \"dumb\" failures like this in fuzzers because if this fails and then vb2_load_fw_keyblock() always returns very early because of some sanity check on the context, the fuzzer still \"succeeds\", it just figures out that nothing it will do to the input data changes the result. And if you don\u0027t look closely at the coverage data, you might never notice.",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e286acd_b22d7e67",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "...in fact, now that I\u0027m looking through this there are a bunch of test workbuffers that don\u0027t get aligned right.",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc6cc6f_e3669858",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "Does this not fail? Or does it and the rest of the test just never notices? Should maybe do TEST_TRUE() for all of these just in case. (Same probably counts for stuff like the vb2_nv_init() below as well.)",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab82e4a_38debd23",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-10-31T22:59:35Z",
+      "side": 1,
+      "message": "Alignment?",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
