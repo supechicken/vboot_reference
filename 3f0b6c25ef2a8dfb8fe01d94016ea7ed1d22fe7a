@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5121f956_7d30ad26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 77
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Fuzzers don\u0027t get built with `make runtests` (and probably shouldn\u0027t?).  So that\u0027s my fault for not building the full vboot here.",
+      "parentUuid": "60f71cd1_fae7e7e1",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e083101b_e21229ea",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 77
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "Where are the version checks? I agree they should be in this function, but I don\u0027t see them below...",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "162d02e3_6d7b8105",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Oops.  Added back in before the size/bound checks.",
+      "parentUuid": "e083101b_e21229ea",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "38e4ffb4_7652fe3a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "I was going to argue that we shouldn\u0027t use sd-\u003eworkbuf_size when we\u0027re not even sure if the workbuf being passed in is valid, but then I realized that\u0027s exactly what we\u0027re doing here \u003d)\n\nSure, we can do that.  Updated the function documentation.",
+      "parentUuid": "8b4f45f9_5d2f81fc",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3f98760_0e6379c5",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 77
@@ -64,6 +118,24 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "nit: I think this should be set in the new workbuf after the memmove() so that the old workbuf still stays valid (if for whatever reason that should ever become important).",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d14d9ff_02114122",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Bonne idée.",
+      "parentUuid": "e3f98760_0e6379c5",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5a316a38_87e1e1b9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Eek.  This is why we need unit tests...",
+      "parentUuid": "2a618a29_6acf0e06",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887c8f58_eec5e288",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 77
@@ -98,6 +188,24 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "I thought SD was the first object stored?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975b65ed_ac116bb2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Oops.  This is from the last revision.  Let me update it.",
+      "parentUuid": "887c8f58_eec5e288",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "81960a23_30157874",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Yes, we can do this.  I don\u0027t remember the specifics of why we can\u0027t rely on C struct alignment to work, but I know you\u0027ve talked about its inadequacies before.\n\nDo we just need to align to 8 bytes?  Or should we just use VB2_WORKBUF_ALIGN / __BIGGEST_ALIGNMENT__ here?  (coreboot source code seems to align to 16 bytes.)",
+      "parentUuid": "6d15822c_7dd730a1",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5359ea42_01bcbded",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 77
@@ -132,6 +258,30 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "nit: moving should call relocate() instead",
+      "range": {
+        "startLine": 414,
+        "startChar": 3,
+        "endLine": 414,
+        "endChar": 57
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a3990c_2026d74a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Well... we don\u0027t actually need to call reinit() again after calling relocate().\n\nI\u0027ve reworked this comment a bit; how does it looks now?",
+      "parentUuid": "5359ea42_01bcbded",
       "range": {
         "startLine": 414,
         "startChar": 3,
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "1cf260fd_35ee4a58",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14e9a40_b02b9d82",
+      "range": {
+        "startLine": 429,
+        "startChar": 3,
+        "endLine": 429,
+        "endChar": 49
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "223752f4_0583e14e",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 77
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "a745ebbc_a764f538",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "223752f4_0583e14e",
+      "range": {
+        "startLine": 446,
+        "startChar": 46,
+        "endLine": 449,
+        "endChar": 52
+      },
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef961544_86b7ba96",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 77
@@ -201,6 +399,24 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "nit: maybe put dst before src for consistency with memcpy()?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea09dfe_af4df493",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "OK.  This makes coreboot\u0027s vboot_migrate_cbmem a little more sane.",
+      "parentUuid": "ef961544_86b7ba96",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -224,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "ae769691_30a561ff",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 77
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7add57b_9747ec37",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44357e6e_15d33f57",
         "filename": "tests/verify_kernel.c",
         "patchSetId": 77
@@ -235,6 +469,24 @@
       "writtenOn": "2019-10-24T22:18:09Z",
       "side": 1,
       "message": "Uhhh... this is a really big stack allocation, even for userspace. Wanna put that in BSS instead?",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84966ce2_c35aa76c",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 77
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-10-31T10:41:49Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "44357e6e_15d33f57",
       "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
