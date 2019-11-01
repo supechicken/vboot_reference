@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e927e52a_e50651a3",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T19:21:14Z",
+      "side": 1,
+      "message": "I don\u0027t think setting this here is any more wrong than not setting it (we don\u0027t check that value for 0 anywhere either). vboot should never proceed to preamble loading if keyblock loading fails.",
+      "parentUuid": "9e6bd771_f8dc3874",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 48
+      },
+      "revId": "ab3b9589c9e23a865429622c78756c13b24572e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b5394bf_7f32a322",
         "filename": "firmware/lib20/misc.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-01T18:14:24Z",
       "side": 1,
       "message": "Two spaces...",
+      "range": {
+        "startLine": 158,
+        "startChar": 32,
+        "endLine": 158,
+        "endChar": 33
+      },
+      "revId": "ab3b9589c9e23a865429622c78756c13b24572e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6264066_c9d5014f",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T19:21:14Z",
+      "side": 1,
+      "message": "Oh is this a hard rule now? You should put it in the style guide... :P",
+      "parentUuid": "5b5394bf_7f32a322",
       "range": {
         "startLine": 158,
         "startChar": 32,
