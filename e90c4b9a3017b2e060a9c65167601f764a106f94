@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d40ba41_13e3ba1f",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T15:37:14Z",
+      "side": 1,
+      "message": "Filed https://crbug.com/1020578.",
+      "parentUuid": "1425e947_f6eddb04",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fda5fcf1_178c9357",
         "filename": "firmware/2lib/2secdata_firmware.c",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "1902672e_2e87e160",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T15:37:14Z",
+      "side": 1,
+      "message": "Actually, this is not right. (As defined in go/ec-efs2,) BOOT_MODE is a volatile state. So, it shouldn\u0027t be in secdata.",
+      "parentUuid": "065980b7_15b9dc86",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "555ed1c9_7efcb4af",
         "filename": "firmware/2lib/include/2secdata.h",
         "patchSetId": 2
@@ -81,6 +117,24 @@
       "writtenOn": "2019-11-01T01:12:36Z",
       "side": 1,
       "message": "Note that a change like this needs to get a struct version bump.\n\nWe haven\u0027t changed the format of these spaces in a very long time, we\u0027ll need to put some extra thought into it (in particular if we\u0027re going to support devices that do and don\u0027t support this feature in parallel for a while). (I\u0027m also wondering if it might not be easier to use a separate NVRAM space instead.)",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8a2638_5fb3d0ca",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T15:37:14Z",
+      "side": 1,
+      "message": "Filed https://crbug.com/1020578.",
+      "parentUuid": "b39ffee2_0db2e524",
       "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
