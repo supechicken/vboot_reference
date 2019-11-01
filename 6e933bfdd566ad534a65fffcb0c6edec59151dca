@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b881034a_70d48e08",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T15:40:36Z",
+      "side": 1,
+      "message": "SGTM, it is slightly obnoxious...",
+      "parentUuid": "c77b7e92_14067e6d",
+      "range": {
+        "startLine": 382,
+        "startChar": 7,
+        "endLine": 382,
+        "endChar": 30
+      },
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "725dbed4_697ee31d",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 14
