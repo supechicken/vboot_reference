@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2e993571_e32cc1f2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T20:27:05Z",
+      "side": 1,
+      "message": "I can probably fit VbSelectAndLoadKernel2 in VbSelectAndLoadKernel and ec_sync_all.",
+      "parentUuid": "9de5ae1b_1e1612dd",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded37539_9581e861",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
