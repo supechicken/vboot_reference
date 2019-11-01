@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "351523e6_ee8402a2",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-11-01T17:17:57Z",
+      "side": 1,
+      "message": "Function doc doesn\u0027t mention it\u0027s going to be mutating the json in certain cases. We should make this clear.",
+      "revId": "c2fe3b3d45abdb7b08106e9cfdc503e386339b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7056b11_8e46f019",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2019-11-01T17:17:57Z",
+      "side": 1,
+      "message": "Formatting here?",
+      "revId": "c2fe3b3d45abdb7b08106e9cfdc503e386339b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
