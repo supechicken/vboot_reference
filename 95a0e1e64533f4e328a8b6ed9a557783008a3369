@@ -34,6 +34,24 @@
       "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bbbe1b3_0dd85df8",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-11-01T22:17:34Z",
+      "side": 1,
+      "message": "See gs://chromeos-releases/canary-channel/reef/9308.166.0/ChromeOS-cr50_firmware-R58-9308.166.0-reef.instructions which was uploaded by https://ci.chromium.org/b/8899837753915883296 (running in the firmware-cr50-9308.B-firmwarebranch builder)\n\nNot supporting INSN_TARGET\u003dUnchanged means that you will have exactly zero signed firmware builds from the builders.  Likewise, the handler for Unchanged needs to verify that the manifest says PrePVT or ReleaseCandidate.",
+      "parentUuid": "f2de3551_101ca051",
+      "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
