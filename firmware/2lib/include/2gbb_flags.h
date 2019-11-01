@@ -62,7 +62,11 @@ enum vb2_gbb_flag {
 	/* Default to booting legacy OS when dev screen times out */
 	VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY = 1 << 10,
 
-	/* Disable PD software sync */
+	/* Disable PD software sync.
+	 *
+	 * Note: This flag is now deprecated. Vboot no longer supports
+	 * the old "PD" devices that ran the CrOS EC codebase.
+	 */
 	VB2_GBB_FLAG_DISABLE_PD_SOFTWARE_SYNC = 1 << 11,
 
 	/* Disable shutdown on lid closed */
