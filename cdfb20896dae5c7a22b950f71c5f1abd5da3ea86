@@ -22,6 +22,30 @@
       "revId": "cdfb20896dae5c7a22b950f71c5f1abd5da3ea86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08bd244_80af3d20",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T15:10:39Z",
+      "side": 1,
+      "message": "How about a const context pointer?  I don\u0027t think done() should be modifying anything.",
+      "parentUuid": "09bd44c1_47170e55",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 49
+      },
+      "revId": "cdfb20896dae5c7a22b950f71c5f1abd5da3ea86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
