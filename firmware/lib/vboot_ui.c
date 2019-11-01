@@ -154,7 +154,13 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 				} else if (phys_presence_button_was_pressed) {
 					VB2_DEBUG("Presence button released "
 						  "(1)\n");
-					return 1;
+					if (confirm_flags & VB_CONFIRM_PRESSENCE_BUTTON_SD)
+						/* Pressence button pressed means shut down flag
+						 * is set, make shutdown_requested exit loop.
+						 */
+						continue;
+					else
+						return 1;
 				}
 			}
 			VbCheckDisplayKey(ctx, key, NULL);
@@ -619,7 +625,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 					VB_SCREEN_DEVELOPER_TO_NORM,
 					0, NULL);
 				/* Ignore space in VbUserConfirms()... */
-				switch (VbUserConfirms(ctx, 0)) {
+				switch (VbUserConfirms(ctx, VB_CONFIRM_PRESSENCE_BUTTON_SD)) {
 				case 1:
 					VB2_DEBUG("leaving dev-mode\n");
 					vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
