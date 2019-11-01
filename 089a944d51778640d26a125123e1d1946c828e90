@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84dedcb2_6a89ba21",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T14:11:46Z",
+      "side": 0,
+      "message": "Ok, I\u0027m up for that.  I\u0027ll insert one CL before this one that does it, cq-dependent on a depthcharge CL that removes it as well.  It really should go before this work, or else it either gets wrapped up in EC sync (which means keeping devidx, etc.), or in auxfw sync, which would then have to keep the hashing, etc. and potentially require a \u0027devidx\u0027 argument for auxfw callbacks.",
+      "parentUuid": "55d19d78_5d985a2b",
+      "revId": "089a944d51778640d26a125123e1d1946c828e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3cdd8b_72f2574a",
         "filename": "firmware/lib/ec_sync.c",
         "patchSetId": 2

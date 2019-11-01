@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ad1190bd_ed9e3ac1",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T14:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af2acb54_b3e41839",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "235f9582_159b7103",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 14
@@ -33,6 +51,24 @@
       "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "137ef15b_be947d8a",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T14:11:46Z",
+      "side": 1,
+      "message": "Yes, all tests still pass.  The only place these callbacks should even be called would be in auxfw sync tests (vb2_auxfw_sync_tests) and vboot_api_kernel4_tests, where the test implementation will be linked in instead of these.",
+      "parentUuid": "235f9582_159b7103",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "29ceea71_b452dc84",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T14:11:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "725dbed4_697ee31d",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7c67fac_e13c6392",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 14
@@ -90,6 +144,24 @@
       "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dde2bb1_797c1887",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T14:11:46Z",
+      "side": 1,
+      "message": "Then why do all the functions in 2stub return an error?  I\u0027ll change it, but every other function in 2stub.c returns UNIMPLEMENTED or a more specific error type.",
+      "parentUuid": "f7c67fac_e13c6392",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
