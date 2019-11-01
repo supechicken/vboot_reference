@@ -119,6 +119,52 @@
     },
     {
       "key": {
+        "uuid": "9bd3c1c2_3a3f9160",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-01T16:39:30Z",
+      "side": 1,
+      "message": "I believe these are included via 2sysincludes.h?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff8ea23_9740e15e",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-01T16:39:30Z",
+      "side": 1,
+      "message": "Sorry -- maybe I missed something in earlier comments.  But did we conclude that auxfw code still needs to call this EC function?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 1
+      },
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "725dbed4_697ee31d",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 14
