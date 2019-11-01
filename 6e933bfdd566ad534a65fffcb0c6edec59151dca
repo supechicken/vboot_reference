@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af2acb54_b3e41839",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T00:48:47Z",
+      "side": 1,
+      "message": "Still missing the explicit message for reboot here.",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235f9582_159b7103",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T00:48:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these return success? Do all tests still pass when these return errors?",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "725dbed4_697ee31d",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T00:48:47Z",
+      "side": 1,
+      "message": "(Which seems to be a concept that has already been misunderstood with this one as well...)",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c67fac_e13c6392",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T00:48:47Z",
+      "side": 1,
+      "message": "Yeah, exactly... don\u0027t do this. The point of 2stub.c and friends is to provide a default implementation that should work for most tests that don\u0027t care about that part of vboot.",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
