@@ -52,6 +52,24 @@
       "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e11e66f_165a7d69",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-01T22:38:56Z",
+      "side": 1,
+      "message": "ah, I see what you mean.\n\nGiven the objections to fully automated signing we might end up with no images going this route. \n\nIf it is decided in the end that automated signing of some images is allowed, this script will have to be modified to accept this option and verify the manifest appropriately.\n\nwill this work?",
+      "parentUuid": "8bbbe1b3_0dd85df8",
+      "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
