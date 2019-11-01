@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9de5ae1b_1e1612dd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand/agree with this one at all. VbSelectAndLoadKernel() is literally all of vboot kernel implementation. Replacing the whole thing is replacing all of that, and reimplementing everything in there, and causing maintenance headaches whenever anything in there changes.\n\nThis feature is related to EC software sync, it should be integrated into EC software sync code (and other parts where applicable). In fact, we\u0027re currently moving EC software sync from here into a separate API that will be called by coreboot directly, that\u0027s another good reason to integrated it in a smaller scope function, because otherwise that migration will break everything you do here.",
+      "parentUuid": "2f2bf79c_e9b62d35",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded37539_9581e861",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1

@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1425e947_f6eddb04",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "This needs to be written by RW firmware (where software sync happens), so it needs to be part of secdata_kernel, not secdata_firmware.",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda5fcf1_178c9357",
+        "filename": "firmware/2lib/2secdata_firmware.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "Note that you\u0027re working on old code here, this was recently changed up a bit and what you\u0027re trying to do won\u0027t work as well anymore. Maybe the best solution would be to add separate functions to access this rather than trying to merge it in here, similar to vb2_secdata_fwmp_get_dev_key_hash().",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065980b7_15b9dc86",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea to have H1 hack around in these spaces to communicate this. For now, I\u0027d suggest we create a separate API to retrieve the NO_BOOT flag, and then pass it through the vb2_context.\n\nWe\u0027ve already been talking about consolidating H1 commands at some point, so we\u0027d have a single vendor command that returns all 3 NVRAM spaces we care about and could also return separate information like this. But the information is still logically separate from the NVRAM space in that case, it\u0027s just bundled in the same command. And there\u0027s no need to tie these feature changes to that.",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555ed1c9_7efcb4af",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "I don\u0027t really understand what this is doing here, added a comment to your doc.",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b39ffee2_0db2e524",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-01T01:12:36Z",
+      "side": 1,
+      "message": "Note that a change like this needs to get a struct version bump.\n\nWe haven\u0027t changed the format of these spaces in a very long time, we\u0027ll need to put some extra thought into it (in particular if we\u0027re going to support devices that do and don\u0027t support this feature in parallel for a while). (I\u0027m also wondering if it might not be easier to use a separate NVRAM space instead.)",
+      "revId": "e90c4b9a3017b2e060a9c65167601f764a106f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
