@@ -16,6 +16,24 @@
       "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2de3551_101ca051",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-01T21:33:47Z",
+      "side": 1,
+      "message": "but this script is not supposed to be fed the unchanged instructions, right?",
+      "parentUuid": "aca7569b_d0ffd5fe",
+      "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
