@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a48a763_1544d24c",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-01T07:37:42Z",
+      "side": 1,
+      "message": "I don\u0027t know the code well enough to be sure, but it seems there\u0027s a potential integer overflow here. Again, only of academic interest because this is signed data. Anyhow, if key_size is very large, the sum might be small again, so this function would copy a truncated data_key into the workbuf, and then whoever uses the data might fall over.",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 68
+      },
+      "revId": "67aa9cb65a1f974dbba4482f0f7868ba596f770c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508f047c_c586c643",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-01T07:37:42Z",
+      "side": 1,
+      "message": "nit: could use sd-\u003edata_key_size here",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 49
+      },
+      "revId": "67aa9cb65a1f974dbba4482f0f7868ba596f770c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a84a7f0_a6818557",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-01T07:37:42Z",
+      "side": 1,
+      "message": "nit: it would seem clearer if this were kept next to the sd-\u003edata_key_size assignment (which you moved to line 166) since they belong together.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 51
+      },
+      "revId": "67aa9cb65a1f974dbba4482f0f7868ba596f770c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
