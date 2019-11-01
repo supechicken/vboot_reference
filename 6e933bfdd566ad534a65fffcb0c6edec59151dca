@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5ac0a48e_c2442f70",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T16:55:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9bd3c1c2_3a3f9160",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fff8ea23_9740e15e",
         "filename": "tests/vb2_ec_sync_tests.c",
         "patchSetId": 14
@@ -162,6 +186,30 @@
       "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f2332c_707843a3",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-01T16:55:31Z",
+      "side": 1,
+      "message": "No, it has its own callback, vb2ex_auxfw_finalize(), where the tunnel protection will happen.",
+      "parentUuid": "fff8ea23_9740e15e",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 1
+      },
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
