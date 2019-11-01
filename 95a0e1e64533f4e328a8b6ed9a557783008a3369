@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aca7569b_d0ffd5fe",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2019-11-01T21:27:17Z",
+      "side": 1,
+      "message": "The firmware builders will upload instructions with \"INSN_TARGET\u003dUnchanged\", which should verify that bid_flags and major agree, and that the input file is not already NodeLocked or GeneralRelease.",
+      "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
