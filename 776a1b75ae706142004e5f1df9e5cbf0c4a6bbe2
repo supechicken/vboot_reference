@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2f2bf79c_e9b62d35",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T00:27:14Z",
+      "side": 1,
+      "message": "First, I wanted a clear separation to avoid creating obscure corner cases. The timing ec is updated is very different. \n\nSecond, It will be easier to maintain and debug the two entry points separately and deprecate one when the switch-over completes. Those who are not familiar with one or the other logic can still (relatively comfortably) work on the code.",
+      "parentUuid": "815c1f7f_eed51e80",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ded37539_9581e861",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e6614afc_18e3d6bd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T00:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded37539_9581e861",
+      "range": {
+        "startLine": 406,
+        "startChar": 25,
+        "endLine": 406,
+        "endChar": 53
+      },
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9a41bfa_fa7b26be",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "9bca064e_e36477c6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T00:27:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9a41bfa_fa7b26be",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95289229_ad26aa57",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448cd8f9_8bb965be",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-01T00:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95289229_ad26aa57",
+      "revId": "776a1b75ae706142004e5f1df9e5cbf0c4a6bbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
