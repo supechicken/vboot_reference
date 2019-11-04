@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec11b2ce_76baf1c0",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-04T23:53:29Z",
+      "side": 1,
+      "message": "nit: can we simplify all this to\n\n if (need_wait_screen)\n   check_reboot_for_display(ctx);\n\n if (phase1_rv)\n   return VBERROR_EC_REBOOT_TO_RO_REQUIRED;\n\n if (need_wait_screen)\n   display_wait_screen(ctx, \"EC FW\");",
+      "revId": "bf23c8bc8766408075a1adf9e4be649fc0d70ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

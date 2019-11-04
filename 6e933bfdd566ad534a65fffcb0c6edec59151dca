@@ -280,6 +280,24 @@
       "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e57b04dd_c1126689",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-04T23:53:29Z",
+      "side": 1,
+      "message": "read_resource() returns an error because there\u0027s no way to provide a working \"default\" implementation. hwcrypto_digest_init() returns an error that tells vboot to just not use hardware crypto and proceed without it, which means the other two (extend and finalize) will never get called and thus can also return errors. printf() and abort() are implemented properly. tpm_clear_owner() and tpm_set_mode() are, in my opinion, also mistakes and it would make more sense to just return success there (because that\u0027s what most tests that override them do anyway).",
+      "parentUuid": "1dde2bb1_797c1887",
+      "revId": "6e933bfdd566ad534a65fffcb0c6edec59151dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
