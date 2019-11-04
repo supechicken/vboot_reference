@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9890244_67e290c4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-04T23:29:42Z",
+      "side": 0,
+      "message": "No, we still want to keep that flag around to be able to disable auxfw sync. We should probably rename it, though.",
+      "revId": "52714545cdb62d15ada66ac55b734c70b1910690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
