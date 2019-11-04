@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4074ebb3_c88440e0",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1317162
+      },
+      "writtenOn": "2019-11-04T14:04:11Z",
+      "side": 1,
+      "message": "This is intended from flag_replace(FLAG_PHYS_PRESENCE, power_switch); no idea why sarien can PASS this.",
+      "revId": "2f2d481028a6239627434d6d72da18fbdff5c042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e8640b6_cd692cc9",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
