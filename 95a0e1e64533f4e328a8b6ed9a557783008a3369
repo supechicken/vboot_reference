@@ -70,6 +70,24 @@
       "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56e3971_9d9f3a9e",
+        "filename": "scripts/image_signing/sign_cr50_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-11-04T18:08:22Z",
+      "side": 1,
+      "message": "ok, after out of band discussion I understand the concern.\n\nLet me work on another change which will ad processing of the \u0027unchanged\u0027 case which can be supported for prepvt and mp-prerelase images.",
+      "parentUuid": "2e11e66f_165a7d69",
+      "revId": "95a0e1e64533f4e328a8b6ed9a557783008a3369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
