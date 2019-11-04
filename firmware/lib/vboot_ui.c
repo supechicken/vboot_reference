@@ -140,6 +140,11 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			return 0;
 			break;
 		default:
+			/* In case FLAG_PWRSW and FLAG_PHYS_PRESENCE use the same flag
+			 * like wilco device, shutdown is the first priority.
+			 */
+			if(shutdown_requested)
+				return -1;
 			/* If the physical presence button is physical, and is
 			 * pressed, this is also a YES, but must wait for
 			 * release.
