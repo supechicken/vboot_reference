@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e551d145_9bde5f0f",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-04T23:09:26Z",
+      "side": 1,
+      "message": "Just add (deprecated) to the existing one-line comment and rename the option to VB2_RECOVERY_DEPRECATED_EC_EXPECTED_IMAGE (cf. all the other deprecated options here)",
+      "revId": "af0ed0e0f3cd3e634794616c5305f76738dd82f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
