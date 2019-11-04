@@ -128,7 +128,6 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			}
 			VB2_DEBUG("Yes (1)\n");
 			return 1;
-			break;
 		case ' ':
 			VB2_DEBUG("Space (%d)\n",
 				  confirm_flags & VB_CONFIRM_SPACE_MEANS_NO);
@@ -138,8 +137,12 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 		case VB_KEY_ESC:
 			VB2_DEBUG("No (0)\n");
 			return 0;
-			break;
 		default:
+			/* In case FLAG_PWRSW and FLAG_PHYS_PRESENCE use the same flag
+			 * like wilco device, shutdown is the first priority.
+			 */
+			if(shutdown_requested)
+				break;
 			/* If the physical presence button is physical, and is
 			 * pressed, this is also a YES, but must wait for
 			 * release.
