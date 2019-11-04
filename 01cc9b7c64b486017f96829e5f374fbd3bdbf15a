@@ -22,6 +22,30 @@
       "revId": "01cc9b7c64b486017f96829e5f374fbd3bdbf15a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56bc752_c7d09ee8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1317162
+      },
+      "writtenOn": "2019-11-04T16:43:19Z",
+      "side": 0,
+      "message": "break never call because return first.",
+      "parentUuid": "5f5236ce_81bf852f",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "01cc9b7c64b486017f96829e5f374fbd3bdbf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
