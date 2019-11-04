@@ -426,6 +426,8 @@ enum VbScreenType_t {
 	VB_SCREEN_CONFIRM_VENDOR_DATA = 0x215,
 	/* Confirm reboot for running diagnostics rom */
 	VB_SCREEN_CONFIRM_DIAG = 0x216,
+	/* Vendor data not set warning screen */
+	VB_SCREEN_RMA = 0x217,
 };
 
 /**
@@ -435,6 +437,7 @@ typedef struct VbVendorData
 {
 	/* Current state of the the vendor data input */
 	const char *input_text;
+	uint32_t selected_index;
 } VbVendorData;
 
 /**
