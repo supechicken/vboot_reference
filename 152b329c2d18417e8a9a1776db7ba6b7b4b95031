@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0e196ed7_bd47a7d6",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "I suppose not.  It would be considered \"invalid\" to use if it is misaligned, but if we assume the caller only has a void pointer, they won\u0027t be able to use it until they call vb2_reinit() and friends anyways.",
+      "parentUuid": "aa6b9816_c3ed79d4",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56385db3_241a5380",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 79
@@ -30,6 +48,30 @@
       "writtenOn": "2019-10-31T22:59:35Z",
       "side": 1,
       "message": "nit: normally I\u0027d leave the macro you actually want to use without a leading underscore (if you\u0027re worried about naming clashes, could call it VB2_PAD_STRUCT)",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2732584_541f41e3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 79
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "OK... I thought just using an underscore might be more \"file-specific\".  VB2_PAD_STRUCT feels like it belongs in a different header file.  But I\u0027ll do that here.",
+      "parentUuid": "56385db3_241a5380",
       "range": {
         "startLine": 203,
         "startChar": 8,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "f22d4476_b4e45259",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 79
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "Hmm, I like the second solution.",
+      "parentUuid": "ae259903_b2afc998",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9398b814_8ed6496d",
         "filename": "tests/vb2_keyblock_fuzzer.c",
         "patchSetId": 79
@@ -70,6 +130,24 @@
       "writtenOn": "2019-10-31T22:59:35Z",
       "side": 1,
       "message": "nit: could really be a local now",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624510b7_74c1e469",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "Hmm I think we\u0027ve talked about this before (\u003d  My argument is that all tests use file-static variables, and we should be consistent with that, regardless of whether it could be a local.",
+      "parentUuid": "9398b814_8ed6496d",
       "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "91547fa2_e77f331a",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "It was unintentional -- I\u0027ll add an assert back in.  Or should it return 1 on failure instead?\n\nEDIT: There is something very wrong with assert().  It seems to ignore any text within the assert(...) call when compiling.  I.e. it will complain that workbuf is an unused variable.  I\u0027ve changed it to return 1 instead... although I\u0027m not even sure this is correct behaviour for a LLVMFuzzerTestOneInput function.  Please advise.\n\nSeems that I can write assert(aoeuaeouaoueaeou); and it will still compile.  I wonder if all of our assert() calls are broken?",
+      "parentUuid": "63cc7110_da308020",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e286acd_b22d7e67",
         "filename": "tests/vboot_kernel_tests.c",
         "patchSetId": 79
@@ -104,6 +200,24 @@
       "writtenOn": "2019-10-31T22:59:35Z",
       "side": 1,
       "message": "...in fact, now that I\u0027m looking through this there are a bunch of test workbuffers that don\u0027t get aligned right.",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d380e98_21058d38",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "Yes.  Maybe we should just take care of that separately.",
+      "parentUuid": "3e286acd_b22d7e67",
       "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "3e0facca_a32ab475",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "Do you mean because of misalignment?  Yes, it passes, even with TEST_SUCC.  I guess the compiler just tends to align these static variables without being asked...?\n\nBut anyways, adding TEST_SUCC to all of these.  Can leave vb2_nv_init and friends for another CL.",
+      "parentUuid": "3fc6cc6f_e3669858",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eab82e4a_38debd23",
         "filename": "tests/verify_kernel.c",
         "patchSetId": 79
@@ -138,6 +270,24 @@
       "writtenOn": "2019-10-31T22:59:35Z",
       "side": 1,
       "message": "Alignment?",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ec2b14_37a770ef",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-05T18:32:41Z",
+      "side": 1,
+      "message": "Moved into another CL.",
+      "parentUuid": "eab82e4a_38debd23",
       "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
