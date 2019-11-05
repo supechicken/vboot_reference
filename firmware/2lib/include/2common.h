@@ -71,6 +71,7 @@ struct vb2_public_key;
 #endif
 #endif
 
+<<<<<<< HEAD   (0e97e2 2lib: Fix struct vb2_hash the way it was meant to be)
 // Have a generic fall-through for different versions of C/C++.
 // Taken from boringssl.
 #if defined(__cplusplus) && __cplusplus >= 201703L
@@ -92,6 +93,8 @@ struct vb2_public_key;
 #define VBOOT_FALLTHROUGH
 #endif
 
+=======
+>>>>>>> CHANGE (6a703f Clean up implicit fall through.)
 /**
  * Round up a number to a multiple of VB2_WORKBUF_ALIGN
  *
