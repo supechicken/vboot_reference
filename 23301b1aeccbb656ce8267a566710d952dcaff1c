@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "405f79ac_43ba132b",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-05T01:54:31Z",
+      "side": 1,
+      "message": "We should decide whether we want to leave the old structure format intact and just append to it or completely overhaul it. Sticking to the old format might make it easier to implement support for both versions in code that needs to be downwards compatible. On the other hand, overhauling the whole thing would allow us to fix some existing issues while we\u0027re here (misaligned fields, CRC not near the start, no size field).",
+      "revId": "23301b1aeccbb656ce8267a566710d952dcaff1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36797ded_20d5d3c6",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-05T01:54:31Z",
+      "side": 1,
+      "message": "This is where the hash-checking part should go. Rather than reading from the EC, you\u0027d read from secdata here.",
+      "revId": "23301b1aeccbb656ce8267a566710d952dcaff1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d197830d_a62a806e",
+        "filename": "firmware/lib/ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-05T01:54:31Z",
+      "side": 1,
+      "message": "Here you\u0027d essentially reboot if the memcmp() failed, and otherwise update sd-\u003eflags if NO_BOOT is set.",
+      "revId": "23301b1aeccbb656ce8267a566710d952dcaff1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
