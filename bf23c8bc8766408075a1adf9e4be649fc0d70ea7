@@ -16,6 +16,24 @@
       "revId": "bf23c8bc8766408075a1adf9e4be649fc0d70ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c401be9_b523f6d4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-05T15:14:36Z",
+      "side": 1,
+      "message": "if (need_wait_screen \u0026\u0026 check_reboot_for_display(ctx))\n\t\treturn VBERROR_REBOOT_REQUIRED;\n\nOtherwise the slow update test case fails.  Other than that, SGTM.",
+      "parentUuid": "ec11b2ce_76baf1c0",
+      "revId": "bf23c8bc8766408075a1adf9e4be649fc0d70ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
