@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fc952b6_e370d9c1",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-05T01:34:07Z",
+      "side": 1,
+      "message": "nit: a bit off-topic, but does it also work if you put it here (inside the braces)? I think that would be cleaner because that\u0027s where the \u0027break;\u0027 would ordinarily go.",
+      "revId": "75563c2e96ff2c8f6e9e9e3579615d6df48d86b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
