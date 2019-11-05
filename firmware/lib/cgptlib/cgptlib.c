@@ -144,7 +144,7 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 		}
 		/* Out of tries, so drop through and mark partition bad. */
 	}
-	VBOOT_FALLTHROUGH;
+	__attribute__ ((fallthrough));
 	case GPT_UPDATE_ENTRY_BAD: {
 		/* Giving up on this partition entirely. */
 		if (!GetEntrySuccessful(e)) {
