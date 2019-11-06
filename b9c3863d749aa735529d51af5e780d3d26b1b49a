@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ead777dc_40bbf8c5",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 80
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-06T00:54:11Z",
+      "side": 1,
+      "message": "I guess we could ask if we should actually bump this now, since we\u0027re making a backwards-incompatible update. On the other hand, we\u0027ve never bumped it before when mucking around in this struct, so maybe we should wait with the explicit versioning until we actually need it (when crossystem moves to read this instead of the vboot 1 version).",
+      "revId": "b9c3863d749aa735529d51af5e780d3d26b1b49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

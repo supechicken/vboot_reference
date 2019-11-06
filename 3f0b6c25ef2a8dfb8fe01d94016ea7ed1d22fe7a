@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "33f4228a_5b8f9707",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 77
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-06T00:54:11Z",
+      "side": 1,
+      "message": "No, it shouldn\u0027t run, just build.\n\nI agree about making the test target independent so that it can test multiple compile-time options, that\u0027s been something I would\u0027ve liked to have for a while, although it\u0027s a little more effort to actually achieve (and might be somewhat difficult to do in make alone, maybe it would be easier to do that in a separate shell script or the ebuild). We still have that problem that our firmware always has both detachable and normal UI code linked in atm because it\u0027s decided by a runtime flag, and the only reason that needs to be like that is because otherwise we can\u0027t unit test them both. Fixing that would be very nice.",
+      "parentUuid": "04589099_c44f676b",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e083101b_e21229ea",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 77
