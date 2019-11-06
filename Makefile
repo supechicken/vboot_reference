@@ -142,7 +142,6 @@ COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time -Wno-unknown-warning \
 	-Wno-address-of-packed-member -ffunction-sections -fdata-sections \
-	-Wimplicit-fallthrough ${DEBUG_FLAGS}
 
 # Note: FIRMWARE_ARCH is defined by the Chromium OS ebuild.
 ifeq (${FIRMWARE_ARCH},arm)
@@ -290,7 +289,7 @@ export BUILD_RUN
 
 # Default target.
 .PHONY: all
-all: $(if ${NO_BUILD_TOOLS},,fwlib fwlib2x fwlib20 fwlib21) \
+all: $(if ${NO_BUILD_TOOLS},,fwlib fwlib2x fwlib20 fwlib21 tlcl) \
 	$(if ${FIRMWARE_ARCH},,host_stuff) \
 	$(if ${COV},coverage)
 
@@ -328,6 +327,11 @@ FWLIB2X = ${BUILD}/vboot_fw2x.a
 FWLIB20 = ${BUILD}/vboot_fw20.a
 # Vboot 2.1 (not yet ready - see firmware/README)
 FWLIB21 = ${BUILD}/vboot_fw21.a
+
+# TPM lightweight command library
+# Separate library for those applications that use a TPM for part of
+# verified boot
+TLCL = ${BUILD}/tlcl.a
 
 # Additional firmware library sources needed by VbSelectAndLoadKernel() call
 FWLIB_SRCS = \
@@ -393,11 +397,10 @@ endif
 
 # Support real TPM unless BIOS sets MOCK_TPM
 ifeq (${MOCK_TPM},)
-FWLIB_SRCS += \
-	firmware/lib/secdata_tpm.c \
-	${TLCL_SRCS}
+TLCL_SRCS += \
+	firmware/lib/secdata_tpm.c
 else
-FWLIB_SRCS += \
+TLCL_SRCS += \
 	firmware/lib/mocked_secdata_tpm.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
@@ -424,11 +427,13 @@ FWLIB2X_SRCS += \
 	firmware/2lib/2stub.c
 endif
 
+TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
 FWLIB20_OBJS = ${FWLIB20_SRCS:%.c=${BUILD}/%.o}
 FWLIB21_OBJS = ${FWLIB21_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS}
+ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS} \
+	${TLCL_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
@@ -460,7 +465,8 @@ UTILLIB_SRCS = \
 	host/lib21/host_key.c \
 	host/lib21/host_keyblock.c \
 	host/lib21/host_misc.c \
-	host/lib21/host_signature.c
+	host/lib21/host_signature.c \
+	${TLCL_SRCS}
 
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
@@ -501,8 +507,7 @@ HOSTLIB_SRCS = \
 	host/lib/crossystem.c \
 	host/lib/extract_vmlinuz.c \
 	host/lib/fmap.c \
-	host/lib/host_misc.c \
-	${TLCL_SRCS}
+	host/lib/host_misc.c
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
@@ -837,7 +842,7 @@ install_for_test: install
 # TPM_BLOCKING_CONTINUESELFTEST is defined if TPM_ContinueSelfTest blocks until
 # the self test has completed.
 
-${FWLIB_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
+${TLCL_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
 
 # TPM_MANUAL_SELFTEST is defined if the self test must be started manually
 # (with a call to TPM_ContinueSelfTest) instead of starting automatically at
@@ -854,6 +859,7 @@ ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB21_OBJS}: CFLAGS += -DUNROLL_LOOPS
+${TLCL_OBJS}: CFLAGS += -DUNROLL_LOOPS
 endif
 
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
@@ -894,6 +900,15 @@ ${FWLIB21}: ${FWLIB2X_OBJS} ${FWLIB21_OBJS}
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
 
+.PHONY: tlcl
+tlcl: ${TLCL}
+
+${TLCL}: ${TLCL_OBJS}
+	@${PRINTF} "    RM            $(subst ${BUILD}',,$@)\n"
+	${Q}rm -f $@
+	@${PRINTF} "    AR            $(subst ${BUILD}',,$@)\n"
+	${Q}ar qc $@ $^
+
 # ----------------------------------------------------------------------------
 # Host library(s)
 
@@ -902,7 +917,7 @@ utillib: ${UTILLIB}
 
 # TODO: better way to make .a than duplicating this recipe each time?
 ${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} \
-		${FWLIB21_OBJS}
+		${FWLIB21_OBJS} ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
