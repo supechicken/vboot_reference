@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a15f5ae0_2eebfd7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-07T15:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46274966_1984f095",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "67079c95ca7fb1f5aeb101daaac57195d0cf0a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e793a6_ff987bf1",
         "filename": "firmware/2lib/include/2gbb_flags.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b01646f_4437f1e5",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-07T15:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e793a6_ff987bf1",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "67079c95ca7fb1f5aeb101daaac57195d0cf0a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b29a1a6_4eba0508",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "67079c95ca7fb1f5aeb101daaac57195d0cf0a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5c34f9_23c6b15f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-07T15:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b29a1a6_4eba0508",
+      "range": {
+        "startLine": 675,
+        "startChar": 39,
+        "endLine": 675,
+        "endChar": 45
+      },
+      "revId": "67079c95ca7fb1f5aeb101daaac57195d0cf0a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
