@@ -16,6 +16,24 @@
       "revId": "b9c3863d749aa735529d51af5e780d3d26b1b49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4442e6_9d44ab07",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 80
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T10:17:29Z",
+      "side": 1,
+      "message": "Hmm.. this does feel like big enough of a change that something should be bumped.  Even if nothing is depending on this number at the moment, I say we increment.",
+      "parentUuid": "ead777dc_40bbf8c5",
+      "revId": "b9c3863d749aa735529d51af5e780d3d26b1b49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

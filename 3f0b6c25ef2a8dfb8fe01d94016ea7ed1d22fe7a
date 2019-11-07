@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "64c72e8d_0ef9b5e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 77
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T10:17:29Z",
+      "side": 1,
+      "message": "Re. target-independent testing: Is this difficult enough that we should just do it directly in the ebuild?\n\nDetachable vs. normal: Probably our efforts could be better placed by working on removing the normal UI.",
+      "parentUuid": "33f4228a_5b8f9707",
+      "revId": "3f0b6c25ef2a8dfb8fe01d94016ea7ed1d22fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e083101b_e21229ea",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 77

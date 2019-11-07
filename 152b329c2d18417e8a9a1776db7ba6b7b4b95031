@@ -207,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "bbd14ef8_8ba32512",
+        "filename": "tests/vb2_keyblock_fuzzer.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T10:17:29Z",
+      "side": 1,
+      "message": "Okay, let\u0027s use abort() here.  VB2_ASSERT() doesn\u0027t work since we mocked out vb2api_abort() in one of the fuzzers.  But I agree that we should fix the assert situation... in a separate CL.",
+      "parentUuid": "aa8803eb_801bbd3b",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e286acd_b22d7e67",
         "filename": "tests/vboot_kernel_tests.c",
         "patchSetId": 79
@@ -292,6 +310,24 @@
       "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d062cd98_ed103bc4",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T10:17:29Z",
+      "side": 1,
+      "message": "Ack - see CL:1902843.",
+      "parentUuid": "a34a6471_04f6dfdd",
+      "revId": "152b329c2d18417e8a9a1776db7ba6b7b4b95031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
