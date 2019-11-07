@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95cae53b_7e9293eb",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:29:47Z",
+      "side": 1,
+      "message": "I\u0027d say this one still belongs in vboot, not in TLCL (or are there naming clashes for that one too?).",
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a86f07a_4bd33e26",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:29:47Z",
+      "side": 1,
+      "message": "Is there a reason this moves from HOSTLIB to UTILLIB?",
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284990c9_b04a4343",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:29:47Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that doesn\u0027t get checked in any TLCL code...",
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265f0e2c_70b9fddd",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:29:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be here when you already dump TLCL_SRCS into UTILLIB_SRCS.",
+      "range": {
+        "startLine": 920,
+        "startChar": 18,
+        "endLine": 920,
+        "endChar": 30
+      },
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
