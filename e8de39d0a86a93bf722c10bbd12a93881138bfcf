@@ -16,6 +16,24 @@
       "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "995829ac_b6245c11",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-07T17:17:56Z",
+      "side": 0,
+      "message": "No, my local compiler version complains about this warning flag, so I remove it so I can compile.  I\u0027ve tried updating my chroot, but it doesn\u0027t seem to update GCC.  Anywho, my bad, will fix.",
+      "parentUuid": "92d0a5da_5581dc6d",
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
