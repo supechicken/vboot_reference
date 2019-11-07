@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55ebf05d_a643cd8a",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:16:18Z",
+      "side": 1,
+      "message": "nit: can remove",
+      "revId": "99b036ce2e76fe4c544188e3bbcc96778e74efc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0838204_dec804f4",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:16:18Z",
+      "side": 1,
+      "message": "nit: rephrase?",
+      "revId": "99b036ce2e76fe4c544188e3bbcc96778e74efc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0592ad_550e9de1",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:16:18Z",
+      "side": 1,
+      "message": "nit: this comes out to the same, but probably cleaner to just say\n\n return phase1_rv;",
+      "revId": "99b036ce2e76fe4c544188e3bbcc96778e74efc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45c3177_c97477df",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:16:18Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "99b036ce2e76fe4c544188e3bbcc96778e74efc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf18c3fe_00037065",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T00:16:18Z",
+      "side": 1,
+      "message": "Which are the \"functions above\"?",
+      "revId": "99b036ce2e76fe4c544188e3bbcc96778e74efc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
