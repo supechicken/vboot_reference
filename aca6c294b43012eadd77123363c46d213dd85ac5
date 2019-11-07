@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d720884d_305702e2",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:16:33Z",
+      "side": 1,
+      "message": "Probably for any applications - regardless of if they use vboot or not.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 15
+      },
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95cae53b_7e9293eb",
         "filename": "Makefile",
         "patchSetId": 2
@@ -13,6 +36,47 @@
       "writtenOn": "2019-11-07T00:29:47Z",
       "side": 1,
       "message": "I\u0027d say this one still belongs in vboot, not in TLCL (or are there naming clashes for that one too?).",
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f538df7_4c4410d3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:16:33Z",
+      "side": 1,
+      "message": "Agreed -- this is vboot-specific stuff, which should not live in a general TLCL library.",
+      "parentUuid": "95cae53b_7e9293eb",
+      "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bbec3d_54f5961c",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:16:33Z",
+      "side": 1,
+      "message": "Decide if TLCL is going to go before FWLIB stuff or after, and keep consistent throughout the Makefile.",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 13
+      },
       "revId": "aca6c294b43012eadd77123363c46d213dd85ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
