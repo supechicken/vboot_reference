@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae2902ad_85e231af",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:21:33Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any sense in mentioning battery cutoff here.  If people want to find the current battery cutoff code, they can search for it.  If people want to find the history of battery cutoff code, they can look at previous commits.",
+      "range": {
+        "startLine": 483,
+        "startChar": 27,
+        "endLine": 483,
+        "endChar": 69
+      },
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908511fe_44eaceb6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:21:33Z",
+      "side": 1,
+      "message": "\"Should\" be?  And explain why?",
+      "range": {
+        "startLine": 56,
+        "startChar": 46,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed43ed7f_6cad3654",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:21:33Z",
+      "side": 1,
+      "message": "I thought your commit message says you\u0027re moving it to the *end* of SelectAndLoadKernel?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 35
+      },
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
