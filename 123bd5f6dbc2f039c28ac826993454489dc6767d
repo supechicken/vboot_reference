@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f2d7e9_3adc4300",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-07T13:28:32Z",
+      "side": 0,
+      "message": "Did I miss something?  I thought we changed this to DISABLE_AUXFW_SOFTWARE_SYNC.  But it\u0027s being removed here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "123bd5f6dbc2f039c28ac826993454489dc6767d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
