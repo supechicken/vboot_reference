@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46845140_311d14c2",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 83
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T21:49:49Z",
+      "side": 1,
+      "message": "Do you mean workbuf2?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "5b54475652d7e1ddfe6aa8c0190214c15dcec7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2621dfd_b92bb894",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 83
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-07T21:49:49Z",
+      "side": 1,
+      "message": "nit: maybe worth to copy the contents before and then memcmp() the whole contents again to ensure it actually move the data right, too",
+      "revId": "5b54475652d7e1ddfe6aa8c0190214c15dcec7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
