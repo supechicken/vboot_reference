@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfbce3a5_9b5ba524",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T01:15:42Z",
+      "side": 1,
+      "message": "nit: either write \"disable EC software sync\" and 0x239, or \"disable EC/auxfw software sync\" and 0xa39. Otherwise the text doesn\u0027t match the flags.",
+      "revId": "d84bdb8b462261a613bf876420e4c06aae30a455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
