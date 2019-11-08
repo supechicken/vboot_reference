@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84ea7349_2dd299b1",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "Again with the copy\u0026pasting whole functions... why? Whenever you\u0027re copy\u0026pasting a whole line of code without changing anything, that\u0027s probably a sign you\u0027re going down the wrong path.",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f283cc85_370d7404",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "This can just be\n\n if (ctx \u0026 ...EFS2)\n   rv \u003d vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_EC_HASH, \u0026ec_hash);\n else\n   rv \u003d VbExEcHashImage(...);",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50544658_34b4a721",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "And here you can add a\n\n if (ctx \u0026 ...EFS2) {\n   vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_HASH, hash);\n   return VB2_ERR_...;\n }",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a41a042_1999cb5f",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "is_rw_ab is already equal to VB2_CONTEXT_EC_EFS. (Note Tim\u0027s CL:1872255 which will make this a little less complicated.)",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46f6c4c_f07c7f2b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "With the code you have here you can never reach this path with EFS2 because you never set WHICH_EC(). I think what you rather want is to check the NO_BOOT flag? (Either check it explicitly here or add something like\n\n if (ctx \u0026 ...NO_BOOT)\n   sd-\u003eflags |\u003d WHICH_EC(...)\n\nto check_ec_hash().)",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98d5738_6b3e42d7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "Assuming the IN_RW() flag is set correctly you don\u0027t need another check here.",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e5513e_cff03bc4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "How is this going to be backwards-compatible with the older EFS boards? I think we may need a new context flag for this.",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0daec51_3ce47807",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "If you put this up here you\u0027ll have no UI either. I think you\u0027ll rather need to add checks for this inside VbBootRecovery() and VbBootRecoveryMenu() to make sure you display the correct screens and don\u0027t even allow it to return success.",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab2010a_2bfabede",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T02:03:39Z",
+      "side": 1,
+      "message": "And we might want to add another sanity check here that if rv \u003d\u003d SUCCESS and the NO_BOOT flag is set, we\u0027ll instead change it to return an error (to make sure we can never boot under any circumstances).",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
