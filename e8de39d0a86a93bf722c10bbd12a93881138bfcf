@@ -34,6 +34,41 @@
       "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5f1d1fb_16fb2f02",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T01:24:14Z",
+      "side": 0,
+      "message": "The GCC in the chroot is ancient and shouldn\u0027t be used anymore. When building vboot host utilities, you should be using clang. When building vboot as part of coreboot or depthcharge, you should be using the coreboot GCC toolchain (which is a lot newer than the one in the chroot). In both cases, our ebuilds should be written so that emerge does the right thing.\n\nIf you\u0027re trying to run \u0027make runtests\u0027 manually, you may need to supply an appropriate CC (e.g. \u0027CC\u003dx86_64-pc-linux-gnu-clang make runtests\u0027).",
+      "parentUuid": "995829ac_b6245c11",
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f354075b_e7e336c4",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-08T01:24:14Z",
+      "side": 0,
+      "message": "We might want to update these to says \u0027clang\u0027 to prevent these sorts of issues for Chrome OS developers.",
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
