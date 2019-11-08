@@ -22,6 +22,30 @@
       "revId": "e38b3ca4d17bd20b2ae82c76f8bf0d9d5cea68e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af8bf9f_75261c23",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 84
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-08T18:08:25Z",
+      "side": 1,
+      "message": "Woops -- forgot to set sd \u003d vb2_get_sd() after the relocate call.",
+      "parentUuid": "4ab4d2e5_6cb3d0cb",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 35
+      },
+      "revId": "e38b3ca4d17bd20b2ae82c76f8bf0d9d5cea68e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
