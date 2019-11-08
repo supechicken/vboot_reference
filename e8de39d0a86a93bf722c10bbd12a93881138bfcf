@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1f2f7f9a_883225fe",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-08T04:19:55Z",
+      "side": 0,
+      "message": "Ahhh, so that\u0027s the issue.  Good to know, I\u0027ll try that.",
+      "parentUuid": "a5f1d1fb_16fb2f02",
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f354075b_e7e336c4",
         "filename": "Makefile",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "writtenOn": "2019-11-08T01:24:14Z",
       "side": 0,
       "message": "We might want to update these to says \u0027clang\u0027 to prevent these sorts of issues for Chrome OS developers.",
+      "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7361089e_5a898b53",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-11-08T04:19:55Z",
+      "side": 0,
+      "message": "Changing this here (to CC ?\u003d x86_64-pc-linux-gnu-clang) doesn\u0027t seem to work, and I think that\u0027s because GNU make predefines \u0027CC\u0027 to be \u0027cc\u0027 and there is indeed a /usr/bin/cc in the SDK, so CC is already predefined and the ?\u003d won\u0027t kick in.",
+      "parentUuid": "f354075b_e7e336c4",
       "revId": "e8de39d0a86a93bf722c10bbd12a93881138bfcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
