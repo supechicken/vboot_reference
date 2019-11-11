@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0b90db9c_04e9df9a",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2019-11-11T14:03:34Z",
+      "side": 1,
+      "message": "Mention this in the comment then? This can easily get lost in future refactoring.",
+      "parentUuid": "e2414709_31e23e51",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 68
+      },
+      "revId": "67aa9cb65a1f974dbba4482f0f7868ba596f770c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "508f047c_c586c643",
         "filename": "firmware/lib20/misc.c",
         "patchSetId": 1
