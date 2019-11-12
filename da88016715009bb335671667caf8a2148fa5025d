@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be266b06_25f34ca1",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-12T13:55:04Z",
+      "side": 1,
+      "message": "Something weird is going on.  Even though this is performed as part of vb2_init_context, sd-\u003eflags is taking on some wacky values (and causing this test to fail) unless workbuf is zero-initialized here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "da88016715009bb335671667caf8a2148fa5025d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
