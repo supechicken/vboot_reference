@@ -65,6 +65,7 @@ static int ec_aux_fw_protected;
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
 {
+	memset(workbuf, 0, sizeof(workbuf));
 	memset(&ctx, 0, sizeof(ctx));
 	ctx.workbuf = workbuf;
 	ctx.workbuf_size = sizeof(workbuf);
