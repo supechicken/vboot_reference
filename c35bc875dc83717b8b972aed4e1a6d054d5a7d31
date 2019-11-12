@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "043f4d08_22ba1dde",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f283cc85_370d7404",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50544658_34b4a721",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "5a822a95_15e80175",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50544658_34b4a721",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a41a042_1999cb5f",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2019-11-08T02:03:39Z",
       "side": 1,
       "message": "is_rw_ab is already equal to VB2_CONTEXT_EC_EFS. (Note Tim\u0027s CL:1872255 which will make this a little less complicated.)",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e948a32_910cc260",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "8a41a042_1999cb5f",
       "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "19db0c4e_ca8ce983",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46f6c4c_f07c7f2b",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e98d5738_6b3e42d7",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "352c51a2_319deddf",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e98d5738_6b3e42d7",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7e5513e_cff03bc4",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
@@ -115,6 +205,24 @@
       "writtenOn": "2019-11-08T02:03:39Z",
       "side": 1,
       "message": "How is this going to be backwards-compatible with the older EFS boards? I think we may need a new context flag for this.",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5668255b_c20e2d0e",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "The older EFS boards live with their branch. I think we should get rid of EFS1 code from ToT.",
+      "parentUuid": "e7e5513e_cff03bc4",
       "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "40b1b058_6c6bea65",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0daec51_3ce47807",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab2010a_2bfabede",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -152,6 +278,24 @@
       "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17f76d0_8ff94ed8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-12T00:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab2010a_2bfabede",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
