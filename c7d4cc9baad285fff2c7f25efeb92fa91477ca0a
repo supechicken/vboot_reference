@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24e63fcb_b86f42b3",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "I think it\u0027s more consistent with the non-EFS flow if you don\u0027t return here. What we know at this point (for both EFS and non-EFS) is that we need to update the EC. In both cases we\u0027re probably in RW and need to reboot, but there\u0027s another check for that later. Makes more sense if both flows decide to reboot at that point, rather than here.",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231d3fd7_efc0d2a4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "This is where we\u0027ll reboot to RO if we need to update. (The context check for EFS above needs to be a check for EFS1 only, for EFS2 you\u0027d have the same behavior as non-EFS up there. We really need to have two different context flags because they\u0027re completely different schemes... or we have to revert all the EFS1 stuff back out of here first.)",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2199b276_29ab2db8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "nit: Okay, this would probably look cleaner if you left the existing line as is and just made another \n\n if (VB2_SUCCESS \u003d\u003d rv \u0026\u0026 (ctx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT)) {\n   ...\n }\n\nblock above it.",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d6ece9_71ea773e",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "This helper is called from a lot of different places so please don\u0027t print in here.",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cfc2fe_6ba1cd79",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "You could check for the context flag again and print a message here instead (which would probably self-explain the comment, too).",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

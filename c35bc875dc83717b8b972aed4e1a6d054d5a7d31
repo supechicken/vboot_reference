@@ -229,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "4bbc69be_d87989eb",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:59:01Z",
+      "side": 1,
+      "message": "Let\u0027s see how complicated it gets to support both first. In general, we like to keep stuff working on ToT for a couple of years if it\u0027s not too much effort.",
+      "parentUuid": "5668255b_c20e2d0e",
+      "revId": "c35bc875dc83717b8b972aed4e1a6d054d5a7d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0daec51_3ce47807",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
