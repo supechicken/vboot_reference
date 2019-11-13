@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fca9fcdb_4e12a28e",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:10:55Z",
+      "side": 1,
+      "message": "nit: comment doesn\u0027t really add anything. Either explain the _why_ (e.g. /* Want this consistent between archs. 8-byte should work for all of them. */) or just don\u0027t have a comment at all.",
+      "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7528332_24e1411e",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T01:10:55Z",
+      "side": 1,
+      "message": "Does this belong here?",
+      "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
