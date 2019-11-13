@@ -51,6 +51,24 @@
       "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb9bd66_6526f790",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T23:41:50Z",
+      "side": 1,
+      "message": "No, not really. Are you saying that this test passes before this patch but starts failing after? Because that would be very weird considering you\u0027re not changing anything in any compilation unit that would be linked together with this.",
+      "parentUuid": "ad814000_90bd0263",
+      "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
