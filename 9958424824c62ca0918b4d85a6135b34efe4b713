@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33852bdf_3c9cd13b",
+        "filename": "tests/vb2_auxfw_sync_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-13T19:12:43Z",
+      "side": 1,
+      "message": "This should have an\n\n __attribute__((aligned(VB2_WORKBUF_ALIGN)));\n\nnow (see CL:1902843).",
+      "revId": "9958424824c62ca0918b4d85a6135b34efe4b713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
