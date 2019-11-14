@@ -15,8 +15,7 @@ static struct vb2_gbb_header *gbb = (struct vb2_gbb_header *)gbb_data;
 static struct vb2_packed_key *rootkey;
 static struct vb2_context *ctx;
 static struct vb2_workbuf wb;
-static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
-	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
+static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 
 static void set_gbb_hwid(const char *hwid, size_t size)
 {

@@ -302,8 +302,7 @@ static const char *got_find_disk;
 static const char *got_load_disk;
 static uint32_t got_return_val;
 static uint32_t got_external_mismatch;
-static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
-	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
+static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_context *ctx;
 
 /**

@@ -40,8 +40,7 @@ struct show_option_s show_option = {
 };
 
 /* Shared work buffer */
-static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
-	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
+static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE];
 static struct vb2_workbuf wb;
 
 void show_pubkey(const struct vb2_packed_key *pubkey, const char *sp)
