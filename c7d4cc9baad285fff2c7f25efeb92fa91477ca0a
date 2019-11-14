@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ecb8601_5270ad9d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T18:22:33Z",
+      "side": 1,
+      "message": "One corner case is Hexp \u003d\u003d Hspi !\u003d Hnvm. So, EC could be in RO.\n\n  Hexp \u003d\u003d Hspi !\u003d Hnvm: EC in RO\n  Hexp \u003d! Hspi \u003d\u003d Hnvm: EC in RW\n  Hexp \u003d! Hspi !\u003d Hnvm: EC in RO\n\nIf we really don\u0027t want to return here, we have to introduce another flag indicating Hexp !\u003d Hnvm and check it in phase1 to return.",
+      "parentUuid": "24e63fcb_b86f42b3",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231d3fd7_efc0d2a4",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-13T01:59:01Z",
       "side": 1,
       "message": "This is where we\u0027ll reboot to RO if we need to update. (The context check for EFS above needs to be a check for EFS1 only, for EFS2 you\u0027d have the same behavior as non-EFS up there. We really need to have two different context flags because they\u0027re completely different schemes... or we have to revert all the EFS1 stuff back out of here first.)",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e051adf_3ac071c4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T18:22:33Z",
+      "side": 1,
+      "message": "Done. It\u0027s probably better to deprecate EFS1 regardless.",
+      "parentUuid": "231d3fd7_efc0d2a4",
       "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "114102be_a7e496d4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T18:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2199b276_29ab2db8",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d6ece9_71ea773e",
         "filename": "firmware/lib/vboot_common.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "8f79e74e_aecf9006",
+        "filename": "firmware/lib/vboot_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T18:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d6ece9_71ea773e",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8cfc2fe_6ba1cd79",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a745b5_b854bc40",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-11-14T18:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8cfc2fe_6ba1cd79",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
