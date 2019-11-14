@@ -13,7 +13,7 @@
 static char gbb_data[4096 + sizeof(struct vb2_gbb_header)];
 static struct vb2_gbb_header *gbb = (struct vb2_gbb_header *)gbb_data;
 static struct vb2_packed_key *rootkey;
-static struct vb2_context *ctx;
+static struct vb2_context ctx;
 static struct vb2_workbuf wb;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
@@ -49,9 +49,12 @@ static void reset_common_data(void)
 	const char hwid_src[] = "Test HWID";
 	set_gbb_hwid(hwid_src, sizeof(hwid_src));
 
-	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
-		  "vb2api_init failed");
-	vb2_workbuf_from_ctx(ctx, &wb);
+	memset(workbuf, 0, sizeof(workbuf));
+	memset(&ctx, 0, sizeof(ctx));
+	ctx.workbuf = workbuf;
+	ctx.workbuf_size = sizeof(workbuf);
+	vb2_init_context(&ctx);
+	vb2_workbuf_from_ctx(&ctx, &wb);
 }
 
 /* Mocks */
@@ -88,7 +91,7 @@ static void flag_tests(void)
 {
 	reset_common_data();
 	gbb->flags = 0xdeadbeef;
-	TEST_EQ(vb2api_gbb_get_flags(ctx), gbb->flags,
+	TEST_EQ(vb2api_gbb_get_flags(&ctx), gbb->flags,
 		"retrieve GBB flags");
 }
 
@@ -105,7 +108,7 @@ static void key_tests(void)
 	reset_common_data();
 	wborig = wb;
 	gbb->rootkey_offset = sizeof(*gbb) - 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_GBB_INVALID,
 		"gbb.rootkey offset too small");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -115,7 +118,7 @@ static void key_tests(void)
 	reset_common_data();
 	wborig = wb;
 	gbb->rootkey_offset = sizeof(gbb_data) + 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_EX_READ_RESOURCE_SIZE,
 		"gbb.rootkey offset too large");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -125,7 +128,7 @@ static void key_tests(void)
 	reset_common_data();
 	wborig = wb;
 	gbb->rootkey_size = sizeof(*rootkey) - 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_GBB_INVALID,
 		"gbb.rootkey size too small");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -135,7 +138,7 @@ static void key_tests(void)
 	reset_common_data();
 	wborig = wb;
 	wb.size = sizeof(*rootkey) - 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_GBB_WORKBUF,
 		"workbuf size too small for vb2_packed_key header");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -146,7 +149,7 @@ static void key_tests(void)
 	wborig = wb;
 	rootkey->key_size = 1;
 	rootkey->key_offset = sizeof(*rootkey) - 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_INSIDE_DATA_OVERLAP,
 		"rootkey offset too small");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -158,7 +161,7 @@ static void key_tests(void)
 	rootkey->key_size = 1;
 	rootkey->key_offset = sizeof(gbb_data) + 1;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_EX_READ_RESOURCE_SIZE,
 		"rootkey size too large");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -169,7 +172,7 @@ static void key_tests(void)
 	wborig = wb;
 	rootkey->key_size = wb.size + 1;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size + 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_GBB_WORKBUF,
 		"workbuf size too small for vb2_packed_key contents");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -180,7 +183,7 @@ static void key_tests(void)
 	wborig = wb;
 	rootkey->key_size = 2;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size - 1;
-	TEST_EQ(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_EQ(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		VB2_ERROR_INSIDE_DATA_OUTSIDE,
 		"rootkey size exceeds gbb.rootkey size");
 	TEST_TRUE(wb.buf == wborig.buf,
@@ -193,7 +196,7 @@ static void key_tests(void)
 	memcpy((void *)rootkey + rootkey->key_offset,
 	       key_data, sizeof(key_data));
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size;
-	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_SUCC(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		  "succeeds when gbb.rootkey and rootkey sizes agree");
 	TEST_TRUE(wb.size < wborig.size,
 		  "  workbuf shrank on success");
@@ -208,7 +211,7 @@ static void key_tests(void)
 	wborig = wb;
 	rootkey->key_size = 1;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size + 1;
-	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_SUCC(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		  "succeeds when gbb.rootkey is padded after key");
 	TEST_TRUE(wb.size < wborig.size,
 		  "  workbuf shrank on success");
@@ -222,7 +225,7 @@ static void key_tests(void)
 	rootkey->key_offset = sizeof(*rootkey) + 1;
 	rootkey->key_size = 1;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size;
-	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_SUCC(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		  "succeeds when gbb.rootkey is padded before key");
 	TEST_TRUE(wb.size < wborig.size,
 		  "  workbuf shrank on success");
@@ -235,7 +238,7 @@ static void key_tests(void)
 	rootkey->key_offset = sizeof(*rootkey) + 1;
 	rootkey->key_size = 0;
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size + 1;
-	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_SUCC(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		  "succeeds when gbb.rootkey is padded; empty test key");
 	TEST_TRUE(wb.size < wborig.size,
 		  "  workbuf shrank on success");
@@ -248,7 +251,7 @@ static void key_tests(void)
 	rootkey->key_offset = sizeof(*rootkey) - 1;
 	rootkey->key_size = 0;
 	gbb->rootkey_size = sizeof(*rootkey) + rootkey->key_size + 1;
-	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),
+	TEST_SUCC(vb2_gbb_read_root_key(&ctx, &keyp, &size, &wb),
 		  "succeeds when gbb.rootkey is padded; empty test key");
 	TEST_TRUE(wb.size < wborig.size,
 		  "  workbuf shrank on success");
@@ -265,7 +268,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		gbb->hwid_size = 0;
 		size = VB2_GBB_HWID_MAX_SIZE;
-		TEST_EQ(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_EQ(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			VB2_ERROR_GBB_INVALID,
 			"GBB HWID size invalid (HWID missing)");
 	}
@@ -275,7 +278,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		gbb->hwid_offset = sizeof(gbb_data) + 1;
 		size = VB2_GBB_HWID_MAX_SIZE;
-		TEST_EQ(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_EQ(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			VB2_ERROR_EX_READ_RESOURCE_SIZE,
 			"GBB HWID offset invalid");
 	}
@@ -286,7 +289,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		set_gbb_hwid(hwid_src, sizeof(hwid_src));
 		size = sizeof(hwid_src) - 1;
-		TEST_EQ(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_EQ(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			VB2_ERROR_INVALID_PARAMETER,
 			"HWID too large for buffer");
 	}
@@ -297,7 +300,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		set_gbb_hwid(hwid_src, sizeof(hwid_src) - 1);
 		size = sizeof(hwid_src);
-		TEST_EQ(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_EQ(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			VB2_ERROR_INVALID_PARAMETER,
 			"HWID larger than GBB HWID size");
 	}
@@ -308,7 +311,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		set_gbb_hwid(hwid_src, sizeof(hwid_src));
 		size = sizeof(hwid_src);
-		TEST_SUCC(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_SUCC(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			  "read normal HWID");
 		TEST_EQ(strcmp(hwid, "Test HWID"), 0, "  HWID correct");
 		TEST_EQ(strlen(hwid) + 1, size, "  HWID size consistent");
@@ -322,7 +325,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		set_gbb_hwid(hwid_src, sizeof(hwid_src));
 		size = sizeof(hwid_src) + 1;
-		TEST_SUCC(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_SUCC(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			  "read normal HWID");
 		TEST_EQ(strcmp(hwid, "Test HWID"), 0, "  HWID correct");
 		TEST_EQ(strlen(hwid) + 1, size, "  HWID size consistent");
@@ -336,7 +339,7 @@ static void hwid_tests(void)
 		reset_common_data();
 		set_gbb_hwid(hwid_src, sizeof(hwid_src));
 		size = VB2_GBB_HWID_MAX_SIZE;
-		TEST_SUCC(vb2api_gbb_read_hwid(ctx, hwid, &size),
+		TEST_SUCC(vb2api_gbb_read_hwid(&ctx, hwid, &size),
 			  "read HWID with garbage");
 		TEST_EQ(strcmp(hwid, "Test HWID"), 0, "  HWID correct");
 		TEST_EQ(strlen(hwid) + 1, size, "  HWID size consistent");
