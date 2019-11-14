@@ -10,9 +10,15 @@
 #include "2rsa.h"
 #include "vboot_test.h"
 
+<<<<<<< HEAD
 static struct vb2_context *ctx;
 static uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
+=======
+static struct vb2_context ctx;
+__attribute__((aligned(VB2_WORKBUF_ALIGN)))
+static uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE];
+>>>>>>> parent of ecdca931... vboot: move vb2_context inside vb2_shared_data (persistent context)
 static struct {
 	struct vb2_gbb_header h;
 	uint8_t rootkey[4096];
@@ -73,6 +79,8 @@ vb2_error_t vb2_safe_memcmp(const void *s1, const void *s2, size_t size)
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size);
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+	vb2_error_t rv;
+
 	if (size < sizeof(gbb.rootkey))
 		return 0;
 
@@ -84,10 +92,13 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 	mock_keyblock = data + sizeof(gbb.rootkey);
 	mock_keyblock_size = size - sizeof(gbb.rootkey);
 
-	if (vb2api_init(workbuf, sizeof(workbuf), &ctx))
-		abort();
+	memset(&ctx, 0, sizeof(ctx));
+	ctx.workbuf = workbuf;
+	ctx.workbuf_size = sizeof(workbuf);
+	rv = vb2_init_context(&ctx);
+	assert(rv == VB2_SUCCESS);
 
-	vb2_load_fw_keyblock(ctx);
+	vb2_load_fw_keyblock(&ctx);
 
 	return 0;
 }
