@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9467c31b_76a668d1",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-15T02:48:57Z",
+      "side": 1,
+      "message": "But in that case NO_BOOT has to be set, right (because Hexp !\u003d Hnvm)? So we would set the update flag below, then run through the update and reboot at the end of that. I guess we would overwrite the EC with the same image that\u0027s already on there again, which is not ideal, but considering that there\u0027s no normal use case how we should get to that point in the first place(?) I think that should be fine.\n\nThe more likely case would probably be that all three hashes are different from another, and in that case we *want* to continue to the update path without an extra reboot.",
+      "parentUuid": "2ecb8601_5270ad9d",
+      "revId": "c7d4cc9baad285fff2c7f25efeb92fa91477ca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231d3fd7_efc0d2a4",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
