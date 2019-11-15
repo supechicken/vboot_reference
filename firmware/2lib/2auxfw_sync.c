@@ -113,6 +113,15 @@ static vb2_error_t auxfw_sync_check_update(struct vb2_context *ctx,
 	return vb2ex_auxfw_check(severity);
 }
 
+static vb2_error_t vb2api_auxfw_finalize(struct vb2_context *ctx)
+{
+	if (!auxfw_sync_allowed(ctx)) {
+		return VB2_SUCCESS;
+	}
+
+	return vb2ex_auxfw_finalize(ctx);
+}
+
 vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx)
 {
 	enum vb2_auxfw_update_severity fw_update = VB_AUX_FW_NO_UPDATE;
@@ -143,5 +152,5 @@ vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx)
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
-	return vb2ex_auxfw_finalize(ctx);
+	return vb2api_auxfw_finalize(ctx);
 }
