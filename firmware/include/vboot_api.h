@@ -143,6 +143,10 @@ typedef struct VbSelectAndLoadKernelParams {
 #define VB_SALK_INFLAGS_VENDOR_DATA_SETTABLE (1 << 1)
 
 /**
+ * Initialize ec_board_id callback.
+ */
+void VbInitializeGetEcBoardIdCallback(uint32_t (*get_ec_board_id) (void));
+/**
  * Select and loads the kernel.
  *
  * Returns VB2_SUCCESS if success, non-zero if error; on error, caller

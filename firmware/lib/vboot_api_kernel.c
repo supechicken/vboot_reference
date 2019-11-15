@@ -24,6 +24,7 @@
 /* Global variables */
 static struct RollbackSpaceFwmp fwmp;
 static LoadKernelParams lkp;
+uint32_t (*VbGetEcBoardIdCallback)(void);
 
 #ifdef CHROMEOS_ENVIRONMENT
 /* Global variable accessors for unit tests */
@@ -356,15 +357,31 @@ static void vb2_kernel_cleanup(struct vb2_context *ctx)
 	vb2_nv_commit(ctx);
 }
 
+void VbInitializeGetEcBoardIdCallback(uint32_t (*get_ec_board_id) (void))
+{
+	VbGetEcBoardIdCallback = get_ec_board_id;
+}
+
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
 {
+	uint32_t ec_board_id = 0;
 	vb2_error_t rv = vb2_kernel_setup(ctx, shared, kparams);
 	if (rv)
 		goto VbSelectAndLoadKernel_exit;
 
 	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
+
+	/*
+	 * Make sure this code executes only on Drallion where the
+	 * callback gets initialized. It disables EC/PD sw sync is
+	 * drallion EVT boards.
+	 */
+	if (VbGetEcBoardIdCallback != NULL) {
+		ec_board_id = VbGetEcBoardIdCallback();
+		VB2_DEBUG("EC board id is %d", ec_board_id);
+	}
 
 	/*
 	 * Do EC software sync unless we're in recovery mode. This has UI but
