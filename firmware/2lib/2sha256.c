@@ -39,6 +39,11 @@
 #include "2sha.h"
 #include "2sysincludes.h"
 
+/* Using UNROLL_LOOPS helps to save ~50ms of boot time */
+#ifndef UNROLL_LOOPS
+#define UNROLL_LOOPS
+#endif
+
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
 #define ROTL(x, n)   ((x << n) | (x >> ((sizeof(x) << 3) - n)))
