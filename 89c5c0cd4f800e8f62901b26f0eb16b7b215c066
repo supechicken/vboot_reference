@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2f58fa0_b45caa26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T09:21:15Z",
+      "side": 1,
+      "message": "Most of the other flags in 2api.h don\u0027t specify any verb.  How about we just use VB2_CONTEXT_DETACHABLE_UI?",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402a0459_b7d10ba2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T09:21:15Z",
+      "side": 1,
+      "message": "Typo.",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f92575e_70b40d3a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T09:21:15Z",
+      "side": 1,
+      "message": "If this is really the only big difference between detachable / non-detachable at the moment, we may consider\n\n(1) calling the flag something more appropriate (e.g VB2_CONTEXT_BUTTON_NAVIGATION)\n\n(2) just using the same button navigation on non-detachable devices right away for consistency\u0027s sake, as Julius suggested\n\nIf, however, there are other features that will need to be slowly \"unified\", then we can keep this flag, and explain those features here.",
+      "range": {
+        "startLine": 198,
+        "startChar": 30,
+        "endLine": 198,
+        "endChar": 54
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
