@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c87da50d_f69c708f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T13:35:01Z",
+      "side": 1,
+      "message": "I have two points to make here...\n\n(1) Eventually, much of this code will live in vb2ex_commit_data, which will do something like what you\u0027re suggesting -- return a VB2_ERROR code corresponding to the data space which failed to write.  At that point, all this function will do is map the error code to a vb2api_fail call if necessary (and check the RECOVERY_MODE flag if we leave it here).\n\n(2) If we DO take out the recovery mode check from this function, then we would presumably also take out the vb2api_fail call as well (since we are leaving that decision to the caller).  In that case, this function doesn\u0027t really need to exist anymore -- which just means we are taking its full logic and repeating it at all the places (8 of them) where it is called (with the sole difference that in certain places, we can already ascertain whether we are in recovery mode or non-recovery mode).\n\nSo I see this as more of a \"helper to make executive logic\" than \"write the data and tell me if something goes wrong\".  That\u0027s what vb2ex_commit_data is for.\n\nThoughts?",
+      "parentUuid": "e95c0912_90a71def",
+      "range": {
+        "startLine": 361,
+        "startChar": 15,
+        "endLine": 361,
+        "endChar": 56
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8746e7e_3479443d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 90
@@ -39,6 +63,24 @@
       "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61580b0e_6d6d09f0",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T13:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8746e7e_3479443d",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73695cfa_50ca6a6b",
+        "filename": "tests/secdata_tpm_tests.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T13:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e83a1f8_4c65a81e",
+      "range": {
+        "startLine": 384,
+        "startChar": 31,
+        "endLine": 384,
+        "endChar": 35
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

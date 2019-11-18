@@ -303,6 +303,24 @@
     },
     {
       "key": {
+        "uuid": "6059fa30_2b67a39c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T13:35:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24c10722_b13fa1a6",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d0407ce_5cd8b937",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 71
@@ -825,6 +843,24 @@
       "side": 1,
       "message": "I see. Yes, for vb2ex_commit_data(), if it does 3 distinct things that could all individually fail, I think it should have 3 different return codes to return. I think we should do that regardless of where the recovery reason is set.\n\nFor the vb2api_fail(), if you believe it makes things a lot simpler to do it inside the callback, I think that\u0027s okay too. If it\u0027s no big deal either way, doing it in vboot seems cleaner.",
       "parentUuid": "aa814c7a_8b04b9ac",
+      "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf066c59_1babdedf",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 71
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T13:35:01Z",
+      "side": 1,
+      "message": "OK - I created some errors here:\n\n- VB2_ERROR_SECDATA_KERNEL_READ\n- VB2_ERROR_SECDATA_KERNEL_WRITE\n- VB2_ERROR_SECDATA_KERNEL_LOCK",
+      "parentUuid": "07b3c984_f1a1a65e",
       "revId": "4bf94638d3fdba541bca8762bfac65652568f128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
