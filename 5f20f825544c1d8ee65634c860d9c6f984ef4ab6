@@ -87,6 +87,24 @@
       "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cee3f48_56ea6577",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-18T22:20:43Z",
+      "side": 1,
+      "message": "I just tried re-testing it and it\u0027s working without this line.  Not sure what was going on before.",
+      "parentUuid": "90c30386_77756af8",
+      "revId": "5f20f825544c1d8ee65634c860d9c6f984ef4ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
