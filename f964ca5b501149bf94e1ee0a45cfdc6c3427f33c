@@ -49,6 +49,47 @@
     },
     {
       "key": {
+        "uuid": "b9d11609_10a7cdd2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-19T01:13:27Z",
+      "side": 1,
+      "message": "Okay. If we\u0027re calling this from so many places and they all want to continue executing in recovery mode, then I see your point.",
+      "parentUuid": "c87da50d_f69c708f",
+      "range": {
+        "startLine": 361,
+        "startChar": 15,
+        "endLine": 361,
+        "endChar": 56
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73923328_8aee679c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-19T01:13:27Z",
+      "side": 1,
+      "message": "What are we doing if writing back nvdata fails but we\u0027re in recovery mode? Shouldn\u0027t we continue as well?",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8746e7e_3479443d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 90
