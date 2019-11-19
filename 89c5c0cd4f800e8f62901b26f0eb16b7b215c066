@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc9e3be9_9a0542f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-11-19T02:40:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f58fa0_b45caa26",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "402a0459_b7d10ba2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18c55f6_fc25c1e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-11-19T02:40:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402a0459_b7d10ba2",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "Right now, this is the big difference between keyboard UI and menu UI (vboot_ui.c and vboot_ui_menu.c). The term \"detachable\" is the one we\u0027ve been using for this all over for a while, so I\u0027d stick to that for now until we change things enough to make it worth changing everywhere.",
       "parentUuid": "2f92575e_70b40d3a",
+      "range": {
+        "startLine": 198,
+        "startChar": 30,
+        "endLine": 198,
+        "endChar": 54
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d837a60_071eeb8f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-11-19T02:40:15Z",
+      "side": 1,
+      "message": "\u003e (2) just using the same button navigation on non-detachable devices right away for consistency\u0027s sake, as Julius suggested\n\nFor detachables, both [arrow keys + return] and [volume buttons + power] should work.\nFor non-detachables, according to @shchen (I don\u0027t know if it\u0027s UX\u0027s decision), the power button should not be used to select items on the menu. Instead, in the recovery menu ui, pressing power button should trigger shutdown (in fact there\u0027s a FAFT test for this: firmware_FwScreenPressPower).",
+      "parentUuid": "31936d3c_a29baf96",
       "range": {
         "startLine": 198,
         "startChar": 30,
