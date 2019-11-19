@@ -164,6 +164,30 @@
       "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f67cddf_0e68f0b9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-19T20:39:41Z",
+      "side": 1,
+      "message": "OK -- sounds like we can use it to choose the UI path at runtime for now.\n\nAfter we merge the UIs, I imagine other behaviour differences will creep in over time.  In the unlikely case that doesn\u0027t happen, we can consider renaming the flag to something more specific to button navigation.",
+      "parentUuid": "8d837a60_071eeb8f",
+      "range": {
+        "startLine": 198,
+        "startChar": 30,
+        "endLine": 198,
+        "endChar": 54
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
