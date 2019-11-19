@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c20661dc_c817e4e4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-19T20:33:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9d11609_10a7cdd2",
+      "range": {
+        "startLine": 361,
+        "startChar": 15,
+        "endLine": 361,
+        "endChar": 56
+      },
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73923328_8aee679c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 90
@@ -84,6 +108,24 @@
       "writtenOn": "2019-11-19T01:13:27Z",
       "side": 1,
       "message": "What are we doing if writing back nvdata fails but we\u0027re in recovery mode? Shouldn\u0027t we continue as well?",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453c7111_b9044578",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-19T20:33:55Z",
+      "side": 1,
+      "message": "Yes, I suppose.  The logic here seems tricky to get.  Could you double-check again?\n\nNot sure if we should print a particularly dire message for when NOT in recovery mode and nvdata write fails... (or even halt()?)",
+      "parentUuid": "73923328_8aee679c",
       "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

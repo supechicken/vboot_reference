@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "794ea645_46c63a3f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 94
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-19T20:33:55Z",
+      "side": 1,
+      "message": "Sure.  Added a comment about it.",
+      "parentUuid": "0dbfa442_01dbb89b",
+      "revId": "fd342ed7a2eef283ff543f730ab342b291218a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0121fca4_ec4542d8",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 94
@@ -30,6 +48,24 @@
       "writtenOn": "2019-11-19T01:13:27Z",
       "side": 1,
       "message": "Note that this will make it run in certain error cases where it previously didn\u0027t, but I don\u0027t think that\u0027s a problem.",
+      "revId": "fd342ed7a2eef283ff543f730ab342b291218a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a716a4_56fc6159",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 94
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-19T20:33:55Z",
+      "side": 1,
+      "message": "This was originally your suggestion from: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1728298/71/firmware/lib/vboot_api_kernel.c#433\n\nBut maybe you meant to keep the `if (rv \u003d\u003d VB2_SUCCESS)`.  Would you be opposed if I change it back to how it was?  Seems awkward to put it before the label when there are also failure paths that pass by, and awkward to leave out the VB2_SUCCESS conditional since we\u0027d prefer to only fill it in with a valid kernel.",
+      "parentUuid": "0121fca4_ec4542d8",
       "revId": "fd342ed7a2eef283ff543f730ab342b291218a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
