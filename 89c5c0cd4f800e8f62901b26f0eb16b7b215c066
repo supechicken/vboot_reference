@@ -68,6 +68,30 @@
       "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31936d3c_a29baf96",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-19T00:02:40Z",
+      "side": 1,
+      "message": "Right now, this is the big difference between keyboard UI and menu UI (vboot_ui.c and vboot_ui_menu.c). The term \"detachable\" is the one we\u0027ve been using for this all over for a while, so I\u0027d stick to that for now until we change things enough to make it worth changing everywhere.",
+      "parentUuid": "2f92575e_70b40d3a",
+      "range": {
+        "startLine": 198,
+        "startChar": 30,
+        "endLine": 198,
+        "endChar": 54
+      },
+      "revId": "89c5c0cd4f800e8f62901b26f0eb16b7b215c066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
