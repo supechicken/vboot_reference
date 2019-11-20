@@ -142,7 +142,8 @@ COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time -Wno-unknown-warning \
 	-Wno-address-of-packed-member -ffunction-sections -fdata-sections \
-	-Wimplicit-fallthrough ${DEBUG_FLAGS}
+ ${DEBUG_FLAGS}
+#	-Wimplicit-fallthrough ${DEBUG_FLAGS}
 
 # Note: FIRMWARE_ARCH is defined by the Chromium OS ebuild.
 ifeq (${FIRMWARE_ARCH},arm)
@@ -652,6 +653,7 @@ FUTIL_SRCS = \
 	futility/updater.c \
 	futility/updater_archive.c \
 	futility/updater_quirks.c \
+	futility/updater_utils.c \
 	futility/vb1_helper.c \
 	futility/vb2_helper.c
 
