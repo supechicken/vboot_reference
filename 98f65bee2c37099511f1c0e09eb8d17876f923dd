@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d7145c_7678486f",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-20T20:08:38Z",
+      "side": 1,
+      "message": "Could maybe use some more clarification here?  E.g.\n\n  tpm_fwver is commonly misreported in --ccd mode, so allow force_update to ignore the reported value.",
+      "range": {
+        "startLine": 1467,
+        "startChar": 47,
+        "endLine": 1467,
+        "endChar": 48
+      },
+      "revId": "98f65bee2c37099511f1c0e09eb8d17876f923dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
