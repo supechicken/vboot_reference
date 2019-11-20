@@ -1464,7 +1464,9 @@ static int do_check_compatible_tpm_keys(struct updater_config *cfg,
 	/* The stored tpm_fwver can be 0 (b/116298359#comment3). */
 	tpm_fwver = get_system_property(SYS_PROP_TPM_FWVER, cfg);
 	if (tpm_fwver < 0) {
-		ERROR("Invalid tpm_fwver: %d.\n", tpm_fwver);
+		/* Failure is common for --ccd (force_update). */
+		if (!cfg->force_update)
+			ERROR("Invalid tpm_fwver: %d.\n", tpm_fwver);
 		return -1;
 	}
 
