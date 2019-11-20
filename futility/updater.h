@@ -12,6 +12,7 @@
 
 #include "fmap.h"
 #include "futility.h"
+#include "updater_utils.h"
 
 #define ASPRINTF(strp, ...) do { if (asprintf(strp, __VA_ARGS__) >= 0) break; \
 	ERROR("Failed to allocate memory, abort.\n"); exit(1); } while (0)
@@ -32,18 +33,14 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_SI_DESC = "SI_DESC",
 		  * const FMAP_SI_ME = "SI_ME";
 
-struct firmware_image {
-	const char *programmer;
-	uint32_t size;
-	uint8_t *data;
-	char *file_name;
-	char *ro_version, *rw_version_a, *rw_version_b;
-	FmapHeader *fmap_header;
-};
+/* Firmware slots */
+static const char * const FWACT_A = "A",
+		  * const FWACT_B = "B";
 
-struct firmware_section {
-	uint8_t *data;
-	size_t size;
+enum active_slot {
+	SLOT_UNKNOWN = -1,
+	SLOT_A = 0,
+	SLOT_B,
 };
 
 struct system_property {
@@ -157,8 +154,6 @@ enum updater_error_codes {
 /* Messages explaining enum updater_error_codes. */
 extern const char * const updater_error_messages[];
 
-struct updater_config;
-
 /*
  * The main updater to update system firmware using the configuration parameter.
  * Returns UPDATE_ERR_DONE if success, otherwise failure.
@@ -192,52 +187,6 @@ void updater_list_config_quirks(const struct updater_config *cfg);
  */
 void updater_register_quirks(struct updater_config *cfg);
 
-/*
- * Helper function to create a new temporary file within updater's life cycle.
- * Returns the path of new file, or NULL on failure.
- */
-const char *updater_create_temp_file(struct updater_config *cfg);
-
-/*
- * Finds a firmware section by given name in the firmware image.
- * If successful, return zero and *section argument contains the address and
- * size of the section; otherwise failure.
- */
-int find_firmware_section(struct firmware_section *section,
-			  const struct firmware_image *image,
-			  const char *section_name);
-
-/*
- * Preserves (copies) the given section (by name) from image_from to image_to.
- * The offset may be different, and the section data will be directly copied.
- * If the section does not exist on either images, return as failure.
- * If the source section is larger, contents on destination be truncated.
- * If the source section is smaller, the remaining area is not modified.
- * Returns 0 if success, non-zero if error.
- */
-int preserve_firmware_section(const struct firmware_image *image_from,
-			      struct firmware_image *image_to,
-			      const char *section_name);
-
-/*
- * Loads a firmware image from file.
- * If archive is provided and file_name is a relative path, read the file from
- * archive.
- * Returns 0 on success, otherwise failure.
- */
-int load_firmware_image(struct firmware_image *image, const char *file_name,
-			struct archive *archive);
-
-/*
- * Loads the active system firmware image (usually from SPI flash chip).
- * Returns 0 if success, non-zero if error.
- */
-int load_system_firmware(struct updater_config *cfg,
-			 struct firmware_image *image);
-
-/* Frees the allocated resource from a firmware image object. */
-void free_firmware_image(struct firmware_image *image);
-
 /* Gets the value (setting) of specified quirks from updater configuration. */
 int get_config_quirk(enum quirk_types quirk, const struct updater_config *cfg);
 
@@ -249,20 +198,6 @@ int get_system_property(enum system_property_type property_type,
  * Returns a string (in same format as --quirks) to load or NULL if no quirks.
  */
 const char * const updater_get_default_quirks(struct updater_config *cfg);
-
-/*
- * Finds the GBB (Google Binary Block) header on a given firmware image.
- * Returns a pointer to valid GBB header, or NULL on not found.
- */
-struct vb2_gbb_header;
-const struct vb2_gbb_header *find_gbb(const struct firmware_image *image);
-
-/*
- * Executes a command on current host and returns stripped command output.
- * If the command has failed (exit code is not zero), returns an empty string.
- * The caller is responsible for releasing the returned string.
- */
-char *host_shell(const char *command);
 
 /* Functions from updater_archive.c */
 
@@ -348,5 +283,6 @@ int model_apply_white_label(
 		struct archive *archive,
 		const char *signature_id,
 		const char *image);
+
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
