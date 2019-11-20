@@ -69,6 +69,24 @@
       "revId": "fd342ed7a2eef283ff543f730ab342b291218a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d6d263_0c2e1e0c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 94
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-20T01:53:23Z",
+      "side": 1,
+      "message": "No, I meant that you should do it this way and now upon re-reading I notice it\u0027s not quite as equivalent as I thought. ;) But like I said, I don\u0027t think the difference matters. Just wanted to have pointed it out.\n\nI\u0027m fine with restoring the way it was previously as well if you prefer that.",
+      "parentUuid": "12a716a4_56fc6159",
+      "revId": "fd342ed7a2eef283ff543f730ab342b291218a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

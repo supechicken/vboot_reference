@@ -132,6 +132,24 @@
     },
     {
       "key": {
+        "uuid": "c9af0a2b_fa64f7c7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-20T01:53:23Z",
+      "side": 1,
+      "message": "Yeah, I guess not having nvdata is tricky. I guess just call VB2_DIE() (i.e. halt) if not in recovery mode, that seems to be the best we can do there (and it shouldn\u0027t really happen anyway).",
+      "parentUuid": "453c7111_b9044578",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8746e7e_3479443d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 90
