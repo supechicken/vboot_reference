@@ -150,6 +150,24 @@
     },
     {
       "key": {
+        "uuid": "6c94cae9_ed7d40e5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 90
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-20T05:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9af0a2b_fa64f7c7",
+      "revId": "f964ca5b501149bf94e1ee0a45cfdc6c3427f33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8746e7e_3479443d",
         "filename": "tests/secdata_tpm_tests.c",
         "patchSetId": 90
