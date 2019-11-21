@@ -22,6 +22,30 @@
       "revId": "312ec5a5bbd7e14ed7fd058ad7468b65e48734d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd6e3bb_0802d343",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-11-21T15:23:40Z",
+      "side": 1,
+      "message": "Most quirks usually return 0 as \u0027no need to apply\u0027 or \u0027success\u0027.\nThis is the first quirk with so many different meanings.\n\nOk I can turn them into constants...",
+      "parentUuid": "1b6b5590_4cc37bb7",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 936,
+        "endChar": 7
+      },
+      "revId": "312ec5a5bbd7e14ed7fd058ad7468b65e48734d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
