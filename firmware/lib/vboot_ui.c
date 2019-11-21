@@ -103,6 +103,8 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 	uint32_t btn;
 	int phys_presence_button_was_pressed = 0;
 	int shutdown_requested = 0;
+	int physical_rec_switch =
+		!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL);
 
 	VB2_DEBUG("Entering(%x)\n", confirm_flags);
 
@@ -118,11 +120,20 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			 */
 			if (confirm_flags & VB_CONFIRM_MUST_TRUST_KEYBOARD &&
 			    !(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)) {
-				vb2_error_notify("Please use internal keyboard "
-					"to confirm\n",
-					"VbUserConfirms() - "
-					"Trusted keyboard is requierd\n",
-					VB_BEEP_NOT_ALLOWED);
+				/* Only notify the user if the recovery switch
+				 * is not physical. If it is physical then the
+				 * prompt will tell the user to press the switch
+				 * and will not say anything about the ENTER key
+				 * so we can silenty ingore ENTER in this case.
+				 */
+				if (!physical_rec_switch)
+					vb2_error_notify("Please use internal "
+						"keyboard to confirm\n",
+						"VbUserConfirms() - "
+						"Trusted keyboard is "
+						"required\n",
+						VB_BEEP_NOT_ALLOWED);
+
 				break;
 			}
 			VB2_DEBUG("Yes (1)\n");
@@ -143,7 +154,7 @@ int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 			 */
 			btn = VbExGetSwitches(
 				VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED);
-			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL)) {
+			if (physical_rec_switch) {
 				if (btn) {
 					VB2_DEBUG("Presence button pressed, "
 						  "awaiting release\n");
