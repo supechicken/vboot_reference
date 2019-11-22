@@ -34,7 +34,7 @@ vb2_error_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
 
 vb2_error_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
 			    uint32_t selected_index, uint32_t disabled_idx_mask,
-			    uint32_t redraw_base)
+			    uint32_t page, uint32_t redraw_base)
 {
 	return VB2_SUCCESS;
 }
