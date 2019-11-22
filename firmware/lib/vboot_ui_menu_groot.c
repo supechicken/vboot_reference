@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -21,20 +21,98 @@
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 #include "vboot_ui_common.h"
-#include "vboot_ui_menu_private.h"
+#include "vboot_ui_groot_private.h"
+
+/* Global variables */
+static enum {
+	POWER_BUTTON_HELD_SINCE_BOOT = 0,
+	POWER_BUTTON_RELEASED,
+	POWER_BUTTON_PRESSED, /* must have been previously released */
+} power_button_state;
 
 static const char dev_disable_msg[] =
 	"Developer mode is disabled on this device by system policy.\n"
 	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
 	"\n";
 
-static VB_MENU current_menu, prev_menu;
+static VB_GROOT current_menu;
 static int current_menu_idx, disabled_idx_mask, usb_nogood, force_redraw;
+static uint32_t current_page, num_page;
 static uint32_t default_boot;
 static uint32_t disable_dev_boot;
 static uint32_t altfw_allowed;
 static struct vb2_menu menus[];
 static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
+
+// implementing a small screen history stack
+// current screen should always be on the top of the stack
+// previous screen(s) under it, maintaining the order
+static const int MAXSIZE = 4;
+static int stack[4];
+static int top = -1;
+
+static int isempty(void) {
+	return (top == -1);
+}
+
+static int isfull(void) {
+	return (top == MAXSIZE);
+}
+
+static int peek(void) {
+	if (isempty()) {
+		VB2_DEBUG("ERROR: calling peek() when stack is empty\n");
+		return -1;
+	}
+
+	VB2_DEBUG("***** peek(0x%x), top = %d\n", stack[top], top);
+	return stack[top];
+}
+
+static VB_GROOT pop(void) {
+	VB_GROOT screen;
+
+	if (!isempty()) {
+		screen = stack[top];
+		top = top - 1;
+		VB2_DEBUG("***** pop(0x%x), top = %d\n", screen, top);
+		return screen;
+	}
+	else
+		return -1;
+}
+
+static int push(VB_GROOT screen) {
+	VB2_DEBUG("***** push(0x%x), top = %d\n", screen, top);
+	if (!isfull()) {
+		top++;
+		stack[top] = screen;
+		return 0;
+	}
+	else
+		return -1;
+}
+
+//// end of stack implementation
+
+// implementing increasement/decreasement of current_page
+// check and return current_page after the modification
+
+static uint32_t increase_current_page(void)
+{
+	if (current_page < num_page - 1)
+		current_page++;
+	return current_page;
+}
+
+static uint32_t decrease_current_page(void)
+{
+	if (current_page > 0)
+		current_page--;
+	return current_page;
+}
+
+//// end of current_page modification implementation
 
 /**
  * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
@@ -42,10 +120,29 @@ static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
  *
  * Returns true if a shutdown is required and false if no shutdown is required.
  */
-static int VbWantShutdownMenu(struct vb2_context *ctx)
+static int VbWantShutdownGroot(struct vb2_context *ctx, uint32_t key)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	uint32_t shutdown_request = VbExIsShutdownRequested();
+
+	/*
+	 * Ignore power button push until after we have seen it released.
+	 * This avoids shutting down immediately if the power button is still
+	 * being held on startup. After we've recognized a valid power button
+	 * push then don't report the event until after the button is released.
+	 */
+	if (shutdown_request & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		if (power_button_state == POWER_BUTTON_RELEASED)
+			power_button_state = POWER_BUTTON_PRESSED;
+	} else {
+		if (power_button_state == POWER_BUTTON_PRESSED)
+			shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		power_button_state = POWER_BUTTON_RELEASED;
+	}
+
+	if (key == VB_BUTTON_POWER_SHORT_PRESS)
+		shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
 
 	/* If desired, ignore shutdown request due to lid closure. */
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_LID_SHUTDOWN)
@@ -55,15 +152,18 @@ static int VbWantShutdownMenu(struct vb2_context *ctx)
 	 * In detachables, disabling shutdown due to power button.
 	 * We are using it for selection instead.
 	 */
-	shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+	if (DETACHABLE)
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
 
 	return !!shutdown_request;
 }
 
 /* (Re-)Draw the menu identified by current_menu[_idx] to the screen. */
-static vb2_error_t vb2_draw_current_screen(struct vb2_context *ctx) {
-	vb2_error_t ret = VbDisplayMenu(ctx, menus[current_menu].screen,
-			force_redraw, current_menu_idx, disabled_idx_mask, 0);
+static vb2_error_t vb2_draw_current_screen(struct vb2_context *ctx)
+{
+	vb2_error_t ret = VbDisplayMenu(ctx, menus[peek()].screen,
+			force_redraw, current_menu_idx, disabled_idx_mask,
+			current_page);
 	force_redraw = 0;
 	return ret;
 }
@@ -93,35 +193,47 @@ static void vb2_log_menu_change(void)
  * @param new_current_menu:	new menu to set current_menu to
  * @param new_current_menu_idx: new idx to set current_menu_idx to
  */
-static void vb2_change_menu(VB_MENU new_current_menu,
-			    int new_current_menu_idx)
+static void vb2_change_menu(VB_GROOT new_current_menu, int new_current_menu_idx)
 {
-	prev_menu = current_menu;
-	current_menu = new_current_menu;
+	// push new menu onto the stack (current_menu should already be there)
+	if (isempty() || current_menu != new_current_menu) {
+		push(new_current_menu);
+		current_menu = new_current_menu;
+	}
 
 	/* Reconfigure disabled_idx_mask for the new menu */
 	disabled_idx_mask = 0;
+
 	/* Disable Network Boot Option */
-	if (current_menu == VB_MENU_DEV)
-		disabled_idx_mask |= 1 << VB_DEV_NETWORK;
+	/* if (current_menu == VB_GROOT_DEV) */
+	/* 	disabled_idx_mask |= 1 << VB_DEV_NETWORK; */
+
 	/* Disable cancel option if enterprise disabled dev mode */
-	if (current_menu == VB_MENU_TO_NORM &&
-	    disable_dev_boot == 1)
-		disabled_idx_mask |= 1 << VB_TO_NORM_CANCEL;
+	if (current_menu == VB_GROOT_TO_NORM && disable_dev_boot == 1)
+		disabled_idx_mask |= 1 << VB_GROOT_TO_NORM_CANCEL;
 
 	/* Enable menu items for the selected bootloaders */
-	if (current_menu == VB_MENU_ALT_FW) {
+	if (current_menu == VB_GROOT_ALT_FW) {
 		disabled_idx_mask = ~(VbExGetAltFwIdxMask() >> 1);
 
 		/* Make sure 'cancel' is shown even with an invalid mask */
 		disabled_idx_mask &= (1 << VB_ALTFW_COUNT) - 1;
 	}
+
+	if (current_menu == VB_GROOT_DEBUG_INFO || current_menu == VB_GROOT_SHOW_LOG) {
+		if (current_page == 0)
+			disabled_idx_mask |= 1 << VB_GROOT_LOG_PAGE_UP;
+		if (current_page == num_page - 1)
+			disabled_idx_mask |= 1 << VB_GROOT_LOG_PAGE_DOWN;
+	}
+
 	/* We assume that there is at least one enabled item */
 	while ((1 << new_current_menu_idx) & disabled_idx_mask)
 		new_current_menu_idx++;
 	if (new_current_menu_idx < menus[current_menu].size)
 		current_menu_idx = new_current_menu_idx;
 
+	VB2_DEBUG("vb2_change_menu: new current_menu = 0x%x\n", current_menu);
 	vb2_log_menu_change();
 }
 
@@ -130,7 +242,7 @@ static void vb2_change_menu(VB_MENU new_current_menu,
  ************************/
 
 /* Boot from internal disk if allowed. */
-static vb2_error_t boot_disk_action(struct vb2_context *ctx)
+static vb2_error_t boot_from_internal_action(struct vb2_context *ctx)
 {
 	if (disable_dev_boot) {
 		vb2_flash_screen(ctx);
@@ -139,6 +251,8 @@ static vb2_error_t boot_disk_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 	}
 	VB2_DEBUG("trying fixed disk\n");
+	vb2_change_menu(VB_GROOT_BOOT_FROM_INTERNAL, 0);
+	vb2_draw_current_screen(ctx);
 	return VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
 }
 
@@ -208,50 +322,99 @@ static vb2_error_t enter_developer_menu(struct vb2_context *ctx)
 	switch(default_boot) {
 	default:
 	case VB2_DEV_DEFAULT_BOOT_DISK:
-		menu_idx = VB_DEV_DISK;
+		menu_idx = VB_GROOT_WARN_DISK;
 		break;
 	case VB2_DEV_DEFAULT_BOOT_USB:
-		menu_idx = VB_DEV_USB;
+		menu_idx = VB_GROOT_WARN_USB;
 		break;
 	case VB2_DEV_DEFAULT_BOOT_LEGACY:
-		menu_idx = VB_DEV_LEGACY;
+		menu_idx = VB_GROOT_WARN_LEGACY;
 		break;
 	}
-	vb2_change_menu(VB_MENU_DEV, menu_idx);
+	vb2_change_menu(VB_GROOT_DEV, menu_idx);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
 
 static vb2_error_t enter_dev_warning_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_MENU_DEV_WARNING, VB_WARN_POWER_OFF);
+	VB2_DEBUG("enter_dev_warning_menu\n");
+	vb2_change_menu(VB_GROOT_DEV_WARNING, VB_GROOT_WARN_DISK);
 	vb2_draw_current_screen(ctx);
+	VB2_DEBUG("exitting enter_dev_warning_menu\n");
 	return VBERROR_KEEP_LOOPING;
 }
 
 static vb2_error_t enter_language_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_MENU_LANGUAGES,
+	vb2_change_menu(VB_GROOT_LANGUAGES,
 			vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX));
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
 
-static vb2_error_t enter_recovery_base_screen(struct vb2_context *ctx)
+static vb2_error_t enter_recovery_screen(struct vb2_context *ctx, int step)
 {
+	VB2_DEBUG("enter_recovery_screen: step = %d\n", step);
 	if (!vb2_allow_recovery(ctx))
-		vb2_change_menu(VB_MENU_RECOVERY_BROKEN, 0);
+		vb2_change_menu(VB_GROOT_RECOVERY_BROKEN, 0);
 	else if (usb_nogood)
-		vb2_change_menu(VB_MENU_RECOVERY_NO_GOOD, 0);
+		vb2_change_menu(VB_GROOT_RECOVERY_NO_GOOD, 0);
 	else
-		vb2_change_menu(VB_MENU_RECOVERY_INSERT, 0);
+	  switch(step) {
+	  case 0:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP0, VB_GROOT_REC_STEP0_NEXT);
+		break;
+	  case 1:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, VB_GROOT_REC_STEP1_NEXT);
+		break;
+	  case 2:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, VB_GROOT_REC_STEP2_NEXT);
+		break;
+	  case 3:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP3, VB_GROOT_REC_STEP3_BACK);
+		break;
+	  default:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP0, VB_GROOT_REC_STEP0_NEXT);
+		break;
+	  }
 	vb2_draw_current_screen(ctx);
+	return VBERROR_KEEP_LOOPING;
+}
+
+static vb2_error_t step_next_recovery_screen(struct vb2_context *ctx)
+{
+	VB2_DEBUG("entering step_next_recovery_screen\n");
+	VB2_DEBUG("before vb2_change_menu\n");
+	VB2_DEBUG("current_screen = 0x%x\n", menus[current_menu].screen);
+	VB2_DEBUG("current_menu = 0x%x\n", current_menu);
+	switch (current_menu) {
+	case VB_GROOT_RECOVERY_STEP0:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP1, VB_GROOT_REC_STEP1_NEXT);
+		break;
+	case VB_GROOT_RECOVERY_STEP1:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP2, VB_GROOT_REC_STEP2_NEXT);
+		break;
+	case VB_GROOT_RECOVERY_STEP2:
+		vb2_change_menu(VB_GROOT_RECOVERY_STEP3, VB_GROOT_REC_STEP3_BACK);
+		break;
+	/* case VB_GROOT_RECOVERY_STEP3: */
+	/* 	vb2_change_menu(VB_GROOT_RECOVERY_STEP1, 0); */
+	/* 	break; */
+	default:
+		break;
+	}
+	vb2_draw_current_screen(ctx);
+	VB2_DEBUG("after vb2_change_menu\n");
+	VB2_DEBUG("current_screen = 0x%x\n", menus[current_menu].screen);
+	VB2_DEBUG("current_menu = 0x%x\n", current_menu);
+	VB2_DEBUG("exitting step_next_recovery_screen\n");
 	return VBERROR_KEEP_LOOPING;
 }
 
 static vb2_error_t enter_options_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_MENU_OPTIONS, VB_OPTIONS_CANCEL);
+	vb2_change_menu(VB_GROOT_ADV_OPTIONS, VB_GROOT_OPTIONS_CANCEL);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -265,14 +428,21 @@ static vb2_error_t enter_to_dev_menu(struct vb2_context *ctx)
 		vb2_error_notify(dev_already_on, NULL, VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
-	vb2_change_menu(VB_MENU_TO_DEV, VB_TO_DEV_CANCEL);
+	vb2_change_menu(VB_GROOT_TO_DEV, VB_GROOT_TO_DEV_CANCEL);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
 
 static vb2_error_t enter_to_norm_menu(struct vb2_context *ctx)
 {
-	vb2_change_menu(VB_MENU_TO_NORM, VB_TO_NORM_CONFIRM);
+	vb2_change_menu(VB_GROOT_TO_NORM, VB_GROOT_TO_NORM_CONFIRM);
+	vb2_draw_current_screen(ctx);
+	return VBERROR_KEEP_LOOPING;
+}
+
+static vb2_error_t enter_boot_from_external_menu(struct vb2_context *ctx)
+{
+	vb2_change_menu(VB_GROOT_BOOT_FROM_EXTERNAL, VB_GROOT_BOOT_USB_BACK);
 	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -291,51 +461,159 @@ static vb2_error_t enter_altfw_menu(struct vb2_context *ctx)
 		vb2_error_no_altfw();
 		return VBERROR_KEEP_LOOPING;
 	}
-	vb2_change_menu(VB_MENU_ALT_FW, 0);
+	vb2_change_menu(VB_GROOT_ALT_FW, 0);
 	vb2_draw_current_screen(ctx);
 
 	return VBERROR_KEEP_LOOPING;
 }
 
+static vb2_error_t debug_info(struct vb2_context *ctx)
+{
+	// TODO(roccochen): merge into one
+	VB2_DEBUG("num_page = %u, page = %u\n", num_page, current_page); //XXX
+	vb2_draw_current_screen(ctx);
+	return VBERROR_KEEP_LOOPING;
+}
+
 static vb2_error_t debug_info_action(struct vb2_context *ctx)
 {
-	force_redraw = 1;
-	VbDisplayDebugInfo(ctx);
+	// TODO(roccochen): remove force_redraw once we have Debug Info screen
+	vb2_error_t rv;
+	current_page = 0;
+	rv = VbExInitGrootLog(&num_page, VB_SCREEN_DEBUG_INFO);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	vb2_change_menu(VB_GROOT_DEBUG_INFO, VB_GROOT_DEBUG_PAGE_DOWN);
+	return debug_info(ctx);
+}
+
+static vb2_error_t show_log(struct vb2_context *ctx)
+{
+	VB2_DEBUG("num_page = %u, page = %u\n", num_page, current_page); //XXX
+	vb2_draw_current_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
+}
+
+static vb2_error_t show_log_action(struct vb2_context *ctx)
+{
+	vb2_error_t rv;
+	current_page = 0;
+	rv = VbExInitGrootLog(&num_page, VB_SCREEN_BIOS_LOG);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	vb2_change_menu(VB_GROOT_SHOW_LOG, VB_GROOT_LOG_PAGE_DOWN);
+	return show_log(ctx);
+}
+
+/* Return to previous menu */
+static vb2_error_t goto_prev_menu(struct vb2_context *ctx)
+{
+	// pop off current menu and change to new top of the stack
+	// NOTE: hacky, but need to pop off two screens because
+	// vb2_change_menu will push the new screen back on
+	pop();
+	VB_GROOT prev_menu = pop();
+
+	/* Return to previous menu. */
+	VB2_DEBUG("prev_menu = %d\n", prev_menu);
+	switch (prev_menu) {
+	case VB_GROOT_DEV_WARNING:
+		return enter_dev_warning_menu(ctx);
+	case VB_GROOT_DEV:
+		return enter_developer_menu(ctx);
+	case VB_GROOT_TO_NORM:
+		return enter_to_norm_menu(ctx);
+	case VB_GROOT_TO_DEV:
+		return enter_to_dev_menu(ctx);
+	case VB_GROOT_ADV_OPTIONS:
+		return enter_options_menu(ctx);
+	case VB_GROOT_RECOVERY_STEP0:
+	  return enter_recovery_screen(ctx, 0);
+	case VB_GROOT_RECOVERY_STEP1:
+	  return enter_recovery_screen(ctx, 1);
+	case VB_GROOT_RECOVERY_STEP2:
+	  return enter_recovery_screen(ctx, 2);
+	case VB_GROOT_RECOVERY_STEP3:
+	  return enter_recovery_screen(ctx, 3);
+	case VB_GROOT_RECOVERY_NO_GOOD:
+	case VB_GROOT_RECOVERY_BROKEN:
+	  // TODO(phoenixshen): send back to first recovery screen for now.
+	  // need to modify later.
+	  return enter_recovery_screen(ctx, 0);
+	default:
+		/* This should never happen. */
+		VB2_DEBUG("ERROR: unknown prev_menu %u, force shutdown\n",
+			  prev_menu);
+		return VBERROR_SHUTDOWN_REQUESTED;
+	}
+}
+
+static vb2_error_t debug_info_page_up_action(struct vb2_context *ctx)
+{
+	decrease_current_page();
+	vb2_change_menu(VB_GROOT_DEBUG_INFO, VB_GROOT_DEBUG_PAGE_UP);
+	return debug_info(ctx);
+}
+
+static vb2_error_t debug_info_page_down_action(struct vb2_context *ctx)
+{
+	if (increase_current_page() == num_page - 1)
+		vb2_change_menu(VB_GROOT_DEBUG_INFO, VB_GROOT_DEBUG_PAGE_UP);
+	else
+		vb2_change_menu(VB_GROOT_DEBUG_INFO, VB_GROOT_DEBUG_PAGE_DOWN);
+	return debug_info(ctx);
+}
+
+static vb2_error_t show_log_page_up_action(struct vb2_context *ctx)
+{
+	decrease_current_page();
+	vb2_change_menu(VB_GROOT_SHOW_LOG, VB_GROOT_LOG_PAGE_UP);
+	return show_log(ctx);
+}
+
+static vb2_error_t show_log_page_down_action(struct vb2_context *ctx)
+{
+	if (increase_current_page() == num_page - 1)
+		vb2_change_menu(VB_GROOT_SHOW_LOG, VB_GROOT_LOG_PAGE_UP);
+	else
+		vb2_change_menu(VB_GROOT_SHOW_LOG, VB_GROOT_LOG_PAGE_DOWN);
+	return show_log(ctx);
+}
+
+static vb2_error_t free_log_prev_menu_action(struct vb2_context *ctx)
+{
+	switch(current_menu) {
+	case VB_GROOT_DEBUG_INFO:
+	case VB_GROOT_SHOW_LOG:
+		VbExFreeGrootLog();
+		break;
+	default:
+		/* This should never happen */
+		VB2_DEBUG("ERROR: no log to free in current_menu %u, force shutdown\n",
+			  current_menu);
+		return VBERROR_SHUTDOWN_REQUESTED;
+	}
+	return goto_prev_menu(ctx);
 }
 
 /* Action when selecting a language entry in the language menu. */
 static vb2_error_t language_action(struct vb2_context *ctx)
 {
+	VbSharedDataHeader *vbsd = vb2_get_sd(ctx)->vbsd;
+
 	/* Write selected language ID back to NVRAM. */
 	vb2_nv_set(ctx, VB2_NV_LOCALIZATION_INDEX, current_menu_idx);
 
 	/*
-	 * Non-manual recovery mode is meant to be left via three-finger
-	 * salute (into manual recovery mode). Need to commit nvdata
-	 * changes immediately.  Ignore commit errors in recovery mode.
+	 * Non-manual recovery mode is meant to be left via hard reset (into
+	 * manual recovery mode). Need to commit NVRAM changes immediately.
 	 */
-	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    !vb2_allow_recovery(ctx))
+	if (vbsd->recovery_reason && !vb2_allow_recovery(ctx))
 		vb2_commit_data(ctx);
 
-	/* Return to previous menu. */
-	switch (prev_menu) {
-	case VB_MENU_DEV_WARNING:
-		return enter_dev_warning_menu(ctx);
-	case VB_MENU_DEV:
-		return enter_developer_menu(ctx);
-	case VB_MENU_TO_NORM:
-		return enter_to_norm_menu(ctx);
-	case VB_MENU_TO_DEV:
-		return enter_to_dev_menu(ctx);
-	case VB_MENU_OPTIONS:
-		return enter_options_menu(ctx);
-	default:
-		/* This should never happen. */
-		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
-		return VBERROR_SHUTDOWN_REQUESTED;
-	}
+	return goto_prev_menu(ctx);
 }
 
 /* Action when selecting a bootloader in the alternative firmware menu. */
@@ -384,7 +662,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 
 	VB2_DEBUG("leaving dev-mode.\n");
 	vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-	vb2_change_menu(VB_MENU_TO_NORM_CONFIRMED, 0);
+	vb2_change_menu(VB_GROOT_TO_NORM_CONFIRMED, 0);
 	vb2_draw_current_screen(ctx);
 	VbExSleepMs(5000);
 	return VBERROR_REBOOT_REQUIRED;
@@ -393,7 +671,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 /* Action that will power off the system. */
 static vb2_error_t power_off_action(struct vb2_context *ctx)
 {
-	VB2_DEBUG("Power off requested from screen %#x\n",
+	VB2_DEBUG("Power off requested from screen 0x%x\n",
 		  menus[current_menu].screen);
 	return VBERROR_SHUTDOWN_REQUESTED;
 }
@@ -433,7 +711,7 @@ static void vb2_update_selection(uint32_t key) {
 			current_menu_idx = idx;
 		break;
 	default:
-		VB2_DEBUG("ERROR: %s called with key %#x!\n", __func__, key);
+		VB2_DEBUG("ERROR: %s called with key 0x%x!\n", __func__, key);
 		break;
 	}
 
@@ -441,7 +719,7 @@ static void vb2_update_selection(uint32_t key) {
 }
 
 static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
-					 uint32_t key, uint32_t key_flags)
+				         uint32_t key, uint32_t key_flags)
 {
 	switch (key) {
 	case 0:
@@ -459,7 +737,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	case VB_BUTTON_VOL_UP_SHORT_PRESS:
 	case VB_BUTTON_VOL_DOWN_SHORT_PRESS:
 		/* Untrusted (USB keyboard) input disabled for TO_DEV menu. */
-		if (current_menu == VB_MENU_TO_DEV &&
+		if (current_menu == VB_GROOT_TO_DEV &&
 		    !(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)) {
 			vb2_flash_screen(ctx);
 			vb2_error_notify("Please use the on-device volume "
@@ -480,6 +758,15 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 		vb2_draw_current_screen(ctx);
 		break;
 	case VB_BUTTON_POWER_SHORT_PRESS:
+		if (DETACHABLE) {
+			/* Menuless screens shut down on power button press. */
+			if (!menus[current_menu].size)
+				return VBERROR_SHUTDOWN_REQUESTED;
+
+			return menus[current_menu].items[current_menu_idx]
+				.action(ctx);
+		}
+		break;
 	case VB_KEY_ENTER:
 		/* Menuless screens shut down on power button press. */
 		if (!menus[current_menu].size)
@@ -487,11 +774,11 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 
 		return menus[current_menu].items[current_menu_idx].action(ctx);
 	default:
-		VB2_DEBUG("pressed key %#x\n", key);
+		VB2_DEBUG("pressed key 0x%x\n", key);
 		break;
 	}
 
-	if (VbWantShutdownMenu(ctx)) {
+	if (VbWantShutdownGroot(ctx, key)) {
 		VB2_DEBUG("shutdown requested!\n");
 		return VBERROR_SHUTDOWN_REQUESTED;
 	}
@@ -499,169 +786,182 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	return VBERROR_KEEP_LOOPING;
 }
 
+/* Delay in developer menu */
+#define DEV_KEY_DELAY        20       /* Check keys every 20ms */
+
 /* Master table of all menus. Menus with size == 0 count as menuless screens. */
-static struct vb2_menu menus[VB_MENU_COUNT] = {
-	[VB_MENU_DEV_WARNING] = {
-		.name = "Developer Warning",
-		.size = VB_WARN_COUNT,
+static struct vb2_menu menus[VB_GROOT_COUNT] = {
+	[VB_GROOT_DEV_WARNING] = {
+		.name = "You're now in dev mode",
+		.size = VB_GROOT_WARN_COUNT,
 		.screen = VB_SCREEN_DEVELOPER_WARNING_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_WARN_OPTIONS] = {
-				.text = "Developer Options",
-				.action = enter_developer_menu,
+			[VB_GROOT_WARN_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
 			},
-			[VB_WARN_DBG_INFO] = {
-				.text = "Show Debug Info",
-				.action = debug_info_action,
-			},
-			[VB_WARN_ENABLE_VER] = {
-				.text = "Enable OS Verification",
+			[VB_GROOT_WARN_ENABLE_VER] = {
+				.text = "Return to original state",
 				.action = enter_to_norm_menu,
 			},
-			[VB_WARN_POWER_OFF] = {
-				.text = "Power Off",
-				.action = power_off_action,
+			[VB_GROOT_WARN_DISK] = {
+				.text = "Boot from internal disk",
+				.action = boot_from_internal_action,
 			},
-			[VB_WARN_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
+			[VB_GROOT_WARN_USB] = {
+				.text = "Boot from external disk",
+				.action = enter_boot_from_external_menu,
 			},
-		},
-	},
-	[VB_MENU_DEV] = {
-		.name = "Developer Boot Options",
-		.size = VB_DEV_COUNT,
-		.screen = VB_SCREEN_DEVELOPER_MENU,
-		.items = (struct vb2_menu_item[]){
-			[VB_DEV_NETWORK] = {
-				.text = "Boot From Network",
-				.action = NULL,	/* unimplemented */
-			},
-			[VB_DEV_LEGACY] = {
-				.text = "Boot Legacy BIOS",
+			[VB_GROOT_WARN_LEGACY] = {
+				.text = "Boot from legacy mode",
 				.action = enter_altfw_menu,
 			},
-			[VB_DEV_USB] = {
-				.text = "Boot From USB or SD Card",
-				.action = boot_usb_action,
+			[VB_GROOT_WARN_DBG_INFO] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
 			},
-			[VB_DEV_DISK] = {
-				.text = "Boot From Internal Disk",
-				.action = boot_disk_action,
-			},
-			[VB_DEV_CANCEL] = {
-				.text = "Cancel",
-				.action = enter_dev_warning_menu,
-			},
-			[VB_DEV_POWER_OFF] = {
+			[VB_GROOT_WARN_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
 			},
-			[VB_DEV_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
-			},
 		},
 	},
-	[VB_MENU_TO_NORM] = {
-		.name = "TO_NORM Confirmation",
-		.size = VB_TO_NORM_COUNT,
+	[VB_GROOT_TO_NORM] = {
+		.name = "Confirm returning to original state",
+		.size = VB_GROOT_TO_NORM_COUNT,
 		.screen = VB_SCREEN_DEVELOPER_TO_NORM_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_TO_NORM_CONFIRM] = {
-				.text = "Confirm Enabling OS Verification",
+			[VB_GROOT_TO_NORM_CONFIRM] = {
+				.text = "Continue",
 				.action = to_norm_action,
 			},
-			[VB_TO_NORM_CANCEL] = {
+			[VB_GROOT_TO_NORM_CANCEL] = {
 				.text = "Cancel",
-				.action = enter_dev_warning_menu,
+				.action = goto_prev_menu,
 			},
-			[VB_TO_NORM_POWER_OFF] = {
+			[VB_GROOT_TO_NORM_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
 			},
-			[VB_TO_NORM_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
-			},
 		},
 	},
-	[VB_MENU_TO_DEV] = {
+	[VB_GROOT_TO_DEV] = {
 		.name = "TO_DEV Confirmation",
-		.size = VB_TO_DEV_COUNT,
+		.size = VB_GROOT_TO_DEV_COUNT,
 		.screen = VB_SCREEN_RECOVERY_TO_DEV_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_TO_DEV_CONFIRM] = {
-				.text = "Confirm Disabling OS Verification",
+			[VB_GROOT_TO_DEV_CONFIRM] = {
+				.text = "Confirm disabling OS verification",
 				.action = to_dev_action,
 			},
-			[VB_TO_DEV_CANCEL] = {
+			[VB_GROOT_TO_DEV_CANCEL] = {
 				.text = "Cancel",
-				.action = enter_recovery_base_screen,
+				.action = goto_prev_menu,
 			},
-			[VB_TO_DEV_POWER_OFF] = {
+			[VB_GROOT_TO_DEV_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
 			},
-			[VB_TO_DEV_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
-			},
 		},
 	},
-	[VB_MENU_LANGUAGES] = {
+	[VB_GROOT_LANGUAGES] = {
 		.name = "Language Selection",
 		.screen = VB_SCREEN_LANGUAGES_MENU,
 		/* Rest is filled out dynamically by vb2_init_menus() */
 	},
-	[VB_MENU_OPTIONS] = {
-		.name = "Options",
-		.size = VB_OPTIONS_COUNT,
+	[VB_GROOT_ADV_OPTIONS] = {
+		.name = "Advanced options",
+		.size = VB_GROOT_OPTIONS_COUNT,
 		.screen = VB_SCREEN_OPTIONS_MENU,
 		.items = (struct vb2_menu_item[]){
-			[VB_OPTIONS_DBG_INFO] = {
-				.text = "Show Debug Info",
+			[VB_GROOT_OPTIONS_TO_DEV] = {
+				.text = "Enable developer mode",
+				.action = enter_to_dev_menu,
+			},
+			[VB_GROOT_OPTIONS_DBG_INFO] = {
+				.text = "Debug info",
 				.action = debug_info_action,
 			},
-			[VB_OPTIONS_CANCEL] = {
-				.text = "Cancel",
-				.action = enter_recovery_base_screen,
+			[VB_GROOT_OPTIONS_BIOS_LOG] = {
+				.text = "BIOS log",
+				.action = show_log_action,
 			},
-			[VB_OPTIONS_POWER_OFF] = {
+			[VB_GROOT_OPTIONS_CANCEL] = {
+				.text = "Back",
+				.action = goto_prev_menu,
+			},
+			[VB_GROOT_OPTIONS_POWER_OFF] = {
 				.text = "Power Off",
 				.action = power_off_action,
 			},
-			[VB_OPTIONS_LANGUAGE] = {
-				.text = "Language",
-				.action = enter_language_menu,
+		},
+	},
+	[VB_GROOT_DEBUG_INFO] = {
+		.name = "Debug info",
+		.size = VB_GROOT_DEBUG_COUNT,
+		.screen = VB_SCREEN_DEBUG_INFO,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_DEBUG_PAGE_UP] = {
+				.text = "Page Up",
+				.action = debug_info_page_up_action,
+			},
+			[VB_GROOT_DEBUG_PAGE_DOWN] = {
+				.text = "Page Down",
+				.action = debug_info_page_down_action,
+			},
+			[VB_GROOT_DEBUG_BACK] = {
+				.text = "Back",
+				.action = free_log_prev_menu_action,
 			},
 		},
 	},
-	[VB_MENU_RECOVERY_INSERT] = {
-		.name = "Recovery INSERT",
-		.size = 0,
-		.screen = VB_SCREEN_RECOVERY_INSERT,
-		.items = NULL,
+	[VB_GROOT_SHOW_LOG] = {
+		.name = "BIOS log",
+		.size = VB_GROOT_LOG_COUNT,
+		.screen = VB_SCREEN_BIOS_LOG,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_LOG_PAGE_UP] = {
+				.text = "Page Up",
+				.action = show_log_page_up_action,
+			},
+			[VB_GROOT_LOG_PAGE_DOWN] = {
+				.text = "Page Down",
+				.action = show_log_page_down_action,
+			},
+			[VB_GROOT_LOG_BACK] = {
+				.text = "Back",
+				.action = free_log_prev_menu_action,
+			},
+		},
 	},
-	[VB_MENU_RECOVERY_NO_GOOD] = {
+	[VB_GROOT_RECOVERY_NO_GOOD] = {
 		.name = "Recovery NO_GOOD",
 		.size = 0,
 		.screen = VB_SCREEN_RECOVERY_NO_GOOD,
 		.items = NULL,
 	},
-	[VB_MENU_RECOVERY_BROKEN] = {
+	[VB_GROOT_RECOVERY_BROKEN] = {
 		.name = "Non-manual Recovery (BROKEN)",
 		.size = 0,
 		.screen = VB_SCREEN_OS_BROKEN,
-		.items = NULL,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_BROKEN_LANGUAGE] = {
+				.text = "Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_BROKEN_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+		},
 	},
-	[VB_MENU_TO_NORM_CONFIRMED] = {
+	[VB_GROOT_TO_NORM_CONFIRMED] = {
 		.name = "TO_NORM Interstitial",
 		.size = 0,
 		.screen = VB_SCREEN_TO_NORM_CONFIRMED,
 		.items = NULL,
 	},
-	[VB_MENU_ALT_FW] = {
+	[VB_GROOT_ALT_FW] = {
 		.name = "Alternative Firmware Selection",
 		.screen = VB_SCREEN_ALT_FW_MENU,
 		.size = VB_ALTFW_COUNT + 1,
@@ -698,6 +998,112 @@ static struct vb2_menu menus[VB_MENU_COUNT] = {
 			},
 		},
 	},
+	[VB_GROOT_RECOVERY_STEP0] = {
+		.name = "Recovery Step 0: "
+			"Let's step you through the recovery process",
+		.size = VB_GROOT_REC_STEP0_COUNT,
+		.screen = VB_SCREEN_RECOVERY_SELECT,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_STEP0_LANGUAGE] = {
+				.text = "Step 0: Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_STEP0_NEXT] = {
+				.text = "Step 0: Recover using external disk",
+				.action = step_next_recovery_screen,
+			},
+			[VB_GROOT_REC_STEP0_ADV_OPTIONS] = {
+				.text = "Advanced Options",
+				.action = enter_options_menu,
+			},
+			[VB_GROOT_REC_STEP0_POWER_OFF] = {
+				.text = "Step 0: Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
+	[VB_GROOT_RECOVERY_STEP1] = {
+		.name = "Recovery Step 1: You'll need",
+		.size = VB_GROOT_REC_STEP1_COUNT,
+		.screen = VB_SCREEN_RECOVERY_DISK_STEP1,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_STEP1_LANGUAGE] = {
+				.text = "Step 1: Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_STEP1_NEXT] = {
+				.text = "Step 1: Next",
+				.action = step_next_recovery_screen,
+			},
+			[VB_GROOT_REC_STEP1_BACK] = {
+				.text = "Step 1: Back",
+				.action = goto_prev_menu,
+			},
+			[VB_GROOT_REC_STEP1_POWER_OFF] = {
+				.text = "Step 1: Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
+	[VB_GROOT_RECOVERY_STEP2] = {
+		.name = "Recovery Step 2: External Disk Setup",
+		.size = VB_GROOT_REC_STEP2_COUNT,
+		.screen = VB_SCREEN_RECOVERY_DISK_STEP2,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_STEP2_LANGUAGE] = {
+				.text = "Step 2: Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_STEP2_NEXT] = {
+				.text = "Step 2: Next",
+				.action = step_next_recovery_screen,
+			},
+			[VB_GROOT_REC_STEP2_BACK] = {
+				.text = "Step 2: Back",
+				.action = goto_prev_menu,
+			},
+			[VB_GROOT_REC_STEP2_POWER_OFF] = {
+				.text = "Step 2: Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
+	[VB_GROOT_RECOVERY_STEP3] = {
+		.name = "Recovery Step 3: Plug in USB",
+		.size = VB_GROOT_REC_STEP3_COUNT,
+		.screen = VB_SCREEN_RECOVERY_DISK_STEP3,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_REC_STEP3_LANGUAGE] = {
+				.text = "Step 3: Language",
+				.action = enter_language_menu,
+			},
+			[VB_GROOT_REC_STEP3_BACK] = {
+				.text = "Step 3: Back",
+				.action = goto_prev_menu,
+			},
+			[VB_GROOT_REC_STEP3_POWER_OFF] = {
+				.text = "Step 3: Power Off",
+				.action = power_off_action,
+			},
+		},
+	},
+	[VB_GROOT_BOOT_FROM_INTERNAL] = {
+		.name = "Boot from internal disk",
+		.size = 0,
+		.screen = VB_SCREEN_BOOT_FROM_INTERNAL,
+		.items = NULL,
+	},
+	[VB_GROOT_BOOT_FROM_EXTERNAL] = {
+		.name = "Boot from external disk",
+		.size = VB_GROOT_BOOT_USB_COUNT,
+		.screen = VB_SCREEN_BOOT_FROM_EXTERNAL,
+		.items = (struct vb2_menu_item[]){
+			[VB_GROOT_BOOT_USB_BACK] = {
+				.text = "Back",
+				.action = goto_prev_menu,
+			},
+		},
+	},
 };
 
 /* Initialize menu state. Must be called once before displaying any menus. */
@@ -708,8 +1114,9 @@ static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
 	int i;
 
 	/* Initialize language menu with the correct amount of entries. */
-	if (VB2_SUCCESS != VbExGetLocalizationCount(&count) || count == 0)
-		count = 1;  /* Fall back to 1 language entry on failure */
+	VbExGetLocalizationCount(&count);
+	if (!count)
+		count = 1;	/* Always need at least one language entry. */
 
 	items = malloc(count * sizeof(struct vb2_menu_item));
 	if (!items)
@@ -720,8 +1127,10 @@ static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
 		items[i].text = "Some Language";
 		items[i].action = language_action;
 	}
-	menus[VB_MENU_LANGUAGES].size = count;
-	menus[VB_MENU_LANGUAGES].items = items;
+	menus[VB_GROOT_LANGUAGES].size = count;
+	menus[VB_GROOT_LANGUAGES].items = items;
+
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
 
 	return VB2_SUCCESS;
 }
@@ -776,32 +1185,26 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 		if (disable_dev_boot)
 			VbExDisplayDebugInfo(dev_disable_msg, 0);
 
-		switch (key) {
-		case VB_BUTTON_VOL_DOWN_LONG_PRESS:
-		case VB_KEY_CTRL('D'):
+		if (key == VB_KEY_CTRL('D') ||
+		    (key == VB_BUTTON_VOL_DOWN_LONG_PRESS && DETACHABLE)) {
 			/* Ctrl+D = boot from internal disk */
-			ret = boot_disk_action(ctx);
-			break;
-		case VB_KEY_CTRL('L'):
+			ret = boot_from_internal_action(ctx);
+		} else if (key == VB_KEY_CTRL('L')) {
 			/* Ctrl+L = boot alternative bootloader */
 			ret = enter_altfw_menu(ctx);
-			break;
-		case VB_BUTTON_VOL_UP_LONG_PRESS:
-		case VB_KEY_CTRL('U'):
+		} else if (key == VB_KEY_CTRL('U') ||
+			   (key == VB_BUTTON_VOL_UP_LONG_PRESS && DETACHABLE)) {
 			/* Ctrl+U = boot from USB or SD card */
 			ret = boot_usb_action(ctx);
-			break;
-		/* We allow selection of the default '0' bootloader here */
-		case '0'...'9':
+		} else if ('0' <= key && key <= '9') {
+			/* We allow selection of the default '0' bootloader */
 			VB2_DEBUG("VbBootDeveloper() - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
 			vb2_try_altfw(ctx, altfw_allowed, key - '0');
 			ret = VBERROR_KEEP_LOOPING;
-			break;
-		default:
+		} else {
 			ret = vb2_handle_menu_input(ctx, key, 0);
-			break;
 		}
 
 		/* We may have loaded a kernel or decided to shut down now. */
@@ -824,11 +1227,11 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 		if (VB2_SUCCESS == boot_usb_action(ctx))
 			return VB2_SUCCESS;
 
-	return boot_disk_action(ctx);
+	return boot_from_internal_action(ctx);
 }
 
 /* Developer mode entry point. */
-vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx)
+vb2_error_t VbBootDeveloperGroot(struct vb2_context *ctx)
 {
 	vb2_error_t retval = vb2_init_menus(ctx);
 	if (VB2_SUCCESS != retval)
@@ -850,11 +1253,9 @@ static vb2_error_t broken_ui(struct vb2_context *ctx)
 	 */
 	VB2_DEBUG("saving recovery reason (%#x)\n", vbsd->recovery_reason);
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, vbsd->recovery_reason);
-
-	/* Ignore commit errors in recovery mode. */
 	vb2_commit_data(ctx);
 
-	enter_recovery_base_screen(ctx);
+	enter_recovery_screen(ctx, 0);
 
 	/* Loop and wait for the user to reset or shut down. */
 	VB2_DEBUG("waiting for manual recovery\n");
@@ -865,6 +1266,11 @@ static vb2_error_t broken_ui(struct vb2_context *ctx)
 			return ret;
 	}
 }
+
+/* Delay in recovery mode */
+#define REC_DISK_DELAY       1000     /* Check disks every 1s */
+#define REC_KEY_DELAY        20       /* Check keys every 20ms */
+#define REC_MEDIA_INIT_DELAY 500      /* Check removable media every 500ms */
 
 /**
  * Main function that handles recovery menu functionality
@@ -877,12 +1283,23 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 	uint32_t key;
 	uint32_t key_flags;
 	vb2_error_t ret;
+	int i;
 
 	/* Loop and wait for a recovery image */
 	VB2_DEBUG("waiting for a recovery image\n");
 	usb_nogood = -1;
 	while (1) {
+		VB2_DEBUG("attempting to load kernel2\n");
 		ret = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
+
+		/*
+		 * Clear recovery requests from failed kernel loading, since
+		 * we're already in recovery mode.  Do this now, so that
+		 * powering off after inserting an invalid disk doesn't leave
+		 * us stuck in recovery mode.
+		 */
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+			   VB2_RECOVERY_NOT_REQUESTED);
 
 		if (VB2_SUCCESS == ret)
 			return ret; /* Found a recovery kernel */
@@ -890,26 +1307,35 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		if (usb_nogood != (ret != VB2_ERROR_LK_NO_DISK_FOUND)) {
 			/* USB state changed, force back to base screen */
 			usb_nogood = ret != VB2_ERROR_LK_NO_DISK_FOUND;
-			enter_recovery_base_screen(ctx);
+			enter_recovery_screen(ctx, 0);
 		}
 
-		key = VbExKeyboardReadWithFlags(&key_flags);
-		if (key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS) {
-			if (key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)
-				enter_to_dev_menu(ctx);
-			else
-				VB2_DEBUG("ERROR: untrusted combo?!\n");
-		} else {
-			ret = vb2_handle_menu_input(ctx, key, key_flags);
-			if (ret != VBERROR_KEEP_LOOPING)
-				return ret;
+		/*
+		 * Scan keyboard more frequently than media, since x86
+		 * platforms don't like to scan USB too rapidly.
+		 */
+		for (i = 0; i < REC_DISK_DELAY; i += REC_KEY_DELAY) {
+			key = VbExKeyboardReadWithFlags(&key_flags);
+			if ((key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS &&
+			     DETACHABLE) ||
+			    key == VB_KEY_CTRL('D')) {
+				if (key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)
+					enter_to_dev_menu(ctx);
+				else
+					VB2_DEBUG("ERROR: untrusted combo?!\n");
+			} else {
+				ret = vb2_handle_menu_input(ctx, key,
+							    key_flags);
+				if (ret != VBERROR_KEEP_LOOPING)
+					return ret;
+			}
+			VbExSleepMs(REC_KEY_DELAY);
 		}
-		VbExSleepMs(KEY_DELAY_MS);
 	}
 }
 
 /* Recovery mode entry point. */
-vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx)
+vb2_error_t VbBootRecoveryGroot(struct vb2_context *ctx)
 {
 	vb2_error_t retval = vb2_init_menus(ctx);
 	if (VB2_SUCCESS != retval)
