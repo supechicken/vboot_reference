@@ -195,6 +195,20 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# pass MENU_UI= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${MENU_UI}),)
+CFLAGS += -DMENU_UI=1
+else
+CFLAGS += -DMENU_UI=0
+endif
+
+# pass DETACHABLE_NAVIGATE= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${DETACHABLE_NAVIGATE}),)
+CFLAGS += -DDETACHABLE_NAVIGATE=1
+else
+CFLAGS += -DDETACHABLE_NAVIGATE=0
+endif
+
 # enable all features during local compile (permits testing)
 ifeq (${FIRMWARE_ARCH},)
 DIAGNOSTIC_UI := 1
@@ -357,6 +371,7 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
 	firmware/lib/vboot_ui_common.c \
+	firmware/lib/vboot_ui_menu_groot.c \
 	firmware/lib/vboot_ui_menu.c
 
 # Code common to both vboot 2.0 (old structs) and 2.1 (new structs)
