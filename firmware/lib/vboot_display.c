@@ -19,6 +19,7 @@
 static uint32_t disp_current_screen = VB_SCREEN_BLANK;
 static uint32_t disp_current_index = 0;
 static uint32_t disp_disabled_idx_mask = 0;
+static uint32_t disp_current_page = 0;
 
 __attribute__((weak))
 vb2_error_t VbExGetLocalizationCount(uint32_t *count) {
@@ -50,7 +51,8 @@ vb2_error_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
 }
 
 vb2_error_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
-			  uint32_t selected_index, uint32_t disabled_idx_mask)
+			  uint32_t selected_index, uint32_t disabled_idx_mask,
+			  uint32_t page)
 {
 	uint32_t locale;
 	uint32_t redraw_base_screen = 0;
@@ -61,6 +63,7 @@ vb2_error_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
 	 */
 	if (disp_current_screen == screen &&
 	    disp_current_index == selected_index &&
+	    disp_current_page == page &&
 	    !force)
 		return VB2_SUCCESS;
 
@@ -78,12 +81,13 @@ vb2_error_t VbDisplayMenu(struct vb2_context *ctx, uint32_t screen, int force,
 	disp_current_screen = screen;
 	disp_current_index = selected_index;
 	disp_disabled_idx_mask = disabled_idx_mask;
+	disp_current_page = page;
 
 	/* Read the locale last saved */
 	locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
 
 	return VbExDisplayMenu(screen, locale, selected_index,
-			       disabled_idx_mask, redraw_base_screen);
+			       disabled_idx_mask, page, redraw_base_screen);
 }
 
 static void Uint8ToString(char *buf, uint8_t val)
