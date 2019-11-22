@@ -16,6 +16,24 @@
       "revId": "b104ed42359ba9fcc0a77cdcbef4663294ed6aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4fc6e4_66c5f5b1",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-11-22T23:05:38Z",
+      "side": 1,
+      "message": "We need the break to happen anytime the keyboard must be trusted and isn\u0027t but the alert should only happen if there is not a physical recovery switch. I rearranged this case a little, I think that it reads better this way.",
+      "parentUuid": "d9e99679_76fb4fd7",
+      "revId": "b104ed42359ba9fcc0a77cdcbef4663294ed6aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
