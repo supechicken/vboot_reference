@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "453d09bc_d00e6bb6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-22T23:38:49Z",
+      "side": 1,
+      "message": "nit: I\u0027m somewhat confused about when you use your fancy ternary operator magic and when you check for success explicitly. Either is fine by me but it would be nice to be consistent.",
+      "revId": "d2da1f491d047e277cf055923b924ed5fd5b8b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
