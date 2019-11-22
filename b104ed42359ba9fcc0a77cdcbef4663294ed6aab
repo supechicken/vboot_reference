@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9e99679_76fb4fd7",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-22T22:05:02Z",
+      "side": 1,
+      "message": "Why not just throw a\n\n !(shared-\u003eflags \u0026 VBSD_BOOT_REC_SWITCH_VIRTUAL) \u0026\u0026\n\nin the middle here to avoid another indent?",
+      "revId": "b104ed42359ba9fcc0a77cdcbef4663294ed6aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
