@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "682ce46b_5440a515",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-22T03:09:43Z",
+      "side": 1,
+      "message": "Might still want to include the comment \"Done by software sync\" here since it\u0027s not totally clear by just reading the constant name.",
+      "range": {
+        "startLine": 940,
+        "startChar": 22,
+        "endLine": 940,
+        "endChar": 23
+      },
+      "revId": "4ff839d27f55e7124c0ddd3838c5a989ce0105e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83adcdf5_6a457c3e",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-22T03:09:43Z",
+      "side": 1,
+      "message": "It would be nice if the order here matched that of the definition (0, 1, 2).",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 59
+      },
+      "revId": "4ff839d27f55e7124c0ddd3838c5a989ce0105e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
