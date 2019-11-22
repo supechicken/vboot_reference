@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19345e50_57b59bf4",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-11-22T03:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "682ce46b_5440a515",
+      "range": {
+        "startLine": 940,
+        "startChar": 22,
+        "endLine": 940,
+        "endChar": 23
+      },
+      "revId": "4ff839d27f55e7124c0ddd3838c5a989ce0105e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83adcdf5_6a457c3e",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "4ff839d27f55e7124c0ddd3838c5a989ce0105e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6273fc0_8674d007",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2019-11-22T03:44:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83adcdf5_6a457c3e",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 59
+      },
+      "revId": "4ff839d27f55e7124c0ddd3838c5a989ce0105e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
