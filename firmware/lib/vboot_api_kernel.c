@@ -407,10 +407,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
-		if (ctx->flags & VB2_CONTEXT_DETACHABLE_UI)
-			rv = VbBootRecoveryMenu(ctx);
-		else
-			rv = VbBootRecovery(ctx);
+		rv = VbBootRecoveryGroot(ctx);
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
@@ -433,10 +430,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
 
 		/* Developer boot.  This has UI. */
-		if (ctx->flags & VB2_CONTEXT_DETACHABLE_UI)
-			rv = VbBootDeveloperMenu(ctx);
-		else
-			rv = VbBootDeveloper(ctx);
+		rv = VbBootDeveloperGroot(ctx);
 	} else {
 		/* Normal boot */
 		rv = VbBootNormal(ctx);
