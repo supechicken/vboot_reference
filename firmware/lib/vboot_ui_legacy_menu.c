@@ -62,7 +62,7 @@ static int VbWantShutdownMenu(struct vb2_context *ctx)
 /* (Re-)Draw the menu identified by current_menu[_idx] to the screen. */
 static vb2_error_t vb2_draw_current_screen(struct vb2_context *ctx) {
 	vb2_error_t ret = VbDisplayMenu(ctx, menus[current_menu].screen,
-			force_redraw, current_menu_idx, disabled_idx_mask);
+			force_redraw, current_menu_idx, disabled_idx_mask, 0);
 	force_redraw = 0;
 	return ret;
 }

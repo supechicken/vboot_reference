@@ -79,6 +79,12 @@ vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *ctx);
 vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *ctx);
 
 /**
+ * XXX: Handle groot temporary entry points
+ */
+vb2_error_t VbBootDeveloperGroot(struct vb2_context *ctx);
+vb2_error_t VbBootRecoveryGroot(struct vb2_context *ctx);
+
+/**
  * Writes modified secdata spaces and nvdata.
  *
  * This is a temporary wrapper around vb2ex_commit_data, until secdata-writing

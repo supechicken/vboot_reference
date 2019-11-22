@@ -398,6 +398,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		/* Recovery boot.  This has UI. */
 		if (LEGACY_MENU_UI)
 			rv = VbBootRecoveryLegacyMenu(ctx);
+		else if (MENU_UI)
+			rv = VbBootRecoveryGroot(ctx);
 		else
 			rv = VbBootRecoveryLegacyClamshell(ctx);
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
@@ -421,6 +423,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		/* Developer boot.  This has UI. */
 		if (LEGACY_MENU_UI)
 			rv = VbBootDeveloperLegacyMenu(ctx);
+		else if (MENU_UI)
+			rv = VbBootDeveloperGroot(ctx);
 		else
 			rv = VbBootDeveloperLegacyClamshell(ctx);
 	} else {
