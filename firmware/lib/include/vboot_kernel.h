@@ -72,11 +72,13 @@ vb2_error_t VbBootRecovery(struct vb2_context *ctx);
  * Handle a developer-mode boot using detachable menu ui
  */
 vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
+vb2_error_t VbBootDeveloperGroot(struct vb2_context *ctx);
 
 /**
  * Handle a recovery-mode boot using detachable menu ui
  */
 vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
+vb2_error_t VbBootRecoveryGroot(struct vb2_context *ctx);
 
 /**
  * Writes modified secdata spaces and nvdata.

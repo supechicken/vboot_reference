@@ -12,7 +12,9 @@ vb2_error_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
 			  const VbScreenData *data);
 vb2_error_t VbDisplayMenu(struct vb2_context *ctx,
 			uint32_t screen, int force, uint32_t selected_index,
-			uint32_t disabled_idx_mask);
+			uint32_t disabled_idx_mask, uint32_t page);
+void VbGetDebugInfoString(struct vb2_context *ctx, char *dest,
+			  size_t dest_size);
 vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx);
 vb2_error_t VbCheckDisplayKey(struct vb2_context *ctx, uint32_t key,
 			    const VbScreenData *data);
