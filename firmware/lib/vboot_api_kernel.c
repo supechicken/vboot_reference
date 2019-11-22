@@ -408,7 +408,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
 		if (ctx->flags & VB2_CONTEXT_DETACHABLE_UI)
-			rv = VbBootRecoveryMenu(ctx);
+			rv = VbBootRecoveryGroot(ctx);
 		else
 			rv = VbBootRecovery(ctx);
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
@@ -434,7 +434,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 		/* Developer boot.  This has UI. */
 		if (ctx->flags & VB2_CONTEXT_DETACHABLE_UI)
-			rv = VbBootDeveloperMenu(ctx);
+			rv = VbBootDeveloperGroot(ctx);
 		else
 			rv = VbBootDeveloper(ctx);
 	} else {
