@@ -200,6 +200,13 @@ else
 CFLAGS += -DDIAGNOSTIC_UI=0
 endif
 
+# pass RECOVERY_UI2= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${RECOVERY_UI2}),)
+CFLAGS += -DRECOVERY_UI2=1
+else
+CFLAGS += -DRECOVERY_UI2=0
+endif
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
@@ -352,6 +359,7 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
 	firmware/lib/vboot_ui_common.c \
+	firmware/lib/vboot_ui_menu_groot.c \
 	firmware/lib/vboot_ui_menu.c
 
 # Code common to both vboot 2.0 (old structs) and 2.1 (new structs)
