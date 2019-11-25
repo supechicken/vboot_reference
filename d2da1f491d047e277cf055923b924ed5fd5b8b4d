@@ -16,6 +16,24 @@
       "revId": "d2da1f491d047e277cf055923b924ed5fd5b8b4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08059ed7_f329c06b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-25T13:08:13Z",
+      "side": 1,
+      "message": "Fair enough... I saw it in the streaming_lba_count code, and thought it was fancy.  I\u0027ll just use some good ol\u0027 conditionals instead.",
+      "parentUuid": "453d09bc_d00e6bb6",
+      "revId": "d2da1f491d047e277cf055923b924ed5fd5b8b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
