@@ -22,6 +22,30 @@
       "revId": "e4ba8453b2760e050d2b2ab199f4d68d931a2c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b472874_20b4c553",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 100
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-25T23:03:20Z",
+      "side": 1,
+      "message": "nit: that\u0027s not exactly a great name for a global function... maybe tlcl_clear_and_reenable?",
+      "parentUuid": "886938c4_dae567ca",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "e4ba8453b2760e050d2b2ab199f4d68d931a2c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
