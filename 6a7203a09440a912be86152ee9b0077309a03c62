@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a12b48a5_b572a117",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-25T09:16:26Z",
+      "side": 1,
+      "message": "Can we include all the exact IDs for each screen here, just like above?\n\nAlso, how about we include a small gap after RECOVERY_STEP3, in case we want to add more steps in the future?\n\nFinally, even if it isn\u0027t complete yet, how about we also include the Android recovery flow screen constants here?",
+      "range": {
+        "startLine": 476,
+        "startChar": 25,
+        "endLine": 476,
+        "endChar": 26
+      },
+      "revId": "6a7203a09440a912be86152ee9b0077309a03c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
