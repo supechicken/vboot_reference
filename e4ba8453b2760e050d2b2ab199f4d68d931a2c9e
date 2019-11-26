@@ -46,6 +46,30 @@
       "revId": "e4ba8453b2760e050d2b2ab199f4d68d931a2c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7b4f38_3cc36f58",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 100
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-26T07:11:37Z",
+      "side": 1,
+      "message": "Honestly... there\u0027s no good name here.\n\nI will switch it to tlcl_clear_and_reenable, but then it\u0027s just being inconsistent with coreboot (which implements it in the TSPI layer where the functions all start with \"tpm_\").\n\nBut if we\u0027re not worried about being fancy and introducing more TPM layers at the moment, perhaps this function should just move into firmware/lib/tpm2_lite/tlcl.c.  I can do that in another CL.",
+      "parentUuid": "0b472874_20b4c553",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "e4ba8453b2760e050d2b2ab199f4d68d931a2c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
