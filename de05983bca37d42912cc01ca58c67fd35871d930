@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "c7999ffb_c84dabf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 103
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T18:40:13Z",
+      "side": 1,
+      "message": "qq: where do we create this function for non-host case? in this CL I see it only in vboot_api_stub_init.c, where it does nothing but resetting the commit flag.",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7974a2_18a31851",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T18:40:13Z",
+      "side": 1,
+      "message": "nit: we can \u0026 should also do a similar check for tpm2 (though canonical permissions will be different).",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c23c31d_d3ca69ae",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T18:40:13Z",
+      "side": 1,
+      "message": "nit: can we print |perms| here?",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc25d7e6_4eebe885",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 103
@@ -18,6 +87,29 @@
         "startChar": 0,
         "endLine": 411,
         "endChar": 8
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb48ed86_c8a6356d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-26T18:40:13Z",
+      "side": 1,
+      "message": "nit: extra empty line",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 0
       },
       "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
