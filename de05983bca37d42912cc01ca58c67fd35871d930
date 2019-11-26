@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5088f992_be3ebe1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 103
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-26T22:56:14Z",
+      "side": 1,
+      "message": "Depthcharge CL is CL:1819380... but you\u0027re right that Joel seems to have the wrong Cq-Depend, it should be 1819380 and not 1819379 (which already landed).",
+      "parentUuid": "c7999ffb_c84dabf8",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7974a2_18a31851",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 103
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-26T18:40:13Z",
       "side": 1,
       "message": "nit: we can \u0026 should also do a similar check for tpm2 (though canonical permissions will be different).",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb738853_1b89ddba",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-26T22:56:14Z",
+      "side": 1,
+      "message": "It\u0027s not necessary for TPM 2.0, and since every TPM command adds a non-trivial overhead I\u0027d prefer not to add that. Note that for TPM 1.2 this check was necessary for security since a TPM owner can delete and recreate a space even without physical presence. For TPM 2.0 the spaces we create cannot be deleted after platform hierarchy is disabled, so this hacky check isn\u0027t necessary anymore. (We know which permissions this space was created with by coreboot and we trust that... this check is not a sanity-check for that, it\u0027s just a check to make sure the space wasn\u0027t deleted and recreated differently in-between.)",
+      "parentUuid": "4a7974a2_18a31851",
       "range": {
         "startLine": 104,
         "startChar": 5,
