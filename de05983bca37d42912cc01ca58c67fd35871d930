@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc25d7e6_4eebe885",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-26T07:46:13Z",
+      "side": 1,
+      "message": "I realized we were missing the VB2_SUCCESS case here... it would have worked fine, but would look weird printing a message like \"unknown commit error: 0\".",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 8
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
