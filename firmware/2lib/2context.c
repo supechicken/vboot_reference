@@ -52,10 +52,11 @@ vb2_error_t vb2api_init(void *workbuf, uint32_t size,
 #pragma GCC diagnostic push
 /* Don't warn for the version_minor check even if the checked version is 0. */
 #pragma GCC diagnostic ignored "-Wtype-limits"
-vb2_error_t vb2api_relocate(void *new_workbuf, void *cur_workbuf, uint32_t size,
-			    struct vb2_context **ctxptr)
+vb2_error_t vb2api_relocate(void *new_workbuf, const void *cur_workbuf,
+			    uint32_t size, struct vb2_context **ctxptr)
 {
-	struct vb2_shared_data *sd = cur_workbuf;
+	const struct vb2_shared_data *sd = cur_workbuf;
+	struct vb2_shared_data *new_sd;
 
 	if (!vb2_aligned(new_workbuf, VB2_WORKBUF_ALIGN))
 		return VB2_ERROR_WORKBUF_ALIGN;
@@ -83,9 +84,9 @@ vb2_error_t vb2api_relocate(void *new_workbuf, void *cur_workbuf, uint32_t size,
 		memmove(new_workbuf, cur_workbuf, sd->workbuf_used);
 
 	/* Set the new size, and return the context pointer. */
-	sd = new_workbuf;
-	sd->workbuf_size = size;
-	*ctxptr = &sd->ctx;
+	new_sd = new_workbuf;
+	new_sd->workbuf_size = size;
+	*ctxptr = &new_sd->ctx;
 
 	return VB2_SUCCESS;
 }
