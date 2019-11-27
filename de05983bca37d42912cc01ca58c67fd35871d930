@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2f69013a_946f50cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 103
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-27T06:33:08Z",
+      "side": 1,
+      "message": "Oh, good point.  I\u0027ll update the Cq-Depend line.",
+      "parentUuid": "5088f992_be3ebe1d",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7974a2_18a31851",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 103
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "bb35c533_3c932f1c",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-27T06:33:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb738853_1b89ddba",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c23c31d_d3ca69ae",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 103
@@ -116,6 +164,30 @@
       "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0734f76_63c08843",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-27T06:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c23c31d_d3ca69ae",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +225,30 @@
       "writtenOn": "2019-11-26T18:40:13Z",
       "side": 1,
       "message": "nit: extra empty line",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 0
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d57d618_46ab4dc2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-27T06:33:08Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "cb48ed86_c8a6356d",
       "range": {
         "startLine": 520,
         "startChar": 0,

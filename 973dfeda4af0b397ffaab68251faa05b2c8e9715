@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "847d08a0_99462e62",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-11-27T06:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d815d6cd_91eac513",
+      "range": {
+        "startLine": 119,
+        "startChar": 41,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "973dfeda4af0b397ffaab68251faa05b2c8e9715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83997ccf_89e02c33",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 54
