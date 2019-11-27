@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "5159c4cd_33259546",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-11-27T20:49:15Z",
+      "side": 1,
+      "message": "Only by our official recovery image, not by a user-modified one (we lock the TPM from userspace before handing off to untrusted code). And the official recovery image could also recreate this with the normal permissions (or it could just overwrite the existing space with new data), so I don\u0027t think a separate check would add anything there.\n\nThe TPM 1.2 situation was that someone could take TPM ownership and delete/recreate the space in developer mode, so it was a real risk there.",
+      "parentUuid": "995606a0_7de9f9e4",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c23c31d_d3ca69ae",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 103
