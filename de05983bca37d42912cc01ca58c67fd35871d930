@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "995606a0_7de9f9e4",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 103
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-11-27T20:01:26Z",
+      "side": 1,
+      "message": "The space can still be re-created in recovery mode, so there are *some* arguments for making this check, but I agree they are weak. it\u0027s a nit, fine to go as-is",
+      "parentUuid": "bb35c533_3c932f1c",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "de05983bca37d42912cc01ca58c67fd35871d930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c23c31d_d3ca69ae",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 103
