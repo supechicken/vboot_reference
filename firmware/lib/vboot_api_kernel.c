@@ -266,15 +266,6 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	 */
 	sd->vbsd = shared;
 
-	/*
-	 * If we're in recovery mode just to do memory retraining, all we
-	 * need to do is reboot.
-	 */
-	if (sd->recovery_reason == VB2_RECOVERY_TRAIN_AND_REBOOT) {
-		VB2_DEBUG("Reboot after retraining in recovery.\n");
-		return VBERROR_REBOOT_REQUIRED;
-	}
-
 	/* Fill in params for calls to LoadKernel() */
 	memset(&lkp, 0, sizeof(lkp));
 	lkp.kernel_buffer = kparams->kernel_buffer;
@@ -453,6 +444,29 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		/*
+		 * Clear recovery request and subcode from nvdata, so that we
+		 * don't get stuck in recovery mode after reboot.  Should be
+		 * called at some point after we are certain the system does
+		 * not require any reboots for non-vboot-related reasons (e.g.
+		 * FSP initialization), and before triggering a reboot to exit
+		 * transient recovery mode (e.g. memory retraining request).
+		 */
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+			   VB2_RECOVERY_NOT_REQUESTED);
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE,
+			   VB2_RECOVERY_NOT_REQUESTED);
+
+		/*
+		 * If we're in recovery mode just to do memory retraining, all
+		 * we need to do is reboot.
+		 */
+		if (sd->recovery_reason == VB2_RECOVERY_TRAIN_AND_REBOOT) {
+			VB2_DEBUG("Reboot after retraining in recovery.\n");
+			rv = VBERROR_REBOOT_REQUIRED;
+			goto VbSelectAndLoadKernel_exit;
+		}
+
 		/* Recovery boot.  This has UI. */
 		if (ctx->flags & VB2_CONTEXT_DETACHABLE_UI)
 			rv = VbBootRecoveryMenu(ctx);
