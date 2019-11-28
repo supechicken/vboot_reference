@@ -291,6 +291,17 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	sd->vbsd = shared;
 
 	/*
+	 * Clear recovery request and subcode from nvdata, so that we don't get
+	 * stuck in recovery mode after reboot.  Should be called at some point
+	 * after we are certain the system does not require any reboots for
+	 * non-vboot-related reasons (e.g. FSP initialization), and before
+	 * triggering a reboot to exit transient recovery mode (e.g. memory
+	 * retraining request).
+	 */
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, VB2_RECOVERY_NOT_REQUESTED);
+
+	/*
 	 * If we're in recovery mode just to do memory retraining, all we
 	 * need to do is reboot.
 	 */
