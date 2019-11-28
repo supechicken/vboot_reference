@@ -290,6 +290,9 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	 */
 	sd->vbsd = shared;
 
+	/* Clear any recovery requests from ctx->nvdata. */
+	vb2_clear_recovery();
+
 	/*
 	 * If we're in recovery mode just to do memory retraining, all we
 	 * need to do is reboot.

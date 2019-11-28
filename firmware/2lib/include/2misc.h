@@ -90,6 +90,19 @@ vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
 void vb2_check_recovery(struct vb2_context *ctx);
 
 /**
+ * Clear recovery request from nvdata.
+ *
+ * Clear recovery request and subcode from ctx->nvdata, so that we don't get
+ * stuck in recovery mode after reboot.  Should be called at some point after
+ * we are certain the system does not require any reboots for non-vboot-related
+ * reasons (e.g. FSP initialization), and before triggering a reboot to exit
+ * transient recovery mode (e.g. memory retraining request).
+ *
+ * @param ctx		Vboot context
+ */
+void vb2_clear_recovery(struct vb2_context *ctx);
+
+/**
  * Parse the GBB header.
  *
  * @param ctx		Vboot context
