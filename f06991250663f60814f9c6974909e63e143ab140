@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e76eed02_d748fcd4",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T12:58:46Z",
+      "side": 1,
+      "message": "OK.  The first one is used in vboot_ui.c for a \"sanity check\" on VBSD_BOOT_DEV_SWITCH_ON when disabling developer mode.  The menu UI doesn\u0027t perform this check -- so maybe we should just take it out?  I\u0027m also open to adding it to the menu UI if you feel that\u0027s more appropriate.  (See latest patchset.)",
+      "parentUuid": "c1e202fe_dafe21d1",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d52e7149_21f8fd0e",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 82
@@ -30,6 +48,24 @@
       "writtenOn": "2019-10-23T23:25:49Z",
       "side": 1,
       "message": "Maybe we should put these separately so that if we ever need to follow your suggestion of comparing the numeric value to figure out which LoadKernel() call returned the most specific result (I felt that wasn\u0027t necessary to distinguish these three, but it might be if we add more differentiation later), we don\u0027t need to change the error values again.\u0027\n\nI would start a new \"LoadKernel errors\" block at VB2_ERROR_BASE + 0xb0000 and then space each of these out by 0x10, so others can be inserted in-between if necessary.",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3310e661_e73f4a7f",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T12:58:46Z",
+      "side": 1,
+      "message": "Sure, that sounds fine.  If we are still planning to specify all of the full error codes in this file, I wonder how we want to do it?\n\n  0x... (full number)\n  VB2_ERROR_BASE + 0x...\n  VB2_ERROR_SECTION + 0x...",
+      "parentUuid": "d52e7149_21f8fd0e",
       "revId": "f06991250663f60814f9c6974909e63e143ab140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "47b8c7bf_e8fe068a",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T12:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b25a07_414baf0f",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81182425_6ccafc54",
         "filename": "tests/vboot_detach_menu_tests.c",
         "patchSetId": 82
@@ -67,6 +121,24 @@
       "revId": "f06991250663f60814f9c6974909e63e143ab140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889fb326_d6109077",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 82
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T12:58:46Z",
+      "side": 1,
+      "message": "Ack... although MockGpioAfter makes it a lot harder to correctly determine the total number of VbTryLoadKernel calls.",
+      "parentUuid": "81182425_6ccafc54",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
