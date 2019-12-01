@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a92287d_bc12aceb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T13:17:43Z",
+      "side": 1,
+      "message": "Defunct since we\u0027ve removed this function.",
+      "parentUuid": "04df5306_5a635707",
+      "revId": "95bf11c345fcee7bf4f282d58c66ef1019ed2d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c755525b_d136eebe",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "a534a973_41d0fa7b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T13:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c755525b_d136eebe",
+      "range": {
+        "startLine": 445,
+        "startChar": 15,
+        "endLine": 445,
+        "endChar": 35
+      },
+      "revId": "95bf11c345fcee7bf4f282d58c66ef1019ed2d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "179767e7_9f9fb658",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-08-01T01:30:02Z",
       "side": 1,
       "message": "FWIW vb2_error_t doesn\u0027t collapse well into 8-bit. (I don\u0027t think we really care... this whole shcall tracking thing isn\u0027t really used by anyone ever as far as I know, and for all I care we can get rid of it entirely.)",
+      "revId": "95bf11c345fcee7bf4f282d58c66ef1019ed2d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3cebe47_1ecccaf3",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T13:17:43Z",
+      "side": 1,
+      "message": "Should we deprecate VbSharedDataKernelCall in another CL?",
+      "parentUuid": "179767e7_9f9fb658",
       "revId": "95bf11c345fcee7bf4f282d58c66ef1019ed2d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
