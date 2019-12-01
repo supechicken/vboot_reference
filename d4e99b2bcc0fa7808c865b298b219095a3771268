@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "eaa084cd_b595291d",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T10:15:16Z",
+      "side": 1,
+      "message": "OK, fair enough.  Reverting this stuff.",
+      "parentUuid": "520c8032_1106c1cf",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf4d1f80_d4a95a6f",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 16
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Well, do we have that case? What you implemented here now doesn\u0027t solve that any better either, right? Like you mentioned in the comment on the earlier patch set, it\u0027s probably not worth testing it that specifically (otherwise you\u0027d have to make a mock_tlk_expect_info array or something like that).",
       "parentUuid": "fb5e94ce_97999319",
+      "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b582c0_29394a6e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-01T10:15:16Z",
+      "side": 1,
+      "message": "Yeah, we have that case -- in developer mode, USB times out eventually and tries a fixed disk.\n\nI think I\u0027ll just scale down the expectations of this CL and put it in some TODO comments that we can\u0027t test for the order here.  Is that okay?",
+      "parentUuid": "29e33887_1160eaf8",
       "revId": "d4e99b2bcc0fa7808c865b298b219095a3771268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
