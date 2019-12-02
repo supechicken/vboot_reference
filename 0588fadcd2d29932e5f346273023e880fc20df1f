@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caed3805_5348ee9f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-02T23:13:18Z",
+      "side": 1,
+      "message": "nit: Maybe this comment would fit better in vboot_api_kernel.c (or be merged with the comment there). I\u0027m also not super sure this needs a wrapper in the first place (vs being able to see exactly what it does in the caller without having to dig, which can sometimes also be a readability benefit).",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4244e65_462378ae",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-02T23:13:18Z",
+      "side": 1,
+      "message": "I guess not committing here is okay because in practice having a recovery request always means we\u0027re in non-manual recovery mode, and we do another commit before displaying the screen there. But might be worth pointing that out explicitly in a comment. (There is some edge-case weirdness when you set a recovery request somehow but then press Esc+Refresh+Power rather than rebooting automatically and then press Refresh+Power on the recovery screen. Also when VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY is set. But I think those are far out enough that we don\u0027t need to worry about them.)",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0cca6be_9a52528b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-02T23:13:18Z",
+      "side": 1,
+      "message": "I feel like it would fit a little better here.",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
