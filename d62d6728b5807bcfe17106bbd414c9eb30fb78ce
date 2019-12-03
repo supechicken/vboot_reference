@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a6a9dee_3dd09cae",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:30:59Z",
+      "side": 1,
+      "message": "I still like my idea of making this a mask instead. But whatever.",
+      "revId": "d62d6728b5807bcfe17106bbd414c9eb30fb78ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60565304_d75d646e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:30:59Z",
+      "side": 1,
+      "message": "Well... this does regress somewhat, we\u0027re no longer testing that it fell back to disk here. Maybe storing the last get_info_flags we saw in TLK would help?",
+      "revId": "d62d6728b5807bcfe17106bbd414c9eb30fb78ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
