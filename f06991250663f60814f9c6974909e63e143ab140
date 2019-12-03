@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dc3811c1_8a35042f",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "Yes, I think we can remove that check, or replace with vb2_assert().",
+      "parentUuid": "e76eed02_d748fcd4",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d52e7149_21f8fd0e",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 82
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Sure, that sounds fine.  If we are still planning to specify all of the full error codes in this file, I wonder how we want to do it?\n\n  0x... (full number)\n  VB2_ERROR_BASE + 0x...\n  VB2_ERROR_SECTION + 0x...",
       "parentUuid": "d52e7149_21f8fd0e",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d1ee71_d3dd38bd",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "It should always be the final number without any math, so that it\u0027s easy to correlate with logs.",
+      "parentUuid": "3310e661_e73f4a7f",
       "revId": "f06991250663f60814f9c6974909e63e143ab140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

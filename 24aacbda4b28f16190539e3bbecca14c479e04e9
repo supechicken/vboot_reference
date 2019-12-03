@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b49081f_3d31fd53",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 98
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "nit: on second thought maybe make it 0x1000 just to be sure. space shrinks quickly if you cut it in half a few times.",
+      "range": {
+        "startLine": 754,
+        "startChar": 52,
+        "endLine": 754,
+        "endChar": 56
+      },
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b76af8_d4ad8bc9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "see below",
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d66772_16acc249",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "Fits on one line now?",
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173c62a3_23881b44",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bf008c_c3a8a1d8",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 98
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-03T00:39:52Z",
+      "side": 1,
+      "message": "Does the old version really not fit here anymore with the current naming?",
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
