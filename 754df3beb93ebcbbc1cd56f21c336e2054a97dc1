@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd749a81_55b4df56",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-12-03T20:49:05Z",
+      "side": 1,
+      "message": "Like vb2_secdata_fwmp struct below, this struct should tell itself where the crc locates, I think. It would be simple for CR50 to check the crc with any version of this struct.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
