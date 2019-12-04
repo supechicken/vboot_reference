@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d024b64_99cc9b50",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T08:28:49Z",
+      "side": 1,
+      "message": "OK... just inlining then.",
+      "parentUuid": "caed3805_5348ee9f",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4244e65_462378ae",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "76f4c0df_61f562c1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T08:28:49Z",
+      "side": 1,
+      "message": "Actually I\u0027m not sure it\u0027s worth pointing out each possible case of where nvdata gets saved?  Since we need to do that regardless.  Or maybe I\u0027m misunderstanding your meaning here.\n\nHowever, in thinking about this, I\u0027ve realized that we aren\u0027t writing nvdata when errors occur (e.g. from the sd-\u003erecovery_reason \u003d\u003d VB2_RECOVERY_TRAIN_AND_REBOOT case).  So we probably need to add a call to nvdata_write() in depthcharge right after the VbSelectAndLoadKernel() call?  Or is this where we can use the libpayload callback something-or-other that runs on exiting depthcharge?",
+      "parentUuid": "f4244e65_462378ae",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0cca6be_9a52528b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-12-02T23:13:18Z",
       "side": 1,
       "message": "I feel like it would fit a little better here.",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d80054_09a36cc9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T08:28:49Z",
+      "side": 1,
+      "message": "But it needs to happen before the VB2_RECOVERY_TRAIN_AND_REBOOT case above.\n\n(Unless we want to move that into the conditional here.)",
+      "parentUuid": "a0cca6be_9a52528b",
       "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
