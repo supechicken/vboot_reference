@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8c7ef832_62450ee3",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T09:40:19Z",
+      "side": 1,
+      "message": "Added VB2_ASSERT().",
+      "parentUuid": "dc3811c1_8a35042f",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d52e7149_21f8fd0e",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 82
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "It should always be the final number without any math, so that it\u0027s easy to correlate with logs.",
       "parentUuid": "3310e661_e73f4a7f",
+      "revId": "f06991250663f60814f9c6974909e63e143ab140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7238141c_415bb3fd",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T09:40:19Z",
+      "side": 1,
+      "message": "OK.  How does this look?  I also added a comment about specificity.",
+      "parentUuid": "75d1ee71_d3dd38bd",
       "revId": "f06991250663f60814f9c6974909e63e143ab140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
