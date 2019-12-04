@@ -53,8 +53,9 @@ enum vb2_gbb_flag {
 	/* Allow booting Legacy OSes in dev mode even if dev_boot_legacy=0. */
 	VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY = 1 << 7,
 
-	/* Allow booting using alternate keys for FAFT servo testing */
-	VB2_GBB_FLAG_FAFT_KEY_OVERIDE = 1 << 8,
+	/* Allow booting using alternate keys for FAFT servo testing.
+	 * Deprecated; see chromium:965914. */
+	VB2_GBB_FLAG_DEPRECATED_FAFT_KEY_OVERIDE = 1 << 8,
 
 	/* Disable EC software sync */
 	VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC = 1 << 9,
