@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "44034c29_0bcdc3bc",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "Are these changes also being implemented in coreboot EC sync?",
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ea457e_3c4e50d5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "New line after system includes.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8af5a7d_35180693",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "Probably choose one of \"is\" or \"in\"?",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87184ffd_f815c04f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "Might be better to explain what is NO_BOOT (and perhaps even move the matrix to another location).",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 30
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd749a81_55b4df56",
         "filename": "firmware/2lib/include/2secdata_struct.h",
         "patchSetId": 5
@@ -42,6 +128,53 @@
         "startChar": 0,
         "endLine": 60,
         "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302686e4_4ac519f0",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "Do we read vb2_secdata_kernel in userspace anywhere?",
+      "parentUuid": "a47a6644_dbddab70",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bba57f_40f36a7c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T07:25:02Z",
+      "side": 1,
+      "message": "Could we create a new error for this?",
+      "range": {
+        "startLine": 450,
+        "startChar": 7,
+        "endLine": 450,
+        "endChar": 24
       },
       "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
