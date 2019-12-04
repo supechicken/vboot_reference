@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "febbd28e_0bb01964",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T08:07:21Z",
+      "side": 1,
+      "message": "jwerner: yupingso is asking in what cases we should keep deprecated constants around.  Here, we\u0027d want to do that to avoid someone taking over this GBB value in the near future.  Would you agree?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "e298a8f072400b4c620db5120b4330d4bee92f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
