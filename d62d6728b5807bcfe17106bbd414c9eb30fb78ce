@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c8e3a262_d685b9a8",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T09:17:05Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure I understand.  If we make it a mask, we still need to check individual bits, since they will not be enabled in tandem.  The first call will enable the FIXED bit, and the second call will enable the REMOVABLE bit.  That\u0027s why I had all that crazy logic in the previous PS.",
+      "parentUuid": "5a6a9dee_3dd09cae",
+      "revId": "d62d6728b5807bcfe17106bbd414c9eb30fb78ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60565304_d75d646e",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 39
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-03T00:30:59Z",
       "side": 1,
       "message": "Well... this does regress somewhat, we\u0027re no longer testing that it fell back to disk here. Maybe storing the last get_info_flags we saw in TLK would help?",
+      "revId": "d62d6728b5807bcfe17106bbd414c9eb30fb78ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800272f2_ca6d1ca5",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-04T09:17:05Z",
+      "side": 1,
+      "message": "Well... it\u0027s at least an improvement over the original CL.  Do you mind if we keep the patch train moving and revisit this in another CL?",
+      "parentUuid": "60565304_d75d646e",
       "revId": "d62d6728b5807bcfe17106bbd414c9eb30fb78ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
