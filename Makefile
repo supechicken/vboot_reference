@@ -863,12 +863,15 @@ ${TLCL_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
 
 # CFLAGS += -DTPM_MANUAL_SELFTEST
 
-ifneq ($(filter $(FIRMWARE_ARCH),x86 x86_64),)
+ifneq ($(filter-out 0,$(UNROLL_LOOPS)),)
+$(info vboot hash algos built with unrolled loops (faster, large code size))
 # Unrolling loops in cryptolib makes it faster
 ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB21_OBJS}: CFLAGS += -DUNROLL_LOOPS
+else
+$(info vboot hash algos built with tight loops (slower, small code size))
 endif
 
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
