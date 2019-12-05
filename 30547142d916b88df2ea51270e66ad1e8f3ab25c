@@ -16,6 +16,24 @@
       "revId": "30547142d916b88df2ea51270e66ad1e8f3ab25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537573b2_935adf91",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 99
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-05T04:59:20Z",
+      "side": 1,
+      "message": "Oops, I was looking at vboot_ui_menu\u0027s to_dev instead of to_norm.  Thanks for catching this.",
+      "parentUuid": "f108d343_bb4285a9",
+      "revId": "30547142d916b88df2ea51270e66ad1e8f3ab25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
