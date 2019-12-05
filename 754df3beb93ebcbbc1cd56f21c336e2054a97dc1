@@ -255,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "7e2fe279_8456b33a",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T23:35:35Z",
+      "side": 1,
+      "message": "\u003e We wouldn\u0027t need to bother keeping support for the v1 struct in firmware code.\n\nI think we should. If you don\u0027t support this then every developer repo syncing this the day after it lands will drop into recovery mode for reasons most of them won\u0027t understand. Do you want to handhold them all through chromeos-tpm-recovery? There\u0027s also many upstream coreboot developers who like to put ToT images on the Chromebooks they bought... I don\u0027t wanna strand them all with a problem that they have no idea how to solve.\n\nI guess the one thing we could do is add some code into coreboot that detects if the existing struct version is 0x02 and then blows away the existing space and reruns that part of factory init. Then you would silently forward-port devices the first time they run the new code. You couldn\u0027t go back though... anyone trying to bisect something over this point or switching between ToT and official firmware branch images is gonna have a bad time. Upstream coreboot users would also brick themselves if they try to go back to official firmware.\n\nSo, really, ultimately, I think supporting both versions is way easier than trying to deal with the fallout of not doing it. TPM spaces are unusually sticky in a way that developers don\u0027t expect -- they think if they reflash their whole SPI ROM they\u0027re back in a \"clean slate\", but they aren\u0027t. It\u0027s a couple dozen lines of code to handle the fallback, neatly contained within 2secdata_kernel.c. I think we can pay that price in order to avoid a major headache.",
+      "parentUuid": "2dfb75e9_c5768b73",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bba57f_40f36a7c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 5
