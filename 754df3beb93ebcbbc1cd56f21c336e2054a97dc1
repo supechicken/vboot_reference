@@ -159,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "7fde03ae_82ce8133",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T00:23:02Z",
+      "side": 1,
+      "message": "See crbug.com/1020578",
+      "parentUuid": "302686e4_4ac519f0",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bba57f_40f36a7c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 5
