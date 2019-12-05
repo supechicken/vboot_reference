@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a438bd29_2fbebfca",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T00:12:39Z",
+      "side": 1,
+      "message": "That should all get handled at the end of VbSelectAndLoadKernel(), right? That\u0027s why that function never returns outright and always goes through that epilogue. Eventually we want to move that all to depthcharge (and then we could consider using a cleanup_func), but right now it should work as is, right?",
+      "parentUuid": "76f4c0df_61f562c1",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0cca6be_9a52528b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "But it needs to happen before the VB2_RECOVERY_TRAIN_AND_REBOOT case above.\n\n(Unless we want to move that into the conditional here.)",
       "parentUuid": "a0cca6be_9a52528b",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74be0ffa_d6881677",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T00:12:39Z",
+      "side": 1,
+      "message": "Yes, actually, I think it would be nice to move both of those here.",
+      "parentUuid": "38d80054_09a36cc9",
       "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
