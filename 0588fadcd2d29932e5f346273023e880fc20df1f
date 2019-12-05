@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "100ef49d_03f616b0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-05T09:10:30Z",
+      "side": 1,
+      "message": "Uhhhh right.  I forgot that the setup function failing would end up at the epilogue.  And yes, this is still the plan.",
+      "parentUuid": "a438bd29_2fbebfca",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0cca6be_9a52528b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -140,6 +158,24 @@
       "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a0a815_5ddd93a3",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-05T09:10:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74be0ffa_d6881677",
+      "revId": "0588fadcd2d29932e5f346273023e880fc20df1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
