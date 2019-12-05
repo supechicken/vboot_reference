@@ -231,6 +231,30 @@
     },
     {
       "key": {
+        "uuid": "2dfb75e9_c5768b73",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-05T08:55:12Z",
+      "side": 1,
+      "message": "Sounds like if we want to keep backwards-compatibility, the only option would be to add *another* CRC field, which would cover everything from the new ec_hash field onwards.  This feels complex enough to warrant just rewriting the struct, as Julius has suggested.\n\nWe wouldn\u0027t need to bother keeping support for the v1 struct in firmware code.  And if we only have three other locations that need to read vb2_secdata_kernel, then seems not so terrible to add support for both versions there.",
+      "parentUuid": "7aef4990_1eaf3840",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bba57f_40f36a7c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 5
