@@ -207,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "7aef4990_1eaf3840",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T01:31:55Z",
+      "side": 1,
+      "message": "No, we like to keep ToT support for older devices around for some time. We\u0027ll need some form of backwards-compatibility here.\n\n\u003e One would be to add the ec_hash[] *behind* the CRC so that it would be fully backwards-compatible\n\nOn second thought this doesn\u0027t really work, because then either the CRC also covers the EC hash (meaning it\u0027s not fully backwards-compatible) or the EC hash is not CRC-checked, neither of which is really acceptable. So I think the best course is to just rewrite the whole structure from scratch and support two structure layouts.\n\nI\u0027d suggest something like\n\n struct vb2_secdata_kernel_v2 {\n   uint8_t struct_version;\n   uint8_t struct_size;\n   uint8_t crc;\n   uint8_t reserved0;\n   uint32_t kernel_versions;\n   uint8_t ec_hash[VB2_SHA256_DIGEST_SIZE];\n }\n\nThe UID thing isn\u0027t necessary for TPM 2.0 anymore and can be dropped. We should treat the struct_version as 4 bits major / 4 bits minor like FWMP, so the new struct version here should be 0x10 (1.0 which makes the current one 0.2).",
+      "parentUuid": "e6317ca9_89f232f7",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bba57f_40f36a7c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 5
