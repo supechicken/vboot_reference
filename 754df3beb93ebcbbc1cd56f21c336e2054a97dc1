@@ -183,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "e6317ca9_89f232f7",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-12-05T00:56:04Z",
+      "side": 1,
+      "message": "At ToT, can\u0027t we deprecate the current structure (since Hatch branched)?\n\nCr50 firmware needs to support both but it\u0027s just a blob for the current version. The parsing is needed only for the new version.\n\nShall we do the rearrange (and get ec_hash also check-sum\u0027ed)?",
+      "parentUuid": "7fde03ae_82ce8133",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59bba57f_40f36a7c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 5
