@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f108d343_bb4285a9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 99
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T00:20:54Z",
+      "side": 1,
+      "message": "Sorry, how did you get to this? I think the equivalent too what was here before would be\n\n VB2_ASSERT(shared-\u003eflags \u0026 VBSD_BOOT_DEV_SWITCH_ON);",
+      "revId": "30547142d916b88df2ea51270e66ad1e8f3ab25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

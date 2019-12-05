@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c3f90c6_853d72a9",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 98
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-05T00:20:54Z",
+      "side": 1,
+      "message": "Well, I doubt we\u0027ll add more than 12 other codes that are less specific LoadKernel() errors than \"no disk found\". But sure, 0x100 is probably enough.",
+      "parentUuid": "2ba27a0a_4ed1135e",
+      "range": {
+        "startLine": 754,
+        "startChar": 52,
+        "endLine": 754,
+        "endChar": 56
+      },
+      "revId": "24aacbda4b28f16190539e3bbecca14c479e04e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5b76af8_d4ad8bc9",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 98
