@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed01d603_39a96fa1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-06T17:53:04Z",
+      "side": 1,
+      "message": "Comment should explain why extra bytes are needed and why 32 is enough.",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30c00b4_851f18f3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-06T17:53:04Z",
+      "side": 1,
+      "message": "I take it this is because we need 2 ASCII hex digits for each byte, but maybe just a quick blurb to explain that, as well.",
+      "range": {
+        "startLine": 771,
+        "startChar": 35,
+        "endLine": 771,
+        "endChar": 38
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082e5553_ccef63f6",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-06T17:53:04Z",
+      "side": 1,
+      "message": "Minor nit: almost everywhere else, it\u0027s *2, not 2*. Can we be consistent for readability?",
+      "range": {
+        "startLine": 799,
+        "startChar": 36,
+        "endLine": 799,
+        "endChar": 46
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
