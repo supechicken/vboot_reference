@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0438ae72_3e672c33",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-06T23:23:11Z",
+      "side": 1,
+      "message": "This code is already here. I\u0027m unifying the existing functionality of calling mosys with the code that calls flashrom (upcoming). Once we have the code that calls flashrom, we\u0027ll still need the mosys code around for a little bit longer until we solve cros-ec nvram storage for ARM. Finally, we can delete the entire vb2_*_nv_storage_mosys functions!",
+      "parentUuid": "89f269cf_013d43ab",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e30c00b4_851f18f3",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
