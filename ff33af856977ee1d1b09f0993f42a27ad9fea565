@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cc9d408_1dc99419",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-06T23:15:42Z",
+      "side": 1,
+      "message": "Ack (not changing existing behavior, but it think it\u0027s unnecessary). This code is going to be deleted a couple of CLs down the road anyway.",
+      "parentUuid": "ed01d603_39a96fa1",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e30c00b4_851f18f3",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e7aca551_fc7ca3ad",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-06T23:15:42Z",
+      "side": 1,
+      "message": "Ack (not changing existing behavior)",
+      "parentUuid": "e30c00b4_851f18f3",
+      "range": {
+        "startLine": 771,
+        "startChar": 35,
+        "endLine": 771,
+        "endChar": 38
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "082e5553_ccef63f6",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02533038_6436a0e2",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-06T23:15:42Z",
+      "side": 1,
+      "message": "Ack (keeping existing behavior)",
+      "parentUuid": "082e5553_ccef63f6",
+      "range": {
+        "startLine": 799,
+        "startChar": 36,
+        "endLine": 799,
+        "endChar": 46
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
