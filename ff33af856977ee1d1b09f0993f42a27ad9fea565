@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "89f269cf_013d43ab",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-06T23:19:11Z",
+      "side": 1,
+      "message": "LOLWUT? If the code is about to be deleted, why are we even writing it?",
+      "parentUuid": "6cc9d408_1dc99419",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e30c00b4_851f18f3",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
