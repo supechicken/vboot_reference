@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "6fe5c878_17023be1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-12-06T23:25:21Z",
+      "side": 1,
+      "message": "My bad, I misread the diff view. Carry on.",
+      "parentUuid": "0438ae72_3e672c33",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e30c00b4_851f18f3",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
