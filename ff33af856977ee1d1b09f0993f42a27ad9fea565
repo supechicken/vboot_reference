@@ -168,6 +168,23 @@
     },
     {
       "key": {
+        "uuid": "661c87fe_fb9e9031",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-06T23:47:03Z",
+      "side": 1,
+      "message": "nit: Would be good to add an error message printing the return code here. Otherwise, when mosys fails for some reason we get no output at all now. (The old version at least said \"waitpid() or mosys error\", although it also didn\u0027t print return code.)",
+      "revId": "ff33af856977ee1d1b09f0993f42a27ad9fea565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "082e5553_ccef63f6",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
