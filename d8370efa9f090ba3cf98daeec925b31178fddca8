@@ -16,6 +16,24 @@
       "revId": "d8370efa9f090ba3cf98daeec925b31178fddca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3634659_4c9e4a9b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 43
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-06T16:19:05Z",
+      "side": 1,
+      "message": "Not sure what you mean here...\n\n  I\u0027m using (vb2_packed_key_looks_ok \u003d\u003d VB2_SUCCESS) for success,\n  and (vb2_packed_key_looks_ok) for failure.",
+      "parentUuid": "262ff045_9455158a",
+      "revId": "d8370efa9f090ba3cf98daeec925b31178fddca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
