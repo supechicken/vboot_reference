@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5b86ce9_b50b15cb",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-07T06:20:26Z",
+      "side": 1,
+      "message": "Factor this out into a macro?  Or at least use a constant for the error string?",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 2
+      },
+      "revId": "2a4765968757bb4a285fde3671338eea09fdac90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
