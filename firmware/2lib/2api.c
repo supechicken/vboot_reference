@@ -13,6 +13,7 @@
 #include "2rsa.h"
 #include "2secdata.h"
 #include "2sha.h"
+#include "2struct.h"
 #include "2sysincludes.h"
 #include "2tpm_bootmode.h"
 #include "vb2_common.h"
@@ -403,4 +404,14 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 int vb2api_check_hash(struct vb2_context *ctx)
 {
 	return vb2api_check_hash_get_digest(ctx, NULL, 0);
+}
+
+int vb2api_need_reboot_for_display(struct vb2_context *ctx)
+{
+	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
+		VB2_DEBUG("Reboot to initialize display\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+		return 1;
+	}
+	return 0;
 }
