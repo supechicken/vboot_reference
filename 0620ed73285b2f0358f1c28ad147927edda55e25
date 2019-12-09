@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c020fc9_e84e159a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "nit: it\u0027s not really \"secdata support\", it\u0027s just the direct TPM access code",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdb9eef_dd29acc3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "As mentioned on depthcharge, I think this should just be implied, not a callback",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b9226e0_30eec6c5",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "I\u0027m confused, shouldn\u0027t this file get deleted?",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222549f6_6572a926",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "nit: I think it might be more readable to put this up top.",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb2cf26b_1ba5f987",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "Probably better to vb2api_fail() here too, just in case it works. Could just fall-through to the NV_WRITE case after printing the error.",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640cff48_416c42d9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "In this case, I guess in addition to the cleanup_func we also need to lock explicitly from vb2ex_tpm_set_mode().",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db295845_5db85a58",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "This can be removed, cleanup_funcs run on legacy handoff as well.",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f699da_8b176efb",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T22:20:22Z",
+      "side": 1,
+      "message": "Not quite sure what this ASSERT() is doing here? This stub is just for tests anyway. It\u0027s possible for a test to exercise the devmode switch path?",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
