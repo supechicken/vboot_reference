@@ -12,7 +12,6 @@
 #include "2secdata.h"
 #include "2sysincludes.h"
 #include "load_kernel_fw.h"
-#include "secdata_tpm.h"
 #include "tlcl.h"
 #include "utility.h"
 #include "vb2_common.h"
@@ -477,10 +476,10 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		/*
 		 * The following helps avoid use of the TPM after
 		 * it's disabled (e.g., when vb2_try_altfw() calls
-		 * secdata_kernel_lock() ).
+		 * vb2_secdata_kernel_lock() ).
 		 */
 
-		if (secdata_kernel_lock(ctx)) {
+		if (vb2_secdata_kernel_lock(ctx)) {
 			VB2_DEBUG("Failed to lock TPM PP\n");
 			vb2api_fail(ctx, VB2_RECOVERY_TPM_DISABLE_FAILED, 0);
 		} else if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=

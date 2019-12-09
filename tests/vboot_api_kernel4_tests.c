@@ -13,7 +13,6 @@
 #include "2sysincludes.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
-#include "secdata_tpm.h"
 #include "test_common.h"
 #include "tlcl.h"
 #include "tss_constants.h"
@@ -35,17 +34,14 @@ static struct vb2_gbb_header gbb;
 
 static uint32_t kernel_version;
 static uint32_t new_version;
-static uint8_t fwmp_buf[VB2_SECDATA_FWMP_MIN_SIZE];
-static uint32_t kernel_read_retval;
-static uint32_t kernel_write_retval;
-static uint32_t kernel_lock_retval;
-static uint32_t fwmp_read_retval;
 static vb2_error_t vbboot_retval;
+static vb2_error_t kernel_lock_retval;
+static vb2_error_t commit_data_retval;
+static int commit_data_called;
 
 static uint32_t mock_switches[8];
 static uint32_t mock_switches_count;
 static int mock_switches_are_stuck;
-static int commit_data_called;
 
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
@@ -70,13 +66,9 @@ static void ResetMocks(void)
 	memset(&shared_data, 0, sizeof(shared_data));
 	VbSharedDataInit(shared, sizeof(shared_data));
 
-	memset(&fwmp_buf, 0, sizeof(fwmp_buf));
-	fwmp_read_retval = TPM_SUCCESS;
-
 	kernel_version = new_version = 0x10002;
-	kernel_read_retval = TPM_SUCCESS;
-	kernel_write_retval = TPM_SUCCESS;
-	kernel_lock_retval = TPM_SUCCESS;
+	kernel_lock_retval = VB2_SUCCESS;
+	commit_data_retval = VB2_SUCCESS;
 	vbboot_retval = VB2_SUCCESS;
 
 	memset(mock_switches, 0, sizeof(mock_switches));
@@ -86,36 +78,15 @@ static void ResetMocks(void)
 
 /* Mock functions */
 
-vb2_error_t vb2ex_commit_data(struct vb2_context *c)
-{
-	commit_data_called = 1;
-	return VB2_SUCCESS;
-}
-
-uint32_t secdata_firmware_write(struct vb2_context *c)
-{
-	return TPM_SUCCESS;
-}
-
-uint32_t secdata_kernel_read(struct vb2_context *c)
-{
-	return kernel_read_retval;
-}
-
-uint32_t secdata_kernel_write(struct vb2_context *c)
-{
-	return kernel_write_retval;
-}
-
-uint32_t secdata_kernel_lock(struct vb2_context *c)
+vb2_error_t vb2ex_secdata_kernel_lock(struct vb2_context *c)
 {
 	return kernel_lock_retval;
 }
 
-uint32_t secdata_fwmp_read(struct vb2_context *c)
+vb2_error_t vb2ex_commit_data(struct vb2_context *c)
 {
-	memcpy(&c->secdata_fwmp, &fwmp_buf, sizeof(fwmp_buf));
-	return fwmp_read_retval;
+	commit_data_called = 1;
+	return commit_data_retval;
 }
 
 vb2_error_t vb2_secdata_firmware_init(struct vb2_context *c)
@@ -224,12 +195,6 @@ static void VbSlkTest(void)
 	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
 	test_slk(0, 0, "EC sync disabled by GBB");
 
-	/* Rollback kernel version */
-	ResetMocks();
-	kernel_read_retval = 123;
-	test_slk(VB2_ERROR_SECDATA_KERNEL_READ,
-		 VB2_RECOVERY_RW_TPM_R_ERROR, "Read kernel rollback");
-
 	ResetMocks();
 	new_version = 0x20003;
 	test_slk(0, 0, "Roll forward");
@@ -256,12 +221,12 @@ static void VbSlkTest(void)
 
 	ResetMocks();
 	new_version = 0x20003;
-	kernel_write_retval = 123;
+	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
 	test_slk(VB2_ERROR_SECDATA_KERNEL_WRITE,
 		 VB2_RECOVERY_RW_TPM_W_ERROR, "Write kernel rollback");
 
 	ResetMocks();
-	kernel_lock_retval = 123;
+	kernel_lock_retval = VB2_ERROR_SECDATA_KERNEL_LOCK;
 	test_slk(VB2_ERROR_SECDATA_KERNEL_LOCK,
 		 VB2_RECOVERY_RW_TPM_L_ERROR, "Lock kernel rollback");
 
@@ -310,9 +275,7 @@ static void VbSlkTest(void)
 
 	ResetMocks();
 	shared->recovery_reason = 123;
-	kernel_read_retval = TPM_E_IOERROR;
-	kernel_write_retval = TPM_E_IOERROR;
-	kernel_lock_retval = TPM_E_IOERROR;
+	commit_data_retval = VB2_ERROR_UNKNOWN;
 	test_slk(0, 0, "Recovery ignore TPM errors");
 
 	ResetMocks();

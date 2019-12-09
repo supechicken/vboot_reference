@@ -8,7 +8,6 @@
 
 #include "2api.h"
 #include "2common.h"
-#include "secdata_tpm.h"
 #include "tlcl.h"
 #include "tss_constants.h"
 #include "vboot_test.h"
