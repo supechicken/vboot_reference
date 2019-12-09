@@ -614,10 +614,12 @@ command_record command_table[] = {
     TPM_MODE_SELECT("lock (turn off) PP until reboot",
       "set rollback protection lock for kernel image until reboot"),
     TlclLockPhysicalPresence },
+#ifndef TPM2_MODE
   { "setbgloballock", "block",
     TPM_MODE_SELECT("set the bGlobalLock until reboot",
       "set rollback protection lock for R/W firmware until reboot"),
     TlclSetGlobalLock },
+#endif
   { "definespace", "def",
     TPM_MODE_SELECT("define a space (def <index> <size> <perm>). ",
         "define a space (def <index> <size> <perm> [--no-overwrite]). ")
