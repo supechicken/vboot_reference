@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cb1df03_0ad752e1",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T04:08:48Z",
+      "side": 1,
+      "message": "This (badly named) file is more about firmware verification.  I think 2misc.c may be a better choice.",
+      "range": {
+        "startLine": 409,
+        "startChar": 4,
+        "endLine": 409,
+        "endChar": 34
+      },
+      "revId": "17597b820fa187cc0952a36601b3d6a3e01c780a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f80353d_d0c8f9b0",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T04:08:48Z",
+      "side": 1,
+      "message": "Since the reboot is not actually occurring here, perhaps changing this to \"Need reboot ...\" would be more accurate.",
+      "range": {
+        "startLine": 412,
+        "startChar": 13,
+        "endLine": 412,
+        "endChar": 19
+      },
+      "revId": "17597b820fa187cc0952a36601b3d6a3e01c780a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0306a459_c935973d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T04:08:48Z",
+      "side": 1,
+      "message": "Let\u0027s call this \"nvdata\" to be consistent with the other uses.\n\nAlso be sure to include a period at the end of the sentence here.",
+      "range": {
+        "startLine": 792,
+        "startChar": 54,
+        "endLine": 792,
+        "endChar": 62
+      },
+      "revId": "17597b820fa187cc0952a36601b3d6a3e01c780a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3171fb76_344db40c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T04:08:48Z",
+      "side": 1,
+      "message": "Probably the more important action here is \"a reboot is required\"... or we could also mention *both* the nvdata field being set, and a reboot being required.",
+      "range": {
+        "startLine": 795,
+        "startChar": 16,
+        "endLine": 795,
+        "endChar": 31
+      },
+      "revId": "17597b820fa187cc0952a36601b3d6a3e01c780a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
