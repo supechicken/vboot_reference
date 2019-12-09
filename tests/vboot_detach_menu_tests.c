@@ -129,9 +129,9 @@ static void ResetMocksForManualRecovery(void)
 
 /* Mock functions */
 
-uint32_t secdata_kernel_lock(struct vb2_context *c)
+uint32_t vb2ex_secdata_kernel_lock(struct vb2_context *c)
 {
-	return TPM_SUCCESS;
+	return VB2_SUCCESS;
 }
 
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
