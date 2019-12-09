@@ -945,4 +945,12 @@ void vb2ex_abort(void);
  */
 vb2_error_t vb2ex_commit_data(struct vb2_context *ctx);
 
+/**
+ * Lock secdata_kernel space.
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_secdata_kernel_lock(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
