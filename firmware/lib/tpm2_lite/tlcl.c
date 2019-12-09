@@ -433,14 +433,6 @@ uint32_t TlclGetOwnership(uint8_t *owned)
 	return rv;
 }
 
-static uint32_t tlcl_lock_nv_write(uint32_t index)
-{
-	struct tpm2_nv_write_lock_cmd nv_wl;
-
-	nv_wl.nvIndex = HR_NV_INDEX + index;
-	return tpm_get_response_code(TPM2_NV_WriteLock, &nv_wl);
-}
-
 static uint32_t tlcl_disable_platform_hierarchy(void)
 {
 	struct tpm2_hierarchy_control_cmd hc;
@@ -454,23 +446,6 @@ static uint32_t tlcl_disable_platform_hierarchy(void)
 		tpm_set_ph_disabled(1);
 
 	return rv;
-}
-
-/**
- * The name of the function was kept to maintain the existing TPM API, but
- * TPM2.0 does not use the global lock to protect the FW rollback counter.
- * Instead it calls WriteLock for the FW NVRAM index to prevent future
- * writes to it.
- *
- * It first checks if the platform hierarchy is already disabled, and does
- * nothing, if so. Otherwise, WriteLock for the index obviously fails.
- */
-uint32_t TlclSetGlobalLock(void)
-{
-	if (tpm_is_ph_disabled())
-		return TPM_SUCCESS;
-	else
-		return tlcl_lock_nv_write(FIRMWARE_NV_INDEX);
 }
 
 /**
