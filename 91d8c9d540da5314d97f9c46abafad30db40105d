@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8dc8a1a_36fd6009",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T21:20:21Z",
+      "side": 1,
+      "message": "Please add a\n\n default:\n   return -1;\n\nhere. When vboot is built through coreboot right now, it breaks with \"error: \u0027target_fd\u0027 may be used uninitialized in this function\".\n\n(We should add -Werror\u003dmaybe-uninitialized to the vboot Makefile to avoid this discrepancy in the future.)",
+      "revId": "91d8c9d540da5314d97f9c46abafad30db40105d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
