@@ -22,6 +22,30 @@
       "revId": "7d64b93ccf13623fa26ee865674e3b443ce253bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f3d4896_b0d4945c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T19:35:02Z",
+      "side": 0,
+      "message": "I think if all references are gone, we can delete them directly.",
+      "parentUuid": "c8e36e72_519fe06b",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "7d64b93ccf13623fa26ee865674e3b443ce253bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
