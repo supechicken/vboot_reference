@@ -190,11 +190,6 @@ else
 CFLAGS += -DUSB_BOOT_ON_DEV=0
 endif
 
-# Some tests need to be disabled when using mocked_secdata_tpm.
-ifneq (${MOCK_TPM},)
-CFLAGS += -DMOCK_TPM
-endif
-
 # enable all features during local compile (permits testing)
 ifeq (${FIRMWARE_ARCH},)
 DIAGNOSTIC_UI := 1
@@ -405,13 +400,9 @@ TLCL_SRCS = \
 	firmware/lib/tpm2_lite/marshaling.c
 endif
 
-# Support real TPM unless BIOS sets MOCK_TPM
-ifeq (${MOCK_TPM},)
+# Support real TPM unless MOCK_TPM is set
+ifneq (${MOCK_TPM},)
 FWLIB_SRCS += \
-	firmware/lib/secdata_tpm.c
-else
-FWLIB_SRCS += \
-	firmware/lib/mocked_secdata_tpm.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
 
@@ -703,15 +694,11 @@ TEST_NAMES = \
 	tests/vboot_kernel_tests \
 	tests/verify_kernel
 
-ifeq (${MOCK_TPM},)
-# secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
-TEST_NAMES += \
-	tests/secdata_tpm_tests
-ifeq (${TPM2_MODE},)
+ifeq (${MOCK_TPM}${TPM2_MODE},)
+# tlcl_tests only works when MOCK_TPM is disabled
 # TODO(apronin): tests for TPM2 case?
 TEST_NAMES += \
 	tests/tlcl_tests
-endif
 endif
 
 TEST_FUTIL_NAMES = \
@@ -1264,15 +1251,11 @@ runtestscripts: test_setup genfuzztestcases
 
 .PHONY: runmisctests
 runmisctests: test_setup
-ifeq (${MOCK_TPM},)
-# secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
-	${RUNTEST} ${BUILD_RUN}/tests/secdata_tpm_tests
-ifeq (${TPM2_MODE},)
-# TODO(apronin): tests for TPM2 case?
+	${RUNTEST} ${BUILD_RUN}/tests/subprocess_tests
+ifeq (${MOCK_TPM}${TPM2_MODE},)
+# tlcl_tests only works when MOCK_TPM is disabled
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 endif
-endif
-	${RUNTEST} ${BUILD_RUN}/tests/subprocess_tests
 	${RUNTEST} ${BUILD_RUN}/tests/utility_string_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_devmode_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel2_tests
