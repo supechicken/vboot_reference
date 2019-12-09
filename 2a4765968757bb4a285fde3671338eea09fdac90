@@ -22,6 +22,30 @@
       "revId": "2a4765968757bb4a285fde3671338eea09fdac90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347e430e_1da33400",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-12-09T17:05:55Z",
+      "side": 1,
+      "message": "Factoring this out into a macro that only ever gets used twice seems like a great way to produce code that cannot be understood :/\n\nThe error string differs (read versus write), so even using a constant and adding \"read\" and \"write\" would still be not so great.\n\nI think it\u0027s fine how it is tbh.",
+      "parentUuid": "d5b86ce9_b50b15cb",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 2
+      },
+      "revId": "2a4765968757bb4a285fde3671338eea09fdac90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
