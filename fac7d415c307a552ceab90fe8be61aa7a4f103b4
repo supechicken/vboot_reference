@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e1711e6_8e19bb83",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-09T21:45:18Z",
+      "side": 1,
+      "message": "Uhhh, nope. You can\u0027t do that. Plenty of tools (e.g. recovery initramfs) still call tpmc for this.",
+      "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
