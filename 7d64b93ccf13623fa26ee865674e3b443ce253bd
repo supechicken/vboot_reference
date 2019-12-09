@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8e36e72_519fe06b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T04:15:24Z",
+      "side": 0,
+      "message": "Or is it worth keeping these and marking as DEPRECATED?  I think I just directly removed the other ones...",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "7d64b93ccf13623fa26ee865674e3b443ce253bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
