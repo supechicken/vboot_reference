@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f9652a0_bb725c79",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-09T08:47:57Z",
+      "side": 1,
+      "message": "Thanks for cleaning these up too.\n\nIn the future, it might be better to break these clean-ups into a separate CL.  I know it can be tempting when it\u0027s just a one-character change, but it can make the review process slightly more difficult, and it may also make the \"git blame\" history misleading.",
+      "range": {
+        "startLine": 776,
+        "startChar": 55,
+        "endLine": 776,
+        "endChar": 56
+      },
+      "revId": "8d741c5e8ecd53f0e6d738ae219bc8b51375262b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
