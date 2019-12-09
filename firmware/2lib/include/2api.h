@@ -773,7 +773,7 @@ vb2_gbb_flags_t vb2api_gbb_get_flags(struct vb2_context *ctx);
 vb2_error_t vb2api_ec_sync(struct vb2_context *ctx);
 
 /**
- * Sync all auxiliary firmware to the expected versions
+ * Sync all auxiliary firmware to the expected versions.
  *
  * This function will first check if an auxfw update is needed and
  * what the "severity" of that update is (i.e., if any auxfw devices
@@ -787,6 +787,14 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx);
  * @return VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx);
+
+/**
+ * If no display is available, set DISPLAY_REQUEST in nvdata.
+ *
+ * @param ctx           Vboot2 context
+ * @return 1 if DISPLAY_REQUEST is set and a reboot is required, or 0 otherwise.
+ */
+int vb2api_need_reboot_for_display(struct vb2_context *ctx);
 
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
@@ -814,7 +822,7 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *ctx,
 				void *buf, uint32_t size);
 
 /**
- * Print debug output
+ * Print debug output.
  *
  * This should work like printf().  If func!=NULL, it will be a string with
  * the current function name; that can be used to generate prettier debug
