@@ -16,6 +16,24 @@
       "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985c8ea0_3c00885a",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T03:06:24Z",
+      "side": 1,
+      "message": "What if we implement this with TlclWriteLock(Firmware space) for the TPM2 case?",
+      "parentUuid": "9e1711e6_8e19bb83",
+      "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
