@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8010114_736904bf",
+        "filename": "firmware/lib20/include/vb2_struct.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-10T06:37:28Z",
+      "side": 0,
+      "message": "Don\u0027t we need \u003c2sysincludes.h\u003e or something instead, then? Where is uint32_t coming from?",
+      "revId": "a4f3615472dd64f41035897fa7adef4d870c8049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

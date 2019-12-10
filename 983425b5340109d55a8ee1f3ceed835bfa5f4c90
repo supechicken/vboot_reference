@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e5f1aa_5f6aa831",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-10T06:37:28Z",
+      "side": 1,
+      "message": "Why remove the comment here?",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70ada35_5c4d6042",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-10T06:37:28Z",
+      "side": 1,
+      "message": "This is lib21 stuff. Why are we folding that in here? Wasn\u0027t the plan to drop it or leave it as it is instead?",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
