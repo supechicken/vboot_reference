@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2e569e_30e0ee56",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T08:00:18Z",
+      "side": 1,
+      "message": "No need to unset it, since we aren\u0027t setting the flag in reset_common_data().",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 45
+      },
+      "revId": "aaaf3a18d63eff108cc0aa820aaa0202ae2dae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ded23de_f2a0c2dc",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T08:00:18Z",
+      "side": 1,
+      "message": "Maybe preface with function name, e.g.:\n\n  need_reboot_for_display: need reboot\n\nAnd the same below.",
+      "range": {
+        "startLine": 732,
+        "startChar": 50,
+        "endLine": 732,
+        "endChar": 61
+      },
+      "revId": "aaaf3a18d63eff108cc0aa820aaa0202ae2dae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291d2dd0_e3bf3914",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T08:00:18Z",
+      "side": 1,
+      "message": "Can also check this value below for 0.\n\nPut two spaces at the beginning of the string.\n\n(I know this file doesn\u0027t do it, but we try to do that for other value checks in the same \"test\".)",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 734,
+        "endChar": 25
+      },
+      "revId": "aaaf3a18d63eff108cc0aa820aaa0202ae2dae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8076e8_5407e127",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T08:00:18Z",
+      "side": 1,
+      "message": "\", reboot not required\" (or \", don\u0027t need reboot\" like below).",
+      "range": {
+        "startLine": 736,
+        "startChar": 20,
+        "endLine": 736,
+        "endChar": 21
+      },
+      "revId": "aaaf3a18d63eff108cc0aa820aaa0202ae2dae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
