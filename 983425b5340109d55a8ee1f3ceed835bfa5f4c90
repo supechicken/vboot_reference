@@ -33,6 +33,24 @@
       "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041da623_b7f89c1f",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T17:06:35Z",
+      "side": 1,
+      "message": "So vb2_id is used by the signer (along with vb2_str_to_id) for non-vboot21 purposes, but only to parse the signature algorithm from CLI, and retrieve its ID?\n\nBut it\u0027s also used for vboot21 signing purposes in file_type_rwsig.c.\n\nAnd then it\u0027s used in the vboot21 firmware code itself.\n\nSo I\u0027m actually a bit lost as to whether it should be considered 2lib or lib21, and whether it should live in firmware code or host code...",
+      "parentUuid": "a70ada35_5c4d6042",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
