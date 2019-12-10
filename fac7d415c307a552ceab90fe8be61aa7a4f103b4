@@ -34,6 +34,24 @@
       "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e703112c_a5594a96",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-10T21:20:43Z",
+      "side": 1,
+      "message": "I\u0027m fine with that, but then you have to make sure you update all code calling tpmc to use that instead, too. (In that case I think you\u0027d need to first implement separate TPM 2.0 commands, then switch other tools over, then remove this.)",
+      "parentUuid": "985c8ea0_3c00885a",
+      "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
