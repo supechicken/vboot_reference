@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ad7cba36_2a35f52b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-10T15:45:54Z",
+      "side": 1,
+      "message": "I\u0027d still like to see us check the VB2_NV_DISPLAY_REQUEST value in the \"don\u0027t need reboot\" test.",
+      "parentUuid": "02a5c4c0_72a09029",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 734,
+        "endChar": 25
+      },
+      "revId": "aaaf3a18d63eff108cc0aa820aaa0202ae2dae8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c8076e8_5407e127",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 5
