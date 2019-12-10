@@ -51,6 +51,24 @@
       "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "331bc448_9685c882",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-10T21:14:40Z",
+      "side": 1,
+      "message": "Are they really non-vb21 purposes? I think the code that uses this (e.g. futility create) is actually just code for handling vb21 key files. I think that code might be used for some weird edge case stuff, so maybe we can\u0027t remove it, but it still doesn\u0027t really belong to vb2(0).\n\n(Honestly, looking through what this is I don\u0027t really understand the point. vb21_packed_key already contains a sig_alg and a hash_alg field, so why is this separate \u0027id\u0027 still needed? Doesn\u0027t it convey the same information?)",
+      "parentUuid": "041da623_b7f89c1f",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
