@@ -18,6 +18,7 @@
 #include "host_misc.h"
 #include "openssl_compat.h"
 #include "vb21_common.h"
+#include "vb2_common.h"
 
 const struct vb2_text_vs_enum vb2_text_vs_sig[] = {
 	{"RSA1024", VB2_SIG_RSA1024},
@@ -465,7 +466,7 @@ vb2_error_t vb2_public_key_read_keyb(struct vb2_public_key **key_ptr,
 	memcpy(key_buf, key_data, key_size);
 	free(key_data);
 
-	if (vb2_unpack_key_data(key, key_buf, key_size)) {
+	if (vb2_unpack_key_buffer(key, key_buf, key_size)) {
 		vb2_public_key_free(key);
 		return VB2_ERROR_READ_KEYB_UNPACK;
 	}

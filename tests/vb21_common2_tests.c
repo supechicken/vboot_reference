@@ -18,6 +18,7 @@
 #include "test_common.h"
 #include "util_misc.h"
 #include "vb21_common.h"
+#include "vb2_common.h"
 
 static const uint8_t test_data[] = "This is some test data to sign.";
 static const uint32_t test_size = sizeof(test_data);
@@ -274,15 +275,15 @@ static int test_algorithm(int key_algorithm, const char *keys_dir)
 
 	/*
 	 * Copy the keyb blob to the public key's buffer, because that's
-	 * where vb2_unpack_key_data() and vb2_public_key_pack() expect
+	 * where vb2_unpack_key_buffer() and vb21_public_key_pack() expect
 	 * to find it.
 	 */
 	pubk_buf = vb2_public_key_packed_data(pubk);
 	memcpy(pubk_buf, keyb_data, keyb_size);
 
 	/* Fill in the internal struct pointers */
-	TEST_SUCC(vb2_unpack_key_data(pubk, pubk_buf, keyb_size),
-		"unpack public key blob");
+	TEST_SUCC(vb2_unpack_key_buffer(pubk, pubk_buf, keyb_size),
+		  "unpack public key blob");
 
 	pubk->hash_alg = hash_alg;
 	vb2_public_key_set_desc(pubk, "public key");

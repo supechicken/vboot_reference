@@ -28,6 +28,7 @@
 #include "host_signature2.h"
 #include "util_misc.h"
 #include "vb21_common.h"
+#include "vb2_common.h"
 
 #define SIGNATURE_RSVD_SIZE 1024
 #define EC_RW_FILENAME "EC_RW.bin"
@@ -351,14 +352,14 @@ int ft_sign_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 
 		/*
 		 * Copy the keyb blob to the public key's buffer, because that's
-		 * where vb2_unpack_key_data() and vb2_public_key_pack() expect
+		 * where vb2_unpack_key_buffer() and vb21_public_key_pack() expect
 		 * to find it.
 		 */
 		pubkey_buf = vb2_public_key_packed_data(pubkey);
 		memcpy(pubkey_buf, keyb_data, keyb_size);
 
 		/* Fill in the internal struct pointers */
-		if (vb2_unpack_key_data(pubkey, pubkey_buf, keyb_size)) {
+		if (vb2_unpack_key_buffer(pubkey, pubkey_buf, keyb_size)) {
 			fprintf(stderr, "Unable to unpack the public key blob\n");
 			goto done;
 		}

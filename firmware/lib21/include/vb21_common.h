@@ -93,19 +93,6 @@ vb2_error_t vb21_unpack_key(struct vb2_public_key *key, const uint8_t *buf,
 			    uint32_t size);
 
 /**
- * Unpack the RSA data fields for a public key
- *
- * This is called by vb21_unpack_key() to extract the arrays from a packed key.
- * These elements of *key will point inside the key_data buffer.
- *
- * @param key		Destination key for RSA data fields
- * @param key_data	Packed key data (from inside a packed key buffer)
- * @param key_size	Size of packed key data in bytes
- */
-vb2_error_t vb2_unpack_key_data(struct vb2_public_key *key,
-				const uint8_t *key_data, uint32_t key_size);
-
-/**
  * Verify the integrity of a signature struct
  * @param sig		Signature struct
  * @param size		Size of buffer containing signature struct
