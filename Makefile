@@ -295,7 +295,7 @@ export BUILD_RUN
 
 # Default target.
 .PHONY: all
-all: $(if ${NO_BUILD_TOOLS},,fwlib fwlib2x fwlib20 fwlib21 tlcl) \
+all: $(if ${NO_BUILD_TOOLS},,fwlib fwlib2x fwlib20 tlcl) \
 	$(if ${FIRMWARE_ARCH},,host_stuff) \
 	$(if ${COV},coverage)
 
@@ -872,8 +872,6 @@ else
 $(info vboot hash algos built with tight loops (slower, smaller code size))
 endif
 
-${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
-
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
 
@@ -896,15 +894,6 @@ ${FWLIB2X}: ${FWLIB2X_OBJS}
 fwlib20: ${FWLIB20}
 
 ${FWLIB20}: ${FWLIB2X_OBJS} ${FWLIB20_OBJS}
-	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
-	${Q}rm -f $@
-	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
-
-.PHONY: fwlib21
-fwlib21: ${FWLIB21}
-
-${FWLIB21}: ${FWLIB2X_OBJS} ${FWLIB21_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
