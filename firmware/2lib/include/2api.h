@@ -593,11 +593,6 @@ vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx);
 vb2_error_t vb2api_fw_phase3(struct vb2_context *ctx);
 
 /**
- * Same, but for new-style structs.
- */
-vb2_error_t vb21api_fw_phase3(struct vb2_context *ctx);
-
-/**
  * Initialize hashing data for the specified tag.
  *
  * @param ctx		Vboot context
@@ -608,12 +603,6 @@ vb2_error_t vb21api_fw_phase3(struct vb2_context *ctx);
  */
 vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag,
 			     uint32_t *size);
-
-/**
- * Same, but for new-style structs.
- */
-vb2_error_t vb21api_init_hash(struct vb2_context *ctx, const struct vb2_id *id,
-			      uint32_t *size);
 
 /**
  * Extend the hash started by vb2api_init_hash() with additional data.
@@ -635,11 +624,6 @@ vb2_error_t vb2api_extend_hash(struct vb2_context *ctx, const void *buf,
  * @return VB2_SUCCESS, or error code on error.
  */
 int vb2api_check_hash(struct vb2_context *ctx);
-
-/**
- * Same, but for new-style structs.
- */
-vb2_error_t vb21api_check_hash(struct vb2_context *ctx);
 
 /**
  * Check the hash value started by vb2api_init_hash() while retrieving
