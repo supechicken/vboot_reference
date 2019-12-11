@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bd4a63ff_0cdac283",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T20:41:19Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "f6e42009_8de73fd8",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbdb9eef_dd29acc3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -206,6 +224,24 @@
       "side": 1,
       "message": "Does it matter?  If the TPM is disabled, the space can\u0027t be accessed anyways.",
       "parentUuid": "640cff48_416c42d9",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7d5649_2edf8820",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T20:41:19Z",
+      "side": 1,
+      "message": "The problem is that depthcharge\u0027s cleanup_func would still try to lock it and fail, because when the TPM is disabled it cannot respond to any commands anymore. So we need to do it earlier to prime the static variable in the lock function that tells it that it is already locked.",
+      "parentUuid": "d3ab2dc1_b1905d7d",
       "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

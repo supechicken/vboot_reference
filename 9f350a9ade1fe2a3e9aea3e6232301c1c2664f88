@@ -34,6 +34,24 @@
       "revId": "9f350a9ade1fe2a3e9aea3e6232301c1c2664f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2629bf72_cff22416",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T20:41:19Z",
+      "side": 0,
+      "message": "Yes, we should have tests for all of those, at least the secdata initialization calls.",
+      "parentUuid": "dacb27b3_f4cc1bb9",
+      "revId": "9f350a9ade1fe2a3e9aea3e6232301c1c2664f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
