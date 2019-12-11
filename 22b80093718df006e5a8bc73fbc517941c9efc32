@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a7b172a_9b603770",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:05:58Z",
+      "side": 1,
+      "message": "Didn\u0027t we change coreboot to use \u0027fwlib\u0027 already? So can\u0027t we go a step further and deprecate these two as well?",
+      "range": {
+        "startLine": 298,
+        "startChar": 35,
+        "endLine": 298,
+        "endChar": 50
+      },
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccce6ed9_169febd1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:05:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6c789f_49d08341",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:05:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af930207_4f00d1ac",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:05:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5585cf7_6e646242",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:05:58Z",
+      "side": 1,
+      "message": "Remove (incorporate those into UTILLIB_OBJS if necessary)?",
+      "range": {
+        "startLine": 919,
+        "startChar": 4,
+        "endLine": 919,
+        "endChar": 16
+      },
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
