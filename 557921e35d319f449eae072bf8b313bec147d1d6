@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fea41a60_81b133cd",
+        "filename": "firmware/lib21/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:17:52Z",
+      "side": 1,
+      "message": "Why can\u0027t this go too?",
+      "revId": "557921e35d319f449eae072bf8b313bec147d1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02fea53f_2c347a05",
+        "filename": "firmware/lib21/include/vb21_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-11T21:17:52Z",
+      "side": 1,
+      "message": "There should be a bunch in vb21_struct.h that you can remove if you take out these two functions, too (all the keyblock and preamble stuff). (I am wondering a bit if after all those years we should finally delete this just now, when we\u0027re planning to switch signature algorithms in a year or two. There were *some* good ideas in those structs, after all, and a bunch of code and tests already written. I guess we can always bring it back if we feel like it later, or at least cherry-pick ideas from it?)",
+      "revId": "557921e35d319f449eae072bf8b313bec147d1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
