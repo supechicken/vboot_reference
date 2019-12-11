@@ -16,6 +16,24 @@
       "revId": "9f350a9ade1fe2a3e9aea3e6232301c1c2664f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dacb27b3_f4cc1bb9",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 0,
+      "message": "Both secdata_kernel and secdata_fwmp are initialized in:\n\n  vb2_kernel_setup\n\nsecdata_firmware is read in:\n\n  vb2_check_dev_switch, vb2_enable_developer_mode\n\nsecdata_kernel is read in:\n\n  vb2_kernel_setup\n\n\nFWMP tests setting various values in vboot_kernel_tests and vboot_api_kernel2_tests.\n\nI suppose we should add test paths for initialization of secdata_kernel and secdata_fwmp, and also for reading secdata_firmware and secdata_kernel values?",
+      "parentUuid": "b109feb6_9fc3fbf0",
+      "revId": "9f350a9ade1fe2a3e9aea3e6232301c1c2664f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

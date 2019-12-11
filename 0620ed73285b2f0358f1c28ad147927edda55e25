@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6e42009_8de73fd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "How about \"secdata TPM backend code\"?",
+      "parentUuid": "4c020fc9_e84e159a",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbdb9eef_dd29acc3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9b7fcee5_9bc9f7de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbdb9eef_dd29acc3",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b9226e0_30eec6c5",
         "filename": "firmware/lib/secdata_tpm.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-12-09T22:20:22Z",
       "side": 1,
       "message": "I\u0027m confused, shouldn\u0027t this file get deleted?",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87715457_c304a45c",
+        "filename": "firmware/lib/secdata_tpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Indeed it should.",
+      "parentUuid": "8b9226e0_30eec6c5",
       "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a59491af_aca6315e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "222549f6_6572a926",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb2cf26b_1ba5f987",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2019-12-09T22:20:22Z",
       "side": 1,
       "message": "Probably better to vb2api_fail() here too, just in case it works. Could just fall-through to the NV_WRITE case after printing the error.",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99636d5_774e8b8b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Let\u0027s just fallthrough to the NV_WRITE case?  In which case we don\u0027t need to call vb2api_fail, since we\u0027ll hit VB2_DIE anyways.",
+      "parentUuid": "bb2cf26b_1ba5f987",
       "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "d3ab2dc1_b1905d7d",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Does it matter?  If the TPM is disabled, the space can\u0027t be accessed anyways.",
+      "parentUuid": "640cff48_416c42d9",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db295845_5db85a58",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 1
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "0942c8d1_82c89e96",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db295845_5db85a58",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2f699da_8b176efb",
         "filename": "firmware/stub/vboot_api_stub_init.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2019-12-09T22:20:22Z",
       "side": 1,
       "message": "Not quite sure what this ASSERT() is doing here? This stub is just for tests anyway. It\u0027s possible for a test to exercise the devmode switch path?",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b3a7b59_4dc71f84",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T10:08:33Z",
+      "side": 1,
+      "message": "True.  Let me change to match secdata_kernel and nvdata_changed.",
+      "parentUuid": "d2f699da_8b176efb",
       "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
