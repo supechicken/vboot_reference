@@ -76,8 +76,6 @@ static void preamble_tests(const char *keys_dir)
 			  3, test_version, test_flags, test_desc),
 		  "Create preamble good");
 	TEST_PTR_NEQ(fp, NULL, "  fp_ptr");
-	TEST_SUCC(vb21_verify_fw_preamble(fp, fp->c.total_size, pubk4096, &wb),
-		  "Verify preamble good");
 	TEST_EQ(strcmp(vb21_common_desc(fp), test_desc), 0, "  desc");
 	TEST_EQ(fp->fw_version, test_version, "  fw_version");
 	TEST_EQ(fp->flags, test_flags, "  flags");

@@ -374,9 +374,7 @@ FWLIB20_SRCS = \
 	firmware/lib20/packed_key.c
 
 FWLIB21_SRCS = \
-	firmware/lib21/api.c \
 	firmware/lib21/common.c \
-	firmware/lib21/misc.c \
 	firmware/lib21/packed_key.c
 
 # TPM lightweight command library
@@ -732,10 +730,8 @@ TEST20_NAMES = \
 	tests/vb20_verify_fw
 
 TEST21_NAMES = \
-	tests/vb21_api_tests \
 	tests/vb21_common_tests \
 	tests/vb21_common2_tests \
-	tests/vb21_misc_tests \
 	tests/vb21_host_fw_preamble_tests \
 	tests/vb21_host_key_tests \
 	tests/vb21_host_keyblock_tests \
@@ -1263,10 +1259,8 @@ run2tests: test_setup
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_common3_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_misc_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vb21_api_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_common2_tests ${TEST_KEYS}
-	${RUNTEST} ${BUILD_RUN}/tests/vb21_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_fw_preamble_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_key_tests ${TEST_KEYS} ${BUILD}
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_keyblock_tests ${TEST_KEYS}

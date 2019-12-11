@@ -80,8 +80,6 @@ static void keyblock_tests(const char *keys_dir)
 	TEST_SUCC(vb21_keyblock_create(&kb, pubk2048, prik, 1, 0x1234, NULL),
 		  "Keyblock single");
 	TEST_PTR_NEQ(kb, NULL, "  kb_ptr");
-	TEST_SUCC(vb21_verify_keyblock(kb, kb->c.total_size, pubk4096, &wb),
-		  "  verify");
 	TEST_EQ(strcmp(vb21_common_desc(kb), pubk2048->desc), 0,	"  desc");
 	TEST_EQ(kb->flags, 0x1234, "  flags");
 
@@ -94,10 +92,6 @@ static void keyblock_tests(const char *keys_dir)
 	prik[1] = prikhash;
 	TEST_SUCC(vb21_keyblock_create(&kb, pubk4096, prik, 2, 0, test_desc),
 		  "Keyblock multiple");
-	TEST_SUCC(vb21_verify_keyblock(kb, kb->c.total_size, pubk8192, &wb),
-		  "  verify 1");
-	TEST_SUCC(vb21_verify_keyblock(kb, kb->c.total_size, &pubkhash, &wb),
-		  "  verify 2");
 	TEST_EQ(strcmp(vb21_common_desc(kb), test_desc), 0,	"  desc");
 	TEST_EQ(kb->flags, 0, "  flags");
 	free(kb);
