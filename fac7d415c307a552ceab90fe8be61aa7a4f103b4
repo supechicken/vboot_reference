@@ -52,6 +52,24 @@
       "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5ab93b_fdd1d1c7",
+        "filename": "utility/tpmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-11T01:42:21Z",
+      "side": 1,
+      "message": "I meant provide two implementations to the \"setbgloballock\" command, depending on TPM1 or TPM2, essentially moving the abstraction up a layer.\n\nBut now that I think about it, that also doesn\u0027t allow us to get rid of the constant.\n\nIf it\u0027s okay with you, maybe I\u0027ll just define the constant in the tlcl.c file itself.",
+      "parentUuid": "e703112c_a5594a96",
+      "revId": "fac7d415c307a552ceab90fe8be61aa7a4f103b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
