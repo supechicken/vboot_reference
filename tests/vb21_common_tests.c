@@ -381,14 +381,7 @@ static void test_verify_fw_preamble(void)
 	const struct vb2_private_key *prikhash;
 	struct vb21_signature *hashes[3];
 	struct vb2_public_key pubk;
-	struct vb21_signature *sig;
 	struct vb21_fw_preamble *pre;
-	uint32_t buf_size;
-	uint8_t *buf, *buf2;
-
-	uint8_t workbuf[VB2_VERIFY_FIRMWARE_PREAMBLE_WORKBUF_BYTES]
-		 __attribute__((aligned(VB2_WORKBUF_ALIGN)));
-	struct vb2_workbuf wb;
 
 	/*
 	 * Preambles will usually be signed with a real key not a bare hash,
@@ -419,96 +412,6 @@ static void test_verify_fw_preamble(void)
 				  (const struct vb21_signature **)hashes,
 				  3, 0x1234, 0x5678, desc),
 		  "Create preamble good");
-
-	buf = (uint8_t *)pre;
-	buf_size = pre->c.total_size;
-
-	/* Make a copy of the buffer, so we can mangle it for tests */
-	buf2 = malloc(buf_size);
-	memcpy(buf2, buf, buf_size);
-
-	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
-	pre = (struct vb21_fw_preamble *)buf;
-
-	TEST_SUCC(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		  "vb21_verify_fw_preamble()");
-
-	memcpy(buf, buf2, buf_size);
-	pre->c.magic = VB21_MAGIC_PACKED_KEY;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_PREAMBLE_MAGIC,
-		"vb21_verify_fw_preamble() magic");
-
-	memcpy(buf, buf2, buf_size);
-	pre->c.fixed_size++;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_COMMON_FIXED_UNALIGNED,
-		"vb21_verify_fw_preamble() header");
-
-	memcpy(buf, buf2, buf_size);
-	pre->c.struct_version_major++;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_PREAMBLE_HEADER_VERSION,
-		"vb21_verify_fw_preamble() major version");
-
-	memcpy(buf, buf2, buf_size);
-	pre->c.struct_version_minor++;
-	/* That changes the signature, so resign the fw_preamble */
-	vb21_sign_data(&sig, buf, pre->sig_offset, prikhash, NULL);
-	memcpy(buf + pre->sig_offset, sig, sig->c.total_size);
-	free(sig);
-	TEST_SUCC(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		  "vb21_verify_fw_preamble() minor version");
-
-	memcpy(buf, buf2, buf_size);
-	pre->c.fixed_size -= 4;
-	pre->c.desc_size += 4;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_PREAMBLE_SIZE,
-		"vb21_verify_fw_preamble() header size");
-
-	memcpy(buf, buf2, buf_size);
-	sig = (struct vb21_signature *)(buf + pre->hash_offset);
-	sig->c.total_size += pre->c.total_size;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_COMMON_TOTAL_SIZE,
-		"vb21_verify_fw_preamble() hash size");
-
-	memcpy(buf, buf2, buf_size);
-	sig = (struct vb21_signature *)(buf + pre->hash_offset);
-	sig->sig_size /= 2;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_SIG_SIZE,
-		"vb21_verify_fw_preamble() hash integrity");
-
-	memcpy(buf, buf2, buf_size);
-	pre->hash_count++;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_COMMON_MEMBER_OVERLAP,
-		"vb21_verify_fw_preamble() hash count");
-
-	memcpy(buf, buf2, buf_size);
-	sig = (struct vb21_signature *)(buf + pre->sig_offset);
-	sig->c.total_size += 4;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_COMMON_TOTAL_SIZE,
-		"vb21_verify_fw_preamble() sig inside");
-
-	memcpy(buf, buf2, buf_size);
-	sig = (struct vb21_signature *)(buf + pre->sig_offset);
-	buf[pre->sig_offset + sig->sig_offset]++;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_VDATA_VERIFY_DIGEST,
-		"vb21_verify_fw_preamble() sig corrupt");
-
-	memcpy(buf, buf2, buf_size);
-	pre->flags++;
-	TEST_EQ(vb21_verify_fw_preamble(pre, buf_size, &pubk, &wb),
-		VB2_ERROR_VDATA_VERIFY_DIGEST,
-		"vb21_verify_fw_preamble() preamble corrupt");
-
-	free(buf);
-	free(buf2);
 }
 
 int main(int argc, char* argv[])

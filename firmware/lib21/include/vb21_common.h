@@ -160,22 +160,6 @@ vb2_error_t vb21_verify_keyblock(struct vb21_keyblock *block, uint32_t size,
 				 const struct vb2_public_key *key,
 				 const struct vb2_workbuf *wb);
 
-/**
- * Check the sanity of a firmware preamble using a public key.
- *
- * The signature in the preamble is destroyed during the check.
- *
- * @param preamble     	Preamble to verify
- * @param size		Size of preamble buffer
- * @param key		Key to use to verify preamble
- * @param wb		Work buffer
- * @return VB2_SUCCESS, or non-zero error code if error.
- */
-vb2_error_t vb21_verify_fw_preamble(struct vb21_fw_preamble *preamble,
-				    uint32_t size,
-				    const struct vb2_public_key *key,
-				    const struct vb2_workbuf *wb);
-
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
