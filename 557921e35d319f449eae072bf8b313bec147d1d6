@@ -69,6 +69,24 @@
       "revId": "557921e35d319f449eae072bf8b313bec147d1d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae74549_9634a931",
+        "filename": "firmware/lib21/include/vb21_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T06:05:10Z",
+      "side": 1,
+      "message": "Oops, I was wrong.  No need to keep the keyblock / fw_preamble structs since they are not used by futility.",
+      "parentUuid": "a4830ca8_c5bd13ef",
+      "revId": "557921e35d319f449eae072bf8b313bec147d1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
