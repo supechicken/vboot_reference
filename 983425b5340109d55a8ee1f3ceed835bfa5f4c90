@@ -69,6 +69,24 @@
       "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa9172e_dc015832",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T07:17:15Z",
+      "side": 1,
+      "message": "The struct is also a field of vb2_public_key, which I think we could agree is considered \"vboot2\" code.\n\nHowever, since the vb2_hash_id and vb2_str_to_id functions are only accessed in futility, they should both live in host/ code, right?\n\nAnyways, I\u0027m just leaving {vb2_id, vb2_hash_id, vb2_str_to_id} alone in the latest patchset, since they get moved around in the CLs deprecating vboot 2.1 code.",
+      "parentUuid": "331bc448_9685c882",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
