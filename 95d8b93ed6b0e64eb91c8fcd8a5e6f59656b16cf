@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8f18c1c_20e2ecc9",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-12T21:16:12Z",
+      "side": 0,
+      "message": "There are tests in vboot_api_kernel2_tests.c that will need to change before this can go in.",
+      "range": {
+        "startLine": 667,
+        "startChar": 2,
+        "endLine": 695,
+        "endChar": 9
+      },
+      "revId": "95d8b93ed6b0e64eb91c8fcd8a5e6f59656b16cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "1f00fba6_96359144",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-12T21:16:12Z",
+      "side": 1,
+      "message": "vendor",
+      "range": {
+        "startLine": 317,
+        "startChar": 31,
+        "endLine": 317,
+        "endChar": 37
+      },
+      "revId": "92f0f92b236e3d563aa6480cd79144990abfd522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41dd708f_97c87a2a",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 5
@@ -151,6 +174,30 @@
     },
     {
       "key": {
+        "uuid": "d17a167c_b17552fa",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-12T21:16:12Z",
+      "side": 1,
+      "message": "FYI firmware follows the kernel standard which is indent using tabs with 8 char tab stops. It is helpful to configure your IDE to follow this standard.",
+      "parentUuid": "13a0a28b_91595270",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "92f0f92b236e3d563aa6480cd79144990abfd522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa70d930_1ddf0191",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 5
@@ -220,6 +267,29 @@
     },
     {
       "key": {
+        "uuid": "f50660fc_6398f09a",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-12T21:16:12Z",
+      "side": 1,
+      "message": "If the user selects \"No\" on the confirmation screen then the \"Set vendor data\" screen should be shown again. I do not believe that is happening.",
+      "range": {
+        "startLine": 428,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 0
+      },
+      "revId": "92f0f92b236e3d563aa6480cd79144990abfd522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0945b3a5_7c114c0a",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 5
@@ -236,6 +306,29 @@
         "startChar": 0,
         "endLine": 641,
         "endChar": 4
+      },
+      "revId": "92f0f92b236e3d563aa6480cd79144990abfd522",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63154e3c_11e81c6c",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-12T21:16:12Z",
+      "side": 1,
+      "message": "You do not need this else or the one below, you can just display the developer mode screen unconditionally below.",
+      "range": {
+        "startLine": 648,
+        "startChar": 9,
+        "endLine": 650,
+        "endChar": 9
       },
       "revId": "92f0f92b236e3d563aa6480cd79144990abfd522",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
