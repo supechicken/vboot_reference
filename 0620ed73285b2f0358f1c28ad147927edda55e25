@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d09af6b8_d44a6025",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd4a63ff_0cdac283",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbdb9eef_dd29acc3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -242,6 +260,24 @@
       "side": 1,
       "message": "The problem is that depthcharge\u0027s cleanup_func would still try to lock it and fail, because when the TPM is disabled it cannot respond to any commands anymore. So we need to do it earlier to prime the static variable in the lock function that tells it that it is already locked.",
       "parentUuid": "d3ab2dc1_b1905d7d",
+      "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab03fa9_d8462432",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:07:33Z",
+      "side": 1,
+      "message": "Right, I see your point.  We could also just expose the static variable -- but probably just locking it first would be best.",
+      "parentUuid": "bf7d5649_2edf8820",
       "revId": "0620ed73285b2f0358f1c28ad147927edda55e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
