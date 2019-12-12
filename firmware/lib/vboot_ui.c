@@ -237,14 +237,11 @@ static inline int is_vowel(uint32_t key) {
  * Prompt the user to enter the vendor data
  */
 static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
-					    char *data_value)
+					    int *lenref, char *data_value)
 {
-	int len = 0;
-	VbScreenData data = {
-		.vendor_data = { data_value }
-	};
+	int len = *lenref;
+	VbScreenData data = {.vendor_data = {data_value}};
 
-	data_value[0] = '\0';
 	VbDisplayScreen(ctx, VB_SCREEN_SET_VENDOR_DATA, 1, &data);
 
 	/* We'll loop until the user decides what to do */
@@ -265,13 +262,13 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 				  "exit to Developer screen\n");
 			data_value[0] = '\0';
 			return VB2_SUCCESS;
-		case 'a'...'z':
+		case 'a' ... 'z':
 			key = toupper(key);
 			VBOOT_FALLTHROUGH;
-		case '0'...'9':
-		case 'A'...'Z':
+		case '0' ... '9':
+		case 'A' ... 'Z':
 			if ((len > 0 && is_vowel(key)) ||
-			     len >= VENDOR_DATA_LENGTH) {
+			    len >= VENDOR_DATA_LENGTH) {
 				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
 			} else {
 				data_value[len++] = key;
@@ -298,6 +295,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 				/* Enter pressed - confirm input */
 				VB2_DEBUG("Vendor Data UI - user pressed "
 					  "Enter: confirm vendor data\n");
+				*lenref = len;
 				return VB2_SUCCESS;
 			} else {
 				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
@@ -314,71 +312,135 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
+static vb2_error_t vb2_confirm_vendor_data_ui(struct vb2_context *ctx,
+		char* data_value, VbScreenData *data)
+{
+	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_VENDOR_DATA, 1, data);
+	/* We'll loop until the user decides what to do */
+	do {
+		uint32_t key_confirm = VbExKeyboardRead();
+
+		if (VbWantShutdown(ctx, key_confirm)) {
+			VB2_DEBUG("Confirm Vendor Data UI "
+					"- shutdown requested!\n");
+			return VBERROR_SHUTDOWN_REQUESTED;
+		}
+		switch (key_confirm) {
+		case 0:
+			/* nothing pressed */
+			break;
+		case VB_KEY_ESC:
+			/* Escape pressed - return to developer screen */
+			VB2_DEBUG(
+				"Confirm Vendor Data UI - user pressed Esc: "
+				"exit to Developer screen\n");
+			return VB2_SUCCESS;
+		case VB_KEY_RIGHT: case VB_KEY_LEFT:
+			data->vendor_data.selected_index =
+				data->vendor_data.selected_index ^ 1;
+			VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_VENDOR_DATA,
+							1, data);
+			break;
+		case VB_KEY_ENTER:
+			/* Enter pressed - write vendor data */
+			VB2_DEBUG(
+				"Confirm Vendor Data UI - user pressed Enter: "
+				"write vendor data (%s) to VPD\n",
+				data_value);
+			if (data->vendor_data.selected_index) {
+				vb2_error_t ret = VbExSetVendorData(data_value);
+
+				if (ret == VB2_SUCCESS) {
+					vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST,
+								1);
+					return VBERROR_REBOOT_REQUIRED;
+				} else {
+					vb2_error_notify(
+						"ERROR: Vendor data was not set.\n"
+						"System will now shutdown\n",
+						NULL, VB_BEEP_FAILED);
+					VbExSleepMs(5000);
+					return VBERROR_SHUTDOWN_REQUESTED;
+				}
+			} else {
+				return VB2_SUCCESS;
+			}
+		default:
+			VB2_DEBUG(
+				"Confirm Vendor Data UI - pressed key %#x\n",
+				key_confirm);
+			VbCheckDisplayKey(ctx, key_confirm, data);
+			break;
+		}
+		VbExSleepMs(KEY_DELAY_MS);
+	} while (1);
+	return VB2_SUCCESS;
+}
+
 /*
  * User interface for setting the vendor data in VPD
  */
 static vb2_error_t vb2_vendor_data_ui(struct vb2_context *ctx)
 {
 	char data_value[VENDOR_DATA_LENGTH + 1];
-	VbScreenData data = {
-		.vendor_data = { data_value }
-	};
 
-	vb2_error_t ret = vb2_enter_vendor_data_ui(ctx, data_value);
+	VbScreenData data = {.vendor_data = {data_value, 1}};
+	VbDisplayScreen(ctx, VB_SCREEN_RMA, 0, NULL);
 
-	if (ret)
-		return ret;
-
-	/* Vendor data was not entered just return */
-	if (data_value[0] == '\0')
-		return VB2_SUCCESS;
-
-	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_VENDOR_DATA, 1, &data);
-	/* We'll loop until the user decides what to do */
 	do {
-		uint32_t key = VbExKeyboardRead();
+		uint32_t key_set = VbExKeyboardRead();
 
-		if (VbWantShutdown(ctx, key)) {
+		if (VbWantShutdown(ctx, key_set)) {
 			VB2_DEBUG("Vendor Data UI - shutdown requested!\n");
 			return VBERROR_SHUTDOWN_REQUESTED;
 		}
-		switch (key) {
+
+		switch (key_set) {
 		case 0:
-			/* nothing pressed */
+			/* Nothing pressed - do nothing. */
 			break;
 		case VB_KEY_ESC:
-			/* Escape pressed - return to developer screen */
-			VB2_DEBUG("Vendor Data UI - user pressed Esc: "
-				  "exit to Developer screen\n");
+			/* ESC pressed - boot normally */
+			VB2_DEBUG("Vendor Data UI - boot normally\n");
 			return VB2_SUCCESS;
-		case VB_KEY_ENTER:
-			/* Enter pressed - write vendor data */
-			VB2_DEBUG("Vendor Data UI - user pressed Enter: "
-				  "write vendor data (%s) to VPD\n",
-				  data_value);
-			ret = VbExSetVendorData(data_value);
-
-			if (ret == VB2_SUCCESS) {
-				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-				return VBERROR_REBOOT_REQUIRED;
-			} else {
-				vb2_error_notify(
-					"ERROR: Vendor data was not set.\n"
-					"System will now shutdown\n",
-					NULL,
-					VB_BEEP_FAILED);
-				VbExSleepMs(5000);
-				return VBERROR_SHUTDOWN_REQUESTED;
-			}
-		default:
-			VB2_DEBUG("Vendor Data UI - pressed key %#x\n", key);
-			VbCheckDisplayKey(ctx, key, &data);
 			break;
-		}
-		VbExSleepMs(KEY_DELAY_MS);
-	} while (1);
+		case VB_KEY_ENTER:
+			data_value[0] = '\0';
+			int len = 0;
+			do {
+				/* ENTER pressed - enter vendor data set screen
+				 */
+				VB2_DEBUG("Vendor Data UI - Enter VD set "
+					  "screen\n");
+				vb2_error_t ret = vb2_enter_vendor_data_ui(
+					ctx, &len, data_value);
 
-	return VB2_SUCCESS;
+				if (ret) {
+					return ret;
+				}
+
+				/* Vendor data was not entered just return */
+				if (data_value[0] == '\0') {
+					return VB2_SUCCESS;
+				}
+
+				ret = vb2_confirm_vendor_data_ui(
+					ctx, data_value, &data);
+
+				if (ret)
+					return ret;
+
+				// Break out of loop if vendor data was
+				// confirmed
+				if (data.vendor_data.selected_index)
+					return VB2_SUCCESS;
+			} while (1);
+			break;
+		default:
+			break;
+        }
+	} while (1);
+    return VB2_SUCCESS;
 }
 
 static vb2_error_t vb2_check_diagnostic_key(struct vb2_context *ctx,
@@ -580,8 +642,18 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 		}
 	}
 
-	/* Show the dev mode warning screen */
-	VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0, NULL);
+	if ((ctx->flags & VB2_CONTEXT_VENDOR_DATA_SETTABLE) &&
+			!(VENDOR_DATA_LENGTH == 0)) {
+		vb2_error_t ret;
+		VB2_DEBUG("VbBootDeveloper() - Vendor data not set\n");
+		ret = vb2_vendor_data_ui(ctx);
+		if (ret) {
+			return ret;
+		}
+        }
+
+        /* Show the dev mode warning screen */
+        VbDisplayScreen(ctx, VB_SCREEN_DEVELOPER_WARNING, 0, NULL);
 
 	/* Initialize audio/delay context */
 	vb2_audio_start(ctx);
@@ -662,35 +734,6 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 					return ret;
 			} else {
 				vb2_error_no_altfw();
-			}
-			break;
-		case VB_KEY_CTRL('S'):
-			if (VENDOR_DATA_LENGTH == 0)
-				break;
-			/*
-			 * Only show the vendor data ui if it is tag is settable
-			 */
-			if (ctx->flags & VB2_CONTEXT_VENDOR_DATA_SETTABLE) {
-				vb2_error_t ret;
-
-				VB2_DEBUG("VbBootDeveloper() - user pressed "
-					  "Ctrl+S; Try set vendor data\n");
-
-				ret = vb2_vendor_data_ui(ctx);
-				if (ret) {
-					return ret;
-				} else {
-					/* Show dev mode warning screen again */
-					VbDisplayScreen(ctx,
-						VB_SCREEN_DEVELOPER_WARNING,
-						0, NULL);
-				}
-			} else {
-				vb2_error_notify(
-					"WARNING: Vendor data cannot be "
-					"changed because it is already set.\n",
-					NULL,
-					VB_BEEP_NOT_ALLOWED);
 			}
 			break;
 		case VB_KEY_CTRL_ENTER:
