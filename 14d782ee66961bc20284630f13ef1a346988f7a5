@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a546a7_2b3d0872",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "So does this mean we will be wasting a bunch of space for SHA1 hashes on a system that supports SHA512?\n\nIf the struct is transferred from a system with SUPPORT_SHA256 to one with SUPPORT_SHA512, won\u0027t it misjudge the overall size of the struct?  (Potential for overwriting things that come after it, or copying some (important?) data to another spot.)",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d776227_de3684be",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "Prefer two spaces.",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 10
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e66d8dc_8519ab72",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "Or should this be \u003d\u003d to ensure both sides are kept in sync?",
+      "range": {
+        "startLine": 124,
+        "startChar": 53,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5de033_9e1c4f7c",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "How about \u003c\u003d UINT8_MAX? (stdint.h)",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 126,
+        "endChar": 39
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b989add_287965f6",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "How about a nice little docstring:\n\n/* Copyright...\n * Use...\n * found...\n *\n * Tests for blah blah blah.\n */",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e76e9d_4b47dcde",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be70a2e_1d519ff8",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "It\u0027s cute.  But what about just \"MOCKBUFFER\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 74
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc58f3a_c8c00aa3",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "No indent for \"separate\" tests.",
+      "range": {
+        "startLine": 71,
+        "startChar": 19,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016b9a73_381b164a",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T10:38:58Z",
+      "side": 1,
+      "message": "Zero or two spaces?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
