@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f75ce98_a5b12720",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T05:47:44Z",
+      "side": 1,
+      "message": "Yes, let\u0027s do that.",
+      "parentUuid": "0a7b172a_9b603770",
+      "range": {
+        "startLine": 298,
+        "startChar": 35,
+        "endLine": 298,
+        "endChar": 50
+      },
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ccce6ed9_169febd1",
         "filename": "Makefile",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b3800117_3761eb1a",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T05:47:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccce6ed9_169febd1",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb6c789f_49d08341",
         "filename": "Makefile",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-12-11T21:05:58Z",
       "side": 1,
       "message": "Remove?",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053b9b7f_18977a26",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T05:47:44Z",
+      "side": 1,
+      "message": "I\u0027d like to keep these until the unused code is deleted, and the signer code is relocated to the \u0027host\u0027 subdirectory.",
+      "parentUuid": "fb6c789f_49d08341",
       "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "7a529675_2069b63c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T05:47:44Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "af930207_4f00d1ac",
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5585cf7_6e646242",
         "filename": "Makefile",
         "patchSetId": 1
@@ -87,6 +165,30 @@
       "writtenOn": "2019-12-11T21:05:58Z",
       "side": 1,
       "message": "Remove (incorporate those into UTILLIB_OBJS if necessary)?",
+      "range": {
+        "startLine": 919,
+        "startChar": 4,
+        "endLine": 919,
+        "endChar": 16
+      },
+      "revId": "22b80093718df006e5a8bc73fbc517941c9efc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5fc5d2_b017776c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-12T05:47:44Z",
+      "side": 1,
+      "message": "Do you mean write the individual needed files directly into UTILLIB_SRCS?",
+      "parentUuid": "a5585cf7_6e646242",
       "range": {
         "startLine": 919,
         "startChar": 4,
