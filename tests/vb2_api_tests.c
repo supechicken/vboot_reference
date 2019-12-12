@@ -15,6 +15,7 @@
 #include "2secdata.h"
 #include "2sysincludes.h"
 #include "test_common.h"
+#include "vb2_struct.h"
 #include "vb2_common.h"
 
 /* Common context for tests */

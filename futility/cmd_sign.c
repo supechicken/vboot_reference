@@ -30,6 +30,7 @@
 #include "vb1_helper.h"
 #include "vb21_common.h"
 #include "vb2_common.h"
+#include "vb2_struct.h"
 
 /* Options */
 struct sign_option_s sign_option = {
