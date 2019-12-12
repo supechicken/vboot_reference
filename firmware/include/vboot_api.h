@@ -408,6 +408,7 @@ enum VbScreenType_t {
 	VB_SCREEN_CONFIRM_VENDOR_DATA = 0x215,
 	/* Confirm reboot for running diagnostics rom */
 	VB_SCREEN_CONFIRM_DIAG = 0x216,
+<<<<<<< HEAD
 	/* Confirm after VB_SCREEN_RECOVERY_TO_DEV_MENU */
 	VB_SCREEN_TO_DEV_CONFIRMED = 0x217,
 	/* Hardware failure */
@@ -430,6 +431,10 @@ enum VbScreenType_t {
 	VB_SCREEN_DEBUG_INFO = 0x252,
 	/* BIOS log screen */
 	VB_SCREEN_BIOS_LOG = 0x253,
+=======
+	/* Vendor data not set warning screen */
+	VB_SCREEN_RMA = 0x217,
+>>>>>>> 49ec80ec... vboot: modify control flow for vendor data config
 };
 
 /**
@@ -439,6 +444,8 @@ typedef struct VbVendorData
 {
 	/* Current state of the the vendor data input */
 	const char *input_text;
+	/* Current confirmation selection for new vendor data */
+	uint32_t selected_index;
 } VbVendorData;
 
 /**
