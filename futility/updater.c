@@ -1429,6 +1429,7 @@ int updater_setup_config(struct updater_config *cfg,
 	int check_single_image = 0, check_wp_disabled = 0;
 	int do_output = 0;
 	const char *archive_path = arg->archive;
+	const char *programmer = arg->programmer;
 
 	/* Setup values that may change output or decision of other argument. */
 	cfg->verbosity = arg->verbosity;
@@ -1484,13 +1485,34 @@ int updater_setup_config(struct updater_config *cfg,
 		cfg->try_update = 0;
 	}
 
+	if (arg->servo && !programmer) {
+		/*
+		 * TODO(hungte) Figure out a way to do spi2_buf_en/spi2_vref
+		 * before and after flashing.
+		 */
+		char *servo_type = host_shell("dut-control -o servo_type");
+		if (!servo_type) {
+			ERROR("Failed to get servo type. Check servod.\n");
+			errorcnt++;
+		} else if (strstr(servo_type, "servo_micro")) {
+			programmer = "raiden_debug_spi";
+			cfg->need_cpu_fw_spi = 1;
+		} else if (strstr(servo_type, "ccd_cr50")) {
+			programmer = "raiden_debug_spi,target=AP";
+		} else {
+			programmer = "ft2232_spi:type=servo-v2";
+			cfg->need_cpu_fw_spi = 1;
+		}
+		free(servo_type);
+	}
+
 	/* Setup properties and fields that do not have external dependency. */
-	if (arg->programmer) {
+	if (programmer) {
 		check_single_image = 1;
-		cfg->image.programmer = arg->programmer;
-		cfg->image_current.programmer = arg->programmer;
+		cfg->image.programmer = programmer;
+		cfg->image_current.programmer = programmer;
 		VB2_DEBUG("AP (host) programmer changed to %s.\n",
-			  arg->programmer);
+			  programmer);
 	}
 	if (arg->sys_props)
 		override_properties_from_list(arg->sys_props, cfg);
