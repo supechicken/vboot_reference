@@ -68,6 +68,7 @@ struct updater_config {
 	int fast_update;
 	int verbosity;
 	const char *emulation;
+	int fw_servoflex;
 };
 
 struct updater_config_arguments {
@@ -80,6 +81,7 @@ struct updater_config_arguments {
 	char *repack, *unpack;
 	int is_factory, try_update, force_update, do_manifest, host_only;
 	int fast_update;
+	int servo;
 	int verbosity;
 };
 
