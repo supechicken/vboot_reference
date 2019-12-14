@@ -87,6 +87,24 @@
       "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba1b192_8b486940",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-14T00:24:56Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t really know what that member is doing in vb2_public_key that hash_alg and sig_alg aren\u0027t already doing either.",
+      "parentUuid": "9aa9172e_dc015832",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
