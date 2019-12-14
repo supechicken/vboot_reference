@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0163ea0_c99bd3f2",
+        "filename": "tests/vboot_common_tests.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-14T00:40:41Z",
+      "side": 1,
+      "message": "Not sure why you\u0027re returning this one from the dead too? I don\u0027t think we need it anymore. You\u0027re still removing it from the Makefile so it\u0027s just a dead file right now.",
+      "revId": "a6bc95876d676a512e5a773ba1766698502731dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e262c57_b37de1fe",
+        "filename": "utility/load_kernel_test.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-14T00:40:41Z",
+      "side": 1,
+      "message": "Same here, you\u0027re just removing from the Makefile but keeping the file. I think there was a dependency on the one in the signing scripts somewhere that we\u0027ll have to resolve first? Or did that get fixed already?",
+      "revId": "a6bc95876d676a512e5a773ba1766698502731dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
