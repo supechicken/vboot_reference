@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbe37a10_727d9685",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 48
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-14T00:23:15Z",
+      "side": 1,
+      "message": "If you don\u0027t move the code to 2lib you shouldn\u0027t move the prototypes either, right?",
+      "revId": "1ea5b921cb663281977afaa6028d0f5328570322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf1c16c_ffc6c1a7",
+        "filename": "firmware/lib21/common.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-14T00:23:15Z",
+      "side": 1,
+      "message": "nit: off-topic, but this looks like a really dumb way to implement\n\n if (sig_alg \u003d\u003d VB2_SIG_NONE)\n   return vb2_digest_size(hash_alg);\n else\n   return vb2_rsa_sig_size(sig_alg);",
+      "revId": "1ea5b921cb663281977afaa6028d0f5328570322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
