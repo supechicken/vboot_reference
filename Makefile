@@ -328,6 +328,25 @@ FWLIB = ${BUILD}/vboot_fw.a
 TLCL = ${BUILD}/tlcl.a
 
 FWLIB_SRCS = \
+	firmware/2lib/2api.c \
+	firmware/2lib/2auxfw_sync.c \
+	firmware/2lib/2common.c \
+	firmware/2lib/2context.c \
+	firmware/2lib/2crc8.c \
+	firmware/2lib/2ec_sync.c \
+	firmware/2lib/2gbb.c \
+	firmware/2lib/2hmac.c \
+	firmware/2lib/2misc.c \
+	firmware/2lib/2nvstorage.c \
+	firmware/2lib/2rsa.c \
+	firmware/2lib/2secdata_firmware.c \
+	firmware/2lib/2secdata_fwmp.c \
+	firmware/2lib/2secdata_kernel.c \
+	firmware/2lib/2sha1.c \
+	firmware/2lib/2sha256.c \
+	firmware/2lib/2sha512.c \
+	firmware/2lib/2sha_utility.c \
+	firmware/2lib/2tpm_bootmode.c \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
@@ -340,30 +359,7 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
 	firmware/lib/vboot_ui_common.c \
-	firmware/lib/vboot_ui_menu.c
-
-FWLIB2X_SRCS = \
-	firmware/2lib/2api.c \
-	firmware/2lib/2auxfw_sync.c \
-	firmware/2lib/2common.c \
-	firmware/2lib/2context.c \
-	firmware/2lib/2crc8.c \
-	firmware/2lib/2ec_sync.c \
-	firmware/2lib/2gbb.c \
-	firmware/2lib/2misc.c \
-	firmware/2lib/2nvstorage.c \
-	firmware/2lib/2rsa.c \
-	firmware/2lib/2secdata_firmware.c \
-	firmware/2lib/2secdata_fwmp.c \
-	firmware/2lib/2secdata_kernel.c \
-	firmware/2lib/2sha1.c \
-	firmware/2lib/2sha256.c \
-	firmware/2lib/2sha512.c \
-	firmware/2lib/2sha_utility.c \
-	firmware/2lib/2tpm_bootmode.c \
-	firmware/2lib/2hmac.c
-
-FWLIB20_SRCS = \
+	firmware/lib/vboot_ui_menu.c \
 	firmware/lib20/api_kernel.c \
 	firmware/lib20/common.c \
 	firmware/lib20/kernel.c \
@@ -407,17 +403,13 @@ FWLIB_SRCS += \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_init.c \
-	firmware/stub/vboot_api_stub_stream.c
-
-FWLIB2X_SRCS += \
+	firmware/stub/vboot_api_stub_stream.c \
 	firmware/2lib/2stub.c
 endif
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
-FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
-FWLIB20_OBJS = ${FWLIB20_SRCS:%.c=${BUILD}/%.o}
 TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${TLCL_OBJS}
+ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
@@ -839,8 +831,6 @@ ${TLCL_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
 ifneq ($(filter-out 0,$(UNROLL_LOOPS)),)
 $(info vboot hash algos built with unrolled loops (faster, larger code size))
 ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
-${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
-${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 else
 $(info vboot hash algos built with tight loops (slower, smaller code size))
 endif
@@ -848,7 +838,7 @@ endif
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
 
-${FWLIB}: ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS}
+${FWLIB}: ${FWLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -870,8 +860,7 @@ ${TLCL}: ${TLCL_OBJS}
 utillib: ${UTILLIB}
 
 # TODO: better way to make .a than duplicating this recipe each time?
-${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} \
-		${TLCL_OBJS}
+${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
