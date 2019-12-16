@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef0b9ae4_77412bfc",
+        "filename": "tests/vboot_common_tests.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-16T07:11:37Z",
+      "side": 1,
+      "message": "Let\u0027s keep this file and just remove the tests related to the removed SharedData functions.\n\nThe remaining stuff will be migrated to a file called vb2_host_key_tests.c in CL:1844597.",
+      "parentUuid": "f0163ea0_c99bd3f2",
+      "revId": "a6bc95876d676a512e5a773ba1766698502731dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e262c57_b37de1fe",
         "filename": "utility/load_kernel_test.c",
         "patchSetId": 51
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-14T00:40:41Z",
       "side": 1,
       "message": "Same here, you\u0027re just removing from the Makefile but keeping the file. I think there was a dependency on the one in the signing scripts somewhere that we\u0027ll have to resolve first? Or did that get fixed already?",
+      "revId": "a6bc95876d676a512e5a773ba1766698502731dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2d8002_03db2aa2",
+        "filename": "utility/load_kernel_test.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-16T07:11:37Z",
+      "side": 1,
+      "message": "We are keeping this utility now.  Putting it back in the Makefile.",
+      "parentUuid": "6e262c57_b37de1fe",
       "revId": "a6bc95876d676a512e5a773ba1766698502731dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
