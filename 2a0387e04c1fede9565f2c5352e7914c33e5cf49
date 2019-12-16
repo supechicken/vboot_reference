@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "754438eb_c27c1c71",
+        "filename": "futility/cmd_vbutil_kernel.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-16T20:42:08Z",
+      "side": 1,
+      "message": "Can\u0027t you just replace this with\n\n vb2_verify_member_inside((void *)preamble-\u003ebody_load_address, kblob_size, (void *) vmlinuz_header_address, vmlinuz_header_size, 0, 0);\n\n?",
+      "revId": "2a0387e04c1fede9565f2c5352e7914c33e5cf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
