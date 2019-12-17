@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7edab36_bc64dadf",
+        "filename": "tests/vb20_verify_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-17T01:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67310889_c3fb6e5c",
+      "range": {
+        "startLine": 167,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 32
+      },
+      "revId": "53c5b415f01c4f16fde7a1052b84301da18129b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a381fa0_c85c5742",
         "filename": "tests/vb2_firmware_tests.sh",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "def42299_bdd75044",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-17T01:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a381fa0_c85c5742",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 66
+      },
+      "revId": "53c5b415f01c4f16fde7a1052b84301da18129b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2cafeeb_4886fdc3",
         "filename": "tests/vb2_firmware_tests.sh",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-16T06:35:55Z",
       "side": 1,
       "message": "I feel like this might be more legible if we just used the algorithms as arguments directly.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "53c5b415f01c4f16fde7a1052b84301da18129b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2b477b_5dd637b6",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-12-17T01:29:44Z",
+      "side": 1,
+      "message": "The problem is that the number needs to go directly (as a number) into the --algorithm argument of vbutil_key. If I wanted to pass real names here I\u0027d have to make a big string-to-number conversion function again. I was hoping since it\u0027s just a test we don\u0027t need to spend that much effort to make it super clean.",
+      "parentUuid": "b2cafeeb_4886fdc3",
       "range": {
         "startLine": 88,
         "startChar": 9,
