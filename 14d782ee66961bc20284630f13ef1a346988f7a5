@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "65644c04_d3a38165",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-17T08:37:16Z",
+      "side": 1,
+      "message": "It\u0027s a union, but its definition (and thus its maximum size) depends on the VB_SUPPORT_X constants enabled.\n\nWhere is the serializer / deserializer?  Will that be in a coreboot.org CL?",
+      "parentUuid": "47c67c65_128b4a05",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d776227_de3684be",
         "filename": "firmware/2lib/include/2sha.h",
         "patchSetId": 1
@@ -140,6 +164,30 @@
       "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af98239_a5ae760f",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-17T08:37:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "591b9e7c_a9cfb95a",
+      "range": {
+        "startLine": 124,
+        "startChar": 53,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
