@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29658e0c_ed778b6f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-17T18:10:15Z",
+      "side": 1,
+      "message": "Instead of passing a pointer how about just calculate the length, I don\u0027t know if you can use strlen (or strnlen) in vboot but you can just add a new function\n\nstatic int vendor_data_length(char *data_value) {\n  for (int len \u003d 0; len \u003c\u003d VENDOR_DATA_LENGTH; len++) {\n    if (data_value[len] \u003d\u003d \u0027\\0\u0027)\n      return len;\n  }\n  \n  return VENDOR_DATA_LENGTH;\n}\n\nYou can also use it instead of \"if (data_value[0] \u003d\u003d \u0027\\0\u0027)\" below.",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 19
+      },
+      "revId": "c6661106a887f36e1f5215dd148a1d041c9e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501169a7_34e70289",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-17T18:10:15Z",
+      "side": 1,
+      "message": "Each case should be on its own line.",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 38
+      },
+      "revId": "c6661106a887f36e1f5215dd148a1d041c9e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5aff39_eab734a2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-17T18:10:15Z",
+      "side": 1,
+      "message": "Move this into if(...selected_index) for the yes case and go ahead and print a different message for the no case.",
+      "range": {
+        "startLine": 346,
+        "startChar": 3,
+        "endLine": 349,
+        "endChar": 16
+      },
+      "revId": "c6661106a887f36e1f5215dd148a1d041c9e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f462a061_4eb2d431",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-12-17T18:10:15Z",
+      "side": 1,
+      "message": "{} not needed here",
+      "range": {
+        "startLine": 650,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 3
+      },
+      "revId": "c6661106a887f36e1f5215dd148a1d041c9e6758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
