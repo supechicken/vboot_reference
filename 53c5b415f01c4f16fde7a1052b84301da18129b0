@@ -140,6 +140,30 @@
       "revId": "53c5b415f01c4f16fde7a1052b84301da18129b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f9acd7_011f3f2d",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-17T08:26:59Z",
+      "side": 1,
+      "message": "Ah I see.  Looking through calls to vb2_get_crypto_algorithm(), seems like the vb2_crypto_algorithm struct is considered the \"legacy vboot 1\" equivalent to separately specifying the signature and hash algorithms.  So really we should fix futility to accept two separate arguments, and get rid of the old struct and conversion functions.  Until that time, I think the current PS here looks fine.",
+      "parentUuid": "ba2b477b_5dd637b6",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "53c5b415f01c4f16fde7a1052b84301da18129b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
