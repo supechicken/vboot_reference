@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "b6bb2aa2_75d81d9c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2019-12-18T20:19:51Z",
+      "side": 1,
+      "message": "I think that these are going to pop up for a second so the user knows what they are booting from.",
+      "parentUuid": "a141085c_e9592722",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 38
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d5ef569_15557a45",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2019-12-18T06:56:45Z",
       "side": 1,
       "message": "Hopefully we can still use \u003cTab\u003e to get to this screen?  How about adding a note that this is the \u003cTab\u003e screen since that\u0027s what people are most familiar with?",
+      "range": {
+        "startLine": 447,
+        "startChar": 21,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aacdfa1_a3b7e5dd",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2019-12-18T20:19:51Z",
+      "side": 1,
+      "message": "No, we are trying to make the debug info display nicer looking on a different screen with the new firmware UI template.  I don\u0027t believe that we are going to have the tab functionality anymore.",
+      "parentUuid": "8d5ef569_15557a45",
       "range": {
         "startLine": 447,
         "startChar": 21,
