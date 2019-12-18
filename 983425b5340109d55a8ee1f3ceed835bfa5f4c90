@@ -105,6 +105,24 @@
       "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bde9ca6_eda8a25e",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T09:25:02Z",
+      "side": 1,
+      "message": "CL:225490 introduces desc, version, and guid (now id) for \"new-style packed keys\".  I guess the plan was to remove sig_alg and hash_alg eventually, and replace use with vb2_guid (now vb2_id).\n\nWe could either:\n\n(1) Fork vb2_public_key into vb2_public_key (without desc, version, id) and vb21_public_key (with).  Rename vb2_id to vb21_id.\n\n(2) Remove desc, version, and id from vb2_public_key, and update vboot 2.1 code to read from sig_alg and hash_alg instead.  Remove vb2_id.\n\nThe first solution would probably require less changes, and would keep vboot 2.1 code intact just in case we want to pick and choose parts of it for a future vboot 3.0 implementation.",
+      "parentUuid": "0ba1b192_8b486940",
+      "revId": "983425b5340109d55a8ee1f3ceed835bfa5f4c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
