@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab451039_62e7999f",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T06:56:45Z",
+      "side": 1,
+      "message": "Is this \"already confirmed\"?  Or is this the confirm screen?",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 27
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36408eee_53bfada4",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T06:56:45Z",
+      "side": 1,
+      "message": "What kind of failure ends up at this screen?",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 36
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe263b2_09a3f29a",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T06:56:45Z",
+      "side": 1,
+      "message": "Not sure if _WARNING fits the description very well.\n\nMaybe _SELECT_RECOVERY or _RECOVERY_SELECT or _RECOVERY_CHOOSE_SOURCE?",
+      "range": {
+        "startLine": 434,
+        "startChar": 19,
+        "endLine": 434,
+        "endChar": 27
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a141085c_e9592722",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T06:56:45Z",
+      "side": 1,
+      "message": "What are these?",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 38
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5ef569_15557a45",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-18T06:56:45Z",
+      "side": 1,
+      "message": "Hopefully we can still use \u003cTab\u003e to get to this screen?  How about adding a note that this is the \u003cTab\u003e screen since that\u0027s what people are most familiar with?",
+      "range": {
+        "startLine": 447,
+        "startChar": 21,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
