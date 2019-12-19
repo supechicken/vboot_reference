@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "233cf968_ab0b67a1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-19T05:03:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a3c7efe_a0cc2278",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 27
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36408eee_53bfada4",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "recovery_reason \u003d\u003d 0x5a, according to Shelly.",
       "parentUuid": "36408eee_53bfada4",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 36
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0958709_919547fa",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-19T05:03:34Z",
+      "side": 1,
+      "message": "Shelley, we have to be really careful about showing this screen, and which recovery_reasons can be mapped to it, since the end result will be the user assuming their hardware is unusable and broken.\n\nHow are we distinguishing what is a hardware failure and what is not?  For example, any errors that occur in RW could potentially be from a bad firmware update.  Or consider the RO_TPM series of errors -- if we can\u0027t setup or lock a TPM space in RO, should we assume the TPM hardware is broken?\n\nI don\u0027t think just using 0x5a (no disk found) is suitable -- it\u0027s just one potential hardware failure out of many (and it\u0027s also triggered from RW, so it may not even be a hardware problem).  So we would need to decide whether to whitelist a (possibly contiguous) range of recovery reasons (which can\u0027t change after we lock down RO), or potentially set a separate nvdata flag which indicates hardware failure (which might not be useful since we can\u0027t assume RW errors are hardware issues at all).\n\n[I\u0027m fine adding the screen here, but I want to open up discussion about what this screen is actually for and when it should be shown.]",
+      "parentUuid": "92cb5034_754a463e",
       "range": {
         "startLine": 432,
         "startChar": 1,
@@ -214,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "f6ecfe81_d225b761",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-19T05:03:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "150ea186_037b20d3",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 38
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5ef569_15557a45",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -273,6 +345,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "8aacdfa1_a3b7e5dd",
+      "range": {
+        "startLine": 447,
+        "startChar": 21,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62c83667_84423246",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-19T05:03:34Z",
+      "side": 1,
+      "message": "I\u0027d definitely like to keep all the keyboard shortcuts working from the original clamshell UI.  That would include Ctrl+U, Ctrl+D, \u003cTab\u003e, etc.\n\nIf that means jumping into a different menu screen when \u003cTab\u003e is pressed, that\u0027s fine.  It doesn\u0027t have to be painted on top of the current screen like what currently happens.",
+      "parentUuid": "7d0b0d47_06ef1cc2",
       "range": {
         "startLine": 447,
         "startChar": 21,
