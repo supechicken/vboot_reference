@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a3c7efe_a0cc2278",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-12-19T04:08:01Z",
+      "side": 1,
+      "message": "Yes, already confirmed (similar to VB_SCREEN_TO_NORM_CONFIRMED above).",
+      "parentUuid": "ab451039_62e7999f",
+      "range": {
+        "startLine": 430,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 27
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36408eee_53bfada4",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92cb5034_754a463e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-12-19T04:08:01Z",
+      "side": 1,
+      "message": "recovery_reason \u003d\u003d 0x5a, according to Shelly.",
+      "parentUuid": "36408eee_53bfada4",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 36
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +163,30 @@
       "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150ea186_037b20d3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-12-19T04:08:01Z",
+      "side": 1,
+      "message": "For example, https://docs.google.com/presentation/d/1sUCPomFQiLPJApgjCUYhSGLHPCODe1je_YyPTZENz54/edit#slide\u003did.g62d02357e6_0_120",
+      "parentUuid": "b6bb2aa2_75d81d9c",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 38
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
