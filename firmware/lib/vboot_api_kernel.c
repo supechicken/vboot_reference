@@ -12,6 +12,7 @@
 #include "2rsa.h"
 #include "2secdata.h"
 #include "2sysincludes.h"
+#include "2ui.h"
 #include "load_kernel_fw.h"
 #include "secdata_tpm.h"
 #include "utility.h"

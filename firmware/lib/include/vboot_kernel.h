@@ -28,60 +28,10 @@ struct vb2_context;
  */
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags);
 
-/* Flags for VbUserConfirms() */
-#define VB_CONFIRM_MUST_TRUST_KEYBOARD (1 << 0)
-#define VB_CONFIRM_SPACE_MEANS_NO      (1 << 1)
-
-/**
- * Ask the user to confirm something.
- *
- * We should display whatever the question is first, then call this. ESC is
- * always "no", ENTER is always "yes", and we'll specify what SPACE means. We
- * don't return until one of those keys is pressed, or until asked to shut
- * down.
- *
- * Additionally, in some situations we don't accept confirmations from an
- * untrusted keyboard (such as a USB device).  In those cases, a recovery
- * button press is needed for confirmation, instead of ENTER.
- *
- * Returns: 1=yes, 0=no, -1 = shutdown.
- */
-int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags);
-
 /**
  * Handle a normal boot.
  */
 vb2_error_t VbBootNormal(struct vb2_context *ctx);
-
-/**
- * Handle a developer-mode boot.
- */
-vb2_error_t VbBootDeveloper(struct vb2_context *ctx);
-
-/**
- * Handle a diagnostic-mode boot.
- */
-vb2_error_t VbBootDiagnostic(struct vb2_context *ctx);
-
-/**
- * Handle a recovery-mode boot.
- */
-vb2_error_t VbBootRecovery(struct vb2_context *ctx);
-
-/**
- * Handle a developer-mode boot using detachable menu ui
- */
-vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
-
-/**
- * Handle a recovery-mode boot using detachable menu ui
- */
-vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
-
-/**
- * Reinitialize global state. This should only need to be called by init tests.
- */
-void vb2_init_ui(void);
 
 /**
  * Locks secdata_kernel.

@@ -15,10 +15,10 @@
 #include "2nvstorage.h"
 #include "2struct.h"
 #include "2sysincludes.h"
+#include "2ui.h"
 #include "host_common.h"
 #include "secdata_tpm.h"
 #include "test_common.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
 
 /* Mock data */

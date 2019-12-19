@@ -10,8 +10,8 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2sysincludes.h"
+#include "2ui.h"
 #include "vboot_api.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
 
 #define SYNC_FLAG(select)					\

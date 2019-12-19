@@ -8,6 +8,9 @@
 #ifndef VBOOT_REFERENCE_VBOOT_DISPLAY_H_
 #define VBOOT_REFERENCE_VBOOT_DISPLAY_H_
 
+#include "2api.h"
+#include "vboot_ui_api.h"
+
 vb2_error_t VbDisplayScreen(struct vb2_context *ctx, uint32_t screen, int force,
 			  const VbScreenData *data);
 vb2_error_t VbDisplayMenu(struct vb2_context *ctx,
