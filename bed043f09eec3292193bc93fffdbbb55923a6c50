@@ -378,6 +378,30 @@
       "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3816e616_7b00dee5",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-12-19T07:48:17Z",
+      "side": 1,
+      "message": "Filed b/146536141 to track this.",
+      "parentUuid": "62c83667_84423246",
+      "range": {
+        "startLine": 447,
+        "startChar": 21,
+        "endLine": 447,
+        "endChar": 22
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
