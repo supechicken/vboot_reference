@@ -20,6 +20,7 @@
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 #include "vboot_test.h"
+#include "vboot_ui.h"
 
 /* Global variables */
 static LoadKernelParams lkp;

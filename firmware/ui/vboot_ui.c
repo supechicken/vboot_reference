@@ -21,6 +21,7 @@
 #include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
+#include "vboot_ui.h"
 #include "vboot_ui_common.h"
 
 /* Global variables */
@@ -30,6 +31,9 @@ static enum {
 	POWER_BUTTON_PRESSED, /* must have been previously released */
 } power_button_state;
 
+/**
+ * Reinitialize global state. This should only need to be called by init tests.
+ */
 void vb2_init_ui(void)
 {
 	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
@@ -94,6 +98,20 @@ static vb2_error_t VbTryUsb(struct vb2_context *ctx)
 	return retval;
 }
 
+/**
+ * Ask the user to confirm something.
+ *
+ * We should display whatever the question is first, then call this. ESC is
+ * always "no", ENTER is always "yes", and we'll specify what SPACE means. We
+ * don't return until one of those keys is pressed, or until asked to shut
+ * down.
+ *
+ * Additionally, in some situations we don't accept confirmations from an
+ * untrusted keyboard (such as a USB device).  In those cases, a recovery
+ * button press is needed for confirmation, instead of ENTER.
+ *
+ * Returns: 1=yes, 0=no, -1 = shutdown.
+ */
 int VbUserConfirms(struct vb2_context *ctx, uint32_t confirm_flags)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);

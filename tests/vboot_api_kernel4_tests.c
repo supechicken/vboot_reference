@@ -17,10 +17,10 @@
 #include "test_common.h"
 #include "tlcl.h"
 #include "tss_constants.h"
-#include "vboot_audio.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 #include "vboot_test.h"
+#include "vboot_ui.h"
 
 /* Mock data */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]

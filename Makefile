@@ -345,13 +345,15 @@ FWLIB_SRCS = \
 	firmware/lib/gpt_misc.c \
 	firmware/lib/utility_string.c \
 	firmware/lib/vboot_api_kernel.c \
-	firmware/lib/vboot_audio.c \
 	firmware/lib/vboot_common.c \
-	firmware/lib/vboot_display.c \
-	firmware/lib/vboot_kernel.c \
-	firmware/lib/vboot_ui.c \
-	firmware/lib/vboot_ui_common.c \
-	firmware/lib/vboot_ui_menu.c
+	firmware/lib/vboot_kernel.c
+
+UI_SRCS = \
+	firmware/ui/vboot_audio.c \
+	firmware/ui/vboot_display.c \
+	firmware/ui/vboot_ui.c \
+	firmware/ui/vboot_ui_common.c \
+	firmware/ui/vboot_ui_menu.c
 
 # Code common to both vboot 2.0 (old structs) and 2.1 (new structs)
 FWLIB2X_SRCS = \
@@ -427,17 +429,21 @@ FWLIB_SRCS += \
 	firmware/stub/vboot_api_stub_init.c \
 	firmware/stub/vboot_api_stub_stream.c
 
+UI_SRCS += \
+	firmware/ui/vboot_ui_stub.c
+
 FWLIB2X_SRCS += \
 	firmware/2lib/2stub.c
 endif
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
+UI_OBJS = ${UI_SRCS:%.c=${BUILD}/%.o}
 FWLIB2X_OBJS = ${FWLIB2X_SRCS:%.c=${BUILD}/%.o}
 FWLIB20_OBJS = ${FWLIB20_SRCS:%.c=${BUILD}/%.o}
 FWLIB21_OBJS = ${FWLIB21_SRCS:%.c=${BUILD}/%.o}
 TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} ${FWLIB21_OBJS} \
-	${TLCL_OBJS}
+ALL_OBJS += ${FWLIB_OBJS} ${UI_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} \
+	${FWLIB21_OBJS} ${TLCL_OBJS}
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
@@ -507,6 +513,7 @@ HOSTLIB_SRCS = \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_init.c \
+	firmware/ui/vboot_ui_stub.c \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
@@ -864,6 +871,7 @@ ${TLCL_OBJS}: CFLAGS += -DTPM_BLOCKING_CONTINUESELFTEST
 ifneq ($(filter-out 0,$(UNROLL_LOOPS)),)
 $(info vboot hash algos built with unrolled loops (faster, larger code size))
 ${FWLIB_OBJS}: CFLAGS += -DUNROLL_LOOPS
+${UI_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB2X_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB20_OBJS}: CFLAGS += -DUNROLL_LOOPS
 ${FWLIB21_OBJS}: CFLAGS += -DUNROLL_LOOPS
@@ -871,12 +879,14 @@ else
 $(info vboot hash algos built with tight loops (slower, smaller code size))
 endif
 
+${UI_OBJS}: INCLUDES += -Ifirmware/ui/include
+
 ${FWLIB21_OBJS}: INCLUDES += -Ifirmware/lib21/include
 
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
 
-${FWLIB}: ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS}
+${FWLIB}: ${FWLIB_OBJS} ${UI_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -925,8 +935,8 @@ ${TLCL}: ${TLCL_OBJS}
 utillib: ${UTILLIB}
 
 # TODO: better way to make .a than duplicating this recipe each time?
-${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${FWLIB2X_OBJS} ${FWLIB20_OBJS} \
-		${FWLIB21_OBJS} ${TLCL_OBJS}
+${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${UI_OBJS} ${FWLIB2X_OBJS} \
+		${FWLIB20_OBJS} ${FWLIB21_OBJS} ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"

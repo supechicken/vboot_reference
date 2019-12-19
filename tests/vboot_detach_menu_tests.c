@@ -16,12 +16,10 @@
 #include "test_common.h"
 #include "tss_constants.h"
 #include "vboot_api.h"
-#include "vboot_audio.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 #include "vboot_test.h"
-#include "vboot_ui_menu_private.h"
+#include "vboot_ui.h"
 
 /* Mock data */
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];

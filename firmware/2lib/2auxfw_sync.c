@@ -12,7 +12,7 @@
 #include "2sysincludes.h"
 #include "vboot_api.h"
 #include "vboot_common.h"
-#include "vboot_display.h"
+#include "vboot_ui.h"
 
 /**
  * Display the WAIT screen

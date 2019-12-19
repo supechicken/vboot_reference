@@ -11,6 +11,7 @@
 #include "vboot_api.h"
 #include "vboot_kernel.h"
 #include "vboot_ui_common.h"
+#include "vboot_ui_api.h"
 
 /* One or two beeps to notify that attempted action was disallowed. */
 void vb2_error_beep(enum vb2_beep_type beep)

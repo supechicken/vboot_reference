@@ -8,6 +8,31 @@
 #ifndef VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
 #define VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
 
+/**
+ * Handle a developer-mode boot.
+ */
+vb2_error_t VbBootDeveloper(struct vb2_context *ctx);
+
+/**
+ * Handle a diagnostic-mode boot.
+ */
+vb2_error_t VbBootDiagnostic(struct vb2_context *ctx);
+
+/**
+ * Handle a recovery-mode boot.
+ */
+vb2_error_t VbBootRecovery(struct vb2_context *ctx);
+
+/**
+ * Handle a recovery-mode boot using detachable menu ui
+ */
+vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
+
+/**
+ * Handle a developer-mode boot using detachable menu ui
+ */
+vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
+
 #define KEY_DELAY_MS	20	/* Delay between key scans in UI loops */
 
 enum vb2_beep_type {

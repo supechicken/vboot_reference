@@ -18,8 +18,8 @@
 #include "host_common.h"
 #include "secdata_tpm.h"
 #include "test_common.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
+#include "vboot_ui.h"
 
 /* Mock data */
 static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
