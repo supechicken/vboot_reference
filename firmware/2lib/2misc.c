@@ -12,7 +12,9 @@
 #include "2rsa.h"
 #include "2secdata.h"
 #include "2sha.h"
+#include "2struct.h"
 #include "2sysincludes.h"
+#include "vb2_common.h"
 #include "vboot_api.h"
 #include "vboot_struct.h"
 
@@ -33,6 +35,17 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	return (struct vb2_gbb_header *)((void *)sd + sd->gbb_offset);
+}
+
+uint32_t vb2api_get_firmware_size(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	if (!sd->preamble_size)
+		return 0;
+
+	const struct vb2_fw_preamble *pre = (const struct vb2_fw_preamble *)
+		vb2_member_of(sd, sd->preamble_offset);
+	return pre->body_signature.data_size;
 }
 
 vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
@@ -405,4 +418,14 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 
 	/* Now we confidently check the recovery switch state at boot */
 	return !!(vb2_get_sd(ctx)->vbsd->flags & VBSD_BOOT_REC_SWITCH_ON);
+}
+
+int vb2api_need_reboot_for_display(struct vb2_context *ctx)
+{
+	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
+		VB2_DEBUG("Need reboot to initialize display\n");
+		vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+		return 1;
+	}
+	return 0;
 }
