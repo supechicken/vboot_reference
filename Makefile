@@ -347,7 +347,6 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
 	firmware/lib/vboot_common.c \
-	firmware/lib/vboot_common_init.c \
 	firmware/lib/vboot_display.c \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui.c \
@@ -1110,10 +1109,6 @@ ${FUZZ_TEST_BINS}: LDFLAGS += -fsanitize=fuzzer
 # ----------------------------------------------------------------------------
 # Generic build rules. LIBS and OBJS can be overridden to tweak the generic
 # rules for specific targets.
-
-${BUILD}/%_s: ${BUILD}/%.o ${OBJS} ${LIBS}
-	@${PRINTF} "    LD (static)   $(subst ${BUILD}/,,$@)\n"
-	${Q}${LD} -o $@ ${CFLAGS} ${LDFLAGS} $< ${OBJS} ${LIBS} ${LDLIBS}
 
 ${BUILD}/%: ${BUILD}/%.o ${OBJS} ${LIBS}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
