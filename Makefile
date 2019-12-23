@@ -195,6 +195,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# pass LEGACY_MENU_UI= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${LEGACY_MENU_UI}),)
+	CFLAGS += -DLEGACY_MENU_UI=1
+else
+	CFLAGS += -DLEGACY_MENU_UI=0
+endif
+
 # enable all features during local compile (permits testing)
 ifeq (${FIRMWARE_ARCH},)
 DIAGNOSTIC_UI := 1
