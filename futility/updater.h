@@ -248,9 +248,15 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
  * Returns 0 on success, otherwise failure.
  */
 int model_apply_white_label(
+		struct updater_config *cfg,
 		struct model_config *model,
-		struct archive *archive,
 		const char *signature_id,
 		const char *image);
+
+/*
+ * Returns a valid root key from GBB header, or NULL on failure.
+ */
+const struct vb2_packed_key *get_rootkey(
+		const struct vb2_gbb_header *gbb);
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
