@@ -70,7 +70,10 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
-		  * const PATH_ENDSWITH_SERVARS = "/setvars.sh";
+		  * const PATH_ENDSWITH_SERVARS = "/setvars.sh",
+		  * const DOPEFISH_WL_TAG = "dopefish",
+		  * const DOPEFISH_ROOT_KEY = "9a1f2cc319e2f2e61237dc51125e35ddd4d20984",
+		  * const PHASER360 = "phaser360";
 
 struct archive {
 	void *handle;
@@ -861,12 +864,56 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	return model;
 }
 
+static char *phaser360_dual_key_workaround(struct updater_config *cfg,
+					   struct model_config *model)
+{
+	struct firmware_image *image_from = cfg->image_current;
+	struct vb2_gbb_header *gbb = NULL;
+	struct vb2_packed_key *rootkey = NULL;
+	char *sig_id = NULL;
+
+	if (!image_from->data) {
+		INFO("Loading current system firmware...");
+		if (load_system_firmware(cfg, image_from) != 0) {
+			WARN("load system firmware failed, use model name %s
+				as default", model->name);
+			return strdup(model->name);
+        }
+	STATUS("Current system: %s (RO:%s, RW/A:%s, RW/B:%s).",
+		image_from->file_name, image_from->ro_version,
+		image_from->rw_version_a, image_from->rw_version_b);
+
+	gbb = find_gbb(image_from);
+	if (!gbb) {
+		WARN("No system gbb found, just use model name
+			%s as default", model->name);
+		return strdup(model->name);
+	}
+
+	rootkey = get_rootkey(gbb);
+	if (!rootkey) {
+		WARN("No system rootkey found, just use model name
+			%s as default", model->name);
+		return strdup(model->name);
+	}
+
+	if (strcmp(packed_key_sha1_string(rootkey), DOPEFISH_ROOT_KEY) == 0) {
+		INFO("phaser360 get a dopefish key");
+		ASPRINTF(&sig_id, "%s-%s", model->name, DOPEFISH_WL_TAG);
+		return sig_id;
+	}
+
+	return strdup(model->name);
+}
+
 /*
  * Determines the signature ID to use for white label.
  * Returns the signature ID for looking up rootkey and vblock files.
  * Caller must free the returned string.
  */
-static char *resolve_signature_id(struct model_config *model, const char *image)
+static char *resolve_signature_id(struct updater_config *cfg,
+				  struct model_config *model,
+				  const char *image)
 {
 	int is_unibuild = model->signature_id ? 1 : 0;
 	char *wl_tag = vpd_get_value(image, VPD_WHITELABEL_TAG);
@@ -878,7 +925,11 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
 			WARN("No VPD '%s' set for white label - use model name "
 			     "'%s' as default.\n", VPD_WHITELABEL_TAG,
 			     model->name);
-			return strdup(model->name);
+			if (!strcmp(model->name, PHASER360))
+				return phaser360_dual_key_workaround(cfg, model);
+			else
+				return strdup(model->name);
+			}
 		}
 
 		ASPRINTF(&sig_id, "%s-%s", model->name, wl_tag);
@@ -909,16 +960,17 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
  * Returns 0 on success, otherwise failure.
  */
 int model_apply_white_label(
+		struct updater_config *cfg,
 		struct model_config *model,
-		struct archive *archive,
 		const char *signature_id,
 		const char *image)
 {
+	struct archive *archive = cfg->archive;
 	char *sig_id = NULL;
 	int r = 0;
 
 	if (!signature_id) {
-		sig_id = resolve_signature_id(model, image);
+		sig_id = resolve_signature_id(cfg, model, image);
 		signature_id = sig_id;
 	}
 

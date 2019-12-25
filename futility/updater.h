@@ -248,8 +248,8 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
  * Returns 0 on success, otherwise failure.
  */
 int model_apply_white_label(
+		struct updater_config *cfg,
 		struct model_config *model,
-		struct archive *archive,
 		const char *signature_id,
 		const char *image);
 

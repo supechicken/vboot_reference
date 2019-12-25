@@ -1354,7 +1354,7 @@ static int updater_apply_white_label(struct updater_config *cfg,
 		}
 	}
 	return !!model_apply_white_label(
-			model, cfg->archive, signature_id, tmp_image);
+			cfg, model, signature_id, tmp_image);
 }
 
 /*
