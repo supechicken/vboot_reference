@@ -146,25 +146,32 @@ static const Param* FindParam(const char* name) {
   return NULL;
 }
 
+enum {
+  PARAM_SUCCESS = 0,
+  PARAM_ERROR_READ_ONLY,
+  PARAM_ERROR_INVALID_NUMBER,
+  PARAM_ERROR_SET_FAILURE,
+};
 
 /* Set the specified parameter.
  *
  * Returns 0 if success, non-zero if error. */
 static int SetParam(const Param* p, const char* value) {
   if (!(p->flags & CAN_WRITE))
-    return 1;  /* Parameter is read-only */
+    return PARAM_ERROR_READ_ONLY;
 
   if (p->flags & IS_STRING) {
-    return (0 == VbSetSystemPropertyString(p->name, value) ? 0 : 1);
+    return (0 == VbSetSystemPropertyString(p->name, value) ?
+            0 : PARAM_ERROR_SET_FAILURE);
   } else {
     char* e;
     int i = (int)strtol(value, &e, 0);
     if (!*value || (e && *e))
-      return 1;
-    return (0 == VbSetSystemPropertyInt(p->name, i) ? 0 : 1);
+      return PARAM_ERROR_INVALID_NUMBER;
+    return (0 == VbSetSystemPropertyInt(p->name, i) ?
+            0 : PARAM_ERROR_SET_FAILURE);
   }
 }
-
 
 /* Compares the parameter with the expected value.
  *
@@ -301,7 +308,12 @@ int main(int argc, char* argv[]) {
     if (has_set) {
       retval = SetParam(p, value);
       if (retval) {
-        fprintf(stderr, "Parameter %s is read-only\n", name);
+        if (retval == PARAM_ERROR_READ_ONLY)
+          fprintf(stderr, "Parameter %s is read-only\n", name);
+	else if (retval == PARAM_ERROR_INVALID_NUMBER)
+          fprintf(stderr, "Value %s is not a number\n", value);
+	else
+          fprintf(stderr, "Failed to set parameter %s\n", name);
       }
     } else if (has_expect)
       retval = CheckParam(p, value);
