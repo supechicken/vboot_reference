@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "debc4bb6_d07f792d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2019-12-26T09:32:57Z",
+      "side": 1,
+      "message": "Functions that have prefixes \"VbEx\" are called from vboot and implemented in depthcharge.",
+      "range": {
+        "startLine": 685,
+        "startChar": 5,
+        "endLine": 685,
+        "endChar": 27
+      },
+      "revId": "ea57aefc1e2e5e6ff77860bd79a480ae0b01301b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
