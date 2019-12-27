@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0d783a4_0dff7608",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-27T11:56:05Z",
+      "side": 1,
+      "message": "Could use a short comment above this.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "03dc471b9b6406a6a763bf9377a54728ffec08d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ebb7a8_f452e35c",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-27T11:56:05Z",
+      "side": 1,
+      "message": "Update this.",
+      "range": {
+        "startLine": 158,
+        "startChar": 25,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "03dc471b9b6406a6a763bf9377a54728ffec08d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df8cfa1_5d3a3224",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-27T11:56:05Z",
+      "side": 1,
+      "message": "Since we have no idea what went wrong... maybe this could use PARAM_ERROR_UNKNOWN instead and set the value \u003d\u003d 1 in the enum.",
+      "range": {
+        "startLine": 165,
+        "startChar": 16,
+        "endLine": 165,
+        "endChar": 39
+      },
+      "revId": "03dc471b9b6406a6a763bf9377a54728ffec08d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38470a7_bff9b01b",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-27T11:56:05Z",
+      "side": 1,
+      "message": "Since it\u0027s possible to support other kinds of numbers here in the future... maybe change this to INT or INTEGER?",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 39
+      },
+      "revId": "03dc471b9b6406a6a763bf9377a54728ffec08d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c730915d_b8206183",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-27T11:56:05Z",
+      "side": 1,
+      "message": "How about a switch statement?",
+      "range": {
+        "startLine": 311,
+        "startChar": 8,
+        "endLine": 311,
+        "endChar": 12
+      },
+      "revId": "03dc471b9b6406a6a763bf9377a54728ffec08d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
