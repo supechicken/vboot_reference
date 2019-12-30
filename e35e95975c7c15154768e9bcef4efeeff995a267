@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb55dc9_fd485c2b",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2019-12-30T12:53:56Z",
+      "side": 1,
+      "message": "How about we just get rid of this conditional and change \"default\" to PARAM_ERROR_UNKNOWN (and reorder it)?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 19
+      },
+      "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
