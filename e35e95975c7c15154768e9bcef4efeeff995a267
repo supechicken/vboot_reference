@@ -22,6 +22,30 @@
       "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d198d40_61c0f7d3",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-02T07:27:43Z",
+      "side": 1,
+      "message": "I thought about that, but there\u0027s an else if statement below. How would you suggesting rewriting that?",
+      "parentUuid": "7cb55dc9_fd485c2b",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 19
+      },
+      "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
