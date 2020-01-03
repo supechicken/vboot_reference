@@ -94,6 +94,30 @@
       "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e67d4f7_73745c54",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T22:23:41Z",
+      "side": 1,
+      "message": "Actually, now I\u0027d be worried that someone adds a new PARAM_ERROR_ value and forgets to update this switch statement (in which case no message would be printed on that failure).\n\nCan we add PARAM_SUCCESS: break; at the top, and move PARAM_ERROR_UNKNOWN back to being \"default:\"?\n\nSorry for the extra trouble.",
+      "parentUuid": "87f1da30_57b9f32e",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 19
+      },
+      "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
