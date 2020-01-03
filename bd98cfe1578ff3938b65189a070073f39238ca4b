@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "589058b6_116e7642",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-03T02:10:07Z",
+      "side": 1,
+      "message": "Please move hacks to updater_quirks.c, and only enable it there. We don\u0027t want hacks in general implementation.",
+      "range": {
+        "startLine": 867,
+        "startChar": 13,
+        "endLine": 867,
+        "endChar": 42
+      },
+      "revId": "bd98cfe1578ff3938b65189a070073f39238ca4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
