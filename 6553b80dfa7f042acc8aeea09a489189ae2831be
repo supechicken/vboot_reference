@@ -68,6 +68,54 @@
       "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551cc916_9f6f7259",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-01-03T18:59:46Z",
+      "side": 1,
+      "message": "How about VB_SCREEN_COMPLETE_RMA?",
+      "parentUuid": "c965fbeb_87eda785",
+      "range": {
+        "startLine": 436,
+        "startChar": 10,
+        "endLine": 436,
+        "endChar": 14
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea5f0ce_c043902c",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-01-03T18:59:46Z",
+      "side": 1,
+      "message": "Pranay this SGTM",
+      "parentUuid": "fa99d970_be81a25c",
+      "range": {
+        "startLine": 436,
+        "startChar": 17,
+        "endLine": 436,
+        "endChar": 22
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
