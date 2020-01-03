@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7ef1294e_e1751cbc",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "Move these into the 0x300 range.",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 32
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85176acc_e2841e04",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -112,6 +135,529 @@
         "startChar": 17,
         "endLine": 436,
         "endChar": 22
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97627247_4b3ea11b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "If you want to use \"selected_index\", then you need to reverse the 0 and 1 assignment in vboot_ui.c.  YES is on the left, so it should be index 0.\n\nOr you can rename this to something like confirm_selected.",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 25
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f3e3fe_0ef3178b",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "All of this Wilco-specific code is getting a bit unwieldy, now taking up a large portion of this file.  Can we please move this to a separate file?  vboot_ui_wilco.c or whatever you want to call it.  This will also help decrease coupling in preparation for moving into Groot UI.",
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba657f8_425723e4",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 2
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2ee7a2_40dd0f2f",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 5
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ac7d2b_013fa3a2",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "N",
+      "range": {
+        "startLine": 333,
+        "startChar": 6,
+        "endLine": 333,
+        "endChar": 7
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218e7064_e2f603b3",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 346,
+        "startChar": 5,
+        "endLine": 346,
+        "endChar": 6
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab5b606_ffaf6f23",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "Either:\n\n  /* first line\n     second line */\n\nor:\n\n  /*\n   * multi-line\n   * comment\n   */",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 421,
+        "endChar": 7
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42b27c9_85ea0640",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "Use /* */",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 435,
+        "endChar": 6
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5672e09_c0af4b91",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "Use /* */",
+      "range": {
+        "startLine": 444,
+        "startChar": 4,
+        "endLine": 444,
+        "endChar": 6
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92251a92_af935451",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "VENDOR_DATA_LENGTH \u003e 0 is used elsewhere, let\u0027s stick with that.",
+      "range": {
+        "startLine": 657,
+        "startChar": 3,
+        "endLine": 657,
+        "endChar": 29
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05cdaaf_6c0e6275",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 657,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 3
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f21b33_9e9aedc6",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 847,
+        "startChar": 33,
+        "endLine": 847,
+        "endChar": 34
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee7665d_7564f973",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 862,
+        "startChar": 33,
+        "endLine": 862,
+        "endChar": 35
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a988de_5e7f640b",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 868,
+        "startChar": 33,
+        "endLine": 868,
+        "endChar": 34
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de08845b_69f074e6",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 885,
+        "startChar": 33,
+        "endLine": 885,
+        "endChar": 35
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3360af65_191c41cf",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 886,
+        "startChar": 36,
+        "endLine": 886,
+        "endChar": 38
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08a05a5_d954e187",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 886,
+        "startChar": 33,
+        "endLine": 886,
+        "endChar": 34
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f9cad0_63af6407",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 887,
+        "startChar": 37,
+        "endLine": 887,
+        "endChar": 38
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e573bae9_44408765",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 889,
+        "startChar": 34,
+        "endLine": 889,
+        "endChar": 35
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b3d7e8_c8911fdf",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 890,
+        "startChar": 34,
+        "endLine": 890,
+        "endChar": 35
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc1bcb1_33890b9c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "; or ,\n\nUpdate other strings as well.",
+      "range": {
+        "startLine": 896,
+        "startChar": 25,
+        "endLine": 896,
+        "endChar": 26
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf128b2_46b9924b",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 899,
+        "startChar": 33,
+        "endLine": 899,
+        "endChar": 34
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120cf6bc_ce560503",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-03T21:59:38Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 1036,
+        "startChar": 3,
+        "endLine": 1036,
+        "endChar": 4
       },
       "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
