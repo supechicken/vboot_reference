@@ -70,6 +70,30 @@
       "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f1da30_57b9f32e",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-03T02:20:24Z",
+      "side": 1,
+      "message": "Right, my mistake.",
+      "parentUuid": "47307efe_a77cee99",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 19
+      },
+      "revId": "e35e95975c7c15154768e9bcef4efeeff995a267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
