@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fdc9e7f_f6d546dc",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-06T03:51:52Z",
+      "side": 1,
+      "message": "I think if you want to put this here then it needs VBOOT_FALLTHROUGH right after -- otherwise we will get compile errors.  We can probably just leave it out.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 31
+      },
+      "revId": "97d4897e43e8215cba7eaa937209c44f2e7a4262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
