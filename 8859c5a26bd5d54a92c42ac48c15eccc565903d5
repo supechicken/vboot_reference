@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c66742_10e3c875",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-06T17:01:32Z",
+      "side": 1,
+      "message": "Can we call this EC_SYNC_SUPPORTED to match the vboot2 context flag?",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "8859c5a26bd5d54a92c42ac48c15eccc565903d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4349b24b_b2139c94",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-06T17:01:32Z",
+      "side": 1,
+      "message": "EC sync",
+      "range": {
+        "startLine": 212,
+        "startChar": 7,
+        "endLine": 212,
+        "endChar": 20
+      },
+      "revId": "8859c5a26bd5d54a92c42ac48c15eccc565903d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
