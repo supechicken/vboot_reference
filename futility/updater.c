@@ -660,7 +660,7 @@ static int check_compatible_platform(struct updater_config *cfg)
 /*
  * Returns a valid root key from GBB header, or NULL on failure.
  */
-static const struct vb2_packed_key *get_rootkey(
+const struct vb2_packed_key *get_rootkey(
 		const struct vb2_gbb_header *gbb)
 {
 	struct vb2_packed_key *key = NULL;
@@ -1192,6 +1192,9 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return UPDATE_ERR_SYSTEM_IMAGE;
 
 	if (try_apply_quirk(QUIRK_EVE_SMM_STORE, cfg))
+		return UPDATE_ERR_INVALID_IMAGE;
+
+	if (try_apply_quirk(QUIRK_DUAL_ROOT_KEY, cfg))
 		return UPDATE_ERR_INVALID_IMAGE;
 
 	if (debugging_enabled)
