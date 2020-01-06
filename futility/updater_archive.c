@@ -525,7 +525,7 @@ static int str_startswith(const char *name, const char *pattern)
 }
 
 /* Returns the VPD value by given key name, or NULL on error (or no value). */
-static char *vpd_get_value(const char *fpath, const char *key)
+char *vpd_get_value(const char *fpath, const char *key)
 {
 	char *command, *result;
 
@@ -709,7 +709,7 @@ int patch_image_by_model(
  * Finds available patch files by given model.
  * Updates `model` argument with path of patch files.
  */
-static void find_patches_for_model(struct model_config *model,
+void find_patches_for_model(struct model_config *model,
 				   struct archive *archive,
 				   const char *signature_id)
 {

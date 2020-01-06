@@ -15,6 +15,7 @@
 #include "futility.h"
 #include "host_misc.h"
 #include "updater.h"
+#include "util_misc.h"
 
 struct quirks_record {
 	const char * const match;
@@ -55,6 +56,8 @@ static const struct quirks_record quirks_records[] = {
         { .match = "Google_Reks.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Relm.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Wizpig.", .quirks = "allow_empty_wltag" },
+
+	{ .match = "Google_Phaser.", .quirks = "allow_dual_root_key"},
 };
 
 /* Preserves meta data and reload image contents from given file path. */
@@ -377,6 +380,119 @@ static int quirk_ec_partial_recovery(struct updater_config *cfg)
 }
 
 /*
+ * This function will first judge whether the device is phaser360
+ * device with dopefish root key. If it is and its whitelabel_tag
+ * is null, then we need re-patch image with dopefish rootkey and
+ * vblock_a/vblock_b. When re-patch is neccessary, this function
+ * will return 1.
+ */
+static int is_dual_root_key_model(struct updater_config *cfg)
+{
+	const char * const PHASER360 = "phaser360";
+	const char * const DOPEFISH_ROOT_KEY = "9a1f2cc319e2f2e61237dc51125e35ddd4d20984";
+	const char * const VPD_WHITELABEL_TAG = "whitelabel_tag";
+
+	char *sys_model_name = NULL;
+	struct firmware_image *image_from = &cfg->image_current;
+	const struct vb2_gbb_header *gbb = NULL;
+	const struct vb2_packed_key *rootkey = NULL;
+
+	const char *tmp_image = NULL;
+	char *wl_tag = NULL;
+
+	/* phaser and phaser360 use the same firmware */
+	sys_model_name = host_shell("mosys platform model");
+	INFO("System model name: '%s'.\n", sys_model_name);
+	if (strcmp(sys_model_name, PHASER360) != 0) {
+		free(sys_model_name);
+		return 0;
+	}
+	free(sys_model_name);
+
+	gbb = find_gbb(image_from);
+	if (!gbb) {
+		WARN("No system gbb found in system image.\n");
+		return 0;
+	}
+
+	rootkey = get_rootkey(gbb);
+	if (!rootkey) {
+		WARN("No system rootkey found in system image.\n");
+		return 0;
+	}
+
+	if (strcmp(packed_key_sha1_string(rootkey), DOPEFISH_ROOT_KEY) != 0) {
+		INFO("Not a phaser360 with dopefish root key.\n");
+		return 0;
+	}
+
+	/*
+	 * now the device is phaser360 with a dopefish key.
+	 * we need see wltag is null or not, if null then re-patch rootkey/vblocks.
+	 * otherwise it is a real dopefish device, nothing to do.
+	 */
+	tmp_image = get_firmware_image_temp_file(image_from, &cfg->tempfiles);
+	if (!tmp_image)
+		return 0;
+
+	wl_tag = vpd_get_value(tmp_image, VPD_WHITELABEL_TAG);
+	if (wl_tag) {
+		WARN("Device is a real dopefish model, wl(%s).\n", wl_tag);
+		free(wl_tag);
+		return 0;
+	}
+
+	return 1;
+}
+
+/*
+ * Quirk to allow one dev model has two different root keys.
+ * Some devices can use either one of two root keys. this
+ * function will select proper one to use when do update.
+ */
+static int quirk_dual_root_key(struct updater_config *cfg)
+{
+	const char * const PHASER360 = "phaser360";
+	const char * const DOPEFISH_WL_TAG = "dopefish";
+
+	struct archive *archive = cfg->archive;
+	struct model_config model = {0};
+	char *sig_id = NULL;
+	int errcnt = 0;
+
+	if (!is_dual_root_key_model(cfg)) {
+		INFO("Not a dual root key model.\n");
+		return 0;
+	}
+
+	ASPRINTF(&sig_id, "%s-%s", PHASER360, DOPEFISH_WL_TAG);
+
+	find_patches_for_model(&model, archive, sig_id);
+	if ( !model.patches.rootkey || !model.patches.vblock_a ||
+					!model.patches.vblock_b) {
+		WARN("can't find rootkey, vblock_a or vblock_b image.\n");
+		errcnt += -1;
+	} else {
+		INFO("found rootkey (%s), vblock_a (%s), vblock_b (%s).\n",
+			model.patches.rootkey, model.patches.vblock_a,
+			model.patches.vblock_b);
+
+		errcnt += patch_image_by_model(&cfg->image, &model, archive);
+	}
+
+	if (errcnt < 0) {
+		WARN("failed to patch image.\n");
+	}
+
+	free(sig_id);
+	free(model.patches.rootkey);
+	free(model.patches.vblock_a);
+	free(model.patches.vblock_b);
+
+	return errcnt;
+}
+
+/*
  * Registers known quirks to a updater_config object.
  */
 void updater_register_quirks(struct updater_config *cfg)
@@ -423,6 +539,12 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->help = "chromium/1024401; recover EC by partial RO update.";
 	quirks->apply = quirk_ec_partial_recovery;
 	quirks->value = -1;  /* Decide at runtime. */
+
+	quirks = &cfg->quirks[QUIRK_DUAL_ROOT_KEY];
+	quirks->name = "allow_dual_root_key";
+	quirks->help = "b/146876241; allow devices with one of two "
+			"root keys.";
+	quirks->apply = quirk_dual_root_key;
 }
 
 /*

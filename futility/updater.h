@@ -43,6 +43,7 @@ enum quirk_types {
 	QUIRK_EVE_SMM_STORE,
 	QUIRK_ALLOW_EMPTY_WLTAG,
 	QUIRK_EC_PARTIAL_RECOVERY,
+	QUIRK_DUAL_ROOT_KEY,
 	QUIRK_MAX,
 };
 
@@ -122,6 +123,12 @@ enum updater_error_codes {
 
 /* Messages explaining enum updater_error_codes. */
 extern const char * const updater_error_messages[];
+
+/*
+ * Returns a valid root key from GBB header, or NULL on failure.
+ */
+const struct vb2_packed_key *get_rootkey(
+                const struct vb2_gbb_header *gbb);
 
 /*
  * The main updater to update system firmware using the configuration parameter.
@@ -212,6 +219,17 @@ int archive_write_file(struct archive *ar, const char *fname,
  * Returns 0 on success, otherwise non-zero as failure.
  */
 int archive_copy(struct archive *from, struct archive *to);
+
+/* Returns the VPD value by given key name, or NULL on error (or no value). */
+char *vpd_get_value(const char *fpath, const char *key);
+
+/*
+ * Finds available patch files by given model.
+ * Updates `model` argument with path of patch files.
+ */
+void find_patches_for_model(struct model_config *model,
+                                   struct archive *archive,
+                                   const char *signature_id);
 
 /*
  * Creates a new manifest object by scanning files in archive.
