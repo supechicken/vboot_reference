@@ -209,18 +209,18 @@ static void VbSlkTest(void)
 	test_slk(0, 0, "Normal");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
-	/*
-	 * If shared->flags doesn't ask for software sync, we won't notice
-	 * that error.
-	 */
-	ResetMocks();
-	test_slk(0, 0, "EC sync not done");
+	/* If software sync is not supported, we won't notice that error. */
+	if (!EC_SOFTWARE_SYNC) {
+		ResetMocks();
+		test_slk(0, 0, "EC sync not done");
+	}
 
-	/* Same if shared->flags asks for sync, but it's overridden by GBB */
-	ResetMocks();
-	shared->flags |= VBSD_EC_SOFTWARE_SYNC;
-	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
-	test_slk(0, 0, "EC sync disabled by GBB");
+	/* Same if software sync is supported, but it's overridden by GBB */
+	if (EC_SOFTWARE_SYNC) {
+		ResetMocks();
+		gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
+		test_slk(0, 0, "EC sync disabled by GBB");
+	}
 
 	/* Rollback kernel version */
 	ResetMocks();
