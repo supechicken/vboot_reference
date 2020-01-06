@@ -190,6 +190,13 @@ else
 CFLAGS += -DUSB_BOOT_ON_DEV=0
 endif
 
+# Enable EC software sync.
+ifneq ($(filter-out 0,${EC_SOFTWARE_SYNC}),)
+CFLAGS += -DEC_SOFTWARE_SYNC=1
+else
+CFLAGS += -DEC_SOFTWARE_SYNC=0
+endif
+
 # EC software sync is slow to update. Enable warning screen display.
 ifneq ($(filter-out 0,${EC_SLOW_UPDATE}),)
 CFLAGS += -DEC_SLOW_UPDATE=1
