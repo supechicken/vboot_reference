@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa0dbff5_b879b2c2",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-01-06T11:19:14Z",
+      "side": 1,
+      "message": "different",
+      "range": {
+        "startLine": 449,
+        "startChar": 40,
+        "endLine": 449,
+        "endChar": 50
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae797da_ca0c586a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-01-06T11:19:14Z",
+      "side": 1,
+      "message": "move after line 477 if we have logic below to handle the case of NOT FOUND?",
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bf9f6ea_8911af74",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-01-06T11:19:14Z",
+      "side": 1,
+      "message": "else\n    errcnt +\u003d patch_image_by_model(\u0026cfg-\u003eimage, \u0026model, archive);\n\nIf we don\u0027t find the patches then we don\u0027t need to patch?",
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
