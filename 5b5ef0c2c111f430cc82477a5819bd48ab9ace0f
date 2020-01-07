@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "22d6360b_2f5f969b",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T03:51:16Z",
+      "side": 1,
+      "message": "oh, we should also check\n\n if (!is_write_protection_enabled(cfg))\n    return 0;\n\nafter get_config_quirk.\n\nIn this implementation, whenever dopefish rootkey is found (and WP enabled), we will apply dopefish sigid, no need checking if VPD is empty.\n\nFeel free to let me know if there\u0027s some something missed.",
+      "parentUuid": "6d442926_2f9a4c2c",
+      "range": {
+        "startLine": 383,
+        "startChar": 8,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3320ae21_009791c6",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 6
