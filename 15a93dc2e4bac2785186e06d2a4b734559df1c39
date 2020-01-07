@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46509e41_9ebcee2f",
+        "filename": "futility/updater.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "sorry but let\u0027s change this to\n\n\n if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) \u0026\u0026\n     is_write_protection_enabled(cfg))\n    quirk_override_signature_id(cfg, model, \u0026signature_id);",
+      "range": {
+        "startLine": 1355,
+        "startChar": 2,
+        "endLine": 1355,
+        "endChar": 61
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ead56b7f_2032d340",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "devices shipped with different root key",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8ff276_a68bdd4c",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "Returns rootkey hash of firmware image, or NULL on failure.",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 462,
+        "endChar": 9
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82deeb71_112d2722",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "move this function to updater_utils.c",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 1
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b104537_951bf420",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "GBB",
+      "range": {
+        "startLine": 471,
+        "startChar": 11,
+        "endLine": 471,
+        "endChar": 14
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98605966_acd54cef",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "Overrides signature id if the device was shipped with known special rootkey.",
+      "range": {
+        "startLine": 485,
+        "startChar": 3,
+        "endLine": 486,
+        "endChar": 26
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d3f5b74_21e7d770",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "KEY_HASH",
+      "range": {
+        "startLine": 493,
+        "startChar": 29,
+        "endLine": 493,
+        "endChar": 37
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfc5571_dc7c260e",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "sorry, changed my mind - let\u0027s move this to updater.c so we don\u0027t need to expose is_write_protection_enabled.\n\n(see my comments there)",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 11
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645ad664_07bae1d4",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "assert(model);",
+      "range": {
+        "startLine": 502,
+        "startChar": 5,
+        "endLine": 502,
+        "endChar": 14
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a66b526_0e7721da",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "let\u0027s move this to be inside get_firmware_rootkey_hash.",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 503,
+        "endChar": 34
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26668b24_b80e74af",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "just call this key_hash (to make L505 fit in col 80)",
+      "range": {
+        "startLine": 504,
+        "startChar": 14,
+        "endLine": 504,
+        "endChar": 26
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab113e1b_6c5d27b7",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "exceed col 80, please move to next line.",
+      "range": {
+        "startLine": 504,
+        "startChar": 55,
+        "endLine": 504,
+        "endChar": 76
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2332b4_c94dfbf6",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "let\u0027s remove \u0027static\u0027 since the value is plain literal (and to fit col 80).",
+      "range": {
+        "startLine": 506,
+        "startChar": 3,
+        "endLine": 506,
+        "endChar": 28
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e664b289_059cab58",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T09:46:07Z",
+      "side": 1,
+      "message": "to %s\\n\", sig_dopefish);\n\n\nAnd please split the messages so it fits col 80.",
+      "range": {
+        "startLine": 507,
+        "startChar": 66,
+        "endLine": 507,
+        "endChar": 67
+      },
+      "revId": "15a93dc2e4bac2785186e06d2a4b734559df1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
