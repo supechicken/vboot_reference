@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1805f72a_8c4aef64",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "if (",
+      "range": {
+        "startLine": 1355,
+        "startChar": 2,
+        "endLine": 1355,
+        "endChar": 5
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002d071c_47732d8d",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "should be aligned to after (, i.e.:\n\n if (get_config... \u0026\u0026\n     is_write...))",
+      "range": {
+        "startLine": 1356,
+        "startChar": 4,
+        "endLine": 1356,
+        "endChar": 31
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b505da01_a350bfdc",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": ", \u0026",
+      "range": {
+        "startLine": 1358,
+        "startChar": 15,
+        "endLine": 1358,
+        "endChar": 17
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15cfebe_e5a8bdcc",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "key.\"",
+      "range": {
+        "startLine": 432,
+        "startChar": 40,
+        "endLine": 432,
+        "endChar": 44
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fedf5c0c_e83e1d99",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "a tab here? please change to space.",
+      "range": {
+        "startLine": 475,
+        "startChar": 25,
+        "endLine": 475,
+        "endChar": 26
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20774712_b50d007e",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "when splitting, the indent of second line is 2 levels from previous line\n\n const char *key_hash \u003d get_...(\n [tab] .  [tab] .  \u0026....);\n\nOr, we can declare another variable\n\n struct firmware_image *image \u003d \u0026cfg-\u003eimage_current;\n const char *key_hash \u003d get_firmware_rootkey_hash(image);",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 7
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c6a61a_09128ff0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "Returns",
+      "range": {
+        "startLine": 668,
+        "startChar": 3,
+        "endLine": 668,
+        "endChar": 9
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0300d8_9ae1eb55",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "const struct",
+      "range": {
+        "startLine": 670,
+        "startChar": 38,
+        "endLine": 670,
+        "endChar": 44
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be939a5_b0e74507",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:12:26Z",
+      "side": 1,
+      "message": "Returns",
+      "range": {
+        "startLine": 211,
+        "startChar": 3,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
