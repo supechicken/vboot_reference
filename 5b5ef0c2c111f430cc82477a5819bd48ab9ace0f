@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "305e0dc2_6bdd4d3e",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2020-01-07T05:46:45Z",
+      "side": 1,
+      "message": "I can understand that if rootkey is DOPEFISH, then whitelabel_tag judgement can be removed. and even we are able to not get model name, DOPEFISH rootkey is enough for us to know it is a phaser360 device.",
+      "parentUuid": "2bd480eb_605df965",
+      "range": {
+        "startLine": 383,
+        "startChar": 8,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3320ae21_009791c6",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 6
