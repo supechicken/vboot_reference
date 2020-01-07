@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "66ef9ad0_821a669b",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T17:16:33Z",
+      "side": 1,
+      "message": "If the first param can fit in first line, the kernel coding style prefers\n\n int try_quirk_override_signature_id(struct updater_config *cfg,\n                                     struct ....,\n                                     ...);\n\nMore over, since the quirk config must be already tested before calling this, I think we can name this quirk_override_signature_id without prefix \u0027try\u0027.",
+      "range": {
+        "startLine": 182,
+        "startChar": 35,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "42cd692c3e92b4c571b9c9736caa9da54bb54c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e15cfebe_e5a8bdcc",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 9
