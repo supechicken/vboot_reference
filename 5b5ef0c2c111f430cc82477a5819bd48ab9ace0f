@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4e7b44f_420c72de",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T03:39:31Z",
+      "side": 1,
+      "message": "It\u0027d make more sense to do the quirk in updater_apply_white_label.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 5,
+        "endLine": 1197,
+        "endChar": 46
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa573fc_9e17bb8f",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T03:39:31Z",
+      "side": 1,
+      "message": "Please add invocation of quirk here.\n\nUnfortunately the model/signature_id are both not included in cfg, so we have to declare a specific quirk function for it. I\u0027d recommend\n\n try_quirk_override_signature_id(cfg, model, \u0026signature_id, tmp_image);",
+      "range": {
+        "startLine": 1357,
+        "startChar": 2,
+        "endLine": 1357,
+        "endChar": 3
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82b0f53_dc757e95",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T03:39:31Z",
+      "side": 1,
+      "message": "let\u0027s rename this to override_signature_id",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d442926_2f9a4c2c",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T03:39:31Z",
+      "side": 1,
+      "message": "I think we don\u0027t want to duplicate all the logic here. The quirk should do\n - check signature ID\n - check system rootkey\n - change signature id if matches\n\nSo let\u0027s re-implement this as\n\n int try_quirk_override_signature_id(cfg, model, *signature_id)\n {\n    if (!get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID))\n      return 0;\n\n    /* b/146876241 */\n    if (strcmp(model, \"phaser360\") \u003d\u003d 0) {\n       assert(cfg-\u003eimage_current.data);\n       const char *rootkey_hash \u003d get_firmware_rootkey_hash(\u0026cfg-\u003eimage_current);\n       if (rootkey_hash \u0026\u0026 strcmp(...) \u003d\u003d 0) {\n         static const char * const sig_dopefish \u003d \"dopefish\";\n          WARN(\"A Phaser360 with Dupefish rootkey - override signature_id.\\n\");\n          *signature_id \u003d sig_dopefish;\n       }\n    }\n\n    return 0;\n }",
+      "range": {
+        "startLine": 383,
+        "startChar": 8,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3320ae21_009791c6",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 6
