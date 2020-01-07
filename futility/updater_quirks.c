@@ -15,6 +15,7 @@
 #include "futility.h"
 #include "host_misc.h"
 #include "updater.h"
+#include "util_misc.h"
 
 struct quirks_record {
 	const char * const match;
@@ -55,6 +56,8 @@ static const struct quirks_record quirks_records[] = {
         { .match = "Google_Reks.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Relm.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Wizpig.", .quirks = "allow_empty_wltag" },
+
+        { .match = "Google_Phaser.", .quirks = "override_signature_id" },
 };
 
 /* Preserves meta data and reload image contents from given file path. */
@@ -423,6 +426,12 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->help = "chromium/1024401; recover EC by partial RO update.";
 	quirks->apply = quirk_ec_partial_recovery;
 	quirks->value = -1;  /* Decide at runtime. */
+
+	quirks = &cfg->quirks[QUIRK_OVERRIDE_SIGNATURE_ID];
+	quirks->name = "override_signature_id";
+	quirks->help = "chromium/146876241; override signature id for "
+			"phaser360 with dopefish root key";
+	quirks->apply = NULL; /* Simple config. */
 }
 
 /*
@@ -447,4 +456,58 @@ const char * const updater_get_default_quirks(struct updater_config *cfg)
 		return r->quirks;
 	}
 	return NULL;
+}
+
+/*
+ * return rootkey hash of firmware image.
+ */
+static const char *get_firmware_rootkey_hash(struct firmware_image *image)
+{
+	const struct vb2_gbb_header *gbb = NULL;
+	const struct vb2_packed_key *rootkey = NULL;
+
+	gbb = find_gbb(image);
+	if (!gbb) {
+		WARN("No gbb found in image\n");
+		return NULL;
+	}
+
+	rootkey = get_rootkey(gbb);
+	if (!rootkey) {
+		WARN("No rootkey found in image\n");
+		return NULL;
+	}
+
+	return packed_key_sha1_string(rootkey);
+}
+
+/*
+ * override signature id if device model is phaser360
+ * with dopefish root key.
+ */
+int try_quirk_override_signature_id(
+				struct updater_config *cfg,
+				struct model_config *model,
+				const char **signature_id)
+{
+	const char * const DOPEFISH_ROOT_KEY = "9a1f2cc319e2f2e61237dc51125e35ddd4d20984";
+
+	if (!get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg))
+		return 0;
+
+	if (!is_write_protection_enabled(cfg))
+		return 0;
+
+	/* b/146876241 */
+	if (model && strcmp(model->name, "phaser360") == 0) {
+		assert(cfg->image_current.data);
+		const char *rootkey_hash = get_firmware_rootkey_hash(&cfg->image_current);
+		if (rootkey_hash && strcmp(rootkey_hash, DOPEFISH_ROOT_KEY) == 0) {
+			static const char * const sig_dopefish = "phaser360-dopefish";
+			WARN("A Phaser360 with Dopefish rootkey - override signature_id.\n");
+			*signature_id = sig_dopefish;
+		}
+	}
+
+	return 0;
 }
