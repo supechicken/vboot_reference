@@ -207,4 +207,9 @@ enum system_property_type {
 /* Helper function to initialize system properties. */
 void init_system_properties(struct system_property *props, int num);
 
+/*
+ * return rootkey hash of firmware image, or NULL on failure.
+ */
+const char *get_firmware_rootkey_hash(struct firmware_image *image);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */
