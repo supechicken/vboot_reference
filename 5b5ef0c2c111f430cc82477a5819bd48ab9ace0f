@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c1fdb513_d837d4b1",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-01-07T06:33:20Z",
+      "side": 1,
+      "message": "\u003e Patchset 5 is direct function call version and it does minimal work to update signature id. Do you mean just move that function to updater_quirks.c? \n\nVery close. We want (1) minimize the work, (2) do not put board-specific information in files expect quirks.c.\n\n\u003e Patchset 7 is a complete quirk infrastructure version, apply(cfg) function only accept one cfg parameters, so quirk function can\u0027t get enough information to do judgement, so duplicated work has to be done.\n\nThat\u0027s too much. We don\u0027t want to duplicate the work since it\u0027ll be hard to maintain / debug in future.\n\n\u003e Do you mean to extend apply(cfg) function to accept more parameters?\n\nNo need to extend apply since that\u0027ll be changing all quirk functions.\nWe can just declare a new quirk function and call it directly.\nThe apply is for simple quirks.\n\n\u003e Do you tend to write a quirk and only as a flag, still need direct function call to change the signature id, is this right?\n\nYes. You should\n\n - Define a quirk QUIRK_OVERRIDE_SIGNATURE_ID\n - Define a public function try_quirk_override_signature_id in updater_quirks.c\n - In updater_archive.c call try_quirk_override_signature_id",
+      "parentUuid": "305e0dc2_6bdd4d3e",
+      "range": {
+        "startLine": 383,
+        "startChar": 8,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3320ae21_009791c6",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 6
