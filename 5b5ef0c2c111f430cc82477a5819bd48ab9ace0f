@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "2bd480eb_605df965",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2020-01-07T05:31:34Z",
+      "side": 1,
+      "message": "Sorry, I am not able to fully understand the idea behind the comments. As you can see, Patchset 5 is direct function call version and it does minimal work to update signature id. Do you mean just move that function to updater_quirks.c? Patchset 7 is a complete quirk infrastructure version, apply(cfg) function only accept one cfg parameters, so quirk function can\u0027t get enough information to do judgement, so duplicated work has to be done. Do you mean to extend apply(cfg) function to accept more parameters?\nDo you tend to write a quirk and only as a flag, still need direct function call to change the signature id, is this right?\n\nsince we are first time to change futility code, so please give us more guidance, thank you.",
+      "parentUuid": "22d6360b_2f5f969b",
+      "range": {
+        "startLine": 383,
+        "startChar": 8,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "5b5ef0c2c111f430cc82477a5819bd48ab9ace0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3320ae21_009791c6",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 6
