@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1f0e4a3_afcbba75",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "We can start at 0x300.",
+      "range": {
+        "startLine": 429,
+        "startChar": 29,
+        "endLine": 429,
+        "endChar": 35
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c79b707_325be814",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "Since we\u0027re re-ordering screens, may as well group the VENDOR_DATA ones together.  This can go above or below them.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 32
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c301f1d_e1a5ce48",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "No need for brackets around here.",
+      "range": {
+        "startLine": 656,
+        "startChar": 2,
+        "endLine": 656,
+        "endChar": 3
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d29197c_14b0c1bf",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "I\u0027d also like to move these into a separate test file.  Could we do that in the same CL that splits vboot_ui.c?",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 844,
+        "endChar": 39
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e5b41a_351eff8e",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 969,
+        "startChar": 33,
+        "endLine": 969,
+        "endChar": 34
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a53527_af3ae118",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 987,
+        "startChar": 33,
+        "endLine": 987,
+        "endChar": 34
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554e77a9_2a7596b2",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 1042,
+        "startChar": 33,
+        "endLine": 1042,
+        "endChar": 34
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69a1cd5d_b1c98644",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 1052,
+        "startChar": 33,
+        "endLine": 1052,
+        "endChar": 34
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f778454_56f3f7c5",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 1066,
+        "startChar": 33,
+        "endLine": 1066,
+        "endChar": 34
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e3b806_69b984b8",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "two spaces",
+      "range": {
+        "startLine": 1081,
+        "startChar": 31,
+        "endLine": 1081,
+        "endChar": 32
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

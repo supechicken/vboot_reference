@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "03948afb_29b9b5da",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "Actually, I think we should call this COMPLETE_VENDOR_DATA.  Then we have a clear relationship between these three screens.",
+      "parentUuid": "23fa5128_4ae498bd",
+      "range": {
+        "startLine": 436,
+        "startChar": 10,
+        "endLine": 436,
+        "endChar": 14
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97627247_4b3ea11b",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 9
@@ -420,6 +444,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8a2ee7a2_40dd0f2f",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 5
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fac3735b_3fd5a173",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "Still not right.  Should line up with the (.",
+      "parentUuid": "eb7b205f_e4a10539",
       "range": {
         "startLine": 328,
         "startChar": 4,
@@ -754,6 +802,30 @@
         "startChar": 3,
         "endLine": 657,
         "endChar": 29
+      },
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21d38df1_fcf0b3d6",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:58:11Z",
+      "side": 1,
+      "message": "Still not right.  Should line up inside \"if (\".",
+      "parentUuid": "e0e2025c_b91305ff",
+      "range": {
+        "startLine": 657,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 3
       },
       "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
