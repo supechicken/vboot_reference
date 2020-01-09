@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "c353b5c8_7197db34",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T18:51:53Z",
+      "side": 1,
+      "message": "Nevermind -- I found this part in depthcharge vendor_data_settable().  And I guess we can\u0027t test that function without a depthcharge test framework...",
+      "parentUuid": "a8f4d9f5_22b06f9c",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 48
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85e5b41a_351eff8e",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
