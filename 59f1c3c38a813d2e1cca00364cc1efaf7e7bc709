@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "a8f4d9f5_22b06f9c",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T18:49:30Z",
+      "side": 1,
+      "message": "Seems like we are only checking the case for:\n\n* vendor data settable\n* VPD serial number set to all spaces\n* flash write protection disabled\n\nCan we add tests to make sure all other possible combinations don\u0027t show the RMA screen?",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 48
+      },
+      "revId": "59f1c3c38a813d2e1cca00364cc1efaf7e7bc709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85e5b41a_351eff8e",
         "filename": "tests/vboot_api_kernel2_tests.c",
         "patchSetId": 10
