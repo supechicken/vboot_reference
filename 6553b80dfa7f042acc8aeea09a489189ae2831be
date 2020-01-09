@@ -320,6 +320,24 @@
     },
     {
       "key": {
+        "uuid": "bcb47e76_cec03ccc",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-09T05:43:32Z",
+      "side": 1,
+      "message": "Sure, I don\u0027t mind doing it as a separate CL.  Would you mind stacking it underneath this one so we can get the Wilco-specific code under control before adding new functionality?",
+      "parentUuid": "fa2fafc0_b18a4339",
+      "revId": "6553b80dfa7f042acc8aeea09a489189ae2831be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ba657f8_425723e4",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 9
