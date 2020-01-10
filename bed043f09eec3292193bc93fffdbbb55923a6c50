@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e663c8cd_5d1a4ac3",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-10T10:52:23Z",
+      "side": 1,
+      "message": "Filed b/147473892",
+      "parentUuid": "a0958709_919547fa",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 36
+      },
+      "revId": "bed043f09eec3292193bc93fffdbbb55923a6c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe263b2_09a3f29a",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 1
