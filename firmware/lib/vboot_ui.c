@@ -22,6 +22,7 @@
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 #include "vboot_ui_common.h"
+#include "vboot_ui_vendor_data.h"
 
 /* Global variables */
 static enum {
@@ -44,7 +45,7 @@ void vb2_init_ui(void)
  * VB_SHUTDOWN_REQUEST_LID_CLOSED
  * VB_SHUTDOWN_REQUEST_POWER_BUTTON
  */
-static int VbWantShutdown(struct vb2_context *ctx, uint32_t key)
+int VbWantShutdown(struct vb2_context *ctx, uint32_t key)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	uint32_t shutdown_request = VbExIsShutdownRequested();
@@ -222,159 +223,6 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 	return 0;
 }
 
-static inline int is_vowel(uint32_t key) {
-	return key == 'A' || key == 'E' || key == 'I' ||
-	       key == 'O' || key == 'U';
-}
-
-/*
- * Prompt the user to enter the vendor data
- */
-static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
-					    char *data_value)
-{
-	int len = 0;
-	VbScreenData data = {
-		.vendor_data = { data_value }
-	};
-
-	data_value[0] = '\0';
-	VbDisplayScreen(ctx, VB_SCREEN_SET_VENDOR_DATA, 1, &data);
-
-	/* We'll loop until the user decides what to do */
-	do {
-		uint32_t key = VbExKeyboardRead();
-
-		if (VbWantShutdown(ctx, key)) {
-			VB2_DEBUG("Vendor Data UI - shutdown requested!\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
-		}
-		switch (key) {
-		case 0:
-			/* nothing pressed */
-			break;
-		case VB_KEY_ESC:
-			/* Escape pressed - return to developer screen */
-			VB2_DEBUG("Vendor Data UI - user pressed Esc: "
-				  "exit to Developer screen\n");
-			data_value[0] = '\0';
-			return VB2_SUCCESS;
-		case 'a'...'z':
-			key = toupper(key);
-			VBOOT_FALLTHROUGH;
-		case '0'...'9':
-		case 'A'...'Z':
-			if ((len > 0 && is_vowel(key)) ||
-			     len >= VENDOR_DATA_LENGTH) {
-				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
-			} else {
-				data_value[len++] = key;
-				data_value[len] = '\0';
-				VbDisplayScreen(ctx, VB_SCREEN_SET_VENDOR_DATA,
-						1, &data);
-			}
-
-			VB2_DEBUG("Vendor Data UI - vendor_data: %s\n",
-				  data_value);
-			break;
-		case VB_KEY_BACKSPACE:
-			if (len > 0) {
-				data_value[--len] = '\0';
-				VbDisplayScreen(ctx, VB_SCREEN_SET_VENDOR_DATA,
-						1, &data);
-			}
-
-			VB2_DEBUG("Vendor Data UI - vendor_data: %s\n",
-				  data_value);
-			break;
-		case VB_KEY_ENTER:
-			if (len == VENDOR_DATA_LENGTH) {
-				/* Enter pressed - confirm input */
-				VB2_DEBUG("Vendor Data UI - user pressed "
-					  "Enter: confirm vendor data\n");
-				return VB2_SUCCESS;
-			} else {
-				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
-			}
-			break;
-		default:
-			VB2_DEBUG("Vendor Data UI - pressed key %#x\n", key);
-			VbCheckDisplayKey(ctx, key, &data);
-			break;
-		}
-		VbExSleepMs(KEY_DELAY_MS);
-	} while (1);
-
-	return VB2_SUCCESS;
-}
-
-/*
- * User interface for setting the vendor data in VPD
- */
-static vb2_error_t vb2_vendor_data_ui(struct vb2_context *ctx)
-{
-	char data_value[VENDOR_DATA_LENGTH + 1];
-	VbScreenData data = {
-		.vendor_data = { data_value }
-	};
-
-	vb2_error_t ret = vb2_enter_vendor_data_ui(ctx, data_value);
-
-	if (ret)
-		return ret;
-
-	/* Vendor data was not entered just return */
-	if (data_value[0] == '\0')
-		return VB2_SUCCESS;
-
-	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_VENDOR_DATA, 1, &data);
-	/* We'll loop until the user decides what to do */
-	do {
-		uint32_t key = VbExKeyboardRead();
-
-		if (VbWantShutdown(ctx, key)) {
-			VB2_DEBUG("Vendor Data UI - shutdown requested!\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
-		}
-		switch (key) {
-		case 0:
-			/* nothing pressed */
-			break;
-		case VB_KEY_ESC:
-			/* Escape pressed - return to developer screen */
-			VB2_DEBUG("Vendor Data UI - user pressed Esc: "
-				  "exit to Developer screen\n");
-			return VB2_SUCCESS;
-		case VB_KEY_ENTER:
-			/* Enter pressed - write vendor data */
-			VB2_DEBUG("Vendor Data UI - user pressed Enter: "
-				  "write vendor data (%s) to VPD\n",
-				  data_value);
-			ret = VbExSetVendorData(data_value);
-
-			if (ret == VB2_SUCCESS) {
-				vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
-				return VBERROR_REBOOT_REQUIRED;
-			} else {
-				vb2_error_notify(
-					"ERROR: Vendor data was not set.\n"
-					"System will now shutdown\n",
-					NULL,
-					VB_BEEP_FAILED);
-				VbExSleepMs(5000);
-				return VBERROR_SHUTDOWN_REQUESTED;
-			}
-		default:
-			VB2_DEBUG("Vendor Data UI - pressed key %#x\n", key);
-			VbCheckDisplayKey(ctx, key, &data);
-			break;
-		}
-		VbExSleepMs(KEY_DELAY_MS);
-	} while (1);
-
-	return VB2_SUCCESS;
-}
-
 static vb2_error_t vb2_check_diagnostic_key(struct vb2_context *ctx,
 					    uint32_t key) {
 	if (DIAGNOSTIC_UI && (key == VB_KEY_CTRL('C') || key == VB_KEY_F(12))) {
@@ -504,6 +352,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	VbSharedDataHeader *shared = sd->vbsd;
 
 	uint32_t disable_dev_boot = 0;
 	uint32_t use_usb = 0;
@@ -598,10 +447,10 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VBOOT_FALLTHROUGH;
 		case ' ':
 			/* See if we should disable virtual dev-mode switch. */
-			VB2_DEBUG("sd->flags=%#x\n", sd->flags);
+			VB2_DEBUG("shared->flags=%#x\n", shared->flags);
 
 			/* Sanity check, should never fail. */
-			VB2_ASSERT(sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED);
+			VB2_ASSERT(shared->flags & VBSD_BOOT_DEV_SWITCH_ON);
 
 			/* Stop the countdown while we go ask... */
 			if (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
@@ -843,8 +692,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		 *   - user forced recovery mode
 		 */
 		if (key == VB_KEY_CTRL('D') &&
-		    !(sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) &&
-		    (sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY)) {
+		    !(shared->flags & VBSD_BOOT_DEV_SWITCH_ON) &&
+		    (shared->flags & VBSD_BOOT_REC_SWITCH_ON)) {
 			if (!(shared->flags & VBSD_BOOT_REC_SWITCH_VIRTUAL) &&
 			    VbExGetSwitches(
 					VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED)) {
