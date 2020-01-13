@@ -15,6 +15,13 @@ enum vb2_beep_type {
 	VB_BEEP_NOT_ALLOWED,	/* Operation disabled by user setting */
 };
 
+/* Global variables */
+enum {
+	POWER_BUTTON_HELD_SINCE_BOOT = 0,
+	POWER_BUTTON_RELEASED,
+	POWER_BUTTON_PRESSED, /* must have been previously released */
+} power_button_state;
+
 /**
  * Emit beeps to indicate an error
  */
@@ -54,5 +61,16 @@ void vb2_error_no_altfw(void);
  */
 void vb2_try_altfw(struct vb2_context *ctx, int allowed,
 		   enum VbAltFwIndex_t altfw_num);
+
+/**
+ * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
+ * determine if a shutdown is required.
+ *
+ * Returns zero or more of the following flags (if any are set then typically
+ * shutdown is required):
+ * VB_SHUTDOWN_REQUEST_LID_CLOSED
+ * VB_SHUTDOWN_REQUEST_POWER_BUTTON
+ */
+int VbWantShutdown(struct vb2_context *ctx, uint32_t key);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_UI_COMMON_H_ */
