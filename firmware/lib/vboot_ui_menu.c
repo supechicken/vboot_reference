@@ -35,30 +35,6 @@ static uint32_t altfw_allowed;
 static struct vb2_menu menus[];
 static const char no_legacy[] = "Legacy boot failed. Missing BIOS?\n";
 
-/**
- * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
- * determine if a shutdown is required.
- *
- * Returns true if a shutdown is required and false if no shutdown is required.
- */
-static int VbWantShutdownMenu(struct vb2_context *ctx)
-{
-	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
-	uint32_t shutdown_request = VbExIsShutdownRequested();
-
-	/* If desired, ignore shutdown request due to lid closure. */
-	if (gbb->flags & VB2_GBB_FLAG_DISABLE_LID_SHUTDOWN)
-		shutdown_request &= ~VB_SHUTDOWN_REQUEST_LID_CLOSED;
-
-	/*
-	 * In detachables, disabling shutdown due to power button.
-	 * We are using it for selection instead.
-	 */
-	shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
-
-	return !!shutdown_request;
-}
-
 /* (Re-)Draw the menu identified by current_menu[_idx] to the screen. */
 static vb2_error_t vb2_draw_current_screen(struct vb2_context *ctx) {
 	vb2_error_t ret = VbDisplayMenu(ctx, menus[current_menu].screen,
@@ -488,7 +464,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 		break;
 	}
 
-	if (VbWantShutdownMenu(ctx)) {
+	if (vb2_want_shutdown(ctx, key)) {
 		VB2_DEBUG("shutdown requested!\n");
 		return VBERROR_SHUTDOWN_REQUESTED;
 	}
