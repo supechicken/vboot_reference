@@ -1,7 +1,7 @@
 /* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
- * 
+ *
  * This header is for APIs that are only used by test code.
  */
 
@@ -28,5 +28,13 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
 
 struct LoadKernelParams;
 struct LoadKernelParams *VbApiKernelGetParams(void);
+
+enum {
+	POWER_BUTTON_HELD_SINCE_BOOT = 0,
+	POWER_BUTTON_RELEASED,
+	POWER_BUTTON_PRESSED,  /* Must have been previously released */
+} vb2_power_button_state;
+
+
 
 #endif  /* VBOOT_REFERENCE_TEST_API_H_ */

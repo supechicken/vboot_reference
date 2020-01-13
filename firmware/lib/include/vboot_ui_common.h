@@ -55,4 +55,15 @@ void vb2_error_no_altfw(void);
 void vb2_try_altfw(struct vb2_context *ctx, int allowed,
 		   enum VbAltFwIndex_t altfw_num);
 
+/**
+ * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
+ * determine if a shutdown is required.
+ *
+ * Returns zero or more of the following flags (if any are set then typically
+ * shutdown is required):
+ * VB_SHUTDOWN_REQUEST_LID_CLOSED
+ * VB_SHUTDOWN_REQUEST_POWER_BUTTON
+ */
+int vb2_want_shutdown(struct vb2_context *ctx, uint32_t key);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_UI_COMMON_H_ */

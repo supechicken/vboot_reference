@@ -83,7 +83,8 @@ static void MockGpioAfter(uint32_t ticks, uint32_t gpio_flags)
 /* Reset mock data (for use before each test) */
 static void ResetMocks(void)
 {
-	vb2_init_ui();
+	// vb2_init_ui();
+	vb2_power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
 
 	memset(&shared_data, 0, sizeof(shared_data));
 
