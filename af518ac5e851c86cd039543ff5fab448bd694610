@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "942fad3b_2b9cfc4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-13T21:25:33Z",
+      "side": 1,
+      "message": "This description is a little too broad -- could we explain that we are simply moving tests to a new function and that there are actually no functionality changes?",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "af518ac5e851c86cd039543ff5fab448bd694610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae22a68_bd476b0b",
+        "filename": "tests/vboot_api_kernel2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-13T21:25:33Z",
+      "side": 1,
+      "message": "Can we end this in printing a \"...done.\\n\" string just like in the other functions?",
+      "revId": "af518ac5e851c86cd039543ff5fab448bd694610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
