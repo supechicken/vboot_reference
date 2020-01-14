@@ -16,6 +16,24 @@
       "revId": "5d874c2f45c991651a3c66be64e4139f56c69d25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efaee7b8_c4b1d456",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-01-14T17:05:55Z",
+      "side": 1,
+      "message": "That makes sense to me.  I can work on that.  crbug.com/1041879",
+      "parentUuid": "6c1abf6e_79d5957e",
+      "revId": "5d874c2f45c991651a3c66be64e4139f56c69d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
