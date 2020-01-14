@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c1abf6e_79d5957e",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-14T02:29:13Z",
+      "side": 1,
+      "message": "Is there any reason we still need to check the above two for AUXFW sync now? With EC and AUXFW sync completely separated, I think it would be nice for certain situations (e.g. early bring-up where software sync is often causing trouble but people still want working TCPCs) if we could enable AUXFW sync independently.",
+      "revId": "5d874c2f45c991651a3c66be64e4139f56c69d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
