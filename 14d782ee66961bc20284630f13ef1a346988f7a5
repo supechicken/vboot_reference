@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0a99833f_9ce079bb",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-15T00:54:16Z",
+      "side": 1,
+      "message": "\u003e It\u0027s a union, but its definition (and thus its maximum size) depends on the VB_SUPPORT_X constants enabled.\n\nYes, but SHA512s are bigger than SHA1s so the answer to your question whether we\u0027ll waste space on SHA1s is no. :P\n\nYes, the coreboot code using this will be written later.",
+      "parentUuid": "65644c04_d3a38165",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "14d782ee66961bc20284630f13ef1a346988f7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d776227_de3684be",
         "filename": "firmware/2lib/include/2sha.h",
         "patchSetId": 1
