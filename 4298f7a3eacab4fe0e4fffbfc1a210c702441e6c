@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "302a8fda_6ca86219",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-15T03:22:31Z",
+      "side": 1,
+      "message": "Is this what we want? I think in recovery mode we actually want to return SUCCESS from SLK even if NV writes fail, so that we can still boot.",
+      "revId": "4298f7a3eacab4fe0e4fffbfc1a210c702441e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
