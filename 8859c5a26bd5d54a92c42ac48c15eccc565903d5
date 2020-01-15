@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b80987e4_d5bb9d90",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-15T03:46:51Z",
+      "side": 1,
+      "message": "Sorry Yu-Ping -- after mulling it over, I don\u0027t think this is quite the right thing to do.\n\nI\u0027m creating a bug for a more in-depth discussion:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1042135\n\nIn the meantime, I think we just want to keep VB2_CONTEXT_EC_SYNC_SUPPORTED, but set it in depthcharge.\n\nThen we use the inverse of what used to be here:\n\n  if (ctx-\u003eflags \u0026 VB2_CONTEXT_EC_SYNC_SUPPORTED)\n    shared-\u003eflags |\u003d VBSD_EC_SOFTWARE_SYNC;",
+      "parentUuid": "eb7316f6_ef4afb51",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "8859c5a26bd5d54a92c42ac48c15eccc565903d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4349b24b_b2139c94",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 2
