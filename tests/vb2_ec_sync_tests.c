@@ -200,6 +200,30 @@ static void test_ssync(vb2_error_t retval, int recovery_reason,
 
 static void VbSoftwareSyncTest(void)
 {
+	/* Check flag toggling */
+	ResetMocks();
+	test_ssync(VB2_SUCCESS, 0, "Normal sync");
+	TEST_NEQ(sd->flags & VB2_SD_STATUS_EC_SYNC_COMPLETE, 0,
+		 "  EC sync complete");
+
+	ResetMocks();
+	sd->flags |= VB2_SD_STATUS_EC_SYNC_COMPLETE;
+	test_ssync(VB2_SUCCESS, 0, "EC sync already complete");
+	TEST_EQ(ec_rw_updated, 0, "  ec rw not updated");
+	TEST_EQ(ec_ro_updated, 0, "  ec ro not updated");
+
+	ResetMocks();
+	ctx->flags &= ~VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	test_ssync(VB2_SUCCESS, 0, "EC sync not supported");
+	TEST_NEQ(sd->flags & VB2_SD_STATUS_EC_SYNC_COMPLETE, 0,
+		 "  EC sync complete");
+
+	ResetMocks();
+	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
+	test_ssync(VB2_SUCCESS, 0, "EC sync disabled by GBB");
+	TEST_NEQ(sd->flags & VB2_SD_STATUS_EC_SYNC_COMPLETE, 0,
+		 "  EC sync complete");
+
 	/* AP-RO cases */
 	ResetMocks();
 	in_rw_retval = VB2_ERROR_MOCK;
