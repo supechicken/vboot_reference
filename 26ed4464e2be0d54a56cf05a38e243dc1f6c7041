@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a5e3919_26b71fc2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-16T09:09:08Z",
+      "side": 1,
+      "message": "Since this is already checked at the beginning of vb2api_ec_sync(), why do we need to check again in both ec_sync_phase1() and ec_sync_phase2()? Is there a chance that the flags/recovery_reason would change between the calls? Or is it just for safety?",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
