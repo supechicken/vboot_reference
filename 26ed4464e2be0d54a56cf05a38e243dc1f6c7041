@@ -16,6 +16,57 @@
       "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c233f6c_70bb9bb5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-16T19:24:57Z",
+      "side": 1,
+      "message": "Agree with Yu-Ping that we can take all these out now if we return immediately from the check up front.",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54ab20c2_f272765c",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-16T19:24:57Z",
+      "side": 1,
+      "message": "Should merge this into ec_sync_allowed().",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dbf0333_0248cad2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-16T19:24:57Z",
+      "side": 1,
+      "message": "I think our current code still calls this when EC sync was disabled, so we probably want to keep doing that. One problem is that we only want it called once, even when both coreboot and depthcharge run the sync code. So I think we may need to set the SYNC_COMPLETE flag for that reason after all.",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
