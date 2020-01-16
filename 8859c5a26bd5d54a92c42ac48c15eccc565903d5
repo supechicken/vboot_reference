@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "93cae4a8_b3d9cda4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-16T02:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b80987e4_d5bb9d90",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "8859c5a26bd5d54a92c42ac48c15eccc565903d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4349b24b_b2139c94",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 2
