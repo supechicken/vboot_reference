@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68d3a052_7eae694c",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-16T19:02:47Z",
+      "side": 1,
+      "message": "off-topic: There\u0027s a TODO to add an assertion in vb2_member_of that I think might be a good idea to enable now, to make sure that in situations like this we\u0027re working on valid data (e.g. key_offset must be initialized).",
+      "revId": "cc8a4515949b520c81321142e92bdc6bd2f0f53a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
