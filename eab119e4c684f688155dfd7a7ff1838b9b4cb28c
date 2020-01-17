@@ -70,6 +70,30 @@
       "revId": "eab119e4c684f688155dfd7a7ff1838b9b4cb28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87ab5520_fcea346f",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1123474
+      },
+      "writtenOn": "2020-01-17T06:57:43Z",
+      "side": 1,
+      "message": "doc#613601 rev 0.7 has section 13.2 which mentions the ACPI ids for GPIO controller.\nAnother important point to note here is that INT34C3 is the id for Icelake-N PCH GPIO ctrlr which was the base for Jasperlake PCH. The actual jasperlake PCH GPIO ctrlr should use the INT34C8.\nAnd, since we will eventually use the INT34C8 we should add that id here instead of INT34C3.",
+      "parentUuid": "0c5fbb08_39bc884c",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 15
+      },
+      "revId": "eab119e4c684f688155dfd7a7ff1838b9b4cb28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
