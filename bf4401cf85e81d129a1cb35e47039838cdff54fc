@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3000cc65_0dec4b8b",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-01-17T18:15:06Z",
+      "side": 1,
+      "message": "This function should move to vboot_ui_common.[hc] with the proper naming convention.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "bf4401cf85e81d129a1cb35e47039838cdff54fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
