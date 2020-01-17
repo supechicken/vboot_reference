@@ -15,6 +15,7 @@
 #include "secdata_tpm.h"
 #include "test_common.h"
 #include "tss_constants.h"
+#include "vb2_config.h"
 #include "vboot_audio.h"
 #include "vboot_display.h"
 #include "vboot_kernel.h"
@@ -64,7 +65,7 @@ static int tpm_set_mode_called;
 static enum vb2_tpm_mode tpm_mode;
 
 /* Extra character to guarantee null termination. */
-static char set_vendor_data[VENDOR_DATA_LENGTH + 2];
+static char set_vendor_data[VB2_CONFIG(VENDOR_DATA_LENGTH) + 2];
 static int set_vendor_data_called;
 
 /*
@@ -1125,7 +1126,8 @@ static void VbBootRecTestGpio(uint32_t first, uint32_t second, uint32_t third,
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_EC_REBOOT_TO_RO_REQUIRED,
 			msg);
 		TEST_EQ(virtdev_set, 1, "  virtual dev mode on");
-		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB), !!USB_BOOT_ON_DEV,
+		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB),
+			VB2_CONFIG(USB_BOOT_ON_DEV),
 			"  NV_DEV_BOOT_USB enabled");
 	} else {
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_SHUTDOWN_REQUESTED, msg);
@@ -1442,13 +1444,13 @@ static void VbBootRecTest(void)
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
 	vbtlk_expect_removable = 1;
-	if (DIAGNOSTIC_UI)
+	if (VB2_CONFIG(DIAGNOSTIC_UI))
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_REBOOT_REQUIRED,
 			"Ctrl+C todiag - enabled");
 	else
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_SHUTDOWN_REQUESTED,
 			"Ctrl+C todiag - disabled");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), VB2_CONFIG(DIAGNOSTIC_UI),
 		"  todiag is updated for Ctrl-C");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
@@ -1466,13 +1468,13 @@ static void VbBootRecTest(void)
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
 	vbtlk_expect_removable = 1;
-	if (DIAGNOSTIC_UI)
+	if (VB2_CONFIG(DIAGNOSTIC_UI))
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_REBOOT_REQUIRED,
 			"F12 todiag - enabled");
 	else
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_SHUTDOWN_REQUESTED,
 			"F12 todiag - disabled");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), VB2_CONFIG(DIAGNOSTIC_UI),
 		"  todiag is updated for F12");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
@@ -1485,13 +1487,13 @@ static void VbBootRecTest(void)
 	mock_keypress[0] = VB_KEY_CTRL('C');
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"todiag is zero");
-	if (DIAGNOSTIC_UI)
+	if (VB2_CONFIG(DIAGNOSTIC_UI))
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_REBOOT_REQUIRED,
 			"Ctrl+C todiag os broken - enabled");
 	else
 		TEST_EQ(VbBootRecovery(ctx), VBERROR_SHUTDOWN_REQUESTED,
 			"Ctrl+C todiag os broken - disabled");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), DIAGNOSTIC_UI,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), VB2_CONFIG(DIAGNOSTIC_UI),
 		"  todiag is updated for Ctrl-C");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  todiag doesn't set unneeded DISPLAY_REQUEST");
@@ -1602,9 +1604,10 @@ int main(void)
 	VbUserConfirmsTest();
 	VbBootTest();
 	VbBootDevTest();
-	VbBootDevVendorDataTest();
+	if (VB2_CONFIG(VENDOR_DATA_LENGTH))
+		VbBootDevVendorDataTest();
 	VbBootRecTest();
-	if (DIAGNOSTIC_UI)
+	if (VB2_CONFIG(DIAGNOSTIC_UI))
 		VbBootDiagTest();
 
 	return gTestSuccess ? 0 : 255;

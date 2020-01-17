@@ -11,6 +11,7 @@
 #include "test_common.h"
 #include "tlcl.h"
 #include "tss_constants.h"
+#include "vb2_config.h"
 #include "vboot_test.h"
 
 /*
@@ -71,10 +72,10 @@ static void reset_common_data(int fail_on_call, uint32_t fail_with_err)
 	mock_fwmp_real_size = VB2_SECDATA_FWMP_MIN_SIZE;
 
 	/* Note: only used when TPM2_MODE is disabled. */
-#ifndef TPM2_MODE
-	mock_permissions = TPM_NV_PER_PPWRITE;
+#if !VB2_CONFIG(TPM2_MODE)
+		mock_permissions = TPM_NV_PER_PPWRITE;
 #else
-	mock_permissions = 0;
+		mock_permissions = 0;
 #endif
 
 	secdata_kernel_locked = 0;
@@ -248,7 +249,7 @@ uint32_t TlclLockPhysicalPresence(void)
 	return (++mock_count == fail_at_count) ? fail_with_error : TPM_SUCCESS;
 }
 
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 uint32_t TlclGetPermissions(uint32_t index, uint32_t* permissions)
 {
 	mock_cnext += sprintf(mock_cnext, "TlclGetPermissions(%#x)\n", index);
@@ -372,14 +373,14 @@ static void secdata_kernel_tests(void)
 	TEST_EQ(secdata_kernel_read(ctx), TPM_E_BADINDEX,
 		"secdata_kernel_read(), not present");
 	TEST_STR_EQ(mock_calls,
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 		    "TlclGetPermissions(0x1008)\n",
 #else
 		    "TlclRead(0x1008, 13)\n",
 #endif
 		    "  tlcl calls");
 
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 	/* Bad permissions */
 	reset_common_data(0, 0);
 	mock_permissions = 0;
@@ -391,7 +392,7 @@ static void secdata_kernel_tests(void)
 #endif
 
 	/* Good permissions, read failure */
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 	int read_failure_on_call = 2;
 #else
 	int read_failure_on_call = 1;
@@ -400,7 +401,7 @@ static void secdata_kernel_tests(void)
 	TEST_EQ(secdata_kernel_read(ctx), TPM_E_IOERROR,
 		"secdata_kernel_read(), good permissions, failure");
 	TEST_STR_EQ(mock_calls,
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 		    "TlclGetPermissions(0x1008)\n"
 #endif
 		    "TlclRead(0x1008, 13)\n",
@@ -412,7 +413,7 @@ static void secdata_kernel_tests(void)
 	TEST_EQ(secdata_kernel_read(ctx), TPM_E_CORRUPTED_STATE,
 		"secdata_kernel_read(), read success, bad CRC");
 	TEST_STR_EQ(mock_calls,
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 		    "TlclGetPermissions(0x1008)\n"
 #endif
 		    "TlclRead(0x1008, 13)\n",
@@ -423,7 +424,7 @@ static void secdata_kernel_tests(void)
 	TEST_SUCC(secdata_kernel_read(ctx),
 		  "secdata_kernel_read(), good permissions, success");
 	TEST_STR_EQ(mock_calls,
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 		    "TlclGetPermissions(0x1008)\n"
 #endif
 		    "TlclRead(0x1008, 13)\n",

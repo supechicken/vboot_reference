@@ -17,6 +17,7 @@
 #include "test_common.h"
 #include "tlcl.h"
 #include "tss_constants.h"
+#include "vb2_config.h"
 #include "vboot_audio.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
@@ -269,7 +270,7 @@ static void VbSlkTest(void)
 	test_slk(VB2_ERROR_MOCK, 0, "Normal boot bad");
 
 	/* Check that NV_DIAG_REQUEST triggers diagnostic UI */
-	if (DIAGNOSTIC_UI) {
+	if (VB2_CONFIG(DIAGNOSTIC_UI)) {
 		ResetMocks();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);

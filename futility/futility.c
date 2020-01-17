@@ -15,6 +15,7 @@
 #include <unistd.h>
 
 #include "futility.h"
+#include "vb2_config.h"
 
 /******************************************************************************/
 /* Logging stuff */
@@ -86,7 +87,7 @@ static void log_open(void)
 	struct flock lock;
 	int ret;
 
-#ifdef FORCE_LOGGING_ON
+#if VB2_CONFIG(FORCE_LOGGING_ON)
 	log_fd = open(LOGFILE, O_WRONLY | O_APPEND | O_CREAT, 0666);
 #else
 	log_fd = open(LOGFILE, O_WRONLY | O_APPEND);

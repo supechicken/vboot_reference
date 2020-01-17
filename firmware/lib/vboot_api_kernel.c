@@ -16,6 +16,7 @@
 #include "secdata_tpm.h"
 #include "utility.h"
 #include "vb2_common.h"
+#include "vb2_config.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
@@ -245,9 +246,9 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	 */
 	if (shared->flags & VBSD_EC_SOFTWARE_SYNC)
 		ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
-	if (EC_SLOW_UPDATE)
+	if (VB2_CONFIG(EC_SLOW_UPDATE))
 		ctx->flags |= VB2_CONTEXT_EC_SYNC_SLOW;
-	if (EC_EFS)
+	if (VB2_CONFIG(EC_EFS))
 		ctx->flags |= VB2_CONTEXT_EC_EFS;
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx->flags |= VB2_CONTEXT_NVDATA_V2;
@@ -454,11 +455,12 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Recovery boot.  This has UI. */
-		if (LEGACY_MENU_UI)
+		if (VB2_CONFIG(LEGACY_MENU_UI))
 			rv = VbBootRecoveryMenu(ctx);
 		else
 			rv = VbBootRecovery(ctx);
-	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+	} else if (VB2_CONFIG(DIAGNOSTIC_UI) &&
+		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
 		/*
@@ -477,7 +479,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			rv = VBERROR_REBOOT_REQUIRED;
 	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		/* Developer boot.  This has UI. */
-		if (LEGACY_MENU_UI)
+		if (VB2_CONFIG(LEGACY_MENU_UI))
 			rv = VbBootDeveloperMenu(ctx);
 		else
 			rv = VbBootDeveloper(ctx);

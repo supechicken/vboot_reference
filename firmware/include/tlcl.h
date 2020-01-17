@@ -14,6 +14,7 @@
 #include <stdint.h>
 
 #include "tss_constants.h"
+#include "vb2_config.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -284,7 +285,7 @@ uint32_t TlclUndefineSpaceEx(const uint8_t* owner_auth,
 			     uint32_t owner_auth_size,
 			     uint32_t index);
 
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 
 /**
  * Read the public half of the EK.
@@ -315,7 +316,7 @@ uint32_t TlclCreateDelegationFamily(uint8_t family_label);
 uint32_t TlclReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
 				       uint32_t* table_size);
 
-#endif  /* TPM2_MODE */
+#endif  /* VB2_CONFIG(TPM2_MODE) */
 #endif  /* CHROMEOS_ENVIRONMENT */
 
 #ifdef __cplusplus

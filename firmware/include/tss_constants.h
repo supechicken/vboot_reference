@@ -8,6 +8,8 @@
 
 #include <stdint.h>
 
+#include "vb2_config.h"
+
 #define TPM_SUCCESS ((uint32_t) 0x00000000)
 
 #define TPM_E_ALREADY_INITIALIZED    ((uint32_t) 0x00005000)  /* vboot local */
@@ -50,7 +52,7 @@
 #define TPM_E_NEEDS_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 1))
 #define TPM_E_DOING_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 2))
 
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
 #include "tpm2_tss_constants.h"
 #else
 #include "tpm1_tss_constants.h"

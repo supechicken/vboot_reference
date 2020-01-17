@@ -19,10 +19,11 @@
 #include "tlcl.h"
 #include "tpm_error_messages.h"
 #include "tss_constants.h"
+#include "vb2_config.h"
 
 #define OTHER_ERROR 255  /* OTHER_ERROR must be the largest uint8_t value. */
 
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
 #define TPM_MODE_SELECT(_, tpm20_ver) tpm20_ver
 #else
 #define TPM_MODE_SELECT(tpm12_ver, _) tpm12_ver
@@ -136,7 +137,7 @@ static uint32_t HandlerTpmVersion(void) {
 }
 
 /* TODO(apronin): stub for selected flags for TPM2 */
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
 static uint32_t HandlerGetFlags(void) {
   fprintf(stderr, "getflags not implemented for TPM2\n");
   exit(OTHER_ERROR);
@@ -155,7 +156,7 @@ static uint32_t HandlerGetFlags(void) {
 }
 #endif
 
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 static uint32_t HandlerActivate(void) {
   return TlclSetDeactivated(0);
 }
@@ -187,13 +188,13 @@ static uint32_t HandlerDefineSpace(void) {
     overwrite = 0;
   }
 
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
   // For TPM 2.0, DefineSpace will fail if the space already exists, so to
   // support the default 'overwrite' mode, need to undefine the space first.
   if (overwrite) {
     TlclUndefineSpace(index);
   }
-#else  /* ifndef TPM2_MODE */
+#else  /* if !VB2_CONFIG(TPM2_MODE) */
   // For TPM 1.2, we have to check the existing before calling DefineSpace(),
   // since it will automaticly overwrite the existing space by default.
   // Do nothing for TPM 2.0. We rely on DefineSpace() to return the appropriate
@@ -254,7 +255,7 @@ static uint32_t HandlerWrite(void) {
   }
 
   if (size == 0) {
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
     if (index == TPM_NV_INDEX_LOCK) {
       fprintf(stderr, "This would set the nvLocked bit. "
               "Use \"tpmc setnv\" instead.\n");
@@ -404,7 +405,7 @@ static uint32_t HandlerGetPermanentFlags(void) {
   uint32_t result = TlclGetPermanentFlags(&pflags);
   if (result == 0) {
 #define P(name) printf("%s %d\n", #name, pflags.name)
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
     P(ownerAuthSet);
     P(endorsementAuthSet);
     P(lockoutAuthSet);
@@ -443,7 +444,7 @@ static uint32_t HandlerGetSTClearFlags(void) {
   uint32_t result = TlclGetSTClearFlags(&vflags);
   if (result == 0) {
 #define P(name) printf("%s %d\n", #name, vflags.name)
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
   P(phEnable);
   P(shEnable);
   P(ehEnable);
@@ -521,7 +522,7 @@ static uint32_t HandlerGetVersion(void) {
   return result;
 }
 
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 static void PrintIFXFirmwarePackage(TPM_IFX_FIRMWAREPACKAGE* firmware_package,
                                     const char* prefix) {
   printf("%s_package_id %08x\n", prefix,
@@ -562,9 +563,9 @@ static uint32_t HandlerCheckOwnerAuth(void) {
   return TlclDefineSpaceEx(owner_auth, sizeof(owner_auth), TPM_NV_INDEX_TRIAL,
                            TPM_NV_PER_OWNERWRITE, 1, NULL, 0);
 }
-#endif  /* !TPM2_MODE */
+#endif  /* !VB2_CONFIG(TPM2_MODE) */
 
-#ifdef TPM2_MODE
+#if VB2_CONFIG(TPM2_MODE)
 static uint32_t HandlerDoNothingForTPM2(void) {
   return 0;
 }

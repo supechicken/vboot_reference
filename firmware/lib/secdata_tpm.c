@@ -11,6 +11,7 @@
 #include "secdata_tpm.h"
 #include "tlcl.h"
 #include "tss_constants.h"
+#include "vb2_config.h"
 #include "vboot_test.h"
 
 #define RETURN_ON_FAILURE(tpm_command) do { \
@@ -90,7 +91,7 @@ uint32_t secdata_firmware_write(struct vb2_context *ctx)
 
 uint32_t secdata_kernel_read(struct vb2_context *ctx)
 {
-#ifndef TPM2_MODE
+#if !VB2_CONFIG(TPM2_MODE)
 	/*
 	 * Before reading the kernel space, verify its permissions.  If the
 	 * kernel space has the wrong permission, we give up.  This will need

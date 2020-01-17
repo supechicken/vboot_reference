@@ -16,6 +16,7 @@
 #include "tlcl.h"
 #include "utility.h"
 #include "vb2_common.h"
+#include "vb2_config.h"
 #include "vboot_api.h"
 #include "vboot_audio.h"
 #include "vboot_display.h"
@@ -265,7 +266,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 		case '0'...'9':
 		case 'A'...'Z':
 			if ((len > 0 && is_vowel(key)) ||
-			     len >= VENDOR_DATA_LENGTH) {
+			     len >= VB2_CONFIG(VENDOR_DATA_LENGTH)) {
 				vb2_error_beep(VB_BEEP_NOT_ALLOWED);
 			} else {
 				data_value[len++] = key;
@@ -288,7 +289,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 				  data_value);
 			break;
 		case VB_KEY_ENTER:
-			if (len == VENDOR_DATA_LENGTH) {
+			if (len == VB2_CONFIG(VENDOR_DATA_LENGTH)) {
 				/* Enter pressed - confirm input */
 				VB2_DEBUG("Vendor Data UI - user pressed "
 					  "Enter: confirm vendor data\n");
@@ -313,7 +314,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
  */
 static vb2_error_t vb2_vendor_data_ui(struct vb2_context *ctx)
 {
-	char data_value[VENDOR_DATA_LENGTH + 1];
+	char data_value[VB2_CONFIG(VENDOR_DATA_LENGTH) + 1];
 	VbScreenData data = {
 		.vendor_data = { data_value }
 	};
@@ -377,7 +378,8 @@ static vb2_error_t vb2_vendor_data_ui(struct vb2_context *ctx)
 
 static vb2_error_t vb2_check_diagnostic_key(struct vb2_context *ctx,
 					    uint32_t key) {
-	if (DIAGNOSTIC_UI && (key == VB_KEY_CTRL('C') || key == VB_KEY_F(12))) {
+	if (VB2_CONFIG(DIAGNOSTIC_UI) &&
+	    (key == VB_KEY_CTRL('C') || key == VB_KEY_F(12))) {
 		VB2_DEBUG("Diagnostic mode requested, rebooting\n");
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 
@@ -658,7 +660,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			}
 			break;
 		case VB_KEY_CTRL('S'):
-			if (VENDOR_DATA_LENGTH == 0)
+			if (VB2_CONFIG(VENDOR_DATA_LENGTH) == 0)
 				break;
 			/*
 			 * Only show the vendor data ui if it is tag is settable
@@ -870,7 +872,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				if (VB2_SUCCESS != vb2_enable_developer_mode(ctx))
 					return VBERROR_TPM_SET_BOOT_MODE_STATE;
 				VB2_DEBUG("Reboot so it will take effect\n");
-				if (USB_BOOT_ON_DEV)
+				if (VB2_CONFIG(USB_BOOT_ON_DEV))
 					vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 				return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 			case -1:

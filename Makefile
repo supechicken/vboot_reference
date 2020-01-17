@@ -28,9 +28,75 @@
 #
 # So we'll try to define all the variables first. Then the rules.
 #
+##############################################################################
+# vboot build configuration.
+#
+# These may be specified in the `make` command in order to configure different
+# build-time options of the vboot build.  The config value will be available
+# in vboot code as a constant of the same name.
+#
+# `make runtests` will attempt three different configurations for unit tests:
+#   - set specified at command-line
+#   - all-disabled set (=0)
+#   - test value set (default 1)
+# To override the test value, use the format "CONFIG += VAR=x" below.
+
+# Use TPM2 drivers instead of TPM1 drivers.
+CONFIG += TPM2_MODE
+
+# Mock out TPM calls for a machine without a TPM.
+# Does *not* need to be set for unit tests.
+CONFIG += MOCK_TPM
+
+# EC update is slow and needs to display a screen while updating.
+CONFIG += EC_SLOW_UPDATE
+
+# Early-firmware selection (EFS) EC.
+CONFIG += EC_EFS
+
+# Enable USB boot when switching to dev mode.
+CONFIG += USB_BOOT_ON_DEV
+
+# Enable legacy menu UI (only for detachables).
+# Apparently this is broken -- it hangs in vboot_api_kernel4_tests.
+CONFIG += LEGACY_MENU_UI=0
+
+# Enable clamshell UI (only for non-detachables).
+# This is a little bit wonky, since we need to make sure exactly one UI is
+# enabled in any build configuration.  But currently, this config value is
+# not read anywhere, so we can set it to 0 in our "all-disabled" set.
+CONFIG += LEGACY_CLAMSHELL_UI
+
+# Enable Wilco-specific UEFI diagnostic launching feature.
+CONFIG += DIAGNOSTIC_UI
+
+# If greater than 0, enables Wilco-specific vendor data-setting RMA feature.
+# Testing only works (i.e. doesn't hang) when this is set to 4.
+CONFIG += VENDOR_DATA_LENGTH=4
+
+# This isn't used anywhere.  We should remove it from depthcharge.
+CONFIG += CUSTOM_MUSIC
+
+# Not sure what this does.
+CONFIG += FORCE_LOGGING_ON
+
+# Process the config values, appending to CFLAGS and creating
+# the test configuration sets.
+define process_config
+CFLAGS += -DVB2_CONFIG_$(word 1,$(subst =, ,${1}))=$(or ${$(word 1,$(subst =, ,${1}))},0)
+TEST1_CONFIG += $(word 1,$(subst =, ,${1}))=$(or ${$(word 1,$(subst =, ,${1}))},0)
+TEST2_CONFIG += $(word 1,$(subst =, ,${1}))=0
+TEST3_CONFIG += $(word 1,$(subst =, ,${1}))=$(or $(word 2,$(subst =, ,${1})),1)
+endef
+
+$(foreach config,${CONFIG},$(eval $(call process_config,${config})))
+
+# For checking build config values in Makefile conditionals, use this
+# format to ensure that the conditional works with both empty and
+# zero-assigned values: ifeq ($(filter-out 0,${CONFIG_NAME}),)
 
 ##############################################################################
-# Configuration variables come first.
+# Other configuration variables.
 #
 # Our convention is that we only use := for variables that will never be
 # changed or appended. They must be defined before being used anywhere.
@@ -173,61 +239,6 @@ endif
 
 ifeq (${DISABLE_NDEBUG},)
 CFLAGS += -DNDEBUG
-endif
-
-ifneq (${FORCE_LOGGING_ON},)
-CFLAGS += -DFORCE_LOGGING_ON=${FORCE_LOGGING_ON}
-endif
-
-ifneq (${TPM2_MODE},)
-CFLAGS += -DTPM2_MODE
-endif
-
-# Enable USB boot when switching to dev mode
-ifneq ($(filter-out 0,${USB_BOOT_ON_DEV}),)
-CFLAGS += -DUSB_BOOT_ON_DEV=1
-else
-CFLAGS += -DUSB_BOOT_ON_DEV=0
-endif
-
-# EC software sync is slow to update. Enable warning screen display.
-ifneq ($(filter-out 0,${EC_SLOW_UPDATE}),)
-CFLAGS += -DEC_SLOW_UPDATE=1
-else
-CFLAGS += -DEC_SLOW_UPDATE=0
-endif
-
-# Enable EC early firmware selection.
-ifneq ($(filter-out 0,${EC_EFS}),)
-CFLAGS += -DEC_EFS=1
-else
-CFLAGS += -DEC_EFS=0
-endif
-
-# Some tests need to be disabled when using mocked_secdata_tpm.
-ifneq (${MOCK_TPM},)
-CFLAGS += -DMOCK_TPM
-endif
-
-# LEGACY_MENU_UI controls whether to enable legacy menu UI, which is used with
-# devices that don't have a keyboard (detachables).
-# Pass LEGACY_MENU_UI= (or =0) to make to disable feature.
-ifneq ($(filter-out 0,${LEGACY_MENU_UI}),)
-CFLAGS += -DLEGACY_MENU_UI=1
-else
-CFLAGS += -DLEGACY_MENU_UI=0
-endif
-
-# enable all features during local compile (permits testing)
-ifeq (${FIRMWARE_ARCH},)
-DIAGNOSTIC_UI := 1
-endif
-
-# pass DIAGNOSTIC_UI= (or =0) to make to disable feature
-ifneq ($(filter-out 0,${DIAGNOSTIC_UI}),)
-CFLAGS += -DDIAGNOSTIC_UI=1
-else
-CFLAGS += -DDIAGNOSTIC_UI=0
 endif
 
 # NOTE: We don't use these files but they are useful for other packages to
@@ -417,7 +428,7 @@ FWLIB21_SRCS = \
 	firmware/lib21/packed_key.c
 
 # TPM lightweight command library
-ifeq (${TPM2_MODE},)
+ifeq ($(filter-out 0,${TPM2_MODE}),)
 TLCL_SRCS = \
 	firmware/lib/tpm_lite/tlcl.c
 else
@@ -428,21 +439,13 @@ TLCL_SRCS = \
 endif
 
 # Support real TPM unless BIOS sets MOCK_TPM
-ifeq (${MOCK_TPM},)
+ifeq ($(filter-out 0,${MOCK_TPM}),)
 FWLIB_SRCS += \
 	firmware/lib/secdata_tpm.c
 else
 FWLIB_SRCS += \
 	firmware/lib/mocked_secdata_tpm.c \
 	firmware/lib/tpm_lite/mocked_tlcl.c
-endif
-
-ifneq (${VENDOR_DATA_LENGTH},)
-CFLAGS += -DVENDOR_DATA_LENGTH=${VENDOR_DATA_LENGTH}
-else ifeq (${FIRMWARE_ARCH},)
-CFLAGS += -DVENDOR_DATA_LENGTH=4
-else
-CFLAGS += -DVENDOR_DATA_LENGTH=0
 endif
 
 ifeq (${FIRMWARE_ARCH},)
@@ -723,11 +726,11 @@ TEST_NAMES = \
 	tests/vboot_kernel_tests \
 	tests/verify_kernel
 
-ifeq (${MOCK_TPM},)
+ifeq ($(filter-out 0,${MOCK_TPM}),)
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
 TEST_NAMES += \
 	tests/secdata_tpm_tests
-ifeq (${TPM2_MODE},)
+ifeq ($(filter-out 0,${TPM2_MODE}),)
 # TODO(apronin): tests for TPM2 case?
 TEST_NAMES += \
 	tests/tlcl_tests
@@ -782,7 +785,7 @@ TEST21_NAMES = \
 TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
 
 # And a few more...
-ifeq (${TPM2_MODE},)
+ifeq ($(filter-out 0,${TPM2_MODE}),)
 TLCL_TEST_NAMES = \
 	tests/tpm_lite/tpmtest_earlyextend \
 	tests/tpm_lite/tpmtest_earlynvram \
@@ -847,7 +850,7 @@ host_stuff: utillib hostlib \
 
 .PHONY: clean
 clean:
-	${Q}/bin/rm -rf ${BUILD}
+	${Q}/bin/rm -rf ${BUILD}*
 
 .PHONY: install
 install: $(if ${NO_BUILD_TOOLS},,cgpt_install) \
@@ -1181,7 +1184,7 @@ ${BUILD}/tests/%: CFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 
-ifeq (${TPM2_MODE},)
+ifeq ($(filter-out 0,${TPM2_MODE}),)
 # TODO(apronin): tests for TPM2 case?
 TLCL_TEST_BINS = $(addprefix ${BUILD}/,${TLCL_TEST_NAMES})
 ${TLCL_TEST_BINS}: OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
@@ -1248,8 +1251,23 @@ endif
 	${Q}chmod a+rx ${BUILD}/${QEMU_BIN}
 endif
 
-.PHONY: runtests
-runtests: test_setup test_targets
+.PHONY: runtests-once
+runtests-once: test_setup test_targets
+
+.PHONY:
+runtests: runtests-1 runtests-2 runtests-3
+
+.PHONY:
+runtests-1:
+	${MAKE} runtests-once BUILD=${BUILD}-1 ${TEST1_CONFIG}
+
+.PHONY:
+runtests-2:
+	${MAKE} runtests-once BUILD=${BUILD}-2 ${TEST2_CONFIG}
+
+.PHONY:
+runtests-3:
+	${MAKE} runtests-once BUILD=${BUILD}-3 ${TEST3_CONFIG}
 
 # Generate test keys
 .PHONY: genkeys
@@ -1284,10 +1302,10 @@ runtestscripts: test_setup genfuzztestcases
 
 .PHONY: runmisctests
 runmisctests: test_setup
-ifeq (${MOCK_TPM},)
+ifeq ($(filter-out 0,${MOCK_TPM}),)
 # secdata_tpm_tests and tlcl_tests only work when MOCK_TPM is disabled
 	${RUNTEST} ${BUILD_RUN}/tests/secdata_tpm_tests
-ifeq (${TPM2_MODE},)
+ifeq ($(filter-out 0,${TPM2_MODE}),)
 # TODO(apronin): tests for TPM2 case?
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 endif
@@ -1378,7 +1396,7 @@ ifeq (${COV},)
 coverage:
 	$(error Build coverage like this: make clean && COV=1 make coverage)
 else
-coverage: coverage_init runtests coverage_html
+coverage: coverage_init runtests-once coverage_html
 endif
 
 # Include generated dependencies

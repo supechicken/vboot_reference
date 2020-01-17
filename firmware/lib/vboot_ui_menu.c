@@ -15,6 +15,7 @@
 #include "secdata_tpm.h"
 #include "utility.h"
 #include "vb2_common.h"
+#include "vb2_config.h"
 #include "vboot_api.h"
 #include "vboot_audio.h"
 #include "vboot_display.h"
@@ -362,7 +363,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 		return VBERROR_TPM_SET_BOOT_MODE_STATE;
 
 	/* This was meant for headless devices, shouldn't really matter here. */
-	if (USB_BOOT_ON_DEV)
+	if (VB2_CONFIG(USB_BOOT_ON_DEV))
 		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 
 	VB2_DEBUG("Reboot so it will take effect\n");
