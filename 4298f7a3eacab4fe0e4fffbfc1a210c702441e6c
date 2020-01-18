@@ -16,6 +16,24 @@
       "revId": "4298f7a3eacab4fe0e4fffbfc1a210c702441e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98e2c9f4_72274038",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-18T03:24:14Z",
+      "side": 1,
+      "message": "Ah... yeah that makes sense.  So the only \"DIE\" case is NV_WRITE error + non-recovery mode (impossible to trigger recovery mode) -- which is tested above in \"Boot normal - commit data failures\").",
+      "parentUuid": "302a8fda_6ca86219",
+      "revId": "4298f7a3eacab4fe0e4fffbfc1a210c702441e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
