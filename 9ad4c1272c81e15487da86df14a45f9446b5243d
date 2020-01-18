@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e04ec3a_b486f4df",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-18T03:38:57Z",
+      "side": 1,
+      "message": "I wonder if we should call this \"UI errors\" and \"VB2_ERROR_UI\" instead?  We may encounter some errors that don\u0027t necessarily have to do with the screens themselves.  What are your thoughts?",
+      "range": {
+        "startLine": 759,
+        "startChar": 4,
+        "endLine": 759,
+        "endChar": 18
+      },
+      "revId": "9ad4c1272c81e15487da86df14a45f9446b5243d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f4850b_f86219c0",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-18T03:38:57Z",
+      "side": 1,
+      "message": "Please write the numbers out like in the LoadKernel section.  We want to convert all the other sections to use this format, which is easier for grepping and looking up error values.",
+      "range": {
+        "startLine": 761,
+        "startChar": 20,
+        "endLine": 761,
+        "endChar": 45
+      },
+      "revId": "9ad4c1272c81e15487da86df14a45f9446b5243d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f3b01e_0037fac3",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-18T03:38:57Z",
+      "side": 1,
+      "message": "So then this would probably become ... VB2_ERROR_UI_INVALID_SCREEN_INDEX?",
+      "range": {
+        "startLine": 767,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 31
+      },
+      "revId": "9ad4c1272c81e15487da86df14a45f9446b5243d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
