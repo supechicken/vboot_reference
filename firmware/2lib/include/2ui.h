@@ -36,8 +36,6 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx);
  * encountered last boot. This menu loop and wait for the user to reset or
  * shut down.
  *
- * TODO(roccochen): all menu functionalities
- *
  * @param ctx		Vboot context
  * @returns VB2_SUCCESS, or non-zero error code.
  */
@@ -48,8 +46,6 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx);
  *
  * Enter the recovery menu, which prompts the user to insert recovery media or
  * navigate the step-by-step recovery flow via keyboards.
- *
- * TODO(roccochen): all menu functionalities
  *
  * @param ctx		Vboot context
  * @returns VB2_SUCCESS, or non-zero error code.
