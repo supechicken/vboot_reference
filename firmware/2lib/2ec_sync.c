@@ -24,7 +24,16 @@
 static void display_wait_screen(struct vb2_context *ctx)
 {
 	VB2_DEBUG("EC FW update is slow. Show WAIT screen.\n");
-	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
+	if (MENU_UI) {
+		struct menu_state state = {
+			.locale = 0,
+			.screen = VB_SCREEN_WAIT,
+		};
+		vb2ex_display_menu(&state, NULL);
+	}
+	else {
+		VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
+	}
 }
 
 /**

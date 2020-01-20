@@ -1073,4 +1073,22 @@ vb2_error_t vb2ex_ec_vboot_done(struct vb2_context *ctx);
  */
 vb2_error_t vb2ex_ec_battery_cutoff(void);
 
+/*****************************************************************************/
+/* Functions for UI display. */
+
+struct menu_state {
+	uint32_t locale;
+	uint32_t screen;		/* enum VbScreenType_t */
+};
+
+/**
+ * Display menu screen. This function is used in MENU_UI and aims to replace
+ * VbExDisplayScreen() and VbExDisplayMenu().
+ *
+ * @param state		Current menu state.
+ * @param prev_state	Previous menu state.
+ */
+vb2_error_t vb2ex_display_menu(const struct menu_state *state,
+			       const struct menu_state *prev_state);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
