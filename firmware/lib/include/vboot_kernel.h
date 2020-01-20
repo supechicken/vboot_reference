@@ -78,4 +78,32 @@ vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *ctx);
  */
 vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *ctx);
 
+/**
+ * Handle a developer-mode boot using menu UI.
+ *
+ * A developer mode entry point to menu UI, which is a detachable, menu-based
+ * UI revamp and has more functionality. other developer mode entry points will
+ * be deprecated.
+ *
+ * (See chromium:1033815.)
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_developer_menu(struct vb2_context *ctx);
+
+/**
+ * Handle a recovery-mode boot using menu UI.
+ *
+ * A recovery mode entry point to menu UI, which is a detachable, menu-based
+ * UI revamp and has more functionality. other recovery mode entry points will
+ * be deprecated.
+ *
+ * (See chromium:1033815.)
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_recovery_menu(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */
