@@ -12,7 +12,9 @@
 #include "2return_codes.h"
 #include "2secdata.h"
 #include "2ui.h"
+#include "vboot_api.h"
 #include "vboot_audio.h"
+#include "vboot_display.h"
 #include "vboot_kernel.h"
 
 /* Delay type (in ms) of developer and recovery mode menu looping */
@@ -39,6 +41,13 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	return VBERROR_KEEP_LOOPING;
 }
 
+/* Initialize menu state. Must be called once before displaying any menus. */
+static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
+{
+	/* TODO(roccochen): init language menu */
+	return VB2_SUCCESS;
+}
+
 /*****************************************************************************/
 /* Entry points */
 
@@ -46,7 +55,10 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 
-	/* TODO(roccochen): Init menus. */
+	rv = vb2_init_menus(ctx);
+	if (rv)
+		return rv;
+
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
 	/* Get audio/delay context */
@@ -118,7 +130,10 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 
-	/* TODO(roccochen): Init menus. */
+	rv = vb2_init_menus(ctx);
+	if (rv)
+		return rv;
+
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
 	/* Loop and wait for the user to reset or shut down. */
@@ -137,7 +152,10 @@ vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 
-	/* TODO(roccochen): Init menus. */
+	rv = vb2_init_menus(ctx);
+	if (rv)
+		return rv;
+
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
 	/* Loop and wait for a recovery image or keyboard inputs */
