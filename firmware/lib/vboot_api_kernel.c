@@ -227,6 +227,7 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 				    VbSharedDataHeader *shared,
 				    VbSelectAndLoadKernelParams *kparams)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t tpm_rv;
 	vb2_error_t rv;
 
@@ -248,10 +249,14 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 	if (shared->flags & VBSD_NVDATA_V2)
 		ctx->flags |= VB2_CONTEXT_NVDATA_V2;
 
-	vb2_nv_init(ctx);
+	/* Translate recovery reason-related fields into vboot1 */
+	shared->recovery_reason = sd->recovery_reason;
+	if (sd->recovery_reason)
+		shared->firmware_index = 0xff;
+	if (sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY)
+		shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
 
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	sd->recovery_reason = shared->recovery_reason;
+	vb2_nv_init(ctx);
 
 	/*
 	 * Save a pointer to the old vboot1 shared data, since we haven't
