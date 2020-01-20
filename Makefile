@@ -192,6 +192,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# pass MENU_UI= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${MENU_UI}),)
+CFLAGS += -DMENU_UI=1
+else
+CFLAGS += -DMENU_UI=0
+endif
+
 # LEGACY_MENU_UI controls whether to enable legacy menu UI, which is used with
 # devices that don't have a keyboard (detachables).
 # Pass LEGACY_MENU_UI= (or =0) to make to disable feature.
@@ -381,6 +388,7 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_ui_legacy_common.c \
 	firmware/lib/vboot_ui_legacy_menu.c \
 	firmware/lib/vboot_ui_legacy_wilco.c \
+	firmware/lib/vboot_ui_menu.c \
 	firmware/lib20/api_kernel.c \
 	firmware/lib20/kernel.c \
 	firmware/lib20/misc.c \
@@ -670,6 +678,7 @@ TEST_NAMES = \
 	tests/vboot_legacy_clamshell_beep_tests \
 	tests/vboot_legacy_clamshell_tests \
 	tests/vboot_legacy_menu_tests \
+	tests/vboot_menu_tests \
 	tests/verify_kernel
 
 ifeq (${MOCK_TPM}${TPM2_MODE},)
@@ -1193,6 +1202,7 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_clamshell_beep_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_clamshell_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_menu_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_menu_tests
 
 .PHONY: run2tests
 run2tests: install_for_test
