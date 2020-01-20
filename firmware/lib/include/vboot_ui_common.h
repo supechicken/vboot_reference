@@ -2,8 +2,8 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Common code used by all three UIs: legacy_clamshell_ui, legacy_menu_ui,
- * and wilco_ui.
+ * Common code used by all four UIs: legacy_clamshell_ui, legacy_menu_ui,
+ * wilco_ui, and menu_ui.
  */
 
 #ifndef VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
