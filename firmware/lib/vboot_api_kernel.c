@@ -397,7 +397,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		}
 
 		/* Recovery boot.  This has UI. */
-		if (LEGACY_MENU_UI)
+		if (MENU_UI)
+			rv = VbBootRecoveryMenu(ctx);
+		else if (LEGACY_MENU_UI)
 			rv = VbBootRecoveryLegacyMenu(ctx);
 		else
 			rv = VbBootRecoveryLegacyClamshell(ctx);
@@ -420,7 +422,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			rv = VBERROR_REBOOT_REQUIRED;
 	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		/* Developer boot.  This has UI. */
-		if (LEGACY_MENU_UI)
+		if (MENU_UI)
+			rv = VbBootDeveloperMenu(ctx);
+		else if (LEGACY_MENU_UI)
 			rv = VbBootDeveloperLegacyMenu(ctx);
 		else
 			rv = VbBootDeveloperLegacyClamshell(ctx);
