@@ -79,6 +79,16 @@ vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *ctx);
 vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *ctx);
 
 /**
+ * Handle a developer-mode boot using menu ui
+ */
+vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
+
+/**
+ * Handle a recovery-mode boot using menu ui
+ */
+vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
+
+/**
  * Reinitialize global state. This should only need to be called by init tests.
  */
 void vb2_init_ui(void);

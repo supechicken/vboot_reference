@@ -209,6 +209,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# pass MENU_UI= (or =0) to make to disable feature
+ifneq ($(filter-out 0,${MENU_UI}),)
+CFLAGS += -DMENU_UI=1
+else
+CFLAGS += -DMENU_UI=0
+endif
+
 # LEGACY_MENU_UI controls whether to enable legacy menu UI, which is used with
 # devices that don't have a keyboard (detachables).
 # Pass LEGACY_MENU_UI= (or =0) to make to disable feature.
@@ -380,7 +387,8 @@ FWLIB_SRCS = \
 	firmware/lib/vboot_kernel.c \
 	firmware/lib/vboot_ui_common.c \
 	firmware/lib/vboot_ui_legacy_clamshell.c \
-	firmware/lib/vboot_ui_legacy_menu.c
+	firmware/lib/vboot_ui_legacy_menu.c \
+	firmware/lib/vboot_ui_menu.c
 
 # Code common to both vboot 2.0 (old structs) and 2.1 (new structs)
 FWLIB2X_SRCS = \
