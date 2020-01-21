@@ -159,6 +159,64 @@
       "revId": "0a967eb79d11d648faa27dac9712ba9b7b518bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9d426c_ea87dec8",
+        "filename": "firmware/lib/vboot_ui_legacy_clamshell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-21T07:54:05Z",
+      "side": 1,
+      "message": "There\u0027s no reason we have to use this particular string - we can also just write \"UI - booting USB\" or \"clamshell - booting USB\"",
+      "parentUuid": "82cfd776_b16556a4",
+      "revId": "0a967eb79d11d648faa27dac9712ba9b7b518bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35df22c_4f832e3c",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-21T07:54:05Z",
+      "side": 1,
+      "message": "Don\u0027t update copyright years when renaming a file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0a967eb79d11d648faa27dac9712ba9b7b518bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dff7fca_3fba94bc",
+        "filename": "tests/vboot_detach_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-21T07:54:05Z",
+      "side": 1,
+      "message": "May as well rename this file while you\u0027re at it.\n\nIs your plan to create a distinct test file for the groot menu UI?",
+      "revId": "0a967eb79d11d648faa27dac9712ba9b7b518bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
