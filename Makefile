@@ -43,7 +43,7 @@ export BUILD
 
 # Stuff for 'make install'
 INSTALL = install
-DESTDIR = /usr/local
+DESTDIR = /
 LIBDIR ?= lib
 
 # Default values
@@ -56,17 +56,6 @@ DEV_DEBUG_FORCE=
 #  US_DIR = shared data directory (for static content like devkeys)
 #  DF_DIR = utility defaults directory
 #  VB_DIR = vboot binary directory for dev-mode-only scripts
-ifeq (${MINIMAL},)
-# Host install just puts everything where it's told
-UB_DIR=${DESTDIR}/bin
-UL_DIR=${DESTDIR}/${LIBDIR}
-ULP_DIR=${UL_DIR}/pkgconfig
-UI_DIR=${DESTDIR}/include/vboot
-US_DIR=${DESTDIR}/share/vboot
-DF_DIR=${DESTDIR}/default
-VB_DIR=${DESTDIR}/bin
-else
-# Target install puts things into different places
 UB_DIR=${DESTDIR}/usr/bin
 UL_DIR=${DESTDIR}/usr/${LIBDIR}
 ULP_DIR=${UL_DIR}/pkgconfig
@@ -74,7 +63,6 @@ UI_DIR=${DESTDIR}/usr/include/vboot
 US_DIR=${DESTDIR}/usr/share/vboot
 DF_DIR=${DESTDIR}/etc/default
 VB_DIR=${US_DIR}/bin
-endif
 
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
@@ -114,8 +102,8 @@ else ifeq (${ARCH},amd64)
 endif
 
 # FIRMWARE_ARCH is only defined by the Chromium OS ebuild if compiling
-# for a firmware target (such as u-boot or depthcharge). It must map
-# to the same consistent set of architectures as the host.
+# for a firmware target (coreboot or depthcharge). It must map to the same
+# consistent set of architectures as the host.
 ifeq (${FIRMWARE_ARCH},i386)
   override FIRMWARE_ARCH := x86
 else ifeq (${FIRMWARE_ARCH},amd64)
@@ -126,15 +114,6 @@ endif
 
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
-#
-# TODO(crosbug.com/16808) We hard-code u-boot's compiler flags here just
-# temporarily. As we are still investigating which flags are necessary for
-# maintaining a compatible ABI, etc. between u-boot and vboot_reference.
-#
-# As a first step, this makes the setting of CC and CFLAGS here optional, to
-# permit a calling script or Makefile to set these.
-#
-# Flag ordering: arch, then -f, then -m, then -W
 DEBUG_FLAGS := $(if ${DEBUG},-g -O0,-g -Os)
 WERROR := -Werror
 FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
@@ -144,7 +123,8 @@ COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wno-address-of-packed-member -ffunction-sections -fdata-sections \
 	-Wimplicit-fallthrough ${DEBUG_FLAGS}
 
-# Note: FIRMWARE_ARCH is defined by the Chromium OS ebuild.
+# FIRMWARE_ARCH is defined if compiling for a firmware target
+# (coreboot or depthcharge).
 ifeq (${FIRMWARE_ARCH},arm)
 CC ?= armv7a-cros-linux-gnueabihf-gcc
 CFLAGS ?= -march=armv5 -fno-common -ffixed-r8 -mfloat-abi=hard -marm
@@ -593,30 +573,27 @@ ALL_OBJS += ${CGPT_WRAPPER_OBJS}
 UTIL_DEFAULTS = ${BUILD}/default/vboot_reference
 
 # Scripts to install directly (not compiled)
+ifneq (${HOST_BUILD},)
+UTIL_SCRIPTS = \
+	utility/dev_make_keypair \
+	utility/vbutil_what_keys
+else
 UTIL_SCRIPTS = \
 	utility/dev_debug_vboot \
 	utility/enable_dev_usb_boot
-
-ifeq (${MINIMAL},)
-UTIL_SCRIPTS += \
-	utility/dev_make_keypair \
-	utility/vbutil_what_keys
 endif
 
+ifneq (${HOST_BUILD},)
 UTIL_NAMES = \
-	utility/crossystem \
 	utility/dumpRSAPublicKey \
-	utility/tpmc
-
-ifeq (${MINIMAL},)
-UTIL_NAMES += \
 	utility/load_kernel_test \
 	utility/pad_digest_utility \
 	utility/signature_digest_utility \
 	utility/verify_data
-
-LZMA_LIBS = $(shell ${PKG_CONFIG} --libs liblzma)
-YAML_LIBS = $(shell ${PKG_CONFIG} --libs yaml-0.1)
+else
+UTIL_NAMES = \
+	utility/crossystem \
+	utility/tpmc
 endif
 
 UTIL_BINS = $(addprefix ${BUILD}/,${UTIL_NAMES})
@@ -1042,17 +1019,22 @@ utils_install: ${UTIL_BINS} ${UTIL_SCRIPTS} ${UTIL_DEFAULTS}
 	@${PRINTF} "    INSTALL       UTILS\n"
 	${Q}mkdir -p ${UB_DIR}
 	${Q}${INSTALL} -t ${UB_DIR} ${UTIL_BINS} ${UTIL_SCRIPTS}
+ifeq (${HOST_BUILD},)
 	${Q}mkdir -p ${DF_DIR}
 	${Q}${INSTALL} -t ${DF_DIR} -m 'u=rw,go=r,a-s' ${UTIL_DEFAULTS}
+endif
 
 # And some signing stuff for the target
 .PHONY: signing_install
 signing_install: ${SIGNING_SCRIPTS} ${SIGNING_SCRIPTS_DEV} ${SIGNING_COMMON}
 	@${PRINTF} "    INSTALL       SIGNING\n"
 	${Q}mkdir -p ${UB_DIR} ${VB_DIR}
+ifeq (${HOST_BUILD},)
 	${Q}${INSTALL} -t ${UB_DIR} ${SIGNING_SCRIPTS}
+endif
 	${Q}${INSTALL} -t ${VB_DIR} ${SIGNING_SCRIPTS_DEV}
 	${Q}${INSTALL} -t ${VB_DIR} -m 'u=rw,go=r,a-s' ${SIGNING_COMMON}
+
 
 # ----------------------------------------------------------------------------
 # new Firmware Utility
@@ -1217,18 +1199,6 @@ ${FUTIL_CMD_LIST}: ${FUTIL_SRCS}
 ##############################################################################
 # Targets that exist just to run tests
 
-# Frequently-run tests
-.PHONY: test_targets
-test_targets:: runcgpttests runmisctests run2tests
-
-ifeq (${MINIMAL},)
-# Bitmap utility isn't compiled for minimal variant
-test_targets:: runfutiltests
-# Scripts don't work under qemu testing
-# TODO: convert scripts to makefile so they can be called directly
-test_targets:: runtestscripts
-endif
-
 .PHONY: test_setup
 test_setup:: cgpt utils futil tests install_for_test
 
@@ -1247,9 +1217,6 @@ endif
 	${Q}cp -fu /usr/bin/${QEMU_BIN} ${BUILD}/${QEMU_BIN}
 	${Q}chmod a+rx ${BUILD}/${QEMU_BIN}
 endif
-
-.PHONY: runtests
-runtests: test_setup test_targets
 
 # Generate test keys
 .PHONY: genkeys
@@ -1336,12 +1303,11 @@ run2tests: test_setup
 
 .PHONY: runfutiltests
 runfutiltests: test_setup
-	tests/futility/run_test_scripts.sh ${TEST_INSTALL_DIR}/bin
+	tests/futility/run_test_scripts.sh ${UB_DIR}
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
-# Run long tests, including all permutations of encryption keys (instead of
-# just the ones we use) and tests of currently-unused code.
+# Test all permutations of encryption keys, instead of just the ones we use.
 # Not run by automated build.
 .PHONY: runlongtests
 runlongtests: test_setup genkeys genfuzztestcases
@@ -1351,8 +1317,11 @@ runlongtests: test_setup genkeys genfuzztestcases
 	tests/run_preamble_tests.sh --all
 	tests/run_vbutil_tests.sh --all
 
-.PHONY: runalltests
-runalltests: runtests runfutiltests runlongtests
+.PHONY: rununittests
+rununittests: runcgpttests runmisctests run2tests
+
+.PHONY: runtests
+runtests: rununittests runfutiltests runtestscripts
 
 # Code coverage
 .PHONY: coverage_init
