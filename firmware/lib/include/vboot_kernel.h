@@ -56,7 +56,7 @@ vb2_error_t VbBootNormal(struct vb2_context *ctx);
 /**
  * Handle a developer-mode boot.
  */
-vb2_error_t VbBootDeveloper(struct vb2_context *ctx);
+vb2_error_t VbBootDeveloperLegacyClamshell(struct vb2_context *ctx);
 
 /**
  * Handle a diagnostic-mode boot.
@@ -66,17 +66,17 @@ vb2_error_t VbBootDiagnostic(struct vb2_context *ctx);
 /**
  * Handle a recovery-mode boot.
  */
-vb2_error_t VbBootRecovery(struct vb2_context *ctx);
+vb2_error_t VbBootRecoveryLegacyClamshell(struct vb2_context *ctx);
 
 /**
- * Handle a developer-mode boot using detachable menu ui
+ * Handle a developer-mode boot using legacy menu ui.
  */
-vb2_error_t VbBootDeveloperMenu(struct vb2_context *ctx);
+vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *ctx);
 
 /**
- * Handle a recovery-mode boot using detachable menu ui
+ * Handle a recovery-mode boot using legacy menu ui.
  */
-vb2_error_t VbBootRecoveryMenu(struct vb2_context *ctx);
+vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *ctx);
 
 /**
  * Writes modified secdata spaces and nvdata.
