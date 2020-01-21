@@ -180,7 +180,7 @@ umask 022
 DEV_DEBUG_FORCE=
 
 # override them?
-[ -f /etc/default/vboot_reference ] && . /etc/default/vboot_reference
+[ -f /usr/etc/default/vboot_reference ] && . /usr/etc/default/vboot_reference
 
 # Pre-parse args to replace actual args with a sanitized version.
 TEMP=$(getopt -o hvb:i:k:cf --long help,bios:,image:,kernel:,cleanup,force \
