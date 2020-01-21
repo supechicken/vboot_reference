@@ -149,7 +149,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 	return vbboot_retval;
 }
 
-vb2_error_t VbBootDeveloper(struct vb2_context *c)
+vb2_error_t VbBootDeveloperLegacyClamshell(struct vb2_context *c)
 {
 	shared->kernel_version_tpm = new_version;
 
@@ -159,7 +159,7 @@ vb2_error_t VbBootDeveloper(struct vb2_context *c)
 	return vbboot_retval;
 }
 
-vb2_error_t VbBootRecovery(struct vb2_context *c)
+vb2_error_t VbBootRecoveryLegacyClamshell(struct vb2_context *c)
 {
 	shared->kernel_version_tpm = new_version;
 
