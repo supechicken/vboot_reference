@@ -16,6 +16,24 @@
       "revId": "4635050acd3420181139bda4331d69e23624b087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30471e28_3c734a82",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-21T07:40:05Z",
+      "side": 1,
+      "message": "Yup.  Let\u0027s wait until we get rid of vboot_create_vbsd() in depthcharge commonparams.c, and then create the vb2api_export_vbsd() as I described in the bug?",
+      "parentUuid": "0f909f17_5d5386d7",
+      "revId": "4635050acd3420181139bda4331d69e23624b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
