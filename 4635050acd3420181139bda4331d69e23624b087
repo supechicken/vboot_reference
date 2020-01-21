@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f909f17_5d5386d7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-01-21T06:32:09Z",
+      "side": 1,
+      "message": "As this block gets longer, is it cleaner if we extract these into a function?",
+      "revId": "4635050acd3420181139bda4331d69e23624b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
