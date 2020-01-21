@@ -79,10 +79,11 @@ static vb2_error_t VbTryUsb(struct vb2_context *ctx)
 {
 	int retval = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
 	if (VB2_SUCCESS == retval) {
-		VB2_DEBUG("VbBootDeveloper() - booting USB\n");
+		VB2_DEBUG("VbBootDeveloperLegacyClamshell() - booting USB\n");
 	} else {
 		vb2_error_notify("Could not boot from USB\n",
-				 "VbBootDeveloper() - no kernel found on USB\n",
+				 "VbBootDeveloperLegacyClamshell() - "
+				 "no kernel found on USB\n",
 				 VB_BEEP_FAILED);
 	}
 	return retval;
@@ -183,7 +184,8 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 		uint32_t key = VbExKeyboardRead();
 
 		if (VbWantShutdown(ctx, key)) {
-			VB2_DEBUG("VbBootDeveloper() - shutdown requested!\n");
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+				  "shutdown requested!\n");
 			return VBERROR_SHUTDOWN_REQUESTED;
 		}
 		switch (key) {
@@ -192,13 +194,14 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 			break;
 		case VB_KEY_ESC:
 			/* Escape pressed - return to developer screen */
-			VB2_DEBUG("VbBootDeveloper() - user pressed Esc:"
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+				  "user pressed Esc:"
 				  "exit to Developer screen\n");
 			active = 0;
 			break;
 		/* We allow selection of the default '0' bootloader here */
 		case '0'...'9':
-			VB2_DEBUG("VbBootDeveloper() - "
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
 			/*
@@ -209,7 +212,8 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 			active = 0;
 			break;
 		default:
-			VB2_DEBUG("VbBootDeveloper() - pressed key %#x\n", key);
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+				  "pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, NULL);
 			break;
 		}
@@ -424,7 +428,8 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		} else {
 			power_button_was_released = 1;
 			if (power_button_was_pressed) {
-				VB2_DEBUG("vb2_diagnostics_ui() - power released\n");
+				VB2_DEBUG("vb2_diagnostics_ui() - "
+					  "power released\n");
 				action_confirmed = 1;
 				active = 0;
 				break;
@@ -432,7 +437,8 @@ static vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		}
 
 		/* Check the lid and ignore the power button. */
-		if (VbWantShutdown(ctx, 0) & ~VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		if (VbWantShutdown(ctx, 0) &
+		    ~VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
 			VB2_DEBUG("vb2_diagnostics_ui() - shutdown request\n");
 			result = VBERROR_SHUTDOWN_REQUESTED;
 			active = 0;
@@ -583,7 +589,8 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	do {
 		uint32_t key = VbExKeyboardRead();
 		if (VbWantShutdown(ctx, key)) {
-			VB2_DEBUG("VbBootDeveloper() - shutdown requested!\n");
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+				  "shutdown requested!\n");
 			return VBERROR_SHUTDOWN_REQUESTED;
 		}
 
@@ -640,12 +647,12 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			break;
 		case VB_KEY_CTRL('D'):
 			/* Ctrl+D = dismiss warning; advance to timeout */
-			VB2_DEBUG("VbBootDeveloper() - "
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
 				  "user pressed Ctrl+D; skip delay\n");
 			ctrl_d_pressed = 1;
 			goto fallout;
 		case VB_KEY_CTRL('L'):
-			VB2_DEBUG("VbBootDeveloper() - "
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
 				  "user pressed Ctrl+L; Try alt firmware\n");
 			if (allow_legacy) {
 				vb2_error_t ret;
@@ -666,8 +673,9 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			if (ctx->flags & VB2_CONTEXT_VENDOR_DATA_SETTABLE) {
 				vb2_error_t ret;
 
-				VB2_DEBUG("VbBootDeveloper() - user pressed "
-					  "Ctrl+S; Try set vendor data\n");
+				VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+					  "user pressed Ctrl+S; "
+					  "Try set vendor data\n");
 
 				ret = vb2_vendor_data_ui(ctx);
 				if (ret) {
@@ -693,7 +701,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			 */
 		case VB_KEY_CTRL('U'):
 			/* Ctrl+U = try USB boot, or beep if failure */
-			VB2_DEBUG("VbBootDeveloper() - "
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
 				  "user pressed Ctrl+U; try USB\n");
 			if (!allow_usb) {
 				vb2_error_notify(
@@ -701,7 +709,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 					"(USB/SD) has not been enabled. Refer "
 					"to the developer-mode documentation "
 					"for details.\n",
-					"VbBootDeveloper() - "
+					"VbBootDeveloperLegacyClamshell() - "
 					"USB booting is disabled\n",
 					VB_BEEP_NOT_ALLOWED);
 			} else {
@@ -722,13 +730,14 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			break;
 		/* We allow selection of the default '0' bootloader here */
 		case '0'...'9':
-			VB2_DEBUG("VbBootDeveloper() - "
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
 			vb2_try_altfw(ctx, allow_legacy, key - '0');
 			break;
 		default:
-			VB2_DEBUG("VbBootDeveloper() - pressed key %#x\n", key);
+			VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+				  "pressed key %#x\n", key);
 			VbCheckDisplayKey(ctx, key, NULL);
 			break;
 		}
@@ -740,7 +749,8 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 
 	/* If defaulting to legacy boot, try that unless Ctrl+D was pressed */
 	if (use_legacy && !ctrl_d_pressed) {
-		VB2_DEBUG("VbBootDeveloper() - defaulting to legacy\n");
+		VB2_DEBUG("VbBootDeveloperLegacyClamshell() - "
+			  "defaulting to legacy\n");
 		vb2_try_altfw(ctx, allow_legacy, 0);
 	}
 
@@ -751,11 +761,11 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 	}
 
 	/* Timeout or Ctrl+D; attempt loading from fixed disk */
-	VB2_DEBUG("VbBootDeveloper() - trying fixed disk\n");
+	VB2_DEBUG("VbBootDeveloperLegacyClamshell() - trying fixed disk\n");
 	return VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
 }
 
-vb2_error_t VbBootDeveloper(struct vb2_context *ctx)
+vb2_error_t VbBootDeveloperLegacyClamshell(struct vb2_context *ctx)
 {
 	vb2_init_ui();
 	vb2_error_t retval = vb2_developer_ui(ctx);
@@ -782,7 +792,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 	const char recovery_pressed_msg[] =
 		"^D but recovery switch is pressed\n";
 
-	VB2_DEBUG("VbBootRecovery() start\n");
+	VB2_DEBUG("VbBootRecoveryLegacyClamshell() start\n");
 
 	if (!vb2_allow_recovery(ctx)) {
 		/*
@@ -793,7 +803,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		 * back here, thus, we won't be able to give a user a chance to
 		 * reboot to workaround a boot hiccup.
 		 */
-		VB2_DEBUG("VbBootRecovery() saving recovery reason (%#x)\n",
+		VB2_DEBUG("VbBootRecoveryLegacyClamshell() "
+			  "saving recovery reason (%#x)\n",
 			 shared->recovery_reason);
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE,
 			   shared->recovery_reason);
@@ -806,7 +817,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 		vb2_commit_data(ctx);
 
 		VbDisplayScreen(ctx, VB_SCREEN_OS_BROKEN, 0, NULL);
-		VB2_DEBUG("VbBootRecovery() waiting for manual recovery\n");
+		VB2_DEBUG("VbBootRecoveryLegacyClamshell() "
+			  "waiting for manual recovery\n");
 		while (1) {
 			key = VbExKeyboardRead();
 			VbCheckDisplayKey(ctx, key, NULL);
@@ -821,7 +833,8 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 	}
 
 	/* Loop and wait for a recovery image */
-	VB2_DEBUG("VbBootRecovery() waiting for a recovery image\n");
+	VB2_DEBUG("VbBootRecoveryLegacyClamshell() "
+		  "waiting for a recovery image\n");
 	while (1) {
 		retval = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
 
@@ -894,7 +907,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbBootRecovery(struct vb2_context *ctx)
+vb2_error_t VbBootRecoveryLegacyClamshell(struct vb2_context *ctx)
 {
 	vb2_error_t retval = recovery_ui(ctx);
 	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
