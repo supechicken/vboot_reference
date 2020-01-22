@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bed0fd6b_1b954fc1",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T04:40:43Z",
+      "side": 1,
+      "message": "Seems like we still need to keep DESTDIR around to override in install_for_test.  But I can set the default to \"/\" and move \"/usr\" into each *_DIR config value.  I think that\u0027s what you mean -- but please correct me if I\u0027m wrong.",
+      "parentUuid": "5917941c_b76c7157",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "927a7e01_00ce953d",
         "filename": "Makefile",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "da547e8f_78e987b3",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T04:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927a7e01_00ce953d",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db04c82a_62d3a8f8",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-01-22T01:12:32Z",
       "side": 1,
       "message": "I don\u0027t think /usr/etc is a thing? This file seems to be in /etc on DUTs currently, and I think it should stay there.",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9523823e_5f7d70bc",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T04:40:43Z",
+      "side": 1,
+      "message": "Maybe it\u0027ll catch on.  Sure -- if we are specifying /usr in the Makefile like you suggest, then it\u0027s easier to leave that out for the config dir case.",
+      "parentUuid": "db04c82a_62d3a8f8",
       "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
