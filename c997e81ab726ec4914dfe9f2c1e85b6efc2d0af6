@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f475e1df_c0f0304c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T02:26:53Z",
+      "side": 1,
+      "message": "Is this supposed to be \u0027word 2\u0027? Otherwise this doesn\u0027t really make sense to me.\n\n(Also, would probably be more readable to factor some stuff out into variables here...)",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4334e4a_41aa01ba",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T02:26:53Z",
+      "side": 1,
+      "message": "nit: $(1) (don\u0027t mix braces and parens)",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01978a4c_6f4462c1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T02:26:53Z",
+      "side": 1,
+      "message": "Why not just use process_config to define a $(VB2_CONFIG_xxx) Makefile variable for each? Then checking it is more straight-forward. (Or maybe just override the existing $(xxx) variables in it to make sure people don\u0027t accidentally use those instead...)",
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
