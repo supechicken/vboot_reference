@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8a543d9_a8921f93",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "I think we can delete this comment?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce221f1_d869c9d1",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Two spaces",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49757738_f763cd6a",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "M",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8291c8ea_b140944d",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Do you mean vboot_ui_wilco?  Probably this could be reworded as\n\n\"Wilco-specific feature support for vboot_ui.\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42afeeb4_729f3bea",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "WILCO?",
+      "range": {
+        "startLine": 8,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a72d0f8d_0553322c",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Comment for this function?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 76
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe9a14e_fc85df6d",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Extra line.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d1fa37_805eddd3",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Documentation should go in header file.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 3
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0716e37a_0c8f2995",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "If we\u0027re renaming this, may as well go with vb2_want_shutdown.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bab742_fe48054e",
+        "filename": "firmware/lib/vboot_ui_wilco.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Probably make this look like the same as vboot_ui_wilco.h.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fa931d_f341bfc2",
+        "filename": "firmware/lib/vboot_ui_wilco.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Comment should go in header file.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 3
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81e25d6_c085f90a",
+        "filename": "firmware/lib/vboot_ui_wilco.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-22T19:29:50Z",
+      "side": 1,
+      "message": "Comment should go in header file.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "504a9bf2b6f49cca4f06dc5ae5125c1ddcd65244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
