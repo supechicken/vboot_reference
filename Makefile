@@ -1290,7 +1290,7 @@ run2tests: test_setup
 
 .PHONY: runfutiltests
 runfutiltests: test_setup
-	tests/futility/run_test_scripts.sh ${UB_DIR}
+	tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
