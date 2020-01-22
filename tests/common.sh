@@ -20,7 +20,7 @@ TESTCASE_DIR=${SCRIPT_DIR}/testcases
 TESTKEY_SCRATCH_DIR=${TEST_DIR}/testkeys
 
 if [ ! -d ${TESTKEY_SCRATCH_DIR} ]; then
-    mkdir -p ${TESTKEY_SCRATCH_DIR}
+  mkdir -p ${TESTKEY_SCRATCH_DIR}
 fi
 
 # Color output encodings.
