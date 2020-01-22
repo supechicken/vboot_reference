@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45c94661_8a95bcfa",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T23:20:42Z",
+      "side": 1,
+      "message": "You\u0027re using SCRIPT_DIR below anyway, so why define these aliases at all?",
+      "revId": "a4f5c0b6afaa8ba57c51ee2577d02d0d1f4e906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa1c0d1_dcf9532e",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T23:20:42Z",
+      "side": 1,
+      "message": "Is this our official bash style now? I always thought it was tabs...",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "a4f5c0b6afaa8ba57c51ee2577d02d0d1f4e906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
