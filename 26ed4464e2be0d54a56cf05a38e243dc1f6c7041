@@ -85,6 +85,24 @@
       "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0639dfd_73205267",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T00:33:34Z",
+      "side": 1,
+      "message": "Well, it needs to be called immediately after software sync, so when that happens in coreboot it should be called in coreboot (because the point of doing software sync in coreboot was that the system may not have enough power to boot further, and this call is used to determine that there).",
+      "parentUuid": "99057d48_6878f367",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
