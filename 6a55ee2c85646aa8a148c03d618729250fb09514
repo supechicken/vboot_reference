@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5917941c_b76c7157",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T01:12:32Z",
+      "side": 1,
+      "message": "Oh, this is what it\u0027s about. Honestly, I think it would make most sense for the ebuild to not change the DESTDIR at all and instead have the /usr explicitly here.",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927a7e01_00ce953d",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T01:12:32Z",
+      "side": 1,
+      "message": "nit: could say \"coreboot or depthcharge\" now...",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db04c82a_62d3a8f8",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-22T01:12:32Z",
+      "side": 1,
+      "message": "I don\u0027t think /usr/etc is a thing? This file seems to be in /etc on DUTs currently, and I think it should stay there.",
+      "revId": "6a55ee2c85646aa8a148c03d618729250fb09514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
