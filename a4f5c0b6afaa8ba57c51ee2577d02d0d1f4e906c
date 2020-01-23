@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9d18f715_4bbb4923",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-23T12:19:20Z",
+      "side": 1,
+      "message": "Sure, but I have to s/SCRIPTDIR/SCRIPT_DIR/ in all of the test files too.\nWe can just get rid of BINDIR since it\u0027s not used anywhere.",
+      "parentUuid": "45c94661_8a95bcfa",
+      "revId": "a4f5c0b6afaa8ba57c51ee2577d02d0d1f4e906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3aa1c0d1_dcf9532e",
         "filename": "tests/futility/run_test_scripts.sh",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-01-22T23:20:42Z",
       "side": 1,
       "message": "Is this our official bash style now? I always thought it was tabs...",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "a4f5c0b6afaa8ba57c51ee2577d02d0d1f4e906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f93e9765_1b61d9ca",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-23T12:19:20Z",
+      "side": 1,
+      "message": "Hmmm. I have no idea.  I was just trying to be consistent with everything else in tests/futility.  If we want to use tabs, we can do that in a separate cleanup CL?",
+      "parentUuid": "3aa1c0d1_dcf9532e",
       "range": {
         "startLine": 55,
         "startChar": 0,
