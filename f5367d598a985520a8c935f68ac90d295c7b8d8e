@@ -22,6 +22,30 @@
       "revId": "f5367d598a985520a8c935f68ac90d295c7b8d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97c8f87_a97eeda5",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-23T18:21:07Z",
+      "side": 0,
+      "message": "Because we didn\u0027t have this warning on. ;)\n\nPeople rarely run futility with --debug so this rarely does anything (but I did yesterday, and it got very angry at me).",
+      "parentUuid": "6b6d1cd0_e8ae9c6a",
+      "range": {
+        "startLine": 470,
+        "startChar": 13,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f5367d598a985520a8c935f68ac90d295c7b8d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
