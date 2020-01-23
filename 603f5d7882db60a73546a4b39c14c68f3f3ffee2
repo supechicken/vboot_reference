@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a0a5f35_867fda3b",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1370683
+      },
+      "writtenOn": "2020-01-23T17:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a3de3a_df157b67",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 70
+      },
+      "revId": "603f5d7882db60a73546a4b39c14c68f3f3ffee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "889dfc70_ef179589",
         "filename": "firmware/lib/include/vboot_ui_wilco.h",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5c8ac50d_5a26f192",
+        "filename": "firmware/lib/include/vboot_ui_wilco.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1370683
+      },
+      "writtenOn": "2020-01-23T17:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889dfc70_ef179589",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "603f5d7882db60a73546a4b39c14c68f3f3ffee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0225c09d_d4b9f4c4",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "603f5d7882db60a73546a4b39c14c68f3f3ffee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f737ddd_55be79f3",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1370683
+      },
+      "writtenOn": "2020-01-23T17:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0225c09d_d4b9f4c4",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "603f5d7882db60a73546a4b39c14c68f3f3ffee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
