@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bdbc585_d6ae03bf",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-25T02:23:49Z",
+      "side": 1,
+      "message": "This is for making check_ec_hash compatible with both vb2_secdata_kernel_get_hash and vb2ex_ec_hash_image, which should have used size_t.",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "649bc973d174e4413c0adac060405b59b0c54b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

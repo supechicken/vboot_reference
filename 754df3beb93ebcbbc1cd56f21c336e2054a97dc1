@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "a19a6291_3a1c54f3",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-25T02:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8af5a7d_35180693",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87184ffd_f815c04f",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 5
@@ -85,6 +109,30 @@
       "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85089ae8_dfeef32b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-25T02:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87184ffd_f815c04f",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 30
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -276,6 +324,30 @@
       "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f618a0ce_8e2719da",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-01-25T02:23:49Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "7e2fe279_8456b33a",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "754df3beb93ebcbbc1cd56f21c336e2054a97dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
