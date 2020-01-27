@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d6a9244_a0d4f3fd",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-27T10:38:31Z",
+      "side": 1,
+      "message": "Would \"the whole structure\u0027s memory is accessible\" be more accurate?",
+      "range": {
+        "startLine": 106,
+        "startChar": 45,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4fba1c3_30cbc7f8",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-27T10:38:31Z",
+      "side": 1,
+      "message": "For continuing a line which does not end in a comma, I\u0027d directly add a break after \"_Static_assert(\" here... but maybe that\u0027s just my inner Python coming out.  Not sure if there\u0027s any hard-fast rule in our C style guide.",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e05fb71_6abe6bfa",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-27T10:38:31Z",
+      "side": 1,
+      "message": "with",
+      "range": {
+        "startLine": 69,
+        "startChar": 57,
+        "endLine": 69,
+        "endChar": 59
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
