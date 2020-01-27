@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3aad80dc_ac363544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T20:58:43Z",
+      "side": 1,
+      "message": "There\u0027s no code using this struct besides the coreboot CBFS stuff that\u0027s not submitted yet, so it must be true. I have not integrated this into any existing vboot stuff, just written some new APIs for it. It\u0027s possible that some branch was cut with the original patch in it, but it\u0027s not actually used there.",
+      "parentUuid": "812c4f2c_9099d3c4",
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d6a9244_a0d4f3fd",
         "filename": "firmware/2lib/include/2sha.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-01-27T10:38:31Z",
       "side": 1,
       "message": "Would \"the whole structure\u0027s memory is accessible\" be more accurate?",
+      "range": {
+        "startLine": 106,
+        "startChar": 45,
+        "endLine": 106,
+        "endChar": 78
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc7c6341_f4064675",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T20:58:43Z",
+      "side": 1,
+      "message": "I mean... the same is true for the struct on flash? Not sure what adding \"memory\" would really improve here.",
+      "parentUuid": "3d6a9244_a0d4f3fd",
       "range": {
         "startLine": 106,
         "startChar": 45,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "39f25f73_729b3bfb",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T20:58:43Z",
+      "side": 1,
+      "message": "I\u0027m just trying to break it into as few lines as possible, I\u0027m not aware of any explicit line breaking rules for stuff like this.",
+      "parentUuid": "f4fba1c3_30cbc7f8",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e05fb71_6abe6bfa",
         "filename": "tests/vb2_sha_api_tests.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2020-01-27T10:38:31Z",
       "side": 1,
       "message": "with",
+      "range": {
+        "startLine": 69,
+        "startChar": 57,
+        "endLine": 69,
+        "endChar": 59
+      },
+      "revId": "21736e30348126111a67f6ff72cde4d2f8355b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10ec0bb_765700df",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T20:58:43Z",
+      "side": 1,
+      "message": "But then it doesn\u0027t fit. ;)",
+      "parentUuid": "0e05fb71_6abe6bfa",
       "range": {
         "startLine": 69,
         "startChar": 57,
