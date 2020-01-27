@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e12189d4_56b453df",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T21:17:18Z",
+      "side": 1,
+      "message": "So does this mean that futility is only built for SDK builds? I\u0027m pretty sure we need that on the DUT too. I\u0027m confused because for the \u0027install\u0027 target it looks like you have futility enabled for both SDK and DUT, but here you don\u0027t.",
+      "range": {
+        "startLine": 312,
+        "startChar": 34,
+        "endLine": 312,
+        "endChar": 39
+      },
+      "revId": "42850c7c8e6f0aa9048a0e3edac90c2efdf00862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317330cd_21a5f31d",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-27T21:17:18Z",
+      "side": 1,
+      "message": "Should we maybe just throw these into UTIL_NAMES_BOARD to simplify a bit more? They have nothing to do with signing, really.",
+      "revId": "42850c7c8e6f0aa9048a0e3edac90c2efdf00862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
