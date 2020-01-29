@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5230602_7a617374",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-29T16:35:55Z",
+      "side": 1,
+      "message": "Um, right.  I was getting confused at how they are called \"host_tools\" previously.  Moved these to be guarded by NO_BUILD_TOOLS instead.",
+      "parentUuid": "e12189d4_56b453df",
+      "range": {
+        "startLine": 312,
+        "startChar": 34,
+        "endLine": 312,
+        "endChar": 39
+      },
+      "revId": "42850c7c8e6f0aa9048a0e3edac90c2efdf00862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "317330cd_21a5f31d",
         "filename": "Makefile",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "42850c7c8e6f0aa9048a0e3edac90c2efdf00862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd332f12_cf045d5b",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-29T16:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317330cd_21a5f31d",
+      "revId": "42850c7c8e6f0aa9048a0e3edac90c2efdf00862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
