@@ -34,6 +34,24 @@
       "revId": "8dd3b83af654342bd6c77ae8c30c52eaf1abc31e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5be188_7d2c9985",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-30T09:13:09Z",
+      "side": 1,
+      "message": "Yeah... seems like using environment variables to control what is compiled generally complicates things.  I\u0027m not entirely sure how the fuzzers work -- but it seems like if we are attempting to skip compiling everything else via NO_BUILD_TOOLS guards, then an ebuild with USE\u003dfuzzer only needs to install the fuzzer binaries and that\u0027s it?\n\nIf that\u0027s correct, then let\u0027s just run the fuzzer_install lines in src_install(), and skip everything else.  How does that sound?  (See latest PS.)",
+      "parentUuid": "df3422f5_2c481c2a",
+      "revId": "8dd3b83af654342bd6c77ae8c30c52eaf1abc31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
