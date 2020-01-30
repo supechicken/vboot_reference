@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309d0b7f_82b33c60",
+        "filename": "firmware/lib/vboot_ui_common.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-01-30T20:22:54Z",
+      "side": 1,
+      "message": "NIT: You can keep this as power_button_state because it is local to this file.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "3ed6fb2f588286c1bd32acd4ca6e9d8b686162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
