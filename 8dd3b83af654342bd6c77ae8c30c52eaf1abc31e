@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3658cf6_27ad15fb",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-01-30T00:52:36Z",
+      "side": 1,
+      "message": "Something is still off here, why do we have two lines guarded by NO_BUILD_TOOLS back to back now? I actually don\u0027t get the intention here... is there anything we\u0027re building at all when NO_BUILD_TOOLS is set (because according to the above, we\u0027re not building the firmware libs either)?\n\nLooks like this was introduced for building the fuzzers, and I somewhat waved it through without really thinking about it (CL:1761012). But on closer inspection I don\u0027t think it really makes sense to add a variable that prevents it from building all but one target. Wouldn\u0027t it make more sense to get rid of this and just change src_compile() in the ebuild to do something like\n\n if use fuzzer; then\n   vemake BUILD\u003d\"${WORKDIR}\"/build-main fuzzers\n else\n   vemake BUILD\u003d\"${WORKDIR}\"/build-main all\n fi\n\n?",
+      "revId": "8dd3b83af654342bd6c77ae8c30c52eaf1abc31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
