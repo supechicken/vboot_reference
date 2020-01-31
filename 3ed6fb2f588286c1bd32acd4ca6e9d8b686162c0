@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "53d9a5da_64f47575",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-01-31T08:14:46Z",
+      "side": 1,
+      "message": "Oops, where did this come from?  Just export power_button_state as a global and put a copy in vboot_test.h.  Set the variable from the test directly instead of calling vb2_init_ui() or vb2_reset_power_button().",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "3ed6fb2f588286c1bd32acd4ca6e9d8b686162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "309d0b7f_82b33c60",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 17
