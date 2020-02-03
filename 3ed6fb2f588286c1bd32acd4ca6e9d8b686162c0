@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "297867a1_3975b778",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-02-03T17:40:56Z",
+      "side": 1,
+      "message": "I don\u0027t see anything wrong with doing it this way. I like keeping the enum private and not exposing the intervals of vb2_want_shutdown().",
+      "parentUuid": "53d9a5da_64f47575",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "3ed6fb2f588286c1bd32acd4ca6e9d8b686162c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "309d0b7f_82b33c60",
         "filename": "firmware/lib/vboot_ui_common.c",
         "patchSetId": 17
