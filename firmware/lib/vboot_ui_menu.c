@@ -733,6 +733,7 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	vb2_error_t ret;
+	int first_iteration = 1;
 
 	/* Check if the default is to boot using disk, usb, or legacy */
 	default_boot = vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT);
@@ -769,8 +770,9 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 	do {
 		uint32_t key = VbExKeyboardRead();
 
-		/* Make sure user knows dev mode disabled */
-		if (disable_dev_boot)
+		/* Make sure user knows dev mode disabled. Do not redraw error
+		   message if nothing pressed. */
+		if (disable_dev_boot && (first_iteration || key != 0))
 			VbExDisplayDebugInfo(dev_disable_msg, 0);
 
 		switch (key) {
@@ -809,6 +811,7 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 		if (key != 0)
 			vb2_audio_start(ctx);
 
+		first_iteration = 0;
 		VbExSleepMs(KEY_DELAY_MS);
 
 		/* If dev mode was disabled, loop forever (never timeout) */
