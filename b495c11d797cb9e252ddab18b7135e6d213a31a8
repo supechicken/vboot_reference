@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48613042_669a628c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-03T23:13:51Z",
+      "side": 1,
+      "message": "Are you sure this works right? This message is drawn before we do the key action, so if the intention is to make sure to redraw the message whenever they key action may have redrawn the screen, I think this wouldn\u0027t work up here.\n\nThen again, I don\u0027t think(?) any of the actions available from the disable_dev_boot path would overpaint this message anyway, so maybe it\u0027s enough to just hoist this in front of the loop?",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
