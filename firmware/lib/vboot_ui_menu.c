@@ -757,10 +757,13 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 	    vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_LEGACY);
 
 	/* Show appropriate initial menu */
-	if (disable_dev_boot)
+	if (disable_dev_boot) {
 		enter_to_norm_menu(ctx);
-	else
+		/* Make sure user knows dev mode disabled */
+		VbExDisplayDebugInfo(dev_disable_msg, 0);
+	} else {
 		enter_dev_warning_menu(ctx);
+	}
 
 	/* Get audio/delay context */
 	vb2_audio_start(ctx);
@@ -769,8 +772,9 @@ static vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 	do {
 		uint32_t key = VbExKeyboardRead();
 
-		/* Make sure user knows dev mode disabled */
-		if (disable_dev_boot)
+		/* Make sure user knows dev mode disabled. Do not redraw error
+		   message if nothing pressed. */
+		if (disable_dev_boot && key != 0)
 			VbExDisplayDebugInfo(dev_disable_msg, 0);
 
 		switch (key) {
