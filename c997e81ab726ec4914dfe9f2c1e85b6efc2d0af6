@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09902be2_eb52f097",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T04:55:34Z",
+      "side": 1,
+      "message": "Oh, yeah I think you\u0027re right.\n\nI tried to factor stuff out into variables... but again, Makefiles are weird.  If I define a variable within this function, and then try to use it, I think $(eval) starts getting confused at the spacing within the function and does some bizarre stuff.  I found that adding a $(info) call within the function resolved the issues ... but ... that doesn\u0027t seem like a great solution?",
+      "parentUuid": "f475e1df_c0f0304c",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4334e4a_41aa01ba",
         "filename": "Makefile",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f839289b_64c5a09d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T04:55:34Z",
+      "side": 1,
+      "message": "I was using the (existing?) convention of {} for variables and () for functions.",
+      "parentUuid": "b4334e4a_41aa01ba",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01978a4c_6f4462c1",
         "filename": "Makefile",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2020-01-22T02:26:53Z",
       "side": 1,
       "message": "Why not just use process_config to define a $(VB2_CONFIG_xxx) Makefile variable for each? Then checking it is more straight-forward. (Or maybe just override the existing $(xxx) variables in it to make sure people don\u0027t accidentally use those instead...)",
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f52732_1e12a0e8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T04:55:34Z",
+      "side": 1,
+      "message": "The problem is, the first time automake parses the Makefile, any new variables or modifications to existing variables don\u0027t take effect.  Conditionals are effectively removed and left with the applicable clause, ready for the second parsing pass.  So that\u0027s why I added a bunch of $(filter-out 0,${...}) below.  Any other ideas?",
+      "parentUuid": "01978a4c_6f4462c1",
       "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
