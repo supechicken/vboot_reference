@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1196b6b1_a2bbf6b4",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "Let\u0027s beef up the documentation here.  Should take this format:\n\n  /* One-line description.\n   *\n   * More detailed description here.\n   *\n   * @param ctx\\t\\tVboot context\n   * @returns VB2_SUCCESS, or non-zero error code.\n   */\n\nSame for recovery menu below.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54fb3e9_d6b77be2",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "May as well clean up the naming here while we\u0027re at it...\n\nHow about vb2_developer_menu()?",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13faf52_58686b6a",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "Update the documentation here.",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 67
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afeb10d1_7f0af4bf",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "No need for this comment.  Let\u0027s add more documentation to the header file.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098c8843_c7961036",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "Even if we don\u0027t have any devices with Groot enabled yet -- let\u0027s make sure we aren\u0027t skipping the usual FWMP checks etc. in developer mode.  Let\u0027s do something else here -- either an infinite loop, or just returning with an error for reboot.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0515bf4_bc123348",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f1d22e_b3718b92",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-03T08:45:57Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
