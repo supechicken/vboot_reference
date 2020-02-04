@@ -46,6 +46,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c40213f5_fcd506f7",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-04T09:28:04Z",
+      "side": 1,
+      "message": "Okay, the second part of my last comment is wrong.\n\n- We cannot draw the error message before the key action because vb2_draw_current_screen(), called from the action, will potentially clears the whole screen.\n- We also cannot draw the message after the action because we\u0027ll want to keep the more specific error message drawn by the action visible to the user.\n\nTherefore, if we\u0027re going to fix the flickering without breaking other behavior, the easiest way is to draw the error inside enter_to_norm_menu().",
+      "parentUuid": "fc4f0e39_2d94973b",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
