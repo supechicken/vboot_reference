@@ -1,0 +1,521 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c4b6e8_58553eb7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "libpayload doesn\u0027t have a \u003cstdbool.h\u003e at the moment so I don\u0027t think this will compile for depthcharge. You\u0027re welcome to add one if you want. (Also, if you did that this line would belong in 2sysincludes.h, not here.)",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ee5292_7c671250",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f1ac31_2454cafe",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Does this argument make sense? Isn\u0027t this always ACTIVE? I\u0027d just hardcode it so the SYNC_FLAG() here and in phase1() looks more comparable.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 39
+      },
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1157655c_365df26d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be possible for this to fail.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7453a1_95276e93",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This case shouldn\u0027t happen in practice, right? Maybe mention that?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d73a233_efba57b5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Please put braces around everything and move the if (rv !\u003d VB2_SUCCESS) part below into the else branch too.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa2cb2d_0446513d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "nit: not sure your comments always need to be quite so verbose. In this case, I think just expanding the line to\n\n /* Tell EC to jump to its RW image (will already be RW for EFS2). */\n\nwould have been good enough.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82e7a0b_97bfb381",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Not sure why you\u0027re mentioning that it\u0027s not important whether IN_RW is trustworthy here, but in check_ec_active() you say you\u0027re checking NO_BOOT because you don\u0027t want to trust the EC. Only one of those should be necessary.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eec014b_5132e3f2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "I feel like it would be cleaner to put this into the function as well, so all the logic of how the sync flag is set is in there. Maybe find a more general name for it then, e.g. check_efs2_sync_needed() or something like that?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d41292_fc388651",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "nit: I don\u0027t suppose I could convince you you to replace this with SYNC_FLAG(VB_SELECT_FIRMWARE_EC_ACTIVE), because it\u0027s really confusing to see the same flag get called different names in different places?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b59bf2_188af2de",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "...these two as well",
+      "range": {
+        "startLine": 486,
+        "startChar": 11,
+        "endLine": 487,
+        "endChar": 40
+      },
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b912096_d8a42c1b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "I would consider only using major version in these (e.g. IS_V0(), vb2_secdata_kernel_v1), since the idea is that different minor versions are compatible between each other and would use the same structs and functions.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85763cb_a301dd86",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "nit: maybe calc_crc8() or something like that would be a better name, otherwise it sounds like you\u0027re just retrieving the value from somewhere.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125303fc_c46d25ce",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "We should use the size field, not hardcode it. The idea is that this code should still be able to validate structures of version 1.1 or 1.2 which we\u0027ll come up with later.\n\nI think a bit cleaner way to write this might be\n\n int offset, size\n if (IS_V02(ctx)) {\n   offset \u003d 0;\n   size \u003d offsetof(struct vb2_secdata_kernel_v0, crc8);\n } else {\n   offset \u003d offsetof(struct vb2_secdata_kernel_v1, reserved0);\n   size \u003d ((vb2_secdata_kernel_v1 *)ctx-\u003esecdata_kernel)-\u003esize;\n }\n return vb2_crc8(ctx-\u003esecdata_kernel + offset, size);",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042f20ce_8f341130",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Can get rid of this check now.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7365ca4a_538b8cf0",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This should only check the major version (top 4 bits) like for the FWMP. Also, you\u0027ll need code to tell coreboot to load additional bytes if the initially loaded bytes weren\u0027t the full structure (because it might be a later minor version that added more fields at the end). See how 2secdata_fwmp.c does this with the check that returns VB2_ERROR_SECDATA_FWMP_INCOMPLETE.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60a0b42_94dbfce2",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "The point of having a size member is that the size may not be known at compile time, so we can\u0027t enforce this. You should make minimum/maximum size constants (like for FWMP) and check for those.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59d00f1_e6bdd2df",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This doesn\u0027t really have anything to do with Cr50. All new firmware releases after this patch lands should use the new struct, it\u0027s not important whether Cr50 actually has EFS2 support.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd364c8_67779650",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "nit: don\u0027t really need to put it in a separate variable since you\u0027re going to immediately return the value anyway",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396012fc_9c95d341",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Please keep CRC regeneration code at the end in case more things get added to this switch. In fact, I would recommend rewriting this (and get() analogously) like this:\n\n struct vb2_secdata_kernel_v0 *v0 \u003d (void *)ctx-\u003esecdata_kernel;\n struct vb2_secdata_kernel_v1 *v1 \u003d (void *)ctx-\u003esecdata_kernel;\n uint32_t *ptr;\n\n ...\n\n switch (param) {\n   case VB2_SECDATA_KERNEL_VERSIONS:\n     ptr \u003d IS_V0(ctx) ? \u0026v0-\u003ekernel_versions : \u0026v1-\u003ekernel_versions;\n     VB2_DEBUG(..., *ptr, value);\n     *ptr \u003d value;\n\n ...\n\n if (IS_V0(ctx))\n   v0-\u003ecrc8 \u003d get_crc8(ctx);\n else\n   v1-\u003ecrc8 \u003d get_crc8(ctx);\n\nThat should make it easier to expand in the future.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44406fe9_3cea3735",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "We have moved away from errors towards assertions for unavailable data now (see vb2_secdata_fwmp_get_dev_key_hash() for comparison). Please adapt signature and behavior to that function.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6107ceb4_e64211a2",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This too should VB2_DIE() (or print an error and continue in recovery mode) for error cases (and should return void).",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86400510_2c29ea74",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "nit: add \"Only relevant for EFS2.\" or something like that?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e0bf85_fca529b9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This is pretty pointless. Just make it a single array with the largest size (which should be VB2_SECDATA_KERNEL_MAX_SIZE which leaves a little room to grow like we did for FWMP... say maybe 64 bytes in total?).",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6097be3c_239ebc98",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "I\u0027m okay with these shorthand macros in a single .c file where the check needs to be done a lot of times, but let\u0027s not add them to the API (at least not without better namespacing). We\u0027re usually writing explicit checks for other context flags so we should normally do it for this one too.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220de2b8_607dc1f3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "I\u0027m confused, what is this and where is it used?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375ea162_c053342c",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be called get_ec_hash/set_ec_hash for clarity?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26279855_125b6cde",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "This is probably not true, unless you\u0027re planning to do something very weird in Cr50 code. TPM spaces are always created and initialized by the host, never by Cr50 itself. So this case would still be using v0.2 data, Cr50 should just refuse to allow the EFS2 feature when the TPM NVRAM space is too small (e.g. always return NO_BOOT or whatever the failsafe there is).",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a3d3ba_156e9042",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:06:39Z",
+      "side": 1,
+      "message": "Well, crap. ^^ This is a problem... you can\u0027t bump this up without also bumping the shared data major version. We intentionally left some space here for future expansion but it seems that we then immediately used it all up again for the NVDATA expansion and other stuff.\n\nI think (if I did my math right) that it would *juuuust* exactly fit if you didn\u0027t leave any space for future expansion in VB2_SECDATA_KERNEL_MAX_SIZE (i.e. make it 40). So our choice is between doing that (which would mean we\u0027re not forwards-compatible with future minor version bumps of secdata_kernel, not sure how important that is) or bumping shared data to v3.0 (which is something I was hoping we don\u0027t need to do that often, but technically not super problematic... we probably wouldn\u0027t even need to write any backwards-compatibility support unless this actually comes up as an RW update for a board, which is generally unlikely).\n\nJoel, what do you think?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
