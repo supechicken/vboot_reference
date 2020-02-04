@@ -373,11 +373,11 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
 {
-	vb2_error_t rv, call_rv;
+	vb2_error_t rv;
 
 	rv = vb2_kernel_setup(ctx, shared, kparams);
 	if (rv)
-		goto VbSelectAndLoadKernel_exit;
+		return rv;
 
 	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
 
@@ -388,15 +388,15 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 		rv = vb2api_ec_sync(ctx);
 		if (rv)
-			goto VbSelectAndLoadKernel_exit;
+			return rv;
 
 		rv = vb2api_auxfw_sync(ctx);
 		if (rv)
-			goto VbSelectAndLoadKernel_exit;
+			return rv;
 
 		rv = handle_battery_cutoff(ctx);
 		if (rv)
-			goto VbSelectAndLoadKernel_exit;
+			return rv;
 	}
 
 	/* Select boot path */
@@ -434,15 +434,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		rv = VbBootNormal(ctx);
 	}
 
- VbSelectAndLoadKernel_exit:
-
 	if (rv == VB2_SUCCESS)
 		vb2_kernel_fill_kparams(ctx, kparams);
-
-	/* Commit data, but retain any previous errors */
-	call_rv = vb2_commit_data(ctx);
-	if (rv == VB2_SUCCESS)
-		rv = call_rv;
 
 	/* Pass through return value from boot path */
 	VB2_DEBUG("Returning %#x\n", rv);
