@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1bf29f8f_6883379f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T22:54:18Z",
+      "side": 1,
+      "message": "Oops -- I pulled this up from vb2_kernel_setup.  You\u0027re right that it needs to be a goto call.",
+      "parentUuid": "85840572_ee6ff886",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76f2e141_8bfc6105",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-04T20:51:42Z",
       "side": 1,
       "message": "That reminds me, I\u0027m not really sure why this is still here anyway. Wasn\u0027t the intention that depthcharge would automatically commit data after VBSLK() returns? Shouldn\u0027t hold up this patch but I think there may be some more smoothing out to do in that area (and then we can get rid of the whole goto in here).",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc2e158b_954286f8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T22:54:18Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2037906",
+      "parentUuid": "76f2e141_8bfc6105",
       "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "66e43adc_d78bc9a5",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T22:54:18Z",
+      "side": 1,
+      "message": "Oh right, good catch.\n\nDo we even need to call vb2_nv_init() if we assume good data coming from firmware verification stage?",
+      "parentUuid": "93e2f762_ad3639e9",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c7730dc_e46b68d3",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2020-02-04T20:51:42Z",
       "side": 1,
       "message": "Why is this here? With the current patch you have here, vbsd will always be NULL and this won\u0027t run. So if this isn\u0027t gonna do anything anyway, it shouldn\u0027t be here.\n\nOn the other hand, these fields have to be initialized because I\u0027m pretty sure we still use them somewhere. So this would probably break rollforward in some way. If you want phase1 to run before vb2_kernel_setup(), you\u0027ll have to make sure these values get backfilled somewhere else (e.g. in vb2_kernel_setup() itself).",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a2842c_f1500165",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T22:54:18Z",
+      "side": 1,
+      "message": "I\u0027ll move vb2_kernel_setup to run before vb2api_kernel_phase1 -- is that okay?  I\u0027d still like to keep the vb2api_kernel_phase1 call as high up on the stack as possible, since in theory it should eventually move to depthcharge.\n\nI had added the conditional to make testing simpler -- that way, tests (specifically, vb20_api_kernel_tests.c) can omit creating a vboot1 shared_data if it\u0027s not needed.  But if these two VBSD fields not being set breaks rollforward (at the moment), then they should be tested for proper values.  So let me add that into vb20_api_kernel_tests.c and remove the conditional.",
+      "parentUuid": "5c7730dc_e46b68d3",
       "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
