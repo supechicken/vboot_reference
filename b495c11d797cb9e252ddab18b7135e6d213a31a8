@@ -94,6 +94,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6909a844_82b2acae",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T21:23:04Z",
+      "side": 1,
+      "message": "I really think you shouldn\u0027t overthink this. This case is already super rare (i.e. there\u0027s a reason why no one ever bothered to fully internationalize this message like we should have), and if the user then goes ahead and presses Ctrl+D from the TO_NORM screen (which technically works but isn\u0027t really an intended flow), then I guess they won\u0027t see this message again afterwards... whoop-dee-doo. They presumably saw it the first time before they started pressing buttons already.\n\nSimilarly, moving around between menu options shouldn\u0027t clear this (if you follow the call chain from vb2_draw_current_screen() it shouldn\u0027t end up redrawing the base screen when staying within the same menu), and if people do go into the language menu then, well, they probably did that because they didn\u0027t understand the message and redisplaying it in English isn\u0027t gonna fix that.\n\nJust take out all these extra variables and print this once before the loop, it\u0027s gonna be good enough. This is all ready a crappy poor-man\u0027s excuse for a UI because we were too lazy to make a real one, let\u0027s not waste tons of time (and code complexity) on polishing a turd. (And yes, for Groot it would be good to have a real, internationalized info screen for this.)",
+      "parentUuid": "d313316b_2b8b79bb",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
