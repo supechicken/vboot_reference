@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85840572_ee6ff886",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T20:51:42Z",
+      "side": 1,
+      "message": "Why not goto? Are  we that certain phase1 will never need to commit anything, even after future changes?",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f2e141_8bfc6105",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T20:51:42Z",
+      "side": 1,
+      "message": "That reminds me, I\u0027m not really sure why this is still here anyway. Wasn\u0027t the intention that depthcharge would automatically commit data after VBSLK() returns? Shouldn\u0027t hold up this patch but I think there may be some more smoothing out to do in that area (and then we can get rid of the whole goto in here).",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e2f762_ad3639e9",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T20:51:42Z",
+      "side": 1,
+      "message": "NV init should always be the first that happens (before those vb2api_fail()s above).",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7730dc_e46b68d3",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T20:51:42Z",
+      "side": 1,
+      "message": "Why is this here? With the current patch you have here, vbsd will always be NULL and this won\u0027t run. So if this isn\u0027t gonna do anything anyway, it shouldn\u0027t be here.\n\nOn the other hand, these fields have to be initialized because I\u0027m pretty sure we still use them somewhere. So this would probably break rollforward in some way. If you want phase1 to run before vb2_kernel_setup(), you\u0027ll have to make sure these values get backfilled somewhere else (e.g. in vb2_kernel_setup() itself).",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
