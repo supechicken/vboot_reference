@@ -834,8 +834,9 @@ host_tools: utils futil tests
 
 .PHONY: host_stuff
 host_stuff: utillib hostlib \
-	$(if $(filter x86_64,${ARCH}),fuzzers) \
-	$(if ${NO_BUILD_TOOLS},,cgpt host_tools)
+	$(if ${NO_BUILD_TOOLS},	\
+	  $(if $(filter x86_64,${ARCH}), fuzzers), \
+	  cgpt host_tools)
 
 .PHONY: clean
 clean:
