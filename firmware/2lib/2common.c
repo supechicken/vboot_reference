@@ -106,7 +106,7 @@ ptrdiff_t vb2_offset_of(const void *base, const void *ptr)
 
 void *vb2_member_of(void *parent, ptrdiff_t offset)
 {
-	/* TODO(kitching): vb2_assert(parent && offset) */
+	VB2_ASSERT(parent && offset);
 	return parent + offset;
 }
 
