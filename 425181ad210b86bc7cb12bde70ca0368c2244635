@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e7d38a2_e6984105",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T22:38:04Z",
+      "side": 1,
+      "message": "Oh, and just to be clear, this will need a full suite of unit tests for all the new behaviors you\u0027re adding (both EFS2 and the secdata stuff). In fact I think it would be better to split it into two patches.",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42c4b6e8_58553eb7",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
