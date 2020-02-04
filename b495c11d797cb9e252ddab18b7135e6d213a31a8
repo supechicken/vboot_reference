@@ -118,6 +118,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4a284b_64f08573",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T23:03:47Z",
+      "side": 1,
+      "message": "Good sanity check... I hadn\u0027t thought through the fact that (a) Ctrl+D means they won\u0027t see the screen again and (b) choosing a different language isn\u0027t going to change the message from English anyways (\u003d\n\nIf vb2_draw_current_screen() won\u0027t clear the message, then should we just keep it in enter_to_norm_menu() like the latest PS4 does?",
+      "parentUuid": "6909a844_82b2acae",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
