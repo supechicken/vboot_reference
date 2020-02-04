@@ -22,6 +22,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc4f0e39_2d94973b",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-04T06:29:57Z",
+      "side": 1,
+      "message": "\u003e Then again, I don\u0027t think(?) any of the actions available from the disable_dev_boot path would overpaint this message anyway, so maybe it\u0027s enough to just hoist this in front of the loop?\n\nFunctions such as boot_disk_action() (when pressing ctrl-d) will overpaint this message by calling vb2_error_notify() if disable_dev_boot, so we cannot just print this message once before the loop.\n\n\u003e Are you sure this works right? This message is drawn before we do the key action, so if the intention is to make sure to redraw the message whenever they key action may have redrawn the screen, I think this wouldn\u0027t work up here.\n\nI think there\u0027s nothing wrong here.\n\n- If nothing is pressed in an iteration, then nothing will be redrawn.\n- If a key is pressed, then the error message will be drawn before calling the corresponding function. If the function overpaints the message with another one, then I think we should keep the more specific message, i.e., the latter.",
+      "parentUuid": "48613042_669a628c",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
