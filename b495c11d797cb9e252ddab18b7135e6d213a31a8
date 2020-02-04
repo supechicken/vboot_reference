@@ -142,6 +142,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b4a1160_d63dfe77",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-04T23:21:44Z",
+      "side": 1,
+      "message": "\u003e Ctrl+D means they won\u0027t see the screen again\n\nNo, they will, because it always fails in this mode. Still, it\u0027s not something that anyone would normally want to press (or even know is an option) on this screen.\n\n\u003e should we just keep it in enter_to_norm_menu() like the latest PS4 does?\n\nYeah, okay, I guess that\u0027s simple enough too.",
+      "parentUuid": "dd4a284b_64f08573",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
