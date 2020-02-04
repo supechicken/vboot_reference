@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a48051d_7c981101",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T10:54:23Z",
+      "side": 1,
+      "message": "Just one space for the stuff which goes past the original alignment.",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "9c8405d96dd6297b2e9938946c2779c7fd993916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f34799c_f391b9a3",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-04T10:54:23Z",
+      "side": 1,
+      "message": "Every time I come across this comment, I have to read it a few times before it makes sense.  How about we rewrite it, and get rid of the typos while we\u0027re at it?\n\n  If physical presence is confirmed using the keyboard,\n  beep and notify the user when the ENTER key comes from\n  an untrusted keyboard.\n\n  If physical presence is confirmed using a physical button,\n  the existing message on the screen will instruct the user\n  which button to push.  Silently ignore any ENTER presses.\n\nAlso let\u0027s fix the comment formatting -- need an extra line break at the start.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 6
+      },
+      "revId": "9c8405d96dd6297b2e9938946c2779c7fd993916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
