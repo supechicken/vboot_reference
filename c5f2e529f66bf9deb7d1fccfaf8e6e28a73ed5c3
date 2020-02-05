@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac216dd_1a905dce",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:38:25Z",
+      "side": 1,
+      "message": "While we\u0027re at it, let\u0027s rename these two files to vboot_ui_legacy_common.c and vboot_ui_legacy_wilco.c.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 32
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc794df_9192122c",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:38:25Z",
+      "side": 1,
+      "message": "From our decision on https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/1999562/1//COMMIT_MSG#10 we would like to switch gears and isolate the legacy UIs, to allow speedier Groot development and more redesign opportunities.  Let\u0027s just revert this comment to its original state, and plan to keep this file out of Groot.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e7d3a1_2dfe86ff",
+        "filename": "firmware/lib/vboot_ui_legacy_clamshell.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:38:25Z",
+      "side": 1,
+      "message": "Let\u0027s make sure legacy_clamshell and legacy_menu are consistent.  Choose one of:\n\n(1) REC_UI_DEBUG and DEV_UI_DEBUG defined in vboot_ui_legacy_common.h, and used by both legacy_clamshell and legacy_menu.\n(2) (recommended) Just change the strings in both files directly to read \"recovery UI\" and \"developer UI\" -- this means we are changing less code but keeping the debug strings short.  This fits in with our goal of making minimal changes to the legacy UIs.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27f699e_686f38ba",
+        "filename": "tests/vboot_api_devmode_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:38:25Z",
+      "side": 1,
+      "message": "Rename to vboot_legacy_clamshell_beep_tests.c.",
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
