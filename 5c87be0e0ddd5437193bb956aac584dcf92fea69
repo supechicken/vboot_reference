@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6e4e63b_fca387cf",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T03:42:54Z",
+      "side": 1,
+      "message": "nit: This is just an internal bookkeeping struct for crossystem (right?), you don\u0027t need to keep deprecated values in here.",
+      "revId": "5c87be0e0ddd5437193bb956aac584dcf92fea69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
