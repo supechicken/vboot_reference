@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b2f3007_568529cd",
+        "filename": "firmware/include/vboot_struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-05T01:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a48051d_7c981101",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "9c8405d96dd6297b2e9938946c2779c7fd993916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f34799c_f391b9a3",
         "filename": "firmware/lib/vboot_ui.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9c8405d96dd6297b2e9938946c2779c7fd993916",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280d32f2_777df926",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-05T01:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f34799c_f391b9a3",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 6
+      },
+      "revId": "9c8405d96dd6297b2e9938946c2779c7fd993916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
