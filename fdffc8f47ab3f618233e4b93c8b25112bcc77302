@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "895fce56_db1cdd8c",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:47:42Z",
+      "side": 1,
+      "message": "vb2_kernel_setup() currently doesn\u0027t access anything in nvstorage -- is that still a concern?  Or should I put a note that it should not access nvstorage?\n\nThe function is gradually shrinking and I think the only thing that will be left is initializing LKP and kparams outputs.",
+      "parentUuid": "cf79c3a5_fb88c4f3",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "474aaf7d_36fc265f",
         "filename": "tests/vb20_api_kernel_tests.c",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a6efa0e8_68e0cebd",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474aaf7d_36fc265f",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e72d41c8_af475f2b",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 8
@@ -50,6 +86,24 @@
       "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82fed33d_ccbb523d",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72d41c8_af475f2b",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

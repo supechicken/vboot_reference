@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "5c9963bd_00c7e965",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:47:42Z",
+      "side": 1,
+      "message": "I\u0027m okay to add the assertions to nvdata getters/setters in another CL.  But in the meantime, let\u0027s keep this call here.",
+      "parentUuid": "26e3fd1b_8475ea30",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c7730dc_e46b68d3",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 6
@@ -175,6 +193,24 @@
       "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0303b40_5bcdb95c",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:47:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c56594e_76db5c1f",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
