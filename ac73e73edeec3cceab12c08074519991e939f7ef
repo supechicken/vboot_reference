@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e05cccab_044451ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T09:30:31Z",
+      "side": 1,
+      "message": "Do we want to do that as a cleanup func or just in vboot_select_and_load_kernel right after calling VbSelectAndLoadKernel?",
+      "parentUuid": "b9408fb0_70c81eb3",
+      "revId": "ac73e73edeec3cceab12c08074519991e939f7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d952d58c_4bc6cff2",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
