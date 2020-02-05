@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3a54ab15_6027d9ce",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T20:49:46Z",
+      "side": 1,
+      "message": "vb2_kernel_setup() can fail, goto VbSelectAndLoadKernel_exit, call vb2_commit_data(), get a secdata write error from depthcharge and call vb2api_fail() which accesses nvdata. I think it\u0027s generally best to really make vb2_nv_init() the very first thing to run (like it is in vb2api_fw_phase1()) to avoid having to think about the code flow so much. A vb2api_fail() call is easy to add somewhere without fully realizing the consequences for nvdata.\n\nThat said, like I mentioned, I\u0027m fine with not calling this at all in kernel verification. I just think calling it here is weird.",
+      "parentUuid": "895fce56_db1cdd8c",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "474aaf7d_36fc265f",
         "filename": "tests/vb20_api_kernel_tests.c",
         "patchSetId": 8

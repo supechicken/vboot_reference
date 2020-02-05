@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18faa9d5_14933f95",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T20:49:46Z",
+      "side": 1,
+      "message": "I wonder if this makes sense, actually. You\u0027re returning here (which means you exit from VBSLK and depthcharge will reboot) but you\u0027re not setting a recovery reason. Setting a recovery reason alone probably wouldn\u0027t make sense because then you\u0027ll just have a reboot loop. But you may still have a reboot loop without it if there\u0027s some other persistent reason the system is in recovery.\n\nSo I think the most reasonable options here would be a VB2_DIE() (it\u0027s an RO issue anyway) or something that forces us into the BROKEN screen (because then you can at least show that there\u0027s a problem, even though there\u0027s probably no way to fix it without servo). So you could do something like check vb2_allow_recovery(), do vb2api_fail() and return an error if it\u0027s true, and return \"success\" (without setting kernel_key_offset/size) if it\u0027s not.",
+      "revId": "77866d397a7d39d8f6489328d97d2833e1986537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be59db4f_6f329e10",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T20:49:46Z",
+      "side": 1,
+      "message": "I meant everywhere, not just the one line. ;)",
+      "revId": "77866d397a7d39d8f6489328d97d2833e1986537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
