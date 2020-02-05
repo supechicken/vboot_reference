@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c17c69d_499e5cb7",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T20:21:46Z",
+      "side": 0,
+      "message": "VB2_REC_OR_DIE() still prints the message when in recovery mode, so I assumed that\u0027s basically equivalent.",
+      "parentUuid": "65644c40_9b436fee",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70ed4577_03f8f388",
         "filename": "firmware/2lib/2secdata_fwmp.c",
         "patchSetId": 1
