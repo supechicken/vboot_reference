@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2af2df_4203c7ac",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T22:24:22Z",
+      "side": 1,
+      "message": "I\u0027m somewhat confused why we\u0027re testing NV_RECOVERY_REQUEST here at all. It seems somewhat inconsequential to the flow being tested. Could maybe consider just taking it out (all of these here).",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de4e440_a87bcb8c",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T22:24:22Z",
+      "side": 1,
+      "message": "Since the clearing no longer happens here, shouldn\u0027t we also add something to some of the VBSLK tests to test that the reason gets cleared under all intended circumstances in the new place?",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
