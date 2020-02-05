@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2cfa5bc_ad0bbeb1",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:46:42Z",
+      "side": 1,
+      "message": "As I wrote in the other CL, just leave the contents of this file as-is for use by legacy UIs.  FYI there\u0027s actually no wilco UI -- that\u0027s just some extra functionality that gets accessed via legacy_clamshell.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e372cffd_843492ba",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:46:42Z",
+      "side": 1,
+      "message": "Let\u0027s try to model this file after one of our newer test files, such as vb2_gbb_tests.c or vb20_api_kernel_tests.c.\n\nThe function name should be reset_common_data(), although we can leave its parameters as \"void\" for now unless we see a good reason to have \"enum reset_type\".",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0920cff5_9009eba5",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:46:42Z",
+      "side": 1,
+      "message": "VB2_DEBUG",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae3099a_f0591e20",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T10:46:42Z",
+      "side": 1,
+      "message": "Actually, let\u0027s just leave those two test files to be removed eventually, and write new VbBootNormal tests here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
