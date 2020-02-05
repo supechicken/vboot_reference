@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "26e3fd1b_8475ea30",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T00:10:34Z",
+      "side": 1,
+      "message": "Not really, but if we do call it it should be up there. (Like I mentioned in the other patch it would be nice to have assertions that nvdata was initialized, then we can rely on it working.)",
+      "parentUuid": "66e43adc_d78bc9a5",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c7730dc_e46b68d3",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 6
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "I\u0027ll move vb2_kernel_setup to run before vb2api_kernel_phase1 -- is that okay?  I\u0027d still like to keep the vb2api_kernel_phase1 call as high up on the stack as possible, since in theory it should eventually move to depthcharge.\n\nI had added the conditional to make testing simpler -- that way, tests (specifically, vb20_api_kernel_tests.c) can omit creating a vboot1 shared_data if it\u0027s not needed.  But if these two VBSD fields not being set breaks rollforward (at the moment), then they should be tested for proper values.  So let me add that into vb20_api_kernel_tests.c and remove the conditional.",
       "parentUuid": "5c7730dc_e46b68d3",
+      "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c56594e_76db5c1f",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T00:10:34Z",
+      "side": 1,
+      "message": "Either order is fine as long as you make sure to tie up all lose ends that come with that. I didn\u0027t understand why you switched it up in patch set 5 anyway.\n\nWe should probably not hack the actual code to allow for test-only cases, we should rather figure out how to really test what we\u0027re running.",
+      "parentUuid": "63a2842c_f1500165",
       "revId": "774b07c92874edaa9216ce25beac69fad93350cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

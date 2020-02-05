@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf79c3a5_fb88c4f3",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T00:10:34Z",
+      "side": 1,
+      "message": "Well, now this is weird again, now you have it here but you took it away from vb2_kernel_setup() which runs earlier. Either take it away everywhere and say that we rely on it already being initialized in persistent context, or put it at the earliest possible place.",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474aaf7d_36fc265f",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T00:10:34Z",
+      "side": 1,
+      "message": "nit: could take this out and just use sd-\u003epreamble_offset now, it doesn\u0027t change anymore",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72d41c8_af475f2b",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-05T00:10:34Z",
+      "side": 1,
+      "message": "Please add tests to make sure SLK fails when phase1 fails here now.",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
