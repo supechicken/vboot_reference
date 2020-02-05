@@ -166,6 +166,30 @@
       "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df0ec0f_f97bae3f",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-05T09:07:18Z",
+      "side": 1,
+      "message": "\u003e Similarly, moving around between menu options shouldn\u0027t clear this (if you follow the call chain from vb2_draw_current_screen() it shouldn\u0027t end up redrawing the base screen when staying within the same menu).\n\nNavigating between options will clear *part* of the error message because the screen description is not contained in the base screen. There seems to be no trivial way to solve both flickering and overlapping problem. After an offline discussion with @hungte, @drinkcat and @kitching, we decided to leave it as is for now.\n\nFiled https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1049029.",
+      "parentUuid": "1b4a1160_d63dfe77",
+      "range": {
+        "startLine": 775,
+        "startChar": 46,
+        "endLine": 775,
+        "endChar": 54
+      },
+      "revId": "b495c11d797cb9e252ddab18b7135e6d213a31a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
