@@ -16,6 +16,24 @@
       "revId": "5c87be0e0ddd5437193bb956aac584dcf92fea69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c203ddf6_aff92f3a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-05T05:35:15Z",
+      "side": 1,
+      "message": "Right -- if this is already on the way to merging, we could get rid of the two deprecated values here in follow-up.",
+      "parentUuid": "e6e4e63b_fca387cf",
+      "revId": "5c87be0e0ddd5437193bb956aac584dcf92fea69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
