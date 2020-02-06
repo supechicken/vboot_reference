@@ -18,7 +18,7 @@ static uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
-static struct vb2_secdata_kernel *sec;
+static struct vb2_secdata_kernel_v02 *sec;
 
 static void reset_common_data(void)
 {
@@ -28,7 +28,7 @@ static void reset_common_data(void)
 
 	sd = vb2_get_sd(ctx);
 
-	sec = (struct vb2_secdata_kernel *)ctx->secdata_kernel;
+	sec = (struct vb2_secdata_kernel_v02 *)ctx->secdata_kernel;
 }
 
 static void test_changed(struct vb2_context *c, int changed, const char *why)
@@ -47,11 +47,12 @@ static void secdata_kernel_test(void)
 	reset_common_data();
 
 	/* Check size constant */
-	TEST_EQ(VB2_SECDATA_KERNEL_SIZE, sizeof(struct vb2_secdata_kernel),
+	TEST_EQ(VB2_SECDATA_KERNEL_SIZE_V02, sizeof(struct vb2_secdata_kernel_v02),
 		"Struct size constant");
 
 	/* Blank data is invalid */
 	memset(&ctx->secdata_kernel, 0xa6, sizeof(ctx->secdata_kernel));
+	ctx->secdata_kernel[0] = 0x02;
 	TEST_EQ(vb2api_secdata_kernel_check(ctx),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Check blank CRC");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
@@ -63,10 +64,10 @@ static void secdata_kernel_test(void)
 		"Zeroed buffer (invalid version)");
 
 	/* Try with bad version */
-	TEST_EQ(vb2api_secdata_kernel_create(ctx), VB2_SECDATA_KERNEL_SIZE,
+	TEST_EQ(vb2api_secdata_kernel_create(ctx), VB2_SECDATA_KERNEL_SIZE_V10,
 		"Create");
 	sec->struct_version -= 1;
-	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata_kernel, crc8));
+	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata_kernel_v02, crc8));
 	TEST_EQ(vb2api_secdata_kernel_check(ctx),
 		VB2_ERROR_SECDATA_KERNEL_VERSION, "Check invalid version");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
@@ -87,14 +88,6 @@ static void secdata_kernel_test(void)
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Check invalid CRC");
 	TEST_EQ(vb2_secdata_kernel_init(ctx),
 		VB2_ERROR_SECDATA_KERNEL_CRC, "Init invalid CRC");
-
-	/* Make sure UID is checked */
-
-	vb2api_secdata_kernel_create(ctx);
-	sec->uid++;
-	sec->crc8 = vb2_crc8(sec, offsetof(struct vb2_secdata_kernel, crc8));
-	TEST_EQ(vb2_secdata_kernel_init(ctx), VB2_ERROR_SECDATA_KERNEL_UID,
-		"Init invalid struct UID");
 
 	/* Read/write versions */
 	vb2api_secdata_kernel_create(ctx);

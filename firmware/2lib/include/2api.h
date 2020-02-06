@@ -26,6 +26,7 @@
 #include "2id.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
+#include "2secdata_struct.h"
 
 /* Modes for vb2ex_tpm_set_mode. */
 enum vb2_tpm_mode {
@@ -252,8 +253,8 @@ struct vb2_context {
 	 * flag is set when a function returns, caller must save the data back
 	 * to the secure non-volatile location and then clear the flag.
 	 */
-	uint8_t secdata_kernel[VB2_SECDATA_KERNEL_SIZE];
-	VB2_PAD_STRUCT(VB2_SECDATA_KERNEL_SIZE, 8);
+	uint8_t secdata_kernel[VB2_SECDATA_KERNEL_MAX_SIZE];
+	VB2_PAD_STRUCT(VB2_SECDATA_KERNEL_SIZE_V02, 8);
 
 	/*
 	 * Firmware management parameters (FWMP) secure data.  Caller must fill
