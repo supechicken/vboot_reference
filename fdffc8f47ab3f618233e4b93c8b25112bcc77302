@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "6a3b0bb3_7bf80884",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T06:35:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd53adbe_8c53073c",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474aaf7d_36fc265f",
         "filename": "tests/vb20_api_kernel_tests.c",
         "patchSetId": 8

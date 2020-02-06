@@ -16,6 +16,24 @@
       "revId": "22995cc29e813a08c33d6a02e55e1fd59c492640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c20e432_fb3a96b1",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T06:35:32Z",
+      "side": 1,
+      "message": "OK -- let\u0027s change it to always read the key, and check fork on vb2_allow_recovery() afterwards.",
+      "parentUuid": "06fb4d9f_1552c35c",
+      "revId": "22995cc29e813a08c33d6a02e55e1fd59c492640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
