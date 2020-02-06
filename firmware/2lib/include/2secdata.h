@@ -114,6 +114,25 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 			    enum vb2_secdata_kernel_param param,
 			    uint32_t value);
 
+/**
+ * Get ec_hash from kernel secure storage.
+ *
+ * @param ctx		Context pointer
+ * @param size		(OUT) Size of hash.
+ * @return Buffer where hash is stored or NULL on error.
+ */
+const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx,
+					      int *size);
+
+/**
+ * Set ec_hash in kernel secure storage.
+ *
+ * @param ctx		Context pointer
+ * @param sha256	Hash to be set. 32 bytes.
+ */
+void vb2_secdata_kernel_set_ec_hash(struct vb2_context *ctx,
+				    const uint8_t *sha256);
+
 /*****************************************************************************/
 /* Firmware management parameters (FWMP) space */
 
