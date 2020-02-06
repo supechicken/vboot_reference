@@ -533,6 +533,24 @@
       "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec847774_a736ddc1",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T03:29:33Z",
+      "side": 1,
+      "message": "If we don\u0027t need to worry about backporting EFS2 as an RW update, I\u0027d vote for bumping the version ASAP.  Otherwise we will end up with permanent code in crossystem for reading two different versions of vb2_context.",
+      "parentUuid": "e3a3d3ba_156e9042",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
