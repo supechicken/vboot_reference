@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06fb4d9f_1552c35c",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T03:45:17Z",
+      "side": 1,
+      "message": "Actually, sorry for flip-flopping, but on second thought I think this was a bad idea after all (especially if you\u0027re not going to do anything fancy with trying to proceed to the BROKEN screen if you fail below anyway). It breaks the dev-signed warning feature I want to add and just generally seems a bit dicey.",
+      "revId": "22995cc29e813a08c33d6a02e55e1fd59c492640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
