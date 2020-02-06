@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "e3d4b808_13d672e6",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T20:48:02Z",
+      "side": 1,
+      "message": "For aligning columns for hashes values and descriptions.",
+      "parentUuid": "27ee5292_7c671250",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2f1ac31_2454cafe",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -73,6 +91,30 @@
       "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e9d6b3_cba8fb11",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T20:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f1ac31_2454cafe",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 39
+      },
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -315,6 +357,24 @@
     },
     {
       "key": {
+        "uuid": "497498f6_f2b780dc",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T20:48:02Z",
+      "side": 1,
+      "message": "Isn\u0027t it Depthcharge who reads secdata_kernel (by secdata_kernel_read in secdata_tpm.c)?\n\nI changed secdata_kernel_read so that it loads secdata_kernel based on struct_version \u0026 struct_size. So, the new BIOS will be able to read v0.2 and v1.x correctly.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2042646",
+      "parentUuid": "7365ca4a_538b8cf0",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d60a0b42_94dbfce2",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -400,6 +460,24 @@
     },
     {
       "key": {
+        "uuid": "67adc336_800c3116",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T20:48:02Z",
+      "side": 1,
+      "message": "What about *out_size? Do we make callers hard code VB2_SHA256_DIGEST_SIZE?",
+      "parentUuid": "44406fe9_3cea3735",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6107ceb4_e64211a2",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -479,6 +557,24 @@
       "writtenOn": "2020-02-04T22:06:39Z",
       "side": 1,
       "message": "I\u0027m confused, what is this and where is it used?",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7987189b_654b2256",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-06T20:48:02Z",
+      "side": 1,
+      "message": "This will be used in Depthcharge to set ctx-\u003eflags |\u003d VB2_CONTEXT_NO_BOOT in vboot_select_and_load_kernel.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2042646",
+      "parentUuid": "220de2b8_607dc1f3",
       "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
