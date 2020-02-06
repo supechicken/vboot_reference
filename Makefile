@@ -310,7 +310,6 @@ export BUILD_RUN
 .PHONY: all
 all: fwlib fwlib2x fwlib20 fwlib21 futil utillib hostlib cgpt tlcl \
 	$(if ${SDK_BUILD},utils_sdk,utils_board) \
-	$(if $(filter x86_64,${ARCH}),fuzzers) \
 	$(if ${COV},coverage)
 
 ##############################################################################
