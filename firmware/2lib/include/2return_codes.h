@@ -248,6 +248,18 @@ enum vb2_return_code {
 	/* Error reading secdata_fwmp from storage backend */
 	VB2_ERROR_SECDATA_FWMP_READ,
 
+	/* Bad struct size in vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE,
+
+	/* Bad buffer size to read vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_BUFFER_SIZE,
+
+	/* Access to kernel secdata before it's initialized */
+	VB2_ERROR_SECDATA_KERNEL_UNINITIALIZED,
+
+	/* Invalid version of kernel secdata struct. */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_VERSION,
+
 	/**********************************************************************
 	 * Common code errors
 	 */
