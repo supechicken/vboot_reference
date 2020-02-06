@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc6eb853_ebe19c71",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T03:22:36Z",
+      "side": 1,
+      "message": "After a short discussion, Julius and I figured we could even check the value of vb2_allow_recovery() before attempting to load the recovery key.  (Side note: the \u003cTAB\u003e debug screen directly calls vb2_gbb_read_recovery_key, so we also don\u0027t need to load the recovery key here for that to work properly.)\n\nw.r.t calling vb2api_fail vs. VB2_DIE:  If we have a \"hardware broken\" screen available, adding a call to vb2api_fail makes sense.  However, the current BROKEN screen would be rather confusing for the user, in that it asks you to start manual recovery, which will surely fail without a working recovery key.  Therefore I\u0027ll add a VB2_DIE call here instead.\n\nOnce we have Groot in place and some consensus on b/147473892 (discussion about what kind of errors should end up at \"hardware broken\" screen), then we could go ahead and add a vb2api_fail call here.\n\nHow does that sound?",
+      "parentUuid": "18faa9d5_14933f95",
+      "revId": "77866d397a7d39d8f6489328d97d2833e1986537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be59db4f_6f329e10",
         "filename": "tests/vb20_api_kernel_tests.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-05T20:49:46Z",
       "side": 1,
       "message": "I meant everywhere, not just the one line. ;)",
+      "revId": "77866d397a7d39d8f6489328d97d2833e1986537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94194b13_69435f1a",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T03:22:36Z",
+      "side": 1,
+      "message": "I think the second use of old_preamble_offset is still relevant -- it ensures that the recovery key is loaded at the expected location on the workbuf.  But we can rename it to wb_used_before like in other tests.",
+      "parentUuid": "be59db4f_6f329e10",
       "revId": "77866d397a7d39d8f6489328d97d2833e1986537",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "736cb102_a49726e7",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T03:22:36Z",
+      "side": 1,
+      "message": "Argh, thanks for catching me from doing something stupid here.  How about we move it directly up to the start of VBSLK with a TODO to remove after adding asserts to getters/setters?",
+      "parentUuid": "3a54ab15_6027d9ce",
+      "revId": "fdffc8f47ab3f618233e4b93c8b25112bcc77302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "474aaf7d_36fc265f",
         "filename": "tests/vb20_api_kernel_tests.c",
         "patchSetId": 8
