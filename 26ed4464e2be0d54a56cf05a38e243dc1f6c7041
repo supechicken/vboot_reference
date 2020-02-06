@@ -139,6 +139,24 @@
       "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3fc16f_5e51e262",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T03:40:33Z",
+      "side": 1,
+      "message": "I think we are well-equipped to handle the cases you have mentioned here:\n\n- sync in coreboot/depthcharge (compile-time decision)\n- sync enabled/disabled (runtime decision)\n\nBut as I mentioned before, we have no way of handling the case where EC sync is completely disabled.  Should we assume that one of the two will always be enabled, or should we make changes to allow for this situation?",
+      "parentUuid": "38839f5e_7e0056e4",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
