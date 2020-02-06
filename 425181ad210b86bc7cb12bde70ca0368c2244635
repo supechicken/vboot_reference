@@ -569,6 +569,24 @@
       "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803e4116_eeb80a7e",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-06T06:44:37Z",
+      "side": 1,
+      "message": "Hmm, so you\u0027re saying it *just fits* with 192 and no expansion room in vb2_secdata_kernel.  Say we do round up to 64 for vb2_secdata_kernel, that leaves us at around 216.\n\nThe natural choices for vb2_context size might be 256 or 384.  256 leaves 40 bytes available for expansion, while 384 leaves 168.\n\nProbably not the end of the world to copy around an extra 168 bytes for the sake of making our future lives easier?  So I\u0027d say 384 to be on the safe side.",
+      "parentUuid": "51e9e617_b56678cb",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
