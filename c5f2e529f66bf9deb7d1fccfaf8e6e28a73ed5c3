@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02f4f72a_e4d51b9b",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-06T08:08:05Z",
+      "side": 1,
+      "message": "Done\n\n---\n\nhere are the related files:\ntests/vboot_legacy_clamshell_tests.c\nMakefile\nfirmware/lib/vboot_ui_wilco.c\nfirmware/lib/vboot_ui_common.c\nfirmware/lib/vboot_ui_legacy_menu.c\nfirmware/lib/vboot_ui_legacy_clamshell.c",
+      "parentUuid": "dac216dd_1a905dce",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 32
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc794df_9192122c",
         "filename": "firmware/lib/include/vboot_ui_common.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8af12cf_b59dc39b",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-06T08:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc794df_9192122c",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "15286570_3d48ed33",
+        "filename": "firmware/lib/vboot_ui_legacy_clamshell.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-06T08:08:05Z",
+      "side": 1,
+      "message": "Done\nI have changed the name in both vboot_ui_legacy_clamshell.c vboot_ui_legacy_menu.c\nSo will it be \"recovery UI - \" and \"developer UI - \" for debug messages in upcoming groot UI?",
+      "parentUuid": "d0e7d3a1_2dfe86ff",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b27f699e_686f38ba",
         "filename": "tests/vboot_api_devmode_tests.c",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d98b546_4d5e4552",
+        "filename": "tests/vboot_api_devmode_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-06T08:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27f699e_686f38ba",
+      "revId": "c5f2e529f66bf9deb7d1fccfaf8e6e28a73ed5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
