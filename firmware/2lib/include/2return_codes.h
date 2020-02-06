@@ -190,14 +190,26 @@ enum vb2_return_code {
 	   Deprecated with chromium:972956. */
 	VB2_ERROR_DEPRECATED_SECDATA_FIRMWARE_SET_UNINITIALIZED,
 
+	/* Invalid version of kernel secdata struct. */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_VERSION,
+
 	/* Bad CRC in vb2api_secdata_kernel_check() */
 	VB2_ERROR_SECDATA_KERNEL_CRC,
 
 	/* Bad struct version in vb2_secdata_kernel_init() */
 	VB2_ERROR_SECDATA_KERNEL_VERSION,
 
+	/* Bad struct size in vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE,
+
+	/* Bad buffer size to read vb2_secdata_kernel */
+	VB2_ERROR_SECDATA_KERNEL_BUFFER_SIZE,
+
 	/* Bad uid in vb2_secdata_kernel_init() */
 	VB2_ERROR_SECDATA_KERNEL_UID,
+
+	/* Access to kernel secdata before it's initialized */
+	VB2_ERROR_SECDATA_KERNEL_UNINITIALIZED,
 
 	/* Invalid param in vb2_secdata_kernel_get();
 	   Deprecated with chromium:972956. */
