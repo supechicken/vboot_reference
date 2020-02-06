@@ -26,6 +26,7 @@
 #include "2id.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
+#include "2secdata_struct.h"
 
 /* Modes for vb2ex_tpm_set_mode. */
 enum vb2_tpm_mode {
@@ -252,8 +253,8 @@ struct vb2_context {
 	 * flag is set when a function returns, caller must save the data back
 	 * to the secure non-volatile location and then clear the flag.
 	 */
-	uint8_t secdata_kernel[VB2_SECDATA_KERNEL_SIZE];
-	VB2_PAD_STRUCT(VB2_SECDATA_KERNEL_SIZE, 8);
+	uint8_t secdata_kernel[VB2_SECDATA_KERNEL_MAX_SIZE];
+	VB2_PAD_STRUCT(VB2_SECDATA_KERNEL_SIZE_V02, 8);
 
 	/*
 	 * Firmware management parameters (FWMP) secure data.  Caller must fill
@@ -498,9 +499,11 @@ uint32_t vb2api_secdata_firmware_create(struct vb2_context *ctx);
  * Checks version, UID, and CRC.
  *
  * @param ctx		Context pointer
+ * @param size		(IN) Size of data being passed (ctx->secdata_kernel)
+ * 			(OUT) Expected size of data
  * @return VB2_SUCCESS, or non-zero error code if error.
  */
-vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx);
+vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx, uint8_t *size);
 
 /**
  * Create fresh data in kernel secure storage context.
@@ -834,6 +837,14 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
  * @returns VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
+
+/*
+ * Get boot mode.
+ *
+ * @param boot_mode      (OUT) Retrieved boot mode.
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_get_boot_mode(uint8_t *boot_mode);
 
 /*
  * Abort vboot flow due to a failed assertion or broken assumption.
