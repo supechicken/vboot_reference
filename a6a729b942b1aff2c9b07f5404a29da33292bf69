@@ -22,6 +22,30 @@
       "revId": "a6a729b942b1aff2c9b07f5404a29da33292bf69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b99024f_cb530bff",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T00:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8904e6ad_4a27aede",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 336,
+        "endChar": 18
+      },
+      "revId": "a6a729b942b1aff2c9b07f5404a29da33292bf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
