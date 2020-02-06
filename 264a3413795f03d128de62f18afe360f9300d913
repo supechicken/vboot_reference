@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec0cfda_68839940",
+        "filename": "firmware/lib/vboot_ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T01:01:40Z",
+      "side": 1,
+      "message": "Now that we can test for this explicitly (REC_SWITCH_VIRTUAL wasn\u0027t quite the same thing), should we move this above the VbExGetSwitches() call because that should be guaranteed to return 0 for PHYSICAL_PRESENCE_KEYBOARD anyway?",
+      "revId": "264a3413795f03d128de62f18afe360f9300d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
