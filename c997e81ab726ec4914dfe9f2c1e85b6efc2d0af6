@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "048c6cd0_523fc97e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T01:37:02Z",
+      "side": 1,
+      "message": "You need to use double dollar signs for everything that you want evaluated at $(eval) time. So I think something like this should work:\n\n define process_config\n _KEY\u003d$(patsubst \u003d%,,$(1))\n _VALUE\u003d$(patsubst %\u003d,,$(1))\n ...something using $$(_KEY) and $$(_VALUE)...",
+      "parentUuid": "09902be2_eb52f097",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 66
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4334e4a_41aa01ba",
         "filename": "Makefile",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b8073512_156aade1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T01:37:02Z",
+      "side": 1,
+      "message": "Sorry, fair enough... I\u0027m used to everything being parens from coreboot but it seems that things are different here.",
+      "parentUuid": "f839289b_64c5a09d",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01978a4c_6f4462c1",
         "filename": "Makefile",
         "patchSetId": 1
@@ -125,6 +173,24 @@
       "side": 1,
       "message": "The problem is, the first time automake parses the Makefile, any new variables or modifications to existing variables don\u0027t take effect.  Conditionals are effectively removed and left with the applicable clause, ready for the second parsing pass.  So that\u0027s why I added a bunch of $(filter-out 0,${...}) below.  Any other ideas?",
       "parentUuid": "01978a4c_6f4462c1",
+      "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1496914_f5169651",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T01:37:02Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m confused... do you really mean \"automake\"? We don\u0027t use autotools, do we? At least that\u0027s the first I ever hear of it.\n\nIn a normal Makefile, you should totally be able to do something like\n\n define myfunc\n ${1}\u003d${2}\n endef\n\n $(eval $(call myfunc,a,b))\n ifeq (${a},b)\n ...\n endif\n\nThere is only one parsing pass when .SECONDEXPANSION is not defined (like we don\u0027t), as far as I know.",
+      "parentUuid": "52f52732_1e12a0e8",
       "revId": "c997e81ab726ec4914dfe9f2c1e85b6efc2d0af6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
