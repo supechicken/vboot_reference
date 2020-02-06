@@ -114,6 +114,34 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 			    enum vb2_secdata_kernel_param param,
 			    uint32_t value);
 
+/**
+ * Calculate crc8 of kernel secure storage.
+ *
+ * @param ctx		Context pointer
+ * @return Calculated crc8 value.
+ */
+uint8_t vb2_secdata_kernel_crc8(struct vb2_context *ctx);
+
+/**
+ * Get ec_hash from kernel secure storage.
+ *
+ * @param ctx		Context pointer
+ * @return Buffer where hash is stored or NULL on error.
+ */
+const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx);
+
+/**
+ * Set ec_hash in kernel secure storage.
+ *
+ * @param ctx		Context pointer
+ * @param hash		Hash to be set
+ * @param hash_size	Hash size in bytes.
+ * @return VB2_SUCCESS, or non-zero error code if error.
+ */
+vb2_error_t vb2_secdata_kernel_set_ec_hash(struct vb2_context *ctx,
+					   const uint8_t *hash,
+					   size_t hash_size);
+
 /*****************************************************************************/
 /* Firmware management parameters (FWMP) space */
 
