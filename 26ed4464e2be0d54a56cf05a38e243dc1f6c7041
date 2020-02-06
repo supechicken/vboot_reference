@@ -121,6 +121,24 @@
       "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38839f5e_7e0056e4",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-06T01:10:51Z",
+      "side": 1,
+      "message": "Yes, I was talking about disabling via GBB flag. Whether to sync in coreboot or depthcharge is a compile-time decision, but whether that sync is enabled or not is a runtime decision (based on GBB flags, recovery mode, etc). vboot_done() is supposed to always run right after the point where EC sync was meant to happen (by compile-time decision), and only at that point, regardless of whether the sync was actually enabled during this boot or not.",
+      "parentUuid": "fa60d53c_39208dda",
+      "revId": "26ed4464e2be0d54a56cf05a38e243dc1f6c7041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
