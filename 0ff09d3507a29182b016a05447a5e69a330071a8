@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "539a8766_3077f8f1",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T06:56:03Z",
+      "side": 1,
+      "message": "Well.. I suppose we are checking that the recovery request is *not* cleared, regardless of whether it is from a previous boot, or from the current boot before vb2_check_recovery() is run.\n\nOr do you think our tests in vb2_misc_tests.c are sufficient for that purpose?",
+      "parentUuid": "3a2af2df_4203c7ac",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3de4e440_a87bcb8c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-05T22:24:22Z",
       "side": 1,
       "message": "Since the clearing no longer happens here, shouldn\u0027t we also add something to some of the VBSLK tests to test that the reason gets cleared under all intended circumstances in the new place?",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234817c5_6d768d0f",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T06:56:03Z",
+      "side": 1,
+      "message": "Sure.  Added one to vboot_api_kernel4_tests.c.",
+      "parentUuid": "3de4e440_a87bcb8c",
       "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
