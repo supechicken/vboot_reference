@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20082281_65d456a6",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T06:02:29Z",
+      "side": 1,
+      "message": "Maybe add a comment here that the MAX_SIZE should not be changed without bumping the version.",
+      "revId": "6b912b75642c6b0dc13303fac3e077e3dd04eb4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b48faee_79cca8e6",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T06:02:29Z",
+      "side": 1,
+      "message": "While we\u0027re at it, do we want to merge these two fields and use the same upper/lower bits for major/minor versions scheme as other structs?  Although other structs seem to use 16 bits total whereas we have 32 here.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 31
+      },
+      "revId": "6b912b75642c6b0dc13303fac3e077e3dd04eb4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
