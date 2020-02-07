@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ec3c7b8_9873e44e",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "Can we use alphabetical order here?",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 28
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa8aab4_18f1747a",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "Same here - sort alphabetically.",
+      "range": {
+        "startLine": 1247,
+        "startChar": 0,
+        "endLine": 1250,
+        "endChar": 50
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f83954_19b9a331",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "using legacy clamshell UI.",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 32
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b679387_b77f034a",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "using legacy clamshell UI.",
+      "range": {
+        "startLine": 62,
+        "startChar": 32,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72839aa_bc8ce258",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "This is currently only for legacy clamshell -- so let\u0027s rename to VbBootDiagnosticLegacyClamshell.",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a106c4_2083ec1b",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "using legacy clamshell UI.",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82addced_eb51904c",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "UI",
+      "range": {
+        "startLine": 72,
+        "startChar": 50,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539c54f2_ed82c3de",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "UI",
+      "range": {
+        "startLine": 77,
+        "startChar": 49,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9081c9bc_dfe8f2a0",
+        "filename": "tests/vboot_api_devmode_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-07T03:13:29Z",
+      "side": 1,
+      "message": "Oops -- do we still need to rename this file?\nThis would get caught by running `make runtests` before uploading.",
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
