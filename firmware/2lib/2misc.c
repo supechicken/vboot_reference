@@ -147,7 +147,6 @@ void vb2_check_recovery(struct vb2_context *ctx)
 		sd->recovery_reason = reason;
 
 	if (ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) {
-		VB2_DEBUG("Recovery was requested manually\n");
 		if (subcode && !sd->recovery_reason)
 			/*
 			 * Recovery was requested at 'broken' screen.

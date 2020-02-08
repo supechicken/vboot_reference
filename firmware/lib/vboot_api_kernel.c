@@ -360,6 +360,62 @@ vb2_error_t vb2_commit_data(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+/**
+ * Clear recovery request appropriately.
+ *
+ * To avoid the recovery request "sticking" and the user being in a permanent
+ * recovery loop, the recovery request must be cleared.  In BROKEN cases, the
+ * recovery reason will be stowed away as subcode, to be retrieved after the
+ * user reboots in manual recovery.  In manual recovery, request and subcode
+ * are cleared unconditionally.
+ *
+ * @param ctx		Vboot context
+ */
+static void vb2_clear_recovery(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	VB2_DEBUG("We have a recovery request: %#x / %#x\n",
+		  vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
+		  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE));
+
+	/* Clear recovery request for both cases. */
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+		   VB2_RECOVERY_NOT_REQUESTED);
+
+	if (vb2_allow_recovery(ctx)) {
+		/*
+		 * Clear recovery request and subcode from nvdata, so that we
+		 * don't get stuck in recovery mode after reboot.  Should be
+		 * called at some point after we are certain the system does
+		 * not require any reboots for non-vboot-related reasons (e.g.
+		 * FSP initialization), and before triggering a reboot to exit
+		 * transient recovery mode (e.g. memory retraining request).
+		 */
+		VB2_DEBUG("Clear recovery reasons from nvdata\n");
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 0);
+	} else {
+		/*
+		 * We have to save the reason here so that it will survive
+		 * coming up three-finger-salute. We're saving it in
+		 * VB2_RECOVERY_SUBCODE to avoid a recovery loop.  If we save
+		 * the reason in VB2_RECOVERY_REQUEST, we will come back here,
+		 * thus, we won't be able to give a user a chance to reboot to
+		 * workaround a boot hiccup.
+		 */
+		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n",
+			  sd->recovery_reason);
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE,
+			   sd->recovery_reason);
+	}
+
+	/*
+	 * Need to commit nvdata changes immediately, since we will be
+	 * entering either recovery UI or broken UI shortly.
+	 */
+	vb2_commit_data(ctx);
+}
+
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
@@ -393,23 +449,12 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-		/*
-		 * Clear recovery request and subcode from nvdata, so that we
-		 * don't get stuck in recovery mode after reboot.  Should be
-		 * called at some point after we are certain the system does
-		 * not require any reboots for non-vboot-related reasons (e.g.
-		 * FSP initialization), and before triggering a reboot to exit
-		 * transient recovery mode (e.g. memory retraining request).
-		 */
-		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
-			   VB2_RECOVERY_NOT_REQUESTED);
-		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE,
-			   VB2_RECOVERY_NOT_REQUESTED);
+		vb2_clear_recovery(ctx);
 
 		/* If we're in recovery mode just to do memory retraining, all
 		   we need to do is reboot. */
 		if (sd->recovery_reason == VB2_RECOVERY_TRAIN_AND_REBOOT) {
-			VB2_DEBUG("Reboot after retraining in recovery.\n");
+			VB2_DEBUG("Reboot after retraining in recovery\n");
 			rv = VBERROR_REBOOT_REQUIRED;
 			goto VbSelectAndLoadKernel_exit;
 		}
