@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ad1ae8ff_9ff1562a",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-08T02:34:26Z",
+      "side": 1,
+      "message": "An \"ideal test\" would confirm that the whole state of everything is as expected -- but then you have very highly coupled test/code which will fail on any code change.\n\nI think the difference in this case is that this particular state *may* change with certain inputs -- specifically, when failures occur after the vb2_check_recovery() call, then VB2_NV_RECOVERY_REQUEST *should* be set.\n\nOn a side note, is it just me or will the vb2api_fail(VB2_RECOVERY_DEV_SWITCH) line in vb2api_fw_phase1 never take effect?  In the one case where vb2_check_dev_switch() returns failure, it already calls vb2api_fail() itself...",
+      "parentUuid": "9df7c440_c5c391ce",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3de4e440_a87bcb8c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 5
