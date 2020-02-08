@@ -22,6 +22,7 @@
 #include "vboot_test.h"
 
 /* Mock data */
+
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
@@ -38,13 +39,14 @@ static vb2_error_t commit_data_retval;
 static int commit_data_called;
 static vb2_error_t secdata_kernel_init_retval;
 static vb2_error_t secdata_fwmp_init_retval;
+static uint32_t current_recovery_reason;
+static uint32_t expected_recovery_reason;
 
 static uint32_t mock_switches[8];
 static uint32_t mock_switches_count;
 static int mock_switches_are_stuck;
 
-/* Reset mock data (for use before each test) */
-static void ResetMocks(void)
+static void reset_common_data(void)
 {
 	memset(&kparams, 0, sizeof(kparams));
 
@@ -70,16 +72,28 @@ static void ResetMocks(void)
 	vbboot_retval = VB2_SUCCESS;
 	secdata_kernel_init_retval = VB2_SUCCESS;
 	secdata_fwmp_init_retval = VB2_SUCCESS;
+	current_recovery_reason = 0;
+	expected_recovery_reason = 0;
 
 	memset(mock_switches, 0, sizeof(mock_switches));
 	mock_switches_count = 0;
 	mock_switches_are_stuck = 0;
 }
 
+static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
+{
+	expected_recovery_reason = recovery_reason;
+	TEST_EQ(VbSelectAndLoadKernel(ctx, shared, &kparams), retval, desc);
+	TEST_EQ(current_recovery_reason, expected_recovery_reason,
+		"  recovery reason");
+	TEST_TRUE(commit_data_called, "  commit nvdata");
+}
+
 /* Mock functions */
 
 vb2_error_t vb2ex_commit_data(struct vb2_context *c)
 {
+	current_recovery_reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
 	commit_data_called = 1;
 	return commit_data_retval;
 }
@@ -129,6 +143,10 @@ vb2_error_t VbBootDeveloper(struct vb2_context *c)
 
 vb2_error_t VbBootRecovery(struct vb2_context *c)
 {
+	TEST_EQ(current_recovery_reason, expected_recovery_reason,
+		"  recovery reason");
+	TEST_TRUE(commit_data_called, "  commit nvdata");
+
 	shared->kernel_version_tpm = new_version;
 
 	if (vbboot_retval == -3)
@@ -143,15 +161,6 @@ vb2_error_t VbBootDiagnostic(struct vb2_context *c)
 		return VB2_ERROR_MOCK;
 
 	return vbboot_retval;
-}
-
-static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
-{
-	TEST_EQ(VbSelectAndLoadKernel(ctx, shared, &kparams), retval, desc);
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
-		recovery_reason, "  recovery reason");
-	if (recovery_reason)
-		TEST_TRUE(commit_data_called, "  didn't commit nvdata");
 }
 
 uint32_t VbExGetSwitches(uint32_t request_mask)
@@ -171,9 +180,9 @@ vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
 
 /* Tests */
 
-static void VbSlkTest(void)
+static void select_and_load_kernel_tests(void)
 {
-	ResetMocks();
+	reset_common_data();
 	test_slk(0, 0, "Normal");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
@@ -181,53 +190,53 @@ static void VbSlkTest(void)
 	 * If ctx->flags doesn't ask for software sync, we won't notice that
 	 * error.
 	 */
-	ResetMocks();
+	reset_common_data();
 	test_slk(0, 0, "EC sync not done");
 
 	/* Same if ctx->flags asks for sync, but it's overridden by GBB */
-	ResetMocks();
+	reset_common_data();
 	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
 	gbb.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
 	test_slk(0, 0, "EC sync disabled by GBB");
 
-	ResetMocks();
+	reset_common_data();
 	new_version = 0x20003;
 	test_slk(0, 0, "Roll forward");
 	TEST_EQ(kernel_version, 0x20003, "  version");
 
-	ResetMocks();
+	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
 	new_version = 0x20003;
 	test_slk(0, 0, "Don't roll forward kernel when trying new FW");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
-	ResetMocks();
+	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30005);
 	new_version = 0x40006;
 	test_slk(0, 0, "Limit max roll forward");
 	TEST_EQ(kernel_version, 0x30005, "  version");
 
-	ResetMocks();
+	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
 	new_version = 0x40006;
 	test_slk(0, 0, "Max roll forward can't rollback");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
 
-	ResetMocks();
+	reset_common_data();
 	new_version = 0x20003;
 	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
 	test_slk(VB2_ERROR_SECDATA_KERNEL_WRITE,
 		 VB2_RECOVERY_RW_TPM_W_ERROR, "Write kernel rollback");
 
 	/* Boot normal */
-	ResetMocks();
+	reset_common_data();
 	vbboot_retval = -1;
 	test_slk(VB2_ERROR_MOCK, 0, "Normal boot bad");
 
 	/* Check that NV_DIAG_REQUEST triggers diagnostic UI */
 	if (DIAGNOSTIC_UI) {
-		ResetMocks();
+		reset_common_data();
 		mock_switches[1] = VB_SWITCH_FLAG_PHYS_PRESENCE_PRESSED;
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 		vbboot_retval = -4;
@@ -240,18 +249,18 @@ static void VbSlkTest(void)
 	}
 
 	/* Boot normal - secdata init failures */
-	ResetMocks();
+	reset_common_data();
 	secdata_kernel_init_retval = VB2_ERROR_UNKNOWN;
 	test_slk(secdata_kernel_init_retval, VB2_RECOVERY_SECDATA_KERNEL_INIT,
 		 "Normal secdata_kernel init error triggers recovery");
 
-	ResetMocks();
+	reset_common_data();
 	secdata_fwmp_init_retval = VB2_ERROR_UNKNOWN;
 	test_slk(secdata_fwmp_init_retval, VB2_RECOVERY_SECDATA_FWMP_INIT,
 		 "Normal secdata_fwmp init error triggers recovery");
 
 	/* Boot normal - commit data failures */
-	ResetMocks();
+	reset_common_data();
 	commit_data_retval = VB2_ERROR_SECDATA_FIRMWARE_WRITE;
 	test_slk(commit_data_retval, VB2_RECOVERY_RW_TPM_W_ERROR,
 		 "Normal secdata_firmware write error triggers recovery");
@@ -266,63 +275,81 @@ static void VbSlkTest(void)
 		   "Normal unknown commit error aborts");
 
 	/* Boot dev */
-	ResetMocks();
+	reset_common_data();
 	sd->flags |= VB2_SD_FLAG_DEV_MODE_ENABLED;
 	vbboot_retval = -2;
 	test_slk(VB2_ERROR_MOCK, 0, "Dev boot bad");
 
-	ResetMocks();
+	reset_common_data();
 	sd->flags |= VB2_SD_FLAG_DEV_MODE_ENABLED;
 	new_version = 0x20003;
 	test_slk(0, 0, "Dev doesn't roll forward");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
 	/* Boot recovery */
-	ResetMocks();
+	reset_common_data();
 	sd->recovery_reason = 123;
 	vbboot_retval = -3;
 	test_slk(VB2_ERROR_MOCK, 0, "Recovery boot bad");
 
-	ResetMocks();
+	reset_common_data();
 	sd->recovery_reason = 123;
 	new_version = 0x20003;
 	test_slk(0, 0, "Recovery doesn't roll forward");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
 	/* Boot recovery - commit data failures */
-	ResetMocks();
+	reset_common_data();
 	sd->recovery_reason = 123;
 	commit_data_retval = VB2_ERROR_SECDATA_FIRMWARE_WRITE;
 	test_slk(0, 0, "Recovery ignore secdata_firmware write error");
+
+	reset_common_data();
+	sd->recovery_reason = 123;
 	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
 	test_slk(0, 0, "Recovery ignore secdata_kernel write error");
+
+	reset_common_data();
+	sd->recovery_reason = 123;
 	commit_data_retval = VB2_ERROR_NV_WRITE;
 	test_slk(0, 0, "Recovery return nvdata write error");
+
+	reset_common_data();
+	sd->recovery_reason = 123;
 	commit_data_retval = VB2_ERROR_UNKNOWN;
 	test_slk(0, 0, "Recovery return unknown write error");
 
-	/* Boot recovery - nvstorage cleared */
-	ResetMocks();
-	sd->recovery_reason = 123;
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, 5);
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 13);
-	test_slk(0, 0, "Recovery with nvstorage");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
-		0, "  recovery subcode cleared");
-
 	/* Boot recovery - memory retraining */
-	ResetMocks();
+	reset_common_data();
 	sd->recovery_reason = VB2_RECOVERY_TRAIN_AND_REBOOT;
 	test_slk(VBERROR_REBOOT_REQUIRED, 0, "Recovery train and reboot");
 
-	// todo: rkr/w/l fail ignored if recovery
+	/* Boot recovery - nvdata */
+	reset_common_data();
+	sd->recovery_reason = 123;
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 13);
+	test_slk(0, 0, "Recovery (nvdata)");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
+		123, "  recovery subcode shifted");
 
+	/* Boot manual recovery - nvdata */
+	reset_common_data();
+	sd->recovery_reason = VB2_RECOVERY_RO_MANUAL;
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 13);
+	sd->flags |= VB2_SD_FLAG_MANUAL_RECOVERY;
+	test_slk(0, 0, "Manual recovery (nvdata)");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
+		13, "  recovery subcode retained");
+}
 
+static void clear_recovery_tests(void)
+{
 }
 
 int main(void)
 {
-	VbSlkTest();
+	select_and_load_kernel_tests();
+	clear_recovery_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
