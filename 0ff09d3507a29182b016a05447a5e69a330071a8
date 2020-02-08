@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "d813c6f4_29efbc40",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-08T06:29:01Z",
+      "side": 1,
+      "message": "Yes. I think this was just defensive programming by Randall -- i.e. if anyone ever makes a change to vb2_check_dev_switch() that allows it to return an error without also setting a recovery reason, there\u0027s still a fallback recovery reason in the higher layer. I think that\u0027s not necessarily a bad idea... maybe we should do that in more places (e.g. many return paths in VBSLK() just rely on the leaf function having set the recovery reason correctly and it\u0027s not always easy to confirm that they do in all cases). vb2api_fail() was intentionally designed to be used that way, after all. Maybe if you introduce the VB2_TRY() you proposed, that will make it easier to do this.",
+      "parentUuid": "ad1ae8ff_9ff1562a",
+      "revId": "0ff09d3507a29182b016a05447a5e69a330071a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3de4e440_a87bcb8c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 5
