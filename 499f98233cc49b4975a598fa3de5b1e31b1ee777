@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03844cb2_42ec0a85",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T00:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31ac140_61de0708",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4492abf_6ad92cc6",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-07T06:21:25Z",
       "side": 1,
       "message": "Follow naming scheme for secdata_fwmp?  vb2_secdata_kernel_crc()",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c9b336_9312f617",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T00:49:08Z",
+      "side": 1,
+      "message": "This is a local function. It\u0027s redundant to have vb2_ prefix.",
+      "parentUuid": "f4492abf_6ad92cc6",
       "range": {
         "startLine": 19,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f10be1f_79be1c23",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T00:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c22ded5_d45cd609",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c236686_d0fba85c",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f12892_8cc65726",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T00:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c236686_d0fba85c",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +233,30 @@
       "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a98286_62a95c75",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-08T00:49:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "edb26776_1aa0aef0",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
