@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1cd0ee7f_2d6f413b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "I mean... I guess that\u0027s fine, but then we should change vb2_secdata_fwmp_crc too?",
+      "parentUuid": "f1c9b336_9312f617",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c22ded5_d45cd609",
         "filename": "firmware/2lib/include/2constants.h",
         "patchSetId": 3
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2c236686_d0fba85c",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1174796_72f505d3",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Sorry, I meant the end of SECDATA section... so that would be just before the \"Common code errors\" section.",
+      "parentUuid": "58f12892_8cc65726",
       "range": {
         "startLine": 193,
         "startChar": 0,
@@ -363,6 +411,30 @@
       "writtenOn": "2020-02-07T06:21:25Z",
       "side": 1,
       "message": "Maybe follow the same format as vb2_secdata_kernel above for comments?",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 61
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d721cb42_b2c319a9",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "I mean, if you want to align them all, then it\u0027s fine to use tabs.  But maintenance on comments like these can be difficult.  I meant like this:\n\n  /* 8-bit CRC for everything below */\n  uint8_t crc8;",
+      "parentUuid": "b41d3593_125cba13",
       "range": {
         "startLine": 78,
         "startChar": 24,

@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91cff064_e29ab70b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Can we put a space in between (void *)?  This would be consistent with other vboot_reference code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39b961e_0eda9654",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "If we are going to call the struct vb2_secdata_kernel_v10, then let\u0027s add _V10 here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f54dbfbb_012b3eae",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "How about we follow the format below?  /* 0.2 (or 0x2 in v0 format) */",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 58
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f267b7_eda655ba",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Add a comment here to clarify why we are avoiding the first two bytes.",
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8823694c_c30a82f6",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Change to sec02 (if we need to use it below) and add a sec10 for interpretation as v1.0.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b175c94_d22efa28",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Another check for V10?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 76
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40853d44_94e2ddd6",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Let\u0027s have one copy of this test for v0.2 and one for v1.0.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837a3f5c_24e54eeb",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "sec10-\u003eversion \u003d VB2_SECDATA_KERNEL_VERSION_V10;",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394d7404_43b5caaf",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Should be sec10, right?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63bcb1c_926c010d",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Probably want to externalize the CRC function for testing purposes.  Either put it in a _private.h file or in vboot_test.h.\n\nAnd then write a test or two here to validate the function is working properly with both 0.1 and 2.0.",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 74
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95db8351_d19e1b00",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "Need a copy of this test for 0.2.  You could just initialize the fields manually for that case.\n\nEverything else below this point also needs to test both 0.2 and 1.0 cases.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4742de27_b821d259",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-09T08:21:35Z",
+      "side": 1,
+      "message": "It may just be clearer to have two separate functions here for the two different versions.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "d9f4df3ed8c7e9a6b9f1733b44a45efe36d6b46b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
