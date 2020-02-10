@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09c90568_53f3863a",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:17:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this check ec_xx_updated as well? (In fact, all of them should, the successful ones should make sure those numbers are 1 too.)",
+      "revId": "3693be6e11045eb25a79c8a03d0eceaef0f82f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a36183_ce107fa8",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:17:59Z",
+      "side": 1,
+      "message": "Nothing wrong with all these, but perhaps a better test for the behavior we actually care about would be to count the invocations of vb2ex_ec_vboot_done() in the stub and make sure they\u0027re always one, regardless of whether you run software sync once or twice and whether the GBB flag is set. More important to test that the system behaves the way we want it to behave rather than that all individual bits of plumbing get set exactly the way you wrote the code to set them.",
+      "revId": "3693be6e11045eb25a79c8a03d0eceaef0f82f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
