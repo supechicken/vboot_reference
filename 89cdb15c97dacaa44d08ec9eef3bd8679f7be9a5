@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b1de509_b4bed486",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-10T03:30:53Z",
+      "side": 1,
+      "message": "Could this fit in one line?",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791ceb0e_b9ef46a1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-10T03:30:53Z",
+      "side": 1,
+      "message": "Do you use 0 instead of VB2_RECOVERY_NOT_REQUESTED here on purpose?",
+      "range": {
+        "startLine": 396,
+        "startChar": 43,
+        "endLine": 396,
+        "endChar": 44
+      },
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33b1c41_16423fea",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-02-10T03:30:53Z",
+      "side": 1,
+      "message": "Do we need this if vb2_allow_recovery(ctx)?",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
