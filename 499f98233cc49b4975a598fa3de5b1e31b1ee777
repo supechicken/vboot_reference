@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "87ecaaba_2619cef0",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-10T20:11:19Z",
+      "side": 1,
+      "message": "Ended up renaming it to vb2_secdata_kernel_calc_crc so that it can be called by unit tests.",
+      "parentUuid": "1cd0ee7f_2d6f413b",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c22ded5_d45cd609",
         "filename": "firmware/2lib/include/2constants.h",
         "patchSetId": 3
