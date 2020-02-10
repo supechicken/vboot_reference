@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21619a6e_9008923b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "I would call these _v0 and _v1, since if we had other minor versions, they\u0027d be handled by the same function.",
+      "range": {
+        "startLine": 64,
+        "startChar": 40,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30499cc_1538e946",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "This should be called VB2_SECDATA_KERNEL_MIN_SIZE",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6232067_a8dd4f38",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "This doesn\u0027t give the calling firmware a chance to reload additional data if it didn\u0027t load enough to start with. This would be important if later minor versions grow the struct. See how it\u0027s done in secdata_fwmp.c... you need an out-parameter where you can return the real size if it\u0027s larger than what was loaded, and an INCOMPLETE_SIZE error code so the caller can distinguish that case.",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8b13ea_82bfa795",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "Maybe this should be VB2_SECDATA_KERNEL_VERSION_LATEST (or just VB2_SECDATA_KERNEL_VERSION) so that it will always be the latest one if we update it again?",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 53
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1571e4f1_b0f67e43",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "Same here... or maybe just sizeof() the struct?",
+      "range": {
+        "startLine": 106,
+        "startChar": 20,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d2f5ca_8f6906b1",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "Should VB2_REC_OR_DIE()",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3103f69_c8c17d30",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "Should VB2_REC_OR_DIE()",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c537d6d9_eafaadd3",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:26:34Z",
+      "side": 1,
+      "message": "The fields in here are already manually packed and aligned correctly so let\u0027s remove the __attribute__((packed)). It can cause bad code generation.",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
