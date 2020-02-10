@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7ae207d_21e1c295",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "This declaration can move back to the line of first use.",
+      "range": {
+        "startLine": 269,
+        "startChar": 18,
+        "endLine": 269,
+        "endChar": 29
+      },
+      "revId": "1ad0e30a7406333619271206bf9e95cb34f88601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a57de5_d3fae3c4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "This always needs to be the exact same number as the size of the byte array beforehand, or it results in garbage. (In fact, maybe we should\u0027ve baked both lines into a VB2_PADDED_ARRAY(name, type, size, alignment) instead so it\u0027s impossible to make mistakes like this.)",
+      "range": {
+        "startLine": 269,
+        "startChar": 16,
+        "endLine": 269,
+        "endChar": 43
+      },
+      "revId": "1ad0e30a7406333619271206bf9e95cb34f88601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

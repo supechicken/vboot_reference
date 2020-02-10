@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "7f085faa_bf23100b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3d4b808_13d672e6",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2f1ac31_2454cafe",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 10
@@ -375,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "febbc156_6481cf19",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "Yes, depthcharge reads it, but depthcharge doesn\u0027t necessarily know how much to read. If we later introduce a v1.1 that\u0027s supposed to be backwards compatible, that may mean that code written for v1.0 may need to be able to read v1.1 firmware spaces and interpret the data in there that it knows about correctly. That means it needs to figure out the size at runtime (to calculate the CRC correctly) which may be larger than what it was compiled to expect.\n\nSee how https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/vboot/secdata_tpm.c#143 reads the FWMP again if vb2api_secdata_fwmp_check() tells it that it didn\u0027t read enough. We need something like that here too.",
+      "parentUuid": "497498f6_f2b780dc",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d60a0b42_94dbfce2",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -478,6 +514,24 @@
     },
     {
       "key": {
+        "uuid": "0349482e_ed46b8eb",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "That is up to you -- since you\u0027re adding 32 bytes to the struct here, I was assuming you wanted to hardcode SHA256. (As far as I\u0027m up to date on these things, we have no concerns about SHA256 becoming insecure anytime soon, but I\u0027m not an expert.)\n\nIf you do want to open the hash algorithm to future expansion, you\u0027ll at least need to add a uint8_t field to store the algorithm, and you may also want to consider increasing the space for the hash (although since we don\u0027t have infinite TPM space to waste I\u0027m not sure we\u0027d want to do that). In that case callers would be using vb2_digest_size() on the algorithm field to figure out the size of the hash and there should still be no reason to pass it out here.",
+      "parentUuid": "67adc336_800c3116",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6107ceb4_e64211a2",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -575,6 +629,24 @@
       "side": 1,
       "message": "This will be used in Depthcharge to set ctx-\u003eflags |\u003d VB2_CONTEXT_NO_BOOT in vboot_select_and_load_kernel.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2042646",
       "parentUuid": "220de2b8_607dc1f3",
+      "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df05a1bc_1d82c22e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-10T23:53:40Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like it belongs in here. If tpm_get_boot_mode() is implemented in depthcharge and the field to check for this comes from that, this should be defined in depthcharge as well.",
+      "parentUuid": "7987189b_654b2256",
       "revId": "425181ad210b86bc7cb12bde70ca0368c2244635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
