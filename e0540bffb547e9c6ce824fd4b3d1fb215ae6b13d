@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "7be61324_eb32f87c",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-10T08:32:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8aa0ea7a_5e3a234f",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "e0540bffb547e9c6ce824fd4b3d1fb215ae6b13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a106c4_2083ec1b",
         "filename": "firmware/lib/include/vboot_kernel.h",
         "patchSetId": 6
