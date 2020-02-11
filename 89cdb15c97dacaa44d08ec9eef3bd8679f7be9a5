@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d0696bd_66be3802",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T02:22:02Z",
+      "side": 1,
+      "message": "Was this the part you meant to delete? Because this is the one you copied to depthcharge.\n\nStill, I think this is helpful to print early because sometimes (during early bring-up) the system doesn\u0027t manage to boot all the way to depthcharge, and you still want to be able to tell what was going on. I guess there\u0027s nothing wrong with printing it twice though (always having to scroll up to verstage output is annoying too).",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79130de_661e279f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T02:22:02Z",
+      "side": 1,
+      "message": "Note that these aren\u0027t guaranteed to be set. In a manually triggered recovery scenario with no previously pending request, these are 0. That\u0027s why the verstage version checked sd-\u003erecovery_reason before printing this.\n\n(Maybe it would be enough to get rid of this line and just add a \"(was XXX)\" to the \"Clear recovery reason from nvdata\" line, so that you\u0027re printing the old reason in both paths.)",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b1de509_b4bed486",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -13,6 +47,23 @@
       "writtenOn": "2020-02-10T03:30:53Z",
       "side": 1,
       "message": "Could this fit in one line?",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1db778e_9707733b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T02:22:02Z",
+      "side": 1,
+      "message": "This comment sounds like part of it belongs to the line above.",
       "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +104,24 @@
       "writtenOn": "2020-02-10T03:30:53Z",
       "side": 1,
       "message": "Do we need this if vb2_allow_recovery(ctx)?",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc8736a_679ab840",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T02:22:02Z",
+      "side": 1,
+      "message": "+1, I don\u0027t think we do",
+      "parentUuid": "a33b1c41_16423fea",
       "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

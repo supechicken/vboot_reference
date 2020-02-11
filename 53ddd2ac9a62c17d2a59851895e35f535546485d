@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fe27bb0_ea8f13e5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T02:22:02Z",
+      "side": 0,
+      "message": "Why are we removing this? We should definitely have something to clarify whether recovery was manual or not, it helps debugging. (I guess you can look for reason 0x2 but I don\u0027t think that many people know that off the top of their heads.)",
+      "revId": "53ddd2ac9a62c17d2a59851895e35f535546485d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
