@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "905c86b1_3c157f23",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T22:29:00Z",
+      "side": 1,
+      "message": "I noted that it\u0027s illegal to call it like this, I think that should be enough documentation. I\u0027m still trying to do the hopefully safest thing in recovery mode if it does get called, but it\u0027s undefined behavior and shouldn\u0027t be legitimized by documenting it.",
+      "parentUuid": "76314652_90613119",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "f553e6d39d0a59916328cd5ff8eb6e75f3224415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da500e91_8696646f",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-11T06:55:10Z",
       "side": 1,
       "message": "How about using vb2_verify_member_inside here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "f553e6d39d0a59916328cd5ff8eb6e75f3224415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aeff04e_9dee4813",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T22:29:00Z",
+      "side": 1,
+      "message": "Yeah... I tried to overoptimize again and avoid calling the \"big\" key handling functions here, but I guess you\u0027re right that clean code is more important and running through another function or two isn\u0027t going to make a measurable difference. I should really be using vb2_unpack_key() to get the whole key, so I\u0027ll switch to doing that.",
+      "parentUuid": "da500e91_8696646f",
       "range": {
         "startLine": 38,
         "startChar": 5,
