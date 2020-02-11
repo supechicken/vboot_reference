@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "0029393f_b434b3dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-11T06:24:52Z",
+      "side": 1,
+      "message": "Hmm... yes, I think it does. Sorry, I don\u0027t have enough context in my head anymore to remember what we discussed about the vb2ex_commit_data() case. If you think that we should move error handling for that into depthcharge too so that it can reuse what we need anyway for the normal termination case, then that seems sensible to me.",
+      "parentUuid": "e125f011_b9ce27ee",
+      "revId": "ac73e73edeec3cceab12c08074519991e939f7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d952d58c_4bc6cff2",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
