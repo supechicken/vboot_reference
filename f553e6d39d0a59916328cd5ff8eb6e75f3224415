@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76314652_90613119",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:55:10Z",
+      "side": 1,
+      "message": "Should we note this in the documentation of the function?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "f553e6d39d0a59916328cd5ff8eb6e75f3224415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da500e91_8696646f",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:55:10Z",
+      "side": 1,
+      "message": "How about using vb2_verify_member_inside here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "f553e6d39d0a59916328cd5ff8eb6e75f3224415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
