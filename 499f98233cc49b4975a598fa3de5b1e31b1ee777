@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "fd8e8bf8_5b35b110",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "OK.  In that case, maybe we can call it vb2_secdata_kernel_crc() to be consistent with FWMP?",
+      "parentUuid": "87ecaaba_2619cef0",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "499f98233cc49b4975a598fa3de5b1e31b1ee777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c22ded5_d45cd609",
         "filename": "firmware/2lib/include/2constants.h",
         "patchSetId": 3

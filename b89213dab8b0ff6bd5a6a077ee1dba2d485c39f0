@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "af688990_18f7b6f9",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Is this going to calculate the correct CRC value for a struct with a lower minor version?  (I.e. with some missing fields.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21619a6e_9008923b",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 6
@@ -19,6 +42,23 @@
         "endLine": 64,
         "endChar": 43
       },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ed2fb5_2c817e8c",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "I think we also need to check that:\n\n  MINOR_VER(ver) \u003c MINOR_VER(VB2_SECDATA_KERNEL_VERSION_V10)\n\nOtherwise, we may be reading non-existent fields which were added to the end of the struct in a new revision?\n\nOr are we explicitly assuming fields default to zero when they don\u0027t exist?\n\nRegardless of the case, we need to document (and test) the minor version updating story somewhere.",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +99,24 @@
       "writtenOn": "2020-02-10T23:26:34Z",
       "side": 1,
       "message": "This doesn\u0027t give the calling firmware a chance to reload additional data if it didn\u0027t load enough to start with. This would be important if later minor versions grow the struct. See how it\u0027s done in secdata_fwmp.c... you need an out-parameter where you can return the real size if it\u0027s larger than what was loaded, and an INCOMPLETE_SIZE error code so the caller can distinguish that case.",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3ba63f_9530099e",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "On a related note, this gets complicated by the fact that we need to write these back to TPM.  For minor revisions (added fields), do we plan to destroy the TPM space and recreate it?  Or have depthcharge always write back the same size of bytes to TPM, and assume default of 0 for any new fields?  If we do the former, what if we have some code which writes a value to those fields?  We\u0027ll have to note somewhere that the value *may not be saved* if the TPM space size corresponds to an older minor revision... or maybe even return an error in that case, to make it explicit.  Thoughts?\n\nDo we have a paired depthcharge CL that will be committed with this one?",
+      "parentUuid": "a6232067_a8dd4f38",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +203,121 @@
     },
     {
       "key": {
+        "uuid": "6d202629_e939fc9a",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Just use one space here.",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1184d717_509eacd3",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Just use one space here.",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f594fd3_5bbd71ed",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "S",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7f7d1b_506ded53",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Is this the *total size* of the struct, or the size from |reserved0| onward?  If the latter, please document as such.",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5114d267_c3788ce0",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Does this include reserved0?",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c537d6d9_eafaadd3",
         "filename": "firmware/2lib/include/2secdata_struct.h",
         "patchSetId": 6
@@ -156,6 +329,24 @@
       "writtenOn": "2020-02-10T23:26:34Z",
       "side": 1,
       "message": "The fields in here are already manually packed and aligned correctly so let\u0027s remove the __attribute__((packed)). It can cause bad code generation.",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5279ad0_cc156932",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T06:44:14Z",
+      "side": 1,
+      "message": "Seems like these are easy to get changed when refactoring code.  I wonder if we should add a comment with something to the effect of:\n\n  /* Fields manually packed and aligned; no need for __attribute__((packed)) */",
+      "parentUuid": "c537d6d9_eafaadd3",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
