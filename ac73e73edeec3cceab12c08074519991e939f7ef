@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e125f011_b9ce27ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-11T04:46:03Z",
+      "side": 1,
+      "message": "Well... actually this is superbly awkward.  After the discussion we had to end up at the current state (vb2ex_commit_data() returns an error value, and then vb2_commit_data() takes care of running vb2api_fail() with the appropriate recovery value), seems like we need depthcharge to be able to call vb2api_fail() anyways.\n\nOr do you have any other ideas?",
+      "parentUuid": "6dbc35d8_2278caff",
+      "revId": "ac73e73edeec3cceab12c08074519991e939f7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d952d58c_4bc6cff2",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
