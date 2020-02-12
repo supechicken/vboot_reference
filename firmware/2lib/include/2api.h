@@ -850,6 +850,14 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
 /*
+ * Get boot mode.
+ *
+ * @param boot_mode      (OUT) Retrieved boot mode.
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_get_boot_mode(uint8_t *boot_mode);
+
+/*
  * Abort vboot flow due to a failed assertion or broken assumption.
  *
  * Likely due to caller misusing vboot (e.g. calling API functions
