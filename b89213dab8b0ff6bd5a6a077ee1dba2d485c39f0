@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b6035cd8_3831e1b5",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-12T10:39:50Z",
+      "side": 1,
+      "message": "Right -- makes sense now that I see the sec-\u003estruct_size being used.",
+      "parentUuid": "ee86fd09_d3feddf0",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21619a6e_9008923b",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 6
@@ -219,6 +243,24 @@
       "side": 1,
       "message": "\u003e For minor revisions (added fields), do we plan to destroy the TPM space and recreate it?\n\nYeah, that\u0027s a fair point to raise. Dynamically removing and recreating the space opens opportunities for asynchronous power loss that we probably wouldn\u0027t want to have, too. I think the only safe way would be to leave the struct version as it is an assume defaults for newer values (we\u0027d probably implement that behavior in the get/set functions, then).\n\n\u003e Can we make secdata_kernel_read behave as follows? [...]\n\nWe want all this logic regarding the details of different versions to be hidden within vboot, detphcharge should never directly access the struct. So it cannot read struct size directly and should use the inout-argument to vb2api_secdata_kernel_check() I talked about to figure out the real size.",
       "parentUuid": "a82f8a4b_3dfcc86e",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8fdb3a7_bd7ccd72",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-12T10:39:50Z",
+      "side": 1,
+      "message": "Correct -- depthcharge doesn\u0027t know anything about the data it is reading, by design.",
+      "parentUuid": "f5eb9315_e720d7f1",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -515,6 +557,24 @@
       "side": 1,
       "message": "Well... I think at some point we\u0027ll have to rely on reviewers doing the right thing, not sure if that comment helps. If you want a comment I\u0027d rather do something imperative like /* MUST align all struct members to prevent automatic padding! */ or something. But we have many other examples here and in coreboot that don\u0027t say that either.\n\nIf we\u0027re really concerned about this we could make a macro like\n\n SERIALIZABLE_STRUCT(vb2_secdata_kernel_v10,\n   uint8_t, struct_version,\n   uint8_t, struct_size,\n   uint8_t, crc8,\n   ...\n );\n\nto confirm alignment and to whitelist serializable data types. But at some point, making everything macros unfortunately does start hurting readability and just looks weird to people who are used to read normal C code.",
       "parentUuid": "c5279ad0_cc156932",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "077ac405_44172e5d",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-12T10:39:50Z",
+      "side": 1,
+      "message": "Yeah, okay -- let\u0027s not bother getting that fancy.  I\u0027m happy to leave it without a comment then.",
+      "parentUuid": "4f01ba46_d06b8e92",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
