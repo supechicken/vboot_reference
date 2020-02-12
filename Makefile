@@ -315,7 +315,7 @@ export BUILD_RUN
 
 # Default target.
 .PHONY: all
-all: fwlib futil utillib hostlib cgpt tlcl \
+all: fwlib futil utillib hostlib cgpt tlcl tests utils_bin \
 	$(if ${SDK_BUILD},utils_sdk,utils_board) \
 	$(if $(filter x86_64,${ARCH}),fuzzers) \
 	$(if ${COV},coverage)
@@ -932,6 +932,9 @@ ${UTIL_BINS_SDK}: ${UTILLIB}
 ${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
 ${UTIL_BINS_BOARD}: ${UTILLIB}
 ${UTIL_BINS_BOARD}: LIBS = ${UTILLIB}
+
+.PHONY: utils_bin
+utils_bin: ${UTIL_BINS_SDK} ${UTIL_BINS_BOARD}
 
 .PHONY: utils_sdk
 utils_sdk: ${UTIL_BINS_SDK} ${UTIL_SCRIPTS_SDK}
