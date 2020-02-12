@@ -852,6 +852,14 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val);
 
 /*
+ * Get boot mode.
+ *
+ * @param boot_mode      (OUT) Retrieved boot mode.
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_get_boot_mode(uint8_t *boot_mode);
+
+/*
  * Abort vboot flow due to a failed assertion or broken assumption.
  *
  * Likely due to caller misusing vboot (e.g. calling API functions
@@ -962,7 +970,9 @@ enum vb2_firmware_selection {
 	VB_SELECT_FIRMWARE_COUNT,
 };
 
-#define EC_EFS_BOOT_FLAG_NO_BOOT	1
+#define EC_EFS_BOOT_FLAG_NORMAL		0x00
+#define EC_EFS_BOOT_FLAG_NO_BOOT	0x01
+#define EC_EFS_BOOT_FLAG_UNSET		0xff
 
 /**
  * Sync the Embedded Controller device to the expected version.

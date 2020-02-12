@@ -68,6 +68,13 @@ vb2_error_t vb2ex_tpm_set_mode(enum vb2_tpm_mode mode_val)
 }
 
 __attribute__((weak))
+vb2_error_t vb2ex_get_boot_mode(uint8_t *boot_mode)
+{
+	fprintf(stderr, "%s: function not implemented\n", __func__);
+	return VB2_ERROR_EX_UNIMPLEMENTED;
+}
+
+__attribute__((weak))
 vb2_error_t vb2ex_auxfw_check(enum vb2_auxfw_update_severity *severity)
 {
         *severity = VB_AUX_FW_NO_UPDATE;
