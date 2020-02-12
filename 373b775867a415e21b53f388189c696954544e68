@@ -22,6 +22,30 @@
       "revId": "373b775867a415e21b53f388189c696954544e68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "565c546c_83db9748",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T22:13:53Z",
+      "side": 1,
+      "message": "I felt it looked better aligned at the dot.",
+      "parentUuid": "221e3063_961cc0fa",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "373b775867a415e21b53f388189c696954544e68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
