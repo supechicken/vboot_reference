@@ -64,6 +64,15 @@ static vb2_error_t secdata_kernel_check_v0(struct vb2_context *ctx,
 		return VB2_ERROR_SECDATA_KERNEL_UID;
 	}
 
+	/*
+	 * Return error if secdata kernel is not compatible with EFS2. It will
+	 * surface as VB2_RECOVERY_SECDATA_KERNEL_INIT.
+	 */
+	if (ctx->flags & VB2_CONTEXT_EC_EFS2) {
+		VB2_DEBUG("secdata_kernel: bad context\n");
+		return VB2_ERROR_SECDATA_KERNEL_BAD_CONTEXT;
+	}
+
 	return VB2_SUCCESS;
 }
 

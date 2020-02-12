@@ -234,9 +234,11 @@ enum vb2_nv_recovery {
 	/* FWMP secure data initialization error */
 	VB2_RECOVERY_SECDATA_FWMP_INIT = 0x62,
 
+	/* Failed to communicate with TPM/Cr50 */
+	VB2_RECOVERY_TPM_COMMUNICATION = 0x63,
+
 	/* Unspecified/unknown error in rewritable firmware */
 	VB2_RECOVERY_RW_UNSPECIFIED = 0x7f,
-
 
 
 	/**********************************************************************/
