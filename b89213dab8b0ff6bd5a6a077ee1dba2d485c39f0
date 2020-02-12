@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ee86fd09_d3feddf0",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "Looks correct to me, Joel? It calculates from the first member after \u0027crc8\u0027 over the whole rest of the dynamically-sized struct.",
+      "parentUuid": "3304f9c2_6d51629b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21619a6e_9008923b",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 6
@@ -83,6 +107,24 @@
       "writtenOn": "2020-02-11T06:44:14Z",
       "side": 1,
       "message": "I think we also need to check that:\n\n  MINOR_VER(ver) \u003c MINOR_VER(VB2_SECDATA_KERNEL_VERSION_V10)\n\nOtherwise, we may be reading non-existent fields which were added to the end of the struct in a new revision?\n\nOr are we explicitly assuming fields default to zero when they don\u0027t exist?\n\nRegardless of the case, we need to document (and test) the minor version updating story somewhere.",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad64b89_f2ee99a8",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "I think that\u0027s a check we can add when we add the first minor version bump? We\u0027ll have further details to discuss about how exactly new members should be treated at that point anyway (like you mention below). For now this is in the same state as vb2api_secdata_fwmp_check() (I guess we can add the comment from the bottom of that function here as well if you want).",
+      "parentUuid": "80ed2fb5_2c817e8c",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -159,6 +201,24 @@
       "side": 1,
       "message": "Can we make secdata_kernel_read behave as follows?\n\n1. Read 13 bytes from TPM to ctx-\u003esecdata_kernel.\n2. If struct_version \u003d\u003d 0x02, done.\n   If struct_version \u003e\u003d 0x10, use struct_size to re-read the whole data.\n\nThen, the rest of the code can call secdata_kernel_read to always get secdata of correct size. secdata_kernel_check needs to return VB2_ERROR_SECDATA_KERNEL_STRUCT_SIZE but not the expected size.",
       "parentUuid": "ed3ba63f_9530099e",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5eb9315_e720d7f1",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "\u003e For minor revisions (added fields), do we plan to destroy the TPM space and recreate it?\n\nYeah, that\u0027s a fair point to raise. Dynamically removing and recreating the space opens opportunities for asynchronous power loss that we probably wouldn\u0027t want to have, too. I think the only safe way would be to leave the struct version as it is an assume defaults for newer values (we\u0027d probably implement that behavior in the get/set functions, then).\n\n\u003e Can we make secdata_kernel_read behave as follows? [...]\n\nWe want all this logic regarding the details of different versions to be hidden within vboot, detphcharge should never directly access the struct. So it cannot read struct size directly and should use the inout-argument to vb2api_secdata_kernel_check() I talked about to figure out the real size.",
+      "parentUuid": "a82f8a4b_3dfcc86e",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -337,6 +397,30 @@
     },
     {
       "key": {
+        "uuid": "73559ab8_4883a676",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "Should definitely be total, like it is for FWMP.",
+      "parentUuid": "ac7f7d1b_506ded53",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5114d267_c3788ce0",
         "filename": "firmware/2lib/include/2secdata_struct.h",
         "patchSetId": 6
@@ -348,6 +432,30 @@
       "writtenOn": "2020-02-11T06:44:14Z",
       "side": 1,
       "message": "Does this include reserved0?",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe91307_4cdeb3f1",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "5114d267_c3788ce0",
       "range": {
         "startLine": 91,
         "startChar": 18,
@@ -389,6 +497,24 @@
       "side": 1,
       "message": "Seems like these are easy to get changed when refactoring code.  I wonder if we should add a comment with something to the effect of:\n\n  /* Fields manually packed and aligned; no need for __attribute__((packed)) */",
       "parentUuid": "c537d6d9_eafaadd3",
+      "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f01ba46_d06b8e92",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-12T01:07:00Z",
+      "side": 1,
+      "message": "Well... I think at some point we\u0027ll have to rely on reviewers doing the right thing, not sure if that comment helps. If you want a comment I\u0027d rather do something imperative like /* MUST align all struct members to prevent automatic padding! */ or something. But we have many other examples here and in coreboot that don\u0027t say that either.\n\nIf we\u0027re really concerned about this we could make a macro like\n\n SERIALIZABLE_STRUCT(vb2_secdata_kernel_v10,\n   uint8_t, struct_version,\n   uint8_t, struct_size,\n   uint8_t, crc8,\n   ...\n );\n\nto confirm alignment and to whitelist serializable data types. But at some point, making everything macros unfortunately does start hurting readability and just looks weird to people who are used to read normal C code.",
+      "parentUuid": "c5279ad0_cc156932",
       "revId": "b89213dab8b0ff6bd5a6a077ee1dba2d485c39f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
