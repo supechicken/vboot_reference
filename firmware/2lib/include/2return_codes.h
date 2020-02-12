@@ -263,6 +263,9 @@ enum vb2_return_code {
 	/* Access to kernel secdata before it's initialized */
 	VB2_ERROR_SECDATA_KERNEL_UNINITIALIZED,
 
+	/* kernel secdata and vb2_context do not match. */
+	VB2_ERROR_SECDATA_KERNEL_BAD_CONTEXT,
+
 	/**********************************************************************
 	 * Common code errors
 	 */
