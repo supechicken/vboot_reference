@@ -333,6 +333,28 @@ vb2_error_t vb2_commit_data(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+static vb2_error_t check_boot_mode(struct vb2_context *ctx)
+{
+	uint8_t boot_mode;
+
+	int rv = vb2ex_get_boot_mode(&boot_mode);
+
+	if (rv == VB2_SUCCESS) {
+		VB2_DEBUG("Cr50 says boot_mode=0x%x.\n", boot_mode);
+		ctx->flags |= VB2_CONTEXT_EC_EFS2;
+		if (boot_mode == EC_EFS_BOOT_FLAG_NO_BOOT)
+			ctx->flags |= VB2_CONTEXT_NO_BOOT;
+	} else if (rv == VB2_ERROR_EX_TPM_NO_SUCH_COMMAND) {
+		VB2_DEBUG("Cr50 doesn't know GET_BOOT_MODE. Turn off EFS2\n");
+	} else {
+		VB2_DEBUG("Failed to communicate with Cr50 (0x%x).\n", rv);
+		vb2api_fail(ctx, VB2_RECOVERY_TPM_COMMUNICATION, 0);
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
@@ -353,6 +375,10 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		goto VbSelectAndLoadKernel_exit;
 
 	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
+
+	rv = check_boot_mode(ctx);
+	if (rv)
+		goto VbSelectAndLoadKernel_exit;
 
 	/*
 	 * Do EC and Aux FW software sync unless we're in recovery mode. This
