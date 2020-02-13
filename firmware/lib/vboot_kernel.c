@@ -546,7 +546,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 					kernel_subkey,
 					lpflags,
 					params,
-					shared->kernel_version_tpm,
+					sd->kernel_version,
 					shpart,
 					&wb);
 		VbExStreamClose(stream);
@@ -614,7 +614,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 		 * Otherwise, we'll check all the other headers to see if they
 		 * contain a newer key.
 		 */
-		if (shpart->combined_version == shared->kernel_version_tpm) {
+		if (shpart->combined_version == sd->kernel_version) {
 			VB2_DEBUG("Same kernel version\n");
 			break;
 		}
@@ -628,7 +628,6 @@ gpt_done:
 	if (params->partition_number > 0) {
 		VB2_DEBUG("Good partition %d\n", params->partition_number);
 		shcall->check_result = VBSD_LKC_CHECK_GOOD_PARTITION;
-		shared->kernel_version_lowest = lowest_version;
 		/*
 		 * Sanity check - only store a new TPM version if we found one.
 		 * If lowest_version is still at its initial value, we didn't
@@ -636,8 +635,8 @@ gpt_done:
 		 * didn't look.
 		 */
 		if (lowest_version != LOWEST_TPM_VERSION &&
-		    lowest_version > shared->kernel_version_tpm)
-			shared->kernel_version_tpm = lowest_version;
+		    lowest_version > sd->kernel_version)
+			sd->kernel_version = lowest_version;
 
 		/* Success! */
 		rv = VB2_SUCCESS;
