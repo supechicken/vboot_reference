@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0dfdd6de_2a3f046a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "It\u0027s probably also useful to make sure no funny business happened in between verstage and depthcharge.  Let\u0027s keep it.",
+      "parentUuid": "6d0696bd_66be3802",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a79130de_661e279f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-11T02:22:02Z",
       "side": 1,
       "message": "Note that these aren\u0027t guaranteed to be set. In a manually triggered recovery scenario with no previously pending request, these are 0. That\u0027s why the verstage version checked sd-\u003erecovery_reason before printing this.\n\n(Maybe it would be enough to get rid of this line and just add a \"(was XXX)\" to the \"Clear recovery reason from nvdata\" line, so that you\u0027re printing the old reason in both paths.)",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fabf04e_2c728ea2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "They aren\u0027t guaranteed to be set... but perhaps it\u0027s useful to know that there is a recovery request, and that it\u0027s *not* because of a value stored in VB2_NV_RECOVERY_REQUEST?\n\nAnyways, the code looks pretty different now.  I just changed the string to read \"Clearing recovery request:\" instead.",
+      "parentUuid": "a79130de_661e279f",
       "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c56556ef_0d40502a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1de509_b4bed486",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1db778e_9707733b",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "3640392d_539679c9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1db778e_9707733b",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "791ceb0e_b9ef46a1",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -81,6 +153,30 @@
       "writtenOn": "2020-02-10T03:30:53Z",
       "side": 1,
       "message": "Do you use 0 instead of VB2_RECOVERY_NOT_REQUESTED here on purpose?",
+      "range": {
+        "startLine": 396,
+        "startChar": 43,
+        "endLine": 396,
+        "endChar": 44
+      },
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3283a73a_47b07207",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "Yup -- VB2_RECOVERY_* is for the VB2_NV_RECOVERY_REQUEST.  The subcode is kind of freestyle and doesn\u0027t have any specific set of constants.  Usually we set it to the return code of a failing function.  But it is also used to temporarily store the request value (see below).",
+      "parentUuid": "791ceb0e_b9ef46a1",
       "range": {
         "startLine": 396,
         "startChar": 43,
@@ -122,6 +218,24 @@
       "side": 1,
       "message": "+1, I don\u0027t think we do",
       "parentUuid": "a33b1c41_16423fea",
+      "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5519ab72_5b6bf23f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:32:49Z",
+      "side": 1,
+      "message": "I think we do... what about the case where:\n\n- VB2_NV_RECOVERY_REQUEST is non-zero\n- VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY is set\n- vb2_allow_recovery() returns true\n\nIf we don\u0027t clear VB2_NV_RECOVERY_REQUEST, then a normal reboot (Refresh+Power) will end up at the same manual recovery screen.\n\nWe could only commit in the case where VB2_NV_RECOVERY_REQUEST is non-zero, but that seems like we\u0027re unnecessarily adding edge cases.\n\nThe only real advantage I could see from skipping the vb2_commit_data() call, is if the user is shown a BROKEN screen, and then triggers manual recovery multiple times.  The original recovery reason will continue to be stored in VB2_NV_RECOVERY_SUBCODE.\n\nBut, we could also accomplish that by just *not* clearing the subcode, even if we *do* call vb2_commit_data().  I actually like that idea, since the original recovery request would be accessible from userspace.  (Although this isn\u0027t terribly useful if we are in a recovery image without any internet access.  I don\u0027t actually know our current flow for getting recovery reasons onto UMA.  Maybe there\u0027s already a solution for this problem.)\n\nSince there\u0027s no harm in leaving the subcode value as \"sticky\", maybe I\u0027ll take that line out.  But I think we still need to unconditionally call vb2_commit_data() -- correct me if I\u0027m wrong.",
+      "parentUuid": "3dc8736a_679ab840",
       "revId": "89cdb15c97dacaa44d08ec9eef3bd8679f7be9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
