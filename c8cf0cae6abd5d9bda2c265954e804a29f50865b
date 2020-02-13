@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e04abae_23e7a1f8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:38:23Z",
+      "side": 1,
+      "message": "Where should this function live?  2misc.c alongside vb2_check_recovery()?",
+      "range": {
+        "startLine": 380,
+        "startChar": 12,
+        "endLine": 380,
+        "endChar": 30
+      },
+      "revId": "c8cf0cae6abd5d9bda2c265954e804a29f50865b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4e352e_003b6842",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T04:38:23Z",
+      "side": 1,
+      "message": "Does this even need to have its own recovery reason?\n\nMy understanding is that it comes from the recovery switch.  Could coreboot just check for the value, and then reboot after training finishes?\n\nIf we need the ability to trigger memory retraining from userspace, this could also be done by a NVRAM flag instead... vboot could set VB2_CONTEXT_RETRAIN_MEMORY or something.",
+      "range": {
+        "startLine": 441,
+        "startChar": 29,
+        "endLine": 441,
+        "endChar": 58
+      },
+      "revId": "c8cf0cae6abd5d9bda2c265954e804a29f50865b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
