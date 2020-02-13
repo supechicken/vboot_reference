@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374e0cee_58decf81",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:20:30Z",
+      "side": 1,
+      "message": "This should really check the context flag.",
+      "range": {
+        "startLine": 337,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 54
+      },
+      "revId": "995c256834be20db0cbfc7f7ba5a1f4eb7de9e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
