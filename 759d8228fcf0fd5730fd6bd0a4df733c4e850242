@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e674d0ed_7a1a1b5d",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T03:17:25Z",
+      "side": 1,
+      "message": "Erm.  It failed.  Guilty as charged.  Now everything passes.",
+      "parentUuid": "842500e1_f07c1986",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "759d8228fcf0fd5730fd6bd0a4df733c4e850242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd8a51c1_da71718c",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "759d8228fcf0fd5730fd6bd0a4df733c4e850242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2d0569_6bfa45e6",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T03:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd8a51c1_da71718c",
+      "range": {
+        "startLine": 337,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 43
+      },
+      "revId": "759d8228fcf0fd5730fd6bd0a4df733c4e850242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
