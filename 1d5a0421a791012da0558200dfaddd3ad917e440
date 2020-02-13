@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0333c120_05180c18",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:37:58Z",
+      "side": 1,
+      "message": "This should still be VB2_SECDATA_KERNEL_MIN_SIZE",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 51
+      },
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab3fd64_6b450c28",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:37:58Z",
+      "side": 1,
+      "message": "*size should be adjusted in all cases (also if it was larger than real size for some reason)",
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bc01b5_a1ec6739",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:37:58Z",
+      "side": 1,
+      "message": "Might want to add an informational debug print here, like for FWMP.",
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87836e28_939c204b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:37:58Z",
+      "side": 1,
+      "message": "Should also print here, maybe with a bit more aggressive message... this should never hit in practice.",
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c92425_47f641e2",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T02:37:58Z",
+      "side": 1,
+      "message": "These should also be named _v0 and _v1, not _v02 and _v10. Making a new minor version always means appending more things at the back, so we would add them to the same struct.",
+      "range": {
+        "startLine": 85,
+        "startChar": 26,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
