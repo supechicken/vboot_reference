@@ -45,6 +45,30 @@
       "revId": "c8cf0cae6abd5d9bda2c265954e804a29f50865b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f31a505d_d240c247",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T20:55:31Z",
+      "side": 1,
+      "message": "I think the goal was to allow userspace to trigger it, yes. Not sure if we actually need that for anything. I think on some platforms coreboot needs to be in the recovery path to allow retraining, so modeling it as a recovery reason has some advantages.",
+      "parentUuid": "0e4e352e_003b6842",
+      "range": {
+        "startLine": 441,
+        "startChar": 29,
+        "endLine": 441,
+        "endChar": 58
+      },
+      "revId": "c8cf0cae6abd5d9bda2c265954e804a29f50865b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
