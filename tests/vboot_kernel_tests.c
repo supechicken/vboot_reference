@@ -70,6 +70,7 @@ static uint8_t mock_digest[VB2_SHA256_DIGEST_SIZE] = {12, 34, 56, 78};
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
+static struct vb2_shared_data *sd;
 static struct vb2_packed_key mock_key;
 
 /**
@@ -137,9 +138,6 @@ static void ResetMocks(void)
 	gbb.minor_version = VB2_GBB_MINOR_VER;
 	gbb.flags = 0;
 
-	memset(&shared_data, 0, sizeof(shared_data));
-	shared->kernel_version_tpm = 0x20001;
-
 	memset(&lkp, 0, sizeof(lkp));
 	lkp.bytes_per_lba = 512;
 	lkp.streaming_lba_count = 1024;
@@ -165,19 +163,22 @@ static void ResetMocks(void)
 	mock_parts[0].size = 150;  /* 75 KB */
 	mock_part_next = 0;
 
+	memset(&mock_key, 0, sizeof(mock_key));
+
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
 	vb2_nv_init(ctx);
 
-	memset(&mock_key, 0, sizeof(mock_key));
-
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	sd->vbsd = shared;
+	sd = vb2_get_sd(ctx);
+	sd->kernel_version = 0x20001;
 
 	/* CRC will be invalid after here, but nobody's checking */
 	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
 	fwmp = (struct vb2_secdata_fwmp *)ctx->secdata_fwmp;
 	memcpy(&fwmp->dev_key_hash, mock_digest, sizeof(fwmp->dev_key_hash));
+
+	memset(&shared_data, 0, sizeof(shared_data));
+	sd->vbsd = shared;
 
 	// TODO: more workbuf fields - flags, secdata_firmware, secdata_kernel
 }
@@ -717,7 +718,7 @@ static void LoadKernelTest(void)
 	ResetMocks();
 	kbh.data_key.key_version = 3;
 	TestLoadKernel(0, "Keyblock version roll forward");
-	TEST_EQ(shared->kernel_version_tpm, 0x30001, "  shared version");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();
 	kbh.data_key.key_version = 3;
@@ -725,7 +726,7 @@ static void LoadKernelTest(void)
 	mock_parts[1].size = 150;
 	TestLoadKernel(0, "Two kernels roll forward");
 	TEST_EQ(mock_part_next, 2, "  read both");
-	TEST_EQ(shared->kernel_version_tpm, 0x30001, "  shared version");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();
 	kbh.data_key.key_version = 1;
