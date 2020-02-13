@@ -27,6 +27,9 @@
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
 
+/* For vb2_export_vbsd(); but keep VbSharedDataHeader out of vb2_api.h. */
+typedef struct VbSharedDataHeader VbSharedDataHeader;
+
 /* Modes for vb2ex_tpm_set_mode. */
 enum vb2_tpm_mode {
 	/*
@@ -468,6 +471,18 @@ vb2_error_t vb2api_reinit(void *workbuf, struct vb2_context **ctxptr);
  */
 vb2_error_t vb2api_relocate(void *new_workbuf, const void *cur_workbuf,
 			    uint32_t size, struct vb2_context **ctxptr);
+
+/**
+ * Export "VBSD" vboot1 data structure.
+ *
+ * Copy relevant fields from vboot2 data structures to VbSharedDataHeader.
+ * Takes a pointer to the structure to be filled in.  Expects the memory
+ * available to be sizeof(VbSharedDataHeader).
+ *
+ * @param ctx		Context pointer
+ * @param vbsd		Target memory to store VbSharedDataHeader
+ */
+void vb2api_export_vbsd(struct vb2_context *ctx, VbSharedDataHeader *vbsd);
 
 /**
  * Check the validity of firmware secure storage context.
