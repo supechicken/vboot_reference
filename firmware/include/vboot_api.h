@@ -95,7 +95,6 @@ typedef struct VbSelectAndLoadKernelParams {
  * Returns VB2_SUCCESS if success, non-zero if error; on error, caller
  * should reboot. */
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
-				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams);
 
 /*****************************************************************************/

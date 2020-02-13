@@ -28,8 +28,6 @@ static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static VbSelectAndLoadKernelParams kparams;
-static uint8_t shared_data[VB_SHARED_DATA_MIN_SIZE];
-static VbSharedDataHeader *shared = (VbSharedDataHeader *)shared_data;
 static struct vb2_gbb_header gbb;
 
 static uint32_t kernel_version;
@@ -67,8 +65,6 @@ static void reset_common_data(void)
 	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xffffffff);
 	commit_data_called = 0;
 
-	memset(&shared_data, 0, sizeof(shared_data));
-
 	kernel_version = new_version = 0x10002;
 	commit_data_retval = VB2_SUCCESS;
 	vbboot_retval = VB2_SUCCESS;
@@ -89,7 +85,7 @@ static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
 		ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 
 	expected_recovery_reason = recovery_reason;
-	TEST_EQ(VbSelectAndLoadKernel(ctx, shared, &kparams), retval, desc);
+	TEST_EQ(VbSelectAndLoadKernel(ctx, &kparams), retval, desc);
 	TEST_EQ(current_recovery_reason, expected_recovery_reason,
 		"  recovery reason");
 	TEST_TRUE(commit_data_called, "  commit nvdata");
@@ -274,10 +270,10 @@ static void select_and_load_kernel_tests(void)
 	test_slk(commit_data_retval, VB2_RECOVERY_RW_TPM_W_ERROR,
 		 "Normal secdata_kernel write error triggers recovery");
 	commit_data_retval = VB2_ERROR_NV_WRITE;
-	TEST_ABORT(VbSelectAndLoadKernel(ctx, shared, &kparams),
+	TEST_ABORT(VbSelectAndLoadKernel(ctx, &kparams),
 		   "Normal nvdata write error aborts");
 	commit_data_retval = VB2_ERROR_UNKNOWN;
-	TEST_ABORT(VbSelectAndLoadKernel(ctx, shared, &kparams),
+	TEST_ABORT(VbSelectAndLoadKernel(ctx, &kparams),
 		   "Normal unknown commit error aborts");
 
 	/* Boot dev */
