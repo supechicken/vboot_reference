@@ -425,3 +425,28 @@ int vb2api_need_reboot_for_display(struct vb2_context *ctx)
 	}
 	return 0;
 }
+
+VbSharedDataHeader *vb2api_export_vbsd(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	VbSharedDataHeader *shared = sd->vbsd;
+
+	/* Translate vboot2 flags and fields into vboot1. */
+	if (ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED)
+		shared->flags |= VBSD_EC_SOFTWARE_SYNC;
+	if (ctx->flags & VB2_CONTEXT_NVDATA_V2)
+		shared->flags |= VBSD_NVDATA_V2;
+	if (sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED)
+		shared->flags |= VBSD_BOOT_DEV_SWITCH_ON;
+	if (sd->flags & VB2_SD_FLAG_KERNEL_SIGNED)
+		shared->flags |= VBSD_KERNEL_KEY_VERIFIED;
+
+	/* Translate recovery reason-related fields into vboot1 */
+	shared->recovery_reason = sd->recovery_reason;
+	if (sd->recovery_reason)
+		shared->firmware_index = 0xff;
+	if (sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY)
+		shared->flags |= VBSD_BOOT_REC_SWITCH_ON;
+
+	return shared;
+}
