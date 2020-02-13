@@ -16,6 +16,24 @@
       "revId": "2899f3b571b1b7d87e3d9a956b3473132f26797f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a60dab_b01d1225",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T21:55:22Z",
+      "side": 1,
+      "message": "I was going to do that back in CL:2037906 still.  Let me know if you prefer these to be squashed.",
+      "parentUuid": "974163e1_c46f938b",
+      "revId": "2899f3b571b1b7d87e3d9a956b3473132f26797f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
