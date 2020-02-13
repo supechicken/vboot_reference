@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "c7fa9ce1_ba46cb5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T21:54:22Z",
+      "side": 1,
+      "message": "I was going to do them in separate steps, but if you\u0027d prefer I can also merge this CL into CL:2053174.",
+      "parentUuid": "e6eceb97_d55b6a64",
+      "revId": "ac73e73edeec3cceab12c08074519991e939f7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d952d58c_4bc6cff2",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
