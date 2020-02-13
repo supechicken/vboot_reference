@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "448958b9_d8d030bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T22:43:28Z",
+      "side": 1,
+      "message": "As long as crossystem is not migrated you still need to fill back into VBSD at the end somewhere.",
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "987c0201_8de16a27",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
