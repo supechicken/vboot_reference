@@ -26,6 +26,7 @@
 #include "2id.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
+#include "vboot_struct.h"
 
 /* Modes for vb2ex_tpm_set_mode. */
 enum vb2_tpm_mode {
@@ -468,6 +469,16 @@ vb2_error_t vb2api_reinit(void *workbuf, struct vb2_context **ctxptr);
  */
 vb2_error_t vb2api_relocate(void *new_workbuf, const void *cur_workbuf,
 			    uint32_t size, struct vb2_context **ctxptr);
+
+/**
+ * Export "VBSD" vboot1 data structure.
+ *
+ * Copy relevant fields from vboot2 data structures to VbSharedDataHeader.
+ *
+ * @param ctx		Context pointer
+ * @return A reference to vboot's copy of VbSharedDataHeader.
+ */
+VbSharedDataHeader *vb2api_export_vbsd(struct vb2_context *ctx);
 
 /**
  * Check the validity of firmware secure storage context.
