@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "842500e1_f07c1986",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T03:09:49Z",
+      "side": 1,
+      "message": "careful\n\n(Does this pass tests? if it does we have a test to add...)",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "759d8228fcf0fd5730fd6bd0a4df733c4e850242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8a51c1_da71718c",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T03:09:49Z",
+      "side": 1,
+      "message": "Negate",
+      "range": {
+        "startLine": 337,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 43
+      },
+      "revId": "759d8228fcf0fd5730fd6bd0a4df733c4e850242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
