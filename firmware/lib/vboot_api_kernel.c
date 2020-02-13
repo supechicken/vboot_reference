@@ -46,7 +46,7 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST, 0);
 
 		/* May lose power immediately, so commit our update now. */
-		rv = vb2_commit_data(ctx);
+		rv = vb2ex_commit_data(ctx);
 		if (rv)
 			return rv;
 
@@ -290,49 +290,6 @@ static void vb2_kernel_fill_kparams(struct vb2_context *ctx,
 	       sizeof(kparams->partition_guid));
 }
 
-vb2_error_t vb2_commit_data(struct vb2_context *ctx)
-{
-	vb2_error_t rv = vb2ex_commit_data(ctx);
-
-	switch (rv) {
-	case VB2_SUCCESS:
-		break;
-
-	case VB2_ERROR_SECDATA_FIRMWARE_WRITE:
-		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-			vb2api_fail(ctx, VB2_RECOVERY_RW_TPM_W_ERROR, rv);
-			/* Run again to set recovery reason in nvdata. */
-			vb2ex_commit_data(ctx);
-			return rv;
-		}
-		break;
-
-	case VB2_ERROR_SECDATA_KERNEL_WRITE:
-		if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-			vb2api_fail(ctx, VB2_RECOVERY_RW_TPM_W_ERROR, rv);
-			/* Run again to set recovery reason in nvdata. */
-			vb2ex_commit_data(ctx);
-			return rv;
-		}
-		break;
-
-	default:
-		VB2_DEBUG("unknown commit error: %#x\n", rv);
-		__attribute__ ((fallthrough));
-
-	case VB2_ERROR_NV_WRITE:
-		/*
-		 * We can't write to nvdata, so it's impossible to
-		 * trigger recovery mode.  Skip calling vb2api_fail
-		 * and just die (unless already in recovery).
-		 */
-		VB2_REC_OR_DIE(ctx, "write nvdata failed\n");
-		break;
-	}
-
-	return VB2_SUCCESS;
-}
-
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSharedDataHeader *shared,
 				  VbSelectAndLoadKernelParams *kparams)
@@ -434,7 +391,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		vb2_kernel_fill_kparams(ctx, kparams);
 
 	/* Commit data, but retain any previous errors */
-	call_rv = vb2_commit_data(ctx);
+	call_rv = vb2ex_commit_data(ctx);
 	if (rv == VB2_SUCCESS)
 		rv = call_rv;
 

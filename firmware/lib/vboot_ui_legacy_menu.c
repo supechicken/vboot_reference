@@ -319,7 +319,7 @@ static vb2_error_t language_action(struct vb2_context *ctx)
 	 */
 	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
 	    !vb2_allow_recovery(ctx))
-		vb2_commit_data(ctx);
+		vb2ex_commit_data(ctx);
 
 	/* Return to previous menu. */
 	switch (prev_menu) {
@@ -848,7 +848,7 @@ static vb2_error_t broken_ui(struct vb2_context *ctx)
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, vbsd->recovery_reason);
 
 	/* Ignore commit errors in recovery mode. */
-	vb2_commit_data(ctx);
+	vb2ex_commit_data(ctx);
 
 	enter_recovery_base_screen(ctx);
 

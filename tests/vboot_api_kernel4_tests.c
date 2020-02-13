@@ -227,13 +227,6 @@ static void VbSlkTest(void)
 	test_slk(0, 0, "Max roll forward can't rollback");
 	TEST_EQ(kernel_version, 0x10002, "  version");
 
-
-	ResetMocks();
-	new_version = 0x20003;
-	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
-	test_slk(VB2_ERROR_SECDATA_KERNEL_WRITE,
-		 VB2_RECOVERY_RW_TPM_W_ERROR, "Write kernel rollback");
-
 	/* Boot normal */
 	ResetMocks();
 	vbboot_retval = -1;
@@ -257,21 +250,6 @@ static void VbSlkTest(void)
 	ResetMocks();
 	kernel_phase1_retval = VB2_ERROR_MOCK;
 	test_slk(VB2_ERROR_MOCK, 0, "Normal phase1 failure");
-
-	/* Boot normal - commit data failures */
-	ResetMocks();
-	commit_data_retval = VB2_ERROR_SECDATA_FIRMWARE_WRITE;
-	test_slk(commit_data_retval, VB2_RECOVERY_RW_TPM_W_ERROR,
-		 "Normal secdata_firmware write error triggers recovery");
-	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
-	test_slk(commit_data_retval, VB2_RECOVERY_RW_TPM_W_ERROR,
-		 "Normal secdata_kernel write error triggers recovery");
-	commit_data_retval = VB2_ERROR_NV_WRITE;
-	TEST_ABORT(VbSelectAndLoadKernel(ctx, shared, &kparams),
-		   "Normal nvdata write error aborts");
-	commit_data_retval = VB2_ERROR_UNKNOWN;
-	TEST_ABORT(VbSelectAndLoadKernel(ctx, shared, &kparams),
-		   "Normal unknown commit error aborts");
 
 	/* Boot dev */
 	ResetMocks();
@@ -308,18 +286,6 @@ static void VbSlkTest(void)
 	sd->recovery_reason = 123;
 	kernel_phase1_retval = VB2_ERROR_MOCK;
 	test_slk(VB2_ERROR_MOCK, 0, "Recovery phase1 failure");
-
-	/* Boot recovery - commit data failures */
-	ResetMocks();
-	sd->recovery_reason = 123;
-	commit_data_retval = VB2_ERROR_SECDATA_FIRMWARE_WRITE;
-	test_slk(0, 0, "Recovery ignore secdata_firmware write error");
-	commit_data_retval = VB2_ERROR_SECDATA_KERNEL_WRITE;
-	test_slk(0, 0, "Recovery ignore secdata_kernel write error");
-	commit_data_retval = VB2_ERROR_NV_WRITE;
-	test_slk(0, 0, "Recovery return nvdata write error");
-	commit_data_retval = VB2_ERROR_UNKNOWN;
-	test_slk(0, 0, "Recovery return unknown write error");
 
 	/* Boot recovery - nvstorage cleared */
 	ResetMocks();
