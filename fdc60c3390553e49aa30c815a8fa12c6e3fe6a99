@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77e30d0a_7b208a4c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T23:12:40Z",
+      "side": 1,
+      "message": "Who sets the firmware_index in normal cases? (Is this function supposed to initialize *all* of VBSD that\u0027s still used yet or are you still planning to add that stuff later?)",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2b251f_7e780c30",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T23:12:40Z",
+      "side": 1,
+      "message": "I\u0027m okay with adding a helper function for this, but why does it have to be a vb2api function? Just make it a static function in this file?",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5830f2de_a100fcd3",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-13T23:12:40Z",
+      "side": 1,
+      "message": "We should dump vb2_sd flags instead (and context flags too while we\u0027re at it) so that info is still visible somewhere.",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
