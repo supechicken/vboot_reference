@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4953e8b3_7afdcc89",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-13T09:17:57Z",
+      "side": 1,
+      "message": "It seems weird to have to initialize this value here -- would this fit better in VbTryLoadKernel or something?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
