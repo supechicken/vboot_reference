@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb1ea9be_09c62da0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-14T07:30:06Z",
+      "side": 1,
+      "message": "Yes, let\u0027s move the initialization stuff from depthcharge into here too.",
+      "parentUuid": "77e30d0a_7b208a4c",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d2b251f_7e780c30",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dfb36925_4354ee8c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-14T07:30:06Z",
+      "side": 1,
+      "message": "Well... see https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2056343",
+      "parentUuid": "6d2b251f_7e780c30",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5830f2de_a100fcd3",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-02-13T23:12:40Z",
       "side": 1,
       "message": "We should dump vb2_sd flags instead (and context flags too while we\u0027re at it) so that info is still visible somewhere.",
+      "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e402493b_08b897e2",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-14T07:30:06Z",
+      "side": 1,
+      "message": "Sure -- let\u0027s add vb2_context.flags and vb2_shared_data.{flags,status}.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2055661",
+      "parentUuid": "5830f2de_a100fcd3",
       "revId": "fdc60c3390553e49aa30c815a8fa12c6e3fe6a99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
