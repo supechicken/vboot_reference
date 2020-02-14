@@ -444,6 +444,11 @@ int vb2api_need_reboot_for_display(struct vb2_context *ctx)
 	return 0;
 }
 
+uint32_t vb2api_get_recovery_reason(struct vb2_context *ctx)
+{
+	return vb2_get_sd(ctx)->recovery_reason;
+}
+
 void vb2api_export_vbsd(struct vb2_context *ctx, VbSharedDataHeader *vbsd)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
