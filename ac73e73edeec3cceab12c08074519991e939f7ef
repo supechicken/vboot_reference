@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "faf724fe_b37b5e51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-14T10:14:18Z",
+      "side": 1,
+      "message": "Decided to merge the other patch into this one, since it has more discussion about the vb2_commit_data() stuff.",
+      "parentUuid": "c7fa9ce1_ba46cb5b",
+      "revId": "ac73e73edeec3cceab12c08074519991e939f7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d952d58c_4bc6cff2",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
