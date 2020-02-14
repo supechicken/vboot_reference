@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5ca97a2b_3df2e973",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-14T02:00:39Z",
+      "side": 1,
+      "message": "(Just to make sure I remember this the next time I look at it:) After discussion I realized I was confused about what this is checking, and it looks fine as is.",
+      "parentUuid": "90bf2f80_e1eaf7b7",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 51
+      },
+      "revId": "1d5a0421a791012da0558200dfaddd3ad917e440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ab3fd64_6b450c28",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 8
