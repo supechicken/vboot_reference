@@ -16,6 +16,24 @@
       "revId": "3d24b8267ab230dfff4d7b8fbfdec8256a7ea1c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5596ce50_b172cdf2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-15T07:13:34Z",
+      "side": 1,
+      "message": "Ahh.. I guess.  It gets flipped back around when I factor out the \"translate\" step anyways.",
+      "parentUuid": "ef0fccb7_c7ec8b9e",
+      "revId": "3d24b8267ab230dfff4d7b8fbfdec8256a7ea1c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
