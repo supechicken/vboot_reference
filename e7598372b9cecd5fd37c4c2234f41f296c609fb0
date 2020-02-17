@@ -1,0 +1,579 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33fe29a5_4bee550c",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "I have no idea if it really makes a difference... but should we consider making this an inline function?",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ca0a0d_76d4c3a9",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "caller",
+      "range": {
+        "startLine": 92,
+        "startChar": 57,
+        "endLine": 92,
+        "endChar": 61
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08bd5542_476f81f3",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "In vboot_reference, for \"short comments\", we leave the * out on the second line:\n\n  /* first line\n     second line */",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c90763_28b0b14b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Seems kind of weird to find the one value that will make it through the _check function without causing any errors...\nI can\u0027t remember exactly what we did for secdata_fwmp, but would it make sense to allow 0 here to just ignore checking the size?\njwerner I seem to remember you having an opinion about this back when we were doing reviews...",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 44
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ab5855_228ad385",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Seems kind of weird to cast to a void pointer when you know it will not end up being a void pointer...\n\nOr is this a generally acceptable C pattern?",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1f93c0_5b93c2e1",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Is there any good reason for this not to be in the \"case\" block?\nThen we could make the ptr variable local to that block to make its purpose clearer.",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347690a5_a94c7ff1",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "I don\u0027t think we have any error formatting this fancy.. probably just sufficient to write \"Error: blah blah blah\", or even leave the \"Error:\" out.\n\nIt\u0027s either going to DIE on this line, or it will print \"IGNORING ABORT IN RECOVERY MODE!!!\" right after it -- so it\u0027s pretty clear already.",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 18
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b3edd0_51a606f6",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Is there even a point in including this argument, if the only valid value is sizeof(sec-\u003eec_hash)?  We can specify in the function documentation that the *in pointer must have this size.",
+      "range": {
+        "startLine": 246,
+        "startChar": 27,
+        "endLine": 246,
+        "endChar": 41
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315761b3_9ba5ce34",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these two values be the same?",
+      "range": {
+        "startLine": 257,
+        "startChar": 16,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a363d809_8036ebcb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "We can probably split this into v0 and v1, and explain what it does for each.\n\nJust copy something like the vb2api_secdata_fwmp_check documentation for the v1 part.",
+      "range": {
+        "startLine": 499,
+        "startChar": 3,
+        "endLine": 499,
+        "endChar": 32
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e628fa16_59a6c40d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Maybe \"read so far\"?",
+      "range": {
+        "startLine": 502,
+        "startChar": 34,
+        "endLine": 502,
+        "endChar": 46
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ddd929b_5211f0a2",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Needs to go at the *end* of error section to keep error values stable.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 37
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149eb2c6_2272c99e",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Call it \"kernel secure storage\" to be consistent with the other functions.",
+      "range": {
+        "startLine": 118,
+        "startChar": 21,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60b488e_2f916892",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Just a space.",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e009c3c_f308446c",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Just a space.",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7446e79f_c6d96df3",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Maybe just call this \"hash\" or \"in_hash\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04492e2_c0715c0c",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "As I mentioned in the other comment, I think we can get rid of this.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43dab84e_405fc5b5",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Alphabetical order.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1c275a_68ecf7ad",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Just use a space here, same for MINOR.\n\nCan we add a comment above this specifying it should only be used for a uint8_t major/minor combined field?\n\nAlso, let\u0027s add the prefix VB2_ to prevent any future namespace collisions.",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bc323d_fd5fd84a",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "This comment might fit better up at \"Kernel secure storage space\".",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74325a7c_723cfe39",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "*?",
+      "range": {
+        "startLine": 51,
+        "startChar": 65,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6585d4_3e4feaea",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "Probably can note how the TPM is able to handle this.\n\nDo we have any story for using a non-Cr50 backed TPM?  Or will that officially be impossible for the (1)(2)(3) cases?",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c4e4d1_3a9ac020",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "3?",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c527349_0f2205ea",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "So is EFS2 disabled if a v0.2 data structure is encountered?  Or will Cr50 prevent the system from booting?",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc2e5d0_ba318d10",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-17T16:39:11Z",
+      "side": 1,
+      "message": "How about linking to the design doc or the umbrella bug here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
