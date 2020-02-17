@@ -130,84 +130,97 @@ const char *cbfs_extract_file(const char *image_file,
 /*
  * Loads the firmware information from an FMAP section in loaded firmware image.
  * The section should only contain ASCIIZ string as firmware version.
- * If successful, the return value is zero and *version points to a newly
- * allocated string as firmware version (caller must free it); otherwise
- * failure.
+ * Returns 0 if a non-empty version string is stored in *version, otherwise -1.
  */
 static int load_firmware_version(struct firmware_image *image,
 				 const char *section_name,
 				 char **version)
 {
 	struct firmware_section fwid;
-	find_firmware_section(&fwid, image, section_name);
-	if (fwid.size) {
-		*version = strndup((const char*)fwid.data, fwid.size);
-		/*
-		 * For 'system current' images, the version string may contain
-		 * invalid characters that we do want to strip.
-		 */
-		strip_string(*version, "\xff");
-		return 0;
+
+	if (!section_name) {
+		*version = strdup("");
+		return -1;
 	}
-	*version = strdup("");
-	return -1;
+
+	find_firmware_section(&fwid, image, section_name);
+	if (!fwid.size) {
+		WARN("No valid section '%s', missing version info.\n",
+		     section_name);
+		*version = strdup("");
+		return -1;
+	}
+
+	*version = strndup((const char*)fwid.data, fwid.size);
+	/*
+	 * For 'system current' images, the version string may contain
+	 * invalid characters that we do want to strip.
+	 */
+	strip_string(*version, "\xff");
+	return **version ? 0 : -1;
 }
 
 /*
  * Loads a firmware image from file.
  * If archive is provided and file_name is a relative path, read the file from
  * archive.
- * Returns 0 on success, otherwise failure.
+ * Returns 0 on success, -1 on read failure, or -2 for non-vboot images.
  */
 int load_firmware_image(struct firmware_image *image, const char *file_name,
 			struct archive *archive)
 {
+	const int read_fail = -1, parse_fail = -2;
+	int ret = 0;
+	const char *section_a = NULL, *section_b = NULL;
+
 	if (!file_name) {
 		ERROR("No file name given\n");
-		return -1;
+		return read_fail;
 	}
 
 	VB2_DEBUG("Load image file from %s...\n", file_name);
 
 	if (!archive_has_entry(archive, file_name)) {
 		ERROR("Does not exist: %s\n", file_name);
-		return -1;
+		return read_fail;
 	}
 	if (archive_read_file(archive, file_name, &image->data, &image->size,
 			      NULL) != VB2_SUCCESS) {
 		ERROR("Failed to load %s\n", file_name);
-		return -1;
+		return read_fail;
 	}
 
 	VB2_DEBUG("Image size: %d\n", image->size);
 	assert(image->data);
 	image->file_name = strdup(file_name);
-
 	image->fmap_header = fmap_find(image->data, image->size);
+
 	if (!image->fmap_header) {
 		ERROR("Invalid image file (missing FMAP): %s\n", file_name);
-		return -1;
+		ret = parse_fail;
 	}
 
-	if (!firmware_section_exists(image, FMAP_RO_FRID)) {
-		ERROR("Does not look like VBoot firmware image: %s\n",
-		      file_name);
-		return -1;
-	}
+	if (load_firmware_version(image, FMAP_RO_FRID, &image->ro_version))
+		ret = parse_fail;
 
-	load_firmware_version(image, FMAP_RO_FRID, &image->ro_version);
 	if (firmware_section_exists(image, FMAP_RW_FWID_A)) {
-		char **a = &image->rw_version_a, **b = &image->rw_version_b;
-		load_firmware_version(image, FMAP_RW_FWID_A, a);
-		load_firmware_version(image, FMAP_RW_FWID_B, b);
+		section_a = FMAP_RW_FWID_A;
+		section_b = FMAP_RW_FWID_B;
 	} else if (firmware_section_exists(image, FMAP_RW_FWID)) {
-		char **a = &image->rw_version_a, **b = &image->rw_version_b;
-		load_firmware_version(image, FMAP_RW_FWID, a);
-		load_firmware_version(image, FMAP_RW_FWID, b);
-	} else {
+		section_a = FMAP_RW_FWID;
+		section_b = FMAP_RW_FWID;
+	} else if (!ret) {
 		ERROR("Unsupported VBoot firmware (no RW ID): %s\n", file_name);
+		ret = parse_fail;
 	}
-	return 0;
+
+	/* Load A, B (no ||) to ensure rw_version_[a|b] were both initialized */
+	if (load_firmware_version(image, section_a, &image->rw_version_a))
+		ret = parse_fail;
+	if (load_firmware_version(image, section_b, &image->rw_version_b))
+		ret = parse_fail;
+
+	return ret;
 }
 
 /*
