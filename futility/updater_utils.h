@@ -68,7 +68,7 @@ struct firmware_image {
  * Loads a firmware image from file.
  * If archive is provided and file_name is a relative path, read the file from
  * archive.
- * Returns 0 on success, otherwise failure.
+ * Returns 0 on success, -1 on read failure, or -2 for non-vboot images.
  */
 int load_firmware_image(struct firmware_image *image, const char *file_name,
 			struct archive *archive);
