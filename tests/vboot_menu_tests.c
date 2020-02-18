@@ -24,8 +24,13 @@ static const vb2_error_t vbtlk_retval_fixed = 1002;
 static uint32_t screens_displayed[64];
 static uint32_t screens_count = 0;
 
-/* Reset mock data (for use before each test) */
-static void ResetMocks(void)
+/*
+ * Reset mock data (for use before each test)
+ *
+ * Leave the parameters as "void" for now unless there is a good reason to have
+ * "enum reset_type".
+ * */
+static void reset_common_data(void)
 {
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
@@ -54,25 +59,54 @@ vb2_error_t VbDisplayScreen(struct vb2_context *c, uint32_t screen, int force,
 {
 	if (screens_count < ARRAY_SIZE(screens_displayed))
 		screens_displayed[screens_count++] = screen;
-	printf("VbDisplayScreen: screens_displayed[%d] = %#x\n",
-	       screens_count - 1, screen);
+	VB2_DEBUG("VbDisplayScreen: screens_displayed[%d] = %#x\n",
+		  screens_count - 1, screen);
 	return VB2_SUCCESS;
 }
 
 /* Tests */
 
 /*
- * VbBootNormal tests: Please see VbBootTest in vboot_api_kernel2_tests.c
- * and VbBootDevTest/VbBootRecTest in vboot_legacy_menu_tests.c
+ * VbootNormal tests
+ *
+ * This test function references vboot_legacy_clamshell_tests.c, which will
+ * be deprecated.
  */
+static void VbBootTest(void)
+{
+	// TODO(roccochen): I have not figured out how to write this
+	/*reset_common_data();
+	vbtlk_retval[0] = VB2_SUCCESS;
+	TEST_EQ(VbBootNormal(ctx), VB2_SUCCESS,
+		"VbBootNormal() returns VB2_SUCCESS");
+
+	reset_common_data();
+	vbtlk_retval[0] = VB2_SUCCESS + VB2_ERROR_MOCK;
+	TEST_EQ(VbBootNormal(ctx), VB2_ERROR_MOCK,
+		"VbBootNormal() returns VB2_ERROR_MOCK");
+
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+	TEST_EQ(VbBootNormal(ctx), VBERROR_REBOOT_REQUIRED,
+		"VbBootNormal() reboot to reset NVRAM display request");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
+		"  display request reset");
+
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(VbBootNormal(ctx), VBERROR_REBOOT_REQUIRED,
+		"VbBootNormal() reboot to reset NVRAM diag request");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"  diag request reset");*/
+}
 
 static void VbBootDevTest(void)
 {
-	printf("Testing VbBootDeveloperMenu()...\n");
+	printf("Testing vb2_developer_menu()...\n");
 
 	/* Developer entry point */
-	ResetMocks();
-	TEST_EQ(VbBootDeveloperMenu(ctx), vbtlk_retval_fixed, "entry point");
+	reset_common_data();
+	TEST_EQ(vb2_developer_menu(ctx), vbtlk_retval_fixed, "entry point");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_BLANK, "  blank screen");
 	TEST_EQ(screens_count, 1, "  no extra screens");
 
@@ -82,11 +116,11 @@ static void VbBootDevTest(void)
 
 static void VbBootRecTest(void)
 {
-	printf("Testing VbBootRecoveryMenu()...\n");
+	printf("Testing vb2_recovery_menu()...\n");
 
 	/* Recovery entry point */
-	ResetMocks();
-	TEST_EQ(VbBootRecoveryMenu(ctx), vbtlk_retval_fixed, "entry point");
+	reset_common_data();
+	TEST_EQ(vb2_recovery_menu(ctx), vbtlk_retval_fixed, "entry point");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_BLANK, "  blank screen");
 	TEST_EQ(screens_count, 1, "  no extra screens");
 
@@ -96,6 +130,7 @@ static void VbBootRecTest(void)
 
 int main(void)
 {
+	VbBootTest();
 	VbBootDevTest();
 	VbBootRecTest();
 
