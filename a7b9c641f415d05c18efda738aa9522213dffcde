@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b230be4d_cfdbadb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-18T16:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448958b9_d8d030bd",
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "987c0201_8de16a27",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-13T22:42:23Z",
       "side": 1,
       "message": "I wonder if we still need the kernel_version_tpm_start (or newer equivalent). I think the original reason of having that was to avoid repeatedly calling RollbackKernelRead() when it still did a TPM access every time. But now that we have the TPM contents cached in the context, I think we could just directly use vb2_secdata_kernel_get() here to retrieve the \"original\" version, and only need one variable in SD to keep track of the potentially updated one.",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 49
+      },
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58da7937_79cb3f78",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-18T16:49:09Z",
+      "side": 1,
+      "message": "Hmm.. I think you\u0027re right.  The only reason why we would need it currently is to set kernel_version_tpm_start in our vboot1 exporting code.  I\u0027m guessing that the _start would be wholly unnecessary to set though.  Do we even make use of the *_version_tpm fields?  I have a feeling that the firmware one has not been getting written into VBSD since a while ago.\n\nIf we want to treat the two the same, then perhaps we should deprecate vb2_sd.*_version_secdata in another CL together?",
+      "parentUuid": "987c0201_8de16a27",
       "range": {
         "startLine": 205,
         "startChar": 23,
@@ -86,6 +128,30 @@
       "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3deb075c_c5162353",
+        "filename": "firmware/lib20/api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-18T16:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac20220_84da9c37",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
