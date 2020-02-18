@@ -201,6 +201,13 @@ else
 CFLAGS += -DMENU_UI=0
 endif
 
+# DETACHABLE indicates whether the device is a detachable or not
+ifneq ($(filter-out 0,${DETACHABLE}),)
+CFLAGS += -DDETACHABLE=1
+else
+CFLAGS += -DDETACHABLE=0
+endif
+
 # LEGACY_MENU_UI controls whether to enable legacy menu UI, which is used with
 # devices that don't have a keyboard (detachables).
 # Pass LEGACY_MENU_UI= (or =0) to make to disable feature.
