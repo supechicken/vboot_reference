@@ -365,6 +365,52 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbexlegacy_called, 1, "  try legacy");
 	TEST_NEQ(mock_timer_looping_calls_left, 0, "  timer aborted");
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* Ctrl+U boots usb only if enabled */
+	reset_common_data();
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "Ctrl+U disabled");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_EQ(mock_timer_looping_calls_left, 0, "  used up timer looping");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* Ctrl+U enabled, with good usb */
+	reset_common_data();
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "Ctrl+U");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_NEQ(mock_timer_looping_calls_left, 0, "  timer aborted");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* Ctrl+U enabled, without valid usb */
+	reset_common_data();
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"Ctrl+U without valid usb");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_EQ(mock_timer_looping_calls_left, 0, "  used up timer looping");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 }
 
 static void broken_recovery_tests(void)
