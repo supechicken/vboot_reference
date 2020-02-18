@@ -439,13 +439,16 @@ vb2_error_t VbExDisplayScreen(uint32_t screen_type, uint32_t locale,
  * @param selected_index    Index of menu item that is currently selected.
  * @param disabled_idx_mask Bitmap for enabling/disabling certain menu items.
  *                          each bit corresponds to the menu item's index.
+ * @param page              Index of the page of the current screen.
  * @param redraw_base       Setting 1 will force a full redraw of the screen
+ * @param redraw_page       Setting 1 will force redraw of the page
  *
  * @return VB2_SUCCESS or error code on error.
  */
 vb2_error_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
-			  uint32_t selected_index, uint32_t disabled_idx_mask,
-			  uint32_t redraw_base);
+			    uint32_t selected_index, uint32_t disabled_idx_mask,
+			    uint32_t page, uint32_t redraw_base,
+			    uint32_t redraw_page);
 
 /**
  * Display a string containing debug information on the screen, rendered in a
@@ -640,6 +643,12 @@ enum vb_altfw {
  *	bootloader n is present)
  */
 uint32_t VbExGetAltFwIdxMask(void);
+
+/* Debug info api TODO: add descriptions*/
+
+vb2_error_t VbExInitPageContent(const char *info_str, uint32_t *num_page,
+				uint32_t screen);
+vb2_error_t VbExFreePageContent(void);
 
 #ifdef __cplusplus
 }
