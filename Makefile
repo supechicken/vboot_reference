@@ -192,6 +192,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# DETACHABLE indicates whether the device is a detachable or not
+ifneq ($(filter-out 0,${DETACHABLE}),)
+CFLAGS += -DDETACHABLE=1
+else
+CFLAGS += -DDETACHABLE=0
+endif
+
 # MENU_UI controls whether to enable menu UI, which is a detachable, menu-based
 # UI revamp. see chromium:1033815
 # pass MENU_UI= (or =0) to make to disable feature
