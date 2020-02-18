@@ -207,6 +207,16 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t VbExInitPageContent(const char *info_str, uint32_t *num_page,
+			     enum VbScreenType_t screen)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t VbExFreePageContent(void)
+{
+	return VB2_SUCCESS;
+}
 /* Tests */
 
 static void developer_tests(void)
