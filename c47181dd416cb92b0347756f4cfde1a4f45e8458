@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dc8852f_0260962b",
+        "filename": "firmware/lib/include/vboot_ui_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2cfa5bc_ad0bbeb1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e372cffd_843492ba",
         "filename": "tests/vboot_menu_tests.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cacd1f_8b856713",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e372cffd_843492ba",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1f760c18_c73c8d44",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0920cff5_9009eba5",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aae3099a_f0591e20",
         "filename": "tests/vboot_menu_tests.c",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-05T10:46:42Z",
       "side": 1,
       "message": "Actually, let\u0027s just leave those two test files to be removed eventually, and write new VbBootNormal tests here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "c47181dd416cb92b0347756f4cfde1a4f45e8458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f96825_6830f077",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Working on figuring out how to add VbBootNormal test here.",
+      "parentUuid": "aae3099a_f0591e20",
       "range": {
         "startLine": 65,
         "startChar": 0,

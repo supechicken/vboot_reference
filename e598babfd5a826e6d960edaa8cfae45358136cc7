@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ec5abac_32e5bc73",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1196b6b1_a2bbf6b4",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 45
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d54fb3e9_d6b77be2",
         "filename": "firmware/lib/include/vboot_kernel.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124e7046_51595718",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Done\n\nSo we will leave the two old UIs intact since they will be deprecated later?\n\nrelated files:\ntests/vboot_menu_tests.c\nfirmware/lib/vboot_apai_kernel.{c,h}\nfirmware/lib/vboot_ui_menu.c",
+      "parentUuid": "d54fb3e9_d6b77be2",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9000be7f_4e0c7625",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b13faf52_58686b6a",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 67
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afeb10d1_7f0af4bf",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b2055f37_abbc3420",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afeb10d1_7f0af4bf",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "098c8843_c7961036",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2020-02-03T08:45:57Z",
       "side": 1,
       "message": "Even if we don\u0027t have any devices with Groot enabled yet -- let\u0027s make sure we aren\u0027t skipping the usual FWMP checks etc. in developer mode.  Let\u0027s do something else here -- either an infinite loop, or just returning with an error for reboot.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7396dc6e_8b44214c",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Upload some part of codes, the others are WIP.\nMy intuition is add all the functions that almost similar to LEGACY_MENU_UI in this CL,\nwhile the different parts (like screens, actions) will be add in the following CLs.",
+      "parentUuid": "098c8843_c7961036",
       "range": {
         "startLine": 18,
         "startChar": 8,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "546e7fad_2e13e62e",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0515bf4_bc123348",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72f1d22e_b3718b92",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c71a8c_60f34d0f",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-18T11:27:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72f1d22e_b3718b92",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
