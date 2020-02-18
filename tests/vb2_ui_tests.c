@@ -179,6 +179,16 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t VbExInitPageContent(const char *info_str, uint32_t *num_page,
+			     enum VbScreenType_t screen)
+{
+	return VB2_SUCCESS;
+}
+
+vb2_error_t VbExFreePageContent(void)
+{
+	return VB2_SUCCESS;
+}
 /* Tests */
 
 static void developer_tests(void)
@@ -230,7 +240,15 @@ static void broken_recovery_tests(void)
 
 static void manual_recovery_tests(void)
 {
-	/* Only infinite loop for current implementation, no test needed */
+	/* INSERT boots without screens if we have a valid image on first try */
+	reset_common_data(FOR_MANUAL_REC);
+	add_vbtlk_retval(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	add_vbtlk_retval(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_SUCCESS,
+		"INSERT boots without screens if valid on first try");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(screens_displayed[0], VB_SCREEN_BLANK, "  final blank screen");
+	TEST_EQ(screens_count, 1, "  no extra screens");
 }
 
 int main(void)
