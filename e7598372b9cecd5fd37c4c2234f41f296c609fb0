@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "b56978b2_612bb9e3",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-19T02:34:00Z",
+      "side": 1,
+      "message": "We\u0027re passing the value of the \u0027struct_size\u0027 member for FWMP. Don\u0027t really care about it either way, I think. This seems somewhat cleaner in that it doesn\u0027t access struct members before the initial sanity/CRC checks are done. (It\u0027s not really a random value either, it\u0027s just the size of the available space we\u0027re parsing in the context. Using sizeof(ctx-\u003esecdata_kernel) would also work.)\n\nAnother option would be to allow passing NULL to check() to skip all the size checking/backreporting stuff.",
+      "parentUuid": "c4c90763_28b0b14b",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 44
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48ab5855_228ad385",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "87d73c61_2eecb6fd",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-19T02:34:00Z",
+      "side": 1,
+      "message": "Might be a matter of taste, but I frequently use this to save space. Why write a long 20+ character type name in the cast if you can already see the same type name on the left of the declaration? (This is only for a declaration-assignment, of course, for an assignment of an earlier-declared variable I agree that a cast to the explicit type is more readable.)",
+      "parentUuid": "48ab5855_228ad385",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f1f93c0_5b93c2e1",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -128,6 +176,30 @@
       "writtenOn": "2020-02-17T16:39:11Z",
       "side": 1,
       "message": "Is there any good reason for this not to be in the \"case\" block?\nThen we could make the ptr variable local to that block to make its purpose clearer.",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ecf6b12_d6dedced",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-19T02:34:00Z",
+      "side": 1,
+      "message": "This is for adding more fields later.",
+      "parentUuid": "5f1f93c0_5b93c2e1",
       "range": {
         "startLine": 213,
         "startChar": 1,
@@ -220,6 +292,30 @@
       "writtenOn": "2020-02-17T16:39:11Z",
       "side": 1,
       "message": "We can probably split this into v0 and v1, and explain what it does for each.\n\nJust copy something like the vb2api_secdata_fwmp_check documentation for the v1 part.",
+      "range": {
+        "startLine": 499,
+        "startChar": 3,
+        "endLine": 499,
+        "endChar": 32
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b5f991_cd6e22fd",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-19T02:34:00Z",
+      "side": 1,
+      "message": "Or just not go into detail that much... the UID field was an internal implementation detail of the v0 structure that users of the API really don\u0027t need to know about.",
+      "parentUuid": "a363d809_8036ebcb",
       "range": {
         "startLine": 499,
         "startChar": 3,
@@ -542,6 +638,30 @@
       "writtenOn": "2020-02-17T16:39:11Z",
       "side": 1,
       "message": "So is EFS2 disabled if a v0.2 data structure is encountered?  Or will Cr50 prevent the system from booting?",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c232e10_e2939569",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-19T02:34:00Z",
+      "side": 1,
+      "message": "I think it makes sense to disable EFS2 (i.e. allow booting and don\u0027t set NO_BOOT flag) when the struct isn\u0027t valid, unless someone has a security concern about that. During the first boot in the factory TPM NVRAM will be uninitialized, so we need to at least allow the AP to boot (to initialize it), and if NO_BOOT was set we\u0027d also need to awkwardly reboot again after that to clear it.\n\nI think we can still be pretty confident that this cannot open security holes since vboot makes sure it has a valid kernel TPM space (for the rollback stuff) during normal boots, and if the Cr50 parsing side was permanently broken we\u0027d notice that EC software sync doesn\u0027t work during testing.",
+      "parentUuid": "2c527349_0f2205ea",
       "range": {
         "startLine": 59,
         "startChar": 3,
