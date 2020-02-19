@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "d91727b8_b1ec1b4c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-19T06:20:33Z",
+      "side": 1,
+      "message": "Makes sense.  Let\u0027s re-work this in a follow-up CL to:\n* Stop exposing version_tpm_start fields in crossystem\n* Stop setting _version_secdata fields in vb2_shared_data\n* Set vb2_shared_data fields to `reserved` or remove them and uprev (can we do this at the same time as EFS2?)",
+      "parentUuid": "8d0eb49a_a224337d",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 49
+      },
+      "revId": "a7b9c641f415d05c18efda738aa9522213dffcde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4953e8b3_7afdcc89",
         "filename": "firmware/lib20/api_kernel.c",
         "patchSetId": 1
