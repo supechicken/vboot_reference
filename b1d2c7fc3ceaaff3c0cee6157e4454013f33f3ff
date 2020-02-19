@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf3e9400_09b57b85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-19T06:31:49Z",
+      "side": 1,
+      "message": "Well... in our case the caller (depthcharge) needs to inspect the contents of VbSharedDataHeader, and will thus explicitly include \u003cvboot_struct.h\u003e to do so.  Or should I write that this header should be included to get access to the struct, as part of the function documentation?\n\nI could also add a VB2_VBSD_SIZE constant to 2constants.h, but it seems like a moot point if the caller needs to include the definition in order to read the struct anyways.",
+      "parentUuid": "e4aecd2c_fccf4407",
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "359a5bab_73fcbd32",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 8
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-14T22:58:37Z",
       "side": 1,
       "message": "uintptr_t",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e949ed65_65bb80ba",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-19T06:31:49Z",
+      "side": 1,
+      "message": "Is this not guaranteed to be of size uint32_t on all platforms?",
+      "parentUuid": "359a5bab_73fcbd32",
       "range": {
         "startLine": 239,
         "startChar": 1,
