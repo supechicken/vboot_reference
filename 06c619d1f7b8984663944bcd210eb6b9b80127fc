@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63770311_43ea920b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T23:09:04Z",
+      "side": 1,
+      "message": "nit: I think (void *) would also make sense, that\u0027s what we usually use for opaque buffers",
+      "range": {
+        "startLine": 452,
+        "startChar": 65,
+        "endLine": 452,
+        "endChar": 74
+      },
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7bf3bd0_a83c7505",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T23:09:04Z",
+      "side": 1,
+      "message": "Unnecessary now?",
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2aae12a_59f9e3bf",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T23:09:04Z",
+      "side": 1,
+      "message": "Add _Static_assert() for the new size constant?",
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

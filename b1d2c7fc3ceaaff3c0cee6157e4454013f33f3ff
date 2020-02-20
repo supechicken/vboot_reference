@@ -189,6 +189,30 @@
       "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4e52f5_c3eff66d",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T23:09:04Z",
+      "side": 1,
+      "message": "edit: oh, you mean because it\u0027s still a uintptr_t now. Yes, that\u0027s bad, and yes, we should get rid of that at the next major version bump opportunity.",
+      "parentUuid": "1101dccb_ce2cc533",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
