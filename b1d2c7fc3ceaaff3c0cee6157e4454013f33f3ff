@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9235ddf5_00cfee15",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T01:40:21Z",
+      "side": 1,
+      "message": "But it shouldn\u0027t need to inspect the structure? Can\u0027t we fix that? Instead of VBSD_BOOT_DEV_SWITCH_ON it can use the context flag, instead of VBSD_BOOT_FIRMWARE_WP_ENABLED it can just use the flag_fetch() result directly, etc.",
+      "parentUuid": "bf3e9400_09b57b85",
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "359a5bab_73fcbd32",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 8
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Is this not guaranteed to be of size uint32_t on all platforms?",
       "parentUuid": "359a5bab_73fcbd32",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d24c5d4_3296f75f",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T01:40:21Z",
+      "side": 1,
+      "message": "For x86 maybe they still run all firmware in 32-bit mode, but our Arm64 devices boot straight into 64-bit. (So no, pointer sizes are most definitely platform-dependent.)\n\nIn fact we have some old Arm devices where early stages run in 32-bit mode and later stages run in 64-bit mode, so... uhh... those have probably been broken for a while, actually. High time we fix this and never do something like that again (putting a pointer type into a serialized data structure).",
+      "parentUuid": "e949ed65_65bb80ba",
       "range": {
         "startLine": 239,
         "startChar": 1,
