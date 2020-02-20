@@ -803,8 +803,6 @@ int VbGetArchPropertyInt(const char* name)
 		value = ReadGpio(GPIO_SIGNAL_TYPE_RECOVERY);
 	} else if (!strcasecmp(name,"wpsw_cur")) {
 		value = ReadGpio(GPIO_SIGNAL_TYPE_WP);
-		if (-1 != value && FwidStartsWith("Mario."))
-			value = 1 - value;  /* Mario reports this backwards */
 	} else if (!strcasecmp(name,"recoverysw_ec_boot")) {
 		value = ReadFileBit(ACPI_CHSW_PATH, CHSW_RECOVERY_EC_BOOT);
 	} else if (!strcasecmp(name,"phase_enforcement")) {
@@ -819,11 +817,6 @@ int VbGetArchPropertyInt(const char* name)
 			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_DEV_BOOT);
 		} else if (!strcasecmp(name,"recoverysw_boot")) {
 			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_RECOVERY_BOOT);
-		} else if (!strcasecmp(name,"wpsw_boot")) {
-			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_WP_BOOT);
-			if (-1 != value && FwidStartsWith("Mario."))
-				value = 1 - value;  /* Mario reports this
-						     * backwards */
 		}
 	}
 

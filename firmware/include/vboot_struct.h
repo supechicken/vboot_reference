@@ -60,8 +60,9 @@ extern "C" {
 #define VBSD_BOOT_DEV_SWITCH_ON          0x00000010
 /* Recovery switch was enabled at boot time */
 #define VBSD_BOOT_REC_SWITCH_ON          0x00000020
-/* Firmware write protect was enabled at boot time */
-#define VBSD_BOOT_FIRMWARE_WP_ENABLED    0x00000040
+/* Firmware write protect was enabled at boot time;
+   Deprecated as part of CL:2066192. */
+#define VBSD_DEPRECATED_BOOT_FIRMWARE_WP_ENABLED 0x00000040
 /* Boot is a S3->S0 resume, not a S5->S0 normal boot;
    Deprecated as part of CL:347257. */
 #define VBSD_DEPRECATED_BOOT_S3_RESUME   0x00000100
