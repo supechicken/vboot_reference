@@ -165,6 +165,30 @@
       "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1101dccb_ce2cc533",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-20T23:04:11Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you\u0027re talking about... yes, using a variable-width data type in any of these structures is very bad and we should never do that. I believe the one you\u0027re removing here is the only instance we had? I don\u0027t see anything in vb2_context that would make its size variable.",
+      "parentUuid": "a544f81f_fdd003e4",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "b1d2c7fc3ceaaff3c0cee6157e4454013f33f3ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
