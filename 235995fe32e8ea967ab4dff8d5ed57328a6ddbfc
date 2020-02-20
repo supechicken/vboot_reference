@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a146b62a_8b81c93f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T08:26:13Z",
+      "side": 1,
+      "message": "What case would load_firmware_version be called without the section_name argument filled in?  Should this also WARN?",
+      "range": {
+        "startLine": 141,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "235995fe32e8ea967ab4dff8d5ed57328a6ddbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89741584_5baa837a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T08:26:13Z",
+      "side": 1,
+      "message": "Also no need for a WARN here?",
+      "range": {
+        "startLine": 160,
+        "startChar": 24,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "235995fe32e8ea967ab4dff8d5ed57328a6ddbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044b9b99_93d5e2bf",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T08:26:13Z",
+      "side": 1,
+      "message": "Better if the caller could use the constant.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 25
+      },
+      "revId": "235995fe32e8ea967ab4dff8d5ed57328a6ddbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a6289f_66475a38",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T08:26:13Z",
+      "side": 1,
+      "message": "Better to use constants.",
+      "range": {
+        "startLine": 71,
+        "startChar": 25,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "235995fe32e8ea967ab4dff8d5ed57328a6ddbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
