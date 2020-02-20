@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "918d96b1_e8c2d01b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "The compiler may be already expanding it inline because it\u0027s small. Either way, I don\u0027t think it makes any noticeable difference. \n\nI would rather keep it there so that we can use the short name and keep the scope as small as possible.",
+      "parentUuid": "33fe29a5_4bee550c",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ca0a0d_76d4c3a9",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "31431068_a57fe14c",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "I like this expression. I hope this is more widely accepted and used.\n\nIt\u0027s redundant to repeat the struct x* twice. This doesn\u0027t leave confusion for the readers yet saves lots of characters. So, I believe it overall improves the readability.",
+      "parentUuid": "87d73c61_2eecb6fd",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f1f93c0_5b93c2e1",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -200,6 +248,30 @@
       "side": 1,
       "message": "This is for adding more fields later.",
       "parentUuid": "5f1f93c0_5b93c2e1",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d847916_989f308e",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "\u003e This is for adding more fields later.\n\nThat\u0027s the intention.",
+      "parentUuid": "1ecf6b12_d6dedced",
       "range": {
         "startLine": 213,
         "startChar": 1,
@@ -258,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "d3d0f01d_52113fa9",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "I think it\u0027s better for the API not to assume the passed data size is correct. This makes the API a little bit more robust. This forces the callers to be aware of the data size.\n\nIf it\u0027s a local function, it can be omitted.",
+      "parentUuid": "15b3edd0_51a606f6",
+      "range": {
+        "startLine": 246,
+        "startChar": 27,
+        "endLine": 246,
+        "endChar": 41
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "315761b3_9ba5ce34",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -278,6 +374,30 @@
       "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41644a1c_2678f545",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315761b3_9ba5ce34",
+      "range": {
+        "startLine": 257,
+        "startChar": 16,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -325,6 +445,30 @@
       "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7336bb90_f4d83def",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7b5f991_cd6e22fd",
+      "range": {
+        "startLine": 499,
+        "startChar": 3,
+        "endLine": 499,
+        "endChar": 32
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -535,6 +679,30 @@
     },
     {
       "key": {
+        "uuid": "9e04b85d_94a1eaac",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "I moved it back to 2secdata_kernel.c. I think it\u0027s too bold to suffix it with VB2_.",
+      "parentUuid": "7b1c275a_68ecf7ad",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18bc323d_fd5fd84a",
         "filename": "firmware/2lib/include/2secdata_struct.h",
         "patchSetId": 10
@@ -592,6 +760,30 @@
       "writtenOn": "2020-02-17T16:39:11Z",
       "side": 1,
       "message": "Probably can note how the TPM is able to handle this.\n\nDo we have any story for using a non-Cr50 backed TPM?  Or will that officially be impossible for the (1)(2)(3) cases?",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8e5f60_fb45f1c1",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "We\u0027ll not have a third party TPM on new devices (as it can\u0027t communicate with EC).",
+      "parentUuid": "3d6585d4_3e4feaea",
       "range": {
         "startLine": 52,
         "startChar": 56,
@@ -662,6 +854,30 @@
       "side": 1,
       "message": "I think it makes sense to disable EFS2 (i.e. allow booting and don\u0027t set NO_BOOT flag) when the struct isn\u0027t valid, unless someone has a security concern about that. During the first boot in the factory TPM NVRAM will be uninitialized, so we need to at least allow the AP to boot (to initialize it), and if NO_BOOT was set we\u0027d also need to awkwardly reboot again after that to clear it.\n\nI think we can still be pretty confident that this cannot open security holes since vboot makes sure it has a valid kernel TPM space (for the rollback stuff) during normal boots, and if the Cr50 parsing side was permanently broken we\u0027d notice that EC software sync doesn\u0027t work during testing.",
       "parentUuid": "2c527349_0f2205ea",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf21eb9_8457afac",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-20T21:39:46Z",
+      "side": 1,
+      "message": "If the struct is old, Cr50 will return error to the EC when hashes are being matched. That\u0027ll make EC not to set NO_BOOT flag.\n\nI think such a system can continue to operate on the legacy model (and that\u0027s how I\u0027m going to implement EFS2). There is no security breach.\n\nEFS2 is more like a feature, which works only if all the components \u0026 data are installed as required. If not, the system (should) fallback to the legacy boot model.",
+      "parentUuid": "4c232e10_e2939569",
       "range": {
         "startLine": 59,
         "startChar": 3,
