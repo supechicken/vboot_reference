@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0a35769_021de4f0",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "No need to say that this is an improvement over the previous UI system.  That just means we\u0027ll need to update the comment when the time comes to remove the old UI code.\n\nProbably also not worth mentioning the bug here.\n\n\nJust say something to the effect of...\n\n  Enter the developer menu, which provides options to use legacy bootloader,\n  switch out of developer mode, or by default, continue booting Chrome OS.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafed6fe_04fe368a",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Maybe:\n\n  Enter the recovery menu, which either shows that an unrecoverable error\n  was encountered last boot, or when triggered manually, prompts the user\n  to insert recovery media.\n\n\nOn second thought, it really doesn\u0027t make sense to enter these two separate UIs from the same function.  It looks like VbBootRecoveryLegacyMenu() is just a wrapper around a conditional to choose manual recovery or broken recovery.  Could we split this into two separate functions advertised here in vboot_kernel.h?\n\n  vb2_manual_recovery_menu()\n  vb2_broken_recovery_menu()",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c481f6_540d79d9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Add a conditional here forking on vb2_allow_recovery() to choose which UI function to call (see other comment).",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 31
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45307ee_e078aaa3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Let\u0027s move this into the vboot2 code space while we\u0027re at it.\n\nSo call this file: firmware/2lib/2ui.c",
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ac1588_7e33cb62",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "I think we\u0027re trying to get rid of these in Groot?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d4be6b_c30c1cd1",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Can we avoid globals as much as possible?  Could any of these be removed?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079d1e00_5b89a9f2",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "How about we keep the altfw stuff *out* of this CL, and then introduce it in the next one?  That will make it easier to re-work some of this code.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7282586_e21a2ecb",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Not totally sure how the new menu system works with the \"stack\" functionality -- would developer_ui(), recovery_ui() or broken_ui() ever get called recursively?  If not, let\u0027s just get rid of these wrapper functions and call them directly.  The vb2_init_menus() call can go within.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e29d55_85077829",
+        "filename": "tests/vboot_menu_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-20T07:25:49Z",
+      "side": 1,
+      "message": "Also move to vboot2 namespace -- rename to tests/vb2_ui_tests.c.",
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
