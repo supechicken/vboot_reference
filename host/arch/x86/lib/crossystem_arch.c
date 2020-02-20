@@ -801,10 +801,11 @@ int VbGetArchPropertyInt(const char* name)
 		value = VbGetSystemPropertyInt("devsw_boot");
 	} else if (!strcasecmp(name,"recoverysw_cur")) {
 		value = ReadGpio(GPIO_SIGNAL_TYPE_RECOVERY);
-	} else if (!strcasecmp(name,"wpsw_cur")) {
+	} else if (!strcasecmp(name,"wpsw_cur") ||
+		   !strcasecmp(name,"wpsw_boot")) {
+		/* Just return wpsw_cur value.  TODO(chromium:950273):
+		   deprecate wpsw_boot from crossystem. */
 		value = ReadGpio(GPIO_SIGNAL_TYPE_WP);
-		if (-1 != value && FwidStartsWith("Mario."))
-			value = 1 - value;  /* Mario reports this backwards */
 	} else if (!strcasecmp(name,"recoverysw_ec_boot")) {
 		value = ReadFileBit(ACPI_CHSW_PATH, CHSW_RECOVERY_EC_BOOT);
 	} else if (!strcasecmp(name,"phase_enforcement")) {
@@ -819,11 +820,6 @@ int VbGetArchPropertyInt(const char* name)
 			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_DEV_BOOT);
 		} else if (!strcasecmp(name,"recoverysw_boot")) {
 			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_RECOVERY_BOOT);
-		} else if (!strcasecmp(name,"wpsw_boot")) {
-			value = ReadFileBit(ACPI_CHSW_PATH, CHSW_WP_BOOT);
-			if (-1 != value && FwidStartsWith("Mario."))
-				value = 1 - value;  /* Mario reports this
-						     * backwards */
 		}
 	}
 

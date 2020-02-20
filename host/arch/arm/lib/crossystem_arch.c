@@ -487,7 +487,10 @@ int VbGetArchPropertyInt(const char* name)
 			return value;
 		/* Try the deprecated chromeos_arm platform device next. */
 		return VbGetPlatformGpioStatus("recovery");
-	} else if (!strcasecmp(name, "wpsw_cur")) {
+	} else if (!strcasecmp(name, "wpsw_cur") ||
+		   !strcasecmp(name, "wpsw_boot")) {
+		/* Just return wpsw_cur value.  TODO(chromium:950273):
+		   deprecate wpsw_boot from crossystem. */
 		int value;
 		/* Try GPIO chardev API first. */
 		value = gpiod_read(GPIO_NAME_WP_L, true);
