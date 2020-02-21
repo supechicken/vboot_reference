@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "579908cb_17eb616b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-21T08:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63770311_43ea920b",
+      "range": {
+        "startLine": 452,
+        "startChar": 65,
+        "endLine": 452,
+        "endChar": 74
+      },
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7bf3bd0_a83c7505",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 16
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c16b50c3_e3986e5e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-21T08:13:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7bf3bd0_a83c7505",
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2aae12a_59f9e3bf",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 16
@@ -53,6 +95,24 @@
       "writtenOn": "2020-02-20T23:09:04Z",
       "side": 1,
       "message": "Add _Static_assert() for the new size constant?",
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec1534b_7298dccf",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-21T08:13:23Z",
+      "side": 1,
+      "message": "Are you talking about VB2_VBSD_SIZE?  I added that to 2misc.c next to the function definition.  Should it be here instead?\n\nOr are you talking about checking a constant against the size of vb2_context?",
+      "parentUuid": "e2aae12a_59f9e3bf",
       "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
