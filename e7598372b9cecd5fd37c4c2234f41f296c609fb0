@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bcbc9088_518bad6c",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-21T05:09:17Z",
+      "side": 1,
+      "message": "Seems like we do have other \"static inline\" functions in vboot_reference, if scope is the worry.  Could you still add \"inline\" here please?",
+      "parentUuid": "918d96b1_e8c2d01b",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ca0a0d_76d4c3a9",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 10
@@ -784,6 +808,30 @@
       "side": 1,
       "message": "We\u0027ll not have a third party TPM on new devices (as it can\u0027t communicate with EC).",
       "parentUuid": "3d6585d4_3e4feaea",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed3f8e9_8088e168",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-21T05:09:17Z",
+      "side": 1,
+      "message": "Does that mean it\u0027s impossible to build Chromium for a device without Cr50 now?",
+      "parentUuid": "ab8e5f60_fb45f1c1",
       "range": {
         "startLine": 52,
         "startChar": 56,
