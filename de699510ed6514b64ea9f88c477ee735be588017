@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b41272d_e763c968",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "I still feel this should be in 2secdata_struct.h. That\u0027s not an exported API header so I don\u0027t think it needs to be namespaced further.",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308230d9_2de18db8",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "nit: looking at the way this is called now, it might also be simpler to just have two separate functions for the two versions",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc693d77_b375a90d",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "typo (also, could adapt output to FWMP version and actually print amount of bytes missing)",
+      "range": {
+        "startLine": 91,
+        "startChar": 29,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4b1ec6_8d7ef0d0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "nit: maybe explicitly explain the INCOMPLETE error code and how the caller is supposed to handle it here?",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36946957_97432b9f",
+        "filename": "tests/vb20_api_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "nit: technically the second byte is the size, not the version",
+      "range": {
+        "startLine": 293,
+        "startChar": 55,
+        "endLine": 293,
+        "endChar": 69
+      },
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d84ed2_85c7e705",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "Not sure why these can\u0027t be statically initialized, they never change.",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489d7ce6_81a804cc",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "I\u0027m unclear why this function clears the status flag?",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1cf41a_861fee26",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f420fe2_e4b1a8a2",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "Can we also get checks to confirm that it succeeds with a higher minor version, but fails with a higher major version?\n\nIdeally, we should also check that a higher major version that has a larger size still gets CRC-checked correctly.",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

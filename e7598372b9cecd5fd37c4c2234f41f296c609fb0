@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "15491b33_7db6621f",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "I don\u0027t think we should have this inconsistency between get() and set(). If get() expects the caller to know the size, set() should too. Since we have now decided anyway that this field will always implicitly be a SHA256, I think making the size implicit for both get and set is fine. (You could declare the parameter as \u0027const uint8_t in[VB2_SHA256_DIGEST_SIZE]\u0027 if you want to make that a little clearer in the API, although using array types as parameters is pretty uncommon in C.)\n\nIn fact, we should maybe also rename the field (and by extension these functions) from ec_hash to ec_sha256 to make that implied algorithm perfectly clear?",
+      "parentUuid": "d3d0f01d_52113fa9",
+      "range": {
+        "startLine": 246,
+        "startChar": 27,
+        "endLine": 246,
+        "endChar": 41
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "315761b3_9ba5ce34",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -831,6 +855,30 @@
       "writtenOn": "2020-02-21T05:09:17Z",
       "side": 1,
       "message": "Does that mean it\u0027s impossible to build Chromium for a device without Cr50 now?",
+      "parentUuid": "ab8e5f60_fb45f1c1",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9faa44_a42e42f7",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T05:57:57Z",
+      "side": 1,
+      "message": "Upstream coreboot developers are definitely still using vboot with TPM 1.2. They\u0027re not really using EC software sync so this shouldn\u0027t really bother them. Basically, when running TPM 1.2 it will still allocate this space in the secdata_kernel NVRAM space but it won\u0027t use it for anything.",
       "parentUuid": "ab8e5f60_fb45f1c1",
       "range": {
         "startLine": 52,
