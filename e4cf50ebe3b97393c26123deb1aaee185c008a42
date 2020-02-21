@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf4bff6c_cb934056",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T06:03:55Z",
+      "side": 1,
+      "message": "Didn\u0027t you get rid of this call again now?",
+      "revId": "e4cf50ebe3b97393c26123deb1aaee185c008a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c78b1e3_5958d221",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T06:03:55Z",
+      "side": 1,
+      "message": "Which means you also shouldn\u0027t need these here.",
+      "revId": "e4cf50ebe3b97393c26123deb1aaee185c008a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4a1263_f820706d",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T06:03:55Z",
+      "side": 1,
+      "message": "And where does this come in?",
+      "revId": "e4cf50ebe3b97393c26123deb1aaee185c008a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e434a8_f79e0e18",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-21T06:03:55Z",
+      "side": 1,
+      "message": "BAD_CONTEXT is very vague, I think this should either be STRUCT_VERSION (because it\u0027s basically you don\u0027t have the right version for what you\u0027re trying to do) or something explicitly called VB2_ERROR_SECDATA_KERNEL_EFS2_UNSUPPORTED or something like that.",
+      "revId": "e4cf50ebe3b97393c26123deb1aaee185c008a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
