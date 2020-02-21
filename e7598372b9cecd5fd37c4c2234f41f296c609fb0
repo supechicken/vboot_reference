@@ -892,6 +892,30 @@
     },
     {
       "key": {
+        "uuid": "cfb2c1eb_5f0f16c6",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T17:29:45Z",
+      "side": 1,
+      "message": "I think Chromium still can be built without Cr50. It just won\u0027t run EFS2.",
+      "parentUuid": "eed3f8e9_8088e168",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "e7598372b9cecd5fd37c4c2234f41f296c609fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7c4e4d1_3a9ac020",
         "filename": "firmware/2lib/include/2secdata_struct.h",
         "patchSetId": 10

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d21964d2_8f8ac3b7",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T17:29:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b41272d_e763c968",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "308230d9_2de18db8",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "de699510ed6514b64ea9f88c477ee735be588017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e96ce0_a6bc111d",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T17:29:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "308230d9_2de18db8",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +146,24 @@
       "writtenOn": "2020-02-21T05:57:57Z",
       "side": 1,
       "message": "Not sure why these can\u0027t be statically initialized, they never change.",
+      "revId": "de699510ed6514b64ea9f88c477ee735be588017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b327bf5_afd2b7bb",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-21T17:29:45Z",
+      "side": 1,
+      "message": "ctx isn\u0027t known at compile time.",
+      "parentUuid": "48d84ed2_85c7e705",
       "revId": "de699510ed6514b64ea9f88c477ee735be588017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
