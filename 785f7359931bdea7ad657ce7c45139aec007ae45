@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18d9085d_572e1aa1",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-22T10:47:23Z",
+      "side": 1,
+      "message": "The only reason we expose this function is for testing purposes.  Please put this in 2secdata_private.h or vboot_test.h.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
