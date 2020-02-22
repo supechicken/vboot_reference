@@ -134,6 +134,24 @@
       "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4403df_9ab95a95",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-22T12:43:32Z",
+      "side": 1,
+      "message": "I figured it\u0027d be less easy to miss when we deprecate that API function.  I\u0027d put it in 2constants.h if I could, but we can\u0027t do fancy things in that file by design.",
+      "parentUuid": "fb374914_ec1b0019",
+      "revId": "06c619d1f7b8984663944bcd210eb6b9b80127fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
