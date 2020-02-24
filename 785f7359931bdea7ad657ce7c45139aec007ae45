@@ -22,6 +22,30 @@
       "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d119c302_29d42e9f",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-24T20:10:55Z",
+      "side": 1,
+      "message": "That\u0027ll cause an error in 2secdata_kernel.c because it\u0027s not declared as static.",
+      "parentUuid": "18d9085d_572e1aa1",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
