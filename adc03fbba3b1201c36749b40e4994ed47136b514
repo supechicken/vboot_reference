@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a039f514_b12358a5",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-24T22:17:14Z",
+      "side": 1,
+      "message": "Why is this added here? vb2_verify_keyblock() is not called anywhere else in this compilation unit.",
+      "revId": "adc03fbba3b1201c36749b40e4994ed47136b514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
