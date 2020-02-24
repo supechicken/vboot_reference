@@ -5,6 +5,7 @@
  * High-level firmware wrapper API - user interface for RW firmware
  */
 
+#include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -19,84 +20,11 @@
 #define MEDIA_DELAY		1000	/* Check external media */
 
 /* Global variables */
-static const char dev_disable_msg[] =
-	"Developer mode is disabled on this device by system policy.\n"
-	"For more information, see http://dev.chromium.org/chromium-os/fwmp\n"
-	"\n";
 
 static int usb_nogood;
 static uint32_t default_boot;
 static uint32_t disable_dev_boot;
 static uint32_t altfw_allowed;
-
-/************************
- *    Utilities         *
- ************************/
-
-// TODO: move these utils to vboot_ui_menu_private.h
-
-enum vb2_beep_type {
-	VB_BEEP_FAILED,		/* Permitted but the operation failed */
-	VB_BEEP_NOT_ALLOWED,	/* Operation disabled by user setting */
-};
-
-static void vb2_error_beep(enum vb2_beep_type beep)
-{
-	switch (beep) {
-	case VB_BEEP_FAILED:
-		VbExBeep(250, 200);
-		break;
-	default:
-	case VB_BEEP_NOT_ALLOWED:
-		VbExBeep(120, 400);
-		VbExSleepMs(120);
-		VbExBeep(120, 400);
-		break;
-	}
-}
-
-static void vb2_error_notify(const char *print_msg,
-		      const char *log_msg,
-		      enum vb2_beep_type beep)
-{
-	if (print_msg)
-		VbExDisplayDebugInfo(print_msg, 0);
-	if (!log_msg)
-		log_msg = print_msg;
-	if (log_msg)
-		VB2_DEBUG(log_msg);
-	vb2_error_beep(beep);
-}
-
-static void vb2_error_no_altfw(void)
-{
-	VB2_DEBUG("Legacy boot is disabled\n");
-	VbExDisplayDebugInfo("WARNING: Booting legacy BIOS has not been "
-			     "enabled. Refer to the developer-mode "
-			     "documentation for details.\n", 0);
-	vb2_error_beep(VB_BEEP_NOT_ALLOWED);
-}
-
-static void vb2_try_altfw(struct vb2_context *ctx, int allowed,
-		   enum VbAltFwIndex_t altfw_num)
-{
-	if (!allowed) {
-		vb2_error_no_altfw();
-		return;
-	}
-
-	if (vb2ex_commit_data(ctx)) {
-		vb2_error_notify("Error committing data on legacy boot.\n",
-				 NULL, VB_BEEP_FAILED);
-		return;
-	}
-
-	/* Will not return if successful */
-	VbExLegacy(altfw_num);
-
-	vb2_error_notify("Legacy boot failed. Missing BIOS?\n", NULL,
-			 VB_BEEP_FAILED);
-}
 
 /************************
  *    Menu Actions      *
@@ -142,14 +70,6 @@ static vb2_error_t enter_to_dev_menu(struct vb2_context *ctx)
 }
 
 static vb2_error_t enter_to_norm_menu(struct vb2_context *ctx)
-{
-	// TODO
-	return VBERROR_KEEP_LOOPING;
-}
-
-
-/* Boot alternative bootloader if allowed and available. */
-static vb2_error_t enter_altfw_menu(struct vb2_context *ctx)
 {
 	// TODO
 	return VBERROR_KEEP_LOOPING;
@@ -232,9 +152,6 @@ static vb2_error_t developer_ui(struct vb2_context *ctx)
 	/* We'll loop until we finish the delay or are interrupted */
 	do {
 		keep_looping = 1;
-		/* Make sure user knows dev mode disabled */
-		if (disable_dev_boot)
-			VbExDisplayDebugInfo(dev_disable_msg, 0);
 
 		// TODO
 		/*if (peek() == VB_SCREEN_BOOT_FROM_EXTERNAL) {
@@ -255,14 +172,6 @@ static vb2_error_t developer_ui(struct vb2_context *ctx)
 			if (key == VB_KEY_CTRL('D') ||
 			    key == VB_BUTTON_VOL_DOWN_LONG_PRESS) {
 				rv = boot_from_internal_action(ctx);
-			} else if (key == VB_KEY_CTRL('L')) {
-				rv = enter_altfw_menu(ctx);
-			} else if ('0' <= key && key <= '9') {
-				VB2_DEBUG("developer UI - "
-					  "user pressed key '%c': Boot alternative "
-					  "firmware\n", key);
-				vb2_try_altfw(ctx, altfw_allowed, key - '0');
-				rv = VBERROR_KEEP_LOOPING;
 			} else {
 				rv = vb2_handle_menu_input(ctx, key, 0);
 			}
@@ -374,6 +283,10 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 /************************
  *    Entry Points      *
  ************************/
+const static struct menu_state blank_menu = {
+	.locale = 0,
+	.screen = VB_SCREEN_BLANK,
+};
 
 /* Developer mode entry point. */
 vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
@@ -382,7 +295,7 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 	if (rv != VB2_SUCCESS)
 		return rv;
 	rv = developer_ui(ctx);
-	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
+	vb2ex_display_menu(&blank_menu, NULL);
 	return rv;
 }
 
@@ -396,6 +309,7 @@ vb2_error_t vb2_recovery_menu(struct vb2_context *ctx)
 		rv = recovery_ui(ctx);
 	else
 		rv = broken_ui(ctx);
-	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
+
+	vb2ex_display_menu(&blank_menu, NULL);
 	return rv;
 }
