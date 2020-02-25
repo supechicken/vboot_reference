@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f44b326_4b2abfa0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-25T04:55:02Z",
+      "side": 1,
+      "message": "This is not necessary, since we are free()\u0027ing head anyways.",
+      "range": {
+        "startLine": 695,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 20
+      },
+      "revId": "2c475dbc710f444f93e4395ea056a2cf91611c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
