@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86fc19f2_6429be0f",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-25T23:18:11Z",
+      "side": 1,
+      "message": "Didn\u0027t we say we\u0027d change this to void? Callers just shouldn\u0027t call this for v0 (so errors can be VB2_REC_OR_DIE()).",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "ee350f40c89ee8068c2426eee3fee5e5e3873fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
