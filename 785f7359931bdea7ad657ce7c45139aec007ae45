@@ -46,6 +46,30 @@
       "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a5dd129_9c55ce62",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-02-25T07:30:35Z",
+      "side": 1,
+      "message": "Not sure what you mean?\n\nTake vb2_check_padding() as an example.  The header is declared in vboot_test.h.  The function itself is in 2rsa.c, which includes vboot_test.h.  Any tests which want to either run the function (vb2_rsa_utility_tests.c) or override the function (vb2_keyblock_fuzzer.c and vb2_preamble_fuzzer.c) also include vboot_test.h.",
+      "parentUuid": "d119c302_29d42e9f",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
