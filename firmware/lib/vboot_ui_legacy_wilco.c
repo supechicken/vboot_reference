@@ -22,7 +22,8 @@ static inline int is_vowel(uint32_t key)
 
 static int vendor_data_length(char *data_value)
 {
-	for (int len = 0; len <= VENDOR_DATA_LENGTH; len++) {
+	int len = 0;
+	for (len = 0; len <= VENDOR_DATA_LENGTH; len++) {
 		if (data_value[len] == '\0')
 			return len;
 	}
@@ -61,7 +62,7 @@ static vb2_error_t vb2_enter_vendor_data_ui(struct vb2_context *ctx,
 			return VB2_SUCCESS;
 		case 'a'...'z':
 			key = toupper(key);
-			__attribute__ ((fallthrough));
+			/* fall through */
 		case '0'...'9':
 		case 'A'...'Z':
 			if ((len > 0 && is_vowel(key)) ||

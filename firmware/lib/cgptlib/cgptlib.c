@@ -125,9 +125,9 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 		return GPT_ERROR_INVALID_UPDATE_TYPE;
 
 	switch (update_type) {
-	case GPT_UPDATE_ENTRY_TRY: {
+	case GPT_UPDATE_ENTRY_TRY:
 		/* Used up a try */
-		int tries;
+		//int tries;
 		if (GetEntrySuccessful(e)) {
 			/*
 			 * Successfully booted this partition, so tries field
@@ -135,16 +135,14 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 			 */
 			return GPT_SUCCESS;
 		}
-		tries = GetEntryTries(e);
+		int tries = GetEntryTries(e);
 		if (tries > 1) {
 			/* Still have tries left */
 			modified = 1;
 			SetEntryTries(e, tries - 1);
 			break;
 		}
-		/* Out of tries, so drop through and mark partition bad. */
-		__attribute__ ((fallthrough));
-	}
+		/* fall through */
 	case GPT_UPDATE_ENTRY_BAD: {
 		/* Giving up on this partition entirely. */
 		if (!GetEntrySuccessful(e)) {
