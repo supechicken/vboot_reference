@@ -94,6 +94,30 @@
       "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a14f96d_be50da3a",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-25T23:09:00Z",
+      "side": 1,
+      "message": "Yes, the intention is to just be a header for APIs that aren\u0027t public but needed by tests. It may not be the best system, it was just good enough for now. Better (but more overhead) would be to have a separate test header per file, e.g. 2secdata_test.h.",
+      "parentUuid": "b67c5c1f_1c1a74c7",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "785f7359931bdea7ad657ce7c45139aec007ae45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
