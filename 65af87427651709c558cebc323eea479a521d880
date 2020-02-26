@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "79b67383_54fd395f",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-26T19:06:25Z",
+      "side": 1,
+      "message": "\u003e Hexp is printed in non-EFS2 path as well because check_ec_hmir returns VB2_SUCCESS when hash isn\u0027t found.\n\nYes, but it skips the part where it\u0027s printing Hexp? Or am I missing something?\n\n\u003e The double read can be fixed by caching (pointer of) hash in get_expected_ec_hash.\n\nYeah, that sounds okay. Then you could also print it right after you read it.",
+      "parentUuid": "3868117f_022a399d",
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee0f3fef_aa3f1021",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 29

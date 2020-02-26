@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b34ff9fb_5af425b2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-26T19:06:25Z",
+      "side": 1,
+      "message": "Well, this isn\u0027t gonna do any good when RO sync is enabled, because they\u0027re read alternatingly. Just write it so it only caches the RW hash.",
+      "revId": "16ac64ee3107b873c4699d19b57a5e78c88ca904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8547d1_dab07261",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-26T19:06:25Z",
+      "side": 1,
+      "message": "Do not call it \"LK\".",
+      "range": {
+        "startLine": 638,
+        "startChar": 11,
+        "endLine": 638,
+        "endChar": 13
+      },
+      "revId": "16ac64ee3107b873c4699d19b57a5e78c88ca904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d4e14b_45c5c9dc",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-26T19:06:25Z",
+      "side": 1,
+      "message": "Please slot this in in the same order as it appears in 2recovery_reasons.h.",
+      "revId": "16ac64ee3107b873c4699d19b57a5e78c88ca904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
