@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01809dd6_33d53d86",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59f65363_90906742",
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23b6d319_063d4c81",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 29
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-25T23:41:07Z",
       "side": 1,
       "message": "You\u0027re now loading the expected hash from CBFS twice, and you are no longer printing it in the non-EFS2 path. Can\u0027t we merge check_ec_hmir() into this function to prevent those issues? So you would have a single function that does roughly:\n\n 1. fetch and print expected hash\n 2. fetch hmir. if successful\n   2.1 print hmir\n   2.2 compare hmir \u003d\u003d hexp\n   2.3 if mismatch, writeback hmir and reboot\n 3. fetch and print effective hash\n 4. compare to expected and set sync flag if mismatch\n\nI\u0027m also not that sure about the whole hmir/hexp/heff terminology, I think they\u0027re pretty hard to follow (especially for people who didn\u0027t read your documents). Maybe just stick with \"expected hash\", \"active hash\" and now \"mirrored hash\"?",
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3868117f_022a399d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Hmmm... The tricky part is that check_ec_hash is called also by update_ec to verify written data. So, we don\u0027t want to fetch Hmir from check_ec_hash.\n\nHexp is printed in non-EFS2 path as well because check_ec_hmir returns VB2_SUCCESS when hash isn\u0027t found.\n\nThe double read can be fixed by caching (pointer of) hash in get_expected_ec_hash.\n\nHow does it sound?",
+      "parentUuid": "23b6d319_063d4c81",
       "revId": "65af87427651709c558cebc323eea479a521d880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "01fcfe3d_f02ebf83",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee0f3fef_aa3f1021",
+      "range": {
+        "startLine": 199,
+        "startChar": 29,
+        "endLine": 199,
+        "endChar": 31
+      },
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "846f6399_edb5d768",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 29
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "24c54721_e51c4527",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846f6399_edb5d768",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 31
+      },
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35702faf_12541876",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 29
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "5f9af472_71cb7c9f",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35702faf_12541876",
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9585d75f_90a92715",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 29
@@ -113,6 +215,24 @@
       "revId": "65af87427651709c558cebc323eea479a521d880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda51a14_5501f7c5",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-02-26T18:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9585d75f_90a92715",
+      "revId": "65af87427651709c558cebc323eea479a521d880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
