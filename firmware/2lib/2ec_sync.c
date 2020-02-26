@@ -319,75 +319,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 }
 
 /**
- * EC sync, phase 1
- *
- * This checks whether the EC is running the correct image to do EC sync, and
- * whether any updates are necessary.
- *
- * @param ctx		Vboot2 context
- * @return VB2_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
- * reboot back to its RO code to continue EC sync, or other non-zero error
- * code.
- */
-static vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
-{
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
-
-	/* Reasons not to do sync at all */
-	if (!(ctx->flags & VB2_CONTEXT_EC_SYNC_SUPPORTED))
-		return VB2_SUCCESS;
-	if (gbb->flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
-		return VB2_SUCCESS;
-
-	/* Set VB2_SD_FLAG_ECSYNC_EC_IN_RW flag */
-	if (check_ec_active(ctx))
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-
-	/* Check if we need to update RW.  Failures trigger recovery mode. */
-	if (check_ec_hash(ctx, VB_SELECT_FIRMWARE_EC_ACTIVE))
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	/* See if we need to update EC-RO. */
-	if (vb2_nv_get(ctx, VB2_NV_TRY_RO_SYNC) &&
-	    check_ec_hash(ctx, VB_SELECT_FIRMWARE_READONLY)) {
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	}
-
-	/*
-	 * If we're in RW, we need to reboot back to RO because RW can't be
-	 * updated while we're running it.
-	 *
-	 * If EC supports RW-A/B slots, we can proceed but we need
-	 * to jump to the new RW version later.
-	 */
-	if ((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW) &&
-	    (sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW) && !EC_EFS) {
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-	}
-
-	return VB2_SUCCESS;
-}
-
-/**
- * Returns non-zero if the EC will perform a slow update.
- *
- * This is only valid after calling ec_sync_phase1(), before calling
- * sync_ec().
- *
- * @param ctx		Vboot2 context
- * @return non-zero if a slow update will be done; zero if no update or a
- * fast update.
- */
-static int ec_will_update_slowly(struct vb2_context *ctx)
-{
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-
-	return (((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RO) ||
-		 (sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW)) && EC_SLOW_UPDATE);
-}
-
-/**
- * determine if we can update the EC
+ * Determine if we can update the EC.
  *
  * @param ctx		Vboot2 context
  * @return boolean (true iff we can update the EC)
@@ -408,70 +340,97 @@ static int ec_sync_allowed(struct vb2_context *ctx)
 }
 
 /**
- * EC sync, phase 2
+ * Returns non-zero if the EC will perform a slow update.
  *
- * This updates the EC if necessary, makes sure it has protected its image(s),
- * and makes sure it has jumped to the correct image.
- *
- * If ec_will_update_slowly(), it is suggested that the caller display a
- * warning screen before calling phase 2.
+ * This is only valid after before calling sync_ec().
  *
  * @param ctx		Vboot2 context
- * @return VB2_SUCCESS, VBERROR_EC_REBOOT_TO_RO_REQUIRED if the EC must
- * reboot back to its RO code to continue EC sync, or other non-zero error
- * code.
+ * @return non-zero if a slow update will be done; zero if no update or a
+ * fast update.
  */
-static vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
-{
-	if (!ec_sync_allowed(ctx))
-		return VB2_SUCCESS;
-
-	/* Handle updates and jumps for EC */
-	return sync_ec(ctx);
-}
-
-vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
+static int ec_will_update_slowly(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	vb2_error_t rv;
+
+	return (((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RO) ||
+		 (sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW)) && EC_SLOW_UPDATE);
+}
+
+vb2_error_t vb2api_check_ec_sync(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/*
-	 * If the status indicates that the EC has already gone through
-	 * software sync this boot, then don't do it again.
+	 * If the status indicates that the EC has already gone through software
+	 * sync this boot, then don't do it again.
 	 */
 	if (sd->status & VB2_SD_STATUS_EC_SYNC_COMPLETE) {
-		VB2_DEBUG("EC software sync already performed this boot, skipping\n");
+		VB2_DEBUG("EC sync already performed this boot, skipping\n");
 		return VB2_SUCCESS;
 	}
 
 	/*
-	 * If the device is in recovery mode, then EC sync should
-	 * not be performed.
+	 * Although the actual EC sync will not be performed, we still need to
+	 * call vb2ex_ec_vboot_done() in these cases. Therefore, return
+	 * VB2_ERROR_EC_SYNC_REQUIRED to indicate that vb2api_perform_ec_sync()
+	 * should be called.
 	 */
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-		VB2_DEBUG("In recovery mode, skipping EC sync\n");
+	if (!ec_sync_allowed(ctx))
+		return VB2_ERROR_EC_SYNC_REQUIRED;
+
+	/* Set VB2_SD_FLAG_ECSYNC_EC_IN_RW flag */
+	if (check_ec_active(ctx))
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+	/* Check if we need to update RW.  Failures trigger recovery mode. */
+	if (check_ec_hash(ctx, VB_SELECT_FIRMWARE_EC_ACTIVE))
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+
+	/* See if we need to update EC-RO. */
+	if (vb2_nv_get(ctx, VB2_NV_TRY_RO_SYNC) &&
+	    check_ec_hash(ctx, VB_SELECT_FIRMWARE_READONLY)) {
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
+	/*
+	 * If we're in RW, we need to reboot back to RO because RW can't be
+	 * updated while we're running it.
+	 *
+	 * If EC supports RW-A/B slots, we can proceed but we need
+	 * to jump to the new RW version later.
+	 */
+	if ((sd->flags & VB2_SD_FLAG_ECSYNC_EC_RW) &&
+	    (sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW) && !EC_EFS) {
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+	}
+
+	if (ec_will_update_slowly(ctx))
+		return VB2_ERROR_EC_SYNC_REQUIRED_SLOW;
+
+	return VB2_ERROR_EC_SYNC_REQUIRED;
+}
+
+vb2_error_t vb2api_perform_ec_sync(struct vb2_context *ctx)
+{
+	vb2_error_t rv;
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/*
+	 * If the status indicates that the EC has already gone through software
+	 * sync this boot, then don't do it again.
+	 */
+	if (sd->status & VB2_SD_STATUS_EC_SYNC_COMPLETE) {
+		VB2_DEBUG("EC sync already performed this boot, skipping\n");
 		return VB2_SUCCESS;
 	}
 
-	/* Phase 1; this determines if we need an update */
-	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
-	int need_wait_screen = ec_will_update_slowly(ctx);
+	if (ec_sync_allowed(ctx)) {
+		/* Handle updates and jumps for EC */
+		rv = sync_ec(ctx);
+		if (rv)
+			return rv;
+	}
 
-	if (need_wait_screen && vb2api_need_reboot_for_display(ctx))
-		return VBERROR_REBOOT_REQUIRED;
-
-	if (phase1_rv)
-		return phase1_rv;
-
-	if (need_wait_screen)
-		display_wait_screen(ctx);
-
-	/* Phase 2; Applies update and/or jumps to the correct EC image */
-	rv = ec_sync_phase2(ctx);
-	if (rv)
-		return rv;
-
-	/* Phase 3; Let the platform know that EC software sync is now done */
 	rv = vb2ex_ec_vboot_done(ctx);
 	if (rv)
 		return rv;
@@ -480,4 +439,29 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 	sd->status |= VB2_SD_STATUS_EC_SYNC_COMPLETE;
 
 	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
+{
+	vb2_error_t rv = vb2api_check_ec_sync(ctx);
+	int need_wait_screen;
+
+	/* No need to sync EC */
+	if (rv == VB2_SUCCESS)
+		return rv;
+
+	/* Other errors */
+	if (rv != VB2_ERROR_EC_SYNC_REQUIRED &&
+	    rv != VB2_ERROR_EC_SYNC_REQUIRED_SLOW)
+		return rv;
+
+	need_wait_screen = rv == VB2_ERROR_EC_SYNC_REQUIRED_SLOW;
+
+	if (need_wait_screen && vb2api_need_reboot_for_display(ctx))
+		return VBERROR_REBOOT_REQUIRED;
+
+	if (need_wait_screen)
+		display_wait_screen(ctx);
+
+	return vb2api_perform_ec_sync(ctx);
 }

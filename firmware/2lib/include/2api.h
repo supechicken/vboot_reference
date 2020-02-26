@@ -991,6 +991,32 @@ enum vb2_firmware_selection {
 };
 
 /**
+ * Check whether the Embedded Controller device needs to be synced.
+ *
+ * This function will check if EC software sync is allowed or needed, by
+ * checking whether the EC is running the correct image.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS if no need to perform EC sync,
+ *         VB2_ERROR_EC_SYNC_REQUIRED if EC sync is required,
+ * 	   VB2_ERROR_EC_SYNC_REQUIRED_SLOW if EC sync is required and will be
+ * 	   slow, and other VB2_ERROR_* on error
+ */
+vb2_error_t vb2api_check_ec_sync(struct vb2_context *ctx);
+
+/**
+ * Sync the Embedded Controller device to the expected version.
+ *
+ * This function will update EC if necessary, make sure it has protected its
+ * image(s), and make sure it has jumped to the correct image. Users must call
+ * vb2api_check_ec_sync() before calling this function.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS on sucess, or non-zero on failure
+ */
+vb2_error_t vb2api_perform_ec_sync(struct vb2_context *ctx);
+
+/**
  * Sync the Embedded Controller device to the expected version.
  *
  * This function will check if EC software sync is allowed, and if it
