@@ -111,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "05b557c1_b4336fe3",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-26T09:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ac1588_7e33cb62",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30d4be6b_c30c1cd1",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 22
@@ -131,6 +155,30 @@
       "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e954cf8_1595f375",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-26T09:05:04Z",
+      "side": 1,
+      "message": "usb_nogood:\n* change it to positive meaning (usb_good).\n* move into vb2_manual_recovery_menu().\n* ToT: Seperate enter_usb_nogood_screen from enter_recovery_screen and checked usb_good inside vb2_manual_recovey_menu()). (crrev.com/c/1703815/51..52)\n\ndefault_boot:\n* have get_default_boot(ctx) with the same functionality.\n* set default boot to disk\n\ndisable_dev_boot: \n* have a positive function dev_boot_allowed(ctx) with almost the same functionality.\n  * remove VB2_DEBUG messages about FORCE_DEV_SWITCH_ON.\n  * positive meaning, its name synced with upcoming `boot_usb_allowed()` and `altfw_allowed`.\n* ToT: Add ctx to params of vb2_change_menu (crrev.com/c/1703815/51..52)\n\naltfw_allowed:\n* will not be introduced in current CL",
+      "parentUuid": "30d4be6b_c30c1cd1",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
