@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "49175837_086e99d4",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-02-27T09:59:44Z",
+      "side": 1,
+      "message": "Done\n\ncurrent implementation:\nvb2_developer_menu:\n* loop with timeout\n* Ctrl+D \u003d boot from internal (and check if allowed)\n* DEBUG: print all the input keys\n\nvb2_broken_recovery_menu:\n* infinite loop\n* DEBUG: print all the input keys\n\nvb2_manual_recovery_menu:\n* infinite loop\n* try load kernel from USB\n* DEBUG: print all the input keys",
+      "parentUuid": "7396dc6e_8b44214c",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "e598babfd5a826e6d960edaa8cfae45358136cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0515bf4_bc123348",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 4
