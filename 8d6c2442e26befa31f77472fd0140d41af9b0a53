@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4467f3c_bcadd84d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-27T21:59:42Z",
+      "side": 1,
+      "message": "If this is only for tests it shouldn\u0027t be here, just make the hash_cache global instead (should probably call it ec_hash_cache or something then).",
+      "revId": "8d6c2442e26befa31f77472fd0140d41af9b0a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc71acac_7add32a5",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-27T21:59:42Z",
+      "side": 1,
+      "message": "This caching now breaks all this hash_size stuff. We\u0027re not really checking that the sizes match anymore in all cases. And caching the size for every hash as well again gets really complicated...\n\nI still don\u0027t understand what the problem is with just integrating check_ec_hmir() into check_ec_hash(). You said it\u0027s because update_ec() also calls that, but so what? At that time, Hexp and Hmir always match anyway. And Hmir is just fetched from memory so checking it again is basically free. I really think doing that would make stuff a lot less complicated than all this (you\u0027d have to guard the Hmir checking part with (select !\u003d ...READONLY), then).",
+      "revId": "8d6c2442e26befa31f77472fd0140d41af9b0a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
