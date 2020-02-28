@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec434b65_b34a0d48",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "nit: not sure if this still needs to be factored out into its own function now? Just keeping the old version here would make it easier to tell what you patch is functionally changing.",
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc199912_36b4f377",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "This makes Hexp and Heff indistinguishable in the output now",
+      "range": {
+        "startLine": 150,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 57
+      },
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3961ec_93704092",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t really \"Schedule update\", it\u0027s just \"Update Hmir to match\" or something like that. The update decision is made separately below.",
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cfcd483_ed9f64f9",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "Should this also set a recovery reason?",
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612aa0d4_7f928294",
+        "filename": "firmware/lib/vboot_ui_legacy_clamshell.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "Let\u0027s put this in VbSelectAndLoadKernel() so that it is printed for all UIs.",
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1058e2d8_f61d903d",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-02-28T23:53:34Z",
+      "side": 1,
+      "message": "Still need actual tests for this feature before it can land.",
+      "revId": "d3bf8b188390133c4ae7d7e986fafab057f698ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
