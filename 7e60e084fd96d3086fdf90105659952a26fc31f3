@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "477d42af_a0f43e70",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:14:52Z",
+      "side": 1,
+      "message": "No, this shouldn\u0027t be here, especially not if we don\u0027t have a size for set(). We have said we hardcode this to SHA256 now, so we should follow through with that everywhere. You can create a VB2_SECDATA_KERNEL_EC_HASH_SIZE constant or something like that if you want to have something you can check against from other code.",
+      "revId": "7e60e084fd96d3086fdf90105659952a26fc31f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
