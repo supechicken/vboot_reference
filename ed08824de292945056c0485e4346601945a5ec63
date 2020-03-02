@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53933126_86ee9578",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "This should be hexp_size now.",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428b21e7_4dd6c00a",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "You changed a bunch of unrelated stuff here, why?",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dac4ca5_425c0195",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "Description string should indicate difference to the test below.",
+      "range": {
+        "startLine": 331,
+        "startChar": 33,
+        "endLine": 331,
+        "endChar": 49
+      },
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baadc49e_b266bab2",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "These all need to be updated.",
+      "range": {
+        "startLine": 368,
+        "startChar": 9,
+        "endLine": 368,
+        "endChar": 36
+      },
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8269d48b_7461fef7",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be here. ResetMocks() should always fully reinitialize mock state between tests.",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ba6075_a8c9ca0e",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-02T22:26:55Z",
+      "side": 1,
+      "message": "All test setup should be in ResetMocks(), not here.",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
