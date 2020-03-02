@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c91c48_cfa1a316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-02T04:25:52Z",
+      "side": 1,
+      "message": "Could we add a note here that this CL should never be cherry-picked to firmware branches which already set the flag in sd-\u003eflags?\n\nOtherwise, AP-RO will use sd-\u003eflags, and AP-RW will use sd-\u003estatus.",
+      "revId": "cc8a95c15b0be155b40708b63604d22caf5a4b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13e13b4c_45577239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-02T04:25:52Z",
+      "side": 1,
+      "message": "If hatch already has RO locked down, then this CL should *not* be cherry-picked to its firmware branch.  +twawrzynczak for confirmation of firmware branch status (or to loop in the right people).",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "cc8a95c15b0be155b40708b63604d22caf5a4b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
