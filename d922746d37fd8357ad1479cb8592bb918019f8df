@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43bacb42_77fa4b12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-02T07:36:26Z",
+      "side": 1,
+      "message": "Update to MISSING_IMAGE.",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d922746d37fd8357ad1479cb8592bb918019f8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d6fcae_903f5174",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-02T07:36:26Z",
+      "side": 1,
+      "message": "Oops -- the only reason we were padding by 1000 in the LoadKernel section above is so that we may have a list of errors ordered by specificity.  (I.e. smaller number is more specific error, larger number is more general error.)\n\nIn the case of UI, I don\u0027t think we have that concept.  So we should follow the example of all the other sections by just adding +1 for each subsequent error.  Would you mind updating the other VB2_ERROR_UI errors as such?  i.e. 0x100c0001, 0x100c0002, etc.",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 41
+      },
+      "revId": "d922746d37fd8357ad1479cb8592bb918019f8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
