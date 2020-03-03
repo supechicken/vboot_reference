@@ -14,6 +14,18 @@
  */
 typedef uint32_t vb2_error_t;
 
+#define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
+	vb2_error_t _vb2_try_rv = expr; \
+	if (_vb2_try_rv != VB2_SUCCESS) { \
+		VB2_DEBUG("%s returned %#x\n", #expr, _vb2_try_rv); \
+		if (ctx && recovery_reason) \
+			vb2api_fail(ctx, recovery_reason, _vb2_try_rv); \
+		return _vb2_try_rv; \
+	} \
+} while (0)
+
+#define VB2_TRY(...) _VB2_TRY_IMPL(__VA_ARGS__, NULL, 0)
+
 /*
  * Return codes from verified boot functions.
  *
