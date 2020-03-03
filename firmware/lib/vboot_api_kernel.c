@@ -33,8 +33,6 @@ struct LoadKernelParams *VbApiKernelGetParams(void)
 
 static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 {
-	vb2_error_t rv;
-
 	/*
 	 * Check if we need to cut-off battery. This should be done after EC
 	 * FW and Aux FW are updated, and before the kernel is started.  This
@@ -46,9 +44,7 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_BATTERY_CUTOFF_REQUEST, 0);
 
 		/* May lose power immediately, so commit our update now. */
-		rv = vb2ex_commit_data(ctx);
-		if (rv)
-			return rv;
+		VB2_TRY(vb2ex_commit_data(ctx));
 
 		vb2ex_ec_battery_cutoff();
 		return VBERROR_SHUTDOWN_REQUESTED;
@@ -266,13 +262,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	   to vb2_nv_get and vb2_nv_set. */
 	vb2_nv_init(ctx);
 
-	rv = vb2_kernel_init_kparams(ctx, kparams);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2_kernel_init_kparams(ctx, kparams));
 
-	rv = vb2api_kernel_phase1(ctx);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2api_kernel_phase1(ctx));
 
 	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
 
@@ -281,17 +273,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	 * has UI but it's just a single non-interactive WAIT screen.
 	 */
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
-		rv = vb2api_ec_sync(ctx);
-		if (rv)
-			return rv;
-
-		rv = vb2api_auxfw_sync(ctx);
-		if (rv)
-			return rv;
-
-		rv = handle_battery_cutoff(ctx);
-		if (rv)
-			return rv;
+		VB2_TRY(vb2api_ec_sync(ctx));
+		VB2_TRY(vb2api_auxfw_sync(ctx));
+		VB2_TRY(handle_battery_cutoff(ctx));
 	}
 
 	/* Select boot path */

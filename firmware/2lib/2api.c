@@ -107,8 +107,6 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 
 vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx)
 {
-	vb2_error_t rv;
-
 	/*
 	 * Use the slot from the last boot if this is a resume.  Do not set
 	 * VB2_SD_STATUS_CHOSE_SLOT so the try counter is not decremented on
@@ -132,18 +130,11 @@ vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx)
 		ctx->flags |= VB2_CONTEXT_CLEAR_RAM;
 
 	/* Check for explicit request to clear TPM */
-	rv = vb2_check_tpm_clear(ctx);
-	if (rv) {
-		vb2api_fail(ctx, VB2_RECOVERY_TPM_CLEAR_OWNER, rv);
-		return rv;
-	}
+	VB2_TRY_OR_FAIL(vb2_check_tpm_clear(ctx),
+			ctx, VB2_RECOVERY_TPM_CLEAR_OWNER);
 
 	/* Decide which firmware slot to try this boot */
-	rv = vb2_select_fw_slot(ctx);
-	if (rv) {
-		vb2api_fail(ctx, VB2_RECOVERY_FW_SLOT, rv);
-		return rv;
-	}
+	VB2_TRY_OR_FAIL(vb2_select_fw_slot(ctx), ctx, VB2_RECOVERY_FW_SLOT);
 
 	return VB2_SUCCESS;
 }
@@ -207,21 +198,13 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 
 vb2_error_t vb2api_fw_phase3(struct vb2_context *ctx)
 {
-	vb2_error_t rv;
-
 	/* Verify firmware keyblock */
-	rv = vb2_load_fw_keyblock(ctx);
-	if (rv) {
-		vb2api_fail(ctx, VB2_RECOVERY_RO_INVALID_RW, rv);
-		return rv;
-	}
+	VB2_TRY_OR_FAIL(vb2_load_fw_keyblock(ctx),
+			ctx, VB2_RECOVERY_RO_INVALID_RW);
 
 	/* Verify firmware preamble */
-	rv = vb2_load_fw_preamble(ctx);
-	if (rv) {
-		vb2api_fail(ctx, VB2_RECOVERY_RO_INVALID_RW, rv);
-		return rv;
-	}
+	VB2_TRY_OR_FAIL(vb2_load_fw_preamble(ctx),
+			ctx, VB2_RECOVERY_RO_INVALID_RW);
 
 	return VB2_SUCCESS;
 }
@@ -286,11 +269,9 @@ vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag)
 	if (!sd->data_key_size)
 		return VB2_ERROR_API_INIT_HASH_DATA_KEY;
 
-	rv = vb2_unpack_key_buffer(&key,
-				   vb2_member_of(sd, sd->data_key_offset),
-				   sd->data_key_size);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2_unpack_key_buffer(&key,
+				      vb2_member_of(sd, sd->data_key_offset),
+				      sd->data_key_size));
 
 	sd->hash_tag = tag;
 	sd->hash_remaining_size = pre->body_signature.data_size;
@@ -354,11 +335,9 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 
 	/* Finalize the digest */
 	if (dc->using_hwcrypto)
-		rv = vb2ex_hwcrypto_digest_finalize(digest, digest_size);
+		VB2_TRY(vb2ex_hwcrypto_digest_finalize(digest, digest_size));
 	else
-		rv = vb2_digest_finalize(dc, digest, digest_size);
-	if (rv)
-		return rv;
+		VB2_TRY(vb2_digest_finalize(dc, digest, digest_size));
 
 	/* The code below is specific to the body signature */
 	if (sd->hash_tag != VB2_HASH_TAG_FW_BODY)
@@ -373,11 +352,9 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 	if (!sd->data_key_size)
 		return VB2_ERROR_API_CHECK_HASH_DATA_KEY;
 
-	rv = vb2_unpack_key_buffer(&key,
-				   vb2_member_of(sd, sd->data_key_offset),
-				   sd->data_key_size);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2_unpack_key_buffer(&key,
+				      vb2_member_of(sd, sd->data_key_offset),
+				      sd->data_key_size));
 
 	/*
 	 * Check digest vs. signature.  Note that this destroys the signature.

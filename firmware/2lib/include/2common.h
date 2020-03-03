@@ -68,6 +68,18 @@ struct vb2_public_key;
 	VB2_DEBUG("IGNORING ABORT IN RECOVERY MODE!!!\n"); \
 } while (0)
 
+#define VB2_TRY_OR_FAIL(expr, ctx, recovery_reason) do { \
+	vb2_error_t _rv = expr; \
+	if (_rv != VB2_SUCCESS) { \
+		VB2_DEBUG(#expr " returned %#x\n", _rv); \
+		if (ctx && recovery_reason) \
+			vb2api_fail(ctx, recovery_reason, _rv); \
+		return _rv; \
+	} \
+} while (0)
+
+#define VB2_TRY(expr) VB2_TRY_OR_FAIL(expr, NULL, 0)
+
 /*
  * Define test_mockable and for mocking functions when compiled for Chrome OS
  * environment (that is, not for firmware).
