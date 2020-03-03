@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "f870f7ac_9db00ef6",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-03T06:33:49Z",
+      "side": 1,
+      "message": "move to 2ui.h:\n* 3 entry points\n* vb2_ui_state (formerly called menu_state) \n* KEY_DELAY",
+      "parentUuid": "88904fd8_35707abc",
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ac1588_7e33cb62",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 22
