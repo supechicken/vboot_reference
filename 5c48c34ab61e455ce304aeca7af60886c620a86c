@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "d98525ec_40a04e98",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-03T07:30:20Z",
+      "side": 1,
+      "message": "No I should not move vb2_ui_state and vb2ex_display_menu() to 2ui.h\nmove them back to 2api.h",
+      "parentUuid": "f870f7ac_9db00ef6",
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ac1588_7e33cb62",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 22
