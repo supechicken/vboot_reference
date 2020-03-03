@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "04572c76_401c45ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-03T02:42:29Z",
+      "side": 1,
+      "message": "Talked to Joel offline, and you\u0027re right about it.",
+      "parentUuid": "ad1ec76f_88ecf764",
+      "revId": "cc8a95c15b0be155b40708b63604d22caf5a4b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13e13b4c_45577239",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -57,6 +75,30 @@
       "revId": "cc8a95c15b0be155b40708b63604d22caf5a4b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d84021_60e6e10f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-03T02:42:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13e13b4c_45577239",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "cc8a95c15b0be155b40708b63604d22caf5a4b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
