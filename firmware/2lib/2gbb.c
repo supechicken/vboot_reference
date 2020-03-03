@@ -27,14 +27,10 @@ static vb2_error_t vb2_gbb_read_key(struct vb2_context *ctx, uint32_t offset,
 	*keyp = vb2_workbuf_alloc(&wblocal, sizeof(**keyp));
 	if (!*keyp)
 		return VB2_ERROR_GBB_WORKBUF;
-	rv = vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp,
-				 sizeof(**keyp));
-	if (rv)
-		return rv;
+	VB2_TRY(vb2ex_read_resource(ctx, VB2_RES_GBB, offset, *keyp,
+				    sizeof(**keyp)));
 
-	rv = vb2_verify_packed_key_inside(*keyp, *size, *keyp);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2_verify_packed_key_inside(*keyp, *size, *keyp));
 
 	/* Deal with a zero-size key (used in testing). */
 	*size = (*keyp)->key_offset + (*keyp)->key_size;
