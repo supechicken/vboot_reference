@@ -433,7 +433,6 @@ static vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	vb2_error_t rv;
 
 	/*
 	 * If the flags indicate that the EC has already gone through
@@ -467,14 +466,10 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 		display_wait_screen(ctx);
 
 	/* Phase 2; Applies update and/or jumps to the correct EC image */
-	rv = ec_sync_phase2(ctx);
-	if (rv)
-		return rv;
+	VB2_TRY(ec_sync_phase2(ctx));
 
 	/* Phase 3; Let the platform know that EC software sync is now done */
-	rv = vb2ex_ec_vboot_done(ctx);
-	if (rv)
-		return rv;
+	VB2_TRY(vb2ex_ec_vboot_done(ctx));
 
 	/* Establish that EC software sync is complete and successful */
 	sd->flags |= VB2_SD_STATUS_EC_SYNC_COMPLETE;
