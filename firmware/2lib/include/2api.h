@@ -28,6 +28,23 @@
 #include "2return_codes.h"
 #include "2secdata_struct.h"
 
+#define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
+	vb2_error_t _vb2_try_rv = (expr); \
+	struct vb2_context *_vb2_try_ctx = (ctx); \
+	uint8_t _vb2_rec_reason = (recovery_reason); \
+	if (_vb2_try_rv != VB2_SUCCESS) { \
+		vb2ex_printf(__func__, \
+			     "%s returned %#x\n", #expr, _vb2_try_rv); \
+		if ((_vb2_try_ctx) && \
+		    (_vb2_rec_reason) != VB2_RECOVERY_NOT_REQUESTED) \
+			vb2api_fail(_vb2_try_ctx, _vb2_rec_reason, \
+				    _vb2_try_rv); \
+		return _vb2_try_rv; \
+	} \
+} while (0)
+
+#define VB2_TRY(...) _VB2_TRY_IMPL(__VA_ARGS__, NULL, 0)
+
 /* Modes for vb2ex_tpm_set_mode. */
 enum vb2_tpm_mode {
 	/*
