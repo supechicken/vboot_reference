@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c52ae15_720fd4c4",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-03T23:11:34Z",
+      "side": 1,
+      "message": "Not sure I like the _OR_FAIL() name. I feel like this somewhat hides the fact that this includes a return statement. When I just see\n\n VB2_TRY(myfunction());\n\nthen I think it\u0027s obvious that there\u0027s something more going on (because it suggests you\u0027re \"trying\" that function and clearly something else is going to happen if it doesn\u0027t work). But when you say\n\n VB2_TRY_OR_FAIL(myfunction(), ctx, recovery_reason);\n\nI would read that as \"try to call this function, and if it fails set the recovery reason\". The OR implies that vb2api_fail() is already the (only) thing that happens on error, so the notion that it also returns immediately is lost.\n\nDid you not like my idea from the bug of having a single variadic VB2_TRY() macro that handles both cases? If we don\u0027t want to go there, maybe just calling it VB2_TRYF() or VB2_TRYX() or something would be better.",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b6e55b_fc2bed02",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-03T23:11:34Z",
+      "side": 1,
+      "message": "I would suggest making this a little more unique (e.g. _vb2_try_rv), because it can\u0027t clash with any other variable or you\u0027re going to get a -Wshadow error. (You\u0027re still not able to do nested statements like VB2_TRY(myfunc(VB2_TRY(myotherfunc()))), but the fix for that is pretty complicated so I don\u0027t think we need to go there yet.)",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215b57be_1e728a95",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-03T23:11:34Z",
+      "side": 1,
+      "message": "Let\u0027s make this\n\n (\"%s returned %#x\\n\", #expr, _rv)\n\nto save a few more bytes (I\u0027m already somewhat worried how much prolific use of this is going to cost us in binary size, but I guess we can try and see...).",
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
