@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d14cf2c3_a7243d21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 33
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T08:27:21Z",
+      "side": 1,
+      "message": "These USE flags are not supported in vboot_reference, so basically these 3 lines make no difference. (Find ebuild file by \u0027equery-nami which vboot_reference\u0027 and look at the \u0027IUSE\u003d\u0027 line for valid flags.)\n\nInstead, you could test this with either \u0027make runtests\u0027 or \u0027emerge-nami depthcharge\u0027, preferably both.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82b6224f_a3497af0",
         "filename": "Makefile",
         "patchSetId": 33
@@ -53,6 +76,30 @@
       "writtenOn": "2020-03-04T07:21:45Z",
       "side": 1,
       "message": "There will be VB2_TRY() shortly, but let\u0027s race with CL:2084062 to see which one gets merged first.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ae511e_bcd8e5ae",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T08:27:21Z",
+      "side": 1,
+      "message": "I was wrong ...\n\nThis CL depends on the depthcharge one (CL:2043102), which depends (will depend) on the CL implementing VB2_TRY(). Therefore, please rebase on top of CL:2084062 and use VB2_TRY() whenever possible. Thanks.",
+      "parentUuid": "b5b3e827_ba20d2d0",
       "range": {
         "startLine": 116,
         "startChar": 1,
