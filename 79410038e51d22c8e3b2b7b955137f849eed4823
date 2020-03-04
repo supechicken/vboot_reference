@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2054ed29_82faccbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T21:00:45Z",
+      "side": 1,
+      "message": "I think the order it\u0027s here reads better and that would be the most important part to me. When you read code using this the first and foremost important thing is which function is called, and whether any recovery reasons fall out on error is secondary.",
+      "parentUuid": "b4a0f237_45d96ece",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dce5eb_ad5939e6",
         "filename": "firmware/lib20/misc.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-04T09:59:00Z",
       "side": 1,
       "message": "Could this be:\n\nVB2_TRY(rv, ctx, VB2_RECOVERY_FW_KEY_ROLLBACK);",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fad0c14_d367e50c",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T21:00:45Z",
+      "side": 1,
+      "message": "Hmm... not sure if we should really use it that way? It works, yes, but it reads wrong to me -- you are not trying anything here anymore, you are just using an already existing result. (Besides, the error message would say \"rv returned ...\" which isn\u0027t super useful.)",
+      "parentUuid": "55dce5eb_ad5939e6",
       "range": {
         "startLine": 81,
         "startChar": 0,
