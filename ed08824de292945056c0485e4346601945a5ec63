@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "e03bf356_bb9e8d01",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T01:58:52Z",
+      "side": 1,
+      "message": "If you\u0027re worried about the log spam I\u0027d be okay with replacing all of these with\n\n if (...)\n   abort();\n\nor something like that. I just want to make sure something blows up visibly if it ever fails, it doesn\u0027t have to be pretty.\n\nBut this pattern is used across most test files, so we should replace all those at once in a separate patch.",
+      "parentUuid": "cc27c74f_158305ef",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6dac4ca5_425c0195",
         "filename": "tests/vb2_ec_sync_tests.c",
         "patchSetId": 42
