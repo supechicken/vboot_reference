@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8c7b852_0407f5a4",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T01:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53933126_86ee9578",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "428b21e7_4dd6c00a",
         "filename": "tests/vb2_ec_sync_tests.c",
         "patchSetId": 42
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "Whether vb2api_init() succeeds or fails depends on its arguments, among other things the workbuffer alignment. We used to not align our mock workbuffers in tests and never noticed it, which was bad... so even though we (hopefully) got the alignment correctly everywhere now, we keep checking the result to make sure we\u0027re not missing anything. That\u0027s what tests are all about.",
       "parentUuid": "c1ba2d42_49db6106",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc27c74f_158305ef",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-04T01:45:14Z",
+      "side": 1,
+      "message": "We\u0027d better check the result once in main or at the beginning of VbSoftwareSyncTest. All the subsequent \"vb2api_init failed\" are just noise because the workbuf position and size never change in this file.",
+      "parentUuid": "f6781b92_bd00c18d",
       "revId": "ed08824de292945056c0485e4346601945a5ec63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
