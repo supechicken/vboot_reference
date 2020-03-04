@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4a0f237_45d96ece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-04T09:59:00Z",
+      "side": 1,
+      "message": "I\u0027m still trying to decide which inconsistency is less inconsistent...\n\nIf we use this order, then it\u0027s awkwardly inconsistent with vb2api_fail:\n\n      VB2_TRY(func_call())\n      VB2_TRY(func_call(), ctx, recovery_reason)\n  vb2api_fail(ctx, recovery_reason, func_call())\n\nIf we make the three-argument variant consistent with vb2api_fail, then it\u0027s inconsistent with itself:\n\n      VB2_TRY(func_call())\n      VB2_TRY(ctx, recovery_reason, func_call())\n  vb2api_fail(ctx, recovery_reason, func_call())",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55dce5eb_ad5939e6",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-04T09:59:00Z",
+      "side": 1,
+      "message": "Could this be:\n\nVB2_TRY(rv, ctx, VB2_RECOVERY_FW_KEY_ROLLBACK);",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c60cdf_4ece6f53",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-04T09:59:00Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
