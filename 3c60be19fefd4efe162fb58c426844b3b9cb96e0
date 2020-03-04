@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b6224f_a3497af0",
+        "filename": "Makefile",
+        "patchSetId": 33
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T07:21:45Z",
+      "side": 1,
+      "message": "The menu UI is not only for detachables, but also for clamshells. Also, IMHO the UI itself shouldn\u0027t be called a revamp.\n\nI think we could simply remove the last line. See EC_EFS for an example.\n\nPlease remember to capitalize the first letter in a sentence and end it with a period.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 50
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2857529c_14197923",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T07:21:45Z",
+      "side": 1,
+      "message": "Include 2api.h for vb2_ui_state.",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b3e827_ba20d2d0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T07:21:45Z",
+      "side": 1,
+      "message": "There will be VB2_TRY() shortly, but let\u0027s race with CL:2084062 to see which one gets merged first.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c393191_ca065a71",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T07:21:45Z",
+      "side": 1,
+      "message": "Could we change this to non-static and pass this as a function parameter? We could also do that for dev_boot_allowed() so that it\u0027ll be called only once per boot.\n\nOn the other hand, this variable it not used yet. Would you consider removing it from this CL?",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786ebb67_10d2a12f",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T07:21:45Z",
+      "side": 1,
+      "message": "I think it\u0027s sufficient to leave a TODO comment in 2ui.c.",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
