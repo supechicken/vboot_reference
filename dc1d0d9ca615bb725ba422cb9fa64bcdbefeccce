@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43dd7f12_61c386ec",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T03:33:06Z",
+      "side": 1,
+      "message": "I just followed Joel\u0027s suggestion in the issue and didn\u0027t think too much. If you find this name misleading, let\u0027s change it to VB2_TRY().\n\nBTW, the variadic macro you gave doesn\u0027t work when __VA_ARGS__ is empty. VB2_TRY(123) will be expanded to\n\n _VB2_TRY_IMPL(123, , NULL, 0)\n\nChanging the definition to\n\n _VB2_TRY_IMPL(expr __VA_OPT__(,) __VA_ARGS__, NULL, 0)\n\ndoesn\u0027t work either (not sure if __VA_OPT__ is supported here).",
+      "parentUuid": "2c52ae15_720fd4c4",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2b6e55b_fc2bed02",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "293f2ad0_0f65998f",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T03:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b6e55b_fc2bed02",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "215b57be_1e728a95",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7de2e84c_dacef46f",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T03:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "215b57be_1e728a95",
+      "revId": "dc1d0d9ca615bb725ba422cb9fa64bcdbefeccce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
