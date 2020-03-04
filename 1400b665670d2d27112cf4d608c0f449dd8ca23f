@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e199908f_b99c2831",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T08:01:00Z",
+      "side": 1,
+      "message": "There\u0027re alternatives other than returning a distinct error code:\n\n1. Change the signature to vb2api_check_ec_sync(struct vb2_context *ctx, int *slow)\n2. Set FLAG_EC_SYNC_SLOW in ctx-\u003eflags\n3. Always display ec sync screen in depthcharge, but I guess this is not an option",
+      "revId": "1400b665670d2d27112cf4d608c0f449dd8ca23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f251d0bf_9ac9805f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-04T08:01:00Z",
+      "side": 1,
+      "message": "I was also considering calling vb2api_check_ec_sync() inside this function if it hasn\u0027t been called, so that coreboot would only need one function call as before. In this case, we\u0027ll need a status flag similar to VB2_SD_STATUS_EC_SYNC_COMPLETE to record whether vb2api_check_ec_sync() is called or not.",
+      "revId": "1400b665670d2d27112cf4d608c0f449dd8ca23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
