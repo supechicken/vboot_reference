@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "add0ca27_a0f66c8b",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-04T17:06:45Z",
+      "side": 1,
+      "message": "These conditionals should be reversed -- otherwise they will show some pretty misleading errors in the case that secdata_kernel is uninitialized, but just happens to look like a v0 struct (which will most certainly occur since by default it is all zeros).",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "8fe90efe296e6ecddee554ba48a1043c88936d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c41762_372b610e",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-04T17:06:45Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "8fe90efe296e6ecddee554ba48a1043c88936d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
