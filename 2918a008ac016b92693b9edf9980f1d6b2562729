@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48b56ca_6d744406",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T00:51:21Z",
+      "side": 1,
+      "message": "Why is committing relevant for the test?",
+      "revId": "2918a008ac016b92693b9edf9980f1d6b2562729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1758297_854f31d0",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T00:51:21Z",
+      "side": 1,
+      "message": "FWIW in a test it\u0027s okay to just edit ctx-\u003esecdata_kernel directly. You could just have a local \u0027hmir\u0027 pointer that points into there or something if that\u0027s easier.",
+      "revId": "2918a008ac016b92693b9edf9980f1d6b2562729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b9b1b64_7768155d",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T00:51:21Z",
+      "side": 1,
+      "message": "nit: Better would be to call this \"Custom hash size secdata_kernel v1\" and the other \"Custom hash size secdata_kernel v0\" or something. The point of the string is to be able to tell the difference between two test cases.",
+      "range": {
+        "startLine": 338,
+        "startChar": 50,
+        "endLine": 338,
+        "endChar": 63
+      },
+      "revId": "2918a008ac016b92693b9edf9980f1d6b2562729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

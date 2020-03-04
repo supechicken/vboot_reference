@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "f6781b92_bd00c18d",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T00:51:21Z",
+      "side": 1,
+      "message": "Whether vb2api_init() succeeds or fails depends on its arguments, among other things the workbuffer alignment. We used to not align our mock workbuffers in tests and never noticed it, which was bad... so even though we (hopefully) got the alignment correctly everywhere now, we keep checking the result to make sure we\u0027re not missing anything. That\u0027s what tests are all about.",
+      "parentUuid": "c1ba2d42_49db6106",
+      "revId": "ed08824de292945056c0485e4346601945a5ec63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6dac4ca5_425c0195",
         "filename": "tests/vb2_ec_sync_tests.c",
         "patchSetId": 42
