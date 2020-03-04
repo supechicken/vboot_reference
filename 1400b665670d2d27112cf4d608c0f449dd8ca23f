@@ -152,6 +152,24 @@
     },
     {
       "key": {
+        "uuid": "2ad04b3b_e0f8be7c",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-04T22:52:02Z",
+      "side": 1,
+      "message": "If we are going to do this, I think I prefer the variant Joel suggests here (one function + context flag).",
+      "parentUuid": "05143274_87357173",
+      "revId": "1400b665670d2d27112cf4d608c0f449dd8ca23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b122f7cf_31d6afaa",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 1
