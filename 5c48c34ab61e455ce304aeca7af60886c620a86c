@@ -232,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "6b8ed91f_c1917384",
+        "filename": "firmware/lib/vboot_ui_menu.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-04T06:57:01Z",
+      "side": 1,
+      "message": "Move DELAY back to ui.c.\n\nThere are only three entry points in ui.h now.",
+      "parentUuid": "d98525ec_40a04e98",
+      "revId": "5c48c34ab61e455ce304aeca7af60886c620a86c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ac1588_7e33cb62",
         "filename": "firmware/lib/vboot_ui_menu.c",
         "patchSetId": 22
