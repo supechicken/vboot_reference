@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b17bf2f8_664f325f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:42:06Z",
+      "side": 1,
+      "message": "Thanks for digging that up (\u003d\nI\u0027m still a bit worried that this is going to turn out really awkward, if both sides are updating the state depending on implementation details like where the data is retrieved from (e.g. vboot_reference for debug page, depthcharge for BIOS logs page).",
+      "parentUuid": "b33d28e6_663efd88",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "539cf38f_bc2d90eb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
