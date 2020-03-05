@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10b57e21_f78cc88b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T09:49:36Z",
+      "side": 1,
+      "message": "VB2_DEBUG is private to vboot. Should we publicize it as well?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "8a6b63d7d984538604a9f5d97b6a68fa7ac4a9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
