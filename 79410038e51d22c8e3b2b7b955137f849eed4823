@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e4e62070_ae01f658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T04:56:06Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s leave it as-is.  It would be bizarre to have a different order for the 3-argument variant.",
+      "parentUuid": "2054ed29_82faccbc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dce5eb_ad5939e6",
         "filename": "firmware/lib20/misc.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Hmm... not sure if we should really use it that way? It works, yes, but it reads wrong to me -- you are not trying anything here anymore, you are just using an already existing result. (Besides, the error message would say \"rv returned ...\" which isn\u0027t super useful.)",
       "parentUuid": "55dce5eb_ad5939e6",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "79410038e51d22c8e3b2b7b955137f849eed4823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7819cf3_0187f03e",
+        "filename": "firmware/lib20/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T04:56:06Z",
+      "side": 1,
+      "message": "I suppose you\u0027re right that the verb TRY implies \"doing something\".  Although if you interpret that as \"try checking the value of the first argument\" then it\u0027s not so bad.  Maybe VB2_CHECK() would be a more flexible verb here.\n\nBut you\u0027re right that the error message would be rather useless.  (I wonder if we should include the line number and filename.)  Anyways, I\u0027m okay leaving it as-is.",
+      "parentUuid": "9fad0c14_d367e50c",
       "range": {
         "startLine": 81,
         "startChar": 0,
