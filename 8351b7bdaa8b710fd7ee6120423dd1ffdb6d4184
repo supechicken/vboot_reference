@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e93aacb_79c735d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T10:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beb0e875_4b1b11cc",
+      "range": {
+        "startLine": 16,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e247dd_bf0d858c",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b14f18_5cde9649",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T10:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e247dd_bf0d858c",
+      "range": {
+        "startLine": 1113,
+        "startChar": 15,
+        "endLine": 1113,
+        "endChar": 22
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7bf06a52_71a347e9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T10:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55653660_70d5f0e3",
+      "range": {
+        "startLine": 1115,
+        "startChar": 10,
+        "endLine": 1115,
+        "endChar": 17
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "830d5f88_ac64b922",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "95bed0e6_848c3c79",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T10:27:17Z",
+      "side": 1,
+      "message": "I think it is because we have to store previous UI state in depthcharge?\nIt will be simple if we have \u0027state\u0027 and \u0027prev_state\u0027.\n(for prevent unnecessary redraw)",
+      "parentUuid": "830d5f88_ac64b922",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "539cf38f_bc2d90eb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f526d0a5_a319e4da",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T10:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539cf38f_bc2d90eb",
+      "range": {
+        "startLine": 1122,
+        "startChar": 1,
+        "endLine": 1122,
+        "endChar": 40
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
