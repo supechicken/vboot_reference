@@ -1107,4 +1107,22 @@ vb2_error_t vb2ex_ec_vboot_done(struct vb2_context *ctx);
  */
 vb2_error_t vb2ex_ec_battery_cutoff(void);
 
+/*****************************************************************************/
+/* Functions for UI display. */
+
+/* Screens. */
+enum vb2_screen {
+	/* Blank screen */
+	VB2_SCREEN_BLANK = 0,
+};
+
+/**
+ * Display menu screen. This function is used in MENU_UI.
+ *
+ * @param locale		Locale.
+ * @param screen		Screen to display.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_display_ui(uint32_t locale, enum vb2_screen screen);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
