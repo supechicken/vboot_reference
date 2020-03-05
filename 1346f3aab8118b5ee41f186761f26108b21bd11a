@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "a6685b28_bd9f1a59",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T09:28:24Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "e4d8e57e_efcf236d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab0135cc_42e3e39f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "Done\nMaybe \u0027wait for user to reset or shutdown\u0027 ?",
       "parentUuid": "b41c574e_3d25afe9",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28065e95_6adaeb9a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T09:28:24Z",
+      "side": 1,
+      "message": "Sure, that works.",
+      "parentUuid": "27dfe1c3_09ceb6b2",
       "range": {
         "startLine": 35,
         "startChar": 25,
