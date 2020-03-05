@@ -22,6 +22,30 @@
       "revId": "beb591dfa92dce8e16b86a5c911615d6f75f7752",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0324d734_85d7d908",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T08:42:58Z",
+      "side": 1,
+      "message": "Sorry, Yu-Ping.  I take that back:\n\nhttps://wiki.sei.cmu.edu/confluence/display/c/PRE01-C.+Use+parentheses+within+macros+around+parameter+names\n\n\"When the parameter names are surrounded by commas in the replacement text, regardless of how complicated the actual arguments are, there is no need for parenthesizing the macro parameters. Because commas have lower precedence than any other operator, there is no chance of the actual arguments being parsed in a surprising way.\"",
+      "parentUuid": "d53e5dcb_96e722f5",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "beb591dfa92dce8e16b86a5c911615d6f75f7752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
