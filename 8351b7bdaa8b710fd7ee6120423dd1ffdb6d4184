@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "b33d28e6_663efd88",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T10:33:39Z",
+      "side": 1,
+      "message": "Let me quote Joel\u0027s comment in https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2043102/2/src/vboot/screens.h#45\n\n\u003e I was also wondering if it would make sense to create a \"screen state\" struct to share in between vboot_reference and depthcharge, which might simplify some of the issues we had discussed before (knowing what page number we are on, etc.).",
+      "parentUuid": "95bed0e6_848c3c79",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "539cf38f_bc2d90eb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
