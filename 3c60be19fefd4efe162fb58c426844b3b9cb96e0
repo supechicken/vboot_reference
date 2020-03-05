@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c863c37_6630d8b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 33
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T05:06:49Z",
+      "side": 1,
+      "message": "Done\nI will leave both",
+      "parentUuid": "d14cf2c3_a7243d21",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82b6224f_a3497af0",
         "filename": "Makefile",
         "patchSetId": 33
@@ -62,6 +86,24 @@
       "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e883f5_fc83b4b3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T05:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2857529c_14197923",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "2703a4b2_c2f783d4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T05:06:49Z",
+      "side": 1,
+      "message": "\u003e Could we change this to non-static and pass this as a function parameter?\n\nThere will be no \u0027passing usb_good\u0027 in further plan. Now we will check if usb good inside main loop, then call the reflected recovery actions (enter_recovery_screen() / enter_usb_nogood_screen()). So I think it is good that the \u0027usb_good\u0027 is only visible inside manual recovery entry point.\n(see: crrev.com/c/1703815/61/firmware/2lib/2ui.c#437)\n\n\u003e We could also do that for dev_boot_allowed() so that it\u0027ll be called only once per boot.\n\nThere will be a boot allowed check in upcoming change menu function\n(see: crrev.com/c/1703815/61/firmware/2lib/2ui.c#258)\n(It is for deciding whether TO_NORM can be cancelled or not)\n\nI think it will be too complicate to pass a param from entry to change_menu because the latter is called by lots of menu actions.\n\nI would like to store the dev boot result in a static flag inside dev_boot_allowed() to ensure we calculate the flag only once.\n\n\u003e \n\u003e On the other hand, this variable it not used yet. Would you consider removing it from this CL?\n\nSounds good",
+      "parentUuid": "2c393191_ca065a71",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "786ebb67_10d2a12f",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 33
@@ -143,6 +203,24 @@
       "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d73fc865_e07771a3",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-05T05:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "786ebb67_10d2a12f",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
