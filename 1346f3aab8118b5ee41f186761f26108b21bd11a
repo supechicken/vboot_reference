@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "e4d8e57e_efcf236d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T08:50:36Z",
+      "side": 1,
+      "message": "Sorry I changed my mind. Could we create the enum and only include the VB_SCREEN_BLANK (or whatever it\u0027s called) in this CL? Since we\u0027re not sure how many screens we have (for example, do ec sync and auxfw sync share the same screen?), I\u0027d suggest we add other screens to the enum when they\u0027re actually used.",
+      "parentUuid": "3a5a8f6e_903df9f6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab0135cc_42e3e39f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
