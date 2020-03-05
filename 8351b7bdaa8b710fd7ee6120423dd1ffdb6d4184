@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beb0e875_4b1b11cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:07:33Z",
+      "side": 1,
+      "message": "separate",
+      "range": {
+        "startLine": 16,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e247dd_bf0d858c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:07:33Z",
+      "side": 1,
+      "message": "There\u0027s no concept of \"extra\" screens, so let\u0027s just write \"Screens for vb2_ui_state.\"",
+      "range": {
+        "startLine": 1113,
+        "startChar": 15,
+        "endLine": 1113,
+        "endChar": 22
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55653660_70d5f0e3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:07:33Z",
+      "side": 1,
+      "message": "Might be good to just specify \"black\" here.",
+      "range": {
+        "startLine": 1115,
+        "startChar": 10,
+        "endLine": 1115,
+        "endChar": 17
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830d5f88_ac64b922",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:07:33Z",
+      "side": 1,
+      "message": "@Yu-Ping, my memory is failing me here, but I just wanted to confirm...\n\nWhat are the use cases for which using a struct here rather than separate function arguments simplifies things?\n\nWas that the \"number of pages\" / \"total pages\" issue for the BIOS log screen?  (i.e. disabling buttons accordingly when reaching the bottom or top).\n\nWere there any others?",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539cf38f_bc2d90eb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T10:07:33Z",
+      "side": 1,
+      "message": "Is there any harm in making this of type enum vb2_screen directly?",
+      "range": {
+        "startLine": 1122,
+        "startChar": 1,
+        "endLine": 1122,
+        "endChar": 40
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
