@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fddadd6_fd19094c",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "nit: could move declaration of \u0027rv\u0027 here now?",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea5855a_887743b9",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any reason not to use VB2_TRY() here (there\u0027s no point copying out the digest when verification failed).",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d0a1253_7a69d273",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "I think it would be fair to use it here too (the automatic message is just as good).\n\nAlternatively, we could add an option to use a custom message (either with yet more varargs, although I\u0027m not sure if there\u0027s a clean way to do that at this point, or by just making a VB2_TRY_MSG() variant).",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34debdd6_1bf2719f",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "Can be:\n\n VB2_TRY(vb2_ex_read_resource(...));\n\n *wb \u003d wblocal;\n return VB2_SUCCESS;",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dcbe6d4_dc8cd7c0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "Actually, while we\u0027re on the topic of macro safety, it would be good to prevent double evaluation of ctx and recovery_reason too, just in case. So I\u0027d add\n\n struct vb2_context *_vb2_try_ctx \u003d (ctx); \\\n uint8_t _vb2_try_reason \u003d (recovery_reason); \\\n\nhere and then use those below.",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b17b17c1_2c5895a0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "With the way this function looks now I think all of these can be VB2_TRY()s...",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae871e8_a32ebd97",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-05T23:04:13Z",
+      "side": 1,
+      "message": "...and then there\u0027s no need to check for success here (i.e. make sure we only get here in the success case).",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
