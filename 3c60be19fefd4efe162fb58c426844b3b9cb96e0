@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "46dc8ee6_17d6aed1",
+        "filename": "Makefile",
+        "patchSetId": 33
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T06:44:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b6224f_a3497af0",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 50
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2857529c_14197923",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 33
@@ -154,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "1ab2fe39_02e9a81f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T06:44:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8ae511e_bcd8e5ae",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c393191_ca065a71",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 33
@@ -186,6 +234,24 @@
       "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbc97204_95e09587",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-05T06:44:31Z",
+      "side": 1,
+      "message": "Good. Let\u0027s discuss this in the future CL that adds \u0027usb_good\u0027.",
+      "parentUuid": "2703a4b2_c2f783d4",
+      "revId": "3c60be19fefd4efe162fb58c426844b3b9cb96e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
