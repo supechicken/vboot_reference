@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed381f8_1dc28d53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "; others",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52223362_e1916cd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Let\u0027s get rid of S-o-b as vapier requested:\n\nhttps://groups.google.com/a/google.com/forum/?utm_medium\u003demail\u0026utm_source\u003dfooter#!msg/chromeos-chatty-firmware/jRUYRvONrhg/FF5FZVzTAAAJ",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73165bfd_c1bb5ca9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Just remove this TODO -- it\u0027s pretty clear that this is only an empty shell.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3986d2cc_779ed060",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "@yupingso: As we discussed, let\u0027s move this into a new enum specifically for Groot UI.  Once that\u0027s done, we can change the reference here.  Did you want to do that in a separate CL before this one?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0135cc_42e3e39f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Need a space before the bracket.",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73fdd342_600f9157",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Put this line *above* the while loop so it actually gets called.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b41c574e_3d25afe9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Strictly speaking, you can\u0027t actually do anything from the broken screen, so there\u0027s nothing to wait for.",
+      "range": {
+        "startLine": 35,
+        "startChar": 25,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cebddb97_947a89be",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Need a space before the bracket.",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72ec39b_f0d54baf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "@yupingso: Let Rocco know what to write here.",
+      "range": {
+        "startLine": 1127,
+        "startChar": 17,
+        "endLine": 1127,
+        "endChar": 44
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfed8ed_b1370f3d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "No need to mention the old UIs -- otherwise we have to update this when they are deprecated.",
+      "range": {
+        "startLine": 1131,
+        "startChar": 61,
+        "endLine": 1132,
+        "endChar": 45
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a925c6_0ed4d7ba",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "@yupingso: I remember we already chatted about the nomenclature problem before of \"menu\" vs \"ui\" etc.  Do you prefer calling this vb2ex_display_menu or vb2ex_display_ui?",
+      "range": {
+        "startLine": 1136,
+        "startChar": 12,
+        "endLine": 1136,
+        "endChar": 30
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ee575f_5970e902",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Maybe we can just write:\n\n  UI for a developer-mode boot.\n\nFollow the same for below.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "272a61ba_2fc18b00",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Not sure about this sentence?",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f47b70_1730ddb1",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-05T07:46:40Z",
+      "side": 1,
+      "message": "Not necessarily, since we support tablets/detachables.  Just take this out.",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 57
+      },
+      "revId": "1346f3aab8118b5ee41f186761f26108b21bd11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
