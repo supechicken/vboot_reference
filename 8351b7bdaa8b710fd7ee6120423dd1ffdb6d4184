@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "b68d739d_03fab6ec",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-06T07:37:14Z",
+      "side": 1,
+      "message": "In my mind, depthcharge shoudn\u0027t update the state passed from vboot (see the signature of vb2ex_display_ui(), where the argument is const). The state only serves as a collection of parameters controlling what should be displayed on the screen.\n\nAbout the pages, here\u0027s my plan for the BIOS log screen.\n- By calling vb2ex_init_screen() from vboot when entering the BIOS log screen, depthcharge initializes the BIOS log buffer, calculates the number of pages and return it to vboot.\n- Knowing the current page and the total number of pages, vboot decides which buttons should be hidden and passes this information to depthcharge as part of the *state*.\n- depthcharge draws the screen based on only the state and the initialized BIOS log buffer.\n- On leaving the screen, vboot calls vb2ex_free_screen() and depthcharge frees the buffer.",
+      "parentUuid": "b17bf2f8_664f325f",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "539cf38f_bc2d90eb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
