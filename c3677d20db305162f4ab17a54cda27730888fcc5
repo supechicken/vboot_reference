@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90e7e8d2_088a0110",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-06T11:22:32Z",
+      "side": 1,
+      "message": "In the interest of putting the \"most important\" argument first, I\u0027d place vb2_screen before locale.",
+      "range": {
+        "startLine": 1126,
+        "startChar": 29,
+        "endLine": 1126,
+        "endChar": 68
+      },
+      "revId": "c3677d20db305162f4ab17a54cda27730888fcc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
