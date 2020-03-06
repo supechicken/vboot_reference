@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "7607d40a_09e5f533",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-06T08:03:40Z",
+      "side": 1,
+      "message": "After offline discussion -- given that we will not be allowing depthcharge to change the UI state -- we can just specify these as arguments to vb2ex_display_ui() directly.\n\nIf we want to make a union\u0027d struct for specific screens, that\u0027s fine.  For example:\n\n  struct vb2_ui_data {\n    union {\n      vb2_ui_rma_data rma_data;\n      vb2_scroll_data scroll_data;\n    }\n  }\n\nWhere rma_data contains the serial number typed in, and scroll_data contains the total number of pages, current page, etc.",
+      "parentUuid": "b68d739d_03fab6ec",
+      "range": {
+        "startLine": 1120,
+        "startChar": 7,
+        "endLine": 1120,
+        "endChar": 19
+      },
+      "revId": "8351b7bdaa8b710fd7ee6120423dd1ffdb6d4184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "539cf38f_bc2d90eb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
