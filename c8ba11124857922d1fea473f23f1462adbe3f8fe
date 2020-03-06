@@ -87,6 +87,29 @@
     },
     {
       "key": {
+        "uuid": "97be5791_7a0222ff",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-06T08:22:03Z",
+      "side": 1,
+      "message": "This is not defined for coreboot-utils, which has references to vb2_hash_verify(). I\u0027m not sure how to deal with this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b17b17c1_2c5895a0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
