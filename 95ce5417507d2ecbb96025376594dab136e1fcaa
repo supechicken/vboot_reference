@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f1e7fbf_24f09a78",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-09T09:23:56Z",
+      "side": 1,
+      "message": "I saw some naming like this at vb2_api_tests.c:\nvb2_error_t retval_vb2_fw_init_gbb;\nvb2_error_t retval_vb2_check_dev_switch;\nvb2_error_t retval_vb2_check_tpm_clear;\nvb2_error_t retval_vb2_select_fw_slot;\n...\n\nThey are all named \u0027retval_\u0027 plus function name,\nso it might be \u0027retval_VbTryLoadKernel\u0027 which seems very weird.\nThat\u0027s the reason why I choose \u0027retval_\u0027 concatenate with \u0027vbtlk\u0027\n(which is a abbreviation of VbTryLoadKernel, widely used in legacy things.\n\nOr should it be retval_vb2_try_load_kernel for upcoming refactor works?",
+      "parentUuid": "0eb483b4_6fde663b",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a6d1758_ef3931cf",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b5dbac4_3459c937",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-09T09:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6d1758_ef3931cf",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79b45037_6c865ae4",
         "filename": "tests/vboot_legacy_menu_tests.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1272e32d_45305206",
+        "filename": "tests/vboot_legacy_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-09T09:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b45037_6c865ae4",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 0
+      },
+      "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
