@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d2c7377b_78c70d3b",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-09T09:43:09Z",
+      "side": 1,
+      "message": "Done\nI\u0027d prefer mock_vbtlk_retval, too",
+      "parentUuid": "35d8eacc_5130dcce",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a6d1758_ef3931cf",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 1
