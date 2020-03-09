@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "0d0f3c62_a05f418e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-09T06:06:38Z",
+      "side": 1,
+      "message": "Note that when we downstream, we\u0027ll need to get these into both zork and volteer branches:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1052653\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1052596",
+      "parentUuid": "7b2223cf_80766f34",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17b17c1_2c5895a0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
@@ -277,6 +301,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b17b17c1_2c5895a0",
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c537537_15262a93",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-09T06:06:38Z",
+      "side": 1,
+      "message": "Looks great!",
+      "parentUuid": "3bbc4ed5_8a8f9c93",
       "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

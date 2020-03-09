@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69237051_97857251",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-09T06:06:38Z",
+      "side": 1,
+      "message": "I think Julius meant for all variables here to have the same \"_vb2_try_\" prefix.  Not a huge deal either way.",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "9627fa9c79a6e7148ddc5a50ccd31fa35673fd84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
