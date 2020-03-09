@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "35d8eacc_5130dcce",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-09T09:29:59Z",
+      "side": 1,
+      "message": "You\u0027re right that there\u0027s no super-clear consensus for test variable-naming across all of the unit test files.  In that case, the best thing to do is adhere to the specific file you\u0027re working in.  Sometimes, we may batch-fix a specific issue across multiple files in a single CL.\n\nAnyways, I would prefer using _retval as a suffix, since it reads more like English.  If you want to remove \"mock_\" from all of the above variables here as well, that\u0027s fine too.  I\u0027m okay either way (with \"mock_\" or without).",
+      "parentUuid": "3f1e7fbf_24f09a78",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "95ce5417507d2ecbb96025376594dab136e1fcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a6d1758_ef3931cf",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 1
