@@ -10,6 +10,7 @@
 
 #include "2api.h"
 #include "2struct.h"
+#include "vboot_api.h"
 
 struct vb2_gbb_header;
 struct vb2_workbuf;
@@ -253,5 +254,19 @@ int vb2_dev_boot_legacy_allowed(struct vb2_context *ctx);
  * @return 1 if allowed, or 0 otherwise.
  */
 int vb2_dev_boot_usb_allowed(struct vb2_context *ctx);
+
+/**
+ * Try to execute legacy boot option if allowed.
+ *
+ * Check if legacy boot is allowed, then execute VbExLegacy with specified
+ * altfw number. Does not return if success.
+ *
+ * @param ctx		Vboot context
+ * @param altfw_num	Bootloader sequence number to execute; see VbExLegacy.
+ * @return does not return if success, VBERROR_KEEP_LOOPING if not allowed, or
+ *  other error code on error.
+ */
+vb2_error_t vb2_dev_try_legacy(struct vb2_context *ctx,
+			       enum VbAltFwIndex_t altfw_num);
 
 #endif  /* VBOOT_REFERENCE_2MISC_H_ */
