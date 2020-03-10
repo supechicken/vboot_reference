@@ -15,7 +15,6 @@
 #include "2struct.h"
 #include "2sysincludes.h"
 #include "vb2_common.h"
-#include "vboot_api.h"
 #include "vboot_struct.h"
 
 vb2_error_t vb2_validate_gbb_signature(uint8_t *sig)

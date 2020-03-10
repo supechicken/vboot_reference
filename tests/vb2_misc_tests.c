@@ -829,7 +829,7 @@ static void dev_default_boot_tests(void)
 		VB2_DEV_DEFAULT_BOOT_LEGACY, "set default boot legacy");
 }
 
-static void dev_boot_allowed_tests(void)
+static void dev_boot_tests(void)
 {
 	/* Dev boot - allowed by default */
 	reset_common_data();
@@ -923,7 +923,7 @@ int main(int argc, char* argv[])
 	clear_recovery_tests();
 	get_recovery_reason_tests();
 	dev_default_boot_tests();
-	dev_boot_allowed_tests();
+	dev_boot_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
