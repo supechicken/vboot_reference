@@ -21,6 +21,7 @@ static uint8_t workbuf2[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
+static struct vb2_secdata_fwmp *fwmp;
 
 /* Mocked function data */
 static enum vb2_resource_index mock_resource_index;
@@ -39,6 +40,7 @@ static void reset_common_data(void)
 		  "vb2api_init failed");
 
 	sd = vb2_get_sd(ctx);
+	sd->status = VB2_SD_STATUS_SECDATA_FWMP_INIT;
 
 	memset(&gbb, 0, sizeof(gbb));
 
@@ -46,6 +48,8 @@ static void reset_common_data(void)
 
 	vb2api_secdata_firmware_create(ctx);
 	vb2_secdata_firmware_init(ctx);
+
+	fwmp = (struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 
 	mock_tpm_clear_called = 0;
 	mock_tpm_clear_retval = VB2_SUCCESS;
@@ -792,6 +796,43 @@ static void get_recovery_reason_tests(void)
 	TEST_EQ(vb2api_get_recovery_reason(ctx), 4, "correct recovery reason");
 }
 
+static void dev_default_boot_tests(void)
+{
+	reset_common_data();
+	TEST_EQ(vb2_get_dev_default_boot_target(ctx),
+		VB2_DEV_DEFAULT_BOOT_DISK, "no default boot, boot disk");
+	reset_common_data();
+	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_USB);
+	TEST_EQ(vb2_get_dev_default_boot_target(ctx),
+		VB2_DEV_DEFAULT_BOOT_LEGACY, "GBB set default boot legacy");
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_DISK);
+	TEST_EQ(vb2_get_dev_default_boot_target(ctx),
+		VB2_DEV_DEFAULT_BOOT_DISK, "set default boot disk");
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_USB);
+	TEST_EQ(vb2_get_dev_default_boot_target(ctx),
+		VB2_DEV_DEFAULT_BOOT_USB, "set default boot usb");
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT, VB2_DEV_DEFAULT_BOOT_LEGACY);
+	TEST_EQ(vb2_get_dev_default_boot_target(ctx),
+		VB2_DEV_DEFAULT_BOOT_LEGACY, "set default boot legacy");
+}
+
+static void dev_boot_allowed_tests(void)
+{
+	reset_common_data();
+	TEST_EQ(vb2_dev_boot_allowed(ctx), 1, "dev boot allowed by default");
+	reset_common_data();
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	TEST_EQ(vb2_dev_boot_allowed(ctx), 0, "FWMP dev disabled");
+	reset_common_data();
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	TEST_EQ(vb2_dev_boot_allowed(ctx), 1, "GBB force dev on");
+}
+
 int main(int argc, char* argv[])
 {
 	init_workbuf_tests();
@@ -805,6 +846,8 @@ int main(int argc, char* argv[])
 	need_reboot_for_display_tests();
 	clear_recovery_tests();
 	get_recovery_reason_tests();
+	dev_default_boot_tests();
+	dev_boot_allowed_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
