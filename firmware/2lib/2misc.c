@@ -15,7 +15,7 @@
 #include "2struct.h"
 #include "2sysincludes.h"
 #include "vb2_common.h"
-#include "vboot_api.h"
+#include "vboot_api.h"  /* For VbAltFwIndex_t */
 #include "vboot_struct.h"
 
 vb2_error_t vb2_validate_gbb_signature(uint8_t *sig)
@@ -534,4 +534,14 @@ int vb2_dev_boot_usb_allowed(struct vb2_context *ctx)
 	return vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB) ||
 	       (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) ||
 	       vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB);
+}
+
+vb2_error_t vb2_dev_try_legacy(struct vb2_context *ctx,
+			       enum VbAltFwIndex_t altfw_num)
+{
+	if (!vb2_dev_boot_legacy_allowed(ctx))
+		return VBERROR_KEEP_LOOPING;
+
+	/* Will not return on success. */
+	return VbExLegacy(altfw_num);
 }
