@@ -12,6 +12,7 @@
 #include "2secdata.h"
 #include "2sysincludes.h"
 #include "test_common.h"
+#include "vboot_api.h"
 
 /* Common context for tests */
 static uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
@@ -24,6 +25,7 @@ static struct vb2_gbb_header gbb;
 static struct vb2_secdata_fwmp *fwmp;
 
 /* Mocked function data */
+static enum VbAltFwIndex_t mock_altfw_num;
 static enum vb2_resource_index mock_resource_index;
 static void *mock_resource_ptr;
 static uint32_t mock_resource_size;
@@ -88,6 +90,15 @@ vb2_error_t vb2ex_tpm_clear_owner(struct vb2_context *c)
 
 	return mock_tpm_clear_retval;
 }
+
+vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
+{
+	if (mock_altfw_num == altfw_num)
+		return VB2_SUCCESS;
+
+	return VB2_ERROR_UNKNOWN;
+}
+
 
 /* Tests */
 static void init_workbuf_tests(void)
@@ -829,7 +840,7 @@ static void dev_default_boot_tests(void)
 		VB2_DEV_DEFAULT_BOOT_LEGACY, "set default boot legacy");
 }
 
-static void dev_boot_allowed_tests(void)
+static void dev_boot_tests(void)
 {
 	/* Dev boot - allowed by default */
 	reset_common_data();
@@ -906,6 +917,25 @@ static void dev_boot_allowed_tests(void)
 	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
 	TEST_EQ(vb2_dev_boot_usb_allowed(ctx), 1,
 		"dev boot usb - all flags set");
+
+	/* Try legacy - not allowed */
+	reset_common_data();
+	TEST_EQ(vb2_dev_try_legacy(ctx, VB_ALTFW_DEFAULT), VBERROR_KEEP_LOOPING,
+		"try legacy - not allowed, keep looping");
+
+	/* Try legacy - allowed with success */
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	mock_altfw_num = VB_ALTFW_FIRST;
+	TEST_EQ(vb2_dev_try_legacy(ctx, VB_ALTFW_FIRST), VB2_SUCCESS,
+		"try legacy - allowed, VbExLegacy success");
+
+	/* Try legacy - allowed but fail */
+	reset_common_data();
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
+	mock_altfw_num = VB_ALTFW_FIRST;
+	TEST_EQ(vb2_dev_try_legacy(ctx, VB_ALTFW_NINTH), VB2_ERROR_UNKNOWN,
+		"try legacy - allowed, VbExLegacy fail");
 }
 
 int main(int argc, char* argv[])
@@ -922,7 +952,7 @@ int main(int argc, char* argv[])
 	clear_recovery_tests();
 	get_recovery_reason_tests();
 	dev_default_boot_tests();
-	dev_boot_allowed_tests();
+	dev_boot_tests();
 
 	return gTestSuccess ? 0 : 255;
 }

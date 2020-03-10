@@ -535,3 +535,13 @@ int vb2_dev_boot_usb_allowed(struct vb2_context *ctx)
 	       (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) ||
 	       vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_USB);
 }
+
+vb2_error_t vb2_dev_try_legacy(struct vb2_context *ctx,
+			       enum VbAltFwIndex_t altfw_num)
+{
+	if (!vb2_dev_boot_legacy_allowed(ctx))
+		return VBERROR_KEEP_LOOPING;
+
+	/* Will not return on success. */
+	return VbExLegacy(altfw_num);
+}
