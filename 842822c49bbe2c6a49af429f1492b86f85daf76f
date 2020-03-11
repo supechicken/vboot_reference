@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90cb976a_38d627c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16dafca4_2fb54ae8",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0919e2_5b5de9db",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6675cc_cafc546a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done\n\n* enum vb2_dev_default_boot vb2_get_dev_default_boot_target(struct vb2_context *ctx);\n(Actually I do not know how to handle such a long line with length \u003e 80)\n\n* int vb2_dev_boot_allowed(struct vb2_context *ctx);",
+      "parentUuid": "2e0919e2_5b5de9db",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98de0b0e_56cf755c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdf69e03_d82468da",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105af92f_f86a6b99",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6120003_7f7ffa4c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105af92f_f86a6b99",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "300cbd55_000507f6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8940cfe_b19f5a4f",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bd3c021_b81ca350",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -185,6 +305,30 @@
       "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777ed028_089e380e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bd3c021_b81ca350",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -211,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "513c27c5_09788459",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d36ed4d_13d25362",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7bd708_182a2bb6",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -231,6 +399,30 @@
       "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663a3b49_16bb908d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-11T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7bd708_182a2bb6",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
