@@ -15,6 +15,7 @@
 #include "host_signature.h"
 #include "utility.h"
 #include "vboot_api.h"
+#include "vboot_host.h"
 #include "vboot_struct.h"
 
 /**

@@ -12,10 +12,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "cgpt_params.h"
+#include "../../firmware/2lib/include/2crypto.h"
+
 /****************************************************************************/
 /* EFI GPT manipulation */
-
-#include "cgpt_params.h"
 
 #ifdef __cplusplus
 extern "C" {
