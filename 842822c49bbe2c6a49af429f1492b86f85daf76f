@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "35856aa0_bf7de22d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-11T10:57:35Z",
+      "side": 1,
+      "message": "The name is uncomfortably long.  I was trying to decide if the meaning would be clear enough by calling it just vb2_get_dev_boot_target().  Maybe we should call it that instead.",
+      "parentUuid": "bd6675cc_cafc546a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdf69e03_d82468da",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
