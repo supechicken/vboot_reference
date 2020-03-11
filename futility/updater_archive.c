@@ -20,6 +20,7 @@
 #include <zip.h>
 #endif
 
+#include "chromeos_config.h"
 #include "host_misc.h"
 #include "updater.h"
 #include "util_misc.h"
@@ -808,13 +809,13 @@ static int manifest_scan_entries(const char *name, void *arg)
 
 /*
  * Finds the existing model_config from manifest that best matches current
- * system (as defined by model_name).
+ * system (as defined by /firmware:image-name in chromeos-config).
  * Returns a model_config from manifest, or NULL if not found.
  */
 const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name)
+					       const char *firmware_image_name)
 {
-	char *sys_model_name = NULL;
+	char *image_name_from_config = NULL;
 	const struct model_config *model = NULL;
 	int i;
 
@@ -826,29 +827,31 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	if (manifest->num == 1)
 		return &manifest->models[0];
 
-	if (!model_name) {
-		sys_model_name = host_shell("mosys platform model");
-		VB2_DEBUG("System model name: '%s'\n", sys_model_name);
-		model_name = sys_model_name;
+	if (!firmware_image_name) {
+		if (chromeos_config_get_string("/firmware", "image-name",
+					       &image_name_from_config) !=
+		    VB2_SUCCESS) {
+			ERROR("This system does not have /firmware:image-name "
+			      "defined in chromeos-config.");
+			return NULL;
+		}
+
+		VB2_DEBUG("Firmware image name: '%s'\n", firmware_image_name);
+		firmware_image_name = image_name_from_config;
 	}
 
 	for (i = 0; !model && i < manifest->num; i++) {
-		if (strcmp(model_name, manifest->models[i].name) == 0)
+		if (strcmp(firmware_image_name, manifest->models[i].name) == 0)
 			model = &manifest->models[i];
 	}
 	if (!model) {
-		if (!*model_name)
-			ERROR("Cannot get model name.\n");
-		else
-			ERROR("Unsupported model: '%s'.\n", model_name);
+		ERROR("Unsupported firmware image: '%s'.\n",
+		      firmware_image_name);
 
 		fprintf(stderr,
-			"You are probably running an image for wrong board, or "
-			"a device in early stage that 'mosys' command is not "
-			"ready, or image from old (or factory) branches that "
-			"Unified Build config is not updated yet for 'mosys'.\n"
-			"Please check command 'mosys platform model', "
-			"which should output one of the supported models below:"
+			"You are probably running an image for wrong board. "
+			"Check the command 'cros_config /firmware image-name', "
+			"which should output one of the supported images below:"
 			"\n");
 
 		for (i = 0; i < manifest->num; i++)
@@ -856,8 +859,7 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 		fprintf(stderr, "\n");
 	}
 
-
-	free(sys_model_name);
+	free(image_name_from_config);
 	return model;
 }
 

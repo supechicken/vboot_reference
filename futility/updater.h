@@ -250,11 +250,11 @@ int patch_image_by_model(
 
 /*
  * Finds the existing model_config from manifest that best matches current
- * system (as defined by model_name).
+ * system (as defined by /firmware:image_name from chromeos-config).
  * Returns a model_config from manifest, or NULL if not found.
  */
 const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name);
+					       const char *firmware_image_name);
 
 /*
  * Applies white label information to an existing model configuration.
