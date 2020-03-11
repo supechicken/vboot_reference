@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "16dafca4_2fb54ae8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-11T07:44:50Z",
+      "side": 1,
+      "message": "Start with a verb?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e0919e2_5b5de9db",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -94,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "0950f466_91945f99",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-11T07:44:50Z",
+      "side": 1,
+      "message": "Do we have guidelines of function documentation?",
+      "parentUuid": "a8940cfe_b19f5a4f",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bd3c021_b81ca350",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 4
@@ -156,6 +203,29 @@
         "startChar": 10,
         "endLine": 45,
         "endChar": 12
+      },
+      "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd9557d_6a63d0df",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-11T07:44:50Z",
+      "side": 1,
+      "message": "Joel, is it possible to have a different result each time within the main UI loop? I have the same question for all the similar conditionals:\n- gbb-\u003eflags \u0026 VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY\n- get_default_boot()\n\nI was wondering if we should call this every time we enter this function, or *cache* the result in a variable and pass it here.",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 22
       },
       "revId": "842822c49bbe2c6a49af429f1492b86f85daf76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
