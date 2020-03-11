@@ -354,6 +354,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2common.c \
 	firmware/2lib/2context.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2crypto.c \
 	firmware/2lib/2ec_sync.c \
 	firmware/2lib/2gbb.c \
 	firmware/2lib/2hmac.c \
@@ -443,6 +444,7 @@ UTILLIB_SRCS = \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
+	host/lib/crypto.c \
 	host/lib/file_keys.c \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
@@ -479,6 +481,7 @@ HOSTLIB_SRCS = \
 	firmware/2lib/2common.c \
 	firmware/2lib/2context.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2crypto.c \
 	firmware/2lib/2hmac.c \
 	firmware/2lib/2kernel.c \
 	firmware/2lib/2nvstorage.c \
@@ -499,6 +502,7 @@ HOSTLIB_SRCS = \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/crossystem.c \
+	host/lib/crypto.c \
 	host/lib/extract_vmlinuz.c \
 	host/lib/fmap.c \
 	host/lib/host_misc.c \
@@ -694,6 +698,7 @@ TEST2X_NAMES = \
 	tests/vb2_common_tests \
 	tests/vb2_common2_tests \
 	tests/vb2_common3_tests \
+	tests/vb2_crypto_tests \
 	tests/vb2_ec_sync_tests \
 	tests/vb2_gbb_tests \
 	tests/vb2_host_key_tests \
@@ -875,6 +880,8 @@ headers_install:
 	${Q}mkdir -p ${UI_DIR}
 	${Q}${INSTALL} -t ${UI_DIR} -m644 \
 		host/include/* \
+		firmware/2lib/include/2crypto.h \
+		firmware/2lib/include/2sysincludes.h \
 		firmware/include/gpt.h \
 		firmware/include/tlcl.h \
 		firmware/include/tss_constants.h \
@@ -1207,6 +1214,7 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common3_tests ${TEST_KEYS}
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_crypto_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_ec_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_key_tests
