@@ -20,6 +20,7 @@
 #include <zip.h>
 #endif
 
+#include "chromeos_config.h"
 #include "host_misc.h"
 #include "updater.h"
 #include "util_misc.h"
@@ -808,14 +809,16 @@ static int manifest_scan_entries(const char *name, void *arg)
 
 /*
  * Finds the existing model_config from manifest that best matches current
- * system (as defined by model_name).
+ * system (as defined by /firmware:image_name from chromeos-config).
+ * Pass NULL for firmware_name for typical usage.
+ *
  * Returns a model_config from manifest, or NULL if not found.
  */
 const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name)
+					       const char *firmware_name)
 {
-	char *sys_model_name = NULL;
-	const struct model_config *model = NULL;
+	char *firmware_name_from_config = NULL;
+	const struct model_config *firmware = NULL;
 	int i;
 
 	/*
@@ -826,29 +829,40 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	if (manifest->num == 1)
 		return &manifest->models[0];
 
-	if (!model_name) {
-		sys_model_name = host_shell("mosys platform model");
-		VB2_DEBUG("System model name: '%s'\n", sys_model_name);
-		model_name = sys_model_name;
+	if (!firmware_name) {
+		if (chromeos_config_get_string("/firmware", "image-name",
+					       &firmware_name_from_config) !=
+		    VB2_SUCCESS) {
+			ERROR("This system does not have /firmware:image-name "
+			      "defined in chromeos-config.");
+			goto exit;
+		}
+
+		VB2_DEBUG("Firmware name: '%s'\n", firmware_name);
+		firmware_name = firmware_name_from_config;
 	}
 
-	for (i = 0; !model && i < manifest->num; i++) {
-		if (strcmp(model_name, manifest->models[i].name) == 0)
-			model = &manifest->models[i];
+	for (i = 0; i < manifest->num; i++) {
+		if (!strcmp(firmware_name, manifest->models[i].name)) {
+			firmware = &manifest->models[i];
+			break;
+		}
 	}
-	if (!model) {
-		if (!*model_name)
-			ERROR("Cannot get model name.\n");
-		else
-			ERROR("Unsupported model: '%s'.\n", model_name);
+
+exit:
+	if (!firmware) {
+		if (firmware_name)
+			ERROR("Unsupported firmware name: '%s'.\n",
+			      firmware_name);
 
 		fprintf(stderr,
-			"You are probably running an image for wrong board, or "
-			"a device in early stage that 'mosys' command is not "
-			"ready, or image from old (or factory) branches that "
-			"Unified Build config is not updated yet for 'mosys'.\n"
-			"Please check command 'mosys platform model', "
-			"which should output one of the supported models below:"
+			"You are probably running an image for the wrong "
+			"board, a device which is in the early stages and "
+			"chromeos-config has not been fully populated, or an "
+			"image from old/factory branches for which the "
+			"chromeos-config data is not up to date. "
+			"Check the command 'cros_config /firmware image-name', "
+			"which should output one of the supported images below:"
 			"\n");
 
 		for (i = 0; i < manifest->num; i++)
@@ -856,9 +870,8 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 		fprintf(stderr, "\n");
 	}
 
-
-	free(sys_model_name);
-	return model;
+	free(firmware_name_from_config);
+	return firmware;
 }
 
 /*

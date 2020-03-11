@@ -1383,7 +1383,7 @@ static int updater_setup_archive(
 		return errorcnt;
 	}
 
-	model = manifest_find_model(manifest, arg->model);
+	model = manifest_find_model(manifest, arg->firmware_name);
 	if (!model)
 		return ++errorcnt;
 

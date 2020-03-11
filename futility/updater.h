@@ -75,7 +75,7 @@ struct updater_config_arguments {
 	char *image, *ec_image, *pd_image;
 	char *archive, *quirks, *mode;
 	const char *programmer, *write_protection;
-	char *model, *signature_id;
+	char *firmware_name, *signature_id;
 	char *emulation, *sys_props;
 	char *output_dir;
 	char *repack, *unpack;
@@ -250,11 +250,14 @@ int patch_image_by_model(
 
 /*
  * Finds the existing model_config from manifest that best matches current
- * system (as defined by model_name).
+ * system (as defined by /firmware:image_name from chromeos-config).
+ * Pass NULL for override_cros_config_image_name for typical usage.
+ *
  * Returns a model_config from manifest, or NULL if not found.
  */
-const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name);
+const struct model_config *manifest_find_model(
+	const struct manifest *manifest,
+	const char *override_cros_config_image_name);
 
 /*
  * Applies white label information to an existing model configuration.

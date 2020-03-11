@@ -23,7 +23,7 @@ enum {
 	OPT_FORCE,
 	OPT_HOST_ONLY,
 	OPT_MANIFEST,
-	OPT_MODEL,
+	OPT_FIRMWARE_NAME,
 	OPT_OUTPUT_DIR,
 	OPT_PD_IMAGE,
 	OPT_QUIRKS,
@@ -55,11 +55,11 @@ static struct option const long_opts[] = {
 	{"emulate", 1, NULL, OPT_EMULATE},
 	{"factory", 0, NULL, OPT_FACTORY},
 	{"fast", 0, NULL, OPT_FAST},
+	{"firmware-name", 1, NULL, OPT_FIRMWARE_NAME},
 	{"force", 0, NULL, OPT_FORCE},
 	{"host_only", 0, NULL, OPT_HOST_ONLY},
 	{"list-quirks", 0, NULL, OPT_QUIRKS_LIST},
 	{"manifest", 0, NULL, OPT_MANIFEST},
-	{"model", 1, NULL, OPT_MODEL},
 	{"output_dir", 1, NULL, OPT_OUTPUT_DIR},
 	{"pd_image", 1, NULL, OPT_PD_IMAGE},
 	{"quirks", 1, NULL, OPT_QUIRKS},
@@ -70,6 +70,7 @@ static struct option const long_opts[] = {
 	{"wp", 1, NULL, OPT_WRITE_PROTECTION},
 
 	/* TODO(hungte) Remove following deprecated options. */
+	{"model", 1, NULL, OPT_FIRMWARE_NAME},
 	{"noupdate_ec", 0, NULL, OPT_HOST_ONLY},
 	{"noupdate_pd", 0, NULL, OPT_HOST_ONLY},
 	{"nocheck_keys", 0, NULL, OPT_FORCE},
@@ -111,7 +112,7 @@ static void print_help(int argc, char *argv[])
 		"    --wp=1|0        \tSpecify write protection status\n"
 		"    --host_only     \tUpdate only AP (host) firmware\n"
 		"    --emulate=FILE  \tEmulate system firmware using file\n"
-		"    --model=MODEL   \tOverride system model for images\n"
+		"    --firmware-name=NAME\tOverride /firmware:image-name\n"
 		"    --ccd           \tDo fast,force,wp=0,p=raiden_debug_spi\n"
 		"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"
 		"    --signature_id=S\tOverride signature ID for key files\n"
@@ -184,8 +185,8 @@ static int do_update(int argc, char *argv[])
 		case OPT_OUTPUT_DIR:
 			args.output_dir = optarg;
 			break;
-		case OPT_MODEL:
-			args.model = optarg;
+		case OPT_FIRMWARE_NAME:
+			args.firmware_name = optarg;
 			break;
 		case OPT_SIGNATURE:
 			args.signature_id = optarg;

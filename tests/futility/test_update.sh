@@ -416,27 +416,27 @@ patch_file ${FROM_IMAGE}.ap FW_MAIN_A 0 "corrupted"
 patch_file ${FROM_IMAGE}.al FW_MAIN_A 0 "corrupted"
 test_update "Full update (--archive, model=link)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=link
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=link
 test_update "Full update (--archive, model=peppy)" \
 	"${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=peppy
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=peppy
 test_update "Full update (--archive, model=unknown)" \
-	"${FROM_IMAGE}.ap" "!Unsupported model: 'unknown'" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=unknown
+	"${FROM_IMAGE}.ap" "!Unsupported firmware name: 'unknown'" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=unknown
 test_update "Full update (--archive, model=whitetip, signature_id=WL)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=whitetip \
 	--signature_id=whitetip-wl
 
 WL_TAG="wl" PATH="${A}/bin:${PATH}" \
 	test_update "Full update (-a, model=WL, fake VPD)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=whitetip
 
 # WL-Unibuild without default keys
 test_update "Full update (--a, model=WL, no VPD, no default keys)" \
 	"${FROM_IMAGE}.al" "!Need VPD set for white" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=whitetip
 
 # WL-Unibuild with default keys as model name
 cp -f "${TMP}.to/rootkey" "${A}/keyset/rootkey.whitetip"
@@ -444,7 +444,7 @@ cp -f "${TMP}.to/VBLOCK_A" "${A}/keyset/vblock_A.whitetip"
 cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.whitetip"
 test_update "Full update (-a, model=WL, no VPD, default keys)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --firmware-name=whitetip
 
 # Test special programmer
 if type flashrom >/dev/null 2>&1; then
