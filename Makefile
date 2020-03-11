@@ -354,6 +354,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2common.c \
 	firmware/2lib/2context.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2crypto.c \
 	firmware/2lib/2ec_sync.c \
 	firmware/2lib/2gbb.c \
 	firmware/2lib/2hmac.c \
@@ -480,6 +481,7 @@ HOSTLIB_SRCS = \
 	firmware/2lib/2common.c \
 	firmware/2lib/2context.c \
 	firmware/2lib/2crc8.c \
+	firmware/2lib/2crypto.c \
 	firmware/2lib/2hmac.c \
 	firmware/2lib/2kernel.c \
 	firmware/2lib/2nvstorage.c \
@@ -697,6 +699,7 @@ TEST2X_NAMES = \
 	tests/vb2_common_tests \
 	tests/vb2_common2_tests \
 	tests/vb2_common3_tests \
+	tests/vb2_crypto_tests \
 	tests/vb2_ec_sync_tests \
 	tests/vb2_gbb_tests \
 	tests/vb2_host_key_tests \
@@ -1207,6 +1210,7 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common3_tests ${TEST_KEYS}
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_crypto_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_ec_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_key_tests
