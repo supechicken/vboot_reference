@@ -73,4 +73,76 @@ enum vb2_hash_algorithm {
 	VB2_HASH_ALG_COUNT,
 };
 
+/**
+ * Convert vb2_crypto_algorithm to vb2_signature_algorithm.
+ *
+ * @param algorithm	Crypto algorithm (vb2_crypto_algorithm)
+ *
+ * @return The signature algorithm for that crypto algorithm, or
+ * VB2_SIG_INVALID if the crypto algorithm or its corresponding signature
+ * algorithm is invalid or not supported.
+ */
+enum vb2_signature_algorithm vb2_crypto_to_signature(uint32_t algorithm);
+
+/**
+ * Convert vb2_crypto_algorithm to vb2_hash_algorithm.
+ *
+ * @param algorithm	Crypto algorithm (vb2_crypto_algorithm)
+ *
+ * @return The hash algorithm for that crypto algorithm, or VB2_HASH_INVALID if
+ * the crypto algorithm or its corresponding hash algorithm is invalid or not
+ * supported.
+ */
+enum vb2_hash_algorithm vb2_crypto_to_hash(uint32_t algorithm);
+
+/**
+ * Return the name of a signature algorithm.
+ *
+ * @param sig_alg	Signature algorithm to look up
+ * @return The corresponding name, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_sig_algorithm_name(enum vb2_signature_algorithm sig_alg);
+
+/**
+ * Return the name of a hash algorithm
+ *
+ * @param alg	Hash algorithm ID
+ * @return The corresponding name, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_hash_algorithm_name(enum vb2_hash_algorithm alg);
+
+/**
+ * Return the name of a crypto algorithm.
+ *
+ * @param alg		Crypto algorithm to look up
+ * @return The corresponding name, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_crypto_algorithm_name(enum vb2_crypto_algorithm alg);
+
+/**
+ * Return the name of a crypto algorithm.
+ *
+ * @param alg		Crypto algorithm to look up
+ * @return The corresponding stem filename, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_crypto_algorithm_file(enum vb2_crypto_algorithm alg);
+
+/**
+ * Look up a signature algorithm by its string representation.
+ *
+ * @param str		String representation of algo (e.g. "rsa2048" or "1")
+ * @param alg		Output parameter that will be filled with found enum
+ * @return		True if algorithm was found, false otherwise.
+ */
+int vb2_lookup_sig_alg(const char *str, enum vb2_signature_algorithm *sig_alg);
+
+/**
+ * Look up a hash algorithm by its string representation.
+ *
+ * @param str		String representation of algorithm (e.g. "sha1" or "1")
+ * @param alg		Output parameter that will be filled with found enum
+ * @return		True if algorithm was found, false otherwise.
+ */
+int vb2_lookup_hash_alg(const char *str, enum vb2_hash_algorithm *hash_alg);
+
 #endif  /* VBOOT_REFERENCE_2CRYPTO_H_ */
