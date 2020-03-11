@@ -16,6 +16,7 @@
 #include "2sysincludes.h"
 #include "futility.h"
 #include "futility_options.h"
+#include "host_common.h"
 #include "host_common21.h"
 #include "host_key.h"
 #include "host_key21.h"

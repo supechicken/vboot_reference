@@ -442,6 +442,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_show.c \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
+	host/lib/algos.c \
 	host/lib/crossystem.c \
 	host/lib/file_keys.c \
 	host/lib/fmap.c \
@@ -498,6 +499,7 @@ HOSTLIB_SRCS = \
 	firmware/stub/vboot_api_stub_init.c \
 	futility/dump_kernel_config_lib.c \
 	host/arch/${ARCH}/lib/crossystem_arch.c \
+	host/lib/algos.c \
 	host/lib/crossystem.c \
 	host/lib/extract_vmlinuz.c \
 	host/lib/fmap.c \

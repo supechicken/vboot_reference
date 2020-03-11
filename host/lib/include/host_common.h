@@ -15,7 +15,17 @@
 #include "host_signature.h"
 #include "utility.h"
 #include "vboot_api.h"
+#include "vboot_host.h"
 #include "vboot_struct.h"
+
+/* Convert between enums and human-readable form. Terminated with {0, 0}. */
+struct vb2_text_vs_enum {
+	const char *name;
+	unsigned int num;
+};
+
+extern const struct vb2_text_vs_enum vb2_text_vs_sig[];
+extern const struct vb2_text_vs_enum vb2_text_vs_hash[];
 
 /**
  * Create a firmware preamble.

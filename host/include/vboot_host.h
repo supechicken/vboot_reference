@@ -12,10 +12,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "cgpt_params.h"
+#include "../../firmware/2lib/include/2crypto.h"
+
 /****************************************************************************/
 /* EFI GPT manipulation */
-
-#include "cgpt_params.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -72,6 +73,33 @@ char *FindKernelConfig(const char *filename,
  */
 int ExtractVmlinuz(void *kpart_data, size_t kpart_size,
 		   void **vmlinuz_out, size_t *vmlinuz_size);
+
+/**
+ * Return the name of a signature algorithm.
+ *
+ * @param sig_alg	Signature algorithm to look up
+ * @return The corresponding name, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_sig_algorithm_name(enum vb2_signature_algorithm sig_alg);
+
+/**
+ * Return the name of a crypto algorithm.
+ *
+ * @param alg		Crypto algorithm to look up
+ * @return The corresponding name, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_crypto_algorithm_name(enum vb2_crypto_algorithm alg);
+
+/**
+ * Return the name of a crypto algorithm.
+ *
+ * @param alg		Crypto algorithm to look up
+ * @return The corresponding stem filename, or VB2_INVALID_ALG_NAME if no match.
+ */
+const char *vb2_get_crypto_algorithm_file(enum vb2_crypto_algorithm alg);
+
+/* Return true if hash_alg was identified, either by name or number */
+int vb2_lookup_hash_alg(const char *str, enum vb2_hash_algorithm *alg);
 
 #ifdef __cplusplus
 }
