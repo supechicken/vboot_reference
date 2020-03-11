@@ -421,7 +421,7 @@ test_update "Full update (--archive, model=peppy)" \
 	"${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=peppy
 test_update "Full update (--archive, model=unknown)" \
-	"${FROM_IMAGE}.ap" "!Unsupported model: 'unknown'" \
+	"${FROM_IMAGE}.ap" "!Unsupported firmware image: 'unknown'" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=unknown
 test_update "Full update (--archive, model=whitetip, signature_id=WL)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
