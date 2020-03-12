@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8cebc686_c9444cc8",
+        "filename": "host/lib/chromeos_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-12T15:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6a3248_948ed3c7",
+      "revId": "0955db109b78f5a1fbf8a5dad40d409bd1e722dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad210a78_8d1e6f57",
         "filename": "host/lib/chromeos_config.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-12T00:29:15Z",
       "side": 1,
       "message": "nit: I think strtol is more common, any reason you\u0027re doing this?",
+      "revId": "0955db109b78f5a1fbf8a5dad40d409bd1e722dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e231150_2de95a94",
+        "filename": "host/lib/chromeos_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-12T15:59:51Z",
+      "side": 1,
+      "message": "strtol is more annoying to check for error, but changed since it\u0027s the style here.",
+      "parentUuid": "ad210a78_8d1e6f57",
       "revId": "0955db109b78f5a1fbf8a5dad40d409bd1e722dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -56,6 +92,30 @@
       "revId": "0955db109b78f5a1fbf8a5dad40d409bd1e722dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8bcf7f_976df76b",
+        "filename": "host/lib/include/chromeos_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-12T15:59:51Z",
+      "side": 1,
+      "message": "Yes, I think we want to keep the API consistent with libcros_config and cros_config_host.\n\nI think the idea is that one application may have a single path for all of it\u0027s configs, pass that for the same argument many times, and a differing property for each config item.",
+      "parentUuid": "0b16e77f_62a4fbe7",
+      "range": {
+        "startLine": 63,
+        "startChar": 40,
+        "endLine": 63,
+        "endChar": 79
+      },
+      "revId": "0955db109b78f5a1fbf8a5dad40d409bd1e722dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
