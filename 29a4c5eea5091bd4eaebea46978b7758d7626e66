@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ee06905_d2ca48a6",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-12T23:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83324f5_8ae87894",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "29a4c5eea5091bd4eaebea46978b7758d7626e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd05063a_804e5b13",
         "filename": "host/lib/include/host_common.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-12T05:37:58Z",
       "side": 1,
       "message": "Seems like vb2_text_vs_hash is used in cmd_sign and cmd_create for printing --help messages.  But I don\u0027t see vb2_text_vs_sig used anywhere.  Should we remove the extern, or add it into a help message somewhere?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "29a4c5eea5091bd4eaebea46978b7758d7626e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355b049d_33446cda",
+        "filename": "host/lib/include/host_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-12T23:29:34Z",
+      "side": 1,
+      "message": "Ehh... now you made me look at how crappy this is all implemented. I just wanted to quickly export a function... :/\n\nRewrote the whole thing, PTAL.",
+      "parentUuid": "bd05063a_804e5b13",
       "range": {
         "startLine": 27,
         "startChar": 0,
