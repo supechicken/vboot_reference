@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "13529643_2842e8c5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-12T07:23:11Z",
+      "side": 1,
+      "message": "Actually there are screens for those \u0027booting\u0027 like https://docs.google.com/presentation/d/1sUCPomFQiLPJApgjCUYhSGLHPCODe1je_YyPTZENz54/edit#slide\u003did.g62d02357e6_0_120\n\nFor a example, if we enter dev menu and do nothing:\n- Waiting in the main loop til timeout (not being introduced in this CL)\n- get default_boot (which is boot from internal)\n- display a screen like the about one\n- TryLoadKernel()\n\nSo the intended UI flow should draw a \u0027your device is booting...\u0027 screen in a snap.\n\n--\n\nExcept for the UI problem, I think we will eventually need these booting actions since we will reuse the \u0027try to boot\u0027 procedures.\nFor boot legacy, we can select it from altfw menu, press Ctrl+L, press 0-9, or wait til timeout. But all the above need to\n1. check dev boot allowed\n2. check altfw allowed\n3. try altfw\nand have correspond error messages to display for each step.\n(like the will-be-deprecated legacy function vb2_try_altfw() at vboot_ui_legacy_common.c)\n\nI think we should place these ui-related action in separate private header file?",
+      "parentUuid": "d7846f62_2ac802df",
+      "revId": "df97273cc1277b3a3bf70504c611846ace8c5b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e5b1942_076210c4",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
