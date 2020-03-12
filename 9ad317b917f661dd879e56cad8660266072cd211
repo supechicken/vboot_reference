@@ -22,6 +22,30 @@
       "revId": "9ad317b917f661dd879e56cad8660266072cd211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f862518_448b5d95",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-12T15:59:45Z",
+      "side": 1,
+      "message": "On line 862, we need to free the value returned from cros_config_get_string, but we should not free the parameter passed to firmware_image_name.",
+      "parentUuid": "30770405_0136cc69",
+      "range": {
+        "startLine": 832,
+        "startChar": 13,
+        "endLine": 832,
+        "endChar": 35
+      },
+      "revId": "9ad317b917f661dd879e56cad8660266072cd211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
