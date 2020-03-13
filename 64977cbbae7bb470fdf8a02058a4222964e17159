@@ -22,6 +22,30 @@
       "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20a8436_3dfb8fc7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-13T10:34:39Z",
+      "side": 1,
+      "message": "VB2_TRY(expr, ctx, reason) will become _VB2_TRY_IMPL(expr, ctx, reason, NULL, 0), so it still works.\n\nFrom https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html,\n\n\u003e If the variable argument is left out when the macro is used, then the comma before the ‘##’ will be deleted.",
+      "parentUuid": "cdf01d95_f5ad8fa5",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
