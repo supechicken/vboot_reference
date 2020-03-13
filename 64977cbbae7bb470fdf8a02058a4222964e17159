@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2365e688_d3d6a445",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-13T17:48:58Z",
+      "side": 1,
+      "message": "(Not sure why you changed this, the point was to prefix all locals with _vb2_try_ because the macro is called that way. Not that it matters very much as long as it\u0027s unique enough.)",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdf01d95_f5ad8fa5",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 14
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "VB2_TRY(expr, ctx, reason) will become _VB2_TRY_IMPL(expr, ctx, reason, NULL, 0), so it still works.\n\nFrom https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html,\n\n\u003e If the variable argument is left out when the macro is used, then the comma before the ‘##’ will be deleted.",
       "parentUuid": "cdf01d95_f5ad8fa5",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3928d531_74868e43",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-13T17:48:58Z",
+      "side": 1,
+      "message": "Note that this syntax is a GCC extension while __VA_ARGS__ is in the standard. Again doesn\u0027t really matter but not sure why you changed it.",
+      "parentUuid": "e20a8436_3dfb8fc7",
       "range": {
         "startLine": 46,
         "startChar": 45,
