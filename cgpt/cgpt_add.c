@@ -3,71 +3,63 @@
  * found in the LICENSE file.
  */
 
+#include <stdio.h>
 #include <string.h>
 
 #include "cgpt.h"
 #include "cgptlib_internal.h"
 #include "cgpt_params.h"
-#include "utility.h"
 #include "vboot_host.h"
 
+#define DUMP_CGPT_SIZE 256
+#define DUMP_CGPT_APPEND(format, args...) do { \
+	used += snprintf(buf + used, DUMP_CGPT_SIZE - used, format, ## args); \
+} while (0)
+
 static const char* DumpCgptAddParams(const CgptAddParams *params) {
-  static char buf[256];
+  static char buf[DUMP_CGPT_SIZE];
   char tmp[64];
+  uint32_t used = 0;
 
   buf[0] = 0;
-  snprintf(tmp, sizeof(tmp), "-i %d ", params->partition);
-  StrnAppend(buf, tmp, sizeof(buf));
+  DUMP_CGPT_APPEND("-i %d ", params->partition);
   if (params->label) {
-    snprintf(tmp, sizeof(tmp), "-l %s ", params->label);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-l %s ", params->label);
   }
   if (params->set_begin) {
-    snprintf(tmp, sizeof(tmp), "-b %llu ", (unsigned long long)params->begin);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-b %llu ", (unsigned long long)params->begin);
   }
   if (params->set_size) {
-    snprintf(tmp, sizeof(tmp), "-s %llu ", (unsigned long long)params->size);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-s %llu ", (unsigned long long)params->size);
   }
   if (params->set_type) {
     GuidToStr(&params->type_guid, tmp, sizeof(tmp));
-    StrnAppend(buf, "-t ", sizeof(buf));
-    StrnAppend(buf, tmp, sizeof(buf));
-    StrnAppend(buf, " ", sizeof(buf));
+    DUMP_CGPT_APPEND("-t %s ", tmp);
   }
   if (params->set_unique) {
     GuidToStr(&params->unique_guid, tmp, sizeof(tmp));
-    StrnAppend(buf, "-u ", sizeof(buf));
-    StrnAppend(buf, tmp, sizeof(buf));
-    StrnAppend(buf, " ", sizeof(buf));
+    DUMP_CGPT_APPEND("-u %s ", tmp);
   }
   if (params->set_successful) {
-    snprintf(tmp, sizeof(tmp), "-S %d ", params->successful);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-S %d ", params->successful);
   }
   if (params->set_tries) {
-    snprintf(tmp, sizeof(tmp), "-T %d ", params->tries);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-T %d ", params->tries);
   }
   if (params->set_priority) {
-    snprintf(tmp, sizeof(tmp), "-P %d ", params->priority);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-P %d ", params->priority);
   }
   if (params->set_required) {
-    snprintf(tmp, sizeof(tmp), "-R %d ", params->required);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-R %d ", params->required);
   }
   if (params->set_legacy_boot) {
-    snprintf(tmp, sizeof(tmp), "-B %d ", params->legacy_boot);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-B %d ", params->legacy_boot);
   }
   if (params->set_raw) {
-    snprintf(tmp, sizeof(tmp), "-A %#x ", params->raw_value);
-    StrnAppend(buf, tmp, sizeof(buf));
+    DUMP_CGPT_APPEND("-A %#x ", params->raw_value);
   }
 
-  StrnAppend(buf, "\n", sizeof(buf));
+  DUMP_CGPT_APPEND("\n");
   return buf;
 }
 
