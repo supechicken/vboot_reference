@@ -93,6 +93,30 @@
       "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f515dfa6_c1293f7f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-16T03:18:07Z",
+      "side": 1,
+      "message": "Using \u0027##\u0027 allows us to explicitly write the first argument as \u0027expr\u0027, and I think this definition is clearer to the users.\n\n\u003e Note that this syntax is a GCC extension while __VA_ARGS__ is in the standard.\n\nI wasn\u0027t aware that \u0027args...\u0027 is an extension. Let\u0027s change it back.",
+      "parentUuid": "3928d531_74868e43",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
