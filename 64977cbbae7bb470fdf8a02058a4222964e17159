@@ -141,6 +141,30 @@
       "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f73b959_b4d265b3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T07:27:15Z",
+      "side": 1,
+      "message": "Oops... I meant what happens when we feed *two* arguments to VB2_TRY?\n\nRegardless, how about we add some documentation here explaining the different forms of VB2_TRY that can be called, since it\u0027s not immediately obvious by looking at the macro definition?",
+      "parentUuid": "f515dfa6_c1293f7f",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "64977cbbae7bb470fdf8a02058a4222964e17159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
