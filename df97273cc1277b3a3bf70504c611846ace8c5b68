@@ -168,6 +168,24 @@
     },
     {
       "key": {
+        "uuid": "5acac366_700ceb01",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T10:30:25Z",
+      "side": 1,
+      "message": "Thanks for pointing the boot screens out.  I realized there\u0027s an ongoing discussion about this in the string review doc:\n\nhttps://docs.google.com/document/d/1kiYd7HsikVFeUEsLImLmg152wXa_v8N_-Zwe_yYdn1w/edit?disco\u003dAAAAGP1nfHY\n\nLet\u0027s first decide in the doc under what situation a UI should be shown, and then we can decide whether we need the \"action\" helper functions here.  How does that sound?",
+      "parentUuid": "13529643_2842e8c5",
+      "revId": "df97273cc1277b3a3bf70504c611846ace8c5b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e5b1942_076210c4",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
