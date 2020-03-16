@@ -22,6 +22,75 @@
       "revId": "597e5589b39b2b58ac346c2bb7305f6e4a229fc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ca5f66_6301fcd1",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T10:01:22Z",
+      "side": 1,
+      "message": "Probably can just take the \"_retval\" out of these identifiers, since it\u0027s being generalized into both the return value and the expected get_info_flags value.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "597e5589b39b2b58ac346c2bb7305f6e4a229fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c230eee_93c810df",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T10:01:22Z",
+      "side": 1,
+      "message": "You can just put TEST_TRUE(0, \"Ran out of mock_vbtlk entries!\").  Can probably reverse the if/else loop:\n\n  if (total \u003e ARRAY_SIZE) {\n    TEST_TRUE(...)\n    return;\n  }",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 61
+      },
+      "revId": "597e5589b39b2b58ac346c2bb7305f6e4a229fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6773df_031fb981",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T10:01:22Z",
+      "side": 1,
+      "message": "VB2_DEBUG",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 8
+      },
+      "revId": "597e5589b39b2b58ac346c2bb7305f6e4a229fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
