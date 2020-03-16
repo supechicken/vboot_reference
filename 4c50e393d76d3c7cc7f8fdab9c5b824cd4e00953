@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa8b782_913c290f",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-16T21:47:54Z",
+      "side": 1,
+      "message": "Looking at the only place where this is called, is there any reason it is written this weirdly? Why not just call Error() a bunch of times directly in here?",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06440de3_c5dd0d34",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-16T21:47:54Z",
+      "side": 1,
+      "message": "How is this supposed to work in overflow situations? snprintf() returns the number of characters that would have been printed, not those that were actually printed. And the second argument is unsigned, so you\u0027ll underflow into a huge number there. You\u0027ll have to double-check that used isn\u0027t exceeding size after every call or something.\n\n(I\u0027m also not really sure how much I would trust libpayload\u0027s snprintf() to always get the return value right, since it\u0027s so rarely used. It\u0027s certainly trying to calculate it, but whether that works in all edge cases... well, it should be good enough for debug, I guess, but please manually check that it still looks correct after this patch.)",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d4d1ab_3f1ce4ab",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-16T21:47:54Z",
+      "side": 1,
+      "message": "BTW this is gonna be 201 columns for 64 byte nvdata. We should make sure that doesn\u0027t blow out our screen size.",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
