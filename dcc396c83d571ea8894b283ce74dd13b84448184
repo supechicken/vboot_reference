@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e000b439_140493dc",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-18T09:38:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e63e8c85_8a136a38",
+      "range": {
+        "startLine": 854,
+        "startChar": 29,
+        "endLine": 854,
+        "endChar": 31
+      },
+      "revId": "dcc396c83d571ea8894b283ce74dd13b84448184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20aedf02_70a691ab",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f7d3bcd_7166d84b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-18T09:38:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20aedf02_70a691ab",
+      "range": {
+        "startLine": 885,
+        "startChar": 26,
+        "endLine": 885,
+        "endChar": 28
+      },
+      "revId": "dcc396c83d571ea8894b283ce74dd13b84448184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15c24ac7_230f3d33",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-18T07:51:21Z",
       "side": 1,
       "message": "Not sure I see the point in these two variables?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "dcc396c83d571ea8894b283ce74dd13b84448184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b4b4bd_fa20467a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-18T09:38:40Z",
+      "side": 1,
+      "message": "That is for default return value.\nIt is a mimic of legacy tests, I suggest to rewrite it and define each return value for each test.\n\nThere are one things to discuss:\nHow to handle tests with \u0027no return function\u0027 VbExLegacy()?\n(Since I think we can not mock a no return function?)",
+      "parentUuid": "15c24ac7_230f3d33",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "dcc396c83d571ea8894b283ce74dd13b84448184",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f31fb8d6_49bef223",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-18T09:38:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64955de1_484eae10",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 53
+      },
+      "revId": "dcc396c83d571ea8894b283ce74dd13b84448184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
