@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9cf577bb_55a4dd80",
+        "filename": "cgpt/cgpt_add.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T09:36:53Z",
+      "side": 1,
+      "message": "Ah..... very good point.  We can\u0027t just use Error(), since it prints a \"ERROR: \" prefix.  But I don\u0027t see why we can\u0027t just call fprintf(stderr) here.",
+      "parentUuid": "9aa8b782_913c290f",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06440de3_c5dd0d34",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7a18be0e_43e48244",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T09:36:53Z",
+      "side": 1,
+      "message": "\u003e returns the number of characters that would have been printed\n\nThanks for bringing that up.  I\u0027ve added a check for used \u003c DEBUG_INFO_SIZE, and manually checked that the debug output is properly printed (or truncated).  Is that okay?",
+      "parentUuid": "06440de3_c5dd0d34",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30d4d1ab_3f1ce4ab",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-03-16T21:47:54Z",
       "side": 1,
       "message": "BTW this is gonna be 201 columns for 64 byte nvdata. We should make sure that doesn\u0027t blow out our screen size.",
+      "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461dd438_900cda1a",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T09:36:53Z",
+      "side": 1,
+      "message": "Ack.  It prints fine (after increasing DEBUG_INFO_SIZE), but it\u0027s kind of hard to look at.  Splitting it into 16-byte blocks.",
+      "parentUuid": "30d4d1ab_3f1ce4ab",
       "revId": "4c50e393d76d3c7cc7f8fdab9c5b824cd4e00953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
