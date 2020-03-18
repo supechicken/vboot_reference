@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76f69bb0_a410cde2",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Just include 2sysincludes.h?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804d9cda_6b6d18d3",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Seems fine to do this... but just wondering how this fits into our \"mock compile-time option\" testing idea.  Should we just throw our hands up in cases like this and use a hard-coded value?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741e0a77_47a6d8d7",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "I might move this down closer to vb2_crypto_to_hash to make their relationship clearer.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 72
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd76889_a12a0559",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Am I missing something?  Why don\u0027t we check table[0]?",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d930b34_b903fbce",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "I guess it\u0027s only a static function, but aren\u0027t \"out\" arguments usually at the end?",
+      "range": {
+        "startLine": 207,
+        "startChar": 42,
+        "endLine": 207,
+        "endChar": 60
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbca819a_61c058ca",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Slightly concerned that we don\u0027t want to provide such a multi-purpose function.  Is this going to make life a lot easier for callers?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 29
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd9bba1_dcd3645b",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "\"t\" or also uppercase the other three comments.",
+      "range": {
+        "startLine": 223,
+        "startChar": 6,
+        "endLine": 223,
+        "endChar": 7
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7c2ad2_47b7122f",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "What exactly is the line of division between 2crypto.c and 2sha_utility.c?",
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7712da2c_9ad5aa47",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "So are we exporting this for use via something like vb2_crypto.h?  Or is it currently only for firmware/host use?",
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9021ee32_bb3b8c55",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Use 2sysincludes.h?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3d32ac_39479663",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Can\u0027t we just return sig_alg, and use VB2_SIG_INVALID for the invalid case?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15e6ff0_24056628",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 57
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72303010_da7a90be",
+        "filename": "tests/vb2_crypto_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-18T08:19:06Z",
+      "side": 1,
+      "message": "Keep copyright and file comment in the same comment block, with blank \" *\" line in between.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
