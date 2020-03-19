@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2b3c74a_70a12ec7",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T06:06:15Z",
+      "side": 1,
+      "message": "We put a single space before labels in vboot code (for some reason?).",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 1
+      },
+      "revId": "39cc744eafbca744572586c958533d588558b061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
