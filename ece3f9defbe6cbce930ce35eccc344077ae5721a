@@ -16,6 +16,24 @@
       "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f91b510_e96c9f8c",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T07:24:10Z",
+      "side": 1,
+      "message": "I don\u0027t really like aligning with spaces... since it puts a dependency on our font (which is changing soon).  I don\u0027t mind doing two or four-space indentation, which looks okay (latest PS).  Or we can just put a newline right after \"nvdata:\" too.\n\nhttps://drive.google.com/a/google.com/file/d/1C-2hP-CPHS5N0TYgRdAac_VQ0vcw8A4W/view\nhttps://drive.google.com/a/google.com/file/d/1K9poiEruHb9bY47hmNndhIfwaAS6xSOL/view\nhttps://drive.google.com/a/google.com/file/d/16SSpx7gvWz5qywf1SGVsaMztB-wcjBx4/view",
+      "parentUuid": "7d8f235b_f79d1203",
+      "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
