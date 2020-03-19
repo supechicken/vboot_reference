@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3f0f9f_0fb9a4f6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T07:15:20Z",
+      "side": 1,
+      "message": "Maybe turn this on its head to be clearer about the reason:\n\n  Note that nvdata only holds one byte for recovery subcode,\n  so any other more significant bytes will be truncated.",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "f2b7ea8fff2fc325ddbf2567769d905074598b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0185eec0_66a72f2c",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T07:15:20Z",
+      "side": 1,
+      "message": "One more case for VB2_TRY(expr, ...) success?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 29
+      },
+      "revId": "f2b7ea8fff2fc325ddbf2567769d905074598b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
