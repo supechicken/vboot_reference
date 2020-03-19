@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "074865fa_90cc1609",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76f69bb0_a410cde2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804d9cda_6b6d18d3",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-18T08:19:06Z",
       "side": 1,
       "message": "Seems fine to do this... but just wondering how this fits into our \"mock compile-time option\" testing idea.  Should we just throw our hands up in cases like this and use a hard-coded value?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242ab290_b4349674",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "I mean, this isn\u0027t really a test, it\u0027s just an assertion. I can either leave it out or write it like this. Since we usually have all algorithms enabled anyway, I think it\u0027s still useful.",
+      "parentUuid": "804d9cda_6b6d18d3",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b204658b_907f4646",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Yeah... should probably just inline it if it\u0027s only used there now.",
+      "parentUuid": "741e0a77_47a6d8d7",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 72
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efd76889_a12a0559",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-18T08:19:06Z",
       "side": 1,
       "message": "Am I missing something?  Why don\u0027t we check table[0]?",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f49b54_b1b7de24",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "I just copied this from the old implementation. table[0] is always \"invalid\"/\"none\". But I guess there\u0027s no reason why we shouldn\u0027t be able to match that. Fixed.",
+      "parentUuid": "efd76889_a12a0559",
       "range": {
         "startLine": 153,
         "startChar": 13,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8c7b0a53_379dc653",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Are they? I\u0027m not aware of any specific rule but I can change it if you prefer.",
+      "parentUuid": "3d930b34_b903fbce",
+      "range": {
+        "startLine": 207,
+        "startChar": 42,
+        "endLine": 207,
+        "endChar": 60
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbca819a_61c058ca",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2020-03-18T08:19:06Z",
       "side": 1,
       "message": "Slightly concerned that we don\u0027t want to provide such a multi-purpose function.  Is this going to make life a lot easier for callers?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 29
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e87cf1_64e7272f",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "This is existing functionality so I don\u0027t really want to go through the effort of figuring out whether I can break it. I don\u0027t see the harm in matching numbers too.",
+      "parentUuid": "fbca819a_61c058ca",
       "range": {
         "startLine": 216,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "21a33009_40887452",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd9bba1_dcd3645b",
+      "range": {
+        "startLine": 223,
+        "startChar": 6,
+        "endLine": 223,
+        "endChar": 7
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7c2ad2_47b7122f",
         "filename": "firmware/2lib/2sha_utility.c",
         "patchSetId": 2
@@ -180,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "554f1f07_316f0847",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Wherever we want it to be. I\u0027m just pulling out the stuff here that I already have an equivalent table for in 2crypto.c for now so it\u0027s not duplicated. We could pull out the size lists too if you want to. But that doesn\u0027t really make a difference for anything.",
+      "parentUuid": "da7c2ad2_47b7122f",
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7712da2c_9ad5aa47",
         "filename": "firmware/2lib/include/2crypto.h",
         "patchSetId": 2
@@ -191,6 +377,24 @@
       "writtenOn": "2020-03-18T08:19:06Z",
       "side": 1,
       "message": "So are we exporting this for use via something like vb2_crypto.h?  Or is it currently only for firmware/host use?",
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa2f941_7778289a",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "I mean, it\u0027s already chain-included in vb2_sha.h right now. We can rename it in vb2_crypto.h and add the RSA routines too if you want. Not something I want to do with this patch, though.",
+      "parentUuid": "7712da2c_9ad5aa47",
       "revId": "ccee5690782496648f51653a60792edb049f0adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "047f599e_f1e52277",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9021ee32_bb3b8c55",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af3d32ac_39479663",
         "filename": "firmware/2lib/include/2crypto.h",
         "patchSetId": 2
@@ -231,6 +459,30 @@
       "writtenOn": "2020-03-18T08:19:06Z",
       "side": 1,
       "message": "Can\u0027t we just return sig_alg, and use VB2_SIG_INVALID for the invalid case?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "479053a0_32fe26cb",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "We could but then we couldn\u0027t make it resolve \"none\" anymore (the starting lookup from index 1 thing). Can only do one or the other. I think I find this approach here a bit cleaner.",
+      "parentUuid": "af3d32ac_39479663",
       "range": {
         "startLine": 135,
         "startChar": 0,
@@ -286,6 +538,30 @@
       "revId": "ccee5690782496648f51653a60792edb049f0adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd83000d_b495ae2e",
+        "filename": "tests/vb2_crypto_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T04:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72303010_da7a90be",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "ccee5690782496648f51653a60792edb049f0adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
