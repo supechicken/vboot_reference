@@ -52,6 +52,24 @@
       "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28cfb5a1_5081f8ee",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-19T21:40:11Z",
+      "side": 1,
+      "message": "Oh, right, this is no longer monospace. I forgot. I agree that the second version (newline after \"nvdata:\") seems best.",
+      "parentUuid": "314746c3_57bbd12a",
+      "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
