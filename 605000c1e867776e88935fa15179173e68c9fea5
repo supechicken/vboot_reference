@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b95ec8_8ff46eb8",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T06:46:05Z",
+      "side": 1,
+      "message": "We aren\u0027t using this (yet).  Let\u0027s take it out.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "605000c1e867776e88935fa15179173e68c9fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1e12b2_2f4f6362",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T06:46:05Z",
+      "side": 1,
+      "message": "Maybe use:\n\n  \"  VbTryLoadKernel called too many times\"",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 13
+      },
+      "revId": "605000c1e867776e88935fa15179173e68c9fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe17de41_df25a803",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T06:46:05Z",
+      "side": 1,
+      "message": "Could we call this mock_vbtlk_expected_flag instead?",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "605000c1e867776e88935fa15179173e68c9fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89bf0e0_5c7f5df0",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-19T06:46:05Z",
+      "side": 1,
+      "message": "No need to be so verbose \u003d)  Just use something like:\n\n  \"  unexpected get_info_flags\"\n\n(note the two spaces to denote a \"subtest\")",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 61
+      },
+      "revId": "605000c1e867776e88935fa15179173e68c9fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
