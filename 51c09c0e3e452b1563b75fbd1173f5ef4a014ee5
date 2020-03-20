@@ -22,6 +22,30 @@
       "revId": "51c09c0e3e452b1563b75fbd1173f5ef4a014ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a3d8d1_dc469c60",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-20T07:21:35Z",
+      "side": 1,
+      "message": "Since vb2_nv_get returns uint32_t, I think we can keep it as \"%d\".",
+      "parentUuid": "6462df6e_7d8fb02b",
+      "range": {
+        "startLine": 270,
+        "startChar": 36,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "revId": "51c09c0e3e452b1563b75fbd1173f5ef4a014ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
