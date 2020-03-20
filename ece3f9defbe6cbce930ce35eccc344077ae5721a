@@ -106,6 +106,24 @@
       "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e6c18a_5567169b",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-20T08:12:31Z",
+      "side": 1,
+      "message": "TBH I\u0027d be very wary of putting such a struct in the vboot API.  This is precisely the data I\u0027ve worked for the past year to stop callers from accessing.  I\u0027d be slightly more comfortable if we did that in a general key\u003dvalue pair format, but even that has the potential to be abused.  For debug data, I don\u0027t see a huge problem in having all of this output as a plain string.  (With the added benefit that it can be directly printed to console.)",
+      "parentUuid": "252cf6b1_daa7537b",
+      "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
