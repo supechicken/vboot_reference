@@ -9,6 +9,7 @@
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
+#include "2recovery_reasons.h"
 #include "2rsa.h"
 #include "2secdata.h"
 #include "2sha.h"
@@ -124,6 +125,9 @@ void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 	 * Set a recovery reason and subcode only if they're not already set.
 	 * If recovery is already requested, it's a more specific error code
 	 * than later code is providing and we shouldn't overwrite it.
+	 *
+	 * Don't print vb2_get_recovery_reason_string() here to avoid linking
+	 * recovery reason strings into coreboot stages.
 	 */
 	VB2_DEBUG("Need recovery, reason: %#x / %#x\n", reason, subcode);
 	if (!vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST)) {
@@ -138,8 +142,9 @@ void vb2_check_recovery(struct vb2_context *ctx)
 	uint32_t reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
 	uint32_t subcode = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
 
-	VB2_DEBUG("Recovery reason from previous boot: %#x / %#x\n",
-		  reason, subcode);
+	VB2_DEBUG("Recovery reason from previous boot: %#x / %#x  %s\n",
+		  reason, subcode,
+		  vb2_get_recovery_reason_string(reason));
 
 	/*
 	 * Sets the current recovery request, unless there's already been a
@@ -165,9 +170,10 @@ void vb2_check_recovery(struct vb2_context *ctx)
 	/* If recovery reason is non-zero, tell caller we need recovery mode */
 	if (sd->recovery_reason) {
 		ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
-		VB2_DEBUG("We have a recovery request: %#x / %#x\n",
+		VB2_DEBUG("We have a recovery request: %#x / %#x  %s\n",
 			  sd->recovery_reason,
-			  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE));
+			  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
+			  vb2_get_recovery_reason_string(reason));
 	}
 }
 
@@ -425,10 +431,11 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 void vb2_clear_recovery(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	uint32_t reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
 
-	VB2_DEBUG("Clearing recovery request: %#x / %#x\n",
-		  vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
-		  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE));
+	VB2_DEBUG("Clearing recovery request: %#x / %#x  %s\n",
+		  reason, vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
+		  vb2_get_recovery_reason_string(reason));
 
 	/* Clear recovery request for both cases. */
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
