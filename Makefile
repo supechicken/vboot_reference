@@ -385,10 +385,9 @@ FWLIB_SRCS = \
 	firmware/lib/gpt_misc.c \
 	firmware/lib/vboot_api_kernel.c \
 	firmware/lib/vboot_audio.c \
-	firmware/lib/vboot_display.c \
 	firmware/lib/vboot_kernel.c \
+	firmware/lib/vboot_ui_legacy.c \
 	firmware/lib/vboot_ui_legacy_clamshell.c \
-	firmware/lib/vboot_ui_legacy_common.c \
 	firmware/lib/vboot_ui_legacy_menu.c \
 	firmware/lib/vboot_ui_legacy_wilco.c \
 	firmware/lib20/api_kernel.c \
@@ -675,17 +674,17 @@ TEST_OBJS += ${TESTLIB_OBJS}
 
 # And some compiled tests.
 TEST_NAMES = \
-	tests/chromeos_config_tests \
 	tests/cgptlib_test \
+	tests/chromeos_config_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
 	tests/vboot_api_kernel4_tests \
 	tests/vboot_api_kernel_tests \
-	tests/vboot_display_tests \
 	tests/vboot_kernel_tests \
-	tests/vboot_legacy_clamshell_beep_tests \
-	tests/vboot_legacy_clamshell_tests \
-	tests/vboot_legacy_menu_tests \
+	tests/vboot_ui_legacy_clamshell_beep_tests \
+	tests/vboot_ui_legacy_clamshell_tests \
+	tests/vboot_ui_legacy_menu_tests \
+	tests/vboot_ui_legacy_tests \
 	tests/verify_kernel
 
 ifeq (${MOCK_TPM}${TPM2_MODE},)
@@ -1213,11 +1212,11 @@ ifeq (${MOCK_TPM}${TPM2_MODE},)
 endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_display_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_clamshell_beep_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_clamshell_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_legacy_menu_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_clamshell_beep_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_clamshell_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_menu_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_tests
 
 .PHONY: run2tests
 run2tests: install_for_test
