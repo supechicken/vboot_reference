@@ -2,11 +2,21 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Recovery reasons
+ * Recovery reasons.
  */
 
 #ifndef VBOOT_REFERENCE_2RECOVERY_REASONS_H_
 #define VBOOT_REFERENCE_2RECOVERY_REASONS_H_
+
+#include "2sysincludes.h"
+
+/**
+ * Return a description of the recovery reason code.
+ *
+ * @param		recovery reason code
+ * @returns A string literal with English description of the recovery reason
+ */
+const char *vb2_get_recovery_reason_string(uint8_t code);
 
 /* Recovery reason codes */
 enum vb2_nv_recovery {

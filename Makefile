@@ -360,6 +360,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2kernel.c \
 	firmware/2lib/2misc.c \
 	firmware/2lib/2nvstorage.c \
+	firmware/2lib/2recovery_reasons.c \
 	firmware/2lib/2rsa.c \
 	firmware/2lib/2secdata_firmware.c \
 	firmware/2lib/2secdata_fwmp.c \
@@ -701,6 +702,7 @@ TEST2X_NAMES = \
 	tests/vb2_misc_tests \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_utility_tests \
+	tests/vb2_recovery_reasons_tests \
 	tests/vb2_secdata_firmware_tests \
 	tests/vb2_secdata_fwmp_tests \
 	tests/vb2_secdata_kernel_tests \
