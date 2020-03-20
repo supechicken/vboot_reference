@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "758c26cf_dd496489",
+        "filename": "futility/updater.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "let\u0027s call this cros_config_name or cros_config_image_name.",
+      "range": {
+        "startLine": 257,
+        "startChar": 24,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1221d97c_7fb62b0e",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "we do need to show the long help message below, so don\u0027t early return.",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 836,
+        "endChar": 15
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c87894_042e07d9",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "Let\u0027s make it explicit, say\n\n cros_config /firmware:image-name: %s\n\nOtherwise people may get confused since the updater is also reporting lots of \"firmware image\" in the debug logs.",
+      "range": {
+        "startLine": 839,
+        "startChar": 13,
+        "endLine": 839,
+        "endChar": 32
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e8aac1_c0b297f0",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "This is confusing for people who didn\u0027t read the source because \"firmware image\" maybe refer to the image files inside bundle.\n\nConsidering this is also the error message when user passed \u0027--model\u0027, I think we should keep calling it model - just no need to say \"this is from mosys platform model\".",
+      "range": {
+        "startLine": 848,
+        "startChar": 2,
+        "endLine": 850,
+        "endChar": 0
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20984ab1_f0409585",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "Please keep the early/oldbranch info. We\u0027ve seen lots of complaints about developers in early stage when this message is not clear enough.\n\n You are probably running an image for wrong board, or\n a device in early stage that \u0027cros_config\u0027 is not fully updated, or\n image from old (or factory) branches that the cros_config data is\n not up to date to identify this device.\n Check the command \u0027cros_config /firmware image-name\u0027,\n which should output one of the supported names below:",
+      "range": {
+        "startLine": 852,
+        "startChar": 4,
+        "endLine": 852,
+        "endChar": 53
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be92ecb_80ed034d",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-03-20T03:57:50Z",
+      "side": 1,
+      "message": "well, it\u0027ll be confusing here because we asked user to specify --model and say that was the model name, but the error message said firmware image.\n\nCan we keep the term \u0027model\u0027 and only changing the internal retrieval command?",
+      "range": {
+        "startLine": 423,
+        "startChar": 37,
+        "endLine": 424,
+        "endChar": 49
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
