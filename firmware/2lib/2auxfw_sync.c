@@ -11,7 +11,7 @@
 #include "2nvstorage.h"
 #include "2sysincludes.h"
 #include "vboot_api.h"
-#include "vboot_display.h"
+#include "vboot_ui_legacy.h"
 
 /**
  * Display the WAIT screen
