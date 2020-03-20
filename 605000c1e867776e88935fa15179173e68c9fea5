@@ -114,6 +114,30 @@
       "revId": "605000c1e867776e88935fa15179173e68c9fea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6270be9_3c43a41c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-20T07:56:05Z",
+      "side": 1,
+      "message": "Sure, we can print a decimal here.  Probably should use %d since |locale| here is unsigned.",
+      "parentUuid": "266f4365_574749bc",
+      "range": {
+        "startLine": 126,
+        "startChar": 47,
+        "endLine": 126,
+        "endChar": 50
+      },
+      "revId": "605000c1e867776e88935fa15179173e68c9fea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
