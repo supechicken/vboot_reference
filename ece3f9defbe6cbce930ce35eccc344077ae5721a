@@ -88,6 +88,24 @@
       "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252cf6b1_daa7537b",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-20T08:06:52Z",
+      "side": 1,
+      "message": "This might be unrelated, but I wonder if we must generate such long string for the debug info screen. Alternatively, we may pack everything needed as a struct and pass it to depthcharge, and let depthcharge decide the layout of the screen (including the problem we\u0027re discussing here). In this way, it\u0027s even possible (but maybe overskilled) to align the 4 lines of nvdata (without the extra newline) in non-monospaced font.",
+      "parentUuid": "310363b6_d17a438f",
+      "revId": "ece3f9defbe6cbce930ce35eccc344077ae5721a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
