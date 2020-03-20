@@ -44,6 +44,17 @@ vb2_error_t VbExDisplayDebugInfo(const char *info_str, int full_info)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t VbExGetLocalizationCount(uint32_t *count)
+{
+	*count = 0;
+	return VB2_ERROR_UNKNOWN;
+}
+
+vb2_error_t VbExGetAltFwIdxMask(void)
+{
+	return 0;
+}
+
 uint32_t VbExKeyboardRead(void)
 {
 	return 0;
