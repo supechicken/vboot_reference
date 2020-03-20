@@ -12,9 +12,9 @@
 #include "2secdata.h"
 #include "2sysincludes.h"
 #include "vboot_api.h"
-#include "vboot_display.h"
 #include "vboot_kernel.h"
 #include "vboot_test.h"
+#include "vboot_ui_legacy.h"
 
 #define SYNC_FLAG(select)					\
 	((select) == VB_SELECT_FIRMWARE_READONLY ?		\
