@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "771d0ee4_d5197c0e",
+        "filename": "futility/updater.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "I changed it to \"firmware_name\", which is consistent with the terminology used in go/mosys-firmware-name, and should hopefully reduce the confusion around the image.",
+      "parentUuid": "758c26cf_dd496489",
+      "range": {
+        "startLine": 257,
+        "startChar": 24,
+        "endLine": 257,
+        "endChar": 43
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1221d97c_7fb62b0e",
         "filename": "futility/updater_archive.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece2841f_e6fa268f",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1221d97c_7fb62b0e",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 836,
+        "endChar": 15
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6fe005e5_17baa8ce",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "See first comment.",
+      "parentUuid": "00c87894_042e07d9",
+      "range": {
+        "startLine": 839,
+        "startChar": 13,
+        "endLine": 839,
+        "endChar": 32
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19e8aac1_c0b297f0",
         "filename": "futility/updater_archive.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2deb6344_0a9e37ee",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e8aac1_c0b297f0",
+      "range": {
+        "startLine": 848,
+        "startChar": 2,
+        "endLine": 850,
+        "endChar": 0
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f1d8c879_062b4895",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20984ab1_f0409585",
+      "range": {
+        "startLine": 852,
+        "startChar": 4,
+        "endLine": 852,
+        "endChar": 53
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9be92ecb_80ed034d",
         "filename": "tests/futility/test_update.sh",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0df0b3_0570c081",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-20T22:41:30Z",
+      "side": 1,
+      "message": "Since a single model may use different firmware depending on the software configuration (this is the entire point of go/mosys-firmware-name), the term model would be incorrect.\n\nI renamed the command line parameter for you, and --model can be a deprecated alias for this.",
+      "parentUuid": "9be92ecb_80ed034d",
+      "range": {
+        "startLine": 423,
+        "startChar": 37,
+        "endLine": 424,
+        "endChar": 49
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
