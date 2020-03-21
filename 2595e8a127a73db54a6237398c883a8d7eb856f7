@@ -52,6 +52,24 @@
       "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10afce48_624d696f",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-03-21T04:18:29Z",
+      "side": 1,
+      "message": "what you have here is what you want then\n\nusually people use `` to avoid worrying about make expanding the $()",
+      "parentUuid": "345f8dde_ccebfb48",
+      "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
