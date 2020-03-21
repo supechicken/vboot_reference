@@ -34,6 +34,24 @@
       "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345f8dde_ccebfb48",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-21T00:31:42Z",
+      "side": 1,
+      "message": "Well, no, I want to *exclude* the subdirectories. -R would also copy them. (Not sure why tbh but that\u0027s what doins in the ebuild seems to do right now, and I wanted these changes to be output-neutral.)",
+      "parentUuid": "2448e056_6a3c8985",
+      "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
