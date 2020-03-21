@@ -305,6 +305,30 @@
       "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba4161c5_426e1180",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-21T20:25:36Z",
+      "side": 1,
+      "message": "In the case where a model has multiple firmware images, there is only one we ship on consumer devices (e.g., sarien vs. sarien_signed). Presumably, we only test the signed firmware.\n\nFor the partner docs, we can submit follow-up CLs to update the documentation.",
+      "parentUuid": "d76ae2e8_4f053f7e",
+      "range": {
+        "startLine": 423,
+        "startChar": 37,
+        "endLine": 424,
+        "endChar": 49
+      },
+      "revId": "22cae15329592680cfa4db22216b7d3245f643aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
