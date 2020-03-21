@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e0c9d92_fb4ab56d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-21T01:18:39Z",
+      "side": 1,
+      "message": "It would be good to make this available from hostlib too. These strings are currently duplicated in mosys, it would be nice to use this over there as well.",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf2d567_b5ff5e76",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-21T01:18:39Z",
+      "side": 1,
+      "message": "This means we\u0027d be linking the whole table into every coreboot stage that calls some vboot API that can fail (i.e. most of them). I\u0027d rather not. Developers reading UART logs should be okay with looking up a number. (Same goes for vb2_check_recovery().)",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eac0e87_372f2983",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-21T01:18:39Z",
+      "side": 1,
+      "message": "This one, since it\u0027s only linked into depthcharge, should be okay.",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7715ade9_541b00e1",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 1
@@ -13,6 +64,24 @@
       "writtenOn": "2020-03-20T09:58:46Z",
       "side": 1,
       "message": "We might want to add the 2 missing reasons:\n\n VB2_RECOVERY_RO_INVALID_RW_CHECK_MAX\n VB2_RECOVERY_SECDATA_FWMP_INIT",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d05ef4_e91fc26d",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-21T01:18:39Z",
+      "side": 1,
+      "message": "RW_CHECK_MAX is not a reason, just a marker for the end of the RW_CHECK group. FWMP_INIT, I agree.",
+      "parentUuid": "7715ade9_541b00e1",
       "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
