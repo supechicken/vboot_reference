@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7e8ed85_6b9578f1",
+        "filename": "firmware/lib/vboot_ui_legacy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T22:35:53Z",
+      "side": 1,
+      "message": "You rolled back your own change to an earlier patch set here.",
+      "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86e3d69_305843be",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T22:35:53Z",
+      "side": 1,
+      "message": "VbDisplayScreen() is still called from this file, it\u0027s not a clamshell-only function. Are you sure you don\u0027t want to put it in the common file instead?",
+      "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
