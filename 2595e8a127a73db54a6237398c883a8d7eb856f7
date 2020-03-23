@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "4e7ff874_0d758263",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T20:09:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10afce48_624d696f",
+      "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ba656b3_cccd34fc",
         "filename": "Makefile",
         "patchSetId": 1
@@ -96,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "600ea9d1_8b6a072a",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T20:09:25Z",
+      "side": 1,
+      "message": "Yeah, they seem pointless to me. But I can add them back if you want.",
+      "parentUuid": "4ba656b3_cccd34fc",
+      "range": {
+        "startLine": 971,
+        "startChar": 15,
+        "endLine": 971,
+        "endChar": 16
+      },
+      "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "433786fb_3ff38b75",
         "filename": "Makefile",
         "patchSetId": 1
@@ -107,6 +149,30 @@
       "writtenOn": "2020-03-23T08:10:46Z",
       "side": 1,
       "message": "Not needed?",
+      "range": {
+        "startLine": 973,
+        "startChar": 13,
+        "endLine": 973,
+        "endChar": 23
+      },
+      "revId": "2595e8a127a73db54a6237398c883a8d7eb856f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c582646c_4d1d1bde",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T20:09:25Z",
+      "side": 1,
+      "message": "Yeah, it already was before this patch. Removed.",
+      "parentUuid": "433786fb_3ff38b75",
       "range": {
         "startLine": 973,
         "startChar": 13,
