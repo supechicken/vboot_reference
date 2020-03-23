@@ -22,6 +22,23 @@
       "revId": "bee4eafca728c4eab8c2dfe3b36f2b9b6cafda2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a13421f_cbdd5fd6",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-23T20:31:20Z",
+      "side": 1,
+      "message": "I would say either we don\u0027t care about size and keep all the strings in here (which makes more sense if we want to share this table with mosys) or we stick to having \"Unknown or deprecated error code\" together. Jump tables aren\u0027t free either.",
+      "revId": "bee4eafca728c4eab8c2dfe3b36f2b9b6cafda2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
