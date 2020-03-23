@@ -1251,6 +1251,7 @@ rununittests: runcgpttests runmisctests run2tests
 
 .PHONY: runtests
 runtests: rununittests runtestscripts runfutiltests
+	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
 # Code coverage
 .PHONY: coverage_init
