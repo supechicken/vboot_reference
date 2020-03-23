@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13d79d18_9cb2a2f5",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-23T06:39:32Z",
+      "side": 1,
+      "message": "Ack.  Would it be better to expose this function as part of the vboot API?",
+      "parentUuid": "2e0c9d92_fb4ab56d",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acf2d567_b5ff5e76",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8f8a179e_052dd5af",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-23T06:39:32Z",
+      "side": 1,
+      "message": "Yeah, fair enough... I\u0027ll take it out here.",
+      "parentUuid": "acf2d567_b5ff5e76",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eac0e87_372f2983",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2dc58f1_af32ce90",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-23T06:39:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eac0e87_372f2983",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +139,24 @@
       "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347813a4_1598eb49",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-23T06:39:32Z",
+      "side": 1,
+      "message": "Seems like I deprecated RW_CHECK_MIN before along with the VBSD_LF_CHECK_* constants.  Should we deprecate RW_CHECK_MAX too?  Or is there value in having actual recovery reasons allocated for the start/end markers?\n\nAdded one for SECDATA_FWMP_INIT.",
+      "parentUuid": "c5d05ef4_e91fc26d",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
