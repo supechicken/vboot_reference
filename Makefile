@@ -185,6 +185,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# DETACHABLE indicates whether the device is a detachable or not
+ifneq ($(filter-out 0,${DETACHABLE}),)
+CFLAGS += -DDETACHABLE=1
+else
+CFLAGS += -DDETACHABLE=0
+endif
+
 # Enable the menu-based user interface.
 ifneq ($(filter-out 0,${MENU_UI}),)
 CFLAGS += -DMENU_UI=1
@@ -372,6 +379,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2sha_utility.c \
 	firmware/2lib/2tpm_bootmode.c \
 	firmware/2lib/2ui.c \
+	firmware/2lib/2ui_screens.c \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
@@ -660,7 +668,8 @@ TESTLIB = ${BUILD}/tests/test.a
 TESTLIB_SRCS = \
 	tests/test_common.c \
 	tests/timer_utils.c \
-	tests/crc32_test.c
+	tests/crc32_test.c \
+	tests/vb2_ui_test_common.c
 
 TESTLIB_OBJS = ${TESTLIB_SRCS:%.c=${BUILD}/%.o}
 TEST_OBJS += ${TESTLIB_OBJS}
@@ -716,6 +725,7 @@ TEST2X_NAMES = \
 	tests/vb2_sha_api_tests \
 	tests/vb2_sha_tests \
 	tests/vb2_ui_tests \
+	tests/vb2_ui_utility_tests \
 	tests/hmac_test
 
 TEST20_NAMES = \
@@ -1233,6 +1243,7 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_api_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_ui_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_ui_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_api_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb20_misc_tests
