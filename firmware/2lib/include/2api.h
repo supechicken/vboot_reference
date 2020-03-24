@@ -1150,6 +1150,15 @@ enum vb2_screen {
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x10,
 	/* Wait screen for touchpad sync */
 	VB2_SCREEN_TOUCHPAD_SYNC		= 0x11,
+	/* First recovery screen to select recovering from disk or phone */
+	VB2_SCREEN_RECOVERY_SELECT    = 0x200,
+	/* Recovery - inserted invalid image */
+	VB2_SCREEN_RECOVERY_NO_GOOD   = 0x203,
+	/* Recovery - confirm dev mode */
+	VB2_SCREEN_RECOVERY_TO_DEV    = 0x204,
+	/* Recovery - not allowed ("BROKEN") */
+	VB2_SCREEN_RECOVERY_BROKEN    = 0x208,
+
 };
 
 /**
