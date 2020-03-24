@@ -10,6 +10,7 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "test_common.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"
@@ -36,6 +37,8 @@ static uint32_t mock_vbtlk_expected_flag[5];
 static int mock_vbtlk_count;
 static int mock_vbtlk_total;
 
+static int mock_allow_recovery_retval;
+
 static void add_mock_vbtlk(vb2_error_t retval, uint32_t get_info_flags)
 {
 	if (mock_vbtlk_total >= ARRAY_SIZE(mock_vbtlk_retval) ||
@@ -49,8 +52,15 @@ static void add_mock_vbtlk(vb2_error_t retval, uint32_t get_info_flags)
 	mock_vbtlk_total++;
 }
 
+/* Type of test to reset for */
+enum reset_type {
+	FOR_DEVELOPER,
+	FOR_BROKEN,
+	FOR_RECOVERY,
+};
+
 /* Reset mock data (for use before each test) */
-static void reset_common_data()
+static void reset_common_data(enum reset_type t)
 {
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
@@ -71,9 +81,18 @@ static void reset_common_data()
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
+
+	mock_allow_recovery_retval = (t != FOR_BROKEN);
 }
 
 /* Mock functions */
+
+int vb2_allow_recovery(struct vb2_context *c)
+{
+	return mock_allow_recovery_retval;
+}
 
 enum vb2_dev_default_boot vb2_get_dev_boot_target(struct vb2_context *c)
 {
@@ -144,7 +163,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 static void developer_tests(void)
 {
 	/* Proceed */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed");
 	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
@@ -155,7 +174,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to legacy */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
 	mock_dev_boot_legacy_allowed = 1;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to legacy");
@@ -167,7 +186,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to legacy only if enabled */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
@@ -181,7 +200,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to usb */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
 	mock_dev_boot_usb_allowed = 1;
@@ -192,7 +211,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to usb only if enabled */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
