@@ -10,6 +10,7 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "test_common.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"
@@ -71,6 +72,8 @@ static void reset_common_data()
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
 }
 
 /* Mock functions */
