@@ -24,8 +24,81 @@
 /* Delay type (in msec) of developer and recovery mode menu looping. */
 #define KEY_DELAY		20	/* Check keyboard inputs */
 
+/* Global variables */
+static enum {
+	POWER_BUTTON_HELD_SINCE_BOOT = 0,
+	POWER_BUTTON_RELEASED,
+	POWER_BUTTON_PRESSED,  /* Must have been previously released */
+} power_button_state;
+
+/*****************************************************************************/
+/* Utilities */
+
+/**
+ * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
+ * determine if a shutdown is required.
+ *
+ * Returns true if a shutdown is required and false if no shutdown is required.
+ */
+static int vb2_want_shutdown(struct vb2_context *ctx, uint32_t key)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	uint32_t shutdown_request = VbExIsShutdownRequested();
+
+	/*
+	 * Ignore power button push until after we have seen it released.
+	 * This avoids shutting down immediately if the power button is still
+	 * being held on startup. After we've recognized a valid power button
+	 * push then don't report the event until after the button is released.
+	 */
+	if (shutdown_request & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		if (power_button_state == POWER_BUTTON_RELEASED)
+			power_button_state = POWER_BUTTON_PRESSED;
+	} else {
+		if (power_button_state == POWER_BUTTON_PRESSED)
+			shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		power_button_state = POWER_BUTTON_RELEASED;
+	}
+
+	if (key == VB_BUTTON_POWER_SHORT_PRESS)
+		shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+
+	/* If desired, ignore shutdown request due to lid closure. */
+	if (gbb->flags & VB2_GBB_FLAG_DISABLE_LID_SHUTDOWN)
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_LID_CLOSED;
+
+	/*
+	 * In detachables, disabling shutdown due to power button.
+	 * We are using it for selection instead.
+	 */
+	if (DETACHABLE)
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+
+	return !!shutdown_request;
+}
+
 /*****************************************************************************/
 /* Menu actions */
+
+/* Action that enables developer mode and reboots. */
+static vb2_error_t to_dev_action(struct vb2_context *ctx)
+{
+	if ((ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
+	    !vb2_allow_recovery(ctx))
+		return VBERROR_KEEP_LOOPING;
+
+	VB2_DEBUG("Enabling dev-mode...\n");
+	if (vb2_enable_developer_mode(ctx) != VB2_SUCCESS)
+		return VBERROR_TPM_SET_BOOT_MODE_STATE;
+
+	/* This was meant for headless devices, shouldn't really matter here. */
+	if (USB_BOOT_ON_DEV)
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+
+	VB2_DEBUG("Reboot so it will take effect\n");
+	return VBERROR_REBOOT_REQUIRED;
+}
 
 static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 					 uint32_t key, uint32_t key_flags)
@@ -41,6 +114,11 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	default:
 		VB2_DEBUG("pressed key %#x, trusted? %d\n", key,
 			  !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD));
+	}
+
+	if (vb2_want_shutdown(ctx, key)) {
+		VB2_DEBUG("shutdown requested!\n");
+		return VBERROR_SHUTDOWN_REQUESTED;
 	}
 
 	return VBERROR_KEEP_LOOPING;
@@ -152,20 +230,60 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 
 vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user to reset or shutdown. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for the user to reset or shut down. */
+	VB2_DEBUG("waiting for manual recovery\n");
+	while (1) {
+		uint32_t key = VbExKeyboardRead();
+		rv = vb2_handle_menu_input(ctx, key, 0);
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+	}
 
-	return VB2_SUCCESS;
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
 
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for a recovery image or keyboard inputs */
+	VB2_DEBUG("waiting for a recovery image or keyboard inputs\n");
+	while(1) {
+		/* TODO(roccochen): try load usb and check if usb good */
 
-	return VB2_SUCCESS;
+		/* Scan keyboard inputs. */
+		uint32_t key, key_flags;
+		key = VbExKeyboardReadWithFlags(&key_flags);
+
+		rv = VBERROR_KEEP_LOOPING;  /* set to default */
+		switch (key) {
+		case VB_BUTTON_VOL_DOWN_LONG_PRESS:
+			if (!DETACHABLE)
+				break;
+			/* fallthrough */
+		case VB_KEY_CTRL('D'):
+			if (key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)
+				rv = to_dev_action(ctx);
+			else
+				VB2_DEBUG("ERROR: untrusted combo?!\n");
+			break;
+		default:
+			rv = vb2_handle_menu_input(ctx, key, key_flags);
+		}
+
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+
+		VbExSleepMs(KEY_DELAY);
+	}
+
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
