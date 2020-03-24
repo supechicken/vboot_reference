@@ -10,6 +10,7 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "test_common.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"
@@ -71,6 +72,8 @@ static void reset_common_data()
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
 }
 
 /* Mock functions */
@@ -116,10 +119,13 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 	return mock_vbtlk_retval[mock_vbtlk_count++];
 }
 
-vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale)
+vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
+			     uint32_t locale_id,
+			     uint32_t selected_item,
+			     uint32_t disabled_item_mask)
 {
-	VB2_DEBUG("screens %d: screen = %#x, locale = %u\n",
-		  mock_screens_count, screen, locale);
+	VB2_DEBUG("screens %d: screen = %#x, locale_id = %u\n",
+		  mock_screens_count, screen, locale_id);
 
 	if (mock_screens_count >= ARRAY_SIZE(mock_screens_displayed) ||
 	    mock_screens_count >= ARRAY_SIZE(mock_locales_displayed)) {
@@ -129,7 +135,8 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale)
 	}
 
 	mock_screens_displayed[mock_screens_count] = screen;
-	mock_locales_displayed[mock_screens_count] = locale;
+	mock_locales_displayed[mock_screens_count] = locale_id;
+	/* TODO(roccochen): handle the rest two arguments */
 	mock_screens_count++;
 
 	return VB2_SUCCESS;
