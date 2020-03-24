@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "142962ce_0a0c3eba",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T05:45:56Z",
+      "side": 1,
+      "message": "Yeah -- to get them all consistently capitalized.",
+      "parentUuid": "7c266d0c_df2e0e38",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "bee4eafca728c4eab8c2dfe3b36f2b9b6cafda2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a13421f_cbdd5fd6",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-03-23T20:31:20Z",
       "side": 1,
       "message": "I would say either we don\u0027t care about size and keep all the strings in here (which makes more sense if we want to share this table with mosys) or we stick to having \"Unknown or deprecated error code\" together. Jump tables aren\u0027t free either.",
+      "revId": "bee4eafca728c4eab8c2dfe3b36f2b9b6cafda2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34d9419_633915b6",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T05:45:56Z",
+      "side": 1,
+      "message": "So if I\u0027m understanding correctly... if we want to expose these strings through the host library, it would make more sense to include all of them, right?\n\nI\u0027ve tracked down all the old strings and added them in here again, sorted by numeric order.  I really wish there was a way of keeping all of this data (constants and strings) in one location without any preprocessing step...  Any other better ideas?",
+      "parentUuid": "3a13421f_cbdd5fd6",
       "revId": "bee4eafca728c4eab8c2dfe3b36f2b9b6cafda2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

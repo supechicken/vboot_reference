@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "54901c82_0b95b70b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T05:45:56Z",
+      "side": 1,
+      "message": "Shall we figure that out (soon) when we decide on the correct way to include vboot headers for hostlib?\n\nBut... including 2recovery_reasons.h here for now.  (Just not adding to vboot_host.h.)",
+      "parentUuid": "cc49d7b2_d0e5d74d",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acf2d567_b5ff5e76",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "Yes, I think if you took out MIN it makes sense to take out MAX too.",
       "parentUuid": "347813a4_1598eb49",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25016b03_ba994367",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T05:45:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f8db271_369eb47e",
       "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
