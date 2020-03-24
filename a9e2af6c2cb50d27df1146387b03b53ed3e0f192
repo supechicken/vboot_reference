@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba98521f_4e27b673",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-24T10:24:01Z",
+      "side": 1,
+      "message": "I think this should be 0 (RO) instead, but I\u0027m not sure how to correct it from this patch.\n\nThe original logic in sync_ec() is:\n 1. update_ec(RW) if needed\n 2. vb2ex_ec_jump_to_rw() if needed\n 3. update_ec(RO) if needed\n\nConsider the case where only steps #2 and #3 will be performed. Then, with this patchset, when display is not avaiable, VBERROR_REBOOT_REQUIRED will be returned in #3 (from vb2ex_ec_update_image()), but EC will have jumped to RW in #2 before warn reboot.",
+      "range": {
+        "startLine": 493,
+        "startChar": 23,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
