@@ -367,7 +367,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 
 	VB2_DEBUG("Reboot so it will take effect\n");
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_REBOOT_REQUIRED;
 }
 
 /* Action that disables developer mode, shows TO_NORM_CONFIRMED and reboots. */
@@ -386,7 +386,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 	vb2_change_menu(VB_MENU_TO_NORM_CONFIRMED, 0);
 	vb2_draw_current_screen(ctx);
 	VbExSleepMs(5000);
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_REBOOT_REQUIRED;
 }
 
 /* Action that will power off the system. */

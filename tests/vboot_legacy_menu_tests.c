@@ -474,7 +474,7 @@ static void VbBootDevTest(void)
 	mock_keypress[0] = VB_BUTTON_VOL_UP_SHORT_PRESS;
 	mock_keypress[1] = VB_BUTTON_POWER_SHORT_PRESS;
 	mock_keypress[2] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VB2_REBOOT_REQUIRED,
 		"disable developer mode");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
 	TEST_EQ(screens_displayed[0], VB_SCREEN_DEVELOPER_WARNING_MENU,
@@ -1098,7 +1098,7 @@ static void VbBootDevTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // enable os verification
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS; // confirm is the default
-	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VB2_REBOOT_REQUIRED,
 		"TONORM via menu");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
 		"  disable dev request");
@@ -1131,7 +1131,7 @@ static void VbBootDevTest(void)
 	mock_keypress[i++] = VB_BUTTON_VOL_DOWN_LONG_PRESS;	/* same */
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS;	/* noop */
 	mock_keypress[i++] = VB_KEY_ENTER;
-	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), VB2_REBOOT_REQUIRED,
 		"FWMP dev disabled");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
 		"  disable dev request");
@@ -1639,7 +1639,7 @@ static void VbBootRecTest(void)
 	mock_keyflags[i] = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS;
 	mock_keypress[i++] = VB_BUTTON_POWER_SHORT_PRESS;
-	TEST_EQ(VbBootRecoveryLegacyMenu(ctx), VBERROR_REBOOT_REQUIRED,
+	TEST_EQ(VbBootRecoveryLegacyMenu(ctx), VB2_REBOOT_REQUIRED,
 		"go to TO_DEV screen and confirm");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
 	TEST_EQ(debug_info_displayed, 0, "  no debug info");

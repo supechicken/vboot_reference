@@ -239,7 +239,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VbDisplayScreen(ctx,
 				VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
 			VbExSleepMs(5000);
-			return VBERROR_REBOOT_REQUIRED;
+			return VB2_REBOOT_REQUIRED;
 		case -1:
 			VB2_DEBUG("shutdown requested\n");
 			return VBERROR_SHUTDOWN_REQUESTED;
@@ -310,7 +310,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 				VbDisplayScreen(ctx,
 					VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
 				VbExSleepMs(5000);
-				return VBERROR_REBOOT_REQUIRED;
+				return VB2_REBOOT_REQUIRED;
 			case -1:
 				VB2_DEBUG("shutdown requested\n");
 				return VBERROR_SHUTDOWN_REQUESTED;
@@ -505,7 +505,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				VB2_DEBUG("Reboot so it will take effect\n");
 				if (USB_BOOT_ON_DEV)
 					vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
-				return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+				return VB2_REBOOT_EC_TO_RO_REQUIRED;
 			case -1:
 				VB2_DEBUG("Shutdown requested\n");
 				return VBERROR_SHUTDOWN_REQUESTED;

@@ -176,7 +176,7 @@ static vb2_error_t vb2_confirm_vendor_data_ui(struct vb2_context *ctx,
 					vb2_nv_set(ctx,
 						   VB2_NV_DISABLE_DEV_REQUEST,
 						   1);
-					return VBERROR_REBOOT_REQUIRED;
+					return VB2_REBOOT_REQUIRED;
 				} else {
 					vb2_error_notify(
 						"ERROR: Vendor data was not "
@@ -272,7 +272,7 @@ vb2_error_t vb2_check_diagnostic_key(struct vb2_context *ctx,
 		VB2_DEBUG("Diagnostic mode requested, rebooting\n");
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 
-		return VBERROR_REBOOT_REQUIRED;
+		return VB2_REBOOT_REQUIRED;
 	}
 
 	return VB2_SUCCESS;
@@ -283,7 +283,7 @@ vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 	int active = 1;
 	int button_released = 0;
 	int button_pressed = 0;
-	vb2_error_t result = VBERROR_REBOOT_REQUIRED;
+	vb2_error_t result = VB2_REBOOT_REQUIRED;
 	int action_confirmed = 0;
 	uint64_t start_time_us;
 
