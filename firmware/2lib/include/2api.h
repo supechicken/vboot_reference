@@ -1150,6 +1150,12 @@ enum vb2_screen {
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x100,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
+	/* Recovery - inserted invalid image */
+	VB2_SCREEN_RECOVERY_NO_GOOD		= 0x203,
+	/* Recovery - confirm dev mode */
+	VB2_SCREEN_RECOVERY_TO_DEV		= 0x204,
+	/* Broken screen shown after verification failure */
+	VB2_SCREEN_OS_BROKEN	  		= 0x208,
 };
 
 /**
