@@ -152,20 +152,74 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 
 vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user to reset or shutdown. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for the user to reset or shut down. */
+	VB2_DEBUG("waiting for manual recovery\n");
+	while (1) {
+		uint32_t key = VbExKeyboardRead();
+		rv = vb2_handle_menu_input(ctx, key, 0);
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+	}
 
-	return VB2_SUCCESS;
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
 
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for a recovery image or keyboard inputs */
+	VB2_DEBUG("waiting for a recovery image or keyboard inputs\n");
+	while(1) {
+		/* TODO(roccochen): try load usb and check if usb good */
 
-	return VB2_SUCCESS;
+		/* Scan keyboard inputs. */
+		uint32_t key, key_flags;
+		key = VbExKeyboardReadWithFlags(&key_flags);
+
+		rv = VBERROR_KEEP_LOOPING;  /* set to default */
+		switch (key) {
+		case VB_BUTTON_VOL_DOWN_LONG_PRESS:
+			if (!DETACHABLE)
+				break;
+			/* fallthrough */
+		case VB_KEY_CTRL('D'):
+			if (key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD &&
+			    !(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) &&
+			    vb2_allow_recovery(ctx)) {
+				VB2_DEBUG("Enabling dev-mode...\n");
+				if (vb2_enable_developer_mode(ctx) !=
+				    VB2_SUCCESS) {
+					rv = VBERROR_TPM_SET_BOOT_MODE_STATE;
+					break;
+				}
+
+				/* This was meant for headless devices,
+				 * shouldn't really matter here. */
+				if (USB_BOOT_ON_DEV)
+					vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+
+				VB2_DEBUG("Reboot so it will take effect\n");
+				rv =  VBERROR_REBOOT_REQUIRED;
+			}
+			break;
+		default:
+			rv = vb2_handle_menu_input(ctx, key, key_flags);
+		}
+
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+
+		VbExSleepMs(KEY_DELAY);
+	}
+
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
