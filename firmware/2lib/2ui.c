@@ -12,7 +12,166 @@
 #include "2return_codes.h"
 #include "2secdata.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "vboot_kernel.h"
+
+/* Delay type (in msec) of developer and recovery mode menu looping. */
+#define KEY_DELAY_MS		20	/* Check keyboard inputs */
+
+/* Global variables */
+static enum {
+	POWER_BUTTON_HELD_SINCE_BOOT = 0,
+	POWER_BUTTON_RELEASED,
+	POWER_BUTTON_PRESSED,  /* Must have been previously released */
+} power_button_state;
+
+static VB2_MENU current_menu;
+static int current_menu_idx, disabled_idx_mask, usb_nogood;
+static struct vb2_menu menus[];
+
+/*****************************************************************************/
+/* Utilities */
+
+/**
+ * Checks GBB flags against VbExIsShutdownRequested() shutdown request to
+ * determine if a shutdown is required.
+ *
+ * Returns true if a shutdown is required and false if no shutdown is required.
+ */
+static int vb2_want_shutdown(struct vb2_context *ctx, uint32_t key)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+	uint32_t shutdown_request = VbExIsShutdownRequested();
+
+	/*
+	 * Ignore power button push until after we have seen it released.
+	 * This avoids shutting down immediately if the power button is still
+	 * being held on startup. After we've recognized a valid power button
+	 * push then don't report the event until after the button is released.
+	 */
+	if (shutdown_request & VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		if (power_button_state == POWER_BUTTON_RELEASED)
+			power_button_state = POWER_BUTTON_PRESSED;
+	} else {
+		if (power_button_state == POWER_BUTTON_PRESSED)
+			shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+		power_button_state = POWER_BUTTON_RELEASED;
+	}
+
+	if (key == VB_BUTTON_POWER_SHORT_PRESS)
+		shutdown_request |= VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+
+	/* If desired, ignore shutdown request due to lid closure. */
+	if (gbb->flags & VB2_GBB_FLAG_DISABLE_LID_SHUTDOWN)
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_LID_CLOSED;
+
+	/*
+	 * In detachables, disabling shutdown due to power button.
+	 * We are using it for selection instead.
+	 */
+	if (DETACHABLE)
+		shutdown_request &= ~VB_SHUTDOWN_REQUEST_POWER_BUTTON;
+
+	return !!shutdown_request;
+}
+
+static void vb2_log_menu_change(void)
+{
+	if (menus[current_menu].size)
+		VB2_DEBUG("================ %s Menu ================ [ %s ]\n",
+			  menus[current_menu].name,
+			  menus[current_menu].items[current_menu_idx].text);
+	else
+		VB2_DEBUG("=============== %s Screen ===============\n",
+			  menus[current_menu].name);
+}
+
+/**
+ * Switch to a new menu (but don't draw it yet).
+ *
+ * @param ctx:			Vboot2 context
+ * @param new_current_menu:	new menu to set current_menu to
+ * @param new_current_menu_idx: new idx to set current_menu_idx to
+ */
+static void vb2_change_menu(struct vb2_context *ctx,
+			    VB2_MENU new_current_menu, int new_current_menu_idx)
+{
+	// TODO
+	vb2_log_menu_change();
+}
+
+/*****************************************************************************/
+/* Menu actions */
+
+/* Action that enables developer mode and reboots. */
+static vb2_error_t to_dev_action(struct vb2_context *ctx)
+{
+	if ((ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
+	    !vb2_allow_recovery(ctx))
+		return VBERROR_KEEP_LOOPING;
+
+	VB2_DEBUG("Enabling dev-mode...\n");
+	if (vb2_enable_developer_mode(ctx) != VB2_SUCCESS)
+		return VBERROR_TPM_SET_BOOT_MODE_STATE;
+
+	/* This was meant for headless devices, shouldn't really matter here. */
+	if (USB_BOOT_ON_DEV)
+		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+
+	VB2_DEBUG("Reboot so it will take effect\n");
+	return VBERROR_REBOOT_REQUIRED;
+}
+
+static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
+					 uint32_t key, uint32_t key_flags)
+{
+	/* TODO(roccochen): handle keyboard input */
+
+	switch (key) {
+	case 0:
+		/* nothing pressed */
+		break;
+	case VB_KEY_ENTER:
+		return VBERROR_SHUTDOWN_REQUESTED;
+	default:
+		VB2_DEBUG("pressed key %#x, trusted? %d\n", key,
+			  !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD));
+	}
+
+	if (vb2_want_shutdown(ctx, key)) {
+		VB2_DEBUG("shutdown requested!\n");
+		return VBERROR_SHUTDOWN_REQUESTED;
+	}
+
+	return VBERROR_KEEP_LOOPING;
+}
+
+/* Master table of all menus. Menus with size == 0 count as menuless screens. */
+static struct vb2_menu menus[VB2_MENU_COUNT] = {
+	[VB2_MENU_BLANK] = {
+		.name = "Blank.",
+		.size = 0,
+		.screen = VB2_SCREEN_BLANK,
+		.items = NULL,
+	},
+	[VB2_MENU_FIRMWARE_SYNC] = {
+		.name =  "Firmware sync.",
+		.size = 0,
+		.screen = VB2_SCREEN_FIRMWARE_SYNC,
+		.items = NULL,
+	}
+};
+
+/* Initialize menu state. Must be called once before displaying any menus. */
+static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
+{
+	/* TODO(roccochen): Initialize language menu */
+
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
+
+	return VB2_SUCCESS;
+}
 
 /*****************************************************************************/
 /* Entry points */
@@ -21,7 +180,7 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
 	enum vb2_dev_default_boot default_boot;
 
-	/* TODO(roccochen): Init, wait for user, and boot. */
+	VB2_TRY(vb2_init_menus(ctx));
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
 	/* If dev mode was disabled, loop forever. */
@@ -47,20 +206,62 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 
 vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user to reset or shutdown. */
+	vb2_error_t rv;
+
+	/* TODO: enter_recovery_base_screen(ctx); */
+	VB2_TRY(vb2_init_menus(ctx));
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for the user to reset or shut down. */
+	VB2_DEBUG("waiting for manual recovery\n");
+	while (1) {
+		uint32_t key = VbExKeyboardRead();
+		rv = vb2_handle_menu_input(ctx, key, 0);
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+	}
 
-	return VB2_SUCCESS;
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
 
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user. */
+	uint32_t key;
+	uint32_t key_flags;
+	vb2_error_t rv;
+
+	VB2_TRY(vb2_init_menus(ctx));
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for a recovery image */
+	VB2_DEBUG("waiting for a recovery image\n");
+	usb_nogood = -1;
+	while (1) {
+		rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE);
 
-	return VB2_SUCCESS;
+		if (rv == VB2_SUCCESS)
+			return rv;  /* Found a recovery kernel */
+
+		if (usb_nogood != (rv != VB2_ERROR_LK_NO_DISK_FOUND)) {
+			/* USB state changed, force back to base screen */
+			usb_nogood = rv != VB2_ERROR_LK_NO_DISK_FOUND;
+			/* TODO:enter_recovery_base_screen(ctx); */
+		}
+
+		key = VbExKeyboardReadWithFlags(&key_flags);
+		if (key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS) {
+			if (key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)
+				/* TODO: enter_to_dev_menu(ctx); */
+				to_dev_action(ctx);
+			else
+				VB2_DEBUG("ERROR: untrusted combo?!\n");
+		} else {
+			rv = vb2_handle_menu_input(ctx, key, key_flags);
+			if (rv != VBERROR_KEEP_LOOPING)
+				return rv;
+		}
+		VbExSleepMs(KEY_DELAY_MS);
+	}
+
+	return VBERROR_SHUTDOWN_REQUESTED;  /* Should never happen. */
 }
