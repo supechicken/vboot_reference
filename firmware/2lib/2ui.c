@@ -152,20 +152,56 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 
 vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user to reset or shutdown. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for the user to reset or shut down. */
+	VB2_DEBUG("waiting for manual recovery\n");
+	while (1) {
+		uint32_t key = VbExKeyboardRead();
+		rv = vb2_handle_menu_input(ctx, key, 0);
+		if (rv != VBERROR_KEEP_LOOPING)
+			break;
+	}
 
-	return VB2_SUCCESS;
+	return rv;
 }
 
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 {
-	/* TODO(roccochen): Init and wait for user. */
+	vb2_error_t rv;
+
+	/* TODO(roccochen): Init menus. */
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	while (1);
+	/* Loop and wait for a recovery image or keyboard inputs */
+	VB2_DEBUG("waiting for a recovery image or keyboard inputs\n");
+	while(1) {
+		/* TODO(roccochen): try load usb and check if usb good */
 
-	return VB2_SUCCESS;
+		/* Scan keyboard inputs. */
+		uint32_t key, key_flags;
+		key = VbExKeyboardReadWithFlags(&key_flags);
+
+		/*
+		 * TODO(roccochen): handle the following combo key sets
+		 *
+		 * Valid combo key sets:
+		 * Ctrl+D = enter to developer menu if keyboard is
+		 * trusted
+		 *
+		 * Valid combo press (for DETACHABLE):
+		 * VOL_UP_DOWN_COMBO_PRESS = enter to developer menu if
+		 * keyboard is trusted
+		 */
+		rv = vb2_handle_menu_input(ctx, key, key_flags);
+		if (rv != VBERROR_KEEP_LOOPING)
+			break;
+
+		VbExSleepMs(KEY_DELAY);
+	}
+
+	return rv;
 }
