@@ -185,6 +185,13 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# DETACHABLE indicates whether the device is a detachable or not
+ifneq ($(filter-out 0,${DETACHABLE}),)
+CFLAGS += -DDETACHABLE=1
+else
+CFLAGS += -DDETACHABLE=0
+endif
+
 # Enable the menu-based user interface.
 ifneq ($(filter-out 0,${MENU_UI}),)
 CFLAGS += -DMENU_UI=1
@@ -371,6 +378,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2sha_utility.c \
 	firmware/2lib/2tpm_bootmode.c \
 	firmware/2lib/2ui.c \
+	firmware/2lib/2ui_screens.c \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \

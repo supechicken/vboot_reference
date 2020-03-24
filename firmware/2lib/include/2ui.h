@@ -8,6 +8,49 @@
 #ifndef VBOOT_REFERENCE_2UI_H_
 #define VBOOT_REFERENCE_2UI_H_
 
+#include <2api.h>
+#include <2sysincludes.h>
+
+/*****************************************************************************/
+/* Data structures */
+
+struct vb2_menu_item {
+	/* Text description of the menu item */
+	const char *text;
+
+	/* Target screen */
+	enum vb2_screen target;
+
+	/* Function to run before displaying the target screen */
+	vb2_error_t (*action)(struct vb2_context *ctx);
+};
+
+struct vb2_screen_data {
+	/* Corresponding VB2_SCREEN_* value */
+	enum vb2_screen screen;
+
+	/* Menu name for printing to console only */
+	const char *name;
+
+	/* Number of menu items */
+	uint16_t size;
+
+	/* List of menu items */
+	struct vb2_menu_item *items;
+};
+
+/*
+ * Get data struct of a screen.
+ *
+ * @param screen	Screen type from enum vb2_screen
+ *
+ * @return screen data struct on success, NULL on error.
+ */
+struct vb2_screen_data *vb2_get_screen(enum vb2_screen screen);
+
+/*****************************************************************************/
+/* UI loops */
+
 /**
  * UI for a developer-mode boot.
  *
