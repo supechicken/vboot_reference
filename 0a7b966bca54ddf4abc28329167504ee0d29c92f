@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bdbedf78_b105c679",
+        "filename": "firmware/lib/vboot_ui_legacy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T09:02:19Z",
+      "side": 1,
+      "message": "Thanks -- fixed.",
+      "parentUuid": "d7e8ed85_6b9578f1",
+      "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b86e3d69_305843be",
         "filename": "firmware/lib/vboot_ui_legacy_menu.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-23T22:35:53Z",
       "side": 1,
       "message": "VbDisplayScreen() is still called from this file, it\u0027s not a clamshell-only function. Are you sure you don\u0027t want to put it in the common file instead?",
+      "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616204a8_5aa4fa22",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-24T09:02:19Z",
+      "side": 1,
+      "message": "Actually, it looks like calling VbDisplayMenu(ctx, VB_SCREEN_BLANK, 0, 0, 0) ends up at the exact same code path in depthcharge.  So let\u0027s just do that.\n\nIn other news, I realized that eve doesn\u0027t even implement backlight_update... and all backlight_update functions return 0, regardless of stub or not.  Looks like there\u0027s a function called clear_screen() which could be used to manually paint black on the screen... but not sure if that is fast enough -- I can\u0027t really tell by looking at my webcam stream.",
+      "parentUuid": "b86e3d69_305843be",
       "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
