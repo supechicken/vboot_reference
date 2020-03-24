@@ -14,15 +14,6 @@
 #include "vboot_display.h"
 
 /**
- * Display the WAIT screen
- */
-static void display_wait_screen(struct vb2_context *ctx)
-{
-	VB2_DEBUG("AUX FW update is slow. Show WAIT screen.\n");
-	VbDisplayScreen(ctx, VB_SCREEN_WAIT, 0, NULL);
-}
-
-/**
  * Determine if we are allowed to update auxfw
  *
  * @param ctx		Vboot2 context
@@ -104,14 +95,6 @@ vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx)
 	rv = auxfw_sync_check_update(ctx, &fw_update);
 	if (rv)
 		return rv;
-
-	/* If AUX FW update is slow display the wait screen */
-	if (fw_update == VB_AUX_FW_SLOW_UPDATE) {
-		/* Display should be available, but better check again */
-		if (vb2api_need_reboot_for_display(ctx))
-			return VBERROR_REBOOT_REQUIRED;
-		display_wait_screen(ctx);
-	}
 
 	if (fw_update > VB_AUX_FW_NO_UPDATE) {
 		rv = update_auxfw(ctx);

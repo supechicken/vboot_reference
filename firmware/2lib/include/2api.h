@@ -801,6 +801,13 @@ int vb2api_need_reboot_for_display(struct vb2_context *ctx);
  */
 uint32_t vb2api_get_recovery_reason(struct vb2_context *ctx);
 
+/**
+ * Get locale from nvdata.
+ *
+ * @param ctx		Vboot context
+ */
+uint32_t vb2api_get_locale(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
