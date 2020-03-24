@@ -10,6 +10,7 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "test_common.h"
 #include "vboot_api.h"
 #include "vboot_kernel.h"
@@ -18,6 +19,7 @@
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
+static struct vb2_shared_data *sd;
 
 static enum vb2_screen mock_screens_displayed[64];
 static uint32_t mock_locales_displayed[64];
@@ -36,6 +38,10 @@ static uint32_t mock_vbtlk_expected_flag[5];
 static int mock_vbtlk_count;
 static int mock_vbtlk_total;
 
+static int mock_ec_trusted;
+
+static int shutdown_request_calls_left;
+
 static void add_mock_vbtlk(vb2_error_t retval, uint32_t get_info_flags)
 {
 	if (mock_vbtlk_total >= ARRAY_SIZE(mock_vbtlk_retval) ||
@@ -49,28 +55,55 @@ static void add_mock_vbtlk(vb2_error_t retval, uint32_t get_info_flags)
 	mock_vbtlk_total++;
 }
 
+/* Type of test to reset for */
+enum reset_type {
+	FOR_DEVELOPER,
+	FOR_BROKEN,
+	FOR_RECOVERY,
+};
+
 /* Reset mock data (for use before each test) */
-static void reset_common_data()
+static void reset_common_data(enum reset_type t)
 {
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
 	vb2_nv_init(ctx);
 
+	sd = vb2_get_sd(ctx);
+
+	/* for vb2ex_display_ui */
 	memset(mock_screens_displayed, 0, sizeof(mock_screens_displayed));
 	mock_screens_count = 0;
 
+	/* for dev_boot* in 2misc */
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_DISK;
 	mock_dev_boot_allowed = 1;
 	mock_dev_boot_legacy_allowed = 0;
 	mock_dev_boot_usb_allowed = 0;
 
+	/* for VbExLegacy */
 	mock_vbexlegacy_called = 0;
 	mock_altfw_num = -100;
 
+	/* for VbTryLoadKernel */
 	memset(mock_vbtlk_retval, 0, sizeof(mock_vbtlk_retval));
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	/* for vb2_shutdown_requested */
+	power_button_state = POWER_BUTTON_HELD_SINCE_BOOT;
+	if (t == FOR_DEVELOPER)
+		shutdown_request_calls_left = -1;  /* Never request shutdown */
+	else
+		shutdown_request_calls_left = 301;
+
+	/* for vb2_allow_recovery */
+	sd->flags |= VB2_SD_FLAG_MANUAL_RECOVERY;
+	if (t == FOR_RECOVERY)
+		mock_ec_trusted = 1;
+	else
+		mock_ec_trusted = 0;
 }
 
 /* Mock functions */
@@ -105,10 +138,9 @@ vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
 
 vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 {
-	if (mock_vbtlk_count >= mock_vbtlk_total) {
-		TEST_TRUE(0, "  VbTryLoadKernel called too many times.");
-		return VB2_ERROR_MOCK;
-	}
+	/* Return last entry if called too many times */
+	if (mock_vbtlk_count >= mock_vbtlk_total)
+		mock_vbtlk_count = mock_vbtlk_total - 1;
 
 	TEST_EQ(mock_vbtlk_expected_flag[mock_vbtlk_count], get_info_flags,
 		"  unexpected get_info_flags");
@@ -139,12 +171,29 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 	return VB2_SUCCESS;
 }
 
+uint32_t VbExIsShutdownRequested(void)
+{
+	if (shutdown_request_calls_left == 0)
+		return 1;
+	else if (shutdown_request_calls_left > 0)
+		shutdown_request_calls_left--;
+
+	return 0;
+}
+
+int vb2ex_ec_trusted(void)
+{
+	return mock_ec_trusted;
+}
+
 /* Tests */
 
 static void developer_tests(void)
 {
+	VB2_DEBUG("Testing developer mode...\n");
+
 	/* Proceed */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed");
 	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
@@ -155,7 +204,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to legacy */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
 	mock_dev_boot_legacy_allowed = 1;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to legacy");
@@ -167,7 +216,7 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to legacy only if enabled */
-	reset_common_data();
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
@@ -180,23 +229,23 @@ static void developer_tests(void)
 		"  no recovery");
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
-	/* Proceed to usb */
-	reset_common_data();
+	/* Proceed to USB */
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
 	mock_dev_boot_usb_allowed = 1;
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to usb");
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to USB");
 	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
 		"  final blank screen");
 	TEST_EQ(mock_screens_count, 1, "  no extra screens");
 	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
 
-	/* Proceed to usb only if enabled */
-	reset_common_data();
+	/* Proceed to USB only if enabled */
+	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
-		"default usb not enabled");
+		"default USB not enabled");
 	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
 		"  final blank screen");
 	TEST_EQ(mock_screens_count, 1, "  no extra screens");
@@ -207,12 +256,88 @@ static void developer_tests(void)
 
 static void broken_recovery_tests(void)
 {
-	/* TODO(roccochen) */
+	VB2_DEBUG("Testing broken recovery mode...\n");
+
+	/* Shutdown requested in BROKEN */
+	reset_common_data(FOR_BROKEN);
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Shutdown requested in BROKEN");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+
+	/* BROKEN screen with disks inserted */
+	reset_common_data(FOR_BROKEN);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Shutdown requested in BROKEN with disks");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+
+	/* BROKEN screen with disks on second attempt */
+	reset_common_data(FOR_BROKEN);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Shutdown requested in BROKEN with later disk");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+
+	/* BROKEN screen even if dev switch is on */
+	reset_common_data(FOR_BROKEN);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_dev_boot_allowed = 1;
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Shutdown requested in BROKEN with dev switch");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+
+	/* go to INSERT if forced by GBB flag */
+	/* TODO: RECOVERY_INSERT */
 }
 
 static void manual_recovery_tests(void)
 {
-	/* TODO(roccochen) */
+	VB2_DEBUG("Testing manual recovery mode...\n");
+
+	/* go to INSERT if recovery button physically pressed and EC trusted */
+	/* TODO: RECOVERY_INSERT */
+
+	/* Stay at BROKEN if recovery button not physically pressed */
+	/* Sanity check, should never happen. */
+	reset_common_data(FOR_RECOVERY);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	sd->flags &= ~VB2_SD_FLAG_MANUAL_RECOVERY;
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Go to BROKEN if recovery not manually requested");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+
+	/* Stay at BROKEN if EC is untrusted */
+	/* Sanity check, should never happen. */
+	reset_common_data(FOR_RECOVERY);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	mock_ec_trusted = 0;
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VBERROR_SHUTDOWN_REQUESTED,
+		"Go to BROKEN if EC is not trusted");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
+	TEST_EQ(mock_screens_displayed[0], VB_SCREEN_OS_BROKEN,
+		"  broken screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
 }
 
 int main(void)
