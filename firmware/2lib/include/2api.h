@@ -1169,6 +1169,8 @@ vb2_error_t vb2ex_ec_battery_cutoff(void);
 
 /* Screens. */
 enum vb2_screen {
+	/* Special identifier for returning back to the previous screen */
+	VB2_SCREEN_BACK				= -1,
 	/* Blank screen */
 	VB2_SCREEN_BLANK			= 0x0,
 	/* Wait screen for EC sync and AUXFW sync */
@@ -1181,6 +1183,8 @@ enum vb2_screen {
 	VB2_SCREEN_RECOVERY_DISK_STEP1		= 0x210,
 	VB2_SCREEN_RECOVERY_DISK_STEP2		= 0x211,
 	VB2_SCREEN_RECOVERY_DISK_STEP3		= 0x212,
+	/* Recovery using phone */
+	VB2_SCREEN_RECOVERY_PHONE_STEP1		= 0x220,
 };
 
 /**
