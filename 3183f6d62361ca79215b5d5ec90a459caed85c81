@@ -22,6 +22,30 @@
       "revId": "3183f6d62361ca79215b5d5ec90a459caed85c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67618e2f_d12b27f1",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-25T23:46:39Z",
+      "side": 1,
+      "message": "No, 1 is SHA1, I don\u0027t want to change any existing values. And I would like it to be 0 specifically (for zero-initialized structs and boolean tests).\n\nAll the values in here should never change, I don\u0027t know if there\u0027s a point in creating tests for that. This table is already about as explicit as it gets.",
+      "parentUuid": "3192dfa7_4832693f",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "3183f6d62361ca79215b5d5ec90a459caed85c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
