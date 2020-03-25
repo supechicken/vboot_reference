@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0334e96c_83a6b716",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-25T03:01:44Z",
+      "side": 1,
+      "message": "Without this, there will be \"undefined reference to vb2api_fail\" error for vb2_hash_verify(). However, vb2_hash_verify() only uses the 1-arg form of VB2_TRY, which shouldn\u0027t call vb2api_fail() in any case. I\u0027m not sure why the compiler optimization doesn\u0027t work here (emerge coreboot).",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
