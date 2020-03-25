@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53a116d3_290cf5bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "Are we using this config yet?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35de5d33_69998f83",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "Not sure this is worth a helper function... can we just call directly?",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 30
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851e5dfb_ac28d5bd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "This is some crazy code which mixes timing stuff with audio beeps... I know it\u0027ll make the function longer, but can we copy the code directly in here?  If we want to refactor this function I think there are better ways of doing it.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1003b6ab_b30e7305",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "I\u0027m not totally convinced we can\u0027t just use VB2_SUCCESS here... I don\u0027t think there\u0027s any case where we\u0027d want to exit the loop when something \"succeeds\"?  Can we just use VB2_SUCCESS instead of VBERROR_KEEP_LOOPING and see if we encounter any problems?",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2dc047_0e70e87b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "Can we change this to a switch () like in vboot_ui_legacy_menu.c?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a820eef3_79429271",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "I\u0027d prefer if we just left this feature out, and used a menu screen to select alternative payloads instead.  How does that sound?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1115216a_73366fa9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T08:35:25Z",
+      "side": 1,
+      "message": "Reverse this to:\n\n  if (rv !\u003d VBERROR_KEEP_LOOPING)\n    return rv\n\nOr if we are able to just use VB2_SUCCESS to denote this:\n\n  if (rv)\n    return rv;",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
