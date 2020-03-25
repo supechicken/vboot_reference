@@ -397,6 +397,14 @@ enum VbScreenType_t {
 	VB_SCREEN_CONFIRM_VENDOR_DATA = 0x302,
 	/* Confirm reboot for running diagnostics rom */
 	VB_SCREEN_CONFIRM_DIAG = 0x303,
+	/* Draw or clear the cursor for vendor data prompt */
+	VB_SCREEN_VENDOR_DATA_CURSOR = 0x304,
+};
+
+/* Flags to control behavior of device-specific screens. */
+enum VbVendorDataFlags_t {
+	/* When set display a cursor after the prompt */
+	VB_VENDOR_DATA_SHOW_CURSOR = 1 << 0,
 };
 
 /**
@@ -406,6 +414,8 @@ typedef struct VbVendorData
 {
 	/* Current state of the the vendor data input */
 	const char *input_text;
+	/* Flags (See VbVendorDataFlags_t) */
+	uint32_t flags;
 	/* Current confirmation selection for new vendor data */
 	uint32_t selected_index;
 } VbVendorData;
