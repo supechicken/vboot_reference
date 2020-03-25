@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3192dfa7_4832693f",
+        "filename": "firmware/2lib/include/2crypto.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-25T05:58:51Z",
+      "side": 1,
+      "message": "Did you want to use 1 (since deprecated) or -1 instead?\nOr is it basically meant for the caller to decide the meaning?\n\nIf we want them to be the same by design, do we want to add a quick test to check HASH_NONE \u003d\u003d HASH_INVALID?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "3183f6d62361ca79215b5d5ec90a459caed85c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
