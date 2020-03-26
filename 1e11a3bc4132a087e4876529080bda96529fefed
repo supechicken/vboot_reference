@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c74cf96_c4f1d1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-26T08:38:37Z",
+      "side": 1,
+      "message": "We have - VB_BUTTON_VOL_DOWN_LONG_PRESS \u003d boot from internal. here.\n(https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2094511/18/firmware/2lib/2ui.c#66)\n\nOne more thing - I do not know how to write the test if it is config-specified.\n(https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2094511/18/tests/vb2_ui_tests.c#344)",
+      "parentUuid": "53a116d3_290cf5bb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35de5d33_69998f83",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 18
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "ad21330e_30afff3f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-26T08:38:37Z",
+      "side": 1,
+      "message": "Actually I am thinking about moving these into vb2_handle_menu_input() and judge if it is dev mode or others, how do you think?",
+      "parentUuid": "8f2dc047_0e70e87b",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a820eef3_79429271",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -128,6 +176,30 @@
       "writtenOn": "2020-03-25T08:35:25Z",
       "side": 1,
       "message": "I\u0027d prefer if we just left this feature out, and used a menu screen to select alternative payloads instead.  How does that sound?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e485b248_2e5b6dcc",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-26T08:38:37Z",
+      "side": 1,
+      "message": "I think we shall remain as much shortcuts as possible, is it?",
+      "parentUuid": "a820eef3_79429271",
       "range": {
         "startLine": 73,
         "startChar": 4,
