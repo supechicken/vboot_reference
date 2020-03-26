@@ -269,18 +269,21 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 		if (VB2_SUCCESS != update_ec(ctx, select_rw))
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW. */
-		if (EC_EFS) {
+		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
+			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		} else if (EC_EFS) {
 			VB2_DEBUG("Rebooting to switch to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
 	}
 
-	if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+	if (sd->flags & VB2_SD_FLAG_ECSYNC_HMIR_UPDATED) {
 		/*
-		 * Hashes are all synced. Whether we updated RW or not, we need
-		 * to reset EC if NO_BOOT is set.
+		 * After Hmir is updated, EFS needs to be retried since the
+		 * verification result is revoked.
 		 */
-		VB2_DEBUG("Resetting EC to clear NO_BOOT\n");
+		VB2_DEBUG("Reset EC after Hmir update\n");
 		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
@@ -497,6 +500,13 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		VB2_DEBUG("In recovery mode, skipping EC sync\n");
 		return VB2_SUCCESS;
+	}
+
+	rv = vb2_secdata_kernel_init(ctx);
+	if (rv) {
+		VB2_DEBUG("TPM: init secdata_kernel returned %#x\n", rv);
+		vb2api_fail(ctx, VB2_RECOVERY_SECDATA_KERNEL_INIT, rv);
+		return rv;
 	}
 
 	/* Phase 1; this determines if we need an update */
