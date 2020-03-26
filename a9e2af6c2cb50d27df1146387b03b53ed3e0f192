@@ -230,6 +230,30 @@
       "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df723d7_c6b0dd65",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T02:37:32Z",
+      "side": 1,
+      "message": "\u003e Unless you\u0027re proposing to change the logic to check for potential RO updates before jumping to RW?\nI\u0027m saying that this patch is changing the logic. In situations where only RO needs to be updated but display is unavailable,\n\n- Before this CL, ec_will_update_slowly() will be 1 and vb2api_ec_sync() will return VBERROR_REBOOT_REQUIRED, so EC will NOT jump to RW.\n- After this CL, since we delay the check until vb2ex_ec_update_image(), sync_ec() will be called and EC will jump to RW.",
+      "parentUuid": "0e33774a_bab1349f",
+      "range": {
+        "startLine": 493,
+        "startChar": 23,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
