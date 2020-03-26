@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d6b053da_c37c59c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "An example of config-dependent test: https://source.corp.google.com/h/chromium/chromiumos/codesearch/+/bde91c31635354ebacde662bc398908cd70b5f95:src/platform/vboot_reference/tests/vb2_ec_sync_tests.c;l\u003d484;bpv\u003d0;bpt\u003d3",
+      "parentUuid": "5c74cf96_c4f1d1f2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35de5d33_69998f83",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 18
@@ -65,6 +89,29 @@
         "startChar": 0,
         "endLine": 546,
         "endChar": 30
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baaa046a_7d3094ed",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "%#x",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 29
       },
       "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -106,6 +153,30 @@
       "writtenOn": "2020-03-25T08:35:25Z",
       "side": 1,
       "message": "I\u0027m not totally convinced we can\u0027t just use VB2_SUCCESS here... I don\u0027t think there\u0027s any case where we\u0027d want to exit the loop when something \"succeeds\"?  Can we just use VB2_SUCCESS instead of VBERROR_KEEP_LOOPING and see if we encounter any problems?",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3ffeff_8327f09c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "I think that\u0027s possible, but the meaning of return value of VbTryLoadKernel() will be different from other functions. If VbTryLoadKernel() returns VB2_SUCCESS then we should return VB2_SUCCESS immediately.",
+      "parentUuid": "1003b6ab_b30e7305",
       "range": {
         "startLine": 64,
         "startChar": 7,
@@ -165,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "216af555_f8b017d7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "\u003e Change to switch\nNote that there\u0027s a conditional on DETACHABLE below, so it\u0027ll be a little bit awkward to write something like\n\n case VB_BUTTON_VOL_DOWN_LONG_PRESS:\n     if (DETACHABLE)\n         ...\n     else\n         vb2_handle_menu_input();\n default:\n     vb2_handle_menu_input();\n\nAlternatively, we can use conditional compilation for DETACHABLE, but I think the guideline is to avoid that if possible.",
+      "parentUuid": "ad21330e_30afff3f",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a820eef3_79429271",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -212,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "21a10298_0c6aec57",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "Yes, in general, but this is *legacy* firmware so I\u0027m not sure. Speaking to legacy firmware, why do we need to support that? Isn\u0027t menu UI only used by *new* boards?",
+      "parentUuid": "e485b248_2e5b6dcc",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1115216a_73366fa9",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -229,6 +348,23 @@
         "endLine": 96,
         "endChar": 34
       },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd4f90b_33a44c48",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T10:28:49Z",
+      "side": 1,
+      "message": "Add comment\n\n /* for VbAltFwIndex_t */",
       "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
