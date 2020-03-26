@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "236a29fa_4018c326",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-26T18:09:09Z",
+      "side": 1,
+      "message": "Per EC-EFS2 design, AP should request CR50 to reset EC to clear NO-BOOT mode. \nCould you confirm if this would do that?\n\nI did a quick code search how this return value ended, and found these two.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/coreboot/src/security/vboot/ec_sync.c;drc\u003d1c0523fb018848fe18ff59721a28e2c98529f852;l\u003d71\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/depthcharge/src/vboot/stages.c;drc\u003de6b1b35f1cbd9d34587ba4113211d2c52f230250;l\u003d252\n\nThese two uses either google_chromeec_reboot() or reboot_to_ro(), which looks like to request EC to reset directly.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "ac477034d850f047902d2291fd0042b196b146b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
