@@ -51,6 +51,24 @@
       "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72522727_5b6ed8af",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-26T21:24:19Z",
+      "side": 1,
+      "message": "The eventlog is not really related to vboot, but if the whole mosys tool is getting deprecated, then that seems as reasonable a place to put it as any other. (Probably better than starting a whole new repository from scratch, anyway.)",
+      "parentUuid": "17d09d81_79c93e60",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
