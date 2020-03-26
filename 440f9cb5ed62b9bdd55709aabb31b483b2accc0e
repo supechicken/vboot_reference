@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "d074a60c_18379ec7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-26T01:07:46Z",
+      "side": 1,
+      "message": "I mean, we can say that it\u0027s fine to just have 2xxx.h headers directly included by hostlib users. That\u0027s the simplest option. It might just get a little confusing over time because you need to manually ensure all dependencies from that set of headers are also exported, and separating them more explicitly might make that easier to manage.",
+      "parentUuid": "54901c82_0b95b70b",
+      "revId": "440f9cb5ed62b9bdd55709aabb31b483b2accc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acf2d567_b5ff5e76",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1

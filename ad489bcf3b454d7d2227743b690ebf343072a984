@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "038d7546_a91cbf17",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-26T01:07:46Z",
+      "side": 1,
+      "message": "Still need to add 2recovery_reasons.h (and now 2sysincludes.h) here either way.",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f9aa5e_52eb82c0",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-26T01:07:46Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/platform/mosys/+/refs/heads/master/lib/eventlog/elog.c#307 for all the old reasons still supported in mosys... this one was \"RW firmware check not done\", and there are a few more that aren\u0027t represented here.",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
