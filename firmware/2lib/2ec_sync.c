@@ -135,6 +135,7 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		if (vb2_safe_memcmp(hmir, hexp, hexp_len)) {
 			VB2_DEBUG("Hmir != Hexp. Update Hmir.\n");
 			vb2_secdata_kernel_set_ec_hash(ctx, hexp);
+			sd->flags |= VB2_SD_FLAG_ECSYNC_HMIR_UPDATED;
 		}
 	}
 
@@ -268,13 +269,19 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 		if (VB2_SUCCESS != update_ec(ctx, select_rw))
 			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 		/* Updated successfully. Cold reboot to switch to the new RW. */
-		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
-			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
-			return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
-		} else if (EC_EFS) {
+		if (EC_EFS) {
 			VB2_DEBUG("Rebooting to switch to new EC-RW\n");
 			return VBERROR_EC_REBOOT_TO_SWITCH_RW;
 		}
+	}
+
+	if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+		/*
+		 * Hashes are all synced. Whether we updated RW or not, we need
+		 * to reset EC if NO_BOOT is set.
+		 */
+		VB2_DEBUG("Resetting EC to clear NO_BOOT\n");
+		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
 	}
 
 	/* Tell EC to jump to RW. It should already be in RW for EFS2. */
