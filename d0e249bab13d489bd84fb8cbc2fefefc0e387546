@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b97d1069_79427f0e",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-26T20:58:40Z",
+      "side": 1,
+      "message": "I think the issue might be that cbfstool/ifittool don\u0027t compile with linker garbage collection. Can you try adding\n\n -ffunction-sections -fdata-sections\n\nto TOOLCFLAGS and\n\n -Wl,--gc-sections\n\nto TOOLLDFLAGS in coreboot/util/cbfstool/Makefile.inc and try again?",
+      "parentUuid": "c3740290_11d13c60",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b14ba4a9_8514fb01",
         "filename": "Makefile",
         "patchSetId": 20
