@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c3740290_11d13c60",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T04:04:01Z",
+      "side": 1,
+      "message": "Nami.\n\n $ emerge-nami coreboot\n\n ld.lld: error: undefined symbol: vb2api_fail\n \u003e\u003e\u003e referenced by 2sha_utility.c:207 (firmware/2lib/2sha_utility.c:207)\n \u003e\u003e\u003e               2sha_utility.o:(vb2_digest_buffer) in archive /build/nami/tmp/portage/sys-boot/coreboot-9999/work/coreboot-9999/build_serial-nami/util/vboot_lib/libvboot_host.a\n \u003e\u003e\u003e referenced by 2sha_utility.c:208 (firmware/2lib/2sha_utility.c:208)\n \u003e\u003e\u003e               2sha_utility.o:(vb2_digest_buffer) in archive /build/nami/tmp/portage/sys-boot/coreboot-9999/work/coreboot-9999/build_serial-nami/util/vboot_lib/libvboot_host.a\n \u003e\u003e\u003e referenced by 2sha_utility.c:219 (firmware/2lib/2sha_utility.c:219)\n \u003e\u003e\u003e               2sha_utility.o:(vb2_hash_verify) in archive /build/nami/tmp/portage/sys-boot/coreboot-9999/work/coreboot-9999/build_serial-nami/util/vboot_lib/libvboot_host.a\n clang-10: error: linker command failed with exit code 1 (use -v to see invocation)\n make: *** [util/cbfstool/Makefile.inc:190: build_serial-nami/util/cbfstool/ifittool] Error 1",
+      "parentUuid": "c78d809f_e6097973",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b14ba4a9_8514fb01",
         "filename": "Makefile",
         "patchSetId": 20
@@ -48,6 +66,24 @@
       "writtenOn": "2020-03-25T22:43:08Z",
       "side": 1,
       "message": "What are these?",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b11e43d0_4d765f68",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-26T04:04:01Z",
+      "side": 1,
+      "message": "Same problem as above. These 2 files contain functions needed by 2misc.c.",
+      "parentUuid": "b14ba4a9_8514fb01",
       "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
