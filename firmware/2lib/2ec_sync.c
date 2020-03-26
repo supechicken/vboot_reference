@@ -498,6 +498,13 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 		return VB2_SUCCESS;
 	}
 
+	rv = vb2_secdata_kernel_init(ctx);
+	if (rv) {
+		VB2_DEBUG("TPM: init secdata_kernel returned %#x\n", rv);
+		vb2api_fail(ctx, VB2_RECOVERY_SECDATA_KERNEL_INIT, rv);
+		return rv;
+	}
+
 	/* Phase 1; this determines if we need an update */
 	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
 	int need_wait_screen = ec_will_update_slowly(ctx);
