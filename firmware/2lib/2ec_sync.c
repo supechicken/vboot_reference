@@ -501,6 +501,9 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 		return VB2_SUCCESS;
 	}
 
+	VB2_TRY(vb2_secdata_kernel_init(ctx),
+		ctx, VB2_RECOVERY_SECDATA_KERNEL_INIT);
+
 	/* Phase 1; this determines if we need an update */
 	vb2_error_t phase1_rv = ec_sync_phase1(ctx);
 	int need_wait_screen = ec_will_update_slowly(ctx);
