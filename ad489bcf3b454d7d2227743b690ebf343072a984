@@ -33,6 +33,24 @@
       "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17d09d81_79c93e60",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-26T03:38:16Z",
+      "side": 1,
+      "message": "Was planning to move \"mosys eventlog\" to a separate tool from mosys. Would it make sense for this to live in vboot_reference so that we can drop the duplicated code?",
+      "parentUuid": "b4f9aa5e_52eb82c0",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
