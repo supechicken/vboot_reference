@@ -63,6 +63,30 @@
       "revId": "ac477034d850f047902d2291fd0042b196b146b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cd6d99e_d7c26eec",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-27T00:20:59Z",
+      "side": 1,
+      "message": "Cr50 can\u0027t detect EC reset reliably. As I\u0027ve learned, the behaviors are different among platforms. So we designed to request CR50 to reset EC, so that CR50 can recognize EC reset and also clears NO_BOOT boot mode, and this is what the design doc(go/ec-efs2) says at least.\n\nLooks like this implementation is different. This is what I understand. From here, AP will request EC to reset -\u003e EC-RO will request CR50 to verify ECRW hash -\u003e CR50 sees that the given ECRW hash matches to H_mir (Hash in TPM kernel secdata). BTW, Boot mode is NO_BOOT, not NORMAL, so CR50 decides to reset EC (per the EC-EFS2 design) and to clear NO_BOOT mode.\nhttps://source.corp.google.com/chromeos_public/src/platform/cr50/common/ec_efs.c;rcl\u003d708277bd1ebb5d9a4dccc875708c3d5018eebd8f;l\u003d248\n\nAt the end, the results are same, so I am ok with this implementation, but the design document and implementation should be synced.",
+      "parentUuid": "b61efd05_6740f68d",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "ac477034d850f047902d2291fd0042b196b146b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
