@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "27a19d15_bd3d1ac6",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-27T03:47:11Z",
+      "side": 1,
+      "message": "It turned out that somehow there\u0027s DEBUG\u003d1 environment variable in my shell, so CFLAGS in vboot would end up containing \"-O0\" option.",
+      "parentUuid": "b97d1069_79427f0e",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b14ba4a9_8514fb01",
         "filename": "Makefile",
         "patchSetId": 20
@@ -105,6 +123,24 @@
       "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc34cef_474bce01",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-27T03:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11e43d0_4d765f68",
+      "revId": "d0e249bab13d489bd84fb8cbc2fefefc0e387546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
