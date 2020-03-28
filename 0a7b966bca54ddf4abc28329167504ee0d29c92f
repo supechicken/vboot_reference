@@ -87,6 +87,24 @@
       "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c88d4762_28cc5af6",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-28T00:59:15Z",
+      "side": 1,
+      "message": "Sounds okay, but do note that even after that detachable devices can still call VbDisplayScreen() (e.g. for software sync WAIT screen). So if you\u0027re trying to get to a point where we can stop compiling that function it\u0027s not that easy.",
+      "parentUuid": "98ce57b5_0fc279ea",
+      "revId": "0a7b966bca54ddf4abc28329167504ee0d29c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
