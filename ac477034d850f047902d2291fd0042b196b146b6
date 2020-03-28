@@ -87,6 +87,30 @@
       "revId": "ac477034d850f047902d2291fd0042b196b146b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8401f5b2_5b31bebe",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-03-28T00:41:53Z",
+      "side": 1,
+      "message": "So you\u0027re saying we end up at the same result but it takes longer (because the EC needs to be reset twice)? In that case, if that delay is significant, it might make sense to change depthcharge to just ask Cr50 for the reset directly.",
+      "parentUuid": "7cd6d99e_d7c26eec",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "ac477034d850f047902d2291fd0042b196b146b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
