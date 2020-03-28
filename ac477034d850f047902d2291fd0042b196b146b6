@@ -111,6 +111,30 @@
       "revId": "ac477034d850f047902d2291fd0042b196b146b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646d9a9e_7f726de1",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-28T16:23:31Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1047297.",
+      "parentUuid": "7cd6d99e_d7c26eec",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "ac477034d850f047902d2291fd0042b196b146b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
