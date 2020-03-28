@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cd49561_02e10d68",
+        "filename": "firmware/lib/vboot_ui_legacy_wilco.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-28T14:46:26Z",
+      "side": 1,
+      "message": "I wonder if we can use the same screen VB_SCREEN_SET_VENDOR_DATA here, and let vboot_draw_set_vendor_data() in depthcharge draw the cursor. Another flag could be added to inform vboot_draw_set_vendor_data() NOT to redraw the input text.",
+      "range": {
+        "startLine": 125,
+        "startChar": 24,
+        "endLine": 125,
+        "endChar": 52
+      },
+      "revId": "621ecf759fe3c588965df8aed651be1e970fb66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
