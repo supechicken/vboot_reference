@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <linux/gpio.h>
 #include <linux/nvram.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -80,6 +81,7 @@
 /* Base name for GPIO files */
 #define GPIO_BASE_PATH "/sys/class/gpio"
 #define GPIO_EXPORT_PATH GPIO_BASE_PATH "/export"
+#define GPIO_UNEXPORT_PATH GPIO_BASE_PATH "/unexport"
 
 /* Filename for NVRAM file */
 #define NVRAM_PATH "/dev/nvram"
@@ -703,19 +705,112 @@ static const struct GpioChipset *FindChipset(const char *name)
 	return NULL;
 }
 
+/*
+ * Read GPIO using legacy sysfs interface
+ */
+static int LegacyGetGpioSysfs(int controller_offset)
+{
+	char name[128];
+	unsigned int value;
+	FILE *f;
+
+	/* Try reading the GPIO value */
+	snprintf(name, sizeof(name), "%s/gpio%d/value",
+		 GPIO_BASE_PATH, controller_offset);
+	if (ReadFileInt(name, &value) < 0) {
+		/* Try exporting the GPIO */
+		f = fopen(GPIO_EXPORT_PATH, "wt");
+		if (!f)
+			return -1;
+		fprintf(f, "%u", controller_offset);
+		fclose(f);
+
+		/* Try re-reading the GPIO value */
+		if (ReadFileInt(name, &value) < 0)
+			return -1;
+
+	}
+
+	/* Unexport the GPIO */
+	f = fopen(GPIO_UNEXPORT_PATH, "wt");
+	if (!f)
+		return value;
+	fprintf(f, "%u", controller_offset);
+	fclose(f);
+
+	return value;
+}
+
+static int gpiod_read_value(char *controller_name, int controller_num)
+{
+	struct gpiohandle_data data;
+	struct gpiochip_info chipinfo;
+	struct gpioline_info lineinfo = {
+		.line_offset = controller_num,
+	};
+	struct gpiohandle_request request = {
+		.lineoffsets = { controller_num },
+		.flags = GPIOHANDLE_REQUEST_INPUT,
+		.lines = 1,
+	};
+	int rv, fd;
+
+	fd = open(controller_name, O_RDWR);
+	if (fd < 0)
+		return -1;
+
+	memset(&chipinfo, 0, sizeof(chipinfo));
+	rv = ioctl(fd, GPIO_GET_CHIPINFO_IOCTL, &chipinfo);
+	if (rv < 0)
+		goto err_cleanup;
+
+	if (controller_num >= chipinfo.lines)
+		goto err_cleanup;
+
+	rv = ioctl(fd, GPIO_GET_LINEINFO_IOCTL, &lineinfo);
+	if (rv < 0)
+		goto err_cleanup;
+
+	/* Make sure the kernel is not using this GPIO */
+	if (lineinfo.flags & GPIOLINE_FLAG_KERNEL)
+		goto err_cleanup;
+
+	rv = ioctl(fd, GPIO_GET_LINEHANDLE_IOCTL, &request);
+	if (rv < 0 || request.fd < 0)
+		goto err_cleanup;
+
+	memset(&data, 0, sizeof(data));
+	rv = ioctl(request.fd, GPIOHANDLE_GET_LINE_VALUES_IOCTL, &data);
+	if (rv < 0) {
+		close(request.fd);
+		goto err_cleanup;
+	}
+
+	close(request.fd);
+	close(fd);
+	return data.values[0];
+
+err_cleanup:
+	close(fd);
+	return -1;
+}
+
 /* Read a GPIO of the specified signal type (see ACPI GPIO SignalType).
  *
  * Returns 1 if the signal is asserted, 0 if not asserted, or -1 if error. */
 static int ReadGpio(unsigned signal_type)
 {
 	char name[128];
+	char uid_file[128];
+	char controller_name[128];
 	int index = 0;
+	int value;
 	unsigned gpio_type;
 	unsigned active_high;
 	unsigned controller_num;
 	unsigned controller_offset = 0;
-	char controller_name[128];
-	unsigned value;
+	unsigned uid_value;
+	unsigned bank_num;
 	const struct GpioChipset *chipset;
 
 	/* Scan GPIO.* to find a matching signal type */
@@ -752,23 +847,30 @@ static int ReadGpio(unsigned signal_type)
 					      &controller_offset,
 					      chipset->name))
 		return -1;
-	controller_offset += controller_num;
 
-	/* Try reading the GPIO value */
-	snprintf(name, sizeof(name), "%s/gpio%d/value",
+	/* Get number of GPIO bank */
+	snprintf(uid_file, sizeof(uid_file),
+		 "%s/gpiochip%u/device/firmware_node/uid",
 		 GPIO_BASE_PATH, controller_offset);
-	if (ReadFileInt(name, &value) < 0) {
-		/* Try exporting the GPIO */
-		FILE* f = fopen(GPIO_EXPORT_PATH, "wt");
-		if (!f)
-			return -1;
-		fprintf(f, "%u", controller_offset);
-		fclose(f);
+	if (ReadFileInt(uid_file, &uid_value) < 0)
+		return -1;
 
-		/* Try re-reading the GPIO value */
-		if (ReadFileInt(name, &value) < 0)
-			return -1;
+	if (uid_value == 0)
+		return -1;
+
+	bank_num = uid_value - 1;
+	snprintf(controller_name, sizeof(controller_name),
+		 "/dev/gpiochip%u", bank_num);
+
+	value = gpiod_read_value(controller_name, controller_num);
+	if (value < 0) {
+		/* ioctl failed, use legacy sysfs method instead */
+		controller_offset += controller_num;
+		value = LegacyGetGpioSysfs(controller_offset);
 	}
+
+	if (value < 0)
+		return -1;
 
 	/* Normalize the value read from the kernel in case it is not always
 	 * 1. */
