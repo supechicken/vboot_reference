@@ -1126,7 +1126,7 @@ enum vb2_screen {
 	/* Developer - confirm normal mode */
 	VB2_SCREEN_DEVELOPER_TO_NORM = 0x205,
 	/* Please wait - programming EC */
-	VB2_SCREEN_WAIT              = 0x206,
+	VB2_SCREEN_FIRMWARE_SYNC              = 0x206,
 	/* Confirm after DEVELOPER_TO_NORM */
 	VB2_SCREEN_TO_NORM_CONFIRMED = 0x207,
 	/* Broken screen shown after verification failure */
@@ -1191,5 +1191,12 @@ enum vb2_screen {
  * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale);
+
+vb2_error_t vb2ex_display_dialog_box(const char *msg);
+
+vb2_error_t vb2ex_init_page_content(const char *info_str, uint32_t *num_page,
+				uint32_t screen);
+vb2_error_t vb2ex_free_page_content(void);
+
 
 #endif  /* VBOOT_REFERENCE_2API_H_ */

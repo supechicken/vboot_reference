@@ -629,12 +629,6 @@ enum vb_altfw {
  */
 uint32_t VbExGetAltFwIdxMask(void);
 
-/* Debug info api TODO: add descriptions*/
-
-vb2_error_t VbExInitPageContent(const char *info_str, uint32_t *num_page,
-				uint32_t screen);
-vb2_error_t VbExFreePageContent(void);
-
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */

@@ -168,15 +168,14 @@ static int VbWantShutdownGroot(struct vb2_context *ctx, uint32_t key)
 /* (Re-)Draw the menu identified by current_menu[_idx] to the screen. */
 static vb2_error_t vb2_draw_current_screen(struct vb2_context *ctx)
 {
-	return VbDisplayMenu(ctx, menus[peek()].screen,
-			     0, current_menu_idx, disabled_idx_mask,
-			     current_page);
+	uint32_t locale = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
+	return vb2ex_display_ui(menus[peek()].screen, locale);
 }
 
 /* Flash the screen to black to catch user awareness, then redraw menu. */
 static void vb2_flash_screen(struct vb2_context *ctx)
 {
-	VbDisplayScreen(ctx, VB2_SCREEN_BLANK, 0, NULL);
+	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 	VbExSleepMs(50);
 	vb2_draw_current_screen(ctx);
 }
@@ -285,6 +284,19 @@ int vb2_timer_looping(struct vb2_timer_data *td)
 	return (now < 30 * VB_USEC_PER_SEC);
 }
 
+static void notify_error(const char *print_msg,
+			 const char *log_msg,
+			 enum vb2_beep_type beep)
+{
+	if (print_msg)
+		vb2ex_display_dialog_box(print_msg);
+	if (!log_msg)
+		log_msg = print_msg;
+	if (log_msg)
+		VB2_DEBUG(log_msg);
+	vb2_error_beep(beep);
+}
+
 /*****************************************************************************/
 /* Menu actions */
 
@@ -293,7 +305,7 @@ static vb2_error_t boot_from_internal_action(struct vb2_context *ctx)
 {
 	if (!vb2_dev_boot_allowed(ctx)) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify("Developer mode disabled\n", NULL,
+		notify_error("Developer mode disabled\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
@@ -305,18 +317,48 @@ static vb2_error_t boot_from_internal_action(struct vb2_context *ctx)
 }
 
 /* Boot legacy BIOS if allowed and available. */
+static void notify_no_altfw(void)
+{
+	VB2_DEBUG("Legacy boot is disabled\n");
+	vb2ex_display_dialog_box("WARNING: Booting legacy BIOS has not been "
+			     "enabled. Refer to the developer-mode "
+			     "documentation for details.\n");
+	vb2_error_beep(VB_BEEP_NOT_ALLOWED);
+}
+
+static void try_altfw(struct vb2_context *ctx, int allowed,
+		      enum VbAltFwIndex_t altfw_num)
+{
+	if (!allowed) {
+		notify_no_altfw();
+		return;
+	}
+
+	if (vb2ex_commit_data(ctx)) {
+		notify_error("Error committing data on legacy boot.\n",
+				 NULL, VB_BEEP_FAILED);
+		return;
+	}
+
+	/* Will not return if successful */
+	VbExLegacy(altfw_num);
+
+	notify_error("Legacy boot failed. Missing BIOS?\n", NULL,
+			 VB_BEEP_FAILED);
+}
+
 static vb2_error_t boot_legacy_action(struct vb2_context *ctx)
 {
 	if (!vb2_dev_boot_allowed(ctx)) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify("Developer mode disabled\n", NULL,
+		notify_error("Developer mode disabled\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 
 	if (!vb2_dev_boot_legacy_allowed(ctx)) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify("WARNING: Booting legacy BIOS has not "
+		notify_error("WARNING: Booting legacy BIOS has not "
 				 "been enabled. Refer to the developer"
 				 "-mode documentation for details.\n",
 				 "Legacy boot is disabled\n",
@@ -324,7 +366,7 @@ static vb2_error_t boot_legacy_action(struct vb2_context *ctx)
 		return VBERROR_KEEP_LOOPING;
 	}
 
-	vb2_try_altfw(ctx, 1, VB_ALTFW_DEFAULT);
+	try_altfw(ctx, 1, VB_ALTFW_DEFAULT);
 	vb2_flash_screen(ctx);
 	return VBERROR_KEEP_LOOPING;
 }
@@ -336,7 +378,7 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 
 	if (!vb2_dev_boot_usb_allowed(ctx)) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify("WARNING: Booting from external media "
+		notify_error("WARNING: Booting from external media "
 				 "(USB/SD) has not been enabled. Refer "
 				 "to the developer-mode documentation "
 				 "for details.\n",
@@ -351,7 +393,7 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 	}
 
 	vb2_flash_screen(ctx);
-	vb2_error_notify(no_kernel, NULL, VB_BEEP_FAILED);
+	notify_error(no_kernel, NULL, VB_BEEP_FAILED);
 
 	return VBERROR_KEEP_LOOPING;
 }
@@ -480,7 +522,7 @@ static vb2_error_t enter_to_dev_menu(struct vb2_context *ctx)
 		"WARNING: TODEV rejected, developer mode is already on.\n";
 	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify(dev_already_on, NULL, VB_BEEP_NOT_ALLOWED);
+		notify_error(dev_already_on, NULL, VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
 	}
 	vb2_change_menu(ctx, VB_GROOT_TO_DEV, VB_GROOT_TO_DEV_CANCEL);
@@ -515,7 +557,7 @@ static vb2_error_t enter_altfw_menu(struct vb2_context *ctx)
 	}
 	if (!vb2_dev_boot_legacy_allowed(ctx)) {
 		vb2_flash_screen(ctx);
-		vb2_error_no_altfw();
+		notify_no_altfw();
 		return VBERROR_KEEP_LOOPING;
 	}
 	vb2_change_menu(ctx, VB_GROOT_ALT_FW, 0);
@@ -539,7 +581,7 @@ static vb2_error_t debug_info_action(struct vb2_context *ctx)
 	current_page = 0;
 	char buf[DEBUG_INFO_SIZE];
 	VbGetDebugInfoString(ctx, buf, DEBUG_INFO_SIZE);
-	rv = VbExInitPageContent(buf, &num_page, VB2_SCREEN_DEBUG_INFO);
+	rv = vb2ex_init_page_content(buf, &num_page, VB2_SCREEN_DEBUG_INFO);
 	if (rv != VB2_SUCCESS)
 		return rv;
 
@@ -558,7 +600,7 @@ static vb2_error_t show_log_action(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 	current_page = 0;
-	rv = VbExInitPageContent(NULL, &num_page, VB2_SCREEN_BIOS_LOG);
+	rv = vb2ex_init_page_content(NULL, &num_page, VB2_SCREEN_BIOS_LOG);
 	if (rv != VB2_SUCCESS)
 		return rv;
 
@@ -649,7 +691,7 @@ static vb2_error_t free_log_prev_menu_action(struct vb2_context *ctx)
 	switch(current_menu) {
 	case VB_GROOT_DEBUG_INFO:
 	case VB_GROOT_SHOW_LOG:
-		VbExFreePageContent();
+		vb2ex_free_page_content();
 		break;
 	default:
 		/* This should never happen */
@@ -681,10 +723,10 @@ static vb2_error_t language_action(struct vb2_context *ctx)
 /* Action when selecting a bootloader in the alternative firmware menu. */
 static vb2_error_t altfw_action(struct vb2_context *ctx)
 {
-	vb2_try_altfw(ctx, 1, current_menu_idx + 1);
+	try_altfw(ctx, 1, current_menu_idx + 1);
 	vb2_flash_screen(ctx);
 	VB2_DEBUG(no_legacy);
-	VbExDisplayDebugInfo(no_legacy, 0);
+	vb2ex_display_dialog_box(no_legacy);
 
 	return VBERROR_KEEP_LOOPING;
 }
@@ -714,7 +756,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 {
 	if (vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 		vb2_flash_screen(ctx);
-		vb2_error_notify("WARNING: TONORM prohibited by "
+		notify_error("WARNING: TONORM prohibited by "
 				 "GBB FORCE_DEV_SWITCH_ON.\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
 		return VBERROR_KEEP_LOOPING;
@@ -788,7 +830,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 		if (current_menu == VB_GROOT_TO_DEV &&
 		    !(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD)) {
 			vb2_flash_screen(ctx);
-			vb2_error_notify("Please use the on-device volume "
+			notify_error("Please use the on-device volume "
 					 "buttons to navigate\n",
 					 "vb2_handle_menu_input() - Untrusted "
 					 "(USB keyboard) input disabled\n",
@@ -1177,7 +1219,7 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 	do {
 		/* Make sure user knows dev mode disabled */
 		if (!vb2_dev_boot_allowed(ctx))
-			VbExDisplayDebugInfo(dev_disable_msg, 0);
+			vb2ex_display_dialog_box(dev_disable_msg);
 
 		if (peek() == VB_GROOT_BOOT_FROM_EXTERNAL) {
 			VB2_DEBUG("attempting to boot from USB\n");
@@ -1204,7 +1246,7 @@ vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 			VB2_DEBUG("developer UI - "
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
-			vb2_try_altfw(ctx, altfw_allowed, key - '0');
+			try_altfw(ctx, altfw_allowed, key - '0');
 			rv = VBERROR_KEEP_LOOPING;
 		} else {
 			rv = vb2_handle_menu_input(ctx, key, 0);
