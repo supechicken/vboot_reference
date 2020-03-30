@@ -990,7 +990,7 @@ signing_install: $(if ${SDK_BUILD},\
 futil: ${FUTIL_BIN}
 
 # FUTIL_LIBS is shared by FUTIL_BIN and TEST_FUTIL_BINS.
-FUTIL_LIBS = ${CRYPTO_LIBS} ${LIBZIP_LIBS}
+FUTIL_LIBS = ${CRYPTO_LIBS} ${LIBZIP_LIBS} -lgpiod
 
 ${FUTIL_BIN}: LDLIBS += ${FUTIL_LIBS}
 ${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB}
@@ -1092,6 +1092,7 @@ ${UTIL_DEFAULTS}:
 # Some utilities need external crypto functions
 CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
 
+${BUILD}/utility/crossystem: LDLIBS += -lgpiod
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/signature_digest_utility: LDLIBS += ${CRYPTO_LIBS}
