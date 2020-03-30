@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <gpiod.h>
 #include <linux/nvram.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -81,6 +82,7 @@
 /* Base name for GPIO files */
 #define GPIO_BASE_PATH "/sys/class/gpio"
 #define GPIO_EXPORT_PATH GPIO_BASE_PATH "/export"
+#define GPIO_UNEXPORT_PATH GPIO_BASE_PATH "/unexport"
 
 /* Filename for NVRAM file */
 #define NVRAM_PATH "/dev/nvram"
@@ -703,20 +705,62 @@ static const struct GpioChipset *FindChipset(const char *name)
 	return NULL;
 }
 
+/*
+ * Read GPIO using legacy sysfs interface
+ */
+static int LegacyGetGpioSysfs(int controller_offset)
+{
+	char name[128];
+	unsigned int value;
+	FILE *f;
+
+	/* Try reading the GPIO value */
+	snprintf(name, sizeof(name), "%s/gpio%d/value",
+		 GPIO_BASE_PATH, controller_offset);
+	if (ReadFileInt(name, &value) < 0) {
+		/* Try exporting the GPIO */
+		f = fopen(GPIO_EXPORT_PATH, "wt");
+		if (!f)
+			return -1;
+		fprintf(f, "%u", controller_offset);
+		fclose(f);
+
+		/* Try re-reading the GPIO value */
+		if (ReadFileInt(name, &value) < 0)
+			return -1;
+
+	}
+
+	/* Unexport the GPIO */
+	f = fopen(GPIO_UNEXPORT_PATH, "wt");
+	if (!f)
+		return value;
+	fprintf(f, "%u", controller_offset);
+	fclose(f);
+
+	return value;
+}
+
 /* Read a GPIO of the specified signal type (see ACPI GPIO SignalType).
  *
  * Returns 1 if the signal is asserted, 0 if not asserted, or -1 if error. */
 static int ReadGpio(unsigned signal_type)
 {
 	char name[128];
+	char uid_file[128];
+	char controller_name[128];
 	int index = 0;
+	int value;
+	int rv;
 	unsigned gpio_type;
 	unsigned active_high;
 	unsigned controller_num;
 	unsigned controller_offset = 0;
-	char controller_name[128];
-	unsigned value;
+	unsigned uid_value;
+	unsigned bank_num;
 	const struct GpioChipset *chipset;
+	struct gpiod_chip *chip;
+	struct gpiod_line *line;
 
 	/* Scan GPIO.* to find a matching signal type */
 	for (index = 0; ; index++) {
@@ -752,23 +796,46 @@ static int ReadGpio(unsigned signal_type)
 					      &controller_offset,
 					      chipset->name))
 		return -1;
-	controller_offset += controller_num;
 
-	/* Try reading the GPIO value */
-	snprintf(name, sizeof(name), "%s/gpio%d/value",
+	/* Get number of GPIO bank */
+	snprintf(uid_file, sizeof(uid_file),
+		 "%s/gpiochip%u/device/firmware_node/uid",
 		 GPIO_BASE_PATH, controller_offset);
-	if (ReadFileInt(name, &value) < 0) {
-		/* Try exporting the GPIO */
-		FILE* f = fopen(GPIO_EXPORT_PATH, "wt");
-		if (!f)
-			return -1;
-		fprintf(f, "%u", controller_offset);
-		fclose(f);
+	if (ReadFileInt(uid_file, &uid_value) < 0)
+		return -1;
 
-		/* Try re-reading the GPIO value */
-		if (ReadFileInt(name, &value) < 0)
+	if (uid_value == 0)
+		return -1;
+
+	bank_num = uid_value - 1;
+	snprintf(controller_name, sizeof(controller_name),
+		 "/dev/gpiochip%u", bank_num);
+
+	chip = gpiod_chip_open(controller_name);
+	if (!chip) {
+		/* libgpiod call failed, use legacy sysfs instead */
+		controller_offset += controller_num;
+		value = LegacyGetGpioSysfs(controller_offset);
+	} else {
+		line = gpiod_chip_get_line(chip, controller_num);
+		if (!line) {
+			gpiod_chip_close(chip);
 			return -1;
+		}
+
+		rv = gpiod_line_request_input(line, "crossystem");
+		if (rv < 0) {
+			gpiod_chip_close(chip);
+			return -1;
+		}
+
+		value = gpiod_line_get_value(line);
+		gpiod_line_release(line);
+		gpiod_chip_close(chip);
 	}
+
+	if (value < 0)
+		return -1;
 
 	/* Normalize the value read from the kernel in case it is not always
 	 * 1. */
