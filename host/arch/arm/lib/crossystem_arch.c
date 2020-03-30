@@ -188,37 +188,6 @@ static int VbGetPlatformGpioStatus(const char* name)
 }
 
 #ifndef HAVE_MACOS
-static int gpioline_read_value(int chip_fd, int idx, bool active_low)
-{
-	struct gpiohandle_request request = {
-		.lineoffsets = { idx },
-		.flags = GPIOHANDLE_REQUEST_INPUT | \
-			 (active_low ? GPIOHANDLE_REQUEST_ACTIVE_LOW : 0),
-		.lines = 1,
-	};
-	struct gpiohandle_data data;
-	int ret;
-
-	ret = ioctl(chip_fd, GPIO_GET_LINEHANDLE_IOCTL, &request);
-	if (ret < 0) {
-		perror("GPIO_GET_LINEHANDLE_IOCTL");
-		return -1;
-	}
-	if (request.fd < 0) {
-		fprintf(stderr, "bad LINEHANDLE fd %d\n", request.fd);
-		return -1;
-	}
-
-	ret = ioctl(request.fd, GPIOHANDLE_GET_LINE_VALUES_IOCTL, &data);
-	if (ret < 0) {
-		perror("GPIOHANDLE_GET_LINE_VALUES_IOCTL");
-		close(request.fd);
-		return -1;
-	}
-	close(request.fd);
-	return data.values[0];
-}
-
 /* Return 1 if @idx line matches name; 0 if no match; negative if error. */
 static int gpioline_name_match(int chip_fd, int idx, const char *name)
 {

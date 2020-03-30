@@ -10,6 +10,7 @@
 extern "C" {
 #endif
 
+#include <stdbool.h>
 #include <stddef.h>
 
 /* Recommended size for string property buffers used with
@@ -44,6 +45,8 @@ int VbSetSystemPropertyInt(const char* name, int value);
  *
  * Returns 0 if success, -1 if error. */
 int VbSetSystemPropertyString(const char* name, const char* value);
+
+int gpioline_read_value(int chip_fd, int idx, bool active_low);
 
 #ifdef __cplusplus
 }

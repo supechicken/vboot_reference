@@ -8,6 +8,11 @@
 #include <string.h>
 #include <ctype.h>
 
+#ifndef HAVE_MACOS
+#include <linux/gpio.h>
+#endif
+#include <sys/ioctl.h>
+#include <unistd.h>
 #include "2api.h"
 #include "2common.h"
 #include "2nvstorage.h"
@@ -721,3 +726,64 @@ int vb2_write_nv_storage_mosys(struct vb2_context *ctx)
 	}
 	return 0;
 }
+
+#ifndef HAVE_MACOS
+int gpioline_read_value(int chip_fd, int idx, bool active_low)
+{
+	struct gpiochip_info chipinfo;
+	struct gpioline_info lineinfo = {
+		.line_offset = idx,
+	};
+	struct gpiohandle_request request = {
+		.lineoffsets = { idx },
+		.flags = GPIOHANDLE_REQUEST_INPUT | \
+			 (active_low ? GPIOHANDLE_REQUEST_ACTIVE_LOW : 0),
+		.lines = 1,
+	};
+	struct gpiohandle_data data;
+	int ret;
+
+	memset(&chipinfo, 0, sizeof(chipinfo));
+	ret = ioctl(chip_fd, GPIO_GET_CHIPINFO_IOCTL, &chipinfo);
+	if (ret < 0) {
+		perror("GPIO_GET_CHIPINFO_IOCTL");
+		return -1;
+	}
+
+	if (idx >= chipinfo.lines) {
+		fprintf(stderr, "Wrong line number %d\n", idx);
+		return -1;
+	}
+
+	ret = ioctl(chip_fd, GPIO_GET_LINEINFO_IOCTL, &lineinfo);
+	if (ret < 0) {
+		perror("GPIO_GET_LINEINFO_IOCTL");
+		return -1;
+	}
+
+	/* Make sure the kernel is not using this GPIO */
+	if (lineinfo.flags & GPIOLINE_FLAG_KERNEL) {
+		fprintf(stderr, "Kernel is using this line\n");
+		return -1;
+	}
+
+	ret = ioctl(chip_fd, GPIO_GET_LINEHANDLE_IOCTL, &request);
+	if (ret < 0) {
+		perror("GPIO_GET_LINEHANDLE_IOCTL");
+		return -1;
+	}
+	if (request.fd < 0) {
+		fprintf(stderr, "bad LINEHANDLE fd %d\n", request.fd);
+		return -1;
+	}
+
+	ret = ioctl(request.fd, GPIOHANDLE_GET_LINE_VALUES_IOCTL, &data);
+	if (ret < 0) {
+		perror("GPIOHANDLE_GET_LINE_VALUES_IOCTL");
+		close(request.fd);
+		return -1;
+	}
+	close(request.fd);
+	return data.values[0];
+}
+#endif /* HAVE_MACOS */
