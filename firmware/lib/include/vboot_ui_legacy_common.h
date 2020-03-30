@@ -8,6 +8,7 @@
 #ifndef VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
 #define VBOOT_REFERENCE_VBOOT_UI_COMMON_H_
 
+#define DISK_DELAY_MS	1000	/* Delay between cheking disks */
 #define KEY_DELAY_MS	20	/* Delay between key scans in UI loops */
 
 enum vb2_beep_type {
