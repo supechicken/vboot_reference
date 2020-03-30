@@ -690,6 +690,59 @@ static void developer_tests(void)
 			"  used up mock_vbtlk");
 	}
 
+	/* Ctrl+U boots usb only if enabled */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "Ctrl+U disabled");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_TRUE(mock_get_timer_last_retval[0] - mock_time_fixed >=
+		  30 * VB_USEC_PER_SEC, "  finished delay");
+	TEST_TRUE(mock_get_timer_last_retval[1] - mock_time_fixed <
+		  30 * VB_USEC_PER_SEC, "  not finished too late");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* Ctrl+U enabled, with good usb */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "Ctrl+U");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_TRUE(mock_get_timer_last_retval[0] - mock_time_fixed <
+		  30 * VB_USEC_PER_SEC, "  delay loop aborted");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* Ctrl+U enabled, without valid usb */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"Ctrl+U without valid usb");
+	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
+	TEST_EQ(mock_screens_displayed[0], VB2_SCREEN_BLANK,
+		"  final blank screen");
+	TEST_EQ(mock_screens_count, 1, "  no extra screens");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
+		"  no recovery");
+	TEST_TRUE(mock_get_timer_last_retval[0] - mock_time_fixed >=
+		  30 * VB_USEC_PER_SEC, "  finished delay");
+	TEST_TRUE(mock_get_timer_last_retval[1] - mock_time_fixed <
+		  30 * VB_USEC_PER_SEC, "  not finished too late");
+	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+
 	VB2_DEBUG("...done.\n");
 }
 
