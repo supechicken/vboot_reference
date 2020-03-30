@@ -1150,6 +1150,74 @@ enum vb2_screen {
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x10,
 	/* Wait screen for touchpad sync */
 	VB2_SCREEN_TOUCHPAD_SYNC		= 0x11,
+	/* Developer - warning */
+	VB2_SCREEN_DEVELOPER_WARNING = 0x101,
+	/* REMOVED: Developer - easter egg (0x102) */
+	/* REMOVED: Recovery - remove inserted devices (0x201) */
+	/* Recovery - insert recovery image */
+	VB2_SCREEN_RECOVERY_INSERT   = 0x202,
+	/* Recovery - inserted image invalid */
+	VB2_SCREEN_RECOVERY_NO_GOOD  = 0x203,
+	/* Recovery - confirm dev mode */
+	VB2_SCREEN_RECOVERY_TO_DEV   = 0x204,
+	/* Developer - confirm normal mode */
+	VB2_SCREEN_DEVELOPER_TO_NORM = 0x205,
+	/* Please wait - programming EC */
+	VB2_SCREEN_WAIT              = 0x206,
+	/* Confirm after DEVELOPER_TO_NORM */
+	VB2_SCREEN_TO_NORM_CONFIRMED = 0x207,
+	/* Broken screen shown after verification failure */
+	VB2_SCREEN_OS_BROKEN         = 0x208,
+	/* REMOVED: Display base screen (no icons, no text) (0x209) */
+	/* Detachable Menu - Developer Warning */
+	VB2_SCREEN_DEVELOPER_WARNING_MENU = 0x20a,
+	/* Detachable Menu - Developer Boot */
+	VB2_SCREEN_DEVELOPER_MENU = 0x20b,
+	/* REMOVED: Detachable Menu - Recovery (0x20c) */
+	/* Detachable Menu - Confirm Dev Mode */
+	VB2_SCREEN_RECOVERY_TO_DEV_MENU = 0x20d,
+	/* Detachable Menu - Confirm Normal Mode */
+	VB2_SCREEN_DEVELOPER_TO_NORM_MENU = 0x20e,
+	/* Detachable Menu - Languages */
+	VB2_SCREEN_LANGUAGES_MENU = 0x20f,
+	/* Detachable Menu - Options */
+	VB2_SCREEN_OPTIONS_MENU = 0x210,
+	/* REMOVED: Alt OS picker screen (0x211) */
+	/* Alt firmware picker screen (for keyboard UI) */
+	VB2_SCREEN_ALT_FW_PICK = 0x212,
+	/* Alt firmware menu screen (for detachable UI ) */
+	VB2_SCREEN_ALT_FW_MENU = 0x213,
+	/* Confirm after VB2_SCREEN_RECOVERY_TO_DEV_MENU */
+	VB2_SCREEN_TO_DEV_CONFIRMED = 0x217,
+	/* Hardware failure */
+	VB2_SCREEN_HARDWARE_FAILURE = 0x218,
+	/* First recovery screen to select recovering from phone or disk */
+	VB2_SCREEN_RECOVERY_SELECT = 0x220,
+	/* Recovery using phone */
+	VB2_SCREEN_RECOVERY_PHONE_STEP1 = 0x230,
+	VB2_SCREEN_RECOVERY_PHONE_STEP2 = 0x231,
+	VB2_SCREEN_RECOVERY_PHONE_STEP3 = 0x232,
+	/* Recovery using external disk */
+	VB2_SCREEN_RECOVERY_DISK_STEP1 = 0x240,
+	VB2_SCREEN_RECOVERY_DISK_STEP2 = 0x241,
+	VB2_SCREEN_RECOVERY_DISK_STEP3 = 0x242,
+	/* Boot from internal disk */
+	VB2_SCREEN_BOOT_FROM_INTERNAL = 0x250,
+	/* Boot from external disk */
+	VB2_SCREEN_BOOT_FROM_EXTERNAL = 0x251,
+	/* Debug info screen */
+	VB2_SCREEN_DEBUG_INFO = 0x252,
+	/* BIOS log screen */
+	VB2_SCREEN_BIOS_LOG = 0x253,
+	/* 0x300-0x350 reserved for device-specific screens */
+	/* Vendor data not set warning screen */
+	VB2_COMPLETE_VENDOR_DATA = 0x300,
+	/* Set vendor data menu screen */
+	VB2_SCREEN_SET_VENDOR_DATA = 0x301,
+	/* Confirm vendor data menu screen */
+	VB2_SCREEN_CONFIRM_VENDOR_DATA = 0x302,
+	/* Confirm reboot for running diagnostics rom */
+	VB2_SCREEN_CONFIRM_DIAG = 0x303,
 };
 
 /**
