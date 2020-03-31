@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "484172e6_04acba3f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-31T10:35:59Z",
+      "side": 1,
+      "message": "Pull this out of the loop and set in \"timeout_msec\" or something like that.\nThen we only need one conditional here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 29,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17139e80_3e231b9b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-31T10:35:59Z",
+      "side": 1,
+      "message": "Just break here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
