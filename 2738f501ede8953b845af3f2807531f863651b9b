@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5b60a6_c5e7a193",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-31T21:56:42Z",
+      "side": 1,
+      "message": "I can put these in a sub-routine (e.g. check_no_boot_escape) so that we can do:\n\n  VB2_TRY(check_no_boot_escape(ctx), ctx, VB2_RECOVERY_ESCAPE_NO_BOOT);",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "2738f501ede8953b845af3f2807531f863651b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
