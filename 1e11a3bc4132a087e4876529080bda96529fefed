@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "41c3ff31_3e730af0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-31T09:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6b053da_c37c59c0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35de5d33_69998f83",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 18
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "39ed154d_5344bb15",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-31T09:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baaa046a_7d3094ed",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "851e5dfb_ac28d5bd",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -139,6 +187,30 @@
       "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2fb65e_889329e3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-31T09:35:22Z",
+      "side": 1,
+      "message": "Done\n\nNow it calls VbExGetTimer() directly, and calculates timeout in main loop.\nThe tests are rewritten, too.",
+      "parentUuid": "851e5dfb_ac28d5bd",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -260,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "2a542e58_e15aaf81",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-31T09:35:22Z",
+      "side": 1,
+      "message": "I think the previous one, i.e. if (DETACHABLE) is more reasonable.",
+      "parentUuid": "216af555_f8b017d7",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a820eef3_79429271",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -368,6 +464,24 @@
       "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1eed74_ef65d53c",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-03-31T09:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd4f90b_33a44c48",
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
