@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30d3c3ff_c89d853e",
+        "filename": "firmware/lib/vboot_ui_legacy_wilco.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-03-31T03:17:53Z",
+      "side": 1,
+      "message": "nit:\n\n .input_text \u003d data_value,\n .flags \u003d VB_VENDOR_DATA_SHOW_CURSOR,\n .selected_index \u003d 1,",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "94b7354e4c1599d75b6010854107fe33cfb5b153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
