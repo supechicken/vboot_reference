@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "721dbd58_e81dfe12",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-31T04:19:05Z",
+      "side": 1,
+      "message": "I cherry-picked your CL for zork.\n\nNot sure about volteer -- it didn\u0027t fail for me either on:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2104880\nLet me ask for an update on the volteer bug.\nI guess don\u0027t bother cherry-picking if it isn\u0027t causing any CQ issues.",
+      "parentUuid": "9e9aa8f0_de397e55",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "c8ba11124857922d1fea473f23f1462adbe3f8fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17b17c1_2c5895a0",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 11
