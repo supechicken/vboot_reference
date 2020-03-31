@@ -16,6 +16,24 @@
       "revId": "e46769873f2565c3fa0253386ba902bffd5e5f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fbdb14_eb5ad184",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-31T14:47:28Z",
+      "side": 1,
+      "message": "And presumably we can just get rid of the secdata_kernel read functionality of depthcharge secdata_tpm drivers?",
+      "parentUuid": "726929b9_e94d7307",
+      "revId": "e46769873f2565c3fa0253386ba902bffd5e5f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
