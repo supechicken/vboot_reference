@@ -180,6 +180,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSelectAndLoadKernelParams *kparams)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
 	vb2_error_t rv;
 
 	/* Init nvstorage space. TODO(kitching): Remove once we add assertions
@@ -194,7 +195,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	if (rv)
 		return rv;
 
-	VB2_DEBUG("GBB flags are %#x\n", vb2_get_gbb(ctx)->flags);
+	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);
 
 	/*
 	 * Do EC and Aux FW software sync unless we're in recovery mode. This
@@ -273,8 +274,13 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		rv = vb2_normal_boot(ctx);
 	}
 
-	if (VB2_SUCCESS == rv && (ctx->flags & VB2_CONTEXT_NO_BOOT)) {
-		/* Stop all cases returning SUCCESS against NO_BOOT flag. */
+	/*
+	 * Stop all cases returning SUCCESS against NO_BOOT flag except when
+	 * GBB flag disables software sync.
+	 */
+	if (!(gbb_flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC)
+	    && VB2_SUCCESS == rv
+	    && (ctx->flags & VB2_CONTEXT_NO_BOOT)) {
 		VB2_DEBUG("Blocking boot in NO_BOOT mode.\n");
 		vb2api_fail(ctx, VB2_RECOVERY_RW_INVALID_OS, rv);
 		rv = VB2_ERROR_ESCAPE_NO_BOOT;
