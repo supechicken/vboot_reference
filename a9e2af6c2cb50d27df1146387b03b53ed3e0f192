@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c7f0954_0f0715ff",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-01T23:48:52Z",
+      "side": 1,
+      "message": "Hmm... maaaybe. I can see the appeal of that idea. But it\u0027s also putting a lot of implicit magic into VB2_TRY(), I\u0027m not sure if that might make it too hard for people to follow. (Then again, the risk is basically just that we would forget to set a recovery reason in some cases and we really never should need to set one for any of those error codes...)\n\nHave you checked how many places in vboot could make use of that special case? If it would save us a lot of boilerplate I would be more inclined to do it than if it would just trigger in this one spot and nowhere else.\n\nAlso, if we do go that route we definitely need to create a separate return code namespace there... i.e. those values should no longer be called VB2_ERROR_xxx then, they should be something else that makes it more obvious that they are not errors (maybe VB2_RESULT_xxx or something like that, or maybe just VB2_REBOOT_REQUESTED). And also put them numerically far away from the real error codes.",
+      "parentUuid": "b7d4c4c0_c2305576",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 45
+      },
+      "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27caff45_1a4a52a9",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
