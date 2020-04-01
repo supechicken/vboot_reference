@@ -834,6 +834,14 @@ int vb2api_need_reboot_for_display(struct vb2_context *ctx);
  */
 uint32_t vb2api_get_recovery_reason(struct vb2_context *ctx);
 
+/**
+ * Whether phone recovery is enabled or not.
+ *
+ * @param ctx		Vboot context
+ * @return 1 if enabled, 0 if disabled.
+ */
+int vb2api_phone_recovery_enabled(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
