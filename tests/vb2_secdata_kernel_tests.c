@@ -214,6 +214,20 @@ static void secdata_kernel_access_test_v10(void)
 	v = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS);
 	TEST_EQ(v, 0x123456ff, "Versions changed");
 
+	/* Read/write flags */
+	vb2api_secdata_kernel_create(ctx);
+	vb2_secdata_kernel_init(ctx);
+	ctx->flags = 0;
+	v = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS);
+	TEST_EQ(v, 0, "Versions created 0");
+	test_changed(ctx, 0, "Get doesn't change data");
+	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS, 0x12);
+	test_changed(ctx, 1, "Set changes data");
+	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS, 0x12);
+	test_changed(ctx, 0, "Set again doesn't change data");
+	v = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS);
+	TEST_EQ(v, 0x12, "Flags changed");
+
 	/* Invalid field fails */
 	TEST_ABORT(vb2_secdata_kernel_get(ctx, -1), "Get invalid");
 	TEST_ABORT(vb2_secdata_kernel_set(ctx, -1, 456), "Set invalid");

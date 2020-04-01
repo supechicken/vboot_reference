@@ -81,6 +81,18 @@ void vb2_secdata_firmware_set(struct vb2_context *ctx,
 enum vb2_secdata_kernel_param {
 	/* Kernel versions */
 	VB2_SECDATA_KERNEL_VERSIONS = 0,
+
+	/* Flags; see vb2_secdata_kernel_flags */
+	VB2_SECDATA_KERNEL_FLAGS,
+};
+
+/* Flags for kernel space */
+enum vb2_secdata_kernel_flags {
+	/*
+	 * Phone recovery is disabled.  A future firmware RW update might set
+	 * this flag.
+	 */
+	VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_DISABLED = (1 << 0),
 };
 
 /**
