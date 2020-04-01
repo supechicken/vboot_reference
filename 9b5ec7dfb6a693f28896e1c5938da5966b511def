@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78e4ed4_1c8f7aa4",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-01T22:38:55Z",
+      "side": 1,
+      "message": "This needs to be a kernel flag, not a firmware flag. Firmware flags cannot be updated by RW firmware (at least not without extra complications). (The names \"firmware\" and \"kernel\" space are unfortunately increasingly misleading as we find more and more uses for those TPM spaces. They should really be called RO and RW space.)\n\nAlso, why not call it VB2_SECDATA_FIRMWARE_FLAG_PHONE_RECOVERY_DISABLED?",
+      "revId": "9b5ec7dfb6a693f28896e1c5938da5966b511def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
