@@ -487,6 +487,12 @@ void vb2api_export_vbsd(struct vb2_context *ctx, void *dest)
 _Static_assert(VB2_VBSD_SIZE == sizeof(VbSharedDataHeader),
 	       "VB2_VBSD_SIZE incorrect");
 
+int vb2api_phone_recovery_enabled(struct vb2_context *ctx)
+{
+	return !(vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS) &
+		 VB2_SECDATA_FIRMWARE_FLAG_HIDDEN_PHONE_RECOVERY);
+}
+
 enum vb2_dev_default_boot vb2_get_dev_boot_target(
 	struct vb2_context *ctx)
 {

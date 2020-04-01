@@ -37,6 +37,11 @@ enum vb2_secdata_firmware_flags {
 	 * vb2_check_dev_switch().
 	 */
 	VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE = (1 << 1),
+
+	/*
+	 * Hide Android recovery instructions in recovery UI.
+	 */
+	VB2_SECDATA_FIRMWARE_FLAG_HIDDEN_PHONE_RECOVERY = (1 << 2),
 };
 
 /**
