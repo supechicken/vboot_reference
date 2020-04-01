@@ -32,7 +32,7 @@ uint8_t vb2_secdata_kernel_crc(struct vb2_context *ctx)
 	} else {
 		struct vb2_secdata_kernel_v1 *sec
 			= (void *)ctx->secdata_kernel;
-		offset = offsetof(struct vb2_secdata_kernel_v1, reserved0);
+		offset = offsetof(struct vb2_secdata_kernel_v1, flags);
 		size = sec->struct_size - offset;
 	}
 
@@ -180,6 +180,8 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	const char *msg;
+	const struct vb2_secdata_kernel_v0 *v0 = (void *)ctx->secdata_kernel;
+	const struct vb2_secdata_kernel_v1 *v1 = (void *)ctx->secdata_kernel;
 
 	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT)) {
 		msg = "get before init";
@@ -188,15 +190,12 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 
 	switch (param) {
 	case VB2_SECDATA_KERNEL_VERSIONS:
-		if (is_v0(ctx)) {
-			struct vb2_secdata_kernel_v0 *sec =
-					(void *)ctx->secdata_kernel;
-			return sec->kernel_versions;
-		} else {
-			struct vb2_secdata_kernel_v1 *sec =
-					(void *)ctx->secdata_kernel;
-			return sec->kernel_versions;
-		}
+		return is_v0(ctx) ? v0->kernel_versions : v1->kernel_versions;
+	case VB2_SECDATA_KERNEL_FLAGS:
+		/* Silent no-op for v0 */
+		if (is_v0(ctx))
+			return 0;
+		return v1->flags;
 	default:
 		msg = "invalid param";
 	}
@@ -230,14 +229,28 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 		ptr = is_v0(ctx) ? &v0->kernel_versions : &v1->kernel_versions;
 		VB2_DEBUG("secdata_kernel versions updated from %#x to %#x\n",
 			  *ptr, value);
+		*ptr = value;
 		break;
+	case VB2_SECDATA_KERNEL_FLAGS:
+		if (is_v0(ctx)) {
+			msg = "flags not supported in secdata_kernel v0";
+			goto fail;
+		}
 
+		/* Make sure flags is in valid range */
+		if (value > UINT8_MAX) {
+			msg = "flags out of range";
+			goto fail;
+		}
+
+		VB2_DEBUG("secdata_kernel flags updated from %#x to %#x\n",
+			  v1->flags, value);
+		v1->flags = value;
+		break;
 	default:
 		msg = "invalid param";
 		goto fail;
 	}
-
-	*ptr = value;
 
 	if (is_v0(ctx))
 		v0->crc8 = vb2_secdata_kernel_crc(ctx);
