@@ -1142,6 +1142,14 @@ vb2_error_t vb2ex_ec_battery_cutoff(void);
 /*****************************************************************************/
 /* Functions for UI display. */
 
+/**
+ * Whether to enable phone recovery in recovery UI.
+ *
+ * @param ctx		Vboot context
+ * @return 1 if enabled, 0 if disabled.
+ */
+int vb2api_phone_recovery_enabled(struct vb2_context *ctx);
+
 /* Screens. */
 enum vb2_screen {
 	/* Blank screen */

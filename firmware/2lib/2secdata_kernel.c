@@ -32,7 +32,7 @@ uint8_t vb2_secdata_kernel_crc(struct vb2_context *ctx)
 	} else {
 		struct vb2_secdata_kernel_v1 *sec
 			= (void *)ctx->secdata_kernel;
-		offset = offsetof(struct vb2_secdata_kernel_v1, reserved0);
+		offset = offsetof(struct vb2_secdata_kernel_v1, flags);
 		size = sec->struct_size - offset;
 	}
 
@@ -180,6 +180,8 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	const char *msg;
+	const struct vb2_secdata_kernel_v0 *v0 = (void *)ctx->secdata_kernel;
+	const struct vb2_secdata_kernel_v1 *v1 = (void *)ctx->secdata_kernel;
 
 	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT)) {
 		msg = "get before init";
@@ -188,15 +190,9 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 
 	switch (param) {
 	case VB2_SECDATA_KERNEL_VERSIONS:
-		if (is_v0(ctx)) {
-			struct vb2_secdata_kernel_v0 *sec =
-					(void *)ctx->secdata_kernel;
-			return sec->kernel_versions;
-		} else {
-			struct vb2_secdata_kernel_v1 *sec =
-					(void *)ctx->secdata_kernel;
-			return sec->kernel_versions;
-		}
+		return is_v0(ctx) ? v0->kernel_versions : v1->kernel_versions;
+	case VB2_SECDATA_KERNEL_FLAGS:
+		return is_v0(ctx) ? v0->flags : v1->flags;
 	default:
 		msg = "invalid param";
 	}
@@ -214,7 +210,8 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 	const char *msg;
 	struct vb2_secdata_kernel_v0 *v0 = (void *)ctx->secdata_kernel;
 	struct vb2_secdata_kernel_v1 *v1 = (void *)ctx->secdata_kernel;
-	uint32_t *ptr;
+	uint8_t *ptr8;
+	uint32_t *ptr32;
 
 	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT)) {
 		msg = "set before init";
@@ -227,17 +224,27 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 
 	switch (param) {
 	case VB2_SECDATA_KERNEL_VERSIONS:
-		ptr = is_v0(ctx) ? &v0->kernel_versions : &v1->kernel_versions;
+		ptr32 = is_v0(ctx) ? &v0->kernel_versions : &v1->kernel_versions;
 		VB2_DEBUG("secdata_kernel versions updated from %#x to %#x\n",
-			  *ptr, value);
+			  *ptr32, value);
+		*ptr32 = value;
 		break;
+	case VB2_SECDATA_KERNEL_FLAGS:
+		/* Make sure flags is in valid range */
+		if (value > 0xff) {
+			msg = "flags out of range";
+			goto fail;
+		}
 
+		ptr8 = is_v0(ctx) ? &v0->flags : &v1->flags;
+		VB2_DEBUG("secdata_kernel flags updated from %#x to %#x\n",
+			  *ptr8, value);
+		*ptr8 = value;
+		break;
 	default:
 		msg = "invalid param";
 		goto fail;
 	}
-
-	*ptr = value;
 
 	if (is_v0(ctx))
 		v0->crc8 = vb2_secdata_kernel_crc(ctx);
