@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "3a201213_b51d2497",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "I think we can remove this.",
+      "parentUuid": "35de5d33_69998f83",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 30
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baaa046a_7d3094ed",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -474,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "94c2e6b5_d51df97c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1115216a_73366fa9",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd4f90b_33a44c48",
         "filename": "firmware/2lib/include/2misc.h",
         "patchSetId": 18
@@ -524,6 +572,24 @@
       "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81346685_38e21fed",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done\nSince we removed vb2_dev_try_legacy, this can be removed now.",
+      "parentUuid": "db560ed6_87f49214",
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

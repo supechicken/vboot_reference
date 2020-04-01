@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa0e0746_a93cc777",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "The legacy one has it, too\nSee https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/master/firmware/lib/vboot_ui_legacy_menu.c\nline 285 in function enter_altfw_menu()\n\nI do not know if it is necessary or not",
+      "parentUuid": "be9e8e32_1ef8a7a4",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed72b8d3_0d6231af",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
@@ -45,6 +69,30 @@
       "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4900e604_a046999d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "There was something wrong...\nActually we should set timer_use_short \u003d 0 here but I did not.\n\nBut I will take timeout_msec (the comment here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2094511/21/firmware/2lib/2ui.c#103) instead of timer_use_short.\nAlso add a test about it.",
+      "parentUuid": "ed72b8d3_0d6231af",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "cfb1e629_1d894d69",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Let\u0027s pull it out first",
+      "parentUuid": "4006ceda_a7f72854",
+      "range": {
+        "startLine": 103,
+        "startChar": 29,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17139e80_3e231b9b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4710f481_9fc0e287",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "No that will be different in certain scenario:\n\nif we encountered a timeout but dev mode was disabled, then we shall not exit the loop.",
+      "parentUuid": "17139e80_3e231b9b",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d502028_6dcadc71",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
@@ -135,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "53646bcc_2334ae31",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d502028_6dcadc71",
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "919f373f_b20fad46",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
@@ -149,6 +263,24 @@
       "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac8d6fd_6a1908dd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919f373f_b20fad46",
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "137fbe55_e755061e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "I think we will remove vb2_dev_try_legacy",
+      "parentUuid": "76e321a3_926b3565",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf9e4c7e_1aa1a5f2",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
@@ -198,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "c455afe2_419b71c1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf9e4c7e_1aa1a5f2",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59a843e8_e276ecc0",
         "filename": "firmware/2lib/include/2misc.h",
         "patchSetId": 21
@@ -212,6 +392,24 @@
       "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a78741a2_5609671c",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "Done\nSince we removed vb2_dev_try_legacy, this can be removed now.",
+      "parentUuid": "59a843e8_e276ecc0",
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "23c8c1c7_1025b1a2",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "8816f7fa_0fee1151",
+      "range": {
+        "startLine": 262,
+        "startChar": 17,
+        "endLine": 262,
+        "endChar": 44
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69991935_17394fea",
         "filename": "firmware/2lib/include/2misc.h",
         "patchSetId": 21
@@ -258,6 +480,30 @@
       "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea4ccb3_cb20f7a5",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-01T16:38:52Z",
+      "side": 1,
+      "message": "This function has been removed.",
+      "parentUuid": "69991935_17394fea",
+      "range": {
+        "startLine": 266,
+        "startChar": 11,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
