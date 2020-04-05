@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e1527656_fdb6d311",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-05T10:43:10Z",
+      "side": 1,
+      "message": "I see. However, it seems strange to me if vb2_dev_boot_allowed() is checked here but not in below.",
+      "parentUuid": "fa0e0746_a93cc777",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "d73626bb50388c39dd12fb76982aa370b1cafde7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed72b8d3_0d6231af",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 21
