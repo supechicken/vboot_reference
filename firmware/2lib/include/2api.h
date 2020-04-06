@@ -1150,15 +1150,19 @@ enum vb2_screen {
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x10,
 	/* Wait screen for touchpad sync */
 	VB2_SCREEN_TOUCHPAD_SYNC		= 0x11,
+	/* First recovery screen to select recovering from disk or phone */
+	VB2_SCREEN_RECOVERY_SELECT		= 0x100,
 };
 
 /**
  * Display UI screen.
  *
  * @param screen		Screen to display.
+ * @param item_index		Index of selected menu item.
  * @param locale		Locale.
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale);
+vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t item_index,
+			     uint32_t locale);
 
 #endif  /* VBOOT_REFERENCE_2API_H_ */
