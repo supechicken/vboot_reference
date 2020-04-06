@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64dc11a5_c4a06653",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "I don\u0027t think variables can be declared in switch cases. Anyway, since we\u0027re not going to support secdata_kernel v0, we no longer need another pointer.\n\nhttps://stackoverflow.com/questions/92396/why-cant-variables-be-declared-in-a-switch-statement",
+      "parentUuid": "90bce054_0265d0da",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2163f56b_2e01a673",
         "filename": "firmware/2lib/2secdata_kernel.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd06099_ff190d71",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2163f56b_2e01a673",
+      "range": {
+        "startLine": 234,
+        "startChar": 14,
+        "endLine": 234,
+        "endChar": 18
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cc086180_a06fcfea",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aecab9c_7652c83e",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 51
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65689636_315d8e18",
         "filename": "firmware/2lib/include/2secdata.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db8fec4_38e30cd0",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65689636_315d8e18",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 4
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f6ea88e5_a5a02988",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed65481_86272ced",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13d59c87_a0d13e7a",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0715d1_1d884cf8",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-06T09:31:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d59c87_a0d13e7a",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 72
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
