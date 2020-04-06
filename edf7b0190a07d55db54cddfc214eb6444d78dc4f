@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90bce054_0265d0da",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "This seems a bit unnecessary... perhaps we could just define a pointer for one-time use at the start of each case?  (Especially since they don\u0027t share the pointer variables.)",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2163f56b_2e01a673",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "How about UINT8_MAX?",
+      "range": {
+        "startLine": 234,
+        "startChar": 14,
+        "endLine": 234,
+        "endChar": 18
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aecab9c_7652c83e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "Since this function may have other use cases we haven\u0027t yet envisioned, perhaps we shouldn\u0027t limit it to just being used for UI.  (Even if that\u0027s just documentation text.)",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 51
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65689636_315d8e18",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "Probably a single-line comment works fine here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 4
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed65481_86272ced",
+        "filename": "firmware/2lib/include/2secdata_struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure what adding this to the old struct will get us, since this feature is only supported in new firmware anyway.  I\u0027d say leave v0 as-is, and raise an error if get/set is attempted with v0 data struct.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d59c87_a0d13e7a",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-06T03:39:41Z",
+      "side": 1,
+      "message": "Unless we are adding more test cases, I\u0027d inline this down into the second test case below.",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 72
+      },
+      "revId": "edf7b0190a07d55db54cddfc214eb6444d78dc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
