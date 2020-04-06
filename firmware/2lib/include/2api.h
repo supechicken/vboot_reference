@@ -1150,15 +1150,38 @@ enum vb2_screen {
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x10,
 	/* Wait screen for touchpad sync */
 	VB2_SCREEN_TOUCHPAD_SYNC		= 0x11,
+	/* First recovery screen to select recovering from disk or phone */
+	VB2_SCREEN_RECOVERY_SELECT		= 0x100,
+};
+
+/* Menu items of VB2_SCREEN_RECOVERY_SELECT. */
+enum vb2_screen_recovery_select_item {
+	VB2_SCREEN_RECOVERY_SELECT_ITEM_DISK,
+	VB2_SCREEN_RECOVERY_SELECT_ITEM_COUNT,
+};
+
+/*
+ * Menu on the screen. Note that some screens such as VB2_SCREEN_FIRMWARE_SYNC
+ * don't have a menu.
+ */
+struct vb2_ui_menu {
+	/* Index of the selected item. */
+	uint32_t selected_item;
+	/* Bit (1 << idx) indicates whether item 'idx' is disabled. */
+	uint32_t disabled_item_mask;
 };
 
 /**
  * Display UI screen.
  *
  * @param screen		Screen to display.
+ * @param menu			Menu on the screen, or NULL if the screen
+ *				doesn't have a menu.
  * @param locale		Locale.
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale);
+vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
+			     const struct vb2_ui_menu *menu,
+			     uint32_t locale);
 
 #endif  /* VBOOT_REFERENCE_2API_H_ */
