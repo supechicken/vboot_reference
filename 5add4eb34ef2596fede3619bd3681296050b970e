@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc78ade3_56f716c8",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-07T04:15:30Z",
+      "side": 1,
+      "message": "Could we add some tests for this?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 40
+      },
+      "revId": "5add4eb34ef2596fede3619bd3681296050b970e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af680cf4_ded8ad1f",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-07T04:15:30Z",
+      "side": 1,
+      "message": "And tests for this too.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 22
+      },
+      "revId": "5add4eb34ef2596fede3619bd3681296050b970e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13ab55d_a6789459",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-07T04:15:30Z",
+      "side": 1,
+      "message": "I would reverse the order of these two... I\u0027d say \"not being supported\" is a more serious issue.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "5add4eb34ef2596fede3619bd3681296050b970e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cfd731_29b4235e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-07T04:15:30Z",
+      "side": 1,
+      "message": "I would prefer to move this out of the \"UI display\" section if possible... perhaps right below:\n\n  uint32_t vb2api_get_recovery_reason(struct vb2_context *ctx);",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1145,
+        "endChar": 3
+      },
+      "revId": "5add4eb34ef2596fede3619bd3681296050b970e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54086812_fb964751",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-07T04:15:30Z",
+      "side": 1,
+      "message": "Maybe we should explain a bit about where this flag would actually be set... my understanding is that \"a future firmware RW update might set this bit\".  Is that correct?",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "5add4eb34ef2596fede3619bd3681296050b970e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
