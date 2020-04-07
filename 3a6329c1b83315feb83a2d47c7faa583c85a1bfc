@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f474f08_af0614af",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-07T20:37:25Z",
+      "side": 1,
+      "message": "This should probably check ((ctx-\u003eflags \u0026 VB2_CONTEXT_RECOVERY_MODE) \u0026\u0026 ...) now, since otherwise it will still print the \"stow subcode\" message when booting in normal more (even though we\u0027ll be storing a 0). (In fact, not super sure why this tests vb2_allow_recovery() at all. If we want to go by what we discussed in https://docs.google.com/document/d/1-EoIEo-K3xbvutNryrtc1LVATH-K08NWZrPf37s45HA, i.e. make the recovery reasons stick across multiple manual invocations (until the device booted normally again), then we should still write the subcode back (or never clear it) in manual recovery mode here.)",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b370a68_50908f78",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-07T20:37:25Z",
+      "side": 1,
+      "message": "nit: this message doesn\u0027t really reflect that subcodes may also get set by this function in some cases.",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c1b9f2_6ba389b6",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-07T20:37:25Z",
+      "side": 1,
+      "message": "This seems pretty kludgy to me. How about we add an (... \u0026\u0026 subcode !\u003d VB2_RECOVERY_TRAIN_AND_REBOOT) to the test for promoting the subcode to full recovery reason in vb2_check_recovery()? That way it still works as a subcode in other ways (e.g. if we ever get metrics infrastructure to report them that would still work), but we can be sure it will never lead to unexpected reboots on manual recovery boot.",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
