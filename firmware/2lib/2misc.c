@@ -421,9 +421,9 @@ void vb2_clear_recovery(struct vb2_context *ctx)
 		  vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE));
 
-	/* Clear recovery request for both cases. */
+	/* Clear recovery request for both manual and non-manual. */
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, VB2_RECOVERY_NOT_REQUESTED);
+	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 0);
 
 	if (!vb2_allow_recovery(ctx)) {
 		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n",
