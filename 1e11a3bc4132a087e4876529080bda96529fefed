@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "39d1a959_5e416f0b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-08T14:54:19Z",
+      "side": 1,
+      "message": "\u003e Off topic, I think after the CL: VB2_TRY merged, there will be no one handling VBERROR_SHUTDOWN_REQUESTED in vboot_api_kernel.c, is there something wrong?\n\nI\u0027m not sure what you\u0027re trying to say. Do you think there\u0027s a bug in the CL introducing VB2_TRY? VBERROR_SHUTDOWN_REQUESTED is handled in depthcharge/src/vboot/stages.c.",
+      "parentUuid": "44ba12c5_40a78f9e",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f2dc047_0e70e87b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
