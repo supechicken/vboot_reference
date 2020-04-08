@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "44ba12c5_40a78f9e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-08T13:44:07Z",
+      "side": 1,
+      "message": "There will be 3 different rv:\n- VBERROR_KEEP_LOOPING: keep looping.\n- VB2_SUCCESS: return VB2_SUCCESS.\n- VBERROR_SHUTDOWN_REQUESTED: return VBERROR_SHUTDOWN_REQUESTED.\n\nSo I think it is tough to distinguish these three if we simply remove VBERROR_KEEP_LOOPING.\n\nOff topic, I think after the CL: VB2_TRY merged, there will be no one handling VBERROR_SHUTDOWN_REQUESTED in vboot_api_kernel.c, is there something wrong?",
+      "parentUuid": "bb3ffeff_8327f09c",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 27
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f2dc047_0e70e87b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 18
@@ -463,6 +487,30 @@
       "side": 1,
       "message": "Yes, in general, but this is *legacy* firmware so I\u0027m not sure. Speaking to legacy firmware, why do we need to support that? Isn\u0027t menu UI only used by *new* boards?",
       "parentUuid": "e485b248_2e5b6dcc",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "1e11a3bc4132a087e4876529080bda96529fefed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6916a2fb_0e0fe46b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-08T13:44:07Z",
+      "side": 1,
+      "message": "Actually I do not know about the boards things, is there any further resources?\nI kept them and had tests for them for now.",
+      "parentUuid": "21a10298_0c6aec57",
       "range": {
         "startLine": 73,
         "startChar": 4,
