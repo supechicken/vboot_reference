@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1e5b2587_97f6c907",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-08T11:16:25Z",
+      "side": 1,
+      "message": "The only places it would be useful:\n\n  protect_ec()\n  update_ec()\n  sync_ec()\n  update_auxfw()\n\nSo it\u0027s probably not terribly important to introduce directly into VB2_TRY.  Might still be useful to have a vb2_reboot_requested(rv) helper function so we don\u0027t need to check against specific REBOOT_REQUIRED values in these few cases.\n\nBut we still want to convert VBERROR_*_REBOOT stuff over to vboot2 namespace.  I\u0027m not to concerned on the naming -- if we want to use VB2_RESULT_ or VB2_ERROR_.  But yes, they can definitely live numerically far away from the other error codes.  Yu-Ping, would you be able to look at this?\n\nThere is also a lot of code which calls request_recovery() and then returns VBERROR_EC_REBOOT_TO_RO_REQUIRED.  If the goal is to get into the BROKEN screen, I don\u0027t think it makes sense to return REBOOT_TO_RO_REQUIRED... we should probably fix that while we convert everything to use vb2api_fail() instead.",
+      "parentUuid": "0c7f0954_0f0715ff",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 45
+      },
+      "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27caff45_1a4a52a9",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
@@ -269,6 +293,30 @@
       "side": 1,
       "message": "\u003e Unless you\u0027re proposing to change the logic to check for potential RO updates before jumping to RW?\nI\u0027m saying that this patch is changing the logic. In situations where only RO needs to be updated but display is unavailable,\n\n- Before this CL, ec_will_update_slowly() will be 1 and vb2api_ec_sync() will return VBERROR_REBOOT_REQUIRED, so EC will NOT jump to RW.\n- After this CL, since we delay the check until vb2ex_ec_update_image(), sync_ec() will be called and EC will jump to RW.",
       "parentUuid": "0e33774a_bab1349f",
+      "range": {
+        "startLine": 493,
+        "startChar": 23,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "a9e2af6c2cb50d27df1146387b03b53ed3e0f192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072f195e_d4979469",
+        "filename": "tests/vb2_ec_sync_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-08T11:16:25Z",
+      "side": 1,
+      "message": "I see what you mean.  Since this is an edge case (only for dogfooders), I don\u0027t think we should be too concerned about slightly changing the logic here (\"when RO update is required, reboot for display init is triggered after jumping to RW rather than before\").  The end-result is the same (maybe slightly slower).",
+      "parentUuid": "8df723d7_c6b0dd65",
       "range": {
         "startLine": 493,
         "startChar": 23,
