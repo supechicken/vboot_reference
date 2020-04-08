@@ -109,6 +109,30 @@
       "revId": "5bb3282c9748d8c19ca9f6f777f82daa2274fd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59be711_5a55c2dc",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-08T18:21:15Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s as far as I got :)\n\nSo the question is, \u0027what\u0027s the \"uid\" attribute?\u0027 The comment claims it\u0027s the GPIO bank number, but my understanding of the upstream threads, etc., is that that\u0027s no place for determining the bank number -- ACPI tables don\u0027t know how Linux is going to number the gpiochip(s).\n\nBut then, I don\u0027t know ACPI, so either somebody should educate me, or we should find another reviewer.",
+      "parentUuid": "fef9fef7_ef6bd257",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 44
+      },
+      "revId": "5bb3282c9748d8c19ca9f6f777f82daa2274fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
