@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e8b2ef47_bb769061",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-08T02:12:00Z",
+      "side": 1,
+      "message": "The other problem is that 0 is the default state when there are communication problems to the TPM. In that case, I would rather keep all possible recovery options enabled. (That somewhat depends on whether this only controls UI or also the feature itself, my understanding is that it would also control the feature.)\n\nSo I think it would be better to keep polarity as is and just hardcode some code that sets this to 1 on every boot for now.",
+      "parentUuid": "46efc83e_9c5e6ee6",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e9efcba_6c50fbce",
         "filename": "tests/vb2_secdata_kernel_tests.c",
         "patchSetId": 4
