@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2dd615cb_7d97b032",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-08T05:56:50Z",
+      "side": 1,
+      "message": "Julius, I\u0027ve added a few questions to the bug b/147744345 to confirm these questions.  Provided everything checks out there, keeping polarity like you say makes sense.  But presumably we should also add the \"set to 1 on every boot\" in this CL too.",
+      "parentUuid": "e8b2ef47_bb769061",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e9efcba_6c50fbce",
         "filename": "tests/vb2_secdata_kernel_tests.c",
         "patchSetId": 4
