@@ -16,6 +16,52 @@
       "revId": "6cafcd87eed2285a98e45a2e253bd26087c09551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc146554_e35f6d07",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-09T09:27:21Z",
+      "side": 1,
+      "message": "Could we convert this one while we\u0027re at it?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "6cafcd87eed2285a98e45a2e253bd26087c09551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9ca222_c93de48d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-09T09:27:21Z",
+      "side": 1,
+      "message": "On second thought, maybe Julius\u0027 suggestion might work better -- prefix everything with VB2_RESULT_.  We may want to use this for other \"non-error\" purposes in the future -- for example if we decide to keep using VBERROR_KEEP_LOOPING, we could call it VB2_RESULT_UI_CONTINUE or something.  Additionally, this allows us to keep \"SHUTDOWN\" in the same block without calling it REBOOT_SHUTDOWN...\n\nWe may also want to clean up the naming scheme here while we\u0027re at it.  I wonder if we could just consider the REBOOT implied by changing the state of EC?  Anyone else want to chime in an opinion? (\u003d\n\n  VB2_RESULT_SHUTDOWN\n  VB2_RESULT_REBOOT\n  VB2_RESULT_EC_SWITCH_RW\n  VB2_RESULT_EC_TO_RO\n\nFinally, let\u0027s move this as far away from the \"real\" error codes as possible -- to 0x100f0000.",
+      "range": {
+        "startLine": 791,
+        "startChar": 1,
+        "endLine": 791,
+        "endChar": 11
+      },
+      "revId": "6cafcd87eed2285a98e45a2e253bd26087c09551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

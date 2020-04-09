@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b422809c_13ace650",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-09T09:27:21Z",
+      "side": 0,
+      "message": "Since this is changing behaviour quite significantly (\"try both slots before going to recovery\", mentioned in https://docs.google.com/document/d/1k9U10Aslb0MwK-tkNNZ3uUNs7i1VWI_naigR-Pb77mk/edit?ts\u003d5e8d3069# ), could we pull this out into a separate CL?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "c56276abd4013f9b762732f3f35801ffb967951c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
