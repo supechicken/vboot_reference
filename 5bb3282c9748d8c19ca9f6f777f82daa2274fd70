@@ -199,6 +199,30 @@
       "revId": "5bb3282c9748d8c19ca9f6f777f82daa2274fd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49686198_7de3763e",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-09T00:25:03Z",
+      "side": 1,
+      "message": "\u003e Looks like I will have to change that as it might not work the same way on other chipsets. \n\nThat\u0027s one thing I was afraid of. Wouldn\u0027t want to break other chipsets here... and being clueless (see: me) is a great way to do that.\n\n\u003e It would definitely be a good idea to add someone who knows more about these particular ACPI attributes.\n\nThe more the merrier; I\u0027m adding +dtor, since I think he was reviewing some of the related pinctrl discussions upstream, IIRC.",
+      "parentUuid": "ff179dad_189aacfe",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 44
+      },
+      "revId": "5bb3282c9748d8c19ca9f6f777f82daa2274fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
