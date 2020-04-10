@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2f795d0_ef31aa16",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-10T08:13:19Z",
+      "side": 1,
+      "message": "I was thinking about making this more widely available, either as a utility function or a macro.  But let\u0027s wait until we figure out whether to call our return values VB2_REQUEST or VB2_RESULT or whatever first... I guess keep this here for now.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c65708_caeb1a77",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-10T08:13:19Z",
+      "side": 1,
+      "message": "TBH this comment could use some rewriting.  It doesn\u0027t really clearly explain all the reasons why a reboot could be required.",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 199,
+        "endChar": 47
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3f446c_07df8754",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-10T08:13:19Z",
+      "side": 1,
+      "message": "This is where a macro might be nice... somehow.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
