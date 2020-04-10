@@ -21,16 +21,6 @@
 	 VB2_SD_FLAG_ECSYNC_EC_RO : VB2_SD_FLAG_ECSYNC_EC_RW)
 
 /**
- * Set the RECOVERY_REQUEST flag in NV space
- */
-static void request_recovery(struct vb2_context *ctx, uint32_t recovery_request)
-{
-	VB2_DEBUG("request_recovery(%u)\n", recovery_request);
-
-	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, recovery_request);
-}
-
-/**
  * Whether a reboot is requested.
  *
  * When this function returns 1, rv isn't considered an error and hence
@@ -61,7 +51,7 @@ static vb2_error_t protect_ec(struct vb2_context *ctx,
 		VB2_DEBUG("vb2ex_ec_protect() needs reboot: %#x\n", rv);
 	} else if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("vb2ex_ec_protect() returned %#x\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_PROTECT);
+		vb2api_fail(ctx, VB2_RECOVERY_EC_PROTECT, rv);
 	}
 	return rv;
 }
@@ -120,8 +110,9 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	if (rv) {
 		VB2_DEBUG("vb2ex_ec_get_expected_image_hash() returned %#x\n",
 			  rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
-		return VB2_ERROR_EC_HASH_EXPECTED;
+		rv = VB2_ERROR_EC_HASH_EXPECTED;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_EXPECTED_HASH, rv);
+		return rv;
 	}
 	VB2_DEBUG("Hexp %10s: ", image_name_to_string(select));
 	print_hash(hexp, hexp_len);
@@ -139,8 +130,9 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		if (hmir_len != hexp_len) {
 			VB2_DEBUG("Hmir size (%d) != Hexp size (%d)\n",
 				  hmir_len, hexp_len);
-			request_recovery(ctx, VB2_RECOVERY_EC_HASH_SIZE);
-			return VB2_ERROR_EC_HASH_SIZE;
+			rv = VB2_ERROR_EC_HASH_SIZE;
+			vb2api_fail(ctx, VB2_RECOVERY_EC_HASH_SIZE, rv);
+			return rv;
 		}
 		if (vb2_safe_memcmp(hmir, hexp, hexp_len)) {
 			VB2_DEBUG("Hmir != Hexp. Update Hmir.\n");
@@ -155,8 +147,9 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	rv = vb2ex_ec_hash_image(select, &heff, &heff_len);
 	if (rv) {
 		VB2_DEBUG("vb2ex_ec_hash_image() returned %#x\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_HASH_FAILED);
-		return VB2_ERROR_EC_HASH_IMAGE;
+		rv = VB2_ERROR_EC_HASH_IMAGE;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_HASH_FAILED, rv);
+		return rv;
 	}
 	VB2_DEBUG("Heff %10s: ", image_name_to_string(select));
 	print_hash(heff, heff_len);
@@ -165,8 +158,9 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	if (heff_len != hexp_len) {
 		VB2_DEBUG("EC uses %d-byte hash but AP-RW contains %d bytes\n",
 			  heff_len, hexp_len);
-		request_recovery(ctx, VB2_RECOVERY_EC_HASH_SIZE);
-		return VB2_ERROR_EC_HASH_SIZE;
+		rv = VB2_ERROR_EC_HASH_SIZE;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_HASH_SIZE, rv);
+		return rv;
 	}
 
 	if (vb2_safe_memcmp(heff, hexp, hexp_len)) {
@@ -191,14 +185,7 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 	vb2_error_t rv;
 
 	VB2_DEBUG("Updating %s...\n", image_name_to_string(select));
-
-	rv = vb2ex_ec_update_image(select);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("vb2ex_ec_update_image() returned %#x\n", rv);
-		if (!reboot_requested(rv))
-			request_recovery(ctx, VB2_RECOVERY_EC_UPDATE);
-		return rv;
-	}
+	VB2_TRY(vb2ex_ec_update_image(select));
 
 	/* Verify the EC was updated properly */
 	sd->flags &= ~SYNC_FLAG(select);
@@ -206,8 +193,9 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 		return VB2_REQUEST_REBOOT_EC_TO_RO;
 	if (sd->flags & SYNC_FLAG(select)) {
 		VB2_DEBUG("Failed to update\n");
-		request_recovery(ctx, VB2_RECOVERY_EC_UPDATE);
-		return VB2_REQUEST_REBOOT_EC_TO_RO;
+		rv = VB2_REQUEST_REBOOT_EC_TO_RO;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_UPDATE, rv);
+		return rv;
 	}
 
 	VB2_DEBUG("Updated %s successfully\n", image_name_to_string(select));
@@ -235,8 +223,9 @@ static vb2_error_t check_ec_active(struct vb2_context *ctx)
 	/* If we couldn't determine where the EC was, reboot to recovery. */
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("vb2ex_ec_running_rw() returned %#x\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_UNKNOWN_IMAGE);
-		return VB2_REQUEST_REBOOT_EC_TO_RO;
+		rv = VB2_REQUEST_REBOOT_EC_TO_RO;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_UNKNOWN_IMAGE, rv);
+		return rv;
 	}
 
 	if (in_rw)
@@ -266,10 +255,12 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	/* Update the RW Image */
 	if (sd->flags & SYNC_FLAG(select_rw)) {
 		rv = update_ec(ctx, select_rw);
-		if (reboot_requested(rv))
+		if (reboot_requested(rv)) {
 			return rv;
-		else if (rv)
+		} else if (rv) {
+			vb2api_fail(ctx, VB2_RECOVERY_EC_UPDATE, rv);
 			return VB2_REQUEST_REBOOT_EC_TO_RO;
+		}
 		/* Updated successfully. Cold reboot to switch to the new RW. */
 		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
@@ -304,7 +295,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 			 * All other errors trigger recovery mode.
 			 */
 			if (rv != VB2_REQUEST_REBOOT_EC_TO_RO)
-				request_recovery(ctx, VB2_RECOVERY_EC_JUMP_RW);
+				vb2api_fail(ctx, VB2_RECOVERY_EC_JUMP_RW, rv);
 
 			return VB2_REQUEST_REBOOT_EC_TO_RO;
 		}
@@ -317,16 +308,6 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 		/* Reset RO Software Sync NV flag */
 		vb2_nv_set(ctx, VB2_NV_TRY_RO_SYNC, 0);
 
-		/*
-		 * Get the current recovery request (if any).  This gets
-		 * overwritten by a failed try.  If a later try succeeds, we'll
-		 * need to restore this request (or the lack of a request), or
-		 * else we'll end up in recovery mode even though RO software
-		 * sync did eventually succeed.
-		 */
-		uint32_t recovery_request =
-			vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
-
 		/* Update the RO Image. */
 		int num_tries;
 		for (num_tries = 0; num_tries < RO_RETRIES; num_tries++) {
@@ -338,13 +319,8 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 		}
 		if (num_tries == RO_RETRIES) {
 			/* Ran out of tries */
+			vb2api_fail(ctx, VB2_RECOVERY_EC_UPDATE, rv);
 			return VB2_REQUEST_REBOOT_EC_TO_RO;
-		} else if (num_tries) {
-			/*
-			 * Update succeeded after a failure, so we've polluted
-			 * the recovery request.  Restore it.
-			 */
-			request_recovery(ctx, recovery_request);
 		}
 	}
 
@@ -362,11 +338,12 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	rv = vb2ex_ec_disable_jump();
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("vb2ex_ec_disable_jump() returned %#x\n", rv);
-		request_recovery(ctx, VB2_RECOVERY_EC_SOFTWARE_SYNC);
-		return VB2_REQUEST_REBOOT_EC_TO_RO;
+		rv = VB2_REQUEST_REBOOT_EC_TO_RO;
+		vb2api_fail(ctx, VB2_RECOVERY_EC_SOFTWARE_SYNC, rv);
+		return rv;
 	}
 
-	return rv;
+	return VB2_SUCCESS;
 }
 
 /**
