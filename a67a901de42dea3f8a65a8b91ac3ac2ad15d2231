@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "b8d88d19_b4a21b88",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-10T23:01:21Z",
+      "side": 1,
+      "message": "I would put it somewhere close to 0x0 so it\u0027s easy to answer questions like \"error or not error\" with few comparisons. So how about starting these at 0xf0000000?",
+      "parentUuid": "fa2dac03_5127b04a",
+      "range": {
+        "startLine": 789,
+        "startChar": 14,
+        "endLine": 789,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5843f82c_aebc2c84",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 1
@@ -106,6 +130,53 @@
         "startChar": 1,
         "endLine": 792,
         "endChar": 20
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82357521_a23d0b40",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-10T23:01:21Z",
+      "side": 1,
+      "message": "REQUEST sounds fine to me too if you prefer that.",
+      "parentUuid": "44be6735_f984f367",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 792,
+        "endChar": 20
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c721066_89067b1d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-10T23:01:21Z",
+      "side": 1,
+      "message": "Let\u0027s call these two REBOOT_EC_SWITCH_RW and REBOOT_EC_TO_RO, to make it clearer that they still include a full system reboot.",
+      "range": {
+        "startLine": 798,
+        "startChar": 1,
+        "endLine": 798,
+        "endChar": 24
       },
       "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
