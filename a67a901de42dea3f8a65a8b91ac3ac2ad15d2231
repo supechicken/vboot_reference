@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "fa2dac03_5127b04a",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-10T04:50:50Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m okay with any of these, really.  We could even use 0x20000000 and move HOST_BASE to 0x30000000, since none of that is used in firmware.\n\nJulius, what do you think?",
+      "parentUuid": "6bd31125_031820eb",
+      "range": {
+        "startLine": 789,
+        "startChar": 14,
+        "endLine": 789,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5843f82c_aebc2c84",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2020-04-10T02:32:42Z",
       "side": 1,
       "message": "It seems fine to me to have more concise naming. I wonder if VB2_REQUEST_* better reflects the fact the the calling firmware was requested to perform some action?",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 792,
+        "endChar": 20
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44be6735_f984f367",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-10T04:50:50Z",
+      "side": 1,
+      "message": "Hmmm... also another option.  Although if we decide to move KEEP_LOOPING in here, it might be a stretch to use VB2_REQUEST_KEEP_LOOPING or UI_CONTINUE whatever we want to call it.",
+      "parentUuid": "5843f82c_aebc2c84",
       "range": {
         "startLine": 792,
         "startChar": 1,
