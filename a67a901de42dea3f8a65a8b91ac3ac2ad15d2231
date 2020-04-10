@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd31125_031820eb",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-10T02:32:42Z",
+      "side": 1,
+      "message": "How about 0x10100000 or even 0x11000000? I feel like errors will reach 0x100f0000 pretty soon.",
+      "range": {
+        "startLine": 789,
+        "startChar": 14,
+        "endLine": 789,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5843f82c_aebc2c84",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-10T02:32:42Z",
+      "side": 1,
+      "message": "It seems fine to me to have more concise naming. I wonder if VB2_REQUEST_* better reflects the fact the the calling firmware was requested to perform some action?",
+      "range": {
+        "startLine": 792,
+        "startChar": 1,
+        "endLine": 792,
+        "endChar": 20
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
