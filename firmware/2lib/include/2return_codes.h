@@ -57,8 +57,6 @@ enum vb2_return_code {
 	VBERROR_INIT_SHARED_DATA              = 0x10001,
 	/* Unable to set boot mode state in TPM */
 	VBERROR_TPM_SET_BOOT_MODE_STATE       = 0x10006,
-	/* Calling firmware needs to perform a reboot. */
-	VBERROR_REBOOT_REQUIRED               = 0x10007,
 	/* Unable to set up TPM */
 	VBERROR_TPM_FIRMWARE_SETUP            = 0x10008,
 	/* Unable to read kernel versions from TPM */
@@ -67,23 +65,34 @@ enum vb2_return_code {
 	VBERROR_TPM_WRITE_KERNEL              = 0x1000B,
 	/* Unable to lock kernel versions in TPM */
 	VBERROR_TPM_LOCK_KERNEL               = 0x1000C,
-	/* Calling firmware requested shutdown via VbExIsShutdownRequested() */
-	VBERROR_SHUTDOWN_REQUESTED            = 0x1000D,
 	/* VbExBeep() can't make sound in the background */
 	VBERROR_NO_BACKGROUND_SOUND           = 0x10019,
-	/* Need EC to reboot to read-only code to switch RW slot */
-	VBERROR_EC_REBOOT_TO_SWITCH_RW        = 0x1001A,
-	/* Need EC to reboot to read-only code */
-	VBERROR_EC_REBOOT_TO_RO_REQUIRED      = 0x10022,
 	/* Error reading FWMP from TPM (note: not present is not an error) */
 	VBERROR_TPM_READ_FWMP                 = 0x10029,
 	/* Peripheral busy. Cannot upgrade firmware at present. */
 	VBERROR_PERIPHERAL_BUSY               = 0x10030,
 	/* Error writing VPD */
 	VBERROR_VPD_WRITE                     = 0x10032,
-	/* Detachable UI internal functions may return the following codes */
-	/* No error; return to UI loop */
-	VBERROR_KEEP_LOOPING			= 0x30000,
+
+	/**********************************************************************
+	 * Return values that are not considered errors
+	 */
+	VB2_REQUEST = 0xf0000000,
+
+	/* Calling firmware requested shutdown via VbExIsShutdownRequested() */
+	VB2_REQUEST_SHUTDOWN = 0xf0000001,
+
+	/* Calling firmware needs to perform a reboot */
+	VB2_REQUEST_REBOOT = 0xf0000002,
+
+	/* Need EC to reboot to read-only code to switch RW slot */
+	VB2_REQUEST_REBOOT_EC_SWITCH_RW = 0xf0000003,
+
+	/* Need EC to reboot to read-only code */
+	VB2_REQUEST_REBOOT_EC_TO_RO = 0xf0000004,
+
+	/* Continue in the UI loop.  This is used in UI internal functions. */
+	VB2_REQUEST_UI_CONTINUE	= 0xf0000005,
 
 	/**********************************************************************
 	 * SHA errors
