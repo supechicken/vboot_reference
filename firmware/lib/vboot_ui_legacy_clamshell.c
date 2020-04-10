@@ -134,7 +134,7 @@ static vb2_error_t vb2_altfw_ui(struct vb2_context *ctx)
 
 		if (vb2_want_shutdown(ctx, key)) {
 			VB2_DEBUG("developer UI - shutdown requested!\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_REQUEST_SHUTDOWN;
 		}
 		switch (key) {
 		case 0:
@@ -239,10 +239,10 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 			VbDisplayScreen(ctx,
 				VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
 			VbExSleepMs(5000);
-			return VBERROR_REBOOT_REQUIRED;
+			return VB2_REQUEST_REBOOT;
 		case -1:
 			VB2_DEBUG("shutdown requested\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_REQUEST_SHUTDOWN;
 		default:
 			/* Ignore user attempt to cancel */
 			VB2_DEBUG("ignore cancel TONORM\n");
@@ -269,7 +269,7 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 		uint32_t key = VbExKeyboardRead();
 		if (vb2_want_shutdown(ctx, key)) {
 			VB2_DEBUG("developer UI - shutdown requested!\n");
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_REQUEST_SHUTDOWN;
 		}
 
 		switch (key) {
@@ -310,10 +310,10 @@ static vb2_error_t vb2_developer_ui(struct vb2_context *ctx)
 				VbDisplayScreen(ctx,
 					VB_SCREEN_TO_NORM_CONFIRMED, 0, NULL);
 				VbExSleepMs(5000);
-				return VBERROR_REBOOT_REQUIRED;
+				return VB2_REQUEST_REBOOT;
 			case -1:
 				VB2_DEBUG("shutdown requested\n");
-				return VBERROR_SHUTDOWN_REQUESTED;
+				return VB2_REQUEST_SHUTDOWN;
 			default:
 				/* Stay in dev-mode */
 				VB2_DEBUG("stay in dev-mode\n");
@@ -445,7 +445,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 			key = VbExKeyboardRead();
 			VbCheckDisplayKey(ctx, key, NULL);
 			if (vb2_want_shutdown(ctx, key))
-				return VBERROR_SHUTDOWN_REQUESTED;
+				return VB2_REQUEST_SHUTDOWN;
 			else if ((retval =
 				  vb2_check_diagnostic_key(ctx, key)) !=
 				  VB2_SUCCESS)
@@ -505,10 +505,10 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				VB2_DEBUG("Reboot so it will take effect\n");
 				if (USB_BOOT_ON_DEV)
 					vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
-				return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+				return VB2_REQUEST_REBOOT_EC_TO_RO;
 			case -1:
 				VB2_DEBUG("Shutdown requested\n");
-				return VBERROR_SHUTDOWN_REQUESTED;
+				return VB2_REQUEST_SHUTDOWN;
 			default: /* zero, actually */
 				VB2_DEBUG("Not enabling dev-mode\n");
 				break;
@@ -520,7 +520,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 			VbCheckDisplayKey(ctx, key, NULL);
 		}
 		if (vb2_want_shutdown(ctx, key))
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_REQUEST_SHUTDOWN;
 		VbExSleepMs(KEY_DELAY_MS);
 	}
 

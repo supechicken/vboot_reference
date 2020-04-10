@@ -134,7 +134,7 @@ static vb2_error_t boot_disk_action(struct vb2_context *ctx)
 		vb2_flash_screen(ctx);
 		vb2_error_notify("Developer mode disabled\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 	VB2_DEBUG("trying fixed disk\n");
 	return VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
@@ -147,7 +147,7 @@ static vb2_error_t boot_legacy_action(struct vb2_context *ctx)
 		vb2_flash_screen(ctx);
 		vb2_error_notify("Developer mode disabled\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (!altfw_allowed) {
@@ -157,12 +157,12 @@ static vb2_error_t boot_legacy_action(struct vb2_context *ctx)
 				 "-mode documentation for details.\n",
 				 "Legacy boot is disabled\n",
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	vb2_try_altfw(ctx, 1, VB_ALTFW_DEFAULT);
 	vb2_flash_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /* Boot from USB or SD card if allowed and available. */
@@ -174,7 +174,7 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 		vb2_flash_screen(ctx);
 		vb2_error_notify("Developer mode disabled\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (!vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB) &&
@@ -187,7 +187,7 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 				 "for details.\n",
 				 "USB booting is disabled\n",
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (VB2_SUCCESS == VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE)) {
@@ -197,7 +197,7 @@ static vb2_error_t boot_usb_action(struct vb2_context *ctx)
 
 	vb2_flash_screen(ctx);
 	vb2_error_notify(no_kernel, NULL, VB_BEEP_FAILED);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_developer_menu(struct vb2_context *ctx)
@@ -217,14 +217,14 @@ static vb2_error_t enter_developer_menu(struct vb2_context *ctx)
 	}
 	vb2_change_menu(VB_MENU_DEV, menu_idx);
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_dev_warning_menu(struct vb2_context *ctx)
 {
 	vb2_change_menu(VB_MENU_DEV_WARNING, VB_WARN_POWER_OFF);
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_language_menu(struct vb2_context *ctx)
@@ -232,7 +232,7 @@ static vb2_error_t enter_language_menu(struct vb2_context *ctx)
 	vb2_change_menu(VB_MENU_LANGUAGES,
 			vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX));
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_recovery_base_screen(struct vb2_context *ctx)
@@ -244,14 +244,14 @@ static vb2_error_t enter_recovery_base_screen(struct vb2_context *ctx)
 	else
 		vb2_change_menu(VB_MENU_RECOVERY_INSERT, 0);
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_options_menu(struct vb2_context *ctx)
 {
 	vb2_change_menu(VB_MENU_OPTIONS, VB_OPTIONS_CANCEL);
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_to_dev_menu(struct vb2_context *ctx)
@@ -261,11 +261,11 @@ static vb2_error_t enter_to_dev_menu(struct vb2_context *ctx)
 	if (vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
 		vb2_flash_screen(ctx);
 		vb2_error_notify(dev_already_on, NULL, VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 	vb2_change_menu(VB_MENU_TO_DEV, VB_TO_DEV_CANCEL);
 	vb2_draw_current_screen(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t enter_to_norm_menu(struct vb2_context *ctx)
@@ -275,7 +275,7 @@ static vb2_error_t enter_to_norm_menu(struct vb2_context *ctx)
 	/* Make sure user knows dev mode disabled */
 	if (disable_dev_boot)
 		VbExDisplayDebugInfo(dev_disable_msg, 0);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /* Boot alternative bootloader if allowed and available. */
@@ -285,24 +285,24 @@ static vb2_error_t enter_altfw_menu(struct vb2_context *ctx)
 	if (disable_dev_boot) {
 		vb2_flash_screen(ctx);
 		vb2_error_beep(VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 	if (!altfw_allowed) {
 		vb2_flash_screen(ctx);
 		vb2_error_no_altfw();
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 	vb2_change_menu(VB_MENU_ALT_FW, 0);
 	vb2_draw_current_screen(ctx);
 
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t debug_info_action(struct vb2_context *ctx)
 {
 	force_redraw = 1;
 	VbDisplayDebugInfo(ctx);
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /* Action when selecting a language entry in the language menu. */
@@ -335,7 +335,7 @@ static vb2_error_t language_action(struct vb2_context *ctx)
 	default:
 		/* This should never happen. */
 		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
-		return VBERROR_SHUTDOWN_REQUESTED;
+		return VB2_REQUEST_SHUTDOWN;
 	}
 }
 
@@ -347,7 +347,7 @@ static vb2_error_t altfw_action(struct vb2_context *ctx)
 	VB2_DEBUG(no_legacy);
 	VbExDisplayDebugInfo(no_legacy, 0);
 
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /* Action that enables developer mode and reboots. */
@@ -356,7 +356,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 	/* Sanity check, should never happen. */
 	if ((vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) ||
 	    !vb2_allow_recovery(ctx))
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 
 	VB2_DEBUG("Enabling dev-mode...\n");
 	if (VB2_SUCCESS != vb2_enable_developer_mode(ctx))
@@ -367,7 +367,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 
 	VB2_DEBUG("Reboot so it will take effect\n");
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_REQUEST_REBOOT;
 }
 
 /* Action that disables developer mode, shows TO_NORM_CONFIRMED and reboots. */
@@ -378,7 +378,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 		vb2_error_notify("WARNING: TONORM prohibited by "
 				 "GBB FORCE_DEV_SWITCH_ON.\n", NULL,
 				 VB_BEEP_NOT_ALLOWED);
-		return VBERROR_KEEP_LOOPING;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	VB2_DEBUG("leaving dev-mode.\n");
@@ -386,7 +386,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 	vb2_change_menu(VB_MENU_TO_NORM_CONFIRMED, 0);
 	vb2_draw_current_screen(ctx);
 	VbExSleepMs(5000);
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_REQUEST_REBOOT;
 }
 
 /* Action that will power off the system. */
@@ -394,7 +394,7 @@ static vb2_error_t power_off_action(struct vb2_context *ctx)
 {
 	VB2_DEBUG("Power off requested from screen %#x\n",
 		  menus[current_menu].screen);
-	return VBERROR_SHUTDOWN_REQUESTED;
+	return VB2_REQUEST_SHUTDOWN;
 }
 
 /**
@@ -482,7 +482,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	case VB_KEY_ENTER:
 		/* Menuless screens shut down on power button press. */
 		if (!menus[current_menu].size)
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_REQUEST_SHUTDOWN;
 
 		return menus[current_menu].items[current_menu_idx].action(ctx);
 	default:
@@ -492,10 +492,10 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 
 	if (VbWantShutdownMenu(ctx)) {
 		VB2_DEBUG("shutdown requested!\n");
-		return VBERROR_SHUTDOWN_REQUESTED;
+		return VB2_REQUEST_SHUTDOWN;
 	}
 
-	return VBERROR_KEEP_LOOPING;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /* Master table of all menus. Menus with size == 0 count as menuless screens. */
@@ -792,7 +792,7 @@ static vb2_error_t vb2_developer_legacy_menu(struct vb2_context *ctx)
 				  "user pressed key '%c': Boot alternative "
 				  "firmware\n", key);
 			vb2_try_altfw(ctx, altfw_allowed, key - '0');
-			ret = VBERROR_KEEP_LOOPING;
+			ret = VB2_REQUEST_UI_CONTINUE;
 			break;
 		default:
 			ret = vb2_handle_menu_input(ctx, key, 0);
@@ -800,7 +800,7 @@ static vb2_error_t vb2_developer_legacy_menu(struct vb2_context *ctx)
 		}
 
 		/* We may have loaded a kernel or decided to shut down now. */
-		if (ret != VBERROR_KEEP_LOOPING)
+		if (ret != VB2_REQUEST_UI_CONTINUE)
 			return ret;
 
 		/* Reset 30 second timer whenever we see a new key. */
@@ -843,7 +843,7 @@ static vb2_error_t broken_ui(struct vb2_context *ctx)
 	while (1) {
 		uint32_t key = VbExKeyboardRead();
 		vb2_error_t ret = vb2_handle_menu_input(ctx, key, 0);
-		if (ret != VBERROR_KEEP_LOOPING)
+		if (ret != VB2_REQUEST_UI_CONTINUE)
 			return ret;
 	}
 }
@@ -883,7 +883,7 @@ static vb2_error_t recovery_ui(struct vb2_context *ctx)
 				VB2_DEBUG("ERROR: untrusted combo?!\n");
 		} else {
 			ret = vb2_handle_menu_input(ctx, key, key_flags);
-			if (ret != VBERROR_KEEP_LOOPING)
+			if (ret != VB2_REQUEST_UI_CONTINUE)
 				return ret;
 		}
 		VbExSleepMs(KEY_DELAY_MS);
