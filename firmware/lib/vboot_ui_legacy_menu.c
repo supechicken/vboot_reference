@@ -335,7 +335,7 @@ static vb2_error_t language_action(struct vb2_context *ctx)
 	default:
 		/* This should never happen. */
 		VB2_DEBUG("ERROR: prev_menu state corrupted, force shutdown\n");
-		return VBERROR_SHUTDOWN_REQUESTED;
+		return VB2_RESULT_SHUTDOWN;
 	}
 }
 
@@ -367,7 +367,7 @@ static vb2_error_t to_dev_action(struct vb2_context *ctx)
 		vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 
 	VB2_DEBUG("Reboot so it will take effect\n");
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_RESULT_REBOOT;
 }
 
 /* Action that disables developer mode, shows TO_NORM_CONFIRMED and reboots. */
@@ -386,7 +386,7 @@ static vb2_error_t to_norm_action(struct vb2_context *ctx)
 	vb2_change_menu(VB_MENU_TO_NORM_CONFIRMED, 0);
 	vb2_draw_current_screen(ctx);
 	VbExSleepMs(5000);
-	return VBERROR_REBOOT_REQUIRED;
+	return VB2_RESULT_REBOOT;
 }
 
 /* Action that will power off the system. */
@@ -394,7 +394,7 @@ static vb2_error_t power_off_action(struct vb2_context *ctx)
 {
 	VB2_DEBUG("Power off requested from screen %#x\n",
 		  menus[current_menu].screen);
-	return VBERROR_SHUTDOWN_REQUESTED;
+	return VB2_RESULT_SHUTDOWN;
 }
 
 /**
@@ -482,7 +482,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 	case VB_KEY_ENTER:
 		/* Menuless screens shut down on power button press. */
 		if (!menus[current_menu].size)
-			return VBERROR_SHUTDOWN_REQUESTED;
+			return VB2_RESULT_SHUTDOWN;
 
 		return menus[current_menu].items[current_menu_idx].action(ctx);
 	default:
@@ -492,7 +492,7 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 
 	if (VbWantShutdownMenu(ctx)) {
 		VB2_DEBUG("shutdown requested!\n");
-		return VBERROR_SHUTDOWN_REQUESTED;
+		return VB2_RESULT_SHUTDOWN;
 	}
 
 	return VBERROR_KEEP_LOOPING;
