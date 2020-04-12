@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1be543a5_7d172cfc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-12T06:12:27Z",
+      "side": 1,
+      "message": "I thought this screen was in initramfs?  Do we still need to list it here?",
+      "range": {
+        "startLine": 1152,
+        "startChar": 1,
+        "endLine": 1152,
+        "endChar": 25
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d884beb9_c3f052e9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-12T06:12:27Z",
+      "side": 1,
+      "message": "What is your plan for the IDs here?  Would 0x100 be the \"recovery screen\" section?\n\nIf we want to do this by section, maybe we should increase the buffer amount.",
+      "range": {
+        "startLine": 1154,
+        "startChar": 31,
+        "endLine": 1154,
+        "endChar": 36
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ae0124_d2e381de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-12T06:12:27Z",
+      "side": 1,
+      "message": "Perhaps we should just put PHONE here while we\u0027re at it.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 33,
+        "endLine": 1159,
+        "endChar": 38
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1679ae4_5de4797b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-12T06:12:27Z",
+      "side": 1,
+      "message": "Anther case where I\u0027m not sure it\u0027s providing much benefit by breaking this out into a struct rather than just specifying as arguments.  Or did you plan to make this data modifiable by depthcharge?",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 20
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
