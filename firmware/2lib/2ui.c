@@ -13,6 +13,8 @@
 #include "2secdata.h"
 #include "2ui.h"
 #include "2ui_private.h"
+#include "vboot_api.h"
+#include "vboot_audio.h"
 #include "vboot_kernel.h"
 
 /* Delay type (in msec) of developer and recovery mode menu looping. */
@@ -215,28 +217,78 @@ static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
 
 vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
-	enum vb2_dev_default_boot default_boot;
+	vb2_error_t rv;
 
 	VB2_TRY(vb2_init_menus(ctx));
 	vb2ex_display_ui(VB2_SCREEN_BLANK, 0);
 
-	/* If dev mode was disabled, loop forever. */
-	if (!vb2_dev_boot_allowed(ctx))
-		while (1);
+	/* Get audio/delay context. */
+	vb2_audio_start(ctx);
 
-	/* Boot from the default option. */
-	default_boot = vb2_get_dev_boot_target(ctx);
+	/* We'll loop until we finish the delay or are interrupted. */
+	do {
+		/* TODO(roccochen): Make sure user knows dev mode disabled */
+		/* TODO(roccochen): Check if booting from usb */
 
-	/* Boot legacy does not return on success */
-	if (default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY &&
-	    vb2_dev_boot_legacy_allowed(ctx) &&
-	    VbExLegacy(VB_ALTFW_DEFAULT) == VB2_SUCCESS)
-		return VB2_SUCCESS;
+		/* Scan keyboard inputs. */
+		uint32_t key = VbExKeyboardRead();
 
-	if (default_boot == VB2_DEV_DEFAULT_BOOT_USB &&
-	    vb2_dev_boot_usb_allowed(ctx) &&
-	    VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE) == VB2_SUCCESS)
-		return VB2_SUCCESS;
+		rv = VBERROR_KEEP_LOOPING;  /* set to default */
+		switch (key) {
+		case VB_BUTTON_VOL_DOWN_LONG_PRESS:
+			if (!DETACHABLE)
+				break;
+			/* fallthrough */
+		case VB_KEY_CTRL('D'):
+			if (vb2_dev_boot_allowed(ctx))
+				rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
+			break;
+		case VB_KEY_CTRL('L'):
+			if (vb2_dev_boot_allowed(ctx) &&
+			    vb2_dev_boot_legacy_allowed(ctx))
+				rv = VbExLegacy(VB_ALTFW_DEFAULT);
+			break;
+		case '0'...'9':
+			VB2_DEBUG("developer UI - "
+				  "user pressed key '%c': Boot alternative "
+				  "firmware\n", key);
+			if (vb2_dev_boot_allowed(ctx) &&
+			    vb2_dev_boot_legacy_allowed(ctx))
+				rv = VbExLegacy(key - '0');
+			break;
+		default:
+			rv = vb2_handle_menu_input(ctx, key, 0);
+		}
+
+		/* Have loaded a kernel or decided to shut down now. */
+		if (rv != VBERROR_KEEP_LOOPING)
+			return rv;
+
+		/* Reset 30 second timer whenever we see a new key. */
+		if (key != 0)
+			vb2_audio_start(ctx);
+
+		/* Check if timeout occurred */
+		VbExSleepMs(KEY_DELAY_MS);
+
+		/* If dev mode was disabled, loop forever */
+	} while (!vb2_dev_boot_allowed(ctx) || vb2_audio_looping());
+
+	/* Timeout, boot from the default option. */
+	switch (vb2_get_dev_boot_target(ctx)) {
+	case VB2_DEV_DEFAULT_BOOT_LEGACY:
+		if (vb2_dev_boot_legacy_allowed(ctx) &&
+		    VbExLegacy(VB_ALTFW_DEFAULT) == VB2_SUCCESS)
+			return VB2_SUCCESS;
+		break;
+	case VB2_DEV_DEFAULT_BOOT_USB:
+		if (vb2_dev_boot_usb_allowed(ctx) &&
+		    VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE) == VB2_SUCCESS)
+			return VB2_SUCCESS;
+		break;
+	default:
+		break;
+	}
 
 	return VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
 }
