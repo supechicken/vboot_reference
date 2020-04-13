@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cb2b33f_ad45f753",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-13T20:48:32Z",
+      "side": 1,
+      "message": "This runs in coreboot, too.",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd832962_6a33efc5",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-13T20:48:32Z",
+      "side": 1,
+      "message": "Well, we definitely don\u0027t need to make up new reason strings for stuff that never had one in the first place.",
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7a01c7_080ee0a9",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-13T20:48:32Z",
+      "side": 1,
+      "message": "flag?",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

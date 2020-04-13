@@ -105,6 +105,24 @@
       "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2589dd9b_e5ae8743",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-13T20:48:32Z",
+      "side": 1,
+      "message": "Yes, I think some of the ones in this area don\u0027t actually make sense as recovery reasons because they were also used as progress status codes by the booting firmware at some point. Feel free to remove those that don\u0027t seem to make any sense.\n\nAnd yes, sometimes reasons may overlap which might have occurred because the code changed and mosys needs to support both versions. Don\u0027t know about this case in particular.\n\nAll the vboot1 devices are very close to EOL anyway so we don\u0027t need to be super careful about all these really old reasons and can err on the side of saving space.",
+      "parentUuid": "0d5fd7d8_a51ecdd0",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
