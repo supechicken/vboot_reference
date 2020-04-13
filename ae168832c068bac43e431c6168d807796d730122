@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b911909e_cedfeb4b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T16:56:09Z",
+      "side": 1,
+      "message": "I think we could have a get_menu() function or something similar which lazily initializes the language menu.  So no need for the \"Init menus\" TODOs here or below.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b083db3_fe849d2b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T16:56:09Z",
+      "side": 1,
+      "message": "No need for this anymore.  Depthcharge will take care of clearing the screen.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99830c65_130867c5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T16:56:09Z",
+      "side": 1,
+      "message": "Can remove.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 35
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68778d5e_ae27a784",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T16:56:09Z",
+      "side": 1,
+      "message": "No need for this one either.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 39
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b48c2ed_9c0a6bab",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T16:56:09Z",
+      "side": 1,
+      "message": "Two spaces.",
+      "range": {
+        "startLine": 189,
+        "startChar": 13,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
