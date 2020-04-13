@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0e014854_9c2aa4fa",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "038d7546_a91cbf17",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4f9aa5e_52eb82c0",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The eventlog is not really related to vboot, but if the whole mosys tool is getting deprecated, then that seems as reasonable a place to put it as any other. (Probably better than starting a whole new repository from scratch, anyway.)",
       "parentUuid": "17d09d81_79c93e60",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d5fd7d8_a51ecdd0",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T07:37:49Z",
+      "side": 1,
+      "message": "\u003e this one was \"RW firmware check not done\", and there are a few more that aren\u0027t represented here\n\nSome of them don\u0027t seem like they would have ever existed as recovery reasons... like 0x1c \"FW_VALID\" for example.  But I guess I can add them all in here for the sake of completeness?\n\nWe also end up with two RW_DEV_MISMATCH reasons... not sure if these actually mean the same thing or not.  I added a CHECK_ to the mosys one to differentiate the constant names, which seems a bit silly.",
+      "parentUuid": "72522727_5b6ed8af",
       "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
