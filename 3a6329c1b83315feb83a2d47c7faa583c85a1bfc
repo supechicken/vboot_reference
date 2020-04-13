@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b66c9274_25c209f8",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T04:36:57Z",
+      "side": 1,
+      "message": "Good point -- adding a check for VB2_CONTEXT_RECOVERY_MODE.  It still bugs me that we have both a context flag and an internal field for this...\n\n\u003e then we should still write the subcode back (or never clear it) in manual recovery mode here\n\nThat\u0027s what we tried last time, but then FAFT broke:\n\nhttps://b.corp.google.com/issues/149813039\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2063198\n\nI\u0027d still like to do this -- but I don\u0027t think I have the bandwidth to make sure we have all the different moving pieces covered, or to be able to fix things as they break.",
+      "parentUuid": "4f474f08_af0614af",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b370a68_50908f78",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7a1120ed_0811c423",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T04:36:57Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5b370a68_50908f78",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54c1b9f2_6ba389b6",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-04-07T20:37:25Z",
       "side": 1,
       "message": "This seems pretty kludgy to me. How about we add an (... \u0026\u0026 subcode !\u003d VB2_RECOVERY_TRAIN_AND_REBOOT) to the test for promoting the subcode to full recovery reason in vb2_check_recovery()? That way it still works as a subcode in other ways (e.g. if we ever get metrics infrastructure to report them that would still work), but we can be sure it will never lead to unexpected reboots on manual recovery boot.",
+      "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76540765_84655afe",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-13T04:36:57Z",
+      "side": 1,
+      "message": "As usual, Julius comes up with the ridiculously simple perfect solution.  Definitely let\u0027s do this.",
+      "parentUuid": "54c1b9f2_6ba389b6",
       "revId": "3a6329c1b83315feb83a2d47c7faa583c85a1bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
