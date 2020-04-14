@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c4bdae3_2a83b4dc",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-14T10:40:03Z",
+      "side": 1,
+      "message": "I think we still need to init something -- for a example, set power_button_state to default (POWER_BUTTON_HELD_SINCE_BOOT).\nOr we should init it in other lines rather than vb2_init_menus()?",
+      "parentUuid": "b911909e_cedfeb4b",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 35
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b083db3_fe849d2b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-13T16:56:09Z",
       "side": 1,
       "message": "No need for this anymore.  Depthcharge will take care of clearing the screen.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1845299_c95b74c4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-14T10:40:03Z",
+      "side": 1,
+      "message": "I am wondering why it is called in legacy one.\n(There is a little bit different -- the legacy one called it right before returning, where we called it earlier.)\n\nAnyway, this seems can be removed if not necessary.",
+      "parentUuid": "4b083db3_fe849d2b",
       "range": {
         "startLine": 159,
         "startChar": 0,
@@ -114,6 +162,30 @@
       "revId": "ae168832c068bac43e431c6168d807796d730122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15210808_bd476577",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-14T10:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b48c2ed_9c0a6bab",
+      "range": {
+        "startLine": 189,
+        "startChar": 13,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "ae168832c068bac43e431c6168d807796d730122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
