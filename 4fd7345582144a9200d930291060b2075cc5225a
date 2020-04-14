@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "98cbf1a7_5a5e83c3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T04:32:37Z",
+      "side": 1,
+      "message": "How about we use intervals of 0x100 then?\n\nBLANK \u003d 0x0 (\"special screens\")\nFIRMARE_SYNC \u003d 0x100 (\"singleton screens\")\nRECOVERY_SELECT \u003d 0x200 (\"recovery screens\")",
+      "parentUuid": "e89d4b0d_7874b081",
+      "range": {
+        "startLine": 1154,
+        "startChar": 31,
+        "endLine": 1154,
+        "endChar": 36
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74ae0124_d2e381de",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3

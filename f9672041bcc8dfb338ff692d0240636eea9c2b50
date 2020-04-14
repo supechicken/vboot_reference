@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0de3ce1a_2c543f5f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T04:32:37Z",
+      "side": 1,
+      "message": "But I might leave LANG out for now... seems like we\u0027re still a ways away from implementing that?",
+      "range": {
+        "startLine": 1157,
+        "startChar": 1,
+        "endLine": 1157,
+        "endChar": 33
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c5cea1_106e1460",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T04:32:37Z",
+      "side": 1,
+      "message": "What if the 0th item is selected?\n\nIf that\u0027s a valid value, then maybe we should just say \"If the screen doesn\u0027t have a menu, this value will be ignored.\"",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1168,
+        "endChar": 51
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56355b54_45fdc04b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T04:32:37Z",
+      "side": 1,
+      "message": "My preference would be to put locale_id right after screen -- but I guess it doesn\u0027t make a huge difference.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 42
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
