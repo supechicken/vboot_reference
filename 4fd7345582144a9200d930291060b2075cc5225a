@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69109690_17957ee9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-14T04:09:25Z",
+      "side": 1,
+      "message": "Removed in CL:2148552.",
+      "parentUuid": "1be543a5_7d172cfc",
+      "range": {
+        "startLine": 1152,
+        "startChar": 1,
+        "endLine": 1152,
+        "endChar": 25
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d884beb9_c3f052e9",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-12T06:12:27Z",
       "side": 1,
       "message": "What is your plan for the IDs here?  Would 0x100 be the \"recovery screen\" section?\n\nIf we want to do this by section, maybe we should increase the buffer amount.",
+      "range": {
+        "startLine": 1154,
+        "startChar": 31,
+        "endLine": 1154,
+        "endChar": 36
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89d4b0d_7874b081",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-14T04:09:25Z",
+      "side": 1,
+      "message": "My plan is to have \"small\" sections similar to what I we have in CL:1968268, but it\u0027s also fine if we want larger buffers.",
+      "parentUuid": "d884beb9_c3f052e9",
       "range": {
         "startLine": 1154,
         "startChar": 31,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5dcec70b_ae72d395",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-14T04:09:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ae0124_d2e381de",
+      "range": {
+        "startLine": 1159,
+        "startChar": 33,
+        "endLine": 1159,
+        "endChar": 38
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1679ae4_5de4797b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "4fd7345582144a9200d930291060b2075cc5225a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3d24aa_c6a1b825",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-14T04:09:25Z",
+      "side": 1,
+      "message": "Removed.\n\n\u003e Or did you plan to make this data modifiable by depthcharge?\nNo.",
+      "parentUuid": "c1679ae4_5de4797b",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 20
+      },
+      "revId": "4fd7345582144a9200d930291060b2075cc5225a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
