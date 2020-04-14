@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eff6f8cd_9ba43804",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T07:51:37Z",
+      "side": 1,
+      "message": "Sure, although an easy way around that would be to check to see if the \"items\" argument is NULL or not in ui_draw_content().",
+      "parentUuid": "33ffebcb_9f2b4a30",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1168,
+        "endChar": 51
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56355b54_45fdc04b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "May I ask why? Is it because locale_id is more important than selected_item?",
       "parentUuid": "56355b54_45fdc04b",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 42
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d292543_6bc69681",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-14T07:51:37Z",
+      "side": 1,
+      "message": "Feels like it -- if I\u0027m drawing an interface, the first thing I\u0027d want to know is what screen I\u0027m painting, the second thing is what language it\u0027ll be in, and then the specifics of which items are selected, etc.\n\nBut this is subjective.  Feel free to leave it as-is.",
+      "parentUuid": "bf78122e_dd937f63",
       "range": {
         "startLine": 1171,
         "startChar": 0,
