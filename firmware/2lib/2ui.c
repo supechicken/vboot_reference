@@ -22,7 +22,8 @@
 enum power_button_state_t power_button_state;
 
 static enum vb2_screen current_screen;
-static int current_menu_idx;
+static int current_menu_idx, disabled_idx_mask;
+static struct vb2_menu menus[];
 
 /*****************************************************************************/
 /* Utilities */
@@ -174,6 +175,17 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 
 	return VBERROR_KEEP_LOOPING;
 }
+
+/* Master table of all menus. Menus with size == 0 count as menuless screens. */
+static struct vb2_menu menus[VB2_MENU_COUNT] = {
+	[VB2_MENU_BLANK] = {
+		.name = "Blank",
+		.size = 0,
+		.screen = VB2_SCREEN_BLANK,
+		.items = NULL,
+	},
+	/* TODO(roccochen): recovery select menu */
+};
 
 /* Initialize menu state. Must be called once before displaying any menus. */
 static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
