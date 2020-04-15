@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb73df4b_8631974d",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:41:32Z",
+      "side": 1,
+      "message": "Two spaces.",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff38dae_a0f8ad75",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:41:32Z",
+      "side": 1,
+      "message": "I think we could use a bit more explanation here... maybe something like: \"RW firmware currently sets this flag to disable phone recovery on first boot (see function xyz).  A future RW update will flip this flag back to 0 when phone recovery is ready.  In the case that there are TPM communication issues, phone recovery is enabled by the default value of 0.\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c780d49e_e4ac27a7",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:41:32Z",
+      "side": 1,
+      "message": "How about UINT8_MAX + 1?",
+      "range": {
+        "startLine": 230,
+        "startChar": 66,
+        "endLine": 230,
+        "endChar": 71
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
