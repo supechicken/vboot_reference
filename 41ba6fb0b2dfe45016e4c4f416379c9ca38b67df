@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a55679a_d8229ca7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T10:24:20Z",
+      "side": 1,
+      "message": "Maybe 2auxfw_sync at the end of update_auxfw().  So you\u0027re right, probably not worth it.",
+      "parentUuid": "26dff000_47d393d0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34c65708_caeb1a77",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "Is it possible for a macro to return rv *from* the caller if reboot needed, and return rv *to* the caller otherwise?",
       "parentUuid": "ad3f446c_07df8754",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e3a400b_2a6401e6",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T10:24:20Z",
+      "side": 1,
+      "message": "By return *to* the caller, do you mean evaluate as rv?  I don\u0027t think it\u0027s possible, unless you pass the target variable in as an argument to the macro.  E.g.\n\n  VB2_PASS_REQUEST(rv, update_ec(ctx, select_rw));\n  // either we have returned already, or rv is set to the return value\n\nAnyways, let\u0027s punt this for now... I think?",
+      "parentUuid": "8f98b4cc_ecb26507",
       "range": {
         "startLine": 273,
         "startChar": 0,
