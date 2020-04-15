@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdcc2f90_896c7294",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "We may want to have consistent naming across vboot and depthcharge. Currently in depthcharge I\u0027m using \u0027screen\u0027 for current_menu and \u0027selected_item\u0027 for current_menu_idx.\n\nMaybe the term \"item\" is too generic. How about using \u0027current_screen\u0027 and \u0027current_menu_idx\u0027 here, and \u0027screen\u0027 and \u0027selected_menu_idx\u0027 in depthcharge?\n\nRocco, I\u0027ll let you decide the naming here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449dfecc_8bfa9a64",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Could this be a local variable?",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe71b329_df1b4b72",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Again, should we call it \u0027screens\u0027? Because some \"menu\" doesn\u0027t have a menu.",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde3e4e4_93a4ff66",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Maybe \"requested\"?",
+      "range": {
+        "startLine": 39,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e1974d_501f2481",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "How about vb2_shutdown_requested?",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78183fed_30bfb270",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "This isn\u0027t used anywhere (and also vb2_log_menu_change). Would you consider removing it from this CL?",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60970574_57fb77a3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Could we remove the period?",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 17
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2be138_faf28c36",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Declare it on the top of function just like vb2_manual_recovery_menu().",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 14
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb12238_ade59648",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Maybe it\u0027s sufficient to add TODO here.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 6
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f5484c_fbb88640",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "There constants don\u0027t exist now, right?",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f970306a_959f80c8",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "items",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a4ed46_a152a3f6",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T08:13:48Z",
+      "side": 1,
+      "message": "Is it possible to drop this in C?",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
