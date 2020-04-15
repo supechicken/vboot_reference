@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f637e33d_ff3b0091",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09899df6_bb18ffd0",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46efc83e_9c5e6ee6",
         "filename": "firmware/2lib/include/2secdata.h",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e3660228_17a8eefc",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T07:13:55Z",
+      "side": 1,
+      "message": "The final decision is to have 0\u003denabled.",
+      "parentUuid": "2dd615cb_7d97b032",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e9efcba_6c50fbce",
         "filename": "tests/vb2_secdata_kernel_tests.c",
         "patchSetId": 4
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "5f7b1f46_51ef823e",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9efcba_6c50fbce",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 24
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec356e64_2fd1760c",
         "filename": "tests/vb2_secdata_kernel_tests.c",
         "patchSetId": 4
@@ -139,6 +211,30 @@
       "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31a89c1_bd7d2c17",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec356e64_2fd1760c",
+      "range": {
+        "startLine": 229,
+        "startChar": 34,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "09c7b591518367035dbb64f95c5bfed4ceec2763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
