@@ -181,6 +181,30 @@
       "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2cb894_4dae9b1c",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T09:32:51Z",
+      "side": 1,
+      "message": "Does everyone agree with the following naming?\n\n- VB2_REQUEST\n- VB2_REQUEST_REBOOT\n- VB2_REQUEST_REBOOT_EC_SWITCH_RW\n- VB2_REQUEST_REBOOT_EC_TO_RO\n- VB2_REQUEST_UI_CONTINUE",
+      "parentUuid": "7c721066_89067b1d",
+      "range": {
+        "startLine": 798,
+        "startChar": 1,
+        "endLine": 798,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
