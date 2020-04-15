@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "11492c42_211bd068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:50:59Z",
+      "side": 1,
+      "message": "You can add this bug: chromium:988410",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5ad97b5_5e06dd52",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -13,6 +36,29 @@
       "writtenOn": "2020-04-10T02:35:46Z",
       "side": 1,
       "message": "TODO: Add Cq-Depend after names are finalized.",
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055a3ba1_6f475712",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:50:59Z",
+      "side": 1,
+      "message": "If we add UI_CONTINUE, then take this one out.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 34
+      },
       "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +242,30 @@
       "side": 1,
       "message": "Does everyone agree with the following naming?\n\n- VB2_REQUEST\n- VB2_REQUEST_REBOOT\n- VB2_REQUEST_REBOOT_EC_SWITCH_RW\n- VB2_REQUEST_REBOOT_EC_TO_RO\n- VB2_REQUEST_UI_CONTINUE",
       "parentUuid": "7c721066_89067b1d",
+      "range": {
+        "startLine": 798,
+        "startChar": 1,
+        "endLine": 798,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8128a8_eaf0392c",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-15T09:50:59Z",
+      "side": 1,
+      "message": "SGTM.  May as well add UI_CONTINUE in right now and start using it in Rocco\u0027s current CLs.",
+      "parentUuid": "3f2cb894_4dae9b1c",
       "range": {
         "startLine": 798,
         "startChar": 1,
