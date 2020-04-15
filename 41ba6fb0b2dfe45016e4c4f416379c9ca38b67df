@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "159eb1ad_e05bc5bf",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T14:17:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a55679a_d8229ca7",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34c65708_caeb1a77",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 4
@@ -164,6 +188,30 @@
       "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30133744_0d1ec3ba",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T14:17:24Z",
+      "side": 1,
+      "message": "Ack.  I just don\u0027t see how these lines of code can benefit from the macro.",
+      "parentUuid": "1e3a400b_2a6401e6",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
