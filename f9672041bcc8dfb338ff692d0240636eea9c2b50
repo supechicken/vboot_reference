@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "90ef26fd_883369d7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T03:40:29Z",
+      "side": 1,
+      "message": "I think some special screen may utilize ui_draw_content() to draw part of the screen. For example, the ui_draw_content() is still useful for Advanced Options screen, by passing items\u003dNULL. And the actual items will be drawn in its draw() function after calling ui_draw_content().\n\nAnyway, let\u0027s change it to what you suggested. We can always change it back in the future when we think this is really necessary.",
+      "parentUuid": "eff6f8cd_9ba43804",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1168,
+        "endChar": 51
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56355b54_45fdc04b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -188,6 +212,30 @@
       "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664fbd94_eb6f6c03",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-15T03:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d292543_6bc69681",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 42
+      },
+      "revId": "f9672041bcc8dfb338ff692d0240636eea9c2b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
