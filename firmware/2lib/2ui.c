@@ -12,6 +12,7 @@
 #include "2return_codes.h"
 #include "2secdata.h"
 #include "2ui.h"
+#include "2ui_private.h"
 #include "vboot_kernel.h"
 
 /* Delay type (in msec) of developer and recovery mode menu looping. */
@@ -23,6 +24,10 @@ static enum {
 	POWER_BUTTON_RELEASED,
 	POWER_BUTTON_PRESSED,  /* Must have been previously released */
 } power_button_state;
+
+static VB2_MENU current_menu;
+static int current_menu_idx, disabled_idx_mask;
+static struct vb2_menu menus[];
 
 /*****************************************************************************/
 /* Utilities */
@@ -71,6 +76,31 @@ static int vb2_shutdown_requested(struct vb2_context *ctx, uint32_t key)
 	return !!shutdown_request;
 }
 
+static void vb2_log_menu_change(void)
+{
+	if (menus[current_menu].size)
+		VB2_DEBUG("================ %s Menu ================ [ %s ]\n",
+			  menus[current_menu].name,
+			  menus[current_menu].items[current_menu_idx].text);
+	else
+		VB2_DEBUG("=============== %s Screen ===============\n",
+			  menus[current_menu].name);
+}
+
+/**
+ * Switch to a new menu (but don't draw it yet).
+ *
+ * @param ctx:			Vboot2 context
+ * @param new_current_menu:	new menu to set current_menu to
+ * @param new_current_menu_idx: new idx to set current_menu_idx to
+ */
+static void vb2_change_menu(struct vb2_context *ctx,
+			    VB2_MENU new_current_menu, int new_current_menu_idx)
+{
+	// TODO
+	vb2_log_menu_change();
+}
+
 /*****************************************************************************/
 /* Menu actions */
 
@@ -116,6 +146,17 @@ static vb2_error_t vb2_handle_menu_input(struct vb2_context *ctx,
 
 	return VBERROR_KEEP_LOOPING;
 }
+
+/* Master table of all menus. Menus with size == 0 count as menuless screens. */
+static struct vb2_menu menus[VB2_MENU_COUNT] = {
+	[VB2_MENU_BLANK] = {
+		.name = "Blank",
+		.size = 0,
+		.screen = VB2_SCREEN_BLANK,
+		.items = NULL,
+	},
+	/* TODO(roccochen): recovery select menu */
+};
 
 /* Initialize menu state. Must be called once before displaying any menus. */
 static vb2_error_t vb2_init_menus(struct vb2_context *ctx)
