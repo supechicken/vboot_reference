@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "065d83c2_ce81822e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-16T08:52:59Z",
+      "side": 1,
+      "message": "Done\n\n\u003e We may want to have consistent naming across vboot and depthcharge. Currently in depthcharge \u003e \u003e I\u0027m using \u0027screen\u0027 for current_menu and \u0027selected_item\u0027 for current_menu_idx.\n\nUse screen and menu_idx",
+      "parentUuid": "f8bda92e_9fad1cdf",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "449dfecc_8bfa9a64",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 14
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Actually, it\u0027s kind of tricky, since enter_recovery_base_screen uses it to decide whether to show the NO_GOOD screen or the INSERT screen.  And this function is called from the .action property, so it\u0027s not so easy to pass an argument into it.  I\u0027d leave it as a global for now, and do more refactoring later.",
       "parentUuid": "8ed14c82_7ca1baab",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d960567_399e2be6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-16T08:52:59Z",
+      "side": 1,
+      "message": "Actually I have split NO_GOOD from recovery action in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1703815/51..52/firmware/lib/vboot_ui_menu.c#437\n\nWhich I think we can make it stays in local scope",
+      "parentUuid": "66f7bf8e_d34a40c3",
       "range": {
         "startLine": 29,
         "startChar": 48,
