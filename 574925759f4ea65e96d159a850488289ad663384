@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2fe8b829_c75b7237",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-04-16T22:28:20Z",
+      "side": 1,
+      "message": "in isn\u0027t stable in the sense that Intel changed the mapping pin-\u003egpio number (somewhere around 4.4 I believe) which made sysfs usage break - hard coded numbers don\u0027t mean the same anymore.",
+      "parentUuid": "841d9517_b75c6355",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a31b4b43_9991c4fc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-16T19:27:00Z",
       "side": 1,
       "message": "can you test some other platforms too? I have a strong suspicion you\u0027re breaking older kernels, at least",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66750a7d_9f394f9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2020-04-16T22:28:20Z",
+      "side": 1,
+      "message": "A great callout. ideally we want to test a device on each of our active kernels.",
+      "parentUuid": "a31b4b43_9991c4fc",
       "range": {
         "startLine": 22,
         "startChar": 0,
