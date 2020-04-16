@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "841d9517_b75c6355",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T19:27:00Z",
+      "side": 1,
+      "message": "Isn\u0027t that also true of the existing sysfs API? The main \"unstable\" aspect is what the gpiochip base is. Device probe ordering, etc., mean that the gpiochip base may change across kernel versions or perhaps even upon reboot (if ordering is non-deterministic).\n\nI thought the main advantage of this new API is that it has better name-based definition, so proper usage no longer requires memorizing offsets, but just looking up by name. But maybe I\u0027m wrong.\n\nAnyway, that doesn\u0027t mean you can\u0027t switch to the new API, but it\u0027s not clear to me what it\u0027s buying us.",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31b4b43_9991c4fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T19:27:00Z",
+      "side": 1,
+      "message": "can you test some other platforms too? I have a strong suspicion you\u0027re breaking older kernels, at least",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa3255f_8f350dfd",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T19:27:00Z",
+      "side": 1,
+      "message": "doesn\u0027t this fail on all older kernels?",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 12
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03092f3f_03155a25",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T19:27:00Z",
+      "side": 1,
+      "message": "this doesn\u0027t feel like the right approach. It feels like you should only be falling back to a different mechanism if you know that for some reason the new API should not work. (e.g., /dev/gpiochipX was missing, or the \u0027uid\u0027 computation above does not work.) ioctl() failures are probably not a good fallback case.",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 53
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cf1e12_d9f2cc04",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T19:27:00Z",
+      "side": 1,
+      "message": "group the \u003csystem.headers\u003e with lines 6-9, not with the \"local.headers\" at lines 16-26.",
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
