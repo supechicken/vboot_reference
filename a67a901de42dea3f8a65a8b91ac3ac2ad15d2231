@@ -208,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "266ad794_0936216c",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T04:48:51Z",
+      "side": 1,
+      "message": "I\u0027m confused.  Our VB2_ERROR_BASE is 0x10000000.  Wouldn\u0027t we want to choose something less than that rather than 0xf0000000?  Or maybe you meant 0xf000000?",
+      "parentUuid": "81b8c170_23bd1fac",
+      "range": {
+        "startLine": 789,
+        "startChar": 14,
+        "endLine": 789,
+        "endChar": 24
+      },
+      "revId": "a67a901de42dea3f8a65a8b91ac3ac2ad15d2231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5843f82c_aebc2c84",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 1
