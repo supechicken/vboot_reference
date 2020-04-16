@@ -45,6 +45,23 @@
       "revId": "f36d33d6bbc836de1caf5f00ef0a8bd66348ed13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0252f6bf_e9fa8043",
+        "filename": "firmware/2lib/2secdata_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-16T21:56:18Z",
+      "side": 1,
+      "message": "We don\u0027t actually want firmware to crash on these boards, so this should return a 0 by default instead (and setting should be a silent no-op).",
+      "revId": "f36d33d6bbc836de1caf5f00ef0a8bd66348ed13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
