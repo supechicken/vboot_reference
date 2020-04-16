@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "b26f2ca9_f6870c33",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eff38dae_a0f8ad75",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0628965b_6f67e819",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb73df4b_8631974d",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c780d49e_e4ac27a7",
         "filename": "tests/vb2_secdata_kernel_tests.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-15T09:41:32Z",
       "side": 1,
       "message": "How about UINT8_MAX + 1?",
+      "range": {
+        "startLine": 230,
+        "startChar": 66,
+        "endLine": 230,
+        "endChar": 71
+      },
+      "revId": "e7be5a50f9cd50a2f2ad947f5151cb765480ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47bd2df_051b53d0",
+        "filename": "tests/vb2_secdata_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T08:36:26Z",
+      "side": 1,
+      "message": "We may want to reduce any logic in unit test as much as possible.\n\nFor example, if we incorrectly wrote UINT16_MAX in the code, it\u0027s very likely that we would end up having the same error here in the unit test (by copying it from the function under test). Does it sound reasonable to you?",
+      "parentUuid": "c780d49e_e4ac27a7",
       "range": {
         "startLine": 230,
         "startChar": 66,
