@@ -123,6 +123,24 @@
       "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00938538_2a2ba98b",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:08:06Z",
+      "side": 1,
+      "message": "Ack... changing this case to DEV_FLAG_MISMATCH and REC_FLAG_MISMATCH.",
+      "parentUuid": "2589dd9b_e5ae8743",
+      "revId": "ad489bcf3b454d7d2227743b690ebf343072a984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9005106_9c0f6f4c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:08:06Z",
+      "side": 1,
+      "message": "Done.  This does seem kind of brittle -- I feel like we\u0027re bound to accidentally include it in coreboot at some point.",
+      "parentUuid": "2cb2b33f_ad45f753",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd832962_6a33efc5",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bb31f9_998ba579",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:08:06Z",
+      "side": 1,
+      "message": "This is what they were in mosys... but I\u0027ll remove these two.",
+      "parentUuid": "cd832962_6a33efc5",
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019f1727_394895b3",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:08:06Z",
+      "side": 1,
+      "message": "Uhh.. not sure how that happened.",
+      "parentUuid": "eb7a01c7_080ee0a9",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
