@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "0e53be5b_a15fd9e9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T11:11:27Z",
+      "side": 1,
+      "message": "Now we\u0027ve separated UI loops for broken screen and recovery screen, so we should also have enter_broken_base_screen() and enter_recovery_base_screen() separated.",
+      "parentUuid": "5d960567_399e2be6",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe71b329_df1b4b72",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 14
