@@ -22,6 +22,29 @@
       "revId": "f36d33d6bbc836de1caf5f00ef0a8bd66348ed13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d71b65_c77e5292",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:42:59Z",
+      "side": 1,
+      "message": "Also need to add this to the tests for vb2api_kernel_phase1.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 70
+      },
+      "revId": "f36d33d6bbc836de1caf5f00ef0a8bd66348ed13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
