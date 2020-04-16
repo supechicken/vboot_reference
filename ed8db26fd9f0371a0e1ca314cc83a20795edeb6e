@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e228e0_58f34273",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:53:16Z",
+      "side": 1,
+      "message": "Should be checking:\n\n  vb2_get_sd(ctx)-\u003eflags \u0026 VB2_SD_FLAG_DEV_MODE_ENABLED\n\nWhy did this change?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "ed8db26fd9f0371a0e1ca314cc83a20795edeb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9eab9e_e6ddb110",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:53:16Z",
+      "side": 1,
+      "message": "Note that I just changed this function in CL:2152212.  You should just follow the new version here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2152212/1/firmware/lib/vboot_ui_legacy_menu.c",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 41
+      },
+      "revId": "ed8db26fd9f0371a0e1ca314cc83a20795edeb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4d102c_d0d70f6e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:53:16Z",
+      "side": 1,
+      "message": "Tabs to match the above indentation.  You\u0027ll also need to rebase on top of yupingso\u0027s change which includes VB2_SCREEN_RECOVERY_SELECT.",
+      "range": {
+        "startLine": 1154,
+        "startChar": 27,
+        "endLine": 1154,
+        "endChar": 31
+      },
+      "revId": "ed8db26fd9f0371a0e1ca314cc83a20795edeb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
