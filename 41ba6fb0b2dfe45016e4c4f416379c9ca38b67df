@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "27c0234e_410fa193",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T04:00:15Z",
+      "side": 1,
+      "message": "I slightly changed the comment and moved it to the docstring of reboot_needed().",
+      "parentUuid": "34c65708_caeb1a77",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 199,
+        "endChar": 47
+      },
+      "revId": "41ba6fb0b2dfe45016e4c4f416379c9ca38b67df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3f446c_07df8754",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 4
