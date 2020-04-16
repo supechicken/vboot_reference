@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e828c65d_3e6fc8de",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-16T22:32:24Z",
+      "side": 1,
+      "message": "Yeah, unfortunately I don\u0027t think anyone has yet discovered a really good solution for stuff like this. Best you could do is hack something in the coreboot Makefile to search for it, but that would also be brittle in several ways.",
+      "parentUuid": "e9005106_9c0f6f4c",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd832962_6a33efc5",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 6
