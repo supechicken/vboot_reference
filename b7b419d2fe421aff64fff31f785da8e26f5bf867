@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa40970_37dc3a92",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-16T21:40:59Z",
+      "side": 1,
+      "message": "Got this from the upstream coreboot gcc. Not sure why the Chromium clang seems to ignore -Wstrict-prototypes when we pass it explicitly?\n\n tests/vb2_ui_tests.c:53:13: error: function declaration isn\u0027t a prototype [-Werror\u003dstrict-prototypes]\n  static void reset_common_data()\n              ^~~~~~~~~~~~~~~~~",
+      "revId": "b7b419d2fe421aff64fff31f785da8e26f5bf867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
