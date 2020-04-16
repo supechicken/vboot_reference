@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "66f7bf8e_d34a40c3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-16T08:32:42Z",
+      "side": 1,
+      "message": "Actually, it\u0027s kind of tricky, since enter_recovery_base_screen uses it to decide whether to show the NO_GOOD screen or the INSERT screen.  And this function is called from the .action property, so it\u0027s not so easy to pass an argument into it.  I\u0027d leave it as a global for now, and do more refactoring later.",
+      "parentUuid": "8ed14c82_7ca1baab",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "42507c966cb7bf312dc2179815ead3bd5ffe5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe71b329_df1b4b72",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 14
