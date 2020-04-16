@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "562bcd48_9d559577",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-16T03:13:20Z",
+      "side": 1,
+      "message": "From Rocco\u0027s comment:\n\u003e 1. (Keep current implementation) Just simplely rename VB2_MENU_* to something like VB2_SCREEN_INDEX_*.\n\u003e \n\u003e 2. (Change the implementation) We will only use VB2_SCREEN_* defined in 2api.h for here and for vb2_menu indexing. Need to have a VB2_SCREEN_*-to-vb2_menu lookup function. (like the depthcharge\u0027s ui_get_descriptor)\n\nConsidering that eventually all the UI code will be moved to depthcharge (chromium:1035800), maybe we should do something similar to depthcharge here, which is option #2.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "f67a0c3a6472a288f3715a06bc8e5e1c513927c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
