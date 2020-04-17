@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dd2e8466_dfc647b2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-17T07:45:11Z",
+      "side": 1,
+      "message": "Or maybe introduce another compile-time flag -- we could revive MINIMAL or something like that.",
+      "parentUuid": "e828c65d_3e6fc8de",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "8eec78334c0d864dff88fe61ee56067b665bc415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd832962_6a33efc5",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 6
