@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "170bd798_fe436074",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T10:03:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this CL has anything to do with this issue, which is all about UI naming.",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "c9cc11aba9a89ec846ba7ca4063165cb9893196f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc70c29_0c7d9d05",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T10:03:26Z",
+      "side": 1,
+      "message": "Also change this.",
+      "revId": "c9cc11aba9a89ec846ba7ca4063165cb9893196f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1169e6_ce688785",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T10:03:26Z",
+      "side": 1,
+      "message": "On a second thought, since screen_change() already prints some information (by calling screen_log()), do we still need this?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "c9cc11aba9a89ec846ba7ca4063165cb9893196f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

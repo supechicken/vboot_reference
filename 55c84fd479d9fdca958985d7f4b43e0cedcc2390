@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "85ca6cd6_878f05e9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T10:03:26Z",
+      "side": 1,
+      "message": "Sounds reasonable to me.",
+      "parentUuid": "0ac92432_1c5a7e76",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd41edf0_5601f206",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 24
@@ -458,6 +482,30 @@
       "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60b7c77a_a8fcbbac",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T10:03:26Z",
+      "side": 1,
+      "message": "Just to confirm, you decided not to change this, right?",
+      "parentUuid": "b8785809_7dd6fef0",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
