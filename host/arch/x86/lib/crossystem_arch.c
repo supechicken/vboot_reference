@@ -15,6 +15,7 @@
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/utsname.h>
 #include <unistd.h>
 
 #include "crossystem_arch.h"
@@ -624,6 +625,9 @@ static int FindGpioChipOffsetByNumber(unsigned *gpio_num, unsigned *offset,
 static int BraswellFindGpioChipOffset(unsigned *gpio_num, unsigned *offset,
 				      const char *name)
 {
+	int ret;
+	struct utsname host;
+	unsigned int maj, min;
 	static Basemapping data[]={
 		{0x20000, 0},
 		{0x18000, 4},
@@ -631,7 +635,17 @@ static int BraswellFindGpioChipOffset(unsigned *gpio_num, unsigned *offset,
 		{0x08000, 2},
 		{0x00000, 1}};
 
-	return FindGpioChipOffsetByNumber(gpio_num, offset, data);
+	ret = FindGpioChipOffsetByNumber(gpio_num, offset, data);
+	if (!ret)
+		return ret;
+
+	uname(&host);
+	if (sscanf(host.release, "%u.%u.", &maj, &min) == 2) {
+		if (maj >= 4 && min >= 16 && *offset > 11)
+			*offset += 3;
+	}
+
+	return ret;
 }
 
 /* BayTrail has 3 sets of GPIO banks. It is expected the firmware exposes
