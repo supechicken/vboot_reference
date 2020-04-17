@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c69fa5e_c7404a33",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "The naming is inconsistent for static functions.\n\n- Whether to have previx \"vb2_\"?\n- screen_draw_current or draw_current_screen?",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86e9adb_22e27831",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "Will the return value be used anywhere in the future?",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd41edf0_5601f206",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "%#x",
+      "range": {
+        "startLine": 83,
+        "startChar": 28,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9887ff2d_a31af8e4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "N\n\nAnd same for all @param.",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5976f72_9a4c2c72",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 92,
+        "startChar": 30,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d78eda6_32acd2b5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "Maybe just \u0027new_screen\u0027?",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 95,
+        "endChar": 43
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c20700_0fce97d7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "The \"base\" doesn\u0027t make much sense to me since there\u0027s only 1 broken screen.",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 36
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e16044c_91749679",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "VB2_DEBUG already prints __func__. Maybe you want to use VB2_DEBUG_RAW(), or just VB2_DEBUG(\"\\n\")?",
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6219f93b_55811c6a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "I would probably call it \"enter_recovery_select_screen\", or simply \"enter_rec_select_screen\", but not a big deal here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989bbfc3_2e69361e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "How about printing an error message here?",
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1aa7bba_9358c8ff",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "We should define an enum for menu items (PHONE, EXTERNAL_DEVICE) of VB2_SCREEN_RECOVERY_SELECT.\n\nPlease note that the enum will NOT be used in depthcharge, so you may probably want to add it to ui_private.h.",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8769fc_5339aff1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "VB2_TRY(vb2_enable_developer_mode(ctx))?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb2c5bc_340be5d4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "This is not considered a \"recovery\" screen. How about putting it at 0x101 or 0x110?",
+      "range": {
+        "startLine": 1158,
+        "startChar": 28,
+        "endLine": 1158,
+        "endChar": 33
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833d7076_2e936c23",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T04:20:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the convention is, but do we need \"_t\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
