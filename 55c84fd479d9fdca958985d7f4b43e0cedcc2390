@@ -286,6 +286,24 @@
     },
     {
       "key": {
+        "uuid": "684bb2e5_1afae287",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T07:39:13Z",
+      "side": 1,
+      "message": "\u003e shall I remove this sanity check?\nNo, I think this check is for security reason.\n\nThe error message I\u0027m proposing here is for debugging purpose. In case this check fails someday, we should be aware of it.",
+      "parentUuid": "8860fb8e_a4c0859b",
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1aa7bba_9358c8ff",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 24
@@ -344,6 +362,30 @@
       "side": 1,
       "message": "According to Joel\u0027s comment here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2117810/17/firmware/2lib/2ui.c#144\n\nThis function will not return (and will die on failure) after CL:2152212.\nShall I add a cq-depend on it?",
       "parentUuid": "8a8769fc_5339aff1",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b30971a_55d803be",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-17T07:39:13Z",
+      "side": 1,
+      "message": "\u003e Shall I add a cq-depend on it?\nYes, please.",
+      "parentUuid": "d398afac_fc6016de",
       "range": {
         "startLine": 160,
         "startChar": 1,
