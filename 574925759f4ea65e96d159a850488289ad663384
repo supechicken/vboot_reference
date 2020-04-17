@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d4dec1bd_0fd706f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-17T01:41:34Z",
+      "side": 1,
+      "message": "So I read through the upstream patch (rejected), and the rest of $BUG. I see the problem is just with the dis-continuity of pin offsets. So you\u0027re right, the pin:index mapping changed.\n\n...but this CL is just changing how we compute the chip base number, not the actual pin offset within each chip. We\u0027re still using the same offset (controller_num \u003d\u003d 0x13).\n\nI tested it out, and I believe this patch does not actually do anything useful. See the following:\n\n# cd /sys/kernel/debug/tracing\n# echo 1 \u003e events/gpio/enable\n# echo 1 \u003e tracing_on\n# cat trace_pipe \u0026\n# /usr/local/crossystem wpsw_cur\n           \u003c...\u003e-4082  [001] ....  2709.771555: gpio_direction: 333  in (0)\n           \u003c...\u003e-4082  [001] ....  2709.771596: gpio_value: 333 get 1\n1\n# crossystem wpsw_cur\n           \u003c...\u003e-4083  [001] ....  2714.883983: gpio_value: 333 get 1\n1\n\nI\u0027m on kefka kernelnext, I pulled in the kernel revert (meaning, this should be \"broken\" again):\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2150577\n\n/usr/local/crossystem version includes this patch\n/usr/bin/crossystem is unmodified\n\nThey\u0027re reading the exact same underlying GPIO. (NB: and it\u0027s the wrong one. It should be GPIO 336 --- /sys/class/gpio/gpiochip314/ + offset 22 -- which correctly reads out \"0\" (WP is disabled on this system).)\n\nThe key problem here is nothing about which API (chardev or sysfs) to use -- the chardev API does nothing to fix how we\u0027re computing the value of the \u0027controller_num\u0027 variable. We need to address the discontinuity within the chip, not just compute the gpiochip base/number differently.\n\nI think the best we\u0027ll be able to do is to add hacks into BraswellFindGpioChipOffset(), so that it can undo the dis-continuity \"fixes\" that were made here:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/286534\n\ne.g., do some kind of:\n  if (offset \u003c\u003d 11)\n    return offset;\n  return offset + 3;\n\nNow, that would also have to be kernel-version-aware...",
+      "parentUuid": "2fe8b829_c75b7237",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "574925759f4ea65e96d159a850488289ad663384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a31b4b43_9991c4fc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
