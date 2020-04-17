@@ -16,6 +16,29 @@
       "revId": "469954913861a7624faa8ae37c3bd55d639f7859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98366cc2_87cf24bb",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2020-04-17T23:18:17Z",
+      "side": 1,
+      "message": "This will not work on 5.4?",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 659,
+        "endChar": 44
+      },
+      "revId": "469954913861a7624faa8ae37c3bd55d639f7859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
