@@ -982,13 +982,13 @@ vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx);
  */
 enum vb2_auxfw_update_severity {
 	/* no update needed and no protection needed */
-	VB_AUX_FW_NO_DEVICE = 0,
+	VB2_AUXFW_NO_DEVICE = 0,
 	/* no update needed */
-	VB_AUX_FW_NO_UPDATE = 1,
+	VB2_AUXFW_NO_UPDATE = 1,
 	/* update needed, can be done quickly */
-	VB_AUX_FW_FAST_UPDATE = 2,
+	VB2_AUXFW_FAST_UPDATE = 2,
 	/* update needed, "this would take a while..." */
-	VB_AUX_FW_SLOW_UPDATE = 3,
+	VB2_AUXFW_SLOW_UPDATE = 3,
 };
 
 /*

@@ -79,7 +79,7 @@ static vb2_error_t auxfw_sync_check_update(struct vb2_context *ctx,
 					   enum vb2_auxfw_update_severity *severity)
 {
 	if (!auxfw_sync_allowed(ctx)) {
-		*severity = VB_AUX_FW_NO_UPDATE;
+		*severity = VB2_AUXFW_NO_UPDATE;
 		return VB2_SUCCESS;
 	}
 
@@ -88,12 +88,12 @@ static vb2_error_t auxfw_sync_check_update(struct vb2_context *ctx,
 
 vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx)
 {
-	enum vb2_auxfw_update_severity fw_update = VB_AUX_FW_NO_UPDATE;
+	enum vb2_auxfw_update_severity fw_update = VB2_AUXFW_NO_UPDATE;
 
 	/* Check for update severity */
 	VB2_TRY(auxfw_sync_check_update(ctx, &fw_update));
 
-	if (fw_update > VB_AUX_FW_NO_UPDATE) {
+	if (fw_update > VB2_AUXFW_NO_UPDATE) {
 		VB2_TRY(update_auxfw(ctx));
 		/*
 		 * AUX FW Update is applied successfully. Request EC reboot to
