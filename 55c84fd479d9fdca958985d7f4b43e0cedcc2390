@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "903d7f71_de2349a2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-17T06:01:05Z",
+      "side": 1,
+      "message": "Actually I am not sure whether to add \u0027vb2_\u0027 prefix or not.\n\nI attempted to make all the screen stuff with prefix \u0027vb2_screen_\u0027, do you have any suggestion about it?",
+      "parentUuid": "5c69fa5e_c7404a33",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "399be3ae_10c1eed7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-17T06:01:05Z",
+      "side": 1,
+      "message": "I think it will not be handle anywhere\n(nor in legacy menu)\n\nMaybe I should make it void",
+      "parentUuid": "e86e9adb_22e27831",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd41edf0_5601f206",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 24
@@ -220,6 +268,24 @@
     },
     {
       "key": {
+        "uuid": "8860fb8e_a4c0859b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-17T06:01:05Z",
+      "side": 1,
+      "message": "This should never happen once we successfully split broken-route and manual-recovery-route,\n or shall I remove this sanity check?",
+      "parentUuid": "989bbfc3_2e69361e",
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1aa7bba_9358c8ff",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 24
@@ -266,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "d398afac_fc6016de",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-17T06:01:05Z",
+      "side": 1,
+      "message": "According to Joel\u0027s comment here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2117810/17/firmware/2lib/2ui.c#144\n\nThis function will not return (and will die on failure) after CL:2152212.\nShall I add a cq-depend on it?",
+      "parentUuid": "8a8769fc_5339aff1",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdb2c5bc_340be5d4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 24
@@ -277,6 +367,30 @@
       "writtenOn": "2020-04-17T04:20:51Z",
       "side": 1,
       "message": "This is not considered a \"recovery\" screen. How about putting it at 0x101 or 0x110?",
+      "range": {
+        "startLine": 1158,
+        "startChar": 28,
+        "endLine": 1158,
+        "endChar": 33
+      },
+      "revId": "55c84fd479d9fdca958985d7f4b43e0cedcc2390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849357b2_d617bd65",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-17T06:01:05Z",
+      "side": 1,
+      "message": "I follow the VB_SCREEN indexing currently.\n(Note that the indexes of recovery screens are not continuous.)\nDo you suggest it is unnecessary to keep the indexes equals to legacy ones?",
+      "parentUuid": "cdb2c5bc_340be5d4",
       "range": {
         "startLine": 1158,
         "startChar": 28,
