@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8760886d_3cca7a57",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-18T02:10:05Z",
+      "side": 1,
+      "message": "Done.\n\nVB2_ERROR_* start at a large offset to reduce the risk of overlap with other error codes (TPM, etc.). Don\u0027t we have the same problem for VB2_REQUEST?",
+      "parentUuid": "cce1b899_7fc57e9d",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40aff4a6_fcd27109",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344b9eb6_a2ccb222",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-18T02:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40aff4a6_fcd27109",
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
