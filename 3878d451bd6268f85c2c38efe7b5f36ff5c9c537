@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c689a16_b9c16c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Please create a bug for this change since it is a significant change in EC retry behaviour.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246f2e4b_eab0f2cd",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "failure?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa0e04a_caf977c2",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Are we going to go ahead and build the REQUEST-checking functionality into VB2_TRY?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 8
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e35c057_ea23b80b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Probably this can just be 0.",
+      "range": {
+        "startLine": 197,
+        "startChar": 43,
+        "endLine": 197,
+        "endChar": 45
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecacb12a_5c7bab32",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Does it even matter that EC reboots into RO before heading into non-manual recovery?",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a198e54_56f15450",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Same question here.",
+      "range": {
+        "startLine": 228,
+        "startChar": 9,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c652fdb1_62d1404c",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 262,
+        "startChar": 10,
+        "endLine": 262,
+        "endChar": 37
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6a5ad6_e9c1cbaa",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "Actually, for this to work properly, we should take out all of the vb2api_fail calls from update_ec() [and everything it calls].\n\nTake a look at VbTryLoadKernel for an example of how this looks.",
+      "range": {
+        "startLine": 322,
+        "startChar": 3,
+        "endLine": 322,
+        "endChar": 48
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3587be_3bd19c59",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 323,
+        "startChar": 10,
+        "endLine": 323,
+        "endChar": 37
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdfb8ea_b3d5d732",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T08:02:18Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 341,
+        "startChar": 7,
+        "endLine": 341,
+        "endChar": 34
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
