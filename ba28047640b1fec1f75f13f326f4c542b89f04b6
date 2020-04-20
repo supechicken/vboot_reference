@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "11c3d0ee_8aa69050",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "I know I did the same in depthcharge, but I wonder if we can simply use native type \u0027int\u0027 for selected_item, and pass (selected_item \u003d -1) for menuless screens.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7bf1029_faf51df0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -18,6 +41,69 @@
         "startChar": 24,
         "endLine": 89,
         "endChar": 37
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f16970_438ef3cf",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Can we also print selected_item and disabled_item_mask here? They\u0027re very useful when debugging, especially when the indices of vboot and depthcharge don\u0027t match.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae593f9_ce1ca736",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "The default menu item is not necessarily the smallest enabled one. For example, in \"You\u0027re now in dev mode\" screen, the default selection should be the 4th item, \"booting from internal screen\" according to our previous discussion long ago.\n\nIn addition, the default selection may depend on the history as well. For example, in the BIOS Log screen, I\u0027d expect the default selection to be PageUp/PageDown if we reached the current page from the next/previous page.\n\nI\u0027m okay to leave this as is for now, but maybe we can consider adding \u0027default_menu_item\u0027 to vb2_screen_data, and just assign it to selected_item here.",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca824762_6a64fca6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Could we call it only once?",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 38
       },
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -42,6 +128,40 @@
         "endLine": 109,
         "endChar": 18
       },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6193d5_41784958",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Is it more reasonable to display the current screen before running action()? Then, the argument \u0027display\u0027 passed to change_screen() will always be 1 so we can remove it.",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6c0ffa_357a2e04",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "We may want to discuss the usage of ESC in the weekly meeting.\n\nThe only usage in legacy UIs is to remove the Debug Info from the screen. In menu UI, I\u0027d assume something similar: removing the error message dialog box from the screen, but it seems like you\u0027re using it as another hot key?",
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -117,6 +237,63 @@
     },
     {
       "key": {
+        "uuid": "b7ade2de_a0825b24",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Can we be consistent on whether to capitalize the first word for all VB2_DEBUG calls?",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 13
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8f13f0_2ef973cb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88b7604_fa025c97",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Add \u0027const\u0027 modifier for all the screens, vboot_screens and the return type of vb2_get_screen()?",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48336a5d_50a95890",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -163,6 +340,52 @@
     },
     {
       "key": {
+        "uuid": "e6c28d49_16da26b3",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Screen?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5896feb_3cf271a1",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Two asterisks as vboot convention?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30ec5f06_9b8259ab",
         "filename": "firmware/2lib/include/2ui_private.h",
         "patchSetId": 27
@@ -174,6 +397,29 @@
       "writtenOn": "2020-04-20T03:40:16Z",
       "side": 1,
       "message": "I think this is not initialized anywhere.",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe3b947_1b05fe36",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-20T04:48:52Z",
+      "side": 1,
+      "message": "Any reason to explicitly specify \u0027extern\u0027 here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
