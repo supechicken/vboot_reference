@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2a5587f_c6937392",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "I really don\u0027t think it\u0027s a huge deal... depthcharge knows the screen has no menu and can just ignore the argument.",
+      "parentUuid": "11c3d0ee_8aa69050",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7bf1029_faf51df0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "5a94aa58_fb34ea7a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Not so sure about this... we\u0027d have to add it to any functions which use selected_item for access (currently select_menu_item and display_current_screen).  IMHO we should just write good tests for any functions which update selected_item and current_screen.",
+      "parentUuid": "a7bf1029_faf51df0",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0b5dbf9_780aed11",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "We\u0027re already printing this information inside of vb2ex_display_ui -- no sense in printing it twice.  We can keep the screen \"name\" and selected_item \"text\" because depthcharge doesn\u0027t have that information.",
+      "parentUuid": "34f16970_438ef3cf",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ae593f9_ce1ca736",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "84aab006_9cbafb58",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "I\u0027m thinking that for most cases, the default selection (and the enabled/disabled selection) will depend on some runtime information.  For example, on the main dev boot screen (and probably the \"you\u0027re now in dev mode\" screen too), we show a few different targets, and one of these should be selected by default depending on some GBB flags and other system settings (see Rocco\u0027s vb2_get_dev_boot_target()).  So I\u0027m adding a \"pre_display\" hook to run before displaying the screen, so that it can have a chance to override any settings such as selected_index and disabled_item_mask.  Does that sound okay?\n\nNote that this is different from the menu \"action\" function, which I think we can just run in the case that a \"target_screen\" is not set.",
+      "parentUuid": "0ae593f9_ce1ca736",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca824762_6a64fca6",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -99,6 +189,30 @@
       "writtenOn": "2020-04-20T04:48:52Z",
       "side": 1,
       "message": "Could we call it only once?",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e5e095_8fb43b9d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "ca824762_6a64fca6",
       "range": {
         "startLine": 108,
         "startChar": 24,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "3f7bf915_76a1d9d4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Fixed!  Do we have a test for this?",
+      "parentUuid": "12ac26d9_5c3e5ec3",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb6193d5_41784958",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "0e24d377_dbf905ec",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "I decided to split this into two functions... one for the screen itself (\"pre_display\") and one for the menu item (\"action\").  In this case, I think we can just say that if an action function is set, ignore the target screen.\n\nIn the case of pre_display, run right before displaying the screen, as the name suggests.  But since the logic is all contained within change_screen(), there\u0027s no need for the extra \"display\" argument anymore.",
+      "parentUuid": "fb6193d5_41784958",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a6c0ffa_357a2e04",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -162,6 +318,24 @@
       "writtenOn": "2020-04-20T04:48:52Z",
       "side": 1,
       "message": "We may want to discuss the usage of ESC in the weekly meeting.\n\nThe only usage in legacy UIs is to remove the Debug Info from the screen. In menu UI, I\u0027d assume something similar: removing the error message dialog box from the screen, but it seems like you\u0027re using it as another hot key?",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03bac25_1fb0ce08",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "I\u0027d still like this to double as the \"Back\" button if possible.  That way, wherever I am in the menu system, as long as I hit ESC a few times, I\u0027ll end up back at the start screen.",
+      "parentUuid": "1a6c0ffa_357a2e04",
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "d4cd60c4_8d02bb72",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25fb5202_4780148b",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0aa5b0b_4947858a",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -211,6 +409,30 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d12240_7f941013",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0aa5b0b_4947858a",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "c7fb3577_aa3ce0e7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2baa72_9f1e76d2",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f1b6540_d2c0ba36",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -257,6 +503,30 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88e00cab_f72bc65b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Good point -- let\u0027s just check that case in select_menu_item().",
+      "parentUuid": "2f1b6540_d2c0ba36",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 25
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "68db7c23_4b169068",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "My lifelong goal (\u003d",
+      "parentUuid": "b7ade2de_a0825b24",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 13
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b8f13f0_2ef973cb",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -300,6 +594,24 @@
     },
     {
       "key": {
+        "uuid": "52d8e15a_162c1e9d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Pretty suitable for VB2_SCREEN_BLANK, right? ;)",
+      "parentUuid": "7b8f13f0_2ef973cb",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b88b7604_fa025c97",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -314,6 +626,24 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193be9ad_68e2233f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b88b7604_fa025c97",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -340,6 +670,30 @@
     },
     {
       "key": {
+        "uuid": "4c6e7945_8df8eff3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48336a5d_50a95890",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "856c3a9c_4d30b1a9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -360,6 +714,30 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1879c4e_3bb6c009",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "How about adding a check to change_screen() instead?",
+      "parentUuid": "856c3a9c_4d30b1a9",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -386,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "427c213e_efd1bc19",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c28d49_16da26b3",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5896feb_3cf271a1",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 27
@@ -409,6 +811,30 @@
     },
     {
       "key": {
+        "uuid": "0921bb0f_604d4b03",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5896feb_3cf271a1",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ec5f06_9b8259ab",
         "filename": "firmware/2lib/include/2ui_private.h",
         "patchSetId": 27
@@ -423,6 +849,24 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032c36ad_7b0046af",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T16:08:50Z",
+      "side": 1,
+      "message": "Static variables are initialized to 0 by default.",
+      "parentUuid": "30ec5f06_9b8259ab",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
