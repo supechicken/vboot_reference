@@ -18,6 +18,17 @@ vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 		(const struct vb2_packed_key *)buf;
 	const uint32_t *buf32;
 	uint32_t expected_key_size;
+	int i;
+
+#if 0
+	VB2_DEBUG("Buffer data (size=%d):\n", (int)size);
+	for (i = 0; i < size; i++) {
+		VB2_DEBUG("%02x ", buf[i]);
+		if (i % 16 == 15)
+			VB2_DEBUG("\n");
+	}
+	VB2_DEBUG("\n");
+#endif
 
 	/* Make sure passed buffer is big enough for the packed key */
 	VB2_TRY(vb2_verify_packed_key_inside(buf, size, packed_key));
