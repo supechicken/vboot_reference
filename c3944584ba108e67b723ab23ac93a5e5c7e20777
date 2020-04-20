@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9d0ede8d_fa82f294",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T07:46:30Z",
+      "side": 1,
+      "message": "FWIW TPM errors currently run from 0 to 0x5010.\n\nI think this may have been a concern in the past from problems like vb2_error_t functions incorrectly returning a TPM error code, but I believe we have fixed all of these now (fingers crossed).\n\nSo I don\u0027t think it should be an issue anymore, and we can probably even remove that comment...\n\n\nOn the other hand, we\u0027re haven\u0027t needed to use the \u003cVB2_REQUEST comparison yet, and we could just gate that on removing the last few vboot1-style errors (only three left now).  In that case, we could leave it at 0x1000000.  Julius, what\u0027s your preference?",
+      "parentUuid": "8760886d_3cca7a57",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40aff4a6_fcd27109",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "40aff4a6_fcd27109",
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8d54ebc_20017fca",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-20T07:46:30Z",
+      "side": 1,
+      "message": "It might also be worth considering using \"rv \u003e\u003d VB2_ERROR_BASE\" instead, since that conveys the meaning a bit more accurately (\u003c VB2_REQUEST_END includes VB2_SUCCESS which is not an error).",
+      "parentUuid": "344b9eb6_a2ccb222",
       "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
