@@ -214,6 +214,29 @@
     },
     {
       "key": {
+        "uuid": "6b2baa72_9f1e76d2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T08:42:43Z",
+      "side": 1,
+      "message": "Same here (for non DETACHABLE, this should result in shutdown request)",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 33
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f1b6540_d2c0ba36",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
