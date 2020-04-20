@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3d6f79d_8b84a0e6",
+        "filename": "firmware/lib/vboot_ui_legacy_wilco.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-04-20T17:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9659152_619402a7",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 11
+      },
+      "revId": "aa390ae1743023bcac257ffecff14f9788842dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e60ffad7_ce46d2db",
         "filename": "firmware/lib/vboot_ui_legacy_wilco.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "aa390ae1743023bcac257ffecff14f9788842dbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76545a3e_6a4c0dda",
+        "filename": "firmware/lib/vboot_ui_legacy_wilco.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-04-20T17:21:02Z",
+      "side": 1,
+      "message": "It is checked in vb2_confirm_vendor_data_ui(). VbScreenData isn\u0027t needed at all in this function so I moved it.",
+      "parentUuid": "e60ffad7_ce46d2db",
+      "range": {
+        "startLine": 225,
+        "startChar": 6,
+        "endLine": 225,
+        "endChar": 9
+      },
+      "revId": "aa390ae1743023bcac257ffecff14f9788842dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
