@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "ca38d7fe_728fa18a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T17:04:31Z",
+      "side": 1,
+      "message": "Shall we have unit test for change_screen?\n(Which we shall make it extern in 2ui_private)",
+      "parentUuid": "3f7bf915_76a1d9d4",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb6193d5_41784958",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -336,6 +360,24 @@
       "side": 1,
       "message": "I\u0027d still like this to double as the \"Back\" button if possible.  That way, wherever I am in the menu system, as long as I hit ESC a few times, I\u0027ll end up back at the start screen.",
       "parentUuid": "1a6c0ffa_357a2e04",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bf81e1_1e760334",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T17:04:31Z",
+      "side": 1,
+      "message": "My preference is\nhave dialog box / language select menu -\u003e hide it\nelse -\u003e back to root_screen\n\n\u003e as long as I hit ESC a few times, I\u0027ll end up back at the start screen.\nWhich I think this might be a good intuition.",
+      "parentUuid": "e03bac25_1fb0ce08",
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -729,6 +771,30 @@
       "side": 1,
       "message": "How about adding a check to change_screen() instead?",
       "parentUuid": "856c3a9c_4d30b1a9",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caca8bdd_860651b6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T17:04:31Z",
+      "side": 1,
+      "message": "That sounds more robust.",
+      "parentUuid": "d1879c4e_3bb6c009",
       "range": {
         "startLine": 87,
         "startChar": 0,

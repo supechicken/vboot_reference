@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bce1872_984731a8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T17:04:31Z",
+      "side": 1,
+      "message": "How about a sanity check here if current_screen \u003d\u003d NULL?\n(And if needed, also another check for update_selection())",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "85bdad78bb2415072e2505c2f8fefacb258ca9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59ce1a5_d2302bf1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-20T17:04:31Z",
+      "side": 1,
+      "message": "There is a legacy feature:\nmenuless screen (size\u003d0) request shutdown while pressing enter / power button\n(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/master/firmware/lib/vboot_ui_legacy_menu.c#476)\n\nWill we keep it or discard it?",
+      "range": {
+        "startLine": 223,
+        "startChar": 6,
+        "endLine": 223,
+        "endChar": 18
+      },
+      "revId": "85bdad78bb2415072e2505c2f8fefacb258ca9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
