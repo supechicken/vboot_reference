@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdb5f43b_88e1f305",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:13:28Z",
+      "side": 1,
+      "message": "Should we consider unifying this so that either both sleep and timer use milliseconds or both use microseconds? (I think for everything vboot does milliseconds should be enough, but on the other hand microseconds are the more common \"baseline\" in most firmware projects.)",
+      "range": {
+        "startLine": 1188,
+        "startChar": 46,
+        "endLine": 1188,
+        "endChar": 58
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6dfa608_244ab7e7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:13:28Z",
+      "side": 1,
+      "message": "nit: This is an odd requirement that I\u0027m not sure we need to keep carrying. Our timers should generally all be accurate into microsecond ranges.",
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8acde2_06034af3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:13:28Z",
+      "side": 1,
+      "message": "nit: Do we actually need vb2ex_msleep() when we have this? We could just have a vb2_msleep() wrapper or macro inside vboot that translates to vb2ex_beep(..., 0). Or is that more confusing than useful?",
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd94917_d064e98b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:13:28Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1226,
+        "startChar": 34,
+        "endLine": 1226,
+        "endChar": 46
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
