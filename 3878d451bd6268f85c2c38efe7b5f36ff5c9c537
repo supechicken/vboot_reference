@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "8b10e2ca_1e34b1d9",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T01:14:49Z",
+      "side": 1,
+      "message": "I think we can change functionality where it doesn\u0027t matter (e.g. return codes nobody ever checks) if it makes the code cleaner. For example, this can just become\n\n VB2_TRY(vb2ex_ec_get_expected_image_hash(...), ctx, VB2_RECOVERY_EC_EXPECTED_HASH);\n\nI don\u0027t think the exact return code after that matters. We\u0027ve already set a recovery reason which is the more \"visible\" way to say where this broke. If we want to have a return value in the subcode, it makes more sense to store the value the vb2ex call returned, and then maybe create a few reasons it can use to differentiate results (e.g. \"file not found\" or whatever other reasons might cause depthcharge to fail this).",
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "caa0e04a_caf977c2",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
@@ -59,6 +76,30 @@
       "writtenOn": "2020-04-20T08:02:18Z",
       "side": 1,
       "message": "Are we going to go ahead and build the REQUEST-checking functionality into VB2_TRY?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 8
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8b250e_10273afb",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T01:14:49Z",
+      "side": 1,
+      "message": "Even then you still need to put the actual recovery reason here for it to work (i.e. invoke VB2_TRY() with three parameters, not just one).",
+      "parentUuid": "caa0e04a_caf977c2",
       "range": {
         "startLine": 188,
         "startChar": 1,
@@ -94,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "c57a3250_1e1885ca",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T01:14:49Z",
+      "side": 1,
+      "message": "Agreed, and then this can be written less complicated.",
+      "parentUuid": "1e35c057_ea23b80b",
+      "range": {
+        "startLine": 197,
+        "startChar": 43,
+        "endLine": 197,
+        "endChar": 45
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecacb12a_5c7bab32",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 2
@@ -105,6 +170,30 @@
       "writtenOn": "2020-04-20T08:02:18Z",
       "side": 1,
       "message": "Does it even matter that EC reboots into RO before heading into non-manual recovery?",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6102c36_3a661bbc",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T01:14:49Z",
+      "side": 1,
+      "message": "It avoids an extra reboot, although that\u0027s not super important in a rare error path.",
+      "parentUuid": "ecacb12a_5c7bab32",
       "range": {
         "startLine": 198,
         "startChar": 9,
@@ -174,6 +263,30 @@
       "writtenOn": "2020-04-20T08:02:18Z",
       "side": 1,
       "message": "Actually, for this to work properly, we should take out all of the vb2api_fail calls from update_ec() [and everything it calls].\n\nTake a look at VbTryLoadKernel for an example of how this looks.",
+      "range": {
+        "startLine": 322,
+        "startChar": 3,
+        "endLine": 322,
+        "endChar": 48
+      },
+      "revId": "3878d451bd6268f85c2c38efe7b5f36ff5c9c537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10daeb46_f2f7f68f",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T01:14:49Z",
+      "side": 1,
+      "message": "I\u0027m honestly not sure why we have tries here. I think this was just a random Randall comment https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/320614/2/firmware/lib/vboot_api_kernel.c#854 because when flashing EC-RO fails it will brick the device. But in general software sync doesn\u0027t fail, and if it does it\u0027s not very likely to be a transient problem that disappears on the next attempt, and RO sync is just a debug feature that only people who have a servo attached and can manually reflash should be using anyway. So I think we should just get rid of this retry rather than bend over backwards in the rest of the code to try to accommodate it right.",
+      "parentUuid": "fa6a5ad6_e9c1cbaa",
       "range": {
         "startLine": 322,
         "startChar": 3,
