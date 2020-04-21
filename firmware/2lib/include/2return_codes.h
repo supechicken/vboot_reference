@@ -48,8 +48,6 @@ enum vb2_return_code {
 	VBERROR_EC_REBOOT_TO_SWITCH_RW        = 0x1001A,
 	/* Need EC to reboot to read-only code */
 	VBERROR_EC_REBOOT_TO_RO_REQUIRED      = 0x10022,
-	/* Peripheral busy. Cannot upgrade firmware at present. */
-	VBERROR_PERIPHERAL_BUSY               = 0x10030,
 	/* Detachable UI internal functions may return the following codes */
 	/* No error; return to UI loop */
 	VBERROR_KEEP_LOOPING			= 0x30000,
@@ -722,6 +720,9 @@ enum vb2_return_code {
 
 	/* Error setting wilco serial number */
 	VB2_ERROR_EX_SET_WILCO_SERIAL,
+
+	/* AUXFW peripheral busy. Cannot upgrade firmware at present. */
+	VB2_ERROR_EX_AUXFW_PERIPHERAL_BUSY,
 
 	/**********************************************************************
 	 * LoadKernel errors
