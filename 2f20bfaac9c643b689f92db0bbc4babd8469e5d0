@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eacfb24_0a4483ca",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-21T19:39:37Z",
+      "side": 1,
+      "message": "The nesting in the following blocks is a little atypical. Normally I\u0027d expect to see early-return style used. So:\n\n  if (!uname(...)) {\n     perror(\"uname\");\n     return 0;\n  }\n  if (sscanf(...) !\u003d 2) {\n    printf(\u003cyour error message\u003e);\n    return 0;\n  }\n  // do your thing\n\nNot worth changing now, though.",
+      "range": {
+        "startLine": 665,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 25
+      },
+      "revId": "2f20bfaac9c643b689f92db0bbc4babd8469e5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
