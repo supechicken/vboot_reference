@@ -44,8 +44,6 @@ enum vb2_return_code {
 	VBERROR_REBOOT_REQUIRED               = 0x10007,
 	/* Calling firmware requested shutdown via VbExIsShutdownRequested() */
 	VBERROR_SHUTDOWN_REQUESTED            = 0x1000D,
-	/* VbExBeep() can't make sound in the background */
-	VBERROR_NO_BACKGROUND_SOUND           = 0x10019,
 	/* Need EC to reboot to read-only code to switch RW slot */
 	VBERROR_EC_REBOOT_TO_SWITCH_RW        = 0x1001A,
 	/* Need EC to reboot to read-only code */

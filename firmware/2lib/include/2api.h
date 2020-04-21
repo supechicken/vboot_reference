@@ -1184,4 +1184,44 @@ enum vb2_screen {
  */
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen, uint32_t locale);
 
+/**
+ * Delay for at least the specified number of milliseconds.
+ *
+ * @param msec			Duration in milliseconds.
+ */
+void vb2ex_msleep(uint32_t msec);
+
+/**
+ * Play a beep tone of the specified frequency in Hz and duration in msec.
+ *
+ * This is effectively a sleep call that makes noise.
+ *
+ * The implementation should always do the best it can if it cannot fully
+ * support all features -- for example, beeping at a fixed frequency if
+ * frequency support is not available.  At a minimum, it must delay for the
+ * specified duration.
+ *
+ * @param msec			Duration of beep in milliseconds.
+ * @param frequency		Sound frequency in Hz.
+ * @return VB2_SUCCESS or error code on error.
+ */
+vb2_error_t vb2ex_beep(uint32_t msec, uint32_t frequency);
+
+/*****************************************************************************/
+/* Timer. */
+
+#define VB2_USEC_PER_MSEC	1000ULL
+#define VB2_MSEC_PER_SEC	1000ULL
+#define VB2_USEC_PER_SEC	(VB2_USEC_PER_MSEC * VB2_MSEC_PER_SEC)
+
+/**
+ * Read a microsecond timer.
+ *
+ * This should have a sufficient number of bits to avoid wraparound for at
+ * least 10 minutes.
+ *
+ * @return Current timer value in microseconds.
+ */
+uint64_t vb2ex_utime(void);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
