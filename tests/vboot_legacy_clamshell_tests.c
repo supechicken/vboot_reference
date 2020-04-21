@@ -62,8 +62,8 @@ static int tpm_set_mode_called;
 static enum vb2_tpm_mode tpm_mode;
 
 /* Extra character to guarantee null termination. */
-static char set_vendor_data[VENDOR_DATA_LENGTH + 2];
-static int set_vendor_data_called;
+static char wilco_serial[VENDOR_DATA_LENGTH + 2];
+static int set_wilco_serial_called;
 
 /*
  * Mocks the assertion of 1 or more gpios in |gpio_flags| for 100 ticks after
@@ -109,7 +109,7 @@ static void ResetMocks(void)
 	trust_ec = 0;
 	virtdev_set = 0;
 	virtdev_fail = 0;
-	set_vendor_data_called = 0;
+	set_wilco_serial_called = 0;
 
 	memset(screens_displayed, 0, sizeof(screens_displayed));
 	screens_count = 0;
@@ -273,15 +273,15 @@ void vb2_enable_developer_mode(struct vb2_context *c)
 	virtdev_set = 1;
 }
 
-vb2_error_t VbExSetVendorData(const char *vendor_data_value)
+vb2_error_t vb2ex_set_wilco_serial(const char *value)
 {
-	set_vendor_data_called = 1;
+	set_wilco_serial_called = 1;
 	/*
-	 * set_vendor_data is a global variable, so it is automatically
+	 * wilco_serial is a global variable, so it is automatically
 	 * initialized to zero, and so the -1 will ensure the string is null
 	 * terminated.
 	 */
-	strncpy(set_vendor_data, vendor_data_value, sizeof(set_vendor_data) - 1);
+	strncpy(wilco_serial, value, sizeof(wilco_serial) - 1);
 
 	return VB2_SUCCESS;
 }
@@ -565,7 +565,7 @@ static void VbBootDevTest(void)
 	mock_keypress[0] = VB_KEY_UP;
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-                "Up arrow");
+		"Up arrow");
 
 	/* Shutdown requested in loop */
 	ResetMocks();
@@ -786,7 +786,7 @@ static void VbBootDevTest(void)
 	mock_keypress[0] = VB_KEY_CTRL('U');
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-                "Ctrl+U normal");
+		"Ctrl+U normal");
 
 	/* Ctrl+U enabled, with good USB boot */
 	ResetMocks();
@@ -868,93 +868,98 @@ static void VbBootDevTest(void)
 
 static void VbBootDevVendorDataTest(void)
 {
-	/* Enter set vendor data and reboot */
+	/* Enter wilco serial and reboot */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
-	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[5] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data, don't confirm, esc");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
+		"Enter wilco serial, don't confirm, esc");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "4321", "  wilco serial correct");
 
-	/* Enter set vendor data; don't confirm and esc */
+	/* Enter wilco serial; don't confirm and esc */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
-	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
+	mock_keypress[5] = VB_KEY_ENTER;  /* Set wilco serial */
 	mock_keypress[6] = VB_KEY_RIGHT;  /* Select NO */
-	mock_keypress[7] = VB_KEY_ENTER;  /* Do not confirm vendor data */
+	mock_keypress[7] = VB_KEY_ENTER;  /* Do not confirm wilco serial */
 	mock_keypress[8] = VB_KEY_ESC;  /* Escape to boot */
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data, don't confirm, esc");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, don't confirm, esc");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
-	/* Enter set vendor data; esc, don't confirm, and change last character */
+	/* Enter wilco serial; esc, don't confirm, and change last character */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
 	mock_keypress[5] = VB_KEY_ENTER;
 	mock_keypress[6] = VB_KEY_RIGHT;  /* Select NO */
-	mock_keypress[7] = VB_KEY_ENTER;  /* Do not confirm vendor data */
+	mock_keypress[7] = VB_KEY_ENTER;  /* Do not confirm wilco serial */
 	mock_keypress[8] = VB_KEY_BACKSPACE;  /* Remove last character */
 	mock_keypress[9] = 'B';
-	mock_keypress[10] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm vendor data */
+	mock_keypress[10] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm wilco serial */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data esc, don't confirm, change last character");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "432B", "  Vendor data correct");
+		"Enter wilco serial, esc, don't confirm, change last char");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "432B", "  wilco serial correct");
 
-	/* Enter set vendor data; extra keys ignored */
+	/* Enter wilco serial; extra keys ignored */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
 	mock_keypress[5] = '5';
-	mock_keypress[6] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[7] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[6] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[7] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data extra keys ignored");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
+		"Enter wilco serial, extra keys ignored");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "4321", "  wilco serial correct");
 
-	/* Enter set vendor data; converts case */
+	/* Enter wilco serial; converts case */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = 'a';
 	mock_keypress[2] = 'B';
 	mock_keypress[3] = 'Y';
 	mock_keypress[4] = 'z';
-	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[5] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[6] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data converts case");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "ABYZ", "  Vendor data correct");
+		"Enter wilco serial, converts case");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "ABYZ", "  wilco serial correct");
 
-	/* Enter set vendor data; backspace works */
+	/* Enter wilco serial; backspace works */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = 'B';
 	mock_keypress[3] = 'C';
@@ -963,17 +968,18 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[6] = '3';
 	mock_keypress[7] = '2';
 	mock_keypress[8] = '1';
-	mock_keypress[9] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[10] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[9] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[10] = VB_KEY_ENTER;  /* Confirm wilco serial (Def. Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data backspace works");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "A321", "  Vendor data correct");
+		"Enter wilco serial, backspace works");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "A321", "  wilco serial correct");
 
-	/* Enter set vendor data; invalid chars don't print */
+	/* Enter wilco serial; invalid chars don't print */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '-';
 	mock_keypress[3] = '^';
@@ -983,17 +989,18 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[7] = '3';
 	mock_keypress[8] = '2';
 	mock_keypress[9] = '1';
-	mock_keypress[10] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[10] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data invalid chars don't print");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
+		"Enter wilco serial, invalid chars don't print");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "4321", "  wilco serial correct");
 
-	/* Enter set vendor data; invalid chars don't print with backspace */
+	/* Enter wilco serial; invalid chars don't print with backspace */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '-';
 	mock_keypress[3] = VB_KEY_BACKSPACE;  /* Should delete 4 */
@@ -1001,17 +1008,18 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[5] = '2';
 	mock_keypress[6] = '1';
 	mock_keypress[7] = '0';
-	mock_keypress[8] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[8] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data invalid chars don't print with backspace");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "3210", "  Vendor data correct");
+		"Enter wilco serial, invalid chars don't print, use backspace");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "3210", "  wilco serial correct");
 
-	/* Enter set vendor data; backspace only doesn't underrun */
+	/* Enter wilco serial; backspace only doesn't underrun */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = VB_KEY_BACKSPACE;
 	mock_keypress[3] = VB_KEY_BACKSPACE;
@@ -1019,17 +1027,18 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[5] = '3';
 	mock_keypress[6] = '2';
 	mock_keypress[7] = '1';
-	mock_keypress[8] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[8] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[9] = VB_KEY_ENTER;  /* Confirm wilco serial (Default Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data backspace only doesn't underrun");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "4321", "  Vendor data correct");
+		"Enter wilco serial, backspace doesn't underrun");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "4321", "  wilco serial correct");
 
-	/* Enter set vendor data; vowels not allowed after first char */
+	/* Enter wilco serial; vowels not allowed after first char */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = 'A';
 	mock_keypress[2] = 'A';
 	mock_keypress[3] = 'B';
@@ -1039,44 +1048,47 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[7] = 'O';
 	mock_keypress[8] = 'u';
 	mock_keypress[9] = 'D';
-	mock_keypress[10] = VB_KEY_ENTER;  /* Set vendor data */
-	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm vendor data (Default YES) */
+	mock_keypress[10] = VB_KEY_ENTER;  /* Set wilco serial */
+	mock_keypress[11] = VB_KEY_ENTER;  /* Confirm wilco serial (Def. Y) */
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_REQUEST_REBOOT,
-		"Enter set vendor data vowels not allowed after first char");
-	TEST_EQ(set_vendor_data_called, 1, "  VbExSetVendorData() called");
-	TEST_STR_EQ(set_vendor_data, "ABCD", "  Vendor data correct");
+		"Enter wilco serial, vowels not allowed after first char");
+	TEST_EQ(set_wilco_serial_called, 1,
+		"  vb2ex_set_wilco_serial() called");
+	TEST_STR_EQ(wilco_serial, "ABCD", "  wilco serial correct");
 
-	/* Enter set vendor data; too short */
+	/* Enter wilco serial; too short */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '1';
 	mock_keypress[2] = '2';
 	mock_keypress[3] = '3';
-	/* Set vendor data (nothing happens) */
+	/* Set wilco serial (nothing happens) */
 	mock_keypress[4] = VB_KEY_ENTER;
-	/* Confirm vendor data (nothing happens) */
+	/* Confirm wilco serial (nothing happens) */
 	mock_keypress[5] = VB_KEY_ENTER;
 	mock_keypress[6] = VB_KEY_ESC;
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data too short");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, too short");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
-	/* Enter set vendor data; esc from set screen */
+	/* Enter wilco serial; esc from set screen */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = VB_KEY_ESC;
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data esc from set screen");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, esc from set screen");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
-	/* Enter set vendor data; esc from set screen with tag */
+	/* Enter wilco serial; esc from set screen with tag */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
@@ -1084,32 +1096,35 @@ static void VbBootDevVendorDataTest(void)
 	mock_keypress[5] = VB_KEY_ESC;
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data esc from set screen with tag");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, esc from set screen with tag");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
-	/* Enter set vendor data; esc from confirm screen */
+	/* Enter wilco serial; esc from confirm screen */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ENTER;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ENTER;  /* Enter wilco serial setting */
 	mock_keypress[1] = '4';
 	mock_keypress[2] = '3';
 	mock_keypress[3] = '2';
 	mock_keypress[4] = '1';
-	mock_keypress[5] = VB_KEY_ENTER;  /* Set vendor data */
+	mock_keypress[5] = VB_KEY_ENTER;  /* Set wilco serial */
 	mock_keypress[6] = VB_KEY_ESC;
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data esc from set screen");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, esc from set screen");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
-	/* Escape from vendor data warning screen */
+	/* Escape from wilco serial warning screen */
 	ResetMocks();
 	ctx->flags |= VB2_CONTEXT_VENDOR_DATA_SETTABLE;
-	mock_keypress[0] = VB_KEY_ESC;  /* Enter vendor data setting */
+	mock_keypress[0] = VB_KEY_ESC;  /* Enter wilco serial setting */
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,
-		"Enter set vendor data esc, don't confirm, change last character");
-	TEST_EQ(set_vendor_data_called, 0, "  VbExSetVendorData() not called");
+		"Enter wilco serial, esc, don't confirm, change last char");
+	TEST_EQ(set_wilco_serial_called, 0,
+		"  vb2ex_set_wilco_serial() not called");
 
 	VB2_DEBUG("...done.\n");
 }

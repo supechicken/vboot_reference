@@ -170,7 +170,8 @@ static vb2_error_t vb2_confirm_vendor_data_ui(struct vb2_context *ctx,
 					  "selected YES: "
 					  "write vendor data (%s) to VPD\n",
 					  data_value);
-				vb2_error_t ret = VbExSetVendorData(data_value);
+				vb2_error_t ret =
+					vb2ex_set_wilco_serial(data_value);
 
 				if (ret == VB2_SUCCESS) {
 					vb2_nv_set(ctx,
