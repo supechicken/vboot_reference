@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "5e8db2e4_96cb60af",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-21T05:57:23Z",
+      "side": 1,
+      "message": "\u003e When is that gonna happen?\n\nLet\u0027s do it!\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2158666\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2158665\n\nYu-Ping, could you take care of the VB2_TRY side of things?\n\n\n\u003e I guess if we wanna be really careful\n\nPersonally I\u0027d still prefer to put it at a location \u003cVB2_ERROR_BASE.  If we really care about erroneously returning non-vb2_error_t errors... then we can change vb2_error_t to use the enum directly, rather than uint32_t.",
+      "parentUuid": "475cb586_33f302a8",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40aff4a6_fcd27109",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
