@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "03932bfa_1fd9beb4",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:03:04Z",
+      "side": 1,
+      "message": "\u003e then we can change vb2_error_t to use the enum directly, rather than uint32_t.\n\nNot sure what that\u0027s supposed to help with. In C enums and integers are implicitly convertible to each other. The only way you can make the compiler type check this for you is by making it a struct, and then unfortunately things like (rv \u003d\u003d VB2_ERROR_xxx) no longer work (you\u0027d have to do something ugly like IS_VB2_ERROR(rv, xxx) or something like that).\n\nvb2_error_t is defined as uint32_t instead of the enum mostly because the size of enum types can be somewhat unpredictable, and we\u0027re serializing it across architectures.",
+      "parentUuid": "5e8db2e4_96cb60af",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40aff4a6_fcd27109",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
