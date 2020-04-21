@@ -13,6 +13,7 @@
 #include <string.h>
 #include <sys/time.h>
 
+#include "2api.h"
 #include "2common.h"
 #include "vboot_api.h"
 #include "vboot_test.h"
@@ -137,10 +138,10 @@ vb2_error_t vb2ex_auxfw_update(void)
 
 vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
 {
-	return 1;
+	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExSetVendorData(const char *vendor_data_value)
+vb2_error_t vb2ex_set_wilco_serial(const char *value)
 {
-	return 0;
+	return VB2_SUCCESS;
 }
