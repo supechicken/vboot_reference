@@ -328,13 +328,13 @@ static vb2_error_t vb2_load_partition(
 	if (!kbuf)
 		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
-	start_ts = VbExGetTimer();
+	start_ts = vb2ex_utime();
 	if (VbExStreamRead(stream, KBUF_SIZE, kbuf)) {
 		VB2_DEBUG("Unable to read start of partition.\n");
 		shpart->check_result = VBSD_LKP_CHECK_READ_START;
 		return VB2_ERROR_LOAD_PARTITION_READ_VBLOCK;
 	}
-	read_us += VbExGetTimer() - start_ts;
+	read_us += vb2ex_utime() - start_ts;
 
 	if (VB2_SUCCESS !=
 	    vb2_verify_kernel_vblock(ctx, kbuf, KBUF_SIZE, kernel_subkey,
@@ -389,13 +389,13 @@ static vb2_error_t vb2_load_partition(
 	body_readptr += body_copied;
 
 	/* Read the kernel data */
-	start_ts = VbExGetTimer();
+	start_ts = vb2ex_utime();
 	if (body_toread && VbExStreamRead(stream, body_toread, body_readptr)) {
 		VB2_DEBUG("Unable to read kernel data.\n");
 		shpart->check_result = VBSD_LKP_CHECK_READ_DATA;
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
-	read_us += VbExGetTimer() - start_ts;
+	read_us += vb2ex_utime() - start_ts;
 	VB2_DEBUG("read %" PRIu32 " KB in %" PRIu64 " ms at %" PRIu64 " KB/s.\n",
 		  (body_toread + KBUF_SIZE) / 1024, read_us / 1000,
 		  ((uint64_t)(body_toread + KBUF_SIZE) * 1000 * 1000) /

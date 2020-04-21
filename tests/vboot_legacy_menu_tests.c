@@ -217,11 +217,11 @@ vb2_error_t VbDisplayDebugInfo(struct vb2_context *c)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExBeep(uint32_t msec, uint32_t frequency)
+vb2_error_t vb2ex_beep(uint32_t msec, uint32_t frequency)
 {
 	if (beeps_count < ARRAY_SIZE(beeps_played))
 		beeps_played[beeps_count++] = frequency;
-	printf("VbExBeep: beeps_played[%d] = %dHz for %dms\n",
+	printf("vb2ex_beep: beeps_played[%d] = %dHz for %dms\n",
 	       beeps_count - 1, frequency, msec);
 	return VB2_SUCCESS;
 }

@@ -193,12 +193,12 @@ vb2_error_t VbExLegacy(enum VbAltFwIndex_t _altfw_num)
 	return VB2_ERROR_UNKNOWN;
 }
 
-void VbExSleepMs(uint32_t msec)
+void vb2ex_msleep(uint32_t msec)
 {
-	current_ticks += (uint64_t)msec * VB_USEC_PER_MSEC;
+	current_ticks += (uint64_t)msec * VB2_USEC_PER_MSEC;
 }
 
-uint64_t VbExGetTimer(void)
+uint64_t vb2ex_utime(void)
 {
 	return current_ticks;
 }
@@ -1542,7 +1542,7 @@ static void VbBootDiagTest(void)
 		"  blank screen");
 	TEST_EQ(tpm_set_mode_called, 0, "  no tpm call");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
-	TEST_EQ(current_ticks, 30 * VB_USEC_PER_SEC,
+	TEST_EQ(current_ticks, 30 * VB2_USEC_PER_SEC,
 		"  waited for 30 seconds");
 
 	/* Esc key pressed. */
@@ -1569,7 +1569,7 @@ static void VbBootDiagTest(void)
 		"  blank screen");
 	TEST_EQ(tpm_set_mode_called, 0, "  no tpm call");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
-	TEST_TRUE(current_ticks < VB_USEC_PER_SEC, "  didn't wait long");
+	TEST_TRUE(current_ticks < VB2_USEC_PER_SEC, "  didn't wait long");
 
 	/* Power button pressed but not released. */
 	ResetMocks();

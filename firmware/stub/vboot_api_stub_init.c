@@ -13,11 +13,11 @@
 #include "2common.h"
 #include "vboot_api.h"
 
-uint64_t VbExGetTimer(void)
+uint64_t vb2ex_utime(void)
 {
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
-	return (uint64_t)tv.tv_sec * VB_USEC_PER_SEC + (uint64_t)tv.tv_usec;
+	return (uint64_t)tv.tv_sec * VB2_USEC_PER_SEC + (uint64_t)tv.tv_usec;
 }
 
 vb2_error_t vb2ex_commit_data(struct vb2_context *ctx)
