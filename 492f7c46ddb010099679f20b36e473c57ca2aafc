@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ae98355_3bd69885",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T21:19:34Z",
+      "side": 1,
+      "message": "I think we chose the name \"vendor data\" specifically to make this a bit more flexible. Should keep that and not pull the name \"wilco\" into vboot.",
+      "range": {
+        "startLine": 1241,
+        "startChar": 22,
+        "endLine": 1241,
+        "endChar": 34
+      },
+      "revId": "492f7c46ddb010099679f20b36e473c57ca2aafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
