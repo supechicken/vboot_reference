@@ -22,6 +22,30 @@
       "revId": "9a2d23d4229f6c0acbbb1f39e1590fa6519c3fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bb7955_530c349e",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T00:01:50Z",
+      "side": 1,
+      "message": "This is the same section name the compiler would naturally generate for these arrays (since we\u0027re building with -fdata-sections).",
+      "parentUuid": "3550a237_dfba3f94",
+      "range": {
+        "startLine": 19,
+        "startChar": 24,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "9a2d23d4229f6c0acbbb1f39e1590fa6519c3fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
