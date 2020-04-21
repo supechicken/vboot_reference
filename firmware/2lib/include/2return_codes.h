@@ -65,8 +65,6 @@ enum vb2_return_code {
 	 */
 	/* Peripheral busy. Cannot upgrade firmware at present. */
 	VBERROR_PERIPHERAL_BUSY               = 0x10030,
-	/* Error writing VPD */
-	VBERROR_VPD_WRITE                     = 0x10032,
 
 	/**********************************************************************
 	 * SHA errors
@@ -733,6 +731,9 @@ enum vb2_return_code {
 
 	/* vb2ex function is unimplemented (stubbed in 2lib/2stub.c) */
 	VB2_ERROR_EX_UNIMPLEMENTED,
+
+	/* Error setting wilco serial number */
+	VB2_ERROR_EX_SET_WILCO_SERIAL,
 
 	/**********************************************************************
 	 * LoadKernel errors

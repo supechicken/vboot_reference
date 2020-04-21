@@ -429,17 +429,6 @@ vb2_error_t VbExDisplayMenu(uint32_t screen_type, uint32_t locale,
  */
 vb2_error_t VbExDisplayDebugInfo(const char *info_str, int full_info);
 
-/**
- * Write vendor data to read-only VPD
- *
- * @param vendor_data_value   The value of vendor data to write to VPD. The
- *                            string length will be exactly VENDOR_DATA_LENGTH
- *                            characters and null-terminated.
- *
- * @return VB2_SUCCESS or error code on error.
- */
-vb2_error_t VbExSetVendorData(const char *vendor_data_value);
-
 /*****************************************************************************/
 /* Keyboard and switches */
 
