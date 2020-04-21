@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "4faaa2f1_16a757d4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "Why do we need to reset it here? And if we do, the while loop below is meaningless.",
+      "revId": "85bdad78bb2415072e2505c2f8fefacb258ca9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32223bf6_5db771a0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "key \u003d\u003d VB_BUTTON_VOL_UP_SHORT_PRESS\n\nAlso consider changing this to a switch statement, or, having a mapping array:\n\n detachable_key_mapping \u003d {\n     { VB_BUTTON_VOL_UP_SHORT_PRESS, VB_KEY_UP},\n }",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 34
+      },
+      "revId": "85bdad78bb2415072e2505c2f8fefacb258ca9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a59ce1a5_d2302bf1",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 29

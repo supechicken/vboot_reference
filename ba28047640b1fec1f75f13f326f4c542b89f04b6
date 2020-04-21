@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "dd7b4a76_1fbf4bb2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "I didn\u0027t think of the case of dev boot screen, but I\u0027m not quite sure if the default selection needs to be decided in runtime in *most* cases. I guess the answer depends on the question Rocco brought out in Monday\u0027s meeting: whether to remember the previously selected item when going back from another screen.\n\nEven if we have pre_display(), I\u0027m still not quite convinced on selecting the first non-disabled item here. After the language selection is introduced, it will always be the first item. What are we supposed to do for this block of code then?\n\nRe. pre_display()\nWill pre_display() do anything other than setting \u0027selected_item\u0027 and \u0027disabled_item_mask\u0027. If not, maybe we should rename it to something like set_selected_item(). Lastly, since this function hasn\u0027t been used, could we remove it from this CL? Maybe it\u0027ll become clearer about what to do when we actually need it.",
+      "parentUuid": "84aab006_9cbafb58",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca824762_6a64fca6",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -222,6 +240,30 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27419ede_9133cf80",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e5e095_8fb43b9d",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -355,6 +397,24 @@
     },
     {
       "key": {
+        "uuid": "cbf64e20_9b065ce3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "It seems good to me separating these two.\n\nNow change_screen() is more like a default action(), and the code here and depthcharge looks more and more similar!",
+      "parentUuid": "0e24d377_dbf905ec",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a6c0ffa_357a2e04",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -405,6 +465,24 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d006c4_d8845c0e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8bf81e1_1e760334",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -995,6 +1073,30 @@
       "side": 1,
       "message": "There are unit tests for it; so it should be accessible in vb2_ui_tests.c.\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2117810/27/tests/vb2_ui_tests.c#271",
       "parentUuid": "3fe3b947_1b05fe36",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b2a614_5ef1b4c1",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-21T04:34:18Z",
+      "side": 1,
+      "message": "Yes, but all function declarations should already have an implicit \"extern\" applied, right? I think the test can still run without this.",
+      "parentUuid": "cf1043d3_623111be",
       "range": {
         "startLine": 21,
         "startChar": 0,
