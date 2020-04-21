@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "64c72bf8_beea4ad1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-21T03:56:41Z",
+      "side": 1,
+      "message": "I realized that since we set disabled_item_mask to 0 every time change_screen is called\n(https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2117810/29/firmware/2lib/2ui.c#115)\n\nWe can not have any test about selected_item for now.",
+      "parentUuid": "ca38d7fe_728fa18a",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb6193d5_41784958",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
