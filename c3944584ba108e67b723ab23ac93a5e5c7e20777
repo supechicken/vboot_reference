@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "475cb586_33f302a8",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-21T00:21:42Z",
+      "side": 1,
+      "message": "When is that gonna happen? Because if we want to establish the rule that VB2_TRY() acts differently on VB2_REQUEST than VB2_ERROR, I would like to do that right now, not in some far out future when people have gotten used to it differently. So unless you were planning a big error cleanup this week anyway, let\u0027s please prioritize hooking this up to VB2_TRY() and using it to simplify the EC sync code (and wherever else it may be suitable).\n\nWith the TPM error concern... I guess if we wanna be really careful we should put it somewhere far out of the way that\u0027s unlikely to overlap with anything else after all (e.g. 0x95700000-0x95800000). The extra comparison operation is hopefully not gonna kill us",
+      "parentUuid": "9d0ede8d_fa82f294",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "c3944584ba108e67b723ab23ac93a5e5c7e20777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40aff4a6_fcd27109",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
