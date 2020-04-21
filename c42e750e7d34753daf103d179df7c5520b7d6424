@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af60a3ca_3a4c5b1e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-21T11:15:38Z",
+      "side": 1,
+      "message": "What do you think about calling it VB2_SCREEN_RECOVERY_BROKEN?\n\nThe BROKEN screen shows only when VB2_CONTEXT_RECOVERY_MODE is set, so we should probably prefix it by RECOVERY here like RECOVERY_SELECT.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 1,
+        "endLine": 1160,
+        "endChar": 18
+      },
+      "revId": "c42e750e7d34753daf103d179df7c5520b7d6424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
