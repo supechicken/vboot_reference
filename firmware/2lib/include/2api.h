@@ -1224,4 +1224,17 @@ vb2_error_t vb2ex_beep(uint32_t msec, uint32_t frequency);
  */
 uint64_t vb2ex_utime(void);
 
+/*****************************************************************************/
+/* Board-specific functions. */
+
+/**
+ * Write wilco serial number to read-only VPD.
+ *
+ * @param value		The serial number data to write to VPD. The
+ *			string length must be exactly VENDOR_DATA_LENGTH
+ *			characters and null-terminated.
+ * @return VB2_SUCCESS or error code on error.
+ */
+vb2_error_t vb2ex_set_wilco_serial(const char *value);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
