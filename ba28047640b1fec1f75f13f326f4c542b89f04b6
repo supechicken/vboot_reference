@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "38a844fe_3e3bf5e1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T01:24:19Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not quite sure if the default selection needs to be decided in runtime in *most* cases\n\nAs we pile on new CLs with more functionality, we can always course-correct, as we\u0027ve done with depthcharge.  I\u0027m just not sure how we would be able to deal with the dev boot screen without some kind of runtime thingy.\n\n\u003e whether to remember the previously selected item when going back\n\nThis sounds like it\u0027d be done as a common feature for all screens rather than individually anyways, so I don\u0027t think it influences our decision about a pre_display hook.\n\n\u003e After the language selection is introduced, it will always be the first item\n\nActually, if other menu items are available, I think it would make more sense to select one of them by default, rather than the language selection.  That\u0027s not something people are going to be using very often, so there\u0027s no point in forcing the selection back there every time someone changes screens.\n\n\u003e If not, maybe we should rename it to something like set_selected_item\n\nPerhaps... or even make a function that returns the index? menu_item object? of the desired default selection.\n\n\u003e since this function hasn\u0027t been used, could we remove it from this CL\n\nYeah.",
+      "parentUuid": "dd7b4a76_1fbf4bb2",
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca824762_6a64fca6",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 27
@@ -359,6 +377,30 @@
       "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04796465_937b2622",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T01:24:19Z",
+      "side": 1,
+      "message": "I removed the line that sets disabled_item_mask -- now we should be able to test this.",
+      "parentUuid": "64c72bf8_beea4ad1",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1097,6 +1139,30 @@
       "side": 1,
       "message": "Yes, but all function declarations should already have an implicit \"extern\" applied, right? I think the test can still run without this.",
       "parentUuid": "cf1043d3_623111be",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "ba28047640b1fec1f75f13f326f4c542b89f04b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "445d5cb8_02594898",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T01:24:19Z",
+      "side": 1,
+      "message": "Oops, that may have been my fault.  To be clear, we only need \"extern\" for /variable definitions/ in this file.",
+      "parentUuid": "20b2a614_5ef1b4c1",
       "range": {
         "startLine": 21,
         "startChar": 0,
