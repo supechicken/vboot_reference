@@ -79,6 +79,75 @@
       "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79000f4d_0ff0382f",
+        "filename": "tests/vboot_legacy_clamshell_beep_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-22T04:13:28Z",
+      "side": 1,
+      "message": "Use __func__?",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 24
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd21e7d3_1faf6e70",
+        "filename": "tests/vboot_legacy_clamshell_beep_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-22T04:13:28Z",
+      "side": 1,
+      "message": "Use __func__?",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 22
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64c2583_b28bd6cd",
+        "filename": "tests/vboot_legacy_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-22T04:13:28Z",
+      "side": 1,
+      "message": "VB2_DEBUG?",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 7
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
