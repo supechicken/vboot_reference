@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d59b8e4_18643f53",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "\u003e Should we consider unifying\n\nProbably.  Does vb2ex_utime have to be microseconds?",
+      "parentUuid": "fdb5f43b_88e1f305",
+      "range": {
+        "startLine": 1188,
+        "startChar": 46,
+        "endLine": 1188,
+        "endChar": 58
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6dfa608_244ab7e7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "dbd8822e_ab238943",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6dfa608_244ab7e7",
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf8acde2_06034af3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def9ed6b_6cc6a446",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Binding these two things together feels really weird.  Especially if we ever end up adding back non-blocking functionality to vb2ex_beep, it\u0027s going to be the all-wonder-do-it-all function.  I don\u0027t think we\u0027re breaking the bank by adding the extra callback here.",
+      "parentUuid": "bf8acde2_06034af3",
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "e4be8ef7_bcf924d3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd94917_d064e98b",
+      "range": {
+        "startLine": 1226,
+        "startChar": 34,
+        "endLine": 1226,
+        "endChar": 46
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79000f4d_0ff0382f",
         "filename": "tests/vboot_legacy_clamshell_beep_tests.c",
         "patchSetId": 1
@@ -102,6 +186,30 @@
       "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a28a9ce_97b79a12",
+        "filename": "tests/vboot_legacy_clamshell_beep_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Just removing the function name, since this is already printed in vb2ex_printf.",
+      "parentUuid": "79000f4d_0ff0382f",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 24
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "30d82727_b2310a86",
+        "filename": "tests/vboot_legacy_clamshell_beep_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd21e7d3_1faf6e70",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 22
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d64c2583_b28bd6cd",
         "filename": "tests/vboot_legacy_menu_tests.c",
         "patchSetId": 1
@@ -148,6 +280,30 @@
       "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20106d37_0d15a451",
+        "filename": "tests/vboot_legacy_menu_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-22T05:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64c2583_b28bd6cd",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 7
+      },
+      "revId": "03773b4094beb34dfd3baeb8298eef768cee14e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
