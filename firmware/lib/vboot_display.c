@@ -115,18 +115,18 @@ static void FillInSha1Sum(char *outbuf, struct vb2_packed_key *key)
 				 ## args); \
 } while (0)
 
-vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx)
+void VbGetDebugInfoString(struct vb2_context *ctx, char *buf, size_t buf_size)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 	struct vb2_workbuf wb;
-	char buf[DEBUG_INFO_SIZE] = "";
 	char sha1sum[VB2_SHA1_DIGEST_SIZE * 2 + 1];
 	int32_t used = 0;
 	vb2_error_t ret;
 	uint32_t i;
 
 	vb2_workbuf_from_ctx(ctx, &wb);
+	buf[0] = 0;
 
 	/* Add hardware ID */
 	{
@@ -219,8 +219,14 @@ vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx)
 	/* TODO: add more interesting data:
 	 * - Information on current disks */
 
-	buf[DEBUG_INFO_SIZE - 1] = '\0';
+	buf[buf_size - 1] = '\0';
 	VB2_DEBUG("[TAB] Debug Info:\n%s", buf);
+}
+
+vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx)
+{
+	char buf[DEBUG_INFO_SIZE];
+	VbGetDebugInfoString(ctx, buf, DEBUG_INFO_SIZE);
 	return VbExDisplayDebugInfo(buf, 1);
 }
 
