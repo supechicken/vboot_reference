@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5adc161_7e3b26f7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-23T03:30:13Z",
+      "side": 1,
+      "message": "1 \u003c\u003c ...",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "59f8666d2e725b1d8fc49562368e360b96bedaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5306ced8_eb65aeb8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-23T03:30:13Z",
+      "side": 1,
+      "message": "This block is only needed when a key is pressed and action() is called. Could we update \u0027screen_info\u0027 only when necessary?\n\n if (action) {\n     action(...);  // state updated, this shouldn\u0027t modify screen_info\n     if (state-\u003escreen !\u003d prev_screen)\n         screen_info \u003d vb2_get_screen_info(state-\u003escreen);\n     validate_selection(...);\n }",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 32
+      },
+      "revId": "59f8666d2e725b1d8fc49562368e360b96bedaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c5a238_21d1f3e4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-23T03:30:13Z",
+      "side": 1,
+      "message": "vb2ex_display_ui() should handle this to avoid unnecessary redrawing, so I don\u0027t think we even need the \u0027prev_state\u0027 variable here. Anyway, it\u0027s also okay to me if we want avoid unnecessary function call.",
+      "range": {
+        "startLine": 242,
+        "startChar": 6,
+        "endLine": 242,
+        "endChar": 12
+      },
+      "revId": "59f8666d2e725b1d8fc49562368e360b96bedaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e719cc7d_22daca9a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-23T03:30:13Z",
+      "side": 1,
+      "message": "memcpy()?",
+      "revId": "59f8666d2e725b1d8fc49562368e360b96bedaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
