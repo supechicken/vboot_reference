@@ -1,0 +1,481 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6997841_24ff6d5e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Maybe: mock_calls_until_shutdown",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86669980_f2a6e7d9",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Probably just take this out.  \"mock_key ran out of entries!\" is fine.",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3fe887_c7fc203a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f451a6_f57a5dbe",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "FOR_BROKEN_RECOVERY",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0477a6_b548eda7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "FOR_MANUAL_RECOVERY",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae2b5f5_a50f41a6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Unless there\u0027s a good reason for this being 301, I\u0027d choose a small number here.  Maybe 10?",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2009468c_303cb19e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "\u003c\u003d",
+      "range": {
+        "startLine": 135,
+        "startChar": 32,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bcc1549_3d18e643",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Get rid of this check.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8f8abd_a9669050",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "This blank line is still here :/",
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c8fe65_3abbf519",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "What\u0027s the reason for changing this from TEST_EQ?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6903c2d1_5f273b86",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "How about MOCK_IGNORE?",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 269,
+        "endChar": 17
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc7fbc9_192ac194",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "This comment is the same as the one above, in a different word order... are these checking the same things?",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 37
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba7df04_dc841a59",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "I think we need to set mock_shutdown_request_left \u003d -1 for this to actually prove the key press is working.",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 3
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffe0d4e_f18116b3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "I don\u0027t think these tests are checking anything useful.  If you wanted to add a variable like \"mock_vbtlk_enabled\", set it to 0 for FOR_BROKEN, and run TEST_TRUE(mock_vbtlk_enabled), that could be okay.  But we wouldn\u0027t need any extra unit tests here all the same.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231dab7d_ff6d080f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Maybe just change the argument to \"int trusted\" and use 1 here?  Then we could change:\n\n  static uint32_t mock_keyflags[64];\n  to:\n  static int mock_key_trusted[64];",
+      "range": {
+        "startLine": 323,
+        "startChar": 32,
+        "endLine": 323,
+        "endChar": 60
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b687f8c1_5d4fde65",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "UI code shouldn\u0027t set recovery reason in normal cases... I don\u0027t think we need this check.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 71
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24b382c_0ad74e5e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Get rid of all of these.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 71
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf62e132_d0ef8d65",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "This is all checking that the UI selection is working correctly, and not actually testing any functionality.  I\u0027d maybe move this into your utility unit test file, and run ui_loop() directly.",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 2
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3245146_121fa344",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "One is enough.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 68
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4547cc_bb2b1009",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "One is enough.",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 68
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e882cb3_9ae9c5db",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T09:04:27Z",
+      "side": 1,
+      "message": "Extra whitespace?",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 0
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
