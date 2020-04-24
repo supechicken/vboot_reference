@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "94529b18_79eb7a4b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "Do we want to block invalid selection here?\nSince we do this action BEFORE validate_selection.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6997841_24ff6d5e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -140,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "b98f12b6_dd94be67",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "This is like a force exiting hack (from legacy menu tests)\nWe will force leave the ui_loop after `mock_shutdown_request_left` iterations.\nIf we have something to check with more than `mock_shutdown_request_left` iterations needed, it will fail -- but it can set to 10 for now, for sure.",
+      "parentUuid": "2ae2b5f5_a50f41a6",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2009468c_303cb19e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -151,6 +198,30 @@
       "writtenOn": "2020-04-24T09:04:27Z",
       "side": 1,
       "message": "\u003c\u003d",
+      "range": {
+        "startLine": 135,
+        "startChar": 32,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9aeaaa_fb69d120",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "The hack here is we will not force exit if mock_shutdown_request_left \u003c 0.\nSo we should return 0 on mock_shutdown_request_left \u003c 0.\n\nOr do you want something like\n\n```\nif (~ \u003c 0) return 0;  /* Never force leave */\nif (~ \u003d\u003d 0) return 1;\n~--;\nreturn 0;\n```",
+      "parentUuid": "2009468c_303cb19e",
       "range": {
         "startLine": 135,
         "startChar": 32,
@@ -183,6 +254,30 @@
       "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723cb93e_09edce2f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "See comments above",
+      "parentUuid": "4bcc1549_3d18e643",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +321,30 @@
     },
     {
       "key": {
+        "uuid": "0f60f646_9e3ae139",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "If we go to force exit, we do not want that many add_vbtlk (as many as `mock_shutdown_request_left`) in codes.",
+      "parentUuid": "00c8fe65_3abbf519",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6903c2d1_5f273b86",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -237,6 +356,30 @@
       "writtenOn": "2020-04-24T09:04:27Z",
       "side": 1,
       "message": "How about MOCK_IGNORE?",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 269,
+        "endChar": 17
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f862c5_6aaa3dfb",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "I just want to have a shorter name -- but IGNORE sounds more meaningful.",
+      "parentUuid": "6903c2d1_5f273b86",
       "range": {
         "startLine": 269,
         "startChar": 7,
@@ -352,6 +495,30 @@
       "writtenOn": "2020-04-24T09:04:27Z",
       "side": 1,
       "message": "UI code shouldn\u0027t set recovery reason in normal cases... I don\u0027t think we need this check.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 71
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97564f2_0dc7ed7d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T09:46:58Z",
+      "side": 1,
+      "message": "(Actually I do not know what this stands for ... just copy from legacy menu)\nSure I can remove it",
+      "parentUuid": "b687f8c1_5d4fde65",
       "range": {
         "startLine": 335,
         "startChar": 0,
