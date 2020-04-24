@@ -25,6 +25,144 @@
     },
     {
       "key": {
+        "uuid": "0214af59_f2cecf7d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "Is it weird if we pass this argument only for the debug message? Perhaps we should move VB2_DEBUG within the loop.",
+      "range": {
+        "startLine": 198,
+        "startChar": 46,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c173cbaf_a9ad247c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "Can we update new_screen to root_screen directly in menu_back_action()? Either by\n1. passing root_screen to action(), or\n2. changing root_screen to a global variable\n\nI really want to simplify the logic of the while loop body. In addition, what is the plan for adding the history stack here? Are we going to update the stack here or inside action()?",
+      "range": {
+        "startLine": 231,
+        "startChar": 20,
+        "endLine": 231,
+        "endChar": 35
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1787b9_520dac6b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "I wonder if we really need this variable. Here\u0027s what I\u0027m thinking:\n\n- Add an extra field \u0027vb2_screen_info *screen_info\u0027 to vb2_screen_state\n- Replace each assignment to new_screen by update_state(state, new_screen), which updates all the fields of state (by calling validate_selection())\n- update_state() could also print the debug message if state is changed",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 233,
+        "endChar": 16
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a4dc8e_0374b05a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "ERROR is more common in vboot.",
+      "range": {
+        "startLine": 236,
+        "startChar": 15,
+        "endLine": 236,
+        "endChar": 20
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082b2639_58716484",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "\u003e I wonder if we should just indiscriminately memcpy() and display_ui() each time?\n\nYes, I think we should do it.",
+      "range": {
+        "startLine": 248,
+        "startChar": 6,
+        "endLine": 248,
+        "endChar": 12
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5cda85e_ddfcc057",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-24T09:53:14Z",
+      "side": 1,
+      "message": "Declare it as static inside this function?",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6997841_24ff6d5e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
