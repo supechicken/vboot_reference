@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee7bbc24_87a4f435",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-24T07:16:35Z",
+      "side": 1,
+      "message": "I think this means we can not shutdown if BROKEN.\nIs it what we expected for?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
