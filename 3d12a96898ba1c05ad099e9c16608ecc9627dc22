@@ -22,6 +22,30 @@
       "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d092fe75_cbc8b268",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-24T07:45:56Z",
+      "side": 1,
+      "message": "I think we are going to be introducing the language menu to the BROKEN page anyways, so we will at least have *one* button.  We may also want a \"shutdown\" button.  So I think we probably want to keep this behaviour consistent (power button does *not* shutdown).",
+      "parentUuid": "ee7bbc24_87a4f435",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
