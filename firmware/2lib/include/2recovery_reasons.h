@@ -169,6 +169,19 @@ enum vb2_nv_recovery {
 	/* Error updating auxiliary firmware */
 	VB2_RECOVERY_AUXFW_UPDATE = 0x30,
 
+	/*
+	 * Intel CSE Lite SKU firmware failure; see subcode for specific reason.
+	 * INTEL CSE LITE SKU recovery subcodes:
+	 *	CSE_LITE_SKU_UNSPECIFIED = 1
+	 *	CSE_LITE_SKU_RW_JUMP_ERROR = 2
+	 *	CSE_LITE_SKU_RW_ACCESS_ERROR = 3
+	 *	CSE_LITE_SKU_RW_SWITCH_ERROR = 4
+	 *	CSE_LITE_SKU_FW_UPDATE_ERROR = 5
+	 *	CSE_LITE_SKU_COMMUNICATION_ERROR = 6
+	 * 	CSE_LITE_SKU_DATA_WIPE_ERROR = 7
+	 */
+	VB2_RECOVERY_INTEL_CSE_LITE_SKU = 0x31,
+
 	/* Unspecified/unknown error in read-only firmware */
 	VB2_RECOVERY_RO_UNSPECIFIED = 0x3f,
 
