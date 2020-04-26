@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad54be99_c960525c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "There may be other places that access menu selection (including when the screen is displayed in depthcharge), which is why I ran validate_selection at each possible location where it may have been changed (i.e. after each action run).",
+      "parentUuid": "94529b18_79eb7a4b",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0214af59_f2cecf7d",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-24T09:53:14Z",
       "side": 1,
       "message": "Is it weird if we pass this argument only for the debug message? Perhaps we should move VB2_DEBUG within the loop.",
+      "range": {
+        "startLine": 198,
+        "startChar": 46,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a06853_c59c813f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s that weird.  If you prefer, we can move VB2_DEBUG to the main loop -- but in that case, I don\u0027t think it\u0027s worth it to have a helper function at all.  What do you think?",
+      "parentUuid": "0214af59_f2cecf7d",
       "range": {
         "startLine": 198,
         "startChar": 46,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c0c5c0c3_359d6456",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "I think what we do here really depends on how the stack will be implemented... see my next comment.  In short, we might just want to stick with this code as-is and change it in our next CL.",
+      "parentUuid": "c173cbaf_a9ad247c",
+      "range": {
+        "startLine": 231,
+        "startChar": 20,
+        "endLine": 231,
+        "endChar": 35
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c1787b9_520dac6b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -82,6 +154,30 @@
       "writtenOn": "2020-04-24T09:53:14Z",
       "side": 1,
       "message": "I wonder if we really need this variable. Here\u0027s what I\u0027m thinking:\n\n- Add an extra field \u0027vb2_screen_info *screen_info\u0027 to vb2_screen_state\n- Replace each assignment to new_screen by update_state(state, new_screen), which updates all the fields of state (by calling validate_selection())\n- update_state() could also print the debug message if state is changed",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 233,
+        "endChar": 16
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453d95db_dc692e1a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "I spent some more time thinking about this today... here are the different considerations:\n\n* I changed the state to store the screen_info struct rather than the screen enum ID -- that gets rid of one argument for the actions.\n\n* Your suggestion of having actions call update_state() is a good idea -- but it has certain complications.  For example -- update_state() doesn\u0027t have access to the \"previous screen\" or the \"root screen\" currently, and I don\u0027t want to make another global variable just to allow this.  We could pass the \"root screen\" or the \"last screen\" enum ID into each action as an extra argument, but that also seems a bit excess.\n\n* Another thing to note is the current design allows for the action to modify selected_item and disabled_item_mask fields.  This is because I plan to add a \"screen action\" which is run each time the main loop runs.  The action may initialize the default selection, or perform any screen-specific logic (such as running some task chunks, updating a progress bar, keeping track of a countdown, etc.).  So we would still need to run validate_selection() after the action function regardless.\n\n* What we end up doing here may depend on how the stack is implemented.  If a full linked-list stack is passed to the action -- the action may simply pop the stack and return.  But then that will also make change detection more complicated.  Do we only allow one item to be popped off the stack at a time?  Or do we use an array of screen_state instead of a linked list for easy memcmp()?  (Which means we\u0027d need another argument to action functions to know which is the current state struct anyways.)\n\n* If we decide to only give the action access to the current screen state, then I considered creating a return request to accomplish \"previous screen\" -- something like VB2_REQUEST_UI_PREV_SCREEN.  But then the logic for handling the return value of each action() call gets more complicated.  We could perhaps handle this by allowing only one action to run in each loop iteration.  (Which we might need to do anyways to guarantee that the \"screen action\" is run before displaying a new screen, to select the default menu item.)\n\nMy conclusion is that we should wait until the next CL to make these changes, because:\n\n(1) This CL has been in flux way to long, and we need to make progress.\n\n(2) Hsuan-ting has already written tests for the current code (with *new_screen), and if we make any further changes, it will require more rounds of code review, test writing, and code review of the tests.\n\nSo, are you okay going forward with the current implementation, and changing it in the next CL how we see fit?",
+      "parentUuid": "8c1787b9_520dac6b",
       "range": {
         "startLine": 233,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "50fb4808_fc61c523",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a4dc8e_0374b05a",
+      "range": {
+        "startLine": 236,
+        "startChar": 15,
+        "endLine": 236,
+        "endChar": 20
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "082b2639_58716484",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "66398f2d_51025250",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "I posted some questions about the 30-second dev timer in the CL you put up to make vb2ex_display_ui less verbose.  Let\u0027s figure that out before over-optimizing here?",
+      "parentUuid": "082b2639_58716484",
+      "range": {
+        "startLine": 248,
+        "startChar": 6,
+        "endLine": 248,
+        "endChar": 12
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5cda85e_ddfcc057",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -151,6 +295,30 @@
       "writtenOn": "2020-04-24T09:53:14Z",
       "side": 1,
       "message": "Declare it as static inside this function?",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739dd2fd_9a66294c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-26T08:31:46Z",
+      "side": 1,
+      "message": "Unfortunately, function-local globals make unit testing very difficult -- so whenever we have one, it almost always needs to get pulled up to file level instead.  I\u0027d prefer to avoid globals at all -- but I can\u0027t think of a nice way of doing that here without creating yet another \"global state\" struct that gets passed into each action function.",
+      "parentUuid": "b5cda85e_ddfcc057",
       "range": {
         "startLine": 342,
         "startChar": 5,
