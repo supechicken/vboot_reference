@@ -1313,6 +1313,30 @@
     },
     {
       "key": {
+        "uuid": "fdf9a3a2_37d718aa",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T15:16:36Z",
+      "side": 1,
+      "message": "No\nI think the first two is just a subtest of `/* BROKEN screen shutdown request */`\n(Once it tries to call VbTryLoadKernel, there will be error raised by https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2117810/40..41/tests/vb2_ui_tests.c#25 because mock_vbtlk_total is zero)\n\nOn the other side, the test about mock_dev_boot_allowed seems not check anything useful within current implementation.",
+      "parentUuid": "975ed89a_b3e64f10",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "231dab7d_ff6d080f",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36

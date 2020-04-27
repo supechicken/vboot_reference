@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8125e98_9e65d561",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T15:16:36Z",
+      "side": 1,
+      "message": "My intuition is to keep mock_vbtlk_count represent the counter of how many times we called VbTryLoadKernel even if it exceeds mock_vbtlk_total.\n(Since we force set idx every time while exceeding mock_vbtlk_total)\n\nWe can move this back one we need the counter",
+      "parentUuid": "a1e673b6_34c11a8d",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d6c92c2d5c5d1e1b5828b962b5bd517509dcb265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28ba02bd_dbfaf26d",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 41
@@ -45,6 +69,30 @@
       "revId": "d6c92c2d5c5d1e1b5828b962b5bd517509dcb265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a1d44b_98b208bd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T15:16:36Z",
+      "side": 1,
+      "message": "just a mistake\nDone",
+      "parentUuid": "28ba02bd_dbfaf26d",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 4
+      },
+      "revId": "d6c92c2d5c5d1e1b5828b962b5bd517509dcb265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
