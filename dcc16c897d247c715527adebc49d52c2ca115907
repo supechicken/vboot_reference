@@ -91,6 +91,29 @@
       "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e7ab81_eb8db28d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T10:14:34Z",
+      "side": 1,
+      "message": "I prefer to print this (if(key)) right after line 247 (key \u003d VbExKeyboardReadWithFlags ...)\nSince it is easier for debugging",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

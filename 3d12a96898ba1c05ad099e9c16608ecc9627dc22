@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "78857ef9_b977b98b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T10:14:34Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "d092fe75_cbc8b268",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "323ce2f3_a4640848",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 35
@@ -69,6 +93,30 @@
       "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f9abb1_51c858cc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T10:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323ce2f3_a4640848",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "3d12a96898ba1c05ad099e9c16608ecc9627dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
