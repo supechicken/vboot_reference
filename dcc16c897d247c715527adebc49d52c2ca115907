@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb3eb04c_0e496ae0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "This might be null.",
+      "range": {
+        "startLine": 224,
+        "startChar": 23,
+        "endLine": 224,
+        "endChar": 34
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8422e017_0c9c9fb0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Possibly uninitialized.",
+      "range": {
+        "startLine": 231,
+        "startChar": 14,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd415d57_3d87059b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "I think passing NULL for %s is officially undefined.\n\nhttps://stackoverflow.com/questions/11589342/what-is-the-behavior-of-printing-null-with-printfs-s-specifier",
+      "range": {
+        "startLine": 238,
+        "startChar": 37,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c6abef_2e669c6d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "The UI context seems to be used to store \"states\" (across loop iterations), but I don\u0027t think the key pressed in the current iteration is one of them.\nI really like the version with preprocess_key() function. I\u0027m not sure what\u0027s the reason you removed it.",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 9
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

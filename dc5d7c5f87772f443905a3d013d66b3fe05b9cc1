@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5dfba57d_692723c3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35b36985_e6a267b6",
+      "range": {
+        "startLine": 198,
+        "startChar": 46,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c173cbaf_a9ad247c",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -164,6 +188,30 @@
       "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da83727d_46a643a1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0c5c0c3_359d6456",
+      "range": {
+        "startLine": 231,
+        "startChar": 20,
+        "endLine": 231,
+        "endChar": 35
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -235,6 +283,30 @@
       "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab88640_39ef3f8c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Couldn\u0027t agree more with this.",
+      "parentUuid": "6370e3f0_0b17cd53",
+      "range": {
+        "startLine": 233,
+        "startChar": 6,
+        "endLine": 233,
+        "endChar": 16
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -332,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "fd131448_54da0876",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66398f2d_51025250",
+      "range": {
+        "startLine": 248,
+        "startChar": 6,
+        "endLine": 248,
+        "endChar": 12
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5cda85e_ddfcc057",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 36
@@ -367,6 +463,30 @@
       "side": 1,
       "message": "Unfortunately, function-local globals make unit testing very difficult -- so whenever we have one, it almost always needs to get pulled up to file level instead.  I\u0027d prefer to avoid globals at all -- but I can\u0027t think of a nice way of doing that here without creating yet another \"global state\" struct that gets passed into each action function.",
       "parentUuid": "b5cda85e_ddfcc057",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20264eda_36ef39bb",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-27T05:50:40Z",
+      "side": 1,
+      "message": "Since we have vb2_ui_context now, will you consider putting start_dhcp.py inside the struct?",
+      "parentUuid": "739dd2fd_9a66294c",
       "range": {
         "startLine": 342,
         "startChar": 5,
