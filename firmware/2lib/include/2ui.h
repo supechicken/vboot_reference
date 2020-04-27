@@ -14,11 +14,15 @@
 /*****************************************************************************/
 /* Data structures */
 
+struct vb2_ui_context;  /* Forward declaration */
+
 struct vb2_screen_info {
 	/* Screen id */
 	enum vb2_screen id;
 	/* Screen name for printing to console only */
 	const char *name;
+	vb2_error_t (*action)(struct vb2_ui_context *ui);
+	vb2_error_t (*init)(struct vb2_ui_context *ui);
 	/* Number of menu items */
 	uint16_t num_items;
 	/* List of menu items */
@@ -30,10 +34,12 @@ struct vb2_menu_item {
 	const char *text;
 	/* Target screen */
 	enum vb2_screen target;
+	vb2_error_t (*action)(struct vb2_ui_context *ui);
 };
 
 struct vb2_screen_state {
 	const struct vb2_screen_info *screen;
+	int init_done;
 	uint32_t locale_id;
 	uint32_t selected_item;
 	uint32_t disabled_item_mask;
@@ -44,7 +50,10 @@ struct vb2_ui_context {
 	const struct vb2_screen_info *root_screen;
 	struct vb2_screen_state state;
 	uint32_t key;
+	int key_trusted;
 };
+
+vb2_error_t vb2_ui_back_action(struct vb2_ui_context *ui);
 
 /**
  * Get info struct of a screen.

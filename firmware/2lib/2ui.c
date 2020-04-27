@@ -13,6 +13,7 @@
 #include "2secdata.h"
 #include "2ui.h"
 #include "2ui_private.h"
+#include "vboot_api.h"
 #include "vboot_kernel.h"
 
 #define KEY_DELAY_MS 20  /* Delay between key scans in UI loops */
@@ -131,15 +132,15 @@ vb2_error_t menu_select_action(struct vb2_ui_context *ui)
 
 	menu_item = &ui->state.screen->items[ui->state.selected_item];
 
-	VB2_DEBUG("Select <%s> menu item <%s>\n",
-		  ui->state.screen->name, menu_item->text);
-
-	if (menu_item->target) {
-		VB2_DEBUG("Changing to target screen %#x for menu item <%s>\n",
-			  menu_item->target, menu_item->text);
+	if (menu_item->action) {
+		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
+		return menu_item->action(ui);
+	} else if (menu_item->target) {
+		VB2_DEBUG("Menu item <%s> target screen %#x\n",
+			  menu_item->text, menu_item->target);
 		change_screen(ui, menu_item->target);
 	} else {
-		VB2_DEBUG("No target set for menu item <%s>\n",
+		VB2_DEBUG("Menu item <%s> no action or target screen\n",
 			  menu_item->text);
 	}
 
@@ -149,9 +150,22 @@ vb2_error_t menu_select_action(struct vb2_ui_context *ui)
 /**
  * Return back to the previous screen.
  */
-vb2_error_t menu_back_action(struct vb2_ui_context *ui)
+vb2_error_t vb2_ui_back_action(struct vb2_ui_context *ui)
 {
 	change_screen(ui, ui->root_screen->id);
+	return VBERROR_KEEP_LOOPING;
+}
+
+/**
+ * Context-dependent keyboard shortcut Ctrl+D.
+ *
+ * - Manual recovery mode: Change to dev mode transition screen.
+ * - Developer mode: Boot from internal disk (TODO).
+ */
+vb2_error_t ctrl_d_action(struct vb2_ui_context *ui)
+{
+	if (vb2_allow_recovery(ui->ctx))
+		change_screen(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 	return VBERROR_KEEP_LOOPING;
 }
 
@@ -165,7 +179,8 @@ static struct input_action action_table[] = {
 	{ VB_BUTTON_VOL_UP_SHORT_PRESS, 	menu_up_action },
 	{ VB_BUTTON_VOL_DOWN_SHORT_PRESS, 	menu_down_action },
 	{ VB_BUTTON_POWER_SHORT_PRESS, 		menu_select_action },
-	{ VB_KEY_ESC, 			 	menu_back_action },
+	{ VB_KEY_ESC, 			 	vb2_ui_back_action },
+	{ VB_KEY_CTRL('D'), 		 	ctrl_d_action },
 };
 
 vb2_error_t (*input_action_lookup(int key))(struct vb2_ui_context *ui)
@@ -214,7 +229,6 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
-	uint32_t key;
 	uint32_t key_flags;
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 	vb2_error_t rv;
@@ -227,6 +241,17 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	memset(&prev_state, 0, sizeof(prev_state));
 
 	while (1) {
+		/* Init new screen if not done yet. */
+		if (!ui.state.init_done) {
+			if (ui.state.screen->init) {
+				rv = ui.state.screen->init(&ui);
+				if (rv != VBERROR_KEEP_LOOPING)
+					return rv;
+				validate_selection(&ui.state);
+			}
+			ui.state.init_done = 1;
+		}
+
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
@@ -243,33 +268,42 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.state.disabled_item_mask);
 		}
 
+		/* Run screen action.
+		if (ui.state.screen->action) {
+			rv = ui.state.screen->action(&ui);
+			if (rv != VBERROR_KEEP_LOOPING)
+				return rv;
+			validate_selection(&ui.state);
+		} */
+
+		/* Grab new keyboard input. */
+		ui.key = VbExKeyboardReadWithFlags(&key_flags);
+		ui.key_trusted = !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD);
+
 		/* Check for shutdown request. */
-		key = VbExKeyboardReadWithFlags(&key_flags);
-		if (shutdown_required(ctx, key)) {
+		if (shutdown_required(ctx, ui.key)) {
 			VB2_DEBUG("Shutdown required!\n");
 			return VBERROR_SHUTDOWN_REQUESTED;
 		}
 
 		/* Run input action function if found. */
-		action = input_action_lookup(key);
+		action = input_action_lookup(ui.key);
 		if (action) {
-			ui.key = key;
 			rv = action(&ui);
-			ui.key = 0;
 			if (rv != VBERROR_KEEP_LOOPING)
 				return rv;
 			validate_selection(&ui.state);
-		} else if (key) {
-			VB2_DEBUG("Pressed key %#x, trusted? %d\n", key,
-				  !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD));
+		} else if (ui.key) {
+			VB2_DEBUG("Pressed key %#x, trusted? %d\n",
+				  ui.key, ui.key_trusted);
 		}
 
 		/* Run global action function if available. */
 		if (global_action) {
 			rv = global_action(&ui);
-			validate_selection(&ui.state);
 			if (rv != VBERROR_KEEP_LOOPING)
 				return rv;
+			validate_selection(&ui.state);
 		}
 
 		/* Delay. */
