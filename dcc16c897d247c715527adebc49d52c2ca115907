@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be644386_1c659d63",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3eb04c_0e496ae0",
+      "range": {
+        "startLine": 224,
+        "startChar": 23,
+        "endLine": 224,
+        "endChar": 34
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8422e017_0c9c9fb0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
@@ -45,6 +69,30 @@
       "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1299e7fd_11a31cc5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8422e017_0c9c9fb0",
+      "range": {
+        "startLine": 231,
+        "startChar": 14,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "112c55a4_69655ab4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd415d57_3d87059b",
+      "range": {
+        "startLine": 238,
+        "startChar": 37,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27c6abef_2e669c6d",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4acf45b0_6d57b2bd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Yes, it\u0027s questionable whether the \"key\" itself is considered part of the context/state.  But in making this change, I\u0027m thinking forward to verifying physical presence and how that will be implemented.  In this case, I plan to add vb2_ui_context.key_trusted, which can then be checked in the to_dev_action().",
+      "parentUuid": "27c6abef_2e669c6d",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 9
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e7ab81_eb8db28d",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
@@ -114,6 +210,30 @@
       "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac43f51_8864b2d0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "It\u0027s going to create quite a lot of text output.  I\u0027m okay keeping it for the case that the key doesn\u0027t have a matching action, but I question whether it\u0027s necessary to print every time?",
+      "parentUuid": "21e7ab81_eb8db28d",
+      "range": {
+        "startLine": 262,
+        "startChar": 9,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

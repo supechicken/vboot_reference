@@ -499,6 +499,30 @@
     },
     {
       "key": {
+        "uuid": "acfb3efc_79faa334",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Err, presumably \"start_dhcp.py\" refers to the \"invalid_disk_last\" variable?\n\nIf so, yes -- I was definitely considering that.  There are a few ways we could do it:\n\n* (1) Just plop the variable right in there as a struct member.  It\u0027ll be ignored for non-manual-recovery cases.\n* (2) Do the union-struct thing and allow each \"global action\" to define its own global data structure.  In this case at least the space can be re-used.\n* (3) Put a pointer in vb2_ui_context and let the global action point it to some arbitrary type of data.\n\nMaybe (1) for now, and (2) if we end up needing to store other state for global actions?",
+      "parentUuid": "20264eda_36ef39bb",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6997841_24ff6d5e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -876,6 +900,30 @@
     },
     {
       "key": {
+        "uuid": "faef7cb3_f21ccaa0",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Looks good.",
+      "parentUuid": "02a844bf_47cdf54b",
+      "range": {
+        "startLine": 135,
+        "startChar": 32,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bcc1549_3d18e643",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -1241,6 +1289,30 @@
     },
     {
       "key": {
+        "uuid": "975ed89a_b3e64f10",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Sure.  So are you going to add these back and set \"mock_vbtlk_count \u003d 0\"?",
+      "parentUuid": "399e4809_b7177917",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 22
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "231dab7d_ff6d080f",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36
@@ -1473,6 +1545,30 @@
       "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0d32e5_58cef727",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7b6caab_dbdc681f",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 68
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1e673b6_34c11a8d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "Is this just to create a shorter variable name for use below?  I think it\u0027s clearer if we use mock_vbtlk_count directly instead.",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d6c92c2d5c5d1e1b5828b962b5bd517509dcb265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ba02bd_dbfaf26d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-27T14:30:10Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 4
+      },
+      "revId": "d6c92c2d5c5d1e1b5828b962b5bd517509dcb265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
