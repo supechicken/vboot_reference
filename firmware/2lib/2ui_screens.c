@@ -6,7 +6,11 @@
  */
 
 #include "2common.h"
+#include "2misc.h"
+#include "2nvstorage.h"
 #include "2ui.h"
+#include "2ui_private.h"
+#include "vboot_api.h"
 
 #define MENU_ITEMS(a) \
 	.num_items = ARRAY_SIZE(a), \
@@ -62,6 +66,102 @@ static const struct vb2_screen_info recovery_invalid_screen = {
 };
 
 /******************************************************************************/
+/* VB2_SCREEN_RECOVERY_TO_DEV */
+
+vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
+{
+	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
+		VB2_DEBUG("Dev mode already enabled?\n");
+		/* TODO: Return to last screen and show dialog box. */
+		VB2_DEBUG("Setting disable dev mode request...\n");
+		vb2_nv_set(ui->ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
+		return VBERROR_REBOOT_REQUIRED;
+	}
+
+	/* TODO: Replace with vb2_menu_find("Back")? */
+	ui->state.selected_item = 1;
+
+	return VBERROR_KEEP_LOOPING;
+}
+
+static const struct vb2_menu_item recovery_to_dev_items[] = {
+	{
+		.text = "Continue",
+		.target = VB2_SCREEN_RECOVERY_TO_DEV_CONFIRM,
+	},
+	{
+		.text = "Back",
+		.action = vb2_ui_back_action,
+	},
+};
+
+static const struct vb2_screen_info recovery_to_dev_screen = {
+	.id = VB2_SCREEN_RECOVERY_TO_DEV,
+	.name = "Transition to developer mode",
+	.init = recovery_to_dev_init,
+	MENU_ITEMS(recovery_to_dev_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_RECOVERY_TO_DEV_CONFIRM */
+
+vb2_error_t recovery_confirm_to_dev_init(struct vb2_ui_context *ui)
+{
+	if (!PHYSICAL_PRESENCE_KEYBOARD && vb2ex_physical_presence_pressed()) {
+		VB2_DEBUG("Presence button stuck? Back to previous screen\n");
+		/* TODO: Return to last screen and show dialog box. */
+		return vb2_ui_back_action(ui);
+	}
+
+	/* TODO: Replace with vb2_menu_find("Cancel")? */
+	ui->state.selected_item = 1;
+
+	return VBERROR_KEEP_LOOPING;
+}
+
+vb2_error_t recovery_confirm_to_dev_action(struct vb2_ui_context *ui)
+{
+	if (PHYSICAL_PRESENCE_KEYBOARD &&
+	    (ui->key != VB_KEY_ENTER || !ui->key_trusted)) {
+		if (ui->key)
+			VB2_DEBUG("Reject key=%#x trusted=%d\n",
+				  ui->key, ui->key_trusted);
+		return VBERROR_KEEP_LOOPING;
+	}
+
+	if (!PHYSICAL_PRESENCE_KEYBOARD && !vb2ex_physical_presence_pressed())
+		return VBERROR_KEEP_LOOPING;
+
+	VB2_DEBUG("Physical presence confirmed!\n");
+
+	/* Sanity check, should never happen. */
+	if (!(vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) &&
+	    vb2_allow_recovery(ui->ctx))
+		vb2_enable_developer_mode(ui->ctx);
+
+	return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+}
+
+static const struct vb2_menu_item recovery_to_dev_confirm_items[] = {
+	{
+		.text = "Confirm",
+		.action = recovery_confirm_to_dev_action,
+	},
+	{
+		.text = "Cancel",
+		.action = vb2_ui_back_action,
+	},
+};
+
+static const struct vb2_screen_info recovery_to_dev_confirm_screen = {
+	.id = VB2_SCREEN_RECOVERY_TO_DEV_CONFIRM,
+	.name = "Confirm transition to developer mode",
+	.init = recovery_confirm_to_dev_init,
+	.action = recovery_confirm_to_dev_action,
+	MENU_ITEMS(recovery_to_dev_confirm_items),
+};
+
+/******************************************************************************/
 /* VB2_SCREEN_RECOVERY_PHONE_STEP1 */
 
 static const struct vb2_screen_info recovery_phone_step1_screen = {
@@ -92,6 +192,8 @@ static const struct vb2_screen_info *screens[] = {
 	&recovery_broken_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
+	&recovery_to_dev_screen,
+	&recovery_to_dev_confirm_screen,
 	&recovery_phone_step1_screen,
 	&recovery_disk_step1_screen,
 };
