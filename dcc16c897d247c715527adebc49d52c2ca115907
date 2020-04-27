@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1a6ce39_e66beac8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-27T16:48:21Z",
+      "side": 1,
+      "message": "Shall we check\n1) state \u003d\u003d NULL\n2) selected_item \u003c 0\n\nSince we do not know what actions actually did?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb3eb04c_0e496ae0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
