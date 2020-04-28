@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5cc498c3_d5ba8f81",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-28T03:19:03Z",
+      "side": 1,
+      "message": "Should we avoid this implicit casting in menu_up_action:\nitem \u003d ui-\u003estate.selected_item - 1;\n(item is signed while selected_item is ungisned)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1a6ce39_e66beac8",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
@@ -46,6 +69,30 @@
       "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a61ab8b_15fea5df",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-28T03:19:03Z",
+      "side": 1,
+      "message": "\u003e 2) selected_item is uint32_t\n\nThen Should we avoid this implicit casting in menu_up_action:\nitem \u003d ui-\u003estate.selected_item - 1;\n(item is an `int`)\n\nQuote this above",
+      "parentUuid": "b552e03f_f00cc969",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
