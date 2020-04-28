@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4c518d8_aae3a024",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T06:30:49Z",
+      "side": 1,
+      "message": "Maybe something like \"Requests to the caller that are not...\" would be more accurate.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "9338da4e09eeedc51096b36c6be39f1faa04f21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7383b03e_7ea4a167",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T06:30:49Z",
+      "side": 1,
+      "message": "Use a space instead.",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "9338da4e09eeedc51096b36c6be39f1faa04f21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89a5278_eda01c85",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T06:30:49Z",
+      "side": 1,
+      "message": "I\u0027d move these to right below their respective counterparts, and put a TODO on each one for removal.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 60
+      },
+      "revId": "9338da4e09eeedc51096b36c6be39f1faa04f21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78699c5_9b069a6d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T06:30:49Z",
+      "side": 1,
+      "message": "Note the tabs here too if you do end up moving the line.",
+      "range": {
+        "startLine": 82,
+        "startChar": 21,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "9338da4e09eeedc51096b36c6be39f1faa04f21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
