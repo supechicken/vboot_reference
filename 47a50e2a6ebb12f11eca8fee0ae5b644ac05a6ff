@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bf6d358_d4a17224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-28T03:19:31Z",
+      "side": 1,
+      "message": "b:146399181",
+      "revId": "47a50e2a6ebb12f11eca8fee0ae5b644ac05a6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d1b716_166f804f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-28T03:19:31Z",
+      "side": 1,
+      "message": "Do we have this screen? I mean, AFAIK, the steps to enable dev mode are:\n\n1. In recovery/broken screen, select \"Advanced options\"\n2. In advanced option screen, select \"Enable developer mode\"\n3. In the confirmation screen, select \"Confirm\" (or whatever you call it)",
+      "range": {
+        "startLine": 1183,
+        "startChar": 1,
+        "endLine": 1183,
+        "endChar": 27
+      },
+      "revId": "47a50e2a6ebb12f11eca8fee0ae5b644ac05a6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
