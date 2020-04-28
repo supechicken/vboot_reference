@@ -1549,6 +1549,30 @@
     },
     {
       "key": {
+        "uuid": "80ce3335_2f337c96",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-28T08:27:24Z",
+      "side": 1,
+      "message": "Move the last 3 tests to ui_loop is good.\n\nHowever, I suggest to leave the first 2 here since we will not retrieve real UI flow in vb2_ui_utility_tests.\nAnd we will expend these test items to real `functionality` later",
+      "parentUuid": "bf62e132_d0ef8d65",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 2
+      },
+      "revId": "dc5d7c5f87772f443905a3d013d66b3fe05b9cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3245146_121fa344",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 36

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64a75f20_3b1e4df3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-28T08:27:24Z",
+      "side": 1,
+      "message": "I realized that global action might overwrite input action in same iteration:\nIs this important? \nOr can we assume no user can update both in same iteration?",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 21
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
