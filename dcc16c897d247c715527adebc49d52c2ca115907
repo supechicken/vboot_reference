@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b552e03f_f00cc969",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-28T02:50:54Z",
+      "side": 1,
+      "message": "1) I think it\u0027s the caller\u0027s responsibility to ensure the \u0027state\u0027 is not NULL.\n2) selected_item is uint32_t",
+      "parentUuid": "f1a6ce39_e66beac8",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "dcc16c897d247c715527adebc49d52c2ca115907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb3eb04c_0e496ae0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 40
