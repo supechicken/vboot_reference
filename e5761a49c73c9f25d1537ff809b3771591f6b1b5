@@ -22,6 +22,237 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b57126_b3898bee",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "From offline discussion:\n\nIt\u0027s conceivably possible for the user to trigger both in the same loop run.\n\nBut I don\u0027t think it causes any issues currently.  The global action screen would take precedence since it occurs last.",
+      "parentUuid": "64a75f20_3b1e4df3",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 21
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e3a8ef1_f4c8eb81",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "Should be aligned to inside the \"(\".",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eebc4df_cf296c76",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "If we aren\u0027t doing anything different in reset_common_data, just get rid of these and the argument.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6f7e43_8d268307",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "Just set to 0 here.  That\u0027s the initial value.",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 23
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b849100d_d567da87",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "Remove this part of the string -- we know the test failed.",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 31
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55431796_14b1848b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "Call this try_recovery_action_tests instead.  Any future global actions can be in a separate function.",
+      "range": {
+        "startLine": 306,
+        "startChar": 12,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256b1965_e9bddd14",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "For checking VB2_SUCCESS case, split this into two different tests:\n\n(1) set invalid_disk_last \u003d 0, vbtlk returns VB2_SUCCESS\n(2) set invalid_disk_last \u003d 1, vbtlk returns VB2_SUCCESS\n\n(No need for the for loop.)",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 2
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b9e61a_59264681",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "I don\u0027t think these are useful.  They\u0027re basically just testing that we are setting `invalid_disk_last \u003d 0` in reset_common_data().",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 49
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3286374a_a4db92cd",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "Split into change_screen_tests and validate_selection_tests.",
+      "range": {
+        "startLine": 462,
+        "startChar": 12,
+        "endLine": 462,
+        "endChar": 25
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b92e814_cfc5c7f2",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-28T08:54:32Z",
+      "side": 1,
+      "message": "?  If you just want to print a line, then use VB2_DEBUG.",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 10
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
