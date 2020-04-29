@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "60e13d03_f85b2082",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8b57126_b3898bee",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 21
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e3a8ef1_f4c8eb81",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 45
@@ -69,6 +93,30 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "015cb235_88cbf4bf",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e3a8ef1_f4c8eb81",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "87624ad5_dfc03738",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eebc4df_cf296c76",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e6f7e43_8d268307",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 45
@@ -115,6 +187,30 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0dbb0e_aa528ff6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "After offline discussion, we keep invalid_disk_last \u003d -1.",
+      "parentUuid": "9e6f7e43_8d268307",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 23
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "e766af0b_9e33c3ad",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b849100d_d567da87",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 31
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55431796_14b1848b",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 45
@@ -161,6 +281,30 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ca1d69_6725708d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done\nShould we split input action tests in ui_utility_tests, too?",
+      "parentUuid": "55431796_14b1848b",
+      "range": {
+        "startLine": 306,
+        "startChar": 12,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "f40b7855_a58a426a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "After offline discussion, we keep invalid_disk_last \u003d -1.",
+      "parentUuid": "256b1965_e9bddd14",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 2
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1b9e61a_59264681",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 45
@@ -207,6 +375,30 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8f5421_bcfa7b32",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "These are for invalid_disk_last \u003d -1 (initial value)\nWe should always display a screen for the first time",
+      "parentUuid": "d1b9e61a_59264681",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 49
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "59b5bfb4_8a27877a",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3286374a_a4db92cd",
+      "range": {
+        "startLine": 462,
+        "startChar": 12,
+        "endLine": 462,
+        "endChar": 25
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b92e814_cfc5c7f2",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 45
@@ -253,6 +469,30 @@
       "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7b355f_dc02b90e",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-29T06:48:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b92e814_cfc5c7f2",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 10
+      },
+      "revId": "e5761a49c73c9f25d1537ff809b3771591f6b1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
