@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "035daf93_4d726093",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "Include vboot_api.h for VB_SHUTDOWN_REQUEST_POWER_BUTTON",
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a9ce9c5_c9d11bba",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "VB2_REQUEST_UI_CONTINUE",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7d621dc_2367e812",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 46
@@ -190,6 +230,75 @@
     },
     {
       "key": {
+        "uuid": "81b7b30a_afa1f959",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "ui?",
+      "range": {
+        "startLine": 133,
+        "startChar": 66,
+        "endLine": 133,
+        "endChar": 67
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de248dd_524cbc38",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "ui?",
+      "range": {
+        "startLine": 140,
+        "startChar": 70,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b90d54b_e8c5afae",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "Wrong indentation.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 7
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd4b5d7d_35b3e709",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 46
@@ -328,6 +437,69 @@
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f552502a_7cec61e2",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "Why do we care the value of power_button at all? In my opinion, power_button is part of the implementation detail of shutdown_required(), and should be kept private to it.  As long as the return value of shutdown_required() is expected, we should be fine.",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 37
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d162dcd_2c082d97",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "Separate the previous block with a newline.",
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0ff8fe_d5dee3d9",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-04-30T08:40:36Z",
+      "side": 1,
+      "message": "Do we really need to check all of these? selected_item is the only one that can possibly be modified.",
+      "range": {
+        "startLine": 659,
+        "startChar": 17,
+        "endLine": 659,
+        "endChar": 57
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
