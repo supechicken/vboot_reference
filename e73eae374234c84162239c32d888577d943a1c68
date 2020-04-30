@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "feeeb0a3_85c5f025",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035daf93_4d726093",
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9ce9c5_c9d11bba",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 46
@@ -35,6 +53,53 @@
         "startChar": 8,
         "endLine": 98,
         "endChar": 28
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c057ca4_bf7a4c80",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9ce9c5_c9d11bba",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3f31b04_be176bdf",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Should we copy locale_id to new screen?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 43
       },
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -277,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "fbc99ab5_d9f312f1",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done\n\nYes I forget we did not use `ui` globally here.",
+      "parentUuid": "de268c0e_834500ce",
+      "range": {
+        "startLine": 133,
+        "startChar": 66,
+        "endLine": 133,
+        "endChar": 67
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1de248dd_524cbc38",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 46
@@ -300,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "575e78fc_b18a920d",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1de248dd_524cbc38",
+      "range": {
+        "startLine": 140,
+        "startChar": 70,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b90d54b_e8c5afae",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 46
@@ -320,6 +433,30 @@
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acde8a1_34d4b1d6",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b90d54b_e8c5afae",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 7
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -487,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "9e942489_16aeb19c",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "I agree that this should be private.\nBut as long as we have to make it global for easier testing, (need initialize for every test)\nI think we should check it.\n\n(Likewise, we check invalid_disk_last after try_recovery_action)",
+      "parentUuid": "f552502a_7cec61e2",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 37
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d162dcd_2c082d97",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 46
@@ -501,6 +662,24 @@
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fac553_eb0cb8cc",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d162dcd_2c082d97",
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -524,6 +703,30 @@
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed17942_06beb291",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T10:38:51Z",
+      "side": 1,
+      "message": "Done\n\nI am not sure if there is any plan to validate more.\n(Maybe valid locale_id after having multi-language selection?)\n\nBut we can remove it now.",
+      "parentUuid": "2d0ff8fe_d5dee3d9",
+      "range": {
+        "startLine": 659,
+        "startChar": 17,
+        "endLine": 659,
+        "endChar": 57
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
