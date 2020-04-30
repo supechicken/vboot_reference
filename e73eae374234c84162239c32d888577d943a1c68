@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7fa49154_cfdd9574",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T10:54:54Z",
+      "side": 1,
+      "message": "Yes!  Would you mind adding that here?",
+      "parentUuid": "e3f31b04_be176bdf",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7d621dc_2367e812",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 46
@@ -636,6 +660,30 @@
       "side": 1,
       "message": "I agree that this should be private.\nBut as long as we have to make it global for easier testing, (need initialize for every test)\nI think we should check it.\n\n(Likewise, we check invalid_disk_last after try_recovery_action)",
       "parentUuid": "f552502a_7cec61e2",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 37
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58594283_4c9e829f",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T10:54:54Z",
+      "side": 1,
+      "message": "Hmm -- Yu-Ping has a good point here.  For some complicated functions like vb2_ui_loop, it can be almost impossible to test without modifying the function\u0027s internal data structures (in this case, vb2_ui_context).  But when possible, we should avoid binding a test too closely to a function\u0027s internal implementation.\n\nIn general, we should be careful about over-fitting tests.  This is called making \"change detector\" tests.  It means that, when any implementation change is made, the test will fail, and will need updating.  What we *really* want is to ensure that the code is producing the same result, regardless of how it is implemented.\n\nIn this case, I have to agree that we might want to stop inspecting the values of invalid_disk_last and power_button (and avoid mutating them from their initial values).",
+      "parentUuid": "9e942489_16aeb19c",
       "range": {
         "startLine": 377,
         "startChar": 2,
