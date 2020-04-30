@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "ccc9c93c_6540df7b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T11:13:13Z",
+      "side": 1,
+      "message": "Done\n\nNow we should add locale check for change_menu back",
+      "parentUuid": "7fa49154_cfdd9574",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7d621dc_2367e812",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 46
@@ -693,6 +717,30 @@
       "revId": "e73eae374234c84162239c32d888577d943a1c68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02986a2_661a2732",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-04-30T11:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58594283_4c9e829f",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 37
+      },
+      "revId": "e73eae374234c84162239c32d888577d943a1c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
