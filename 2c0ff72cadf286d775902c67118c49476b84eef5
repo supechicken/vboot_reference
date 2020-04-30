@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea2d5791_249fa5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-30T01:46:18Z",
+      "side": 1,
+      "message": "nit: Should mention explicitly that we\u0027re removing the retries from RO sync, and why.",
+      "revId": "2c0ff72cadf286d775902c67118c49476b84eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4307c741_d4fd0479",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 3
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bb6e05ad_bb23dfa7",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-30T01:46:18Z",
+      "side": 1,
+      "message": "The earlier vb2api_fail() takes precedence (i.e. we end up with the recovery reason from there). Usually that should be what we want.",
+      "parentUuid": "4307c741_d4fd0479",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "2c0ff72cadf286d775902c67118c49476b84eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1036b30c_fe25dcd9",
         "filename": "firmware/2lib/2ec_sync.c",
         "patchSetId": 3
@@ -36,6 +77,30 @@
       "writtenOn": "2020-04-29T05:02:32Z",
       "side": 1,
       "message": "Should we always return VB2_REQUEST_REBOOT_EC_TO_RO no matter what error is returned from vb2ex_ec_jump_to_rw()?",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "2c0ff72cadf286d775902c67118c49476b84eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009a153b_aa9cb824",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-04-30T01:46:18Z",
+      "side": 1,
+      "message": "I think it should be okay for callbacks to return any error (e.g. VB2_ERROR_UNKNOWN) when they encounter an error. But I don\u0027t think that\u0027s a problem here? Even with another error code we should end up in recovery eventually.",
+      "parentUuid": "1036b30c_fe25dcd9",
       "range": {
         "startLine": 222,
         "startChar": 2,
