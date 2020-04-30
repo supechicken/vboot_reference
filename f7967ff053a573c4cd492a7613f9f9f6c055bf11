@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1949fff3_4674f1e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 47
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T07:52:36Z",
+      "side": 1,
+      "message": "Maybe: Implement common UI loop, currently used for manual and non-manual recovery (developer forthcoming).",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "f7967ff053a573c4cd492a7613f9f9f6c055bf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07fa604_af804658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 47
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T07:52:36Z",
+      "side": 1,
+      "message": "Can probably just get rid of this?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "f7967ff053a573c4cd492a7613f9f9f6c055bf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7e3056_594dfee8",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T07:52:36Z",
+      "side": 1,
+      "message": "Also this one.",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "f7967ff053a573c4cd492a7613f9f9f6c055bf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556508d1_9cc90a95",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T07:52:36Z",
+      "side": 1,
+      "message": "I\u0027d just use TEST_TRUE(mock_displayed_count \u003e\u003d ..., \"mock vb2ex...\") here.\nThe test case will fail anyways, so it\u0027s not super important to return early.\n\nSame goes for other mock functions.",
+      "range": {
+        "startLine": 204,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 13
+      },
+      "revId": "f7967ff053a573c4cd492a7613f9f9f6c055bf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1bb15e_8b0951b6",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-04-30T07:52:36Z",
+      "side": 1,
+      "message": "\"mock_screen_blank\" to be consistent with the ones below?",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "f7967ff053a573c4cd492a7613f9f9f6c055bf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
