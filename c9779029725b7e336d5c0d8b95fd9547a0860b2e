@@ -68,6 +68,75 @@
       "revId": "c9779029725b7e336d5c0d8b95fd9547a0860b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0737de3_0193bfc1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-05-01T06:45:55Z",
+      "side": 1,
+      "message": "Most commands here use _ instead of dash (yes there is one exception but that\u0027s only for debugging so let\u0027s ignore).\n\nCan we change this to\n firmware_name\n fw_name\n or just \u0027name\u0027",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "c9779029725b7e336d5c0d8b95fd9547a0860b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3872d607_2268a1ee",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-05-01T06:45:55Z",
+      "side": 1,
+      "message": "I think we should add \u0027cros_config\u0027 here",
+      "range": {
+        "startLine": 115,
+        "startChar": 38,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "c9779029725b7e336d5c0d8b95fd9547a0860b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c22709_b1e7b096",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-05-01T06:45:55Z",
+      "side": 1,
+      "message": "How long has cros_config been available on ALL devices? Do we already have  that change on stable channel?\n\nIf not then I think there must be a fallback to mosys.",
+      "range": {
+        "startLine": 833,
+        "startChar": 6,
+        "endLine": 833,
+        "endChar": 32
+      },
+      "revId": "c9779029725b7e336d5c0d8b95fd9547a0860b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
