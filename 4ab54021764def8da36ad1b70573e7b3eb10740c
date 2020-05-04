@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0f9d74d_5c46aca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-04T06:20:10Z",
+      "side": 1,
+      "message": "I think an important point to note here is that we are changing the failure logic to first try the other AP slot before giving up on EC sync (also in the bug) -- whereas the previous code would just drop into recovery mode right away.",
+      "revId": "4ab54021764def8da36ad1b70573e7b3eb10740c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
