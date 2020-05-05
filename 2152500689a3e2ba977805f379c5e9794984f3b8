@@ -62,6 +62,29 @@
       "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bacfba_e7ee2c7b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-05T05:57:06Z",
+      "side": 1,
+      "message": "Since we set disabled_item_mask to 0 every time, should we remove these til they are used?\nJust keep ui-\u003estate.selected_item \u003d 0",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 30
+      },
+      "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
