@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f3b6e863_36a24aa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-05T09:48:07Z",
+      "side": 1,
+      "message": "Looks like I learned some Canadian English today 😊",
+      "parentUuid": "ffcb01a9_213b3774",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b31dd04a_0dfb861b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 5
@@ -178,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "a66eccba_29ddbd04",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-05T09:48:07Z",
+      "side": 1,
+      "message": "I mean, it\u0027s kind of weird to modify state-\u003escreen in the screen init hook, which is supposed to init the screen, but not switch to another screen. I\u0027m okay to keep this as is for now.",
+      "parentUuid": "89b3e476_e6f699c6",
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132d2600_b1c4d6d6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -213,6 +255,30 @@
       "side": 1,
       "message": "I\u0027m kind of on the fence about what to do here.  We\u0027ve been trying to avoid having to create a bunch of silly constants for each and every menu item, and so far we\u0027ve been pretty successful.\n\nI wonder if we should at least create constants for the cases where menu items need to be referred to in init/action code?",
       "parentUuid": "132d2600_b1c4d6d6",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a96445b4_5ad8078c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-05T09:48:07Z",
+      "side": 1,
+      "message": "A constant should be good here.\n\n #define CONFIRM_TO_DEV 0    // or whatever name\n ui-\u003estate.disabled_item_mask \u003d 1 \u003c\u003c CONFIRM_TO_DEV;",
+      "parentUuid": "b9e09264_0ec87203",
       "range": {
         "startLine": 85,
         "startChar": 33,
