@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8342f65e_b71f822b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-05T06:26:33Z",
+      "side": 1,
+      "message": "Added a TODO for when we have a history stack instead.",
+      "parentUuid": "d59ee37b_d384fe90",
+      "range": {
+        "startLine": 150,
+        "startChar": 22,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4be23e61_be9a80c0",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a2e219_7df3b8b2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-05T06:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be23e61_be9a80c0",
+      "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b406a704_948e1323",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-05T06:26:33Z",
+      "side": 1,
+      "message": "I ended up negating the conditional too (\u003d  Take another look.",
+      "parentUuid": "d53eef7d_979487fe",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 14
+      },
+      "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58bacfba_e7ee2c7b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a916ce_21b57bbd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-05T06:26:33Z",
+      "side": 1,
+      "message": "It\u0027ll be used in the TO_DEV CL, so let\u0027s leave it.",
+      "parentUuid": "58bacfba_e7ee2c7b",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 30
+      },
+      "revId": "2152500689a3e2ba977805f379c5e9794984f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
