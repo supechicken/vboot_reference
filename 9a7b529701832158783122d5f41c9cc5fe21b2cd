@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6afa8e51_df7c514b",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-05T18:41:20Z",
+      "side": 1,
+      "message": "We defined sub-reason codes for 2 different flows as mentioned below.\n1. CSME Custom SKU Firmware update.\n2. Enabling CSME Custom SKU.\n\nIf we rename Recovery error code as suggested, it represents only CSE Firmware update case.\nSomewhat I feel ok with currently used one. \nDo you have any other *name* in your mind? Let me know your comment.",
+      "parentUuid": "a0959a5f_cf84fb9a",
+      "range": {
+        "startLine": 99,
+        "startChar": 17,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66a1aa24_00226772",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2e7c367c_e7219f45",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-05T18:41:20Z",
+      "side": 1,
+      "message": "\"Intel CSME Firmware Failure\" -OK?",
+      "parentUuid": "66a1aa24_00226772",
+      "range": {
+        "startLine": 100,
+        "startChar": 10,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8eea5fa7_f35ede38",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-05T08:04:55Z",
       "side": 1,
       "message": "Intel CSME firmware update failure; see subcode for specific reason",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 58
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6645a03_c506e1a0",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-05T18:41:20Z",
+      "side": 1,
+      "message": "/* Intel CSME Firmware Failure, see sub-reason for specific reason */ - ok?",
+      "parentUuid": "8eea5fa7_f35ede38",
       "range": {
         "startLine": 172,
         "startChar": 4,
