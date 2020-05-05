@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b29c56_bf02cbaa",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-05T06:07:23Z",
+      "side": 1,
+      "message": "I\u0027d prefer if we kept this as vb2_screen_state, and created a separate array for keeping track of locale_id.  Would that work?",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "146359bc901129986d4ab36df728583508a314fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
