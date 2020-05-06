@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "05210721_9c32119d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "Feel free to do that if you want to, but I don\u0027t really want to make a 3-repository spanning change right now. (I\u0027m also not sure if we don\u0027t just want to unroll SHA512 as well, maybe. I just want to document the unintuitive current state for now because it surprised me.)",
+      "parentUuid": "752f08cd_3abb86af",
+      "range": {
+        "startLine": 843,
+        "startChar": 8,
+        "endLine": 843,
+        "endChar": 42
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f6b1a37_7c8941b4",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-06T06:12:37Z",
       "side": 1,
       "message": "Only just thought of this now... but if we ever get that \"mock compile-time support flag\" functionality working, this will cause some difficulty.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255a900f_3ff79cc0",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "For this line it should be fine to just treat them all as \"on\" in tests.",
+      "parentUuid": "0f6b1a37_7c8941b4",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4317261a_6e6aa616",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "SHA-224 is a variant of SHA-256 and SHA-384 is a variant of SHA-512 -- I think this makes sense. I can also call them vb2_sha256_family_init() but that looks dumb. These functions are split in the way the code is split across files, and since those two algorithms are (for good reasons) implemented in the same file I think it makes sense they share an entry function. We don\u0027t need a vb2_sha_init(), that\u0027s already vb2_digest_init().\n\n(FWIW I think it\u0027s wrong that these are exported in the \"public\" API anyway, mostly caused by the fact that we don\u0027t have a clear line between \"public\" and vboot-internal APIs. These should never directly be called by anything linking vboot, it should always go through vb2_digest_xxx(). That\u0027s why I think it\u0027s fine if the naming here reflects vboot\u0027s internal file organization, too.)",
+      "parentUuid": "2c28e1bf_92feaa42",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 37
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75b941a2_4d02cd2c",
         "filename": "tests/hmac_test.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5407e3ab_4d43124b",
+        "filename": "tests/hmac_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "Yeah, sorry... I was getting tired and just wanted this done last night. ^^ I\u0027m about 3 levels down in resolving the thing that\u0027s blocking me from what I actually wanted to do at this point.\n\nLooks like OpenSSL supports 224 and 384 as well so it\u0027s not hard to just add them here. Done.",
+      "parentUuid": "75b941a2_4d02cd2c",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6032b7_0e4e191e",
         "filename": "tests/vb2_sha_tests.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-06T06:12:37Z",
       "side": 1,
       "message": "Is it okay to define helpers directly in the body of a function?  I\u0027ve wanted to do that before, but it seemed weird.\n\nAlso, is there any good reason this can\u0027t just be a helper function instead of a macro?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 44
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1221f71_3ff44ec2",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "I mean... I\u0027m not trying to win any beauty awards here but this is done sometimes when you want to avoid writing the same thing over and over again and can\u0027t use a function (which I can\u0027t here because I want to sizeof() the string literal). See depthcharge/src/boot/commandline.c, for example. Since the macro directly accesses local variables (test.hash), I think it\u0027s better to only keep it valid for the context of the function.",
+      "parentUuid": "da6032b7_0e4e191e",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -137,6 +257,30 @@
       "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ac6395_5aa53928",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-06T21:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a742e0c3_c113dc54",
+      "range": {
+        "startLine": 238,
+        "startChar": 19,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
