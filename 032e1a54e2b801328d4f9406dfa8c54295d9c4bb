@@ -238,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "cda7ac86_ecd9c909",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-06T11:09:30Z",
+      "side": 1,
+      "message": "Let\u0027s decide this in the future CL that adds the stack.",
+      "parentUuid": "e43f3fe7_1330784d",
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132d2600_b1c4d6d6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -330,6 +348,30 @@
       "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37892759_5f266f68",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-06T11:09:30Z",
+      "side": 1,
+      "message": "Indeed, but this hasn\u0027t been done in PS12. Are you going to do it or not?",
+      "parentUuid": "54348155_2ccb5d15",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
