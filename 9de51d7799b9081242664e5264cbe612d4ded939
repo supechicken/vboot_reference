@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dabf20fc_a01ffb4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-06T19:07:07Z",
+      "side": 1,
+      "message": "Initially  I thought single recovery code represent for all CSE FW (Lite /consumer /corp) errors. In that case, we have to define all recovery subcodes in one common header file. This may not be realistic. \nIt\u0027s better we define single recovery code per feature. Then, all feature specific subcodes will be available in respective feature specific module. In that line,  i prefer to use recovery code as  VB2_RECOVERY_INTEL_CSE_CUSTOM_SKU instead of VB2_RECOVERY_INTEL_CSME. Also, I modify commit message accordingly.\nMake sense?",
+      "parentUuid": "bc486408_8caad802",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "504ea594_a0a96305",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 5
@@ -68,6 +92,54 @@
       "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb260b9_b0047314",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-06T19:07:07Z",
+      "side": 1,
+      "message": "Valid point. Having subcodes (under comment) in this file make sense as all codes can be seen here. or Provide file path where subcodes have been defined.\nMake sense?",
+      "parentUuid": "ec9112e0_4388df6f",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3425a9e6_11e3f874",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-05-06T19:07:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "504ea594_a0a96305",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 4
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
