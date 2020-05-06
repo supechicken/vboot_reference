@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "752f08cd_3abb86af",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "Shall we just rename it to UNROLL_LOOPS_SHA256?",
+      "range": {
+        "startLine": 843,
+        "startChar": 8,
+        "endLine": 843,
+        "endChar": 42
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6b1a37_7c8941b4",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "Only just thought of this now... but if we ever get that \"mock compile-time support flag\" functionality working, this will cause some difficulty.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c28e1bf_92feaa42",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "Not sure I\u0027m a big fan of the caller needing to know the details of \"call sha256 functions when using sha224 hash algorithm\".  What do you think about considering an alternate API?\n\n(1) Split each SHA type out into a separate function (at least the public API):\n  vb2_sha1_init, vb2_sha224_init, vb2_sha256_init, ...\n\n(2) Just use one common function:\n  vb2_sha_init(struct vb2_sha_context *ctx, enum vb2_hash_algorithm algo)\n  vb2_sha_update(struct vb2_sha_context *ctx, enum vb2_hash_algorithm algo)\n  (vb2_sha_context can be a union of vb2_sha* structs)\n\n(3) Separate for _init, and common for the others:\n  vb2_sha1_init, vb2_sha224_init, vb2_sha256_init, ...\n  --\u003e sets the algo type in vb2_sha_context\n  vb2_sha_update, vb2_sha_finalize, ...\n  --\u003e detects the algo type from vb2_sha_context",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 37
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b941a2_4d02cd2c",
+        "filename": "tests/hmac_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "This seems a bit misleading.  How about a comment explaining this tests SHA1, SHA256, and SHA512?\n\nDoes this test not apply for 224 and 384?",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6032b7_0e4e191e",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "Is it okay to define helpers directly in the body of a function?  I\u0027ve wanted to do that before, but it seemed weird.\n\nAlso, is there any good reason this can\u0027t just be a helper function instead of a macro?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 44
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a742e0c3_c113dc54",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:12:37Z",
+      "side": 1,
+      "message": "Maybe be a bit more specific here?  \"for escaping hex\" or something.",
+      "range": {
+        "startLine": 238,
+        "startChar": 19,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "7fddc696cebd06da77cf8d7ab229419e3e26dec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
