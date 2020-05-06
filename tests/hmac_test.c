@@ -77,7 +77,7 @@ static void test_hmac(void)
 {
 	int alg;
 
-	for (alg = 1; alg < VB2_HASH_ALG_COUNT; alg++) {
+	for (alg = 1; alg <= VB2_HASH_SHA512; alg++) {
 		/* Try short key */
 		test_hmac_by_openssl(alg, short_key, strlen(short_key),
 				     message, strlen(message));
