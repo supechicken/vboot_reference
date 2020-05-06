@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "e43f3fe7_1330784d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T10:48:49Z",
+      "side": 1,
+      "message": "That\u0027s true.  Maybe we should call it something else instead.  Or we could also create a VB2_ERROR_UI_SCREEN_NOT_ALLOWED or something and handle it in the UI loop...",
+      "parentUuid": "a66eccba_29ddbd04",
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132d2600_b1c4d6d6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -288,6 +306,30 @@
       "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54348155_2ccb5d15",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T10:48:49Z",
+      "side": 1,
+      "message": "I guess if we are doing it at compile-time like your depthcharge CL does, we don\u0027t need this anyways.",
+      "parentUuid": "a96445b4_5ad8078c",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
