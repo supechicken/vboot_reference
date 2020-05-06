@@ -1187,6 +1187,8 @@ enum vb2_screen {
 	VB2_SCREEN_RECOVERY_DISK_STEP3		= 0x212,
 	/* Recovery using phone */
 	VB2_SCREEN_RECOVERY_PHONE_STEP1		= 0x220,
+	/* Developer screen */
+	VB2_SCREEN_DEVELOPER			= 0x300,
 };
 
 /**
