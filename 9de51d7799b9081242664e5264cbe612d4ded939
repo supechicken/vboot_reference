@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc486408_8caad802",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-05-06T17:49:22Z",
+      "side": 1,
+      "message": "CSE Lite SKU?",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504ea594_a0a96305",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-05-06T17:49:22Z",
+      "side": 1,
+      "message": "nit: space before I",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 4
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9112e0_4388df6f",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-05-06T17:49:22Z",
+      "side": 1,
+      "message": "Are these subcodes captured anywhere? Basically, if someone comes looking for the recovery reason, how would they decode the subcode?",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
