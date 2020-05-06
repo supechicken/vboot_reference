@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b119f76f_39b59fa9",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:38:43Z",
+      "side": 1,
+      "message": "Ah okay.  Is CSME Intel-specific?  How about VB2_RECOVERY_INTEL_CSME?  FAILURE is kind of implied by the fact that it is a recovery reason anyways.",
+      "parentUuid": "6afa8e51_df7c514b",
+      "range": {
+        "startLine": 99,
+        "startChar": 17,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66a1aa24_00226772",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fc04d3a6_64c6daed",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:38:43Z",
+      "side": 1,
+      "message": "Sure, but please use lowercase.  \"Intel CSME firmware failure\"",
+      "parentUuid": "2e7c367c_e7219f45",
+      "range": {
+        "startLine": 100,
+        "startChar": 10,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8eea5fa7_f35ede38",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 4
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "/* Intel CSME Firmware Failure, see sub-reason for specific reason */ - ok?",
       "parentUuid": "8eea5fa7_f35ede38",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 58
+      },
+      "revId": "9a7b529701832158783122d5f41c9cc5fe21b2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d88c84e_4addbebd",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-06T06:38:43Z",
+      "side": 1,
+      "message": "The recovery request comprises of two numbers: (1) recovery reason, and (2) recovery subcode.  There\u0027s no sub-reason.  As I mentioned in the other comment, the reason should be lowercase.  So:\n\n  Intel CSME firmware failure; see subcode for specific reason",
+      "parentUuid": "e6645a03_c506e1a0",
       "range": {
         "startLine": 172,
         "startChar": 4,
