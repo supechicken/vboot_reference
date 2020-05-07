@@ -12,11 +12,17 @@
 #include "2ui_private.h"
 #include "vboot_api.h"  /* for VB_KEY_ */
 
-#define MENU_ITEMS(a) \
-	.num_items = ARRAY_SIZE(a), \
-	.items = a
+#define MENU_ITEMS(a) ((struct vb2_menu) {	\
+	.items = a,				\
+	.count = ARRAY_SIZE(a),			\
+})
 
-static const struct vb2_menu_item empty_menu[] = { };
+const struct vb2_menu_item advanced_options_menu[] = {
+	{
+		.text = "Advanced options",
+		.target = VB2_SCREEN_ADVANCED_OPTIONS,
+	},
+};
 
 /******************************************************************************/
 /* VB2_SCREEN_BLANK */
@@ -24,7 +30,6 @@ static const struct vb2_menu_item empty_menu[] = { };
 static const struct vb2_screen_info blank_screen = {
 	.id = VB2_SCREEN_BLANK,
 	.name = "Blank",
-	MENU_ITEMS(empty_menu),
 };
 
 /******************************************************************************/
@@ -33,7 +38,27 @@ static const struct vb2_screen_info blank_screen = {
 static const struct vb2_screen_info recovery_broken_screen = {
 	.id = VB2_SCREEN_RECOVERY_BROKEN,
 	.name = "Recover broken device",
-	MENU_ITEMS(empty_menu),
+	.secondary_menu = MENU_ITEMS(advanced_options_menu),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_ADVANCED_OPTIONS */
+
+static const struct vb2_menu_item advanced_options_items[] = {
+	{
+		.text = "Developer mode",
+		.target = VB2_SCREEN_RECOVERY_TO_DEV,
+	},
+	{
+		.text = "Back",
+		.action = vb2_ui_back_action,
+	},
+};
+
+static const struct vb2_screen_info advanced_options_screen = {
+	.id = VB2_SCREEN_ADVANCED_OPTIONS,
+	.name = "Advanced options",
+	.menu = MENU_ITEMS(advanced_options_items),
 };
 
 /******************************************************************************/
@@ -53,7 +78,8 @@ static const struct vb2_menu_item recovery_select_items[] = {
 static const struct vb2_screen_info recovery_select_screen = {
 	.id = VB2_SCREEN_RECOVERY_SELECT,
 	.name = "Recovery method selection",
-	MENU_ITEMS(recovery_select_items),
+	.menu = MENU_ITEMS(recovery_select_items),
+	.secondary_menu = MENU_ITEMS(advanced_options_menu),
 };
 
 /******************************************************************************/
@@ -62,7 +88,6 @@ static const struct vb2_screen_info recovery_select_screen = {
 static const struct vb2_screen_info recovery_invalid_screen = {
 	.id = VB2_SCREEN_RECOVERY_INVALID,
 	.name = "Invalid recovery inserted",
-	MENU_ITEMS(empty_menu),
 };
 
 /******************************************************************************/
@@ -156,7 +181,7 @@ static const struct vb2_screen_info recovery_to_dev_screen = {
 	.id = VB2_SCREEN_RECOVERY_TO_DEV,
 	.name = "Transition to developer mode",
 	.init = recovery_to_dev_init,
-	MENU_ITEMS(recovery_to_dev_items),
+	.menu = MENU_ITEMS(recovery_to_dev_items),
 };
 
 /******************************************************************************/
@@ -165,7 +190,6 @@ static const struct vb2_screen_info recovery_to_dev_screen = {
 static const struct vb2_screen_info recovery_phone_step1_screen = {
 	.id = VB2_SCREEN_RECOVERY_PHONE_STEP1,
 	.name = "Phone recovery step 1",
-	MENU_ITEMS(empty_menu),
 };
 
 /******************************************************************************/
@@ -174,7 +198,6 @@ static const struct vb2_screen_info recovery_phone_step1_screen = {
 static const struct vb2_screen_info recovery_disk_step1_screen = {
 	.id = VB2_SCREEN_RECOVERY_DISK_STEP1,
 	.name = "Disk recovery step 1",
-	MENU_ITEMS(empty_menu),
 };
 
 /******************************************************************************/
@@ -188,6 +211,7 @@ static const struct vb2_screen_info recovery_disk_step1_screen = {
 static const struct vb2_screen_info *screens[] = {
 	&blank_screen,
 	&recovery_broken_screen,
+	&advanced_options_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,

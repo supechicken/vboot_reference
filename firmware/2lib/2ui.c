@@ -101,20 +101,39 @@ vb2_error_t menu_up_action(struct vb2_ui_context *ui)
 
 vb2_error_t menu_down_action(struct vb2_ui_context *ui)
 {
+	int total_count;
 	int item;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
+	total_count = ui->state.screen->menu.count +
+		ui->state.screen->secondary_menu.count;
 	item = ui->state.selected_item + 1;
-	while (item < ui->state.screen->num_items &&
+	while (item < total_count &&
 	       ((1 << item) & ui->state.disabled_item_mask))
 		item++;
 	/* Only update if item is valid */
-	if (item < ui->state.screen->num_items)
+	if (item < total_count)
 		ui->state.selected_item = item;
 
 	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static const struct vb2_menu_item *get_menu_item(struct vb2_ui_context *ui)
+{
+	int total_count = ui->state.screen->menu.count +
+		ui->state.screen->secondary_menu.count;
+
+	if (ui->state.selected_item >= total_count)
+		return NULL;
+
+	/* Retrieve from the secondary menu */
+	if (ui->state.selected_item >= ui->state.screen->menu.count)
+		return &ui->state.screen->secondary_menu.items[
+			ui->state.selected_item - ui->state.screen->menu.count];
+
+	return &ui->state.screen->menu.items[ui->state.selected_item];
 }
 
 /**
@@ -127,10 +146,9 @@ vb2_error_t menu_select_action(struct vb2_ui_context *ui)
 	if (!DETACHABLE && ui->key == VB_BUTTON_POWER_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	if (ui->state.screen->num_items == 0)
+	menu_item = get_menu_item(ui);
+	if (menu_item == NULL)
 		return VB2_REQUEST_UI_CONTINUE;
-
-	menu_item = &ui->state.screen->items[ui->state.selected_item];
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
@@ -237,11 +255,11 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
 
-			VB2_DEBUG("<%s> menu item <%s>\n",
+			/*VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state.screen->name,
 				  ui.state.screen->num_items ?
 				  ui.state.screen->items[
-				  ui.state.selected_item].text : "null");
+				  ui.state.selected_item].text : "null");*/
 
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
