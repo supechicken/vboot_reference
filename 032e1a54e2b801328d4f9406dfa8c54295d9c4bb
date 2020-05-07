@@ -375,6 +375,30 @@
     },
     {
       "key": {
+        "uuid": "093d10e6_6e37494b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-07T03:08:33Z",
+      "side": 1,
+      "message": "I see your comment on my depthcharge CL. Let\u0027s use disabled_item_mask to disable the confirm button here, but I\u0027d still like to have a constant defined here.",
+      "parentUuid": "37892759_5f266f68",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "032e1a54e2b801328d4f9406dfa8c54295d9c4bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61edd324_4230b5e8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
