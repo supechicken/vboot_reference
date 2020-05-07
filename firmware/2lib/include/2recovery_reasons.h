@@ -169,6 +169,9 @@ enum vb2_nv_recovery {
 	/* Error updating auxiliary firmware */
 	VB2_RECOVERY_AUXFW_UPDATE = 0x30,
 
+	/* Error CSME Failure, sub-reason provides specific error */
+	VB2_RECOVERY_CSME_FAILURE = 0x31,
+
 	/* Unspecified/unknown error in read-only firmware */
 	VB2_RECOVERY_RO_UNSPECIFIED = 0x3f,
 
