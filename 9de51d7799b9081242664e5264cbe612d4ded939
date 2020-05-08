@@ -164,6 +164,30 @@
       "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f664c63c_ba53137b",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-05-08T19:22:46Z",
+      "side": 1,
+      "message": "I don\u0027t see any subcodes added to this file. Joel - is there any preference for where the subcodes typically live?",
+      "parentUuid": "8eb260b9_b0047314",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
