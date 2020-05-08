@@ -1172,7 +1172,6 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 					   cfg->verbosity);
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
-			cfg->check_platform = 0;
 		} else if (ret)
 			return UPDATE_ERR_SYSTEM_IMAGE;
 	}
@@ -1180,7 +1179,7 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	       image_from->file_name, image_from->ro_version,
 	       image_from->rw_version_a, image_from->rw_version_b);
 
-	if (cfg->check_platform && check_compatible_platform(cfg))
+	if (!cfg->force_update && check_compatible_platform(cfg))
 		return UPDATE_ERR_PLATFORM;
 
 	wp_enabled = is_write_protection_enabled(cfg);
@@ -1237,8 +1236,6 @@ struct updater_config *updater_new_config()
 	cfg->image_current.programmer = PROG_HOST;
 	cfg->ec_image.programmer = PROG_EC;
 	cfg->pd_image.programmer = PROG_PD;
-
-	cfg->check_platform = 1;
 
 	init_system_properties(&cfg->system_properties[0],
 			       ARRAY_SIZE(cfg->system_properties));
