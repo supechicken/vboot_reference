@@ -65,7 +65,6 @@ struct updater_config {
 	int force_update;
 	int legacy_update;
 	int factory_update;
-	int check_platform;
 	int fast_update;
 	int verbosity;
 	const char *emulation;
