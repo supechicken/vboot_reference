@@ -25,6 +25,8 @@ struct input_action {
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 };
 
+vb2_error_t next_locale_action(struct vb2_ui_context *ui);
+vb2_error_t prev_locale_action(struct vb2_ui_context *ui);
 vb2_error_t menu_up_action(struct vb2_ui_context *ui);
 vb2_error_t menu_down_action(struct vb2_ui_context *ui);
 vb2_error_t menu_select_action(struct vb2_ui_context *ui);
