@@ -78,6 +78,26 @@ vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Menu navigation actions */
 
+vb2_error_t next_locale_action(struct vb2_ui_context *ui)
+{
+	uint32_t count = vb2ex_get_locale_count();
+	if (count == 0)
+		count = 1;
+	ui->locale_id = (ui->locale_id + 1) % count;
+	VB2_DEBUG("Next locale (%d of %d)\n", ui->locale_id, count);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+vb2_error_t prev_locale_action(struct vb2_ui_context *ui)
+{
+	uint32_t count = vb2ex_get_locale_count();
+	if (count == 0)
+		count = 1;
+	ui->locale_id = (ui->locale_id - 1) % count;
+	VB2_DEBUG("Previous locale (%d of %d)\n", ui->locale_id, count);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 /**
  * Update selected_item, taking into account disabled indices (from
  * disabled_item_mask).  The selection does not wrap, meaning that we block
@@ -174,6 +194,8 @@ vb2_error_t ctrl_d_action(struct vb2_ui_context *ui)
 /* Action lookup tables */
 
 static struct input_action action_table[] = {
+	{ VB_KEY_RIGHT,				next_locale_action },
+	{ VB_KEY_LEFT,				prev_locale_action },
 	{ VB_KEY_UP,				menu_up_action },
 	{ VB_KEY_DOWN,				menu_down_action },
 	{ VB_KEY_ENTER,  			menu_select_action },
@@ -220,6 +242,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
+	uint32_t prev_locale_id;
 	uint32_t key_flags;
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 	vb2_error_t rv;
@@ -233,11 +256,14 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	if (rv != VB2_REQUEST_UI_CONTINUE)
 		return rv;
 	memset(&prev_state, 0, sizeof(prev_state));
+	ui.locale_id = prev_locale_id = vb2api_get_locale_id(ctx);
 
 	while (1) {
 		/* Draw if there are state changes. */
-		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
+		if (memcmp(&prev_state, &ui.state, sizeof(ui.state)) ||
+		    prev_locale_id != ui.locale_id) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
+			prev_locale_id = ui.locale_id;
 
 			VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state.screen->name,
