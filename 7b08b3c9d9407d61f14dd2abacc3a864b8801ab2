@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c77bfcbe_8b334321",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-08T23:16:12Z",
+      "side": 1,
+      "message": "which quirk? bug#?",
+      "revId": "7b08b3c9d9407d61f14dd2abacc3a864b8801ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c41d2c7_e240697d",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-08T23:16:12Z",
+      "side": 1,
+      "message": "do we want to update this msg too? Recommend a separate CL for that. \n\nThis really should be about parsing the current system image right? - not to be confused with compatible fw - this is about compatibility with modern FW images. \n\nIMAGE_PARSE_FAILURE comes from when we read SPI, dump to file, suck it back in, and then pass this back as an image for comparison in 1182.",
+      "revId": "7b08b3c9d9407d61f14dd2abacc3a864b8801ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
