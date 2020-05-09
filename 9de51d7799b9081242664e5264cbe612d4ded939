@@ -188,6 +188,30 @@
       "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ab014bc_e6d4622c",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-09T04:20:42Z",
+      "side": 1,
+      "message": "Subcodes are usually set to return values from vb2_error_t, although I guess that\u0027s not a hard-fast rule.",
+      "parentUuid": "f664c63c_ba53137b",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "9de51d7799b9081242664e5264cbe612d4ded939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
