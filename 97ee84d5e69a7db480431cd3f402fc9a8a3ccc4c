@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95ad1ea8_4ed88fe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-10T02:51:52Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2190612",
+      "revId": "97ee84d5e69a7db480431cd3f402fc9a8a3ccc4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911211cf_dd0d3581",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-10T02:51:52Z",
+      "side": 1,
+      "message": "When locale_id is 0, this will become\n\n UINT32_MAX % count\n\nwhich is incorrect.",
+      "range": {
+        "startLine": 94,
+        "startChar": 17,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "97ee84d5e69a7db480431cd3f402fc9a8a3ccc4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
