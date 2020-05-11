@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "f53d386a_39d872dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-05-11T02:47:50Z",
+      "side": 1,
+      "message": "Please add link so it\u0027s easier to read,\n\n (CL:1390083)",
+      "parentUuid": "c77bfcbe_8b334321",
+      "revId": "7b08b3c9d9407d61f14dd2abacc3a864b8801ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0831e5_3535bc65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-05-11T02:47:50Z",
+      "side": 1,
+      "message": "Historically the firmware updater used to have two options for platform and force, because many developers and lab used to always have --force when updating (to skip RW signing issues etc), but when the platform is not compatible they\u0027ll definitely brick the device (unless if that\u0027s really intended).\n\nI\u0027m not very sure about if allowing --force to skip platform check is a good idea, but it\u0027s probably fine to apply this change, until we get complaints from developers.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "7b08b3c9d9407d61f14dd2abacc3a864b8801ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c41d2c7_e240697d",
         "filename": "futility/updater.c",
         "patchSetId": 2
