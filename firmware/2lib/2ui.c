@@ -138,7 +138,7 @@ vb2_error_t menu_select_action(struct vb2_ui_context *ui)
 	} else if (menu_item->target) {
 		VB2_DEBUG("Menu item <%s> to target screen %#x\n",
 			  menu_item->text, menu_item->target);
-		return change_screen(ui, menu_item->target);
+		return vb2_ui_change_screen(ui, menu_item->target);
 	}
 
 	VB2_DEBUG("Menu item <%s> no action or target screen\n",
@@ -152,7 +152,7 @@ vb2_error_t menu_select_action(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_back_action(struct vb2_ui_context *ui)
 {
 	/* TODO(kitching): Return to previous screen instead of root screen. */
-	return change_screen(ui, ui->root_screen->id);
+	return vb2_ui_change_screen(ui, ui->root_screen->id);
 }
 
 /**
@@ -164,7 +164,7 @@ vb2_error_t vb2_ui_back_action(struct vb2_ui_context *ui)
 vb2_error_t ctrl_d_action(struct vb2_ui_context *ui)
 {
 	if (vb2_allow_recovery(ui->ctx))
-		return change_screen(ui, VB2_SCREEN_RECOVERY_TO_DEV);
+		return vb2_ui_change_screen(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -195,7 +195,7 @@ vb2_error_t (*input_action_lookup(int key))(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Core UI functions */
 
-vb2_error_t change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
+vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info = vb2_get_screen_info(id);
 
@@ -227,7 +227,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	ui.root_screen = vb2_get_screen_info(root_screen_id);
 	if (ui.root_screen == NULL)
 		VB2_DIE("Root screen not found.\n");
-	rv = change_screen(&ui, ui.root_screen->id);
+	rv = vb2_ui_change_screen(&ui, ui.root_screen->id);
 	if (rv != VB2_REQUEST_UI_CONTINUE)
 		return rv;
 	memset(&prev_state, 0, sizeof(prev_state));
@@ -299,27 +299,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 
 vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
-	enum vb2_dev_default_boot default_boot;
-
-	/* If dev mode was disabled, loop forever. */
-	if (!vb2_dev_boot_allowed(ctx))
-		while (1);
-
-	/* Boot from the default option. */
-	default_boot = vb2_get_dev_boot_target(ctx);
-
-	/* Boot legacy does not return on success */
-	if (default_boot == VB2_DEV_DEFAULT_BOOT_LEGACY &&
-	    vb2_dev_boot_legacy_allowed(ctx) &&
-	    VbExLegacy(VB_ALTFW_DEFAULT) == VB2_SUCCESS)
-		return VB2_SUCCESS;
-
-	if (default_boot == VB2_DEV_DEFAULT_BOOT_USB &&
-	    vb2_dev_boot_usb_allowed(ctx) &&
-	    VbTryLoadKernel(ctx, VB_DISK_FLAG_REMOVABLE) == VB2_SUCCESS)
-		return VB2_SUCCESS;
-
-	return VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
+	return ui_loop(ctx, VB2_SCREEN_DEVELOPER_MODE, NULL);
 }
 
 /*****************************************************************************/
@@ -350,9 +330,9 @@ vb2_error_t try_recovery_action(struct vb2_ui_context *ui)
 	invalid_disk = rv != VB2_ERROR_LK_NO_DISK_FOUND;
 	if (invalid_disk_last != invalid_disk) {
 		invalid_disk_last = invalid_disk;
-		return change_screen(ui, invalid_disk ?
-				     VB2_SCREEN_RECOVERY_INVALID :
-				     VB2_SCREEN_RECOVERY_SELECT);
+		return vb2_ui_change_screen(ui, invalid_disk ?
+					    VB2_SCREEN_RECOVERY_INVALID :
+					    VB2_SCREEN_RECOVERY_SELECT);
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;
