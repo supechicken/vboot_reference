@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48939512_1a86c4fe",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-11T08:17:24Z",
+      "side": 1,
+      "message": "Will this be used only for the UI? If so, consider moving it to the UI section below.",
+      "range": {
+        "startLine": 985,
+        "startChar": 12,
+        "endLine": 985,
+        "endChar": 34
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68b958a_6f08b5eb",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-11T08:17:24Z",
+      "side": 1,
+      "message": "Include 2api.h?",
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7fb637e_41da9f75",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-11T08:17:24Z",
+      "side": 1,
+      "message": "Do we want to reverse the order?",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 51
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420f3592_e607f193",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-11T08:17:24Z",
+      "side": 1,
+      "message": "Do we want to reverse the order?",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 50
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87380170_3e4ceef3",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-11T08:17:24Z",
+      "side": 1,
+      "message": "Should we allow count to be 0 on success? The current implementation (both legacy and menu UIs) in depthcharge will never set count to 0 on success, so I think we can explicitly state that \"count must be positive\" in the function comment, and get rid of the \"count \u003d\u003d 0\" check here.\n\nAlternatively, change the function to return an int, and consider the return value 0 as an error.",
+      "range": {
+        "startLine": 703,
+        "startChar": 54,
+        "endLine": 703,
+        "endChar": 64
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
