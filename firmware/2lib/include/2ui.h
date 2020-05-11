@@ -53,6 +53,9 @@ struct vb2_ui_context {
 	uint32_t locale_id;
 	uint32_t key;
 	int key_trusted;
+	int had_input;
+	uint64_t start_time;
+	uint64_t beep_count;
 };
 
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id);
