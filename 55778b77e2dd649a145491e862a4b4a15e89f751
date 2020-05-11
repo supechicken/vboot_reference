@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "6b6a830f_fc4df63c",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-11T03:54:28Z",
+      "side": 1,
+      "message": "per our voice conversation - need to use a capital B, Capital D, capital T, etc... here since we are basing on the target firmware which will be a capital, rather than the existing fw, which is most likely",
+      "revId": "55778b77e2dd649a145491e862a4b4a15e89f751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ec06b3d_315f4327",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 3
