@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e202a17_0301dbf2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-11T09:53:59Z",
+      "side": 1,
+      "message": "Done -- moved vb2ex_physical_presence_pressed too.",
+      "parentUuid": "48939512_1a86c4fe",
+      "range": {
+        "startLine": 985,
+        "startChar": 12,
+        "endLine": 985,
+        "endChar": 34
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e68b958a_6f08b5eb",
         "filename": "firmware/lib/vboot_display.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2c1916_c18ab98d",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-11T09:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68b958a_6f08b5eb",
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baad6124_2ebab968",
+        "filename": "firmware/lib/vboot_display.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-11T09:53:59Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "a7fb637e_41da9f75",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 51
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +174,54 @@
       "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cca48c4_acf90733",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-11T09:53:59Z",
+      "side": 1,
+      "message": "I like the second idea better.",
+      "parentUuid": "87380170_3e4ceef3",
+      "range": {
+        "startLine": 703,
+        "startChar": 54,
+        "endLine": 703,
+        "endChar": 64
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1cff345_9926d86b",
+        "filename": "firmware/lib/vboot_ui_legacy_menu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-11T09:53:59Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "420f3592_e607f193",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 50
+      },
+      "revId": "f9edf5d5bdcfb62408213fa91b1c271527511085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
