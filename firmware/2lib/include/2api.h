@@ -975,6 +975,15 @@ vb2_error_t vb2ex_commit_data(struct vb2_context *ctx);
  */
 int vb2ex_physical_presence_pressed(void);
 
+/**
+ * Get the number of locales supported.
+ *
+ * @param count		Pointer to the number of locales to be filled in
+ * 			(only valid on VB2_SUCCESS).
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_get_locale_count(uint32_t *count);
+
 /*****************************************************************************/
 /* Auxiliary firmware (auxfw) */
 

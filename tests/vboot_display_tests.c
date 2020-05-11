@@ -45,7 +45,7 @@ static void ResetMocks(void)
 }
 
 /* Mocks */
-vb2_error_t VbExGetLocalizationCount(uint32_t *count) {
+vb2_error_t vb2ex_get_locale_count(uint32_t *count) {
 
 	if (mock_localization_count == 0xffffffff)
 		return VB2_ERROR_UNKNOWN;
