@@ -146,7 +146,7 @@ static vb2_error_t global_action_countdown(struct vb2_ui_context *ui)
 
 static vb2_error_t global_action_change_screen(struct vb2_ui_context *ui)
 {
-	change_screen(ui, MOCK_SCREEN_BASE);
+	vb2_ui_change_screen(ui, MOCK_SCREEN_BASE);
 	if (++global_action_called >= 10)
 		return VB2_SUCCESS;
 	return VB2_REQUEST_UI_CONTINUE;
@@ -557,7 +557,8 @@ static void menu_action_tests(void)
 	reset_common_data();
 	mock_state->screen = &mock_screen_base;
 	mock_ui_context.key = VB_KEY_ENTER;
-	TEST_EQ(menu_select_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+	TEST_EQ(vb2_ui_menu_select_action(&mock_ui_context),
+		VB2_REQUEST_UI_CONTINUE,
 		"menu_select_action with no item screen");
 	screen_state_eq(mock_state, MOCK_SCREEN_BASE, 0, MOCK_IGNORE);
 
@@ -569,7 +570,7 @@ static void menu_action_tests(void)
 		mock_state->screen = &mock_screen_menu;
 		mock_state->selected_item = i;
 		mock_ui_context.key = VB_KEY_ENTER;
-		TEST_EQ(menu_select_action(&mock_ui_context),
+		TEST_EQ(vb2_ui_menu_select_action(&mock_ui_context),
 			VB2_REQUEST_UI_CONTINUE, test_name);
 		screen_state_eq(mock_state, target_id, 0, MOCK_IGNORE);
 	}
@@ -579,8 +580,8 @@ static void menu_action_tests(void)
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 4;
 	mock_ui_context.key = VB_KEY_ENTER;
-	TEST_EQ(menu_select_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"select no target");
+	TEST_EQ(vb2_ui_menu_select_action(&mock_ui_context),
+		VB2_REQUEST_UI_CONTINUE, "select no target");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 4, MOCK_IGNORE);
 
 	/* Ignore power button short press when not DETACHABLE */
@@ -589,7 +590,7 @@ static void menu_action_tests(void)
 		mock_state->screen = &mock_screen_menu;
 		mock_state->selected_item = 1;
 		mock_ui_context.key = VB_BUTTON_POWER_SHORT_PRESS;
-		TEST_EQ(menu_select_action(&mock_ui_context),
+		TEST_EQ(vb2_ui_menu_select_action(&mock_ui_context),
 			VB2_REQUEST_UI_CONTINUE,
 			"ignore power button short press when not DETACHABLE");
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 1, MOCK_IGNORE);
@@ -614,7 +615,7 @@ static void change_screen_tests(void)
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x10;
-	TEST_EQ(change_screen(&mock_ui_context, MOCK_SCREEN_BASE),
+	TEST_EQ(vb2_ui_change_screen(&mock_ui_context, MOCK_SCREEN_BASE),
 		VB2_REQUEST_UI_CONTINUE,
 		"change_screen will clear screen state");
 	screen_state_eq(mock_state, MOCK_SCREEN_BASE, 0, 0);
@@ -622,7 +623,7 @@ static void change_screen_tests(void)
 	/* Change to screen which does not exist */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
-	TEST_EQ(change_screen(&mock_ui_context, MOCK_NO_SCREEN),
+	TEST_EQ(vb2_ui_change_screen(&mock_ui_context, MOCK_NO_SCREEN),
 		VB2_REQUEST_UI_CONTINUE,
 		"change to screen which does not exist");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, MOCK_IGNORE, MOCK_IGNORE);

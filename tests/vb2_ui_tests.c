@@ -392,52 +392,7 @@ static void developer_tests(void)
 {
 	VB2_DEBUG("Testing developer mode...\n");
 
-	/* Proceed */
-	reset_common_data();
-	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed");
-	displayed_no_extra();
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0,
-		"  recovery reason");
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
-
-	/* Proceed to legacy */
-	reset_common_data();
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
-	mock_dev_boot_legacy_allowed = 1;
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to legacy");
-	TEST_EQ(mock_vbexlegacy_called, 1, "  try legacy");
-	TEST_EQ(mock_altfw_num, 0, "  check altfw_num");
-	displayed_no_extra();
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
-
-	/* Proceed to legacy only if enabled */
-	reset_common_data();
-	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_LEGACY;
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
-		"default legacy not enabled");
-	TEST_EQ(mock_vbexlegacy_called, 0, "  not legacy");
-	displayed_no_extra();
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
-
-	/* Proceed to USB */
-	reset_common_data();
-	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
-	mock_dev_boot_usb_allowed = 1;
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS, "proceed to USB");
-	displayed_no_extra();
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
-
-	/* Proceed to USB only if enabled */
-	reset_common_data();
-	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
-	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
-		"default USB not enabled");
-	displayed_no_extra();
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+	/* TODO(roccochen): Add developer mode tests. */
 
 	VB2_DEBUG("...done.\n");
 }
