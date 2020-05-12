@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c44e3bd2_45960c76",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "011d2129_a2cba788",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3d594e4_51bae440",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-12T02:06:44Z",
       "side": 1,
       "message": "Anything left to do?",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 39
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e18eab_95e3afe9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "Just doesn\u0027t seem right that we have these constants to abstract away the indices of the menu items... and then we need to use numbers anyways when we set the value here.\nI\u0027m thinking maybe we can create a function like \"disable_item(vb2_ui_context, int)\" which would automatically choose the next-available selected_item after adding a value to the disabled_item_mask.  What do you think?",
+      "parentUuid": "a3d594e4_51bae440",
       "range": {
         "startLine": 130,
         "startChar": 35,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1201e459_aca4c26d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "Another option I had considered was changing the root screen sent to ui_loop depending on the value here.  But then, we might want to keep the check here anyways, just in case there is some bug which allows the user to get to the developer mode screen.",
+      "parentUuid": "94eabf37_4db9a42a",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41537f7a_058bcf9e",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-12T02:06:44Z",
       "side": 1,
       "message": "I think a local variable is sufficient in this case. Or do you have any plan for other usage?",
+      "range": {
+        "startLine": 278,
+        "startChar": 6,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31855fc_08b7ac58",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "It could be a static local, but then we need to raise it up to a file global in order to allow testing, which is a pain because then we need to copy it into 2ui_private.h, etc.  That\u0027s why I prefer putting it in vb2_ui_context.",
+      "parentUuid": "41537f7a_058bcf9e",
       "range": {
         "startLine": 278,
         "startChar": 6,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "999d6dc7_90f61295",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5556aaff_1761b27e",
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b001a6c_1de8f3e5",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 2
@@ -131,6 +245,30 @@
       "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b68aeece_7dc639ef",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T02:53:35Z",
+      "side": 1,
+      "message": "Added it before, but forgot to rename the actual function :/",
+      "parentUuid": "9b001a6c_1de8f3e5",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
