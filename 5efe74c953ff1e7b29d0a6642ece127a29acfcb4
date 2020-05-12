@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011d2129_a2cba788",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "Change it back to \"Enable developer mode\"?",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d594e4_51bae440",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "Anything left to do?",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 39
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94eabf37_4db9a42a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "Just a note that we may want to move this to somewhere else in the future.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41537f7a_058bcf9e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "I think a local variable is sufficient in this case. Or do you have any plan for other usage?",
+      "range": {
+        "startLine": 278,
+        "startChar": 6,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5556aaff_1761b27e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "Change it to\n\n .action \u003d vb2_ui_back_action,\n\nto be consistent with the to-dev screen?",
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b001a6c_1de8f3e5",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:06:44Z",
+      "side": 1,
+      "message": "Hmmm... why do we already have this?",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "5efe74c953ff1e7b29d0a6642ece127a29acfcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
