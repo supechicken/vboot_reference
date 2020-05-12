@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc9b396a_af8d9b77",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T02:16:10Z",
+      "side": 1,
+      "message": "How about\n\n if (count \u003d\u003d 0)\n     ui-\u003elocale_id \u003d 0;\n else\n     ui-\u003elocale_id \u003d (...) % count;",
+      "revId": "b154ccb49b412e7c2aa870d78406891734e0e60f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
