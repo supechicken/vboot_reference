@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0ceedf_d7977599",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T06:59:20Z",
+      "side": 1,
+      "message": "/* Sanity check, should never happen. */",
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9d2c9a_782fea0d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T06:59:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we return error?",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 32
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9961893c_110f4cd2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T06:59:20Z",
+      "side": 1,
+      "message": "Is floating point supported on arm?",
+      "range": {
+        "startLine": 324,
+        "startChar": 39,
+        "endLine": 324,
+        "endChar": 43
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7fc178_41fce101",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-12T06:59:20Z",
+      "side": 1,
+      "message": "What is your plan when we add the BOOT_FROM_EXTERNAL screen? We\u0027ll need to set\n\n .target \u003d VB2_SCREEN_..._BOOT_FROM_EXTERNAL,\n\nand remove the action. I\u0027d suggest not calling vb2_ui_menu_select_action() from developer_mode_action() (calling internal_action() and external_action() directly instead).",
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
