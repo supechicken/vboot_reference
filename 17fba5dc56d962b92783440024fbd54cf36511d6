@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "34222124_e8026a33",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T08:18:21Z",
+      "side": 1,
+      "message": "We call this function when Ctrl+D is pressed, so it\u0027s actually expected that vb2_dev_boot_allowed may evaluate to 0.\n\n[I know this is kind of awkward -- I\u0027m wondering if these context-specific keyboard shortcuts should be triggered from a different spot instead.]",
+      "parentUuid": "9b0ceedf_d7977599",
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd9d2c9a_782fea0d",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-12T06:59:20Z",
       "side": 1,
       "message": "Shouldn\u0027t we return error?",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 32
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0841d464_d7fd5db8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T08:18:21Z",
+      "side": 1,
+      "message": "I mean... given that we\u0027re in dev mode, it doesn\u0027t mean that the system is broken -- it just means we can\u0027t boot from internal disk.  I think we can definitely show a dialog box error.",
+      "parentUuid": "cd9d2c9a_782fea0d",
       "range": {
         "startLine": 276,
         "startChar": 9,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d7d95c2d_e5f503b9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T08:18:21Z",
+      "side": 1,
+      "message": "AFAIK this should be performed by the compiler, so it doesn\u0027t matter?",
+      "parentUuid": "9961893c_110f4cd2",
+      "range": {
+        "startLine": 324,
+        "startChar": 39,
+        "endLine": 324,
+        "endChar": 43
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a7fc178_41fce101",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -76,6 +142,24 @@
       "writtenOn": "2020-05-12T06:59:20Z",
       "side": 1,
       "message": "What is your plan when we add the BOOT_FROM_EXTERNAL screen? We\u0027ll need to set\n\n .target \u003d VB2_SCREEN_..._BOOT_FROM_EXTERNAL,\n\nand remove the action. I\u0027d suggest not calling vb2_ui_menu_select_action() from developer_mode_action() (calling internal_action() and external_action() directly instead).",
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbb9eb8_057319fe",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-12T08:18:21Z",
+      "side": 1,
+      "message": "Re. BOOT_FROM_EXTERNAL: According to our offline discussion, we will assume this screen does not exist.  We can ask at the next weekly meeting.\n\nRe. calling vb2_ui_menu_select_action(): I admit this is a bit awkward...  Although from the UI perspective, it seems like the correct thing to do, since the default action will be to select the current menu item.  Not using menu_select_action() would mean adding about 15 lines of code to do the same thing.  Would you mind just using the function?  In later refactoring, if we find that it\u0027s too weird, we can change it.",
+      "parentUuid": "5a7fc178_41fce101",
       "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
