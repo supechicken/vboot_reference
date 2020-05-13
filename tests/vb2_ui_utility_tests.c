@@ -35,18 +35,13 @@ static struct vb2_ui_context mock_ui_context;
 static struct vb2_screen_state *mock_state;
 
 /* Mock screens */
-const struct vb2_menu_item mock_empty_menu[] = {};
 struct vb2_screen_info mock_screen_blank = {
 	.id = VB2_SCREEN_BLANK,
 	.name = "mock_screen_blank",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 struct vb2_screen_info mock_screen_base = {
 	.id = MOCK_SCREEN_BASE,
 	.name = "mock_screen_base: menuless screen",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 struct vb2_menu_item mock_screen_menu_items[] = {
 	{
@@ -68,14 +63,14 @@ struct vb2_menu_item mock_screen_menu_items[] = {
 const struct vb2_screen_info mock_screen_menu = {
 	.id = MOCK_SCREEN_MENU,
 	.name = "mock_screen_menu: screen with 5 options",
-	.num_items = ARRAY_SIZE(mock_screen_menu_items),
-	.items = mock_screen_menu_items,
+	.menu = {
+		.count = ARRAY_SIZE(mock_screen_menu_items),
+		.items = mock_screen_menu_items,
+	},
 };
 const struct vb2_screen_info mock_screen_root = {
 	.id = MOCK_SCREEN_ROOT,
 	.name = "mock_screen_root",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 
 static void screen_state_eq(const struct vb2_screen_state *state,

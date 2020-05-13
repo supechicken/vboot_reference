@@ -16,6 +16,22 @@
 
 struct vb2_ui_context;  /* Forward declaration */
 
+struct vb2_menu_item {
+	/* Text description */
+	const char *text;
+	/* Target screen */
+	enum vb2_screen target;
+	/* Action function takes precedence over target screen if non-NULL. */
+	vb2_error_t (*action)(struct vb2_ui_context *ui);
+};
+
+struct vb2_menu {
+	/* Number of menu items */
+	uint16_t count;
+	/* List of menu items */
+	const struct vb2_menu_item *items;
+};
+
 struct vb2_screen_info {
 	/* Screen id */
 	enum vb2_screen id;
@@ -25,19 +41,13 @@ struct vb2_screen_info {
 	vb2_error_t (*init)(struct vb2_ui_context *ui);
 	/* Action function runs repeatedly while on the screen. */
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
-	/* Number of menu items */
-	uint16_t num_items;
-	/* List of menu items */
-	const struct vb2_menu_item *items;
-};
-
-struct vb2_menu_item {
-	/* Text description */
-	const char *text;
-	/* Target screen */
-	enum vb2_screen target;
-	/* Action function takes precedence over target screen if non-NULL. */
-	vb2_error_t (*action)(struct vb2_ui_context *ui);
+	/* Menu items. */
+	struct vb2_menu menu;
+	/*
+	 * Custom function for getting menu items. If non-null, field 'menu'
+	 * will be ignored.
+	 */
+	const struct vb2_menu *(*get_menu)(struct vb2_ui_context *ui);
 };
 
 struct vb2_screen_state {
