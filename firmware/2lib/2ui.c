@@ -195,6 +195,14 @@ vb2_error_t (*input_action_lookup(int key))(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Core UI functions */
 
+static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
+{
+	/* Do not select the language item (0) as the default */
+	if (ui->state.screen->num_items > 1)
+		ui->state.selected_item = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info = vb2_get_screen_info(id);
@@ -209,8 +217,8 @@ vb2_error_t change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
-
-	return VB2_REQUEST_UI_CONTINUE;
+	else
+		return default_screen_init(ui);
 }
 
 vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
