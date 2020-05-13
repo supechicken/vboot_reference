@@ -73,6 +73,21 @@ vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Menu navigation actions */
 
+const struct vb2_menu *get_menu_items(struct vb2_ui_context *ui)
+{
+	const struct vb2_menu *menu;
+	static const struct vb2_menu empty_menu = {
+		.count = 0,
+		.items = NULL,
+	};
+	if (ui->state.screen->get_menu) {
+		menu = ui->state.screen->get_menu(ui);
+		return menu ? menu : &empty_menu;
+	} else {
+		return &ui->state.screen->menu;
+	}
+}
+
 /**
  * Update selected_item, taking into account disabled indices (from
  * disabled_item_mask).  The selection does not wrap, meaning that we block
@@ -99,16 +114,18 @@ vb2_error_t menu_up_action(struct vb2_ui_context *ui)
 vb2_error_t menu_down_action(struct vb2_ui_context *ui)
 {
 	int item;
+	const struct vb2_menu *menu;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
+	menu = get_menu_items(ui);
 	item = ui->state.selected_item + 1;
-	while (item < ui->state.screen->num_items &&
+	while (item < menu->count &&
 	       ((1 << item) & ui->state.disabled_item_mask))
 		item++;
 	/* Only update if item is valid */
-	if (item < ui->state.screen->num_items)
+	if (item < menu->count)
 		ui->state.selected_item = item;
 
 	return VB2_REQUEST_UI_CONTINUE;
@@ -119,15 +136,17 @@ vb2_error_t menu_down_action(struct vb2_ui_context *ui)
  */
 vb2_error_t vb2_ui_menu_select_action(struct vb2_ui_context *ui)
 {
+	const struct vb2_menu *menu;
 	const struct vb2_menu_item *menu_item;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_POWER_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	if (ui->state.screen->num_items == 0)
+	menu = get_menu_items(ui);
+	if (menu->count == 0)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	menu_item = &ui->state.screen->items[ui->state.selected_item];
+	menu_item = &menu->items[ui->state.selected_item];
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
@@ -210,6 +229,15 @@ vb2_error_t (*input_action_lookup(int key))(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Core UI functions */
 
+static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
+{
+	const struct vb2_menu *menu = get_menu_items(ui);
+	ui->state.selected_item = 0;
+	if (menu->count > 1 && menu->items[0].is_language_select)
+		ui->state.selected_item = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info;
@@ -230,8 +258,8 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
-
-	return VB2_REQUEST_UI_CONTINUE;
+	else
+		return default_screen_init(ui);
 }
 
 vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
@@ -239,6 +267,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
+	const struct vb2_menu *menu;
 	uint32_t key_flags;
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 	vb2_error_t rv;
@@ -248,6 +277,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	ui.root_screen = vb2_get_screen_info(root_screen_id);
 	if (ui.root_screen == NULL)
 		VB2_DIE("Root screen not found.\n");
+	ui.locale_id = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
 	rv = vb2_ui_change_screen(&ui, ui.root_screen->id);
 	if (rv != VB2_REQUEST_UI_CONTINUE)
 		return rv;
@@ -258,11 +288,12 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
 
+			menu = get_menu_items(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state.screen->name,
-				  ui.state.screen->num_items ?
-				  ui.state.screen->items[
-				  ui.state.selected_item].text : "null");
+				  menu->count ?
+				  menu->items[ui.state.selected_item].text :
+				  "null");
 
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
