@@ -17,6 +17,7 @@ struct input_action {
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 };
 
+const struct vb2_menu *get_menu_items(struct vb2_ui_context *ui);
 vb2_error_t menu_up_action(struct vb2_ui_context *ui);
 vb2_error_t menu_down_action(struct vb2_ui_context *ui);
 vb2_error_t ctrl_d_action(struct vb2_ui_context *ui);
@@ -29,6 +30,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 vb2_error_t try_recovery_action(struct vb2_ui_context *ui);
 
 /* From 2ui_screens.c */
+const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui);
 vb2_error_t advanced_options_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_select_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui);
