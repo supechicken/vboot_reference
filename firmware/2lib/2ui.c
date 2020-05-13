@@ -76,6 +76,15 @@ int shutdown_required(struct vb2_context *ctx, uint32_t key)
 /*****************************************************************************/
 /* Menu navigation actions */
 
+static const struct vb2_menu_item_list *get_menu_items(
+	struct vb2_ui_context *ui)
+{
+	if (ui->state.screen->get_items)
+		return ui->state.screen->get_items(ui);
+	else
+		return &ui->state.screen->items;
+}
+
 /**
  * Update selected_item, taking into account disabled indices (from
  * disabled_item_mask).  The selection does not wrap, meaning that we block
@@ -102,16 +111,18 @@ vb2_error_t menu_up_action(struct vb2_ui_context *ui)
 vb2_error_t menu_down_action(struct vb2_ui_context *ui)
 {
 	int item;
+	const struct vb2_menu_item_list *items;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
+	items = get_menu_items(ui);
 	item = ui->state.selected_item + 1;
-	while (item < ui->state.screen->num_items &&
+	while (item < items->count &&
 	       ((1 << item) & ui->state.disabled_item_mask))
 		item++;
 	/* Only update if item is valid */
-	if (item < ui->state.screen->num_items)
+	if (item < items->count)
 		ui->state.selected_item = item;
 
 	return VB2_REQUEST_UI_CONTINUE;
@@ -122,15 +133,17 @@ vb2_error_t menu_down_action(struct vb2_ui_context *ui)
  */
 vb2_error_t vb2_ui_menu_select_action(struct vb2_ui_context *ui)
 {
+	const struct vb2_menu_item_list *items;
 	const struct vb2_menu_item *menu_item;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_POWER_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	if (ui->state.screen->num_items == 0)
+	items = get_menu_items(ui);
+	if (items->count == 0)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	menu_item = &ui->state.screen->items[ui->state.selected_item];
+	menu_item = &items->data[ui->state.selected_item];
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
@@ -213,6 +226,16 @@ vb2_error_t (*input_action_lookup(int key))(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Core UI functions */
 
+static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
+{
+	const struct vb2_menu_item_list *items = get_menu_items(ui);
+	ui->state.selected_item = 0;
+	/* Do not select the language item (0) as the default */
+	if (items->count > 1)
+		ui->state.selected_item = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info = vb2_get_screen_info(id);
@@ -227,8 +250,8 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
-
-	return VB2_REQUEST_UI_CONTINUE;
+	else
+		return default_screen_init(ui);
 }
 
 vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
@@ -236,6 +259,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
+	const struct vb2_menu_item_list *items;
 	uint32_t key_flags;
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 	vb2_error_t rv;
@@ -249,17 +273,19 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	if (rv != VB2_REQUEST_UI_CONTINUE)
 		return rv;
 	memset(&prev_state, 0, sizeof(prev_state));
+	ui.locale_id = 23; // XXX: Read from nvdata
 
 	while (1) {
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
 
+			items = get_menu_items(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state.screen->name,
-				  ui.state.screen->num_items ?
-				  ui.state.screen->items[
-				  ui.state.selected_item].text : "null");
+				  items->count ?
+				  items->data[ui.state.selected_item].text :
+				  "null");
 
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
