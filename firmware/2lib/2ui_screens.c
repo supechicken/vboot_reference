@@ -5,6 +5,7 @@
  * Firmware screen definitions.
  */
 
+#include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -15,6 +16,11 @@
 #define MENU_ITEMS(a) \
 	.num_items = ARRAY_SIZE(a), \
 	.items = a
+
+#define LANGUAGE_ITEM { \
+	.text = "Language", \
+	.target = VB2_SCREEN_LANGUAGE_SELECT, \
+}
 
 #define ADVANCED_OPTIONS_ITEM { \
 	.text = "Advanced options", \
@@ -30,9 +36,84 @@ static const struct vb2_screen_info blank_screen = {
 };
 
 /******************************************************************************/
+/* VB2_SCREEN_LANGUAGE_SELECT */
+
+static vb2_error_t language_select_action(struct vb2_ui_context *ui)
+{
+	ui->locale_id = ui->state.selected_item;
+	VB2_DEBUG("Locale changed to %u\n", ui->locale_id);
+	return vb2_ui_back_action(ui);
+}
+
+static struct vb2_screen_info language_select_screen;
+
+static vb2_error_t init_language_menu_items(struct vb2_ui_context *ui)
+{
+	static int initialized = 0;
+	static struct vb2_menu_item *items;
+	static const struct vb2_menu_item fallback_items[] = {
+		{
+			.text = "Fallback language",
+			.action = language_select_action,
+		},
+	};
+	int i;
+	uint32_t num_locales;
+
+	if (initialized)
+		return VB2_REQUEST_UI_CONTINUE;
+
+	num_locales = vb2ex_get_locale_count();
+	if (num_locales == 0) {
+		VB2_DEBUG("WARNING: No locales available; assuming 1 locale\n");
+		num_locales = 1;
+	}
+
+	items = malloc(num_locales * sizeof(struct vb2_menu_item));
+	if (items) {
+		for (i = 0; i < num_locales; i++) {
+			items[i].text = "Some language";
+			items[i].action = language_select_action;
+		}
+		language_select_screen.num_items = num_locales;
+		language_select_screen.items = items;
+	} else {
+		VB2_DEBUG("WARNING: Failed to malloc language items; "
+			  "using fallback items\n");
+		language_select_screen.num_items = ARRAY_SIZE(fallback_items);
+		language_select_screen.items = fallback_items;
+	}
+
+	initialized = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t language_select_init(struct vb2_ui_context *ui)
+{
+	vb2_error_t rv = init_language_menu_items(ui);
+	if (rv != VB2_REQUEST_UI_CONTINUE)
+		return rv;
+	if (ui->locale_id < ui->state.screen->num_items) {
+		ui->state.selected_item = ui->locale_id;
+	} else {
+		VB2_DEBUG("WARNING: Current locale not found in menu items; "
+			  "initializing selected_item to 0\n");
+		ui->state.selected_item = 0;
+	}
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static struct vb2_screen_info language_select_screen = {
+	.id = VB2_SCREEN_LANGUAGE_SELECT,
+	.name = "Language select screen",
+	.init = language_select_init,  /* Fill menu items */
+};
+
+/******************************************************************************/
 /* VB2_SCREEN_RECOVERY_BROKEN */
 
 static const struct vb2_menu_item recovery_broken_items[] = {
+	LANGUAGE_ITEM,
 	ADVANCED_OPTIONS_ITEM,
 };
 
@@ -46,6 +127,7 @@ static const struct vb2_screen_info recovery_broken_screen = {
 /* VB2_SCREEN_ADVANCED_OPTIONS */
 
 static const struct vb2_menu_item advanced_options_items[] = {
+	LANGUAGE_ITEM,
 	{
 		.text = "Developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
@@ -66,6 +148,7 @@ static const struct vb2_screen_info advanced_options_screen = {
 /* VB2_SCREEN_RECOVERY_SELECT */
 
 static const struct vb2_menu_item recovery_select_items[] = {
+	LANGUAGE_ITEM,
 	{
 		.text = "Recovery using phone",
 		.target = VB2_SCREEN_RECOVERY_PHONE_STEP1,
@@ -212,6 +295,7 @@ static const struct vb2_screen_info recovery_disk_step1_screen = {
  */
 static const struct vb2_screen_info *screens[] = {
 	&blank_screen,
+	&language_select_screen,
 	&recovery_broken_screen,
 	&advanced_options_screen,
 	&recovery_select_screen,
