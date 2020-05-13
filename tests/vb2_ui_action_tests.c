@@ -60,18 +60,13 @@ static vb2_error_t mock_vbtlk_retval;
 static uint32_t mock_vbtlk_expected_flag;
 
 /* Mock screens */
-const struct vb2_menu_item mock_empty_menu[] = {};
 struct vb2_screen_info mock_screen_blank = {
 	.id = VB2_SCREEN_BLANK,
 	.name = "mock_screen_blank",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 struct vb2_screen_info mock_screen_base = {
 	.id = MOCK_SCREEN_BASE,
 	.name = "mock_screen_base: menuless screen",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 struct vb2_menu_item mock_screen_menu_items[] = {
 	{
@@ -97,38 +92,30 @@ struct vb2_menu_item mock_screen_menu_items[] = {
 const struct vb2_screen_info mock_screen_menu = {
 	.id = MOCK_SCREEN_MENU,
 	.name = "mock_screen_menu: screen with 5 options",
-	.num_items = ARRAY_SIZE(mock_screen_menu_items),
-	.items = mock_screen_menu_items,
+	.items = {
+		.count = ARRAY_SIZE(mock_screen_menu_items),
+		.data = mock_screen_menu_items,
+	},
 };
 const struct vb2_screen_info mock_screen_target0 = {
 	.id = MOCK_SCREEN_TARGET0,
 	.name = "mock_screen_target0",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 const struct vb2_screen_info mock_screen_target1 = {
 	.id = MOCK_SCREEN_TARGET1,
 	.name = "mock_screen_target1",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 const struct vb2_screen_info mock_screen_target2 = {
 	.id = MOCK_SCREEN_TARGET2,
 	.name = "mock_screen_target2",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 const struct vb2_screen_info mock_screen_target3 = {
 	.id = MOCK_SCREEN_TARGET3,
 	.name = "mock_screen_target3",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 const struct vb2_screen_info mock_screen_target4 = {
 	.id = MOCK_SCREEN_TARGET4,
 	.name = "mock_screen_target4",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
 };
 
 /* Mock actions */
@@ -587,6 +574,7 @@ static void ui_loop_tests(void)
 
 	/* KEY_UP, KEY_DOWN, and KEY_ENTER navigation */
 	reset_common_data();
+	add_mock_keypress(VB_KEY_UP);
 	add_mock_keypress(VB_KEY_UP);  /* (blocked) */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);
@@ -597,6 +585,8 @@ static void ui_loop_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
 		VB2_REQUEST_SHUTDOWN, "KEY_UP, KEY_DOWN, and KEY_ENTER");
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 1,
+		     MOCK_IGNORE);
 	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 0,
 		     MOCK_IGNORE);
 	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 1,
@@ -617,6 +607,7 @@ static void ui_loop_tests(void)
 	if (DETACHABLE) {
 		reset_common_data();
 		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
@@ -626,6 +617,8 @@ static void ui_loop_tests(void)
 		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
 		TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
 			VB2_REQUEST_SHUTDOWN, "DETACHABLE");
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     1, MOCK_IGNORE);
 		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
 			     0, MOCK_IGNORE);
 		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
