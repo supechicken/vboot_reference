@@ -24,8 +24,6 @@
 #define MOCK_SCREEN_TARGET0 0xff0
 #define MOCK_SCREEN_TARGET1 0xff1
 #define MOCK_SCREEN_TARGET2 0xff2
-#define MOCK_SCREEN_TARGET3 0xff3
-#define MOCK_SCREEN_TARGET4 0xff4
 
 /* Mock data */
 struct display_call {
@@ -59,6 +57,27 @@ static enum vb2_screen mock_get_screen_info_last;
 static vb2_error_t mock_vbtlk_retval;
 static uint32_t mock_vbtlk_expected_flag;
 
+/* Mock actions */
+static uint32_t mock_action_called;
+static vb2_error_t mock_action_countdown(struct vb2_ui_context *ui)
+{
+	if (++mock_action_called >= 10)
+		return VB2_SUCCESS;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t mock_action_change_screen(struct vb2_ui_context *ui)
+{
+	change_screen(ui, MOCK_SCREEN_BASE);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t mock_action_base(struct vb2_ui_context *ui)
+{
+	mock_action_called++;
+	return VB2_SUCCESS;
+}
+
 /* Mock screens */
 const struct vb2_menu_item mock_empty_menu[] = {};
 struct vb2_screen_info mock_screen_blank = {
@@ -88,7 +107,7 @@ struct vb2_menu_item mock_screen_menu_items[] = {
 	},
 	{
 		.text = "option 3",
-		.target = MOCK_SCREEN_TARGET3,
+		.action = mock_action_base,
 	},
 	{
 		.text = "option 4 (no target)",
@@ -118,33 +137,6 @@ const struct vb2_screen_info mock_screen_target2 = {
 	.num_items = ARRAY_SIZE(mock_empty_menu),
 	.items = mock_empty_menu,
 };
-const struct vb2_screen_info mock_screen_target3 = {
-	.id = MOCK_SCREEN_TARGET3,
-	.name = "mock_screen_target3",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
-};
-const struct vb2_screen_info mock_screen_target4 = {
-	.id = MOCK_SCREEN_TARGET4,
-	.name = "mock_screen_target4",
-	.num_items = ARRAY_SIZE(mock_empty_menu),
-	.items = mock_empty_menu,
-};
-
-/* Mock actions */
-static uint32_t global_action_called;
-static vb2_error_t global_action_countdown(struct vb2_ui_context *ui)
-{
-	if (++global_action_called >= 10)
-		return VB2_SUCCESS;
-	return VB2_REQUEST_UI_CONTINUE;
-}
-
-static vb2_error_t global_action_change_screen(struct vb2_ui_context *ui)
-{
-	change_screen(ui, MOCK_SCREEN_BASE);
-	return VB2_REQUEST_UI_CONTINUE;
-}
 
 static void screen_state_eq(const struct vb2_screen_state *state,
 			    enum vb2_screen screen,
@@ -278,8 +270,8 @@ static void reset_common_data(void)
 	mock_key_count = 0;
 	mock_key_total = 0;
 
-	/* For global actions */
-	global_action_called = 0;
+	/* For mock actions */
+	mock_action_called = 0;
 
 	/* For vb2_get_screen_info */
 	mock_get_screen_info_last = -1;
@@ -323,10 +315,6 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen screen)
 		return &mock_screen_target1;
 	case MOCK_SCREEN_TARGET2:
 		return &mock_screen_target2;
-	case MOCK_SCREEN_TARGET3:
-		return &mock_screen_target3;
-	case MOCK_SCREEN_TARGET4:
-		return &mock_screen_target4;
 	case MOCK_NO_SCREEN:
 		return NULL;
 	default:
@@ -389,49 +377,46 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 }
 
 /* Tests */
-static void menu_action_tests(void)
+static void menu_up_action_tests(void)
 {
-	int i, target_id;
-	char test_name[256];
+	VB2_DEBUG("Testing menu_up_action...\n");
 
-	VB2_DEBUG("Testing menu actions...\n");
-
-	/* Valid menu_up_action */
+	/* Valid action */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_up_action");
+		"valid action");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 1, MOCK_IGNORE);
 
-	/* Valid menu_up_action with mask */
+	/* Valid action with mask */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0a;  /* 0b01010 */
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_up_action with mask");
+		"valid action with mask");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 0, MOCK_IGNORE);
 
-	/* Invalid menu_up_action (blocked) */
+	/* Invalid action (blocked) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 0;
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_up_action (blocked)");
+		"invalid action (blocked)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 0, MOCK_IGNORE);
 
-	/* Invalid menu_up_action (blocked by mask) */
+	/* Invalid action (blocked by mask) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0b;  /* 0b01011 */
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_up_action (blocked by mask)");
+		"invalid action (blocked by mask)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 
 	/* Ignore volume-up when not DETACHABLE */
@@ -446,42 +431,49 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 	}
 
-	/* Valid menu_down_action */
+	VB2_DEBUG("...done.\n");
+}
+
+static void menu_down_action_tests(void)
+{
+	VB2_DEBUG("Testing menu_down_action...\n");
+
+	/* Valid action */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_down_action");
+		"valid action");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 3, MOCK_IGNORE);
 
-	/* Valid menu_down_action with mask */
+	/* Valid action with mask */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0a;  /* 0b01010 */
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_down_action with mask");
+		"valid action with mask");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 4, MOCK_IGNORE);
 
-	/* Invalid menu_down_action (blocked) */
+	/* Invalid action (blocked) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 4;
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_down_action (blocked)");
+		"invalid action (blocked)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 4, MOCK_IGNORE);
 
-	/* Invalid menu_down_action (blocked by mask) */
+	/* Invalid action (blocked by mask) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x1a;  /* 0b11010 */
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_down_action (blocked by mask)");
+		"invalid action (blocked by mask)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 
 	/* Ignore volume-down when not DETACHABLE */
@@ -496,16 +488,26 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 	}
 
-	/* menu_select_action with no item screen */
+	VB2_DEBUG("...done.\n");
+}
+
+static void menu_select_action_tests(void)
+{
+	int i, target_id;
+	char test_name[256];
+
+	VB2_DEBUG("Testing menu_select_action...\n");
+
+	/* select action with no item screen */
 	reset_common_data();
 	mock_state->screen = &mock_screen_base;
 	mock_ui_context.key = VB_KEY_ENTER;
 	TEST_EQ(menu_select_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"menu_select_action with no item screen");
+		"select action with no item screen");
 	screen_state_eq(mock_state, MOCK_SCREEN_BASE, 0, MOCK_IGNORE);
 
-	/* Try to select target 0..3 */
-	for (i = 0; i <= 3; i++) {
+	/* Try to select target 0..2 */
+	for (i = 0; i <= 2; i++) {
 		sprintf(test_name, "select target %d", i);
 		target_id = MOCK_SCREEN_TARGET0 + i;
 		reset_common_data();
@@ -517,7 +519,16 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, target_id, 0, MOCK_IGNORE);
 	}
 
-	/* Try to select no target item */
+	/* Try to select target with action (target 3) */
+	reset_common_data();
+	mock_state->screen = &mock_screen_menu;
+	mock_state->selected_item = 3;
+	mock_ui_context.key = VB_KEY_ENTER;
+	TEST_EQ(menu_select_action(&mock_ui_context),
+		VB2_SUCCESS, "select target with action");
+	TEST_EQ(mock_action_called, 1, "  action called once");
+
+	/* Try to select no target item (target 4) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 4;
@@ -538,108 +549,28 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 1, MOCK_IGNORE);
 	}
 
-	/* vb2_ui_back_action */
+	VB2_DEBUG("...done.\n");
+}
+
+static void vb2_ui_back_action_tests(void)
+{
+	VB2_DEBUG("Testing vb2_ui_back_action...\n");
+
+	/* back to root screen */
 	reset_common_data();
 	mock_ui_context.key = VB_KEY_ESC;
 	TEST_EQ(vb2_ui_back_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"vb2_ui_back_action");
+		"back to root screen");
 	screen_state_eq(mock_state, VB2_SCREEN_BLANK, 0, MOCK_IGNORE);
 
 	VB2_DEBUG("...done.\n");
 }
 
-static void ui_loop_tests(void)
+static void ctrl_d_action_tests(void)
 {
-	VB2_DEBUG("Testing ui_loop...\n");
+	VB2_DEBUG("Testing ctrl_d_action...\n");
 
-	/* Die if no root screen */
-	reset_common_data();
-	TEST_ABORT(ui_loop(ctx, MOCK_NO_SCREEN, NULL),
-		   "die if no root screen");
-	displayed_no_extra();
-
-	/* Shutdown if requested */
-	reset_common_data();
-	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_BASE, NULL),
-		VB2_REQUEST_SHUTDOWN, "shutdown if requested");
-	TEST_EQ(mock_calls_until_shutdown, 0, "  used up shutdown request");
-	displayed_eq("mock_screen_base", MOCK_SCREEN_BASE, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
-	displayed_no_extra();
-
-	/* Global action */
-	reset_common_data();
-	mock_calls_until_shutdown = -1;
-	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, global_action_countdown),
-		VB2_SUCCESS, "global action");
-	TEST_EQ(global_action_called, 10, "  global action called");
-
-	/* Global action can change screen */
-	reset_common_data();
-	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, global_action_change_screen),
-		VB2_REQUEST_SHUTDOWN, "global action can change screen");
-	displayed_eq("pass", MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
-		     MOCK_IGNORE);
-	displayed_eq("change to mock_screen_base", MOCK_IGNORE, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
-
-	/* KEY_UP, KEY_DOWN, and KEY_ENTER navigation */
-	reset_common_data();
-	add_mock_keypress(VB_KEY_UP);  /* (blocked) */
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);  /* (blocked) */
-	add_mock_keypress(VB_KEY_UP);
-	add_mock_keypress(VB_KEY_ENTER);
-	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
-		VB2_REQUEST_SHUTDOWN, "KEY_UP, KEY_DOWN, and KEY_ENTER");
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 0,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 1,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 2,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 3,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 4,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 3,
-		     MOCK_IGNORE);
-	displayed_eq("mock_screen_target_3", MOCK_SCREEN_TARGET3, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
-	displayed_no_extra();
-
-	/* For DETACHABLE */
-	if (DETACHABLE) {
-		reset_common_data();
-		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
-		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
-		TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
-			VB2_REQUEST_SHUTDOWN, "DETACHABLE");
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     0, MOCK_IGNORE);
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     1, MOCK_IGNORE);
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     2, MOCK_IGNORE);
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     3, MOCK_IGNORE);
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     4, MOCK_IGNORE);
-		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
-			     3, MOCK_IGNORE);
-		displayed_eq("mock_screen_target_3", MOCK_SCREEN_TARGET3,
-			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-		displayed_no_extra();
-	}
+	/* TODO(this CL) */
 
 	VB2_DEBUG("...done.\n");
 }
@@ -724,11 +655,146 @@ static void try_recovery_action_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
+static void recovery_to_dev_init_tests(void)
+{
+	VB2_DEBUG("Testing recovery_to_dev_init...\n");
+
+	/* TODO(this CL) */
+
+	VB2_DEBUG("...done.\n");
+}
+
+static void vb2_ui_recovery_to_dev_action_tests(void)
+{
+	VB2_DEBUG("Testing vb2_ui_recovery_to_dev_action_tests...\n");
+
+	/* TODO(this CL) */
+
+	VB2_DEBUG("...done.\n");
+}
+
+static void ui_loop_tests(void)
+{
+	VB2_DEBUG("Testing ui_loop...\n");
+
+	/* Die if no root screen */
+	reset_common_data();
+	TEST_ABORT(ui_loop(ctx, MOCK_NO_SCREEN, NULL),
+		   "die if no root screen");
+	displayed_no_extra();
+
+	/* Shutdown if requested */
+	reset_common_data();
+	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_BASE, NULL),
+		VB2_REQUEST_SHUTDOWN, "shutdown if requested");
+	TEST_EQ(mock_calls_until_shutdown, 0, "  used up shutdown request");
+	displayed_eq("mock_screen_base", MOCK_SCREEN_BASE, MOCK_IGNORE,
+		     MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Global action */
+	reset_common_data();
+	mock_calls_until_shutdown = -1;
+	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, mock_action_countdown),
+		VB2_SUCCESS, "global action");
+	TEST_EQ(mock_action_called, 10, "  action called");
+
+	/* Global action can change screen */
+	reset_common_data();
+	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, mock_action_change_screen),
+		VB2_REQUEST_SHUTDOWN, "global action can change screen");
+	displayed_eq("pass", MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
+		     MOCK_IGNORE);
+	displayed_eq("change to mock_screen_base", MOCK_IGNORE, MOCK_IGNORE,
+		     MOCK_IGNORE, MOCK_IGNORE);
+
+	/* KEY_UP, KEY_DOWN, and KEY_ENTER navigation */
+	reset_common_data();
+	add_mock_keypress(VB_KEY_UP);  /* (blocked) */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);  /* (blocked) */
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
+		VB2_REQUEST_SHUTDOWN, "KEY_UP, KEY_DOWN, and KEY_ENTER");
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 0,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 1,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 2,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 3,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 4,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 3,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 2,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_target_2", MOCK_SCREEN_TARGET2, MOCK_IGNORE,
+		     MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* For DETACHABLE */
+	if (DETACHABLE) {
+		reset_common_data();
+		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
+		TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
+			VB2_REQUEST_SHUTDOWN, "DETACHABLE");
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     0, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     1, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     2, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     3, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     4, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     3, MOCK_IGNORE);
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     2, MOCK_IGNORE);
+		displayed_eq("mock_screen_target_2", MOCK_SCREEN_TARGET2,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+		displayed_no_extra();
+	}
+
+	/* TODO(this CL): screen action */
+
+	VB2_DEBUG("...done.\n");
+}
+
 int main(void)
 {
-	menu_action_tests();
-	ui_loop_tests();
+	/* Input actions */
+	menu_up_action_tests();
+	menu_down_action_tests();
+	menu_select_action_tests();
+	vb2_ui_back_action_tests();
+	ctrl_d_action_tests();
+
+	/* Global actions */
 	try_recovery_action_tests();
+
+	/* Recovery to dev mode */
+	recovery_to_dev_init_tests();
+	vb2_ui_recovery_to_dev_action_tests();
+
+	/* Core UI loop */
+	ui_loop_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
