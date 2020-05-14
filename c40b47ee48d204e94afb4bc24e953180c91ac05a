@@ -70,6 +70,30 @@
       "revId": "c40b47ee48d204e94afb4bc24e953180c91ac05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092d6e29_55e88812",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-05-14T17:23:33Z",
+      "side": 1,
+      "message": "Sridhar - Tim\u0027s suggestion makes sense. You can just mention that coreboot defines the sub-values for this. Other than that this change should be good to go.\n\nOnce that is done, we will have to uprev the vboot repo upstream so that coreboot can see this recovery reason and not complain about it being not defined.",
+      "parentUuid": "a600c089_61f8fc83",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 37
+      },
+      "revId": "c40b47ee48d204e94afb4bc24e953180c91ac05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
