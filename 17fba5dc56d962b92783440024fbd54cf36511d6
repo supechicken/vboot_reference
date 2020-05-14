@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a19c6ce0_85f49ba3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-14T07:38:48Z",
+      "side": 1,
+      "message": "Also add VB_BUTTON_VOL_DOWN_LONG_PRESS for detachables?",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8e7418_a7ceb37a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-14T07:38:48Z",
+      "side": 1,
+      "message": "Also add VB_BUTTON_VOL_UP_LONG_PRESS for detachables?",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b0ceedf_d7977599",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
