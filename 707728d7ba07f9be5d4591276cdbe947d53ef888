@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "511f8679_3a174493",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done\nThis will change the behavior of dev mode test #3,\nwhich I think the newer version is right (follow the legacy one)\n\nBesides, is there any discussion about why we hide disabled button?\nThere is a warning about `you need to enable external boot` in legacy one if they tried to boot from external.\n(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/master/firmware/lib/vboot_ui_legacy_menu.c#184)",
+      "parentUuid": "5eecfa0c_4563a07d",
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "163b80cc_41014603",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 8
@@ -83,6 +101,54 @@
     },
     {
       "key": {
+        "uuid": "4a5c2702_e215bb73",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163b80cc_41014603",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "915b6aa2_f31da62a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac9a98c4_e75d86f1",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12ecc3d4_48762efb",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 8
@@ -103,6 +169,30 @@
       "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13023601_2fb8262e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ecc3d4_48762efb",
+      "range": {
+        "startLine": 151,
+        "startChar": 46,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "71f254b0_3b54381a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00e63b8_ed40b89f",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75331531_5a3e8ecc",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 8
@@ -143,6 +257,24 @@
       "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938d1bdf_95677b60",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75331531_5a3e8ecc",
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "4617d338_a87ad6db",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5d56c6_990b3eb6",
+      "range": {
+        "startLine": 355,
+        "startChar": 4,
+        "endLine": 355,
+        "endChar": 25
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce168e31_98c55195",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 8
@@ -189,6 +345,30 @@
       "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68933bd_208e1e1e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce168e31_98c55195",
+      "range": {
+        "startLine": 364,
+        "startChar": 37,
+        "endLine": 364,
+        "endChar": 41
+      },
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "347ec46e_9f1c051c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "I think we can add these in this CL now.\nAny suggestion about the order?",
+      "parentUuid": "a19c6ce0_85f49ba3",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df8e7418_a7ceb37a",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a35602c_e2492b9d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-15T11:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8e7418_a7ceb37a",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "17fba5dc56d962b92783440024fbd54cf36511d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
