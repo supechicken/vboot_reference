@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "24c28fea_7581b011",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-17T17:03:26Z",
+      "side": 1,
+      "message": "I think it\u0027s better to make these dev_boot_default functions return consistent values instead.  How about we move this logic directly inside of vb2_get_dev_boot_target?  See CL:2203301.",
+      "parentUuid": "511f8679_3a174493",
+      "revId": "707728d7ba07f9be5d4591276cdbe947d53ef888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "163b80cc_41014603",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 8

@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f88c4036_e8e9b2c7",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-17T17:03:26Z",
+      "side": 1,
+      "message": "This isn\u0027t *quite* right... for clamshells, Ctrl+D doubles as:\n\n  (recovery mode) \"go to TO_DEV screen\"\n  (developer mode) \"boot from internal disk\"\n\nFor detachables, these have independent shortcuts:\n\n  VOL_UP_DOWN_COMBO_PRESS \"go to TO_DEV screen\"\n  VOL_DOWN_LONG_PRESS \"boot from internal disk\"\n\nSource: https://chromium.googlesource.com/chromiumos/docs/+/master/debug_buttons.md#Firmware-Keyboard-Interface",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 47
+      },
+      "revId": "5ddf0fa0552e22bbd191bd0a6e62baf9a9a21eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78aa6500_50936509",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -13,6 +36,30 @@
       "writtenOn": "2020-05-16T04:04:15Z",
       "side": 1,
       "message": "emerge-depthcharge failed on ARM.\n\n error: \u0027general-regs-only\u0027 is incompatible with floating-point",
+      "range": {
+        "startLine": 327,
+        "startChar": 39,
+        "endLine": 327,
+        "endChar": 43
+      },
+      "revId": "5ddf0fa0552e22bbd191bd0a6e62baf9a9a21eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1564691b_4f992a7b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-17T17:03:26Z",
+      "side": 1,
+      "message": "You are right after all (\u003d\nChanging to 20500 * USEC_PER_MSEC.",
+      "parentUuid": "78aa6500_50936509",
       "range": {
         "startLine": 327,
         "startChar": 39,
