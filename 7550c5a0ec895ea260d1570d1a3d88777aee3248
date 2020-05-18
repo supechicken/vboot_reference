@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd7b8258_62be73b1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T12:38:58Z",
+      "side": 1,
+      "message": "I wonder if we should call this \"language selection\" or \"select language\"?  Otherwise, to someone who just saw the text in the console, it might not be entirely clear what the menu item is for.  In either case, probably LANGUAGE_SELECT_ITEM works since that\u0027s the screen name.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66d0bdb_30b323eb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T12:38:58Z",
+      "side": 1,
+      "message": "I think we want to update nvdata with the new locale and call vb2ex_commit_data() here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ebb909_0ae59895",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T12:38:58Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s really important for this to follow the \"action\" function argument signature if it isn\u0027t called by core UI functions, especially when it doesn\u0027t even use the ui argument.\n\nMaybe change it to void init_language_menu_items(void)?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 70
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b811d4b_70f661a7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T12:38:58Z",
+      "side": 1,
+      "message": "Modifying the vb2_screen_info struct makes me uncomfortable, especially since we decided we wouldn\u0027t do that on the depthcharge side.  What do you think about introducing a vb2_screen_info.get_items function, which returns a list of vb2_menu_item?  We\u0027d have to pull the .num_items and .items out into a separate struct like in depthcharge too.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "290061f4_bb3eb8fb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T12:38:58Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s worth the extra code here just for the case that a malloc() call failed.  Probably other stuff is going to fail anyways, so I\u0027d be fine just calling VB2_DIE().",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
