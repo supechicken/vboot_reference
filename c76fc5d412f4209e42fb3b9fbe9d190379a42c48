@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e0af2f_40349a78",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-18T05:42:28Z",
+      "side": 1,
+      "message": "@roccochen -- if default_boot and dev_boot_usb_allowed are inconsistent with one another, the system should still *not boot* to USB, but it\u0027s not that important how failure occurs.",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 47
+      },
+      "revId": "c76fc5d412f4209e42fb3b9fbe9d190379a42c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
