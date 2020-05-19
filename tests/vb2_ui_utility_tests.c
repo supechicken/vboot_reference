@@ -33,6 +33,14 @@ static int mock_shutdown_request;
 static struct vb2_ui_context mock_ui_context;
 static struct vb2_screen_state *mock_state;
 
+/* Mock actions */
+static uint32_t mock_action_called;
+static vb2_error_t mock_action_base(struct vb2_ui_context *ui)
+{
+	mock_action_called++;
+	return VB2_SUCCESS;
+}
+
 /* Mock screens */
 const struct vb2_menu_item mock_empty_menu[] = {};
 struct vb2_screen_info mock_screen_blank = {
@@ -119,6 +127,9 @@ static void reset_common_data(void)
 
 	};
 	mock_state = &mock_ui_context.state;
+
+	/* For mock actions */
+	mock_action_called = 0;
 }
 
 /* Mock functions */
@@ -254,7 +265,12 @@ static void change_screen_tests(void)
 		"change to screen which does not exist");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, MOCK_IGNORE, MOCK_IGNORE);
 
-	/* TODO: Change to screen with init */
+	/* Change to screen with init */
+	reset_common_data();
+	mock_screen_base.init = mock_action_base;
+	TEST_EQ(vb2_ui_change_screen(&mock_ui_context, MOCK_SCREEN_BASE),
+		VB2_SUCCESS, "change to screen with init");
+	TEST_EQ(mock_action_called, 1, "  action called once");
 
 	VB2_DEBUG("...done.\n");
 }
