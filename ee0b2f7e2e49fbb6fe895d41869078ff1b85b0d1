@@ -16,6 +16,24 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a40de3ea_f7385ed0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-19T08:55:24Z",
+      "side": 1,
+      "message": "Yeah, I considered having \"Cancel\" as the default originally, since I agree that it\u0027s safer.  But to keep compatibility with clamshell, we need the default to be \"Confirm\".",
+      "parentUuid": "a10e0b0d_4f77dcec",
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
