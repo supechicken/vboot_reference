@@ -34,6 +34,24 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440a07da_f4160287",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-19T09:37:07Z",
+      "side": 1,
+      "message": "BTW why do we want to make it compatible with legacy UIs? I thought we\u0027re redesigning a new UI instead of merging all the functionality of legacy UIs into the new one.",
+      "parentUuid": "a40de3ea_f7385ed0",
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
