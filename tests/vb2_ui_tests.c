@@ -64,6 +64,12 @@ static uint32_t mock_vbtlk_expected_flag[32];
 static int mock_vbtlk_count;
 static int mock_vbtlk_total;
 
+static int mock_allow_recovery;
+
+static int mock_physical_presence_pressed;
+
+static int mock_enable_dev_mode;
+
 static void add_mock_key(uint32_t press, int trusted)
 {
 	if (mock_key_total >= ARRAY_SIZE(mock_key) ||
@@ -178,7 +184,7 @@ static void reset_common_data(enum reset_type t)
 		},
 		.locale_id = 0,
 		.key = 0,
-
+		.key_trusted = 0,
 	};
 	mock_state = &mock_ui_context.state;
 
@@ -221,6 +227,15 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	/* For vb2_allow_recovery */
+	mock_allow_recovery = (t == FOR_MANUAL_RECOVERY);
+
+	/* For vb2ex_physical_presence_pressed */
+	mock_physical_presence_pressed = 0;
+
+	/* For vb2_enable_developer_mode */
+	mock_enable_dev_mode = 0;
 }
 
 /* Mock functions */
@@ -346,6 +361,22 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 		"  unexpected get_info_flags");
 
 	return mock_vbtlk_retval[mock_vbtlk_count++];
+}
+
+int vb2_allow_recovery(struct vb2_context *c)
+{
+	return mock_allow_recovery;
+}
+
+int vb2ex_physical_presence_pressed(void)
+{
+	mock_physical_presence_pressed--;
+	return mock_physical_presence_pressed > 0;
+}
+
+void vb2_enable_developer_mode(struct vb2_context *c)
+{
+	mock_enable_dev_mode = 1;
 }
 
 /* Tests */
@@ -523,6 +554,108 @@ static void manual_recovery_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Navigate to confirm dev mode selection and then confirm */
+	/* TODO: add back after we can navigation */
+
+	/* Navigate to confirm dev mode selection and then cancel */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_key(VB_KEY_CTRL('D'), 1);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"navigate to confirm dev mode selection and then cancel");
+	TEST_EQ(mock_enable_dev_mode, 0, "  dev mode not enabled");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, 0, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Space = cancel in TO_DEV screen */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_key(VB_KEY_CTRL('D'), 1);
+	add_mock_keypress(' ');
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"space = cancel in TO_DEV screen");
+	TEST_EQ(mock_enable_dev_mode, 0, "  dev mode not enabled");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, 0, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Ctrl+D = TO_DEV screen */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_key(VB_KEY_CTRL('D'), 1);
+	add_mock_key(VB_KEY_ENTER, 1);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_REBOOT_EC_TO_RO,
+		"ctrl+D = TO_DEV screen");
+	TEST_EQ(mock_enable_dev_mode, 1, "  dev mode enabled");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, 0, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Untrusted keyboard cannot enter TO_DEV (must be malicious anyway) */
+	/* TODO: No such feature for now */
+
+	/* Untrusted keyboard cannot confirm in TO_DEV menu */
+	if (PHYSICAL_PRESENCE_KEYBOARD) {
+		reset_common_data(FOR_MANUAL_RECOVERY);
+		add_mock_key(VB_KEY_CTRL('D'), 1);
+		add_mock_key(VB_KEY_ENTER, 0);
+		add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND,
+			       VB_DISK_FLAG_REMOVABLE);
+		TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+			"untrusted keyboard cannot confirm in TO_DEV");
+		TEST_EQ(mock_enable_dev_mode, 0, "  dev mode not enabled");
+		displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+		displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+			     MOCK_IGNORE, 0, MOCK_IGNORE);
+		displayed_no_extra();
+	}
+
+	/* Physical presence button */
+	if (!PHYSICAL_PRESENCE_KEYBOARD) {
+		reset_common_data(FOR_MANUAL_RECOVERY);
+		add_mock_key(VB_KEY_CTRL('D'), 1);
+		add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND,
+			       VB_DISK_FLAG_REMOVABLE);
+		mock_physical_presence_pressed = 5;
+		TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+			"physical presence keyboard");
+		TEST_EQ(mock_enable_dev_mode, 1, "  dev mode enabled");
+		TEST_EQ(mock_physical_presence_pressed, 0,
+			"  return on release");
+		displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+		displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+		displayed_no_extra();
+	}
+
+	/* Cannot enable dev mode if already enabled */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
+	add_mock_key(VB_KEY_CTRL('D'), 1);
+	add_mock_key(VB_KEY_ENTER, 1);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"cannot enable dev mode if already enabled");
+	TEST_EQ(mock_enable_dev_mode, 1, "  dev mode already on");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("TO_DEV screen", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, 0, MOCK_IGNORE);
 	displayed_no_extra();
 
 	VB2_DEBUG("...done.\n");
