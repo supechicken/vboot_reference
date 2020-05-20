@@ -234,6 +234,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7959725_353cc792",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-20T07:17:00Z",
+      "side": 1,
+      "message": "Instead of calling vb2_ui_screen_back() in init(), I\u0027d prefer doing something more general: restoring the state in vb2_ui_change_screen() whenever init() fails\n\n vb2_ui_change_screen()\n {\n     // backup state\n     memcpy(prev_state, state);\n     if (!ui-\u003estate.screen-\u003einit())\n         // reject screen change\n         memcpy(state, prev_state);\n     return UI_CONTINUE;\n }\n\nso that vb2_ui_change_screen() never fails. Once we have the stack, we don\u0027t need the \u0027prev_state\u0027 variable anymore. What do you think?",
+      "parentUuid": "0e215f05_6e66b979",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
