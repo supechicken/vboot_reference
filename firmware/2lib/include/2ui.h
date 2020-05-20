@@ -72,11 +72,6 @@ struct vb2_ui_context {
 	vb2_error_t recovery_rv;
 };
 
-vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id);
-vb2_error_t vb2_ui_menu_select_action(struct vb2_ui_context *ui);
-vb2_error_t vb2_ui_back_action(struct vb2_ui_context *ui);
-
-vb2_error_t vb2_ui_recovery_to_dev_action(struct vb2_ui_context *ui);
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(
 	struct vb2_ui_context *ui);
 vb2_error_t vb2_ui_developer_mode_boot_external_action(
