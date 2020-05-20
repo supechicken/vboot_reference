@@ -139,6 +139,29 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325404a4_54e0a3d8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-20T10:06:42Z",
+      "side": 1,
+      "message": "I designed a complicated scenario in (https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2198274/6/tests/vb2_ui_tests.c#733) which failed.\n\nCould you give some advices about this scenario?\n\n#1 - (root screen) Enter TO_DEV screen.\n#2 - (TO_DEV screen) Press pp button and hold.\n#3 - (TO_DEV screen) Leave with space key, while still holding pp button.\n#4 - (root screen) Release pp button.\n#5 - (root screen) Enter TO_DEV screen again.\n#6 - (TO_DEV screen) Wait.\n#7 - (TO_DEV screen) Press pp button and hold.\n#8 - (TO_DEV screen) Release pp button.\n\nIn my opinion, it should enable dev mode in #8, but since we do not reset `pressed_last` every time we entered TO_DEV screen, we will enable dev mode in #6.\n\n(Pressed last has been `1` since #3, so when it get `0` in #6, boot directly.\n\nDoes this scenario need be fixed, or is it overfitted?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
