@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed642884_b2afd822",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-20T04:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7b8258_62be73b1",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a66d0bdb_30b323eb",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7fe92bde_41e81e4c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-20T04:27:24Z",
+      "side": 1,
+      "message": "Done. How could I forget this?",
+      "parentUuid": "a66d0bdb_30b323eb",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11ebb909_0ae59895",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed497cc_a32e4aae",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-20T04:27:24Z",
+      "side": 1,
+      "message": "Sure. This is simply because I decided to split into 2 functions.",
+      "parentUuid": "11ebb909_0ae59895",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 70
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,30 @@
       "writtenOn": "2020-05-18T12:38:58Z",
       "side": 1,
       "message": "Not sure if it\u0027s worth the extra code here just for the case that a malloc() call failed.  Probably other stuff is going to fail anyways, so I\u0027d be fine just calling VB2_DIE().",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26220299_758e2b0e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-20T04:27:24Z",
+      "side": 1,
+      "message": "How about returning VB2_ERROR_UI_MEMORY_ALLOC?",
+      "parentUuid": "290061f4_bb3eb8fb",
       "range": {
         "startLine": 81,
         "startChar": 0,
