@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "779ed710_d2cb651e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-20T04:51:24Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t see a good reason not to save the locale unconditionally here.  Previously, I think the main reason was that LEFT/RIGHT would trigger a save on each language switch -- but here we\u0027re only saving once the final selection is made.  Also, the language selection code for each mode was separate in legacy UIs (I think?).\n\nAnyways, I\u0027d recommend just running vb2ex_commit_data(ui-\u003ectx) unconditionally, and wrapping it in a VB2_TRY to catch failure in the non-recovery case.\n\nThe comment can also be simplified to something like:\n\n  /* Commit nvdata changes immediately, in case of three-finger salute reboot. */",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "2a5fb65e7787a224fb27cbe300d37c6bcea66462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
