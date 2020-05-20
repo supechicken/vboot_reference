@@ -52,6 +52,24 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c77e6b_3327681c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-20T05:31:39Z",
+      "side": 1,
+      "message": "For accessibility purposes and to make life easier for developers, it\u0027s important to have keyboard shortcuts available, rather than forcing everyone to scroll through the menus.  If we are going to include keyboard shortcuts, we may as well use the existing ones rather than create new ones.  If it\u0027s not that much more difficult to maintain compatibility with clamshell UI, we may as well do so, in order (1) to keep developers happy -- their workflow is exactly the same; and (2) to keep FAFT working without having to make major changes to keyboard_switcher.  In certain cases, it might make sense to drop some of the old shortcuts which aren\u0027t used in keyboard_switcher -- for example, SPACE cancels a TODEV transition, which is not terribly useful.  But in cases like this, where it\u0027s possible to maintain compatibility with minimal effect on end-user experience, I think it\u0027s worth it.",
+      "parentUuid": "440a07da_f4160287",
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
