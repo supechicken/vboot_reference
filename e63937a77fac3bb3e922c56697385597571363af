@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81db8e77_7668a998",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-21T12:39:06Z",
+      "side": 1,
+      "message": "Currently we will back to root_screen.\nDo you want to hard code `vb2_ui_back_action` for disk_step# first?\nOr use BACK_ITEM(target_screen) for now?",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "e63937a77fac3bb3e922c56697385597571363af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
