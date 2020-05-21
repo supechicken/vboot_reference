@@ -18,14 +18,14 @@
 #define MOCK_IGNORE 0xffffu
 
 /* Mock screen index for testing screen utility functions. */
-#define MOCK_NO_SCREEN 0xef0
-#define MOCK_SCREEN_BASE 0xeff
-#define MOCK_SCREEN_MENU 0xfff
-#define MOCK_SCREEN_TARGET0 0xff0
-#define MOCK_SCREEN_TARGET1 0xff1
-#define MOCK_SCREEN_TARGET2 0xff2
-#define MOCK_SCREEN_TARGET3 0xff3
-#define MOCK_SCREEN_TARGET4 0xff4
+#define MOCK_NO_SCREEN 0xef00
+#define MOCK_SCREEN_BASE 0xef10
+#define MOCK_SCREEN_MENU 0xef11
+#define MOCK_SCREEN_TARGET0 0xef20
+#define MOCK_SCREEN_TARGET1 0xef21
+#define MOCK_SCREEN_TARGET2 0xef22
+#define MOCK_SCREEN_TARGET3 0xef23
+#define MOCK_SCREEN_ROOT 0xefff
 
 /* Mock data */
 struct display_call {
@@ -54,26 +54,42 @@ static int mock_key_trusted[64];
 static int mock_key_count;
 static int mock_key_total;
 
-static enum vb2_screen mock_get_screen_info_last;
+static enum vb2_screen mock_get_screen_info_called;
 
 static vb2_error_t mock_vbtlk_retval;
 static uint32_t mock_vbtlk_expected_flag;
 
+/* Mock actions */
+static uint32_t mock_action_called;
+static vb2_error_t mock_action_countdown(struct vb2_ui_context *ui)
+{
+	if (++mock_action_called >= 10)
+		return VB2_SUCCESS;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t mock_action_change_screen(struct vb2_ui_context *ui)
+{
+	return vb2_ui_change_screen(ui, MOCK_SCREEN_BASE);
+}
+
 /* Mock screens */
+struct vb2_screen_info mock_screen_temp;
+const struct vb2_screen_info *mock_screen_temp_ptr;
 const struct vb2_menu_item mock_empty_menu[] = {};
-struct vb2_screen_info mock_screen_blank = {
+const struct vb2_screen_info mock_screen_blank = {
 	.id = VB2_SCREEN_BLANK,
 	.name = "mock_screen_blank",
 	.num_items = ARRAY_SIZE(mock_empty_menu),
 	.items = mock_empty_menu,
 };
-struct vb2_screen_info mock_screen_base = {
+const struct vb2_screen_info mock_screen_base = {
 	.id = MOCK_SCREEN_BASE,
 	.name = "mock_screen_base: menuless screen",
 	.num_items = ARRAY_SIZE(mock_empty_menu),
 	.items = mock_empty_menu,
 };
-struct vb2_menu_item mock_screen_menu_items[] = {
+const struct vb2_menu_item mock_screen_menu_items[] = {
 	{
 		.text = "option 0",
 		.target = MOCK_SCREEN_TARGET0,
@@ -96,7 +112,7 @@ struct vb2_menu_item mock_screen_menu_items[] = {
 };
 const struct vb2_screen_info mock_screen_menu = {
 	.id = MOCK_SCREEN_MENU,
-	.name = "mock_screen_menu: screen with 5 options",
+	.name = "mock_screen_menu: screen with 4 options",
 	.num_items = ARRAY_SIZE(mock_screen_menu_items),
 	.items = mock_screen_menu_items,
 };
@@ -124,27 +140,12 @@ const struct vb2_screen_info mock_screen_target3 = {
 	.num_items = ARRAY_SIZE(mock_empty_menu),
 	.items = mock_empty_menu,
 };
-const struct vb2_screen_info mock_screen_target4 = {
-	.id = MOCK_SCREEN_TARGET4,
-	.name = "mock_screen_target4",
+const struct vb2_screen_info mock_screen_root = {
+	.id = MOCK_SCREEN_ROOT,
+	.name = "mock_screen_root",
 	.num_items = ARRAY_SIZE(mock_empty_menu),
 	.items = mock_empty_menu,
 };
-
-/* Mock actions */
-static uint32_t global_action_called;
-static vb2_error_t global_action_countdown(struct vb2_ui_context *ui)
-{
-	if (++global_action_called >= 10)
-		return VB2_SUCCESS;
-	return VB2_REQUEST_UI_CONTINUE;
-}
-
-static vb2_error_t global_action_change_screen(struct vb2_ui_context *ui)
-{
-	vb2_ui_change_screen(ui, MOCK_SCREEN_BASE);
-	return VB2_REQUEST_UI_CONTINUE;
-}
 
 static void screen_state_eq(const struct vb2_screen_state *state,
 			    enum vb2_screen screen,
@@ -252,18 +253,27 @@ static void reset_common_data(void)
 	/* For try_recovery_action */
 	invalid_disk_last = -1;
 
+	/* Reset mock_screen_temp for test by test temporary screen_info */
+	mock_screen_temp = (struct vb2_screen_info){
+	      .id = MOCK_NO_SCREEN,
+	      .name = "mock_screen_temp",
+	      .num_items = ARRAY_SIZE(mock_empty_menu),
+	      .items = mock_empty_menu,
+	};
+	mock_screen_temp_ptr = &mock_screen_temp;
+
 	/* Mock ui_context based on mock screens */
 	mock_ui_context = (struct vb2_ui_context){
 		.ctx = ctx,
-		.root_screen = &mock_screen_blank,
+		.root_screen = &mock_screen_root,
 		.state = (struct vb2_screen_state){
-			.screen = &mock_screen_blank,
+			.screen = mock_screen_temp_ptr,
 			.selected_item = 0,
 			.disabled_item_mask = 0,
 		},
 		.locale_id = 0,
 		.key = 0,
-
+		.key_trusted = 0,
 	};
 	mock_state = &mock_ui_context.state;
 
@@ -278,11 +288,11 @@ static void reset_common_data(void)
 	mock_key_count = 0;
 	mock_key_total = 0;
 
-	/* For global actions */
-	global_action_called = 0;
+	/* For mock actions */
+	mock_action_called = 0;
 
-	/* For vb2_get_screen_info */
-	mock_get_screen_info_last = -1;
+	/* For chagen_screen and vb2_get_screen_info */
+	mock_get_screen_info_called = 0;
 
 	/* For VbTryLoadKernel */
 	mock_vbtlk_retval = VB2_ERROR_MOCK;
@@ -308,7 +318,7 @@ uint32_t VbExIsShutdownRequested(void)
 
 const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen screen)
 {
-	mock_get_screen_info_last = screen;
+	mock_get_screen_info_called++;
 
 	switch ((int)screen) {
 	case VB2_SCREEN_BLANK:
@@ -325,12 +335,11 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen screen)
 		return &mock_screen_target2;
 	case MOCK_SCREEN_TARGET3:
 		return &mock_screen_target3;
-	case MOCK_SCREEN_TARGET4:
-		return &mock_screen_target4;
 	case MOCK_NO_SCREEN:
 		return NULL;
 	default:
-		return &mock_screen_blank;
+		mock_screen_temp.id = screen;
+		return mock_screen_temp_ptr;
 	}
 }
 
@@ -389,49 +398,46 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 }
 
 /* Tests */
-static void menu_action_tests(void)
+static void menu_up_action_tests(void)
 {
-	int i, target_id;
-	char test_name[256];
+	VB2_DEBUG("Testing menu_up_action...\n");
 
-	VB2_DEBUG("Testing menu actions...\n");
-
-	/* Valid menu_up_action */
+	/* Valid action */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_up_action");
+		"valid action");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 1, MOCK_IGNORE);
 
-	/* Valid menu_up_action with mask */
+	/* Valid action with mask */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0a;  /* 0b01010 */
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_up_action with mask");
+		"valid action with mask");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 0, MOCK_IGNORE);
 
-	/* Invalid menu_up_action (blocked) */
+	/* Invalid action (blocked) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 0;
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_up_action (blocked)");
+		"invalid action (blocked)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 0, MOCK_IGNORE);
 
-	/* Invalid menu_up_action (blocked by mask) */
+	/* Invalid action (blocked by mask) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0b;  /* 0b01011 */
 	mock_ui_context.key = VB_KEY_UP;
 	TEST_EQ(menu_up_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_up_action (blocked by mask)");
+		"invalid action (blocked by mask)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 
 	/* Ignore volume-up when not DETACHABLE */
@@ -446,42 +452,49 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 	}
 
-	/* Valid menu_down_action */
+	VB2_DEBUG("...done.\n");
+}
+
+static void menu_down_action_tests(void)
+{
+	VB2_DEBUG("Testing menu_down_action...\n");
+
+	/* Valid action */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_down_action");
+		"valid action");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 3, MOCK_IGNORE);
 
-	/* Valid menu_down_action with mask */
+	/* Valid action with mask */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x0a;  /* 0b01010 */
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"valid menu_down_action with mask");
+		"valid action with mask");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 4, MOCK_IGNORE);
 
-	/* Invalid menu_down_action (blocked) */
+	/* Invalid action (blocked) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 4;
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_down_action (blocked)");
+		"invalid action (blocked)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 4, MOCK_IGNORE);
 
-	/* Invalid menu_down_action (blocked by mask) */
+	/* Invalid action (blocked by mask) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 2;
 	mock_state->disabled_item_mask = 0x1a;  /* 0b11010 */
 	mock_ui_context.key = VB_KEY_DOWN;
 	TEST_EQ(menu_down_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid menu_down_action (blocked by mask)");
+		"invalid action (blocked by mask)");
 	screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 
 	/* Ignore volume-down when not DETACHABLE */
@@ -496,7 +509,17 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 2, MOCK_IGNORE);
 	}
 
-	/* menu_select_action with no item screen */
+	VB2_DEBUG("...done.\n");
+}
+
+static void menu_select_action_tests(void)
+{
+	int i, target_id;
+	char test_name[256];
+
+	VB2_DEBUG("Testing menu_select_action...\n");
+
+	/* select action with no item screen */
 	reset_common_data();
 	mock_state->screen = &mock_screen_base;
 	mock_ui_context.key = VB_KEY_ENTER;
@@ -518,7 +541,7 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, target_id, 0, MOCK_IGNORE);
 	}
 
-	/* Try to select no target item */
+	/* Try to select no target item (target 4) */
 	reset_common_data();
 	mock_state->screen = &mock_screen_menu;
 	mock_state->selected_item = 4;
@@ -540,12 +563,99 @@ static void menu_action_tests(void)
 		screen_state_eq(mock_state, MOCK_SCREEN_MENU, 1, MOCK_IGNORE);
 	}
 
-	/* vb2_ui_back_action */
+	VB2_DEBUG("...done.\n");
+}
+
+static void vb2_ui_back_action_tests(void)
+{
+	VB2_DEBUG("Testing vb2_ui_back_action...\n");
+
+	/* back to root screen */
 	reset_common_data();
 	mock_ui_context.key = VB_KEY_ESC;
 	TEST_EQ(vb2_ui_back_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"vb2_ui_back_action");
-	screen_state_eq(mock_state, VB2_SCREEN_BLANK, 0, MOCK_IGNORE);
+		"back to root screen");
+	screen_state_eq(mock_state, MOCK_SCREEN_ROOT, MOCK_IGNORE, MOCK_IGNORE);
+
+	VB2_DEBUG("...done.\n");
+}
+
+static void try_recovery_action_tests(void)
+{
+	VB2_DEBUG("Testing try recovery action...\n");
+
+	/* Success on the first try */
+	reset_common_data();
+	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
+		"success on the first try");
+	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
+
+	/* No disk found on the first try */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"no disk found on the first try");
+	screen_state_eq(mock_state, VB2_SCREEN_RECOVERY_SELECT,
+			MOCK_IGNORE, MOCK_IGNORE);
+
+	/* Invalid disk on the first try */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"invalid on the first try");
+	screen_state_eq(mock_state, VB2_SCREEN_RECOVERY_INVALID,
+			MOCK_IGNORE, MOCK_IGNORE);
+
+	/* Success, last == 0 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 0;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
+		"success, last == 0");
+	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
+
+	/* No disk found, last == 0 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 0;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"no disk found, last == 0");
+	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
+
+	/* Invalid disk, last == 0 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 0;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"invalid, last == 0");
+	screen_state_eq(mock_state, VB2_SCREEN_RECOVERY_INVALID,
+			MOCK_IGNORE, MOCK_IGNORE);
+
+	/* Success, last == 1 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 1;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
+		"success, last == 1");
+	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
+
+	/* No disk found, last == 1 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 1;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"no disk found, last == 1");
+	screen_state_eq(mock_state, VB2_SCREEN_RECOVERY_SELECT,
+			MOCK_IGNORE, MOCK_IGNORE);
+
+	/* Invalid disk, last == 1 */
+	reset_common_data();
+	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
+	invalid_disk_last = 1;
+	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
+		"invalid, last == 1");
+	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
 
 	VB2_DEBUG("...done.\n");
 }
@@ -572,13 +682,13 @@ static void ui_loop_tests(void)
 	/* Global action */
 	reset_common_data();
 	mock_calls_until_shutdown = -1;
-	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, global_action_countdown),
+	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, mock_action_countdown),
 		VB2_SUCCESS, "global action");
-	TEST_EQ(global_action_called, 10, "  global action called");
+	TEST_EQ(mock_action_called, 10, "  action called");
 
 	/* Global action can change screen */
 	reset_common_data();
-	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, global_action_change_screen),
+	TEST_EQ(ui_loop(ctx, VB2_SCREEN_BLANK, mock_action_change_screen),
 		VB2_REQUEST_SHUTDOWN, "global action can change screen");
 	displayed_eq("pass", MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
 		     MOCK_IGNORE);
@@ -593,6 +703,7 @@ static void ui_loop_tests(void)
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);  /* (blocked) */
+	add_mock_keypress(VB_KEY_UP);
 	add_mock_keypress(VB_KEY_UP);
 	add_mock_keypress(VB_KEY_ENTER);
 	TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
@@ -609,7 +720,9 @@ static void ui_loop_tests(void)
 		     MOCK_IGNORE);
 	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 3,
 		     MOCK_IGNORE);
-	displayed_eq("mock_screen_target_3", MOCK_SCREEN_TARGET3, MOCK_IGNORE,
+	displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE, 2,
+		     MOCK_IGNORE);
+	displayed_eq("mock_screen_target_2", MOCK_SCREEN_TARGET2, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE);
 	displayed_no_extra();
 
@@ -622,6 +735,7 @@ static void ui_loop_tests(void)
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_DOWN_SHORT_PRESS);
+		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_VOL_UP_SHORT_PRESS);
 		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
 		TEST_EQ(ui_loop(ctx, MOCK_SCREEN_MENU, NULL),
@@ -638,7 +752,9 @@ static void ui_loop_tests(void)
 			     4, MOCK_IGNORE);
 		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
 			     3, MOCK_IGNORE);
-		displayed_eq("mock_screen_target_3", MOCK_SCREEN_TARGET3,
+		displayed_eq("mock_screen_menu", MOCK_SCREEN_MENU, MOCK_IGNORE,
+			     2, MOCK_IGNORE);
+		displayed_eq("mock_screen_target_2", MOCK_SCREEN_TARGET2,
 			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 		displayed_no_extra();
 	}
@@ -646,91 +762,19 @@ static void ui_loop_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
-static void try_recovery_action_tests(void)
-{
-	VB2_DEBUG("Testing try recovery action...\n");
-
-	/* Success on the first try */
-	reset_common_data();
-	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
-		"success on the first try");
-	TEST_EQ(mock_get_screen_info_last, -1, "  no change_screen");
-
-	/* No disk found on the first try */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"no disk found on the first try");
-	TEST_EQ(mock_get_screen_info_last, VB2_SCREEN_RECOVERY_SELECT,
-		"  recovery select screen");
-
-	/* Invalid disk on the first try */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid on the first try");
-	TEST_EQ(mock_get_screen_info_last, VB2_SCREEN_RECOVERY_INVALID,
-		"  recovery invalid screen");
-
-	/* Success, last == 0 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 0;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
-		"success, last == 0");
-	TEST_EQ(mock_get_screen_info_last, -1, "  no change_screen");
-
-	/* No disk found, last == 0 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 0;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"no disk found, last == 0");
-	TEST_EQ(mock_get_screen_info_last, -1, "  no change_screen");
-
-	/* Invalid disk, last == 0 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 0;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid, last == 0");
-	TEST_EQ(mock_get_screen_info_last, VB2_SCREEN_RECOVERY_INVALID,
-		"  recovery invalid screen");
-
-	/* Success, last == 1 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 1;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_SUCCESS,
-		"success, last == 1");
-	TEST_EQ(mock_get_screen_info_last, -1, "  no change_screen");
-
-	/* No disk found, last == 1 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 1;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"no disk found, last == 1");
-	TEST_EQ(mock_get_screen_info_last, VB2_SCREEN_RECOVERY_SELECT,
-		"  recovery select screen");
-
-	/* Invalid disk, last == 1 */
-	reset_common_data();
-	set_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
-	invalid_disk_last = 1;
-	TEST_EQ(try_recovery_action(&mock_ui_context), VB2_REQUEST_UI_CONTINUE,
-		"invalid, last == 1");
-	TEST_EQ(mock_get_screen_info_last, -1, "  no change_screen");
-
-	VB2_DEBUG("...done.\n");
-}
-
 int main(void)
 {
-	menu_action_tests();
-	ui_loop_tests();
+	/* Input actions */
+	menu_up_action_tests();
+	menu_down_action_tests();
+	menu_select_action_tests();
+	vb2_ui_back_action_tests();
+
+	/* Global actions */
 	try_recovery_action_tests();
+
+	/* Core UI loop */
+	ui_loop_tests();
 
 	return gTestSuccess ? 0 : 255;
 }

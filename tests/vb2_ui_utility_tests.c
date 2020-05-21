@@ -18,9 +18,9 @@
 #define MOCK_IGNORE 0xffffu
 
 /* Mock screen index for testing screen utility functions. */
-#define MOCK_NO_SCREEN 0xef0
-#define MOCK_SCREEN_BASE 0xeff
-#define MOCK_SCREEN_MENU 0xfff
+#define MOCK_NO_SCREEN 0xef00
+#define MOCK_SCREEN_BASE 0xef10
+#define MOCK_SCREEN_MENU 0xef11
 
 /* Mock data */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
@@ -115,6 +115,7 @@ static void reset_common_data(void)
 		},
 		.locale_id = 0,
 		.key = 0,
+		.key_trusted = 0,
 
 	};
 	mock_state = &mock_ui_context.state;
