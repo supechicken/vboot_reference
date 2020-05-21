@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5cae14_57e307b4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-21T07:12:18Z",
+      "side": 1,
+      "message": "Joel, I think this is the reason FAFT firmware_CorruptBothKernelAB.dev failed.\n\nOn a second thought, I don\u0027t think we should ignore the error of VbTryLoadKernel(). Otherwise, vb2api_fail() would never be called in dev mode when the kernel is corrupted.",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 32
+      },
+      "revId": "23f819197799d56824ed5b8fc92a23625fe65348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
