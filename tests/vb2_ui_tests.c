@@ -175,7 +175,7 @@ static void reset_common_data(enum reset_type t)
 		},
 		.locale_id = 0,
 		.key = 0,
-
+		.key_trusted = 0,
 	};
 	mock_state = &mock_ui_context.state;
 
