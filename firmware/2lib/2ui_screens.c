@@ -29,6 +29,16 @@ static const struct vb2_menu_item_list empty_items = {
 	.target = VB2_SCREEN_LANGUAGE_SELECT, \
 }
 
+#define NEXT_ITEM(target_screen) { \
+	.text = "Next", \
+	.target = (target_screen), \
+}
+
+#define BACK_ITEM { \
+	.text = "Back", \
+	.action = vb2_ui_back_action, \
+}
+
 #define ADVANCED_OPTIONS_ITEM { \
 	.text = "Advanced options", \
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
@@ -158,10 +168,7 @@ static const struct vb2_menu_item advanced_options_items[] = {
 		.text = "Enable developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
 	},
-	[ADVANCED_OPTIONS_ITEM_BACK] = {
-		.text = "Back",
-		.action = vb2_ui_back_action,
-	},
+	[ADVANCED_OPTIONS_ITEM_BACK] = BACK_ITEM,
 };
 
 static const struct vb2_screen_info advanced_options_screen = {
@@ -341,6 +348,8 @@ static const struct vb2_screen_info recovery_phone_step1_screen = {
 
 static const struct vb2_menu_item recovery_disk_step1_items[] = {
 	LANGUAGE_SELECT_ITEM,
+	NEXT_ITEM(VB2_SCREEN_RECOVERY_DISK_STEP2),
+	BACK_ITEM,
 };
 
 static const struct vb2_screen_info recovery_disk_step1_screen = {
@@ -348,6 +357,36 @@ static const struct vb2_screen_info recovery_disk_step1_screen = {
 	.name = "Disk recovery step 1",
 	.items = MENU_ITEMS(recovery_disk_step1_items),
 };
+
+/******************************************************************************/
+/* VB2_SCREEN_RECOVERY_DISK_STEP2 */
+
+static const struct vb2_menu_item recovery_disk_step2_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	NEXT_ITEM(VB2_SCREEN_RECOVERY_DISK_STEP3),
+	BACK_ITEM,
+};
+
+static const struct vb2_screen_info recovery_disk_step2_screen = {
+	.id = VB2_SCREEN_RECOVERY_DISK_STEP2,
+	.name = "Disk recovery step 2",
+	.items = MENU_ITEMS(recovery_disk_step2_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_RECOVERY_DISK_STEP3 */
+
+static const struct vb2_menu_item recovery_disk_step3_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	BACK_ITEM,
+};
+
+static const struct vb2_screen_info recovery_disk_step3_screen = {
+	.id = VB2_SCREEN_RECOVERY_DISK_STEP3,
+	.name = "Disk recovery step 3",
+	.items = MENU_ITEMS(recovery_disk_step3_items),
+};
+
 
 /******************************************************************************/
 /* VB2_SCREEN_DEVELOPER_MODE */
@@ -540,6 +579,8 @@ static const struct vb2_screen_info *screens[] = {
 	&recovery_to_dev_screen,
 	&recovery_phone_step1_screen,
 	&recovery_disk_step1_screen,
+	&recovery_disk_step2_screen,
+	&recovery_disk_step3_screen,
 	&developer_mode_screen,
 	&developer_to_norm_screen,
 };
