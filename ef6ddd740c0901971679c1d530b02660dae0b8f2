@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "32cd5ee8_f93814f1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T06:54:48Z",
+      "side": 1,
+      "message": "Yu-Ping is right -- we can assume it\u0027s initialized to 0.",
+      "parentUuid": "7935baac_4aea0581",
+      "range": {
+        "startLine": 350,
+        "startChar": 9,
+        "endLine": 350,
+        "endChar": 20
+      },
+      "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a88da6cf_76eb1b52",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2020-05-21T12:56:13Z",
       "side": 1,
       "message": "If we had checked change into same screen in vb2_ui_change_screen, can we just skip the if-clause?\ni.e. \n /* Switch to appropriate screen. */\n ui-\u003erecovery_rv \u003d rv;\n return vb2_ui_change_screen(...);",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 2
+      },
+      "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de9b60a_22510d98",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T06:54:48Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  This would mean that as the user navigates to different screens, they will be instantly switched back to one of these two.",
+      "parentUuid": "a88da6cf_76eb1b52",
       "range": {
         "startLine": 350,
         "startChar": 1,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "a75a6445_cbd9a67e",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T06:54:48Z",
+      "side": 1,
+      "message": "Let\u0027s just leave it.  I don\u0027t think it\u0027s worth the extra complexity in order to save a few bytes.",
+      "parentUuid": "9e982cdf_cedeff45",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ead0619_c3b2357a",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2020-05-22T03:36:18Z",
       "side": 1,
       "message": "A note that we use\n\n  screen_state_eq(mock_state, SCREEN, MOCK_IGNORE, MOCK_IGNORE)\n\ninstead if CL:2209780 merged first",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 30
+      },
+      "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554087eb_262357b9",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T06:54:48Z",
+      "side": 1,
+      "message": "Thanks for the heads-up!",
+      "parentUuid": "3ead0619_c3b2357a",
       "range": {
         "startLine": 662,
         "startChar": 0,
