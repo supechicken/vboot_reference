@@ -22,6 +22,30 @@
       "revId": "23f819197799d56824ed5b8fc92a23625fe65348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdadab56_5efba510",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:57:35Z",
+      "side": 1,
+      "message": "This seems like an open question -- what would be more useful for a developer?  To have an error dialog saying that the internal boot failed?  Or to end up in recovery mode?  Personally, I\u0027d choose the former.\n\nBut, it\u0027s probably a good idea to just stick with the existing FAFT behaviour right now.  So please feel free to make those changes to get CorruptBothKernelAB.dev passing.",
+      "parentUuid": "5a5cae14_57e307b4",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 32
+      },
+      "revId": "23f819197799d56824ed5b8fc92a23625fe65348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
