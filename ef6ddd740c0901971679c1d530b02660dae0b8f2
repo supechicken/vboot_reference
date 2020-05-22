@@ -92,6 +92,29 @@
       "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ead0619_c3b2357a",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-22T03:36:18Z",
+      "side": 1,
+      "message": "A note that we use\n\n  screen_state_eq(mock_state, SCREEN, MOCK_IGNORE, MOCK_IGNORE)\n\ninstead if CL:2209780 merged first",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 30
+      },
+      "revId": "ef6ddd740c0901971679c1d530b02660dae0b8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
