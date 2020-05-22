@@ -117,6 +117,30 @@
       "revId": "492f7c46ddb010099679f20b36e473c57ca2aafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68020eee_21473ee9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T10:16:27Z",
+      "side": 1,
+      "message": "The functionality is implemented in a way that is totally specific to Wilco.\n\n * Length must be exactly VENDOR_DATA_LENGTH (no variable-length strings)\n * String may start with a vowel but must follow with numbers\n * Callback flow disables WP, writes to VPD, clears GBB flags, and enables WP\n * Disabling WP is written in a way specific to Wilco machines\n\nI\u0027m fine generalizing these features and making them more available if that\u0027s what people want.  But I think they will need to be rewritten when the time comes anyways, including the UI which will be Groot moving forward.  That\u0027s why I\u0027d prefer to cordon the Wilco stuff off in a way that\u0027s easy to remove/replace.",
+      "parentUuid": "f510b1b5_55867480",
+      "range": {
+        "startLine": 1241,
+        "startChar": 22,
+        "endLine": 1241,
+        "endChar": 34
+      },
+      "revId": "492f7c46ddb010099679f20b36e473c57ca2aafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
