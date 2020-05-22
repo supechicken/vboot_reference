@@ -21,6 +21,7 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui);
 /* From 2ui_screens.c */
 vb2_error_t advanced_options_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_select_init(struct vb2_ui_context *ui);
+vb2_error_t recovery_invalid_action(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_finalize(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui);
