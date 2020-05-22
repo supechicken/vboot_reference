@@ -42,7 +42,7 @@ static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
 
 static struct vb2_ui_context mock_ui_context;
-static struct vb2_screen_state *mock_state;
+static struct vb2_screen_state mock_state;
 
 static struct display_call mock_displayed[64];
 static int mock_displayed_count;
@@ -248,7 +248,7 @@ static void reset_common_data(enum reset_type t)
 	/* Mock ui_context based on real screens */
 	memset(&mock_ui_context, 0, sizeof(mock_ui_context));
 	mock_ui_context.ctx = ctx;
-	mock_state = &mock_ui_context.state;
+	mock_ui_context.state = &mock_state;
 
 	/* For vb2ex_display_ui */
 	memset(mock_displayed, 0, sizeof(mock_displayed));
@@ -652,6 +652,9 @@ static void developer_tests(void)
 		"if dev mode is disabled, goes to to_norm screen repeatedly");
 	DISPLAYED_EQ("to_norm", VB2_SCREEN_DEVELOPER_TO_NORM,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("to_norm", VB2_SCREEN_DEVELOPER_TO_NORM,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
 
 	/* Select to_norm in dev menu and confirm */
@@ -1028,10 +1031,11 @@ static void developer_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #1: Return to secure mode */
 	add_mock_keypress(VB_KEY_ESC);
-	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #2: Boot internal */
 	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
 		"dev mode screen");
@@ -1049,6 +1053,7 @@ static void developer_screen_tests(void)
 	DISPLAYED_EQ("#1: return to secure mode", VB2_SCREEN_DEVELOPER_TO_NORM,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #2: Boot internal */
+	DISPLAYED_PASS();
 	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
 		     MOCK_IGNORE, 2, MOCK_IGNORE);
 	VB2_DEBUG("#2: boot internal (no extra screen)\n");
@@ -1072,11 +1077,10 @@ static void developer_screen_tests(void)
 	/* #4: Advanced options */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ESC);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"dev mode screen");
@@ -1088,8 +1092,6 @@ static void developer_screen_tests(void)
 	DISPLAYED_EQ("#4: advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* End of menu */
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("end of menu", VB2_SCREEN_DEVELOPER_MODE,
 		     MOCK_IGNORE, 4, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
@@ -1106,12 +1108,8 @@ static void developer_screen_tests(void)
 	/* #2: Back */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_DOWN);
 	extend_calls_until_shutdown();
@@ -1120,8 +1118,8 @@ static void developer_screen_tests(void)
 	DISPLAYED_PASS();
 	DISPLAYED_PASS();
 	DISPLAYED_PASS();
-	/* #0: Language menu */
 	DISPLAYED_PASS();
+	/* #0: Language menu */
 	DISPLAYED_EQ("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 0, 0x2);
 	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
@@ -1129,15 +1127,11 @@ static void developer_screen_tests(void)
 	/* #1: (Disabled) */
 	/* #2: Back */
 	DISPLAYED_PASS();
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 2, 0x2);
 	DISPLAYED_EQ("#2: back", VB2_SCREEN_DEVELOPER_MODE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* End of menu */
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("end of menu", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 2, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
@@ -1154,6 +1148,7 @@ static void broken_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #1: Advanced options */
 	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ESC);
@@ -1168,6 +1163,7 @@ static void broken_recovery_screen_tests(void)
 	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #1: Advanced options */
+	DISPLAYED_PASS();
 	DISPLAYED_EQ("broken screen", VB2_SCREEN_RECOVERY_BROKEN,
 		     MOCK_IGNORE, 1, 0x0);
 	DISPLAYED_EQ("#1: advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
@@ -1186,7 +1182,7 @@ static void broken_recovery_screen_tests(void)
 	/* #1: (Disabled) */
 	/* #2: Back */
 	add_mock_keypress(VB_KEY_ESC);
-	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ENTER);
@@ -1225,6 +1221,7 @@ static void manual_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #1: Phone recovery */
 	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #2: External disk recovery */
 	add_mock_keypress(VB_KEY_ESC);
@@ -1233,12 +1230,9 @@ static void manual_recovery_screen_tests(void)
 	/* #3: Advanced options */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ESC);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
@@ -1250,6 +1244,7 @@ static void manual_recovery_screen_tests(void)
 	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #1: Phone recovery */
+	DISPLAYED_PASS();
 	DISPLAYED_EQ("recovery select", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, 1, 0x0);
 	DISPLAYED_EQ("#1: phone recovery", VB2_SCREEN_RECOVERY_PHONE_STEP1,
@@ -1262,14 +1257,11 @@ static void manual_recovery_screen_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #3: Advanced options */
 	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("recovery select", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, 3, 0x0);
 	DISPLAYED_EQ("#3: advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* End of menu */
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("end of menu", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, 3, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
@@ -1285,19 +1277,12 @@ static void manual_recovery_screen_tests(void)
 	/* #1: Enable dev mode */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #2: Back */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_ENTER);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
-	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
@@ -1315,24 +1300,17 @@ static void manual_recovery_screen_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #1: Enable dev mode */
 	DISPLAYED_PASS();
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 1, 0x0);
 	DISPLAYED_EQ("#1: enable dev mode", VB2_SCREEN_RECOVERY_TO_DEV,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* #2: Back */
 	DISPLAYED_PASS();
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_EQ("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 2, 0x0);
 	DISPLAYED_EQ("#2: back", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	/* End of menu */
-	DISPLAYED_PASS();
-	DISPLAYED_PASS();
 	DISPLAYED_PASS();
 	DISPLAYED_EQ("end of menu", VB2_SCREEN_ADVANCED_OPTIONS,
 		     MOCK_IGNORE, 2, 0x0);
