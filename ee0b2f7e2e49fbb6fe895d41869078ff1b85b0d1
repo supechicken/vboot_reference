@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28558ee2_239d2b54",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:54:07Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s particularly important -- we\u0027re already checking for a trusted keyboard for the ENTER confirmation.  We want the key combo to work on tablets too, for FAFT.  If we require a trusted keyboard, it won\u0027t work in that scenario.",
+      "parentUuid": "454cc855_b5e77251",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f84a841_b585811c",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "10340cbb_1f11333b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:54:07Z",
+      "side": 1,
+      "message": "If the root screen is not found, we should exit with an error, and probably even reboot into recovery mode.  Feel free to make this change.",
+      "parentUuid": "4f84a841_b585811c",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 35
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a32a19f7_96c87d42",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 16
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-20T07:05:37Z",
       "side": 1,
       "message": "I am designing tests for action interferences.\n\nCurrent we run actions by the following order:\n(.init) -\u003e .action -\u003e option hooked action -\u003e global_action\n\nI think the order is not strictly defined, so I will not test anything about action-solving priority to prevent overfitting.\n\nIs it fine? Or should I assure we solving these in specified order?",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 3
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60920e2a_75c36738",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:54:07Z",
+      "side": 1,
+      "message": "It\u0027d be preferable if tests don\u0027t assume this particular order.\n\nI.e. if we changed the order around, tests would still pass.",
+      "parentUuid": "a32a19f7_96c87d42",
       "range": {
         "startLine": 269,
         "startChar": 0,
@@ -153,6 +225,30 @@
       "writtenOn": "2020-05-20T10:06:42Z",
       "side": 1,
       "message": "I designed a complicated scenario in (https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2198274/6/tests/vb2_ui_tests.c#733) which failed.\n\nCould you give some advices about this scenario?\n\n#1 - (root screen) Enter TO_DEV screen.\n#2 - (TO_DEV screen) Press pp button and hold.\n#3 - (TO_DEV screen) Leave with space key, while still holding pp button.\n#4 - (root screen) Release pp button.\n#5 - (root screen) Enter TO_DEV screen again.\n#6 - (TO_DEV screen) Wait.\n#7 - (TO_DEV screen) Press pp button and hold.\n#8 - (TO_DEV screen) Release pp button.\n\nIn my opinion, it should enable dev mode in #8, but since we do not reset `pressed_last` every time we entered TO_DEV screen, we will enable dev mode in #6.\n\n(Pressed last has been `1` since #3, so when it get `0` in #6, boot directly.\n\nDoes this scenario need be fixed, or is it overfitted?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42befec3_5690a741",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:54:07Z",
+      "side": 1,
+      "message": "Yes, please fix it.  This is a bug.",
+      "parentUuid": "325404a4_54e0a3d8",
       "range": {
         "startLine": 95,
         "startChar": 0,
