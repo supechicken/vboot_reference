@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1094a428_c750eabd",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-22T08:47:20Z",
+      "side": 1,
+      "message": "It might be nicer to just memset() the UI context to 0, and just set the particular members.\n\nI\u0027ve also found that it\u0027s a bit difficult to make modifications when it\u0027s in \"tree form\" like this.  I\u0027d prefer the form like \"mock_ui_context.root_screen \u003d \u0026mock_screen_blank;\".",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "f40c4713e2dbd4b58770a435129123b2e115ab21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
