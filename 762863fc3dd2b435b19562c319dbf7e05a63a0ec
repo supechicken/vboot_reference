@@ -269,6 +269,30 @@
       "revId": "762863fc3dd2b435b19562c319dbf7e05a63a0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef5c60aa_295a52dc",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-22T03:35:50Z",
+      "side": 1,
+      "message": "No I were wrong\n\nThe changes were:\n\n TEST_EQ(mock_get_screen_info_last, -1, ...) -\u003e\n TEST_EQ(mock_get_screen_info_called, 0, ...)\n\nand\n\n TEST_EQ(mock_get_screen_info_last, SCREEN, ...) -\u003e\n screen_state_eq(mock_state, SCREEN, MOCK_IGNORE, MOCK_IGNORE)",
+      "parentUuid": "13c0af4c_79e97965",
+      "range": {
+        "startLine": 583,
+        "startChar": 12,
+        "endLine": 583,
+        "endChar": 37
+      },
+      "revId": "762863fc3dd2b435b19562c319dbf7e05a63a0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
