@@ -80,11 +80,11 @@ const struct vb2_menu *get_menu(struct vb2_ui_context *ui)
 		.num_items = 0,
 		.items = NULL,
 	};
-	if (ui->state.screen->get_menu) {
-		menu = ui->state.screen->get_menu(ui);
+	if (ui->state->screen->get_menu) {
+		menu = ui->state->screen->get_menu(ui);
 		return menu ? menu : &empty_menu;
 	} else {
-		return &ui->state.screen->menu;
+		return &ui->state->screen->menu;
 	}
 }
 
@@ -127,13 +127,13 @@ vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui)
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_UP_SHORT_PRESS)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	item = ui->state.selected_item - 1;
+	item = ui->state->selected_item - 1;
 	while (item >= 0 &&
-	       ((1 << item) & ui->state.disabled_item_mask))
+	       ((1 << item) & ui->state->disabled_item_mask))
 		item--;
 	/* Only update if item is valid */
 	if (item >= 0)
-		ui->state.selected_item = item;
+		ui->state->selected_item = item;
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -147,13 +147,13 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
 		return VB2_REQUEST_UI_CONTINUE;
 
 	menu = get_menu(ui);
-	item = ui->state.selected_item + 1;
+	item = ui->state->selected_item + 1;
 	while (item < menu->num_items &&
-	       ((1 << item) & ui->state.disabled_item_mask))
+	       ((1 << item) & ui->state->disabled_item_mask))
 		item++;
 	/* Only update if item is valid */
 	if (item < menu->num_items)
-		ui->state.selected_item = item;
+		ui->state->selected_item = item;
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -170,7 +170,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 	if (menu->num_items == 0)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	menu_item = &menu->items[ui->state.selected_item];
+	menu_item = &menu->items[ui->state->selected_item];
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
@@ -191,26 +191,33 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 
 vb2_error_t vb2_ui_change_root(struct vb2_ui_context *ui)
 {
-	return vb2_ui_change_screen(ui, ui->root_screen->id);
+	struct vb2_screen_state *tmp;
+
+	if (ui->state && ui->state->prev) {
+		tmp = ui->state->prev;
+		free(ui->state);
+		ui->state = tmp;
+	} else {
+		VB2_DEBUG("ERROR: No previous screen; ignoring\n");
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
 {
 	const struct vb2_menu *menu = get_menu(ui);
-	ui->state.selected_item = 0;
+	ui->state->selected_item = 0;
 	if (menu->num_items > 1 && menu->items[0].is_language_select)
-		ui->state.selected_item = 1;
+		ui->state->selected_item = 1;
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info;
-
-	if (ui->state.screen && ui->state.screen->id == id) {
-		VB2_DEBUG("WARNING: Already on screen %#x; ignoring\n", id);
-		return VB2_REQUEST_UI_CONTINUE;
-	}
+	struct vb2_screen_state *cur_state;
+	int state_exists = 0;
 
 	new_screen_info = vb2_get_screen_info(id);
 	if (new_screen_info == NULL) {
@@ -218,13 +225,40 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
-	memset(&ui->state, 0, sizeof(ui->state));
-	ui->state.screen = new_screen_info;
+	/* Check to see if the screen state already exists in our stack. */
+	cur_state = ui->state;
+	while (cur_state != NULL) {
+		if (cur_state->screen->id == id) {
+			state_exists = 1;
+			break;
+		}
+		cur_state = cur_state->prev;
+	}
 
-	if (ui->state.screen->init)
-		return ui->state.screen->init(ui);
-	else
-		return default_screen_init(ui);
+	if (state_exists) {
+		/* Pop until the requested screen is at the top of stack. */
+		while (ui->state->screen->id != id) {
+			cur_state = ui->state;
+			ui->state = cur_state->prev;
+			free(cur_state);
+		}
+	} else {
+		/* Allocate the requested screen on top of the stack. */
+		cur_state = malloc(sizeof(*ui->state));
+		if (cur_state == NULL) {
+			VB2_DEBUG("WARNING: malloc failed; ignoring\n");
+			return VB2_REQUEST_UI_CONTINUE;
+		}
+		cur_state->prev = ui->state;
+		cur_state->screen = new_screen_info;
+		ui->state = cur_state;
+		if (ui->state->screen->init)
+			return ui->state->screen->init(ui);
+		else
+			return default_screen_init(ui);
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 /*****************************************************************************/
@@ -234,8 +268,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    vb2_error_t (*global_action)(struct vb2_ui_context *ui))
 {
 	struct vb2_ui_context ui;
-	struct vb2_screen_state prev_state;
 	const struct vb2_menu *menu;
+	struct vb2_screen_state last_state;
 	uint32_t key_flags;
 	vb2_error_t rv;
 
@@ -248,23 +282,26 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	rv = vb2_ui_change_screen(&ui, ui.root_screen->id);
 	if (rv != VB2_REQUEST_UI_CONTINUE)
 		return rv;
-	memset(&prev_state, 0, sizeof(prev_state));
+	memset(&last_state, 0, sizeof(last_state));
 
 	while (1) {
 		/* Draw if there are state changes. */
-		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
-			memcpy(&prev_state, &ui.state, sizeof(ui.state));
+		if (last_state.screen != ui.state->screen ||
+		    last_state.selected_item != ui.state->selected_item ||
+		    last_state.disabled_item_mask !=
+		    ui.state->disabled_item_mask) {
+			memcpy(&last_state, ui.state, sizeof(last_state));
 
 			menu = get_menu(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
-				  ui.state.screen->name,
+				  ui.state->screen->name,
 				  menu->num_items ?
-				  menu->items[ui.state.selected_item].text :
+				  menu->items[ui.state->selected_item].text :
 				  "null");
 
-			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
-					 ui.state.selected_item,
-					 ui.state.disabled_item_mask);
+			vb2ex_display_ui(ui.state->screen->id, ui.locale_id,
+					 ui.state->selected_item,
+					 ui.state->disabled_item_mask);
 		}
 
 		/* Grab new keyboard input. */
@@ -279,8 +316,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		}
 
 		/* Run screen action. */
-		if (ui.state.screen->action) {
-			rv = ui.state.screen->action(&ui);
+		if (ui.state->screen->action) {
+			rv = ui.state->screen->action(&ui);
 			if (rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;
 		}
@@ -355,10 +392,11 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 		VB2_DEBUG("Recovery VbTryLoadKernel %#x --> %#x\n",
 			  ui->recovery_rv, rv);
 		ui->recovery_rv = rv;
-		return vb2_ui_change_screen(ui,
-					    rv == VB2_ERROR_LK_NO_DISK_FOUND ?
-					    VB2_SCREEN_RECOVERY_SELECT :
-					    VB2_SCREEN_RECOVERY_INVALID);
+
+		/* If we encountered an error, switch to the INVALID screen. */
+		if (rv != VB2_ERROR_LK_NO_DISK_FOUND)
+			return vb2_ui_change_screen(
+				ui, VB2_SCREEN_RECOVERY_INVALID);
 	}
 
 	/* Manual recovery keyboard shortcuts */

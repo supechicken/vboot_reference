@@ -42,7 +42,7 @@ static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
 
 static struct vb2_ui_context mock_ui_context;
-static struct vb2_screen_state *mock_state;
+static struct vb2_screen_state mock_state;
 
 static struct display_call mock_displayed[64];
 static int mock_displayed_count;
@@ -248,7 +248,7 @@ static void reset_common_data(enum reset_type t)
 	/* Mock ui_context based on real screens */
 	memset(&mock_ui_context, 0, sizeof(mock_ui_context));
 	mock_ui_context.ctx = ctx;
-	mock_state = &mock_ui_context.state;
+	mock_ui_context.state = &mock_state;
 
 	/* For vb2ex_display_ui */
 	memset(mock_displayed, 0, sizeof(mock_displayed));
