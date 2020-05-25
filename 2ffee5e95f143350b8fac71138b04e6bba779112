@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "63614823_00c2b3d7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T07:35:23Z",
+      "side": 1,
+      "message": "You\u0027re right about it. I missed the check in init().",
+      "parentUuid": "bd8a6309_22daa2b5",
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0802e0e_0dbeb752",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 2
@@ -255,6 +273,30 @@
       "side": 1,
       "message": "I think tpm_lite/tlcl.c used pp for abbreviation of physical presence, so I tried to use pp_button-* in tests.\nSince physical_presence_button_pressed_last is long, how about pp_button_pressed_last?",
       "parentUuid": "0f3e2cb5_08c6e1aa",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113e6e41_ae2b09c6",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T07:35:23Z",
+      "side": 1,
+      "message": "How about \"physical_presence_pressed\"? Because\n\n- vb2ex_physical_presence_pressed() doesn\u0027t have \"_button\" either\n- The \"power_button\" field doesn\u0027t have \"_last\" either",
+      "parentUuid": "c38ea3a2_5edf0fa4",
       "range": {
         "startLine": 75,
         "startChar": 5,
