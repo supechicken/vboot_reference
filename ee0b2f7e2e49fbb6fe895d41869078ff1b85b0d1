@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7c1fc21_77965599",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T06:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28558ee2_239d2b54",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f84a841_b585811c",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 16
@@ -140,6 +164,30 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdeb975c_01267a18",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T06:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60920e2a_75c36738",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 3
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -258,6 +306,30 @@
       "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b6f5b1_fb687421",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T06:12:06Z",
+      "side": 1,
+      "message": "I uploaded CL:2214457.\nPlease review it.",
+      "parentUuid": "42befec3_5690a741",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "ee0b2f7e2e49fbb6fe895d41869078ff1b85b0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
