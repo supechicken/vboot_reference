@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d127d2d_7c46cef6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312d5dde_064b6c0e",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd554e98_ad9fd296",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 3
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "4fca169e_54fe147e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:32:12Z",
+      "side": 1,
+      "message": "Yeah, I realized we forgot to check DETACHABLE too.  Fixed in the next CL.",
+      "parentUuid": "6dd13f81_bdbb3c64",
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "186462a4_369e5dc1",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 3
@@ -80,6 +122,30 @@
       "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59f565b_419f1605",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:32:12Z",
+      "side": 1,
+      "message": "Sorry for the thrashing.  I wanted the two functions to have consistent naming (change_screen and change_root), so I figured we may as well name it for what it\u0027 actually doing right now.  Let\u0027s change it to \"back\" or \"pop_screen\" or whatever in the stack implementation CL.",
+      "parentUuid": "186462a4_369e5dc1",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
