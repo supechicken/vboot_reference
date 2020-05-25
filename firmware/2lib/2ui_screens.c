@@ -135,9 +135,12 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 		return vb2_ui_back_action(ui);
 	}
 
-	if (!PHYSICAL_PRESENCE_KEYBOARD && vb2ex_physical_presence_pressed()) {
-		VB2_DEBUG("Presence button stuck?\n");
-		return vb2_ui_back_action(ui);
+	if (!PHYSICAL_PRESENCE_KEYBOARD) {
+		if (vb2ex_physical_presence_pressed()) {
+			VB2_DEBUG("Presence button stuck?\n");
+			return vb2_ui_back_action(ui);
+		}
+		ui->pressed_last = 0;
 	}
 
 	/* Disable "Confirm" button for other physical presence types. */
@@ -152,7 +155,6 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 
 vb2_error_t vb2_ui_recovery_to_dev_action(struct vb2_ui_context *ui)
 {
-	static int pressed_last;
 	int pressed;
 
 	if (ui->state.screen->id != VB2_SCREEN_RECOVERY_TO_DEV) {
@@ -180,10 +182,10 @@ vb2_error_t vb2_ui_recovery_to_dev_action(struct vb2_ui_context *ui)
 		if (pressed) {
 			VB2_DEBUG("Physical presence button pressed, "
 				 "awaiting release\n");
-			pressed_last = 1;
+			ui->pressed_last = 1;
 			return VB2_REQUEST_UI_CONTINUE;
 		}
-		if (!pressed_last)
+		if (!ui->pressed_last)
 			return VB2_REQUEST_UI_CONTINUE;
 		VB2_DEBUG("Physical presence button released\n");
 	}
