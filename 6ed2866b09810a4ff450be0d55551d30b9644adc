@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98af5777_37eea210",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:42:22Z",
+      "side": 1,
+      "message": "I think it might be a coincidence... xD",
+      "parentUuid": "c7d0adaa_9f757566",
+      "range": {
+        "startLine": 287,
+        "startChar": 30,
+        "endLine": 287,
+        "endChar": 31
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd54950_6ce0e1c2",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bc690f_36162a00",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:42:22Z",
+      "side": 1,
+      "message": "I knew I was missing something here!  Thanks.",
+      "parentUuid": "3bd54950_6ce0e1c2",
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c615160e_90ac2440",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:42:22Z",
+      "side": 1,
+      "message": "I agree.  I am starting to wonder if we are over-testing our action functions.  A lot of them are interdependent.",
+      "parentUuid": "899d5436_146b4bca",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +166,30 @@
       "side": 1,
       "message": "Looks like Rocco already pointed this out in CL:2168072.",
       "parentUuid": "e472f3bf_a7f69e78",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 24
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f8f4d8d_85ca47c8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:42:22Z",
+      "side": 1,
+      "message": "Ack, Rocco is fixing it.",
+      "parentUuid": "e56edb16_410e557e",
       "range": {
         "startLine": 182,
         "startChar": 12,
