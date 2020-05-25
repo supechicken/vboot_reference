@@ -306,6 +306,30 @@
       "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d92d02_ade28b6d",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T09:37:43Z",
+      "side": 1,
+      "message": "This variable is for certain scenario:\nPHYSICAL_PRESENCE_KEYBOARD\u003d0, which means its physical presence is confirmed using a physical button.\n(While PHYSICAL_PRESENCE_KEYBOARD\u003d1, this variable should do nothing instead.)\nSo I think it should reserve \"_button\".\n\nI agree with we could ignore \"_last\".\n\n---\n\nSome existing codes:\n- depthcharge use phys_presnece_* for vb2ex_physical_presence_pressed() related features.\n- wilco use button_released for similar mechanism.",
+      "parentUuid": "113e6e41_ae2b09c6",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
