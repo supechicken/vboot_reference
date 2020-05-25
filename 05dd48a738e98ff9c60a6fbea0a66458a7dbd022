@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312d5dde_064b6c0e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:20:24Z",
+      "side": 1,
+      "message": "Use \"detachable\" here to be consistent with the USE flag?",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd554e98_ad9fd296",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:20:24Z",
+      "side": 1,
+      "message": "Honestly I still don\u0027t like this extra checking. What do you think for a switch statement directly in input_action_lookup()?\n\nI think we forgot to check DETACHABLE in vb2_ui_developer_mode_boot_internal_action().",
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186462a4_369e5dc1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:20:24Z",
+      "side": 1,
+      "message": "Do we not want to support the history stack or vb2_ui_back_action() anymore? I mean, the naming of vb2_ui_back_action is currently misleading, but I think the stack will be implemented pretty soon, right?",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "05dd48a738e98ff9c60a6fbea0a66458a7dbd022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
