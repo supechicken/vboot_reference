@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "9d462cd1_31d30d09",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:50:50Z",
+      "side": 1,
+      "message": "This should get caught by the \"Presence button stuck?\" check in the init() function.",
+      "parentUuid": "9e87d590_58c3e472",
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0802e0e_0dbeb752",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 2
@@ -99,6 +117,30 @@
       "writtenOn": "2020-05-25T06:44:51Z",
       "side": 1,
       "message": "Maybe \"physical_presence_button\" or just \"physical_button\" to be consistent with the \"power_button\" field.",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3e2cb5_08c6e1aa",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-25T06:50:50Z",
+      "side": 1,
+      "message": "I\u0027d prefer to include \"_pressed\" (or equivalent) here so that we know what the boolean actually means.  vb2_power_button has an enum to explain its states.",
+      "parentUuid": "a0cc0f1b_0cd1c83b",
       "range": {
         "startLine": 75,
         "startChar": 5,
