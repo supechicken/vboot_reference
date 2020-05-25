@@ -70,6 +70,9 @@ struct vb2_ui_context {
 
 	/* For manual recovery. */
 	vb2_error_t recovery_rv;
+
+	/* For to_dev transition flow. */
+	int presence_pressed_last;
 };
 
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id);
