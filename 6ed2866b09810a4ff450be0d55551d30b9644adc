@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7d0adaa_9f757566",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:58:36Z",
+      "side": 1,
+      "message": "Interesting, I guess the \u0027U\u0027 \u0026 \u0027D\u0027 can mean both\n- USB \u0026 Disk, and\n- Up \u0026 Down",
+      "range": {
+        "startLine": 287,
+        "startChar": 30,
+        "endLine": 287,
+        "endChar": 31
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd54950_6ce0e1c2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:58:36Z",
+      "side": 1,
+      "message": "|| ui-\u003ekey \u003d\u003d VB_KEY_CTRL(\u0027D\u0027)",
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "899d5436_146b4bca",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:58:36Z",
+      "side": 1,
+      "message": "Make this static?",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e472f3bf_a7f69e78",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T03:58:36Z",
+      "side": 1,
+      "message": "Do you think we should reset this whenever leaving the to-dev screen (probably in a separate CL)? Also, we shouldn\u0027t allow pressing the key *before* entering this screen.",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 24
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
