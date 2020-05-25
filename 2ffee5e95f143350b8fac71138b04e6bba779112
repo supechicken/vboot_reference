@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c9f4676_7452e457",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T06:44:51Z",
+      "side": 1,
+      "message": "Wrong name...",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a545308_6c59f814",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T06:44:51Z",
+      "side": 1,
+      "message": "\"initialize\", or \"reset\", or \"clear\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e87d590_58c3e472",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T06:44:51Z",
+      "side": 1,
+      "message": "If\n\n [press button and hold] -\u003e [enter to-dev screen] -\u003e [release button]\n\nshould we accept it? IMHO, similar to the power_button case, we shouldn\u0027t.",
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0802e0e_0dbeb752",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T06:44:51Z",
+      "side": 1,
+      "message": "w.",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0cc0f1b_0cd1c83b",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T06:44:51Z",
+      "side": 1,
+      "message": "Maybe \"physical_presence_button\" or just \"physical_button\" to be consistent with the \"power_button\" field.",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
