@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ba48bddb_9a8e3ef8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T07:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c9f4676_7452e457",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c45e24c_05335ee2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T07:01:35Z",
+      "side": 1,
+      "message": "I would pick \u0027reset\u0027",
+      "parentUuid": "4a545308_6c59f814",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e87d590_58c3e472",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -83,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "bd8a6309_22daa2b5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T07:01:35Z",
+      "side": 1,
+      "message": "Agree with Joel.",
+      "parentUuid": "9d462cd1_31d30d09",
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0802e0e_0dbeb752",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 2
@@ -103,6 +169,30 @@
       "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5013925_5e5900dd",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T07:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0802e0e_0dbeb752",
+      "range": {
+        "startLine": 74,
+        "startChar": 29,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +231,30 @@
       "side": 1,
       "message": "I\u0027d prefer to include \"_pressed\" (or equivalent) here so that we know what the boolean actually means.  vb2_power_button has an enum to explain its states.",
       "parentUuid": "a0cc0f1b_0cd1c83b",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "2ffee5e95f143350b8fac71138b04e6bba779112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c38ea3a2_5edf0fa4",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-25T07:01:35Z",
+      "side": 1,
+      "message": "I think tpm_lite/tlcl.c used pp for abbreviation of physical presence, so I tried to use pp_button-* in tests.\nSince physical_presence_button_pressed_last is long, how about pp_button_pressed_last?",
+      "parentUuid": "0f3e2cb5_08c6e1aa",
       "range": {
         "startLine": 75,
         "startChar": 5,
