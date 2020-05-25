@@ -85,6 +85,30 @@
       "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56edb16_410e557e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-25T04:10:15Z",
+      "side": 1,
+      "message": "Looks like Rocco already pointed this out in CL:2168072.",
+      "parentUuid": "e472f3bf_a7f69e78",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 24
+      },
+      "revId": "6ed2866b09810a4ff450be0d55551d30b9644adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
