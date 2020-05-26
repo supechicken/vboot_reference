@@ -70,6 +70,30 @@
       "revId": "b4dd58141ba7d003029bec0ad3391327f32a8a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f39c7a_3057cdd6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T06:38:44Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t think there\u0027s a good reason to write \"screen\" in there, since that should be implied by wherever it\u0027s printed in the AP console.  When I wrote this, I must have figured \"recover broken device\" is the most explanatory name for this screen without seeing the UI.  We could also do something like \"non-manual recovery\" if you prefer.",
+      "parentUuid": "c06b5a5e_5b85351e",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "b4dd58141ba7d003029bec0ad3391327f32a8a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
