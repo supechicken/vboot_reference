@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "628f2916_29ea7b66",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b211eb10_9e8f8e13",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0afa065_40524ad8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "654ccf7b_25b3dea1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0afa065_40524ad8",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87898fe1_70105f3e",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-22T06:48:38Z",
       "side": 1,
       "message": "I know it\u0027s really annoying, but in order to unit-test these functions, we need to avoid using function static variables.  The solution I\u0027d like to work towards is just placing these variables within vb2_ui_context, which also makes testing a lot easier.  Could we just put one pointer in there called language_menu, and fill it in with a malloc\u0027d vb2_menu struct?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f3cfff2_46a79877",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "I agree with you *if* we\u0027re going to test these functions, but in fact I\u0027m not sure if we need to test each init() and action(). In my opinion, the language_menu_tests() I added in vb2_ui_tests.c is sufficient. Do you think we should test both get_language_menu_items() and language_select_init()?",
+      "parentUuid": "87898fe1_70105f3e",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "55597f16_f91aac63",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Yeah. The best we can do here is to use \"Language 1\", \"Language 2\"...",
+      "parentUuid": "693e641a_2c1d5db5",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26bcb807_3fef382b",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5380bd0a_92a55beb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26bcb807_3fef382b",
+      "range": {
+        "startLine": 103,
+        "startChar": 42,
+        "endLine": 103,
+        "endChar": 65
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "3aa54962_0454d1b7",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3292a155_b9f6801c",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16901a79_9848a916",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 8
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "fa49eabd_c574684e",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16901a79_9848a916",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c10e124_eb75573a",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 8
@@ -183,6 +351,30 @@
       "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33361b6_ec5a9a8e",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T03:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c10e124_eb75573a",
+      "range": {
+        "startLine": 50,
+        "startChar": 36,
+        "endLine": 50,
+        "endChar": 45
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
