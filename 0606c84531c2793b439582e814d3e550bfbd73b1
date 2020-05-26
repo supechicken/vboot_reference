@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8720478c_c04ef097",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T10:32:31Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m not a huge fan of this assumption.  This would be another place where it\u0027d be nice if we could set the \"type\" of each vb2_menu_item.  In this case, check if menu[0].type \u003d\u003d LANGUAGE.  If so, then set selected_item to 1.  (Or loop until the first PRIMARY is found, but that might be overkill.)",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 57
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731f528f_fe61ae66",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T10:32:31Z",
+      "side": 1,
+      "message": "Rather than limiting this into get_language_menu(), what if we just return NULL here, and have get_menu_items() take care of returning empty_menu in that case?\n\nIf we do this, then language_select_init() could just check get_language_menu() \u003d\u003d NULL.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94791c0_76ba396e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T10:32:31Z",
+      "side": 1,
+      "message": "So currently, what happens when we return an error here?  Does it still bubble down to depthcharge vboot_select_and_load_kernel() and cause a cold reboot?\n\nI think ideally, we want recovery mode to ignore the error and keep going (return back to the last screen), and developer mode to save a recovery request and reboot into non-manual recovery.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 35
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c953ab6_5db50c4d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T10:32:31Z",
+      "side": 1,
+      "message": "Line break.",
+      "range": {
+        "startLine": 250,
+        "startChar": 37,
+        "endLine": 250,
+        "endChar": 38
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "65924a0d_d9792fd5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-26T10:32:31Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not sure if we need to test each init() and action()\n\nYeah, I agree with this.  In trivial cases like initializing selected_item, or in cases where a set of functions are highly-coupled (e.g. the functions on to_dev screen), I don\u0027t think we need to test them individually.\n\nBut in other cases like (A) core functionality (e.g. menu_prev, menu_select), and (B) functionality which is fairly self-contained (e.g. get_language_menu_items), I think it\u0027s worth adding a unit test for that function.\n\nThe end-to-end test you added in vb2_ui_tests does a good job of validating the overall functionality from the UI perspective.  A unit test on get_language_menu_items() would be well-suited for checking more detail-oriented properties -- such as (1) making sure the number of locales returned via vb2ex_get_locale_count() is consistent with that of the returned vb2_menu object; (2) making sure that the function returns the same vb2_menu pointer when called multiple times; (3) checking edge cases like num_locales \u003d\u003d 0.\n\nWe should also check the num_locales \u003d\u003d 0 case in the vb2_ui_tests end-to-end case.",
+      "parentUuid": "7f3cfff2_46a79877",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "b33912bd0a81ee9b4b9bac3335f38ab7a1f4bf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "693e641a_2c1d5db5",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
