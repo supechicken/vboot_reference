@@ -46,6 +46,30 @@
       "revId": "b4dd58141ba7d003029bec0ad3391327f32a8a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c06b5a5e_5b85351e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-26T04:03:05Z",
+      "side": 1,
+      "message": "I\u0027d expect something similar to the VB2_SCREEN_* names. For example, \n\n .name \u003d \"Recovery broken screen\"\n\nThere\u0027s nothing wrong with it. I just saw it in AP console and thought it was a typo.",
+      "parentUuid": "5db84b19_719fcd63",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "b4dd58141ba7d003029bec0ad3391327f32a8a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
