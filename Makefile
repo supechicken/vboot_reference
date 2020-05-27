@@ -450,6 +450,7 @@ UTILLIB_SRCS = \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
 	host/lib/file_keys.c \
+	host/lib/flashrom.c \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
 	host/lib/host_key2.c \
@@ -509,9 +510,11 @@ HOSTLIB_SRCS = \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
 	host/lib/extract_vmlinuz.c \
+	host/lib/flashrom.c \
 	host/lib/fmap.c \
 	host/lib/host_misc.c \
 	host/lib/subprocess.c \
+	host/lib21/host_misc.c \
 	${TLCL_SRCS}
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
@@ -672,6 +675,7 @@ TEST_OBJS += ${TESTLIB_OBJS}
 TEST_NAMES = \
 	tests/cgptlib_test \
 	tests/chromeos_config_tests \
+	tests/flashrom_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
 	tests/vboot_api_kernel4_tests \
