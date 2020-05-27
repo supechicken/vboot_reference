@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50e254d1_546e5a91",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-27T09:07:47Z",
+      "side": 1,
+      "message": "I want to try if we can hook all (3) actions and all works separately.\nSince we only hook one action during other tests, I think we might have a test if we hook them all.\n\n(Note that we will test one-hot case only. i.e. only one action return something in a test.)",
+      "parentUuid": "3458be6b_c21bc39f",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 49
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f752122c_03b61aa8",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3b68f683_c51ad849",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-27T09:07:47Z",
+      "side": 1,
+      "message": "I thought we could test ctrl+D only in one test, and use menu navigations in others.",
+      "parentUuid": "420ed82d_23f6855e",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9301e5e4_670e0d9c",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -82,6 +130,30 @@
       "writtenOn": "2020-05-27T05:51:21Z",
       "side": 1,
       "message": "Maybe just wrap the conditional around the relevant extra lines rather than repeating the whole block of code?",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 33
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2216cf67_f18e1a04",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-27T09:07:47Z",
+      "side": 1,
+      "message": "Currently I followed the order of old ones. We can re-order theses tests by flags",
+      "parentUuid": "9301e5e4_670e0d9c",
       "range": {
         "startLine": 571,
         "startChar": 0,
