@@ -43,9 +43,9 @@ static int mock_calls_until_shutdown;
 
 static uint32_t mock_key[64];
 static int mock_key_trusted[64];
-static int mock_key_count;
 static int mock_key_total;
 
+static int mock_iters;
 static uint32_t mock_get_timer_last;
 static uint32_t mock_time;
 static const uint32_t mock_time_start = 31ULL * VB2_MSEC_PER_SEC;
@@ -61,7 +61,6 @@ static enum VbAltFwIndex_t mock_altfw_num_last;
 
 static vb2_error_t mock_vbtlk_retval[32];
 static uint32_t mock_vbtlk_expected_flag[32];
-static int mock_vbtlk_count;
 static int mock_vbtlk_total;
 
 static void add_mock_key(uint32_t press, int trusted)
@@ -175,6 +174,7 @@ static void reset_common_data(enum reset_type t)
 	mock_displayed_i = 0;
 
 	/* For check_shutdown_request */
+	mock_iters = 0;
 	if (t == FOR_DEVELOPER)
 		mock_calls_until_shutdown = 2000;  /* Larger than 30s */
 	else
@@ -183,10 +183,7 @@ static void reset_common_data(enum reset_type t)
 	/* For VbExKeyboardRead */
 	memset(mock_key, 0, sizeof(mock_key));
 	memset(mock_key_trusted, 0, sizeof(mock_key_trusted));
-	mock_key_count = 0;
 	mock_key_total = 0;
-	/* Avoid iteration #0 which has a screen change by global action */
-	add_mock_keypress(0);
 
 	/* For vboot_audio.h */
 	mock_get_timer_last = 0;
@@ -206,8 +203,15 @@ static void reset_common_data(enum reset_type t)
 	/* For VbTryLoadKernel */
 	memset(mock_vbtlk_retval, 0, sizeof(mock_vbtlk_retval));
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
-	mock_vbtlk_count = 0;
 	mock_vbtlk_total = 0;
+
+	/* Avoid Iteration #0 */
+	add_mock_keypress(0);
+	if (t == FOR_MANUAL_RECOVERY)
+		add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND,
+			       VB_DISK_FLAG_REMOVABLE);
+	else
+		add_mock_vbtlk(VB2_ERROR_MOCK, 0);
 }
 
 /* Mock functions */
@@ -260,14 +264,14 @@ uint32_t VbExKeyboardRead(void)
 
 uint32_t VbExKeyboardReadWithFlags(uint32_t *key_flags)
 {
-	if (mock_key_count < mock_key_total) {
+	if (mock_iters < mock_key_total) {
 		if (key_flags != NULL) {
-			if (mock_key_trusted[mock_key_count])
+			if (mock_key_trusted[mock_iters])
 				*key_flags = VB_KEY_FLAG_TRUSTED_KEYBOARD;
 			else
 				*key_flags = 0;
 		}
-		return mock_key[mock_key_count++];
+		return mock_key[mock_iters];
 	}
 
 	return 0;
@@ -281,6 +285,7 @@ uint32_t vb2ex_mtime(void)
 
 void vb2ex_msleep(uint32_t msec)
 {
+	mock_iters++;
 	mock_time += msec;
 }
 
@@ -319,19 +324,16 @@ vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
 
 vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t get_info_flags)
 {
-	if (mock_vbtlk_total == 0) {
-		TEST_TRUE(0, "  VbTryLoadKernel is not allowed!");
-		return VB2_ERROR_MOCK;
-	}
+	int i = mock_iters;
 
 	/* Return last entry if called too many times */
-	if (mock_vbtlk_count >= mock_vbtlk_total)
-		mock_vbtlk_count = mock_vbtlk_total - 1;
+	if (i >= mock_vbtlk_total)
+		i = mock_vbtlk_total - 1;
 
-	TEST_EQ(mock_vbtlk_expected_flag[mock_vbtlk_count], get_info_flags,
+	TEST_EQ(mock_vbtlk_expected_flag[i], get_info_flags,
 		"  unexpected get_info_flags");
 
-	return mock_vbtlk_retval[mock_vbtlk_count++];
+	return mock_vbtlk_retval[i];
 }
 
 /* Tests */
@@ -350,7 +352,7 @@ static void developer_tests(void)
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
 		  30 * VB2_MSEC_PER_SEC, "  finished delay");
 	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Proceed to USB after timeout */
 	reset_common_data(FOR_DEVELOPER);
@@ -365,7 +367,7 @@ static void developer_tests(void)
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
 		  30 * VB2_MSEC_PER_SEC, "  finished delay");
 	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Default boot USB not allowed, don't boot */
 	reset_common_data(FOR_DEVELOPER);
@@ -378,7 +380,7 @@ static void developer_tests(void)
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
 		  30 * VB2_MSEC_PER_SEC, "  finished delay");
 	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
-	TEST_EQ(mock_vbtlk_count, mock_vbtlk_total, "  used up mock_vbtlk");
+	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
 
 	VB2_DEBUG("...done.\n");
 }
