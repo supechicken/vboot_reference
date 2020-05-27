@@ -306,6 +306,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d267b9c_88e6856c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-27T08:19:36Z",
+      "side": 1,
+      "message": "I think just calling back() directly in .init is simplest -- otherwise we have to remember that .init and .action functions behave differently (\"when an .action function fail, it doesn\u0027t pop up to the previous screen\").  But if you prefer this method, then that\u0027s fine too.\n\nThe more important issue here is how to bubble error codes down to ui_loop(), and how to deal with them there.  Perhaps these principles could be sufficient:\n\n  * All executed .action and .init function calls originate in ui_loop(), but may recurse\n  * In the case of an error, code called by ui_loop() may either:\n    (1) Call vb2api_fail() if there is a suitable recovery code, and return with VB2_REQUEST_REBOOT\n    (2) Return some other error code, which should bubble down to the original call in ui_loop()\n  * If ui_loop() encounters a non-request error, it calls vb2api_fail() with a UI-specific recovery code\n    (1) If in recovery mode, ui_loop() continues executing even after an error is encountered\n    (2) If in developer mode, ui_loop() returns VB2_REQUEST_REBOOT, triggering a reboot into recovery mode\n\nWhat do you think?",
+      "parentUuid": "dc0587ed_12f51fb5",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

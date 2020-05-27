@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9abb6def_19459f38",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-27T08:19:36Z",
+      "side": 1,
+      "message": "Okay, looks fine.",
+      "parentUuid": "3d1b5803_e2d966d2",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 57
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "731f528f_fe61ae66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 9
@@ -140,6 +164,23 @@
       "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fea83e2f_bbcc8928",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-27T08:19:36Z",
+      "side": 1,
+      "message": "Can we add another test here for the case where the first menu item has is_language_select set?",
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
