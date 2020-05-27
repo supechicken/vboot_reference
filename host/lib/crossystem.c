@@ -16,6 +16,7 @@
 #include "crossystem.h"
 #include "crossystem_vbnv.h"
 #include "host_common.h"
+#include "flashrom.h"
 #include "subprocess.h"
 #include "vboot_struct.h"
 
@@ -653,6 +654,96 @@ int VbSetSystemPropertyString(const char* name, const char* value)
 	}
 
 	return -1;
+}
+
+/* Return the index of the last valid entry in a buffer from flash. */
+static int vb2_nv_index(const uint8_t *buf, uint32_t buf_sz, int vbnv_size)
+{
+	int index;
+	uint8_t blank[VB2_NVDATA_SIZE_V2];
+
+	/* The size of the buffer should be an even multiple of the
+	   VBNV size. */
+	if (buf_sz % vbnv_size != 0) {
+		fprintf(stderr,
+			"The VBNV in flash (%u bytes) is not an even multiple "
+			"of the VBNV size (%u bytes).  This is likely a "
+			"firmware bug.\n", buf_sz, vbnv_size);
+		/* Fail really loudly.  This should never happen. */
+		abort();
+	}
+
+	memset(blank, 0xff, sizeof(blank));
+	for (index = 0; index < buf_sz / vbnv_size; index++) {
+		if (!memcmp(blank, &buf[index * vbnv_size], vbnv_size))
+			break;
+	}
+
+	if (index == 0 || index == buf_sz / vbnv_size) {
+		fprintf(stderr, "VBNV is either uninitialized or corrupted.\n");
+		return -1;
+	}
+
+	return index - 1;
+}
+
+#define VBNV_FMAP_REGION "RW_NVRAM"
+
+int vb2_read_nv_storage_flashrom(struct vb2_context *ctx)
+{
+	int index;
+	int vbnv_size = vb2_nv_get_size(ctx);
+	uint8_t *flash_buf;
+	uint32_t flash_size;
+
+	if (flashrom_read(FLASHROM_PROGRAMMER_INTERNAL_AP, VBNV_FMAP_REGION,
+			  &flash_buf, &flash_size) != VB2_SUCCESS)
+		return -1;
+
+	if ((index = vb2_nv_index(flash_buf, flash_size, vbnv_size)) < 0) {
+		free(flash_buf);
+		return -1;
+	}
+
+	memcpy(ctx->nvdata, &flash_buf[index * vbnv_size], vbnv_size);
+	free(flash_buf);
+	return 0;
+}
+
+int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
+{
+	int rv = 0;
+	int index;
+	int vbnv_size = vb2_nv_get_size(ctx);
+	uint8_t *flash_buf;
+	uint32_t flash_size;
+
+	if (flashrom_read(FLASHROM_PROGRAMMER_INTERNAL_AP, VBNV_FMAP_REGION,
+			  &flash_buf, &flash_size) != VB2_SUCCESS)
+		return -1;
+
+	if ((index = vb2_nv_index(flash_buf, flash_size, vbnv_size)) < 0) {
+		rv = -1;
+		goto exit;
+	}
+
+	index++;
+	if ((index + 1) * vbnv_size == flash_size) {
+		/* VBNV is full.  Erase and write at beginning. */
+		memset(flash_buf, 0xff, flash_size);
+		index = 0;
+	}
+
+	memcpy(&flash_buf[index * vbnv_size], ctx->nvdata, vbnv_size);
+	if (flashrom_write(FLASHROM_PROGRAMMER_INTERNAL_AP, VBNV_FMAP_REGION,
+			   flash_buf, flash_size) != VB2_SUCCESS) {
+		rv = -1;
+		goto exit;
+	}
+
+exit:
+	free(flash_buf);
+	return rv;
 }
 
 int vb2_read_nv_storage_mosys(struct vb2_context *ctx)
