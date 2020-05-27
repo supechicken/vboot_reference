@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "a1c582db_0a5db382",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Why do we need to test these 3 indices? I think it suffices to test only one of them.",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b411dd50_0cce96c6",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "\"an item\"?\n\nThe usage of \"target\" is quite confusing here. It doesn\u0027t make sense to say\n\n Target 4 doesn\u0027t have a target.",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 24
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a224945c_c2bb1fb8",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Maybe \"an item without target and action\"? Since target 3 doesn\u0027t have a target either.",
+      "range": {
+        "startLine": 598,
+        "startChar": 18,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d253fef_077a155a",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "I think we already have a similar test in change_screen_tests() in this patch.",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9119f833_abb76ea7",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Now we have 2 functions that can modify this variable. It\u0027s difficult to tell which function is called.",
+      "range": {
+        "startLine": 722,
+        "startChar": 9,
+        "endLine": 722,
+        "endChar": 27
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3458be6b_c21bc39f",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -49,6 +152,23 @@
     },
     {
       "key": {
+        "uuid": "6c9dba6a_5274f919",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Could you add a comment here or somewhere to explain what \"pp\" means?",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f752122c_03b61aa8",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -65,6 +185,29 @@
         "startChar": 23,
         "endLine": 231,
         "endChar": 24
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6462fa_4f9df9c9",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "range": {
+        "startLine": 563,
+        "startChar": 25,
+        "endLine": 563,
+        "endChar": 46
       },
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -119,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "5552fd7c_02d6e36a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "I think we can\n1. Use menu navigation to reach TO_DEV and then cancel by space, and\n2. Use Ctrl-D to reach TO_DEV and then select confirm\n\nI don\u0027t think we need to test all the 6 combinations: {menu_navigate, ctrl_d} x {cancel by enter, cancel by space, confirm}.",
+      "parentUuid": "420ed82d_23f6855e",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9301e5e4_670e0d9c",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -159,6 +326,69 @@
         "startChar": 0,
         "endLine": 571,
         "endChar": 33
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cbf7a23_84f24dba",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Do we want to use \"recovery select\" and \"to-dev\", or \"RECOVERY_SELECT\" and \"TO_DEV\"?",
+      "range": {
+        "startLine": 581,
+        "startChar": 16,
+        "endLine": 581,
+        "endChar": 22
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261cc9ef_a7ca9cd2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "Since the future CL adding this feature should also add a test here, I don\u0027t think we need the TODO comment.",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84edde3_13ffb8a7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T09:26:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we need to check the displayed screens for every possible flow. I think what really matter here are:\n1. VB2_REQUEST_REBOOT_EC_TO_RO is returned so that system will reboot\n2. vb2_enable_developer_mode() is called",
+      "range": {
+        "startLine": 671,
+        "startChar": 2,
+        "endLine": 671,
+        "endChar": 14
       },
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
