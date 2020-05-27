@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "363e031c_036c3bcb",
+        "filename": "firmware/lib/vboot_ui_legacy_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-27T08:47:57Z",
+      "side": 1,
+      "message": "Oops, that file got renamed in CL:2112322, and erroneously added in this CL.  Removing this file.",
+      "parentUuid": "5f7e526a_6525ecde",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "2fc64fc4df89f4bd29cab9ef8077269f1b231330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c7ec322_e95487ac",
         "filename": "tests/vboot_ui_legacy_clamshell_beep_tests.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "2fc64fc4df89f4bd29cab9ef8077269f1b231330",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb2e133_54ec04fd",
+        "filename": "tests/vboot_ui_legacy_clamshell_beep_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-27T08:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c7ec322_e95487ac",
+      "range": {
+        "startLine": 238,
+        "startChar": 27,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "2fc64fc4df89f4bd29cab9ef8077269f1b231330",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
