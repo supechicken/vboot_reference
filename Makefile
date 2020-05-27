@@ -678,6 +678,7 @@ TEST_NAMES = \
 	tests/flashrom_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
+	tests/vbnv_tests \
 	tests/vboot_api_kernel4_tests \
 	tests/vboot_api_kernel_tests \
 	tests/vboot_kernel_tests \
