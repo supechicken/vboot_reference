@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d1b5803_e2d966d2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T04:37:44Z",
+      "side": 1,
+      "message": "I think a boolean field \u0027is_language_select\u0027 is currently sufficient in vboot. Once we move the UI to depthcharge, it\u0027s not that hard to change checking.",
+      "parentUuid": "8720478c_c04ef097",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 57
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "731f528f_fe61ae66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf14df9_71d0943c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T04:37:44Z",
+      "side": 1,
+      "message": "Done.\n\nNote that since get_menu_items() is called in language_select_init(), we don\u0027t have to check for NULL there.",
+      "parentUuid": "731f528f_fe61ae66",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "247bd457_41844e3d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T04:37:44Z",
+      "side": 1,
+      "message": "\u003e Does it still bubble down to depthcharge vboot_select_and_load_kernel() and cause a cold reboot?\n\nYes.\n\n\u003e I think ideally, we want recovery mode to ignore the error and keep going (return back to the last screen), and developer mode to save a recovery request and reboot into non-manual recovery.\n\nI agree. Let\u0027s discuss how to achieve that in PS5.",
+      "parentUuid": "e94791c0_76ba396e",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 35
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c953ab6_5db50c4d",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd1444bb_9072ef68",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-27T04:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c953ab6_5db50c4d",
+      "range": {
+        "startLine": 250,
+        "startChar": 37,
+        "endLine": 250,
+        "endChar": 38
+      },
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
