@@ -330,6 +330,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70fb985_60d7f5f9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T04:49:00Z",
+      "side": 1,
+      "message": "\u003e I think just calling back() directly in .init is simplest -- otherwise we have to remember that .init and .action functions behave differently (\"when an .action function fail, it doesn\u0027t pop up to the previous screen\").\n\nThat\u0027s a good point. Let\u0027s leave it as is for now until we have a better solution, although I don\u0027t like init() and action() to recursively call each other.\n\n\u003e  * In the case of an error, code called by ui_loop() may either:\n\nSounds good to me.\n\n\u003e  * If ui_loop() encounters a non-request error, it calls vb2api_fail() with a UI-specific recovery code\n\u003e    (2) If in developer mode, ui_loop() returns VB2_REQUEST_REBOOT, triggering a reboot into recovery mode\n\nFor (2), why not simply return the error code so that VB2_TRY() in VbSelectAndLoadKernel() will request recovery and reboot?\n\nSeeing lots of (rv !\u003d VB2_REQUEST_UI_CONTINUE) checks in the code, I wonder if there\u0027s a way to utilize the VB2_TRY macro. I can see 2 possible options.\n\n(a) Use VB2_SUCCESS to mean \"continuing in the loop\", and use VB2_REQUEST_UI_BREAK throughout the UI code to notify ui_loop() to return VB2_SUCCESS. This way, we may use the existing VB2_TRY.\n\n(b) Add a new macro VB2_UI_TRY(), which basically does the following:\n\n VB2_UI_TRY(rv) {\n     if (rv \u003d\u003d VB2_SUCCESS || rv \u003d\u003d VB2_REQUEST_UI_CONTINUE)\n         return rv;\n     if (recovery_mode) {\n         return VB2_REQUEST_UI_CONTINUE;\n     } else {\n         vb2api_fail();\n         return rv;\n     }\n }",
+      "parentUuid": "1d267b9c_88e6856c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
