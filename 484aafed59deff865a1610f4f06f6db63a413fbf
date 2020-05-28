@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "238c7917_d3af24c4",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done. Test #2 only",
+      "parentUuid": "a1c582db_0a5db382",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411dd50_0cce96c6",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -39,6 +57,30 @@
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01681967_11a5e7c5",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done. Modified relevant descriptions",
+      "parentUuid": "b411dd50_0cce96c6",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 24
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "03782128_8492bdcd",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Change some of misused \u0027target\u0027 to \u0027item\u0027",
+      "parentUuid": "a224945c_c2bb1fb8",
+      "range": {
+        "startLine": 598,
+        "startChar": 18,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d253fef_077a155a",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "61997cb1_f63e1c21",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done(Removed)\nThe implementation of root screen was not chang_screen before.\nI think we should remove this now.",
+      "parentUuid": "8d253fef_077a155a",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9119f833_abb76ea7",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -93,6 +177,30 @@
       "writtenOn": "2020-05-27T09:26:54Z",
       "side": 1,
       "message": "Now we have 2 functions that can modify this variable. It\u0027s difficult to tell which function is called.",
+      "range": {
+        "startLine": 722,
+        "startChar": 9,
+        "endLine": 722,
+        "endChar": 27
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6f3fec_a47f0134",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Since we hook one action at a time, I think these actions could share the same variable mock_action_called.",
+      "parentUuid": "9119f833_abb76ea7",
       "range": {
         "startLine": 722,
         "startChar": 9,
@@ -169,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "95d8feae_9fa18896",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done\n\nI can leave comments here.\nHowever, I think it is a little bit confused since we put the data, helpers, mock functions in different code blocks. I wonder if we should put codes with related functionality together.\n\nLike\n\n /*****************/\n /* Mock keyboard */\n /* data */\n /* mock functions */\n /* init */\n\n /*****************/\n /* Mock physical presence button */\n ...",
+      "parentUuid": "6c9dba6a_5274f919",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f752122c_03b61aa8",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -192,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "95f7eafc_377448ae",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f752122c_03b61aa8",
+      "range": {
+        "startLine": 231,
+        "startChar": 23,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6462fa_4f9df9c9",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -212,6 +362,30 @@
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4ec21a_f151dcdd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done\nChange it to `navigate with menus`",
+      "parentUuid": "4a6462fa_4f9df9c9",
+      "range": {
+        "startLine": 563,
+        "startChar": 25,
+        "endLine": 563,
+        "endChar": 46
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +448,30 @@
       "side": 1,
       "message": "I think we can\n1. Use menu navigation to reach TO_DEV and then cancel by space, and\n2. Use Ctrl-D to reach TO_DEV and then select confirm\n\nI don\u0027t think we need to test all the 6 combinations: {menu_navigate, ctrl_d} x {cancel by enter, cancel by space, confirm}.",
       "parentUuid": "420ed82d_23f6855e",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e702a0_9ec50e3b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "My plan is:\n1. Use menu navigation to reach to_dev\n2. Use Ctrl+D to reach to_dev\n3. ctrl+D, cancel by space ...\n4. ctrl+D, confirm ...",
+      "parentUuid": "5552fd7c_02d6e36a",
       "range": {
         "startLine": 567,
         "startChar": 25,
@@ -356,6 +554,30 @@
     },
     {
       "key": {
+        "uuid": "dfab075c_0516b8b7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done\nI\u0027d prefer recovery select and to_dev",
+      "parentUuid": "1cbf7a23_84f24dba",
+      "range": {
+        "startLine": 581,
+        "startChar": 16,
+        "endLine": 581,
+        "endChar": 22
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "261cc9ef_a7ca9cd2",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -370,6 +592,24 @@
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1d8616_c751252b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done\nAfter some discussion here (https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2168072/16/firmware/2lib/2ui.c#167)\nThis should be removed.",
+      "parentUuid": "261cc9ef_a7ca9cd2",
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +633,30 @@
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e30bb2_9e7ad7e3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T04:19:44Z",
+      "side": 1,
+      "message": "Done\nHowever we need to check the displayed screens for inspecting the entry point behavior in some tests, so I remain some checks.",
+      "parentUuid": "e84edde3_13ffb8a7",
+      "range": {
+        "startLine": 671,
+        "startChar": 2,
+        "endLine": 671,
+        "endChar": 14
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
