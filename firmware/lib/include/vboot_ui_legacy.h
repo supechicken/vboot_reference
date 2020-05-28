@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Common code used by both legacy_clamshell_ui and legacy_menu_ui.
+ * Common code used by at least legacy_clamshell_ui or legacy_menu_ui.
  */
 
 #ifndef VBOOT_REFERENCE_VBOOT_UI_LEGACY_H_
@@ -82,5 +82,20 @@ void vb2_try_altfw(struct vb2_context *ctx, int allowed,
  * VB_SHUTDOWN_REQUEST_POWER_BUTTON
  */
 int vb2_want_shutdown(struct vb2_context *ctx, uint32_t key);
+
+/**
+ * Logic to confirm physical presence by power button.
+ *
+ * Returns VB2_SUCCESS if physical presence is confirmed. VB2_REQUEST_REBOOT
+ * for failure of confirmation and VB2_REQUEST_SHUTDOWN if user close the lid.
+ *
+ * @param ctx			Context pointer.
+ * @param screen		Screen id that is currently displaying.
+ * @param timeout_us	Zero if infinite (blocking) waiting is desired.
+ *						Or specified timeout in us.
+ * @param escape_key	Keycode to exit the loop. 0x0 if no escape path wanted.
+ */
+vb2_error_t vb2_confirm_physical_presence(struct vb2_context *ctx,
+		uint32_t screen, const uint64_t timeout_us, const char escape_key);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_UI_LEGACY_H_ */
