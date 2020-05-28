@@ -378,6 +378,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923f073d_7d61e3bc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "\u003e Note that lots of the UI cases may not be as simple as just wrapping a function call in a VB2_TRY.  For example, in the case of our language selection malloc() failure, assuming that we keep .init return value behaviour as-is, then we\u0027d need to call menu_back() in the case of failure, and *then* return the error code.\n\nThat\u0027s part of the reason that I don\u0027t like the \"rollback\" action (menu_back()) in init().\n\n\u003e If we can nail down the details, then maybe it\u0027d be best to create a separate change either before/after this CL, so that we can deal with this malloc() failure problem right away?  What do you think?\n\nOkay, let\u0027s call menu_back() on language menu malloc failure in this CL, and deal with this problem in a follow-up CL.",
+      "parentUuid": "03698070_baaf2826",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

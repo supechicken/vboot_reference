@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "00c00bf3_98287568",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "Added a test case for is_language_select in change_screen_tests() instead.",
+      "parentUuid": "fea83e2f_bbcc8928",
+      "revId": "0606c84531c2793b439582e814d3e550bfbd73b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c953ab6_5db50c4d",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 9

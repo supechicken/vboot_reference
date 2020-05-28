@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d429b61_931b5da5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e778e8_20710cf1",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b763d24_6210cd52",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a481b801_b1bbb393",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "Because the \u0027menu\u0027 field in vb2_screen_info struct was called \u0027items\u0027 in a previous patchset. Now since I\u0027ve renamed it to \u0027menu\u0027, let\u0027s change this to num_items back.",
+      "parentUuid": "1b763d24_6210cd52",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "573e8d05_796db215",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "Both are valid.",
+      "parentUuid": "3ea7cff3_aaa4d230",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "179a0153_f01cbf55",
         "filename": "tests/vb2_ui_utility_tests.c",
         "patchSetId": 13
@@ -115,6 +187,30 @@
       "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafb1464_60754f1e",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T07:59:40Z",
+      "side": 1,
+      "message": "If it\u0027s about the output, I\u0027ve uploaded CL:2217547: to fix it.",
+      "parentUuid": "179a0153_f01cbf55",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
