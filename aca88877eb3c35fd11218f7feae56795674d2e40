@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0aa696c_c31a2b6e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-28T00:48:34Z",
+      "side": 1,
+      "message": "I don\u0027t know what these are since I haven\u0027t looked at any of the new UI stuff yet, but just to double-check you\u0027re intentionally changing the unit of the variable (from us to ms) here? (In general my recommendation is always to put that in the variable name, e.g. ui-\u003estart_time_ms, so that there can be absolutely no confusion.)",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 15
+      },
+      "revId": "aca88877eb3c35fd11218f7feae56795674d2e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
