@@ -560,6 +560,51 @@ static void manual_recovery_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	displayed_no_extra();
 
+	/* Navigate to advanced options, then to_dev screen */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"navigate to advanced options, then to_dev screen");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("to_dev", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Navigate to advanced options, then cancel */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"navigate to advanced options, then cancel");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
 	/* Ctrl+D = to_dev; space = cancel */
 	reset_common_data(FOR_MANUAL_RECOVERY);
 	add_mock_key(VB_KEY_CTRL('D'), 1);
