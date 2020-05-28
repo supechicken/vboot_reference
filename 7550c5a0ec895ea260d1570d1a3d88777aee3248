@@ -354,6 +354,30 @@
       "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03698070_baaf2826",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-28T05:23:34Z",
+      "side": 1,
+      "message": "\u003e For (2), why not simply return the error code so that VB2_TRY() in VbSelectAndLoadKernel() will request recovery and reboot?\n\nAssuming we deal with the REQUEST_UI_CONTINUE problem you mention, then it seems like we can just call VB2_TRY and have everything magically work (?).  VB2_TRY can either be called with a recovery reason (for cases which aren\u0027t related to the UI -- for example in VbTryLoadKernel), or without a recovery reason (for cases which are related to the UI -- for example malloc failures).  We can just check for any error values at the end of UI as you suggested.  I\u0027m not sure if the best place for this is at the end of ui_loop() (so we only need to write it once), in vb2_developer_menu() and friends, or in VbSelectAndLoadKernel().\n\nNote that lots of the UI cases may not be as simple as just wrapping a function call in a VB2_TRY.  For example, in the case of our language selection malloc() failure, assuming that we keep .init return value behaviour as-is, then we\u0027d need to call menu_back() in the case of failure, and *then* return the error code.\n\n\n\u003e Seeing lots of (rv !\u003d VB2_REQUEST_UI_CONTINUE) checks in the code, I wonder if there\u0027s a way to utilize the VB2_TRY macro.\n\nThis is what\u0027s been keeping me up at night for the past few weeks.  \u003d)  The option (a) that you mention is exactly what I\u0027ve been thinking about.  The only case we\u0027d need to worry about is converting the return value of VbExLegacy from VB2_SUCCESS to VB2_REQUEST_UI_BREAK (I\u0027d suggest UI_EXIT as a more generic term).\n\nThe only problem with this strategy is that we couldn\u0027t directly use VB2_TRY around the action/init calls in ui_loop(), since we\u0027d want to filter out the UI_EXIT request and change it to VB2_SUCCESS.  But that seems like a small price to pay.\n\n\nIf we can nail down the details, then maybe it\u0027d be best to create a separate change either before/after this CL, so that we can deal with this malloc() failure problem right away?  What do you think?",
+      "parentUuid": "c70fb985_60d7f5f9",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "7550c5a0ec895ea260d1570d1a3d88777aee3248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
