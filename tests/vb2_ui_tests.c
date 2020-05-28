@@ -178,11 +178,13 @@ static void reset_common_data(enum reset_type t)
 
 	vb2_nv_init(ctx);
 
-	if (t == FOR_DEVELOPER)
-		ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
-
 	sd = vb2_get_sd(ctx);
 	sd->status |= VB2_SD_STATUS_SECDATA_KERNEL_INIT;
+
+	if (t == FOR_DEVELOPER) {
+		ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
+		sd->flags |= VB2_SD_FLAG_DEV_MODE_ENABLED;
+	}
 
 	/* Mock ui_context based on real screens */
 	memset(&mock_ui_context, 0, sizeof(mock_ui_context));
@@ -560,6 +562,26 @@ static void manual_recovery_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	displayed_no_extra();
 
+	/* Navigate to advanced options, then to_dev screen */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"navigate to advanced options, then to_dev screen");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("to_dev", VB2_SCREEN_RECOVERY_TO_DEV,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
 	/* Ctrl+D = to_dev; space = cancel */
 	reset_common_data(FOR_MANUAL_RECOVERY);
 	add_mock_key(VB_KEY_CTRL('D'), 1);
@@ -703,11 +725,76 @@ static void manual_recovery_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
+static void advanced_options_tests(void)
+{
+	VB2_DEBUG("Testing advanced options...\n");
+
+	/* Dev mode: hide enable dev mode button */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"dev mode: hide enable dev mode button");
+	displayed_eq("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, 1, 0x1);
+	displayed_eq("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Broken rec mode: navigate to advanced options, then cancel */
+	reset_common_data(FOR_BROKEN_RECOVERY);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"broken rec mode: navigate to advanced options, then cancel");
+	displayed_eq("recovery broken", VB2_SCREEN_RECOVERY_BROKEN,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, 0, 0x0);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, 1, 0x0);
+	displayed_eq("recovery broken", VB2_SCREEN_RECOVERY_BROKEN,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	/* Manual rec mode: navigate to advanced options, then cancel */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"manual rec mode: navigate to advanced options, then cancel");
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     0x0, 0, MOCK_IGNORE);
+	displayed_eq("advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     0x0, 1, MOCK_IGNORE);
+	displayed_eq("recovery select", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	displayed_no_extra();
+
+	VB2_DEBUG("...done.\n");
+}
+
 int main(void)
 {
 	developer_tests();
 	broken_recovery_tests();
 	manual_recovery_tests();
+	advanced_options_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
