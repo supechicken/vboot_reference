@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e778e8_20710cf1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T07:11:46Z",
+      "side": 1,
+      "message": "No space in type casting",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b763d24_6210cd52",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T07:11:46Z",
+      "side": 1,
+      "message": "I am curious about why you rename \u0027num_items\u0027 to \u0027count\u0027",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea7cff3_aaa4d230",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T07:11:46Z",
+      "side": 1,
+      "message": "Do we have convention about multi-line comments?\n2ui.c uses\n /*\n  * aaa\n  * bbb\n  */",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179a0153_f01cbf55",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T07:11:46Z",
+      "side": 1,
+      "message": "How about something like\n VB2_DEBUG(\"only allocate menu items once\");\n TEST_PTR_NEQ(menu, NULL, \"  menu not null\");\n ...\n TEST_PTR_NEQ(menu, NULL, \"  menu not null again\");\n ...",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
