@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79974003_14205633",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T09:26:46Z",
+      "side": 1,
+      "message": "\u003e twice\nIt\u0027ll be 4 after phone recovery screens are added.",
+      "parentUuid": "2637631b_a82df4e4",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "e63937a77fac3bb3e922c56697385597571363af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2aa6993_495c15f6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-22T05:35:34Z",
       "side": 1,
       "message": "I\u0027d reverse the order of these to be consistent with other code; for example, menu navigation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "e63937a77fac3bb3e922c56697385597571363af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd286e1_588b5318",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T09:26:46Z",
+      "side": 1,
+      "message": "I\u0027m fine with either order, but to clarify, this order is consistent with the menu items (\"Back\" button is below \"Next\" button on the screen).",
+      "parentUuid": "a2aa6993_495c15f6",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -133,6 +181,24 @@
       "revId": "e63937a77fac3bb3e922c56697385597571363af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb2b421_e6af41a3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T09:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0981bb46_316c47c4",
+      "revId": "e63937a77fac3bb3e922c56697385597571363af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
