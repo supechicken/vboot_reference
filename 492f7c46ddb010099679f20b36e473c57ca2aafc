@@ -141,6 +141,30 @@
       "revId": "492f7c46ddb010099679f20b36e473c57ca2aafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ff5e9c_6f678f4b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-05-28T01:06:07Z",
+      "side": 1,
+      "message": "I\u0027m not saying it won\u0027t need to be adapted for other boards, but if we wanted to, say, allow serial number setting on other boards, I\u0027m pretty sure we would be adding to this implementation rather than building something else on the side, or rewriting this from scratch. It wouldn\u0027t look that different on other boards (e.g. serial number is also in VPD and disabling WP should work the same, so the changes would come down to loosening the input validation a little).\n\nI also don\u0027t like putting the name \u0027wilco\u0027 into vboot APIs from a conceptional level. vboot should provide features and has no concept of specific mainboards. In this case the feature is that the user can type in some vendor-specific thing and that is passed through to the calling firmware... I think \"vendor data\" is an okay name for that, we could also make up another, but the word \"wilco\" has no meaning for vboot.\n\nThat said, I know I\u0027ve already missed reviews for too long and I don\u0027t want to keep you blocked on naming disputes any longer. If you really want it called this way, that\u0027s fine.",
+      "parentUuid": "68020eee_21473ee9",
+      "range": {
+        "startLine": 1241,
+        "startChar": 22,
+        "endLine": 1241,
+        "endChar": 34
+      },
+      "revId": "492f7c46ddb010099679f20b36e473c57ca2aafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
