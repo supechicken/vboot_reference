@@ -436,9 +436,7 @@ vb2_error_t VbBootDeveloperLegacyClamshell(struct vb2_context *ctx)
 vb2_error_t VbBootDiagnosticLegacyClamshell(struct vb2_context *ctx)
 {
 	vb2_reset_power_button();
-	vb2_error_t retval = vb2_diagnostics_ui(ctx);
-	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
-	return retval;
+	return vb2_diagnostics_ui(ctx);
 }
 
 static vb2_error_t recovery_ui(struct vb2_context *ctx)

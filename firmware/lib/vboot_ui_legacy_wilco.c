@@ -278,21 +278,15 @@ vb2_error_t vb2_check_diagnostic_key(struct vb2_context *ctx, uint32_t key)
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
-{
-	int active = 1;
+
+vb2_error_t vb2_confirm_physical_presence(struct vb2_context *ctx,
+		uint32_t screen, const uint64_t timeout_us, const char escape_key) {
 	int button_released = 0;
 	int button_pressed = 0;
-	vb2_error_t result = VB2_REQUEST_REBOOT;
-	int action_confirmed = 0;
-	uint64_t start_time_us;
-
-	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_DIAG, 0, NULL);
-
-	start_time_us = VbExGetTimer();
+	uint64_t start_time_us = VbExGetTimer();
 
 	/* We'll loop until the user decides what to do */
-	do {
+	while (1) {
 		uint32_t key = VbExKeyboardRead();
 		/* Note that we need to check that the physical presence button
 		   was pressed *and then* released. */
@@ -303,51 +297,51 @@ vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 		} else {
 			button_released = 1;
 			if (button_pressed) {
-				VB2_DEBUG("vb2_diagnostics_ui() - power released\n");
-				action_confirmed = 1;
-				active = 0;
-				break;
+				VB2_DEBUG("vb2_confirm_physical_presence() - "
+						  "power released\n");
+				return VB2_SUCCESS;
 			}
 		}
-
 		/* Check the lid and ignore the power button. */
 		if (vb2_want_shutdown(ctx, 0) & ~VB_SHUTDOWN_REQUEST_POWER_BUTTON) {
-			VB2_DEBUG("vb2_diagnostics_ui() - shutdown request\n");
-			result = VB2_REQUEST_SHUTDOWN;
-			active = 0;
-			break;
+			VB2_DEBUG("vb2_confirm_physical_presence() - shutdown request\n");
+			return VB2_REQUEST_SHUTDOWN;
 		}
 
-		switch (key) {
-		case 0:
-			/* Nothing pressed */
-			break;
-		case VB_KEY_ESC:
-			/* Escape pressed - reboot */
-			VB2_DEBUG("vb2_diagnostics_ui() - user pressed Esc\n");
-			active = 0;
-			break;
-		default:
-			VB2_DEBUG("vb2_diagnostics_ui() - pressed key %#x\n",
+		if (key == 0 || escape_key == 0) {
+			/* Nothing pressed or no escape key assigned */
+		} else if (key == escape_key) {
+			/* Assigned escape key pressed - reboot */
+			VB2_DEBUG("vb2_confirm_physical_presence() - "
+			          "user pressed escaped key %#x\n", key);
+			return VB2_REQUEST_REBOOT;
+		} else if (key != 0) {
+			/* Key pressed and is not an assigned escape key */
+			VB2_DEBUG("vb2_confirm_physical_presence() - pressed key %#x\n",
 				  key);
-			VbCheckDisplayKey(ctx, key, VB_SCREEN_CONFIRM_DIAG,
-					  NULL);
-			break;
+			VbCheckDisplayKey(ctx, key, screen, NULL);
 		}
-		if (VbExGetTimer() - start_time_us >= 30 * VB_USEC_PER_SEC) {
-			VB2_DEBUG("vb2_diagnostics_ui() - timeout\n");
-			break;
+
+		if (timeout_us > 0 && (VbExGetTimer() - start_time_us >= timeout_us)) {
+			VB2_DEBUG("vb2_confirm_physical_presence() - timeout\n");
+			return VB2_REQUEST_REBOOT;
 		}
-		if (active) {
-			VbExSleepMs(KEY_DELAY_MS);
-		}
-	} while (active);
+		VbExSleepMs(KEY_DELAY_MS);
+	}
+	// Should never reach here
+	return VB2_REQUEST_REBOOT;
+}
+
+vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
+{
+	VbDisplayScreen(ctx, VB_SCREEN_CONFIRM_DIAG, 0, NULL);
+	int retcode = vb2_confirm_physical_presence(ctx, VB_SCREEN_CONFIRM_DIAG,
+			30 * VB_USEC_PER_SEC, VB_KEY_ESC);
 
 	VbDisplayScreen(ctx, VB_SCREEN_BLANK, 0, NULL);
 
-	if (action_confirmed) {
+	if (retcode == VB2_SUCCESS) {
 		VB2_DEBUG("Diagnostic requested, running\n");
-
 		if (vb2ex_tpm_set_mode(VB2_TPM_MODE_DISABLED) !=
 			   VB2_SUCCESS) {
 			VB2_DEBUG("Failed to disable TPM\n");
@@ -362,6 +356,5 @@ vb2_error_t vb2_diagnostics_ui(struct vb2_context *ctx)
 			vb2api_fail(ctx, VB2_RECOVERY_ALTFW_HASH_FAILED, 0);
 		}
 	}
-
-	return result;
+	return retcode;
 }
