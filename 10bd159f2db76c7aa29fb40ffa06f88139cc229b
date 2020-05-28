@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d481db66_7bd5307a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "We already test these in the \"Space \u003d cancel in to_dev\" block.",
+      "range": {
+        "startLine": 586,
+        "startChar": 1,
+        "endLine": 589,
+        "endChar": 46
+      },
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff59cf6_e321a57b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "Test mock_enable_dev_mode \u003d 0?",
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed88802_3046ecee",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "Do you want to use \"Confirm\" or \"confirm\"? Please choose one and stick to it.",
+      "range": {
+        "startLine": 659,
+        "startChar": 4,
+        "endLine": 659,
+        "endChar": 11
+      },
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

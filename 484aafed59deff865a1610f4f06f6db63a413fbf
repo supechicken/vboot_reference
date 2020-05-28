@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c64244c6_9014fc6b",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "Ack. Would you considering adding another mock variable for 10?",
+      "parentUuid": "3b6f3fec_a47f0134",
+      "range": {
+        "startLine": 722,
+        "startChar": 9,
+        "endLine": 722,
+        "endChar": 27
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3458be6b_c21bc39f",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "I want to try if we can hook all (3) actions and all works separately.\nSince we only hook one action during other tests, I think we might have a test if we hook them all.\n\n(Note that we will test one-hot case only. i.e. only one action return something in a test.)",
       "parentUuid": "3458be6b_c21bc39f",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 49
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d79dea_74b50405",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "Do you mean to run both global and screen actions? Again, what\u0027s the difference between i \u003d 0 and 1?",
+      "parentUuid": "50e254d1_546e5a91",
       "range": {
         "startLine": 740,
         "startChar": 0,
@@ -552,6 +600,30 @@
       "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "267ff648_ee501b46",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-28T10:02:20Z",
+      "side": 1,
+      "message": "I think you misunderstood the point. Joel means to change\n\n if (PP) {\n     f1\n     f2\n     f3_pp\n     f4\n } else {\n     f1\n     f2\n     f3_no_pp\n     f4\n }\n\nto\n\n f1\n f2\n if (PP)\n     f3_pp\n else\n     f3_no_pp\n f4",
+      "parentUuid": "9d28b8a5_1f356f66",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 33
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
