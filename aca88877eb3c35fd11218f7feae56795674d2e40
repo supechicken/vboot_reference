@@ -22,6 +22,30 @@
       "revId": "aca88877eb3c35fd11218f7feae56795674d2e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a704225e_5636b7de",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-28T02:47:54Z",
+      "side": 1,
+      "message": "Yes, all the checks that follow use msec instead of usec.  And yeah, we should add the suffixes like you\u0027ve suggested.  Let\u0027s do that in another CL in bulk, since there are many other places that lack it too.",
+      "parentUuid": "d0aa696c_c31a2b6e",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 15
+      },
+      "revId": "aca88877eb3c35fd11218f7feae56795674d2e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
