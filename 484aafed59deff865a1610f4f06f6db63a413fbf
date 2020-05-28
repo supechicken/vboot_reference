@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "1d84b220_6e7f7ec2",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "Done\nHow about mock_action_countdown_limit",
+      "parentUuid": "c64244c6_9014fc6b",
+      "range": {
+        "startLine": 722,
+        "startChar": 9,
+        "endLine": 722,
+        "endChar": 27
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3458be6b_c21bc39f",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 15
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Do you mean to run both global and screen actions? Again, what\u0027s the difference between i \u003d 0 and 1?",
       "parentUuid": "50e254d1_546e5a91",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 49
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db8f290_9cf8adc1",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "We hook three actions here:\n#0: screen action\n#1: item target action\n#2: global action\n\nWhen i \u003d 0\n#0 will return VB2_SUCCESS, while others return VB2_REQUEST_UI_CONTINUE.\n\nWhen i \u003d 1\n#1 will return VB2_SUCCESS, while others return VB2_REQUEST_UI_CONTINUE.\n\nMy intention is to make sure when we hook all actions, and exactly one action return VB2_SUCCESS, we can always receive it correctly.\n\n---\n\nLet me try to add some detailed explanation in comments",
+      "parentUuid": "f8d79dea_74b50405",
       "range": {
         "startLine": 740,
         "startChar": 0,
@@ -532,6 +580,30 @@
     },
     {
       "key": {
+        "uuid": "55378153_63d23855",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "Done\nSee CL:2217549",
+      "parentUuid": "d7e702a0_9ec50e3b",
+      "range": {
+        "startLine": 567,
+        "startChar": 25,
+        "endLine": 567,
+        "endChar": 35
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9301e5e4_670e0d9c",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -627,6 +699,30 @@
     },
     {
       "key": {
+        "uuid": "b1762872_ab29ade1",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "Done\n\nThe diff messed up after moving code blocks.\nLet me have a brief here:\n\n /* Cancel */\n if ()\n else\n\n /* Confirm */\n if ()\n else\n\n /* Not trusted keyboard */\n if ()\n\n /* Dev already enabled */\n if ()\n else\n\n /* Other physical presence button tests */\n if (!)",
+      "parentUuid": "267ff648_ee501b46",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 33
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cbf7a23_84f24dba",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 15
@@ -662,6 +758,30 @@
       "side": 1,
       "message": "Done\nI\u0027d prefer recovery select and to_dev",
       "parentUuid": "1cbf7a23_84f24dba",
+      "range": {
+        "startLine": 581,
+        "startChar": 16,
+        "endLine": 581,
+        "endChar": 22
+      },
+      "revId": "484aafed59deff865a1610f4f06f6db63a413fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1330170f_85d8591b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "I missed many TO_DEV -\u003e to_dev cases, fixed it",
+      "parentUuid": "dfab075c_0516b8b7",
       "range": {
         "startLine": 581,
         "startChar": 16,

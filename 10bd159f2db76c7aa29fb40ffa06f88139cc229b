@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a76e5f40_bf2ac40a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "I think we should merge theses tests.",
+      "parentUuid": "d481db66_7bd5307a",
+      "range": {
+        "startLine": 586,
+        "startChar": 1,
+        "endLine": 589,
+        "endChar": 46
+      },
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aff59cf6_e321a57b",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -39,6 +63,24 @@
       "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a62b1ad_68c047bf",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff59cf6_e321a57b",
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9df67cd_69a5dda6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-28T16:26:58Z",
+      "side": 1,
+      "message": "Done\n\nCurrently we use capitalized texts for comments and non-capitalized texts for debug messages, and so does the other test files (like vb2_misc_tests.c)\n\nSo \"Confirm\" in debug message is a typo, I fixed it",
+      "parentUuid": "2ed88802_3046ecee",
+      "range": {
+        "startLine": 659,
+        "startChar": 4,
+        "endLine": 659,
+        "endChar": 11
+      },
+      "revId": "10bd159f2db76c7aa29fb40ffa06f88139cc229b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
