@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ca38629_0e95c4c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bade81e_9a694d17",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e797db38_5d513e9b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "34cc3fce_cf3ee9cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done\nActually it is hard for me to tell the difference between \u0027cannot\u0027 and \u0027can not\u0027.\nCan I assume \u0027cannot\u0027 is usually better then the other?",
+      "parentUuid": "f857d346_5efb81dd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ac90a45_410ec24d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "How about \u0027the ui_loop implementation\u0027",
+      "parentUuid": "e797db38_5d513e9b",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9d1dba5_1f572ad5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a434e3c4_67efbffc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d1dba5_1f572ad5",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "609762f2_a522c6be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72484f5e_aceee082",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e84782fc_5168114f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5fdca47_072d1080",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ba416e1_d5d392f0",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "ec1d7a82_63d82831",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "The order of keyboard reading, physical presence pressing, and kernel loading should not be strictly defined since we should prevent overfitting.\nSo we should increase this counter at the very end of an iteration, which should be vb2ex_msleep.\n\n(I think preventing doing anything after calling sleep is a reasonable requirement.)",
+      "parentUuid": "8ba416e1_d5d392f0",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aec88dc_b6a0f7af",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
@@ -171,6 +333,24 @@
       "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fa497b_593dfec3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T03:49:57Z",
+      "side": 1,
+      "message": "Done\nRemoved some of the following tests, too.",
+      "parentUuid": "2aec88dc_b6a0f7af",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
