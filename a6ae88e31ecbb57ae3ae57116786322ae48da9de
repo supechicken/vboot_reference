@@ -427,6 +427,24 @@
     },
     {
       "key": {
+        "uuid": "22a4a84f_07074f1f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T10:45:52Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s good to leave XXX anywhere in the codebase.\n\nWhat\u0027s the difficulty if the inputs are not synchronized? Could you give me an example test that would be hard to write?",
+      "parentUuid": "026f6268_810a8f83",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2aec88dc_b6a0f7af",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
