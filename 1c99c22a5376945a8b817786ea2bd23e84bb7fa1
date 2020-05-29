@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "19ba9d84_d8e8c14a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T08:12:51Z",
+      "side": 1,
+      "message": "I think num_items makes more sense now. I\u0027ll rename \u0027count\u0027 to \u0027num_items\u0027 in depthcharge.",
+      "parentUuid": "f64f77f6_e7c960cc",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ea7cff3_aaa4d230",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -259,6 +283,30 @@
       "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70640e16_7b98e872",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T08:12:51Z",
+      "side": 1,
+      "message": "Having a header is good, but using VB2_DEBUG will result in a different format on the output, which doesn\u0027t look good to me.\n\n get_language_menu_tests: This is the HEADER\n tests/vb2_ui_utility_tests.c:101: vb2api_init failed ... PASSED\n\nIn addition, we\u0027re already using the first TEST_EQ() as the header in many test cases (note that the header string has changed in the latest PS), so I\u0027m inclined to leave it as is now.",
+      "parentUuid": "3dc28512_6de2d91d",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
