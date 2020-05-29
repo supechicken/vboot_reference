@@ -445,6 +445,24 @@
     },
     {
       "key": {
+        "uuid": "7320f4d7_c17091ac",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T13:43:53Z",
+      "side": 1,
+      "message": "This will be a long comment.\n\n---\n\nFor a example, I want to have a scenario:\nEnter to_dev, press and hold pp button, leave to_dev, release pp button.\n\n #1\n keyboard input \u003d ctrl+D  /* enter to_dev */\n pp pressed \u003d 0\n -\u003e Enter to_dev screen\n ---\n #2\n keyboard input \u003d 0  /* NOP */\n pp pressed \u003d 1\n ---\n #3\n keyboard input \u003d space  /* cancel */\n pp pressed \u003d 1\n -\u003e exit to_dev with holding pp button\n ---\n #4\n keyboard input \u003d 0  /* NOP */\n pp pressed \u003d 0\n -\u003e release in root_screen, do nothing\n ---\n #5\n keyboard input \u003d ctrl+D  /* enter to_dev again */\n pp pressed \u003d 0\n -\u003e Enter to_dev screen again\n ---\n #6\n keyboard input \u003d 0  /* NOP */\n pp pressed \u003d 1\n ---\n #7\n keyboard input \u003d 0  /* NOP */\n pp pressed \u003d 0\n -\u003e Released, active to_dev transition\n\nWe should call vb2ex_physical_presence_pressed() in #1, #2, #5, #6 ,#7.\nOn the other hand, we should not call vb2ex_physical_presence_pressed() in #4.\nThese are well-defined.\n\nHowever, we do not know whether or not vb2ex_physical_presence_pressed() be called in #3.\n(Actually it recently changed from \u0027call\u0027 to \u0027no call\u0027 in CL:2210017.)\n\nThis would be hard for us to write a proper test.\n\nIt should be\n /* #1 */\n add_mock_keypress(VB_KEY_CTRL(\u0027D\u0027));\n add_mock_pp_pressed(0);\n /* #2 */\n add_mock_keypress(0);\n add_mock_pp_pressed(1);\n /* #3 */\n add_mock_keypress(\u0027 \u0027);\n add_mock_pp_pressed(1);\n /* #4 */\n add_mock_keypress(0);\n /* #5 */\n add_mock_keypress(VB_KEY_CTRL(\u0027D\u0027));\n add_mock_pp_pressed(0);\n /* #6 */\n add_mock_pp_pressed(1);\n /* #7 */\n add_mock_pp_pressed(0);\n\nWhich should pass test if we call vb2ex_physical_presence_pressed() in #3.\n\nIf we changed our mind, and did not call vb2ex_physical_presence_pressed() in #3,\nwe will receive \u00271\u0027 in #5, then fail to enter to_dev.\n\n---\n\nSome similar troubles happen in the \u0027skipping iter #0\u0027 case.\n(Since we cannot solve key input properly, but we can solve vbtlk in iter #0)\nBut I have not dig into too deep in that case.\n\n---\n\nPlease let me know if you have better approach then the hacky sync.",
+      "parentUuid": "22a4a84f_07074f1f",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2aec88dc_b6a0f7af",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
