@@ -463,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "ad6dc570_7693e767",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T14:08:55Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation. Now I understand what the difficulty is. I need more time to think about this problem, but I also don\u0027t want to block you from committing this. Therefore, since we don\u0027t have a better solution right now, please\n\n* Move \"mock_iters++;\" to whatever function you think the best, and\n* Remove \"XXX\"\n\nThanks.",
+      "parentUuid": "7320f4d7_c17091ac",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2aec88dc_b6a0f7af",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
