@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3739d46_66dd41d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T11:11:23Z",
+      "side": 1,
+      "message": "8.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "502a80b9efe9c09ea88a6a8f5c7a420c17bff0c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abca0ef9_e45baea6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T11:11:23Z",
+      "side": 1,
+      "message": "What do you think if we move this block to developer_tests() so that we can test the \"Cancel\" and no \"Enable developer mode\" button at the same time? For the key presses, just call add_mock_keypress(VB_KEY_DOWN) 3 times to make sure we reach the last menu item (advanced options) regardless of the default boot target.\n\nI\u0027m okay if you decide to leave it as is.",
+      "revId": "502a80b9efe9c09ea88a6a8f5c7a420c17bff0c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
