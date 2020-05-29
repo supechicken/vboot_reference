@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a209b4d_c4630d57",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T02:57:37Z",
+      "side": 1,
+      "message": "Explicitly set\n\n mock_action_countdown_limit \u003d 10\n\nhere, and initialize it to 1 (maybe) in reset_common_data().",
+      "revId": "58c123c510e4b47dde30fce386f6d491836333fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "495fa403_47d87698",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T02:57:37Z",
+      "side": 1,
+      "message": "How about\n\n reset_common_data(FOR_MANUAL_RECOVERY);\n add_mock_key(VB_KEY_CTRL(\u0027D\u0027), 1);\n if (!PHYSICAL_PRESENCE_KEYBOARD)\n     add_mock_keypress(VB_KEY_DOWN);\n add_mock_keypress(VB_KEY_ENTER);\n add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND,\n                VB_DISK_FLAG_REMOVABLE);\n TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN, \"cancel\");\n TEST_EQ(mock_enable_dev_mode, 0, \"  dev mode not enabled\");\n\nSame for all the similar tests. I think that\u0027s what Joel mean by \"wrap the conditional around the relevant extra lines\". The code will be much shorter.",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 2
+      },
+      "revId": "58c123c510e4b47dde30fce386f6d491836333fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d830501_0a236f7a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T02:57:37Z",
+      "side": 1,
+      "message": "I\u0027d rephrase this to something like\n\n Cannot confirm physical presence by untrusted keyboard\n\nbut it\u0027s up to you.",
+      "range": {
+        "startLine": 629,
+        "startChar": 4,
+        "endLine": 629,
+        "endChar": 52
+      },
+      "revId": "58c123c510e4b47dde30fce386f6d491836333fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
