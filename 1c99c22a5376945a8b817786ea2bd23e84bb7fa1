@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f64f77f6_e7c960cc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-29T07:08:23Z",
+      "side": 1,
+      "message": "It\u0027d be nice for depthcharge and vboot to use the same name here, so I wouldn\u0027t mind switching it back to `count` like in ui_files.",
+      "parentUuid": "a481b801_b1bbb393",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ea7cff3_aaa4d230",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -211,6 +235,30 @@
       "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dc28512_6de2d91d",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-29T07:08:23Z",
+      "side": 1,
+      "message": "I think Hsuan Ting is talking about printing a heading for the test case.  Older unit tests used to be more formulaic -- run a main function, and then test some state afterwards.  Since then, we have started putting a lot of checks in mock functions, and don\u0027t necessarily have one \"main function\" at the beginning.  Anyways, I don\u0027t care so much -- feel free to leave as-is or add the header if you like.",
+      "parentUuid": "aafb1464_60754f1e",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "1c99c22a5376945a8b817786ea2bd23e84bb7fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

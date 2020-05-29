@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6921898_b1b14309",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-29T07:08:23Z",
+      "side": 1,
+      "message": "Can we just call it get_menu()?\n`items` is a member of vb2_menu, so it\u0027s a bit misleading -- it sounds like this might return a list of vb2_menu_items instead.",
+      "range": {
+        "startLine": 76,
+        "startChar": 23,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "c8eb16be17c52190fa1954a3960ab260a75c4b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a328fe3_8ba108e5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-05-29T07:08:23Z",
+      "side": 1,
+      "message": "Call this `menu`?",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "c8eb16be17c52190fa1954a3960ab260a75c4b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
