@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d41003f_a3ec1ce9",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T15:52:43Z",
+      "side": 1,
+      "message": "[0, 1, 1, 0] checks all the 4 tuple of (pressed, pressed_last).\nIt could ensure we react correctly in all 4 cases.\n\n(However I think we have to check mock_iters to ensure it does not return too early.)",
+      "parentUuid": "46034726_74c7a463",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 597,
+        "endChar": 25
+      },
+      "revId": "d52736863803c90cc204362bed4737532388a8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71d68bc1_7ec0365a",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 22
@@ -39,6 +63,24 @@
       "revId": "d52736863803c90cc204362bed4737532388a8ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f63cef4_96811559",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T15:52:43Z",
+      "side": 1,
+      "message": "It should pass this in !PHYSICAL_PRESENCE_KEYBOARD since we stay at \u0027cancel\u0027 if !PHYSICAL_PRESENCE_KEYBOARD.\nI think it is unnecessary to test this scenario in !PHYSICAL_PRESENCE_KEYBOARD.\n\n(Actually this will run exactly the same scenario as /* Cancel */ in !PHYSICAL_PRESENCE_KEYBOARD.)",
+      "parentUuid": "71d68bc1_7ec0365a",
+      "revId": "d52736863803c90cc204362bed4737532388a8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
