@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b1c0088d_f0ae92dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T07:11:48Z",
+      "side": 1,
+      "message": "Try to explain more.",
+      "parentUuid": "165e14c9_91f871a9",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9d1dba5_1f572ad5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -355,6 +379,24 @@
       "side": 1,
       "message": "What if vb2ex_msleep is called somewhere else in vboot?",
       "parentUuid": "ec1d7a82_63d82831",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "026f6268_810a8f83",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-05-29T07:11:48Z",
+      "side": 1,
+      "message": "I think we could increase it in VbExKeyboardReadWithFlags() and leave some XXX here.",
+      "parentUuid": "140bec67_8181cf3d",
       "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
