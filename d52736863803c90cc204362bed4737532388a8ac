@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46034726_74c7a463",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T10:55:55Z",
+      "side": 1,
+      "message": "No need to modify this, but does it work for sequence [0, 1, 0] instead of [0, 1, 1, 0]?",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 597,
+        "endChar": 25
+      },
+      "revId": "d52736863803c90cc204362bed4737532388a8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71d68bc1_7ec0365a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T10:55:55Z",
+      "side": 1,
+      "message": "I wonder if we can remove this if statement. The ENTER key shouldn\u0027t work if !PHYSICAL_PRESENCE_KEYBOARD.",
+      "revId": "d52736863803c90cc204362bed4737532388a8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
