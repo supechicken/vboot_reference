@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "165e14c9_91f871a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T05:02:31Z",
+      "side": 1,
+      "message": "I\u0027m just not sure what you mean by \"it shortcuts\". Is \"shortcut\" used as a verb here?",
+      "parentUuid": "1ac90a45_410ec24d",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9d1dba5_1f572ad5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -313,6 +337,24 @@
       "side": 1,
       "message": "The order of keyboard reading, physical presence pressing, and kernel loading should not be strictly defined since we should prevent overfitting.\nSo we should increase this counter at the very end of an iteration, which should be vb2ex_msleep.\n\n(I think preventing doing anything after calling sleep is a reasonable requirement.)",
       "parentUuid": "8ba416e1_d5d392f0",
+      "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "140bec67_8181cf3d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-29T05:02:31Z",
+      "side": 1,
+      "message": "What if vb2ex_msleep is called somewhere else in vboot?",
+      "parentUuid": "ec1d7a82_63d82831",
       "revId": "a6ae88e31ecbb57ae3ae57116786322ae48da9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
