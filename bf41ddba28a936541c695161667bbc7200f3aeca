@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "415514c6_3d8ff5bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-30T04:49:59Z",
+      "side": 1,
+      "message": "Can we have a line break?\n\n TEST\u003dCC\u003dx86_64-pc-linux-gnu-clang; DETACHABLE\u003d1;\n      make clean \u0026\u0026 make runtests\n\nSame for line 14.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 76
+      },
+      "revId": "bf41ddba28a936541c695161667bbc7200f3aeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7717327c_505fb5ca",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-30T04:49:59Z",
+      "side": 1,
+      "message": "Why do we still have this block?",
+      "range": {
+        "startLine": 565,
+        "startChar": 1,
+        "endLine": 583,
+        "endChar": 22
+      },
+      "revId": "bf41ddba28a936541c695161667bbc7200f3aeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1590a97f_4941167d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-30T04:49:59Z",
+      "side": 1,
+      "message": "Why is this comment different from other two? I think we can have the \"hidden dev button\" comment in line 735:\n\n add_mock_keypress(VB_KEY_ENTER);  /* \"Enable dev mode\" button hidden */\n\nWhat do you think?",
+      "range": {
+        "startLine": 732,
+        "startChar": 14,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "bf41ddba28a936541c695161667bbc7200f3aeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eedd9522_68d18843",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-30T04:49:59Z",
+      "side": 1,
+      "message": "This is locale_id.",
+      "range": {
+        "startLine": 782,
+        "startChar": 7,
+        "endLine": 782,
+        "endChar": 10
+      },
+      "revId": "bf41ddba28a936541c695161667bbc7200f3aeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -81,6 +81,24 @@
       "revId": "502a80b9efe9c09ea88a6a8f5c7a420c17bff0c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7db6933_a22b5c98",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-05-30T04:49:59Z",
+      "side": 1,
+      "message": "\u003e Note that we should not use series of VB_KEY_DOWN since the adv. options will not be the last option after we have power off option.\n\nTrue, but a series of DOWN followed by an UP should work after we have the \"Power off\" option.",
+      "parentUuid": "52b41eac_422a6c0d",
+      "revId": "502a80b9efe9c09ea88a6a8f5c7a420c17bff0c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
