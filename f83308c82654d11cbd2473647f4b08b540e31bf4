@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b8e15b_b99a07c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-06-01T21:08:18Z",
+      "side": 1,
+      "message": "summer",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "f83308c82654d11cbd2473647f4b08b540e31bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f916482a_3ba9d051",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-06-01T21:08:18Z",
+      "side": 1,
+      "message": "This looks fishy, I would separate this out into two variables.",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 45
+      },
+      "revId": "f83308c82654d11cbd2473647f4b08b540e31bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
