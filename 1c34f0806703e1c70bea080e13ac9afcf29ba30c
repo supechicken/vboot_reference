@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "f728a144_6917aaa9",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-06-02T16:37:44Z",
+      "side": 1,
+      "message": "Using (()) to get around the compiler warning about \u003d in conditional.",
+      "parentUuid": "88de740a_8aa23754",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28756742_c6a6820b",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
