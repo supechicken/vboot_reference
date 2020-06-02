@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30b242e8_2316b861",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7052a4b2_bdb4f787",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24e3efb7_05e752c9",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d0e245_22d9bece",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Ack. Keeping name, since buffer is optional.",
+      "parentUuid": "24e3efb7_05e752c9",
+      "range": {
+        "startLine": 34,
+        "startChar": 19,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ec035714_8dc4c1bc",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04419c26_9b5c112b",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d380453c_c078e2bf",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "322fb056_728391c6",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d380453c_c078e2bf",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e61f1d_da2ad892",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "3e902ceb_cd0a72e7",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Ack.  This makes it a little messy, as we now need to know the index to place the arguments, or add code to append them.",
+      "parentUuid": "65e61f1d_da2ad892",
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70d17cd1_29722353",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2020-06-01T21:23:40Z",
       "side": 1,
       "message": "Does flashrom use this kind of construct?",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88de740a_8aa23754",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Not sure what you mean here?",
+      "parentUuid": "70d17cd1_29722353",
       "range": {
         "startLine": 117,
         "startChar": 6,
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "bbd967f3_fbb97165",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Ack.\n\nI actually had this in an earlier version before I uploaded.  It was too messy and hard to read, essentially the common read/write function had a bunch of if/else in it depending on the operation, which just over-complicated the control flow, and obscured what was happening.",
+      "parentUuid": "28756742_c6a6820b",
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48917877_a71da0d2",
         "filename": "tests/flashrom_tests.c",
         "patchSetId": 1
@@ -165,6 +321,24 @@
       "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04db260_bec5f428",
+        "filename": "tests/flashrom_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-02T16:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48917877_a71da0d2",
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
