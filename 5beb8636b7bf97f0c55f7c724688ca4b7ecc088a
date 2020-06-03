@@ -210,6 +210,30 @@
     },
     {
       "key": {
+        "uuid": "ea467c68_a50d0fdf",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-03T06:10:52Z",
+      "side": 1,
+      "message": "I thought that in the very beginning, but then agreed that\u0027s not a good idea because you\u0027ll move a few complicated logic inside the function. Current version is slightly better.",
+      "parentUuid": "375519ad_b6730a3f",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41a35e20_4881a00f",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
