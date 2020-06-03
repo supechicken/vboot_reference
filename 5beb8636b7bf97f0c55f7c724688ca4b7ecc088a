@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebbf0d79_12771240",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4d94e7_574e80dd",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2508ff62_c6a8af5e",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "47786dbd_30c06e2b",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "I just wanted to be complete while I\u0027m adding these, but I can take them out if you prefer.",
+      "parentUuid": "2508ff62_c6a8af5e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6057af1c_f48c0690",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-03T06:06:32Z",
       "side": 1,
       "message": "Maybe it\u0027d be simpler (and safer) to run a regex check on $fwid?",
+      "range": {
+        "startLine": 45,
+        "startChar": 65,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3744ba92_970ac54e",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "How do I regex in /bin/sh? (I\u0027m not really an expert in this sort of stuff, especially regarding what is and isn\u0027t bash-specific. Please feel free to suggest code for a better way to write this.",
+      "parentUuid": "6057af1c_f48c0690",
       "range": {
         "startLine": 45,
         "startChar": 65,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1a8ab04a_70c747bc",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dafbc8be_ff76eb0e",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5402eb44_413ef73d",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -138,6 +234,30 @@
       "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e3dda8_4582d6fc",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5402eb44_413ef73d",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "c09efcc6_b77ed990",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "The existing style in this file seems to be to only quote what can actually contain spaces, so while I know that would give vapier a heart attack, I don\u0027t want to start changing it piecemeal. Feel free to submit a CL to change the whole file to normal Chrome OS shell style.",
+      "parentUuid": "0b998646_1b5ef516",
+      "range": {
+        "startLine": 107,
+        "startChar": 14,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d498970f_c8bdc5e8",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -184,6 +328,30 @@
       "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4da9207_6d326745",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "This used to be a security issue on TPM 1.2. Due to the way permissions work there, it\u0027s possible to delete the kernel space without physical presence. In that case, it\u0027s important for the system to not just recreate it an silently roll back.\n\nMaybe this script could be written to instead just delete all spaces and make the TPM \"factory-clean\" again. But until we\u0027re able to delete the firmware space on TPM2, we can\u0027t really go that route either. So I think this approach is the most consistent we can be overall for now.",
+      "parentUuid": "d498970f_c8bdc5e8",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "aedb0724_c09e9aa6",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea467c68_a50d0fdf",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 14
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a35e20_4881a00f",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -257,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "2a9b40d7_6d94b02e",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "It\u0027s grouping the numbers by fields of the struct for readability. Old version already did it, I just kept that.",
+      "parentUuid": "41a35e20_4881a00f",
+      "range": {
+        "startLine": 220,
+        "startChar": 30,
+        "endLine": 220,
+        "endChar": 37
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02dccb73_d012af6e",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -277,6 +493,30 @@
       "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd4b366_3f15e6c7",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-06-03T22:39:45Z",
+      "side": 1,
+      "message": "I can\u0027t think of one.",
+      "parentUuid": "02dccb73_d012af6e",
+      "range": {
+        "startLine": 222,
+        "startChar": 30,
+        "endLine": 222,
+        "endChar": 117
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
