@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dafbc8be_ff76eb0e",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-03T00:56:40Z",
+      "side": 1,
+      "message": "ref: http://wiki.bash-hackers.org/commands/classictest#why_you_should_avoid_using_-a_and_-o and https://stackoverflow.com/questions/32790806/do-test-operators-a-and-o-short-circuit",
+      "parentUuid": "8fe56268_6ff119dd",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b998646_1b5ef516",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
