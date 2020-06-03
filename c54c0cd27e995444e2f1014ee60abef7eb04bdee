@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7740ef47_76292720",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Maybe: vb2_host_nvstorage_tests.c\nAnd move it over to TEST2X_NAMES.",
+      "range": {
+        "startLine": 681,
+        "startChar": 7,
+        "endLine": 681,
+        "endChar": 17
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0d905e_ed36affb",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Two stars for function documentation comment.",
+      "range": {
+        "startLine": 659,
+        "startChar": 1,
+        "endLine": 659,
+        "endChar": 2
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782a1dd5_466f62bb",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "No need to include the function name.",
+      "range": {
+        "startLine": 660,
+        "startChar": 3,
+        "endLine": 660,
+        "endChar": 15
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1562a6c6_53608aba",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Use tabs.",
+      "range": {
+        "startLine": 662,
+        "startChar": 13,
+        "endLine": 662,
+        "endChar": 24
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4fd162_5c6109d5",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "VB2_DIE",
+      "range": {
+        "startLine": 677,
+        "startChar": 2,
+        "endLine": 677,
+        "endChar": 9
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ebac1cc_9c2d751e",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "When checking for errors, just leave this out.",
+      "range": {
+        "startLine": 709,
+        "startChar": 29,
+        "endLine": 709,
+        "endChar": 44
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c8b5285_721e869d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Can we move this above the conditional?  We tend to avoid this construct in vboot code.",
+      "range": {
+        "startLine": 712,
+        "startChar": 5,
+        "endLine": 712,
+        "endChar": 6
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eb4a31c_492c3811",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "One space before labels.",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 1
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c5f02c_0c68c202",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Could we move these functions into a separate file?  Say, host/lib/nvdata.c.\nAlso, s/nv_storage/nvdata/g.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 54
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d700fa68_d4e46e1b",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "File-level comment.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa86bcd3_74c03bd8",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Comment for why we need this line?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633c7fd8_7d27a256",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Could we set the context value and use vb2_nv_get_size() here?  (Maybe in reset_common_data.)  This\u0027ll make testing 64-byte nvdata easier when the time comes.",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818dbaaa_dc353501",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Move into reset_common_data?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a054e26d_d4baeab7",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "I guess we aren\u0027t testing what happens when flashrom_* returns an error?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9b88e6_f7fa0f72",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Call it reset_common_data() like other test files, and make ctx a static global?",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e7ca8e_1f9c4789",
+        "filename": "tests/vbnv_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:32:05Z",
+      "side": 1,
+      "message": "Could we use NEQ(..., 0) here?",
+      "range": {
+        "startLine": 172,
+        "startChar": 6,
+        "endLine": 172,
+        "endChar": 10
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
