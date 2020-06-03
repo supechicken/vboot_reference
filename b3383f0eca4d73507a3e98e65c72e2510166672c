@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92443dc0_71ac1296",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-03T09:18:57Z",
+      "side": 1,
+      "message": "Joel, what\u0027s the difference between these two flags?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 44
+      },
+      "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d4da14_39cdbfd6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-03T09:18:57Z",
+      "side": 1,
+      "message": "When this failed, we won\u0027t know which call to displayed_eq() failed from the output.",
+      "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
