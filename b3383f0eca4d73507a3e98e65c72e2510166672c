@@ -39,6 +39,24 @@
       "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1a2a09_be1b453f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-03T09:43:55Z",
+      "side": 1,
+      "message": "We use empty text here because I think there is nothing important to test here.\n(e.g. we have not reach the subject screen yet)\n\nThis will only fail if no screen rest, which will print out \"missing screen \".",
+      "parentUuid": "a9d4da14_39cdbfd6",
+      "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
