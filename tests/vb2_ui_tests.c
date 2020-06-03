@@ -54,7 +54,10 @@ static int mock_key_total;
 static uint32_t mock_get_timer_last;
 static uint32_t mock_time;
 static const uint32_t mock_time_start = 31ULL * VB2_MSEC_PER_SEC;
-static int mock_vbexbeep_called;
+
+static int mock_beeped_ms[2];
+static int mock_beeped_ms_count;
+static int mock_vb2ex_beep_called;
 
 static enum vb2_dev_default_boot mock_default_boot;
 static int mock_dev_boot_allowed;
@@ -244,10 +247,14 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_key_trusted, 0, sizeof(mock_key_trusted));
 	mock_key_total = 0;
 
-	/* For vboot_audio.h */
+	/* For vb2ex_mtime and vb2ex_msleep  */
 	mock_get_timer_last = 0;
 	mock_time = mock_time_start;
-	mock_vbexbeep_called = 0;
+
+	/* For vb2ex_beep */
+	memset(mock_beeped_ms, 0, sizeof(mock_beeped_ms));
+	mock_beeped_ms_count = 0;
+	mock_vb2ex_beep_called = 0;
 
 	/* For dev_boot* in 2misc.h */
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_DISK;
@@ -373,7 +380,10 @@ void vb2ex_msleep(uint32_t msec)
 
 void vb2ex_beep(uint32_t msec, uint32_t frequency)
 {
-	mock_vbexbeep_called++;
+	if (mock_vb2ex_beep_called < ARRAY_SIZE(mock_beeped_ms))
+		mock_beeped_ms[mock_vb2ex_beep_called] = mock_time;
+	mock_time += msec;
+	mock_vb2ex_beep_called++;
 }
 
 enum vb2_dev_default_boot vb2_get_dev_boot_target(struct vb2_context *c)
@@ -383,17 +393,20 @@ enum vb2_dev_default_boot vb2_get_dev_boot_target(struct vb2_context *c)
 
 int vb2_dev_boot_allowed(struct vb2_context *c)
 {
-	return mock_dev_boot_allowed;
+	return mock_dev_boot_allowed ||
+	       (gbb.flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON);
 }
 
 int vb2_dev_boot_legacy_allowed(struct vb2_context *c)
 {
-	return mock_dev_boot_legacy_allowed;
+	return mock_dev_boot_legacy_allowed ||
+	       (gbb.flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_LEGACY);
 }
 
 int vb2_dev_boot_usb_allowed(struct vb2_context *c)
 {
-	return mock_dev_boot_usb_allowed;
+	return mock_dev_boot_usb_allowed ||
+	       (gbb.flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB);
 }
 
 vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
@@ -441,6 +454,58 @@ static void developer_tests(void)
 {
 	VB2_DEBUG("Testing developer mode...\n");
 
+	/* Power button short pressed = shutdown request */
+	if (!DETACHABLE) {
+		reset_common_data(FOR_DEVELOPER);
+		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
+		mock_calls_until_shutdown = -1;
+		TEST_EQ(vb2_developer_menu(ctx),
+			VB2_REQUEST_SHUTDOWN,
+			"power button short pressed = shutdown");
+	}
+
+	/* Boot after 30s timeout */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"boot after 30s timeout");
+	TEST_TRUE(mock_get_timer_last - mock_time_start >=
+		  30 * VB2_MSEC_PER_SEC, "  finished delay");
+	TEST_EQ(mock_vb2ex_beep_called, 2, "  beeped twice");
+	TEST_TRUE(mock_beeped_ms[0] - mock_time_start >=
+		  20 * VB2_MSEC_PER_SEC, "  beep #1: at 20s");
+	TEST_TRUE(mock_beeped_ms[1] - mock_time_start >=
+		  20 * VB2_MSEC_PER_SEC + 500, "  beep #2: at 20.5s");
+
+	/* Use short delay */
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY;
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"use short delay");
+	TEST_TRUE(mock_get_timer_last - mock_time_start >=
+		  2 * VB2_MSEC_PER_SEC, "  finished delay");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  not a 30s delay");
+	TEST_EQ(mock_vb2ex_beep_called, 0, "  never beeped");
+
+	/* Stop timer when user interaction occurs */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress('A');
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"stop timer when user interaction occurs");
+	TEST_EQ(mock_calls_until_shutdown, 0, "  loop forever");
+	TEST_EQ(mock_vb2ex_beep_called, 0, "  never beeped");
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY;
+	add_mock_keypress('A');
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"stop when using short delay as well");
+	TEST_EQ(mock_calls_until_shutdown, 0, "  loop forever");
+	TEST_EQ(mock_vb2ex_beep_called, 0, "  never beeped");
+
 	/* Proceed to internal disk after timeout */
 	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
@@ -448,8 +513,42 @@ static void developer_tests(void)
 		"proceed to internal disk after timeout");
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
 		  30 * VB2_MSEC_PER_SEC, "  finished delay");
-	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
 	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
+
+	/* If fail to load internal disk, don't boot */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_FIXED);
+	TEST_NEQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		 "if fail to load internal disk, don't boot");
+
+	/* Select boot internal in dev menu */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"select boot internal in dev menu");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+
+	/* Ctrl+D = boot internal */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('D'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"ctrl+d = boot internal");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+
+	/* VB_BUTTON_VOL_DOWN_LONG_PRESS = boot internal */
+	if (DETACHABLE) {
+		reset_common_data(FOR_DEVELOPER);
+		add_mock_keypress(VB_BUTTON_VOL_DOWN_LONG_PRESS);
+		add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+		TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+			"VB_BUTTON_VOL_DOWN_LONG_PRESS = boot internal");
+		TEST_TRUE(mock_get_timer_last - mock_time_start <
+			  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+	}
 
 	/* Proceed to USB after timeout */
 	reset_common_data(FOR_DEVELOPER);
@@ -460,18 +559,107 @@ static void developer_tests(void)
 		"proceed to USB after timeout");
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
 		  30 * VB2_MSEC_PER_SEC, "  finished delay");
-	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
+	TEST_EQ(mock_vb2ex_beep_called, 2, "  beeped twice");
 	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
 
 	/* Default boot USB not allowed, don't boot */
 	reset_common_data(FOR_DEVELOPER);
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
+	TEST_NEQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		 "default USB not allowed, don't boot");
+
+	/* If no USB, don't boot */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
+	mock_dev_boot_usb_allowed = 1;
+	TEST_NEQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		 "if no USB, don't boot");
+
+	/* Select boot external in dev menu */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"select boot external in dev menu");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+
+	/* Ctrl+U = boot external */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('U'));
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"ctrl+u = boot external");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+
+	/* VB_BUTTON_VOL_UP_LONG_PRESS = boot external */
+	if (DETACHABLE) {
+		reset_common_data(FOR_DEVELOPER);
+		add_mock_keypress(VB_BUTTON_VOL_UP_LONG_PRESS);
+		add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+		mock_dev_boot_usb_allowed = 1;
+		TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+			"VB_BUTTON_VOL_UP_LONG_PRESS = boot external");
+		TEST_TRUE(mock_get_timer_last - mock_time_start <
+			  30 * VB2_MSEC_PER_SEC, "  delay aborted");
+	}
+
+	/* If dev mode is disabled, goes to to_norm screen repeatedly */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_ESC);
+	mock_dev_boot_allowed = 0;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
-		"default USB not allowed, don't boot");
-	TEST_TRUE(mock_get_timer_last - mock_time_start >=
-		  30 * VB2_MSEC_PER_SEC, "  finished delay");
-	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
-	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
+		"if dev mode is disabled, goes to to_norm screen repeatedly");
+	DISPLAYED_EQ("to_norm screen", VB2_SCREEN_DEVELOPER_TO_NORM,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	/* Select to_norm in dev menu and confirm */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_REBOOT,
+		"select to_norm in dev menu and confirm");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
+		"  disable dev request");
+
+	/* Select to_norm in dev menu and cancel */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"select to_norm in dev menu and cancel");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 0,
+		"  disable dev request");
+
+	/* Dev mode forced by GBB flag */
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"dev mode forced by GBB flag");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 0,
+		"  disable dev request");
+
+	/* Ctrl+S = to_norm */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress(VB_KEY_CTRL('S'));
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_REBOOT,
+		"ctrl+s = to_norm");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1,
+		"  disable dev request");
+
 
 	VB2_DEBUG("...done.\n");
 }
@@ -480,7 +668,7 @@ static void broken_recovery_tests(void)
 {
 	VB2_DEBUG("Testing broken recovery mode...\n");
 
-	/* BROKEN screen shutdown request */
+	/* Power button short pressed = shutdown request */
 	if (!DETACHABLE) {
 		reset_common_data(FOR_BROKEN_RECOVERY);
 		add_mock_keypress(VB_BUTTON_POWER_SHORT_PRESS);
@@ -563,7 +751,7 @@ static void manual_recovery_tests(void)
 	add_mock_key(VB_KEY_CTRL('D'), 1);
 	add_mock_keypress(' ');
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
-		"ctrl+D = to_dev; space = cancel");
+		"ctrl+d = to_dev; space = cancel");
 	TEST_EQ(mock_enable_dev_mode, 0, "  dev mode not enabled");
 	DISPLAYED_EQ("recovery select", VB2_SCREEN_RECOVERY_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
@@ -573,16 +761,17 @@ static void manual_recovery_tests(void)
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
 
-	/* Cancel */
+	/* Cancel to_dev transition */
 	reset_common_data(FOR_MANUAL_RECOVERY);
 	add_mock_key(VB_KEY_CTRL('D'), 1);
 	if (PHYSICAL_PRESENCE_KEYBOARD)
 		add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN, "cancel");
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"cancel to_dev transition");
 	TEST_EQ(mock_enable_dev_mode, 0, "  dev mode not enabled");
 
-	/* Confirm */
+	/* Confirm to_dev transition */
 	reset_common_data(FOR_MANUAL_RECOVERY);
 	add_mock_key(VB_KEY_CTRL('D'), 1);
 	if (PHYSICAL_PRESENCE_KEYBOARD) {
@@ -594,7 +783,7 @@ static void manual_recovery_tests(void)
 		add_mock_pp_pressed(0);
 	}
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_REBOOT_EC_TO_RO,
-		"confirm");
+		"confirm to_dev transition");
 	if (!PHYSICAL_PRESENCE_KEYBOARD)
 		TEST_TRUE(mock_iters >= mock_pp_pressed_total - 1,
 			  "  used up mock_pp_pressed");
@@ -757,19 +946,130 @@ static void developer_screen_tests(void)
 {
 	VB2_DEBUG("Testing developer mode screens...\n");
 
-	/* Dev mode screen */
-	/* TODO: Check items */
+	/* Dev mode: default selected item */
 	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
-		"dev mode screen");
+		"dev mode screen: set default selection to boot internal");
+	DISPLAYED_EQ("dev mode screen", MOCK_IGNORE,
+		     MOCK_IGNORE, 2, MOCK_IGNORE);
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen: set default selection to boot external");
+	DISPLAYED_EQ("dev mode screen", MOCK_IGNORE,
+		     MOCK_IGNORE, 3, MOCK_IGNORE);
+
+	/* Dev mode: disabled item mask */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen: no disabled item mask");
 	DISPLAYED_EQ("dev mode screen", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, 0x0);
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen: disable to_norm item");
+	DISPLAYED_EQ("dev mode screen", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, 0x2);
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen: disable boot external");
+	DISPLAYED_EQ("dev mode screen", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, 0x8);
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen: disable both items");
+	DISPLAYED_EQ("dev mode screen", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, MOCK_IGNORE, 0xa);
+
+	/* Dev mode screen */
+	reset_common_data(FOR_DEVELOPER);  /* Select #2 by default */
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	/* #0: Language menu */
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	/* #1: Return to secure mode */
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	/* #2: Boot internal */
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen");
+	/* #0: Language menu */
+	DISPLAYED_PASS();
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 0, MOCK_IGNORE);
+	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	/* #1: Return to secure mode */
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 1, MOCK_IGNORE);
+	DISPLAYED_EQ("#1: return to secure mode", VB2_SCREEN_DEVELOPER_TO_NORM,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	/* #2: Boot internal */
+	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 2, MOCK_IGNORE);
+	VB2_DEBUG("#2: boot internal (no extra screen)\n");
+	DISPLAYED_NO_EXTRA();
+	reset_common_data(FOR_DEVELOPER);  /* Select #3 by default */
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
+	mock_dev_boot_usb_allowed = 1;
+	/* #3: Boot external */
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"dev mode screen");
+	/* #3: Boot external */
+	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 3, MOCK_IGNORE);
+	VB2_DEBUG("#3: boot external (no extra screen)\n");
+	DISPLAYED_NO_EXTRA();
+	reset_common_data(FOR_DEVELOPER);  /* Select #2 by default */
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	mock_dev_boot_usb_allowed = 1;
+	/* #4: Advanced options */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	/* End of menu */
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"dev mode screen");
+	/* #4: Advanced options */
+	DISPLAYED_PASS();
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("dev mode", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 4, MOCK_IGNORE);
+	DISPLAYED_EQ("#4: advanced options", VB2_SCREEN_ADVANCED_OPTIONS,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	/* End of menu */
+	DISPLAYED_PASS();
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("end of menu", VB2_SCREEN_DEVELOPER_MODE,
+		     MOCK_IGNORE, 4, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
 
 	/* Advanced options screen */
 	reset_common_data(FOR_DEVELOPER);
-	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
