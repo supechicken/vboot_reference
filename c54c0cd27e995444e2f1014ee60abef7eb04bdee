@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b486420a_7bfa12db",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:42:06Z",
+      "side": 0,
+      "message": "Do we have any non-AUE devices which don\u0027t set this value?  Maybe we can just get rid of this conditional?  Looks like we started setting the flag in 2015 with http://review.coreboot.org/8655.\n\nSame goes for the ARM CL.",
+      "range": {
+        "startLine": 199,
+        "startChar": 18,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
