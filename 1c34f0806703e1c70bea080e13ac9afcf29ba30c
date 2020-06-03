@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0dc53ffb_112396e0",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:13:32Z",
+      "side": 1,
+      "message": "Include a file-level comment.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d1fa59_2384df83",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-03T09:13:32Z",
+      "side": 1,
+      "message": "Could you include a comment explaining what POSIX.1 feature this is needed for?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "1c34f0806703e1c70bea080e13ac9afcf29ba30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7052a4b2_bdb4f787",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 1
