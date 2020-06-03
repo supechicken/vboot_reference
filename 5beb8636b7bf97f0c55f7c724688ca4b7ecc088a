@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe56268_6ff119dd",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-03T00:40:32Z",
+      "side": 1,
+      "message": "It is recommended to not use -a, -o . Please do\n\n [ $major -eq $major ] \u0026\u0026 [ $minor -eq $minor ] \u0026\u0026 [ $major -ne $minor ]",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b998646_1b5ef516",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-03T00:40:32Z",
+      "side": 1,
+      "message": "\"$1\"",
+      "range": {
+        "startLine": 107,
+        "startChar": 14,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
