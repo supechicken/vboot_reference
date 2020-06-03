@@ -105,6 +105,24 @@
       "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f8805a_0f81167e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-03T11:31:13Z",
+      "side": 1,
+      "message": "Done\n\nMore detailed output sample:\n tests/vb2_ui_action_tests.c:755: KEY_UP, KEY_DOWN, and KEY_ENTER ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #757, displayed #0) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #757, displayed #0) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #759, displayed #1) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #759, displayed #1) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #761, displayed #2) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #761, displayed #2) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #763, displayed #3) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #763, displayed #3) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #765, displayed #4) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #765, displayed #4) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #767, displayed #5) screen of mock_screen_menu ...  PASSED\n tests/vb2_ui_action_tests.c:255:   (line #767, displayed #5) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #769, displayed #6) screen of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:255:   (line #769, displayed #6) selected_item of mock_screen_menu ... PASSED\n tests/vb2_ui_action_tests.c:244:   (line #771, displayed #7) screen of mock_screen_target_2 ...  PASSED\n tests/vb2_ui_action_tests.c:283:   (line #772) no extra screens ... PASSED",
+      "parentUuid": "cc1a2a09_be1b453f",
+      "revId": "b3383f0eca4d73507a3e98e65c72e2510166672c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
