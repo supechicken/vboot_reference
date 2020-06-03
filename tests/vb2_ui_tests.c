@@ -443,10 +443,34 @@ static void developer_tests(void)
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_USB;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"default USB not allowed, don't boot");
+
+	/* Use short delay */
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY;
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
+		"use short delay");
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=
-		  30 * VB2_MSEC_PER_SEC, "  finished delay");
-	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
-	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
+		  2 * VB2_MSEC_PER_SEC, "  finished delay");
+	TEST_TRUE(mock_get_timer_last - mock_time_start <
+		  30 * VB2_MSEC_PER_SEC, "  not a 30s delay");
+	TEST_EQ(mock_vbexbeep_called, 0, "  never beeped");
+
+	/* Stop timer when user interaction occurs */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress('A');
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"stop timer when user interaction occurs");
+	TEST_EQ(mock_calls_until_shutdown, 0, "  loop forever");
+	TEST_EQ(mock_vbexbeep_called, 0, "  never beeped");
+	reset_common_data(FOR_DEVELOPER);
+	gbb.flags |= VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY;
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"  short delay");
+	TEST_EQ(mock_calls_until_shutdown, 0, "  loop forever");
+	TEST_EQ(mock_vbexbeep_called, 0, "  never beeped");
 
 	VB2_DEBUG("...done.\n");
 }
