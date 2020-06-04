@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fa182ef_017a72ab",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-04T02:32:10Z",
+      "side": 1,
+      "message": "nit: Maybe just \"line\"?",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 16
+      },
+      "revId": "f75b9bb2bac38d953b2458d6595f6c10bfec7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfa0ce7_dbca9c16",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-04T02:32:10Z",
+      "side": 1,
+      "message": "Simplify by\n\n #define DISPLAYED_EQ(...) displayed_eq(__VA_ARGS__, __LINE__)",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 16
+      },
+      "revId": "f75b9bb2bac38d953b2458d6595f6c10bfec7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7729de1f_8df1fb77",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-04T02:32:10Z",
+      "side": 1,
+      "message": "Could we write\n\n #define DISPLAYED_NO_EXTRA() display...\n\nand use with\n\n DISPLAYED_NO_EXTRA();\n\nSame for DISPLAYED_PASS().",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "f75b9bb2bac38d953b2458d6595f6c10bfec7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f8bb44_c8061ad5",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-04T02:32:10Z",
+      "side": 1,
+      "message": "Ignore repeated calls with same arguments",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 16
+      },
+      "revId": "f75b9bb2bac38d953b2458d6595f6c10bfec7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff32171_f3cfdd80",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-04T02:32:10Z",
+      "side": 1,
+      "message": "mock_displayed_count - 1",
+      "range": {
+        "startLine": 402,
+        "startChar": 29,
+        "endLine": 402,
+        "endChar": 51
+      },
+      "revId": "f75b9bb2bac38d953b2458d6595f6c10bfec7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
