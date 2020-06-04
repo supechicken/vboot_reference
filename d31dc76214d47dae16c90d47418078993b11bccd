@@ -16,6 +16,24 @@
       "revId": "d31dc76214d47dae16c90d47418078993b11bccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcb9aac_f65125bb",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-04T09:02:49Z",
+      "side": 1,
+      "message": "I tried to make each menu item test block as similar as possible.\nAfter a further thought, I think it will be hard to remain the similarity if the history stack is introduced.\n\nLet me modify this.",
+      "parentUuid": "8a80dd7f_a563a9e0",
+      "revId": "d31dc76214d47dae16c90d47418078993b11bccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
