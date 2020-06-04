@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a84d9d9_ebc636fe",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-04T05:38:13Z",
+      "side": 1,
+      "message": "It is fine to pass a NULL pointer to free().",
+      "parentUuid": "b5262a3e_0241896f",
+      "range": {
+        "startLine": 300,
+        "startChar": 6,
+        "endLine": 300,
+        "endChar": 22
+      },
+      "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7dec286_dff54d2f",
         "filename": "futility/updater_utils.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b38f338_d38bfc25",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-04T05:38:13Z",
+      "side": 1,
+      "message": "yeah... but it\u0027s already repeated for all functions here so let\u0027s follow the existing style.",
+      "parentUuid": "c7dec286_dff54d2f",
+      "range": {
+        "startLine": 454,
+        "startChar": 65,
+        "endLine": 454,
+        "endChar": 66
+      },
+      "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "765e9091_a05de128",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-04T05:38:13Z",
+      "side": 1,
+      "message": "It is fine to pass a NULL pointer to free().",
+      "parentUuid": "15726275_53f0951d",
+      "range": {
+        "startLine": 510,
+        "startChar": 6,
+        "endLine": 510,
+        "endChar": 18
+      },
+      "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b35cfdb2_b554e6dd",
         "filename": "futility/updater_utils.h",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3337a64c_728f6c9b",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-04T05:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35cfdb2_b554e6dd",
+      "range": {
+        "startLine": 184,
+        "startChar": 65,
+        "endLine": 184,
+        "endChar": 66
+      },
+      "revId": "b2b10c3a96095c9625b4ea0f074a54fddab36359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
