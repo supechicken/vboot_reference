@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c222413c_94f44581",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-04T05:09:30Z",
+      "side": 1,
+      "message": "I don\u0027t pretend to be an expert... I would usually just pipe stuff through sed, which might also give vapier a heart attack.  So I\u0027ll leave you to use the existing method, if you like.",
+      "parentUuid": "3744ba92_970ac54e",
+      "range": {
+        "startLine": 45,
+        "startChar": 65,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fe56268_6ff119dd",
         "filename": "utility/chromeos-tpm-recovery",
         "patchSetId": 1
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "It\u0027s grouping the numbers by fields of the struct for readability. Old version already did it, I just kept that.",
       "parentUuid": "41a35e20_4881a00f",
+      "range": {
+        "startLine": 220,
+        "startChar": 30,
+        "endLine": 220,
+        "endChar": 37
+      },
+      "revId": "5beb8636b7bf97f0c55f7c724688ca4b7ecc088a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b88f5219_26749216",
+        "filename": "utility/chromeos-tpm-recovery",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-04T05:09:30Z",
+      "side": 1,
+      "message": "Oh!  That makes sense.",
+      "parentUuid": "2a9b40d7_6d94b02e",
       "range": {
         "startLine": 220,
         "startChar": 30,
