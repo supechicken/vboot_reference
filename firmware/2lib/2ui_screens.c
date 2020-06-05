@@ -171,38 +171,17 @@ static vb2_error_t recovery_to_dev_finalize(struct vb2_ui_context *ui)
 
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui)
 {
-	if (!ui->key_trusted) {
-		VB2_DEBUG("Reject untrusted %s confirmation\n",
-			  ui->key == VB_KEY_ENTER ? "ENTER" : "POWER");
-		return VB2_REQUEST_UI_CONTINUE;
-	}
-	return recovery_to_dev_finalize(ui);
+	VB2_TRY(vb2_confirm_physical_presence(ui));
+ 	return recovery_to_dev_finalize(ui);
 }
 
 vb2_error_t recovery_to_dev_action(struct vb2_ui_context *ui)
 {
-	int pressed;
-
 	if (ui->key == ' ') {
 		VB2_DEBUG("SPACE means cancel dev mode transition\n");
 		return vb2_ui_change_root(ui);
 	}
-
-	/* Keyboard physical presence case covered by "Confirm" action. */
-	if (PHYSICAL_PRESENCE_KEYBOARD)
-		return VB2_REQUEST_UI_CONTINUE;
-
-	pressed = vb2ex_physical_presence_pressed();
-	if (pressed) {
-		VB2_DEBUG("Physical presence button pressed, "
-			  "awaiting release\n");
-		ui->physical_presence_button_pressed = 1;
-		return VB2_REQUEST_UI_CONTINUE;
-	}
-	if (!ui->physical_presence_button_pressed)
-		return VB2_REQUEST_UI_CONTINUE;
-	VB2_DEBUG("Physical presence button released\n");
-
+	VB2_TRY(vb2_confirm_physical_presence(ui));
 	return recovery_to_dev_finalize(ui);
 }
 

@@ -190,4 +190,31 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx);
  */
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx);
 
+/*****************************************************************************/
+/* Physical presence confirmation function */
+
+/** Returns if physical presence is presented.
+ *
+ * There are two approaches to proof the physical presence currently, depending
+ * on flag of PHYSICAL_PRESENCE_KEYBOARD.
+ *
+ * (a) If flag PHYSICAL_PRESENCE_KEYBOARD is unset (ex. Chromebox), function
+ * that draws the screens has responsibility to disable the `Confirm` item. In
+ * the build stage, environment variable will instruct alternative of the
+ * trusted keyboard. It could be recovery switch or power button.
+ *
+ * vb2ex_physical_presence_pressed() will then be used to verify a
+ * press-release activity.
+ *
+ * (b) If flag PHYSICAL_PRESENCE_KEYBOARD is set, function that draws the
+ * screen has responsibility to show the `Confirm` item for user to use trusted
+ * keyboard for selection. In menu_ui, the function that invoked with `Confirm`
+ * should call this function.
+ *
+ * @param ui	UI context pointer
+ * @return 		VB2_SUCCESS if confirmed. VB2_REQUEST_UI_CONTINUE for others.
+ *              It is up to caller to show additional UI for guiding user
+ *              perform navigation with trusted keyboard.
+ */
+vb2_error_t vb2_confirm_physical_presence(struct vb2_ui_context *ui);
 #endif  /* VBOOT_REFERENCE_2UI_H_ */
