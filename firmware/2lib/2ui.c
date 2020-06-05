@@ -312,6 +312,9 @@ vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 	return ui_loop(ctx, VB2_SCREEN_RECOVERY_SELECT, manual_recovery_action);
 }
 
+/*****************************************************************************/
+/* Physical presence confirmation function */
+
 vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 {
 	/* See if we have a recovery kernel available yet. */
@@ -336,4 +339,29 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 		return vb2_ui_change_screen(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 
 	return VB2_REQUEST_UI_CONTINUE;
+}
+
+
+vb2_error_t vb2_confirm_physical_presence(struct vb2_ui_context *ui)
+{
+	/* Keyboard physical presence case covered by "Confirm" action. */
+	if (PHYSICAL_PRESENCE_KEYBOARD) {
+		if (!ui->key_trusted) {
+			VB2_DEBUG("Reject untrusted %s confirmation\n",
+				ui->key == VB_KEY_ENTER ? "ENTER" : "POWER");
+			return VB2_REQUEST_UI_CONTINUE;
+		}
+		return VB2_SUCCESS;
+	}
+
+	if (vb2ex_physical_presence_pressed()) {
+		VB2_DEBUG("Physical presence button pressed, "
+			"awaiting release\n");
+		ui->physical_presence_button_pressed = 1;
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+	if (!ui->physical_presence_button_pressed)
+		return VB2_REQUEST_UI_CONTINUE;
+	VB2_DEBUG("Physical presence button released\n");
+	return VB2_SUCCESS;
 }
