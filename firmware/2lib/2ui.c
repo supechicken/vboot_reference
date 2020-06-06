@@ -19,6 +19,84 @@
 #define KEY_DELAY_MS 20  /* Delay between key scans in UI loops */
 
 /*****************************************************************************/
+/**
+ * Stack functions:
+ * We are implementing a small screen history stack to keep track of previous
+ * screens.
+ */
+
+/**
+ *  Don't think we ever go deeper than 6:
+ *  1. VB2_SCREEN_RECOVERY_SELECT
+ *  2. VB2_SCREEN_RECOVERY_DISK_STEP1
+ *  3. VB2_SCREEN_RECOVERY_DISK_STEP2
+ *  4. VB2_SCREEN_RECOVERY_DISK_STEP3
+ *  5. VB2_SCREEN_RECOVERY_TO_DEV (ctrl-D)
+ *  6. VB2_SCREEN_DEBUG_INFO (tbd) (tab)
+ */
+#define MAX_STACK_SIZE 6
+static int stack[MAX_STACK_SIZE];
+static int top = -1;
+
+static int stack_is_empty(void) {
+	return (top == -1);
+}
+
+static int stack_is_full(void) {
+	return (top == (MAX_STACK_SIZE - 1));
+}
+
+static enum vb2_screen stack_pop(void) {
+	enum vb2_screen screen;
+
+	if (!stack_is_empty()) {
+		screen = stack[top];
+		top = top - 1;
+		return screen;
+	}
+	else {
+		return -1;
+	}
+}
+
+/**
+ * Return the index of the screen passed in
+ * Return -1 on error.
+ */
+static int stack_find_entry(enum vb2_screen screen) {
+	for (int i = MAX_STACK_SIZE - 1; i >= 0; i--)
+		if (stack[i] == screen)
+			return i;
+	return -1;
+}
+
+/**
+ * Pop every entry off the stack until idx.  Return 0 on success and
+ * -1 on error
+ */
+static int stack_pop_until(int idx) {
+	int i;
+	if (idx < 0 || idx >= MAX_STACK_SIZE)
+		return -1;
+	for (i = MAX_STACK_SIZE - 1; i >= idx; i--) {
+		stack_pop();
+	}
+	if (i == idx)
+		return 0;
+	return -1;
+}
+
+static int stack_push(enum vb2_screen screen) {
+	if (!stack_is_full()) {
+		top = top + 1;
+		stack[top] = screen;
+		return 0;
+	}
+	else
+		return -1;
+}
+
+/*****************************************************************************/
 /* Utility functions */
 
 /**
@@ -191,6 +269,17 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 
 vb2_error_t vb2_ui_change_root(struct vb2_ui_context *ui)
 {
+	/*
+	 * We need to pop off two entries: 1 for the current screen and 1
+	 * for the previous screen.  The reason is that the
+	 * vb2_ui_change_screen() will push the previous screen back on
+	 */
+	stack_pop();
+	enum vb2_screen prev_id = stack_pop();
+	if (prev_id != -1)
+		return vb2_ui_change_screen(ui, prev_id/*ui->root_screen->id*/);
+
+	/* Not enough history, so default to first screen */
 	return vb2_ui_change_screen(ui, ui->root_screen->id);
 }
 
@@ -220,6 +309,28 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	memset(&ui->state, 0, sizeof(ui->state));
 	ui->state.screen = new_screen_info;
+
+	/**
+	 * We have two screens that we can take a shortcut to: the
+	 * dev_confirm screen and the debug screen For these two we
+	 * need to check to see if they already exist in the stack
+	 */
+	/* NOTE: we need to add the debug info screen here once
+	   implemented */
+	if (ui->state.screen->id == VB2_SCREEN_RECOVERY_TO_DEV) {
+		int found_idx = -1;
+		found_idx = stack_find_entry(ui->state.screen->id);
+		if (found_idx > -1)
+			stack_pop_until(found_idx);
+		else
+			stack_push(ui->state.screen->id);
+	}
+	else if (!stack_is_full()) {
+		/* push current screen on the history stack */
+		stack_push(ui->state.screen->id);
+	}
+	else
+		VB2_DEBUG("ERROR: Error adding to history stack!\n");
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
