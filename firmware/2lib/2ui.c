@@ -19,6 +19,49 @@
 #define KEY_DELAY_MS 20  /* Delay between key scans in UI loops */
 
 /*****************************************************************************/
+
+/**
+ * Stack functions:
+ * We are mplementing a small screen history stack to keep track of previous
+ * screens.
+ */
+
+/* Don't think we ever go deeper than 6 */
+static const int MAXSIZE = 6;
+static int stack[6];
+static int top = -1;
+
+static int isempty(void) {
+	return (top == -1);
+}
+
+static int isfull(void) {
+	return (top == MAXSIZE);
+}
+
+static enum vb2_screen pop(void) {
+	enum vb2_screen screen;
+
+	if (!isempty()) {
+		screen = stack[top];
+		top = top - 1;
+		return screen;
+	}
+	else
+		return -1;
+}
+
+static int push(enum vb2_screen screen) {
+	if (!isfull()) {
+		top = top + 1;
+		stack[top] = screen;
+		return 0;
+	}
+	else
+		return -1;
+}
+
+/*****************************************************************************/
 /* Utility functions */
 
 /**
@@ -191,6 +234,17 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 
 vb2_error_t vb2_ui_change_root(struct vb2_ui_context *ui)
 {
+	/*
+	 * We need to pop off two entries: 1 for the current screen and 1
+	 * for the previous screen.  The reason is that the
+	 * vb2_ui_change_screen() will push the previous screen back on
+	 */
+	pop();
+	enum vb2_screen prev_id = pop();
+	if (prev_id != -1)
+		return vb2_ui_change_screen(ui, prev_id/*ui->root_screen->id*/);
+
+	/* Not enough history, so default to first screen */
 	return vb2_ui_change_screen(ui, ui->root_screen->id);
 }
 
@@ -220,6 +274,12 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	memset(&ui->state, 0, sizeof(ui->state));
 	ui->state.screen = new_screen_info;
+
+	/* push current screen on the history stack */
+	if (!isfull())
+		push(ui->state.screen->id);
+	else
+		VB2_DEBUG("ERROR: Ran out of space in the history stack!\n");
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
