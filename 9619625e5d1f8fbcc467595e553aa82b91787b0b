@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f50d083a_a5636814",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T06:59:06Z",
+      "side": 1,
+      "message": "Should it be (MAXSIZE - 1)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "9619625e5d1f8fbcc467595e553aa82b91787b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
