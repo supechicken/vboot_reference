@@ -376,7 +376,7 @@ void vb2ex_beep(uint32_t msec, uint32_t frequency)
 	mock_vbexbeep_called++;
 }
 
-enum vb2_dev_default_boot vb2_get_dev_boot_target(struct vb2_context *c)
+enum vb2_dev_default_boot vb2api_get_dev_boot_target(struct vb2_context *c)
 {
 	return mock_default_boot;
 }

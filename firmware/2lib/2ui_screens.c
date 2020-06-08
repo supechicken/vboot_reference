@@ -414,7 +414,7 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
 	enum vb2_dev_default_boot default_boot =
-		vb2_get_dev_boot_target(ui->ctx);
+		vb2api_get_dev_boot_target(ui->ctx);
 
 	/* Get me outta here! */
 	if (!vb2_dev_boot_allowed(ui->ctx))
