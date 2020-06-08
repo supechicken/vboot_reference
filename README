@@ -172,3 +172,4 @@ a firmware image. Since verification is chained - RO firmware verifies
 RW firmware which verifies the kernel, only the keys change. An additional
 kernel signing key must be generated. The firmware signing generated above
 is the root key equivalent for signed kernel images.
+
