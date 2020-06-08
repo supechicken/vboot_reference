@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67df207_303d51d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "procedures",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7940b4b9_17190908",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Move this right before vb2_confirm_physical_presence().",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 0
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62633a4b_7d3f3134",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make sense now. Remove it?",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 67
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33695a94_88507c02",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Please align with \"Physical... in previous line.",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 4
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a3977b_121e6542",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Can be simplified by\n\n VB2_TRY(recovery_to_dev_confirm_action(ui));\n return recovery_to_dev_finalize(ui);",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2b5774_e217a45d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Extra newline",
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018f9f79_883f3b3a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Same as above. This can be simplified.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 15
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5130a6_a4d415aa",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Extra newline",
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ee1a18_97f7e65c",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-08T07:20:42Z",
+      "side": 1,
+      "message": "Joel, I\u0027ll let you review the docstring.",
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
