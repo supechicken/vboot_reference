@@ -881,6 +881,15 @@ enum vb2_dev_default_boot {
  */
 enum vb2_dev_default_boot vb2api_get_dev_boot_target(struct vb2_context *ctx);
 
+/**
+ * Whether to use short delay (2 sec) instead of the normal delay (30 sec) in
+ * developer mode screen.
+ *
+ * @param ctx		Vboot context
+ * @return 1 for short delay and 0 otherwise.
+ */
+int vb2api_use_dev_screen_short_delay(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
