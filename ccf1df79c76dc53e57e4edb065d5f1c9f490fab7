@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70bf0115_7a357148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d67df207_303d51d5",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7940b4b9_17190908",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9dc0ee_d488a64f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7940b4b9_17190908",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 0
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2cabb4ca_cd0a7cc0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Changed to emphasize again that who draws the screen should make sure `Confirm` is displayed. Let me know if that makes sense",
+      "parentUuid": "62633a4b_7d3f3134",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 67
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33695a94_88507c02",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998470bc_296a8de6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Fixing another VB2_DEBUG as well. Thanks.",
+      "parentUuid": "33695a94_88507c02",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 4
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8099a23f_aa6ba42d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a3977b_121e6542",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2b5774_e217a45d",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -131,6 +251,24 @@
       "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c6ef4f_31b83a85",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f2b5774_e217a45d",
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "261aac1b_39b1ffb0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "018f9f79_883f3b3a",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 15
+      },
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b5130a6_a4d415aa",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 1
@@ -171,6 +333,24 @@
       "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f02f259_57d346c4",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-06-08T08:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5130a6_a4d415aa",
+      "revId": "ccf1df79c76dc53e57e4edb065d5f1c9f490fab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
