@@ -127,19 +127,6 @@ enum vb2_nv_param {
 	VB2_NV_DIAG_REQUEST,
 };
 
-/* Set default boot in developer mode */
-enum vb2_dev_default_boot {
-	/* Default to boot from disk*/
-	VB2_DEV_DEFAULT_BOOT_DISK = 0,
-
-	/* Default to boot from USB */
-	VB2_DEV_DEFAULT_BOOT_USB = 1,
-
-	/* Default to boot legacy OS */
-	VB2_DEV_DEFAULT_BOOT_LEGACY = 2,
-
-};
-
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */
 enum vb2_fw_result {
 	/* Unknown */

@@ -861,6 +861,20 @@ uint32_t vb2api_get_locale_id(struct vb2_context *ctx);
  */
 int vb2api_phone_recovery_enabled(struct vb2_context *ctx);
 
+/* Default boot target in developer mode. */
+enum vb2_dev_default_boot {
+	/* Default to boot from disk. */
+	VB2_DEV_DEFAULT_BOOT_DISK = 0,
+
+	/* Default to boot from USB. */
+	VB2_DEV_DEFAULT_BOOT_USB = 1,
+
+	/* Default to boot legacy OS. */
+	VB2_DEV_DEFAULT_BOOT_LEGACY = 2,
+};
+
+enum vb2_dev_default_boot vb2api_get_dev_boot_target(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
