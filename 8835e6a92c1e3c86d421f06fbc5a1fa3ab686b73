@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a4892ac_68c75b5c",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-09T03:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffcb614b_6def1be5",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12c9da18_d7d88b60",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "795d8669_f7c254a3",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-09T03:47:09Z",
+      "side": 1,
+      "message": "Keeping as is as we need to free memory and remove temporary file.",
+      "parentUuid": "12c9da18_d7d88b60",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d7df7e_e4943b97",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f336a7c8_4e0a7da1",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-09T03:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d7df7e_e4943b97",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
