@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "db562483_1ed6751c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T07:49:24Z",
+      "side": 1,
+      "message": "Could use some explanation behind the 6.  For example, perhaps list the longest possible stack of screens.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a83e17d5_1f89518e",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
@@ -76,6 +99,24 @@
       "writtenOn": "2020-06-09T07:09:15Z",
       "side": 1,
       "message": "In order to reset this in unit tests, I think we should move it within the vb2_ui_context struct along with \u0027stack\u0027, just like vb2_ui_context.power_button.\n\nMaybe that\u0027s the reason Joel decided to use a LL.",
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b275b58_4f974074",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T07:49:24Z",
+      "side": 1,
+      "message": "Yes -- please store in vb2_ui_context.  Please also use `struct vb2_screen_state` instead of just an int, so that we can restore the selected item on the previous screen.",
+      "parentUuid": "4f40aa03_43474b40",
       "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -208,6 +249,30 @@
       "writtenOn": "2020-06-09T07:09:15Z",
       "side": 1,
       "message": "Or, we could unconditionally check the existence of the screen in the stack.",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa70c45b_603127ab",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T07:49:24Z",
+      "side": 1,
+      "message": "Agreed.  I\u0027d prefer to not hard-code any specific screens in general screen stack functions.",
+      "parentUuid": "8b097118_a2e2f2b5",
       "range": {
         "startLine": 306,
         "startChar": 1,
