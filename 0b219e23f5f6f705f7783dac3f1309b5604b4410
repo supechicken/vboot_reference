@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4825f4e1_fb9b17b9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Maybe remove this newline for consistency?",
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068d7af6_671053db",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "implementing",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83e17d5_1f89518e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "How about\n\n #define STACK_SIZE 6\n\nand then use it here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f40aa03_43474b40",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "In order to reset this in unit tests, I think we should move it within the vb2_ui_context struct along with \u0027stack\u0027, just like vb2_ui_context.power_button.\n\nMaybe that\u0027s the reason Joel decided to use a LL.",
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa3302a_6b352e77",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Should we follow coreboot\u0027s style (https://doc.coreboot.org/coding_style.html#placing-braces-and-spaces)?\n\n if (...) {\n     multiple_lines();\n     multiple_lines();\n } else {\n     only_one_line();\n }",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e226a669_2ea2b2dc",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Looks like we don\u0027t need the return value?",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e378722b_e1bf94fc",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "No need for the braces.",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff49c182_55dccbfe",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Rename it to vb2_ui_back_action?",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 30
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77a985a_a7732fcf",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Did you forget to remove it?",
+      "range": {
+        "startLine": 273,
+        "startChar": 41,
+        "endLine": 273,
+        "endChar": 64
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b097118_a2e2f2b5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-09T07:09:15Z",
+      "side": 1,
+      "message": "Or, we could unconditionally check the existence of the screen in the stack.",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
