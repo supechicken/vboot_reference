@@ -474,6 +474,17 @@ static void developer_tests(void)
 	TEST_EQ(mock_vbexbeep_called, 2, "  beeped twice");
 	TEST_TRUE(mock_iters >= mock_vbtlk_total, "  used up mock_vbtlk");
 
+	/* Power off */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);
+	/* Navigate to the bottom most menu item */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"select power off");
+
 	VB2_DEBUG("...done.\n");
 }
 
@@ -785,7 +796,6 @@ static void developer_screen_tests(void)
 	/* End of menu */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	add_mock_keypress(VB_KEY_DOWN);
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -826,7 +836,6 @@ static void broken_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ESC);
-	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"broken screen");
@@ -859,7 +868,6 @@ static void broken_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* End of menu */
 	add_mock_keypress(VB_KEY_ENTER);
-	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -908,7 +916,6 @@ static void manual_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"recovery select screen");
@@ -969,7 +976,6 @@ static void manual_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_DOWN);
-	add_mock_keypress(VB_KEY_DOWN);  /* Blocked */
 	extend_calls_until_shutdown();
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
