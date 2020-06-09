@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "d9bb238e_c7dbb569",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T03:09:54Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "7b58f4dd_c4a5dc10",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 54
+      },
+      "revId": "c54c0cd27e995444e2f1014ee60abef7eb04bdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d700fa68_d4e46e1b",
         "filename": "tests/vbnv_tests.c",
         "patchSetId": 2
