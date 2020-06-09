@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ec25406_d9a22859",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-09T15:43:04Z",
+      "side": 1,
+      "message": "There are some inconsistency between boot internal / external: \n\n1.\nCurrently we will not boot if VbTryLoadKernel fails in both boot actions.\nIf VbTryLoadKernel return VB2_ERROR_LK_NO_DISK_FOUND,\nvb2_ui_developer_mode_boot_internal_action() returns VB2_ERROR_LK_NO_DISK_FOUND\nVb2_ui_developer_mode_boot_external_action() returns VB2_REQUEST_UI_CONTINUE\nWhich of the following is the preferred test item for “don’t boot” test?\nShould it be\n TEST_EQ(vb2_developer_menu(ctx), VB2_ERROR_LK_NO_DISK_FOUND, …); and \n TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_UI_CONTINUE, …); separately?\nOr\n TEST_NEQ(vb2_developer_menu(ctx), VB2_SUCCESS, …) for both test items;\n(The later means we does not really care about what it returns as long as it does not return VB2_SUCCESS)\n\n2.\nIf we select menu item “boot internal” and it fails, the ui_loop will terminate, is it an intended behavior?\n(While boot external fails does not terminate ui_loop)",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 47
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
