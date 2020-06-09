@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "317bcde4_ae77deb2",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T03:06:09Z",
+      "side": 1,
+      "message": "Hmm, I was actually referring to defining a variable within the for (...) brackets.",
+      "parentUuid": "6804ff0f_5ba6a44a",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 25
+      },
+      "revId": "d7a7d2603c4e2cfac83ecf4c745680fb16644d3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f39561f_711bff0d",
         "filename": "host/lib/flashrom.c",
         "patchSetId": 2

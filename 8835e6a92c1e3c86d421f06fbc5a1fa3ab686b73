@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffcb614b_6def1be5",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T03:06:09Z",
+      "side": 1,
+      "message": "Actually, we can just wrap this in VB2_TRY(), which will take care of creating the rv variable, and returning the error if necessary.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c9da18_d7d88b60",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T03:06:09Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d7df7e_e4943b97",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T03:06:09Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 5
+      },
+      "revId": "8835e6a92c1e3c86d421f06fbc5a1fa3ab686b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
