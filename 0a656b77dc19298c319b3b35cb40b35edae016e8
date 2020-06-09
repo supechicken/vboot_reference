@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70ae21ad_06d1517e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:00:16Z",
+      "side": 1,
+      "message": "I originally suggested using get_dev_boot_target since it\u0027s shorter, but I think we should add the \"default\" word for clarity: vb2api_get_dev_default_boot_target()\n\nOr alternatively: vb2api_get_dev_default_target()",
+      "range": {
+        "startLine": 509,
+        "startChar": 26,
+        "endLine": 509,
+        "endChar": 52
+      },
+      "revId": "0a656b77dc19298c319b3b35cb40b35edae016e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c038bd_704a3569",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:00:16Z",
+      "side": 1,
+      "message": "Can we rename this to either vb2_dev_default_boot_target or vb2_dev_default_target?  Also update the constant names accordingly.",
+      "range": {
+        "startLine": 865,
+        "startChar": 5,
+        "endLine": 865,
+        "endChar": 25
+      },
+      "revId": "0a656b77dc19298c319b3b35cb40b35edae016e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2dfd038_303f5b68",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:00:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we indent subsequent @return lines... remove the space?",
+      "range": {
+        "startLine": 881,
+        "startChar": 3,
+        "endLine": 881,
+        "endChar": 4
+      },
+      "revId": "0a656b77dc19298c319b3b35cb40b35edae016e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9847fdff_b1234a4e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:00:16Z",
+      "side": 1,
+      "message": "By definition it must be specified... but you could mention something about defaulting to VB2_DEV_DEFAULT_BOOT_DISK in cases where there are internal inconsistencies (invalid internal value, or default is to boot from a target which is not allowed).",
+      "range": {
+        "startLine": 881,
+        "startChar": 30,
+        "endLine": 881,
+        "endChar": 46
+      },
+      "revId": "0a656b77dc19298c319b3b35cb40b35edae016e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
