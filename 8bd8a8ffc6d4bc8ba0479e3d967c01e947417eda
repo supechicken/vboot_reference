@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c0f653d_ad4f2bfa",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T04:45:51Z",
+      "side": 1,
+      "message": "This is actually introducing a very serious bug.  This screen action function is called once on every ui_loop() iteration.  Now that you\u0027re including the keyboard logic within this call (under vb2_confirm_physical_presence), the user may press *any* trusted key, and the device will transition to developer mode.  Even if we add a check for the ENTER key, a transition will still occur when focused on the \"Cancel\" button.",
+      "range": {
+        "startLine": 178,
+        "startChar": 12,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "8bd8a8ffc6d4bc8ba0479e3d967c01e947417eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
