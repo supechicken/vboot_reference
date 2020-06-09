@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f99aba9c_56fbdd8b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:05:02Z",
+      "side": 1,
+      "message": "Maybe vb2api_use_short_dev_screen_delay or even vb2api_use_short_dev_delay?",
+      "range": {
+        "startLine": 560,
+        "startChar": 4,
+        "endLine": 560,
+        "endChar": 37
+      },
+      "revId": "285e099c4320bfede7ca3bf11665087433a294c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fae3d75_4f60a526",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-09T10:05:02Z",
+      "side": 1,
+      "message": "Once the UI is moved over to depthcharge, vboot will have no control over how long this delay lasts.  So we may as well just generically specify it as \"short\" or \"normal\" here, and let the caller handle the implementation details (i.e. deciding how many seconds).",
+      "range": {
+        "startLine": 886,
+        "startChar": 29,
+        "endLine": 886,
+        "endChar": 37
+      },
+      "revId": "285e099c4320bfede7ca3bf11665087433a294c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
