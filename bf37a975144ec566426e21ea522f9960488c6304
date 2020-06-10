@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "aed2eeb3_6374ef3e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T07:55:00Z",
+      "side": 1,
+      "message": "\u003e Do you think if we need \"action tests\" (in ui_action_tests) for external boot?\n\nI think the tests here are sufficient, but it\u0027s also fine if you want to add such tests in vb2_ui_action_tests.c (for vb2_ui_developer_mode_boot_internal_action() and vb2_ui_developer_mode_boot_external_action()).",
+      "parentUuid": "c4faa6d8_1eabdd21",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 47
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05cc6c51_84e38e7e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -259,6 +283,30 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d4c5f67_848082ad",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T07:55:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77f96425_efcd0fc6",
+      "range": {
+        "startLine": 612,
+        "startChar": 52,
+        "endLine": 612,
+        "endChar": 62
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -373,6 +421,24 @@
       "side": 1,
       "message": "It is not important which menu item was selected as long as we tried to trigger to_norm but failed.\n(In this case the to_norm was hide and unable to select)\n\nHow about check ctrl+s instead since we should check the visibility in developer_screen_tests()?\n(And move this section under ctrl+s section)",
       "parentUuid": "d6953038_b93fbee6",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9968bd_86ca29f2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T07:55:00Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "77db8900_af0aea18",
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
