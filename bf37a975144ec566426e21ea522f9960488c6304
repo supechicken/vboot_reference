@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "516d282c_b1735931",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Could we have a separate block for this?\n\n /* Stop timer on any key press: normal delay */\n /* Stop timer on any key press: short delay */",
+      "range": {
+        "startLine": 500,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 54
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e24d72_0b25aeb8",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Isn\u0027t this block the same as the \"Boot after 30s timeout\" one?",
+      "range": {
+        "startLine": 509,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 67
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ec25406_d9a22859",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -43,6 +89,253 @@
         "endLine": 521,
         "endChar": 47
       },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b00f20_8d752ecd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Originally the boot_internal_action() was written similar to boot_external_action() (both return UI_CONTINUE). However, this caused FAFT firmware_CorruptBothKernelAB to fail, so I changed the behavior of boot_internal_action() in CL:2213210.\n\nNote that the second argument passed to VbTryLoadKernel() is different in these two cases. One is VB_DISK_FLAG_FIXED and the other is VB_DISK_FLAG_REMOVABLE. In my opinion,\n\n* For boot_internal_action(), VB2_ERROR_LK_NO_DISK_FOUND should be considered as an error since there\u0027s no way the user could fix this.\n* For boot_external_action(), however, VB2_ERROR_LK_NO_DISK_FOUND could possibly just mean that the user hasn\u0027t plugged in the USB. In this case, I think we should display an error message and continue the UI.\n\nTo answer your questions,\n\n1. I prefer\n\n TEST_EQ(vb2_developer_menu(ctx), VB2_ERROR_LK_NO_DISK_FOUND, …);\n TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_UI_CONTINUE, …);\n\n2. Yes, at least to my knowledge.",
+      "parentUuid": "6ec25406_d9a22859",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 47
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cc6c51_84e38e7e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "What do you mean by \"repeatedly\"?",
+      "range": {
+        "startLine": 612,
+        "startChar": 52,
+        "endLine": 612,
+        "endChar": 62
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a032d1_fd267be3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Why do we need the key press?",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a49ba32_325526e7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Just \"to_norm\" for consistency.",
+      "range": {
+        "startLine": 618,
+        "startChar": 15,
+        "endLine": 618,
+        "endChar": 29
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6953038_b93fbee6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Is this selecting the language item?",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a70395_074cd6bc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Extra newline.",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70830c1_2d13234c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "VB2_SCREEN_DEVELOPER_MODE",
+      "range": {
+        "startLine": 954,
+        "startChar": 33,
+        "endLine": 954,
+        "endChar": 44
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0244ff7e_4398c5cc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Can we have a newline before this? Same for the \"Dev mode: disabled item mask\" block.",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1973dbee_c63ba4b1",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "VB2_SCREEN_DEVELOPER_MODE",
+      "range": {
+        "startLine": 962,
+        "startChar": 33,
+        "endLine": 962,
+        "endChar": 44
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a96282_2b46365b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "How much work is required to change the default to 1 in reset_common_data()? I feel like 1 is more common than 0.",
+      "range": {
+        "startLine": 976,
+        "startChar": 1,
+        "endLine": 976,
+        "endChar": 26
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f2e13a_51a43606",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to test this case.",
+      "range": {
+        "startLine": 987,
+        "startChar": 1,
+        "endLine": 993,
+        "endChar": 38
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4d4673_38c95f0d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-10T05:16:03Z",
+      "side": 1,
+      "message": "Add a newline before this.",
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
