@@ -241,10 +241,10 @@ static vb2_error_t enter_developer_menu(struct vb2_context *ctx)
 	int menu_idx;
 	switch(default_boot) {
 	default:
-	case VB2_DEV_DEFAULT_BOOT_TARGET_DISK:
+	case VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL:
 		menu_idx = VB_DEV_DISK;
 		break;
-	case VB2_DEV_DEFAULT_BOOT_TARGET_USB:
+	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 		menu_idx = VB_DEV_USB;
 		break;
 	case VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY:
@@ -845,7 +845,7 @@ static vb2_error_t vb2_developer_legacy_menu(struct vb2_context *ctx)
 	if (default_boot == VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY)
 		boot_legacy_action(ctx);	/* Doesn't return on success. */
 
-	if (default_boot == VB2_DEV_DEFAULT_BOOT_TARGET_USB)
+	if (default_boot == VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL)
 		if (VB2_SUCCESS == boot_usb_action(ctx))
 			return VB2_SUCCESS;
 

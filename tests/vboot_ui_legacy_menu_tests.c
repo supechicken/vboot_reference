@@ -315,7 +315,7 @@ static void VbBootDevTest(void)
 	 * usb are set */
 	ResetMocksForDeveloper();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vbtlk_retval[0] = VB2_SUCCESS - VB_DISK_FLAG_REMOVABLE;
 	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), 0, "Ctrl+U USB");
@@ -329,7 +329,7 @@ static void VbBootDevTest(void)
 	/* Proceed to usb boot mode only if enabled */
 	ResetMocksForDeveloper();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), vbtlk_retval_fixed,
 		"default USB not enabled");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 0, "  no recovery");
@@ -349,7 +349,7 @@ static void VbBootDevTest(void)
 	ResetMocksForDeveloper();
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(VbBootDeveloperLegacyMenu(ctx), vbtlk_retval_fixed,
 		"default USB with no disk");
 	TEST_EQ(vbexlegacy_called, 0, "  not legacy");
@@ -798,7 +798,7 @@ static void VbBootDevTest(void)
 	/* If default USB, the option is preselected */
 	ResetMocksForDeveloper();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	i = 0;
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Enable OS Verif
 	mock_keypress[i++] = VB_BUTTON_VOL_UP_SHORT_PRESS; // Show Debug Info
