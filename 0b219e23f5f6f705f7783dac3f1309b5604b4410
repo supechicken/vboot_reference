@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "7059864c_b3620913",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2020-06-10T05:07:43Z",
+      "side": 1,
+      "message": "Joel, this means that the API for vb2_ui_change_screen needs to take in a vb2_screen_state instead of a vb2_screen, right?",
+      "parentUuid": "0b275b58_4f974074",
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2aa3302a_6b352e77",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
