@@ -250,7 +250,7 @@ static void reset_common_data(enum reset_type t)
 	mock_vbexbeep_called = 0;
 
 	/* For dev_boot* in 2misc.h */
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_DISK;
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL;
 	mock_dev_boot_allowed = 1;
 	mock_dev_boot_legacy_allowed = 0;
 	mock_dev_boot_usb_allowed = 0;
@@ -455,7 +455,7 @@ static void developer_tests(void)
 	/* Proceed to USB after timeout */
 	reset_common_data(FOR_DEVELOPER);
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_REMOVABLE);
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_USB;
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
 	mock_dev_boot_usb_allowed = 1;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_SUCCESS,
 		"proceed to USB after timeout");
@@ -466,7 +466,7 @@ static void developer_tests(void)
 
 	/* Default boot USB not allowed, don't boot */
 	reset_common_data(FOR_DEVELOPER);
-	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_USB;
+	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"default USB not allowed, don't boot");
 	TEST_TRUE(mock_get_timer_last - mock_time_start >=

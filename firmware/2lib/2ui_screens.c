@@ -432,7 +432,7 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 
 	/* Choose the default selection. */
 	switch (default_boot) {
-	case VB2_DEV_DEFAULT_BOOT_TARGET_USB:
+	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 		ui->state.selected_item = DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
 		break;
 	default:

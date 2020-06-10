@@ -41,8 +41,11 @@ enum vb2_gbb_flag {
 	 */
 	VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON = 1 << 3,
 
-	/* Allow booting from USB in dev mode even if dev_boot_usb=0. */
-	VB2_GBB_FLAG_FORCE_DEV_BOOT_USB = 1 << 4,
+	/*
+	 * Allow booting from external disk in dev mode even if
+	 * dev_boot_usb=0.
+	 */
+	VB2_GBB_FLAG_FORCE_DEV_BOOT_EXTERNAL = 1 << 4,
 
 	/* Disable firmware rollback protection. */
 	VB2_GBB_FLAG_DISABLE_FW_ROLLBACK_CHECK = 1 << 5,

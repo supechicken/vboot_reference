@@ -236,7 +236,7 @@ int vb2_dev_boot_legacy_allowed(struct vb2_context *ctx);
  * Determine if booting from USB or SD card is allowed.
  *
  * Booting from USB is allowed if one of the USB-related flags is set:
- * VB2_NV_DEV_BOOT_USB, VB2_GBB_FLAG_FORCE_DEV_BOOT_USB, and
+ * VB2_NV_DEV_BOOT_EXTERNAL, VB2_GBB_FLAG_FORCE_DEV_BOOT_EXTERNAL, and
  * VB2_SECDATA_FWMP_DEV_ENABLE_USB.
  *
  * @param ctx		Vboot context

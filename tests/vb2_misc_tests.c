@@ -504,12 +504,12 @@ static void dev_switch_tests(void)
 
 	/* Any normal mode boot clears dev boot flags */
 	reset_common_data();
-	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT, 1);
 	TEST_SUCC(vb2_check_dev_switch(ctx), "dev mode off");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB),
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_EXTERNAL),
 		0, "  cleared dev boot usb");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_LEGACY),
 		0, "  cleared dev boot legacy");
@@ -644,7 +644,7 @@ static void enable_dev_tests(void)
 	TEST_NEQ(vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS) &
 	         VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE, 0,
 		 "dev mode flag set");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB), USB_BOOT_ON_DEV,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_EXTERNAL), USB_BOOT_ON_DEV,
 		"NV_DEV_BOOT_USB set according to compile-time flag");
 
 	/* secdata_firmware not initialized, aborts */
@@ -656,7 +656,7 @@ static void enable_dev_tests(void)
 	TEST_EQ(vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS) &
 	        VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE, 0,
 		"dev mode flag not set");
-	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_USB), 0,
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DEV_BOOT_EXTERNAL), 0,
 		"NV_DEV_BOOT_USB not set");
 }
 
@@ -855,14 +855,14 @@ static void dev_default_boot_tests(void)
 	/* No default boot */
 	reset_common_data();
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"no default boot, boot disk");
 
 	/* Set boot legacy by GBB */
 	reset_common_data();
 	gbb.flags |= VB2_GBB_FLAG_DEFAULT_DEV_BOOT_LEGACY;
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
 		VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY,
 		"GBB set default boot legacy");
@@ -870,33 +870,33 @@ static void dev_default_boot_tests(void)
 	/* Boot from disk */
 	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_DISK);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"set default boot disk");
 
 	/* Boot from usb */
 	reset_common_data();
-	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_USB,
+		VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL,
 		"set default boot usb");
 
 	/* Boot from usb not allowed */
 	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"default boot usb not allowed");
 	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_LEGACY, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"default boot usb not allowed");
 
 	/* Boot legacy */
@@ -913,14 +913,14 @@ static void dev_default_boot_tests(void)
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"default boot legacy not allowed");
 	reset_common_data();
-	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
 		   VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY);
 	TEST_EQ(vb2api_get_dev_default_boot_target(ctx),
-		VB2_DEV_DEFAULT_BOOT_TARGET_DISK,
+		VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL,
 		"default boot legacy not allowed");
 }
 
@@ -979,7 +979,7 @@ static void dev_boot_allowed_tests(void)
 
 	/* USB boot - enabled by nvdata */
 	reset_common_data();
-	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
 	TEST_EQ(vb2_dev_boot_usb_allowed(ctx), 1, "dev boot usb -"
 		" nvdata enabled");
 
@@ -991,15 +991,15 @@ static void dev_boot_allowed_tests(void)
 
 	/* USB boot - force enabled by GBB */
 	reset_common_data();
-	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_EXTERNAL;
 	TEST_EQ(vb2_dev_boot_usb_allowed(ctx), 1,
 		"dev boot usb - GBB force enabled");
 
 	/* USB boot - set all flags */
 	reset_common_data();
-	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
 	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_USB;
-	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
+	gbb.flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_EXTERNAL;
 	TEST_EQ(vb2_dev_boot_usb_allowed(ctx), 1,
 		"dev boot usb - all flags set");
 }
