@@ -22,6 +22,30 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594ebe9b_35c21b0b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T05:15:14Z",
+      "side": 1,
+      "message": "(1)\n\nFor the internal case, I\u0027d check that vb2_developer_menu returns the same value that VbTryLoadKernel returns (can be VB2_ERROR_MOCK).\n\nFor the external case, I\u0027d check for VB2_REQUEST_UI_CONTINUE.\n\nChecking NEQ(VB2_SUCCESS) is insufficient, since they actually have different behaviour (an error causes a reboot, while REQUEST_UI_CONTINUE keeps showing the UI).\n\n(2)\n\nYes, this is expected.  Internal boot failure falls into recovery mode, which is a requirement of FAFT.  But we don\u0027t want to fall into recovery mode when the user plugs in an invalid USB disk.",
+      "parentUuid": "6ec25406_d9a22859",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 47
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
