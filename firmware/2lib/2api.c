@@ -51,7 +51,10 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 
 	/* Initialize firmware secure data */
 	rv = vb2_secdata_firmware_init(ctx);
-	if (rv)
+	if (rv == VB2_ERROR_SECDATA_FIRMWARE_VERSION) {
+		VB2_DEBUG("secdata init failed: %#x; rebooting...\n", rv);
+		return VBERROR_REBOOT_REQUIRED;
+	} else if (rv)
 		vb2api_fail(ctx, VB2_RECOVERY_SECDATA_FIRMWARE_INIT, rv);
 
 	/* Load and parse the GBB header */
