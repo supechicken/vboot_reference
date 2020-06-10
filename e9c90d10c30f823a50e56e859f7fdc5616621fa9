@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "329b7f8e_0bd3ad0a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T04:28:04Z",
+      "side": 1,
+      "message": "How would you feel about changing these terms to INTERNAL and EXTERNAL, which are arguably more accurate terms?  (At the very least EXTERNAL, since that can refer to USB or SD.)  That\u0027d probably be more suitable for a separate clean-up CL though.",
+      "range": {
+        "startLine": 435,
+        "startChar": 34,
+        "endLine": 435,
+        "endChar": 37
+      },
+      "revId": "e9c90d10c30f823a50e56e859f7fdc5616621fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
