@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d101208_33b962cf",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T08:35:50Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f6ec33e_452fc103",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T08:35:50Z",
+      "side": 1,
+      "message": "Why not choose one or the other?",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 55
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ff93bc_f112f3ee",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T08:35:50Z",
+      "side": 1,
+      "message": "Consider checking instead:\n\n  mock_beeped_ms[0] - mock_time_start - 20 * VB2_MSEC_PER_SEC \u003c\u003d BEEP_FUZZ_MS\n\n(I.e. what\u0027s important is that the beep occurs +-N msec, not that it occurs *after* the expected time.)\n\nThere\u0027s plenty of existing test code to look at.  See vboot_ui_legacy_clamshell_beep_tests.c.",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 25
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29f46eb_8b8aa887",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T08:35:50Z",
+      "side": 1,
+      "message": "Seems like another case where just the one line could be swapped based on the value of DETACHABLE.",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 2
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f75e082_73f58b57",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T08:35:50Z",
+      "side": 1,
+      "message": "As a general comment, this is going to be a huge pain when we add menu items here.  There are definitely ways to test menu flow without specifying the exact position of each item.",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 18
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
