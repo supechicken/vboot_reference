@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "fdbaf196_2f8325a5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T05:04:37Z",
+      "side": 1,
+      "message": "I have to agree with Yu-Ping here -- otherwise vb2_ui_change_root is an incorrect and misleading name.  Please also update the documentation in 2ui.h.",
+      "parentUuid": "82827d57_2a50c2a2",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 30
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a77a985a_a7732fcf",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
@@ -531,6 +555,30 @@
       "side": 1,
       "message": "Seems like the majority of the screens don\u0027t need this check.  Would be better to optimize for common case?  Can also call another function to determine if the screen needs to be checked since it\u0027s a shortcut screen?",
       "parentUuid": "aa70c45b_603127ab",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "0b219e23f5f6f705f7783dac3f1309b5604b4410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34649b9a_6f4044a0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-10T05:04:37Z",
+      "side": 1,
+      "message": "There are lots of weird cycle cases that are hard to think of.  For example:\n\n  (1) RECOVERY_SELECT (boot into manual recovery)\n  (2) RECOVERY_INVALID (plug in invalid device)\n  (3) LANGUAGE_SELECT (choose language selection)\n  (4) LANGUAGE_SELECT (unplug invalid device)\n  (5) RECOVERY_INVALID (plug in invalid device)\n  (6) LANGUAGE_SELECT (choose language selection)\n  ...\n\n(5) and (6) are already in the stack.  Repeat the process a few times, and we run out of space.\n\nI\u0027d much prefer a general solution which performs a few extra comparisons, rather than hard-coding screens in here.  Hard-coding the screens also comes with the possibility of introducing bugs in the future by adding new screens or modifying screen flow.",
+      "parentUuid": "9d7c12f3_08669357",
       "range": {
         "startLine": 306,
         "startChar": 1,
