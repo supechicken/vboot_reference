@@ -540,7 +540,7 @@ static void VbBootDevTest(void)
 	   USB are set */
 	ResetMocks();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vbtlk_retval = VB2_SUCCESS;
 	vbtlk_expect_removable = 1;
@@ -549,7 +549,7 @@ static void VbBootDevTest(void)
 	/* Proceed to USB boot mode only if enabled */
 	ResetMocks();
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	vbtlk_expect_fixed = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK, "Timeout");
 
@@ -557,7 +557,7 @@ static void VbBootDevTest(void)
 	ResetMocks();
 	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_USB, 1);
 	vb2_nv_set(ctx, VB2_NV_DEV_DEFAULT_BOOT,
-		   VB2_DEV_DEFAULT_BOOT_TARGET_USB);
+		   VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL);
 	vbtlk_expect_fixed = 1;
 	vbtlk_expect_removable = 1;
 	TEST_EQ(VbBootDeveloperLegacyClamshell(ctx), VB2_ERROR_MOCK,

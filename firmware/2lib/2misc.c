@@ -515,9 +515,9 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 		return VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY;
 
 	switch (vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT)) {
-		case VB2_DEV_DEFAULT_BOOT_TARGET_USB:
+		case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 			if (vb2_dev_boot_usb_allowed(ctx))
-				return VB2_DEV_DEFAULT_BOOT_TARGET_USB;
+				return VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
 			break;
 
 		case VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY:
@@ -526,7 +526,7 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 			break;
 	}
 
-	return VB2_DEV_DEFAULT_BOOT_TARGET_DISK;
+	return VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL;
 }
 
 int vb2_dev_boot_allowed(struct vb2_context *ctx)
