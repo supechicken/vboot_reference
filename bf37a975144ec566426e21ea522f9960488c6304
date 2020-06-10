@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d7792a4_2a08279f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516d282c_b1735931",
+      "range": {
+        "startLine": 500,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 54
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85e24d72_0b25aeb8",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95c5796_197db466",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "I tried to group up similar test items\n (tests about delay)\n (tests about internal boot)\n (tests about external boot)\n (tests about to_norm)\n\nBut it seems not easy to test timeout separately.\nI am fine to merge these test items.",
+      "parentUuid": "85e24d72_0b25aeb8",
+      "range": {
+        "startLine": 509,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 67
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c4faa6d8_1eabdd21",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done\nThanks for the explanation!\n\nOne more thing - I think I were wrong, we cannot check the external case directly.\nSince it returns VB2_REQUEST_UI_CONTINUE, we can only indirectly check it by dev ui_loop timeout.\n\nDo you think if we need \"action tests\" (in ui_action_tests) for external boot?",
+      "parentUuid": "a18db44c_4a3fed07",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 47
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05cc6c51_84e38e7e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -154,6 +226,30 @@
       "writtenOn": "2020-06-10T05:16:03Z",
       "side": 1,
       "message": "What do you mean by \"repeatedly\"?",
+      "range": {
+        "startLine": 612,
+        "startChar": 52,
+        "endLine": 612,
+        "endChar": 62
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77f96425_efcd0fc6",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "This is also a legacy-UI-wording.\nIt means we will be redirected to to_norm even if we try to leave that screen (by ESC)\n\nAny further suggestion about it?",
+      "parentUuid": "05cc6c51_84e38e7e",
       "range": {
         "startLine": 612,
         "startChar": 52,
@@ -183,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "f1704ba8_43588225",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done\nPlease See comments above",
+      "parentUuid": "d3a032d1_fd267be3",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a49ba32_325526e7",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -206,6 +320,30 @@
     },
     {
       "key": {
+        "uuid": "61c76a18_0bd4da5c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a49ba32_325526e7",
+      "range": {
+        "startLine": 618,
+        "startChar": 15,
+        "endLine": 618,
+        "endChar": 29
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6953038_b93fbee6",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -223,6 +361,24 @@
     },
     {
       "key": {
+        "uuid": "77db8900_af0aea18",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "It is not important which menu item was selected as long as we tried to trigger to_norm but failed.\n(In this case the to_norm was hide and unable to select)\n\nHow about check ctrl+s instead since we should check the visibility in developer_screen_tests()?\n(And move this section under ctrl+s section)",
+      "parentUuid": "d6953038_b93fbee6",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a70395_074cd6bc",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -237,6 +393,24 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5381165_b4190838",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a70395_074cd6bc",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "4380c4a9_a1938419",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70830c1_2d13234c",
+      "range": {
+        "startLine": 954,
+        "startChar": 33,
+        "endLine": 954,
+        "endChar": 44
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0244ff7e_4398c5cc",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -277,6 +475,24 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0370a4f1_e1140d9b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0244ff7e_4398c5cc",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -303,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "289d61c1_75361d01",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1973dbee_c63ba4b1",
+      "range": {
+        "startLine": 962,
+        "startChar": 33,
+        "endLine": 962,
+        "endChar": 44
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a96282_2b46365b",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -323,6 +563,30 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60640f4d_e19961a9",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a96282_2b46365b",
+      "range": {
+        "startLine": 976,
+        "startChar": 1,
+        "endLine": 976,
+        "endChar": 26
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "6734857d_668d95ba",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f2e13a_51a43606",
+      "range": {
+        "startLine": 987,
+        "startChar": 1,
+        "endLine": 993,
+        "endChar": 38
+      },
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d4d4673_38c95f0d",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -363,6 +651,24 @@
       "revId": "bf37a975144ec566426e21ea522f9960488c6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024aefd0_0e7472a5",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-10T06:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4d4673_38c95f0d",
+      "revId": "bf37a975144ec566426e21ea522f9960488c6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
