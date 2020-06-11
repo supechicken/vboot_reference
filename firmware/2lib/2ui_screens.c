@@ -484,8 +484,8 @@ vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 
 	/* Once any user interaction occurs, stop the timer. */
 	if (ui->key)
-		ui->disable_timer = 1;
-	if (ui->disable_timer)
+		ui->data.timer_disabled = 1;
+	if (ui->data.timer_disabled)
 		return VB2_REQUEST_UI_CONTINUE;
 
 	elapsed = vb2ex_mtime() - ui->start_time;
@@ -493,7 +493,7 @@ vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 	/* If we're using short delay, wait 2 seconds and don't beep. */
 	if (use_short && elapsed > 2 * VB2_MSEC_PER_SEC) {
 		VB2_DEBUG("Booting default target after 2s\n");
-		ui->disable_timer = 1;
+		ui->data.timer_disabled = 1;
 		return vb2_ui_menu_select(ui);
 	}
 
@@ -507,7 +507,7 @@ vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 	/* Stop after 30 seconds. */
 	if (elapsed > 30 * VB2_MSEC_PER_SEC) {
 		VB2_DEBUG("Booting default target after 30s\n");
-		ui->disable_timer = 1;
+		ui->data.timer_disabled = 1;
 		return vb2_ui_menu_select(ui);
 	}
 

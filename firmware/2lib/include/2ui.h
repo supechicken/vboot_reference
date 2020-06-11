@@ -72,6 +72,9 @@ struct vb2_ui_context {
 	uint32_t key;
 	int key_trusted;
 
+	/* For screen drawing. */
+	struct vb2_ui_data data;
+
 	/* For check_shutdown_request. */
 	enum vb2_power_button power_button;
 
