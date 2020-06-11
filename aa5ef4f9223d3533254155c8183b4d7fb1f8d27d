@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2b47d316_7700ae3d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-11T03:32:47Z",
+      "side": 1,
+      "message": "We have tests set the flag VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON directly now.\n(e.g. \"/* Dev mode forced by GBB flag */\")\n\nSince VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON will make vb2_dev_boot_allowed() return 1 but our previous mock structure did not support this, I added back the statement here.\n\nI figure out several alternative plans, what\u0027s your opinions?\n1. mock_dev_boot_allowed || (gbb.flags \u0026 VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) here (current approach)\n2. get rid of vb2_dev_boot_* mock functions, set flags directly in test items.\n(i.e. fwmp-\u003eflags |\u003d VB2_SECDATA_FWMP_DEV_DISABLE_BOOT instead of mock_dev_boot_allowed \u003d 1)\n(We don\u0027t need to test too much since these functionality are fully tested in misc_tests)\n3. we set gbb.flags |\u003d VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON and mock_dev_boot_allowed \u003d 1 manually in test items.\n4. we can ignore this since currently we don\u0027t call vb2_dev_boot_allowed() in \"/* Dev mode forced by GBB flag */\" tests.",
+      "parentUuid": "6f6ec33e_452fc103",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 55
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ff93bc_f112f3ee",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -105,6 +129,30 @@
       "writtenOn": "2020-06-10T08:35:50Z",
       "side": 1,
       "message": "As a general comment, this is going to be a huge pain when we add menu items here.  There are definitely ways to test menu flow without specifying the exact position of each item.",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 18
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcfdfc0e_6cecb0e5",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-11T03:32:47Z",
+      "side": 1,
+      "message": "I have not looked at our current stack works...\nBut I think if we have history stack and \u0027back\u0027, we can navigate with relative position here.\nWe could reduce a lot of unnecessary keys here.\n\n--\n\nAnother plan here, we will inspect menu items easier if we can access \"ui\" in \"ui_loop\".\nWe can UP to the top then DOWN to the button, check the target screen id (or target text) without entering them directly.\nBut I do not think that we have ways to access \"ui\" for now\n(I think we can\u0027t mock a function in same file - e.g. \"menu_navigation_action\" is at the same file as \"ui_loop\", so it is useless to mock \"menu_navigation_action\" here)",
+      "parentUuid": "3f75e082_73f58b57",
       "range": {
         "startLine": 1028,
         "startChar": 1,
