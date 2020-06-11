@@ -1222,21 +1222,32 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_TO_NORM		= 0x310,
 };
 
+/* Screen specific data. */
+struct vb2_screen_data {
+	union {
+		struct vb2_developer_mode_screen_data {
+			int timer_disabled;
+		} dev_mode_data;
+	};
+};
+
 /**
  * Display UI screen.
  *
  * @param screen		Screen to display.
+ * @param locale_id		Id of current locale.
  * @param selected_item		Index of the selected menu item. If the screen
  *				doesn't have a menu, this value will be ignored.
  * @param disabled_item_mask	Mask for disabled menu items. Bit (1 << idx)
  *				indicates whether item 'idx' is disabled.
- * @param locale_id		Id of current locale.
+ * @param screen_data		Data for current screen, or null if not needed.
  * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
-			     uint32_t disabled_item_mask);
+			     uint32_t disabled_item_mask,
+			     const struct vb2_screen_data *screen_data);
 
 /**
  * Check that physical presence button is currently pressed by the user.

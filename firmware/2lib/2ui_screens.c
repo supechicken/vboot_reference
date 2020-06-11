@@ -415,6 +415,10 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
 	enum vb2_dev_default_boot_target default_boot =
 		vb2api_get_dev_default_boot_target(ui->ctx);
+	struct vb2_developer_mode_screen_data *data =
+		&ui->state.screen_data.dev_mode_data;
+
+	data->timer_disabled = ui->disable_timer;
 
 	/* Get me outta here! */
 	if (!vb2_dev_boot_allowed(ui->ctx))
@@ -479,12 +483,15 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 {
+	struct vb2_developer_mode_screen_data *data =
+		&ui->state.screen_data.dev_mode_data;
 	const int use_short = vb2api_use_short_dev_screen_delay(ui->ctx);
 	uint64_t elapsed;
 
 	/* Once any user interaction occurs, stop the timer. */
 	if (ui->key)
 		ui->disable_timer = 1;
+	data->timer_disabled = ui->disable_timer;
 	if (ui->disable_timer)
 		return VB2_REQUEST_UI_CONTINUE;
 
