@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "409fc838_59732fa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425876
+      },
+      "writtenOn": "2020-06-11T19:05:50Z",
+      "side": 1,
+      "message": "Good to know, I\u0027ll change it.",
+      "parentUuid": "e38100d3_59dccb01",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "c86aaa822da91e62d608e8b8da18c8df09afdacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ac32e8b_491749ef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-06-11T16:23:54Z",
       "side": 1,
       "message": "Did you run repo upload with --verify?\nAFAIK vboot_reference is configured to require Signed-Off-By here.",
+      "revId": "c86aaa822da91e62d608e8b8da18c8df09afdacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332d7659_16b2e353",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1425876
+      },
+      "writtenOn": "2020-06-11T19:05:50Z",
+      "side": 1,
+      "message": "I did not. But can do so.",
+      "parentUuid": "7ac32e8b_491749ef",
       "revId": "c86aaa822da91e62d608e8b8da18c8df09afdacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
