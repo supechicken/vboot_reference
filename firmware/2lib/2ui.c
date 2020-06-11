@@ -282,6 +282,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
 					 ui.state.disabled_item_mask,
+					 ui.disable_timer,
 					 ui.error_code);
 			/*
 			 * Only beep if we're transitioning from no
