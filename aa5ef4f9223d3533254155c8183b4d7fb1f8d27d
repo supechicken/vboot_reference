@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7c319fdd_fd26e8b1",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T02:53:08Z",
+      "side": 1,
+      "message": "How about creating a function\n\n int vb2_dev_mode_forced(ui) {\n     return vb2_get_gbb(ui-\u003ectx)-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;\n }\n\nand mock it in UI tests with \u0027mock_dev_mode_forced\u0027? And then replace in the tests\n\n gbb.flags |\u003d VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON \n\nwith\n\n mock_dev_mode_forced \u003d 1",
+      "parentUuid": "2b47d316_7700ae3d",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 55
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ff93bc_f112f3ee",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
