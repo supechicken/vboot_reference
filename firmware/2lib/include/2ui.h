@@ -88,6 +88,11 @@ struct vb2_ui_context {
 
 	/* For language selection screen. */
 	struct vb2_menu language_menu;
+
+	/* For displaying error messages */
+	enum vb2_ui_error prev_error;
+  	enum vb2_ui_error error_code;
+	const char *error_string;
 };
 
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(

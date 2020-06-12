@@ -234,7 +234,10 @@ static const struct vb2_screen_info recovery_invalid_screen = {
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 {
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
-		VB2_DEBUG("Dev mode already enabled?\n");
+		/* We're in dev mode, so let user know they can't transition */
+		ui->error_code = VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED;
+		ui->error_string = "Dev mode already enabled?";
+
 		return vb2_ui_change_root(ui);
 	}
 
@@ -466,11 +469,13 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	    !vb2_dev_boot_allowed(ui->ctx) ||
 	    !vb2_dev_boot_external_allowed(ui->ctx)) {
 		VB2_DEBUG("ERROR: Dev mode external boot not allowed\n");
+		ui->error_code = VB2_UI_ERROR_DEV_MODE_EXTERNAL_NOT_ALLOWED;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE)) {
 		VB2_DEBUG("ERROR: Dev mode external boot failed\n");
+		ui->error_code = VB2_UI_ERROR_DEV_MODE_EXTERNAL_BOOT_FAIL;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
