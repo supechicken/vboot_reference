@@ -102,6 +102,17 @@ vb2_error_t menu_navigation_action(struct vb2_ui_context *ui)
 			key = VB_KEY_ENTER;
 	}
 
+	/**
+	 * If the only difference is the error message, then just
+	 * redraw the screen without the error string.
+	 */
+	if (key && ui->error != VB2_ERROR_NONE) {
+		ui->prev_error = ui->error;
+		ui->error = VB2_ERROR_NONE;
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+
+	/* otherwise, proceed as normal */
 	switch (key) {
 	case VB_KEY_UP:
 		return vb2_ui_menu_prev(ui);
@@ -252,7 +263,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 
 	while (1) {
 		/* Draw if there are state changes. */
-		if (memcmp(&prev_state, &ui.state, sizeof(ui.state))) {
+		if (memcmp(&prev_state, &ui.state, sizeof(ui.state)) ||
+		    /* we want to redraw/beep on a transition */
+		    ui.prev_error != ui.error) {
 			memcpy(&prev_state, &ui.state, sizeof(ui.state));
 
 			menu = get_menu(&ui);
@@ -261,10 +274,18 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 				  menu->num_items ?
 				  menu->items[ui.state.selected_item].text :
 				  "null");
-
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
-					 ui.state.disabled_item_mask);
+					 ui.state.disabled_item_mask,
+					 ui.error);
+			/**
+			 * Only beep if we're transitioning from no
+			 * error to an error.
+			 */
+			if (ui.prev_error == VB2_ERROR_NONE &&
+			    ui.prev_error != ui.error)
+				vb2ex_beep(250, 400);
+			ui.prev_error = ui.error;
 		}
 
 		/* Grab new keyboard input. */

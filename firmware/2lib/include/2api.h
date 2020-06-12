@@ -1222,6 +1222,26 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_TO_NORM		= 0x310,
 };
 
+enum vb2_error {
+	/* No Error */
+	VB2_ERROR_NONE = 0,
+	/* Dev mode already enabled? */
+	VB2_ERROR_DEV_MODE_ALREADY_ENABLED,
+	/* Dev mode internal boot not allowed */
+	VB2_ERROR_DEV_MODE_INTERNAL_NOT_ALLOWED,
+	/* Dev mode external boot not allowed */
+	VB2_ERROR_DEV_MODE_EXTERNAL_NOT_ALLOWED,
+	/* Dev mode external boot failed */
+	VB2_ERROR_DEV_MODE_EXTERNAL_BOOT_FAIL,
+};
+
+struct vb2_error_item {
+  /* Error message title */
+  const char *title;
+  /* Error message body */
+  const char *body;
+};
+
 /**
  * Display UI screen.
  *
@@ -1231,12 +1251,14 @@ enum vb2_screen {
  * @param disabled_item_mask	Mask for disabled menu items. Bit (1 << idx)
  *				indicates whether item 'idx' is disabled.
  * @param locale_id		Id of current locale.
+ * @param error			Error code if an error occurred.
  * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
-			     uint32_t disabled_item_mask);
+			     uint32_t disabled_item_mask,
+			     enum vb2_error error);
 
 /**
  * Check that physical presence button is currently pressed by the user.
