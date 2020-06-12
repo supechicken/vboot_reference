@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e048e8d8_207f4ddd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d053d2_d236b25f",
+      "range": {
+        "startLine": 552,
+        "startChar": 17,
+        "endLine": 552,
+        "endChar": 20
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd0cbf24_f2f1221c",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2648744a_499efbd4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0cbf24_f2f1221c",
+      "range": {
+        "startLine": 558,
+        "startChar": 67,
+        "endLine": 558,
+        "endChar": 70
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "911a18a3_d1271c44",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa843556_c5d0180f",
+      "range": {
+        "startLine": 146,
+        "startChar": 49,
+        "endLine": 146,
+        "endChar": 52
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb1fc348_1a1a616f",
         "filename": "firmware/2lib/include/2gbb_flags.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f49f36_3ed91611",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb1fc348_1a1a616f",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ce336121_41cdb191",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49c6a56_525ae30e",
+      "range": {
+        "startLine": 238,
+        "startChar": 16,
+        "endLine": 238,
+        "endChar": 62
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bf367b9_f8e01096",
         "filename": "scripts/image_signing/gbb_flags_common.sh",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3167dd_ebabf9cd",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf367b9_f8e01096",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "89576e11_6d768e0e",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76b4564_dbcd1c94",
+      "range": {
+        "startLine": 380,
+        "startChar": 38,
+        "endLine": 380,
+        "endChar": 46
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3572c0e_e8c6cbeb",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1ecaff_37a8f10d",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3572c0e_e8c6cbeb",
+      "range": {
+        "startLine": 870,
+        "startChar": 14,
+        "endLine": 870,
+        "endChar": 18
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "8d593cbc_2d4f061b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51eecf33_9b57b8be",
+      "range": {
+        "startLine": 878,
+        "startChar": 14,
+        "endLine": 878,
+        "endChar": 17
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85a56205_7f42623e",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed064d48_f85fbd5e",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a56205_7f42623e",
+      "range": {
+        "startLine": 885,
+        "startChar": 20,
+        "endLine": 885,
+        "endChar": 23
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "8a961d37_0210c7ff",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f4be7b5_a6b0e788",
+      "range": {
+        "startLine": 455,
+        "startChar": 15,
+        "endLine": 455,
+        "endChar": 18
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aca350e5_848744b1",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 3
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "ff799d03_5379048a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca350e5_848744b1",
+      "range": {
+        "startLine": 459,
+        "startChar": 15,
+        "endLine": 459,
+        "endChar": 18
+      },
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e4fd60c_2405e13a",
         "filename": "tests/vboot_ui_legacy_clamshell_tests.c",
         "patchSetId": 3
@@ -292,6 +580,24 @@
       "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bef23df_7622c452",
+        "filename": "tests/vboot_ui_legacy_clamshell_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-12T03:34:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e4fd60c_2405e13a",
+      "revId": "2e37903035f6cc2072e940f0dd745a7d711b3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
