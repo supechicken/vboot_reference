@@ -56,12 +56,18 @@ struct vb2_screen_state {
 	const struct vb2_screen_info *screen;
 	uint32_t selected_item;
 	uint32_t disabled_item_mask;
+	const char *string;
 };
 
 enum vb2_power_button {
 	VB2_POWER_BUTTON_HELD_SINCE_BOOT = 0,
 	VB2_POWER_BUTTON_RELEASED,
 	VB2_POWER_BUTTON_PRESSED,  /* Must have been previously released */
+};
+
+struct vb2_dialog {
+	const char* title;
+	const char* message;
 };
 
 struct vb2_ui_context {
@@ -88,6 +94,9 @@ struct vb2_ui_context {
 
 	/* For language selection screen. */
 	struct vb2_menu language_menu;
+
+	/* For displaying error messages */
+	struct vb2_dialog dialog;
 };
 
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(
