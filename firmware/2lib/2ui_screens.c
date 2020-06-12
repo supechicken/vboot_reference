@@ -41,6 +41,22 @@
 }
 
 /******************************************************************************/
+/* Error Handling */
+
+/**
+ * error_action: Handles printing error to serial console and causing
+ * a beep when an error occurs.
+ * TODO: in the future will also take care of displaying the error
+ * message onto the screen.
+ */
+static void error_action(const char *error_msg)
+{
+	VB2_DEBUG("ERROR: %s\n", error_msg);
+	vb2ex_beep(250, 400);
+	return;
+}
+
+/******************************************************************************/
 /* VB2_SCREEN_BLANK */
 
 static const struct vb2_screen_info blank_screen = {
@@ -234,7 +250,7 @@ static const struct vb2_screen_info recovery_invalid_screen = {
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 {
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
-		VB2_DEBUG("Dev mode already enabled?\n");
+		error_action("Dev mode already enabled?\n");
 		return vb2_ui_change_root(ui);
 	}
 
@@ -465,12 +481,12 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	if (!(ui->ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
 	    !vb2_dev_boot_allowed(ui->ctx) ||
 	    !vb2_dev_boot_usb_allowed(ui->ctx)) {
-		VB2_DEBUG("ERROR: Dev mode external boot not allowed\n");
+		error_action("Dev mode external boot not allowed\n");
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE)) {
-		VB2_DEBUG("ERROR: Dev mode external boot failed\n");
+		error_action("Dev mode external boot failed\n");
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
