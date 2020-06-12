@@ -383,13 +383,15 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen screen)
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
-			     uint32_t disabled_item_mask)
+			     uint32_t disabled_item_mask,
+			     const char *string)
 {
 	struct display_call displayed = (struct display_call){
 		.screen = vb2_get_screen_info(screen),
 		.locale_id = locale_id,
 		.selected_item = selected_item,
 		.disabled_item_mask = disabled_item_mask,
+		.string = string,
 	};
 
 	/* Ignore repeated calls with same arguments */
