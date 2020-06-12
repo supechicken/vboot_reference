@@ -49,10 +49,14 @@
  * TODO: in the future will also take care of displaying the error
  * message onto the screen.
  */
-static void error_action(const char *error_msg)
+static void error_action(struct vb2_ui_context *ui, const char *error_msg)
 {
 	VB2_DEBUG("ERROR: %s\n", error_msg);
 	vb2ex_beep(250, 400);
+	vb2ex_display_ui(ui->state.screen->id, ui->locale_id,
+			 ui->state.selected_item,
+			 ui->state.disabled_item_mask,
+			 error_msg);
 	return;
 }
 
@@ -250,7 +254,7 @@ static const struct vb2_screen_info recovery_invalid_screen = {
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 {
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
-		error_action("Dev mode already enabled?\n");
+		error_action(ui, "Dev mode already enabled?\n");
 		return vb2_ui_change_root(ui);
 	}
 
@@ -481,12 +485,12 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	if (!(ui->ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
 	    !vb2_dev_boot_allowed(ui->ctx) ||
 	    !vb2_dev_boot_usb_allowed(ui->ctx)) {
-		error_action("Dev mode external boot not allowed\n");
+		error_action(ui, "Dev mode external boot not allowed\n");
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE)) {
-		error_action("Dev mode external boot failed\n");
+		error_action(ui, "Dev mode external boot failed\n");
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
