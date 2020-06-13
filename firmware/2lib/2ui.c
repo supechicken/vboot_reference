@@ -102,6 +102,16 @@ vb2_error_t menu_navigation_action(struct vb2_ui_context *ui)
 			key = VB_KEY_ENTER;
 	}
 
+	/**
+	 * If the only difference is the error message, then just
+	 * redraw the screen without the error string.
+	 */
+	if (key && ui->state.string != NULL) {
+		ui->state.string = NULL;
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+
+	/* otherwise, proceed as normal */
 	switch (key) {
 	case VB_KEY_UP:
 		return vb2_ui_menu_prev(ui);
@@ -206,6 +216,7 @@ static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 {
 	const struct vb2_screen_info *new_screen_info;
+	const char* error_string = ui->state.string;
 
 	if (ui->state.screen && ui->state.screen->id == id) {
 		VB2_DEBUG("WARNING: Already on screen %#x; ignoring\n", id);
@@ -220,6 +231,12 @@ vb2_error_t vb2_ui_change_screen(struct vb2_ui_context *ui, enum vb2_screen id)
 
 	memset(&ui->state, 0, sizeof(ui->state));
 	ui->state.screen = new_screen_info;
+
+	/**
+	 * Error string is populated, meaning that we need to print it out.
+	 * So passing on to next screen for display.
+	 */
+	ui->state.string = error_string;
 
 	if (ui->state.screen->init)
 		return ui->state.screen->init(ui);
@@ -265,7 +282,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			vb2ex_display_ui(ui.state.screen->id, ui.locale_id,
 					 ui.state.selected_item,
 					 ui.state.disabled_item_mask,
-					 NULL);
+					 ui.state.string);
 		}
 
 		/* Grab new keyboard input. */

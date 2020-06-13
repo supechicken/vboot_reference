@@ -56,6 +56,7 @@ struct vb2_screen_state {
 	const struct vb2_screen_info *screen;
 	uint32_t selected_item;
 	uint32_t disabled_item_mask;
+	const char *string;
 };
 
 enum vb2_power_button {
