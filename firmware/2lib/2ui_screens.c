@@ -53,10 +53,11 @@ static void error_action(struct vb2_ui_context *ui, const char *error_msg)
 {
 	VB2_DEBUG("ERROR: %s\n", error_msg);
 	vb2ex_beep(250, 400);
+	ui->state.string = error_msg;
 	vb2ex_display_ui(ui->state.screen->id, ui->locale_id,
 			 ui->state.selected_item,
 			 ui->state.disabled_item_mask,
-			 error_msg);
+			 ui->state.string);
 	return;
 }
 
@@ -209,6 +210,11 @@ vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
 			1 << RECOVERY_SELECT_ITEM_PHONE;
 		ui->state.selected_item = RECOVERY_SELECT_ITEM_EXTERNAL_DISK;
 	}
+
+	/* If we passed in an error string, display it */
+	if (ui->state.string != NULL)
+		error_action(ui, ui->state.string);
+
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -254,7 +260,12 @@ static const struct vb2_screen_info recovery_invalid_screen = {
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 {
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
-		error_action(ui, "Dev mode already enabled?\n");
+		/**
+		 * Let's pass the error string to the next screen.  We
+		 * should've never entered this screen in the first
+		 * place.
+		 */
+		ui->state.string = "Dev mode already enabled?";
 		return vb2_ui_change_root(ui);
 	}
 
