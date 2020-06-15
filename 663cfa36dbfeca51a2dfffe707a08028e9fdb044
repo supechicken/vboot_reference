@@ -22,6 +22,30 @@
       "revId": "663cfa36dbfeca51a2dfffe707a08028e9fdb044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffea6501_5f687211",
+        "filename": "tests/vb2_host_flashrom_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001849
+      },
+      "writtenOn": "2020-06-15T08:39:20Z",
+      "side": 1,
+      "message": "size of enum may be different to size of int.\nhttps://stackoverflow.com/a/1113869",
+      "parentUuid": "9c33335d_1a21dc05",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "663cfa36dbfeca51a2dfffe707a08028e9fdb044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
