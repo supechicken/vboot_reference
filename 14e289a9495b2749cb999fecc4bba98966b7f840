@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4accb34_9dadd556",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-15T13:28:49Z",
+      "side": 1,
+      "message": "I think it\u0027d be fine to have a BACK here too.",
+      "range": {
+        "startLine": 602,
+        "startChar": 21,
+        "endLine": 602,
+        "endChar": 22
+      },
+      "revId": "14e289a9495b2749cb999fecc4bba98966b7f840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8add1227_0292ff64",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-15T13:28:49Z",
+      "side": 1,
+      "message": "Actually, it\u0027d be nice if this screen could kick back to DEVELOPER_BOOT_EXTERNAL when you unplug the external disk.  (Or even directly boot it if the user somehow unplugs the invalid disk and plugs in a valid one without the action running in between.)  I think it would just work out by adding the .action here, since vb2_ui_change_screen() gets ignored when you\u0027re already on the requested screen...",
+      "range": {
+        "startLine": 609,
+        "startChar": 1,
+        "endLine": 609,
+        "endChar": 2
+      },
+      "revId": "14e289a9495b2749cb999fecc4bba98966b7f840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
