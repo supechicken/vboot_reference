@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f8005c1_f414d218",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-16T08:18:29Z",
+      "side": 1,
+      "message": "Would it make things simpler on the depthcharge side (no need to worry about the pointer disappearing) if we sent the full data structure as an argument, rather than just a pointer?",
+      "range": {
+        "startLine": 268,
+        "startChar": 6,
+        "endLine": 268,
+        "endChar": 7
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6801d7b5_6d8e33f7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-16T08:18:29Z",
+      "side": 1,
+      "message": "Screen-specific",
+      "range": {
+        "startLine": 1225,
+        "startChar": 9,
+        "endLine": 1225,
+        "endChar": 10
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27bd3cf9_a706b265",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-16T08:18:29Z",
+      "side": 1,
+      "message": "How about just \"data\"?  We don\u0027t prefix any of the other members.",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "762ec755_04857be0",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-16T08:18:29Z",
+      "side": 1,
+      "message": "What do you think about moving these fields directly into screen_data?\n\nI know depthcharge doesn\u0027t need to use all of them.  But consider the long-term -- when we move UI code from vboot to depthcharge, it won\u0027t need to differentiate between \"private screen data\" and \"public screen data\".  It\u0027s also an elegant way of keeping more stuff out of the global context.\n\nAlternatively, we may think that after moving UI code from vboot to depthcharge, it will be unnecessary to keep a separate screen_data struct for each screen, and simpler to just put everything in (depthcharge) ui_context.  In that case, if there are only a few pieces of data to share with depthcharge, we may consider just adding individual arguments to vb2ex_display_ui, or alternatively, a generic \"extra_data\" struct.\n\nWhat\u0027s your preference?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
