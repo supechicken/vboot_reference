@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b73f9844_bca930e2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-16T07:52:37Z",
+      "side": 1,
+      "message": "In the other CL I suggested to store this as part of vb2_ui_context.  That would solve the problem here (actually vb2_ui_change_root will memset ui-\u003estate to 0).",
+      "range": {
+        "startLine": 264,
+        "startChar": 5,
+        "endLine": 264,
+        "endChar": 52
+      },
+      "revId": "40ac7797354d340ef3cc0a089dc6c3ee9620753c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
