@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3a161a98_82ef7729",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T13:17:53Z",
+      "side": 1,
+      "message": "Should be closed here. See\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2249267/1/tests/vb2_ui_tests.c#399",
+      "parentUuid": "3a585dc4_346ff84e",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 55
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ff93bc_f112f3ee",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -262,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "adbf9eca_e8d98a81",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T13:17:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e4f2986_b65a0100",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 2
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f75e082_73f58b57",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -321,6 +369,30 @@
       "side": 1,
       "message": "There could be a couple ways of doing this...\n\n(1) override menu_navigation_action() (works as long as you set the function as test_mockable)\n- Downside: less coverage, although we should have unit tests for the navigation functions in the other vb2_ui_test file.\n\n\n(2) add a test_action() which gets called in ui_loop().  Only call the function when TEST\u003d1.  Override the function in vb2_ui_tests.c to look up the correct menu item by string, and set selected_item to point there.\n- Upside: we can still include a few \"sanity checks\" which use manual UP/DOWN navigation, and just use string lookup for the rest.",
       "parentUuid": "bcfdfc0e_6cecb0e5",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 18
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1e745a_6b411d30",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T13:17:53Z",
+      "side": 1,
+      "message": "Actually I just noticed that we have test_mockable recently.\nIf we choose (1), what about split one more file for screens? (e.g. vb2_ui_screen_tests.c)\n\nOn the other hand, if we choose (2), I think we can increase the mock_iter in test_action(), which should guaranteed to be the last function called in ui_loop().\n\nI will update these into the issue (b/156448738)",
+      "parentUuid": "4eea1bd8_49e9f910",
       "range": {
         "startLine": 1028,
         "startChar": 1,
