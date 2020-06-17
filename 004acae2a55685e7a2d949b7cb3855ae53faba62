@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "106f9eb4_cb041144",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T11:09:22Z",
+      "side": 1,
+      "message": "I know this is the same as the original beep tests, but it\u0027s a bit long, especially when we have beeps that are 500ms apart.  How about using 200 instead?",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "004acae2a55685e7a2d949b7cb3855ae53faba62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

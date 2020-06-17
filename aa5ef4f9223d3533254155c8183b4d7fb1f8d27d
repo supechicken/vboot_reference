@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "8e4f2986_b65a0100",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T11:09:22Z",
+      "side": 1,
+      "message": "Oh, good point.  Yes, let\u0027s keep both.",
+      "parentUuid": "3b9dbdac_5b0141da",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 2
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f75e082_73f58b57",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I have not looked at our current stack works...\nBut I think if we have history stack and \u0027back\u0027, we can navigate with relative position here.\nWe could reduce a lot of unnecessary keys here.\n\n--\n\nAnother plan here, we will inspect menu items easier if we can access \"ui\" in \"ui_loop\".\nWe can UP to the top then DOWN to the button, check the target screen id (or target text) without entering them directly.\nBut I do not think that we have ways to access \"ui\" for now\n(I think we can\u0027t mock a function in same file - e.g. \"menu_navigation_action\" is at the same file as \"ui_loop\", so it is useless to mock \"menu_navigation_action\" here)",
       "parentUuid": "3f75e082_73f58b57",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 18
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eea1bd8_49e9f910",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T11:09:22Z",
+      "side": 1,
+      "message": "There could be a couple ways of doing this...\n\n(1) override menu_navigation_action() (works as long as you set the function as test_mockable)\n- Downside: less coverage, although we should have unit tests for the navigation functions in the other vb2_ui_test file.\n\n\n(2) add a test_action() which gets called in ui_loop().  Only call the function when TEST\u003d1.  Override the function in vb2_ui_tests.c to look up the correct menu item by string, and set selected_item to point there.\n- Upside: we can still include a few \"sanity checks\" which use manual UP/DOWN navigation, and just use string lookup for the rest.",
+      "parentUuid": "bcfdfc0e_6cecb0e5",
       "range": {
         "startLine": 1028,
         "startChar": 1,
