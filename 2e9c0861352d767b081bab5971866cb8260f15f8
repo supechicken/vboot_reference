@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caca9c65_5b58d9d2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T11:22:09Z",
+      "side": 1,
+      "message": "This is confusing because the unit test can hypothetically set up a self-contradictory situation:\n\n  mock_dev_boot_disabled \u003d 1\n  gbb.flags |\u003d VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON\n\nRather than correct for that in the mock function, I\u0027d say just write consistent unit tests that set both of these values correctly.\n\nAlternatively, leave vb2_dev_boot_allowed() unmocked, and just toggle VB2_SECDATA_FWMP_DEV_DISABLE_BOOT and VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON appropriately.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 55
+      },
+      "revId": "2e9c0861352d767b081bab5971866cb8260f15f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
