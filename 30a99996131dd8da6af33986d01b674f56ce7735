@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "09da2bcf_21a934b2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-17T02:38:59Z",
+      "side": 1,
+      "message": "It sounds like we have to remember the previous error state in ui_context. How about we define enum for all the possible errors and pass the enum (instead of the string) to depthcharge? And add new a field \"prev_error\" (or whatever you want to call it) to ui_context. Does this solve the problem?",
+      "parentUuid": "cd1268c2_e2cdbda9",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "30a99996131dd8da6af33986d01b674f56ce7735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67023495_a7604791",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
