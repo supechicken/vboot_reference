@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b329d8a_488ea460",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T15:49:24Z",
+      "side": 1,
+      "message": "cur_time might be more accurate here.  elapsed sounds more like the time elapsed since some event occurred, such as the beep starting.",
+      "range": {
+        "startLine": 409,
+        "startChar": 10,
+        "endLine": 409,
+        "endChar": 17
+      },
+      "revId": "19afd23dd6eb2501397a78b0515735d5d1735ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd40e813_5ef624e5",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T15:49:24Z",
+      "side": 1,
+      "message": "This is quite a mouthful... might be nice to split it into a few steps:\n\n  TEST_EQ(msec, ...)\n  TEST_EQ(frequency, ...)\n  TEST_TRUE(...)",
+      "range": {
+        "startLine": 424,
+        "startChar": 11,
+        "endLine": 424,
+        "endChar": 12
+      },
+      "revId": "19afd23dd6eb2501397a78b0515735d5d1735ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7171ce29_0242651b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T15:49:24Z",
+      "side": 1,
+      "message": "I know I mentioned in the last CL comments that we can check for the beep starting at +/- FUZZ_MS, but I think what is really important is that it starts within FUZZ_MS *after* the expected time.  A beep should never start *early*.  So we only need one of these conditions.  Furthermore, I think the way you\u0027ve written this is really confusing...  Perhaps this would be clearer:\n\n  TEST_TRUE(cur_time \u003e\u003d beep-\u003etime_expected, \"  beep started after expected time\")\n  TEST_TRUE(cur_time - beep-\u003etime_expected \u003c FUZZ_MS, \"  beep started within FUZZ_MS\")",
+      "range": {
+        "startLine": 426,
+        "startChar": 5,
+        "endLine": 427,
+        "endChar": 54
+      },
+      "revId": "19afd23dd6eb2501397a78b0515735d5d1735ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
