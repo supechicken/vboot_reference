@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "cd1268c2_e2cdbda9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2020-06-17T01:27:24Z",
+      "side": 1,
+      "message": "Ack.\n\nOk, I restructured the code so that I\u0027m trying to follow your suggestions above.  However, I\u0027m having trouble letting vb2ex_display_ui() know that after a user presses a button after the error message is displayed, it needs to repaint the screen because as far as it knows, the screen id is the same.  Also, there\u0027s no way for me to compare the strings of the previous screen and the next screen like before now that I\u0027ve moved the error_msg from ui-\u003estate.string to ui-\u003edialog.message.",
+      "parentUuid": "5aa4b3ad_95e59589",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "30a99996131dd8da6af33986d01b674f56ce7735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67023495_a7604791",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
