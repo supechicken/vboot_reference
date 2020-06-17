@@ -46,6 +46,30 @@
       "revId": "004acae2a55685e7a2d949b7cb3855ae53faba62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47288408_6617fbce",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-17T15:27:58Z",
+      "side": 1,
+      "message": "The beep duration shouldn\u0027t make any difference here, right?  We\u0027re checking that the time the beep started is within FUZZ_MS after the time that it is expected to begin.",
+      "parentUuid": "526fbbef_14bb2a99",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "004acae2a55685e7a2d949b7cb3855ae53faba62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
