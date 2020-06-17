@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6dcec08_c5de690c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T03:20:48Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "5d101208_33b962cf",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f6ec33e_452fc103",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "3a585dc4_346ff84e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T03:20:48Z",
+      "side": 1,
+      "message": "Removed here.\nAdd back with splitting out _forced functions in separate CL afterwards.",
+      "parentUuid": "7c319fdd_fd26e8b1",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 55
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ff93bc_f112f3ee",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "aaf66c23_21654f9f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T03:20:48Z",
+      "side": 1,
+      "message": "Add fuzzy match here (500ms)\nSplit beep tests in CL:2249261",
+      "parentUuid": "d1ff93bc_f112f3ee",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 25
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29f46eb_8b8aa887",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 4
@@ -130,6 +202,30 @@
       "writtenOn": "2020-06-10T08:35:50Z",
       "side": 1,
       "message": "Seems like another case where just the one line could be swapped based on the value of DETACHABLE.",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 2
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9dbdac_5b0141da",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T03:20:48Z",
+      "side": 1,
+      "message": "Does the wrapping means we don\u0027t care whether Ctrl+U (and other ctrl+ shortcuts) works in DETACHABLE or not?\n\nI think we should check ctrl+ shortcuts both in DETACHABLE and non-DETACHABLE.",
+      "parentUuid": "e29f46eb_8b8aa887",
       "range": {
         "startLine": 582,
         "startChar": 0,
