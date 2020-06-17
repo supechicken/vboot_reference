@@ -22,6 +22,30 @@
       "revId": "2e9c0861352d767b081bab5971866cb8260f15f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d8ecc6_3102c027",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-17T12:42:52Z",
+      "side": 1,
+      "message": "Since we do not use any secdata-fwmp-things directly in ui-related codes, \nI\u0027d prefer the former one.\n\nWhat about add mock_dev_boot_allowed \u003d 1 in gbb-flag section in previous CL, and abandon this one?",
+      "parentUuid": "caca9c65_5b58d9d2",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 55
+      },
+      "revId": "2e9c0861352d767b081bab5971866cb8260f15f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
