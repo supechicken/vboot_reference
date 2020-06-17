@@ -62,7 +62,7 @@ static int mock_beeped_ms[2];
 static int mock_vb2ex_beep_called;
 
 static enum vb2_dev_default_boot_target mock_default_boot;
-static int mock_dev_boot_allowed;
+static int mock_dev_boot_disabled;
 static int mock_dev_boot_legacy_allowed;
 static int mock_dev_boot_external_allowed;
 
@@ -259,7 +259,7 @@ static void reset_common_data(enum reset_type t)
 
 	/* For dev_boot* in 2misc.h */
 	mock_default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL;
-	mock_dev_boot_allowed = 1;
+	mock_dev_boot_disabled = 0;
 	mock_dev_boot_legacy_allowed = 0;
 	mock_dev_boot_external_allowed = 1;
 
@@ -395,7 +395,8 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 
 int vb2_dev_boot_allowed(struct vb2_context *c)
 {
-	return mock_dev_boot_allowed;
+	return !mock_dev_boot_disabled ||
+	       (gbb.flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON);
 }
 
 int vb2_dev_boot_legacy_allowed(struct vb2_context *c)
@@ -607,7 +608,7 @@ static void developer_tests(void)
 	/* If dev mode is disabled, goes to to_norm screen repeatedly */
 	reset_common_data(FOR_DEVELOPER);
 	add_mock_keypress(VB_KEY_ESC);
-	mock_dev_boot_allowed = 0;
+	mock_dev_boot_disabled = 1;
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"if dev mode is disabled, goes to to_norm screen repeatedly");
 	DISPLAYED_EQ("to_norm", VB2_SCREEN_DEVELOPER_TO_NORM,
