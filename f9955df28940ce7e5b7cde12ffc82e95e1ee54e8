@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7b0940a_b954078b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "Dupe?",
+      "range": {
+        "startLine": 13,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "358519fb_6fd45e83",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "There\u0027s no reason we have to put this block of code inside the menu navigation action.  I\u0027d suggest creating a new function called something like \"dialog_exit_action\".",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f114b0e6_ee01630d",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 7
@@ -36,6 +82,29 @@
     },
     {
       "key": {
+        "uuid": "c4ddfbbb_147fafeb",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "I\u0027d suggest storing prev_error as a local function variable here similar to prev_state. This is the only place where it needs to be accessed, so it doesn\u0027t need to be in vb2_ui_context.",
+      "range": {
+        "startLine": 268,
+        "startChar": 6,
+        "endLine": 268,
+        "endChar": 19
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe652904_ebdcc7d7",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 7
@@ -47,6 +116,64 @@
       "writtenOn": "2020-06-18T03:26:52Z",
       "side": 1,
       "message": "Again, why do we need to set prev_error here? Isn\u0027t it already set in ui_loop()?\n\nIn the case where more than one errors occur within an iteration of the loop, keeping the first error makes more sense to me. This can be implemented simply by\n\n if (ui-\u003eerror !\u003d VB2_ERROR_NONE)\n     ui-\u003eerror \u003d error;",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1791751e_83bce780",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "I question whether we need this helper function at all?  Although if we want to keep the behaviour that Yu-Ping suggested (the first error takes priority), then it\u0027d probably best to keep it.  But can we move it over to 2ui.c please?",
+      "parentUuid": "fe652904_ebdcc7d7",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53815445_1ff80068",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "void functions don\u0027t need a return statement.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a0b1d3d_92763a06",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "Bogus newline?",
       "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -69,6 +196,29 @@
         "startChar": 2,
         "endLine": 258,
         "endChar": 23
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74444030_43fe37fa",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "Didn\u0027t we move the beep to ui_loop()?",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 12
       },
       "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -116,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "2eaaf961_7d5d6eba",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "Right.  My opinion is that if we are going to the trouble of creating an enum for errors, and spreading code across vboot and depthcharge, this is no longer serving our purpose of \"ad hoc English errors\".  Now we need to create two CLs just for adding an error message.  If we want to do this, then we may as well take it a step further and translate the error messages.  And in fact, we may as well just take advantage of our existing string display functions, and just turn each error dialog into a separate screen.\n\nIn summary, I\u0027d prefer to see either:\n\n(1) Ad hoc dialog box with an English string\n\n(2) Translated screens (or dialog boxes)",
+      "parentUuid": "635291bb_6bed014a",
+      "range": {
+        "startLine": 1225,
+        "startChar": 5,
+        "endLine": 1225,
+        "endChar": 14
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3b38f01_a530eb90",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -127,6 +301,30 @@
       "writtenOn": "2020-06-18T03:26:52Z",
       "side": 1,
       "message": "We can define this in depthcharge if we\u0027re using the enum like this.\n\nAgain, please wait for Joel\u0027s comments.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 7,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10a2b71_39c949ea",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-18T11:55:53Z",
+      "side": 1,
+      "message": "Not sure what we need the struct for here.\n\nIf we\u0027re going with the enum solution, we would be simply sending an enum value as an argument in vb2ex_display_ui.\n\nIf we\u0027re going with the string solution, we would simply be sending the string as an argument in vb2ex_display_ui, plus an optional enum value (or a string) to represent the title.",
+      "parentUuid": "d3b38f01_a530eb90",
       "range": {
         "startLine": 1238,
         "startChar": 7,
