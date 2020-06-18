@@ -70,6 +70,30 @@
       "revId": "004acae2a55685e7a2d949b7cb3855ae53faba62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4675b4c1_df5eaa44",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-18T03:39:52Z",
+      "side": 1,
+      "message": "\u003e The beep duration shouldn\u0027t make any difference here, right?\n\nIt will fail if beep duration is longer then the gap between two consecutive beep calls.\n\ne.g.\nt\u003d0, vb2ex_beep(1000, 400)\nt\u003d500, vb2ex_beep(1000, 400)\n\nSince the beep call is blocking, the second beep call will be postponed to t\u003d1000 (or 1000+DELAY_MS)\n\nThough this is a way-too-extreme case, I think FUZZ\u003d500 is fine here.",
+      "parentUuid": "47288408_6617fbce",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "004acae2a55685e7a2d949b7cb3855ae53faba62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -426,6 +426,30 @@
       "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c24cb09_dd97721f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-18T03:39:52Z",
+      "side": 1,
+      "message": "I think the test_action() option suit for both existing (and low-priority) issue, so I put them together.",
+      "parentUuid": "36e1502a_5dafa06e",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 18
+      },
+      "revId": "aa5ef4f9223d3533254155c8183b4d7fb1f8d27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
