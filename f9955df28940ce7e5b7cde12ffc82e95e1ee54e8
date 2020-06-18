@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f114b0e6_ee01630d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "Could we only set\n\n ui.prev_error \u003d ui.error;\n\nin one place (in the while loop)?",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb46325_5dbf62ee",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "If an error happens in the screen action (ui.state.screen-\u003eaction()), which is called right before this function, then the error will be cleared right away. I\u0027d probably move this block of code to the loop after the check_shutdown_request() call.",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe652904_ebdcc7d7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "Again, why do we need to set prev_error here? Isn\u0027t it already set in ui_loop()?\n\nIn the case where more than one errors occur within an iteration of the loop, keeping the first error makes more sense to me. This can be implemented simply by\n\n if (ui-\u003eerror !\u003d VB2_ERROR_NONE)\n     ui-\u003eerror \u003d error;",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90ed125_08eb3f24",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "What will happen if we only set ui-\u003eerror here?",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 23
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19fd0002_978c9107",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "We decided to have an error *screen* for this, similar to RECOVERY_INVALID screen, so please leave this in this CL. See CL:2246298.",
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635291bb_6bed014a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "We may want to rename this to vb2_ui_error to be separated from the existing enum vb2_error_t.\n\nBTW, Joel has different opinions about using an enum for the errors. Please wait for his comments before making further changes.",
+      "range": {
+        "startLine": 1225,
+        "startChar": 5,
+        "endLine": 1225,
+        "endChar": 14
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b38f01_a530eb90",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-18T03:26:52Z",
+      "side": 1,
+      "message": "We can define this in depthcharge if we\u0027re using the enum like this.\n\nAgain, please wait for Joel\u0027s comments.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 7,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
