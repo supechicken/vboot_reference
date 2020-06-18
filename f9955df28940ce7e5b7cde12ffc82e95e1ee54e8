@@ -290,6 +290,30 @@
     },
     {
       "key": {
+        "uuid": "6e9b6259_9cb4af6a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2020-06-18T17:29:42Z",
+      "side": 1,
+      "message": "The original design was #1, but it was brought up that it was not extendable to use with dialog boxes (future work).\n\nBTW, who\u0027s making the call on which of these to do?  Is it me?  Is it Joel?  If it\u0027s me then I prefer right now.",
+      "parentUuid": "2eaaf961_7d5d6eba",
+      "range": {
+        "startLine": 1225,
+        "startChar": 5,
+        "endLine": 1225,
+        "endChar": 14
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3b38f01_a530eb90",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -325,6 +349,30 @@
       "side": 1,
       "message": "Not sure what we need the struct for here.\n\nIf we\u0027re going with the enum solution, we would be simply sending an enum value as an argument in vb2ex_display_ui.\n\nIf we\u0027re going with the string solution, we would simply be sending the string as an argument in vb2ex_display_ui, plus an optional enum value (or a string) to represent the title.",
       "parentUuid": "d3b38f01_a530eb90",
+      "range": {
+        "startLine": 1238,
+        "startChar": 7,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "f9955df28940ce7e5b7cde12ffc82e95e1ee54e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1d6df8_27ccb84e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2020-06-18T17:29:42Z",
+      "side": 1,
+      "message": "I don\u0027t like the string/enum mix.  Can\u0027t we just pass in the title and the body both as strings?  Or should we just not have a title and just pass in a string?  The title would only be for dialog boxes in the future.  If we are fine with just text for now I would say let\u0027s just push the dialog box extensions to later one when we decide we need them.",
+      "parentUuid": "d10a2b71_39c949ea",
       "range": {
         "startLine": 1238,
         "startChar": 7,
