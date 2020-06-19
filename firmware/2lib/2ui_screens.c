@@ -176,6 +176,7 @@ static const struct vb2_menu_item advanced_options_items[] = {
 		.text = "Enable developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
 	},
+	/* TODO(b:144969088): Add debug info item */
 	[ADVANCED_OPTIONS_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -185,6 +186,81 @@ static const struct vb2_screen_info advanced_options_screen = {
 	.name = "Advanced options",
 	.init = advanced_options_init,
 	.menu = MENU_ITEMS(advanced_options_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DEBUG_INFO */
+
+#define DEBUG_INFO_ITEM_PAGE_UP 1
+#define DEBUG_INFO_ITEM_PAGE_DOWN 2
+
+static void debug_info_page_change(struct vb2_ui_context *ui)
+{
+	/* Clear bits of page up and page down. */
+	ui->state->disabled_item_mask &= ~(1 << DEBUG_INFO_ITEM_PAGE_UP);
+	ui->state->disabled_item_mask &= ~(1 << DEBUG_INFO_ITEM_PAGE_DOWN);
+
+	if (ui->state->cur_page == 0) {
+		ui->state->disabled_item_mask |= 1 << DEBUG_INFO_ITEM_PAGE_UP;
+		ui->state->selected_item = DEBUG_INFO_ITEM_PAGE_DOWN;
+	} else if (ui->state->cur_page == ui->state->num_page - 1) {
+		ui->state->disabled_item_mask |= 1 << DEBUG_INFO_ITEM_PAGE_DOWN;
+		ui->state->selected_item = DEBUG_INFO_ITEM_PAGE_UP;
+	}
+}
+
+static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+{
+	ui->state->debug_info = vb2ex_get_debug_info(ui->ctx);
+	ui->state->num_page = vb2ex_init_pagination(ui->state->debug_info);
+	if (ui->state->num_page <= 0) {
+		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
+		return vb2_ui_screen_back(ui);
+	}
+	ui->state->cur_page = 0;
+	debug_info_page_change(ui);
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_page_up_action(struct vb2_ui_context *ui)
+{
+	if (ui->state->cur_page > 0) {
+		ui->state->cur_page--;
+		debug_info_page_change(ui);
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_page_down_action(struct vb2_ui_context *ui)
+{
+	if (ui->state->cur_page < ui->state->num_page - 1) {
+		ui->state->cur_page++;
+		debug_info_page_change(ui);
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static const struct vb2_menu_item debug_info_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	[DEBUG_INFO_ITEM_PAGE_UP] = {
+		.text = "Page up",
+		.action = debug_info_page_up_action,
+	},
+	[DEBUG_INFO_ITEM_PAGE_DOWN] = {
+		.text = "Page down",
+		.action = debug_info_page_down_action,
+	},
+	BACK_ITEM,
+};
+
+static const struct vb2_screen_info debug_info_screen = {
+	.id = VB2_SCREEN_DEBUG_INFO,
+	.name = "Debug info",
+	.init = debug_info_init,
+	.menu = MENU_ITEMS(debug_info_items),
 };
 
 /******************************************************************************/
@@ -662,6 +738,7 @@ static const struct vb2_screen_info *screens[] = {
 	&language_select_screen,
 	&recovery_broken_screen,
 	&advanced_options_screen,
+	&debug_info_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,
