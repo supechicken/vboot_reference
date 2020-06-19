@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "448e6cd8_a7dc0bed",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-19T11:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e78ecde3_13a319a9",
+      "range": {
+        "startLine": 567,
+        "startChar": 12,
+        "endLine": 567,
+        "endChar": 25
+      },
+      "revId": "939839087511b35a0fa90ace638edf163a6014bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4db7c3a4_ecdf2e24",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5cb43c09_011410a5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-19T11:11:28Z",
+      "side": 1,
+      "message": "Replaced with data-\u003ebuf",
+      "parentUuid": "f6368b04_58038e3b",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 20
+      },
+      "revId": "939839087511b35a0fa90ace638edf163a6014bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bd45a2e_518c3474",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -153,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "35f5ae68_d91e6ee6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-19T11:11:28Z",
+      "side": 1,
+      "message": "We have to free it since we allocate it in init.\n\n(Please comment if you think other method like fixed-size in debug_info_data is better)",
+      "parentUuid": "3c1358ed_d3af0ec8",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 34
+      },
+      "revId": "939839087511b35a0fa90ace638edf163a6014bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9369c45d_5212b8f7",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -173,6 +245,30 @@
       "revId": "939839087511b35a0fa90ace638edf163a6014bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fe214e_c7a08485",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-06-19T11:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9369c45d_5212b8f7",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 22
+      },
+      "revId": "939839087511b35a0fa90ace638edf163a6014bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
