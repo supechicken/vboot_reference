@@ -318,6 +318,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			vb2ex_display_ui(ui.state->screen->id, ui.locale_id,
 					 ui.state->selected_item,
 					 ui.state->disabled_item_mask,
+					 ui.info_str,
 					 ui.error_code);
 			/*
 			 * Only beep if we're transitioning from no
@@ -393,10 +394,8 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 	if (ui->key == VB_KEY_CTRL('D') ||
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_LONG_PRESS))
 		return vb2_ui_developer_mode_boot_internal_action(ui);
-
-	/* TODO(b/144969088): Re-implement as debug info screen. */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -411,9 +410,9 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 
 vb2_error_t broken_recovery_action(struct vb2_ui_context *ui)
 {
-	/* TODO(b/144969088): Re-implement as debug info screen. */
+	/* Broken recovery keyboard shortcuts */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -449,9 +448,8 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS))
 		return vb2_ui_screen_change(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 
-	/* TODO(b/144969088): Re-implement as debug info screen. */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }

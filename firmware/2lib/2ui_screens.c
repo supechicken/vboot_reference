@@ -176,6 +176,7 @@ static const struct vb2_menu_item advanced_options_items[] = {
 		.text = "Enable developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
 	},
+	/* TODO: Debug info item. */
 	[ADVANCED_OPTIONS_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -185,6 +186,48 @@ static const struct vb2_screen_info advanced_options_screen = {
 	.name = "Advanced options",
 	.init = advanced_options_init,
 	.menu = MENU_ITEMS(advanced_options_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DEBUG_INFO */
+
+#define DEBUG_INFO_BUF_SIZE 1024
+
+static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+{
+	ui->info_str = (char *)malloc(DEBUG_INFO_BUF_SIZE);
+	if (!ui->info_str) {
+		VB2_DEBUG("ERROR: malloc failed for debug info\n");
+		return vb2_ui_screen_back(ui);
+	}
+
+	vb2ex_get_debug_info(ui->ctx, ui->info_str, DEBUG_INFO_BUF_SIZE);
+	vb2ex_init_page_content(VB2_SCREEN_DEBUG_INFO,
+				ui->info_str, &ui->page_num);
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_back_action(struct vb2_ui_context *ui)
+{
+	free(ui->info_str);
+	vb2ex_free_page_content();
+	return vb2_ui_screen_back(ui);
+}
+
+static const struct vb2_menu_item debug_info_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Back",
+		.action = debug_info_back_action,
+	},
+};
+
+static const struct vb2_screen_info debug_info_screen = {
+	.id = VB2_SCREEN_DEBUG_INFO,
+	.name = "Debug info",
+	.init = debug_info_init,
+	.menu = MENU_ITEMS(debug_info_items),
 };
 
 /******************************************************************************/
@@ -662,6 +705,7 @@ static const struct vb2_screen_info *screens[] = {
 	&language_select_screen,
 	&recovery_broken_screen,
 	&advanced_options_screen,
+	&debug_info_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,
