@@ -1203,6 +1203,8 @@ enum vb2_screen {
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
 	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	/* Debug Info */
+	VB2_SCREEN_DEBUG_INFO			= 0x140,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1222,21 +1224,32 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_TO_NORM		= 0x310,
 };
 
+/* Screen-specific data. */
+struct vb2_screen_data {
+	union {
+		struct vb2_debug_info_data {
+			char *buf;
+		} debug_info_data;
+	};
+};
+
 /**
  * Display UI screen.
  *
  * @param screen		Screen to display.
+ * @param locale_id		Id of current locale.
  * @param selected_item		Index of the selected menu item. If the screen
  *				doesn't have a menu, this value will be ignored.
  * @param disabled_item_mask	Mask for disabled menu items. Bit (1 << idx)
  *				indicates whether item 'idx' is disabled.
- * @param locale_id		Id of current locale.
+ * @param screen_data		Data for current screen, or null if not needed.
  * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
-			     uint32_t disabled_item_mask);
+			     uint32_t disabled_item_mask,
+			     const struct vb2_screen_data *screen_data);
 
 /**
  * Check that physical presence button is currently pressed by the user.

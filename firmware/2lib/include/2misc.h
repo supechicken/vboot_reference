@@ -244,4 +244,17 @@ int vb2_dev_boot_legacy_allowed(struct vb2_context *ctx);
  */
 int vb2_dev_boot_external_allowed(struct vb2_context *ctx);
 
+/**
+ * Get the debug info string.
+ *
+ * The debug info string stores in dest, and is null-terminated.
+ * If the destination is too small, the string will be truncated.
+ *
+ * @param ctx		Vboot context
+ * @param dest		Destination where the string is stored
+ * @param dest_size		The size of destination
+ */
+void vb2_get_debug_info_string(struct vb2_context *ctx,
+			       char *dest, size_t dest_size);
+
 #endif  /* VBOOT_REFERENCE_2MISC_H_ */
