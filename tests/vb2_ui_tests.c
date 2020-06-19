@@ -1101,7 +1101,8 @@ static void developer_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: (Disabled) */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Debug info */
 	/* End of menu */
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -1151,7 +1152,8 @@ static void broken_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: (Disabled) */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Back */
 	/* End of menu */
 	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -1228,7 +1230,8 @@ static void manual_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: Enable dev mode */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Back */
 	/* End of menu */
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
