@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d986c173_e033cbf5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-19T10:32:53Z",
+      "side": 1,
+      "message": "No need for the braces.",
+      "range": {
+        "startLine": 82,
+        "startChar": 52,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "96e4ec54f92f7a77f789e12005f16816fe746bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3a42b4_37ededa1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-19T10:32:53Z",
+      "side": 1,
+      "message": "Just \"*\". I think we only use \"**\" in the docstring.",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 6
+      },
+      "revId": "96e4ec54f92f7a77f789e12005f16816fe746bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76eb445c_bafaf7e7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-19T10:32:53Z",
+      "side": 1,
+      "message": "Joel, given that the ultimate goal is to translate the error strings, what\u0027s your thought about the arguments?",
+      "range": {
+        "startLine": 1262,
+        "startChar": 8,
+        "endLine": 1263,
+        "endChar": 26
+      },
+      "revId": "96e4ec54f92f7a77f789e12005f16816fe746bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
