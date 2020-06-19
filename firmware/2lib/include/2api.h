@@ -1203,6 +1203,8 @@ enum vb2_screen {
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
 	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	/* Debug Info */
+	VB2_SCREEN_DEBUG_INFO			= 0x140,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1271,6 +1273,17 @@ void vb2ex_msleep(uint32_t msec);
  * @param frequency		Sound frequency in Hz.
  */
 void vb2ex_beep(uint32_t msec, uint32_t frequency);
+
+/**
+ * Get the debug info string of states owned by firmware.
+ *
+ * The debug info string stores in dest, and is null-terminated.
+ * If the destination is too small, the string will be truncated.
+ *
+ * @param dest		Destination where the string is stored
+ * @param dest_size		The size of destination
+ */
+void vb2ex_get_debug_info_string(char *dest, size_t dest_size);
 
 /*****************************************************************************/
 /* Timer. */

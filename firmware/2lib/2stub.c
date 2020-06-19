@@ -92,3 +92,9 @@ void vb2ex_abort(void)
 	/* Stub simply exits. */
 	exit(1);
 }
+
+__attribute__((weak))
+void vb2ex_get_debug_info_string(char *dest, size_t dest_size)
+{
+	memcpy(dest, "(firmware debug state)", dest_size);
+}

@@ -164,6 +164,7 @@ static const struct vb2_menu_item advanced_options_items[] = {
 		.text = "Enable developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
 	},
+	/* TODO: Debug info item. */
 	[ADVANCED_OPTIONS_ITEM_BACK] = BACK_ITEM,
 };
 
@@ -172,6 +173,41 @@ static const struct vb2_screen_info advanced_options_screen = {
 	.name = "Advanced options",
 	.init = advanced_options_init,
 	.menu = MENU_ITEMS(advanced_options_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DEBUG_INFO */
+
+#define DEBUG_INFO_BUF_SIZE 1024
+
+static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+{
+	char debug_info_buf[DEBUG_INFO_BUF_SIZE];
+	vb2_get_debug_info_string(ui->ctx, debug_info_buf, DEBUG_INFO_BUF_SIZE);
+	VB2_DEBUG(debug_info_buf);
+	/* TODO: store debug info string somewhere */
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_back_action(struct vb2_ui_context *ui)
+{
+	/* TODO: free debug info string */
+	return vb2_ui_change_root(ui);
+}
+
+static const struct vb2_menu_item debug_info_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Back",
+		.action = debug_info_back_action,
+	},
+};
+
+static const struct vb2_screen_info debug_info_screen = {
+	.id = VB2_SCREEN_DEBUG_INFO,
+	.name = "Debug info",
+	.init = debug_info_init,
+	.menu = MENU_ITEMS(debug_info_items),
 };
 
 /******************************************************************************/
@@ -585,6 +621,7 @@ static const struct vb2_screen_info *screens[] = {
 	&language_select_screen,
 	&recovery_broken_screen,
 	&advanced_options_screen,
+	&debug_info_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,
