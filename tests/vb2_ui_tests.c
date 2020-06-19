@@ -325,7 +325,8 @@ struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
-			     uint32_t disabled_item_mask)
+			     uint32_t disabled_item_mask,
+			     const struct vb2_screen_data *screen_data)
 {
 	struct display_call displayed = (struct display_call){
 		.screen = vb2_get_screen_info(screen),
@@ -1101,7 +1102,8 @@ static void developer_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: (Disabled) */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Back */
 	/* End of menu */
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -1151,7 +1153,8 @@ static void broken_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: (Disabled) */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Back */
 	/* End of menu */
 	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
@@ -1228,7 +1231,8 @@ static void manual_recovery_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	/* #0: Language menu */
 	/* #1: Enable dev mode */
-	/* #2: Back */
+	/* #2: Debug info */
+	/* #3: Back */
 	/* End of menu */
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"advanced options screen");
