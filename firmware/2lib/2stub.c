@@ -92,3 +92,19 @@ void vb2ex_abort(void)
 	/* Stub simply exits. */
 	exit(1);
 }
+
+__attribute__((weak))
+void vb2ex_get_debug_info(struct vb2_context *ctx,
+			  char *dest, size_t dest_size)
+{
+	strncpy(dest, "(debug info string)", dest_size);
+}
+
+__attribute__((weak))
+void vb2ex_get_textbox_size(int *chars_per_line, int *lines_per_page)
+{
+	if (chars_per_line != NULL && lines_per_page != NULL) {
+		*chars_per_line = 0;
+		*lines_per_page = 0;
+	}
+}
