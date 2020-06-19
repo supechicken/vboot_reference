@@ -290,6 +290,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	struct vb2_screen_state prev_state;
 	int prev_disable_timer;
 	enum vb2_ui_error prev_error_code;
+	uint32_t prev_page;
 	const struct vb2_menu *menu;
 	const struct vb2_screen_info *root_info;
 	uint32_t key_flags;
@@ -307,6 +308,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	memset(&prev_state, 0, sizeof(prev_state));
 	prev_disable_timer = 0;
 	prev_error_code = VB2_UI_ERROR_NONE;
+	prev_page = 0;
 
 	while (1) {
 		/* Draw if there are state changes. */
@@ -314,7 +316,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    /* We want to redraw when timer is disabled. */
 		    prev_disable_timer != ui.disable_timer ||
 		    /* We want to redraw/beep on a transition. */
-		    prev_error_code != ui.error_code) {
+		    prev_error_code != ui.error_code ||
+		    /* We want to redraw the log screen. */
+		    prev_page != ui.state->cur_page) {
 
 			menu = get_menu(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
@@ -326,6 +330,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.state->selected_item,
 					 ui.state->disabled_item_mask,
 					 ui.disable_timer,
+					 ui.state->cur_page,
 					 ui.error_code);
 			/*
 			 * Only beep if we're transitioning from no
@@ -339,6 +344,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			memcpy(&prev_state, ui.state, sizeof(*ui.state));
 			prev_disable_timer = ui.disable_timer;
 			prev_error_code = ui.error_code;
+			prev_page = ui.state->cur_page;
 		}
 
 		/* Grab new keyboard input. */
@@ -402,10 +408,8 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 	if (ui->key == VB_KEY_CTRL('D') ||
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_LONG_PRESS))
 		return vb2_ui_developer_mode_boot_internal_action(ui);
-
-	/* TODO(b/144969088): Re-implement as debug info screen. */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -420,9 +424,9 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx)
 
 vb2_error_t broken_recovery_action(struct vb2_ui_context *ui)
 {
-	/* TODO(b/144969088): Re-implement as debug info screen. */
+	/* Broken recovery keyboard shortcuts */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -458,9 +462,8 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS))
 		return vb2_ui_screen_change(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 
-	/* TODO(b/144969088): Re-implement as debug info screen. */
 	if (ui->key == '\t')
-		VbDisplayDebugInfo(ui->ctx);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
