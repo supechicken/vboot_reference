@@ -1269,6 +1269,8 @@ enum vb2_screen {
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
 	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	/* Debug info */
+	VB2_SCREEN_DEBUG_INFO			= 0x140,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1303,6 +1305,8 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEV_EXTERNAL_NOT_ALLOWED,
 	/* Dev mode external boot failed */
 	VB2_UI_ERROR_DEV_EXTERNAL_BOOT_FAILED,
+	/* View log screen initialized failed */
+	VB2_UI_ERROR_LOG_INIT_FAILED,
 };
 
 /**
@@ -1316,6 +1320,9 @@ enum vb2_ui_error {
  *				indicates whether item 'idx' is disabled.
  * @param timer_disabled	Whether timer is disabled or not. Some screen
  *				descriptions will depend on this value.
+ * @param page	  		Current page number for a log screen. If the
+ *				screen doesn't show logs,
+ *				this value will be ignored.
  * @param error_code		Error code if an error occurred.
  * @return VB2_SUCCESS, or error code on error.
  */
@@ -1324,6 +1331,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t selected_item,
 			     uint32_t disabled_item_mask,
 			     int timer_disabled,
+			     int page,
 			     enum vb2_ui_error error_code);
 
 /**
@@ -1359,6 +1367,40 @@ void vb2ex_msleep(uint32_t msec);
  * @param frequency		Sound frequency in Hz.
  */
 void vb2ex_beep(uint32_t msec, uint32_t frequency);
+
+/**
+ * Get the full debug info string.
+ *
+ * Return a pointer to the full debug info string.
+ * The string is guaranteed to be null-terminated.
+ *
+ * @param ctx		Vboot context
+ * @return The pointer to the full debug info string.  NULL if none or error.
+ */
+const char *vb2ex_get_debug_info(struct vb2_context *ctx);
+
+/**
+ * Get the vboot debug info.
+ *
+ * Return a pointer to the vboot debug info string.
+ * The string is guaranteed to be null-terminated.
+ *
+ * @param ctx		Vboot context
+ * @return The pointer to the vboot debug info string.  NULL if none or error.
+ */
+const char *vb2api_get_debug_info(struct vb2_context *ctx);
+
+/**
+ * Split the full info string into pages, and return the number of pages.
+ *
+ * This function will automatically retrieve the specification of pages, and use
+ * these specification to calculate and store the detailed information of pages.
+ * It will store only the reference of the full info string.
+ *
+ * @param str		The full info string.
+ * @return The number of pages after pagination.  0 if none or error.
+ */
+uint32_t vb2ex_init_pagination(const char *str);
 
 /*****************************************************************************/
 /* Timer. */
