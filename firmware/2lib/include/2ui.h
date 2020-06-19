@@ -56,6 +56,12 @@ struct vb2_screen_state {
 	const struct vb2_screen_info *screen;
 	uint32_t selected_item;
 	uint32_t disabled_item_mask;
+
+	/* For log screen. */
+	const char *log_string;
+	uint32_t page_count;
+	uint32_t current_page;
+
 	struct vb2_screen_state *prev;
 };
 

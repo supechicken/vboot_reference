@@ -88,6 +88,8 @@ static int mock_pp_pressed_total;
 
 static int mock_enable_dev_mode;
 
+static int mock_log_page_count;
+
 static void add_mock_key(uint32_t press, int trusted)
 {
 	if (mock_key_total >= ARRAY_SIZE(mock_key) ||
@@ -306,6 +308,9 @@ static void reset_common_data(enum reset_type t)
 	/* For vb2_enable_developer_mode */
 	mock_enable_dev_mode = 0;
 
+	/* For vb2ex_prepare_log_screen */
+	mock_log_page_count = 1;
+
 	/* Avoid Iteration #0 */
 	add_mock_keypress(0);
 	if (t == FOR_MANUAL_RECOVERY)
@@ -327,6 +332,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t selected_item,
 			     uint32_t disabled_item_mask,
 			     int timer_disabled,
+			     uint32_t current_page,
 			     enum vb2_ui_error error_code)
 {
 	struct display_call displayed = (struct display_call){
@@ -495,6 +501,17 @@ void vb2_enable_developer_mode(struct vb2_context *c)
 {
 	mock_enable_dev_mode = 1;
 }
+
+const char *vb2ex_get_debug_info(struct vb2_context *c)
+{
+	return NULL;
+}
+
+uint32_t vb2ex_prepare_log_screen(const char *str)
+{
+	return mock_log_page_count;
+}
+
 
 /* Tests */
 static void developer_tests(void)
@@ -991,6 +1008,95 @@ static void language_selection_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
+static void debug_info_tests(void)
+{
+	VB2_DEBUG("Testing debug info screen...\n");
+
+	/* Tab = debug info for all menus */
+	reset_common_data(FOR_DEVELOPER);
+	add_mock_keypress('\t');
+	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"tab = debug info in dev mode");
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("debug info", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	reset_common_data(FOR_BROKEN_RECOVERY);
+	add_mock_keypress('\t');
+	TEST_EQ(vb2_broken_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"tab = debug info in broken recovery mode");
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("debug info", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress('\t');
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"tab = debug info in manual recovery mode");
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("debug info", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	/* Failed to enter debug info */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	mock_log_page_count = 0;
+	add_mock_keypress('\t');
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"failed to enter debug info");
+	DISPLAYED_PASS();
+	DISPLAYED_NO_EXTRA();
+
+	/* Get a one-page debug info */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress('\t');
+	add_mock_keypress(VB_KEY_ENTER);  /* back */
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"get a one-page debug info");
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("debug info", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 3, 0x6);
+	DISPLAYED_EQ("back to root screen", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	/* Get a three-page debug info and navigate */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	mock_log_page_count = 3;
+	add_mock_keypress('\t');
+	add_mock_keypress(VB_KEY_ENTER);  /* page 1, select on page down */
+	add_mock_keypress(VB_KEY_ENTER);  /* page 2, select on page down */
+	add_mock_keypress(VB_KEY_ENTER);  /* page 3, select on page up */
+	add_mock_keypress(VB_KEY_ENTER);  /* page 2, select on page up */
+	add_mock_keypress(VB_KEY_ENTER);  /* page 1, select on page down */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);  /* page 2, select on back */
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
+		"get a three-page debug info and navigate");
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("debug info page #1", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 2, 0x2);
+	DISPLAYED_EQ("debug info page #2", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 2, 0x0);
+	DISPLAYED_EQ("debug info page #3", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 1, 0x4);
+	DISPLAYED_EQ("debug info page #2", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 1, 0x0);
+	DISPLAYED_EQ("debug info page #1", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 2, 0x2);
+	DISPLAYED_EQ("debug info page #2", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 2, 0x0);
+	DISPLAYED_EQ("debug info page #2", VB2_SCREEN_DEBUG_INFO,
+		     MOCK_IGNORE, 3, 0x0);
+	DISPLAYED_EQ("back to root screen", VB2_SCREEN_RECOVERY_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_NO_EXTRA();
+
+	VB2_DEBUG("...done.\n");
+}
+
 static void developer_screen_tests(void)
 {
 	VB2_DEBUG("Testing developer mode screens...\n");
@@ -1337,6 +1443,7 @@ int main(void)
 	broken_recovery_tests();
 	manual_recovery_tests();
 	language_selection_tests();
+	debug_info_tests();
 
 	/* Screen displayed */
 	developer_screen_tests();
