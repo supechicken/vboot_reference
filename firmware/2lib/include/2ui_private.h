@@ -32,4 +32,12 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui);
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui);
 vb2_error_t developer_to_norm_action(struct vb2_ui_context *ui);
 
+/* For 2ui_logs.c */
+vb2_error_t log_init(struct vb2_ui_log_info *log, const char *str);
+vb2_error_t log_final(struct vb2_ui_log_info *log);
+const char *log_get_current_page(struct vb2_ui_log_info *log);
+vb2_error_t log_page_up(struct vb2_ui_log_info *log);
+vb2_error_t log_page_down(struct vb2_ui_log_info *log);
+int log_changed(struct vb2_ui_log_info *log);
+
 #endif  /* VBOOT_REFERENCE_2UI_PRIVATE_H_ */
