@@ -92,3 +92,24 @@ void vb2ex_abort(void)
 	/* Stub simply exits. */
 	exit(1);
 }
+
+__attribute__((weak))
+void vb2ex_get_debug_info(char *dest, size_t dest_size)
+{
+	memcpy(dest, "(firmware debug state)", dest_size);
+}
+
+__attribute__((weak))
+vb2_error_t vb2ex_init_page_content(enum vb2_screen screen,
+				    const char *info_str,
+				    uint32_t *num_page)
+{
+	*num_page = 0;
+	return VB2_SUCCESS;
+}
+
+__attribute__((weak))
+vb2_error_t vb2ex_free_page_content(void)
+{
+	return VB2_SUCCESS;
+}

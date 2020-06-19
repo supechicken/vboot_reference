@@ -91,6 +91,10 @@ struct vb2_ui_context {
 
 	/* For displaying error messages. */
   	enum vb2_ui_error error_code;
+
+	/* For page contents. */
+	char *info_str;
+	uint32_t page_num;
 };
 
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(

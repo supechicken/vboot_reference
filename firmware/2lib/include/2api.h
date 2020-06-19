@@ -1211,6 +1211,8 @@ enum vb2_screen {
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
 	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	/* Debug info */
+	VB2_SCREEN_DEBUG_INFO			= 0x131,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1256,6 +1258,7 @@ enum vb2_ui_error {
  *				doesn't have a menu, this value will be ignored.
  * @param disabled_item_mask	Mask for disabled menu items. Bit (1 << idx)
  *				indicates whether item 'idx' is disabled.
+ * @param info_str		Page content strings.
  * @param error_code		Error code if an error occurred.
  * @return VB2_SUCCESS, or error code on error.
  */
@@ -1263,6 +1266,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t locale_id,
 			     uint32_t selected_item,
 			     uint32_t disabled_item_mask,
+			     const char *info_str,
 			     enum vb2_ui_error error_code);
 
 /**
@@ -1298,6 +1302,36 @@ void vb2ex_msleep(uint32_t msec);
  * @param frequency		Sound frequency in Hz.
  */
 void vb2ex_beep(uint32_t msec, uint32_t frequency);
+
+/**
+ * Get the debug info string of states owned by firmware.
+ *
+ * The debug info string stores in dest, and is null-terminated.
+ * If the destination is too small, the string will be truncated.
+ *
+ * @param dest		Destination where the string is stored
+ * @param dest_size	The size of destination
+ */
+void vb2ex_get_debug_info(char *dest, size_t dest_size);
+
+/**
+ * Initialize the page contents with specified info string.
+ *
+ * @param screen	Current screen for displaying contents.
+ * @param info_str	Full page contents.
+ * @param num_page	The returned number of page count.
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_init_page_content(enum vb2_screen screen,
+				    const char *info_str,
+				    uint32_t *num_page);
+
+/**
+ * Finalize the page contents.
+ *
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_free_page_content(void);
 
 /*****************************************************************************/
 /* Timer. */
