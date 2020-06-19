@@ -65,6 +65,32 @@ enum vb2_power_button {
 	VB2_POWER_BUTTON_PRESSED,  /* Must have been previously released */
 };
 
+#define LOG_INFO_BUF_SIZE 1024
+
+struct vb2_ui_log_info {
+	/* Full log content. */
+	const char *str;
+	/* Copied buffer of current page content */
+	char buf[LOG_INFO_BUF_SIZE];
+	/* Total pages. */
+	int num_page;
+	/* Current page. */
+	int current_page;
+	/* Previous page, for redrawing. */
+	int previous_page;
+	/* Textbox info for displaying. */
+	int chars_per_line, lines_per_page;
+	/* The positions of the starting position and size of each page. */
+	const char **page_start;
+	size_t *page_size;
+	/* The position of content end. */
+	const char *str_end;
+	/* Flag for initialization. */
+	int initialized;
+	/* Flag for the need of redrawing. */
+	int need_redraw;
+};
+
 struct vb2_ui_context {
 	struct vb2_context *ctx;
 	struct vb2_screen_state *state;
@@ -91,8 +117,12 @@ struct vb2_ui_context {
 
 	/* For displaying error messages. */
   	enum vb2_ui_error error_code;
-};
 
+	/* For page contents. */
+	char debug_info_buf[LOG_INFO_BUF_SIZE];
+	const char *log_str;
+	struct vb2_ui_log_info log;
+};
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(
 	struct vb2_ui_context *ui);
 vb2_error_t vb2_ui_developer_mode_boot_external_action(
