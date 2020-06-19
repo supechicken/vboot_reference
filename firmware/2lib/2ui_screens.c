@@ -155,7 +155,8 @@ static const struct vb2_screen_info recovery_broken_screen = {
 /* VB2_SCREEN_ADVANCED_OPTIONS */
 
 #define ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE 1
-#define ADVANCED_OPTIONS_ITEM_BACK 2
+#define ADVANCED_OPTIONS_ITEM_DEBUG_INFO 2
+#define ADVANCED_OPTIONS_ITEM_BACK 3
 
 vb2_error_t advanced_options_init(struct vb2_ui_context *ui)
 {
@@ -176,6 +177,10 @@ static const struct vb2_menu_item advanced_options_items[] = {
 		.text = "Enable developer mode",
 		.target = VB2_SCREEN_RECOVERY_TO_DEV,
 	},
+	[ADVANCED_OPTIONS_ITEM_DEBUG_INFO] = {
+		.text = "Debug info",
+		.target = VB2_SCREEN_DEBUG_INFO,
+	},
 	[ADVANCED_OPTIONS_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -185,6 +190,59 @@ static const struct vb2_screen_info advanced_options_screen = {
 	.name = "Advanced options",
 	.init = advanced_options_init,
 	.menu = MENU_ITEMS(advanced_options_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DEBUG_INFO */
+
+static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+{
+	vb2ex_get_debug_info(ui->ctx, ui->debug_info_buf,
+			     sizeof(ui->debug_info_buf));
+	ui->num_page = vb2ex_init_pagination(ui->debug_info_buf);
+	if (ui->num_page <= 0) {
+		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
+		return vb2_ui_screen_back(ui);
+	}
+	ui->page = 0;
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_page_up_action(struct vb2_ui_context *ui)
+{
+	if (ui->page > 0)
+		ui->page--;
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_page_down_action(struct vb2_ui_context *ui)
+{
+	if (ui->page < ui->num_page - 1)
+		ui->page++;
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static const struct vb2_menu_item debug_info_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Page up",
+		.action = debug_info_page_up_action,
+	},
+	{
+		.text = "Page down",
+		.action = debug_info_page_down_action,
+	},
+	BACK_ITEM,
+};
+
+static const struct vb2_screen_info debug_info_screen = {
+	.id = VB2_SCREEN_DEBUG_INFO,
+	.name = "Debug info",
+	.init = debug_info_init,
+	.menu = MENU_ITEMS(debug_info_items),
 };
 
 /******************************************************************************/
@@ -662,6 +720,7 @@ static const struct vb2_screen_info *screens[] = {
 	&language_select_screen,
 	&recovery_broken_screen,
 	&advanced_options_screen,
+	&debug_info_screen,
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,

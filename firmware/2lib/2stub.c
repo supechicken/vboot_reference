@@ -92,3 +92,16 @@ void vb2ex_abort(void)
 	/* Stub simply exits. */
 	exit(1);
 }
+
+__attribute__((weak))
+void vb2ex_get_debug_info(struct vb2_context *ctx,
+			  char *dest, size_t dest_size)
+{
+	strncpy(dest, "(debug info string)", dest_size);
+}
+
+__attribute__((weak))
+int vb2ex_init_pagination(const char *str)
+{
+	return 1;
+}

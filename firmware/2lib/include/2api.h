@@ -1269,6 +1269,8 @@ enum vb2_screen {
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
 	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	/* Debug info */
+	VB2_SCREEN_DEBUG_INFO			= 0x131,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1303,6 +1305,8 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEV_EXTERNAL_NOT_ALLOWED,
 	/* Dev mode external boot failed */
 	VB2_UI_ERROR_DEV_EXTERNAL_BOOT_FAILED,
+	/* View log screen initialized failed */
+	VB2_UI_ERROR_LOG_INIT_FAILED,
 };
 
 /**
@@ -1316,6 +1320,9 @@ enum vb2_ui_error {
  *				indicates whether item 'idx' is disabled.
  * @param timer_disabled	Whether timer is disabled or not. Some screen
  *				descriptions will depend on this value.
+ * @param page	  		Current page number for the log screen. If the
+ *				screen doesn't have a textbox for showing logs,
+ *				this value will be ignored.
  * @param error_code		Error code if an error occurred.
  * @return VB2_SUCCESS, or error code on error.
  */
@@ -1324,6 +1331,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t selected_item,
 			     uint32_t disabled_item_mask,
 			     int timer_disabled,
+			     int page,
 			     enum vb2_ui_error error_code);
 
 /**
@@ -1359,6 +1367,46 @@ void vb2ex_msleep(uint32_t msec);
  * @param frequency		Sound frequency in Hz.
  */
 void vb2ex_beep(uint32_t msec, uint32_t frequency);
+
+/**
+ * Get the full debug info string.
+ *
+ * The debug info string stores in dest, and is null-terminated.
+ * If the destination is too small, the string will be truncated.
+ *
+ * @param ctx		Vboot context
+ * @param dest		Destination where the string is stored.
+ * @param dest_size	The size of destination.
+ */
+void vb2ex_get_debug_info(struct vb2_context *ctx,
+			  char *dest, size_t dest_size);
+
+/**
+ * Save vboot debug info into specified string.
+ *
+ * The debug info string is written to dest, and is guaranteed to be
+ * null-terminated. If the destination is too small, the string will be
+ * truncated.
+ *
+ * @param ctx		Vboot context
+ * @param dest		Destination where the string is stored.
+ * @param dest_size	The size of destination.
+ * @return The length of the string.  0 if none or error.
+ */
+size_t vb2api_get_debug_info(struct vb2_context *ctx,
+			     char *dest, size_t dest_size);
+
+/**
+ * Split the full info string into pages, and return the number of pages.
+ *
+ * This function will automatically retrieve the specification of pages, and use
+ * these specification to calculate and store the detailed information of pages.
+ * It will store only the reference of the full info string.
+ *
+ * @param str		The full info string.
+ * @return The number of pages after pagination.  0 if error.
+ */
+int vb2ex_init_pagination(const char *str);
 
 /*****************************************************************************/
 /* Timer. */
