@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "5fcc9d6e_c1b255ea",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:43:44Z",
+      "side": 1,
+      "message": "\u003e When going \"back\" to a screen that is already in the stack, however, we only want to do (a) and (c)\nNot necessarily -- DEVELOPER_MODE\u0027s ui-\u003estart_time should only be initialized once.\n\nAs for rejecting a state -- we could also pass in the state as an argument to init(), rather than placing it on top of the screen stack temporarily (for failure case).\n\n\u003e Anyway, feel free to do it in a separate CL.\nSGTM",
+      "parentUuid": "4b262315_d6e8a814",
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dfb715c_8bbb9d96",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
