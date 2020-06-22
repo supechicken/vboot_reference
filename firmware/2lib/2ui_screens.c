@@ -234,10 +234,20 @@ static const struct vb2_menu_item recovery_invalid_items[] = {
 	POWER_OFF_ITEM,
 };
 
+vb2_error_t recovery_invalid_action(struct vb2_ui_context *ui)
+{
+	/* Should we be here?  Updated by manual_recovery_action(). */
+	if (ui->recovery_rv == VB2_ERROR_LK_NO_DISK_FOUND)
+		return vb2_ui_screen_back(ui);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 static const struct vb2_screen_info recovery_invalid_screen = {
 	.id = VB2_SCREEN_RECOVERY_INVALID,
 	.name = "Invalid recovery inserted",
 	.menu = MENU_ITEMS(recovery_invalid_items),
+	.init = recovery_invalid_action,  /* Avoid drawing just once. */
+	.action = recovery_invalid_action,
 };
 
 /******************************************************************************/
