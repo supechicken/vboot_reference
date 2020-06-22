@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "4b262315_d6e8a814",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T08:04:26Z",
+      "side": 1,
+      "message": "\u003e is_reinit\n\nWe can categorize what the existing init functions do into:\n\n(a) Check if it\u0027s allow to enter the screen. If not, call vb2_ui_change_root().\n(b) Initialize selected_item.\n(c) Reset \"static\" variables in ui_context (such as ui-\u003ephysical_presence_button_pressed).\n\nUpon entering a new screen that is not in the stack, we want to run all of the above. When going \"back\" to a screen that is already in the stack, however, we only want to do (a) and (c). Adding an argument \u0027is_reinit\u0027 to the init() functions sounds fine to me.\n\n\n\u003e rejecting the screen change when an error value is returned\n\nThis has always been my preference. Then we could avoid calling vb2_ui_change_screen() from the init functions. In vb2_ui_screen_back(), it would become something like\n\n while (ui-\u003estate \u0026\u0026 ui-\u003estate-\u003eprev) {\n     tmp \u003d ui-\u003estate-\u003eprev;\n     free(ui-\u003estate);\n     ui-\u003estate \u003d tmp;\n     if (ui-\u003estate-\u003escreen-\u003einit(ui, is_reinit\u003d1) \u003d\u003d UI_CONTINUE)\n         break;\n }\n\nand in vb2_ui_change_screen() when !state_exists,\n\n cur_state-\u003eprev \u003d ui-\u003estate;\n cur_state-\u003escreen \u003d new_screen_info;\n ui-\u003estate \u003d cur_state;\n if (ui-\u003estate-\u003escreen-\u003einit(ui, is_reinit\u003d0) \u003d\u003d UI_ERROR) {\n     // Reject entering new screen\n     return vb2_ui_screen_back(ui);\n }\n\nAnyway, feel free to do it in a separate CL.",
+      "parentUuid": "3d325658_de9cdc7c",
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dfb715c_8bbb9d96",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
@@ -128,6 +146,30 @@
       "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de225e6_a8622ea9",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T08:04:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ad29904_9af3fc0f",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -178,6 +220,30 @@
     },
     {
       "key": {
+        "uuid": "7a3750ff_ed003fef",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T08:04:26Z",
+      "side": 1,
+      "message": "I\u0027m okay if we\u0027re keep this as is.",
+      "parentUuid": "85873889_8679e174",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 19
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "131f9178_46a64da7",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 6
@@ -222,6 +288,30 @@
       "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86897f3b_53880f3d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T08:04:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca317455_d73b0809",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
