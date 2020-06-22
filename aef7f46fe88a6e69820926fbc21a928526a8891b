@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "451dd7fd_ca06fa48",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f566c85f_181d6661",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 30
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fc2e5fa_ca7e216c",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3d325658_de9cdc7c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not so sure.  In the recovery code that you asked me to move to a separate CL, it would be useful for init() to run regardless, as a check of \"should this screen be shown\".  Otherwise, we have to do that weird hack that I did of setting it for both .init and .action, and it will show for a split second before disappearing.  But on the other hand, we want to keep the nice property of selected_item being preserved.\n\nMaybe this would be a good time to re-formulate init() functions like you previously mentioned -- rejecting the screen change when an error value is returned.  We could also add an argument called something like `is_reinit` so the function knows to just check permissions, or also to initialize selected_item and disabled_item_mask.",
+      "parentUuid": "1fc2e5fa_ca7e216c",
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dfb715c_8bbb9d96",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2020-06-22T03:10:47Z",
       "side": 1,
       "message": "Move this block into the \u0027else\u0027 block below?",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad29904_9af3fc0f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "I actually prefer doing this check up front -- if the requested screen doesn\u0027t exist, then nothing should proceed.",
+      "parentUuid": "3dfb715c_8bbb9d96",
       "range": {
         "startLine": 222,
         "startChar": 1,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "85873889_8679e174",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "Yes, it would accomplish the same thing here.  However it seems a bit dangerous to introduce a dependency on this function, especially when it doesn\u0027t provide any feedback as to whether it actually popped a screen off the stack or not.  What do you think?",
+      "parentUuid": "81219a5c_94ae0d49",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 19
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "131f9178_46a64da7",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 6
@@ -99,6 +189,30 @@
       "writtenOn": "2020-06-22T03:10:47Z",
       "side": 1,
       "message": "Could we add this in a separate CL?\n\nAlso, we may want to add a BACK button to this screen.",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca317455_d73b0809",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "Yeah, sure.  We can do this in a separate CL.  Note that without this modification, unplugging an invalid USB disk will result in putting you back on the root INSERT screen regardless of where you were in the flow.",
+      "parentUuid": "131f9178_46a64da7",
       "range": {
         "startLine": 222,
         "startChar": 12,
@@ -131,6 +245,30 @@
       "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c899d4ed_3c5580f5",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T05:05:16Z",
+      "side": 1,
+      "message": "I don\u0027t think that works here... since we will want to be able to modify the contents of both this pointer and its data.  The pointer also needs to be copied into vb2_ui_context.state, which isn\u0027t const.",
+      "parentUuid": "ccafd2da_4cc9f4a5",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 7
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
