@@ -22,6 +22,115 @@
       "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc2e5fa_ca7e216c",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T03:10:47Z",
+      "side": 1,
+      "message": "I guess we don\u0027t need to call screen-\u003einit() again. The result of the init function should be exactly the same as the previous call to it, right?",
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfb715c_8bbb9d96",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T03:10:47Z",
+      "side": 1,
+      "message": "Move this block into the \u0027else\u0027 block below?",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81219a5c_94ae0d49",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T03:10:47Z",
+      "side": 1,
+      "message": "Is it simpler to call vb2_ui_change_root()?",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 19
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131f9178_46a64da7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T03:10:47Z",
+      "side": 1,
+      "message": "Could we add this in a separate CL?\n\nAlso, we may want to add a BACK button to this screen.",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 35
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccafd2da_4cc9f4a5",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-22T03:10:47Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 7
+      },
+      "revId": "aef7f46fe88a6e69820926fbc21a928526a8891b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
