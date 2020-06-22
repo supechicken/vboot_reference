@@ -394,10 +394,11 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 		VB2_DEBUG("Recovery VbTryLoadKernel %#x --> %#x\n",
 			  ui->recovery_rv, rv);
 		ui->recovery_rv = rv;
-		return vb2_ui_screen_change(ui,
-					    rv == VB2_ERROR_LK_NO_DISK_FOUND ?
-					    VB2_SCREEN_RECOVERY_SELECT :
-					    VB2_SCREEN_RECOVERY_INVALID);
+
+		/* If we encountered an error, switch to the INVALID screen. */
+		if (rv != VB2_ERROR_LK_NO_DISK_FOUND)
+			return vb2_ui_screen_change(
+				ui, VB2_SCREEN_RECOVERY_INVALID);
 	}
 
 	/* Manual recovery keyboard shortcuts */
