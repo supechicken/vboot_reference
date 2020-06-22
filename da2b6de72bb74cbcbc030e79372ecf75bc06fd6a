@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741ffa72_1c34bac0",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "f",
+      "range": {
+        "startLine": 571,
+        "startChar": 22,
+        "endLine": 571,
+        "endChar": 23
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de5f907_b44c9f0a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "Probably calling it vb2_get_debug_info() is sufficient.",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 30
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc0b3bf_5bec6fc6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "Call vb2_ui_change_root() instead?",
+      "range": {
+        "startLine": 191,
+        "startChar": 9,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3704d418_6b6daf71",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "info",
+      "range": {
+        "startLine": 1206,
+        "startChar": 10,
+        "endLine": 1206,
+        "endChar": 14
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f6e12f_0d73a6f6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "What will the other log screens be called?  Is it worth having a common prefix?",
+      "range": {
+        "startLine": 1207,
+        "startChar": 12,
+        "endLine": 1207,
+        "endChar": 22
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37b1378_9553bf70",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "is written to dest",
+      "range": {
+        "startLine": 250,
+        "startChar": 25,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a7f370_4762444e",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-22T08:59:39Z",
+      "side": 1,
+      "message": "Is this an extra tab?",
+      "range": {
+        "startLine": 255,
+        "startChar": 20,
+        "endLine": 255,
+        "endChar": 21
+      },
+      "revId": "da2b6de72bb74cbcbc030e79372ecf75bc06fd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
