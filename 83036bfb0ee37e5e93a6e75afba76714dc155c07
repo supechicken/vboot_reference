@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc34b1dc_994237f8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-23T07:40:43Z",
+      "side": 1,
+      "message": "Honestly I\u0027m not sure if passing a struct is valid in C. I couldn\u0027t find any instance of \"struct \\w+ \\w+ \u003d \\w+;\" in depthcharge.",
+      "parentUuid": "2f8005c1_f414d218",
+      "range": {
+        "startLine": 268,
+        "startChar": 6,
+        "endLine": 268,
+        "endChar": 7
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6801d7b5_6d8e33f7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8767797a_4482d8b8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-23T07:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6801d7b5_6d8e33f7",
+      "range": {
+        "startLine": 1225,
+        "startChar": 9,
+        "endLine": 1225,
+        "endChar": 10
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1d6bd144_29fb68ca",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-23T07:40:43Z",
+      "side": 1,
+      "message": "Field removed.",
+      "parentUuid": "27bd3cf9_a706b265",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "762ec755_04857be0",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-16T08:18:29Z",
       "side": 1,
       "message": "What do you think about moving these fields directly into screen_data?\n\nI know depthcharge doesn\u0027t need to use all of them.  But consider the long-term -- when we move UI code from vboot to depthcharge, it won\u0027t need to differentiate between \"private screen data\" and \"public screen data\".  It\u0027s also an elegant way of keeping more stuff out of the global context.\n\nAlternatively, we may think that after moving UI code from vboot to depthcharge, it will be unnecessary to keep a separate screen_data struct for each screen, and simpler to just put everything in (depthcharge) ui_context.  In that case, if there are only a few pieces of data to share with depthcharge, we may consider just adding individual arguments to vb2ex_display_ui, or alternatively, a generic \"extra_data\" struct.\n\nWhat\u0027s your preference?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8905f64c_e2279df0",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-23T07:40:43Z",
+      "side": 1,
+      "message": "Actually, I shouldn\u0027t have put the screen data inside vb2_screen_state since we don\u0027t want to restore it (do we?) when going back to previous screen, at least for the \u0027timer_disabled\u0027 field. I guess we have no choice but to put it in the ui_context. (For the page number of BIOS log screen, we might want to restore it, but that\u0027s another story.)\n\nAs for the structure, it\u0027s simpler to put everything together inside a generic struct. What do you think (about PS2)?",
+      "parentUuid": "762ec755_04857be0",
       "range": {
         "startLine": 79,
         "startChar": 0,
