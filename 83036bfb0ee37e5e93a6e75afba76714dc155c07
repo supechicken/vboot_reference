@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "10398427_3e09a23a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-24T06:44:13Z",
+      "side": 1,
+      "message": "Even if we haven\u0027t done it, I\u0027m pretty sure that passing a structure to a function by value is valid C.  But I agree that it is a little weird.",
+      "parentUuid": "fc34b1dc_994237f8",
+      "range": {
+        "startLine": 268,
+        "startChar": 6,
+        "endLine": 268,
+        "endChar": 7
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6801d7b5_6d8e33f7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Actually, I shouldn\u0027t have put the screen data inside vb2_screen_state since we don\u0027t want to restore it (do we?) when going back to previous screen, at least for the \u0027timer_disabled\u0027 field. I guess we have no choice but to put it in the ui_context. (For the page number of BIOS log screen, we might want to restore it, but that\u0027s another story.)\n\nAs for the structure, it\u0027s simpler to put everything together inside a generic struct. What do you think (about PS2)?",
       "parentUuid": "762ec755_04857be0",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dee9cfe_1273c911",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-24T06:44:13Z",
+      "side": 1,
+      "message": "Ugh, this is a hard design problem.\n\nRe. restoring screen data: I don\u0027t see any harm in doing that here.  The screen will always be the root screen, so its data will never disappear.  If we directly sent disable_timer/start_time/beep_count *or* timer_disabled to depthcharge in a vb2_screen_data union struct, it would always be consistent.  (Although it\u0027s arguable whether the data in this case belongs to the DEVELOPER_MODE screen or the \"developer\" UI mode.)\n\nAs an aside: For other members of vb2_ui_context, it\u0027s a bit unclear who they belong to.  For example, recovery_rv belongs to multiple screens after CL:2256859.  physical_presence_button_pressed may also be used by diagnostics screens in the future, across multiple modes.  language_menu is used everywhere.  So it might not make sense to break these out into specific vb2_screen_data structs.\n\n\nRe. using vb2_ui_data from PS2: As you may know, I dislike creating these mega-structs and sending them as arguments over our API functions.  In this case, it might depend on how we decide to implement the debug/BIOS log screens.  If we implement their pagination fields as first-class support in our UI, then they would be stored in vb2_screen_state on the vboot side, and sent as individual arguments to vb2ex_display_ui.  If we implement as screen-specific, then we probably *do* want to create vb2_screen_data from PS1, and attach it to vb2_screen_state.  And given that we have this struct available, then we may as well use it for this use case as well (timer_disabled and friends).\n\nIf we don\u0027t want to make a decision about the debug/BIOS log screens quite yet, then I would recommend going with the simplest solution possible -- just keep disable_timer in vb2_ui_context, and sent the value directly to vb2ex_display_ui as an argument.  (I know that\u0027s probably a solution that neither of us want, but it delays adding extra complexity until we have a clear direction.)\n\nOtherwise, I\u0027d say where to store this data hinges on where we want to store pagination fields.",
+      "parentUuid": "8905f64c_e2279df0",
       "range": {
         "startLine": 79,
         "startChar": 0,
