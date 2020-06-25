@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd551c68_2bf724ae",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Could we update prev_state right before (or after) updating prev_error_code?",
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec11d44_f76ee7e4",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Maybe \"ui.error_code !\u003d VB2_UI_ERROR_NONE\" is more straightforward?",
+      "range": {
+        "startLine": 292,
+        "startChar": 7,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88e6e015_96d4b201",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Missing period",
+      "range": {
+        "startLine": 308,
+        "startChar": 41,
+        "endLine": 308,
+        "endChar": 42
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13df779a_2531d281",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Can we rename this to something independent of the display of error message in depthcharge? I mean, if we somehow change the implementation in depthcharge to show errors in a different way (other than a dialog box), this (and the comment above) will become invalid.",
+      "range": {
+        "startLine": 309,
+        "startChar": 7,
+        "endLine": 309,
+        "endChar": 25
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160d3615_1942bc21",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mind if we\u0027re using \"DEV\" for these 3 cases.",
+      "range": {
+        "startLine": 1235,
+        "startChar": 14,
+        "endLine": 1235,
+        "endChar": 22
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7e269e_6b274549",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "FAILED?",
+      "range": {
+        "startLine": 1239,
+        "startChar": 37,
+        "endLine": 1239,
+        "endChar": 41
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd4df6b_4ba9a44c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "This isn\u0027t used in vboot. We could define it in depthcharge (and hence no need for the \"vb2_\" prefix).",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 2
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f1d449_3d60c9d0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Could you take the chance to fix the order?",
+      "range": {
+        "startLine": 1257,
+        "startChar": 10,
+        "endLine": 1257,
+        "endChar": 19
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e9df4e_5f97bac5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "\"error\" or \"error_code\"?",
+      "range": {
+        "startLine": 1258,
+        "startChar": 10,
+        "endLine": 1258,
+        "endChar": 15
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41823665_8067e305",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-25T14:47:22Z",
+      "side": 1,
+      "message": "Missing period.",
+      "range": {
+        "startLine": 92,
+        "startChar": 32,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "8a9df92ccde2cb2b0ed27b4c641749ffe46c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
