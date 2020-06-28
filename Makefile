@@ -451,9 +451,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_repair.c \
 	cgpt/cgpt_show.c \
 	futility/dump_kernel_config_lib.c \
-	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/chromeos_config.c \
-	host/lib/crossystem.c \
 	host/lib/crypto.c \
 	host/lib/file_keys.c \
 	host/lib/fmap.c \
@@ -470,6 +468,12 @@ UTILLIB_SRCS = \
 	host/lib21/host_key.c \
 	host/lib21/host_misc.c \
 	host/lib21/host_signature.c
+
+ifneq (${NOCROS},1)
+UTILLIB_SRCS += \
+	host/arch/${ARCH}/lib/crossystem_arch.c \
+	host/lib/crossystem.c
+endif
 
 UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${UTILLIB_OBJS}
@@ -510,7 +514,6 @@ HOSTLIB_SRCS = \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_init.c \
 	futility/dump_kernel_config_lib.c \
-	host/arch/${ARCH}/lib/crossystem_arch.c \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
@@ -519,6 +522,10 @@ HOSTLIB_SRCS = \
 	host/lib/host_misc.c \
 	host/lib/subprocess.c \
 	${TLCL_SRCS}
+
+ifneq (${NOCROS},1)
+HOSTLIB_SRCS += host/arch/${ARCH}/lib/crossystem_arch.c
+endif
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
@@ -631,7 +638,6 @@ FUTIL_SRCS = \
 	futility/cmd_pcr.c \
 	futility/cmd_show.c \
 	futility/cmd_sign.c \
-	futility/cmd_update.c \
 	futility/cmd_validate_rec_mrc.c \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_firmware.c \
@@ -645,12 +651,17 @@ FUTIL_SRCS = \
 	futility/file_type_usbpd1.c \
 	futility/misc.c \
 	futility/ryu_root_header.c \
+	futility/vb1_helper.c \
+	futility/vb2_helper.c
+
+ifneq (${NOCROS},1)
+FUTIL_SRCS += \
+	futility/cmd_update.c \
 	futility/updater.c \
 	futility/updater_archive.c \
 	futility/updater_quirks.c \
-	futility/updater_utils.c \
-	futility/vb1_helper.c \
-	futility/vb2_helper.c
+	futility/updater_utils.c
+endif
 
 # List of commands built in futility.
 FUTIL_CMD_LIST = ${BUILD}/gen/futility_cmds.c
