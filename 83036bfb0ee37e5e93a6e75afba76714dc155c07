@@ -235,6 +235,30 @@
       "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2f76a4_b5b13145",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-06-29T04:45:41Z",
+      "side": 1,
+      "message": "Okay, I agree to pass it as an argument of vb2ex_display_ui() for now, and leave the difficult part to Rocco 😉.\n\n\u003e Re. restoring screen data: I don\u0027t see any harm in doing that here.\n\nI mean, if we store disable_timer inside ui_state, then when we restore the state (when going back to the root screen), the disable_timer will be restored to 0, which is not what we want.",
+      "parentUuid": "3dee9cfe_1273c911",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
