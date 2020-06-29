@@ -259,6 +259,30 @@
       "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b546ff00_2bad1528",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-29T04:56:46Z",
+      "side": 1,
+      "message": "developer_mode_action sets the value of ui-\u003edisable_timer to 1 when there is keyboard input, or when a timeout occurs.  So assuming we stored that in vb2_screen_data, the value restored would be 1, no?",
+      "parentUuid": "5c2f76a4_b5b13145",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
