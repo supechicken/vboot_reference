@@ -307,6 +307,30 @@
       "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a61513_994e39ac",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-06-30T01:27:45Z",
+      "side": 1,
+      "message": "That\u0027s true.  But if disable_timer\u003d0 was restored, then next time developer_mode_action() ran, it would discover that the timer has run out based on the value of start_time.  So I think the hypothetical bug would be drawing the disable_timer\u003d0 state of the screen once before switching to disable_timer\u003d1 state, which would manifest as a flicker on the screen.\n\nDo you think we should change something here?",
+      "parentUuid": "1c53ff6f_8b21ac71",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "83036bfb0ee37e5e93a6e75afba76714dc155c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
