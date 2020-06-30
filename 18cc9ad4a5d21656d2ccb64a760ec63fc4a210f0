@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88e7e78c_6e1adb46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-06-30T15:21:26Z",
+      "side": 1,
+      "message": "It was reported at https://ticket.coreboot.org/issues/145: Paul M. tried to build coreboot in vboot configurations on POWER and ARM hosts (for an x86 target) and that failed.\n\nI\u0027ll add the metadata block although I guess I\u0027ll have to make it BUG\u003dnone, with the ticket URL in the human readable part.",
+      "parentUuid": "535d9cf7_bdaca9cd",
+      "revId": "18cc9ad4a5d21656d2ccb64a760ec63fc4a210f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5306e6e1_91e9d598",
         "filename": "Makefile",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "18cc9ad4a5d21656d2ccb64a760ec63fc4a210f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb16cd37_0bd22e12",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-06-30T15:21:26Z",
+      "side": 1,
+      "message": "It uses the APIs in crossystem_arch. Not doing this leads to:\n\n/usr/bin/ld: /root/coreboot/build/util/vboot_lib/futility/updater.o: in function `set_try_cookies\u0027:\n/root/coreboot/3rdparty/vboot/futility/updater.c:298: undefined reference to `VbSetSystemPropertyString\u0027\n/usr/bin/ld: /root/coreboot/3rdparty/vboot/futility/updater.c:302: undefined reference to `VbSetSystemPropertyInt\u0027\n/usr/bin/ld: /root/coreboot/build/util/vboot_lib/futility/updater.o: in function `update_try_rw_firmware\u0027:\n/root/coreboot/3rdparty/vboot/futility/updater.c:1027: undefined reference to `VbSetSystemPropertyInt\u0027\n...",
+      "parentUuid": "5306e6e1_91e9d598",
+      "range": {
+        "startLine": 659,
+        "startChar": 10,
+        "endLine": 659,
+        "endChar": 20
+      },
+      "revId": "18cc9ad4a5d21656d2ccb64a760ec63fc4a210f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
