@@ -58,17 +58,16 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	const uint8_t *hexp = NULL;
 	const uint8_t *hmir = NULL;
-	const uint8_t *heff = NULL;
-	int hexp_len, heff_len;
+	int hexp_len;
 	const int hmir_len = VB2_SHA256_DIGEST_SIZE;
 	vb2_error_t rv;
 
 	/*
 	 * Get expected EC hash and length.
 	 */
-	VB2_TRY(vb2ex_ec_get_expected_image_hash(select, &hexp, &hexp_len),
-		ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
-	VB2_DEBUG("Hexp %10s: ", image_name_to_string(select));
+	VB2_TRY(vb2ex_ec_hash_image(select, &hexp, &hexp_len),
+		ctx, VB2_RECOVERY_EC_HASH_FAILED);
+	VB2_DEBUG("Hexp/Heff %10s: ", image_name_to_string(select));
 	print_hash(hexp, hexp_len);
 
 	/*
@@ -92,29 +91,14 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 			VB2_DEBUG("Hmir != Hexp. Update Hmir.\n");
 			vb2_secdata_kernel_set_ec_hash(ctx, hexp);
 			sd->flags |= VB2_SD_FLAG_ECSYNC_HMIR_UPDATED;
+			/*
+			 * Need to wait here to give TPM time to actuall store
+			 * Hmir in non-volatile memory since a reboot to RO
+			 * request may brown out the system if there is no
+			 * battery.
+			 */
+			vb2ex_msleep(5 * MSEC);
 		}
-	}
-
-	/*
-	 * Get effective EC hash and length.
-	 */
-	VB2_TRY(vb2ex_ec_hash_image(select, &heff, &heff_len),
-		ctx, VB2_RECOVERY_EC_HASH_FAILED);
-	VB2_DEBUG("Heff %10s: ", image_name_to_string(select));
-	print_hash(heff, heff_len);
-
-	/* Lengths should match. */
-	if (heff_len != hexp_len) {
-		VB2_DEBUG("EC uses %d-byte hash but AP-RW contains %d bytes\n",
-			  heff_len, hexp_len);
-		rv = VB2_ERROR_EC_HASH_SIZE;
-		vb2api_fail(ctx, VB2_RECOVERY_EC_HASH_SIZE, rv);
-		return rv;
-	}
-
-	if (vb2_safe_memcmp(heff, hexp, hexp_len)) {
-		VB2_DEBUG("Heff != Hexp. Schedule update\n");
-		sd->flags |= SYNC_FLAG(select);
 	}
 
 	return VB2_SUCCESS;
