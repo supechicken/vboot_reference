@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "deb9284a_2715734f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "It\u0027s appending vb2ex_debug_info here.",
+      "parentUuid": "29657020_8d21e4b1",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 704,
+        "endChar": 42
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "217f7b35_955d6feb",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a6de0c_39afb35c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217f7b35_955d6feb",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 710,
+        "endChar": 37
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cd974d15_321f5afa",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "225f05c4_60dd751c",
+      "range": {
+        "startLine": 715,
+        "startChar": 12,
+        "endLine": 715,
+        "endChar": 28
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de41e43_e7e389e4",
         "filename": "firmware/2lib/2stub.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84182050_eaed739f",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de41e43_e7e389e4",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bfc63387_1c2e214f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "Yes (with screen-display unit tests)",
+      "parentUuid": "6908c6a8_4978f82f",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71f14081_da138d50",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2020-07-01T07:26:06Z",
       "side": 1,
       "message": "Thinking to the future, when all this UI code will be in depthcharge -- I think this function call should be exposed as a vb2api function.  It can be called in vb2ex_get_debug_info() (or whatever we are going to call it), and that function can take care of deciding what strings to concatenate.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 19
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dcf3898_38dba035",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-01T09:11:20Z",
+      "side": 1,
+      "message": "Let me make sure I have it right.\n\ndebug_info_init(vboot) calls vb2ex_get_debug_info(depthcharge);\nvb2ex_get_debug_info(depthcharge) calls vb2api_get_debug_info(vboot) for the first half of debug info, and concatenates the rest.\n\nI implemented it in a reversed way, let me rewrite it in next patch.",
+      "parentUuid": "71f14081_da138d50",
       "range": {
         "startLine": 206,
         "startChar": 1,
