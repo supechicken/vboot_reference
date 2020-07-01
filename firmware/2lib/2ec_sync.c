@@ -66,9 +66,9 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	/*
 	 * Get expected EC hash and length.
 	 */
-	VB2_TRY(vb2ex_ec_get_expected_image_hash(select, &hexp, &hexp_len),
-		ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
-	VB2_DEBUG("Hexp %10s: ", image_name_to_string(select));
+	VB2_TRY(vb2ex_ec_hash_image(select, &hexp, &hexp_len),
+		ctx, VB2_RECOVERY_EC_HASH_FAILED);
+	VB2_DEBUG("Hexp/Heff %10s: ", image_name_to_string(select));
 	print_hash(hexp, hexp_len);
 
 	/*
@@ -96,7 +96,8 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	}
 
 	/*
-	 * Get effective EC hash and length.
+	 * Get effective EC hash and length. Note, need to perform again to
+	 * ensure that TPM has enough time to actually commit Hmir above.
 	 */
 	VB2_TRY(vb2ex_ec_hash_image(select, &heff, &heff_len),
 		ctx, VB2_RECOVERY_EC_HASH_FAILED);
