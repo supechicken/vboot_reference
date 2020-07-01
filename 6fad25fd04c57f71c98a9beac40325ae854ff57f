@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29657020_8d21e4b1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "What do you mean by this TODO?",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 704,
+        "endChar": 42
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217f7b35_955d6feb",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "Let\u0027s just get rid of this TODO... it\u0027s been here for 7 years.",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 710,
+        "endChar": 37
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225f05c4_60dd751c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "No point in mentioning TAB here... 2misc has nothing to do with UI.\n\nHow about:\n\n  \"vboot debug info:\\n%s\"",
+      "range": {
+        "startLine": 715,
+        "startChar": 12,
+        "endLine": 715,
+        "endChar": 28
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de41e43_e7e389e4",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "I think this results in copying from the memory following the \"(firmware debug state)\" string literal.  Use strncpy instead.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6908c6a8_4978f82f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "Do you plan to add it in this CL?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f14081_da138d50",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-01T07:26:06Z",
+      "side": 1,
+      "message": "Thinking to the future, when all this UI code will be in depthcharge -- I think this function call should be exposed as a vb2api function.  It can be called in vb2ex_get_debug_info() (or whatever we are going to call it), and that function can take care of deciding what strings to concatenate.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 19
+      },
+      "revId": "6fad25fd04c57f71c98a9beac40325ae854ff57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
