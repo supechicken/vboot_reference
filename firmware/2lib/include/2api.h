@@ -1417,4 +1417,15 @@ void vb2ex_get_textbox_size(int *chars_per_line, int *lines_per_page);
  */
 uint32_t vb2ex_mtime(void);
 
+/*****************************************************************************/
+/* Test only. */
+
+/**
+ * Get test strings.
+ *
+ * @param dest		Destination where the string is stored
+ * @param dest_size	The size of destination
+ */
+void vb2ex_get_test_str(char *dest, size_t dest_size);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
