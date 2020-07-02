@@ -114,3 +114,9 @@ vb2_error_t vb2ex_free_page_content(void)
 {
 	return VB2_SUCCESS;
 }
+
+__attribute__((weak))
+void vb2ex_get_test_str(char *dest, size_t dest_size)
+{
+	strncpy(dest, "(test string)", dest_size);
+}
