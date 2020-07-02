@@ -1419,4 +1419,14 @@ int vb2ex_init_pagination(const char *str);
  */
 uint32_t vb2ex_mtime(void);
 
+/*****************************************************************************/
+/* Test only. */
+
+/**
+ * Get the test string.
+ *
+ * @return The pointer of the test string.
+ */
+const char *vb2ex_get_test_str(void);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */

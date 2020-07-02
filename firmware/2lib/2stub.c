@@ -104,3 +104,9 @@ int vb2ex_init_pagination(const char *str)
 {
 	return 1;
 }
+
+__attribute__((weak))
+const char *vb2ex_get_test_str(void)
+{
+	return NULL;
+}

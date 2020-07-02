@@ -211,7 +211,8 @@ static void debug_info_page_change(struct vb2_ui_context *ui)
 
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 {
-	ui->state->debug_info = vb2ex_get_debug_info(ui->ctx);
+	/* TEST-ONLY: get experimental string. */
+	ui->state->debug_info = vb2ex_get_test_str();
 	ui->state->num_page = vb2ex_init_pagination(ui->state->debug_info);
 	if (ui->state->num_page <= 0) {
 		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
@@ -243,6 +244,14 @@ static vb2_error_t debug_info_page_down_action(struct vb2_ui_context *ui)
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
+static vb2_error_t get_test_string_action(struct vb2_ui_context *ui)
+{
+	if (ui->key == 'r')
+		return debug_info_init(ui);
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 static const struct vb2_menu_item debug_info_items[] = {
 	LANGUAGE_SELECT_ITEM,
 	[DEBUG_INFO_ITEM_PAGE_UP] = {
@@ -260,6 +269,7 @@ static const struct vb2_screen_info debug_info_screen = {
 	.id = VB2_SCREEN_DEBUG_INFO,
 	.name = "Debug info",
 	.init = debug_info_init,
+	.action = get_test_string_action,
 	.menu = MENU_ITEMS(debug_info_items),
 };
 
