@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14e413c8_2555f930",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-02T06:52:03Z",
+      "side": 1,
+      "message": "Should we call vb2ex_msleep() here? Actually I wonder if it\u0027s simpler to clear ui.key inside error_exit_action().",
+      "revId": "bd23f52322c95f1cd94e0244caa8a861c75be92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
