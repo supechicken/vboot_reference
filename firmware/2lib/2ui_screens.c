@@ -193,8 +193,8 @@ static const struct vb2_screen_info advanced_options_screen = {
 
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 {
-	vb2ex_get_debug_info(ui->ctx, ui->debug_info_buf,
-			     sizeof(ui->debug_info_buf);
+	/* TEST-ONLY: get experimental string. */
+	vb2ex_get_test_str(ui->debug_info_buf, sizeof(ui->debug_info_buf));
 	if (!log_init(&ui->log, ui->debug_info_buf)) {
 		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
 		return vb2_ui_screen_back(ui);
@@ -226,6 +226,13 @@ static vb2_error_t debug_info_back_action(struct vb2_ui_context *ui)
 	return vb2_ui_screen_back(ui);
 }
 
+static vb2_error_t get_test_string_action(struct vb2_ui_context *ui)
+{
+	if (ui->key == 'r')
+		return debug_info_init(ui);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 static const struct vb2_menu_item debug_info_items[] = {
 	LANGUAGE_SELECT_ITEM,
 	{
@@ -246,6 +253,7 @@ static const struct vb2_screen_info debug_info_screen = {
 	.id = VB2_SCREEN_DEBUG_INFO,
 	.name = "Debug info",
 	.init = debug_info_init,
+	.action = get_test_string_action,
 	.menu = MENU_ITEMS(debug_info_items),
 };
 
