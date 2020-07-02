@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "834202ae_db5e6cf1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T07:22:37Z",
+      "side": 1,
+      "message": "Could we just set ui-\u003ekey \u003d 0 here?  That marks the key as being \"processed\".\n\nAlso, this conditional would probably be better suited to living directly in ui_loop, since that\u0027s where we deal with the other error_code logic.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "bd23f52322c95f1cd94e0244caa8a861c75be92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14e413c8_2555f930",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 1
