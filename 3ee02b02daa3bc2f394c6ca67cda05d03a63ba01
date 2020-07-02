@@ -88,6 +88,75 @@
     },
     {
       "key": {
+        "uuid": "8dff796c_63a35ab6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-02T07:12:56Z",
+      "side": 1,
+      "message": "Could we change it to char[DEBUG_INFO_BUF_SIZE] and avoid the malloc?",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 13
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37c1978_78ef5d3a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-02T07:12:56Z",
+      "side": 1,
+      "message": "1. Do you plan to use the same argument for the bios log?\n2. Does it contain the whole debug info string, or just part of it for the current page?",
+      "range": {
+        "startLine": 1261,
+        "startChar": 10,
+        "endLine": 1261,
+        "endChar": 18
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c81ccfd_f50ceee0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-02T07:12:56Z",
+      "side": 1,
+      "message": "Missing period.",
+      "range": {
+        "startLine": 1313,
+        "startChar": 53,
+        "endLine": 1313,
+        "endChar": 54
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5b466b2_4e7e0ae7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
