@@ -317,19 +317,26 @@ static vb2_error_t sync_one_ec(struct vb2_context *ctx, int devidx)
 
 	/* Protect RO flash */
 	rv = protect_ec(ctx, devidx, VB_SELECT_FIRMWARE_READONLY);
-	if (rv != VB2_SUCCESS)
-		return rv;
+	if (rv != VB2_SUCCESS) {
+		/* b/156027159: STM32F0 may have silicon bug in DMA. */
+		VB2_DEBUG("protect_ec RO returned %d. Reset.\n", rv);
+		return VBERROR_REBOOT_REQUIRED;
+	}
 
 	/* Protect RW flash */
 	rv = protect_ec(ctx, devidx, select_rw);
-	if (rv != VB2_SUCCESS)
-		return rv;
+	if (rv != VB2_SUCCESS) {
+		/* b/156027159: STM32F0 may have silicon bug in DMA. */
+		VB2_DEBUG("protect_ec RW returned %d. Reset.\n", rv);
+		return VBERROR_REBOOT_REQUIRED;
+	}
 
 	rv = VbExEcDisableJump(devidx);
 	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("VbExEcDisableJump() returned %d\n", rv);
+		/* b/156027159: STM32F0 may have silicon bug in DMA. */
+		VB2_DEBUG("VbExEcDisableJump() returned %d. Reset.\n", rv);
 		request_recovery(ctx, VB2_RECOVERY_EC_SOFTWARE_SYNC);
-		return VBERROR_EC_REBOOT_TO_RO_REQUIRED;
+		return VBERROR_REBOOT_REQUIRED;
 	}
 
 	return rv;
