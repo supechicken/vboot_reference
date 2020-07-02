@@ -108,3 +108,9 @@ void vb2ex_get_textbox_size(int *chars_per_line, int *lines_per_page)
 		*lines_per_page = 0;
 	}
 }
+
+__attribute__((weak))
+void vb2ex_get_test_str(char *dest, size_t dest_size)
+{
+	strncpy(dest, "(test string)", dest_size);
+}
