@@ -80,8 +80,10 @@ vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 	 * If the only difference is the error message, then just
 	 * redraw the screen without the error string.
 	 */
-	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE)
+	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE) {
 		ui->error_code = VB2_UI_ERROR_NONE;
+		return VB2_REQUEST_UI_SKIP_ITER;
+	}
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -345,6 +347,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 
 		/* Check if we need to exit an error box. */
 		rv = error_exit_action(&ui);
+		if (rv == VB2_REQUEST_UI_SKIP_ITER)
+			continue;
 		if (rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
 
