@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ce7bc32_685be3f1",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "Actually, I think 2misc.c is still a better home for these functions.  2api.c is a bit of a confusing name -- it should probably be renamed to something like 2firmware.c.",
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eacbc83f_ff5c0106",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "How about we make this function a bit safer by specifying string length as an argument?  We can also get rid of the uint8_to_string function and use snprintf with \"%02x\".\n\n  static int snprint_sha1_sum(char *dest, size_t dest_size,\n  \t\t\t      struct vb2_packed_key *key)\n  {\n  \tint32_t used \u003d 0;\n  \tfor (...)\n  \t\tDEBUG_INFO_APPEND(\"%02x\", sha[i]);\n  \treturn used;\n  }\n\n\nAnd then in vb2api_get_debug_info:\n\n  snprint_sha1_sum(sha1sum, sizeof(sha1sum), key);\n  DEBUG_INFO_APPEND(\"\\ngbb.rootkey: %s\", sha1sum);\n\nOr even:\n\n  DEBUG_INFO_APPEND(\"\\ngbb.rootkey: \");\n  used +\u003d snprint_sha1_sum(dest + used, dest_size - used, key);",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 70
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2243ecff_06a61343",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "If you want to use size_t in the function signature, this should probably change to size_t too.",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 408,
+        "endChar": 8
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156e274e_d4d76f94",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "Be careful here.  snprintf documentation says \"If the output was truncated due to this limit, then the return value is the number of characters (excluding the terminating null byte) which would have been written to the final string if enough space had been available.\"\n\nIn other words, used \u003e dest_size is possible at this point.  Maybe something like this would work better:\n\n  dest[dest_size - 1] \u003d \u0027\\0\u0027;\n  VB2_DEBUG(...);\n  return MIN(used, dest_size - 1);\n\nMight also be worth writing a short comment about this.",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 2
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b466b2_4e7e0ae7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "Maybe:\n\n  Save vboot debug info into specified string.",
+      "range": {
+        "startLine": 1320,
+        "startChar": 3,
+        "endLine": 1320,
+        "endChar": 52
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f050bef3_3bbcebc1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "is guaranteed to be",
+      "range": {
+        "startLine": 1322,
+        "startChar": 49,
+        "endLine": 1322,
+        "endChar": 51
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8661bfe8_d6b1beb2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-02T06:18:01Z",
+      "side": 1,
+      "message": "We might want to just remove this and stop returning the newline.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 3,
+        "endLine": 1325,
+        "endChar": 52
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
