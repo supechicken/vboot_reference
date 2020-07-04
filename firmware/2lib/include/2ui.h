@@ -208,4 +208,14 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx);
  */
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx);
 
+/**
+ * UI entry for VB2_NV_DIAG_REQUEST.
+ *
+ * Enter the diagnostic tools with a physical presence check.
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_diagnostics_menu(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2UI_H_ */
