@@ -11,6 +11,7 @@
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "2sysincludes.h"
+#include "2ui.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
 #include "test_common.h"
@@ -177,6 +178,13 @@ vb2_error_t VbBootDiagnosticLegacyClamshell(struct vb2_context *c)
 
 	return vbboot_retval;
 }
+
+vb2_error_t vb2_diagnostic_menu(struct vb2_context *c)
+{
+	// TODO: Exercise this mock once b/162715842 is resolved.
+	return vbboot_retval;
+}
+
 
 int vb2api_diagnostic_ui_enabled(struct vb2_context *c)
 {
