@@ -40,6 +40,14 @@
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
 }
 
+/* Action that will set VB2_NV_DIAG_REQUEST and reboot. */
+static vb2_error_t reboot_to_diagnostics_action(struct vb2_ui_context *ui)
+{
+	vb2_nv_set(ui->ctx, VB2_NV_DIAG_REQUEST, 1);
+	VB2_DEBUG("Diagnostic mode requested, rebooting\n");
+	return VB2_REQUEST_REBOOT;
+}
+
 /* Action that will power off the device. */
 static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 {
@@ -313,6 +321,7 @@ static const struct vb2_screen_info debug_info_screen = {
 
 #define RECOVERY_SELECT_ITEM_PHONE 1
 #define RECOVERY_SELECT_ITEM_EXTERNAL_DISK 2
+#define RECOVERY_SELECT_ITEM_DIAGNOSTICS 3
 
 vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
 {
@@ -323,6 +332,11 @@ vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
 			1 << RECOVERY_SELECT_ITEM_PHONE;
 		ui->state->selected_item = RECOVERY_SELECT_ITEM_EXTERNAL_DISK;
 	}
+
+        if (!DIAGNOSTIC_UI)
+                ui->state->disabled_item_mask |=
+			1 << RECOVERY_SELECT_ITEM_DIAGNOSTICS;
+
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -335,6 +349,10 @@ static const struct vb2_menu_item recovery_select_items[] = {
 	[RECOVERY_SELECT_ITEM_EXTERNAL_DISK] = {
 		.text = "Recovery using external disk",
 		.target = VB2_SCREEN_RECOVERY_DISK_STEP1,
+	},
+	[RECOVERY_SELECT_ITEM_DIAGNOSTICS] = {
+		.text = "Launch diagnostics",
+		.action = reboot_to_diagnostics_action,
 	},
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
@@ -771,6 +789,26 @@ static const struct vb2_screen_info developer_invalid_disk_screen = {
 };
 
 /******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTICS */
+
+static const struct vb2_menu_item diagnostics_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Storage",
+	},
+	{
+		.text = "Memory",
+	},
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostics_screen = {
+	.id = VB2_SCREEN_DIAGNOSTICS,
+	.name = "Diagnostic tools",
+	.menu = MENU_ITEMS(diagnostics_items),
+};
+
+/******************************************************************************/
 /*
  * TODO(chromium:1035800): Refactor UI code across vboot and depthcharge.
  * Currently vboot and depthcharge maintain their own copies of menus/screens.
@@ -796,6 +834,7 @@ static const struct vb2_screen_info *screens[] = {
 	&developer_to_norm_screen,
 	&developer_boot_external_screen,
 	&developer_invalid_disk_screen,
+	&diagnostics_screen,
 };
 
 const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id)
