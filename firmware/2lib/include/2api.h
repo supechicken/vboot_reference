@@ -1232,6 +1232,12 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL	= 0x320,
 	/* Invalid external disk inserted */
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
+	/* Check for physical presence before entering Mini-Diag */
+	VB2_SCREEN_DIAG_PHYSICAL_PRESENCE_CHECK	= 0x340,
+	/* Diagnostic tools */
+	VB2_SCREEN_DIAG_MENU					= 0x341,
+	VB2_SCREEN_DIAG_MEMORY					= 0x343,
+	VB2_SCREEN_DIAG_STORAGE					= 0x344,
 };
 
 enum vb2_ui_error {
