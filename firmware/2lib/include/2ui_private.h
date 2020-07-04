@@ -28,6 +28,15 @@ vb2_error_t recovery_select_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_action(struct vb2_ui_context *ui);
+vb2_error_t diagnostics_pp_check_init(struct vb2_ui_context *ui);
+vb2_error_t diag_show_menu(struct vb2_ui_context *ui);
+vb2_error_t diagnostics_pp_check_action(struct vb2_ui_context *ui);
+vb2_error_t diagnostics_pp_check_onscreen_confirm_action(
+	struct vb2_ui_context *ui);
+vb2_error_t diag_init(struct vb2_ui_context *ui);
+vb2_error_t diag_enter_memory_selected(struct vb2_ui_context *ui);
+vb2_error_t diag_enter_storage_selected(struct vb2_ui_context *ui);
+
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui);
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui);
 vb2_error_t developer_to_norm_action(struct vb2_ui_context *ui);

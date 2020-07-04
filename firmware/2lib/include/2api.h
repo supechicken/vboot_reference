@@ -1210,7 +1210,7 @@ enum vb2_screen {
 	/* Advanced options */
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
-	VB2_SCREEN_LANGUAGE_SELECT		= 0x130,
+	VB2_SCREEN_LANGUAGE_SELECT		= 0x140,
 	/* First recovery screen to select recovering from disk or phone */
 	VB2_SCREEN_RECOVERY_SELECT		= 0x200,
 	/* Invalid recovery media inserted */
@@ -1232,6 +1232,12 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL	= 0x320,
 	/* Invalid external disk inserted */
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
+	/* Check for physical presence before entering diagnostic tools */
+	VB2_SCREEN_DIAGNOSTICS_PP_CHECK		= 0x400,
+	/* Diagnostic tools */
+	VB2_SCREEN_DIAGNOSTICS			= 0x410,
+	VB2_SCREEN_DIAGNOSTICS_MEMORY		= 0x420,
+	VB2_SCREEN_DIAGNOSTICS_STORAGE		= 0x430,
 };
 
 enum vb2_ui_error {

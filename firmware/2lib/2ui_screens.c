@@ -40,6 +40,24 @@
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
 }
 
+/* Action that will set VB2_NV_DIAG_REQUEST and reboot. */
+static vb2_error_t request_to_enter_diag_action(struct vb2_ui_context *ui)
+{
+	vb2_nv_set(ui->ctx, VB2_NV_DIAG_REQUEST, 1);
+	VB2_DEBUG("Diagnostic mode requested, rebooting\n");
+	vb2_error_t rv = vb2ex_commit_data(ui->ctx);
+	if (rv) {
+		// TODO : Show to the user with the diaglog
+		VB2_DEBUG("WARNING: fail to commit flag with return code %#x\n", rv);
+	}
+	return VB2_REQUEST_REBOOT;
+}
+
+#define DIAGNOSTICS_OPTIONS_ITEM { \
+	.text = "Diagnostics", \
+	.action = request_to_enter_diag_action, \
+}
+
 /* Action that will power off the device. */
 static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 {
@@ -49,6 +67,72 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 #define POWER_OFF_ITEM { \
 	.text = "Power off", \
 	.action = power_off_action, \
+}
+
+/******************************************************************************/
+/* Functions used for confirmation screens */
+
+/* Mask the confirm button if we are not with PHYSICAL_PRESENCE_KEYBOARD */
+static vb2_error_t mask_onscreen_confirm_button_for_pp_check(
+	struct vb2_ui_context *ui,
+	uint32_t confirm_available_index,
+	uint32_t confirm_invalid_index)
+{
+
+	ui->state->selected_item = confirm_available_index;
+	ui->physical_presence_button_pressed = 0;
+	if (!PHYSICAL_PRESENCE_KEYBOARD) {
+		if (vb2ex_physical_presence_pressed()) {
+			/* TODO: Show dialog */
+			VB2_DEBUG("Presence button stuck?\n");
+			return vb2_ui_screen_back(ui);
+		}
+		/* Physical presence is not covered by trusted keyboard. Could be
+		   recovery button, power button. Either approach, disable the
+		   "Confirm" index */
+		ui->state->disabled_item_mask |= 1 << confirm_available_index;
+		ui->state->selected_item = confirm_invalid_index;
+	}
+	return VB2_SUCCESS;
+}
+
+/* Validate the source that triggers "Confirm" button for physical presence */
+static vb2_error_t validate_onscreen_confirm_button_for_pp_check(
+		struct vb2_ui_context *ui) {
+	/* Sanity check, should never happen. */
+	if (!PHYSICAL_PRESENCE_KEYBOARD) {
+		VB2_DEBUG("ERROR: Confirm button should not be shown "
+		          "(no trusted keyboard)\n");
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+
+	if (!ui->key_trusted) {
+		VB2_DEBUG("Reject untrusted %s confirmation\n",
+			  ui->key == VB_KEY_ENTER ? "ENTER" : "POWER");
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+	return VB2_SUCCESS;
+}
+
+/* Monitor the assigned button has gone a complete cycle. */
+static vb2_error_t validate_assigned_button_for_pp_check(
+		struct vb2_ui_context *ui) {
+
+	/* Trusted keyboard enabled, validate_onscreen_confirm_button_for_pp_check()
+	   should be used instead. */
+	if (PHYSICAL_PRESENCE_KEYBOARD)
+		return VB2_REQUEST_UI_CONTINUE;
+
+	if (vb2ex_physical_presence_pressed()) {
+		VB2_DEBUG("Physical presence button pressed, "
+		          "awaiting release\n");
+		ui->physical_presence_button_pressed = 1;
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+	if (!ui->physical_presence_button_pressed)
+		return VB2_REQUEST_UI_CONTINUE;
+	VB2_DEBUG("Physical presence button released\n");
+	return VB2_SUCCESS;
 }
 
 /******************************************************************************/
@@ -141,6 +225,7 @@ static const struct vb2_screen_info language_select_screen = {
 
 static const struct vb2_menu_item recovery_broken_items[] = {
 	LANGUAGE_SELECT_ITEM,
+	DIAGNOSTICS_OPTIONS_ITEM,
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -215,6 +300,7 @@ static const struct vb2_menu_item recovery_select_items[] = {
 		.text = "Recovery using external disk",
 		.target = VB2_SCREEN_RECOVERY_DISK_STEP1,
 	},
+	DIAGNOSTICS_OPTIONS_ITEM,
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -254,22 +340,8 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	if (!PHYSICAL_PRESENCE_KEYBOARD && vb2ex_physical_presence_pressed()) {
-		VB2_DEBUG("Presence button stuck?\n");
-		return vb2_ui_screen_back(ui);
-	}
-
-	ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CONFIRM;
-
-	/* Disable "Confirm" button for other physical presence types. */
-	if (!PHYSICAL_PRESENCE_KEYBOARD) {
-		ui->state->disabled_item_mask |=
-			1 << RECOVERY_TO_DEV_ITEM_CONFIRM;
-		ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CANCEL;
-	}
-
-	ui->physical_presence_button_pressed = 0;
-
+	VB2_TRY(mask_onscreen_confirm_button_for_pp_check(
+		ui, RECOVERY_TO_DEV_ITEM_CONFIRM, RECOVERY_TO_DEV_ITEM_CANCEL));
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -292,37 +364,18 @@ static vb2_error_t recovery_to_dev_finalize(struct vb2_ui_context *ui)
 
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui)
 {
-	if (!ui->key_trusted) {
-		VB2_DEBUG("Reject untrusted %s confirmation\n",
-			  ui->key == VB_KEY_ENTER ? "ENTER" : "POWER");
-		return VB2_REQUEST_UI_CONTINUE;
-	}
+	VB2_TRY(validate_onscreen_confirm_button_for_pp_check(ui));
 	return recovery_to_dev_finalize(ui);
 }
 
 vb2_error_t recovery_to_dev_action(struct vb2_ui_context *ui)
 {
-	int pressed;
-
 	if (ui->key == ' ') {
 		VB2_DEBUG("SPACE means cancel dev mode transition\n");
 		return vb2_ui_screen_back(ui);
 	}
 
-	/* Keyboard physical presence case covered by "Confirm" action. */
-	if (PHYSICAL_PRESENCE_KEYBOARD)
-		return VB2_REQUEST_UI_CONTINUE;
-
-	pressed = vb2ex_physical_presence_pressed();
-	if (pressed) {
-		VB2_DEBUG("Physical presence button pressed, "
-			  "awaiting release\n");
-		ui->physical_presence_button_pressed = 1;
-		return VB2_REQUEST_UI_CONTINUE;
-	}
-	if (!ui->physical_presence_button_pressed)
-		return VB2_REQUEST_UI_CONTINUE;
-	VB2_DEBUG("Physical presence button released\n");
+	VB2_TRY(validate_assigned_button_for_pp_check(ui));
 
 	return recovery_to_dev_finalize(ui);
 }
@@ -346,6 +399,28 @@ static const struct vb2_screen_info recovery_to_dev_screen = {
 	.init = recovery_to_dev_init,
 	.action = recovery_to_dev_action,
 	.menu = MENU_ITEMS(recovery_to_dev_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTICS */
+
+static const struct vb2_menu_item diag_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Storage",
+		.target = VB2_SCREEN_DIAGNOSTICS_STORAGE,
+	},
+	{
+		.text = "Memory",
+		.target = VB2_SCREEN_DIAGNOSTICS_MEMORY,
+	},
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostics_screen = {
+	.id = VB2_SCREEN_DIAGNOSTICS,
+	.name = "Entry point for different diagnosis tasks",
+	.menu = MENU_ITEMS(diag_items),
 };
 
 /******************************************************************************/
@@ -424,6 +499,60 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 	.id = VB2_SCREEN_RECOVERY_DISK_STEP3,
 	.name = "Disk recovery step 3",
 	.menu = MENU_ITEMS(recovery_disk_step3_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTICS_PP_CHECK */
+
+#define DIAGNOSTICS_PP_CHECK_ITEM_CONFIRM 1
+#define DIAGNOSTICS_PP_CHECK_ITEM_POWER_OFF 2
+
+vb2_error_t diagnostics_pp_check_init(struct vb2_ui_context *ui)
+{
+	VB2_TRY(mask_onscreen_confirm_button_for_pp_check(
+		ui, DIAGNOSTICS_PP_CHECK_ITEM_CONFIRM,
+		DIAGNOSTICS_PP_CHECK_ITEM_POWER_OFF));
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+vb2_error_t diag_show_menu(struct vb2_ui_context *ui)
+{
+	/* TODO: add boolean for vb2_ui_screen_change to clean the stack */
+	vb2_ui_screen_change(ui, VB2_SCREEN_DIAGNOSTICS);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+/* This will be called for every xx ms */
+vb2_error_t diagnostics_pp_check_action(struct vb2_ui_context *ui)
+{
+	VB2_TRY(validate_assigned_button_for_pp_check(ui));
+	diag_show_menu(ui);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+vb2_error_t diagnostics_pp_check_onscreen_confirm_action(
+		struct vb2_ui_context *ui)
+{
+	VB2_TRY(validate_onscreen_confirm_button_for_pp_check(ui));
+	diag_show_menu(ui);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static const struct vb2_menu_item diagnostics_pp_check_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	[DIAGNOSTICS_PP_CHECK_ITEM_CONFIRM] = {
+		.text = "Confirm",
+		.action = diagnostics_pp_check_onscreen_confirm_action,
+	},
+	[DIAGNOSTICS_PP_CHECK_ITEM_POWER_OFF] = POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostics_pp_check_screen = {
+	.id = VB2_SCREEN_DIAGNOSTICS_PP_CHECK,
+	.name = "Physical presence check before entering Mini-Diag",
+	.init = diagnostics_pp_check_init,
+	.action = diagnostics_pp_check_action,
+	.menu = MENU_ITEMS(diagnostics_pp_check_items),
 };
 
 /******************************************************************************/
@@ -571,6 +700,7 @@ static const struct vb2_menu_item developer_mode_items[] = {
 		.text = "Boot from external disk",
 		.action = vb2_ui_developer_mode_boot_external_action,
 	},
+	DIAGNOSTICS_OPTIONS_ITEM,
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -665,6 +795,8 @@ static const struct vb2_screen_info *screens[] = {
 	&recovery_select_screen,
 	&recovery_invalid_screen,
 	&recovery_to_dev_screen,
+	&diagnostics_pp_check_screen,
+	&diagnostics_screen,
 	&recovery_phone_step1_screen,
 	&recovery_phone_step2_screen,
 	&recovery_disk_step1_screen,

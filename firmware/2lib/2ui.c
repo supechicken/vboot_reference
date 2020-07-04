@@ -461,3 +461,11 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
+
+/*****************************************************************************/
+/* Diagnostics */
+
+vb2_error_t vb2_diagnostics_menu(struct vb2_context *ctx)
+{
+	return ui_loop(ctx, VB2_SCREEN_DIAGNOSTICS_PP_CHECK, NULL);
+}
