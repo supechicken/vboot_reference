@@ -22,12 +22,22 @@ vb2_error_t broken_recovery_action(struct vb2_ui_context *ui);
 vb2_error_t manual_recovery_action(struct vb2_ui_context *ui);
 
 /* From 2ui_screens.c */
+/* Those are visible for unit tests */
 const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui);
 vb2_error_t advanced_options_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_select_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui);
 vb2_error_t recovery_to_dev_action(struct vb2_ui_context *ui);
+vb2_error_t diag_physical_presence_check_init(struct vb2_ui_context *ui);
+vb2_error_t diag_show_menu(struct vb2_ui_context *ui);
+vb2_error_t diag_physical_presence_check_action(struct vb2_ui_context *ui);
+vb2_error_t diag_physical_presence_check_onscreen_confirm_action(
+		struct vb2_ui_context *ui);
+vb2_error_t diag_init(struct vb2_ui_context *ui);
+vb2_error_t diag_enter_memory_selected(struct vb2_ui_context *ui);
+vb2_error_t diag_enter_storage_selected(struct vb2_ui_context *ui);
+
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui);
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui);
 vb2_error_t developer_to_norm_action(struct vb2_ui_context *ui);
