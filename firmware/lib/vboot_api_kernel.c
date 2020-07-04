@@ -243,13 +243,17 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
-		/*
-		 * Diagnostic boot. This has a UI but only power button
-		 * is used for input so no detachable-specific UI is
-		 * needed.  This mode is also 1-shot so it's placed
-		 * before developer mode.
-		 */
-		VB2_TRY(VbBootDiagnosticLegacyClamshell(ctx));
+		if (MENU_UI) {
+			VB2_TRY(vb2_diagnostics_menu(ctx));
+		} else {
+			/*
+			 * Diagnostic boot. This has a UI but only power button
+			 * is used for input so no detachable-specific UI is
+			 * needed.  This mode is also 1-shot so it's placed
+			 * before developer mode.
+			 */
+			VB2_TRY(VbBootDiagnosticLegacyClamshell(ctx));
+		}
 		/*
 		 * The diagnostic menu should either boot a rom, or
 		 * return either of reboot or shutdown.
