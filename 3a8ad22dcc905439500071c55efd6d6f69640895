@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e89601d6_6289417f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-06T17:38:02Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e Do -ffunction-sections and -fdata-sections need to be moved to LDFLAGS?\n\nThose would appear to be compiler flags, not linker flags:\nhttps://gcc.gnu.org/onlinedocs/gnat_ugn/Compilation-options.html\nhttps://clang.llvm.org/docs/ClangCommandLineReference.html\n\nBut I do apparently have something wrong (or, I\u0027m uncovering existing bugs), so V-1.",
+      "revId": "3a8ad22dcc905439500071c55efd6d6f69640895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
