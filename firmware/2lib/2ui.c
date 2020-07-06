@@ -80,8 +80,10 @@ vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 	 * If the only difference is the error message, then just
 	 * redraw the screen without the error string.
 	 */
-	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE)
+	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE) {
 		ui->error_code = VB2_UI_ERROR_NONE;
+		ui->key = 0;
+	}
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
