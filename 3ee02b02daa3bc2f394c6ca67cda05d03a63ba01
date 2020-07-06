@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "9524b5f0_ebe4b0db",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-06T19:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2243ecff_06a61343",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 408,
+        "endChar": 8
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "156e274e_d4d76f94",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 8
@@ -111,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "9ba47f1a_85b32b3b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-06T19:47:30Z",
+      "side": 1,
+      "message": "Done\n\nI am not sure if I should change the signature of info_str.\nFor debug info, currently we store it in vboot.\nFor firmware log, we call a cbmem snapshot in depthcharge. (the old Groot implementation)\n\nCurrently I store a pointer for general log in ui.log.str and store debug info in ui.debug_info_buf[1024]. Will it be better if we store the buf in depthcharge instead?",
+      "parentUuid": "8dff796c_63a35ab6",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 13
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c37c1978_78ef5d3a",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -122,6 +170,30 @@
       "writtenOn": "2020-07-02T07:12:56Z",
       "side": 1,
       "message": "1. Do you plan to use the same argument for the bios log?\n2. Does it contain the whole debug info string, or just part of it for the current page?",
+      "range": {
+        "startLine": 1261,
+        "startChar": 10,
+        "endLine": 1261,
+        "endChar": 18
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e80d12_9553c005",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-06T19:47:30Z",
+      "side": 1,
+      "message": "In current implementation, info_str is for current page.",
+      "parentUuid": "c37c1978_78ef5d3a",
       "range": {
         "startLine": 1261,
         "startChar": 10,
