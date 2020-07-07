@@ -111,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "fbc0adeb_85cebf5e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-07T09:48:32Z",
+      "side": 1,
+      "message": "I\u0027m a bit worrying the style of being too long. Like I use `pp` in bmpblk to replace `physical presence`. While on the fence to on the styling issue. What\u0027s do you think ?",
+      "parentUuid": "74e421b9_bebe1f8d",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eae9d03b_4384c5c4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -318,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "456c75ca_c54746ef",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-07T09:48:32Z",
+      "side": 1,
+      "message": "Does it come from a thought that VB2_SCREEN_DIAG_MENU will have potential sub-screen ?",
+      "parentUuid": "b4a3f786_0886973a",
+      "range": {
+        "startLine": 1238,
+        "startChar": 28,
+        "endLine": 1238,
+        "endChar": 33
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49a593d7_b095787c",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -364,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "943744de_4daaeb95",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-07T09:48:32Z",
+      "side": 1,
+      "message": "Gotcha. Let me add this to the comment.",
+      "parentUuid": "b4392f22_25291747",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313d3436_4a95180f",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -375,6 +447,30 @@
       "writtenOn": "2020-07-07T09:40:04Z",
       "side": 1,
       "message": "Looks like the spaces in these two comment blocks disappeared?",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 4
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3bcfe6_39fdce64",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-07T09:48:32Z",
+      "side": 1,
+      "message": "I will completely blame VS code 😊",
+      "parentUuid": "313d3436_4a95180f",
       "range": {
         "startLine": 250,
         "startChar": 3,
