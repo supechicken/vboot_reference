@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0912a0c1_ca6175e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "The general approach looks good so far.  Let\u0027s finalize the implementation first, and then move onto adding unit tests.  Also, since this feature is not yet complete, it would be great if we could mask it behind a USE flag.\n\nWould you mind posting a few screenshots, so that code reviewers can see what the screens look like so far?",
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d64e80_fd109ed6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Blank line after the comment.",
+      "range": {
+        "startLine": 466,
+        "startChar": 20,
+        "endLine": 466,
+        "endChar": 22
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394e6262_e7e302d0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Diagnostics",
+      "range": {
+        "startLine": 466,
+        "startChar": 3,
+        "endLine": 466,
+        "endChar": 19
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4079af_73f718ef",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "vb2_diagnostics_menu",
+      "range": {
+        "startLine": 467,
+        "startChar": 12,
+        "endLine": 467,
+        "endChar": 37
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e421b9_bebe1f8d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Also call all of these diagnostics_ and DIAGNOSTICS_ to match developer_ and recovery_.",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae9d03b_4384c5c4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "should",
+      "range": {
+        "startLine": 403,
+        "startChar": 50,
+        "endLine": 403,
+        "endChar": 56
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efce999_532c4237",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Need newline after the comment.",
+      "range": {
+        "startLine": 448,
+        "startChar": 25,
+        "endLine": 448,
+        "endChar": 26
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21949310_5c79f1b9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Not needed if we use `target` below.",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 1
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00f74d6_6264fe8c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Use `target` here instead?",
+      "range": {
+        "startLine": 477,
+        "startChar": 3,
+        "endLine": 477,
+        "endChar": 9
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82771f1_56479bf2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Memory",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca71cfb2_0a549424",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 9
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c271bab_6ea08a07",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Can we move this up below VB2_SCREEN_ADVANCED_OPTIONS as 0x130, and change LANGUAGE_SELECT to 0x140?\n\nHow about we call it VB2_SCREEN_TO_DIAG?",
+      "range": {
+        "startLine": 1236,
+        "startChar": 1,
+        "endLine": 1236,
+        "endChar": 40
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a3f786_0886973a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Let\u0027s use 0x340, 0x350, 0x360 here.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 28,
+        "endLine": 1238,
+        "endChar": 33
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e781ceaf_4e299745",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Since we spell out RECOVERY and DEVELOPER in full, can we use DIAGNOSTICS here?\n\nFor the first screen, how about DIAGNOSTICS_MODE to match DEVELOPER_MODE?",
+      "range": {
+        "startLine": 1238,
+        "startChar": 1,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a593d7_b095787c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Make sure we are consistent on the tab spacing here.",
+      "range": {
+        "startLine": 1240,
+        "startChar": 24,
+        "endLine": 1240,
+        "endChar": 29
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4392f22_25291747",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "This file is for functions that should otherwise be static, but need to be accessed by unit tests.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313d3436_4a95180f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T09:40:04Z",
+      "side": 1,
+      "message": "Looks like the spaces in these two comment blocks disappeared?",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 4
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
