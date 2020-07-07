@@ -133,7 +133,9 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	VB2_DEBUG("Updating %s...\n", image_name_to_string(select));
+	VB2_DEBUG("%d\n", __LINE__); vb2ex_msleep(1000);
 	VB2_TRY(vb2ex_ec_update_image(select), ctx, VB2_RECOVERY_EC_UPDATE);
+	VB2_DEBUG("%d\n", __LINE__); vb2ex_msleep(1000);
 
 	/* Verify the EC was updated properly */
 	sd->flags &= ~SYNC_FLAG(select);
@@ -143,6 +145,7 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 		vb2api_fail(ctx, VB2_RECOVERY_EC_UPDATE, 0);
 		return VB2_REQUEST_REBOOT_EC_TO_RO;
 	}
+	VB2_DEBUG("%d\n", __LINE__); vb2ex_msleep(1000);
 
 	VB2_DEBUG("Updated %s successfully\n", image_name_to_string(select));
 
