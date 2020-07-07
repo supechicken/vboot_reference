@@ -16,6 +16,23 @@
       "revId": "32aa0e857d0992e11da0d4ebf045a79c35661a45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1643f3f3_ba751e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-07T03:32:24Z",
+      "side": 1,
+      "message": "I\u0027m going to try (CQ+1) the parent CL without this one, because I think maybe gc-sections is causing this behavior in the UBSAN builders:\n\nvboot_reference-1.0-r1980: ld.lld: error: undefined symbol: __ubsan_handle_pointer_overflow_abort\nvboot_reference-1.0-r1980: \u003e\u003e\u003e referenced by cgpt.c:79 (cgpt/cgpt.c:79)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e               /build/amd64-generic/tmp/portage/chromeos-base/vboot_reference-1.0-r1980/work/vboot_reference-1.0/build-main/cgpt/cgpt.o:(main)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e referenced by cgpt.c:62 (cgpt/cgpt.c:62)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e               /build/amd64-generic/tmp/portage/chromeos-base/vboot_reference-1.0-r1980/work/vboot_reference-1.0/build-main/cgpt/cgpt.o:(main)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e referenced by cgpt.c:74 (cgpt/cgpt.c:74)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e               /build/amd64-generic/tmp/portage/chromeos-base/vboot_reference-1.0-r1980/work/vboot_reference-1.0/build-main/cgpt/cgpt.o:(main)\nvboot_reference-1.0-r1980: \u003e\u003e\u003e referenced 64 more times",
+      "revId": "32aa0e857d0992e11da0d4ebf045a79c35661a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
