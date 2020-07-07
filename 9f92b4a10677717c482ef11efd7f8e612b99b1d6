@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82006eca_7fadaeef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T08:38:35Z",
+      "side": 1,
+      "message": "Nit on the comment",
+      "revId": "9f92b4a10677717c482ef11efd7f8e612b99b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "246b3073_7ff947a3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-07T08:38:35Z",
+      "side": 1,
+      "message": "Maybe:\n\n  If an error message is currently shown on the screen, any key press\n  clears that error.  Unset the key so that it is not processed by other\n  action functions.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 56
+      },
+      "revId": "9f92b4a10677717c482ef11efd7f8e612b99b1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
