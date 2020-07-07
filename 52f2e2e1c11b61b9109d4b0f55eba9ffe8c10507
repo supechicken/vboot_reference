@@ -106,6 +106,202 @@
     },
     {
       "key": {
+        "uuid": "9da5261e_374f979e",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7c4079af_73f718ef",
+      "range": {
+        "startLine": 467,
+        "startChar": 12,
+        "endLine": 467,
+        "endChar": 37
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b30033_e022cdbb",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Joel, do we want to preserve the newline at the end of file?",
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c6e082_600810ba",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Are you sure you want to put it before \"Enable developer mode\"? You\u0027ll have to modify FAFT firmware_MenuModeTransition as well.",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 37
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a842aa_0b56cb7a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "We can remove this now.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f19843_e102af81",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "We don\u0027t use inline for other static functions. I don\u0027t know if we should use inline functions, but we should be at least consistent with ourselves.",
+      "range": {
+        "startLine": 267,
+        "startChar": 7,
+        "endLine": 267,
+        "endChar": 13
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c1734d_fb853657",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "One tab, and put each argument in its own line.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66516669_3cf3fb3f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "VB2_SCREEN_DIAG_PHYSICAL_PRESENCE_CHECK doesn\u0027t have a previous screen.",
+      "range": {
+        "startLine": 277,
+        "startChar": 10,
+        "endLine": 277,
+        "endChar": 28
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a582c5d3_65022027",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Print an error here.",
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d06d0ad9_cb26c90b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 314,
+        "startChar": 3,
+        "endLine": 314,
+        "endChar": 9
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74e421b9_bebe1f8d",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -153,6 +349,29 @@
     },
     {
       "key": {
+        "uuid": "fcab6afb_733288a9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Please define a constant for it.",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 402,
+        "endChar": 47
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eae9d03b_4384c5c4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -169,6 +388,75 @@
         "startChar": 50,
         "endLine": 403,
         "endChar": 56
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c925c1a_6eebb80c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "I\u0027m fine to do it in a follow-up CL.",
+      "range": {
+        "startLine": 409,
+        "startChar": 1,
+        "endLine": 409,
+        "endChar": 68
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2376ea8a_a1ee9df3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Can we simply call vb2_ui_screen_change() here?",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 15
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40bf7bb_132a55b4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "If this is mini-diag, will there be screens for non-mini-diag in the future?",
+      "range": {
+        "startLine": 441,
+        "startChar": 50,
+        "endLine": 441,
+        "endChar": 59
       },
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -193,6 +481,46 @@
         "endLine": 448,
         "endChar": 26
       },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631b3485_7fc45283",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "If only used once, we can remove it.",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 25
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec16c7d_d5a5146b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Do you plan to do it in this CL?",
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -448,6 +776,23 @@
         "endLine": 25,
         "endChar": 64
       },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04af08b8_8a67aff2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-07T10:36:24Z",
+      "side": 1,
+      "message": "Do we also need to return VB2_REQUEST_REBOOT here?",
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
