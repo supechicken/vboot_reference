@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7741ac4e_637ef9d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-07T16:15:00Z",
+      "side": 1,
+      "message": "something in here is still tripping up the ubsan builders...",
+      "revId": "5d629afd77eae5a4cdb02b08ce51dc85ba633f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91d22a52_77570fe4",
         "filename": "Makefile",
         "patchSetId": 3
@@ -22,6 +39,30 @@
       "revId": "5d629afd77eae5a4cdb02b08ce51dc85ba633f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1585733b_89d07dd8",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-07-07T16:15:00Z",
+      "side": 1,
+      "message": "Yes, and I noted it in the commit message. If there are additional libraries to link, they should be on all linker invocations. It\u0027s misleading to have a variable like this and not use it consistently.",
+      "parentUuid": "91d22a52_77570fe4",
+      "range": {
+        "startLine": 934,
+        "startChar": 43,
+        "endLine": 934,
+        "endChar": 53
+      },
+      "revId": "5d629afd77eae5a4cdb02b08ce51dc85ba633f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
