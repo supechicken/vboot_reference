@@ -349,6 +349,30 @@
     },
     {
       "key": {
+        "uuid": "7f9c03d6_4515cd29",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-08T04:27:11Z",
+      "side": 1,
+      "message": "I\u0027m all for consistency.  If we\u0027re using developer_ and recovery_ right now, then we should match that.  If we want to shorten those, then we should create another CL to do that, either before or after this one.",
+      "parentUuid": "fbc0adeb_85cebf5e",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcab6afb_733288a9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -700,6 +724,30 @@
       "side": 1,
       "message": "Does it come from a thought that VB2_SCREEN_DIAG_MENU will have potential sub-screen ?",
       "parentUuid": "b4a3f786_0886973a",
+      "range": {
+        "startLine": 1238,
+        "startChar": 28,
+        "endLine": 1238,
+        "endChar": 33
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2748d283_9ee8bd2c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-08T04:27:11Z",
+      "side": 1,
+      "message": "No, we\u0027re keeping all screens 0x10 apart, except for the \"STEP\" screens.",
+      "parentUuid": "456c75ca_c54746ef",
       "range": {
         "startLine": 1238,
         "startChar": 28,
