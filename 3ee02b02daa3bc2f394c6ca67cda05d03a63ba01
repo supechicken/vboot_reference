@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3375aea1_62233066",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ce7bc32_685be3f1",
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eacbc83f_ff5c0106",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 8
@@ -30,6 +48,30 @@
       "writtenOn": "2020-07-02T06:18:01Z",
       "side": 1,
       "message": "How about we make this function a bit safer by specifying string length as an argument?  We can also get rid of the uint8_to_string function and use snprintf with \"%02x\".\n\n  static int snprint_sha1_sum(char *dest, size_t dest_size,\n  \t\t\t      struct vb2_packed_key *key)\n  {\n  \tint32_t used \u003d 0;\n  \tfor (...)\n  \t\tDEBUG_INFO_APPEND(\"%02x\", sha[i]);\n  \treturn used;\n  }\n\n\nAnd then in vb2api_get_debug_info:\n\n  snprint_sha1_sum(sha1sum, sizeof(sha1sum), key);\n  DEBUG_INFO_APPEND(\"\\ngbb.rootkey: %s\", sha1sum);\n\nOr even:\n\n  DEBUG_INFO_APPEND(\"\\ngbb.rootkey: \");\n  used +\u003d snprint_sha1_sum(dest + used, dest_size - used, key);",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 70
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fabd9ef_57fe440a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "I\u0027d prefer the first suggestion here and re-arrange the order of arguments to make the signatures of the two functions more similar.",
+      "parentUuid": "eacbc83f_ff5c0106",
       "range": {
         "startLine": 386,
         "startChar": 0,
@@ -229,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "64e879be_98c0e451",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c81ccfd_f50ceee0",
+      "range": {
+        "startLine": 1313,
+        "startChar": 53,
+        "endLine": 1313,
+        "endChar": 54
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5b466b2_4e7e0ae7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -249,6 +315,30 @@
       "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb512e6_3e2f88f1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b466b2_4e7e0ae7",
+      "range": {
+        "startLine": 1320,
+        "startChar": 3,
+        "endLine": 1320,
+        "endChar": 52
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -275,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "2462ea67_0c081c8b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f050bef3_3bbcebc1",
+      "range": {
+        "startLine": 1322,
+        "startChar": 49,
+        "endLine": 1322,
+        "endChar": 51
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8661bfe8_d6b1beb2",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -295,6 +409,30 @@
       "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac3201b_1402ddf7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done\n\nWe have removed the returning newline in last depthcharge PS\n(Along with reverting the order of getting debug info)",
+      "parentUuid": "8661bfe8_d6b1beb2",
+      "range": {
+        "startLine": 1325,
+        "startChar": 3,
+        "endLine": 1325,
+        "endChar": 52
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

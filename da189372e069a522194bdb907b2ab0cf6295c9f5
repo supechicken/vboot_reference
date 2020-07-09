@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "79c97d67_e093fb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "I think the major structure of the codes is stabile enough since PS9.\nI\u0027d appreciate some reviews/feedback from the patch now.",
+      "parentUuid": "fddb0fe2_edea99a8",
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17684d5a_8390ace0",
         "filename": "firmware/2lib/2ui_logs.c",
         "patchSetId": 9
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "d6e1c437_1202ef32",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "Done\nThis could make a lot of things simpler.",
+      "parentUuid": "17684d5a_8390ace0",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8d9ffe_cb359512",
         "filename": "firmware/2lib/2ui_logs.c",
         "patchSetId": 9
@@ -96,6 +138,30 @@
       "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1922bcc6_a4a07a3a",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "1. What is the preferred error? Should we use 1 for success and 0 for failed instead?\n2. We need log-\u003einitialized for log_changed since we call it every time in ui_loop.",
+      "parentUuid": "2b8d9ffe_cb359512",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "44e1394d_814c9328",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "This was meant to be removed.\nJust some local test code.",
+      "parentUuid": "57339cd1_b96ffac9",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40903317_b7e077a8",
         "filename": "firmware/2lib/2ui_logs.c",
         "patchSetId": 9
@@ -159,6 +249,24 @@
       "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6b2c52_bd36e576",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "What about adding a flag for the need of redrawing?\n(Should we merging the two flags into bits?)",
+      "parentUuid": "40903317_b7e077a8",
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +321,30 @@
       "writtenOn": "2020-07-07T04:28:30Z",
       "side": 1,
       "message": "BIOS log will definitely exceed 256 lines. Can we use malloc for line_start?",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf7ca9b_9d372e4f",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-09T10:25:09Z",
+      "side": 1,
+      "message": "1. Would you like to share your suggestion about whether to use malloc or not in vboot_reference here? (or in depthcharge if there is any difference)\n\n2. I remembered that there were firmware log memory limit exceed problem in old Groot. What is the proper way to handle malloc error here?\n\nShould we just simply return malloc fail? Or can we keep some partial logs like the last 256 lines?\n\nLet me change the implementation to malloc here first.",
+      "parentUuid": "b11e8fe2_6aaa4470",
       "range": {
         "startLine": 69,
         "startChar": 26,
