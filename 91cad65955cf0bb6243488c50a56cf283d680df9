@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e674598_9e1b2422",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "When failing to committing nvdata, do we still want to reboot? Should we return REQUEST_SHUTDOWN instead, or UI_CONTINUE?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be2fe0e_ac044041",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Is \"DIAGNOSTIC_OPTIONS\" grammatically more correct?",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a368715d_b6539fe5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Put it in its own line.",
+      "range": {
+        "startLine": 272,
+        "startChar": 33,
+        "endLine": 272,
+        "endChar": 34
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7eadf9_678704c8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Add a space after \u0027n\u0027?",
+      "range": {
+        "startLine": 296,
+        "startChar": 53,
+        "endLine": 296,
+        "endChar": 54
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c7042d_423e859b",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "We already state that in the file comment.\n\n Private declarations for 2ui.c. Defined here for testing purposes.",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a29883_5edde7f0",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "one tab",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fd806b_2736d08f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Joel, why didn\u0027t we need to commit nvdata here?",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -219,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "d8ee749c_edcbc7dd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Chun-Ta, could you update your VS code setting to not trim newline at the end of file?",
+      "parentUuid": "b1b30033_e022cdbb",
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66c6e082_600810ba",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -310,6 +328,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36ec3068_20a4982c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Now we still need this.",
+      "parentUuid": "9b0845f2_1267ed13",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -451,6 +493,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bccb0192_fa90625f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5528d3f_a323435a",
+      "range": {
+        "startLine": 277,
+        "startChar": 10,
+        "endLine": 277,
+        "endChar": 28
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -654,6 +720,30 @@
     },
     {
       "key": {
+        "uuid": "54adfe0e_1499bb72",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "I mean\n\n #define DIAG_PHYSCIAL_PRESENCE_CHECK_ITEM_POWER_OFF 2\n\nand then in diag_physical_presence_check_items,\n\n [DIAG_PHYSCIAL_PRESENCE_CHECK_ITEM_POWER_OFF] \u003d POWER_OFF_ITEM,",
+      "parentUuid": "d0112f9f_eaa6c0bb",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 402,
+        "endChar": 47
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eae9d03b_4384c5c4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -783,6 +873,30 @@
       "side": 1,
       "message": "Two places will call this, I think we can use a function to make sure we change code in a centralized place. Drawback will be a stack occupation. Will that be something we need to worry ? (i.e. stack overflow)",
       "parentUuid": "2376ea8a_a1ee9df3",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 15
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ce5530_168fd64d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T07:53:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure what \"stack\" you\u0027re referring to here. Call stack or the history stack?\n\nThe disallow_back boolean field I proposed belongs to the vb2_screen_info struct, and it\u0027ll be checked only in vb2_ui_screen_back() (in order the clean the history stack). Therefore, \nI think there\u0027s no need to modify diag_show_menu() in the future?",
+      "parentUuid": "994382bc_6c3d6628",
       "range": {
         "startLine": 418,
         "startChar": 1,
