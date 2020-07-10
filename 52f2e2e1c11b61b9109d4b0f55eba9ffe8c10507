@@ -1556,6 +1556,30 @@
     },
     {
       "key": {
+        "uuid": "5ec6ea5e_899e3de6",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Note that the comment should apply to the entire file.  We already have something at the top to this effect.",
+      "parentUuid": "6ff7710f_48e537c9",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04af08b8_8a67aff2",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2

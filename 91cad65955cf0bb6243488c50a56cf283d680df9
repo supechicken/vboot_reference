@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "7c7ef9ac_6b019b76",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "I don\u0027t think we need the word OPTIONS here at all.  Unless you were planning to write that in the string shown to the user?",
+      "parentUuid": "0be2fe0e_ac044041",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0872de31_9af8ca65",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Can we move these three functions right above the VB2_SCREEN_BLANK section, with this above them:\n\n  /******************************************************************************/\n  /* Functions used for confirmation screens */",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 61
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a368715d_b6539fe5",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -87,6 +134,167 @@
         "startChar": 53,
         "endLine": 296,
         "endChar": 54
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d297a98_ed1ed933",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Move to after VB2_SCREEN_DEVELOPER_*.",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 1
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38ce754_9b5b585c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 403,
+        "startChar": 16,
+        "endLine": 403,
+        "endChar": 19
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52835e15_7d0e1ab4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "I think the simplest solution here might just be to call ui_loop twice in vb2_diagnostics_menu:\n\n  vb2_error_t vb2_diagnostics_menu(struct vb2_context *ctx)\n  {\n    VB2_TRY(ui_loop(ctx, VB2_SCREEN_DIAG_PHYSICAL_PRESENCE_CHECK, NULL));\n    return ui_loop(ctx, VB2_SCREEN_DIAG, NULL);\n  }\n\nThis function would simply return VB2_SUCCESS.",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 68
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d59497_346e58f8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Need a \"Back\" button for consistency.",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf36fc1_b432ba66",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Move to after developer_*.",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c41626a_807aa64a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood.  I thought the presence check occurs before rebooting.  Since it\u0027s afterwards, let\u0027s keep it with the diag screens below.  Actually, let\u0027s start at 0x400.  So:\n\n  PPCHECK 0x400\n  DIAG 0x410\n  MEMORY 0x420\n  STORAGE 0x430\n\nDoes that sound okay?",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 49
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed7254f_fb581a67",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "Still not sure what\u0027s going on with the spacing here... are you set up for 8-space tabs?",
+      "range": {
+        "startLine": 1238,
+        "startChar": 20,
+        "endLine": 1238,
+        "endChar": 21
       },
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -145,6 +353,24 @@
       "writtenOn": "2020-07-10T07:53:10Z",
       "side": 1,
       "message": "Joel, why didn\u0027t we need to commit nvdata here?",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc6c6c9_8e642cf8",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-10T09:11:35Z",
+      "side": 1,
+      "message": "depthcharge takes care of that on exit, as long as it\u0027s not an unexpected hard reboot.",
+      "parentUuid": "96fd806b_2736d08f",
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
