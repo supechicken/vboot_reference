@@ -16,6 +16,218 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240422eb_f033ee5f",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "Maybe \"2ui_log\"? Since we don\u0027t really have multiple logs in this file.",
+      "range": {
+        "startLine": 383,
+        "startChar": 15,
+        "endLine": 383,
+        "endChar": 23
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3caf616_3e7bb69c",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "(lines_per_page \u003d\u003d 1) should be *valid*, right?",
+      "range": {
+        "startLine": 23,
+        "startChar": 56,
+        "endLine": 23,
+        "endChar": 57
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d41b1e3_810f4f4e",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "What if page_size \u003d\u003d sizeof(log-\u003ebuf)?",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8be4e23_46744488",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "sizeof(ui-\u003edebug_info_buf)",
+      "range": {
+        "startLine": 196,
+        "startChar": 51,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a133ad_befeb97a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "Forgot to handle return value?",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 9
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18c6817_367d2ad0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "We need to hide \"Page up\" (down) button on the first (last) page.",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efc82f3_ddb77374",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "When we navigate from page 1 to page 2, I would expect the default selection to be \"Page down\" (assuming there\u0027re 3 pages).",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75840c6_e673a3ac",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "We may want to allow this to be called multiple times without memory leak. Currently there won\u0027t be consecutive calls without debug_info_back_action() interleaved. However, if we change our mind to call init() from vb2_ui_screen_back(), then we\u0027ll have a problem here.\n\nSee a previous discussion about whether to call screen-\u003einit() in vb2_ui_screen_back(): https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2214617/6/firmware/2lib/2ui.c#199.",
+      "range": {
+        "startLine": 244,
+        "startChar": 9,
+        "endLine": 244,
+        "endChar": 24
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acdf9207_acc1b202",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "\"info\" sounds quite general to me. Since we have a subheading \"View logs\" in depthcharge for Debug Info and BIOS Log screens, maybe \"log\" is appropriate.",
+      "range": {
+        "startLine": 1266,
+        "startChar": 10,
+        "endLine": 1266,
+        "endChar": 14
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca93bba_a8c2c90b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T04:37:44Z",
+      "side": 1,
+      "message": "length?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 15,
+        "endLine": 1335,
+        "endChar": 19
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
