@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "564565a4_a0174806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Let me try to propose consistency strategy here across three repo (vboot_reference / depthcharge / chromeos-bmpblk)\n* To align with full expansion starting like RECOVERY / DEVELOPER. `diag` are expanded to `diagnostics` except the bmpblk for its length limitation. Hence we will see `VB2_SCREEN_DIAGNOSTICS` and `btn_diag_options.bmp`\n* All _physical presence check_ are abbreviated to pp_check.\n",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563ff191_4b82afa2",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -36,6 +53,30 @@
       "writtenOn": "2020-07-10T07:53:10Z",
       "side": 1,
       "message": "When failing to committing nvdata, do we still want to reboot? Should we return REQUEST_SHUTDOWN instead, or UI_CONTINUE?",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4cdcbc_dd6b688b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "This behavior is inherited from Wilco.\nhttps://chromium.git.corp.google.com/chromiumos/platform/vboot_reference/+/3aab301473ec0b95f109a245efeadc20c3b7d57d/firmware/lib/vboot_ui_legacy_wilco.c#275\n\nI think the proper way is to hint the user (BTW, what\u0027s the dialog\u0027s issue # ?",
+      "parentUuid": "4e674598_9e1b2422",
       "range": {
         "startLine": 53,
         "startChar": 8,
@@ -95,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "ea0de85d_c81166fa",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "However, the screen after physical presence are _options_ like memory, storage ...",
+      "parentUuid": "7c7ef9ac_6b019b76",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0872de31_9af8ca65",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -115,6 +180,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0754db08_21900bda",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0872de31_9af8ca65",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 61
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "df3d7a3b_67731f25",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a368715d_b6539fe5",
+      "range": {
+        "startLine": 272,
+        "startChar": 33,
+        "endLine": 272,
+        "endChar": 34
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc7eadf9_678704c8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -161,6 +274,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a61f7e_0b826963",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc7eadf9_678704c8",
+      "range": {
+        "startLine": 296,
+        "startChar": 53,
+        "endLine": 296,
+        "endChar": 54
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "78c4900a_b76a1fc1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d297a98_ed1ed933",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 1
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f38ce754_9b5b585c",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -207,6 +368,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9a59ec_5afb450f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "SCI \u003d Sensitive Compartmented Information. Just joking. Thanks for picking up this typo !",
+      "parentUuid": "f38ce754_9b5b585c",
+      "range": {
+        "startLine": 403,
+        "startChar": 16,
+        "endLine": 403,
+        "endChar": 19
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "f6c5caee_ec240332",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Hmm, this menu should not have a `Back` item.",
+      "parentUuid": "71d59497_346e58f8",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cf36fc1_b432ba66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -267,6 +476,30 @@
       "writtenOn": "2020-07-10T09:11:35Z",
       "side": 1,
       "message": "Move to after developer_*.",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70ce315_58ccdba2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Hmm, it is opposite from Yu-Ping\u0027s review. What\u0027s the guideline here ?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2282664/3/src/vboot/ui/screens.c#782",
+      "parentUuid": "2cf36fc1_b432ba66",
       "range": {
         "startLine": 794,
         "startChar": 0,
@@ -325,6 +558,30 @@
     },
     {
       "key": {
+        "uuid": "b67e90d0_4161ef46",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Ah. Good catch. My tab is 4-space..",
+      "parentUuid": "1ed7254f_fb581a67",
+      "range": {
+        "startLine": 1238,
+        "startChar": 20,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49c7042d_423e859b",
         "filename": "firmware/2lib/include/2ui_private.h",
         "patchSetId": 3
@@ -362,6 +619,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc8ee85_fac739d9",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T13:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a29883_5edde7f0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
