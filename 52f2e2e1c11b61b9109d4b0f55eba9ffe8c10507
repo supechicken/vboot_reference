@@ -237,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "6c33265d_00ce54cd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ee749c_edcbc7dd",
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66c6e082_600810ba",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -308,6 +326,30 @@
     },
     {
       "key": {
+        "uuid": "11820b38_45a893f0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "I assume the comments here refers to the commit message title. Changed. Please let me know if that is not the only comment need to change in code. Thanks.",
+      "parentUuid": "70a1130a_4f0aa869",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 37
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94a842aa_0b56cb7a",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -376,6 +418,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f6d304_ddf7aa1d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ec3068_20a4982c",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 56
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -697,6 +763,30 @@
     },
     {
       "key": {
+        "uuid": "82aae1d4_2f0e0914",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Let me try to propose consistency strategy here across three repo (vboot_reference / depthcharge / chromeos-bmpblk)\n* To align with full expansion starting like RECOVERY / DEVELOPER. `diag` are expanded to `diagnostics` except the bmpblk for its length limitation. Hence we will see `VB2_SCREEN_DIAGNOSTICS` and `btn_diag_options.bmp`\n* All physical presence check are abbreviated to pp_check.\n\nFollowing the rule, diag_physical_presence_check_init() becomes diagnostics_pp_check_init()\n\nWhat do you think ?",
+      "parentUuid": "7f9c03d6_4515cd29",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcab6afb_733288a9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -765,6 +855,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b195ad69_5d3d8c6b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54adfe0e_1499bb72",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 402,
+        "endChar": 47
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -921,6 +1035,30 @@
       "side": 1,
       "message": "I\u0027m not sure what \"stack\" you\u0027re referring to here. Call stack or the history stack?\n\nThe disallow_back boolean field I proposed belongs to the vb2_screen_info struct, and it\u0027ll be checked only in vb2_ui_screen_back() (in order the clean the history stack). Therefore, \nI think there\u0027s no need to modify diag_show_menu() in the future?",
       "parentUuid": "994382bc_6c3d6628",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 15
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77f5d72_e57098f8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "If we s/diag_show_menu()/vb2_ui_screen_change(...) here, then we will have two vb2_ui_screenchange(...) having special boolean flag that will empty the history stack (per the offline proposal). Factoring it out to make sure we won\u0027t accidentally modify one place (for whatever reason that signature or arguments meaning of vb2_ui_screen_change(...) changed) but forget another.\n\nThe drawback is an additional function in the memory (call stack)\n  xx() -\u003e diag_show_menu() -\u003e vb2_ui_screen_change\n\nThat\u0027s why I\u0027m factoring out the direct call to vb2_ui_screen_change() to diag_show_menu.\n\nWhat do you think ?",
+      "parentUuid": "86ce5530_168fd64d",
       "range": {
         "startLine": 418,
         "startChar": 1,
@@ -1462,6 +1600,30 @@
     },
     {
       "key": {
+        "uuid": "2f134a1c_0d8a0798",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Let me try to propose consistency strategy here across three repo (vboot_reference / depthcharge / chromeos-bmpblk)\n\n* To align with full expansion starting like RECOVERY / DEVELOPER. `diag` are expanded to `diagnostics` except the bmpblk for its length limitation. Hence we will see `VB2_SCREEN_DIAGNOSTICS` and `btn_diag_options.bmp`\n* All physical presence check are abbreviated to pp_check.\n\nFollowing the rule, this changed from VB2_SCREEN/DIAG_MENU to VB2_SCREEN_DIAGNOSTICS . I\u0027m a bit hesitate to `MODE` because DEVLEOPER_MODE has impacts far beyond firmware (i.e in the whole ChromeOS image)",
+      "parentUuid": "e781ceaf_4e299745",
+      "range": {
+        "startLine": 1238,
+        "startChar": 1,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49a593d7_b095787c",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -1482,6 +1644,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dadc839a_19b5fbce",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Done after fixing VS configuration",
+      "parentUuid": "49a593d7_b095787c",
+      "range": {
+        "startLine": 1240,
+        "startChar": 24,
+        "endLine": 1240,
+        "endChar": 29
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1577,6 +1763,30 @@
       "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20bc816_6830bd55",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-10T22:26:53Z",
+      "side": 1,
+      "message": "Thanks for reminding. Removing this comment in later patches.",
+      "parentUuid": "5ec6ea5e_899e3de6",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
