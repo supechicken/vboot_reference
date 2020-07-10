@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c57c9f01_49ce0365",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T10:47:30Z",
+      "side": 1,
+      "message": "If only one of them is null, need to free the other.",
+      "revId": "30f9661b514921d1f261ff519a0033cd42ff5fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b7d5093_13d5b8f6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T10:47:30Z",
+      "side": 1,
+      "message": "Also show an error message.",
+      "revId": "30f9661b514921d1f261ff519a0033cd42ff5fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

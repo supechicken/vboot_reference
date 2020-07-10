@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d13100a9_6dd0a704",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T10:47:30Z",
+      "side": 1,
+      "message": "\u003e Since CHARS_PER_LINE * LINES_PER_PAGE \u003d 87 * 11 \u003c LOG_BUF_SIZE, we will not encounter page_size \u003e buf_size while the textbox size is fixed\n\nThe constants CHARS_PER_LINE and LINES_PER_PAGE are defined in another repo (depthcharge), so I don\u0027t think it\u0027s good to assume the *fact* in vboot. How about\n\n log-\u003ebuf[MIN(page_size, sizeof(log-\u003ebuf)) - 1] \u003d \u0027\\0\u0027;",
+      "parentUuid": "4ff9a39c_dd263aa2",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8be4e23_46744488",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -168,6 +186,30 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "916927cc_0718b239",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T10:47:30Z",
+      "side": 1,
+      "message": "Forgot to change it?",
+      "parentUuid": "a1373841_018bab0b",
+      "range": {
+        "startLine": 196,
+        "startChar": 51,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -357,6 +399,30 @@
       "side": 1,
       "message": "We use size and size_t here for debug info.\nShould we change to length and int32_t for the consistency?",
       "parentUuid": "9ca93bba_a8c2c90b",
+      "range": {
+        "startLine": 1335,
+        "startChar": 15,
+        "endLine": 1335,
+        "endChar": 19
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12749917_fa4b54bc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-10T10:47:30Z",
+      "side": 1,
+      "message": "No, size_t is better, but that doesn\u0027t mean we should write \"size\" in the comment. strlen() also returns size_t, but it isn\u0027t named as strsize().",
+      "parentUuid": "639bb502_278110fb",
       "range": {
         "startLine": 1335,
         "startChar": 15,
