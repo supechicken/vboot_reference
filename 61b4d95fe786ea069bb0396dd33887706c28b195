@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "13e81a10_da3c2b88",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "This paired with /* TODO: Repeat the last line in previous page. */.\nI am fine to remove both.",
+      "parentUuid": "d3caf616_3e7bb69c",
+      "range": {
+        "startLine": 23,
+        "startChar": 56,
+        "endLine": 23,
+        "endChar": 57
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d41b1e3_810f4f4e",
         "filename": "firmware/2lib/2ui_logs.c",
         "patchSetId": 10
@@ -76,6 +100,24 @@
       "writtenOn": "2020-07-10T04:37:44Z",
       "side": 1,
       "message": "What if page_size \u003d\u003d sizeof(log-\u003ebuf)?",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff9a39c_dd263aa2",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "I think we should handle this in pagination (init) to ensure page_size \u003c sizeof(log-\u003ebuf) - 1.\nBut let\u0027s truncate strings first and set log-\u003ebuf[size - 1] \u003d \u0027\\0\u0027 first here, what\u0027s your opinion?\n\n(Since CHARS_PER_LINE * LINES_PER_PAGE \u003d 87 * 11 \u003c LOG_BUF_SIZE, we will not encounter page_size \u003e buf_size while the textbox size is fixed)",
+      "parentUuid": "5d41b1e3_810f4f4e",
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "a1373841_018bab0b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8be4e23_46744488",
+      "range": {
+        "startLine": 196,
+        "startChar": 51,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56a133ad_befeb97a",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -125,6 +191,30 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9ba138_d8bb5349",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "Done\n\nYes, we should call back_action here.",
+      "parentUuid": "56a133ad_befeb97a",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 9
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +298,30 @@
     },
     {
       "key": {
+        "uuid": "943ff24f_83f569b9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdf9207_acc1b202",
+      "range": {
+        "startLine": 1266,
+        "startChar": 10,
+        "endLine": 1266,
+        "endChar": 14
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ca93bba_a8c2c90b",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -219,6 +333,30 @@
       "writtenOn": "2020-07-10T04:37:44Z",
       "side": 1,
       "message": "length?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 15,
+        "endLine": 1335,
+        "endChar": 19
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639bb502_278110fb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-10T10:36:24Z",
+      "side": 1,
+      "message": "We use size and size_t here for debug info.\nShould we change to length and int32_t for the consistency?",
+      "parentUuid": "9ca93bba_a8c2c90b",
       "range": {
         "startLine": 1335,
         "startChar": 15,
