@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "87342587_1c50cf9a",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-13T06:43:43Z",
+      "side": 1,
+      "message": "\u003e The constants CHARS_PER_LINE and LINES_PER_PAGE are defined in another repo\n\u003e (depthcharge), so I don\u0027t think it\u0027s good to assume the *fact* in vboot. \n\nIs it more reasonable to allocate log-\u003ebuf with malloc?\n\n\u003e log-\u003ebuf[MIN(page_size, sizeof(log-\u003ebuf)) - 1] \u003d \u0027\\0\u0027;\n\nI think this was already handled in PS11 at:\n if (page_size \u003e buf_size - 1) page_size \u003d buf_size - 1;",
+      "parentUuid": "d13100a9_6dd0a704",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8be4e23_46744488",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -210,6 +228,30 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22014315_07467ee8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-13T06:43:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916927cc_0718b239",
+      "range": {
+        "startLine": 196,
+        "startChar": 51,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -432,6 +474,30 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7069417f_a829f779",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-13T06:43:43Z",
+      "side": 1,
+      "message": "Done\nI also change the description for dest_size from `The size of destination.` to `Maximum number of characters to store in destination.`",
+      "parentUuid": "12749917_fa4b54bc",
+      "range": {
+        "startLine": 1335,
+        "startChar": 15,
+        "endLine": 1335,
+        "endChar": 19
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

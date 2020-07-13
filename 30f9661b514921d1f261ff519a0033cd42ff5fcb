@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "006bfbb0_410c914a",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-13T06:43:43Z",
+      "side": 1,
+      "message": "You are right.\nI think we should better check them one by one.",
+      "parentUuid": "c57c9f01_49ce0365",
+      "revId": "30f9661b514921d1f261ff519a0033cd42ff5fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b7d5093_13d5b8f6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "30f9661b514921d1f261ff519a0033cd42ff5fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68cb9f4_6ce56deb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-13T06:43:43Z",
+      "side": 1,
+      "message": "What about VB2_UI_ERROR_LOG_INIT_FAILED?\nWe can share the same error_code between debug info and firmware log.",
+      "parentUuid": "9b7d5093_13d5b8f6",
+      "revId": "30f9661b514921d1f261ff519a0033cd42ff5fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
