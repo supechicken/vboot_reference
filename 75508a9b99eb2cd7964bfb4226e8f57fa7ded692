@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b538cc8_67c7d6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "@itspeter: Note that we\u0027ll need a FAFT configuration option for choosing whether or not diagnostics is enabled.",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c8344a3_ac6ff509",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 6
@@ -19,6 +36,93 @@
     },
     {
       "key": {
+        "uuid": "da18bec2_e02fd760",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Yup.  You can add an assert(DIAGNOSTIC_UI) in there for safety.",
+      "parentUuid": "2c8344a3_ac6ff509",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae281347_3c20a1a6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "How about \"reboot_to_diag_action\"?",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486613fa_911b6123",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Not sure what is the point of rebooting here if we failed to commit the NV request.  How about showing a dialog box like you have listed in the TODO here?",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a802e2c9_15ff8f1d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Please adhere to the style used for other _ITEMs",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df284133_e934bcd7",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 6
@@ -30,6 +134,64 @@
       "writtenOn": "2020-07-13T02:17:31Z",
       "side": 1,
       "message": "Can disable this by disabled_item_mask?",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04d258b_8b515a83",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Hmm the current solution might be slightly less awkward, since we won\u0027t have to mark disabled_item_mask within each init() function...  But again, makes unit testing more difficult.  Not sure what to do here.",
+      "parentUuid": "df284133_e934bcd7",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ddfec3_ff132fec",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Empty line here.",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7fc8352_553f2443",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "No need for this comment -- we have plenty of functions in here which are also called every xx ms.",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 41
+      },
       "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

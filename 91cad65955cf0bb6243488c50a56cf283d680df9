@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "4604b182_e1a093da",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "I\u0027d say options are usually more like settings that you can change... whereas here we have different diagnostic functionalities available under a menu.  If the string we are using is simply \"Diagnostics\", then I\u0027d recommend following suit with DIAGNOSTICS_ITEM.",
+      "parentUuid": "ea0de85d_c81166fa",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0872de31_9af8ca65",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -437,6 +461,30 @@
     },
     {
       "key": {
+        "uuid": "a0935821_49bbe812",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Ha!  No problem.",
+      "parentUuid": "6b9a59ec_5afb450f",
+      "range": {
+        "startLine": 403,
+        "startChar": 16,
+        "endLine": 403,
+        "endChar": 19
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52835e15_7d0e1ab4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -448,6 +496,30 @@
       "writtenOn": "2020-07-10T09:11:35Z",
       "side": 1,
       "message": "I think the simplest solution here might just be to call ui_loop twice in vb2_diagnostics_menu:\n\n  vb2_error_t vb2_diagnostics_menu(struct vb2_context *ctx)\n  {\n    VB2_TRY(ui_loop(ctx, VB2_SCREEN_DIAG_PHYSICAL_PRESENCE_CHECK, NULL));\n    return ui_loop(ctx, VB2_SCREEN_DIAG, NULL);\n  }\n\nThis function would simply return VB2_SUCCESS.",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 68
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e5384f_b6377daf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Friendly ping?",
+      "parentUuid": "52835e15_7d0e1ab4",
       "range": {
         "startLine": 416,
         "startChar": 1,
@@ -555,6 +627,30 @@
     },
     {
       "key": {
+        "uuid": "91f76321_941eaaf3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Oh.  Thanks for the clarification!",
+      "parentUuid": "03b2bb2b_5385eb41",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cf36fc1_b432ba66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -614,6 +710,30 @@
       "side": 1,
       "message": "My point is all about consistency. Please do what Joel suggested in all repos.",
       "parentUuid": "a70ce315_58ccdba2",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738f47c9_8e7d3a47",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-13T11:07:27Z",
+      "side": 1,
+      "message": "Yes, please follow the order of the enum definition for both vboot_reference and depthcharge.  (I think there are a few unrelated inconsistencies in between vboot_reference and depthcharge here, but that\u0027s something we need to clean up.)",
+      "parentUuid": "c365f086_a51cef87",
       "range": {
         "startLine": 794,
         "startChar": 0,
