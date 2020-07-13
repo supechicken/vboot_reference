@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c8344a3_ac6ff509",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:17:31Z",
+      "side": 1,
+      "message": "The conditional compilation makes unit testing more difficult. I\u0027d suggest removing it and always define this function.",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df284133_e934bcd7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:17:31Z",
+      "side": 1,
+      "message": "Can disable this by disabled_item_mask?",
+      "revId": "75508a9b99eb2cd7964bfb4226e8f57fa7ded692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
