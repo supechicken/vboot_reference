@@ -531,6 +531,30 @@
     },
     {
       "key": {
+        "uuid": "03b2bb2b_5385eb41",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T08:24:45Z",
+      "side": 1,
+      "message": "Discussed with Chun-ta offline. This screen is the first screen after rebooting, so no need to have a \"Back\" button.",
+      "parentUuid": "9480596e_18a4a22c",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cf36fc1_b432ba66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
