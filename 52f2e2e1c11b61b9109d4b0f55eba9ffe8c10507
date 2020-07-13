@@ -1071,6 +1071,30 @@
     },
     {
       "key": {
+        "uuid": "e39eec40_8e45f086",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:11:01Z",
+      "side": 1,
+      "message": "The call stack is not my concern.\n\n\u003e we will have two vb2_ui_screenchange(...) having special boolean flag that will empty the history stack\n\nThere\u0027s must be some misunderstanding. What I suggested is\n\n vb2_error_t vb2_ui_screen_change()\n {\n      new_screen_info \u003d vb2_get_screen_info(id);\n      if (new_screen_info-\u003edisallow_back)\n          clear_the_stack();\n }\n\nSo these two *special* calls to vb2_ui_screen_change() will be exactly the same as others. No extra flag is passed.",
+      "parentUuid": "e77f5d72_e57098f8",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 15
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b40bf7bb_132a55b4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2db59d3e_a89d069b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:11:01Z",
+      "side": 1,
+      "message": "I\u0027m fine with that.",
+      "parentUuid": "564565a4_a0174806",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563ff191_4b82afa2",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -77,6 +95,30 @@
       "side": 1,
       "message": "This behavior is inherited from Wilco.\nhttps://chromium.git.corp.google.com/chromiumos/platform/vboot_reference/+/3aab301473ec0b95f109a245efeadc20c3b7d57d/firmware/lib/vboot_ui_legacy_wilco.c#275\n\nI think the proper way is to hint the user (BTW, what\u0027s the dialog\u0027s issue # ?",
       "parentUuid": "4e674598_9e1b2422",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ead740ca_0e0ec516",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:11:01Z",
+      "side": 1,
+      "message": "Yes, I agree to notify the user, but we still have to decide a value to return. Since we\u0027re checking new code in, we can take the chance to review the logic of existing code. When committing nvdata fails, I think displaying an error and then returning UI_CONTINUE might be a reasonable option.\n\nb/144969091: Display error messages",
+      "parentUuid": "7d4cdcbc_dd6b688b",
       "range": {
         "startLine": 53,
         "startChar": 8,
@@ -465,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "9480596e_18a4a22c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:11:01Z",
+      "side": 1,
+      "message": "Why not?",
+      "parentUuid": "f6c5caee_ec240332",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 3
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cf36fc1_b432ba66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -500,6 +566,30 @@
       "side": 1,
       "message": "Hmm, it is opposite from Yu-Ping\u0027s review. What\u0027s the guideline here ?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/2282664/3/src/vboot/ui/screens.c#782",
       "parentUuid": "2cf36fc1_b432ba66",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c365f086_a51cef87",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-13T02:11:01Z",
+      "side": 1,
+      "message": "My point is all about consistency. Please do what Joel suggested in all repos.",
+      "parentUuid": "a70ce315_58ccdba2",
       "range": {
         "startLine": 794,
         "startChar": 0,
