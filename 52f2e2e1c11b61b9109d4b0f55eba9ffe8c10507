@@ -1119,6 +1119,30 @@
     },
     {
       "key": {
+        "uuid": "ea1ac8d1_87681a3f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-14T08:00:38Z",
+      "side": 1,
+      "message": "Hey Yu-Ping, what do you think about the solution I mentioned in another comment thread?  That is, just calling ui_loop twice in vb2_diagnostics_menu:\n\n  vb2_error_t vb2_diagnostics_menu(struct vb2_context *ctx)\n  {\n    VB2_TRY(ui_loop(ctx, VB2_SCREEN_DIAG_PHYSICAL_PRESENCE_CHECK, NULL));\n    return ui_loop(ctx, VB2_SCREEN_DIAG, NULL);\n  }",
+      "parentUuid": "67f9f143_eb98452a",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 418,
+        "endChar": 15
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b40bf7bb_132a55b4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
