@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "d8f519b4_0c10860e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "If we have dialog to let user know why no-ops, then I think UI_CONTUNUE is more suitable.",
+      "parentUuid": "ead740ca_0e0ec516",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0be2fe0e_ac044041",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -223,6 +247,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d6b7b93_97103ebe",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4604b182_e1a093da",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -532,6 +580,30 @@
     },
     {
       "key": {
+        "uuid": "6d943779_9c9300eb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Sorry was too into the discussion with Yu-Ping on similar topic at Patchset 2.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2282867/2/firmware/2lib/2ui_screens.c#418\n\nCan you re-open if the proposal there doesn\u0027t look good to you ?",
+      "parentUuid": "91e5384f_b6377daf",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 68
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71d59497_346e58f8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -746,6 +818,54 @@
     },
     {
       "key": {
+        "uuid": "1b71d92e_4357394a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "738f47c9_8e7d3a47",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9437977_bd4d37dd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "738f47c9_8e7d3a47",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 14
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c41626a_807aa64a",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -766,6 +886,30 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c311e742_073e04f3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Hmm..Strange. Replied Resolved previously.",
+      "parentUuid": "6c41626a_807aa64a",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 49
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -830,6 +974,24 @@
       "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48946a9a_362a8018",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-14T05:58:00Z",
+      "side": 1,
+      "message": "Strange..I remember I marked Resolved. It is removed in the following patchset.",
+      "parentUuid": "49c7042d_423e859b",
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
