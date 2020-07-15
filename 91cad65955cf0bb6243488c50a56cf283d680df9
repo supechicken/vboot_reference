@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "22fb9b08_09a2b23b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Yes, we don\u0027t need to call vb2ex_commit_data at all, since depthcharge will take care of that.  And in fact, vb2ex_commit_data will never indicate failure to write nvdata anyways.  On failure to write, depthcharge:\n\n  * if not in recovery mode, calls die() [since it\u0027s impossible to enter recovery mode anyways]\n  * if in recovery mode, returns VB2_SUCCESS [in recovery mode, try to keep going regardless of errors]\n\nThe most \"careful\" thing we could do here is modify vb2ex_commit_data to provide a failure value *when in recovery mode*.  But the system is already in pretty borked state at this point anyways, and we don\u0027t bother handling this case for other types of nvdata write failures (erring on the side of allowing vboot to continue running recovery as long as possible to increase the chances of recovery success).\n\nSo the right thing to do here is to just set VB2_NV_DIAG_REQUEST and then return VB2_REQUEST_REBOOT.  No need for error checking or reporting.",
+      "parentUuid": "ed017bc9_cd7c1a99",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "91cad65955cf0bb6243488c50a56cf283d680df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e674598_9e1b2422",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3

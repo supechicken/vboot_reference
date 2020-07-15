@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb518a0_5c31d9b1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Get rid of this as described below.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91cebc61_47c5e967",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Yeah, I think I\u0027d prefer to go the route that Yu-Ping suggested.  Let\u0027s get rid of the assert(), unconditionally add DIAGNOSTICS_ITEM to the two screens, and modify their init() functions to hide the menu item if DIAGNOSTIC_UI is defined.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53d183a_5d4592db",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Extra comma.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7964df54_03581bbe",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Does this not fit on the previous line?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d3c4618_3de96816",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Fix comment formatting:\n\n  /*\n   * long-form\n   * comment\n   */\n\nor:\n\n  /* short form\n     comment */",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd6dc25_4920054b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Fix comment formatting.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf835bd7_80b3b029",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "I don\u0027t think putting this on the BROKEN screen is a good idea... unless this is a \"transient\" error, it\u0027s highly likely that we\u0027ll just end up back at the BROKEN screen upon rebooting.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 17
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06a6d96_ab40d5a2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Missing comma.",
+      "range": {
+        "startLine": 311,
+        "startChar": 16,
+        "endLine": 311,
+        "endChar": 17
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139c2d4c_aeae8f7d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "This is pretty confusing since its aligns with VB2_TRY(.  How about aligning with confirm_screen_init( instead and splitting onto three lines?",
+      "range": {
+        "startLine": 352,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 2
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671b6dc3_e97cdb3d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Move to after developer stuff to match order of enum.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 28
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb20968_f7a1b57c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "If these screens don\u0027t exist yet, don\u0027t bother listing as a target.  Since the USE flag hasn\u0027t been enabled yet, you can just leave without a .target or .action.",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 43
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82f3651_4a79c901",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Missing comma.",
+      "range": {
+        "startLine": 701,
+        "startChar": 16,
+        "endLine": 701,
+        "endChar": 17
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aaba15c_78f98476",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "How about just _CONFIRM?",
+      "range": {
+        "startLine": 1236,
+        "startChar": 24,
+        "endLine": 1236,
+        "endChar": 32
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aac3613_0e28e670",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Just remove these two since they aren\u0027t being implemented yet.",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 41
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78066b3a_83552338",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "UI for diagnostic tools boot.",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046ecdfa_78d029d6",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "After confirming physical presence, enter the diagnostic tools menu.",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 61
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976240b2_d7831ad6",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Do these still exist somewhere?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

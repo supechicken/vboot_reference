@@ -102,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "b366a5ce_099d6945",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "It\u0027s still not right... just one space is sufficient.",
+      "parentUuid": "550ce37c_02a116d8",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e100180_020a20b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -337,6 +361,30 @@
     },
     {
       "key": {
+        "uuid": "6dc10387_6273c235",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Well... this is the reason I wanted to just use plain English strings for dialog boxes, rather than spread the code across multiple repositories and introduce dependencies on translated strings.\n\nBut anyways, I think this is a non-issue since we don\u0027t even need error-reporting here.  See the other comment thread.",
+      "parentUuid": "28f524a8_c02534dc",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ff4a9f7_f5954792",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -475,6 +523,30 @@
       "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1e5fa3_f8667873",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T14:37:23Z",
+      "side": 1,
+      "message": "Hmm, on second thought, maybe we can just leave it.  I think we can just assume that Groot is functioning properly and would only call this function in the case of a menu selection.",
+      "parentUuid": "196aa5ae_18d156d5",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
