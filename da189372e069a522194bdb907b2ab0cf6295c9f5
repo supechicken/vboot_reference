@@ -317,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "6ab533e6_380392dd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a52d13_cc532712",
+      "range": {
+        "startLine": 196,
+        "startChar": 51,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af31563c_4f6a18ad",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 9
@@ -331,6 +355,24 @@
       "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6d1d5f_4a9f392a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done\nCurrently we will free only if re-init a new log info",
+      "parentUuid": "af31563c_4f6a18ad",
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -378,6 +420,30 @@
       "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7859720a_64827df2",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caf7ca9b_9d372e4f",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "da189372e069a522194bdb907b2ab0cf6295c9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

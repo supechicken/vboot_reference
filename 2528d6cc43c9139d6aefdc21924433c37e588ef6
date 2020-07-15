@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82c69ae8_85a93f76",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done\n(Move to depthcharge)\nI think there is a equivalent macro \u0027MIN\u0027 in depthcharge",
+      "parentUuid": "4df774b1_dc8a1663",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "2528d6cc43c9139d6aefdc21924433c37e588ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2d1fc74_c7b2c12f",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "2528d6cc43c9139d6aefdc21924433c37e588ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f44a15_1b1d2189",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "dest_size should contain \u0027\\0\u0027,\nso let\u0027s use the original description.",
+      "parentUuid": "f2d1fc74_c7b2c12f",
+      "range": {
+        "startLine": 1393,
+        "startChar": 10,
+        "endLine": 1393,
+        "endChar": 19
+      },
+      "revId": "2528d6cc43c9139d6aefdc21924433c37e588ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

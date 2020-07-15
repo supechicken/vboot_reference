@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "3fd78667_bfeb7ada",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fabd9ef_57fe440a",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 70
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2243ecff_06a61343",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 8
@@ -154,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "4128281f_e83b1e0b",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "156e274e_d4d76f94",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 2
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dff796c_63a35ab6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -201,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "50cf687d_365394d2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "outdated",
+      "parentUuid": "9ba47f1a_85b32b3b",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 13
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c37c1978_78ef5d3a",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -245,6 +317,30 @@
       "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5770ad_8367ea90",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-15T06:08:34Z",
+      "side": 1,
+      "message": "outdated\ncurrently we pass only the page number",
+      "parentUuid": "66e80d12_9553c005",
+      "range": {
+        "startLine": 1261,
+        "startChar": 10,
+        "endLine": 1261,
+        "endChar": 18
+      },
+      "revId": "3ee02b02daa3bc2f394c6ca67cda05d03a63ba01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
