@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa5be404_d2151834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "Do you mean the firmware log screen?",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72ac234f_711e6c72",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -16,6 +39,190 @@
       "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74034f1f_089a58b6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "Bug number?",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ac7ebd_8ecfbe1c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "Can we just let depthcharge own this string?  So this function would return a char pointer.\n\nIf the function is called multiple times, just return the same (cached?) string.",
+      "range": {
+        "startLine": 196,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 34
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561195ad_ba239ada",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "How about handling enabling and disabling the page up/down buttons?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34660cc5_8d94f28e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "a log screen",
+      "range": {
+        "startLine": 1323,
+        "startChar": 43,
+        "endLine": 1323,
+        "endChar": 57
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f862b91_51210d78",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "doesn\u0027t show logs,",
+      "range": {
+        "startLine": 1324,
+        "startChar": 13,
+        "endLine": 1324,
+        "endChar": 52
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4220253_7c16bf4a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "For clarity, how about we call this \"cur_page\"?",
+      "range": {
+        "startLine": 1334,
+        "startChar": 12,
+        "endLine": 1334,
+        "endChar": 16
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165fa88e_6fa66fe5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "I think it might be simpler if we just returned a malloc() string with this function... otherwise the caller has to know too much about the size required in order to fit everything in the provided buffer.  What do you think?",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1397,
+        "endChar": 38
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aebb9ce_9080307f",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-15T07:13:17Z",
+      "side": 1,
+      "message": "Can we store these in screen_state?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
