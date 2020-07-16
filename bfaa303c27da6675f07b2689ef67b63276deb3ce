@@ -34,6 +34,47 @@
       "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5fbaddc_e50b6f93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-16T06:32:20Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a valid concern.  It\u0027d be nice if we could incorporate the developer_mode_action() vb2ex_beep() calls into this model as well, but given that developer_mode_action() just wants to \"make some beep noises\" and isn\u0027t actually caused by any particular error, it seems pretty awkward to use VB2_UI_ERROR_BEEP_ONLY for this case.\n\nI wonder if it\u0027d make sense to split this toggle into two switches instead of just one?  So ui.error_code gets set when we want to show a dialog box, and ui.beep gets set when we want to beep.",
+      "parentUuid": "129f2d07_0596f5cd",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7459502f_0bbe51ef",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-16T06:32:20Z",
+      "side": 1,
+      "message": "How about just unsetting the error here if it is equal to VB2_UI_ERROR_BEEP_ONLY?",
+      "range": {
+        "startLine": 336,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 25
+      },
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
