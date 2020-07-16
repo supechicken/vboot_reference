@@ -16,6 +16,24 @@
       "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "129f2d07_0596f5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-16T06:01:45Z",
+      "side": 1,
+      "message": "From a previous discussion [1], the conclusion is to call vb2ex_beep(), right *after* calling vb2ex_display_ui() in ui_loop, for errors that will be drawn in depthcharge. For beep-only errors, if we directly call vb2ex_beep(), then we have to make sure that error_code will not be set in the same iteration in ui_loop. Otherwise, vb2ex_beep() will be called again in the next iteration, right after vb2ex_display_ui().\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2243196/1/firmware/2lib/2ui_screens.c#59",
+      "parentUuid": "12d31a49_1c201f9b",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
