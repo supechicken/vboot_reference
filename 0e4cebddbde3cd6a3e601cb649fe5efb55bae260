@@ -126,6 +126,30 @@
     },
     {
       "key": {
+        "uuid": "571411d9_8baaddfa",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-16T15:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b366a5ce_099d6945",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e100180_020a20b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
@@ -255,6 +279,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8dd4ae70_fa10c9bb",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89a54fcf_63f828f5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-16T15:30:40Z",
+      "side": 1,
+      "message": "Following the naming convention, and the comment from bmpblk [1] \n\nI\u0027m also replacing the \n\ndiagnostics_pp_check_init()\ndiagnostics_pp_check_action()\ndiagnostics_pp_check_onscreen_confirm_action()\n\nto \n\ndiagnostics_confirm_init()\ndiagnostics_confirm_action()\ndiagnostics_confirm_button_action()\n\n\n[1]https://chromium-review.googlesource.com/c/chromiumos/platform/bmpblk/+/2282643/7/strings/locale/firmware_strings.grd#319",
+      "parentUuid": "6b7825fd_db6f92cf",
       "range": {
         "startLine": 81,
         "startChar": 19,
