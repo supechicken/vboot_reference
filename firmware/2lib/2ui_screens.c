@@ -490,7 +490,7 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	    !vb2_dev_boot_allowed(ui->ctx) ||
 	    !vb2_dev_boot_external_allowed(ui->ctx)) {
 		VB2_DEBUG("ERROR: Dev mode external boot not allowed\n");
-		ui->error_code = VB2_UI_ERROR_DEV_EXTERNAL_NOT_ALLOWED;
+		ui->beeps = 1;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
@@ -501,7 +501,7 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 		if (ui->state->screen->id !=
 		    VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL) {
 			VB2_DEBUG("No external disk found\n");
-			ui->error_code = VB2_UI_ERROR_DEV_EXTERNAL_BOOT_FAILED;
+			ui->beeps = 1;
 		}
 		return vb2_ui_screen_change(
 			ui, VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL);
@@ -509,7 +509,7 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 		if (ui->state->screen->id !=
 		    VB2_SCREEN_DEVELOPER_INVALID_DISK) {
 			VB2_DEBUG("Invalid external disk: %#x\n", rv);
-			ui->error_code = VB2_UI_ERROR_DEV_EXTERNAL_BOOT_FAILED;
+			ui->beeps = 1;
 		}
 		return vb2_ui_screen_change(
 			ui, VB2_SCREEN_DEVELOPER_INVALID_DISK);
@@ -540,11 +540,10 @@ vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 		return vb2_ui_menu_select(ui);
 	}
 
-	/* Otherwise, beep at 20 and 20.5 seconds. */
-	if ((ui->beep_count == 0 && elapsed > 20 * VB2_MSEC_PER_SEC) ||
-	    (ui->beep_count == 1 && elapsed > 20 * VB2_MSEC_PER_SEC + 500)) {
-		vb2ex_beep(250, 400);
-		ui->beep_count++;
+	/* Otherwise, beep twice at 20 seconds. */
+	if (!ui->beep_set && elapsed > 20 * VB2_MSEC_PER_SEC) {
+		ui->beeps = 2;
+		ui->beep_set = 1;
 	}
 
 	/* Stop after 30 seconds. */

@@ -327,18 +327,24 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.state->disabled_item_mask,
 					 ui.disable_timer,
 					 ui.error_code);
-			/*
-			 * Only beep if we're transitioning from no
-			 * error to an error.
-			 */
-			if (prev_error_code == VB2_UI_ERROR_NONE &&
-			    ui.error_code != VB2_UI_ERROR_NONE)
-				vb2ex_beep(250, 400);
 
 			/* Update prev variables. */
 			memcpy(&prev_state, ui.state, sizeof(*ui.state));
 			prev_disable_timer = ui.disable_timer;
 			prev_error_code = ui.error_code;
+		}
+
+		/* Play beeps with an inteval of 500ms. */
+		if (ui.beeps > 0) {
+			uint32_t now = vb2ex_mtime();
+			if (now > ui.last_beep_time + 500) {
+				vb2ex_beep(250, 400);
+				ui.beeps--;
+				if (ui.beeps == 0)
+					ui.last_beep_time = 0;
+				else
+					ui.last_beep_time = now;
+			}
 		}
 
 		/* Grab new keyboard input. */
