@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e25c407_f2437de0",
+        "filename": "firmware/2lib/2ui_logs.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T06:15:57Z",
+      "side": 1,
+      "message": "Done\nThis file moved to depthcharge/src/vboot/ui/log.c",
+      "parentUuid": "563db523_96c4f01e",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "628dfe8a9fdf6235de4ebebbb05a0b0970f4ad52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8c66769_a95b70f3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 14

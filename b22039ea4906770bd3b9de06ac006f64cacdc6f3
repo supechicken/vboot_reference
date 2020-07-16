@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dac05eb_4cf01b4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T06:15:57Z",
+      "side": 1,
+      "message": "The commit message is outdated.\nThis was for vb2ex_debug_info, which has been implemented now.\n\nLet me try to write something new.",
+      "parentUuid": "aa5be404_d2151834",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ac234f_711e6c72",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "e7993b57_adac1bff",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T06:15:57Z",
+      "side": 1,
+      "message": "Removed\nIt is implemented in the newest patch.",
+      "parentUuid": "74034f1f_089a58b6",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3ac7ebd_8ecfbe1c",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 15
@@ -85,6 +133,30 @@
       "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0170a1bb_c104e1ad",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T06:15:57Z",
+      "side": 1,
+      "message": "What do you think if we have a static array of fixed size in vb2ex_get_debug_info?\n(size \u003d 1024 maybe)\n\nThe hardest part for dynamic allocate is we can not know the exact size of full info string",
+      "parentUuid": "d3ac7ebd_8ecfbe1c",
+      "range": {
+        "startLine": 196,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 34
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
