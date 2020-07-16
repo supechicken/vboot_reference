@@ -16,6 +16,46 @@
       "revId": "78750384633c08bdcf2ebfc1bb3e799c4f5b1720",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f389f855_30f64714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-16T06:55:05Z",
+      "side": 1,
+      "message": "Looks like there are still some unresolved comments -- should I wait to do another review?",
+      "revId": "78750384633c08bdcf2ebfc1bb3e799c4f5b1720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ee2307_8d19feba",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-16T06:55:05Z",
+      "side": 1,
+      "message": "Let\u0027s use uint32_t here?  I think we used int for timer_disabled because it\u0027s a boolean.",
+      "range": {
+        "startLine": 1334,
+        "startChar": 8,
+        "endLine": 1334,
+        "endChar": 11
+      },
+      "revId": "78750384633c08bdcf2ebfc1bb3e799c4f5b1720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
