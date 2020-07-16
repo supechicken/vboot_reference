@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d31a49_1c201f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-16T05:32:01Z",
+      "side": 1,
+      "message": "For the errors where we just want to beep, what about just calling vb2ex_beep directly?  I don\u0027t really see a benefit of binding it to the dialog box code.  Also note that we\u0027re already calling vb2ex_beep in developer_mode_action().",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
