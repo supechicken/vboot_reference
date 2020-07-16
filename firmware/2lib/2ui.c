@@ -76,14 +76,15 @@ vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 
 vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 {
-	/*
-	 * If an error message is currently shown on the screen, any
-	 * key press clears that error.  Unset the key so that it is
-	 * not processed by other action functions.
-	 */
 	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE) {
+		/*
+		 * If an error message is currently shown on the screen, any
+		 * key press clears that error.  Unset the key so that it is
+		 * not processed by other action functions.
+		 */
+		if (ui->error_code != VB2_UI_ERROR_BEEP_ONLY)
+			ui->key = 0;
 		ui->error_code = VB2_UI_ERROR_NONE;
-		ui->key = 0;
 	}
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -210,7 +211,6 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 {
 	struct vb2_screen_state *tmp;
-
 	if (ui->state && ui->state->prev) {
 		tmp = ui->state->prev;
 		free(ui->state);
