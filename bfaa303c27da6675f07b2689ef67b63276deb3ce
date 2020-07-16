@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5be85045_33ade446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-16T08:00:40Z",
+      "side": 1,
+      "message": "\u003e I wonder if it\u0027d make sense to split this toggle into two switches instead of just one?\n\nI think I\u0027m okay with either approach. If you prefer this one, let\u0027s go for it. What do you say?",
+      "parentUuid": "a5fbaddc_e50b6f93",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7459502f_0bbe51ef",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2

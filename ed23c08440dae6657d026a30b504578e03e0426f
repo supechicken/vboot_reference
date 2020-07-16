@@ -22,6 +22,30 @@
       "revId": "ed23c08440dae6657d026a30b504578e03e0426f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018444c5_19f5492f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-16T08:00:40Z",
+      "side": 0,
+      "message": "Actually, VB2_UI_ERROR_DEV_INTERNAL_NOT_ALLOWED is not used at all, so currently we only have one error (VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED) that will be drawn in depthcharge.",
+      "parentUuid": "80a649c4_9bfffffa",
+      "range": {
+        "startLine": 1300,
+        "startChar": 0,
+        "endLine": 1303,
+        "endChar": 39
+      },
+      "revId": "ed23c08440dae6657d026a30b504578e03e0426f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
