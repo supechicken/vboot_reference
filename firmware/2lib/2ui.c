@@ -81,7 +81,8 @@ vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 	 * key press clears that error.  Unset the key so that it is
 	 * not processed by other action functions.
 	 */
-	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE) {
+	if (ui->key && ui->error_code != VB2_UI_ERROR_NONE &&
+	    ui->error_code != VB2_UI_ERROR_BEEP_ONLY) {
 		ui->error_code = VB2_UI_ERROR_NONE;
 		ui->key = 0;
 	}
@@ -210,7 +211,6 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 {
 	struct vb2_screen_state *tmp;
-
 	if (ui->state && ui->state->prev) {
 		tmp = ui->state->prev;
 		free(ui->state);
