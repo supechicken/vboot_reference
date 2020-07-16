@@ -183,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "396255c1_52d48839",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Done\nWe handle it in debug_info_page_change()\nI will reconsider if we can re-use it for all (at least three - debug info, fw log, diagnostic) view-log screen.",
+      "parentUuid": "561195ad_ba239ada",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34660cc5_8d94f28e",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 15
@@ -206,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "15551cf0_0af5ac45",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34660cc5_8d94f28e",
+      "range": {
+        "startLine": 1323,
+        "startChar": 43,
+        "endLine": 1323,
+        "endChar": 57
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f862b91_51210d78",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 15
@@ -226,6 +274,30 @@
       "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38162eee_0b1b9c7e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f862b91_51210d78",
+      "range": {
+        "startLine": 1324,
+        "startChar": 13,
+        "endLine": 1324,
+        "endChar": 52
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -296,6 +368,30 @@
       "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2805c2c_49def4c2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Actually I have no idea about how to pre-calculate the appropriate size for allocating...\nCan you give me some hint about it?",
+      "parentUuid": "165fa88e_6fa66fe5",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1397,
+        "endChar": 38
+      },
+      "revId": "b22039ea4906770bd3b9de06ac006f64cacdc6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

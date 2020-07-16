@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "8cf0c7d4_0c7f7380",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Outdated",
+      "parentUuid": "240422eb_f033ee5f",
+      "range": {
+        "startLine": 383,
+        "startChar": 15,
+        "endLine": 383,
+        "endChar": 23
+      },
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3caf616_3e7bb69c",
         "filename": "firmware/2lib/2ui_logs.c",
         "patchSetId": 10
@@ -334,6 +358,24 @@
       "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7451f0a5_900ca4c1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Finally we implement it in PS21",
+      "parentUuid": "b18c6817_367d2ad0",
+      "revId": "61b4d95fe786ea069bb0396dd33887706c28b195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

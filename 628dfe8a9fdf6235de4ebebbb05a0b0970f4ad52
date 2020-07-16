@@ -69,6 +69,30 @@
       "revId": "628dfe8a9fdf6235de4ebebbb05a0b0970f4ad52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9741e5d4_071cbad3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T15:07:24Z",
+      "side": 1,
+      "message": "Done\nSo we will let FIRMWARE_LOG as 0x141, is it?",
+      "parentUuid": "e8c66769_a95b70f3",
+      "range": {
+        "startLine": 1273,
+        "startChar": 27,
+        "endLine": 1273,
+        "endChar": 32
+      },
+      "revId": "628dfe8a9fdf6235de4ebebbb05a0b0970f4ad52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
