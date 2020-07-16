@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f1de9c_cc4d86ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-16T11:06:46Z",
+      "side": 1,
+      "message": "PS18-\u003ePS21:\nimplement disabled_mask and selection\nmove log related variables from ui_context to screen_state\npage -\u003e cur_page, and int -\u003e uint32_t\nvb2ex_get_debug_info: return const char *\n\nTODO:\nvb2api_get_debug_info malloc\nother minor nits",
+      "revId": "20c8181acce05a6a3c5e4d248db5f26c777600cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
