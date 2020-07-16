@@ -78,7 +78,7 @@ struct vb2_ui_context {
 	/* For developer mode. */
 	int disable_timer;
 	uint32_t start_time;
-	int beep_count;
+	int beep_set;
 
 	/* For manual recovery. */
 	vb2_error_t recovery_rv;
@@ -89,8 +89,12 @@ struct vb2_ui_context {
 	/* For language selection screen. */
 	struct vb2_menu language_menu;
 
+	/* For beep sound. */
+	uint32_t last_beep_time;
+	int beeps;
+
 	/* For displaying error messages. */
-  	enum vb2_ui_error error_code;
+	enum vb2_ui_error error_code;
 };
 
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(
