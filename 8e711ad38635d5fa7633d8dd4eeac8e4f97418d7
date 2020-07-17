@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "a95b0b59_5b0bfd53",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T10:08:01Z",
+      "side": 1,
+      "message": "Seems okay to keep it as-is.",
+      "parentUuid": "b6863b3e_699081aa",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b354a29_bcca966c",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 23
@@ -272,6 +296,29 @@
     },
     {
       "key": {
+        "uuid": "923cee54_7c84f570",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T10:08:01Z",
+      "side": 1,
+      "message": "Let\u0027s avoid printing the string twice... how about we remove this line and just print it in depthcharge?",
+      "range": {
+        "startLine": 713,
+        "startChar": 0,
+        "endLine": 713,
+        "endChar": 42
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27b49e55_327ab973",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 23
@@ -307,6 +354,30 @@
       "side": 1,
       "message": "\u003e Or it might even make sense to have two separate functions (page_up and page_down) to match our menu functions in 2ui.c.\nI am not sure about your meaning here. Could you explain more about matching menu functions?",
       "parentUuid": "27b49e55_327ab973",
+      "range": {
+        "startLine": 198,
+        "startChar": 60,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd2da38_ddd89ba6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T10:08:01Z",
+      "side": 1,
+      "message": "In 2ui.c, we have two functions called menu_prev and menu_next.  We need to do something pretty similar to that here.  So it might be nice to also create two functions here -- next_page and prev_page.",
+      "parentUuid": "59c18550_7ba37a88",
       "range": {
         "startLine": 198,
         "startChar": 60,
