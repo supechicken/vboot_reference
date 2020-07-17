@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345d4e53_e9db0118",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Extra line.",
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858a230e_80ae83a1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Was there an issue here with using DEBUG_INFO_APPEND, or do you just prefer limiting the use of that macro to one function?",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b354a29_bcca966c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Could we get rid of caching here and just rely on depthcharge to do that?",
+      "range": {
+        "startLine": 606,
+        "startChar": 1,
+        "endLine": 606,
+        "endChar": 7
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2a9651_c51308f6",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a cast here since malloc() returns (void *).",
+      "range": {
+        "startLine": 621,
+        "startChar": 7,
+        "endLine": 621,
+        "endChar": 16
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54fdb96e_d2acdebe",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Do you mean \"\u003d\u003d\" here?",
+      "range": {
+        "startLine": 687,
+        "startChar": 9,
+        "endLine": 687,
+        "endChar": 11
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f0569d_2cd5f082",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Same here?",
+      "range": {
+        "startLine": 697,
+        "startChar": 9,
+        "endLine": 697,
+        "endChar": 11
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b49e55_327ab973",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "How about changing this function to accept an argument `uint32_t new_page`, and then set the value in ui-\u003estate-\u003ecur_page as part of the function?\n\nOr it might even make sense to have two separate functions (page_up and page_down) to match our menu functions in 2ui.c.  What would you prefer?",
+      "range": {
+        "startLine": 198,
+        "startChar": 60,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef90afd_dc2ac718",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "num_pages or page_count",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 9
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23c608b_9a00b287",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "initialization",
+      "range": {
+        "startLine": 1308,
+        "startChar": 20,
+        "endLine": 1308,
+        "endChar": 31
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5449d039_8139f601",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "The function implementation should manage string memory internally.  Subsequent calls may update the string and return the same pointer, or return a new pointer if necessary.",
+      "range": {
+        "startLine": 1375,
+        "startChar": 49,
+        "endLine": 1375,
+        "endChar": 50
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49913455_2dcc1302",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "The caller owns the string and should call free() when finished with it.",
+      "range": {
+        "startLine": 1386,
+        "startChar": 49,
+        "endLine": 1386,
+        "endChar": 50
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62caad89_dab55d4b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "It\u0027s probably not important to specify the \"splitting\" here.  That can be implementation-dependent.\n\nMaybe:\n\n  Specify the string to be used for an upcoming log screen display.",
+      "range": {
+        "startLine": 1394,
+        "startChar": 3,
+        "endLine": 1394,
+        "endChar": 72
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d63c362_be639b67",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "This is also mostly implementation-dependent.  How about:\n\n  Before a vb2ex_display_ui() call is made for a screen which displays logs,\n  the log string should be provided via this function.  The total number of\n  pages in the log string is returned.  If the log string ever changes, this\n  function should be called again before the next vb2ex_display_ui() call.\n\nIn fact, we might even want to call it something more general, like vb2ex_prepare_log_screen().",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1398,
+        "endChar": 60
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3981ada7_c6e91d39",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "log string to display.",
+      "range": {
+        "startLine": 1400,
+        "startChar": 19,
+        "endLine": 1400,
+        "endChar": 35
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384f4f7d_66b76536",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Maybe just:\n\n For log screens.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90faa2b_09d241ed",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "Something more general, maybe:\n\n  log_string",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86a932f_3070c256",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "num_pages or page_count",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c5b2cf_f7caf293",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-17T07:22:35Z",
+      "side": 1,
+      "message": "How about we just split them onto separate lines here?  We generally don\u0027t group struct members in other vboot code.",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
