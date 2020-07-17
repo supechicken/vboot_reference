@@ -16,6 +16,24 @@
       "revId": "8201cd60ec22b783c753a186e1ce31ad6c24e2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea94af9_136f76d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-17T15:29:54Z",
+      "side": 1,
+      "message": "Updated there too.\n\nfutility should stop using /bin/sh if it actually wants to be security-hardened tho.",
+      "parentUuid": "60aad505_15928079",
+      "revId": "8201cd60ec22b783c753a186e1ce31ad6c24e2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
