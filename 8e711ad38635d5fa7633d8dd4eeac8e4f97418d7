@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "eb9aa360_7b8b387b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T11:31:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a95b0b59_5b0bfd53",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b354a29_bcca966c",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 23
@@ -319,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "38df8eaa_a2795aaa",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T11:31:04Z",
+      "side": 1,
+      "message": "I forgot to remove this.",
+      "parentUuid": "923cee54_7c84f570",
+      "range": {
+        "startLine": 713,
+        "startChar": 0,
+        "endLine": 713,
+        "endChar": 42
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b49e55_327ab973",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 23
@@ -387,6 +435,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ac8a1f_98de6134",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T11:31:04Z",
+      "side": 1,
+      "message": "What about create \n\npage_init, page_prev, and page_next,\nwhich can be re-used in firmware log?",
+      "parentUuid": "bcd2da38_ddd89ba6",
+      "range": {
+        "startLine": 198,
+        "startChar": 60,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
