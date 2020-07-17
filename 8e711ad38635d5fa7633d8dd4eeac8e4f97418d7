@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "875df0a1_e6319a4f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "345d4e53_e9db0118",
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858a230e_80ae83a1",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 23
@@ -30,6 +48,30 @@
       "writtenOn": "2020-07-17T07:22:35Z",
       "side": 1,
       "message": "Was there an issue here with using DEBUG_INFO_APPEND, or do you just prefer limiting the use of that macro to one function?",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 25
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6863b3e_699081aa",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "I think the \u0027dest\u0027 in snprint_sha1_sum and the \u0027buf\u0027 in vb2api_get_debug_info are both the most appropriate naming here -- using buf for internal, temporary buffer, and dest for the case we provide a fixed sized destination buffer.\n\nAnd the macro will be a little bit too long if we pass buf and buf_size as arguments.\n(The buf size is a constant, while the dest size is specified)\n\nWhat do you think about it?\nIs it fine to replace buf with dest in vb2api_get_debug_info?",
+      "parentUuid": "858a230e_80ae83a1",
       "range": {
         "startLine": 590,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c4b145e6_6387f07d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done\n\nWhat is the concern about not to cache here?",
+      "parentUuid": "8b354a29_bcca966c",
+      "range": {
+        "startLine": 606,
+        "startChar": 1,
+        "endLine": 606,
+        "endChar": 7
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d2a9651_c51308f6",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 23
@@ -85,6 +151,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eefef6a_970f4d58",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2a9651_c51308f6",
+      "range": {
+        "startLine": 621,
+        "startChar": 7,
+        "endLine": 621,
+        "endChar": 16
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "568d7066_6606e157",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done\n\nI did not noticed that they disappeared from the debug info.",
+      "parentUuid": "54fdb96e_d2acdebe",
+      "range": {
+        "startLine": 687,
+        "startChar": 9,
+        "endLine": 687,
+        "endChar": 11
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14f0569d_2cd5f082",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 23
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "3bc5b03b_53dd1137",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f0569d_2cd5f082",
+      "range": {
+        "startLine": 697,
+        "startChar": 9,
+        "endLine": 697,
+        "endChar": 11
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b49e55_327ab973",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 23
@@ -145,6 +283,30 @@
       "writtenOn": "2020-07-17T07:22:35Z",
       "side": 1,
       "message": "How about changing this function to accept an argument `uint32_t new_page`, and then set the value in ui-\u003estate-\u003ecur_page as part of the function?\n\nOr it might even make sense to have two separate functions (page_up and page_down) to match our menu functions in 2ui.c.  What would you prefer?",
+      "range": {
+        "startLine": 198,
+        "startChar": 60,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c18550_7ba37a88",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "\u003e Or it might even make sense to have two separate functions (page_up and page_down) to match our menu functions in 2ui.c.\nI am not sure about your meaning here. Could you explain more about matching menu functions?",
+      "parentUuid": "27b49e55_327ab973",
       "range": {
         "startLine": 198,
         "startChar": 60,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "b5a49c8b_4649f03a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done\nI\u0027d prefer page_count and current_page\n\nThere is a variable num_locales, will it be inconsistent here?",
+      "parentUuid": "0ef90afd_dc2ac718",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 9
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a23c608b_9a00b287",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 23
@@ -200,6 +386,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439ca0e9_4c4766f9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23c608b_9a00b287",
+      "range": {
+        "startLine": 1308,
+        "startChar": 20,
+        "endLine": 1308,
+        "endChar": 31
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "5334d806_08a29371",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5449d039_8139f601",
+      "range": {
+        "startLine": 1375,
+        "startChar": 49,
+        "endLine": 1375,
+        "endChar": 50
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49913455_2dcc1302",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 23
@@ -246,6 +480,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96dd1660_478ddcd2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49913455_2dcc1302",
+      "range": {
+        "startLine": 1386,
+        "startChar": 49,
+        "endLine": 1386,
+        "endChar": 50
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "aca9bd40_e67034e5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62caad89_dab55d4b",
+      "range": {
+        "startLine": 1394,
+        "startChar": 3,
+        "endLine": 1394,
+        "endChar": 72
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d63c362_be639b67",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 23
@@ -292,6 +574,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff333cd_2ee0802c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d63c362_be639b67",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1398,
+        "endChar": 60
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "a0bf6d45_2ff82088",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3981ada7_c6e91d39",
+      "range": {
+        "startLine": 1400,
+        "startChar": 19,
+        "endLine": 1400,
+        "endChar": 35
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "384f4f7d_66b76536",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 23
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "174d3340_82247f99",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384f4f7d_66b76536",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f90faa2b_09d241ed",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 23
@@ -361,6 +715,30 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c016e49_6d60a46e",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f90faa2b_09d241ed",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -407,6 +785,54 @@
       "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11432606_2938def1",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86a932f_3070c256",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e736376_a2558a49",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-17T08:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c5b2cf_f7caf293",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "8e711ad38635d5fa7633d8dd4eeac8e4f97418d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
