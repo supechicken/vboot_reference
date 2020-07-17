@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4decad3_0adcfd2f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31eadf9e_7b86d6db",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb6d2348_cc08c820",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "558724f8_36550ccc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb6d2348_cc08c820",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 7
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe379ad_808e339d",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -56,6 +98,24 @@
       "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c0be3c_6f57f471",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done. But do you want to chime-in on \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2282867/9/firmware/2lib/2ui_screens.c#85 ?",
+      "parentUuid": "6fe379ad_808e339d",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "49102e8b_dce7e0fc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a93db2_65fc49e1",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e50d87c1_7f6e4a38",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -87,6 +165,30 @@
       "writtenOn": "2020-07-17T02:53:05Z",
       "side": 1,
       "message": "This return value on success is different from other init functions, where VB2_REQUEST_UI_CONTINUE is returned instead. Do we want to have consistent return values on success throughout this file? Joel, what\u0027s your opinion on this?",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcddf09_76f7cd09",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "This is a function expected to call inside a _real screen init function_ . In the particular case are _recovery_to_dev_init()_ and _diagnostics_confirm_init()_\n\nNaming is hard. This function name changed based on comment :\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2282867/8/firmware/2lib/2ui_screens.c#81",
+      "parentUuid": "e50d87c1_7f6e4a38",
       "range": {
         "startLine": 89,
         "startChar": 8,
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "0963e944_bb53d48d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da05a163_27d598a1",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b65f515_edde1a05",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -127,6 +247,24 @@
       "writtenOn": "2020-07-17T02:53:05Z",
       "side": 1,
       "message": "I would probably directly write\n\n if (!DIAGNOSTIC_UI)\n     ui-\u003estate-\u003edisabled_item_mask |\u003d 1 \u003c\u003c RECOVERY_SELECT_DIAGNOSTICS_ITEM;\n\nhere. Same for the other call.",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4385af24_4e513660",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Hmm, no strong opinion on this. However, trying to avoid the occurrence of _if (!DIAGNOSTIC_UI)_ . Joel, what do you think ?",
+      "parentUuid": "0b65f515_edde1a05",
       "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "9afb62f7_cbb356bf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b19939d5_cf58d108",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56b79773_80d486ed",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -164,6 +320,24 @@
       "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb5ac118_f2a34f11",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56b79773_80d486ed",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "8110be5d_714a52fe",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Damn right !",
+      "parentUuid": "7e591fb7_cb80f952",
+      "range": {
+        "startLine": 730,
+        "startChar": 12,
+        "endLine": 730,
+        "endChar": 38
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a15bf0_b634fdcc",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -210,6 +408,30 @@
       "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "372e9d14_d0ac7a23",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-17T10:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a15bf0_b634fdcc",
+      "range": {
+        "startLine": 736,
+        "startChar": 12,
+        "endLine": 736,
+        "endChar": 45
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
