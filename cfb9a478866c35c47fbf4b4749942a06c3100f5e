@@ -157,6 +157,23 @@
     },
     {
       "key": {
+        "uuid": "1ae09a71_ab077286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T09:00:44Z",
+      "side": 1,
+      "message": "Hey Peter -- looks like the CL is getting close to being ready at this point.  Would you mind adding some unit tests to exercise the new UI flow (rebooting from both recovery / developer mode into diagnostics)?",
+      "revId": "cfb9a478866c35c47fbf4b4749942a06c3100f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64db4497_a50a2854",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 11
