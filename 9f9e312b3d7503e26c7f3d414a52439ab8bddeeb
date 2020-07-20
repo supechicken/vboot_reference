@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "41fb69c5_dd0dc195",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T07:38:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "571d7cbc_b5392d69",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf2b3742_2849344b",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "My approach:\ndisabled \u003d can not interact (select, press), but still visible\n(Current we reserved an empty padding, we might change it to grey-out in the future)\ne.g. PgUp / PgDn buttons\n\nhidden \u003d not visible.\ne.g. all the other buttons.\n\nPlease tell me if you have better naming / comments of params / others.",
       "parentUuid": "1b16cbf1_0fdd3bdd",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d9941d_68558f1d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T07:38:20Z",
+      "side": 1,
+      "message": "After spending more time thinking about this, I don\u0027t think we should create such two masks like this. Because the only difference between them is the appearance of the button, this should be handled in depthcharge instead.\n\nI\u0027d suggest adding a new field \u0027show_disabled_item\u0027 to ui_screen_info, and then in ui_get_button_width we can decide based on the value of this field whether to include disabled items or not.  If in the future some screen needs both *disabled* and *hidden* items, then we can simply move the \u0027show_disabled_item\u0027 field to ui_menu_item.\n\nWhat do you think?",
+      "parentUuid": "543bc888_b671042c",
       "range": {
         "startLine": 1319,
         "startChar": 0,
@@ -210,6 +252,30 @@
       "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d931b91_347b0c84",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T07:38:20Z",
+      "side": 1,
+      "message": "\"NULL on error.\"\n\nBTW there\u0027re two occurrences (vb2ex_get_debug_info and vb2api_get_debug_info) and you only changed one.",
+      "parentUuid": "bda1d971_ef771d84",
+      "range": {
+        "startLine": 1384,
+        "startChar": 63,
+        "endLine": 1384,
+        "endChar": 67
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
