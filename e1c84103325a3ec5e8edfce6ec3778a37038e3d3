@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "76694a37_3eb01ff1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-20T16:28:35Z",
+      "side": 1,
+      "message": "Okay. Will follow (ii) for function declartion.",
+      "parentUuid": "4c39c4e5_5901bf13",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d3c4618_3de96816",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 9
@@ -637,6 +661,30 @@
     },
     {
       "key": {
+        "uuid": "ae9450c7_ec1dcf41",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-20T16:28:35Z",
+      "side": 1,
+      "message": "This fixed in later patchset already.",
+      "parentUuid": "9aaba15c_78f98476",
+      "range": {
+        "startLine": 1236,
+        "startChar": 24,
+        "endLine": 1236,
+        "endChar": 32
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aac3613_0e28e670",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
@@ -705,6 +753,30 @@
       "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb63566d_49c7f9bb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-20T16:28:35Z",
+      "side": 1,
+      "message": "Hmm.. removed after patchset 12.",
+      "parentUuid": "004ffee5_9654b4bc",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 41
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

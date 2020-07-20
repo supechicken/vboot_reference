@@ -787,6 +787,30 @@
     },
     {
       "key": {
+        "uuid": "f72ecd9f_f71ee7eb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-20T16:28:35Z",
+      "side": 1,
+      "message": "This has been changed a bit since `pp_check` are removed in bmpblk. `pp_check` is now moved toward `confirm` .",
+      "parentUuid": "82aae1d4_2f0e0914",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 17
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcab6afb_733288a9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -1732,6 +1756,30 @@
       "side": 1,
       "message": "Let me try to propose consistency strategy here across three repo (vboot_reference / depthcharge / chromeos-bmpblk)\n\n* To align with full expansion starting like RECOVERY / DEVELOPER. `diag` are expanded to `diagnostics` except the bmpblk for its length limitation. Hence we will see `VB2_SCREEN_DIAGNOSTICS` and `btn_diag_options.bmp`\n* All physical presence check are abbreviated to pp_check.\n\nFollowing the rule, this changed from VB2_SCREEN/DIAG_MENU to VB2_SCREEN_DIAGNOSTICS . I\u0027m a bit hesitate to `MODE` because DEVLEOPER_MODE has impacts far beyond firmware (i.e in the whole ChromeOS image)",
       "parentUuid": "e781ceaf_4e299745",
+      "range": {
+        "startLine": 1238,
+        "startChar": 1,
+        "endLine": 1238,
+        "endChar": 21
+      },
+      "revId": "52f2e2e1c11b61b9109d4b0f55eba9ffe8c10507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ba8657_193ddb7b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-20T16:28:35Z",
+      "side": 1,
+      "message": "This has been changed a bit since `pp_check` are removed in bmpblk. `pp_check` is now moved toward `confirm` . However, doesn\u0027t impact this particular line.",
+      "parentUuid": "2f134a1c_0d8a0798",
       "range": {
         "startLine": 1238,
         "startChar": 1,
